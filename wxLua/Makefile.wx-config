@@ -1,0 +1,65 @@
+# Makefile to build the library and apps using the 'wx-config' script
+# to get the proper build settings for wxWidgets, e.g. wx-config --cxxflags
+# You can override the location of the 'wx-config' script by running 
+# $make WXCONFIG=/home/user/path/to/wxWidgets/.../wx-config
+
+#----------------------------------------------------------------------------
+
+# Always try to build all targets, let the other Makefiles do dep checking
+.PHONY: all clean lua wxlua wxluadebug wxluasocket wxbind luamodule wxlua_app wxluacan_app wxluafreeze_app wxluaedit_app
+
+#----------------------------------------------------------------------------
+# Build everything, the apps will build the libs
+
+all: wxlua_app wxluacan_app wxluafreeze_app wxluaedit_app luamodule
+
+#----------------------------------------------------------------------------
+# Make the libs
+
+lua:
+	@(cd modules/lua/src && make)
+
+wxlua:
+	@(cd modules/wxlua/src && make)
+
+wxluadebug:
+	@(cd modules/wxluadebug/src && make)
+
+wxluasocket:
+	@(cd modules/wxluasocket/src && make)
+
+wxbind:
+	@(cd modules/wxbind/src && make)
+
+luamodule:
+	@(cd modules/luamodule/src && make)
+
+#----------------------------------------------------------------------------
+# Make the apps
+
+wxlua_app:
+	@(cd apps/wxlua/src && make)
+
+wxluacan_app:
+	@(cd apps/wxluacan/src && make)
+
+wxluafreeze_app:
+	@(cd apps/wxluafreeze/src && make)
+
+wxluaedit_app:
+	@(cd apps/wxluaedit/src && make)
+
+#----------------------------------------------------------------------------
+
+clean:
+	@(cd modules/lua/src && make clean)
+	@(cd modules/wxlua/src && make clean)
+	@(cd modules/wxluadebug/src && make clean)
+	@(cd modules/wxluasocket/src && make clean)
+	@(cd modules/wxbind/src && make clean)
+	@(cd modules/luamodule/src && make clean)
+	@(cd apps/wxlua/src && make clean)
+	@(cd apps/wxluacan/src && make clean)
+	@(cd apps/wxluafreeze/src && make clean)
+	@(cd apps/wxluaedit/src && make clean)
+

@@ -1,0 +1,146 @@
+
+EXPORTS
+    lua_open
+    lua_close
+    lua_newthread
+    lua_atpanic
+    
+    lua_gettop
+    lua_settop
+    lua_pushvalue
+    lua_remove
+    lua_insert
+    lua_replace
+    lua_checkstack
+    
+    lua_xmove
+    
+    lua_isnumber
+    lua_isstring
+    lua_iscfunction
+    lua_isuserdata
+    lua_type
+    lua_typename
+    lua_equal
+    lua_rawequal
+    lua_lessthan
+    lua_tonumber
+    lua_toboolean
+    lua_tostring
+    lua_strlen
+    lua_tocfunction
+    lua_touserdata
+    lua_tothread
+    lua_topointer
+    
+    lua_pushnil
+    lua_pushnumber
+    lua_pushlstring
+    lua_pushstring
+    lua_pushvfstring
+    lua_pushfstring       ; varargs
+    lua_pushcclosure
+    lua_pushboolean
+    lua_pushlightuserdata
+    
+    lua_gettable
+    lua_rawget
+    lua_rawgeti
+    lua_newtable
+    lua_newuserdata
+    lua_getmetatable
+    lua_getfenv
+    
+    lua_settable
+    lua_rawset
+    lua_rawseti
+    lua_setmetatable
+    lua_setfenv
+    
+    lua_call
+    lua_pcall
+    lua_cpcall
+    lua_load
+    lua_dump
+    
+    lua_yield
+    lua_resume
+    
+    lua_getgcthreshold
+    lua_getgccount
+    lua_setgcthreshold
+    
+    lua_version
+    lua_error
+    lua_next    
+    lua_concat
+    
+    lua_pushupvalues
+    
+    lua_getstack
+    lua_getinfo
+    lua_getlocal
+    lua_setlocal
+    lua_getupvalue
+    lua_setupvalue
+    
+    lua_sethook
+    lua_gethook
+    lua_gethookmask
+    lua_gethookcount
+    
+    lua_dofile
+    lua_dostring
+    lua_dobuffer
+    
+    luaL_openlib
+    luaL_getmetafield
+    luaL_callmeta
+    luaL_typerror
+    luaL_argerror
+    luaL_checklstring
+    luaL_optlstring
+    luaL_checknumber
+    luaL_optnumber
+    
+    luaL_checkstack
+    luaL_checktype
+    luaL_checkany
+    
+    luaL_newmetatable
+    luaL_getmetatable
+    luaL_checkudata
+    
+    luaL_where
+    luaL_error            ; varargs
+    
+    luaL_findstring
+    
+    luaL_ref
+    luaL_unref
+    
+    luaL_getn
+    luaL_setn
+    
+    luaL_loadfile
+    luaL_loadbuffer
+    
+    luaL_buffinit
+    luaL_prepbuffer
+    luaL_addlstring
+    luaL_addstring
+    luaL_addvalue
+    luaL_pushresult
+
+    lua_dofile
+    lua_dostring
+    lua_dobuffer
+    
+    luaopen_base
+    luaopen_table
+    luaopen_io
+    luaopen_string
+    luaopen_math
+    luaopen_debug
+    luaopen_loadlib
+       

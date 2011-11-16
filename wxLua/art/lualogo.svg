@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:odm="http://product.corel.com/CGS/11/cddns/" xml:space="preserve" width="200px" height="196px" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd"
+     viewBox="0 0 200 196">
+ <g id="Layer 1">
+  <path fill="none" stroke="#858585" stroke-width="3" stroke-dasharray="5 8" d="M173 61c6,11 10,25 10,39 0,46 -38,84 -84,84 -46,0 -84,-38 -84,-84 0,-46 38,-84 84,-84 14,0 27,3 39,10"/>
+  <circle fill="#000080" cx="99" cy="100" r="65"/>
+  <circle fill="#FFFFFF" cx="125" cy="73" r="19"/>
+  <circle fill="#000080" cx="163" cy="35" r="19"/>
+  <text x="49" y="132" fill="#FFFFFF" font-weight="normal" font-size="60" font-family="Arial">Lua</text>
+ </g>
+</svg>

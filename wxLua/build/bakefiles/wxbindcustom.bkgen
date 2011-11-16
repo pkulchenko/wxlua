@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<!-- $Id: wxbindcustom.bkgen,v 1.2 2006/02/07 09:14:03 frm Exp $ -->
+
+<bakefile-gen>
+
+
+    <!-- ================================================================== -->
+    <!-- Input bakefiles                                                    -->
+    <!-- ================================================================== -->
+
+    <input>
+        ../../modules/wxbind/build/wxbindcustom.bkl
+    </input>
+
+    <!-- required since wxLua bakefiles use wx presets stored in wxWidgets subfolders... -->
+    <add-flags>-I%WXWIN%/build/bakefiles/wxpresets</add-flags>
+
+
+    <!-- ================================================================== -->
+    <!-- Formats to (not) generate                                          -->
+    <!-- ================================================================== -->
+
+    <disable-formats>msvc6prj,dmars,cbx_unix,cbuilderx</disable-formats>
+
+    <!-- List of output formats to generate: -->
+    <add-formats>
+        borland,dmars,mingw,msvc,watcom,cbuilderx,cbx_unix,gnu
+    </add-formats>
+
+
+
+    <!-- ================================================================== -->
+    <!-- Output directories                                                 -->
+    <!-- ================================================================== -->
+
+    <!-- Directories where msw makefiles should go: -->
+    <add-flags formats="borland">-o$(INPUT_FILE_DIR)/makefile.bcc</add-flags>
+    <add-flags formats="mingw">-o$(INPUT_FILE_DIR)/makefile.gcc</add-flags>
+    <add-flags formats="msvc">-o$(INPUT_FILE_DIR)/makefile.vc</add-flags>
+    <add-flags formats="watcom">-o$(INPUT_FILE_DIR)/makefile.wat</add-flags>
+    <add-flags formats="gnu">-o$(INPUT_FILE_DIR)/makefile.gnu</add-flags>
+
+</bakefile-gen>

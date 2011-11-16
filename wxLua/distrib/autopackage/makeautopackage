@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# NB: you can also do "make autopackage" from the
+#     main dir after you ran configure there
+
+currloc="http://wxlua.sourceforge.net/wxlua/"
+sshurl="shell.sf.net:/home/groups/w/wx/wxlua/htdocs/wxlua/"
+
+
+if [[ ! -f default.apspec ]]; then
+    echo
+    echo "Please first run the configure script (in the ../.. folder)"
+    echo "in order to create the default.apspec file from default.apspec.in"
+    echo
+    exit 1
+fi
+
+# remove old stuff
+rm -rf toupload
+mkdir -p toupload
+rm -f toupload/*.xml toupload/*.meta toupload/*.package
+
+# build the package
+cd ../..
+makepackage $@ distrib/autopackage/default.apspec
+if test $? = 0; then
+    mv *.xml *.meta *.package distrib/autopackage/toupload
+
+    packagename=`ls distrib/autopackage/toupload/*package`
+
+    echo
+    echo
+    echo "= REMINDER ==================================================="
+    echo "Now that the autopackage has been built successfully, remember"
+    echo "to upload the .meta, .package and .xml files:"
+    echo "  scp toupload/*.xml toupload/*.meta toupload/*.package $sshurl"
+    echo "  curl -T toupload/*.package ftp://upload.sourceforge.net/incoming/$packagename"
+    echo "=============================================================="
+fi

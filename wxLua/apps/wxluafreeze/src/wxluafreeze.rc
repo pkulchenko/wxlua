@@ -1,0 +1,14 @@
+/////////////////////////////////////////////////////////////////////////////
+// Purpose:     Resources for wxLuaFreeze
+// Author:      J Winwood
+// Created:     04/11/2001
+// RCS-ID:
+// Copyright:   (c) 2001-2002 Lomtick Software. All rights reserved.
+// Licence:     wxWidgets licence
+/////////////////////////////////////////////////////////////////////////////
+
+lua   ICON   "..\\..\\..\\art\\wxlua.ico"
+
+#include "wx/msw/wx.rc"
+
+// 1     24     "wxLua.manifest" // looks horrible!

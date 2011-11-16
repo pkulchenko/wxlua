@@ -1,0 +1,197 @@
+<?xml version="1.0" ?>
+
+<!-- Author: Francesco Montorsi <frm@users.sourceforge.net>         -->
+<!-- RCS-ID: $Id: options.bkl,v 1.16 2008/01/19 21:37:10 jrl1 Exp $  -->
+
+
+<!-- ====================================================================== -->
+<!--                 WXLUA MODULES OPTIONS BAKEFILE                         -->
+<!-- ====================================================================== -->
+
+<makefile>
+
+    <!-- ================================================================== -->
+    <!--                The list of wxLua module OPTIONS DEFAULTS           -->
+    <!-- ================================================================== -->
+
+    <!-- module enable/disable option defaults
+        NOTE: if you change these defaults, then you should also change the
+              defaults for the -enable-* options in configure script:
+              see wxLua/build/autoconf/configure.ac
+    -->
+    <set var="USE_WXBINDADV_DEFAULT">1</set>
+    <set var="USE_WXBINDAUI_DEFAULT">1</set>
+    <set var="USE_WXBINDBASE_DEFAULT">1</set>
+    <set var="USE_WXBINDCORE_DEFAULT">1</set>
+    <set var="USE_WXBINDGL_DEFAULT">1</set>
+    <set var="USE_WXBINDHTML_DEFAULT">1</set>
+    <set var="USE_WXBINDMEDIA_DEFAULT">1</set>
+    <set var="USE_WXBINDNET_DEFAULT">1</set>
+    <set var="USE_WXBINDRICHTEXT_DEFAULT">0</set>
+    <set var="USE_WXBINDSTC_DEFAULT">1</set>
+    <set var="USE_WXBINDXML_DEFAULT">1</set>
+    <set var="USE_WXBINDXRC_DEFAULT">1</set>
+
+    <set var="USE_WXLUADEBUG_DEFAULT">1</set>
+    <set var="USE_WXLUASOCKET_DEFAULT">1</set>
+    <set var="USE_LUAMODULE_DEFAULT">1</set>
+    <set var="MONOLITHIC_LUAMODULE_DEFAULT">0</set>
+
+
+    <!-- ================================================================== -->
+    <!--                        The list of wxLua module OPTIONS            -->
+    <!-- ================================================================== -->
+
+    <!-- Note that the Lua, wxBind and wxLua modules cannot be disabled ! -->
+
+    <if cond="TARGETING_IDE=='0'">
+
+        <option name="USE_WXBINDADV">
+            <values>0,1</values>
+            <default-value>$(USE_WXBINDADV_DEFAULT)</default-value>
+            <description>Do the wxLua bindings for the wxAdv lib need to be compiled ?</description>
+        </option>
+
+        <option name="USE_WXBINDAUI">
+            <values>0,1</values>
+            <default-value>$(USE_WXBINDAUI_DEFAULT)</default-value>
+            <description>Do the wxLua bindings for the wxAUI lib need to be compiled ?</description>
+        </option>
+
+        <option name="USE_WXBINDBASE">
+            <values>0,1</values>
+            <default-value>$(USE_WXBINDBASE_DEFAULT)</default-value>
+            <description>Do the wxLua bindings for the wxBase lib need to be compiled ?</description>
+        </option>
+
+        <option name="USE_WXBINDCORE">
+            <values>0,1</values>
+            <default-value>$(USE_WXBINDCORE_DEFAULT)</default-value>
+            <description>Do the wxLua bindings for the wxCore lib need to be compiled ?</description>
+        </option>
+
+        <option name="USE_WXBINDGL">
+            <values>0,1</values>
+            <default-value>$(USE_WXBINDGL_DEFAULT)</default-value>
+            <description>Do the wxLua bindings for the wxGL lib need to be compiled ?</description>
+        </option>
+
+        <option name="USE_WXBINDHTML">
+            <values>0,1</values>
+            <default-value>$(USE_WXBINDHTML_DEFAULT)</default-value>
+            <description>Do the wxLua bindings for the wxHTML lib need to be compiled ?</description>
+        </option>
+
+        <option name="USE_WXBINDMEDIA">
+            <values>0,1</values>
+            <default-value>$(USE_WXBINDMEDIA_DEFAULT)</default-value>
+            <description>Do the wxLua bindings for the wxMedia lib need to be compiled ?</description>
+        </option>
+
+        <option name="USE_WXBINDNET">
+            <values>0,1</values>
+            <default-value>$(USE_WXBINDNET_DEFAULT)</default-value>
+            <description>Do the wxLua bindings for the wxNet lib need to be compiled ?</description>
+        </option>
+
+        <option name="USE_WXBINDRICHTEXT">
+            <values>0,1</values>
+            <default-value>$(USE_WXBINDRICHTEXT_DEFAULT)</default-value>
+            <description>Do the wxLua bindings for the wxRichText lib need to be compiled ?</description>
+        </option>
+
+        <option name="USE_WXBINDSTC">
+            <values>0,1</values>
+            <default-value>$(USE_WXBINDSTC_DEFAULT)</default-value>
+            <description>Do the wxLua bindings for wxSTC need to be compiled ?</description>
+        </option>
+
+        <option name="USE_WXBINDXML">
+            <values>0,1</values>
+            <default-value>$(USE_WXBINDXML_DEFAULT)</default-value>
+            <description>Do the wxLua bindings for wxXML need to be compiled ?</description>
+        </option>
+
+        <option name="USE_WXBINDXRC">
+            <values>0,1</values>
+            <default-value>$(USE_WXBINDXRC_DEFAULT)</default-value>
+            <description>Do the wxLua bindings for wxXRC need to be compiled ?</description>
+        </option>
+
+
+        <option name="USE_WXLUADEBUG">
+            <values>0,1</values>
+            <default-value>$(USE_WXLUADEBUG_DEFAULT)</default-value>
+            <description>Does the wxLua debug support need to be compiled ?</description>
+        </option>
+
+        <option name="USE_WXLUASOCKET">
+            <values>0,1</values>
+            <default-value>$(USE_WXLUASOCKET_DEFAULT)</default-value>
+            <description>Does the wxLua debug socket support need to be compiled ?</description>
+        </option>
+
+        <option name="USE_LUAMODULE">
+            <values>0,1</values>
+            <default-value>$(USE_LUAMODULE_DEFAULT)</default-value>
+            <description>Compile the lua module ?</description>
+        </option>
+
+        <option name="MONOLITHIC_LUAMODULE">
+            <values>0,1</values>
+            <default-value>$(MONOLITHIC_LUAMODULE_DEFAULT)</default-value>
+            <description>Build a monolithic Lua module ?</description>
+        </option>
+
+        <if cond="TARGETING_UNIX=='1'">
+            <option name="INSTALL_CUSTOM_WXBIND">
+                <values>0,1</values>
+                <default-value>1</default-value>
+                <description>Should the wxLuaBind sources be installed for customized builds ?</description>
+            </option>
+        </if>
+    </if>
+    <if cond="TARGETING_IDE=='1'">
+
+        <!-- here we are forced to use all '1' because otherwise Bakefile would simply
+             skip some target and do not generate DSP files for that one.
+             We don't want this: we want to generate DSP for all modules: the choice
+             of the modules to compile will be left to the user through the IDE GUI... -->
+        <set var="USE_WXBINDADV">1</set>
+        <set var="USE_WXBINDAUI">1</set>
+        <set var="USE_WXBINDBASE">1</set>
+        <set var="USE_WXBINDCORE">1</set>
+        <set var="USE_WXBINDGL">1</set>
+        <set var="USE_WXBINDHTML">1</set>
+        <set var="USE_WXBINDMEDIA">1</set>
+        <set var="USE_WXBINDNET">1</set>
+        <set var="USE_WXBINDRICHTEXT">1</set>
+        <set var="USE_WXBINDSTC">1</set>
+        <set var="USE_WXBINDXML">1</set>
+        <set var="USE_WXBINDXRC">1</set>
+
+        <set var="USE_WXLUADEBUG">1</set>
+        <set var="USE_WXLUASOCKET">1</set>
+        <set var="USE_LUAMODULE">1</set>
+        <set var="MONOLITHIC_LUAMODULE">1</set>
+
+        <set var="INSTALL_CUSTOM_WXBIND">0</set>
+    </if>
+
+
+
+    <!-- lua module specific flags -->
+    <!-- ========================= -->
+
+    <if cond="FORMAT=='autoconf'">
+        <!-- right values for these are detected by the configure script -->
+        <option name="LUA_PLATFORM_SPECIFIC_CFLAGS"/>
+        <option name="LUA_PLATFORM_SPECIFIC_LDFLAGS"/>
+    </if>
+
+    <if cond="FORMAT!='autoconf'">
+        <set var="LUA_PLATFORM_SPECIFIC_CFLAGS"/>
+        <set var="LUA_PLATFORM_SPECIFIC_LDFLAGS"/>
+    </if>
+
+</makefile>

@@ -1,0 +1,281 @@
+<?xml version="1.0" ?>
+
+<!-- Author: Francesco Montorsi <frm@users.sourceforge.net>         -->
+<!-- RCS-ID: $Id: common.bkl,v 1.19 2008/02/02 16:41:41 jrl1 Exp $  -->
+
+
+<!-- ====================================================================== -->
+<!--                          WXLUA MODULES BAKEFILE                        -->
+<!--                                                                        -->
+<!--    The bakefile used to build all the modules.                         -->
+<!-- ====================================================================== -->
+
+<makefile>
+
+    <!-- This file contains the wxLua template -->
+    <include file="../../../build/bakefiles/wxluabase.bkl" once="1"/>
+
+
+    <!-- ================================================================== -->
+    <!--                     SOURCES and HEADERS LIST                       -->
+    <!-- ================================================================== -->
+
+    <if cond="FORMAT!='autoconf'">
+        <set var="WXLUA_BASEDIR">../../..</set>
+        <set var="WXLUA_LIBDIR">../../../lib</set>
+
+        <set-srcdir>../..</set-srcdir>
+    </if>
+    <if cond="FORMAT=='autoconf'">
+        <!-- In this way we support makefiles created from folders != root folder;
+             i.e. with this trick you can do:
+                   mkdir mybuild && cd mybuild && ../configure && make
+        -->
+        <set var="WXLUA_BASEDIR">$(top_srcdir)</set>
+        <set var="WXLUA_LIBDIR">../lib</set>
+
+        <!-- leave SRCDIR to its '.' default -->
+    </if>
+
+    <set var="LUA_SRC">
+        $(addPrefixToList('lua/src/', 'lapi.c lcode.c ldebug.c ldo.c ldump.c lfunc.c lgc.c llex.c lmem.c lobject.c lopcodes.c lparser.c lstate.c lstring.c ltable.c ltm.c lundump.c lvm.c lzio.c lauxlib.c lbaselib.c ldblib.c liolib.c lmathlib.c loslib.c ltablib.c lstrlib.c loadlib.c linit.c'))
+    </set>
+    <set var="LUA_HDR">$(fileList('lua/include/*.h'))</set>
+
+
+    <!-- These are the wxWidgets binding library files -->
+    <set var="WXBINDADV_SRC">$(fileList('wxbind/src/wxadv_*.cpp')) wxbind/src/dummy.cpp</set>
+    <set var="WXBINDADV_HDR">$(fileList('wxbind/include/wxadv_*.h'))</set>
+
+    <set var="WXBINDAUI_SRC">$(fileList('wxbind/src/wxaui_*.cpp')) wxbind/src/dummy.cpp</set>
+    <set var="WXBINDAUI_HDR">$(fileList('wxbind/include/wxaui_*.h'))</set>
+
+    <set var="WXBINDBASE_SRC">$(fileList('wxbind/src/wxbase_*.cpp')) wxbind/src/dummy.cpp</set>
+    <set var="WXBINDBASE_HDR">$(fileList('wxbind/include/wxbase_*.h')) wxbind/include/wxbinddefs.h</set>
+
+    <set var="WXBINDCORE_SRC">$(fileList('wxbind/src/wxcore_*.cpp')) wxbind/src/dummy.cpp</set>
+    <set var="WXBINDCORE_HDR">$(fileList('wxbind/include/wxcore_*.h'))</set>
+
+    <set var="WXBINDGL_SRC">$(fileList('wxbind/src/wxgl_*.cpp')) wxbind/src/dummy.cpp</set>
+    <set var="WXBINDGL_HDR">$(fileList('wxbind/include/wxgl_*.h'))</set>
+
+    <set var="WXBINDHTML_SRC">$(fileList('wxbind/src/wxhtml_*.cpp')) wxbind/src/dummy.cpp</set>
+    <set var="WXBINDHTML_HDR">$(fileList('wxbind/include/wxhtml_*.h'))</set>
+
+    <set var="WXBINDMEDIA_SRC">$(fileList('wxbind/src/wxmedia_*.cpp')) wxbind/src/dummy.cpp</set>
+    <set var="WXBINDMEDIA_HDR">$(fileList('wxbind/include/wxmedia_*.h'))</set>
+
+    <set var="WXBINDNET_SRC">$(fileList('wxbind/src/wxnet_*.cpp')) wxbind/src/dummy.cpp</set>
+    <set var="WXBINDNET_HDR">$(fileList('wxbind/include/wxnet_*.h'))</set>
+
+    <set var="WXBINDRICHTEXT_SRC">$(fileList('wxbind/src/wxrichtext_*.cpp')) wxbind/src/dummy.cpp</set>
+    <set var="WXBINDRICHTEXT_HDR">$(fileList('wxbind/include/wxrichtext_*.h'))</set>
+
+    <set var="WXBINDSTC_SRC">$(fileList('wxbind/src/wxstc_*.cpp')) wxbind/src/dummy.cpp</set>
+    <set var="WXBINDSTC_HDR">$(fileList('wxbind/include/wxstc_*.h'))</set>
+
+    <set var="WXBINDXML_SRC">$(fileList('wxbind/src/wxxml_*.cpp')) wxbind/src/dummy.cpp</set>
+    <set var="WXBINDXML_HDR">$(fileList('wxbind/include/wxxml_*.h'))</set>
+
+    <set var="WXBINDXRC_SRC">$(fileList('wxbind/src/wxxrc_*.cpp')) wxbind/src/dummy.cpp</set>
+    <set var="WXBINDXRC_HDR">$(fileList('wxbind/include/wxxrc_*.h'))</set>
+
+
+    <!-- These are the wxLua library files -->
+    <set var="WXLUA_SRC">$(fileList('wxlua/src/*.cpp'))</set>
+    <set var="WXLUA_HDR">$(fileList('wxlua/include/*.h'))</set>
+
+    <set var="WXLUADEBUG_SRC">$(fileList('wxluadebug/src/*.cpp'))</set>
+    <set var="WXLUADEBUG_HDR">$(fileList('wxluadebug/include/*.h'))</set>
+
+    <set var="WXLUASOCKET_SRC">$(fileList('wxluasocket/src/*.cpp'))</set>
+    <set var="WXLUASOCKET_HDR">$(fileList('wxluasocket/include/*.h'))</set>
+
+
+    <!-- This is the Lua module library files -->
+    <set var="LUAMODULE_SRC">$(fileList('luamodule/src/*.cpp'))</set>
+    <set var="LUAMODULE_HDR">$(fileList('luamodule/src/*.h'))</set>
+
+    <set var="LUAMODULEMONO_SRC">
+        $(LUAMODULE_SRC)
+
+        <!-- don't duplicate the dummy.cpp files - FIXME is there a better way? removeDuplicates with safeSplit?
+        $(WXBINDADV_SRC)
+        $(WXBINDAUI_SRC)
+        $(WXBINDBASE_SRC)
+        $(WXBINDCORE_SRC)
+        $(WXBINDGL_SRC)
+        $(WXBINDHTML_SRC)
+        $(WXBINDMEDIA_SRC)
+        $(WXBINDNET_SRC)
+        $(WXBINDRICHTEXT_SRC)
+        $(WXBINDSTC_SRC)
+        $(WXBINDXML_SRC)
+        $(WXBINDXRC_SRC)
+
+        $(WXLUASOCKET_SRC)
+        $(WXLUADEBUG_SRC)
+        $(WXLUA_SRC)
+        -->
+
+        $(fileList('wxbind/src/*.cpp'))
+
+        wxluasocket/src/wxldserv.cpp
+        wxluasocket/src/wxldtarg.cpp
+        wxluasocket/src/wxlsock.cpp
+        wxluasocket/src/wxluasocket_bind.cpp
+
+        wxluadebug/src/wxldebug.cpp
+        wxluadebug/src/wxlstack.cpp
+
+        wxlua/src/wxlbind.cpp
+        wxlua/src/wxlcallb.cpp
+        wxlua/src/wxlstate.cpp
+        wxlua/src/wxlua_bind.cpp
+    </set>
+    <set var="LUAMODULEMONO_HDR">$(LUAMODULE_HDR)</set>
+
+    <!-- ================================================================== -->
+    <!--                        The list of wxLua OPTIONS                   -->
+    <!-- ================================================================== -->
+
+    <!-- modules-specific options -->
+    <include file="options.bkl" once="1"/>
+
+
+    <!-- ================================================================== -->
+    <!--                             NEW RULES                              -->
+    <!--  with these ones, each module/sample target takes few lines only   -->
+    <!-- ================================================================== -->
+
+    <!-- NOTE: This tag should be the same as the same as the non-autoconf wxlua-lib tag -->
+    <define-tag name="wxluamodule-lib" rules="exe,dll,module">
+        <if cond="value not in WXLUA_LIB_LIST.split()">
+            <error>Unknown wxLua library given in the wxluamodule-lib tag</error>
+        </if>
+
+        <if cond="value=='lua'">
+            <sys-lib>lua5.1</sys-lib>
+        </if>
+        <if cond="value!='lua'">
+            <wxlike-lib prefix="wxlua">$(value)</wxlike-lib>
+        </if>
+    </define-tag>
+    <template id="wxluamodule-lib" template="wx-lib,wxlua-base">
+        <!-- we don't need to add anything else to wxlua-base template -->
+    </template>
+
+    <tag-info name="wxluamodule-lib" position="before:wxlua-req-libs"/>
+
+    <define-rule name="wxluamodule_lib" extends="lib">
+        <template>
+            <wxlua-dirname>$(WXLUA_LIBDIR)</wxlua-dirname>
+
+            <set var="__modname"/>
+        </template>
+        <define-tag name="module-name">
+            <set var="__modname">$(value)</set>
+            <set var="__modnamelow">$(__modname.lower())</set>
+
+            <!--
+                The library name will look something like:
+                     libwxlua_[gtk2|x11|...][u][d]_[modulename]-[wxversion].so      (or .a)
+                on Unix; on win32 instead:
+                     wxlua_msw[u][d]_[modulename]-[wxversion without dots].dll      (or .lib)
+            -->
+            <wxlike-libname prefix='wxlua'>$(__modnamelow)</wxlike-libname>
+            <sources>$(mk.evalExpr('$(' + value + '_SRC)'))</sources>
+            <headers>$(mk.evalExpr('$(' + value + '_HDR)'))</headers>
+
+            <!-- Note that for "LUA" module there's nothing wx-related and it's already a
+                 very fast block of sources to compile so that we don't need PCH -->
+            <if cond="__modname!='LUA'">
+                <precomp-headers-gen>
+                    $(ifthenelse(__modname.find('WXBIND')!=-1, 'wxbind/src/dummy.cpp', __modnamelow+'/src/dummy.cpp'))
+                </precomp-headers-gen>
+                <precomp-headers-location>include</precomp-headers-location>
+                <precomp-headers-header>wx/wxprec.h</precomp-headers-header>
+                <precomp-headers-file>wxprec_$(id)</precomp-headers-file>
+                <precomp-headers>on</precomp-headers>
+            </if>
+
+            <!-- This is required because wxbind.h refers to wx contrib section, too -->
+            <if cond="TARGETING_WIN32=='1'"><include>$(WX_DIR)/contrib/include</include></if>
+
+            <!-- to make MSVC6PRJ output look better... -->
+            <msvc-file-group>$(__modname) sources:*.cpp</msvc-file-group>
+            <msvc-file-group>$(__modname) headers:*.h</msvc-file-group>
+
+            <install-to>$(LIBDIR)</install-to>
+            <install-headers-to>$(INCLUDEDIR)</install-headers-to>
+        </define-tag>
+        <define-tag name="module-dep">
+            <wxluamodule-lib>$(value)</wxluamodule-lib>
+            <depends>$(value)_lib</depends>
+        </define-tag>
+    </define-rule>
+
+    <define-rule name="wxluamodule_dll" extends="dll">
+        <template>
+            <wxlua-dirname>$(WXLUA_LIBDIR)</wxlua-dirname>
+
+            <!-- The DLL version -->
+            <version>$(WXLUA_VERSION)</version>
+            <so_version>$(WXLUA_SOVERSION)</so_version>
+            <mac_version>$(WXLUA_MACVERSION)</mac_version>
+
+            <!-- Libraries must be put in the right order ! -->
+            <wxlua-req-libs/>
+            <wx-lib>xrc</wx-lib>
+            <wx-lib>html</wx-lib>
+            <!-- <wx-lib>richtext</wx-lib> -->
+            <wx-lib>aui</wx-lib>
+            <wx-lib>media</wx-lib>
+            <wx-lib>gl</wx-lib>
+            <wx-lib>adv</wx-lib>
+            <wx-lib>net</wx-lib>
+            <wx-lib>xml</wx-lib>
+            <wx-lib>core</wx-lib>
+            <wx-lib>base</wx-lib>
+
+            <set var="__modname"/>
+        </template>
+        <define-tag name="module-name">
+            <set var="__modname">$(value)</set>
+            <set var="__modnamelow">$(__modname.lower())</set>
+
+            <wxlike-dllname prefix='wxlua'>$(__modnamelow)</wxlike-dllname>
+            <sources>$(mk.evalExpr('$(' + value + '_SRC)'))</sources>
+            <headers>$(mk.evalExpr('$(' + value + '_HDR)'))</headers>
+
+            <!-- Note that for "LUA" module there's nothing wx-related and it's already a
+                 very fast block of sources to compile so that we don't need PCH -->
+            <if cond="__modname!='LUA'">
+                <precomp-headers-gen>
+                    $(ifthenelse(__modname.find('WXBIND')!=-1, 'wxbind/src/dummy.cpp', __modnamelow+'/src/dummy.cpp'))
+                </precomp-headers-gen>
+                <precomp-headers-location>include</precomp-headers-location>
+                <precomp-headers-header>wx/wxprec.h</precomp-headers-header>
+                <precomp-headers-file>wxprec_$(id)</precomp-headers-file>
+                <precomp-headers>on</precomp-headers>
+            </if>
+
+            <!-- This is required because wxbind.h refers to wx contrib section, too -->
+            <if cond="TARGETING_WIN32=='1'"><include>$(WX_DIR)/contrib/include</include></if>
+
+            <!-- to make MSVC6PRJ output look better... -->
+            <msvc-file-group>$(__modname) sources:*.cpp</msvc-file-group>
+            <msvc-file-group>$(__modname) headers:*.h</msvc-file-group>
+
+            <install-to>$(LIBDIR)</install-to>
+            <install-headers-to>$(INCLUDEDIR)</install-headers-to>
+
+            <define>WXMAKINGDLL_$(value)</define>
+        </define-tag>
+        <define-tag name="module-dep">
+            <wxluamodule-lib>$(value)</wxluamodule-lib>
+            <depends>$(value)_dll</depends>
+        </define-tag>
+    </define-rule>
+
+</makefile>

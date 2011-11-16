@@ -1,0 +1,13 @@
+/////////////////////////////////////////////////////////////////////////////
+// Purpose:     Resources for wxLuaEdit
+// Author:      John Labenski
+// Created:     20/02/2006
+// RCS-ID:      $Id: wxluaedit.rc,v 1.2 2006/02/20 22:20:30 frm Exp $
+// Copyright:   (c) 2006 John Labenski
+// Licence:     wxWidgets licence
+/////////////////////////////////////////////////////////////////////////////
+
+// put LUA icon before the wx resources so that windows will use the lua
+// icon as application's icon
+lua   ICON   "..\\..\\..\\art\\wxlua.ico"
+#include "wx/msw/wx.rc"

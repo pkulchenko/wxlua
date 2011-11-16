@@ -1,0 +1,179 @@
+# File:		Makefile_wx-config.in
+# Author:	John Labenski
+# Created:	2002
+# Updated:
+# Copyright: (c) 2002 John Labenski. All rights reserved.
+#
+# Base Makefile for wxLua using wx-config to get settings
+
+# ----------------------------------------------------------------------------
+# Your Makefile MUST define this correctly
+
+#WXLUA_DIR    = ../../..
+
+WXLUA_DIR_ABS := $(realpath $(WXLUA_DIR))
+
+# --- wxLua parameters -------------------------------------------------------
+
+WXLUA_LIBVERSION_CURRENT  = 2
+WXLUA_LIBVERSION_REVISION = 8
+WXLUA_LIBVERSION_AGE      = 12
+
+# We can use the wxWidgets lib dir to put our libs into (it must be writeable)
+#WXLUA_LIBDIR         = $(WXLIB_DIR)
+# Put the libs into the wxLua/lib directory
+WXLUA_LIBDIR         = $(WXLUA_DIR_ABS)/lib/
+WXLUA_TARGET_LIBDIR  = $(WXLUA_LIBDIR)
+
+# Path to the "wxluasetup.h" file that specifies what to include in the bindings
+WXLUA_WXLUASETUP_DIR = $(WXLUA_DIR)/modules/wxbind/setup
+
+# ----------------------------------------------------------------------------
+# Path to the lua executable
+LUA = $(WXLUA_DIR)/bin/lua
+
+# If we're using cygwin, lua might be somewhere else, try some common places
+# note some other variables cygwin sets don't seem to be exported
+ifeq (Cygwin, $(findstring Cygwin, $(XTERM_VERSION)))
+	LUA=$(WXLUA_DIR)/bin/vc_lib/lua.exe
+else
+	LUA=$(WXLUA_DIR)/bin/lua
+endif
+
+# Lua PLATS= aix ansi bsd freebsd generic linux macosx mingw posix solaris
+
+LUA_PLAT=linux
+
+ifeq (Apple, $(findstring Apple, $(shell gcc --version)))
+    LUA_PLAT=macosx
+endif
+
+
+# --- wxWidgets parameters from wx-config ------------------------------------
+
+WXLIBS_NAMES = stc,gl,media,aui,xrc,qa,html,adv,core,xml,net,base
+
+# Only call these shell functions once, we chain Makefiles together that all
+# include this Makefile and it slows the build down.
+# An app build that doesn't compile anything went from 6 to 1 sec after exporting these.
+ifndef WXPREFIX
+
+export WXCONFIG   := wx-config
+export WXPREFIX   := $(shell $(WXCONFIG) --prefix)
+export WXEXECDIR  := $(shell $(WXCONFIG) --exec-prefix)
+export WXBASENAME := $(shell $(WXCONFIG) --basename)
+export WXVERSION  := $(shell $(WXCONFIG) --version)
+export WXRELEASE  := $(shell $(WXCONFIG) --release)
+export WXCXXFLAGS := $(shell $(WXCONFIG) --cxxflags)
+export WXLDLIBS   := $(shell $(WXCONFIG) --libs $(WXLIBS_NAMES))
+export WXCXX      := $(shell $(WXCONFIG) --cxx)
+
+endif
+
+WXLIB_DIR  := $(WXEXECDIR)/lib
+
+WXSTC_LIB  := $(WXBASENAME)_stc-$(WXRELEASE)
+
+# ----------------------------------------------------------------------------
+# The wxSTEditor library compiled from wxCode/components/wxstedit
+
+WXSTEDIT_DIR   := $(WXCODE)/components/stedit
+WXSTEDIT_LIB   := $(WXBASENAME)_stedit-$(WXRELEASE)
+WXSTEDIT_LIB   := $(patsubst wx_%,wxcode_%,$(WXSTEDIT_LIB))
+
+# ----------------------------------------------------------------------------
+
+LUA_LIBS               := $(WXLUA_DIR)/lib/liblua.a
+WXLUA_LIB              := $(WXBASENAME)_wxlua-$(WXRELEASE)
+WXLUADEBUG_LIB         := $(WXBASENAME)_wxluadebug-$(WXRELEASE)
+WXLUASOCKET_LIB        := $(WXBASENAME)_wxluasocket-$(WXRELEASE)
+
+WXLUABINDADV_LIB       := $(WXBASENAME)_wxbindadv-$(WXRELEASE)
+WXLUABINDAUI_LIB       := $(WXBASENAME)_wxbindaui-$(WXRELEASE)
+WXLUABINDBASE_LIB      := $(WXBASENAME)_wxbindbase-$(WXRELEASE)
+WXLUABINDCORE_LIB      := $(WXBASENAME)_wxbindcore-$(WXRELEASE)
+WXLUABINDGL_LIB        := $(WXBASENAME)_wxbindgl-$(WXRELEASE)
+WXLUABINDHTML_LIB      := $(WXBASENAME)_wxbindhtml-$(WXRELEASE)
+WXLUABINDMEDIA_LIB     := $(WXBASENAME)_wxbindmedia-$(WXRELEASE)
+WXLUABINDNET_LIB       := $(WXBASENAME)_wxbindnet-$(WXRELEASE)
+WXLUABINDRICHTEXT_LIB  := $(WXBASENAME)_wxbindrichtext-$(WXRELEASE)
+WXLUABINDSTC_LIB       := $(WXBASENAME)_wxbindstc-$(WXRELEASE)
+WXLUABINDXML_LIB       := $(WXBASENAME)_wxbindxml-$(WXRELEASE)
+WXLUABINDXRC_LIB       := $(WXBASENAME)_wxbindxrc-$(WXRELEASE)
+
+WXLUA_LIB              := $(patsubst wx_%,wxlua_%,$(WXLUA_LIB))
+WXLUADEBUG_LIB         := $(patsubst wx_%,wxlua_%,$(WXLUADEBUG_LIB))
+WXLUASOCKET_LIB        := $(patsubst wx_%,wxlua_%,$(WXLUASOCKET_LIB))
+
+WXLUABIND_LIB          := $(patsubst wx_%,wxlua_%,$(WXLUABIND_LIB))
+WXLUABINDADV_LIB       := $(patsubst wx_%,wxlua_%,$(WXLUABINDADV_LIB))
+WXLUABINDAUI_LIB       := $(patsubst wx_%,wxlua_%,$(WXLUABINDAUI_LIB))
+WXLUABINDBASE_LIB      := $(patsubst wx_%,wxlua_%,$(WXLUABINDBASE_LIB))
+WXLUABINDCORE_LIB      := $(patsubst wx_%,wxlua_%,$(WXLUABINDCORE_LIB))
+WXLUABINDGL_LIB        := $(patsubst wx_%,wxlua_%,$(WXLUABINDGL_LIB))
+WXLUABINDHTML_LIB      := $(patsubst wx_%,wxlua_%,$(WXLUABINDHTML_LIB))
+WXLUABINDMEDIA_LIB     := $(patsubst wx_%,wxlua_%,$(WXLUABINDMEDIA_LIB))
+WXLUABINDNET_LIB       := $(patsubst wx_%,wxlua_%,$(WXLUABINDNET_LIB))
+WXLUABINDRICHTEXT_LIB  := $(patsubst wx_%,wxlua_%,$(WXLUABINDRICHTEXT_LIB))
+WXLUABINDSTC_LIB       := $(patsubst wx_%,wxlua_%,$(WXLUABINDSTC_LIB))
+WXLUABINDXML_LIB       := $(patsubst wx_%,wxlua_%,$(WXLUABINDXML_LIB))
+WXLUABINDXRC_LIB       := $(patsubst wx_%,wxlua_%,$(WXLUABINDXRC_LIB))
+
+
+WXLUABINDALL_LIBS  := -l$(WXLUABINDXRC_LIB) -l$(WXLUABINDXML_LIB) -l$(WXLUABINDSTC_LIB) -l$(WXLUABINDRICHTEXT_LIB) -l$(WXLUABINDNET_LIB) -l$(WXLUABINDMEDIA_LIB) -l$(WXLUABINDHTML_LIB) -l$(WXLUABINDGL_LIB) -l$(WXLUABINDCORE_LIB) -l$(WXLUABINDBASE_LIB) -l$(WXLUABINDAUI_LIB) -l$(WXLUABINDADV_LIB)
+WXLUABINDSTD_LIBS  := -l$(WXLUABINDNET_LIB) -l$(WXLUABINDCORE_LIB) -l$(WXLUABINDBASE_LIB) -l$(WXLUABINDADV_LIB)
+
+# ----------------------------------------------------------------------------
+
+CXXFLAGS := $(WXCXXFLAGS) -MMD -g -Wall -fPIC
+LDLIBS   := $(WXLDLIBS) -ldl -Wl,--rpath -Wl,$(WXLUA_DIR_ABS)/lib
+CXX      := $(WXCXX)
+
+RM        = rm -f
+AR        = ar
+AROPTIONS = rcu
+RANLIB    = ranlib
+LN_S      = ln -s
+
+# ----------------------------------------------------------------------------
+
+WXLUA_TARGET_LIB_STATIC = $(WXLUA_TARGET_LIBDIR)/$(WXLUA_TARGET_LIBNAME).a
+WXLUA_TARGET_LIB_SHARED = $(WXLUA_TARGET_LIBDIR)/$(WXLUA_TARGET_LIBNAME).so.$(WXLUA_LIBVERSION_CURRENT).$(WXLUA_LIBVERSION_REVISION).$(WXLUA_LIBVERSION_AGE)
+WXLUA_TARGET_LIB_LINK1  = $(WXLUA_TARGET_LIBNAME).so.$(WXLUA_LIBVERSION_CURRENT)
+WXLUA_TARGET_LIB_LINK2  = $(WXLUA_TARGET_LIBNAME).so
+
+# ----------------------------------------------------------------------------
+
+GCC_PROFILE  := #-pg
+APPEXTRADEFS := $(GCC_PROFILE) -I$(WXLUA_DIR) -I$(WXLUA_DIR)/modules -I$(WXLUA_DIR)/modules/lua/include -I$(WXLUA_WXLUASETUP_DIR) -I$(WXSTEDIT_DIR)/include -I$(WXPREFIX)/contrib/include -DLUACALL=
+
+# This will build a shared wxLua app, dynamicly linked to .so libs
+APPEXTRALIBS := $(GCC_PROFILE) -L$(WXLUA_LIBDIR) $(WXLUABINDALL_LIBS) -l$(WXLUA_LIB) -l$(WXLUADEBUG_LIB) -l$(WXLUASOCKET_LIB) $(LUA_LIBS)
+
+# This will build a static wxLua app, staticly linked to .a libs
+#APPEXTRALIBS := -L$(WXLIB_DIR) $(WXLIB_DIR)/lib$(WXLUA_LIB).a $(WXLIB_DIR)/lib$(STC_LIB).a $(WXLIB_DIR)/lib$(WXXRC_LIB).a $(LUA_LIBS)
+
+
+# for lib targets, these are extra linker args
+LIBEXTRALIBS := $(GCC_PROFILE)
+
+# ----------------------------------------------------------------------------
+# These are targets that we can build, we have to declare them before we use them
+
+wxLuaALL_TARGETS = \
+    Lua \
+    wxLuaLib \
+    wxLuaDebugLib \
+    wxLuaSocketLib \
+    wxLuaBindAdvLib \
+    wxLuaBindAUILib \
+    wxLuaBindBaseLib \
+    wxLuaBindCoreLib \
+    wxLuaBindGLLib \
+    wxLuaBindHTMLLib \
+    wxLuaBindMediaLib \
+    wxLuaBindNetLib \
+    wxLuaBindRichTextLib \
+    wxLuaBindSTCLib \
+    wxLuaBindXMLLib \
+    wxLuaBindXRCLib

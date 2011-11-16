@@ -1,0 +1,142 @@
+# ---------------------------------------------------------------------------
+# CMake build file
+# ---------------------------------------------------------------------------
+
+include(../build/CMakeFunctions.txt)
+
+# ---------------------------------------------------------------------------
+# Project name, sets ${wxLuaApps_SOURCE_DIR} and ${wxLuaApps_BINARY_DIR}
+
+project( wxLuaApps )
+
+set( wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../ CACHE INTERNAL "Root dir of wxLua" FORCE)
+
+# ---------------------------------------------------------------------------
+# CMake build file for wxLua apps
+# ---------------------------------------------------------------------------
+
+include_directories(${wxLua_ROOT_DIR}/
+                    ${wxLua_ROOT_DIR}/modules/
+                    ${wxLua_ROOT_DIR}/modules/lua/src)
+
+function (wxLua_Apps_wxLua_TARGETS)
+
+ADD_EXECUTABLE_FULL( wxLua_app WIN32
+    HEADERS
+        "${wxLua_ROOT_DIR}/apps/wxlua/src/*.h"
+    SOURCES
+        "${wxLua_ROOT_DIR}/apps/wxlua/src/*.cpp"
+        ${wxLua_ROOT_DIR}/apps/wxlua/src/wxlua.rc
+    LINK_LIBRARIES
+        #wxLuaBindLib
+        ${wxLuaBind_ALL_LIBS}
+        wxLuaSocketLib
+        wxLuaDebugLib
+        wxLuaLib
+        LuaLib
+        ${wxWidgets_LIBRARIES}
+    PROPERTIES FOLDER "wxLua/apps"
+    PROPERTIES OUTPUT_NAME wxLua)
+
+endfunction (wxLua_Apps_wxLua_TARGETS)
+
+# ---------------------------------------------------------------------------
+
+function (wxLua_Apps_wxLuaCan_TARGETS)
+
+ADD_EXECUTABLE_FULL( wxLuaCan WIN32
+    HEADERS
+        "${wxLua_ROOT_DIR}/apps/wxluacan/src/*.h"
+    SOURCES
+        "${wxLua_ROOT_DIR}/apps/wxluacan/src/*.cpp"
+        ${wxLua_ROOT_DIR}/apps/wxluacan/src/cansim.rc
+    LINK_LIBRARIES
+        #wxLuaBindLib
+        ${wxLuaBind_ALL_LIBS}
+        wxLuaSocketLib
+        wxLuaDebugLib
+        wxLuaLib
+        LuaLib
+        ${wxWidgets_LIBRARIES}
+    PROPERTIES FOLDER "wxLua/apps")
+
+install(FILES ${wxLua_ROOT_DIR}/apps/wxluacan/scripts/incircles.lua
+        DESTINATION apps/wxluacan)
+
+endfunction (wxLua_Apps_wxLuaCan_TARGETS)
+
+# ---------------------------------------------------------------------------
+
+function (wxLua_Apps_wxLuaEdit_TARGETS)
+
+include_directories(${wxStEdit_ROOT_DIR}/include ${wxStEdit_SETUP_INCLUDE_PATH})
+
+ADD_EXECUTABLE_FULL( wxLuaEdit WIN32
+    HEADERS
+        "${wxLua_ROOT_DIR}/apps/wxluaedit/src/*.h"
+    SOURCES
+        "${wxLua_ROOT_DIR}/apps/wxluaedit/src/*.cpp"
+        ${wxLua_ROOT_DIR}/apps/wxluaedit/src/wxluaedit.rc
+    LINK_LIBRARIES
+        wxStEditLib
+        #wxLuaBindLib
+        ${wxLuaBind_ALL_LIBS}
+        wxLuaSocketLib
+        wxLuaDebugLib
+        wxLuaLib
+        LuaLib
+        ${wxWidgets_LIBRARIES}
+    PROPERTIES FOLDER "wxLua/apps")
+
+if (BUILD_SHARED_LIBS)
+    APPEND_TARGET_PROPERTIES(wxLuaEdit PROPERTIES COMPILE_DEFINITIONS "WXUSINGDLL_STEDIT")
+endif()
+
+endfunction (wxLua_Apps_wxLuaEdit_TARGETS)
+
+# ---------------------------------------------------------------------------
+
+function (wxLua_Apps_wxLuaFreeze_TARGETS)
+
+ADD_EXECUTABLE_FULL( wxLuaFreeze WIN32
+    HEADERS
+        "${wxLua_ROOT_DIR}/apps/wxluafreeze/src/*.h"
+    SOURCES
+        "${wxLua_ROOT_DIR}/apps/wxluafreeze/src/*.cpp"
+        ${wxLua_ROOT_DIR}/apps/wxluafreeze/src/wxluafreeze.rc
+    LINK_LIBRARIES
+        #wxLuaBindLib
+        ${wxLuaBind_ALL_LIBS}
+        wxLuaSocketLib
+        wxLuaDebugLib
+        wxLuaLib
+        LuaLib
+        ${wxWidgets_LIBRARIES}
+    PROPERTIES FOLDER "wxLua/apps")
+
+install(FILES
+        ${wxLua_ROOT_DIR}/apps/wxluafreeze/src/readme.txt
+        ${wxLua_ROOT_DIR}/apps/wxluafreeze/src/wxluafreeze.lua
+        DESTINATION apps/wxluafreeze)
+
+endfunction (wxLua_Apps_wxLuaFreeze_TARGETS)
+
+# ===========================================================================
+
+install(DIRECTORY   ${wxLua_ROOT_DIR}/docs/
+        DESTINATION doc
+        FILES_MATCHING
+        PATTERN "*.txt" PATTERN "*.html"
+        PATTERN "CVS" EXCLUDE
+        PATTERN "doxygen" EXCLUDE)
+
+install(DIRECTORY   ${wxLua_ROOT_DIR}/samples/
+        DESTINATION samples
+        PATTERN "CVS" EXCLUDE)
+
+# ===========================================================================
+
+add_subdirectory( wxlua )
+add_subdirectory( wxluacan )
+add_subdirectory( wxluaedit )
+add_subdirectory( wxluafreeze )

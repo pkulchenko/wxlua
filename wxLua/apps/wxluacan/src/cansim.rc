@@ -1,0 +1,15 @@
+/////////////////////////////////////////////////////////////////////////////
+// Purpose:     Resources for wxLuaStandalone
+// Author:      J Winwood
+// Created:     04/11/2001
+// RCS-ID:      $Id: cansim.rc,v 1.2 2006/02/20 22:20:30 frm Exp $
+// Copyright:   (c) 2001-2002 Lomtick Software. All rights reserved.
+// Licence:     wxWidgets licence
+/////////////////////////////////////////////////////////////////////////////
+
+lua   ICON   "..\\..\\..\\art\\wxlua.ico"
+//logo  BITMAP "..\examples\bitmaps\wxLua.bmp"
+
+#include "wx/msw/wx.rc"
+
+// 1     24     "wxLua.manifest" // looks horrible!

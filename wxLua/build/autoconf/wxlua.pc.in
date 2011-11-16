@@ -1,0 +1,23 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+# the include paths required to build something wxLua-based
+includepaths=${includedir}
+libpaths=${libdir}
+modnames="@WXLUA_MODNAMES@"
+libnames="@WXLUA_LIBNAMES@"
+wxlua_ldflags="@WXLUA_LDFLAGS@"
+
+Name: @PACKAGE_NAME@
+Description: wxWidgets lua wrappers
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} @WXLUA_LDFLAGS@
+Cflags: -I${includedir}
+
+# in reality, wxLua requires wxWidgets; however wxWidgets does not
+# uses pkg-config utility and thus we cannot list it here;
+# so, you'll need to use `wx-config --cxxflags` and `wx-config --libs`
+# commands for the additional compiler & linker flags required.
+Requires:

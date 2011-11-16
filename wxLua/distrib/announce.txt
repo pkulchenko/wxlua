@@ -1,0 +1,48 @@
+
+ Places where to post the announce of a new wxLua release:
+ ---------------------------------------------------------
+
+ lua-users mailing list:      lua@bazar2.conectiva.com.br
+ wx-users mailing list:       wx-users@lists.wxwidgets.org
+ wx-announce mailing list:    wx-announce@lists.wxwidgets.org
+
+ wxLua news tracker:          http://sourceforge.net/news/submit.php?group_id=140042
+ wxForum announcement board:  http://wxforum.shadonet.com/viewforum.php?f=10
+ wxCommunity news:            http://www.wxcommunity.com/modules.php?op=modload&name=Submit_News&file=index
+
+
+
+ The announcement text:
+ ----------------------
+
+ Here it is the announcement text used for last release of wxLua:
+
+
+
+
+Announcing wxLua 2.8.0.0: lua bindings to wxWidgets
+----------------------------------------------------------------
+
+The wxLua team is pleased to announce a new release of the lua bindings to wxWidgets cross-platform GUI library. This version supports wxWidgets 2.6.3 to 2.8.0 and uses lua 5.1.
+
+wxLua is a lua scripting language wrapper around the C++ wxWidgets cross-platform GUI library. It consists of an executable for running standalone wxLua scripts, a module for lua programs to load using require, and the source code to build a library for extending C++ programs with a fast, small, fully embeddable scripting language.
+
+wxWidgets is a cross-platform toolkit that lets developers create applications for Win32, Mac OS X, GTK+, X11, Motif, WinCE, and more using a single codebase. Unlike other cross-platform toolkits, wxWidgets applications look and feel native. This is because wxWidgets uses the platform's own native controls rather than emulating them. It's also extensive, free, open-source, and mature.
+
+wxLua wraps all the GUI controls that wxWidgets provides as well as common dialogs, drawing graphics, image loading, saving, manipulating, file functions, sound and media playback, printing, sockets, and more.
+
+
+To learn more about wxLua and to download it, please visit:
+
+  http://wxlua.sourceforge.net
+
+To learn about wxWidgets visit:
+
+  http://www.wxwidgets.org
+
+
+Feedback greatly appreciated !
+
+The wxLua developers
+
+

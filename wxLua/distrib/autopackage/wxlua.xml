@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info" xmlns:apkg="http://autopackage.org/xdgmime-extensions">
+    <mime-type type="application/lua">
+        <comment>Lua script</comment>
+        <glob pattern="*.lua" />
+        <alias type="text/lua" />
+
+        <apkg:icon>wxlualogo.xpm</apkg:icon>
+    </mime-type>
+</mime-info>

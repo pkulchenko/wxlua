@@ -1,0 +1,94 @@
+<?xml version="1.0" ?>
+<!-- $Id: Bakefiles.bkgen,v 1.15 2008/01/20 22:40:07 frm Exp $ -->
+
+<bakefile-gen xmlns="http://www.bakefile.org/schema/bakefile-gen">
+
+
+    <!-- ================================================================== -->
+    <!-- Input bakefiles                                                    -->
+    <!-- ================================================================== -->
+
+    <input>
+        ./wxlua.bkl
+        ../../apps/build/bakefiles/apps.bkl
+        ../../modules/build/bakefiles/modules.bkl
+        ../../util/build/bakefiles/util.bkl
+    </input>
+
+    <!-- we want to use our local copy of wxWidgets presets; since we will
+         include the presets using the "presets/wx.bkl" syntax, then we
+         need to add current path to the list of paths to search for.
+
+         NOTE: in reality, this is not needed as bakefile_gen has current
+               path in include search paths automatically.
+    -->
+    <add-flags>-I.</add-flags>
+
+    <!-- CVS wants all files in "native" format; i.e. in a format right for
+         the current OS.
+    -->
+    <add-flags>--eol=native</add-flags>
+
+
+    <!-- ================================================================== -->
+    <!-- Formats to (not) generate                                          -->
+    <!-- ================================================================== -->
+
+    <disable-formats>gnu,dmars,cbx_unix,cbuilderx</disable-formats>
+
+    <!-- List of output formats to generate: -->
+    <add-formats>
+        msvc6prj,msvs2005prj,autoconf,borland,dmars,mingw,msvc,watcom,cbuilderx,cbx_unix,gnu
+    </add-formats>
+    <del-formats files="./wxlua.bkl">
+        msvc6prj,msvs2005prj
+    </del-formats>
+    <del-formats files="../../modules/wxbind/build/wxbindcustom.bkl">
+        msvc6prj,msvs2005prj,autoconf
+    </del-formats>
+    <add-formats files="../../modules/wxbind/build/wxbindcustom.bkl">
+        gnu
+    </add-formats>
+
+
+
+    <!-- ================================================================== -->
+    <!-- Output directories                                                 -->
+    <!-- ================================================================== -->
+
+    <!-- Directories where msw makefiles should go: -->
+    <add-flags formats="borland">-o$(INPUT_FILE_DIR)/../msw/makefile.bcc</add-flags>
+    <add-flags formats="mingw">-o$(INPUT_FILE_DIR)/../msw/makefile.gcc</add-flags>
+    <add-flags formats="msvc">-o$(INPUT_FILE_DIR)/../msw/makefile.vc</add-flags>
+    <add-flags formats="watcom">-o$(INPUT_FILE_DIR)/../msw/makefile.wat</add-flags>
+
+    <!-- Directories where unix makefiles should go: -->
+    <add-flags formats="autoconf">-o$(INPUT_FILE_DIR)/../../Makefile.in</add-flags>
+    <add-flags formats="autoconf">-DAUTOCONF_MACROS_FILE=../autoconf/autoconf_inc.m4</add-flags>
+
+
+    <!-- the name of the DSW must be lowercase otherwise output libname will be
+         lowercase for some targets and for some others it will be mixed... -->
+    <add-flags formats="msvc6prj" files="../../apps/build/bakefiles/apps.bkl">
+        -o../../apps/build/msvc6/apps.dsw
+    </add-flags>
+    <add-flags formats="msvc6prj" files="../../modules/build/bakefiles/modules.bkl">
+        -o../../modules/build/msvc6/modules.dsw
+    </add-flags>
+    <add-flags formats="msvc6prj" files="../../util/build/bakefiles/util.bkl">
+        -o../../util/build/msvc6/util.dsw
+    </add-flags>
+
+    <!-- the name of the SLN must be lowercase otherwise output libname will be
+         lowercase for some targets and for some others it will be mixed... -->
+    <add-flags formats="msvs2005prj" files="../../apps/build/bakefiles/apps.bkl">
+        -o../../apps/build/msvc8/apps.sln
+    </add-flags>
+    <add-flags formats="msvs2005prj" files="../../modules/build/bakefiles/modules.bkl">
+        -o../../modules/build/msvc8/modules.sln
+    </add-flags>
+    <add-flags formats="msvs2005prj" files="../../util/build/bakefiles/util.bkl">
+        -o../../util/build/msvc8/util.sln
+    </add-flags>
+
+</bakefile-gen>

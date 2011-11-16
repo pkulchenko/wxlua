@@ -1,0 +1,86 @@
+<?xml version="1.0" ?>
+
+<!-- Author: Francesco Montorsi <frm@users.sourceforge.net>             -->
+<!-- RCS-ID: $Id: wxbindcustom.bkl,v 1.7 2006/03/06 21:32:14 frm Exp $  -->
+
+<makefile>
+
+    <include file="../../build/bakefiles/common.bkl" once="1"/>
+
+    <!-- the user's custom wxbind library is built from same sources
+         of the wxbind module -->
+    <set var="WXBINDCUSTOM_SRC">$(WXBIND_SRC)</set>
+    <set var="WXBINDCUSTOM_HDR">$(WXBIND_HDR)</set>
+
+    <!--
+            The sources of wxBind both under Unix and Windows are available
+            in the parent folder of the directory containing all makefiles...
+            so we don't need the wxbind/src/ prefix !
+    -->
+    <set var="WXBINDCUSTOM_SRC">$(WXBIND_SRC.replace('wxbind/src/', ''))</set>
+
+
+
+
+    <!-- ================================================================== -->
+    <!--                The list of wxLua module OPTIONS DEFAULTS           -->
+    <!-- ================================================================== -->
+
+    <!-- the default path for the wxluasetup.h file -->
+    <set var="WXLUASETUP_DIR_DEFAULT">
+        <if cond="TARGETING_UNIX=='1'">../setup</if>
+        <if cond="TARGETING_WIN32=='1'">$(nativePaths(WXLUA_BASEDIR))\modules\wxbind\setup</if>
+    </set>
+
+    <!-- the default output path for wxLuaBind library -->
+    <set var="WXLUABINDLIB_DIR_DEFAULT">
+        <if cond="TARGETING_UNIX=='1'">../../../lib</if>
+        <if cond="TARGETING_WIN32=='1'">$(nativePaths(WXLUA_BASEDIR))\lib</if>
+    </set>
+
+
+
+
+    <!-- ================================================================== -->
+    <!--                        The list of wxLua module OPTIONS            -->
+    <!-- ================================================================== -->
+
+    <!--
+         Options which allow the user to build a custom wxbind library
+         (which goes in the WXLUABINDLIB_DIR directory) using his
+         own wxluasetup.h searched in the WXLUASETUP_DIR folder.
+    -->
+
+    <option name="WXLUASETUP_DIR" category="path">
+        <default-value>$(WXLUASETUP_DIR_DEFAULT)</default-value>
+        <description>The folder where user's custom wxluasetup.h is searched</description>
+    </option>
+
+    <option name="WXLUABINDLIB_DIR" category="path">
+        <default-value>$(WXLUABINDLIB_DIR_DEFAULT)</default-value>
+        <description>The folder where user's custom wxLuaBind library is sent</description>
+    </option>
+
+
+
+    <!-- ================================================================== -->
+    <!--                                Targets                             -->
+    <!-- ================================================================== -->
+
+    <!-- the CUSTOM wxBind lib & dll
+         NOTE: we won't use the wxlua-lib template since that supposes that you need
+               include paths (e.g. WXLUABASEDIR/modules) which we don't need ! -->
+    <wxlua_lib id="wxbindcustom_lib" template="wx-lib,wxbase" cond="SHARED=='0'">
+        <srcdir>..</srcdir>
+        <module-name>WXBINDCUSTOM</module-name>
+        <dirname>$(WXLUABINDLIB_DIR)</dirname>
+        <include>$(WXLUASETUP_DIR)</include>
+    </wxlua_lib>
+    <wxlua_dll id="wxbindcustom_dll" template="wx-lib,wxbase" cond="SHARED=='1'">
+        <srcdir>..</srcdir>
+        <module-name>WXBINDCUSTOM</module-name>
+        <dirname>$(WXLUABINDLIB_DIR)</dirname>
+        <include>$(WXLUASETUP_DIR)</include>
+    </wxlua_dll>
+
+</makefile>

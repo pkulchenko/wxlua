@@ -1,0 +1,123 @@
+<?xml version="1.0" ?>
+<!-- $Id: mac_bundles.bkl,v 1.4 2007/02/27 20:47:45 frm Exp $ -->
+
+<makefile>
+
+
+    <!--
+        NOTE: this file is mostly a copy&paste of the mac_bundles.bkl file
+              from wxWidgets bakefiles.
+              The following modifications were done:
+               -> added BUNDLE_DIR, BUNDLE_VERSION and BUNDLE_ICONS_FILENAME
+               -> make <wx-mac-app-bundle> tag do nothing when FORMAT!=autoconf
+               -> use $(value) inside <wx-mac-app-bundle> to define the
+                  directory .app to create
+    -->
+
+
+    <if cond="FORMAT=='autoconf'">
+
+        <!-- =============================================================== -->
+        <!--                project-specific mac-bundle stuff:               -->
+        <!-- =============================================================== -->
+    
+        <set var="BUNDLE_DIR">
+            $(top_srcdir)/distrib/macbundle
+        </set>
+
+        <set var="BUNDLE_VERSION">
+            $(WXLUA_VERSION)
+        </set>
+    
+        <set var="BUNDLE_ICONS_FILENAME">
+            wxLua.icns
+        </set>
+    
+        <set var="BUNDLE_PLIST">
+            $(BUNDLE_DIR)/Info.plist.in
+        </set>
+        <set var="BUNDLE_ICONS">
+            $(BUNDLE_DIR)/$(BUNDLE_ICONS_FILENAME)
+        </set>
+    
+    
+    
+        <!-- =============================================================== -->
+        <!--                    DO NOT TOUCH THE FOLLOWING:                  -->
+        <!-- =============================================================== -->
+    
+        <!--
+        Support for application bundles, for wxWidgets samples.
+        -->
+    
+        <!--
+        Nasty hack: use $(srcdir) to obtain usable CFBundleIdentifier suffix;
+        converts $(srcdir) like "../../samples/minimal" to "samples.minimal".
+        -->
+        <set var="BUNDLE_IDENTIFIER">
+            `echo $(DOLLAR)(srcdir) | sed -e 's,\.\./,,g' | sed -e 's,/,.,g'`
+        </set>
+    
+        <define-tag name="wx-mac-app-bundle" rules="exe">
+    
+            <!-- bundle directory: -->
+            <set var="BUNDLE_NAME">$(value)</set>
+            <set var="BUNDLE">$(BUNDLE_NAME).app/Contents</set>
+            <set var="BUNDLE_TGT">$(BUNDLE)/PkgInfo</set>
+            <set var="BUNDLE_TGT_REF">$(BUNDLE)/PkgInfo</set>
+    
+            <add-target target="$(BUNDLE_TGT)" type="action" cond="target"/>
+            <modify-target target="$(BUNDLE_TGT)">
+                <!-- required data: -->
+                <depends>$(id)</depends>
+                <depends-on-file>$(BUNDLE_PLIST)</depends-on-file>
+                <depends-on-file>$(BUNDLE_ICONS)</depends-on-file>
+    
+                <command>
+                    <!-- create the directories: -->
+                    mkdir -p $(BUNDLE)
+                    mkdir -p $(BUNDLE)/MacOS
+                    mkdir -p $(BUNDLE)/Resources
+    
+                    <!-- Info.plist: -->
+                    sed -e "s/IDENTIFIER/$(BUNDLE_IDENTIFIER)/" \
+                        -e "s/EXECUTABLE/$(BUNDLE_NAME)/" \
+                        -e "s/VERSION/$(BUNDLE_VERSION)/" \
+                        $(BUNDLE_PLIST) >$(BUNDLE)/Info.plist
+    
+                    <!-- PkgInfo: -->
+                    echo -n "APPL????" >$(BUNDLE)/PkgInfo
+    
+                    <!-- make a hardlink to the binary: -->
+                    ln -f $(ref("__targetdir",id))$(ref("__targetname",id)) $(BUNDLE)/MacOS/$(BUNDLE_NAME)
+    
+                    <!-- ditto resources and icons: -->
+                    cp -f $(BUNDLE_ICONS) $(BUNDLE)/Resources/$(BUNDLE_ICONS_FILENAME)
+                </command>
+            </modify-target>
+    
+            <!-- add pseudo target id_bundle: -->
+            <add-target target="$(id)_bundle" type="phony"
+                        cond="PLATFORM_MACOSX=='1'"/>
+            <modify-target target="$(id)_bundle">
+                <dependency-of>all</dependency-of>
+                <depends>$(BUNDLE_TGT_REF)</depends>
+            </modify-target>
+    
+            <!-- "make clean" should delete the bundle: -->
+            <modify-target target="clean">
+                <command>rm -rf $(value).app</command>
+            </modify-target>
+    
+        </define-tag>
+
+    </if>
+
+    <if cond="FORMAT!='autoconf'">
+
+        <!-- just do nothing -->
+        <define-tag name="wx-mac-app-bundle" rules="exe"/>
+
+    </if>
+
+</makefile>

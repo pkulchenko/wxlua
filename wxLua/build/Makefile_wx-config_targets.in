@@ -1,0 +1,100 @@
+# File:		Makefile_wx-config_targets.in
+# Author:	John Labenski
+# Created:	2002
+# Updated:
+# Copyright: (c) 2002 John Labenski. All rights reserved.
+#
+# Base Makefile for wxLua using wx-config to get settings
+
+# ----------------------------------------------------------------------------
+# Some targets that we may like to build
+
+Lua:
+	@(cd $(WXLUA_DIR)/modules/lua && $(MAKE) $(LUA_PLAT))
+
+wxLuaLib:
+	@(cd $(WXLUA_DIR)/modules/wxlua/src && $(MAKE))
+
+wxLuaDebugLib:
+	@(cd $(WXLUA_DIR)/modules/wxluadebug/src && $(MAKE))
+
+wxLuaSocketLib:
+	@(cd $(WXLUA_DIR)/modules/wxluasocket/src && $(MAKE))
+
+LuaModule:
+	@(cd $(WXLUA_DIR)/modules/luamodule/src && $(MAKE))
+
+# ----------------------------------------------------------------------------
+
+wxLuaBindAdvLib:
+	@(cd $(WXLUA_DIR)/modules/wxbind/src && $(MAKE) -f Makefile_wxadv)
+
+wxLuaBindAUILib:
+	@(cd $(WXLUA_DIR)/modules/wxbind/src && $(MAKE) -f Makefile_wxaui)
+
+wxLuaBindBaseLib:
+	@(cd $(WXLUA_DIR)/modules/wxbind/src && $(MAKE) -f Makefile_wxbase)
+
+wxLuaBindCoreLib:
+	@(cd $(WXLUA_DIR)/modules/wxbind/src && $(MAKE) -f Makefile_wxcore)
+
+wxLuaBindGLLib:
+	@(cd $(WXLUA_DIR)/modules/wxbind/src && $(MAKE) -f Makefile_wxgl)
+
+wxLuaBindHTMLLib:
+	@(cd $(WXLUA_DIR)/modules/wxbind/src && $(MAKE) -f Makefile_wxhtml)
+
+wxLuaBindMediaLib:
+	@(cd $(WXLUA_DIR)/modules/wxbind/src && $(MAKE) -f Makefile_wxmedia)
+
+wxLuaBindNetLib:
+	@(cd $(WXLUA_DIR)/modules/wxbind/src && $(MAKE) -f Makefile_wxnet)
+
+wxLuaBindRichTextLib:
+	@(cd $(WXLUA_DIR)/modules/wxbind/src && $(MAKE) -f Makefile_wxrichtext)
+
+wxLuaBindSTCLib:
+	@(cd $(WXLUA_DIR)/modules/wxbind/src && $(MAKE) -f Makefile_wxstc)
+
+wxLuaBindXMLLib:
+	@(cd $(WXLUA_DIR)/modules/wxbind/src && $(MAKE) -f Makefile_wxxml)
+
+wxLuaBindXRCLib:
+	@(cd $(WXLUA_DIR)/modules/wxbind/src && $(MAKE) -f Makefile_wxxrc)
+
+# ----------------------------------------------------------------------------
+
+wxStEdit:
+	@(cd $(WXSTEDIT_DIR)/src && $(MAKE))
+
+# ----------------------------------------------------------------------------
+# These are the targets when building the libs
+
+$(WXLUA_TARGET_LIB_STATIC) : $(OBJECTS)
+	@$(RM) $@
+	$(AR) $(AROPTIONS) $@ $(OBJECTS)
+	$(RANLIB) $@
+
+$(WXLUA_TARGET_LIB_SHARED): $(OBJECTS)
+	$(CXX) -shared -o $@ $(OBJECTS) $(LIBEXTRALIBS)
+	cd $(WXLUA_TARGET_LIBDIR) \
+                && $(RM) $(WXLUA_TARGET_LIB_LINK1) $(WXLUA_TARGET_LIB_LINK2) \
+                && $(LN_S) $(WXLUA_TARGET_LIB_SHARED) $(WXLUA_TARGET_LIB_LINK1) \
+                && $(LN_S) $(WXLUA_TARGET_LIB_SHARED) $(WXLUA_TARGET_LIB_LINK2)
+
+# ----------------------------------------------------------------------------
+
+cleanlib:
+	rm -f core $(OBJECTS) $(DEPFILES) \
+	      $(WXLUA_TARGET_LIB_STATIC) $(WXLUA_TARGET_LIB_SHARED) \
+              $(WXLUA_TARGET_LIBDIR)/$(WXLUA_TARGET_LIB_LINK1) \
+              $(WXLUA_TARGET_LIBDIR)/$(WXLUA_TARGET_LIB_LINK2)
+
+cleanall:
+	@(cd $(WXLUA_DIR)/modules/lua && $(MAKE) clean)
+	@(cd $(WXLUA_DIR)/modules/wxlua/src && $(MAKE) clean)
+	@(cd $(WXLUA_DIR)/modules/wxluadebug/src && $(MAKE) clean)
+	@(cd $(WXLUA_DIR)/modules/wxluasocket/src && $(MAKE) clean)
+	@(cd $(WXLUA_DIR)/modules/luamodule/src && $(MAKE) clean)
+
+	@(cd $(WXLUA_DIR)/modules/wxbind/src && $(MAKE) -f Makefile cleanwxbind)

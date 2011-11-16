@@ -1,0 +1,224 @@
+<?xml version="1.0" ?>
+
+<!-- Author: Francesco Montorsi <frm@users.sourceforge.net>         -->
+<!-- RCS-ID: $Id: apps.bkl,v 1.63 2008/01/17 15:19:54 jrl1 Exp $      -->
+
+<!-- ====================================================================== -->
+<!--                    WXLUA APPS BAKEFILE                                 -->
+<!-- ====================================================================== -->
+
+<makefile>
+
+    <!-- This file contains the wxLua template -->
+    <include file="../../../build/bakefiles/wxluabase.bkl" once="1"/>
+
+    <!-- ================================================================== -->
+    <!--                               VARIABLES                            -->
+    <!-- ================================================================== -->
+
+    <if cond="TARGETING_WIN32=='1'">
+        <!-- Win32 makefiles will be put in BUILD/MSW -->
+        <set var="WXLUA_BASEDIR">../../..</set>
+        <set var="WXLUA_BINDIR">../../../bin</set>
+        <set var="WXLUA_LIBDIR">../../../lib</set>
+
+        <set-srcdir>../..</set-srcdir>
+    </if>
+    <if cond="TARGETING_WIN32=='0'">
+        <!-- In this way we support makefiles created from folders != root folder;
+             i.e. with this trick you can do:
+                   mkdir mybuild && cd mybuild && ../configure && make
+        -->
+        <set var="WXLUA_BASEDIR">$(top_srcdir)</set>
+        <set var="WXLUA_BINDIR">../bin</set>
+        <set var="WXLUA_LIBDIR">../lib</set>
+
+        <!-- leave SRCDIR to its '.' default -->
+    </if>
+
+
+
+    <!-- ================================================================== -->
+    <!--                        The list of wxLua OPTIONS                   -->
+    <!-- ================================================================== -->
+
+    <!-- apps-specific options -->
+    <include file="options.bkl" once="1"/>
+
+    <!-- module-specific options -->
+    <include file="../../../modules/build/bakefiles/options.bkl" once="1"/>
+
+    <!-- a small template which avoid repeating the same tags for all wxLua apps -->
+    <template id="wxluaapp" template="wxlua_with_bindings">
+        <app-type>gui</app-type>
+        <install-to>$(BINDIR)</install-to>
+
+        <wxlua-dirname>$(WXLUA_BINDIR)</wxlua-dirname>
+        <rpath-to>$(WXLUA_LIBDIR)</rpath-to>
+    </template>
+
+    <!-- a simple template for Lua-only things (not for wxLua apps!) -->
+    <template id="luaapp" template="wxlua">
+        <app-type>console</app-type>
+        <install-to>$(BINDIR)</install-to>
+
+        <wxlua-dirname>$(WXLUA_BINDIR)</wxlua-dirname>
+        <rpath-to>$(WXLUA_LIBDIR)</rpath-to>
+
+
+        <!--
+            Lua is included by $(LUA_INCLUDE_DIR)
+            <include>$(WXLUA_BASEDIR)/modules/lua/include</include>
+        -->
+
+        <!-- see modules/build/bakefiles/options.bkl for these -->
+        <cflags>$(LUA_PLATFORM_SPECIFIC_CFLAGS)</cflags>
+        <ldflags>$(LUA_PLATFORM_SPECIFIC_LDFLAGS)</ldflags>
+
+        <!-- lua apps needs only pure lua library; using
+                <wxlua-lib>lua</wxlua-lib>
+             we would add WXLUA_LIBS ldflags for autoconf format, while
+             we don't want it, so we'll rather use just:
+        -->
+        <sys-lib>lua5.1</sys-lib>
+
+        <if cond="TARGETING_WIN32=='0'">
+            <!-- we require the standard MATH library to build the lua sources
+                 (and it needs to be listed _after_ <wxlua-lib>lua</wxlua-lib> -->
+            <sys-lib>m</sys-lib>
+        </if>
+    </template>
+
+
+
+    <!-- ================================================================== -->
+    <!--                        The LUA interpreter target                  -->
+    <!-- ================================================================== -->
+
+    <exe id="app_lua" template="luaapp" cond="USE_SYSTEM_LUA=='0'">
+        <!--- the .. is because SRCDIR is always set to us to the wxLua/apps
+              folder and thus we only need to use .. to get to the module root -->
+        <sources>../modules/lua/src/lua.c</sources>
+
+        <!-- we want as EXE name the standard "lua" name so that when we install
+             wxLua we also get official Lua installed in standard places and with
+             standard names (see also the notes in modules.bkl for lua_lib and lua_dll)
+        -->
+        <exename>lua</exename>
+    </exe>
+
+    <!-- ================================================================== -->
+    <!--                        The LUAC compiler target                    -->
+    <!-- ================================================================== -->
+
+    <!--
+        NB: LUAC is built only when SHARED=='0' because LUAC uses
+            some private functions contained in the Lua library which
+            are not exported as public when building in SHARED mode.
+    -->
+
+    <exe id="app_luac" template="luaapp" cond="SHARED=='0' and USE_SYSTEM_LUA=='0'">
+        <sources>
+            <!--- the .. is because SRCDIR is always set to us to the wxLua/apps
+                  folder and thus we only need to use .. to get to the module root -->
+            $(addPrefixToList('../modules/lua/src/', 'luac.c print.c'))
+        </sources>
+
+        <!-- we want as EXE name the standard "luac" name so that when we install
+             wxLua we also get official Lua installed in standard places and with
+             standard names (see also the notes in modules.bkl for lua_lib and lua_dll)
+        -->
+        <exename>luac</exename>
+    </exe>
+
+    <!-- ================================================================== -->
+    <!--                        The WXLUA application target                -->
+    <!-- ================================================================== -->
+
+    <!-- NOTE: we need to use a name different from 'wxlua' since 'wxlua' name is already in use
+               as a module target... this would lead to problems when creating global DSW file... -->
+    <exe id="app_wxlua" template="wxluaapp"
+         cond="USE_WXLUAAPP=='1' and USE_WXBINDSTC=='1' and USE_WXLUADEBUG=='1'">
+        <sources>$(fileList('wxlua/src/*.cpp'))</sources>
+        <headers>$(fileList('wxlua/src/*.h'))</headers>
+
+        <exename>wxlua</exename>
+        <win32-res>wxlua/src/wxlua.rc</win32-res>
+        <mac-res>$(WXLUA_BASEDIR)/art/wxlua.r</mac-res>
+
+        <wx-mac-app-bundle>wxLua</wx-mac-app-bundle>
+
+        <wxlua-alllibs/>
+        <wx-lib>stc</wx-lib>
+        <wx-alllibs-req-bywxlua/>
+    </exe>
+
+    <!-- ================================================================== -->
+    <!--                        The WXLUAEDIT application target            -->
+    <!-- ================================================================== -->
+
+    <exe id="app_wxluaedit" template="wxluaapp" cond="USE_WXLUAEDITAPP=='1' and USE_WXBINDSTC=='1'">
+        <sources>$(fileList('wxluaedit/src/*.cpp'))</sources>
+        <headers>$(fileList('wxluaedit/src/*.h'))</headers>
+
+        <exename>wxluaedit</exename>
+        <win32-res>wxluaedit/src/wxluaedit.rc</win32-res>
+        <mac-res>$(WXLUA_BASEDIR)/art/wxlua.r</mac-res>
+
+        <wx-mac-app-bundle>wxLuaEdit</wx-mac-app-bundle>
+
+        <!-- Path to wxStedit headers & libs -->
+        <wxlike-paths>$(WXSTEDIT_DIR)</wxlike-paths>
+
+        <!-- Path to contrib headers -->
+        <if cond="TARGETING_WIN32=='1'">
+            <include>$(WX_DIR)/contrib/include</include>
+        </if>
+
+        <wxlua-alllibs/>
+        <wxlike-lib prefix="wxcode">stedit</wxlike-lib>      <!-- Library for wxCode's wxStedit component -->
+        <wx-lib>stc</wx-lib>
+        <wx-alllibs-req-bywxlua/>
+    </exe>
+
+    <!-- ================================================================== -->
+    <!--                        The WXLUACAN application target             -->
+    <!-- ================================================================== -->
+
+    <exe id="app_wxluacan" template="wxluaapp" cond="USE_WXLUACANAPP=='1'">
+        <sources>$(fileList('wxluacan/src/*.cpp'))</sources>
+        <headers>$(fileList('wxluacan/src/*.h'))</headers>
+
+        <exename>wxluacan</exename>
+        <win32-res>wxluacan/src/cansim.rc</win32-res>
+        <mac-res>$(WXLUA_BASEDIR)/art/wxlua.r</mac-res>
+
+        <wx-mac-app-bundle>wxLuaCan</wx-mac-app-bundle>
+
+        <!-- This app requires wxluasetup.h path -->
+        <include>$(WXLUA_BASEDIR)/modules/wxbind/setup</include>
+
+        <wxlua-allstdlibs/>
+        <wx-alllibs-req-bywxlua/>
+    </exe>
+
+    <!-- ================================================================== -->
+    <!--                        The WXLUAFREEZE application target          -->
+    <!-- ================================================================== -->
+
+    <exe id="app_wxluafreeze" template="wxluaapp" cond="USE_WXLUAFREEZEAPP=='1'">
+        <sources>$(fileList('wxluafreeze/src/*.cpp'))</sources>
+        <headers>$(fileList('wxluafreeze/src/*.h'))</headers>
+
+        <exename>wxluafreeze</exename>
+        <win32-res>wxluafreeze/src/wxluafreeze.rc</win32-res>
+        <mac-res>$(WXLUA_BASEDIR)/art/wxlua.r</mac-res>
+
+        <wx-mac-app-bundle>wxLuaFreeze</wx-mac-app-bundle>
+
+        <wxlua-alllibs/>
+        <wx-lib>stc</wx-lib>
+        <wx-alllibs-req-bywxlua/>
+    </exe>
+
+</makefile>

@@ -1,0 +1,56 @@
+# -*-shell-script-*-
+
+[Meta]
+RootName: @wxlua.sourceforge.net/wxlua:$SOFTWAREVERSION
+DisplayName: Lua bindings for wxWidgets
+ShortName: wxlua
+Maintainer: Francesco Montorsi <frm@users.sourceforge.net>
+Packager: Francesco Montorsi <frm@users.sourceforge.net>
+Summary: wxLua provides Lua bindings to the wxWidgets toolkit
+URL: http://wxlua.sourceforge.net/
+License: wxWindows license
+SoftwareVersion: @PACKAGE_VERSION@
+Revision: 1
+PackageVersion: 1
+AutopackageTarget: 1.2
+PackageFileName: $SHORTNAME-$SOFTWAREVERSION-$PACKAGEVERSION.x86.package
+Compression: bzip2
+
+[BuildPrepare]
+# we must tell apgcc to resolve the -l options with (wx)Lua libraries
+# to their absolute path otherwise they will be considered as shared
+# and the order of the lib will be messed !!
+export APBUILD_RESOLVE_LIBPATH=".*stedit.* .*lua.*"
+export APBUILD_STATIC="tiff expat"
+export NO_WXLUAEDIT_CHECK=1
+prepareBuild --disable-shared --disable-debug --enable-unicode --disable-customwxbind-install --disable-precomp-headers --disable-systemlua
+
+[BuildUnprepare]
+unprepareBuild
+
+[Imports]
+rm -rf include lib  # do not include headers & libraries !
+echo '*' | import
+
+[Prepare]
+require @gtk.org/gtk 2.0
+
+# only wxGTK required: lua and wxStEdit are statically built in
+# NOTE: currently wxAutopackage does not provide STC stuff so we link
+#       statically to all wxWidgets (STC cannot be built statically
+#       against a shared build of wx)
+##require @wxwidgets.org/wxgtk 28.0
+
+# remove the wxLua RPM/DEB/other native package format if installed
+removeOwningPackage $PREFIX/bin/wxlua
+
+
+[Install]
+installExe bin/*
+installData share/wxlua
+installIcon share/pixmaps/wxlualogo.xpm
+installMime share/mime/packages/wxlua.xml
+installMenuItem "Development" share/applications/wxlua.desktop
+
+[Uninstall]
+uninstallFromLog
