@@ -128,11 +128,13 @@ install(DIRECTORY   ${wxLua_ROOT_DIR}/docs/
         FILES_MATCHING
         PATTERN "*.txt" PATTERN "*.html"
         PATTERN "CVS" EXCLUDE
+        PATTERN ".svn" EXCLUDE
         PATTERN "doxygen" EXCLUDE)
 
 install(DIRECTORY   ${wxLua_ROOT_DIR}/samples/
         DESTINATION samples
-        PATTERN "CVS" EXCLUDE)
+        PATTERN "CVS" EXCLUDE
+        PATTERN ".svn" EXCLUDE)
 
 # ===========================================================================
 

@@ -111,7 +111,7 @@ set_property( GLOBAL PROPERTY USE_FOLDERS ${BUILD_USE_SOLUTION_FOLDERS} )
 # Don't insist that everything needs to be built before being able to "install"
 
 if (NOT DEFINED CMAKE_SKIP_INSTALL_ALL_DEPENDENCY)
-    set(CMAKE_SKIP_INSTALL_ALL_DEPENDENCY TRUE)
+    set(CMAKE_SKIP_INSTALL_ALL_DEPENDENCY TRUE CACHE INTERNAL "Don't require all projects to be built in order to install" FORCE)
 endif()
 
 # ===========================================================================
@@ -146,6 +146,8 @@ if (NOT DEFINED BUILD_INSTALL_PREFIX)
     set( BUILD_INSTALL_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/install" )
 endif()
 
+# There is some weirdness between CMake versions showing (or not) CMAKE_INSTALL_PREFIX to the user
+# Just show our own variable and hide theirs to smooth over the inconsistencies.
 set( BUILD_INSTALL_PREFIX ${BUILD_INSTALL_PREFIX} CACHE PATH "Install Directory prefix for INSTALL target" FORCE)
 set( CMAKE_INSTALL_PREFIX ${BUILD_INSTALL_PREFIX} CACHE INTERNAL "Install Directory prefix for INSTALL target" FORCE)
 
@@ -377,12 +379,32 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
             include_directories(${wxWidgets_ROOT_DIR}/contrib/include)
         endif()
     else()
-        list(FIND wxWidgets_COMPONENTS stc idx)
-        if (idx GREATER "-1")
-            list(REMOVE_ITEM wxWidgets_COMPONENTS stc)
-            set(wxWidgets_COMPONENTS "stc" "scintilla" ${wxWidgets_COMPONENTS})
+
+        # In 2.8 stc was in not in the mono lib, but was a separate contrib
+        list(FIND wxWidgets_COMPONENTS mono      idx_mono)
+        list(FIND wxWidgets_COMPONENTS stc       idx_stc)
+        list(FIND wxWidgets_COMPONENTS scintilla idx_scintilla)
+
+        if (idx_mono GREATER "-1")
+            if (idx_stc GREATER "-1")
+                message(STATUS "* Note: wxWidgets libs; automatically removing stc component for mono build in >= 2.9, but note that stc is a separate lib in 2.8.")
+                list(REMOVE_ITEM wxWidgets_COMPONENTS stc)
+            endif()
+            if (idx_scintilla EQUAL "-1")
+                message(STATUS "* Note: wxWidgets libs; automatically adding scintilla lib for stc in mono build in >= 2.9, but note that the scintilla lib doesn't exist in 2.8.")
+                set(wxWidgets_COMPONENTS "scintilla" ${wxWidgets_COMPONENTS})
+            endif()
+        else()
+            if (idx_stc GREATER "-1")
+                # Need scintilla lib in 2.9, just remove both and add them back in correct order
+                list(REMOVE_ITEM wxWidgets_COMPONENTS stc)
+                list(REMOVE_ITEM wxWidgets_COMPONENTS scintilla)
+                set(wxWidgets_COMPONENTS "stc" "scintilla" ${wxWidgets_COMPONENTS})
+            endif()
         endif()
     endif()
+
+    message(STATUS "* Using these wxWidgets components: ${wxWidgets_COMPONENTS}")
 
     # Note: it is essential that 'core' is mentioned before 'base'.
     # Don't use REQUIRED since it only gives a useless error message on failure.
@@ -452,6 +474,7 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
     include( "${wxWidgets_USE_FILE}" )
 
     # always print out what we've found so far
+    message(STATUS "* - wxWidgets_VERSION      = ${wxWidgets_VERSION}")
     message(STATUS "* - wxWidgets_COMPONENTS   = ${wxWidgets_COMPONENTS}" )
     message(STATUS "* - wxWidgets_INCLUDE_DIRS = ${wxWidgets_INCLUDE_DIRS}" )
     message(STATUS "* - wxWidgets_LIBRARY_DIRS = ${wxWidgets_LIBRARY_DIRS}" )

@@ -86,8 +86,8 @@ protected:
     mutable wxCriticalSection m_breakPointListCriticalSection;
 
     // Enter/Leave critical section for the threaded sockets
-    void EnterLuaCriticalSection() { m_luaCriticalSection.Enter(); }
-    void LeaveLuaCriticalSection() { m_luaCriticalSection.Leave(); }
+    inline void EnterLuaCriticalSection() { m_luaCriticalSection.Enter(); }
+    inline void LeaveLuaCriticalSection() { m_luaCriticalSection.Leave(); }
 
     void ExitThread();
 

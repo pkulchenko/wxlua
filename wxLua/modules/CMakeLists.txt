@@ -449,7 +449,7 @@ else()
     set(wxLUAMODULE_LUALIB LuaLibShared)
 endif (BUILD_SHARED_LIBS)
 
-
+# Build from fresh sources so we have a clean stand-alone Lua module
 ADD_LIBRARY_FULL( wxLuaModule SHARED ALLOW_MISSING_FILES
     HEADERS
         ${wxLua_ROOT_DIR}/modules/luamodule/include/luamoduledefs.h
@@ -471,13 +471,13 @@ ADD_LIBRARY_FULL( wxLuaModule SHARED ALLOW_MISSING_FILES
     PROPERTIES FOLDER "wxLua/Modules")
 
 # When we link to the static wxWidgets lib ignore warnings about not exporting the wx symbols.
-if (NOT BUILD_SHARED_LIBS AND MSVC)
+#if (NOT BUILD_SHARED_LIBS AND MSVC)
     add_definitions( /wd4251 ) # warning C4251: 'wxLuaSocketBase::m_name' : class 'wxString' needs to have dll-interface to be used by clients of class 'wxLuaSocketBase'
     add_definitions( /wd4275 ) # warning C4275: non dll-interface class 'wxObject' used as base for dll-interface class 'wxLuaSocketBase'
-endif()
+#endif()
 
-#SET_TARGET_PROPERTIES(wxLuaModule
-#    PROPERTIES COMPILE_DEFINITIONS "WXMAKINGDLL_WXLUA;WXMAKINGDLL_WXLUASOCKET;WXMAKINGDLL_WXLUADEBUG;WXMAKINGDLL_WXBIND")
+SET_TARGET_PROPERTIES(wxLuaModule
+    PROPERTIES COMPILE_DEFINITIONS "WXMAKINGDLL_WXLUA;WXMAKINGDLL_WXLUASOCKET;WXMAKINGDLL_WXLUADEBUG;WXMAKINGDLL_WXBIND")
 
 endfunction (wxLua_Modules_LuaModule_TARGETS)
 
@@ -580,7 +580,6 @@ ADD_EXECUTABLE_FULL( lua
     PROPERTIES FOLDER "wxLua/apps")
 
 # ---------------------------------------------------------------------------
-
 
 # The wxLua Lua module always links to a shared LuaLib
 if (BUILD_SHARED_LIBS)
