@@ -147,7 +147,7 @@ if (NOT DEFINED BUILD_INSTALL_PREFIX)
 endif()
 
 set( BUILD_INSTALL_PREFIX ${BUILD_INSTALL_PREFIX} CACHE PATH "Install Directory prefix for INSTALL target" FORCE)
-set( CMAKE_INSTALL_PREFIX ${BUILD_INSTALL_PREFIX})
+set( CMAKE_INSTALL_PREFIX ${BUILD_INSTALL_PREFIX} CACHE INTERNAL "Install Directory prefix for INSTALL target" FORCE)
 
 # ---------------------------------------------------------------------------
 # Set bool variables IS_32_BIT and IS_64_BIT
@@ -200,6 +200,8 @@ if( "${BUILD_SHARED_LIBS}" STREQUAL "" )
         set(BUILD_SHARED_LIBS TRUE  CACHE BOOL "Build shared libraries (TRUE) or static libraries (FALSE)" FORCE)
     endif()
 endif()
+
+set(BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS} CACHE BOOL "Build shared libraries (TRUE) or static libraries (FALSE)" FORCE)
 
 # Set if we are building DLLs, MSWindows and shared libraries
 set(BUILDING_DLLS FALSE)
@@ -509,19 +511,19 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
             endif()
 
             get_filename_component(wx_comp_lib_name ${wx_comp_lib} NAME_WE)
-            string(REGEX MATCH ${wx_comp} wx_comp_found ${wx_comp_lib_name})
+            string(REGEX MATCH ${wx_comp} wx_comp_match ${wx_comp_lib_name})
 
-            if ("${wx_comp_found}" STREQUAL "${wx_comp}")
+            if ("${wx_comp_match}" STREQUAL "${wx_comp}")
                 # Also check that "wx" is in the filename as a sanity check
-                string(REGEX MATCH "wx" wx_comp_found ${wx_comp_lib_name})
-                if ("${wx_comp_found}" STREQUAL "wx")
+                string(REGEX MATCH "wx" wx_comp_match_wx ${wx_comp_lib_name})
+                if ("${wx_comp_match_wx}" STREQUAL "wx")
                     set(wx_comp_found TRUE)
                     break()
                 endif()
             endif()
         endforeach()
 
-        if (NOT ${wx_comp_found})
+        if (NOT wx_comp_found)
             message(" WARNING: Unable to find requested wxWidgets component : ${wx_comp}")
         endif()
     endforeach()

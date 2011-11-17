@@ -442,6 +442,14 @@ endfunction (wxLua_Modules_wxLuaSocket_TARGETS)
 
 function (wxLua_Modules_LuaModule_TARGETS)
 
+# We build a separate shared LuaLib when building everything else static
+if (BUILD_SHARED_LIBS)
+    set(wxLUAMODULE_LUALIB LuaLib)
+else()
+    set(wxLUAMODULE_LUALIB LuaLibShared)
+endif (BUILD_SHARED_LIBS)
+
+
 ADD_LIBRARY_FULL( wxLuaModule SHARED ALLOW_MISSING_FILES
     HEADERS
         ${wxLua_ROOT_DIR}/modules/luamodule/include/luamoduledefs.h
@@ -456,14 +464,20 @@ ADD_LIBRARY_FULL( wxLuaModule SHARED ALLOW_MISSING_FILES
         #wxLuaSocketLib
         #wxLuaDebugLib
         #wxLuaLib
-        LuaLib
+        ${wxLUAMODULE_LUALIB}
         ${wxWidgets_LIBRARIES}
-    PROPERTIES OUTPUT_NAME "wx"
-    PROPERTIES DEFINE_SYMBOL       "WXMAKINGDLL_LUAMODULE"
+    PROPERTIES OUTPUT_NAME   "wx"
+    PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_LUAMODULE"
     PROPERTIES FOLDER "wxLua/Modules")
 
-SET_TARGET_PROPERTIES(wxLuaModule
-    PROPERTIES COMPILE_DEFINITIONS "WXMAKINGDLL_WXLUA;WXMAKINGDLL_WXLUASOCKET;WXMAKINGDLL_WXLUADEBUG;WXMAKINGDLL_WXBIND")
+# When we link to the static wxWidgets lib ignore warnings about not exporting the wx symbols.
+if (NOT BUILD_SHARED_LIBS AND MSVC)
+    add_definitions( /wd4251 ) # warning C4251: 'wxLuaSocketBase::m_name' : class 'wxString' needs to have dll-interface to be used by clients of class 'wxLuaSocketBase'
+    add_definitions( /wd4275 ) # warning C4275: non dll-interface class 'wxObject' used as base for dll-interface class 'wxLuaSocketBase'
+endif()
+
+#SET_TARGET_PROPERTIES(wxLuaModule
+#    PROPERTIES COMPILE_DEFINITIONS "WXMAKINGDLL_WXLUA;WXMAKINGDLL_WXLUASOCKET;WXMAKINGDLL_WXLUADEBUG;WXMAKINGDLL_WXBIND")
 
 endfunction (wxLua_Modules_LuaModule_TARGETS)
 
@@ -485,6 +499,7 @@ else ()
     #$(MAKE) all MYCFLAGS="" MYLIBS="-fPIC -Wl,-E -ldl -lreadline -lhistory -lncurses"
 endif()
 
+# ---------------------------------------------------------------------------
 
 ADD_LIBRARY_FULL( LuaLib
     HEADERS
@@ -523,6 +538,8 @@ ADD_LIBRARY_FULL( LuaLib
     ${LUA_BUILD_AS_DLL}
     PROPERTIES FOLDER "wxLua/Modules")
 
+# ---------------------------------------------------------------------------
+
 if (MSVC60)
     # Some sort of bug linking to the object files in MSVC6
     # the full path is in the .dsp file, but MSVC errors on ./lapi.obj
@@ -551,6 +568,7 @@ ADD_EXECUTABLE_FULL( luac ALLOW_MISSING_FILES
 
 add_dependencies(luac LuaLib)
 
+# ---------------------------------------------------------------------------
 
 ADD_EXECUTABLE_FULL( lua
     HEADERS
@@ -560,6 +578,62 @@ ADD_EXECUTABLE_FULL( lua
         LuaLib
         ${LUA_LINK_LIBRARIES}
     PROPERTIES FOLDER "wxLua/apps")
+
+# ---------------------------------------------------------------------------
+
+
+# The wxLua Lua module always links to a shared LuaLib
+if (BUILD_SHARED_LIBS)
+    # CMake has problems with "ON/OFF" being used as booleans, even though its the one who changes them from TRUE/FALSE
+else()
+
+ADD_LIBRARY_FULL( LuaLibShared SHARED
+    HEADERS
+        src/*.h
+    SOURCES
+        src/lapi.c
+        src/lcode.c
+        src/ldebug.c
+        src/ldo.c
+        src/ldump.c
+        src/lfunc.c
+        src/lgc.c
+        src/llex.c
+        src/lmem.c
+        src/lobject.c
+        src/lopcodes.c
+        src/lparser.c
+        src/lstate.c
+        src/lstring.c
+        src/ltable.c
+        src/ltm.c
+        src/lundump.c
+        src/lvm.c
+        src/lzio.c
+        src/lauxlib.c
+        src/lbaselib.c
+        src/ldblib.c
+        src/liolib.c
+        src/lmathlib.c
+        src/loslib.c
+        src/ltablib.c
+        src/lstrlib.c
+        src/loadlib.c
+        src/linit.c
+    LINK_LIBRARIES
+    PROPERTIES DEFINE_SYMBOL LUA_BUILD_AS_DLL
+    PROPERTIES FOLDER "wxLua/Modules")
+
+ADD_EXECUTABLE_FULL( lua_shared
+    HEADERS
+    SOURCES
+        src/lua.c
+    LINK_LIBRARIES
+        LuaLibShared
+        ${LUA_LINK_LIBRARIES}
+    PROPERTIES FOLDER "wxLua/apps")
+
+endif (BUILD_SHARED_LIBS)
 
 endfunction (wxLua_Modules_Lua_TARGETS)
 
