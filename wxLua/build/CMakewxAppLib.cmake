@@ -93,6 +93,26 @@ if (HELP)
 endif()
 
 # ===========================================================================
+# Create a script/batch file to easily open CMake-Gui in the proper dir
+# ===========================================================================
+
+if (UNIX)
+    # We want to open it in the gui, not in the curses ccmake which is broken in the gnome terminal (RHEL6)
+    get_filename_component(CMAKE_EDIT_COMMAND_PATH ${CMAKE_EDIT_COMMAND} PATH)
+
+    if (EXISTS ${CMAKE_EDIT_COMMAND_PATH}/cmake-gui)
+        set(CMAKE_EDIT_COMMAND2 ${CMAKE_EDIT_COMMAND_PATH}/cmake-gui)
+    else()
+        set(CMAKE_EDIT_COMMAND2 ${CMAKE_EDIT_COMMAND})
+    endif()
+
+    file(WRITE ${CMAKE_BINARY_DIR}/cmake-gui.sh  "cd \"${CMAKE_BINARY_DIR}\"\n${CMAKE_EDIT_COMMAND2} ${CMAKE_HOME_DIRECTORY} &\n" )
+    execute_process(COMMAND chmod a+x ${CMAKE_BINARY_DIR}/cmake-gui.sh)
+else()
+    file(WRITE ${CMAKE_BINARY_DIR}/cmake-gui.bat "cd /D \"${CMAKE_BINARY_DIR}\"\n${CMAKE_EDIT_COMMAND} ${CMAKE_HOME_DIRECTORY}\n" )
+endif()
+
+# ===========================================================================
 # General global settings for CMake
 # ===========================================================================
 
@@ -356,6 +376,18 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
         if (wxWidgets_MAJOR_VERSION) # AND wxWidgets_MINOR_VERSION AND wxWidgets_RELEASE_NUMBER)
             set( wxWidgets_VERSION "${wxWidgets_MAJOR_VERSION}.${wxWidgets_MINOR_VERSION}.${wxWidgets_RELEASE_NUMBER}")
         endif()
+    elseif (EXISTS ${wxWidgets_CONFIG_EXECUTABLE})
+        execute_process(COMMAND ${wxWidgets_CONFIG_EXECUTABLE} --version OUTPUT_VARIABLE wxWidgets_VERSION)
+        # remove spaces and linefeed
+        string(STRIP "${wxWidgets_VERSION}" wxWidgets_VERSION)
+        # Match major.minor.revision
+        string(REGEX MATCH "^([0-9]+)\\."   wxWidgets_MAJOR_VERSION  ${wxWidgets_VERSION})
+        string(REGEX MATCH "\\.([0-9]+)\\." wxWidgets_MINOR_VERSION  ${wxWidgets_VERSION})
+        string(REGEX MATCH "\\.([0-9]+)$"   wxWidgets_RELEASE_NUMBER ${wxWidgets_VERSION})
+        # strip of '.' between numbers
+        string(REGEX MATCH "([0-9]+)"  wxWidgets_MAJOR_VERSION  ${wxWidgets_MAJOR_VERSION})
+        string(REGEX MATCH "([0-9]+)"  wxWidgets_MINOR_VERSION  ${wxWidgets_MINOR_VERSION})
+        string(REGEX MATCH "([0-9]+)"  wxWidgets_RELEASE_NUMBER ${wxWidgets_RELEASE_NUMBER})
     else()
         message(STATUS "* WARNING : Unable to find '${wxWidgets_ROOT_DIR}/include/wx/version.h'")
         message(STATUS "*           Please set wxWidgets_ROOT_DIR")
@@ -474,7 +506,7 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
     include( "${wxWidgets_USE_FILE}" )
 
     # always print out what we've found so far
-    message(STATUS "* - wxWidgets_VERSION      = ${wxWidgets_VERSION}")
+    message(STATUS "* - wxWidgets_VERSION      = ${wxWidgets_VERSION} = ${wxWidgets_MAJOR_VERSION}.${wxWidgets_MINOR_VERSION}.${wxWidgets_RELEASE_NUMBER}")
     message(STATUS "* - wxWidgets_COMPONENTS   = ${wxWidgets_COMPONENTS}" )
     message(STATUS "* - wxWidgets_INCLUDE_DIRS = ${wxWidgets_INCLUDE_DIRS}" )
     message(STATUS "* - wxWidgets_LIBRARY_DIRS = ${wxWidgets_LIBRARY_DIRS}" )
