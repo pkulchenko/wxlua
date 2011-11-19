@@ -106,10 +106,14 @@ if (UNIX)
         set(CMAKE_EDIT_COMMAND2 ${CMAKE_EDIT_COMMAND})
     endif()
 
-    file(WRITE ${CMAKE_BINARY_DIR}/cmake-gui.sh  "cd \"${CMAKE_BINARY_DIR}\"\n${CMAKE_EDIT_COMMAND2} ${CMAKE_HOME_DIRECTORY} &\n" )
+    file(WRITE "${CMAKE_BINARY_DIR}/cmake-gui.sh"
+         "cd \"${CMAKE_BINARY_DIR}\"\n"
+         "${CMAKE_EDIT_COMMAND2} \"${CMAKE_HOME_DIRECTORY}\" &\n" )
     execute_process(COMMAND chmod a+x ${CMAKE_BINARY_DIR}/cmake-gui.sh)
 else()
-    file(WRITE ${CMAKE_BINARY_DIR}/cmake-gui.bat "cd /D \"${CMAKE_BINARY_DIR}\"\n${CMAKE_EDIT_COMMAND} ${CMAKE_HOME_DIRECTORY}\n" )
+    file(WRITE "${CMAKE_BINARY_DIR}/cmake-gui.bat"
+         "cd /D \"${CMAKE_BINARY_DIR}\"\n"
+         "\"${CMAKE_EDIT_COMMAND}\" \"${CMAKE_HOME_DIRECTORY}\"\n" )
 endif()
 
 # ===========================================================================
