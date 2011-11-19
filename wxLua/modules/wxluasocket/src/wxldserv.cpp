@@ -531,7 +531,7 @@ bool wxLuaDebuggerBase::CheckSocketRead(bool read_ok, const wxString& msg)
     if (!read_ok)
     {
         wxLuaDebuggerEvent debugEvent(wxEVT_WXLUA_DEBUGGER_DEBUGGEE_DISCONNECTED, this);
-        debugEvent.SetMessage(wxString::Format(wxT("Failed reading from the debugger socket. %s\n"), msg.c_str(), GetSocketErrorMsg().c_str()));
+        debugEvent.SetMessage(wxString::Format(wxT("Failed reading from the debugger socket. %s %s\n"), msg.c_str(), GetSocketErrorMsg().c_str()));
         SendEvent(debugEvent);
     }
 
