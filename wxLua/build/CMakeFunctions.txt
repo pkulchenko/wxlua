@@ -41,14 +41,14 @@
 # accessible at all scopes like a cache var, but it is cleared each run.
 # ===========================================================================
 
-get_property(CMAKEFUNCTIONS_RUN_ONCE_CALLED DIRECTORY ${CMAKE_HOME_DIRECTORY} 
+get_property(CMAKEFUNCTIONS_RUN_ONCE_CALLED DIRECTORY ${CMAKE_HOME_DIRECTORY}
              PROPERTY CMAKEFUNCTIONS_RUN_ONCE SET)
 
 if (CMAKEFUNCTIONS_RUN_ONCE_CALLED)
     return()
 endif()
 
-set_property(DIRECTORY ${CMAKE_HOME_DIRECTORY} 
+set_property(DIRECTORY ${CMAKE_HOME_DIRECTORY}
              PROPERTY CMAKEFUNCTIONS_RUN_ONCE TRUE)
 
 # ===========================================================================
@@ -99,7 +99,7 @@ FUNCTION( ADD_FILE_TO_LIST file_list filename )
 
     # Backwards compat to CMake <= 2.8.4
     if ("${CMAKE_CURRENT_LIST_DIR}" STREQUAL "")
-        get_filename_component(CMAKE_CURRENT_LIST_DIR 
+        get_filename_component(CMAKE_CURRENT_LIST_DIR
                                ${CMAKE_CURRENT_LIST_FILE} PATH ABSOLUTE)
     endif()
 
@@ -150,7 +150,7 @@ FUNCTION( GET_OBJECT_FILES target_name object_file_list source_files )
     else()
         # Backwards compat to CMake <= 2.8.4
         if ("${CMAKE_CURRENT_LIST_DIR}" STREQUAL "")
-            get_filename_component(CMAKE_CURRENT_LIST_DIR 
+            get_filename_component(CMAKE_CURRENT_LIST_DIR
                                   ${CMAKE_CURRENT_LIST_FILE} PATH ABSOLUTE)
         endif()
 
@@ -834,9 +834,14 @@ function( TARGET_PRECOMPILED_HEADER target_name )
     #   MSVC 2008 Tools->Options->Projects and Solutions->VC++ Project Settings->Build Timing [True]
 
     if ("${BUILD_USE_PRECOMPILED_HEADERS}" STREQUAL "")
-        set(BUILD_USE_PRECOMPILED_HEADERS TRUE)
+        if (CMAKE_COMPILER_IS_GNUCXX)
+            # ccache is much faster when not using our own precomp header so disable them
+            set(BUILD_USE_PRECOMPILED_HEADERS FALSE)
+        else()
+            set(BUILD_USE_PRECOMPILED_HEADERS TRUE)
+        endif()
     endif()
-    set(BUILD_USE_PRECOMPILED_HEADERS ${BUILD_USE_PRECOMPILED_HEADERS} CACHE BOOL "Enable the use of precompiled headers?" FORCE)
+    set(BUILD_USE_PRECOMPILED_HEADERS ${BUILD_USE_PRECOMPILED_HEADERS} CACHE BOOL "Enable the use of precompiled headers? (disable if using gcc and ccache)" FORCE)
 
     IF (NOT BUILD_USE_PRECOMPILED_HEADERS)
         RETURN()
@@ -935,8 +940,14 @@ function( TARGET_PRECOMPILED_HEADER target_name )
         get_filename_component(PCH_INCLUDE_PATH "${_PCH_INCLUDE}" PATH)
 
         if ("${PCH_INCLUDE_PATH}" STREQUAL "")
-            set(PCH_BINARY "${_PCH_HEADER}.gch")
-            message(STATUS "* NOTE: Precompiled header ${_PCH_HEADER}.gch created in source dir since it has no path in #include statement and GCC always searches the current dir first.")
+            # Rename the header and put it into the cmake build dir and force include it.
+            # The include guard will skip the original header
+            set(_FORCE_INCLUDE TRUE)
+            file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/include/${PCH_INCLUDE_PATH}")
+            configure_file( "${_PCH_HEADER}" "${CMAKE_CURRENT_BINARY_DIR}/include/${target_name}_${_PCH_INCLUDE}" COPYONLY)
+            set(_PCH_INCLUDE "${target_name}_${_PCH_INCLUDE}")
+            set(PCH_BINARY "${CMAKE_CURRENT_BINARY_DIR}/include/${_PCH_INCLUDE}.gch")
+            set(_PCH_INCLUDE "${CMAKE_CURRENT_BINARY_DIR}/include/${PCH_INCLUDE_PATH}/${_PCH_INCLUDE}")
         else()
             file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/include/${PCH_INCLUDE_PATH}")
             set(PCH_BINARY "${CMAKE_CURRENT_BINARY_DIR}/include/${_PCH_INCLUDE}.gch")
