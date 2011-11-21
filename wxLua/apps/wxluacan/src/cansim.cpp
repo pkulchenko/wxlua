@@ -37,8 +37,6 @@
 WXLUA_DECLARE_BIND_STD
 extern wxLuaBinding* wxLuaBinding_wxluacan_init();
 
-// WDR: class implementations
-
 //------------------------------------------------------------------------------
 // MyFrame
 //------------------------------------------------------------------------------
