@@ -56,6 +56,28 @@ set_property(DIRECTORY ${CMAKE_HOME_DIRECTORY}
 # ===========================================================================
 
 # ---------------------------------------------------------------------------
+# CONFIGURE_FILE_TO_ALL_BUILD_CONFIGURATION_DIRS(filename input_dir output_dir [COPYONLY] [ESCAPE_QUOTES] [@ONLY])
+#
+# Configure a file from ${input_dir}/${filename}
+#                    to ${output_dir}/[Debug/Release/...]/${filename}
+#
+# In MSVC: Configure a file to the ${output_dir}/[each of ${CMAKE_CONFIGURATION_TYPES}]
+# In UNIX: Configure a file to the ${output_dir}/${CMAKE_BUILD_TYPE}
+# ---------------------------------------------------------------------------
+
+FUNCTION( CONFIGURE_FILE_TO_BUILD_CONFIGURATION_DIRS filename input_dir output_dir)
+    if (UNIX)
+        # Only a single build type in Unix, don't create other dirs and confuse people
+        configure_file(${input_dir}/${filename} ${output_dir}/${CMAKE_BUILD_TYPE}/${filename} ${ARGN})
+    else() # MSW
+        # Copy them to all the output dirs for msw since you can change build in MSVC GUI
+        foreach (t ${CMAKE_CONFIGURATION_TYPES})
+            configure_file(${input_dir}/${filename} ${output_dir}/${t}/${filename} ${ARGN})
+        endforeach()
+    endif()
+ENDFUNCTION()
+
+# ---------------------------------------------------------------------------
 # HAS_WILDCARD( has_wild file_name )
 #
 # Set variable has_wild to TRUE if the file_name contains either '*' or '?'
@@ -274,9 +296,19 @@ ENDFUNCTION()
 # Replace the ADD_TEST(name ...) function to remember what
 # test targets were added so we can do things with them.
 # ---------------------------------------------------------------------------
-FUNCTION( ADD_TEST name)
-    _ADD_TEST(${name} ${ARGN})
+FUNCTION( ADD_TEST )
+    _ADD_TEST(${ARGN})
 
+    list(GET ARGN 0 ARG0)
+    list(GET ARGN 1 ARG1)  
+    
+    # ADD_TEST's name can be either the first or second parameter
+    if ("${ARG0}" STREQUAL "NAME")
+        set(name "${ARG1}")
+    else()
+        set(name "${ARG0}")
+    endif()
+    
     # Get the last part of the directory we're currently in
     STRING(REPLACE "${CMAKE_HOME_DIRECTORY}/" "" PROJ_DIR_TEMP ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -293,8 +325,21 @@ ENDFUNCTION()
 # ---------------------------------------------------------------------------
 
 FUNCTION( ADD_GTEST exe_target_name )
-    ADD_TEST(${exe_target_name} ${CMAKE_CURRENT_BINARY_DIR}/${exe_target_name} ${ARGN})
-    SET_TESTS_PROPERTIES( ${exe_target_name} PROPERTIES FAIL_REGULAR_EXPRESSION "FAILED" )
+    #ADD_TEST(${exe_target_name} ${CMAKE_CURRENT_BINARY_DIR}/${exe_target_name} ${ARGN})
+    
+    get_target_property(EXE_FILEPATH ${exe_target_name} LOCATION)   
+    get_filename_component(EXE_PATH ${EXE_FILEPATH} PATH ABSOLUTE)
+    get_filename_component(EXE_NAME ${EXE_FILEPATH} NAME_WE)
+    
+    string(REPLACE "$(OutDir)" "" EXE_PATH "${EXE_PATH}")
+    
+    ADD_TEST(NAME "${exe_target_name}"
+             WORKING_DIRECTORY ${EXE_PATH}
+             COMMAND ${EXE_NAME})
+             #WORKING_DIRECTORY $<TARGET_FILE_DIR:${exe_target_name}>
+             #COMMAND $<TARGET_FILE:${exe_target_name}> )
+    
+    SET_TESTS_PROPERTIES( "${exe_target_name}" PROPERTIES FAIL_REGULAR_EXPRESSION "FAILED" )
 ENDFUNCTION()
 
 # ---------------------------------------------------------------------------
@@ -953,6 +998,7 @@ function( TARGET_PRECOMPILED_HEADER target_name )
             set(PCH_BINARY "${CMAKE_CURRENT_BINARY_DIR}/include/${_PCH_INCLUDE}.gch")
             #include_directories(BEFORE "${CMAKE_CURRENT_BINARY_DIR}/include") # find .gch file before .h file
             configure_file( "${_PCH_HEADER}" "${CMAKE_CURRENT_BINARY_DIR}/include/${_PCH_INCLUDE}" COPYONLY)
+            set(_PCH_INCLUDE "${CMAKE_CURRENT_BINARY_DIR}/include/${_PCH_INCLUDE}")
         endif()
 
         if (_FORCE_INCLUDE)
@@ -985,6 +1031,9 @@ function( TARGET_PRECOMPILED_HEADER target_name )
         get_target_property(target_flags ${target_name} COMPILE_FLAGS)
         if (target_flags)
             set(cxx_flags ${cxx_flags} ${target_flags})
+            set(target_flags "${target_flags};") # append ; for use later
+        else()
+            set(target_flags) # clear it for use later
         endif()
 
         get_target_property(target_defs ${target_name} COMPILE_DEFINITIONS)
@@ -994,15 +1043,23 @@ function( TARGET_PRECOMPILED_HEADER target_name )
             endforeach()
         endif()
 
-        get_directory_property( dir_defs COMPILE_DEFINITIONS)
-        foreach (i ${dir_defs})
-            list(APPEND cxx_flags "-D${i}")
-        endforeach()
+        set(list_dir ${CMAKE_CURRENT_LIST_DIR})
+        #while (EXISTS ${list_dir})
+            get_directory_property( dir_defs DIRECTORY ${list_dir} COMPILE_DEFINITIONS)
+            foreach (i ${dir_defs})
+                list(APPEND cxx_flags "-D${i}")
+            endforeach()
 
-        get_directory_property(dir_includes INCLUDE_DIRECTORIES)
-        foreach (i ${dir_includes})
-            list(APPEND cxx_flags "-I${i}")
-        endforeach()
+            get_directory_property(dir_includes DIRECTORY ${list_dir} INCLUDE_DIRECTORIES)
+            foreach (i ${dir_includes})
+                list(APPEND cxx_flags "-I${i}")
+            endforeach()
+
+            #get_directory_property(list_dir DIRECTORY ${list_dir} PARENT_DIRECTORY)            
+        #endwhile()
+
+        set(cxx_flags ${cxx_flags} ${CMAKE_CXX_FLAGS})
+        list(REMOVE_DUPLICATES cxx_flags)
 
         list(APPEND cxx_flags -c ${_PCH_HEADER} -o ${PCH_BINARY})
 
@@ -1016,6 +1073,9 @@ function( TARGET_PRECOMPILED_HEADER target_name )
         add_custom_target( "${target_name}_precomp" ALL DEPENDS "${PCH_BINARY}")
 
         add_dependencies(${target_name} ${target_name}_precomp)
+
+        # Check for changed files
+		set_target_properties( ${target_name} PROPERTIES COMPILE_FLAGS "${target_flags}-Winvalid-pch")
     ENDIF()
 endfunction()
 
