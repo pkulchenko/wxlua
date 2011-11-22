@@ -12,7 +12,7 @@
 #include "wxbind/include/wxbinddefs.h"
 #include "wxluasetup.h"
 
-class WXDLLIMPEXP_WXLUA wxLuaObject;
+class WXDLLIMPEXP_FWD_WXLUA wxLuaObject;
 
 
 // ----------------------------------------------------------------------------

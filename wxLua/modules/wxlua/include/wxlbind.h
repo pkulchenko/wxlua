@@ -16,9 +16,9 @@
     #undef GetObject // MSVC defines this
 #endif
 
-class WXDLLIMPEXP_WXLUA wxLuaBinding;
-class WXDLLIMPEXP_WXLUA wxLuaState;
-struct WXDLLIMPEXP_WXLUA wxLuaBindClass;
+class WXDLLIMPEXP_FWD_WXLUA wxLuaBinding;
+class WXDLLIMPEXP_FWD_WXLUA wxLuaState;
+struct WXDLLIMPEXP_FWD_WXLUA wxLuaBindClass;
 
 // ----------------------------------------------------------------------------
 // wxLua binding defines, enums, and structs

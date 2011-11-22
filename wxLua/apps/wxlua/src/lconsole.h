@@ -12,9 +12,9 @@
 #include "wx/frame.h"
 #include "wxlua/include/wxlua.h"
 
-class WXDLLEXPORT wxSplitterWindow;
-class WXDLLEXPORT wxTextCtrl;
-class WXDLLEXPORT wxListBox;
+class WXDLLIMPEXP_FWD_CORE wxSplitterWindow;
+class WXDLLIMPEXP_FWD_CORE wxTextCtrl;
+class WXDLLIMPEXP_FWD_CORE wxListBox;
 
 class wxLuaConsoleWrapper;
 

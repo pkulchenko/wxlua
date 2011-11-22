@@ -16,12 +16,12 @@
 #include "wx/filename.h"
 #include "wx/hashmap.h"
 
-class WXDLLIMPEXP_WXLUA wxLuaEvent;
-class WXDLLIMPEXP_WXLUA wxLuaState;
-class WXDLLIMPEXP_WXLUA wxLuaStateData;
-class WXDLLIMPEXP_WXLUA wxLuaStateRefData;
-class WXDLLIMPEXP_WXLUA wxLuaEventCallback;
-class WXDLLIMPEXP_WXLUA wxLuaWinDestroyCallback;
+class WXDLLIMPEXP_FWD_WXLUA wxLuaEvent;
+class WXDLLIMPEXP_FWD_WXLUA wxLuaState;
+class WXDLLIMPEXP_FWD_WXLUA wxLuaStateData;
+class WXDLLIMPEXP_FWD_WXLUA wxLuaStateRefData;
+class WXDLLIMPEXP_FWD_WXLUA wxLuaEventCallback;
+class WXDLLIMPEXP_FWD_WXLUA wxLuaWinDestroyCallback;
 
 // ----------------------------------------------------------------------------
 // String functions - convert between Lua (ansi string) and wxString (encoded)

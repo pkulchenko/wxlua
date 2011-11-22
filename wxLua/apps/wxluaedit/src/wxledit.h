@@ -13,13 +13,13 @@
 
 #include "wxlua/include/wxlstate.h"
 
-class WXDLLEXPORT wxMenu;
-class WXDLLEXPORT wxKeyEvent;
-class WXDLLEXPORT wxNotebook;
-class WXDLLEXPORT wxSplitterWindow;
-class WXDLLEXPORT wxToolBar;
-class WXDLLIMPEXP_WXLUA wxLuaState;
-class WXDLLIMPEXP_WXLUA wxLuaEvent;
+class WXDLLIMPEXP_FWD_CORE wxMenu;
+class WXDLLIMPEXP_FWD_CORE wxKeyEvent;
+class WXDLLIMPEXP_FWD_CORE wxNotebook;
+class WXDLLIMPEXP_FWD_CORE wxSplitterWindow;
+class WXDLLIMPEXP_FWD_CORE wxToolBar;
+class WXDLLIMPEXP_FWD_WXLUA wxLuaState;
+class WXDLLIMPEXP_FWD_WXLUA wxLuaEvent;
 class wxLuaIDE;
 
 // Note: If you get a compilation error on the next two lines you need to

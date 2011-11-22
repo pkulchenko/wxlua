@@ -16,7 +16,7 @@
 #include "wxluasocket/include/wxldtarg.h"
 #include "lconsole.h"
 
-class WXDLLIMPEXP_WXLUA wxLuaEvent;
+class WXDLLIMPEXP_FWD_WXLUA wxLuaEvent;
 
 // ----------------------------------------------------------------------------
 // wxLuaStandaloneApp

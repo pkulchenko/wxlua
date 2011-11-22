@@ -91,6 +91,13 @@ extern "C"
     #define WXDLLIMPEXP_DATA_WXLUA(type) type
 #endif
 
+// Forward declarare all wxLua classes with this macro
+#if defined(HAVE_VISIBILITY) || (defined(__WINDOWS__) && defined(__GNUC__))
+    #define WXDLLIMPEXP_FWD_WXLUA
+#else
+    #define WXDLLIMPEXP_FWD_WXLUA WXDLLIMPEXP_WXLUA
+#endif
+
 // ----------------------------------------------------------------------------
 // Blank dummy defines that may be used in the bindings to not import or export 
 // a class or data in a DLL.
@@ -141,7 +148,7 @@ extern "C"
 // Forward declared classes
 // ----------------------------------------------------------------------------
 
-class WXDLLIMPEXP_WXLUA wxLuaState;
+class WXDLLIMPEXP_FWD_WXLUA wxLuaState;
 
 
 #endif  // __WX_WXLDEFS_H__

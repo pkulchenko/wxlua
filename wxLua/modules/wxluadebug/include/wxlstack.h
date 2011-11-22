@@ -14,10 +14,10 @@
 #include "wx/listctrl.h"
 #include "wx/treectrl.h"
 
-class WXDLLEXPORT wxListCtrl;
-class WXDLLEXPORT wxListEvent;
-class WXDLLEXPORT wxSplitterWindow;
-class WXDLLEXPORT wxProgressDialog;
+class WXDLLIMPEXP_FWD_CORE wxListCtrl;
+class WXDLLIMPEXP_FWD_CORE wxListEvent;
+class WXDLLIMPEXP_FWD_CORE wxSplitterWindow;
+class WXDLLIMPEXP_FWD_CORE wxProgressDialog;
 
 #include "wxluadebug/include/wxluadebugdefs.h"
 #include "wxluadebug/include/wxldebug.h"
