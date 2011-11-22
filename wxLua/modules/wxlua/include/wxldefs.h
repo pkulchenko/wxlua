@@ -91,7 +91,7 @@ extern "C"
     #define WXDLLIMPEXP_DATA_WXLUA(type) type
 #endif
 
-// Forward declarare all wxLua classes with this macro
+// Forward declare all wxLua classes with this macro
 #if defined(HAVE_VISIBILITY) || (defined(__WINDOWS__) && defined(__GNUC__))
     #define WXDLLIMPEXP_FWD_WXLUA
 #else
