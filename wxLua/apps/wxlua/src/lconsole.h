@@ -36,9 +36,13 @@ public:
     // Display a message in the console with optional attribute to display it with.
     void AppendText(const wxString& msg);
     void AppendTextWithAttr(const wxString& msg, const wxTextAttr& attr);
+
+    // Remove lines so there are only max_lines.
+    bool CheckMaxLines();
+
     // Display the stack in a wxListBox, but only if there are any items in it
     void DisplayStack(const wxLuaState& wxlState);
-    // Perhaps an error has occurred, when this window is closed wxExit 
+    // Perhaps an error has occurred, when this window is closed wxExit
     //   will be called to close the app.
     void SetExitWhenClosed(bool do_exit) { m_exit_when_closed = m_exit_when_closed || do_exit; }
 
@@ -51,7 +55,7 @@ protected:
     wxTextCtrl          *m_textCtrl;
     wxListBox           *m_debugListBox;
     bool                 m_exit_when_closed;
-
+    int                  m_max_lines;
     wxString             m_saveFilename;
     wxString             m_savePath;
 

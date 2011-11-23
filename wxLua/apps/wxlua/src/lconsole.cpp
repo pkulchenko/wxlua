@@ -49,6 +49,7 @@ wxLuaConsole::wxLuaConsole(wxLuaConsoleWrapper* consoleWrapper,
              :wxFrame(parent, id, title, pos, size, style, name),
               m_wrapper(consoleWrapper), m_exit_when_closed(false)
 {
+    m_max_lines = 50;
     m_savePath = wxGetCwd();
 
     SetIcon(wxICON(LUA));
@@ -92,7 +93,7 @@ void wxLuaConsole::OnCloseWindow(wxCloseEvent&)
 }
 
 void wxLuaConsole::OnMenu(wxCommandEvent& event)
-{   
+{
     switch (event.GetId())
     {
         case wxID_NEW :
@@ -102,11 +103,11 @@ void wxLuaConsole::OnMenu(wxCommandEvent& event)
         }
         case wxID_SAVEAS :
         {
-            wxString filename = wxFileSelector(wxT("Select file to save output to"), 
+            wxString filename = wxFileSelector(wxT("Select file to save output to"),
                                                m_savePath,
-                                               m_saveFilename, 
+                                               m_saveFilename,
                                                wxT("txt"),
-                                               wxT("Text files (*.txt)|*.txt|All files|*.*"), 
+                                               wxT("Text files (*.txt)|*.txt|All files|*.*"),
                                                wxFD_SAVE|wxFD_OVERWRITE_PROMPT,
                                                this);
 
@@ -131,6 +132,7 @@ void wxLuaConsole::OnMenu(wxCommandEvent& event)
 void wxLuaConsole::AppendText(const wxString& msg)
 {
     m_textCtrl->AppendText(msg + wxT("\n"));
+    CheckMaxLines();
 }
 void wxLuaConsole::AppendTextWithAttr(const wxString& msg, const wxTextAttr& attr)
 {
@@ -140,6 +142,19 @@ void wxLuaConsole::AppendTextWithAttr(const wxString& msg, const wxTextAttr& att
     m_textCtrl->AppendText(msg + wxT("\n"));
 
     m_textCtrl->SetDefaultStyle(oldAttr);
+    CheckMaxLines();
+}
+
+bool wxLuaConsole::CheckMaxLines()
+{
+    int num_lines = m_textCtrl->GetNumberOfLines();
+    if (num_lines < m_max_lines)
+        return false;
+
+    long pos = m_textCtrl->XYToPosition(0, num_lines - m_max_lines);
+    m_textCtrl->Remove(0, pos);
+
+    return true;
 }
 
 void wxLuaConsole::DisplayStack(const wxLuaState& wxlState)
