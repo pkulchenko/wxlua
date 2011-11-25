@@ -1,497 +1,606 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head>
 
+<HTML>
+<HEAD>
+  <META name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+  <META content="text/html; charset=us-ascii" http-equiv="content-type">
 
-  <meta content="text/html; charset=iso-8859-1" http-equiv="content-type"><title>wxLua Installation Guide</title>
-  
-  <meta content="Francesco Montorsi, John Labenski" name="author">
-  <meta content="Info about building wxLua" name="description"></head><body>
-<h1>wxLua 2.8.12 - Installation Guide</h1>
-This document describes how to build the wxLua libraries, editors, and
-interpreters. wxLua is written in C and C++ and can be built on MS Windows,
-Linux, and OSX with the Visual Studio, Borland, Watcom, MingW, and GCC
-compilers. All of the build settings and platforms that are supported by
-wxWidgets are supported by wxLua on these platforms.<br>
+  <TITLE>wxLua Installation Guide</TITLE>
+  <META content="Francesco Montorsi, John Labenski" name="author">
+  <META content="Info about building wxLua" name="description">
+  <LINK rel="stylesheet" type="text/css" href="wxlua.css">
+</HEAD>
 
-<ol>
-  <li><a href="#requiredlibs">Required Libraries (dependencies)</a> </li>
-  <li><a href="#provides">wxLua Provides</a> 
-    <ul>
-      <li type="a"><a href="#apps">List of wxLua applications</a> </li>
-      <li type="a"><a href="#modules">List of wxLua modules</a> </li>
-      <li type="a"><a href="#utilities">List of wxLua utilities</a> </li>
-    </ul>
-  </li>
-  <li><a href="#win">Building on Windows</a> 
-    <ul>
-      <li type="a"><a href="#win_makefiles">Windows makefiles</a> </li>
-      <li type="a"><a href="#win_msvc">MSVC IDE</a> </li>
-    </ul>
-  </li>
-  <li><a href="#configure">Building on Linux/Unix</a> </li>
-  <li><a href="#advanced">Advanced building options</a> 
-    <ul>
-      <li type="a"><a href="#minimalwxlua">Building a minimal set of wxWidgets
-        wrappers</a> </li>
-      <li type="a"><a href="#wxlualiborder">wxLua libraries and linking
-        order</a></li>
-    </ul>
-  </li>
-</ol>
+<BODY>
+  <H1>wxLua 2.8.12 - Installation Guide</H1>This document describes how to
+  build the wxLua libraries, editors, and interpreters. wxLua is written in C
+  and C++ and can be built on MS Windows, Linux, and OSX with the Visual
+  Studio, Borland, Watcom, MingW, and GCC compilers. All of the build settings
+  and platforms that are supported by wxWidgets are supported by wxLua on these
+  platforms.<BR>
 
-<h1><a name="requiredlibs"></a>1. Required Libraries (dependencies)</h1>
-<ul>
-  <li>wxWidgets - Version 2.8.x 
-    <ul>
-      <li><a href="http://www.wxwidgets.org">http://www.wxwidgets.org</a></li>
-      <li>Version 2.9.x is not currently supported.</li>
-      <li>The wxStyledTextCtrl, wxSTC, library in
-        <code>wxWidgets/contrib/src/stc</code> is a wrapper around the
+  <H2>Table of Contents</H2>
+
+  <DIV class="greybox">
+    <OL>
+      <LI><A href="install.html#C1">1 - Required Libraries
+      (dependencies)</A></LI>
+
+      <LI>
+        <A href="install.html#C2">2 - wxLua Components</A>
+
+        <OL>
+          <LI><A href="install.html#C2.1">2.1 - wxLua applications</A></LI>
+
+          <LI><A href="install.html#C2.2">2.2 - wxLua libraries</A></LI>
+
+          <LI><A href="install.html#C2.3">2.3 - wxLua utilities</A></LI>
+        </OL>
+      </LI>
+
+      <LI>
+        <A href="install.html#C3">3 - Building on Windows</A>
+
+        <OL>
+          <LI><A href="install.html#C3.1">3.1 - Windows makefiles</A></LI>
+
+          <LI><A href="install.html#C3.2">3.2 - Visual Studio nmake</A></LI>
+
+          <LI><A href="install.html#C3.3">3.3 - Visual Studio IDE</A></LI>
+        </OL>
+      </LI>
+
+      <LI><A href="install.html#C4">4 - Building on Linux/Unix</A></LI>
+
+      <LI>
+        <A href="install.html#C5">5 - Advanced building options</A>
+
+        <OL>
+          <LI><A href="install.html#C5.1">5.1 - Building a minimal set of
+          wxWidgets wrappers</A></LI>
+
+          <LI><A href="install.html#C5.2">5.2 - wxLua libraries and linking
+          order</A></LI>
+        </OL>
+      </LI>
+    </OL>
+  </DIV>
+
+  <H2><A id="C1" name="C1"></A>1 - Required Libraries (dependencies)</H2>
+
+  <UL>
+    <LI>wxWidgets - Version 2.8.x
+
+      <UL>
+        <LI><A href=
+        "http://www.wxwidgets.org">http://www.wxwidgets.org</A></LI>
+
+        <LI>Version 2.9.x is not currently supported.</LI>
+
+        <LI>The wxStyledTextCtrl, wxSTC, library in
+        <CODE>wxWidgets/contrib/src/stc</CODE> is a wrapper around the
         Scintilla text editor control and is required to build the
-        <code>wxlua</code> and <code>wxluaedit</code> applications and the
-        <code>wxbindstc</code> binding library. 
-        <ul>
-          <li>Windows users can build the wxSTC library using the makefiles or
-            the MSVC build files in <code>contrib/stc/stc</code>.</li>
-          <li>Unix users can use the Makefile in created in
-            <code>contrib/src/stc</code> after you have run configure and have
-            successfully built the main wxWidgets libraries.</li>
-          <li>If you do not want wxLua to depend on wxSTC you can use the
-            <code>USE_WXBINDSTC=0</code> option for Windows makefiles or
-            <code>--disable-wxbindstc</code> option for the Unix configure
-            script.</li>
-        </ul>
-      </li>
-      <li>Be sure that you have a working development library of wxWidgets 
-        <ul>
-          <li><strong>All instructions below suppose that you have already
+        <CODE>wxlua</CODE> and <CODE>wxluaedit</CODE> applications and the
+        <CODE>wxbindstc</CODE> binding library.
+
+          <UL>
+            <LI>Windows users can build the wxSTC library using the makefiles
+            or the MSVC build files in <CODE>contrib/stc/stc</CODE>.</LI>
+
+            <LI>Unix users can use the Makefile in created in
+            <CODE>contrib/src/stc</CODE> after you have run configure and have
+            successfully built the main wxWidgets libraries.</LI>
+
+            <LI>If you do not want wxLua to depend on wxSTC you can use the
+            <CODE>USE_WXBINDSTC=0</CODE> option for Windows makefiles or
+            <CODE>--disable-wxbindstc</CODE> option for the Unix configure
+            script.</LI>
+          </UL>
+        </LI>
+
+        <LI>Be sure that you have a working development library of wxWidgets
+
+          <UL>
+            <LI><STRONG>All instructions below suppose that you have already
             compiled or installed a working development version of
-            wxWidgets.</strong></li>
-          <li><strong>Please refer to wxWidgets documentation for instructions
-            on how to compile wxWidgets.</strong></li>
-          <li><strong>If you use a precompiled package of wxWidgets on a Linux
-            system you must install the development as well as the runtime
-            package.</strong></li>
-          <li><strong>Before attempting to compile wxLua you should be able to
-            compile and successfully run at least one of the wxWidgets
-            samples.</strong></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>wxSTEdit - Version 1.2.6 or higher. 
-    <ul>
-      <li><a href="http://wxcode.sourceforge.net">http://wxcode.sourceforge.net</a>;
-        <a href="http://wxcode.sourceforge.net/components/stedit">http://wxcode.sourceforge.net/components/stedit/</a></li>
-      <li>There are instructions on how to compile wxStEdit with the source
-        code.</li>
-      <li>If you want to disable wxStEdit dependency you have to use the
+            wxWidgets.</STRONG></LI>
+
+            <LI><STRONG>Please refer to wxWidgets documentation for
+            instructions on how to compile wxWidgets.</STRONG></LI>
+
+            <LI><STRONG>If you use a precompiled package of wxWidgets on a
+            Linux system you must install the development as well as the
+            runtime package.</STRONG></LI>
+
+            <LI><STRONG>Before attempting to compile wxLua you should be able
+            to compile and successfully run at least one of the wxWidgets
+            samples.</STRONG></LI>
+          </UL>
+        </LI>
+      </UL>
+    </LI>
+
+    <LI>wxSTEdit - Version 1.2.6 or higher.
+
+      <UL>
+        <LI><A href=
+        "http://wxcode.sourceforge.net">http://wxcode.sourceforge.net</A>;
+        <A href=
+        "http://wxcode.sourceforge.net/components/stedit">http://wxcode.sourceforge.net/components/stedit/</A></LI>
+
+        <LI>There are instructions on how to compile wxStEdit with the source
+        code.</LI>
+
+        <LI>If you want to disable wxStEdit dependency you have to use the
         USE_WXLUAEDITAPP=0 option for Windows makefiles or
-        <code>--disable-wxluaedit-app</code> for the Unix configure script.</li>
-    </ul>
-  </li>
-  <li>Lua - Version 5.1.4 
-    <ul>
-      <li>wxLua comes with the source files for Lua to build both the Lua
-        library and executable.</li>
-      <li>You may also easily use a system installed Lua library on Unix
-        systems by specifying an option to configure.</li>
-    </ul>
-  </li>
-</ul>
+        <CODE>--disable-wxluaedit-app</CODE> for the Unix configure
+        script.</LI>
+      </UL>
+    </LI>
 
-<h1><a name="provides"></a>2. wxLua Provides</h1>
-wxLua has three components: <strong>applications</strong>
-(<code>wxLua/apps</code>), <strong>modules</strong>
-(<code>wxLua/modules</code>), and <strong>utilities</strong>
-(<code>wxLua/utils</code>). 
+    <LI>Lua - Version 5.1.4
 
-<h2><a name="apps"></a>List of wxLua applications</h2>
-<ul>
-  <li><code>wxLua/apps/wxlua</code> - A wxLua code editor, interpreter, and
-    debugger; runs an embedded copy of the Lua program
-    <code>samples/editor.wx.lua</code>. </li>
-  <li><code>wxLua/apps/wxluaedit</code> - Another wxLua code editor and
-    interpreter, based on wxStEdit. </li>
-  <li><code>wxLua/apps/wxluafreeze</code> - A program to execute Lua or wxLua
-    programs. A replacement for the Lua executable that is capable of running
-    wxLua apps.</li>
-  <li><code>wxLua/apps/wxluacan</code> - An example of how to create C++
-    applications with an embedded wxLua interpreter. </li>
-</ul>
+      <UL>
+        <LI>wxLua comes with the source files for Lua to build both the Lua
+        library and executable.</LI>
 
-<h2><a name="modules"></a>List of wxLua modules</h2>
-<ul>
-  <li><code>wxLua/modules/lua</code> - Lua sources with patches applied, see <a href="http://www.lua.org">www.lua.org</a> </li>
-  <li><code>wxLua/modules/wxlua</code> - The base wxLua library, contains the
-    wxLuaState class that wraps a lua_State and loads the bindings. </li>
-  <li><code>wxLua/modules/wxbind</code> - The wxLua bindings for wxWidgets
-    broken up by the wxWidgets libraries: adv, aui, base, core, gl, html,
-    media, net, richtext, stc, xml, xrc. 
-    <ul>
-      <li>To determine what classes are part of what libs you can use the
-        wxluaref.html document and search for the class, for example wxGrid is
-        in the file wxadv_grid.i so it is part of the adv library.</li>
-    </ul>
-  </li>
-  <li><code>wxLua/modules/wxluadebug</code> - Helpful classes for debugging Lua
-    in C++; wxLuaCheckStack and wxLuaStackDialog. </li>
-  <li><code>wxLua/modules/wxluasocket</code> - Debugger socket classes to run a
-    wxLua program in a separate process and communicate with the parent
-    debugger </li>
-</ul>
+        <LI>You may also easily use a system installed Lua library on Unix
+        systems by specifying an option to configure.</LI>
+      </UL>
+    </LI>
+  </UL>
 
-<h2><a name="utilities"></a>List of wxLua Utilities</h2>
-<ul>
-  <li><code>wxLua/utilities/bin2c.lua</code> - Lua script to convert any text
-    file to a C const char* string</li>
-  <li><code>wxLua/utilities/wrapmodule.wx.lua</code> - Lua script to wrap a
-    wxLua script to be able to use it with the wxLua module. (not required)</li>
-</ul>
+  <H2><A id="C2" name="C2"></A>2 - wxLua Components</H2>
 
-<h1><a name="win"></a>3. Building on MS Windows using makefiles</h1>
-wxLua uses environment variables to tell the Windows build files where the
-wxWidgets and wxStEdit libraries are. 
-<ul>
-  <li>Specify the directory to the wxWidgets library with the $(WXWIN)
-    environment variable.</li>
-  <li>Specify the directory to the wxStEdit library with the $(WXSTEDIT)
-    environment variable.</li>
-</ul>
+  <DIV class="lindent">
+    wxLua has three components: <STRONG>applications</STRONG>
+    (<CODE>wxLua/apps</CODE>), <STRONG>modules</STRONG>
+    (<CODE>wxLua/modules</CODE>), and <STRONG>utilities</STRONG>
+    (<CODE>wxLua/utils</CODE>).
 
-<p>You can set these environment variables in MS Windows either at a DOS prompt
-using </p>
+    <H3><A id="C2.1" name="C2.1"></A>2.1 - wxLua applications</H3>
 
-<p><code><code>&gt;set WXWIN=c:\path\to\wxWidgets</code></code></p>
+    <UL>
+      <LI><CODE>wxLua/apps/wxlua</CODE> - A wxLua code editor, interpreter, and
+      debugger; runs an embedded copy of the Lua program
+      <CODE>samples/editor.wx.lua</CODE>.</LI>
 
-<p><code>&gt;set WXSTEDIT=c:\path\to\wxStEdit</code></p>
+      <LI><CODE>wxLua/apps/wxluaedit</CODE> - Another wxLua code editor and
+      interpreter, based on wxStEdit.</LI>
 
-<p>or by right clicking on "My Computer" -&gt; "System" -&gt; "Environment
-Variables" and add it for yourself or for everyone. Don't forget to restart
-either the DOS prompt or the MSVC IDE if you change the environment variable
-through "My Computer."</p>
+      <LI><CODE>wxLua/apps/wxluafreeze</CODE> - A program to execute Lua or
+      wxLua programs. A replacement for the Lua executable that is capable of
+      running wxLua apps.</LI>
 
-<h2><a name="win_makefiles"></a>Windows Makefiles</h2>
+      <LI><CODE>wxLua/apps/wxluacan</CODE> - An example of how to create C++
+      applications with an embedded wxLua interpreter.</LI>
+    </UL>
 
-<p>Enter the <code>wxLua/build/msw</code> directory with a MSDOS prompt and run
-one of the commands below to build all modules, applications, and utilities of
-wxLua. See the sections for each compiler to learn about the available command
-line settings to customize how the library and executables are built. </p>
-<ul>
-  <li><code>MSVC&nbsp;&nbsp;&nbsp;&nbsp;: nmake -f makefile.vc</code></li>
-  <li><code>Borland&nbsp;: make -f makefile.bcc</code></li>
-  <li><code>Mingw&nbsp;&nbsp;&nbsp;: mingw32-make -f makefile.mingw</code></li>
-  <li><code>Watcom&nbsp;&nbsp;: wmake -f makefile.wat</code></li>
-</ul>
+    <H3><A id="C2.2" name="C2.2"></A>2.2 - wxLua libraries</H3>
 
-<p>Look at the top of the makefile for your compiler to see the available build
-options. You do not have to (should not) edit the makefiles to change any
-setting, instead you should set them on the command line as shown below.</p>
+    <UL>
+      <LI><CODE>wxLua/modules/lua</CODE> - Lua sources with patches applied,
+      see <A href="http://www.lua.org">www.lua.org</A></LI>
 
-<h2>Windows Visual Studio nmake</h2>
+      <LI><CODE>wxLua/modules/wxlua</CODE> - The base wxLua library, contains
+      the wxLuaState class that wraps a lua_State and loads the bindings.</LI>
 
-<p>For MSVC's nmake you will have to run the vcvars32.bat script in the DOS
-prompt before trying to build wxLua. </p>
+      <LI>
+        <CODE>wxLua/modules/wxbind</CODE> - The wxLua bindings for wxWidgets
+        broken up by the wxWidgets libraries: adv, aui, base, core, gl, html,
+        media, net, richtext, stc, xml, xrc.
 
-<p>For example, Visual Studio 2008 installs it here in Windows 7: </p>
+        <UL>
+          <LI>To determine what classes are part of what libs you can use the
+          wxluaref.html document and search for the class, for example wxGrid
+          is in the file wxadv_grid.i so it is part of the adv library.</LI>
+        </UL>
+      </LI>
 
-<p><code>&gt;"c:\Program Files (x86)\Microsoft Visual Studio
-9.0\VC\bin\vcvars32.bat"</code></p>
+      <LI><CODE>wxLua/modules/wxluadebug</CODE> - Helpful classes for debugging
+      Lua in C++; wxLuaCheckStack and wxLuaStackDialog.</LI>
 
-<p><span style="color: rgb(255, 0, 0);">NOTE: If you get an error about nmake.exe not
-found when you try to build wxLua, you need to (re)run vcvars32.bat.</span></p>
+      <LI><CODE>wxLua/modules/wxluasocket</CODE> - Debugger socket classes to
+      run a wxLua program in a separate process and communicate with the parent
+      debugger</LI>
+    </UL>
 
+    <H3><A id="C2.3" name="C2.3"></A>2.3 - wxLua Utilities</H3>
 
+    <UL>
+      <LI><CODE>wxLua/utilities/bin2c.lua</CODE> - Lua script to convert any
+      text file to a C const char* string</LI>
+    </UL>
+  </DIV>
 
-<p>The wxLua build options for nmake.exe are at the top of
-<code>build/msw/makefile.vc</code>, please review it before trying to build
-wxLua. </p>
+  <H2><A id="C3" name="C3"></A>3 - Building on MS Windows<BR></H2>
 
-<p>The typically used build options for wxLua using nmake.exe are:</p>
+  <DIV class="lindent">
+    wxLua uses environment variables to tell the Windows build files where the
+    wxWidgets and wxStEdit libraries are.
 
-<p><code>nmake -f makefile.vc BUILD=[release/debug] UNICODE=[0/1] SHARED=[0/1]
-WX_SHARED=[0/1] WX_MONOLITHIC=[0/1]</code></p>
+    <UL>
+      <LI>Specify the directory to the wxWidgets library with the $(WXWIN)
+      environment variable.</LI>
 
+      <LI>Specify the directory to the wxStEdit library with the $(WXSTEDIT)
+      environment variable.</LI>
+    </UL>
 
+    <P>You can set these environment variables in MS Windows either at a DOS
+    prompt by typing<BR></P>
 
-<p>Two of the most commonly used build command lines to build wxLua are:</p>
-<ul>
-  <li>For a release build, ANSI strings, static libraries (not DLLs), and
-    standalone executables use: 
-    <ul>
-      <li><code>nmake -f makefile.vc BUILD=release UNICODE=0 SHARED=0</code>
-      </li>
-    </ul>
-  </li>
-  <li>For a release build, ANSI strings, shared libraries (DLLs) and
-    executables that depend on them use: 
-    <ul>
-      <li><code>nmake -f makefile.vc BUILD=release UNICODE=0 SHARED=1
-        WX_MONOLITHIC=1</code>
-      </li>
-    </ul>
-  </li>
-</ul>
+    <UL style="list-style: none;">
+      <LI><CODE>set WXWIN=c:\path\to\wxWidgets</CODE></LI>
 
+      <LI><CODE>set WXSTEDIT=c:\path\to\wxStEdit</CODE></LI>
+    </UL>
 
+    <P>or by right clicking on "My Computer" -&gt; "System" -&gt; "Environment
+    Variables" and add it for yourself or for everyone. Don't forget to restart
+    either the DOS prompt or the MSVC IDE if you change the environment
+    variable through "My Computer."</P>
 
-<p>For comparison, typical options for building wxWidgets using nmake.exe
-are:</p>
+    <H3><A id="C3.1" name="C3.1"></A>3.1 - Windows Makefiles</H3>
 
-<p><code>nmake -f makefile.vc SHARED=[1/0] UNICODE=[1/0] MONOLITHIC=[1/0]
-BUILD=[release/debug]</code> </p>
-<ul>
-  <li>If building for 64 bit add <code>TARGET_CPU=amd64</code></li>
-  <li>Since Lua strings are ANSI, you probably want to use
-    <code>UNICODE=0</code>, but wxLua works with Unicode by translating strings
-    ANSI before pushing them into Lua.</li>
-  <li>It is recommended to build <code>SHARED=1 &amp; MONOLITHIC=1</code> to
-    create DLLs or <code>SHARED=0 &amp; MONOLITHIC=0</code> to create static
-    libraries. With these settings you will have either one large DLL which
-    makes it easy to copy or multiple static lib files which are easier to link
-    to.</li>
-</ul>
+    <DIV class="lindent">
+      <P>Enter the <CODE>wxLua/build/msw</CODE> directory with a MSDOS prompt
+      and run one of the commands below to build all modules, applications, and
+      utilities of wxLua. See the sections for each compiler to learn about the
+      available command line settings to customize how the library and
+      executables are built.</P>
 
+      <UL>
+        <LI><CODE>MSVC&nbsp;&nbsp;&nbsp;&nbsp;: nmake -f
+        makefile.vc</CODE></LI>
 
+        <LI><CODE>Borland&nbsp;: make -f makefile.bcc</CODE></LI>
 
-<p><span style="color: rgb(255, 0, 0);">NOTE: If you get a compiler error complaining
-that <code>wx/setup.h</code> or <code>wx/wx.h</code> cannot be found, this is
-because the default build options or the options you gave did not match any of
-the available wxWidgets builds. You must choose the wxLua build options
-<code>BUILD, UNICODE, SHARED, WX_DIR, WX_SHARED, WX_VERSION,
-WX_MONOLITHIC</code> to match one of the existing wxWidgets builds. The include
-file above is created by the wxWidgets build and is placed into the
-<code>wxWidgets/lib/[build]/msw[d]/wx/setup.h</code> directory.</span></p>
+        <LI><CODE>Mingw&nbsp;&nbsp;&nbsp;: mingw32-make -f
+        makefile.mingw</CODE></LI>
 
+        <LI><CODE>Watcom&nbsp;&nbsp;: wmake -f makefile.wat</CODE></LI>
+      </UL>
 
+      <P>Look at the top of the makefile for your compiler to see the available
+      build options. You do not have to (should not) edit the makefiles to
+      change any setting, instead you should set them on the command line as
+      shown below.</P>
+    </DIV>
 
-<p>Note that the wxLuaEdit app is not build by default; you need to enable the
-<strong>wxStEdit</strong> dependency by using the
-<code>USE_WXLUAEDITAPP=1</code> option.
-</p>
+    <H3><A id="C3.2" name="C3.2"></A>3.2 - Visual Studio nmake</H3>
 
-<p>Some useful targets you can specify are: </p>
-<ul>
-  <li><code>all</code>: Builds all the targets in the Makefile, except
-    <code>docs</code> and <code>compress</code>.</li>
-  <li><code>clean</code>: Cleans the build files.</li>
-  <li><code>docs</code>: Generates the HTML documentation for wxLua using <a href="http://www.doxygen.org/">doxygen</a></li>
-  <li><code>compress</code>: Calls <a href="http://upx.sourceforge.net/">UPX</a> on the generated binaries to
-    make them smaller (and faster)
-  </li>
-</ul>
+    <DIV class="lindent">
+      <P>For MSVC's nmake you will have to run the vcvars32.bat script in the
+      DOS prompt before trying to build wxLua.</P>
 
+      <P>For example, Visual Studio 2008 installs it here in Windows 7:</P>
 
+      <P><CODE>&gt;"c:\Program Files (x86)\Microsoft Visual Studio
+      9.0\VC\bin\vcvars32.bat"</CODE></P>
 
-<h2><a name="win_msvc"></a>MSVC IDE</h2>
+      <P><SPAN style="color: rgb(255, 0, 0);">NOTE: If you get an error about
+      nmake.exe not found when you try to build wxLua, you need to (re)run
+      vcvars32.bat.</SPAN></P>
 
-<p>Open the <code>wxLua/build/msw/wxLua.dsw</code> project file and select the
-same configuration you used to build wxWidgets from the <code>"Build-&gt;Set
-Active Project"</code> menu. <br>
-Now build the wxLua application right-clicking on the <code>app_wxlua</code>
-target and choosing <code>Build</code> (or <code>Generate</code>). Then just
-repeat this build command for the <code>app_wxluacan</code> and
-<code>app_wxluaedit</code> targets. the <code>mod_XXX</code> targets will be
-automatically built since they are dependency of the <code>app_XXX</code>
-targets. You may also use "Batch Build" to build multiple libraries and
-programs at once. <br>
-In order to compile the wxLuaEdit application you must compile the wxStEdit
-library by using its project file with the same settings that you will use for
-wxLua. 
-</p>
+      <P>The wxLua build options for nmake.exe are at the top of
+      <CODE>build/msw/makefile.vc</CODE>, please review it before trying to
+      build wxLua.</P>
 
+      <P>The typically used build options for wxLua using nmake.exe are:</P>
 
+      <P><CODE>nmake -f makefile.vc BUILD=[release/debug] UNICODE=[0/1]
+      SHARED=[0/1] WX_SHARED=[0/1] WX_MONOLITHIC=[0/1]</CODE></P>
 
-<h1><a name="configure"></a>4. Unix and OSX using Configure</h1>
+      <P>Two of the most commonly used build command lines to build wxLua
+      are:</P>
 
-<p>Quickstart: Move to the root directory of the wxLua project and type:
-<code>./configure &amp;&amp; make</code> to build using the wxWidgets default
-build settings and then execute, with <code>root</code> permissions (you can
-use <code>su</code> or <code>sudo</code> commands...):<br>
-<br>
-<code>make install</code><br>
-<br>
-If you want more control over configure you can type <code>./configure
---help</code> to get a list of available options. <br>
-Note that <code>--enable-XXX</code> or <code>--enable-XXX=yes</code> enables
-the option and <code>--disable-XXX</code> or <code>--enable-XXX=no</code>
-disables it.<br>
-<br>
-wxLua's <code>configure</code> tries to determine the wxWidgets build settings
-automatically using the <code>wx-config</code> script, but if you have multiple
-wxWidgets builds (you can list them using <code>wx-config --list</code>) you
-can select the build you want using the <code>--enable-unicode</code>,
-<code>--enable-debug</code> and <code>--with-wxshared</code>,
-<code>--with-gtk|msw|mgl|x11|motif</code> options. Note that you would use the
-<code>--enable-unicode</code>, <code>--enable-debug</code> options only if you
-had built wxWidgets with them. The build settings for wxLua must be identical
-to the ones used by wxWidgets, i.e. you cannot build wxLua in ANSI mode and try
-to link to a Unicode build of wxWidgets! For example, if you have a unicode,
-release, shared library (as opposed to static) build of wxWidgets and want to
-build wxLua in unicode, release, static mode, then you can do:<br>
-<br>
-<code>./configure --enable-unicode --disable-debug --disable-shared
---with-wxshared</code><br>
-<br>
-The options <code>--enable-wxlua-app, --enable-wxluacan-app,
---enable-wxluaedit-app</code> let you to enable or disable compiling the
-<strong>applications</strong> which are part of wxLua. <br>
-<br>
-The options <code>--enable-wxbindstc</code>, <code>--enable-wxluadebug</code>,
-<code>--enable-wxluasocket</code> let you to enable or disable compiling the
-wxLua <strong>modules</strong>.<br>
-<br>
-You can compile multiple coexisting wxLua builds by running wxLua's configure
-script in different folders; e.g.<br>
-<br>
-<code>mkdir mybuild &amp;&amp; cd mybuild &amp;&amp; ../configure &amp;&amp;
-make</code><br>
-<br>
-which puts all objects and intermediate stuff in the <code>mybuild</code>
-folder (exactly as you can do with wxWidgets). This is typically a good idea
-even if you only have a single build so you don't pollute the main wxLua
-directory with the build files.<br>
-<br>
-If you do not want to install wxLua to the system directory <code>/usr/
-</code>you can specify <code>--prefix=/path/to/install/to</code> and when you
-run <code>make install</code> the headers, apps, and libs will be placed there.
-For development purposes it is often not necessary to install wxLua, but you
-may need to specify the shell environment variable <code>LD_LIBRARY_PATH</code>
-to allow the executables to find the shared libraries, e.g. <code>export
-LD_LIBRARY_PATH=/path/to/wxLua/lib</code>, be careful not to override the
-variables existing value so you may want to instead do <code>export
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/wxLua/lib</code>.<br>
-<br>
-The wxLuaEdit application depends on the wxStEdit library that you should have
-compiled before trying to compile wxLua. There are two ways to let wxLua's
-configure find the wxStEdit library: 1) Set the shell environment variable
-before running configure <code>export WXSTEDIT=/path/to/wxstedit</code> or 2)
-Use the <code>--with-wxstedit-prefix=/path/to/wxstedit</code> configure
-directive. As a last resort you can help wxLua's configure find wxStEdit or its
-libraries by exporting these environment variables:<br>
-<br>
-<code>export CPPFLAGS="-I/path/to/wxstedit/include" </code><br>
-<code>export LDFLAGS="-L/path/to/wxstedit/lib"</code><br>
-<br>
-Other useful targets which you can use are:
-</p>
-<ul>
-  <li><code>docs</code>: generates the HTML documentation for wxLua using <a href="http://www.doxygen.org">doxygen</a></li>
-  <li><code>install-strip</code>: like install but this target also strips
-    debugging informations out of the installed libraries and binaries so that
-    they take less space on disk and run faster</li>
-</ul>
+      <UL>
+        <LI>For a release build, ANSI strings, static libraries (not DLLs), and
+        standalone executables use:
 
-<h1><a name="advanced"></a>5. Advanced Building</h1>
+          <UL>
+            <LI><CODE>nmake -f makefile.vc BUILD=release UNICODE=0
+            SHARED=0</CODE></LI>
+          </UL>
+        </LI>
 
-<p>These instructions are for C++ developers who want to use wxLua as a
-<strong>script interpreter</strong> in their own project. This means that you
-can write scripts to make your code simpler, load and run files on the fly, and
-allow users to more easily customize your program with their own Lua
-scripts.<br>
+        <LI>For a release build, ANSI strings, shared libraries (DLLs) and
+        executables that depend on them use:
 
-</p>
+          <UL>
+            <LI><CODE>nmake -f makefile.vc BUILD=release UNICODE=0 SHARED=1
+            WX_MONOLITHIC=1</CODE></LI>
+          </UL>
+        </LI>
+      </UL>
 
-<h2><a name="minimalwxlua"></a>5.a Building a minimal set of wxWidgets
-wrappers</h2>
-In order to embed wxLua in your project, you will probably need the library
-from <code>wxLua/modules/lua</code> and <code>wxLua/modules/wxlua</code> at a
-minimum. With these two libraries you have the ability to start an interpreter
-and run straight Lua code in it using the wxLuaState class.<br>
-<br>
-To get the ability to create wxWidgets objects and use the functionality of
-wxWidgets in Lua you will also need to build and link to the libraries in
-<code>modules/wxbind</code>. The bindings in <code>modules/wxbind</code>
-contain nearly all of the classes and functions in wxWidgets. They also contain
-the appropriate <code>#if wxUSE_XXX</code> statements and platform dependent
-<code>__WXMSW/GTK/MAC__</code> checks that wxWidgets uses in its headers to
-ensure that no matter what platform or what type of build you use, the bindings
-will compile without errors (if they don't compile for your settings, please be
-sure to tell us on the <a href="mailto:wxlua-users@lists.sourceforge.net">wxlua-users mailing list</a>).
-<br>
-<br>
-<strong>NOTE</strong>: if you want all wxWidgets API wrapped and you don't care
-about <strong>size</strong> of the wxLua libraries, then you can just skip this
-section ! You will just need to link your program against the wxLua libraries
-which you built in <a href="install.html#win_makefiles">step 2</a>, <a href="install.html#win_ide">step 3</a> or <a href="install.html#unix">step
-4</a>. Just look at <a href="install.html#wxlualiborder">section 5.b</a> for
-some tips about linking order.<br>
-<br>
-In order to make wxLua libraries smaller, you just need to add to your project
-a file named <code>wxluasetup.h </code>(the name must be exactly that, all
-lowercase!) which should start as a copy of
-<code>modules/wxbind/setup/wxluasetup.h</code>. Once you have your custom
-<code>wxluasetup.h</code> you can edit it to your liking. The header file
-contains a number of <code>wxLUA_USE_XXX</code> #defines that are fairly self
-explanitory. By setting some of them to <code>0</code> you can block out large
-chunks of the bindings making them smaller. <br>
-<br>
-<strong>NOTE</strong>: The functionalities of wxLua bindings will obviously be
-limited by your current wxWidgets build settings; i.e. if you did not built
-OpenGL support in wxWidgets you won't have it in wxLua! <br>
-<br>
-Once you have created and edited <code>wxluasetup.h</code> you can build your
-<strong>wxBind custom library</strong>: on Windows, just open an MSDOS prompt
-and move in the <code>wxLua/modules/wxbind/build </code>directory and then
-launch a MAKE command using the <code>WXLUASETUP_DIR</code> option to tell the
-makefile the path to your custom <code>wxluasetup.h</code> and the
-<code>WXLUABINDLIB_DIR</code> option to tell the makefile where the custom
-wxBind library should be created:<br>
+      <P>For comparison, typical options for building wxWidgets using nmake.exe
+      are:</P>
 
-<ul>
-  <li><code>nmake -f makefile.vc WXLUASETUP_DIR=c:\myproj\include
-    WXLUABINDLIB_DIR=c:\myproj\lib</code> (if using MSVC)</li>
-  <li><code>make -f makefile.bcc WXLUASETUP_DIR=c:\myproj\include
-    WXLUABINDLIB_DIR=c:\myproj\lib</code> (if using Borland)</li>
-  <li><code>mingw32-make -f makefile.mingw WXLUASETUP_DIR=c:\myproj\include
-    WXLUABINDLIB_DIR=c:\myproj\lib</code> (if using Mingw)</li>
-  <li><code>wmake -f makefile.wat WXLUASETUP_DIR=c:\myproj\include
-    WXLUABINDLIB_DIR=c:\myproj\lib</code> (if using Watcom)</li>
-</ul>
-On Unix/Linux, unless you used the
-<code>--enable-customwxbind-install=no</code> option, then the wxBind sources
-will be installed to <code>PREFIX/src/wxbind</code> as soon as you give the
-<code>make install</code> command.<br>
-Once you have them installed, just go in the
-<code>PREFIX/src/wxbind/build</code> folder and type:<br>
-<br>
-<code>make -f makefile.gnu WXLUASETUP_DIR=~/myproj/include
-WXLUABINDLIB_DIR=~/myproj/lib</code><br>
-<br>
-and you will get your wxBind custom library compiled.<br>
-<br>
-Last step: you just need to add to your project dependencies the custom wxBind
-library you've just created.<br>
-Next section helps you with linking order which can be a bit troubling with
-some compilers.<br>
-<br>
+      <P><CODE>nmake -f makefile.vc SHARED=[1/0] UNICODE=[1/0] MONOLITHIC=[1/0]
+      BUILD=[release/debug]</CODE></P>
 
+      <UL>
+        <LI>If building for 64 bit add <CODE>TARGET_CPU=amd64</CODE></LI>
 
-<h2><a name="wxlualiborder"></a>5.b wxLua libraries and linking order</h2>
-The order in which you link to the wxLua libraries is important since some
-variable are initialized using variables from other libraries. You must always
-link to any binding library <strong>after</strong> (in terms of initialization)
-linking with the wxLua libraries.<br>
-<br>
-<strong>NOTE</strong>: Many linkers actually link libraries in the opposite
-order in which they appear on the command line.<br>
-<br>
-Thus the library order to give to the gcc linker is (last means initialized
-first):<br>
-<br>
-<code>wxbind..., wxbindcore, wxbindbase, wxluasocket, wxluadebug, wxlua, lua,
-wxWidgets libs</code> <br>
-<br>
-Obviously you should remove the libraries you don't use (e.g. wxluasocket,
-wxluadebug) and use the decorated names for the others. The wxLua makefiles/IDE
-outputs the libraries following the same wxWidgets naming rule:<br>
-<br>
-<code>wxlua_$(WX_PORT_WITHVERSION)$(WXLIBPOSTFIX)_wxlua-$(WX_VERSION_MAJOR).$(WX_VERSION_MINOR)</code><br>
-<br>
-where <code>WX_PORT_WITHVERSION</code> can be <code>gtk2, msw, x11, etc;
-WXLIBPOSTFIX can be u, d, ud</code>.<br>
-<br>
+        <LI>Since Lua strings are ANSI, you probably want to use
+        <CODE>UNICODE=0</CODE>, but wxLua works with Unicode by translating
+        strings ANSI before pushing them into Lua.</LI>
 
-<hr>
-<br>
-$Id: install.html,v 1.17 2011/11/07 04:41:55 jrl1 Exp $ </body></html>
+        <LI>It is recommended to build <CODE>SHARED=1 &amp; MONOLITHIC=1</CODE>
+        to create DLLs or <CODE>SHARED=0 &amp; MONOLITHIC=0</CODE> to create
+        static libraries. With these settings you will have either one large
+        DLL which makes it easy to copy or multiple static lib files which are
+        easier to link to.</LI>
+      </UL>
+
+      <P><SPAN style="color: rgb(255, 0, 0);">NOTE: If you get a compiler error
+      complaining that <CODE>wx/setup.h</CODE> or <CODE>wx/wx.h</CODE> cannot
+      be found, this is because the default build options or the options you
+      gave did not match any of the available wxWidgets builds. You must choose
+      the wxLua build options <CODE>BUILD, UNICODE, SHARED, WX_DIR, WX_SHARED,
+      WX_VERSION, WX_MONOLITHIC</CODE> that match one of the existing wxWidgets
+      builds. The include file above is created by the wxWidgets build and is
+      placed into the <CODE>wxWidgets/lib/[build]/msw[d]/wx/setup.h</CODE>
+      directory.</SPAN></P>
+
+      <P>Note that the wxLuaEdit app is not build by default; you need to
+      enable the <STRONG>wxStEdit</STRONG> dependency by using the
+      <CODE>USE_WXLUAEDITAPP=1</CODE> option.</P>
+
+      <P>Some useful targets you can specify are:</P>
+
+      <UL>
+        <LI><CODE>all</CODE>: Builds all the targets in the Makefile, except
+        <CODE>docs</CODE> and <CODE>compress</CODE>.</LI>
+
+        <LI><CODE>clean</CODE>: Cleans the build files.</LI>
+
+        <LI><CODE>docs</CODE>: Generates the HTML documentation for wxLua using
+        <A href="http://www.doxygen.org/">doxygen</A></LI>
+
+        <LI><CODE>compress</CODE>: Calls <A href=
+        "http://upx.sourceforge.net/">UPX</A> on the generated binaries to make
+        them smaller</LI>
+      </UL>
+    </DIV>
+
+    <H3><A id="C3.3" name="C3.3"></A>3.3 - Visual Studio IDE</H3>
+
+    <DIV class="lindent">
+      <P>Open the <CODE>wxLua/build/msw/wxLua.dsw</CODE> project file and
+      select the same configuration you used to build wxWidgets from the
+      <CODE>"Build-&gt;Set Active Project"</CODE> menu.<BR>
+      Now build the wxLua application right-clicking on the
+      <CODE>app_wxlua</CODE> target and choosing <CODE>Build</CODE> (or
+      <CODE>Generate</CODE>). Then just repeat this build command for the
+      <CODE>app_wxluacan</CODE> and <CODE>app_wxluaedit</CODE> targets. the
+      <CODE>mod_XXX</CODE> targets will be automatically built since they are
+      dependency of the <CODE>app_XXX</CODE> targets. You may also use "Batch
+      Build" to build multiple libraries and programs at once.<BR>
+      In order to compile the wxLuaEdit application you must compile the
+      wxStEdit library by using its project file with the same settings that
+      you will use for wxLua.</P>
+    </DIV>
+  </DIV>
+
+  <H2><A id="C4" name="C4"></A>4 - Unix and OSX using Configure</H2>
+
+  <DIV class="lindent">
+    <P>Quickstart: Move to the root directory of the wxLua project and type:
+    <CODE>./configure &amp;&amp; make</CODE> to build using the wxWidgets
+    default build settings and then execute, with <CODE>root</CODE> permissions
+    (you can use <CODE>su</CODE> or <CODE>sudo</CODE> commands...):<BR>
+    <BR>
+    <CODE>make install</CODE><BR>
+    <BR>
+    If you want more control over configure you can type <CODE>./configure
+    --help</CODE> to get a list of available options.<BR>
+    Note that <CODE>--enable-XXX</CODE> or <CODE>--enable-XXX=yes</CODE>
+    enables the option and <CODE>--disable-XXX</CODE> or
+    <CODE>--enable-XXX=no</CODE> disables it.<BR>
+    <BR>
+    wxLua's <CODE>configure</CODE> tries to determine the wxWidgets build
+    settings automatically using the <CODE>wx-config</CODE> script, but if you
+    have multiple wxWidgets builds (you can list them using <CODE>wx-config
+    --list</CODE>) you can select the build you want using the
+    <CODE>--enable-unicode</CODE>, <CODE>--enable-debug</CODE> and
+    <CODE>--with-wxshared</CODE>, <CODE>--with-gtk|msw|mgl|x11|motif</CODE>
+    options. Note that you would use the <CODE>--enable-unicode</CODE>,
+    <CODE>--enable-debug</CODE> options only if you had built wxWidgets with
+    them. The build settings for wxLua must be identical to the ones used by
+    wxWidgets, i.e. you cannot build wxLua in ANSI mode and try to link to a
+    Unicode build of wxWidgets.<BR>
+    <BR>
+    For example, if you have a unicode, release, shared library (as opposed to
+    static) build of wxWidgets and want to build wxLua in unicode, release,
+    static mode, then you can do:<BR>
+    <CODE>./configure --enable-unicode --disable-debug --disable-shared
+    --with-wxshared</CODE><BR>
+    <BR>
+    The options <CODE>--enable-wxlua-app, --enable-wxluacan-app,
+    --enable-wxluaedit-app</CODE> let you to enable or disable compiling the
+    <STRONG>applications</STRONG> which are part of wxLua.<BR>
+    <BR>
+    The options <CODE>--enable-wxbindstc</CODE>,
+    <CODE>--enable-wxluadebug</CODE>, <CODE>--enable-wxluasocket</CODE> let you
+    to enable or disable compiling the wxLua <STRONG>modules</STRONG>.<BR>
+    <BR>
+    You can compile multiple coexisting wxLua builds by running wxLua's
+    configure script in different folders; e.g. from the root wxLua
+    directory:<BR>
+    <BR>
+    <CODE>mkdir mybuild &amp;&amp; cd mybuild &amp;&amp; ../configure
+    &amp;&amp; make</CODE><BR>
+    <BR>
+    which puts all objects and intermediate stuff in the <CODE>mybuild</CODE>
+    folder (exactly as you can do with wxWidgets). This is typically a good
+    idea even if you only have a single build so you don't pollute the main
+    wxLua directory with the build files.<BR>
+    <BR>
+    If you do not want to install wxLua to the system directory
+    <CODE>/usr/</CODE> you can specify
+    <CODE>--prefix=/path/to/install/to</CODE> and when you run <CODE>make
+    install</CODE> the headers, apps, and libs will be placed there. For
+    development purposes it is often not necessary to install wxLua, but you
+    may need to specify the shell environment variable
+    <CODE>LD_LIBRARY_PATH</CODE> to allow the executables to find the shared
+    libraries, e.g. <CODE>export LD_LIBRARY_PATH=/path/to/wxLua/lib</CODE>, be
+    careful not to override the variables existing value so you may want to
+    instead do <CODE>export
+    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/wxLua/lib</CODE>.<BR>
+    <BR>
+    The wxLuaEdit application depends on the wxStEdit library that you should
+    have compiled before trying to compile wxLua. There are two ways to let
+    wxLua's configure find the wxStEdit library: 1) Set the shell environment
+    variable before running configure <CODE>export
+    WXSTEDIT=/path/to/wxstedit</CODE> or 2) Use the
+    <CODE>--with-wxstedit-prefix=/path/to/wxstedit</CODE> configure directive.
+    As a last resort you can help wxLua's configure find wxStEdit or its
+    libraries by exporting these environment variables:<BR>
+    <BR>
+    <CODE>export CPPFLAGS="-I/path/to/wxstedit/include"</CODE><BR>
+    <CODE>export LDFLAGS="-L/path/to/wxstedit/lib"</CODE><BR>
+    <BR>
+    Other useful targets which you can use are:</P>
+
+    <UL>
+      <LI><CODE>docs</CODE>: generates the HTML documentation for wxLua using
+      <A href="http://www.doxygen.org">doxygen</A></LI>
+
+      <LI><CODE>install-strip</CODE>: like install but this target also strips
+      debugging informations out of the installed libraries and binaries so
+      that they take less space on disk and run faster</LI>
+    </UL>
+  </DIV>
+
+  <H2><A id="C5" name="C5"></A>5 - Advanced Building</H2>
+
+  <DIV class="lindent">
+    <P>These instructions are for C++ developers who want to use wxLua as a
+    <STRONG>script interpreter</STRONG> in their own project. This means that
+    you can write scripts to make your code simpler, load and run files on the
+    fly, and allow users to more easily customize your program with their own
+    Lua scripts.<BR></P>
+
+    <H3><A id="C5.1" name="C5.1"></A>5.1 - Building a minimal set of wxWidgets
+    wrappers</H3>
+
+    <DIV class="lindent">
+      In order to embed wxLua in your project, you will probably need the
+      library from <CODE>wxLua/modules/lua</CODE> and
+      <CODE>wxLua/modules/wxlua</CODE> at a minimum. With these two libraries
+      you have the ability to start an interpreter and run straight Lua code in
+      it using the wxLuaState class.<BR>
+      <BR>
+      To get the ability to create wxWidgets objects and use the functionality
+      of wxWidgets in Lua you will also need to build and link to the libraries
+      in <CODE>modules/wxbind</CODE>. The bindings in
+      <CODE>modules/wxbind</CODE> contain nearly all of the classes and
+      functions in wxWidgets. They also contain the appropriate <CODE>#if
+      wxUSE_XXX</CODE> statements and platform dependent
+      <CODE>__WXMSW/GTK/MAC__</CODE> checks that wxWidgets uses in its headers
+      to ensure that no matter what platform or what type of build you use, the
+      bindings will compile without errors (if they don't compile for your
+      settings, please be sure to tell us on the <A href=
+      "mailto:wxlua-users@lists.sourceforge.net">wxlua-users mailing
+      list</A>).<BR>
+      <BR>
+      <STRONG>NOTE</STRONG>: if you want all wxWidgets API wrapped and you
+      don't care about <STRONG>size</STRONG> of the wxLua libraries, then you
+      can just skip this section ! You will just need to link your program
+      against the wxLua libraries which can be built with the directions above.
+      Just look at <A href="install.html#C5.2">section 5.2</A> for some tips
+      about linking order.<BR>
+      <BR>
+      In order to make wxLua libraries smaller, you just need to add to your
+      project a file named <CODE>wxluasetup.h</CODE> (the name must be exactly
+      that, all lowercase!) which should start as a copy of
+      <CODE>modules/wxbind/setup/wxluasetup.h</CODE>. Once you have your custom
+      <CODE>wxluasetup.h</CODE> you can edit it to your liking. The header file
+      contains a number of <CODE>wxLUA_USE_XXX</CODE> #defines that are fairly
+      self explanitory. By setting some of them to <CODE>0</CODE> you can block
+      out large chunks of the bindings making them smaller.<BR>
+      <BR>
+      <STRONG>NOTE</STRONG>: The functionalities of wxLua bindings will
+      obviously be limited by your current wxWidgets build settings; i.e. if
+      you did not built OpenGL support in wxWidgets you won't have it in
+      wxLua!<BR>
+      <BR>
+      Once you have created and edited <CODE>wxluasetup.h</CODE> you can build
+      your <STRONG>wxBind custom library</STRONG>: on Windows, just open an
+      MSDOS prompt and move in the <CODE>wxLua/modules/wxbind/build</CODE>
+      directory and then launch a MAKE command using the
+      <CODE>WXLUASETUP_DIR</CODE> option to tell the makefile the path to your
+      custom <CODE>wxluasetup.h</CODE> and the <CODE>WXLUABINDLIB_DIR</CODE>
+      option to tell the makefile where the custom wxBind library should be
+      created:<BR>
+
+      <UL>
+        <LI><CODE>nmake -f makefile.vc WXLUASETUP_DIR=c:\myproj\include
+        WXLUABINDLIB_DIR=c:\myproj\lib</CODE> (if using MSVC)</LI>
+
+        <LI><CODE>make -f makefile.bcc WXLUASETUP_DIR=c:\myproj\include
+        WXLUABINDLIB_DIR=c:\myproj\lib</CODE> (if using Borland)</LI>
+
+        <LI><CODE>mingw32-make -f makefile.mingw
+        WXLUASETUP_DIR=c:\myproj\include WXLUABINDLIB_DIR=c:\myproj\lib</CODE>
+        (if using Mingw)</LI>
+
+        <LI><CODE>wmake -f makefile.wat WXLUASETUP_DIR=c:\myproj\include
+        WXLUABINDLIB_DIR=c:\myproj\lib</CODE> (if using Watcom)</LI>
+      </UL>On Unix/Linux, unless you used the
+      <CODE>--enable-customwxbind-install=no</CODE> option, then the wxBind
+      sources will be installed to <CODE>PREFIX/src/wxbind</CODE> as soon as
+      you give the <CODE>make install</CODE> command.<BR>
+      Once you have them installed, just go in the
+      <CODE>PREFIX/src/wxbind/build</CODE> folder and type:<BR>
+      <BR>
+      <CODE>make -f makefile.gnu WXLUASETUP_DIR=~/myproj/include
+      WXLUABINDLIB_DIR=~/myproj/lib</CODE><BR>
+      <BR>
+      and you will get your wxBind custom library compiled.<BR>
+      <BR>
+      Last step: you just need to add to your project dependencies the custom
+      wxBind library you've just created.<BR>
+      Next section helps you with linking order which can be a bit troubling
+      with some compilers.<BR>
+    </DIV>
+
+    <H3><A id="C5.2" name="C5.2"></A>5.2 - wxLua libraries and linking
+    order</H3>
+
+    <DIV class="lindent">
+      The order in which you link to the wxLua libraries is important since
+      some variable are initialized using variables from other libraries. You
+      must always link to any binding library <STRONG>after</STRONG> (in terms
+      of initialization) linking with the wxLua libraries.<BR>
+      <BR>
+      <STRONG>NOTE</STRONG>: Many linkers actually link libraries in the
+      opposite order in which they appear on the command line.<BR>
+      <BR>
+      Thus the library order to give to the gcc linker is (last means
+      initialized first):<BR>
+      <BR>
+      <CODE>wxbind..., wxbindcore, wxbindbase, wxluasocket, wxluadebug, wxlua,
+      lua, wxWidgets libs</CODE><BR>
+      <BR>
+      Obviously you should remove the libraries you don't use (e.g.
+      wxluasocket, wxluadebug) and use the decorated names for the others. The
+      wxLua makefiles/IDE outputs the libraries following the same wxWidgets
+      naming rule:<BR>
+      <BR>
+      <CODE>wxlua_$(WX_PORT_WITHVERSION)$(WXLIBPOSTFIX)_wxlua-$(WX_VERSION_MAJOR).$(WX_VERSION_MINOR)</CODE><BR>
+
+      <BR>
+      where <CODE>WX_PORT_WITHVERSION</CODE> can be <CODE>gtk2, msw, x11, etc;
+      WXLIBPOSTFIX can be u, d, ud</CODE>.<BR>
+    </DIV>
+  </DIV><BR>
+  <HR>
+  <BR>
+  $Id: install.html,v 1.17 2011/11/07 04:41:55 jrl1 Exp $
+</BODY>
+</HTML>

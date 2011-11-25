@@ -677,7 +677,7 @@ void LUACALL wxluaO_trackweakobject(lua_State *L, int udata_stack_idx, void *obj
         lua_pushnumber(L, wxl_type);
         lua_rawget(L, -2);
         // this must never happen
-        if (!lua_isnil(L, -1)) 
+        if (!lua_isnil(L, -1))
         {
             wxFAIL_MSG(wxT("Trying to push userdata for object with same wxLua type twice"));
         }
@@ -1435,7 +1435,7 @@ int LUACALL wxlua_iswxluatype(int luatype, int wxl_type, lua_State* L /* = NULL 
             break;
         case WXLUA_TPOINTER :
             ret = (luatype == LUA_TLIGHTUSERDATA) || (luatype == LUA_TUSERDATA) ||
-                  (luatype == LUA_TFUNCTION) || (luatype == LUA_TTABLE) || 
+                  (luatype == LUA_TFUNCTION) || (luatype == LUA_TTABLE) ||
                   (luatype == LUA_TTHREAD) ? 1 : 0;
             break;
         case WXLUA_TANY :
@@ -4326,7 +4326,7 @@ VARIADIC(bor,  |=)
 VARIADIC(bxor, ^=)
 ARITHMETIC_SHIFT(lshift,  <<)
 LOGICAL_SHIFT(rshift,     >>)
-ARITHMETIC_SHIFT(arshift, >>)
+//ARITHMETIC_SHIFT(arshift, >>) // broken in 64 bit
 
 static const struct luaL_reg bitlib[] = {
   {"cast",    bit_cast},
@@ -4336,7 +4336,7 @@ static const struct luaL_reg bitlib[] = {
   {"bxor",    bit_bxor},
   {"lshift",  bit_lshift},
   {"rshift",  bit_rshift},
-  {"arshift", bit_arshift},
+  //{"arshift", bit_arshift},
 
   {NULL, NULL}
 };

@@ -160,7 +160,7 @@ function GenerateClassReference(fileTable)
 
     if completeClassRefTable then
 
-        table.insert(fileTable, "<table border=\"1\">")
+        table.insert(fileTable, "<table border=\"1\" summary=\"Table showing what wxWidgets C++ classes are wrapped by wxLua\">")
         table.insert(fileTable, "  <tr><th>Class Name</th> <th>"..completeClassRefColLabel.."</th> <th>Wrapped by wxLua</th> <th>Notes</th></tr>")
 
         for n = 1, #names do
@@ -177,16 +177,16 @@ function GenerateClassReference(fileTable)
 
             -- in "manual" or complete list of classes
             if completeClassRefTable and completeClassRefTable[cname] then
-                table.insert(fileTable, "<td align=\"center\" bgcolor="..colours.in_manual..">X")
+                table.insert(fileTable, "<td align=\"center\" bgcolor=#"..colours.in_manual..">X")
             else
-                table.insert(fileTable, "<td bgcolor="..colours.not_in_manual..">&nbsp;")
+                table.insert(fileTable, "<td bgcolor=#"..colours.not_in_manual..">&nbsp;")
             end
 
             -- wrapped by wxLua
             if allClasses[cname] then
-                table.insert(fileTable, "<td align=\"center\" bgcolor="..colours.in_wxlua..">X")
+                table.insert(fileTable, "<td align=\"center\" bgcolor=#"..colours.in_wxlua..">X")
             else
-                table.insert(fileTable, "<td bgcolor="..colours.not_in_wxlua..">&nbsp;")
+                table.insert(fileTable, "<td bgcolor=#"..colours.not_in_wxlua..">&nbsp;")
             end
 
             -- note about the class
