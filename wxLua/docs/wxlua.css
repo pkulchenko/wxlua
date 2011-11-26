@@ -2,22 +2,24 @@ h1 {
   font-size: xx-large;
   font-weight: bold;
   text-align: center;
-  color: #3050a0;
-  background-color: #fdd010;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border: 1px solid #4060a0;
+  color: #336699;
+  background-color: #E6DFCF;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* border-bottom: 1px solid #1F1209; */
 }
 h2 {
   font-size: x-large;
   font-weight: bold;
-  color: #3050a0;
-  background-color: #d0daff;
+  color: #003366;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background-color: #DEE7EF;
 }
 h3 {
   font-size: large;
   font-weight: bold;
-  color: #3050a0;
+  color: #336699;
 }
 h4 {
   font-size: large;
@@ -27,27 +29,37 @@ body {
   font-family: Arial,Helvetica,sans-serif;
 }
 a:link {
-  color: #3050a0;
+  color: #336699;
 }
 a:visited {
   color: #60a0c0;
 }
 a:hover {
-  background-color: #e0f0ff;
+  background-color: #DEE7EF;
 }
 .lindent {
   margin-left: 1em;
 }
-.greybox {
-  background-color: #e0e0e0;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border: 1px solid #4060a0;
+.contents {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background-color: #F3F2EB;
+  border: 1px solid #1F1209;
 }
-ol {
+.contents ol {
   list-style-type: none ;
   font-weight: bold;
+  color: #000000;
 }
-ol a {
+.contents ol a {
   text-decoration:none;
+}
+.codebox {
+  background-color: #FFFFC0;
+  padding-top: 0em;
+  padding-bottom: 0px;
+  border: 1px solid #1F1209;
+}
+.codelua {
+  background-color: #FFFFC0;
 }

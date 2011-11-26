@@ -6,7 +6,7 @@
   "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
   <META content="text/html; charset=us-ascii" http-equiv="content-type">
 
-  <TITLE>wxLua Documentation</TITLE>
+  <TITLE>wxLua Manual</TITLE>
   <META content="John Labenski" name="author">
   <META content="wxLua Manual" name="description">
   <LINK rel="stylesheet" type="text/css" href="wxlua.css">
@@ -19,9 +19,9 @@
   "http://www.wxwidgets.org">wxWidgets</A> cross-platform C++ GUI library. It
   consists of two IDE type editors that can edit, debug, and run Lua programs
   (wxLua and wxLuaEdit), an executable for running standalone wxLua scripts
-  (wxLuaFreeze), a Lua module that may be loaded using <FONT color=
-  "blue"><I>require("wx")</I></FONT> when using the standard Lua executable,
-  and a library for extending C++ programs with a fast, small, fully embeddable
+  (wxLuaFreeze), a Lua module that may be loaded using <CODE class=
+  "codelua">require("wx")</CODE> when using the standard Lua executable, and a
+  library for extending C++ programs with a fast, small, fully embeddable
   scripting language.<BR>
   <BR>
   Lua is a small scripting language written in ANSI C that can load and run
@@ -56,7 +56,7 @@
 
   <H2>Table of Contents</H2>
 
-  <DIV class="greybox">
+  <DIV class="contents">
     <OL>
       <LI><A href="wxlua.html#C1">1 - Version Information</A></LI>
 
@@ -95,8 +95,6 @@
 
         <OL>
           <LI><A href="wxlua.html#C8.1">8.1 - bin2c.lua</A></LI>
-
-          <LI><A href="wxlua.html#C8.2">8.2 - wrapmodule.wx.lua</A></LI>
         </OL>
       </LI>
 
@@ -171,16 +169,16 @@
   <H2><A name="C2" id="C2"></A>2 - Requirements</H2>An end user of wxLua can
   use the binary packages of wxLua and everything that's needed is contained
   within it. C++ programmers or users on platforms that we don't provide
-  binaries for will need a development library of wxWidgets, typically the
+  binaries for will need a development library of wxWidgets; typically the
   source code that you have compiled on your system. More information about
   compiling wxLua is contained in the install.html file and on <A href=
   "http://wxlua.sourceforge.net/">http://wxlua.sourceforge.net</A>.
 
   <H2><A name="C3" id="C3"></A>3 - Introduction to Lua (very brief)</H2>This
   short primer is meant to give you a good enough feel for Lua that you will be
-  able to understand the sample programs and begin to write your own, assuming
-  that you have a cursory understanding of programming techniques. You should,
-  in any case, read the documentation at <A href=
+  able to understand the sample programs and begin to write your own. It
+  assumes that you have a cursory understanding of general programming
+  techniques. You should, in any case, read the documentation at <A href=
   "http://www.lua.org">www.lua.org</A>.<BR>
 
   <UL>
@@ -191,16 +189,14 @@
         <LI>Single line comments
 
           <UL>
-            <LI><FONT color="blue"><I>-- rest of line is
-            commented</I></FONT></LI>
+            <LI><CODE class="codelua">-- rest of line is commented</CODE></LI>
           </UL>
         </LI>
 
         <LI>Multiple line block comments
 
           <UL>
-            <LI><FONT color="blue"><I>--[[ multiple line comment
-            ]]</I></FONT></LI>
+            <LI><CODE class="codelua">--[[ multiple line comment ]]</CODE></LI>
           </UL>
         </LI>
       </UL>
@@ -213,11 +209,11 @@
         <LI>Variables are not permanently typed and you can freely overwrite
         them with other values or types, there is no "const" keyword.</LI>
 
-        <LI>Variables are global unless you put the keyword <I><FONT color=
-        "blue">local</FONT></I> in front of them, this is sometimes good
+        <LI>Variables are global unless you put the keyword <CODE class=
+        "codelua">local</CODE> in front of them, this is sometimes good
         practice.</LI>
 
-        <LI>The scope of <I><FONT color="blue">local</FONT></I> variables is
+        <LI>The scope of <CODE class="codelua">local</CODE> variables is
         limited to the current scope and its children.</LI>
 
         <LI>Local variables can be harder to debug because they are stored on
@@ -227,11 +223,11 @@
         <LI>Local variables are faster than global variables because they do
         not require a table lookup for use.</LI>
 
-        <LI>A <I><FONT color="blue">local</FONT></I> variable created with the
-        same name as a global variable temporarily supersedes the global.</LI>
+        <LI>A <CODE class="codelua">local</CODE> variable created with the same
+        name as a global variable temporarily supersedes the global.</LI>
 
-        <LI>Use the function <FONT color="blue"><I>type(var_name)</I></FONT> to
-        get the variable type as a string.
+        <LI>Use the function <CODE class="codelua">type(var_name)</CODE> to get
+        the variable type as a string.
 
           <UL>
             <LI>"nil", "boolean", "number", "string", "table", "userdata",
@@ -249,49 +245,48 @@
           <B>nil</B> : A special value meaning NULL or nothing.
 
           <UL>
-            <LI><FONT color="blue"><I>a = nil; local b; print(a, b, type(a),
-            type(b))</I></FONT> ; prints "nil nil nil nil"</LI>
+            <LI><CODE class="codelua">a = nil; local b; print(a, b, type(a),
+            type(b))</CODE> ; prints "nil nil nil nil"</LI>
 
-            <LI>Variables that have not been assigned a value are <FONT color=
-            "blue"><I>nil</I></FONT> and any variable can be reset back to
-            <FONT color="blue"><I>nil</I></FONT> at any time to allow the Lua
+            <LI>Variables that have not been assigned a value are <CODE class=
+            "codelua">nil</CODE> and any variable can be reset back to
+            <CODE class="codelua">nil</CODE> at any time to allow the Lua
             garbage collector to delete them if there are no other references
             to it.</LI>
 
             <LI>This value is often returned for functions that fail.</LI>
 
-            <LI>You can provide an inline alternative to <FONT color="blue"><I>
-              nil</I></FONT> using the "<I><FONT color="blue">or</FONT></I>"
-              keyword since <FONT color="blue"><I>nil</I></FONT> evaluates to
-              false.
+            <LI>You can provide an inline alternative to <CODE class="codelua">
+              nil</CODE> using the <CODE class="codelua">or</CODE> keyword
+              since <CODE class="codelua">nil</CODE> evaluates to false.
 
               <UL>
-                <LI><FONT color="blue"><I>print(tonumber("a"), tonumber("a") or
-                1)</I></FONT> ; prints "nil 1"</LI>
+                <LI><CODE class="codelua">print(tonumber("a"), tonumber("a") or
+                1)</CODE> ; prints "nil 1"</LI>
               </UL>
             </LI>
           </UL>
         </LI>
 
         <LI>
-          <B>boolean</B> : <I><FONT color="blue">true</FONT></I> or
-          <I><FONT color="blue">false</FONT></I>
+          <B>boolean</B> : <CODE class="codelua">true</CODE> or <CODE class=
+          "codelua">false</CODE>
 
           <UL>
-            <LI><FONT color="blue"><I>a = true; b = false; print(a, b, type(a),
-            type(b))</I></FONT> ; prints "true false boolean boolean"</LI>
+            <LI><CODE class="codelua">a = true; b = false; print(a, b, type(a),
+            type(b))</CODE> ; prints "true false boolean boolean"</LI>
 
-            <LI>Note that <FONT color="blue"><I>nil</I></FONT> works as
-            <FONT color="blue"><I>false</I></FONT>, but the number 0 evaluates
-            as <I><FONT color="blue">true</FONT></I> since it has a value, i.e.
-            not <FONT color="blue"><I>nil</I></FONT>, use <I><FONT color=
-            "blue">(a ~= 0)</FONT>.</I></LI>
+            <LI>Note that <CODE class="codelua">nil</CODE> works as
+            <CODE class="codelua">false</CODE>, but the number 0 evaluates as
+            <CODE class="codelua">true</CODE> since it has a value, i.e. not
+            <CODE class="codelua">nil</CODE>, use <CODE class="codelua">(a ~=
+            0)</CODE>.</LI>
           </UL>
 
           <UL>
-            <LI><FONT color="blue"><I>a = 0; if a then print(a) end</I></FONT>
-            ; prints "0" since the variable "<I>a"</I> evaluates to
-            <I><FONT color="blue">true</FONT></I>.</LI>
+            <LI><CODE class="codelua">a = 0; if a then print(a) end</CODE> ;
+            prints "0" since the variable "<CODE class="codelua">a</CODE>"
+            evaluates to <CODE class="codelua">true</CODE>.</LI>
           </UL>
         </LI>
       </UL>
@@ -302,17 +297,18 @@
           numbers.
 
           <UL>
-            <LI><FONT color="blue"><I>a = 1; b = 3.14; print(a, b, type(a),
-            type(b))</I></FONT> ; prints "1 3.14 number number"</LI>
+            <LI><CODE class="codelua">a = 1; b = 3.14; print(a, b, type(a),
+            type(b))</CODE> ; prints "1 3.14 number number"</LI>
 
-            <LI><FONT color="blue"><I>n = (1E1 * 3.14 * math.sin(1) /
-            4)*math.pow(2.5e-1, 4)</I></FONT></LI>
+            <LI><CODE class="codelua">n = (1E1 * 3.14 * math.sin(1) /
+            4)*math.pow(2.5e-1, 4)</CODE></LI>
 
             <LI>Variables can be coerced into numbers using the function
-            <FONT color="blue"><I>tonumber(variable)</I></FONT> which returns
-            <FONT color="blue"><I>nil</I></FONT> on failure.</LI>
+            <CODE class="codelua">tonumber(variable)</CODE> which returns
+            <CODE class="codelua">nil</CODE> on failure.</LI>
 
-            <LI>Additional math functions are in the <I>math</I> table.</LI>
+            <LI>Additional math functions are in the <CODE class=
+            "codelua">math</CODE> table.</LI>
           </UL>
         </LI>
 
@@ -321,8 +317,8 @@
           the same escape characters as C.
 
           <UL>
-            <LI><FONT color="blue"><I>a = "hello"; b = a; b = "hi"; print(a, b,
-            #a, type(a))</I></FONT> ; prints "hello hi 5 string"</LI>
+            <LI><CODE class="codelua">a = "hello"; b = a; b = "hi"; print(a, b,
+            #a, type(a))</CODE> ; prints "hello hi 5 string"</LI>
 
             <LI>Strings are internally hashed by Lua so that there is only one
             copy of a particular string stored at any one time no matter how
@@ -331,46 +327,45 @@
             <LI>String variables are copy on write and the example above shows
             that overwriting "b" does not change "a".</LI>
 
-            <LI><FONT color="blue"><I>s = "How are 'you'!"</I></FONT> or
-            <FONT color="blue"><I>s</I><I>= 'How\tare "You"!\n'</I></FONT> are
-            both valid since either " or ' can be used to quote strings. ('\t'
-            = tab, '\n' = line feed)</LI>
+            <LI><CODE class="codelua">s = "How are 'you'!"</CODE> or
+            <CODE class="codelua">s = 'How\tare "You"!\n'</CODE> are both valid
+            since either " or ' can be used to quote strings. ('\t' = tab, '\n'
+            = line feed)</LI>
 
-            <LI><FONT color="blue"><I>s = [[How are "'you'"!]]</I></FONT> means
+            <LI><CODE class="codelua">s = [[How are "'you'"!]]</CODE> means
             take everything including new lines and whitespace literally.</LI>
 
-            <LI>Concatenate two strings using the <FONT color="blue">..</FONT>
-            operator
+            <LI>Concatenate two strings using the <CODE class=
+            "codelua">..</CODE> operator
 
               <UL>
-                <LI><FONT color="blue"><I>str1 = "hello"; str2 = "number"; str3
-                = str1.." "..str2.." "..tostring(2).."!"</I></FONT></LI>
+                <LI><CODE class="codelua">str1 = "hello"; str2 = "number"; str3
+                = str1.." "..str2.." "..tostring(2).."!"</CODE></LI>
 
-                <LI>Numbers can be coerced into strings as <FONT color=
-                "blue"><I>("A "..2)</I></FONT>, but not <FONT color=
-                "blue"><I>(2.." A")</I></FONT> since only the right hand side
-                of the <FONT color="blue">..</FONT> operator may be coerced to
-                a string.</LI>
+                <LI>Numbers can be coerced into strings as <CODE class=
+                "codelua">("A "..2)</CODE>, but not <CODE class="codelua">(2.."
+                A")</CODE> since only the right hand side of the <CODE class=
+                "codelua">..</CODE> operator may be coerced to a string.</LI>
 
                 <LI>Many strings should be concatenated together by putting
-                them into a table array using <I><FONT color=
-                "blue">table.insert()</FONT></I> and then <FONT color=
-                "blue"><I>table.concat()</I></FONT> called to create the single
-                string result. The concatenation operator <FONT color=
-                "blue">..</FONT> is slower because each intermediary string has
-                to be reallocated and hashed. The <I><FONT color=
-                "blue">table.concat()</FONT></I> method only has to allocate
-                and hash the resultant string once and its speed is quite
+                them into a table array using <CODE class=
+                "codelua">table.insert()</CODE> and then <CODE class=
+                "codelua">table.concat()</CODE> called to create the single
+                string result. The concatenation operator <CODE class=
+                "codelua">..</CODE> is slower because each intermediary string
+                has to be reallocated and hashed. The <CODE class=
+                "codelua">table.concat()</CODE> method only has to allocate and
+                hash the resultant string once and its speed is quite
                 competitive to other scripting languages.</LI>
               </UL>
             </LI>
 
             <LI>Variables can be coerced into strings using the function
-            <FONT color="blue"><I>tostring(variable)</I></FONT> which returns
-            <FONT color="blue"><I>nil</I></FONT> on failure.</LI>
+            <CODE class="codelua">tostring(variable)</CODE> which returns
+            <CODE class="codelua">nil</CODE> on failure.</LI>
 
-            <LI>Additional string functions are in the <I>string</I>
-            table.</LI>
+            <LI>Additional string functions are in the <CODE class=
+            "codelua">string</CODE> table.</LI>
           </UL>
         </LI>
 
@@ -380,8 +375,8 @@
 
           <UL>
             <LI>
-              <FONT color="blue"><I>a = {5}; b = a; b[1] = 6; print(a, b, a[1],
-              b[1], b[2], type(a), type(b))</I></FONT>
+              <CODE class="codelua">a = {5}; b = a; b[1] = 6; print(a, b, a[1],
+              b[1], b[2], type(a), type(b))</CODE>
 
               <UL>
                 <LI>prints "table: 01780F98 table: 01780F98 6 6 nil table
@@ -389,9 +384,9 @@
               </UL>
 
               <UL>
-                <LI>Printing a table is the same as calling <FONT color=
-                "blue"><I>tostring(t)</I></FONT> on the table which displays
-                the variable type and its memory address.</LI>
+                <LI>Printing a table is the same as calling <CODE class=
+                "codelua">tostring(t)</CODE> on the table which displays the
+                variable type and its memory address.</LI>
 
                 <LI>Assigning a variable to an existing table does not copy the
                 table and you can use either variable to access and modify the
@@ -400,7 +395,7 @@
             </LI>
 
             <LI>
-              <FONT color="blue"><I>t = {}</I></FONT> creates an empty table.
+              <CODE class="codelua">t = {}</CODE> creates an empty table.
 
               <UL>
                 <LI>You must declare a variable as a table before using its
@@ -412,34 +407,34 @@
             </LI>
 
             <LI>
-              <FONT color="blue"><I>t = { ["a"] = 5, "first", "second", B = 7
-              }; print(t.a, t["a"], t[0], t[1], t[2], t.B, t.b, t.c)</I></FONT>
+              <CODE class="codelua">t = { ["a"] = 5, "first", "second", B = 7
+              }; print(t.a, t["a"], t[0], t[1], t[2], t.B, t.b, t.c)</CODE>
 
               <UL>
                 <LI>prints "5 5 nil first second 7 nil nil"</LI>
 
-                <LI>Set values as : <FONT color="blue"><I>t</I><I>.a = 2;
-                t["a"] = 3; t[10] = 4</I></FONT></LI>
+                <LI>Set values as : <CODE class="codelua">t.a = 2; t["a"] = 3;
+                t[10] = 4</CODE></LI>
 
                 <LI>Elements are automatically created when assigning new
                 values to elements that don't already exist and accessing
-                elements that don't exist returns <FONT color=
-                "blue"><I>nil</I></FONT>.</LI>
+                elements that don't exist returns <CODE class=
+                "codelua">nil</CODE>.</LI>
 
-                <LI>Clear values by setting them to <I>nil</I>, e.g.
-                <FONT color="blue"><I>t</I><I>.a = nil</I></FONT></LI>
+                <LI>Clear values by setting them to <CODE class=
+                "codelua">nil</CODE>, e.g. <CODE class="codelua">t.a =
+                nil</CODE></LI>
 
-                <LI>The length operator <FONT color="blue"><I>#t</I></FONT>
-                returns 2 since there are only two contiguous integer table
-                indexes starting from 1 even though in this case there are
-                actually 4 entries in the table.</LI>
+                <LI>The length operator <CODE class="codelua">#t</CODE> returns
+                2 since there are only two contiguous integer table indexes
+                starting from 1 even though in this case there are actually 4
+                entries in the table.</LI>
 
                 <LI>Lua table arrays have a starting index of 1.</LI>
 
                 <LI>
-                  <FONT color="blue"><I>for k, v in ipairs(t) do print(k, v)
-                  end</I> <FONT color="black">;</FONT></FONT> (k = key, v =
-                  value)
+                  <CODE class="codelua">for k, v in ipairs(t) do print(k, v)
+                  end</CODE> ; Note: (k = key, v = value)
 
                   <UL>
                     <LI>prints only the array values : "1 first" and "2
@@ -448,8 +443,8 @@
                 </LI>
 
                 <LI>
-                  <FONT color="blue"><I>for k, v in pairs(t) do print(k, v)
-                  end</I></FONT> ; (k = key, v = value)
+                  <CODE class="codelua">for k, v in pairs(t) do print(k, v)
+                  end</CODE> ; Note: (k = key, v = value)
 
                   <UL>
                     <LI>prints all table values unordered : "1 first", "2
@@ -469,20 +464,19 @@
                 <LI>wxLua places the wxWidgets bindings into the wx.XXX table
                 "namespace".</LI>
 
-                <LI>The global table is called <FONT color=
-                "blue"><I>_G</I></FONT> and you can display it as you would any
-                table using
+                <LI>The global table is called <CODE class="codelua">_G</CODE>
+                and you can display it as you would any table using
 
                   <UL>
-                    <LI><FONT color="blue"><I>for k, v in pairs(_G) do print(k,
-                    v) end</I></FONT></LI>
+                    <LI><CODE class="codelua">for k, v in pairs(_G) do print(k,
+                    v) end</CODE></LI>
                   </UL>
                 </LI>
               </UL>
             </LI>
 
-            <LI><FONT color="blue"><FONT color="black">Additional table
-            functions are in the <I>table</I> table.</FONT></FONT></LI>
+            <LI>Additional table functions are in the <CODE class=
+            "codelua">table</CODE> table.</LI>
           </UL>
         </LI>
 
@@ -510,43 +504,39 @@
           <B>function</B> :
 
           <UL>
-            <LI><FONT color="blue"><I>function f(a, b) return a+b end; print(f,
-            f(1,2), type(f))</I></FONT></LI>
+            <LI><CODE class="codelua">function f(a, b) return a+b end; print(f,
+            f(1,2), type(f))</CODE></LI>
 
             <LI>
-              <FONT color="blue"><I>f = function (a, b) return a+b end;
-              print(f, f(1,2), type(f))</I></FONT>
+              <CODE class="codelua">f = function (a, b) return a+b end;
+              print(f, f(1,2), type(f))</CODE>
 
               <UL>
                 <LI>prints "function: 01DE2AF8 3 function"</LI>
 
-                <LI>Printing a function is the same as calling <FONT color=
-                "blue"><I>tostring(f)</I></FONT> on the function which displays
-                the variable type and its memory address.</LI>
+                <LI>Printing a function is the same as calling <CODE class=
+                "codelua">tostring(f)</CODE> on the function which displays the
+                variable type and its memory address.</LI>
               </UL>
             </LI>
 
             <LI>Can return multiple values and be passed more or less variables
             than specified.</LI>
 
-            <LI>Unhandled returns or inputs are set to <FONT color=
-            "blue"><I>nil</I></FONT> or thrown out if there are extra.</LI>
+            <LI>Unhandled returns or inputs are set to <CODE class=
+            "codelua">nil</CODE> or thrown out if there are extra.</LI>
 
             <LI>Functions can be assigned to variables or put into tables.
 
               <UL>
-                <LI><FONT color="blue"><I>t = {}; t["Add"] = f;
-                print(</I></FONT><FONT color="blue"><I>t.Add(1, 2),</I></FONT>
-                <FONT color="blue"><I>t.Add</I></FONT><FONT color=
-                "blue"><I>)</I> <FONT color="black">; prints "3</FONT></FONT>
-                function: 01DE2AF8<FONT color="blue"><FONT color=
-                "black">"</FONT></FONT></LI>
+                <LI><CODE class="codelua">t = {}; t["Add"] = f; print(t.Add(1,
+                2), t.Add)</CODE> ; prints "3 function: 01DE2AF8</LI>
 
                 <LI>If you plan on putting a function into a table you may want
                 to declare the function local since it won't be garbage
                 collected until the table is garbage collected or the table's
-                index to the function is set to <FONT color=
-                "blue"><I>nil</I></FONT>.</LI>
+                index to the function is set to <CODE class=
+                "codelua">nil</CODE>.</LI>
               </UL>
             </LI>
           </UL>
@@ -561,14 +551,14 @@
 
           <DIV style="margin-left: 2em">
             <UL>
-              <LI><FONT color="blue"><I>function table_append(t, v) t[#t+1] =
-              v; v = 0; end; tbl = {}; item = "hello";</I></FONT> <FONT color=
-              "blue"><I>table_append</I></FONT><FONT color="blue"><I>(tbl,
-              item); print(tbl[#tbl], item)</I></FONT></LI>
+              <LI><CODE class="codelua">function table_append(t, v) t[#t+1] =
+              v; v = 0; end; tbl = {}; item = "hello"; table_append(tbl, item);
+              print(tbl[#tbl], item)</CODE></LI>
 
-              <LI>prints "hello hello", i.e. <FONT color=
-              "blue"><I>tbl</I><I>[1] == "hello"</I></FONT> and the variable
-              <I>"item"</I> still equals "hello" and was not changed.</LI>
+              <LI>prints "hello hello", i.e. <CODE class="codelua">[1] ==
+              "hello"</CODE> and the variable "<CODE class=
+              "codelua">item</CODE>" still equals "hello" and was not
+              changed.</LI>
             </UL>
           </DIV>
         </LI>
@@ -579,30 +569,30 @@
       <B>Operators</B>
 
       <UL>
-        <LI>Relational : <FONT color="blue">== ~= &lt; &gt; &lt;= &gt;=</FONT>
-        (Note: not equal is <FONT color="blue">~=</FONT>)</LI>
+        <LI>Relational : <CODE class="codelua">== ~= &lt; &gt; &lt;=
+        &gt;=</CODE> (Note: not equal is <CODE class="codelua">~=</CODE>)</LI>
 
-        <LI>Logical: <FONT color="blue"><I>and, or, not</I></FONT></LI>
+        <LI>Logical: <CODE class="codelua">and, or, not</CODE></LI>
 
         <LI>Precedence (low to high):
 
-          <UL>
-            <LI><FONT color="blue">or</FONT></LI>
+          <OL>
+            <LI><CODE class="codelua">or</CODE></LI>
 
-            <LI><FONT color="blue">and</FONT></LI>
+            <LI><CODE class="codelua">and</CODE></LI>
 
-            <LI><FONT color="blue">&lt; &gt; &lt;= &gt;= ~= ==</FONT></LI>
+            <LI><CODE class="codelua">&lt; &gt; &lt;= &gt;= ~= ==</CODE></LI>
 
-            <LI><FONT color="blue">..</FONT></LI>
+            <LI><CODE class="codelua">..</CODE></LI>
 
-            <LI><FONT color="blue">+ -</FONT></LI>
+            <LI><CODE class="codelua">+ -</CODE></LI>
 
-            <LI><FONT color="blue">* / %</FONT></LI>
+            <LI><CODE class="codelua">* / %</CODE></LI>
 
-            <LI><FONT color="blue">not # -</FONT> (unary)</LI>
+            <LI><CODE class="codelua">not # -</CODE> (unary)</LI>
 
-            <LI><FONT color="blue">^</FONT></LI>
-          </UL>
+            <LI><CODE class="codelua">^</CODE></LI>
+          </OL>
         </LI>
       </UL>
     </LI>
@@ -611,9 +601,9 @@
       <B>Keywords</B>
 
       <UL>
-        <LI><FONT color="blue"><I>and break do else elseif end false for
+        <LI><CODE class="codelua">and break do else elseif end false for
         function if in local nil not or repeat return then true until
-        while</I></FONT></LI>
+        while</CODE></LI>
       </UL>
     </LI>
 
@@ -621,113 +611,155 @@
       <B>do ... end</B>
 
       <UL>
-        <LI>Create a new local scope in a <FONT color="blue"><I>do
-        end</I></FONT> block.</LI>
+        <LI>Create a new local scope in a <CODE class="codelua">do end</CODE>
+        block.</LI>
 
-        <LI>Note : You cannot write <FONT color="blue"><I>function printHi()
-        return; print("hi") end</I></FONT>, but you can have <FONT color=
-        "blue"><I>function printHi() do return end; print("hi") end</I></FONT>
+        <LI>Note : You cannot write <CODE class="codelua">function printHi()
+        return; print("hi") end</CODE>, but you can have <CODE class=
+        "codelua">function printHi() do return end; print("hi") end</CODE>
         which can be useful for debugging functions.</LI>
       </UL>
     </LI>
   </UL>
 
-  <BLOCKQUOTE>
-    <PRE>
-<FONT color=
-"blue">do<BR> -- create a new local scope<BR> local a = 2<BR>end</FONT>
+  <DIV class="codebox">
+    <BLOCKQUOTE>
+      <PRE>
+do
+    -- create a new local scope
+    local a = 2
+end
 </PRE>
-  </BLOCKQUOTE>
+    </BLOCKQUOTE>
+  </DIV>
 
   <UL>
     <LI><B>if (bool) then ... elseif (bool) then ... else ... end</B></LI>
   </UL>
 
-  <BLOCKQUOTE>
-    <PRE>
-<FONT color=
-"blue">local a, b, c = 1, 2, 3 -- can assign multiple values<BR>a = 1; b = 2; c = 3     -- use ; for multiple lines of code on single line<BR>a, b, c = 1, 2, 3       -- this works too<BR>if (a == 1) and ((b &lt;= 2) or (c ~= 3)) then <BR> print(a+b/c) <BR>elseif a == 2 then      -- no parentheses necessary<BR> print(a)<BR>else<BR> print(b)<BR>end</FONT>
+  <DIV class="codebox">
+    <BLOCKQUOTE>
+      <PRE>
+local a, b, c = 1, 2, 3 -- can assign multiple values
+a = 1; b = 2; c = 3     -- use ; for multiple lines of code on single line
+a, b, c = 1, 2, 3       -- this works too
+
+if (a == 1) and ((b &lt;= 2) or (c ~= 3)) then
+    print(a+b/c)
+elseif a == 2 then      -- no parentheses necessary
+    print(a)
+else
+    print(b)
+end
 </PRE>
-  </BLOCKQUOTE>
+    </BLOCKQUOTE>
+  </DIV>
 
   <UL>
-    <LI style="list-style: none; display: inline">
-      <UL>
-        <LI>There is no case statement, but <FONT color="blue"><I>table[value]
-        = function() ... end</I></FONT> may be used to simulate one.</LI>
+    <LI><B>There is no case statement</B>, but <CODE class=
+    "codelua">table[value] = function() ... end</CODE> may be used to simulate
+    one.</LI>
+  </UL>
 
-        <LI style="list-style: none; display: inline">
-          <BLOCKQUOTE>
-            <PRE>
-<FONT color=
-"blue">case = {}<BR>case[1] = function() print("Hello #1") end -- anonymous function<BR>case[2] = function() print("Hello #2") end<BR>...<BR>if case[value] then<BR> case[value]()<BR>else<BR> print("Unknown case value")<BR>end</FONT>
+  <DIV class="codebox">
+    <BLOCKQUOTE>
+      <PRE>
+case = {}
+case[1] = function() print("Hello #1") end -- anonymous function
+case[2] = function() print("Hello #2") end
+...
+if case[value] then
+    case[value]()
+else
+    print("Unknown case value")
+end
 </PRE>
-          </BLOCKQUOTE>
-        </LI>
-      </UL>
-    </LI>
+    </BLOCKQUOTE>
+  </DIV>
 
+  <UL>
     <LI>
       <B>while (bool) ... end</B>
 
       <UL>
-        <LI>Note : there is no <I>continue</I> keyword only <FONT color=
-        "blue"><I>break</I></FONT></LI>
+        <LI>Note : there is no <CODE class="codelua">continue</CODE> keyword
+        only <CODE class="codelua">break</CODE></LI>
       </UL>
     </LI>
   </UL>
 
-  <BLOCKQUOTE>
-    <PRE>
-<FONT color="blue">function Check5(val)</FONT><FONT><FONT color=
-"blue"> -- returns nil if val ~= 5</FONT></FONT><FONT color=
-"blue"> <BR> if val == 5 then <BR>  return true <BR> end <BR>end <BR><BR>local a = 1<BR>while a &lt; 10 do<BR> print(a)<BR> if </FONT><FONT><FONT color="blue">Check5</FONT></FONT><FONT color="blue">(a) then break end</FONT><FONT><FONT color="blue"> a = a + 1 -- no increment operator</FONT></FONT><FONT color="blue">end</FONT>
+  <DIV class="codebox">
+    <BLOCKQUOTE>
+      <PRE>
+function Check5(val) -- returns nil if val ~= 5
+    if val == 5 then
+        return true
+    end
+end
+
+local a = 1
+while a &lt; 10 do
+    print(a)
+    if Check5(a) then break end
+    a = a + 1 -- no increment operator
+end
 </PRE>
-  </BLOCKQUOTE>
+    </BLOCKQUOTE>
+  </DIV>
 
   <DIV style="margin-left: 2em">
     <UL>
-      <LI>You can simulate a <I>continue</I> statement by adding a while loop
-      (doesn't print # 5).</LI>
+      <LI>You can simulate a <CODE class="codelua">continue</CODE> statement by
+      adding a while loop (doesn't print # 5).</LI>
     </UL>
   </DIV>
 
-  <BLOCKQUOTE>
-    <PRE>
-<FONT color=
-"blue">local a = 0<BR>while a &lt; 10 do while true do</FONT><FONT><FONT color=
-"blue"> a = a + 1 -- no increment operator</FONT></FONT><FONT color=
-"blue"> if </FONT><FONT><FONT color="blue">Check5</FONT></FONT><FONT color=
-"blue">(a) then <BR>  break <BR> else<BR>  print(a)<BR> end</FONT><FONT color=
-"blue">break end end -- break out of inner while loop</FONT>
+  <DIV class="codebox">
+    <BLOCKQUOTE>
+      <PRE>
+local a = 0
+while a &lt; 10 do while true do
+a = a + 1 -- no increment operator
+if Check5 (a) then
+    break
+else
+    print(a)
+end break end end -- break out of inner while loop
 </PRE>
-  </BLOCKQUOTE>
+    </BLOCKQUOTE>
+  </DIV>
 
   <UL>
     <LI>
       <B>repeat ... until (bool)</B>
 
       <UL>
-        <LI>Note : there is no <I>continue</I> keyword only <FONT color=
-        "blue"><I>break</I></FONT></LI>
+        <LI>Note : there is no <CODE class="codelua">continue</CODE> keyword
+        only <CODE class="codelua">break</CODE></LI>
       </UL>
     </LI>
   </UL>
 
-  <BLOCKQUOTE>
-    <PRE>
-<FONT color=
-"blue">local a = 10<BR>repeat<BR> local temp = a * 2<BR> print(temp, type(temp))<BR> a = a - 1 -- no decrement operator<BR>until a &lt; 0</FONT>
+  <DIV class="codebox">
+    <BLOCKQUOTE>
+      <PRE>
+local a = 10
+repeat
+    local temp = a * 2
+    print(temp, type(temp))
+    a = a - 1 -- no decrement operator
+until a &lt; 0
 </PRE>
-  </BLOCKQUOTE>
+    </BLOCKQUOTE>
+  </DIV>
 
   <UL>
     <LI>
       <B>for var = init_value, end_value [, increment] do ... end</B>
 
       <UL>
-        <LI>Note : there is no <I>continue</I> keyword only <FONT color=
-        "blue"><I>break</I></FONT></LI>
+        <LI>Note : there is no <CODE class="codelua">continue</CODE> keyword
+        only <CODE class="codelua">break</CODE></LI>
 
         <LI>You cannot modify the loop variable, limit, or increment from
         within the loop. The loop counter variable is local to the loop and the
@@ -740,12 +772,19 @@
     </LI>
   </UL>
 
-  <BLOCKQUOTE>
-    <PRE>
-<FONT color=
-"blue">local a = "hello"<BR>for a = 1, 10 --[[, increment]] do -- optional increment value, else 1<BR> local temp = a * 2<BR> print(temp)<BR>end<BR>print(a) -- a == "hello" since loop counter variable is local to the loop</FONT>
+  <DIV class="codebox">
+    <BLOCKQUOTE>
+      <PRE>
+local a = "hello"
+for a = 1, 10 --[[, increment]] do -- optional increment value, default = 1
+    local temp = a * 2
+    print(temp)
+end
+
+print(a) -- a == "hello" since loop counter variable is local to the loop
 </PRE>
-  </BLOCKQUOTE>
+    </BLOCKQUOTE>
+  </DIV>
 
   <UL>
     <LI>
@@ -755,10 +794,10 @@
         <LI>Input any number of parameters by value, tables and userdata are
         passed by reference.</LI>
 
-        <LI>Missing input variables are assigned the value <I><FONT color=
-        "blue">nil</FONT></I>, extra inputs are discarded.</LI>
+        <LI>Missing input variables are assigned the value <CODE class=
+        "codelua">nil</CODE>, extra inputs are discarded.</LI>
 
-        <LI>Return values using the "<FONT color="blue"><I>return</I></FONT>"
+        <LI>Return values using the "<CODE class="codelua">return</CODE>"
         keyword.</LI>
 
         <LI>Not all return values need to be used and extra ones will be
@@ -768,29 +807,29 @@
             <LI>The symbol "_" is a valid variable name and is often used as a
             dummy variable to receive return values that you do not want.
 
-              <UL style="font-style: italic;">
-                <LI><FONT color="blue">function GetNums() return 3, 4, 5, 6
-                end; local _, num2 = GetNums()</FONT></LI>
+              <UL>
+                <LI><CODE class="codelua">function GetNums() return 3, 4, 5, 6
+                end; local _, num2 = GetNums()</CODE></LI>
               </UL>
             </LI>
 
-            <LI>You may also use the <FONT color="blue"><I>select(n,
-            ...)</I></FONT> function to choose return values to use.
+            <LI>You may also use the <CODE class="codelua">select(n,
+            ...)</CODE> function to choose return values to use.
 
               <UL>
-                <LI><FONT color="blue"><I>print(select("#", GetNums()), "and",
-                select(3, GetNums()))</I></FONT>, prints "4 and 5 6".</LI>
+                <LI><CODE class="codelua">print(select("#", GetNums()), "and",
+                select(3, GetNums()))</CODE>, prints "4 and 5 6".</LI>
 
-                <LI>Note <FONT color="blue"><I>select(n, ...)</I></FONT>
-                returns all args after <I>n</I>, but if the left hand side is a
-                single variable the others are discarded.</LI>
+                <LI>Note <CODE class="codelua">select(n, ...)</CODE> returns
+                all args after <CODE class="codelua">n</CODE>, but if the left
+                hand side is a single variable the others are discarded.</LI>
               </UL>
             </LI>
           </UL>
         </LI>
 
         <LI>Tables can be used as containers for input values to functions
-        using the <FONT color="blue"><I>unpack(table, [i, [, j]])</I></FONT>
+        using the <CODE class="codelua">unpack(table, [i, [, j]])</CODE>
         function.
 
           <UL>
@@ -799,28 +838,27 @@
           </UL>
 
           <UL>
-            <LI><FONT color="blue"><I>print(string.find(unpack({"Hello", "ll",
-            1, 1})))</I></FONT>, prints "3 4"</LI>
+            <LI><CODE class="codelua">print(string.find(unpack({"Hello", "ll",
+            1, 1})))</CODE>, prints "3 4"</LI>
           </UL>
         </LI>
 
-        <LI>Vararg inputs are written as <I><FONT color="blue">function
-        dostuff( ... ) end</FONT></I>
+        <LI>Vararg inputs are written as <CODE class="codelua">function
+        dostuff( ... ) end</CODE>
 
           <UL>
-            <LI>The number of args is found using: <FONT color="blue"><I>local
-            n_args = select("#", ...)</I></FONT></LI>
+            <LI>The number of args is found using: <CODE class="codelua">local
+            n_args = select("#", ...)</CODE></LI>
 
-            <LI>The args can be converted into table using: <FONT color=
-            "blue"><I>local args = { ... }</I></FONT></LI>
+            <LI>The args can be converted into table using: <CODE class=
+            "codelua">local args = { ... }</CODE></LI>
 
-            <LI>A particular arg can be chosen using: <FONT color=
-            "blue"><I>local arg3 = select(3, ...)</I></FONT>
+            <LI>A particular arg can be chosen using: <CODE class=
+            "codelua">local arg3 = select(3, ...)</CODE>
 
               <UL>
-                <LI>See above about using <FONT color=
-                "blue"><I>select()</I></FONT> to pick return values of a
-                function as well.</LI>
+                <LI>See above about using <CODE class="codelua">select()</CODE>
+                to pick return values of a function as well.</LI>
               </UL>
             </LI>
           </UL>
@@ -829,12 +867,52 @@
     </LI>
   </UL>
 
-  <BLOCKQUOTE>
-    <PRE>
-<FONT color=
-"blue">-- Print the keys in table t for table of values<BR>function PrintKeys(t, vals, cmp_case)</FONT><FONT><FONT color="blue"> -- use nested functions for repetitive code or to simplify code</FONT></FONT><FONT color="blue"> local function cmp_vals(a, b) <BR>  if cmp_case then -- can use upvalue variables<BR>   return a == b<BR>  else<BR>   return string.lower(a) == string.lower(b)<BR>  end<BR> end<BR> </FONT><FONT color="blue"> local function find_key(t, val)<BR>  for k,v in pairs(t) do<BR>   if </FONT><FONT><FONT color="blue">cmp_vals</FONT></FONT><FONT color="blue">(val, v) then return k end<BR>  end<BR> end<BR><BR> for i = 1, #vals do<BR>  print(</FONT><FONT><FONT color="blue">find_key(t, vals[i])</FONT></FONT><FONT color="blue">, vals[i])<BR> end<BR>end<BR><BR>-- prints "a1 a2", "b1 b2", "nil C2"<BR>PrintKeys({a1 = "a2", b1 = "b2", c1 = "c2"}, {"a2", "b2", "C2"}, true)<BR><BR><BR>-- Varargs example, prints "4 4 4 20 20" and "table: 0183B820 10 30 5"<BR>function Varargs(...)<BR> local args = {...}<BR> print(select("#", ...), #{...}, #args, args[2], unpack({...}, 2, 2))   <BR> return args, unpack(args) -- same as return ...<BR>end<BR><BR>vals, val1, _, val3 = Varargs(10, 20, 30, 40)<BR>print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))</FONT>
+  <DIV class="codebox">
+    <BLOCKQUOTE>
+      <PRE>
+-- Print the keys in table t for table of values
+function PrintKeys(t, vals, cmp_case)
+    -- use nested functions for repetitive code or to simplify code
+    local function cmp_vals(a, b)
+        if cmp_case then -- can use upvalue variables
+            return a == b
+        else
+            return string.lower(a) == string.lower(b)
+        end
+    end
+    local function find_key(t, val)
+        for k,v in pairs(t) do
+            if cmp_vals(val, v) then return k end
+        end
+    end
+    for i = 1, #vals do
+        print(find_key(t, vals[i]), vals[i])
+    end
+end
+
+-- prints "a1 a2", "b1 b2", "nil C2"
+PrintKeys({a1 = "a2", b1 = "b2", c1 = "c2"}, {"a2", "b2", "C2"}, true)
+
 </PRE>
-  </BLOCKQUOTE>
+    </BLOCKQUOTE>
+  </DIV><BR>
+
+  <DIV class="codebox">
+    <BLOCKQUOTE>
+      <PRE>
+
+-- Varargs example, prints "4 4 4 20 20" and "table: 0183B820 10 30 5"
+function Varargs(...)
+    local args = {...}
+    print(select("#", ...), #{...}, #args, args[2], unpack({...}, 2, 2))
+    return args, unpack(args) -- same as return ...
+end
+
+vals, val1, _, val3 = Varargs(10, 20, 30, 40)
+print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
+</PRE>
+    </BLOCKQUOTE>
+  </DIV>
 
   <H2><A name="C4" id="C4"></A>4 - Bit Library</H2>wxLua automatically loads a
   library for manipulating the bits of an integer and puts it into the global
@@ -879,9 +957,10 @@
   <H2><A name="C5" id="C5"></A>5 - Programming in wxLua</H2>Programming in
   wxLua means that you're writing programs in the Lua language using an
   additional table of functions, objects, numbers, strings, and "classes" in
-  the namespace <B><I>wx</I></B> from wxWidgets. Additional libraries may be
-  added as bindings and can be placed in their own "namespace" table, but for
-  the examples below we will use the <I><B>wx</B></I> table.<BR>
+  the namespace table <CODE class="codelua">wx</CODE> from wxWidgets.
+  Additional libraries may be added as bindings and can be placed in their own
+  "namespace" table, but for the examples below we will use the <CODE class=
+  "codelua">wx</CODE> table.<BR>
   <BR>
   The list below are the tables that wxLua creates containing the binding
   functions or objects. These are in addition to the standard Lua tables;
@@ -942,18 +1021,18 @@
   passed to it.<BR>
   <BR>
   <B>Location of the wxWidgets objects declared in a C++ header files in the
-  <I>wx</I> Lua table</B>
+  <CODE class="codelua">wx</CODE> Lua table</B>
 
   <UL>
     <LI>
       <B>#define NUMBER_DEFINE VALUE</B>
 
       <UL>
-        <LI>All #defined numerical values are available as
-        <I>wx.NUMBER_DEFINE</I></LI>
+        <LI>All #defined numerical values are available as <CODE class=
+        "codelua">wx.NUMBER_DEFINE</CODE></LI>
 
-        <LI>Example <I>"#define wxID_ANY -1"</I> is accessed as
-        <I>wx.wxID_ANY</I></LI>
+        <LI>Example <I>"#define wxID_ANY -1"</I> is accessed as <CODE class=
+        "codelua">wx.wxID_ANY</CODE></LI>
 
         <LI>Declared in the bindings using the <I>%define</I> tag</LI>
       </UL>
@@ -963,11 +1042,11 @@
       <B>[int, double, etc] NUMBER_VARIABLE;</B>
 
       <UL>
-        <LI>All global numerical variables are available as
-        <I>wx.NUMBER_VARIABLE</I></LI>
+        <LI>All global numerical variables are available as <CODE class=
+        "codelua">wx.NUMBER_VARIABLE</CODE></LI>
 
         <LI>Example : <I>"extern const int wxInvalidOffset;"</I> is accessible
-        as <I>wx.wxInvalidOffset</I>.</LI>
+        as <CODE class="codelua">wx.wxInvalidOffset</CODE>.</LI>
 
         <LI>Declared in the bindings using the <I>%define</I> tag</LI>
       </UL>
@@ -977,21 +1056,21 @@
       <B>enum ENUM_NAMESPACE [or CLASSNAME::ENUM_NAMESPACE] { ENUM_NAME }</B>
 
       <UL>
-        <LI>All global enums, named or not, are available as
-        <I>wx.ENUM_NAME</I>
+        <LI>All global enums, named or not, are available as <CODE class=
+        "codelua">wx.ENUM_NAME</CODE>
 
           <UL>
             <LI>Example : <I>"enum wxDirection { wxLEFT, ... }"</I> is
-            accessible as <I>wx.wxLEFT</I></LI>
+            accessible as <CODE class="codelua">wx.wxLEFT</CODE></LI>
           </UL>
         </LI>
 
         <LI>All enums that are members of classes are available as
-        <I>wx.CLASSNAME.ENUM_NAME</I>
+          <CODE class="codelua">wx.CLASSNAME.ENUM_NAME</CODE>
 
           <UL>
             <LI>Example : <I>"enum wxFTP::TransferMode { ASCII, ... }"</I> is
-            accessible as <I>wx.wxFTP.ASCII</I></LI>
+            accessible as <CODE class="codelua">wx.wxFTP.ASCII</CODE></LI>
           </UL>
         </LI>
 
@@ -1007,12 +1086,12 @@
       <B>#define STRING_DEFINE wxT("String Value")</B>
 
       <UL>
-        <LI>All #defined string values are available as
-        <I>wx.STRING_DEFINE</I></LI>
+        <LI>All #defined string values are available as <CODE class=
+        "codelua">wx.STRING_DEFINE</CODE></LI>
 
         <LI>Example : <I>"#define wxIMAGE_OPTION_CUR_HOTSPOT_X
-        wxT("HotSpotX")"</I> is accessible as
-        <I>wx.wxIMAGE_OPTION_CUR_HOTSPOT_X</I></LI>
+        wxT("HotSpotX")"</I> is accessible as <CODE class=
+        "codelua">wx.wxIMAGE_OPTION_CUR_HOTSPOT_X</CODE></LI>
 
         <LI>Declared in the bindings using the <I>%define_string</I> tag</LI>
       </UL>
@@ -1022,8 +1101,8 @@
       <B>const wxChar* STRING_VARIABLE;</B>
 
       <UL>
-        <LI>All global string variables are available as
-        <I>wx.STRING_VARIABLE</I></LI>
+        <LI>All global string variables are available as <CODE class=
+        "codelua">wx.STRING_VARIABLE</CODE></LI>
 
         <LI>No examples yet.</LI>
 
@@ -1035,11 +1114,12 @@
       <B>wxEVT_XXX for wxEvtHandler::Connect()</B>
 
       <UL>
-        <LI>All <I>wxEVT_XXX</I> wxEventTypes (an integer) are available as <I>
-          wx.wxEVT_XXX</I>
+        <LI>All <I>wxEVT_XXX</I> wxEventTypes (an integer) are available as
+        <CODE class="codelua">wx.wxEVT_XXX</CODE>
 
           <UL>
-            <LI>Example : <I>wx.wxEVT_COMMAND_MENU_SELECTED</I> for menu item
+            <LI>Example : <CODE class=
+            "codelua">wx.wxEVT_COMMAND_MENU_SELECTED</CODE> for menu item
             selection.</LI>
           </UL>
         </LI>
@@ -1050,26 +1130,26 @@
         the two.</LI>
 
         <LI>Use the wxEvtHandler::Connect() function to connect event types to
-        a wxEvtHandler, typically a wxWindow derived class.
+        a wxEvtHandler; typically a wxWindow derived class.
 
           <UL>
-            <LI>Example : <I>EVT_MENU(id, func)</I> use
-            <I>window:Connect(menuId, wx.wxEVT_COMMAND_MENU_SELECTED, Lua
-            function)</I>. The Lua function must have the signature of
-            <I>"function MenuEvent(event) ... handle event ... return"</I>
-            where the event variable will be of the wxEvent class the
-            wxEventType was declared in, which in this case is a
+            <LI>Example : <I>EVT_MENU(id, func)</I> use <CODE class=
+            "codelua">window:Connect(menuId, wx.wxEVT_COMMAND_MENU_SELECTED,
+            Lua function)</CODE>. The Lua function must have the signature of
+            <CODE class="codelua">function MenuEvent(event) ... handle event
+            ... return</CODE> where the event variable will be of the wxEvent
+            class the wxEventType was declared in, which in this case is a
             wxCommandEvent.</LI>
           </UL>
 
           <UL>
-            <LI>Example : <I>EVT_PAINT(func)</I> use
-            <I>window:Connect(wx.wxEVT_PAINT, Lua function)</I>. There is no id
-            used for this connect event function call since you are directly
-            connecting the paint event to the window, whereas in the menu case
-            you are handling a menu event from the menu that travels up the
-            chain of window parents until a handler is found, therefore you
-            need the Id to determine where the event came from.
+            <LI>Example : <I>EVT_PAINT(func)</I> use <CODE class=
+            "codelua">window:Connect(wx.wxEVT_PAINT, Lua function)</CODE>.
+            There is no id used for this connect event function call since you
+            are directly connecting the paint event to the window, whereas in
+            the menu case you are handling a menu event from the menu that
+            travels up the chain of window parents until a handler is found,
+            therefore you need the Id to determine where the event came from.
 
               <UL style="color: red;">
                 <LI>Note: You must always create a wxPaintDC for
@@ -1077,9 +1157,9 @@
               </UL>
 
               <UL>
-                <LI><I style="color: blue;">local dc =
-                wx.wxPaintDC(event:GetEventObject():DynamicCast("wxWindow"))</I>
-                and then call <I style="color: blue;">dc:delete()</I> at the
+                <LI><CODE class="codelua">local dc =
+                wx.wxPaintDC(event:GetEventObject():DynamicCast("wxWindow"))</CODE>
+                and then call <CODE class="codelua">dc:delete()</CODE> at the
                 end of the function because the paint event clears the "dirty"
                 region to repaint and if it is not cleared another paint event
                 will be sent... and so on.</LI>
@@ -1097,11 +1177,12 @@
 
       <UL>
         <LI>All global objects that are classes or structs are available as
-        <I>wx.OBJECT_NAME</I></LI>
+        <CODE class="codelua">wx.OBJECT_NAME</CODE></LI>
 
         <LI>Example : <I>"const wxImage wxNullImage;"</I> is accessible as
-        <I>wx.wxNullImage</I> and functions from the wxImage class can be
-        called as <I>wx.wxNullImage:Ok()</I> which should return false.</LI>
+        <CODE class="codelua">wx.wxNullImage</CODE> and functions from the
+        wxImage class can be called as <CODE class=
+        "codelua">wx.wxNullImage:Ok()</CODE> which should return false.</LI>
 
         <LI>Declared in the bindings using the <I>%define_object</I> tag</LI>
       </UL>
@@ -1112,12 +1193,13 @@
 
       <UL>
         <LI>All global pointers that are classes or structs are available as
-        <I>wx.POINTER_NAME</I></LI>
+        <CODE class="codelua">wx.POINTER_NAME</CODE></LI>
 
         <LI>Example : <I>"extern wxPenList* wxThePenList;"</I> is accessible as
-        <I>wx.wxThePenList</I> and functions from the wxPenList class can be
-        made as <I>"pen = wx.wxThePenList:FindOrCreatePen(wx.wxColour(1,2,3),
-        1, wx.wxSOLID)"</I></LI>
+        <CODE class="codelua">wx.wxThePenList</CODE> and functions from the
+        wxPenList class can be made as <CODE class="codelua">pen =
+        wx.wxThePenList:FindOrCreatePen(wx.wxColour(1,2,3), 1,
+        wx.wxSOLID)</CODE></LI>
 
         <LI>Declared in the bindings using the <I>%define_object</I> tag</LI>
       </UL>
@@ -1128,13 +1210,14 @@
       wxString&amp; str)</B>
 
       <UL>
-        <LI>All global C style functions are available as
-        <I>wx.FUNCTION_NAME(1, "Hello")</I></LI>
+        <LI>All global C style functions are available as <CODE class=
+        "codelua">wx.FUNCTION_NAME(1, "Hello")</CODE></LI>
 
-        <LI>Example : <I>"extern wxString wxGetUserHome(const wxString&amp;
-        name)"</I> is accessible as <I>"<SPAN style="color: blue;">home_dir =
-        wx.wxGetUserHome("john")</SPAN>"</I> where wxString means to input a
-        Lua string and a Lua string is returned.</LI>
+        <LI>Example : "<CODE class="codelua">extern wxString
+        wxGetUserHome(const wxString&amp; name)"</CODE> is accessible as
+        "<CODE class="codelua">home_dir = wx.wxGetUserHome("john")</CODE>"
+        where wxString means to input a Lua string and a Lua string is
+        returned.</LI>
 
         <LI>Declared in the bindings using the <I>%function</I> tag</LI>
       </UL>
@@ -1144,13 +1227,14 @@
       <B>C++ Classes CLASS_NAME</B>
 
       <UL>
-        <LI>All C++ classes are available as <I>wx.CLASS_NAME</I>, however in
-        order to use one you must call one of the constructors first or get the
-        class as a return value from another function call.
+        <LI>All C++ classes are available as <CODE class=
+        "codelua">wx.CLASS_NAME</CODE>, however in order to use one you must
+        call one of the constructors first or get the class as a return value
+        from another function call.
 
           <UL>
-            <LI>Example : <I>"<SPAN style="color: blue;">pt = wx.wxPoint(1, 2);
-            pt2 = wx.wxPoint(pt)</SPAN>"</I>.</LI>
+            <LI>Example : "<CODE class="codelua">pt = wx.wxPoint(1, 2); pt2 =
+            wx.wxPoint(pt)</CODE>".</LI>
 
             <LI>Multiple member functions with the same name are overloaded as
             in C++ and the proper function to call is determined at runtime.
@@ -1163,9 +1247,9 @@
 
             <LI>The C++ classes are exposed as tables in Lua, but have a __call
             metatable item so they can be called as a function. If you need to
-            get the constructor function itself you can use
-            <I>wx.CLASS_NAME.new(...)</I> which is the constructor exposed as a
-            Cfunction.</LI>
+            get the constructor function itself you can use <CODE class=
+            "codelua">wx.CLASS_NAME.new(...)</CODE> which is the constructor
+            exposed as a Cfunction.</LI>
           </UL>
         </LI>
 
@@ -1185,7 +1269,7 @@
                 <LI>__tostring to allow print() to show something useful
 
                   <UL>
-                    <LI><SPAN style="color: blue;">print(wx.wxPoint())</SPAN>
+                    <LI><CODE class="codelua">print(wx.wxPoint())</CODE>
                     "userdata: 0x858df5c [wxPoint(0x84ab550, 251)]", where
                     0x858df5c is the Lua userdata address, 0x84ab550 is the
                     address of the wxPoint object, and 251 is the wxLua type
@@ -1257,16 +1341,16 @@
               silently creating too many temporary objects.</FONT>
 
               <UL>
-                <LI>Example: <I>"<SPAN style=
-                "color: blue;">wxDC:SetPen(wx.wxPen(wx.wxColour(1,2,3), 1,
-                wx.wxSOLID))</SPAN>"</I>; notice that both a wxPen and a
-                wxColour have been created, but there is no way for you to call
-                delete() on them so they will collect until Lua runs its
-                garbage collector.</LI>
+                <LI>Example: <CODE class=
+                "codelua">wxDC:SetPen(wx.wxPen(wx.wxColour(1,2,3), 1,
+                wx.wxSOLID))</CODE>; notice that both a wxPen and a wxColour
+                have been created, but there is no way for you to call delete()
+                on them so they will collect until Lua runs its garbage
+                collector.</LI>
 
-                <LI>You can force garbage collection using
-                <I>"collectgarbage("collect")"</I> in Lua, but this may cause
-                pauses in your program's execution. It is a good idea to
+                <LI>You can force garbage collection using <CODE class=
+                "codelua">collectgarbage("collect")</CODE> in Lua, but this may
+                cause pauses in your program's execution. It is a good idea to
                 collect all the garbage at the end of your initialization
                 function to at least start out with a clean slate since program
                 startup time is usually not a concern.</LI>
@@ -1316,21 +1400,21 @@
             <LI>How to tell how many userdata objects you currently have?
 
               <UL>
-                <LI>Print the output of <B style=
-                "color: blue;"><I>wxlua.GetGCUserdataInfo(true)</I></B> to show
-                what objects will be garbage collected when their reference
-                count goes to 0 and the Lua garbage collector runs.</LI>
+                <LI>Print the output of <CODE class=
+                "codelua">wxlua.GetGCUserdataInfo(true)</CODE> to show what
+                objects will be garbage collected when their reference count
+                goes to 0 and the Lua garbage collector runs.</LI>
 
-                <LI>Print the output of <I style=
-                "color: blue;"><B>wxlua.GetTrackedObjectInfo(true)</B></I> to
-                get class objects that wxLua has pushed into Lua that may or
-                may not be garbage collected.</LI>
+                <LI>Print the output of <CODE class=
+                "codelua">wxlua.GetTrackedObjectInfo(true)</CODE> to get class
+                objects that wxLua has pushed into Lua that may or may not be
+                garbage collected.</LI>
               </UL>
 
               <UL>
-                <LI>Call the function <B style=
-                "color: blue;"><I>wxlua.LuaStackDialog()</I></B> when you run
-                your program and examine the items in the Lua LUA_REGISTRYINDEX
+                <LI>Call the function <CODE class=
+                "codelua">wxlua.LuaStackDialog()</CODE> when you run your
+                program and examine the items in the Lua LUA_REGISTRYINDEX
                 table. Expand "wxLua objects pushed" and "wxLua gc objects to
                 delete" tables.</LI>
               </UL>
@@ -1350,11 +1434,10 @@
           convention.
 
           <UL>
-            <LI>Example : <I>"<SPAN style="color: blue;">size = wx.wxSize(1,
-            2); size:SetWidth(10); size.SetHeight(size, 11);
-            print(size:GetWidth(), size.GetHeight(size))</SPAN>"</I> where we
-            create a wxSize, set a new width and height, and then print the
-            numerical values.</LI>
+            <LI>Example : "<CODE class="codelua">size = wx.wxSize(1, 2);
+            size:SetWidth(10); size.SetHeight(size, 11); print(size:GetWidth(),
+            size.GetHeight(size))</CODE>" where we create a wxSize, set a new
+            width and height, and then print the numerical values.</LI>
 
             <LI>Functions may be renamed in the bindings using the
             <I>%rename</I> tag in the interface files. You call the functions
@@ -1384,10 +1467,10 @@
             XXX and you do not call them like a function using "()", but rather
             like accessing a table member, without the "()".</LI>
 
-            <LI>Example : <I>"<SPAN style="color: blue;">rect =
+            <LI>Example : "<CODE class="codelua">rect =
             wx.wxRect(wx.wxPoint(1,2), wx.wxSize(3,4)); rect:SetX(20); rect.X =
             10; print(rect.X, rect.X == rect:GetX(), rect.X ==
-            rect.GetX(rect))</SPAN>"</I> should print "10, true, true".</LI>
+            rect.GetX(rect))</CODE>" should print "10, true, true".</LI>
 
             <LI>Note : There is no way to find out from Lua if the code used a
             '.' or a ':' to call the function and therefore properties cannot
@@ -1404,33 +1487,31 @@
             function.
 
               <UL>
-                <LI>Works (static functions only) : <I>"<SPAN style=
-                "color: blue;">print(wx.wxFileName.GetCwd())</SPAN>"</I> and
-                <I>"<SPAN style=
-                "color: blue;">print(wx.wxFileName.GetCwd)</SPAN>"</I> prints
-                that it's a function.</LI>
+                <LI>Works (static functions only) : <CODE class=
+                "codelua">print(wx.wxFileName.GetCwd())</CODE> and <CODE class=
+                "codelua">print(wx.wxFileName.GetCwd)</CODE> prints that it's a
+                function.</LI>
 
-                <LI>Fails (static functions only) : <I>"<SPAN style=
-                "color: blue;">print(wx.wxFileName:GetCwd())</SPAN>"</I> and
-                <I>"<SPAN style=
-                "color: blue;">print(wx.wxFileName:GetCwd)</SPAN>"</I></LI>
+                <LI>Fails (static functions only) : <CODE class=
+                "codelua">print(wx.wxFileName:GetCwd())</CODE> and <CODE class=
+                "codelua">print(wx.wxFileName:GetCwd)</CODE></LI>
 
-                <LI>Works : <I>"<SPAN style="color: blue;">f =
-                wx.wxFileName("a"); print(f.GetCwd())</SPAN>"</I> and
-                <I>"<SPAN style="color: blue;">print(f.GetCwd)</SPAN>"</I>
-                prints that it's a function.</LI>
+                <LI>Works : <CODE class="codelua">f = wx.wxFileName("a");
+                print(f.GetCwd())</CODE> and <CODE class=
+                "codelua">print(f.GetCwd)</CODE> prints that it's a
+                function.</LI>
 
-                <LI>Fails : <I>"<SPAN style="color: blue;">f =
-                wx.wxFileName("a"); print(f:GetCwd())</SPAN>"</I> and
-                <I>"<SPAN style="color: blue;">print(f:GetCwd)</SPAN>"</I></LI>
+                <LI>Fails : <CODE class="codelua">f = wx.wxFileName("a");
+                print(f:GetCwd())</CODE> and <CODE class=
+                "codelua">print(f:GetCwd)</CODE></LI>
 
-                <LI>Works : <I>"<SPAN style="color: blue;">f =
-                wx.wxFileName("a"); print(f.Cwd)</SPAN>"</I></LI>
+                <LI>Works : <CODE class="codelua">f = wx.wxFileName("a");
+                print(f.Cwd)</CODE></LI>
 
-                <LI>Fails : <I>"<SPAN style="color: blue;">f =
-                wx.wxFileName("a"); print(f.Cwd())</SPAN>"</I> and
-                <I>"<SPAN style="color: blue;">print(f:Cwd)</SPAN>"</I> and
-                <I>"<SPAN style="color: blue;">print(f:Cwd())</SPAN>"</I></LI>
+                <LI>Fails : <CODE class="codelua">f = wx.wxFileName("a");
+                print(f.Cwd())</CODE> and <CODE class=
+                "codelua">print(f:Cwd)</CODE> and <CODE class=
+                "codelua">print(f:Cwd())</CODE></LI>
               </UL>
             </LI>
 
@@ -1463,9 +1544,8 @@
             the wxPoint class are interchangeable.
 
               <UL>
-                <LI>Example : <I>"<SPAN style="color: blue;">pt =
-                wx.wxPoint(1,2); pt.x = 10; pt:SetY(11); print(pt.x,
-                pt:GetY())</SPAN>"</I></LI>
+                <LI>Example : <CODE class="codelua">pt = wx.wxPoint(1,2); pt.x
+                = 10; pt:SetY(11); print(pt.x, pt:GetY())</CODE></LI>
               </UL>
             </LI>
 
@@ -1484,8 +1564,8 @@
           and can be called with or without a class instance (a userdata).
 
           <UL>
-            <LI>Example : <I style="color: blue;">f = wx.wxFileName('dummy');
-            f.GetCwd() == wx.wxFileName.GetCwd()</I></LI>
+            <LI>Example : <CODE class="codelua">f = wx.wxFileName('dummy');
+            f.GetCwd() == wx.wxFileName.GetCwd()</CODE></LI>
 
             <LI>Note that you always use the '.' calling convention since
             static C++ functions do not require the object itself or in Lua's
@@ -1503,7 +1583,7 @@
 
           <UL>
             <LI>Example : <I>"enum wxFTP::TransferMode { ASCII, ... }"</I> is
-            accessible as <I>wx.wxFTP.ASCII</I></LI>
+            accessible as <CODE class="codelua">wx.wxFTP.ASCII</CODE></LI>
           </UL>
         </LI>
 
@@ -1530,125 +1610,308 @@
             <LI>Declared in the interface files using the <I>%operator</I>
             tag.</LI>
 
-            <LI>"==" = "op_eq"<BR></LI>
+            <LI>This is a list of all possible operator functions:
 
-            <LI>"!=" = "op_ne"<BR></LI>
+              <TABLE border="0" summary="">
+                <TR>
+                  <TD colspan="2" style="color: #336699">Relational and
+                  equality operators</TD>
+                </TR>
 
-            <LI>"&lt;" = "op_lt"<BR></LI>
+                <TR>
+                  <TD>==</TD>
 
-            <LI>"&gt;" = "op_gt"<BR></LI>
+                  <TD>op_eq()</TD>
+                </TR>
 
-            <LI>"&lt;=" = "op_le"<BR></LI>
+                <TR>
+                  <TD>!=</TD>
 
-            <LI>"&gt;=" = "op_ge"</LI>
+                  <TD>op_ne()</TD>
+                </TR>
 
-            <LI>"||" = "op_lor" note: "lor" stands for logical (boolean) or,
-            same for "land."<BR></LI>
+                <TR>
+                  <TD>&gt;</TD>
 
-            <LI>"&amp;&amp;" = "op_land"<BR></LI>
+                  <TD>op_gt()</TD>
+                </TR>
 
-            <LI>"!" = "op_not"</LI>
+                <TR>
+                  <TD>&lt;</TD>
 
-            <LI><BR></LI>
+                  <TD>op_lt()</TD>
+                </TR>
 
-            <LI>"|" = "op_or"<BR></LI>
+                <TR>
+                  <TD>&gt;=</TD>
 
-            <LI>"&amp;" = "op_and"<BR></LI>
+                  <TD>op_ge()</TD>
+                </TR>
 
-            <LI>"^" = "op_xor"</LI>
+                <TR>
+                  <TD>&lt;=</TD>
 
-            <LI>"&lt;&lt;" = "op_lshift"</LI>
+                  <TD>op_le()</TD>
+                </TR>
 
-            <LI>"&gt;&gt;" = "op_rshift"</LI>
+                <TR>
+                  <TD colspan="2" style="color: #336699">Logical operators</TD>
+                </TR>
 
-            <LI><BR></LI>
+                <TR>
+                  <TD>!</TD>
 
-            <LI>"|=" = "op_ior"</LI>
+                  <TD>op_not()</TD>
+                </TR>
 
-            <LI>"&amp;=" = "op_iand"</LI>
+                <TR>
+                  <TD>&amp;&amp;</TD>
 
-            <LI>"^=" = "op_ixor"</LI>
+                  <TD>op_land()</TD>
 
-            <LI>"&lt;&lt;=" = "op_ilshift"</LI>
+                  <TD>"l" stands for logical</TD>
+                </TR>
 
-            <LI>"&gt;&gt;=" = "op_irshift"</LI>
+                <TR>
+                  <TD>||</TD>
 
-            <LI><BR></LI>
+                  <TD>op_lor()</TD>
+                </TR>
 
-            <LI>"++" = "op_inc"<BR></LI>
+                <TR>
+                  <TD colspan="2" style="color: #336699">Bitwise operators</TD>
+                </TR>
 
-            <LI>"--" = "op_dec"</LI>
+                <TR>
+                  <TD>~</TD>
 
-            <LI>"- (unary)" = "op_neg"</LI>
+                  <TD>op_comp()</TD>
 
-            <LI>"~ (unary)" = "op_comp"</LI>
+                  <TD>bitwise NOT or complement</TD>
+                </TR>
 
-            <LI>"[]" = "op_index"</LI>
+                <TR>
+                  <TD>&amp;</TD>
 
-            <LI>"()" = "op_func"</LI>
+                  <TD>op_and()</TD>
+                </TR>
 
-            <LI><BR></LI>
+                <TR>
+                  <TD>|</TD>
 
-            <LI>"=" = op_set</LI>
+                  <TD>op_or()</TD>
+                </TR>
 
-            <LI>"+" = "op_add"<BR></LI>
+                <TR>
+                  <TD>^</TD>
 
-            <LI>"-" = "op_sub"<BR></LI>
+                  <TD>op_xor()</TD>
+                </TR>
 
-            <LI>"*" = "op_mul"<BR></LI>
+                <TR>
+                  <TD>&lt;&lt;</TD>
 
-            <LI>"/" = "op_div"</LI>
+                  <TD>op_lshift()</TD>
+                </TR>
 
-            <LI>"%" = "op_mod"</LI>
+                <TR>
+                  <TD>&gt;&gt;</TD>
 
-            <LI><BR></LI>
+                  <TD>op_rshift()</TD>
+                </TR>
 
-            <LI>"+=" = "op_iadd" note: ixxx stands for "inplace" as it modifies
-            the original object.</LI>
+                <TR>
+                  <TD colspan="2" style="color: #336699">Inplace bitwise
+                  assignment operators</TD>
+                </TR>
 
-            <LI>"-=" = "op_isub"<BR></LI>
+                <TR>
+                  <TD>&amp;=</TD>
 
-            <LI>"*=" = "op_imul"<BR></LI>
+                  <TD>op_iand()</TD>
 
-            <LI>"/=" = "op_idiv"</LI>
+                  <TD>"i" stands for inplace</TD>
+                </TR>
 
-            <LI>"%=" = "op_imod"</LI>
+                <TR>
+                  <TD>|=</TD>
 
-            <LI><BR></LI>
+                  <TD>op_ior()</TD>
+                </TR>
 
-            <LI>Example : <I>"<SPAN style="color: blue;">pt = wx.wxPoint(1,2);
-            pt = pt + 1</SPAN>"</I> gives an error since we're trying to use
-            the Lua operator and even in C++ this wouldn't compile since there
-            is no operator defined for adding a single number to a
-            wxPoint.</LI>
+                <TR>
+                  <TD>^=</TD>
 
-            <LI>Example : <I>"<SPAN style="color: blue;">pt1 = wx.wxPoint(1,2);
-            pt2 = pt1; print(pt2:GetX()); pt2:SetX(10); print(pt1:GetX(), pt1
-            == pt2)</SPAN>"</I> the = operator works in this case because we
-            are not copying the values of pt1, but rather the address of pt1 to
-            pt2, meaning that pt2 <B><I>is</I></B> pt1 and when we set the
-            value for pt2 we're also setting the value for pt1. We know this
-            because the Lua == operators tells us that they have the same
-            address and if you type <I>"<SPAN style="color: blue;">print(pt1,
-            pt2)</SPAN>"</I> the result is <I>"userdata: 0x858df5c
-            [wxPoint(0x84ab550, 251)], userdata: 0x858df5c [wxPoint(0x84ab550,
-            251)]"</I>. See the wxLua userdata metatable function
-            <I>__tostring</I> above.</LI>
+                  <TD>op_ixor()</TD>
+                </TR>
 
-            <LI>Example : <I>"<SPAN style="color: blue;">pt1 = wx.wxPoint(1,2);
-            pt2 = wx.wxPoint(); pt2:op_set(pt1); pt1:SetX(10);
-            print(pt2:GetX()); print(pt2:op_eq(pt1))</SPAN>"</I> creates pt1
-            and also creates pt2, but we don't care what value it has since we
-            use op_set to use the C++ = operator to copy the values from pt1.
-            We then change the value of pt1, test if pt2 has changed, it
-            hasn't, and the test to see if they're still equal and as expected,
-            they're not.</LI>
+                <TR>
+                  <TD>&gt;&gt;=</TD>
+
+                  <TD>op_irshift()</TD>
+                </TR>
+
+                <TR>
+                  <TD>&lt;&lt;=</TD>
+
+                  <TD>op_ilshift()</TD>
+                </TR>
+
+                <TR>
+                  <TD colspan="2" style="color: #336699">Arithmetic
+                  operators</TD>
+                </TR>
+
+                <TR>
+                  <TD>=</TD>
+
+                  <TD>op_set()</TD>
+                </TR>
+
+                <TR>
+                  <TD>+</TD>
+
+                  <TD>op_add()</TD>
+                </TR>
+
+                <TR>
+                  <TD>-</TD>
+
+                  <TD>op_sub()</TD>
+                </TR>
+
+                <TR>
+                  <TD>*</TD>
+
+                  <TD>op_mul()</TD>
+                </TR>
+
+                <TR>
+                  <TD>/</TD>
+
+                  <TD>op_div()</TD>
+                </TR>
+
+                <TR>
+                  <TD>%</TD>
+
+                  <TD>op_mod()</TD>
+                </TR>
+
+                <TR>
+                  <TD colspan="2" style="color: #336699">Unary arithmetic
+                  operators</TD>
+                </TR>
+
+                <TR>
+                  <TD>-</TD>
+
+                  <TD>op_neg()</TD>
+                </TR>
+
+                <TR>
+                  <TD colspan="2" style="color: #336699">Inplace arithmetic
+                  assignment operators</TD>
+                </TR>
+
+                <TR>
+                  <TD>+=</TD>
+
+                  <TD>op_iadd()</TD>
+                </TR>
+
+                <TR>
+                  <TD>-=</TD>
+
+                  <TD>op_isub()</TD>
+                </TR>
+
+                <TR>
+                  <TD>*=</TD>
+
+                  <TD>op_imul()</TD>
+                </TR>
+
+                <TR>
+                  <TD>/=</TD>
+
+                  <TD>op_idiv()</TD>
+                </TR>
+
+                <TR>
+                  <TD>%=</TD>
+
+                  <TD>op_imod()</TD>
+                </TR>
+
+                <TR>
+                  <TD colspan="2" style="color: #336699">Increment arithmetic
+                  operators</TD>
+                </TR>
+
+                <TR>
+                  <TD>++</TD>
+
+                  <TD>op_inc()</TD>
+                </TR>
+
+                <TR>
+                  <TD>--</TD>
+
+                  <TD>op_dec()</TD>
+                </TR>
+
+                <TR>
+                  <TD colspan="2" style="color: #336699">Other operators</TD>
+                </TR>
+
+                <TR>
+                  <TD>[]</TD>
+
+                  <TD>op_index()</TD>
+
+                  <TD>Array indexing</TD>
+                </TR>
+
+                <TR>
+                  <TD>()</TD>
+
+                  <TD>op_func()</TD>
+
+                  <TD>Function call</TD>
+                </TR>
+              </TABLE>
+            </LI>
+
+            <LI>Example : <CODE class="codelua">pt = wx.wxPoint(1,2); pt = pt +
+            1</CODE> gives an error since we're trying to use the Lua operator
+            and even in C++ this wouldn't compile since there is no operator
+            defined for adding a single number to a wxPoint.</LI>
+
+            <LI>Example : <CODE class="codelua">pt1 = wx.wxPoint(1,2); pt2 =
+            pt1; print(pt2:GetX()); pt2:SetX(10); print(pt1:GetX(), pt1 ==
+            pt2)</CODE> the = operator works in this case because we are not
+            copying the values of pt1, but rather the address of pt1 to pt2,
+            meaning that pt2 <B><I>is</I></B> pt1 and when we set the value for
+            pt2 we're also setting the value for pt1. We know this because the
+            Lua == operators tells us that they have the same address and if
+            you type <CODE class="codelua">print(pt1, pt2)</CODE> the result is
+            <I>"userdata: 0x858df5c [wxPoint(0x84ab550, 251)], userdata:
+            0x858df5c [wxPoint(0x84ab550, 251)]"</I>. See the wxLua userdata
+            metatable function <I>__tostring</I> above.</LI>
+
+            <LI>Example : <CODE class="codelua">pt1 = wx.wxPoint(1,2); pt2 =
+            wx.wxPoint(); pt2:op_set(pt1); pt1:SetX(10); print(pt2:GetX());
+            print(pt2:op_eq(pt1))</CODE> creates pt1 and also creates pt2, but
+            we don't care what value it has since we use op_set to use the C++
+            = operator to copy the values from pt1. We then change the value of
+            pt1, test if pt2 has changed, it hasn't, and the test to see if
+            they're still equal and as expected, they're not.</LI>
           </UL>
         </LI>
 
-        <LI style="font-weight: bold;">Virtual functions</LI>
+        <LI style="font-weight: bold;">Virtual functions
 
-        <LI style="list-style: none; display: inline">
           <UL>
             <LI>You cannot arbitrarily override C++ virtual functions in wxLua
             as this must be done in C++. The C++ class must be subclassed and
@@ -1677,9 +1940,9 @@
           </UL>
         </LI>
 
-        <LI><B>Overriding member functions</B> with Lua functions</LI>
+        <LI>
+          <B>Overriding member functions</B> with Lua functions
 
-        <LI style="list-style: none; display: inline">
           <UL>
             <LI>You may override class member functions for a wxLua userdata
             and still be able to call back to the Cfunction by prepending the
@@ -1689,9 +1952,9 @@
             directly from Lua without regard to the existing Cfunction(s), but
             will never be called by the C++ class functions.</LI>
 
-            <LI>Example : <I>"<SPAN style="color: blue;">p = wx.wxPoint(1,2);
-            p.GetX = function(self) return 10-self:_GetX() end; print(p:GetX(),
-            p:_GetX())</SPAN>"</I> prints "9, 1".</LI>
+            <LI>Example : <CODE class="codelua">p = wx.wxPoint(1,2); p.GetX =
+            function(self) return 10-self:_GetX() end; print(p:GetX(),
+            p:_GetX())</CODE> prints "9, 1".</LI>
 
             <LI>Note : Make sure that if you want to call the base function you
             use the '_' in your overridden function since otherwise you'll get
@@ -1699,9 +1962,9 @@
           </UL>
         </LI>
 
-        <LI><B>Extending classes</B></LI>
+        <LI>
+          <B>Extending classes</B>
 
-        <LI style="list-style: none; display: inline">
           <UL>
             <LI>You may add your own functions to classes that will not be
             called by C++, but can be called from Lua. This makes sense if you
@@ -1709,26 +1972,24 @@
             rather than having global functions that take that class as a
             parameter.</LI>
 
-            <LI>Example : <I>"<SPAN style="color: blue;">r =
-            wx.wxRect(1,2,3,4); r.PrintXY = function(self) print(self:GetX(),
-            self:GetY()) end; r:PrintXY()</SPAN>"</I> adds the function
-            PrintXY() to the wxRect instance r. The userdata, class instance, r
-            is passed to the Lua function as the parameter "self" which is
-            pushed onto the stack when the PrintXY() function is called with
-            the ":" notation.</LI>
+            <LI>Example : <CODE class="codelua">r = wx.wxRect(1,2,3,4);
+            r.PrintXY = function(self) print(self:GetX(), self:GetY()) end;
+            r:PrintXY()</CODE> adds the function PrintXY() to the wxRect
+            instance r. The userdata, class instance, r is passed to the Lua
+            function as the parameter "self" which is pushed onto the stack
+            when the PrintXY() function is called with the ":" notation.</LI>
 
-            <LI>Note that the above example is the same as <I>"</I><I style=
-            "color: blue;">r = wx.wxRect(1,2,3,4);</I> <I><SPAN style=
-            "color: blue;">function wxRect_PrintXY(r) print(r:GetX(), r:GetY())
-            end; wxRect_PrintXY(r)</SPAN>"</I>.</LI>
+            <LI>Note that the above example is the same as <CODE class=
+            "codelua">r = wx.wxRect(1,2,3,4); function wxRect_PrintXY(r)
+            print(r:GetX(), r:GetY()) end; wxRect_PrintXY(r)</CODE>.</LI>
 
             <LI>You may also create the Lua function beforehand and then assign
-            it to the rect object. <I>"<SPAN style="color: blue;">function
+            it to the rect object. <CODE class="codelua">function
             wxRect_PrintXY_func(self) print(self:GetX(), self:GetY()) end; r1 =
             wx.wxRect(1,2,3,4); r1.PrintXY = wxRect_PrintXY_func;
-            r1:PrintXY()</SPAN>"</I>. You can see that using this idea you can
-            write a Lua function that creates a new wxRect, sets your extra
-            functions for it, and returns it for use.</LI>
+            r1:PrintXY()</CODE>. You can see that using this idea you can write
+            a Lua function that creates a new wxRect, sets your extra functions
+            for it, and returns it for use.</LI>
           </UL>
         </LI>
       </UL>
@@ -1774,18 +2035,19 @@
     wxLua-&gt;Run or press the toolbar "play" button to run it.</LI>
 
     <LI>Use wxLua as a Lua module (using the function require), run
-    <B><I>$lua.exe sample.wx.lua</I></B></LI>
+    <B><I>$lua.exe sample.wx.lua</I></B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>In order to use wxLua as a module the Lua code must have
-        <I>require("wx")</I> to load the wxLua bindings in the beginning and
-        <I>wx.wxGetApp():MainLoop()</I> at the end to start the wxWidgets event
-        loop.</LI>
+        <CODE class="codelua">require("wx")</CODE> to load the wxLua bindings
+        in the beginning and <CODE class=
+        "codelua">wx.wxGetApp():MainLoop()</CODE> at the end to start the
+        wxWidgets event loop.</LI>
 
-        <LI>You may need to adjust the <I>package.cpath</I> variable to have it
-        point to the correct location of the wx.so or wx.dll shared library for
-        <I>require("wx")</I> to load.</LI>
+        <LI>You may need to adjust the <CODE class=
+        "codelua">package.cpath</CODE> variable to have it point to the correct
+        location of the wx.so or wx.dll shared library for <CODE class=
+        "codelua">require("wx")</CODE> to load.</LI>
       </UL>
     </LI>
   </UL>
@@ -1793,9 +2055,9 @@
   <H3><A name="C6.2" id="C6.2"></A>6.2 - Provided Samples</H3>
 
   <UL>
-    <LI><B>bindings.wx.lua</B></LI>
+    <LI>
+      <B>bindings.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>This is a MUST use program, at least once, to get a better
         understanding of the bindings.</LI>
@@ -1811,9 +2073,9 @@
       </UL>
     </LI>
 
-    <LI><B>calculator.wx.lua</B></LI>
+    <LI>
+      <B>calculator.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>A simple calculator program that demonstrates loading and using
         controls from an XRC resource, accelerator tables, and event handling.
@@ -1821,9 +2083,9 @@
       </UL>
     </LI>
 
-    <LI><B>choices.wx.lua</B></LI>
+    <LI>
+      <B>choices.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>Demonstrates a number of controls that offer choices to the user,
         wxRadioBox, wxListBox, wxComboBox, wxChoice, and wxCheckListBox. It
@@ -1831,27 +2093,26 @@
       </UL>
     </LI>
 
-    <LI style="font-weight: bold;">coroutine.wx.lua</LI>
+    <LI style="font-weight: bold;">coroutine.wx.lua
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>A demo of how to use coroutines in wxLua using wxEVT_IDLE to call
         coroutine.resume().</LI>
       </UL>
     </LI>
 
-    <LI><B>dialog.wx.lua</B></LI>
+    <LI>
+      <B>dialog.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>A simple temperature conversion program to/from Fahrenheit to/from
         Celsius. Shows the use of wxSizers, wxButtons, and the wxTextCtrl.</LI>
       </UL>
     </LI>
 
-    <LI><B>editor.wx.lua</B></LI>
+    <LI>
+      <B>editor.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>This is the editor that the wxLua application <I>apps/wxlua</I>
         uses. It uses the wxStyledTextCtrl for the editor and can run and debug
@@ -1860,27 +2121,26 @@
       </UL>
     </LI>
 
-    <LI><B>grid.wx.lua</B></LI>
+    <LI>
+      <B>grid.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>A very simple demo of the wxGrid class. A better one would be
         appreciated.</LI>
       </UL>
     </LI>
 
-    <LI><B>htmlwin.wx.lua</B></LI>
+    <LI>
+      <B>htmlwin.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>Shows the wxLuaHtmlWindow and it's virtual functions as well as
         adding.custom widgets to a wxHtmlWindow.</LI>
       </UL>
     </LI>
 
-    <LI style="font-weight: bold;">luamodule.wx.lua</LI>
+    <LI style="font-weight: bold;">luamodule.wx.lua
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>A sample for loading the wxLua "wx" module using Lua's require
         function when wxLua is compiled as a shared library. Run this program
@@ -1891,69 +2151,106 @@
       </UL>
     </LI>
 
-    <LI><B>mdi.wx.lua</B></LI>
+    <LI>
+      <B>mdi.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>Shows the MDI classes, wxMDIParentFrame and wxMDIChildFrame.</LI>
       </UL>
     </LI>
 
-    <LI><B>media.wx.lua</B></LI>
+    <LI>
+      <B>media.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>A sample for the wxMediaCtrl that can load and play audio and video
         files.</LI>
       </UL>
     </LI>
 
-    <LI><B>minimal.wx.lua</B></LI>
+    <LI>
+      <B>minimal.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>A minimal sample that creates a wxFrame, wxMenuBar, and
         wxStatusBar.</LI>
       </UL>
     </LI>
 
-    <LI><B>printing.wx.lua</B></LI>
+    <LI>
+      <B>printing.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>Demonstrates how to use the printing architecture and some wxDC
         drawing classes in wxLua.</LI>
       </UL>
     </LI>
 
-    <LI><B>scribble.wx.lua</B></LI>
+    <LI>
+      <B>scribble.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>A simple drawing program that shows how to handle wxMouseEvents and
         wxDC drawing as well as creating a custom control.</LI>
       </UL>
     </LI>
 
-    <LI><B>sizer.wx.lua</B></LI>
+    <LI>
+      <B>sizer.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>A simple wxSizer demonstration.</LI>
       </UL>
     </LI>
 
-    <LI><B>tree.wx.lua</B></LI>
+    <LI>
+      <B>tree.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>A wxTreeCtrl demonstration.</LI>
       </UL>
     </LI>
 
-    <LI><B>unittest.wx.lua</B></LI>
+    <LI>
+      <B>wrapmodule.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
+      <UL>
+        <LI>This is a wrapper program to allow you to use the wx shared library
+        as a Lua module (using require) to run the provided samples without
+        having to edit them.</LI>
+
+        <LI>See <A href="#How_to_run_the_samples">How to Run the Samples</A>
+        for other ways to run the samples.</LI>
+
+        <LI>The search path for the module may need to be specified if it is
+        not in the same directory as the sample you want to run.
+
+          <UL>
+            <LI>You can add a line like the one below to the top of
+            wrapmodule.wx.lua (adjusted as necessary) for your paths.</LI>
+
+            <LI>The list of paths is a semicolon separated list of paths to
+            <B>?.so</B> (for Unix type shared libraries) and <B>?.dll</B> (for
+            MSW) .</LI>
+
+            <LI>? is equivalent to * meaning match anything for typical shells
+            (DOS prompt).</LI>
+
+            <LI>You might as well include paths to both unfix and MSW libraries
+            so that the script can be run on either platform without
+            modification since typically only the libraries that work on any
+            given platform will be installed.</LI>
+
+            <LI>package.cpath =
+            ";;../lib/?.so;../lib/vc_dll/?.dll;../lib/bcc_dll/?.dll;../lib/mingw_dll/?.dll;"</LI>
+          </UL>
+        </LI>
+      </UL>
+    </LI>
+
+    <LI>
+      <B>unittest.wx.lua</B>
+
       <UL>
         <LI>Tests that the binding generator is working properly as well as
         wxLua itself.</LI>
@@ -1963,25 +2260,25 @@
       </UL>
     </LI>
 
-    <LI><B>validator.wx.lua</B></LI>
+    <LI>
+      <B>validator.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>Tests the wxGenericValidator and wxTextValidator.</LI>
       </UL>
     </LI>
 
-    <LI><B>veryminimal.wx.lua</B></LI>
+    <LI>
+      <B>veryminimal.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>A wxFrame only.</LI>
       </UL>
     </LI>
 
-    <LI><B>wxluasudoku.wx.lua</B></LI>
+    <LI>
+      <B>wxluasudoku.wx.lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>A complete Sudoku solver and program to play Sudoku puzzles. This
         program demonstrates most things that might be required for typical GUI
@@ -2004,9 +2301,7 @@
   <UL>
     <LI>
       <H3><A name="C7.1" id="C7.1"></A>7.1 - wxLua</H3>
-    </LI>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>This is a wxLua IDE editor program written in Lua that has a nice
         editor using the wxStyledTextCtrl.</LI>
@@ -2020,17 +2315,16 @@
         editor functionality.</LI>
 
         <LI>The <I>Debug</I> menu contains the items to run and debug your
-        programs</LI>
+        programs
 
-        <LI style="list-style: none; display: inline">
           <UL>
             <LI><I>Compile</I> - test compilation of your program, does not run
             it, but checks the Lua syntax.</LI>
 
-            <LI><I>Run</I> - Run the current program independently in a
-            separate process.</LI>
+            <LI>
+              <I>Run</I> - Run the current program independently in a separate
+              process.
 
-            <LI style="list-style: none; display: inline">
               <UL>
                 <LI>The wxLua program is run with the command '$wxLua
                 editor_filename' and therefore you need to have saved it to
@@ -2045,10 +2339,10 @@
             selecting <I>Attach</I>. You can abort the debugging by selecting
             <I>Stop Debugging</I>.</LI>
 
-            <LI><I>Start Debugging</I> - Start debugging the current program
-            where you can then <I>Step, Step Over, Continue, Break</I>.</LI>
+            <LI>
+              <I>Start Debugging</I> - Start debugging the current program
+              where you can then <I>Step, Step Over, Continue, Break</I>.
 
-            <LI style="list-style: none; display: inline">
               <UL>
                 <LI>A TCP debugger server is started on a port in the range
                 1551-1559 listening for a connection from the localhost.</LI>
@@ -2091,9 +2385,8 @@
         </LI>
 
         <LI>This program can also run Lua or wxLua programs on the command line
-        just like the Lua executable.</LI>
+        just like the Lua executable.
 
-        <LI style="list-style: none; display: inline">
           <UL>
             <LI>The command line switches can be displayed by running wxLua
             -h.</LI>
@@ -2110,9 +2403,8 @@
             <LI>If -d, -o, or -r are not given but there is at least one
             parameter on the command line, it is interpreted to be a program
             name and wxLua will try to run it, any parameters after the program
-            name are pushed into the Lua as a table named 'arg'.</LI>
+            name are pushed into the Lua as a table named 'arg'.
 
-            <LI style="list-style: none; display: inline">
               <UL>
                 <LI><I>wxLua editor.wx.lua</I> is the same as just running
                 <I>wxLua</I> itself. You can run the editor this way to
@@ -2124,18 +2416,17 @@
 
             <LI>If you want to run a program or provide arguments to your Lua
             program that use -X or /X semantics you need to use -- to stop the
-            wxLua program from interpreting the args.</LI>
+            wxLua program from interpreting the args.
 
-            <LI style="list-style: none; display: inline">
               <UL>
                 <LI>In the example below, we don't want wxLua to interpret the
                 second -c or give an error for the -g arg, but rather pass the
                 args to myprogram.lua.</LI>
 
-                <LI><I>wxLua -c -e "a = 12; b = 3" -- myprogram.lua -c 12
-                -g</I><BR></LI>
+                <LI>
+                  <I>wxLua -c -e "a = 12; b = 3" -- myprogram.lua -c 12
+                  -g</I><BR>
 
-                <LI style="list-style: none; display: inline">
                   <UL>
                     <LI>The wxLua program will display a console window to
                     display print statements, run the string "a = 12; b = 3",
@@ -2155,10 +2446,8 @@
                   </UL>
                 </LI>
 
-                <LI>wxLua -c -e "a = 12; b = 3" -r myprogram.lua -- -c 12
-                -g</LI>
+                <LI>wxLua -c -e "a = 12; b = 3" -r myprogram.lua -- -c 12 -g
 
-                <LI style="list-style: none; display: inline">
                   <UL>
                     <LI>Gives the same results, but the Lua arg table starts
                     with [1] = '--' which should probably be ignored.</LI>
@@ -2173,9 +2462,7 @@
 
     <LI>
       <H3><A name="C7.2" id="C7.2"></A>7.2 - wxLuaEdit</H3>
-    </LI>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>This is another IDE type program written in C++ that runs wxLua
         programs in the main thread and can therefore be "dangerous." However
@@ -2219,9 +2506,7 @@
 
     <LI>
       <H3><A name="C7.3" id="C7.3"></A>7.3 - wxLuaFreeze</H3>
-    </LI>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>This is the simplest incarnation of a wxLua program that makes use
         of the wxLua library. Once compiled, it can run Lua programs on the
@@ -2247,9 +2532,7 @@
   <UL>
     <LI>
       <H3><A name="C8.1" id="C8.1"></A>8.1 - bin2c.lua</H3>
-    </LI>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>bin2c.lua is a Lua program to convert a file into a const char*
         string to be included into a C/C++ program.</LI>
@@ -2262,47 +2545,6 @@
         its Usage() function.</LI>
       </UL>
     </LI>
-
-    <LI>
-      <H3><A name="wrapmodule.wx.lua" id=
-      "wrapmodule.wx.lua"></A>wrapmodule.wx.lua</H3>
-    </LI>
-
-    <LI style="list-style: none; display: inline">
-      <UL>
-        <LI>This is a wrapper program to allow you to use the wx shared library
-        as a Lua module (using require) to run the provided samples without
-        having to edit them.</LI>
-
-        <LI>See <A href="#How_to_run_the_samples">How to Run the Samples</A>
-        for other ways to run the samples.</LI>
-
-        <LI>The search path for the module may need to be specified if it is
-        not in the same directory as the sample you want to run.</LI>
-
-        <LI style="list-style: none; display: inline">
-          <UL>
-            <LI>You can add a line like the one below to the top of
-            wrapmodule.wx.lua (adjusted as necessary) for your paths.</LI>
-
-            <LI>The list of paths is a semicolon separated list of paths to
-            <B>?.so</B> (for Unix type shared libraries) and <B>?.dll</B> (for
-            MSW) .</LI>
-
-            <LI>? is equivalent to * meaning match anything for typical shells
-            (DOS prompt).</LI>
-
-            <LI>You might as well include paths to both unfix and MSW libraries
-            so that the script can be run on either platform without
-            modification since typically only the libraries that work on any
-            given platform will be installed.</LI>
-
-            <LI>package.cpath =
-            ";;../lib/?.so;../lib/vc_dll/?.dll;../lib/bcc_dll/?.dll;../lib/mingw_dll/?.dll;"</LI>
-          </UL>
-        </LI>
-      </UL>
-    </LI>
   </UL>
 
   <H2><A name="C9" id="C9"></A>9 - wxLua Sourcecode Modules</H2>wxLua is broken
@@ -2313,9 +2555,9 @@
   write <I>#include "modulename/include/filename.h"</I>.<BR>
 
   <UL>
-    <LI><B>Lua</B></LI>
+    <LI>
+      <B>Lua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>The source code of Lua itself. It is the original unmodified source
         for the version, with some of the header files copied to the include
@@ -2329,9 +2571,9 @@
       </UL>
     </LI>
 
-    <LI><B>wxbind</B></LI>
+    <LI>
+      <B>wxbind</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>The output of the interface files in
         <I>wxLua/bindings/wxwidgets</I> are generated in this directory. They
@@ -2368,9 +2610,9 @@
       </UL>
     </LI>
 
-    <LI><B>wxlua</B></LI>
+    <LI>
+      <B>wxlua</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>This is the core library of wxLua itself. It contains the
         wxLuaState class and helper functionality.</LI>
@@ -2393,9 +2635,9 @@
       </UL>
     </LI>
 
-    <LI><B>wxluadebug</B></LI>
+    <LI>
+      <B>wxluadebug</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>This is a simple debug library for Lua that provides some tools and
         a widget for showing the stack and browsing the locals, globals, and
@@ -2405,9 +2647,9 @@
       </UL>
     </LI>
 
-    <LI><B>wxluasocket</B></LI>
+    <LI>
+      <B>wxluasocket</B>
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>This is a socket library for one wxLua program to communicate with
         another for debugging purposes. It is currently used in the wxlua app
@@ -2426,11 +2668,12 @@
     </LI>
   </UL>
 
-  <H2><A name="C10" id="C10"></A>10 - wxLua C++ Programming Guide</H2>The
-  documentation for the wxLua library is in the header files and descriptions
-  are given for each function, enum, etc. Please read through them to get a
-  feel for what functions wxLua provides. Below is a brief synopsis of wxLua
-  for C++ programmers.<BR>
+  <H2><A name="cpp_programming_guide" id="cpp_programming_guide"></A> <A name=
+  "C10" id="C10"></A>10 - wxLua C++ Programming Guide</H2>The documentation for
+  the wxLua library is in the header files and descriptions are given for each
+  function, enum, etc. Please read through them to get a feel for what
+  functions wxLua provides. Below is a brief synopsis of wxLua for C++
+  programmers.<BR>
   <BR>
   Lua uses char strings while wxWidgets uses the wxString class which uses the
   wxChar data type. Depending on whether you have compiled wxWidgets in Unicode
@@ -2530,9 +2773,8 @@
             <LI>luaI_openlib(L, binding_namespace, fake luaL_Reg, 0) ; is
             called to have Lua create the tables that we will install the
             bindings into. This allows wxLua to look like a standard Lua
-            library even though it works a little differently.</LI>
+            library even though it works a little differently.
 
-            <LI style="list-style: none; display: inline">
               <UL>
                 <LI>LUA_REGISTRYINDEX["_LOADED"][binding_namespace] =
                 table</LI>
@@ -2569,9 +2811,8 @@
   wxLuaState</H3>
 
   <UL>
-    <LI>wxLuaState(bool create = false)</LI>
+    <LI>wxLuaState(bool create = false)
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>If create is false, default constructor, you must call Create(...)
         to actually use it.</LI>
@@ -2581,9 +2822,8 @@
       </UL>
     </LI>
 
-    <LI>wxLuaState(wxEvtHandler *handler, wxWindowID id = wxID_ANY)</LI>
+    <LI>wxLuaState(wxEvtHandler *handler, wxWindowID id = wxID_ANY)
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>Creates a complete wxLuaState, but you can provide an event
         handler, e.g. a wxApp or wxWindow derived class, to get and handle the
@@ -2591,10 +2831,8 @@
       </UL>
     </LI>
 
-    <LI>wxLuaState(lua_State* L, wxLuaState_Type type =
-    wxLUASTATE_GETSTATE)</LI>
+    <LI>wxLuaState(lua_State* L, wxLuaState_Type type = wxLUASTATE_GETSTATE)
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>type = wxLUASTATE_GETSTATE means that the lua_State must already
         have been created using a wxLuaState and so this new wxLuaState will
@@ -2614,9 +2852,8 @@
 
   <UL>
     <LI>int LuaDoString(const wxString &amp;script, const wxString&amp; name =
-    wxEmptyString)</LI>
+    wxEmptyString)
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>Runs the script as a string with the given name. The name is only
         used if Lua errors out and then the debug message will contain that
@@ -2626,9 +2863,8 @@
       </UL>
     </LI>
 
-    <LI>int LuaDoBuffer(const char *buffer, size_t len, const char *name)</LI>
+    <LI>int LuaDoBuffer(const char *buffer, size_t len, const char *name)
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>Run a buffer, perhaps from bin2lua.lua, that you've compiled with
         your program.</LI>
@@ -2637,9 +2873,8 @@
       </UL>
     </LI>
 
-    <LI>int LuaDoFile(const wxString &amp;filename)</LI>
+    <LI>int LuaDoFile(const wxString &amp;filename)
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>Run a Lua file from disk.</LI>
 
@@ -2647,9 +2882,8 @@
       </UL>
     </LI>
 
-    <LI>int LuaPCall(int narg, int nresults)</LI>
+    <LI>int LuaPCall(int narg, int nresults)
 
-    <LI style="list-style: none; display: inline">
       <UL>
         <LI>Uses lua_call to run a chunk on the stack, but sets things up for
         wxLua first.</LI>

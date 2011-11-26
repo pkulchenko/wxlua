@@ -17,7 +17,7 @@
 
   <H2>Table of Contents</H2>
 
-  <DIV class="greybox">
+  <DIV class="contents">
     <OL>
       <LI>
         <A href="FAQ.html#C1">1 - Why wxLua?</A>
@@ -49,7 +49,7 @@
       <LI>
         <A href="FAQ.html#C3">3 - Programming in wxLua</A>
 
-        <OL type="a">
+        <OL>
           <LI><A href="FAQ.html#C3.1">3.1 - wxStrings?</A></LI>
 
           <LI><A href="FAQ.html#C3.2">3.2 - wxArrayString and
@@ -86,7 +86,7 @@
     <LI>Size : The Lua interpreter itself is ~100Kb, wxWidgets adds the
     remaining few Mb.</LI>
 
-    <LI>Speed : Lua is one of the fastest interpreted languages, see the Great
+    <LI>Speed : Lua is one of the fastest interpreted languages; see the Great
     Computer Language Shootout.</LI>
 
     <LI>Again, why Lua? See <A href=
@@ -94,18 +94,18 @@
   </UL>
 
   <H3><A name="C1.1" id="C1.1"></A>1.1 - What's best for my needs: wxLua,
-  wxPython, wxSomethingElse?</H3>
+  wxPython, or wxSomethingElse?</H3>
 
   <UL>
-    <LI>It depends: wxPython has a much larger footprint and greater overhead
+    <LI>It depends, wxPython has a much larger footprint and greater overhead
     than wxLua, but it does provide more add-ons from the Python standard
     library.</LI>
 
-    <LI>On the other hand, wxLua is as large as the wxWidgets library + ~100Kb
-    for Lua + ~500Kb for the wxLua library.</LI>
+    <LI>On the other hand, wxLua is is the size of wxWidgets + ~100Kb for Lua +
+    ~500Kb for the wxLua library.</LI>
 
-    <LI>wxLua can be easily interfaced with C++ code making it a powerful
-    extension language, which is exactly the intent of its designers.</LI>
+    <LI>wxLua is designed to be easily interfaced with C++ code making it a
+    powerful extension language.</LI>
 
     <LI>In conclusion, if you want to write an entire application in a
     scripting language and you need things supported by Python which are not
@@ -118,11 +118,13 @@
   embedded in my own C++ applications?</H3>
 
   <UL>
-    <LI>Yes! That's explained on the wxLua homepage.</LI>
+    <LI>Yes, the C++ programming guide in the <A href=
+    "wxlua.html#cpp_programming_guide">wxLua Manual</A> describes how to create
+    and use a wxLuaState.</LI>
 
-    <LI>This is one of the strong points of wxLua: it can be a lightweight,
-    fast interpreter to extend your application and let the user customize
-    it...</LI>
+    <LI>This is one of the strong points of wxLua; it is a fast and lightweight
+    interpreter that is easy to use to extend your application and let the user
+    customize it...</LI>
 
     <LI>You may create as many wxLua interpreters in a single program as you
     like.</LI>
@@ -181,13 +183,13 @@
 
   <H2><A name="C3" id="C3"></A>3 - Programming in wxLua</H2>
 
-  <H3><A name="C3.1" id="C3.1"></A>3.1 - wxStrings?</H3>
+  <H3><A name="C3.1" id="C3.1"></A>3.1 - wxStrings or ANSI Lua strings?</H3>
 
   <UL>
     <LI>wxLua uses Lua strings and so all functions that take or return a
     wxString take or return a Lua string.</LI>
 
-    <LI>However, you can also use a wxString if you really want.</LI>
+    <LI>However, you can also use a wxString if you really want to.</LI>
   </UL>
 
   <H3><A name="C3.2" id="C3.2"></A>3.2 - wxArrayString and
@@ -195,7 +197,7 @@
 
   <UL>
     <LI>All functions that take a wxArrayString or wxSortedArrayString can also
-    take a numerically indexed table of strings.</LI>
+    take a numerically indexed Lua table of strings.</LI>
 
     <LI>Functions that return wxArrayStrings or wxSortedArrayStrings will
     return a wxArrayString or wxSortedArrayString unless specified otherwise in

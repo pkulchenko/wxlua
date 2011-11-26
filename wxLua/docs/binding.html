@@ -6,21 +6,21 @@
   "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
   <META content="text/html; charset=us-ascii" http-equiv="content-type">
 
-  <TITLE>wxLua Binding HowTo</TITLE>
+  <TITLE>wxLua Bindings</TITLE>
   <META content="John Labenski" name="author">
-  <META content="Info wxWidgets bindings to wxLua" name="description">
+  <META content="Info about wxLua's wxWidgets bindings" name="description">
   <LINK rel="stylesheet" type="text/css" href="wxlua.css">
 </HEAD>
 
 <BODY>
-  <H1><U>wxLuaBinding 2.8.12 - Writing and Generating Binding Files</U></H1>
+  <H1>wxLuaBinding 2.8.12 - Writing and Generating Binding Files</H1>
 
   <DIV style="text-align: justify;">
     The binding generator for wxLua provides information for Lua code to
     interface to a C/C++ API. The C/C++ objects are created in Lua as userdata
     and manipulated using the same functional semantics as you would in C/C++.
-    The <A href="wxlua.html">wxlua.html</A> wxLua documentation describes in
-    detail how the object will be named and where it will be placed in Lua.<BR>
+    The <A href="wxlua.html">wxlua.html</A> wxLua manual describes in detail
+    how the object will be named and where it will be placed in Lua.<BR>
     <BR>
     Binding files are provided for the <B>wxWidgets</B> cross platform GUI
     library and the wxStyledTextCtrl contrib library of the wxWidgets library.
@@ -44,7 +44,7 @@
 
   <H2>Table of Contents</H2>
 
-  <DIV class="greybox">
+  <DIV class="contents">
     <OL>
       <LI><A href="binding.html#C1">1 - Binding File Descriptions</A></LI>
 
@@ -834,89 +834,277 @@
   </UL>
 
   <UL>
-    <LI>"==" = "op_eq"</LI>
+    <LI>This is a list of all possible operator functions:
 
-    <LI>"!=" = "op_ne"</LI>
+      <TABLE border="0" summary="">
+        <TR>
+          <TD colspan="2" style="color: #336699">Relational and equality
+          operators</TD>
+        </TR>
 
-    <LI>"&lt;" = "op_lt"</LI>
+        <TR>
+          <TD>==</TD>
 
-    <LI>"&gt;" = "op_gt"</LI>
+          <TD>op_eq()</TD>
+        </TR>
 
-    <LI>"&lt;=" = "op_le"</LI>
+        <TR>
+          <TD>!=</TD>
 
-    <LI>"&gt;=" = "op_ge"</LI>
+          <TD>op_ne()</TD>
+        </TR>
 
-    <LI>"||" = "op_lor" note: "lor" stands for logical (boolean) or, same for
-    "land."</LI>
+        <TR>
+          <TD>&gt;</TD>
 
-    <LI>"&amp;&amp;" = "op_land"</LI>
+          <TD>op_gt()</TD>
+        </TR>
 
-    <LI>"!" = "op_not"</LI>
-  </UL>
+        <TR>
+          <TD>&lt;</TD>
 
-  <UL>
-    <LI>"|" = "op_or"</LI>
+          <TD>op_lt()</TD>
+        </TR>
 
-    <LI>"&amp;" = "op_and"</LI>
+        <TR>
+          <TD>&gt;=</TD>
 
-    <LI>"^" = "op_xor"</LI>
+          <TD>op_ge()</TD>
+        </TR>
 
-    <LI>"&lt;&lt;" = "op_lshift"</LI>
+        <TR>
+          <TD>&lt;=</TD>
 
-    <LI>"&gt;&gt;" = "op_rshift"</LI>
-  </UL>
+          <TD>op_le()</TD>
+        </TR>
 
-  <UL>
-    <LI>"|=" = "op_ior"</LI>
+        <TR>
+          <TD colspan="2" style="color: #336699">Logical operators</TD>
+        </TR>
 
-    <LI>"&amp;=" = "op_iand"</LI>
+        <TR>
+          <TD>!</TD>
 
-    <LI>"^=" = "op_ixor"</LI>
+          <TD>op_not()</TD>
+        </TR>
 
-    <LI>"&lt;&lt;=" = "op_ilshift"</LI>
+        <TR>
+          <TD>&amp;&amp;</TD>
 
-    <LI>"&gt;&gt;=" = "op_irshift"</LI>
-  </UL>
+          <TD>op_land()</TD>
 
-  <UL>
-    <LI>"++" = "op_inc"</LI>
+          <TD>"l" stands for logical</TD>
+        </TR>
 
-    <LI>"--" = "op_dec"</LI>
+        <TR>
+          <TD>||</TD>
 
-    <LI>"- (unary)" = "op_neg"</LI>
+          <TD>op_lor()</TD>
+        </TR>
 
-    <LI>"~ (unary)" = "op_comp"</LI>
+        <TR>
+          <TD colspan="2" style="color: #336699">Bitwise operators</TD>
+        </TR>
 
-    <LI>"[]" = "op_index"</LI>
+        <TR>
+          <TD>~</TD>
 
-    <LI>"()" = "op_func"</LI>
-  </UL>
+          <TD>op_comp()</TD>
 
-  <UL>
-    <LI>"=" = op_set</LI>
+          <TD>bitwise NOT or complement</TD>
+        </TR>
 
-    <LI>"+" = "op_add"</LI>
+        <TR>
+          <TD>&amp;</TD>
 
-    <LI>"-" = "op_sub"</LI>
+          <TD>op_and()</TD>
+        </TR>
 
-    <LI>"*" = "op_mul"</LI>
+        <TR>
+          <TD>|</TD>
 
-    <LI>"/" = "op_div"</LI>
+          <TD>op_or()</TD>
+        </TR>
 
-    <LI>"%" = "op_mod"</LI>
-  </UL>
+        <TR>
+          <TD>^</TD>
 
-  <UL>
-    <LI>"+=" = "op_iadd" note: ixxx stands for "inplace" as it modifies the
-    original object.</LI>
+          <TD>op_xor()</TD>
+        </TR>
 
-    <LI>"-=" = "op_isub"</LI>
+        <TR>
+          <TD>&lt;&lt;</TD>
 
-    <LI>"*=" = "op_imul"</LI>
+          <TD>op_lshift()</TD>
+        </TR>
 
-    <LI>"/=" = "op_idiv"</LI>
+        <TR>
+          <TD>&gt;&gt;</TD>
 
-    <LI>"%=" = "op_imod"</LI>
+          <TD>op_rshift()</TD>
+        </TR>
+
+        <TR>
+          <TD colspan="2" style="color: #336699">Inplace bitwise assignment
+          operators</TD>
+        </TR>
+
+        <TR>
+          <TD>&amp;=</TD>
+
+          <TD>op_iand()</TD>
+
+          <TD>"i" stands for inplace</TD>
+        </TR>
+
+        <TR>
+          <TD>|=</TD>
+
+          <TD>op_ior()</TD>
+        </TR>
+
+        <TR>
+          <TD>^=</TD>
+
+          <TD>op_ixor()</TD>
+        </TR>
+
+        <TR>
+          <TD>&gt;&gt;=</TD>
+
+          <TD>op_irshift()</TD>
+        </TR>
+
+        <TR>
+          <TD>&lt;&lt;=</TD>
+
+          <TD>op_ilshift()</TD>
+        </TR>
+
+        <TR>
+          <TD colspan="2" style="color: #336699">Arithmetic operators</TD>
+        </TR>
+
+        <TR>
+          <TD>=</TD>
+
+          <TD>op_set()</TD>
+        </TR>
+
+        <TR>
+          <TD>+</TD>
+
+          <TD>op_add()</TD>
+        </TR>
+
+        <TR>
+          <TD>-</TD>
+
+          <TD>op_sub()</TD>
+        </TR>
+
+        <TR>
+          <TD>*</TD>
+
+          <TD>op_mul()</TD>
+        </TR>
+
+        <TR>
+          <TD>/</TD>
+
+          <TD>op_div()</TD>
+        </TR>
+
+        <TR>
+          <TD>%</TD>
+
+          <TD>op_mod()</TD>
+        </TR>
+
+        <TR>
+          <TD colspan="2" style="color: #336699">Unary arithmetic
+          operators</TD>
+        </TR>
+
+        <TR>
+          <TD>-</TD>
+
+          <TD>op_neg()</TD>
+        </TR>
+
+        <TR>
+          <TD colspan="2" style="color: #336699">Inplace arithmetic assignment
+          operators</TD>
+        </TR>
+
+        <TR>
+          <TD>+=</TD>
+
+          <TD>op_iadd()</TD>
+        </TR>
+
+        <TR>
+          <TD>-=</TD>
+
+          <TD>op_isub()</TD>
+        </TR>
+
+        <TR>
+          <TD>*=</TD>
+
+          <TD>op_imul()</TD>
+        </TR>
+
+        <TR>
+          <TD>/=</TD>
+
+          <TD>op_idiv()</TD>
+        </TR>
+
+        <TR>
+          <TD>%=</TD>
+
+          <TD>op_imod()</TD>
+        </TR>
+
+        <TR>
+          <TD colspan="2" style="color: #336699">Increment arithmetic
+          operators</TD>
+        </TR>
+
+        <TR>
+          <TD>++</TD>
+
+          <TD>op_inc()</TD>
+        </TR>
+
+        <TR>
+          <TD>--</TD>
+
+          <TD>op_dec()</TD>
+        </TR>
+
+        <TR>
+          <TD colspan="2" style="color: #336699">Other operators</TD>
+        </TR>
+
+        <TR>
+          <TD>[]</TD>
+
+          <TD>op_index()</TD>
+
+          <TD>Array indexing</TD>
+        </TR>
+
+        <TR>
+          <TD>()</TD>
+
+          <TD>op_func()</TD>
+
+          <TD>Function call</TD>
+        </TR>
+      </TABLE>
+    </LI>
   </UL><I><B>%not_overload int FUNC_NAME(int value)</B></I><BR>
 
   <UL>
