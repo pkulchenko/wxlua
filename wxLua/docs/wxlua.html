@@ -13,8 +13,9 @@
 </HEAD>
 
 <BODY>
-  <H1>wxLua 2.8.12 - Manual</H1><A href=
-  "http://wxlua.sourceforge.net">wxLua</A> is a <A href=
+  <H1>wxLua 2.8.12 - Manual</H1>
+
+  <P><A href="http://wxlua.sourceforge.net">wxLua</A> is a <A href=
   "http://www.lua.org">Lua</A> scripting language wrapper around the <A href=
   "http://www.wxwidgets.org">wxWidgets</A> cross-platform C++ GUI library. It
   consists of two IDE type editors that can edit, debug, and run Lua programs
@@ -22,37 +23,80 @@
   (wxLuaFreeze), a Lua module that may be loaded using <CODE class=
   "codelua">require("wx")</CODE> when using the standard Lua executable, and a
   library for extending C++ programs with a fast, small, fully embeddable
-  scripting language.<BR>
-  <BR>
-  Lua is a small scripting language written in ANSI C that can load and run
+  scripting language.</P>
+
+  <P>Lua is a small scripting language written in ANSI C that can load and run
   interpreted scripts as either files or strings. The Lua language is fast,
   dynamic, and easy to learn. Lua contains a limited number of data types,
   mainly numbers, booleans, strings, functions, tables, and userdata. Perhaps
   the most powerful feature of the Lua language is that tables can be used as
   either numerically indexed arrays or associative arrays that can
-  cross-reference any variable type to any other variable type.<BR>
-  <BR>
-  wxLua adds to this small and elegant language the power of the C++ wxWidgets
-  cross-platform GUI library. This includes the ability to create complex user
-  interface dialogs, file and image manipulation, drawing, sockets, displaying
-  HTML, and printing to name a few. You can use as much or as little of
-  wxWidgets as you like and C++ developers can trim down the size the bindings
-  by turning off preprocessor directives.<BR>
-  <BR>
-  Additionally, wxLua adds a library for manipulating the bits of integer
-  numbers using the Bitlib library from Reuben Thomas.<BR>
+  cross-reference any variable type to any other variable type.</P>
 
-  <H3>References:</H3>wxLua website : <A href=
-  "http://wxlua.sourceforge.net">http://wxlua.sourceforge.net</A><BR>
-  wxLua Sourceforge page : <A href=
-  "http://sourceforge.net/projects/wxlua">http://sourceforge.net/projects/wxlua</A><BR>
+  <P>wxLua adds to this small and elegant language the power of the C++
+  wxWidgets cross-platform GUI library. This includes the ability to create
+  complex user interface dialogs, file and image manipulation, drawing,
+  sockets, displaying HTML, and printing to name a few. You can use as much or
+  as little of wxWidgets as you like and C++ developers can trim down the size
+  the bindings by turning off preprocessor directives.</P>
 
-  Lua website : <A href="http://www.lua.org">http://www.lua.org</A><BR>
-  wxWidgets website : <A href=
-  "http://www.wxwidgets.org">http://www.wxwidgets.org</A><BR>
-  Bitlib library : <A href=
-  "http://rrt.sc3d.org/Software/Lua/">http://rrt.sc3d.org/Software/Lua/</A><BR>
-  User and developer mailing list : wxlua-users@lists.sourceforge.net
+  <P>Additionally, wxLua adds a library for manipulating the bits of integer
+  numbers using the Bitlib library from Reuben Thomas.</P>
+
+  <H3>References:</H3>
+
+  <TABLE border="0" summary="">
+    <TR>
+      <TD>wxLua website</TD>
+
+      <TD>-</TD>
+
+      <TD><A href=
+      "http://wxlua.sourceforge.net">http://wxlua.sourceforge.net</A></TD>
+    </TR>
+
+    <TR>
+      <TD>wxLua Sourceforge page</TD>
+
+      <TD>-</TD>
+
+      <TD><A href=
+      "http://sourceforge.net/projects/wxlua">http://sourceforge.net/projects/wxlua</A></TD>
+    </TR>
+
+    <TR>
+      <TD>Lua website</TD>
+
+      <TD>-</TD>
+
+      <TD><A href="http://www.lua.org">http://www.lua.org</A></TD>
+    </TR>
+
+    <TR>
+      <TD>wxWidgets website</TD>
+
+      <TD>-</TD>
+
+      <TD><A href="http://www.wxwidgets.org">http://www.wxwidgets.org</A></TD>
+    </TR>
+
+    <TR>
+      <TD>Bitlib library</TD>
+
+      <TD>-</TD>
+
+      <TD><A href=
+      "http://rrt.sc3d.org/Software/Lua/">http://rrt.sc3d.org/Software/Lua/</A></TD>
+    </TR>
+
+    <TR>
+      <TD>Mailing list</TD>
+
+      <TD>-</TD>
+
+      <TD>wxlua-users@lists.sourceforge.net</TD>
+    </TR>
+  </TABLE>
 
   <H2>Table of Contents</H2>
 
@@ -62,11 +106,19 @@
 
       <LI><A href="wxlua.html#C2">2 - Requirements</A></LI>
 
-      <LI><A href="wxlua.html#C3">3 - Introduction to Lua (very brief)</A></LI>
+      <LI><A href="wxlua.html#C3">3 - Brief Introduction to Lua</A></LI>
 
       <LI><A href="wxlua.html#C4">4 - Bit Library</A></LI>
 
-      <LI><A href="wxlua.html#C5">5 - Programming in wxLua</A></LI>
+      <LI>
+        <A href="wxlua.html#C5">5 - Programming in wxLua</A>
+
+        <OL>
+          <LI><A href="wxlua.html#C5.1">5.1 - Naming, location, and usage of
+          the wxWidgets objects declared in the C++ header files in the wx Lua
+          table</A></LI>
+        </OL>
+      </LI>
 
       <LI>
         <A href="wxlua.html#C6">6 - wxLua Samples and How to Run Them</A>
@@ -141,15 +193,15 @@
       </UL>
     </LI>
 
-    <LI>wxWidgets 2.8.12 (&gt;= 2.6.3)
+    <LI>wxWidgets 2.8.12
 
       <UL>
-        <LI>The interface files have #ifdefs for 2.4, but they are not
+        <LI>The interface files have #ifdefs for 2.6, but they are not
         maintained anymore since in some cases the complexity of maintaining
         backwards compatibility is not worth it and it is better to take
         advantage of the fixes and additions to newer versions of wxWidgets.
         With a little work you may be able to resurrect it to work with
-        wxWidgets 2.4.</LI>
+        wxWidgets 2.6.</LI>
 
         <LI>Note for wxWidgets &lt; 2.9 : wxLua makes use of the
         wxStyledTextCtrl contrib library in wxWidgets/contrib/src/stc. You need
@@ -171,14 +223,15 @@
   within it. C++ programmers or users on platforms that we don't provide
   binaries for will need a development library of wxWidgets; typically the
   source code that you have compiled on your system. More information about
-  compiling wxLua is contained in the install.html file and on <A href=
+  compiling wxLua is contained in the <A href="install.html">install.html</A>
+  file and on <A href=
   "http://wxlua.sourceforge.net/">http://wxlua.sourceforge.net</A>.
 
-  <H2><A name="C3" id="C3"></A>3 - Introduction to Lua (very brief)</H2>This
-  short primer is meant to give you a good enough feel for Lua that you will be
-  able to understand the sample programs and begin to write your own. It
-  assumes that you have a cursory understanding of general programming
-  techniques. You should, in any case, read the documentation at <A href=
+  <H2><A name="C3" id="C3"></A>3 - Brief Introduction to Lua</H2>This short
+  primer is meant to give you a good enough feel for Lua that you will be able
+  to understand the sample programs and begin to write your own. It assumes
+  that you have a cursory understanding of general programming techniques. You
+  should, in any case, read the documentation at <A href=
   "http://www.lua.org">www.lua.org</A>.<BR>
 
   <UL>
@@ -193,10 +246,11 @@
           </UL>
         </LI>
 
-        <LI>Multiple line block comments
+        <LI>Multiple line block or inline comments
 
           <UL>
-            <LI><CODE class="codelua">--[[ multiple line comment ]]</CODE></LI>
+            <LI><CODE class="codelua">--[[ multiple line or inline comment
+            ]]</CODE></LI>
           </UL>
         </LI>
       </UL>
@@ -230,8 +284,8 @@
         the variable type as a string.
 
           <UL>
-            <LI>"nil", "boolean", "number", "string", "table", "userdata",
-            "function"</LI>
+            <LI>The 8 variables types are: "nil", "boolean", "number",
+            "string", "table", "function", "userdata", "thread"</LI>
           </UL>
         </LI>
       </UL>
@@ -344,8 +398,8 @@
 
                 <LI>Numbers can be coerced into strings as <CODE class=
                 "codelua">("A "..2)</CODE>, but not <CODE class="codelua">(2.."
-                A")</CODE> since only the right hand side of the <CODE class=
-                "codelua">..</CODE> operator may be coerced to a string.</LI>
+                A")</CODE> since the left hand side of the <CODE class=
+                "codelua">..</CODE> operator must be a string.</LI>
 
                 <LI>Many strings should be concatenated together by putting
                 them into a table array using <CODE class=
@@ -428,7 +482,17 @@
                 <LI>The length operator <CODE class="codelua">#t</CODE> returns
                 2 since there are only two contiguous integer table indexes
                 starting from 1 even though in this case there are actually 4
-                entries in the table.</LI>
+                entries in the table.
+
+                  <UL>
+                    <LI>The length of a table used as an array with holes (nil
+                    values) is undefined.</LI>
+
+                    <LI>The only guarantee is that the value at <CODE class=
+                    "codelua">t[#t+1]</CODE> will be <CODE class=
+                    "codelua">nil</CODE>.</LI>
+                  </UL>
+                </LI>
 
                 <LI>Lua table arrays have a starting index of 1.</LI>
 
@@ -458,11 +522,11 @@
             you will, to keep the global namespace uncluttered.
 
               <UL>
-                <LI>See table.XXX, string.XXX, math.XXX, os.XXX etc. in the Lua
-                documentation.</LI>
+                <LI>See <CODE class="codelua">table.XXX, string.XXX, math.XXX,
+                os.XXX</CODE> etc. in the Lua documentation.</LI>
 
-                <LI>wxLua places the wxWidgets bindings into the wx.XXX table
-                "namespace".</LI>
+                <LI>wxLua places the wxWidgets bindings into the <CODE class=
+                "codelua">wx.XXX</CODE> table "namespace".</LI>
 
                 <LI>The global table is called <CODE class="codelua">_G</CODE>
                 and you can display it as you would any table using
@@ -488,15 +552,15 @@
             itself in Lua.</LI>
 
             <LI>A metatable (see Lua documentation) may be assigned to it to
-            allow it to act like a table or be called like a function, among
-            other things.</LI>
+            allow it to act as a table or be called as a function, among other
+            things.</LI>
 
             <LI>This is the data type that wxLua uses wrap wxWidgets C++
             objects that are pushed into Lua.</LI>
 
-            <LI>The metatable that is assigned to the userdata when created
-            determines what type of C++ object and therefore what functions are
-            available to be called on it.</LI>
+            <LI>wxLua assigns a metatable to the Lua userdata when created
+            which contains the list of functions which may be called on the
+            object.</LI>
           </UL>
         </LI>
 
@@ -512,7 +576,7 @@
               print(f, f(1,2), type(f))</CODE>
 
               <UL>
-                <LI>prints "function: 01DE2AF8 3 function"</LI>
+                <LI>Both lines above print "function: 01DE2AF8 3 function"</LI>
 
                 <LI>Printing a function is the same as calling <CODE class=
                 "codelua">tostring(f)</CODE> on the function which displays the
@@ -520,11 +584,11 @@
               </UL>
             </LI>
 
-            <LI>Can return multiple values and be passed more or less variables
-            than specified.</LI>
+            <LI>Functions can return multiple values and be passed more or less
+            variables than specified.</LI>
 
-            <LI>Unhandled returns or inputs are set to <CODE class=
-            "codelua">nil</CODE> or thrown out if there are extra.</LI>
+            <LI>Unassigned inputs are set to <CODE class="codelua">nil</CODE>
+            and unassigned return values are thrown out.</LI>
 
             <LI>Functions can be assigned to variables or put into tables.
 
@@ -555,7 +619,7 @@
               v; v = 0; end; tbl = {}; item = "hello"; table_append(tbl, item);
               print(tbl[#tbl], item)</CODE></LI>
 
-              <LI>prints "hello hello", i.e. <CODE class="codelua">[1] ==
+              <LI>prints "hello hello", i.e. <CODE class="codelua">tbl[1] ==
               "hello"</CODE> and the variable "<CODE class=
               "codelua">item</CODE>" still equals "hello" and was not
               changed.</LI>
@@ -583,7 +647,7 @@
 
             <LI><CODE class="codelua">&lt; &gt; &lt;= &gt;= ~= ==</CODE></LI>
 
-            <LI><CODE class="codelua">..</CODE></LI>
+            <LI><CODE class="codelua">..</CODE> (string concatenation)</LI>
 
             <LI><CODE class="codelua">+ -</CODE></LI>
 
@@ -611,8 +675,8 @@
       <B>do ... end</B>
 
       <UL>
-        <LI>Create a new local scope in a <CODE class="codelua">do end</CODE>
-        block.</LI>
+        <LI>Create a new local scope in a <CODE class="codelua">do ...
+        end</CODE> block.</LI>
 
         <LI>Note : You cannot write <CODE class="codelua">function printHi()
         return; print("hi") end</CODE>, but you can have <CODE class=
@@ -710,7 +774,7 @@ end
   <DIV style="margin-left: 2em">
     <UL>
       <LI>You can simulate a <CODE class="codelua">continue</CODE> statement by
-      adding a while loop (doesn't print # 5).</LI>
+      adding an inner while loop (doesn't print # 5).</LI>
     </UL>
   </DIV>
 
@@ -719,12 +783,15 @@ end
       <PRE>
 local a = 0
 while a &lt; 10 do while true do
-a = a + 1 -- no increment operator
-if Check5 (a) then
-    break
-else
-    print(a)
-end break end end -- break out of inner while loop
+    a = a + 1 -- no increment operator
+    if Check5 (a) then
+        break -- break in the inner while loop to "continue" in the outer loop
+    else
+        print(a)
+    end
+
+    break end -- break out of inner while loop
+end
 </PRE>
     </BLOCKQUOTE>
   </DIV>
@@ -762,9 +829,11 @@ until a &lt; 0
         only <CODE class="codelua">break</CODE></LI>
 
         <LI>You cannot modify the loop variable, limit, or increment from
-        within the loop. The loop counter variable is local to the loop and the
-        final print(a) statement below will print that a = "hello" as it did
-        before the loop.</LI>
+        within the loop.</LI>
+
+        <LI>The loop counter variable is local to the loop and the final
+        print(a) statement below will print that a = "hello" as it did before
+        the loop.</LI>
 
         <LI>Copy the loop counter variable to a separate variable if you need
         to save it when breaking for example.</LI>
@@ -776,7 +845,7 @@ until a &lt; 0
     <BLOCKQUOTE>
       <PRE>
 local a = "hello"
-for a = 1, 10 --[[, increment]] do -- optional increment value, default = 1
+for a = 1, 10 --[[, increment]] do -- optional increment value, default increment is 1
     local temp = a * 2
     print(temp)
 end
@@ -870,10 +939,10 @@ print(a) -- a == "hello" since loop counter variable is local to the loop
   <DIV class="codebox">
     <BLOCKQUOTE>
       <PRE>
--- Print the keys in table t for table of values
-function PrintKeys(t, vals, cmp_case)
+-- Print the keys in table t that have the values of in the table values
+function PrintKeys(t, values, cmp_case)
     -- use nested functions for repetitive code or to simplify code
-    local function cmp_vals(a, b)
+    local function cmp_values(a, b)
         if cmp_case then -- can use upvalue variables
             return a == b
         else
@@ -882,17 +951,16 @@ function PrintKeys(t, vals, cmp_case)
     end
     local function find_key(t, val)
         for k,v in pairs(t) do
-            if cmp_vals(val, v) then return k end
+            if cmp_values(val, v) then return k end
         end
     end
     for i = 1, #vals do
-        print(find_key(t, vals[i]), vals[i])
+        print(find_key(t, values[i]), values[i])
     end
 end
 
 -- prints "a1 a2", "b1 b2", "nil C2"
 PrintKeys({a1 = "a2", b1 = "b2", c1 = "c2"}, {"a2", "b2", "C2"}, true)
-
 </PRE>
     </BLOCKQUOTE>
   </DIV><BR>
@@ -900,8 +968,7 @@ PrintKeys({a1 = "a2", b1 = "b2", c1 = "c2"}, {"a2", "b2", "C2"}, true)
   <DIV class="codebox">
     <BLOCKQUOTE>
       <PRE>
-
--- Varargs example, prints "4 4 4 20 20" and "table: 0183B820 10 30 5"
+-- Varargs example; prints "4 4 4 20 20" and "table: 0183B820 10 30 5"
 function Varargs(...)
     local args = {...}
     print(select("#", ...), #{...}, #args, args[2], unpack({...}, 2, 2))
@@ -916,13 +983,13 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
 
   <H2><A name="C4" id="C4"></A>4 - Bit Library</H2>wxLua automatically loads a
   library for manipulating the bits of an integer and puts it into the global
-  "bit" table. This is because wxWidgets often uses enumeration flags to
-  control the behavior of functions and for compactly storing status
-  information. You can easily "or" bits by adding them together and this is the
-  preferred method, for example 0x02 + 0x04 = 0x06 or bitwise 0110. If the bits
-  you're trying to "or" are not powers of 2 (perhaps one is a bit mask) this
-  fails, 0x01 + 0x03 = 0x04 or bitwise 0100 (oops) instead of the desired
-  0011.<BR>
+  <CODE class="codelua">bit</CODE> table. This is because wxWidgets often uses
+  enumeration flags to control the behavior of functions and for compactly
+  storing status information. You can easily "or" bits by adding them together
+  and this is the preferred method, for example 0x02 + 0x04 = 0x06 or bitwise
+  0110. If the bits you're trying to "or" are not powers of 2 (perhaps one is a
+  bit mask) this fails, 0x01 + 0x03 = 0x04 or bitwise 0100 (oops) instead of
+  the desired 0011.<BR>
   <BR>
   wxLua uses the bitlib library written by Reuben Thomas and since the code for
   it is very small, it's embedded into the wxLua sourcecode.<BR>
@@ -987,18 +1054,19 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
   closely as possible to the underlying C++ notation so that the official C++
   documentation may be used as a reference, <A href=
   "http://www.wxwidgets.org/docs">http://www.wxwidgets.org/docs</A>. The most
-  common case where wxLua deviates from C++ is when values are passed by
-  reference to a function to be changed; wxLua will return multiple values
-  instead. Please see the <B><I>wxluaref.html</I></B> document that lists all
-  the wxWidgets objects wrapped by wxLua and take note of the functions that
-  are marked <I>%override</I> since you will need to use them as described in
-  that document. You should also look at the <B><I>binding.html</I></B> file,
-  even if you do not plan to write your own bindings, to get a better
-  understanding of the <B><I>wxluaref.html</I></B> file.<BR>
+  common case where wxLua deviates from C++ are for functionss with values
+  passed by reference to be changed; wxLua will return multiple values instead.
+  Please see the <A href="wxluaref.html">wxluaref.html</A> document that lists
+  all the wxWidgets objects wrapped by wxLua and take note of the functions
+  that are marked <I>%override</I> since you will need to use them as described
+  in that document. You should also look at the <A href=
+  "binding.html">binding.html</A> file, even if you do not plan to write your
+  own bindings, to get a better understanding of the <A href=
+  "wxluaref.html">wxluaref.html</A> file.<BR>
   <BR>
   <U><B>Strings</B></U>: wxLua does not typically use the wxString class for
   strings, rather it uses Lua strings. This means that all wxWidgets functions
-  that take a wxString parameter take either a wxString userdata or (preferred)
+  that take a wxString parameter take either a wxString userdata or preferrably
   a Lua string (Lua variables that are of type(var) == "string"). Functions
   that return wxStrings convert the value into a Lua string for convenience.
   The conversion from the Lua ANSI C 8-bit char* string to a wxString (which
@@ -1019,9 +1087,10 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
   "wxArrayInt&amp; arr" or "wxArrayInt* arr" you must provide a wxArrayInt
   userdata since the C++ function will most likely modify the wxArrayInt that's
   passed to it.<BR>
-  <BR>
-  <B>Location of the wxWidgets objects declared in a C++ header files in the
-  <CODE class="codelua">wx</CODE> Lua table</B>
+
+  <H3><A name="C5.1" id="C5.1"></A>5.1 - Naming, location, and usage of the
+  wxWidgets objects declared in the C++ header files in the <CODE class=
+  "codelua">wx</CODE> Lua table</H3>
 
   <UL>
     <LI>
@@ -1074,9 +1143,8 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
           </UL>
         </LI>
 
-        <LI>This follows the C++ semantics that you do not have to specify the
-        name of an enum, but you do have to use its scope if it is a class
-        member.</LI>
+        <LI>This follows the C++ semantics that you do not specify the name of
+        an enum, but you do have to use its scope if it is a class member.</LI>
 
         <LI>Declared in the bindings using the <I>%enum</I> tag</LI>
       </UL>
@@ -1126,8 +1194,8 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
 
         <LI>wxLua does not use the static event tables, the EVT_XXX() macros,
         since it is not a compiled language, but rather the corresponding
-        wxEVT_XXX. The wxluaref.html manual contains a complete mapping between
-        the two.</LI>
+        wxEVT_XXX. The <A href="wxluaref.html">wxluaref.html</A> manual
+        contains a complete mapping between the two.</LI>
 
         <LI>Use the wxEvtHandler::Connect() function to connect event types to
         a wxEvtHandler; typically a wxWindow derived class.
@@ -1152,8 +1220,8 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
             therefore you need the Id to determine where the event came from.
 
               <UL style="color: red;">
-                <LI>Note: You must always create a wxPaintDC for
-                wxEVT_PAINT.</LI>
+                <LI>Note: You must always create a wxPaintDC for wxEVT_PAINT to
+                clear the update region.</LI>
               </UL>
 
               <UL>
@@ -1245,9 +1313,10 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
             <LI>Member functions inherited from the base class(es) are also
             available and may be overloaded as well.</LI>
 
-            <LI>The C++ classes are exposed as tables in Lua, but have a __call
-            metatable item so they can be called as a function. If you need to
-            get the constructor function itself you can use <CODE class=
+            <LI>The C++ classes are exposed as tables in Lua, but have a
+            <CODE class="codelua">__call</CODE> metatable item so they can be
+            called as a function. If you need to get the constructor function
+            itself you can use <CODE class=
             "codelua">wx.CLASS_NAME.new(...)</CODE> which is the constructor
             exposed as a Cfunction.</LI>
           </UL>
@@ -1260,16 +1329,18 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
             <LI>A special metatable is set on the userdata with these entries :
 
               <UL>
-                <LI>__index to call functions on the object or to get member
-                variable values.</LI>
+                <LI><CODE class="codelua">__index</CODE> to call functions on
+                the object or to get member variable values.</LI>
 
-                <LI>__newindex to set new functions or values or set member
-                variable values.</LI>
+                <LI><CODE class="codelua">__newindex</CODE> to set new
+                functions or values or set member variable values.</LI>
 
-                <LI>__tostring to allow print() to show something useful
+                <LI>
+                  <CODE class="codelua">__tostring</CODE> to allow print() to
+                  show something useful
 
                   <UL>
-                    <LI><CODE class="codelua">print(wx.wxPoint())</CODE>
+                    <LI><CODE class="codelua">print(wx.wxPoint())</CODE> prints
                     "userdata: 0x858df5c [wxPoint(0x84ab550, 251)]", where
                     0x858df5c is the Lua userdata address, 0x84ab550 is the
                     address of the wxPoint object, and 251 is the wxLua type
@@ -1280,8 +1351,9 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
                   </UL>
                 </LI>
 
-                <LI>__gc to tell wxLua when the userdata is no longer used so
-                wxLua can delete the C++ object if appropriate.</LI>
+                <LI><CODE class="codelua">__gc</CODE> to tell wxLua when the
+                userdata is no longer used so wxLua can delete the C++ object
+                if appropriate.</LI>
               </UL>
             </LI>
           </UL>
@@ -1306,7 +1378,7 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
             programs run at an even pace.</LI>
 
             <LI>However! Some graphical device interface (GDI) classes need to
-            be deleted immediately when you are done with them.
+            be deleted immediately after you are done using them.
 
               <UL>
                 <LI>This is really a problem only in MS Windows. Windows 95
@@ -1324,8 +1396,8 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
 
             <LI>Additionally, since the Lua userdata that wxLua pushes into Lua
             only store a void* pointer to the C++ class object, Lua only thinks
-            they are of size void* which are on 64bit x86 machines only 8
-            bytes. However, the class might store a 1024x768 x 3 bytes/pixel
+            they are of size void* which are only 8 bytes on 64bit x86
+            machines. However, the class might store a 1024x768 x 3 bytes/pixel
             image as a wxImage (2.36Mb). There have been a number of
             discussions about this on the Lua mailing list, but currently there
             is no way to let Lua know the true size of a userdata to help it
@@ -1350,10 +1422,11 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
 
                 <LI>You can force garbage collection using <CODE class=
                 "codelua">collectgarbage("collect")</CODE> in Lua, but this may
-                cause pauses in your program's execution. It is a good idea to
-                collect all the garbage at the end of your initialization
-                function to at least start out with a clean slate since program
-                startup time is usually not a concern.</LI>
+                cause pauses in your program's execution.</LI>
+
+                <LI>It is a good idea to collect all the garbage at the end of
+                your initialization function to at least start out with a clean
+                slate since program startup time is usually not a concern.</LI>
               </UL>
             </LI>
 
@@ -1807,6 +1880,8 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
                   <TD>-</TD>
 
                   <TD>op_neg()</TD>
+
+                  <TD>negate</TD>
                 </TR>
 
                 <TR>
@@ -1898,7 +1973,8 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
             you type <CODE class="codelua">print(pt1, pt2)</CODE> the result is
             <I>"userdata: 0x858df5c [wxPoint(0x84ab550, 251)], userdata:
             0x858df5c [wxPoint(0x84ab550, 251)]"</I>. See the wxLua userdata
-            metatable function <I>__tostring</I> above.</LI>
+            metatable function <CODE class="codelua">__tostring</CODE>
+            above.</LI>
 
             <LI>Example : <CODE class="codelua">pt1 = wx.wxPoint(1,2); pt2 =
             wx.wxPoint(); pt2:op_set(pt1); pt1:SetX(10); print(pt2:GetX());
@@ -2005,7 +2081,7 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
   <BR>
   We welcome any enhancements or additional samples that might be generally
   useful to the wxLua community. Please understand that any code you contribute
-  has to be maintained and easily understood so try to keep things simple and
+  has to be maintained and easily understood, so try to keep things simple and
   clear.<BR>
   <BR>
   If something in wxLua seems to not work as expected it is best to try to
@@ -2078,8 +2154,10 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
 
       <UL>
         <LI>A simple calculator program that demonstrates loading and using
-        controls from an XRC resource, accelerator tables, and event handling.
-        This programs loads the file calculator.xrc to create its GUI.</LI>
+        controls from an XRC resource, accelerator tables, and event
+        handling.</LI>
+
+        <LI>This programs loads the file calculator.xrc to create its GUI.</LI>
       </UL>
     </LI>
 
@@ -2088,12 +2166,14 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
 
       <UL>
         <LI>Demonstrates a number of controls that offer choices to the user,
-        wxRadioBox, wxListBox, wxComboBox, wxChoice, and wxCheckListBox. It
-        uses a wxNotebook and wxSizers for layout.</LI>
+        wxRadioBox, wxListBox, wxComboBox, wxChoice, and wxCheckListBox.</LI>
+
+        <LI>It uses a wxNotebook and wxSizers for layout.</LI>
       </UL>
     </LI>
 
-    <LI style="font-weight: bold;">coroutine.wx.lua
+    <LI>
+      <B>coroutine.wx.lua</B>
 
       <UL>
         <LI>A demo of how to use coroutines in wxLua using wxEVT_IDLE to call
@@ -2115,9 +2195,12 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
 
       <UL>
         <LI>This is the editor that the wxLua application <I>apps/wxlua</I>
-        uses. It uses the wxStyledTextCtrl for the editor and can run and debug
-        Lua programs. For more information see the wxLua application notes
-        below.</LI>
+        uses.</LI>
+
+        <LI>It uses the wxStyledTextCtrl for the editor and can run and debug
+        Lua programs.</LI>
+
+        <LI>For more information see the wxLua application notes below.</LI>
       </UL>
     </LI>
 
@@ -2125,8 +2208,7 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
       <B>grid.wx.lua</B>
 
       <UL>
-        <LI>A very simple demo of the wxGrid class. A better one would be
-        appreciated.</LI>
+        <LI>A very simple demo of the wxGrid class.</LI>
       </UL>
     </LI>
 
@@ -2135,19 +2217,22 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
 
       <UL>
         <LI>Shows the wxLuaHtmlWindow and it's virtual functions as well as
-        adding.custom widgets to a wxHtmlWindow.</LI>
+        adding custom widgets to a wxHtmlWindow.</LI>
       </UL>
     </LI>
 
-    <LI style="font-weight: bold;">luamodule.wx.lua
+    <LI>
+      <B>luamodule.wx.lua</B>
 
       <UL>
         <LI>A sample for loading the wxLua "wx" module using Lua's require
-        function when wxLua is compiled as a shared library. Run this program
-        using the Lua executable and not wxLua or wxLuaFreeze since the wxLua
-        library is loaded at run-time. See also <A href=
-        "#wrapmodule.wx.lua">wrapmodule.wx.lua</A> for more information about
-        loading Lua modules.</LI>
+        function when wxLua is compiled as a shared library.</LI>
+
+        <LI>Run this program using the Lua executable and not wxLua or
+        wxLuaFreeze since the wxLua library is loaded at run-time.</LI>
+
+        <LI>See also wrapmodule.wx.lua for more information about loading Lua
+        modules.</LI>
       </UL>
     </LI>
 
@@ -2550,9 +2635,9 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
   <H2><A name="C9" id="C9"></A>9 - wxLua Sourcecode Modules</H2>wxLua is broken
   up into "modules" that are compiled into libraries so that you can choose to
   link to some or all of them. The directory structure of the <I>modules</I>
-  dir is such that in your program you need only add the include path to
-  <I>wxLua/modules</I> in your compiler settings and then in the code always
-  write <I>#include "modulename/include/filename.h"</I>.<BR>
+  dir is such that you need only add the #include path to <I>wxLua/modules</I>
+  in your compiler settings and then in the code always write <I>#include
+  "modulename/include/filename.h"</I>.<BR>
 
   <UL>
     <LI>
