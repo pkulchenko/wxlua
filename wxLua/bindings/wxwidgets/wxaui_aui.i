@@ -112,10 +112,12 @@
 
 %class %delete wxAuiTabContainerButton
     %member int id;               // button's id
-    %member int cur_state;        // current state (normal, hover, pressed, etc.)
+    !%wxchkver_2_9_2 %member int cur_state;        // current state (normal, hover, pressed, etc.)
+    %wxchkver_2_9_2  %member int curState;
     %member int location;         // buttons location (wxLEFT, wxRIGHT, or wxCENTER)
     %member wxBitmap bitmap;      // button's hover bitmap
-    %member wxBitmap dis_bitmap;  // button's disabled bitmap
+    !%wxchkver_2_9_2 %member wxBitmap dis_bitmap;  // button's disabled bitmap
+    %wxchkver_2_9_2  %member wxBitmap disBitmap;
     %member wxRect rect;          // button's hit rectangle
 %endclass
 
@@ -804,7 +806,7 @@
 
     void SetChildMenuBar(wxAuiMDIChildFrame *pChild);
 
-    virtual bool ProcessEvent(wxEvent& event);
+    !%wxchkver_2_9_2 virtual bool ProcessEvent(wxEvent& event);
 
     wxAuiMDIChildFrame *GetActiveChild() const;
     void SetActiveChild(wxAuiMDIChildFrame* pChildFrame);

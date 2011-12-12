@@ -14,7 +14,7 @@
 %define wxLUA_MINOR_VERSION
 %define wxLUA_RELEASE_NUMBER
 %define wxLUA_SUBRELEASE_NUMBER
-%define_string wxLUA_VERSION_STRING
+%define_wxstring wxLUA_VERSION_STRING
 
 %function bool wxLUA_CHECK_VERSION(int major, int minor, int release) // actually a define
 %function bool wxLUA_CHECK_VERSION_FULL(int major, int minor, int release, int subrel) // actually a define

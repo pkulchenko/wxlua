@@ -200,11 +200,21 @@
     wxDateTime& Add(const wxDateSpan& diff)
     wxDateTime& Subtract(const wxTimeSpan& diff)
     wxDateTime& Subtract(const wxDateSpan& diff)
-    wxString ParseRfc822Date(wxString date)
-    wxString ParseFormat(wxString date, wxString format = "%c", const wxDateTime& dateDef = wxDefaultDateTime)
-    wxString ParseDateTime(wxString datetime)
-    wxString ParseDate(wxString date)
-    wxString ParseTime(wxString time)
+
+    %wxchkver_2_9 bool ParseRfc822Date(wxString date, wxString::const_iterator *end)
+    %wxchkver_2_9 bool ParseFormat(wxString date, wxString format, const wxDateTime& dateDef, wxString::const_iterator *end)
+    %wxchkver_2_9 bool ParseFormat(wxString date, wxString format, wxString::const_iterator *end)
+    %wxchkver_2_9 bool ParseFormat(wxString date, wxString::const_iterator *end)
+    %wxchkver_2_9 bool ParseDateTime(wxString datetime, wxString::const_iterator *end)
+    %wxchkver_2_9 bool ParseDate(wxString date, wxString::const_iterator *end)
+    %wxchkver_2_9 bool ParseTime(wxString time, wxString::const_iterator *end)
+
+    !%wxchkver_2_9 wxString ParseRfc822Date(wxString date)
+    !%wxchkver_2_9 wxString ParseFormat(wxString date, wxString format = "%c", const wxDateTime& dateDef = wxDefaultDateTime)
+    !%wxchkver_2_9 wxString ParseDateTime(wxString datetime)
+    !%wxchkver_2_9 wxString ParseDate(wxString date)
+    !%wxchkver_2_9 wxString ParseTime(wxString time)
+
     wxString FormatDate() const
     wxString FormatTime() const
     wxString FormatISODate() const
@@ -873,9 +883,11 @@
     //
     // domains are searched in the last to first order, i.e. catalogs
     // added later override those added before.
-    virtual wxString GetString(const wxString& szOrigString, const wxChar* szDomain = NULL) const;
+    %wxchkver_2_9  virtual wxString GetString(const wxString& szOrigString, const wxString& szDomain = "") const;
+    !%wxchkver_2_9 virtual wxString GetString(const wxString& szOrigString, const wxChar* szDomain = NULL) const;
     // plural form version of the same:
-    virtual wxString GetString(const wxString& szOrigString, const wxString& szOrigString2, size_t n, const wxChar* szDomain = NULL) const;
+    %wxchkver_2_9  virtual wxString GetString(const wxString& szOrigString, const wxString& szOrigString2, size_t n, const wxString& szDomain = "") const;
+    !%wxchkver_2_9 virtual wxString GetString(const wxString& szOrigString, const wxString& szOrigString2, size_t n, const wxChar* szDomain = NULL) const;
 
     // Returns the current short name for the locale
     const wxString& GetName() const
@@ -886,10 +898,12 @@
 
 %function wxLocale* wxGetLocale()
 
-%wxchkver_2_8  %function wxString wxGetTranslation(const wxString& sz, const wxChar* domain=NULL)
+%wxchkver_2_9  %function wxString wxGetTranslation(const wxString& sz, const wxString& domain = "")
+!%wxchkver_2_9 && %wxchkver_2_8  %function wxString wxGetTranslation(const wxString& sz, const wxChar* domain=NULL)
 !%wxchkver_2_8 %function wxString wxGetTranslation(const wxString& sz)
 
-%wxchkver_2_8  %rename wxGetTranslationPlural %function wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n, const wxChar* domain=NULL)
+%wxchkver_2_9  %rename wxGetTranslationPlural %function wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n, const wxString& domain = "")
+!%wxchkver_2_9 && %wxchkver_2_8  %rename wxGetTranslationPlural %function wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n, const wxChar* domain=NULL)
 !%wxchkver_2_8 %rename wxGetTranslationPlural %function wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n)
 
 %endif //wxUSE_INTL

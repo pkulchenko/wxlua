@@ -22,7 +22,7 @@ class WXDLLIMPEXP_FWD_CORE wxProgressDialog;
 #include "wxluadebug/include/wxluadebugdefs.h"
 #include "wxluadebug/include/wxldebug.h"
 
-class WXDLLIMPEXP_WXLUADEBUG wxLuaDebugData;
+class WXDLLIMPEXP_FWD_WXLUADEBUG wxLuaDebugData;
 
 // ----------------------------------------------------------------------------
 // wxWindowIds for the wxLuaStackDialog
@@ -81,7 +81,7 @@ public:
     int             m_item_idx;          // this item # in m_parentDebugData
     int             m_level;             // depth into the Lua tables
     wxLuaDebugData  m_parentDebugData;   // ref of parent's data
-    wxLuaDebugData  m_childrenDebugData; // valid if this item has children, e.g. a table   
+    wxLuaDebugData  m_childrenDebugData; // valid if this item has children, e.g. a table
     wxTreeItemId    m_treeId;            // valid if this item is in the treectrl, e.g. a table
 };
 
@@ -153,7 +153,7 @@ public:
         LIST_COL_KEY_TYPE,
         LIST_COL_VALUE_TYPE,
         LIST_COL_VALUE,
-        
+
         LIST_COL__MAX
     };
 

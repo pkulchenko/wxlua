@@ -4698,10 +4698,12 @@ static int LUACALL wxLua_wxMimeTypesManager_IsOfType(lua_State *L)
     return 1;
 }
 
+
+#if !wxCHECK_VERSION(2,9,0)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMimeTypesManager_ReadMailcap[] = { &wxluatype_wxMimeTypesManager, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxMimeTypesManager_ReadMailcap(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMimeTypesManager_ReadMailcap[1] = {{ wxLua_wxMimeTypesManager_ReadMailcap, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxMimeTypesManager_ReadMailcap }};
-//     bool ReadMailcap(const wxString& filename, bool fallback = false);
+//     !%wxchkver_2_9 bool ReadMailcap(const wxString& filename, bool fallback = false);
 static int LUACALL wxLua_wxMimeTypesManager_ReadMailcap(lua_State *L)
 {
     // get number of arguments
@@ -4723,7 +4725,7 @@ static int LUACALL wxLua_wxMimeTypesManager_ReadMailcap(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMimeTypesManager_ReadMimeTypes[] = { &wxluatype_wxMimeTypesManager, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxMimeTypesManager_ReadMimeTypes(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMimeTypesManager_ReadMimeTypes[1] = {{ wxLua_wxMimeTypesManager_ReadMimeTypes, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMimeTypesManager_ReadMimeTypes }};
-//     bool ReadMimeTypes(const wxString& filename);
+//     !%wxchkver_2_9 bool ReadMimeTypes(const wxString& filename);
 static int LUACALL wxLua_wxMimeTypesManager_ReadMimeTypes(lua_State *L)
 {
     // const wxString filename
@@ -4737,6 +4739,8 @@ static int LUACALL wxLua_wxMimeTypesManager_ReadMimeTypes(lua_State *L)
 
     return 1;
 }
+
+#endif // !wxCHECK_VERSION(2,9,0)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMimeTypesManager_Unassociate[] = { &wxluatype_wxMimeTypesManager, &wxluatype_wxFileType, NULL };
 static int LUACALL wxLua_wxMimeTypesManager_Unassociate(lua_State *L);
@@ -4778,8 +4782,12 @@ wxLuaBindMethod wxMimeTypesManager_methods[] = {
     { "GetFileTypeFromMimeType", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMimeTypesManager_GetFileTypeFromMimeType, 1, NULL },
     { "Initialize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMimeTypesManager_Initialize, 1, NULL },
     { "IsOfType", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxMimeTypesManager_IsOfType, 1, NULL },
+
+#if !wxCHECK_VERSION(2,9,0)
     { "ReadMailcap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMimeTypesManager_ReadMailcap, 1, NULL },
     { "ReadMimeTypes", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMimeTypesManager_ReadMimeTypes, 1, NULL },
+#endif // !wxCHECK_VERSION(2,9,0)
+
     { "Unassociate", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMimeTypesManager_Unassociate, 1, NULL },
     { 0, 0, 0, 0 },
 };

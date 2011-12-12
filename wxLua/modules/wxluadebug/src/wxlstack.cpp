@@ -244,12 +244,12 @@ bool wxLuaStackDialog::Create(const wxLuaState& wxlState,
 
     // -----------------------------------------------------------------------
 
-    wxFlexGridSizer* topSizer = new wxFlexGridSizer(2, 1);
+    wxFlexGridSizer* topSizer = new wxFlexGridSizer(2, 0, 0);
     topSizer->AddGrowableCol(1);
 
     topSizer->Add(stackText, wxSizerFlags().Expand().Border().Align(wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL));
 
-    wxFlexGridSizer* stackSizer = new wxFlexGridSizer(3, 1);
+    wxFlexGridSizer* stackSizer = new wxFlexGridSizer(3, 0, 0);
     stackSizer->AddGrowableCol(0);
     stackSizer->Add(m_stackChoice, wxSizerFlags().Expand().Border());
     stackSizer->Add(collapseButton, wxSizerFlags().Border());
@@ -258,7 +258,7 @@ bool wxLuaStackDialog::Create(const wxLuaState& wxlState,
 
     topSizer->Add(findText, wxSizerFlags().Expand().Border().Align(wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL));
 
-    wxFlexGridSizer* findSizer = new wxFlexGridSizer(4, 1);
+    wxFlexGridSizer* findSizer = new wxFlexGridSizer(4, 0, 0);
     findSizer->AddGrowableCol(0);
     findSizer->Add(m_findComboBox, wxSizerFlags().Expand().Border());
     findSizer->Add(findPrev, wxSizerFlags().Expand().Border());
@@ -824,17 +824,17 @@ void wxLuaStackDialog::OnMenu(wxCommandEvent& event)
     else if ((id >= ID_WXLUA_STACK_LISTMENU_COPY_ROW) && (id <= ID_WXLUA_STACK_LISTMENU_COPY_COL4))
     {
         wxString s;
-    
+
         long list_item = m_listCtrl->GetNextItem(-1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
         // iterate all selected items, separated by \n
         while (list_item >= 0)
         {
             if (!s.IsEmpty()) s += wxT("\n");
-        
+
             if (id == ID_WXLUA_STACK_LISTMENU_COPY_ROW)
             {
                 s += GetItemText(list_item, 0, true);
-            
+
                 for (int i = 1; i < LIST_COL__MAX; ++i)
                     s += wxT("\t") + GetItemText(list_item, i, true);
             }
@@ -842,9 +842,9 @@ void wxLuaStackDialog::OnMenu(wxCommandEvent& event)
             {
                 s += GetItemText(list_item, id - ID_WXLUA_STACK_LISTMENU_COPY_COL0, true);
             }
-            
+
             list_item = m_listCtrl->GetNextItem(list_item, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED);
-        }    
+        }
 
         if (wxTheClipboard->Open())
         {

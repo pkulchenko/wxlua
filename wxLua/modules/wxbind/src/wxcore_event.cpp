@@ -2324,10 +2324,11 @@ int wxNavigationKeyEvent_enumCount = sizeof(wxNavigationKeyEvent_enums)/sizeof(w
 // Lua MetaTable Tag for Class 'wxIdleEvent'
 int wxluatype_wxIdleEvent = WXLUA_TUNKNOWN;
 
+#if !wxCHECK_VERSION(2,9,2)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIdleEvent_CanSend[] = { &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxIdleEvent_CanSend(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxIdleEvent_CanSend[1] = {{ wxLua_wxIdleEvent_CanSend, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxIdleEvent_CanSend }};
-//     static bool CanSend(wxWindow* window)
+//     !%wxchkver_2_9_2 static bool CanSend(wxWindow* window)
 static int LUACALL wxLua_wxIdleEvent_CanSend(lua_State *L)
 {
     // wxWindow window
@@ -2339,6 +2340,8 @@ static int LUACALL wxLua_wxIdleEvent_CanSend(lua_State *L)
 
     return 1;
 }
+
+#endif // !wxCHECK_VERSION(2,9,2)
 
 static int LUACALL wxLua_wxIdleEvent_GetMode(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxIdleEvent_GetMode[1] = {{ wxLua_wxIdleEvent_GetMode, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
@@ -2429,7 +2432,10 @@ void wxLua_wxIdleEvent_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxIdleEvent_methods[] = {
+#if !wxCHECK_VERSION(2,9,2)
     { "CanSend", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxIdleEvent_CanSend, 1, NULL },
+#endif // !wxCHECK_VERSION(2,9,2)
+
     { "GetMode", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxIdleEvent_GetMode, 1, NULL },
     { "MoreRequested", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxIdleEvent_MoreRequested, 1, NULL },
     { "RequestMore", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxIdleEvent_RequestMore, 1, NULL },

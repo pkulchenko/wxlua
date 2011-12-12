@@ -496,7 +496,7 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
 #endif // wxUSE_FONTDLG && wxLUA_USE_wxFontDialog
 
 #if wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog
-    #include "wx/generic/progdlgg.h"
+    #include "wx/progdlg.h"
 #endif // wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog
 
 #if wxUSE_STREAMS && wxUSE_FILESYSTEM
@@ -638,6 +638,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
 #if (wxLUA_USE_wxLog && wxUSE_LOG) && (wxUSE_LOGGUI)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxLogGui;
 #endif // (wxLUA_USE_wxLog && wxUSE_LOG) && (wxUSE_LOGGUI)
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0))
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPointList;
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0))
 
 #if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (defined(__WXMSW__) || defined(__WXMAC__))
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPrinterDC;

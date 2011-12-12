@@ -184,7 +184,7 @@
 
 %include "wx/html/htmltag.h"
 
-%class wxHtmlTag, wxObject
+%class wxHtmlTag // !%wxchkver_2_9_2 wxObject
     //wxHtmlTag(const wxString& source, int pos, int end_pos, wxHtmlTagsCache* cache)
 
     const wxString GetAllParams() const
@@ -301,7 +301,8 @@
     //void AddTag(const wxHtmlTag& tag)
     //void AddTagHandler(wxHtmlTagHandler *handler)
     //void AddWord(const wxString &txt) - not in 2.6?
-    void DoParsing(int begin_pos, int end_pos)
+    %wxchkver_2_9_2 void DoParsing(const wxString::const_iterator& begin_pos, const wxString::const_iterator& end_pos)
+    !%wxchkver_2_9_2 void DoParsing(int begin_pos, int end_pos)
     void DoParsing()
     virtual void DoneParser()
     //virtual wxObject* GetProduct()

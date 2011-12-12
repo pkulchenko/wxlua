@@ -730,7 +730,7 @@
 %define wxSL_HORIZONTAL
 %define wxSL_LABELS
 %define wxSL_LEFT
-%define wxSL_NOTIFY_DRAG
+// %define wxSL_NOTIFY_DRAG %wxcompat_2_6 obsolete
 %define wxSL_RIGHT
 %define wxSL_SELRANGE
 %define wxSL_TOP
@@ -854,7 +854,7 @@
 %define wxTE_CENTRE
 %define wxTE_RIGHT
 %define wxTE_DONTWRAP
-%define wxTE_LINEWRAP
+// %define wxTE_LINEWRAP %wxcompat_2_6 obsolete use wxTE_CHARWRAP
 %define wxTE_CHARWRAP
 %define wxTE_WORDWRAP
 %define wxTE_BESTWRAP
@@ -1254,7 +1254,7 @@
 %endclass
 
 // ---------------------------------------------------------------------------
-// wxLuaTreeItemData - 
+// wxLuaTreeItemData -
 //
 // No %delete since the wxTreeCtrl will delete it when set as the data for an item.
 // Only create a wxLuaTreeItemData if you're going to attach it to a wxTreeCtrl item to avoid memory leaks.
@@ -1273,7 +1273,7 @@
     any  GetData() const;
     // %override void wxLuaTreeItemData::SetData(any)
     // C++ Func: void SetData(wxLuaObject* obj)
-    void SetData(any); 
+    void SetData(any);
 %endclass
 
 
@@ -1332,7 +1332,8 @@
     wxDIRCTRL_EDIT_LABELS
 %endenum
 
-%define_string wxDirDialogDefaultFolderStr
+%wxchkver_2_9_0 %define_string wxDirDialogDefaultFolderStr
+!%wxchkver_2_9_0 %define_wxstring wxDirDialogDefaultFolderStr
 
 %class wxGenericDirCtrl, wxControl
     wxGenericDirCtrl()

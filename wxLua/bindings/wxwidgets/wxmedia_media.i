@@ -27,12 +27,12 @@
     wxMEDIACTRLPLAYERCONTROLS_DEFAULT
 %endenum
 
-%define_string wxMEDIABACKEND_DIRECTSHOW   //wxT("wxAMMediaBackend")
-%define_string wxMEDIABACKEND_MCI          //wxT("wxMCIMediaBackend")
-%define_string wxMEDIABACKEND_QUICKTIME    //wxT("wxQTMediaBackend")
-%define_string wxMEDIABACKEND_GSTREAMER    //wxT("wxGStreamerMediaBackend")
-%wxchkver_2_8 %define_string wxMEDIABACKEND_REALPLAYER   //wxT("wxRealPlayerMediaBackend")
-%wxchkver_2_8 %define_string wxMEDIABACKEND_WMP10        //wxT("wxWMP10MediaBackend")
+%define_wxstring wxMEDIABACKEND_DIRECTSHOW   //wxT("wxAMMediaBackend")
+%define_wxstring wxMEDIABACKEND_MCI          //wxT("wxMCIMediaBackend")
+%define_wxstring wxMEDIABACKEND_QUICKTIME    //wxT("wxQTMediaBackend")
+%define_wxstring wxMEDIABACKEND_GSTREAMER    //wxT("wxGStreamerMediaBackend")
+%wxchkver_2_8 %define_wxstring wxMEDIABACKEND_REALPLAYER   //wxT("wxRealPlayerMediaBackend")
+%wxchkver_2_8 %define_wxstring wxMEDIABACKEND_WMP10        //wxT("wxWMP10MediaBackend")
 
 %class wxMediaCtrl, wxControl
     wxMediaCtrl()
@@ -64,12 +64,14 @@
 // ---------------------------------------------------------------------------
 //  wxMediaEvent
 
-%define wxMEDIA_FINISHED_ID
-%define wxMEDIA_STOP_ID
-%define wxMEDIA_LOADED_ID
-%wxchkver_2_6_4 %define wxMEDIA_STATECHANGED_ID
-%wxchkver_2_6_4 %define wxMEDIA_PLAY_ID
-%wxchkver_2_6_4 %define wxMEDIA_PAUSE_ID
+%if !%wxchkver_2_9_2
+    %define wxMEDIA_FINISHED_ID
+    %define wxMEDIA_STOP_ID
+    %define wxMEDIA_LOADED_ID
+    %wxchkver_2_6_4 %define wxMEDIA_STATECHANGED_ID
+    %wxchkver_2_6_4 %define wxMEDIA_PLAY_ID
+    %wxchkver_2_6_4 %define wxMEDIA_PAUSE_ID
+%endif
 
 %class %delete wxMediaEvent, wxNotifyEvent
     %define_event wxEVT_MEDIA_FINISHED  // EVT_MEDIA_FINISHED(winid, fn)

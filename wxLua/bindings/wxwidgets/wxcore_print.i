@@ -548,8 +548,9 @@
 %class %delete wxPostScriptDC, wxDC
     wxPostScriptDC(const wxPrintData& printData)
 
-    static void SetResolution(int ppi)
-    static int GetResolution()
+    !%wxchkver_2_9_2 static void SetResolution(int ppi)
+    !%wxchkver_2_9_2 static int GetResolution()
+    %wxchkver_2_9_2 int GetResolution()
 %endclass
 
 %endif //wxUSE_POSTSCRIPT

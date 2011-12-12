@@ -320,7 +320,9 @@
     wxURI(const wxString& uri)
     wxURI(const wxURI& uri)
 
-    wxString Create(const wxString& uri)
+    %wxchkver_2_9_2 bool Create(const wxString& uri)
+    !%wxchkver_2_9_2 wxString Create(const wxString& uri)
+
     bool HasScheme() const
     bool HasUserInfo() const
     bool HasServer() const

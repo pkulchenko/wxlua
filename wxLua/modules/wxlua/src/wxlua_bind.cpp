@@ -237,7 +237,7 @@ wxLuaBindString* wxLuaGetStringList_wxlua(size_t &count)
 {
     static wxLuaBindString stringList[] =
     {
-        { "wxLUA_VERSION_STRING", wxLUA_VERSION_STRING },
+        { "wxLUA_VERSION_STRING", NULL, wxLUA_VERSION_STRING },
 
         { 0, 0 },
     };
@@ -297,10 +297,10 @@ static int LUACALL wxLua_function_GetBindings(lua_State *L)
     lua_newtable(L); // the table that we return
 
     int idx = 1;
-    
+
     wxLuaBindingArray& wxlbArray = wxLuaBinding::GetBindingArray();
     size_t n, count = wxlbArray.GetCount();
-    
+
     for (n = 0; n < count; n++, idx++)
     {
         // Push function to access the binding info
@@ -843,7 +843,10 @@ int LUACALL wxluabind_wxLuaBinding__index(lua_State* L)
                 lua_pushstring(L, wxlString->name);
                 lua_rawset(L, -3);
                 lua_pushstring(L, "value");
-                lua_pushstring(L, wx2lua(wxlString->value));
+                if (wxlString->wxchar_string != NULL)
+                    lua_pushstring(L, wx2lua(wxlString->wxchar_string));
+                else
+                    lua_pushstring(L, wxlString->c_string);
                 lua_rawset(L, -3);
 
                 lua_rawseti(L, -2, idx + 1);

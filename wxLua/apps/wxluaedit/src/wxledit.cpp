@@ -676,7 +676,7 @@ bool wxLuaIDE::HandleMenuEvent(wxCommandEvent& event)
 
             wxFileDialog dlg(this, wxT("Open file"), path, filename,
                              wxT("Lua (*.lua)|*.lua|Any file (*)|*"),
-                             wxOPEN|wxFILE_MUST_EXIST);
+                             wxFD_OPEN|wxFD_FILE_MUST_EXIST);
             if (dlg.ShowModal() == wxID_OK)
             {
                 filename = dlg.GetPath();

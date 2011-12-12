@@ -51,7 +51,7 @@ struct WXDLLIMPEXP_FWD_WXLUA wxLuaBindClass;
 #define WXLUA_TTHREAD          10 // LUA_TTHREAD 8
 #define WXLUA_TINTEGER         11 // LUA_TNUMBER but integer only, not a LUA_TXXX
 #define WXLUA_TCFUNCTION       12 // LUA_TFUNCTION & lua_iscfunction(), not a LUA_TXXX
-#define WXLUA_TPOINTER         13 // LUA_TLIGHTUSERDATA || LUA_TUSERDATA || 
+#define WXLUA_TPOINTER         13 // LUA_TLIGHTUSERDATA || LUA_TUSERDATA ||
                                   // LUA_TFUNCTION || LUA_TTABLE || LUA_TTHREAD
                                   // any valid type for lua_topointer(), not a LUA_TXXX
 #define WXLUA_TANY             14 // Any data type is valid, not a LUA_TXXX
@@ -191,13 +191,22 @@ struct WXDLLIMPEXP_WXLUA wxLuaBindNumber
 
 struct WXDLLIMPEXP_WXLUA wxLuaBindString
 {
-    const char*   name;        // name
-    const wxChar* value;       // string value
+    const char*   name;          // name
+    const char*   c_string;      // string value
+    const wxChar* wxchar_string; // string value
 };
 
 // ----------------------------------------------------------------------------
 // wxLuaBindEvent - Defines a wxWidgets wxEventType for wxLua
 // ----------------------------------------------------------------------------
+
+#if (wxVERSION_NUMBER >= 2900)
+    // In 2.9 wxEVT_XXX are declared as wxEventTypeTag<E.G. wxCommandEvent> wxEVT_XXX;
+    // The operator const wxEventType& is used to get the int wxEventType.
+    #define WXLUA_GET_wxEventType_ptr(wxEVT_XXX) &((const wxEventType&)(wxEVT_XXX))
+#else
+    #define WXLUA_GET_wxEventType_ptr(wxEVT_XXX) &(wxEVT_XXX)
+#endif
 
 struct WXDLLIMPEXP_WXLUA wxLuaBindEvent
 {

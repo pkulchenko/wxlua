@@ -301,8 +301,8 @@
 %endif // %wxchkver_2_8_5
 
 %if wxUSE_IMAGE
-    static void AddFile(const wxString& filename, const wxImage& image, long type);
-    static void AddFile(const wxString& filename, const wxBitmap& bitmap, long type);
+    static void AddFile(const wxString& filename, const wxImage& image, wxBitmapType type);
+    static void AddFile(const wxString& filename, const wxBitmap& bitmap, wxBitmapType type);
 %endif // wxUSE_IMAGE
 
 %endclass

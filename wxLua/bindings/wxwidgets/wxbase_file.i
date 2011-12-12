@@ -17,7 +17,7 @@
 
 // %override [new Lua string] wxDos2UnixFilename(Lua string)
 // C++ Func: void wxDos2UnixFilename(wxChar *s)
-%function wxString wxDos2UnixFilename(const wxString& s)
+!%wxchkver_2_9_0 %function wxString wxDos2UnixFilename(const wxString& s)
 // %override wxDateTime wxFileModificationTime(const wxString& filename) (not overridden, just return wxDateTime)
 // C++ Func: time_t wxFileModificationTime(const wxString& filename)
 %function wxDateTime wxFileModificationTime(const wxString& filename)
@@ -31,7 +31,7 @@
 %function wxString wxPathOnly(const wxString& path)
 // %override [new Lua string] wxUnix2DosFilename(Lua string)
 // C++ Func: void wxUnix2DosFilename(wxChar *s)
-%function wxString wxUnix2DosFilename(const wxString& s)
+!%wxchkver_2_9 %function wxString wxUnix2DosFilename(const wxString& s)
 %function bool wxConcatFiles(const wxString& file1, const wxString& file2,const wxString& file3)
 %function bool wxCopyFile(const wxString& file1, const wxString& file2, bool overwrite = true)
 %function wxString wxGetCwd()
@@ -57,19 +57,19 @@
 
 // wxLua only has storage for wxChar* in bindings, wxFILE_SEP_XXX are #defined
 //   as wxChar wxT('.'), so we just redefine them to be wxT(".") or wxChar*
-%define_string wxFILE_SEP_EXT       wxT(".")
-%define_string wxFILE_SEP_DSK       wxT(":")
-%define_string wxFILE_SEP_PATH_DOS  wxT("\\")
-%define_string wxFILE_SEP_PATH_UNIX wxT("/")
-%define_string wxFILE_SEP_PATH_MAC  wxT(":")
-%define_string wxFILE_SEP_PATH_VMS  wxT(".") // VMS also uses '[' and ']'
+%define_wxstring wxFILE_SEP_EXT       wxT(".")
+%define_wxstring wxFILE_SEP_DSK       wxT(":")
+%define_wxstring wxFILE_SEP_PATH_DOS  wxT("\\")
+%define_wxstring wxFILE_SEP_PATH_UNIX wxT("/")
+%define_wxstring wxFILE_SEP_PATH_MAC  wxT(":")
+%define_wxstring wxFILE_SEP_PATH_VMS  wxT(".") // VMS also uses '[' and ']'
 
-%define_string wxFILE_SEP_PATH wxLua_FILE_SEP_PATH // hack to convert from wxChar wxT('') to wxChar* wxT("")
+%define_wxstring wxFILE_SEP_PATH wxLua_FILE_SEP_PATH // hack to convert from wxChar wxT('') to wxChar* wxT("")
 
-%define_string wxPATH_SEP_DOS       // wxT(";")
-%define_string wxPATH_SEP_UNIX      // wxT(":")
-%define_string wxPATH_SEP_MAC       // wxT(";")
-%define_string wxPATH_SEP           // wxPATH_SEP_XXX
+%define_wxstring wxPATH_SEP_DOS       // wxT(";")
+%define_wxstring wxPATH_SEP_UNIX      // wxT(":")
+%define_wxstring wxPATH_SEP_MAC       // wxT(";")
+%define_wxstring wxPATH_SEP           // wxPATH_SEP_XXX
 
 %define wxARE_FILENAMES_CASE_SENSITIVE // bool 1/0
 
@@ -640,9 +640,9 @@
     // get file type from MIME type (in format <category>/<format>)
     wxFileType *GetFileTypeFromMimeType(const wxString& mimeType);
 
-    bool ReadMailcap(const wxString& filename, bool fallback = false);
+    !%wxchkver_2_9 bool ReadMailcap(const wxString& filename, bool fallback = false);
     // read in additional file in mime.types format
-    bool ReadMimeTypes(const wxString& filename);
+    !%wxchkver_2_9 bool ReadMimeTypes(const wxString& filename);
 
     // enumerate all known MIME types returns the number of retrieved file types
     size_t EnumAllFileTypes(wxArrayString& mimetypes);

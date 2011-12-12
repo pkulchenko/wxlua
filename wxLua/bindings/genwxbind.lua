@@ -219,6 +219,7 @@ function InitDataTypes()
     AllocDataType("long",               "number", true)
     AllocDataType("short",              "number", true)
     AllocDataType("size_t",             "number", true)
+    AllocDataType("ptrdiff_t",          "number", true)
     AllocDataType("time_t",             "number", true)
     AllocDataType("unsigned char",      "number", true)
     AllocDataType("unsigned short",     "number", true)
@@ -1235,11 +1236,12 @@ function InitKeywords()
     bindingKeywordTable["%gc_this"]     = true
     bindingKeywordTable["%ungc_this"]   = true
 
-    bindingKeywordTable["%define"]         = true
-    bindingKeywordTable["%define_string"]  = true
-    bindingKeywordTable["%define_event"]   = true
-    bindingKeywordTable["%define_object"]  = true
-    bindingKeywordTable["%define_pointer"] = true
+    bindingKeywordTable["%define"]          = true
+    bindingKeywordTable["%define_string"]   = true
+    bindingKeywordTable["%define_wxstring"] = true
+    bindingKeywordTable["%define_event"]    = true
+    bindingKeywordTable["%define_object"]   = true
+    bindingKeywordTable["%define_pointer"]  = true
 
     bindingKeywordTable["//"]           = true
     bindingKeywordTable["/*"]           = true
@@ -2133,6 +2135,11 @@ function ParseData(interfaceData)
                         lineState.Action = "action_define"
                         lineState.ActionMandatory = true
 
+                    elseif tag == "%define_wxstring" then
+                        lineState.DefType = "deftype_%define_wxstring"
+                        lineState.Action = "action_define"
+                        lineState.ActionMandatory = true
+
                     elseif tag == "%define_event" then
                         lineState.DefType = "deftype_%define_event"
                         lineState.Action = "action_define"
@@ -2700,6 +2707,9 @@ function ParseData(interfaceData)
         elseif lineState.DefType == "deftype_%define_string" then
             table.insert(parseState.ObjectStack[1].Members, AllocMember(lineState, BuildCondition(parseState.ConditionStack)))
 
+        elseif lineState.DefType == "deftype_%define_wxstring" then
+            table.insert(parseState.ObjectStack[1].Members, AllocMember(lineState, BuildCondition(parseState.ConditionStack)))
+
         elseif lineState.DefType == "deftype_%define_event" then
             table.insert(parseState.ObjectStack[1].Members, AllocMember(lineState, BuildCondition(parseState.ConditionStack)))
 
@@ -3181,7 +3191,23 @@ function GenerateLuaLanguageBinding(interface)
                 local stringBinding =
                 {
                     LuaName   = luaname,
-                    Map       = "        { \""..luaname.."\", "..value.." },\n",
+                    Map       = "        { \""..luaname.."\", "..value..", NULL },\n",
+                    Condition = fullcondition
+                }
+
+                table.insert(stringBindingTable, stringBinding)
+
+            -- ---------------------------------------------------------------
+            -- define_wxstring binding
+            -- ---------------------------------------------------------------
+            elseif member.DefType == "deftype_%define_wxstring" then
+                local luaname = member["%rename"] or member.Name -- for %rename
+                local value = member.Value or member.Name
+
+                local stringBinding =
+                {
+                    LuaName   = luaname,
+                    Map       = "        { \""..luaname.."\", NULL, "..value.." },\n",
                     Condition = fullcondition
                 }
 
@@ -3226,7 +3252,7 @@ function GenerateLuaLanguageBinding(interface)
                 local eventBinding =
                 {
                     LuaName   = luaname,
-                    Map       = "        { \""..luaname.."\", &"..member.Name..", &wxluatype_"..MakeClassVar(parseObject.Name).." },\n",
+                    Map       = "        { \""..luaname.."\", WXLUA_GET_wxEventType_ptr("..member.Name.."), &wxluatype_"..MakeClassVar(parseObject.Name).." },\n",
                     Condition = fullcondition
                 }
 
@@ -3397,7 +3423,9 @@ function GenerateLuaLanguageBinding(interface)
                             argItem = "("..argTypeWithAttrib..")wxlua_touserdata(L, "..argNum..")"
                         end
                     elseif (indirectionCount == 1) and (argPtr == "*") then
-                        if (argType == "wxString") or (argType == "wxChar") then
+                        if (argType == "wxChar") or
+                          ((argType == "wxString") and (string.sub(argTypeWithAttrib, 1, 6) == "const ")) then
+
                             overload_argList = overload_argList.."&wxluatype_TSTRING, "
                             argItem = "wxlua_getwxStringtype(L, "..argNum..")"
 

@@ -98,6 +98,11 @@ wx_dataTypeTable =
     Name = "lua_State",
     ValueType = "number",
   },
+  ptrdiff_t = {
+    IsNumber = true,
+    Name = "ptrdiff_t",
+    ValueType = "number",
+  },
   short = {
     IsNumber = true,
     Name = "short",
@@ -1721,6 +1726,12 @@ wx_dataTypeTable =
     Name = "wxFloat64",
     ValueType = "number",
   },
+  wxFloodFillStyle = {
+    Condition = "wxLUA_USE_wxDC",
+    IsNumber = true,
+    Name = "wxFloodFillStyle",
+    ValueType = "enum",
+  },
   wxFocusEvent = {
     BaseClasses = {
       [1] = "wxEvent",
@@ -2382,9 +2393,6 @@ wx_dataTypeTable =
     ValueType = "class",
   },
   wxHtmlTag = {
-    BaseClasses = {
-      [1] = "wxObject",
-    },
     Condition = "wxLUA_USE_wxHTML && wxUSE_HTML",
     IsNumber = false,
     Name = "wxHtmlTag",
@@ -2569,6 +2577,12 @@ wx_dataTypeTable =
     Name = "wxImageList",
     ValueType = "class",
   },
+  wxImageResizeQuality = {
+    Condition = "wxLUA_USE_wxImage && wxUSE_IMAGE",
+    IsNumber = true,
+    Name = "wxImageResizeQuality",
+    ValueType = "enum",
+  },
   wxIndividualLayoutConstraint = {
     BaseClasses = {
       [1] = "wxObject",
@@ -2752,9 +2766,6 @@ wx_dataTypeTable =
     ValueType = "enum",
   },
   wxList = {
-    BaseClasses = {
-      [1] = "wxObject",
-    },
     Condition = "wxLUA_USE_wxList && !wxUSE_STL",
     IsNumber = false,
     Name = "wxList",
@@ -3030,6 +3041,12 @@ wx_dataTypeTable =
     IsNumber = false,
     Name = "wxMDIParentFrame",
     ValueType = "class",
+  },
+  wxMappingMode = {
+    Condition = "wxLUA_USE_wxDC",
+    IsNumber = true,
+    Name = "wxMappingMode",
+    ValueType = "enum",
   },
   wxMask = {
     BaseClasses = {
@@ -3495,11 +3512,29 @@ wx_dataTypeTable =
     Name = "wxPen",
     ValueType = "class",
   },
+  wxPenCap = {
+    Condition = "wxLUA_USE_wxColourPenBrush",
+    IsNumber = true,
+    Name = "wxPenCap",
+    ValueType = "enum",
+  },
+  wxPenJoin = {
+    Condition = "wxLUA_USE_wxColourPenBrush",
+    IsNumber = true,
+    Name = "wxPenJoin",
+    ValueType = "enum",
+  },
   wxPenList = {
     Condition = "(wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList)",
     IsNumber = false,
     Name = "wxPenList",
     ValueType = "class",
+  },
+  wxPenStyle = {
+    Condition = "wxLUA_USE_wxColourPenBrush",
+    IsNumber = true,
+    Name = "wxPenStyle",
+    ValueType = "enum",
   },
   wxPickerBase = {
     BaseClasses = {
@@ -3537,6 +3572,21 @@ wx_dataTypeTable =
     IsNumber = false,
     Name = "wxPoint2DInt",
     ValueType = "class",
+  },
+  wxPointList = {
+    BaseClasses = {
+      [1] = "wxList",
+    },
+    Condition = "(wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0))",
+    IsNumber = false,
+    Name = "wxPointList",
+    ValueType = "class",
+  },
+  wxPolygonFillMode = {
+    Condition = "wxLUA_USE_wxDC",
+    IsNumber = true,
+    Name = "wxPolygonFillMode",
+    ValueType = "enum",
   },
   wxPortId = {
     IsNumber = true,
@@ -3775,6 +3825,12 @@ wx_dataTypeTable =
     IsNumber = false,
     Name = "wxRadioButton",
     ValueType = "class",
+  },
+  wxRasterOperationMode = {
+    Condition = "wxLUA_USE_wxDC",
+    IsNumber = true,
+    Name = "wxRasterOperationMode",
+    ValueType = "enum",
   },
   wxRect = {
     Condition = "wxLUA_USE_wxPointSizeRect",
@@ -4332,6 +4388,18 @@ wx_dataTypeTable =
     IsNumber = true,
     Name = "wxString",
     ValueType = "special",
+  },
+  ["wxString::const_iterator"] = {
+    Condition = "wxCHECK_VERSION(2,9,0)",
+    IsNumber = false,
+    Name = "wxString::const_iterator",
+    ValueType = "class",
+  },
+  ["wxString::iterator"] = {
+    Condition = "wxCHECK_VERSION(2,9,0)",
+    IsNumber = false,
+    Name = "wxString::iterator",
+    ValueType = "class",
   },
   wxStringClientData = {
     BaseClasses = {
@@ -5083,6 +5151,9 @@ wx_preprocConditionTable =
   ["%wxchkver_2_8_5"] = "wxCHECK_VERSION(2,8,5)",
   ["%wxchkver_2_8_6"] = "wxCHECK_VERSION(2,8,6)",
   ["%wxchkver_2_8_8"] = "wxCHECK_VERSION(2,8,8)",
+  ["%wxchkver_2_9"] = "wxCHECK_VERSION(2,9,0)",
+  ["%wxchkver_2_9_0"] = "wxCHECK_VERSION(2,9,0)",
+  ["%wxchkver_2_9_2"] = "wxCHECK_VERSION(2,9,2)",
   ["%wxcompat_2_4"] = "(defined(WXWIN_COMPATIBILITY_2_4) && WXWIN_COMPATIBILITY_2_4)",
   ["%wxcompat_2_6"] = "(defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)",
   ["%x11"] = "defined(__WXX11__)",

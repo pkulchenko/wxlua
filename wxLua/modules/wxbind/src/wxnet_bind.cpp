@@ -2092,11 +2092,13 @@ static int LUACALL wxLua_wxURI_BuildUnescapedURI(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_Create[] = { &wxluatype_wxURI, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxURI_Create(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_Create[1] = {{ wxLua_wxURI_Create, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxURI_Create }};
-//     wxString Create(const wxString& uri)
-static int LUACALL wxLua_wxURI_Create(lua_State *L)
+
+#if (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_Create1[] = { &wxluatype_wxURI, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxURI_Create1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_Create1[1] = {{ wxLua_wxURI_Create1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxURI_Create1 }};
+//     !%wxchkver_2_9_2 wxString Create(const wxString& uri)
+static int LUACALL wxLua_wxURI_Create1(lua_State *L)
 {
     // const wxString uri
     const wxString uri = wxlua_getwxStringtype(L, 2);
@@ -2109,6 +2111,29 @@ static int LUACALL wxLua_wxURI_Create(lua_State *L)
 
     return 1;
 }
+
+#endif // (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS)
+
+#if (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_Create[] = { &wxluatype_wxURI, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxURI_Create(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_Create[1] = {{ wxLua_wxURI_Create, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxURI_Create }};
+//     %wxchkver_2_9_2 bool Create(const wxString& uri)
+static int LUACALL wxLua_wxURI_Create(lua_State *L)
+{
+    // const wxString uri
+    const wxString uri = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxURI * self = (wxURI *)wxluaT_getuserdatatype(L, 1, wxluatype_wxURI);
+    // call Create
+    bool returns = (self->Create(uri));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_GetFragment[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_GetFragment(lua_State *L);
@@ -2528,6 +2553,23 @@ static int LUACALL wxLua_wxURI_constructor(lua_State *L)
 
 
 
+#if ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS))||((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_Create_overload[] =
+{
+
+#if (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS)
+    { wxLua_wxURI_Create1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxURI_Create1 },
+#endif // (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS)
+
+#if (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS)
+    { wxLua_wxURI_Create, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxURI_Create },
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS)
+};
+static int s_wxluafunc_wxLua_wxURI_Create_overload_count = sizeof(s_wxluafunc_wxLua_wxURI_Create_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS))||((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS))
+
 #if (wxLUA_USE_wxSocket && wxUSE_SOCKETS)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_constructor_overload[] =
@@ -2550,7 +2592,11 @@ void wxLua_wxURI_delete_function(void** p)
 wxLuaBindMethod wxURI_methods[] = {
     { "BuildURI", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxURI_BuildURI, 1, NULL },
     { "BuildUnescapedURI", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxURI_BuildUnescapedURI, 1, NULL },
-    { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxURI_Create, 1, NULL },
+
+#if ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS))||((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS))
+    { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxURI_Create_overload, s_wxluafunc_wxLua_wxURI_Create_overload_count, 0 },
+#endif // ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS))||((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS))
+
     { "GetFragment", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxURI_GetFragment, 1, NULL },
     { "GetHostType", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxURI_GetHostType, 1, NULL },
     { "GetPassword", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxURI_GetPassword, 1, NULL },
@@ -2816,7 +2862,7 @@ wxLuaBindEvent* wxLuaGetEventList_wxnet(size_t &count)
     static wxLuaBindEvent eventList[] =
     {
 #if wxLUA_USE_wxSocket && wxUSE_SOCKETS
-        { "wxEVT_SOCKET", &wxEVT_SOCKET, &wxluatype_wxSocketEvent },
+        { "wxEVT_SOCKET", WXLUA_GET_wxEventType_ptr(wxEVT_SOCKET), &wxluatype_wxSocketEvent },
 #endif // wxLUA_USE_wxSocket && wxUSE_SOCKETS
 
 

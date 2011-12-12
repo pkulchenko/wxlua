@@ -395,10 +395,10 @@
 %define wxNO_BORDER
 %define wxNO_DEFAULT
 %define wxOK
-%define wxPASSWORD
-%define wxPROCESS_ENTER
+// %define wxPASSWORD %wxcompat_2_6 use wxTE_PASSWORD
+// %define wxPROCESS_ENTER %wxcompat_2_6 use wxTE_PROCESS_ENTER
 %define wxRESET
-%define wxRESIZE_BOX
+// %define wxRESIZE_BOX %wxcompat_2_6 use wxMAXIMIZE_BOX
 %define wxRETAINED
 %define wxSETUP
 %define wxSIZE_ALLOW_MINUS_ONE
@@ -407,7 +407,7 @@
 %define wxSIZE_AUTO_WIDTH
 %define wxSIZE_NO_ADJUSTMENTS
 %define wxSIZE_USE_EXISTING
-//%define wxUSER_COLOURS deprecated use wxNO_3D
+//%define wxUSER_COLOURS deprecated use wxNO_3D %wxcompat_2_6
 %define wxYES
 %define wxYES_DEFAULT
 %define wxYES_NO

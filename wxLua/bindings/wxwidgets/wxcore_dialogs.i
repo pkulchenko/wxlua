@@ -52,7 +52,7 @@
 %function void wxBell()
 // %function wxTipProvider* wxCreateFileTipProvider(const wxString& filename, size_t currentTip)
 
-%define_string wxDirSelectorPromptStr wxT("Select a directory")
+%define_wxstring wxDirSelectorPromptStr wxT("Select a directory")
 %function wxString wxDirSelector(const wxString& message = wxDirSelectorPromptStr, const wxString& default_path = "", long style = wxDD_DEFAULT_STYLE, const wxPoint& pos = wxDefaultPosition, wxWindow *parent = NULL)
 %function wxString wxFileSelector(const wxString& message, const wxString& default_path = "", const wxString& default_filename = "", const wxString& default_extension = "", const wxString& wildcard = "*.*", int flags = 0, wxWindow *parent = NULL, int x = -1, int y = -1)
 wxUSE_COLOURDLG&&!%wxchkver_2_8 %function wxColour wxGetColourFromUser(wxWindow *parent, const wxColour& colInit)
@@ -84,8 +84,8 @@ wxUSE_CHOICEDLG %function int wxGetSingleChoiceIndex(const wxString& message, co
 
 %include "wx/dialog.h"
 
-%define wxDIALOG_MODAL
-%define wxDIALOG_MODELESS
+// %define wxDIALOG_MODAL %wxcompat_2_6
+// %define wxDIALOG_MODELESS %wxcompat_2_6
 %define wxDEFAULT_DIALOG_STYLE
 %define wxDIALOG_NO_PARENT
 %define wxDIALOG_EX_CONTEXTHELP
@@ -163,8 +163,9 @@ wxUSE_CHOICEDLG %function int wxGetSingleChoiceIndex(const wxString& message, co
 
 %include "wx/filedlg.h"
 
-%define_string wxFileSelectorPromptStr wxT("Select a file")
-%define_string wxFileSelectorDefaultWildcardStr
+%define_wxstring wxFileSelectorPromptStr wxT("Select a file")
+%wxchkver_2_9_0 %define_string wxFileSelectorDefaultWildcardStr
+!%wxchkver_2_9_0 %define_wxstring wxFileSelectorDefaultWildcardStr
 
 %class wxFileDialog, wxDialog
     // wxFileDialog() no default constructor in MSW
@@ -291,7 +292,8 @@ wxUSE_CHOICEDLG %function int wxGetSingleChoiceIndex(const wxString& message, co
 // ---------------------------------------------------------------------------
 // wxPasswordEntryDialog - see also wxGetPasswordFromUser
 
-%define_string wxGetPasswordFromUserPromptStr
+%wxchkver_2_9_0 %define_string wxGetPasswordFromUserPromptStr
+!%wxchkver_2_9_0 %define_wxstring wxGetPasswordFromUserPromptStr
 %define wxTextEntryDialogStyle
 
 %class wxPasswordEntryDialog, wxTextEntryDialog
@@ -413,7 +415,7 @@ wxUSE_CHOICEDLG %function int wxGetSingleChoiceIndex(const wxString& message, co
 
 %if wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog
 
-%include "wx/generic/progdlgg.h"
+%include "wx/progdlg.h"
 
 %define wxPD_APP_MODAL
 %define wxPD_AUTO_HIDE

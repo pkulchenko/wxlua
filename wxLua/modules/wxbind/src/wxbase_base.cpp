@@ -1271,7 +1271,13 @@ static int LUACALL wxLua_wxLog_SetTimestamp(lua_State *L)
 {
     // docs say that using NULL will disable time stamping. The actual arg is "const wxChar* ts"
     if (lua_isnoneornil(L, 1))
+    {
+#if wxCHECK_VERSION(2, 9, 0)
+        wxLog::SetTimestamp(wxEmptyString);
+#else
         wxLog::SetTimestamp(NULL);
+#endif
+    }
     else
     {
         // const wxString ts

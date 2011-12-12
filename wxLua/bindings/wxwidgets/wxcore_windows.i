@@ -59,7 +59,7 @@
 %define wxSTATIC_BORDER
 //%define wxNO_BORDER in defsutils.i
 %define wxTRANSPARENT_WINDOW
-%define wxNO_3D
+// %define wxNO_3D %wxcompat_2_6
 %define wxTAB_TRAVERSAL
 %define wxWANTS_CHARS
 %define wxVSCROLL
@@ -819,10 +819,10 @@
 %define wxSP_LIVE_UPDATE
 %define wxSP_3DSASH
 %define wxSP_3DBORDER
-%define wxSP_FULLSASH
+// %define wxSP_FULLSASH %wxcompat_2_6 obsolete
 %define wxSP_3D
 %wxchkver_2_4 %define wxSP_NO_XP_THEME
-%define wxSP_SASH_AQUA
+// %define wxSP_SASH_AQUA  %wxcompat_2_6 obsolete
 
 %class wxSplitterWindow, wxWindow
     wxSplitterWindow()
@@ -951,8 +951,8 @@
 %include "wx/stattext.h"
 
 %define wxST_NO_AUTORESIZE
-%wxchkver_2_8 %define wxST_DOTS_MIDDLE
-%wxchkver_2_8 %define wxST_DOTS_END
+%wxchkver_2_8 && !%wxchkver_2_9_2 %define wxST_DOTS_MIDDLE
+%wxchkver_2_8 && !%wxchkver_2_9_2 %define wxST_DOTS_END
 
 %class wxStaticText, wxControl
     wxStaticText()

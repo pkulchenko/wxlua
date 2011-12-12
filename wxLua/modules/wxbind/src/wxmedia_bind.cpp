@@ -614,18 +614,18 @@ wxLuaBindEvent* wxLuaGetEventList_wxmedia(size_t &count)
     static wxLuaBindEvent eventList[] =
     {
 #if wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL
-        { "wxEVT_MEDIA_FINISHED", &wxEVT_MEDIA_FINISHED, &wxluatype_wxMediaEvent },
-        { "wxEVT_MEDIA_LOADED", &wxEVT_MEDIA_LOADED, &wxluatype_wxMediaEvent },
+        { "wxEVT_MEDIA_FINISHED", WXLUA_GET_wxEventType_ptr(wxEVT_MEDIA_FINISHED), &wxluatype_wxMediaEvent },
+        { "wxEVT_MEDIA_LOADED", WXLUA_GET_wxEventType_ptr(wxEVT_MEDIA_LOADED), &wxluatype_wxMediaEvent },
 #endif // wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL
 
 #if (wxCHECK_VERSION(2,6,4)) && (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
-        { "wxEVT_MEDIA_PAUSE", &wxEVT_MEDIA_PAUSE, &wxluatype_wxMediaEvent },
-        { "wxEVT_MEDIA_PLAY", &wxEVT_MEDIA_PLAY, &wxluatype_wxMediaEvent },
-        { "wxEVT_MEDIA_STATECHANGED", &wxEVT_MEDIA_STATECHANGED, &wxluatype_wxMediaEvent },
+        { "wxEVT_MEDIA_PAUSE", WXLUA_GET_wxEventType_ptr(wxEVT_MEDIA_PAUSE), &wxluatype_wxMediaEvent },
+        { "wxEVT_MEDIA_PLAY", WXLUA_GET_wxEventType_ptr(wxEVT_MEDIA_PLAY), &wxluatype_wxMediaEvent },
+        { "wxEVT_MEDIA_STATECHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_MEDIA_STATECHANGED), &wxluatype_wxMediaEvent },
 #endif // (wxCHECK_VERSION(2,6,4)) && (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
 
 #if wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL
-        { "wxEVT_MEDIA_STOP", &wxEVT_MEDIA_STOP, &wxluatype_wxMediaEvent },
+        { "wxEVT_MEDIA_STOP", WXLUA_GET_wxEventType_ptr(wxEVT_MEDIA_STOP), &wxluatype_wxMediaEvent },
 #endif // wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL
 
 
@@ -651,19 +651,22 @@ wxLuaBindNumber* wxLuaGetDefineList_wxmedia(size_t &count)
         { "wxMEDIASTATE_PAUSED", wxMEDIASTATE_PAUSED },
         { "wxMEDIASTATE_PLAYING", wxMEDIASTATE_PLAYING },
         { "wxMEDIASTATE_STOPPED", wxMEDIASTATE_STOPPED },
-        { "wxMEDIA_FINISHED_ID", wxMEDIA_FINISHED_ID },
-        { "wxMEDIA_LOADED_ID", wxMEDIA_LOADED_ID },
 #endif // wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL
 
-#if (wxCHECK_VERSION(2,6,4)) && (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
+#if (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (!wxCHECK_VERSION(2,9,2))
+        { "wxMEDIA_FINISHED_ID", wxMEDIA_FINISHED_ID },
+        { "wxMEDIA_LOADED_ID", wxMEDIA_LOADED_ID },
+#endif // (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (!wxCHECK_VERSION(2,9,2))
+
+#if (wxCHECK_VERSION(2,6,4)) && ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (!wxCHECK_VERSION(2,9,2)))
         { "wxMEDIA_PAUSE_ID", wxMEDIA_PAUSE_ID },
         { "wxMEDIA_PLAY_ID", wxMEDIA_PLAY_ID },
         { "wxMEDIA_STATECHANGED_ID", wxMEDIA_STATECHANGED_ID },
-#endif // (wxCHECK_VERSION(2,6,4)) && (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
+#endif // (wxCHECK_VERSION(2,6,4)) && ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (!wxCHECK_VERSION(2,9,2)))
 
-#if wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL
+#if (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (!wxCHECK_VERSION(2,9,2))
         { "wxMEDIA_STOP_ID", wxMEDIA_STOP_ID },
-#endif // wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL
+#endif // (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (!wxCHECK_VERSION(2,9,2))
 
 
         { 0, 0 },
@@ -682,15 +685,15 @@ wxLuaBindString* wxLuaGetStringList_wxmedia(size_t &count)
     static wxLuaBindString stringList[] =
     {
 #if wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL
-        { "wxMEDIABACKEND_DIRECTSHOW", wxMEDIABACKEND_DIRECTSHOW },
-        { "wxMEDIABACKEND_GSTREAMER", wxMEDIABACKEND_GSTREAMER },
-        { "wxMEDIABACKEND_MCI", wxMEDIABACKEND_MCI },
-        { "wxMEDIABACKEND_QUICKTIME", wxMEDIABACKEND_QUICKTIME },
+        { "wxMEDIABACKEND_DIRECTSHOW", NULL, wxMEDIABACKEND_DIRECTSHOW },
+        { "wxMEDIABACKEND_GSTREAMER", NULL, wxMEDIABACKEND_GSTREAMER },
+        { "wxMEDIABACKEND_MCI", NULL, wxMEDIABACKEND_MCI },
+        { "wxMEDIABACKEND_QUICKTIME", NULL, wxMEDIABACKEND_QUICKTIME },
 #endif // wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
-        { "wxMEDIABACKEND_REALPLAYER", wxMEDIABACKEND_REALPLAYER },
-        { "wxMEDIABACKEND_WMP10", wxMEDIABACKEND_WMP10 },
+        { "wxMEDIABACKEND_REALPLAYER", NULL, wxMEDIABACKEND_REALPLAYER },
+        { "wxMEDIABACKEND_WMP10", NULL, wxMEDIABACKEND_WMP10 },
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
 
 

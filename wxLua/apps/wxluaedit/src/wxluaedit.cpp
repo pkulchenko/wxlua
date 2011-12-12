@@ -58,18 +58,18 @@ WXLUA_DECLARE_BIND_ALL
 static const wxCmdLineEntryDesc g_cmdLineDesc[] =
 {
     // help
-    { wxCMD_LINE_SWITCH, wxT("h"), wxT("help"),
+    { wxCMD_LINE_SWITCH, wxLuaT("h"), wxLuaT("help"),
         _("Show this help message"),
         wxCMD_LINE_VAL_NONE, wxCMD_LINE_OPTION_HELP },
 
-    { wxCMD_LINE_OPTION, wxT("d"), wxT("debuggee"), wxT("run as debuggee, internal use"),
+    { wxCMD_LINE_OPTION, wxLuaT("d"), wxLuaT("debuggee"), wxLuaT("run as debuggee, internal use"),
         wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 
-//    { wxCMD_LINE_OPTION, wxT("r"), wxT("run"), wxT("run wxLua program w/ command line args"),
+//    { wxCMD_LINE_OPTION, wxLuaT("r"), wxLuaT("run"), wxLuaT("run wxLua program w/ command line args"),
 //        wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL|wxCMD_LINE_NEEDS_SEPARATOR },
 
     // filenames to open in the editor
-    { wxCMD_LINE_PARAM, wxEmptyString, wxEmptyString,
+    { wxCMD_LINE_PARAM, wxLuaT(""), wxLuaT(""),
         _("lua files to open in the editor"),
         wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL | wxCMD_LINE_PARAM_MULTIPLE },
 

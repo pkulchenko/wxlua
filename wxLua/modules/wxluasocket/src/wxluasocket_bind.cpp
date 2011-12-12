@@ -514,16 +514,16 @@ wxLuaBindEvent* wxLuaGetEventList_wxluasocket(size_t &count)
 {
     static wxLuaBindEvent eventList[] =
     {
-        { "wxEVT_WXLUA_DEBUGGER_BREAK", &wxEVT_WXLUA_DEBUGGER_BREAK, &wxluatype_wxLuaDebuggerEvent },
-        { "wxEVT_WXLUA_DEBUGGER_DEBUGGEE_CONNECTED", &wxEVT_WXLUA_DEBUGGER_DEBUGGEE_CONNECTED, &wxluatype_wxLuaDebuggerEvent },
-        { "wxEVT_WXLUA_DEBUGGER_DEBUGGEE_DISCONNECTED", &wxEVT_WXLUA_DEBUGGER_DEBUGGEE_DISCONNECTED, &wxluatype_wxLuaDebuggerEvent },
-        { "wxEVT_WXLUA_DEBUGGER_ERROR", &wxEVT_WXLUA_DEBUGGER_ERROR, &wxluatype_wxLuaDebuggerEvent },
-        { "wxEVT_WXLUA_DEBUGGER_EVALUATE_EXPR", &wxEVT_WXLUA_DEBUGGER_EVALUATE_EXPR, &wxluatype_wxLuaDebuggerEvent },
-        { "wxEVT_WXLUA_DEBUGGER_EXIT", &wxEVT_WXLUA_DEBUGGER_EXIT, &wxluatype_wxLuaDebuggerEvent },
-        { "wxEVT_WXLUA_DEBUGGER_PRINT", &wxEVT_WXLUA_DEBUGGER_PRINT, &wxluatype_wxLuaDebuggerEvent },
-        { "wxEVT_WXLUA_DEBUGGER_STACK_ENTRY_ENUM", &wxEVT_WXLUA_DEBUGGER_STACK_ENTRY_ENUM, &wxluatype_wxLuaDebuggerEvent },
-        { "wxEVT_WXLUA_DEBUGGER_STACK_ENUM", &wxEVT_WXLUA_DEBUGGER_STACK_ENUM, &wxluatype_wxLuaDebuggerEvent },
-        { "wxEVT_WXLUA_DEBUGGER_TABLE_ENUM", &wxEVT_WXLUA_DEBUGGER_TABLE_ENUM, &wxluatype_wxLuaDebuggerEvent },
+        { "wxEVT_WXLUA_DEBUGGER_BREAK", WXLUA_GET_wxEventType_ptr(wxEVT_WXLUA_DEBUGGER_BREAK), &wxluatype_wxLuaDebuggerEvent },
+        { "wxEVT_WXLUA_DEBUGGER_DEBUGGEE_CONNECTED", WXLUA_GET_wxEventType_ptr(wxEVT_WXLUA_DEBUGGER_DEBUGGEE_CONNECTED), &wxluatype_wxLuaDebuggerEvent },
+        { "wxEVT_WXLUA_DEBUGGER_DEBUGGEE_DISCONNECTED", WXLUA_GET_wxEventType_ptr(wxEVT_WXLUA_DEBUGGER_DEBUGGEE_DISCONNECTED), &wxluatype_wxLuaDebuggerEvent },
+        { "wxEVT_WXLUA_DEBUGGER_ERROR", WXLUA_GET_wxEventType_ptr(wxEVT_WXLUA_DEBUGGER_ERROR), &wxluatype_wxLuaDebuggerEvent },
+        { "wxEVT_WXLUA_DEBUGGER_EVALUATE_EXPR", WXLUA_GET_wxEventType_ptr(wxEVT_WXLUA_DEBUGGER_EVALUATE_EXPR), &wxluatype_wxLuaDebuggerEvent },
+        { "wxEVT_WXLUA_DEBUGGER_EXIT", WXLUA_GET_wxEventType_ptr(wxEVT_WXLUA_DEBUGGER_EXIT), &wxluatype_wxLuaDebuggerEvent },
+        { "wxEVT_WXLUA_DEBUGGER_PRINT", WXLUA_GET_wxEventType_ptr(wxEVT_WXLUA_DEBUGGER_PRINT), &wxluatype_wxLuaDebuggerEvent },
+        { "wxEVT_WXLUA_DEBUGGER_STACK_ENTRY_ENUM", WXLUA_GET_wxEventType_ptr(wxEVT_WXLUA_DEBUGGER_STACK_ENTRY_ENUM), &wxluatype_wxLuaDebuggerEvent },
+        { "wxEVT_WXLUA_DEBUGGER_STACK_ENUM", WXLUA_GET_wxEventType_ptr(wxEVT_WXLUA_DEBUGGER_STACK_ENUM), &wxluatype_wxLuaDebuggerEvent },
+        { "wxEVT_WXLUA_DEBUGGER_TABLE_ENUM", WXLUA_GET_wxEventType_ptr(wxEVT_WXLUA_DEBUGGER_TABLE_ENUM), &wxluatype_wxLuaDebuggerEvent },
 
         { 0, 0, 0 },
     };

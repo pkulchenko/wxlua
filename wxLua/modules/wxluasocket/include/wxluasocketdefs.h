@@ -32,6 +32,13 @@
     #define WXDLLIMPEXP_DATA_WXLUASOCKET(type) type
 #endif
 
+// Forward declare all wxLua classes with this macro
+#if defined(HAVE_VISIBILITY) || (defined(__WINDOWS__) && defined(__GNUC__))
+    #define WXDLLIMPEXP_FWD_WXLUASOCKET
+#else
+    #define WXDLLIMPEXP_FWD_WXLUASOCKET WXDLLIMPEXP_WXLUASOCKET
+#endif
+
 // ----------------------------------------------------------------------------
 // Defines for various things
 // ----------------------------------------------------------------------------

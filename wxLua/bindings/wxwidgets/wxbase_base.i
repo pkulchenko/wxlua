@@ -14,7 +14,7 @@
 %define wxMINOR_VERSION
 %define wxRELEASE_NUMBER
 %define wxSUBRELEASE_NUMBER
-%define_string wxVERSION_STRING
+%define_wxstring wxVERSION_STRING
 
 %function bool wxCHECK_VERSION(int major, int minor, int release) // actually a define
 %function bool wxCHECK_VERSION_FULL(int major, int minor, int release, int subrel) // actually a define
@@ -369,11 +369,11 @@
 // symbolic trace masks - wxLogTrace("foo", "some trace message...") will be
 // discarded unless the string "foo" has been added to the list of allowed
 // ones with AddTraceMask()
-%define_string wxTRACE_MemAlloc //wxT("memalloc") // trace memory allocation (new/delete)
-%define_string wxTRACE_Messages //wxT("messages") // trace window messages/X callbacks
-%define_string wxTRACE_ResAlloc //wxT("resalloc") // trace GDI resource allocation
-%define_string wxTRACE_RefCount //wxT("refcount") // trace various ref counting operations
-%msw %define_string wxTRACE_OleCalls //wxT("ole") // OLE interface calls
+%define_wxstring wxTRACE_MemAlloc //wxT("memalloc") // trace memory allocation (new/delete)
+%define_wxstring wxTRACE_Messages //wxT("messages") // trace window messages/X callbacks
+%define_wxstring wxTRACE_ResAlloc //wxT("resalloc") // trace GDI resource allocation
+%define_wxstring wxTRACE_RefCount //wxT("refcount") // trace various ref counting operations
+%msw %define_wxstring wxTRACE_OleCalls //wxT("ole") // OLE interface calls
 
 %class %delete wxLog
     //wxLog() - No constructor, a base class, use one of the derived classes.

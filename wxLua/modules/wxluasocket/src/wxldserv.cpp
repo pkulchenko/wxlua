@@ -643,8 +643,10 @@ void *wxLuaDebuggerCServer::LuaThread::Entry()
 
 void wxLuaDebuggerCServer::LuaThread::OnExit()
 {
-    wxThread::OnExit();
+#if !wxCHECK_VERSION(2,9,0)
+    wxThread::OnExit(); // in 2.9 there is OnKill() and OnDelete()
     //m_pServer->m_pThread = NULL;
+#endif
 }
 
 // ----------------------------------------------------------------------------

@@ -12,7 +12,7 @@
 
 #include "wxluasocket/include/wxluasocketdefs.h"
 
-class WXDLLIMPEXP_WXLUADEBUG wxLuaDebugData;
+class WXDLLIMPEXP_FWD_WXLUADEBUG wxLuaDebugData;
 
 #ifdef WIN32
     typedef int socklen_t;

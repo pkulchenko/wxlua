@@ -2118,10 +2118,33 @@ static int LUACALL wxLua_wxCalendarCtrl_EnableMonthChange(lua_State *L)
     return 0;
 }
 
+
+#if (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (wxCHECK_VERSION(2,9,2) && !defined(__WXGTK__))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxCalendarCtrl_EnableYearChange1[] = { &wxluatype_wxCalendarCtrl, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxCalendarCtrl_EnableYearChange1(lua_State *L);
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxCalendarCtrl_EnableYearChange1[1] = {{ wxLua_wxCalendarCtrl_EnableYearChange1, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxCalendarCtrl_EnableYearChange1 }};
+//         void     EnableYearChange(bool enable = true)
+static int LUACALL wxLua_wxCalendarCtrl_EnableYearChange1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool enable = true
+    bool enable = (argCount >= 2 ? wxlua_getbooleantype(L, 2) : true);
+    // get this
+    wxCalendarCtrl * self = (wxCalendarCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxCalendarCtrl);
+    // call EnableYearChange
+    self->EnableYearChange(enable);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (wxCHECK_VERSION(2,9,2) && !defined(__WXGTK__))
+
+#if (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxCalendarCtrl_EnableYearChange[] = { &wxluatype_wxCalendarCtrl, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxCalendarCtrl_EnableYearChange(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxCalendarCtrl_EnableYearChange[1] = {{ wxLua_wxCalendarCtrl_EnableYearChange, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxCalendarCtrl_EnableYearChange }};
-//     void     EnableYearChange(bool enable = true)
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxCalendarCtrl_EnableYearChange[1] = {{ wxLua_wxCalendarCtrl_EnableYearChange, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxCalendarCtrl_EnableYearChange }};
+//     !%wxchkver_2_9_2 void     EnableYearChange(bool enable = true)
 static int LUACALL wxLua_wxCalendarCtrl_EnableYearChange(lua_State *L)
 {
     // get number of arguments
@@ -2135,6 +2158,8 @@ static int LUACALL wxLua_wxCalendarCtrl_EnableYearChange(lua_State *L)
 
     return 0;
 }
+
+#endif // (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxCalendarCtrl_GetAttr[] = { &wxluatype_wxCalendarCtrl, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxCalendarCtrl_GetAttr(lua_State *L);
@@ -2491,6 +2516,23 @@ static int LUACALL wxLua_wxCalendarCtrl_constructor(lua_State *L)
 
 
 
+#if ((wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (wxCHECK_VERSION(2,9,2) && !defined(__WXGTK__)))||((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxCalendarCtrl_EnableYearChange_overload[] =
+{
+
+#if (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (wxCHECK_VERSION(2,9,2) && !defined(__WXGTK__))
+    { wxLua_wxCalendarCtrl_EnableYearChange1, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxCalendarCtrl_EnableYearChange1 },
+#endif // (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (wxCHECK_VERSION(2,9,2) && !defined(__WXGTK__))
+
+#if (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)
+    { wxLua_wxCalendarCtrl_EnableYearChange, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxCalendarCtrl_EnableYearChange },
+#endif // (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)
+};
+static int s_wxluafunc_wxLua_wxCalendarCtrl_EnableYearChange_overload_count = sizeof(s_wxluafunc_wxLua_wxCalendarCtrl_EnableYearChange_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (wxCHECK_VERSION(2,9,2) && !defined(__WXGTK__)))||((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL))
+
 void wxLua_wxCalendarCtrl_delete_function(void** p)
 {
     wxCalendarCtrl* o = (wxCalendarCtrl*)(*p);
@@ -2501,7 +2543,11 @@ void wxLua_wxCalendarCtrl_delete_function(void** p)
 wxLuaBindMethod wxCalendarCtrl_methods[] = {
     { "EnableHolidayDisplay", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCalendarCtrl_EnableHolidayDisplay, 1, NULL },
     { "EnableMonthChange", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCalendarCtrl_EnableMonthChange, 1, NULL },
-    { "EnableYearChange", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCalendarCtrl_EnableYearChange, 1, NULL },
+
+#if ((wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (wxCHECK_VERSION(2,9,2) && !defined(__WXGTK__)))||((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL))
+    { "EnableYearChange", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCalendarCtrl_EnableYearChange_overload, s_wxluafunc_wxLua_wxCalendarCtrl_EnableYearChange_overload_count, 0 },
+#endif // ((wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (wxCHECK_VERSION(2,9,2) && !defined(__WXGTK__)))||((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL))
+
     { "GetAttr", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCalendarCtrl_GetAttr, 1, NULL },
 
 #if (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
@@ -3181,11 +3227,38 @@ static int LUACALL wxLua_wxCalendarEvent_SetWeekDay(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxCalendarEvent_delete[] = { &wxluatype_wxCalendarEvent, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxCalendarEvent_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxCalendarEvent_delete }};
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxCalendarEvent_constructor[] = { &wxluatype_wxCalendarCtrl, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxCalendarEvent_constructor(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxCalendarEvent_constructor[1] = {{ wxLua_wxCalendarEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxCalendarEvent_constructor }};
-//     wxCalendarEvent(wxCalendarCtrl *cal, wxEventType type)
-static int LUACALL wxLua_wxCalendarEvent_constructor(lua_State *L)
+
+#if (((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxCalendarEvent_constructor2[] = { &wxluatype_wxWindow, &wxluatype_wxDateTime, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxCalendarEvent_constructor2(lua_State *L);
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxCalendarEvent_constructor2[1] = {{ wxLua_wxCalendarEvent_constructor2, WXLUAMETHOD_CONSTRUCTOR, 3, 3, s_wxluatypeArray_wxLua_wxCalendarEvent_constructor2 }};
+//     %wxchkver_2_9_2 wxCalendarEvent(wxWindow *win, const wxDateTime& dt, wxEventType type)
+static int LUACALL wxLua_wxCalendarEvent_constructor2(lua_State *L)
+{
+    // wxEventType type
+    wxEventType type = (wxEventType)wxlua_getnumbertype(L, 3);
+    // const wxDateTime dt
+    const wxDateTime * dt = (const wxDateTime *)wxluaT_getuserdatatype(L, 2, wxluatype_wxDateTime);
+    // wxWindow win
+    wxWindow * win = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call constructor
+    wxCalendarEvent* returns = new wxCalendarEvent(win, *dt, type);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxCalendarEvent);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxCalendarEvent);
+
+    return 1;
+}
+
+#endif // (((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
+
+#if ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxCalendarEvent_constructor1[] = { &wxluatype_wxCalendarCtrl, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxCalendarEvent_constructor1(lua_State *L);
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxCalendarEvent_constructor1[1] = {{ wxLua_wxCalendarEvent_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxCalendarEvent_constructor1 }};
+//     !%wxchkver_2_9_2 wxCalendarEvent(wxCalendarCtrl *cal, wxEventType type)
+static int LUACALL wxLua_wxCalendarEvent_constructor1(lua_State *L)
 {
     // wxEventType type
     wxEventType type = (wxEventType)wxlua_getnumbertype(L, 2);
@@ -3201,8 +3274,51 @@ static int LUACALL wxLua_wxCalendarEvent_constructor(lua_State *L)
     return 1;
 }
 
+#endif // ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)
+
+#if ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxCalendarEvent_constructor[] = { &wxluatype_wxCalendarEvent, NULL };
+static int LUACALL wxLua_wxCalendarEvent_constructor(lua_State *L);
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxCalendarEvent_constructor[1] = {{ wxLua_wxCalendarEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxCalendarEvent_constructor }};
+//     %wxchkver_2_9_2 wxCalendarEvent(const wxCalendarEvent& event)
+static int LUACALL wxLua_wxCalendarEvent_constructor(lua_State *L)
+{
+    // const wxCalendarEvent event
+    const wxCalendarEvent * event = (const wxCalendarEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxCalendarEvent);
+    // call constructor
+    wxCalendarEvent* returns = new wxCalendarEvent(*event);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxCalendarEvent);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxCalendarEvent);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)
 
 
+
+#if ((((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||(((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL))||(((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxCalendarEvent_constructor_overload[] =
+{
+
+#if (((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
+    { wxLua_wxCalendarEvent_constructor2, WXLUAMETHOD_CONSTRUCTOR, 3, 3, s_wxluatypeArray_wxLua_wxCalendarEvent_constructor2 },
+#endif // (((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
+
+#if ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)
+    { wxLua_wxCalendarEvent_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxCalendarEvent_constructor1 },
+#endif // ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)
+
+#if ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)
+    { wxLua_wxCalendarEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxCalendarEvent_constructor },
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)
+};
+static int s_wxluafunc_wxLua_wxCalendarEvent_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxCalendarEvent_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||(((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL))||(((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL))
 
 void wxLua_wxCalendarEvent_delete_function(void** p)
 {
@@ -3218,7 +3334,10 @@ wxLuaBindMethod wxCalendarEvent_methods[] = {
 #endif // (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxCalendarEvent_delete, 1, NULL },
-    { "wxCalendarEvent", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxCalendarEvent_constructor, 1, NULL },
+
+#if ((((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||(((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL))||(((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL))
+    { "wxCalendarEvent", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxCalendarEvent_constructor_overload, s_wxluafunc_wxLua_wxCalendarEvent_constructor_overload_count, 0 },
+#endif // ((((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||(((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL))||(((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL))
 
     { 0, 0, 0, 0 },
 };
@@ -3754,10 +3873,12 @@ static int LUACALL wxLua_wxSashWindow_GetSashVisible(lua_State *L)
     return 1;
 }
 
+
+#if (((defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)) && (wxLUA_USE_wxSashWindow && wxUSE_SASH)) && (wxLUA_USE_wxSashWindow && wxUSE_SASH)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSashWindow_HasBorder[] = { &wxluatype_wxSashWindow, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxSashWindow_HasBorder(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSashWindow_HasBorder[1] = {{ wxLua_wxSashWindow_HasBorder, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSashWindow_HasBorder }};
-//     bool HasBorder(wxSashEdgePosition edge) const
+//     %wxcompat_2_6 bool HasBorder(wxSashEdgePosition edge) const
 static int LUACALL wxLua_wxSashWindow_HasBorder(lua_State *L)
 {
     // wxSashEdgePosition edge
@@ -3771,6 +3892,8 @@ static int LUACALL wxLua_wxSashWindow_HasBorder(lua_State *L)
 
     return 1;
 }
+
+#endif // (((defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)) && (wxLUA_USE_wxSashWindow && wxUSE_SASH)) && (wxLUA_USE_wxSashWindow && wxUSE_SASH)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSashWindow_SetMaximumSizeX[] = { &wxluatype_wxSashWindow, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSashWindow_SetMaximumSizeX(lua_State *L);
@@ -3836,10 +3959,12 @@ static int LUACALL wxLua_wxSashWindow_SetMinimumSizeY(lua_State *L)
     return 0;
 }
 
+
+#if (((defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)) && (wxLUA_USE_wxSashWindow && wxUSE_SASH)) && (wxLUA_USE_wxSashWindow && wxUSE_SASH)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSashWindow_SetSashBorder[] = { &wxluatype_wxSashWindow, &wxluatype_TINTEGER, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxSashWindow_SetSashBorder(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSashWindow_SetSashBorder[1] = {{ wxLua_wxSashWindow_SetSashBorder, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSashWindow_SetSashBorder }};
-//     void SetSashBorder(wxSashEdgePosition edge, bool hasBorder)
+//     %wxcompat_2_6 void SetSashBorder(wxSashEdgePosition edge, bool hasBorder)
 static int LUACALL wxLua_wxSashWindow_SetSashBorder(lua_State *L)
 {
     // bool hasBorder
@@ -3853,6 +3978,8 @@ static int LUACALL wxLua_wxSashWindow_SetSashBorder(lua_State *L)
 
     return 0;
 }
+
+#endif // (((defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)) && (wxLUA_USE_wxSashWindow && wxUSE_SASH)) && (wxLUA_USE_wxSashWindow && wxUSE_SASH)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSashWindow_SetSashVisible[] = { &wxluatype_wxSashWindow, &wxluatype_TINTEGER, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxSashWindow_SetSashVisible(lua_State *L);
@@ -3951,12 +4078,20 @@ wxLuaBindMethod wxSashWindow_methods[] = {
     { "GetMinimumSizeX", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSashWindow_GetMinimumSizeX, 1, NULL },
     { "GetMinimumSizeY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSashWindow_GetMinimumSizeY, 1, NULL },
     { "GetSashVisible", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSashWindow_GetSashVisible, 1, NULL },
+
+#if (((defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)) && (wxLUA_USE_wxSashWindow && wxUSE_SASH)) && (wxLUA_USE_wxSashWindow && wxUSE_SASH)
     { "HasBorder", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSashWindow_HasBorder, 1, NULL },
+#endif // (((defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)) && (wxLUA_USE_wxSashWindow && wxUSE_SASH)) && (wxLUA_USE_wxSashWindow && wxUSE_SASH)
+
     { "SetMaximumSizeX", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSashWindow_SetMaximumSizeX, 1, NULL },
     { "SetMaximumSizeY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSashWindow_SetMaximumSizeY, 1, NULL },
     { "SetMinimumSizeX", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSashWindow_SetMinimumSizeX, 1, NULL },
     { "SetMinimumSizeY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSashWindow_SetMinimumSizeY, 1, NULL },
+
+#if (((defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)) && (wxLUA_USE_wxSashWindow && wxUSE_SASH)) && (wxLUA_USE_wxSashWindow && wxUSE_SASH)
     { "SetSashBorder", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSashWindow_SetSashBorder, 1, NULL },
+#endif // (((defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)) && (wxLUA_USE_wxSashWindow && wxUSE_SASH)) && (wxLUA_USE_wxSashWindow && wxUSE_SASH)
+
     { "SetSashVisible", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSashWindow_SetSashVisible, 1, NULL },
 
 #if ((wxLUA_USE_wxSashWindow && wxUSE_SASH) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_wxSashWindow && wxUSE_SASH)
@@ -7951,10 +8086,41 @@ static int LUACALL wxLua_wxGridCellEditor_Destroy(lua_State *L)
     return 0;
 }
 
+
+#if ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGridCellEditor_EndEdit1[] = { &wxluatype_wxGridCellEditor, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxGrid, &wxluatype_TSTRING, &wxluatype_TLIGHTUSERDATA, NULL };
+static int LUACALL wxLua_wxGridCellEditor_EndEdit1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellEditor_EndEdit1[1] = {{ wxLua_wxGridCellEditor_EndEdit1, WXLUAMETHOD_METHOD, 6, 6, s_wxluatypeArray_wxLua_wxGridCellEditor_EndEdit1 }};
+//     %wxchkver_2_9_2 virtual bool EndEdit(int row, int col, const wxGrid *grid, const wxString& oldval, wxString *newval)
+static int LUACALL wxLua_wxGridCellEditor_EndEdit1(lua_State *L)
+{
+    // wxString newval
+    wxString * newval = (wxString *)wxlua_touserdata(L, 6);
+    // const wxString oldval
+    const wxString oldval = wxlua_getwxStringtype(L, 5);
+    // const wxGrid grid
+    const wxGrid * grid = (const wxGrid *)wxluaT_getuserdatatype(L, 4, wxluatype_wxGrid);
+    // int col
+    int col = (int)wxlua_getnumbertype(L, 3);
+    // int row
+    int row = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGridCellEditor * self = (wxGridCellEditor *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGridCellEditor);
+    // call EndEdit
+    bool returns = (self->EndEdit(row, col, grid, oldval, newval));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)
+
+#if ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGridCellEditor_EndEdit[] = { &wxluatype_wxGridCellEditor, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxGrid, NULL };
 static int LUACALL wxLua_wxGridCellEditor_EndEdit(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellEditor_EndEdit[1] = {{ wxLua_wxGridCellEditor_EndEdit, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxGridCellEditor_EndEdit }};
-//     virtual bool EndEdit(int row, int col, wxGrid* grid)
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellEditor_EndEdit[1] = {{ wxLua_wxGridCellEditor_EndEdit, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxGridCellEditor_EndEdit }};
+//     !%wxchkver_2_9_2 virtual bool EndEdit(int row, int col, wxGrid* grid)
 static int LUACALL wxLua_wxGridCellEditor_EndEdit(lua_State *L)
 {
     // wxGrid grid
@@ -7972,6 +8138,8 @@ static int LUACALL wxLua_wxGridCellEditor_EndEdit(lua_State *L)
 
     return 1;
 }
+
+#endif // ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGridCellEditor_GetCellAttr[] = { &wxluatype_wxGridCellEditor, NULL };
 static int LUACALL wxLua_wxGridCellEditor_GetCellAttr(lua_State *L);
@@ -8200,6 +8368,23 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellEditor_delete[1] = {{ wxlua_us
 
 
 
+#if (((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID))||(((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellEditor_EndEdit_overload[] =
+{
+
+#if ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)
+    { wxLua_wxGridCellEditor_EndEdit1, WXLUAMETHOD_METHOD, 6, 6, s_wxluatypeArray_wxLua_wxGridCellEditor_EndEdit1 },
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)
+
+#if ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)
+    { wxLua_wxGridCellEditor_EndEdit, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxGridCellEditor_EndEdit },
+#endif // ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)
+};
+static int s_wxluafunc_wxLua_wxGridCellEditor_EndEdit_overload_count = sizeof(s_wxluafunc_wxLua_wxGridCellEditor_EndEdit_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID))||(((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID))
+
 // %override wxLua_wxGridCellEditor_delete_function
 // delete is private in wxGridCellWorker, DecRef() it in derived classes
 void wxLua_wxGridCellEditor_delete_function(void** p)
@@ -8212,7 +8397,11 @@ void wxLua_wxGridCellEditor_delete_function(void** p)
 wxLuaBindMethod wxGridCellEditor_methods[] = {
     { "BeginEdit", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGridCellEditor_BeginEdit, 1, NULL },
     { "Destroy", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGridCellEditor_Destroy, 1, NULL },
-    { "EndEdit", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGridCellEditor_EndEdit, 1, NULL },
+
+#if (((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID))||(((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID))
+    { "EndEdit", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGridCellEditor_EndEdit_overload, s_wxluafunc_wxLua_wxGridCellEditor_EndEdit_overload_count, 0 },
+#endif // (((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID))||(((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID))
+
     { "GetCellAttr", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGridCellEditor_GetCellAttr, 1, NULL },
     { "GetControl", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGridCellEditor_GetControl, 1, NULL },
     { "HandleReturn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGridCellEditor_HandleReturn, 1, NULL },
@@ -15827,74 +16016,74 @@ wxLuaBindEvent* wxLuaGetEventList_wxadv(size_t &count)
     static wxLuaBindEvent eventList[] =
     {
 #if wxLUA_USE_wxSashWindow && wxUSE_SASH
-        { "wxEVT_CALCULATE_LAYOUT", &wxEVT_CALCULATE_LAYOUT, &wxluatype_wxCalculateLayoutEvent },
+        { "wxEVT_CALCULATE_LAYOUT", WXLUA_GET_wxEventType_ptr(wxEVT_CALCULATE_LAYOUT), &wxluatype_wxCalculateLayoutEvent },
 #endif // wxLUA_USE_wxSashWindow && wxUSE_SASH
 
 #if wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL
-        { "wxEVT_CALENDAR_DAY_CHANGED", &wxEVT_CALENDAR_DAY_CHANGED, &wxluatype_wxCalendarEvent },
-        { "wxEVT_CALENDAR_DOUBLECLICKED", &wxEVT_CALENDAR_DOUBLECLICKED, &wxluatype_wxCalendarEvent },
-        { "wxEVT_CALENDAR_MONTH_CHANGED", &wxEVT_CALENDAR_MONTH_CHANGED, &wxluatype_wxCalendarEvent },
-        { "wxEVT_CALENDAR_SEL_CHANGED", &wxEVT_CALENDAR_SEL_CHANGED, &wxluatype_wxCalendarEvent },
-        { "wxEVT_CALENDAR_WEEKDAY_CLICKED", &wxEVT_CALENDAR_WEEKDAY_CLICKED, &wxluatype_wxCalendarEvent },
-        { "wxEVT_CALENDAR_YEAR_CHANGED", &wxEVT_CALENDAR_YEAR_CHANGED, &wxluatype_wxCalendarEvent },
+        { "wxEVT_CALENDAR_DAY_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_CALENDAR_DAY_CHANGED), &wxluatype_wxCalendarEvent },
+        { "wxEVT_CALENDAR_DOUBLECLICKED", WXLUA_GET_wxEventType_ptr(wxEVT_CALENDAR_DOUBLECLICKED), &wxluatype_wxCalendarEvent },
+        { "wxEVT_CALENDAR_MONTH_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_CALENDAR_MONTH_CHANGED), &wxluatype_wxCalendarEvent },
+        { "wxEVT_CALENDAR_SEL_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_CALENDAR_SEL_CHANGED), &wxluatype_wxCalendarEvent },
+        { "wxEVT_CALENDAR_WEEKDAY_CLICKED", WXLUA_GET_wxEventType_ptr(wxEVT_CALENDAR_WEEKDAY_CLICKED), &wxluatype_wxCalendarEvent },
+        { "wxEVT_CALENDAR_YEAR_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_CALENDAR_YEAR_CHANGED), &wxluatype_wxCalendarEvent },
 #endif // wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL
 
 #if wxCHECK_VERSION(2,8,0) && wxUSE_HYPERLINKCTRL && wxLUA_USE_wxHyperlinkCtrl
-        { "wxEVT_COMMAND_HYPERLINK", &wxEVT_COMMAND_HYPERLINK, &wxluatype_wxHyperlinkEvent },
+        { "wxEVT_COMMAND_HYPERLINK", WXLUA_GET_wxEventType_ptr(wxEVT_COMMAND_HYPERLINK), &wxluatype_wxHyperlinkEvent },
 #endif // wxCHECK_VERSION(2,8,0) && wxUSE_HYPERLINKCTRL && wxLUA_USE_wxHyperlinkCtrl
 
 #if wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL
-        { "wxEVT_DATE_CHANGED", &wxEVT_DATE_CHANGED, &wxluatype_wxDateEvent },
+        { "wxEVT_DATE_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_DATE_CHANGED), &wxluatype_wxDateEvent },
 #endif // wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL
 
 #if wxLUA_USE_wxGrid && wxUSE_GRID
-        { "wxEVT_GRID_CELL_BEGIN_DRAG", &wxEVT_GRID_CELL_BEGIN_DRAG, &wxluatype_wxGridEvent },
-        { "wxEVT_GRID_CELL_CHANGE", &wxEVT_GRID_CELL_CHANGE, &wxluatype_wxGridEvent },
-        { "wxEVT_GRID_CELL_LEFT_CLICK", &wxEVT_GRID_CELL_LEFT_CLICK, &wxluatype_wxGridEvent },
-        { "wxEVT_GRID_CELL_LEFT_DCLICK", &wxEVT_GRID_CELL_LEFT_DCLICK, &wxluatype_wxGridEvent },
-        { "wxEVT_GRID_CELL_RIGHT_CLICK", &wxEVT_GRID_CELL_RIGHT_CLICK, &wxluatype_wxGridEvent },
-        { "wxEVT_GRID_CELL_RIGHT_DCLICK", &wxEVT_GRID_CELL_RIGHT_DCLICK, &wxluatype_wxGridEvent },
-        { "wxEVT_GRID_COL_SIZE", &wxEVT_GRID_COL_SIZE, &wxluatype_wxGridSizeEvent },
-        { "wxEVT_GRID_EDITOR_CREATED", &wxEVT_GRID_EDITOR_CREATED, &wxluatype_wxGridEditorCreatedEvent },
-        { "wxEVT_GRID_EDITOR_HIDDEN", &wxEVT_GRID_EDITOR_HIDDEN, &wxluatype_wxGridEvent },
-        { "wxEVT_GRID_EDITOR_SHOWN", &wxEVT_GRID_EDITOR_SHOWN, &wxluatype_wxGridEvent },
-        { "wxEVT_GRID_LABEL_LEFT_CLICK", &wxEVT_GRID_LABEL_LEFT_CLICK, &wxluatype_wxGridEvent },
-        { "wxEVT_GRID_LABEL_LEFT_DCLICK", &wxEVT_GRID_LABEL_LEFT_DCLICK, &wxluatype_wxGridEvent },
-        { "wxEVT_GRID_LABEL_RIGHT_CLICK", &wxEVT_GRID_LABEL_RIGHT_CLICK, &wxluatype_wxGridEvent },
-        { "wxEVT_GRID_LABEL_RIGHT_DCLICK", &wxEVT_GRID_LABEL_RIGHT_DCLICK, &wxluatype_wxGridEvent },
-        { "wxEVT_GRID_RANGE_SELECT", &wxEVT_GRID_RANGE_SELECT, &wxluatype_wxGridRangeSelectEvent },
-        { "wxEVT_GRID_ROW_SIZE", &wxEVT_GRID_ROW_SIZE, &wxluatype_wxGridSizeEvent },
-        { "wxEVT_GRID_SELECT_CELL", &wxEVT_GRID_SELECT_CELL, &wxluatype_wxGridEvent },
+        { "wxEVT_GRID_CELL_BEGIN_DRAG", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_CELL_BEGIN_DRAG), &wxluatype_wxGridEvent },
+        { "wxEVT_GRID_CELL_CHANGE", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_CELL_CHANGE), &wxluatype_wxGridEvent },
+        { "wxEVT_GRID_CELL_LEFT_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_CELL_LEFT_CLICK), &wxluatype_wxGridEvent },
+        { "wxEVT_GRID_CELL_LEFT_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_CELL_LEFT_DCLICK), &wxluatype_wxGridEvent },
+        { "wxEVT_GRID_CELL_RIGHT_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_CELL_RIGHT_CLICK), &wxluatype_wxGridEvent },
+        { "wxEVT_GRID_CELL_RIGHT_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_CELL_RIGHT_DCLICK), &wxluatype_wxGridEvent },
+        { "wxEVT_GRID_COL_SIZE", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_COL_SIZE), &wxluatype_wxGridSizeEvent },
+        { "wxEVT_GRID_EDITOR_CREATED", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_EDITOR_CREATED), &wxluatype_wxGridEditorCreatedEvent },
+        { "wxEVT_GRID_EDITOR_HIDDEN", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_EDITOR_HIDDEN), &wxluatype_wxGridEvent },
+        { "wxEVT_GRID_EDITOR_SHOWN", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_EDITOR_SHOWN), &wxluatype_wxGridEvent },
+        { "wxEVT_GRID_LABEL_LEFT_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_LABEL_LEFT_CLICK), &wxluatype_wxGridEvent },
+        { "wxEVT_GRID_LABEL_LEFT_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_LABEL_LEFT_DCLICK), &wxluatype_wxGridEvent },
+        { "wxEVT_GRID_LABEL_RIGHT_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_LABEL_RIGHT_CLICK), &wxluatype_wxGridEvent },
+        { "wxEVT_GRID_LABEL_RIGHT_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_LABEL_RIGHT_DCLICK), &wxluatype_wxGridEvent },
+        { "wxEVT_GRID_RANGE_SELECT", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_RANGE_SELECT), &wxluatype_wxGridRangeSelectEvent },
+        { "wxEVT_GRID_ROW_SIZE", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_ROW_SIZE), &wxluatype_wxGridSizeEvent },
+        { "wxEVT_GRID_SELECT_CELL", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_SELECT_CELL), &wxluatype_wxGridEvent },
 #endif // wxLUA_USE_wxGrid && wxUSE_GRID
 
 #if wxLUA_USE_wxJoystick && wxUSE_JOYSTICK
-        { "wxEVT_JOY_BUTTON_DOWN", &wxEVT_JOY_BUTTON_DOWN, &wxluatype_wxJoystickEvent },
-        { "wxEVT_JOY_BUTTON_UP", &wxEVT_JOY_BUTTON_UP, &wxluatype_wxJoystickEvent },
-        { "wxEVT_JOY_MOVE", &wxEVT_JOY_MOVE, &wxluatype_wxJoystickEvent },
-        { "wxEVT_JOY_ZMOVE", &wxEVT_JOY_ZMOVE, &wxluatype_wxJoystickEvent },
+        { "wxEVT_JOY_BUTTON_DOWN", WXLUA_GET_wxEventType_ptr(wxEVT_JOY_BUTTON_DOWN), &wxluatype_wxJoystickEvent },
+        { "wxEVT_JOY_BUTTON_UP", WXLUA_GET_wxEventType_ptr(wxEVT_JOY_BUTTON_UP), &wxluatype_wxJoystickEvent },
+        { "wxEVT_JOY_MOVE", WXLUA_GET_wxEventType_ptr(wxEVT_JOY_MOVE), &wxluatype_wxJoystickEvent },
+        { "wxEVT_JOY_ZMOVE", WXLUA_GET_wxEventType_ptr(wxEVT_JOY_ZMOVE), &wxluatype_wxJoystickEvent },
 #endif // wxLUA_USE_wxJoystick && wxUSE_JOYSTICK
 
 #if wxLUA_USE_wxSashWindow && wxUSE_SASH
-        { "wxEVT_QUERY_LAYOUT_INFO", &wxEVT_QUERY_LAYOUT_INFO, &wxluatype_wxQueryLayoutInfoEvent },
-        { "wxEVT_SASH_DRAGGED", &wxEVT_SASH_DRAGGED, &wxluatype_wxSashEvent },
+        { "wxEVT_QUERY_LAYOUT_INFO", WXLUA_GET_wxEventType_ptr(wxEVT_QUERY_LAYOUT_INFO), &wxluatype_wxQueryLayoutInfoEvent },
+        { "wxEVT_SASH_DRAGGED", WXLUA_GET_wxEventType_ptr(wxEVT_SASH_DRAGGED), &wxluatype_wxSashEvent },
 #endif // wxLUA_USE_wxSashWindow && wxUSE_SASH
 
 #if wxLUA_USE_wxTaskBarIcon && defined (wxHAS_TASK_BAR_ICON )
-        { "wxEVT_TASKBAR_LEFT_DCLICK", &wxEVT_TASKBAR_LEFT_DCLICK, &wxluatype_wxTaskBarIconEvent },
-        { "wxEVT_TASKBAR_LEFT_DOWN", &wxEVT_TASKBAR_LEFT_DOWN, &wxluatype_wxTaskBarIconEvent },
-        { "wxEVT_TASKBAR_LEFT_UP", &wxEVT_TASKBAR_LEFT_UP, &wxluatype_wxTaskBarIconEvent },
-        { "wxEVT_TASKBAR_MOVE", &wxEVT_TASKBAR_MOVE, &wxluatype_wxTaskBarIconEvent },
-        { "wxEVT_TASKBAR_RIGHT_DCLICK", &wxEVT_TASKBAR_RIGHT_DCLICK, &wxluatype_wxTaskBarIconEvent },
-        { "wxEVT_TASKBAR_RIGHT_DOWN", &wxEVT_TASKBAR_RIGHT_DOWN, &wxluatype_wxTaskBarIconEvent },
-        { "wxEVT_TASKBAR_RIGHT_UP", &wxEVT_TASKBAR_RIGHT_UP, &wxluatype_wxTaskBarIconEvent },
+        { "wxEVT_TASKBAR_LEFT_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_TASKBAR_LEFT_DCLICK), &wxluatype_wxTaskBarIconEvent },
+        { "wxEVT_TASKBAR_LEFT_DOWN", WXLUA_GET_wxEventType_ptr(wxEVT_TASKBAR_LEFT_DOWN), &wxluatype_wxTaskBarIconEvent },
+        { "wxEVT_TASKBAR_LEFT_UP", WXLUA_GET_wxEventType_ptr(wxEVT_TASKBAR_LEFT_UP), &wxluatype_wxTaskBarIconEvent },
+        { "wxEVT_TASKBAR_MOVE", WXLUA_GET_wxEventType_ptr(wxEVT_TASKBAR_MOVE), &wxluatype_wxTaskBarIconEvent },
+        { "wxEVT_TASKBAR_RIGHT_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_TASKBAR_RIGHT_DCLICK), &wxluatype_wxTaskBarIconEvent },
+        { "wxEVT_TASKBAR_RIGHT_DOWN", WXLUA_GET_wxEventType_ptr(wxEVT_TASKBAR_RIGHT_DOWN), &wxluatype_wxTaskBarIconEvent },
+        { "wxEVT_TASKBAR_RIGHT_UP", WXLUA_GET_wxEventType_ptr(wxEVT_TASKBAR_RIGHT_UP), &wxluatype_wxTaskBarIconEvent },
 #endif // wxLUA_USE_wxTaskBarIcon && defined (wxHAS_TASK_BAR_ICON )
 
 #if wxUSE_WIZARDDLG && wxLUA_USE_wxWizard
-        { "wxEVT_WIZARD_CANCEL", &wxEVT_WIZARD_CANCEL, &wxluatype_wxWizardEvent },
-        { "wxEVT_WIZARD_FINISHED", &wxEVT_WIZARD_FINISHED, &wxluatype_wxWizardEvent },
-        { "wxEVT_WIZARD_HELP", &wxEVT_WIZARD_HELP, &wxluatype_wxWizardEvent },
-        { "wxEVT_WIZARD_PAGE_CHANGED", &wxEVT_WIZARD_PAGE_CHANGED, &wxluatype_wxWizardEvent },
-        { "wxEVT_WIZARD_PAGE_CHANGING", &wxEVT_WIZARD_PAGE_CHANGING, &wxluatype_wxWizardEvent },
+        { "wxEVT_WIZARD_CANCEL", WXLUA_GET_wxEventType_ptr(wxEVT_WIZARD_CANCEL), &wxluatype_wxWizardEvent },
+        { "wxEVT_WIZARD_FINISHED", WXLUA_GET_wxEventType_ptr(wxEVT_WIZARD_FINISHED), &wxluatype_wxWizardEvent },
+        { "wxEVT_WIZARD_HELP", WXLUA_GET_wxEventType_ptr(wxEVT_WIZARD_HELP), &wxluatype_wxWizardEvent },
+        { "wxEVT_WIZARD_PAGE_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_WIZARD_PAGE_CHANGED), &wxluatype_wxWizardEvent },
+        { "wxEVT_WIZARD_PAGE_CHANGING", WXLUA_GET_wxEventType_ptr(wxEVT_WIZARD_PAGE_CHANGING), &wxluatype_wxWizardEvent },
 #endif // wxUSE_WIZARDDLG && wxLUA_USE_wxWizard
 
 
@@ -16045,15 +16234,15 @@ wxLuaBindString* wxLuaGetStringList_wxadv(size_t &count)
     static wxLuaBindString stringList[] =
     {
 #if wxLUA_USE_wxGrid && wxUSE_GRID
-        { "wxGRID_VALUE_BOOL", wxGRID_VALUE_BOOL },
-        { "wxGRID_VALUE_CHOICE", wxGRID_VALUE_CHOICE },
-        { "wxGRID_VALUE_CHOICEINT", wxGRID_VALUE_CHOICEINT },
-        { "wxGRID_VALUE_DATETIME", wxGRID_VALUE_DATETIME },
-        { "wxGRID_VALUE_FLOAT", wxGRID_VALUE_FLOAT },
-        { "wxGRID_VALUE_LONG", wxGRID_VALUE_LONG },
-        { "wxGRID_VALUE_NUMBER", wxGRID_VALUE_NUMBER },
-        { "wxGRID_VALUE_STRING", wxGRID_VALUE_STRING },
-        { "wxGRID_VALUE_TEXT", wxGRID_VALUE_TEXT },
+        { "wxGRID_VALUE_BOOL", NULL, wxGRID_VALUE_BOOL },
+        { "wxGRID_VALUE_CHOICE", NULL, wxGRID_VALUE_CHOICE },
+        { "wxGRID_VALUE_CHOICEINT", NULL, wxGRID_VALUE_CHOICEINT },
+        { "wxGRID_VALUE_DATETIME", NULL, wxGRID_VALUE_DATETIME },
+        { "wxGRID_VALUE_FLOAT", NULL, wxGRID_VALUE_FLOAT },
+        { "wxGRID_VALUE_LONG", NULL, wxGRID_VALUE_LONG },
+        { "wxGRID_VALUE_NUMBER", NULL, wxGRID_VALUE_NUMBER },
+        { "wxGRID_VALUE_STRING", NULL, wxGRID_VALUE_STRING },
+        { "wxGRID_VALUE_TEXT", NULL, wxGRID_VALUE_TEXT },
 #endif // wxLUA_USE_wxGrid && wxUSE_GRID
 
 

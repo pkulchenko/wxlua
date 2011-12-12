@@ -15,6 +15,19 @@
 class WXDLLIMPEXP_FWD_WXLUA wxLuaObject;
 
 
+#if (wxVERSION_NUMBER < 2900)
+    typedef int wxPenCap;
+    typedef int wxPenJoin;
+    typedef int wxPenStyle;
+
+    typedef int wxRasterOperationMode;
+    typedef int wxPolygonFillMode;
+    typedef int wxFloodFillStyle;
+    typedef int wxMappingMode;
+    typedef int wxImageResizeQuality;
+#endif
+
+
 // ----------------------------------------------------------------------------
 // wxLuaPrintout
 // ----------------------------------------------------------------------------
@@ -101,9 +114,9 @@ class WXDLLIMPEXP_BINDWXCORE wxLuaTreeItemData : public wxTreeItemData
 public:
 	wxLuaTreeItemData() : m_data(NULL) {}
 	wxLuaTreeItemData(wxLuaObject* obj) : m_data(obj) {}
-    
+
     virtual ~wxLuaTreeItemData() { if (m_data) delete m_data; }
-    
+
 	wxLuaObject* GetData() const { return m_data; }
 	void         SetData(wxLuaObject* obj) { if (m_data) delete m_data; m_data = obj; }
 

@@ -56,30 +56,43 @@
 
 %include "wx/image.h"
 
-%wxchkver_2_6 %define_string wxIMAGE_OPTION_CUR_HOTSPOT_X
-%wxchkver_2_6 %define_string wxIMAGE_OPTION_CUR_HOTSPOT_Y
+%wxchkver_2_6 %define_wxstring wxIMAGE_OPTION_CUR_HOTSPOT_X
+%wxchkver_2_6 %define_wxstring wxIMAGE_OPTION_CUR_HOTSPOT_Y
 
 //%define_string wxIMAGE_OPTION_PNG_FORMAT     see wxPNGHandler
 //%define_string wxIMAGE_OPTION_PNG_BITDEPTH   see wxPNGHandler
 //%define_string wxIMAGE_OPTION_BMP_FORMAT     see wxBMPHandler
 
-%define_string wxIMAGE_OPTION_QUALITY        _T("quality")
-%define_string wxIMAGE_OPTION_FILENAME       _T("FileName")
+%define_wxstring wxIMAGE_OPTION_QUALITY        wxT("quality")
+%define_wxstring wxIMAGE_OPTION_FILENAME       wxT("FileName")
 
-%define_string wxIMAGE_OPTION_RESOLUTION     _T("Resolution")
-%define_string wxIMAGE_OPTION_RESOLUTIONX    _T("ResolutionX")
-%define_string wxIMAGE_OPTION_RESOLUTIONY    _T("ResolutionY")
-%define_string wxIMAGE_OPTION_RESOLUTIONUNIT _T("ResolutionUnit")
+%define_wxstring wxIMAGE_OPTION_RESOLUTION     wxT("Resolution")
+%define_wxstring wxIMAGE_OPTION_RESOLUTIONX    wxT("ResolutionX")
+%define_wxstring wxIMAGE_OPTION_RESOLUTIONY    wxT("ResolutionY")
+%define_wxstring wxIMAGE_OPTION_RESOLUTIONUNIT wxT("ResolutionUnit")
 
 %enum
     // constants used with wxIMAGE_OPTION_RESOLUTIONUNIT
     wxIMAGE_RESOLUTION_INCHES
     wxIMAGE_RESOLUTION_CM
+%endenum
 
-    // Constants for wxImage::Scale() for determining the level of quality
+// Constants for wxImage::Scale() for determining the level of quality
+%enum wxImageResizeQuality
+    // different image resizing algorithms used by Scale() and Rescale()
+    %wxchkver_2_9_2 wxIMAGE_QUALITY_NEAREST
+    %wxchkver_2_9_2 wxIMAGE_QUALITY_BILINEAR
+    %wxchkver_2_9_2 wxIMAGE_QUALITY_BICUBIC
+    %wxchkver_2_9_2 wxIMAGE_QUALITY_BOX_AVERAGE
+
+    // default quality is low (but fast)
     %wxchkver_2_8 wxIMAGE_QUALITY_NORMAL
+
+    // highest (but best) quality
     %wxchkver_2_8 wxIMAGE_QUALITY_HIGH
 %endenum
+
+
 
 %class %delete wxImage, wxObject
     %define_object wxNullImage
@@ -126,8 +139,8 @@
     unsigned char* GetData() const
 
     unsigned char GetGreen(int x, int y) const
-    static int GetImageCount(const wxString& filename, long type = wxBITMAP_TYPE_ANY)
-    static int GetImageCount(wxInputStream& stream, long type = wxBITMAP_TYPE_ANY)
+    static int GetImageCount(const wxString& filename, wxBitmapType type = wxBITMAP_TYPE_ANY)
+    static int GetImageCount(wxInputStream& stream, wxBitmapType type = wxBITMAP_TYPE_ANY)
     static wxList& GetHandlers()
     int GetHeight() const
     unsigned char GetMaskBlue() const
@@ -162,9 +175,9 @@
     static void InsertHandler(%ungc wxImageHandler* handler)
     bool IsTransparent(int x, int y, unsigned char threshold = 128) const
 
-    bool LoadFile(const wxString& name, long type = wxBITMAP_TYPE_ANY, int index = -1)
+    bool LoadFile(const wxString& name, wxBitmapType type = wxBITMAP_TYPE_ANY, int index = -1)
     bool LoadFile(const wxString& name, const wxString& mimetype, int index = -1)
-    bool LoadFile(wxInputStream& stream, long type = wxBITMAP_TYPE_ANY, int index = -1)
+    bool LoadFile(wxInputStream& stream, wxBitmapType type = wxBITMAP_TYPE_ANY, int index = -1)
     bool LoadFile(wxInputStream& stream, const wxString& mimetype, int index = -1)
 
     bool Ok() const
@@ -174,7 +187,7 @@
     %wxchkver_2_8 wxImage ResampleBox(int width, int height) const
     %wxchkver_2_8 wxImage ResampleBicubic(int width, int height) const
     !%wxchkver_2_8 wxImage& Rescale(int width, int height)
-    %wxchkver_2_8 wxImage& Rescale( int width, int height, int quality = wxIMAGE_QUALITY_NORMAL )
+    %wxchkver_2_8 wxImage& Rescale( int width, int height, wxImageResizeQuality quality = wxIMAGE_QUALITY_NORMAL )
     wxImage& Resize(const wxSize& size, const wxPoint& pos, int red = -1, int green = -1, int blue = -1)
     wxImage Rotate(double angle, const wxPoint& rotationCentre, bool interpolating = true, wxPoint* offsetAfterRotation = NULL)
     void RotateHue(double angle)
@@ -183,7 +196,7 @@
     bool SaveFile(const wxString& name, int type)
     bool SaveFile(const wxString& name, const wxString& mimetype)
     !%wxchkver_2_8 wxImage Scale(int width, int height) const
-    %wxchkver_2_8 wxImage Scale( int width, int height, int quality = wxIMAGE_QUALITY_NORMAL ) const
+    %wxchkver_2_8 wxImage Scale( int width, int height, wxImageResizeQuality quality = wxIMAGE_QUALITY_NORMAL ) const
     wxImage Size(const wxSize& size, const wxPoint& pos, int red = -1, int green = -1, int blue = -1) const
     void SetAlpha(int x, int y, unsigned char alpha)
 
@@ -223,7 +236,7 @@
 
     // operator used to compare with wxImageHistogram::end() iterator
     %operator bool operator==(const wxImageHistogram::iterator& other) const
-    
+
     //%operator wxImageHistogram::iterator& operator++() // it just returns *this
     %operator void operator++() // it's best if we don't return the iterator
 %endclass
@@ -309,7 +322,7 @@
     wxBMP_1BPP_BW
 %endenum
 
-%define_string wxIMAGE_OPTION_BMP_FORMAT _T("wxBMP_FORMAT") // wxString(_T("wxBMP_FORMAT"))
+%define_wxstring wxIMAGE_OPTION_BMP_FORMAT wxT("wxBMP_FORMAT") // wxString(wxT("wxBMP_FORMAT"))
 
 %class %delete wxBMPHandler, wxImageHandler
     wxBMPHandler()
@@ -390,8 +403,8 @@
 
 %if wxUSE_LIBPNG
 
-%define_string wxIMAGE_OPTION_PNG_FORMAT    // wxT("PngFormat")
-%define_string wxIMAGE_OPTION_PNG_BITDEPTH  // wxT("PngBitDepth")
+%define_wxstring wxIMAGE_OPTION_PNG_FORMAT    // wxT("PngFormat")
+%define_wxstring wxIMAGE_OPTION_PNG_BITDEPTH  // wxT("PngBitDepth")
 
 %enum
     wxPNG_TYPE_COLOUR
@@ -425,10 +438,10 @@
 
 %if wxUSE_LIBTIFF
 
-%define_string wxIMAGE_OPTION_BITSPERSAMPLE   _T("BitsPerSample")
-%define_string wxIMAGE_OPTION_SAMPLESPERPIXEL _T("SamplesPerPixel")
-%define_string wxIMAGE_OPTION_COMPRESSION     _T("Compression")
-%define_string wxIMAGE_OPTION_IMAGEDESCRIPTOR _T("ImageDescriptor")
+%define_wxstring wxIMAGE_OPTION_BITSPERSAMPLE   wxT("BitsPerSample")
+%define_wxstring wxIMAGE_OPTION_SAMPLESPERPIXEL wxT("SamplesPerPixel")
+%define_wxstring wxIMAGE_OPTION_COMPRESSION     wxT("Compression")
+%define_wxstring wxIMAGE_OPTION_IMAGEDESCRIPTOR wxT("ImageDescriptor")
 
 %class %delete wxTIFFHandler, wxImageHandler
     wxTIFFHandler()
@@ -475,6 +488,7 @@
 // Art clients
 // ----------------------------------------------------------------------------
 
+%if %wxchkver_2_9_0
 %define_string wxART_TOOLBAR
 %define_string wxART_MENU
 %define_string wxART_FRAME_ICON
@@ -485,11 +499,26 @@
 %define_string wxART_BUTTON
 
 %define_string wxART_OTHER
+%endif
+
+%if !%wxchkver_2_9_0
+%define_wxstring wxART_TOOLBAR
+%define_wxstring wxART_MENU
+%define_wxstring wxART_FRAME_ICON
+
+%define_wxstring wxART_CMN_DIALOG
+%define_wxstring wxART_HELP_BROWSER
+%define_wxstring wxART_MESSAGE_BOX
+%define_wxstring wxART_BUTTON
+
+%define_wxstring wxART_OTHER
+%endif
 
 // ----------------------------------------------------------------------------
 // Art IDs
 // ----------------------------------------------------------------------------
 
+%if %wxchkver_2_9_0
 %define_string wxART_ADD_BOOKMARK
 %define_string wxART_DEL_BOOKMARK
 %define_string wxART_HELP_SIDE_PANEL
@@ -541,6 +570,61 @@
 
 %define_string wxART_FIND
 %define_string wxART_FIND_AND_REPLACE
+%endif
+
+%if !%wxchkver_2_9_0
+%define_wxstring wxART_ADD_BOOKMARK
+%define_wxstring wxART_DEL_BOOKMARK
+%define_wxstring wxART_HELP_SIDE_PANEL
+%define_wxstring wxART_HELP_SETTINGS
+%define_wxstring wxART_HELP_BOOK
+%define_wxstring wxART_HELP_FOLDER
+%define_wxstring wxART_HELP_PAGE
+%define_wxstring wxART_GO_BACK
+%define_wxstring wxART_GO_FORWARD
+%define_wxstring wxART_GO_UP
+%define_wxstring wxART_GO_DOWN
+%define_wxstring wxART_GO_TO_PARENT
+%define_wxstring wxART_GO_HOME
+%define_wxstring wxART_FILE_OPEN
+%define_wxstring wxART_FILE_SAVE
+%define_wxstring wxART_FILE_SAVE_AS
+%define_wxstring wxART_PRINT
+%define_wxstring wxART_HELP
+%define_wxstring wxART_TIP
+%define_wxstring wxART_REPORT_VIEW
+%define_wxstring wxART_LIST_VIEW
+%define_wxstring wxART_NEW_DIR
+%define_wxstring wxART_HARDDISK
+%define_wxstring wxART_FLOPPY
+%define_wxstring wxART_CDROM
+%define_wxstring wxART_REMOVABLE
+%define_wxstring wxART_FOLDER
+%define_wxstring wxART_FOLDER_OPEN
+%define_wxstring wxART_GO_DIR_UP
+%define_wxstring wxART_EXECUTABLE_FILE
+%define_wxstring wxART_NORMAL_FILE
+%define_wxstring wxART_TICK_MARK
+%define_wxstring wxART_CROSS_MARK
+%define_wxstring wxART_ERROR
+%define_wxstring wxART_QUESTION
+%define_wxstring wxART_WARNING
+%define_wxstring wxART_INFORMATION
+%define_wxstring wxART_MISSING_IMAGE
+%define_wxstring wxART_COPY
+%define_wxstring wxART_CUT
+%define_wxstring wxART_PASTE
+%define_wxstring wxART_DELETE
+%define_wxstring wxART_NEW
+
+%define_wxstring wxART_UNDO
+%define_wxstring wxART_REDO
+
+%define_wxstring wxART_QUIT
+
+%define_wxstring wxART_FIND
+%define_wxstring wxART_FIND_AND_REPLACE
+%endif
 
 %class wxArtProvider, wxObject
     // wxArtProvider() - abstract class

@@ -60,11 +60,20 @@
 %define wxSTC_MARK_CIRCLEMINUSCONNECTED
 
 // Invisible mark that only sets the line background color.
+
+
 %define wxSTC_MARK_BACKGROUND
 %define wxSTC_MARK_DOTDOTDOT
 %define wxSTC_MARK_ARROWS
 %define wxSTC_MARK_PIXMAP
 %define wxSTC_MARK_FULLRECT
+
+%if %wxchkver_2_9_2
+%define wxSTC_MARK_LEFTRECT
+%define wxSTC_MARK_AVAILABLE
+%define wxSTC_MARK_UNDERLINE
+%endif
+
 %define wxSTC_MARK_CHARACTER
 
 // Markers used for outlining column.
@@ -78,6 +87,12 @@
 %define wxSTC_MASK_FOLDERS
 %define wxSTC_MARGIN_SYMBOL
 %define wxSTC_MARGIN_NUMBER
+%if %wxchkver_2_9_2
+%define wxSTC_MARGIN_BACK
+%define wxSTC_MARGIN_FORE
+%define wxSTC_MARGIN_TEXT
+%define wxSTC_MARGIN_RTEXT
+%endif
 
 // Styles in range 32..37 are predefined for parts of the UI and are not used as normal styles.
 // Styles 38 and 39 are for future use.
@@ -87,6 +102,7 @@
 %define wxSTC_STYLE_BRACEBAD
 %define wxSTC_STYLE_CONTROLCHAR
 %define wxSTC_STYLE_INDENTGUIDE
+%wxchkver_2_9_2 %define wxSTC_STYLE_CALLTIP
 %define wxSTC_STYLE_LASTPREDEFINED
 %define wxSTC_STYLE_MAX
 
@@ -116,6 +132,7 @@
 %define wxSTC_CASE_MIXED
 %define wxSTC_CASE_UPPER
 %define wxSTC_CASE_LOWER
+
 %define wxSTC_INDIC_MAX
 %define wxSTC_INDIC_PLAIN
 %define wxSTC_INDIC_SQUIGGLE
@@ -151,17 +168,17 @@
 %define wxSTC_FOLDLEVELBASE
 %define wxSTC_FOLDLEVELWHITEFLAG
 %define wxSTC_FOLDLEVELHEADERFLAG
-%define wxSTC_FOLDLEVELBOXHEADERFLAG
-%define wxSTC_FOLDLEVELBOXFOOTERFLAG
-%define wxSTC_FOLDLEVELCONTRACTED
-%define wxSTC_FOLDLEVELUNINDENT
+!%wxchkver_2_9_2 %define wxSTC_FOLDLEVELBOXHEADERFLAG
+!%wxchkver_2_9_2 %define wxSTC_FOLDLEVELBOXFOOTERFLAG
+!%wxchkver_2_9_2 %define wxSTC_FOLDLEVELCONTRACTED
+!%wxchkver_2_9_2 %define wxSTC_FOLDLEVELUNINDENT
 %define wxSTC_FOLDLEVELNUMBERMASK
 %define wxSTC_FOLDFLAG_LINEBEFORE_EXPANDED
 %define wxSTC_FOLDFLAG_LINEBEFORE_CONTRACTED
 %define wxSTC_FOLDFLAG_LINEAFTER_EXPANDED
 %define wxSTC_FOLDFLAG_LINEAFTER_CONTRACTED
 %define wxSTC_FOLDFLAG_LEVELNUMBERS
-%define wxSTC_FOLDFLAG_BOX
+!%wxchkver_2_9_2 %define wxSTC_FOLDFLAG_BOX
 %define wxSTC_TIME_FOREVER
 %define wxSTC_WRAP_NONE
 %define wxSTC_WRAP_WORD
@@ -1088,7 +1105,7 @@
 %define wxSTC_ERLANG_CHARACTER
 %define wxSTC_ERLANG_MACRO
 %define wxSTC_ERLANG_RECORD
-%define wxSTC_ERLANG_SEPARATOR
+!%wxchkver_2_9_2 %define wxSTC_ERLANG_SEPARATOR
 %define wxSTC_ERLANG_NODE_NAME
 %define wxSTC_ERLANG_UNKNOWN
 

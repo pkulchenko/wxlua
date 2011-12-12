@@ -23,16 +23,16 @@
 %define WXGRID_MIN_COL_WIDTH
 %define WXGRID_DEFAULT_SCROLLBAR_WIDTH
 
-%define_string wxGRID_VALUE_STRING
-%define_string wxGRID_VALUE_BOOL
-%define_string wxGRID_VALUE_NUMBER
-%define_string wxGRID_VALUE_FLOAT
-%define_string wxGRID_VALUE_CHOICE
-%define_string wxGRID_VALUE_TEXT
-%define_string wxGRID_VALUE_LONG
+%define_wxstring wxGRID_VALUE_STRING
+%define_wxstring wxGRID_VALUE_BOOL
+%define_wxstring wxGRID_VALUE_NUMBER
+%define_wxstring wxGRID_VALUE_FLOAT
+%define_wxstring wxGRID_VALUE_CHOICE
+%define_wxstring wxGRID_VALUE_TEXT
+%define_wxstring wxGRID_VALUE_LONG
 
-%define_string wxGRID_VALUE_CHOICEINT
-%define_string wxGRID_VALUE_DATETIME
+%define_wxstring wxGRID_VALUE_CHOICEINT
+%define_wxstring wxGRID_VALUE_DATETIME
 
 %wxchkver_2_8_8 %define wxGRID_AUTOSIZE
 
@@ -134,7 +134,8 @@
 
     //virtual void Create(wxWindow* parent, wxWindowID id, wxEvtHandler* evtHandler)
     virtual void BeginEdit(int row, int col, wxGrid* grid)
-    virtual bool EndEdit(int row, int col, wxGrid* grid)
+    !%wxchkver_2_9_2 virtual bool EndEdit(int row, int col, wxGrid* grid)
+    %wxchkver_2_9_2 virtual bool EndEdit(int row, int col, const wxGrid *grid, const wxString& oldval, wxString *newval)
     virtual void Reset()
     //virtual wxGridCellEditor *Clone() const
     virtual void SetSize(const wxRect& rect)

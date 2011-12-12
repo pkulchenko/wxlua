@@ -176,11 +176,11 @@
     //void SetSelection(long from, long to)
     //int GetWidestItemWidth()
     //int GetWidestItem()
-    
+
     void SetValue(const wxString& value)
     void SetString(unsigned int n, const wxString& s)
     bool SetStringSelection(const wxString& s)
-    
+
 %endclass
 
 %endif //wxLUA_USE_wxBitmapComboBox && wxUSE_BITMAPCOMBOBOX
@@ -224,7 +224,12 @@
 
     void     SetDate(const wxDateTime& date)
     wxDateTime GetDate() const
-    void     EnableYearChange(bool enable = true)
+    !%wxchkver_2_9_2 void     EnableYearChange(bool enable = true)
+
+    %if %wxchkver_2_9_2 && !%__WXGTK__
+        void     EnableYearChange(bool enable = true)
+    %endif
+
     void     EnableMonthChange(bool enable = true)
     void     EnableHolidayDisplay(bool display = true)
     void     SetHeaderColours(const wxColour& colFg, const wxColour& colBg)
@@ -301,7 +306,9 @@
     %define_event wxEVT_CALENDAR_DOUBLECLICKED      // EVT_CALENDAR(id, fn)
     %define_event wxEVT_CALENDAR_WEEKDAY_CLICKED    // EVT_CALENDAR_WEEKDAY_CLICKED(id, fn)
 
-    wxCalendarEvent(wxCalendarCtrl *cal, wxEventType type)
+    %wxchkver_2_9_2 wxCalendarEvent(const wxCalendarEvent& event)
+    !%wxchkver_2_9_2 wxCalendarEvent(wxCalendarCtrl *cal, wxEventType type)
+    %wxchkver_2_9_2 wxCalendarEvent(wxWindow *win, const wxDateTime& dt, wxEventType type)
 
     wxDateTime::WeekDay GetWeekDay() const
     void SetWeekDay(const wxDateTime::WeekDay wd)
@@ -392,13 +399,14 @@
     int GetMinimumSizeX() const
     int GetMinimumSizeY() const
 
-    bool HasBorder(wxSashEdgePosition edge) const
     void SetMaximumSizeX(int min)
     void SetMaximumSizeY(int min)
     void SetMinimumSizeX(int min)
     void SetMinimumSizeY(int min)
     void SetSashVisible(wxSashEdgePosition edge, bool visible)
-    void SetSashBorder(wxSashEdgePosition edge, bool hasBorder)
+
+    %wxcompat_2_6 bool HasBorder(wxSashEdgePosition edge) const
+    %wxcompat_2_6 void SetSashBorder(wxSashEdgePosition edge, bool hasBorder)
 %endclass
 
 // ---------------------------------------------------------------------------

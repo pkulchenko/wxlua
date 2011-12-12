@@ -57,6 +57,17 @@
 %endclass
 
 // ---------------------------------------------------------------------------
+// wxPointList
+
+%if %wxchkver_2_9
+
+%class wxPointList, wxList
+
+%endclass
+
+%endif
+
+// ---------------------------------------------------------------------------
 // wxRealPoint - Used nowhere in wxWidgets
 
 //%class %delete wxRealPoint
@@ -582,20 +593,26 @@
 
 %include "wx/pen.h"
 
-%define wxCAP_BUTT
-%define wxCAP_PROJECTING
-%define wxCAP_ROUND
+%enum wxPenCap
+    wxCAP_BUTT
+    wxCAP_PROJECTING
+    wxCAP_ROUND
+%endenum
 
-%define wxDOT
-%define wxDOT_DASH
-%define wxSOLID
-%define wxLONG_DASH
-%define wxSHORT_DASH
-%define wxUSER_DASH
+%enum wxPenStyle
+    wxDOT
+    wxDOT_DASH
+    wxSOLID
+    wxLONG_DASH
+    wxSHORT_DASH
+    wxUSER_DASH
+%endenum
 
-%define wxJOIN_BEVEL
-%define wxJOIN_MITER
-%define wxJOIN_ROUND
+%enum wxPenJoin
+    wxJOIN_BEVEL
+    wxJOIN_MITER
+    wxJOIN_ROUND
+%endenum
 
 %enum
     wxTRANSPARENT
@@ -625,29 +642,29 @@
     %rename wxLIGHT_GREY_PEN   %define_pointer wxLua_wxLIGHT_GREY_PEN
 
     wxPen()
-    wxPen(const wxColour& colour, int width, int style)
-    wxPen(const wxString& colourName, int width, int style)
+    wxPen(const wxColour& colour, int width, wxPenStyle style)
+    wxPen(const wxString& colourName, int width, wxPenStyle style)
     %win wxPen(const wxBitmap& stipple, int width)
     wxPen(const wxPen& pen)
 
-    int GetCap() const
+    wxPenCap GetCap() const
     wxColour GetColour() const // not wxColur& so we allocate a new one
     // int GetDashes(wxDash** dashes) const
-    int GetJoin() const
+    wxPenJoin GetJoin() const
     %win wxBitmap* GetStipple() const
-    int GetStyle() const
+    wxPenStyle GetStyle() const
     int GetWidth() const
     bool Ok() const
-    void SetCap(int capStyle)
+    void SetCap(wxPenCap capStyle)
 
     void SetColour(wxColour& colour)
     void SetColour(const wxString& colourName)
     void SetColour(unsigned char red, unsigned char green, unsigned char blue)
 
     //void SetDashes(int nb_dashes, const wxDash *dash)
-    void SetJoin(int join_style)
+    void SetJoin(wxPenJoin join_style)
     %win void SetStipple(const wxBitmap& stipple)
-    void SetStyle(int style)
+    void SetStyle(wxPenStyle style)
     void SetWidth(int width)
 
     %operator wxPen& operator=(const wxPen& p) const
@@ -1093,82 +1110,92 @@
 
 %include "wx/dc.h"
 
-%enum
+%enum wxMappingMode
     wxMM_TEXT
-    wxMM_LOMETRIC
-    wxMM_HIMETRIC
-    wxMM_LOENGLISH
-    wxMM_HIENGLISH
-    wxMM_TWIPS
-    wxMM_ISOTROPIC
-    wxMM_ANISOTROPIC
-    wxMM_POINTS
     wxMM_METRIC
+    wxMM_LOMETRIC
+    wxMM_TWIPS
+    wxMM_POINTS
+
+    !%wxchkver_2_9_2 wxMM_HIMETRIC
+    !%wxchkver_2_9_2 wxMM_LOENGLISH
+    !%wxchkver_2_9_2 wxMM_HIENGLISH
+    !%wxchkver_2_9_2 wxMM_ISOTROPIC
+    !%wxchkver_2_9_2 wxMM_ANISOTROPIC
 %endenum
 
-%define wxROP_BLACK
-%define wxROP_COPYPEN
-%define wxROP_MASKNOTPEN
-%define wxROP_MASKPEN
-%define wxROP_MASKPENNOT
-%define wxROP_MERGENOTPEN
-%define wxROP_MERGEPEN
-%define wxROP_MERGEPENNOT
-%define wxROP_NOP
-%define wxROP_NOT
-%define wxROP_NOTCOPYPEN
-%define wxROP_NOTMASKPEN
-%define wxROP_NOTMERGEPEN
-%define wxROP_NOTXORPEN
-%define wxROP_WHITE
-%define wxROP_XORPEN
+%enum wxRasterOperationMode
+    wxCLEAR
+    wxXOR
+    wxINVERT
+    wxOR_REVERSE
+    wxAND_REVERSE
+    wxCOPY
+    wxAND
+    wxAND_INVERT
+    wxNO_OP
+    wxNOR
+    wxEQUIV
+    wxSRC_INVERT
+    wxOR_INVERT
+    wxNAND
+    wxOR
+    wxSET
 
-%define wxBLIT_00220326
-%define wxBLIT_007700E6
-%define wxBLIT_00990066
-%define wxBLIT_00AA0029
-%define wxBLIT_00DD0228
-%define wxBLIT_BLACKNESS
-%define wxBLIT_DSTINVERT
-%define wxBLIT_MERGEPAINT
-%define wxBLIT_NOTSCRCOPY
-%define wxBLIT_NOTSRCERASE
-%define wxBLIT_SRCAND
-%define wxBLIT_SRCCOPY
-%define wxBLIT_SRCERASE
-%define wxBLIT_SRCINVERT
-%define wxBLIT_SRCPAINT
-%define wxBLIT_WHITENESS
+    // wxROP_XXX and wxBLIT_XXX are wxcompat_2_8
 
-%define wxCLEAR
-%define wxXOR
-%define wxINVERT
-%define wxOR_REVERSE
-%define wxAND_REVERSE
-%define wxCOPY
-%define wxAND
-%define wxAND_INVERT
-%define wxNO_OP
-%define wxNOR
-%define wxEQUIV
-%define wxSRC_INVERT
-%define wxOR_INVERT
-%define wxNAND
-%define wxOR
-%define wxSET
+    wxROP_BLACK
+    wxROP_COPYPEN
+    wxROP_MASKNOTPEN
+    wxROP_MASKPEN
+    wxROP_MASKPENNOT
+    wxROP_MERGENOTPEN
+    wxROP_MERGEPEN
+    wxROP_MERGEPENNOT
+    wxROP_NOP
+    wxROP_NOT
+    wxROP_NOTCOPYPEN
+    wxROP_NOTMASKPEN
+    wxROP_NOTMERGEPEN
+    wxROP_NOTXORPEN
+    wxROP_WHITE
+    wxROP_XORPEN
 
-%define wxFLOOD_BORDER
-%define wxFLOOD_SURFACE
+    wxBLIT_00220326
+    wxBLIT_007700E6
+    wxBLIT_00990066
+    wxBLIT_00AA0029
+    wxBLIT_00DD0228
+    wxBLIT_BLACKNESS
+    wxBLIT_DSTINVERT
+    wxBLIT_MERGEPAINT
+    wxBLIT_NOTSCRCOPY
+    wxBLIT_NOTSRCERASE
+    wxBLIT_SRCAND
+    wxBLIT_SRCCOPY
+    wxBLIT_SRCERASE
+    wxBLIT_SRCINVERT
+    wxBLIT_SRCPAINT
+    wxBLIT_WHITENESS
 
-%define wxODDEVEN_RULE
-%define wxWINDING_RULE
 
+%endenum
+
+%enum wxFloodFillStyle
+    wxFLOOD_BORDER
+    wxFLOOD_SURFACE
+%endenum
+
+%enum wxPolygonFillMode
+    wxODDEVEN_RULE
+    wxWINDING_RULE
+%endenum
 
 %class %delete wxDC, wxObject
     // %win wxDC() wxDC is abstract use wxXXXDC
 
     //void BeginDrawing() // these are deprecated in 2.8 and didn't do anything anyway
-    bool Blit(wxCoord xdest, wxCoord ydest, wxCoord width, wxCoord height, wxDC* source, wxCoord xsrc, wxCoord ysrc, int logicalFunc = wxCOPY, bool useMask = false)
+    bool Blit(wxCoord xdest, wxCoord ydest, wxCoord width, wxCoord height, wxDC* source, wxCoord xsrc, wxCoord ysrc, wxRasterOperationMode logicalFunc = wxCOPY, bool useMask = false)
     void CalcBoundingBox(wxCoord x, wxCoord y)
     void Clear()
     //void ComputeScaleAndOrigin()  used internally
@@ -1192,11 +1219,16 @@
     void DrawLabel(const wxString& text, const wxBitmap& image, const wxRect& rect, int alignment = wxALIGN_LEFT | wxALIGN_TOP, int indexAccel = -1) //, wxRect *rectBounding = NULL)
     void DrawLabel(const wxString& text, const wxRect& rect, int alignment = wxALIGN_LEFT | wxALIGN_TOP, int indexAccel = -1)
     void DrawLine(wxCoord x1, wxCoord y1, wxCoord x2, wxCoord y2)
+
     //void DrawLines(int n, wxPoint points[], wxCoord xoffset = 0, wxCoord yoffset = 0) // FIXME add this
-    %rename DrawLinesList void DrawLines(wxList *points, wxCoord xoffset = 0, wxCoord yoffset = 0)
-    //void DrawPolygon(int n, wxPoint points[], wxCoord xoffset = 0, wxCoord yoffset = 0, int fill_style = wxODDEVEN_RULE) // FIXME add this
-    %rename DrawPolygonList void DrawPolygon(wxList *points, wxCoord xoffset = 0, wxCoord yoffset = 0, int fill_style = wxODDEVEN_RULE)
-    //void DrawPolyPolygon(int n, int count[], wxPoint points[], wxCoord xoffset = 0, wxCoord yoffset = 0, int fill_style = wxODDEVEN_RULE)
+    %wxchkver_2_9  void DrawLines(const wxPointList *points, wxCoord xoffset = 0, wxCoord yoffset = 0)
+    !%wxchkver_2_9 void DrawLines(const wxList *points, wxCoord xoffset = 0, wxCoord yoffset = 0)
+
+    //void DrawPolygon(int n, wxPoint points[], wxCoord xoffset = 0, wxCoord yoffset = 0, wxPolygonFillMode fill_style = wxODDEVEN_RULE) // FIXME add this
+    %wxchkver_2_9 void DrawPolygon(const wxPointList *points, wxCoord xoffset = 0, wxCoord yoffset = 0, wxPolygonFillMode fill_style = wxODDEVEN_RULE)
+    !%wxchkver_2_9 void DrawPolygon(const wxList *points, wxCoord xoffset = 0, wxCoord yoffset = 0, wxPolygonFillMode fill_style = wxODDEVEN_RULE)
+
+    //void DrawPolyPolygon(int n, int count[], wxPoint points[], wxCoord xoffset = 0, wxCoord yoffset = 0, wxPolygonFillMode fill_style = wxODDEVEN_RULE)
     void DrawPoint(wxCoord x, wxCoord y)
     void DrawRectangle(wxCoord x, wxCoord y, wxCoord width, wxCoord height)
     void DrawRotatedText(const wxString& text, wxCoord x, wxCoord y, double angle)
@@ -1209,7 +1241,7 @@
     void EndDoc()
     //void EndDrawing()  // these are deprecated in 2.8 and didn't do anything anyway
     void EndPage()
-    void FloodFill(wxCoord x, wxCoord y, const wxColour& colour, int style=wxFLOOD_SURFACE)
+    void FloodFill(wxCoord x, wxCoord y, const wxColour& colour, wxFloodFillStyle style=wxFLOOD_SURFACE)
 
     %if %wxchkver_2_8
         //void GradientFillConcentric(const wxRect& rect, const wxColour& initialColour, const wxColour& destColour)
@@ -1263,7 +1295,7 @@
     wxCoord MaxY()
     wxCoord MinX()
     wxCoord MinY()
-    bool Ok()
+    bool IsOk()
     void ResetBoundingBox()
     void SetAxisOrientation(bool xLeftRight, bool yBottomUp)
     void SetBackground(const wxBrush& brush)
@@ -1276,8 +1308,8 @@
     void SetDeviceOrigin(wxCoord x, wxCoord y)
     void SetFont(const wxFont& font)
     %wxchkver_2_8 void SetLayoutDirection(wxLayoutDirection dir)
-    void SetLogicalFunction(int function)
-    void SetMapMode(int unit)
+    void SetLogicalFunction(wxRasterOperationMode function)
+    void SetMapMode(wxMappingMode unit)
     void SetPalette(const wxPalette& palette)
     void SetPen(const wxPen& pen)
     void SetTextBackground(const wxColour& colour)

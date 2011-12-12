@@ -16,7 +16,13 @@ static int LUACALL wxLua_wxLog_SetTimestamp(lua_State *L)
 {
     // docs say that using NULL will disable time stamping. The actual arg is "const wxChar* ts"
     if (lua_isnoneornil(L, 1))
+    {
+#if wxCHECK_VERSION(2, 9, 0)
+        wxLog::SetTimestamp(wxEmptyString);
+#else
         wxLog::SetTimestamp(NULL);
+#endif
+    }
     else
     {
         // const wxString ts
@@ -387,12 +393,34 @@ static int LUACALL wxLua_wxClassInfo_constructor(lua_State *L)
     // const wxString &name
     wxString name = wxlua_getwxStringtype(L, 1);
     // call constructor
-    wxClassInfo *returns = wxClassInfo::FindClass((wxChar *)name.c_str());
+#if wxCHECK_VERSION(2, 9, 0)
+    wxClassInfo *returns = wxClassInfo::FindClass(name);
+#else
+    wxClassInfo *returns = wxClassInfo::FindClass(name.wx_str());
+#endif
     // push the constructed class pointer
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxClassInfo);
     // return the number of parameters
     return 1;
 }
+%end
+
+%override wxLua_wxObjectRefData_delete_function
+
+#if wxCHECK_VERSION(2,9,0)
+void wxLua_wxObjectRefData_delete_function(void** p)
+{
+    wxObjectRefData* o = (wxObjectRefData*)(*p);
+    o->DecRef();
+}
+#else
+void wxLua_wxObjectRefData_delete_function(void** p)
+{
+    wxObjectRefData* o = (wxObjectRefData*)(*p);
+    delete o;
+}
+#endif
+
 %end
 
 %override wxLua_wxObject_DynamicCast

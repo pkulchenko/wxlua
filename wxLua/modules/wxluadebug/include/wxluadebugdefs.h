@@ -31,4 +31,12 @@
     #define WXDLLIMPEXP_DATA_WXLUADEBUG(type) type
 #endif
 
+// Forward declare all wxStEdit classes with this macro
+#if defined(HAVE_VISIBILITY) || (defined(__WINDOWS__) && defined(__GNUC__))
+    #define WXDLLIMPEXP_FWD_WXLUADEBUG
+#else
+    #define WXDLLIMPEXP_FWD_WXLUADEBUG WXDLLIMPEXP_WXLUADEBUG
+#endif
+
+
 #endif  // __WX_WXLUADEBUGDEFS_H__

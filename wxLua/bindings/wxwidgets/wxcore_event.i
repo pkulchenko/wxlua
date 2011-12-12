@@ -343,7 +343,7 @@
     WXK_MBUTTON
     WXK_MENU
     WXK_MULTIPLY
-    WXK_NEXT
+    //WXK_NEXT = WXK_PAGEDOWN since 2.6
     WXK_NUMLOCK
     WXK_NUMPAD_ADD
     WXK_NUMPAD_BEGIN
@@ -362,10 +362,10 @@
     WXK_NUMPAD_INSERT
     WXK_NUMPAD_LEFT
     WXK_NUMPAD_MULTIPLY
-    WXK_NUMPAD_NEXT
+    // WXK_NUMPAD_NEXT = WXK_NUMPAD_PAGEDOWN since 2.6
     WXK_NUMPAD_PAGEDOWN
     WXK_NUMPAD_PAGEUP
-    WXK_NUMPAD_PRIOR
+    // WXK_NUMPAD_PRIOR = WXK_NUMPAD_PAGEUP since 2.6
     WXK_NUMPAD_RIGHT
     WXK_NUMPAD_SEPARATOR
     WXK_NUMPAD_SPACE
@@ -386,7 +386,7 @@
     WXK_PAGEUP
     WXK_PAUSE
     WXK_PRINT
-    WXK_PRIOR
+    // WXK_PRIOR = WXK_PAGEUP since 2.6
     WXK_RBUTTON
     WXK_RETURN
     WXK_RIGHT
@@ -477,7 +477,7 @@
 
     wxIdleEvent()
 
-    static bool CanSend(wxWindow* window)
+    !%wxchkver_2_9_2 static bool CanSend(wxWindow* window)
     static wxIdleMode GetMode()
     void RequestMore(bool needMore = true)
     bool MoreRequested() const

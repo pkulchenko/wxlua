@@ -3648,9 +3648,29 @@ int wxPreviewFrame_methodCount = sizeof(wxPreviewFrame_methods)/sizeof(wxLuaBind
 // Lua MetaTable Tag for Class 'wxPostScriptDC'
 int wxluatype_wxPostScriptDC = WXLUA_TUNKNOWN;
 
+#if (wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPostScriptDC_GetResolution1[] = { &wxluatype_wxPostScriptDC, NULL };
+static int LUACALL wxLua_wxPostScriptDC_GetResolution1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPostScriptDC_GetResolution1[1] = {{ wxLua_wxPostScriptDC_GetResolution1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPostScriptDC_GetResolution1 }};
+//     %wxchkver_2_9_2 int GetResolution()
+static int LUACALL wxLua_wxPostScriptDC_GetResolution1(lua_State *L)
+{
+    // get this
+    wxPostScriptDC * self = (wxPostScriptDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPostScriptDC);
+    // call GetResolution
+    int returns = (self->GetResolution());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT))
+
+#if (!wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT))
 static int LUACALL wxLua_wxPostScriptDC_GetResolution(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPostScriptDC_GetResolution[1] = {{ wxLua_wxPostScriptDC_GetResolution, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static int GetResolution()
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPostScriptDC_GetResolution[1] = {{ wxLua_wxPostScriptDC_GetResolution, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
+//     !%wxchkver_2_9_2 static int GetResolution()
 static int LUACALL wxLua_wxPostScriptDC_GetResolution(lua_State *L)
 {
     // call GetResolution
@@ -3664,7 +3684,7 @@ static int LUACALL wxLua_wxPostScriptDC_GetResolution(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPostScriptDC_SetResolution[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPostScriptDC_SetResolution(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPostScriptDC_SetResolution[1] = {{ wxLua_wxPostScriptDC_SetResolution, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxPostScriptDC_SetResolution }};
-//     static void SetResolution(int ppi)
+//     !%wxchkver_2_9_2 static void SetResolution(int ppi)
 static int LUACALL wxLua_wxPostScriptDC_SetResolution(lua_State *L)
 {
     // int ppi
@@ -3674,6 +3694,8 @@ static int LUACALL wxLua_wxPostScriptDC_SetResolution(lua_State *L)
 
     return 0;
 }
+
+#endif // (!wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPostScriptDC_delete[] = { &wxluatype_wxPostScriptDC, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPostScriptDC_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxPostScriptDC_delete }};
@@ -3702,6 +3724,23 @@ static int LUACALL wxLua_wxPostScriptDC_constructor(lua_State *L)
 
 
 
+#if ((wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT)))||((!wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT)))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPostScriptDC_GetResolution_overload[] =
+{
+
+#if (wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT))
+    { wxLua_wxPostScriptDC_GetResolution1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPostScriptDC_GetResolution1 },
+#endif // (wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT))
+
+#if (!wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT))
+    { wxLua_wxPostScriptDC_GetResolution, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None },
+#endif // (!wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT))
+};
+static int s_wxluafunc_wxLua_wxPostScriptDC_GetResolution_overload_count = sizeof(s_wxluafunc_wxLua_wxPostScriptDC_GetResolution_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT)))||((!wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT)))
+
 void wxLua_wxPostScriptDC_delete_function(void** p)
 {
     wxPostScriptDC* o = (wxPostScriptDC*)(*p);
@@ -3710,8 +3749,14 @@ void wxLua_wxPostScriptDC_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxPostScriptDC_methods[] = {
-    { "GetResolution", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxPostScriptDC_GetResolution, 1, NULL },
+#if ((wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT)))||((!wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT)))
+    { "GetResolution", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxPostScriptDC_GetResolution_overload, s_wxluafunc_wxLua_wxPostScriptDC_GetResolution_overload_count, 0 },
+#endif // ((wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT)))||((!wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT)))
+
+#if (!wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT))
     { "SetResolution", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxPostScriptDC_SetResolution, 1, NULL },
+#endif // (!wxCHECK_VERSION(2,9,2)) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT))
+
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxPostScriptDC_delete, 1, NULL },
 
 #if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT))

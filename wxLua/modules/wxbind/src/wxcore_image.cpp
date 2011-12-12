@@ -465,16 +465,16 @@ static int LUACALL wxLua_wxImage_GetHeight(lua_State *L)
 
 
 #if (wxUSE_STREAMS) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxImage_GetImageCount1[] = { &wxluatype_wxInputStream, &wxluatype_TNUMBER, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxImage_GetImageCount1[] = { &wxluatype_wxInputStream, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxImage_GetImageCount1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxImage_GetImageCount1[1] = {{ wxLua_wxImage_GetImageCount1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 2, s_wxluatypeArray_wxLua_wxImage_GetImageCount1 }};
-//     static int GetImageCount(wxInputStream& stream, long type = wxBITMAP_TYPE_ANY)
+//     static int GetImageCount(wxInputStream& stream, wxBitmapType type = wxBITMAP_TYPE_ANY)
 static int LUACALL wxLua_wxImage_GetImageCount1(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // long type = wxBITMAP_TYPE_ANY
-    long type = (argCount >= 2 ? (long)wxlua_getnumbertype(L, 2) : wxBITMAP_TYPE_ANY);
+    // wxBitmapType type = wxBITMAP_TYPE_ANY
+    wxBitmapType type = (argCount >= 2 ? (wxBitmapType)wxlua_getenumtype(L, 2) : wxBITMAP_TYPE_ANY);
     // wxInputStream stream
     wxInputStream * stream = (wxInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxInputStream);
     // call GetImageCount
@@ -487,16 +487,16 @@ static int LUACALL wxLua_wxImage_GetImageCount1(lua_State *L)
 
 #endif // (wxUSE_STREAMS) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxImage_GetImageCount[] = { &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxImage_GetImageCount[] = { &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxImage_GetImageCount(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxImage_GetImageCount[1] = {{ wxLua_wxImage_GetImageCount, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 2, s_wxluatypeArray_wxLua_wxImage_GetImageCount }};
-//     static int GetImageCount(const wxString& filename, long type = wxBITMAP_TYPE_ANY)
+//     static int GetImageCount(const wxString& filename, wxBitmapType type = wxBITMAP_TYPE_ANY)
 static int LUACALL wxLua_wxImage_GetImageCount(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // long type = wxBITMAP_TYPE_ANY
-    long type = (argCount >= 2 ? (long)wxlua_getnumbertype(L, 2) : wxBITMAP_TYPE_ANY);
+    // wxBitmapType type = wxBITMAP_TYPE_ANY
+    wxBitmapType type = (argCount >= 2 ? (wxBitmapType)wxlua_getenumtype(L, 2) : wxBITMAP_TYPE_ANY);
     // const wxString filename
     const wxString filename = wxlua_getwxStringtype(L, 1);
     // call GetImageCount
@@ -874,18 +874,18 @@ static int LUACALL wxLua_wxImage_LoadFile3(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxImage_LoadFile2[] = { &wxluatype_wxImage, &wxluatype_wxInputStream, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxImage_LoadFile2[] = { &wxluatype_wxImage, &wxluatype_wxInputStream, &wxluatype_TINTEGER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxImage_LoadFile2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxImage_LoadFile2[1] = {{ wxLua_wxImage_LoadFile2, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxImage_LoadFile2 }};
-//     bool LoadFile(wxInputStream& stream, long type = wxBITMAP_TYPE_ANY, int index = -1)
+//     bool LoadFile(wxInputStream& stream, wxBitmapType type = wxBITMAP_TYPE_ANY, int index = -1)
 static int LUACALL wxLua_wxImage_LoadFile2(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
     // int index = -1
     int index = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : -1);
-    // long type = wxBITMAP_TYPE_ANY
-    long type = (argCount >= 3 ? (long)wxlua_getnumbertype(L, 3) : wxBITMAP_TYPE_ANY);
+    // wxBitmapType type = wxBITMAP_TYPE_ANY
+    wxBitmapType type = (argCount >= 3 ? (wxBitmapType)wxlua_getenumtype(L, 3) : wxBITMAP_TYPE_ANY);
     // wxInputStream stream
     wxInputStream * stream = (wxInputStream *)wxluaT_getuserdatatype(L, 2, wxluatype_wxInputStream);
     // get this
@@ -924,18 +924,18 @@ static int LUACALL wxLua_wxImage_LoadFile1(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxImage_LoadFile[] = { &wxluatype_wxImage, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxImage_LoadFile[] = { &wxluatype_wxImage, &wxluatype_TSTRING, &wxluatype_TINTEGER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxImage_LoadFile(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxImage_LoadFile[1] = {{ wxLua_wxImage_LoadFile, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxImage_LoadFile }};
-//     bool LoadFile(const wxString& name, long type = wxBITMAP_TYPE_ANY, int index = -1)
+//     bool LoadFile(const wxString& name, wxBitmapType type = wxBITMAP_TYPE_ANY, int index = -1)
 static int LUACALL wxLua_wxImage_LoadFile(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
     // int index = -1
     int index = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : -1);
-    // long type = wxBITMAP_TYPE_ANY
-    long type = (argCount >= 3 ? (long)wxlua_getnumbertype(L, 3) : wxBITMAP_TYPE_ANY);
+    // wxBitmapType type = wxBITMAP_TYPE_ANY
+    wxBitmapType type = (argCount >= 3 ? (wxBitmapType)wxlua_getenumtype(L, 3) : wxBITMAP_TYPE_ANY);
     // const wxString name
     const wxString name = wxlua_getwxStringtype(L, 2);
     // get this
@@ -1101,16 +1101,16 @@ static int LUACALL wxLua_wxImage_ResampleBox(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxImage_Rescale1[] = { &wxluatype_wxImage, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxImage_Rescale1[] = { &wxluatype_wxImage, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxImage_Rescale1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxImage_Rescale1[1] = {{ wxLua_wxImage_Rescale1, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxImage_Rescale1 }};
-//     %wxchkver_2_8 wxImage& Rescale( int width, int height, int quality = wxIMAGE_QUALITY_NORMAL )
+//     %wxchkver_2_8 wxImage& Rescale( int width, int height, wxImageResizeQuality quality = wxIMAGE_QUALITY_NORMAL )
 static int LUACALL wxLua_wxImage_Rescale1(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // int quality = wxIMAGE_QUALITY_NORMAL
-    int quality = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : wxIMAGE_QUALITY_NORMAL);
+    // wxImageResizeQuality quality = wxIMAGE_QUALITY_NORMAL
+    wxImageResizeQuality quality = (argCount >= 4 ? (wxImageResizeQuality)wxlua_getenumtype(L, 4) : wxIMAGE_QUALITY_NORMAL);
     // int height
     int height = (int)wxlua_getnumbertype(L, 3);
     // int width
@@ -1309,16 +1309,16 @@ static int LUACALL wxLua_wxImage_SaveFile(lua_State *L)
 
 
 #if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxImage_Scale1[] = { &wxluatype_wxImage, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxImage_Scale1[] = { &wxluatype_wxImage, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxImage_Scale1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxImage_Scale1[1] = {{ wxLua_wxImage_Scale1, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxImage_Scale1 }};
-//     %wxchkver_2_8 wxImage Scale( int width, int height, int quality = wxIMAGE_QUALITY_NORMAL ) const
+//     %wxchkver_2_8 wxImage Scale( int width, int height, wxImageResizeQuality quality = wxIMAGE_QUALITY_NORMAL ) const
 static int LUACALL wxLua_wxImage_Scale1(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // int quality = wxIMAGE_QUALITY_NORMAL
-    int quality = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : wxIMAGE_QUALITY_NORMAL);
+    // wxImageResizeQuality quality = wxIMAGE_QUALITY_NORMAL
+    wxImageResizeQuality quality = (argCount >= 4 ? (wxImageResizeQuality)wxlua_getenumtype(L, 4) : wxIMAGE_QUALITY_NORMAL);
     // int height
     int height = (int)wxlua_getnumbertype(L, 3);
     // int width

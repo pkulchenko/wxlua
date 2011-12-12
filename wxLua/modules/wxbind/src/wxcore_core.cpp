@@ -828,14 +828,14 @@ int wxGenericValidator_methodCount = sizeof(wxGenericValidator_methods)/sizeof(w
 int wxluatype_wxMemoryFSHandler = WXLUA_TUNKNOWN;
 
 #if (wxLUA_USE_wxBitmap) && ((wxUSE_STREAMS && wxUSE_FILESYSTEM) && (wxUSE_IMAGE))
-static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryFSHandler_AddFile2[] = { &wxluatype_TSTRING, &wxluatype_wxBitmap, &wxluatype_TNUMBER, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryFSHandler_AddFile2[] = { &wxluatype_TSTRING, &wxluatype_wxBitmap, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxMemoryFSHandler_AddFile2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryFSHandler_AddFile2[1] = {{ wxLua_wxMemoryFSHandler_AddFile2, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 3, 3, s_wxluatypeArray_wxLua_wxMemoryFSHandler_AddFile2 }};
-//     static void AddFile(const wxString& filename, const wxBitmap& bitmap, long type);
+//     static void AddFile(const wxString& filename, const wxBitmap& bitmap, wxBitmapType type);
 static int LUACALL wxLua_wxMemoryFSHandler_AddFile2(lua_State *L)
 {
-    // long type
-    long type = (long)wxlua_getnumbertype(L, 3);
+    // wxBitmapType type
+    wxBitmapType type = (wxBitmapType)wxlua_getenumtype(L, 3);
     // const wxBitmap bitmap
     const wxBitmap * bitmap = (const wxBitmap *)wxluaT_getuserdatatype(L, 2, wxluatype_wxBitmap);
     // const wxString filename
@@ -849,14 +849,14 @@ static int LUACALL wxLua_wxMemoryFSHandler_AddFile2(lua_State *L)
 #endif // (wxLUA_USE_wxBitmap) && ((wxUSE_STREAMS && wxUSE_FILESYSTEM) && (wxUSE_IMAGE))
 
 #if (wxLUA_USE_wxImage && wxUSE_IMAGE) && ((wxUSE_STREAMS && wxUSE_FILESYSTEM) && (wxUSE_IMAGE))
-static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryFSHandler_AddFile1[] = { &wxluatype_TSTRING, &wxluatype_wxImage, &wxluatype_TNUMBER, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryFSHandler_AddFile1[] = { &wxluatype_TSTRING, &wxluatype_wxImage, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxMemoryFSHandler_AddFile1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryFSHandler_AddFile1[1] = {{ wxLua_wxMemoryFSHandler_AddFile1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 3, 3, s_wxluatypeArray_wxLua_wxMemoryFSHandler_AddFile1 }};
-//     static void AddFile(const wxString& filename, const wxImage& image, long type);
+//     static void AddFile(const wxString& filename, const wxImage& image, wxBitmapType type);
 static int LUACALL wxLua_wxMemoryFSHandler_AddFile1(lua_State *L)
 {
-    // long type
-    long type = (long)wxlua_getnumbertype(L, 3);
+    // wxBitmapType type
+    wxBitmapType type = (wxBitmapType)wxlua_getenumtype(L, 3);
     // const wxImage image
     const wxImage * image = (const wxImage *)wxluaT_getuserdatatype(L, 2, wxluatype_wxImage);
     // const wxString filename

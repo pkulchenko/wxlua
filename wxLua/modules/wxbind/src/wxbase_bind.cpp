@@ -792,33 +792,33 @@ wxLuaBindString* wxLuaGetStringList_wxbase(size_t &count)
 {
     static wxLuaBindString stringList[] =
     {
-        { "wxFILE_SEP_DSK", wxT(":") },
-        { "wxFILE_SEP_EXT", wxT(".") },
-        { "wxFILE_SEP_PATH", wxLua_FILE_SEP_PATH },
-        { "wxFILE_SEP_PATH_DOS", wxT("\\") },
-        { "wxFILE_SEP_PATH_MAC", wxT(":") },
-        { "wxFILE_SEP_PATH_UNIX", wxT("/") },
-        { "wxFILE_SEP_PATH_VMS", wxT(".") },
-        { "wxPATH_SEP", wxPATH_SEP },
-        { "wxPATH_SEP_DOS", wxPATH_SEP_DOS },
-        { "wxPATH_SEP_MAC", wxPATH_SEP_MAC },
-        { "wxPATH_SEP_UNIX", wxPATH_SEP_UNIX },
+        { "wxFILE_SEP_DSK", NULL, wxT(":") },
+        { "wxFILE_SEP_EXT", NULL, wxT(".") },
+        { "wxFILE_SEP_PATH", NULL, wxLua_FILE_SEP_PATH },
+        { "wxFILE_SEP_PATH_DOS", NULL, wxT("\\") },
+        { "wxFILE_SEP_PATH_MAC", NULL, wxT(":") },
+        { "wxFILE_SEP_PATH_UNIX", NULL, wxT("/") },
+        { "wxFILE_SEP_PATH_VMS", NULL, wxT(".") },
+        { "wxPATH_SEP", NULL, wxPATH_SEP },
+        { "wxPATH_SEP_DOS", NULL, wxPATH_SEP_DOS },
+        { "wxPATH_SEP_MAC", NULL, wxPATH_SEP_MAC },
+        { "wxPATH_SEP_UNIX", NULL, wxPATH_SEP_UNIX },
 
 #if wxLUA_USE_wxLog && wxUSE_LOG
-        { "wxTRACE_MemAlloc", wxTRACE_MemAlloc },
-        { "wxTRACE_Messages", wxTRACE_Messages },
+        { "wxTRACE_MemAlloc", NULL, wxTRACE_MemAlloc },
+        { "wxTRACE_Messages", NULL, wxTRACE_Messages },
 #endif // wxLUA_USE_wxLog && wxUSE_LOG
 
 #if (defined(__WXMSW__)) && (wxLUA_USE_wxLog && wxUSE_LOG)
-        { "wxTRACE_OleCalls", wxTRACE_OleCalls },
+        { "wxTRACE_OleCalls", NULL, wxTRACE_OleCalls },
 #endif // (defined(__WXMSW__)) && (wxLUA_USE_wxLog && wxUSE_LOG)
 
 #if wxLUA_USE_wxLog && wxUSE_LOG
-        { "wxTRACE_RefCount", wxTRACE_RefCount },
-        { "wxTRACE_ResAlloc", wxTRACE_ResAlloc },
+        { "wxTRACE_RefCount", NULL, wxTRACE_RefCount },
+        { "wxTRACE_ResAlloc", NULL, wxTRACE_ResAlloc },
 #endif // wxLUA_USE_wxLog && wxUSE_LOG
 
-        { "wxVERSION_STRING", wxVERSION_STRING },
+        { "wxVERSION_STRING", NULL, wxVERSION_STRING },
 
         { 0, 0 },
     };
@@ -964,6 +964,8 @@ static int LUACALL wxLua_function_wxDirExists(lua_State *L)
 }
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxDirExists[1] = {{ wxLua_function_wxDirExists, WXLUAMETHOD_CFUNCTION, 1, 1, s_wxluatypeArray_wxLua_function_wxDirExists }};
 
+
+#if !wxCHECK_VERSION(2,9,0)
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxDos2UnixFilename[] = { &wxluatype_TSTRING, NULL };
 // %override wxLua_function_wxDos2UnixFilename
 // %function wxString wxDos2UnixFilename(const wxString& s)
@@ -983,6 +985,8 @@ static int LUACALL wxLua_function_wxDos2UnixFilename(lua_State *L)
 }
 
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxDos2UnixFilename[1] = {{ wxLua_function_wxDos2UnixFilename, WXLUAMETHOD_CFUNCTION, 1, 1, s_wxluatypeArray_wxLua_function_wxDos2UnixFilename }};
+
+#endif // !wxCHECK_VERSION(2,9,0)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxEndsWithPathSeparator[] = { &wxluatype_TSTRING, NULL };
 // %function bool wxEndsWithPathSeparator(const wxString& pszFileName)
@@ -1297,9 +1301,9 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetOsVersion[1] = {{ wxLua_fu
 
 
 #if (!wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
-static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetTranslation1[] = { &wxluatype_TSTRING, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetTranslation2[] = { &wxluatype_TSTRING, NULL };
 // !%wxchkver_2_8 %function wxString wxGetTranslation(const wxString& sz)
-static int LUACALL wxLua_function_wxGetTranslation1(lua_State *L)
+static int LUACALL wxLua_function_wxGetTranslation2(lua_State *L)
 {
     // const wxString sz
     const wxString sz = wxlua_getwxStringtype(L, 1);
@@ -1310,14 +1314,14 @@ static int LUACALL wxLua_function_wxGetTranslation1(lua_State *L)
 
     return 1;
 }
-static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetTranslation1[1] = {{ wxLua_function_wxGetTranslation1, WXLUAMETHOD_CFUNCTION, 1, 1, s_wxluatypeArray_wxLua_function_wxGetTranslation1 }};
+static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetTranslation2[1] = {{ wxLua_function_wxGetTranslation2, WXLUAMETHOD_CFUNCTION, 1, 1, s_wxluatypeArray_wxLua_function_wxGetTranslation2 }};
 
 #endif // (!wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
 
-#if (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
-static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetTranslation[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
-// %wxchkver_2_8  %function wxString wxGetTranslation(const wxString& sz, const wxChar* domain=NULL)
-static int LUACALL wxLua_function_wxGetTranslation(lua_State *L)
+#if (!wxCHECK_VERSION(2,9,0) && wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
+static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetTranslation1[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+// !%wxchkver_2_9 && %wxchkver_2_8  %function wxString wxGetTranslation(const wxString& sz, const wxChar* domain=NULL)
+static int LUACALL wxLua_function_wxGetTranslation1(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
@@ -1332,14 +1336,36 @@ static int LUACALL wxLua_function_wxGetTranslation(lua_State *L)
 
     return 1;
 }
+static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetTranslation1[1] = {{ wxLua_function_wxGetTranslation1, WXLUAMETHOD_CFUNCTION, 1, 2, s_wxluatypeArray_wxLua_function_wxGetTranslation1 }};
+
+#endif // (!wxCHECK_VERSION(2,9,0) && wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxUSE_INTL)
+static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetTranslation[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+// %wxchkver_2_9  %function wxString wxGetTranslation(const wxString& sz, const wxString& domain = "")
+static int LUACALL wxLua_function_wxGetTranslation(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString domain = ""
+    const wxString domain = (argCount >= 2 ? wxlua_getwxStringtype(L, 2) : wxString(wxEmptyString));
+    // const wxString sz
+    const wxString sz = wxlua_getwxStringtype(L, 1);
+    // call wxGetTranslation
+    wxString returns = (wxGetTranslation(sz, domain));
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetTranslation[1] = {{ wxLua_function_wxGetTranslation, WXLUAMETHOD_CFUNCTION, 1, 2, s_wxluatypeArray_wxLua_function_wxGetTranslation }};
 
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxUSE_INTL)
 
 #if (!wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
-static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetTranslationPlural1[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetTranslationPlural2[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 // !%wxchkver_2_8 %rename wxGetTranslationPlural %function wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n)
-static int LUACALL wxLua_function_wxGetTranslationPlural1(lua_State *L)
+static int LUACALL wxLua_function_wxGetTranslationPlural2(lua_State *L)
 {
     // size_t n
     size_t n = (size_t)wxlua_getuintegertype(L, 3);
@@ -1354,14 +1380,14 @@ static int LUACALL wxLua_function_wxGetTranslationPlural1(lua_State *L)
 
     return 1;
 }
-static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetTranslationPlural1[1] = {{ wxLua_function_wxGetTranslationPlural1, WXLUAMETHOD_CFUNCTION, 3, 3, s_wxluatypeArray_wxLua_function_wxGetTranslationPlural1 }};
+static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetTranslationPlural2[1] = {{ wxLua_function_wxGetTranslationPlural2, WXLUAMETHOD_CFUNCTION, 3, 3, s_wxluatypeArray_wxLua_function_wxGetTranslationPlural2 }};
 
 #endif // (!wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
 
-#if (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
-static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetTranslationPlural[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TINTEGER, &wxluatype_TSTRING, NULL };
-// %wxchkver_2_8  %rename wxGetTranslationPlural %function wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n, const wxChar* domain=NULL)
-static int LUACALL wxLua_function_wxGetTranslationPlural(lua_State *L)
+#if (!wxCHECK_VERSION(2,9,0) && wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
+static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetTranslationPlural1[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TINTEGER, &wxluatype_TSTRING, NULL };
+// !%wxchkver_2_9 && %wxchkver_2_8  %rename wxGetTranslationPlural %function wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n, const wxChar* domain=NULL)
+static int LUACALL wxLua_function_wxGetTranslationPlural1(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
@@ -1380,9 +1406,35 @@ static int LUACALL wxLua_function_wxGetTranslationPlural(lua_State *L)
 
     return 1;
 }
+static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetTranslationPlural1[1] = {{ wxLua_function_wxGetTranslationPlural1, WXLUAMETHOD_CFUNCTION, 3, 4, s_wxluatypeArray_wxLua_function_wxGetTranslationPlural1 }};
+
+#endif // (!wxCHECK_VERSION(2,9,0) && wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxUSE_INTL)
+static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetTranslationPlural[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TINTEGER, &wxluatype_TSTRING, NULL };
+// %wxchkver_2_9  %rename wxGetTranslationPlural %function wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n, const wxString& domain = "")
+static int LUACALL wxLua_function_wxGetTranslationPlural(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString domain = ""
+    const wxString domain = (argCount >= 4 ? wxlua_getwxStringtype(L, 4) : wxString(wxEmptyString));
+    // size_t n
+    size_t n = (size_t)wxlua_getuintegertype(L, 3);
+    // const wxString sz2
+    const wxString sz2 = wxlua_getwxStringtype(L, 2);
+    // const wxString sz1
+    const wxString sz1 = wxlua_getwxStringtype(L, 1);
+    // call wxGetTranslation
+    wxString returns = (wxGetTranslation(sz1, sz2, n, domain));
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetTranslationPlural[1] = {{ wxLua_function_wxGetTranslationPlural, WXLUAMETHOD_CFUNCTION, 3, 4, s_wxluatypeArray_wxLua_function_wxGetTranslationPlural }};
 
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxUSE_INTL)
 
 // %function long wxGetUTCTime()
 static int LUACALL wxLua_function_wxGetUTCTime(lua_State *L)
@@ -1953,6 +2005,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxSysErrorMsg[1] = {{ wxLua_fun
 
 #endif // wxLUA_USE_wxLog && wxUSE_LOG
 
+#if !wxCHECK_VERSION(2,9,0)
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxUnix2DosFilename[] = { &wxluatype_TSTRING, NULL };
 // %override wxLua_function_wxUnix2DosFilename
 // %function wxString wxUnix2DosFilename(const wxString& s)
@@ -1972,6 +2025,8 @@ static int LUACALL wxLua_function_wxUnix2DosFilename(lua_State *L)
 }
 
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxUnix2DosFilename[1] = {{ wxLua_function_wxUnix2DosFilename, WXLUAMETHOD_CFUNCTION, 1, 1, s_wxluatypeArray_wxLua_function_wxUnix2DosFilename }};
+
+#endif // !wxCHECK_VERSION(2,9,0)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxUnsetEnv[] = { &wxluatype_TSTRING, NULL };
 // %function bool wxUnsetEnv(const wxString& var)
@@ -2023,7 +2078,11 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxbase(size_t &count)
 #endif // wxLUA_USE_wxObject
 
         { "wxDirExists", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxDirExists, 1, NULL },
+
+#if !wxCHECK_VERSION(2,9,0)
         { "wxDos2UnixFilename", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxDos2UnixFilename, 1, NULL },
+#endif // !wxCHECK_VERSION(2,9,0)
+
         { "wxEndsWithPathSeparator", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxEndsWithPathSeparator, 1, NULL },
         { "wxFileExists", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxFileExists, 1, NULL },
 
@@ -2065,15 +2124,19 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxbase(size_t &count)
         { "wxGetOsVersion", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetOsVersion, 1, NULL },
 
 #if (!wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
+        { "wxGetTranslation", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetTranslation2, 1, NULL },
+#elif (!wxCHECK_VERSION(2,9,0) && wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
         { "wxGetTranslation", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetTranslation1, 1, NULL },
-#elif (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
+#elif (wxCHECK_VERSION(2,9,0)) && (wxUSE_INTL)
         { "wxGetTranslation", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetTranslation, 1, NULL },
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxUSE_INTL)
 #if (!wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
+        { "wxGetTranslationPlural", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetTranslationPlural2, 1, NULL },
+#elif (!wxCHECK_VERSION(2,9,0) && wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
         { "wxGetTranslationPlural", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetTranslationPlural1, 1, NULL },
-#elif (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
+#elif (wxCHECK_VERSION(2,9,0)) && (wxUSE_INTL)
         { "wxGetTranslationPlural", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetTranslationPlural, 1, NULL },
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxUSE_INTL)
         { "wxGetUTCTime", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetUTCTime, 1, NULL },
         { "wxGetUserHome", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetUserHome, 1, NULL },
         { "wxGetUserId", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetUserId, 1, NULL },
@@ -2148,7 +2211,10 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxbase(size_t &count)
         { "wxSysErrorMsg", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxSysErrorMsg, 1, NULL },
 #endif // wxLUA_USE_wxLog && wxUSE_LOG
 
+#if !wxCHECK_VERSION(2,9,0)
         { "wxUnix2DosFilename", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxUnix2DosFilename, 1, NULL },
+#endif // !wxCHECK_VERSION(2,9,0)
+
         { "wxUnsetEnv", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxUnsetEnv, 1, NULL },
 
 #if !wxCHECK_VERSION(2,6,0)
@@ -2233,6 +2299,8 @@ static const char* wxluaclassname_wxStreamBase = "wxStreamBase";
 static const char* wxluaclassname_wxString = "wxString";
 static const char* wxluaclassname_wxStringClientData = "wxStringClientData";
 static const char* wxluaclassname_wxStringTokenizer = "wxStringTokenizer";
+static const char* wxluaclassname_wxString_const_iterator = "wxString_const_iterator";
+static const char* wxluaclassname_wxString_iterator = "wxString_iterator";
 static const char* wxluaclassname_wxSystemOptions = "wxSystemOptions";
 static const char* wxluaclassname_wxTempFile = "wxTempFile";
 static const char* wxluaclassname_wxTimeSpan = "wxTimeSpan";
@@ -2262,8 +2330,6 @@ static const char* wxluabaseclassnames_wxInputStream[] = { wxluaclassname_wxStre
 static wxLuaBindClass* wxluabaseclassbinds_wxInputStream[] = { NULL };
 static const char* wxluabaseclassnames_wxInternetFSHandler[] = { wxluaclassname_wxFileSystemHandler, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxInternetFSHandler[] = { NULL };
-static const char* wxluabaseclassnames_wxList[] = { wxluaclassname_wxObject, NULL };
-static wxLuaBindClass* wxluabaseclassbinds_wxList[] = { NULL };
 static const char* wxluabaseclassnames_wxLocalFSHandler[] = { wxluaclassname_wxFileSystemHandler, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxLocalFSHandler[] = { NULL };
 static const char* wxluabaseclassnames_wxLogBuffer[] = { wxluaclassname_wxLog, NULL };
@@ -2372,6 +2438,15 @@ extern void wxLua_wxStringTokenizer_delete_function(void** p);
     extern int wxStandardPaths_enumCount;
     extern void wxLua_wxStandardPaths_delete_function(void** p);
 #endif // wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths
+
+#if wxCHECK_VERSION(2,9,0)
+    extern wxLuaBindMethod wxString_const_iterator_methods[];
+    extern int wxString_const_iterator_methodCount;
+    extern void wxLua_wxString_const_iterator_delete_function(void** p);
+    extern wxLuaBindMethod wxString_iterator_methods[];
+    extern int wxString_iterator_methodCount;
+    extern void wxLua_wxString_iterator_delete_function(void** p);
+#endif // wxCHECK_VERSION(2,9,0)
 
 #if wxLUA_USE_wxArrayInt
     extern wxLuaBindMethod wxArrayInt_methods[];
@@ -2705,7 +2780,7 @@ wxLuaBindClass* wxLuaGetClassList_wxbase(size_t &count)
 #endif // wxUSE_INTL
 
 #if wxLUA_USE_wxList && !wxUSE_STL
-        { wxluaclassname_wxList, wxList_methods, wxList_methodCount, CLASSINFO(wxList), &wxluatype_wxList, wxluabaseclassnames_wxList, wxluabaseclassbinds_wxList, NULL, NULL, NULL, 0, &wxLua_wxList_delete_function, }, 
+        { wxluaclassname_wxList, wxList_methods, wxList_methodCount, NULL, &wxluatype_wxList, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxList_delete_function, }, 
 #endif // wxLUA_USE_wxList && !wxUSE_STL
 
 #if (wxUSE_STREAMS) && (wxUSE_FILESYSTEM)
@@ -2781,6 +2856,11 @@ wxLuaBindClass* wxLuaGetClassList_wxbase(size_t &count)
         { wxluaclassname_wxString, wxString_methods, wxString_methodCount, NULL, &wxluatype_wxString, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxString_delete_function, }, 
         { wxluaclassname_wxStringClientData, wxStringClientData_methods, wxStringClientData_methodCount, NULL, &wxluatype_wxStringClientData, wxluabaseclassnames_wxStringClientData, wxluabaseclassbinds_wxStringClientData, NULL, NULL, NULL, 0, &wxLua_wxStringClientData_delete_function, }, 
         { wxluaclassname_wxStringTokenizer, wxStringTokenizer_methods, wxStringTokenizer_methodCount, CLASSINFO(wxStringTokenizer), &wxluatype_wxStringTokenizer, wxluabaseclassnames_wxStringTokenizer, wxluabaseclassbinds_wxStringTokenizer, NULL, NULL, NULL, 0, &wxLua_wxStringTokenizer_delete_function, }, 
+
+#if wxCHECK_VERSION(2,9,0)
+        { wxluaclassname_wxString_const_iterator, wxString_const_iterator_methods, wxString_const_iterator_methodCount, NULL, &wxluatype_wxString_const_iterator, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxString_const_iterator_delete_function, }, 
+        { wxluaclassname_wxString_iterator, wxString_iterator_methods, wxString_iterator_methodCount, NULL, &wxluatype_wxString_iterator, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxString_iterator_delete_function, }, 
+#endif // wxCHECK_VERSION(2,9,0)
 
 #if wxLUA_USE_wxSystemOptions
         { wxluaclassname_wxSystemOptions, wxSystemOptions_methods, wxSystemOptions_methodCount, CLASSINFO(wxSystemOptions), &wxluatype_wxSystemOptions, wxluabaseclassnames_wxSystemOptions, wxluabaseclassbinds_wxSystemOptions, NULL, NULL, NULL, 0, &wxLua_wxSystemOptions_delete_function, }, 

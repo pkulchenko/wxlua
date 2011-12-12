@@ -29,6 +29,17 @@ extern "C"
 #include "wx/defs.h"
 
 //-----------------------------------------------------------------------------
+// 2.9 uses char* mostly so for compatibility we need wxT() to not append 'L'
+// for wide chars for 2.8, but rather do nothing for 2.9.
+
+#if wxCHECK_VERSION(2, 9, 0)
+    #define wxLuaT(x) (x)
+#else
+    #define wxLuaT(x) wxT(x)
+
+#endif
+
+//-----------------------------------------------------------------------------
 // The version of wxLua - for convenience we use the current version of
 // wxWidgets which wxLua is most compatible with.
 //-----------------------------------------------------------------------------
@@ -99,7 +110,7 @@ extern "C"
 #endif
 
 // ----------------------------------------------------------------------------
-// Blank dummy defines that may be used in the bindings to not import or export 
+// Blank dummy defines that may be used in the bindings to not import or export
 // a class or data in a DLL.
 // ----------------------------------------------------------------------------
 

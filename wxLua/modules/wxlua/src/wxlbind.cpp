@@ -1171,7 +1171,10 @@ void wxLuaBinding::DoRegisterBinding(const wxLuaState& wxlState) const
     for (n = 0; n < m_stringCount; ++n, ++wxlString)
     {
         lua_pushstring(L, wxlString->name);
-        lua_pushstring(L, wx2lua(wxlString->value));
+        if (wxlString->wxchar_string != NULL)
+            lua_pushstring(L, wx2lua(wxlString->wxchar_string));
+        else
+            lua_pushstring(L, wxlString->c_string);
         lua_rawset(L, -3);
     }
 

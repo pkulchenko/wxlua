@@ -2318,11 +2318,11 @@ int wxLuaHtmlWinTagEvent_methodCount = sizeof(wxLuaHtmlWinTagEvent_methods)/size
 // Lua MetaTable Tag for Class 'wxHtmlParser'
 int wxluatype_wxHtmlParser = WXLUA_TUNKNOWN;
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing1[] = { &wxluatype_wxHtmlParser, NULL };
-static int LUACALL wxLua_wxHtmlParser_DoParsing1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlParser_DoParsing1[1] = {{ wxLua_wxHtmlParser_DoParsing1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing1 }};
+static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing2[] = { &wxluatype_wxHtmlParser, NULL };
+static int LUACALL wxLua_wxHtmlParser_DoParsing2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlParser_DoParsing2[1] = {{ wxLua_wxHtmlParser_DoParsing2, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing2 }};
 //     void DoParsing()
-static int LUACALL wxLua_wxHtmlParser_DoParsing1(lua_State *L)
+static int LUACALL wxLua_wxHtmlParser_DoParsing2(lua_State *L)
 {
     // get this
     wxHtmlParser * self = (wxHtmlParser *)wxluaT_getuserdatatype(L, 1, wxluatype_wxHtmlParser);
@@ -2332,11 +2332,13 @@ static int LUACALL wxLua_wxHtmlParser_DoParsing1(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing[] = { &wxluatype_wxHtmlParser, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxHtmlParser_DoParsing(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlParser_DoParsing[1] = {{ wxLua_wxHtmlParser_DoParsing, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing }};
-//     void DoParsing(int begin_pos, int end_pos)
-static int LUACALL wxLua_wxHtmlParser_DoParsing(lua_State *L)
+
+#if (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing1[] = { &wxluatype_wxHtmlParser, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxHtmlParser_DoParsing1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlParser_DoParsing1[1] = {{ wxLua_wxHtmlParser_DoParsing1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing1 }};
+//     !%wxchkver_2_9_2 void DoParsing(int begin_pos, int end_pos)
+static int LUACALL wxLua_wxHtmlParser_DoParsing1(lua_State *L)
 {
     // int end_pos
     int end_pos = (int)wxlua_getnumbertype(L, 3);
@@ -2349,6 +2351,29 @@ static int LUACALL wxLua_wxHtmlParser_DoParsing(lua_State *L)
 
     return 0;
 }
+
+#endif // (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+
+#if (wxCHECK_VERSION(2,9,0)) && ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing[] = { &wxluatype_wxHtmlParser, &wxluatype_wxString_const_iterator, &wxluatype_wxString_const_iterator, NULL };
+static int LUACALL wxLua_wxHtmlParser_DoParsing(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlParser_DoParsing[1] = {{ wxLua_wxHtmlParser_DoParsing, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing }};
+//     %wxchkver_2_9_2 void DoParsing(const wxString::const_iterator& begin_pos, const wxString::const_iterator& end_pos)
+static int LUACALL wxLua_wxHtmlParser_DoParsing(lua_State *L)
+{
+    // const wxString::const_iterator end_pos
+    const wxString::const_iterator * end_pos = (const wxString::const_iterator *)wxluaT_getuserdatatype(L, 3, wxluatype_wxString_const_iterator);
+    // const wxString::const_iterator begin_pos
+    const wxString::const_iterator * begin_pos = (const wxString::const_iterator *)wxluaT_getuserdatatype(L, 2, wxluatype_wxString_const_iterator);
+    // get this
+    wxHtmlParser * self = (wxHtmlParser *)wxluaT_getuserdatatype(L, 1, wxluatype_wxHtmlParser);
+    // call DoParsing
+    self->DoParsing(*begin_pos, *end_pos);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(2,9,0)) && ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlParser_DoneParser[] = { &wxluatype_wxHtmlParser, NULL };
 static int LUACALL wxLua_wxHtmlParser_DoneParser(lua_State *L);
@@ -2383,16 +2408,23 @@ static int LUACALL wxLua_wxHtmlParser_InitParser(lua_State *L)
 
 
 
-#if (wxLUA_USE_wxHTML && wxUSE_HTML)
+#if (wxLUA_USE_wxHTML && wxUSE_HTML)||((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML))||((wxCHECK_VERSION(2,9,0)) && ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML)))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlParser_DoParsing_overload[] =
 {
-    { wxLua_wxHtmlParser_DoParsing1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing1 },
+    { wxLua_wxHtmlParser_DoParsing2, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing2 },
+
+#if (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+    { wxLua_wxHtmlParser_DoParsing1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing1 },
+#endif // (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+
+#if (wxCHECK_VERSION(2,9,0)) && ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML))
     { wxLua_wxHtmlParser_DoParsing, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing },
+#endif // (wxCHECK_VERSION(2,9,0)) && ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML))
 };
 static int s_wxluafunc_wxLua_wxHtmlParser_DoParsing_overload_count = sizeof(s_wxluafunc_wxLua_wxHtmlParser_DoParsing_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (wxLUA_USE_wxHTML && wxUSE_HTML)
+#endif // (wxLUA_USE_wxHTML && wxUSE_HTML)||((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML))||((wxCHECK_VERSION(2,9,0)) && ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML)))
 
 void wxLua_wxHtmlParser_delete_function(void** p)
 {
@@ -2402,9 +2434,9 @@ void wxLua_wxHtmlParser_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxHtmlParser_methods[] = {
-#if (wxLUA_USE_wxHTML && wxUSE_HTML)
+#if (wxLUA_USE_wxHTML && wxUSE_HTML)||((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML))||((wxCHECK_VERSION(2,9,0)) && ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML)))
     { "DoParsing", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHtmlParser_DoParsing_overload, s_wxluafunc_wxLua_wxHtmlParser_DoParsing_overload_count, 0 },
-#endif // (wxLUA_USE_wxHTML && wxUSE_HTML)
+#endif // (wxLUA_USE_wxHTML && wxUSE_HTML)||((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML))||((wxCHECK_VERSION(2,9,0)) && ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML)))
 
     { "DoneParser", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHtmlParser_DoneParser, 1, NULL },
     { "InitParser", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHtmlParser_InitParser, 1, NULL },
@@ -4833,7 +4865,7 @@ wxLuaBindEvent* wxLuaGetEventList_wxhtml(size_t &count)
     static wxLuaBindEvent eventList[] =
     {
 #if (wxLUA_USE_wxHTML && wxUSE_HTML) && (wxLUA_USE_wxLuaHtmlWindow)
-        { "wxEVT_HTML_TAG_HANDLER", &wxEVT_HTML_TAG_HANDLER, &wxluatype_wxLuaHtmlWinTagEvent },
+        { "wxEVT_HTML_TAG_HANDLER", WXLUA_GET_wxEventType_ptr(wxEVT_HTML_TAG_HANDLER), &wxluatype_wxLuaHtmlWinTagEvent },
 #endif // (wxLUA_USE_wxHTML && wxUSE_HTML) && (wxLUA_USE_wxLuaHtmlWindow)
 
 
@@ -5008,8 +5040,6 @@ static const char* wxluabaseclassnames_wxHtmlParser[] = { wxluaclassname_wxObjec
 static wxLuaBindClass* wxluabaseclassbinds_wxHtmlParser[] = { NULL };
 static const char* wxluabaseclassnames_wxHtmlPrintout[] = { wxluaclassname_wxPrintout, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxHtmlPrintout[] = { NULL };
-static const char* wxluabaseclassnames_wxHtmlTag[] = { wxluaclassname_wxObject, NULL };
-static wxLuaBindClass* wxluabaseclassbinds_wxHtmlTag[] = { NULL };
 static const char* wxluabaseclassnames_wxHtmlWidgetCell[] = { wxluaclassname_wxHtmlCell, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxHtmlWidgetCell[] = { NULL };
 static const char* wxluabaseclassnames_wxHtmlWinParser[] = { wxluaclassname_wxHtmlParser, NULL };
@@ -5137,7 +5167,7 @@ wxLuaBindClass* wxLuaGetClassList_wxhtml(size_t &count)
         { wxluaclassname_wxHtmlLinkInfo, wxHtmlLinkInfo_methods, wxHtmlLinkInfo_methodCount, NULL, &wxluatype_wxHtmlLinkInfo, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxHtmlLinkInfo_delete_function, }, 
         { wxluaclassname_wxHtmlParser, wxHtmlParser_methods, wxHtmlParser_methodCount, CLASSINFO(wxHtmlParser), &wxluatype_wxHtmlParser, wxluabaseclassnames_wxHtmlParser, wxluabaseclassbinds_wxHtmlParser, NULL, NULL, NULL, 0, &wxLua_wxHtmlParser_delete_function, }, 
         { wxluaclassname_wxHtmlPrintout, wxHtmlPrintout_methods, wxHtmlPrintout_methodCount, CLASSINFO(wxHtmlPrintout), &wxluatype_wxHtmlPrintout, wxluabaseclassnames_wxHtmlPrintout, wxluabaseclassbinds_wxHtmlPrintout, NULL, NULL, NULL, 0, &wxLua_wxHtmlPrintout_delete_function, }, 
-        { wxluaclassname_wxHtmlTag, wxHtmlTag_methods, wxHtmlTag_methodCount, CLASSINFO(wxHtmlTag), &wxluatype_wxHtmlTag, wxluabaseclassnames_wxHtmlTag, wxluabaseclassbinds_wxHtmlTag, NULL, NULL, NULL, 0, &wxLua_wxHtmlTag_delete_function, }, 
+        { wxluaclassname_wxHtmlTag, wxHtmlTag_methods, wxHtmlTag_methodCount, NULL, &wxluatype_wxHtmlTag, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxHtmlTag_delete_function, }, 
         { wxluaclassname_wxHtmlWidgetCell, wxHtmlWidgetCell_methods, wxHtmlWidgetCell_methodCount, CLASSINFO(wxHtmlWidgetCell), &wxluatype_wxHtmlWidgetCell, wxluabaseclassnames_wxHtmlWidgetCell, wxluabaseclassbinds_wxHtmlWidgetCell, NULL, NULL, NULL, 0, &wxLua_wxHtmlWidgetCell_delete_function, }, 
         { wxluaclassname_wxHtmlWinParser, wxHtmlWinParser_methods, wxHtmlWinParser_methodCount, CLASSINFO(wxHtmlWinParser), &wxluatype_wxHtmlWinParser, wxluabaseclassnames_wxHtmlWinParser, wxluabaseclassbinds_wxHtmlWinParser, NULL, NULL, NULL, 0, &wxLua_wxHtmlWinParser_delete_function, }, 
         { wxluaclassname_wxHtmlWindow, wxHtmlWindow_methods, wxHtmlWindow_methodCount, CLASSINFO(wxHtmlWindow), &wxluatype_wxHtmlWindow, wxluabaseclassnames_wxHtmlWindow, wxluabaseclassbinds_wxHtmlWindow, NULL, NULL, NULL, 0, &wxLua_wxHtmlWindow_delete_function, }, 

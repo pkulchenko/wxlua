@@ -52,7 +52,7 @@
     // virtual int OnRun() nothing we can do here
     bool Pending()
     // !%wxchkver_2_6 bool SendIdleEvents()
-    %wxchkver_2_6 bool SendIdleEvents(wxWindow* win, wxIdleEvent& event)
+    %wxchkver_2_6 && !%wxchkver_2_9_2 bool SendIdleEvents(wxWindow* win, wxIdleEvent& event)
     void SetAppName(const wxString& name)
     //!%wxchkver_2_4&(%win|%mac) void SetAuto3D(const bool auto3D)
     void SetClassName(const wxString& name)
@@ -141,7 +141,7 @@
 %define wxFRAME_EX_CONTEXTHELP
 %wxchkver_2_6 %define wxFRAME_SHAPED
 %wxchkver_2_6 %define wxFRAME_EX_METAL
-%define wxTHICK_FRAME
+// %define wxTHICK_FRAME %wxcompat_2_6 use %wxchkver_2_6
 
 %class wxFrame, wxTopLevelWindow
     wxFrame()

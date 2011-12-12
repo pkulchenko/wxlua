@@ -29,4 +29,11 @@
     #define WXDLLIMPEXP_DATA_LUAMODULE(type) type
 #endif
 
+// Forward declare classes with this macro
+#if defined(HAVE_VISIBILITY) || (defined(__WINDOWS__) && defined(__GNUC__))
+    #define WXDLLIMPEXP_FWD_LUAMODULE
+#else
+    #define WXDLLIMPEXP_FWD_LUAMODULE WXDLLIMPEXP_LUAMODULE
+#endif
+
 #endif  // __WX_LUAMODULEDEFS_H__

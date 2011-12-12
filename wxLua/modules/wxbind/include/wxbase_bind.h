@@ -209,6 +209,11 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringTokenizer;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStandardPaths;
 #endif // wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths
 
+#if wxCHECK_VERSION(2,9,0)
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxString_const_iterator;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxString_iterator;
+#endif // wxCHECK_VERSION(2,9,0)
+
 #if wxLUA_USE_wxArrayInt
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxArrayInt;
 #endif // wxLUA_USE_wxArrayInt

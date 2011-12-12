@@ -29,7 +29,57 @@
     const wxCharBuffer ToUTF8() const
     static wxString FromUTF8(const char* s)
 
+%if %wxchkver_2_9
+    //wxString(wxString::const_iterator first, wxString::const_iterator last)
+    wxString::const_iterator begin() const
+    wxString::iterator begin()
+    wxString::const_iterator end() const
+    wxString::iterator end()
+%endif
+
 %endclass
+
+// ---------------------------------------------------------------------------
+// wxString::const_iterator - A wxString iterator class
+
+// wxWidgets has wxString iterators in < 2.9, but they are #if wxUSE_STL
+// so they are not necessary for anything, in 2.9 they are inputs to some functions.
+
+%if %wxchkver_2_9
+
+%class %delete wxString::const_iterator
+
+    wxString::const_iterator()
+    wxString::const_iterator(const wxString::const_iterator& i)
+    wxString::const_iterator(const wxString::iterator& i)
+
+    //wxUniChar operator*() const
+    %operator char operator*() const
+
+    %operator wxString::const_iterator& operator=(const wxString::const_iterator& i)
+    %operator wxString::const_iterator operator+(ptrdiff_t n) const
+    %operator wxString::const_iterator operator-(ptrdiff_t n) const
+
+%endclass
+
+// ---------------------------------------------------------------------------
+// wxString::iterator - A wxString iterator class
+
+%class %delete wxString::iterator
+
+    wxString::iterator()
+    wxString::iterator(const wxString::iterator& i)
+
+    //wxUniChar operator*() const
+    %operator char operator*() const
+
+    %operator wxString::iterator& operator=(const wxString::iterator& i)
+    %operator wxString::iterator operator+(ptrdiff_t n) const
+    %operator wxString::iterator operator-(ptrdiff_t n) const
+
+%endclass
+
+%endif
 
 // ---------------------------------------------------------------------------
 // wxStringTokenizer
@@ -186,7 +236,7 @@
     wxKEY_STRING
 %endenum
 
-%class %delete wxList, wxObject
+%class %delete wxList // not derived from wxObject in 2.9
     wxList()
 
     wxNode *Append(wxObject *object)
