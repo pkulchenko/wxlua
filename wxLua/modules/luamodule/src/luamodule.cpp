@@ -9,7 +9,7 @@
 #include "wx/wxprec.h"
 
 #ifndef WX_PRECOMP
-     #include "wx/wx.h"
+    #include "wx/wx.h"
 #endif
 
 #include "wx/image.h"       // for wxInitAllImageHandlers
@@ -86,11 +86,7 @@ void wxLuaModuleApp::OnLua( wxLuaEvent &event )
 
 void wxLuaModuleApp::DisplayError(const wxString &errorStr) const
 {
-#ifdef __WXMSW__
-    wxMessageBox(errorStr, wxT("wxLua"));
-#else
     wxPrintf(wxT("%s\n"), errorStr.c_str()); fflush(stdout);
-#endif
 }
 
 // ----------------------------------------------------------------------------
@@ -123,12 +119,11 @@ int luaopen_wx(lua_State *L)
 
         WXLUA_IMPLEMENT_BIND_ALL
         s_wxlState.Create(L, wxLUASTATE_SETSTATE|wxLUASTATE_OPENBINDINGS|wxLUASTATE_STATICSTATE);
-        s_wxlState.SetEventHandler((wxEvtHandler*)wxTheApp);
+        // Since we are run from a console we will let Lua do the printing.
+        // We don't have to worry about the message not showing up in MSW as they don't for GUI apps with a WinMain().
+        //s_wxlState.SetEventHandler((wxEvtHandler*)wxTheApp);
     }
 
     lua_getglobal(L, "wx"); // push global wx table on the stack
     return 1;
 }
-
-
-

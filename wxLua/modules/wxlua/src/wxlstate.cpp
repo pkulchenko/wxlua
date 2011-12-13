@@ -99,7 +99,7 @@ int LUACALL wxlua_printFunction( lua_State *L )
         lua_pop(L, 1);  /* pop result */
     }
 
-    if (!msg.IsEmpty() && wxlState.Ok())
+    if (!msg.IsEmpty() && wxlState.Ok() && wxApp::IsMainLoopRunning())
     {
         wxLuaEvent event(wxEVT_LUA_PRINT, wxlState.GetId(), wxlState);
         event.SetString(msg);

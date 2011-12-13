@@ -67,6 +67,15 @@
           for error messages from class member function calls?</A></LI>
         </OL>
       </LI>
+
+      <LI>
+        <A href="FAQ.html#C4">4 - Lua Module using require()</A>
+
+        <OL>
+          <LI><A href="FAQ.html#C4.1">4.1 - Why does the GUI not work from the
+          Lua console?</A></LI>
+        </OL>
+      </LI>
     </OL>
   </DIV>
 
@@ -290,6 +299,35 @@
     both static and nonstatic member functions. Just remember that the first
     parameter for nonstatic class member functions called using the ':'
     notation is the 'self'.</LI>
+  </UL>
+
+  <H2><A name="C4" id="C4"></A>4 - Lua Module using require()</H2>
+
+  <H3><A name="C4.1" id="C4.1"></A>4.1 - Why does the GUI not work from the Lua
+  console?</H3>
+
+  <UL>
+    <LI>wxLua is a user-interactive GUI library and requires an event-loop to
+    process user interaction with the controls, E.G. key presses and
+    mouse-clicks.</LI>
+
+    <LI>wxlua.html in section <A href="wxlua.html#C6.1">6.1 - How to Run the
+    Samples</A> has more informaton about using wxLua from the Lua
+    console.</LI>
+
+    <LI>Briefly - In order to use wxLua as a module, the Lua code must have
+    <CODE class="codelua">require("wx")</CODE> to load the wxLua bindings in
+    the beginning and <CODE class="codelua">wx.wxGetApp():MainLoop()</CODE> at
+    the end to run the wxWidgets event loop.</LI>
+
+    <LI>When <CODE class="codelua">wx.wxGetApp():MainLoop()</CODE> is called,
+    the console will appear to be hung, but you have simply started the
+    wxWidgets event-loop and the program is waiting for you to press buttons,
+    open menus...</LI>
+
+    <LI>A soon as there are no more top-level windows open the MainLoop() exits
+    and control is either returned to the Lua console or, if run without the
+    console, the whole program exits.</LI>
   </UL>
 </BODY>
 </HTML>

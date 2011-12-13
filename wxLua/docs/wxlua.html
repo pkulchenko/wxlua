@@ -139,6 +139,9 @@
           <LI><A href="wxlua.html#C7.2">7.2 - wxLuaEdit</A></LI>
 
           <LI><A href="wxlua.html#C7.3">7.3 - wxLuaFreeze</A></LI>
+
+          <LI><A href="wxlua.html#C7.4">7.4 - Lua Module using
+          require()</A></LI>
         </OL>
       </LI>
 
@@ -2080,12 +2083,12 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
     </LI>
   </UL>
 
-  <H2><A name="wxlua_samples" id="wxlua_samples"></A><A name="C6" id="C6"></A>6 - wxLua Samples and How to Run Them</H2>There
-  are a number of sample programs in the <I style=
-  "font-style: italic;">wxLua/samples</I> directory. These programs demonstrate
-  how to write simple programs and try to show how to use some of the many
-  classes of wxWidgets. They are a good resource to learn how to write your own
-  more complicated programs.<BR>
+  <H2><A name="wxlua_samples" id="wxlua_samples"></A><A name="C6" id="C6"></A>6
+  - wxLua Samples and How to Run Them</H2>There are a number of sample programs
+  in the <I style="font-style: italic;">wxLua/samples</I> directory. These
+  programs demonstrate how to write simple programs and try to show how to use
+  some of the many classes of wxWidgets. They are a good resource to learn how
+  to write your own more complicated programs.<BR>
   <BR>
   We welcome any enhancements or additional samples that might be generally
   useful to the wxLua community. Please understand that any code you contribute
@@ -2118,15 +2121,46 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
     <LI>Open the Lua program in <B>wxluaedit.exe</B> and select the menu item
     wxLua-&gt;Run or press the toolbar "play" button to run it.</LI>
 
-    <LI>Use wxLua as a Lua module (using the function require), run
-    <B><I>$lua.exe sample.wx.lua</I></B>
+    <LI>Use wxLua as a Lua module using the function <CODE class=
+    "codelua">require("wx")</CODE>, run <B><I>$lua.exe sample.wx.lua</I></B>
 
       <UL>
-        <LI>In order to use wxLua as a module the Lua code must have
+        <LI>In order to use wxLua as a module, the Lua code must have
         <CODE class="codelua">require("wx")</CODE> to load the wxLua bindings
         in the beginning and <CODE class=
-        "codelua">wx.wxGetApp():MainLoop()</CODE> at the end to start the
+        "codelua">wx.wxGetApp():MainLoop()</CODE> at the end to run the
         wxWidgets event loop.</LI>
+
+        <LI>To be sure - From the command line you can create wxFrames or
+        wxDialogs and populate them, but nothing will happen when you call
+        Show() on them since the wxEventLoop is not running.
+
+          <UL>
+            <LI>For example, run this code in the Lua console:</LI>
+
+            <LI><CODE class="codelua">require("wx")</CODE></LI>
+
+            <LI><CODE class="codelua">f = wx.wxFrame(wx.NULL, -1,
+            "Title")</CODE></LI>
+
+            <LI><CODE class="codelua">f:Show()</CODE></LI>
+
+            <LI>Note that the wxFrame is not shown or if it is you won't be
+            able to use it...</LI>
+
+            <LI><CODE class="codelua">wx.wxGetApp():MainLoop()</CODE></LI>
+
+            <LI>The wxFrame is now shown and you can interact with it nomally,
+            but the Lua console prompt is hung in the MainLoop() function while
+            wxWidgets processes events. When you close the wxFrame or the last
+            top-level window, the MainLoop() exits and control is returned to
+            the Lua console.</LI>
+
+            <LI>You can now create new wxFrames or wxDialogs, but you always
+            have to call <CODE class="codelua">wx.wxGetApp():MainLoop()</CODE>
+            in order to use them.</LI>
+          </UL>
+        </LI>
 
         <LI>You may need to adjust the <CODE class=
         "codelua">package.cpath</CODE> variable to have it point to the correct
@@ -2327,9 +2361,9 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
             MSW) .</LI>
 
             <LI>? is equivalent to * meaning match anything for typical shells
-            (DOS prompt).</LI>
+            like a DOS or Bash prompt.</LI>
 
-            <LI>You might as well include paths to both unfix and MSW libraries
+            <LI>You might as well include paths to both Unix and MSW libraries
             so that the script can be run on either platform without
             modification since typically only the libraries that work on any
             given platform will be installed.</LI>
@@ -2386,10 +2420,10 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
     </LI>
   </UL>
 
-  <H2><A name="wxlua_applications" id="wxlua_applications"></A><A name="C7" id="C7"></A>7 - wxLua Applications</H2>The applications that
-  wxLua provides are in the <I>wxLua/apps</I> directory. These are C++ programs
-  that are compiled against the wxWidgets library and the wxWidgets
-  wxStyledTextCtrl library.<BR>
+  <H2><A name="wxlua_applications" id="wxlua_applications"></A><A name="C7" id=
+  "C7"></A>7 - wxLua Applications</H2>The applications that wxLua provides are
+  in the <I>wxLua/apps</I> directory. These are C++ programs that are compiled
+  against the wxWidgets library and the wxWidgets wxStyledTextCtrl library.<BR>
 
   <UL>
     <LI>
@@ -2615,6 +2649,18 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
         as the args table. For MSWindows a program called upx can be used to
         compress the executable to about 1.5 Mb from 4.5 Mb, using VC6 in
         release mode as the compiler.</LI>
+      </UL>
+    </LI>
+
+    <LI>
+      <H3><A name="C7.4" id="C7.4"></A>7.4 - Lua Module using require()</H3>
+
+      <UL>
+        <LI>As described before, wxLua can be initialized using Lua's
+        <CODE class="codelua">require("wx")</CODE> function.</LI>
+
+        <LI>Section <A href="wxlua.html#C6.1">6.1 - How to Run the Samples</A>
+        has more informaton about using wxLua from the Lua console.</LI>
       </UL>
     </LI>
   </UL>
