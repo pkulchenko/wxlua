@@ -71,7 +71,8 @@ bool wxLuaModuleApp::OnInit()
 
 int wxLuaModuleApp::MainLoop()
 {
-    // only run the mainloop if there are any toplevel windows
+    // only run the mainloop if there are any toplevel windows otherwise
+    // they cannot exit it and they won't be able to do anything anyway.
     int retval = 0;
     bool initialized = (wxTopLevelWindows.GetCount() != 0);
     if (initialized && !IsMainLoopRunning())
