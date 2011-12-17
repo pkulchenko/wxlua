@@ -22,6 +22,16 @@ cmake_minimum_required( VERSION 2.8 )
 include( build/CMakewxAppLib.cmake )
 include( build/CMakeFunctions.txt )
 
+# Specify what wxWidgets libs we need to link to. Note: 'core' must be before 'base'.
+# If you call this CMakeLists.txt from another one you may have already called FIND_WXWIDGETS()
+if (NOT wxWidgets_COMPONENTS)
+    set(wxWidgets_COMPONENTS xrc xml net media propgrid richtext aui stc html adv core base) # minimal set for static lib/dll
+    #set(wxWidgets_COMPONENTS gl xrc xml net media propgrid richtext aui stc html adv core base) # for multilib/dll
+    #set(wxWidgets_COMPONENTS stc mono) # for monolithic
+endif()
+
+FIND_WXWIDGETS(wxWidgets_COMPONENTS) # Ok to call multiple times
+
 # ===========================================================================
 # Add subdirectories containing CMakeLists.txt files or specify projects
 # ===========================================================================
