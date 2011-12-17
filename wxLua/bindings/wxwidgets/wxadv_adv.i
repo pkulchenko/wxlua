@@ -158,7 +158,9 @@
     wxBitmap GetItemBitmap(unsigned int n) const
 
     int Insert(const wxString& item, const wxBitmap& bitmap, unsigned int pos)
+ %if !%wxchkver_2_9_0 || %wxchkver_2_9_5 // This function body was missing so you'd get linker errors
     int Insert(const wxString& item, const wxBitmap& bitmap, unsigned int pos, voidptr_long data ) // C++ is (void *clientData) You can put a number here
+ %endif
     int Insert(const wxString& item, const wxBitmap& bitmap, unsigned int pos, wxClientData *clientData)
 
     void SetItemBitmap(unsigned int n, const wxBitmap& bitmap)
@@ -224,9 +226,8 @@
 
     void     SetDate(const wxDateTime& date)
     wxDateTime GetDate() const
-    !%wxchkver_2_9_2 void     EnableYearChange(bool enable = true)
 
-    %if %wxchkver_2_9_2 && !%__WXGTK__
+    %if !%wxchkver_2_9_2 || !%__WXMSW__
         void     EnableYearChange(bool enable = true)
     %endif
 

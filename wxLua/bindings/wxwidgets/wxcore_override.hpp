@@ -1431,7 +1431,11 @@ static int LUACALL wxLua_wxPalette_Create(lua_State *L)
     // get this
     wxPalette *self = (wxPalette *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPalette);
     // call Create
+#if wxCHECK_VERSION(2,9,0) && defined(__WXMSW__) && !wxCHECK_VERSION(2,9,5)
+    bool returns = self->Create(n, (unsigned char*)red, (unsigned char*)green, (unsigned char*)blue); // NOTE: wxMSW does not modify these, see SVN rev 50727
+#else
     bool returns = self->Create(n, red, green, blue);
+#endif
     // push the result number
     lua_pushboolean(L, returns);
     // return the number of parameters
@@ -1568,7 +1572,7 @@ static int LUACALL wxLua_wxBitmapFromBitTable_constructor(lua_State *L)
 %end
 
 %override wxLua_wxBitmapFromData_constructor
-// %win wxBitmap(void* data, int type, int width, int height, int depth = -1)
+// %win wxBitmap(void* data, wxBitmapType type, int width, int height, int depth = -1)
 #ifdef __WXMSW__
 static int LUACALL wxLua_wxBitmapFromData_constructor(lua_State *L)
 {
@@ -1581,7 +1585,7 @@ static int LUACALL wxLua_wxBitmapFromData_constructor(lua_State *L)
     // int width
     int width = (int)wxlua_getintegertype(L, 3);
     // int type
-    int type = (int)wxlua_getintegertype(L, 2);
+    wxBitmapType type = (wxBitmapType)wxlua_getintegertype(L, 2);
     // void* data
     void *data = (void *)lua_tostring(L, 1);
     // call constructor

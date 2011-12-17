@@ -46,7 +46,7 @@ set(wxLuaBind_ALL_COMPONENTS gl stc xrc richtext html media aui adv core xml net
 if (NOT wxLuaBind_COMPONENTS)
     set(wxLuaBind_COMPONENTS ${wxLuaBind_ALL_COMPONENTS})
 endif()
-set(wxLuaBind_COMPONENTS ${wxLuaBind_COMPONENTS} CACHE STRING "wxWidgets libs wxLua should add bindings for" FORCE)
+set(wxLuaBind_COMPONENTS ${wxLuaBind_COMPONENTS} CACHE STRING "wxWidgets libs wxLua should add bindings for")
 
 set(wxLuaBindLib_SOURCES)
 

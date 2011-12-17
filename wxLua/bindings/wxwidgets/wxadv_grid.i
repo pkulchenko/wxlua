@@ -45,11 +45,6 @@
     void IncRef()
     void DecRef()
 
-%if !defined(WXUSINGDLL)
-    // Getting the value of the ref count is only possible in non-dll wxWidgets library.
-    //int GetRef() const // wxLua added function to help track if it needs to be refed
-%endif
-
     virtual void SetParameters(const wxString& params)
 %endclass
 
@@ -777,8 +772,8 @@
     %define_event wxEVT_GRID_EDITOR_HIDDEN      // EVT_GRID_EDITOR_HIDDEN(fn)
     %define_event wxEVT_GRID_CELL_BEGIN_DRAG    // EVT_GRID_CELL_BEGIN_DRAG(fn)
 
-    wxGridEvent(int id, wxEventType type, wxObject* obj, int row = -1, int col = -1, int x = -1, int y = -1, bool sel = true, bool control = false, bool shift = false, bool alt = false, bool meta = false)
-
+    !%wxchkver_2_9_0 wxGridEvent(int id, wxEventType type, wxObject* obj, int row = -1, int col = -1, int x = -1, int y = -1, bool sel = true, bool control = false, bool shift = false, bool alt = false, bool meta = false)
+    
     virtual int GetRow()
     virtual int GetCol()
     wxPoint     GetPosition()
@@ -796,7 +791,7 @@
     %define_event wxEVT_GRID_ROW_SIZE           // EVT_GRID_CMD_ROW_SIZE(id, fn)
     %define_event wxEVT_GRID_COL_SIZE           // EVT_GRID_CMD_COL_SIZE(id, fn)
 
-    wxGridSizeEvent(int id, wxEventType type, wxObject* obj, int rowOrCol = -1, int x = -1, int y = -1, bool control = false, bool shift = false, bool alt = false, bool meta = false)
+    !%wxchkver_2_9_0 wxGridSizeEvent(int id, wxEventType type, wxObject* obj, int rowOrCol = -1, int x = -1, int y = -1, bool control = false, bool shift = false, bool alt = false, bool meta = false)
 
     int         GetRowOrCol()
     wxPoint     GetPosition()
@@ -812,7 +807,7 @@
 %class %delete wxGridRangeSelectEvent, wxNotifyEvent
     %define_event wxEVT_GRID_RANGE_SELECT       // EVT_GRID_CMD_RANGE_SELECT(id, fn)
 
-    wxGridRangeSelectEvent(int id, wxEventType type, wxObject* obj, const wxGridCellCoords& topLeft, const wxGridCellCoords& bottomRight, bool sel = true, bool control = false, bool shift = false, bool alt = false, bool meta = false)
+    !%wxchkver_2_9_0 wxGridRangeSelectEvent(int id, wxEventType type, wxObject* obj, const wxGridCellCoords& topLeft, const wxGridCellCoords& bottomRight, bool sel = true, bool control = false, bool shift = false, bool alt = false, bool meta = false)
 
     wxGridCellCoords GetTopLeftCoords()
     wxGridCellCoords GetBottomRightCoords()

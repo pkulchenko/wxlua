@@ -6878,7 +6878,11 @@ static int LUACALL wxLua_wxPalette_Create(lua_State *L)
     // get this
     wxPalette *self = (wxPalette *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPalette);
     // call Create
+#if wxCHECK_VERSION(2,9,0) && defined(__WXMSW__) && !wxCHECK_VERSION(2,9,5)
+    bool returns = self->Create(n, (unsigned char*)red, (unsigned char*)green, (unsigned char*)blue); // NOTE: wxMSW does not modify these, see SVN rev 50727
+#else
     bool returns = self->Create(n, red, green, blue);
+#endif
     // push the result number
     lua_pushboolean(L, returns);
     // return the number of parameters
@@ -7932,7 +7936,7 @@ static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_constructor8[] = { &wxluatyp
 static int LUACALL wxLua_wxBitmap_constructor8(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_constructor8[1] = {{ wxLua_wxBitmap_constructor8, WXLUAMETHOD_CONSTRUCTOR, 5, 5, s_wxluatypeArray_wxLua_wxBitmap_constructor8 }};
 // %override wxLua_wxBitmapFromData_constructor
-// %win wxBitmap(void* data, int type, int width, int height, int depth = -1)
+// %win wxBitmap(void* data, wxBitmapType type, int width, int height, int depth = -1)
 #ifdef __WXMSW__
 static int LUACALL wxLua_wxBitmapFromData_constructor(lua_State *L)
 {
@@ -7945,7 +7949,7 @@ static int LUACALL wxLua_wxBitmapFromData_constructor(lua_State *L)
     // int width
     int width = (int)wxlua_getintegertype(L, 3);
     // int type
-    int type = (int)wxlua_getintegertype(L, 2);
+    wxBitmapType type = (wxBitmapType)wxlua_getintegertype(L, 2);
     // void* data
     void *data = (void *)lua_tostring(L, 1);
     // call constructor
@@ -8372,10 +8376,10 @@ static int LUACALL wxLua_wxCursor_op_set(lua_State *L)
 
 
 #if ((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxCursor_constructor3[] = { &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxCursor_constructor3[] = { &wxluatype_TSTRING, &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxCursor_constructor3(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxCursor_constructor3[1] = {{ wxLua_wxCursor_constructor3, WXLUAMETHOD_CONSTRUCTOR, 2, 4, s_wxluatypeArray_wxLua_wxCursor_constructor3 }};
-//     %win|%mac wxCursor(const wxString& cursorName, long type, int hotSpotX = 0, int hotSpotY = 0)
+//     %win|%mac wxCursor(const wxString& cursorName, wxBitmapType type, int hotSpotX = 0, int hotSpotY = 0)
 static int LUACALL wxLua_wxCursor_constructor3(lua_State *L)
 {
     // get number of arguments
@@ -8384,8 +8388,8 @@ static int LUACALL wxLua_wxCursor_constructor3(lua_State *L)
     int hotSpotY = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : 0);
     // int hotSpotX = 0
     int hotSpotX = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : 0);
-    // long type
-    long type = (long)wxlua_getnumbertype(L, 2);
+    // wxBitmapType type
+    wxBitmapType type = (wxBitmapType)wxlua_getenumtype(L, 2);
     // const wxString cursorName
     const wxString cursorName = wxlua_getwxStringtype(L, 1);
     // call constructor

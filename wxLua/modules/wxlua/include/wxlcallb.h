@@ -13,6 +13,14 @@
 #include "wxlua/include/wxldefs.h"
 #include "wxlua/include/wxlstate.h"
 
+
+#if wxCHECK_VERSION(2,9,0)
+    #define wxLuaCallbackBaseClass wxEvtHandler
+#else
+    #define wxLuaCallbackBaseClass wxObject
+#endif
+
+
 // ----------------------------------------------------------------------------
 // wxLuaEventCallback - Forward events from wxEvtHandlers to Lua functions.
 //
@@ -32,7 +40,7 @@
 #define WXLUAEVENTCALLBACK_NOROUTINE 1000000 // use this for the lua_func_stack_idx
                                              // param of the constructor for no Lua routine
 
-class WXDLLIMPEXP_WXLUA wxLuaEventCallback : public wxObject
+class WXDLLIMPEXP_WXLUA wxLuaEventCallback : public wxLuaCallbackBaseClass
 {
 public:
     // default constructor, call Connect() to actually connect the event
@@ -103,7 +111,7 @@ private:
 // to the wxEvent's wxLuaWinDestroyCallback callback user data function OnDestroy().
 // ----------------------------------------------------------------------------
 
-class WXDLLIMPEXP_WXLUA wxLuaWinDestroyCallback : public wxObject
+class WXDLLIMPEXP_WXLUA wxLuaWinDestroyCallback : public wxLuaCallbackBaseClass
 {
 public:
     wxLuaWinDestroyCallback(const wxLuaState& state, wxWindow *win);

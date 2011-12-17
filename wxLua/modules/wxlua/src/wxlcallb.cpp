@@ -23,12 +23,13 @@
 //-----------------------------------------------------------------------------
 // wxLuaEventCallback
 //-----------------------------------------------------------------------------
-IMPLEMENT_ABSTRACT_CLASS(wxLuaEventCallback, wxObject)
+IMPLEMENT_ABSTRACT_CLASS(wxLuaEventCallback, wxLuaCallbackBaseClass)
 
-wxLuaEventCallback::wxLuaEventCallback()
-                   : m_luafunc_ref(0), //m_wxlState(wxNullLuaState),
-                     m_evtHandler(NULL), m_id(wxID_ANY), m_last_id(wxID_ANY),
-                     m_wxlBindEvent(NULL)
+wxLuaEventCallback::wxLuaEventCallback() 
+                   :wxLuaCallbackBaseClass(),
+                    m_luafunc_ref(0), //m_wxlState(wxNullLuaState),
+                    m_evtHandler(NULL), m_id(wxID_ANY), m_last_id(wxID_ANY),
+                    m_wxlBindEvent(NULL)
 {
 }
 
@@ -93,6 +94,7 @@ wxString wxLuaEventCallback::Connect(const wxLuaState& wxlState, int lua_func_st
     m_evtHandler->Connect(win_id, last_id, eventType,
                           (wxObjectEventFunction)&wxLuaEventCallback::OnAllEvents,
                           this);
+
     return wxEmptyString;
 }
 
@@ -209,11 +211,11 @@ void wxLuaEventCallback::OnEvent(wxEvent *event)
 // ----------------------------------------------------------------------------
 // wxLuaWinDestroyCallback
 // ----------------------------------------------------------------------------
-IMPLEMENT_ABSTRACT_CLASS(wxLuaWinDestroyCallback, wxObject)
+IMPLEMENT_ABSTRACT_CLASS(wxLuaWinDestroyCallback, wxLuaCallbackBaseClass)
 
 wxLuaWinDestroyCallback::wxLuaWinDestroyCallback(const wxLuaState& wxlState,
                                                  wxWindow* win)
-                        :m_wxlState(wxlState), m_window(win)
+                        :wxLuaCallbackBaseClass(), m_wxlState(wxlState), m_window(win)
 {
     wxCHECK_RET(m_wxlState.Ok(), wxT("Invalid wxLuaState"));
     wxCHECK_RET(m_window != NULL, wxT("Invalid wxWindow"));

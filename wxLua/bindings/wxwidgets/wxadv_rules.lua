@@ -64,26 +64,7 @@ hook_cpp_class_funcname    = "wxLuaGetClassList_"..hook_cpp_namespace
 -- ----------------------------------------------------------------------------
 -- Set any #includes or other C++ code to be placed verbatim at the top of
 --   every generated cpp file or "" for none
-hook_cpp_binding_includes = [[
-
-#include "wx/window.h"
-
-#ifndef WXUSINGDLL
-
-// Hack to add accessor to get the ref count
-#define wxGridCellWorkerDummyFriend wxGridCellWorkerDummyFriend; \
-    public: \
-    size_t GetRef() const { return m_nRef; }
-
-#define wxGridCellAttrDummyFriend wxGridCellAttrDummyFriend; \
-    public: \
-    size_t GetRef() const { return m_nRef; }
-
-#include "wx/grid.h"
-
-#endif // WXUSINGDLL
-
-]]
+hook_cpp_binding_includes = ""
 
 -- ----------------------------------------------------------------------------
 -- Set any #includes or other C++ code to be placed verbatim below the

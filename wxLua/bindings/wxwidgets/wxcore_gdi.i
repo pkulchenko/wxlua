@@ -1024,7 +1024,7 @@
     wxCursor()
     wxCursor(int id)
     wxCursor(const wxImage& image)
-    %win|%mac wxCursor(const wxString& cursorName, long type, int hotSpotX = 0, int hotSpotY = 0)
+    %win|%mac wxCursor(const wxString& cursorName, wxBitmapType type, int hotSpotX = 0, int hotSpotY = 0)
 
     bool Ok()
 
