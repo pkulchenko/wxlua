@@ -248,17 +248,29 @@ ENDFUNCTION()
 # ---------------------------------------------------------------------------
 FUNCTION( ADD_SUBDIRECTORY source_dir )
 
+    # Get path from root directory to where we are now
     STRING(REGEX REPLACE "${CMAKE_HOME_DIRECTORY}[/]*" "" PROJ_DIR_TEMP ${CMAKE_CURRENT_SOURCE_DIR})
 
     IF (PROJ_DIR_TEMP)
         SET(PROJ_DIR_TEMP "${PROJ_DIR_TEMP}/")
     ENDIF()
 
-    IF (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${source_dir}")
-        SET(ADD_SUBDIRECTORY_LIST ${ADD_SUBDIRECTORY_LIST} "${PROJ_DIR_TEMP}${source_dir}" CACHE INTERNAL "")
-        _ADD_SUBDIRECTORY(${source_dir} ${ARGN})
+    # The message from ADD_SUBDIRECTORY() is very cryptic we need to show
+    # people where the problem came from
+    IF (IS_ABSOLUTE ${source_dir})
+        IF (EXISTS "${source_dir}" )
+            SET(ADD_SUBDIRECTORY_LIST ${ADD_SUBDIRECTORY_LIST} "${source_dir}" CACHE INTERNAL "")
+            _ADD_SUBDIRECTORY(${source_dir} ${ARGN})
+        ELSE()
+            MESSAGE(WARNING "Missing directory in ADD_SUBDIRECTORY(${source_dir})")
+        ENDIF()
     ELSE()
-        MESSAGE(WARNING "Missing directory in ADD_SUBDIRECTORY(${CMAKE_CURRENT_LIST_DIR}/${source_dir})")
+        IF (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${source_dir}")
+            SET(ADD_SUBDIRECTORY_LIST ${ADD_SUBDIRECTORY_LIST} "${PROJ_DIR_TEMP}${source_dir}" CACHE INTERNAL "")
+            _ADD_SUBDIRECTORY(${source_dir} ${ARGN})
+        ELSE()
+            MESSAGE(WARNING "Missing directory in ADD_SUBDIRECTORY(${CMAKE_CURRENT_LIST_DIR}/${source_dir})")
+        ENDIF()
     ENDIF()
 ENDFUNCTION()
 
@@ -300,15 +312,15 @@ FUNCTION( ADD_TEST )
     _ADD_TEST(${ARGN})
 
     list(GET ARGN 0 ARG0)
-    list(GET ARGN 1 ARG1)  
-    
+    list(GET ARGN 1 ARG1)
+
     # ADD_TEST's name can be either the first or second parameter
     if ("${ARG0}" STREQUAL "NAME")
         set(name "${ARG1}")
     else()
         set(name "${ARG0}")
     endif()
-    
+
     # Get the last part of the directory we're currently in
     STRING(REPLACE "${CMAKE_HOME_DIRECTORY}/" "" PROJ_DIR_TEMP ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -326,19 +338,19 @@ ENDFUNCTION()
 
 FUNCTION( ADD_GTEST exe_target_name )
     #ADD_TEST(${exe_target_name} ${CMAKE_CURRENT_BINARY_DIR}/${exe_target_name} ${ARGN})
-    
-    get_target_property(EXE_FILEPATH ${exe_target_name} LOCATION)   
+
+    get_target_property(EXE_FILEPATH ${exe_target_name} LOCATION)
     get_filename_component(EXE_PATH ${EXE_FILEPATH} PATH ABSOLUTE)
     get_filename_component(EXE_NAME ${EXE_FILEPATH} NAME_WE)
-    
+
     string(REPLACE "$(OutDir)" "" EXE_PATH "${EXE_PATH}")
-    
+
     ADD_TEST(NAME "${exe_target_name}"
              WORKING_DIRECTORY ${EXE_PATH}
              COMMAND ${EXE_NAME})
              #WORKING_DIRECTORY $<TARGET_FILE_DIR:${exe_target_name}>
              #COMMAND $<TARGET_FILE:${exe_target_name}> )
-    
+
     SET_TESTS_PROPERTIES( "${exe_target_name}" PROPERTIES FAIL_REGULAR_EXPRESSION "FAILED" )
 ENDFUNCTION()
 
@@ -1055,7 +1067,7 @@ function( TARGET_PRECOMPILED_HEADER target_name )
                 list(APPEND cxx_flags "-I${i}")
             endforeach()
 
-            #get_directory_property(list_dir DIRECTORY ${list_dir} PARENT_DIRECTORY)            
+            #get_directory_property(list_dir DIRECTORY ${list_dir} PARENT_DIRECTORY)
         #endwhile()
 
         set(cxx_flags ${cxx_flags} ${CMAKE_CXX_FLAGS})

@@ -36,7 +36,7 @@ FIND_WXWIDGETS(wxWidgets_COMPONENTS) # Ok to call multiple times
 # Add subdirectories containing CMakeLists.txt files or specify projects
 # ===========================================================================
 
-set( wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE INTERNAL "Root dir of wxLua" FORCE)
+set( wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE PATH "Root dir of wxLua" FORCE)
 
 ADD_CPPCHECK_TEST(wxLua_CppCheck)
 
