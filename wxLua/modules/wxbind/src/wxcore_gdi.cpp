@@ -8375,11 +8375,40 @@ static int LUACALL wxLua_wxCursor_op_set(lua_State *L)
 }
 
 
-#if ((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor)
+#if ((wxLUA_USE_wxCursor) && (!wxCHECK_VERSION(2,9,0) && __UNICODE__ && (defined(__WXMSW__) || defined(__WXMAC__)))) && (wxLUA_USE_wxCursor)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxCursor_constructor4[] = { &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxCursor_constructor4(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxCursor_constructor4[1] = {{ wxLua_wxCursor_constructor4, WXLUAMETHOD_CONSTRUCTOR, 2, 4, s_wxluatypeArray_wxLua_wxCursor_constructor4 }};
+//         wxCursor(const wxString& cursorName, long type, int hotSpotX = 0, int hotSpotY = 0)
+static int LUACALL wxLua_wxCursor_constructor4(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int hotSpotY = 0
+    int hotSpotY = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : 0);
+    // int hotSpotX = 0
+    int hotSpotX = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : 0);
+    // long type
+    long type = (long)wxlua_getnumbertype(L, 2);
+    // const wxString cursorName
+    const wxString cursorName = wxlua_getwxStringtype(L, 1);
+    // call constructor
+    wxCursor* returns = new wxCursor(cursorName, type, hotSpotX, hotSpotY);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxCursor);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxCursor);
+
+    return 1;
+}
+
+#endif // ((wxLUA_USE_wxCursor) && (!wxCHECK_VERSION(2,9,0) && __UNICODE__ && (defined(__WXMSW__) || defined(__WXMAC__)))) && (wxLUA_USE_wxCursor)
+
+#if ((wxLUA_USE_wxCursor) && (wxCHECK_VERSION(2,9,0))) && (wxLUA_USE_wxCursor)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxCursor_constructor3[] = { &wxluatype_TSTRING, &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxCursor_constructor3(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxCursor_constructor3[1] = {{ wxLua_wxCursor_constructor3, WXLUAMETHOD_CONSTRUCTOR, 2, 4, s_wxluatypeArray_wxLua_wxCursor_constructor3 }};
-//     %win|%mac wxCursor(const wxString& cursorName, wxBitmapType type, int hotSpotX = 0, int hotSpotY = 0)
+//         wxCursor(const wxString& cursorName, wxBitmapType type, int hotSpotX = 0, int hotSpotY = 0)
 static int LUACALL wxLua_wxCursor_constructor3(lua_State *L)
 {
     // get number of arguments
@@ -8402,7 +8431,7 @@ static int LUACALL wxLua_wxCursor_constructor3(lua_State *L)
     return 1;
 }
 
-#endif // ((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor)
+#endif // ((wxLUA_USE_wxCursor) && (wxCHECK_VERSION(2,9,0))) && (wxLUA_USE_wxCursor)
 
 #if (wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxLUA_USE_wxCursor)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxCursor_constructor2[] = { &wxluatype_wxImage, NULL };
@@ -8461,14 +8490,18 @@ static int LUACALL wxLua_wxCursor_constructor(lua_State *L)
 
 
 
-#if (((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxLUA_USE_wxCursor))||(wxLUA_USE_wxCursor)
+#if (((wxLUA_USE_wxCursor) && (!wxCHECK_VERSION(2,9,0) && __UNICODE__ && (defined(__WXMSW__) || defined(__WXMAC__)))) && (wxLUA_USE_wxCursor))||(((wxLUA_USE_wxCursor) && (wxCHECK_VERSION(2,9,0))) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxLUA_USE_wxCursor))||(wxLUA_USE_wxCursor)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxCursor_constructor_overload[] =
 {
 
-#if ((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor)
+#if ((wxLUA_USE_wxCursor) && (!wxCHECK_VERSION(2,9,0) && __UNICODE__ && (defined(__WXMSW__) || defined(__WXMAC__)))) && (wxLUA_USE_wxCursor)
+    { wxLua_wxCursor_constructor4, WXLUAMETHOD_CONSTRUCTOR, 2, 4, s_wxluatypeArray_wxLua_wxCursor_constructor4 },
+#endif // ((wxLUA_USE_wxCursor) && (!wxCHECK_VERSION(2,9,0) && __UNICODE__ && (defined(__WXMSW__) || defined(__WXMAC__)))) && (wxLUA_USE_wxCursor)
+
+#if ((wxLUA_USE_wxCursor) && (wxCHECK_VERSION(2,9,0))) && (wxLUA_USE_wxCursor)
     { wxLua_wxCursor_constructor3, WXLUAMETHOD_CONSTRUCTOR, 2, 4, s_wxluatypeArray_wxLua_wxCursor_constructor3 },
-#endif // ((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor)
+#endif // ((wxLUA_USE_wxCursor) && (wxCHECK_VERSION(2,9,0))) && (wxLUA_USE_wxCursor)
 
 #if (wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxLUA_USE_wxCursor)
     { wxLua_wxCursor_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxCursor_constructor2 },
@@ -8478,7 +8511,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxCursor_constructor_overload[] =
 };
 static int s_wxluafunc_wxLua_wxCursor_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxCursor_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxLUA_USE_wxCursor))||(wxLUA_USE_wxCursor)
+#endif // (((wxLUA_USE_wxCursor) && (!wxCHECK_VERSION(2,9,0) && __UNICODE__ && (defined(__WXMSW__) || defined(__WXMAC__)))) && (wxLUA_USE_wxCursor))||(((wxLUA_USE_wxCursor) && (wxCHECK_VERSION(2,9,0))) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxLUA_USE_wxCursor))||(wxLUA_USE_wxCursor)
 
 void wxLua_wxCursor_delete_function(void** p)
 {
@@ -8498,9 +8531,9 @@ wxLuaBindMethod wxCursor_methods[] = {
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxCursor_delete, 1, NULL },
     { "op_set", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCursor_op_set, 1, NULL },
 
-#if (((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxLUA_USE_wxCursor))||(wxLUA_USE_wxCursor)
+#if (((wxLUA_USE_wxCursor) && (!wxCHECK_VERSION(2,9,0) && __UNICODE__ && (defined(__WXMSW__) || defined(__WXMAC__)))) && (wxLUA_USE_wxCursor))||(((wxLUA_USE_wxCursor) && (wxCHECK_VERSION(2,9,0))) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxLUA_USE_wxCursor))||(wxLUA_USE_wxCursor)
     { "wxCursor", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxCursor_constructor_overload, s_wxluafunc_wxLua_wxCursor_constructor_overload_count, 0 },
-#endif // (((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxLUA_USE_wxCursor))||(wxLUA_USE_wxCursor)
+#endif // (((wxLUA_USE_wxCursor) && (!wxCHECK_VERSION(2,9,0) && __UNICODE__ && (defined(__WXMSW__) || defined(__WXMAC__)))) && (wxLUA_USE_wxCursor))||(((wxLUA_USE_wxCursor) && (wxCHECK_VERSION(2,9,0))) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxLUA_USE_wxCursor))||(wxLUA_USE_wxCursor)
 
     { 0, 0, 0, 0 },
 };

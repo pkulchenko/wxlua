@@ -2110,7 +2110,7 @@ static int LUACALL wxLua_wxCalendarCtrl_EnableMonthChange(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (!wxCHECK_VERSION(2,9,2) || !defined(__WXMSW__))
+#if (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (!wxCHECK_VERSION(2,9,2))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxCalendarCtrl_EnableYearChange[] = { &wxluatype_wxCalendarCtrl, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxCalendarCtrl_EnableYearChange(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxCalendarCtrl_EnableYearChange[1] = {{ wxLua_wxCalendarCtrl_EnableYearChange, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxCalendarCtrl_EnableYearChange }};
@@ -2129,7 +2129,7 @@ static int LUACALL wxLua_wxCalendarCtrl_EnableYearChange(lua_State *L)
     return 0;
 }
 
-#endif // (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (!wxCHECK_VERSION(2,9,2) || !defined(__WXMSW__))
+#endif // (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (!wxCHECK_VERSION(2,9,2))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxCalendarCtrl_GetAttr[] = { &wxluatype_wxCalendarCtrl, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxCalendarCtrl_GetAttr(lua_State *L);
@@ -2497,9 +2497,9 @@ wxLuaBindMethod wxCalendarCtrl_methods[] = {
     { "EnableHolidayDisplay", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCalendarCtrl_EnableHolidayDisplay, 1, NULL },
     { "EnableMonthChange", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCalendarCtrl_EnableMonthChange, 1, NULL },
 
-#if (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (!wxCHECK_VERSION(2,9,2) || !defined(__WXMSW__))
+#if (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (!wxCHECK_VERSION(2,9,2))
     { "EnableYearChange", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCalendarCtrl_EnableYearChange, 1, NULL },
-#endif // (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (!wxCHECK_VERSION(2,9,2) || !defined(__WXMSW__))
+#endif // (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (!wxCHECK_VERSION(2,9,2))
 
     { "GetAttr", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCalendarCtrl_GetAttr, 1, NULL },
 

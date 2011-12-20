@@ -683,11 +683,11 @@ static int LUACALL wxLua_wxAuiTabContainerButton_Get_bitmap(lua_State *L)
 
 #endif // (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
 
-#if (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#if (wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Get_curState[] = { &wxluatype_wxAuiTabContainerButton, NULL };
 static int LUACALL wxLua_wxAuiTabContainerButton_Get_curState(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiTabContainerButton_Get_curState[1] = {{ wxLua_wxAuiTabContainerButton_Get_curState, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Get_curState }};
-//     %wxchkver_2_9_2  %member int curState;
+//     %wxchkver_2_9_3  %member int curState;
 static int LUACALL wxLua_wxAuiTabContainerButton_Get_curState(lua_State *L)
 {
     // get this
@@ -698,13 +698,13 @@ static int LUACALL wxLua_wxAuiTabContainerButton_Get_curState(lua_State *L)
     return 1;
 }
 
-#endif // (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#endif // (wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
-#if (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#if (!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Get_cur_state[] = { &wxluatype_wxAuiTabContainerButton, NULL };
 static int LUACALL wxLua_wxAuiTabContainerButton_Get_cur_state(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiTabContainerButton_Get_cur_state[1] = {{ wxLua_wxAuiTabContainerButton_Get_cur_state, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Get_cur_state }};
-//     !%wxchkver_2_9_2 %member int cur_state;        // current state (normal, hover, pressed, etc.)
+//     !%wxchkver_2_9_3 %member int cur_state;        // current state (normal, hover, pressed, etc.)
 static int LUACALL wxLua_wxAuiTabContainerButton_Get_cur_state(lua_State *L)
 {
     // get this
@@ -715,13 +715,13 @@ static int LUACALL wxLua_wxAuiTabContainerButton_Get_cur_state(lua_State *L)
     return 1;
 }
 
-#endif // (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#endif // (!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
-#if ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#if ((wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Get_disBitmap[] = { &wxluatype_wxAuiTabContainerButton, NULL };
 static int LUACALL wxLua_wxAuiTabContainerButton_Get_disBitmap(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiTabContainerButton_Get_disBitmap[1] = {{ wxLua_wxAuiTabContainerButton_Get_disBitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Get_disBitmap }};
-//     %wxchkver_2_9_2  %member wxBitmap disBitmap;
+//     %wxchkver_2_9_3  %member wxBitmap disBitmap;
 static int LUACALL wxLua_wxAuiTabContainerButton_Get_disBitmap(lua_State *L)
 {
     // get this
@@ -732,13 +732,13 @@ static int LUACALL wxLua_wxAuiTabContainerButton_Get_disBitmap(lua_State *L)
     return 1;
 }
 
-#endif // ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
 
-#if ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Get_dis_bitmap[] = { &wxluatype_wxAuiTabContainerButton, NULL };
 static int LUACALL wxLua_wxAuiTabContainerButton_Get_dis_bitmap(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiTabContainerButton_Get_dis_bitmap[1] = {{ wxLua_wxAuiTabContainerButton_Get_dis_bitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Get_dis_bitmap }};
-//     !%wxchkver_2_9_2 %member wxBitmap dis_bitmap;  // button's disabled bitmap
+//     !%wxchkver_2_9_3 %member wxBitmap dis_bitmap;  // button's disabled bitmap
 static int LUACALL wxLua_wxAuiTabContainerButton_Get_dis_bitmap(lua_State *L)
 {
     // get this
@@ -749,7 +749,7 @@ static int LUACALL wxLua_wxAuiTabContainerButton_Get_dis_bitmap(lua_State *L)
     return 1;
 }
 
-#endif // ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Get_id[] = { &wxluatype_wxAuiTabContainerButton, NULL };
 static int LUACALL wxLua_wxAuiTabContainerButton_Get_id(lua_State *L);
@@ -815,11 +815,11 @@ static int LUACALL wxLua_wxAuiTabContainerButton_Set_bitmap(lua_State *L)
 
 #endif // (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
 
-#if (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#if (wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Set_curState[] = { &wxluatype_wxAuiTabContainerButton, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxAuiTabContainerButton_Set_curState(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiTabContainerButton_Set_curState[1] = {{ wxLua_wxAuiTabContainerButton_Set_curState, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Set_curState }};
-//     %wxchkver_2_9_2  %member int curState;
+//     %wxchkver_2_9_3  %member int curState;
 static int LUACALL wxLua_wxAuiTabContainerButton_Set_curState(lua_State *L)
 {
     // get the number value
@@ -831,13 +831,13 @@ static int LUACALL wxLua_wxAuiTabContainerButton_Set_curState(lua_State *L)
     return 0;
 }
 
-#endif // (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#endif // (wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
-#if (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#if (!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Set_cur_state[] = { &wxluatype_wxAuiTabContainerButton, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxAuiTabContainerButton_Set_cur_state(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiTabContainerButton_Set_cur_state[1] = {{ wxLua_wxAuiTabContainerButton_Set_cur_state, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Set_cur_state }};
-//     !%wxchkver_2_9_2 %member int cur_state;        // current state (normal, hover, pressed, etc.)
+//     !%wxchkver_2_9_3 %member int cur_state;        // current state (normal, hover, pressed, etc.)
 static int LUACALL wxLua_wxAuiTabContainerButton_Set_cur_state(lua_State *L)
 {
     // get the number value
@@ -849,13 +849,13 @@ static int LUACALL wxLua_wxAuiTabContainerButton_Set_cur_state(lua_State *L)
     return 0;
 }
 
-#endif // (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#endif // (!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
-#if ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#if ((wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Set_disBitmap[] = { &wxluatype_wxAuiTabContainerButton, &wxluatype_wxBitmap, NULL };
 static int LUACALL wxLua_wxAuiTabContainerButton_Set_disBitmap(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiTabContainerButton_Set_disBitmap[1] = {{ wxLua_wxAuiTabContainerButton_Set_disBitmap, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Set_disBitmap }};
-//     %wxchkver_2_9_2  %member wxBitmap disBitmap;
+//     %wxchkver_2_9_3  %member wxBitmap disBitmap;
 static int LUACALL wxLua_wxAuiTabContainerButton_Set_disBitmap(lua_State *L)
 {
     // get the data type value
@@ -867,13 +867,13 @@ static int LUACALL wxLua_wxAuiTabContainerButton_Set_disBitmap(lua_State *L)
     return 0;
 }
 
-#endif // ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
 
-#if ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Set_dis_bitmap[] = { &wxluatype_wxAuiTabContainerButton, &wxluatype_wxBitmap, NULL };
 static int LUACALL wxLua_wxAuiTabContainerButton_Set_dis_bitmap(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiTabContainerButton_Set_dis_bitmap[1] = {{ wxLua_wxAuiTabContainerButton_Set_dis_bitmap, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Set_dis_bitmap }};
-//     !%wxchkver_2_9_2 %member wxBitmap dis_bitmap;  // button's disabled bitmap
+//     !%wxchkver_2_9_3 %member wxBitmap dis_bitmap;  // button's disabled bitmap
 static int LUACALL wxLua_wxAuiTabContainerButton_Set_dis_bitmap(lua_State *L)
 {
     // get the data type value
@@ -885,7 +885,7 @@ static int LUACALL wxLua_wxAuiTabContainerButton_Set_dis_bitmap(lua_State *L)
     return 0;
 }
 
-#endif // ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiTabContainerButton_Set_id[] = { &wxluatype_wxAuiTabContainerButton, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxAuiTabContainerButton_Set_id(lua_State *L);
@@ -939,21 +939,21 @@ static int LUACALL wxLua_wxAuiTabContainerButton_Set_rect(lua_State *L)
 #if (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
 #endif // (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
 
-#if (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
-#endif // (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#if (wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#endif // (wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
-#if (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
-#endif // (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#if (!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#endif // (!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiTabContainerButton_delete[] = { &wxluatype_wxAuiTabContainerButton, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiTabContainerButton_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxAuiTabContainerButton_delete }};
 
 
-#if ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
-#endif // ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#if ((wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
 
-#if ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
-#endif // ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
 
 
 #if (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxPointSizeRect)
@@ -973,21 +973,21 @@ wxLuaBindMethod wxAuiTabContainerButton_methods[] = {
     // %member    { "Get_bitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiTabContainerButton_Get_bitmap, 1, NULL },
 #endif // (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
 
-#if (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#if (wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
     // %member    { "Get_curState", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiTabContainerButton_Get_curState, 1, NULL },
-#endif // (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#endif // (wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
-#if (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#if (!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
     // %member    { "Get_cur_state", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiTabContainerButton_Get_cur_state, 1, NULL },
-#endif // (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#endif // (!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
-#if ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#if ((wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
     // %member    { "Get_disBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiTabContainerButton_Get_disBitmap, 1, NULL },
-#endif // ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
 
-#if ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
     // %member    { "Get_dis_bitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiTabContainerButton_Get_dis_bitmap, 1, NULL },
-#endif // ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
 
     // %member    { "Get_id", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiTabContainerButton_Get_id, 1, NULL },
     // %member    { "Get_location", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiTabContainerButton_Get_location, 1, NULL },
@@ -1000,21 +1000,21 @@ wxLuaBindMethod wxAuiTabContainerButton_methods[] = {
     // %member    { "Set_bitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiTabContainerButton_Set_bitmap, 1, NULL },
 #endif // (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
 
-#if (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#if (wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
     // %member    { "Set_curState", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiTabContainerButton_Set_curState, 1, NULL },
-#endif // (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#endif // (wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
-#if (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#if (!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
     // %member    { "Set_cur_state", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiTabContainerButton_Set_cur_state, 1, NULL },
-#endif // (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#endif // (!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
-#if ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#if ((wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
     // %member    { "Set_disBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiTabContainerButton_Set_disBitmap, 1, NULL },
-#endif // ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
 
-#if ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
     // %member    { "Set_dis_bitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiTabContainerButton_Set_dis_bitmap, 1, NULL },
-#endif // ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
 
     // %member    { "Set_id", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiTabContainerButton_Set_id, 1, NULL },
     // %member    { "Set_location", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiTabContainerButton_Set_location, 1, NULL },
@@ -1028,27 +1028,27 @@ wxLuaBindMethod wxAuiTabContainerButton_methods[] = {
     { "bitmap", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxAuiTabContainerButton_Get_bitmap, 1, NULL },
 #endif // (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
 
-#if (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#if (wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
     { "curState", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxAuiTabContainerButton_Set_curState, 1, NULL },
     { "curState", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxAuiTabContainerButton_Get_curState, 1, NULL },
-#endif // (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#endif // (wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
-#if (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#if (!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
     { "cur_state", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxAuiTabContainerButton_Set_cur_state, 1, NULL },
     { "cur_state", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxAuiTabContainerButton_Get_cur_state, 1, NULL },
-#endif // (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#endif // (!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxAuiTabContainerButton_delete, 1, NULL },
 
-#if ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#if ((wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
     { "disBitmap", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxAuiTabContainerButton_Set_disBitmap, 1, NULL },
     { "disBitmap", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxAuiTabContainerButton_Get_disBitmap, 1, NULL },
-#endif // ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
 
-#if ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
     { "dis_bitmap", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxAuiTabContainerButton_Set_dis_bitmap, 1, NULL },
     { "dis_bitmap", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxAuiTabContainerButton_Get_dis_bitmap, 1, NULL },
-#endif // ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
 
     { "id", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxAuiTabContainerButton_Set_id, 1, NULL },
     { "id", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxAuiTabContainerButton_Get_id, 1, NULL },

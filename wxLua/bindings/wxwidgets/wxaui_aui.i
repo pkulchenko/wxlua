@@ -112,12 +112,12 @@
 
 %class %delete wxAuiTabContainerButton
     %member int id;               // button's id
-    !%wxchkver_2_9_2 %member int cur_state;        // current state (normal, hover, pressed, etc.)
-    %wxchkver_2_9_2  %member int curState;
+    !%wxchkver_2_9_3 %member int cur_state;        // current state (normal, hover, pressed, etc.)
+    %wxchkver_2_9_3  %member int curState;
     %member int location;         // buttons location (wxLEFT, wxRIGHT, or wxCENTER)
     %member wxBitmap bitmap;      // button's hover bitmap
-    !%wxchkver_2_9_2 %member wxBitmap dis_bitmap;  // button's disabled bitmap
-    %wxchkver_2_9_2  %member wxBitmap disBitmap;
+    !%wxchkver_2_9_3 %member wxBitmap dis_bitmap;  // button's disabled bitmap
+    %wxchkver_2_9_3  %member wxBitmap disBitmap;
     %member wxRect rect;          // button's hit rectangle
 %endclass
 

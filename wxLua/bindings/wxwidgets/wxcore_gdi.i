@@ -1024,7 +1024,16 @@
     wxCursor()
     wxCursor(int id)
     wxCursor(const wxImage& image)
-    %win|%mac wxCursor(const wxString& cursorName, wxBitmapType type, int hotSpotX = 0, int hotSpotY = 0)
+
+    %if %wxchkver_2_9_0
+        wxCursor(const wxString& cursorName, wxBitmapType type, int hotSpotX = 0, int hotSpotY = 0)
+    %endif
+
+    %if !%wxchkver_2_9_0 && __UNICODE__ && (%win || %mac)
+        // There is a version that takes a const char[] as the first param that
+        // gives an error about ambiguous overloads if wxString is ANSI.
+        wxCursor(const wxString& cursorName, long type, int hotSpotX = 0, int hotSpotY = 0)
+    %endif
 
     bool Ok()
 

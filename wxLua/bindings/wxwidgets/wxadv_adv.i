@@ -227,7 +227,7 @@
     void     SetDate(const wxDateTime& date)
     wxDateTime GetDate() const
 
-    %if !%wxchkver_2_9_2 || !%__WXMSW__
+    %if !%wxchkver_2_9_2
         void     EnableYearChange(bool enable = true)
     %endif
 
