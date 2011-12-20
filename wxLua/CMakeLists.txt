@@ -32,6 +32,62 @@ endif()
 
 FIND_WXWIDGETS(wxWidgets_COMPONENTS) # Ok to call multiple times
 
+# ---------------------------------------------------------------------------
+# Setup what wxWidgets libraries we will make bindings for.
+# We do this at the root CMakeLists since we need to call 
+# add_definitions(-DwxLUA_USEBINDING...) for each one.
+# NOTE: If you include this CMakeLists to build wxLua and then
+#       use it, you MUST call SETUP_wxLua() to setup the defines.
+
+# This is the list of all the wxLua bindings for wxWidgets with the same names as the wxWidgets libs.
+set(wxLuaBind_ALL_COMPONENTS gl stc xrc richtext html media aui adv core xml net base )
+
+# You can edit them in the cmake-gui
+if (NOT wxLuaBind_COMPONENTS)
+    set(wxLuaBind_COMPONENTS ${wxLuaBind_ALL_COMPONENTS})
+endif()
+set(wxLuaBind_COMPONENTS ${wxLuaBind_COMPONENTS} CACHE STRING "wxWidgets libs wxLua should add bindings for, the variable wxWidgets_COMPONENTS must contain all of these.")
+
+# We will create a list of the source files needed to compile
+set(wxLuaBindLib_SOURCES)
+# These are the definitions that in your CMake project you can call add_definitions() on.
+set(wxLua_CXX_DEFINITIONS) 
+
+# verify that each library exists from finding wxWidgets in the wxWidgets_COMPONENTS
+foreach( wxlua_comp ${wxLuaBind_ALL_COMPONENTS} )
+    string(TOUPPER ${wxlua_comp} wxlua_comp_upper)
+
+    # find specified wxlua binding libs
+    string(REGEX MATCH ${wxlua_comp} wxlua_comp_found "${wxLuaBind_COMPONENTS}")
+    # find specified wxlua binding libs in the wxwidgets libs
+    string(REGEX MATCH ${wxlua_comp} wx_comp_found "${wxWidgets_COMPONENTS}")
+
+    if (("${wxlua_comp}" STREQUAL "${wxlua_comp_found}") AND ("${wxlua_comp}" STREQUAL "${wx_comp_found}"))
+        set(WXLUA_BINDTO_${wxlua_comp} TRUE CACHE INTERNAL "")
+        set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} "-DwxLUA_USEBINDING_WX${wxlua_comp_upper}=1")
+        set(wxLuaBindLib_SOURCES ${wxLuaBindLib_SOURCES} "src/wx${wxlua_comp}_*.cpp")
+    else()
+        if (("${wxlua_comp}" STREQUAL "${wxlua_comp_found}") AND (NOT "${wxlua_comp}" STREQUAL "${wx_comp_found}"))
+            message(STATUS "* WARNING: Specified wxLuaBinding lib '${wxlua_comp}' in variable wxLuaBind_COMPONENTS is missing from wxWidgets_COMPONENTS so it will not be compiled.")
+        endif()
+    
+        set(WXLUA_BINDTO_${wxlua_comp} FALSE CACHE INTERNAL "")
+        set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} "-DwxLUA_USEBINDING_WX${wxlua_comp_upper}=0")
+    endif()
+endforeach()
+
+# ===========================================================================
+# This function must be called in any CMakeLists that uses any wxLua headers to 
+# ensure that the compiler #defines are correct.
+# ===========================================================================
+
+macro(SETUP_wxLua)
+    # These have to be defined so that the macros in modules/wxbind/include/wxbinddefs.h work
+    add_definitions(${wxLua_CXX_DEFINITIONS})
+endmacro()
+
+SETUP_wxLua()
+
 # ===========================================================================
 # Add subdirectories containing CMakeLists.txt files or specify projects
 # ===========================================================================
@@ -41,31 +97,6 @@ set( wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE PATH "Root dir of wxLua" F
 ADD_CPPCHECK_TEST(wxLua_CppCheck)
 
 include_directories(${wxLua_ROOT_DIR}/modules/wxbind/setup)
-
-set(wxLuaBind_ALL_COMPONENTS gl stc xrc richtext html media aui adv core xml net base )
-if (NOT wxLuaBind_COMPONENTS)
-    set(wxLuaBind_COMPONENTS ${wxLuaBind_ALL_COMPONENTS})
-endif()
-set(wxLuaBind_COMPONENTS ${wxLuaBind_COMPONENTS} CACHE STRING "wxWidgets libs wxLua should add bindings for")
-
-set(wxLuaBindLib_SOURCES)
-
-foreach( wx_comp ${wxLuaBind_ALL_COMPONENTS} )
-    string(TOUPPER ${wx_comp} wx_comp_upper)
-
-    # match wx libs to binding libs
-    string(REGEX MATCH ${wx_comp} wx_comp_found "${wxLuaBind_COMPONENTS}")
-
-    if ("${wx_comp}" STREQUAL "${wx_comp_found}")
-        set(WXLUA_BINDTO_${wx_comp} TRUE CACHE INTERNAL "")
-        add_definitions("-DwxLUA_USEBINDING_WX${wx_comp_upper}=1")
-        set(wxLuaBindLib_SOURCES ${wxLuaBindLib_SOURCES} "src/wx${wx_comp}_*.cpp")
-    else()
-        set(WXLUA_BINDTO_${wx_comp} FALSE CACHE INTERNAL "")
-        add_definitions("-DwxLUA_USEBINDING_WX${wx_comp_upper}=0")
-    endif()
-endforeach()
-
 
 if (NOT TARGET wxLuaLib)
     add_subdirectory( modules/ )

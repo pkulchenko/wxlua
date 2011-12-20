@@ -20,15 +20,15 @@ include_directories(${wxLua_ROOT_DIR}/
                     ${wxLua_ROOT_DIR}/modules/lua/src)
 
 # ===========================================================================
-
-set(wxLuaBind_SEPARATE_LIBS FALSE)
+# wxLua/modules/wxbind
 
 function (wxLua_Modules_wxBind_TARGETS)
 
-
-
+set(wxLuaBind_SEPARATE_LIBS FALSE) # a large monolithic binding library is easier to manage
 
 if (wxLuaBind_SEPARATE_LIBS)
+
+# Here we make separate libs for each wxWidgets library that wxLua binds to
 
 if (WXLUA_BINDTO_adv)
 
@@ -328,28 +328,6 @@ set(wxLuaBindLib_OBJECTS
 list(REMOVE_DUPLICATES wxLuaBindLib_OBJECTS)
 set_source_files_properties(${wxLuaBindLib_OBJECTS} PROPERTIES GENERATED TRUE)
 
-else()
-
-set(wxLuaBind_ALL_LIBS wxLuaBindLib CACHE INTERNAL "")
-
-endif (wxLuaBind_SEPARATE_LIBS)
-
-# ---------------------------------------------------------------------------
-
-ADD_LIBRARY_FULL( wxLuaBindLib ALLOW_MISSING_FILES
-    HEADERS
-        ${wxLua_ROOT_DIR}/modules/wxbind/include/*.h
-    SOURCES
-        #${wxLua_ROOT_DIR}/modules/wxbind/src/*.cpp
-        ${wxLuaBindLib_SOURCES}
-        #${wxLuaBindLib_OBJECTS}
-    LINK_LIBRARIES
-        wxLuaLib
-    PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXBIND"
-    #PROPERTIES LINKER_LANGUAGE CXX
-    PROPERTIES FOLDER "wxLua/Modules")
-
-
 #add_dependencies(wxLuaBindLib
 #    wxLuaBind_adv_Lib
 #    wxLuaBind_aui_Lib
@@ -364,9 +342,30 @@ ADD_LIBRARY_FULL( wxLuaBindLib ALLOW_MISSING_FILES
 #    wxLuaBind_xml_Lib
 #    wxLuaBind_xrc_Lib)
 
+else() # NOT wxLuaBind_SEPARATE_LIBS
+
+# ---------------------------------------------------------------------------
+
+ADD_LIBRARY_FULL( wxLuaBindLib ALLOW_MISSING_FILES
+    HEADERS
+        ${wxLua_ROOT_DIR}/modules/wxbind/include/*.h
+    SOURCES
+        #${wxLua_ROOT_DIR}/modules/wxbind/src/*.cpp
+        ${wxLuaBindLib_SOURCES}
+        #${wxLuaBindLib_OBJECTS}
+    LINK_LIBRARIES
+        wxLuaLib
+    PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXBIND"
+    PROPERTIES FOLDER "wxLua/Modules")
+
+set(wxLuaBind_ALL_LIBS wxLuaBindLib CACHE INTERNAL "")
+
+endif (wxLuaBind_SEPARATE_LIBS)
+
 endfunction (wxLua_Modules_wxBind_TARGETS)
 
 # ===========================================================================
+# wxLua/modules/wxlua
 
 function (wxLua_Modules_wxLua_TARGETS)
 
@@ -393,6 +392,7 @@ ADD_LIBRARY_FULL( wxLuaLib
 endfunction (wxLua_Modules_wxLua_TARGETS)
 
 # ---------------------------------------------------------------------------
+# wxLua/modules/wxluadebug
 
 function (wxLua_Modules_wxLuaDebug_TARGETS)
 
@@ -413,6 +413,7 @@ ADD_LIBRARY_FULL( wxLuaDebugLib
 endfunction (wxLua_Modules_wxLuaDebug_TARGETS)
 
 # ---------------------------------------------------------------------------
+# wxLua/modules/wxluasocket
 
 function (wxLua_Modules_wxLuaSocket_TARGETS)
 
@@ -439,6 +440,7 @@ ADD_LIBRARY_FULL( wxLuaSocketLib
 endfunction (wxLua_Modules_wxLuaSocket_TARGETS)
 
 # ===========================================================================
+# wxLua/modules/luamodule
 
 function (wxLua_Modules_LuaModule_TARGETS)
 
@@ -485,6 +487,7 @@ endif()
 endfunction (wxLua_Modules_LuaModule_TARGETS)
 
 # ===========================================================================
+# wxLua/modules/lua
 
 function (wxLua_Modules_Lua_TARGETS)
 

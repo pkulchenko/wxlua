@@ -373,7 +373,10 @@ struct wxLua_LCF_data // wrap up the wxLuaState, lua_tag, and the compare data
     long data;
 };
 
-int wxCALLBACK wxLua_ListCompareFunction(long item1, long item2, long sortData)
+// type of compare function for wxListCtrl sort operation (as of 2.9.3)
+//typedef int (wxCALLBACK *wxListCtrlCompare)(wxIntPtr item1, wxIntPtr item2, wxIntPtr sortData);
+
+int wxCALLBACK wxLua_ListCompareFunction(wxIntPtr item1, wxIntPtr item2, wxIntPtr sortData)
 {
     wxLua_LCF_data* LCF_data = (wxLua_LCF_data*)sortData;
 
@@ -410,7 +413,7 @@ static int LUACALL wxLua_wxListCtrl_SortItems(lua_State *L)
         LCF_data.lua_tag = luaL_ref(L, LUA_REGISTRYINDEX); // ref function and pop it from stack
     }
     else
-        wxlua_argerror(L, 2, wxT("a 'lua function(long item1, long item2, long data)'"));
+        wxlua_argerror(L, 2, wxT("a 'Lua function(long item1, long item2, long data)'"));
 
     // get this
     wxListCtrl *self = (wxListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListCtrl);
