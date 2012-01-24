@@ -31,10 +31,12 @@ if (NOT wxWidgets_COMPONENTS)
 endif()
 
 FIND_WXWIDGETS(wxWidgets_COMPONENTS) # Ok to call multiple times
+# wxWidgets include (this will do all the magic to configure everything)
+include( "${wxWidgets_USE_FILE}" )
 
 # ---------------------------------------------------------------------------
 # Setup what wxWidgets libraries we will make bindings for.
-# We do this at the root CMakeLists since we need to call 
+# We do this at the root CMakeLists since we need to call
 # add_definitions(-DwxLUA_USEBINDING...) for each one.
 # NOTE: If you include this CMakeLists to build wxLua and then
 #       use it, you MUST call SETUP_wxLua() to setup the defines.
@@ -51,7 +53,7 @@ set(wxLuaBind_COMPONENTS ${wxLuaBind_COMPONENTS} CACHE STRING "wxWidgets libs wx
 # We will create a list of the source files needed to compile
 set(wxLuaBindLib_SOURCES)
 # These are the definitions that in your CMake project you can call add_definitions() on.
-set(wxLua_CXX_DEFINITIONS) 
+set(wxLua_CXX_DEFINITIONS)
 
 # verify that each library exists from finding wxWidgets in the wxWidgets_COMPONENTS
 foreach( wxlua_comp ${wxLuaBind_ALL_COMPONENTS} )
@@ -70,14 +72,14 @@ foreach( wxlua_comp ${wxLuaBind_ALL_COMPONENTS} )
         if (("${wxlua_comp}" STREQUAL "${wxlua_comp_found}") AND (NOT "${wxlua_comp}" STREQUAL "${wx_comp_found}"))
             message(STATUS "* WARNING: Specified wxLuaBinding lib '${wxlua_comp}' in variable wxLuaBind_COMPONENTS is missing from wxWidgets_COMPONENTS so it will not be compiled.")
         endif()
-    
+
         set(WXLUA_BINDTO_${wxlua_comp} FALSE CACHE INTERNAL "")
         set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} "-DwxLUA_USEBINDING_WX${wxlua_comp_upper}=0")
     endif()
 endforeach()
 
 # ===========================================================================
-# This function must be called in any CMakeLists that uses any wxLua headers to 
+# This function must be called in any CMakeLists that uses any wxLua headers to
 # ensure that the compiler #defines are correct.
 # ===========================================================================
 

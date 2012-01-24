@@ -352,52 +352,71 @@ message(STATUS " ")
 
 # ---------------------------------------------------------------------------
 # Look for wxWidgets.
+#
+# In MSW set
+#   wxWidgets_ROOT_DIR      : Root dir of the wxWidgets build
+#   wxWidgets_LIB_DIR       : Path to the wxWidgets libs, e.g. ${wxWidgets_ROOT_DIR}/lib/vc_lib
+#   wxWidgets_CONFIGURATION : msw, mswu (no need to specify debug for MSVC since you can select it in the GUI)
+# In Unix set
+#   wxWidgets_CONFIG_EXECUTABLE : /path/to/wx-config
+#
 # Usage: Note how base is last!
-#       set(wxWidgets_COMPONENTS aui stc html adv core base)
-#       FIND_WXWIDGETS(wxWidgets_COMPONENTS)
+#   set(wxWidgets_COMPONENTS aui stc html adv core base)
+#   FIND_WXWIDGETS(wxWidgets_COMPONENTS)
 #
 # Sets up the CMake Gui to make it a little more convenient.
-# Swaps std and scintilla lib as appropriate for wx version < 2.9 and > 2.9
-# Check the variable wxWidgets_FOUND for success.
+# Adjusts stc and scintilla lib as appropriate for wx version < 2.9 or > 2.9
+#
+# When wxWidgets is successfully found these variables will be set:
+#
+# wxWidgets_FOUND      = TRUE on success
+# wxWidgets_ROOT_DIR   = /path/to/wxWidgets, in Unix it is equal to wx-config --prefix
+# wxWidgets_COMPONENTS = what was input, but with stc/scintilla adjusted for 2.8/2.9
+#
+# wxWidgets_VERSION        = 2.9.3 (for example)
+# wxWidgets_MAJOR_VERSION  = 2
+# wxWidgets_MINOR_VERSION  = 9
+# wxWidgets_RELEASE_NUMBER = 3
+#
+# WX_HASLIB_[wx_comp]      = TRUE/FALSE where each wx_comp is from the
+#                                       wxWidgets_ALL_COMPONENTS list.
 # ---------------------------------------------------------------------------
 
 macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
 
-    # call this function without ${comps}
+    # We only want this function called once per CMake configure, but we may link
+    # CMakeLists.txt from different projects that call this. Only run it the first call.
+
+    get_property(FIND_WXWIDGETS_RUN_ONCE_CALLED DIRECTORY ${CMAKE_HOME_DIRECTORY}
+                 PROPERTY FIND_WXWIDGETS_RUN_ONCE SET)
+    if (NOT FIND_WXWIDGETS_RUN_ONCE_CALLED)
+    set_property(DIRECTORY ${CMAKE_HOME_DIRECTORY}
+                 PROPERTY FIND_WXWIDGETS_RUN_ONCE TRUE)
+
+    # call this function without ${} around wxWidgets_COMPONENTS_
     set(wxWidgets_COMPONENTS ${${wxWidgets_COMPONENTS_}})
 
-    # Eventually they will have found the wxWidgets dir
-    # and this will be correctly run
-    if (EXISTS "${wxWidgets_ROOT_DIR}/include/wx/version.h")
-        FILE(STRINGS "${wxWidgets_ROOT_DIR}/include/wx/version.h" wxWidgets_MAJOR_VERSION  REGEX "#define wxMAJOR_VERSION[^0-9]*([0-9]+)")
-        FILE(STRINGS "${wxWidgets_ROOT_DIR}/include/wx/version.h" wxWidgets_MINOR_VERSION  REGEX "#define wxMINOR_VERSION[^0-9]*([0-9]+)")
-        FILE(STRINGS "${wxWidgets_ROOT_DIR}/include/wx/version.h" wxWidgets_RELEASE_NUMBER REGEX "#define wxRELEASE_NUMBER[^0-9]*([0-9]+)")
+    # -----------------------------------------------------------------------
+    # Get the version of wxWidgets, we'll need it before finding wxWidgets to get stc lib right.
+    # Eventually they will have found the wxWidgets dir and this will work.
+    # -----------------------------------------------------------------------
 
-        string(REGEX MATCH "([0-9]+)" wxWidgets_MAJOR_VERSION  "${wxWidgets_MAJOR_VERSION}")
-        string(REGEX MATCH "([0-9]+)" wxWidgets_MINOR_VERSION  "${wxWidgets_MINOR_VERSION}")
-        string(REGEX MATCH "([0-9]+)" wxWidgets_RELEASE_NUMBER "${wxWidgets_RELEASE_NUMBER}")
+    DETERMINE_WXWIDGETS_VERSION()
 
-        if (wxWidgets_MAJOR_VERSION) # AND wxWidgets_MINOR_VERSION AND wxWidgets_RELEASE_NUMBER)
-            set( wxWidgets_VERSION "${wxWidgets_MAJOR_VERSION}.${wxWidgets_MINOR_VERSION}.${wxWidgets_RELEASE_NUMBER}")
-        endif()
-    elseif (EXISTS ${wxWidgets_CONFIG_EXECUTABLE})
-        execute_process(COMMAND ${wxWidgets_CONFIG_EXECUTABLE} --version OUTPUT_VARIABLE wxWidgets_VERSION)
-        # remove spaces and linefeed
-        string(STRIP "${wxWidgets_VERSION}" wxWidgets_VERSION)
-        # Match major.minor.revision
-        string(REGEX MATCH "^([0-9]+)\\."   wxWidgets_MAJOR_VERSION  ${wxWidgets_VERSION})
-        string(REGEX MATCH "\\.([0-9]+)\\." wxWidgets_MINOR_VERSION  ${wxWidgets_VERSION})
-        string(REGEX MATCH "\\.([0-9]+)$"   wxWidgets_RELEASE_NUMBER ${wxWidgets_VERSION})
-        # strip of '.' between numbers
-        string(REGEX MATCH "([0-9]+)"  wxWidgets_MAJOR_VERSION  ${wxWidgets_MAJOR_VERSION})
-        string(REGEX MATCH "([0-9]+)"  wxWidgets_MINOR_VERSION  ${wxWidgets_MINOR_VERSION})
-        string(REGEX MATCH "([0-9]+)"  wxWidgets_RELEASE_NUMBER ${wxWidgets_RELEASE_NUMBER})
-    else()
-        message(STATUS "* WARNING : Unable to find '${wxWidgets_ROOT_DIR}/include/wx/version.h'")
-        message(STATUS "*           Please set wxWidgets_ROOT_DIR")
+    # -----------------------------------------------------------------------
+
+    # Set the variable ${wxWidgets_MONOLITHIC}
+    set(wxWidgets_MONOLITHIC FALSE)
+    list(FIND wxWidgets_COMPONENTS mono idx_mono)
+    if (idx_mono GREATER "-1")
+        set(wxWidgets_MONOLITHIC TRUE)
     endif()
 
+    # -----------------------------------------------------------------------
     # wxWidgets has stc lib in < 2.9 and stc + scintilla lib in >= 2.9
+    # Let people specify either stc and/or scintilla
+    # -----------------------------------------------------------------------
+
     if (wxWidgets_VERSION VERSION_LESS 2.9)
         # remove these >= 2.9 libs, they should if #ifdefed it in the code
         # so we allow them to specify them as link libs, but remove them for 2.8
@@ -405,7 +424,7 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
 
         list(FIND wxWidgets_COMPONENTS scintilla idx)
         if (idx GREATER "-1")
-            message(STATUS "* Note: Linking to stc lib and not scintilla lib for wx < 2.9")
+            message(STATUS "* Note: wxWidgets libs; Linking to stc lib and not scintilla lib for wx < 2.9")
             list(REMOVE_ITEM wxWidgets_COMPONENTS scintilla)
             set(wxWidgets_COMPONENTS stc ${wxWidgets_COMPONENTS})
         endif()
@@ -417,11 +436,10 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
     else()
 
         # In 2.8 stc was in not in the mono lib, but was a separate contrib
-        list(FIND wxWidgets_COMPONENTS mono      idx_mono)
         list(FIND wxWidgets_COMPONENTS stc       idx_stc)
         list(FIND wxWidgets_COMPONENTS scintilla idx_scintilla)
 
-        if (idx_mono GREATER "-1")
+        if (wxWidgets_MONOLITHIC)
             if (idx_stc GREATER "-1")
                 message(STATUS "* Note: wxWidgets libs; automatically removing stc component for mono build in >= 2.9, but note that stc is a separate lib in 2.8.")
                 list(REMOVE_ITEM wxWidgets_COMPONENTS stc)
@@ -446,29 +464,30 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
         endif()
     endif()
 
+    # -----------------------------------------------------------------------
+
     message(STATUS "* Using these wxWidgets components: ${wxWidgets_COMPONENTS}")
 
     # Note: it is essential that 'core' is mentioned before 'base'.
     # Don't use REQUIRED since it only gives a useless error message on failure.
     find_package( wxWidgets COMPONENTS ${wxWidgets_COMPONENTS})
 
-
     # Set the variables FindwxWidgets.cmake uses so they show up in cmake-gui
     # so you'll actually have a chance to find wxWidgets...
 
-    if (MSVC)
+    if ("${wxWidgets_FIND_STYLE}" STREQUAL "win32")
 
-        # We add the version so we can swap stc and scintilla libs
-        set( wxWidgets_VERSION       ${wxWidgets_VERSION}       CACHE string "wxWidgets version e.g. 2.8, 2.9.2..." FORCE)
+        # We show the user the version so we can fix stc and scintilla libs
+        set( wxWidgets_VERSION       ${wxWidgets_VERSION}       CACHE string "wxWidgets version e.g. 2.8.3, 2.9.2..." FORCE)
         # These are used by FindwxWidgets.cmake
         set( wxWidgets_ROOT_DIR      ${wxWidgets_ROOT_DIR}      CACHE PATH   "Root directory of wxWidgets install (set 1st)" FORCE)
         set( wxWidgets_LIB_DIR       ${wxWidgets_LIB_DIR}       CACHE PATH   "Lib directory of wxWidgets install (set 2nd)" FORCE)
-        set( wxWidgets_CONFIGURATION ${wxWidgets_CONFIGURATION} CACHE string "wxWidgets configuration e.g. msw, mswd, mswu, mswunivud..." FORCE)
+        set( wxWidgets_CONFIGURATION ${wxWidgets_CONFIGURATION} CACHE string "wxWidgets configuration e.g. msw, mswd, mswu, mswud, mswunivud..." FORCE)
         set( wxWidgets_COMPONENTS    ${wxWidgets_COMPONENTS}    CACHE string "wxWidgets components: xrc;xml;gl;net;media;propgrid;richtext;aui;stc;html;adv;core;base or mono" FORCE)
 
     else()
 
-        # Multiple builds will be presented with options
+        # These may need to be set, but they're untested
         #set( wxWidgets_USE_DEBUG     ${wxWidgets_USE_DEBUG}     CACHE BOOL "Link to a Debug build of wxWidgets" FORCE)
         #set( wxWidgets_USE_UNICODE   ${wxWidgets_USE_UNICODE}   CACHE BOOL "Link to a Unicode build of wxWidgets" FORCE)
         #set( wxWidgets_USE_UNIVERSAL ${wxWidgets_USE_UNIVERSAL} CACHE BOOL "Link to a Universal build of wxWidgets" FORCE)
@@ -482,38 +501,22 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
 
     message(STATUS "* ")
 
+    # -----------------------------------------------------------------------
+
     if( wxWidgets_FOUND )
         message(STATUS "* Found wxWidgets :" )
-
-        # Get the platform, gtk, gtk2, msw, univ...  TODO
-        set(wxWidgets_PLATFORM)
-        string(REGEX MATCH "gtk2" wxWidgets_PLATFORM "${wxWidgets_LIBRARIES}" )
-        if (NOT "${wxWidgets_PLATFORM}" STREQUAL "gtk2")
-            string(REGEX MATCH "gtk" wxWidgets_PLATFORM "${wxWidgets_LIBRARIES}")
-        endif()
-
-        if (NOT wxWidgets_PLATFORM)
-            string(REGEX MATCH "mswuniv" wxWidgets_PLATFORM "${wxWidgets_LIBRARIES}")
-        endif()
-
-        if (NOT wxWidgets_PLATFORM)
-            string(REGEX MATCH "msw" wxWidgets_PLATFORM "${wxWidgets_LIBRARIES}")
-        endif()
-
-        set(wxWidgets_PLATFORM ${wxWidgets_PLATFORM} CACHE STRING "" FORCE)
 
         # Set the values from the wxWidgets_CONFIG_EXECUTABLE
         if (EXISTS ${wxWidgets_CONFIG_EXECUTABLE})
             execute_process(COMMAND ${wxWidgets_CONFIG_EXECUTABLE} --prefix OUTPUT_VARIABLE wxWidgets_ROOT_DIR)
             string(STRIP "${wxWidgets_ROOT_DIR}" wxWidgets_ROOT_DIR)
         endif()
+
+        PARSE_WXWIDGETS_LIB_NAMES()
     else()
         # Do not exit here since they may want to do something else
-        message(STATUS "* WARNING: Could not find wxWidgets! Please see help above.")
+        message(WARNING "* WARNING: Could not find wxWidgets! Please see help above.")
     endif()
-
-    # wxWidgets include (this will do all the magic to configure everything)
-    include( "${wxWidgets_USE_FILE}" )
 
     # always print out what we've found so far
     message(STATUS "* - wxWidgets_VERSION      = ${wxWidgets_VERSION} = ${wxWidgets_MAJOR_VERSION}.${wxWidgets_MINOR_VERSION}.${wxWidgets_RELEASE_NUMBER}")
@@ -525,15 +528,172 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
     message(STATUS "* - wxWidgets_DEFINITIONS  = ${wxWidgets_DEFINITIONS}" )
     message(STATUS "* - wxWidgets_DEFINITIONS_DEBUG = ${wxWidgets_DEFINITIONS_DEBUG}" )
 
-    # search through the list of components to see what we were able to find
+    message(STATUS "* - wxWidgets_PORTNAME     = ${wxWidgets_PORTNAME}" )
+    message(STATUS "* - wxWidgets_UNIVNAME     = ${wxWidgets_UNIVNAME}" )
+    message(STATUS "* - wxWidgets_UNICODEFLAG  = ${wxWidgets_UNICODEFLAG}" )
+    message(STATUS "* - wxWidgets_DEBUGFLAG    = ${wxWidgets_DEBUGFLAG}" )
 
-    set(wxWidgets_ALL_COMPONENTS gizmos ogl stc webview gl qa svg xrc media propgrid richtext aui html adv core xml net base)
+    # -----------------------------------------------------------------------
+
+    # The component list is in wxWidgets/build/bakefiles/wxwin.py
+    set(wxWidgets_ALL_COMPONENTS_29 gl stc richtext propgrid ribbon aui xrc qa media webview net xml html adv core base)
+    # contrib libs in 28 gizmos, ogl, plot, ...
+    set(wxWidgets_ALL_COMPONENTS_28 gl stc richtext                 aui xrc qa media         net xml html adv core base)
+
+    set(wxWidgets_ALL_COMPONENTS ${wxWidgets_ALL_COMPONENTS_28} ${wxWidgets_ALL_COMPONENTS_29})
+    list(REMOVE_DUPLICATES wxWidgets_ALL_COMPONENTS)
+
+    # Always verify the libs, for success or failure in finding wxWidgets.
+    VERIFY_WXWIDGETS_COMPONENTS()
+
+    message(STATUS "* ")
+
+    endif (NOT FIND_WXWIDGETS_RUN_ONCE_CALLED)
+endmacro( FIND_WXWIDGETS )
+
+
+# ---------------------------------------------------------------------------
+# Find the version of wxWidgets and set these variables:
+# wxWidgets_VERSION        : 2.8.12 or 2.9.3 for example
+# wxWidgets_MAJOR_VERSION  : 2
+# wxWidgets_MINOR_VERSION  : 8
+# wxWidgets_RELEASE_NUMBER : 12
+# wxWidgets_RELEASE        : e.g. 2.8 ir 2.9
+# wxWidgets_RELEASE_NODOT  : e.g. 28 or 29
+# ---------------------------------------------------------------------------
+
+function( DETERMINE_WXWIDGETS_VERSION )
+
+    if (EXISTS "${wxWidgets_ROOT_DIR}/include/wx/version.h")
+        # For MSW use version.h
+        FILE(STRINGS "${wxWidgets_ROOT_DIR}/include/wx/version.h" wxWidgets_MAJOR_VERSION  REGEX "#define wxMAJOR_VERSION[^0-9]*([0-9]+)")
+        FILE(STRINGS "${wxWidgets_ROOT_DIR}/include/wx/version.h" wxWidgets_MINOR_VERSION  REGEX "#define wxMINOR_VERSION[^0-9]*([0-9]+)")
+        FILE(STRINGS "${wxWidgets_ROOT_DIR}/include/wx/version.h" wxWidgets_RELEASE_NUMBER REGEX "#define wxRELEASE_NUMBER[^0-9]*([0-9]+)")
+
+        string(REGEX MATCH "([0-9]+)" wxWidgets_MAJOR_VERSION  "${wxWidgets_MAJOR_VERSION}")
+        string(REGEX MATCH "([0-9]+)" wxWidgets_MINOR_VERSION  "${wxWidgets_MINOR_VERSION}")
+        string(REGEX MATCH "([0-9]+)" wxWidgets_RELEASE_NUMBER "${wxWidgets_RELEASE_NUMBER}")
+
+        if (wxWidgets_MAJOR_VERSION) # AND wxWidgets_MINOR_VERSION AND wxWidgets_RELEASE_NUMBER)
+            set( wxWidgets_VERSION "${wxWidgets_MAJOR_VERSION}.${wxWidgets_MINOR_VERSION}.${wxWidgets_RELEASE_NUMBER}")
+        endif()
+    elseif (EXISTS ${wxWidgets_CONFIG_EXECUTABLE})
+        # For Unix use wx-config script
+        execute_process(COMMAND ${wxWidgets_CONFIG_EXECUTABLE} --version OUTPUT_VARIABLE wxWidgets_VERSION)
+        # remove spaces and linefeed
+        string(STRIP "${wxWidgets_VERSION}" wxWidgets_VERSION)
+        # Match major.minor.revision
+        string(REGEX MATCH "^([0-9]+)\\."   wxWidgets_MAJOR_VERSION  ${wxWidgets_VERSION})
+        string(REGEX MATCH "\\.([0-9]+)\\." wxWidgets_MINOR_VERSION  ${wxWidgets_VERSION})
+        string(REGEX MATCH "\\.([0-9]+)$"   wxWidgets_RELEASE_NUMBER ${wxWidgets_VERSION})
+        # strip off '.' between numbers
+        string(REGEX MATCH "([0-9]+)"  wxWidgets_MAJOR_VERSION  ${wxWidgets_MAJOR_VERSION})
+        string(REGEX MATCH "([0-9]+)"  wxWidgets_MINOR_VERSION  ${wxWidgets_MINOR_VERSION})
+        string(REGEX MATCH "([0-9]+)"  wxWidgets_RELEASE_NUMBER ${wxWidgets_RELEASE_NUMBER})
+    else()
+        message(STATUS "* WARNING : Unable to find '${wxWidgets_ROOT_DIR}/include/wx/version.h'")
+        # Note: We can't use ("${wxWidgets_FIND_STYLE}" STREQUAL "win32") before calling the find wxWidgets script
+        IF(WIN32 AND NOT CYGWIN AND NOT MSYS)
+            message(STATUS "*           Please set wxWidgets_ROOT_DIR to point to the root wxWidgets build dir.")
+        ELSE()
+            message(STATUS "*           Please set wxWidgets_CONFIG_EXECUTABLE to point to wx-config script.")
+        ENDIF()
+    endif()
+
+    set(wxWidgets_VERSION        "${wxWidgets_VERSION}"        CACHE STRING "The wxWidgets version to compile and link against. (e.g. 2.9.3)")
+    set(wxWidgets_MAJOR_VERSION  "${wxWidgets_MAJOR_VERSION}"  CACHE STRING "")
+    set(wxWidgets_MINOR_VERSION  "${wxWidgets_MINOR_VERSION}"  CACHE STRING "")
+    set(wxWidgets_RELEASE_NUMBER "${wxWidgets_RELEASE_NUMBER}" CACHE STRING "")
+
+    set(wxWidgets_RELEASE       "${wxWidgets_MAJOR_VERSION}.${wxWidgets_MINOR_VERSION}" CACHE STRING "")
+    set(wxWidgets_RELEASE_NODOT "${wxWidgets_MAJOR_VERSION}${wxWidgets_MINOR_VERSION}" CACHE STRING "")
+
+    mark_as_advanced( wxWidgets_MAJOR_VERSION
+                      wxWidgets_MINOR_VERSION
+                      wxWidgets_RELEASE_NUMBER
+                      wxWidgets_RELEASE
+                      wxWidgets_RELEASE_NODOT )
+
+endfunction( DETERMINE_WXWIDGETS_VERSION )
+
+# ---------------------------------------------------------------------------
+# Internal use function to parse the wxWidgets lib names and set the
+# wxWidgets_PORTNAME, wxWidgets_UNIVNAME, wxWidgets_UNICODEFLAG, wxWidgets_DEBUGFLAG
+# variables.
+# ---------------------------------------------------------------------------
+
+function( PARSE_WXWIDGETS_LIB_NAMES )
+
+    # Test each port, use the lib name to get the port, unicode, and debug
+    # wxmsw28[ud]_core.lib, wxmswuniv29[ud]_core.lib, wx_gtk2u_core-2.8.so
+    # wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR).lib
+
+    set(wxWidgets_PORTNAME    "" CACHE STRING "wxWidgets port; 'msw', 'gtk1', 'gtk2'..." FORCE)
+    set(wxWidgets_UNIVNAME    "" CACHE STRING "wxWidgets universal build, either 'univ' or ''" FORCE)
+    set(wxWidgets_UNICODEFLAG "" CACHE STRING "wxWidgets unicode build, either 'u' or ''" FORCE)
+    set(wxWidgets_DEBUGFLAG   "" CACHE STRING "wxWidgets debug build, either 'd' or ''" FORCE)
+
+    if ("${wxWidgets_PORTNAME}" STREQUAL "")
+        string(REGEX MATCH "wx(msw)(univ)?([0-9][0-9])(u)?(d)?_core" _match_msw "${wxWidgets_LIBRARIES}")
+
+        if (NOT "${_match_msw}" STREQUAL "")
+            set(wxWidgets_PORTNAME    "${CMAKE_MATCH_1}" )
+            set(wxWidgets_UNIVNAME    "${CMAKE_MATCH_2}" )
+            #set(wxWidgets_LIB_VERSION "${CMAKE_MATCH_3}" )
+            set(wxWidgets_UNICODEFLAG "${CMAKE_MATCH_4}" )
+            set(wxWidgets_DEBUGFLAG   "${CMAKE_MATCH_5}" )
+        endif()
+    endif()
+
+    if ("${wxWidgets_PORTNAME}" STREQUAL "")
+        string(REGEX MATCH "wx_(gtk[12]?)(univ)?(u)?(d)?_core-([0-9].[0-9])" _match_gtk "${wxWidgets_LIBRARIES}")
+
+        if (NOT "${_match_gtk}" STREQUAL "")
+            set(wxWidgets_PORTNAME    "${CMAKE_MATCH_1}" )
+            set(wxWidgets_UNIVNAME    "${CMAKE_MATCH_2}" )
+            set(wxWidgets_UNICODEFLAG "${CMAKE_MATCH_3}" )
+            set(wxWidgets_DEBUGFLAG   "${CMAKE_MATCH_4}" )
+            #set(wxWidgets_LIB_VERSION "${CMAKE_MATCH_5}" )
+        endif()
+    endif()
+
+    if ("${wxWidgets_PORTNAME}" STREQUAL "")
+        message(WARNING "WARNING: Unable to find wxWidgets_PORTNAME/UNIVNAME/UNICODEFLAG/DEBUGFLAG from lib names! You may have to add code to CMake to help it parse your wxWidgets lib names.")
+    endif()
+
+    set(wxWidgets_PORTNAME    "${wxWidgets_PORTNAME}"    CACHE STRING "wxWidgets port; 'msw', 'gtk1', 'gtk2'..." FORCE)
+    set(wxWidgets_UNIVNAME    "${wxWidgets_UNIVNAME}"    CACHE STRING "wxWidgets universal build, either 'univ' or ''" FORCE)
+    set(wxWidgets_UNICODEFLAG "${wxWidgets_UNICODEFLAG}" CACHE STRING "wxWidgets unicode build, either 'u' or ''" FORCE)
+    set(wxWidgets_DEBUGFLAG   "${wxWidgets_DEBUGFLAG}"   CACHE STRING "wxWidgets debug build, either 'd' or ''" FORCE)
+
+    mark_as_advanced( wxWidgets_PORTNAME
+                      wxWidgets_UNIVNAME
+                      wxWidgets_UNICODEFLAG
+                      wxWidgets_DEBUGFLAG )
+
+endfunction(PARSE_WXWIDGETS_LIB_NAMES)
+
+# ---------------------------------------------------------------------------
+# Internal use function to verify that we found all of the desired
+# wxWidgets_COMPONENTS and give a useful message about which ones we didn't find.
+# Sets the variables WX_HASLIB_${wx_comp} where each wx_comp is from the
+# wxWidgets_ALL_COMPONENTS list.
+# ---------------------------------------------------------------------------
+
+function( VERIFY_WXWIDGETS_COMPONENTS )
+
+    # Search through the list of components to see what we were able to find.
+    # CMake's find_package for wxWidgets fails on missing components and for
+    # some reason CMake's find function gives no indication as to why it failed
+    # which makes it difficult, if not impossible, to ever 'find' wxWidgets.
+
     # In Linux using wx-config the WX_{base/core/etc} vars are not set.
-    # Mark all libs as not found
+    # Mark all libs as not found.
     foreach( wx_comp ${wxWidgets_ALL_COMPONENTS} )
         set(WX_HASLIB_${wx_comp} FALSE CACHE INTERNAL "")
     endforeach()
 
+    # Set the WX_HASLIB_${wx_comp} variables to TRUE/FALSE for all components
     foreach( wx_comp ${wxWidgets_ALL_COMPONENTS} )
         set(wx_comp_found FALSE)
 
@@ -545,6 +705,7 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
                 endif()
             endif()
 
+            # strip off paths that may match the regex
             get_filename_component(wx_comp_lib_name ${wx_comp_lib} NAME_WE)
             string(REGEX MATCH ${wx_comp} wx_comp_found ${wx_comp_lib_name})
 
@@ -559,11 +720,12 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
         endforeach()
 
         if (${wx_comp_found})
-            set(WX_HASLIB_${wx_comp} TRUE)
+            set(WX_HASLIB_${wx_comp} TRUE CACHE INTERNAL "")
             #message("found ${wx_comp}")
         endif()
     endforeach()
 
+    # Verify that all requested components were found
     foreach( wx_comp ${wxWidgets_COMPONENTS} )
         set(wx_comp_found FALSE)
 
@@ -575,6 +737,7 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
                 endif()
             endif()
 
+            # strip off paths that may match the regex
             get_filename_component(wx_comp_lib_name ${wx_comp_lib} NAME_WE)
             string(REGEX MATCH ${wx_comp} wx_comp_match ${wx_comp_lib_name})
 
@@ -593,11 +756,42 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
         endif()
     endforeach()
 
-    message(STATUS "* ")
+endfunction(VERIFY_WXWIDGETS_COMPONENTS)
 
-    unset(wx_comp)
-    unset(wx_comp_found)
-    unset(wx_comp_lib)
-    unset(wx_comp_lib_name)
+# ---------------------------------------------------------------------------
+# Set the output names for a library target to include what flavor of
+# wxWidgets was used to compile/link against to allow multiple flavors in the same dir.
+# The libs will be named like this: ${lib_prefix}-wx28mswud-${lib_postfix}
+# lib_prefix should be the name of your lib and lib_postfix the version.
+# ---------------------------------------------------------------------------
+macro( WXLIKE_LIBRARY_NAMES target_name lib_prefix lib_postfix )
 
-endmacro( FIND_WXWIDGETS )
+    # wxWidgets names their libaries this way - note MSW and Unix are different
+    # wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR).lib
+    # wxmsw28[ud]_core.lib, wx_gtk2[ud]_core-2.8.so
+
+    if (WIN32)
+        # Don't use ${wxWidgets_DEBUGFLAG} since in MSW you MUST link to either
+        # the debug or release MSCRT libs so if you're building debug, wxWidgets must be debug too.
+        SET( _libname_debug   "wx${wxWidgets_RELEASE_NODOT}${wxWidgets_PORTNAME}${wxWidgets_UNIVNAME}${wxWidgets_UNICODEFLAG}d")
+        SET( _libname_release "wx${wxWidgets_RELEASE_NODOT}${wxWidgets_PORTNAME}${wxWidgets_UNIVNAME}${wxWidgets_UNICODEFLAG}")
+    else()
+        # In Unix we can link our release lib to wxWidgets debug lib and vice versa.
+        SET( _libname_debug   "wx${wxWidgets_RELEASE_NODOT}${wxWidgets_PORTNAME}${wxWidgets_UNIVNAME}${wxWidgets_UNICODEFLAG}${wxWidgets_DEBUGFLAG}")
+        SET( _libname_release "wx${wxWidgets_RELEASE_NODOT}${wxWidgets_PORTNAME}${wxWidgets_UNIVNAME}${wxWidgets_UNICODEFLAG}${wxWidgets_DEBUGFLAG}")
+    endif()
+
+    if (NOT "${lib_prefix}" STREQUAL "")
+        SET( _libname_debug   "${lib_prefix}-${_libname_debug}")
+        SET( _libname_release "${lib_prefix}-${_libname_release}")
+    endif()
+    if (NOT "${lib_postfix}" STREQUAL "")
+        SET( _libname_debug   "${_libname_debug}-${lib_postfix}")
+        SET( _libname_release "${_libname_release}-${lib_postfix}")
+    endif()
+
+    set_target_properties(${target_name} PROPERTIES DEBUG_OUTPUT_NAME          ${_libname_debug})
+    set_target_properties(${target_name} PROPERTIES RELEASE_OUTPUT_NAME        ${_libname_release})
+    set_target_properties(${target_name} PROPERTIES MINSIZEREL_OUTPUT_NAME     ${_libname_release})
+    set_target_properties(${target_name} PROPERTIES RELWITHDEBINFO_OUTPUT_NAME ${_libname_release})
+endmacro()

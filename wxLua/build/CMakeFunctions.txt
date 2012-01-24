@@ -248,7 +248,7 @@ ENDFUNCTION()
 # ---------------------------------------------------------------------------
 FUNCTION( ADD_SUBDIRECTORY source_dir )
 
-    # Get path from root directory to where we are now
+    # Get path from root CMake directory to where we are now
     STRING(REGEX REPLACE "${CMAKE_HOME_DIRECTORY}[/]*" "" PROJ_DIR_TEMP ${CMAKE_CURRENT_SOURCE_DIR})
 
     IF (PROJ_DIR_TEMP)
