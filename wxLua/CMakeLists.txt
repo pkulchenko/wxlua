@@ -107,3 +107,6 @@ endif()
 if (NOT TARGET wxLuaCan)
     add_subdirectory( apps/ )
 endif()
+
+export( TARGETS LuaLib wxLuaLib wxLuaDebugLib wxLuaSocketLib wxLuaBindLib
+        FILE "${CMAKE_BINARY_DIR}/build/wxLua-config.cmake")

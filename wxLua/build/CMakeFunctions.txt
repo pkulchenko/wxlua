@@ -562,10 +562,26 @@ function( ADD_LIBRARY_FULL target_name )
     #INSTALL(FILES
     #    ${HEADER_FILES} DESTINATION "include/${PROJ_DIR_TEMP}")
 
+    # INSTALL(... EXPORT ...) appears to be overealous at best or just broken.
+    # If you have targetA and targetB depends on A you have to do this.
+    # In targetA directory :
+    #   INSTALL(TARGETS targetA EXPORT targetA_exports ...)
+    #   INSTALL(TARGETS targetA EXPORT targetB_exports ...)
+    #   INSTALL(EXPORT targetA_exports DESTINATION ...)
+    # In targetB directory :
+    #   INSTALL(TARGETS targetA EXPORT targetB_exports ...)
+    #   INSTALL(EXPORT targetA_exports DESTINATION ...)
+    # So this cannot be made to work when you chain together CMakeLists.txt
+    # for targetA and targetB when targetA may not know about B.
+    # Ideally, targetA and targetB simply install their own export files
+    # so that targetC can import them both. There is no reason that
+    # targetB absolutely must export targetA, but I don't know how to do that.
+
     INSTALL(TARGETS ${target_name}
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib)
+            #EXPORT  ${target_name}_exports
+            RUNTIME DESTINATION bin
+            LIBRARY DESTINATION lib
+            ARCHIVE DESTINATION lib)
 
 endfunction()
 
@@ -723,9 +739,9 @@ function( ADD_EXECUTABLE_FULL target_name )
     endif()
 
     INSTALL(TARGETS ${target_name}
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib)
+            RUNTIME DESTINATION bin
+            LIBRARY DESTINATION lib
+            ARCHIVE DESTINATION lib)
 
 endfunction()
 
