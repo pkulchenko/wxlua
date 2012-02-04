@@ -65,6 +65,19 @@ int LUACALL wxlua_printFunction( lua_State *L )
 {
     wxLuaState wxlState(L); // doesn't have to be ok
 
+    // If the wxLuaState is not going to print, we'll let Lua print normally
+    if (!wxlState.Ok() || (wxlState.GetEventHandler() == NULL) || !wxApp::IsMainLoopRunning())
+    {
+        // Get our saved copy of the Lua's print function from the registry
+        lua_pushlstring(L, "print_lua", 9);
+        lua_rawget( L, LUA_REGISTRYINDEX ); // pop key, push print function
+
+        lua_CFunction lua_print = lua_tocfunction(L, -1);
+        lua_pop(L, 1);                      // pop the print function
+        return lua_print(L);
+    }
+
+    // The wxLuaState can print by sending an event
     wxString msg;
     int i, n = lua_gettop(L);
 
@@ -99,14 +112,14 @@ int LUACALL wxlua_printFunction( lua_State *L )
         lua_pop(L, 1);  /* pop result */
     }
 
-    if (!msg.IsEmpty() && wxlState.Ok() && wxApp::IsMainLoopRunning())
+    if (!msg.IsEmpty())
     {
         wxLuaEvent event(wxEVT_LUA_PRINT, wxlState.GetId(), wxlState);
         event.SetString(msg);
         wxlState.SendEvent(event);
     }
-    else if (!msg.IsEmpty())
-        wxPrintf(wxT("%s\n"), msg.c_str()); // Lua puts a \n too
+    //else if (!msg.IsEmpty())
+    //    wxPrintf(wxT("%s\n"), msg.c_str()); // Lua puts a \n too
 
     return 0; // no items put onto stack
 }
@@ -2572,12 +2585,17 @@ bool wxLuaState::Create(lua_State* L, int state_type)
         // Create a table for top level wxWindows
         wxlua_lreg_createtable(L, &wxlua_lreg_topwindows_key);
 
-        // copy Lua's print function in case someone really wants to use it
+        // copy Lua's print function in case someone wants to use it
         lua_pushlstring(L, "print", 5);
         lua_rawget( L, LUA_GLOBALSINDEX );  // pop key, push print function
         lua_pushlstring(L, "print_lua", 9);
         lua_pushvalue(L, -2);               // copy print function
         lua_rawset(L, LUA_GLOBALSINDEX);    // set t[key] = value, pops key and value
+
+        lua_pushlstring(L, "print_lua", 9); // also keep a permanent copy in registry
+        lua_pushvalue(L, -2);               // copy print function
+        lua_rawset(L, LUA_REGISTRYINDEX);   // set t[key] = value, pops key and value
+
         lua_pop(L, 1);                      // pop the print function
 
         // register wxLua's print handler to send events, replaces Lua's print function

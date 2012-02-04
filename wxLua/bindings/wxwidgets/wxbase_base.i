@@ -188,14 +188,14 @@
     wxPORT_MSW          // wxMSW, native toolkit is Windows API
     wxPORT_MOTIF        // wxMotif, using [Open]Motif or Lesstif
     wxPORT_GTK          // wxGTK, using GTK+ 1.x, 2.x, GPE or Maemo
-    wxPORT_MGL          // wxMGL, using wxUniversal
+    !%wxchkver_2_9 wxPORT_MGL          // wxMGL, using wxUniversal
     wxPORT_X11          // wxX11, using wxUniversal
     wxPORT_PM           // wxOS2, using OS/2 Presentation Manager
     wxPORT_OS2          // wxOS2, using OS/2 Presentation Manager
     wxPORT_MAC          // wxMac, using Carbon or Classic Mac API
     wxPORT_COCOA        // wxCocoa, using Cocoa NextStep/Mac API
     wxPORT_WINCE        // wxWinCE, toolkit is WinCE SDK API
-    wxPORT_PALMOS       // wxPalmOS, toolkit is PalmOS API
+    !%wxchkver_2_9 wxPORT_PALMOS       // wxPalmOS, toolkit is PalmOS API
     wxPORT_DFB          // wxDFB, using wxUniversal
 %endenum
 

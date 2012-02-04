@@ -2829,13 +2829,13 @@ function sudokuGUI.OnKeyDownCellWindow(event)
         [wx.WXK_RIGHT]      = 1,  [wx.WXK_NUMPAD_RIGHT] = 1,
         [wx.WXK_DOWN]       = 9,  [wx.WXK_NUMPAD_DOWN]  = 9,
 
-        [wx.WXK_PAGEUP]     = -9, [wx.WXK_PRIOR] = -9,
-        [wx.WXK_PAGEDOWN]   = 9,  [wx.WXK_NEXT]  = 9,
+        [wx.WXK_PAGEUP]     = -9,
+        [wx.WXK_PAGEDOWN]   = 9,
 
         [wx.WXK_NUMPAD_HOME]     = -10,
-        [wx.WXK_NUMPAD_PAGEUP]   = -8, [wx.WXK_NUMPAD_PRIOR] = -8,
+        [wx.WXK_NUMPAD_PAGEUP]   = -8,
         [wx.WXK_NUMPAD_END]      = 8,
-        [wx.WXK_NUMPAD_PAGEDOWN] = 10, [wx.WXK_NUMPAD_NEXT]  = 10,
+        [wx.WXK_NUMPAD_PAGEDOWN] = 10,
 
         [wx.WXK_TAB]          = 1,
         [wx.WXK_RETURN]       = 1,

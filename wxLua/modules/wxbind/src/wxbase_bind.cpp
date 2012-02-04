@@ -709,11 +709,19 @@ wxLuaBindNumber* wxLuaGetDefineList_wxbase(size_t &count)
         { "wxPORT_DFB", wxPORT_DFB },
         { "wxPORT_GTK", wxPORT_GTK },
         { "wxPORT_MAC", wxPORT_MAC },
+
+#if !wxCHECK_VERSION(2,9,0)
         { "wxPORT_MGL", wxPORT_MGL },
+#endif // !wxCHECK_VERSION(2,9,0)
+
         { "wxPORT_MOTIF", wxPORT_MOTIF },
         { "wxPORT_MSW", wxPORT_MSW },
         { "wxPORT_OS2", wxPORT_OS2 },
+
+#if !wxCHECK_VERSION(2,9,0)
         { "wxPORT_PALMOS", wxPORT_PALMOS },
+#endif // !wxCHECK_VERSION(2,9,0)
+
         { "wxPORT_PM", wxPORT_PM },
         { "wxPORT_UNKNOWN", wxPORT_UNKNOWN },
         { "wxPORT_WINCE", wxPORT_WINCE },
