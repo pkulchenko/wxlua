@@ -96,6 +96,11 @@ SETUP_wxLua()
 
 set( wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE PATH "Root dir of wxLua" FORCE)
 
+set( wxLua_VERSION         "2.9.3" )
+set( wxLua_MAJOR_VERSION   "2" )
+set( wxLua_MINOR_VERSION   "9" )
+set( wxLua_RELEASE_VERSION "3" )
+
 ADD_CPPCHECK_TEST(wxLua_CppCheck)
 
 include_directories(${wxLua_ROOT_DIR}/modules/wxbind/setup)
