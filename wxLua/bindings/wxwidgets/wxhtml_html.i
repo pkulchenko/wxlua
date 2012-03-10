@@ -29,7 +29,11 @@
 
     // %override bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks)
     // C++ Func: bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks)
-    %not_overload %wxchkver_2_8 virtual bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks)
+    %not_overload %wxchkver_2_8 & !%wxchkver_2_9 virtual bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks)
+
+    // %override bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks, int pageHeight)
+    // C++ Func: bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks, int pageHeight)
+    %not_overload %wxchkver_2_9 virtual bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks, int pageHeight)
 
     //virtual void Draw(wxDC& dc, int x, int y, int view_y1, int view_y2, wxHtmlRenderingInfo& info)
     //virtual void DrawInvisible(wxDC& dc, int x, int y, wxHtmlRenderingInfo& info)

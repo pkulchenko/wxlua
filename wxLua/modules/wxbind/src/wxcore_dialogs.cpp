@@ -1448,7 +1448,7 @@ static int LUACALL wxLua_wxSingleChoiceDialog_constructor(lua_State *L)
     // wxWindow parent
     wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call constructor
-    wxSingleChoiceDialog *returns = new wxSingleChoiceDialog(parent, message, caption, choices, NULL, style, *pos);
+    wxSingleChoiceDialog *returns = new wxSingleChoiceDialog(parent, message, caption, choices, (char**)NULL, style, *pos);
     // add to tracked window list
     if (returns && returns->IsKindOf(CLASSINFO(wxWindow)))
         wxluaW_addtrackedwindow(L, (wxWindow*)returns);

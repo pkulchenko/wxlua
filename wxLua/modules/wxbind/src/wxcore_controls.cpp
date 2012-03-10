@@ -11660,7 +11660,7 @@ static int LUACALL wxLua_wxLuaTreeItemData_GetData(lua_State *L)
     // push the result datatype
     if ((returns == NULL) || !returns->GetObject(L))
         lua_pushnil(L);
-    
+
     return 1;
 }
 
@@ -11676,7 +11676,7 @@ static int LUACALL wxLua_wxLuaTreeItemData_SetData(lua_State *L)
     //wxLuaObject * obj = (wxLuaObject *)wxluaT_getuserdatatype(L, 2, wxluatype_wxLuaObject);
     //if (wxluaO_isgcobject(L, obj)) wxluaO_undeletegcobject(L, obj);
     wxLuaObject* obj = new wxLuaObject(L, 2);
-    
+
     // get this
     wxLuaTreeItemData * self = (wxLuaTreeItemData *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLuaTreeItemData);
     // call SetData
@@ -11699,8 +11699,8 @@ static int LUACALL wxLua_wxLuaTreeItemData_constructor1(lua_State *L)
     // wxLuaObject obj
     //wxLuaObject * obj = (wxLuaObject *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLuaObject);
     //if (wxluaO_isgcobject(L, obj)) wxluaO_undeletegcobject(L, obj);
-    wxLuaObject* obj = new wxLuaObject(L, 1);    
-    
+    wxLuaObject* obj = new wxLuaObject(L, 1);
+
     // call constructor
     wxLuaTreeItemData* returns = new wxLuaTreeItemData(obj);
     // add to tracked memory list
