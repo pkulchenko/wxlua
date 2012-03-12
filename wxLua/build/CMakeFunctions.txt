@@ -211,7 +211,27 @@ UNSET(ADD_CPPCHECK_TEST_DIR_NAME_LIST CACHE)
 # PRINT_TARGET() - Print all the information about the target.
 # ---------------------------------------------------------------------------
 FUNCTION( PRINT_TARGET target_name )
-	MESSAGE( STATUS ": Printing all information about target : ${target_name}" )
+
+    message( STATUS "----------------------------------------------------------------------------")
+    message( STATUS "- Printing all information about target : ${target_name}")
+    message( STATUS "----------------------------------------------------------------------------")
+
+    set(VAR_POSTFIXES
+        _BINARY_DIR
+        _DIRECTORY
+        _HEADER_FILES
+        _OBJECT_FILES
+        _ROOT_DIR
+        _SETUP_INCLUDE_PATH
+        _SOURCE_DIR
+        _SOURCE_FILES
+    )
+
+    foreach(var_postfix ${VAR_POSTFIXES})
+        if (DEFINED ${target_name}${var_postfix})
+            MESSAGE(STATUS " - ${target_name}${var_postfix} = ${${target_name}${var_postfix}}")
+        endif()
+    endforeach()
 
     set(_CONFIGS Release Debug RelWithDebInfo MinSizeRel)
 
@@ -334,7 +354,7 @@ FUNCTION( PRINT_TARGET target_name )
 
             get_target_property(_${p2} ${target_name} "${p2}")
             if(NOT "_${p2}" MATCHES "-NOTFOUND$")
-                message(STATUS " : ${p2} = ${_${p2}}")
+                message(STATUS " - ${p2} = ${_${p2}}")
             endif()
 
             # We do it this way since foreach() won't even be run once for an "" empty string
@@ -397,9 +417,11 @@ FUNCTION( PRINT_TARGET target_name )
         set(cxx_flags ${cxx_flags} ${CMAKE_CXX_FLAGS})
         list(REMOVE_DUPLICATES cxx_flags)
 
-    message("CXX FLAGS ${cxx_flags} ${list_dir}")
+    message(STATUS " - CXX FLAGS = ${cxx_flags} ${list_dir}")
 
-
+    message( STATUS "----------------------------------------------------------------------------")
+    message( STATUS "- End printing all information about target : ${target_name}")
+    message( STATUS "----------------------------------------------------------------------------")
 	MESSAGE( STATUS " ")
 ENDFUNCTION()
 
