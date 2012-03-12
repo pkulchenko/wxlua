@@ -206,6 +206,230 @@ UNSET(ADD_CPPCHECK_TEST_LIST CACHE)
 UNSET(ADD_CPPCHECK_TEST_DIR_LIST CACHE)
 UNSET(ADD_CPPCHECK_TEST_DIR_NAME_LIST CACHE)
 
+
+# ---------------------------------------------------------------------------
+# PRINT_TARGET() - Print all the information about the target.
+# ---------------------------------------------------------------------------
+FUNCTION( PRINT_TARGET target_name )
+	MESSAGE( STATUS ": Printing all information about target : ${target_name}" )
+
+    set(_CONFIGS Release Debug RelWithDebInfo MinSizeRel)
+
+    set(_TARGET_PROPS
+        #<CONFIG>_OUTPUT_NAME deprecated
+        #<CONFIG>_POSTFIX
+        ARCHIVE_OUTPUT_DIRECTORY
+        ARCHIVE_OUTPUT_DIRECTORY_<CONFIG>
+        ARCHIVE_OUTPUT_NAME
+        ARCHIVE_OUTPUT_NAME_<CONFIG>
+        AUTOMOC
+        AUTOMOC_MOC_OPTIONS
+        BUILD_WITH_INSTALL_RPATH
+        BUNDLE
+        BUNDLE_EXTENSION
+        COMPILE_DEFINITIONS
+        COMPILE_DEFINITIONS_<CONFIG>
+        COMPILE_FLAGS
+        DEBUG_POSTFIX
+        DEFINE_SYMBOL
+        ENABLE_EXPORTS
+        EXCLUDE_FROM_ALL
+        EchoString
+        FOLDER
+        FRAMEWORK
+        Fortran_FORMAT
+        Fortran_MODULE_DIRECTORY
+        GENERATOR_FILE_NAME
+        GNUtoMS
+        HAS_CXX
+        IMPLICIT_DEPENDS_INCLUDE_TRANSFORM
+        IMPORTED
+        IMPORTED_CONFIGURATIONS
+        IMPORTED_IMPLIB
+        IMPORTED_IMPLIB_<CONFIG>
+        IMPORTED_LINK_DEPENDENT_LIBRARIES
+        IMPORTED_LINK_DEPENDENT_LIBRARIES_<CONFIG>
+        IMPORTED_LINK_INTERFACE_LANGUAGES
+        IMPORTED_LINK_INTERFACE_LANGUAGES_<CONFIG>
+        IMPORTED_LINK_INTERFACE_LIBRARIES
+        IMPORTED_LINK_INTERFACE_LIBRARIES_<CONFIG>
+        IMPORTED_LINK_INTERFACE_MULTIPLICITY
+        IMPORTED_LINK_INTERFACE_MULTIPLICITY_<CONFIG>
+        IMPORTED_LOCATION
+        IMPORTED_LOCATION_<CONFIG>
+        IMPORTED_NO_SONAME
+        IMPORTED_NO_SONAME_<CONFIG>
+        IMPORTED_SONAME
+        IMPORTED_SONAME_<CONFIG>
+        IMPORT_PREFIX
+        IMPORT_SUFFIX
+        INSTALL_NAME_DIR
+        INSTALL_RPATH
+        INSTALL_RPATH_USE_LINK_PATH
+        INTERPROCEDURAL_OPTIMIZATION
+        INTERPROCEDURAL_OPTIMIZATION_<CONFIG>
+        LABELS
+        LIBRARY_OUTPUT_DIRECTORY
+        LIBRARY_OUTPUT_DIRECTORY_<CONFIG>
+        LIBRARY_OUTPUT_NAME
+        LIBRARY_OUTPUT_NAME_<CONFIG>
+        LINKER_LANGUAGE
+        LINK_DEPENDS
+        LINK_FLAGS
+        LINK_FLAGS_<CONFIG>
+        LINK_INTERFACE_LIBRARIES
+        LINK_INTERFACE_LIBRARIES_<CONFIG>
+        LINK_INTERFACE_MULTIPLICITY
+        LINK_INTERFACE_MULTIPLICITY_<CONFIG>
+        LINK_SEARCH_END_STATIC
+        LINK_SEARCH_START_STATIC
+        LOCATION
+        LOCATION_<CONFIG>
+        MACOSX_BUNDLE
+        MACOSX_BUNDLE_INFO_PLIST
+        MACOSX_FRAMEWORK_INFO_PLIST
+        MAP_IMPORTED_CONFIG_<CONFIG>
+        OSX_ARCHITECTURES
+        OSX_ARCHITECTURES_<CONFIG>
+        OUTPUT_NAME
+        OUTPUT_NAME_<CONFIG>
+        POST_INSTALL_SCRIPT
+        PREFIX
+        PRE_INSTALL_SCRIPT
+        PRIVATE_HEADER
+        PROJECT_LABEL
+        PUBLIC_HEADER
+        RESOURCE
+        RULE_LAUNCH_COMPILE
+        RULE_LAUNCH_CUSTOM
+        RULE_LAUNCH_LINK
+        RUNTIME_OUTPUT_DIRECTORY
+        RUNTIME_OUTPUT_DIRECTORY_<CONFIG>
+        RUNTIME_OUTPUT_NAME
+        RUNTIME_OUTPUT_NAME_<CONFIG>
+        SKIP_BUILD_RPATH
+        SOURCES
+        SOVERSION
+        STATIC_LIBRARY_FLAGS
+        STATIC_LIBRARY_FLAGS_<CONFIG>
+        SUFFIX
+        TYPE
+        VERSION
+        VS_DOTNET_REFERENCES
+        #VS_GLOBAL_<variable>
+        VS_GLOBAL_KEYWORD
+        VS_GLOBAL_PROJECT_TYPES
+        VS_KEYWORD
+        VS_SCC_AUXPATH
+        VS_SCC_LOCALPATH
+        VS_SCC_PROJECTNAME
+        VS_SCC_PROVIDER
+        WIN32_EXECUTABLE
+        #XCODE_ATTRIBUTE_<an-attribute>
+    )
+
+    foreach(p ${_TARGET_PROPS})
+        foreach(c ${_CONFIGS})
+            string(REPLACE "<CONFIG>" "${c}" p2 "${p}")
+
+            get_target_property(_${p2} ${target_name} "${p2}")
+            if(NOT "_${p2}" MATCHES "-NOTFOUND$")
+                message(STATUS " : ${p2} = ${_${p2}}")
+            endif()
+
+            # We do it this way since foreach() won't even be run once for an "" empty string
+            if ("${p}" STREQUAL "${p2}")
+                 break()
+            endif()
+        endforeach()
+    endforeach()
+
+    set(list_dir "${${target_name}_DIRECTORY}")
+
+    set(cxx_flags ${CMAKE_CXX_FLAGS})
+
+    if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+        set(cxx_flags ${cxx_flags} ${CMAKE_CXX_FLAGS_DEBUG})
+    endif()
+
+        get_target_property(target_type ${target_name} TYPE)
+        if ("${target_type}" STREQUAL "SHARED_LIBRARY")
+            set(cxx_flags ${cxx_flags} ${CMAKE_SHARED_LIBRARY_CXX_FLAGS})
+
+            get_target_property(target_define_symbol ${target_name} DEFINE_SYMBOL)
+            if (target_define_symbol)
+                list(APPEND cxx_flags "-D${target_define_symbol}")
+            else()
+                list(APPEND cxx_flags "-D${target_name}_EXPORTS")
+            endif()
+        endif()
+
+        get_target_property(target_flags ${target_name} COMPILE_FLAGS)
+        if (target_flags)
+            set(cxx_flags ${cxx_flags} ${target_flags})
+            set(target_flags "${target_flags};") # append ; for use later
+        else()
+            set(target_flags) # clear it for use later
+        endif()
+
+        get_target_property(target_defs ${target_name} COMPILE_DEFINITIONS)
+        if (target_defs)
+            foreach (i ${target_defs})
+                list(APPEND cxx_flags "-D${i}")
+            endforeach()
+        endif()
+
+        #set(list_dir ${CMAKE_CURRENT_LIST_DIR})
+        #while (EXISTS ${list_dir})
+            get_directory_property( dir_defs DIRECTORY ${list_dir} COMPILE_DEFINITIONS)
+            foreach (i ${dir_defs})
+                list(APPEND cxx_flags "-D${i}")
+            endforeach()
+
+            get_directory_property(dir_includes DIRECTORY ${list_dir} INCLUDE_DIRECTORIES)
+            foreach (i ${dir_includes})
+                list(APPEND cxx_flags "-I${i}")
+            endforeach()
+
+            #get_directory_property(list_dir DIRECTORY ${list_dir} PARENT_DIRECTORY)
+        #endwhile()
+
+        set(cxx_flags ${cxx_flags} ${CMAKE_CXX_FLAGS})
+        list(REMOVE_DUPLICATES cxx_flags)
+
+    message("CXX FLAGS ${cxx_flags} ${list_dir}")
+
+
+	MESSAGE( STATUS " ")
+ENDFUNCTION()
+
+# ---------------------------------------------------------------------------
+# EXPORT_TARGET() - Export information about the target to the given filename.
+# ---------------------------------------------------------------------------
+
+FUNCTION( EXPORT_TARGET target_name filename )
+
+    set(export_string "")
+
+
+
+
+    set(export_string
+        "${target_name}"
+
+    )
+
+# Import target "wxSheetLib" for configuration "Debug"
+SET_PROPERTY(TARGET wxSheetLib APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
+SET_TARGET_PROPERTIES(wxSheetLib PROPERTIES
+  IMPORTED_LINK_INTERFACE_LIBRARIES_DEBUG "-L/home/jlabenski/wx/wx-svn/wx/wxWidgets/wxWidgets-trunk/build_gtk2ud/lib;-pthread;-Wl,-rpath,/home/jlabenski/wx/wx-svn/wx/wxWidgets/wxWidgets-trunk/build_gtk2ud/lib;-lwx_gtk2u_stc-2.9;-lwx_gtk2u_gl-2.9;-lwx_gtk2u_xrc-2.9;-lwx_baseu_xml-2.9;-lwx_baseu_net-2.9;-lwx_gtk2u_media-2.9;-lwx_gtk2u_propgrid-2.9;-lwx_gtk2u_richtext-2.9;-lwx_gtk2u_aui-2.9;-lwx_gtk2u_html-2.9;-lwx_gtk2u_adv-2.9;-lwx_gtk2u_core-2.9;-lwx_baseu-2.9"
+  IMPORTED_LOCATION_DEBUG "/home/jlabenski/wx/wx-svn/wx/build-2.9-wx_gtk2u/bin/libwxSheetLib.so"
+  IMPORTED_SONAME_DEBUG "libwxSheetLib.so"
+  )
+
+
+ENDFUNCTION()
+
 # ---------------------------------------------------------------------------
 # PRINT_ADD_SUBDIRECTORY() - Print all the ADD_SUBDIRECTORY() projects to the console.
 # ---------------------------------------------------------------------------
@@ -513,6 +737,8 @@ function( ADD_LIBRARY_FULL target_name )
         endif()
     ENDFOREACH(arg)
 
+    SET("${target_name}_DIRECTORY" "${CMAKE_CURRENT_SOURCE_DIR}" CACHE INTERNAL "")
+
     SET("${target_name}_HEADER_FILES" ${HEADER_FILES} CACHE INTERNAL "")
     SET("${target_name}_SOURCE_FILES" ${SOURCE_FILES} CACHE INTERNAL "")
 
@@ -562,7 +788,7 @@ function( ADD_LIBRARY_FULL target_name )
     #INSTALL(FILES
     #    ${HEADER_FILES} DESTINATION "include/${PROJ_DIR_TEMP}")
 
-    # INSTALL(... EXPORT ...) appears to be overealous at best or just broken.
+    # INSTALL(... EXPORT ...) appears to be a little overealous.
     # If you have targetA and targetB depends on A you have to do this.
     # In targetA directory :
     #   INSTALL(TARGETS targetA EXPORT targetA_exports ...)
@@ -697,6 +923,8 @@ function( ADD_EXECUTABLE_FULL target_name )
             endif()
         endif()
     ENDFOREACH(arg)
+
+    SET("${target_name}_DIRECTORY" "${CMAKE_CURRENT_SOURCE_DIR}" CACHE INTERNAL "")
 
     SET("${target_name}_HEADER_FILES" ${HEADER_FILES} CACHE INTERNAL "")
     SET("${target_name}_SOURCE_FILES" ${SOURCE_FILES} CACHE INTERNAL "")
@@ -1114,8 +1342,19 @@ endfunction()
 # made to call "doxygen ${doxyfile_out}" from the doxygen_working_dir.
 # Usage : ADD_DOXYGEN( doc
 #                      ${CMAKE_SOURCE_DIR}/build/Doxyfile.in
-#                      ${CMAKE_BINARY_DIR}/Doxyfile
+#                      ${CMAKE_BINARY_DIR}/Doxyfile.cfg
 #                      ${CMAKE_BINARY_DIR} )
+#
+# These are some doxygen.cfg settings you might want to set to @VAR_NAME@
+# then set their variables in CMake so that when configured the doxygen file
+# will be setup correctly.
+#
+# set( DOXYGEN_PROJECT_NAME      "MyProgram" )
+# set( DOXYGEN_PROJECT_NUMBER    "1.2.3" )
+# set( DOXYGEN_OUTPUT_DIRECTORY  "${CMAKE_BINARY_DIR}/doc" )
+# set( DOXYGEN_STRIP_FROM_PATH   "${CMAKE_SOURCE_DIR}/include" )
+# set( DOXYGEN_INPUT             "${CMAKE_SOURCE_DIR}/include/..." )
+# set( DOXYGEN_FILE_PATTERNS     "*.h *.hpp" )
 # ---------------------------------------------------------------------------
 
 function( ADD_DOXYGEN target_name doxyfile_in doxyfile_out doxygen_working_dir)

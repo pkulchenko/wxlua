@@ -101,7 +101,23 @@ set( wxLua_MAJOR_VERSION   "2" )
 set( wxLua_MINOR_VERSION   "9" )
 set( wxLua_RELEASE_VERSION "3" )
 
+# ---------------------------------------------------------------------------
+
 ADD_CPPCHECK_TEST(wxLua_CppCheck)
+
+set( DOXYGEN_PROJECT_NAME      "wxLua" )
+set( DOXYGEN_PROJECT_NUMBER    "${wxLua_VERSION}" )
+set( DOXYGEN_OUTPUT_DIRECTORY  "${CMAKE_BINARY_DIR}/doc-wxLua" )
+set( DOXYGEN_STRIP_FROM_PATH   "${wxLua_ROOT_DIR}/include" )
+set( DOXYGEN_INPUT             "${wxLua_ROOT_DIR}/include" )
+set( DOXYGEN_FILE_PATTERNS     "*.h *.hpp" )
+
+ADD_DOXYGEN( wxLua_doxygen
+             ${wxLua_ROOT_DIR}/build/CMake-doxygen.in
+             ${CMAKE_BINARY_DIR}/doxygen_wxLua.cfg
+             ${CMAKE_BINARY_DIR} )
+
+# ---------------------------------------------------------------------------
 
 include_directories(${wxLua_ROOT_DIR}/modules/wxbind/setup)
 
