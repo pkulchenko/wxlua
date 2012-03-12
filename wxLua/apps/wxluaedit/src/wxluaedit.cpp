@@ -30,6 +30,8 @@
 #include "wx/stedit/stedit.h"
 #include "wxledit.h"
 
+#include "wx/stedit/stetree.h"
+
 #include "wxluasocket/include/wxldserv.h"
 #include "wxluasocket/include/wxldtarg.h"
 #include "wxluadebug/include/wxlstack.h"
@@ -115,6 +117,7 @@ public:
     wxLuaEditorFrame(const wxString& title, const wxPoint& pos, const wxSize& size,
                      long frame_style = wxDEFAULT_FRAME_STYLE) : wxSTEditorFrame()
     {
+        m_wxluaIDE = NULL;
         Create(title, pos, size, frame_style);
     }
 
@@ -122,6 +125,9 @@ public:
 
     bool Create(const wxString& title, const wxPoint& pos, const wxSize& size,
                 long frame_style = wxDEFAULT_FRAME_STYLE);
+
+    // override base class function
+    virtual void CreateOptions(const wxSTEditorOptions& options);
 
     void OnMenu( wxCommandEvent& event ) { HandleMenuEvent(event); }
     virtual bool HandleMenuEvent( wxCommandEvent &event );
@@ -235,9 +241,9 @@ bool wxLuaEditorApp::OnInit()
                                  STF_DEFAULT_OPTIONS,
                                  STE_CONFIG_DEFAULT_OPTIONS,
                                  wxT("untitled.lua"));
-    steOptions.SetFrameOption(STF_CREATE_NOTEBOOK, false);
+    steOptions.SetFrameOption(STF_CREATE_NOTEBOOK, true);
     steOptions.SetFrameOption(STF_CREATE_SINGLEPAGE, false);
-    steOptions.SetFrameOption(STF_CREATE_SIDEBAR, false);
+    steOptions.SetFrameOption(STF_CREATE_SIDEBAR, true);
 
     // use a wxFileConfig to load/save our preferences
     wxFileConfig *config = new wxFileConfig(wxT("wxLuaEdit"), wxT("wxLua"));
@@ -304,7 +310,6 @@ bool wxLuaEditorApp::OnInit()
             frame->GetEditorNotebook()->LoadFiles( &fileNames );
     }
 
-    frame->UpdateFileTreeCtrl();
     frame->Show(true);
 
     // filenames had *, ? or other junk so we didn't load them
@@ -427,27 +432,36 @@ bool wxLuaEditorFrame::Create(const wxString& title, const wxPoint& pos, const w
                               long frame_style)
 
 {
-    m_wxluaIDE = NULL;
     if (!wxSTEditorFrame::Create(NULL, wxID_ANY, title, pos, size, frame_style))
         return false;
 
-    m_sideSplitter = new wxSplitterWindow(this, wxID_ANY);
-    m_sideSplitter->SetMinimumPaneSize(10);
-    m_sideNotebook = new wxNotebook(m_sideSplitter, wxID_ANY);
+    return true;
+}
 
-    m_fileTreeCtrl = new wxTreeCtrl(m_sideNotebook, ID_STF_FILE_TREECTRL,
-                                    wxDefaultPosition, wxDefaultSize, wxTR_SINGLE|wxTR_HAS_BUTTONS|wxTR_HIDE_ROOT );
-    m_fileTreeCtrl->SetIndent(5);
-    m_fileTreeCtrl->AddRoot(wxT("Files"));
-    m_sideNotebook->AddPage(m_fileTreeCtrl, wxT("Files"));
+void wxLuaEditorFrame::CreateOptions(const wxSTEditorOptions& options)
+{
+    wxSTEditorFrame::CreateOptions(options);
 
-    m_sideSplitterWin1 = m_sideNotebook;
+    // We replace the wxSTEditorFrame::m_mainSplitter and m_steNotebook
+    // with a wxLuaIDE.
 
-    m_wxluaIDE = new wxLuaIDE(m_sideSplitter, wxID_ANY, wxDefaultPosition, wxSize(400,300), 0, 0);
-    m_steNotebook = m_wxluaIDE->GetEditorNotebook();
-    m_sideSplitterWin2 = m_wxluaIDE;
+    SetSendSTEEvents(false);
+    {
+        m_wxluaIDE = new wxLuaIDE(m_sideSplitter, wxID_ANY, wxDefaultPosition, wxSize(400,300), 0, 0);
+        m_sideSplitter->ReplaceWindow(m_mainSplitter, m_wxluaIDE);
 
-    m_sideSplitter->SplitVertically(m_sideNotebook, m_wxluaIDE, 150);
+        m_steTreeCtrl->SetSTENotebook(NULL);
+        m_steNotebook->Destroy();
+        m_mainSplitter->Destroy();
+
+        m_mainSplitter     = m_wxluaIDE->GetSplitterWin();
+        m_steNotebook      = m_wxluaIDE->GetEditorNotebook();
+        m_sideSplitterWin2 = m_wxluaIDE;
+
+        m_steTreeCtrl->SetSTENotebook(m_steNotebook);
+    }
+    SetSendSTEEvents(true);
+   
 
     wxLuaShell *shell = m_wxluaIDE->GetLuaShellWin();
     shell->AppendText(wxT("Welcome to the wxLuaShell, an interactive lua interpreter.\n"));
@@ -457,8 +471,6 @@ bool wxLuaEditorFrame::Create(const wxString& title, const wxPoint& pos, const w
     shell->AppendText(wxT("  The wxLua intrepreter can be restarted with the command 'reset'.\n"));
     shell->MarkerDeleteAll(wxSTEditorShell::markerPrompt);
     shell->CheckPrompt(true);
-
-    return true;
 }
 
 bool wxLuaEditorFrame::HandleMenuEvent(wxCommandEvent &event)

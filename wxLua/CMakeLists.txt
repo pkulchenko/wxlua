@@ -64,7 +64,13 @@ foreach( wxlua_comp ${wxLuaBind_ALL_COMPONENTS} )
     # find specified wxlua binding libs in the wxwidgets libs
     string(REGEX MATCH ${wxlua_comp} wx_comp_found "${wxWidgets_COMPONENTS}")
 
-    if (("${wxlua_comp}" STREQUAL "${wxlua_comp_found}") AND ("${wxlua_comp}" STREQUAL "${wx_comp_found}"))
+    # assume that the monolithic wxWidgets lib has everything
+    if (NOT wx_comp_found)
+        string(REGEX MATCH "mono" wx_comp_found "${wxWidgets_COMPONENTS}")
+    endif()
+
+
+    if (("${wxlua_comp}" STREQUAL "${wxlua_comp_found}") AND wx_comp_found) # ("${wxlua_comp}" STREQUAL "${wx_comp_found}"))
         set(WXLUA_BINDTO_${wxlua_comp} TRUE CACHE INTERNAL "")
         set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} "-DwxLUA_USEBINDING_WX${wxlua_comp_upper}=1")
         set(wxLuaBindLib_SOURCES ${wxLuaBindLib_SOURCES} "src/wx${wxlua_comp}_*.cpp")

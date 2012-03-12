@@ -616,6 +616,7 @@ function( PARSE_WXWIDGETS_LIB_NAMES )
     set(wxWidgets_UNICODEFLAG "" CACHE STRING "wxWidgets unicode build, either 'u' or ''" FORCE)
     set(wxWidgets_DEBUGFLAG   "" CACHE STRING "wxWidgets debug build, either 'd' or ''" FORCE)
 
+    # wxWidgets lib/dll build using MSVC
     if ("${wxWidgets_PORTNAME}" STREQUAL "")
         string(REGEX MATCH "wx(msw)(univ)?([0-9][0-9])(u)?(d)?_core" _match_msw "${wxWidgets_LIBRARIES}")
 
@@ -628,6 +629,20 @@ function( PARSE_WXWIDGETS_LIB_NAMES )
         endif()
     endif()
 
+    # wxWidgets monolithic DLL build using nmake MSVC : lib/vc_amd64_dll/wxmsw29ud.lib and wxmsw294ud_vc_custom.dll
+    if ("${wxWidgets_PORTNAME}" STREQUAL "")
+        string(REGEX MATCH "wx(msw)(univ)?([0-9][0-9])(u)?(d)?\\.lib" _match_msw_mono "${wxWidgets_LIBRARIES}")
+
+        if (NOT "${_match_msw_mono}" STREQUAL "")
+            set(wxWidgets_PORTNAME    "${CMAKE_MATCH_1}" )
+            set(wxWidgets_UNIVNAME    "${CMAKE_MATCH_2}" )
+            #set(wxWidgets_LIB_VERSION "${CMAKE_MATCH_3}" )
+            set(wxWidgets_UNICODEFLAG "${CMAKE_MATCH_4}" )
+            set(wxWidgets_DEBUGFLAG   "${CMAKE_MATCH_5}" )
+        endif()
+    endif()
+
+    # wxWidgets GTK2 build using configure
     if ("${wxWidgets_PORTNAME}" STREQUAL "")
         string(REGEX MATCH "wx_(gtk[12]?)(univ)?(u)?(d)?_core-([0-9].[0-9])" _match_gtk "${wxWidgets_LIBRARIES}")
 
