@@ -14,14 +14,14 @@ OUTPUT_LANGUAGE        = English
 BRIEF_MEMBER_DESC      = YES
 REPEAT_BRIEF           = YES
 ABBREVIATE_BRIEF       =
-ALWAYS_DETAILED_SEC    = NO
+ALWAYS_DETAILED_SEC    = YES
 INLINE_INHERITED_MEMB  = NO
 FULL_PATH_NAMES        = YES
 STRIP_FROM_PATH        = @DOXYGEN_STRIP_FROM_PATH@
-STRIP_FROM_INC_PATH    =
+STRIP_FROM_INC_PATH    = @DOXYGEN_STRIP_FROM_INC_PATH@
 SHORT_NAMES            = NO
-JAVADOC_AUTOBRIEF      = NO
-QT_AUTOBRIEF           = NO
+JAVADOC_AUTOBRIEF      = YES
+QT_AUTOBRIEF           = YES
 MULTILINE_CPP_IS_BRIEF = NO
 INHERIT_DOCS           = YES
 SEPARATE_MEMBER_PAGES  = NO
@@ -43,7 +43,7 @@ SYMBOL_CACHE_SIZE      = 0
 #---------------------------------------------------------------------------
 # Build related configuration options
 #---------------------------------------------------------------------------
-EXTRACT_ALL            = NO
+EXTRACT_ALL            = YES
 EXTRACT_PRIVATE        = NO
 EXTRACT_STATIC         = YES
 EXTRACT_LOCAL_CLASSES  = YES
@@ -93,7 +93,7 @@ WARN_LOGFILE           =
 INPUT                  = @DOXYGEN_INPUT@
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = @DOXYGEN_FILE_PATTERNS@
-RECURSIVE              = NO
+RECURSIVE              = YES
 EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       =

@@ -254,9 +254,10 @@ endif()
 # Also works for MSVC so you don't have to look at the BuildLog file.
 
 if (NOT DEFINED BUILD_VERBOSELY)
-    set(BUILD_VERBOSELY FALSE CACHE BOOL "Verbose compiler build output (enable if using Eclipse to help it discover paths)" )
+    set(BUILD_VERBOSELY FALSE )
 endif()
 
+set( BUILD_VERBOSELY        ${BUILD_VERBOSELY} CACHE BOOL "Verbose compiler build output (enable if using Eclipse to help it discover paths)" FORCE)
 set( CMAKE_VERBOSE_MAKEFILE ${BUILD_VERBOSELY} CACHE BOOL "Verbose build output (set by BUILD_VERBOSELY)" FORCE)
 
 # ---------------------------------------------------------------------------
