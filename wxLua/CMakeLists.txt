@@ -118,6 +118,7 @@ set( DOXYGEN_STRIP_FROM_PATH     "${wxLua_ROOT_DIR}/modules" )
 set( DOXYGEN_STRIP_FROM_INC_PATH "${wxLua_ROOT_DIR}/modules" )
 set( DOXYGEN_INPUT               "${wxLua_ROOT_DIR}/modules" )
 set( DOXYGEN_FILE_PATTERNS       "*.h *.hpp" )
+set( DOXYGEN_PREDEFINED          "WXDLLIMPEXP_DATA_WXLUA(x)=x")
 
 ADD_DOXYGEN( wxLua_doxygen
              ${wxLua_ROOT_DIR}/build/CMake-doxygen.in
