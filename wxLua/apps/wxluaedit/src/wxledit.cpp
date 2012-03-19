@@ -156,7 +156,7 @@ bool wxLuaShell::RunString(const wxString& string_, bool append_text)
         {
             if (RecreatewxLuaState(GetEventHandler(), GetId()))
             {
-                AppendText(wxT("Sucessfully reset interpreter.\n"));
+                AppendText(wxT("Successfully reset interpreter.\n"));
                 ret = true;
             }
             else

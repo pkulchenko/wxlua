@@ -364,6 +364,8 @@ message(STATUS " ")
 #                                       wxWidgets_ALL_COMPONENTS list.
 # ---------------------------------------------------------------------------
 
+set(DOXYGEN_PREDEFINED_WXWIDGETS "WXUNUSED(x)=x DECLARE_EXPORTED_EVENT_TYPE(x,y,z)=y")
+
 macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
 
     # We only want this function called once per CMake configure, but we may link
