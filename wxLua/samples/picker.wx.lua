@@ -113,7 +113,7 @@ function CreatePickerWindow(parent)
     scrollWin:SetScrollbars(15, 15, 400, 600, 0, 0, false)
 
     local mainSizer = wx.wxBoxSizer(wx.wxVERTICAL)
-    local flexSizer = wx.wxFlexGridSizer(20, 2, 5, 5)
+    local flexSizer = wx.wxFlexGridSizer(0, 2, 5, 5)
     flexSizer:AddGrowableCol(1)
 
     local statText = nil -- not used outside of this function

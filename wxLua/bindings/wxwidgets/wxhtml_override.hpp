@@ -28,7 +28,7 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
     // return the number of parameters
     return 2;
 }
-#elif wxCHECK_VERSION(2, 8, 0) && !wxCHECK_VERSION(2, 9, 3)
+#elif wxCHECK_VERSION(2, 8, 0)
 // virtual bool AdjustPagebreak(int * pagebreak, wxArrayInt& known_pagebreaks)
 static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
 {
@@ -40,27 +40,6 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
     wxHtmlCell *self = (wxHtmlCell *)wxluaT_getuserdatatype(L, 1, wxluatype_wxHtmlCell);
     // call AdjustPagebreak
     bool returns = self->AdjustPagebreak(&pagebreak, *known_pagebreaks);
-    // push the result number
-    lua_pushboolean(L, returns);
-    //
-    lua_pushnumber(L, pagebreak);
-    // return the number of parameters
-    return 2;
-}
-#elif wxCHECK_VERSION(2, 9, 3)
-// virtual bool AdjustPagebreak(int * pagebreak, wxArrayInt& known_pagebreaks, int pageHeight)
-static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
-{
-    // int pageHeight
-    int pageHeight  = (int)wxlua_getintegertype(L, 4);
-    // wxArrayInt& known_pagebreaks
-    wxArrayInt* known_pagebreaks  = (wxArrayInt *)wxluaT_getuserdatatype(L, 3, wxluatype_wxArrayInt);
-    // int * pagebreak
-    int pagebreak  = (int)wxlua_getintegertype(L, 2);
-    // get this
-    wxHtmlCell *self = (wxHtmlCell *)wxluaT_getuserdatatype(L, 1, wxluatype_wxHtmlCell);
-    // call AdjustPagebreak
-    bool returns = self->AdjustPagebreak(&pagebreak, *known_pagebreaks, pageHeight);
     // push the result number
     lua_pushboolean(L, returns);
     //

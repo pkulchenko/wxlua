@@ -403,9 +403,12 @@ function main()
     toolBar:AddControl(penWidthSpinCtrl)
     toolBar:AddSeparator()
 
+    local ctrlSize = penWidthSpinCtrl:GetSize() -- size of a "normal" control
+
     local c = currentPen:GetColour()
     colourPicker = wx.wxColourPickerCtrl(toolBar, ID_PENCOLOUR, c,
-                                         wx.wxDefaultPosition, toolBmpSize:op_sub(wx.wxSize(2,2)),
+                                         wx.wxDefaultPosition, 
+                                         wx.wxSize(ctrlSize:GetHeight(), ctrlSize:GetHeight()),
                                          wx.wxCLRP_DEFAULT_STYLE)
     c:delete()
     colourPicker:SetToolTip("Choose pen color")

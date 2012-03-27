@@ -433,7 +433,7 @@ function CreateControlsWindow(parent)
         c2:delete()
     end
 
-    local flexSizer = wx.wxFlexGridSizer(50, 2, 5, 5)
+    local flexSizer = wx.wxFlexGridSizer(0, 2, 5, 5)
     flexSizer:AddGrowableCol(1)
 
     local control = nil -- not used outside of this function
