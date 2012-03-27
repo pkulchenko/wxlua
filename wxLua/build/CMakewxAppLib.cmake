@@ -658,6 +658,32 @@ function( PARSE_WXWIDGETS_LIB_NAMES )
         endif()
     endif()
 
+    # wxWidgets OSX Cocoa build using configure
+    if ("${wxWidgets_PORTNAME}" STREQUAL "")
+        # libwx_osx_cocoau_core-2.9.a
+        string(REGEX MATCH "wx_(osx_cocoa)(univ)?(u)?(d)?_core-([0-9].[0-9])" _match_osx_cocoa "${wxWidgets_LIBRARIES}")
+        if (NOT "${_match_osx_cocoa}" STREQUAL "")
+            set(wxWidgets_PORTNAME    "${CMAKE_MATCH_1}" )
+            set(wxWidgets_UNIVNAME    "${CMAKE_MATCH_2}" )
+            set(wxWidgets_UNICODEFLAG "${CMAKE_MATCH_3}" )
+            set(wxWidgets_DEBUGFLAG   "${CMAKE_MATCH_4}" )
+            #set(wxWidgets_LIB_VERSION "${CMAKE_MATCH_5}" )
+        endif()
+    endif()
+
+    # wxWidgets OSX Carbon build using configure
+    if ("${wxWidgets_PORTNAME}" STREQUAL "")
+        # libwx_macud-2.8.dylib 
+        string(REGEX MATCH "wx_(mac)(univ)?(u)?(d)?-([0-9].[0-9])" _match_mac "${wxWidgets_LIBRARIES}")
+        if (NOT "${_match_mac}" STREQUAL "")
+            set(wxWidgets_PORTNAME    "${CMAKE_MATCH_1}" )
+            set(wxWidgets_UNIVNAME    "${CMAKE_MATCH_2}" )
+            set(wxWidgets_UNICODEFLAG "${CMAKE_MATCH_3}" )
+            set(wxWidgets_DEBUGFLAG   "${CMAKE_MATCH_4}" )
+            #set(wxWidgets_LIB_VERSION "${CMAKE_MATCH_5}" )
+        endif()
+    endif()       
+
     if ("${wxWidgets_PORTNAME}" STREQUAL "")
         message(WARNING "WARNING: Unable to find wxWidgets_PORTNAME/UNIVNAME/UNICODEFLAG/DEBUGFLAG from lib names! You may have to add code to CMake to help it parse your wxWidgets lib names.")
     endif()

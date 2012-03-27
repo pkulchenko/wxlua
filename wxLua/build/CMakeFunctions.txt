@@ -991,7 +991,8 @@ function( ADD_EXECUTABLE_FULL target_name )
     INSTALL(TARGETS ${target_name}
             RUNTIME DESTINATION bin
             LIBRARY DESTINATION lib
-            ARCHIVE DESTINATION lib)
+            ARCHIVE DESTINATION lib
+            BUNDLE  DESTINATION bin)
 
 endfunction()
 
