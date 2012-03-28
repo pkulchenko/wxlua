@@ -495,14 +495,20 @@ if (MSVC)
     set( LUA_BUILD_AS_DLL PROPERTIES DEFINE_SYMBOL LUA_BUILD_AS_DLL )
 
     add_definitions( -D_CRT_SECURE_NO_WARNINGS )
-else ()
+elseif (APPLE)
+    set( LUA_BUILD_AS_DLL )
+    add_definitions( -DLUA_USE_LINUX )
 
+    set(LUA_LINK_LIBRARIES m readline)
+
+    #$(MAKE) all MYCFLAGS="-DLUA_USE_LINUX" MYLIBS="-lreadline"
+else () # UNIX 
     set( LUA_BUILD_AS_DLL )
     add_definitions( -DLUA_USE_LINUX )
 
     set(LUA_LINK_LIBRARIES m dl readline history ncurses)
 
-    #$(MAKE) all MYCFLAGS="" MYLIBS="-fPIC -Wl,-E -ldl -lreadline -lhistory -lncurses"
+    #$(MAKE) all MYCFLAGS="-DLUA_USE_LINUX -fPIC" MYLIBS="-fPIC -Wl,-E -ldl -lreadline -lhistory -lncurses"
 endif()
 
 # ---------------------------------------------------------------------------

@@ -4309,6 +4309,10 @@ struct wxLua_LCF_data // wrap up the wxLuaState, lua_tag, and the compare data
 // type of compare function for wxListCtrl sort operation (as of 2.9.3)
 //typedef int (wxCALLBACK *wxListCtrlCompare)(wxIntPtr item1, wxIntPtr item2, wxIntPtr sortData);
 
+#if !wxCHECK_VERSION(2, 8, 9)
+    typedef long wxIntPtr;
+#endif
+
 int wxCALLBACK wxLua_ListCompareFunction(wxIntPtr item1, wxIntPtr item2, wxIntPtr sortData)
 {
     wxLua_LCF_data* LCF_data = (wxLua_LCF_data*)sortData;

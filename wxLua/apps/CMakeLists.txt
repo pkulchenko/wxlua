@@ -21,7 +21,7 @@ include_directories(${wxLua_ROOT_DIR}/
 
 function (wxLua_Apps_wxLua_TARGETS)
 
-ADD_EXECUTABLE_FULL( wxLua_app WIN32
+ADD_EXECUTABLE_FULL( wxLua_app WIN32 MACOSX_BUNDLE
     HEADERS
         "${wxLua_ROOT_DIR}/apps/wxlua/src/*.h"
     SOURCES
@@ -44,7 +44,7 @@ endfunction (wxLua_Apps_wxLua_TARGETS)
 
 function (wxLua_Apps_wxLuaCan_TARGETS)
 
-ADD_EXECUTABLE_FULL( wxLuaCan WIN32
+ADD_EXECUTABLE_FULL( wxLuaCan WIN32 MACOSX_BUNDLE
     HEADERS
         "${wxLua_ROOT_DIR}/apps/wxluacan/src/*.h"
     SOURCES
@@ -83,7 +83,7 @@ endif()
 
 include_directories(${wxStEdit_ROOT_DIR}/include ${wxStEdit_SETUP_INCLUDE_PATH})
 
-ADD_EXECUTABLE_FULL( wxLuaEdit WIN32
+ADD_EXECUTABLE_FULL( wxLuaEdit WIN32 MACOSX_BUNDLE
     HEADERS
         "${wxLua_ROOT_DIR}/apps/wxluaedit/src/*.h"
     SOURCES
@@ -110,7 +110,7 @@ endfunction (wxLua_Apps_wxLuaEdit_TARGETS)
 
 function (wxLua_Apps_wxLuaFreeze_TARGETS)
 
-ADD_EXECUTABLE_FULL( wxLuaFreeze WIN32
+ADD_EXECUTABLE_FULL( wxLuaFreeze WIN32 MACOSX_BUNDLE
     HEADERS
         "${wxLua_ROOT_DIR}/apps/wxluafreeze/src/*.h"
     SOURCES
