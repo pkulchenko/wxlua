@@ -28,7 +28,7 @@
 // Lua MetaTable Tag for Class 'wxHtmlCell'
 int wxluatype_wxHtmlCell = WXLUA_TUNKNOWN;
 
-#if ((wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxHTML && wxUSE_HTML)) && (wxLUA_USE_wxArrayInt)
+#if ((wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxHTML && wxUSE_HTML)) && (wxLUA_USE_wxArrayInt)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_AdjustPagebreak[] = { &wxluatype_wxHtmlCell, &wxluatype_TNUMBER, &wxluatype_wxArrayInt, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_AdjustPagebreak[1] = {{ wxLua_wxHtmlCell_AdjustPagebreak, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxHtmlCell_AdjustPagebreak }};
@@ -51,7 +51,7 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
     // return the number of parameters
     return 2;
 }
-#elif wxCHECK_VERSION(2, 8, 0) && !wxCHECK_VERSION(2, 9, 3)
+#elif wxCHECK_VERSION(2, 8, 0) && !wxCHECK_VERSION(2, 9, 4)
 // virtual bool AdjustPagebreak(int * pagebreak, wxArrayInt& known_pagebreaks)
 static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
 {
@@ -70,7 +70,7 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
     // return the number of parameters
     return 2;
 }
-#elif wxCHECK_VERSION(2, 9, 3)
+#elif wxCHECK_VERSION(2, 9, 4)
 // virtual bool AdjustPagebreak(int * pagebreak, wxArrayInt& known_pagebreaks, int pageHeight)
 static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
 {
@@ -94,9 +94,9 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
 #endif
 
 
-#endif // ((wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxHTML && wxUSE_HTML)) && (wxLUA_USE_wxArrayInt)
+#endif // ((wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxHTML && wxUSE_HTML)) && (wxLUA_USE_wxArrayInt)
 
-#if (wxLUA_USE_wxArrayInt) && ((wxCHECK_VERSION(2,8,0) && !wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxHTML && wxUSE_HTML))
+#if (wxLUA_USE_wxArrayInt) && ((wxCHECK_VERSION(2,8,0) && !wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxHTML && wxUSE_HTML))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_AdjustPagebreak[] = { &wxluatype_wxHtmlCell, &wxluatype_TNUMBER, &wxluatype_wxArrayInt, NULL };
 static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_AdjustPagebreak[1] = {{ wxLua_wxHtmlCell_AdjustPagebreak, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxHtmlCell_AdjustPagebreak }};
@@ -119,7 +119,7 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
     // return the number of parameters
     return 2;
 }
-#elif wxCHECK_VERSION(2, 8, 0) && !wxCHECK_VERSION(2, 9, 3)
+#elif wxCHECK_VERSION(2, 8, 0) && !wxCHECK_VERSION(2, 9, 4)
 // virtual bool AdjustPagebreak(int * pagebreak, wxArrayInt& known_pagebreaks)
 static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
 {
@@ -138,7 +138,7 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
     // return the number of parameters
     return 2;
 }
-#elif wxCHECK_VERSION(2, 9, 3)
+#elif wxCHECK_VERSION(2, 9, 4)
 // virtual bool AdjustPagebreak(int * pagebreak, wxArrayInt& known_pagebreaks, int pageHeight)
 static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
 {
@@ -162,7 +162,7 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
 #endif
 
 
-#endif // (wxLUA_USE_wxArrayInt) && ((wxCHECK_VERSION(2,8,0) && !wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxHTML && wxUSE_HTML))
+#endif // (wxLUA_USE_wxArrayInt) && ((wxCHECK_VERSION(2,8,0) && !wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxHTML && wxUSE_HTML))
 
 #if (!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_AdjustPagebreak[] = { &wxluatype_wxHtmlCell, &wxluatype_TNUMBER, NULL };
@@ -187,7 +187,7 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
     // return the number of parameters
     return 2;
 }
-#elif wxCHECK_VERSION(2, 8, 0) && !wxCHECK_VERSION(2, 9, 3)
+#elif wxCHECK_VERSION(2, 8, 0) && !wxCHECK_VERSION(2, 9, 4)
 // virtual bool AdjustPagebreak(int * pagebreak, wxArrayInt& known_pagebreaks)
 static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
 {
@@ -206,7 +206,7 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
     // return the number of parameters
     return 2;
 }
-#elif wxCHECK_VERSION(2, 9, 3)
+#elif wxCHECK_VERSION(2, 9, 4)
 // virtual bool AdjustPagebreak(int * pagebreak, wxArrayInt& known_pagebreaks, int pageHeight)
 static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
 {
@@ -570,9 +570,9 @@ void wxLua_wxHtmlCell_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxHtmlCell_methods[] = {
-#if ((wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxHTML && wxUSE_HTML)) && (wxLUA_USE_wxArrayInt)
+#if ((wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxHTML && wxUSE_HTML)) && (wxLUA_USE_wxArrayInt)
     { "AdjustPagebreak", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHtmlCell_AdjustPagebreak, 1, NULL },
-#elif (wxLUA_USE_wxArrayInt) && ((wxCHECK_VERSION(2,8,0) && !wxCHECK_VERSION(2,9,3)) && (wxLUA_USE_wxHTML && wxUSE_HTML))
+#elif (wxLUA_USE_wxArrayInt) && ((wxCHECK_VERSION(2,8,0) && !wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxHTML && wxUSE_HTML))
     { "AdjustPagebreak", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHtmlCell_AdjustPagebreak, 1, NULL },
 #elif (!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
     { "AdjustPagebreak", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHtmlCell_AdjustPagebreak, 1, NULL },
