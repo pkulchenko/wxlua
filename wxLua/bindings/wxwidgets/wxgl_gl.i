@@ -58,8 +58,8 @@
     %if %wxchkver_2_8
         !%mac wxGLContext(wxGLCanvas *win, const wxGLContext* other = NULL ) // FIXME
 
-        !%mac void SetCurrent(const wxGLCanvas& win) const
-        %mac void SetCurrent() const
+        !%mac | %wxchkver_2_9 void SetCurrent(const wxGLCanvas& win) const
+        %mac & !%wxchkver_2_9 void SetCurrent() const
     %endif // %wxchkver_2_8
 
     %if !%wxchkver_2_8

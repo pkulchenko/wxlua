@@ -568,6 +568,7 @@ function( DETERMINE_WXWIDGETS_VERSION )
         execute_process(COMMAND ${wxWidgets_CONFIG_EXECUTABLE} --version OUTPUT_VARIABLE wxWidgets_VERSION)
         # remove spaces and linefeed
         string(STRIP "${wxWidgets_VERSION}" wxWidgets_VERSION)
+        
         # Match major.minor.revision
         string(REGEX MATCH "^([0-9]+)\\."   wxWidgets_MAJOR_VERSION  ${wxWidgets_VERSION})
         string(REGEX MATCH "\\.([0-9]+)\\." wxWidgets_MINOR_VERSION  ${wxWidgets_VERSION})
@@ -586,13 +587,13 @@ function( DETERMINE_WXWIDGETS_VERSION )
         ENDIF()
     endif()
 
-    set(wxWidgets_VERSION        "${wxWidgets_VERSION}"        CACHE STRING "The wxWidgets version to compile and link against. (e.g. 2.9.3)")
-    set(wxWidgets_MAJOR_VERSION  "${wxWidgets_MAJOR_VERSION}"  CACHE STRING "")
-    set(wxWidgets_MINOR_VERSION  "${wxWidgets_MINOR_VERSION}"  CACHE STRING "")
-    set(wxWidgets_RELEASE_NUMBER "${wxWidgets_RELEASE_NUMBER}" CACHE STRING "")
+    set(wxWidgets_VERSION        "${wxWidgets_VERSION}"        CACHE STRING "The wxWidgets version to compile and link against. (e.g. 2.9.3)" FORCE)
+    set(wxWidgets_MAJOR_VERSION  "${wxWidgets_MAJOR_VERSION}"  CACHE STRING "" FORCE)
+    set(wxWidgets_MINOR_VERSION  "${wxWidgets_MINOR_VERSION}"  CACHE STRING "" FORCE)
+    set(wxWidgets_RELEASE_NUMBER "${wxWidgets_RELEASE_NUMBER}" CACHE STRING "" FORCE)
 
-    set(wxWidgets_RELEASE       "${wxWidgets_MAJOR_VERSION}.${wxWidgets_MINOR_VERSION}" CACHE STRING "")
-    set(wxWidgets_RELEASE_NODOT "${wxWidgets_MAJOR_VERSION}${wxWidgets_MINOR_VERSION}" CACHE STRING "")
+    set(wxWidgets_RELEASE       "${wxWidgets_MAJOR_VERSION}.${wxWidgets_MINOR_VERSION}" CACHE STRING "" FORCE)
+    set(wxWidgets_RELEASE_NODOT "${wxWidgets_MAJOR_VERSION}${wxWidgets_MINOR_VERSION}" CACHE STRING "" FORCE)
 
     mark_as_advanced( wxWidgets_MAJOR_VERSION
                       wxWidgets_MINOR_VERSION

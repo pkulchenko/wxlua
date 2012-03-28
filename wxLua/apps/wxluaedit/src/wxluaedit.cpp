@@ -363,7 +363,7 @@ void wxLuaEditorApp::OnLua( wxLuaEvent &event )
 #ifdef __WXMSW__
             wxMessageBox(event.GetString(), wxT("wxLua"));
 #else
-            fprintf(stderr, wx2lua(event.GetString() + wxT("\n")));
+            fprintf(stderr, "%s\n", wx2lua(event.GetString()).data());
 #endif // __WXMSW__
     }
     else if (event.GetEventType() == wxEVT_LUA_ERROR)
