@@ -1,6 +1,6 @@
 -----------------------------------------------------------------------------
--- Name:        minimal.wx.lua
--- Purpose:     Minimal wxLua sample
+-- Name:        art.wx.lua
+-- Purpose:     wxArtProvider wxLua sample
 -- Author:      John Labenski
 -- Modified by:
 -- Created:     16/11/2012
@@ -53,7 +53,7 @@ function OnPaint(event)
     
     -- Find the sizes of things for later
     if not char_height then    
-        local textExtentSize = dc:GetTextExtentSize("AAAA")
+        local textExtentSize = dc:GetTextExtentSize("MMMM")
         char_height = textExtentSize:GetHeight()/2
         char_width  = textExtentSize:GetWidth()/4
 
@@ -61,7 +61,8 @@ function OnPaint(event)
         local col0_width = 0
 
         for r = 1, #artIds do
-            local w = #artIds[r]*char_width
+            local artIdTextExtent = dc:GetTextExtentSize(artIds[r])
+            local w = artIdTextExtent:GetWidth();
             if w > col0_width then 
                 col0_width = w
             end
@@ -82,7 +83,9 @@ function OnPaint(event)
         rowTops[1]    = rowHeights[0]        
 
         for c = 1, #artClients do
-            local w = #artClients[c]*char_width
+            local artClientTextExtent = dc:GetTextExtentSize(artClients[c])
+            local w = artClientTextExtent:GetWidth();
+            
             colWidths[c]  = w + x_padding
             colLefts[c+1] = colLefts[c] + colWidths[c]
 
@@ -109,7 +112,7 @@ function OnPaint(event)
         rowTops[#rowTops+1] = rowTops[#rowTops] + rowHeights[#rowHeights]
     end   
     
-    dc:DrawText("wxArtID  /  wxArtClient", 10, rowHeights[0]/2-char_height/2)
+    dc:DrawText("wxArtID  /  wxArtClient", x_padding/2, rowHeights[0]/2-char_height/2)
        
     for c = 0, #artClients do
         for r = 0, #artIds do
@@ -129,16 +132,19 @@ function OnPaint(event)
                     
                     local art_size_platform_str = string.format("(%d, %d)", artSizePlatform:GetWidth(), artSizePlatform:GetHeight())
                     local art_size_str          = string.format("(%d, %d)", artSize:GetWidth(),         artSize:GetHeight())
-                    
+
+                    local textExtentPlatformStr = dc:GetTextExtentSize(art_size_platform_str)
+                    local textExtentSizeStr     = dc:GetTextExtentSize(art_size_str)
+
                     dc:DrawText(art_size_platform_str,
-                                colLefts[c]+colWidths[c]/2 - #art_size_platform_str*char_width/2 + x_padding/2, 
-                                rowTops[r+1]+rowHeights[r]/2 - char_height - (rowHeights[r]-2*char_height)/4)
+                                colLefts[c]+colWidths[c]/2 - textExtentPlatformStr:GetWidth()/2 + x_padding/2, 
+                                rowTops[r+1]                     + (rowHeights[r+1]/2 - textExtentPlatformStr:GetHeight())/2 )
                     dc:DrawText(art_size_str,
-                                colLefts[c]+colWidths[c]/2 - #art_size_str*char_width/2 + x_padding/2, 
-                                rowTops[r+1]+rowHeights[r]/2 + (rowHeights[r]-2*char_height)/4)
-                elseif c == 0 then
-                    dc:DrawText("Native Size",      10, rowTops[r+1]+rowHeights[r]/2 - char_height - (rowHeights[r]-2*char_height)/4 )
-                    dc:DrawText("ArtProvider Size", 10, rowTops[r+1]+rowHeights[r]/2 + (rowHeights[r]-2*char_height)/4 )
+                                colLefts[c]+colWidths[c]/2 - textExtentSizeStr:GetWidth()/2     + x_padding/2, 
+                                rowTops[r+1] + rowHeights[r+1]/2 + (rowHeights[r+1]/2 - textExtentSizeStr:GetHeight())/2 )
+                elseif c == 0 then                
+                    dc:DrawText("Native Size",      x_padding/2, rowTops[r+1]                     + (rowHeights[r+1]/2 - char_height)/2 )
+                    dc:DrawText("ArtProvider Size", x_padding/2, rowTops[r+1] + rowHeights[r+1]/2 + (rowHeights[r+1]/2 - char_height)/2 )
                 end
             elseif c == 0 then
                 if r > 0 then
