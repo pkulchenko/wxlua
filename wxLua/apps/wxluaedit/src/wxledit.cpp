@@ -29,6 +29,7 @@
 #include "wxluadebug/include/wxldebug.h"
 
 #include "wx/stedit/stemenum.h"
+#include "wx/stedit/steevent.h"
 
 #include "art/wxlua.xpm"
 #include "art/open.xpm"
@@ -375,8 +376,7 @@ BEGIN_EVENT_TABLE(wxLuaIDE, wxWindow)
     EVT_MENU(ID_WXLUAIDE_BREAK_LUA,  wxLuaIDE::OnMenu)
     EVT_MENU(ID_WXLUAIDE_SHOW_STACK, wxLuaIDE::OnMenu)
 
-    EVT_STS_CREATE_EDITOR(wxID_ANY, wxLuaIDE::OnCreateEditor)
-
+    EVT_STSPLITTER_CREATE_EDITOR(wxID_ANY, wxLuaIDE::OnCreateEditor)
     EVT_SIZE(wxLuaIDE::OnSize)
 
     EVT_LUA_PRINT       (wxID_ANY, wxLuaIDE::OnLua)
