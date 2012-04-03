@@ -32,8 +32,8 @@ class wxLuaIDE;
 #if !defined(wxCHECK_STE_VERSION)
     #error "wxStEdit version is too old, need at least version 1.2.5"
 #endif
-#if !wxCHECK_STE_VERSION(1, 2, 5)
-    #error "wxStEdit version is too old, need at least version 1.2.5"
+#if !wxCHECK_STE_VERSION(1, 6, 0)
+    #error "wxStEdit version is too old, need at least version 1.6.0"
 #endif
 
 //-----------------------------------------------------------------------------

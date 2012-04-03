@@ -283,7 +283,7 @@ bool wxLuaEditorApp::OnInit()
         fileNames.Add(parser.GetParam(n));
 
     // if the files have *, ? or are directories, don't try to load them
-    for (n=0; n < fileNames.GetCount(); n++)
+    for (n = 0; n < fileNames.GetCount(); n++)
     {
         if (wxIsWild(fileNames[n]))
         {
@@ -317,7 +317,7 @@ bool wxLuaEditorApp::OnInit()
     if (badFileNames.GetCount())
     {
         wxString msg(wxT("There was a problem trying to load file(s):\n"));
-        for (n=0; n < badFileNames.GetCount(); n++)
+        for (n = 0; n < badFileNames.GetCount(); n++)
             msg += wxT("'") + badFileNames[n] + wxT("'\n");
 
         wxMessageBox(msg, wxT("Unable to load file(s)"), wxOK|wxICON_ERROR, frame);
@@ -459,10 +459,20 @@ void wxLuaEditorFrame::CreateOptions(const wxSTEditorOptions& options)
         m_steNotebook      = m_wxluaIDE->GetEditorNotebook();
         m_sideSplitterWin2 = m_wxluaIDE;
 
+        m_mainSplitterWin1 = m_steNotebook;
+        m_mainSplitterWin2 = m_wxluaIDE->GetMsgNotebook();
+
+        m_resultsNotebook  = m_wxluaIDE->GetMsgNotebook();
+
+        m_findResultsEditor = new wxSTEditorFindResultsEditor(m_resultsNotebook, wxID_ANY);
+        m_findResultsEditor->CreateOptions(options);
+        m_resultsNotebook->AddPage(m_findResultsEditor, _("Search Results"));
+        wxSTEditorFindReplacePanel::SetFindResultsEditor(m_findResultsEditor);
+
         m_steTreeCtrl->SetSTENotebook(m_steNotebook);
     }
     SetSendSTEEvents(true);
-   
+
 
     wxLuaShell *shell = m_wxluaIDE->GetLuaShellWin();
     shell->AppendText(wxT("Welcome to the wxLuaShell, an interactive lua interpreter.\n"));

@@ -370,18 +370,18 @@ void wxLuaEditor::UpdateItems(wxMenu *menu, wxMenuBar *menuBar, wxToolBar *toolB
 IMPLEMENT_DYNAMIC_CLASS(wxLuaIDE, wxWindow);
 
 BEGIN_EVENT_TABLE(wxLuaIDE, wxWindow)
-    EVT_MENU(ID_WXLUAIDE_LOAD_LUA,   wxLuaIDE::OnMenu)
-    EVT_MENU(ID_WXLUAIDE_SAVEAS_LUA, wxLuaIDE::OnMenu)
-    EVT_MENU(ID_WXLUAIDE_RUN_LUA,    wxLuaIDE::OnMenu)
-    EVT_MENU(ID_WXLUAIDE_BREAK_LUA,  wxLuaIDE::OnMenu)
-    EVT_MENU(ID_WXLUAIDE_SHOW_STACK, wxLuaIDE::OnMenu)
+    EVT_MENU                    (ID_WXLUAIDE_LOAD_LUA,   wxLuaIDE::OnMenu)
+    EVT_MENU                    (ID_WXLUAIDE_SAVEAS_LUA, wxLuaIDE::OnMenu)
+    EVT_MENU                    (ID_WXLUAIDE_RUN_LUA,    wxLuaIDE::OnMenu)
+    EVT_MENU                    (ID_WXLUAIDE_BREAK_LUA,  wxLuaIDE::OnMenu)
+    EVT_MENU                    (ID_WXLUAIDE_SHOW_STACK, wxLuaIDE::OnMenu)
 
     EVT_STSPLITTER_CREATE_EDITOR(wxID_ANY, wxLuaIDE::OnCreateEditor)
-    EVT_SIZE(wxLuaIDE::OnSize)
+    EVT_SIZE                    (wxLuaIDE::OnSize)
 
-    EVT_LUA_PRINT       (wxID_ANY, wxLuaIDE::OnLua)
-    EVT_LUA_ERROR       (wxID_ANY, wxLuaIDE::OnLua)
-    EVT_LUA_DEBUG_HOOK  (wxID_ANY, wxLuaIDE::OnLua)
+    EVT_LUA_PRINT               (wxID_ANY, wxLuaIDE::OnLua)
+    EVT_LUA_ERROR               (wxID_ANY, wxLuaIDE::OnLua)
+    EVT_LUA_DEBUG_HOOK          (wxID_ANY, wxLuaIDE::OnLua)
 END_EVENT_TABLE()
 
 void wxLuaIDE::Init()
