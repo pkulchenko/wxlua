@@ -419,7 +419,7 @@ function SettingsPanel:create(parent, frame)
         s13:Add(1, 1, 1, wx.wxEXPAND);
         s13:SetItemMinSize(1, 180, 20);
 
-        local grid_sizer = wx.wxGridSizer(2,2,2,2);
+        local grid_sizer = wx.wxGridSizer(2,0,2,2);
         grid_sizer:SetHGap(5);
         grid_sizer:Add(s1);  grid_sizer:Add(s4);
         grid_sizer:Add(s2);  grid_sizer:Add(s5);
@@ -874,6 +874,11 @@ function MyFrame:create(parent, id, title, pos, size, style)
     --// "commit" all changes made to wxAuiManager
     self.m_mgr:Update();
 
+    this:Connect(wx.wxEVT_DESTROY,
+                 function(event)
+                    if (event:GetEventObject():DynamicCast("wxObject") == this:DynamicCast("wxObject")) then
+                        self.m_mgr:UnInit()
+                 end end)
     this:Connect(wx.wxEVT_ERASE_BACKGROUND, function(event) self:OnEraseBackground(event) end)
     this:Connect(wx.wxEVT_SIZE, function(event) self:OnSize(event) end)
     this:Connect(self.ID_CreateTree, wx.wxEVT_COMMAND_MENU_SELECTED, function(event) self:OnCreateTree(event) end)
@@ -1512,9 +1517,8 @@ function MyFrame:CreateNotebook()
    ctrl:AddPage(self:CreateHTMLCtrl(ctrl), wxT("Welcome to wxAUI") , false, page_bmp);
 
    local panel = wx.wxPanel( ctrl, wx.wxID_ANY );
-   local flex = wx.wxFlexGridSizer( 2,2 );
+   local flex = wx.wxFlexGridSizer( 2,0 );
    flex:AddGrowableRow( 0 );
-   flex:AddGrowableRow( 3 );
    flex:AddGrowableCol( 1 );
    flex:Add( 5,5 );   flex:Add( 5,5 );
    flex:Add( wx.wxStaticText( panel, -1, wxT("wxTextCtrl:") ), 0, wx.wxALL+wx.wxALIGN_CENTRE, 5 );
@@ -1620,7 +1624,6 @@ end
 function MyApp:OnInit()
     local myframe = MyFrame:create()
     local frame = myframe.this
-    wx.wxGetApp():SetTopWindow(frame);
     frame:Show();
     return true;
 end
