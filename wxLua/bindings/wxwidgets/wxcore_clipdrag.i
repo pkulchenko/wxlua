@@ -293,7 +293,7 @@
     %gtk wxDropSource(wxDataObject& data, wxWindow* win = NULL, const wxIcon& iconCopy = wxNullIcon, const wxIcon& iconMove = wxNullIcon, const wxIcon& iconStop = wxNullIcon)
 
     void SetData(wxDataObject& data)
-    //virtual wxDragResult DoDragDrop(int flags = wxDrag_CopyOnly)
+    virtual wxDragResult DoDragDrop(int flags = wxDrag_CopyOnly)
     wxDataObject* GetDataObject()
     virtual bool GiveFeedback(wxDragResult effect)
     void SetCursor(wxDragResult res, const wxCursor& cursor)

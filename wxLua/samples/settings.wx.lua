@@ -131,12 +131,13 @@ function FillListCtrl(listCtrl)
     AddListItem({"wx.wxPrinter.GetLastError()", wx.wxPrinter.GetLastError()})
 
 
-    AddListItem({"", ""})
-    if wx.wxPostScriptDC then
-        AddListItem({"wx.wxPostScriptDC.GetResolution()", wx.wxPostScriptDC.GetResolution()})
-    else
-        AddListItem({"wx.wxPostScriptDC.GetResolution()", "wxPostScriptDC not available"})
-    end
+    -- No longer static in 2.9
+    --AddListItem({"", ""})
+    --if wx.wxPostScriptDC then
+    --    AddListItem({"wx.wxPostScriptDC.GetResolution()", wx.wxPostScriptDC.GetResolution()})
+    --else
+    --    AddListItem({"wx.wxPostScriptDC.GetResolution()", "wxPostScriptDC not available"})
+    --end
 
 
     --AddListItem({"", ""})

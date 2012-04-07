@@ -3347,7 +3347,7 @@ function sudokuGUI.OpenPuzzle()
     local fileDialog = wx.wxFileDialog(sudokuGUI.frame, "Open file",
                                        sudokuGUI.filePath, sudokuGUI.fileName,
                                        "wxLuaSudoku files (*.sudoku)|*.sudoku|All files (*)|*",
-                                       wx.wxOPEN + wx.wxFILE_MUST_EXIST)
+                                       wx.wxFD_OPEN + wx.wxFD_FILE_MUST_EXIST)
     if fileDialog:ShowModal() == wx.wxID_OK then
         local fileName = fileDialog:GetPath()
         local fn = wx.wxFileName(fileName)

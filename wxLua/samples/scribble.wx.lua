@@ -261,7 +261,7 @@ function Open()
                                        "",
                                        "",
                                        "Scribble files(*.scribble)|*.scribble|All files(*)|*",
-                                       wx.wxOPEN + wx.wxFILE_MUST_EXIST)
+                                       wx.wxFD_OPEN + wx.wxFD_FILE_MUST_EXIST)
     local result = false
     if fileDialog:ShowModal() == wx.wxID_OK then
         fileName = fileDialog:GetPath()
@@ -407,7 +407,7 @@ function main()
 
     local c = currentPen:GetColour()
     colourPicker = wx.wxColourPickerCtrl(toolBar, ID_PENCOLOUR, c,
-                                         wx.wxDefaultPosition, 
+                                         wx.wxDefaultPosition,
                                          wx.wxSize(ctrlSize:GetHeight(), ctrlSize:GetHeight()),
                                          wx.wxCLRP_DEFAULT_STYLE)
     c:delete()

@@ -52,7 +52,7 @@ function UpdateButtons()
     local pause_ok = false
     local stop_ok  = false
 
-    if loadedMedia then 
+    if loadedMedia then
         -- Note: state may be -1 after first loading a file
         local state = mediaCtrl:GetState()
 
@@ -137,7 +137,7 @@ function main()
     stopButton   = wx.wxButton(panel, ID_STOP,  "Stop")
     volumeSlider = wx.wxSlider(panel, ID_VOLUME,  slider_range, 0, slider_range)
 
-    buttonSizer = wx.wxFlexGridSizer(1, 5, 5, 5)
+    buttonSizer = wx.wxFlexGridSizer(1, 0, 5, 5)
     buttonSizer:AddGrowableCol(4)
     buttonSizer:Add(playButton, 0, 0)
     buttonSizer:Add(pauseButton, 0, 0)
@@ -147,12 +147,12 @@ function main()
 
     posSlider = wx.wxSlider(panel, ID_POSITON, 0, 0, slider_range)
     posText   = wx.wxStaticText(panel, ID_POSTEXT, "Position 00:00/00:00 ")
-    posSizer = wx.wxFlexGridSizer(1, 5, 5, 5)
+    posSizer = wx.wxFlexGridSizer(1, 0, 5, 5)
     posSizer:AddGrowableCol(1)
     posSizer:Add(posText, 0, wx.wxALIGN_CENTER_VERTICAL)
     posSizer:Add(posSlider, 1, wx.wxEXPAND)
 
-    mainSizer = wx.wxFlexGridSizer(2, 1, 5, 5)
+    mainSizer = wx.wxFlexGridSizer(0, 1, 5, 5)
     mainSizer:AddGrowableRow(0)
     mainSizer:AddGrowableCol(0)
     mainSizer:Add(mediaCtrl, 1, wx.wxEXPAND, 0)

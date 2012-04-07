@@ -905,7 +905,7 @@ function OpenFile(event)
                                        "",
                                        "",
                                        "Lua files (*.lua)|*.lua|Text files (*.txt)|*.txt|All files (*)|*",
-                                       wx.wxOPEN + wx.wxFILE_MUST_EXIST)
+                                       wx.wxFD_OPEN + wx.wxFD_FILE_MUST_EXIST)
     if fileDialog:ShowModal() == wx.wxID_OK then
         if not LoadFile(fileDialog:GetPath(), nil, true) then
             wx.wxMessageBox("Unable to load file '"..fileDialog:GetPath().."'.",
@@ -2165,7 +2165,7 @@ function CreateDebuggerServer()
                                                        "",
                                                        eventFileName,
                                                        "Lua files (*.lua)|*.lua|Text files (*.txt)|*.txt|All files (*)|*",
-                                                       wx.wxOPEN + wx.wxFILE_MUST_EXIST)
+                                                       wx.wxOPEN + wx.wxFD_FILE_MUST_EXIST)
                     if fileDialog:ShowModal() == wx.wxID_OK then
                         local editor = LoadFile(fileDialog:GetPath(), nil, true)
                         if editor then

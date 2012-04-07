@@ -1479,6 +1479,27 @@ int wxDropTarget_methodCount = sizeof(wxDropTarget_methods)/sizeof(wxLuaBindMeth
 // Lua MetaTable Tag for Class 'wxDropSource'
 int wxluatype_wxDropSource = WXLUA_TUNKNOWN;
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDropSource_DoDragDrop[] = { &wxluatype_wxDropSource, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxDropSource_DoDragDrop(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDropSource_DoDragDrop[1] = {{ wxLua_wxDropSource_DoDragDrop, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDropSource_DoDragDrop }};
+//     virtual wxDragResult DoDragDrop(int flags = wxDrag_CopyOnly)
+static int LUACALL wxLua_wxDropSource_DoDragDrop(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int flags = wxDrag_CopyOnly
+    int flags = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : wxDrag_CopyOnly);
+    // get this
+    wxDropSource * self = (wxDropSource *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDropSource);
+    // call DoDragDrop
+    wxDragResult returns = (self->DoDragDrop(flags));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+
 #if (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDropSource_GetDataObject[] = { &wxluatype_wxDropSource, NULL };
 static int LUACALL wxLua_wxDropSource_GetDataObject(lua_State *L);
@@ -1716,6 +1737,8 @@ void wxLua_wxDropSource_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxDropSource_methods[] = {
+    { "DoDragDrop", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDropSource_DoDragDrop, 1, NULL },
+
 #if (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)
     { "GetDataObject", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDropSource_GetDataObject, 1, NULL },
 #endif // (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)

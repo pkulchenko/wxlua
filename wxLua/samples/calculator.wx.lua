@@ -217,7 +217,7 @@ function main()
                                            "",
                                            "calculator.xrc",
                                            "XRC files (*.xrc)|*.xrc|All files (*)|*",
-                                            wx.wxOPEN + wx.wxFILE_MUST_EXIST)
+                                            wx.wxFD_OPEN + wx.wxFD_FILE_MUST_EXIST)
 
         if fileDialog:ShowModal() == wx.wxID_OK then
             xrcFilename = fileDialog:GetPath()

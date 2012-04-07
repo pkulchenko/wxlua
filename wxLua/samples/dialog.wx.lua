@@ -42,13 +42,15 @@ local mainSizer = wx.wxBoxSizer(wx.wxVERTICAL)
 
 local staticBox      = wx.wxStaticBox(panel, wx.wxID_ANY, "Enter temperature")
 local staticBoxSizer = wx.wxStaticBoxSizer(staticBox, wx.wxVERTICAL)
-local flexGridSizer  = wx.wxFlexGridSizer( 3, 3, 0, 0 )
+local flexGridSizer  = wx.wxFlexGridSizer( 0, 3, 0, 0 )
 flexGridSizer:AddGrowableCol(1, 0)
 
 -- Make a function to reduce the amount of duplicate code.
 function AddConverterControl(name_string, button_text, textCtrlID, buttonID)
     local staticText = wx.wxStaticText( panel, wx.wxID_ANY, name_string)
-    local textCtrl   = wx.wxTextCtrl( panel, textCtrlID, "000000.00000", wx.wxDefaultPosition, wx.wxDefaultSize, wx.wxTE_PROCESS_ENTER )
+    local textCtrl   = wx.wxTextCtrl( panel, textCtrlID, "00000.00000", wx.wxDefaultPosition, wx.wxDefaultSize, wx.wxTE_PROCESS_ENTER )
+    local text_w, text_h = textCtrl:GetTextExtent("00000.00000")
+    textCtrl:SetInitialSize(wx.wxSize(text_w, -1))
     local button     = wx.wxButton( panel, buttonID, button_text)
     flexGridSizer:Add( staticText, 0, wx.wxALIGN_CENTER_VERTICAL+wx.wxALL, 5 )
     flexGridSizer:Add( textCtrl,   0, wx.wxGROW+wx.wxALIGN_CENTER+wx.wxALL, 5 )
