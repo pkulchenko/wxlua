@@ -877,6 +877,8 @@ function MyFrame:create(parent, id, title, pos, size, style)
     this:Connect(wx.wxEVT_DESTROY,
                  function(event)
                     if (event:GetEventObject():DynamicCast("wxObject") == this:DynamicCast("wxObject")) then
+                        -- You must ALWAYS UnInit() the wxAuiManager when closing
+                        -- since it pushes event handlers into the frame.
                         self.m_mgr:UnInit()
                  end end)
     this:Connect(wx.wxEVT_ERASE_BACKGROUND, function(event) self:OnEraseBackground(event) end)

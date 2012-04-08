@@ -12,7 +12,7 @@ Licence:     wxWindows licence
 package.cpath = package.cpath..";./?.dll;./?.so;../lib/?.so;../lib/vc_dll/?.dll;../lib/bcc_dll/?.dll;../lib/mingw_dll/?.dll;"
 require("wx")
 
-local version = '0.0'
+local version = '0.2'
 local port = 3000
 
 local CLIENT_OPEN = 100
@@ -35,7 +35,7 @@ local m_busy = false;
 
 local editorApp = wx.wxGetApp()
 editorApp.VendorName = "WXLUA"
-editorApp.AppName = "wxSocket demo: Server"
+editorApp.AppName = "wxSocket demo: Client"
 
 local menuBar = wx.wxMenuBar()
 fileMenu = wx.wxMenu {
@@ -59,8 +59,13 @@ socketClientMenu= wx.wxMenu{
     {CLIENT_CLOSE, "&Close session", "Close connection"};
 }
 
+DatagramSocketMenu = wx.wxMenu{
+    {CLIENT_DGRAM, "Send Datagram", "Test UDP sockets"}
+}
+
 menuBar:Append(fileMenu, "&File")
 menuBar:Append(socketClientMenu, "&SocketClient")
+menuBar:Append(DatagramSocketMenu, "&DatagramSocket")
 menuBar:Append(protocolsMenu, "&Protocols")
 local frame = wx.wxFrame(wx.NULL, wx.wxID_ANY, editorApp:GetAppName() .. ' by ' .. editorApp:GetVendorName())
 
@@ -104,6 +109,11 @@ frame:Connect(CLIENT_CLOSE, wx.wxEVT_UPDATE_UI,
 frame:Connect( CLIENT_CLOSE, wx.wxEVT_COMMAND_MENU_SELECTED,
     function (event)
         m_sock:Close()
+    end)
+
+frame:Connect( CLIENT_DGRAM, wx.wxEVT_COMMAND_MENU_SELECTED,
+    function (event)
+        wx.wxMessageBox("Sorry not implemented!")
     end)
 
 frame:Connect(wx.wxID_ABOUT, wx.wxEVT_COMMAND_MENU_SELECTED,
@@ -310,16 +320,8 @@ frame:Connect(CLIENT_TEST3, wx.wxEVT_COMMAND_MENU_SELECTED,
         UpdateStatusBar();
     end)
 
-local last_url = "http://wxlua.sourceforge.net"
 function GetUrl()
-    local url = wx.wxGetTextFromUser("Enter an URL to get", "URL:", "http://wxlua.sourceforge.net");
-
-    -- If they canceled the dialog the returned string is empty, don't save it
-    if (string.len(url) > 0) then
-        last_url = url
-    end
-
-    return url
+    return wx.wxGetTextFromUser("Enter an URL to get", "URL:", "http:--localhost");
 end
 
 frame:Connect(TESTURL_ID, wx.wxEVT_COMMAND_MENU_SELECTED,
@@ -330,10 +332,6 @@ frame:Connect(TESTURL_ID, wx.wxEVT_COMMAND_MENU_SELECTED,
         -- Ask for the URL
         display("\n=== URL test begins ===")
         local urlname = GetUrl()
-        -- They canceled the dialog
-        if (string.len(urlname) < 1) then
-            return
-        end
         -- Parse the URL
         local url = wx.wxURL(urlname);
         if url:GetError() ~= wx.wxURL_NOERR then
@@ -352,13 +350,13 @@ frame:Connect(TESTURL_ID, wx.wxEVT_COMMAND_MENU_SELECTED,
         end
         -- Print the contents type and file size
         display("Contents type: " .. url:GetProtocol():GetContentType() ..
-            "File size: " ..data:GetSize() .. "\nStarting to download...")
+            "File size: " ..data.Size .. "\nStarting to download...")
 
         -- Get the data
         local fileTest = wx.wxFile("test.url", wx.wxFile.write)
         local sout = wx.wxFileOutputStream(fileTest)
-        if not sout:Ok() then
-            display("Error: couldn't open 'test.url' file for output")
+        if not sout.Ok then
+            display("Error: couldn't open file for output")
             display("=== URL test ends ===")
             return;
         end
@@ -372,11 +370,7 @@ frame:Connect(TESTURL_ID, wx.wxEVT_COMMAND_MENU_SELECTED,
 frame:Connect(NEWURL_ID, wx.wxEVT_COMMAND_MENU_SELECTED,
     function(event)
         display("\n=== URL test begins ===")
-        local urlname = GetUrl()
-        if (string.len(urlname) < 1) then
-            return
-        end
-        local file = wx.wxFileSystem():OpenFile(urlname)
+        local file = wx.wxFileSystem():OpenFile(GetUrl())
         if not file then
             display("Could not access URL") return
         end
@@ -385,7 +379,7 @@ frame:Connect(NEWURL_ID, wx.wxEVT_COMMAND_MENU_SELECTED,
         repeat
             local c= data.C
             if data:LastRead() ~= 0  then
-                text[#text+1]=string.char(c)
+                if c > 0 then text[#text+1]=string.char(c) end
             end
         until data:LastRead() == 0
         local fileTest = wx.wxFile("test.url", wx.wxFile.write)

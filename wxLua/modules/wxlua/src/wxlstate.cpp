@@ -2226,6 +2226,11 @@ bool wxLuaCleanupWindows(lua_State* L, bool only_check)
                 if (win->HasCapture())
                     win->ReleaseMouse();
 
+                // 2.9 insists that all pushed event handlers are popped before destroying window
+                // we assume (for now) that they're properly owned so we don't pop or delete them
+                //while (win->GetEventHandler() != win)
+                //    win->PopEventHandler(false);
+
                 // release capture for children since we may be abruptly ending
                 for ( wxWindowList::compatibility_iterator childNode = win->GetChildren().GetFirst();
                     childNode;
@@ -2239,6 +2244,11 @@ bool wxLuaCleanupWindows(lua_State* L, bool only_check)
 
                     if (child->HasCapture())
                         child->ReleaseMouse();
+
+                    // 2.9 insists that all pushed event handlers are popped before destroying window
+                    // we assume (for now) that they're properly owned so we don't pop or delete them
+                    //while (child->GetEventHandler() != child)
+                    //    child->PopEventHandler(false);
                 }
 
                 if (!win->IsBeingDeleted())

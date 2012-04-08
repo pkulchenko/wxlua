@@ -123,6 +123,7 @@ frame:Connect(SOCKET_ID, wx.wxEVT_SOCKET,
         elseif socketEvent == wx.wxSOCKET_LOST then
             display('wx.wxSOCKET_LOST')
             m_numClients = m_numClients -1
+            UpdateStatusBar()
         else
             display("Unexpected socketEvent")
             display("Deleting socket.");

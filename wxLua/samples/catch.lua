@@ -10,7 +10,7 @@
 -----------------------------------------------------------------------------
 -- Thanks to John Labenski for his suggestions
 ------------------------------------------------------------------------------
-version = 0.9
+version = 1.0
 package.cpath = package.cpath..";./?.dll;./?.so;../lib/?.so;../lib/vc_dll/?.dll;../lib/bcc_dll/?.dll;../lib/mingw_dll/?.dll;"
 
 require("wx")
@@ -64,6 +64,9 @@ local soundTata    = wx.wxSound(wx.wxGetOSDirectory()..[[\media\tada.wav]])
 local soundRecycle = wx.wxSound(wx.wxGetOSDirectory()..[[\media\recycle.wav]])
 logNo:delete();
 
+--~-- This code was added for window 7 without it the joysticks do not work after the first sound is played
+if soundTata:IsOk() then soundTata:Play() soundTata:Stop() 
+elseif soundRecycle:IsOk() then soundRecycle:Play() soundRecycle:Stop() end
 
 function distance(m)
     local rd, cd = Present:Offet(m[1], m[2])

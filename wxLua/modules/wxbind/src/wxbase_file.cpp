@@ -3376,9 +3376,9 @@ static int LUACALL wxLua_wxDir_GetAllFiles(lua_State *L)
     // get number of arguments
     int argCount = lua_gettop(L);
     // int flags = wxDIR_DEFAULT
-    int flags = (argCount >= 4 ? (int)wxlua_getintegertype(L, 3) : wxDIR_DEFAULT);
+    int flags = (argCount >= 3 ? (int)wxlua_getintegertype(L, 3) : wxDIR_DEFAULT);
     // const wxString& filespec = ""
-    wxString filespec = (argCount >= 3 ? wxlua_getwxStringtype(L, 2) : wxString(wxT("")));
+    wxString filespec = (argCount >= 2 ? wxlua_getwxStringtype(L, 2) : wxString(wxT("")));
     // wxArrayString *files
     wxArrayString files;
     // const wxString& dirname
