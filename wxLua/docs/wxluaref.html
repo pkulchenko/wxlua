@@ -12,7 +12,7 @@
 <h1>wxLua 2.8.12.0 Reference Manual for wxWidgets 2.8.12</h1>
 
 <h2>Classes</h2>
-<table border="1" summary="Table of what wxWidgets C++ classes are wrapped by wxLua">
+<table border="1" summary="Table showing what wxWidgets C++ classes are wrapped by wxLua">
   <tr><th>Class Name</th> <th>In wxWidgets Manual</th> <th>Wrapped by wxLua</th> <th>Notes</th></tr>
 <tr>
 <td><a href="#wxANIHandler">wxANIHandler</a>
@@ -1935,6 +1935,11 @@
 <td align="center" bgcolor=#AAFFAA>X
 <td>&nbsp;
 <tr>
+<td><a href="#wxLuaDataObjectSimple">wxLuaDataObjectSimple</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
 <td><a href="#wxLuaDebuggerEvent">wxLuaDebuggerEvent</a>
 <td bgcolor=#FFAAAA>&nbsp;
 <td align="center" bgcolor=#AAFFAA>X
@@ -2326,6 +2331,11 @@
 <td>&nbsp;
 <tr>
 <td><a href="#wxPoint2DInt">wxPoint2DInt</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
+<td><a href="#wxPointList">wxPointList</a>
 <td bgcolor=#FFAAAA>&nbsp;
 <td align="center" bgcolor=#AAFFAA>X
 <td>&nbsp;
@@ -2915,6 +2925,16 @@
 <td align="center" bgcolor=#AAFFAA>X
 <td>Interchangeable with a Lua string
 <tr>
+<td><a href="#wxString::const_iterator">wxString::const_iterator</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
+<td><a href="#wxString::iterator">wxString::iterator</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
 <td>wxStringBuffer
 <td align="center" bgcolor=#AAFFAA>X
 <td bgcolor=#FFAAAA>&nbsp;
@@ -3457,6 +3477,7 @@
 <a href="#wxFindReplaceDialogStyles">wxFindReplaceDialogStyles</a><br>
 <a href="#wxFindReplaceFlags">wxFindReplaceFlags</a><br>
 <a href="#wxFlexSizerGrowMode">wxFlexSizerGrowMode</a><br>
+<a href="#wxFloodFillStyle">wxFloodFillStyle</a><br>
 <a href="#wxFontEncoding">wxFontEncoding</a><br>
 <a href="#wxFontFamily">wxFontFamily</a><br>
 <a href="#wxFontStyle">wxFontStyle</a><br>
@@ -3470,6 +3491,7 @@
 <a href="#wxHotkeyModifier">wxHotkeyModifier</a><br>
 <a href="#wxHtmlWindowInterface::HTMLCursor">wxHtmlWindowInterface::HTMLCursor</a><br>
 <a href="#wxIdleMode">wxIdleMode</a><br>
+<a href="#wxImageResizeQuality">wxImageResizeQuality</a><br>
 <a href="#wxItemKind">wxItemKind</a><br>
 <a href="#wxKeyCode">wxKeyCode</a><br>
 <a href="#wxKeyType">wxKeyType</a><br>
@@ -3485,6 +3507,7 @@
 <a href="#wxLocaleInitFlags">wxLocaleInitFlags</a><br>
 <a href="#wxLuaMethod_Type">wxLuaMethod_Type</a><br>
 <a href="#wxLuaObject_Type">wxLuaObject_Type</a><br>
+<a href="#wxMappingMode">wxMappingMode</a><br>
 <a href="#wxMediaCtrlPlayerControls">wxMediaCtrlPlayerControls</a><br>
 <a href="#wxMediaState">wxMediaState</a><br>
 <a href="#wxNavigationKeyEvent::dummy">wxNavigationKeyEvent::dummy</a><br>
@@ -3494,7 +3517,11 @@
 <a href="#wxPaperSize">wxPaperSize</a><br>
 <a href="#wxPathFormat">wxPathFormat</a><br>
 <a href="#wxPathNormalize">wxPathNormalize</a><br>
+<a href="#wxPenCap">wxPenCap</a><br>
+<a href="#wxPenJoin">wxPenJoin</a><br>
+<a href="#wxPenStyle">wxPenStyle</a><br>
 <a href="#wxPluginCategory">wxPluginCategory</a><br>
+<a href="#wxPolygonFillMode">wxPolygonFillMode</a><br>
 <a href="#wxPortId">wxPortId</a><br>
 <a href="#wxPowerType">wxPowerType</a><br>
 <a href="#wxPrintBin">wxPrintBin</a><br>
@@ -3502,6 +3529,7 @@
 <a href="#wxPrintQuality">wxPrintQuality</a><br>
 <a href="#wxPrinterError">wxPrinterError</a><br>
 <a href="#wxProtocolError">wxProtocolError</a><br>
+<a href="#wxRasterOperationMode">wxRasterOperationMode</a><br>
 <a href="#wxRegionContain">wxRegionContain</a><br>
 <a href="#wxRegionOp">wxRegionOp</a><br>
 <a href="#wxRelationship">wxRelationship</a><br>
@@ -3611,7 +3639,7 @@
 <font color=#006666><i>%define</i> wxMINOR_VERSION</font><br>
 <font color=#006666><i>%define</i> wxRELEASE_NUMBER</font><br>
 <font color=#006666><i>%define</i> wxSUBRELEASE_NUMBER</font><br>
-<font color=#006666><i>%define_string</i> wxVERSION_STRING</font><br>
+<font color=#006666><i>%define_wxstring</i> wxVERSION_STRING</font><br>
 <br>
 <font color=#AA0000><i>%function</i> bool wxCHECK_VERSION(int major, int minor, int release) <font color=#009900>// actually a define</font></font><br>
 <font color=#AA0000><i>%function</i> bool wxCHECK_VERSION_FULL(int major, int minor, int release, int subrel) <font color=#009900>// actually a define</font></font><br>
@@ -3791,14 +3819,14 @@
     wxPORT_MSW          <font color=#009900>// wxMSW, native toolkit is Windows API</font><br>
     wxPORT_MOTIF        <font color=#009900>// wxMotif, using [Open]Motif or Lesstif</font><br>
     wxPORT_GTK          <font color=#009900>// wxGTK, using GTK+ 1.x, 2.x, GPE or Maemo</font><br>
-    wxPORT_MGL          <font color=#009900>// wxMGL, using wxUniversal</font><br>
+    !<i>%wxchkver_2_9</i> wxPORT_MGL          <font color=#009900>// wxMGL, using wxUniversal</font><br>
     wxPORT_X11          <font color=#009900>// wxX11, using wxUniversal</font><br>
     wxPORT_PM           <font color=#009900>// wxOS2, using OS/2 Presentation Manager</font><br>
     wxPORT_OS2          <font color=#009900>// wxOS2, using OS/2 Presentation Manager</font><br>
     wxPORT_MAC          <font color=#009900>// wxMac, using Carbon or Classic Mac API</font><br>
     wxPORT_COCOA        <font color=#009900>// wxCocoa, using Cocoa NextStep/Mac API</font><br>
     wxPORT_WINCE        <font color=#009900>// wxWinCE, toolkit is WinCE SDK API</font><br>
-    wxPORT_PALMOS       <font color=#009900>// wxPalmOS, toolkit is PalmOS API</font><br>
+    !<i>%wxchkver_2_9</i> wxPORT_PALMOS       <font color=#009900>// wxPalmOS, toolkit is PalmOS API</font><br>
     wxPORT_DFB          <font color=#009900>// wxDFB, using wxUniversal</font><br>
 </font>
 </blockquote><font color=#0066CC><i>%endenum</i></font><br>
@@ -3981,11 +4009,11 @@
 <font color=#009900>// symbolic trace masks - wxLogTrace("foo", "some trace message...") will be</font><br>
 <font color=#009900>// discarded unless the string "foo" has been added to the list of allowed</font><br>
 <font color=#009900>// ones with AddTraceMask()</font><br>
-<font color=#006666><i>%define_string</i> wxTRACE_MemAlloc <font color=#009900>//wxT("memalloc") // trace memory allocation (new/delete)</font></font><br>
-<font color=#006666><i>%define_string</i> wxTRACE_Messages <font color=#009900>//wxT("messages") // trace window messages/X callbacks</font></font><br>
-<font color=#006666><i>%define_string</i> wxTRACE_ResAlloc <font color=#009900>//wxT("resalloc") // trace GDI resource allocation</font></font><br>
-<font color=#006666><i>%define_string</i> wxTRACE_RefCount <font color=#009900>//wxT("refcount") // trace various ref counting operations</font></font><br>
-<font color=#006666><i>%msw</i> <i>%define_string</i> wxTRACE_OleCalls <font color=#009900>//wxT("ole") // OLE interface calls</font></font><br>
+<font color=#006666><i>%define_wxstring</i> wxTRACE_MemAlloc <font color=#009900>//wxT("memalloc") // trace memory allocation (new/delete)</font></font><br>
+<font color=#006666><i>%define_wxstring</i> wxTRACE_Messages <font color=#009900>//wxT("messages") // trace window messages/X callbacks</font></font><br>
+<font color=#006666><i>%define_wxstring</i> wxTRACE_ResAlloc <font color=#009900>//wxT("resalloc") // trace GDI resource allocation</font></font><br>
+<font color=#006666><i>%define_wxstring</i> wxTRACE_RefCount <font color=#009900>//wxT("refcount") // trace various ref counting operations</font></font><br>
+<font color=#006666><i>%msw</i> <i>%define_wxstring</i> wxTRACE_OleCalls <font color=#009900>//wxT("ole") // OLE interface calls</font></font><br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <i>%delete</i> <a name="wxLog">wxLog</a></font></b>
 <blockquote>
@@ -4563,7 +4591,59 @@
     const wxCharBuffer ToUTF8() const<br>
     static <a href="#wxString">wxString</a> FromUTF8(const char* s)<br>
 <br>
+<i>%if</i> <i>%wxchkver_2_9</i><br>
+    <font color=#009900>//<a href="#wxString">wxString</a>(wxString::const_iterator first, wxString::const_iterator last)</font><br>
+    wxString::const_iterator begin() const<br>
+    wxString::iterator begin()<br>
+    wxString::const_iterator end() const<br>
+    wxString::iterator end()<br>
+<i>%endif</i><br>
+<br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// wxString::const_iterator - A <a href="#wxString">wxString</a> iterator class</font><br>
+<br>
+<font color=#009900>// wxWidgets has <a href="#wxString">wxString</a> iterators in &lt; 2.9, but they are #if wxUSE_STL</font><br>
+<font color=#009900>// so they are not necessary for anything, in 2.9 they are inputs to some functions.</font><br>
+<br>
+<i>%if</i> <i>%wxchkver_2_9</i><br>
+<br>
+<b><font size=+1 color=#DD0000><i>%class</i> <i>%delete</i> <a name="wxString::const_iterator">wxString::const_iterator</a></font></b>
+<blockquote>
+<br>
+    wxString::const_iterator()<br>
+    wxString::const_iterator(const wxString::const_iterator&amp; i)<br>
+    wxString::const_iterator(const wxString::iterator&amp; i)<br>
+<br>
+    <font color=#009900>//wxUniChar operator*() const</font><br>
+    <i>%operator</i> char operator*() const<br>
+<br>
+    <i>%operator</i> wxString::const_iterator&amp; operator=(const wxString::const_iterator&amp; i)<br>
+    <i>%operator</i> wxString::const_iterator operator+(ptrdiff_t n) const<br>
+    <i>%operator</i> wxString::const_iterator operator-(ptrdiff_t n) const<br>
+<br>
+</blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// wxString::iterator - A <a href="#wxString">wxString</a> iterator class</font><br>
+<br>
+<b><font size=+1 color=#DD0000><i>%class</i> <i>%delete</i> <a name="wxString::iterator">wxString::iterator</a></font></b>
+<blockquote>
+<br>
+    wxString::iterator()<br>
+    wxString::iterator(const wxString::iterator&amp; i)<br>
+<br>
+    <font color=#009900>//wxUniChar operator*() const</font><br>
+    <i>%operator</i> char operator*() const<br>
+<br>
+    <i>%operator</i> wxString::iterator&amp; operator=(const wxString::iterator&amp; i)<br>
+    <i>%operator</i> wxString::iterator operator+(ptrdiff_t n) const<br>
+    <i>%operator</i> wxString::iterator operator-(ptrdiff_t n) const<br>
+<br>
+</blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
+<br>
+<i>%endif</i><br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
 <font color=#009900>// <a href="#wxStringTokenizer">wxStringTokenizer</a></font><br>
@@ -4731,7 +4811,7 @@
 </font>
 </blockquote><font color=#0066CC><i>%endenum</i></font><br>
 <br>
-<b><font size=+1 color=#DD0000><i>%class</i> <i>%delete</i> <a name="wxList">wxList</a>, <a href="#wxObject">wxObject</a></font></b>
+<b><font size=+1 color=#DD0000><i>%class</i> <i>%delete</i> <a name="wxList">wxList</a> <font color=#009900>// not derived from <a href="#wxObject">wxObject</a> in 2.9</font></font></b>
 <blockquote>
     <a href="#wxList">wxList</a>()<br>
 <br>
@@ -5206,11 +5286,21 @@
     <a href="#wxDateTime">wxDateTime</a>&amp; Add(const <a href="#wxDateSpan">wxDateSpan</a>&amp; diff)<br>
     <a href="#wxDateTime">wxDateTime</a>&amp; Subtract(const <a href="#wxTimeSpan">wxTimeSpan</a>&amp; diff)<br>
     <a href="#wxDateTime">wxDateTime</a>&amp; Subtract(const <a href="#wxDateSpan">wxDateSpan</a>&amp; diff)<br>
-    <a href="#wxString">wxString</a> ParseRfc822Date(<a href="#wxString">wxString</a> date)<br>
-    <a href="#wxString">wxString</a> ParseFormat(<a href="#wxString">wxString</a> date, <a href="#wxString">wxString</a> format = "<i>%c</i>", const <a href="#wxDateTime">wxDateTime</a>&amp; dateDef = wxDefaultDateTime)<br>
-    <a href="#wxString">wxString</a> ParseDateTime(<a href="#wxString">wxString</a> datetime)<br>
-    <a href="#wxString">wxString</a> ParseDate(<a href="#wxString">wxString</a> date)<br>
-    <a href="#wxString">wxString</a> ParseTime(<a href="#wxString">wxString</a> time)<br>
+<br>
+    <i>%wxchkver_2_9</i> bool ParseRfc822Date(<a href="#wxString">wxString</a> date, wxString::const_iterator *end)<br>
+    <i>%wxchkver_2_9</i> bool ParseFormat(<a href="#wxString">wxString</a> date, <a href="#wxString">wxString</a> format, const <a href="#wxDateTime">wxDateTime</a>&amp; dateDef, wxString::const_iterator *end)<br>
+    <i>%wxchkver_2_9</i> bool ParseFormat(<a href="#wxString">wxString</a> date, <a href="#wxString">wxString</a> format, wxString::const_iterator *end)<br>
+    <i>%wxchkver_2_9</i> bool ParseFormat(<a href="#wxString">wxString</a> date, wxString::const_iterator *end)<br>
+    <i>%wxchkver_2_9</i> bool ParseDateTime(<a href="#wxString">wxString</a> datetime, wxString::const_iterator *end)<br>
+    <i>%wxchkver_2_9</i> bool ParseDate(<a href="#wxString">wxString</a> date, wxString::const_iterator *end)<br>
+    <i>%wxchkver_2_9</i> bool ParseTime(<a href="#wxString">wxString</a> time, wxString::const_iterator *end)<br>
+<br>
+    !<i>%wxchkver_2_9</i> <a href="#wxString">wxString</a> ParseRfc822Date(<a href="#wxString">wxString</a> date)<br>
+    !<i>%wxchkver_2_9</i> <a href="#wxString">wxString</a> ParseFormat(<a href="#wxString">wxString</a> date, <a href="#wxString">wxString</a> format = "<i>%c</i>", const <a href="#wxDateTime">wxDateTime</a>&amp; dateDef = wxDefaultDateTime)<br>
+    !<i>%wxchkver_2_9</i> <a href="#wxString">wxString</a> ParseDateTime(<a href="#wxString">wxString</a> datetime)<br>
+    !<i>%wxchkver_2_9</i> <a href="#wxString">wxString</a> ParseDate(<a href="#wxString">wxString</a> date)<br>
+    !<i>%wxchkver_2_9</i> <a href="#wxString">wxString</a> ParseTime(<a href="#wxString">wxString</a> time)<br>
+<br>
     <a href="#wxString">wxString</a> FormatDate() const<br>
     <a href="#wxString">wxString</a> FormatTime() const<br>
     <a href="#wxString">wxString</a> FormatISODate() const<br>
@@ -5899,9 +5989,11 @@
     <font color=#009900>//</font><br>
     <font color=#009900>// domains are searched in the last to first order, i.e. catalogs</font><br>
     <font color=#009900>// added later override those added before.</font><br>
-    virtual <a href="#wxString">wxString</a> GetString(const <a href="#wxString">wxString</a>&amp; szOrigString, const wxChar* szDomain = NULL) const;<br>
+    <i>%wxchkver_2_9</i>  virtual <a href="#wxString">wxString</a> GetString(const <a href="#wxString">wxString</a>&amp; szOrigString, const <a href="#wxString">wxString</a>&amp; szDomain = "") const;<br>
+    !<i>%wxchkver_2_9</i> virtual <a href="#wxString">wxString</a> GetString(const <a href="#wxString">wxString</a>&amp; szOrigString, const wxChar* szDomain = NULL) const;<br>
     <font color=#009900>// plural form version of the same:</font><br>
-    virtual <a href="#wxString">wxString</a> GetString(const <a href="#wxString">wxString</a>&amp; szOrigString, const <a href="#wxString">wxString</a>&amp; szOrigString2, size_t n, const wxChar* szDomain = NULL) const;<br>
+    <i>%wxchkver_2_9</i>  virtual <a href="#wxString">wxString</a> GetString(const <a href="#wxString">wxString</a>&amp; szOrigString, const <a href="#wxString">wxString</a>&amp; szOrigString2, size_t n, const <a href="#wxString">wxString</a>&amp; szDomain = "") const;<br>
+    !<i>%wxchkver_2_9</i> virtual <a href="#wxString">wxString</a> GetString(const <a href="#wxString">wxString</a>&amp; szOrigString, const <a href="#wxString">wxString</a>&amp; szOrigString2, size_t n, const wxChar* szDomain = NULL) const;<br>
 <br>
     <font color=#009900>// Returns the current short name for the locale</font><br>
     const <a href="#wxString">wxString</a>&amp; GetName() const<br>
@@ -5912,10 +6004,12 @@
 <br>
 <font color=#AA0000><i>%function</i> <a href="#wxLocale">wxLocale</a>* wxGetLocale()</font><br>
 <br>
-<font color=#AA0000><i>%wxchkver_2_8</i>  <i>%function</i> <a href="#wxString">wxString</a> wxGetTranslation(const <a href="#wxString">wxString</a>&amp; sz, const wxChar* domain=NULL)</font><br>
+<font color=#AA0000><i>%wxchkver_2_9</i>  <i>%function</i> <a href="#wxString">wxString</a> wxGetTranslation(const <a href="#wxString">wxString</a>&amp; sz, const <a href="#wxString">wxString</a>&amp; domain = "")</font><br>
+<font color=#AA0000>!<i>%wxchkver_2_9</i> &amp;&amp; <i>%wxchkver_2_8</i>  <i>%function</i> <a href="#wxString">wxString</a> wxGetTranslation(const <a href="#wxString">wxString</a>&amp; sz, const wxChar* domain=NULL)</font><br>
 <font color=#AA0000>!<i>%wxchkver_2_8</i> <i>%function</i> <a href="#wxString">wxString</a> wxGetTranslation(const <a href="#wxString">wxString</a>&amp; sz)</font><br>
 <br>
-<font color=#990099><i>%wxchkver_2_8</i>  <i>%rename</i> wxGetTranslationPlural <i>%function</i> <a href="#wxString">wxString</a> wxGetTranslation(const <a href="#wxString">wxString</a>&amp; sz1, const <a href="#wxString">wxString</a>&amp; sz2, size_t n, const wxChar* domain=NULL)</font><br>
+<font color=#990099><i>%wxchkver_2_9</i>  <i>%rename</i> wxGetTranslationPlural <i>%function</i> <a href="#wxString">wxString</a> wxGetTranslation(const <a href="#wxString">wxString</a>&amp; sz1, const <a href="#wxString">wxString</a>&amp; sz2, size_t n, const <a href="#wxString">wxString</a>&amp; domain = "")</font><br>
+<font color=#990099>!<i>%wxchkver_2_9</i> &amp;&amp; <i>%wxchkver_2_8</i>  <i>%rename</i> wxGetTranslationPlural <i>%function</i> <a href="#wxString">wxString</a> wxGetTranslation(const <a href="#wxString">wxString</a>&amp; sz1, const <a href="#wxString">wxString</a>&amp; sz2, size_t n, const wxChar* domain=NULL)</font><br>
 <font color=#990099>!<i>%wxchkver_2_8</i> <i>%rename</i> wxGetTranslationPlural <i>%function</i> <a href="#wxString">wxString</a> wxGetTranslation(const <a href="#wxString">wxString</a>&amp; sz1, const <a href="#wxString">wxString</a>&amp; sz2, size_t n)</font><br>
 <br>
 <i>%endif</i> <font color=#009900>//wxUSE_INTL</font><br>
@@ -5943,7 +6037,7 @@
 <br>
 <font color=#BB0055><font color=#009900>// <i>%override</i> [new Lua string] wxDos2UnixFilename(Lua string)</font></font><br>
 <font color=#009900>// C++ Func: void wxDos2UnixFilename(wxChar *s)</font><br>
-<font color=#AA0000><i>%function</i> <a href="#wxString">wxString</a> wxDos2UnixFilename(const <a href="#wxString">wxString</a>&amp; s)</font><br>
+<font color=#AA0000>!<i>%wxchkver_2_9_0</i> <i>%function</i> <a href="#wxString">wxString</a> wxDos2UnixFilename(const <a href="#wxString">wxString</a>&amp; s)</font><br>
 <font color=#BB0055><font color=#009900>// <i>%override</i> <a href="#wxDateTime">wxDateTime</a> wxFileModificationTime(const <a href="#wxString">wxString</a>&amp; filename) (not overridden, just return <a href="#wxDateTime">wxDateTime</a>)</font></font><br>
 <font color=#009900>// C++ Func: time_t wxFileModificationTime(const <a href="#wxString">wxString</a>&amp; filename)</font><br>
 <font color=#AA0000><i>%function</i> <a href="#wxDateTime">wxDateTime</a> wxFileModificationTime(const <a href="#wxString">wxString</a>&amp; filename)</font><br>
@@ -5957,7 +6051,7 @@
 <font color=#AA0000><i>%function</i> <a href="#wxString">wxString</a> wxPathOnly(const <a href="#wxString">wxString</a>&amp; path)</font><br>
 <font color=#BB0055><font color=#009900>// <i>%override</i> [new Lua string] wxUnix2DosFilename(Lua string)</font></font><br>
 <font color=#009900>// C++ Func: void wxUnix2DosFilename(wxChar *s)</font><br>
-<font color=#AA0000><i>%function</i> <a href="#wxString">wxString</a> wxUnix2DosFilename(const <a href="#wxString">wxString</a>&amp; s)</font><br>
+<font color=#AA0000>!<i>%wxchkver_2_9</i> <i>%function</i> <a href="#wxString">wxString</a> wxUnix2DosFilename(const <a href="#wxString">wxString</a>&amp; s)</font><br>
 <font color=#AA0000><i>%function</i> bool wxConcatFiles(const <a href="#wxString">wxString</a>&amp; file1, const <a href="#wxString">wxString</a>&amp; file2,const <a href="#wxString">wxString</a>&amp; file3)</font><br>
 <font color=#AA0000><i>%function</i> bool wxCopyFile(const <a href="#wxString">wxString</a>&amp; file1, const <a href="#wxString">wxString</a>&amp; file2, bool overwrite = true)</font><br>
 <font color=#AA0000><i>%function</i> <a href="#wxString">wxString</a> wxGetCwd()</font><br>
@@ -5983,19 +6077,19 @@
 <br>
 <font color=#009900>// wxLua only has storage for wxChar* in bindings, wxFILE_SEP_XXX are #defined</font><br>
 <font color=#009900>//   as wxChar wxT('.'), so we just redefine them to be wxT(".") or wxChar*</font><br>
-<font color=#006666><i>%define_string</i> wxFILE_SEP_EXT       wxT(".")</font><br>
-<font color=#006666><i>%define_string</i> wxFILE_SEP_DSK       wxT(":")</font><br>
-<font color=#006666><i>%define_string</i> wxFILE_SEP_PATH_DOS  wxT("\\")</font><br>
-<font color=#006666><i>%define_string</i> wxFILE_SEP_PATH_UNIX wxT("/")</font><br>
-<font color=#006666><i>%define_string</i> wxFILE_SEP_PATH_MAC  wxT(":")</font><br>
-<font color=#006666><i>%define_string</i> wxFILE_SEP_PATH_VMS  wxT(".") <font color=#009900>// VMS also uses '[' and ']'</font></font><br>
+<font color=#006666><i>%define_wxstring</i> wxFILE_SEP_EXT       wxT(".")</font><br>
+<font color=#006666><i>%define_wxstring</i> wxFILE_SEP_DSK       wxT(":")</font><br>
+<font color=#006666><i>%define_wxstring</i> wxFILE_SEP_PATH_DOS  wxT("\\")</font><br>
+<font color=#006666><i>%define_wxstring</i> wxFILE_SEP_PATH_UNIX wxT("/")</font><br>
+<font color=#006666><i>%define_wxstring</i> wxFILE_SEP_PATH_MAC  wxT(":")</font><br>
+<font color=#006666><i>%define_wxstring</i> wxFILE_SEP_PATH_VMS  wxT(".") <font color=#009900>// VMS also uses '[' and ']'</font></font><br>
 <br>
-<font color=#006666><i>%define_string</i> wxFILE_SEP_PATH wxLua_FILE_SEP_PATH <font color=#009900>// hack to convert from wxChar wxT('') to wxChar* wxT("")</font></font><br>
+<font color=#006666><i>%define_wxstring</i> wxFILE_SEP_PATH wxLua_FILE_SEP_PATH <font color=#009900>// hack to convert from wxChar wxT('') to wxChar* wxT("")</font></font><br>
 <br>
-<font color=#006666><i>%define_string</i> wxPATH_SEP_DOS       <font color=#009900>// wxT(";")</font></font><br>
-<font color=#006666><i>%define_string</i> wxPATH_SEP_UNIX      <font color=#009900>// wxT(":")</font></font><br>
-<font color=#006666><i>%define_string</i> wxPATH_SEP_MAC       <font color=#009900>// wxT(";")</font></font><br>
-<font color=#006666><i>%define_string</i> wxPATH_SEP           <font color=#009900>// wxPATH_SEP_XXX</font></font><br>
+<font color=#006666><i>%define_wxstring</i> wxPATH_SEP_DOS       <font color=#009900>// wxT(";")</font></font><br>
+<font color=#006666><i>%define_wxstring</i> wxPATH_SEP_UNIX      <font color=#009900>// wxT(":")</font></font><br>
+<font color=#006666><i>%define_wxstring</i> wxPATH_SEP_MAC       <font color=#009900>// wxT(";")</font></font><br>
+<font color=#006666><i>%define_wxstring</i> wxPATH_SEP           <font color=#009900>// wxPATH_SEP_XXX</font></font><br>
 <br>
 <font color=#006666><i>%define</i> wxARE_FILENAMES_CASE_SENSITIVE <font color=#009900>// bool 1/0</font></font><br>
 <br>
@@ -6591,9 +6685,9 @@
     <font color=#009900>// get file type from MIME type (in format &lt;category&gt;/&lt;format&gt;)</font><br>
     <a href="#wxFileType">wxFileType</a> *GetFileTypeFromMimeType(const <a href="#wxString">wxString</a>&amp; mimeType);<br>
 <br>
-    bool ReadMailcap(const <a href="#wxString">wxString</a>&amp; filename, bool fallback = false);<br>
+    !<i>%wxchkver_2_9</i> bool ReadMailcap(const <a href="#wxString">wxString</a>&amp; filename, bool fallback = false);<br>
     <font color=#009900>// read in additional file in mime.types format</font><br>
-    bool ReadMimeTypes(const <a href="#wxString">wxString</a>&amp; filename);<br>
+    !<i>%wxchkver_2_9</i> bool ReadMimeTypes(const <a href="#wxString">wxString</a>&amp; filename);<br>
 <br>
     <font color=#009900>// enumerate all known MIME types returns the number of retrieved file types</font><br>
     size_t EnumAllFileTypes(<a href="#wxArrayString">wxArrayString</a>&amp; mimetypes);<br>
@@ -7086,7 +7180,7 @@
     <font color=#009900>// virtual int OnRun() nothing we can do here</font><br>
     bool Pending()<br>
     <font color=#009900>// !<i>%wxchkver_2_6</i> bool SendIdleEvents()</font><br>
-    <i>%wxchkver_2_6</i> bool SendIdleEvents(<a href="#wxWindow">wxWindow</a>* win, <a href="#wxIdleEvent">wxIdleEvent</a>&amp; event)<br>
+    <i>%wxchkver_2_6</i> &amp;&amp; !<i>%wxchkver_2_9_2</i> bool SendIdleEvents(<a href="#wxWindow">wxWindow</a>* win, <a href="#wxIdleEvent">wxIdleEvent</a>&amp; event)<br>
     void SetAppName(const <a href="#wxString">wxString</a>&amp; name)<br>
     <font color=#009900>//!<i>%wxchkver_2_4</i>&amp;(<i>%win</i>|<i>%mac</i>) void SetAuto3D(const bool auto3D)</font><br>
     void SetClassName(const <a href="#wxString">wxString</a>&amp; name)<br>
@@ -7180,7 +7274,7 @@
 <font color=#006666><i>%define</i> wxFRAME_EX_CONTEXTHELP</font><br>
 <font color=#006666><i>%wxchkver_2_6</i> <i>%define</i> wxFRAME_SHAPED</font><br>
 <font color=#006666><i>%wxchkver_2_6</i> <i>%define</i> wxFRAME_EX_METAL</font><br>
-<font color=#006666><i>%define</i> wxTHICK_FRAME</font><br>
+<font color=#009900>// <i>%define</i> wxTHICK_FRAME <i>%wxcompat_2_6</i> use <i>%wxchkver_2_6</i></font><br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <a name="wxFrame">wxFrame</a>, <a href="#wxTopLevelWindow">wxTopLevelWindow</a></font></b>
 <blockquote>
@@ -7436,15 +7530,40 @@
 <br>
     const <a href="#wxDataFormat">wxDataFormat</a>&amp; GetFormat() const<br>
     void SetFormat(const <a href="#wxDataFormat">wxDataFormat</a>&amp; format)<br>
+<br>
+    <font color=#009900>// This must be overridden in <a href="#wxLuaDataObjectSimple">wxLuaDataObjectSimple</a>, this function returns 0.</font><br>
     virtual size_t GetDataSize() const<br>
 <br>
-<font color=#BB0055>    <font color=#009900>// <i>%override</i> [bool, Lua string] wxDataObjectSimple::GetDataHere()</font></font><br>
-    <font color=#009900>// C++ Func: virtual bool GetDataHere(void *buf) const</font><br>
+    <font color=#009900>// This must be overridden in <a href="#wxLuaDataObjectSimple">wxLuaDataObjectSimple</a>, this function returns false.</font><br>
     virtual bool GetDataHere() const<br>
 <br>
-<font color=#BB0055>    <font color=#009900>// <i>%override</i> bool wxDataObjectSimple::SetData(Lua string)</font></font><br>
-    <font color=#009900>// C++ Func: virtual bool SetData(size_t len, const void *buf)</font><br>
+    <font color=#009900>// This must be overridden in <a href="#wxLuaDataObjectSimple">wxLuaDataObjectSimple</a>, this function returns false.</font><br>
     virtual bool SetData(const <a href="#wxString">wxString</a>&amp; str)<br>
+<br>
+</blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxLuaDataObjectSimple">wxLuaDataObjectSimple</a></font><br>
+<br>
+<b><font size=+1 color=#DD0000><i>%class</i> <i>%delete</i> <a name="wxLuaDataObjectSimple">wxLuaDataObjectSimple</a>, <a href="#wxDataObjectSimple">wxDataObjectSimple</a></font></b>
+<blockquote>
+    <a href="#wxLuaDataObjectSimple">wxLuaDataObjectSimple</a>(const <a href="#wxDataFormat">wxDataFormat</a>&amp; format = wxFormatInvalid)<br>
+<br>
+    <font color=#009900>// The functions below are all virtual functions that you MUST override in Lua</font><br>
+    <font color=#009900>// for this class to work.</font><br>
+<br>
+    <font color=#009900>// Override this function to return the size of the data for GetDataHere().</font><br>
+    <font color=#009900>//virtual size_t GetDataSize() const</font><br>
+<br>
+    <font color=#009900>// Create a Lua function that returns a [bool, Lua string (of exact length GetDataSize())].</font><br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> [bool, Lua string] wxLuaDataObjectSimple::GetDataHere()</font></font><br>
+    <font color=#009900>// C++ Func: virtual bool GetDataHere(void *buf) const</font><br>
+    <font color=#009900>//virtual bool GetDataHere() const</font><br>
+<br>
+    <font color=#009900>// Create a Lua function that takes a Lua string as the input data.</font><br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> bool wxLuaDataObjectSimple::SetData(Lua string)</font></font><br>
+    <font color=#009900>// C++ Func: virtual bool SetData(size_t len, const void *buf)</font><br>
+    <font color=#009900>//virtual bool SetData(const <a href="#wxString">wxString</a>&amp; str)</font><br>
 <br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
 <br>
@@ -7597,7 +7716,7 @@
     <i>%gtk</i> <a href="#wxDropSource">wxDropSource</a>(<a href="#wxDataObject">wxDataObject</a>&amp; data, <a href="#wxWindow">wxWindow</a>* win = NULL, const <a href="#wxIcon">wxIcon</a>&amp; iconCopy = wxNullIcon, const <a href="#wxIcon">wxIcon</a>&amp; iconMove = wxNullIcon, const <a href="#wxIcon">wxIcon</a>&amp; iconStop = wxNullIcon)<br>
 <br>
     void SetData(<a href="#wxDataObject">wxDataObject</a>&amp; data)<br>
-    <font color=#009900>//virtual <a href="#wxDragResult">wxDragResult</a> DoDragDrop(int flags = wxDrag_CopyOnly)</font><br>
+    virtual <a href="#wxDragResult">wxDragResult</a> DoDragDrop(int flags = wxDrag_CopyOnly)<br>
     <a href="#wxDataObject">wxDataObject</a>* GetDataObject()<br>
     virtual bool GiveFeedback(<a href="#wxDragResult">wxDragResult</a> effect)<br>
     void SetCursor(<a href="#wxDragResult">wxDragResult</a> res, const <a href="#wxCursor">wxCursor</a>&amp; cursor)<br>
@@ -8415,7 +8534,7 @@
 <font color=#006666><i>%define</i> wxSL_HORIZONTAL</font><br>
 <font color=#006666><i>%define</i> wxSL_LABELS</font><br>
 <font color=#006666><i>%define</i> wxSL_LEFT</font><br>
-<font color=#006666><i>%define</i> wxSL_NOTIFY_DRAG</font><br>
+<font color=#009900>// <i>%define</i> wxSL_NOTIFY_DRAG <i>%wxcompat_2_6</i> obsolete</font><br>
 <font color=#006666><i>%define</i> wxSL_RIGHT</font><br>
 <font color=#006666><i>%define</i> wxSL_SELRANGE</font><br>
 <font color=#006666><i>%define</i> wxSL_TOP</font><br>
@@ -8543,7 +8662,7 @@
 <font color=#006666><i>%define</i> wxTE_CENTRE</font><br>
 <font color=#006666><i>%define</i> wxTE_RIGHT</font><br>
 <font color=#006666><i>%define</i> wxTE_DONTWRAP</font><br>
-<font color=#006666><i>%define</i> wxTE_LINEWRAP</font><br>
+<font color=#009900>// <i>%define</i> wxTE_LINEWRAP <i>%wxcompat_2_6</i> obsolete use wxTE_CHARWRAP</font><br>
 <font color=#006666><i>%define</i> wxTE_CHARWRAP</font><br>
 <font color=#006666><i>%define</i> wxTE_WORDWRAP</font><br>
 <font color=#006666><i>%define</i> wxTE_BESTWRAP</font><br>
@@ -8957,7 +9076,7 @@
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
-<font color=#009900>// <a href="#wxLuaTreeItemData">wxLuaTreeItemData</a> - </font><br>
+<font color=#009900>// <a href="#wxLuaTreeItemData">wxLuaTreeItemData</a> -</font><br>
 <font color=#009900>//</font><br>
 <font color=#009900>// No <i>%delete</i> since the <a href="#wxTreeCtrl">wxTreeCtrl</a> will delete it when set as the data for an item.</font><br>
 <font color=#009900>// Only create a <a href="#wxLuaTreeItemData">wxLuaTreeItemData</a> if you're going to attach it to a <a href="#wxTreeCtrl">wxTreeCtrl</a> item to avoid memory leaks.</font><br>
@@ -8977,7 +9096,7 @@
     any  GetData() const;<br>
 <font color=#BB0055>    <font color=#009900>// <i>%override</i> void wxLuaTreeItemData::SetData(any)</font></font><br>
     <font color=#009900>// C++ Func: void SetData(<a href="#wxLuaObject">wxLuaObject</a>* obj)</font><br>
-    void SetData(any); <br>
+    void SetData(any);<br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
 <br>
 <br>
@@ -9039,7 +9158,8 @@
 </font>
 </blockquote><font color=#0066CC><i>%endenum</i></font><br>
 <br>
-<font color=#006666><i>%define_string</i> wxDirDialogDefaultFolderStr</font><br>
+<font color=#006666><i>%wxchkver_2_9_0</i> <i>%define_string</i> wxDirDialogDefaultFolderStr</font><br>
+<font color=#006666>!<i>%wxchkver_2_9_0</i> <i>%define_wxstring</i> wxDirDialogDefaultFolderStr</font><br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <a name="wxGenericDirCtrl">wxGenericDirCtrl</a>, <a href="#wxControl">wxControl</a></font></b>
 <blockquote>
@@ -9396,8 +9516,8 @@
 <i>%endif</i> <font color=#009900>// <i>%wxchkver_2_8_5</i></font><br>
 <br>
 <i>%if</i> wxUSE_IMAGE<br>
-    static void AddFile(const <a href="#wxString">wxString</a>&amp; filename, const <a href="#wxImage">wxImage</a>&amp; image, long type);<br>
-    static void AddFile(const <a href="#wxString">wxString</a>&amp; filename, const <a href="#wxBitmap">wxBitmap</a>&amp; bitmap, long type);<br>
+    static void AddFile(const <a href="#wxString">wxString</a>&amp; filename, const <a href="#wxImage">wxImage</a>&amp; image, <a href="#wxBitmapType">wxBitmapType</a> type);<br>
+    static void AddFile(const <a href="#wxString">wxString</a>&amp; filename, const <a href="#wxBitmap">wxBitmap</a>&amp; bitmap, <a href="#wxBitmapType">wxBitmapType</a> type);<br>
 <i>%endif</i> <font color=#009900>// wxUSE_IMAGE</font><br>
 <br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
@@ -9820,10 +9940,10 @@
 <font color=#006666><i>%define</i> wxNO_BORDER</font><br>
 <font color=#006666><i>%define</i> wxNO_DEFAULT</font><br>
 <font color=#006666><i>%define</i> wxOK</font><br>
-<font color=#006666><i>%define</i> wxPASSWORD</font><br>
-<font color=#006666><i>%define</i> wxPROCESS_ENTER</font><br>
+<font color=#009900>// <i>%define</i> wxPASSWORD <i>%wxcompat_2_6</i> use wxTE_PASSWORD</font><br>
+<font color=#009900>// <i>%define</i> wxPROCESS_ENTER <i>%wxcompat_2_6</i> use wxTE_PROCESS_ENTER</font><br>
 <font color=#006666><i>%define</i> wxRESET</font><br>
-<font color=#006666><i>%define</i> wxRESIZE_BOX</font><br>
+<font color=#009900>// <i>%define</i> wxRESIZE_BOX <i>%wxcompat_2_6</i> use wxMAXIMIZE_BOX</font><br>
 <font color=#006666><i>%define</i> wxRETAINED</font><br>
 <font color=#006666><i>%define</i> wxSETUP</font><br>
 <font color=#006666><i>%define</i> wxSIZE_ALLOW_MINUS_ONE</font><br>
@@ -9832,7 +9952,7 @@
 <font color=#006666><i>%define</i> wxSIZE_AUTO_WIDTH</font><br>
 <font color=#006666><i>%define</i> wxSIZE_NO_ADJUSTMENTS</font><br>
 <font color=#006666><i>%define</i> wxSIZE_USE_EXISTING</font><br>
-<font color=#009900>//<i>%define</i> wxUSER_COLOURS deprecated use wxNO_3D</font><br>
+<font color=#009900>//<i>%define</i> wxUSER_COLOURS deprecated use wxNO_3D <i>%wxcompat_2_6</i></font><br>
 <font color=#006666><i>%define</i> wxYES</font><br>
 <font color=#006666><i>%define</i> wxYES_DEFAULT</font><br>
 <font color=#006666><i>%define</i> wxYES_NO</font><br>
@@ -10071,7 +10191,7 @@
 <font color=#AA0000><i>%function</i> void wxBell()</font><br>
 <font color=#009900>// <i>%function</i> wxTipProvider* wxCreateFileTipProvider(const <a href="#wxString">wxString</a>&amp; filename, size_t currentTip)</font><br>
 <br>
-<font color=#006666><i>%define_string</i> wxDirSelectorPromptStr wxT("Select a directory")</font><br>
+<font color=#006666><i>%define_wxstring</i> wxDirSelectorPromptStr wxT("Select a directory")</font><br>
 <font color=#AA0000><i>%function</i> <a href="#wxString">wxString</a> wxDirSelector(const <a href="#wxString">wxString</a>&amp; message = wxDirSelectorPromptStr, const <a href="#wxString">wxString</a>&amp; default_path = "", long style = wxDD_DEFAULT_STYLE, const <a href="#wxPoint">wxPoint</a>&amp; pos = wxDefaultPosition, <a href="#wxWindow">wxWindow</a> *parent = NULL)</font><br>
 <font color=#AA0000><i>%function</i> <a href="#wxString">wxString</a> wxFileSelector(const <a href="#wxString">wxString</a>&amp; message, const <a href="#wxString">wxString</a>&amp; default_path = "", const <a href="#wxString">wxString</a>&amp; default_filename = "", const <a href="#wxString">wxString</a>&amp; default_extension = "", const <a href="#wxString">wxString</a>&amp; wildcard = "*.*", int flags = 0, <a href="#wxWindow">wxWindow</a> *parent = NULL, int x = -1, int y = -1)</font><br>
 <font color=#AA0000>wxUSE_COLOURDLG&amp;&amp;!<i>%wxchkver_2_8</i> <i>%function</i> <a href="#wxColour">wxColour</a> wxGetColourFromUser(<a href="#wxWindow">wxWindow</a> *parent, const <a href="#wxColour">wxColour</a>&amp; colInit)</font><br>
@@ -10103,8 +10223,8 @@
 <br>
 <i>%include</i> "wx/dialog.h"<br>
 <br>
-<font color=#006666><i>%define</i> wxDIALOG_MODAL</font><br>
-<font color=#006666><i>%define</i> wxDIALOG_MODELESS</font><br>
+<font color=#009900>// <i>%define</i> wxDIALOG_MODAL <i>%wxcompat_2_6</i></font><br>
+<font color=#009900>// <i>%define</i> wxDIALOG_MODELESS <i>%wxcompat_2_6</i></font><br>
 <font color=#006666><i>%define</i> wxDEFAULT_DIALOG_STYLE</font><br>
 <font color=#006666><i>%define</i> wxDIALOG_NO_PARENT</font><br>
 <font color=#006666><i>%define</i> wxDIALOG_EX_CONTEXTHELP</font><br>
@@ -10185,8 +10305,9 @@
 <br>
 <i>%include</i> "wx/filedlg.h"<br>
 <br>
-<font color=#006666><i>%define_string</i> wxFileSelectorPromptStr wxT("Select a file")</font><br>
-<font color=#006666><i>%define_string</i> wxFileSelectorDefaultWildcardStr</font><br>
+<font color=#006666><i>%define_wxstring</i> wxFileSelectorPromptStr wxT("Select a file")</font><br>
+<font color=#006666><i>%wxchkver_2_9_0</i> <i>%define_string</i> wxFileSelectorDefaultWildcardStr</font><br>
+<font color=#006666>!<i>%wxchkver_2_9_0</i> <i>%define_wxstring</i> wxFileSelectorDefaultWildcardStr</font><br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <a name="wxFileDialog">wxFileDialog</a>, <a href="#wxDialog">wxDialog</a></font></b>
 <blockquote>
@@ -10319,7 +10440,8 @@
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
 <font color=#009900>// <a href="#wxPasswordEntryDialog">wxPasswordEntryDialog</a> - see also wxGetPasswordFromUser</font><br>
 <br>
-<font color=#006666><i>%define_string</i> wxGetPasswordFromUserPromptStr</font><br>
+<font color=#006666><i>%wxchkver_2_9_0</i> <i>%define_string</i> wxGetPasswordFromUserPromptStr</font><br>
+<font color=#006666>!<i>%wxchkver_2_9_0</i> <i>%define_wxstring</i> wxGetPasswordFromUserPromptStr</font><br>
 <font color=#006666><i>%define</i> wxTextEntryDialogStyle</font><br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <a name="wxPasswordEntryDialog">wxPasswordEntryDialog</a>, <a href="#wxTextEntryDialog">wxTextEntryDialog</a></font></b>
@@ -10451,7 +10573,7 @@
 <br>
 <i>%if</i> wxUSE_PROGRESSDLG &amp;&amp; wxLUA_USE_wxProgressDialog<br>
 <br>
-<i>%include</i> "wx/generic/progdlgg.h"<br>
+<i>%include</i> "wx/progdlg.h"<br>
 <br>
 <font color=#006666><i>%define</i> wxPD_APP_MODAL</font><br>
 <font color=#006666><i>%define</i> wxPD_AUTO_HIDE</font><br>
@@ -10852,7 +10974,7 @@
     WXK_MBUTTON<br>
     WXK_MENU<br>
     WXK_MULTIPLY<br>
-    WXK_NEXT<br>
+    <font color=#009900>//WXK_NEXT = WXK_PAGEDOWN since 2.6</font><br>
     WXK_NUMLOCK<br>
     WXK_NUMPAD_ADD<br>
     WXK_NUMPAD_BEGIN<br>
@@ -10871,10 +10993,10 @@
     WXK_NUMPAD_INSERT<br>
     WXK_NUMPAD_LEFT<br>
     WXK_NUMPAD_MULTIPLY<br>
-    WXK_NUMPAD_NEXT<br>
+    <font color=#009900>// WXK_NUMPAD_NEXT = WXK_NUMPAD_PAGEDOWN since 2.6</font><br>
     WXK_NUMPAD_PAGEDOWN<br>
     WXK_NUMPAD_PAGEUP<br>
-    WXK_NUMPAD_PRIOR<br>
+    <font color=#009900>// WXK_NUMPAD_PRIOR = WXK_NUMPAD_PAGEUP since 2.6</font><br>
     WXK_NUMPAD_RIGHT<br>
     WXK_NUMPAD_SEPARATOR<br>
     WXK_NUMPAD_SPACE<br>
@@ -10895,7 +11017,7 @@
     WXK_PAGEUP<br>
     WXK_PAUSE<br>
     WXK_PRINT<br>
-    WXK_PRIOR<br>
+    <font color=#009900>// WXK_PRIOR = WXK_PAGEUP since 2.6</font><br>
     WXK_RBUTTON<br>
     WXK_RETURN<br>
     WXK_RIGHT<br>
@@ -10994,7 +11116,7 @@
 <br>
     <a href="#wxIdleEvent">wxIdleEvent</a>()<br>
 <br>
-    static bool CanSend(<a href="#wxWindow">wxWindow</a>* window)<br>
+    !<i>%wxchkver_2_9_2</i> static bool CanSend(<a href="#wxWindow">wxWindow</a>* window)<br>
     static <a href="#wxIdleMode">wxIdleMode</a> GetMode()<br>
     void RequestMore(bool needMore = true)<br>
     bool MoreRequested() const<br>
@@ -11562,6 +11684,18 @@
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxPointList">wxPointList</a></font><br>
+<br>
+<i>%if</i> <i>%wxchkver_2_9</i><br>
+<br>
+<b><font size=+1 color=#DD0000><i>%class</i> <a name="wxPointList">wxPointList</a>, <a href="#wxList">wxList</a></font></b>
+<blockquote>
+<br>
+</blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
+<br>
+<i>%endif</i><br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
 <font color=#009900>// wxRealPoint - Used nowhere in wxWidgets</font><br>
 <br>
 <font color=#009900>//<i>%class</i> <i>%delete</i> wxRealPoint</font><br>
@@ -12113,20 +12247,32 @@
 <br>
 <i>%include</i> "wx/pen.h"<br>
 <br>
-<font color=#006666><i>%define</i> wxCAP_BUTT</font><br>
-<font color=#006666><i>%define</i> wxCAP_PROJECTING</font><br>
-<font color=#006666><i>%define</i> wxCAP_ROUND</font><br>
+<b><font size=+1 color=#0066CC><i>%enum</i> <a name="wxPenCap">wxPenCap</a></font></b>
+<blockquote><font color=#0066CC>
+    wxCAP_BUTT<br>
+    wxCAP_PROJECTING<br>
+    wxCAP_ROUND<br>
+</font>
+</blockquote><font color=#0066CC><i>%endenum</i></font><br>
 <br>
-<font color=#006666><i>%define</i> wxDOT</font><br>
-<font color=#006666><i>%define</i> wxDOT_DASH</font><br>
-<font color=#006666><i>%define</i> wxSOLID</font><br>
-<font color=#006666><i>%define</i> wxLONG_DASH</font><br>
-<font color=#006666><i>%define</i> wxSHORT_DASH</font><br>
-<font color=#006666><i>%define</i> wxUSER_DASH</font><br>
+<b><font size=+1 color=#0066CC><i>%enum</i> <a name="wxPenStyle">wxPenStyle</a></font></b>
+<blockquote><font color=#0066CC>
+    wxDOT<br>
+    wxDOT_DASH<br>
+    wxSOLID<br>
+    wxLONG_DASH<br>
+    wxSHORT_DASH<br>
+    wxUSER_DASH<br>
+</font>
+</blockquote><font color=#0066CC><i>%endenum</i></font><br>
 <br>
-<font color=#006666><i>%define</i> wxJOIN_BEVEL</font><br>
-<font color=#006666><i>%define</i> wxJOIN_MITER</font><br>
-<font color=#006666><i>%define</i> wxJOIN_ROUND</font><br>
+<b><font size=+1 color=#0066CC><i>%enum</i> <a name="wxPenJoin">wxPenJoin</a></font></b>
+<blockquote><font color=#0066CC>
+    wxJOIN_BEVEL<br>
+    wxJOIN_MITER<br>
+    wxJOIN_ROUND<br>
+</font>
+</blockquote><font color=#0066CC><i>%endenum</i></font><br>
 <br>
 <b><font size=+1 color=#0066CC><i>%enum</i></font></b>
 <blockquote><font color=#0066CC>
@@ -12159,29 +12305,29 @@
 <font color=#990099>    <i>%rename</i> wxLIGHT_GREY_PEN   <i>%define_pointer</i> wxLua_wxLIGHT_GREY_PEN</font><br>
 <br>
     <a href="#wxPen">wxPen</a>()<br>
-    <a href="#wxPen">wxPen</a>(const <a href="#wxColour">wxColour</a>&amp; colour, int width, int style)<br>
-    <a href="#wxPen">wxPen</a>(const <a href="#wxString">wxString</a>&amp; colourName, int width, int style)<br>
+    <a href="#wxPen">wxPen</a>(const <a href="#wxColour">wxColour</a>&amp; colour, int width, <a href="#wxPenStyle">wxPenStyle</a> style)<br>
+    <a href="#wxPen">wxPen</a>(const <a href="#wxString">wxString</a>&amp; colourName, int width, <a href="#wxPenStyle">wxPenStyle</a> style)<br>
     <i>%win</i> <a href="#wxPen">wxPen</a>(const <a href="#wxBitmap">wxBitmap</a>&amp; stipple, int width)<br>
     <a href="#wxPen">wxPen</a>(const <a href="#wxPen">wxPen</a>&amp; pen)<br>
 <br>
-    int GetCap() const<br>
+    <a href="#wxPenCap">wxPenCap</a> GetCap() const<br>
     <a href="#wxColour">wxColour</a> GetColour() const <font color=#009900>// not wxColur&amp; so we allocate a new one</font><br>
     <font color=#009900>// int GetDashes(wxDash** dashes) const</font><br>
-    int GetJoin() const<br>
+    <a href="#wxPenJoin">wxPenJoin</a> GetJoin() const<br>
     <i>%win</i> <a href="#wxBitmap">wxBitmap</a>* GetStipple() const<br>
-    int GetStyle() const<br>
+    <a href="#wxPenStyle">wxPenStyle</a> GetStyle() const<br>
     int GetWidth() const<br>
     bool Ok() const<br>
-    void SetCap(int capStyle)<br>
+    void SetCap(<a href="#wxPenCap">wxPenCap</a> capStyle)<br>
 <br>
     void SetColour(<a href="#wxColour">wxColour</a>&amp; colour)<br>
     void SetColour(const <a href="#wxString">wxString</a>&amp; colourName)<br>
     void SetColour(unsigned char red, unsigned char green, unsigned char blue)<br>
 <br>
     <font color=#009900>//void SetDashes(int nb_dashes, const wxDash *dash)</font><br>
-    void SetJoin(int join_style)<br>
+    void SetJoin(<a href="#wxPenJoin">wxPenJoin</a> join_style)<br>
     <i>%win</i> void SetStipple(const <a href="#wxBitmap">wxBitmap</a>&amp; stipple)<br>
-    void SetStyle(int style)<br>
+    void SetStyle(<a href="#wxPenStyle">wxPenStyle</a> style)<br>
     void SetWidth(int width)<br>
 <br>
     <i>%operator</i> <a href="#wxPen">wxPen</a>&amp; operator=(const <a href="#wxPen">wxPen</a>&amp; p) const<br>
@@ -12554,7 +12700,16 @@
     <a href="#wxCursor">wxCursor</a>()<br>
     <a href="#wxCursor">wxCursor</a>(int id)<br>
     <a href="#wxCursor">wxCursor</a>(const <a href="#wxImage">wxImage</a>&amp; image)<br>
-    <i>%win</i>|<i>%mac</i> <a href="#wxCursor">wxCursor</a>(const <a href="#wxString">wxString</a>&amp; cursorName, long type, int hotSpotX = 0, int hotSpotY = 0)<br>
+<br>
+    <i>%if</i> <i>%wxchkver_2_9_0</i><br>
+        <a href="#wxCursor">wxCursor</a>(const <a href="#wxString">wxString</a>&amp; cursorName, <a href="#wxBitmapType">wxBitmapType</a> type, int hotSpotX = 0, int hotSpotY = 0)<br>
+    <i>%endif</i><br>
+<br>
+    <i>%if</i> !<i>%wxchkver_2_9_0</i> &amp;&amp; __UNICODE__ &amp;&amp; (<i>%win</i> || <i>%mac</i>)<br>
+        <font color=#009900>// There is a version that takes a const char[] as the first param that</font><br>
+        <font color=#009900>// gives an error about ambiguous overloads if <a href="#wxString">wxString</a> is ANSI.</font><br>
+        <a href="#wxCursor">wxCursor</a>(const <a href="#wxString">wxString</a>&amp; cursorName, long type, int hotSpotX = 0, int hotSpotY = 0)<br>
+    <i>%endif</i><br>
 <br>
     bool Ok()<br>
 <br>
@@ -12642,85 +12797,101 @@
 <br>
 <i>%include</i> "wx/dc.h"<br>
 <br>
-<b><font size=+1 color=#0066CC><i>%enum</i></font></b>
+<b><font size=+1 color=#0066CC><i>%enum</i> <a name="wxMappingMode">wxMappingMode</a></font></b>
 <blockquote><font color=#0066CC>
     wxMM_TEXT<br>
-    wxMM_LOMETRIC<br>
-    wxMM_HIMETRIC<br>
-    wxMM_LOENGLISH<br>
-    wxMM_HIENGLISH<br>
-    wxMM_TWIPS<br>
-    wxMM_ISOTROPIC<br>
-    wxMM_ANISOTROPIC<br>
-    wxMM_POINTS<br>
     wxMM_METRIC<br>
+    wxMM_LOMETRIC<br>
+    wxMM_TWIPS<br>
+    wxMM_POINTS<br>
+<br>
+    !<i>%wxchkver_2_9_2</i> wxMM_HIMETRIC<br>
+    !<i>%wxchkver_2_9_2</i> wxMM_LOENGLISH<br>
+    !<i>%wxchkver_2_9_2</i> wxMM_HIENGLISH<br>
+    !<i>%wxchkver_2_9_2</i> wxMM_ISOTROPIC<br>
+    !<i>%wxchkver_2_9_2</i> wxMM_ANISOTROPIC<br>
 </font>
 </blockquote><font color=#0066CC><i>%endenum</i></font><br>
 <br>
-<font color=#006666><i>%define</i> wxROP_BLACK</font><br>
-<font color=#006666><i>%define</i> wxROP_COPYPEN</font><br>
-<font color=#006666><i>%define</i> wxROP_MASKNOTPEN</font><br>
-<font color=#006666><i>%define</i> wxROP_MASKPEN</font><br>
-<font color=#006666><i>%define</i> wxROP_MASKPENNOT</font><br>
-<font color=#006666><i>%define</i> wxROP_MERGENOTPEN</font><br>
-<font color=#006666><i>%define</i> wxROP_MERGEPEN</font><br>
-<font color=#006666><i>%define</i> wxROP_MERGEPENNOT</font><br>
-<font color=#006666><i>%define</i> wxROP_NOP</font><br>
-<font color=#006666><i>%define</i> wxROP_NOT</font><br>
-<font color=#006666><i>%define</i> wxROP_NOTCOPYPEN</font><br>
-<font color=#006666><i>%define</i> wxROP_NOTMASKPEN</font><br>
-<font color=#006666><i>%define</i> wxROP_NOTMERGEPEN</font><br>
-<font color=#006666><i>%define</i> wxROP_NOTXORPEN</font><br>
-<font color=#006666><i>%define</i> wxROP_WHITE</font><br>
-<font color=#006666><i>%define</i> wxROP_XORPEN</font><br>
+<b><font size=+1 color=#0066CC><i>%enum</i> <a name="wxRasterOperationMode">wxRasterOperationMode</a></font></b>
+<blockquote><font color=#0066CC>
+    wxCLEAR<br>
+    wxXOR<br>
+    wxINVERT<br>
+    wxOR_REVERSE<br>
+    wxAND_REVERSE<br>
+    wxCOPY<br>
+    wxAND<br>
+    wxAND_INVERT<br>
+    wxNO_OP<br>
+    wxNOR<br>
+    wxEQUIV<br>
+    wxSRC_INVERT<br>
+    wxOR_INVERT<br>
+    wxNAND<br>
+    wxOR<br>
+    wxSET<br>
 <br>
-<font color=#006666><i>%define</i> wxBLIT_00220326</font><br>
-<font color=#006666><i>%define</i> wxBLIT_007700E6</font><br>
-<font color=#006666><i>%define</i> wxBLIT_00990066</font><br>
-<font color=#006666><i>%define</i> wxBLIT_00AA0029</font><br>
-<font color=#006666><i>%define</i> wxBLIT_00DD0228</font><br>
-<font color=#006666><i>%define</i> wxBLIT_BLACKNESS</font><br>
-<font color=#006666><i>%define</i> wxBLIT_DSTINVERT</font><br>
-<font color=#006666><i>%define</i> wxBLIT_MERGEPAINT</font><br>
-<font color=#006666><i>%define</i> wxBLIT_NOTSCRCOPY</font><br>
-<font color=#006666><i>%define</i> wxBLIT_NOTSRCERASE</font><br>
-<font color=#006666><i>%define</i> wxBLIT_SRCAND</font><br>
-<font color=#006666><i>%define</i> wxBLIT_SRCCOPY</font><br>
-<font color=#006666><i>%define</i> wxBLIT_SRCERASE</font><br>
-<font color=#006666><i>%define</i> wxBLIT_SRCINVERT</font><br>
-<font color=#006666><i>%define</i> wxBLIT_SRCPAINT</font><br>
-<font color=#006666><i>%define</i> wxBLIT_WHITENESS</font><br>
+    <font color=#009900>// wxROP_XXX and wxBLIT_XXX are wxcompat_2_8</font><br>
 <br>
-<font color=#006666><i>%define</i> wxCLEAR</font><br>
-<font color=#006666><i>%define</i> wxXOR</font><br>
-<font color=#006666><i>%define</i> wxINVERT</font><br>
-<font color=#006666><i>%define</i> wxOR_REVERSE</font><br>
-<font color=#006666><i>%define</i> wxAND_REVERSE</font><br>
-<font color=#006666><i>%define</i> wxCOPY</font><br>
-<font color=#006666><i>%define</i> wxAND</font><br>
-<font color=#006666><i>%define</i> wxAND_INVERT</font><br>
-<font color=#006666><i>%define</i> wxNO_OP</font><br>
-<font color=#006666><i>%define</i> wxNOR</font><br>
-<font color=#006666><i>%define</i> wxEQUIV</font><br>
-<font color=#006666><i>%define</i> wxSRC_INVERT</font><br>
-<font color=#006666><i>%define</i> wxOR_INVERT</font><br>
-<font color=#006666><i>%define</i> wxNAND</font><br>
-<font color=#006666><i>%define</i> wxOR</font><br>
-<font color=#006666><i>%define</i> wxSET</font><br>
+    wxROP_BLACK<br>
+    wxROP_COPYPEN<br>
+    wxROP_MASKNOTPEN<br>
+    wxROP_MASKPEN<br>
+    wxROP_MASKPENNOT<br>
+    wxROP_MERGENOTPEN<br>
+    wxROP_MERGEPEN<br>
+    wxROP_MERGEPENNOT<br>
+    wxROP_NOP<br>
+    wxROP_NOT<br>
+    wxROP_NOTCOPYPEN<br>
+    wxROP_NOTMASKPEN<br>
+    wxROP_NOTMERGEPEN<br>
+    wxROP_NOTXORPEN<br>
+    wxROP_WHITE<br>
+    wxROP_XORPEN<br>
 <br>
-<font color=#006666><i>%define</i> wxFLOOD_BORDER</font><br>
-<font color=#006666><i>%define</i> wxFLOOD_SURFACE</font><br>
+    wxBLIT_00220326<br>
+    wxBLIT_007700E6<br>
+    wxBLIT_00990066<br>
+    wxBLIT_00AA0029<br>
+    wxBLIT_00DD0228<br>
+    wxBLIT_BLACKNESS<br>
+    wxBLIT_DSTINVERT<br>
+    wxBLIT_MERGEPAINT<br>
+    wxBLIT_NOTSCRCOPY<br>
+    wxBLIT_NOTSRCERASE<br>
+    wxBLIT_SRCAND<br>
+    wxBLIT_SRCCOPY<br>
+    wxBLIT_SRCERASE<br>
+    wxBLIT_SRCINVERT<br>
+    wxBLIT_SRCPAINT<br>
+    wxBLIT_WHITENESS<br>
 <br>
-<font color=#006666><i>%define</i> wxODDEVEN_RULE</font><br>
-<font color=#006666><i>%define</i> wxWINDING_RULE</font><br>
 <br>
+</font>
+</blockquote><font color=#0066CC><i>%endenum</i></font><br>
+<br>
+<b><font size=+1 color=#0066CC><i>%enum</i> <a name="wxFloodFillStyle">wxFloodFillStyle</a></font></b>
+<blockquote><font color=#0066CC>
+    wxFLOOD_BORDER<br>
+    wxFLOOD_SURFACE<br>
+</font>
+</blockquote><font color=#0066CC><i>%endenum</i></font><br>
+<br>
+<b><font size=+1 color=#0066CC><i>%enum</i> <a name="wxPolygonFillMode">wxPolygonFillMode</a></font></b>
+<blockquote><font color=#0066CC>
+    wxODDEVEN_RULE<br>
+    wxWINDING_RULE<br>
+</font>
+</blockquote><font color=#0066CC><i>%endenum</i></font><br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <i>%delete</i> <a name="wxDC">wxDC</a>, <a href="#wxObject">wxObject</a></font></b>
 <blockquote>
     <font color=#009900>// <i>%win</i> <a href="#wxDC">wxDC</a>() <a href="#wxDC">wxDC</a> is abstract use wxXXXDC</font><br>
 <br>
     <font color=#009900>//void BeginDrawing() // these are deprecated in 2.8 and didn't do anything anyway</font><br>
-    bool Blit(wxCoord xdest, wxCoord ydest, wxCoord width, wxCoord height, <a href="#wxDC">wxDC</a>* source, wxCoord xsrc, wxCoord ysrc, int logicalFunc = wxCOPY, bool useMask = false)<br>
+    bool Blit(wxCoord xdest, wxCoord ydest, wxCoord width, wxCoord height, <a href="#wxDC">wxDC</a>* source, wxCoord xsrc, wxCoord ysrc, <a href="#wxRasterOperationMode">wxRasterOperationMode</a> logicalFunc = wxCOPY, bool useMask = false)<br>
     void CalcBoundingBox(wxCoord x, wxCoord y)<br>
     void Clear()<br>
     <font color=#009900>//void ComputeScaleAndOrigin()  used internally</font><br>
@@ -12744,11 +12915,16 @@
     void DrawLabel(const <a href="#wxString">wxString</a>&amp; text, const <a href="#wxBitmap">wxBitmap</a>&amp; image, const <a href="#wxRect">wxRect</a>&amp; rect, int alignment = wxALIGN_LEFT | wxALIGN_TOP, int indexAccel = -1) <font color=#009900>//, <a href="#wxRect">wxRect</a> *rectBounding = NULL)</font><br>
     void DrawLabel(const <a href="#wxString">wxString</a>&amp; text, const <a href="#wxRect">wxRect</a>&amp; rect, int alignment = wxALIGN_LEFT | wxALIGN_TOP, int indexAccel = -1)<br>
     void DrawLine(wxCoord x1, wxCoord y1, wxCoord x2, wxCoord y2)<br>
+<br>
     <font color=#009900>//void DrawLines(int n, <a href="#wxPoint">wxPoint</a> points[], wxCoord xoffset = 0, wxCoord yoffset = 0) // FIXME add this</font><br>
-<font color=#990099>    <i>%rename</i> DrawLinesList void DrawLines(<a href="#wxList">wxList</a> *points, wxCoord xoffset = 0, wxCoord yoffset = 0)</font><br>
-    <font color=#009900>//void DrawPolygon(int n, <a href="#wxPoint">wxPoint</a> points[], wxCoord xoffset = 0, wxCoord yoffset = 0, int fill_style = wxODDEVEN_RULE) // FIXME add this</font><br>
-<font color=#990099>    <i>%rename</i> DrawPolygonList void DrawPolygon(<a href="#wxList">wxList</a> *points, wxCoord xoffset = 0, wxCoord yoffset = 0, int fill_style = wxODDEVEN_RULE)</font><br>
-    <font color=#009900>//void DrawPolyPolygon(int n, int count[], <a href="#wxPoint">wxPoint</a> points[], wxCoord xoffset = 0, wxCoord yoffset = 0, int fill_style = wxODDEVEN_RULE)</font><br>
+    <i>%wxchkver_2_9</i>  void DrawLines(const <a href="#wxPointList">wxPointList</a> *points, wxCoord xoffset = 0, wxCoord yoffset = 0)<br>
+    !<i>%wxchkver_2_9</i> void DrawLines(const <a href="#wxList">wxList</a> *points, wxCoord xoffset = 0, wxCoord yoffset = 0)<br>
+<br>
+    <font color=#009900>//void DrawPolygon(int n, <a href="#wxPoint">wxPoint</a> points[], wxCoord xoffset = 0, wxCoord yoffset = 0, <a href="#wxPolygonFillMode">wxPolygonFillMode</a> fill_style = wxODDEVEN_RULE) // FIXME add this</font><br>
+    <i>%wxchkver_2_9</i> void DrawPolygon(const <a href="#wxPointList">wxPointList</a> *points, wxCoord xoffset = 0, wxCoord yoffset = 0, <a href="#wxPolygonFillMode">wxPolygonFillMode</a> fill_style = wxODDEVEN_RULE)<br>
+    !<i>%wxchkver_2_9</i> void DrawPolygon(const <a href="#wxList">wxList</a> *points, wxCoord xoffset = 0, wxCoord yoffset = 0, <a href="#wxPolygonFillMode">wxPolygonFillMode</a> fill_style = wxODDEVEN_RULE)<br>
+<br>
+    <font color=#009900>//void DrawPolyPolygon(int n, int count[], <a href="#wxPoint">wxPoint</a> points[], wxCoord xoffset = 0, wxCoord yoffset = 0, <a href="#wxPolygonFillMode">wxPolygonFillMode</a> fill_style = wxODDEVEN_RULE)</font><br>
     void DrawPoint(wxCoord x, wxCoord y)<br>
     void DrawRectangle(wxCoord x, wxCoord y, wxCoord width, wxCoord height)<br>
     void DrawRotatedText(const <a href="#wxString">wxString</a>&amp; text, wxCoord x, wxCoord y, double angle)<br>
@@ -12761,7 +12937,7 @@
     void EndDoc()<br>
     <font color=#009900>//void EndDrawing()  // these are deprecated in 2.8 and didn't do anything anyway</font><br>
     void EndPage()<br>
-    void FloodFill(wxCoord x, wxCoord y, const <a href="#wxColour">wxColour</a>&amp; colour, int style=wxFLOOD_SURFACE)<br>
+    void FloodFill(wxCoord x, wxCoord y, const <a href="#wxColour">wxColour</a>&amp; colour, <a href="#wxFloodFillStyle">wxFloodFillStyle</a> style=wxFLOOD_SURFACE)<br>
 <br>
     <i>%if</i> <i>%wxchkver_2_8</i><br>
         <font color=#009900>//void GradientFillConcentric(const <a href="#wxRect">wxRect</a>&amp; rect, const <a href="#wxColour">wxColour</a>&amp; initialColour, const <a href="#wxColour">wxColour</a>&amp; destColour)</font><br>
@@ -12815,7 +12991,7 @@
     wxCoord MaxY()<br>
     wxCoord MinX()<br>
     wxCoord MinY()<br>
-    bool Ok()<br>
+    bool IsOk()<br>
     void ResetBoundingBox()<br>
     void SetAxisOrientation(bool xLeftRight, bool yBottomUp)<br>
     void SetBackground(const <a href="#wxBrush">wxBrush</a>&amp; brush)<br>
@@ -12828,8 +13004,8 @@
     void SetDeviceOrigin(wxCoord x, wxCoord y)<br>
     void SetFont(const <a href="#wxFont">wxFont</a>&amp; font)<br>
     <i>%wxchkver_2_8</i> void SetLayoutDirection(<a href="#wxLayoutDirection">wxLayoutDirection</a> dir)<br>
-    void SetLogicalFunction(int function)<br>
-    void SetMapMode(int unit)<br>
+    void SetLogicalFunction(<a href="#wxRasterOperationMode">wxRasterOperationMode</a> function)<br>
+    void SetMapMode(<a href="#wxMappingMode">wxMappingMode</a> unit)<br>
     void SetPalette(const <a href="#wxPalette">wxPalette</a>&amp; palette)<br>
     void SetPen(const <a href="#wxPen">wxPen</a>&amp; pen)<br>
     void SetTextBackground(const <a href="#wxColour">wxColour</a>&amp; colour)<br>
@@ -13850,32 +14026,47 @@
 <br>
 <i>%include</i> "wx/image.h"<br>
 <br>
-<font color=#006666><i>%wxchkver_2_6</i> <i>%define_string</i> wxIMAGE_OPTION_CUR_HOTSPOT_X</font><br>
-<font color=#006666><i>%wxchkver_2_6</i> <i>%define_string</i> wxIMAGE_OPTION_CUR_HOTSPOT_Y</font><br>
+<font color=#006666><i>%wxchkver_2_6</i> <i>%define_wxstring</i> wxIMAGE_OPTION_CUR_HOTSPOT_X</font><br>
+<font color=#006666><i>%wxchkver_2_6</i> <i>%define_wxstring</i> wxIMAGE_OPTION_CUR_HOTSPOT_Y</font><br>
 <br>
 <font color=#009900>//<i>%define_string</i> wxIMAGE_OPTION_PNG_FORMAT     see <a href="#wxPNGHandler">wxPNGHandler</a></font><br>
 <font color=#009900>//<i>%define_string</i> wxIMAGE_OPTION_PNG_BITDEPTH   see <a href="#wxPNGHandler">wxPNGHandler</a></font><br>
 <font color=#009900>//<i>%define_string</i> wxIMAGE_OPTION_BMP_FORMAT     see <a href="#wxBMPHandler">wxBMPHandler</a></font><br>
 <br>
-<font color=#006666><i>%define_string</i> wxIMAGE_OPTION_QUALITY        _T("quality")</font><br>
-<font color=#006666><i>%define_string</i> wxIMAGE_OPTION_FILENAME       _T("FileName")</font><br>
+<font color=#006666><i>%define_wxstring</i> wxIMAGE_OPTION_QUALITY        wxT("quality")</font><br>
+<font color=#006666><i>%define_wxstring</i> wxIMAGE_OPTION_FILENAME       wxT("FileName")</font><br>
 <br>
-<font color=#006666><i>%define_string</i> wxIMAGE_OPTION_RESOLUTION     _T("Resolution")</font><br>
-<font color=#006666><i>%define_string</i> wxIMAGE_OPTION_RESOLUTIONX    _T("ResolutionX")</font><br>
-<font color=#006666><i>%define_string</i> wxIMAGE_OPTION_RESOLUTIONY    _T("ResolutionY")</font><br>
-<font color=#006666><i>%define_string</i> wxIMAGE_OPTION_RESOLUTIONUNIT _T("ResolutionUnit")</font><br>
+<font color=#006666><i>%define_wxstring</i> wxIMAGE_OPTION_RESOLUTION     wxT("Resolution")</font><br>
+<font color=#006666><i>%define_wxstring</i> wxIMAGE_OPTION_RESOLUTIONX    wxT("ResolutionX")</font><br>
+<font color=#006666><i>%define_wxstring</i> wxIMAGE_OPTION_RESOLUTIONY    wxT("ResolutionY")</font><br>
+<font color=#006666><i>%define_wxstring</i> wxIMAGE_OPTION_RESOLUTIONUNIT wxT("ResolutionUnit")</font><br>
 <br>
 <b><font size=+1 color=#0066CC><i>%enum</i></font></b>
 <blockquote><font color=#0066CC>
     <font color=#009900>// constants used with wxIMAGE_OPTION_RESOLUTIONUNIT</font><br>
     wxIMAGE_RESOLUTION_INCHES<br>
     wxIMAGE_RESOLUTION_CM<br>
+</font>
+</blockquote><font color=#0066CC><i>%endenum</i></font><br>
 <br>
-    <font color=#009900>// Constants for wxImage::Scale() for determining the level of quality</font><br>
+<font color=#009900>// Constants for wxImage::Scale() for determining the level of quality</font><br>
+<b><font size=+1 color=#0066CC><i>%enum</i> <a name="wxImageResizeQuality">wxImageResizeQuality</a></font></b>
+<blockquote><font color=#0066CC>
+    <font color=#009900>// different image resizing algorithms used by Scale() and Rescale()</font><br>
+    <i>%wxchkver_2_9_2</i> wxIMAGE_QUALITY_NEAREST<br>
+    <i>%wxchkver_2_9_2</i> wxIMAGE_QUALITY_BILINEAR<br>
+    <i>%wxchkver_2_9_2</i> wxIMAGE_QUALITY_BICUBIC<br>
+    <i>%wxchkver_2_9_2</i> wxIMAGE_QUALITY_BOX_AVERAGE<br>
+<br>
+    <font color=#009900>// default quality is low (but fast)</font><br>
     <i>%wxchkver_2_8</i> wxIMAGE_QUALITY_NORMAL<br>
+<br>
+    <font color=#009900>// highest (but best) quality</font><br>
     <i>%wxchkver_2_8</i> wxIMAGE_QUALITY_HIGH<br>
 </font>
 </blockquote><font color=#0066CC><i>%endenum</i></font><br>
+<br>
+<br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <i>%delete</i> <a name="wxImage">wxImage</a>, <a href="#wxObject">wxObject</a></font></b>
 <blockquote>
@@ -13923,8 +14114,8 @@
     unsigned char* GetData() const<br>
 <br>
     unsigned char GetGreen(int x, int y) const<br>
-    static int GetImageCount(const <a href="#wxString">wxString</a>&amp; filename, long type = wxBITMAP_TYPE_ANY)<br>
-    static int GetImageCount(<a href="#wxInputStream">wxInputStream</a>&amp; stream, long type = wxBITMAP_TYPE_ANY)<br>
+    static int GetImageCount(const <a href="#wxString">wxString</a>&amp; filename, <a href="#wxBitmapType">wxBitmapType</a> type = wxBITMAP_TYPE_ANY)<br>
+    static int GetImageCount(<a href="#wxInputStream">wxInputStream</a>&amp; stream, <a href="#wxBitmapType">wxBitmapType</a> type = wxBITMAP_TYPE_ANY)<br>
     static <a href="#wxList">wxList</a>&amp; GetHandlers()<br>
     int GetHeight() const<br>
     unsigned char GetMaskBlue() const<br>
@@ -13959,9 +14150,9 @@
     static void InsertHandler(<i>%ungc</i> <a href="#wxImageHandler">wxImageHandler</a>* handler)<br>
     bool IsTransparent(int x, int y, unsigned char threshold = 128) const<br>
 <br>
-    bool LoadFile(const <a href="#wxString">wxString</a>&amp; name, long type = wxBITMAP_TYPE_ANY, int index = -1)<br>
+    bool LoadFile(const <a href="#wxString">wxString</a>&amp; name, <a href="#wxBitmapType">wxBitmapType</a> type = wxBITMAP_TYPE_ANY, int index = -1)<br>
     bool LoadFile(const <a href="#wxString">wxString</a>&amp; name, const <a href="#wxString">wxString</a>&amp; mimetype, int index = -1)<br>
-    bool LoadFile(<a href="#wxInputStream">wxInputStream</a>&amp; stream, long type = wxBITMAP_TYPE_ANY, int index = -1)<br>
+    bool LoadFile(<a href="#wxInputStream">wxInputStream</a>&amp; stream, <a href="#wxBitmapType">wxBitmapType</a> type = wxBITMAP_TYPE_ANY, int index = -1)<br>
     bool LoadFile(<a href="#wxInputStream">wxInputStream</a>&amp; stream, const <a href="#wxString">wxString</a>&amp; mimetype, int index = -1)<br>
 <br>
     bool Ok() const<br>
@@ -13971,7 +14162,7 @@
     <i>%wxchkver_2_8</i> <a href="#wxImage">wxImage</a> ResampleBox(int width, int height) const<br>
     <i>%wxchkver_2_8</i> <a href="#wxImage">wxImage</a> ResampleBicubic(int width, int height) const<br>
     !<i>%wxchkver_2_8</i> <a href="#wxImage">wxImage</a>&amp; Rescale(int width, int height)<br>
-    <i>%wxchkver_2_8</i> <a href="#wxImage">wxImage</a>&amp; Rescale( int width, int height, int quality = wxIMAGE_QUALITY_NORMAL )<br>
+    <i>%wxchkver_2_8</i> <a href="#wxImage">wxImage</a>&amp; Rescale( int width, int height, <a href="#wxImageResizeQuality">wxImageResizeQuality</a> quality = wxIMAGE_QUALITY_NORMAL )<br>
     <a href="#wxImage">wxImage</a>&amp; Resize(const <a href="#wxSize">wxSize</a>&amp; size, const <a href="#wxPoint">wxPoint</a>&amp; pos, int red = -1, int green = -1, int blue = -1)<br>
     <a href="#wxImage">wxImage</a> Rotate(double angle, const <a href="#wxPoint">wxPoint</a>&amp; rotationCentre, bool interpolating = true, <a href="#wxPoint">wxPoint</a>* offsetAfterRotation = NULL)<br>
     void RotateHue(double angle)<br>
@@ -13980,7 +14171,7 @@
     bool SaveFile(const <a href="#wxString">wxString</a>&amp; name, int type)<br>
     bool SaveFile(const <a href="#wxString">wxString</a>&amp; name, const <a href="#wxString">wxString</a>&amp; mimetype)<br>
     !<i>%wxchkver_2_8</i> <a href="#wxImage">wxImage</a> Scale(int width, int height) const<br>
-    <i>%wxchkver_2_8</i> <a href="#wxImage">wxImage</a> Scale( int width, int height, int quality = wxIMAGE_QUALITY_NORMAL ) const<br>
+    <i>%wxchkver_2_8</i> <a href="#wxImage">wxImage</a> Scale( int width, int height, <a href="#wxImageResizeQuality">wxImageResizeQuality</a> quality = wxIMAGE_QUALITY_NORMAL ) const<br>
     <a href="#wxImage">wxImage</a> Size(const <a href="#wxSize">wxSize</a>&amp; size, const <a href="#wxPoint">wxPoint</a>&amp; pos, int red = -1, int green = -1, int blue = -1) const<br>
     void SetAlpha(int x, int y, unsigned char alpha)<br>
 <br>
@@ -14022,7 +14213,7 @@
 <br>
     <font color=#009900>// operator used to compare with wxImageHistogram::end() iterator</font><br>
     <i>%operator</i> bool operator==(const wxImageHistogram::iterator&amp; other) const<br>
-    <br>
+<br>
     <font color=#009900>//<i>%operator</i> wxImageHistogram::iterator&amp; operator++() // it just returns *this</font><br>
     <i>%operator</i> void operator++() <font color=#009900>// it's best if we don't return the iterator</font><br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
@@ -14113,7 +14304,7 @@
 </font>
 </blockquote><font color=#0066CC><i>%endenum</i></font><br>
 <br>
-<font color=#006666><i>%define_string</i> wxIMAGE_OPTION_BMP_FORMAT _T("wxBMP_FORMAT") <font color=#009900>// <a href="#wxString">wxString</a>(_T("wxBMP_FORMAT"))</font></font><br>
+<font color=#006666><i>%define_wxstring</i> wxIMAGE_OPTION_BMP_FORMAT wxT("wxBMP_FORMAT") <font color=#009900>// <a href="#wxString">wxString</a>(wxT("wxBMP_FORMAT"))</font></font><br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <i>%delete</i> <a name="wxBMPHandler">wxBMPHandler</a>, <a href="#wxImageHandler">wxImageHandler</a></font></b>
 <blockquote>
@@ -14202,8 +14393,8 @@
 <br>
 <i>%if</i> wxUSE_LIBPNG<br>
 <br>
-<font color=#006666><i>%define_string</i> wxIMAGE_OPTION_PNG_FORMAT    <font color=#009900>// wxT("PngFormat")</font></font><br>
-<font color=#006666><i>%define_string</i> wxIMAGE_OPTION_PNG_BITDEPTH  <font color=#009900>// wxT("PngBitDepth")</font></font><br>
+<font color=#006666><i>%define_wxstring</i> wxIMAGE_OPTION_PNG_FORMAT    <font color=#009900>// wxT("PngFormat")</font></font><br>
+<font color=#006666><i>%define_wxstring</i> wxIMAGE_OPTION_PNG_BITDEPTH  <font color=#009900>// wxT("PngBitDepth")</font></font><br>
 <br>
 <b><font size=+1 color=#0066CC><i>%enum</i></font></b>
 <blockquote><font color=#0066CC>
@@ -14241,10 +14432,10 @@
 <br>
 <i>%if</i> wxUSE_LIBTIFF<br>
 <br>
-<font color=#006666><i>%define_string</i> wxIMAGE_OPTION_BITSPERSAMPLE   _T("BitsPerSample")</font><br>
-<font color=#006666><i>%define_string</i> wxIMAGE_OPTION_SAMPLESPERPIXEL _T("SamplesPerPixel")</font><br>
-<font color=#006666><i>%define_string</i> wxIMAGE_OPTION_COMPRESSION     _T("Compression")</font><br>
-<font color=#006666><i>%define_string</i> wxIMAGE_OPTION_IMAGEDESCRIPTOR _T("ImageDescriptor")</font><br>
+<font color=#006666><i>%define_wxstring</i> wxIMAGE_OPTION_BITSPERSAMPLE   wxT("BitsPerSample")</font><br>
+<font color=#006666><i>%define_wxstring</i> wxIMAGE_OPTION_SAMPLESPERPIXEL wxT("SamplesPerPixel")</font><br>
+<font color=#006666><i>%define_wxstring</i> wxIMAGE_OPTION_COMPRESSION     wxT("Compression")</font><br>
+<font color=#006666><i>%define_wxstring</i> wxIMAGE_OPTION_IMAGEDESCRIPTOR wxT("ImageDescriptor")</font><br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <i>%delete</i> <a name="wxTIFFHandler">wxTIFFHandler</a>, <a href="#wxImageHandler">wxImageHandler</a></font></b>
 <blockquote>
@@ -14294,6 +14485,7 @@
 <font color=#009900>// Art clients</font><br>
 <font color=#009900>// ----------------------------------------------------------------------------</font><br>
 <br>
+<i>%if</i> <i>%wxchkver_2_9_0</i><br>
 <font color=#006666><i>%define_string</i> wxART_TOOLBAR</font><br>
 <font color=#006666><i>%define_string</i> wxART_MENU</font><br>
 <font color=#006666><i>%define_string</i> wxART_FRAME_ICON</font><br>
@@ -14304,11 +14496,26 @@
 <font color=#006666><i>%define_string</i> wxART_BUTTON</font><br>
 <br>
 <font color=#006666><i>%define_string</i> wxART_OTHER</font><br>
+<i>%endif</i><br>
+<br>
+<i>%if</i> !<i>%wxchkver_2_9_0</i><br>
+<font color=#006666><i>%define_wxstring</i> wxART_TOOLBAR</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_MENU</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_FRAME_ICON</font><br>
+<br>
+<font color=#006666><i>%define_wxstring</i> wxART_CMN_DIALOG</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_HELP_BROWSER</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_MESSAGE_BOX</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_BUTTON</font><br>
+<br>
+<font color=#006666><i>%define_wxstring</i> wxART_OTHER</font><br>
+<i>%endif</i><br>
 <br>
 <font color=#009900>// ----------------------------------------------------------------------------</font><br>
 <font color=#009900>// Art IDs</font><br>
 <font color=#009900>// ----------------------------------------------------------------------------</font><br>
 <br>
+<i>%if</i> <i>%wxchkver_2_9_0</i><br>
 <font color=#006666><i>%define_string</i> wxART_ADD_BOOKMARK</font><br>
 <font color=#006666><i>%define_string</i> wxART_DEL_BOOKMARK</font><br>
 <font color=#006666><i>%define_string</i> wxART_HELP_SIDE_PANEL</font><br>
@@ -14360,6 +14567,61 @@
 <br>
 <font color=#006666><i>%define_string</i> wxART_FIND</font><br>
 <font color=#006666><i>%define_string</i> wxART_FIND_AND_REPLACE</font><br>
+<i>%endif</i><br>
+<br>
+<i>%if</i> !<i>%wxchkver_2_9_0</i><br>
+<font color=#006666><i>%define_wxstring</i> wxART_ADD_BOOKMARK</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_DEL_BOOKMARK</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_HELP_SIDE_PANEL</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_HELP_SETTINGS</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_HELP_BOOK</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_HELP_FOLDER</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_HELP_PAGE</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_GO_BACK</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_GO_FORWARD</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_GO_UP</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_GO_DOWN</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_GO_TO_PARENT</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_GO_HOME</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_FILE_OPEN</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_FILE_SAVE</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_FILE_SAVE_AS</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_PRINT</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_HELP</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_TIP</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_REPORT_VIEW</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_LIST_VIEW</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_NEW_DIR</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_HARDDISK</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_FLOPPY</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_CDROM</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_REMOVABLE</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_FOLDER</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_FOLDER_OPEN</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_GO_DIR_UP</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_EXECUTABLE_FILE</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_NORMAL_FILE</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_TICK_MARK</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_CROSS_MARK</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_ERROR</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_QUESTION</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_WARNING</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_INFORMATION</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_MISSING_IMAGE</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_COPY</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_CUT</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_PASTE</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_DELETE</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_NEW</font><br>
+<br>
+<font color=#006666><i>%define_wxstring</i> wxART_UNDO</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_REDO</font><br>
+<br>
+<font color=#006666><i>%define_wxstring</i> wxART_QUIT</font><br>
+<br>
+<font color=#006666><i>%define_wxstring</i> wxART_FIND</font><br>
+<font color=#006666><i>%define_wxstring</i> wxART_FIND_AND_REPLACE</font><br>
+<i>%endif</i><br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <a name="wxArtProvider">wxArtProvider</a>, <a href="#wxObject">wxObject</a></font></b>
 <blockquote>
@@ -16069,8 +16331,9 @@
 <blockquote>
     <a href="#wxPostScriptDC">wxPostScriptDC</a>(const <a href="#wxPrintData">wxPrintData</a>&amp; printData)<br>
 <br>
-    static void SetResolution(int ppi)<br>
-    static int GetResolution()<br>
+    !<i>%wxchkver_2_9_2</i> static void SetResolution(int ppi)<br>
+    !<i>%wxchkver_2_9_2</i> static int GetResolution()<br>
+    <i>%wxchkver_2_9_2</i> int GetResolution()<br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
 <br>
 <i>%endif</i> <font color=#009900>//wxUSE_POSTSCRIPT</font><br>
@@ -16597,7 +16860,7 @@
 <font color=#006666><i>%define</i> wxSTATIC_BORDER</font><br>
 <font color=#009900>//<i>%define</i> wxNO_BORDER in defsutils.i</font><br>
 <font color=#006666><i>%define</i> wxTRANSPARENT_WINDOW</font><br>
-<font color=#006666><i>%define</i> wxNO_3D</font><br>
+<font color=#009900>// <i>%define</i> wxNO_3D <i>%wxcompat_2_6</i></font><br>
 <font color=#006666><i>%define</i> wxTAB_TRAVERSAL</font><br>
 <font color=#006666><i>%define</i> wxWANTS_CHARS</font><br>
 <font color=#006666><i>%define</i> wxVSCROLL</font><br>
@@ -17385,10 +17648,10 @@
 <font color=#006666><i>%define</i> wxSP_LIVE_UPDATE</font><br>
 <font color=#006666><i>%define</i> wxSP_3DSASH</font><br>
 <font color=#006666><i>%define</i> wxSP_3DBORDER</font><br>
-<font color=#006666><i>%define</i> wxSP_FULLSASH</font><br>
+<font color=#009900>// <i>%define</i> wxSP_FULLSASH <i>%wxcompat_2_6</i> obsolete</font><br>
 <font color=#006666><i>%define</i> wxSP_3D</font><br>
 <font color=#006666><i>%wxchkver_2_4</i> <i>%define</i> wxSP_NO_XP_THEME</font><br>
-<font color=#006666><i>%define</i> wxSP_SASH_AQUA</font><br>
+<font color=#009900>// <i>%define</i> wxSP_SASH_AQUA  <i>%wxcompat_2_6</i> obsolete</font><br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <a name="wxSplitterWindow">wxSplitterWindow</a>, <a href="#wxWindow">wxWindow</a></font></b>
 <blockquote>
@@ -17523,8 +17786,8 @@
 <i>%include</i> "wx/stattext.h"<br>
 <br>
 <font color=#006666><i>%define</i> wxST_NO_AUTORESIZE</font><br>
-<font color=#006666><i>%wxchkver_2_8</i> <i>%define</i> wxST_DOTS_MIDDLE</font><br>
-<font color=#006666><i>%wxchkver_2_8</i> <i>%define</i> wxST_DOTS_END</font><br>
+<font color=#006666><i>%wxchkver_2_8</i> &amp;&amp; !<i>%wxchkver_2_9_2</i> <i>%define</i> wxST_DOTS_MIDDLE</font><br>
+<font color=#006666><i>%wxchkver_2_8</i> &amp;&amp; !<i>%wxchkver_2_9_2</i> <i>%define</i> wxST_DOTS_END</font><br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <a name="wxStaticText">wxStaticText</a>, <a href="#wxControl">wxControl</a></font></b>
 <blockquote>
@@ -17731,7 +17994,9 @@
     <a href="#wxBitmap">wxBitmap</a> GetItemBitmap(unsigned int n) const<br>
 <br>
     int Insert(const <a href="#wxString">wxString</a>&amp; item, const <a href="#wxBitmap">wxBitmap</a>&amp; bitmap, unsigned int pos)<br>
+ <i>%if</i> !<i>%wxchkver_2_9_0</i> || <i>%wxchkver_2_9_5</i> <font color=#009900>// This function body was missing so you'd get linker errors</font><br>
     int Insert(const <a href="#wxString">wxString</a>&amp; item, const <a href="#wxBitmap">wxBitmap</a>&amp; bitmap, unsigned int pos, voidptr_long data ) <font color=#009900>// C++ is (void *clientData) You can put a number here</font><br>
+ <i>%endif</i><br>
     int Insert(const <a href="#wxString">wxString</a>&amp; item, const <a href="#wxBitmap">wxBitmap</a>&amp; bitmap, unsigned int pos, <a href="#wxClientData">wxClientData</a> *clientData)<br>
 <br>
     void SetItemBitmap(unsigned int n, const <a href="#wxBitmap">wxBitmap</a>&amp; bitmap)<br>
@@ -17749,11 +18014,11 @@
     <font color=#009900>//void SetSelection(long from, long to)</font><br>
     <font color=#009900>//int GetWidestItemWidth()</font><br>
     <font color=#009900>//int GetWidestItem()</font><br>
-    <br>
+<br>
     void SetValue(const <a href="#wxString">wxString</a>&amp; value)<br>
     void SetString(unsigned int n, const <a href="#wxString">wxString</a>&amp; s)<br>
     bool SetStringSelection(const <a href="#wxString">wxString</a>&amp; s)<br>
-    <br>
+<br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
 <br>
 <i>%endif</i> <font color=#009900>//wxLUA_USE_wxBitmapComboBox &amp;&amp; wxUSE_BITMAPCOMBOBOX</font><br>
@@ -17804,7 +18069,11 @@
 <br>
     void     SetDate(const <a href="#wxDateTime">wxDateTime</a>&amp; date)<br>
     <a href="#wxDateTime">wxDateTime</a> GetDate() const<br>
-    void     EnableYearChange(bool enable = true)<br>
+<br>
+    <i>%if</i> !<i>%wxchkver_2_9_2</i><br>
+        void     EnableYearChange(bool enable = true)<br>
+    <i>%endif</i><br>
+<br>
     void     EnableMonthChange(bool enable = true)<br>
     void     EnableHolidayDisplay(bool display = true)<br>
     void     SetHeaderColours(const <a href="#wxColour">wxColour</a>&amp; colFg, const <a href="#wxColour">wxColour</a>&amp; colBg)<br>
@@ -17884,7 +18153,9 @@
 <font color=#006666>    <i>%define_event</i> wxEVT_CALENDAR_DOUBLECLICKED      <font color=#009900>// EVT_CALENDAR(id, fn)</font></font><br>
 <font color=#006666>    <i>%define_event</i> wxEVT_CALENDAR_WEEKDAY_CLICKED    <font color=#009900>// EVT_CALENDAR_WEEKDAY_CLICKED(id, fn)</font></font><br>
 <br>
-    <a href="#wxCalendarEvent">wxCalendarEvent</a>(<a href="#wxCalendarCtrl">wxCalendarCtrl</a> *cal, wxEventType type)<br>
+    <i>%wxchkver_2_9_2</i> <a href="#wxCalendarEvent">wxCalendarEvent</a>(const <a href="#wxCalendarEvent">wxCalendarEvent</a>&amp; event)<br>
+    !<i>%wxchkver_2_9_2</i> <a href="#wxCalendarEvent">wxCalendarEvent</a>(<a href="#wxCalendarCtrl">wxCalendarCtrl</a> *cal, wxEventType type)<br>
+    <i>%wxchkver_2_9_2</i> <a href="#wxCalendarEvent">wxCalendarEvent</a>(<a href="#wxWindow">wxWindow</a> *win, const <a href="#wxDateTime">wxDateTime</a>&amp; dt, wxEventType type)<br>
 <br>
     wxDateTime::WeekDay GetWeekDay() const<br>
     void SetWeekDay(const wxDateTime::WeekDay wd)<br>
@@ -17982,13 +18253,14 @@
     int GetMinimumSizeX() const<br>
     int GetMinimumSizeY() const<br>
 <br>
-    bool HasBorder(<a href="#wxSashEdgePosition">wxSashEdgePosition</a> edge) const<br>
     void SetMaximumSizeX(int min)<br>
     void SetMaximumSizeY(int min)<br>
     void SetMinimumSizeX(int min)<br>
     void SetMinimumSizeY(int min)<br>
     void SetSashVisible(<a href="#wxSashEdgePosition">wxSashEdgePosition</a> edge, bool visible)<br>
-    void SetSashBorder(<a href="#wxSashEdgePosition">wxSashEdgePosition</a> edge, bool hasBorder)<br>
+<br>
+    <i>%wxcompat_2_6</i> bool HasBorder(<a href="#wxSashEdgePosition">wxSashEdgePosition</a> edge) const<br>
+    <i>%wxcompat_2_6</i> void SetSashBorder(<a href="#wxSashEdgePosition">wxSashEdgePosition</a> edge, bool hasBorder)<br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
@@ -18432,16 +18704,16 @@
 <font color=#006666><i>%define</i> WXGRID_MIN_COL_WIDTH</font><br>
 <font color=#006666><i>%define</i> WXGRID_DEFAULT_SCROLLBAR_WIDTH</font><br>
 <br>
-<font color=#006666><i>%define_string</i> wxGRID_VALUE_STRING</font><br>
-<font color=#006666><i>%define_string</i> wxGRID_VALUE_BOOL</font><br>
-<font color=#006666><i>%define_string</i> wxGRID_VALUE_NUMBER</font><br>
-<font color=#006666><i>%define_string</i> wxGRID_VALUE_FLOAT</font><br>
-<font color=#006666><i>%define_string</i> wxGRID_VALUE_CHOICE</font><br>
-<font color=#006666><i>%define_string</i> wxGRID_VALUE_TEXT</font><br>
-<font color=#006666><i>%define_string</i> wxGRID_VALUE_LONG</font><br>
+<font color=#006666><i>%define_wxstring</i> wxGRID_VALUE_STRING</font><br>
+<font color=#006666><i>%define_wxstring</i> wxGRID_VALUE_BOOL</font><br>
+<font color=#006666><i>%define_wxstring</i> wxGRID_VALUE_NUMBER</font><br>
+<font color=#006666><i>%define_wxstring</i> wxGRID_VALUE_FLOAT</font><br>
+<font color=#006666><i>%define_wxstring</i> wxGRID_VALUE_CHOICE</font><br>
+<font color=#006666><i>%define_wxstring</i> wxGRID_VALUE_TEXT</font><br>
+<font color=#006666><i>%define_wxstring</i> wxGRID_VALUE_LONG</font><br>
 <br>
-<font color=#006666><i>%define_string</i> wxGRID_VALUE_CHOICEINT</font><br>
-<font color=#006666><i>%define_string</i> wxGRID_VALUE_DATETIME</font><br>
+<font color=#006666><i>%define_wxstring</i> wxGRID_VALUE_CHOICEINT</font><br>
+<font color=#006666><i>%define_wxstring</i> wxGRID_VALUE_DATETIME</font><br>
 <br>
 <font color=#006666><i>%wxchkver_2_8_8</i> <i>%define</i> wxGRID_AUTOSIZE</font><br>
 <br>
@@ -18454,11 +18726,6 @@
 <br>
     void IncRef()<br>
     void DecRef()<br>
-<br>
-<i>%if</i> !defined(WXUSINGDLL)<br>
-    <font color=#009900>// Getting the value of the ref count is only possible in non-dll wxWidgets library.</font><br>
-    <font color=#009900>//int GetRef() const // wxLua added function to help track if it needs to be refed</font><br>
-<i>%endif</i><br>
 <br>
     virtual void SetParameters(const <a href="#wxString">wxString</a>&amp; params)<br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
@@ -18553,7 +18820,8 @@
 <br>
     <font color=#009900>//virtual void Create(<a href="#wxWindow">wxWindow</a>* parent, wxWindowID id, <a href="#wxEvtHandler">wxEvtHandler</a>* evtHandler)</font><br>
     virtual void BeginEdit(int row, int col, <a href="#wxGrid">wxGrid</a>* grid)<br>
-    virtual bool EndEdit(int row, int col, <a href="#wxGrid">wxGrid</a>* grid)<br>
+    !<i>%wxchkver_2_9_2</i> virtual bool EndEdit(int row, int col, <a href="#wxGrid">wxGrid</a>* grid)<br>
+    <i>%wxchkver_2_9_2</i> virtual bool EndEdit(int row, int col, const <a href="#wxGrid">wxGrid</a> *grid, const <a href="#wxString">wxString</a>&amp; oldval, <a href="#wxString">wxString</a> *newval)<br>
     virtual void Reset()<br>
     <font color=#009900>//virtual <a href="#wxGridCellEditor">wxGridCellEditor</a> *Clone() const</font><br>
     virtual void SetSize(const <a href="#wxRect">wxRect</a>&amp; rect)<br>
@@ -19218,8 +19486,8 @@
 <font color=#006666>    <i>%define_event</i> wxEVT_GRID_EDITOR_HIDDEN      <font color=#009900>// EVT_GRID_EDITOR_HIDDEN(fn)</font></font><br>
 <font color=#006666>    <i>%define_event</i> wxEVT_GRID_CELL_BEGIN_DRAG    <font color=#009900>// EVT_GRID_CELL_BEGIN_DRAG(fn)</font></font><br>
 <br>
-    <a href="#wxGridEvent">wxGridEvent</a>(int id, wxEventType type, <a href="#wxObject">wxObject</a>* obj, int row = -1, int col = -1, int x = -1, int y = -1, bool sel = true, bool control = false, bool shift = false, bool alt = false, bool meta = false)<br>
-<br>
+    !<i>%wxchkver_2_9_0</i> <a href="#wxGridEvent">wxGridEvent</a>(int id, wxEventType type, <a href="#wxObject">wxObject</a>* obj, int row = -1, int col = -1, int x = -1, int y = -1, bool sel = true, bool control = false, bool shift = false, bool alt = false, bool meta = false)<br>
+    <br>
     virtual int GetRow()<br>
     virtual int GetCol()<br>
     <a href="#wxPoint">wxPoint</a>     GetPosition()<br>
@@ -19238,7 +19506,7 @@
 <font color=#006666>    <i>%define_event</i> wxEVT_GRID_ROW_SIZE           <font color=#009900>// EVT_GRID_CMD_ROW_SIZE(id, fn)</font></font><br>
 <font color=#006666>    <i>%define_event</i> wxEVT_GRID_COL_SIZE           <font color=#009900>// EVT_GRID_CMD_COL_SIZE(id, fn)</font></font><br>
 <br>
-    <a href="#wxGridSizeEvent">wxGridSizeEvent</a>(int id, wxEventType type, <a href="#wxObject">wxObject</a>* obj, int rowOrCol = -1, int x = -1, int y = -1, bool control = false, bool shift = false, bool alt = false, bool meta = false)<br>
+    !<i>%wxchkver_2_9_0</i> <a href="#wxGridSizeEvent">wxGridSizeEvent</a>(int id, wxEventType type, <a href="#wxObject">wxObject</a>* obj, int rowOrCol = -1, int x = -1, int y = -1, bool control = false, bool shift = false, bool alt = false, bool meta = false)<br>
 <br>
     int         GetRowOrCol()<br>
     <a href="#wxPoint">wxPoint</a>     GetPosition()<br>
@@ -19255,7 +19523,7 @@
 <blockquote>
 <font color=#006666>    <i>%define_event</i> wxEVT_GRID_RANGE_SELECT       <font color=#009900>// EVT_GRID_CMD_RANGE_SELECT(id, fn)</font></font><br>
 <br>
-    <a href="#wxGridRangeSelectEvent">wxGridRangeSelectEvent</a>(int id, wxEventType type, <a href="#wxObject">wxObject</a>* obj, const <a href="#wxGridCellCoords">wxGridCellCoords</a>&amp; topLeft, const <a href="#wxGridCellCoords">wxGridCellCoords</a>&amp; bottomRight, bool sel = true, bool control = false, bool shift = false, bool alt = false, bool meta = false)<br>
+    !<i>%wxchkver_2_9_0</i> <a href="#wxGridRangeSelectEvent">wxGridRangeSelectEvent</a>(int id, wxEventType type, <a href="#wxObject">wxObject</a>* obj, const <a href="#wxGridCellCoords">wxGridCellCoords</a>&amp; topLeft, const <a href="#wxGridCellCoords">wxGridCellCoords</a>&amp; bottomRight, bool sel = true, bool control = false, bool shift = false, bool alt = false, bool meta = false)<br>
 <br>
     <a href="#wxGridCellCoords">wxGridCellCoords</a> GetTopLeftCoords()<br>
     <a href="#wxGridCellCoords">wxGridCellCoords</a> GetBottomRightCoords()<br>
@@ -19646,7 +19914,9 @@
     <a href="#wxURI">wxURI</a>(const <a href="#wxString">wxString</a>&amp; uri)<br>
     <a href="#wxURI">wxURI</a>(const <a href="#wxURI">wxURI</a>&amp; uri)<br>
 <br>
-    <a href="#wxString">wxString</a> Create(const <a href="#wxString">wxString</a>&amp; uri)<br>
+    <i>%wxchkver_2_9_2</i> bool Create(const <a href="#wxString">wxString</a>&amp; uri)<br>
+    !<i>%wxchkver_2_9_2</i> <a href="#wxString">wxString</a> Create(const <a href="#wxString">wxString</a>&amp; uri)<br>
+<br>
     bool HasScheme() const<br>
     bool HasUserInfo() const<br>
     bool HasServer() const<br>
@@ -19808,12 +20078,12 @@
 </font>
 </blockquote><font color=#0066CC><i>%endenum</i></font><br>
 <br>
-<font color=#006666><i>%define_string</i> wxMEDIABACKEND_DIRECTSHOW   <font color=#009900>//wxT("wxAMMediaBackend")</font></font><br>
-<font color=#006666><i>%define_string</i> wxMEDIABACKEND_MCI          <font color=#009900>//wxT("wxMCIMediaBackend")</font></font><br>
-<font color=#006666><i>%define_string</i> wxMEDIABACKEND_QUICKTIME    <font color=#009900>//wxT("wxQTMediaBackend")</font></font><br>
-<font color=#006666><i>%define_string</i> wxMEDIABACKEND_GSTREAMER    <font color=#009900>//wxT("wxGStreamerMediaBackend")</font></font><br>
-<font color=#006666><i>%wxchkver_2_8</i> <i>%define_string</i> wxMEDIABACKEND_REALPLAYER   <font color=#009900>//wxT("wxRealPlayerMediaBackend")</font></font><br>
-<font color=#006666><i>%wxchkver_2_8</i> <i>%define_string</i> wxMEDIABACKEND_WMP10        <font color=#009900>//wxT("wxWMP10MediaBackend")</font></font><br>
+<font color=#006666><i>%define_wxstring</i> wxMEDIABACKEND_DIRECTSHOW   <font color=#009900>//wxT("wxAMMediaBackend")</font></font><br>
+<font color=#006666><i>%define_wxstring</i> wxMEDIABACKEND_MCI          <font color=#009900>//wxT("wxMCIMediaBackend")</font></font><br>
+<font color=#006666><i>%define_wxstring</i> wxMEDIABACKEND_QUICKTIME    <font color=#009900>//wxT("wxQTMediaBackend")</font></font><br>
+<font color=#006666><i>%define_wxstring</i> wxMEDIABACKEND_GSTREAMER    <font color=#009900>//wxT("wxGStreamerMediaBackend")</font></font><br>
+<font color=#006666><i>%wxchkver_2_8</i> <i>%define_wxstring</i> wxMEDIABACKEND_REALPLAYER   <font color=#009900>//wxT("wxRealPlayerMediaBackend")</font></font><br>
+<font color=#006666><i>%wxchkver_2_8</i> <i>%define_wxstring</i> wxMEDIABACKEND_WMP10        <font color=#009900>//wxT("wxWMP10MediaBackend")</font></font><br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <a name="wxMediaCtrl">wxMediaCtrl</a>, <a href="#wxControl">wxControl</a></font></b>
 <blockquote>
@@ -19846,12 +20116,14 @@
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
 <font color=#009900>//  <a href="#wxMediaEvent">wxMediaEvent</a></font><br>
 <br>
-<font color=#006666><i>%define</i> wxMEDIA_FINISHED_ID</font><br>
-<font color=#006666><i>%define</i> wxMEDIA_STOP_ID</font><br>
-<font color=#006666><i>%define</i> wxMEDIA_LOADED_ID</font><br>
-<font color=#006666><i>%wxchkver_2_6_4</i> <i>%define</i> wxMEDIA_STATECHANGED_ID</font><br>
-<font color=#006666><i>%wxchkver_2_6_4</i> <i>%define</i> wxMEDIA_PLAY_ID</font><br>
-<font color=#006666><i>%wxchkver_2_6_4</i> <i>%define</i> wxMEDIA_PAUSE_ID</font><br>
+<i>%if</i> !<i>%wxchkver_2_9_2</i><br>
+<font color=#006666>    <i>%define</i> wxMEDIA_FINISHED_ID</font><br>
+<font color=#006666>    <i>%define</i> wxMEDIA_STOP_ID</font><br>
+<font color=#006666>    <i>%define</i> wxMEDIA_LOADED_ID</font><br>
+<font color=#006666>    <i>%wxchkver_2_6_4</i> <i>%define</i> wxMEDIA_STATECHANGED_ID</font><br>
+<font color=#006666>    <i>%wxchkver_2_6_4</i> <i>%define</i> wxMEDIA_PLAY_ID</font><br>
+<font color=#006666>    <i>%wxchkver_2_6_4</i> <i>%define</i> wxMEDIA_PAUSE_ID</font><br>
+<i>%endif</i><br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <i>%delete</i> <a name="wxMediaEvent">wxMediaEvent</a>, <a href="#wxNotifyEvent">wxNotifyEvent</a></font></b>
 <blockquote>
@@ -19936,8 +20208,8 @@
     <i>%if</i> <i>%wxchkver_2_8</i><br>
         !<i>%mac</i> <a href="#wxGLContext">wxGLContext</a>(<a href="#wxGLCanvas">wxGLCanvas</a> *win, const <a href="#wxGLContext">wxGLContext</a>* other = NULL ) <font color=#009900>// FIXME</font><br>
 <br>
-        !<i>%mac</i> void SetCurrent(const <a href="#wxGLCanvas">wxGLCanvas</a>&amp; win) const<br>
-        <i>%mac</i> void SetCurrent() const<br>
+        !<i>%mac</i> | <i>%wxchkver_2_9</i> void SetCurrent(const <a href="#wxGLCanvas">wxGLCanvas</a>&amp; win) const<br>
+        <i>%mac</i> &amp; !<i>%wxchkver_2_9</i> void SetCurrent() const<br>
     <i>%endif</i> <font color=#009900>// <i>%wxchkver_2_8</i></font><br>
 <br>
     <i>%if</i> !<i>%wxchkver_2_8</i><br>
@@ -20276,10 +20548,12 @@
 <b><font size=+1 color=#DD0000><i>%class</i> <i>%delete</i> <a name="wxAuiTabContainerButton">wxAuiTabContainerButton</a></font></b>
 <blockquote>
 <font color=#CC6600>    <i>%member</i> int id;               <font color=#009900>// button's id</font></font><br>
-<font color=#CC6600>    <i>%member</i> int cur_state;        <font color=#009900>// current state (normal, hover, pressed, etc.)</font></font><br>
+<font color=#CC6600>    !<i>%wxchkver_2_9_3</i> <i>%member</i> int cur_state;        <font color=#009900>// current state (normal, hover, pressed, etc.)</font></font><br>
+<font color=#CC6600>    <i>%wxchkver_2_9_3</i>  <i>%member</i> int curState;</font><br>
 <font color=#CC6600>    <i>%member</i> int location;         <font color=#009900>// buttons location (wxLEFT, wxRIGHT, or wxCENTER)</font></font><br>
 <font color=#CC6600>    <i>%member</i> <a href="#wxBitmap">wxBitmap</a> bitmap;      <font color=#009900>// button's hover bitmap</font></font><br>
-<font color=#CC6600>    <i>%member</i> <a href="#wxBitmap">wxBitmap</a> dis_bitmap;  <font color=#009900>// button's disabled bitmap</font></font><br>
+<font color=#CC6600>    !<i>%wxchkver_2_9_3</i> <i>%member</i> <a href="#wxBitmap">wxBitmap</a> dis_bitmap;  <font color=#009900>// button's disabled bitmap</font></font><br>
+<font color=#CC6600>    <i>%wxchkver_2_9_3</i>  <i>%member</i> <a href="#wxBitmap">wxBitmap</a> disBitmap;</font><br>
 <font color=#CC6600>    <i>%member</i> <a href="#wxRect">wxRect</a> rect;          <font color=#009900>// button's hit rectangle</font></font><br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
 <br>
@@ -21002,7 +21276,7 @@
 <br>
     void SetChildMenuBar(<a href="#wxAuiMDIChildFrame">wxAuiMDIChildFrame</a> *pChild);<br>
 <br>
-    virtual bool ProcessEvent(<a href="#wxEvent">wxEvent</a>&amp; event);<br>
+    !<i>%wxchkver_2_9_2</i> virtual bool ProcessEvent(<a href="#wxEvent">wxEvent</a>&amp; event);<br>
 <br>
     <a href="#wxAuiMDIChildFrame">wxAuiMDIChildFrame</a> *GetActiveChild() const;<br>
     void SetActiveChild(<a href="#wxAuiMDIChildFrame">wxAuiMDIChildFrame</a>* pChildFrame);<br>
@@ -21141,7 +21415,11 @@
 <br>
 <font color=#BB0055>    <font color=#009900>// <i>%override</i> bool AdjustPagebreak(int pagebreak, <a href="#wxArrayInt">wxArrayInt</a>&amp; known_pagebreaks)</font></font><br>
     <font color=#009900>// C++ Func: bool AdjustPagebreak(int pagebreak, <a href="#wxArrayInt">wxArrayInt</a>&amp; known_pagebreaks)</font><br>
-    <i>%not_overload</i> <i>%wxchkver_2_8</i> virtual bool AdjustPagebreak(int pagebreak, <a href="#wxArrayInt">wxArrayInt</a>&amp; known_pagebreaks)<br>
+    <i>%not_overload</i> <i>%wxchkver_2_8</i> &amp; !<i>%wxchkver_2_9_4</i> virtual bool AdjustPagebreak(int pagebreak, <a href="#wxArrayInt">wxArrayInt</a>&amp; known_pagebreaks)<br>
+<br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> bool AdjustPagebreak(int pagebreak, <a href="#wxArrayInt">wxArrayInt</a>&amp; known_pagebreaks, int pageHeight)</font></font><br>
+    <font color=#009900>// C++ Func: bool AdjustPagebreak(int pagebreak, <a href="#wxArrayInt">wxArrayInt</a>&amp; known_pagebreaks, int pageHeight)</font><br>
+    <i>%not_overload</i> <i>%wxchkver_2_9_4</i> virtual bool AdjustPagebreak(int pagebreak, <a href="#wxArrayInt">wxArrayInt</a>&amp; known_pagebreaks, int pageHeight)<br>
 <br>
     <font color=#009900>//virtual void Draw(<a href="#wxDC">wxDC</a>&amp; dc, int x, int y, int view_y1, int view_y2, wxHtmlRenderingInfo&amp; info)</font><br>
     <font color=#009900>//virtual void DrawInvisible(<a href="#wxDC">wxDC</a>&amp; dc, int x, int y, wxHtmlRenderingInfo&amp; info)</font><br>
@@ -21302,7 +21580,7 @@
 <br>
 <i>%include</i> "wx/html/htmltag.h"<br>
 <br>
-<b><font size=+1 color=#DD0000><i>%class</i> <a name="wxHtmlTag">wxHtmlTag</a>, <a href="#wxObject">wxObject</a></font></b>
+<b><font size=+1 color=#DD0000><i>%class</i> <a name="wxHtmlTag">wxHtmlTag</a> <font color=#009900>// !<i>%wxchkver_2_9_2</i> <a href="#wxObject">wxObject</a></font></font></b>
 <blockquote>
     <font color=#009900>//<a href="#wxHtmlTag">wxHtmlTag</a>(const <a href="#wxString">wxString</a>&amp; source, int pos, int end_pos, wxHtmlTagsCache* cache)</font><br>
 <br>
@@ -21424,7 +21702,8 @@
     <font color=#009900>//void AddTag(const <a href="#wxHtmlTag">wxHtmlTag</a>&amp; tag)</font><br>
     <font color=#009900>//void AddTagHandler(wxHtmlTagHandler *handler)</font><br>
     <font color=#009900>//void AddWord(const <a href="#wxString">wxString</a> &amp;txt) - not in 2.6?</font><br>
-    void DoParsing(int begin_pos, int end_pos)<br>
+    <i>%wxchkver_2_9_2</i> void DoParsing(const wxString::const_iterator&amp; begin_pos, const wxString::const_iterator&amp; end_pos)<br>
+    !<i>%wxchkver_2_9_2</i> void DoParsing(int begin_pos, int end_pos)<br>
     void DoParsing()<br>
     virtual void DoneParser()<br>
     <font color=#009900>//virtual <a href="#wxObject">wxObject</a>* GetProduct()</font><br>
@@ -21770,11 +22049,20 @@
 <font color=#006666><i>%define</i> wxSTC_MARK_CIRCLEMINUSCONNECTED</font><br>
 <br>
 <font color=#009900>// Invisible mark that only sets the line background color.</font><br>
+<br>
+<br>
 <font color=#006666><i>%define</i> wxSTC_MARK_BACKGROUND</font><br>
 <font color=#006666><i>%define</i> wxSTC_MARK_DOTDOTDOT</font><br>
 <font color=#006666><i>%define</i> wxSTC_MARK_ARROWS</font><br>
 <font color=#006666><i>%define</i> wxSTC_MARK_PIXMAP</font><br>
 <font color=#006666><i>%define</i> wxSTC_MARK_FULLRECT</font><br>
+<br>
+<i>%if</i> <i>%wxchkver_2_9_2</i><br>
+<font color=#006666><i>%define</i> wxSTC_MARK_LEFTRECT</font><br>
+<font color=#006666><i>%define</i> wxSTC_MARK_AVAILABLE</font><br>
+<font color=#006666><i>%define</i> wxSTC_MARK_UNDERLINE</font><br>
+<i>%endif</i><br>
+<br>
 <font color=#006666><i>%define</i> wxSTC_MARK_CHARACTER</font><br>
 <br>
 <font color=#009900>// Markers used for outlining column.</font><br>
@@ -21788,6 +22076,12 @@
 <font color=#006666><i>%define</i> wxSTC_MASK_FOLDERS</font><br>
 <font color=#006666><i>%define</i> wxSTC_MARGIN_SYMBOL</font><br>
 <font color=#006666><i>%define</i> wxSTC_MARGIN_NUMBER</font><br>
+<i>%if</i> <i>%wxchkver_2_9_2</i><br>
+<font color=#006666><i>%define</i> wxSTC_MARGIN_BACK</font><br>
+<font color=#006666><i>%define</i> wxSTC_MARGIN_FORE</font><br>
+<font color=#006666><i>%define</i> wxSTC_MARGIN_TEXT</font><br>
+<font color=#006666><i>%define</i> wxSTC_MARGIN_RTEXT</font><br>
+<i>%endif</i><br>
 <br>
 <font color=#009900>// Styles in range 32..37 are predefined for parts of the UI and are not used as normal styles.</font><br>
 <font color=#009900>// Styles 38 and 39 are for future use.</font><br>
@@ -21797,6 +22091,7 @@
 <font color=#006666><i>%define</i> wxSTC_STYLE_BRACEBAD</font><br>
 <font color=#006666><i>%define</i> wxSTC_STYLE_CONTROLCHAR</font><br>
 <font color=#006666><i>%define</i> wxSTC_STYLE_INDENTGUIDE</font><br>
+<font color=#006666><i>%wxchkver_2_9_2</i> <i>%define</i> wxSTC_STYLE_CALLTIP</font><br>
 <font color=#006666><i>%define</i> wxSTC_STYLE_LASTPREDEFINED</font><br>
 <font color=#006666><i>%define</i> wxSTC_STYLE_MAX</font><br>
 <br>
@@ -21826,6 +22121,7 @@
 <font color=#006666><i>%define</i> wxSTC_CASE_MIXED</font><br>
 <font color=#006666><i>%define</i> wxSTC_CASE_UPPER</font><br>
 <font color=#006666><i>%define</i> wxSTC_CASE_LOWER</font><br>
+<br>
 <font color=#006666><i>%define</i> wxSTC_INDIC_MAX</font><br>
 <font color=#006666><i>%define</i> wxSTC_INDIC_PLAIN</font><br>
 <font color=#006666><i>%define</i> wxSTC_INDIC_SQUIGGLE</font><br>
@@ -21861,17 +22157,17 @@
 <font color=#006666><i>%define</i> wxSTC_FOLDLEVELBASE</font><br>
 <font color=#006666><i>%define</i> wxSTC_FOLDLEVELWHITEFLAG</font><br>
 <font color=#006666><i>%define</i> wxSTC_FOLDLEVELHEADERFLAG</font><br>
-<font color=#006666><i>%define</i> wxSTC_FOLDLEVELBOXHEADERFLAG</font><br>
-<font color=#006666><i>%define</i> wxSTC_FOLDLEVELBOXFOOTERFLAG</font><br>
-<font color=#006666><i>%define</i> wxSTC_FOLDLEVELCONTRACTED</font><br>
-<font color=#006666><i>%define</i> wxSTC_FOLDLEVELUNINDENT</font><br>
+<font color=#006666>!<i>%wxchkver_2_9_2</i> <i>%define</i> wxSTC_FOLDLEVELBOXHEADERFLAG</font><br>
+<font color=#006666>!<i>%wxchkver_2_9_2</i> <i>%define</i> wxSTC_FOLDLEVELBOXFOOTERFLAG</font><br>
+<font color=#006666>!<i>%wxchkver_2_9_2</i> <i>%define</i> wxSTC_FOLDLEVELCONTRACTED</font><br>
+<font color=#006666>!<i>%wxchkver_2_9_2</i> <i>%define</i> wxSTC_FOLDLEVELUNINDENT</font><br>
 <font color=#006666><i>%define</i> wxSTC_FOLDLEVELNUMBERMASK</font><br>
 <font color=#006666><i>%define</i> wxSTC_FOLDFLAG_LINEBEFORE_EXPANDED</font><br>
 <font color=#006666><i>%define</i> wxSTC_FOLDFLAG_LINEBEFORE_CONTRACTED</font><br>
 <font color=#006666><i>%define</i> wxSTC_FOLDFLAG_LINEAFTER_EXPANDED</font><br>
 <font color=#006666><i>%define</i> wxSTC_FOLDFLAG_LINEAFTER_CONTRACTED</font><br>
 <font color=#006666><i>%define</i> wxSTC_FOLDFLAG_LEVELNUMBERS</font><br>
-<font color=#006666><i>%define</i> wxSTC_FOLDFLAG_BOX</font><br>
+<font color=#006666>!<i>%wxchkver_2_9_2</i> <i>%define</i> wxSTC_FOLDFLAG_BOX</font><br>
 <font color=#006666><i>%define</i> wxSTC_TIME_FOREVER</font><br>
 <font color=#006666><i>%define</i> wxSTC_WRAP_NONE</font><br>
 <font color=#006666><i>%define</i> wxSTC_WRAP_WORD</font><br>
@@ -22798,7 +23094,7 @@
 <font color=#006666><i>%define</i> wxSTC_ERLANG_CHARACTER</font><br>
 <font color=#006666><i>%define</i> wxSTC_ERLANG_MACRO</font><br>
 <font color=#006666><i>%define</i> wxSTC_ERLANG_RECORD</font><br>
-<font color=#006666><i>%define</i> wxSTC_ERLANG_SEPARATOR</font><br>
+<font color=#006666>!<i>%wxchkver_2_9_2</i> <i>%define</i> wxSTC_ERLANG_SEPARATOR</font><br>
 <font color=#006666><i>%define</i> wxSTC_ERLANG_NODE_NAME</font><br>
 <font color=#006666><i>%define</i> wxSTC_ERLANG_UNKNOWN</font><br>
 <br>
@@ -25009,7 +25305,7 @@
 <font color=#006666><i>%define</i> wxLUA_MINOR_VERSION</font><br>
 <font color=#006666><i>%define</i> wxLUA_RELEASE_NUMBER</font><br>
 <font color=#006666><i>%define</i> wxLUA_SUBRELEASE_NUMBER</font><br>
-<font color=#006666><i>%define_string</i> wxLUA_VERSION_STRING</font><br>
+<font color=#006666><i>%define_wxstring</i> wxLUA_VERSION_STRING</font><br>
 <br>
 <font color=#AA0000><i>%function</i> bool wxLUA_CHECK_VERSION(int major, int minor, int release) <font color=#009900>// actually a define</font></font><br>
 <font color=#AA0000><i>%function</i> bool wxLUA_CHECK_VERSION_FULL(int major, int minor, int release, int subrel) <font color=#009900>// actually a define</font></font><br>
