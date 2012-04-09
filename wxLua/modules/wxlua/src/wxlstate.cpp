@@ -1996,7 +1996,7 @@ bool LUACALL wxlua_setderivedmethod(lua_State* L, void *obj_ptr, const char *met
 
     return true;
 }
-bool LUACALL wxlua_hasderivedmethod(lua_State* L, void *obj_ptr, const char *method_name, bool push_method)
+bool LUACALL wxlua_hasderivedmethod(lua_State* L, const void *obj_ptr, const char *method_name, bool push_method)
 {
     bool found = false;
     wxLuaObject* wxlObj = NULL;
@@ -3441,7 +3441,7 @@ bool wxLuaState::SetDerivedMethod(void *obj_ptr, const char *method_name, wxLuaO
     return wxlua_setderivedmethod(M_WXLSTATEDATA->m_lua_State, obj_ptr, method_name, wxlObj);
 }
 
-bool wxLuaState::HasDerivedMethod(void *obj_ptr, const char *method_name, bool push_method) const
+bool wxLuaState::HasDerivedMethod(const void *obj_ptr, const char *method_name, bool push_method) const
 {
     wxCHECK_MSG(Ok(), false, wxT("Invalid wxLuaState"));
     return wxlua_hasderivedmethod(M_WXLSTATEDATA->m_lua_State, obj_ptr, method_name, push_method);

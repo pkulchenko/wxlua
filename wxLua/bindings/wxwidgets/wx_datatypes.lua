@@ -2965,6 +2965,15 @@ wx_dataTypeTable =
     Name = "wxLuaArtProvider",
     ValueType = "class",
   },
+  wxLuaDataObjectSimple = {
+    BaseClasses = {
+      [1] = "wxDataObjectSimple",
+    },
+    Condition = "wxLUA_USE_wxDataObject && wxUSE_DATAOBJ",
+    IsNumber = false,
+    Name = "wxLuaDataObjectSimple",
+    ValueType = "class",
+  },
   wxLuaGridTableBase = {
     BaseClasses = {
       [1] = "wxGridTableBase",

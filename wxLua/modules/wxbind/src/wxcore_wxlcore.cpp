@@ -20,15 +20,111 @@
 #include "wx/datetime.h"
 
 #include "wxbind/include/wxcore_wxlcore.h"
+#include "wxbind/include/wxcore_bind.h" // for wxLua_wxObject_wxSize
+
+// ----------------------------------------------------------------------------
+// wxLuaDataObjectSimple
+// ----------------------------------------------------------------------------
+
+#if wxLUA_USE_wxDataObject && wxUSE_DATAOBJ
+
+// This lua tag is defined in bindings
+extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxLuaDataObjectSimple;
+
+wxLuaDataObjectSimple::wxLuaDataObjectSimple(const wxLuaState& wxlState,
+                                             const wxDataFormat& format)
+                      :wxDataObjectSimple(format)
+{
+    m_wxlState = wxlState;
+}
+
+size_t wxLuaDataObjectSimple::GetDataSize() const
+{
+    size_t result = 0;
+
+    if (m_wxlState.Ok() && !m_wxlState.GetCallBaseClassFunction() &&
+        m_wxlState.HasDerivedMethod(this, "GetDataSize", true))
+    {
+        int nOldTop = m_wxlState.lua_GetTop();
+        m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaDataObjectSimple, true);
+
+        if (m_wxlState.LuaPCall(1, 1) == 0)
+            result = m_wxlState.GetNumberType(-1);
+
+        m_wxlState.lua_SetTop(nOldTop);
+    }
+    else
+        result = wxDataObjectSimple::GetDataSize();
+
+    m_wxlState.SetCallBaseClassFunction(false); // clear flag always
+
+    return result;
+}
+
+bool wxLuaDataObjectSimple::GetDataHere(void* buf) const
+{
+    bool result = false;
+
+    if (m_wxlState.Ok() && !m_wxlState.GetCallBaseClassFunction() &&
+        m_wxlState.HasDerivedMethod(this, "GetDataHere", true))
+    {
+        int nOldTop = m_wxlState.lua_GetTop();
+        m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaDataObjectSimple, true);
+
+        if (m_wxlState.LuaPCall(0, 2) == 0)
+        {
+            result = m_wxlState.GetBooleanType(-2);
+
+            const void *lua_buf = m_wxlState.lua_ToString(-1);
+            size_t len = (size_t)m_wxlState.lua_StrLen(-1);
+
+            memcpy(buf, lua_buf, len);
+        }
+
+        m_wxlState.lua_SetTop(nOldTop);
+    }
+    else
+        result = wxDataObjectSimple::GetDataHere(buf);
+
+    m_wxlState.SetCallBaseClassFunction(false); // clear flag always
+
+    return result;
+}
+
+bool wxLuaDataObjectSimple::SetData(size_t len, void* buf)
+{
+    bool result = false;
+
+    if (m_wxlState.Ok() && !m_wxlState.GetCallBaseClassFunction() &&
+        m_wxlState.HasDerivedMethod(this, "SetData", true))
+    {
+        int nOldTop = m_wxlState.lua_GetTop();
+        m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaDataObjectSimple, true);
+        m_wxlState.lua_PushLString((const char*)buf, len);
+
+        if (m_wxlState.LuaPCall(2, 1) == 0)
+            result = m_wxlState.GetBooleanType(-1);
+
+        m_wxlState.lua_SetTop(nOldTop);
+    }
+    else
+        result = wxDataObjectSimple::SetData(len, buf);
+
+    m_wxlState.SetCallBaseClassFunction(false); // clear flag always
+
+    return result;
+}
+
+#endif //wxLUA_USE_wxDataObject && wxUSE_DATAOBJ
+
+// ----------------------------------------------------------------------------
+// wxLuaPrintout
+// ----------------------------------------------------------------------------
 
 #if wxLUA_USE_wxLuaPrintout
 
 // This lua tag is defined in bindings
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxLuaPrintout;
-
-// ----------------------------------------------------------------------------
-// wxLuaPrintout
-// ----------------------------------------------------------------------------
 
 int wxLuaPrintout::ms_test_int = -1;
 
@@ -272,13 +368,13 @@ wxString wxLuaPrintout::TestVirtualFunctionBinding(const wxString& val)
     return result;
 }
 
+#endif // wxLUA_USE_wxLuaPrintout
+
 // ----------------------------------------------------------------------------
-// wxLuaPrintout
+// wxLuaArtProvider
 // ----------------------------------------------------------------------------
 
 IMPLEMENT_ABSTRACT_CLASS(wxLuaArtProvider, wxArtProvider)
-
-#include "wxbind/include/wxcore_bind.h" // for wxLua_wxObject_wxSize
 
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxLuaArtProvider;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSize;
@@ -330,7 +426,7 @@ wxBitmap wxLuaArtProvider::CreateBitmap(const wxArtID& id, const wxArtClient& cl
         // allocate a new object using the copy constructor
         wxSize* s = new wxSize(size);
         // add the new object to the tracked memory list
-        m_wxlState.AddGCObject((void*)s, wxluatype_wxSize); 
+        m_wxlState.AddGCObject((void*)s, wxluatype_wxSize);
         m_wxlState.wxluaT_PushUserDataType(s, wxluatype_wxSize, true);
 
         if (m_wxlState.LuaPCall(4, 1) == 0)
@@ -347,5 +443,3 @@ wxBitmap wxLuaArtProvider::CreateBitmap(const wxArtID& id, const wxArtClient& cl
 
     return bitmap;
 }
-
-#endif // wxLUA_USE_wxLuaPrintout

@@ -143,15 +143,39 @@
 
     const wxDataFormat& GetFormat() const
     void SetFormat(const wxDataFormat& format)
+
+    // This must be overridden in wxLuaDataObjectSimple, this function returns 0.
     virtual size_t GetDataSize() const
 
-    // %override [bool, Lua string] wxDataObjectSimple::GetDataHere()
-    // C++ Func: virtual bool GetDataHere(void *buf) const
+    // This must be overridden in wxLuaDataObjectSimple, this function returns false.
     virtual bool GetDataHere() const
 
-    // %override bool wxDataObjectSimple::SetData(Lua string)
-    // C++ Func: virtual bool SetData(size_t len, const void *buf)
+    // This must be overridden in wxLuaDataObjectSimple, this function returns false.
     virtual bool SetData(const wxString& str)
+
+%endclass
+
+// ---------------------------------------------------------------------------
+// wxLuaDataObjectSimple
+
+%class %delete wxLuaDataObjectSimple, wxDataObjectSimple
+    wxLuaDataObjectSimple(const wxDataFormat& format = wxFormatInvalid)
+
+    // The functions below are all virtual functions that you MUST override in Lua
+    // for this class to work.
+
+    // Override this function to return the size of the data for GetDataHere().
+    //virtual size_t GetDataSize() const
+
+    // Create a Lua function that returns a [bool, Lua string (of exact length GetDataSize())].
+    // %override [bool, Lua string] wxLuaDataObjectSimple::GetDataHere()
+    // C++ Func: virtual bool GetDataHere(void *buf) const
+    //virtual bool GetDataHere() const
+
+    // Create a Lua function that takes a Lua string as the input data.
+    // %override bool wxLuaDataObjectSimple::SetData(Lua string)
+    // C++ Func: virtual bool SetData(size_t len, const void *buf)
+    //virtual bool SetData(const wxString& str)
 
 %endclass
 

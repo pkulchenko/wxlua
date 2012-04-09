@@ -296,6 +296,27 @@ static int LUACALL wxLua_wxDataObjectSimple_GetDataHere(lua_State *L)
 }
 %end
 
+%override wxLua_wxLuaDataObjectSimple_constructor
+//     wxLuaDataObjectSimple(const wxDataFormat& format = wxFormatInvalid)
+static int LUACALL wxLua_wxLuaDataObjectSimple_constructor(lua_State *L)
+{
+    wxLuaState wxlState(L);
+
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxDataFormat format = wxFormatInvalid
+    const wxDataFormat * format = (argCount >= 1 ? (const wxDataFormat *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataFormat) : &wxFormatInvalid);
+    // call constructor
+    wxLuaDataObjectSimple* returns = new wxLuaDataObjectSimple(wxlState, *format);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxLuaDataObjectSimple);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxLuaDataObjectSimple);
+
+    return 1;
+}
+%end
+
 %override wxLua_wxDropFilesEvent_GetFiles
 // wxString* GetFiles() const
 static int LUACALL wxLua_wxDropFilesEvent_GetFiles(lua_State *L)

@@ -27,6 +27,28 @@ class WXDLLIMPEXP_FWD_WXLUA wxLuaObject;
     typedef int wxImageResizeQuality;
 #endif
 
+// ----------------------------------------------------------------------------
+// wxLuaDataObjectSimple
+// ----------------------------------------------------------------------------
+#if wxLUA_USE_wxDataObject && wxUSE_DATAOBJ
+
+#include <wx/dataobj.h>
+
+class wxLuaDataObjectSimple : public wxDataObjectSimple
+{
+public:
+    wxLuaDataObjectSimple(const wxLuaState& wxlState,
+                          const wxDataFormat& format = wxFormatInvalid);
+
+    virtual size_t GetDataSize() const;
+    virtual bool GetDataHere(void* buf) const;
+    virtual bool SetData(size_t len, void* buf);
+
+private:
+    mutable wxLuaState m_wxlState;
+};
+
+#endif // wxLUA_USE_wxDataObject && wxUSE_DATAOBJ
 
 // ----------------------------------------------------------------------------
 // wxLuaPrintout

@@ -562,7 +562,7 @@ WXDLLIMPEXP_WXLUA bool LUACALL wxlua_setderivedmethod(lua_State* L, void *obj_pt
 // Is there a derived method for the given obj_ptr with the method_name that was
 //   added by calling wxlua_setderivedmethod()?
 // If push_method then push the method onto the stack.
-WXDLLIMPEXP_WXLUA bool LUACALL wxlua_hasderivedmethod(lua_State* L, void *obj_ptr, const char *method_name, bool push_method);
+WXDLLIMPEXP_WXLUA bool LUACALL wxlua_hasderivedmethod(lua_State* L, const void *obj_ptr, const char *method_name, bool push_method);
 // Remove any derived functions or values for the obj_ptr that have been added with
 //   wxlua_setderivedmethod().
 // This is called when an object is being garbage collected by wxluaO_deletegcobject()
@@ -674,7 +674,7 @@ enum wxLuaState_Type
                              //   called before setting it to the wxLuaState.
 
     // The values below are to be ored with wxLUASTATE_GETSTATE only.
-    wxLUASTATE_ROOTSTATE    = 0x10, // Get the root lua_State, the owner of a 
+    wxLUASTATE_ROOTSTATE    = 0x10, // Get the root lua_State, the owner of a
                                     //   coroutine state, uses given lua_State
                                     //   if not coroutine.
 
@@ -1049,7 +1049,7 @@ public:
     // See wxlua_setderivedmethod
     bool SetDerivedMethod(void *obj_ptr, const char *method_name, wxLuaObject* wxlObj);
     // See wxlua_hasderivedmethod().
-    bool HasDerivedMethod(void *obj_ptr, const char *method_name, bool push_method) const;
+    bool HasDerivedMethod(const void *obj_ptr, const char *method_name, bool push_method) const;
     // See wxlua_removederivedmethods()
     bool RemoveDerivedMethods(void *obj_ptr) const;
     // Find a derived method given an object and and a method name.

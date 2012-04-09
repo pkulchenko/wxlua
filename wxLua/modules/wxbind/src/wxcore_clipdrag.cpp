@@ -944,6 +944,63 @@ int wxDataObjectSimple_methodCount = sizeof(wxDataObjectSimple_methods)/sizeof(w
 
 #if wxLUA_USE_wxDataObject && wxUSE_DATAOBJ
 // ---------------------------------------------------------------------------
+// Bind class wxLuaDataObjectSimple
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxLuaDataObjectSimple'
+int wxluatype_wxLuaDataObjectSimple = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDataObjectSimple_delete[] = { &wxluatype_wxLuaDataObjectSimple, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDataObjectSimple_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxLuaDataObjectSimple_delete }};
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDataObjectSimple_constructor[] = { &wxluatype_wxDataFormat, NULL };
+static int LUACALL wxLua_wxLuaDataObjectSimple_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDataObjectSimple_constructor[1] = {{ wxLua_wxLuaDataObjectSimple_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 1, s_wxluatypeArray_wxLua_wxLuaDataObjectSimple_constructor }};
+// %override wxLua_wxLuaDataObjectSimple_constructor
+//     wxLuaDataObjectSimple(const wxDataFormat& format = wxFormatInvalid)
+static int LUACALL wxLua_wxLuaDataObjectSimple_constructor(lua_State *L)
+{
+    wxLuaState wxlState(L);
+
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxDataFormat format = wxFormatInvalid
+    const wxDataFormat * format = (argCount >= 1 ? (const wxDataFormat *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataFormat) : &wxFormatInvalid);
+    // call constructor
+    wxLuaDataObjectSimple* returns = new wxLuaDataObjectSimple(wxlState, *format);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxLuaDataObjectSimple);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxLuaDataObjectSimple);
+
+    return 1;
+}
+
+
+
+
+
+void wxLua_wxLuaDataObjectSimple_delete_function(void** p)
+{
+    wxLuaDataObjectSimple* o = (wxLuaDataObjectSimple*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxLuaDataObjectSimple_methods[] = {
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxLuaDataObjectSimple_delete, 1, NULL },
+    { "wxLuaDataObjectSimple", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxLuaDataObjectSimple_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxLuaDataObjectSimple_methodCount = sizeof(wxLuaDataObjectSimple_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxDataObject && wxUSE_DATAOBJ
+
+
+#if wxLUA_USE_wxDataObject && wxUSE_DATAOBJ
+// ---------------------------------------------------------------------------
 // Bind class wxDataObjectComposite
 // ---------------------------------------------------------------------------
 

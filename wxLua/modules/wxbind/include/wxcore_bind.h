@@ -889,6 +889,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxDataObjectComposite;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxDataObjectSimple;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFileDataObject;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxLuaDataObjectSimple;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTextDataObject;
 #endif // wxLUA_USE_wxDataObject && wxUSE_DATAOBJ
 
