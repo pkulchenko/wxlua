@@ -33,6 +33,9 @@ for k, v in pairs(wx) do
     end
 end
 
+table.sort(artClients)
+table.sort(artIds)
+
 local char_width         = nil -- cache value
 local char_height        = nil
 local colLefts           = nil
