@@ -502,7 +502,7 @@ elseif (APPLE)
     set(LUA_LINK_LIBRARIES m readline)
 
     #$(MAKE) all MYCFLAGS="-DLUA_USE_LINUX" MYLIBS="-lreadline"
-else () # UNIX 
+else () # UNIX
     set( LUA_BUILD_AS_DLL )
     add_definitions( -DLUA_USE_LINUX )
 
@@ -632,7 +632,7 @@ ADD_LIBRARY_FULL( LuaLibShared SHARED
         src/loadlib.c
         src/linit.c
     LINK_LIBRARIES
-    PROPERTIES DEFINE_SYMBOL LUA_BUILD_AS_DLL
+    ${LUA_BUILD_AS_DLL}
     PROPERTIES FOLDER "wxLua/Modules")
 
 ADD_EXECUTABLE_FULL( lua_shared

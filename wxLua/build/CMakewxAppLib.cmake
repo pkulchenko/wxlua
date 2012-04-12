@@ -312,7 +312,7 @@ elseif (UNIX) # elseif (CMAKE_BUILD_TOOL MATCHES "(gmake)")
     # -----------------------------------------------------------------------
     if (IS_64_BIT)
         add_definitions( -fPIC )
-        set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fPIC)
+        #set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fPIC)
     endif()
 endif()
 
@@ -568,7 +568,7 @@ function( DETERMINE_WXWIDGETS_VERSION )
         execute_process(COMMAND ${wxWidgets_CONFIG_EXECUTABLE} --version OUTPUT_VARIABLE wxWidgets_VERSION)
         # remove spaces and linefeed
         string(STRIP "${wxWidgets_VERSION}" wxWidgets_VERSION)
-        
+
         # Match major.minor.revision
         string(REGEX MATCH "^([0-9]+)\\."   wxWidgets_MAJOR_VERSION  ${wxWidgets_VERSION})
         string(REGEX MATCH "\\.([0-9]+)\\." wxWidgets_MINOR_VERSION  ${wxWidgets_VERSION})
@@ -674,7 +674,7 @@ function( PARSE_WXWIDGETS_LIB_NAMES )
 
     # wxWidgets OSX Carbon build using configure
     if ("${wxWidgets_PORTNAME}" STREQUAL "")
-        # libwx_macud-2.8.dylib 
+        # libwx_macud-2.8.dylib
         string(REGEX MATCH "wx_(mac)(univ)?(u)?(d)?-([0-9].[0-9])" _match_mac "${wxWidgets_LIBRARIES}")
         if (NOT "${_match_mac}" STREQUAL "")
             set(wxWidgets_PORTNAME    "${CMAKE_MATCH_1}" )
@@ -683,7 +683,7 @@ function( PARSE_WXWIDGETS_LIB_NAMES )
             set(wxWidgets_DEBUGFLAG   "${CMAKE_MATCH_4}" )
             #set(wxWidgets_LIB_VERSION "${CMAKE_MATCH_5}" )
         endif()
-    endif()       
+    endif()
 
     if ("${wxWidgets_PORTNAME}" STREQUAL "")
         message(WARNING "WARNING: Unable to find wxWidgets_PORTNAME/UNIVNAME/UNICODEFLAG/DEBUGFLAG from lib names! You may have to add code to CMake to help it parse your wxWidgets lib names.")

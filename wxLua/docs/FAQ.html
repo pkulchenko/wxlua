@@ -76,6 +76,13 @@
           Lua console?</A></LI>
         </OL>
       </LI>
+      <LI>
+        <A href="FAQ.html#C5">5 - Building wxLua</A>
+
+        <OL>
+          <LI><A href="FAQ.html#C5.1">5.1 - Why are there so many warnings?</A></LI>
+        </OL>
+      </LI>
     </OL>
   </DIV>
 
@@ -329,5 +336,19 @@
     and control is either returned to the Lua console or, if run without the
     console, the whole program exits.</LI>
   </UL>
+
+  <H2><A name="C5" id="C5"></A>5 - Building wxLua</H2>
+
+  <H3><A name="C5.1" id="C5.1"></A>5.1 - Why are there so many warnings?</H3>
+
+  <UL>
+    <LI>wxLua was initially written before 2000 for wxWindows (now wxWidgets) 2.2</LI>
+    <LI>As wxWidgets changes so too must wxLua and wxWidgets marks functions
+    no longer used as deprecated in one release and removes them in the next release.</LI>
+    <LI>This means that for wxLua to support wxWidgets 2.8, we use deprecated
+    functions from 2.6, for 2.9 we use deprecated functions from 2.8...</LI>
+    <LI>So, to some extent, having these warnings is intentional, though unfortunate.</LI>
+  </UL>
+
 </BODY>
 </HTML>
