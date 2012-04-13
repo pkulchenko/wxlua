@@ -42,7 +42,7 @@ public:
 
     virtual size_t GetDataSize() const;
     virtual bool GetDataHere(void* buf) const;
-    virtual bool SetData(size_t len, void* buf);
+    virtual bool SetData(size_t len, const void* buf);
 
 private:
     mutable wxLuaState m_wxlState;

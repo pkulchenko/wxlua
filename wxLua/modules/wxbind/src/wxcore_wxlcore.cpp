@@ -91,7 +91,7 @@ bool wxLuaDataObjectSimple::GetDataHere(void* buf) const
     return result;
 }
 
-bool wxLuaDataObjectSimple::SetData(size_t len, void* buf)
+bool wxLuaDataObjectSimple::SetData(size_t len, const void* buf)
 {
     bool result = false;
 
