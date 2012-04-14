@@ -5031,7 +5031,7 @@ static int LUACALL wxLua_wxInputStream_Read1(lua_State *L)
     // get this
     wxInputStream * self = (wxInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxInputStream);
     // call Read
-    wxInputStream* returns = &self->Read(*stream_in);
+    wxInputStream* returns = (wxInputStream*)&self->Read(*stream_in);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxInputStream);
 
@@ -5316,7 +5316,7 @@ static int LUACALL wxLua_wxOutputStream_Write1(lua_State *L)
     // get this
     wxOutputStream * self = (wxOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxOutputStream);
     // call Write
-    wxOutputStream* returns = &self->Write(*stream_in);
+    wxOutputStream* returns = (wxOutputStream*)&self->Write(*stream_in);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxOutputStream);
 

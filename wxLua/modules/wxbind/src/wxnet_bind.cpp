@@ -2687,7 +2687,7 @@ static int LUACALL wxLua_wxURL_GetProtocol(lua_State *L)
     // get this
     wxURL * self = (wxURL *)wxluaT_getuserdatatype(L, 1, wxluatype_wxURL);
     // call GetProtocol
-    wxProtocol* returns = &self->GetProtocol();
+    wxProtocol* returns = (wxProtocol*)&self->GetProtocol();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxProtocol);
 

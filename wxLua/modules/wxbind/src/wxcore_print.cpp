@@ -553,7 +553,7 @@ static int LUACALL wxLua_wxPrinter_GetPrintDialogData(lua_State *L)
     // get this
     wxPrinter * self = (wxPrinter *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPrinter);
     // call GetPrintDialogData
-    wxPrintDialogData* returns = &self->GetPrintDialogData();
+    wxPrintDialogData* returns = (wxPrintDialogData*)&self->GetPrintDialogData();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxPrintDialogData);
 
@@ -1767,7 +1767,7 @@ static int LUACALL wxLua_wxPageSetupDialogData_GetPrintData(lua_State *L)
     // get this
     wxPageSetupDialogData * self = (wxPageSetupDialogData *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPageSetupDialogData);
     // call GetPrintData
-    wxPrintData* returns = &self->GetPrintData();
+    wxPrintData* returns = (wxPrintData*)&self->GetPrintData();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxPrintData);
 
@@ -2109,7 +2109,7 @@ static int LUACALL wxLua_wxPageSetupDialog_GetPageSetupDialogData(lua_State *L)
     // get this
     wxPageSetupDialog * self = (wxPageSetupDialog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPageSetupDialog);
     // call GetPageSetupDialogData
-    wxPageSetupDialogData* returns = &self->GetPageSetupDialogData();
+    wxPageSetupDialogData* returns = (wxPageSetupDialogData*)&self->GetPageSetupDialogData();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxPageSetupDialogData);
 
@@ -2217,7 +2217,7 @@ static int LUACALL wxLua_wxPrintDialog_GetPrintData(lua_State *L)
     // get this
     wxPrintDialog * self = (wxPrintDialog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPrintDialog);
     // call GetPrintData
-    wxPrintData* returns = &self->GetPrintData();
+    wxPrintData* returns = (wxPrintData*)&self->GetPrintData();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxPrintData);
 
@@ -2233,7 +2233,7 @@ static int LUACALL wxLua_wxPrintDialog_GetPrintDialogData(lua_State *L)
     // get this
     wxPrintDialog * self = (wxPrintDialog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPrintDialog);
     // call GetPrintDialogData
-    wxPrintDialogData* returns = &self->GetPrintDialogData();
+    wxPrintDialogData* returns = (wxPrintDialogData*)&self->GetPrintDialogData();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxPrintDialogData);
 
@@ -2551,7 +2551,7 @@ static int LUACALL wxLua_wxPrintDialogData_GetPrintData(lua_State *L)
     // get this
     wxPrintDialogData * self = (wxPrintDialogData *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPrintDialogData);
     // call GetPrintData
-    wxPrintData* returns = &self->GetPrintData();
+    wxPrintData* returns = (wxPrintData*)&self->GetPrintData();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxPrintData);
 

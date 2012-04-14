@@ -1238,7 +1238,7 @@ static int LUACALL wxLua_wxWindow_GetChildren(lua_State *L)
     // get this
     wxWindow * self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call GetChildren
-    wxWindowList* returns = &self->GetChildren();
+    wxWindowList* returns = (wxWindowList*)&self->GetChildren();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxWindowList);
 

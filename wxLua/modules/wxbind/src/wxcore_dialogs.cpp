@@ -364,7 +364,7 @@ static int LUACALL wxLua_wxColourDialog_GetColourData(lua_State *L)
     // get this
     wxColourDialog * self = (wxColourDialog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxColourDialog);
     // call GetColourData
-    wxColourData* returns = &self->GetColourData();
+    wxColourData* returns = (wxColourData*)&self->GetColourData();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxColourData);
 
@@ -1666,7 +1666,7 @@ static int LUACALL wxLua_wxFontDialog_GetFontData(lua_State *L)
     // get this
     wxFontDialog * self = (wxFontDialog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFontDialog);
     // call GetFontData
-    wxFontData* returns = &self->GetFontData();
+    wxFontData* returns = (wxFontData*)&self->GetFontData();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxFontData);
 

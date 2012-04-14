@@ -847,7 +847,7 @@ static int LUACALL wxLua_wxDataObjectSimple_GetFormat(lua_State *L)
     // get this
     wxDataObjectSimple * self = (wxDataObjectSimple *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataObjectSimple);
     // call GetFormat
-    const wxDataFormat* returns = &self->GetFormat();
+    const wxDataFormat* returns = (const wxDataFormat*)&self->GetFormat();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDataFormat);
 

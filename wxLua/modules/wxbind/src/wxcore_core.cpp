@@ -543,7 +543,7 @@ static int LUACALL wxLua_wxTextValidator_GetExcludes(lua_State *L)
     // get this
     wxTextValidator * self = (wxTextValidator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextValidator);
     // call GetExcludes
-    wxArrayString* returns = &self->GetExcludes();
+    wxArrayString* returns = (wxArrayString*)&self->GetExcludes();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxArrayString);
 
@@ -559,7 +559,7 @@ static int LUACALL wxLua_wxTextValidator_GetIncludes(lua_State *L)
     // get this
     wxTextValidator * self = (wxTextValidator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextValidator);
     // call GetIncludes
-    wxArrayString* returns = &self->GetIncludes();
+    wxArrayString* returns = (wxArrayString*)&self->GetIncludes();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxArrayString);
 

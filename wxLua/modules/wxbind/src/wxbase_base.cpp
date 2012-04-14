@@ -230,7 +230,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_Get[1] = {{ wxLua_wxPlatf
 static int LUACALL wxLua_wxPlatformInfo_Get(lua_State *L)
 {
     // call Get
-    const wxPlatformInfo* returns = &wxPlatformInfo::Get();
+    const wxPlatformInfo* returns = (const wxPlatformInfo*)&wxPlatformInfo::Get();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxPlatformInfo);
 

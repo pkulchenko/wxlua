@@ -3138,7 +3138,7 @@ static int LUACALL wxLua_wxLongLong_Assign(lua_State *L)
     // get this
     wxLongLong * self = (wxLongLong *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLongLong);
     // call Assign
-    wxLongLong* returns = &self->Assign(d);
+    wxLongLong* returns = (wxLongLong*)&self->Assign(d);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxLongLong);
 

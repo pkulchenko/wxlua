@@ -45,7 +45,7 @@ static int LUACALL wxLua_wxSizerFlags_Align(lua_State *L)
     // get this
     wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
     // call Align
-    wxSizerFlags* returns = &self->Align(alignment);
+    wxSizerFlags* returns = (wxSizerFlags*)&self->Align(alignment);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
 
@@ -65,7 +65,7 @@ static int LUACALL wxLua_wxSizerFlags_Border1(lua_State *L)
     // get this
     wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
     // call Border
-    wxSizerFlags* returns = &self->Border(direction);
+    wxSizerFlags* returns = (wxSizerFlags*)&self->Border(direction);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
 
@@ -85,7 +85,7 @@ static int LUACALL wxLua_wxSizerFlags_Border(lua_State *L)
     // get this
     wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
     // call Border
-    wxSizerFlags* returns = &self->Border(direction, borderInPixels);
+    wxSizerFlags* returns = (wxSizerFlags*)&self->Border(direction, borderInPixels);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
 
@@ -101,7 +101,7 @@ static int LUACALL wxLua_wxSizerFlags_Bottom(lua_State *L)
     // get this
     wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
     // call Bottom
-    wxSizerFlags* returns = &self->Bottom();
+    wxSizerFlags* returns = (wxSizerFlags*)&self->Bottom();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
 
@@ -117,7 +117,7 @@ static int LUACALL wxLua_wxSizerFlags_Center(lua_State *L)
     // get this
     wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
     // call Center
-    wxSizerFlags* returns = &self->Center();
+    wxSizerFlags* returns = (wxSizerFlags*)&self->Center();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
 
@@ -133,7 +133,7 @@ static int LUACALL wxLua_wxSizerFlags_Centre(lua_State *L)
     // get this
     wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
     // call Centre
-    wxSizerFlags* returns = &self->Centre();
+    wxSizerFlags* returns = (wxSizerFlags*)&self->Centre();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
 
@@ -153,7 +153,7 @@ static int LUACALL wxLua_wxSizerFlags_DoubleBorder(lua_State *L)
     // get this
     wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
     // call DoubleBorder
-    wxSizerFlags* returns = &self->DoubleBorder(direction);
+    wxSizerFlags* returns = (wxSizerFlags*)&self->DoubleBorder(direction);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
 
@@ -169,7 +169,7 @@ static int LUACALL wxLua_wxSizerFlags_DoubleHorzBorder(lua_State *L)
     // get this
     wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
     // call DoubleHorzBorder
-    wxSizerFlags* returns = &self->DoubleHorzBorder();
+    wxSizerFlags* returns = (wxSizerFlags*)&self->DoubleHorzBorder();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
 
@@ -185,7 +185,7 @@ static int LUACALL wxLua_wxSizerFlags_Expand(lua_State *L)
     // get this
     wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
     // call Expand
-    wxSizerFlags* returns = &self->Expand();
+    wxSizerFlags* returns = (wxSizerFlags*)&self->Expand();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
 
@@ -201,7 +201,7 @@ static int LUACALL wxLua_wxSizerFlags_FixedMinSize(lua_State *L)
     // get this
     wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
     // call FixedMinSize
-    wxSizerFlags* returns = &self->FixedMinSize();
+    wxSizerFlags* returns = (wxSizerFlags*)&self->FixedMinSize();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
 
@@ -278,7 +278,7 @@ static int LUACALL wxLua_wxSizerFlags_HorzBorder(lua_State *L)
     // get this
     wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
     // call HorzBorder
-    wxSizerFlags* returns = &self->HorzBorder();
+    wxSizerFlags* returns = (wxSizerFlags*)&self->HorzBorder();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
 
@@ -294,7 +294,7 @@ static int LUACALL wxLua_wxSizerFlags_Left(lua_State *L)
     // get this
     wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
     // call Left
-    wxSizerFlags* returns = &self->Left();
+    wxSizerFlags* returns = (wxSizerFlags*)&self->Left();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
 
@@ -312,7 +312,7 @@ static int LUACALL wxLua_wxSizerFlags_Proportion(lua_State *L)
     // get this
     wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
     // call Proportion
-    wxSizerFlags* returns = &self->Proportion(proportion);
+    wxSizerFlags* returns = (wxSizerFlags*)&self->Proportion(proportion);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
 
@@ -328,7 +328,7 @@ static int LUACALL wxLua_wxSizerFlags_Right(lua_State *L)
     // get this
     wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
     // call Right
-    wxSizerFlags* returns = &self->Right();
+    wxSizerFlags* returns = (wxSizerFlags*)&self->Right();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
 
@@ -344,7 +344,7 @@ static int LUACALL wxLua_wxSizerFlags_Shaped(lua_State *L)
     // get this
     wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
     // call Shaped
-    wxSizerFlags* returns = &self->Shaped();
+    wxSizerFlags* returns = (wxSizerFlags*)&self->Shaped();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
 
@@ -360,7 +360,7 @@ static int LUACALL wxLua_wxSizerFlags_Top(lua_State *L)
     // get this
     wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
     // call Top
-    wxSizerFlags* returns = &self->Top();
+    wxSizerFlags* returns = (wxSizerFlags*)&self->Top();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
 
@@ -380,7 +380,7 @@ static int LUACALL wxLua_wxSizerFlags_TripleBorder(lua_State *L)
     // get this
     wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
     // call TripleBorder
-    wxSizerFlags* returns = &self->TripleBorder(direction);
+    wxSizerFlags* returns = (wxSizerFlags*)&self->TripleBorder(direction);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
 

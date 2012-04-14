@@ -2816,7 +2816,7 @@ static int LUACALL wxLua_wxHtmlWinParser_GetLink(lua_State *L)
     // get this
     wxHtmlWinParser * self = (wxHtmlWinParser *)wxluaT_getuserdatatype(L, 1, wxluatype_wxHtmlWinParser);
     // call GetLink
-    const wxHtmlLinkInfo* returns = &self->GetLink();
+    const wxHtmlLinkInfo* returns = (const wxHtmlLinkInfo*)&self->GetLink();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxHtmlLinkInfo);
 

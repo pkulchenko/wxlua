@@ -48,7 +48,7 @@ set(wxLuaBind_ALL_COMPONENTS gl stc xrc richtext html media aui adv core xml net
 if (NOT wxLuaBind_COMPONENTS)
     set(wxLuaBind_COMPONENTS ${wxLuaBind_ALL_COMPONENTS})
 endif()
-set(wxLuaBind_COMPONENTS ${wxLuaBind_COMPONENTS} CACHE STRING "wxWidgets libs wxLua should add bindings for, the variable wxWidgets_COMPONENTS must contain all of these.")
+set(wxLuaBind_COMPONENTS ${wxLuaBind_COMPONENTS} CACHE STRING "wxWidgets libs wxLua should add bindings for, the variable wxWidgets_COMPONENTS must contain all of these." FORCE)
 
 # We will create a list of the source files needed to compile
 set(wxLuaBindLib_SOURCES)
@@ -56,7 +56,7 @@ set(wxLuaBindLib_SOURCES)
 set(wxLua_CXX_DEFINITIONS)
 
 # verify that each library exists from finding wxWidgets in the wxWidgets_COMPONENTS
-foreach( wxlua_comp ${wxLuaBind_ALL_COMPONENTS} )
+foreach( wxlua_comp ${wxLuaBind_COMPONENTS} )
     string(TOUPPER ${wxlua_comp} wxlua_comp_upper)
 
     # find specified wxlua binding libs
@@ -69,15 +69,14 @@ foreach( wxlua_comp ${wxLuaBind_ALL_COMPONENTS} )
         string(REGEX MATCH "mono" wx_comp_found "${wxWidgets_COMPONENTS}")
     endif()
 
-
     if (("${wxlua_comp}" STREQUAL "${wxlua_comp_found}") AND wx_comp_found) # ("${wxlua_comp}" STREQUAL "${wx_comp_found}"))
         set(WXLUA_BINDTO_${wxlua_comp} TRUE CACHE INTERNAL "")
         set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} "-DwxLUA_USEBINDING_WX${wxlua_comp_upper}=1")
         set(wxLuaBindLib_SOURCES ${wxLuaBindLib_SOURCES} "src/wx${wxlua_comp}_*.cpp")
     else()
-        if (("${wxlua_comp}" STREQUAL "${wxlua_comp_found}") AND (NOT "${wxlua_comp}" STREQUAL "${wx_comp_found}"))
+        #if (("${wxlua_comp}" STREQUAL "${wxlua_comp_found}") AND (NOT "${wxlua_comp}" STREQUAL "${wx_comp_found}"))
             message(STATUS "* WARNING: Specified wxLuaBinding lib '${wxlua_comp}' in variable wxLuaBind_COMPONENTS is missing from wxWidgets_COMPONENTS so it will not be compiled.")
-        endif()
+        #endif()
 
         set(WXLUA_BINDTO_${wxlua_comp} FALSE CACHE INTERNAL "")
         set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} "-DwxLUA_USEBINDING_WX${wxlua_comp_upper}=0")

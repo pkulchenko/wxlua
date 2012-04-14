@@ -5621,7 +5621,7 @@ static int LUACALL wxLua_wxListEvent_GetItem(lua_State *L)
     // get this
     wxListEvent * self = (wxListEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListEvent);
     // call GetItem
-    const wxListItem* returns = &self->GetItem();
+    const wxListItem* returns = (const wxListItem*)&self->GetItem();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxListItem);
 
@@ -8167,7 +8167,7 @@ static int LUACALL wxLua_wxTextCtrl_GetDefaultStyle(lua_State *L)
     // get this
     wxTextCtrl * self = (wxTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextCtrl);
     // call GetDefaultStyle
-    const wxTextAttr* returns = &self->GetDefaultStyle();
+    const wxTextAttr* returns = (const wxTextAttr*)&self->GetDefaultStyle();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxTextAttr);
 
@@ -9103,7 +9103,7 @@ static int LUACALL wxLua_wxTextAttr_GetTabs(lua_State *L)
     // get this
     wxTextAttr * self = (wxTextAttr *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextAttr);
     // call GetTabs
-    const wxArrayInt* returns = &self->GetTabs();
+    const wxArrayInt* returns = (const wxArrayInt*)&self->GetTabs();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxArrayInt);
 
@@ -9561,7 +9561,7 @@ static int LUACALL wxLua_wxTextUrlEvent_GetMouseEvent(lua_State *L)
     // get this
     wxTextUrlEvent * self = (wxTextUrlEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextUrlEvent);
     // call GetMouseEvent
-    const wxMouseEvent* returns = &self->GetMouseEvent();
+    const wxMouseEvent* returns = (const wxMouseEvent*)&self->GetMouseEvent();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxMouseEvent);
 

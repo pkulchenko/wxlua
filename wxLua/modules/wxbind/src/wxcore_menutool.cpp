@@ -408,7 +408,7 @@ static int LUACALL wxLua_wxMenu_GetMenuItems(lua_State *L)
     // get this
     wxMenu * self = (wxMenu *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenu);
     // call GetMenuItems
-    wxMenuItemList* returns = &self->GetMenuItems();
+    wxMenuItemList* returns = (wxMenuItemList*)&self->GetMenuItems();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxMenuItemList);
 

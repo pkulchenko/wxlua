@@ -46,7 +46,7 @@ static int LUACALL wxLua_wxDateTime_Add1(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call Add
-    wxDateTime* returns = &self->Add(*diff);
+    wxDateTime* returns = (wxDateTime*)&self->Add(*diff);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -67,7 +67,7 @@ static int LUACALL wxLua_wxDateTime_Add(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call Add
-    wxDateTime* returns = &self->Add(*diff);
+    wxDateTime* returns = (wxDateTime*)&self->Add(*diff);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -675,7 +675,7 @@ static int LUACALL wxLua_wxDateTime_MakeGMT(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call MakeGMT
-    wxDateTime* returns = &self->MakeGMT(noDST);
+    wxDateTime* returns = (wxDateTime*)&self->MakeGMT(noDST);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -983,7 +983,7 @@ static int LUACALL wxLua_wxDateTime_ResetTime(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call ResetTime
-    wxDateTime* returns = &self->ResetTime();
+    wxDateTime* returns = (wxDateTime*)&self->ResetTime();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1001,7 +1001,7 @@ static int LUACALL wxLua_wxDateTime_Set(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call Set
-    wxDateTime* returns = &self->Set(time);
+    wxDateTime* returns = (wxDateTime*)&self->Set(time);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1033,7 +1033,7 @@ static int LUACALL wxLua_wxDateTime_SetDay(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call SetDay
-    wxDateTime* returns = &self->SetDay(day);
+    wxDateTime* returns = (wxDateTime*)&self->SetDay(day);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1051,7 +1051,7 @@ static int LUACALL wxLua_wxDateTime_SetHour(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call SetHour
-    wxDateTime* returns = &self->SetHour(hour);
+    wxDateTime* returns = (wxDateTime*)&self->SetHour(hour);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1069,7 +1069,7 @@ static int LUACALL wxLua_wxDateTime_SetMillisecond(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call SetMillisecond
-    wxDateTime* returns = &self->SetMillisecond(millisecond);
+    wxDateTime* returns = (wxDateTime*)&self->SetMillisecond(millisecond);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1087,7 +1087,7 @@ static int LUACALL wxLua_wxDateTime_SetMinute(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call SetMinute
-    wxDateTime* returns = &self->SetMinute(minute);
+    wxDateTime* returns = (wxDateTime*)&self->SetMinute(minute);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1105,7 +1105,7 @@ static int LUACALL wxLua_wxDateTime_SetMonth(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call SetMonth
-    wxDateTime* returns = &self->SetMonth(month);
+    wxDateTime* returns = (wxDateTime*)&self->SetMonth(month);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1123,7 +1123,7 @@ static int LUACALL wxLua_wxDateTime_SetSecond(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call SetSecond
-    wxDateTime* returns = &self->SetSecond(second);
+    wxDateTime* returns = (wxDateTime*)&self->SetSecond(second);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1139,7 +1139,7 @@ static int LUACALL wxLua_wxDateTime_SetToCurrent(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call SetToCurrent
-    wxDateTime* returns = &self->SetToCurrent();
+    wxDateTime* returns = (wxDateTime*)&self->SetToCurrent();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1171,7 +1171,7 @@ static int LUACALL wxLua_wxDateTime_SetToDMY(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call Set
-    wxDateTime* returns = &self->Set(day, month, year, hour, minute, second, millisec);
+    wxDateTime* returns = (wxDateTime*)&self->Set(day, month, year, hour, minute, second, millisec);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1195,7 +1195,7 @@ static int LUACALL wxLua_wxDateTime_SetToHMS(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call Set
-    wxDateTime* returns = &self->Set(hour, minute, second, millisec);
+    wxDateTime* returns = (wxDateTime*)&self->Set(hour, minute, second, millisec);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1213,7 +1213,7 @@ static int LUACALL wxLua_wxDateTime_SetToJDN(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call Set
-    wxDateTime* returns = &self->Set(dateTime);
+    wxDateTime* returns = (wxDateTime*)&self->Set(dateTime);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1235,7 +1235,7 @@ static int LUACALL wxLua_wxDateTime_SetToLastMonthDay(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call SetToLastMonthDay
-    wxDateTime* returns = &self->SetToLastMonthDay(month, year);
+    wxDateTime* returns = (wxDateTime*)&self->SetToLastMonthDay(month, year);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1277,7 +1277,7 @@ static int LUACALL wxLua_wxDateTime_SetToNextWeekDay(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call SetToNextWeekDay
-    wxDateTime* returns = &self->SetToNextWeekDay(weekday);
+    wxDateTime* returns = (wxDateTime*)&self->SetToNextWeekDay(weekday);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1295,7 +1295,7 @@ static int LUACALL wxLua_wxDateTime_SetToPrevWeekDay(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call SetToPrevWeekDay
-    wxDateTime* returns = &self->SetToPrevWeekDay(weekday);
+    wxDateTime* returns = (wxDateTime*)&self->SetToPrevWeekDay(weekday);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1365,7 +1365,7 @@ static int LUACALL wxLua_wxDateTime_SetToWeekDayInSameWeek(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call SetToWeekDayInSameWeek
-    wxDateTime* returns = &self->SetToWeekDayInSameWeek(weekday);
+    wxDateTime* returns = (wxDateTime*)&self->SetToWeekDayInSameWeek(weekday);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1412,7 +1412,7 @@ static int LUACALL wxLua_wxDateTime_SetToYearDay(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call SetToYearDay
-    wxDateTime* returns = &self->SetToYearDay(yday);
+    wxDateTime* returns = (wxDateTime*)&self->SetToYearDay(yday);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1430,7 +1430,7 @@ static int LUACALL wxLua_wxDateTime_SetYear(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call SetYear
-    wxDateTime* returns = &self->SetYear(year);
+    wxDateTime* returns = (wxDateTime*)&self->SetYear(year);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1450,7 +1450,7 @@ static int LUACALL wxLua_wxDateTime_Subtract1(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call Subtract
-    wxDateTime* returns = &self->Subtract(*diff);
+    wxDateTime* returns = (wxDateTime*)&self->Subtract(*diff);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -1471,7 +1471,7 @@ static int LUACALL wxLua_wxDateTime_Subtract(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call Subtract
-    wxDateTime* returns = &self->Subtract(*diff);
+    wxDateTime* returns = (wxDateTime*)&self->Subtract(*diff);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -2728,7 +2728,7 @@ static int LUACALL wxLua_wxTimeSpan_Neg(lua_State *L)
     // get this
     wxTimeSpan * self = (wxTimeSpan *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTimeSpan);
     // call Neg
-    wxTimeSpan* returns = &self->Neg();
+    wxTimeSpan* returns = (wxTimeSpan*)&self->Neg();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxTimeSpan);
 
@@ -3172,7 +3172,7 @@ static int LUACALL wxLua_wxDateSpan_Neg(lua_State *L)
     // get this
     wxDateSpan * self = (wxDateSpan *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateSpan);
     // call Neg
-    wxDateSpan* returns = &self->Neg();
+    wxDateSpan* returns = (wxDateSpan*)&self->Neg();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateSpan);
 
@@ -3209,7 +3209,7 @@ static int LUACALL wxLua_wxDateSpan_SetDays(lua_State *L)
     // get this
     wxDateSpan * self = (wxDateSpan *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateSpan);
     // call SetDays
-    wxDateSpan* returns = &self->SetDays(n);
+    wxDateSpan* returns = (wxDateSpan*)&self->SetDays(n);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateSpan);
 
@@ -3227,7 +3227,7 @@ static int LUACALL wxLua_wxDateSpan_SetMonths(lua_State *L)
     // get this
     wxDateSpan * self = (wxDateSpan *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateSpan);
     // call SetMonths
-    wxDateSpan* returns = &self->SetMonths(n);
+    wxDateSpan* returns = (wxDateSpan*)&self->SetMonths(n);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateSpan);
 
@@ -3245,7 +3245,7 @@ static int LUACALL wxLua_wxDateSpan_SetWeeks(lua_State *L)
     // get this
     wxDateSpan * self = (wxDateSpan *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateSpan);
     // call SetWeeks
-    wxDateSpan* returns = &self->SetWeeks(n);
+    wxDateSpan* returns = (wxDateSpan*)&self->SetWeeks(n);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateSpan);
 
@@ -3263,7 +3263,7 @@ static int LUACALL wxLua_wxDateSpan_SetYears(lua_State *L)
     // get this
     wxDateSpan * self = (wxDateSpan *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateSpan);
     // call SetYears
-    wxDateSpan* returns = &self->SetYears(n);
+    wxDateSpan* returns = (wxDateSpan*)&self->SetYears(n);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateSpan);
 

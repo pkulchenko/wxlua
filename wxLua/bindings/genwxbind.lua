@@ -3880,7 +3880,7 @@ function GenerateLuaLanguageBinding(interface)
                             table.insert(codeList, "    "..memberTypeWithAttrib.." returns = self;\n")
                         elseif member["%operator"] and string.find(origMemberPtr or "", "&", 1, 1) and (string.find(member["%operator"], "=", 1, 1) == nil) then
                             if string.find(memberTypeWithAttrib or "", "*", 1, 1) then
-                                table.insert(codeList, "    "..memberTypeWithAttrib.." returns = &("..functor..");\n")
+                                table.insert(codeList, "    "..memberTypeWithAttrib.." returns = ("..memberTypeWithAttrib..")&("..functor..");\n")
                             else
                                 table.insert(codeList, "    "..memberTypeWithAttrib.." returns = "..functor..";\n")
                             end
@@ -3900,7 +3900,7 @@ function GenerateLuaLanguageBinding(interface)
                             table.insert(codeList, "    wxluaO_addgcobject(L, returns, wxluatype_"..MakeVar(member_DataType.Name)..");\n")
 
                         elseif (not member["%operator"]) and (memberPtr == "&") and string.find(memberTypeWithAttrib, "*") and (memberType ~= "wxString") then
-                            table.insert(codeList, "    "..memberTypeWithAttrib.." returns = &"..functor..";\n")
+                            table.insert(codeList, "    "..memberTypeWithAttrib.." returns = ("..memberTypeWithAttrib..")&"..functor..";\n")
                         elseif (memberPtr == "*") or (memberType == "voidptr_long") then
                             table.insert(codeList, "    "..memberTypeWithAttrib.." returns = ("..memberTypeWithAttrib..")"..functor..";\n")
 

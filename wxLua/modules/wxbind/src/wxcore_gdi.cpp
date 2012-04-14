@@ -673,7 +673,7 @@ static int LUACALL wxLua_wxSize_Scale(lua_State *L)
     // get this
     wxSize * self = (wxSize *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSize);
     // call Scale
-    wxSize* returns = &self->Scale(xscale, yscale);
+    wxSize* returns = (wxSize*)&self->Scale(xscale, yscale);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
 
@@ -6759,7 +6759,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxStockGDI_instance[1] = {{ wxLua_wxStoc
 static int LUACALL wxLua_wxStockGDI_instance(lua_State *L)
 {
     // call instance
-    wxStockGDI* returns = &wxStockGDI::instance();
+    wxStockGDI* returns = (wxStockGDI*)&wxStockGDI::instance();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxStockGDI);
 
@@ -7371,7 +7371,7 @@ static int LUACALL wxLua_wxIconBundle_GetIcon1(lua_State *L)
     // get this
     wxIconBundle * self = (wxIconBundle *)wxluaT_getuserdatatype(L, 1, wxluatype_wxIconBundle);
     // call GetIcon
-    const wxIcon* returns = &self->GetIcon(size);
+    const wxIcon* returns = (const wxIcon*)&self->GetIcon(size);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxIcon);
 
@@ -7391,7 +7391,7 @@ static int LUACALL wxLua_wxIconBundle_GetIcon(lua_State *L)
     // get this
     wxIconBundle * self = (wxIconBundle *)wxluaT_getuserdatatype(L, 1, wxluatype_wxIconBundle);
     // call GetIcon
-    const wxIcon* returns = &self->GetIcon(*size);
+    const wxIcon* returns = (const wxIcon*)&self->GetIcon(*size);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxIcon);
 
@@ -9942,7 +9942,7 @@ static int LUACALL wxLua_wxDC_GetBackground(lua_State *L)
     // get this
     wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
     // call GetBackground
-    const wxBrush* returns = &self->GetBackground();
+    const wxBrush* returns = (const wxBrush*)&self->GetBackground();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxBrush);
 
@@ -9978,7 +9978,7 @@ static int LUACALL wxLua_wxDC_GetBrush(lua_State *L)
     // get this
     wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
     // call GetBrush
-    const wxBrush* returns = &self->GetBrush();
+    const wxBrush* returns = (const wxBrush*)&self->GetBrush();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxBrush);
 
@@ -10055,7 +10055,7 @@ static int LUACALL wxLua_wxDC_GetFont(lua_State *L)
     // get this
     wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
     // call GetFont
-    const wxFont* returns = &self->GetFont();
+    const wxFont* returns = (const wxFont*)&self->GetFont();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxFont);
 
@@ -10204,7 +10204,7 @@ static int LUACALL wxLua_wxDC_GetPen(lua_State *L)
     // get this
     wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
     // call GetPen
-    const wxPen* returns = &self->GetPen();
+    const wxPen* returns = (const wxPen*)&self->GetPen();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxPen);
 
@@ -10266,7 +10266,7 @@ static int LUACALL wxLua_wxDC_GetTextBackground(lua_State *L)
     // get this
     wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
     // call GetTextBackground
-    const wxColour* returns = &self->GetTextBackground();
+    const wxColour* returns = (const wxColour*)&self->GetTextBackground();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxColour);
 
@@ -10343,7 +10343,7 @@ static int LUACALL wxLua_wxDC_GetTextForeground(lua_State *L)
     // get this
     wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
     // call GetTextForeground
-    const wxColour* returns = &self->GetTextForeground();
+    const wxColour* returns = (const wxColour*)&self->GetTextForeground();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxColour);
 
@@ -12989,7 +12989,7 @@ static int LUACALL wxLua_wxArrayVideoModes_op_index(lua_State *L)
     // get this
     wxArrayVideoModes * self = (wxArrayVideoModes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxArrayVideoModes);
     // call op_index
-    wxVideoMode* returns = &((*self)[(nIndex)]);
+    wxVideoMode* returns = (wxVideoMode*)&((*self)[(nIndex)]);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxVideoMode);
 
@@ -14591,7 +14591,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxRendererNative_Get[1] = {{ wxLua_wxRen
 static int LUACALL wxLua_wxRendererNative_Get(lua_State *L)
 {
     // call Get
-    wxRendererNative* returns = &wxRendererNative::Get();
+    wxRendererNative* returns = (wxRendererNative*)&wxRendererNative::Get();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxRendererNative);
 
@@ -14604,7 +14604,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxRendererNative_GetDefault[1] = {{ wxLu
 static int LUACALL wxLua_wxRendererNative_GetDefault(lua_State *L)
 {
     // call GetDefault
-    wxRendererNative* returns = &wxRendererNative::GetDefault();
+    wxRendererNative* returns = (wxRendererNative*)&wxRendererNative::GetDefault();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxRendererNative);
 
@@ -14617,7 +14617,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxRendererNative_GetGeneric[1] = {{ wxLu
 static int LUACALL wxLua_wxRendererNative_GetGeneric(lua_State *L)
 {
     // call GetGeneric
-    wxRendererNative* returns = &wxRendererNative::GetGeneric();
+    wxRendererNative* returns = (wxRendererNative*)&wxRendererNative::GetGeneric();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxRendererNative);
 

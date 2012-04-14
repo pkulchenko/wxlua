@@ -174,7 +174,7 @@ static int LUACALL wxLua_wxAboutDialogInfo_GetDevelopers(lua_State *L)
     // get this
     wxAboutDialogInfo * self = (wxAboutDialogInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAboutDialogInfo);
     // call GetDevelopers
-    const wxArrayString* returns = &self->GetDevelopers();
+    const wxArrayString* returns = (const wxArrayString*)&self->GetDevelopers();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxArrayString);
 
@@ -3051,7 +3051,7 @@ static int LUACALL wxLua_wxDateEvent_GetDate(lua_State *L)
     // get this
     wxDateEvent * self = (wxDateEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateEvent);
     // call GetDate
-    const wxDateTime* returns = &self->GetDate();
+    const wxDateTime* returns = (const wxDateTime*)&self->GetDate();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
@@ -5107,7 +5107,7 @@ static int LUACALL wxLua_wxSplashScreenWindow_GetBitmap(lua_State *L)
     // get this
     wxSplashScreenWindow * self = (wxSplashScreenWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSplashScreenWindow);
     // call GetBitmap
-    wxBitmap* returns = &self->GetBitmap();
+    wxBitmap* returns = (wxBitmap*)&self->GetBitmap();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
 

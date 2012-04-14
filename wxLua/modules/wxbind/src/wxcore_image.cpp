@@ -438,7 +438,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxImage_GetHandlers[1] = {{ wxLua_wxImag
 static int LUACALL wxLua_wxImage_GetHandlers(lua_State *L)
 {
     // call GetHandlers
-    wxList* returns = &wxImage::GetHandlers();
+    wxList* returns = (wxList*)&wxImage::GetHandlers();
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxList);
 
@@ -1118,7 +1118,7 @@ static int LUACALL wxLua_wxImage_Rescale1(lua_State *L)
     // get this
     wxImage * self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call Rescale
-    wxImage* returns = &self->Rescale(width, height, quality);
+    wxImage* returns = (wxImage*)&self->Rescale(width, height, quality);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxImage);
 
@@ -1141,7 +1141,7 @@ static int LUACALL wxLua_wxImage_Rescale(lua_State *L)
     // get this
     wxImage * self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call Rescale
-    wxImage* returns = &self->Rescale(width, height);
+    wxImage* returns = (wxImage*)&self->Rescale(width, height);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxImage);
 
@@ -1172,7 +1172,7 @@ static int LUACALL wxLua_wxImage_Resize(lua_State *L)
     // get this
     wxImage * self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call Resize
-    wxImage* returns = &self->Resize(*size, *pos, red, green, blue);
+    wxImage* returns = (wxImage*)&self->Resize(*size, *pos, red, green, blue);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxImage);
 
