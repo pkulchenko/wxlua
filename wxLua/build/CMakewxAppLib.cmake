@@ -128,15 +128,17 @@ if (NOT DEFINED BUILD_USE_SOLUTION_FOLDERS)
     set( BUILD_USE_SOLUTION_FOLDERS TRUE )
 endif()
 
-set( BUILD_USE_SOLUTION_FOLDERS ${BUILD_USE_SOLUTION_FOLDERS} CACHE BOOL "Use solution folders to group projects in MSVC Gui")
+set( BUILD_USE_SOLUTION_FOLDERS ${BUILD_USE_SOLUTION_FOLDERS} CACHE BOOL "Use solution folders to group projects in MSVC Gui" FORCE)
 set_property( GLOBAL PROPERTY USE_FOLDERS ${BUILD_USE_SOLUTION_FOLDERS} )
 
 # ---------------------------------------------------------------------------
 # Don't insist that everything needs to be built before being able to "install"
 
 if (NOT DEFINED CMAKE_SKIP_INSTALL_ALL_DEPENDENCY)
-    set(CMAKE_SKIP_INSTALL_ALL_DEPENDENCY TRUE CACHE INTERNAL "Don't require all projects to be built in order to install" FORCE)
+    set(CMAKE_SKIP_INSTALL_ALL_DEPENDENCY TRUE)
 endif()
+
+set(CMAKE_SKIP_INSTALL_ALL_DEPENDENCY ${CMAKE_SKIP_INSTALL_ALL_DEPENDENCY} CACHE BOOL "Don't require all projects to be built in order to install" FORCE)
 
 # ===========================================================================
 # Build Settings
@@ -153,7 +155,7 @@ endif()
 
 # There is some weirdness between CMake versions showing (or not) CMAKE_INSTALL_PREFIX to the user
 # Just show our own variable and hide theirs to smooth over the inconsistencies.
-set( BUILD_INSTALL_PREFIX ${BUILD_INSTALL_PREFIX} CACHE PATH "Install Directory prefix for INSTALL target" FORCE)
+set( BUILD_INSTALL_PREFIX ${BUILD_INSTALL_PREFIX} CACHE PATH     "Install Directory prefix for INSTALL target" FORCE)
 set( CMAKE_INSTALL_PREFIX ${BUILD_INSTALL_PREFIX} CACHE INTERNAL "Install Directory prefix for INSTALL target" FORCE)
 
 # ---------------------------------------------------------------------------
@@ -161,12 +163,14 @@ set( CMAKE_INSTALL_PREFIX ${BUILD_INSTALL_PREFIX} CACHE INTERNAL "Install Direct
 # ---------------------------------------------------------------------------
 
 if ((CMAKE_SIZEOF_VOID_P MATCHES 4) OR (CMAKE_CL_64 MATCHES 0))
-    set(IS_32_BIT TRUE)
-    set(IS_64_BIT FALSE)
+    set(IS_32_BIT TRUE  CACHE INTERNAL "")
+    set(IS_64_BIT FALSE CACHE INTERNAL "")
 elseif((CMAKE_SIZEOF_VOID_P MATCHES 8) OR (CMAKE_CL_64 MATCHES 1))
-    set(IS_32_BIT FALSE)
-    set(IS_64_BIT TRUE)
-else()
+    set(IS_32_BIT FALSE CACHE INTERNAL "")
+    set(IS_64_BIT TRUE  CACHE INTERNAL "")
+elseif(NOT DEFINED IS_32_BIT)
+    # Sometimes CMake doesn't set CMAKE_SIZEOF_VOID_P, so we remember the last good value.
+    # http://www.cmake.org/pipermail/cmake/2011-January/042058.html
     MESSAGE(WARNING "Oops, unable to determine if using 32 or 64 bit compilation.")
 endif()
 
@@ -176,18 +180,38 @@ endif()
 # Possible options are "Debug, Release, RelWithDebInfo and MinSizeRel"
 # ---------------------------------------------------------------------------
 
-if (NOT CMAKE_BUILD_TYPE)
-    if (NOT MSVC)
-        # This is used only for the Makefile generator.
-        # In MSVC you can choose the build type in the IDE.
-        set (CMAKE_BUILD_TYPE "Debug" CACHE string "Set build type, options are Debug, Release, RelWithDebInfo, and MinSizeRel" FORCE)
-    endif()
+IF (DEFINED CMAKE_BUILD_TYPE)
+    if(NOT CMAKE_BUILD_TYPE)
+         MESSAGE(STATUS "* No build type was specified, using default 'Debug'")
+         SET (CMAKE_BUILD_TYPE "Debug")
+    ENDIF()
+ELSE()
+    MESSAGE(STATUS "* No build type was specified, using default 'Debug'")
+    SET (CMAKE_BUILD_TYPE "Debug")
+ENDIF()
+
+# Sanity check - we don't handle any other build types
+SET( CMAKE_BUILD_TYPES "Debug;Release;RelWithDebInfo;MinSizeRel" )
+LIST(FIND CMAKE_BUILD_TYPES ${CMAKE_BUILD_TYPE} CMAKE_BUILD_TYPE_valid)
+if ("${CMAKE_BUILD_TYPE_valid}" EQUAL "-1")
+    MESSAGE(FATAL_ERROR "Build type can ONLY be one of '${CMAKE_BUILD_TYPES}', but is set to '${CMAKE_BUILD_TYPE}'")
+endif()
+
+if (NOT MSVC)
+    # This is used only for the Makefile generator.
+    # In MSVC you can choose the build type in the IDE.
+    SET(CMAKE_BUILD_TYPE "${CMAKE_BUILD_TYPE}" CACHE STRING "Set build type, options are one of ${CMAKE_BUILD_TYPES}" FORCE)
 endif ()
 
-if (DEFINED CMAKE_BUILD_TYPE)
-    # Useful, since I cannot find a case-insensitive string comparison function
-    string(TOUPPER ${CMAKE_BUILD_TYPE} CMAKE_BUILD_TYPE_UPPERCASE)
-endif()
+# Useful, since I cannot find a case-insensitive string comparison function
+string(TOUPPER ${CMAKE_BUILD_TYPE} CMAKE_BUILD_TYPE_UPPERCASE)
+
+# We can use this later for the default MSVC library output directories, Debug and Release
+IF ("${CMAKE_BUILD_TYPE_UPPERCASE}" STREQUAL "DEBUG")
+    SET( CMAKE_BUILD_TYPE_CAPTIALIZED "Debug" )
+ELSE() # All other build types are variants of release
+    SET( CMAKE_BUILD_TYPE_CAPTIALIZED "Release" )
+ENDIF()
 
 # ---------------------------------------------------------------------------
 # Set the default for CMake's add_library(target [STATIC/SHARED]) directive
@@ -202,9 +226,9 @@ endif()
 
 if( "${BUILD_SHARED_LIBS}" STREQUAL "" )
     if (WIN32)
-        set(BUILD_SHARED_LIBS FALSE CACHE BOOL "Build shared libraries (TRUE) or static libraries (FALSE)" FORCE)
+        set(BUILD_SHARED_LIBS FALSE)
     else()
-        set(BUILD_SHARED_LIBS TRUE  CACHE BOOL "Build shared libraries (TRUE) or static libraries (FALSE)" FORCE)
+        set(BUILD_SHARED_LIBS TRUE)
     endif()
 endif()
 
@@ -264,7 +288,10 @@ set( CMAKE_VERBOSE_MAKEFILE ${BUILD_VERBOSELY} CACHE BOOL "Verbose build output 
 # Compiler specific settings
 # ---------------------------------------------------------------------------
 
-set(BUILD_WARNINGS_HIGH FALSE CACHE BOOL "Build with a higher level of warnings than normal")
+if (NOT DEFINED BUILD_WARNINGS_HIGH)
+    SET(BUILD_WARNINGS_HIGH FALSE)
+endif()
+SET(BUILD_WARNINGS_HIGH ${BUILD_WARNINGS_HIGH} CACHE BOOL "Build with a higher level of warnings than normal" FORCE)
 
 if (MSVC) # if (CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")
 
@@ -307,7 +334,7 @@ elseif (UNIX) # elseif (CMAKE_BUILD_TOOL MATCHES "(gmake)")
     if (NOT DEFINED CMAKE_COLOR_MAKEFILE)
         set(CMAKE_COLOR_MAKEFILE TRUE)
     endif()
-    set( CMAKE_COLOR_MAKEFILE ${CMAKE_COLOR_MAKEFILE} CACHE BOOL "Colorize the makefile output.")
+    set( CMAKE_COLOR_MAKEFILE ${CMAKE_COLOR_MAKEFILE} CACHE BOOL "Colorize the makefile output." FORCE)
 
     # -----------------------------------------------------------------------
     if (IS_64_BIT)

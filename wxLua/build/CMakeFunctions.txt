@@ -206,7 +206,6 @@ UNSET(ADD_CPPCHECK_TEST_LIST CACHE)
 UNSET(ADD_CPPCHECK_TEST_DIR_LIST CACHE)
 UNSET(ADD_CPPCHECK_TEST_DIR_NAME_LIST CACHE)
 
-
 # ---------------------------------------------------------------------------
 # PRINT_TARGET() - Print all the information about the target.
 # ---------------------------------------------------------------------------
@@ -453,39 +452,52 @@ SET_TARGET_PROPERTIES(wxSheetLib PROPERTIES
 ENDFUNCTION()
 
 # ---------------------------------------------------------------------------
-# PRINT_ADD_SUBDIRECTORY() - Print all the ADD_SUBDIRECTORY() projects to the console.
+# PRINT_ADD_SUBDIRECTORY(VERBOSE) - Print the ADD_SUBDIRECTORY() projects or their count to the console.
 # ---------------------------------------------------------------------------
-FUNCTION( PRINT_ADD_SUBDIRECTORY )
-	MESSAGE( STATUS "* Subdirectories that contain projects from ADD_SUBDIRECTORY():" )
+FUNCTION( PRINT_ADD_SUBDIRECTORY VERBOSE )
+    if (VERBOSE)
+	    MESSAGE( STATUS "* Subdirectories that contain projects from ADD_SUBDIRECTORY():" )
 
-    SET(ADD_SUBDIRECTORY_LIST_SORTED ${ADD_SUBDIRECTORY_LIST})
-	LIST(SORT ADD_SUBDIRECTORY_LIST_SORTED)
-	STRING(REGEX REPLACE ";" "\n* - " ADD_SUBDIRECTORY_LIST_STR "${ADD_SUBDIRECTORY_LIST_SORTED}")
-	MESSAGE( STATUS "* - ${ADD_SUBDIRECTORY_LIST_STR}")
+        SET(ADD_SUBDIRECTORY_LIST_SORTED ${ADD_SUBDIRECTORY_LIST})
+	    LIST(SORT ADD_SUBDIRECTORY_LIST_SORTED)
+	    STRING(REGEX REPLACE ";" "\n* - " ADD_SUBDIRECTORY_LIST_STR "${ADD_SUBDIRECTORY_LIST_SORTED}")
+	    MESSAGE( STATUS "* - ${ADD_SUBDIRECTORY_LIST_STR}")
+    endif()
+
+    list(LENGTH ADD_SUBDIRECTORY_LIST ADD_SUBDIRECTORY_LIST_LENGTH)
+    MESSAGE( STATUS "* - Number of subdirectories: ${ADD_SUBDIRECTORY_LIST_LENGTH}")
 ENDFUNCTION()
 
 # ---------------------------------------------------------------------------
-# PRINT_ADD_LIBRARY() - Print all the ADD_LIBRARY() projects to the console.
+# PRINT_ADD_LIBRARY(VERBOSE) - Print the ADD_LIBRARY() projects or their count to the console.
 # ---------------------------------------------------------------------------
-FUNCTION( PRINT_ADD_LIBRARY )
-    MESSAGE( STATUS "* Library targets that can be built from ADD_LIBRARY():" )
+FUNCTION( PRINT_ADD_LIBRARY VERBOSE )
+    if (VERBOSE)
+        MESSAGE( STATUS "* Library targets that can be built from ADD_LIBRARY():" )
 
-    SET(ADD_LIBRARY_DIR_NAME_LIST_SORTED ${ADD_LIBRARY_DIR_NAME_LIST})
-    LIST(SORT ADD_LIBRARY_DIR_NAME_LIST_SORTED)
-    STRING(REGEX REPLACE ";" "\n* - " ADD_LIBRARY_DIR_NAME_LIST_SORTED_STR "${ADD_LIBRARY_DIR_NAME_LIST_SORTED}")
-    MESSAGE( STATUS "* - ${ADD_LIBRARY_DIR_NAME_LIST_SORTED_STR}")
+        SET(ADD_LIBRARY_DIR_NAME_LIST_SORTED ${ADD_LIBRARY_DIR_NAME_LIST})
+        LIST(SORT ADD_LIBRARY_DIR_NAME_LIST_SORTED)
+        STRING(REGEX REPLACE ";" "\n* - " ADD_LIBRARY_DIR_NAME_LIST_SORTED_STR "${ADD_LIBRARY_DIR_NAME_LIST_SORTED}")
+        MESSAGE( STATUS "* - ${ADD_LIBRARY_DIR_NAME_LIST_SORTED_STR}")
+    endif()
+    list(LENGTH ADD_LIBRARY_DIR_NAME_LIST ADD_LIBRARY_DIR_NAME_LIST_LENGTH)
+    MESSAGE( STATUS "* - Number of libraries: ${ADD_LIBRARY_DIR_NAME_LIST_LENGTH}")
 ENDFUNCTION()
 
 # ---------------------------------------------------------------------------
-# PRINT_ADD_EXECUTABLE() - Print all the ADD_EXECUTABLE() projects to the console.
+# PRINT_ADD_EXECUTABLE(VERBOSE) - Print the ADD_EXECUTABLE() projects or their count to the console.
 # ---------------------------------------------------------------------------
-FUNCTION( PRINT_ADD_EXECUTABLE )
-    MESSAGE( STATUS "* Executable targets that can be built from ADD_EXECUTABLE():" )
+FUNCTION( PRINT_ADD_EXECUTABLE VERBOSE )
+    if (VERBOSE)
+        MESSAGE( STATUS "* Executable targets that can be built from ADD_EXECUTABLE():" )
 
-    SET(ADD_EXECUTABLE_DIR_NAME_LIST_SORTED ${ADD_EXECUTABLE_DIR_NAME_LIST})
-    LIST(SORT ADD_EXECUTABLE_DIR_NAME_LIST_SORTED)
-    STRING(REGEX REPLACE ";" "\n* - " ADD_EXECUTABLE_DIR_NAME_LIST_SORTED_STR "${ADD_EXECUTABLE_DIR_NAME_LIST_SORTED}")
-    MESSAGE( STATUS "* - ${ADD_EXECUTABLE_DIR_NAME_LIST_SORTED_STR}")
+        SET(ADD_EXECUTABLE_DIR_NAME_LIST_SORTED ${ADD_EXECUTABLE_DIR_NAME_LIST})
+        LIST(SORT ADD_EXECUTABLE_DIR_NAME_LIST_SORTED)
+        STRING(REGEX REPLACE ";" "\n* - " ADD_EXECUTABLE_DIR_NAME_LIST_SORTED_STR "${ADD_EXECUTABLE_DIR_NAME_LIST_SORTED}")
+        MESSAGE( STATUS "* - ${ADD_EXECUTABLE_DIR_NAME_LIST_SORTED_STR}")
+    endif()
+    list(LENGTH ADD_EXECUTABLE_DIR_NAME_LIST ADD_EXECUTABLE_DIR_NAME_LIST_LENGTH)
+    MESSAGE( STATUS "* - Number of executables: ${ADD_EXECUTABLE_DIR_NAME_LIST_LENGTH}")
 ENDFUNCTION()
 
 # ---------------------------------------------------------------------------
@@ -837,7 +849,7 @@ endfunction()
 # Make ADD_EXECUTABLE() a little easier to read by putting together the
 # necessary calls into one function.
 # Usage:
-#   ADD_EXECUTABLE_FULL( target_name [WIN32] [MACOSX_BUNDLE] [EXCLUDE_FROM_ALL] [ALLOW_MISSING_FILES]
+#   ADD_EXECUTABLE_FULL( target_name [WIN32] [MACOSX_BUNDLE] [CUDA] [EXCLUDE_FROM_ALL] [ALLOW_MISSING_FILES]
 #       HEADERS                                    # Can use wildcards like "*.h" or "" for no files
 #           "include/foo/*.h" "include/foo/*.hpp"  # or specify the file names exactly.
 #       SOURCES                                    # You must specify at least one valid source file.
@@ -864,6 +876,7 @@ function( ADD_EXECUTABLE_FULL target_name )
 
     set(_WIN32)                    # ADD_EXECUTABLE's WIN32 directive
     set(_MACOSX_BUNDLE)            # ADD_EXECUTABLE's MACOSX_BUNDLE directive
+	set(_CUDA FALSE)               # Use CUDA_ADD_EXECUTABLE() not ADD_EXECUTABLE()
     set(_EXCLUDE_FROM_ALL)         # ADD_EXECUTABLE's EXCLUDE_FROM_ALL directive
     set(_ALLOW_MISSING_FILES)      # was ALLOW_MISSING_FILES directive used
     set(_HEADERS)                  # ADD_LIBRARY's list of header files
@@ -892,6 +905,8 @@ function( ADD_EXECUTABLE_FULL target_name )
             set(_WIN32               "WIN32")
         elseif ("${arg}" STREQUAL    "MACOSX_BUNDLE")
             set(_MACOSX_BUNDLE       "MACOSX_BUNDLE")
+		elseif ("${arg}" STREQUAL    "CUDA")
+			set(_CUDA                 TRUE)
         elseif ("${arg}" STREQUAL    "EXCLUDE_FROM_ALL")
             set(_EXCLUDE_FROM_ALL    "EXCLUDE_FROM_ALL")
 		elseif ("${arg}" STREQUAL    "ALLOW_MISSING_FILES")
@@ -967,7 +982,11 @@ function( ADD_EXECUTABLE_FULL target_name )
         endif()
     endif()
 
-    ADD_EXECUTABLE(${target_name} ${_WIN32} ${_MACOSX_BUNDLE} ${_EXCLUDE_FROM_ALL} ${HEADER_FILES} ${SOURCE_FILES})
+    if (_CUDA)
+        CUDA_ADD_EXECUTABLE(${target_name} ${_WIN32} ${_MACOSX_BUNDLE} ${_EXCLUDE_FROM_ALL} ${HEADER_FILES} ${SOURCE_FILES})
+    else()
+        ADD_EXECUTABLE(     ${target_name} ${_WIN32} ${_MACOSX_BUNDLE} ${_EXCLUDE_FROM_ALL} ${HEADER_FILES} ${SOURCE_FILES})
+    endif()
     TARGET_LINK_LIBRARIES(${target_name} ${_LINK_LIBRARIES})
 
     if (DEFINED _PROPERTIES)
@@ -1393,9 +1412,9 @@ function( ADD_DOXYGEN target_name doxyfile_in doxyfile_out doxygen_working_dir)
                            WORKING_DIRECTORY ${doxygen_working_dir}
                            COMMENT "Generating API documentation with Doxygen" VERBATUM )
 
-        message( STATUS "* Doxygen found, run $make ${target_name} to generate documentation in folder" )
+        message( STATUS "* Doxygen found, run $make ${target_name} to generate documentation in build folder." )
     else()
-        message( STATUS "* WARNING: Doxygen NOT found, ${target_name} target will not be generated" )
+        message( STATUS "* WARNING: Doxygen NOT found, ${target_name} target will not be generated." )
     endif (DOXYGEN_FOUND)
 
 endfunction()
