@@ -377,7 +377,7 @@ void wxLuaEditorApp::DisplayMessage(const wxString &msg, bool is_error,
 {
     // If they closed the console, but specified they wanted it
     // on the command-line, recreate it.
-    if (m_want_console && (!m_luaConsoleWrapper.Ok()))
+    if (m_want_console && (!m_luaConsoleWrapper.IsOk()))
     {
         m_luaConsoleWrapper.SetConsole(new wxLuaConsole(&m_luaConsoleWrapper, NULL, ID_WXLUA_CONSOLE));
         m_luaConsoleWrapper.GetConsole()->Show(true);
@@ -385,7 +385,7 @@ void wxLuaEditorApp::DisplayMessage(const wxString &msg, bool is_error,
 
     if (!is_error)
     {
-        if (m_luaConsoleWrapper.Ok())
+        if (m_luaConsoleWrapper.IsOk())
             m_luaConsoleWrapper.GetConsole()->AppendText(msg);
         else
         {
@@ -401,7 +401,7 @@ void wxLuaEditorApp::DisplayMessage(const wxString &msg, bool is_error,
     {
         if (m_pDebugTarget != NULL)
             m_pDebugTarget->DisplayError(msg);
-        else if (m_luaConsoleWrapper.Ok())
+        else if (m_luaConsoleWrapper.IsOk())
         {
             m_luaConsoleWrapper.GetConsole()->AppendText(msg);
             m_luaConsoleWrapper.GetConsole()->SetExitWhenClosed(is_error);

@@ -39,6 +39,10 @@ extern "C"
     #include "lualib.h"
 }
 
+#ifndef wxICON_NONE
+#define wxICON_NONE 0 // for 2.8 compat
+#endif
+
 #ifdef __WXMSW__
     void RedirectIOToDosConsole(bool alloc_new_if_needed);
 #endif // __WXMSW__
