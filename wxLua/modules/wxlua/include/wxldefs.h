@@ -31,6 +31,7 @@ extern "C"
 //-----------------------------------------------------------------------------
 // 2.9 uses char* mostly so for compatibility we need wxT() to not append 'L'
 // for wide chars for 2.8, but rather do nothing for 2.9.
+// Mainly used for wxCmdLineEntryDesc.
 
 #if wxCHECK_VERSION(2, 9, 0)
     #define wxLuaT(x) (x)

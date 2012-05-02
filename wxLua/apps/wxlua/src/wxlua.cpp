@@ -39,6 +39,10 @@ extern "C"
     #include "lualib.h"
 }
 
+#ifdef __WXMSW__
+    void RedirectIOToDosConsole(bool alloc_new_if_needed);
+#endif // __WXMSW__
+
 #define ID_WXLUA_CONSOLE 100
 
 // Declare the binding initialization functions
@@ -60,8 +64,13 @@ static const wxCmdLineEntryDesc cmdLineDesc[] =
     { wxCMD_LINE_SWITCH, wxLuaT("h"), wxLuaT("help"),   wxLuaT("Help on command line switches."),
         wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL|wxCMD_LINE_OPTION_HELP },
 
-    { wxCMD_LINE_SWITCH, wxLuaT("s"), wxLuaT("stdout"), wxLuaT("Do NOT print output to command line stdout."),
+    { wxCMD_LINE_SWITCH, wxLuaT(""),  wxLuaT("nostdout"), wxLuaT("Do not print output to command line stdout."),
         wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
+
+#ifdef __WXMSW__
+    { wxCMD_LINE_SWITCH, wxLuaT(""),  wxLuaT("dosstdout"), wxLuaT("Open a new DOS console and print output to it."),
+        wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
+#endif // __WXMSW__
 
     { wxCMD_LINE_SWITCH, wxLuaT("m"), wxLuaT("msgdlg"), wxLuaT("Print output to message dialogs."),
         wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
@@ -69,10 +78,11 @@ static const wxCmdLineEntryDesc cmdLineDesc[] =
     { wxCMD_LINE_SWITCH, wxLuaT("c"), wxLuaT("console"), wxLuaT("Print output to a message console."),
         wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
 
-    { wxCMD_LINE_SWITCH, wxLuaT("q"), wxLuaT("quit"), wxLuaT("Do not exit even if there are no top-level windows open."),
-        wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
+    // They can simply show the console that will keep the program alive
+    //{ wxCMD_LINE_SWITCH, wxLuaT(""),  wxLuaT("noquit"), wxLuaT("Do not exit even if there are no top-level windows open."),
+    //    wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
 
-    { wxCMD_LINE_OPTION, wxLuaT("e"), wxLuaT("stat"), wxLuaT("Execute a Lua string 'stat'."),
+    { wxCMD_LINE_OPTION, wxLuaT("e"), wxLuaT("execute"), wxLuaT("Execute a a quoted string as a program."),
         wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 
     { wxCMD_LINE_OPTION, wxLuaT("d"), wxLuaT("debuggee"), wxLuaT("Run as debuggee -d[host]:[port] (for internal use)"),
@@ -120,6 +130,7 @@ bool wxLuaStandaloneApp::OnInit()
 {
     m_programName       = argv[0];  // The name of this program
     m_print_stdout      = true;
+    m_dos_stdout        = false;
     m_print_msgdlg      = false;
     m_want_console      = false;
     m_wxlDebugTarget    = NULL;
@@ -181,28 +192,38 @@ bool wxLuaStandaloneApp::OnInit()
         case 0:
         {
             // Don't quit the program even if no top level windows open
-            if (parser.Found(wxT("q")))
-            {
-                arg_count++; // remove -q arg
-                dont_quit = true;
-            }
+            //if (parser.Found(wxT("noquit")))
+            //{
+            //    arg_count++; // remove arg
+            //    dont_quit = true;
+            //}
 
-            if (parser.Found(wxT("s")))
+            if (parser.Found(wxT("nostdout")))
             {
-                arg_count++; // remove -s arg
+                arg_count++; // remove arg
                 m_print_stdout = false;
             }
 
-            if (parser.Found(wxT("m")))
+#ifdef __WXMSW__
+            if (parser.Found(wxT("dosstdout")))
             {
-                arg_count++; // remove -m arg
+                arg_count++; // remove arg
+                m_dos_stdout = true;
+            }
+
+            RedirectIOToDosConsole(m_dos_stdout);
+#endif // __WXMSW__
+
+            if (parser.Found(wxT("msgdlg")))
+            {
+                arg_count++; // remove arg
                 m_print_msgdlg = true;
             }
 
             // Check if we are to display the console
-            if (parser.Found(wxT("c")))
+            if (parser.Found(wxT("console")))
             {
-                arg_count++; // remove -c arg
+                arg_count++; // remove arg
                 m_want_console = true;
                 // Note: The wxLuaConsoleWrapper::m_luaConsole will be nulled when it closes in
                 //       wxLuaConsole::OnCloseWindow.
@@ -212,9 +233,9 @@ bool wxLuaStandaloneApp::OnInit()
 
             // Check if we are to run some Lua code stat
             wxString luaCode;
-            if (parser.Found(wxT("e"), &luaCode))
+            if (parser.Found(wxT("execute"), &luaCode))
             {
-                arg_count++; // remove -e arg
+                arg_count++; // remove arg
                 int rc = m_wxlState.RunString(luaCode, wxT("=(command line)"));
                 run_ok = (rc == 0);
                 if (rc != 0)
@@ -226,7 +247,7 @@ bool wxLuaStandaloneApp::OnInit()
 
             // Set up for debugging
             wxString debugString;
-            if (parser.Found(wxT("d"), &debugString))
+            if (parser.Found(wxT("debuggee"), &debugString))
             {
                 // Note: wxLuaDebuggerServer::StartClient() runs
                 //       wxExecute(m_programName -d[host]:[port], ...)
@@ -256,15 +277,15 @@ bool wxLuaStandaloneApp::OnInit()
                         DisplayMessage(_("The wxLua debugger server port is not a number : wxLua -d[host]:[port]\n"), true);
                 }
 
-                return (m_luaConsoleWrapper.Ok()); // will exit app when console is closed
+                return (m_luaConsoleWrapper.IsOk()); // will exit app when console is closed
             }
 
 
             // See if a file has been specified to open or just start editor
             // if there are no parameters.
             wxString openFileName;
-            bool open_file = parser.Found(wxT("o"), &openFileName);
-            if (open_file) arg_count++; // remove -o arg
+            bool open_file = parser.Found(wxT("open"), &openFileName);
+            if (open_file) arg_count++; // remove arg
 
             if (open_file || (parser.GetParamCount() == 0))
             {
@@ -292,7 +313,7 @@ bool wxLuaStandaloneApp::OnInit()
             //if (parser.Found(wxT("r"), &value))
             {
                 wxString runFileName;
-                if (!parser.Found(wxT("r"), &runFileName) && (parser.GetParamCount() > 0u))
+                if (!parser.Found(wxT("run"), &runFileName) && (parser.GetParamCount() > 0u))
                     runFileName = parser.GetParam(0);
                 if (!runFileName.IsEmpty())
                     arg_count = FindFirstCmdParam(arg_count, runFileName, argc, argv);
@@ -326,7 +347,7 @@ bool wxLuaStandaloneApp::OnInit()
             run_ok = false;
     }
 
-    return m_luaConsoleWrapper.Ok() || run_ok;
+    return m_luaConsoleWrapper.IsOk() || run_ok;
 }
 
 int wxLuaStandaloneApp::OnExit()
@@ -344,7 +365,7 @@ int wxLuaStandaloneApp::OnExit()
 
     m_want_console = false; // no more messages
 
-    if (m_luaConsoleWrapper.Ok() && !m_luaConsoleWrapper.GetConsole()->IsBeingDeleted())
+    if (m_luaConsoleWrapper.IsOk() && !m_luaConsoleWrapper.GetConsole()->IsBeingDeleted())
     {
         m_luaConsoleWrapper.GetConsole()->Destroy();
         m_luaConsoleWrapper.SetConsole(NULL);
@@ -370,7 +391,7 @@ void wxLuaStandaloneApp::DisplayMessage(const wxString &msg, bool is_error,
 {
     // If they closed the console, but specified they wanted it
     // on the command-line, recreate it.
-    if (m_want_console && (!m_luaConsoleWrapper.Ok()))
+    if (m_want_console && (!m_luaConsoleWrapper.IsOk()))
     {
         m_luaConsoleWrapper.SetConsole(new wxLuaConsole(&m_luaConsoleWrapper, NULL, ID_WXLUA_CONSOLE));
         m_luaConsoleWrapper.GetConsole()->Show(true);
@@ -378,28 +399,31 @@ void wxLuaStandaloneApp::DisplayMessage(const wxString &msg, bool is_error,
 
     if (!is_error)
     {
-        //fprintf(stderr, wx2lua(msg + wxT("\n")));
-
         if (m_print_stdout)
             wxPrintf(wxT("%s\n"), msg.c_str());
 
-        if (m_luaConsoleWrapper.Ok())
-            m_luaConsoleWrapper.GetConsole()->AppendText(msg);
+        if (m_luaConsoleWrapper.IsOk())
+            m_luaConsoleWrapper.GetConsole()->AppendText(msg + wxT("\n"));
 
         if (m_print_msgdlg)
-            wxMessageBox(msg, wxT("wxLua Print"));
+        {
+            int ret = wxMessageBox(msg + wxT("\n\nPress cancel to ignore future print messages."), wxT("wxLua Print"), wxOK|wxCANCEL|wxCENTRE|wxICON_NONE);
+            if (ret == wxCANCEL)
+                m_print_msgdlg = false;
+        }
     }
     else
     {
         //if (m_print_stdout) // always print errors, FIXME: to stderr or is stdout ok?
         wxPrintf(wxT("%s\n"), msg.c_str());
 
-        if (m_luaConsoleWrapper.Ok())
+        if (m_luaConsoleWrapper.IsOk())
         {
             wxTextAttr attr(*wxRED);
             attr.SetFlags(wxTEXT_ATTR_TEXT_COLOUR);
-            m_luaConsoleWrapper.GetConsole()->AppendTextWithAttr(msg, attr);
-            m_luaConsoleWrapper.GetConsole()->SetExitWhenClosed(is_error);
+            m_luaConsoleWrapper.GetConsole()->AppendTextWithAttr(msg + wxT("\n"), attr);
+            m_luaConsoleWrapper.GetConsole()->SetExitWhenClosed(true);
+
             if (wxlState.Ok())
                 m_luaConsoleWrapper.GetConsole()->DisplayStack(wxlState);
         }
@@ -408,7 +432,11 @@ void wxLuaStandaloneApp::DisplayMessage(const wxString &msg, bool is_error,
             m_wxlDebugTarget->DisplayError(msg);
 
         if (m_print_msgdlg)
-            wxMessageBox(msg, wxT("wxLua Error"));
+        {
+            int ret = wxMessageBox(msg + wxT("\n\nPress cancel to ignore future error messages."), wxT("wxLua Print"), wxOK|wxCANCEL|wxCENTRE|wxICON_ERROR);
+            if (ret == wxCANCEL)
+                m_print_msgdlg = false;
+        }
     }
 }
 
@@ -417,3 +445,57 @@ void wxLuaStandaloneApp::OnLua( wxLuaEvent &event )
     DisplayMessage(event.GetString(), event.GetEventType() == wxEVT_LUA_ERROR,
                    event.GetwxLuaState());
 }
+
+#ifdef __WXMSW__
+
+static const WORD MAX_CONSOLE_LINES = 500;
+
+void RedirectIOToDosConsole(bool alloc_new_if_needed)
+{
+    // Code from http://dslweb.nwnexus.com/~ast/dload/guicon.htm
+    int  hConHandle = 0;
+    long lStdHandle = 0;
+    CONSOLE_SCREEN_BUFFER_INFO coninfo; memset(&coninfo, 0, sizeof(CONSOLE_SCREEN_BUFFER_INFO));
+    FILE *fp = 0; // we don't close this, let the OS close it when the app exits
+
+    // Try to attach to the parent process if it's a console, i.e. we're run from a DOS prompt.
+    BOOL attached_ok = AttachConsole( ATTACH_PARENT_PROCESS ); 
+
+    if (attached_ok == 0) // failed attaching
+    {
+        // we tried to attach, but failed don't alloc a new one
+        if (!alloc_new_if_needed)
+            return;
+
+        // Unable to attach, allocate a console for this app
+        AllocConsole();
+    }
+
+    // set the screen buffer to be big enough to let us scroll text
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &coninfo);
+    coninfo.dwSize.Y = MAX_CONSOLE_LINES;
+    SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE), coninfo.dwSize);
+    // redirect unbuffered STDOUT to the console
+    lStdHandle = (long)GetStdHandle(STD_OUTPUT_HANDLE);
+    hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
+    fp = _fdopen( hConHandle, "w" );
+    *stdout = *fp;
+    setvbuf( stdout, NULL, _IONBF, 0 );
+    // redirect unbuffered STDIN to the console
+    lStdHandle = (long)GetStdHandle(STD_INPUT_HANDLE);
+    hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
+    fp = _fdopen( hConHandle, "r" );
+    *stdin = *fp;
+    setvbuf( stdin, NULL, _IONBF, 0 );
+    // redirect unbuffered STDERR to the console
+    lStdHandle = (long)GetStdHandle(STD_ERROR_HANDLE);
+    hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
+    fp = _fdopen( hConHandle, "w" );
+    *stderr = *fp;
+    setvbuf( stderr, NULL, _IONBF, 0 );
+    // make cout, wcout, cin, wcin, wcerr, cerr, wclog and clog
+    // point to console as well
+    std::ios::sync_with_stdio();
+}
+
+#endif // __WXMSW__

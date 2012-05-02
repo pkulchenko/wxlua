@@ -224,13 +224,16 @@ PrintOk(type(g) == "function", "Type f = wx.wxImage(5,6); f.GetWidth is a functi
 PrintOk(g(f) == 5, "Calling f = wx.wxImage(5,6); g = f.GetWidth; g(f) == 5; function is callable outside of userdata.")
 
 -- Test calling a baseclass function a few levels deep
+f = wx.wxFrame(wx.NULL, wx.wxID_ANY, "Hello")
 a = wx.wxStdDialogButtonSizer(); -- base is wxBoxSizer whose base is wxSizer
+f:SetSizer(a)
 a:SetMinSize(1, 2) -- this should also work
 PrintOk(a:GetMinSize():GetWidth() == 1, "Calling wx.wxStdDialogButtonSizer[base func wxBoxSizer->wxSizer]::GetMinSize().")
 PrintOk(a:GetOrientation() == wx.wxHORIZONTAL, "Calling wx.wxStdDialogButtonSizer[base func wxBoxSizer]::GetOrientation().")
 PrintOk(a:GetCancelButton() == nil, "Calling wx.wxStdDialogButtonSizer::GetCancelButton().") -- not a great test
-b = wx.wxButton(); b:SetName("Hello"); a:SetCancelButton(b)
+b = wx.wxButton(f, wx.wxID_ANY, "Button"); b:SetName("Hello"); a:SetCancelButton(b)
 PrintOk(a:GetCancelButton():GetName() == "Hello", "Calling wx.wxStdDialogButtonSizer::GetCancelButton() after setting it with a button.")
+f:Destroy() -- frame deletes all its children, the sizer and button
 
 -- ---------------------------------------------------------------------------
 print("\nTest wxObject::DynamicCast.\n")

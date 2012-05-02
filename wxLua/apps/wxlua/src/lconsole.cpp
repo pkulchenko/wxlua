@@ -22,24 +22,26 @@
     #include "art/wxlua.xpm"
 //#endif
 
-#include "wx/splitter.h"
-#include "wx/toolbar.h"
-#include "wx/filename.h"
+#include <wx/splitter.h>
+#include <wx/toolbar.h>
+#include <wx/filename.h>
+#include <wx/numdlg.h>
+#include <wx/artprov.h>
 
 #include "wxlua/include/wxlua.h"
 #include "lconsole.h"
 
-#include "../../../art/new.xpm"
-#include "../../../art/save.xpm"
-#include "../../../art/copy.xpm"
+//#include "../../../art/new.xpm"
+//#include "../../../art/save.xpm"
+//#include "../../../art/copy.xpm"
 
 // ----------------------------------------------------------------------------
 // wxLuaConsole
 // ----------------------------------------------------------------------------
 
 BEGIN_EVENT_TABLE(wxLuaConsole, wxFrame)
-    EVT_CLOSE(wxLuaConsole::OnCloseWindow)
-    EVT_MENU(wxID_ANY, wxLuaConsole::OnMenu)
+    EVT_CLOSE (          wxLuaConsole::OnCloseWindow)
+    EVT_MENU  (wxID_ANY, wxLuaConsole::OnMenu)
 END_EVENT_TABLE()
 
 wxLuaConsole::wxLuaConsole(wxLuaConsoleWrapper* consoleWrapper,
@@ -49,16 +51,17 @@ wxLuaConsole::wxLuaConsole(wxLuaConsoleWrapper* consoleWrapper,
              :wxFrame(parent, id, title, pos, size, style, name),
               m_wrapper(consoleWrapper), m_exit_when_closed(false)
 {
-    m_max_lines = 50;
+    m_max_lines = 2000;
     m_savePath = wxGetCwd();
 
     SetIcon(wxICON(LUA));
 
     wxToolBar* tb = CreateToolBar();
 
-    tb->AddTool(wxID_NEW,    wxT("Clear window"), wxBitmap(new_xpm),  wxT("Clear console window"), wxITEM_NORMAL);
-    tb->AddTool(wxID_SAVEAS, wxT("Save output"),  wxBitmap(save_xpm), wxT("Save contents to file"), wxITEM_NORMAL);
-    tb->AddTool(wxID_COPY,   wxT("Copy text"),    wxBitmap(copy_xpm), wxT("Copy contents to clipboard"), wxITEM_NORMAL);
+    tb->AddTool(wxID_NEW,    wxT("Clear window"), wxArtProvider::GetBitmap(wxART_NEW,       wxART_TOOLBAR), wxT("Clear console window"), wxITEM_NORMAL);
+    tb->AddTool(wxID_SAVEAS, wxT("Save output"),  wxArtProvider::GetBitmap(wxART_FILE_SAVE, wxART_TOOLBAR), wxT("Save contents to file..."), wxITEM_NORMAL);
+    tb->AddTool(wxID_COPY,   wxT("Copy text"),    wxArtProvider::GetBitmap(wxART_COPY,      wxART_TOOLBAR), wxT("Copy contents to clipboard"), wxITEM_NORMAL);
+    tb->AddTool(ID_WXLUACONSOLE_SCROLLBACK_LINES, wxT("Scrollback"), wxArtProvider::GetBitmap(wxART_LIST_VIEW, wxART_TOOLBAR), wxT("Set the number of scrollback lines..."), wxITEM_NORMAL);
 
     tb->Realize();
 
@@ -67,8 +70,8 @@ wxLuaConsole::wxLuaConsole(wxLuaConsoleWrapper* consoleWrapper,
                                       wxSP_3DSASH);
     m_textCtrl = new wxTextCtrl(m_splitter, wxID_ANY, wxEmptyString,
                                 wxDefaultPosition, wxDefaultSize,
-                                wxTE_MULTILINE | wxTE_READONLY | wxTE_RICH | wxTE_DONTWRAP);
-    m_textCtrl->SetFont(wxFont(10, wxTELETYPE, wxNORMAL, wxNORMAL));
+                                wxTE_MULTILINE | wxTE_READONLY | wxTE_RICH2 | wxTE_DONTWRAP);
+    m_textCtrl->SetFont(wxFont(10, wxTELETYPE, wxNORMAL, wxNORMAL)); // monospace
 
     m_debugListBox = new wxListBox(m_splitter, wxID_ANY,
                                    wxDefaultPosition, wxDefaultSize,
@@ -126,29 +129,44 @@ void wxLuaConsole::OnMenu(wxCommandEvent& event)
             m_textCtrl->Copy();
             break;
         }
+        case ID_WXLUACONSOLE_SCROLLBACK_LINES :
+        {
+            long lines = wxGetNumberFromUser(wxT("Set the number of printed lines to remember, 0 to 10000.\nSet to 0 for infinite history."),
+                                             wxT("Lines : "),
+                                             wxT("Set Number of Scrollback Lines"),
+                                             m_max_lines, 0, 10000,
+                                             this);
+            if (lines >= 0) 
+                SetMaxLines(lines);
+
+            break;
+        }
+        default : break;
     }
 }
 
 void wxLuaConsole::AppendText(const wxString& msg)
 {
-    m_textCtrl->AppendText(msg + wxT("\n"));
-    CheckMaxLines();
+    m_textCtrl->AppendText(msg);
+    SetMaxLines(m_max_lines);
 }
 void wxLuaConsole::AppendTextWithAttr(const wxString& msg, const wxTextAttr& attr)
 {
     wxTextAttr oldAttr = m_textCtrl->GetDefaultStyle();
 
     m_textCtrl->SetDefaultStyle(attr);
-    m_textCtrl->AppendText(msg + wxT("\n"));
-
+    m_textCtrl->AppendText(msg);
     m_textCtrl->SetDefaultStyle(oldAttr);
-    CheckMaxLines();
+
+    SetMaxLines(m_max_lines);
 }
 
-bool wxLuaConsole::CheckMaxLines()
+bool wxLuaConsole::SetMaxLines(int max_lines)
 {
+    m_max_lines = max_lines;
+
     int num_lines = m_textCtrl->GetNumberOfLines();
-    if (num_lines < m_max_lines)
+    if ((m_max_lines <= 0) || (num_lines < m_max_lines))
         return false;
 
     long pos = m_textCtrl->XYToPosition(0, num_lines - m_max_lines);

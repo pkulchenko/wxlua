@@ -38,6 +38,7 @@ public:
     wxLuaState          m_wxlState;
     wxLuaConsoleWrapper m_luaConsoleWrapper;
     bool                m_print_stdout;
+    bool                m_dos_stdout;
     bool                m_print_msgdlg;
     bool                m_want_console;
     bool                m_mem_bitmap_added;
