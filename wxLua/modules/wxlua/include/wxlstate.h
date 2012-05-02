@@ -27,35 +27,46 @@ class WXDLLIMPEXP_FWD_WXLUA wxLuaWinDestroyCallback;
 // String functions - convert between Lua (ansi string) and wxString (encoded)
 // ----------------------------------------------------------------------------
 
-#define WXLUA_USE_WXSTR_CONVCURRENT 1
+#define WXLUA_USE_WXSTR_CONVUTF8    1
+#define WXLUA_USE_WXSTR_CONVCURRENT 0
 
 // Convert a 8-bit ANSI C Lua String into a wxString
 inline WXDLLIMPEXP_WXLUA wxString lua2wx(const char* luastr)
 {
-#if WXLUA_USE_WXSTR_CONVCURRENT
-
     if (luastr == NULL) return wxEmptyString; // check for NULL
+
+#if WXLUA_USE_WXSTR_CONVUTF8
+
+    return wxString(luastr, wxConvUTF8);
+
+#elif WXLUA_USE_WXSTR_CONVCURRENT
 
     return wxString(luastr, *wxConvCurrent);
 
 #else //!WXLUA_USE_WXSTR_CONVCURRENT
-#if wxUSE_UNICODE
-    wxString str(luastr, wxConvUTF8);
-#else
-    wxString str(wxConvUTF8.cMB2WC(luastr), *wxConvCurrent);
-#endif // wxUSE_UNICODE
+    #if wxUSE_UNICODE
+        wxString str(luastr, wxConvUTF8);
+    #else
+        wxString str(wxConvUTF8.cMB2WC(luastr), *wxConvCurrent);
+    #endif // wxUSE_UNICODE
 
-    if (str.IsEmpty())
-        str = wxConvertMB2WX(luastr); // old way that mostly works
+        if (str.IsEmpty())
+            str = wxConvertMB2WX(luastr); // old way that mostly works
 
-    return str;
+        return str;
 #endif //WXLUA_USE_WXSTR_CONVCURRENT
 }
 
 // Convert a wxString to 8-bit ANSI C Lua String
 inline const WXDLLIMPEXP_WXLUA wxCharBuffer wx2lua(const wxString& wxstr)
 {
-#if WXLUA_USE_WXSTR_CONVCURRENT
+#if WXLUA_USE_WXSTR_CONVUTF8
+
+    wxCharBuffer buffer(wxstr.mb_str(wxConvUTF8));
+    return buffer;
+
+#elif WXLUA_USE_WXSTR_CONVCURRENT
+
     wxCharBuffer buffer(wxstr.mb_str(*wxConvCurrent));
     return buffer;
 
