@@ -977,7 +977,7 @@ function SaveFileAs(editor)
                                        fn:GetPath(),
                                        fn:GetFullName(),
                                        "Lua files (*.lua)|*.lua|Text files (*.txt)|*.txt|All files (*)|*",
-                                       wx.wxFD_SAVE + wx.wxOVERWRITE_PROMPT)
+                                       wx.wxFD_SAVE + wx.wxFD_OVERWRITE_PROMPT)
 
     if fileDialog:ShowModal() == wx.wxID_OK then
         local filePath = fileDialog:GetPath()
