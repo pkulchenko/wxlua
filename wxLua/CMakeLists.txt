@@ -24,7 +24,7 @@ include( build/CMakeFunctions.txt )
 
 # Specify what wxWidgets libs we need to link to. Note: 'core' must be before 'base'.
 # If you call this CMakeLists.txt from another one you may have already called FIND_WXWIDGETS()
-if (NOT wxWidgets_COMPONENTS)
+if (NOT DEFINED wxWidgets_COMPONENTS)
     set(wxWidgets_COMPONENTS xrc xml net media propgrid richtext aui stc html adv core base) # minimal set for static lib/dll
     #set(wxWidgets_COMPONENTS gl xrc xml net media propgrid richtext aui stc html adv core base) # for multilib/dll
     #set(wxWidgets_COMPONENTS stc mono) # for monolithic
@@ -101,10 +101,10 @@ SETUP_wxLua()
 
 set( wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE PATH "Root dir of wxLua" FORCE)
 
-set( wxLua_VERSION         "2.9.3" )
+set( wxLua_VERSION         "2.9.4" )
 set( wxLua_MAJOR_VERSION   "2" )
 set( wxLua_MINOR_VERSION   "9" )
-set( wxLua_RELEASE_VERSION "3" )
+set( wxLua_RELEASE_VERSION "4" )
 
 # ---------------------------------------------------------------------------
 

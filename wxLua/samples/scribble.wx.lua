@@ -280,7 +280,7 @@ function SaveAs()
                                        "",
                                        "",
                                        "Scribble files(*.scribble)|*.scribble|All files(*)|*",
-                                       wx.wxSAVE + wx.wxOVERWRITE_PROMPT)
+                                       wx.wxFD_SAVE + wx.wxOVERWRITE_PROMPT)
     local result = false
     if fileDialog:ShowModal() == wx.wxID_OK then
         fileName = fileDialog:GetPath()
@@ -577,7 +577,7 @@ function main()
                                        "",
                                        "",
                                        "PNG (*.png)|*.png|PCX (*.pcx)|*.pcx|Bitmap (*.bmp)|*.bmp|Jpeg (*.jpg,*.jpeg)|*.jpg,*.jpeg|Tiff (*.tif,*.tiff)|*.tif,*.tiff",
-                                       wx.wxSAVE + wx.wxOVERWRITE_PROMPT)
+                                       wx.wxFD_SAVE + wx.wxOVERWRITE_PROMPT)
                 if fileDialog:ShowModal() == wx.wxID_OK then
                     local bmp = GetBitmap()
                     local img = bmp:ConvertToImage()

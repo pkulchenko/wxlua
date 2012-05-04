@@ -50,7 +50,7 @@ message( STATUS "* sometimes once is not enough, after a few configurations, pre
 message( STATUS "* " )
 message( STATUS "* Usage: cmake -D[OPTION_NAME]=[OPTION_VALUE] /path/to/CMakeLists.txt/" )
 message( STATUS "* ---------------------------------------------------------------------------" )
-message( STATUS "* -DHELP=1 " )
+message( STATUS "* -DHELP=TRUE " )
 message( STATUS "*   Show this help message and exit, no files will be generated." )
 message( STATUS "* -DCMAKE_BUILD_TYPE=[Debug, Release, RelWithDebInfo, MinSizeRel] : (Default Debug)")
 message( STATUS "*   Makefiles : Set the build type to Debug, Release..." )
@@ -171,7 +171,7 @@ elseif((CMAKE_SIZEOF_VOID_P MATCHES 8) OR (CMAKE_CL_64 MATCHES 1))
 elseif(NOT DEFINED IS_32_BIT)
     # Sometimes CMake doesn't set CMAKE_SIZEOF_VOID_P, so we remember the last good value.
     # http://www.cmake.org/pipermail/cmake/2011-January/042058.html
-    MESSAGE(WARNING "Oops, unable to determine if using 32 or 64 bit compilation.")
+    MESSAGE(WARNING "Oops, unable to determine if using 32 or 64 bit compilation, please rerun CMake.")
 endif()
 
 # ---------------------------------------------------------------------------
@@ -422,42 +422,47 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
     if (idx_mono GREATER "-1")
         set(wxWidgets_MONOLITHIC TRUE)
     endif()
+    set(wxWidgets_MONOLITHIC ${wxWidgets_MONOLITHIC} CACHE BOOL "wxWidgets library is monolithic." FORCE)
+    mark_as_advanced(wxWidgets_MONOLITHIC)
 
     # -----------------------------------------------------------------------
     # wxWidgets has stc lib in < 2.9 and stc + scintilla lib in >= 2.9
     # Let people specify either stc and/or scintilla
     # -----------------------------------------------------------------------
 
-    if (wxWidgets_VERSION VERSION_LESS 2.9)
-        # remove these >= 2.9 libs, they should if #ifdefed it in the code
-        # so we allow them to specify them as link libs, but remove them for 2.8
-        list(REMOVE_ITEM wxWidgets_COMPONENTS propgrid)
+    list(FIND wxWidgets_COMPONENTS stc       idx_stc)
+    list(FIND wxWidgets_COMPONENTS scintilla idx_scintilla)
 
-        list(FIND wxWidgets_COMPONENTS scintilla idx)
-        if (idx GREATER "-1")
-            message(STATUS "* Note: wxWidgets libs; Linking to stc lib and not scintilla lib for wx < 2.9")
+    if (wxWidgets_VERSION VERSION_LESS 2.9)
+        # Remove these >= 2.9 libs, they should if #ifdefed it in the C++ code.
+        # We allow them to specify them as link libs, but remove them for 2.8.
+
+        list(FIND wxWidgets_COMPONENTS propgrid idx_propgrid)
+        if (idx_propgrid GREATER "-1")
+            message(STATUS "* Note: wxWidgets libs; Removing 'propgrid' lib from wxWidgets_COMPONENTS since it didn't exit in wx < 2.9")
+            list(REMOVE_ITEM wxWidgets_COMPONENTS propgrid)
+        endif()
+
+        if (idx_scintilla GREATER "-1")
+            message(STATUS "* Note: wxWidgets libs; Linking to 'stc' lib and not 'scintilla' lib for wx < 2.9")
             list(REMOVE_ITEM wxWidgets_COMPONENTS scintilla)
             set(wxWidgets_COMPONENTS stc ${wxWidgets_COMPONENTS})
         endif()
 
         if (NOT UNIX)
-            list(FIND wxWidgets_COMPONENTS stc idx)
-            if (idx GREATER "-1")
-                include_directories(${wxWidgets_ROOT_DIR}/contrib/include)
+            if (idx_stc GREATER "-1")
+                include_directories("${wxWidgets_ROOT_DIR}/contrib/include")
             endif()
         endif()
     else()
 
         # In 2.8 stc was in not in the mono lib, but was a separate contrib
-        list(FIND wxWidgets_COMPONENTS stc       idx_stc)
-        list(FIND wxWidgets_COMPONENTS scintilla idx_scintilla)
-
         if (wxWidgets_MONOLITHIC)
             if (idx_stc GREATER "-1")
                 message(STATUS "* Note: wxWidgets libs; automatically removing stc component for mono build in >= 2.9, but note that stc is a separate lib in 2.8.")
                 list(REMOVE_ITEM wxWidgets_COMPONENTS stc)
             endif()
-            if (NOT UNIX)
+            if (NOT UNIX) # scintilla is static in Unix and we don't have to link to it
                 if (idx_scintilla EQUAL "-1")
                     message(STATUS "* Note: wxWidgets libs; automatically adding scintilla lib for stc in mono build in >= 2.9, but note that the scintilla lib doesn't exist in 2.8.")
                     set(wxWidgets_COMPONENTS "scintilla" ${wxWidgets_COMPONENTS})
@@ -468,6 +473,7 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
                 # Need scintilla lib in 2.9, just remove both and add them back in correct order
                 list(REMOVE_ITEM wxWidgets_COMPONENTS stc)
                 list(REMOVE_ITEM wxWidgets_COMPONENTS scintilla)
+
                 if (NOT UNIX)
                     set(wxWidgets_COMPONENTS "stc" "scintilla" ${wxWidgets_COMPONENTS})
                 else()
@@ -476,6 +482,10 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
             endif()
         endif()
     endif()
+
+    unset(idx_stc)
+    unset(idx_scintilla)
+    unset(idx_propgrid)
 
     # -----------------------------------------------------------------------
 
@@ -486,17 +496,18 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
     find_package( wxWidgets COMPONENTS ${wxWidgets_COMPONENTS})
 
     # Set the variables FindwxWidgets.cmake uses so they show up in cmake-gui
-    # so you'll actually have a chance to find wxWidgets...
+    # so people will actually have a chance of finding wxWidgets...
+
+    set( wxWidgets_COMPONENTS ${wxWidgets_COMPONENTS} CACHE STRING "wxWidgets components to link to: xrc;xml;gl;net;media;propgrid;richtext;aui;stc;html;adv;core;base or mono" FORCE)
 
     if ("${wxWidgets_FIND_STYLE}" STREQUAL "win32")
 
         # We show the user the version so we can fix stc and scintilla libs
-        set( wxWidgets_VERSION       ${wxWidgets_VERSION}       CACHE string "wxWidgets version e.g. 2.8.3, 2.9.2..." FORCE)
+        set( wxWidgets_VERSION       ${wxWidgets_VERSION}       CACHE STRING "wxWidgets version e.g. 2.8.3, 2.9.2..." FORCE)
         # These are used by FindwxWidgets.cmake
         set( wxWidgets_ROOT_DIR      ${wxWidgets_ROOT_DIR}      CACHE PATH   "Root directory of wxWidgets install (set 1st)" FORCE)
         set( wxWidgets_LIB_DIR       ${wxWidgets_LIB_DIR}       CACHE PATH   "Lib directory of wxWidgets install (set 2nd)" FORCE)
-        set( wxWidgets_CONFIGURATION ${wxWidgets_CONFIGURATION} CACHE string "wxWidgets configuration e.g. msw, mswd, mswu, mswud, mswunivud..." FORCE)
-        set( wxWidgets_COMPONENTS    ${wxWidgets_COMPONENTS}    CACHE string "wxWidgets components: xrc;xml;gl;net;media;propgrid;richtext;aui;stc;html;adv;core;base or mono" FORCE)
+        set( wxWidgets_CONFIGURATION ${wxWidgets_CONFIGURATION} CACHE STRING "wxWidgets configuration e.g. msw, mswd, mswu, mswud, mswunivud..." FORCE)
 
     else()
 
@@ -523,6 +534,7 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
         if (EXISTS ${wxWidgets_CONFIG_EXECUTABLE})
             execute_process(COMMAND ${wxWidgets_CONFIG_EXECUTABLE} --prefix OUTPUT_VARIABLE wxWidgets_ROOT_DIR)
             string(STRIP "${wxWidgets_ROOT_DIR}" wxWidgets_ROOT_DIR)
+            set(wxWidgets_ROOT_DIR "${wxWidgets_ROOT_DIR}" CACHE PATH "wxWidgets root directory" FORCE)
         endif()
 
         PARSE_WXWIDGETS_LIB_NAMES()
@@ -555,6 +567,13 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
 
     set(wxWidgets_ALL_COMPONENTS ${wxWidgets_ALL_COMPONENTS_28} ${wxWidgets_ALL_COMPONENTS_29})
     list(REMOVE_DUPLICATES wxWidgets_ALL_COMPONENTS)
+
+    set(wxWidgets_ALL_COMPONENTS    ${wxWidgets_ALL_COMPONENTS}    CACHE STRING "All wxWidgets library names in 2.8, 2.9, ...")
+    set(wxWidgets_ALL_COMPONENTS_28 ${wxWidgets_ALL_COMPONENTS_28} CACHE STRING "All wxWidgets library names in < 2.9")
+    set(wxWidgets_ALL_COMPONENTS_29 ${wxWidgets_ALL_COMPONENTS_29} CACHE STRING "All wxWidgets library names in >= 2.9")
+    mark_as_advanced(wxWidgets_ALL_COMPONENTS)
+    mark_as_advanced(wxWidgets_ALL_COMPONENTS_28)
+    mark_as_advanced(wxWidgets_ALL_COMPONENTS_29)
 
     # Always verify the libs, for success or failure in finding wxWidgets.
     VERIFY_WXWIDGETS_COMPONENTS()

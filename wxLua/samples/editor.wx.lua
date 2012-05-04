@@ -977,7 +977,7 @@ function SaveFileAs(editor)
                                        fn:GetPath(),
                                        fn:GetFullName(),
                                        "Lua files (*.lua)|*.lua|Text files (*.txt)|*.txt|All files (*)|*",
-                                       wx.wxSAVE)
+                                       wx.wxFD_SAVE + wx.wxOVERWRITE_PROMPT)
 
     if fileDialog:ShowModal() == wx.wxID_OK then
         local filePath = fileDialog:GetPath()
@@ -2165,7 +2165,7 @@ function CreateDebuggerServer()
                                                        "",
                                                        eventFileName,
                                                        "Lua files (*.lua)|*.lua|Text files (*.txt)|*.txt|All files (*)|*",
-                                                       wx.wxOPEN + wx.wxFD_FILE_MUST_EXIST)
+                                                       wx.wxFD_OPEN + wx.wxFD_FILE_MUST_EXIST)
                     if fileDialog:ShowModal() == wx.wxID_OK then
                         local editor = LoadFile(fileDialog:GetPath(), nil, true)
                         if editor then
