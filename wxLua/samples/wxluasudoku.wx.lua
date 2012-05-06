@@ -3392,7 +3392,7 @@ function sudokuGUI.SaveAsPuzzle()
     local fileDialog = wx.wxFileDialog(sudokuGUI.frame, "Save puzzle",
                                        sudokuGUI.filePath, sudokuGUI.fileName,
                                        "wxLuaSudoku files (*.sudoku)|*.sudoku|All files (*)|*",
-                                       wx.wxFD_SAVE + wx.wxOVERWRITE_PROMPT)
+                                       wx.wxFD_SAVE + wx.wxFD_OVERWRITE_PROMPT)
     local result = false
     if fileDialog:ShowModal() == wx.wxID_OK then
         local fileName = fileDialog:GetPath()
