@@ -29,6 +29,30 @@ static wxLuaState s_wxlState; // This is our wxLuaState for the module
 WXLUA_DECLARE_BIND_ALL
 
 // ----------------------------------------------------------------------------
+// Remember the hInstance for this DLL so we can set wxSetInstance() and
+// be able to load cursors from the embedded resources in <wx/msw/wx.rc>
+// wxWidgets uses GetModuleHandle(NULL) which returns the handle to the calling
+// EXE app which is not what we want, we want *this* instance.
+// ----------------------------------------------------------------------------
+
+#ifdef __WXMSW__
+
+HINSTANCE hDll;
+
+BOOL APIENTRY DllMain( HANDLE hModule, DWORD ul_reason_for_call, LPVOID )
+{	 
+   switch (ul_reason_for_call) 
+   {
+      case DLL_PROCESS_ATTACH : hDll = (HINSTANCE)hModule; break;
+      default : break;
+   }
+
+   return TRUE;
+}
+
+#endif // __WXMSW__
+
+// ----------------------------------------------------------------------------
 // wxLuaModuleApp
 // ----------------------------------------------------------------------------
 
@@ -104,11 +128,18 @@ int luaopen_wx(lua_State *L)
         int argc = 0;
         wxChar **argv = NULL;
 
+#ifdef __WXMSW__
+        // wxEntryStart() calls DoCommonPreInit() which calls
+        // wxSetInstance(::GetModuleHandle(NULL)); if wxGetInstance() is NULL.
+        wxSetInstance(hDll);
+#endif // __WXMSW__
+
         if (!wxEntryStart(argc, argv))
         {
             wxPrintf(wxT("Error calling wxEntryStart(argc, argv), aborting.\n"));
             return 0;
         }
+
         if (!wxTheApp || !wxTheApp->CallOnInit())
         {
             wxPrintf(wxT("Error calling wxTheApp->CallOnInit(), aborting.\n"));

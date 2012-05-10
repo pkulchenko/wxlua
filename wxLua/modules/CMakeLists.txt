@@ -457,10 +457,11 @@ ADD_LIBRARY_FULL( wxLuaModule SHARED ALLOW_MISSING_FILES
         ${wxLua_ROOT_DIR}/modules/luamodule/include/luamoduledefs.h
     SOURCES
         ${wxLua_ROOT_DIR}/modules/luamodule/src/luamodule.cpp
+        ${wxLua_ROOT_DIR}/modules/luamodule/src/luamodule.rc
         ${wxLuaBindLib_SOURCE_FILES}
         ${wxLuaSocketLib_SOURCE_FILES}
         ${wxLuaDebugLib_SOURCE_FILES}
-        ${wxLuaLib_SOURCE_FILES}
+        ${wxLuaLib_SOURCE_FILES}        
     LINK_LIBRARIES
         #wxLuaBindLib
         #wxLuaSocketLib
@@ -651,8 +652,8 @@ endfunction (wxLua_Modules_Lua_TARGETS)
 # ===========================================================================
 
 add_subdirectory( lua )
-add_subdirectory( luamodule )
 add_subdirectory( wxbind )
 add_subdirectory( wxlua )
 add_subdirectory( wxluadebug )
 add_subdirectory( wxluasocket )
+add_subdirectory( luamodule ) # include after everything else to get source file list
