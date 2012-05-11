@@ -142,12 +142,13 @@ bool wxLuaStackDialog::Create(const wxLuaState& wxlState,
     m_wxlState = wxlState;
 
     wxSize size(size_);
-    if (size == wxDefaultSize) size = sm_defaultSize;
 
     if (!wxDialog::Create(parent, id, title, pos, size,
             wxDEFAULT_DIALOG_STYLE | wxMAXIMIZE_BOX | wxMINIMIZE_BOX | wxRESIZE_BORDER,
             wxT("wxLuaStackDialog")))
         return false;
+
+    if (size == wxDefaultSize) size = sm_defaultSize;
 
     SetIcon(wxICON(LUA)); // set the frame icon
 
@@ -299,7 +300,7 @@ bool wxLuaStackDialog::Create(const wxLuaState& wxlState,
 
 
     m_listCtrl->SetColumnWidth(0, txt_width);
-    m_listCtrl->SetColumnWidth(4, 4*txt_width); // make it wide since it's the last
+    m_listCtrl->SetColumnWidth(4, txt_width); // we'll make it wider later since it's the last
     m_listCtrl->GetTextExtent(wxT("555:5555"), &txt_width, &txt_height);
     m_listCtrl->SetColumnWidth(1, txt_width);
     m_listCtrl->GetTextExtent(wxT("Light User DataX"), &txt_width, &txt_height);
@@ -325,6 +326,12 @@ bool wxLuaStackDialog::Create(const wxLuaState& wxlState,
     rootSizer->SetMinSize(200, 150);
     panel->SetSizer(rootSizer);
     rootSizer->SetSizeHints(this);
+
+    // We want the last col wide since it's hard to drag the col width of a listctrl
+    // however, we don't want the sizer to take the extra width into account
+    m_listCtrl->SetColumnWidth(4, m_listCtrl->GetColumnWidth(4)*4);
+    // Allow people to shrink it down pretty small
+    SetMinSize(wxSize(200, 200));
 
     SetSize(size); // force last good/known size
     if (sm_maximized)
