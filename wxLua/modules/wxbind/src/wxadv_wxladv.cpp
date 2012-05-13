@@ -36,6 +36,11 @@ wxLuaGridTableBase::wxLuaGridTableBase(const wxLuaState& wxlState)
 {
 }
 
+wxLuaGridTableBase::~wxLuaGridTableBase()
+{
+    SetView(NULL);
+}
+
 int wxLuaGridTableBase::GetNumberRows()
 {
     int numrows = 0;

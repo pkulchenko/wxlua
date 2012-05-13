@@ -12,91 +12,86 @@ package.cpath = package.cpath..";./?.dll;./?.so;../lib/?.so;../lib/vc_dll/?.dll;
 require("wx")
 
 
+BugsGridTable = {} -- This is the underlying data to show in the wxGrid
 
-local function _(s) return s end
-local function _T(s) return s end
+local function InitializeGridTable(grid, gridtable)
 
-local function connectvirtuals(gridtable)
-    --enum Columns
-    --{
-    local Col_Id = 0
-    local Col_Summary = 1
-    local Col_Severity = 2
-    local Col_Priority = 3
-    local Col_Platform = 4
-    local Col_Opened = 5
-    local Col_Max = 6
-    --};
+    BugsGridTable.gridtable = gridtable
 
-    --enum Severity
-    --{
-    local Sev_Wish = 0
-    local Sev_Minor = 1
-    local Sev_Normal = 2
-    local Sev_Major = 3
-    local Sev_Critical = 4
-    local Sev_Max = 5
-    --};
+    -- The columns in the grid so we can access them by name rather than number
+    BugsGridTable.Col_Id       = 0
+    BugsGridTable.Col_Summary  = 1
+    BugsGridTable.Col_Severity = 2
+    BugsGridTable.Col_Priority = 3
+    BugsGridTable.Col_Platform = 4
+    BugsGridTable.Col_Opened   = 5
+    BugsGridTable.Col_Max      = 6
 
-    local --[[static const wxString]] severities =
+    -- Values for the severity column
+    BugsGridTable.Sev_Wish     = 0
+    BugsGridTable.Sev_Minor    = 1
+    BugsGridTable.Sev_Normal   = 2
+    BugsGridTable.Sev_Major    = 3
+    BugsGridTable.Sev_Critical = 4
+    BugsGridTable.Sev_Max      = 5
+
+    -- Names for the severity column values
+    BugsGridTable.Severities =
     {
-        _T("wishlist"),
-        _T("minor"),
-        _T("normal"),
-        _T("major"),
-        _T("critical"),
+        "wishlist",
+        "minor",
+        "normal",
+        "major",
+        "critical",
     };
 
-    local --[[static struct BugsGridData
+    -- The data that we show in the grid, stored in a Lua table
+    BugsGridTable.gs_dataBugsGrid =
     {
-        int id;
-        wxChar summary[80];
-        Severity severity;
-        int prio;
-        wxChar platform[12];
-        bool opened;
-    }]] gs_dataBugsGrid =
-    {
-        { id=18, summary=_T("foo doesn't work"), severity=Sev_Major, prio=1, platform=_T("wxMSW"), opened=true },
-        { id=27, summary=_T("bar crashes"), severity=Sev_Critical, prio=1, platform=_T("all"), opened=false },
-        { id=45, summary=_T("printing is slow"), severity=Sev_Minor, prio=3, platform=_T("wxMSW"), opened=true },
-        { id=68, summary=_T("Rectangle() fails"), severity=Sev_Normal, prio=1, platform=_T("wxMSW"), opened=false },
+        { id = 18, summary = "foo doesn't work",  severity = BugsGridTable.Sev_Major,    prio = 1, platform = "wxMSW", opened = true  },
+        { id = 27, summary = "bar crashes",       severity = BugsGridTable.Sev_Critical, prio = 1, platform = "all",   opened = false },
+        { id = 45, summary = "printing is slow",  severity = BugsGridTable.Sev_Minor,    prio = 3, platform = "wxMSW", opened = true  },
+        { id = 68, summary = "Rectangle() fails", severity = BugsGridTable.Sev_Normal,   prio = 1, platform = "wxMSW", opened = false },
     };
 
-    --[[static const wxChar *headers[Col_Max] = ]]
-    local headers =
+    -- The column headers
+    BugsGridTable.ColHeaders  =
     {
-        _T("Id"),
-        _T("Summary"),
-        _T("Severity"),
-        _T("Priority"),
-        _T("Platform"),
-        _T("Opened?"),
+        "Id",
+        "Summary",
+        "Severity",
+        "Priority",
+        "Platform",
+        "Opened?",
     };
-
 
     --wxString BugsGridTable::GetTypeName(int WXUNUSED(row), int col)
     gridtable.GetTypeName = function( self, row, col )
-        if col == Col_Id or col == Col_Priority then
-            return wx.wxGRID_VALUE_NUMBER
-        elseif col == Col_Severity or col == Col_Summary then
-            return string.format(_T("%s:80"), wx.wxGRID_VALUE_STRING)
-        elseif col == Col_Platform then
-            return string.format(_T("%s:all,MSW,GTK,other"), wx.wxGRID_VALUE_CHOICE)
-        elseif col == Col_Opened then
-            return wx.wxGRID_VALUE_BOOL
+        local type_name = ""
+    
+        if (col == BugsGridTable.Col_Id) or (col == BugsGridTable.Col_Priority) then
+            type_name = wx.wxGRID_VALUE_NUMBER
+        elseif (col == BugsGridTable.Col_Severity) or (col == BugsGridTable.Col_Summary) then
+            type_name = string.format("%s:80", wx.wxGRID_VALUE_STRING)
+        elseif col == BugsGridTable.Col_Platform then
+            type_name = string.format("%s:all,MSW,GTK,other", wx.wxGRID_VALUE_CHOICE)
+        elseif col == BugsGridTable.Col_Opened then
+            type_name = wx.wxGRID_VALUE_BOOL
+        else
+            error("Unknown column")
         end
-        return wx.wxEmptyString
+        
+        return type_name
     end
 
     --int BugsGridTable::GetNumberRows()
     gridtable.GetNumberRows = function( self )
-        return #gs_dataBugsGrid
+        return #BugsGridTable.gs_dataBugsGrid
     end
 
     --int BugsGridTable::GetNumberCols()
     gridtable.GetNumberCols = function( self )
-        return Col_Max
+        return BugsGridTable.Col_Max
     end
 
     --bool BugsGridTable::IsEmptyCell( int WXUNUSED(row), int WXUNUSED(col) )
@@ -108,40 +103,38 @@ local function connectvirtuals(gridtable)
     gridtable.GetValue = function( self, row, col )
         local function iff(cond, A, B) if cond then return A else return B end end
 
-        local gd = gs_dataBugsGrid[row+1]
-        if col == Col_Id then
-            return string.format(_T("%d"), gd.id);
-        elseif col == Col_Priority then
-            return string.format(_T("%d"), gd.prio);
-        elseif col == Col_Opened then
-            return iff(gd.opened, _T("1"), _T("0"))
-        elseif col == Col_Severity then
-            return severities[gd.severity+1];
-        elseif col == Col_Summary then
-            return gd.summary;
-        elseif col == Col_Platform then
-            return gd.platform;
+        local value = ""
+        local gd = BugsGridTable.gs_dataBugsGrid[row+1]
+        
+        if     col == BugsGridTable.Col_Id       then value = string.format("%d", gd.id);
+        elseif col == BugsGridTable.Col_Priority then value = string.format("%d", gd.prio);
+        elseif col == BugsGridTable.Col_Opened   then value = iff(gd.opened, "1", "0")
+        elseif col == BugsGridTable.Col_Severity then value = BugsGridTable.Severities[gd.severity+1];
+        elseif col == BugsGridTable.Col_Summary  then value = gd.summary;
+        elseif col == BugsGridTable.Col_Platform then value = gd.platform;
         end
-        return wx.wxEmptyString;
+        
+        return value
     end
 
     --void BugsGridTable::SetValue( int row, int col, const wxString& value )
     gridtable.SetValue = function( self, row, col, value )
-        local gd = gs_dataBugsGrid[row+1]
-        if col == Col_Id or col == Col_Priority or col == Col_Opened then
-            error(_T("unexpected column"))
-        elseif col == Col_Severity then
-            for n=1,#severities do
-                if severities[n] == value then
+        local gd = BugsGridTable.gs_dataBugsGrid[row+1]
+        
+        if (col == BugsGridTable.Col_Id) or (col == BugsGridTable.Col_Priority) or (col == BugsGridTable.Col_Opened) then
+            error("unexpected column")
+        elseif col == BugsGridTable.Col_Severity then
+            for n = 1, #BugsGridTable.Severities do
+                if BugsGridTable.Severities[n] == value then
                     gd.severity = n-1
                     return
                 end
             end
             --Invalid severity value
-            gd.severity = Sev_Normal
-        elseif col == Col_Summary then
+            gd.severity = BugsGridTable.Sev_Normal
+        elseif col == BugsGridTable.Col_Summary then
             gd.summary = value
-        elseif col == Col_Platform then
+        elseif col == BugsGridTable.Col_Platform then
             gd.platform = value
         end
     end
@@ -154,9 +147,9 @@ local function connectvirtuals(gridtable)
         if typeName == wx.wxGRID_VALUE_STRING then
             return true
         elseif typeName == wx.wxGRID_VALUE_BOOL then
-            return col == Col_Opened
+            return col == BugsGridTable.Col_Opened
         elseif typeName == wx.wxGRID_VALUE_NUMBER then
-            return col == Col_Id or col == Col_Priority or col == Col_Severity
+            return (col == BugsGridTable.Col_Id) or (col == BugsGridTable.Col_Priority) or (col == BugsGridTable.Col_Severity)
         else
             return false
         end
@@ -169,75 +162,72 @@ local function connectvirtuals(gridtable)
 
     --long BugsGridTable::GetValueAsLong( int row, int col )
     gridtable.GetValueAsLong = function( self, row, col )
-        local gd = gs_dataBugsGrid[row+1]
+        local gd = BugsGridTable.gs_dataBugsGrid[row+1]
 
-        if col == Col_Id then
-            return gd.id;
-        elseif col == Col_Priority then
-            return gd.prio;
-        elseif col == Col_Severity then
-            return gd.severity;
+        if     col == BugsGridTable.Col_Id       then return gd.id;
+        elseif col == BugsGridTable.Col_Priority then return gd.prio;
+        elseif col == BugsGridTable.Col_Severity then return gd.severity;
         else
-            error(_T("unexpected column"));
+            error("unexpected column");
             return -1;
         end
     end
 
     --bool BugsGridTable::GetValueAsBool( int row, int col )
     gridtable.GetValueAsBool = function( self, row, col )
-        if col == Col_Opened then
-            return gs_dataBugsGrid[row+1].opened;
+        if col == BugsGridTable.Col_Opened then
+            return BugsGridTable.gs_dataBugsGrid[row+1].opened;
         else
-            error(_T("unexpected column"));
+            error("unexpected column");
             return false;
         end
     end
 
     --void BugsGridTable::SetValueAsLong( int row, int col, long value )
     gridtable.SetValueAsLong = function( self, row, col, value )
-        local gd = gs_dataBugsGrid[row+1]
+        local gd = BugsGridTable.gs_dataBugsGrid[row+1]
 
-        if col == Col_Priority then
+        if col == BugsGridTable.Col_Priority then
             gd.prio = value;
         else
-            error(_T("unexpected column"));
+            error("unexpected column");
         end
     end
 
     --void BugsGridTable::SetValueAsBool( int row, int col, bool value )
     gridtable.SetValueAsBool = function( self, row, col, value )
-        if col == Col_Opened then
-            gs_dataBugsGrid[row+1].opened = value;
+        if col == BugsGridTable.Col_Opened then
+            BugsGridTable.gs_dataBugsGrid[row+1].opened = value;
         else
-            error(_T("unexpected column"));
+            error("unexpected column");
         end
     end
 
     --wxString BugsGridTable::GetColLabelValue( int col )
     gridtable.GetColLabelValue = function( self, col )
-        return headers[col+1];
+        return BugsGridTable.ColHeaders[col+1];
     end
 
---~     gridtable.GetAttr = function(self,row,col,kind )
---~         --[[
---~         %enum wxGridCellAttr::wxAttrKind
---~         Any
---~         Default
---~         Cell
---~         Row
---~         Col
---~         Merged
---~         --]]
---~         local attr=wx.wxGridCellAttr()
---~         if row==0 and col==0 then
---~             attr:SetTextColour(wx.wxRED)
---~         elseif row==0 and col==1 then
---~             attr:SetBackgroundColour(wx.wxCYAN)
---~         elseif row==0 and col==2 then
---~             attr:SetReadOnly(true)
---~         end
---~         return attr
---~     end
+    -- Set the table to the grid, this allows the following SetColAttr() functions
+    -- to work, otherwise they silently do nothing.
+    local rc = grid:SetTable(gridtable, true)
+    
+    -- Set up the editors for the gridtable values
+    
+    local attrRO          = wx.wxGridCellAttr()
+    local attrRangeEditor = wx.wxGridCellAttr()
+    local attrCombo       = wx.wxGridCellAttr()
+
+    local rangeEditor  = wx.wxGridCellNumberEditor(1, 5)
+    local choiceEditor = wx.wxGridCellChoiceEditor(BugsGridTable.Severities)
+
+    attrRO:SetReadOnly()
+    attrRangeEditor:SetEditor(rangeEditor)
+    attrCombo:SetEditor(choiceEditor);
+
+    grid:SetColAttr(BugsGridTable.Col_Id,       attrRO)
+    grid:SetColAttr(BugsGridTable.Col_Priority, attrRangeEditor)
+    grid:SetColAttr(BugsGridTable.Col_Severity, attrCombo)
 end
 
 
@@ -275,24 +265,15 @@ frame:Connect(wx.wxID_ABOUT, wx.wxEVT_COMMAND_MENU_SELECTED,
 
 grid = wx.wxGrid(frame, wx.wxID_ANY)
 local gridtable = wx.wxLuaGridTableBase()
-connectvirtuals(gridtable)
-gridtable:SetView( grid )
-local rc = grid:SetTable(gridtable)
+InitializeGridTable(grid, gridtable)
 
---~ grid:CreateGrid(10, 8)
---~ grid:SetColSize(3, 200)
---~ grid:SetRowSize(4, 45)
---~ grid:SetCellValue(0, 0, "First cell")
---~ grid:SetCellValue(1, 1, "Another cell")
---~ grid:SetCellValue(2, 2, "Yet another cell")
---~ grid:SetCellFont(0, 0, wx.wxFont(10, wx.wxROMAN, wx.wxITALIC, wx.wxNORMAL))
---~ grid:SetCellTextColour(1, 1, wx.wxRED)
---~ grid:SetCellBackgroundColour(2, 2, wx.wxCYAN)
+-- Clean up any temporary variables now.
+-- This is important for wxGridCellEditor objects since once an editor is 
+-- created we need to ensure that it is deleted before the grid is deleted 
+-- and not afterwards since the Lua GC may not delete them in desired order.
+-- Calling this ensures that any "local wx.wxGridCellEditor" objects are deleted.
+collectgarbage("collect") 
 
 frame:Show(true)
 
--- Call wx.wxGetApp():MainLoop() last to start the wxWidgets event loop,
--- otherwise the wxLua program will exit immediately.
--- Does nothing if running from wxLua, wxLuaFreeze, or wxLuaEdit since the
--- MainLoop is already running or will be started by the C++ program.
 wx.wxGetApp():MainLoop()

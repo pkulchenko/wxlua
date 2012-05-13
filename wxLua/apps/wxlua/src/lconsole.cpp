@@ -147,7 +147,20 @@ void wxLuaConsole::OnMenu(wxCommandEvent& event)
 
 void wxLuaConsole::AppendText(const wxString& msg)
 {
+    m_textCtrl->Freeze();
+
+    // Probably the best we can do to maintain the cursor pos while appending
+    // The wxStyledTextCtrl can do a much better job...
+    long pos          = m_textCtrl->GetInsertionPoint();
+    int  num_lines    = m_textCtrl->GetNumberOfLines();
+    long pos_near_end = m_textCtrl->XYToPosition(0, wxMax(0, num_lines - 5));
+    bool is_near_end  = (pos >= pos_near_end);
+
     m_textCtrl->AppendText(msg);
+    m_textCtrl->SetInsertionPoint(is_near_end ? m_textCtrl->GetLastPosition() : pos);
+
+    m_textCtrl->Thaw();
+
     SetMaxLines(m_max_lines);
 }
 void wxLuaConsole::AppendTextWithAttr(const wxString& msg, const wxTextAttr& attr)
@@ -155,7 +168,7 @@ void wxLuaConsole::AppendTextWithAttr(const wxString& msg, const wxTextAttr& att
     wxTextAttr oldAttr = m_textCtrl->GetDefaultStyle();
 
     m_textCtrl->SetDefaultStyle(attr);
-    m_textCtrl->AppendText(msg);
+    AppendText(msg);
     m_textCtrl->SetDefaultStyle(oldAttr);
 
     SetMaxLines(m_max_lines);
@@ -169,8 +182,14 @@ bool wxLuaConsole::SetMaxLines(int max_lines)
     if ((m_max_lines <= 0) || (num_lines < m_max_lines))
         return false;
 
-    long pos = m_textCtrl->XYToPosition(0, num_lines - m_max_lines);
-    m_textCtrl->Remove(0, pos);
+    long pos = m_textCtrl->GetInsertionPoint();
+    long remove_pos = m_textCtrl->XYToPosition(0, num_lines - m_max_lines);
+
+    m_textCtrl->Freeze();
+    m_textCtrl->Remove(0, remove_pos);
+    m_textCtrl->SetInsertionPoint(wxMax(0, pos-remove_pos));
+    m_textCtrl->ShowPosition(wxMax(0, pos-remove_pos));
+    m_textCtrl->Thaw();
 
     return true;
 }

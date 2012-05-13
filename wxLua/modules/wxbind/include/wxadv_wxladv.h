@@ -20,6 +20,7 @@ class WXDLLIMPEXP_BINDWXADV wxLuaGridTableBase : public wxGridTableBase
 {
 public:
     wxLuaGridTableBase(const wxLuaState& wxlState);
+    virtual ~wxLuaGridTableBase();
 
     // You must override these functions in a derived table class
     //
@@ -92,6 +93,14 @@ private:
     wxLuaState   m_wxlState;
     DECLARE_ABSTRACT_CLASS(wxLuaGridTableBase)
 };
+
+// Template function to "delete" wxGridCellWorker and wxGridCellAttr classes
+// since DecRef() should be called to delete them.
+template <class T> void wxLua_wxGrid_DecRef_delete_function(void** p)
+{
+    T* o = (T*)(*p);
+    o->DecRef();
+}
 
 
 #endif // wxUSE_GRID && wxLUA_USE_wxGrid

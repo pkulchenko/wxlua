@@ -73,6 +73,7 @@ static int LUACALL wxLua_wxGridCellAttr_GetSize(lua_State *L)
 }
 %end
 
+
 %override wxLua_wxGrid_GetRowLabelAlignment
 // void    GetRowLabelAlignment( int *horz, int *vert )
 static int LUACALL wxLua_wxGrid_GetRowLabelAlignment(lua_State *L)
@@ -213,7 +214,8 @@ static int LUACALL wxLua_wxGrid_SetTable(lua_State *L)
 
     if (returns && takeOwnership)
     {
-        if (!wxluaO_isgcobject(L, table)) wxluaO_addgcobject(L, table, wxluatype_wxGridTableBase);
+        // The wxGrid is now responsible for deleting it
+        if (wxluaO_isgcobject(L, table)) wxluaO_undeletegcobject(L, table);
     }
 
     // push the result flag
@@ -222,6 +224,8 @@ static int LUACALL wxLua_wxGrid_SetTable(lua_State *L)
     return 1;
 }
 %end
+
+
 
 %override wxLua_wxLuaGridTableBase_constructor
 //     wxLuaGridTableBase()
@@ -244,25 +248,144 @@ static int LUACALL wxLua_wxLuaGridTableBase_constructor(lua_State *L)
 // delete is private in wxGridCellWorker, DecRef() it in derived classes
 void wxLua_wxGridCellWorker_delete_function(void** p)
 {
-    wxGridCellWorker* o = (wxGridCellWorker*)(*p);
-    o->DecRef();
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellWorker>(p);
 }
 %end
+
+%override wxLua_wxGridCellRenderer_delete_function
+// delete is private in wxGridCellWorker, DecRef() it in derived classes
+void wxLua_wxGridCellRenderer_delete_function(void** p)
+{
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellRenderer>(p);
+}
+%end
+
+%override wxLua_wxGridCellStringRenderer_delete_function
+// delete is private in wxGridCellWorker, DecRef() it in derived classes
+void wxLua_wxGridCellStringRenderer_delete_function(void** p)
+{
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellStringRenderer>(p);
+}
+%end
+
+%override wxLua_wxGridCellNumberRenderer_delete_function
+// delete is private in wxGridCellWorker, DecRef() it in derived classes
+void wxLua_wxGridCellNumberRenderer_delete_function(void** p)
+{
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellNumberRenderer>(p);
+}
+%end
+
+%override wxLua_wxGridCellFloatRenderer_delete_function
+// delete is private in wxGridCellWorker, DecRef() it in derived classes
+void wxLua_wxGridCellFloatRenderer_delete_function(void** p)
+{
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellFloatRenderer>(p);
+}
+%end
+
+%override wxLua_wxGridCellBoolRenderer_delete_function
+// delete is private in wxGridCellWorker, DecRef() it in derived classes
+void wxLua_wxGridCellBoolRenderer_delete_function(void** p)
+{
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellBoolRenderer>(p);
+}
+%end
+
+%override wxLua_wxGridCellDateTimeRenderer_delete_function
+// delete is private in wxGridCellWorker, DecRef() it in derived classes
+void wxLua_wxGridCellDateTimeRenderer_delete_function(void** p)
+{
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellDateTimeRenderer>(p);
+}
+%end
+
+%override wxLua_wxGridCellEnumRenderer_delete_function
+// delete is private in wxGridCellWorker, DecRef() it in derived classes
+void wxLua_wxGridCellEnumRenderer_delete_function(void** p)
+{
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellEnumRenderer>(p);
+}
+%end
+
+%override wxLua_wxGridCellAutoWrapStringRenderer_delete_function
+// delete is private in wxGridCellWorker, DecRef() it in derived classes
+void wxLua_wxGridCellAutoWrapStringRenderer_delete_function(void** p)
+{
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellAutoWrapStringRenderer>(p);
+}
+%end
+
 
 %override wxLua_wxGridCellEditor_delete_function
 // delete is private in wxGridCellWorker, DecRef() it in derived classes
 void wxLua_wxGridCellEditor_delete_function(void** p)
 {
-    wxGridCellEditor* o = (wxGridCellEditor*)(*p);
-    o->DecRef();
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellEditor>(p);
 }
 %end
+
+%override wxLua_wxGridCellTextEditor_delete_function
+// delete is private in wxGridCellWorker, DecRef() it in derived classes
+void wxLua_wxGridCellTextEditor_delete_function(void** p)
+{
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellTextEditor>(p);
+}
+%end
+
+%override wxLua_wxGridCellNumberEditor_delete_function
+// delete is private in wxGridCellWorker, DecRef() it in derived classes
+void wxLua_wxGridCellNumberEditor_delete_function(void** p)
+{
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellNumberEditor>(p);
+}
+%end
+
+%override wxLua_wxGridCellFloatEditor_delete_function
+// delete is private in wxGridCellWorker, DecRef() it in derived classes
+void wxLua_wxGridCellFloatEditor_delete_function(void** p)
+{
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellFloatEditor>(p);
+}
+%end
+
+%override wxLua_wxGridCellBoolEditor_delete_function
+// delete is private in wxGridCellWorker, DecRef() it in derived classes
+void wxLua_wxGridCellBoolEditor_delete_function(void** p)
+{
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellBoolEditor>(p);
+}
+%end
+
+%override wxLua_wxGridCellChoiceEditor_delete_function
+// delete is private in wxGridCellWorker, DecRef() it in derived classes
+void wxLua_wxGridCellChoiceEditor_delete_function(void** p)
+{
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellChoiceEditor>(p);
+}
+%end
+
+%override wxLua_wxGridCellEnumEditor_delete_function
+// delete is private in wxGridCellWorker, DecRef() it in derived classes
+void wxLua_wxGridCellEnumEditor_delete_function(void** p)
+{
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellEnumEditor>(p);
+}
+%end
+
+%override wxLua_wxGridCellAutoWrapStringEditor_delete_function
+// delete is private in wxGridCellWorker, DecRef() it in derived classes
+void wxLua_wxGridCellAutoWrapStringEditor_delete_function(void** p)
+{
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellAutoWrapStringEditor>(p);
+}
+%end
+
 
 %override wxLua_wxGridCellAttr_delete_function
 // delete is private in wxGridCellWorker, DecRef() it in derived classes
 void wxLua_wxGridCellAttr_delete_function(void** p)
 {
-    wxGridCellAttr* o = (wxGridCellAttr*)(*p);
-    o->DecRef();
+    wxLua_wxGrid_DecRef_delete_function<wxGridCellAttr>(p);
 }
 %end

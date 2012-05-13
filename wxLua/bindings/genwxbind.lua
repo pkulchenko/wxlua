@@ -288,6 +288,8 @@ function InitDataTypes()
     dataTypeAttribTable["%gc"]     = true -- this object will be gc by Lua
     dataTypeAttribTable["%ungc"]   = true -- this object won't be gc by Lua
 
+    dataTypeAttribTable["%IncRef"] = true -- special to wxGridCellWorker/wxRefCounter classes and IncRef() will be called on it
+
     -- datatypes that are unsigned integers to be treated differently
     dataTypeUIntTable["size_t"]         = true
     dataTypeUIntTable["time_t"]         = true
@@ -3294,6 +3296,11 @@ function GenerateLuaLanguageBinding(interface)
                         param.DataTypeWithAttrib = string.sub(param.DataTypeWithAttrib, 1, a-1)..string.sub(param.DataTypeWithAttrib, a+6)
                         param.UnGC = true
                     end
+                    local a = string.find(param.DataTypeWithAttrib, "%IncRef", 1, 1)
+                    if a then
+                        param.DataTypeWithAttrib = string.sub(param.DataTypeWithAttrib, 1, a-1)..string.sub(param.DataTypeWithAttrib, a+8)
+                        param.IncRef = true
+                    end
 
                     local declare = nil
                     local argType = param.DataType
@@ -3473,6 +3480,10 @@ function GenerateLuaLanguageBinding(interface)
                                 table.insert(gcList, "    if (wxluaO_isgcobject(L, "..argName..")) wxluaO_undeletegcobject(L, "..argName..");\n")
                             end
 
+                            if param.IncRef then
+                                table.insert(gcList, "    // This param will have DecRef() called on it so we IncRef() it to not have to worry about the Lua gc\n")
+                                table.insert(gcList, "    "..argName.."->IncRef();\n")
+                            end
                         end
                     elseif (indirectionCount == 2) and (argPtr == "*") then
                         if not numeric then
