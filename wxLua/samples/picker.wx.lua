@@ -71,8 +71,10 @@ end
 -- ---------------------------------------------------------------------------
 function OnDatePicker(event)
     local evt_type = event:GetEventType()
-    local val = event:GetDate():Format()
-
+    local val = "Invalid DateTime" -- can be invalid for wxDP_ALLOWNONE style
+    if event:GetDate():IsValid() then
+        val = event:GetDate():Format()
+    end
     local s = string.format("%s wxDateEvent type: %s=%d id: %d GetDate = '%s'\n\n", wx.wxNow(), wxEVT_Names[evt_type], evt_type, event:GetId(), val)
     textCtrl:AppendText(s)
 end
