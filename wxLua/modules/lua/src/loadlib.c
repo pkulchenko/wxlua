@@ -1,5 +1,5 @@
 /*
-** $Id: loadlib.c,v 1.5 2011/11/08 04:43:59 jrl1 Exp $
+** $Id: loadlib.c,v 1.52.1.4 2009/09/09 13:17:16 roberto Exp $
 ** Dynamic library loader for Lua
 ** See Copyright Notice in lua.h
 **
@@ -502,7 +502,7 @@ static int ll_require (lua_State *L) {
 ** 'module' function
 ** =======================================================
 */
-
+  
 
 static void setfenv (lua_State *L) {
   lua_Debug ar;
@@ -632,7 +632,7 @@ LUALIB_API int luaopen_package (lua_State *L) {
   lua_setfield(L, -2, "__gc");
   /* create `package' table */
   luaL_register(L, LUA_LOADLIBNAME, pk_funcs);
-#if defined(LUA_COMPAT_LOADLIB)
+#if defined(LUA_COMPAT_LOADLIB) 
   lua_getfield(L, -1, "loadlib");
   lua_setfield(L, LUA_GLOBALSINDEX, "loadlib");
 #endif

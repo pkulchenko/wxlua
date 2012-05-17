@@ -1,5 +1,5 @@
 /*
-** $Id: lua.c,v 1.4 2008/01/18 03:43:00 jrl1 Exp $
+** $Id: lua.c,v 1.160.1.2 2007/12/28 15:32:23 roberto Exp $
 ** Lua stand-alone interpreter
 ** See Copyright Notice in lua.h
 */
@@ -242,14 +242,14 @@ static int handle_script (lua_State *L, char **argv, int n) {
   int narg = getargs(L, argv, n);  /* collect arguments */
   lua_setglobal(L, "arg");
   fname = argv[n];
-  if (strcmp(fname, "-") == 0 && strcmp(argv[n-1], "--") != 0)
+  if (strcmp(fname, "-") == 0 && strcmp(argv[n-1], "--") != 0) 
     fname = NULL;  /* stdin */
   status = luaL_loadfile(L, fname);
   lua_insert(L, -(narg+1));
   if (status == 0)
     status = docall(L, narg, 0);
   else
-    lua_pop(L, narg);
+    lua_pop(L, narg);      
   return report(L, status);
 }
 

@@ -1,5 +1,5 @@
 /*
-** $Id: lgc.c,v 1.4 2011/11/08 04:43:59 jrl1 Exp $
+** $Id: lgc.c,v 2.38.1.2 2011/03/18 18:05:38 roberto Exp $
 ** Garbage Collector
 ** See Copyright Notice in lua.h
 */
@@ -310,7 +310,7 @@ static l_mem propagatemark (global_State *g) {
       traverseproto(g, p);
       return sizeof(Proto) + sizeof(Instruction) * p->sizecode +
                              sizeof(Proto *) * p->sizep +
-                             sizeof(TValue) * p->sizek +
+                             sizeof(TValue) * p->sizek + 
                              sizeof(int) * p->sizelineinfo +
                              sizeof(LocVar) * p->sizelocvars +
                              sizeof(TString *) * p->sizeupvalues;
@@ -696,7 +696,7 @@ void luaC_linkupval (lua_State *L, UpVal *uv) {
   GCObject *o = obj2gco(uv);
   o->gch.next = g->rootgc;  /* link upvalue into `rootgc' list */
   g->rootgc = o;
-  if (isgray(o)) {
+  if (isgray(o)) { 
     if (g->gcstate == GCSpropagate) {
       gray2black(o);  /* closed upvalues need barrier */
       luaC_barrier(L, uv, uv->v);
