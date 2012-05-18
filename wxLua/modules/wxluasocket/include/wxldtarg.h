@@ -29,20 +29,26 @@ protected:
     // -----------------------------------------------------------------------
     class LuaThread : public wxThread
     {
-        public:
-            LuaThread(wxLuaDebugTarget *pTarget) : wxThread(wxTHREAD_JOINABLE),
-                                                   m_pTarget(pTarget) {}
-        protected:
-            virtual void *Entry();   // thread execution starts here
-            virtual void OnExit() {} // called when the thread exits
+      public:
+        LuaThread(wxLuaDebugTarget *luaDebugTarget);
+        virtual ~LuaThread();
 
-            wxLuaDebugTarget *m_pTarget;
+      protected:
+
+        virtual void *Entry();   // thread execution starts here
+        virtual void OnExit() {} // called when the thread exits
+
+        wxLuaDebugTarget *m_luaDebugTarget;
     };
 
 public:
-    wxLuaDebugTarget(const wxLuaState& wxlState, const wxString &serverName,
-                                                 int portNumber);
+    wxLuaDebugTarget(const wxLuaState& wxlState,
+                     const wxString &serverName, int portNumber);
+
     virtual ~wxLuaDebugTarget();
+
+    /// Returns true if this is currently connected to a wxLuaDebuggerServer.
+    bool IsConnected(bool wait_for_connect = true) const;
 
     bool Run();
     void Stop();
@@ -53,7 +59,7 @@ public:
 
 protected:
 
-    enum debugOperations
+    enum DebugOperations_Type
     {
         DEBUG_STEP,
         DEBUG_STEPOVER,
@@ -61,44 +67,49 @@ protected:
         DEBUG_GO
     };
 
-    wxLuaState          m_wxlState;
-    int                 m_port_number;
-    wxString            m_serverName;
-    wxSortedArrayString m_breakPointList;
-    wxMutex             m_debugMutex;
-    wxCondition         m_debugCondition;
-    wxLuaSocket         m_clientSocket;
-    debugOperations     m_nextOperation;
-    bool                m_forceBreak;
-    bool                m_resetRequested;
-    bool                m_fConnected;
-    bool                m_fRunning;
-    bool                m_fStopped;
-    bool                m_fExiting;
-    bool                m_fErrorsSeen;
-    int                 m_nFramesUntilBreak;
-    wxMutex             m_runMutex;
-    wxCondition         m_runCondition;
-    wxArrayString       m_bufferArray;
-    LuaThread          *m_pThread;
-    wxArrayInt          m_references;
-    wxCriticalSection   m_luaCriticalSection;
+    wxLuaState                m_wxlState;
+
+    LuaThread*                m_luaThread;
+    wxCriticalSection         m_luaThreadCriticalSection;
+
+    wxLuaSocket               m_clientSocket;
+    int                       m_port_number;
+    wxString                  m_serverName;
+    bool                      m_socket_connected;
+
+    wxArrayString             m_bufferArray;
+
+    wxCriticalSection         m_luaCriticalSection;
+    wxMutex                   m_runMutex;
+    wxCondition               m_runCondition;
+    wxMutex                   m_debugMutex;
+    wxCondition               m_debugCondition;
+
+    wxSortedArrayString       m_breakPointList;
     mutable wxCriticalSection m_breakPointListCriticalSection;
 
-    // Enter/Leave critical section for the threaded sockets
+    DebugOperations_Type      m_nextOperation;
+    bool                      m_force_break;
+    bool                      m_reset_requested;
+    bool                      m_is_running;
+    bool                      m_is_stopped;
+    bool                      m_is_exiting;
+    int                       m_nframes_until_break;
+
+    wxArrayInt                m_references;
+
+    /// Enter critical section for accessing the lua_State from the threaded sockets.
     inline void EnterLuaCriticalSection() { m_luaCriticalSection.Enter(); }
+    /// Leave critical section for accessing the lua_State from the threaded sockets.
     inline void LeaveLuaCriticalSection() { m_luaCriticalSection.Leave(); }
 
-    void ExitThread();
-
-    // Return a string ("%d:%s", lineNumber, fileName) for the breakpoint
+    /// Returns a string ("%d:%s", lineNumber, fileName) for the breakpoint, does not set it.
     wxString CreateBreakPoint(const wxString &fileName, int lineNumber) const;
-    // Are we at a set breakpoint?
     bool AtBreakPoint(const wxString &fileName, int lineNumber) const;
-
     bool AddBreakPoint(const wxString &fileName, int lineNumber);
     bool RemoveBreakPoint(const wxString &fileName, int lineNumber);
     bool ClearAllBreakPoints();
+
     bool Run(const wxString &fileName, const wxString &buffer);
     bool Step();
     bool StepOver();
@@ -120,18 +131,19 @@ protected:
     bool NotifyTableEnumeration(long itemNode, const wxLuaDebugData& debugData);
     bool NotifyEvaluateExpr(int exprRef, const wxString &strResult);
 
-    // Handle events from the static wxLuaDebugTarget::LuaDebugHook
+    /// Handle events from the static wxLuaDebugTarget::LuaDebugHook().
     bool DebugHook(int event);
 
-    bool IsConnected(bool wait_for_connect = true) const;
-
-    // Get the wxLuaDebugTarget that was pushed into Lua
+    /// Get the wxLuaDebugTarget that was pushed into Lua's registry.
     static wxLuaDebugTarget* GetDebugTarget(lua_State* L);
 
-    // Handle the events from lua_sethook()
+    /// Handle the events from lua_sethook().
     static void LUACALL LuaDebugHook(lua_State *L, lua_Debug *debug);
-    // Forward the print statements to NotifyPrint()
+    /// Forward the print statements to NotifyPrint().
     static int  LUACALL LuaPrint (lua_State *L);
+
+private:
+    friend class LuaThread;
 };
 
 #endif // LUA_DEBUG_TARGET_H

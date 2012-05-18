@@ -30,10 +30,21 @@
 // wxLuaDebugTarget::LuaThread
 // ----------------------------------------------------------------------------
 
+wxLuaDebugTarget::LuaThread::LuaThread(wxLuaDebugTarget *luaDebugTarget)
+                 :wxThread(wxTHREAD_JOINABLE),
+                  m_luaDebugTarget(luaDebugTarget)
+{
+}
+
+wxLuaDebugTarget::LuaThread::~LuaThread()
+{
+    wxCriticalSectionLocker locker(m_luaDebugTarget->m_luaThreadCriticalSection);
+    m_luaDebugTarget->m_luaThread = NULL;
+}
+
 void *wxLuaDebugTarget::LuaThread::Entry()
 {
-    m_pTarget->ThreadFunction();
-    //m_pTarget->m_pThread = NULL;
+    m_luaDebugTarget->ThreadFunction();
     return 0;
 }
 
@@ -42,34 +53,40 @@ void *wxLuaDebugTarget::LuaThread::Entry()
 // ----------------------------------------------------------------------------
 
 wxLuaDebugTarget::wxLuaDebugTarget(const wxLuaState& wxlState,
-                                   const wxString &serverName,
-                                   int             port_number) :
-    m_wxlState(wxlState),
-    m_port_number(port_number),
-    m_serverName(serverName),
-    m_debugCondition(m_debugMutex),
-    m_forceBreak(false),
-    m_resetRequested(false),
-    m_fConnected(false),
-    m_fRunning(false),
-    m_fStopped(false),
-    m_fExiting(false),
-    m_fErrorsSeen(false),
-    m_nFramesUntilBreak(0),
-    m_runCondition(m_runMutex),
-    m_pThread(NULL)
+                                   const wxString& serverName, int port_number)
+                 :wxObject(),
+                  m_wxlState(wxlState),
+                  m_luaThread(NULL),
+
+                  m_port_number(port_number),
+                  m_serverName(serverName),
+                  m_socket_connected(false),
+
+                  m_runCondition(m_runMutex),
+                  m_debugCondition(m_debugMutex),
+
+                  m_nextOperation(DEBUG_STEP),
+                  m_force_break(false),
+                  m_reset_requested(false),
+                  m_is_running(false),
+                  m_is_stopped(false),
+                  m_is_exiting(false),
+                  m_nframes_until_break(0)
 {
     m_clientSocket.m_name = wxString::Format(wxT("wxLuaDebugTarget::m_clientSocket (%ld)"), (long)wxGetProcessId());
 
     lua_State* L = m_wxlState.GetLuaState();
+
     // Stick us into the lua_State - push key, value
     lua_pushstring( L, "__wxLuaDebugTarget__" );
     lua_pushlightuserdata( L, (void*)this );
     // set the value
     lua_rawset( L, LUA_REGISTRYINDEX );
 
+    // Set all the debug hooks
     lua_sethook(L, LuaDebugHook, LUA_MASKCALL | LUA_MASKLINE | LUA_MASKRET, 0);
 
+    // Catch the print statements to send to the debugger server
     lua_pushcfunction(L, LuaPrint);
     lua_setglobal(L, "print");
 
@@ -78,114 +95,138 @@ wxLuaDebugTarget::wxLuaDebugTarget(const wxLuaState& wxlState,
 
 wxLuaDebugTarget::~wxLuaDebugTarget()
 {
-    //if (m_pThread != NULL)
-    //    delete m_pThread;
+    //if (m_luaThread != NULL)
+    //    delete m_luaThread;
 
     LeaveLuaCriticalSection();
 }
 
 bool wxLuaDebugTarget::IsConnected(bool wait_for_connect) const
 {
-    if (m_fConnected || !wait_for_connect) return m_fConnected;
+    if (m_socket_connected || !wait_for_connect) return m_socket_connected;
 
+    // Wait to see if we've connected
     for (int idx = 0; idx < WXLUASOCKET_CONNECT_TIMEOUT; ++idx)
     {
-        if (m_fConnected)
+        if (m_socket_connected)
             break;
 
         wxMilliSleep(100);
     }
-    return m_fConnected;
+    return m_socket_connected;
 }
 
 bool wxLuaDebugTarget::Run()
 {
-    wxCHECK_MSG(m_pThread == NULL, false, wxT("wxLuaDebugTarget::Run already called"));
+    wxCHECK_MSG(m_luaThread == NULL, false, wxT("wxLuaDebugTarget::Run already called"));
 
     // Assume something is going to go wrong
-    m_fErrorsSeen = true;
+    bool ok = false;
 
-    m_pThread = new LuaThread(this);
-    // Start the thread
-    if ((m_pThread != NULL) &&
-        (m_pThread->Create() == wxTHREAD_NO_ERROR) &&
-        (m_pThread->Run()    == wxTHREAD_NO_ERROR))
+    m_luaThread = new LuaThread(this);
+    wxCHECK_MSG(m_luaThread != NULL, false, wxT("Unable to create LuaThread"));
+
+    if ( m_luaThread->Create() != wxTHREAD_NO_ERROR )
     {
-        // Wait for the connection to the server to complete
-        if (!IsConnected())
+        wxLogError(wxT("Can't Create() the LuaThread!"));
+        delete m_luaThread;
+        m_luaThread = NULL;
+        return false;
+    }
+
+    if ( m_luaThread->Run() != wxTHREAD_NO_ERROR )
+    {
+        wxLogError(wxT("Can't Run() the LuaThread!"));
+        delete m_luaThread;
+        m_luaThread = NULL;
+        return false;
+    }
+
+    // Wait for the connection to the server to complete
+    if (!IsConnected(true))
+    {
+        wxMessageBox(wxString::Format(wxT("The wxLuaDebugTarget is unable to connect to '%s:%d'"), m_serverName.wx_str(), m_port_number),
+                     wxT("wxLua debuggee"), wxOK | wxCENTRE, NULL);
+        return false;
+    }
+
+    // OK, now we can start running.
+    m_runCondition.Wait();
+
+    m_is_running = true;
+    ok           = true;
+
+    size_t idx, count = m_bufferArray.GetCount();
+
+    for (idx = 0; idx < count; ++idx)
+    {
+        wxString luaBuffer   = m_bufferArray.Item(idx);
+        wxString bufFilename = luaBuffer.BeforeFirst(wxT('\0'));
+        wxString buf         = luaBuffer.AfterFirst(wxT('\0'));
+
+        wxLuaCharBuffer char_buf(buf);
+        int rc = m_wxlState.LuaDoBuffer(char_buf, char_buf.Length(),
+                                        wx2lua(bufFilename));
+        ok = (rc == 0);
+
+        if (!ok)
         {
-            wxMessageBox(wxT("Unable to connect to server"), wxT("wxLua client"), wxOK | wxCENTRE, NULL);
-        }
-        else
-        {
-            // OK, now we can start running.
-            m_runCondition.Wait();
-
-            m_fRunning    = true;
-            m_fErrorsSeen = false;
-
-            size_t idx, count = m_bufferArray.GetCount();
-            for (idx = 0; idx < count; ++idx)
-            {
-                wxString luaBuffer = m_bufferArray.Item(idx);
-                wxString bufFilename = luaBuffer.BeforeFirst(wxT('\0'));
-                wxString buf =  luaBuffer.AfterFirst(wxT('\0'));
-
-                wxLuaCharBuffer char_buf(buf);
-                int rc = m_wxlState.LuaDoBuffer(char_buf, char_buf.Length(),
-                                            wx2lua(bufFilename));
-
-                m_fErrorsSeen = (rc != 0);
-                if (m_fErrorsSeen)
-                {
-                    NotifyError(wxlua_LUA_ERR_msg(rc));
-                    break;
-                }
-            }
-
-            m_bufferArray.Clear();
+            NotifyError(wxlua_LUA_ERR_msg(rc));
+            break;
         }
     }
 
-    return !m_fErrorsSeen;
+    m_bufferArray.Clear();
+
+    return ok;
 }
 
 void wxLuaDebugTarget::Stop()
 {
     NotifyExit();
 
-    if (m_fConnected)
+    if (m_socket_connected)
     {
         m_clientSocket.Shutdown(SD_BOTH);
         wxMilliSleep(100);
         m_clientSocket.Close();
     }
 
-    if (m_pThread)
-        m_pThread->Wait();
+    wxCriticalSectionLocker locker(m_luaThreadCriticalSection);
+
+    if (m_luaThread)
+        m_luaThread->Wait();
 }
 
 void wxLuaDebugTarget::ThreadFunction()
 {
-    bool fThreadRunning = false;
+    bool thread_running = false;
 
     if (m_clientSocket.Connect(m_serverName, m_port_number))
     {
-        m_fConnected   = true;
-        fThreadRunning = true;
+        m_socket_connected = true;
+        thread_running     = true;
     }
     else
     {
+        wxLogError(wxString::Format(wxT("The wxLuaDebugTarget is unable to connect to '%s:%d'"), m_serverName.wx_str(), m_port_number));
         return; // FIXME
     }
 
-    while (fThreadRunning && !m_pThread->TestDestroy() && !m_resetRequested && !m_fExiting)
+    while (thread_running && !m_reset_requested && !m_is_exiting)
     {
-        unsigned char debugCommand = 0; // wxLuaSocketDebuggerCommands_Type
+        {
+            wxCriticalSectionLocker locker(m_luaThreadCriticalSection);
+            if (!m_luaThread || m_luaThread->TestDestroy())
+                break;
+        }
+
+        unsigned char debugCommand = wxLUASOCKET_DEBUGGER_CMD_NONE; // wxLuaSocketDebuggerCommands_Type
+
         if (!m_clientSocket.ReadCmd(debugCommand) ||
             !HandleDebuggerCmd(debugCommand))
         {
-            fThreadRunning = false;
+            thread_running = false;
         }
     }
 }
@@ -260,7 +301,7 @@ bool wxLuaDebugTarget::HandleDebuggerCmd(int debugCommand)
         }
         case wxLUASOCKET_DEBUGGER_CMD_DEBUG_CONTINUE:
         {
-            m_forceBreak = false;
+            m_force_break = false;
             ret = Continue();
             break;
         }
@@ -383,36 +424,30 @@ bool wxLuaDebugTarget::Step()
 {
     m_nextOperation = DEBUG_STEP;
 
-    if (!m_fRunning)
-        m_runCondition.Signal();
-    else if (m_fStopped)
-        m_debugCondition.Signal();
+    if      (!m_is_running) m_runCondition.Signal();
+    else if ( m_is_stopped) m_debugCondition.Signal();
 
     return true;
 }
 
 bool wxLuaDebugTarget::StepOver()
 {
-    m_nFramesUntilBreak = 0;
+    m_nframes_until_break = 0;
     m_nextOperation = DEBUG_STEPOVER;
 
-    if (!m_fRunning)
-        m_runCondition.Signal();
-    else if (m_fStopped)
-        m_debugCondition.Signal();
+    if      (!m_is_running) m_runCondition.Signal();
+    else if ( m_is_stopped) m_debugCondition.Signal();
 
     return true;
 }
 
 bool wxLuaDebugTarget::StepOut()
 {
-    m_nFramesUntilBreak = 1;
+    m_nframes_until_break = 1;
     m_nextOperation = DEBUG_STEPOVER;
 
-    if (!m_fRunning)
-        m_runCondition.Signal();
-    else if (m_fStopped)
-        m_debugCondition.Signal();
+    if      (!m_is_running) m_runCondition.Signal();
+    else if ( m_is_stopped) m_debugCondition.Signal();
 
     return true;
 }
@@ -421,17 +456,15 @@ bool wxLuaDebugTarget::Continue()
 {
     m_nextOperation = DEBUG_GO;
 
-    if (!m_fRunning)
-        m_runCondition.Signal();
-    else if (m_fStopped)
-        m_debugCondition.Signal();
+    if      (!m_is_running) m_runCondition.Signal();
+    else if ( m_is_stopped) m_debugCondition.Signal();
 
     return true;
 }
 
 bool wxLuaDebugTarget::Break()
 {
-    m_forceBreak = true;
+    m_force_break = true;
     return true;
 }
 
@@ -439,13 +472,11 @@ bool wxLuaDebugTarget::Reset()
 {
     NotifyExit();
 
-    m_forceBreak     = true;
-    m_resetRequested = true;
+    m_force_break     = true;
+    m_reset_requested = true;
 
-    if (!m_fRunning)
-        m_runCondition.Signal();
-    else if (m_fStopped)
-        m_debugCondition.Signal();
+    if      (!m_is_running) m_runCondition.Signal();
+    else if ( m_is_stopped) m_debugCondition.Signal();
 
     return true;
 }
@@ -514,34 +545,35 @@ bool wxLuaDebugTarget::EvaluateExpr(int exprRef, const wxString &strExpr) // FIX
         }
         else
         {
-             lua_Debug ar = INIT_LUA_DEBUG;
-             int       iLevel = 0;
-             bool      fFound = false;
+            lua_Debug ar        = INIT_LUA_DEBUG;
+            int  stack_level    = 0; // 0 is the current running function
+            bool variable_found = false;
 
-             while (lua_getstack(L, iLevel++, &ar) != 0)
-             {
-                int       iIndex = 0;
-                wxString name = lua2wx(lua_getlocal(L, &ar, ++iIndex));
-                if (!name.IsEmpty())
+            while (lua_getstack(L, stack_level++, &ar) != 0)
+            {
+                int stack_index = 1; // 1 is the first local stack index
+                wxString name = lua2wx(lua_getlocal(L, &ar, stack_index));
+
+                while (!name.IsEmpty())
                 {
                     if (strExpr == name)
                     {
                         nReference = m_wxlState.wxluaR_Ref(-1, &wxlua_lreg_refs_key);
-                        fFound = true;
+                        lua_pop(L, 1);
+                        variable_found = true;
                         break;
                     }
 
                     lua_pop(L, 1);
+                    name = lua2wx(lua_getlocal(L, &ar, ++stack_index));
                 }
 
-                if (fFound)
+                if (variable_found)
                     break;
+            }
 
-                name = lua2wx(lua_getlocal(L, &ar, ++iIndex));
-             }
-
-             if (!fFound)
-             {
+            if (!variable_found)
+            {
                   int nOldTop = lua_gettop(L);
                   lua_pushvalue(L, LUA_GLOBALSINDEX);
                   lua_pushnil(L);
@@ -554,7 +586,7 @@ bool wxLuaDebugTarget::EvaluateExpr(int exprRef, const wxString &strExpr) // FIX
                           {
                               nReference = m_wxlState.wxluaR_Ref(-1, &wxlua_lreg_refs_key); // reference value
                               lua_pop(L, 2);    // pop key and value
-                              fFound = true;
+                              variable_found = true;
                               break;
                           }
                       }
@@ -562,10 +594,10 @@ bool wxLuaDebugTarget::EvaluateExpr(int exprRef, const wxString &strExpr) // FIX
                       lua_pop(L, 1);  // removes 'value';
                   }
                   lua_settop(L, nOldTop); // the table of globals.
-             }
+            }
         }
 
-        if (m_wxlState.wxluaR_GetRef(nReference, &wxlua_lreg_refs_key))
+        if ((nReference != LUA_NOREF) && m_wxlState.wxluaR_GetRef(nReference, &wxlua_lreg_refs_key))
         {
             m_wxlState.wxluaR_Unref(nReference, &wxlua_lreg_refs_key);
 
@@ -585,7 +617,7 @@ bool wxLuaDebugTarget::EvaluateExpr(int exprRef, const wxString &strExpr) // FIX
 
 bool wxLuaDebugTarget::NotifyBreak(const wxString &fileName, int lineNumber)
 {
-    return IsConnected() && !m_resetRequested &&
+    return IsConnected() && !m_reset_requested &&
            m_clientSocket.WriteCmd(wxLUASOCKET_DEBUGGEE_EVENT_BREAK) &&
            m_clientSocket.WriteString(fileName) &&
            m_clientSocket.WriteInt32(lineNumber);
@@ -609,7 +641,6 @@ bool wxLuaDebugTarget::NotifyError(const wxString &errorMsg)
     else
         wxMessageBox(errorMsg, wxT("wxLua debug client error"), wxOK | wxCENTRE, NULL);
 
-    m_fErrorsSeen = true;
     return false;
 }
 
@@ -658,12 +689,12 @@ bool wxLuaDebugTarget::NotifyEvaluateExpr(int exprRef,
 bool wxLuaDebugTarget::DebugHook(int event)
 {
     bool fWait = false;
-    m_fStopped = true;
+    m_is_stopped = true;
 
     int      lineNumber = 0;
     wxString fileName;
 
-    if (!(m_forceBreak && m_resetRequested))
+    if (!(m_force_break && m_reset_requested))
     {
         lua_Debug luaDebug = INIT_LUA_DEBUG;
         lua_getstack(m_wxlState.GetLuaState(), 0, &luaDebug);
@@ -674,16 +705,16 @@ bool wxLuaDebugTarget::DebugHook(int event)
             fileName = fileName.Mid(1);
     }
 
-    if (m_forceBreak)
+    if (m_force_break)
     {
-        if (m_resetRequested)
+        if (m_reset_requested)
         {
             fWait = true;
-            m_fExiting = true;
+            m_is_exiting = true;
             wxExit();
         }
 
-        if (!m_fExiting)
+        if (!m_is_exiting)
         {
             if (NotifyBreak(fileName, lineNumber))
                 fWait = true;
@@ -692,11 +723,11 @@ bool wxLuaDebugTarget::DebugHook(int event)
     else
     {
         if (event == LUA_HOOKCALL) // call
-            m_nFramesUntilBreak++;
+            m_nframes_until_break++;
         else if ((event == LUA_HOOKRET) || (event == LUA_HOOKTAILRET)) // return
         {
-            if (m_nFramesUntilBreak > 0)
-                m_nFramesUntilBreak--;
+            if (m_nframes_until_break > 0)
+                m_nframes_until_break--;
         }
         else if (event == LUA_HOOKLINE) // line
         {
@@ -711,7 +742,7 @@ bool wxLuaDebugTarget::DebugHook(int event)
                 }
                 case DEBUG_STEPOVER:
                 {
-                    if ((m_nFramesUntilBreak == 0) && NotifyBreak(fileName, lineNumber))
+                    if ((m_nframes_until_break == 0) && NotifyBreak(fileName, lineNumber))
                         fWait = true;
 
                     break;
@@ -739,7 +770,7 @@ bool wxLuaDebugTarget::DebugHook(int event)
         EnterLuaCriticalSection();
     }
 
-    m_fStopped = false;
+    m_is_stopped = false;
     return fWait;
 }
 
@@ -747,26 +778,26 @@ bool wxLuaDebugTarget::DebugHook(int event)
 
 wxLuaDebugTarget* wxLuaDebugTarget::GetDebugTarget(lua_State* L)
 {
-    wxLuaDebugTarget *pTarget = NULL;
+    wxLuaDebugTarget *luaDebugTarget = NULL;
 
     // try to get the state we've stored
     lua_pushstring( L, "__wxLuaDebugTarget__" );
     lua_rawget( L, LUA_REGISTRYINDEX );
     // if nothing was returned or it wasn't a ptr, abort
     if ( lua_islightuserdata(L, -1) )
-        pTarget = (wxLuaDebugTarget*)lua_touserdata( L, -1 );
+        luaDebugTarget = (wxLuaDebugTarget*)lua_touserdata( L, -1 );
 
     lua_pop(L, 1);
 
-    return pTarget;
+    return luaDebugTarget;
 }
 
 void LUACALL wxLuaDebugTarget::LuaDebugHook(lua_State *L, lua_Debug *pLuaDebug)
 {
-    wxLuaDebugTarget *pTarget = GetDebugTarget(L);
+    wxLuaDebugTarget *luaDebugTarget = GetDebugTarget(L);
 
-    if (pTarget != NULL)
-        pTarget->DebugHook(pLuaDebug->event);
+    if (luaDebugTarget != NULL)
+        luaDebugTarget->DebugHook(pLuaDebug->event);
 }
 
 int LUACALL wxLuaDebugTarget::LuaPrint(lua_State *L)
@@ -780,7 +811,7 @@ int LUACALL wxLuaDebugTarget::LuaPrint(lua_State *L)
         lua_pushvalue(L, -1);  /* function to be called */
         lua_pushvalue(L, idx);   /* value to print */
         lua_call(L, 1, 1);
-        wxString s = lua2wx(lua_tostring(L, -1));  /* get result */
+        wxString s(lua2wx(lua_tostring(L, -1)));  /* get result */
         if (s.IsEmpty())
             return luaL_error(L, "`tostring' must return a string to `print'");
         if (idx > 1)
@@ -789,10 +820,10 @@ int LUACALL wxLuaDebugTarget::LuaPrint(lua_State *L)
         lua_pop(L, 1);  /* pop result */
     }
 
-    wxLuaDebugTarget *pTarget = GetDebugTarget(L);
+    wxLuaDebugTarget *luaDebugTarget = GetDebugTarget(L);
 
-    if (pTarget != NULL)
-        pTarget->NotifyPrint(stream);
+    if (luaDebugTarget != NULL)
+        luaDebugTarget->NotifyPrint(stream);
 
     return 0;
 }

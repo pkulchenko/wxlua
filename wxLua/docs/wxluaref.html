@@ -18812,10 +18812,10 @@
 <br>
     bool IsCreated()<br>
     <a href="#wxControl">wxControl</a>* GetControl()<br>
-    <font color=#009900>// wxLua Note: This will delete the control</font><br>
+    <font color=#009900>// wxLua Note: The attr will delete the control when it is destroyed.</font><br>
     void SetControl(<i>%ungc</i> <a href="#wxControl">wxControl</a>* control)<br>
     <a href="#wxGridCellAttr">wxGridCellAttr</a>* GetCellAttr()<br>
-    <font color=#009900>// wxLua Note: the attr must exist for the life of this object and it doesn't take ownership</font><br>
+    <font color=#009900>// wxLua Note: the attr must exist for the life of this object since it doesn't take ownership nor call DecRef() on it.</font><br>
     void SetCellAttr(<a href="#wxGridCellAttr">wxGridCellAttr</a>* attr)<br>
 <br>
     <font color=#009900>//virtual void Create(<a href="#wxWindow">wxWindow</a>* parent, wxWindowID id, <a href="#wxEvtHandler">wxEvtHandler</a>* evtHandler)</font><br>
@@ -18918,11 +18918,15 @@
     void SetAlignment(int hAlign, int vAlign)<br>
     void SetSize(int num_rows, int num_cols)<br>
     void SetOverflow(bool allow = true)<br>
-    void SetReadOnly(bool isReadOnly = true)<br>
-    <font color=#009900>// wxLua Note: the renderer must exist for the life of this object and it doesn't take ownership, but it does call DecRef()</font><br>
-    void SetRenderer(<a href="#wxGridCellRenderer">wxGridCellRenderer</a> *renderer)<br>
-    <font color=#009900>// wxLua Note: the editor must exist for the life of this object and it doesn't take ownership, but it does call DecRef()</font><br>
-    void SetEditor(<a href="#wxGridCellEditor">wxGridCellEditor</a>* editor)<br>
+    void SetReadOnly(bool isReadOnly = true)<br>
+<br>
+    <font color=#009900>// wxLua calls IncRef() on the input renderer since the attr will call DecRef() on it.</font><br>
+    <font color=#009900>// You should not have to worry about Inc/DecRef() of the renderer as you would in C++.</font><br>
+    void SetRenderer(<i>%IncRef</i> <a href="#wxGridCellRenderer">wxGridCellRenderer</a> *renderer)<br>
+    <font color=#009900>// wxLua calls IncRef() on the input editor since the attr will call DecRef() on it.</font><br>
+    <font color=#009900>// You should not have to worry about Inc/DecRef() of the editor as you would in C++.</font><br>
+    void SetEditor(<i>%IncRef</i> <a href="#wxGridCellEditor">wxGridCellEditor</a>* editor)<br>
+<br>
     void SetKind(wxGridCellAttr::wxAttrKind kind)<br>
     bool HasTextColour() const<br>
     bool HasBackgroundColour() const<br>
@@ -18946,10 +18950,14 @@
     void GetSize() const<br>
 <br>
     bool GetOverflow() const<br>
-    <a href="#wxGridCellRenderer">wxGridCellRenderer</a> *GetRenderer(<a href="#wxGrid">wxGrid</a>* grid, int row, int col) const<br>
-    <a href="#wxGridCellEditor">wxGridCellEditor</a> *GetEditor(<a href="#wxGrid">wxGrid</a>* grid, int row, int col) const<br>
+    <font color=#009900>// wxLua Note: The attr calls IncRef() on the returned renderer so wxLua will garbage collect it.</font><br>
+    <i>%gc</i> <a href="#wxGridCellRenderer">wxGridCellRenderer</a> *GetRenderer(<a href="#wxGrid">wxGrid</a>* grid, int row, int col) const<br>
+    <font color=#009900>// wxLua Note: The attr calls IncRef() on the returned editor so wxLua will garbage collect it.</font><br>
+    <i>%gc</i> <a href="#wxGridCellEditor">wxGridCellEditor</a> *GetEditor(<a href="#wxGrid">wxGrid</a>* grid, int row, int col) const<br>
+<br>
     bool IsReadOnly() const<br>
-    wxGridCellAttr::wxAttrKind GetKind()<br>
+    wxGridCellAttr::wxAttrKind GetKind()<br>
+<br>
     <font color=#009900>// wxLua Note: the attr must exist for the life of this object and it doesn't take ownership</font><br>
     void SetDefAttr(<a href="#wxGridCellAttr">wxGridCellAttr</a>* defAttr)<br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
@@ -18961,11 +18969,19 @@
 <blockquote>
     <a href="#wxGridCellAttrProvider">wxGridCellAttrProvider</a>()<br>
 <br>
-    <font color=#009900>// wxLua Note: You must call DecRef() on the returned attr.</font><br>
-    <a href="#wxGridCellAttr">wxGridCellAttr</a> *GetAttr(int row, int col, wxGridCellAttr::wxAttrKind  kind) const<br>
-    void SetAttr(<i>%ungc</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr, int row, int col)<br>
-    void SetRowAttr(<i>%ungc</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr, int row)<br>
-    void SetColAttr(<i>%ungc</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr, int col)<br>
+    <font color=#009900>// wxLua Note: The attrprovider calls IncRef() on the returned attribute so wxLua will garbage collect it.</font><br>
+    <i>%gc</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *GetAttr(int row, int col, wxGridCellAttr::wxAttrKind  kind) const<br>
+<br>
+    <font color=#009900>// wxLua calls IncRef() on the input attr since the attrprovider will call DecRef() on it.</font><br>
+    <font color=#009900>// You should not have to worry about Inc/DecRef() of the attr as you would in C++.</font><br>
+    void SetAttr(<i>%IncRef</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr, int row, int col)<br>
+    <font color=#009900>// wxLua calls IncRef() on the input attr since the attrprovider will call DecRef() on it.</font><br>
+    <font color=#009900>// You should not have to worry about Inc/DecRef() of the attr as you would in C++.</font><br>
+    void SetRowAttr(<i>%IncRef</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr, int row)<br>
+    <font color=#009900>// wxLua calls IncRef() on the input attr since the attrprovider will call DecRef() on it.</font><br>
+    <font color=#009900>// You should not have to worry about Inc/DecRef() of the attr as you would in C++.</font><br>
+    void SetColAttr(<i>%IncRef</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr, int col)<br>
+<br>
     void UpdateAttrRows( size_t pos, int numRows )<br>
     void UpdateAttrCols( size_t pos, int numCols )<br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
@@ -19010,11 +19026,19 @@
     void SetAttrProvider(<a href="#wxGridCellAttrProvider">wxGridCellAttrProvider</a> *attrProvider)<br>
     <a href="#wxGridCellAttrProvider">wxGridCellAttrProvider</a> *GetAttrProvider() const<br>
     virtual bool CanHaveAttributes()<br>
-    virtual <a href="#wxGridCellAttr">wxGridCellAttr</a>* GetAttr( int row, int col, wxGridCellAttr::wxAttrKind  kind)<br>
-<br>
-    void SetAttr(<i>%ungc</i> <a href="#wxGridCellAttr">wxGridCellAttr</a>* attr, int row, int col)<br>
-    void SetRowAttr(<i>%ungc</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr, int row)<br>
-    void SetColAttr(<i>%ungc</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr, int col)<br>
+<br>
+    <font color=#009900>// wxLua Note: The table calls IncRef() on the returned attribute so wxLua will garbage collect it.</font><br>
+    virtual <i>%gc</i> <a href="#wxGridCellAttr">wxGridCellAttr</a>* GetAttr( int row, int col, wxGridCellAttr::wxAttrKind  kind)<br>
+<br>
+    <font color=#009900>// wxLua calls IncRef() on the input attr since the table will call DecRef() on it.</font><br>
+    <font color=#009900>// You should not have to worry about Inc/DecRef() of the attr as you would in C++.</font><br>
+    void SetAttr(<i>%IncRef</i> <a href="#wxGridCellAttr">wxGridCellAttr</a>* attr, int row, int col)<br>
+    <font color=#009900>// wxLua calls IncRef() on the input attr since the table will call DecRef() on it.</font><br>
+    <font color=#009900>// You should not have to worry about Inc/DecRef() of the attr as you would in C++.</font><br>
+    void SetRowAttr(<i>%IncRef</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr, int row)<br>
+    <font color=#009900>// wxLua calls IncRef() on the input attr since the table will call DecRef() on it.</font><br>
+    <font color=#009900>// You should not have to worry about Inc/DecRef() of the attr as you would in C++.</font><br>
+    void SetColAttr(<i>%IncRef</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr, int col)<br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
@@ -19050,14 +19074,14 @@
     <font color=#009900>//virtual void SetValueAsDouble( int row, int col, double value );</font><br>
     <font color=#009900>//virtual void SetValueAsBool( int row, int col, bool value );</font><br>
     <font color=#009900>//</font><br>
-    <font color=#009900>// For user defined types</font><br>
-    <font color=#009900>//virtual void* GetValueAsCustom( int row, int col, const <a href="#wxString">wxString</a>&amp; typeName );</font><br>
-    <font color=#009900>//virtual void  SetValueAsCustom( int row, int col, const <a href="#wxString">wxString</a>&amp; typeName, void* value );</font><br>
+    <font color=#009900>// For user defined types - Custom values probably don't make too much sense for wxLua</font><br>
+    <font color=#009900>// wxLua NOT overridable - virtual void* GetValueAsCustom( int row, int col, const <a href="#wxString">wxString</a>&amp; typeName );</font><br>
+    <font color=#009900>// wxLua NOT overridable - virtual void  SetValueAsCustom( int row, int col, const <a href="#wxString">wxString</a>&amp; typeName, void* value );</font><br>
     <font color=#009900>//</font><br>
     <font color=#009900>// Overriding these is optional</font><br>
     <font color=#009900>//</font><br>
-    <font color=#009900>//virtual void SetView( <a href="#wxGrid">wxGrid</a> *grid ) { m_view = grid; }</font><br>
-    <font color=#009900>//virtual <a href="#wxGrid">wxGrid</a> * GetView() const { return m_view; }</font><br>
+    <font color=#009900>// wxLua NOT overridable - virtual void SetView( <a href="#wxGrid">wxGrid</a> *grid ) { m_view = grid; }</font><br>
+    <font color=#009900>// wxLua NOT overridable - virtual <a href="#wxGrid">wxGrid</a> * GetView() const { return m_view; }</font><br>
     <font color=#009900>//</font><br>
     <font color=#009900>//virtual void Clear() {}</font><br>
     <font color=#009900>//virtual bool InsertRows( size_t pos = 0, size_t numRows = 1 );</font><br>
@@ -19075,10 +19099,10 @@
     <font color=#009900>// Attribute handling</font><br>
     <font color=#009900>//</font><br>
     <font color=#009900>// give us the attr provider to use - we take ownership of the pointer</font><br>
-    <font color=#009900>//void SetAttrProvider(<a href="#wxGridCellAttrProvider">wxGridCellAttrProvider</a> *attrProvider);</font><br>
+    <font color=#009900>// wxLua NOT overridable - void SetAttrProvider(<a href="#wxGridCellAttrProvider">wxGridCellAttrProvider</a> *attrProvider);</font><br>
     <font color=#009900>//</font><br>
     <font color=#009900>// get the currently used attr provider (may be NULL)</font><br>
-    <font color=#009900>//<a href="#wxGridCellAttrProvider">wxGridCellAttrProvider</a> *GetAttrProvider() const { return m_attrProvider; }</font><br>
+    <font color=#009900>// wxLua NOT overridable - <a href="#wxGridCellAttrProvider">wxGridCellAttrProvider</a> *GetAttrProvider() const { return m_attrProvider; }</font><br>
     <font color=#009900>//</font><br>
     <font color=#009900>// Does this table allow attributes?  Default implementation creates</font><br>
     <font color=#009900>// a <a href="#wxGridCellAttrProvider">wxGridCellAttrProvider</a> if necessary.</font><br>
@@ -19089,10 +19113,10 @@
     <font color=#009900>//virtual <a href="#wxGridCellAttr">wxGridCellAttr</a> *GetAttr( int row, int col,</font><br>
     <font color=#009900>//                                 wxGridCellAttr::wxAttrKind  kind );</font><br>
     <font color=#009900>//</font><br>
-    <font color=#009900>// these functions take ownership of the pointer</font><br>
-    <font color=#009900>//virtual void SetAttr(<a href="#wxGridCellAttr">wxGridCellAttr</a>* attr, int row, int col);</font><br>
-    <font color=#009900>//virtual void SetRowAttr(<a href="#wxGridCellAttr">wxGridCellAttr</a> *attr, int row);</font><br>
-    <font color=#009900>//virtual void SetColAttr(<a href="#wxGridCellAttr">wxGridCellAttr</a> *attr, int col);</font><br>
+    <font color=#009900>// In wxLua it would be much easier to simply store the attributes in your own Lua table and return them in GetAttr()</font><br>
+    <font color=#009900>// wxLua NOT overridable - virtual void SetAttr(<a href="#wxGridCellAttr">wxGridCellAttr</a>* attr, int row, int col);</font><br>
+    <font color=#009900>// wxLua NOT overridable - virtual void SetRowAttr(<a href="#wxGridCellAttr">wxGridCellAttr</a> *attr, int row);</font><br>
+    <font color=#009900>// wxLua NOT overridable - virtual void SetColAttr(<a href="#wxGridCellAttr">wxGridCellAttr</a> *attr, int col);</font><br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
@@ -19334,11 +19358,19 @@
     void    EnableDragCell( bool enable = true )<br>
     void    DisableDragCell()<br>
     bool    CanDragCell()<br>
-<br>
-    void    SetAttr(int row, int col, <i>%ungc</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr)<br>
-    void    SetRowAttr(int row, <i>%ungc</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr)<br>
-    void    SetColAttr(int col, <i>%ungc</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr)<br>
-    <a href="#wxGridCellAttr">wxGridCellAttr</a> *GetOrCreateCellAttr(int row, int col) const<br>
+<br>
+    <font color=#009900>// wxLua calls IncRef() on the input attr since the table will call DecRef() on it.</font><br>
+    <font color=#009900>// You should not have to worry about Inc/DecRef() of the attr as you would in C++.</font><br>
+    void    SetAttr(int row, int col, <i>%IncRef</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr)<br>
+    <font color=#009900>// wxLua calls IncRef() on the input attr since the table will call DecRef() on it.</font><br>
+    <font color=#009900>// You should not have to worry about Inc/DecRef() of the attr as you would in C++.</font><br>
+    void    SetRowAttr(int row, <i>%IncRef</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr)<br>
+    <font color=#009900>// wxLua calls IncRef() on the input attr since the table will call DecRef() on it.</font><br>
+    <font color=#009900>// You should not have to worry about Inc/DecRef() of the attr as you would in C++.</font><br>
+    void    SetColAttr(int col, <i>%IncRef</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr)<br>
+<br>
+    <font color=#009900>// wxLua Note: The grid calls IncRef() on the returned attribute so wxLua will garbage collect it.</font><br>
+    <i>%gc</i> <a href="#wxGridCellAttr">wxGridCellAttr</a> *GetOrCreateCellAttr(int row, int col) const<br>
 <br>
     void    SetColFormatBool(int col)<br>
     void    SetColFormatNumber(int col)<br>
@@ -19358,6 +19390,9 @@
     <a href="#wxColour">wxColour</a> GetCellTextColour( int row, int col )<br>
     <a href="#wxFont">wxFont</a>   GetDefaultCellFont()<br>
     <a href="#wxFont">wxFont</a>   GetCellFont( int row, int col )<br>
+<br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> [int horiz, int vert] wxGrid::GetDefaultCellAlignment( )</font></font><br>
+    <font color=#009900>// C++ Func: void GetDefaultCellAlignment( int *horiz, int *vert )</font><br>
     void     GetDefaultCellAlignment( int *horiz, int *vert )<br>
 <br>
 <font color=#BB0055>    <font color=#009900>// <i>%override</i> [int horiz, int vert] wxGrid::GetCellAlignment( int row, int col )</font></font><br>
@@ -19402,15 +19437,29 @@
     void    SetCellOverflow( int row, int col, bool allow )<br>
     void    SetCellSize( int row, int col, int num_rows, int num_cols )<br>
 <br>
-    void    SetDefaultRenderer(<i>%ungc</i> <a href="#wxGridCellRenderer">wxGridCellRenderer</a> *renderer)<br>
-    void    SetCellRenderer(int row, int col, <i>%ungc</i> <a href="#wxGridCellRenderer">wxGridCellRenderer</a> *renderer)<br>
-    <a href="#wxGridCellRenderer">wxGridCellRenderer</a>* GetDefaultRenderer() const<br>
-    <a href="#wxGridCellRenderer">wxGridCellRenderer</a>* GetCellRenderer(int row, int col)<br>
+    <font color=#009900>// wxLua calls IncRef() on the input renderer since the table will call DecRef() on it.</font><br>
+    <font color=#009900>// You should not have to worry about Inc/DecRef() of the attr as you would in C++.</font><br>
+    void    SetDefaultRenderer(<i>%IncRef</i> <a href="#wxGridCellRenderer">wxGridCellRenderer</a> *renderer)<br>
+    <font color=#009900>// wxLua calls IncRef() on the input renderer since the table will call DecRef() on it.</font><br>
+    <font color=#009900>// You should not have to worry about Inc/DecRef() of the attr as you would in C++.</font><br>
+    void    SetCellRenderer(int row, int col, <i>%IncRef</i> <a href="#wxGridCellRenderer">wxGridCellRenderer</a> *renderer)<br>
 <br>
-    void    SetDefaultEditor(<i>%ungc</i> <a href="#wxGridCellEditor">wxGridCellEditor</a> *editor)<br>
-    void    SetCellEditor(int row, int col, <i>%ungc</i> <a href="#wxGridCellEditor">wxGridCellEditor</a> *editor)<br>
-    <a href="#wxGridCellEditor">wxGridCellEditor</a>* GetDefaultEditor() const<br>
-    <a href="#wxGridCellEditor">wxGridCellEditor</a>* GetCellEditor(int row, int col)<br>
+    <font color=#009900>// wxLua Note: The grid calls IncRef() on the returned renderer so wxLua will garbage collect it.</font><br>
+    <i>%gc</i> <a href="#wxGridCellRenderer">wxGridCellRenderer</a>* GetDefaultRenderer() const<br>
+    <font color=#009900>// wxLua Note: The grid calls IncRef() on the returned renderer so wxLua will garbage collect it.</font><br>
+    <i>%gc</i> <a href="#wxGridCellRenderer">wxGridCellRenderer</a>* GetCellRenderer(int row, int col)<br>
+<br>
+    <font color=#009900>// wxLua calls IncRef() on the input editor since the table will call DecRef() on it.</font><br>
+    <font color=#009900>// You should not have to worry about Inc/DecRef() of the attr as you would in C++.</font><br>
+    void    SetDefaultEditor(<i>%IncRef</i> <a href="#wxGridCellEditor">wxGridCellEditor</a> *editor)<br>
+    <font color=#009900>// wxLua calls IncRef() on the input editor since the table will call DecRef() on it.</font><br>
+    <font color=#009900>// You should not have to worry about Inc/DecRef() of the attr as you would in C++.</font><br>
+    void    SetCellEditor(int row, int col, <i>%IncRef</i> <a href="#wxGridCellEditor">wxGridCellEditor</a> *editor)<br>
+<br>
+    <font color=#009900>// wxLua Note: The grid calls IncRef() on the returned editor so wxLua will garbage collect it.</font><br>
+    <i>%gc</i> <a href="#wxGridCellEditor">wxGridCellEditor</a>* GetDefaultEditor() const<br>
+    <font color=#009900>// wxLua Note: The grid calls IncRef() on the returned editor so wxLua will garbage collect it.</font><br>
+    <i>%gc</i> <a href="#wxGridCellEditor">wxGridCellEditor</a>* GetCellEditor(int row, int col)<br>
 <br>
     <a href="#wxString">wxString</a> GetCellValue( int row, int col )<br>
     <font color=#009900>// <a href="#wxString">wxString</a> GetCellValue( const <a href="#wxGridCellCoords">wxGridCellCoords</a>&amp; coords )</font><br>
@@ -19446,12 +19495,20 @@
     void    SetSelectionBackground(const <a href="#wxColour">wxColour</a>&amp; c)<br>
     void    SetSelectionForeground(const <a href="#wxColour">wxColour</a>&amp; c)<br>
 <br>
-    void    RegisterDataType(const <a href="#wxString">wxString</a>&amp; typeName, <i>%ungc</i> <a href="#wxGridCellRenderer">wxGridCellRenderer</a>* renderer, <i>%ungc</i> <a href="#wxGridCellEditor">wxGridCellEditor</a>* editor)<br>
-    <a href="#wxGridCellEditor">wxGridCellEditor</a>* GetDefaultEditorForCell(int row, int col) const<br>
-    <font color=#009900>//<a href="#wxGridCellEditor">wxGridCellEditor</a>* GetDefaultEditorForCell(const <a href="#wxGridCellCoords">wxGridCellCoords</a>&amp; coords) const</font><br>
-    <a href="#wxGridCellRenderer">wxGridCellRenderer</a>* GetDefaultRendererForCell(int row, int col) const<br>
-    <a href="#wxGridCellEditor">wxGridCellEditor</a>* GetDefaultEditorForType(const <a href="#wxString">wxString</a>&amp; typeName) const<br>
-    <a href="#wxGridCellRenderer">wxGridCellRenderer</a>* GetDefaultRendererForType(const <a href="#wxString">wxString</a>&amp; typeName) const<br>
+    <font color=#009900>// wxLua calls IncRef() on the input renderer and editor since the table will call DecRef() on it.</font><br>
+    <font color=#009900>// You should not have to worry about Inc/DecRef() of the attr as you would in C++.</font><br>
+    void    RegisterDataType(const <a href="#wxString">wxString</a>&amp; typeName, <i>%IncRef</i> <a href="#wxGridCellRenderer">wxGridCellRenderer</a>* renderer, <i>%IncRef</i> <a href="#wxGridCellEditor">wxGridCellEditor</a>* editor)<br>
+<br>
+    <font color=#009900>// wxLua Note: The grid calls IncRef() on the returned editor so wxLua will garbage collect it.</font><br>
+    <i>%gc</i> <a href="#wxGridCellEditor">wxGridCellEditor</a>* GetDefaultEditorForCell(int row, int col) const<br>
+    <font color=#009900>//<a href="#wxGridCellEditor">wxGridCellEditor</a>* GetDefaultEditorForCell(const <a href="#wxGridCellCoords">wxGridCellCoords</a>&amp; coords) const</font><br>
+    <font color=#009900>// wxLua Note: The grid calls IncRef() on the returned renderer so wxLua will garbage collect it.</font><br>
+    <i>%gc</i> <a href="#wxGridCellRenderer">wxGridCellRenderer</a>* GetDefaultRendererForCell(int row, int col) const<br>
+    <font color=#009900>// wxLua Note: The grid calls IncRef() on the returned editor so wxLua will garbage collect it.</font><br>
+    <i>%gc</i> <a href="#wxGridCellEditor">wxGridCellEditor</a>* GetDefaultEditorForType(const <a href="#wxString">wxString</a>&amp; typeName) const<br>
+    <font color=#009900>// wxLua Note: The grid calls IncRef() on the returned renderer so wxLua will garbage collect it.</font><br>
+    <i>%gc</i> <a href="#wxGridCellRenderer">wxGridCellRenderer</a>* GetDefaultRendererForType(const <a href="#wxString">wxString</a>&amp; typeName) const<br>
+<br>
     void SetMargins(int extraWidth, int extraHeight)<br>
 <br>
     <a href="#wxWindow">wxWindow</a>* GetGridWindow()<br>
@@ -19487,7 +19544,7 @@
 <font color=#006666>    <i>%define_event</i> wxEVT_GRID_CELL_BEGIN_DRAG    <font color=#009900>// EVT_GRID_CELL_BEGIN_DRAG(fn)</font></font><br>
 <br>
     !<i>%wxchkver_2_9_0</i> <a href="#wxGridEvent">wxGridEvent</a>(int id, wxEventType type, <a href="#wxObject">wxObject</a>* obj, int row = -1, int col = -1, int x = -1, int y = -1, bool sel = true, bool control = false, bool shift = false, bool alt = false, bool meta = false)<br>
-    <br>
+<br>
     virtual int GetRow()<br>
     virtual int GetCol()<br>
     <a href="#wxPoint">wxPoint</a>     GetPosition()<br>
