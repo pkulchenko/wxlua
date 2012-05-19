@@ -68,7 +68,7 @@ void
         if (m_wxlState.LuaPCall(5, 1) == 0)
             fResult = (lua_tonumber(L, -1) != 0);
 
-        lua_settop(L, nOldTop);
+        lua_settop(L, nOldTop-1); // -1 to remove pushed derived method func too
 
         if (fResult)
         {
@@ -105,7 +105,7 @@ void wxLuaHtmlWindow::OnCellMouseHover(wxHtmlCell *cell, wxCoord x, wxCoord y)
         lua_pushnumber(L, y);
 
         m_wxlState.LuaPCall(4, 0);
-        lua_settop(L, nOldTop);
+        lua_settop(L, nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         wxHtmlWindow::OnCellMouseHover(cell, x, y);
@@ -124,7 +124,7 @@ void wxLuaHtmlWindow::OnLinkClicked(const wxHtmlLinkInfo& link)
         m_wxlState.wxluaT_PushUserDataType((void *) &link, wxluatype_wxHtmlLinkInfo, true);
 
         m_wxlState.LuaPCall(2, 0);
-        lua_settop(L, nOldTop);
+        lua_settop(L, nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         wxHtmlWindow::OnLinkClicked(link);
@@ -143,7 +143,7 @@ void wxLuaHtmlWindow::OnSetTitle(const wxString& title)
         m_wxlState.lua_PushString(title);
 
         m_wxlState.LuaPCall(2, 0);
-        lua_settop(L, nOldTop);
+        lua_settop(L, nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         wxHtmlWindow::OnSetTitle(title);

@@ -51,7 +51,7 @@ size_t wxLuaDataObjectSimple::GetDataSize() const
         if (m_wxlState.LuaPCall(1, 1) == 0)
             result = m_wxlState.GetNumberType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         result = wxDataObjectSimple::GetDataSize();
@@ -81,7 +81,7 @@ bool wxLuaDataObjectSimple::GetDataHere(void* buf) const
             memcpy(buf, lua_buf, len);
         }
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         result = wxDataObjectSimple::GetDataHere(buf);
@@ -105,7 +105,7 @@ bool wxLuaDataObjectSimple::SetData(size_t len, const void* buf)
         if (m_wxlState.LuaPCall(2, 1) == 0)
             result = m_wxlState.GetBooleanType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         result = wxDataObjectSimple::SetData(len, buf);
@@ -163,7 +163,7 @@ void wxLuaPrintout::GetPageInfo(int *minPage, int *maxPage, int *pageFrom, int *
             *pageTo   = (int)m_wxlState.GetNumberType(-1);
         }
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
     {
@@ -190,7 +190,7 @@ bool wxLuaPrintout::HasPage(int pageNum)
         if (m_wxlState.LuaPCall(2, 1) == 0)
             fResult = m_wxlState.GetBooleanType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         fResult = wxPrintout::HasPage(pageNum);
@@ -241,7 +241,7 @@ bool wxLuaPrintout::OnBeginDocument(int startPage, int endPage)
         if (m_wxlState.LuaPCall(3, 1) == 0)
             fResult = m_wxlState.GetBooleanType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
         //wxPrintf(wxT("wxLuaPrintout::OnBeginDocument 2 call base %d\n"), m_wxlState.GetCallBaseClassFunction());
     }
     else
@@ -266,7 +266,7 @@ void wxLuaPrintout::OnEndDocument()
         int nOldTop = m_wxlState.lua_GetTop();
         m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaPrintout, true);
         m_wxlState.LuaPCall(1, 0);
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         wxPrintout::OnEndDocument();
@@ -282,7 +282,7 @@ void wxLuaPrintout::OnBeginPrinting()
         int nOldTop = m_wxlState.lua_GetTop();
         m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaPrintout, true);
         m_wxlState.LuaPCall(1, 0);
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         wxPrintout::OnBeginPrinting();
@@ -298,7 +298,7 @@ void wxLuaPrintout::OnEndPrinting()
         int nOldTop = m_wxlState.lua_GetTop();
         m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaPrintout, true);
         m_wxlState.LuaPCall(1, 0);
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         wxPrintout::OnEndPrinting();
@@ -314,7 +314,7 @@ void wxLuaPrintout::OnPreparePrinting()
         int nOldTop = m_wxlState.lua_GetTop();
         m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaPrintout, true);
         m_wxlState.LuaPCall(1, 0);
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         wxPrintout::OnPreparePrinting();
@@ -336,7 +336,7 @@ bool wxLuaPrintout::OnPrintPage(int pageNum)
         if (m_wxlState.LuaPCall(2, 1) == 0)
             fResult = m_wxlState.GetBooleanType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     // no else since this is pure virtual
 
@@ -359,7 +359,7 @@ wxString wxLuaPrintout::TestVirtualFunctionBinding(const wxString& val)
         if (m_wxlState.LuaPCall(2, 1) == 0)
             result = m_wxlState.GetwxStringType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     // no else since wxPrintout doesn't have this function
 
@@ -401,7 +401,7 @@ wxSize wxLuaArtProvider::DoGetSizeHint(const wxArtClient& client)
             if (s) size = *s;
         }
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         size = wxArtProvider::DoGetSizeHint(client);
@@ -435,7 +435,7 @@ wxBitmap wxLuaArtProvider::CreateBitmap(const wxArtID& id, const wxArtClient& cl
             if (b) bitmap = *b;
         }
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     // no else since this is pure virtual
 

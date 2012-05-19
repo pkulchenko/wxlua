@@ -54,7 +54,7 @@ int wxLuaGridTableBase::GetNumberRows()
         if (m_wxlState.LuaPCall(1, 1) == 0)
             numrows = (int)m_wxlState.GetNumberType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     // no else since this is pure virtual
 
@@ -76,7 +76,7 @@ int wxLuaGridTableBase::GetNumberCols()
         if (m_wxlState.LuaPCall(1, 1) == 0)
             numcols = (int)m_wxlState.GetNumberType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     // no else since this is pure virtual
 
@@ -100,7 +100,7 @@ bool wxLuaGridTableBase::IsEmptyCell( int row, int col )
         if (m_wxlState.LuaPCall(3, 1) == 0)
             fResult = m_wxlState.GetBooleanType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     // no else since this is pure virtual
 
@@ -124,7 +124,7 @@ wxString wxLuaGridTableBase::GetValue( int row, int col )
         if (m_wxlState.LuaPCall(3, 1) == 0)
             val = m_wxlState.GetwxStringType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     // no else since this is pure virtual
 
@@ -145,7 +145,7 @@ void wxLuaGridTableBase::SetValue( int row, int col, const wxString& value )
         m_wxlState.lua_PushString(value);
 
         m_wxlState.LuaPCall(4, 0);
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     // no else since this is pure virtual
 
@@ -169,7 +169,7 @@ wxString wxLuaGridTableBase::GetTypeName( int row, int col )
         if (m_wxlState.LuaPCall(3, 1) == 0)
             val = m_wxlState.GetwxStringType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         val = wxGridTableBase::GetTypeName( row, col );
@@ -196,7 +196,7 @@ bool wxLuaGridTableBase::CanGetValueAs( int row, int col, const wxString& typeNa
         if (m_wxlState.LuaPCall(4, 1) == 0)
             fResult = m_wxlState.GetBooleanType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         fResult = wxGridTableBase::CanGetValueAs( row, col, typeName );
@@ -223,7 +223,7 @@ bool wxLuaGridTableBase::CanSetValueAs( int row, int col, const wxString& typeNa
         if (m_wxlState.LuaPCall(4, 1) == 0)
             fResult = m_wxlState.GetBooleanType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         fResult = wxGridTableBase::CanSetValueAs( row, col, typeName );
@@ -250,7 +250,7 @@ long wxLuaGridTableBase::GetValueAsLong( int row, int col )
         if (m_wxlState.LuaPCall(3, 1) == 0)
             lResult = m_wxlState.GetIntegerType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         lResult = wxGridTableBase::GetValueAsLong( row, col );
@@ -276,7 +276,7 @@ double wxLuaGridTableBase::GetValueAsDouble( int row, int col )
         if (m_wxlState.LuaPCall(3, 1) == 0)
             dResult = m_wxlState.GetNumberType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         dResult = wxGridTableBase::GetValueAsDouble( row, col );
@@ -302,7 +302,7 @@ bool wxLuaGridTableBase::GetValueAsBool( int row, int col )
         if (m_wxlState.LuaPCall(3, 1) == 0)
             fResult = m_wxlState.GetBooleanType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         fResult = wxGridTableBase::GetValueAsBool( row, col );
@@ -325,7 +325,7 @@ void wxLuaGridTableBase::SetValueAsLong( int row, int col, long value )
         m_wxlState.lua_PushNumber(value);
 
         m_wxlState.LuaPCall(4, 0);
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         wxGridTableBase::SetValueAsLong( row, col, value );
@@ -346,7 +346,7 @@ void wxLuaGridTableBase::SetValueAsDouble( int row, int col, double value )
         m_wxlState.lua_PushNumber(value);
 
         m_wxlState.LuaPCall(4, 0);
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         wxGridTableBase::SetValueAsDouble( row, col, value );
@@ -367,7 +367,7 @@ void wxLuaGridTableBase::SetValueAsBool( int row, int col, bool value )
         m_wxlState.lua_PushBoolean(value);
 
         m_wxlState.LuaPCall(4, 0);
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         wxGridTableBase::SetValueAsBool( row, col, value );
@@ -400,7 +400,7 @@ void wxLuaGridTableBase::Clear()
         m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaGridTableBase, true);
 
         m_wxlState.LuaPCall(1, 0);
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         wxGridTableBase::Clear( );
@@ -424,7 +424,7 @@ bool wxLuaGridTableBase::InsertRows( size_t pos, size_t numRows )
         if (m_wxlState.LuaPCall(3, 1) == 0)
             fResult = m_wxlState.GetBooleanType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         fResult = wxGridTableBase::InsertRows( pos, numRows );
@@ -449,7 +449,7 @@ bool wxLuaGridTableBase::AppendRows( size_t numRows )
         if (m_wxlState.LuaPCall(2, 1) == 0)
             fResult = m_wxlState.GetBooleanType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         fResult = wxGridTableBase::AppendRows( numRows );
@@ -475,7 +475,7 @@ bool wxLuaGridTableBase::DeleteRows( size_t pos, size_t numRows )
         if (m_wxlState.LuaPCall(3, 1) == 0)
             fResult = m_wxlState.GetBooleanType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         fResult = wxGridTableBase::DeleteRows( pos, numRows );
@@ -501,7 +501,7 @@ bool wxLuaGridTableBase::InsertCols( size_t pos, size_t numCols )
         if (m_wxlState.LuaPCall(3, 1) == 0)
             fResult = m_wxlState.GetBooleanType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         fResult = wxGridTableBase::InsertCols( pos, numCols );
@@ -526,7 +526,7 @@ bool wxLuaGridTableBase::AppendCols( size_t numCols )
         if (m_wxlState.LuaPCall(2, 1) == 0)
             fResult = m_wxlState.GetBooleanType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         fResult = wxGridTableBase::AppendCols( numCols );
@@ -552,7 +552,7 @@ bool wxLuaGridTableBase::DeleteCols( size_t pos, size_t numCols )
         if (m_wxlState.LuaPCall(3, 1) == 0)
             fResult = m_wxlState.GetBooleanType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         fResult = wxGridTableBase::DeleteCols( pos, numCols );
@@ -577,7 +577,7 @@ wxString wxLuaGridTableBase::GetRowLabelValue( int row )
         if (m_wxlState.LuaPCall(2, 1) == 0)
             val = m_wxlState.GetwxStringType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         val = wxGridTableBase::GetRowLabelValue( row );
@@ -602,7 +602,7 @@ wxString wxLuaGridTableBase::GetColLabelValue( int col )
         if (m_wxlState.LuaPCall(2, 1) == 0)
             val = m_wxlState.GetwxStringType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         val = wxGridTableBase::GetColLabelValue( col );
@@ -624,7 +624,7 @@ void wxLuaGridTableBase::SetRowLabelValue( int row, const wxString& val )
         m_wxlState.lua_PushString(val);
 
         m_wxlState.LuaPCall(3, 0);
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         wxGridTableBase::SetRowLabelValue( row, val );
@@ -644,7 +644,7 @@ void wxLuaGridTableBase::SetColLabelValue( int col, const wxString& val )
         m_wxlState.lua_PushString(val);
 
         m_wxlState.LuaPCall(3, 0);
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         wxGridTableBase::SetColLabelValue( col, val );
@@ -674,7 +674,7 @@ bool wxLuaGridTableBase::CanHaveAttributes()
         if (m_wxlState.LuaPCall(1, 1) == 0)
             fResult = m_wxlState.GetBooleanType(-1);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         fResult = wxGridTableBase::CanHaveAttributes( );
@@ -705,7 +705,7 @@ wxGridCellAttr *wxLuaGridTableBase::GetAttr( int row, int col,
         if (m_wxlState.LuaPCall(4, 1) == 0)
             attr = (wxGridCellAttr*)m_wxlState.GetUserDataType(-1, wxluatype_wxGridCellAttr);
 
-        m_wxlState.lua_SetTop(nOldTop);
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
     }
     else
         attr = wxGridTableBase::GetAttr( row, col, kind );
