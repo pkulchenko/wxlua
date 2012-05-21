@@ -7,22 +7,22 @@
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
 
-#include "wx/wxprec.h"
+#include <wx/wxprec.h>
 
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
 
 #ifndef WX_PRECOMP
-    #include "wx/wx.h"
+    #include <wx/wx.h>
 #endif
 
-#include "wx/imaglist.h"
-#include "wx/artprov.h"
-#include "wx/listctrl.h"
-#include "wx/splitter.h"
-#include "wx/progdlg.h"
-#include "wx/clipbrd.h"
+#include <wx/imaglist.h>
+#include <wx/artprov.h>
+#include <wx/listctrl.h>
+#include <wx/splitter.h>
+#include <wx/progdlg.h>
+#include <wx/clipbrd.h>
 
 #include "wxluadebug/include/wxlstack.h"
 #include "wxlua/include/wxlua.h"

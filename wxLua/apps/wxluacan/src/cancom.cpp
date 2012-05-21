@@ -10,14 +10,14 @@
     RCS-ID: $Id: cancom.cpp,v 1.1 2006/02/03 17:06:15 titato Exp $
 */
 
-#include "wx/wxprec.h"
+#include <wx/wxprec.h>
 
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
 
 #ifndef WX_PRECOMP
-    #include "wx/wx.h"
+    #include <wx/wx.h>
 #endif
 
 #include "cancom.h"
@@ -82,6 +82,6 @@ bool wxlMoveObjectCmd::Undo(void)
     // store undo information
     m_x = x;
     m_y = y;
-    
+
     return true;
 }

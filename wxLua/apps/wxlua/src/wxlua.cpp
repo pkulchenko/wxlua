@@ -9,23 +9,23 @@
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
 
-#include "wx/wxprec.h"
+#include <wx/wxprec.h>
 
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
 
 #ifndef WX_PRECOMP
-    #include "wx/wx.h"
+    #include <wx/wx.h>
 #endif
 
 #ifdef __WXGTK__
 #include <locale.h>
 #endif
 
-#include "wx/cmdline.h"
-#include "wx/fs_mem.h"
-#include "wx/image.h"
+#include <wx/cmdline.h>
+#include <wx/fs_mem.h>
+#include <wx/image.h>
 
 #include "wxlua/include/wxlua.h"
 #include "wxluasocket/include/wxldserv.h"
@@ -463,7 +463,7 @@ void RedirectIOToDosConsole(bool alloc_new_if_needed)
     FILE *fp = 0; // we don't close this, let the OS close it when the app exits
 
     // Try to attach to the parent process if it's a console, i.e. we're run from a DOS prompt.
-    BOOL attached_ok = AttachConsole( ATTACH_PARENT_PROCESS ); 
+    BOOL attached_ok = AttachConsole( ATTACH_PARENT_PROCESS );
 
     if (attached_ok == 0) // failed attaching
     {

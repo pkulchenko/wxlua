@@ -10,9 +10,9 @@
 #ifndef _WX_LUA_STACKTREE_H_
 #define _WX_LUA_STACKTREE_H_
 
-#include "wx/dialog.h"
-#include "wx/listctrl.h"
-#include "wx/treectrl.h"
+#include <wx/dialog.h>
+#include <wx/listctrl.h>
+#include <wx/treectrl.h>
 
 class WXDLLIMPEXP_FWD_CORE wxListCtrl;
 class WXDLLIMPEXP_FWD_CORE wxListEvent;

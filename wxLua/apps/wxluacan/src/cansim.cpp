@@ -8,14 +8,14 @@
     RCS-ID: $Id: cansim.cpp,v 1.17 2010/08/12 23:40:33 jrl1 Exp $
 */
 
-#include "wx/wxprec.h"
+#include <wx/wxprec.h>
 
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
 
 #ifndef WX_PRECOMP
-    #include "wx/wx.h"
+    #include <wx/wx.h>
 #endif
 
 // Include private headers
@@ -96,7 +96,7 @@ MyFrame::MyFrame( wxWindow *parent, wxWindowID id, const wxString &title,
     //defines the minimum x and y to show and the number of world units per pixel in x and y
     m_canvas->SetMappingUpp( m_xOrigin, m_yOrigin, m_xScale, m_yScale );
 
-    // Add some initial objects to the canvas 
+    // Add some initial objects to the canvas
     wxlCanObjRect* rect = new wxlCanObjRect( 170, 170,200, -120 );
     rect->SetPen(*wxGREEN_PEN);
     rect->SetBrush( wxBrush( wxColour(70, 124, 71) ) );

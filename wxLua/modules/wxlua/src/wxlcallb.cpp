@@ -8,14 +8,14 @@
 /////////////////////////////////////////////////////////////////////////////
 
 // For compilers that support precompilation, includes "wx/wx.h".
-#include "wx/wxprec.h"
+#include <wx/wxprec.h>
 
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
 
 #ifndef WX_PRECOMP
-    #include "wx/wx.h"
+    #include <wx/wx.h>
 #endif // WX_PRECOMP
 
 #include "wxlua/include/wxlcallb.h"
@@ -25,7 +25,7 @@
 //-----------------------------------------------------------------------------
 IMPLEMENT_ABSTRACT_CLASS(wxLuaEventCallback, wxLuaCallbackBaseClass)
 
-wxLuaEventCallback::wxLuaEventCallback() 
+wxLuaEventCallback::wxLuaEventCallback()
                    :wxLuaCallbackBaseClass(),
                     m_luafunc_ref(0), //m_wxlState(wxNullLuaState),
                     m_evtHandler(NULL), m_id(wxID_ANY), m_last_id(wxID_ANY),

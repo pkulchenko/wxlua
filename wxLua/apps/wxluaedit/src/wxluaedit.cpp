@@ -17,16 +17,16 @@
 #endif
 
 #ifndef WX_PRECOMP
-    #include "wx/wx.h"
+    #include <wx/wx.h>
 #endif
 
 #ifdef __WXGTK__
 #include <locale.h>
 #endif
 
-#include "wx/cmdline.h"
-#include "wx/image.h"
-#include "wx/fileconf.h"
+#include <wx/cmdline.h>
+#include <wx/image.h>
+#include <wx/fileconf.h>
 #include "wx/stedit/stedit.h"
 #include "wxledit.h"
 

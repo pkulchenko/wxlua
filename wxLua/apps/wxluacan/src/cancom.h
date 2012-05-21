@@ -14,13 +14,9 @@
 #define __WXLUACANCOM_H__
 
 
-#ifndef WX_PRECOMP
-    #include "wx/wx.h"
-#endif
-
 #include "canlua.h"
 
-#include "wx/cmdproc.h"
+#include <wx/cmdproc.h>
 
 //! a command interpreter
 /*!

@@ -6,13 +6,13 @@
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
 
-#include "wx/wxprec.h"
+#include <wx/wxprec.h>
 
 #ifndef WX_PRECOMP
-    #include "wx/wx.h"
+    #include <wx/wx.h>
 #endif
 
-#include "wx/image.h"       // for wxInitAllImageHandlers
+#include <wx/image.h>       // for wxInitAllImageHandlers
 #include "wxlua/include/wxlstate.h"
 #include "luamodule/include/luamoduledefs.h"
 
@@ -40,8 +40,8 @@ WXLUA_DECLARE_BIND_ALL
 HINSTANCE hDll;
 
 BOOL APIENTRY DllMain( HANDLE hModule, DWORD ul_reason_for_call, LPVOID )
-{	 
-   switch (ul_reason_for_call) 
+{
+   switch (ul_reason_for_call)
    {
       case DLL_PROCESS_ATTACH : hDll = (HINSTANCE)hModule; break;
       default : break;

@@ -12,7 +12,7 @@
 #ifndef WX_LUAAPP_H
 #define WX_LUAAPP_H
 
-#include "wx/app.h"
+#include <wx/app.h>
 #include "wxluasocket/include/wxldtarg.h"
 #include "lconsole.h"
 

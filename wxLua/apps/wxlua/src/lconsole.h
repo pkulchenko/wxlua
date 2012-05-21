@@ -9,7 +9,8 @@
 #ifndef WX_LUA_CONSOLE_H
 #define WX_LUA_CONSOLE_H
 
-#include "wx/frame.h"
+#include <wx/frame.h>
+
 #include "wxlua/include/wxlua.h"
 
 class WXDLLIMPEXP_FWD_CORE wxSplitterWindow;

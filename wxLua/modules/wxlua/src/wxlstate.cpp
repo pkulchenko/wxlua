@@ -8,7 +8,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 // For compilers that support precompilation, includes "wx/wx.h"
-#include "wx/wxprec.h"
+#include <wx/wxprec.h>
 
 #ifdef __BORLANDC__
     #pragma hdrstop
@@ -16,12 +16,12 @@
 
 // for all others, include the necessary headers
 #ifndef WX_PRECOMP
-    #include "wx/wx.h"
+    #include <wx/wx.h>
 #endif
 
 #include "wxlua/include/wxlstate.h"
 #include "wxlua/include/wxlcallb.h"
-#include "wx/tokenzr.h"
+#include <wx/tokenzr.h>
 
 //#include "wxluadebug/include/wxldebug.h" // for debugging only
 

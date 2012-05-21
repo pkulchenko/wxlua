@@ -9,8 +9,8 @@
 #ifndef WX_LUA_DEBUG_SERVER_H
 #define WX_LUA_DEBUG_SERVER_H
 
-#include "wx/process.h"
-#include "wx/thread.h"
+#include <wx/process.h>
+#include <wx/thread.h>
 #include "wxluasocket/include/wxluasocketdefs.h"
 #include "wxluasocket/include/wxlsock.h"
 #include "wxluadebug/include/wxldebug.h"

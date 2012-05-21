@@ -7,9 +7,9 @@
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
 
-lua   ICON   "..\\..\\..\\art\\wxlua.ico"
-//logo  BITMAP "..\examples\bitmaps\wxLua.bmp"
+lua   ICON   "../../../art/wxlua.ico"
+//logo  BITMAP "../examples/bitmaps/wxLua.bmp"
 
-#include "wx/msw/wx.rc"
+#include <wx/msw/wx.rc>
 
 // 1     24     "wxLua.manifest" // looks horrible!

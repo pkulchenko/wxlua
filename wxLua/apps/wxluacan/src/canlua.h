@@ -13,11 +13,7 @@
 #ifndef __LUACAN_H__
 #define __LUACAN_H__
 
-#ifndef WX_PRECOMP
-    #include "wx/wx.h"
-#endif
-
-#include "wx/wx.h"
+#include <wx/wx.h>
 #include "wxlua/include/wxlstate.h"
 
 class wxlCanObj;

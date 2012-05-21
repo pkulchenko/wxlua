@@ -11,14 +11,14 @@
 //    #pragma implementation "wxlua.h"
 //#endif
 
-#include "wx/wxprec.h"
+#include <wx/wxprec.h>
 
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
 
 #ifndef WX_PRECOMP
-    #include "wx/wx.h"
+    #include <wx/wx.h>
 #endif
 
 #ifdef __WXGTK__
@@ -26,10 +26,10 @@
 #endif
 
 //#include "wx/cmdline.h"
-#include "wx/app.h"
-#include "wx/image.h"
-#include "wx/file.h"
-#include "wx/filename.h"
+#include <wx/app.h>
+#include <wx/image.h>
+#include <wx/file.h>
+#include <wx/filename.h>
 #include "wxlua/include/wxlua.h"
 #include "wxlua/include/wxlstate.h"
 

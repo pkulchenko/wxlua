@@ -9,8 +9,8 @@
 #ifndef WX_LUA_DEBUG_H
 #define WX_LUA_DEBUG_H
 
-#include "wx/dynarray.h"
-#include "wx/treectrl.h" // for wxTreeItemData
+#include <wx/dynarray.h>
+#include <wx/treectrl.h> // for wxTreeItemData
 
 #include "wxluadebug/include/wxluadebugdefs.h"
 #include "wxlua/include/wxlstate.h"

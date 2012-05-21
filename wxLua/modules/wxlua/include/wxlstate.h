@@ -12,9 +12,9 @@
 
 #include "wxlua/include/wxldefs.h"
 #include "wxlua/include/wxlbind.h"
-#include "wx/filefn.h"
-#include "wx/filename.h"
-#include "wx/hashmap.h"
+#include <wx/filefn.h>
+#include <wx/filename.h>
+#include <wx/hashmap.h>
 
 class WXDLLIMPEXP_FWD_WXLUA wxLuaEvent;
 class WXDLLIMPEXP_FWD_WXLUA wxLuaState;

@@ -8,21 +8,21 @@
     RCS-ID: $Id: canlua.cpp,v 1.17 2009/11/17 06:11:02 jrl1 Exp $
 */
 
-#include "wx/wxprec.h"
+#include <wx/wxprec.h>
 
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
 
 #ifndef WX_PRECOMP
-    #include "wx/wx.h"
+    #include <wx/wx.h>
 #endif
 
 #include "canlua.h"
 #include "cancom.h"
 #include "wxluacan_bind.h"
 
-#include "wx/listimpl.cpp"
+#include <wx/listimpl.cpp>
 WX_DEFINE_LIST(wxlCanObjList);
 
 //------------------------------------------------------------------

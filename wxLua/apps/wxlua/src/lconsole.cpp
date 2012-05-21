@@ -8,14 +8,14 @@
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
 
-#include "wx/wxprec.h"
+#include <wx/wxprec.h>
 
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
 
 #ifndef WX_PRECOMP
-    #include "wx/wx.h"
+    #include <wx/wx.h>
 #endif
 
 //#if defined(__WXGTK__) || defined(__WXMOTIF__) || defined(__WXMAC__)
@@ -136,7 +136,7 @@ void wxLuaConsole::OnMenu(wxCommandEvent& event)
                                              wxT("Set Number of Scrollback Lines"),
                                              m_max_lines, 0, 10000,
                                              this);
-            if (lines >= 0) 
+            if (lines >= 0)
                 SetMaxLines(lines);
 
             break;

@@ -196,7 +196,7 @@ private:
 // ----------------------------------------------------------------------------
 // wxLuawxSocket - Handles Debugger/Debuggee IO
 // ----------------------------------------------------------------------------
-#include "wx/socket.h"
+#include <wx/socket.h>
 
 class WXDLLIMPEXP_WXLUASOCKET wxLuawxSocket : public wxLuaSocketBase
 {

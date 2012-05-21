@@ -26,7 +26,7 @@ extern "C"
     //typedef int (*lua_CFunction)(lua_State *);
 }
 
-#include "wx/defs.h"
+#include <wx/defs.h>
 
 //-----------------------------------------------------------------------------
 // 2.9 uses char* mostly so for compatibility we need wxT() to not append 'L'

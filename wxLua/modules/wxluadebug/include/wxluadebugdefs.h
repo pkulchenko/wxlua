@@ -12,7 +12,7 @@
 #ifndef __WX_WXLUADEBUGDEFS_H__
 #define __WX_WXLUADEBUGDEFS_H__
 
-#include "wx/defs.h"
+#include <wx/defs.h>
 
 #include "wxlua/include/wxldefs.h"
 
