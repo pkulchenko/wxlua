@@ -882,9 +882,9 @@
     void AddIcon( const wxString& file, long type )
     void AddIcon( const wxIcon& icon );
 
-    const wxIcon& GetIcon( const wxSize& size ) const;
+    wxIcon GetIcon( const wxSize& size ) const;
     // equivalent to GetIcon( wxSize( size, size ) )
-    const wxIcon& GetIcon( int size = wxDefaultCoord ) const
+    wxIcon GetIcon( int size = wxDefaultCoord ) const
 %endclass
 
 %endif //wxLUA_USE_wxIcon

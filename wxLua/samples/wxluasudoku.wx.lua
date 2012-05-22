@@ -2915,7 +2915,7 @@ function sudokuGUI.HitTestPossibleValue(mx, my)
     for n = 1, 9 do
         rect.X = sudokuGUI.possiblePosCache.pos[n].x
         rect.Y = sudokuGUI.possiblePosCache.pos[n].y
-        if rect:Inside(mx, my) then
+        if rect:Contains(mx, my) then
             return n
         end
     end

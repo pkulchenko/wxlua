@@ -231,7 +231,7 @@ void wxLuaConsole::DisplayStack(const wxLuaState& wxlState)
 
             // skip over ourselves on the stack
             if (nIndex > 0)
-                m_debugListBox->Append(buffer, (void *) nIndex);
+                m_debugListBox->Append(buffer, (void *)(long) nIndex);
         }
         nIndex++;
     }

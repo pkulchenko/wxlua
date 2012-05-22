@@ -154,8 +154,7 @@ void LUACALL wxlua_debugHookFunction(lua_State *L, lua_Debug *LDebug)
     {
         wxLuaState wxlState(L);
 
-        int ret = 0;
-        ret = lua_getinfo(L, "l", LDebug); // line (ldebug.currentline)
+        lua_getinfo(L, "l", LDebug); // line (ldebug.currentline)
 
         wxLuaEvent event(wxEVT_LUA_DEBUG_HOOK, wxlState.GetId(), wxlState);
         event.m_lua_Debug = LDebug;

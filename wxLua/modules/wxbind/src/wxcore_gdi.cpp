@@ -7361,7 +7361,7 @@ static int LUACALL wxLua_wxIconBundle_AddIcon(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIconBundle_GetIcon1[] = { &wxluatype_wxIconBundle, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxIconBundle_GetIcon1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIconBundle_GetIcon1[1] = {{ wxLua_wxIconBundle_GetIcon1, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxIconBundle_GetIcon1 }};
-//     const wxIcon& GetIcon( int size = wxDefaultCoord ) const
+//     wxIcon GetIcon( int size = wxDefaultCoord ) const
 static int LUACALL wxLua_wxIconBundle_GetIcon1(lua_State *L)
 {
     // get number of arguments
@@ -7371,7 +7371,10 @@ static int LUACALL wxLua_wxIconBundle_GetIcon1(lua_State *L)
     // get this
     wxIconBundle * self = (wxIconBundle *)wxluaT_getuserdatatype(L, 1, wxluatype_wxIconBundle);
     // call GetIcon
-    const wxIcon* returns = (const wxIcon*)&self->GetIcon(size);
+    // allocate a new object using the copy constructor
+    wxIcon* returns = new wxIcon(self->GetIcon(size));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxIcon);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxIcon);
 
@@ -7383,7 +7386,7 @@ static int LUACALL wxLua_wxIconBundle_GetIcon1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIconBundle_GetIcon[] = { &wxluatype_wxIconBundle, &wxluatype_wxSize, NULL };
 static int LUACALL wxLua_wxIconBundle_GetIcon(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIconBundle_GetIcon[1] = {{ wxLua_wxIconBundle_GetIcon, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxIconBundle_GetIcon }};
-//     const wxIcon& GetIcon( const wxSize& size ) const;
+//     wxIcon GetIcon( const wxSize& size ) const;
 static int LUACALL wxLua_wxIconBundle_GetIcon(lua_State *L)
 {
     // const wxSize size
@@ -7391,7 +7394,10 @@ static int LUACALL wxLua_wxIconBundle_GetIcon(lua_State *L)
     // get this
     wxIconBundle * self = (wxIconBundle *)wxluaT_getuserdatatype(L, 1, wxluatype_wxIconBundle);
     // call GetIcon
-    const wxIcon* returns = (const wxIcon*)&self->GetIcon(*size);
+    // allocate a new object using the copy constructor
+    wxIcon* returns = new wxIcon(self->GetIcon(*size));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxIcon);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxIcon);
 
