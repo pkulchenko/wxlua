@@ -3,7 +3,6 @@
 // Author:      J Winwood
 // Created:     14/11/2001
 // Modifications: Enhanced console window functionality
-// RCS-ID:      $Id: lconsole.cpp,v 1.20 2009/09/27 05:35:20 jrl1 Exp $
 // Copyright:   (c) 2001-2002 Lomtick Software. All rights reserved.
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
@@ -52,7 +51,8 @@ wxLuaConsole::wxLuaConsole(wxLuaConsoleWrapper* consoleWrapper,
               m_wrapper(consoleWrapper), m_exit_when_closed(false)
 {
     m_max_lines = 2000;
-    m_savePath = wxGetCwd();
+    m_saveFilename = wxT("log.txt");
+    m_saveFilename .Normalize();
 
     SetIcon(wxICON(LUA));
 
@@ -62,7 +62,6 @@ wxLuaConsole::wxLuaConsole(wxLuaConsoleWrapper* consoleWrapper,
     tb->AddTool(wxID_SAVEAS, wxT("Save output"),  wxArtProvider::GetBitmap(wxART_FILE_SAVE, wxART_TOOLBAR), wxT("Save contents to file..."), wxITEM_NORMAL);
     tb->AddTool(wxID_COPY,   wxT("Copy text"),    wxArtProvider::GetBitmap(wxART_COPY,      wxART_TOOLBAR), wxT("Copy contents to clipboard"), wxITEM_NORMAL);
     tb->AddTool(ID_WXLUACONSOLE_SCROLLBACK_LINES, wxT("Scrollback"), wxArtProvider::GetBitmap(wxART_LIST_VIEW, wxART_TOOLBAR), wxT("Set the number of scrollback lines..."), wxITEM_NORMAL);
-
     tb->Realize();
 
     m_splitter = new wxSplitterWindow(this, wxID_ANY,
@@ -107,8 +106,8 @@ void wxLuaConsole::OnMenu(wxCommandEvent& event)
         case wxID_SAVEAS :
         {
             wxString filename = wxFileSelector(wxT("Select file to save output to"),
-                                               m_savePath,
-                                               m_saveFilename,
+                                               m_saveFilename.GetPath(),
+                                               m_saveFilename.GetFullName(),
                                                wxT("txt"),
                                                wxT("Text files (*.txt)|*.txt|All files|*.*"),
                                                wxFD_SAVE|wxFD_OVERWRITE_PROMPT,
@@ -116,9 +115,7 @@ void wxLuaConsole::OnMenu(wxCommandEvent& event)
 
             if (!filename.IsEmpty())
             {
-                wxFileName fn(filename);
-                m_savePath = fn.GetPath();
-                m_saveFilename = fn.GetFullName();
+                m_saveFilename = wxFileName(filename);
 
                 m_textCtrl->SaveFile(filename);
             }
@@ -126,7 +123,11 @@ void wxLuaConsole::OnMenu(wxCommandEvent& event)
         }
         case wxID_COPY :
         {
+            long from = 0, to = 0;
+            m_textCtrl->GetSelection(&from, &to);
+            m_textCtrl->SetSelection(-1, -1);
             m_textCtrl->Copy();
+            m_textCtrl->SetSelection(from, to);
             break;
         }
         case ID_WXLUACONSOLE_SCROLLBACK_LINES :

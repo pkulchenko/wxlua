@@ -214,6 +214,13 @@ bool wxLuaShell::RunString(const wxString& string_, bool append_text)
     return ret;
 }
 
+size_t wxLuaShell::DoGetAutoCompleteKeyWords(const wxString& root, wxArrayString& words)
+{
+    size_t count = wxSTEditorShell::DoGetAutoCompleteKeyWords(root, words);
+
+    return count;
+}
+
 void wxLuaShell::OnSTEEvent(wxSTEditorEvent& event)
 {
     event.Skip();
@@ -399,6 +406,8 @@ void wxLuaIDE::Init()
     m_show_stack = false;
 }
 
+//#include "../src/wxext.h"
+
 bool wxLuaIDE::Create( wxWindow *parent, int id,
                        const wxPoint& pos, const wxSize& size,
                        long style, long options, const wxString& name)
@@ -445,10 +454,11 @@ bool wxLuaIDE::Create( wxWindow *parent, int id,
     m_shellOptions.SetEditorStyles(m_editorOptions.GetEditorStyles());
     m_shellOptions.SetEditorLangs(m_editorOptions.GetEditorLangs());
     m_shellOptions.SetMenuManager(m_editorOptions.GetMenuManager(), true);
-    m_shellOptions.SetEditorPopupMenu(wxSTEditorMenuManager(0, 0, STE_MENU_EDIT_CUTCOPYPASTE).CreateEditMenu(), false);
+    m_shellOptions.SetEditorPopupMenu(wxSTEditorMenuManager(0, 0, STE_MENU_EDIT_CUTCOPYPASTE|STE_MENU_EDIT_COMPLETEWORD).CreateEditMenu(), false);
     m_shellOptions.SetToolBar(m_toolBar);
+
     m_msgNotebook = new wxSTEditorNotebook(m_splitter, ID_WXLUAIDE_MSG_NOTEBOOK,
-                            wxDefaultPosition, wxDefaultSize, wxCLIP_CHILDREN);
+                                           wxDefaultPosition, wxDefaultSize, wxCLIP_CHILDREN);
     m_msgNotebook->CreateOptions(m_shellOptions);
 
     // -----------------------------------------------------------------------
@@ -461,6 +471,8 @@ bool wxLuaIDE::Create( wxWindow *parent, int id,
                                 wxDefaultSize, 0);
     m_luaShell->CreateOptions(m_shellOptions);
     m_luaShell->SetWrapMode(wxSTC_WRAP_WORD);
+    //wxAcceleratorHelper::SetAcceleratorTable(m_luaShell, *m_shellOptions.GetMenuManager()->GetAcceleratorArray());
+    //wxAcceleratorHelper::SetAccelText(m_shellOptions.GetEditorPopupMenu(), *m_shellOptions.GetMenuManager()->GetAcceleratorArray());
     m_luaShell->RecreatewxLuaState(m_luaShell->GetEventHandler(), m_luaShell->GetId());
     m_luaShell->CheckPrompt(true);
     steSplitter->Initialize(m_luaShell);

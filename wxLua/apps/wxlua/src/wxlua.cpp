@@ -66,40 +66,40 @@ WXLUA_DECLARE_BIND_ALL
 static const wxCmdLineEntryDesc cmdLineDesc[] =
 {
     { wxCMD_LINE_SWITCH, wxLuaT("h"), wxLuaT("help"),   wxLuaT("Help on command line switches."),
-        wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL|wxCMD_LINE_OPTION_HELP },
+      wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL|wxCMD_LINE_OPTION_HELP },
 
     { wxCMD_LINE_SWITCH, wxLuaT(""),  wxLuaT("nostdout"), wxLuaT("Do not print output to command line stdout."),
-        wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
+      wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
 
 #ifdef __WXMSW__
     { wxCMD_LINE_SWITCH, wxLuaT(""),  wxLuaT("dosstdout"), wxLuaT("Open a new DOS console and print output to it."),
-        wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
+      wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
 #endif // __WXMSW__
 
     { wxCMD_LINE_SWITCH, wxLuaT("m"), wxLuaT("msgdlg"), wxLuaT("Print output to message dialogs."),
-        wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
+      wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
 
     { wxCMD_LINE_SWITCH, wxLuaT("c"), wxLuaT("console"), wxLuaT("Print output to a message console."),
-        wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
+      wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
 
     // They can simply show the console that will keep the program alive
     //{ wxCMD_LINE_SWITCH, wxLuaT(""),  wxLuaT("noquit"), wxLuaT("Do not exit even if there are no top-level windows open."),
-    //    wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
+    //  wxCMD_LINE_VAL_NONE, wxCMD_LINE_PARAM_OPTIONAL },
 
     { wxCMD_LINE_OPTION, wxLuaT("e"), wxLuaT("execute"), wxLuaT("Execute a a quoted string as a program."),
-        wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
+      wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 
     { wxCMD_LINE_OPTION, wxLuaT("d"), wxLuaT("debuggee"), wxLuaT("Run as debuggee -d[host]:[port] (for internal use)"),
-        wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
+      wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
 
     { wxCMD_LINE_OPTION, wxLuaT("o"),wxLuaT("open"), wxLuaT("Open file(s) to edit."),
-        wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL|wxCMD_LINE_PARAM_MULTIPLE },
+      wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL|wxCMD_LINE_PARAM_MULTIPLE },
 
     { wxCMD_LINE_OPTION, wxLuaT("r"), wxLuaT("run"), wxLuaT("Run a Lua program with command line args."),
-        wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL|wxCMD_LINE_PARAM_MULTIPLE},
+      wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL|wxCMD_LINE_PARAM_MULTIPLE},
 
     { wxCMD_LINE_PARAM,  wxLuaT(""),  wxLuaT(""),    wxLuaT("Run a Lua program with command line args."),
-        wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL|wxCMD_LINE_PARAM_MULTIPLE },
+      wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL|wxCMD_LINE_PARAM_MULTIPLE },
 
     { wxCMD_LINE_NONE }
 };

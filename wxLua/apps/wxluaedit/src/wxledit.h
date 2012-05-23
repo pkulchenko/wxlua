@@ -30,7 +30,7 @@ class wxLuaIDE;
 // For non-Unix systems (i.e. when building without a configure script),
 // we use the following macro to do a compile-time check of wxLuaEdit version
 #if !defined(wxCHECK_STE_VERSION)
-    #error "wxStEdit version is too old, need at least version 1.2.5"
+    #error "wxStEdit version is too old, need at least version 1.6.0"
 #endif
 #if !wxCHECK_STE_VERSION(1, 6, 0)
     #error "wxStEdit version is too old, need at least version 1.6.0"
@@ -130,6 +130,10 @@ public :
 
     // Run a string, append the string to the editor control if append_text
     bool RunString(const wxString& string, bool append_text = false);
+
+
+    // Override wxSTEditor function to get autocomplete words.
+    virtual size_t DoGetAutoCompleteKeyWords(const wxString& root, wxArrayString& words);
 
     // implementation
     void OnSTEEvent(wxSTEditorEvent& event);

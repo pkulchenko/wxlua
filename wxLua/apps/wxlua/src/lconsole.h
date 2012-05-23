@@ -10,6 +10,7 @@
 #define WX_LUA_CONSOLE_H
 
 #include <wx/frame.h>
+#include <wx/filename.h>
 
 #include "wxlua/include/wxlua.h"
 
@@ -69,8 +70,7 @@ protected:
     wxListBox           *m_debugListBox;
     bool                 m_exit_when_closed;
     int                  m_max_lines;
-    wxString             m_saveFilename;
-    wxString             m_savePath;
+    wxFileName           m_saveFilename;
 
 private:
     DECLARE_EVENT_TABLE()
