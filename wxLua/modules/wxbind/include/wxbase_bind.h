@@ -10,7 +10,7 @@
 
 #include "wxbind/include/wxbinddefs.h"
 #include "wxluasetup.h"
-    
+
 // ----------------------------------------------------------------------------
 // Convert from wxWidgets wxT('') to wxT(""), a string. Copied from wx/filefn.h
 
@@ -23,6 +23,8 @@
 #else   // Windows and OS/2
   #define wxLua_FILE_SEP_PATH     wxT("\\")
 #endif  // Unix/Windows
+
+extern WXDLLIMPEXP_BINDWXBASE wxDateTime::TimeZone wxLua_wxDateTime_TimeZone_Local;
 
 
 #include "wxlua/include/wxlstate.h"
@@ -249,6 +251,7 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringTokenizer;
 
 #if wxLUA_USE_wxDateTime && wxUSE_DATETIME
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxDateTime;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxDateTime_TimeZone;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxDateTimeArray;
 #endif // wxLUA_USE_wxDateTime && wxUSE_DATETIME
 

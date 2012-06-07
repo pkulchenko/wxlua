@@ -24,6 +24,7 @@
     #undef Below
 #endif
 
+wxDateTime::TimeZone wxLua_wxDateTime_TimeZone_Local(wxDateTime::Local);
 
 // ---------------------------------------------------------------------------
 // wxLuaGetEventList_wxbase() is called to register events
@@ -2260,6 +2261,7 @@ static const char* wxluaclassname_wxDateTime = "wxDateTime";
 static const char* wxluaclassname_wxDateTimeArray = "wxDateTimeArray";
 static const char* wxluaclassname_wxDateTimeHolidayAuthority = "wxDateTimeHolidayAuthority";
 static const char* wxluaclassname_wxDateTimeWorkDays = "wxDateTimeWorkDays";
+static const char* wxluaclassname_wxDateTime_TimeZone = "wxDateTime_TimeZone";
 static const char* wxluaclassname_wxDir = "wxDir";
 static const char* wxluaclassname_wxDynamicLibrary = "wxDynamicLibrary";
 static const char* wxluaclassname_wxDynamicLibraryDetails = "wxDynamicLibraryDetails";
@@ -2521,6 +2523,9 @@ extern void wxLua_wxStringTokenizer_delete_function(void** p);
     extern wxLuaBindNumber wxDateTime_enums[];
     extern int wxDateTime_enumCount;
     extern void wxLua_wxDateTime_delete_function(void** p);
+    extern wxLuaBindMethod wxDateTime_TimeZone_methods[];
+    extern int wxDateTime_TimeZone_methodCount;
+    extern void wxLua_wxDateTime_TimeZone_delete_function(void** p);
     extern wxLuaBindMethod wxDateTimeArray_methods[];
     extern int wxDateTimeArray_methodCount;
     extern void wxLua_wxDateTimeArray_delete_function(void** p);
@@ -2727,6 +2732,10 @@ wxLuaBindClass* wxLuaGetClassList_wxbase(size_t &count)
         { wxluaclassname_wxDateTimeHolidayAuthority, wxDateTimeHolidayAuthority_methods, wxDateTimeHolidayAuthority_methodCount, NULL, &wxluatype_wxDateTimeHolidayAuthority, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxDateTimeHolidayAuthority_delete_function, }, 
         { wxluaclassname_wxDateTimeWorkDays, wxDateTimeWorkDays_methods, wxDateTimeWorkDays_methodCount, NULL, &wxluatype_wxDateTimeWorkDays, wxluabaseclassnames_wxDateTimeWorkDays, wxluabaseclassbinds_wxDateTimeWorkDays, NULL, NULL, NULL, 0, &wxLua_wxDateTimeWorkDays_delete_function, }, 
 #endif // wxLUA_USE_wxDateTimeHolidayAuthority && wxUSE_DATETIME
+
+#if wxLUA_USE_wxDateTime && wxUSE_DATETIME
+        { wxluaclassname_wxDateTime_TimeZone, wxDateTime_TimeZone_methods, wxDateTime_TimeZone_methodCount, NULL, &wxluatype_wxDateTime_TimeZone, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxDateTime_TimeZone_delete_function, }, 
+#endif // wxLUA_USE_wxDateTime && wxUSE_DATETIME
 
 #if wxLUA_USE_wxDir
         { wxluaclassname_wxDir, wxDir_methods, wxDir_methodCount, NULL, &wxluatype_wxDir, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxDir_delete_function, }, 

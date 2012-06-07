@@ -81,7 +81,7 @@ hook_cpp_binding_post_includes =
 hook_cpp_binding_header_includes = [[
 #include "wxbind/include/wxbinddefs.h"
 #include "wxluasetup.h"
-    
+
 // ----------------------------------------------------------------------------
 // Convert from wxWidgets wxT('') to wxT(""), a string. Copied from wx/filefn.h
 
@@ -95,12 +95,17 @@ hook_cpp_binding_header_includes = [[
   #define wxLua_FILE_SEP_PATH     wxT("\\")
 #endif  // Unix/Windows
 
+extern WXDLLIMPEXP_BINDWXBASE wxDateTime::TimeZone wxLua_wxDateTime_TimeZone_Local;
+
 ]]
 
 -- ----------------------------------------------------------------------------
 -- Set any #includes or other C++ code to be placed verbatim at the top of
 --   the single hook_cpp_binding_filename generated cpp file or "" for none
-hook_cpp_binding_source_includes = ""
+hook_cpp_binding_source_includes =
+[[
+wxDateTime::TimeZone wxLua_wxDateTime_TimeZone_Local(wxDateTime::Local);
+]]
 
 -- ============================================================================
 -- Set the bindings directory that contains the *.i interface files

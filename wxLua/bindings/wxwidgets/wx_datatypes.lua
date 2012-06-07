@@ -1206,16 +1206,40 @@ wx_dataTypeTable =
     Name = "wxDateTime::Month",
     ValueType = "enum",
   },
+  ["wxDateTime::NameFlags"] = {
+    Condition = "wxLUA_USE_wxDateTime && wxUSE_DATETIME",
+    IsNumber = true,
+    Name = "wxDateTime::NameFlags",
+    ValueType = "enum",
+  },
   ["wxDateTime::TZ"] = {
     Condition = "wxLUA_USE_wxDateTime && wxUSE_DATETIME",
     IsNumber = true,
     Name = "wxDateTime::TZ",
     ValueType = "enum",
   },
+  ["wxDateTime::TimeZone"] = {
+    Condition = "wxLUA_USE_wxDateTime && wxUSE_DATETIME",
+    IsNumber = false,
+    Name = "wxDateTime::TimeZone",
+    ValueType = "class",
+  },
   ["wxDateTime::WeekDay"] = {
     Condition = "wxLUA_USE_wxDateTime && wxUSE_DATETIME",
     IsNumber = true,
     Name = "wxDateTime::WeekDay",
+    ValueType = "enum",
+  },
+  ["wxDateTime::WeekFlags"] = {
+    Condition = "wxLUA_USE_wxDateTime && wxUSE_DATETIME",
+    IsNumber = true,
+    Name = "wxDateTime::WeekFlags",
+    ValueType = "enum",
+  },
+  ["wxDateTime::Year"] = {
+    Condition = "wxLUA_USE_wxDateTime && wxUSE_DATETIME",
+    IsNumber = true,
+    Name = "wxDateTime::Year",
     ValueType = "enum",
   },
   ["wxDateTime::wxDateTime_t"] = {

@@ -131,10 +131,55 @@
     Inv_WeekDay
 %endenum
 
+%enum wxDateTime::Year
+    Inv_Year
+%endenum
+
+%enum wxDateTime::NameFlags
+    Name_Full
+    Name_Abbr
+%endenum
+
+%enum wxDateTime::WeekFlags
+    Default_First
+    Monday_First
+    Sunday_First
+%endenum
+
+%class %delete wxDateTime::TimeZone
+    wxDateTime::TimeZone(wxDateTime::TZ tz)
+
+    static wxDateTime::TimeZone Make(long offset)
+    long GetOffset() const
+%endclass
+
+
 %typedef unsigned short wxDateTime::wxDateTime_t
 
 %class %delete wxDateTime
     %define_object wxDefaultDateTime
+
+    static void SetCountry(wxDateTime::Country country)
+    static wxDateTime::Country GetCountry()
+    static bool IsWestEuropeanCountry(wxDateTime::Country country = wxDateTime::Country_Default)
+
+    static int GetCurrentYear(wxDateTime::Calendar cal = wxDateTime::Gregorian)
+    static int ConvertYearToBC(int year)
+    static wxDateTime::Month GetCurrentMonth(wxDateTime::Calendar cal = wxDateTime::Gregorian)
+    static bool IsLeapYear(int year = wxDateTime::Inv_Year, wxDateTime::Calendar cal = wxDateTime::Gregorian)
+    static int GetCentury(int year)
+    static wxDateTime::wxDateTime_t GetNumberOfDays(int year, wxDateTime::Calendar cal = wxDateTime::Gregorian)
+    static wxDateTime::wxDateTime_t GetNumberOfDays(wxDateTime::Month month, int year = wxDateTime::Inv_Year, wxDateTime::Calendar cal = wxDateTime::Gregorian)
+    static wxString GetMonthName(wxDateTime::Month month, wxDateTime::NameFlags flags = wxDateTime::Name_Full)
+    static wxString GetWeekDayName(wxDateTime::WeekDay weekday, wxDateTime::NameFlags flags = wxDateTime::Name_Full)
+    //static void GetAmPmStrings(wxString *am, wxString *pm)
+    static bool IsDSTApplicable(int year = wxDateTime::Inv_Year, wxDateTime::Country country = wxDateTime::Country_Default)
+    static wxDateTime GetBeginDST(int year = wxDateTime::Inv_Year, wxDateTime::Country country = wxDateTime::Country_Default)
+    static wxDateTime GetEndDST(int year = wxDateTime::Inv_Year, wxDateTime::Country country = wxDateTime::Country_Default)
+    static wxDateTime Now()
+    static wxDateTime UNow()
+    static wxDateTime Today()
+
 
     wxDateTime()
     wxDateTime(time_t dateTime) // use with Lua's os.time() on MSW, Linux, others?
@@ -142,24 +187,21 @@
     %rename wxDateTimeFromHMS wxDateTime(int hour, int minute, int second, int millisec)
     %rename wxDateTimeFromDMY wxDateTime(int day, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year, int hour = 0, int minute = 0, int second = 0, int millisec = 0)
 
-    static wxDateTime Now()
-    static wxDateTime UNow()
-    static wxDateTime Today()
-    static void SetCountry(wxDateTime::Country country)
-
     wxDateTime& SetToCurrent()
     wxDateTime& Set(time_t time) // use with Lua's os.time() on MSW, Linux, others?
     %rename SetToJDN wxDateTime& Set(double dateTime)
     %rename SetToHMS wxDateTime& Set(int hour, int minute, int second, int millisec)
     %rename SetToDMY wxDateTime& Set(int day, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year, int hour = 0, int minute = 0, int second = 0, int millisec = 0)
     wxDateTime& ResetTime()
-    wxDateTime& SetDay(int day)
-    wxDateTime& SetMonth(wxDateTime::Month month)
+    wxDateTime GetDateOnly() const
     wxDateTime& SetYear(int year)
+    wxDateTime& SetMonth(wxDateTime::Month month)
+    wxDateTime& SetDay(int day)
     wxDateTime& SetHour(int hour)
     wxDateTime& SetMinute(int minute)
     wxDateTime& SetSecond(int second)
     wxDateTime& SetMillisecond(int millisecond)
+        
     bool IsWorkDay(wxDateTime::Country country = wxDateTime::Country_Default) const
     bool IsEqualTo(const wxDateTime& datetime) const
     bool IsEarlierThan(const wxDateTime& datetime) const
@@ -171,6 +213,7 @@
     bool IsEqualUpTo(const wxDateTime& dt, const wxTimeSpan& ts) const
     bool IsValid()
     long GetTicks()
+        
     wxDateTime& SetToWeekDayInSameWeek(wxDateTime::WeekDay weekday)
     wxDateTime  GetWeekDayInSameWeek(wxDateTime::WeekDay weekday) const
     wxDateTime& SetToNextWeekDay(wxDateTime::WeekDay weekday)
@@ -181,8 +224,10 @@
     wxDateTime GetWeekDay(wxDateTime::WeekDay weekday, int n = 1, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year) const
     bool SetToLastWeekDay(wxDateTime::WeekDay weekday, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year)
     wxDateTime GetLastWeekDay(wxDateTime::WeekDay weekday, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year)
+
     !%wxchkver_2_6 bool SetToTheWeek(wxDateTime::wxDateTime_t numWeek, wxDateTime::WeekDay weekday = wxDateTime::Mon)
     !%wxchkver_2_6 wxDateTime GetWeek(wxDateTime::wxDateTime_t numWeek, wxDateTime::WeekDay weekday = wxDateTime::Mon) const
+
     %wxchkver_2_6 static wxDateTime SetToWeekOfYear(int year, wxDateTime::wxDateTime_t numWeek, wxDateTime::WeekDay weekday = wxDateTime::Mon)
     wxDateTime& SetToLastMonthDay(wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year)
     wxDateTime GetLastMonthDay(wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year) const
@@ -193,9 +238,58 @@
     double GetModifiedJulianDayNumber() const
     double GetMJD() const
     double GetRataDie() const
+
+    wxDateTime ToTimezone(const wxDateTime::TimeZone& tz, bool noDST = false) const
+    wxDateTime& MakeTimezone(const wxDateTime::TimeZone& tz, bool noDST = false)
+    wxDateTime FromTimezone(const wxDateTime::TimeZone& tz, bool noDST = false) const
+    wxDateTime& MakeFromTimezone(const wxDateTime::TimeZone& tz, bool noDST = false)
+
+    wxDateTime ToUTC(bool noDST = false) const
+    wxDateTime& MakeUTC(bool noDST = false)
     wxDateTime ToGMT(bool noDST = false) const
     wxDateTime& MakeGMT(bool noDST = false)
+    wxDateTime FromUTC(bool noDST = false) const
+    wxDateTime& MakeFromUTC(bool noDST = false)
     int IsDST(wxDateTime::Country country = wxDateTime::Country_Default) const
+
+    bool IsValid() const
+    //Tm GetTm(const wxDateTime::TimeZone& tz = wxDateTime::Local) const
+    time_t GetTicks() const
+    int GetCentury(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+    int GetYear(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+    wxDateTime::Month GetMonth(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+    wxDateTime::wxDateTime_t GetDay(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+    wxDateTime::WeekDay GetWeekDay(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+    wxDateTime::wxDateTime_t GetHour(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+    wxDateTime::wxDateTime_t GetMinute(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+    wxDateTime::wxDateTime_t GetSecond(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+    wxDateTime::wxDateTime_t GetMillisecond(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+
+    wxDateTime::wxDateTime_t GetDayOfYear(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+    wxDateTime::wxDateTime_t GetWeekOfYear(wxDateTime::WeekFlags flags = wxDateTime::Monday_First, const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+    wxDateTime::wxDateTime_t GetWeekOfMonth(wxDateTime::WeekFlags flags = wxDateTime::Monday_First, const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+    bool IsWorkDay(wxDateTime::Country country = wxDateTime::Country_Default) const
+    //bool IsGregorianDate(GregorianAdoption country = Gr_Standard) const;
+
+    wxDateTime& SetFromDOS(unsigned long ddt);
+    unsigned long GetAsDOS() const;
+
+    bool IsEqualTo(const wxDateTime& datetime) const;
+    bool IsEarlierThan(const wxDateTime& datetime) const;
+    bool IsLaterThan(const wxDateTime& datetime) const;
+    bool IsStrictlyBetween(const wxDateTime& t1, const wxDateTime& t2) const;
+    bool IsBetween(const wxDateTime& t1, const wxDateTime& t2) const;
+    bool IsSameDate(const wxDateTime& dt) const;
+    bool IsSameTime(const wxDateTime& dt) const;
+    bool IsEqualUpTo(const wxDateTime& dt, const wxTimeSpan& ts) const;
+
+    %operator bool operator<(const wxDateTime& dt) const
+    %operator bool operator<=(const wxDateTime& dt) const
+    %operator bool operator>(const wxDateTime& dt) const
+    %operator bool operator>=(const wxDateTime& dt) const
+    %operator bool operator==(const wxDateTime& dt) const
+    %operator bool operator!=(const wxDateTime& dt) const
+
     wxDateTime& Add(const wxTimeSpan& diff)
     wxDateTime& Add(const wxDateSpan& diff)
     wxDateTime& Subtract(const wxTimeSpan& diff)
