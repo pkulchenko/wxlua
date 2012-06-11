@@ -201,7 +201,7 @@
     wxDateTime& SetMinute(int minute)
     wxDateTime& SetSecond(int second)
     wxDateTime& SetMillisecond(int millisecond)
-        
+
     bool IsWorkDay(wxDateTime::Country country = wxDateTime::Country_Default) const
     bool IsEqualTo(const wxDateTime& datetime) const
     bool IsEarlierThan(const wxDateTime& datetime) const
@@ -213,7 +213,7 @@
     bool IsEqualUpTo(const wxDateTime& dt, const wxTimeSpan& ts) const
     bool IsValid()
     long GetTicks()
-        
+
     wxDateTime& SetToWeekDayInSameWeek(wxDateTime::WeekDay weekday)
     wxDateTime  GetWeekDayInSameWeek(wxDateTime::WeekDay weekday) const
     wxDateTime& SetToNextWeekDay(wxDateTime::WeekDay weekday)
@@ -295,13 +295,31 @@
     wxDateTime& Subtract(const wxTimeSpan& diff)
     wxDateTime& Subtract(const wxDateSpan& diff)
 
-    %wxchkver_2_9 bool ParseRfc822Date(wxString date, wxString::const_iterator *end)
-    %wxchkver_2_9 bool ParseFormat(wxString date, wxString format, const wxDateTime& dateDef, wxString::const_iterator *end)
-    %wxchkver_2_9 bool ParseFormat(wxString date, wxString format, wxString::const_iterator *end)
-    %wxchkver_2_9 bool ParseFormat(wxString date, wxString::const_iterator *end)
-    %wxchkver_2_9 bool ParseDateTime(wxString datetime, wxString::const_iterator *end)
-    %wxchkver_2_9 bool ParseDate(wxString date, wxString::const_iterator *end)
-    %wxchkver_2_9 bool ParseTime(wxString time, wxString::const_iterator *end)
+    // ALL of the ParseXXX() functions in wx29 that take a 'wxString::const_iterator *end'
+    // return the remainder of the input string after the error occurred if possible or
+    // the whole string. Only a bool value of true is returned on success.
+
+    // %override [bool, lua String remainder on error] ParseRfc822Date(const wxString& date)
+    // C++ Func: bool ParseRfc822Date(const wxString& date, wxString::const_iterator *end)
+    %wxchkver_2_9 bool ParseRfc822Date(const wxString& date)
+    // %override [bool, lua String remainder on error] ParseFormat(const wxString& date, wxString format, const wxDateTime& dateDef)
+    // C++ Func: bool ParseFormat(const wxString& date, wxString format, const wxDateTime& dateDef, wxString::const_iterator *end)
+    %wxchkver_2_9 bool ParseFormat(const wxString& date, wxString format, const wxDateTime& dateDef)
+    // %override [bool, lua String remainder on error] ParseFormat(const wxString& date, wxString format)
+    // C++ Func: bool ParseFormat(const wxString& date, wxString format, wxString::const_iterator *end)
+    %wxchkver_2_9 bool ParseFormat(const wxString& date, wxString format)
+    // %override [bool, lua String remainder on error] ParseFormat(const wxString& date)
+    // C++ Func: bool ParseFormat(const wxString& date, wxString::const_iterator *end)
+    %wxchkver_2_9 bool ParseFormat(const wxString& date)
+    // %override [bool, lua String remainder on error] ParseDateTime(const wxString& date)
+    // C++ Func: bool ParseDateTime(const wxString& date, wxString::const_iterator *end)
+    %wxchkver_2_9 bool ParseDateTime(const wxString& datetime)
+    // %override [bool, lua String remainder on error] ParseDate(const wxString& date)
+    // C++ Func: bool ParseDate(const wxString& date, wxString::const_iterator *end)
+    %wxchkver_2_9 bool ParseDate(const wxString& date)
+    // %override [bool, lua String remainder on error] ParseTime(const wxString& date)
+    // C++ Func: bool ParseTime(const wxString& date, wxString::const_iterator *end)
+    %wxchkver_2_9 bool ParseTime(const wxString& time)
 
     !%wxchkver_2_9 wxString ParseRfc822Date(wxString date)
     !%wxchkver_2_9 wxString ParseFormat(wxString date, wxString format = "%c", const wxDateTime& dateDef = wxDefaultDateTime)

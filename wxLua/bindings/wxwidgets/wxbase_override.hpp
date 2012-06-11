@@ -524,6 +524,185 @@ static int LUACALL wxLua_wxStringList_constructor(lua_State *L)
 }
 %end
 
+// ----------------------------------------------------------------------------
+// Overrides for wxbase_datetime.i
+// ----------------------------------------------------------------------------
+
+%override wxLua_wxDateTime_ParseRfc822Date
+//     %wxchkver_2_9 bool ParseRfc822Date(const wxString& date)
+static int LUACALL wxLua_wxDateTime_ParseRfc822Date(lua_State *L)
+{
+    // const wxString date
+    const wxString date = wxlua_getwxStringtype(L, 2);
+    wxString::const_iterator it(date.begin());
+    // get this
+    wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
+    // call ParseRfc822Date
+    bool returns = (self->ParseRfc822Date(date, &it));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    if (!returns && (it != date.end()))
+    {
+        wxlua_pushwxString(L, wxString(it, date.end()));
+        return 2;
+    }
+
+    return 1;
+}
+%end
+
+%override wxLua_wxDateTime_ParseFormat2
+//     %wxchkver_2_9 bool ParseFormat(const wxString& date)
+static int LUACALL wxLua_wxDateTime_ParseFormat2(lua_State *L)
+{
+    // const wxString date
+    const wxString date = wxlua_getwxStringtype(L, 2);
+    wxString::const_iterator it(date.begin());
+    // get this
+    wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
+    // call ParseFormat
+    bool returns = (self->ParseFormat(date, &it));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    if (!returns && (it != date.end()))
+    {
+        wxlua_pushwxString(L, wxString(it, date.end()));
+        return 2;
+    }
+
+
+    return 1;
+}
+%end
+
+%override wxLua_wxDateTime_ParseFormat1
+//     %wxchkver_2_9 bool ParseFormat(const wxString& date, wxString format)
+static int LUACALL wxLua_wxDateTime_ParseFormat1(lua_State *L)
+{
+    // wxString format
+    wxString format = wxlua_getwxStringtype(L, 3);
+    // const wxString date
+    const wxString date = wxlua_getwxStringtype(L, 2);
+    wxString::const_iterator it(date.begin());
+    // get this
+    wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
+    // call ParseFormat
+    bool returns = (self->ParseFormat(date, format, &it));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    if (!returns && (it != date.end()))
+    {
+        wxlua_pushwxString(L, wxString(it, date.end()));
+        return 2;
+    }
+
+    return 1;
+}
+%end
+
+%override wxLua_wxDateTime_ParseFormat
+//     %wxchkver_2_9 bool ParseFormat(const wxString& date, wxString format, const wxDateTime& dateDef)
+static int LUACALL wxLua_wxDateTime_ParseFormat(lua_State *L)
+{
+    // const wxDateTime dateDef
+    const wxDateTime * dateDef = (const wxDateTime *)wxluaT_getuserdatatype(L, 4, wxluatype_wxDateTime);
+    // wxString format
+    wxString format = wxlua_getwxStringtype(L, 3);
+    // const wxString date
+    const wxString date = wxlua_getwxStringtype(L, 2);
+    wxString::const_iterator it(date.begin());
+    // get this
+    wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
+    // call ParseFormat
+    bool returns = (self->ParseFormat(date, format, *dateDef, &it));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    if (!returns && (it != date.end()))
+    {
+        wxlua_pushwxString(L, wxString(it, date.end()));
+        return 2;
+    }
+
+    return 1;
+}
+%end
+
+%override wxLua_wxDateTime_ParseDateTime
+//     %wxchkver_2_9 bool ParseDateTime(const wxString& datetime)
+static int LUACALL wxLua_wxDateTime_ParseDateTime(lua_State *L)
+{
+    // const wxString datetime
+    const wxString datetime = wxlua_getwxStringtype(L, 2);
+    wxString::const_iterator it(datetime.begin());
+    // get this
+    wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
+    // call ParseDateTime
+    bool returns = (self->ParseDateTime(datetime, &it));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    if (!returns && (it != datetime.end()))
+    {
+        wxlua_pushwxString(L, wxString(it, datetime.end()));
+        return 2;
+    }
+
+    return 1;
+}
+%end
+
+%override wxLua_wxDateTime_ParseDate
+//     %wxchkver_2_9 bool ParseDate(const wxString& date)
+static int LUACALL wxLua_wxDateTime_ParseDate(lua_State *L)
+{
+    // const wxString date
+    const wxString date = wxlua_getwxStringtype(L, 2);
+    wxString::const_iterator it(date.begin());
+    // get this
+    wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
+    // call ParseDate
+    bool returns = (self->ParseDate(date, &it));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    if (!returns && (it != date.end()))
+    {
+        wxlua_pushwxString(L, wxString(it, date.end()));
+        return 2;
+    }
+
+    return 1;
+}
+%end
+
+%override wxLua_wxDateTime_ParseTime
+//     %wxchkver_2_9 bool ParseTime(const wxString& time)
+static int LUACALL wxLua_wxDateTime_ParseTime(lua_State *L)
+{
+    // const wxString time
+    const wxString time = wxlua_getwxStringtype(L, 2);
+    wxString::const_iterator it(time.begin());
+    // get this
+    wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
+    // call ParseTime
+    bool returns = (self->ParseTime(time, &it));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    if (!returns && (it != time.end()))
+    {
+    wxString s(it, time.end());
+        wxlua_pushwxString(L, s);
+        return 2;
+    }
+
+    return 1;
+}
+%end
 
 // ----------------------------------------------------------------------------
 // Overrides for wxbase_file.i
