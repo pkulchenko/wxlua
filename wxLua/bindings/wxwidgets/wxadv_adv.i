@@ -290,7 +290,7 @@
 
     wxDateEvent(wxWindow *win, const wxDateTime& dt, wxEventType type)
 
-    const wxDateTime& GetDate() const
+    wxDateTime GetDate() const
     void SetDate(const wxDateTime &date)
 %endclass
 

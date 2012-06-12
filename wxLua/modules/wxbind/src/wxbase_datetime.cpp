@@ -2731,16 +2731,34 @@ static int LUACALL wxLua_wxDateTime_op_ne(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_constructor1[] = { &wxluatype_TINTEGER, NULL };
-static int LUACALL wxLua_wxDateTime_constructor1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_constructor1[1] = {{ wxLua_wxDateTime_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_constructor1 }};
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_constructor2[] = { &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxDateTime_constructor2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_constructor2[1] = {{ wxLua_wxDateTime_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_constructor2 }};
 //     wxDateTime(time_t dateTime) // use with Lua's os.time() on MSW, Linux, others?
-static int LUACALL wxLua_wxDateTime_constructor1(lua_State *L)
+static int LUACALL wxLua_wxDateTime_constructor2(lua_State *L)
 {
     // time_t dateTime
     time_t dateTime = (time_t)wxlua_getuintegertype(L, 1);
     // call constructor
     wxDateTime* returns = new wxDateTime(dateTime);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxDateTime);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_constructor1[] = { &wxluatype_wxDateTime, NULL };
+static int LUACALL wxLua_wxDateTime_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_constructor1[1] = {{ wxLua_wxDateTime_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_constructor1 }};
+//     wxDateTime(const wxDateTime& dateTime)
+static int LUACALL wxLua_wxDateTime_constructor1(lua_State *L)
+{
+    // const wxDateTime dateTime
+    const wxDateTime * dateTime = (const wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
+    // call constructor
+    wxDateTime* returns = new wxDateTime(*dateTime);
     // add to tracked memory list
     wxluaO_addgcobject(L, returns, wxluatype_wxDateTime);
     // push the constructed class pointer
@@ -3093,6 +3111,7 @@ static int s_wxluafunc_wxLua_wxDateTime_Subtract_overload_count = sizeof(s_wxlua
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_constructor_overload[] =
 {
+    { wxLua_wxDateTime_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_constructor2 },
     { wxLua_wxDateTime_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_constructor1 },
     { wxLua_wxDateTime_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
 };

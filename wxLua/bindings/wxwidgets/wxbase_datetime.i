@@ -182,6 +182,7 @@
 
 
     wxDateTime()
+    wxDateTime(const wxDateTime& dateTime)
     wxDateTime(time_t dateTime) // use with Lua's os.time() on MSW, Linux, others?
     %rename wxDateTimeFromJDN wxDateTime(double dateTime)
     %rename wxDateTimeFromHMS wxDateTime(int hour, int minute, int second, int millisec)

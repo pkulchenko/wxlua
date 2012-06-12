@@ -3045,13 +3045,16 @@ int wxluatype_wxDateEvent = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateEvent_GetDate[] = { &wxluatype_wxDateEvent, NULL };
 static int LUACALL wxLua_wxDateEvent_GetDate(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateEvent_GetDate[1] = {{ wxLua_wxDateEvent_GetDate, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateEvent_GetDate }};
-//     const wxDateTime& GetDate() const
+//     wxDateTime GetDate() const
 static int LUACALL wxLua_wxDateEvent_GetDate(lua_State *L)
 {
     // get this
     wxDateEvent * self = (wxDateEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateEvent);
     // call GetDate
-    const wxDateTime* returns = (const wxDateTime*)&self->GetDate();
+    // allocate a new object using the copy constructor
+    wxDateTime* returns = new wxDateTime(self->GetDate());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxDateTime);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
 
