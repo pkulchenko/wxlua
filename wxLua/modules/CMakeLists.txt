@@ -44,6 +44,7 @@ ADD_LIBRARY_FULL( wxLuaBind_adv_Lib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_BINDWXADV"
     PROPERTIES FOLDER "wxLua/Modules")
 
+    WXLIKE_LIBRARY_NAMES( wxLuaBind_adv_Lib wxlua_bind_adv "${wxLua_VERSION}")
     set(wxLuaBind_adv_Lib_ wxLuaBind_adv_Lib)
 else()
     set(wxLuaBind_adv_Lib_)
@@ -65,6 +66,7 @@ ADD_LIBRARY_FULL( wxLuaBind_aui_Lib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_BINDWXAUI"
     PROPERTIES FOLDER "wxLua/Modules")
 
+    WXLIKE_LIBRARY_NAMES( wxLuaBind_aui_Lib wxlua_bind_aui "${wxLua_VERSION}")
     set(wxLuaBind_aui_Lib_ wxLuaBind_aui_Lib)
 else()
     set(wxLuaBind_aui_Lib_)
@@ -85,6 +87,7 @@ ADD_LIBRARY_FULL( wxLuaBind_base_Lib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_BINDWXBASE"
     PROPERTIES FOLDER "wxLua/Modules")
 
+    WXLIKE_LIBRARY_NAMES( wxLuaBind_base_Lib wxlua_bind_base "${wxLua_VERSION}")
     set(wxLuaBind_base_Lib_ wxLuaBind_base_Lib)
 else()
     set(wxLuaBind_base_Lib_)
@@ -106,6 +109,7 @@ ADD_LIBRARY_FULL( wxLuaBind_core_Lib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_BINDWXCORE"
     PROPERTIES FOLDER "wxLua/Modules")
 
+    WXLIKE_LIBRARY_NAMES( wxLuaBind_aui_core wxluabind_core "${wxLua_VERSION}")
     set(wxLuaBind_core_Lib_ wxLuaBind_core_Lib)
 else()
     set(wxLuaBind_core_Lib_)
@@ -127,6 +131,7 @@ ADD_LIBRARY_FULL( wxLuaBind_gl_Lib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_BINDWXGL"
     PROPERTIES FOLDER "wxLua/Modules")
 
+    WXLIKE_LIBRARY_NAMES( wxLuaBind_gl_Lib wxlua_bind_gl "${wxLua_VERSION}")
     set(wxLuaBind_gl_Lib_ wxLuaBind_gl_Lib)
 else()
     set(wxLuaBind_gl_Lib_)
@@ -148,6 +153,7 @@ ADD_LIBRARY_FULL( wxLuaBind_html_Lib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_BINDWXHTML"
     PROPERTIES FOLDER "wxLua/Modules")
 
+    WXLIKE_LIBRARY_NAMES( wxLuaBind_html_Lib wxlua_bind_html "${wxLua_VERSION}")
     set(wxLuaBind_html_Lib_ wxLuaBind_html_Lib)
 else()
     set(wxLuaBind_html_Lib_)
@@ -170,6 +176,7 @@ ADD_LIBRARY_FULL( wxLuaBind_media_Lib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_BINDWXMEDIA"
     PROPERTIES FOLDER "wxLua/Modules")
 
+    WXLIKE_LIBRARY_NAMES( wxLuaBind_media_Lib wxlua_bind_media "${wxLua_VERSION}")
     set(wxLuaBind_media_Lib_ wxLuaBind_media_Lib)
 else()
     set(wxLuaBind_media_Lib_)
@@ -191,6 +198,7 @@ ADD_LIBRARY_FULL( wxLuaBind_net_Lib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_BINDWXNET"
     PROPERTIES FOLDER "wxLua/Modules")
 
+    WXLIKE_LIBRARY_NAMES( wxLuaBind_net_Lib wxlua_bind_net "${wxLua_VERSION}")
     set(wxLuaBind_net_Lib_ wxLuaBind_net_Lib)
 else()
     set(wxLuaBind_net_Lib_)
@@ -212,6 +220,7 @@ ADD_LIBRARY_FULL( wxLuaBind_richtext_Lib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_BINDWXRICHTEXT"
     PROPERTIES FOLDER "wxLua/Modules")
 
+    WXLIKE_LIBRARY_NAMES( wxLuaBind_richtext_Lib wxlua_bind_richtext "${wxLua_VERSION}")
     set(wxLuaBind_richtext_Lib_ wxLuaBind_richtext_Lib)
 else()
     set(wxLuaBind_richtext_Lib_)
@@ -233,6 +242,7 @@ ADD_LIBRARY_FULL( wxLuaBind_stc_Lib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_BINDWXSTC"
     PROPERTIES FOLDER "wxLua/Modules")
 
+    WXLIKE_LIBRARY_NAMES( wxLuaBind_stc_Lib wxlua_bind_stc "${wxLua_VERSION}")
     set(wxLuaBind_stc_Lib_ wxLuaBind_stc_Lib)
 else()
     set(wxLuaBind_stc_Lib_)
@@ -254,6 +264,7 @@ ADD_LIBRARY_FULL( wxLuaBind_xml_Lib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_BINDWXXML"
     PROPERTIES FOLDER "wxLua/Modules")
 
+    WXLIKE_LIBRARY_NAMES( wxLuaBind_xml_Lib wxlua_bind_xml "${wxLua_VERSION}")
     set(wxLuaBind_xml_Lib_ wxLuaBind_xml_Lib)
 else()
     set(wxLuaBind_xml_Lib_)
@@ -275,6 +286,7 @@ ADD_LIBRARY_FULL( wxLuaBind_xrc_Lib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_BINDWXXRC"
     PROPERTIES FOLDER "wxLua/Modules")
 
+    WXLIKE_LIBRARY_NAMES( wxLuaBind_xrc_Lib wxlua_bind_xrc "${wxLua_VERSION}")
     set(wxLuaBind_xrc_Lib_ wxLuaBind_xrc_Lib)
 else()
     set(wxLuaBind_xrc_Lib_)
@@ -358,9 +370,19 @@ ADD_LIBRARY_FULL( wxLuaBindLib ALLOW_MISSING_FILES
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXBIND"
     PROPERTIES FOLDER "wxLua/Modules")
 
-set(wxLuaBind_ALL_LIBS wxLuaBindLib CACHE INTERNAL "")
+    WXLIKE_LIBRARY_NAMES( wxLuaBindLib wxlua_bind "${wxLua_VERSION}")
+    set(wxLuaBind_ALL_LIBS wxLuaBindLib CACHE INTERNAL "")
 
 endif (wxLuaBind_SEPARATE_LIBS)
+
+install(FILES
+        ${wxLuaBindLib_HEADER_FILES}
+        DESTINATION "include/wxlua/wxbind/include")
+
+install(FILES
+        ${wxLua_ROOT_DIR}/bindings/wxwidgets/wx_datatypes.lua
+        DESTINATION "share/wxlua/bindings")
+
 
 endfunction (wxLua_Modules_wxBind_TARGETS)
 
@@ -389,6 +411,17 @@ ADD_LIBRARY_FULL( wxLuaLib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUA"
     PROPERTIES FOLDER "wxLua/Modules")
 
+    WXLIKE_LIBRARY_NAMES( wxLuaLib wxlua "${wxLua_VERSION}")
+
+install(FILES
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlbind.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlcallb.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxldefs.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlstate.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlua.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlua_bind.h
+        DESTINATION "include/wxlua/wxlua/include")
+
 endfunction (wxLua_Modules_wxLua_TARGETS)
 
 # ---------------------------------------------------------------------------
@@ -409,6 +442,14 @@ ADD_LIBRARY_FULL( wxLuaDebugLib
         wxLuaLib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUADEBUG"
     PROPERTIES FOLDER "wxLua/Modules")
+
+    WXLIKE_LIBRARY_NAMES( wxLuaDebugLib wxlua_debug "${wxLua_VERSION}")
+
+install(FILES
+        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxldebug.h
+        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxlstack.h
+        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxluadebugdefs.h
+        DESTINATION "include/wxlua/wxluadebug/include")
 
 endfunction (wxLua_Modules_wxLuaDebug_TARGETS)
 
@@ -437,6 +478,16 @@ ADD_LIBRARY_FULL( wxLuaSocketLib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUASOCKET"
     PROPERTIES FOLDER "wxLua/Modules")
 
+    WXLIKE_LIBRARY_NAMES( wxLuaSocketLib wxlua_socket "${wxLua_VERSION}")
+
+install(FILES
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxldserv.h
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxldtarg.h
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxlsock.h
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxluasocket_bind.h
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxluasocketdefs.h
+        DESTINATION "include/wxlua/wxluasocket/include")
+
 endfunction (wxLua_Modules_wxLuaSocket_TARGETS)
 
 # ===========================================================================
@@ -461,7 +512,7 @@ ADD_LIBRARY_FULL( wxLuaModule SHARED ALLOW_MISSING_FILES
         ${wxLuaBindLib_SOURCE_FILES}
         ${wxLuaSocketLib_SOURCE_FILES}
         ${wxLuaDebugLib_SOURCE_FILES}
-        ${wxLuaLib_SOURCE_FILES}        
+        ${wxLuaLib_SOURCE_FILES}
     LINK_LIBRARIES
         #wxLuaBindLib
         #wxLuaSocketLib
@@ -551,6 +602,15 @@ ADD_LIBRARY_FULL( LuaLib
     ${LUA_BUILD_AS_DLL}
     PROPERTIES FOLDER "wxLua/Modules")
 
+    WXLIKE_LIBRARY_NAMES( LuaLib wxlua_lua "${wxLua_VERSION}")
+
+install(FILES
+        ${wxLua_ROOT_DIR}/modules/lua/src/lauxlib.h
+        ${wxLua_ROOT_DIR}/modules/lua/src/luaconf.h
+        ${wxLua_ROOT_DIR}/modules/lua/src/lua.h
+        ${wxLua_ROOT_DIR}/modules/lua/src/lualib.h
+        DESTINATION "include/wxlua")
+
 # ---------------------------------------------------------------------------
 
 if (MSVC60)
@@ -635,6 +695,8 @@ ADD_LIBRARY_FULL( LuaLibShared SHARED
     LINK_LIBRARIES
     ${LUA_BUILD_AS_DLL}
     PROPERTIES FOLDER "wxLua/Modules")
+
+    WXLIKE_LIBRARY_NAMES( LuaLibShared wxlua_lua_shared "${wxLua_VERSION}")
 
 ADD_EXECUTABLE_FULL( lua_shared
     HEADERS
