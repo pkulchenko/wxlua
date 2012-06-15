@@ -244,6 +244,19 @@ if (BUILD_SHARED_LIBS) # CMake has problems with "if ("ON" AND "TRUE")"
 endif()
 
 # ---------------------------------------------------------------------------
+# Put all the binaries, libs, and DLL's from different targets into the same dir.
+# By default they go into the build dir equivalent to the src dir, so they're
+# spread all over and it's hard to find/run them unless you already know
+# about them.
+# ---------------------------------------------------------------------------
+
+if (NOT DEFINED CMAKE_RUNTIME_OUTPUT_DIRECTORY)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
+endif()
+
+# ---------------------------------------------------------------------------
 # RPath options to allow execution of Linux programs in the build tree to
 # find the shared libraries both in the build tree and those outside your project.
 # When installing, all executables and shared libraries will be relinked to find all libraries they need.
@@ -844,16 +857,10 @@ function( WXLIKE_LIBRARY_NAMES target_name lib_prefix lib_postfix )
     # wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR).lib
     # wxmsw28[ud]_core.lib, wx_gtk2[ud]_core-2.8.so
 
-    if (WIN32)
-        # Don't use ${wxWidgets_DEBUGFLAG} since in MSW you MUST link to either
-        # the debug or release MSCRT libs so if you're building debug, wxWidgets must be debug too.
-        SET( _libname_debug   "wx${wxWidgets_RELEASE_NODOT}${wxWidgets_PORTNAME}${wxWidgets_UNIVNAME}${wxWidgets_UNICODEFLAG}d")
-        SET( _libname_release "wx${wxWidgets_RELEASE_NODOT}${wxWidgets_PORTNAME}${wxWidgets_UNIVNAME}${wxWidgets_UNICODEFLAG}")
-    else()
-        # In Unix we can link our release lib to wxWidgets debug lib and vice versa.
-        SET( _libname_debug   "wx${wxWidgets_RELEASE_NODOT}${wxWidgets_PORTNAME}${wxWidgets_UNIVNAME}${wxWidgets_UNICODEFLAG}${wxWidgets_DEBUGFLAG}")
-        SET( _libname_release "wx${wxWidgets_RELEASE_NODOT}${wxWidgets_PORTNAME}${wxWidgets_UNIVNAME}${wxWidgets_UNICODEFLAG}${wxWidgets_DEBUGFLAG}")
-    endif()
+    # We could use ${wxWidgets_DEBUGFLAG}, but it's probably more important
+    # to specify how this lib was built.
+    SET( _libname_debug   "wx${wxWidgets_RELEASE_NODOT}${wxWidgets_PORTNAME}${wxWidgets_UNIVNAME}${wxWidgets_UNICODEFLAG}d")
+    SET( _libname_release "wx${wxWidgets_RELEASE_NODOT}${wxWidgets_PORTNAME}${wxWidgets_UNIVNAME}${wxWidgets_UNICODEFLAG}")
 
     if (NOT "${lib_prefix}" STREQUAL "")
         SET( _libname_debug   "${lib_prefix}-${_libname_debug}")
