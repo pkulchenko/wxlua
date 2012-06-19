@@ -124,6 +124,20 @@ ADD_DOXYGEN( wxLua_doxygen
              ${CMAKE_BINARY_DIR}/doxygen_wxLua.cfg
              ${CMAKE_BINARY_DIR} )
 
+# These are passed to ADD_LIBRARY_FULL() to call the INSTALL() function
+# The targets are installed in the modules/ CMakeLists.txt
+SET(WXLUA_INSTALL_FLAGS
+    EXPORT  wxLua_export
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib)
+
+if (WIN32)
+    set(WXLUA_SHARE_DIR "")
+else()
+    set(WXLUA_SHARE_DIR "share/wxlua/")
+endif()
+
 # ---------------------------------------------------------------------------
 
 include_directories(${wxLua_ROOT_DIR}/modules/wxbind/setup)
@@ -136,5 +150,75 @@ if (NOT TARGET wxLuaCan)
     add_subdirectory( apps/ )
 endif()
 
+# ===========================================================================
+# Export and install the CMake export files
+
 export( TARGETS LuaLib wxLuaLib wxLuaDebugLib wxLuaSocketLib wxLuaBindLib
         FILE "${CMAKE_BINARY_DIR}/build/wxLua-config.cmake")
+
+install(EXPORT wxLua_export
+        DESTINATION share/wxlua/
+        FILE wxLua-config.cmake)
+
+# ---------------------------------------------------------------------------
+# Install the remaining files
+
+install(DIRECTORY   "${wxLua_ROOT_DIR}/docs/"
+        DESTINATION "${WXLUA_SHARE_DIR}doc"
+        FILES_MATCHING
+        PATTERN "*.txt" PATTERN "*.html"
+        PATTERN "CVS" EXCLUDE
+        PATTERN ".svn" EXCLUDE
+        PATTERN "doxygen" EXCLUDE)
+
+install(DIRECTORY   "${wxLua_ROOT_DIR}/samples/"
+        DESTINATION "${WXLUA_SHARE_DIR}samples"
+        PATTERN "CVS" EXCLUDE
+        PATTERN ".svn" EXCLUDE)
+
+install(FILES
+        ${wxLuaBindLib_HEADER_FILES}                # set by ADD_LIBRARY_FULL()
+        DESTINATION "include/wxlua/wxbind/include")
+
+install(FILES
+        ${wxLua_ROOT_DIR}/bindings/wxwidgets/wx_datatypes.lua
+        DESTINATION "share/wxlua/bindings")
+
+install(FILES
+        ${wxLua_ROOT_DIR}/modules/lua/src/lauxlib.h
+        ${wxLua_ROOT_DIR}/modules/lua/src/luaconf.h
+        ${wxLua_ROOT_DIR}/modules/lua/src/lua.h
+        ${wxLua_ROOT_DIR}/modules/lua/src/lualib.h
+        DESTINATION "include/wxlua")
+
+install(FILES
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlbind.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlcallb.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxldefs.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlstate.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlua.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlua_bind.h
+        DESTINATION "include/wxlua/wxlua/include")
+
+install(FILES
+        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxldebug.h
+        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxlstack.h
+        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxluadebugdefs.h
+        DESTINATION "include/wxlua/wxluadebug/include")
+
+install(FILES
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxldserv.h
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxldtarg.h
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxlsock.h
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxluasocket_bind.h
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxluasocketdefs.h
+        DESTINATION "include/wxlua/wxluasocket/include")
+
+install(FILES
+        ${wxLua_ROOT_DIR}/apps/wxluacan/scripts/incircles.lua
+        DESTINATION "${WXLUA_SHARE_DIR}apps/wxluacan")
+
+install(FILES
+        ${wxLua_ROOT_DIR}/apps/wxluafreeze/src/readme.txt
+        ${wxLua_ROOT_DIR}/apps/wxluafreeze/src/wxluafreeze.lua
+        DESTINATION "${WXLUA_SHARE_DIR}apps/wxluafreeze")

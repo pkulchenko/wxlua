@@ -669,7 +669,19 @@ ENDFUNCTION()
 #       LINK_LIBRARIES                             # Replaces TARGET_LINK_LIBRARIES(target_name lib1 lib2 ...)
 #           gtest ${Boost_LIBRARIES}
 #       PROPERTIES FOLDER "Foo/Bar"                # replaces SET_TARGET_PROPERTIES(target_name PROPERTIES ...)
-#       PROPERTIES LINKER_LANGUAGE CXX ... )       # use PROPERTIES XXX YYY as many times as you like
+#       PROPERTIES LINKER_LANGUAGE CXX ...         # use PROPERTIES XXX YYY as many times as you like
+#
+#       INSTALL "${MY_INSTALL_FLAG_LIST}"          # INSTALL(TARGETS ${target_name} ${MY_INSTALL_FLAG_LIST})
+#                                                  # is called with the parameters expanded into a list.
+#                                                  # Create list as shown below and use it as shown here.
+#   )
+#
+# For the 'INSTALL' command create a variable like this to use:
+#   SET( MY_INSTALL_FLAG_LIST
+#        EXPORT PROJECT_exports
+#        RUNTIME DESTINATION bin
+#        LIBRARY DESTINATION lib
+#        ARCHIVE DESTINATION lib )
 #
 # Internal cached variables will be created:
 #   ${target_name}_HEADER_FILES - List of HEADERS given above
@@ -699,6 +711,8 @@ function( ADD_LIBRARY_FULL target_name )
     set(_PRECOMPILED_FORCED)       # Force including the PRECOMPILED_INCLUDE
     set(_LINK_LIBRARIES)           # TARGET_LINK_LIBRARIES's list of libraries to link to
     set(_PROPERTIES)               # SET_TARGET_PROPERTIES's list of PROPERTIES
+    set(_INSTALL)                  # INSTALL's list of commands
+
 
     set(cmd)                       # Current directive we're processing
     set(HEADER_FILES)
@@ -739,6 +753,8 @@ function( ADD_LIBRARY_FULL target_name )
             set(cmd                  "LINK_LIBRARIES")
         elseif ("${arg}" STREQUAL    "PROPERTIES")
             set(cmd                  "PROPERTIES")
+        elseif ("${arg}" STREQUAL    "INSTALL")
+            set(cmd                  "INSTALL")
         else()
             set(read_args TRUE) # hopefully a file
         endif()
@@ -765,6 +781,8 @@ function( ADD_LIBRARY_FULL target_name )
                 set(_LINK_LIBRARIES ${_LINK_LIBRARIES} ${arg})
             elseif ("${cmd}" STREQUAL "PROPERTIES")
                 set(_PROPERTIES ${_PROPERTIES} ${arg})
+            elseif ("${cmd}" STREQUAL "INSTALL")
+                set(_INSTALL ${_INSTALL} ${arg})
             else()
                 MESSAGE(FATAL_ERROR "Unknown directive '${cmd}' in ADD_LIBRARY_FULL")
             endif()
@@ -837,11 +855,14 @@ function( ADD_LIBRARY_FULL target_name )
     # so that targetC can import them both. There is no reason that
     # targetB absolutely must export targetA, but I don't know how to do that.
 
-    INSTALL(TARGETS ${target_name}
-            #EXPORT  ${target_name}_exports
-            RUNTIME DESTINATION bin
-            LIBRARY DESTINATION lib
-            ARCHIVE DESTINATION lib)
+    if (NOT "${_INSTALL}" STREQUAL "")
+
+        INSTALL(TARGETS ${target_name} ${_INSTALL})
+                #EXPORT  "${target_name}_export"
+                #RUNTIME DESTINATION bin
+                #LIBRARY DESTINATION lib
+                #ARCHIVE DESTINATION lib)
+    endif()
 
 endfunction()
 

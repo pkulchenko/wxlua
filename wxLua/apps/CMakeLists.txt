@@ -60,9 +60,6 @@ ADD_EXECUTABLE_FULL( wxLuaCan WIN32 MACOSX_BUNDLE
         ${wxWidgets_LIBRARIES}
     PROPERTIES FOLDER "wxLua/apps")
 
-install(FILES ${wxLua_ROOT_DIR}/apps/wxluacan/scripts/incircles.lua
-        DESTINATION apps/wxluacan)
-
 endfunction (wxLua_Apps_wxLuaCan_TARGETS)
 
 # ---------------------------------------------------------------------------
@@ -126,27 +123,7 @@ ADD_EXECUTABLE_FULL( wxLuaFreeze WIN32 MACOSX_BUNDLE
         ${wxWidgets_LIBRARIES}
     PROPERTIES FOLDER "wxLua/apps")
 
-install(FILES
-        ${wxLua_ROOT_DIR}/apps/wxluafreeze/src/readme.txt
-        ${wxLua_ROOT_DIR}/apps/wxluafreeze/src/wxluafreeze.lua
-        DESTINATION apps/wxluafreeze)
-
 endfunction (wxLua_Apps_wxLuaFreeze_TARGETS)
-
-# ===========================================================================
-
-install(DIRECTORY   ${wxLua_ROOT_DIR}/docs/
-        DESTINATION doc
-        FILES_MATCHING
-        PATTERN "*.txt" PATTERN "*.html"
-        PATTERN "CVS" EXCLUDE
-        PATTERN ".svn" EXCLUDE
-        PATTERN "doxygen" EXCLUDE)
-
-install(DIRECTORY   ${wxLua_ROOT_DIR}/samples/
-        DESTINATION samples
-        PATTERN "CVS" EXCLUDE
-        PATTERN ".svn" EXCLUDE)
 
 # ===========================================================================
 

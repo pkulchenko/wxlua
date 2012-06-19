@@ -368,21 +368,13 @@ ADD_LIBRARY_FULL( wxLuaBindLib ALLOW_MISSING_FILES
     LINK_LIBRARIES
         wxLuaLib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXBIND"
-    PROPERTIES FOLDER "wxLua/Modules")
+    PROPERTIES FOLDER "wxLua/Modules"
+    INSTALL "${WXLUA_INSTALL_FLAGS}")
 
     WXLIKE_LIBRARY_NAMES( wxLuaBindLib wxlua_bind "${wxLua_VERSION}")
     set(wxLuaBind_ALL_LIBS wxLuaBindLib CACHE INTERNAL "")
 
 endif (wxLuaBind_SEPARATE_LIBS)
-
-install(FILES
-        ${wxLuaBindLib_HEADER_FILES}
-        DESTINATION "include/wxlua/wxbind/include")
-
-install(FILES
-        ${wxLua_ROOT_DIR}/bindings/wxwidgets/wx_datatypes.lua
-        DESTINATION "share/wxlua/bindings")
-
 
 endfunction (wxLua_Modules_wxBind_TARGETS)
 
@@ -409,18 +401,10 @@ ADD_LIBRARY_FULL( wxLuaLib
         LuaLib
         ${wxWidgets_LIBRARIES}
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUA"
-    PROPERTIES FOLDER "wxLua/Modules")
+    PROPERTIES FOLDER "wxLua/Modules"
+    INSTALL "${WXLUA_INSTALL_FLAGS}")
 
     WXLIKE_LIBRARY_NAMES( wxLuaLib wxlua "${wxLua_VERSION}")
-
-install(FILES
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlbind.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlcallb.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxldefs.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlstate.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlua.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlua_bind.h
-        DESTINATION "include/wxlua/wxlua/include")
 
 endfunction (wxLua_Modules_wxLua_TARGETS)
 
@@ -441,15 +425,10 @@ ADD_LIBRARY_FULL( wxLuaDebugLib
     LINK_LIBRARIES
         wxLuaLib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUADEBUG"
-    PROPERTIES FOLDER "wxLua/Modules")
+    PROPERTIES FOLDER "wxLua/Modules"
+    INSTALL "${WXLUA_INSTALL_FLAGS}")
 
     WXLIKE_LIBRARY_NAMES( wxLuaDebugLib wxlua_debug "${wxLua_VERSION}")
-
-install(FILES
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxldebug.h
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxlstack.h
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxluadebugdefs.h
-        DESTINATION "include/wxlua/wxluadebug/include")
 
 endfunction (wxLua_Modules_wxLuaDebug_TARGETS)
 
@@ -476,17 +455,10 @@ ADD_LIBRARY_FULL( wxLuaSocketLib
         ${wxLuaBind_ALL_LIBS} # Only need core for wxluatype_wxWindow
         wxLuaDebugLib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUASOCKET"
-    PROPERTIES FOLDER "wxLua/Modules")
+    PROPERTIES FOLDER "wxLua/Modules"
+    INSTALL "${WXLUA_INSTALL_FLAGS}")
 
     WXLIKE_LIBRARY_NAMES( wxLuaSocketLib wxlua_socket "${wxLua_VERSION}")
-
-install(FILES
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxldserv.h
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxldtarg.h
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxlsock.h
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxluasocket_bind.h
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxluasocketdefs.h
-        DESTINATION "include/wxlua/wxluasocket/include")
 
 endfunction (wxLua_Modules_wxLuaSocket_TARGETS)
 
@@ -522,7 +494,8 @@ ADD_LIBRARY_FULL( wxLuaModule SHARED ALLOW_MISSING_FILES
         ${wxWidgets_LIBRARIES}
     PROPERTIES OUTPUT_NAME   "wx"
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_LUAMODULE"
-    PROPERTIES FOLDER "wxLua/Modules")
+    PROPERTIES FOLDER "wxLua/Modules"
+    INSTALL "${WXLUA_INSTALL_FLAGS}")
 
 # When we link to the static wxWidgets lib ignore warnings about not exporting the wx symbols.
 if (MSVC)
@@ -600,16 +573,10 @@ ADD_LIBRARY_FULL( LuaLib
         src/linit.c
     LINK_LIBRARIES
     ${LUA_BUILD_AS_DLL}
-    PROPERTIES FOLDER "wxLua/Modules")
+    PROPERTIES FOLDER "wxLua/Modules"
+    INSTALL "${WXLUA_INSTALL_FLAGS}")
 
     WXLIKE_LIBRARY_NAMES( LuaLib wxlua_lua "${wxLua_VERSION}")
-
-install(FILES
-        ${wxLua_ROOT_DIR}/modules/lua/src/lauxlib.h
-        ${wxLua_ROOT_DIR}/modules/lua/src/luaconf.h
-        ${wxLua_ROOT_DIR}/modules/lua/src/lua.h
-        ${wxLua_ROOT_DIR}/modules/lua/src/lualib.h
-        DESTINATION "include/wxlua")
 
 # ---------------------------------------------------------------------------
 
