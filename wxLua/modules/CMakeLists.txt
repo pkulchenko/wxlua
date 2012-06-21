@@ -624,7 +624,10 @@ ADD_EXECUTABLE_FULL( lua
 # The wxLua Lua module always links to a shared LuaLib
 if (BUILD_SHARED_LIBS)
     # CMake has problems with "ON/OFF" being used as booleans, even though its the one who changes them from TRUE/FALSE
+    set(LuaLibShared_export_name)
 else()
+
+    set(LuaLibShared_export_name LuaLibShared)
 
 ADD_LIBRARY_FULL( LuaLibShared SHARED
     HEADERS

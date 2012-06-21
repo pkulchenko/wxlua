@@ -153,7 +153,7 @@ endif()
 # ===========================================================================
 # Export and install the CMake export files
 
-export( TARGETS LuaLib wxLuaLib wxLuaDebugLib wxLuaSocketLib wxLuaBindLib
+export( TARGETS LuaLib wxLuaLib wxLuaDebugLib wxLuaSocketLib wxLuaBindLib ${LuaLibShared_export_name}
         FILE "${CMAKE_BINARY_DIR}/build/wxLua-config.cmake")
 
 install(EXPORT wxLua_export
