@@ -664,7 +664,8 @@ ADD_LIBRARY_FULL( LuaLibShared SHARED
         src/linit.c
     LINK_LIBRARIES
     ${LUA_BUILD_AS_DLL}
-    PROPERTIES FOLDER "wxLua/Modules")
+    PROPERTIES FOLDER "wxLua/Modules"
+    INSTALL "${WXLUA_INSTALL_FLAGS}")
 
     WXLIKE_LIBRARY_NAMES( LuaLibShared wxlua_lua_shared "${wxLua_VERSION}")
 
