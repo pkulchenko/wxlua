@@ -12,6 +12,11 @@
     #include <wx/wx.h>
 #endif
 
+#if defined(__WXMSW__)
+    #include "wx/msw/private.h" // for wxSetInstance
+#endif
+
+
 #include <wx/image.h>       // for wxInitAllImageHandlers
 #include "wxlua/include/wxlstate.h"
 #include "luamodule/include/luamoduledefs.h"

@@ -163,11 +163,11 @@ set( CMAKE_INSTALL_PREFIX ${BUILD_INSTALL_PREFIX} CACHE INTERNAL "Install Direct
 # ---------------------------------------------------------------------------
 
 if ((CMAKE_SIZEOF_VOID_P MATCHES 4) OR (CMAKE_CL_64 MATCHES 0))
-    set(IS_32_BIT TRUE  CACHE INTERNAL "")
-    set(IS_64_BIT FALSE CACHE INTERNAL "")
+    set(IS_32_BIT TRUE  CACHE INTERNAL "Set to TRUE if the compiler is 32 bit")
+    set(IS_64_BIT FALSE CACHE INTERNAL "Set to TRUE if the compiler is 64 bit")
 elseif((CMAKE_SIZEOF_VOID_P MATCHES 8) OR (CMAKE_CL_64 MATCHES 1))
-    set(IS_32_BIT FALSE CACHE INTERNAL "")
-    set(IS_64_BIT TRUE  CACHE INTERNAL "")
+    set(IS_32_BIT FALSE CACHE INTERNAL "Set to TRUE if the compiler is 32 bit")
+    set(IS_64_BIT TRUE  CACHE INTERNAL "Set to TRUE if the compiler is 64 bit")
 elseif(NOT DEFINED IS_32_BIT)
     # Sometimes CMake doesn't set CMAKE_SIZEOF_VOID_P, so we remember the last good value.
     # http://www.cmake.org/pipermail/cmake/2011-January/042058.html
@@ -352,7 +352,6 @@ elseif (UNIX) # elseif (CMAKE_BUILD_TOOL MATCHES "(gmake)")
     # -----------------------------------------------------------------------
     if (IS_64_BIT)
         add_definitions( -fPIC )
-        #set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fPIC)
     endif()
 endif()
 
@@ -405,6 +404,21 @@ message(STATUS " ")
 # ---------------------------------------------------------------------------
 
 set(DOXYGEN_PREDEFINED_WXWIDGETS "WXUNUSED(x)=x DECLARE_EXPORTED_EVENT_TYPE(x,y,z)=y")
+
+# The component list is in wxWidgets/build/bakefiles/wxwin.py
+set(wxWidgets_ALL_COMPONENTS_29 gl stc richtext propgrid ribbon aui xrc qa media webview net xml html adv core base)
+# contrib libs in 28 gizmos, ogl, plot, ...
+set(wxWidgets_ALL_COMPONENTS_28 gl stc richtext                 aui xrc qa media         net xml html adv core base)
+
+set(wxWidgets_ALL_COMPONENTS ${wxWidgets_ALL_COMPONENTS_28} ${wxWidgets_ALL_COMPONENTS_29})
+list(REMOVE_DUPLICATES wxWidgets_ALL_COMPONENTS)
+
+set(wxWidgets_ALL_COMPONENTS    ${wxWidgets_ALL_COMPONENTS}    CACHE STRING "All wxWidgets library names in 2.8, 2.9, ..." FORCE)
+set(wxWidgets_ALL_COMPONENTS_28 ${wxWidgets_ALL_COMPONENTS_28} CACHE STRING "All wxWidgets library names in < 2.9" FORCE)
+set(wxWidgets_ALL_COMPONENTS_29 ${wxWidgets_ALL_COMPONENTS_29} CACHE STRING "All wxWidgets library names in >= 2.9" FORCE)
+mark_as_advanced(wxWidgets_ALL_COMPONENTS)
+mark_as_advanced(wxWidgets_ALL_COMPONENTS_28)
+mark_as_advanced(wxWidgets_ALL_COMPONENTS_29)
 
 macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
 
@@ -516,7 +530,7 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
     if ("${wxWidgets_FIND_STYLE}" STREQUAL "win32")
 
         # We show the user the version so we can fix stc and scintilla libs
-        set( wxWidgets_VERSION       ${wxWidgets_VERSION}       CACHE STRING "wxWidgets version e.g. 2.8.3, 2.9.2..." FORCE)
+        set( wxWidgets_VERSION       ${wxWidgets_VERSION}       CACHE STRING "wxWidgets version e.g. 2.8.12, 2.9.4..." FORCE)
         # These are used by FindwxWidgets.cmake
         set( wxWidgets_ROOT_DIR      ${wxWidgets_ROOT_DIR}      CACHE PATH   "Root directory of wxWidgets install (set 1st)" FORCE)
         set( wxWidgets_LIB_DIR       ${wxWidgets_LIB_DIR}       CACHE PATH   "Lib directory of wxWidgets install (set 2nd)" FORCE)
@@ -572,22 +586,6 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
     message(STATUS "* - wxWidgets_DEBUGFLAG    = ${wxWidgets_DEBUGFLAG}" )
 
     # -----------------------------------------------------------------------
-
-    # The component list is in wxWidgets/build/bakefiles/wxwin.py
-    set(wxWidgets_ALL_COMPONENTS_29 gl stc richtext propgrid ribbon aui xrc qa media webview net xml html adv core base)
-    # contrib libs in 28 gizmos, ogl, plot, ...
-    set(wxWidgets_ALL_COMPONENTS_28 gl stc richtext                 aui xrc qa media         net xml html adv core base)
-
-    set(wxWidgets_ALL_COMPONENTS ${wxWidgets_ALL_COMPONENTS_28} ${wxWidgets_ALL_COMPONENTS_29})
-    list(REMOVE_DUPLICATES wxWidgets_ALL_COMPONENTS)
-
-    set(wxWidgets_ALL_COMPONENTS    ${wxWidgets_ALL_COMPONENTS}    CACHE STRING "All wxWidgets library names in 2.8, 2.9, ...")
-    set(wxWidgets_ALL_COMPONENTS_28 ${wxWidgets_ALL_COMPONENTS_28} CACHE STRING "All wxWidgets library names in < 2.9")
-    set(wxWidgets_ALL_COMPONENTS_29 ${wxWidgets_ALL_COMPONENTS_29} CACHE STRING "All wxWidgets library names in >= 2.9")
-    mark_as_advanced(wxWidgets_ALL_COMPONENTS)
-    mark_as_advanced(wxWidgets_ALL_COMPONENTS_28)
-    mark_as_advanced(wxWidgets_ALL_COMPONENTS_29)
-
     # Always verify the libs, for success or failure in finding wxWidgets.
     VERIFY_WXWIDGETS_COMPONENTS()
 
@@ -679,7 +677,7 @@ function( PARSE_WXWIDGETS_LIB_NAMES )
     set(wxWidgets_UNICODEFLAG "" CACHE STRING "wxWidgets unicode build, either 'u' or ''" FORCE)
     set(wxWidgets_DEBUGFLAG   "" CACHE STRING "wxWidgets debug build, either 'd' or ''" FORCE)
 
-    # wxWidgets lib/dll build using MSVC
+    # wxWidgets lib/dll build using MSVC (wxmsw29u_core.lib) or MinGW (libwxmsw29ud_core.a)
     if ("${wxWidgets_PORTNAME}" STREQUAL "")
         string(REGEX MATCH "wx(msw)(univ)?([0-9][0-9])(u)?(d)?_core" _match_msw "${wxWidgets_LIBRARIES}")
 

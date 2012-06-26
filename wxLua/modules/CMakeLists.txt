@@ -523,15 +523,18 @@ if (MSVC)
 elseif (APPLE)
     set( LUA_BUILD_AS_DLL )
     add_definitions( -DLUA_USE_LINUX )
-
     set(LUA_LINK_LIBRARIES m readline)
 
     #$(MAKE) all MYCFLAGS="-DLUA_USE_LINUX" MYLIBS="-lreadline"
 else () # UNIX
     set( LUA_BUILD_AS_DLL )
-    add_definitions( -DLUA_USE_LINUX )
-
-    set(LUA_LINK_LIBRARIES m dl readline history ncurses)
+    
+    if ("${CMAKE_GENERATOR}" MATCHES "MinGW Makefiles")
+        set(LUA_LINK_LIBRARIES m)
+    else()
+        add_definitions( -DLUA_USE_LINUX )
+        set(LUA_LINK_LIBRARIES m dl readline history ncurses)
+    endif()
 
     #$(MAKE) all MYCFLAGS="-DLUA_USE_LINUX -fPIC" MYLIBS="-fPIC -Wl,-E -ldl -lreadline -lhistory -lncurses"
 endif()

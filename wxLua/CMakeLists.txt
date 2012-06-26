@@ -56,7 +56,7 @@ set(wxLuaBindLib_SOURCES)
 set(wxLua_CXX_DEFINITIONS)
 
 # verify that each library exists from finding wxWidgets in the wxWidgets_COMPONENTS
-foreach( wxlua_comp ${wxLuaBind_COMPONENTS} )
+foreach( wxlua_comp ${wxLuaBind_ALL_COMPONENTS} )
     string(TOUPPER ${wxlua_comp} wxlua_comp_upper)
 
     # find specified wxlua binding libs
