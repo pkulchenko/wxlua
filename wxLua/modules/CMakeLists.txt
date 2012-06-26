@@ -572,6 +572,7 @@ ADD_LIBRARY_FULL( LuaLib
         src/loadlib.c
         src/linit.c
     LINK_LIBRARIES
+        ${LUA_LINK_LIBRARIES}
     ${LUA_BUILD_AS_DLL}
     PROPERTIES FOLDER "wxLua/Modules"
     INSTALL "${WXLUA_INSTALL_FLAGS}")
@@ -663,6 +664,7 @@ ADD_LIBRARY_FULL( LuaLibShared SHARED
         src/loadlib.c
         src/linit.c
     LINK_LIBRARIES
+        ${LUA_LINK_LIBRARIES}
     ${LUA_BUILD_AS_DLL}
     PROPERTIES FOLDER "wxLua/Modules"
     INSTALL "${WXLUA_INSTALL_FLAGS}")
