@@ -140,6 +140,8 @@ endif()
 
 # ---------------------------------------------------------------------------
 
+add_subdirectory( wxstedit )
+
 include_directories(${wxLua_ROOT_DIR}/modules/wxbind/setup)
 
 if (NOT TARGET wxLuaLib)

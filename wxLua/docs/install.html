@@ -69,7 +69,7 @@
           <LI><A href="install.html#C4.2">4.2 - CMake with MinGW</A></LI>
 
           <LI><A href="install.html#C4.3">4.3 - CMake with GCC in Linux and
-          OSX<BR></A></LI>
+          OSX</A></LI>
         </OL>
       </LI>
 
@@ -237,9 +237,9 @@
     <CODE>wxWidgets\include\wx\msw\setup0.h</CODE> to
     <CODE>wxWidgets\include\wx\msw\setup.h</CODE> and adjust as desired.</LI>
 
-    <LI>By default the file should be automatically copied over, but in case
-    you get a compiler error about not finding <CODE>"wx/msw/setup.h"</CODE>
-    copy it by hand.</LI>
+    <LI>The file should be automatically copied over, but in case you get a
+    compiler error about not finding <CODE>"wx/msw/setup.h"</CODE> copy it by
+    hand.</LI>
 
     <LI>There are comments above each #define describing the setting.</LI>
 
@@ -286,8 +286,13 @@
     <LI>If you really want DLLs choose "Debug DLL" or "Release DLL".</LI>
 
     <LI>The "Universal" configurations build wxWidgets with a "Universal"
-    widget toolkit as opposed to native MS Windows widgets. Note that this
-    configuration has not been tested with wxLua extensively.</LI>
+    widget toolkit as opposed to native MS Windows widgets.
+
+      <UL>
+        <LI>Note that this configuration has not been tested with wxLua
+        extensively.</LI>
+      </UL>
+    </LI>
   </UL>
 
   <UL>
@@ -313,8 +318,8 @@
   </UL>
 
   <UL>
-    <LI>Hopefully it will all build... If you didn't modify the
-    <CODE>setup.h</CODE> file too much it should without any problems.</LI>
+    <LI>Hopefully it will all build... You shouldn't have any problems if you
+    don't modify the <CODE>setup.h</CODE> file too much.</LI>
   </UL>
 
   <H3><A id="C2.3" name="C2.3"></A>2.3 - Build using MSVC NMake</H3>
@@ -399,8 +404,7 @@
   <UL>
     <LI>For wxWidgets 2.8.x you will also need to <CODE>cd</CODE> into
     <CODE>wxWidgets\contrib\build\stc\</CODE> and run the same
-    <CODE>nmake.exe</CODE> command you used to build the libraries above to
-    build the wxStyledTextCtrl lib.</LI>
+    <CODE>nmake.exe</CODE> command to build the wxStyledTextCtrl lib.</LI>
   </UL>
 
   <H3><A id="C2.4" name="C2.4"></A>2.4 - Build using MinGW</H3>
@@ -474,8 +478,8 @@
   <UL>
     <LI>For wxWidgets 2.8.x you will also need to <CODE>cd</CODE> into
     <CODE>wxWidgets\contrib\build\stc\</CODE> and run the same
-    <CODE>mingw32-make.exe</CODE> command you used to build the other libraries
-    above to build the wxStyledTextCtrl lib.</LI>
+    <CODE>mingw32-make.exe</CODE> command to build the wxStyledTextCtrl
+    lib.</LI>
   </UL>
 
   <H3><A id="C2.5" name="C2.5"></A>2.5 - Build using GCC in Linux</H3>
@@ -578,9 +582,9 @@
   <UL>
     <LI>This enables most everything and you can adjust it as required.</LI>
 
-    <LI>Note that we run the <CODE>configure</CODE> script in the root
-    wxWidgets source directory and it generates the build files in the
-    directory it is run from.</LI>
+    <LI>Note that the <CODE>configure</CODE> script in the root wxWidgets
+    source directory will generate the build files in the directory it is run
+    from so do not run it in the root wxWidgets dir.</LI>
 
     <LI>Review the output file, <CODE>configure-gtk2ud.log</CODE>, to find any
     problems.</LI>
@@ -614,14 +618,14 @@
   <UL>
     <LI>For wxWidgets 2.8.x you will also need to <CODE>cd</CODE> into
     <CODE>wxWidgets/build_gtk2ud/contrib/src/stc/</CODE> and run
-    <CODE>make</CODE> build the wxStyledTextCtrl lib.</LI>
+    <CODE>make</CODE> to build the wxStyledTextCtrl lib.</LI>
   </UL>
 
   <UL>
-    <LI>To build a wxWidgets sample program as a sanity check, the
-    <CODE>widgets</CODE> sample for example, <CODE>cd</CODE> into
-    <CODE>build_gtk2ud/samples/widgets</CODE> and type <CODE>make</CODE> then
-    type <CODE>./widgets</CODE> to run it.</LI>
+    <LI>To build a wxWidgets sample program as a sanity check,
+    <CODE>samples/widgets</CODE> for example, <CODE>cd</CODE> into
+    <CODE>build_gtk2ud/samples/widgets</CODE>, run <CODE>make</CODE>, then
+    <CODE>./widgets</CODE> to run it.</LI>
   </UL>
 
   <H3><A id="C2.6" name="C2.6"></A>2.6 - Build using GCC in OSX</H3>
@@ -635,7 +639,7 @@
   </UL>
 
   <UL>
-    <LI>In the example below a OSX, Unicode, Debug build will be created,
+    <LI>In the example below an OSX, Unicode, Debug build will be created,
     <CODE>osx2ud</CODE>.</LI>
 
     <LI>Create a sub-directory in the wxWidgets directory for the build
@@ -683,11 +687,11 @@
   </BLOCKQUOTE>
 
   <UL>
-    <LI>These enable most everything and you can adjust it as required.</LI>
+    <LI>This enables most everything and you can adjust it as required.</LI>
 
-    <LI>Note that we run the <CODE>configure</CODE> script in the root
-    wxWidgets source directory and it generates the build files in the
-    directory it is run from.</LI>
+    <LI>Note that the <CODE>configure</CODE> script in the root wxWidgets
+    source directory will generate the build files in the directory it is run
+    from so do not run it in the root wxWidgets dir.</LI>
 
     <LI>Review the output file, <CODE>configure-osxud.log</CODE>, to find any
     problems.</LI>
@@ -725,10 +729,10 @@
   </UL>
 
   <UL>
-    <LI>To build a wxWidgets sample program as a sanity check, the
-    <CODE>widgets</CODE> sample for example, <CODE>cd</CODE> into
-    <CODE>build_osxud/samples/widgets</CODE> and type <CODE>make</CODE> then
-    type <CODE>./widgets</CODE> to run it.</LI>
+    <LI>To build a wxWidgets sample program as a sanity check,
+    <CODE>samples/widgets</CODE> for example, <CODE>cd</CODE> into
+    <CODE>build_osxud/samples/widgets</CODE>, run <CODE>make</CODE>, then
+    <CODE>./widgets</CODE> to run it.</LI>
   </UL>
 
   <H2><A id="C3" name="C3"></A>3 - wxLua Components</H2>
@@ -799,7 +803,7 @@
 
   <UL>
     <LI>Install CMake version &gt;= 2.8 (it may work in 2.6, but that's no
-    longer tested)<BR></LI>
+    longer tested)</LI>
 
     <LI style="list-style: none">
       <UL>
@@ -807,7 +811,7 @@
         "http://www.cmake.org/cmake/resources/software.html">http://www.cmake.org/cmake/resources/software.html</A></LI>
 
         <LI>In Linux you can typically install the package that your Linux
-        distrubution provides.</LI>
+        distribution provides.</LI>
       </UL>
     </LI>
   </UL>
@@ -821,7 +825,7 @@
     <LI style="list-style: none">
       <UL>
         <LI>Select "Use default native compilers" unless you have some reason
-        not to.<BR></LI>
+        not to.</LI>
       </UL>
     </LI>
 
@@ -835,9 +839,12 @@
 
     <LI style="list-style: none">
       <UL>
-        <LI>This directory can be anywhere, but ideally not the same as the
-        wxLua source code directory since you may want to completely delete
-        it</LI>
+        <LI>The build directory can be anywhere, but ideally not the same as
+        the wxLua source code directory since you may want to completely delete
+        it.</LI>
+
+        <LI>If anything goes very wrong, consider deleting the build directory
+        you created so you can start over.</LI>
       </UL>
     </LI>
 
@@ -865,8 +872,13 @@
     <LI>Skip to the section below appropriate for your compiler.</LI>
   </OL>
 
+  <P>Below are the CMake variables that you can and in some cases must adjust
+  to build wxLua. If you want to run CMake from the command line you would
+  specify these variables as : <CODE>cmake -DBUILD_SHARED_LIBS=TRUE
+  ...</CODE></P>
+
   <UL>
-    <LI>BUILD_INSTALL_PREFIX=/path/to/install/the/files/to</LI>
+    <LI>BUILD_INSTALL_PREFIX=/path/to/install/the/files/to/after/building</LI>
 
     <LI>BUILD_SHARED_LIBS=[TRUE, FALSE] - Build shared libs (DLLs in MSW) or
     static libs.</LI>
@@ -887,11 +899,11 @@
     <LI>BUILD_WARNINGS_HIGH=[TRUE, FALSE] - Build with more or less
     warnings.</LI>
 
-    <LI>CMAKE_DEBUG_VARIABLES=[TRUE, FALSE]- Print all the CMake variables to
+    <LI>CMAKE_DEBUG_VARIABLES=[TRUE, FALSE] - Print all the CMake variables to
     the log.</LI>
 
     <LI>CMAKE_SKIP_INSTALL_ALL_DEPENDENCY=[TRUE, FALSE] - Allow running install
-    without having built all targets.</LI>
+    without having built all the targets.</LI>
 
     <LI>
     wxLuaBind_COMPONENTS=gl;stc;xrc;richtext;html;media;aui;adv;core;xml;net;base</LI>
@@ -901,7 +913,7 @@
         <LI>Choose the wxWidgets libraries to build wxLua bindings for.</LI>
 
         <LI>Note that libraries will be automatically removed if they are not
-        in the wxWidgets_COMPONENTS list.<BR></LI>
+        in the wxWidgets_COMPONENTS list.</LI>
       </UL>
     </LI>
 
@@ -920,29 +932,51 @@
 
   <UL>
     <LI>wxWidgets_CONFIGURATION=[msw, mswu] - Choose a Unicode or non-Unicode
-    wxWidgets build for MSVC since the libs will be in the same directory.</LI>
+    wxWidgets build for MSVC since if you build both of them the libs will be
+    in the same directory and this is how you choose which one you want to
+    use.</LI>
 
     <LI>wxWidgets_LIB_DIR=/path/to/wxWidgets/lib/vc_lib (vc_dll, gcc_lib,
-    gcc_dll, ...) - The wxWidgets directory with the compiled
-    libraries.<BR></LI>
+    gcc_dll, ...) - The wxWidgets directory with the compiled libraries.</LI>
 
     <LI>wxWidgets_ROOT_DIR=/path/to/wxWidgets - The root dir of wxWidgets.</LI>
 
     <LI>wxWidgets_USE_REL_AND_DBG=[TRUE,FALSE] - Use both release and debug
-    configurations, probably always want this checked.&nbsp;<BR></LI>
+    configurations, probably always want this checked.
+
+      <UL>
+        <LI>Note that you will not be able to check this if you do not have
+        both a release and debug configuration in the wxWidgets lib dir.</LI>
+      </UL>
+    </LI>
 
     <LI>wxWidgets_VERSION=[2.8.x,2.9.x] - In order to help find all the libs
-    you may have to set this variable to the correct wxWidgets version. This is
-    because different wxWidgets versions have different libs and it is hard to
-    tell if a lib is missing or that a different version is being used.</LI>
+    you may have to set this variable to the correct wxWidgets version.
+
+      <UL>
+        <LI>This is because different wxWidgets versions have different libs
+        and it is hard to tell if a lib is missing or if a different version is
+        being used.</LI>
+      </UL>
+    </LI>
   </UL>
 
   <P>Linux and OSX configuration options</P>
 
   <UL>
+    <LI>CMAKE_BUILD_TYPE=[Debug, Release, RelWithDebInfo, MinSizeRel] - Set the
+    build for Debug, Release, Release with Debug Info, and Min Size Release
+    (stripped).
+
+      <UL>
+        <LI>You can only build one at a time, create a different build
+        directory for each different build type.</LI>
+      </UL>
+    </LI>
+
     <LI>wxWidgets_CONFIG_EXECUTABLE=/path/to/wx-config - Set the path to the
     wx-config script that CMake can use to get everything it needs to know
-    about the wxWidgets library.<BR></LI>
+    about the wxWidgets library.</LI>
   </UL>
 
   <H3><A id="C4.1" name="C4.1"></A>4.1 - CMake with MSVC</H3>
@@ -951,10 +985,10 @@
     <LI>To find wxWidgets you must set the variable
     <CODE>wxWidgets_ROOT_DIR=/path/to/wxWidgets</CODE>&nbsp;</LI>
 
-    <LI>Press "Configure," but it probably won't work just yet.<BR></LI>
+    <LI>Press "Configure," but it probably won't work just yet.</LI>
 
-    <LI>To find the libraries for wxWidgets (you may have compilied a variety
-    of them) you must also set the variable
+    <LI>To find the libraries for wxWidgets (you may have compiled a variety of
+    them) you must also set the variable
     <CODE>wxWidgets_LIB_DIR=/path/to/wxWidgets/lib/vc_lib</CODE>&nbsp;</LI>
 
     <LI style="list-style: none">
@@ -964,11 +998,20 @@
       </UL>
     </LI>
 
-    <LI>Press "Configure" again and now it should work, the output window
-    should say "Configuring done" and the log should have a complete
-    description of your wxWidgets build.</LI>
+    <LI>Press "Configure" again, if it doesn't work set
+    <CODE>wxWidgets_CONFIGURATION=[msw, mswu]</CODE></LI>
 
-    <LI>Press "Generate" to have CMake write out the build files.<BR></LI>
+    <LI>Press "Configure" again, if it doesn't work set
+    <CODE>wxWidgets_VERSION=[2.8.x,2.9.x]</CODE></LI>
+
+    <LI>If "Configure" still doesn't work, then something is wrong with your
+    wxWidgets build... go back and fix it.</LI>
+
+    <LI>If "Configure" succeeds, the output window should say "Configuring
+    done" and the log should have a complete description of your wxWidgets
+    build.</LI>
+
+    <LI>Press "Generate" to have CMake write out the build files.</LI>
 
     <LI>Open <CODE>wxLua.sln</CODE> in the build directory...</LI>
 
@@ -980,12 +1023,12 @@
       <UL>
         <LI>Note that you MUST have built wxWidgets in debug for a wxLua
         <CODE>Debug</CODE> build, but a wxWidgets release build works with a
-        wxLua <CODE>Release, MinSizeRel, RelWithDebInfo</CODE> build.<BR></LI>
+        wxLua <CODE>Release, MinSizeRel, RelWithDebInfo</CODE> build.</LI>
       </UL>
     </LI>
 
     <LI>All the apps are put into <CODE>build\bin\Debug</CODE> or
-    <CODE>Release, MinSizeRel, RelWithDebInfo</CODE> as appropriate.<BR></LI>
+    <CODE>Release, MinSizeRel, RelWithDebInfo</CODE> as appropriate.</LI>
 
     <LI>Right-click on "wxLua_app" and select as "Startup project" and press
     the "Start Debugging" program to run it in the GUI... etc.</LI>
@@ -999,7 +1042,7 @@
         <LI>If you run a program and it silently closes with no error you can
         open a <CODE>cmd.exe</CODE> (DOS) prompt and run it there and, if
         you're lucky, an error message about a missing DLL will be printed to
-        the console.<BR></LI>
+        the console.</LI>
       </UL>
     </LI>
   </OL>
@@ -1008,7 +1051,7 @@
 
   <UL>
     <LI>See the section above titled <A href="#C4.2">Build using MinGW</A> for
-    more information about getting and using MinGW.<BR></LI>
+    more information about getting and using MinGW.</LI>
   </UL>
 
   <OL>
@@ -1025,7 +1068,7 @@
     <LI>To find wxWidgets you must set the variable
     <CODE>wxWidgets_ROOT_DIR=/path/to/wxWidgets</CODE></LI>
 
-    <LI>Press "Configure," but it probably won't work just yet.<BR></LI>
+    <LI>Press "Configure," but it probably won't work just yet.</LI>
 
     <LI>To find the libraries for wxWidgets (you may have compilied a variety
     of them) you must also set the variable
@@ -1037,9 +1080,18 @@
       </UL>
     </LI>
 
-    <LI>Press "Configure" again and now it should work, the output window
-    should say "Configuring done" and the log should have a complete
-    description of your wxWidgets build.</LI>
+    <LI>Press "Configure" again, if it doesn't work set
+    <CODE>wxWidgets_CONFIGURATION=[msw, mswu]</CODE></LI>
+
+    <LI>Press "Configure" again, if it doesn't work set
+    <CODE>wxWidgets_VERSION=[2.8.x,2.9.x]</CODE></LI>
+
+    <LI>If "Configure" still doesn't work, then something is wrong with your
+    wxWidgets build... go back and fix it.</LI>
+
+    <LI>If "Configure" succeeds, the output window should say "Configuring
+    done" and the log should have a complete description of your wxWidgets
+    build.</LI>
 
     <LI>Press "Generate" to have CMake write out the build files.</LI>
 
@@ -1050,11 +1102,10 @@
     build everything, which is probably best.</LI>
 
     <LI>All the apps are put into <CODE>build\bin\Debug</CODE> or
-    <CODE>Release, MinSizeRel, RelWithDebInfo</CODE> as appropriate.<BR></LI>
+    <CODE>Release, MinSizeRel, RelWithDebInfo</CODE> as appropriate.</LI>
   </OL>
 
-  <H3><A id="C4.3" name="C4.3"></A>4.3 - CMake with GCC in Linux or
-  OSX<BR></H3>
+  <H3><A id="C4.3" name="C4.3"></A>4.3 - CMake with GCC in Linux or OSX</H3>
 
   <OL>
     <LI>Choose the <CODE>CMAKE_BUILD_TYPE</CODE> that you want.</LI>
@@ -1068,7 +1119,7 @@
 
     <LI>To find wxWidgets you must set the variable
     <CODE>wxWidgets_CONFIG_EXECUTABLE=/path/to/wx-config</CODE>, see above
-    about build wxWidgets for Linux for a description of it.<BR></LI>
+    about build wxWidgets for Linux for a description of it.</LI>
 
     <LI>Press "Configure" and the output window should say "Configuring done"
     and the log should have a complete description of your wxWidgets
@@ -1085,11 +1136,11 @@
     <LI>All the apps are put into <CODE>build\bin\Debug</CODE> or
     <CODE>Release, MinSizeRel, RelWithDebInfo</CODE> as appropriate.</LI>
 
-    <LI>You can run all the apps without installing them.<BR></LI>
+    <LI>You can run all the apps without installing them.</LI>
   </OL>
 
-  <H2><A id="C5" name="C5"></A>5 - Building on MS Windows using the Buildfiles
-  in wxLua/build<BR></H2>
+  <H2><A id="C5" name="C5"></A>5 - Building on MS Windows using Bakefile
+  generated buildfiles in wxLua/build</H2>
 
   <DIV class="lindent">
     wxLua uses environment variables to tell the Windows build files where the
@@ -1118,7 +1169,7 @@
     variable through "My Computer."</P>
 
     <H3><A id="C5.1" name="C5.1"></A>5.1 - Windows Makefiles using the
-    Buildfiles in wxLua/build/msw<BR></H3>
+    Buildfiles in wxLua/build/msw</H3>
 
     <DIV class="lindent">
       <P>Enter the <CODE>wxLua/build/msw</CODE> directory with a MSDOS prompt
