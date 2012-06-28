@@ -66,7 +66,7 @@ message( STATUS "*   Path to the root of the wxWidgets build, must at least set 
 message( STATUS "* -DwxWidgets_LIB_DIR=[path] : (e.g. /path/to/wxWidgets/lib/vc_lib/)")
 message( STATUS "*   Path to the wxWidgets lib dir also set this if libs can't be found." )
 message( STATUS "* -DwxWidgets_CONFIGURATION=[configuration] : ")
-message( STATUS "*   Set wxWidgets configuration; e.g. msw, mswd, mswud, mswunivud..." )
+message( STATUS "*   Set wxWidgets configuration; e.g. msw, mswu, mswunivu..." )
 message( STATUS "*   Where 'u' = unicode and 'd' = debug." )
 message( STATUS "*   MSVC GUI : You need only choose msw, mswu, mswuniv, mswunivu since " )
 message( STATUS "*              release or debug mode is chosen in the GUI." )
@@ -434,6 +434,17 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
     # call this function without ${} around wxWidgets_COMPONENTS_
     set(wxWidgets_COMPONENTS ${${wxWidgets_COMPONENTS_}})
 
+    # The wxWidgets_CONFIGURATION should never be mswd since then 
+    # wxWidgets_USE_REL_AND_DBG can't be set since mswdd will never exist.
+    string(REGEX MATCH "([a-zA-Z]+)d$" wxWidgets_CONFIGURATION_is_debug "${wxWidgets_CONFIGURATION}")
+    if (wxWidgets_CONFIGURATION_is_debug)
+        set(wxWidgets_CONFIGURATION ${CMAKE_MATCH_1} CACHE STRING "Set wxWidgets configuration (${WX_CONFIGURATION_LIST})" FORCE)
+    endif()
+    unset(wxWidgets_CONFIGURATION_is_debug)
+
+    # Nobody probably needs to see this...
+    mark_as_advanced(wxWidgets_wxrc_EXECUTABLE)
+
     # -----------------------------------------------------------------------
     # Get the version of wxWidgets, we'll need it before finding wxWidgets to get stc lib right.
     # Eventually they will have found the wxWidgets dir and this will work.
@@ -534,7 +545,7 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
         # These are used by FindwxWidgets.cmake
         set( wxWidgets_ROOT_DIR      ${wxWidgets_ROOT_DIR}      CACHE PATH   "Root directory of wxWidgets install (set 1st)" FORCE)
         set( wxWidgets_LIB_DIR       ${wxWidgets_LIB_DIR}       CACHE PATH   "Lib directory of wxWidgets install (set 2nd)" FORCE)
-        set( wxWidgets_CONFIGURATION ${wxWidgets_CONFIGURATION} CACHE STRING "wxWidgets configuration e.g. msw, mswd, mswu, mswud, mswunivud..." FORCE)
+        set( wxWidgets_CONFIGURATION ${wxWidgets_CONFIGURATION} CACHE STRING "wxWidgets configuration e.g. msw, mswu, mswunivu..." FORCE)
 
     else()
 
