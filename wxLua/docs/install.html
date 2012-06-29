@@ -916,16 +916,69 @@
         in the wxWidgets_COMPONENTS list.</LI>
       </UL>
     </LI>
+  </UL>
 
-    <LI>
-    wxWidgets_COMPONENTS=stc;scintilla;xrc;xml;net;media;richtext;aui;html;adv;core;base</LI>
+  <UL>
+    <LI>CMAKE_BUILD_TYPE=[Debug, Release, RelWithDebInfo, MinSizeRel] - Set the
+    build for Debug, Release, Release with Debug Info, and Min Size Release
+    (stripped).</LI>
 
     <LI style="list-style: none">
       <UL>
-        <LI>What wxWidgets libraries were found and which ones to link to.</LI>
+        <LI>This will not shown when building with Visual Studio since you will
+        be able to choose the different build types in the IDE.<BR></LI>
 
-        <LI>A warning will given if you specify a wxWidgets lib that was not
-        found.</LI>
+        <LI>Note that you can only build one at a time so you will have to
+        create a separate build directory for each different build type.</LI>
+
+        <LI>Do not try to change the build type in CMake and reuse the same
+        build directory, it may work. but can cause problems, just avoid doing
+        it.<BR></LI>
+      </UL>
+    </LI>
+  </UL>
+
+  <UL>
+    <LI>wxWidgets_COMPONENTS=[semicolon separated list of wxWidgets library
+    names]</LI>
+
+    <LI style="list-style: none">
+      <UL>
+        <LI>wxWidgets is a number of components that are either built into
+        separate libs (default build) or into a monolithic lib.</LI>
+
+        <LI>Therefore you either specify the desired separate libs or the
+        monolithic lib, but note that not all libs make it into the monolithic
+        lib.</LI>
+
+        <LI>The order and the dependencies are important, the lists below show
+        the correct order and the dependencies can be found here : <A href=
+        "http://docs.wxwidgets.org/trunk/page_libs.html">http://docs.wxwidgets.org/trunk/page_libs.html</A><BR>
+        </LI>
+
+        <LI>wxWidgets 2.8 :
+        gl;stc;scintilla;xrc;media;richtext;aui;html;adv;core;xml;net;base</LI>
+
+        <LI>wxWidgets 2.9 :
+        gl;stc;xrc;media;richtext;aui;html;adv;core;xml;net;base</LI>
+
+        <LI>wxWidgets 2.8 monolithic : gl;mono&nbsp;</LI>
+
+        <LI>wxWidgets 2.9 monolithic : gl;scintilla;mono<BR></LI>
+
+        <LI>A warning will given if you specify a wxWidgets library that was
+        not found.</LI>
+
+        <LI style="list-style: none">
+          <UL>
+            <LI>Note that the contents of the monolithic library can't be
+            easily known so it is assumed that it has everything.</LI>
+
+            <LI>If you get a linker error about "unresolved symbols" for a
+            xwWidgets function you are probably missing the library for
+            it.<BR></LI>
+          </UL>
+        </LI>
       </UL>
     </LI>
   </UL>MS Windows configuration options<BR>
@@ -964,16 +1017,6 @@
   <P>Linux and OSX configuration options</P>
 
   <UL>
-    <LI>CMAKE_BUILD_TYPE=[Debug, Release, RelWithDebInfo, MinSizeRel] - Set the
-    build for Debug, Release, Release with Debug Info, and Min Size Release
-    (stripped).
-
-      <UL>
-        <LI>You can only build one at a time, create a different build
-        directory for each different build type.</LI>
-      </UL>
-    </LI>
-
     <LI>wxWidgets_CONFIG_EXECUTABLE=/path/to/wx-config - Set the path to the
     wx-config script that CMake can use to get everything it needs to know
     about the wxWidgets library.</LI>

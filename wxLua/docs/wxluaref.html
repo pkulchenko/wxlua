@@ -5216,22 +5216,70 @@
 </font>
 </blockquote><font color=#0066CC><i>%endenum</i></font><br>
 <br>
+<b><font size=+1 color=#0066CC><i>%enum</i> <a name="wxDateTime::Year">wxDateTime::Year</a></font></b>
+<blockquote><font color=#0066CC>
+    Inv_Year<br>
+</font>
+</blockquote><font color=#0066CC><i>%endenum</i></font><br>
+<br>
+<b><font size=+1 color=#0066CC><i>%enum</i> <a name="wxDateTime::NameFlags">wxDateTime::NameFlags</a></font></b>
+<blockquote><font color=#0066CC>
+    Name_Full<br>
+    Name_Abbr<br>
+</font>
+</blockquote><font color=#0066CC><i>%endenum</i></font><br>
+<br>
+<b><font size=+1 color=#0066CC><i>%enum</i> <a name="wxDateTime::WeekFlags">wxDateTime::WeekFlags</a></font></b>
+<blockquote><font color=#0066CC>
+    Default_First<br>
+    Monday_First<br>
+    Sunday_First<br>
+</font>
+</blockquote><font color=#0066CC><i>%endenum</i></font><br>
+<br>
+<b><font size=+1 color=#DD0000><i>%class</i> <i>%delete</i> <a name="wxDateTime::TimeZone">wxDateTime::TimeZone</a></font></b>
+<blockquote>
+    wxDateTime::TimeZone(wxDateTime::TZ tz)<br>
+<br>
+    static wxDateTime::TimeZone Make(long offset)<br>
+    long GetOffset() const<br>
+</blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
+<br>
+<br>
 <i>%typedef</i> unsigned short wxDateTime::wxDateTime_t<br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <i>%delete</i> <a name="wxDateTime">wxDateTime</a></font></b>
 <blockquote>
 <font color=#006666>    <i>%define_object</i> wxDefaultDateTime</font><br>
 <br>
+    static void SetCountry(wxDateTime::Country country)<br>
+    static wxDateTime::Country GetCountry()<br>
+    static bool IsWestEuropeanCountry(wxDateTime::Country country = wxDateTime::Country_Default)<br>
+<br>
+    static int GetCurrentYear(wxDateTime::Calendar cal = wxDateTime::Gregorian)<br>
+    static int ConvertYearToBC(int year)<br>
+    static wxDateTime::Month GetCurrentMonth(wxDateTime::Calendar cal = wxDateTime::Gregorian)<br>
+    static bool IsLeapYear(int year = wxDateTime::Inv_Year, wxDateTime::Calendar cal = wxDateTime::Gregorian)<br>
+    static int GetCentury(int year)<br>
+    static wxDateTime::wxDateTime_t GetNumberOfDays(int year, wxDateTime::Calendar cal = wxDateTime::Gregorian)<br>
+    static wxDateTime::wxDateTime_t GetNumberOfDays(wxDateTime::Month month, int year = wxDateTime::Inv_Year, wxDateTime::Calendar cal = wxDateTime::Gregorian)<br>
+    static <a href="#wxString">wxString</a> GetMonthName(wxDateTime::Month month, wxDateTime::NameFlags flags = wxDateTime::Name_Full)<br>
+    static <a href="#wxString">wxString</a> GetWeekDayName(wxDateTime::WeekDay weekday, wxDateTime::NameFlags flags = wxDateTime::Name_Full)<br>
+    <font color=#009900>//static void GetAmPmStrings(<a href="#wxString">wxString</a> *am, <a href="#wxString">wxString</a> *pm)</font><br>
+    static bool IsDSTApplicable(int year = wxDateTime::Inv_Year, wxDateTime::Country country = wxDateTime::Country_Default)<br>
+    static <a href="#wxDateTime">wxDateTime</a> GetBeginDST(int year = wxDateTime::Inv_Year, wxDateTime::Country country = wxDateTime::Country_Default)<br>
+    static <a href="#wxDateTime">wxDateTime</a> GetEndDST(int year = wxDateTime::Inv_Year, wxDateTime::Country country = wxDateTime::Country_Default)<br>
+    static <a href="#wxDateTime">wxDateTime</a> Now()<br>
+    static <a href="#wxDateTime">wxDateTime</a> UNow()<br>
+    static <a href="#wxDateTime">wxDateTime</a> Today()<br>
+<br>
+<br>
     <a href="#wxDateTime">wxDateTime</a>()<br>
+    <a href="#wxDateTime">wxDateTime</a>(const <a href="#wxDateTime">wxDateTime</a>&amp; dateTime)<br>
     <a href="#wxDateTime">wxDateTime</a>(time_t dateTime) <font color=#009900>// use with Lua's os.time() on MSW, Linux, others?</font><br>
 <font color=#990099>    <i>%rename</i> wxDateTimeFromJDN <a href="#wxDateTime">wxDateTime</a>(double dateTime)</font><br>
 <font color=#990099>    <i>%rename</i> wxDateTimeFromHMS <a href="#wxDateTime">wxDateTime</a>(int hour, int minute, int second, int millisec)</font><br>
 <font color=#990099>    <i>%rename</i> wxDateTimeFromDMY <a href="#wxDateTime">wxDateTime</a>(int day, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year, int hour = 0, int minute = 0, int second = 0, int millisec = 0)</font><br>
-<br>
-    static <a href="#wxDateTime">wxDateTime</a> Now()<br>
-    static <a href="#wxDateTime">wxDateTime</a> UNow()<br>
-    static <a href="#wxDateTime">wxDateTime</a> Today()<br>
-    static void SetCountry(wxDateTime::Country country)<br>
 <br>
     <a href="#wxDateTime">wxDateTime</a>&amp; SetToCurrent()<br>
     <a href="#wxDateTime">wxDateTime</a>&amp; Set(time_t time) <font color=#009900>// use with Lua's os.time() on MSW, Linux, others?</font><br>
@@ -5239,13 +5287,15 @@
 <font color=#990099>    <i>%rename</i> SetToHMS <a href="#wxDateTime">wxDateTime</a>&amp; Set(int hour, int minute, int second, int millisec)</font><br>
 <font color=#990099>    <i>%rename</i> SetToDMY <a href="#wxDateTime">wxDateTime</a>&amp; Set(int day, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year, int hour = 0, int minute = 0, int second = 0, int millisec = 0)</font><br>
     <a href="#wxDateTime">wxDateTime</a>&amp; ResetTime()<br>
-    <a href="#wxDateTime">wxDateTime</a>&amp; SetDay(int day)<br>
-    <a href="#wxDateTime">wxDateTime</a>&amp; SetMonth(wxDateTime::Month month)<br>
+    <a href="#wxDateTime">wxDateTime</a> GetDateOnly() const<br>
     <a href="#wxDateTime">wxDateTime</a>&amp; SetYear(int year)<br>
+    <a href="#wxDateTime">wxDateTime</a>&amp; SetMonth(wxDateTime::Month month)<br>
+    <a href="#wxDateTime">wxDateTime</a>&amp; SetDay(int day)<br>
     <a href="#wxDateTime">wxDateTime</a>&amp; SetHour(int hour)<br>
     <a href="#wxDateTime">wxDateTime</a>&amp; SetMinute(int minute)<br>
     <a href="#wxDateTime">wxDateTime</a>&amp; SetSecond(int second)<br>
     <a href="#wxDateTime">wxDateTime</a>&amp; SetMillisecond(int millisecond)<br>
+<br>
     bool IsWorkDay(wxDateTime::Country country = wxDateTime::Country_Default) const<br>
     bool IsEqualTo(const <a href="#wxDateTime">wxDateTime</a>&amp; datetime) const<br>
     bool IsEarlierThan(const <a href="#wxDateTime">wxDateTime</a>&amp; datetime) const<br>
@@ -5257,6 +5307,7 @@
     bool IsEqualUpTo(const <a href="#wxDateTime">wxDateTime</a>&amp; dt, const <a href="#wxTimeSpan">wxTimeSpan</a>&amp; ts) const<br>
     bool IsValid()<br>
     long GetTicks()<br>
+<br>
     <a href="#wxDateTime">wxDateTime</a>&amp; SetToWeekDayInSameWeek(wxDateTime::WeekDay weekday)<br>
     <a href="#wxDateTime">wxDateTime</a>  GetWeekDayInSameWeek(wxDateTime::WeekDay weekday) const<br>
     <a href="#wxDateTime">wxDateTime</a>&amp; SetToNextWeekDay(wxDateTime::WeekDay weekday)<br>
@@ -5267,8 +5318,10 @@
     <a href="#wxDateTime">wxDateTime</a> GetWeekDay(wxDateTime::WeekDay weekday, int n = 1, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year) const<br>
     bool SetToLastWeekDay(wxDateTime::WeekDay weekday, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year)<br>
     <a href="#wxDateTime">wxDateTime</a> GetLastWeekDay(wxDateTime::WeekDay weekday, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year)<br>
+<br>
     !<i>%wxchkver_2_6</i> bool SetToTheWeek(wxDateTime::wxDateTime_t numWeek, wxDateTime::WeekDay weekday = wxDateTime::Mon)<br>
     !<i>%wxchkver_2_6</i> <a href="#wxDateTime">wxDateTime</a> GetWeek(wxDateTime::wxDateTime_t numWeek, wxDateTime::WeekDay weekday = wxDateTime::Mon) const<br>
+<br>
     <i>%wxchkver_2_6</i> static <a href="#wxDateTime">wxDateTime</a> SetToWeekOfYear(int year, wxDateTime::wxDateTime_t numWeek, wxDateTime::WeekDay weekday = wxDateTime::Mon)<br>
     <a href="#wxDateTime">wxDateTime</a>&amp; SetToLastMonthDay(wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year)<br>
     <a href="#wxDateTime">wxDateTime</a> GetLastMonthDay(wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year) const<br>
@@ -5279,21 +5332,88 @@
     double GetModifiedJulianDayNumber() const<br>
     double GetMJD() const<br>
     double GetRataDie() const<br>
+<br>
+    <a href="#wxDateTime">wxDateTime</a> ToTimezone(const wxDateTime::TimeZone&amp; tz, bool noDST = false) const<br>
+    <a href="#wxDateTime">wxDateTime</a>&amp; MakeTimezone(const wxDateTime::TimeZone&amp; tz, bool noDST = false)<br>
+    <a href="#wxDateTime">wxDateTime</a> FromTimezone(const wxDateTime::TimeZone&amp; tz, bool noDST = false) const<br>
+    <a href="#wxDateTime">wxDateTime</a>&amp; MakeFromTimezone(const wxDateTime::TimeZone&amp; tz, bool noDST = false)<br>
+<br>
+    <a href="#wxDateTime">wxDateTime</a> ToUTC(bool noDST = false) const<br>
+    <a href="#wxDateTime">wxDateTime</a>&amp; MakeUTC(bool noDST = false)<br>
     <a href="#wxDateTime">wxDateTime</a> ToGMT(bool noDST = false) const<br>
     <a href="#wxDateTime">wxDateTime</a>&amp; MakeGMT(bool noDST = false)<br>
+    <a href="#wxDateTime">wxDateTime</a> FromUTC(bool noDST = false) const<br>
+    <a href="#wxDateTime">wxDateTime</a>&amp; MakeFromUTC(bool noDST = false)<br>
     int IsDST(wxDateTime::Country country = wxDateTime::Country_Default) const<br>
+<br>
+    bool IsValid() const<br>
+    <font color=#009900>//Tm GetTm(const wxDateTime::TimeZone&amp; tz = wxDateTime::Local) const</font><br>
+    time_t GetTicks() const<br>
+    int GetCentury(const wxDateTime::TimeZone&amp; tz = wxLua_wxDateTime_TimeZone_Local) const<br>
+    int GetYear(const wxDateTime::TimeZone&amp; tz = wxLua_wxDateTime_TimeZone_Local) const<br>
+    wxDateTime::Month GetMonth(const wxDateTime::TimeZone&amp; tz = wxLua_wxDateTime_TimeZone_Local) const<br>
+    wxDateTime::wxDateTime_t GetDay(const wxDateTime::TimeZone&amp; tz = wxLua_wxDateTime_TimeZone_Local) const<br>
+    wxDateTime::WeekDay GetWeekDay(const wxDateTime::TimeZone&amp; tz = wxLua_wxDateTime_TimeZone_Local) const<br>
+    wxDateTime::wxDateTime_t GetHour(const wxDateTime::TimeZone&amp; tz = wxLua_wxDateTime_TimeZone_Local) const<br>
+    wxDateTime::wxDateTime_t GetMinute(const wxDateTime::TimeZone&amp; tz = wxLua_wxDateTime_TimeZone_Local) const<br>
+    wxDateTime::wxDateTime_t GetSecond(const wxDateTime::TimeZone&amp; tz = wxLua_wxDateTime_TimeZone_Local) const<br>
+    wxDateTime::wxDateTime_t GetMillisecond(const wxDateTime::TimeZone&amp; tz = wxLua_wxDateTime_TimeZone_Local) const<br>
+<br>
+    wxDateTime::wxDateTime_t GetDayOfYear(const wxDateTime::TimeZone&amp; tz = wxLua_wxDateTime_TimeZone_Local) const<br>
+    wxDateTime::wxDateTime_t GetWeekOfYear(wxDateTime::WeekFlags flags = wxDateTime::Monday_First, const wxDateTime::TimeZone&amp; tz = wxLua_wxDateTime_TimeZone_Local) const<br>
+    wxDateTime::wxDateTime_t GetWeekOfMonth(wxDateTime::WeekFlags flags = wxDateTime::Monday_First, const wxDateTime::TimeZone&amp; tz = wxLua_wxDateTime_TimeZone_Local) const<br>
+    bool IsWorkDay(wxDateTime::Country country = wxDateTime::Country_Default) const<br>
+    <font color=#009900>//bool IsGregorianDate(GregorianAdoption country = Gr_Standard) const;</font><br>
+<br>
+    <a href="#wxDateTime">wxDateTime</a>&amp; SetFromDOS(unsigned long ddt);<br>
+    unsigned long GetAsDOS() const;<br>
+<br>
+    bool IsEqualTo(const <a href="#wxDateTime">wxDateTime</a>&amp; datetime) const;<br>
+    bool IsEarlierThan(const <a href="#wxDateTime">wxDateTime</a>&amp; datetime) const;<br>
+    bool IsLaterThan(const <a href="#wxDateTime">wxDateTime</a>&amp; datetime) const;<br>
+    bool IsStrictlyBetween(const <a href="#wxDateTime">wxDateTime</a>&amp; t1, const <a href="#wxDateTime">wxDateTime</a>&amp; t2) const;<br>
+    bool IsBetween(const <a href="#wxDateTime">wxDateTime</a>&amp; t1, const <a href="#wxDateTime">wxDateTime</a>&amp; t2) const;<br>
+    bool IsSameDate(const <a href="#wxDateTime">wxDateTime</a>&amp; dt) const;<br>
+    bool IsSameTime(const <a href="#wxDateTime">wxDateTime</a>&amp; dt) const;<br>
+    bool IsEqualUpTo(const <a href="#wxDateTime">wxDateTime</a>&amp; dt, const <a href="#wxTimeSpan">wxTimeSpan</a>&amp; ts) const;<br>
+<br>
+    <i>%operator</i> bool operator&lt;(const <a href="#wxDateTime">wxDateTime</a>&amp; dt) const<br>
+    <i>%operator</i> bool operator&lt;=(const <a href="#wxDateTime">wxDateTime</a>&amp; dt) const<br>
+    <i>%operator</i> bool operator&gt;(const <a href="#wxDateTime">wxDateTime</a>&amp; dt) const<br>
+    <i>%operator</i> bool operator&gt;=(const <a href="#wxDateTime">wxDateTime</a>&amp; dt) const<br>
+    <i>%operator</i> bool operator==(const <a href="#wxDateTime">wxDateTime</a>&amp; dt) const<br>
+    <i>%operator</i> bool operator!=(const <a href="#wxDateTime">wxDateTime</a>&amp; dt) const<br>
+<br>
     <a href="#wxDateTime">wxDateTime</a>&amp; Add(const <a href="#wxTimeSpan">wxTimeSpan</a>&amp; diff)<br>
     <a href="#wxDateTime">wxDateTime</a>&amp; Add(const <a href="#wxDateSpan">wxDateSpan</a>&amp; diff)<br>
     <a href="#wxDateTime">wxDateTime</a>&amp; Subtract(const <a href="#wxTimeSpan">wxTimeSpan</a>&amp; diff)<br>
     <a href="#wxDateTime">wxDateTime</a>&amp; Subtract(const <a href="#wxDateSpan">wxDateSpan</a>&amp; diff)<br>
 <br>
-    <i>%wxchkver_2_9</i> bool ParseRfc822Date(<a href="#wxString">wxString</a> date, wxString::const_iterator *end)<br>
-    <i>%wxchkver_2_9</i> bool ParseFormat(<a href="#wxString">wxString</a> date, <a href="#wxString">wxString</a> format, const <a href="#wxDateTime">wxDateTime</a>&amp; dateDef, wxString::const_iterator *end)<br>
-    <i>%wxchkver_2_9</i> bool ParseFormat(<a href="#wxString">wxString</a> date, <a href="#wxString">wxString</a> format, wxString::const_iterator *end)<br>
-    <i>%wxchkver_2_9</i> bool ParseFormat(<a href="#wxString">wxString</a> date, wxString::const_iterator *end)<br>
-    <i>%wxchkver_2_9</i> bool ParseDateTime(<a href="#wxString">wxString</a> datetime, wxString::const_iterator *end)<br>
-    <i>%wxchkver_2_9</i> bool ParseDate(<a href="#wxString">wxString</a> date, wxString::const_iterator *end)<br>
-    <i>%wxchkver_2_9</i> bool ParseTime(<a href="#wxString">wxString</a> time, wxString::const_iterator *end)<br>
+    <font color=#009900>// ALL of the ParseXXX() functions in wx29 that take a 'wxString::const_iterator *end'</font><br>
+    <font color=#009900>// return the remainder of the input string after the error occurred if possible or</font><br>
+    <font color=#009900>// the whole string. Only a bool value of true is returned on success.</font><br>
+<br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> [bool, lua String remainder on error] ParseRfc822Date(const <a href="#wxString">wxString</a>&amp; date)</font></font><br>
+    <font color=#009900>// C++ Func: bool ParseRfc822Date(const <a href="#wxString">wxString</a>&amp; date, wxString::const_iterator *end)</font><br>
+    <i>%wxchkver_2_9</i> bool ParseRfc822Date(const <a href="#wxString">wxString</a>&amp; date)<br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> [bool, lua String remainder on error] ParseFormat(const <a href="#wxString">wxString</a>&amp; date, <a href="#wxString">wxString</a> format, const <a href="#wxDateTime">wxDateTime</a>&amp; dateDef)</font></font><br>
+    <font color=#009900>// C++ Func: bool ParseFormat(const <a href="#wxString">wxString</a>&amp; date, <a href="#wxString">wxString</a> format, const <a href="#wxDateTime">wxDateTime</a>&amp; dateDef, wxString::const_iterator *end)</font><br>
+    <i>%wxchkver_2_9</i> bool ParseFormat(const <a href="#wxString">wxString</a>&amp; date, <a href="#wxString">wxString</a> format, const <a href="#wxDateTime">wxDateTime</a>&amp; dateDef)<br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> [bool, lua String remainder on error] ParseFormat(const <a href="#wxString">wxString</a>&amp; date, <a href="#wxString">wxString</a> format)</font></font><br>
+    <font color=#009900>// C++ Func: bool ParseFormat(const <a href="#wxString">wxString</a>&amp; date, <a href="#wxString">wxString</a> format, wxString::const_iterator *end)</font><br>
+    <i>%wxchkver_2_9</i> bool ParseFormat(const <a href="#wxString">wxString</a>&amp; date, <a href="#wxString">wxString</a> format)<br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> [bool, lua String remainder on error] ParseFormat(const <a href="#wxString">wxString</a>&amp; date)</font></font><br>
+    <font color=#009900>// C++ Func: bool ParseFormat(const <a href="#wxString">wxString</a>&amp; date, wxString::const_iterator *end)</font><br>
+    <i>%wxchkver_2_9</i> bool ParseFormat(const <a href="#wxString">wxString</a>&amp; date)<br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> [bool, lua String remainder on error] ParseDateTime(const <a href="#wxString">wxString</a>&amp; date)</font></font><br>
+    <font color=#009900>// C++ Func: bool ParseDateTime(const <a href="#wxString">wxString</a>&amp; date, wxString::const_iterator *end)</font><br>
+    <i>%wxchkver_2_9</i> bool ParseDateTime(const <a href="#wxString">wxString</a>&amp; datetime)<br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> [bool, lua String remainder on error] ParseDate(const <a href="#wxString">wxString</a>&amp; date)</font></font><br>
+    <font color=#009900>// C++ Func: bool ParseDate(const <a href="#wxString">wxString</a>&amp; date, wxString::const_iterator *end)</font><br>
+    <i>%wxchkver_2_9</i> bool ParseDate(const <a href="#wxString">wxString</a>&amp; date)<br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> [bool, lua String remainder on error] ParseTime(const <a href="#wxString">wxString</a>&amp; date)</font></font><br>
+    <font color=#009900>// C++ Func: bool ParseTime(const <a href="#wxString">wxString</a>&amp; date, wxString::const_iterator *end)</font><br>
+    <i>%wxchkver_2_9</i> bool ParseTime(const <a href="#wxString">wxString</a>&amp; time)<br>
 <br>
     !<i>%wxchkver_2_9</i> <a href="#wxString">wxString</a> ParseRfc822Date(<a href="#wxString">wxString</a> date)<br>
     !<i>%wxchkver_2_9</i> <a href="#wxString">wxString</a> ParseFormat(<a href="#wxString">wxString</a> date, <a href="#wxString">wxString</a> format = "<i>%c</i>", const <a href="#wxDateTime">wxDateTime</a>&amp; dateDef = wxDefaultDateTime)<br>
@@ -18135,7 +18255,7 @@
 <br>
     <a href="#wxDateEvent">wxDateEvent</a>(<a href="#wxWindow">wxWindow</a> *win, const <a href="#wxDateTime">wxDateTime</a>&amp; dt, wxEventType type)<br>
 <br>
-    const <a href="#wxDateTime">wxDateTime</a>&amp; GetDate() const<br>
+    <a href="#wxDateTime">wxDateTime</a> GetDate() const<br>
     void SetDate(const <a href="#wxDateTime">wxDateTime</a> &amp;date)<br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
 <br>

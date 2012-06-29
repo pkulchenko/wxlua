@@ -1,9 +1,11 @@
  wxLua ChangeLog
  ===============
 
- version 2.8.12
+ version 2.8.12 (released 6/28/2012)
  --------------------------------------------------------------------
- - Apply Lua 5.1.4-4 patch.
+ - Add wxDateTime functions to make them more useable.
+ - Fix wxGrid problems with reference counted render classes.
+ - Update to Lua 5.1.5
  - Added more wxTreeCtrl functions, allow wxLuaTreeItemData to take
    any Lua data in its SetData/GetData() methods.
  - Fixed crash in error handler for wxLua functions.

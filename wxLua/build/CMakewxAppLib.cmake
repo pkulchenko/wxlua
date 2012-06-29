@@ -37,6 +37,8 @@ endif()
 
 set_property(GLOBAL PROPERTY CMAKEWXAPPLIB_RUN_ONCE TRUE)
 
+set(CMakewxAppLib_LIST_DIR ${CMAKE_CURRENT_LIST_DIR})
+
 # ===========================================================================
 # Display to the caller what the options are that may be passed to
 # CMake to control the build before we do anything.
@@ -438,7 +440,7 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
     # wxWidgets_USE_REL_AND_DBG can't be set since mswdd will never exist.
     string(REGEX MATCH "([a-zA-Z]+)d$" wxWidgets_CONFIGURATION_is_debug "${wxWidgets_CONFIGURATION}")
     if (wxWidgets_CONFIGURATION_is_debug)
-        set(wxWidgets_CONFIGURATION ${CMAKE_MATCH_1} CACHE STRING "Set wxWidgets configuration (${WX_CONFIGURATION_LIST})" FORCE)
+        #set(wxWidgets_CONFIGURATION ${CMAKE_MATCH_1} CACHE STRING "Set wxWidgets configuration (${WX_CONFIGURATION_LIST})" FORCE)
     endif()
     unset(wxWidgets_CONFIGURATION_is_debug)
 
@@ -529,9 +531,16 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
 
     message(STATUS "* Using these wxWidgets components: ${wxWidgets_COMPONENTS}")
 
+    # Use our own copy of FindwxWidgets.cmake that has some fixes
+    set(CMAKE_MODULE_PATH_old ${CMAKE_MODULE_PATH})
+    set(CMAKE_MODULE_PATH     ${CMakewxAppLib_LIST_DIR})
+    
     # Note: it is essential that 'core' is mentioned before 'base'.
     # Don't use REQUIRED since it only gives a useless error message on failure.
     find_package( wxWidgets COMPONENTS ${wxWidgets_COMPONENTS})
+    
+    set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH_old})
+    unset(CMAKE_MODULE_PATH_old)
 
     # Set the variables FindwxWidgets.cmake uses so they show up in cmake-gui
     # so people will actually have a chance of finding wxWidgets...

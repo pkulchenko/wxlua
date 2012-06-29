@@ -101,10 +101,10 @@ SETUP_wxLua()
 
 set( wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE PATH "Root dir of wxLua" FORCE)
 
-set( wxLua_VERSION         "2.9.4" )
+set( wxLua_VERSION         "2.8.12" )
 set( wxLua_MAJOR_VERSION   "2" )
-set( wxLua_MINOR_VERSION   "9" )
-set( wxLua_RELEASE_VERSION "4" )
+set( wxLua_MINOR_VERSION   "8" )
+set( wxLua_RELEASE_VERSION "12" )
 
 # ---------------------------------------------------------------------------
 
@@ -166,7 +166,7 @@ install(EXPORT wxLua_export
 # Install the remaining files
 
 install(DIRECTORY   "${wxLua_ROOT_DIR}/docs/"
-        DESTINATION "${WXLUA_SHARE_DIR}doc"
+        DESTINATION "${WXLUA_SHARE_DIR}doc/wxLua"
         FILES_MATCHING
         PATTERN "*.txt" PATTERN "*.html"
         PATTERN "CVS" EXCLUDE
