@@ -4,8 +4,6 @@
     Copyright: 2001-2004 (C) Klaas Holwerda
 
     Licence: wxWidgets Licence
-
-    RCS-ID: $Id: canlua.cpp,v 1.17 2009/11/17 06:11:02 jrl1 Exp $
 */
 
 #include <wx/wxprec.h>

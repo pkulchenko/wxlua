@@ -3,7 +3,7 @@
 // Purpose:     wxLuaBinding
 // Author:      Ray Gilbert, John Labenski, J Winwood
 // Created:     14/11/2001
-// Copyright:   Ray Gilbert
+// Copyright:   (c) 2012 John Labenski, Ray Gilbert
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
 

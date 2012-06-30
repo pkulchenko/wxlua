@@ -20,6 +20,302 @@ include_directories(${wxLua_ROOT_DIR}/
                     ${wxLua_ROOT_DIR}/modules/lua/src)
 
 # ===========================================================================
+# wxLua/modules/lua
+
+function (wxLua_Modules_Lua_TARGETS)
+
+set( LUA_BUILD_AS_DLL )
+set( LUA_LINK_LIBRARIES )
+set( LUA_EXE_PROPERTIES )
+
+if (MSVC)
+    set( LUA_BUILD_AS_DLL PROPERTIES DEFINE_SYMBOL LUA_BUILD_AS_DLL )
+    add_definitions( -D_CRT_SECURE_NO_WARNINGS )
+    
+    # NOTE! We always export the Lua functions to allow the EXEs to be treated as DLLs.
+    # We use modules/luaproxydll as the lua51.dll, but the functions are in the executables.
+    add_definitions( -DLUA_BUILD_AS_DLL ) 
+    set(LUA_EXE_PROPERTIES PROPERTIES COMPILE_DEFINITIONS "LUA_CORE")
+    
+elseif (APPLE)
+    add_definitions( -DLUA_USE_LINUX )
+    set(LUA_LINK_LIBRARIES m readline)
+
+    #$(MAKE) all MYCFLAGS="-DLUA_USE_LINUX" MYLIBS="-lreadline"
+else () # UNIX
+    
+    if ("${CMAKE_GENERATOR}" MATCHES "MinGW Makefiles")
+        set(LUA_LINK_LIBRARIES m)
+    else()
+        add_definitions( -DLUA_USE_LINUX )
+        set(LUA_LINK_LIBRARIES m dl readline history ncurses)
+    endif()
+
+    #$(MAKE) all MYCFLAGS="-DLUA_USE_LINUX -fPIC" MYLIBS="-fPIC -Wl,-E -ldl -lreadline -lhistory -lncurses"
+endif()
+
+# ---------------------------------------------------------------------------
+
+ADD_LIBRARY_FULL( LuaLib
+    HEADERS
+        src/*.h
+    SOURCES
+        src/lapi.c
+        src/lcode.c
+        src/ldebug.c
+        src/ldo.c
+        src/ldump.c
+        src/lfunc.c
+        src/lgc.c
+        src/llex.c
+        src/lmem.c
+        src/lobject.c
+        src/lopcodes.c
+        src/lparser.c
+        src/lstate.c
+        src/lstring.c
+        src/ltable.c
+        src/ltm.c
+        src/lundump.c
+        src/lvm.c
+        src/lzio.c
+        src/lauxlib.c
+        src/lbaselib.c
+        src/ldblib.c
+        src/liolib.c
+        src/lmathlib.c
+        src/loslib.c
+        src/ltablib.c
+        src/lstrlib.c
+        src/loadlib.c
+        src/linit.c
+    LINK_LIBRARIES
+        ${LUA_LINK_LIBRARIES}
+    ${LUA_BUILD_AS_DLL}
+    PROPERTIES LINKER_LANGUAGE C
+    PROPERTIES FOLDER "wxLua/Modules"
+    INSTALL "${WXLUA_LIB_INSTALL_FLAGS}")
+
+    WXLIKE_LIBRARY_NAMES( LuaLib wxlua_lua51 "${wxLua_VERSION}")
+
+# ---------------------------------------------------------------------------
+
+if (MSVC60)
+    # Some sort of bug linking to the object files in MSVC6
+    # the full path is in the .dsp file, but MSVC errors on ./lapi.obj
+    # so somehow the path is stripped off.
+    set(LUAC_SOURCES ${LuaLib_SOURCE_FILES})
+else()
+    # we can reuse the object files since we cannot link to the LuaLib DLL
+    # since the LUAI_FUNC Lua functions are not exported.
+    set(LuaLib_OBJECTS ${LuaLib_OBJECT_FILES})
+    set_source_files_properties(${LuaLib_OBJECTS} PROPERTIES GENERATED TRUE)
+    set(LUAC_SOURCES ${LuaLib_OBJECTS})
+endif()
+
+ADD_EXECUTABLE_FULL( luac ALLOW_MISSING_FILES
+    HEADERS ""
+    SOURCES
+        src/luac.c
+        src/print.c
+        #${LuaLib_SOURCE_FILES} # alternatively we could simply recompile these
+        #${LuaLib_OBJECTS}      # see note above about DLL linking
+        ${LUAC_SOURCES}
+    LINK_LIBRARIES
+        # LuaLib                # see note above about DLL linking
+        ${LUA_LINK_LIBRARIES}
+    PROPERTIES LINKER_LANGUAGE C
+    PROPERTIES FOLDER "wxLua/apps"
+    INSTALL ${WXLUA_APP_INSTALL_FLAGS})
+
+add_dependencies(luac LuaLib)
+
+# ---------------------------------------------------------------------------
+
+ADD_EXECUTABLE_FULL( lua
+    HEADERS
+    SOURCES
+        src/lua.c
+    LINK_LIBRARIES
+        LuaLib
+        ${LUA_LINK_LIBRARIES}
+    ${LUA_EXE_PROPERTIES}
+    PROPERTIES LINKER_LANGUAGE C
+    PROPERTIES FOLDER "wxLua/apps"
+    INSTALL ${WXLUA_APP_INSTALL_FLAGS})
+
+# ---------------------------------------------------------------------------
+
+# The wxLua Lua module always links to a shared LuaLib even when
+# using luaproxydll.
+if (BUILD_SHARED_LIBS)
+    # CMake has problems with "ON/OFF" being used as booleans, even though its the one who changes them from TRUE/FALSE
+    set(LuaLibShared_export_name)
+else()
+
+    set(LuaLibShared_export_name LuaLibShared)
+
+ADD_LIBRARY_FULL( LuaLibShared SHARED
+    HEADERS
+        src/*.h
+    SOURCES
+        src/lapi.c
+        src/lcode.c
+        src/ldebug.c
+        src/ldo.c
+        src/ldump.c
+        src/lfunc.c
+        src/lgc.c
+        src/llex.c
+        src/lmem.c
+        src/lobject.c
+        src/lopcodes.c
+        src/lparser.c
+        src/lstate.c
+        src/lstring.c
+        src/ltable.c
+        src/ltm.c
+        src/lundump.c
+        src/lvm.c
+        src/lzio.c
+        src/lauxlib.c
+        src/lbaselib.c
+        src/ldblib.c
+        src/liolib.c
+        src/lmathlib.c
+        src/loslib.c
+        src/ltablib.c
+        src/lstrlib.c
+        src/loadlib.c
+        src/linit.c
+    LINK_LIBRARIES
+        ${LUA_LINK_LIBRARIES}
+    ${LUA_BUILD_AS_DLL}
+    PROPERTIES LINKER_LANGUAGE C
+    PROPERTIES FOLDER "wxLua/Modules")
+    #INSTALL "${WXLUA_LIB_INSTALL_FLAGS}")
+    
+    if (WIN32)
+        set_target_properties(LuaLibShared PROPERTIES OUTPUT_NAME lua51)
+        # Want these in subdir, note that RUNTIME_OUTPUT_DIRECTORY_<CONFIG> is ignored for some reason.
+        #set_target_properties(LuaLibShared PROPERTIES PREFIX "shared/")
+    else()
+        WXLIKE_LIBRARY_NAMES( LuaLibShared wxlua_lua51 "${wxLua_VERSION}")
+    endif()
+
+    set_target_properties(LuaLibShared PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib-shared)
+    set_target_properties(LuaLibShared PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib-shared)
+    set_target_properties(LuaLibShared PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin-shared)
+    
+ADD_EXECUTABLE_FULL( lua51-shared
+    HEADERS
+    SOURCES
+        src/lua.c
+    LINK_LIBRARIES
+        LuaLibShared
+        ${LUA_LINK_LIBRARIES}
+    PROPERTIES LINKER_LANGUAGE C
+    PROPERTIES FOLDER "wxLua/apps")
+
+    if (WIN32)
+        # Want these in subdir, note that RUNTIME_OUTPUT_DIRECTORY_<CONFIG> is ignored for some reason.
+        #set_target_properties(lua51-shared PROPERTIES PREFIX "shared/")
+    endif()
+
+    set_target_properties(lua51-shared PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib-shared)
+    set_target_properties(lua51-shared PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib-shared)
+    set_target_properties(lua51-shared PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin-shared)
+    
+endif (BUILD_SHARED_LIBS)
+
+endfunction (wxLua_Modules_Lua_TARGETS)
+                    
+# ===========================================================================
+# wxLua/modules/wxlua
+
+function (wxLua_Modules_wxLua_TARGETS)
+
+ADD_LIBRARY_FULL( wxLuaLib
+    HEADERS
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlbind.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlcallb.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxldefs.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlstate.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlua.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlua_bind.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlversion.h
+    SOURCES
+        ${wxLua_ROOT_DIR}/modules/wxlua/src/dummy.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/src/wxlbind.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/src/wxlcallb.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/src/wxlstate.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/src/wxlua_bind.cpp
+    LINK_LIBRARIES
+        LuaLib
+        ${wxWidgets_LIBRARIES}
+    PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUA"
+    PROPERTIES FOLDER "wxLua/Modules"
+    INSTALL "${WXLUA_LIB_INSTALL_FLAGS}")
+
+    WXLIKE_LIBRARY_NAMES( wxLuaLib wxlua "${wxLua_VERSION}")
+
+endfunction (wxLua_Modules_wxLua_TARGETS)
+
+# ---------------------------------------------------------------------------
+# wxLua/modules/wxluadebug
+
+function (wxLua_Modules_wxLuaDebug_TARGETS)
+
+ADD_LIBRARY_FULL( wxLuaDebugLib
+    HEADERS
+        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxldebug.h
+        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxlstack.h
+        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxluadebugdefs.h
+    SOURCES
+        ${wxLua_ROOT_DIR}/modules/wxluadebug/src/dummy.cpp
+        ${wxLua_ROOT_DIR}/modules/wxluadebug/src/wxldebug.cpp
+        ${wxLua_ROOT_DIR}/modules/wxluadebug/src/wxlstack.cpp
+    LINK_LIBRARIES
+        wxLuaLib
+    PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUADEBUG"
+    PROPERTIES FOLDER "wxLua/Modules"
+    INSTALL "${WXLUA_LIB_INSTALL_FLAGS}")
+
+    WXLIKE_LIBRARY_NAMES( wxLuaDebugLib wxlua_debug "${wxLua_VERSION}")
+
+endfunction (wxLua_Modules_wxLuaDebug_TARGETS)
+
+# ---------------------------------------------------------------------------
+# wxLua/modules/wxluasocket
+
+function (wxLua_Modules_wxLuaSocket_TARGETS)
+
+ADD_LIBRARY_FULL( wxLuaSocketLib
+    HEADERS
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxldserv.h
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxldtarg.h
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxlsock.h
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxluasocket_bind.h
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxluasocketdefs.h
+    SOURCES
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/src/dummy.cpp
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/src/wxldserv.cpp
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/src/wxldtarg.cpp
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/src/wxlsock.cpp
+        ${wxLua_ROOT_DIR}/modules/wxluasocket/src/wxluasocket_bind.cpp
+    LINK_LIBRARIES
+        #wxLuaBind_core_Lib
+        ${wxLuaBind_ALL_LIBS} # Only need core for wxluatype_wxWindow
+        wxLuaDebugLib
+    PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUASOCKET"
+    PROPERTIES FOLDER "wxLua/Modules"
+    INSTALL "${WXLUA_LIB_INSTALL_FLAGS}")
+
+    WXLIKE_LIBRARY_NAMES( wxLuaSocketLib wxlua_socket "${wxLua_VERSION}")
+
+endfunction (wxLua_Modules_wxLuaSocket_TARGETS)
+                    
+# ===========================================================================
 # wxLua/modules/wxbind
 
 function (wxLua_Modules_wxBind_TARGETS)
@@ -363,13 +659,13 @@ ADD_LIBRARY_FULL( wxLuaBindLib ALLOW_MISSING_FILES
         ${wxLua_ROOT_DIR}/modules/wxbind/include/*.h
     SOURCES
         #${wxLua_ROOT_DIR}/modules/wxbind/src/*.cpp
-        ${wxLuaBindLib_SOURCES}
+        ${wxLuaBindLib_SOURCES} # set in root CMakeLists.txt when parsing wxLuaBind_COMPONENTS
         #${wxLuaBindLib_OBJECTS}
     LINK_LIBRARIES
         wxLuaLib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXBIND"
     PROPERTIES FOLDER "wxLua/Modules"
-    INSTALL "${WXLUA_INSTALL_FLAGS}")
+    INSTALL "${WXLUA_LIB_INSTALL_FLAGS}")
 
     WXLIKE_LIBRARY_NAMES( wxLuaBindLib wxlua_bind "${wxLua_VERSION}")
     set(wxLuaBind_ALL_LIBS wxLuaBindLib CACHE INTERNAL "")
@@ -379,103 +675,22 @@ endif (wxLuaBind_SEPARATE_LIBS)
 endfunction (wxLua_Modules_wxBind_TARGETS)
 
 # ===========================================================================
-# wxLua/modules/wxlua
-
-function (wxLua_Modules_wxLua_TARGETS)
-
-ADD_LIBRARY_FULL( wxLuaLib
-    HEADERS
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlbind.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlcallb.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxldefs.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlstate.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlua.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlua_bind.h
-    SOURCES
-        ${wxLua_ROOT_DIR}/modules/wxlua/src/dummy.cpp
-        ${wxLua_ROOT_DIR}/modules/wxlua/src/wxlbind.cpp
-        ${wxLua_ROOT_DIR}/modules/wxlua/src/wxlcallb.cpp
-        ${wxLua_ROOT_DIR}/modules/wxlua/src/wxlstate.cpp
-        ${wxLua_ROOT_DIR}/modules/wxlua/src/wxlua_bind.cpp
-    LINK_LIBRARIES
-        LuaLib
-        ${wxWidgets_LIBRARIES}
-    PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUA"
-    PROPERTIES FOLDER "wxLua/Modules"
-    INSTALL "${WXLUA_INSTALL_FLAGS}")
-
-    WXLIKE_LIBRARY_NAMES( wxLuaLib wxlua "${wxLua_VERSION}")
-
-endfunction (wxLua_Modules_wxLua_TARGETS)
-
-# ---------------------------------------------------------------------------
-# wxLua/modules/wxluadebug
-
-function (wxLua_Modules_wxLuaDebug_TARGETS)
-
-ADD_LIBRARY_FULL( wxLuaDebugLib
-    HEADERS
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxldebug.h
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxlstack.h
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxluadebugdefs.h
-    SOURCES
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/src/dummy.cpp
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/src/wxldebug.cpp
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/src/wxlstack.cpp
-    LINK_LIBRARIES
-        wxLuaLib
-    PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUADEBUG"
-    PROPERTIES FOLDER "wxLua/Modules"
-    INSTALL "${WXLUA_INSTALL_FLAGS}")
-
-    WXLIKE_LIBRARY_NAMES( wxLuaDebugLib wxlua_debug "${wxLua_VERSION}")
-
-endfunction (wxLua_Modules_wxLuaDebug_TARGETS)
-
-# ---------------------------------------------------------------------------
-# wxLua/modules/wxluasocket
-
-function (wxLua_Modules_wxLuaSocket_TARGETS)
-
-ADD_LIBRARY_FULL( wxLuaSocketLib
-    HEADERS
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxldserv.h
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxldtarg.h
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxlsock.h
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxluasocket_bind.h
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxluasocketdefs.h
-    SOURCES
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/src/dummy.cpp
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/src/wxldserv.cpp
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/src/wxldtarg.cpp
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/src/wxlsock.cpp
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/src/wxluasocket_bind.cpp
-    LINK_LIBRARIES
-        #wxLuaBind_core_Lib
-        ${wxLuaBind_ALL_LIBS} # Only need core for wxluatype_wxWindow
-        wxLuaDebugLib
-    PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUASOCKET"
-    PROPERTIES FOLDER "wxLua/Modules"
-    INSTALL "${WXLUA_INSTALL_FLAGS}")
-
-    WXLIKE_LIBRARY_NAMES( wxLuaSocketLib wxlua_socket "${wxLua_VERSION}")
-
-endfunction (wxLua_Modules_wxLuaSocket_TARGETS)
-
-# ===========================================================================
 # wxLua/modules/luamodule
 
 function (wxLua_Modules_LuaModule_TARGETS)
 
 # We build a separate shared LuaLib when building everything else static
+# Note : A MSW static build needs this shared lua51.dll to build, but
+#        when executing we use the luaproxydll.
 if (BUILD_SHARED_LIBS)
     set(wxLUAMODULE_LUALIB LuaLib)
 else()
     set(wxLUAMODULE_LUALIB LuaLibShared)
 endif (BUILD_SHARED_LIBS)
 
-# Build from fresh sources so we have a clean stand-alone Lua module
-ADD_LIBRARY_FULL( wxLuaModule SHARED ALLOW_MISSING_FILES
+# Build from fresh sources so we have a clean stand-alone Lua module and
+# we get all the exports right.
+ADD_LIBRARY_FULL( wxLuaModule SHARED # ALLOW_MISSING_FILES
     HEADERS
         ${wxLua_ROOT_DIR}/modules/luamodule/include/luamoduledefs.h
     SOURCES
@@ -495,14 +710,14 @@ ADD_LIBRARY_FULL( wxLuaModule SHARED ALLOW_MISSING_FILES
     PROPERTIES OUTPUT_NAME   "wx"
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_LUAMODULE"
     PROPERTIES FOLDER "wxLua/Modules"
-    INSTALL "${WXLUA_INSTALL_FLAGS}")
+    INSTALL "${WXLUA_LIB_INSTALL_FLAGS_NO_EXPORT}")
 
-# When we link to the static wxWidgets lib ignore warnings about not exporting the wx symbols.
+# When we link to the static wxWidgets lib ignore warnings about not exporting the wx symbols
+# since we don't want to export them.
 if (MSVC)
     add_definitions( /wd4251 ) # warning C4251: 'wxLuaSocketBase::m_name' : class 'wxString' needs to have dll-interface to be used by clients of class 'wxLuaSocketBase'
     add_definitions( /wd4275 ) # warning C4275: non dll-interface class 'wxObject' used as base for dll-interface class 'wxLuaSocketBase'
 endif()
-
 
 if (BUILD_SHARED_LIBS)
     SET_TARGET_PROPERTIES(wxLuaModule
@@ -510,182 +725,6 @@ if (BUILD_SHARED_LIBS)
 endif()
 
 endfunction (wxLua_Modules_LuaModule_TARGETS)
-
-# ===========================================================================
-# wxLua/modules/lua
-
-function (wxLua_Modules_Lua_TARGETS)
-
-if (MSVC)
-    set( LUA_BUILD_AS_DLL PROPERTIES DEFINE_SYMBOL LUA_BUILD_AS_DLL )
-
-    add_definitions( -D_CRT_SECURE_NO_WARNINGS )
-elseif (APPLE)
-    set( LUA_BUILD_AS_DLL )
-    add_definitions( -DLUA_USE_LINUX )
-    set(LUA_LINK_LIBRARIES m readline)
-
-    #$(MAKE) all MYCFLAGS="-DLUA_USE_LINUX" MYLIBS="-lreadline"
-else () # UNIX
-    set( LUA_BUILD_AS_DLL )
-    
-    if ("${CMAKE_GENERATOR}" MATCHES "MinGW Makefiles")
-        set(LUA_LINK_LIBRARIES m)
-    else()
-        add_definitions( -DLUA_USE_LINUX )
-        set(LUA_LINK_LIBRARIES m dl readline history ncurses)
-    endif()
-
-    #$(MAKE) all MYCFLAGS="-DLUA_USE_LINUX -fPIC" MYLIBS="-fPIC -Wl,-E -ldl -lreadline -lhistory -lncurses"
-endif()
-
-# ---------------------------------------------------------------------------
-
-ADD_LIBRARY_FULL( LuaLib
-    HEADERS
-        src/*.h
-    SOURCES
-        src/lapi.c
-        src/lcode.c
-        src/ldebug.c
-        src/ldo.c
-        src/ldump.c
-        src/lfunc.c
-        src/lgc.c
-        src/llex.c
-        src/lmem.c
-        src/lobject.c
-        src/lopcodes.c
-        src/lparser.c
-        src/lstate.c
-        src/lstring.c
-        src/ltable.c
-        src/ltm.c
-        src/lundump.c
-        src/lvm.c
-        src/lzio.c
-        src/lauxlib.c
-        src/lbaselib.c
-        src/ldblib.c
-        src/liolib.c
-        src/lmathlib.c
-        src/loslib.c
-        src/ltablib.c
-        src/lstrlib.c
-        src/loadlib.c
-        src/linit.c
-    LINK_LIBRARIES
-        ${LUA_LINK_LIBRARIES}
-    ${LUA_BUILD_AS_DLL}
-    PROPERTIES FOLDER "wxLua/Modules"
-    INSTALL "${WXLUA_INSTALL_FLAGS}")
-
-    WXLIKE_LIBRARY_NAMES( LuaLib wxlua_lua "${wxLua_VERSION}")
-
-# ---------------------------------------------------------------------------
-
-if (MSVC60)
-    # Some sort of bug linking to the object files in MSVC6
-    # the full path is in the .dsp file, but MSVC errors on ./lapi.obj
-    # so somehow the path is stripped off.
-    set(LUAC_SOURCES ${LuaLib_SOURCE_FILES})
-else()
-    # we can reuse the object files since we cannot link to the LuaLib DLL
-    # since the LUAI_FUNC Lua functions are not exported.
-    set(LuaLib_OBJECTS ${LuaLib_OBJECT_FILES})
-    set_source_files_properties(${LuaLib_OBJECTS} PROPERTIES GENERATED TRUE)
-    set(LUAC_SOURCES ${LuaLib_OBJECTS})
-endif()
-
-ADD_EXECUTABLE_FULL( luac ALLOW_MISSING_FILES
-    HEADERS ""
-    SOURCES
-        src/luac.c
-        src/print.c
-        #${LuaLib_SOURCE_FILES} # alternatively we could simply recompile these
-        #${LuaLib_OBJECTS}      # see note above about DLL linking
-        ${LUAC_SOURCES}
-    LINK_LIBRARIES
-        # LuaLib                # see note above about DLL linking
-        ${LUA_LINK_LIBRARIES}
-    PROPERTIES FOLDER "wxLua/apps")
-
-add_dependencies(luac LuaLib)
-
-# ---------------------------------------------------------------------------
-
-ADD_EXECUTABLE_FULL( lua
-    HEADERS
-    SOURCES
-        src/lua.c
-    LINK_LIBRARIES
-        LuaLib
-        ${LUA_LINK_LIBRARIES}
-    PROPERTIES FOLDER "wxLua/apps")
-
-# ---------------------------------------------------------------------------
-
-# The wxLua Lua module always links to a shared LuaLib
-if (BUILD_SHARED_LIBS)
-    # CMake has problems with "ON/OFF" being used as booleans, even though its the one who changes them from TRUE/FALSE
-    set(LuaLibShared_export_name)
-else()
-
-    set(LuaLibShared_export_name LuaLibShared)
-
-ADD_LIBRARY_FULL( LuaLibShared SHARED
-    HEADERS
-        src/*.h
-    SOURCES
-        src/lapi.c
-        src/lcode.c
-        src/ldebug.c
-        src/ldo.c
-        src/ldump.c
-        src/lfunc.c
-        src/lgc.c
-        src/llex.c
-        src/lmem.c
-        src/lobject.c
-        src/lopcodes.c
-        src/lparser.c
-        src/lstate.c
-        src/lstring.c
-        src/ltable.c
-        src/ltm.c
-        src/lundump.c
-        src/lvm.c
-        src/lzio.c
-        src/lauxlib.c
-        src/lbaselib.c
-        src/ldblib.c
-        src/liolib.c
-        src/lmathlib.c
-        src/loslib.c
-        src/ltablib.c
-        src/lstrlib.c
-        src/loadlib.c
-        src/linit.c
-    LINK_LIBRARIES
-        ${LUA_LINK_LIBRARIES}
-    ${LUA_BUILD_AS_DLL}
-    PROPERTIES FOLDER "wxLua/Modules"
-    INSTALL "${WXLUA_INSTALL_FLAGS}")
-
-    WXLIKE_LIBRARY_NAMES( LuaLibShared wxlua_lua_shared "${wxLua_VERSION}")
-
-ADD_EXECUTABLE_FULL( lua_shared
-    HEADERS
-    SOURCES
-        src/lua.c
-    LINK_LIBRARIES
-        LuaLibShared
-        ${LUA_LINK_LIBRARIES}
-    PROPERTIES FOLDER "wxLua/apps")
-
-endif (BUILD_SHARED_LIBS)
-
-endfunction (wxLua_Modules_Lua_TARGETS)
 
 # ===========================================================================
 

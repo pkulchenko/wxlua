@@ -4,7 +4,7 @@
 // Author:      John Labenski
 // Modified by:
 // Created:     11/05/2002
-// Copyright:   (c) John Labenski
+// Copyright:   (c) 2012 John Labenski
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
 

@@ -6,8 +6,6 @@
     Copyright: 2000-2004 (c) Klaas Holwerda
 
     Licence: wxWidgets Licence
-
-    RCS-ID: $Id: cancom.h,v 1.1 2006/02/03 17:06:15 titato Exp $
 */
 
 #ifndef __WXLUACANCOM_H__

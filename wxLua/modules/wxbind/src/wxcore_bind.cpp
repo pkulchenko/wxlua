@@ -7502,7 +7502,7 @@ bool wxLuaBinding_wxcore::RegisterBinding(const wxLuaState& wxlState)
         wxLua_wxCROSS_CURSOR     = (wxCursor*)wxCROSS_CURSOR;
     }
 
-    int ret = wxLuaBinding::RegisterBinding(wxlState);
+    bool ret = wxLuaBinding::RegisterBinding(wxlState);
 
     p_wxluatype_wxEvent       = &wxluatype_wxEvent;
     p_wxluatype_wxWindow      = &wxluatype_wxWindow;

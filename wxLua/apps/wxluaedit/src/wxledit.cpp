@@ -5,7 +5,7 @@
 // Modified by:
 // Created:     11/05/2002
 // RCS-ID:
-// Copyright:   (c) John Labenski
+// Copyright:   (c) 2012 John Labenski
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
 

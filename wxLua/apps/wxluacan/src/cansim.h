@@ -4,8 +4,6 @@
     Copyright: 2001-2004 (C) XX
 
     Licence: wxWidgets Licence
-
-    RCS-ID: $Id: cansim.h,v 1.7 2008/01/16 05:57:33 jrl1 Exp $
 */
 
 #ifndef __simplecan_H__

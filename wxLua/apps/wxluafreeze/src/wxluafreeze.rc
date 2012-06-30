@@ -11,4 +11,11 @@ lua   ICON   "../../../art/wxlua.ico"
 
 #include <wx/msw/wx.rc>
 
-// 1     24     "wxLua.manifest" // looks horrible!
+// --------------------------------------------------------------------------
+// Setup the file properties dialog fields
+#define WINRC_VER_FileDescription_STR  "wxLuaFreeze Lua interpreter.\0"
+#define WINRC_VER_InternalName_STR     "wxLuaFreeze\0"
+#define WINRC_VER_OriginalFilename_STR "wxLuaFreeze.exe\0"
+#define WINRC_VER_Productname_STR      "wxLuaFreeze\0"
+
+#include "../../../build/wxlua_version.rc"

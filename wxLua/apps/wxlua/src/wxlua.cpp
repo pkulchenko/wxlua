@@ -1,9 +1,8 @@
 /////////////////////////////////////////////////////////////////////////////
 // Purpose:     Standalone wxLua application
-// Author:      Francis Irving
+// Author:      John Labenski, Francis Irving, J. Winwood
 // Created:     16/01/2002
-// Modifications: J. Winwood. Bug fixes to original wxLua code.
-// RCS-ID:      $Id: wxlua.cpp,v 1.58 2009/09/27 05:35:20 jrl1 Exp $
+// Copyright:   (c) 2012 John Labenski
 // Copyright:   (c) 2002 Creature Labs. All rights reserved.
 // Copyright:   (c) 2001-2002 Lomtick Software. All rights reserved.
 // Licence:     wxWidgets licence

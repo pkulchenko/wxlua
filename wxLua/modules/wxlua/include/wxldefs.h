@@ -3,7 +3,7 @@
 // Purpose:     wxLua common defines
 // Author:      John Labenski
 // Created:     5/28/2005
-// Copyright:   (c) John Labenski
+// Copyright:   (c) 2012 John Labenski
 // Licence:     wxWidgets licence
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -28,6 +28,8 @@ extern "C"
 
 #include <wx/defs.h>
 
+#include "wxlversion.h"
+
 //-----------------------------------------------------------------------------
 // 2.9 uses char* mostly so for compatibility we need wxT() to not append 'L'
 // for wide chars for 2.8, but rather do nothing for 2.9.
@@ -37,46 +39,7 @@ extern "C"
     #define wxLuaT(x) (x)
 #else
     #define wxLuaT(x) wxT(x)
-
 #endif
-
-//-----------------------------------------------------------------------------
-// The version of wxLua - for convenience we use the current version of
-// wxWidgets which wxLua is most compatible with.
-//-----------------------------------------------------------------------------
-
-#define wxLUA_MAJOR_VERSION       2
-#define wxLUA_MINOR_VERSION       8
-#define wxLUA_RELEASE_NUMBER      12
-#define wxLUA_SUBRELEASE_NUMBER   0
-#define wxLUA_VERSION_STRING      wxT("wxLua 2.8.12.0")
-
-// For non-Unix systems (i.e. when building without a configure script),
-// users of this component can use the following macro to check if the
-// current version is at least major.minor.release
-#define wxLUA_CHECK_VERSION(major,minor,release) \
-    (wxLUA_MAJOR_VERSION > (major) || \
-    (wxLUA_MAJOR_VERSION == (major) && wxLUA_MINOR_VERSION > (minor)) || \
-    (wxLUA_MAJOR_VERSION == (major) && wxLUA_MINOR_VERSION == (minor) && wxLUA_RELEASE_NUMBER >= (release)))
-
-// the same but check the subrelease also
-#define wxLUA_CHECK_VERSION_FULL(major,minor,release,subrel) \
-    (wxLUA_CHECK_VERSION(major, minor, release) && \
-        ((major) != wxLUA_MAJOR_VERSION || \
-            (minor) != wxLUA_MINOR_VERSION || \
-                (release) != wxLUA_RELEASE_NUMBER || \
-                    (subrel) <= wxLUA_SUBRELEASE_NUMBER))
-
-//-----------------------------------------------------------------------------
-// This is an internal use binding generator version whose number is
-//   incremented every time something changes that requires a regeneration
-//   of the bindings. The check is written into the generated bindings to
-//   give a compile time error.
-// If this number is incremented the variable by the same name must be updated
-//   in genwxbind.lua as well.
-//-----------------------------------------------------------------------------
-
-#define WXLUA_BINDING_VERSION 30
 
 // ----------------------------------------------------------------------------
 // If you're using stdcall in Lua, then override this with

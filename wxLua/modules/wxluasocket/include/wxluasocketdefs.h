@@ -1,11 +1,10 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Name:        wxluadebugdefs.h
 // Purpose:     definitions for wxLuaDebug module
-// Author:      Francesco Montorsi
+// Author:      John Labenski, Francesco Montorsi
 // Modified by:
 // Created:     20/5/2006
-// RCS-ID:      $Id: wxluasocketdefs.h,v 1.5 2007/05/21 01:08:00 jrl1 Exp $
-// Copyright:   (c) Francesco Montorsi
+// Copyright:   (c) John Labenski, Francesco Montorsi
 // Licence:     wxWidgets licence
 ///////////////////////////////////////////////////////////////////////////////
 

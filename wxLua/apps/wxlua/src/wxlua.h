@@ -1,9 +1,8 @@
 /////////////////////////////////////////////////////////////////////////////
 // Purpose:     Standalone wxLua application
-// Author:      Francis Irving
+// Author:      John Labenski, Francis Irving, J. Winwood
 // Created:     16/01/2002
-// Modified:    J. Winwood. Added debugging support
-//              May 2002.
+// Copyright:   (c) 2012 John Labenski
 // Copyright:   (c) 2002 Creature Labs. All rights reserved.
 // Copyright:   (c) 2002 Lomtick Software. All rights reserved.
 // Licence:     wxWidgets licence

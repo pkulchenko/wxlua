@@ -1,7 +1,8 @@
 /////////////////////////////////////////////////////////////////////////////
 // Purpose:     Interface to a console to help debug wxLua
-// Author:      Francis Irving
+// Author:      John Labenski, Francis Irving
 // Created:     16/01/2002
+// Copyright:   (c) 2012 John Labenski
 // Copyright:   (c) 2002 Creature Labs. All rights reserved.
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////

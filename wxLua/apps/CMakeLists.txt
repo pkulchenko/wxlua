@@ -36,7 +36,8 @@ ADD_EXECUTABLE_FULL( wxLua_app WIN32 MACOSX_BUNDLE
         LuaLib
         ${wxWidgets_LIBRARIES}
     PROPERTIES FOLDER "wxLua/apps"
-    PROPERTIES OUTPUT_NAME wxLua)
+    PROPERTIES OUTPUT_NAME wxLua
+    INSTALL ${WXLUA_APP_INSTALL_FLAGS})
 
 endfunction (wxLua_Apps_wxLua_TARGETS)
 
@@ -58,7 +59,8 @@ ADD_EXECUTABLE_FULL( wxLuaCan WIN32 MACOSX_BUNDLE
         wxLuaLib
         LuaLib
         ${wxWidgets_LIBRARIES}
-    PROPERTIES FOLDER "wxLua/apps")
+    PROPERTIES FOLDER "wxLua/apps"
+    INSTALL ${WXLUA_APP_INSTALL_FLAGS})
 
 endfunction (wxLua_Apps_wxLuaCan_TARGETS)
 
@@ -95,7 +97,8 @@ ADD_EXECUTABLE_FULL( wxLuaEdit WIN32 MACOSX_BUNDLE
         wxLuaLib
         LuaLib
         ${wxWidgets_LIBRARIES}
-    PROPERTIES FOLDER "wxLua/apps")
+    PROPERTIES FOLDER "wxLua/apps"
+    INSTALL ${WXLUA_APP_INSTALL_FLAGS})
 
 if (BUILD_SHARED_LIBS)
     APPEND_TARGET_PROPERTIES(wxLuaEdit PROPERTIES COMPILE_DEFINITIONS "WXUSINGDLL_STEDIT")
@@ -121,7 +124,8 @@ ADD_EXECUTABLE_FULL( wxLuaFreeze WIN32 MACOSX_BUNDLE
         wxLuaLib
         LuaLib
         ${wxWidgets_LIBRARIES}
-    PROPERTIES FOLDER "wxLua/apps")
+    PROPERTIES FOLDER "wxLua/apps"
+    INSTALL ${WXLUA_APP_INSTALL_FLAGS})
 
 endfunction (wxLua_Apps_wxLuaFreeze_TARGETS)
 

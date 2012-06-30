@@ -3,7 +3,7 @@
 // Purpose:     wxLuaEventCallback and wxLuaWinDestroyCallback
 // Author:      Francis Irving, John Labenski
 // Created:     21/01/2002
-// Copyright:   (c) 2002 Creature Labs. All rights reserved.
+// Copyright:   (c) 2012 John Labenski, 2002 Creature Labs. All rights reserved.
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
 

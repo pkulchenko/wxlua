@@ -578,7 +578,6 @@ ENDFUNCTION()
 #           gtest ${Boost_LIBRARIES}
 #       PROPERTIES FOLDER "Foo/Bar"                # replaces SET_TARGET_PROPERTIES(target_name PROPERTIES ...)
 #       PROPERTIES LINKER_LANGUAGE CXX ...         # use PROPERTIES XXX YYY as many times as you like
-#
 #       INSTALL "${MY_INSTALL_FLAG_LIST}"          # INSTALL(TARGETS ${target_name} ${MY_INSTALL_FLAG_LIST})
 #                                                  # is called with the parameters expanded into a list.
 #                                                  # Create list as shown below and use it as shown here.
@@ -596,9 +595,13 @@ ENDFUNCTION()
 #   ${target_name}_SOURCE_FILES - List of SOURCES given above
 #   ${target_name}_OBJECT_FILES - List of object files CMake will create compiling SOURCES
 #
-# INSTALL() put the lib into CMAKE_INSTALL_PREFIX/bin or lib/ and the
-# headers will be put into include/<path>/ from the root CMakeLists file.
 # ---------------------------------------------------------------------------
+
+set(ADD_LIBRARY_FULL_INSTALL_DEFAULT 
+    EXPORT \${target_name}_exports
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib )
 
 function( ADD_LIBRARY_FULL target_name )
     set(_SHARED)                   # ADD_LIBRARY's SHARED directive
@@ -793,7 +796,18 @@ endfunction()
 #       LINK_LIBRARIES                             # Replaces TARGET_LINK_LIBRARIES(target_name lib1 lib2 ...)
 #           gtest ${Boost_LIBRARIES}
 #       PROPERTIES FOLDER "Foo/Bar"                # replaces SET_TARGET_PROPERTIES(target_name PROPERTIES ...)
-#       PROPERTIES LINKER_LANGUAGE CXX ... )       # use PROPERTIES XXX YYY as many times as you like
+#       PROPERTIES LINKER_LANGUAGE CXX ...         # use PROPERTIES XXX YYY as many times as you like
+#       INSTALL "${MY_INSTALL_FLAG_LIST}"          # INSTALL(TARGETS ${target_name} ${MY_INSTALL_FLAG_LIST})
+#                                                  # is called with the parameters expanded into a list.
+#                                                  # Create list as shown below and use it as shown here.
+#   )
+#
+# For the 'INSTALL' command create a variable like this to use: (see also ADD_EXECUTABLE_FULL_INSTALL_DEFAULT)
+#   SET( MY_INSTALL_FLAG_LIST
+#        DESTINATION bin
+#        LIBRARY DESTINATION lib
+#        ARCHIVE DESTINATION lib
+#        BUNDLE  DESTINATION bin)
 #
 # Internal cached variables will be created:
 #   ${target_name}_HEADER_FILES - List of HEADERS given above
@@ -802,6 +816,12 @@ endfunction()
 #
 # INSTALL() put the exe into CMAKE_INSTALL_PREFIX/bin.
 # ---------------------------------------------------------------------------
+
+set(ADD_EXECUTABLE_FULL_INSTALL_DEFAULT 
+    DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    BUNDLE  DESTINATION bin)
 
 function( ADD_EXECUTABLE_FULL target_name )
 
@@ -822,6 +842,7 @@ function( ADD_EXECUTABLE_FULL target_name )
     set(_PRECOMPILED_FORCED)       # Force including the PRECOMPILED_INCLUDE
     set(_LINK_LIBRARIES)           # TARGET_LINK_LIBRARIES's list of libraries to link to
     set(_PROPERTIES)               # SET_TARGET_PROPERTIES's list of PROPERTIES
+    set(_INSTALL)                  # INSTALL's list of commands
 
     set(cmd)                       # current directive we're processing
     set(HEADER_FILES)
@@ -860,6 +881,8 @@ function( ADD_EXECUTABLE_FULL target_name )
             set(cmd                  "LINK_LIBRARIES")
         elseif ("${arg}" STREQUAL    "PROPERTIES")
             set(cmd                  "PROPERTIES")
+        elseif ("${arg}" STREQUAL    "INSTALL")
+            set(cmd                  "INSTALL")
         else()
             set(read_args TRUE) # hopefully a file
         endif()
@@ -886,6 +909,8 @@ function( ADD_EXECUTABLE_FULL target_name )
                 set(_LINK_LIBRARIES ${_LINK_LIBRARIES} ${arg})
             elseif ("${cmd}" STREQUAL "PROPERTIES")
                 set(_PROPERTIES ${_PROPERTIES} ${arg})
+            elseif ("${cmd}" STREQUAL "INSTALL")
+                set(_INSTALL ${_INSTALL} ${arg})
             else()
                 MESSAGE(FATAL_ERROR "Unknown directive in ADD_EXECUTABLE_FULL")
             endif()
@@ -938,11 +963,13 @@ function( ADD_EXECUTABLE_FULL target_name )
                                   SOURCES      ${PRECOMP_SRCS})
     endif()
 
-    INSTALL(TARGETS ${target_name}
-            RUNTIME DESTINATION bin
-            LIBRARY DESTINATION lib
-            ARCHIVE DESTINATION lib
-            BUNDLE  DESTINATION bin)
+    if (NOT "${_INSTALL}" STREQUAL "")
+        INSTALL(TARGETS ${target_name} ${_INSTALL})
+                #DESTINATION bin
+                #LIBRARY DESTINATION lib
+                #ARCHIVE DESTINATION lib
+                #BUNDLE  DESTINATION bin)
+    endif()
 
 endfunction()
 

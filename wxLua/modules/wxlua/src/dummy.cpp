@@ -30,3 +30,8 @@
 #ifdef __VISAGECPP__
     char wxDummyChar = 0;
 #endif
+
+#ifdef _MSC_VER
+    // Suppress warning LNK4221: no public symbols found archive member will be inaccessible
+    namespace { char dummy_wxlua = 0; };
+#endif

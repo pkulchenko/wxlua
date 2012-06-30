@@ -1,0 +1,73 @@
+// Files that include this must define the values below.
+
+//#define WINRC_VER_FileDescription_STR  "wxLua editor and debugger.\0"
+//#define WINRC_VER_InternalName_STR     "wxLua\0"
+//#define WINRC_VER_OriginalFilename_STR "wxLua.exe\0"
+//#define WINRC_VER_Productname_STR      "wxLua"
+
+// NOTE: Don't include wx/defs.h here since in Unicode you'll get an error about
+//       the system not defined for wxChar definition.
+
+#include <wx/version.h>
+#include "../modules/wxlua/include/wxlversion.h"
+
+#define WXLUA_STRINGIFY(x) #x
+#define WXLUA_TOSTRING(x) WXLUA_STRINGIFY(x) 
+#define WXLUA_VERSTRING(a,b,c,d) WXLUA_TOSTRING(a) "." WXLUA_TOSTRING(b) "." WXLUA_TOSTRING(c) "." WXLUA_TOSTRING(d)
+
+#if !defined(WINRC_VER_FILEVERSION) && defined(wxLUA_MAJOR_VERSION)
+    #define WINRC_VER_FILEVERSION         wxLUA_MAJOR_VERSION,wxLUA_MINOR_VERSION,wxLUA_RELEASE_NUMBER,wxLUA_SUBRELEASE_NUMBER
+    #define WINRC_VER_FILEVERSION_STR     WXLUA_VERSTRING(wxLUA_MAJOR_VERSION, wxLUA_MINOR_VERSION, wxLUA_RELEASE_NUMBER, wxLUA_SUBRELEASE_NUMBER) "\0" 
+    #define WINRC_VER_PRODUCTVERSION      wxMAJOR_VERSION,wxMINOR_VERSION,wxRELEASE_NUMBER,wxSUBRELEASE_NUMBER
+    #define WINRC_VER_PRODUCTVERSION_STR  "wxWidgets " WXLUA_VERSTRING(wxMAJOR_VERSION, wxMINOR_VERSION, wxRELEASE_NUMBER, wxSUBRELEASE_NUMBER) "\0" 
+#endif
+
+#if !defined(WINRC_VER_Comments_STR) && defined(wxMAJOR_VERSION)
+    #define WINRC_VER_Comments_STR "Built with wxWidgets " WXLUA_VERSTRING(wxMAJOR_VERSION, wxMINOR_VERSION, wxRELEASE_NUMBER, wxSUBRELEASE_NUMBER) "\0"
+#endif
+
+#ifndef DEBUG
+    #define WINRC_VER_DEBUG 0
+#else
+    #define WINRC_VER_DEBUG VS_FF_DEBUG
+#endif
+
+//#ifndef WIN32_LEAN_AND_MEAN
+//    #define WIN32_LEAN_AND_MEAN
+//#endif /* Prevents winsock.h from being included in windows.h */
+//#include <windows.h> /* Needed for a few definitions, can be excluded if you use values instead. */
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION    	WINRC_VER_FILEVERSION
+PRODUCTVERSION 	WINRC_VER_PRODUCTVERSION
+FILEOS         	VOS__WINDOWS32
+FILETYPE       	VFT_APP
+FILEFLAGS       WINRC_VER_DEBUG 
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN
+            //VALUE "Comments"          WINRC_VER_Comments_STR // DON'T ADD A COMMENT - FIELDS ARE BLANK IN FILE PROPERTIES DIALOG
+            VALUE "CompanyName",      "wxlua.sourceforge.net\0"
+            VALUE "FileDescription",  WINRC_VER_FileDescription_STR
+            VALUE "FileVersion",      WINRC_VER_FILEVERSION_STR
+            VALUE "ProductName",      WINRC_VER_Productname_STR
+            VALUE "ProductVersion",   WINRC_VER_PRODUCTVERSION_STR
+            VALUE "InternalName",     WINRC_VER_InternalName_STR
+            VALUE "OriginalFilename", WINRC_VER_OriginalFilename_STR
+            VALUE "LegalCopyright",   "Copyright © 2012 John Labenski and others...\0"
+        END
+    END
+
+    BLOCK "VarFileInfo"
+    BEGIN
+        /* The following line should only be modified for localized versions.     */
+        /* It consists of any number of WORD,WORD pairs, with each pair           */
+        /* describing a language,codepage combination supported by the file.      */
+        /*                                                                        */
+        /* For example, a file might have values "0x409,1252" indicating that it  */
+        /* supports English language (0x409) in the Windows ANSI codepage (1252). */
+        VALUE "Translation", 0x409, 1252
+    END
+END

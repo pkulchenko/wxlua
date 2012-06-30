@@ -34,7 +34,7 @@ static int LUACALL wxLua_function_CompileLuaScript(lua_State *L)
 // %function LuaTable GetTrackedWindowInfo(bool as_string = false)
 static int LUACALL wxLua_function_GetTrackedWindowInfo(lua_State *L)
 {
-    bool as_string = lua_toboolean(L, 1); // ok if nil
+    bool as_string = (0 != lua_toboolean(L, 1)); // ok if nil
     if (as_string)
         wxlua_pushwxString(L, wxlua_concatwxArrayString(wxluaW_gettrackedwindowinfo(L)));
     else
@@ -48,7 +48,7 @@ static int LUACALL wxLua_function_GetTrackedWindowInfo(lua_State *L)
 // %function LuaTable GetGCUserdataInfo(bool as_string = false)
 static int LUACALL wxLua_function_GetGCUserdataInfo(lua_State *L)
 {
-    bool as_string = lua_toboolean(L, 1); // ok if nil
+    bool as_string = (0 != lua_toboolean(L, 1)); // ok if nil
     if (as_string)
         wxlua_pushwxString(L, wxlua_concatwxArrayString(wxluaO_getgcobjectinfo(L)));
     else
@@ -62,7 +62,7 @@ static int LUACALL wxLua_function_GetGCUserdataInfo(lua_State *L)
 // %function LuaTable GetTrackedObjectInfo(bool as_string = false)
 static int LUACALL wxLua_function_GetTrackedObjectInfo(lua_State *L)
 {
-    bool as_string = lua_toboolean(L, 1); // ok if nil
+    bool as_string = (0 != lua_toboolean(L, 1)); // ok if nil
     if (as_string)
         wxlua_pushwxString(L, wxlua_concatwxArrayString(wxluaO_gettrackedweakobjectinfo(L)));
     else
@@ -77,7 +77,7 @@ static int LUACALL wxLua_function_GetTrackedObjectInfo(lua_State *L)
 static int LUACALL wxLua_function_GetTrackedEventCallbackInfo(lua_State *L)
 {
     wxLuaState wxlState(L);
-    bool as_string = lua_toboolean(L, 1); // ok if nil
+    bool as_string = (0 != lua_toboolean(L, 1)); // ok if nil
     if (as_string)
         wxlua_pushwxString(L, wxlua_concatwxArrayString(wxlState.GetTrackedEventCallbackInfo()));
     else
@@ -92,7 +92,7 @@ static int LUACALL wxLua_function_GetTrackedEventCallbackInfo(lua_State *L)
 static int LUACALL wxLua_function_GetTrackedWinDestroyCallbackInfo(lua_State *L)
 {
     wxLuaState wxlState(L);
-    bool as_string = lua_toboolean(L, 1); // ok if nil
+    bool as_string = (0 != lua_toboolean(L, 1)); // ok if nil
     if (as_string)
         wxlua_pushwxString(L, wxlua_concatwxArrayString(wxlState.GetTrackedWinDestroyCallbackInfo()));
     else

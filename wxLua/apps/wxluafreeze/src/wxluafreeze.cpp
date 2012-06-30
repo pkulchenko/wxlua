@@ -3,7 +3,7 @@
 // Author:      John Labenski
 // Created:     04/02/2006
 // RCS-ID:
-// Copyright:   (c) John Labenski, 2006
+// Copyright:   (c) 2012 John Labenski
 // Licence:     wxWidgets licence
 //----------------------------------------------------------------------------
 

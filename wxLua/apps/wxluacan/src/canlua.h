@@ -6,8 +6,6 @@
     Copyright: 2001-2004 (C) Klaas Holwerda
 
     Licence: wxWidgets Licence
-
-    RCS-ID: $Id: canlua.h,v 1.10 2009/11/17 06:11:03 jrl1 Exp $
 */
 
 #ifndef __LUACAN_H__

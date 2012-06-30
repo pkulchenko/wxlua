@@ -4,8 +4,6 @@
     Copyright: 2001-2004 (C) XX
 
     Licence: wxWidgets Licence
-
-    RCS-ID: $Id: cansim.cpp,v 1.17 2010/08/12 23:40:33 jrl1 Exp $
 */
 
 #include <wx/wxprec.h>

@@ -1,8 +1,8 @@
 /////////////////////////////////////////////////////////////////////////////
 // Purpose:     A console to help debug/use wxLua
-// Author:      J Winwood
+// Author:      John Labenski, J Winwood
 // Created:     14/11/2001
-// Modifications: Enhanced console window functionality
+// Copyright:   (c) 2012 John Labenski
 // Copyright:   (c) 2001-2002 Lomtick Software. All rights reserved.
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////

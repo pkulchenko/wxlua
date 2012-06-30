@@ -22,6 +22,10 @@ cmake_minimum_required( VERSION 2.8 )
 include( build/CMakewxAppLib.cmake )
 include( build/CMakeFunctions.txt )
 
+# ===========================================================================
+# wxWidgets libraries and wxLua bindings setup
+# ===========================================================================
+
 # Specify what wxWidgets libs we need to link to. Note: 'core' must be before 'base'.
 # If you call this CMakeLists.txt from another one you may have already called FIND_WXWIDGETS()
 if (NOT DEFINED wxWidgets_COMPONENTS)
@@ -48,7 +52,7 @@ set(wxLuaBind_ALL_COMPONENTS gl stc xrc richtext html media aui adv core xml net
 if (NOT wxLuaBind_COMPONENTS)
     set(wxLuaBind_COMPONENTS ${wxLuaBind_ALL_COMPONENTS})
 endif()
-set(wxLuaBind_COMPONENTS ${wxLuaBind_COMPONENTS} CACHE STRING "wxWidgets libs wxLua should add bindings for, the variable wxWidgets_COMPONENTS must contain all of these." FORCE)
+set(wxLuaBind_COMPONENTS ${wxLuaBind_COMPONENTS} CACHE STRING "wxWidgets libs wxLua should build bindings for, choose from '${wxLuaBind_ALL_COMPONENTS}', the wxWidgets_COMPONENTS must contain all of these." FORCE)
 
 # We will create a list of the source files needed to compile
 set(wxLuaBindLib_SOURCES)
@@ -83,10 +87,10 @@ foreach( wxlua_comp ${wxLuaBind_ALL_COMPONENTS} )
     endif()
 endforeach()
 
-# ===========================================================================
-# This function must be called in any CMakeLists that uses any wxLua headers to
-# ensure that the compiler #defines are correct.
-# ===========================================================================
+# ---------------------------------------------------------------------------
+# This function must be called in any other MakeLists that uses any wxLua 
+# headers to ensure that the compiler #defines are correct.
+# ---------------------------------------------------------------------------
 
 macro(SETUP_wxLua)
     # These have to be defined so that the macros in modules/wxbind/include/wxbinddefs.h work
@@ -96,7 +100,7 @@ endmacro()
 SETUP_wxLua()
 
 # ===========================================================================
-# Add subdirectories containing CMakeLists.txt files or specify projects
+# wxLua specific setup
 # ===========================================================================
 
 set( wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE PATH "Root dir of wxLua" FORCE)
@@ -126,19 +130,33 @@ ADD_DOXYGEN( wxLua_doxygen
 
 # These are passed to ADD_LIBRARY_FULL() to call the INSTALL() function
 # The targets are installed in the modules/ CMakeLists.txt
-SET(WXLUA_INSTALL_FLAGS
-    EXPORT  wxLua_export
+SET(WXLUA_LIB_INSTALL_FLAGS_NO_EXPORT
+    #EXPORT  wxLua_export
     RUNTIME DESTINATION bin
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib)
+SET(WXLUA_LIB_INSTALL_FLAGS
+    EXPORT  wxLua_export
+    ${WXLUA_LIB_INSTALL_FLAGS_NO_EXPORT})
+SET(WXLUA_APP_INSTALL_FLAGS 
+    ${ADD_EXECUTABLE_FULL_INSTALL_DEFAULT})
+    
+# ===========================================================================
+# Add subdirectories containing CMakeLists.txt files or specify projects
+# ===========================================================================
 
 if (WIN32)
-    set(WXLUA_SHARE_DIR "")
-else()
-    set(WXLUA_SHARE_DIR "share/wxlua/")
+    # In msw these are the shared lua51.dlls we'll use. 
+    # The LuaLibShared is built into bin/Debug/shared/* so it won't conflict.
+    CONFIGURE_FILE_TO_BUILD_CONFIGURATION_DIRS( lua51.dll  
+                                                ${wxLua_ROOT_DIR}/modules/luaproxydll 
+                                                ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} 
+                                                COPYONLY)
+    CONFIGURE_FILE_TO_BUILD_CONFIGURATION_DIRS( lua5.1.dll 
+                                                ${wxLua_ROOT_DIR}/modules/luaproxydll
+                                                ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} 
+                                                COPYONLY)
 endif()
-
-# ---------------------------------------------------------------------------
 
 add_subdirectory( wxstedit )
 
@@ -151,9 +169,10 @@ endif()
 if (NOT TARGET wxLuaCan)
     add_subdirectory( apps/ )
 endif()
-
+                 
 # ===========================================================================
 # Export and install the CMake export files
+# ===========================================================================
 
 export( TARGETS LuaLib wxLuaLib wxLuaDebugLib wxLuaSocketLib wxLuaBindLib ${LuaLibShared_export_name}
         FILE "${CMAKE_BINARY_DIR}/build/wxLua-config.cmake")
@@ -162,9 +181,23 @@ install(EXPORT wxLua_export
         DESTINATION share/wxlua/
         FILE wxLua-config.cmake)
 
-# ---------------------------------------------------------------------------
+# ===========================================================================
 # Install the remaining files
+# ===========================================================================
 
+if (WIN32)
+    set(WXLUA_SHARE_DIR "")
+else()
+    set(WXLUA_SHARE_DIR "share/wxlua/")
+endif()
+
+if (WIN32)
+    install(FILES
+            ${wxLua_ROOT_DIR}/modules/luaproxydll/lua51.dll
+            ${wxLua_ROOT_DIR}/modules/luaproxydll/lua5.1.dll
+            DESTINATION "bin")    
+endif()
+        
 install(DIRECTORY   "${wxLua_ROOT_DIR}/docs/"
         DESTINATION "${WXLUA_SHARE_DIR}doc/wxLua"
         FILES_MATCHING

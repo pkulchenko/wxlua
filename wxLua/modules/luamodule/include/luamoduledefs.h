@@ -1,11 +1,10 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Name:        luamoduledefs.h
 // Purpose:     definitions for luamodule
-// Author:      Francesco Montorsi
+// Author:      John Labenski, Francesco Montorsi
 // Modified by:
 // Created:     20/5/2006
-// RCS-ID:      $Id: luamoduledefs.h,v 1.2 2006/12/19 17:53:39 frm Exp $
-// Copyright:   (c) Francesco Montorsi
+// Copyright:   (c) John Labenski, Francesco Montorsi
 // Licence:     wxWidgets licence
 ///////////////////////////////////////////////////////////////////////////////
 

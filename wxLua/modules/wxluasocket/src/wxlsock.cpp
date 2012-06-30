@@ -3,7 +3,7 @@
 // Purpose:     Socket class for wxLua.
 // Author:      J. Winwood, John Labenski, Ray Gilbert
 // Created:     February 2002
-// Copyright:   (c) 2002 Lomtick Software. All rights reserved.
+// Copyright:   (c) 2012 John Labenski, 2002 Lomtick Software. All rights reserved.
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
 

@@ -2,8 +2,7 @@
 // Purpose:     Implements the client end of wxLua debugging session
 // Author:      J. Winwood, John Labenski, Ray Gilbert
 // Created:     May 2002
-// RCS-ID:      $Id: wxldtarg.h,v 1.26 2007/11/28 22:55:02 jrl1 Exp $
-// Copyright:   (c) 2002 Lomtick Software. All rights reserved.
+// Copyright:   (c) 2012 John Labenski, 2002 Lomtick Software. All rights reserved.
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
 
