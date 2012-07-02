@@ -723,6 +723,19 @@ function( PARSE_WXWIDGETS_LIB_NAMES )
         endif()
     endif()
 
+    # wxWidgets monolithic DLL build using mingw : lib/gcc_dll/libwxmsw29ud.a and libwxmsw294ud_gcc_custom.dll
+    if ("${wxWidgets_PORTNAME}" STREQUAL "")
+        string(REGEX MATCH "libwx(msw)(univ)?([0-9][0-9])(u)?(d)?\\.a" _match_msw_mono "${wxWidgets_LIBRARIES}")
+
+        if (NOT "${_match_msw_mono}" STREQUAL "")
+            set(wxWidgets_PORTNAME    "${CMAKE_MATCH_1}" )
+            set(wxWidgets_UNIVNAME    "${CMAKE_MATCH_2}" )
+            #set(wxWidgets_LIB_VERSION "${CMAKE_MATCH_3}" )
+            set(wxWidgets_UNICODEFLAG "${CMAKE_MATCH_4}" )
+            set(wxWidgets_DEBUGFLAG   "${CMAKE_MATCH_5}" )
+        endif()
+    endif()
+    
     # wxWidgets GTK2 build using configure
     if ("${wxWidgets_PORTNAME}" STREQUAL "")
         string(REGEX MATCH "wx_(gtk[12]?)(univ)?(u)?(d)?_core-([0-9].[0-9])" _match_gtk "${wxWidgets_LIBRARIES}")
