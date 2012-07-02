@@ -8632,6 +8632,238 @@ int wxSplitterEvent_methodCount = sizeof(wxSplitterEvent_methods)/sizeof(wxLuaBi
 #endif  // wxLUA_USE_wxSplitterWindow
 
 
+#if wxLUA_USE_wxPopupWindow
+// ---------------------------------------------------------------------------
+// Bind class wxPopupWindow
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxPopupWindow'
+int wxluatype_wxPopupWindow = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPopupWindow_Create[] = { &wxluatype_wxPopupWindow, &wxluatype_wxWindow, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxPopupWindow_Create(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPopupWindow_Create[1] = {{ wxLua_wxPopupWindow_Create, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxPopupWindow_Create }};
+//     bool Create(wxWindow* parent, int flags = wxBORDER_NONE)
+static int LUACALL wxLua_wxPopupWindow_Create(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int flags = wxBORDER_NONE
+    int flags = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : wxBORDER_NONE);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxPopupWindow * self = (wxPopupWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPopupWindow);
+    // call Create
+    bool returns = (self->Create(parent, flags));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxPopupWindow)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPopupWindow_Position[] = { &wxluatype_wxPopupWindow, &wxluatype_wxPoint, &wxluatype_wxSize, NULL };
+static int LUACALL wxLua_wxPopupWindow_Position(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPopupWindow_Position[1] = {{ wxLua_wxPopupWindow_Position, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxPopupWindow_Position }};
+//     virtual void Position(const wxPoint &ptOrigin, const wxSize &sizePopup)
+static int LUACALL wxLua_wxPopupWindow_Position(lua_State *L)
+{
+    // const wxSize sizePopup
+    const wxSize * sizePopup = (const wxSize *)wxluaT_getuserdatatype(L, 3, wxluatype_wxSize);
+    // const wxPoint ptOrigin
+    const wxPoint * ptOrigin = (const wxPoint *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPoint);
+    // get this
+    wxPopupWindow * self = (wxPopupWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPopupWindow);
+    // call Position
+    self->Position(*ptOrigin, *sizePopup);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxPopupWindow)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPopupWindow_constructor[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxPopupWindow_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPopupWindow_constructor[1] = {{ wxLua_wxPopupWindow_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxPopupWindow_constructor }};
+//     wxPopupWindow(wxWindow* parent, int flags = wxBORDER_NONE)
+static int LUACALL wxLua_wxPopupWindow_constructor(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int flags = wxBORDER_NONE
+    int flags = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : wxBORDER_NONE);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call constructor
+    wxPopupWindow* returns = new wxPopupWindow(parent, flags);
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPopupWindow);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxPopupWindow_delete_function(void** p)
+{
+    wxPopupWindow* o = (wxPopupWindow*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxPopupWindow_methods[] = {
+    { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPopupWindow_Create, 1, NULL },
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxPopupWindow)
+    { "Position", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPopupWindow_Position, 1, NULL },
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxPopupWindow)
+
+    { "wxPopupWindow", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxPopupWindow_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxPopupWindow_methodCount = sizeof(wxPopupWindow_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxPopupWindow
+
+
+#if wxLUA_USE_wxPopupTransientWindow
+// ---------------------------------------------------------------------------
+// Bind class wxPopupTransientWindow
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxPopupTransientWindow'
+int wxluatype_wxPopupTransientWindow = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPopupTransientWindow_Dismiss[] = { &wxluatype_wxPopupTransientWindow, NULL };
+static int LUACALL wxLua_wxPopupTransientWindow_Dismiss(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPopupTransientWindow_Dismiss[1] = {{ wxLua_wxPopupTransientWindow_Dismiss, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPopupTransientWindow_Dismiss }};
+//     virtual void Dismiss()
+static int LUACALL wxLua_wxPopupTransientWindow_Dismiss(lua_State *L)
+{
+    // get this
+    wxPopupTransientWindow * self = (wxPopupTransientWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPopupTransientWindow);
+    // call Dismiss
+    self->Dismiss();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPopupTransientWindow_Popup[] = { &wxluatype_wxPopupTransientWindow, &wxluatype_wxWindow, NULL };
+static int LUACALL wxLua_wxPopupTransientWindow_Popup(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPopupTransientWindow_Popup[1] = {{ wxLua_wxPopupTransientWindow_Popup, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxPopupTransientWindow_Popup }};
+//     virtual void Popup(wxWindow *focus = NULL)
+static int LUACALL wxLua_wxPopupTransientWindow_Popup(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxWindow focus = NULL
+    wxWindow * focus = (argCount >= 2 ? (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow) : NULL);
+    // get this
+    wxPopupTransientWindow * self = (wxPopupTransientWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPopupTransientWindow);
+    // call Popup
+    self->Popup(focus);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPopupTransientWindow_ProcessLeftDown[] = { &wxluatype_wxPopupTransientWindow, &wxluatype_wxMouseEvent, NULL };
+static int LUACALL wxLua_wxPopupTransientWindow_ProcessLeftDown(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPopupTransientWindow_ProcessLeftDown[1] = {{ wxLua_wxPopupTransientWindow_ProcessLeftDown, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPopupTransientWindow_ProcessLeftDown }};
+//     virtual void ProcessLeftDown(wxMouseEvent &event)
+static int LUACALL wxLua_wxPopupTransientWindow_ProcessLeftDown(lua_State *L)
+{
+    // wxMouseEvent event
+    wxMouseEvent * event = (wxMouseEvent *)wxluaT_getuserdatatype(L, 2, wxluatype_wxMouseEvent);
+    // get this
+    wxPopupTransientWindow * self = (wxPopupTransientWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPopupTransientWindow);
+    // call ProcessLeftDown
+    self->ProcessLeftDown(*event);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPopupTransientWindow_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxPopupTransientWindow_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPopupTransientWindow_constructor1[1] = {{ wxLua_wxPopupTransientWindow_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxPopupTransientWindow_constructor1 }};
+//     wxPopupTransientWindow(wxWindow *parent, int flags = wxBORDER_NONE)
+static int LUACALL wxLua_wxPopupTransientWindow_constructor1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int flags = wxBORDER_NONE
+    int flags = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : wxBORDER_NONE);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call constructor
+    wxPopupTransientWindow* returns = new wxPopupTransientWindow(parent, flags);
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPopupTransientWindow);
+
+    return 1;
+}
+
+static int LUACALL wxLua_wxPopupTransientWindow_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPopupTransientWindow_constructor[1] = {{ wxLua_wxPopupTransientWindow_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxPopupTransientWindow()
+static int LUACALL wxLua_wxPopupTransientWindow_constructor(lua_State *L)
+{
+    // call constructor
+    wxPopupTransientWindow* returns = new wxPopupTransientWindow();
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPopupTransientWindow);
+
+    return 1;
+}
+
+
+
+
+#if (wxLUA_USE_wxPopupTransientWindow)
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPopupTransientWindow_constructor_overload[] =
+{
+    { wxLua_wxPopupTransientWindow_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxPopupTransientWindow_constructor1 },
+    { wxLua_wxPopupTransientWindow_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+};
+static int s_wxluafunc_wxLua_wxPopupTransientWindow_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxPopupTransientWindow_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (wxLUA_USE_wxPopupTransientWindow)
+
+void wxLua_wxPopupTransientWindow_delete_function(void** p)
+{
+    wxPopupTransientWindow* o = (wxPopupTransientWindow*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxPopupTransientWindow_methods[] = {
+    { "Dismiss", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPopupTransientWindow_Dismiss, 1, NULL },
+    { "Popup", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPopupTransientWindow_Popup, 1, NULL },
+    { "ProcessLeftDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPopupTransientWindow_ProcessLeftDown, 1, NULL },
+
+#if (wxLUA_USE_wxPopupTransientWindow)
+    { "wxPopupTransientWindow", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxPopupTransientWindow_constructor_overload, s_wxluafunc_wxLua_wxPopupTransientWindow_constructor_overload_count, 0 },
+#endif // (wxLUA_USE_wxPopupTransientWindow)
+
+    { 0, 0, 0, 0 },
+};
+
+int wxPopupTransientWindow_methodCount = sizeof(wxPopupTransientWindow_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxPopupTransientWindow
+
+
 #if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE
 // ---------------------------------------------------------------------------
 // Bind class wxCollapsiblePane

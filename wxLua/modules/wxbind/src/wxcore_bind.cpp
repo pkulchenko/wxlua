@@ -4600,6 +4600,8 @@ static const char* wxluaclassname_wxPoint = "wxPoint";
 static const char* wxluaclassname_wxPoint2DDouble = "wxPoint2DDouble";
 static const char* wxluaclassname_wxPoint2DInt = "wxPoint2DInt";
 static const char* wxluaclassname_wxPointList = "wxPointList";
+static const char* wxluaclassname_wxPopupTransientWindow = "wxPopupTransientWindow";
+static const char* wxluaclassname_wxPopupWindow = "wxPopupWindow";
 static const char* wxluaclassname_wxPostScriptDC = "wxPostScriptDC";
 static const char* wxluaclassname_wxPowerEvent = "wxPowerEvent";
 static const char* wxluaclassname_wxPreviewCanvas = "wxPreviewCanvas";
@@ -5034,6 +5036,10 @@ static const char* wxluabaseclassnames_wxPickerBase[] = { wxluaclassname_wxContr
 static wxLuaBindClass* wxluabaseclassbinds_wxPickerBase[] = { NULL };
 static const char* wxluabaseclassnames_wxPointList[] = { wxluaclassname_wxList, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxPointList[] = { NULL };
+static const char* wxluabaseclassnames_wxPopupTransientWindow[] = { wxluaclassname_wxPopupWindow, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxPopupTransientWindow[] = { NULL };
+static const char* wxluabaseclassnames_wxPopupWindow[] = { wxluaclassname_wxWindow, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxPopupWindow[] = { NULL };
 static const char* wxluabaseclassnames_wxPostScriptDC[] = { wxluaclassname_wxDC, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxPostScriptDC[] = { NULL };
 static const char* wxluabaseclassnames_wxPowerEvent[] = { wxluaclassname_wxEvent, NULL };
@@ -6243,6 +6249,18 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern void wxLua_wxSize_delete_function(void** p);
 #endif // wxLUA_USE_wxPointSizeRect
 
+#if wxLUA_USE_wxPopupTransientWindow
+    extern wxLuaBindMethod wxPopupTransientWindow_methods[];
+    extern int wxPopupTransientWindow_methodCount;
+    extern void wxLua_wxPopupTransientWindow_delete_function(void** p);
+#endif // wxLUA_USE_wxPopupTransientWindow
+
+#if wxLUA_USE_wxPopupWindow
+    extern wxLuaBindMethod wxPopupWindow_methods[];
+    extern int wxPopupWindow_methodCount;
+    extern void wxLua_wxPopupWindow_delete_function(void** p);
+#endif // wxLUA_USE_wxPopupWindow
+
 #if wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE
     extern wxLuaBindMethod wxPageSetupDialog_methods[];
     extern int wxPageSetupDialog_methodCount;
@@ -7107,6 +7125,14 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #if (wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0))
         { wxluaclassname_wxPointList, wxPointList_methods, wxPointList_methodCount, NULL, &wxluatype_wxPointList, wxluabaseclassnames_wxPointList, wxluabaseclassbinds_wxPointList, NULL, NULL, NULL, 0, &wxLua_wxPointList_delete_function, }, 
 #endif // (wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0))
+
+#if wxLUA_USE_wxPopupTransientWindow
+        { wxluaclassname_wxPopupTransientWindow, wxPopupTransientWindow_methods, wxPopupTransientWindow_methodCount, CLASSINFO(wxPopupTransientWindow), &wxluatype_wxPopupTransientWindow, wxluabaseclassnames_wxPopupTransientWindow, wxluabaseclassbinds_wxPopupTransientWindow, NULL, NULL, NULL, 0, &wxLua_wxPopupTransientWindow_delete_function, }, 
+#endif // wxLUA_USE_wxPopupTransientWindow
+
+#if wxLUA_USE_wxPopupWindow
+        { wxluaclassname_wxPopupWindow, wxPopupWindow_methods, wxPopupWindow_methodCount, CLASSINFO(wxPopupWindow), &wxluatype_wxPopupWindow, wxluabaseclassnames_wxPopupWindow, wxluabaseclassbinds_wxPopupWindow, NULL, NULL, NULL, 0, &wxLua_wxPopupWindow_delete_function, }, 
+#endif // wxLUA_USE_wxPopupWindow
 
 #if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT)
         { wxluaclassname_wxPostScriptDC, wxPostScriptDC_methods, wxPostScriptDC_methodCount, CLASSINFO(wxPostScriptDC), &wxluatype_wxPostScriptDC, wxluabaseclassnames_wxPostScriptDC, wxluabaseclassbinds_wxPostScriptDC, NULL, NULL, NULL, 0, &wxLua_wxPostScriptDC_delete_function, }, 

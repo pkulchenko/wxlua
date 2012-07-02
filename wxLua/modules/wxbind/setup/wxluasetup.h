@@ -115,6 +115,8 @@
 #define wxLUA_USE_wxPalette                     1
 #define wxLUA_USE_wxPenList                     1
 #define wxLUA_USE_wxPointSizeRect               1
+#define wxLUA_USE_wxPopupWindow                 1
+#define wxLUA_USE_wxPopupTransientWindow        1
 #define wxLUA_USE_wxPrint                       1
 #define wxLUA_USE_wxProcess                     1
 #define wxLUA_USE_wxProgressDialog              1

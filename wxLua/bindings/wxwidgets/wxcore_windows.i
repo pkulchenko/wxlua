@@ -872,6 +872,38 @@
 %endif //wxLUA_USE_wxSplitterWindow
 
 
+ // ---------------------------------------------------------------------------
+// wxPopupWindow
+
+%if wxLUA_USE_wxPopupWindow
+
+%include "wx/popupwin.h"
+
+%class wxPopupWindow, wxWindow
+    wxPopupWindow(wxWindow* parent, int flags = wxBORDER_NONE)
+    bool Create(wxWindow* parent, int flags = wxBORDER_NONE)
+    virtual void Position(const wxPoint &ptOrigin, const wxSize &sizePopup)
+%endclass
+
+%endif // wxLUA_USE_wxPopupWindow
+
+// ---------------------------------------------------------------------------
+// wxPopupTransientWindow
+
+%if wxLUA_USE_wxPopupTransientWindow
+
+%include "wx/popupwin.h"
+
+%class wxPopupTransientWindow, wxPopupWindow
+    wxPopupTransientWindow()
+    wxPopupTransientWindow(wxWindow *parent, int flags = wxBORDER_NONE)
+    virtual void Popup(wxWindow *focus = NULL)
+    virtual void Dismiss()
+    virtual void ProcessLeftDown(wxMouseEvent &event)
+%endclass
+
+%endif // wxLUA_USE_wxPopupTransientWindow
+
 // ---------------------------------------------------------------------------
 // wxCollapsiblePane
 

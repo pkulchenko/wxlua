@@ -3621,6 +3621,24 @@ wx_dataTypeTable =
     Name = "wxPolygonFillMode",
     ValueType = "enum",
   },
+  wxPopupTransientWindow = {
+    BaseClasses = {
+      [1] = "wxPopupWindow",
+    },
+    Condition = "wxLUA_USE_wxPopupTransientWindow",
+    IsNumber = false,
+    Name = "wxPopupTransientWindow",
+    ValueType = "class",
+  },
+  wxPopupWindow = {
+    BaseClasses = {
+      [1] = "wxWindow",
+    },
+    Condition = "wxLUA_USE_wxPopupWindow",
+    IsNumber = false,
+    Name = "wxPopupWindow",
+    ValueType = "class",
+  },
   wxPortId = {
     IsNumber = true,
     Name = "wxPortId",

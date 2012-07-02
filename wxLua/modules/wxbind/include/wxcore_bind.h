@@ -390,6 +390,14 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/gdicmn.h"
 #endif // wxLUA_USE_wxPointSizeRect
 
+#if wxLUA_USE_wxPopupTransientWindow
+    #include "wx/popupwin.h"
+#endif // wxLUA_USE_wxPopupTransientWindow
+
+#if wxLUA_USE_wxPopupWindow
+    #include "wx/popupwin.h"
+#endif // wxLUA_USE_wxPopupWindow
+
 #if wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE
     #include "wx/print.h"
     #include "wx/printdlg.h"
@@ -1045,6 +1053,14 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxRect;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSize;
 #endif // wxLUA_USE_wxPointSizeRect
+
+#if wxLUA_USE_wxPopupTransientWindow
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPopupTransientWindow;
+#endif // wxLUA_USE_wxPopupTransientWindow
+
+#if wxLUA_USE_wxPopupWindow
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPopupWindow;
+#endif // wxLUA_USE_wxPopupWindow
 
 #if wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPageSetupDialog;
