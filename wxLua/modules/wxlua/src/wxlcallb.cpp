@@ -53,16 +53,16 @@ wxString wxLuaEventCallback::Connect(const wxLuaState& wxlState, int lua_func_st
     wxCHECK_MSG((m_evtHandler == NULL) && (m_luafunc_ref == 0), wxT("Attempting to reconnect a wxLuaEventCallback"), wxT("Attempting to reconnect a wxLuaEventCallback"));
     wxCHECK_MSG(wxlState.Ok(), wxT("Invalid wxLuaState"), wxT("Invalid wxLuaState"));
 
+    // NOTE: See below about how we use the root lua_State to avoid these problems.
     // We must always be installed into the main lua_State, never a coroutine
     // 1) It will be called only when the lua_State is suspended or dead
     // 2) We have no way of tracking when the coroutine state is garbage collected/dead
-    if (lua_pushthread(wxlState.GetLuaState()) != 1)
-    {
-        wxlState.lua_Pop(1);
-        return wxT("wxLua: Creating a callback function in a coroutine is not allowed since it will only be called when the thread is either suspended or dead.");
-    }
-
-    wxlState.lua_Pop(1);
+    //if (lua_pushthread(wxlState.GetLuaState()) != 1)
+    //{
+    //    wxlState.lua_Pop(1);
+    //    return wxT("wxLua: Creating a callback function in a coroutine is not allowed since it will only be called when the thread is either suspended or dead.");
+    //}
+    //wxlState.lua_Pop(1);
 
     m_wxlState   = wxlState;
     m_evtHandler = evtHandler;
@@ -94,6 +94,13 @@ wxString wxLuaEventCallback::Connect(const wxLuaState& wxlState, int lua_func_st
     m_evtHandler->Connect(win_id, last_id, eventType,
                           (wxObjectEventFunction)&wxLuaEventCallback::OnAllEvents,
                           this);
+
+    // We always must run the function in the main lua_State.
+    // See above about the problems not doing so...
+    // Note saving the main lua_State to use in the callback may not always work 
+    // and if a problem is found we need to resort to blocking connecting event 
+    // handlers in coroutines as was done before.
+    m_wxlState = wxLuaState(wxlState.GetLuaState(), wxLUASTATE_GETSTATE|wxLUASTATE_ROOTSTATE);
 
     return wxEmptyString;
 }

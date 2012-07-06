@@ -115,7 +115,7 @@ if (UNIX)
 else()
     file(WRITE "${CMAKE_BINARY_DIR}/cmake-gui.bat"
          "cd /D \"${CMAKE_BINARY_DIR}\"\n"
-         "\"${CMAKE_EDIT_COMMAND}\" \"${CMAKE_HOME_DIRECTORY}\"\n" )
+         "start \"Title\" \"${CMAKE_EDIT_COMMAND}\" \"${CMAKE_HOME_DIRECTORY}\"\n" )
 endif()
 
 # ===========================================================================
