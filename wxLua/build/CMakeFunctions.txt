@@ -56,6 +56,67 @@ set_property(DIRECTORY ${CMAKE_HOME_DIRECTORY}
 # ===========================================================================
 
 # ---------------------------------------------------------------------------
+# Set bool variables IS_32_BIT and IS_64_BIT
+# ---------------------------------------------------------------------------
+
+if ((CMAKE_SIZEOF_VOID_P MATCHES 4) OR (CMAKE_CL_64 MATCHES 0))
+    set(IS_32_BIT TRUE  CACHE INTERNAL "True if compiling for 32-bit.")
+    set(IS_64_BIT FALSE CACHE INTERNAL "True if compiling for 64-bit.")
+elseif((CMAKE_SIZEOF_VOID_P MATCHES 8) OR (CMAKE_CL_64 MATCHES 1))
+    set(IS_32_BIT FALSE CACHE INTERNAL "True if compiling for 32-bit.")
+    set(IS_64_BIT TRUE  CACHE INTERNAL "True if compiling for 64-bit.")
+elseif(NOT DEFINED IS_32_BIT)
+    # Sometimes CMake doesn't set CMAKE_SIZEOF_VOID_P, so we remember the last good value.
+    # http://www.cmake.org/pipermail/cmake/2011-January/042058.html
+    MESSAGE(WARNING "Oops, unable to determine if using 32 or 64 bit compilation, please rerun CMake.")
+endif()
+
+# ---------------------------------------------------------------------------
+# Determine the number of processors on this machine
+# ---------------------------------------------------------------------------
+
+FUNCTION( FIND_PROCESSOR_COUNT )
+    # only run the find code once and store it in the internal var PROCESSOR_COUNT_
+    if(NOT DEFINED PROCESSOR_COUNT_)
+        # Unknown:
+        set(PROCESSOR_COUNT 1)
+
+        # Linux:
+        set(cpuinfo_file "/proc/cpuinfo")
+        if(EXISTS "${cpuinfo_file}")
+            file(STRINGS "${cpuinfo_file}" procs REGEX "^processor.: [0-9]+$")
+            list(LENGTH procs PROCESSOR_COUNT)
+        endif()
+
+        # Mac:
+        if(APPLE)
+            find_program(cmd_sys_pro "system_profiler")
+            if(cmd_sys_pro)
+                execute_process(COMMAND ${cmd_sys_pro} OUTPUT_VARIABLE info)
+                string(REGEX REPLACE "^.*Total Number Of Cores: ([0-9]+).*$" "\\1"
+                       PROCESSOR_COUNT "${info}")
+            endif()
+        endif()
+
+        # Windows:
+        if(WIN32)
+            set(PROCESSOR_COUNT "$ENV{NUMBER_OF_PROCESSORS}")
+        endif()
+
+        if ("${PROCESSOR_COUNT}" LESS "1")
+            set(PROCESSOR_COUNT 1)
+        endif()
+       
+        set(PROCESSOR_COUNT_ ${PROCESSOR_COUNT} CACHE INTERNAL "Number of CPUs found on this machine." FORCE)
+    endif()
+
+    # Copy the found # of processors to PROCESSOR_COUNT, in case someone changed it.
+    set(PROCESSOR_COUNT ${PROCESSOR_COUNT_} CACHE STRING "Number of CPUs found on this machine." FORCE)
+    mark_as_advanced( PROCESSOR_COUNT )
+
+ENDFUNCTION()
+
+# ---------------------------------------------------------------------------
 # CONFIGURE_FILE_TO_ALL_BUILD_CONFIGURATION_DIRS(filename input_dir output_dir [COPYONLY] [ESCAPE_QUOTES] [@ONLY])
 #
 # Configure a file from ${input_dir}/${filename}
@@ -185,7 +246,6 @@ FUNCTION( PRINT_TARGET target_name )
     )
 
     set(VAR_POSTFIXES
-
         _BINARY_DIR
         _LIB_DEPENDS
         _SOURCE_DIR
@@ -532,6 +592,7 @@ FUNCTION( ADD_CPPCHECK_TEST name )
     IF ( "${cppcheck}" STREQUAL "")
         # Find the program cppcheck; ${cppcheck} will be either the exe path or "cppcheck-NOTFOUND"
         FIND_PROGRAM( cppcheck "cppcheck" )
+        mark_as_advanced(cppcheck) # we don't need to see this
 
         IF ( "${cppcheck}" STREQUAL "cppcheck-NOTFOUND" )
             MESSAGE( STATUS "* WARNING: cppcheck NOT found, NOT generating ADD_CPPCHECK_TEST() tests" )
@@ -578,14 +639,14 @@ ENDFUNCTION()
 #           gtest ${Boost_LIBRARIES}
 #       PROPERTIES FOLDER "Foo/Bar"                # replaces SET_TARGET_PROPERTIES(target_name PROPERTIES ...)
 #       PROPERTIES LINKER_LANGUAGE CXX ...         # use PROPERTIES XXX YYY as many times as you like
-#       INSTALL "${MY_INSTALL_FLAG_LIST}"          # INSTALL(TARGETS ${target_name} ${MY_INSTALL_FLAG_LIST})
+#       INSTALL "${ADD_LIBRARY_FULL_INSTALL_DEFAULT}" # INSTALL(TARGETS ${target_name} ${ADD_LIBRARY_FULL_INSTALL_DEFAULT})
 #                                                  # is called with the parameters expanded into a list.
-#                                                  # Create list as shown below and use it as shown here.
+#                                                  # Create list as shown below or use the default flags as shown here.
 #   )
 #
 # For the 'INSTALL' command create a variable like this to use:
 #   SET( MY_INSTALL_FLAG_LIST
-#        EXPORT PROJECT_exports
+#        EXPORT \${target_name}_exports
 #        RUNTIME DESTINATION bin
 #        LIBRARY DESTINATION lib
 #        ARCHIVE DESTINATION lib )
@@ -597,6 +658,7 @@ ENDFUNCTION()
 #
 # ---------------------------------------------------------------------------
 
+# These are flags for a default "normal" install for a ADD_LIBRARY_FULL() target.
 set(ADD_LIBRARY_FULL_INSTALL_DEFAULT 
     EXPORT \${target_name}_exports
     RUNTIME DESTINATION bin
@@ -695,7 +757,7 @@ function( ADD_LIBRARY_FULL target_name )
             elseif ("${cmd}" STREQUAL "INSTALL")
                 set(_INSTALL ${_INSTALL} ${arg})
             else()
-                MESSAGE(FATAL_ERROR "Unknown directive '${cmd}' in ADD_LIBRARY_FULL")
+                MESSAGE(FATAL_ERROR "Unknown directive '${arg}' or '${cmd}' in ADD_LIBRARY_FULL")
             endif()
         endif()
     ENDFOREACH(arg)
@@ -768,13 +830,14 @@ function( ADD_LIBRARY_FULL target_name )
     # so that targetC can import them both. There is no reason that
     # targetB absolutely must export targetA, but I don't know how to do that.
 
+    if ("${_EXCLUDE_FROM_ALL}" STREQUAL "")
     if (NOT "${_INSTALL}" STREQUAL "")
-
         INSTALL(TARGETS ${target_name} ${_INSTALL})
                 #EXPORT  "${target_name}_export"
                 #RUNTIME DESTINATION bin
                 #LIBRARY DESTINATION lib
                 #ARCHIVE DESTINATION lib)
+    endif()
     endif()
 
 endfunction()
@@ -797,9 +860,9 @@ endfunction()
 #           gtest ${Boost_LIBRARIES}
 #       PROPERTIES FOLDER "Foo/Bar"                # replaces SET_TARGET_PROPERTIES(target_name PROPERTIES ...)
 #       PROPERTIES LINKER_LANGUAGE CXX ...         # use PROPERTIES XXX YYY as many times as you like
-#       INSTALL "${MY_INSTALL_FLAG_LIST}"          # INSTALL(TARGETS ${target_name} ${MY_INSTALL_FLAG_LIST})
+#       INSTALL "${ADD_EXECUTABLE_FULL_INSTALL_DEFAULT}" # INSTALL(TARGETS ${target_name} ${ADD_EXECUTABLE_FULL_INSTALL_DEFAULT})
 #                                                  # is called with the parameters expanded into a list.
-#                                                  # Create list as shown below and use it as shown here.
+#                                                  # Create list as shown below or use the default flags as shown here.
 #   )
 #
 # For the 'INSTALL' command create a variable like this to use: (see also ADD_EXECUTABLE_FULL_INSTALL_DEFAULT)
@@ -817,6 +880,7 @@ endfunction()
 # INSTALL() put the exe into CMAKE_INSTALL_PREFIX/bin.
 # ---------------------------------------------------------------------------
 
+# These are flags for a default "normal" install for a ADD_EXECUTABLE_FULL() target.
 set(ADD_EXECUTABLE_FULL_INSTALL_DEFAULT 
     DESTINATION bin
     LIBRARY DESTINATION lib
@@ -912,7 +976,7 @@ function( ADD_EXECUTABLE_FULL target_name )
             elseif ("${cmd}" STREQUAL "INSTALL")
                 set(_INSTALL ${_INSTALL} ${arg})
             else()
-                MESSAGE(FATAL_ERROR "Unknown directive in ADD_EXECUTABLE_FULL")
+                MESSAGE(FATAL_ERROR "Unknown directive '${arg}' or '${cmd}' in ADD_EXECUTABLE_FULL")
             endif()
         endif()
     ENDFOREACH(arg)
@@ -963,12 +1027,14 @@ function( ADD_EXECUTABLE_FULL target_name )
                                   SOURCES      ${PRECOMP_SRCS})
     endif()
 
+    if ("${_EXCLUDE_FROM_ALL}" STREQUAL "")
     if (NOT "${_INSTALL}" STREQUAL "")
-        INSTALL(TARGETS ${target_name} ${_INSTALL})
+    	INSTALL(TARGETS ${target_name} ${_INSTALL})
                 #DESTINATION bin
                 #LIBRARY DESTINATION lib
                 #ARCHIVE DESTINATION lib
                 #BUNDLE  DESTINATION bin)
+    endif()
     endif()
 
 endfunction()
