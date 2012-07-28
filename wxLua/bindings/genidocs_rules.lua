@@ -239,6 +239,6 @@ htmlHeader = [[
 </head>
 <body>
 
-<h1>wxLua 2.8.12.0 Reference Manual for wxWidgets 2.8.12</h1>
+<h1>wxLua 2.8.12.2 Reference Manual for wxWidgets 2.8.12</h1>
 ]]
 

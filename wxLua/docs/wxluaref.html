@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h1>wxLua 2.8.12.0 Reference Manual for wxWidgets 2.8.12</h1>
+<h1>wxLua 2.8.12.2 Reference Manual for wxWidgets 2.8.12</h1>
 
 <h2>Classes</h2>
 <table border="1" summary="Table showing what wxWidgets C++ classes are wrapped by wxLua">
@@ -762,6 +762,11 @@
 <tr>
 <td><a href="#wxDateTime">wxDateTime</a>
 <td align="center" bgcolor=#AAFFAA>X
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
+<td><a href="#wxDateTime::TimeZone">wxDateTime::TimeZone</a>
+<td bgcolor=#FFAAAA>&nbsp;
 <td align="center" bgcolor=#AAFFAA>X
 <td>&nbsp;
 <tr>
@@ -2340,6 +2345,16 @@
 <td align="center" bgcolor=#AAFFAA>X
 <td>&nbsp;
 <tr>
+<td><a href="#wxPopupTransientWindow">wxPopupTransientWindow</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
+<td><a href="#wxPopupWindow">wxPopupWindow</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
 <td><a href="#wxPostScriptDC">wxPostScriptDC</a>
 <td align="center" bgcolor=#AAFFAA>X
 <td align="center" bgcolor=#AAFFAA>X
@@ -3461,8 +3476,11 @@
 <a href="#wxDateTime::Calendar">wxDateTime::Calendar</a><br>
 <a href="#wxDateTime::Country">wxDateTime::Country</a><br>
 <a href="#wxDateTime::Month">wxDateTime::Month</a><br>
+<a href="#wxDateTime::NameFlags">wxDateTime::NameFlags</a><br>
 <a href="#wxDateTime::TZ">wxDateTime::TZ</a><br>
 <a href="#wxDateTime::WeekDay">wxDateTime::WeekDay</a><br>
+<a href="#wxDateTime::WeekFlags">wxDateTime::WeekFlags</a><br>
+<a href="#wxDateTime::Year">wxDateTime::Year</a><br>
 <a href="#wxDirection">wxDirection</a><br>
 <a href="#wxDragResult">wxDragResult</a><br>
 <a href="#wxDuplexMode">wxDuplexMode</a><br>
@@ -17822,6 +17840,40 @@
 <br>
 <i>%endif</i> <font color=#009900>//wxLUA_USE_wxSplitterWindow</font><br>
 <br>
+<br>
+ <font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxPopupWindow">wxPopupWindow</a></font><br>
+<br>
+<i>%if</i> wxLUA_USE_wxPopupWindow<br>
+<br>
+<i>%include</i> "wx/popupwin.h"<br>
+<br>
+<b><font size=+1 color=#DD0000><i>%class</i> <a name="wxPopupWindow">wxPopupWindow</a>, <a href="#wxWindow">wxWindow</a></font></b>
+<blockquote>
+    <a href="#wxPopupWindow">wxPopupWindow</a>(<a href="#wxWindow">wxWindow</a>* parent, int flags = wxBORDER_NONE)<br>
+    bool Create(<a href="#wxWindow">wxWindow</a>* parent, int flags = wxBORDER_NONE)<br>
+    virtual void Position(const <a href="#wxPoint">wxPoint</a> &amp;ptOrigin, const <a href="#wxSize">wxSize</a> &amp;sizePopup)<br>
+</blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
+<br>
+<i>%endif</i> <font color=#009900>// wxLUA_USE_wxPopupWindow</font><br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxPopupTransientWindow">wxPopupTransientWindow</a></font><br>
+<br>
+<i>%if</i> wxLUA_USE_wxPopupTransientWindow<br>
+<br>
+<i>%include</i> "wx/popupwin.h"<br>
+<br>
+<b><font size=+1 color=#DD0000><i>%class</i> <a name="wxPopupTransientWindow">wxPopupTransientWindow</a>, <a href="#wxPopupWindow">wxPopupWindow</a></font></b>
+<blockquote>
+    <a href="#wxPopupTransientWindow">wxPopupTransientWindow</a>()<br>
+    <a href="#wxPopupTransientWindow">wxPopupTransientWindow</a>(<a href="#wxWindow">wxWindow</a> *parent, int flags = wxBORDER_NONE)<br>
+    virtual void Popup(<a href="#wxWindow">wxWindow</a> *focus = NULL)<br>
+    virtual void Dismiss()<br>
+    virtual void ProcessLeftDown(<a href="#wxMouseEvent">wxMouseEvent</a> &amp;event)<br>
+</blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
+<br>
+<i>%endif</i> <font color=#009900>// wxLUA_USE_wxPopupTransientWindow</font><br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
 <font color=#009900>// <a href="#wxCollapsiblePane">wxCollapsiblePane</a></font><br>

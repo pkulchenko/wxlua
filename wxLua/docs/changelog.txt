@@ -1,7 +1,14 @@
  wxLua ChangeLog
  ===============
 
- version 2.8.12.1
+ version 2.8.12.2 (released 7/26/2012)
+ --------------------------------------------------------------------
+ - Allow setting event handlers in coroutines. Note that the callback will
+   always be run in the main Lua thread.
+   The only legitimate use of this is for a debugger.
+ - Add wxPopupWindow bindings thanks to Qito Nomnom.
+
+ version 2.8.12.1 (released 6/30/2012)
  --------------------------------------------------------------------
  - Renamed the Lua library.
  - Added CMake builds for using a static or shared Lua lib.
@@ -10,7 +17,7 @@
  - Add MSW file property info using .rc files.
  - Fix "missing comctl32.dll error 126" problem with wx.dll.
    Thanks to Andre Arpin.
- 
+
  version 2.8.12.0 (released 6/28/2012)
  --------------------------------------------------------------------
  - Use CMake to build since it is more flexible.
