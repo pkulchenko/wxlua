@@ -106,7 +106,7 @@ FUNCTION( FIND_PROCESSOR_COUNT )
         if ("${PROCESSOR_COUNT}" LESS "1")
             set(PROCESSOR_COUNT 1)
         endif()
-       
+
         set(PROCESSOR_COUNT_ ${PROCESSOR_COUNT} CACHE INTERNAL "Number of CPUs found on this machine." FORCE)
     endif()
 
@@ -127,15 +127,15 @@ ENDFUNCTION()
 # ---------------------------------------------------------------------------
 
 FUNCTION( CONFIGURE_FILE_TO_BUILD_CONFIGURATION_DIRS filename input_dir output_dir)
-    if (UNIX)
-        # Only a single build type in Unix, don't create other dirs and confuse people
-        configure_file(${input_dir}/${filename} ${output_dir}/${CMAKE_BUILD_TYPE}/${filename} ${ARGN})
-    else() # MSW
-        # Copy them to all the output dirs for msw since you can change build in MSVC GUI
+    if (MSVC)
+        # Copy them to all the output dirs for msvc since you can change the build in MSVC GUI.
         # Note that CMAKE_CONFIGURATION_TYPES is empty if the generator doesn't support it
         foreach (t ${CMAKE_CONFIGURATION_TYPES})
             configure_file(${input_dir}/${filename} ${output_dir}/${t}/${filename} ${ARGN})
         endforeach()
+    else() # MSW
+        # Only a single build type in Unix, don't create other dirs and confuse people
+        configure_file(${input_dir}/${filename} ${output_dir}/${CMAKE_BUILD_TYPE}/${filename} ${ARGN})
     endif()
 ENDFUNCTION()
 
@@ -188,15 +188,17 @@ FUNCTION( ADD_FILE_TO_LIST file_list filename )
     endif()
 
     foreach( f ${filename})
-        HAS_WILDCARD(is_wild ${f})
+        set(filenames )
+        HAS_WILDCARD(is_wild "${f}")
 
         if (is_wild)
-            # Expand the path and handle wildcards
-            file( GLOB filenames ${filename} )
+            # Expand the path and handle wildcards.
+            # Note "*.cxx;*.cpp" doesn't work so we have to do one at a time.
+            file( GLOB filenames ${f} )
             set(${file_list} ${${file_list}} ${filenames} PARENT_SCOPE)
         elseif ((EXISTS ${f}) OR (EXISTS "${CMAKE_CURRENT_LIST_DIR}/${f}"))
             # Cleanup the path
-            file( GLOB filenames ${filename} )
+            file( GLOB filenames ${f} )
             set(${file_list} ${${file_list}} ${filenames} PARENT_SCOPE)
         elseif (_ALLOW_MISSING)
             # Just add the file which doesn't exist right now
@@ -208,6 +210,7 @@ FUNCTION( ADD_FILE_TO_LIST file_list filename )
         endif()
     endforeach()
 ENDFUNCTION()
+
 
 
 # ===========================================================================
@@ -659,7 +662,7 @@ ENDFUNCTION()
 # ---------------------------------------------------------------------------
 
 # These are flags for a default "normal" install for a ADD_LIBRARY_FULL() target.
-set(ADD_LIBRARY_FULL_INSTALL_DEFAULT 
+set(ADD_LIBRARY_FULL_INSTALL_DEFAULT
     EXPORT \${target_name}_exports
     RUNTIME DESTINATION bin
     LIBRARY DESTINATION lib
@@ -763,6 +766,8 @@ function( ADD_LIBRARY_FULL target_name )
     ENDFOREACH(arg)
 
     SET("${target_name}_DIRECTORY" "${CMAKE_CURRENT_SOURCE_DIR}" CACHE INTERNAL "")
+    SET("${target_name}_SOURCE_DIR" "${CMAKE_CURRENT_SOURCE_DIR}" CACHE INTERNAL "")
+    SET("${target_name}_BINARY_DIR" "${CMAKE_CURRENT_BINARY_DIR}" CACHE INTERNAL "")
 
     SET("${target_name}_HEADER_FILES" ${HEADER_FILES} CACHE INTERNAL "")
     SET("${target_name}_SOURCE_FILES" ${SOURCE_FILES} CACHE INTERNAL "")
@@ -881,7 +886,7 @@ endfunction()
 # ---------------------------------------------------------------------------
 
 # These are flags for a default "normal" install for a ADD_EXECUTABLE_FULL() target.
-set(ADD_EXECUTABLE_FULL_INSTALL_DEFAULT 
+set(ADD_EXECUTABLE_FULL_INSTALL_DEFAULT
     DESTINATION bin
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
@@ -982,6 +987,8 @@ function( ADD_EXECUTABLE_FULL target_name )
     ENDFOREACH(arg)
 
     SET("${target_name}_DIRECTORY" "${CMAKE_CURRENT_SOURCE_DIR}" CACHE INTERNAL "")
+    SET("${target_name}_SOURCE_DIR" "${CMAKE_CURRENT_SOURCE_DIR}" CACHE INTERNAL "")
+    SET("${target_name}_BINARY_DIR" "${CMAKE_CURRENT_BINARY_DIR}" CACHE INTERNAL "")
 
     SET("${target_name}_HEADER_FILES" ${HEADER_FILES} CACHE INTERNAL "")
     SET("${target_name}_SOURCE_FILES" ${SOURCE_FILES} CACHE INTERNAL "")
@@ -1201,7 +1208,7 @@ FUNCTION( GET_OBJECT_FILES target_name object_file_list source_files )
             string(REPLACE "${CMAKE_CURRENT_LIST_DIR}" "" fname "${f}")
             if ("${CMAKE_GENERATOR}" MATCHES "MinGW Makefiles")
                 set(objects ${objects} "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${target_name}.dir/${fname}.obj")
-            else() 
+            else()
                 set(objects ${objects} "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${target_name}.dir/${fname}.o")
             endif()
         endforeach()

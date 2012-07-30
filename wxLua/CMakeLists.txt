@@ -56,7 +56,7 @@ set(wxLuaBind_COMPONENTS ${wxLuaBind_COMPONENTS} CACHE STRING "wxWidgets libs wx
 
 # We will create a list of the source files needed to compile
 set(wxLuaBindLib_SOURCES)
-# These are the definitions that in your CMake project you can call add_definitions() on.
+# These are the definitions that in your CMake project you can call add_definitions() with.
 set(wxLua_CXX_DEFINITIONS)
 
 # verify that each library exists from finding wxWidgets in the wxWidgets_COMPONENTS
@@ -88,7 +88,7 @@ foreach( wxlua_comp ${wxLuaBind_ALL_COMPONENTS} )
 endforeach()
 
 # ---------------------------------------------------------------------------
-# This function must be called in any other MakeLists that uses any wxLua 
+# This function must be called in any other MakeLists that uses any wxLua
 # headers to ensure that the compiler #defines are correct.
 # ---------------------------------------------------------------------------
 
@@ -138,23 +138,81 @@ SET(WXLUA_LIB_INSTALL_FLAGS_NO_EXPORT
 SET(WXLUA_LIB_INSTALL_FLAGS
     EXPORT  wxLua_export
     ${WXLUA_LIB_INSTALL_FLAGS_NO_EXPORT})
-SET(WXLUA_APP_INSTALL_FLAGS 
+SET(WXLUA_APP_INSTALL_FLAGS
     ${ADD_EXECUTABLE_FULL_INSTALL_DEFAULT})
-    
+
+# ===========================================================================
+# Configure the Lua lib to an imported lib or to be built from the provided sources.
+# Note that CMake requires that we declare it here, rather than the modules dir,
+# to be useable in the apps subdirectory.
+# ===========================================================================
+
+if ("${wxLua_LUA_LIBRARY}" STREQUAL "system")
+    FIND_PACKAGE(Lua51)
+
+    if (LUA51_FOUND)
+        set(wxLua_LUA_INCLUDE_DIR ${LUA_INCLUDE_DIR})
+        set(wxLua_LUA_LIBRARY     ${LUA_LIBRARY})
+    else()
+        message(ERROR " The system installed Lua51 was requested, but not found.\nPlease set the variables wxLua_LUA_INCLUDE_DIR and wxLua_LUA_LIBRARY to specify the Lua library.")
+    endif()
+endif()
+
+if (NOT "${wxLua_LUA_LIBRARY}" STREQUAL "")
+
+    message(STATUS "* wxLua using system Lua library :")
+    message(STATUS "*   - include dir : ${wxLua_LUA_INCLUDE_DIR}")
+    message(STATUS "*   - library     : ${wxLua_LUA_LIBRARY}")
+
+    if (NOT EXISTS "${wxLua_LUA_LIBRARY}")
+        message(ERROR "Lua library specified in wxLua_LUA_LIBRARY is missing, please fix it : '${wxLua_LUA_LIBRARY}'")
+    endif()
+else()
+    message(STATUS "* wxLua using built-in Lua51 library")
+endif()
+
+if (NOT "${wxLua_LUA_INCLUDE_DIR}" STREQUAL "")
+    if ("${wxLua_LUA_LIBRARY}" STREQUAL "")
+        message(ERROR " wxLua_LUA_INCLUDE_DIR is specified, but wxLua_LUA_LIBRARY='${wxLua_LUA_LIBRARY}' does not specify the associated lib.")
+    else()
+        include_directories(${wxLua_LUA_INCLUDE_DIR})
+    endif()
+endif()
+
+if (NOT "${wxLua_LUA_LIBRARY}" STREQUAL "")
+    add_library(LuaLib UNKNOWN IMPORTED)
+    set_target_properties(LuaLib PROPERTIES IMPORTED_LOCATION ${wxLua_LUA_LIBRARY})
+
+    add_library(LuaLibShared UNKNOWN IMPORTED)
+    set_target_properties(LuaLibShared PROPERTIES IMPORTED_LOCATION ${wxLua_LUA_LIBRARY})
+else()
+    set(LuaLib_Export LuaLib) # Cmake only allows exporting targets that we build
+endif()
+
+if (NOT DEFINED wxLua_LUA_INCLUDE_DIR)
+    set(wxLua_LUA_INCLUDE_DIR )
+endif()
+set(wxLua_LUA_INCLUDE_DIR ${wxLua_LUA_INCLUDE_DIR} CACHE PATH "Set the location of an external Lua library's includ directory, else leave blank to use the built-in Lua lib" FORCE )
+
+if (NOT DEFINED wxLua_LUA_LIBRARY)
+    set(wxLua_LUA_LIBRARY )
+endif()
+set(wxLua_LUA_LIBRARY ${wxLua_LUA_LIBRARY} CACHE FILEPATH "Set the location of an external Lua library to link to, or the word 'system' to try to automatically find it, else leave blank to use the built-in Lua lib" FORCE )
+
 # ===========================================================================
 # Add subdirectories containing CMakeLists.txt files or specify projects
 # ===========================================================================
 
 if (WIN32)
-    # In msw these are the shared lua51.dlls we'll use. 
+    # In msw these are the shared lua51.dlls we'll use.
     # The LuaLibShared is built into bin/Debug/shared/* so it won't conflict.
-    CONFIGURE_FILE_TO_BUILD_CONFIGURATION_DIRS( lua51.dll  
-                                                ${wxLua_ROOT_DIR}/modules/luaproxydll 
-                                                ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} 
-                                                COPYONLY)
-    CONFIGURE_FILE_TO_BUILD_CONFIGURATION_DIRS( lua5.1.dll 
+    CONFIGURE_FILE_TO_BUILD_CONFIGURATION_DIRS( lua51.dll
                                                 ${wxLua_ROOT_DIR}/modules/luaproxydll
-                                                ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} 
+                                                ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+                                                COPYONLY)
+    CONFIGURE_FILE_TO_BUILD_CONFIGURATION_DIRS( lua5.1.dll
+                                                ${wxLua_ROOT_DIR}/modules/luaproxydll
+                                                ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
                                                 COPYONLY)
 endif()
 
@@ -169,12 +227,12 @@ endif()
 if (NOT TARGET wxLuaCan)
     add_subdirectory( apps/ )
 endif()
-                 
+
 # ===========================================================================
 # Export and install the CMake export files
 # ===========================================================================
 
-export( TARGETS LuaLib wxLuaLib wxLuaDebugLib wxLuaSocketLib wxLuaBindLib ${LuaLibShared_export_name}
+export( TARGETS ${LuaLib_Export} wxLuaLib wxLuaDebugLib wxLuaSocketLib wxLuaBindLib ${LuaLibShared_export_name}
         FILE "${CMAKE_BINARY_DIR}/build/wxLua-config.cmake")
 
 install(EXPORT wxLua_export
@@ -195,9 +253,9 @@ if (WIN32)
     install(FILES
             ${wxLua_ROOT_DIR}/modules/luaproxydll/lua51.dll
             ${wxLua_ROOT_DIR}/modules/luaproxydll/lua5.1.dll
-            DESTINATION "bin")    
+            DESTINATION "bin")
 endif()
-        
+
 install(DIRECTORY   "${wxLua_ROOT_DIR}/docs/"
         DESTINATION "${WXLUA_SHARE_DIR}doc/wxLua"
         FILES_MATCHING

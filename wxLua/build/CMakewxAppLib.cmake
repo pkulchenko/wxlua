@@ -190,6 +190,7 @@ if (NOT MSVC)
     # This is used only for the Makefile generator.
     # In MSVC you can choose the build type in the IDE.
     SET(CMAKE_BUILD_TYPE "${CMAKE_BUILD_TYPE}" CACHE STRING "Set build type, options are one of ${CMAKE_BUILD_TYPES}" FORCE)
+    set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS ${CMAKE_BUILD_TYPES})
 endif ()
 
 # Useful, since I cannot find a case-insensitive string comparison function
