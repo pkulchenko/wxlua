@@ -487,7 +487,7 @@ bool wxLuaIDE::Create( wxWindow *parent, int id,
                                     wxDefaultPosition, wxDefaultSize, 0);
     m_luaOutput->CreateOptions(m_shellOptions);
     steSplitter->Initialize(m_luaOutput);
-    m_luaOutput->MarkerDeleteAll(wxLuaShell::markerPrompt);
+    m_luaOutput->MarkerDeleteAll(wxLuaShell::PROMPT_MARKER);
     m_luaOutput->SetwxLuaState(m_wxlState, true);
     m_luaOutput->SetWrapMode(wxSTC_WRAP_NONE);
     m_luaOutput->SetFileName(wxFileName(wxT("Output")));
@@ -730,7 +730,7 @@ bool wxLuaIDE::HandleMenuEvent(wxCommandEvent& event)
 
             m_luaOutput->SetReadOnly(false);
             m_luaOutput->ClearAll();
-            m_luaOutput->MarkerDeleteAll(wxLuaShell::markerPrompt);
+            m_luaOutput->MarkerDeleteAll(wxLuaShell::PROMPT_MARKER);
             WriteMessage(m_luaOutput, wxT("Running lua script '") + name + wxT("' : ") + wxNow() + wxT("\n"));
             wxStopWatch stopWatch;
             //m_luaOutput->SetReadOnly(true);

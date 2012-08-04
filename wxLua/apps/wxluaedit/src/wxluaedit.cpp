@@ -480,7 +480,7 @@ void wxLuaEditorFrame::CreateOptions(const wxSTEditorOptions& options)
     shell->AppendText(wxT("  Multiline code can be typed by pressing <shift>+<enter>.\n"));
     shell->AppendText(wxT("  Values can be printed by prepending '=' or 'return'.\n"));
     shell->AppendText(wxT("  The wxLua intrepreter can be restarted with the command 'reset'.\n"));
-    shell->MarkerDeleteAll(wxSTEditorShell::markerPrompt);
+    shell->MarkerDeleteAll(wxSTEditorShell::PROMPT_MARKER);
     shell->CheckPrompt(true);
 }
 
