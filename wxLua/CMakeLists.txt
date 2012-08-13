@@ -112,6 +112,17 @@ set( wxLua_RELEASE_VERSION "12" )
 
 # ---------------------------------------------------------------------------
 
+set( MACOSX_BUNDLE_INFO_STRING          "wxLua")
+set( MACOSX_BUNDLE_ICON_FILE            "wxlualogo.icns")
+set( MACOSX_BUNDLE_GUI_IDENTIFIER       )
+set( MACOSX_BUNDLE_LONG_VERSION_STRING  "wxLua ${wxLua_VERSION}, built with wxWidgets ${wxWidgets_VERSION}")
+set( MACOSX_BUNDLE_BUNDLE_NAME          )
+set( MACOSX_BUNDLE_SHORT_VERSION_STRING "${wxLua_VERSION}") 
+set( MACOSX_BUNDLE_BUNDLE_VERSION       "${wxLua_VERSION}")
+set( MACOSX_BUNDLE_COPYRIGHT            "(2012) John Labenski, et al.") 
+
+# ---------------------------------------------------------------------------
+
 ADD_CPPCHECK_TEST(wxLua_CppCheck)
 
 set( DOXYGEN_PROJECT_NAME        "wxLua" )

@@ -15,6 +15,8 @@ package.cpath = package.cpath..";./?.dll;./?.so;../lib/?.so;../lib/vc_dll/?.dll;
 
 require("wx")
 
+assert(wx.wxJoystick, "Sorry, this app cannot run since wxJoystick is not supported on this platform.")
+
 function iff(cond, a, b) if cond then return a else return b end end
 
 -- Generate a unique new wxWindowID

@@ -5104,6 +5104,7 @@ function main()
     sudokuGUI.frame:Connect(wx.wxEVT_CLOSE_WINDOW,
             function (event)
                 event:Skip(true) -- allow it to really exit
+                sudokuGUI.cellWindows[1]:Disconnect(wx.wxEVT_SIZE) -- OSX sends size event when closing
                 sudokuGUI.ConfigSave(false)
             end )
 
