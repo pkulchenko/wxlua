@@ -31,7 +31,7 @@
 #include "wxlua.h"
 #include "editor.h"
 
-#include "art/wxluasmall.xpm"
+#include "art/wxlualogo.xpm"
 
 extern "C"
 {
@@ -151,7 +151,7 @@ bool wxLuaStandaloneApp::OnInit()
 
     wxInitAllImageHandlers();
     wxFileSystem::AddHandler(new wxMemoryFSHandler);
-    wxMemoryFSHandler::AddFile(wxT("wxLua"), wxBitmap(wxLuaSmall_xpm), wxBITMAP_TYPE_XPM);
+    wxMemoryFSHandler::AddFile(wxT("wxLua"), wxBitmap(wxlualogo_xpm), wxBITMAP_TYPE_XPM);
     m_mem_bitmap_added = true;
 
 #ifdef __WXGTK__

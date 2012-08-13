@@ -21,7 +21,7 @@
 
 // Include icon header
 #if defined(__WXGTK__) || defined(__WXMOTIF__) || defined(__WXMAC__)
-    #include "art/wxluasmall.xpm"
+    #include "art/wxlualogo.xpm"
 #endif
 
 // Declare the binding initialization functions
@@ -74,7 +74,7 @@ MyFrame::MyFrame( wxWindow *parent, wxWindowID id, const wxString &title,
     CreateStatusBar(1);
     SetStatusText( _T("Welcome to a2dCanvas sample!") );
 
-    SetIcon(wxICON(wxLuaSmall));
+    SetIcon(wxICON(wxlualogo));
 
     m_interp = wxLuaState(this, wxID_ANY);
 

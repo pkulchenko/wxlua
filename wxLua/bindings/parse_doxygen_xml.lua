@@ -76,9 +76,9 @@ function parse()
 
 end
 
-DoxyXMLTable = {}
+DoxyXMLTable   = {}
 DoxyClassTable = {}
-DoxyFileTable = {}
+DoxyFileTable  = {}
 DoxyIndexTable = {}
 
 -- --------------------------------------------------------------------------
@@ -1311,6 +1311,7 @@ end
 
 -- --------------------------------------------------------------------------
 -- Generic Lua XML parser. Original code written by Roberto Ierusalimschy.
+-- License : MIT
 -- http://lua-users.org/wiki/LuaXml
 -- It has been modified to also save the line number, replace HTML chars, and
 -- throw out comments.

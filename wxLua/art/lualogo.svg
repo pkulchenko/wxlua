@@ -1,13 +1,92 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Creator: CorelDRAW -->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:odm="http://product.corel.com/CGS/11/cddns/" xml:space="preserve" width="200px" height="196px" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd"
-     viewBox="0 0 200 196">
- <g id="Layer 1">
-  <path fill="none" stroke="#858585" stroke-width="3" stroke-dasharray="5 8" d="M173 61c6,11 10,25 10,39 0,46 -38,84 -84,84 -46,0 -84,-38 -84,-84 0,-46 38,-84 84,-84 14,0 27,3 39,10"/>
-  <circle fill="#000080" cx="99" cy="100" r="65"/>
-  <circle fill="#FFFFFF" cx="125" cy="73" r="19"/>
-  <circle fill="#000080" cx="163" cy="35" r="19"/>
-  <text x="49" y="132" fill="#FFFFFF" font-weight="normal" font-size="60" font-family="Arial">Lua</text>
- </g>
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xml:space="preserve"
+   width="256px"
+   height="256px"
+   shape-rendering="geometricPrecision"
+   text-rendering="geometricPrecision"
+   image-rendering="optimizeQuality"
+   fill-rule="evenodd"
+   viewBox="0 0 200 196"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.1 r9760"
+   sodipodi:docname="lualogo.svg"><metadata
+   id="metadata19"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+   id="defs17">
+  
+  
+  
+  
+  
+ </defs><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1920"
+   inkscape:window-height="1106"
+   id="namedview15"
+   showgrid="false"
+   inkscape:zoom="1.3479223"
+   inkscape:cx="-4.1823763"
+   inkscape:cy="128"
+   inkscape:window-x="0"
+   inkscape:window-y="32"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg2" />
+ <path
+   style="fill:none;stroke:#858585;stroke-width:3.125;stroke-dasharray:9.375,9.375;stroke-miterlimit:4;stroke-dashoffset:0"
+   inkscape:connector-curvature="0"
+   id="path5"
+   d="m 173,61 c 6,11 10,25 10,39 0,46 -38,84 -84,84 -46,0 -84,-38 -84,-84 0,-46 38,-84 84,-84 14,0 27,3 39,10" /><circle
+   style="fill:#000080"
+   sodipodi:ry="65"
+   sodipodi:rx="65"
+   sodipodi:cy="100"
+   sodipodi:cx="99"
+   id="circle7"
+   r="65"
+   cy="100"
+   cx="99" /><circle
+   style="fill:#ffffff"
+   sodipodi:ry="19"
+   sodipodi:rx="19"
+   sodipodi:cy="73"
+   sodipodi:cx="125"
+   id="circle9"
+   r="19"
+   cy="73"
+   cx="125" /><circle
+   style="fill:#000080"
+   sodipodi:ry="19"
+   sodipodi:rx="19"
+   sodipodi:cy="35"
+   sodipodi:cx="163"
+   id="circle11"
+   r="19"
+   cy="35"
+   cx="163" /><text
+   style="font-size:60px;font-weight:normal;fill:#ffffff;font-family:Arial"
+   id="text13"
+   font-size="60"
+   font-weight="normal"
+   y="132"
+   x="49">Lua</text>
+
 </svg>
