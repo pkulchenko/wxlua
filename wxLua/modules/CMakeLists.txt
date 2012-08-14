@@ -48,15 +48,15 @@ elseif (APPLE)
     add_definitions( -DLUA_USE_LINUX )
     set(LUA_LINK_LIBRARIES m readline)
 
+elseif ("${CMAKE_GENERATOR}" MATCHES "MinGW Makefiles")
+
+    set(LUA_LINK_LIBRARIES m)
+
 else () # UNIX
     #$(MAKE) all MYCFLAGS="-DLUA_USE_LINUX -fPIC" MYLIBS="-fPIC -Wl,-E -ldl -lreadline -lhistory -lncurses"
 
-    if ("${CMAKE_GENERATOR}" MATCHES "MinGW Makefiles")
-        set(LUA_LINK_LIBRARIES m)
-    else()
-        add_definitions( -DLUA_USE_LINUX )
-        set(LUA_LINK_LIBRARIES m dl readline history ncurses)
-    endif()
+    add_definitions( -DLUA_USE_LINUX )
+    set(LUA_LINK_LIBRARIES m dl readline history ncurses)
 
 endif()
 
