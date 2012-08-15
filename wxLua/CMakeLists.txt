@@ -117,9 +117,9 @@ set( MACOSX_BUNDLE_ICON_FILE            "wxlualogo.icns")
 set( MACOSX_BUNDLE_GUI_IDENTIFIER       )
 set( MACOSX_BUNDLE_LONG_VERSION_STRING  "wxLua ${wxLua_VERSION}, built with wxWidgets ${wxWidgets_VERSION}")
 set( MACOSX_BUNDLE_BUNDLE_NAME          )
-set( MACOSX_BUNDLE_SHORT_VERSION_STRING "${wxLua_VERSION}") 
+set( MACOSX_BUNDLE_SHORT_VERSION_STRING "${wxLua_VERSION}")
 set( MACOSX_BUNDLE_BUNDLE_VERSION       "${wxLua_VERSION}")
-set( MACOSX_BUNDLE_COPYRIGHT            "(2012) John Labenski, et al.") 
+set( MACOSX_BUNDLE_COPYRIGHT            "(2012) John Labenski, et al.")
 
 # ---------------------------------------------------------------------------
 
@@ -158,57 +158,58 @@ SET(WXLUA_APP_INSTALL_FLAGS
 # to be useable in the apps subdirectory.
 # ===========================================================================
 
-if ("${wxLua_LUA_LIBRARY}" STREQUAL "system")
-    FIND_PACKAGE(Lua51)
-
-    if (LUA51_FOUND)
-        set(wxLua_LUA_INCLUDE_DIR ${LUA_INCLUDE_DIR})
-        set(wxLua_LUA_LIBRARY     ${LUA_LIBRARY})
-    else()
-        message(ERROR " The system installed Lua51 was requested, but not found.\nPlease set the variables wxLua_LUA_INCLUDE_DIR and wxLua_LUA_LIBRARY to specify the Lua library.")
-    endif()
+if (NOT DEFINED wxLua_USE_SYSTEM_LUA_LIBRARY)
+    set(wxLua_USE_SYSTEM_LUA_LIBRARY FALSE)
 endif()
+set(wxLua_USE_SYSTEM_LUA_LIBRARY ${wxLua_USE_SYSTEM_LUA_LIBRARY} CACHE BOOL "Find and build wxLua using a system or external Lua library, see wxLua_LUA_INCLUDE_DIR and wxLua_LUA_LIBRARY" FORCE)
 
-if (NOT "${wxLua_LUA_LIBRARY}" STREQUAL "")
+if (wxLua_USE_SYSTEM_LUA_LIBRARY)
+    # They can enter these by hand so don't overwrite them if they're already valid
+    if ((NOT EXISTS "${wxLua_LUA_LIBRARY}") OR (NOT EXISTS "${wxLua_LUA_INCLUDE_DIR}"))
+        FIND_PACKAGE(Lua51)
 
-    message(STATUS "* wxLua using system Lua library :")
+        if (LUA51_FOUND)
+            set(wxLua_LUA_INCLUDE_DIR ${LUA_INCLUDE_DIR})
+            set(wxLua_LUA_LIBRARY     ${LUA_LIBRARY})
+        endif()
+    endif()
+
+    message(STATUS "* wxLua using external/system Lua library :")
     message(STATUS "*   - include dir : ${wxLua_LUA_INCLUDE_DIR}")
     message(STATUS "*   - library     : ${wxLua_LUA_LIBRARY}")
 
-    if (NOT EXISTS "${wxLua_LUA_LIBRARY}")
-        message(ERROR "Lua library specified in wxLua_LUA_LIBRARY is missing, please fix it : '${wxLua_LUA_LIBRARY}'")
+    if ((NOT EXISTS "${wxLua_LUA_LIBRARY}") OR (NOT EXISTS "${wxLua_LUA_INCLUDE_DIR}"))
+        message(ERROR " An external/system Lua51 library was requested, but not found.\nPlease set or correct the variables wxLua_LUA_INCLUDE_DIR and wxLua_LUA_LIBRARY to specify an external Lua library.")
     endif()
-else()
-    message(STATUS "* wxLua using built-in Lua51 library")
-endif()
 
-if (NOT "${wxLua_LUA_INCLUDE_DIR}" STREQUAL "")
-    if ("${wxLua_LUA_LIBRARY}" STREQUAL "")
-        message(ERROR " wxLua_LUA_INCLUDE_DIR is specified, but wxLua_LUA_LIBRARY='${wxLua_LUA_LIBRARY}' does not specify the associated lib.")
-    else()
-        include_directories(${wxLua_LUA_INCLUDE_DIR})
-    endif()
-endif()
-
-if (NOT "${wxLua_LUA_LIBRARY}" STREQUAL "")
     add_library(LuaLib UNKNOWN IMPORTED)
     set_target_properties(LuaLib PROPERTIES IMPORTED_LOCATION ${wxLua_LUA_LIBRARY})
 
     add_library(LuaLibShared UNKNOWN IMPORTED)
     set_target_properties(LuaLibShared PROPERTIES IMPORTED_LOCATION ${wxLua_LUA_LIBRARY})
-else()
+
+    set(LuaLib_Export) # Cmake only allows exporting targets that we build
+
+else() # Use the built-in Lua library
+
+    message(STATUS "* wxLua using built-in Lua51 library")
+
+    set(wxLua_LUA_INCLUDE_DIR "${wxLua_ROOT_DIR}/modules/lua/src")
+    set(wxLua_LUA_LIBRARY     "")
+
     set(LuaLib_Export LuaLib) # Cmake only allows exporting targets that we build
+
 endif()
 
 if (NOT DEFINED wxLua_LUA_INCLUDE_DIR)
     set(wxLua_LUA_INCLUDE_DIR )
 endif()
-set(wxLua_LUA_INCLUDE_DIR ${wxLua_LUA_INCLUDE_DIR} CACHE PATH "Set the location of an external Lua library's includ directory, else leave blank to use the built-in Lua lib" FORCE )
+set(wxLua_LUA_INCLUDE_DIR ${wxLua_LUA_INCLUDE_DIR} CACHE PATH "Set the location of an external Lua library's include directory, else leave blank to use the built-in Lua lib" FORCE )
 
 if (NOT DEFINED wxLua_LUA_LIBRARY)
     set(wxLua_LUA_LIBRARY )
 endif()
-set(wxLua_LUA_LIBRARY ${wxLua_LUA_LIBRARY} CACHE FILEPATH "Set the location of an external Lua library to link to, or the word 'system' to try to automatically find it, else leave blank to use the built-in Lua lib" FORCE )
+set(wxLua_LUA_LIBRARY ${wxLua_LUA_LIBRARY} CACHE FILEPATH "Set the location of an external Lua library to link to (E.G. lua51.so), else leave blank to use the built-in Lua lib" FORCE )
 
 # ===========================================================================
 # Add subdirectories containing CMakeLists.txt files or specify projects

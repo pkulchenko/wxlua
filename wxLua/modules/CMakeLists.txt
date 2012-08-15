@@ -15,9 +15,9 @@ set( wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../ CACHE INTERNAL "Root dir of 
 # CMake build file for wxLua Library
 # ---------------------------------------------------------------------------
 
-include_directories(${wxLua_ROOT_DIR}/
-                    ${wxLua_ROOT_DIR}/modules/
-                    ${wxLua_ROOT_DIR}/modules/lua/src)
+include_directories("${wxLua_ROOT_DIR}/"
+                    "${wxLua_ROOT_DIR}/modules/"
+                    "${wxLua_LUA_INCLUDE_DIR}")
 
 # ===========================================================================
 # wxLua/modules/lua
