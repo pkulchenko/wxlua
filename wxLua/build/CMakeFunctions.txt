@@ -20,7 +20,7 @@
 # ADD_GTEST()        - Add a test using Google's GTest, tests for failure.
 # ADD_CPPCHECK_TEST() - Add a static analysis test using cppcheck (if available)
 #
-# ADD_LIBRARY_FULL() - Complete wrapper for ADD_LIBRARY() with many conveniences.
+# ADD_LIBRARY_FULL()    - Complete wrapper for ADD_LIBRARY() with many conveniences.
 # ADD_EXECUTABLE_FULL() - Complete wrapper for ADD_EXECUTABLE() with many conveniences.
 #
 # ADD_TARGET_INCLUDE_PATHS() - Easily add multiple include paths to a single target.
@@ -30,7 +30,7 @@
 # ADD_DOXYGEN() - Add a target for building Doxygen docs.
 #
 # GET_ALL_CMAKE_VARIABLES()   - Get all CMake vars into a list variable
-# PRINT_ALL_CMAKE_VARIABLES() - Print all CMake vars
+# PRINT_ALL_CMAKE_VARIABLES() - Print all CMake vars, useful for debugging cmake scripts
 # PRINT_NEW_CMAKE_VARIABLES() - Print new CMake vars since last call to PRINT_ALL/NEW_CMAKE_VARIABLES() call.
 # ---------------------------------------------------------------------------
 
@@ -131,11 +131,11 @@ FUNCTION( CONFIGURE_FILE_TO_BUILD_CONFIGURATION_DIRS filename input_dir output_d
         # Copy them to all the output dirs for msvc since you can change the build in MSVC GUI.
         # Note that CMAKE_CONFIGURATION_TYPES is empty if the generator doesn't support it
         foreach (t ${CMAKE_CONFIGURATION_TYPES})
-            configure_file(${input_dir}/${filename} ${output_dir}/${t}/${filename} ${ARGN})
+            configure_file("${input_dir}/${filename}" "${output_dir}/${t}/${filename}" ${ARGN})
         endforeach()
     else() # MSW
         # Only a single build type in Unix, don't create other dirs and confuse people
-        configure_file(${input_dir}/${filename} ${output_dir}/${CMAKE_BUILD_TYPE}/${filename} ${ARGN})
+        configure_file("${input_dir}/${filename}" "${output_dir}/${CMAKE_BUILD_TYPE}/${filename}" ${ARGN})
     endif()
 ENDFUNCTION()
 

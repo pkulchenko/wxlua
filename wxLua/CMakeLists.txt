@@ -158,12 +158,12 @@ SET(WXLUA_APP_INSTALL_FLAGS
 # to be useable in the apps subdirectory.
 # ===========================================================================
 
-if (NOT DEFINED wxLua_USE_SYSTEM_LUA_LIBRARY)
-    set(wxLua_USE_SYSTEM_LUA_LIBRARY FALSE)
+if (NOT DEFINED wxLua_LUA_LIBRARY_USE_BUILTIN)
+    set(wxLua_LUA_LIBRARY_USE_BUILTIN TRUE)
 endif()
-set(wxLua_USE_SYSTEM_LUA_LIBRARY ${wxLua_USE_SYSTEM_LUA_LIBRARY} CACHE BOOL "Find and build wxLua using a system or external Lua library, see wxLua_LUA_INCLUDE_DIR and wxLua_LUA_LIBRARY" FORCE)
+set(wxLua_LUA_LIBRARY_USE_BUILTIN ${wxLua_LUA_LIBRARY_USE_BUILTIN} CACHE BOOL "Use the built-in Lua 5.1 library, else try to find a system or external Lua library, see wxLua_LUA_INCLUDE_DIR and wxLua_LUA_LIBRARY" FORCE)
 
-if (wxLua_USE_SYSTEM_LUA_LIBRARY)
+if (NOT wxLua_LUA_LIBRARY_USE_BUILTIN)
     # They can enter these by hand so don't overwrite them if they're already valid
     if ((NOT EXISTS "${wxLua_LUA_LIBRARY}") OR (NOT EXISTS "${wxLua_LUA_INCLUDE_DIR}"))
         FIND_PACKAGE(Lua51)
@@ -210,6 +210,21 @@ if (NOT DEFINED wxLua_LUA_LIBRARY)
     set(wxLua_LUA_LIBRARY )
 endif()
 set(wxLua_LUA_LIBRARY ${wxLua_LUA_LIBRARY} CACHE FILEPATH "Set the location of an external Lua library to link to (E.G. lua51.so), else leave blank to use the built-in Lua lib" FORCE )
+
+# ===========================================================================
+# We can build everything but the Lua library staticly.
+# You need to have a shared Lua library to require() other modules,
+# however, having the extra shared lib is annoying to drag around if unneeded.
+# ===========================================================================
+
+if (NOT DEFINED wxLua_LUA_LIBRARY_BUILD_SHARED)
+    set(wxLua_LUA_LIBRARY_BUILD_SHARED )
+endif()
+set(wxLua_LUA_LIBRARY_BUILD_SHARED ${wxLua_LUA_LIBRARY_BUILD_SHARED} CACHE BOOL "Build the built-in Lua library as a shared library regardless of the BUILD_SHARED_LIBS setting" FORCE )
+
+if (wxLua_LUA_LIBRARY_BUILD_SHARED)
+    set(wxLua_LUA_LIBRARY_BUILD_SHARED_FLAG SHARED)
+endif()
 
 # ===========================================================================
 # Add subdirectories containing CMakeLists.txt files or specify projects
