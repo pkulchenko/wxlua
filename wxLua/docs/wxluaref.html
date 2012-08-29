@@ -7361,13 +7361,16 @@
 <blockquote>
     <font color=#009900>// No constructors, virtual base class, use <a href="#wxFrame">wxFrame</a> or <a href="#wxDialog">wxDialog</a></font><br>
 <br>
+    bool CanSetTransparent()<br>
+    bool EnableCloseButton(bool enable = true)<br>
     <i>%wxchkver_2_8</i> <a href="#wxWindow">wxWindow</a>* GetDefaultItem() const<br>
     <a href="#wxIcon">wxIcon</a> GetIcon() const<br>
     <font color=#009900>//const <a href="#wxIconBundle">wxIconBundle</a>&amp; GetIcons() const</font><br>
     <a href="#wxString">wxString</a> GetTitle() const<br>
     <i>%wxchkver_2_8</i> <a href="#wxWindow">wxWindow</a>* GetTmpDefaultItem() const<br>
-    void Iconize(bool iconize)<br>
     bool IsActive() const<br>
+    bool IsAlwaysMaximized() const<br>
+    void Iconize(bool iconize)<br>
     bool IsFullScreen() const<br>
     bool IsIconized() const<br>
     bool IsMaximized() const<br>
@@ -7376,10 +7379,16 @@
     <i>%wxchkver_2_8</i> <a href="#wxWindow">wxWindow</a>* SetDefaultItem(<a href="#wxWindow">wxWindow</a> *win)<br>
     void SetIcon(const <a href="#wxIcon">wxIcon</a>&amp; icon)<br>
     void SetIcons(const <a href="#wxIconBundle">wxIconBundle</a>&amp; icons)<br>
-    <font color=#009900>//void SetLeftMenu(int id = wxID_ANY, const <a href="#wxString">wxString</a>&amp; label = wxEmptyString, <a href="#wxMenu">wxMenu</a> * subMenu = NULL)</font><br>
+    <font color=#009900>//void SetLeftMenu(int id = wxID_ANY, const <a href="#wxString">wxString</a>&amp; label = wxEmptyString, <a href="#wxMenu">wxMenu</a> * subMenu = NULL) // for phones</font><br>
     <font color=#009900>//void SetRightMenu(int id = wxID_ANY, const <a href="#wxString">wxString</a>&amp; label = wxEmptyString, <a href="#wxMenu">wxMenu</a> * subMenu = NULL)</font><br>
+    void SetMaxSize(const <a href="#wxSize">wxSize</a>&amp; size)<br>
+    void SetMinSize(const <a href="#wxSize">wxSize</a>&amp; size)<br>
+    void SetSizeHints(int minW, int minH, int maxW=-1, int maxH=-1, int incW=-1, int incH=-1)<br>
+    void SetSizeHints(const <a href="#wxSize">wxSize</a>&amp; minSize, const <a href="#wxSize">wxSize</a>&amp; maxSize=wxDefaultSize, const <a href="#wxSize">wxSize</a>&amp; incSize=wxDefaultSize)<br>
     bool SetShape(const <a href="#wxRegion">wxRegion</a>&amp; region)<br>
     virtual void SetTitle(const <a href="#wxString">wxString</a>&amp; title)<br>
+    virtual bool SetTransparent(int alpha)<br>
+    <font color=#009900>//virtual bool ShouldPreventAppExit() const // must be overridden</font><br>
     <i>%wxchkver_2_8</i> <a href="#wxWindow">wxWindow</a>* SetTmpDefaultItem(<a href="#wxWindow">wxWindow</a> *win)<br>
     bool ShowFullScreen(bool show, long style = wxFULLSCREEN_ALL)<br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>

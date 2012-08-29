@@ -90,13 +90,16 @@
 %class wxTopLevelWindow, wxWindow
     // No constructors, virtual base class, use wxFrame or wxDialog
 
+    bool CanSetTransparent()
+    bool EnableCloseButton(bool enable = true)
     %wxchkver_2_8 wxWindow* GetDefaultItem() const
     wxIcon GetIcon() const
     //const wxIconBundle& GetIcons() const
     wxString GetTitle() const
     %wxchkver_2_8 wxWindow* GetTmpDefaultItem() const
-    void Iconize(bool iconize)
     bool IsActive() const
+    bool IsAlwaysMaximized() const
+    void Iconize(bool iconize)
     bool IsFullScreen() const
     bool IsIconized() const
     bool IsMaximized() const
@@ -105,10 +108,16 @@
     %wxchkver_2_8 wxWindow* SetDefaultItem(wxWindow *win)
     void SetIcon(const wxIcon& icon)
     void SetIcons(const wxIconBundle& icons)
-    //void SetLeftMenu(int id = wxID_ANY, const wxString& label = wxEmptyString, wxMenu * subMenu = NULL)
+    //void SetLeftMenu(int id = wxID_ANY, const wxString& label = wxEmptyString, wxMenu * subMenu = NULL) // for phones
     //void SetRightMenu(int id = wxID_ANY, const wxString& label = wxEmptyString, wxMenu * subMenu = NULL)
+    void SetMaxSize(const wxSize& size)
+    void SetMinSize(const wxSize& size)
+    void SetSizeHints(int minW, int minH, int maxW=-1, int maxH=-1, int incW=-1, int incH=-1)
+    void SetSizeHints(const wxSize& minSize, const wxSize& maxSize=wxDefaultSize, const wxSize& incSize=wxDefaultSize)
     bool SetShape(const wxRegion& region)
     virtual void SetTitle(const wxString& title)
+    virtual bool SetTransparent(int alpha)
+    //virtual bool ShouldPreventAppExit() const // must be overridden
     %wxchkver_2_8 wxWindow* SetTmpDefaultItem(wxWindow *win)
     bool ShowFullScreen(bool show, long style = wxFULLSCREEN_ALL)
 %endclass
