@@ -57,7 +57,7 @@ set(wxLuaBind_COMPONENTS ${wxLuaBind_COMPONENTS} CACHE STRING "wxWidgets libs wx
 # We will create a list of the source files needed to compile
 set(wxLuaBindLib_SOURCES)
 # These are the definitions that in your CMake project you can call add_definitions() with.
-set(wxLua_CXX_DEFINITIONS)
+set(wxLua_CXX_DEFINITIONS "" CACHE INTERNAL "C++ compiler flags to include/exclude wxLua binding libs" FORCE)
 
 # verify that each library exists from finding wxWidgets in the wxWidgets_COMPONENTS
 foreach( wxlua_comp ${wxLuaBind_ALL_COMPONENTS} )
@@ -87,8 +87,10 @@ foreach( wxlua_comp ${wxLuaBind_ALL_COMPONENTS} )
     endif()
 endforeach()
 
+set(wxLua_CXX_DEFINITIONS "${wxLua_CXX_DEFINITIONS}" CACHE INTERNAL "C++ compiler flags to include/exclude wxLua binding libs" FORCE)
+
 # ---------------------------------------------------------------------------
-# This function must be called in any other MakeLists that uses any wxLua
+# This function must be called in any other CMakeLists that uses any wxLua
 # headers to ensure that the compiler #defines are correct.
 # ---------------------------------------------------------------------------
 
@@ -261,6 +263,18 @@ endif()
 
 export( TARGETS ${LuaLib_Export} wxLuaLib wxLuaDebugLib wxLuaSocketLib wxLuaBindLib ${LuaLibShared_export_name}
         FILE "${CMAKE_BINARY_DIR}/build/wxLua-config.cmake")
+
+file( APPEND "${CMAKE_BINARY_DIR}/build/wxLua-config.cmake"
+"\n
+# ---------------------------------------------------------------------------
+# Add the compiler flags in the variable wxLua_CXX_DEFINITIONS to your target
+# or call the SETUP_wxLua() macro in any directory that has targets that use the
+# macros in modules/wxbind/include/wxbinddefs.h to initialize the wxWidgets bindings.
+set(wxLua_CXX_DEFINITIONS \"${wxLua_CXX_DEFINITIONS}\")
+macro(SETUP_wxLua)
+    add_definitions(\${wxLua_CXX_DEFINITIONS})
+endmacro(SETUP_wxLua)
+")
 
 install(EXPORT wxLua_export
         DESTINATION share/wxlua/
