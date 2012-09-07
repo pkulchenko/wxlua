@@ -38,28 +38,28 @@ luamodule:
 # Make the apps
 
 wxlua_app:
-	@(cd apps/wxlua/src && make)
+	@(cd apps/wxlua && make)
 
 wxluacan_app:
-	@(cd apps/wxluacan/src && make)
+	@(cd apps/wxluacan && make)
 
 wxluafreeze_app:
-	@(cd apps/wxluafreeze/src && make)
+	@(cd apps/wxluafreeze && make)
 
 wxluaedit_app:
-	@(cd apps/wxluaedit/src && make)
+	@(cd apps/wxluaedit && make)
 
 #----------------------------------------------------------------------------
 
 clean:
-	@(cd modules/lua/src && make clean)
-	@(cd modules/wxlua/src && make clean)
-	@(cd modules/wxluadebug/src && make clean)
+	@(cd modules/lua/src         && make clean)
+	@(cd modules/wxlua/src       && make clean)
+	@(cd modules/wxluadebug/src  && make clean)
 	@(cd modules/wxluasocket/src && make clean)
-	@(cd modules/wxbind/src && make clean)
-	@(cd modules/luamodule/src && make clean)
-	@(cd apps/wxlua/src && make clean)
-	@(cd apps/wxluacan/src && make clean)
-	@(cd apps/wxluafreeze/src && make clean)
-	@(cd apps/wxluaedit/src && make clean)
+	@(cd modules/wxbind/src      && make clean)
+	@(cd modules/luamodule/src   && make clean)
+	@(cd apps/wxlua              && make clean)
+	@(cd apps/wxluacan           && make clean)
+	@(cd apps/wxluafreeze        && make clean)
+	@(cd apps/wxluaedit          && make clean)
 

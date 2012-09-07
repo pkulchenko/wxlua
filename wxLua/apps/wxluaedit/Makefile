@@ -25,7 +25,7 @@ SOURCES = wxluaedit.cpp wxledit.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 DEPFILES=$(OBJECTS:.o=.d)
 
-APPEXTRALIBS := -l$(WXSTEDIT_LIB) $(APPEXTRALIBS)
+APPEXTRALIBS := -L$(WXSTEDIT_DIR)/lib -l$(WXSTEDIT_LIB) $(APPEXTRALIBS)
 
 # ----------------------------------------------------------------------------
 

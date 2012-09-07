@@ -25,7 +25,7 @@ include $(WXLUA_DIR)/build/Makefile_wx-config.in
 
 all: wxLuaBindAdvLib wxLuaBindAUILib wxLuaBindBaseLib wxLuaBindCoreLib wxLuaBindGLLib wxLuaBindHTMLLib wxLuaBindMediaLib wxLuaBindNetLib wxLuaBindSTCLib wxLuaBindXMLLib wxLuaBindXRCLib
 
-clean: cleanlib
+clean: cleanlib cleanwxbind
 
 cleanwxbind:
 	@($(MAKE) -f Makefile_wxadv clean)

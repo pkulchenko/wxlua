@@ -36,7 +36,7 @@
 #include "wxluasocket/include/wxldtarg.h"
 #include "wxluadebug/include/wxlstack.h"
 
-#include "../../wxlua/src/lconsole.cpp"
+#include "../wxlua/lconsole.cpp"
 
 //#include "art/wxlua.xpm" get it from the lconsole
 
