@@ -4,11 +4,13 @@
 # Updated:
 # Copyright: (c) 2002. J Winwood
 #
-# Makefile for wxLuaEditor app using gmake
+# Makefile for wxLuaFreeze sample using gmake
+
+PROGRAM = wxLuaFreeze
 
 # ----------------------------------------------------------------------------
 # Set path to root of wxLua
-WXLUA_DIR = ../../..
+WXLUA_DIR = ../..
 
 # ----------------------------------------------------------------------------
 # Include wxLua settings using wx-config for wxWidgets parameters
@@ -17,24 +19,22 @@ include $(WXLUA_DIR)/build/Makefile_wx-config.in
 
 # ----------------------------------------------------------------------------
 
-PROGRAM = wxLuaEditor
-
 HEADERS =
-SOURCES = wxluaedit.cpp wxledit.cpp
+SOURCES = wxluafreeze.cpp
 
 OBJECTS=$(SOURCES:.cpp=.o)
 DEPFILES=$(OBJECTS:.o=.d)
 
-APPEXTRALIBS := -l$(WXSTEDIT_LIB) $(APPEXTRALIBS)
+#APPEXTRALIBS := $(APPEXTRALIBS)
 
 # ----------------------------------------------------------------------------
 
 .cpp.o:
 	$(CXX) -c $(CXXFLAGS) $(APPEXTRADEFS) -o $@ $<
 
-all: $(wxLuaALL_TARGETS) wxStEdit $(PROGRAM)
+all: $(wxLuaALL_TARGETS) $(PROGRAM)
 
-$(PROGRAM): $(OBJECTS) $(LUA_LIBS)
+$(PROGRAM): $(OBJECTS) $(LUA_LIBS) $(wxLuaALL_TARGETS)
 	$(CXX) -o $@ $(OBJECTS) $(LDLIBS) $(APPEXTRALIBS)
 
 clean:

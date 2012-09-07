@@ -23,10 +23,10 @@ function (wxLua_Apps_wxLua_TARGETS)
 
 ADD_EXECUTABLE_FULL( wxLua_app WIN32 MACOSX_BUNDLE
     HEADERS
-        "${wxLua_ROOT_DIR}/apps/wxlua/src/*.h"
+        "${wxLua_ROOT_DIR}/apps/wxlua/*.h"
     SOURCES
-        "${wxLua_ROOT_DIR}/apps/wxlua/src/*.cpp"
-        "${wxLua_ROOT_DIR}/apps/wxlua/src/wxlua.rc"
+        "${wxLua_ROOT_DIR}/apps/wxlua/*.cpp"
+        "${wxLua_ROOT_DIR}/apps/wxlua/wxlua.rc"
         "${wxLua_ROOT_DIR}/art/wxlualogo.icns"
     LINK_LIBRARIES
         #wxLuaBindLib
@@ -52,10 +52,10 @@ function (wxLua_Apps_wxLuaCan_TARGETS)
 
 ADD_EXECUTABLE_FULL( wxLuaCan WIN32 MACOSX_BUNDLE
     HEADERS
-        "${wxLua_ROOT_DIR}/apps/wxluacan/src/*.h"
+        "${wxLua_ROOT_DIR}/apps/wxluacan/*.h"
     SOURCES
-        "${wxLua_ROOT_DIR}/apps/wxluacan/src/*.cpp"
-        "${wxLua_ROOT_DIR}/apps/wxluacan/src/cansim.rc"
+        "${wxLua_ROOT_DIR}/apps/wxluacan/*.cpp"
+        "${wxLua_ROOT_DIR}/apps/wxluacan/cansim.rc"
         "${wxLua_ROOT_DIR}/art/wxlualogo.icns"
     LINK_LIBRARIES
         #wxLuaBindLib
@@ -94,10 +94,10 @@ include_directories(${wxStEdit_ROOT_DIR}/include ${wxStEdit_SETUP_INCLUDE_PATH})
 
 ADD_EXECUTABLE_FULL( wxLuaEdit WIN32 MACOSX_BUNDLE
     HEADERS
-        "${wxLua_ROOT_DIR}/apps/wxluaedit/src/*.h"
+        "${wxLua_ROOT_DIR}/apps/wxluaedit/*.h"
     SOURCES
-        "${wxLua_ROOT_DIR}/apps/wxluaedit/src/*.cpp"
-        "${wxLua_ROOT_DIR}/apps/wxluaedit/src/wxluaedit.rc"
+        "${wxLua_ROOT_DIR}/apps/wxluaedit/*.cpp"
+        "${wxLua_ROOT_DIR}/apps/wxluaedit/wxluaedit.rc"
         "${wxLua_ROOT_DIR}/art/wxlualogo.icns"
     LINK_LIBRARIES
         wxStEditLib
@@ -127,10 +127,10 @@ function (wxLua_Apps_wxLuaFreeze_TARGETS)
 
 ADD_EXECUTABLE_FULL( wxLuaFreeze WIN32 MACOSX_BUNDLE
     HEADERS
-        "${wxLua_ROOT_DIR}/apps/wxluafreeze/src/*.h"
+        "${wxLua_ROOT_DIR}/apps/wxluafreeze/*.h"
     SOURCES
-        "${wxLua_ROOT_DIR}/apps/wxluafreeze/src/*.cpp"
-        "${wxLua_ROOT_DIR}/apps/wxluafreeze/src/wxluafreeze.rc"
+        "${wxLua_ROOT_DIR}/apps/wxluafreeze/*.cpp"
+        "${wxLua_ROOT_DIR}/apps/wxluafreeze/wxluafreeze.rc"
         "${wxLua_ROOT_DIR}/art/wxlualogo.icns"
     LINK_LIBRARIES
         #wxLuaBindLib
