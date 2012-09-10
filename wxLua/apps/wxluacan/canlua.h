@@ -12,7 +12,7 @@
 #define __LUACAN_H__
 
 #include <wx/wx.h>
-#include "wxlua/include/wxlstate.h"
+#include "wxlua/wxlstate.h"
 
 class wxlCanObj;
 class wxlLuaCanCmd;

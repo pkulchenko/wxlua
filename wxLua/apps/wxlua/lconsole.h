@@ -13,7 +13,7 @@
 #include <wx/frame.h>
 #include <wx/filename.h>
 
-#include "wxlua/include/wxlua.h"
+#include "wxlua/wxlua.h"
 
 class WXDLLIMPEXP_FWD_CORE wxSplitterWindow;
 class WXDLLIMPEXP_FWD_CORE wxTextCtrl;

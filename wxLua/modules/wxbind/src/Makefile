@@ -28,18 +28,18 @@ all: wxLuaBindAdvLib wxLuaBindAUILib wxLuaBindBaseLib wxLuaBindCoreLib wxLuaBind
 clean: cleanlib cleanwxbind
 
 cleanwxbind:
-	@($(MAKE) -f Makefile_wxadv clean)
-	@($(MAKE) -f Makefile_wxaui clean)
-	@($(MAKE) -f Makefile_wxbase clean)
-	@($(MAKE) -f Makefile_wxcore clean)
-	@($(MAKE) -f Makefile_wxgl clean)
-	@($(MAKE) -f Makefile_wxhtml clean)
-	@($(MAKE) -f Makefile_wxmedia clean)
-	@($(MAKE) -f Makefile_wxnet clean)
+	@($(MAKE) -f Makefile_wxadv      clean)
+	@($(MAKE) -f Makefile_wxaui      clean)
+	@($(MAKE) -f Makefile_wxbase     clean)
+	@($(MAKE) -f Makefile_wxcore     clean)
+	@($(MAKE) -f Makefile_wxgl       clean)
+	@($(MAKE) -f Makefile_wxhtml     clean)
+	@($(MAKE) -f Makefile_wxmedia    clean)
+	@($(MAKE) -f Makefile_wxnet      clean)
 	@($(MAKE) -f Makefile_wxrichtext clean)
-	@($(MAKE) -f Makefile_wxstc clean)
-	@($(MAKE) -f Makefile_wxxml clean)
-	@($(MAKE) -f Makefile_wxxrc clean)
+	@($(MAKE) -f Makefile_wxstc      clean)
+	@($(MAKE) -f Makefile_wxxml      clean)
+	@($(MAKE) -f Makefile_wxxrc      clean)
 
 
 # ----------------------------------------------------------------------------

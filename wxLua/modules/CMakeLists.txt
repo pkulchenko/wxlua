@@ -214,19 +214,19 @@ function (wxLua_Modules_wxLua_TARGETS)
 
 ADD_LIBRARY_FULL( wxLuaLib
     HEADERS
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlbind.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlcallb.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxldefs.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlstate.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlua.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlua_bind.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlversion.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxlbind.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxlcallb.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxldefs.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxlstate.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxlua.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxlua_bind.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxlversion.h
     SOURCES
-        ${wxLua_ROOT_DIR}/modules/wxlua/src/dummy.cpp
-        ${wxLua_ROOT_DIR}/modules/wxlua/src/wxlbind.cpp
-        ${wxLua_ROOT_DIR}/modules/wxlua/src/wxlcallb.cpp
-        ${wxLua_ROOT_DIR}/modules/wxlua/src/wxlstate.cpp
-        ${wxLua_ROOT_DIR}/modules/wxlua/src/wxlua_bind.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/dummy.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxlbind.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxlcallb.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxlstate.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxlua_bind.cpp
     LINK_LIBRARIES
         LuaLib
         ${wxWidgets_LIBRARIES}
@@ -245,13 +245,13 @@ function (wxLua_Modules_wxLuaDebug_TARGETS)
 
 ADD_LIBRARY_FULL( wxLuaDebugLib
     HEADERS
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxldebug.h
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxlstack.h
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxluadebugdefs.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/debug/wxldebug.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/debug/wxlstack.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/debug/wxluadebugdefs.h
     SOURCES
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/src/dummy.cpp
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/src/wxldebug.cpp
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/src/wxlstack.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/debug/dummy.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/debug/wxldebug.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/debug/wxlstack.cpp
     LINK_LIBRARIES
         wxLuaLib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUADEBUG"
@@ -269,17 +269,17 @@ function (wxLua_Modules_wxLuaSocket_TARGETS)
 
 ADD_LIBRARY_FULL( wxLuaSocketLib
     HEADERS
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxldserv.h
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxldtarg.h
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxlsock.h
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxluasocket_bind.h
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxluasocketdefs.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxldserv.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxldtarg.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxlsock.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxluasocket_bind.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxluasocketdefs.h
     SOURCES
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/src/dummy.cpp
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/src/wxldserv.cpp
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/src/wxldtarg.cpp
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/src/wxlsock.cpp
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/src/wxluasocket_bind.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/dummy.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxldserv.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxldtarg.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxlsock.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxluasocket_bind.cpp
     LINK_LIBRARIES
         #wxLuaBind_core_Lib
         ${wxLuaBind_ALL_LIBS} # Only need core for wxluatype_wxWindow
@@ -669,10 +669,10 @@ endif (BUILD_SHARED_LIBS)
 # we get all the exports right.
 ADD_LIBRARY_FULL( wxLuaModule SHARED # ALLOW_MISSING_FILES
     HEADERS
-        ${wxLua_ROOT_DIR}/modules/luamodule/include/luamoduledefs.h
+        ${wxLua_ROOT_DIR}/modules/luamodule/luamoduledefs.h
     SOURCES
-        ${wxLua_ROOT_DIR}/modules/luamodule/src/luamodule.cpp
-        ${wxLua_ROOT_DIR}/modules/luamodule/src/luamodule.rc
+        ${wxLua_ROOT_DIR}/modules/luamodule/luamodule.cpp
+        ${wxLua_ROOT_DIR}/modules/luamodule/luamodule.rc
         ${wxLuaBindLib_SOURCE_FILES}
         ${wxLuaSocketLib_SOURCE_FILES}
         ${wxLuaDebugLib_SOURCE_FILES}
@@ -708,6 +708,6 @@ endfunction (wxLua_Modules_LuaModule_TARGETS)
 add_subdirectory( lua )
 add_subdirectory( wxbind )
 add_subdirectory( wxlua )
-add_subdirectory( wxluadebug )
-add_subdirectory( wxluasocket )
+add_subdirectory( wxlua/debug )
+add_subdirectory( wxlua/debugger )
 add_subdirectory( luamodule ) # include after everything else to get source file list

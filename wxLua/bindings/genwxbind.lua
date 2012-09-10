@@ -18,7 +18,7 @@
 -- ---------------------------------------------------------------------------
 
 WXLUA_BINDING_VERSION = 30 -- Used to verify that the bindings are updated
-                           -- This must match modules/wxlua/include/wxldefs.h
+                           -- This must match modules/wxlua/wxldefs.h
                            -- otherwise a compile time error will be generated.
 
 -- Test the interface files by casting the object to the baseclasses, use only temporarily for debugging
@@ -4306,13 +4306,13 @@ function GenerateHookHeaderFileTable()
 
     table.insert(fileData, (hook_cpp_binding_header_includes or "").."\n")
 
-    table.insert(fileData, "#include \"wxlua/include/wxlstate.h\"\n")
-    table.insert(fileData, "#include \"wxlua/include/wxlbind.h\"\n\n")
+    table.insert(fileData, "#include \"wxlua/wxlstate.h\"\n")
+    table.insert(fileData, "#include \"wxlua/wxlbind.h\"\n\n")
 
     table.insert(fileData, "// ---------------------------------------------------------------------------\n")
     table.insert(fileData, "// Check if the version of binding generator used to create this is older than\n")
     table.insert(fileData, "//   the current version of the bindings.\n")
-    table.insert(fileData, "//   See 'bindings/genwxbind.lua' and 'modules/wxlua/include/wxldefs.h'\n")
+    table.insert(fileData, "//   See 'bindings/genwxbind.lua' and 'modules/wxlua/wxldefs.h'\n")
     table.insert(fileData, "#if WXLUA_BINDING_VERSION > "..WXLUA_BINDING_VERSION.."\n")
     table.insert(fileData, "#   error \"The WXLUA_BINDING_VERSION in the bindings is too old, regenerate bindings.\"\n")
     table.insert(fileData, "#endif //WXLUA_BINDING_VERSION > "..WXLUA_BINDING_VERSION.."\n")
@@ -4435,7 +4435,7 @@ function GenerateHookCppFileHeader(fileData, fileName, add_includes)
         table.insert(fileData, "     #include \"wx/wx.h\"\n")
         table.insert(fileData, "#endif\n")
         table.insert(fileData, "\n")
-        table.insert(fileData, "#include \"wxlua/include/wxlstate.h\"\n")
+        table.insert(fileData, "#include \"wxlua/wxlstate.h\"\n")
         table.insert(fileData, "#include \""..hook_cpp_header_filename.."\"\n")
         table.insert(fileData, hook_cpp_binding_post_includes or "")
         table.insert(fileData, "\n")

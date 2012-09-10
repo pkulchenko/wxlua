@@ -18,7 +18,7 @@
 #include "canlua.h"
 #include "cancom.h"
 #include <wx/timer.h>
-#include "wxlua/include/wxlstate.h"
+#include "wxlua/wxlstate.h"
 
 //----------------------------------------------------------------------------
 //   constants

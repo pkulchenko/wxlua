@@ -1,24 +1,30 @@
+# Make all the bindings in Linux or in Cygwin.
 
-# Make all the bindings in linux using the other Makefiles
-
-# Note: run $make -B since for some reason make thinks wxwidgets, wxstc,
-#       wxluasocket are all up to date.
-
+# The root wxLua directory.
 WXLUA_DIR    = ../
 
+#----------------------------------------------------------------------------
 
-# If we're using cygwin, lua maybe somewhere else, try some common places
-# note some other variables cygwin sets don't seem to be exported
+# If we're using cygwin, the lua executable maybe elsewhere, try some common places.
+# Note some other variables cygwin sets don't seem to be exported.
 ifeq (Cygwin, $(findstring Cygwin, $(XTERM_VERSION)))
 	LUA=$(WXLUA_DIR)/bin/vc_lib/lua.exe
 else
 	LUA=$(WXLUA_DIR)/bin/lua
 endif
 
-ALL_BINDINGS = wxbase wxcore wxadv wxaui wxgl wxhtml wxnet wxmedia wxstc wxxml wxxrc wxrichtext wxlua wxluasocket wxluacan wxdatatypes
+#----------------------------------------------------------------------------
+
+ALL_BINDINGS = wxbase wxcore wxadv wxaui wxgl wxhtml wxnet wxmedia wxstc wxxml wxxrc wxrichtext wxlua wxlua_debugger wxluacan wxdatatypes
+
+# Always try to build all targets, let the other Makefiles do dep checking
+.PHONY: all clean genidocs $(ALL_BINDINGS)
 
 # These have to be in order of their dependencies
 all: $(ALL_BINDINGS)
+
+#----------------------------------------------------------------------------
+# wxWidgets bindings
 
 wxadv:
 	@echo Building wxAdv
@@ -68,32 +74,37 @@ wxxrc:
 	@echo Building wxXrc
 	@($(LUA) -e"rulesFilename=\"wxwidgets/wxxrc_rules.lua\"" genwxbind.lua)
 
+# ---------------------------------------------------------------------------
+# wxLua bindings
 
 wxlua:
 	@echo Building wxLua
 	@($(LUA) -e"rulesFilename=\"wxlua/wxlua_rules.lua\"" genwxbind.lua)
 
-wxluasocket:
-	@echo Building wxLuaSocket
-	@($(LUA) -e"rulesFilename=\"wxluasocket/wxluasocket_rules.lua\"" genwxbind.lua)
+wxlua_debugger:
+	@echo Building wxLuaDebugger
+	@($(LUA) -e"rulesFilename=\"wxlua_debugger/wxlua_debugger_rules.lua\"" genwxbind.lua)
 
-
-wxdatatypes:
-	@echo Building wx DataTypes
-	@($(LUA) -e"rulesFilename=\"wxwidgets/wxdatatypes_rules.lua\"" genwxbind.lua)
-
+# ---------------------------------------------------------------------------
 
 wxluacan:
 	@echo Building wxLuaCan
 	@(cd $(WXLUA_DIR)/apps/wxluacan/src && make -e LUA=../../$(LUA) genwxbind)
 
+# ---------------------------------------------------------------------------
+# Generate the datatypes file that declares all the known data types.
 
+wxdatatypes:
+	@echo Building wx DataTypes
+	@($(LUA) -e"rulesFilename=\"wxwidgets/wxdatatypes_rules.lua\"" genwxbind.lua)
+
+# ---------------------------------------------------------------------------
 # make the wxluaref.htm documentation
+
 genidocs:
 	@($(LUA) -e"rulesFilename=\"genidocs_rules.lua\"" genidocs.lua)
 
-
+# ---------------------------------------------------------------------------
 # do nothing to clean
-clean:
 
-.PHONY: all genidocs $(ALL_BINDINGS)
+clean:

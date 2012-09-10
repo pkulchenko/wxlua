@@ -26,8 +26,8 @@
 #include <wx/fs_mem.h>
 #include <wx/image.h>
 
-#include "wxlua/include/wxlua.h"
-#include "wxluasocket/include/wxldserv.h"
+#include "wxlua/wxlua.h"
+#include "wxlua/debugger/wxldserv.h"
 #include "wxlua.h"
 #include "editor.h"
 

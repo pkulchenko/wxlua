@@ -6,12 +6,12 @@
 #----------------------------------------------------------------------------
 
 # Always try to build all targets, let the other Makefiles do dep checking
-.PHONY: all clean lua wxlua wxluadebug wxluasocket wxbind luamodule wxlua_app wxluacan_app wxluafreeze_app wxluaedit_app
+.PHONY: all clean lua wxlua wxlua_debug wxlua_debugger wxbind luamodule wxlua_app wxluacan_app wxluafreeze_app wxluaedit_app
 
 #----------------------------------------------------------------------------
-# Build everything, the apps will build the libs
+# Build everything
 
-all: wxlua_app wxluacan_app wxluafreeze_app wxluaedit_app luamodule
+all: lua wxlua wxlua_debug wxlua_debugger wxbind wxlua_app wxluacan_app wxluafreeze_app wxluaedit_app luamodule
 
 #----------------------------------------------------------------------------
 # Make the libs
@@ -20,19 +20,19 @@ lua:
 	@(cd modules/lua/src && make)
 
 wxlua:
-	@(cd modules/wxlua/src && make)
+	@(cd modules/wxlua && make)
 
-wxluadebug:
-	@(cd modules/wxluadebug/src && make)
+wxlua_debug:
+	@(cd modules/wxlua/debug && make)
 
-wxluasocket:
-	@(cd modules/wxluasocket/src && make)
+wxlua_debugger:
+	@(cd modules/wxlua/debugger && make)
 
 wxbind:
 	@(cd modules/wxbind/src && make)
 
 luamodule:
-	@(cd modules/luamodule/src && make)
+	@(cd modules/luamodule && make)
 
 #----------------------------------------------------------------------------
 # Make the apps
@@ -53,11 +53,11 @@ wxluaedit_app:
 
 clean:
 	@(cd modules/lua/src         && make clean)
-	@(cd modules/wxlua/src       && make clean)
-	@(cd modules/wxluadebug/src  && make clean)
-	@(cd modules/wxluasocket/src && make clean)
+	@(cd modules/wxlua           && make clean)
+	@(cd modules/wxlua/debug     && make clean)
+	@(cd modules/wxlua/debugger  && make clean)
 	@(cd modules/wxbind/src      && make clean)
-	@(cd modules/luamodule/src   && make clean)
+	@(cd modules/luamodule       && make clean)
 	@(cd apps/wxlua              && make clean)
 	@(cd apps/wxluacan           && make clean)
 	@(cd apps/wxluafreeze        && make clean)

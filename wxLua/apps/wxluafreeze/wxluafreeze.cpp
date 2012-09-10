@@ -30,8 +30,8 @@
 #include <wx/image.h>
 #include <wx/file.h>
 #include <wx/filename.h>
-#include "wxlua/include/wxlua.h"
-#include "wxlua/include/wxlstate.h"
+#include "wxlua/wxlua.h"
+#include "wxlua/wxlstate.h"
 
 // implemented below
 wxFileName wxFindAppFullName(const wxString& argv0, const wxString& cwd, const wxString& appVariableName);

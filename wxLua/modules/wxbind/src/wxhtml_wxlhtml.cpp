@@ -22,7 +22,7 @@
 #include "wxbind/include/wxhtml_wxlhtml.h"
 #include "wxbind/include/wxhtml_bind.h"
 
-//#include "wxlua/include/wxlcallb.h"
+//#include "wxlua/wxlcallb.h"
 
 #if wxLUA_USE_wxHTML
 

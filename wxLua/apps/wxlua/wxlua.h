@@ -13,7 +13,7 @@
 
 #include <wx/app.h>
 
-#include "wxluasocket/include/wxldtarg.h"
+#include "wxlua/debugger/wxldtarg.h"
 #include "lconsole.h"
 
 class WXDLLIMPEXP_FWD_WXLUA wxLuaEvent;

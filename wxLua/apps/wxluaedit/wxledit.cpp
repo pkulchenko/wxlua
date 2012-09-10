@@ -25,8 +25,8 @@
 #include <wx/confbase.h>
 
 #include "wxledit.h"
-#include "wxluadebug/include/wxlstack.h"
-#include "wxluadebug/include/wxldebug.h"
+#include "wxlua/debug/wxlstack.h"
+#include "wxlua/debug/wxldebug.h"
 
 #include "wx/stedit/stemenum.h"
 #include "wx/stedit/steevent.h"

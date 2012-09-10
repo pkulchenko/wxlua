@@ -16,13 +16,13 @@ wxLuaLib:
 	@(cd $(WXLUA_DIR)/modules/wxlua/src && $(MAKE))
 
 wxLuaDebugLib:
-	@(cd $(WXLUA_DIR)/modules/wxluadebug/src && $(MAKE))
+	@(cd $(WXLUA_DIR)/modules/wxlua/debug && $(MAKE))
 
 wxLuaSocketLib:
-	@(cd $(WXLUA_DIR)/modules/wxluasocket/src && $(MAKE))
+	@(cd $(WXLUA_DIR)/modules/wxlua/debugger && $(MAKE))
 
 LuaModule:
-	@(cd $(WXLUA_DIR)/modules/luamodule/src && $(MAKE))
+	@(cd $(WXLUA_DIR)/modules/luamodule && $(MAKE))
 
 # ----------------------------------------------------------------------------
 
@@ -91,10 +91,10 @@ cleanlib:
               $(WXLUA_TARGET_LIBDIR)/$(WXLUA_TARGET_LIB_LINK2)
 
 cleanall:
-	@(cd $(WXLUA_DIR)/modules/lua && $(MAKE) clean)
-	@(cd $(WXLUA_DIR)/modules/wxlua/src && $(MAKE) clean)
-	@(cd $(WXLUA_DIR)/modules/wxluadebug/src && $(MAKE) clean)
-	@(cd $(WXLUA_DIR)/modules/wxluasocket/src && $(MAKE) clean)
-	@(cd $(WXLUA_DIR)/modules/luamodule/src && $(MAKE) clean)
+	@(cd $(WXLUA_DIR)/modules/lua            && $(MAKE) clean)
+	@(cd $(WXLUA_DIR)/modules/wxlua          && $(MAKE) clean)
+	@(cd $(WXLUA_DIR)/modules/wxlua/debug    && $(MAKE) clean)
+	@(cd $(WXLUA_DIR)/modules/wxlua/debugger && $(MAKE) clean)
+	@(cd $(WXLUA_DIR)/modules/luamodule      && $(MAKE) clean)
 
 	@(cd $(WXLUA_DIR)/modules/wxbind/src && $(MAKE) -f Makefile cleanwxbind)

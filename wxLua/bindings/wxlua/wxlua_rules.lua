@@ -19,8 +19,8 @@ hook_cpp_namespace = "wxlua"
 
 -- ============================================================================
 -- Set the directory to output the bindings to, both C++ header and source files
-output_cpp_header_filepath = wxlua_dir.."modules/wxlua/include"
-output_cpp_filepath        = wxlua_dir.."modules/wxlua/src"
+output_cpp_header_filepath = wxlua_dir.."modules/wxlua"
+output_cpp_filepath        = wxlua_dir.."modules/wxlua"
 
 -- ============================================================================
 -- Set the DLLIMPEXP macros for compiling these bindings into a DLL
@@ -33,7 +33,7 @@ output_cpp_impexpdatasymbol = "WXDLLIMPEXP_DATA_WXLUA"
 -- Set the name of the header file that will have the #includes from the
 --   bindings in it. This will be used as #include "hook_cpp_header_filename" in
 --   the C++ wrapper files, so it must include the proper #include path.
-hook_cpp_header_filename = "wxlua/include/"..hook_cpp_namespace.."_bind.h"
+hook_cpp_header_filename = "wxlua/"..hook_cpp_namespace.."_bind.h"
 
 -- ----------------------------------------------------------------------------
 -- Set the name of the main binding file that will have the glue code for the

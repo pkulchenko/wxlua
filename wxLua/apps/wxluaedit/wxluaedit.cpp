@@ -32,9 +32,9 @@
 
 #include "wx/stedit/stetree.h"
 
-#include "wxluasocket/include/wxldserv.h"
-#include "wxluasocket/include/wxldtarg.h"
-#include "wxluadebug/include/wxlstack.h"
+#include "wxlua/debugger/wxldserv.h"
+#include "wxlua/debugger/wxldtarg.h"
+#include "wxlua/debug/wxlstack.h"
 
 #include "../wxlua/lconsole.cpp"
 

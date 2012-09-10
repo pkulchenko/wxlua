@@ -11,7 +11,7 @@
 #define __WXLUA_BINDWXDEFS_H__
 
 #include "wx/defs.h"
-#include "wxlua/include/wxlstate.h"
+#include "wxlua/wxlstate.h"
 
 // ----------------------------------------------------------------------------
 // WXDLLIMPEXP macros for the wxWidgets bindings

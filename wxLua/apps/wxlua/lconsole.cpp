@@ -27,7 +27,7 @@
 #include <wx/numdlg.h>
 #include <wx/artprov.h>
 
-#include "wxlua/include/wxlua.h"
+#include "wxlua/wxlua.h"
 #include "lconsole.h"
 
 //#include "../../../art/new.xpm"

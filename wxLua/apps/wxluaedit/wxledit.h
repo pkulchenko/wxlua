@@ -11,7 +11,7 @@
 #ifndef _WX_LUAEDITOR_H_
 #define _WX_LUAEDITOR_H_
 
-#include "wxlua/include/wxlstate.h"
+#include "wxlua/wxlstate.h"
 
 class WXDLLIMPEXP_FWD_CORE wxMenu;
 class WXDLLIMPEXP_FWD_CORE wxKeyEvent;
