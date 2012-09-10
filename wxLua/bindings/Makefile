@@ -89,7 +89,7 @@ wxlua_debugger:
 
 wxluacan:
 	@echo Building wxLuaCan
-	@(cd $(WXLUA_DIR)/apps/wxluacan/src && make -e LUA=../../$(LUA) genwxbind)
+	@(cd $(WXLUA_DIR)/apps/wxluacan/src && $(MAKE) -e LUA=../../$(LUA) genwxbind)
 
 # ---------------------------------------------------------------------------
 # Generate the datatypes file that declares all the known data types.

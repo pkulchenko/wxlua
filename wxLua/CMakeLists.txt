@@ -245,7 +245,7 @@ if (WIN32)
                                                 COPYONLY)
 endif()
 
-add_subdirectory( wxstedit )
+add_subdirectory( modules/wxstedit )
 
 include_directories(${wxLua_ROOT_DIR}/modules/wxbind/setup)
 

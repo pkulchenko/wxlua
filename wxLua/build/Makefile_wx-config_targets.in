@@ -13,7 +13,7 @@ Lua:
 	@(cd $(WXLUA_DIR)/modules/lua && $(MAKE) $(LUA_PLAT))
 
 wxLuaLib:
-	@(cd $(WXLUA_DIR)/modules/wxlua/src && $(MAKE))
+	@(cd $(WXLUA_DIR)/modules/wxlua && $(MAKE))
 
 wxLuaDebugLib:
 	@(cd $(WXLUA_DIR)/modules/wxlua/debug && $(MAKE))

@@ -1,7 +1,12 @@
 # Makefile to build the library and apps using the 'wx-config' script
 # to get the proper build settings for wxWidgets, e.g. wx-config --cxxflags
-# You can override the location of the 'wx-config' script by running 
+# You can override the location of the 'wx-config' script by running
 # $make WXCONFIG=/home/user/path/to/wxWidgets/.../wx-config
+
+# ----------------------------------------------------------------------------
+# Include wxLua settings using wx-config for wxWidgets parameters
+
+include build/Makefile_wx-config.in
 
 #----------------------------------------------------------------------------
 
@@ -17,49 +22,49 @@ all: lua wxlua wxlua_debug wxlua_debugger wxbind wxlua_app wxluacan_app wxluafre
 # Make the libs
 
 lua:
-	@(cd modules/lua/src && make)
+	@(cd modules/lua/src && $(MAKE) $(LUA_PLAT))
 
 wxlua:
-	@(cd modules/wxlua && make)
+	@(cd modules/wxlua && $(MAKE))
 
 wxlua_debug:
-	@(cd modules/wxlua/debug && make)
+	@(cd modules/wxlua/debug && $(MAKE))
 
 wxlua_debugger:
-	@(cd modules/wxlua/debugger && make)
+	@(cd modules/wxlua/debugger && $(MAKE))
 
 wxbind:
-	@(cd modules/wxbind/src && make)
+	@(cd modules/wxbind/src && $(MAKE))
 
 luamodule:
-	@(cd modules/luamodule && make)
+	@(cd modules/luamodule && $(MAKE))
 
 #----------------------------------------------------------------------------
 # Make the apps
 
 wxlua_app:
-	@(cd apps/wxlua && make)
+	@(cd apps/wxlua && $(MAKE))
 
 wxluacan_app:
-	@(cd apps/wxluacan && make)
+	@(cd apps/wxluacan && $(MAKE))
 
 wxluafreeze_app:
-	@(cd apps/wxluafreeze && make)
+	@(cd apps/wxluafreeze && $(MAKE))
 
 wxluaedit_app:
-	@(cd apps/wxluaedit && make)
+	@(cd apps/wxluaedit && $(MAKE))
 
 #----------------------------------------------------------------------------
 
 clean:
-	@(cd modules/lua/src         && make clean)
-	@(cd modules/wxlua           && make clean)
-	@(cd modules/wxlua/debug     && make clean)
-	@(cd modules/wxlua/debugger  && make clean)
-	@(cd modules/wxbind/src      && make clean)
-	@(cd modules/luamodule       && make clean)
-	@(cd apps/wxlua              && make clean)
-	@(cd apps/wxluacan           && make clean)
-	@(cd apps/wxluafreeze        && make clean)
-	@(cd apps/wxluaedit          && make clean)
+	@(cd modules/lua/src         && $(MAKE) clean)
+	@(cd modules/wxlua           && $(MAKE) clean)
+	@(cd modules/wxlua/debug     && $(MAKE) clean)
+	@(cd modules/wxlua/debugger  && $(MAKE) clean)
+	@(cd modules/wxbind/src      && $(MAKE) clean)
+	@(cd modules/luamodule       && $(MAKE) clean)
+	@(cd apps/wxlua              && $(MAKE) clean)
+	@(cd apps/wxluacan           && $(MAKE) clean)
+	@(cd apps/wxluafreeze        && $(MAKE) clean)
+	@(cd apps/wxluaedit          && $(MAKE) clean)
 
