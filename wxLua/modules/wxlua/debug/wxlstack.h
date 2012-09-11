@@ -172,7 +172,7 @@ public:
     void SelectStack(int stack_sel);
 
     // Override these functions if you need to provide an alternate way to get
-    //   the wxLuaDebugData. See wxluasocket lib and wxLuaDebuggerStackDialog
+    //   the wxLuaDebugData. See wxluadebugger lib and wxLuaDebuggerStackDialog
     virtual void EnumerateStack();
     virtual void EnumerateStackEntry(int nEntry);
     virtual void EnumerateTable(int nRef, int nEntry, long lc_item);

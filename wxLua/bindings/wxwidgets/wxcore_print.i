@@ -57,7 +57,7 @@
 
 %if wxLUA_USE_wxLuaPrintout
 
-%include "wxlua/include/wxlua_bind.h" // for wxLuaObject tag
+%include "wxlua/wxlua_bind.h" // for wxLuaObject tag
 %include "wxbind/include/wxcore_wxlcore.h"
 
 %class %delete wxLuaPrintout, wxPrintout

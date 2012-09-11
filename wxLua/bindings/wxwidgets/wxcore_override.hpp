@@ -1126,7 +1126,7 @@ static int LUACALL wxLua_wxMouseEvent_GetPositionXY(lua_State *L)
 %override wxLua_wxEvtHandler_Connect
 // void Connect(int id, int lastId, wxEventType eventType, LuaFunction func)
 
-#include "wxlua/include/wxlcallb.h"
+#include "wxlua/wxlcallb.h"
 // Connect an event to a handler. This Lua 'C' function supports
 // function calls with either three or four parameters. These parameters
 // are:         The class (which must be derived from wxEvtHandler),
@@ -1255,7 +1255,7 @@ static int LUACALL wxLua_wxEvtHandler_Connect(lua_State *L)
 %override wxLua_wxEvtHandler_Disconnect
 // void Disconnect(int id, int lastId, wxEventType eventType)
 
-#include "wxlua/include/wxlcallb.h"
+#include "wxlua/wxlcallb.h"
 static int LUACALL wxLua_wxEvtHandler_Disconnect(lua_State *L)
 {
     wxCHECK_MSG(wxluatype_wxEvtHandler != -1, 0, wxT("wxEvtHandler is not wrapped by wxLua"));

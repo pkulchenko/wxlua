@@ -277,25 +277,25 @@
 // Declare this here to avoid having to include the socket headers when
 // using WXLUA_DECLARE_BIND_ALL
 
-#ifndef WXDLLIMPEXP_WXLUASOCKET
-    #ifdef WXMAKINGDLL_WXLUASOCKET
-        #define WXDLLIMPEXP_WXLUASOCKET WXEXPORT
-        #define WXDLLIMPEXP_DATA_WXLUASOCKET(type) WXEXPORT type
+#ifndef WXDLLIMPEXP_WXLUADEBUGGER
+    #ifdef WXMAKINGDLL_WXLUADEBUGGER
+        #define WXDLLIMPEXP_WXLUADEBUGGER WXEXPORT
+        #define WXDLLIMPEXP_DATA_WXLUADEBUGGER(type) WXEXPORT type
     #elif defined(WXUSINGDLL)
-        #define WXDLLIMPEXP_WXLUASOCKET WXIMPORT
-        #define WXDLLIMPEXP_DATA_WXLUASOCKET(type) WXIMPORT type
+        #define WXDLLIMPEXP_WXLUADEBUGGER WXIMPORT
+        #define WXDLLIMPEXP_DATA_WXLUADEBUGGER(type) WXIMPORT type
     #else // not making nor using DLL
-        #define WXDLLIMPEXP_WXLUASOCKET
-        #define WXDLLIMPEXP_DATA_WXLUASOCKET(type) type
+        #define WXDLLIMPEXP_WXLUADEBUGGER
+        #define WXDLLIMPEXP_DATA_WXLUADEBUGGER(type) type
     #endif
 
     // Forward declare all wxLua classes with this macro
     #if defined(HAVE_VISIBILITY) || (defined(__WINDOWS__) && defined(__GNUC__))
-        #define WXDLLIMPEXP_FWD_WXLUASOCKET
+        #define WXDLLIMPEXP_FWD_WXLUADEBUGGER
     #else
-        #define WXDLLIMPEXP_FWD_WXLUASOCKET WXDLLIMPEXP_WXLUASOCKET
+        #define WXDLLIMPEXP_FWD_WXLUADEBUGGER WXDLLIMPEXP_WXLUADEBUGGER
     #endif
-#endif // WXDLLIMPEXP_WXLUASOCKET
+#endif // WXDLLIMPEXP_WXLUADEBUGGER
 
 // ----------------------------------------------------------------------------
 // wxLUA_USEBINDING_XXX defines control the WXLUA_DECLARE_BIND_XXX and
@@ -380,13 +380,13 @@
     #define WXLUA_IMPLEMENT_BIND_WXLUA
 #endif // wxLUA_USEBINDING_WXLUA
 
-#if wxLUA_USEBINDING_WXLUASOCKET
-    #define WXLUA_DECLARE_BIND_WXLUASOCKET extern WXDLLIMPEXP_WXLUASOCKET wxLuaBinding* wxLuaBinding_wxluasocket_init(); // modules/wxluasocket
-    #define WXLUA_IMPLEMENT_BIND_WXLUASOCKET wxLuaBinding_wxluasocket_init();
+#if wxLUA_USEBINDING_WXLUADEBUGGER
+    #define WXLUA_DECLARE_BIND_WXLUADEBUGGER extern WXDLLIMPEXP_WXLUADEBUGGER wxLuaBinding* wxLuaBinding_wxluadebugger_init(); // modules/wxlua/debugger
+    #define WXLUA_IMPLEMENT_BIND_WXLUADEBUGGER wxLuaBinding_wxluadebugger_init();
 #else
-    #define WXLUA_DECLARE_BIND_WXLUASOCKET
-    #define WXLUA_IMPLEMENT_BIND_WXLUASOCKET
-#endif //wxLUA_USEBINDING_WXLUASOCKET
+    #define WXLUA_DECLARE_BIND_WXLUADEBUGGER
+    #define WXLUA_IMPLEMENT_BIND_WXLUADEBUGGER
+#endif //wxLUA_USEBINDING_WXLUADEBUGGER
 
 
 
@@ -494,7 +494,7 @@
 // Declare all the bindings
 #define WXLUA_DECLARE_BIND_ALL \
     WXLUA_DECLARE_BIND_WXLUA \
-    WXLUA_DECLARE_BIND_WXLUASOCKET \
+    WXLUA_DECLARE_BIND_WXLUADEBUGGER \
     WXLUA_DECLARE_BIND_WXBASE \
     WXLUA_DECLARE_BIND_WXCORE \
     WXLUA_DECLARE_BIND_WXADV \
@@ -522,7 +522,7 @@
 // Implement all the bindings
 #define WXLUA_IMPLEMENT_BIND_ALL \
     WXLUA_IMPLEMENT_BIND_WXLUA \
-    WXLUA_IMPLEMENT_BIND_WXLUASOCKET \
+    WXLUA_IMPLEMENT_BIND_WXLUADEBUGGER \
     WXLUA_IMPLEMENT_BIND_WXBASE \
     WXLUA_IMPLEMENT_BIND_WXCORE \
     WXLUA_IMPLEMENT_BIND_WXADV \

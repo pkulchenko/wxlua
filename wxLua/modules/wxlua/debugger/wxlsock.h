@@ -10,7 +10,7 @@
 #ifndef WX_LUA_SOCKET_H_
 #define WX_LUA_SOCKET_H_
 
-#include "wxlua/debugger/wxluasocketdefs.h"
+#include "wxlua/debugger/wxluadebuggerdefs.h"
 
 class WXDLLIMPEXP_FWD_WXLUADEBUG wxLuaDebugData;
 
@@ -52,7 +52,7 @@ class WXDLLIMPEXP_FWD_WXLUADEBUG wxLuaDebugData;
 //   virtual bool IsConnected()
 // ----------------------------------------------------------------------------
 
-class WXDLLIMPEXP_WXLUASOCKET wxLuaSocketBase : public wxObject
+class WXDLLIMPEXP_WXLUADEBUGGER wxLuaSocketBase : public wxObject
 {
 public:
     wxLuaSocketBase() : m_port_number(-1) {}
@@ -119,7 +119,7 @@ private:
     typedef int socket_type;
 #endif
 
-class WXDLLIMPEXP_WXLUASOCKET wxLuaCSocket : public wxLuaSocketBase
+class WXDLLIMPEXP_WXLUADEBUGGER wxLuaCSocket : public wxLuaSocketBase
 {
 public:
 
@@ -198,7 +198,7 @@ private:
 // ----------------------------------------------------------------------------
 #include <wx/socket.h>
 
-class WXDLLIMPEXP_WXLUASOCKET wxLuawxSocket : public wxLuaSocketBase
+class WXDLLIMPEXP_WXLUADEBUGGER wxLuawxSocket : public wxLuaSocketBase
 {
 public:
     wxLuawxSocket() : m_socket(NULL) {}

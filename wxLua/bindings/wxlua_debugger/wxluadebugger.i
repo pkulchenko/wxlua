@@ -10,8 +10,8 @@
 %include "wx/defs.h"
 %include "wx/object.h"
 
-%include "wxlua/include/wxlstate.h"
-%include "wxlua/include/wxlbind.h"
+%include "wxlua/wxlstate.h"
+%include "wxlua/wxlbind.h"
 
 
 // Show a dialog of the current stack and all of the global data in a wxListCtrl
@@ -23,7 +23,7 @@
 // ---------------------------------------------------------------------------
 // wxLuaDebugServer
 
-%include "wxluasocket/include/wxldserv.h"
+%include "wxlua/debugger/wxldserv.h"
 
 %class %delete wxLuaDebuggerServer, wxEvtHandler
     wxLuaDebuggerServer(int portNumber)

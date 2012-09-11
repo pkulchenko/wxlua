@@ -15,7 +15,7 @@ hook_lua_namespace = "wxlua"
 -- Set the unique C++ "namespace" for the bindings, not a real namespace, but
 --   a string used in declared C++ objects to prevent duplicate names.
 --   See wxLuaBinding::GetBindingName().
-hook_cpp_namespace = "wxluasocket"
+hook_cpp_namespace = "wxluadebugger"
 
 -- ============================================================================
 -- Set the directory to output the bindings to, both C++ header and source files
@@ -26,8 +26,8 @@ output_cpp_filepath        = wxlua_dir.."modules/wxlua/debugger"
 -- Set the DLLIMPEXP macros for compiling these bindings into a DLL
 --  Use "WXLUA_NO_DLLIMPEXP" and "WXLUA_NO_DLLIMPEXP_DATA" for no IMPEXP macros
 
-output_cpp_impexpsymbol     = "WXDLLIMPEXP_WXLUASOCKET"
-output_cpp_impexpdatasymbol = "WXDLLIMPEXP_DATA_WXLUASOCKET"
+output_cpp_impexpsymbol     = "WXDLLIMPEXP_WXLUADEBUGGER"
+output_cpp_impexpdatasymbol = "WXDLLIMPEXP_DATA_WXLUADEBUGGER"
 
 -- ----------------------------------------------------------------------------
 -- Set the name of the header file that will have the #includes from the
@@ -76,7 +76,7 @@ hook_cpp_binding_post_includes = ""
 --  This code will be place directly after any #includes at the top of the file
 hook_cpp_binding_header_includes =
     "#include \"wx/defs.h\"\n"..
-    "#include \"wxlua/debugger/wxluasocketdefs.h\"\n"..
+    "#include \"wxlua/debugger/wxluadebuggerdefs.h\"\n"..
     "#include \"wxbind/include/wxcore_bind.h\"\n"
 
 -- ----------------------------------------------------------------------------
@@ -86,7 +86,7 @@ hook_cpp_binding_source_includes = ""
 
 -- ============================================================================
 -- Set the bindings directory that contains the *.i interface files
-interface_filepath = wxlua_dir.."bindings/wxluasocket"
+interface_filepath = wxlua_dir.."bindings/wxlua_debugger"
 
 -- ----------------------------------------------------------------------------
 -- A list of interface files to use to make the bindings. These files will be
@@ -94,7 +94,7 @@ interface_filepath = wxlua_dir.."bindings/wxluasocket"
 --   The files are loaded from the interface_filepath.
 interface_fileTable =
 {
-    "wxluasocket.i"
+    "wxluadebugger.i"
 }
 
 -- ----------------------------------------------------------------------------

@@ -10,7 +10,7 @@
 #define LUA_DEBUG_TARGET_H
 
 #include <wx/thread.h>
-#include "wxlua/debugger/wxluasocketdefs.h"
+#include "wxlua/debugger/wxluadebuggerdefs.h"
 #include "wxlua/wxlua.h"
 #include "wxlua/debug/wxldebug.h"
 #include "wxlua/debugger/wxlsock.h"
@@ -20,7 +20,7 @@
 //                    communicates with. Handles the Debugger/Debuggee IO
 // ----------------------------------------------------------------------------
 
-class WXDLLIMPEXP_WXLUASOCKET wxLuaDebugTarget : public wxObject
+class WXDLLIMPEXP_WXLUADEBUGGER wxLuaDebugTarget : public wxObject
 {
 protected:
     // -----------------------------------------------------------------------

@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
-// Name:        wxluadebugdefs.h
-// Purpose:     definitions for wxLuaDebug module
+// Name:        wxluadebuggerdefs.h
+// Purpose:     definitions for wxLuaDebugger module
 // Author:      John Labenski, Francesco Montorsi
 // Modified by:
 // Created:     20/5/2006
@@ -8,8 +8,8 @@
 // Licence:     wxWidgets licence
 ///////////////////////////////////////////////////////////////////////////////
 
-#ifndef __WX_WXLUASOCKETDEFS_H__
-#define __WX_WXLUASOCKETDEFS_H__
+#ifndef __WX_WXLUADEBUGGERDEFS_H__
+#define __WX_WXLUADEBUGGERDEFS_H__
 
 #include "wx/defs.h"
 
@@ -20,22 +20,22 @@
 // WXDLLIMPEXP macros
 // ----------------------------------------------------------------------------
 
-#ifdef WXMAKINGDLL_WXLUASOCKET
-    #define WXDLLIMPEXP_WXLUASOCKET WXEXPORT
-    #define WXDLLIMPEXP_DATA_WXLUASOCKET(type) WXEXPORT type
+#ifdef WXMAKINGDLL_WXLUADEBUGGER
+    #define WXDLLIMPEXP_WXLUADEBUGGER WXEXPORT
+    #define WXDLLIMPEXP_DATA_WXLUADEBUGGER(type) WXEXPORT type
 #elif defined(WXUSINGDLL)
-    #define WXDLLIMPEXP_WXLUASOCKET WXIMPORT
-    #define WXDLLIMPEXP_DATA_WXLUASOCKET(type) WXIMPORT type
+    #define WXDLLIMPEXP_WXLUADEBUGGER WXIMPORT
+    #define WXDLLIMPEXP_DATA_WXLUADEBUGGER(type) WXIMPORT type
 #else // not making nor using DLL
-    #define WXDLLIMPEXP_WXLUASOCKET
-    #define WXDLLIMPEXP_DATA_WXLUASOCKET(type) type
+    #define WXDLLIMPEXP_WXLUADEBUGGER
+    #define WXDLLIMPEXP_DATA_WXLUADEBUGGER(type) type
 #endif
 
 // Forward declare all wxLua classes with this macro
 #if defined(HAVE_VISIBILITY) || (defined(__WINDOWS__) && defined(__GNUC__))
-    #define WXDLLIMPEXP_FWD_WXLUASOCKET
+    #define WXDLLIMPEXP_FWD_WXLUADEBUGGER
 #else
-    #define WXDLLIMPEXP_FWD_WXLUASOCKET WXDLLIMPEXP_WXLUASOCKET
+    #define WXDLLIMPEXP_FWD_WXLUADEBUGGER WXDLLIMPEXP_WXLUADEBUGGER
 #endif
 
 // ----------------------------------------------------------------------------
@@ -47,4 +47,4 @@
 
 #define WXLUA_SOCKET_PORT        1561
 
-#endif  // __WX_WXLUASOCKETDEFS_H__
+#endif  // __WX_WXLUADEBUGGERDEFS_H__

@@ -1,3 +1,3 @@
-project( wxLua_Modules_wxLuaSocket )
+project( wxLua_Modules_wxLua_Debugger )
 
-wxLua_Modules_wxLuaSocket_TARGETS()
+wxLua_Modules_wxLua_Debugger_TARGETS()

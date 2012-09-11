@@ -241,7 +241,7 @@ endfunction (wxLua_Modules_wxLua_TARGETS)
 # ---------------------------------------------------------------------------
 # wxLua/modules/wxluadebug
 
-function (wxLua_Modules_wxLuaDebug_TARGETS)
+function (wxLua_Modules_wxLua_Debug_TARGETS)
 
 ADD_LIBRARY_FULL( wxLuaDebugLib
     HEADERS
@@ -260,37 +260,37 @@ ADD_LIBRARY_FULL( wxLuaDebugLib
 
     WXLIKE_LIBRARY_NAMES( wxLuaDebugLib wxlua_debug "${wxLua_VERSION}")
 
-endfunction (wxLua_Modules_wxLuaDebug_TARGETS)
+endfunction (wxLua_Modules_wxLua_Debug_TARGETS)
 
 # ---------------------------------------------------------------------------
-# wxLua/modules/wxluasocket
+# wxLua/modules/wxlua/debugger
 
-function (wxLua_Modules_wxLuaSocket_TARGETS)
+function (wxLua_Modules_wxLua_Debugger_TARGETS)
 
-ADD_LIBRARY_FULL( wxLuaSocketLib
+ADD_LIBRARY_FULL( wxLuaDebuggerLib
     HEADERS
         ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxldserv.h
         ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxldtarg.h
         ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxlsock.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxluasocket_bind.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxluasocketdefs.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxluadebugger_bind.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxluadebuggerdefs.h
     SOURCES
         ${wxLua_ROOT_DIR}/modules/wxlua/debugger/dummy.cpp
         ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxldserv.cpp
         ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxldtarg.cpp
         ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxlsock.cpp
-        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxluasocket_bind.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxluadebugger_bind.cpp
     LINK_LIBRARIES
         #wxLuaBind_core_Lib
         ${wxLuaBind_ALL_LIBS} # Only need core for wxluatype_wxWindow
         wxLuaDebugLib
-    PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUASOCKET"
+    PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUADEBUGGER"
     PROPERTIES FOLDER "wxLua/Modules"
     INSTALL "${WXLUA_LIB_INSTALL_FLAGS}")
 
-    WXLIKE_LIBRARY_NAMES( wxLuaSocketLib wxlua_socket "${wxLua_VERSION}")
+    WXLIKE_LIBRARY_NAMES( wxLuaDebuggerLib wxlua_debugger "${wxLua_VERSION}")
 
-endfunction (wxLua_Modules_wxLuaSocket_TARGETS)
+endfunction (wxLua_Modules_wxLua_Debugger_TARGETS)
 
 # ===========================================================================
 # wxLua/modules/wxbind
@@ -674,12 +674,12 @@ ADD_LIBRARY_FULL( wxLuaModule SHARED # ALLOW_MISSING_FILES
         ${wxLua_ROOT_DIR}/modules/luamodule/luamodule.cpp
         ${wxLua_ROOT_DIR}/modules/luamodule/luamodule.rc
         ${wxLuaBindLib_SOURCE_FILES}
-        ${wxLuaSocketLib_SOURCE_FILES}
+        ${wxLuaDebuggerLib_SOURCE_FILES}
         ${wxLuaDebugLib_SOURCE_FILES}
         ${wxLuaLib_SOURCE_FILES}
     LINK_LIBRARIES
         #wxLuaBindLib
-        #wxLuaSocketLib
+        #wxLuaDebuggerLib
         #wxLuaDebugLib
         #wxLuaLib
         ${wxLUAMODULE_LUALIB}
@@ -698,7 +698,7 @@ endif()
 
 if (BUILD_SHARED_LIBS)
     SET_TARGET_PROPERTIES(wxLuaModule
-        PROPERTIES COMPILE_DEFINITIONS "WXMAKINGDLL_WXLUA;WXMAKINGDLL_WXLUASOCKET;WXMAKINGDLL_WXLUADEBUG;WXMAKINGDLL_WXBIND")
+        PROPERTIES COMPILE_DEFINITIONS "WXMAKINGDLL_WXLUA;WXMAKINGDLL_WXLUADEBUGGER;WXMAKINGDLL_WXLUADEBUG;WXMAKINGDLL_WXBIND")
 endif()
 
 endfunction (wxLua_Modules_LuaModule_TARGETS)

@@ -31,7 +31,7 @@ ADD_EXECUTABLE_FULL( wxLua_app WIN32 MACOSX_BUNDLE
     LINK_LIBRARIES
         #wxLuaBindLib
         ${wxLuaBind_ALL_LIBS}
-        wxLuaSocketLib
+        wxLuaDebuggerLib
         wxLuaDebugLib
         wxLuaLib
         LuaLib
@@ -60,7 +60,7 @@ ADD_EXECUTABLE_FULL( wxLuaCan WIN32 MACOSX_BUNDLE
     LINK_LIBRARIES
         #wxLuaBindLib
         ${wxLuaBind_ALL_LIBS}
-        wxLuaSocketLib
+        wxLuaDebuggerLib
         wxLuaDebugLib
         wxLuaLib
         LuaLib
@@ -103,7 +103,7 @@ ADD_EXECUTABLE_FULL( wxLuaEdit WIN32 MACOSX_BUNDLE
         wxStEditLib
         #wxLuaBindLib
         ${wxLuaBind_ALL_LIBS}
-        wxLuaSocketLib
+        wxLuaDebuggerLib
         wxLuaDebugLib
         wxLuaLib
         LuaLib
@@ -135,7 +135,7 @@ ADD_EXECUTABLE_FULL( wxLuaFreeze WIN32 MACOSX_BUNDLE
     LINK_LIBRARIES
         #wxLuaBindLib
         ${wxLuaBind_ALL_LIBS}
-        wxLuaSocketLib
+        wxLuaDebuggerLib
         wxLuaDebugLib
         wxLuaLib
         LuaLib

@@ -261,7 +261,7 @@ endif()
 # Export and install the CMake export files
 # ===========================================================================
 
-export( TARGETS ${LuaLib_Export} wxLuaLib wxLuaDebugLib wxLuaSocketLib wxLuaBindLib ${LuaLibShared_export_name}
+export( TARGETS ${LuaLib_Export} wxLuaLib wxLuaDebugLib wxLuaDebuggerLib wxLuaBindLib ${LuaLibShared_export_name}
         FILE "${CMAKE_BINARY_DIR}/build/wxLua-config.cmake")
 
 file( APPEND "${CMAKE_BINARY_DIR}/build/wxLua-config.cmake"
@@ -323,36 +323,36 @@ install(FILES
         ${wxLua_ROOT_DIR}/modules/lua/src/luaconf.h
         ${wxLua_ROOT_DIR}/modules/lua/src/lua.h
         ${wxLua_ROOT_DIR}/modules/lua/src/lualib.h
+        DESTINATION "include/wxlua/lua")
+
+install(FILES
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxlbind.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxlcallb.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxldefs.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxlstate.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxlua.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/xlua_bind.h
         DESTINATION "include/wxlua")
 
 install(FILES
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlbind.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlcallb.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxldefs.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlstate.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlua.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/include/wxlua_bind.h
-        DESTINATION "include/wxlua/wxlua/include")
+        ${wxLua_ROOT_DIR}/modules/wxlua/debug/wxldebug.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/debug/wxlstack.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/debug/wxluadebugdefs.h
+        DESTINATION "include/wxlua/debug")
 
 install(FILES
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxldebug.h
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxlstack.h
-        ${wxLua_ROOT_DIR}/modules/wxluadebug/include/wxluadebugdefs.h
-        DESTINATION "include/wxlua/wxluadebug/include")
-
-install(FILES
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxldserv.h
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxldtarg.h
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxlsock.h
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxluasocket_bind.h
-        ${wxLua_ROOT_DIR}/modules/wxluasocket/include/wxluasocketdefs.h
-        DESTINATION "include/wxlua/wxluasocket/include")
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxldserv.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxldtarg.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxlsock.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxluadebugger_bind.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxluadebuggerdefs.h
+        DESTINATION "include/wxlua/debugger")
 
 install(FILES
         ${wxLua_ROOT_DIR}/apps/wxluacan/scripts/incircles.lua
         DESTINATION "${WXLUA_SHARE_DIR}apps/wxluacan")
 
 install(FILES
-        ${wxLua_ROOT_DIR}/apps/wxluafreeze/src/readme.txt
-        ${wxLua_ROOT_DIR}/apps/wxluafreeze/src/wxluafreeze.lua
+        ${wxLua_ROOT_DIR}/apps/wxluafreeze/readme.txt
+        ${wxLua_ROOT_DIR}/apps/wxluafreeze/wxluafreeze.lua
         DESTINATION "${WXLUA_SHARE_DIR}apps/wxluafreeze")

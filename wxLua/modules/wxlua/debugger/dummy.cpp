@@ -33,5 +33,5 @@
 
 #ifdef _MSC_VER
     // Suppress warning LNK4221: no public symbols found archive member will be inaccessible
-    namespace { char dummy_wxluasocket = 0; };
+    namespace { char dummy_wxluadebugger = 0; };
 #endif

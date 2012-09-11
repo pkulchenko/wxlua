@@ -83,13 +83,13 @@ wxlua:
 
 wxlua_debugger:
 	@echo Building wxLuaDebugger
-	@($(LUA) -e"rulesFilename=\"wxlua_debugger/wxlua_debugger_rules.lua\"" genwxbind.lua)
+	@($(LUA) -e"rulesFilename=\"wxlua_debugger/wxluadebugger_rules.lua\"" genwxbind.lua)
 
 # ---------------------------------------------------------------------------
 
 wxluacan:
 	@echo Building wxLuaCan
-	@(cd $(WXLUA_DIR)/apps/wxluacan/src && $(MAKE) -e LUA=../../$(LUA) genwxbind)
+	@(cd $(WXLUA_DIR)/apps/wxluacan && $(MAKE) -e LUA=../../$(LUA) genwxbind)
 
 # ---------------------------------------------------------------------------
 # Generate the datatypes file that declares all the known data types.

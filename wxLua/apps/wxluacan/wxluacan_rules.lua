@@ -104,7 +104,7 @@ override_fileTable = {}
 --        files are updated. Make sure you delete or have updated any cache file
 --        that changes any data types used by this binding.
 
-datatype_cache_input_fileTable = { "../../../bindings/wxwidgets/wx_datatypes.lua" }
+datatype_cache_input_fileTable = { "../../bindings/wxwidgets/wx_datatypes.lua" }
 
 -- ----------------------------------------------------------------------------
 -- The file to output the data type cache for later use with a binding that

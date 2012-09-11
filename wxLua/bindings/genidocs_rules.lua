@@ -150,11 +150,11 @@ interface_fileTable =
     },
     {
         ["namespace"] = "wxlua",
-        ["file_path"] = "wxluasocket/",
-        ["prepend_name"] = "wxluasocket/",
-        ["datatypes_filename"] = "wxluasocket_datatypes.lua",
+        ["file_path"] = "wxlua_debugger/",
+        ["prepend_name"] = "wxluadebugger/",
+        ["datatypes_filename"] = "wxluadebugger_datatypes.lua",
         ["files"] = {
-            "wxluasocket.i"
+            "wxluadebugger.i"
         }
     }
 }

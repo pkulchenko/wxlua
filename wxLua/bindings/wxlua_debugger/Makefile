@@ -9,7 +9,7 @@ WXLUA_DIR = ../..
 all: genwxbind
 
 genwxbind:
-	@(cd $(WXLUA_DIR)/bindings && ../bin/lua -e"rulesFilename=\"wxlua_debugger/wxlua_debugger_rules.lua\"" genwxbind.lua)
+	@(cd $(WXLUA_DIR)/bindings && ../bin/lua -e"rulesFilename=\"wxlua_debugger/wxluadebugger_rules.lua\"" genwxbind.lua)
 
 # do nothing to clean
 clean:

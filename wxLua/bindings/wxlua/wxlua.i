@@ -224,7 +224,7 @@
 // ---------------------------------------------------------------------------
 // wxLuaState
 
-%include "wxlua/include/wxlstate.h"
+%include "wxlua/wxlstate.h"
 
 %class %delete wxLuaState, wxObject
 /*

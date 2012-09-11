@@ -11,13 +11,13 @@
 
 #include <wx/process.h>
 #include <wx/thread.h>
-#include "wxlua/debugger/wxluasocketdefs.h"
+#include "wxlua/debugger/wxluadebuggerdefs.h"
 #include "wxlua/debugger/wxlsock.h"
 #include "wxlua/debug/wxldebug.h"
 #include "wxlua/debug/wxlstack.h"
 
-class WXDLLIMPEXP_WXLUASOCKET wxLuaDebuggerBase;
-class WXDLLIMPEXP_WXLUASOCKET wxLuaDebuggerEvent;
+class WXDLLIMPEXP_WXLUADEBUGGER wxLuaDebuggerBase;
+class WXDLLIMPEXP_WXLUADEBUGGER wxLuaDebuggerEvent;
 
 // ----------------------------------------------------------------------------
 // wxWindowIds of components used for the debugger
@@ -94,7 +94,7 @@ enum wxLuaSocketDebuggerCommands_Type
 //   since it 'exists' in the independent debuggee process.
 // ----------------------------------------------------------------------------
 
-class WXDLLIMPEXP_WXLUASOCKET wxLuaDebuggerStackDialog : public wxLuaStackDialog
+class WXDLLIMPEXP_WXLUADEBUGGER wxLuaDebuggerStackDialog : public wxLuaStackDialog
 {
 public:
     wxLuaDebuggerStackDialog(wxLuaDebuggerBase* luaDebugger,
@@ -150,7 +150,7 @@ public:
 //  table) to intercept these events and act on them.
 // ----------------------------------------------------------------------------
 
-class WXDLLIMPEXP_WXLUASOCKET wxLuaDebuggerBase : public wxEvtHandler
+class WXDLLIMPEXP_WXLUADEBUGGER wxLuaDebuggerBase : public wxEvtHandler
 {
 public:
     wxLuaDebuggerBase(int port_number);
@@ -274,7 +274,7 @@ private:
 //                        wxLuaDebugTarget run in C++.
 // ----------------------------------------------------------------------------
 
-class WXDLLIMPEXP_WXLUASOCKET wxLuaDebuggerCServer : public wxLuaDebuggerBase
+class WXDLLIMPEXP_WXLUADEBUGGER wxLuaDebuggerCServer : public wxLuaDebuggerBase
 {
 protected:
     // ----------------------------------------------------------------------------
@@ -335,7 +335,7 @@ typedef wxLuaDebuggerCServer wxLuaDebuggerServer;
 //                    wxLuaDebugTarget run in C++.
 // ----------------------------------------------------------------------------
 
-class WXDLLIMPEXP_WXLUASOCKET wxLuaDebuggerwxSocketServer : public wxLuaDebuggerBase
+class WXDLLIMPEXP_WXLUADEBUGGER wxLuaDebuggerwxSocketServer : public wxLuaDebuggerBase
 {
 public:
     wxLuaDebuggerwxSocketServer(int port_number);
@@ -378,7 +378,7 @@ typedef wxLuaDebuggerwxSocketServer wxLuaDebuggerServer;
 // the debuggee has taken action or status of the debugger.
 // ----------------------------------------------------------------------------
 
-class WXDLLIMPEXP_WXLUASOCKET wxLuaDebuggerEvent : public wxEvent
+class WXDLLIMPEXP_WXLUADEBUGGER wxLuaDebuggerEvent : public wxEvent
 {
 public:
     wxLuaDebuggerEvent(const wxLuaDebuggerEvent& event);
@@ -418,29 +418,29 @@ typedef void (wxEvtHandler::*wxLuaDebuggerEventFunction)(wxLuaDebuggerEvent&);
 
 BEGIN_DECLARE_EVENT_TYPES()
     // The debuggee has connected to the debugger through the socket connection
-    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUASOCKET, wxEVT_WXLUA_DEBUGGER_DEBUGGEE_CONNECTED,    2510)
+    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_DEBUGGEE_CONNECTED,    2510)
     // The debuggee has disconnected to the debugger through the socket connection
     //  check Has/GetMessage for a description why
-    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUASOCKET, wxEVT_WXLUA_DEBUGGER_DEBUGGEE_DISCONNECTED, 2510)
+    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_DEBUGGEE_DISCONNECTED, 2510)
     // The debuggee has sent a wxLUASOCKET_DEBUGGEE_EVENT_BREAK
-    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUASOCKET, wxEVT_WXLUA_DEBUGGER_BREAK,                 2511)
+    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_BREAK,                 2511)
     // The debuggee has sent a wxLUASOCKET_DEBUGGEE_EVENT_PRINT
-    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUASOCKET, wxEVT_WXLUA_DEBUGGER_PRINT,                 2512)
+    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_PRINT,                 2512)
     // The debuggee has sent a wxEVT_WXLUA_DEBUGGER_ERROR
-    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUASOCKET, wxEVT_WXLUA_DEBUGGER_ERROR,                 2513)
+    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_ERROR,                 2513)
     // The debuggee has sent a wxEVT_WXLUA_DEBUGGER_EXIT
-    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUASOCKET, wxEVT_WXLUA_DEBUGGER_EXIT,                  2514)
+    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_EXIT,                  2514)
     // The debuggee has sent a wxLUASOCKET_DEBUGGEE_EVENT_STACK_ENUM
-    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUASOCKET, wxEVT_WXLUA_DEBUGGER_STACK_ENUM,            2515)
+    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_STACK_ENUM,            2515)
     // The debuggee has sent a wxLUASOCKET_DEBUGGEE_EVENT_STACK_ENTRY_ENUM
-    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUASOCKET, wxEVT_WXLUA_DEBUGGER_STACK_ENTRY_ENUM,      2516)
+    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_STACK_ENTRY_ENUM,      2516)
     // The debuggee has sent a wxLUASOCKET_DEBUGGEE_EVENT_TABLE_ENUM
-    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUASOCKET, wxEVT_WXLUA_DEBUGGER_TABLE_ENUM,            2517)
+    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_TABLE_ENUM,            2517)
     // The debuggee has sent a wxLUASOCKET_DEBUGGEE_EVENT_EVALUATE_EXPR
-    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUASOCKET, wxEVT_WXLUA_DEBUGGER_EVALUATE_EXPR,         2518)
+    DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_EVALUATE_EXPR,         2518)
 
-    //DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUASOCKET, wxEVT_WXLUA_DEBUGGER_STARTDEBUGGER,         2519)
-    //DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUASOCKET, wxEVT_WXLUA_DEBUGGER_STOPDEBUGGER,          2520)
+    //DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_STARTDEBUGGER,         2519)
+    //DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_STOPDEBUGGER,          2520)
 END_DECLARE_EVENT_TYPES()
 
 #define wxLuaDebuggerEventHandler(func) \

@@ -17,7 +17,7 @@ include $(WXLUA_DIR)/build/Makefile_wx-config.in
 
 # ----------------------------------------------------------------------------
 
-WXLUA_TARGET_LIBNAME = lib$(WXLUASOCKET_LIB)
+WXLUA_TARGET_LIBNAME = lib$(WXLUADEBUGGER_LIB)
 
 # ----------------------------------------------------------------------------
 
@@ -25,13 +25,13 @@ HEADERS = \
 	wxldserv.h \
 	wxldtarg.h \
 	wxlsock.h \
-	wxluasocket.h
+	wxluadebuggerdefs.h
 
 SOURCES = \
 	wxldserv.cpp \
 	wxldtarg.cpp \
 	wxlsock.cpp \
-	wxluasocket_bind.cpp
+	wxluadebugger_bind.cpp
 
 OBJECTS=$(SOURCES:.cpp=.o)
 DEPFILES=$(OBJECTS:.o=.d)

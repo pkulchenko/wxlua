@@ -67,8 +67,8 @@ echo Generating wxWidgets wxrichtext Binding
 echo Generating wxWidgets wxlua Binding
 %LUA% -e"rulesFilename=\"wxlua/wxlua_rules.lua\"" genwxbind.lua
 
-echo Generating wxWidgets wxluasocket Binding
-%LUA% -e"rulesFilename=\"wxluasocket/wxluasocket_rules.lua\"" genwxbind.lua
+echo Generating wxWidgets wxluadebugger Binding
+%LUA% -e"rulesFilename=\"wxlua_debugger/wxluadebugger_rules.lua\"" genwxbind.lua
 
 
 echo Generating wxWidgets wxdatatypes Binding
