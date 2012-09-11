@@ -1,5 +1,5 @@
 // ===========================================================================
-// Purpose:     wxLuaSocket specific wrappers
+// Purpose:     wxLuaDebugger specific wrappers
 // Author:      J Winwood, John Labenski
 // Created:     14/11/2001
 // Copyright:   (c) 2001-2002 Lomtick Software. All rights reserved.

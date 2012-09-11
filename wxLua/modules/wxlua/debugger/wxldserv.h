@@ -25,61 +25,60 @@ class WXDLLIMPEXP_WXLUADEBUGGER wxLuaDebuggerEvent;
 
 enum
 {
-    ID_WXLUASOCKET_DEBUGGEE_PROCESS = 1500 // id of the spawned debuggee wxProcess
+    ID_WXLUA_DEBUGGEE_PROCESS = 1500 // id of the spawned debuggee wxProcess
 };
 
 // ----------------------------------------------------------------------------
-// wxLuaSocketDebuggeeEvents_Type - These are socket events sent from debuggee
+// wxLuaDebuggeeEvents_Type - These are socket events sent from debuggee
 //   to debugger to notify the debugger that action has been taken which was
-//   probably the result of a previously received
-//   wxLuaSocketDebuggerCommands_Type.
+//   probably the result of a previously received wxLuaDebuggerCommands_Type.
 //   These socket events should be sent with wxLuaSocketBase::Read/WriteCmd()
 // ----------------------------------------------------------------------------
 
-enum wxLuaSocketDebuggeeEvents_Type
+enum wxLuaDebuggeeEvents_Type
 {
-    wxLUASOCKET_DEBUGGEE_EVENT_NONE = 0, // a socket error probably
+    wxLUA_DEBUGGEE_EVENT_NONE = 0, // a socket error probably
 
-    wxLUASOCKET_DEBUGGEE_EVENT_BREAK,
-    wxLUASOCKET_DEBUGGEE_EVENT_PRINT,
-    wxLUASOCKET_DEBUGGEE_EVENT_ERROR,
-    wxLUASOCKET_DEBUGGEE_EVENT_EXIT,
-    wxLUASOCKET_DEBUGGEE_EVENT_STACK_ENUM,
-    wxLUASOCKET_DEBUGGEE_EVENT_STACK_ENTRY_ENUM,
-    wxLUASOCKET_DEBUGGEE_EVENT_TABLE_ENUM,
-    wxLUASOCKET_DEBUGGEE_EVENT_EVALUATE_EXPR,
+    wxLUA_DEBUGGEE_EVENT_BREAK,
+    wxLUA_DEBUGGEE_EVENT_PRINT,
+    wxLUA_DEBUGGEE_EVENT_ERROR,
+    wxLUA_DEBUGGEE_EVENT_EXIT,
+    wxLUA_DEBUGGEE_EVENT_STACK_ENUM,
+    wxLUA_DEBUGGEE_EVENT_STACK_ENTRY_ENUM,
+    wxLUA_DEBUGGEE_EVENT_TABLE_ENUM,
+    wxLUA_DEBUGGEE_EVENT_EVALUATE_EXPR,
 
-    wxLUASOCKET_DEBUGGEE_EVENT__COUNT
+    wxLUA_DEBUGGEE_EVENT__COUNT
 };
 
 // ----------------------------------------------------------------------------
-// wxLuaSocketDebuggerCommands_Type - These are socket commands sent from the
+// wxLuaDebuggerCommands_Type - These are socket commands sent from the
 //   debugger to debuggee to direct the debuggee to take action, which will
-//   then return with a wxLuaSocketDebuggeeEvents_Type when done.
+//   then return with a wxLuaDebuggeeEvents_Type when done.
 //   These socket commands should be sent with wxLuaSocketBase::Read/WriteCmd()
 // ----------------------------------------------------------------------------
 
-enum wxLuaSocketDebuggerCommands_Type
+enum wxLuaDebuggerCommands_Type
 {
-    wxLUASOCKET_DEBUGGER_CMD_NONE = 0, // a socket error probably
+    wxLUA_DEBUGGER_CMD_NONE = 0, // a socket error probably
 
-    wxLUASOCKET_DEBUGGER_CMD_ADD_BREAKPOINT = 100, // shifted for debugging
-    wxLUASOCKET_DEBUGGER_CMD_REMOVE_BREAKPOINT,
-    wxLUASOCKET_DEBUGGER_CMD_DISABLE_BREAKPOINT,
-    wxLUASOCKET_DEBUGGER_CMD_ENABLE_BREAKPOINT,
-    wxLUASOCKET_DEBUGGER_CMD_CLEAR_ALL_BREAKPOINTS,
-    wxLUASOCKET_DEBUGGER_CMD_RUN_BUFFER,
-    wxLUASOCKET_DEBUGGER_CMD_DEBUG_STEP,
-    wxLUASOCKET_DEBUGGER_CMD_DEBUG_STEPOVER,
-    wxLUASOCKET_DEBUGGER_CMD_DEBUG_STEPOUT,
-    wxLUASOCKET_DEBUGGER_CMD_DEBUG_CONTINUE,
-    wxLUASOCKET_DEBUGGER_CMD_DEBUG_BREAK,
-    wxLUASOCKET_DEBUGGER_CMD_RESET,
-    wxLUASOCKET_DEBUGGER_CMD_ENUMERATE_STACK,
-    wxLUASOCKET_DEBUGGER_CMD_ENUMERATE_STACK_ENTRY,
-    wxLUASOCKET_DEBUGGER_CMD_ENUMERATE_TABLE_REF,
-    wxLUASOCKET_DEBUGGER_CMD_CLEAR_DEBUG_REFERENCES,
-    wxLUASOCKET_DEBUGGER_CMD_EVALUATE_EXPR,
+    wxLUA_DEBUGGER_CMD_ADD_BREAKPOINT = 100, // shifted for debugging
+    wxLUA_DEBUGGER_CMD_REMOVE_BREAKPOINT,
+    wxLUA_DEBUGGER_CMD_DISABLE_BREAKPOINT,
+    wxLUA_DEBUGGER_CMD_ENABLE_BREAKPOINT,
+    wxLUA_DEBUGGER_CMD_CLEAR_ALL_BREAKPOINTS,
+    wxLUA_DEBUGGER_CMD_RUN_BUFFER,
+    wxLUA_DEBUGGER_CMD_DEBUG_STEP,
+    wxLUA_DEBUGGER_CMD_DEBUG_STEPOVER,
+    wxLUA_DEBUGGER_CMD_DEBUG_STEPOUT,
+    wxLUA_DEBUGGER_CMD_DEBUG_CONTINUE,
+    wxLUA_DEBUGGER_CMD_DEBUG_BREAK,
+    wxLUA_DEBUGGER_CMD_RESET,
+    wxLUA_DEBUGGER_CMD_ENUMERATE_STACK,
+    wxLUA_DEBUGGER_CMD_ENUMERATE_STACK_ENTRY,
+    wxLUA_DEBUGGER_CMD_ENUMERATE_TABLE_REF,
+    wxLUA_DEBUGGER_CMD_CLEAR_DEBUG_REFERENCES,
+    wxLUA_DEBUGGER_CMD_EVALUATE_EXPR,
 };
 
 // ----------------------------------------------------------------------------
@@ -142,9 +141,9 @@ public:
 
 // ----------------------------------------------------------------------------
 // wxLuaDebuggerBase - Socket debugger interface base class.
-//  This base class sends wxLUASOCKET_DEBUGGER_CMD_XXX commands through the
+//  This base class sends wxLUA_DEBUGGER_CMD_XXX commands through the
 //  socket to the debuggee. The debuggee then responds through the socket with
-//  a wxLUASOCKET_DEBUGGEE_EVENT_XXX event which is turned into a
+//  a wxLUA_DEBUGGEE_EVENT_XXX event which is turned into a
 //  wxLuaDebuggerEvent of type wxEVT_WXLUA_DEBUGGER_XXX which is processed by
 //  this class. Use wxEvtHandler::Connect(...) (or subclass and use an event
 //  table) to intercept these events and act on them.
@@ -165,7 +164,7 @@ public:
     // By default it starts a new wxLuaDebuggerProcess
     virtual long StartClient();
 
-    // These functions all send socket commands wxLUASOCKET_DEBUGGER_CMD_XXX
+    // These functions all send socket commands wxLUA_DEBUGGER_CMD_XXX
     // and the appropriate data to the debuggee.
 
     bool AddBreakPoint(const wxString &fileName, int lineNumber);
@@ -186,10 +185,10 @@ public:
     bool ClearDebugReferences();
     bool EvaluateExpr(int exprRef, const wxString &strExpression);
 
-    // Handle the wxLuaSocketDebuggeeEvents_Type event sent by the debuggee.
+    // Handle the wxLuaDebuggeeEvents_Type event sent by the debuggee.
     //   returns the input event_type if ok or -1 on error
     // On success a wxLuaDebuggerEvent is generated with the equivalent
-    // wxEVT_WXLUA_DEBUGGER_XXX to the input wxLUASOCKET_DEBUGGEE_EVENT_XXX
+    // wxEVT_WXLUA_DEBUGGER_XXX to the input wxLUA_DEBUGGEE_EVENT_XXX
     virtual int HandleDebuggeeEvent(int event_type);
 
     // Get the debugger socket to read/write data to the debuggee
@@ -266,8 +265,8 @@ private:
     DECLARE_ABSTRACT_CLASS(wxLuaDebuggerBase)
 };
 
-#define WXLUASOCKET_USE_C_SOCKET
-#ifdef WXLUASOCKET_USE_C_SOCKET
+#define WXLUA_DEBUGGER_USE_C_SOCKET
+#ifdef WXLUA_DEBUGGER_USE_C_SOCKET
 
 // ----------------------------------------------------------------------------
 // wxLuaDebuggerCServer - a socket server for a Lua program to communicate with a
@@ -328,7 +327,7 @@ private:
 
 typedef wxLuaDebuggerCServer wxLuaDebuggerServer;
 
-#else // !WXLUASOCKET_USE_C_SOCKET
+#else // !WXLUA_DEBUGGER_USE_C_SOCKET
 
 // ----------------------------------------------------------------------------
 // wxLuaDebuggerwxServer - a socket server for a Lua program to communicate with a
@@ -371,7 +370,7 @@ private:
 
 typedef wxLuaDebuggerwxSocketServer wxLuaDebuggerServer;
 
-#endif // WXLUASOCKET_USE_C_SOCKET
+#endif // WXLUA_DEBUGGER_USE_C_SOCKET
 
 // ----------------------------------------------------------------------------
 // wxLuaDebuggerEvent - wxEvent sent from the wxLuaDebuggerXXX to notify when
@@ -422,21 +421,21 @@ BEGIN_DECLARE_EVENT_TYPES()
     // The debuggee has disconnected to the debugger through the socket connection
     //  check Has/GetMessage for a description why
     DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_DEBUGGEE_DISCONNECTED, 2510)
-    // The debuggee has sent a wxLUASOCKET_DEBUGGEE_EVENT_BREAK
+    // The debuggee has sent a wxLUA_DEBUGGEE_EVENT_BREAK
     DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_BREAK,                 2511)
-    // The debuggee has sent a wxLUASOCKET_DEBUGGEE_EVENT_PRINT
+    // The debuggee has sent a wxLUA_DEBUGGEE_EVENT_PRINT
     DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_PRINT,                 2512)
     // The debuggee has sent a wxEVT_WXLUA_DEBUGGER_ERROR
     DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_ERROR,                 2513)
     // The debuggee has sent a wxEVT_WXLUA_DEBUGGER_EXIT
     DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_EXIT,                  2514)
-    // The debuggee has sent a wxLUASOCKET_DEBUGGEE_EVENT_STACK_ENUM
+    // The debuggee has sent a wxLUA_DEBUGGEE_EVENT_STACK_ENUM
     DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_STACK_ENUM,            2515)
-    // The debuggee has sent a wxLUASOCKET_DEBUGGEE_EVENT_STACK_ENTRY_ENUM
+    // The debuggee has sent a wxLUA_DEBUGGEE_EVENT_STACK_ENTRY_ENUM
     DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_STACK_ENTRY_ENUM,      2516)
-    // The debuggee has sent a wxLUASOCKET_DEBUGGEE_EVENT_TABLE_ENUM
+    // The debuggee has sent a wxLUA_DEBUGGEE_EVENT_TABLE_ENUM
     DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_TABLE_ENUM,            2517)
-    // The debuggee has sent a wxLUASOCKET_DEBUGGEE_EVENT_EVALUATE_EXPR
+    // The debuggee has sent a wxLUA_DEBUGGEE_EVENT_EVALUATE_EXPR
     DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_EVALUATE_EXPR,         2518)
 
     //DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUADEBUGGER, wxEVT_WXLUA_DEBUGGER_STARTDEBUGGER,         2519)

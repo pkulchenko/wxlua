@@ -220,7 +220,7 @@ void wxLuaDebugTarget::ThreadFunction()
                 break;
         }
 
-        unsigned char debugCommand = wxLUASOCKET_DEBUGGER_CMD_NONE; // wxLuaSocketDebuggerCommands_Type
+        unsigned char debugCommand = wxLUA_DEBUGGER_CMD_NONE; // wxLuaDebuggerCommands_Type
 
         if (!m_clientSocket.ReadCmd(debugCommand) ||
             !HandleDebuggerCmd(debugCommand))
@@ -236,13 +236,13 @@ bool wxLuaDebugTarget::HandleDebuggerCmd(int debugCommand)
 
     switch ((int)debugCommand)
     {
-        case wxLUASOCKET_DEBUGGER_CMD_NONE :
+        case wxLUA_DEBUGGER_CMD_NONE :
         {
             // This is an error, but maybe we can continue?
             ret = true;
             break;
         }
-        case wxLUASOCKET_DEBUGGER_CMD_ADD_BREAKPOINT:
+        case wxLUA_DEBUGGER_CMD_ADD_BREAKPOINT:
         {
             wxString fileName;
             wxInt32  lineNumber = 0;
@@ -254,7 +254,7 @@ bool wxLuaDebugTarget::HandleDebuggerCmd(int debugCommand)
             }
             break;
         }
-        case wxLUASOCKET_DEBUGGER_CMD_REMOVE_BREAKPOINT:
+        case wxLUA_DEBUGGER_CMD_REMOVE_BREAKPOINT:
         {
             wxString fileName;
             wxInt32  lineNumber = 0;
@@ -266,12 +266,12 @@ bool wxLuaDebugTarget::HandleDebuggerCmd(int debugCommand)
             }
             break;
         }
-        case wxLUASOCKET_DEBUGGER_CMD_CLEAR_ALL_BREAKPOINTS:
+        case wxLUA_DEBUGGER_CMD_CLEAR_ALL_BREAKPOINTS:
         {
             ret = ClearAllBreakPoints();
             break;
         }
-        case wxLUASOCKET_DEBUGGER_CMD_RUN_BUFFER:
+        case wxLUA_DEBUGGER_CMD_RUN_BUFFER:
         {
             wxString fileName;
             wxString buffer;
@@ -283,38 +283,38 @@ bool wxLuaDebugTarget::HandleDebuggerCmd(int debugCommand)
             }
             break;
         }
-        case wxLUASOCKET_DEBUGGER_CMD_DEBUG_STEP:
+        case wxLUA_DEBUGGER_CMD_DEBUG_STEP:
         {
             ret = Step();
             break;
         }
-        case wxLUASOCKET_DEBUGGER_CMD_DEBUG_STEPOVER:
+        case wxLUA_DEBUGGER_CMD_DEBUG_STEPOVER:
         {
             ret = StepOver();
             break;
         }
-        case wxLUASOCKET_DEBUGGER_CMD_DEBUG_STEPOUT:
+        case wxLUA_DEBUGGER_CMD_DEBUG_STEPOUT:
         {
             ret = StepOut();
             break;
         }
-        case wxLUASOCKET_DEBUGGER_CMD_DEBUG_CONTINUE:
+        case wxLUA_DEBUGGER_CMD_DEBUG_CONTINUE:
         {
             m_force_break = false;
             ret = Continue();
             break;
         }
-        case wxLUASOCKET_DEBUGGER_CMD_DEBUG_BREAK:
+        case wxLUA_DEBUGGER_CMD_DEBUG_BREAK:
         {
             ret = Break();
             break;
         }
-        case wxLUASOCKET_DEBUGGER_CMD_ENUMERATE_STACK:
+        case wxLUA_DEBUGGER_CMD_ENUMERATE_STACK:
         {
             ret = EnumerateStack();
             break;
         }
-        case wxLUASOCKET_DEBUGGER_CMD_ENUMERATE_STACK_ENTRY:
+        case wxLUA_DEBUGGER_CMD_ENUMERATE_STACK_ENTRY:
         {
             wxInt32 stackRef = 0;
 
@@ -323,7 +323,7 @@ bool wxLuaDebugTarget::HandleDebuggerCmd(int debugCommand)
 
             break;
         }
-        case wxLUASOCKET_DEBUGGER_CMD_ENUMERATE_TABLE_REF:
+        case wxLUA_DEBUGGER_CMD_ENUMERATE_TABLE_REF:
         {
             wxInt32 tableRef = 0;
             wxInt32 index    = 0;
@@ -337,12 +337,12 @@ bool wxLuaDebugTarget::HandleDebuggerCmd(int debugCommand)
             }
             break;
         }
-        case wxLUASOCKET_DEBUGGER_CMD_RESET:
+        case wxLUA_DEBUGGER_CMD_RESET:
         {
             ret = Reset();
             break;
         }
-        case wxLUASOCKET_DEBUGGER_CMD_EVALUATE_EXPR:
+        case wxLUA_DEBUGGER_CMD_EVALUATE_EXPR:
         {
             wxInt32 exprRef = 0;
             wxString buffer;
@@ -354,7 +354,7 @@ bool wxLuaDebugTarget::HandleDebuggerCmd(int debugCommand)
             }
             break;
         }
-        case wxLUASOCKET_DEBUGGER_CMD_CLEAR_DEBUG_REFERENCES:
+        case wxLUA_DEBUGGER_CMD_CLEAR_DEBUG_REFERENCES:
         {
             size_t idx, idxMax = m_references.GetCount();
             for (idx = 0; idx < idxMax; ++idx)
@@ -366,14 +366,14 @@ bool wxLuaDebugTarget::HandleDebuggerCmd(int debugCommand)
             ret = true;
             break;
         }
-        case wxLUASOCKET_DEBUGGER_CMD_DISABLE_BREAKPOINT: // FIXME do something here
+        case wxLUA_DEBUGGER_CMD_DISABLE_BREAKPOINT: // FIXME do something here
             ret = true;
             break;
-        case wxLUASOCKET_DEBUGGER_CMD_ENABLE_BREAKPOINT: // FIXME do something here
+        case wxLUA_DEBUGGER_CMD_ENABLE_BREAKPOINT: // FIXME do something here
             ret = true;
             break;
         default :
-            wxFAIL_MSG(wxT("Invalid wxLuaSocketDebuggerCommands_Type in wxLuaDebugTarget::ThreadFunction"));
+            wxFAIL_MSG(wxT("Invalid wxLuaDebuggerCommands_Type in wxLuaDebugTarget::ThreadFunction"));
     }
 
     return ret;
@@ -617,7 +617,7 @@ bool wxLuaDebugTarget::EvaluateExpr(int exprRef, const wxString &strExpr) // FIX
 bool wxLuaDebugTarget::NotifyBreak(const wxString &fileName, int lineNumber)
 {
     return IsConnected() && !m_reset_requested &&
-           m_clientSocket.WriteCmd(wxLUASOCKET_DEBUGGEE_EVENT_BREAK) &&
+           m_clientSocket.WriteCmd(wxLUA_DEBUGGEE_EVENT_BREAK) &&
            m_clientSocket.WriteString(fileName) &&
            m_clientSocket.WriteInt32(lineNumber);
 }
@@ -625,14 +625,14 @@ bool wxLuaDebugTarget::NotifyBreak(const wxString &fileName, int lineNumber)
 bool wxLuaDebugTarget::NotifyPrint(const wxString &errorMsg)
 {
     return IsConnected() &&
-           m_clientSocket.WriteCmd(wxLUASOCKET_DEBUGGEE_EVENT_PRINT) &&
+           m_clientSocket.WriteCmd(wxLUA_DEBUGGEE_EVENT_PRINT) &&
            m_clientSocket.WriteString(errorMsg);
 }
 
 bool wxLuaDebugTarget::NotifyError(const wxString &errorMsg)
 {
     if (IsConnected() &&
-        m_clientSocket.WriteCmd(wxLUASOCKET_DEBUGGEE_EVENT_ERROR) &&
+        m_clientSocket.WriteCmd(wxLUA_DEBUGGEE_EVENT_ERROR) &&
         m_clientSocket.WriteString(errorMsg))
     {
         return true;
@@ -646,7 +646,7 @@ bool wxLuaDebugTarget::NotifyError(const wxString &errorMsg)
 bool wxLuaDebugTarget::NotifyExit()
 {
     bool ret = IsConnected() &&
-           m_clientSocket.WriteCmd(wxLUASOCKET_DEBUGGEE_EVENT_EXIT);
+           m_clientSocket.WriteCmd(wxLUA_DEBUGGEE_EVENT_EXIT);
 
     return ret;
 }
@@ -654,7 +654,7 @@ bool wxLuaDebugTarget::NotifyExit()
 bool wxLuaDebugTarget::NotifyStackEnumeration(const wxLuaDebugData& debugData)
 {
     return IsConnected() &&
-           m_clientSocket.WriteCmd(wxLUASOCKET_DEBUGGEE_EVENT_STACK_ENUM) &&
+           m_clientSocket.WriteCmd(wxLUA_DEBUGGEE_EVENT_STACK_ENUM) &&
            m_clientSocket.WriteDebugData(debugData);
 }
 
@@ -662,7 +662,7 @@ bool wxLuaDebugTarget::NotifyStackEntryEnumeration(int entryRef,
                                                    const wxLuaDebugData& debugData)
 {
     return IsConnected() &&
-           m_clientSocket.WriteCmd(wxLUASOCKET_DEBUGGEE_EVENT_STACK_ENTRY_ENUM) &&
+           m_clientSocket.WriteCmd(wxLUA_DEBUGGEE_EVENT_STACK_ENTRY_ENUM) &&
            m_clientSocket.WriteInt32(entryRef) &&
            m_clientSocket.WriteDebugData(debugData);
 }
@@ -671,7 +671,7 @@ bool wxLuaDebugTarget::NotifyTableEnumeration(long itemNode,
                                               const wxLuaDebugData& debugData)
 {
     return IsConnected() &&
-           m_clientSocket.WriteCmd(wxLUASOCKET_DEBUGGEE_EVENT_TABLE_ENUM) &&
+           m_clientSocket.WriteCmd(wxLUA_DEBUGGEE_EVENT_TABLE_ENUM) &&
            m_clientSocket.WriteLong(itemNode) &&
            m_clientSocket.WriteDebugData(debugData);
 }
@@ -680,7 +680,7 @@ bool wxLuaDebugTarget::NotifyEvaluateExpr(int exprRef,
                                           const wxString &strResult)
 {
     return IsConnected() &&
-           m_clientSocket.WriteCmd(wxLUASOCKET_DEBUGGEE_EVENT_EVALUATE_EXPR) &&
+           m_clientSocket.WriteCmd(wxLUA_DEBUGGEE_EVENT_EVALUATE_EXPR) &&
            m_clientSocket.WriteInt32(exprRef) &&
            m_clientSocket.WriteString(strResult);
 }

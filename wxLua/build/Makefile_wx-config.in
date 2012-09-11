@@ -86,7 +86,7 @@ WXSTEDIT_LIB   := $(patsubst wx_%,wxcode_%,$(WXSTEDIT_LIB))
 LUA_LIBS               := $(WXLUA_DIR)/lib/liblua.a
 WXLUA_LIB              := $(WXBASENAME)_wxlua-$(WXRELEASE)
 WXLUADEBUG_LIB         := $(WXBASENAME)_wxluadebug-$(WXRELEASE)
-WXLUASOCKET_LIB        := $(WXBASENAME)_wxluasocket-$(WXRELEASE)
+WXLUADEBUGGER_LIB      := $(WXBASENAME)_wxluadebugger-$(WXRELEASE)
 
 WXLUABINDADV_LIB       := $(WXBASENAME)_wxbindadv-$(WXRELEASE)
 WXLUABINDAUI_LIB       := $(WXBASENAME)_wxbindaui-$(WXRELEASE)
@@ -103,7 +103,7 @@ WXLUABINDXRC_LIB       := $(WXBASENAME)_wxbindxrc-$(WXRELEASE)
 
 WXLUA_LIB              := $(patsubst wx_%,wxlua_%,$(WXLUA_LIB))
 WXLUADEBUG_LIB         := $(patsubst wx_%,wxlua_%,$(WXLUADEBUG_LIB))
-WXLUASOCKET_LIB        := $(patsubst wx_%,wxlua_%,$(WXLUASOCKET_LIB))
+WXLUADEBUGGER_LIB      := $(patsubst wx_%,wxlua_%,$(WXLUADEBUGGER_LIB))
 
 WXLUABIND_LIB          := $(patsubst wx_%,wxlua_%,$(WXLUABIND_LIB))
 WXLUABINDADV_LIB       := $(patsubst wx_%,wxlua_%,$(WXLUABINDADV_LIB))
@@ -148,7 +148,7 @@ GCC_PROFILE  := #-pg
 APPEXTRADEFS := $(GCC_PROFILE) -I$(WXLUA_DIR) -I$(WXLUA_DIR)/modules -I$(WXLUA_DIR)/modules/lua/include -I$(WXLUA_WXLUASETUP_DIR) -I$(WXSTEDIT_DIR)/include -I$(WXPREFIX)/contrib/include -DLUACALL=
 
 # This will build a shared wxLua app, dynamicly linked to .so libs
-APPEXTRALIBS := $(GCC_PROFILE) -L$(WXLUA_LIBDIR) $(WXLUABINDALL_LIBS) -l$(WXLUA_LIB) -l$(WXLUADEBUG_LIB) -l$(WXLUASOCKET_LIB) $(LUA_LIBS)
+APPEXTRALIBS := $(GCC_PROFILE) -L$(WXLUA_LIBDIR) $(WXLUABINDALL_LIBS) -l$(WXLUA_LIB) -l$(WXLUADEBUG_LIB) -l$(WXLUADEBUGGER_LIB) $(LUA_LIBS)
 
 # This will build a static wxLua app, staticly linked to .a libs
 #APPEXTRALIBS := -L$(WXLIB_DIR) $(WXLIB_DIR)/lib$(WXLUA_LIB).a $(WXLIB_DIR)/lib$(STC_LIB).a $(WXLIB_DIR)/lib$(WXXRC_LIB).a $(LUA_LIBS)
@@ -164,7 +164,7 @@ wxLuaALL_TARGETS = \
     Lua \
     wxLuaLib \
     wxLuaDebugLib \
-    wxLuaSocketLib \
+    wxLuaDebuggerLib \
     wxLuaBindAdvLib \
     wxLuaBindAUILib \
     wxLuaBindBaseLib \

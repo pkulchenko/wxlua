@@ -161,7 +161,7 @@ BEGIN_EVENT_TABLE(wxLuaDebuggerBase, wxEvtHandler)
     EVT_WXLUA_DEBUGGER_STACK_ENTRY_ENUM( wxID_ANY, wxLuaDebuggerBase::OnDebugStackEntryEnum)
     EVT_WXLUA_DEBUGGER_TABLE_ENUM(       wxID_ANY, wxLuaDebuggerBase::OnDebugTableEnum)
 
-    //EVT_END_PROCESS(ID_WXLUASOCKET_DEBUGGEE_PROCESS, wxLuaDebuggerBase::OnEndDebugeeProcess)
+    //EVT_END_PROCESS(ID_WXLUA_DEBUGGEE_PROCESS, wxLuaDebuggerBase::OnEndDebugeeProcess)
 END_EVENT_TABLE()
 
 wxLuaDebuggerBase::wxLuaDebuggerBase(int port_number)
@@ -202,7 +202,7 @@ long wxLuaDebuggerBase::StartClient()
 {
     if (m_debuggeeProcess == NULL)
     {
-        m_debuggeeProcess = new wxLuaDebuggerProcess(this, ID_WXLUASOCKET_DEBUGGEE_PROCESS);
+        m_debuggeeProcess = new wxLuaDebuggerProcess(this, ID_WXLUA_DEBUGGEE_PROCESS);
         wxString command = wxString::Format(wxT("%s -d%s:%u"),
                                             GetProgramName().c_str(),
                                             GetNetworkName().c_str(),
@@ -220,7 +220,7 @@ long wxLuaDebuggerBase::StartClient()
 bool wxLuaDebuggerBase::AddBreakPoint(const wxString &fileName, int lineNumber)
 {
     return CheckSocketConnected(true, wxT("Debugger AddBreakPoint")) && CheckSocketWrite(
-           GetSocketBase()->WriteCmd(wxLUASOCKET_DEBUGGER_CMD_ADD_BREAKPOINT) &&
+           GetSocketBase()->WriteCmd(wxLUA_DEBUGGER_CMD_ADD_BREAKPOINT) &&
            GetSocketBase()->WriteString(fileName) &&
            GetSocketBase()->WriteInt32(lineNumber),
            wxT("Debugger AddBreakPoint"));
@@ -229,7 +229,7 @@ bool wxLuaDebuggerBase::AddBreakPoint(const wxString &fileName, int lineNumber)
 bool wxLuaDebuggerBase::RemoveBreakPoint(const wxString &fileName, int lineNumber)
 {
     return CheckSocketConnected(true, wxT("Debugger RemoveBreakPoint")) && CheckSocketWrite(
-           GetSocketBase()->WriteCmd(wxLUASOCKET_DEBUGGER_CMD_REMOVE_BREAKPOINT) &&
+           GetSocketBase()->WriteCmd(wxLUA_DEBUGGER_CMD_REMOVE_BREAKPOINT) &&
            GetSocketBase()->WriteString(fileName) &&
            GetSocketBase()->WriteInt32(lineNumber),
            wxT("Debugger RemoveBreakPoint"));
@@ -238,7 +238,7 @@ bool wxLuaDebuggerBase::RemoveBreakPoint(const wxString &fileName, int lineNumbe
 bool wxLuaDebuggerBase::DisableBreakPoint(const wxString &fileName, int lineNumber)
 {
     return CheckSocketConnected(true, wxT("Debugger DisableBreakPoint")) && CheckSocketWrite(
-           GetSocketBase()->WriteCmd(wxLUASOCKET_DEBUGGER_CMD_DISABLE_BREAKPOINT) &&
+           GetSocketBase()->WriteCmd(wxLUA_DEBUGGER_CMD_DISABLE_BREAKPOINT) &&
            GetSocketBase()->WriteString(fileName) &&
            GetSocketBase()->WriteInt32(lineNumber),
            wxT("Debugger DisableBreakPoint"));
@@ -247,7 +247,7 @@ bool wxLuaDebuggerBase::DisableBreakPoint(const wxString &fileName, int lineNumb
 bool wxLuaDebuggerBase::EnableBreakPoint(const wxString &fileName, int lineNumber)
 {
     return CheckSocketConnected(true, wxT("Debugger EnableBreakPoint")) && CheckSocketWrite(
-           GetSocketBase()->WriteCmd(wxLUASOCKET_DEBUGGER_CMD_ENABLE_BREAKPOINT) &&
+           GetSocketBase()->WriteCmd(wxLUA_DEBUGGER_CMD_ENABLE_BREAKPOINT) &&
            GetSocketBase()->WriteString(fileName) &&
            GetSocketBase()->WriteInt32(lineNumber),
            wxT("Debugger EnableBreakPoint"));
@@ -256,14 +256,14 @@ bool wxLuaDebuggerBase::EnableBreakPoint(const wxString &fileName, int lineNumbe
 bool wxLuaDebuggerBase::ClearAllBreakPoints()
 {
     return CheckSocketConnected(true, wxT("Debugger ClearAllBreakPoints")) && CheckSocketWrite(
-           GetSocketBase()->WriteCmd(wxLUASOCKET_DEBUGGER_CMD_CLEAR_ALL_BREAKPOINTS),
+           GetSocketBase()->WriteCmd(wxLUA_DEBUGGER_CMD_CLEAR_ALL_BREAKPOINTS),
            wxT("Debugger ClearAllBreakPoints"));
 }
 
 bool wxLuaDebuggerBase::Run(const wxString &fileName, const wxString &buffer)
 {
     return CheckSocketConnected(true, wxT("Debugger Run")) && CheckSocketWrite(
-           GetSocketBase()->WriteCmd(wxLUASOCKET_DEBUGGER_CMD_RUN_BUFFER) &&
+           GetSocketBase()->WriteCmd(wxLUA_DEBUGGER_CMD_RUN_BUFFER) &&
            GetSocketBase()->WriteString(fileName) &&
            GetSocketBase()->WriteString(buffer),
            wxT("Debugger Run"));
@@ -272,56 +272,56 @@ bool wxLuaDebuggerBase::Run(const wxString &fileName, const wxString &buffer)
 bool wxLuaDebuggerBase::Step()
 {
     return CheckSocketConnected(true, wxT("Debugger Step")) && CheckSocketWrite(
-           GetSocketBase()->WriteCmd(wxLUASOCKET_DEBUGGER_CMD_DEBUG_STEP),
+           GetSocketBase()->WriteCmd(wxLUA_DEBUGGER_CMD_DEBUG_STEP),
            wxT("Debugger Step"));
 }
 
 bool wxLuaDebuggerBase::StepOver()
 {
     return CheckSocketConnected(true, wxT("Debugger StepOver")) && CheckSocketWrite(
-           GetSocketBase()->WriteCmd(wxLUASOCKET_DEBUGGER_CMD_DEBUG_STEPOVER),
+           GetSocketBase()->WriteCmd(wxLUA_DEBUGGER_CMD_DEBUG_STEPOVER),
            wxT("Debugger StepOver"));
 }
 
 bool wxLuaDebuggerBase::StepOut()
 {
     return CheckSocketConnected(true, wxT("Debugger StepOut")) && CheckSocketWrite(
-           GetSocketBase()->WriteCmd(wxLUASOCKET_DEBUGGER_CMD_DEBUG_STEPOUT),
+           GetSocketBase()->WriteCmd(wxLUA_DEBUGGER_CMD_DEBUG_STEPOUT),
            wxT("Debugger StepOut"));
 }
 
 bool wxLuaDebuggerBase::Continue()
 {
     return CheckSocketConnected(true, wxT("Debugger Continue")) && CheckSocketWrite(
-           GetSocketBase()->WriteCmd(wxLUASOCKET_DEBUGGER_CMD_DEBUG_CONTINUE),
+           GetSocketBase()->WriteCmd(wxLUA_DEBUGGER_CMD_DEBUG_CONTINUE),
            wxT("Debugger Continue"));
 }
 
 bool wxLuaDebuggerBase::Break()
 {
     return CheckSocketConnected(true, wxT("Debugger Break")) && CheckSocketWrite(
-           GetSocketBase()->WriteCmd(wxLUASOCKET_DEBUGGER_CMD_DEBUG_BREAK),
+           GetSocketBase()->WriteCmd(wxLUA_DEBUGGER_CMD_DEBUG_BREAK),
            wxT("Debugger Break"));
 }
 
 bool wxLuaDebuggerBase::Reset()
 {
     return CheckSocketConnected(true, wxT("Debugger Reset")) && CheckSocketWrite(
-           GetSocketBase()->WriteCmd(wxLUASOCKET_DEBUGGER_CMD_RESET),
+           GetSocketBase()->WriteCmd(wxLUA_DEBUGGER_CMD_RESET),
            wxT("Debugger Reset"));
 }
 
 bool wxLuaDebuggerBase::EnumerateStack()
 {
     return CheckSocketConnected(true, wxT("Debugger EnumerateStack")) && CheckSocketWrite(
-           GetSocketBase()->WriteCmd(wxLUASOCKET_DEBUGGER_CMD_ENUMERATE_STACK),
+           GetSocketBase()->WriteCmd(wxLUA_DEBUGGER_CMD_ENUMERATE_STACK),
            wxT("Debugger EnumerateStack"));
 }
 
 bool wxLuaDebuggerBase::EnumerateStackEntry(int stackEntry)
 {
     return CheckSocketConnected(true, wxT("Debugger EnumerateStackEntry")) && CheckSocketWrite(
-           GetSocketBase()->WriteCmd(wxLUASOCKET_DEBUGGER_CMD_ENUMERATE_STACK_ENTRY) &&
+           GetSocketBase()->WriteCmd(wxLUA_DEBUGGER_CMD_ENUMERATE_STACK_ENTRY) &&
            GetSocketBase()->WriteInt32(stackEntry),
            wxT("Debugger EnumerateStackEntry"));
 }
@@ -329,7 +329,7 @@ bool wxLuaDebuggerBase::EnumerateStackEntry(int stackEntry)
 bool wxLuaDebuggerBase::EnumerateTable(int tableRef, int nIndex, long nItemNode)
 {
     return CheckSocketConnected(true, wxT("Debugger EnumerateTable")) && CheckSocketWrite(
-           GetSocketBase()->WriteCmd(wxLUASOCKET_DEBUGGER_CMD_ENUMERATE_TABLE_REF) &&
+           GetSocketBase()->WriteCmd(wxLUA_DEBUGGER_CMD_ENUMERATE_TABLE_REF) &&
            GetSocketBase()->WriteInt32(tableRef) &&
            GetSocketBase()->WriteInt32(nIndex) &&
            GetSocketBase()->WriteLong(nItemNode),
@@ -339,14 +339,14 @@ bool wxLuaDebuggerBase::EnumerateTable(int tableRef, int nIndex, long nItemNode)
 bool wxLuaDebuggerBase::ClearDebugReferences()
 {
     return CheckSocketConnected(true, wxT("Debugger ClearDebugReferences")) && CheckSocketWrite(
-           GetSocketBase()->WriteCmd(wxLUASOCKET_DEBUGGER_CMD_CLEAR_DEBUG_REFERENCES),
+           GetSocketBase()->WriteCmd(wxLUA_DEBUGGER_CMD_CLEAR_DEBUG_REFERENCES),
            wxT("Debugger ClearDebugReferences"));
 }
 
 bool wxLuaDebuggerBase::EvaluateExpr(int exprRef, const wxString &strExpression)
 {
     return CheckSocketConnected(true, wxT("Debugger EvaluateExpr")) && CheckSocketWrite(
-           GetSocketBase()->WriteCmd(wxLUASOCKET_DEBUGGER_CMD_EVALUATE_EXPR) &&
+           GetSocketBase()->WriteCmd(wxLUA_DEBUGGER_CMD_EVALUATE_EXPR) &&
            GetSocketBase()->WriteInt32(exprRef) &&
            GetSocketBase()->WriteString(strExpression),
            wxT("Debugger EvaluateExpr"));
@@ -366,7 +366,7 @@ int wxLuaDebuggerBase::HandleDebuggeeEvent(int event_type)
 
     switch (event_type)
     {
-        case wxLUASOCKET_DEBUGGEE_EVENT_BREAK:
+        case wxLUA_DEBUGGEE_EVENT_BREAK:
         {
             wxString fileName;
             wxInt32  lineNumber = 0;
@@ -374,7 +374,7 @@ int wxLuaDebuggerBase::HandleDebuggeeEvent(int event_type)
             if (CheckSocketRead(
                 GetSocketBase()->ReadString(fileName) &&
                 GetSocketBase()->ReadInt32(lineNumber),
-                wxT("Debugger wxLUASOCKET_DEBUGGEE_EVENT_BREAK")))
+                wxT("Debugger wxLUA_DEBUGGEE_EVENT_BREAK")))
             {
                 wxLuaDebuggerEvent debugEvent(wxEVT_WXLUA_DEBUGGER_BREAK, this, lineNumber, fileName);
                 SendEvent(debugEvent);
@@ -383,13 +383,13 @@ int wxLuaDebuggerBase::HandleDebuggeeEvent(int event_type)
 
             break;
         }
-        case wxLUASOCKET_DEBUGGEE_EVENT_PRINT:
+        case wxLUA_DEBUGGEE_EVENT_PRINT:
         {
             wxString strMessage;
 
             if (CheckSocketRead(
                 GetSocketBase()->ReadString(strMessage),
-                wxT("Debugger wxLUASOCKET_DEBUGGEE_EVENT_PRINT")))
+                wxT("Debugger wxLUA_DEBUGGEE_EVENT_PRINT")))
             {
                 wxLuaDebuggerEvent debugEvent(wxEVT_WXLUA_DEBUGGER_PRINT, this);
                 debugEvent.SetMessage(strMessage);
@@ -399,13 +399,13 @@ int wxLuaDebuggerBase::HandleDebuggeeEvent(int event_type)
 
             break;
         }
-        case wxLUASOCKET_DEBUGGEE_EVENT_ERROR:
+        case wxLUA_DEBUGGEE_EVENT_ERROR:
         {
             wxString strMessage;
 
             if (CheckSocketRead(
                 GetSocketBase()->ReadString(strMessage),
-                wxT("Debugger wxLUASOCKET_DEBUGGEE_EVENT_ERROR")))
+                wxT("Debugger wxLUA_DEBUGGEE_EVENT_ERROR")))
             {
                 wxLuaDebuggerEvent debugEvent(wxEVT_WXLUA_DEBUGGER_ERROR, this);
                 debugEvent.SetMessage(strMessage);
@@ -415,19 +415,19 @@ int wxLuaDebuggerBase::HandleDebuggeeEvent(int event_type)
 
             break;
         }
-        case wxLUASOCKET_DEBUGGEE_EVENT_EXIT:
+        case wxLUA_DEBUGGEE_EVENT_EXIT:
         {
             wxLuaDebuggerEvent debugEvent(wxEVT_WXLUA_DEBUGGER_EXIT, this);
             wxPostEvent(this, debugEvent);
             break;
         }
-        case wxLUASOCKET_DEBUGGEE_EVENT_STACK_ENUM:
+        case wxLUA_DEBUGGEE_EVENT_STACK_ENUM:
         {
             wxLuaDebugData debugData(true);
 
             if (CheckSocketRead(
                 GetSocketBase()->ReadDebugData(debugData),
-                wxT("Debugger wxLUASOCKET_DEBUGGEE_EVENT_STACK_ENUM")))
+                wxT("Debugger wxLUA_DEBUGGEE_EVENT_STACK_ENUM")))
             {
                 wxLuaDebuggerEvent debugEvent(wxEVT_WXLUA_DEBUGGER_STACK_ENUM, this);
                 debugEvent.SetDebugData(-1, debugData);
@@ -437,7 +437,7 @@ int wxLuaDebuggerBase::HandleDebuggeeEvent(int event_type)
 
             break;
         }
-        case wxLUASOCKET_DEBUGGEE_EVENT_STACK_ENTRY_ENUM:
+        case wxLUA_DEBUGGEE_EVENT_STACK_ENTRY_ENUM:
         {
             wxInt32 stackRef = 0;
             wxLuaDebugData debugData(true);
@@ -445,7 +445,7 @@ int wxLuaDebuggerBase::HandleDebuggeeEvent(int event_type)
             if (CheckSocketRead(
                 GetSocketBase()->ReadInt32(stackRef) &&
                 GetSocketBase()->ReadDebugData(debugData),
-                wxT("Debugger wxLUASOCKET_DEBUGGEE_EVENT_STACK_ENTRY_ENUM")))
+                wxT("Debugger wxLUA_DEBUGGEE_EVENT_STACK_ENTRY_ENUM")))
             {
                 wxLuaDebuggerEvent debugEvent(wxEVT_WXLUA_DEBUGGER_STACK_ENTRY_ENUM, this);
                 debugEvent.SetDebugData(stackRef, debugData);
@@ -455,7 +455,7 @@ int wxLuaDebuggerBase::HandleDebuggeeEvent(int event_type)
 
             break;
         }
-        case wxLUASOCKET_DEBUGGEE_EVENT_TABLE_ENUM:
+        case wxLUA_DEBUGGEE_EVENT_TABLE_ENUM:
         {
             long itemNode = 0;
             wxLuaDebugData debugData(true);
@@ -463,7 +463,7 @@ int wxLuaDebuggerBase::HandleDebuggeeEvent(int event_type)
             if (CheckSocketRead(
                 GetSocketBase()->ReadLong(itemNode) &&
                 GetSocketBase()->ReadDebugData(debugData),
-                wxT("Debugger wxLUASOCKET_DEBUGGEE_EVENT_TABLE_ENUM")))
+                wxT("Debugger wxLUA_DEBUGGEE_EVENT_TABLE_ENUM")))
             {
                 wxLuaDebuggerEvent debugEvent(wxEVT_WXLUA_DEBUGGER_TABLE_ENUM, this);
                 debugEvent.SetDebugData(itemNode, debugData);
@@ -473,7 +473,7 @@ int wxLuaDebuggerBase::HandleDebuggeeEvent(int event_type)
 
             break;
         }
-        case wxLUASOCKET_DEBUGGEE_EVENT_EVALUATE_EXPR:
+        case wxLUA_DEBUGGEE_EVENT_EVALUATE_EXPR:
         {
             wxInt32 exprRef = 0;
             wxString strResult;
@@ -481,7 +481,7 @@ int wxLuaDebuggerBase::HandleDebuggeeEvent(int event_type)
             if (CheckSocketRead(
                 GetSocketBase()->ReadInt32(exprRef) &&
                 GetSocketBase()->ReadString(strResult),
-                wxT("Debugger wxLUASOCKET_DEBUGGEE_EVENT_EVALUATE_EXPR")))
+                wxT("Debugger wxLUA_DEBUGGEE_EVENT_EVALUATE_EXPR")))
             {
                 wxLuaDebuggerEvent debugEvent(wxEVT_WXLUA_DEBUGGER_EVALUATE_EXPR, this);
                 debugEvent.SetMessage(strResult);
@@ -629,7 +629,7 @@ bool wxLuaDebuggerBase::KillDebuggee()
     return true;
 }
 
-#ifdef WXLUASOCKET_USE_C_SOCKET
+#ifdef WXLUA_DEBUGGER_USE_C_SOCKET
 
 // ----------------------------------------------------------------------------
 // wxLuaDebuggerCServer::LuaThread
@@ -811,12 +811,12 @@ void wxLuaDebuggerCServer::ThreadFunction()
         wxLuaDebuggerEvent debugEvent(wxEVT_WXLUA_DEBUGGER_DEBUGGEE_CONNECTED, this);
         AddPendingEvent(debugEvent);
 
-        unsigned char debug_event = 0; // wxLuaSocketDebuggeeEvents_Type
+        unsigned char debug_event = 0; // wxLuaDebuggeeEvents_Type
 
         // Enter the debug loop
         while (!m_pThread->TestDestroy() && !m_shutdown && m_acceptedSocket)
         {
-            debug_event = wxLUASOCKET_DEBUGGEE_EVENT_EXIT;
+            debug_event = wxLUA_DEBUGGEE_EVENT_EXIT;
 
             {
                 // lock the critical section while we access it
@@ -828,11 +828,11 @@ void wxLuaDebuggerCServer::ThreadFunction()
                 }
             }
 
-            if((debug_event == wxLUASOCKET_DEBUGGEE_EVENT_EXIT) ||
+            if((debug_event == wxLUA_DEBUGGEE_EVENT_EXIT) ||
                (HandleDebuggeeEvent(debug_event) != -1))
             {
                 // don't send exit event until we've closed the socket
-                if (debug_event == wxLUASOCKET_DEBUGGEE_EVENT_EXIT)
+                if (debug_event == wxLUA_DEBUGGEE_EVENT_EXIT)
                 {
                     m_shutdown = true;
                     break;
@@ -851,7 +851,7 @@ void wxLuaDebuggerCServer::ThreadFunction()
     }
 
     // Send the exit event, now that everything is shut down
-    //if (debug_event == wxLUASOCKET_DEBUGGEE_EVENT_EXIT)
+    //if (debug_event == wxLUA_DEBUGGEE_EVENT_EXIT)
     {
         wxLuaDebuggerEvent debugEvent(wxEVT_WXLUA_DEBUGGER_EXIT, this);
         wxPostEvent(this, debugEvent);
@@ -870,7 +870,7 @@ wxString wxLuaDebuggerCServer::GetSocketErrorMsg()
     return s;
 }
 
-#else // !WXLUASOCKET_USE_C_SOCKET
+#else // !WXLUA_DEBUGGER_USE_C_SOCKET
 
 // ---------------------------------------------------------------------------
 // wxLuaDebuggerwxSocketServer
@@ -1000,7 +1000,7 @@ void wxLuaDebuggerwxSocketServer::OnSocketEvent(wxSocketEvent& event)
             // wxSocketEvent again.
             sock->SetNotify(wxSOCKET_LOST_FLAG);
 
-            unsigned char debugEvent = 0; // wxLuaSocketDebuggeeEvents_Type
+            unsigned char debugEvent = 0; // wxLuaDebuggeeEvents_Type
             if (m_acceptedSocket->ReadCmd(debugEvent))
                 HandleDebuggeeEvent(debugEvent);
 
@@ -1021,4 +1021,4 @@ void wxLuaDebuggerwxSocketServer::OnSocketEvent(wxSocketEvent& event)
     }
 }
 
-#endif // WXLUASOCKET_USE_C_SOCKET
+#endif // WXLUA_DEBUGGER_USE_C_SOCKET

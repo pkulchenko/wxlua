@@ -2787,7 +2787,7 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
     </LI>
 
     <LI>
-      <B>wxluasocket</B>
+      <B>wxluadebugger</B>
 
       <UL>
         <LI>This is a socket library for one wxLua program to communicate with
@@ -2798,11 +2798,11 @@ print(vals, val1, val3, select("#", Varargs(10, 20, 30, 40)))
 
         <LI>To initialize this library in a C++ program and have it pushed into
         Lua you should have the code <I>"extern bool
-        wxLuaBinding_wxluasocket_init();"</I> and then somewhere in your app
+        wxLuaBinding_wxluadebugger_init();"</I> and then somewhere in your app
         initialization or at least before you create a wxLuaState call
-        <I>wxLuaBinding_wxluasocket_init()</I>.</LI>
+        <I>wxLuaBinding_wxluadebugger_init()</I>.</LI>
 
-        <LI>Compilation of this module generates a wxluasocket library.</LI>
+        <LI>Compilation of this module generates a wxluadebugger library.</LI>
       </UL>
     </LI>
   </UL>

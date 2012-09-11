@@ -18,7 +18,7 @@ wxLuaLib:
 wxLuaDebugLib:
 	@(cd $(WXLUA_DIR)/modules/wxlua/debug && $(MAKE))
 
-wxLuaSocketLib:
+wxLuaDebuggerLib:
 	@(cd $(WXLUA_DIR)/modules/wxlua/debugger && $(MAKE))
 
 LuaModule:

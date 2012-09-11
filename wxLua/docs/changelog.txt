@@ -1,6 +1,15 @@
  wxLua ChangeLog
  ===============
 
+ version 2.8.12.3 
+ --------------------------------------------------------------------
+ - Remove Bakefile build files since the next-gen version is
+   incompatible with the current Bakefiles anyway. 
+   http://permalink.gmane.org/gmane.comp.sysutils.bakefile.devel/1502
+ - Change the dir structure by removing the include/ and src/ dirs
+   to flatten and simplify it.
+ - Rename the wxLuaSocket lib to wxLuaDebugger lib since that what it is.
+
  version 2.8.12.2 (released 7/26/2012)
  --------------------------------------------------------------------
  - Allow setting event handlers in coroutines. Note that the callback will

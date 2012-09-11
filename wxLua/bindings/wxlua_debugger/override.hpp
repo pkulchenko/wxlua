@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------
-// Overridden functions for the wxLuaSocket binding for wxLua
+// Overridden functions for the wxLuaDebugger binding for wxLua
 //
 // Please keep these functions in the same order as the .i file and in the
 // same order as the listing of the functions in that file.

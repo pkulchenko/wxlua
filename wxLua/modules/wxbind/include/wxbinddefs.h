@@ -274,7 +274,7 @@
 #endif
 
 // --------------------------------------------------------------------------
-// Declare this here to avoid having to include the socket headers when
+// Declare this here to avoid having to include the debugger headers when
 // using WXLUA_DECLARE_BIND_ALL
 
 #ifndef WXDLLIMPEXP_WXLUADEBUGGER
@@ -312,8 +312,8 @@
 #ifndef wxLUA_USEBINDING_WXLUA
     #define wxLUA_USEBINDING_WXLUA                      1
 #endif
-#ifndef wxLUA_USEBINDING_WXLUASOCKET
-    #define wxLUA_USEBINDING_WXLUASOCKET                1
+#ifndef wxLUA_USEBINDING_WXLUADEBUGGER
+    #define wxLUA_USEBINDING_WXLUADEBUGGER              1
 #endif
 
 // Enable or disable initializing the wxWidgets bindings
