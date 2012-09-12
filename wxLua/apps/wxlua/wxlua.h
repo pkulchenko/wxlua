@@ -14,7 +14,7 @@
 #include <wx/app.h>
 
 #include "wxlua/debugger/wxldtarg.h"
-#include "lconsole.h"
+#include "wxlua/wxlconsole.h"
 
 class WXDLLIMPEXP_FWD_WXLUA wxLuaEvent;
 

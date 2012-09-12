@@ -28,7 +28,7 @@
 #include <wx/artprov.h>
 
 #include "wxlua/wxlua.h"
-#include "lconsole.h"
+#include "wxlconsole.h"
 
 //#include "../../../art/new.xpm"
 //#include "../../../art/save.xpm"

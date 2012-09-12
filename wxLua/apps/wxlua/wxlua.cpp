@@ -456,9 +456,11 @@ static const WORD MAX_CONSOLE_LINES = 500;
 void RedirectIOToDosConsole(bool alloc_new_if_needed)
 {
     // Code from http://dslweb.nwnexus.com/~ast/dload/guicon.htm
+    // Andrew Tucker, no license, assumed to be public domain.
     int  hConHandle = 0;
     long lStdHandle = 0;
-    CONSOLE_SCREEN_BUFFER_INFO coninfo; memset(&coninfo, 0, sizeof(CONSOLE_SCREEN_BUFFER_INFO));
+    CONSOLE_SCREEN_BUFFER_INFO coninfo;
+    memset(&coninfo, 0, sizeof(CONSOLE_SCREEN_BUFFER_INFO));
     FILE *fp = 0; // we don't close this, let the OS close it when the app exits
 
     // Try to attach to the parent process if it's a console, i.e. we're run from a DOS prompt.

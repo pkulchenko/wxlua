@@ -30,7 +30,7 @@ enum wxLuaConsole_WindowIds
 // wxLuaConsole - define a console class to display print statements
 // ----------------------------------------------------------------------------
 
-class wxLuaConsole : public wxFrame
+class WXDLLIMPEXP_WXLUA wxLuaConsole : public wxFrame
 {
 public:
     wxLuaConsole(wxLuaConsoleWrapper* consoleWrapper,
@@ -86,7 +86,7 @@ private:
 // we simply can't catch the close event elsewhere.
 // ----------------------------------------------------------------------------
 
-class wxLuaConsoleWrapper
+class WXDLLIMPEXP_WXLUA wxLuaConsoleWrapper
 {
 public:
 

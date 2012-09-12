@@ -28,15 +28,14 @@
 #include <wx/image.h>
 #include <wx/fileconf.h>
 #include "wx/stedit/stedit.h"
-#include "wxledit.h"
-
 #include "wx/stedit/stetree.h"
 
+#include "wxledit.h"
+
+#include "wxlua/wxlconsole.cpp"
 #include "wxlua/debugger/wxldserv.h"
 #include "wxlua/debugger/wxldtarg.h"
 #include "wxlua/debug/wxlstack.h"
-
-#include "../wxlua/lconsole.cpp"
 
 //#include "art/wxlua.xpm" get it from the lconsole
 

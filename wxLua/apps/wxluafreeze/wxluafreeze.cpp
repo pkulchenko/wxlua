@@ -61,13 +61,12 @@ public:
     int  OnExit();
 
     // load the script from the end of this file
-    //  if only_check then return LOADSCRIPT_MISSING if no script
-    //    else wxEmptyString
+    //  if only_check then return LOADSCRIPT_MISSING if no script else wxEmptyString
     wxString LoadScript(const wxString& filename, bool only_check = false);
 
-    // implementation
+    // Handle wxLua events
     void OnLua(wxLuaEvent &event);
-    // output print statements and errors
+    // Output print statements and errors
     void OutputPrint(const wxString& str);
 
     wxLuaState m_wxlState;
@@ -151,7 +150,7 @@ bool wxLuaFreezeApp::OnInit()
     {
         // now load our script to run that should have been appended to this file
         //  by wxluafreeze.lua
-        wxString script = LoadScript(m_fileName);
+        wxString script(LoadScript(m_fileName));
         if (!script.IsEmpty())
         {
             wxlua_pushargs(m_wxlState.GetLuaState(), argv, argc, 0);
