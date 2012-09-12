@@ -7,7 +7,7 @@
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
 
-lua   ICON   "../../../art/wxlua.ico"
+lua   ICON   "../../art/wxlua.ico"
 
 #include <wx/msw/wx.rc>
 
@@ -18,4 +18,4 @@ lua   ICON   "../../../art/wxlua.ico"
 #define WINRC_VER_OriginalFilename_STR "wxLuaFreeze.exe\0"
 #define WINRC_VER_Productname_STR      "wxLuaFreeze\0"
 
-#include "../../../build/wxlua_version.rc"
+#include "../../build/wxlua_version.rc"

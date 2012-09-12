@@ -5,7 +5,7 @@
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
 
-lua   ICON   "../../../art/wxlua.ico"
+lua   ICON   "../../art/wxlua.ico"
 
 #include <wx/msw/wx.rc>
 
@@ -16,4 +16,4 @@ lua   ICON   "../../../art/wxlua.ico"
 #define WINRC_VER_OriginalFilename_STR "wx.dll\0"
 #define WINRC_VER_Productname_STR      "wxLuaModule\0"
 
-#include "../../../build/wxlua_version.rc"
+#include "../../build/wxlua_version.rc"

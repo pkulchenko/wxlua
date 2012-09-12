@@ -8,7 +8,7 @@
 
 // put LUA icon before the wx resources so that windows will use the lua
 // icon as application's icon
-lua   ICON   "../../../art/wxlua.ico"
+lua   ICON   "../../art/wxlua.ico"
 
 #include <wx/msw/wx.rc>
 
@@ -19,4 +19,4 @@ lua   ICON   "../../../art/wxlua.ico"
 #define WINRC_VER_OriginalFilename_STR "wxLuaEdit.exe\0"
 #define WINRC_VER_Productname_STR      "wxLuaEdit\0"
 
-#include "../../../build/wxlua_version.rc"
+#include "../../build/wxlua_version.rc"
