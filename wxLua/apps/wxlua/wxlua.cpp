@@ -19,7 +19,7 @@
 #endif
 
 #ifdef __WXGTK__
-#include <locale.h>
+    #include <locale.h>
 #endif
 
 #include <wx/cmdline.h>
@@ -41,10 +41,6 @@ extern "C"
 #ifndef wxICON_NONE
 #define wxICON_NONE 0 // for 2.8 compat
 #endif
-
-#ifdef __WXMSW__
-    void RedirectIOToDosConsole(bool alloc_new_if_needed);
-#endif // __WXMSW__
 
 #define ID_WXLUA_CONSOLE 100
 
@@ -214,7 +210,7 @@ bool wxLuaStandaloneApp::OnInit()
                 m_dos_stdout = true;
             }
 
-            RedirectIOToDosConsole(m_dos_stdout);
+            wxlua_RedirectIOToDosConsole(m_dos_stdout, 500);
 #endif // __WXMSW__
 
             if (parser.Found(wxT("msgdlg")))
@@ -448,59 +444,3 @@ void wxLuaStandaloneApp::OnLua( wxLuaEvent &event )
     DisplayMessage(event.GetString(), event.GetEventType() == wxEVT_LUA_ERROR,
                    event.GetwxLuaState());
 }
-
-#ifdef __WXMSW__
-
-static const WORD MAX_CONSOLE_LINES = 500;
-
-void RedirectIOToDosConsole(bool alloc_new_if_needed)
-{
-    // Code from http://dslweb.nwnexus.com/~ast/dload/guicon.htm
-    // Andrew Tucker, no license, assumed to be public domain.
-    int  hConHandle = 0;
-    long lStdHandle = 0;
-    CONSOLE_SCREEN_BUFFER_INFO coninfo;
-    memset(&coninfo, 0, sizeof(CONSOLE_SCREEN_BUFFER_INFO));
-    FILE *fp = 0; // we don't close this, let the OS close it when the app exits
-
-    // Try to attach to the parent process if it's a console, i.e. we're run from a DOS prompt.
-    BOOL attached_ok = AttachConsole( ATTACH_PARENT_PROCESS );
-
-    if (attached_ok == 0) // failed attaching
-    {
-        // we tried to attach, but failed don't alloc a new one
-        if (!alloc_new_if_needed)
-            return;
-
-        // Unable to attach, allocate a console for this app
-        AllocConsole();
-    }
-
-    // set the screen buffer to be big enough to let us scroll text
-    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &coninfo);
-    coninfo.dwSize.Y = MAX_CONSOLE_LINES;
-    SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE), coninfo.dwSize);
-    // redirect unbuffered STDOUT to the console
-    lStdHandle = (long)GetStdHandle(STD_OUTPUT_HANDLE);
-    hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
-    fp = _fdopen( hConHandle, "w" );
-    *stdout = *fp;
-    setvbuf( stdout, NULL, _IONBF, 0 );
-    // redirect unbuffered STDIN to the console
-    lStdHandle = (long)GetStdHandle(STD_INPUT_HANDLE);
-    hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
-    fp = _fdopen( hConHandle, "r" );
-    *stdin = *fp;
-    setvbuf( stdin, NULL, _IONBF, 0 );
-    // redirect unbuffered STDERR to the console
-    lStdHandle = (long)GetStdHandle(STD_ERROR_HANDLE);
-    hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
-    fp = _fdopen( hConHandle, "w" );
-    *stderr = *fp;
-    setvbuf( stderr, NULL, _IONBF, 0 );
-    // make cout, wcout, cin, wcin, wcerr, cerr, wclog and clog
-    // point to console as well
-    std::ios::sync_with_stdio();
-}
-
-#endif // __WXMSW__

@@ -84,8 +84,8 @@ DECLARE_APP(wxLuaFreezeApp)
 IMPLEMENT_APP(wxLuaFreezeApp)
 
 BEGIN_EVENT_TABLE(wxLuaFreezeApp, wxApp)
-    EVT_LUA_PRINT       (wxID_ANY, wxLuaFreezeApp::OnLua)
-    EVT_LUA_ERROR       (wxID_ANY, wxLuaFreezeApp::OnLua)
+    EVT_LUA_PRINT(wxID_ANY, wxLuaFreezeApp::OnLua)
+    EVT_LUA_ERROR(wxID_ANY, wxLuaFreezeApp::OnLua)
 END_EVENT_TABLE()
 
 bool wxLuaFreezeApp::OnInit()

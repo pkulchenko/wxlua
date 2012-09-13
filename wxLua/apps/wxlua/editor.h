@@ -5,7 +5,7 @@
 
 #include <stdio.h>   /* for size_t */
 
-/* Original filename: '../../../samples/editor.wx.lua' */
+/* Original filename: '../../samples/editor.wx.lua' */
 extern const size_t editor_wx_lua_len;
 extern const unsigned char editor_wx_lua[];
 
