@@ -38,17 +38,18 @@
 // wxLuaConsole
 // ----------------------------------------------------------------------------
 
+wxLuaConsole* wxLuaConsole::sm_wxluaConsole = NULL;
+
 BEGIN_EVENT_TABLE(wxLuaConsole, wxFrame)
     EVT_CLOSE (          wxLuaConsole::OnCloseWindow)
     EVT_MENU  (wxID_ANY, wxLuaConsole::OnMenu)
 END_EVENT_TABLE()
 
-wxLuaConsole::wxLuaConsole(wxLuaConsoleWrapper* consoleWrapper,
-                           wxWindow* parent, wxWindowID id, const wxString& title,
+wxLuaConsole::wxLuaConsole(wxWindow* parent, wxWindowID id, const wxString& title,
                            const wxPoint& pos, const wxSize& size,
                            long style, const wxString& name)
              :wxFrame(parent, id, title, pos, size, style, name),
-              m_wrapper(consoleWrapper), m_exit_when_closed(false)
+              m_exit_when_closed(false)
 {
     m_max_lines = 2000;
     m_saveFilename = wxT("log.txt");
@@ -62,32 +63,56 @@ wxLuaConsole::wxLuaConsole(wxLuaConsoleWrapper* consoleWrapper,
     tb->AddTool(wxID_SAVEAS, wxT("Save output"),  wxArtProvider::GetBitmap(wxART_FILE_SAVE, wxART_TOOLBAR), wxT("Save contents to file..."), wxITEM_NORMAL);
     tb->AddTool(wxID_COPY,   wxT("Copy text"),    wxArtProvider::GetBitmap(wxART_COPY,      wxART_TOOLBAR), wxT("Copy contents to clipboard"), wxITEM_NORMAL);
     tb->AddTool(ID_WXLUACONSOLE_SCROLLBACK_LINES, wxT("Scrollback"), wxArtProvider::GetBitmap(wxART_LIST_VIEW, wxART_TOOLBAR), wxT("Set the number of scrollback lines..."), wxITEM_NORMAL);
+    //tb->AddTool(ID_WXLUACONSOLE_BACKTRACE, wxT("Backtrace"), wxArtProvider::GetBitmap(wxART_QUESTION, wxART_TOOLBAR), wxT("Show the current Lua stack..."), wxITEM_NORMAL);
     tb->Realize();
 
-    m_splitter = new wxSplitterWindow(this, wxID_ANY,
-                                      wxDefaultPosition, wxDefaultSize,
-                                      wxSP_3DSASH);
-    m_textCtrl = new wxTextCtrl(m_splitter, wxID_ANY, wxEmptyString,
+    m_textCtrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString,
                                 wxDefaultPosition, wxDefaultSize,
                                 wxTE_MULTILINE | wxTE_READONLY | wxTE_RICH2 | wxTE_DONTWRAP);
-    m_textCtrl->SetFont(wxFont(10, wxTELETYPE, wxNORMAL, wxNORMAL)); // monospace
+    wxFont monoFont(10, wxTELETYPE, wxNORMAL, wxNORMAL); // monospace
+    m_textCtrl->SetFont(monoFont);
 
-    m_debugListBox = new wxListBox(m_splitter, wxID_ANY,
-                                   wxDefaultPosition, wxDefaultSize,
-                                   0, NULL, wxLB_SINGLE);
-    m_debugListBox->Show(false);
-
-    // listbox is shown only when used
-    m_splitter->Initialize(m_textCtrl);
+    // Only set it to this if it wasn't already set, typically there will only be one of these.
+    if (sm_wxluaConsole == NULL)
+        sm_wxluaConsole = this;
 }
+
+wxLuaConsole::~wxLuaConsole()
+{
+    if (sm_wxluaConsole == this)
+        sm_wxluaConsole = NULL;
+}
+
+bool wxLuaConsole::Destroy()
+{
+    if (sm_wxluaConsole == this)
+        sm_wxluaConsole = NULL;
+
+    return wxFrame::Destroy();
+}
+
+// static
+wxLuaConsole* wxLuaConsole::GetConsole(bool create_on_demand)
+{
+    if (!create_on_demand || (sm_wxluaConsole != NULL))
+        return sm_wxluaConsole;
+
+    new wxLuaConsole(NULL, ID_WXLUACONSOLE);
+    return sm_wxluaConsole;
+}
+
+// static
+bool wxLuaConsole::HasConsole()
+{
+    return (sm_wxluaConsole != NULL) && !sm_wxluaConsole->IsBeingDeleted();
+}
+
 
 void wxLuaConsole::OnCloseWindow(wxCloseEvent&)
 {
     // Must NULL the console so nobody will try to still use it.
-    // Using EVT_DESTROY in the app causes a segfault if this is deleted
-    // in wxApp::OnExit() and though this is ugly, it works.
-    if (m_wrapper)
-        m_wrapper->SetConsole(NULL);
+    if (sm_wxluaConsole == this)
+        sm_wxluaConsole = NULL;
 
     Destroy();
     if (m_exit_when_closed)
@@ -116,7 +141,6 @@ void wxLuaConsole::OnMenu(wxCommandEvent& event)
             if (!filename.IsEmpty())
             {
                 m_saveFilename = wxFileName(filename);
-
                 m_textCtrl->SaveFile(filename);
             }
             break;
@@ -139,6 +163,17 @@ void wxLuaConsole::OnMenu(wxCommandEvent& event)
                                              this);
             if (lines >= 0)
                 SetMaxLines(lines);
+
+            break;
+        }
+        case ID_WXLUACONSOLE_BACKTRACE :
+        {
+            if (m_luaState.IsOk())
+            {
+                DisplayStack(m_luaState);
+                //wxLuaStackDialog dlg(m_wxlState, this);
+                //dlg.ShowModal();
+            }
 
             break;
         }
@@ -198,61 +233,35 @@ bool wxLuaConsole::SetMaxLines(int max_lines)
 void wxLuaConsole::DisplayStack(const wxLuaState& wxlState)
 {
     wxCHECK_RET(wxlState.Ok(), wxT("Invalid wxLuaState"));
-    int       nIndex    = 0;
-    lua_Debug luaDebug;
+    int       nIndex   = 0;
+    lua_Debug luaDebug = INIT_LUA_DEBUG;
     wxString  buffer;
 
-    m_debugListBox->Clear();
     lua_State* L = wxlState.GetLuaState();
 
     while (lua_getstack(L, nIndex, &luaDebug) != 0)
     {
-        buffer.Empty();
         if (lua_getinfo(L, "Sln", &luaDebug))
         {
-            int lineNumber = luaDebug.currentline;
-            if (lineNumber == -1)
-            {
-                if (luaDebug.name != NULL)
-                    buffer.Printf(wxT("function %s"),
-                                  lua2wx(luaDebug.name).c_str());
-                else
-                    buffer.Printf(wxT("{global}"));
-            }
-            else
-            {
-                if (luaDebug.name != NULL)
-                    buffer.Printf(wxT("function %s line %d"),
-                                  lua2wx(luaDebug.name).c_str(),
-                                  lineNumber);
-                else
-                    buffer.Printf(wxT("{global} line %d"),
-                                  lineNumber);
-            }
+            wxString what    (luaDebug.what     ? lua2wx(luaDebug.what)     : wxString(wxT("?")));
+            wxString nameWhat(luaDebug.namewhat ? lua2wx(luaDebug.namewhat) : wxString(wxT("?")));
+            wxString name    (luaDebug.name     ? lua2wx(luaDebug.name)     : wxString(wxT("?")));
 
-            // skip over ourselves on the stack
-            if (nIndex > 0)
-                m_debugListBox->Append(buffer, (void *)(long) nIndex);
+            buffer += wxString::Format(wxT("[%d] %s '%s' '%s' (line %d)\n    Line %d src='%s'\n"),
+                                       nIndex, what.c_str(), nameWhat.c_str(), name.c_str(), luaDebug.linedefined,
+                                       luaDebug.currentline, lua2wx(luaDebug.short_src).c_str());
         }
         nIndex++;
     }
 
-    // only show the listbox if it has anything in it
-    if (m_debugListBox->GetCount() && !m_splitter->IsSplit())
+    if (!buffer.empty())
     {
-        m_splitter->SplitHorizontally( m_textCtrl, m_debugListBox, 150);
-        m_splitter->SetMinimumPaneSize(50);
+        AppendText(wxT("\n-----------------------------------------------------------")
+                   wxT("\n- Backtrace")
+                   wxT("\n-----------------------------------------------------------\n") +
+                   buffer +
+                   wxT("\n-----------------------------------------------------------\n\n"));
     }
-}
-
-// ---------------------------------------------------------------------------
-// wxLuaConsoleWrapper
-// ---------------------------------------------------------------------------
-
-wxLuaConsole* wxLuaConsoleWrapper::GetConsole()
-{
-    wxCHECK_MSG(m_luaConsole != NULL, NULL, wxT("Member wxLuaConsole is NULL!"));
-    return m_luaConsole;
 }
 
 // ---------------------------------------------------------------------------
@@ -263,7 +272,7 @@ wxLuaConsole* wxLuaConsoleWrapper::GetConsole()
 
 void wxlua_RedirectIOToDosConsole(bool , short )
 {
-    // Nothing to do since they already do the right thing.
+    // Nothing to do since these OSes already do the right thing.
 }
 
 #else

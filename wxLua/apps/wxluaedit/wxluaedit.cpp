@@ -21,7 +21,7 @@
 #endif
 
 #ifdef __WXGTK__
-#include <locale.h>
+    #include <locale.h>
 #endif
 
 #include <wx/cmdline.h>
@@ -32,15 +32,19 @@
 
 #include "wxledit.h"
 
-#include "wxlua/wxlconsole.cpp"
+#include "wxlua/wxlconsole.h"
+
 #include "wxlua/debugger/wxldserv.h"
 #include "wxlua/debugger/wxldtarg.h"
 #include "wxlua/debug/wxlstack.h"
 
-//#include "art/wxlua.xpm" get it from the lconsole
+#ifndef wxICON_NONE
+#define wxICON_NONE 0 // for 2.8 compat
+#endif
+
+#include "art/wxlua.xpm"
 
 wxWindowID ID_WXLUASTATE_DEBUG = 200;
-wxWindowID ID_WXLUA_CONSOLE = 201;
 
 // Declare the binding initialization functions
 // Note : We could also do this "extern bool wxLuaBinding_XXX_init();" and
@@ -96,8 +100,8 @@ public:
     wxLuaDebugTarget*   m_pDebugTarget;
     wxLuaState          m_wxlState;
     wxString            m_programName;
-    wxLuaConsoleWrapper m_luaConsoleWrapper;
     bool                m_want_console;
+    bool                m_print_msgdlg;
 
 private:
     DECLARE_EVENT_TABLE();
@@ -146,7 +150,7 @@ private:
 BEGIN_EVENT_TABLE(wxLuaEditorApp, wxApp)
     EVT_LUA_PRINT       (ID_WXLUASTATE_DEBUG, wxLuaEditorApp::OnLua)
     EVT_LUA_ERROR       (ID_WXLUASTATE_DEBUG, wxLuaEditorApp::OnLua)
-    EVT_LUA_DEBUG_HOOK  (ID_WXLUASTATE_DEBUG, wxLuaEditorApp::OnLua)
+    //EVT_LUA_DEBUG_HOOK  (ID_WXLUASTATE_DEBUG, wxLuaEditorApp::OnLua)
 END_EVENT_TABLE()
 
 bool wxLuaEditorApp::OnInit()
@@ -154,6 +158,7 @@ bool wxLuaEditorApp::OnInit()
     m_pDebugTarget = NULL;
     m_programName  = argv[0];
     m_want_console = false;
+    m_print_msgdlg = false;
 
 #if defined(__WXMSW__) && wxCHECK_VERSION(2, 3, 3)
     WSADATA wsaData;
@@ -354,21 +359,8 @@ int wxLuaEditorApp::OnExit()
 
 void wxLuaEditorApp::OnLua( wxLuaEvent &event )
 {
-    if (event.GetEventType() == wxEVT_LUA_PRINT)
-    {
-        //if (m_pConsole != NULL)
-        //    m_pConsole->DisplayText(event.GetString());
-        //else
-#ifdef __WXMSW__
-            wxMessageBox(event.GetString(), wxT("wxLua"));
-#else
-            fprintf(stderr, "%s\n", wx2lua(event.GetString()).data());
-#endif // __WXMSW__
-    }
-    else if (event.GetEventType() == wxEVT_LUA_ERROR)
-    {
-        DisplayMessage(event.GetString(), true);
-    }
+    DisplayMessage(event.GetString(), event.GetEventType() == wxEVT_LUA_ERROR,
+                   event.GetwxLuaState());
 }
 
 void wxLuaEditorApp::DisplayMessage(const wxString &msg, bool is_error,
@@ -376,45 +368,54 @@ void wxLuaEditorApp::DisplayMessage(const wxString &msg, bool is_error,
 {
     // If they closed the console, but specified they wanted it
     // on the command-line, recreate it.
-    if (m_want_console && (!m_luaConsoleWrapper.IsOk()))
+    if (m_want_console && !wxLuaConsole::HasConsole())
     {
-        m_luaConsoleWrapper.SetConsole(new wxLuaConsole(&m_luaConsoleWrapper, NULL, ID_WXLUA_CONSOLE));
-        m_luaConsoleWrapper.GetConsole()->Show(true);
+        wxLuaConsole::GetConsole(true)->Show(true);
+        wxLuaConsole::GetConsole()->SetLuaState(m_wxlState);
     }
 
     if (!is_error)
     {
-        if (m_luaConsoleWrapper.IsOk())
-            m_luaConsoleWrapper.GetConsole()->AppendText(msg);
-        else
+        wxPrintf(wxT("%s\n"), msg.c_str());
+
+        if (wxLuaConsole::HasConsole())
+            wxLuaConsole::GetConsole(false)->AppendText(msg + wxT("\n"));
+
+        if (m_print_msgdlg)
         {
-#ifdef __WXMSW__
-            wxMessageBox(msg, wxT("wxLua Print"));
-#else
-            //fprintf(stderr, wx2lua(msg + wxT("\n")));
-            wxPrintf(wxT("%s\n"), msg.c_str());
-#endif // __WXMSW__
+            int ret = wxMessageBox(msg + wxT("\n\nPress cancel to ignore future print messages."),
+                                   wxT("wxLua - Lua Print"),
+                                   wxOK|wxCANCEL|wxCENTRE|wxICON_NONE);
+            if (ret == wxCANCEL)
+                m_print_msgdlg = false;
         }
     }
     else
     {
+        //if (m_print_stdout) // always print errors, FIXME: to stderr or is stdout ok?
+        wxPrintf(wxT("%s\n"), msg.c_str());
+
+        if (wxLuaConsole::HasConsole())
+        {
+            wxTextAttr attr(*wxRED);
+            attr.SetFlags(wxTEXT_ATTR_TEXT_COLOUR);
+            wxLuaConsole::GetConsole(false)->AppendTextWithAttr(msg + wxT("\n"), attr);
+            wxLuaConsole::GetConsole(false)->SetExitWhenClosed(true);
+
+            if (wxlState.Ok())
+                wxLuaConsole::GetConsole(false)->DisplayStack(wxlState);
+        }
+
         if (m_pDebugTarget != NULL)
             m_pDebugTarget->DisplayError(msg);
-        else if (m_luaConsoleWrapper.IsOk())
+
+        if (m_print_msgdlg)
         {
-            m_luaConsoleWrapper.GetConsole()->AppendText(msg);
-            m_luaConsoleWrapper.GetConsole()->SetExitWhenClosed(is_error);
-            if (wxlState.Ok())
-                m_luaConsoleWrapper.GetConsole()->DisplayStack(wxlState);
-        }
-        else
-        {
-#ifdef __WXMSW__
-            wxMessageBox(msg, wxT("wxLua Error"));
-#else
-            //fprintf(stderr, wx2lua(msg + wxT("\n")));
-            wxPrintf(wxT("%s\n"), msg.c_str());
-#endif // __WXMSW__
+            int ret = wxMessageBox(msg + wxT("\n\nPress cancel to ignore future error messages."),
+                                   wxT("wxLua - Lua Error"),
+                                   wxOK|wxCANCEL|wxCENTRE|wxICON_ERROR);
+            if (ret == wxCANCEL)
+                m_print_msgdlg = false;
         }
     }
 }

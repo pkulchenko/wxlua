@@ -42,8 +42,6 @@ extern "C"
 #define wxICON_NONE 0 // for 2.8 compat
 #endif
 
-#define ID_WXLUA_CONSOLE 100
-
 // Declare the binding initialization functions
 // Note : We could also do this "extern bool wxLuaBinding_XXX_init();" and
 //        later call "wxLuaBinding_XXX_init();" to initialize it.
@@ -224,10 +222,8 @@ bool wxLuaStandaloneApp::OnInit()
             {
                 arg_count++; // remove arg
                 m_want_console = true;
-                // Note: The wxLuaConsoleWrapper::m_luaConsole will be nulled when it closes in
-                //       wxLuaConsole::OnCloseWindow.
-                m_luaConsoleWrapper.SetConsole(new wxLuaConsole(&m_luaConsoleWrapper, NULL, ID_WXLUA_CONSOLE));
-                m_luaConsoleWrapper.GetConsole()->Show(true);
+                wxLuaConsole::GetConsole(true)->Show(true);
+                wxLuaConsole::GetConsole()->SetLuaState(m_wxlState);
             }
 
             // Check if we are to run some Lua code stat
@@ -276,7 +272,7 @@ bool wxLuaStandaloneApp::OnInit()
                         DisplayMessage(_("The wxLua debugger server port is not a number : wxLua -d[host]:[port]\n"), true);
                 }
 
-                return (m_luaConsoleWrapper.IsOk()); // will exit app when console is closed
+                return (wxLuaConsole::HasConsole()); // will exit app when console is closed
             }
 
 
@@ -346,7 +342,7 @@ bool wxLuaStandaloneApp::OnInit()
             run_ok = false;
     }
 
-    return m_luaConsoleWrapper.IsOk() || run_ok;
+    return wxLuaConsole::HasConsole() || run_ok;
 }
 
 int wxLuaStandaloneApp::OnExit()
@@ -364,10 +360,9 @@ int wxLuaStandaloneApp::OnExit()
 
     m_want_console = false; // no more messages
 
-    if (m_luaConsoleWrapper.IsOk() && !m_luaConsoleWrapper.GetConsole()->IsBeingDeleted())
+    if (wxLuaConsole::HasConsole())
     {
-        m_luaConsoleWrapper.GetConsole()->Destroy();
-        m_luaConsoleWrapper.SetConsole(NULL);
+        wxLuaConsole::GetConsole()->Destroy();
     }
 
     if (m_mem_bitmap_added)
@@ -390,10 +385,10 @@ void wxLuaStandaloneApp::DisplayMessage(const wxString &msg, bool is_error,
 {
     // If they closed the console, but specified they wanted it
     // on the command-line, recreate it.
-    if (m_want_console && (!m_luaConsoleWrapper.IsOk()))
+    if (m_want_console && !wxLuaConsole::HasConsole())
     {
-        m_luaConsoleWrapper.SetConsole(new wxLuaConsole(&m_luaConsoleWrapper, NULL, ID_WXLUA_CONSOLE));
-        m_luaConsoleWrapper.GetConsole()->Show(true);
+        wxLuaConsole::GetConsole(true)->Show(true);
+        wxLuaConsole::GetConsole()->SetLuaState(m_wxlState);
     }
 
     if (!is_error)
@@ -401,12 +396,14 @@ void wxLuaStandaloneApp::DisplayMessage(const wxString &msg, bool is_error,
         if (m_print_stdout)
             wxPrintf(wxT("%s\n"), msg.c_str());
 
-        if (m_luaConsoleWrapper.IsOk())
-            m_luaConsoleWrapper.GetConsole()->AppendText(msg + wxT("\n"));
+        if (wxLuaConsole::HasConsole())
+            wxLuaConsole::GetConsole(false)->AppendText(msg + wxT("\n"));
 
         if (m_print_msgdlg)
         {
-            int ret = wxMessageBox(msg + wxT("\n\nPress cancel to ignore future print messages."), wxT("wxLua Print"), wxOK|wxCANCEL|wxCENTRE|wxICON_NONE);
+            int ret = wxMessageBox(msg + wxT("\n\nPress cancel to ignore future print messages."),
+                                   wxT("wxLua Print"),
+                                   wxOK|wxCANCEL|wxCENTRE|wxICON_NONE);
             if (ret == wxCANCEL)
                 m_print_msgdlg = false;
         }
@@ -416,15 +413,15 @@ void wxLuaStandaloneApp::DisplayMessage(const wxString &msg, bool is_error,
         //if (m_print_stdout) // always print errors, FIXME: to stderr or is stdout ok?
         wxPrintf(wxT("%s\n"), msg.c_str());
 
-        if (m_luaConsoleWrapper.IsOk())
+        if (wxLuaConsole::HasConsole())
         {
             wxTextAttr attr(*wxRED);
             attr.SetFlags(wxTEXT_ATTR_TEXT_COLOUR);
-            m_luaConsoleWrapper.GetConsole()->AppendTextWithAttr(msg + wxT("\n"), attr);
-            m_luaConsoleWrapper.GetConsole()->SetExitWhenClosed(true);
+            wxLuaConsole::GetConsole(false)->AppendTextWithAttr(msg + wxT("\n"), attr);
+            wxLuaConsole::GetConsole(false)->SetExitWhenClosed(true);
 
             if (wxlState.Ok())
-                m_luaConsoleWrapper.GetConsole()->DisplayStack(wxlState);
+                wxLuaConsole::GetConsole(false)->DisplayStack(wxlState);
         }
 
         if (m_wxlDebugTarget != NULL)
@@ -432,7 +429,9 @@ void wxLuaStandaloneApp::DisplayMessage(const wxString &msg, bool is_error,
 
         if (m_print_msgdlg)
         {
-            int ret = wxMessageBox(msg + wxT("\n\nPress cancel to ignore future error messages."), wxT("wxLua Print"), wxOK|wxCANCEL|wxCENTRE|wxICON_ERROR);
+            int ret = wxMessageBox(msg + wxT("\n\nPress cancel to ignore future error messages."),
+                                   wxT("wxLua - Lua Error"),
+                                   wxOK|wxCANCEL|wxCENTRE|wxICON_ERROR);
             if (ret == wxCANCEL)
                 m_print_msgdlg = false;
         }

@@ -17,13 +17,12 @@
 
 class WXDLLIMPEXP_FWD_CORE wxSplitterWindow;
 class WXDLLIMPEXP_FWD_CORE wxTextCtrl;
-class WXDLLIMPEXP_FWD_CORE wxListBox;
-
-class wxLuaConsoleWrapper;
 
 enum wxLuaConsole_WindowIds
 {
-    ID_WXLUACONSOLE_SCROLLBACK_LINES = wxID_HIGHEST + 10
+    ID_WXLUACONSOLE                  = wxID_HIGHEST + 10,
+    ID_WXLUACONSOLE_SCROLLBACK_LINES,
+    ID_WXLUACONSOLE_BACKTRACE
 };
 
 // ----------------------------------------------------------------------------
@@ -33,72 +32,66 @@ enum wxLuaConsole_WindowIds
 class WXDLLIMPEXP_WXLUA wxLuaConsole : public wxFrame
 {
 public:
-    wxLuaConsole(wxLuaConsoleWrapper* consoleWrapper,
-                 wxWindow* parent, wxWindowID id,
+    wxLuaConsole(wxWindow* parent, wxWindowID id = ID_WXLUACONSOLE,
                  const wxString& title = wxT("wxLua console"),
                  const wxPoint& pos = wxDefaultPosition,
                  const wxSize& size = wxSize(300, 400),
                  long style = wxDEFAULT_FRAME_STYLE,
                  const wxString& name = wxT("wxLuaConsole"));
 
+    virtual ~wxLuaConsole();
+
+    /// Override from base class.
+    virtual bool Destroy();
+
+    /// Get the first/current wxLuaConsole as a singleton object.
+    /// Returns NULL if !create_on_demand and there isn't one existing.
+    /// Do not keep a handle to the console past any function call since
+    /// the user may close it and the handle will be invalidated.
+    static wxLuaConsole* GetConsole(bool create_on_demand = false);
+    /// Returns true if there is an active console.
+    static bool HasConsole();
+
+    /// Get the set wxLuaState.
+    wxLuaState GetLuaState() const { return m_luaState; }
+    /// Set a wxLuaState to show backtraces from.
+    void SetLuaState(const wxLuaState& wxlState ) { m_luaState = wxlState; }
+
     /// Display a message in the console.
     void AppendText(const wxString& msg);
     /// Display a message in the console with optional wxTextCtrl attribute to display it with.
     void AppendTextWithAttr(const wxString& msg, const wxTextAttr& attr);
 
-    // Remove lines so there are only max_lines, returns false if nothing is changed.
+    /// Remove lines so there are only max_lines, returns false if nothing is changed.
     bool SetMaxLines(int max_lines = 500);
-    // Get the maximum number of lines to show in the textcontrol before removing the earliest ones.
+    /// Get the maximum number of lines to show in the textcontrol before removing the earliest ones.
     int  GetMaxLines() const { return m_max_lines; }
 
-    // Display the stack in a wxListBox, but only if there are any items in it.
-    // This only works while Lua is running.
+    /// Display the stack, but only if there are any items in it.
+    /// This only works while Lua is running.
     void DisplayStack(const wxLuaState& wxlState);
 
-    // Set if wxExit() will be called with this dialog is closed to exit the app.
-    // Use this when an error has occurred so the program doesn't continue.
+    /// Set if wxExit() will be called with this dialog is closed to exit the app.
+    /// Use this when an error has occurred so the program doesn't continue.
     void SetExitWhenClosed(bool do_exit) { m_exit_when_closed = do_exit; }
-    // Get whether the program will exit when this dialog is closed.
+    /// Get whether the program will exit when this dialog is closed.
     bool GetExitWhenClosed() const       { return m_exit_when_closed; }
 
 protected:
     void OnCloseWindow(wxCloseEvent& event);
     void OnMenu(wxCommandEvent& event);
 
-    wxLuaConsoleWrapper *m_wrapper;
-    wxSplitterWindow    *m_splitter;
     wxTextCtrl          *m_textCtrl;
-    wxListBox           *m_debugListBox;
     bool                 m_exit_when_closed;
     int                  m_max_lines;
     wxFileName           m_saveFilename;
 
+    wxLuaState           m_luaState;
+
+    static wxLuaConsole* sm_wxluaConsole;
+
 private:
     DECLARE_EVENT_TABLE()
-};
-
-// ----------------------------------------------------------------------------
-// wxLuaConsoleWrapper - A smart pointer like wrapper for the wxLuaConsole
-//
-// Create one as a member of the wxApp or whereever it will exist longer than
-// the wxLuaConsole it wraps and the wxLuaConsole will NULL the pointer to
-// it when closed. See wxLuaConsole::OnCloseWindow(wxCloseEvent&) as to why
-// we simply can't catch the close event elsewhere.
-// ----------------------------------------------------------------------------
-
-class WXDLLIMPEXP_WXLUA wxLuaConsoleWrapper
-{
-public:
-
-    wxLuaConsoleWrapper(wxLuaConsole* c = NULL) : m_luaConsole(c) {}
-
-    bool IsOk() const { return m_luaConsole != NULL; }
-
-    wxLuaConsole* GetConsole(); // this will assert if console is NULL, check with Ok()
-    void SetConsole(wxLuaConsole* c) { m_luaConsole = c; }
-
-protected:
-    wxLuaConsole* m_luaConsole;
 };
 
 // ----------------------------------------------------------------------------
