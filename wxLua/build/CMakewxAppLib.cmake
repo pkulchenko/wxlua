@@ -585,43 +585,46 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
         message(WARNING "* WARNING: Could not find wxWidgets! Please see help above.")
     endif()
 
-    # always print out what we've found so far
-    message(STATUS "* - wxWidgets_VERSION      = ${wxWidgets_VERSION} = ${wxWidgets_MAJOR_VERSION}.${wxWidgets_MINOR_VERSION}.${wxWidgets_RELEASE_NUMBER}")
-    message(STATUS "* - wxWidgets_COMPONENTS   = ${wxWidgets_COMPONENTS}" )
-    message(STATUS "* - wxWidgets_INCLUDE_DIRS = ${wxWidgets_INCLUDE_DIRS}" )
-    message(STATUS "* - wxWidgets_LIBRARY_DIRS = ${wxWidgets_LIBRARY_DIRS}" )
-    message(STATUS "* - wxWidgets_LIBRARIES    = ${wxWidgets_LIBRARIES}" )
-    message(STATUS "* - wxWidgets_CXX_FLAGS    = ${wxWidgets_CXX_FLAGS}" )
-    message(STATUS "* - wxWidgets_DEFINITIONS  = ${wxWidgets_DEFINITIONS}" )
-    message(STATUS "* - wxWidgets_DEFINITIONS_DEBUG = ${wxWidgets_DEFINITIONS_DEBUG}" )
-
-    message(STATUS "* - wxWidgets_PORTNAME     = ${wxWidgets_PORTNAME}" )
-    message(STATUS "* - wxWidgets_UNIVNAME     = ${wxWidgets_UNIVNAME}" )
-    message(STATUS "* - wxWidgets_UNICODEFLAG  = ${wxWidgets_UNICODEFLAG}" )
-    message(STATUS "* - wxWidgets_DEBUGFLAG    = ${wxWidgets_DEBUGFLAG}" )
-
-    # -----------------------------------------------------------------------
-    # Always verify the libs, for success or failure in finding wxWidgets.
-    VERIFY_WXWIDGETS_COMPONENTS()
-
-    message(STATUS "* ")
-
     # -----------------------------------------------------------------------
     # These generators #include wxWidgets/lib/lib_XXX/wx/include/wx/setup.h
     # which uses #ifndef wxUSE_UNICODE to set it to 0 in 2.8 and 1 in 2.9.
     # If the user did not edit the original include/wx/msw/setup0.h the value
     # may be wrong so we force it to be right.
 
-    set(wxUSE_UNICODE_DEFINE "-DwxUSE_UNICODE=0")
-    if ("${wxWidgets_UNICODEFLAG}" STREQUAL "u")
-        set(wxUSE_UNICODE_DEFINE "-DwxUSE_UNICODE=1")
-    endif()
+    if( wxWidgets_FOUND )
+        set(wxUSE_UNICODE_DEFINE "wxUSE_UNICODE=0")
+        if ("${wxWidgets_UNICODEFLAG}" STREQUAL "u")
+            set(wxUSE_UNICODE_DEFINE "wxUSE_UNICODE=1")
+        endif()
 
-    if ("${CMAKE_GENERATOR}" MATCHES "MinGW Makefiles")
-        set( wxWidgets_DEFINITIONS ${wxWidgets_DEFINITIONS} ${wxUSE_UNICODE_DEFINE} )
-    elseif ("${CMAKE_GENERATOR}" MATCHES "NMake Makefiles")
-        set( wxWidgets_DEFINITIONS ${wxWidgets_DEFINITIONS} ${wxUSE_UNICODE_DEFINE} )
-    endif()
+        if ("${CMAKE_GENERATOR}" MATCHES "MinGW Makefiles")
+            set( wxWidgets_DEFINITIONS ${wxWidgets_DEFINITIONS} ${wxUSE_UNICODE_DEFINE} )
+        elseif ("${CMAKE_GENERATOR}" MATCHES "NMake Makefiles")
+            set( wxWidgets_DEFINITIONS ${wxWidgets_DEFINITIONS} ${wxUSE_UNICODE_DEFINE} )
+        endif()
+    endif( wxWidgets_FOUND )
+    
+    # -----------------------------------------------------------------------
+    # Print out what we've found so far    
+    message(STATUS "* - wxWidgets_VERSION           = ${wxWidgets_VERSION} = ${wxWidgets_MAJOR_VERSION}.${wxWidgets_MINOR_VERSION}.${wxWidgets_RELEASE_NUMBER}")
+    message(STATUS "* - wxWidgets_COMPONENTS        = ${wxWidgets_COMPONENTS}" )
+    message(STATUS "* - wxWidgets_INCLUDE_DIRS      = ${wxWidgets_INCLUDE_DIRS}" )
+    message(STATUS "* - wxWidgets_LIBRARY_DIRS      = ${wxWidgets_LIBRARY_DIRS}" )
+    message(STATUS "* - wxWidgets_LIBRARIES         = ${wxWidgets_LIBRARIES}" )
+    message(STATUS "* - wxWidgets_CXX_FLAGS         = ${wxWidgets_CXX_FLAGS}" )
+    message(STATUS "* - wxWidgets_DEFINITIONS       = ${wxWidgets_DEFINITIONS}" )
+    message(STATUS "* - wxWidgets_DEFINITIONS_DEBUG = ${wxWidgets_DEFINITIONS_DEBUG}" )
+
+    message(STATUS "* - wxWidgets_PORTNAME          = ${wxWidgets_PORTNAME}" )
+    message(STATUS "* - wxWidgets_UNIVNAME          = ${wxWidgets_UNIVNAME}" )
+    message(STATUS "* - wxWidgets_UNICODEFLAG       = ${wxWidgets_UNICODEFLAG}" )
+    message(STATUS "* - wxWidgets_DEBUGFLAG         = ${wxWidgets_DEBUGFLAG}" )
+
+    # -----------------------------------------------------------------------
+    # Always verify the libs, for success or failure in finding wxWidgets.
+    VERIFY_WXWIDGETS_COMPONENTS()
+
+    message(STATUS "* ")
 
     endif (NOT FIND_WXWIDGETS_RUN_ONCE_CALLED)
 endmacro( FIND_WXWIDGETS )
