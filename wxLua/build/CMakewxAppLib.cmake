@@ -606,6 +606,23 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
 
     message(STATUS "* ")
 
+    # -----------------------------------------------------------------------
+    # These generators #include wxWidgets/lib/lib_XXX/wx/include/wx/setup.h
+    # which uses #ifndef wxUSE_UNICODE to set it to 0 in 2.8 and 1 in 2.9.
+    # If the user did not edit the original include/wx/msw/setup0.h the value
+    # may be wrong so we force it to be right.
+
+    set(wxUSE_UNICODE_DEFINE "-DwxUSE_UNICODE=0")
+    if ("${wxWidgets_UNICODEFLAG}" STREQUAL "u")
+        set(wxUSE_UNICODE_DEFINE "-DwxUSE_UNICODE=1")
+    endif()
+
+    if ("${CMAKE_GENERATOR}" MATCHES "MinGW Makefiles")
+        set( wxWidgets_DEFINITIONS ${wxWidgets_DEFINITIONS} ${wxUSE_UNICODE_DEFINE} )
+    elseif ("${CMAKE_GENERATOR}" MATCHES "NMake Makefiles")
+        set( wxWidgets_DEFINITIONS ${wxWidgets_DEFINITIONS} ${wxUSE_UNICODE_DEFINE} )
+    endif()
+
     endif (NOT FIND_WXWIDGETS_RUN_ONCE_CALLED)
 endmacro( FIND_WXWIDGETS )
 
