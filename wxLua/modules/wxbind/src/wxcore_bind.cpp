@@ -1639,33 +1639,15 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxMODERN", wxMODERN },
 #endif // wxLUA_USE_wxFont
 
-#if (wxCHECK_VERSION(2,8,0)) && (wxUSE_HOTKEY)
         { "wxMOD_ALL", wxMOD_ALL },
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxUSE_HOTKEY)
-
-#if wxUSE_HOTKEY
         { "wxMOD_ALT", wxMOD_ALT },
-#endif // wxUSE_HOTKEY
-
-#if (wxCHECK_VERSION(2,8,0)) && (wxUSE_HOTKEY)
         { "wxMOD_ALTGR", wxMOD_ALTGR },
         { "wxMOD_CMD", wxMOD_CMD },
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxUSE_HOTKEY)
-
-#if wxUSE_HOTKEY
         { "wxMOD_CONTROL", wxMOD_CONTROL },
-#endif // wxUSE_HOTKEY
-
-#if (wxCHECK_VERSION(2,8,0)) && (wxUSE_HOTKEY)
         { "wxMOD_META", wxMOD_META },
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxUSE_HOTKEY)
-
-#if wxUSE_HOTKEY
         { "wxMOD_NONE", wxMOD_NONE },
         { "wxMOD_SHIFT", wxMOD_SHIFT },
         { "wxMOD_WIN", wxMOD_WIN },
-#endif // wxUSE_HOTKEY
-
         { "wxMORE", wxMORE },
         { "wxMOUSE_BTN_ANY", wxMOUSE_BTN_ANY },
         { "wxMOUSE_BTN_LEFT", wxMOUSE_BTN_LEFT },

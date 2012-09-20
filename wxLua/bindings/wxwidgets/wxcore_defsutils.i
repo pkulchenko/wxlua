@@ -478,19 +478,17 @@
     wxBG_STYLE_CUSTOM
 %endenum
 
-%if wxUSE_HOTKEY
-%enum wxHotkeyModifier
+%enum wxKeyModifier
     wxMOD_NONE
     wxMOD_ALT
     wxMOD_CONTROL
-    %wxchkver_2_8 wxMOD_ALTGR
+    wxMOD_ALTGR
     wxMOD_SHIFT
-    %wxchkver_2_8 wxMOD_META
+    wxMOD_META
     wxMOD_WIN
-    %wxchkver_2_8 wxMOD_CMD
-    %wxchkver_2_8 wxMOD_ALL
+    wxMOD_CMD
+    wxMOD_ALL
 %endenum
-%endif
 
 // ---------------------------------------------------------------------------
 // wxBusyCursor

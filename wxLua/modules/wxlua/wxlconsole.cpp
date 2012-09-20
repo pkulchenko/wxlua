@@ -30,10 +30,6 @@
 #include "wxlua/wxlua.h"
 #include "wxlconsole.h"
 
-//#include "../../../art/new.xpm"
-//#include "../../../art/save.xpm"
-//#include "../../../art/copy.xpm"
-
 // ----------------------------------------------------------------------------
 // wxLuaConsole
 // ----------------------------------------------------------------------------
@@ -134,7 +130,7 @@ void wxLuaConsole::OnMenu(wxCommandEvent& event)
                                                m_saveFilename.GetPath(),
                                                m_saveFilename.GetFullName(),
                                                wxT("txt"),
-                                               wxT("Text files (*.txt)|*.txt|All files|*.*"),
+                                               wxT("Text files (*.txt)|*.txt|All files (*.*)|*.*"),
                                                wxFD_SAVE|wxFD_OVERWRITE_PROMPT,
                                                this);
 

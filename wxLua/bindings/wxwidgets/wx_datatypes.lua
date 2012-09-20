@@ -2305,12 +2305,6 @@ wx_dataTypeTable =
     Name = "wxHelpSearchMode",
     ValueType = "enum",
   },
-  wxHotkeyModifier = {
-    Condition = "wxUSE_HOTKEY",
-    IsNumber = true,
-    Name = "wxHotkeyModifier",
-    ValueType = "enum",
-  },
   wxHtmlCell = {
     BaseClasses = {
       [1] = "wxObject",
@@ -2722,6 +2716,11 @@ wx_dataTypeTable =
     IsNumber = false,
     Name = "wxKeyEvent",
     ValueType = "class",
+  },
+  wxKeyModifier = {
+    IsNumber = true,
+    Name = "wxKeyModifier",
+    ValueType = "enum",
   },
   wxKeyType = {
     Condition = "wxLUA_USE_wxList && !wxUSE_STL",
