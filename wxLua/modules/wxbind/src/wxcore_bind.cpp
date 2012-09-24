@@ -4626,6 +4626,7 @@ static const char* wxluaclassname_wxSizeEvent = "wxSizeEvent";
 static const char* wxluaclassname_wxSizer = "wxSizer";
 static const char* wxluaclassname_wxSizerFlags = "wxSizerFlags";
 static const char* wxluaclassname_wxSizerItem = "wxSizerItem";
+static const char* wxluaclassname_wxSizerItemList = "wxSizerItemList";
 static const char* wxluaclassname_wxSlider = "wxSlider";
 static const char* wxluaclassname_wxSpinButton = "wxSpinButton";
 static const char* wxluaclassname_wxSpinCtrl = "wxSpinCtrl";
@@ -5088,6 +5089,8 @@ static const char* wxluabaseclassnames_wxSizer[] = { wxluaclassname_wxObject, NU
 static wxLuaBindClass* wxluabaseclassbinds_wxSizer[] = { NULL };
 static const char* wxluabaseclassnames_wxSizerItem[] = { wxluaclassname_wxObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxSizerItem[] = { NULL };
+static const char* wxluabaseclassnames_wxSizerItemList[] = { wxluaclassname_wxList, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxSizerItemList[] = { NULL };
 static const char* wxluabaseclassnames_wxSlider[] = { wxluaclassname_wxControl, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxSlider[] = { NULL };
 static const char* wxluabaseclassnames_wxSpinButton[] = { wxluaclassname_wxControl, NULL };
@@ -5470,6 +5473,9 @@ static wxLuaBindClass* wxluabaseclassbinds_wxXPMHandler[] = { NULL };
     extern wxLuaBindMethod wxSizerItem_methods[];
     extern int wxSizerItem_methodCount;
     extern void wxLua_wxSizerItem_delete_function(void** p);
+    extern wxLuaBindMethod wxSizerItemList_methods[];
+    extern int wxSizerItemList_methodCount;
+    extern void wxLua_wxSizerItemList_delete_function(void** p);
 #endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
 
 #if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxUSE_BUTTON)
@@ -7234,6 +7240,7 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
         { wxluaclassname_wxSizer, wxSizer_methods, wxSizer_methodCount, CLASSINFO(wxSizer), &wxluatype_wxSizer, wxluabaseclassnames_wxSizer, wxluabaseclassbinds_wxSizer, NULL, NULL, NULL, 0, &wxLua_wxSizer_delete_function, }, 
         { wxluaclassname_wxSizerFlags, wxSizerFlags_methods, wxSizerFlags_methodCount, NULL, &wxluatype_wxSizerFlags, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxSizerFlags_delete_function, }, 
         { wxluaclassname_wxSizerItem, wxSizerItem_methods, wxSizerItem_methodCount, CLASSINFO(wxSizerItem), &wxluatype_wxSizerItem, wxluabaseclassnames_wxSizerItem, wxluabaseclassbinds_wxSizerItem, NULL, NULL, NULL, 0, &wxLua_wxSizerItem_delete_function, }, 
+        { wxluaclassname_wxSizerItemList, wxSizerItemList_methods, wxSizerItemList_methodCount, NULL, &wxluatype_wxSizerItemList, wxluabaseclassnames_wxSizerItemList, wxluabaseclassbinds_wxSizerItemList, NULL, NULL, NULL, 0, &wxLua_wxSizerItemList_delete_function, }, 
 #endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
 
 #if wxLUA_USE_wxSlider && wxUSE_SLIDER

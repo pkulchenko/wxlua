@@ -43,21 +43,36 @@
     wxSizerFlags& Shaped()
     wxSizerFlags& FixedMinSize()
 
+%if (wxABI_VERSION >= 20808)
+    wxSizerFlags& ReserveSpaceEvenIfHidden()
+%endif
+
     // accessors for wxSizer only
     int GetProportion() const
     int GetFlags() const
     int GetBorderInPixels() const
 %endclass
 
+// ----------------------------------------------------------------------------
+// wxSizerSpacer - No real need to create one of these in wxLua
+
+//%class wxSizerSpacer
+//    wxSizerSpacer(const wxSize& size)
+//    void SetSize(const wxSize& size)
+//    const wxSize& GetSize() const
+//    void Show(bool show)
+//    bool IsShown() const
+//%endclass
+
 // ---------------------------------------------------------------------------
 // wxSizerItem
 
 %class wxSizerItem, wxObject
-    wxSizerItem(int width, int height, int proportion, int flag, int border, wxObject* userData)
-    wxSizerItem(wxWindow* window, int proportion, int flag, int border, wxObject* userData)
-    wxSizerItem(wxSizer* sizer, int proportion, int flag, int border, wxObject* userData)
-    //wxSizerItem(wxWindow* window, const wxSizerFlags& flags)
-    //wxSizerItem(wxSizer* window, const wxSizerFlags& flags)
+    wxSizerItem(int width, int height, int proportion, int flag, int border, %ungc wxObject* userData)
+    wxSizerItem(wxWindow* window, int proportion, int flag, int border, %ungc wxObject* userData)
+    wxSizerItem(wxSizer* sizer, int proportion, int flag, int border, %ungc wxObject* userData)
+    wxSizerItem(wxWindow* window, const wxSizerFlags& flags)
+    wxSizerItem(wxSizer* window, const wxSizerFlags& flags)
 
     wxSize CalcMin()
     void DeleteWindows()
@@ -65,6 +80,7 @@
     int GetBorder() const
     int GetFlag() const
     wxSize GetMinSize() const
+    wxSize GetMinSizeWithBorder() const
     wxPoint GetPosition() const
     int GetProportion() const
     float GetRatio() const
@@ -82,12 +98,16 @@
     void SetDimension(const wxPoint& pos, const wxSize& size)
     void SetFlag(int flag)
     void SetInitSize(int x, int y)
+    void SetMinSize(const wxSize& size)
+    void SetMinSize( int x, int y )
     void SetProportion(int proportion)
     void SetRatio(int width, int height)
-    //void SetRatio(const wxSize& size)
+    void SetRatio(const wxSize& size)
     void SetRatio(float ratio)
     void SetSizer(wxSizer* sizer)
     void SetSpacer(const wxSize& size)
+    void SetSpacer(int width, int height)
+    void SetUserData(%ungc wxObject* userData)
     void SetWindow(wxWindow* window)
     void Show(bool show)
 %endclass
@@ -98,44 +118,67 @@
 %class wxSizer, wxObject
     // base class no constructors
 
-    wxSizerItem* Add(wxWindow* window, int proportion = 0,int flag = 0, int border = 0, wxObject* userData = NULL)
-    wxSizerItem* Add(wxSizer* sizer, int proportion = 0, int flag = 0, int border = 0, wxObject* userData = NULL)
-    wxSizerItem* Add(int width, int height, int proportion = 0, int flag = 0, int border = 0, wxObject* userData = NULL)
-    //wxSizerItem* Add(wxWindow* window, const wxSizerFlags& flags)
-    //wxSizerItem* Add(wxSizer* sizer, const wxSizerFlags& flags)
+    wxSizerItem* Add(wxWindow* window, int proportion = 0,int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
+    wxSizerItem* Add(wxSizer* sizer, int proportion = 0, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
+    wxSizerItem* Add(int width, int height, int proportion = 0, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
+    wxSizerItem* Add(wxWindow* window, const wxSizerFlags& flags)
+    wxSizerItem* Add(wxSizer* sizer, const wxSizerFlags& flags)
+    wxSizerItem* Add( wxSizerItem *item)
     wxSizerItem* AddSpacer(int size)
     wxSizerItem* AddStretchSpacer(int prop = 1)
     wxSize CalcMin()
+    virtual void Clear( bool delete_windows = false )
+
+%if (wxABI_VERSION >= 20808)
+    wxSize ComputeFittingClientSize(wxWindow *window)
+    wxSize ComputeFittingWindowSize(wxWindow *window)
+%endif
+
+    virtual void DeleteWindows()
     bool Detach(wxWindow* window)
     bool Detach(wxSizer* sizer)
     bool Detach(size_t index)
     void Fit(wxWindow* window)
     void FitInside(wxWindow* window)
+    wxSizerItemList& GetChildren()
+    wxWindow *GetContainingWindow() const
     wxSizerItem* GetItem(wxWindow* window, bool recursive = false)
     wxSizerItem* GetItem(wxSizer* sizer, bool recursive = false)
     wxSizerItem* GetItem(size_t index)
     wxSize GetSize()
     wxPoint GetPosition()
     wxSize GetMinSize()
-    wxSizerItem* Insert(size_t index, wxWindow* window, int proportion = 0,int flag = 0, int border = 0, wxObject* userData = NULL)
-    wxSizerItem* Insert(size_t index, wxSizer* sizer, int proportion = 0, int flag = 0, int border = 0, wxObject* userData = NULL)
-    wxSizerItem* Insert(size_t index, int width, int height, int proportion = 0, int flag = 0, int border = 0, wxObject* userData = NULL)
-    //wxSizerItem* Insert(size_t index, wxWindow* window, const wxSizerFlags& flags)
-    //wxSizerItem* Insert(size_t index, wxSizer* sizer, const wxSizerFlags& flags)
+    bool Hide( wxSizer *sizer, bool recursive = false )
+    bool Hide( wxWindow *window, bool recursive = false )
+    bool Hide( size_t index )
+    wxSizerItem* Insert(size_t index, wxWindow* window, int proportion = 0,int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
+    wxSizerItem* Insert(size_t index, wxSizer* sizer, int proportion = 0, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
+    wxSizerItem* Insert(size_t index, int width, int height, int proportion = 0, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
+    wxSizerItem* Insert(size_t index, wxWindow* window, const wxSizerFlags& flags)
+    wxSizerItem* Insert(size_t index, wxSizer* sizer, const wxSizerFlags& flags)
+    virtual wxSizerItem* Insert( size_t index, wxSizerItem *item)
     wxSizerItem* InsertSpacer(size_t index, int size)
     wxSizerItem* InsertStretchSpacer(size_t index, int prop = 1)
+    bool IsShown( wxWindow *window ) const
+    bool IsShown( wxSizer *sizer ) const
+    bool IsShown( size_t index ) const
     void Layout()
-    void Prepend(wxWindow* window, int proportion = 0, int flag = 0, int border = 0, wxObject* userData = NULL)
-    void Prepend(wxSizer* sizer, int proportion = 0, int flag = 0, int border = 0, wxObject* userData = NULL)
-    void Prepend(int width, int height, int proportion = 0, int flag = 0, int border= 0, wxObject* userData = NULL)
-    //wxSizerItem* Prepend(wxWindow* window, const wxSizerFlags& flags)
-    //wxSizerItem* Prepend(wxSizer* sizer, const wxSizerFlags& flags)
+    void Prepend(wxWindow* window, int proportion = 0, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
+    void Prepend(wxSizer* sizer, int proportion = 0, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
+    void Prepend(int width, int height, int proportion = 0, int flag = 0, int border= 0, %ungc wxObject* userData = NULL)
+    wxSizerItem* Prepend(wxWindow* window, const wxSizerFlags& flags)
+    wxSizerItem* Prepend(wxSizer* sizer, const wxSizerFlags& flags)
+    wxSizerItem* Prepend(wxSizerItem *item)
     wxSizerItem* PrependSpacer(int size)
     wxSizerItem* PrependStretchSpacer(int prop = 1)
     void RecalcSizes()
     //bool Remove(wxWindow* window) - deprecated use Detach
     //bool Remove(wxSizer* sizer)
     //bool Remove(size_t index)
+    virtual bool Replace( wxWindow *oldwin, wxWindow *newwin, bool recursive = false )
+    virtual bool Replace( wxSizer *oldsz, wxSizer *newsz, bool recursive = false )
+    virtual bool Replace( size_t index, wxSizerItem *newitem )
+    void SetContainingWindow(wxWindow *window)
     void SetDimension(int x, int y, int width, int height)
     void SetMinSize(int width, int height)
     void SetMinSize(const wxSize& size)
@@ -147,7 +190,26 @@
     bool Show(wxWindow* window, bool show = true, bool recursive = false)
     bool Show(wxSizer* sizer, bool show = true, bool recursive = false)
     bool Show(size_t index, bool show = true)
+    //void Show(bool show) - simply calls ShowItems()
+    virtual void ShowItems (bool show)
 %endclass
+
+// ---------------------------------------------------------------------------
+// wxSizerItemList
+
+//%if wxLUA_USE_wxSizerItemList && !wxUSE_STL
+
+%class wxSizerItemList, wxList
+    //wxSizerItemList() - no constructor, just get this from wxSizer::GetChildren()
+
+    // This is returned from wxSizer::GetChildren(), use wxList methods and
+    //   wxNode::GetData():DynamicCast("wxSizer") to retrieve the wxSizer
+
+    // Use the wxList methods, see also wxNode
+
+%endclass
+
+//%endif //wxLUA_USE_wxSizerItemList && !wxUSE_STL
 
 // ---------------------------------------------------------------------------
 // wxBoxSizer
@@ -208,9 +270,9 @@
 %class wxGridBagSizer, wxFlexGridSizer
     wxGridBagSizer(int vgap=0, int hgap=0)
 
-    wxSizerItem* Add(wxWindow* window, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, wxObject* userData = NULL)
-    wxSizerItem* Add(wxSizer* sizer, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, wxObject* userData = NULL)
-    wxSizerItem* Add(int width, int height, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, wxObject* userData = NULL)
+    wxSizerItem* Add(wxWindow* window, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
+    wxSizerItem* Add(wxSizer* sizer, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
+    wxSizerItem* Add(int width, int height, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
     wxSizerItem* Add(wxGBSizerItem* item)
 
     bool CheckForIntersection(wxGBSizerItem* item, wxGBSizerItem* excludeItem = NULL)
@@ -277,9 +339,9 @@
 
 %class wxGBSizerItem, wxSizerItem
     wxGBSizerItem()
-    wxGBSizerItem( int width, int height, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, wxObject* userData)
-    wxGBSizerItem( wxWindow *window, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, wxObject* userData )
-    wxGBSizerItem( wxSizer *sizer, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, wxObject* userData )
+    wxGBSizerItem( int width, int height, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, %ungc wxObject* userData)
+    wxGBSizerItem( wxWindow *window, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, %ungc wxObject* userData )
+    wxGBSizerItem( wxSizer *sizer, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, %ungc wxObject* userData )
 
     wxGBPosition GetPos() const
     //void GetPos(int& row, int& col) const;

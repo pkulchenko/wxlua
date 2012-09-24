@@ -264,14 +264,9 @@ void wxLuaConsole::DisplayStack(const wxLuaState& wxlState)
 // Functions
 // ---------------------------------------------------------------------------
 
-#ifndef __WXMSW__
+#ifdef __WXMSW__
 
-void wxlua_RedirectIOToDosConsole(bool , short )
-{
-    // Nothing to do since these OSes already do the right thing.
-}
-
-#else
+#include <iostream>
 
 // Code from http://dslweb.nwnexus.com/~ast/dload/guicon.htm
 // Andrew Tucker, no license, assumed to be public domain.
@@ -321,6 +316,13 @@ void wxlua_RedirectIOToDosConsole(bool alloc_new_if_needed, short max_console_li
     // make cout, wcout, cin, wcin, wcerr, cerr, wclog and clog
     // point to console as well
     std::ios::sync_with_stdio();
+}
+
+#else // !__WXMSW__
+
+void wxlua_RedirectIOToDosConsole(bool , short )
+{
+    // Nothing to do since these OSes already do the right thing.
 }
 
 #endif // __WXMSW__

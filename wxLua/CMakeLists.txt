@@ -7,6 +7,8 @@
 
 project( wxLua )
 
+set( wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE PATH "Root dir of wxLua" FORCE)
+
 # ===========================================================================
 # General settings for CMake
 # ===========================================================================
@@ -25,6 +27,15 @@ include( build/CMakeFunctions.txt )
 # ===========================================================================
 # wxWidgets libraries and wxLua bindings setup
 # ===========================================================================
+
+if (NOT wxLuaBind_WXLUASETUP_DIR)
+    set(wxLuaBind_WXLUASETUP_DIR "${wxLua_ROOT_DIR}/modules/wxbind/setup")
+endif()
+set(wxLuaBind_WXLUASETUP_DIR ${wxLuaBind_WXLUASETUP_DIR} CACHE PATH "Path to wxLua's wxWidgets binding setup file." FORCE)
+
+if (NOT EXISTS "${wxLuaBind_WXLUASETUP_DIR}")
+    MESSAGE(FATAL_ERROR "wxLuaBind_WXLUASETUP_DIR points to a non-existant path.'${wxLuaBind_WXLUASETUP_DIR}', the default is '${wxLua_ROOT_DIR}/modules/wxbind/setup'.")
+endif()
 
 # Specify what wxWidgets libs we need to link to. Note: 'core' must be before 'base'.
 # If you call this CMakeLists.txt from another one you may have already called FIND_WXWIDGETS()
@@ -104,8 +115,6 @@ SETUP_wxLua()
 # ===========================================================================
 # wxLua specific setup
 # ===========================================================================
-
-set( wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE PATH "Root dir of wxLua" FORCE)
 
 set( wxLua_VERSION         "2.8.12" )
 set( wxLua_MAJOR_VERSION   "2" )
@@ -247,7 +256,7 @@ endif()
 
 add_subdirectory( modules/wxstedit )
 
-include_directories(${wxLua_ROOT_DIR}/modules/wxbind/setup)
+include_directories(${wxLuaBind_WXLUASETUP_DIR})
 
 if (NOT TARGET wxLuaLib)
     add_subdirectory( modules/ )

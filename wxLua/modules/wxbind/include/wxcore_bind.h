@@ -677,6 +677,7 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSizer;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSizerFlags;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSizerItem;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSizerItemList;
 #endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
 
 #if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxUSE_BUTTON)

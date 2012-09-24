@@ -319,6 +319,26 @@ static int LUACALL wxLua_wxSizerFlags_Proportion(lua_State *L)
     return 1;
 }
 
+
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && ((wxABI_VERSION >=20808 ))) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerFlags_ReserveSpaceEvenIfHidden[] = { &wxluatype_wxSizerFlags, NULL };
+static int LUACALL wxLua_wxSizerFlags_ReserveSpaceEvenIfHidden(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerFlags_ReserveSpaceEvenIfHidden[1] = {{ wxLua_wxSizerFlags_ReserveSpaceEvenIfHidden, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSizerFlags_ReserveSpaceEvenIfHidden }};
+//     wxSizerFlags& ReserveSpaceEvenIfHidden()
+static int LUACALL wxLua_wxSizerFlags_ReserveSpaceEvenIfHidden(lua_State *L)
+{
+    // get this
+    wxSizerFlags * self = (wxSizerFlags *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerFlags);
+    // call ReserveSpaceEvenIfHidden
+    wxSizerFlags* returns = (wxSizerFlags*)&self->ReserveSpaceEvenIfHidden();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerFlags);
+
+    return 1;
+}
+
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && ((wxABI_VERSION >=20808 ))) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerFlags_Right[] = { &wxluatype_wxSizerFlags, NULL };
 static int LUACALL wxLua_wxSizerFlags_Right(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerFlags_Right[1] = {{ wxLua_wxSizerFlags_Right, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSizerFlags_Right }};
@@ -452,6 +472,11 @@ wxLuaBindMethod wxSizerFlags_methods[] = {
     { "HorzBorder", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerFlags_HorzBorder, 1, NULL },
     { "Left", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerFlags_Left, 1, NULL },
     { "Proportion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerFlags_Proportion, 1, NULL },
+
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && ((wxABI_VERSION >=20808 ))) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+    { "ReserveSpaceEvenIfHidden", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerFlags_ReserveSpaceEvenIfHidden, 1, NULL },
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && ((wxABI_VERSION >=20808 ))) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+
     { "Right", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerFlags_Right, 1, NULL },
     { "Shaped", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerFlags_Shaped, 1, NULL },
     { "Top", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerFlags_Top, 1, NULL },
@@ -570,6 +595,25 @@ static int LUACALL wxLua_wxSizerItem_GetMinSize(lua_State *L)
     // call GetMinSize
     // allocate a new object using the copy constructor
     wxSize* returns = new wxSize(self->GetMinSize());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerItem_GetMinSizeWithBorder[] = { &wxluatype_wxSizerItem, NULL };
+static int LUACALL wxLua_wxSizerItem_GetMinSizeWithBorder(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_GetMinSizeWithBorder[1] = {{ wxLua_wxSizerItem_GetMinSizeWithBorder, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSizerItem_GetMinSizeWithBorder }};
+//     wxSize GetMinSizeWithBorder() const
+static int LUACALL wxLua_wxSizerItem_GetMinSizeWithBorder(lua_State *L)
+{
+    // get this
+    wxSizerItem * self = (wxSizerItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerItem);
+    // call GetMinSizeWithBorder
+    // allocate a new object using the copy constructor
+    wxSize* returns = new wxSize(self->GetMinSizeWithBorder());
     // add the new object to the tracked memory list
     wxluaO_addgcobject(L, returns, wxluatype_wxSize);
     // push the result datatype
@@ -883,6 +927,44 @@ static int LUACALL wxLua_wxSizerItem_SetInitSize(lua_State *L)
     return 0;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerItem_SetMinSize1[] = { &wxluatype_wxSizerItem, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxSizerItem_SetMinSize1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_SetMinSize1[1] = {{ wxLua_wxSizerItem_SetMinSize1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSizerItem_SetMinSize1 }};
+//     void SetMinSize( int x, int y )
+static int LUACALL wxLua_wxSizerItem_SetMinSize1(lua_State *L)
+{
+    // int y
+    int y = (int)wxlua_getnumbertype(L, 3);
+    // int x
+    int x = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxSizerItem * self = (wxSizerItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerItem);
+    // call SetMinSize
+    self->SetMinSize(x, y);
+
+    return 0;
+}
+
+
+#if (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerItem_SetMinSize[] = { &wxluatype_wxSizerItem, &wxluatype_wxSize, NULL };
+static int LUACALL wxLua_wxSizerItem_SetMinSize(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_SetMinSize[1] = {{ wxLua_wxSizerItem_SetMinSize, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizerItem_SetMinSize }};
+//     void SetMinSize(const wxSize& size)
+static int LUACALL wxLua_wxSizerItem_SetMinSize(lua_State *L)
+{
+    // const wxSize size
+    const wxSize * size = (const wxSize *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSize);
+    // get this
+    wxSizerItem * self = (wxSizerItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerItem);
+    // call SetMinSize
+    self->SetMinSize(*size);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerItem_SetProportion[] = { &wxluatype_wxSizerItem, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSizerItem_SetProportion(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_SetProportion[1] = {{ wxLua_wxSizerItem_SetProportion, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizerItem_SetProportion }};
@@ -899,11 +981,11 @@ static int LUACALL wxLua_wxSizerItem_SetProportion(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerItem_SetRatio1[] = { &wxluatype_wxSizerItem, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxSizerItem_SetRatio1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_SetRatio1[1] = {{ wxLua_wxSizerItem_SetRatio1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizerItem_SetRatio1 }};
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerItem_SetRatio2[] = { &wxluatype_wxSizerItem, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxSizerItem_SetRatio2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_SetRatio2[1] = {{ wxLua_wxSizerItem_SetRatio2, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizerItem_SetRatio2 }};
 //     void SetRatio(float ratio)
-static int LUACALL wxLua_wxSizerItem_SetRatio1(lua_State *L)
+static int LUACALL wxLua_wxSizerItem_SetRatio2(lua_State *L)
 {
     // float ratio
     float ratio = (float)wxlua_getnumbertype(L, 2);
@@ -914,6 +996,26 @@ static int LUACALL wxLua_wxSizerItem_SetRatio1(lua_State *L)
 
     return 0;
 }
+
+
+#if (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerItem_SetRatio1[] = { &wxluatype_wxSizerItem, &wxluatype_wxSize, NULL };
+static int LUACALL wxLua_wxSizerItem_SetRatio1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_SetRatio1[1] = {{ wxLua_wxSizerItem_SetRatio1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizerItem_SetRatio1 }};
+//     void SetRatio(const wxSize& size)
+static int LUACALL wxLua_wxSizerItem_SetRatio1(lua_State *L)
+{
+    // const wxSize size
+    const wxSize * size = (const wxSize *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSize);
+    // get this
+    wxSizerItem * self = (wxSizerItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerItem);
+    // call SetRatio
+    self->SetRatio(*size);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerItem_SetRatio[] = { &wxluatype_wxSizerItem, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSizerItem_SetRatio(lua_State *L);
@@ -949,11 +1051,29 @@ static int LUACALL wxLua_wxSizerItem_SetSizer(lua_State *L)
     return 0;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerItem_SetSpacer1[] = { &wxluatype_wxSizerItem, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxSizerItem_SetSpacer1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_SetSpacer1[1] = {{ wxLua_wxSizerItem_SetSpacer1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSizerItem_SetSpacer1 }};
+//     void SetSpacer(int width, int height)
+static int LUACALL wxLua_wxSizerItem_SetSpacer1(lua_State *L)
+{
+    // int height
+    int height = (int)wxlua_getnumbertype(L, 3);
+    // int width
+    int width = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxSizerItem * self = (wxSizerItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerItem);
+    // call SetSpacer
+    self->SetSpacer(width, height);
+
+    return 0;
+}
+
 
 #if (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerItem_SetSpacer[] = { &wxluatype_wxSizerItem, &wxluatype_wxSize, NULL };
 static int LUACALL wxLua_wxSizerItem_SetSpacer(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_SetSpacer[1] = {{ wxLua_wxSizerItem_SetSpacer, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizerItem_SetSpacer }};
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_SetSpacer[1] = {{ wxLua_wxSizerItem_SetSpacer, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizerItem_SetSpacer }};
 //     void SetSpacer(const wxSize& size)
 static int LUACALL wxLua_wxSizerItem_SetSpacer(lua_State *L)
 {
@@ -968,6 +1088,26 @@ static int LUACALL wxLua_wxSizerItem_SetSpacer(lua_State *L)
 }
 
 #endif // (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+
+#if (wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerItem_SetUserData[] = { &wxluatype_wxSizerItem, &wxluatype_wxObject, NULL };
+static int LUACALL wxLua_wxSizerItem_SetUserData(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_SetUserData[1] = {{ wxLua_wxSizerItem_SetUserData, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizerItem_SetUserData }};
+//     void SetUserData(%ungc wxObject* userData)
+static int LUACALL wxLua_wxSizerItem_SetUserData(lua_State *L)
+{
+    // wxObject userData
+    wxObject * userData = (wxObject *)wxluaT_getuserdatatype(L, 2, wxluatype_wxObject);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
+    // get this
+    wxSizerItem * self = (wxSizerItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerItem);
+    // call SetUserData
+    self->SetUserData(userData);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerItem_SetWindow[] = { &wxluatype_wxSizerItem, &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxSizerItem_SetWindow(lua_State *L);
@@ -1001,12 +1141,48 @@ static int LUACALL wxLua_wxSizerItem_Show(lua_State *L)
     return 0;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerItem_constructor4[] = { &wxluatype_wxSizer, &wxluatype_wxSizerFlags, NULL };
+static int LUACALL wxLua_wxSizerItem_constructor4(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_constructor4[1] = {{ wxLua_wxSizerItem_constructor4, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxSizerItem_constructor4 }};
+//     wxSizerItem(wxSizer* window, const wxSizerFlags& flags)
+static int LUACALL wxLua_wxSizerItem_constructor4(lua_State *L)
+{
+    // const wxSizerFlags flags
+    const wxSizerFlags * flags = (const wxSizerFlags *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSizerFlags);
+    // wxSizer window
+    wxSizer * window = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call constructor
+    wxSizerItem* returns = new wxSizerItem(window, *flags);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerItem);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerItem_constructor3[] = { &wxluatype_wxWindow, &wxluatype_wxSizerFlags, NULL };
+static int LUACALL wxLua_wxSizerItem_constructor3(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_constructor3[1] = {{ wxLua_wxSizerItem_constructor3, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxSizerItem_constructor3 }};
+//     wxSizerItem(wxWindow* window, const wxSizerFlags& flags)
+static int LUACALL wxLua_wxSizerItem_constructor3(lua_State *L)
+{
+    // const wxSizerFlags flags
+    const wxSizerFlags * flags = (const wxSizerFlags *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSizerFlags);
+    // wxWindow window
+    wxWindow * window = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call constructor
+    wxSizerItem* returns = new wxSizerItem(window, *flags);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerItem);
+
+    return 1;
+}
+
 
 #if (wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerItem_constructor2[] = { &wxluatype_wxSizer, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxSizerItem_constructor2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_constructor2[1] = {{ wxLua_wxSizerItem_constructor2, WXLUAMETHOD_CONSTRUCTOR, 5, 5, s_wxluatypeArray_wxLua_wxSizerItem_constructor2 }};
-//     wxSizerItem(wxSizer* sizer, int proportion, int flag, int border, wxObject* userData)
+//     wxSizerItem(wxSizer* sizer, int proportion, int flag, int border, %ungc wxObject* userData)
 static int LUACALL wxLua_wxSizerItem_constructor2(lua_State *L)
 {
     // wxObject userData
@@ -1019,6 +1195,7 @@ static int LUACALL wxLua_wxSizerItem_constructor2(lua_State *L)
     int proportion = (int)wxlua_getnumbertype(L, 2);
     // wxSizer sizer
     wxSizer * sizer = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // call constructor
     wxSizerItem* returns = new wxSizerItem(sizer, proportion, flag, border, userData);
     // push the constructed class pointer
@@ -1030,7 +1207,7 @@ static int LUACALL wxLua_wxSizerItem_constructor2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerItem_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxSizerItem_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_constructor1[1] = {{ wxLua_wxSizerItem_constructor1, WXLUAMETHOD_CONSTRUCTOR, 5, 5, s_wxluatypeArray_wxLua_wxSizerItem_constructor1 }};
-//     wxSizerItem(wxWindow* window, int proportion, int flag, int border, wxObject* userData)
+//     wxSizerItem(wxWindow* window, int proportion, int flag, int border, %ungc wxObject* userData)
 static int LUACALL wxLua_wxSizerItem_constructor1(lua_State *L)
 {
     // wxObject userData
@@ -1043,6 +1220,7 @@ static int LUACALL wxLua_wxSizerItem_constructor1(lua_State *L)
     int proportion = (int)wxlua_getnumbertype(L, 2);
     // wxWindow window
     wxWindow * window = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // call constructor
     wxSizerItem* returns = new wxSizerItem(window, proportion, flag, border, userData);
     // push the constructed class pointer
@@ -1054,7 +1232,7 @@ static int LUACALL wxLua_wxSizerItem_constructor1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizerItem_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxSizerItem_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_constructor[1] = {{ wxLua_wxSizerItem_constructor, WXLUAMETHOD_CONSTRUCTOR, 6, 6, s_wxluatypeArray_wxLua_wxSizerItem_constructor }};
-//     wxSizerItem(int width, int height, int proportion, int flag, int border, wxObject* userData)
+//     wxSizerItem(int width, int height, int proportion, int flag, int border, %ungc wxObject* userData)
 static int LUACALL wxLua_wxSizerItem_constructor(lua_State *L)
 {
     // wxObject userData
@@ -1069,6 +1247,7 @@ static int LUACALL wxLua_wxSizerItem_constructor(lua_State *L)
     int height = (int)wxlua_getnumbertype(L, 2);
     // int width
     int width = (int)wxlua_getnumbertype(L, 1);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // call constructor
     wxSizerItem* returns = new wxSizerItem(width, height, proportion, flag, border, userData);
     // push the constructed class pointer
@@ -1081,21 +1260,49 @@ static int LUACALL wxLua_wxSizerItem_constructor(lua_State *L)
 
 
 
-#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_SetMinSize_overload[] =
+{
+    { wxLua_wxSizerItem_SetMinSize1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSizerItem_SetMinSize1 },
+
+#if (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+    { wxLua_wxSizerItem_SetMinSize, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizerItem_SetMinSize },
+#endif // (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+};
+static int s_wxluafunc_wxLua_wxSizerItem_SetMinSize_overload_count = sizeof(s_wxluafunc_wxLua_wxSizerItem_SetMinSize_overload)/sizeof(wxLuaBindCFunc);
+
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_SetRatio_overload[] =
 {
+    { wxLua_wxSizerItem_SetRatio2, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizerItem_SetRatio2 },
+
+#if (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
     { wxLua_wxSizerItem_SetRatio1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizerItem_SetRatio1 },
+#endif // (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
     { wxLua_wxSizerItem_SetRatio, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSizerItem_SetRatio },
 };
 static int s_wxluafunc_wxLua_wxSizerItem_SetRatio_overload_count = sizeof(s_wxluafunc_wxLua_wxSizerItem_SetRatio_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_SetSpacer_overload[] =
+{
+    { wxLua_wxSizerItem_SetSpacer1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSizerItem_SetSpacer1 },
 
-#if ((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+#if (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+    { wxLua_wxSizerItem_SetSpacer, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizerItem_SetSpacer },
+#endif // (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+};
+static int s_wxluafunc_wxLua_wxSizerItem_SetSpacer_overload_count = sizeof(s_wxluafunc_wxLua_wxSizerItem_SetSpacer_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_constructor_overload[] =
 {
+    { wxLua_wxSizerItem_constructor4, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxSizerItem_constructor4 },
+    { wxLua_wxSizerItem_constructor3, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxSizerItem_constructor3 },
 
 #if (wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
     { wxLua_wxSizerItem_constructor2, WXLUAMETHOD_CONSTRUCTOR, 5, 5, s_wxluatypeArray_wxLua_wxSizerItem_constructor2 },
@@ -1111,7 +1318,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizerItem_constructor_overload[] =
 };
 static int s_wxluafunc_wxLua_wxSizerItem_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxSizerItem_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
 
 void wxLua_wxSizerItem_delete_function(void** p)
 {
@@ -1132,6 +1339,7 @@ wxLuaBindMethod wxSizerItem_methods[] = {
 
 #if (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
     { "GetMinSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerItem_GetMinSize, 1, NULL },
+    { "GetMinSizeWithBorder", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerItem_GetMinSizeWithBorder, 1, NULL },
     { "GetPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerItem_GetPosition, 1, NULL },
 #endif // (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
 
@@ -1166,24 +1374,33 @@ wxLuaBindMethod wxSizerItem_methods[] = {
 
     { "SetFlag", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerItem_SetFlag, 1, NULL },
     { "SetInitSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerItem_SetInitSize, 1, NULL },
+
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+    { "SetMinSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerItem_SetMinSize_overload, s_wxluafunc_wxLua_wxSizerItem_SetMinSize_overload_count, 0 },
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+
     { "SetProportion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerItem_SetProportion, 1, NULL },
 
-#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
     { "SetRatio", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerItem_SetRatio_overload, s_wxluafunc_wxLua_wxSizerItem_SetRatio_overload_count, 0 },
-#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
 
     { "SetSizer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerItem_SetSizer, 1, NULL },
 
-#if (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
-    { "SetSpacer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerItem_SetSpacer, 1, NULL },
-#endif // (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+    { "SetSpacer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerItem_SetSpacer_overload, s_wxluafunc_wxLua_wxSizerItem_SetSpacer_overload_count, 0 },
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+
+#if (wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+    { "SetUserData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerItem_SetUserData, 1, NULL },
+#endif // (wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
 
     { "SetWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerItem_SetWindow, 1, NULL },
     { "Show", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizerItem_Show, 1, NULL },
 
-#if ((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
     { "wxSizerItem", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxSizerItem_constructor_overload, s_wxluafunc_wxLua_wxSizerItem_constructor_overload_count, 0 },
-#endif // ((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
 
     { 0, 0, 0, 0 },
 };
@@ -1201,11 +1418,70 @@ int wxSizerItem_methodCount = sizeof(wxSizerItem_methods)/sizeof(wxLuaBindMethod
 // Lua MetaTable Tag for Class 'wxSizer'
 int wxluatype_wxSizer = WXLUA_TUNKNOWN;
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Add5[] = { &wxluatype_wxSizer, &wxluatype_wxSizerItem, NULL };
+static int LUACALL wxLua_wxSizer_Add5(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Add5[1] = {{ wxLua_wxSizer_Add5, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizer_Add5 }};
+//     wxSizerItem* Add( wxSizerItem *item)
+static int LUACALL wxLua_wxSizer_Add5(lua_State *L)
+{
+    // wxSizerItem item
+    wxSizerItem * item = (wxSizerItem *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSizerItem);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call Add
+    wxSizerItem* returns = (wxSizerItem*)self->Add(item);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerItem);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Add4[] = { &wxluatype_wxSizer, &wxluatype_wxSizer, &wxluatype_wxSizerFlags, NULL };
+static int LUACALL wxLua_wxSizer_Add4(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Add4[1] = {{ wxLua_wxSizer_Add4, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSizer_Add4 }};
+//     wxSizerItem* Add(wxSizer* sizer, const wxSizerFlags& flags)
+static int LUACALL wxLua_wxSizer_Add4(lua_State *L)
+{
+    // const wxSizerFlags flags
+    const wxSizerFlags * flags = (const wxSizerFlags *)wxluaT_getuserdatatype(L, 3, wxluatype_wxSizerFlags);
+    // wxSizer sizer
+    wxSizer * sizer = (wxSizer *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSizer);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call Add
+    wxSizerItem* returns = (wxSizerItem*)self->Add(sizer, *flags);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerItem);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Add3[] = { &wxluatype_wxSizer, &wxluatype_wxWindow, &wxluatype_wxSizerFlags, NULL };
+static int LUACALL wxLua_wxSizer_Add3(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Add3[1] = {{ wxLua_wxSizer_Add3, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSizer_Add3 }};
+//     wxSizerItem* Add(wxWindow* window, const wxSizerFlags& flags)
+static int LUACALL wxLua_wxSizer_Add3(lua_State *L)
+{
+    // const wxSizerFlags flags
+    const wxSizerFlags * flags = (const wxSizerFlags *)wxluaT_getuserdatatype(L, 3, wxluatype_wxSizerFlags);
+    // wxWindow window
+    wxWindow * window = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call Add
+    wxSizerItem* returns = (wxSizerItem*)self->Add(window, *flags);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerItem);
+
+    return 1;
+}
+
+
 #if (wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Add2[] = { &wxluatype_wxSizer, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxSizer_Add2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Add2[1] = {{ wxLua_wxSizer_Add2, WXLUAMETHOD_METHOD, 3, 7, s_wxluatypeArray_wxLua_wxSizer_Add2 }};
-//     wxSizerItem* Add(int width, int height, int proportion = 0, int flag = 0, int border = 0, wxObject* userData = NULL)
+//     wxSizerItem* Add(int width, int height, int proportion = 0, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
 static int LUACALL wxLua_wxSizer_Add2(lua_State *L)
 {
     // get number of arguments
@@ -1222,6 +1498,7 @@ static int LUACALL wxLua_wxSizer_Add2(lua_State *L)
     int height = (int)wxlua_getnumbertype(L, 3);
     // int width
     int width = (int)wxlua_getnumbertype(L, 2);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // get this
     wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
     // call Add
@@ -1235,7 +1512,7 @@ static int LUACALL wxLua_wxSizer_Add2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Add1[] = { &wxluatype_wxSizer, &wxluatype_wxSizer, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxSizer_Add1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Add1[1] = {{ wxLua_wxSizer_Add1, WXLUAMETHOD_METHOD, 2, 6, s_wxluatypeArray_wxLua_wxSizer_Add1 }};
-//     wxSizerItem* Add(wxSizer* sizer, int proportion = 0, int flag = 0, int border = 0, wxObject* userData = NULL)
+//     wxSizerItem* Add(wxSizer* sizer, int proportion = 0, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
 static int LUACALL wxLua_wxSizer_Add1(lua_State *L)
 {
     // get number of arguments
@@ -1250,6 +1527,7 @@ static int LUACALL wxLua_wxSizer_Add1(lua_State *L)
     int proportion = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : 0);
     // wxSizer sizer
     wxSizer * sizer = (wxSizer *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSizer);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // get this
     wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
     // call Add
@@ -1263,7 +1541,7 @@ static int LUACALL wxLua_wxSizer_Add1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Add[] = { &wxluatype_wxSizer, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxSizer_Add(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Add[1] = {{ wxLua_wxSizer_Add, WXLUAMETHOD_METHOD, 2, 6, s_wxluatypeArray_wxLua_wxSizer_Add }};
-//     wxSizerItem* Add(wxWindow* window, int proportion = 0,int flag = 0, int border = 0, wxObject* userData = NULL)
+//     wxSizerItem* Add(wxWindow* window, int proportion = 0,int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
 static int LUACALL wxLua_wxSizer_Add(lua_State *L)
 {
     // get number of arguments
@@ -1278,6 +1556,7 @@ static int LUACALL wxLua_wxSizer_Add(lua_State *L)
     int proportion = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : 0);
     // wxWindow window
     wxWindow * window = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // get this
     wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
     // call Add
@@ -1350,6 +1629,84 @@ static int LUACALL wxLua_wxSizer_CalcMin(lua_State *L)
 }
 
 #endif // (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Clear[] = { &wxluatype_wxSizer, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxSizer_Clear(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Clear[1] = {{ wxLua_wxSizer_Clear, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxSizer_Clear }};
+//     virtual void Clear( bool delete_windows = false )
+static int LUACALL wxLua_wxSizer_Clear(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool delete_windows = false
+    bool delete_windows = (argCount >= 2 ? wxlua_getbooleantype(L, 2) : false);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call Clear
+    self->Clear(delete_windows);
+
+    return 0;
+}
+
+
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && ((wxABI_VERSION >=20808 ))) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_ComputeFittingClientSize[] = { &wxluatype_wxSizer, &wxluatype_wxWindow, NULL };
+static int LUACALL wxLua_wxSizer_ComputeFittingClientSize(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_ComputeFittingClientSize[1] = {{ wxLua_wxSizer_ComputeFittingClientSize, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizer_ComputeFittingClientSize }};
+//     wxSize ComputeFittingClientSize(wxWindow *window)
+static int LUACALL wxLua_wxSizer_ComputeFittingClientSize(lua_State *L)
+{
+    // wxWindow window
+    wxWindow * window = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call ComputeFittingClientSize
+    // allocate a new object using the copy constructor
+    wxSize* returns = new wxSize(self->ComputeFittingClientSize(window));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_ComputeFittingWindowSize[] = { &wxluatype_wxSizer, &wxluatype_wxWindow, NULL };
+static int LUACALL wxLua_wxSizer_ComputeFittingWindowSize(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_ComputeFittingWindowSize[1] = {{ wxLua_wxSizer_ComputeFittingWindowSize, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizer_ComputeFittingWindowSize }};
+//     wxSize ComputeFittingWindowSize(wxWindow *window)
+static int LUACALL wxLua_wxSizer_ComputeFittingWindowSize(lua_State *L)
+{
+    // wxWindow window
+    wxWindow * window = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call ComputeFittingWindowSize
+    // allocate a new object using the copy constructor
+    wxSize* returns = new wxSize(self->ComputeFittingWindowSize(window));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
+
+    return 1;
+}
+
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && ((wxABI_VERSION >=20808 ))) && (wxLUA_USE_wxPointSizeRect)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_DeleteWindows[] = { &wxluatype_wxSizer, NULL };
+static int LUACALL wxLua_wxSizer_DeleteWindows(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_DeleteWindows[1] = {{ wxLua_wxSizer_DeleteWindows, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSizer_DeleteWindows }};
+//     virtual void DeleteWindows()
+static int LUACALL wxLua_wxSizer_DeleteWindows(lua_State *L)
+{
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call DeleteWindows
+    self->DeleteWindows();
+
+    return 0;
+}
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Detach2[] = { &wxluatype_wxSizer, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxSizer_Detach2(lua_State *L);
@@ -1435,6 +1792,38 @@ static int LUACALL wxLua_wxSizer_FitInside(lua_State *L)
     self->FitInside(window);
 
     return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_GetChildren[] = { &wxluatype_wxSizer, NULL };
+static int LUACALL wxLua_wxSizer_GetChildren(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_GetChildren[1] = {{ wxLua_wxSizer_GetChildren, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSizer_GetChildren }};
+//     wxSizerItemList& GetChildren()
+static int LUACALL wxLua_wxSizer_GetChildren(lua_State *L)
+{
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call GetChildren
+    wxSizerItemList* returns = (wxSizerItemList*)&self->GetChildren();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerItemList);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_GetContainingWindow[] = { &wxluatype_wxSizer, NULL };
+static int LUACALL wxLua_wxSizer_GetContainingWindow(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_GetContainingWindow[1] = {{ wxLua_wxSizer_GetContainingWindow, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSizer_GetContainingWindow }};
+//     wxWindow *GetContainingWindow() const
+static int LUACALL wxLua_wxSizer_GetContainingWindow(lua_State *L)
+{
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call GetContainingWindow
+    wxWindow* returns = (wxWindow*)self->GetContainingWindow();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxWindow);
+
+    return 1;
 }
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_GetItem2[] = { &wxluatype_wxSizer, &wxluatype_TINTEGER, NULL };
@@ -1560,11 +1949,138 @@ static int LUACALL wxLua_wxSizer_GetSize(lua_State *L)
 
 #endif // (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Hide2[] = { &wxluatype_wxSizer, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxSizer_Hide2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Hide2[1] = {{ wxLua_wxSizer_Hide2, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizer_Hide2 }};
+//     bool Hide( size_t index )
+static int LUACALL wxLua_wxSizer_Hide2(lua_State *L)
+{
+    // size_t index
+    size_t index = (size_t)wxlua_getuintegertype(L, 2);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call Hide
+    bool returns = (self->Hide(index));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Hide1[] = { &wxluatype_wxSizer, &wxluatype_wxWindow, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxSizer_Hide1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Hide1[1] = {{ wxLua_wxSizer_Hide1, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxSizer_Hide1 }};
+//     bool Hide( wxWindow *window, bool recursive = false )
+static int LUACALL wxLua_wxSizer_Hide1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool recursive = false
+    bool recursive = (argCount >= 3 ? wxlua_getbooleantype(L, 3) : false);
+    // wxWindow window
+    wxWindow * window = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call Hide
+    bool returns = (self->Hide(window, recursive));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Hide[] = { &wxluatype_wxSizer, &wxluatype_wxSizer, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxSizer_Hide(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Hide[1] = {{ wxLua_wxSizer_Hide, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxSizer_Hide }};
+//     bool Hide( wxSizer *sizer, bool recursive = false )
+static int LUACALL wxLua_wxSizer_Hide(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool recursive = false
+    bool recursive = (argCount >= 3 ? wxlua_getbooleantype(L, 3) : false);
+    // wxSizer sizer
+    wxSizer * sizer = (wxSizer *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSizer);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call Hide
+    bool returns = (self->Hide(sizer, recursive));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Insert5[] = { &wxluatype_wxSizer, &wxluatype_TINTEGER, &wxluatype_wxSizerItem, NULL };
+static int LUACALL wxLua_wxSizer_Insert5(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Insert5[1] = {{ wxLua_wxSizer_Insert5, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSizer_Insert5 }};
+//     virtual wxSizerItem* Insert( size_t index, wxSizerItem *item)
+static int LUACALL wxLua_wxSizer_Insert5(lua_State *L)
+{
+    // wxSizerItem item
+    wxSizerItem * item = (wxSizerItem *)wxluaT_getuserdatatype(L, 3, wxluatype_wxSizerItem);
+    // size_t index
+    size_t index = (size_t)wxlua_getuintegertype(L, 2);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call Insert
+    wxSizerItem* returns = (wxSizerItem*)self->Insert(index, item);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerItem);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Insert4[] = { &wxluatype_wxSizer, &wxluatype_TINTEGER, &wxluatype_wxSizer, &wxluatype_wxSizerFlags, NULL };
+static int LUACALL wxLua_wxSizer_Insert4(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Insert4[1] = {{ wxLua_wxSizer_Insert4, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxSizer_Insert4 }};
+//     wxSizerItem* Insert(size_t index, wxSizer* sizer, const wxSizerFlags& flags)
+static int LUACALL wxLua_wxSizer_Insert4(lua_State *L)
+{
+    // const wxSizerFlags flags
+    const wxSizerFlags * flags = (const wxSizerFlags *)wxluaT_getuserdatatype(L, 4, wxluatype_wxSizerFlags);
+    // wxSizer sizer
+    wxSizer * sizer = (wxSizer *)wxluaT_getuserdatatype(L, 3, wxluatype_wxSizer);
+    // size_t index
+    size_t index = (size_t)wxlua_getuintegertype(L, 2);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call Insert
+    wxSizerItem* returns = (wxSizerItem*)self->Insert(index, sizer, *flags);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerItem);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Insert3[] = { &wxluatype_wxSizer, &wxluatype_TINTEGER, &wxluatype_wxWindow, &wxluatype_wxSizerFlags, NULL };
+static int LUACALL wxLua_wxSizer_Insert3(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Insert3[1] = {{ wxLua_wxSizer_Insert3, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxSizer_Insert3 }};
+//     wxSizerItem* Insert(size_t index, wxWindow* window, const wxSizerFlags& flags)
+static int LUACALL wxLua_wxSizer_Insert3(lua_State *L)
+{
+    // const wxSizerFlags flags
+    const wxSizerFlags * flags = (const wxSizerFlags *)wxluaT_getuserdatatype(L, 4, wxluatype_wxSizerFlags);
+    // wxWindow window
+    wxWindow * window = (wxWindow *)wxluaT_getuserdatatype(L, 3, wxluatype_wxWindow);
+    // size_t index
+    size_t index = (size_t)wxlua_getuintegertype(L, 2);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call Insert
+    wxSizerItem* returns = (wxSizerItem*)self->Insert(index, window, *flags);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerItem);
+
+    return 1;
+}
+
+
 #if (wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Insert2[] = { &wxluatype_wxSizer, &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxSizer_Insert2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Insert2[1] = {{ wxLua_wxSizer_Insert2, WXLUAMETHOD_METHOD, 4, 8, s_wxluatypeArray_wxLua_wxSizer_Insert2 }};
-//     wxSizerItem* Insert(size_t index, int width, int height, int proportion = 0, int flag = 0, int border = 0, wxObject* userData = NULL)
+//     wxSizerItem* Insert(size_t index, int width, int height, int proportion = 0, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
 static int LUACALL wxLua_wxSizer_Insert2(lua_State *L)
 {
     // get number of arguments
@@ -1583,6 +2099,7 @@ static int LUACALL wxLua_wxSizer_Insert2(lua_State *L)
     int width = (int)wxlua_getnumbertype(L, 3);
     // size_t index
     size_t index = (size_t)wxlua_getuintegertype(L, 2);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // get this
     wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
     // call Insert
@@ -1596,7 +2113,7 @@ static int LUACALL wxLua_wxSizer_Insert2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Insert1[] = { &wxluatype_wxSizer, &wxluatype_TINTEGER, &wxluatype_wxSizer, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxSizer_Insert1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Insert1[1] = {{ wxLua_wxSizer_Insert1, WXLUAMETHOD_METHOD, 3, 7, s_wxluatypeArray_wxLua_wxSizer_Insert1 }};
-//     wxSizerItem* Insert(size_t index, wxSizer* sizer, int proportion = 0, int flag = 0, int border = 0, wxObject* userData = NULL)
+//     wxSizerItem* Insert(size_t index, wxSizer* sizer, int proportion = 0, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
 static int LUACALL wxLua_wxSizer_Insert1(lua_State *L)
 {
     // get number of arguments
@@ -1613,6 +2130,7 @@ static int LUACALL wxLua_wxSizer_Insert1(lua_State *L)
     wxSizer * sizer = (wxSizer *)wxluaT_getuserdatatype(L, 3, wxluatype_wxSizer);
     // size_t index
     size_t index = (size_t)wxlua_getuintegertype(L, 2);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // get this
     wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
     // call Insert
@@ -1626,7 +2144,7 @@ static int LUACALL wxLua_wxSizer_Insert1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Insert[] = { &wxluatype_wxSizer, &wxluatype_TINTEGER, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxSizer_Insert(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Insert[1] = {{ wxLua_wxSizer_Insert, WXLUAMETHOD_METHOD, 3, 7, s_wxluatypeArray_wxLua_wxSizer_Insert }};
-//     wxSizerItem* Insert(size_t index, wxWindow* window, int proportion = 0,int flag = 0, int border = 0, wxObject* userData = NULL)
+//     wxSizerItem* Insert(size_t index, wxWindow* window, int proportion = 0,int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
 static int LUACALL wxLua_wxSizer_Insert(lua_State *L)
 {
     // get number of arguments
@@ -1643,6 +2161,7 @@ static int LUACALL wxLua_wxSizer_Insert(lua_State *L)
     wxWindow * window = (wxWindow *)wxluaT_getuserdatatype(L, 3, wxluatype_wxWindow);
     // size_t index
     size_t index = (size_t)wxlua_getuintegertype(L, 2);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // get this
     wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
     // call Insert
@@ -1697,6 +2216,60 @@ static int LUACALL wxLua_wxSizer_InsertStretchSpacer(lua_State *L)
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_IsShown2[] = { &wxluatype_wxSizer, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxSizer_IsShown2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_IsShown2[1] = {{ wxLua_wxSizer_IsShown2, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizer_IsShown2 }};
+//     bool IsShown( size_t index ) const
+static int LUACALL wxLua_wxSizer_IsShown2(lua_State *L)
+{
+    // size_t index
+    size_t index = (size_t)wxlua_getuintegertype(L, 2);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call IsShown
+    bool returns = (self->IsShown(index));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_IsShown1[] = { &wxluatype_wxSizer, &wxluatype_wxSizer, NULL };
+static int LUACALL wxLua_wxSizer_IsShown1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_IsShown1[1] = {{ wxLua_wxSizer_IsShown1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizer_IsShown1 }};
+//     bool IsShown( wxSizer *sizer ) const
+static int LUACALL wxLua_wxSizer_IsShown1(lua_State *L)
+{
+    // wxSizer sizer
+    wxSizer * sizer = (wxSizer *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSizer);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call IsShown
+    bool returns = (self->IsShown(sizer));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_IsShown[] = { &wxluatype_wxSizer, &wxluatype_wxWindow, NULL };
+static int LUACALL wxLua_wxSizer_IsShown(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_IsShown[1] = {{ wxLua_wxSizer_IsShown, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizer_IsShown }};
+//     bool IsShown( wxWindow *window ) const
+static int LUACALL wxLua_wxSizer_IsShown(lua_State *L)
+{
+    // wxWindow window
+    wxWindow * window = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call IsShown
+    bool returns = (self->IsShown(window));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Layout[] = { &wxluatype_wxSizer, NULL };
 static int LUACALL wxLua_wxSizer_Layout(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Layout[1] = {{ wxLua_wxSizer_Layout, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSizer_Layout }};
@@ -1711,12 +2284,70 @@ static int LUACALL wxLua_wxSizer_Layout(lua_State *L)
     return 0;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Prepend5[] = { &wxluatype_wxSizer, &wxluatype_wxSizerItem, NULL };
+static int LUACALL wxLua_wxSizer_Prepend5(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Prepend5[1] = {{ wxLua_wxSizer_Prepend5, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizer_Prepend5 }};
+//     wxSizerItem* Prepend(wxSizerItem *item)
+static int LUACALL wxLua_wxSizer_Prepend5(lua_State *L)
+{
+    // wxSizerItem item
+    wxSizerItem * item = (wxSizerItem *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSizerItem);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call Prepend
+    wxSizerItem* returns = (wxSizerItem*)self->Prepend(item);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerItem);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Prepend4[] = { &wxluatype_wxSizer, &wxluatype_wxSizer, &wxluatype_wxSizerFlags, NULL };
+static int LUACALL wxLua_wxSizer_Prepend4(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Prepend4[1] = {{ wxLua_wxSizer_Prepend4, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSizer_Prepend4 }};
+//     wxSizerItem* Prepend(wxSizer* sizer, const wxSizerFlags& flags)
+static int LUACALL wxLua_wxSizer_Prepend4(lua_State *L)
+{
+    // const wxSizerFlags flags
+    const wxSizerFlags * flags = (const wxSizerFlags *)wxluaT_getuserdatatype(L, 3, wxluatype_wxSizerFlags);
+    // wxSizer sizer
+    wxSizer * sizer = (wxSizer *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSizer);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call Prepend
+    wxSizerItem* returns = (wxSizerItem*)self->Prepend(sizer, *flags);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerItem);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Prepend3[] = { &wxluatype_wxSizer, &wxluatype_wxWindow, &wxluatype_wxSizerFlags, NULL };
+static int LUACALL wxLua_wxSizer_Prepend3(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Prepend3[1] = {{ wxLua_wxSizer_Prepend3, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSizer_Prepend3 }};
+//     wxSizerItem* Prepend(wxWindow* window, const wxSizerFlags& flags)
+static int LUACALL wxLua_wxSizer_Prepend3(lua_State *L)
+{
+    // const wxSizerFlags flags
+    const wxSizerFlags * flags = (const wxSizerFlags *)wxluaT_getuserdatatype(L, 3, wxluatype_wxSizerFlags);
+    // wxWindow window
+    wxWindow * window = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call Prepend
+    wxSizerItem* returns = (wxSizerItem*)self->Prepend(window, *flags);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSizerItem);
+
+    return 1;
+}
+
 
 #if (wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Prepend2[] = { &wxluatype_wxSizer, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxSizer_Prepend2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Prepend2[1] = {{ wxLua_wxSizer_Prepend2, WXLUAMETHOD_METHOD, 3, 7, s_wxluatypeArray_wxLua_wxSizer_Prepend2 }};
-//     void Prepend(int width, int height, int proportion = 0, int flag = 0, int border= 0, wxObject* userData = NULL)
+//     void Prepend(int width, int height, int proportion = 0, int flag = 0, int border= 0, %ungc wxObject* userData = NULL)
 static int LUACALL wxLua_wxSizer_Prepend2(lua_State *L)
 {
     // get number of arguments
@@ -1733,6 +2364,7 @@ static int LUACALL wxLua_wxSizer_Prepend2(lua_State *L)
     int height = (int)wxlua_getnumbertype(L, 3);
     // int width
     int width = (int)wxlua_getnumbertype(L, 2);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // get this
     wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
     // call Prepend
@@ -1744,7 +2376,7 @@ static int LUACALL wxLua_wxSizer_Prepend2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Prepend1[] = { &wxluatype_wxSizer, &wxluatype_wxSizer, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxSizer_Prepend1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Prepend1[1] = {{ wxLua_wxSizer_Prepend1, WXLUAMETHOD_METHOD, 2, 6, s_wxluatypeArray_wxLua_wxSizer_Prepend1 }};
-//     void Prepend(wxSizer* sizer, int proportion = 0, int flag = 0, int border = 0, wxObject* userData = NULL)
+//     void Prepend(wxSizer* sizer, int proportion = 0, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
 static int LUACALL wxLua_wxSizer_Prepend1(lua_State *L)
 {
     // get number of arguments
@@ -1759,6 +2391,7 @@ static int LUACALL wxLua_wxSizer_Prepend1(lua_State *L)
     int proportion = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : 0);
     // wxSizer sizer
     wxSizer * sizer = (wxSizer *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSizer);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // get this
     wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
     // call Prepend
@@ -1770,7 +2403,7 @@ static int LUACALL wxLua_wxSizer_Prepend1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Prepend[] = { &wxluatype_wxSizer, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxSizer_Prepend(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Prepend[1] = {{ wxLua_wxSizer_Prepend, WXLUAMETHOD_METHOD, 2, 6, s_wxluatypeArray_wxLua_wxSizer_Prepend }};
-//     void Prepend(wxWindow* window, int proportion = 0, int flag = 0, int border = 0, wxObject* userData = NULL)
+//     void Prepend(wxWindow* window, int proportion = 0, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
 static int LUACALL wxLua_wxSizer_Prepend(lua_State *L)
 {
     // get number of arguments
@@ -1785,6 +2418,7 @@ static int LUACALL wxLua_wxSizer_Prepend(lua_State *L)
     int proportion = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : 0);
     // wxWindow window
     wxWindow * window = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // get this
     wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
     // call Prepend
@@ -1843,6 +2477,90 @@ static int LUACALL wxLua_wxSizer_RecalcSizes(lua_State *L)
     wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
     // call RecalcSizes
     self->RecalcSizes();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Replace2[] = { &wxluatype_wxSizer, &wxluatype_TINTEGER, &wxluatype_wxSizerItem, NULL };
+static int LUACALL wxLua_wxSizer_Replace2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Replace2[1] = {{ wxLua_wxSizer_Replace2, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSizer_Replace2 }};
+//     virtual bool Replace( size_t index, wxSizerItem *newitem )
+static int LUACALL wxLua_wxSizer_Replace2(lua_State *L)
+{
+    // wxSizerItem newitem
+    wxSizerItem * newitem = (wxSizerItem *)wxluaT_getuserdatatype(L, 3, wxluatype_wxSizerItem);
+    // size_t index
+    size_t index = (size_t)wxlua_getuintegertype(L, 2);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call Replace
+    bool returns = (self->Replace(index, newitem));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Replace1[] = { &wxluatype_wxSizer, &wxluatype_wxSizer, &wxluatype_wxSizer, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxSizer_Replace1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Replace1[1] = {{ wxLua_wxSizer_Replace1, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxSizer_Replace1 }};
+//     virtual bool Replace( wxSizer *oldsz, wxSizer *newsz, bool recursive = false )
+static int LUACALL wxLua_wxSizer_Replace1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool recursive = false
+    bool recursive = (argCount >= 4 ? wxlua_getbooleantype(L, 4) : false);
+    // wxSizer newsz
+    wxSizer * newsz = (wxSizer *)wxluaT_getuserdatatype(L, 3, wxluatype_wxSizer);
+    // wxSizer oldsz
+    wxSizer * oldsz = (wxSizer *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSizer);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call Replace
+    bool returns = (self->Replace(oldsz, newsz, recursive));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_Replace[] = { &wxluatype_wxSizer, &wxluatype_wxWindow, &wxluatype_wxWindow, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxSizer_Replace(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Replace[1] = {{ wxLua_wxSizer_Replace, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxSizer_Replace }};
+//     virtual bool Replace( wxWindow *oldwin, wxWindow *newwin, bool recursive = false )
+static int LUACALL wxLua_wxSizer_Replace(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool recursive = false
+    bool recursive = (argCount >= 4 ? wxlua_getbooleantype(L, 4) : false);
+    // wxWindow newwin
+    wxWindow * newwin = (wxWindow *)wxluaT_getuserdatatype(L, 3, wxluatype_wxWindow);
+    // wxWindow oldwin
+    wxWindow * oldwin = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call Replace
+    bool returns = (self->Replace(oldwin, newwin, recursive));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_SetContainingWindow[] = { &wxluatype_wxSizer, &wxluatype_wxWindow, NULL };
+static int LUACALL wxLua_wxSizer_SetContainingWindow(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_SetContainingWindow[1] = {{ wxLua_wxSizer_SetContainingWindow, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizer_SetContainingWindow }};
+//     void SetContainingWindow(wxWindow *window)
+static int LUACALL wxLua_wxSizer_SetContainingWindow(lua_State *L)
+{
+    // wxWindow window
+    wxWindow * window = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call SetContainingWindow
+    self->SetContainingWindow(window);
 
     return 0;
 }
@@ -2069,13 +2787,32 @@ static int LUACALL wxLua_wxSizer_Show(lua_State *L)
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSizer_ShowItems[] = { &wxluatype_wxSizer, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxSizer_ShowItems(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_ShowItems[1] = {{ wxLua_wxSizer_ShowItems, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizer_ShowItems }};
+//     virtual void ShowItems (bool show)
+static int LUACALL wxLua_wxSizer_ShowItems(lua_State *L)
+{
+    // bool show
+    bool show = wxlua_getbooleantype(L, 2);
+    // get this
+    wxSizer * self = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    // call ShowItems
+    self->ShowItems(show);
+
+    return 0;
+}
 
 
 
-#if ((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Add_overload[] =
 {
+    { wxLua_wxSizer_Add5, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizer_Add5 },
+    { wxLua_wxSizer_Add4, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSizer_Add4 },
+    { wxLua_wxSizer_Add3, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSizer_Add3 },
 
 #if (wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
     { wxLua_wxSizer_Add2, WXLUAMETHOD_METHOD, 3, 7, s_wxluatypeArray_wxLua_wxSizer_Add2 },
@@ -2091,7 +2828,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Add_overload[] =
 };
 static int s_wxluafunc_wxLua_wxSizer_Add_overload_count = sizeof(s_wxluafunc_wxLua_wxSizer_Add_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
 
 #if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
 // function overload table
@@ -2112,12 +2849,24 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_GetItem_overload[] =
 };
 static int s_wxluafunc_wxLua_wxSizer_GetItem_overload_count = sizeof(s_wxluafunc_wxLua_wxSizer_GetItem_overload)/sizeof(wxLuaBindCFunc);
 
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Hide_overload[] =
+{
+    { wxLua_wxSizer_Hide2, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizer_Hide2 },
+    { wxLua_wxSizer_Hide1, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxSizer_Hide1 },
+    { wxLua_wxSizer_Hide, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxSizer_Hide },
+};
+static int s_wxluafunc_wxLua_wxSizer_Hide_overload_count = sizeof(s_wxluafunc_wxLua_wxSizer_Hide_overload)/sizeof(wxLuaBindCFunc);
+
 #endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
 
-#if ((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Insert_overload[] =
 {
+    { wxLua_wxSizer_Insert5, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSizer_Insert5 },
+    { wxLua_wxSizer_Insert4, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxSizer_Insert4 },
+    { wxLua_wxSizer_Insert3, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxSizer_Insert3 },
 
 #if (wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
     { wxLua_wxSizer_Insert2, WXLUAMETHOD_METHOD, 4, 8, s_wxluatypeArray_wxLua_wxSizer_Insert2 },
@@ -2133,9 +2882,27 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Insert_overload[] =
 };
 static int s_wxluafunc_wxLua_wxSizer_Insert_overload_count = sizeof(s_wxluafunc_wxLua_wxSizer_Insert_overload)/sizeof(wxLuaBindCFunc);
 
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_IsShown_overload[] =
+{
+    { wxLua_wxSizer_IsShown2, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizer_IsShown2 },
+    { wxLua_wxSizer_IsShown1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizer_IsShown1 },
+    { wxLua_wxSizer_IsShown, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizer_IsShown },
+};
+static int s_wxluafunc_wxLua_wxSizer_IsShown_overload_count = sizeof(s_wxluafunc_wxLua_wxSizer_IsShown_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Prepend_overload[] =
 {
+    { wxLua_wxSizer_Prepend5, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSizer_Prepend5 },
+    { wxLua_wxSizer_Prepend4, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSizer_Prepend4 },
+    { wxLua_wxSizer_Prepend3, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSizer_Prepend3 },
 
 #if (wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
     { wxLua_wxSizer_Prepend2, WXLUAMETHOD_METHOD, 3, 7, s_wxluatypeArray_wxLua_wxSizer_Prepend2 },
@@ -2151,9 +2918,18 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Prepend_overload[] =
 };
 static int s_wxluafunc_wxLua_wxSizer_Prepend_overload_count = sizeof(s_wxluafunc_wxLua_wxSizer_Prepend_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
 
 #if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_Replace_overload[] =
+{
+    { wxLua_wxSizer_Replace2, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSizer_Replace2 },
+    { wxLua_wxSizer_Replace1, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxSizer_Replace1 },
+    { wxLua_wxSizer_Replace, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxSizer_Replace },
+};
+static int s_wxluafunc_wxLua_wxSizer_Replace_overload_count = sizeof(s_wxluafunc_wxLua_wxSizer_Replace_overload)/sizeof(wxLuaBindCFunc);
+
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSizer_SetItemMinSize_overload[] =
 {
@@ -2199,9 +2975,9 @@ void wxLua_wxSizer_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxSizer_methods[] = {
-#if ((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
     { "Add", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_Add_overload, s_wxluafunc_wxLua_wxSizer_Add_overload_count, 0 },
-#endif // ((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
 
     { "AddSpacer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_AddSpacer, 1, NULL },
     { "AddStretchSpacer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_AddStretchSpacer, 1, NULL },
@@ -2210,12 +2986,23 @@ wxLuaBindMethod wxSizer_methods[] = {
     { "CalcMin", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_CalcMin, 1, NULL },
 #endif // (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
 
+    { "Clear", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_Clear, 1, NULL },
+
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && ((wxABI_VERSION >=20808 ))) && (wxLUA_USE_wxPointSizeRect)
+    { "ComputeFittingClientSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_ComputeFittingClientSize, 1, NULL },
+    { "ComputeFittingWindowSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_ComputeFittingWindowSize, 1, NULL },
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && ((wxABI_VERSION >=20808 ))) && (wxLUA_USE_wxPointSizeRect)
+
+    { "DeleteWindows", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_DeleteWindows, 1, NULL },
+
 #if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
     { "Detach", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_Detach_overload, s_wxluafunc_wxLua_wxSizer_Detach_overload_count, 0 },
 #endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
 
     { "Fit", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_Fit, 1, NULL },
     { "FitInside", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_FitInside, 1, NULL },
+    { "GetChildren", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_GetChildren, 1, NULL },
+    { "GetContainingWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_GetContainingWindow, 1, NULL },
 
 #if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
     { "GetItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_GetItem_overload, s_wxluafunc_wxLua_wxSizer_GetItem_overload_count, 0 },
@@ -2227,21 +3014,36 @@ wxLuaBindMethod wxSizer_methods[] = {
     { "GetSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_GetSize, 1, NULL },
 #endif // (wxLUA_USE_wxPointSizeRect) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
 
-#if ((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+    { "Hide", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_Hide_overload, s_wxluafunc_wxLua_wxSizer_Hide_overload_count, 0 },
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
     { "Insert", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_Insert_overload, s_wxluafunc_wxLua_wxSizer_Insert_overload_count, 0 },
-#endif // ((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
 
     { "InsertSpacer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_InsertSpacer, 1, NULL },
     { "InsertStretchSpacer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_InsertStretchSpacer, 1, NULL },
+
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+    { "IsShown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_IsShown_overload, s_wxluafunc_wxLua_wxSizer_IsShown_overload_count, 0 },
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+
     { "Layout", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_Layout, 1, NULL },
 
-#if ((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
     { "Prepend", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_Prepend_overload, s_wxluafunc_wxLua_wxSizer_Prepend_overload_count, 0 },
-#endif // ((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))||((wxLUA_USE_wxObject) && ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))))
 
     { "PrependSpacer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_PrependSpacer, 1, NULL },
     { "PrependStretchSpacer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_PrependStretchSpacer, 1, NULL },
     { "RecalcSizes", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_RecalcSizes, 1, NULL },
+
+#if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+    { "Replace", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_Replace_overload, s_wxluafunc_wxLua_wxSizer_Replace_overload_count, 0 },
+#endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
+
+    { "SetContainingWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_SetContainingWindow, 1, NULL },
     { "SetDimension", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_SetDimension, 1, NULL },
 
 #if ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
@@ -2259,10 +3061,38 @@ wxLuaBindMethod wxSizer_methods[] = {
     { "Show", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_Show_overload, s_wxluafunc_wxLua_wxSizer_Show_overload_count, 0 },
 #endif // ((wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)))
 
+    { "ShowItems", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSizer_ShowItems, 1, NULL },
+
     { 0, 0, 0, 0 },
 };
 
 int wxSizer_methodCount = sizeof(wxSizer_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
+
+
+#if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
+// ---------------------------------------------------------------------------
+// Bind class wxSizerItemList
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxSizerItemList'
+int wxluatype_wxSizerItemList = WXLUA_TUNKNOWN;
+
+
+
+void wxLua_wxSizerItemList_delete_function(void** p)
+{
+    wxSizerItemList* o = (wxSizerItemList*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxSizerItemList_methods[] = {
+    { 0, 0, 0, 0 },
+};
+
+int wxSizerItemList_methodCount = sizeof(wxSizerItemList_methods)/sizeof(wxLuaBindMethod) - 1;
 
 #endif  // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
 
@@ -2744,7 +3574,7 @@ static int LUACALL wxLua_wxGridBagSizer_Add3(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGridBagSizer_Add2[] = { &wxluatype_wxGridBagSizer, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxGBPosition, &wxluatype_wxGBSpan, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxGridBagSizer_Add2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridBagSizer_Add2[1] = {{ wxLua_wxGridBagSizer_Add2, WXLUAMETHOD_METHOD, 4, 8, s_wxluatypeArray_wxLua_wxGridBagSizer_Add2 }};
-//     wxSizerItem* Add(int width, int height, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, wxObject* userData = NULL)
+//     wxSizerItem* Add(int width, int height, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
 static int LUACALL wxLua_wxGridBagSizer_Add2(lua_State *L)
 {
     // get number of arguments
@@ -2763,6 +3593,7 @@ static int LUACALL wxLua_wxGridBagSizer_Add2(lua_State *L)
     int height = (int)wxlua_getnumbertype(L, 3);
     // int width
     int width = (int)wxlua_getnumbertype(L, 2);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // get this
     wxGridBagSizer * self = (wxGridBagSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGridBagSizer);
     // call Add
@@ -2776,7 +3607,7 @@ static int LUACALL wxLua_wxGridBagSizer_Add2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGridBagSizer_Add1[] = { &wxluatype_wxGridBagSizer, &wxluatype_wxSizer, &wxluatype_wxGBPosition, &wxluatype_wxGBSpan, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxGridBagSizer_Add1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridBagSizer_Add1[1] = {{ wxLua_wxGridBagSizer_Add1, WXLUAMETHOD_METHOD, 3, 7, s_wxluatypeArray_wxLua_wxGridBagSizer_Add1 }};
-//     wxSizerItem* Add(wxSizer* sizer, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, wxObject* userData = NULL)
+//     wxSizerItem* Add(wxSizer* sizer, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
 static int LUACALL wxLua_wxGridBagSizer_Add1(lua_State *L)
 {
     // get number of arguments
@@ -2793,6 +3624,7 @@ static int LUACALL wxLua_wxGridBagSizer_Add1(lua_State *L)
     const wxGBPosition * pos = (const wxGBPosition *)wxluaT_getuserdatatype(L, 3, wxluatype_wxGBPosition);
     // wxSizer sizer
     wxSizer * sizer = (wxSizer *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSizer);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // get this
     wxGridBagSizer * self = (wxGridBagSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGridBagSizer);
     // call Add
@@ -2806,7 +3638,7 @@ static int LUACALL wxLua_wxGridBagSizer_Add1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGridBagSizer_Add[] = { &wxluatype_wxGridBagSizer, &wxluatype_wxWindow, &wxluatype_wxGBPosition, &wxluatype_wxGBSpan, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxGridBagSizer_Add(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridBagSizer_Add[1] = {{ wxLua_wxGridBagSizer_Add, WXLUAMETHOD_METHOD, 3, 7, s_wxluatypeArray_wxLua_wxGridBagSizer_Add }};
-//     wxSizerItem* Add(wxWindow* window, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, wxObject* userData = NULL)
+//     wxSizerItem* Add(wxWindow* window, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, %ungc wxObject* userData = NULL)
 static int LUACALL wxLua_wxGridBagSizer_Add(lua_State *L)
 {
     // get number of arguments
@@ -2823,6 +3655,7 @@ static int LUACALL wxLua_wxGridBagSizer_Add(lua_State *L)
     const wxGBPosition * pos = (const wxGBPosition *)wxluaT_getuserdatatype(L, 3, wxluatype_wxGBPosition);
     // wxWindow window
     wxWindow * window = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // get this
     wxGridBagSizer * self = (wxGridBagSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGridBagSizer);
     // call Add
@@ -3970,7 +4803,7 @@ static int LUACALL wxLua_wxGBSizerItem_SetSpan(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGBSizerItem_constructor3[] = { &wxluatype_wxSizer, &wxluatype_wxGBPosition, &wxluatype_wxGBSpan, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxGBSizerItem_constructor3(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGBSizerItem_constructor3[1] = {{ wxLua_wxGBSizerItem_constructor3, WXLUAMETHOD_CONSTRUCTOR, 6, 6, s_wxluatypeArray_wxLua_wxGBSizerItem_constructor3 }};
-//     wxGBSizerItem( wxSizer *sizer, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, wxObject* userData )
+//     wxGBSizerItem( wxSizer *sizer, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, %ungc wxObject* userData )
 static int LUACALL wxLua_wxGBSizerItem_constructor3(lua_State *L)
 {
     // wxObject userData
@@ -3985,6 +4818,7 @@ static int LUACALL wxLua_wxGBSizerItem_constructor3(lua_State *L)
     const wxGBPosition * pos = (const wxGBPosition *)wxluaT_getuserdatatype(L, 2, wxluatype_wxGBPosition);
     // wxSizer sizer
     wxSizer * sizer = (wxSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizer);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // call constructor
     wxGBSizerItem* returns = new wxGBSizerItem(sizer, *pos, *span, flag, border, userData);
     // push the constructed class pointer
@@ -3996,7 +4830,7 @@ static int LUACALL wxLua_wxGBSizerItem_constructor3(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGBSizerItem_constructor2[] = { &wxluatype_wxWindow, &wxluatype_wxGBPosition, &wxluatype_wxGBSpan, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxGBSizerItem_constructor2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGBSizerItem_constructor2[1] = {{ wxLua_wxGBSizerItem_constructor2, WXLUAMETHOD_CONSTRUCTOR, 6, 6, s_wxluatypeArray_wxLua_wxGBSizerItem_constructor2 }};
-//     wxGBSizerItem( wxWindow *window, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, wxObject* userData )
+//     wxGBSizerItem( wxWindow *window, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, %ungc wxObject* userData )
 static int LUACALL wxLua_wxGBSizerItem_constructor2(lua_State *L)
 {
     // wxObject userData
@@ -4011,6 +4845,7 @@ static int LUACALL wxLua_wxGBSizerItem_constructor2(lua_State *L)
     const wxGBPosition * pos = (const wxGBPosition *)wxluaT_getuserdatatype(L, 2, wxluatype_wxGBPosition);
     // wxWindow window
     wxWindow * window = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // call constructor
     wxGBSizerItem* returns = new wxGBSizerItem(window, *pos, *span, flag, border, userData);
     // push the constructed class pointer
@@ -4022,7 +4857,7 @@ static int LUACALL wxLua_wxGBSizerItem_constructor2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGBSizerItem_constructor1[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxGBPosition, &wxluatype_wxGBSpan, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxGBSizerItem_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGBSizerItem_constructor1[1] = {{ wxLua_wxGBSizerItem_constructor1, WXLUAMETHOD_CONSTRUCTOR, 7, 7, s_wxluatypeArray_wxLua_wxGBSizerItem_constructor1 }};
-//     wxGBSizerItem( int width, int height, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, wxObject* userData)
+//     wxGBSizerItem( int width, int height, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, %ungc wxObject* userData)
 static int LUACALL wxLua_wxGBSizerItem_constructor1(lua_State *L)
 {
     // wxObject userData
@@ -4039,6 +4874,7 @@ static int LUACALL wxLua_wxGBSizerItem_constructor1(lua_State *L)
     int height = (int)wxlua_getnumbertype(L, 2);
     // int width
     int width = (int)wxlua_getnumbertype(L, 1);
+    if (wxluaO_isgcobject(L, userData)) wxluaO_undeletegcobject(L, userData);
     // call constructor
     wxGBSizerItem* returns = new wxGBSizerItem(width, height, *pos, *span, flag, border, userData);
     // push the constructed class pointer

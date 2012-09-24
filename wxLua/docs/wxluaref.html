@@ -2770,6 +2770,11 @@
 <td align="center" bgcolor=#AAFFAA>X
 <td>&nbsp;
 <tr>
+<td><a href="#wxSizerItemList">wxSizerItemList</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
 <td><a href="#wxSlider">wxSlider</a>
 <td align="center" bgcolor=#AAFFAA>X
 <td align="center" bgcolor=#AAFFAA>X
@@ -3506,12 +3511,12 @@
 <a href="#wxHeaderSortIconType">wxHeaderSortIconType</a><br>
 <a href="#wxHelpEvent::Origin">wxHelpEvent::Origin</a><br>
 <a href="#wxHelpSearchMode">wxHelpSearchMode</a><br>
-<a href="#wxHotkeyModifier">wxHotkeyModifier</a><br>
 <a href="#wxHtmlWindowInterface::HTMLCursor">wxHtmlWindowInterface::HTMLCursor</a><br>
 <a href="#wxIdleMode">wxIdleMode</a><br>
 <a href="#wxImageResizeQuality">wxImageResizeQuality</a><br>
 <a href="#wxItemKind">wxItemKind</a><br>
 <a href="#wxKeyCode">wxKeyCode</a><br>
+<a href="#wxKeyModifier">wxKeyModifier</a><br>
 <a href="#wxKeyType">wxKeyType</a><br>
 <a href="#wxKillError">wxKillError</a><br>
 <a href="#wxKillFlags">wxKillFlags</a><br>
@@ -3635,7 +3640,7 @@
 <a href="#wxwidgets_wxhtml_html.i">wxwidgets/wxhtml_html.i</a><br>
 <a href="#wxwidgets_wxstc_stc.i">wxwidgets/wxstc_stc.i</a><br>
 <a href="#wxlua_wxlua.i">wxlua/wxlua.i</a><br>
-<a href="#wxluasocket_wxluasocket.i">wxluasocket/wxluasocket.i</a><br>
+<a href="#wxlua_debugger_wxluadebugger.i">wxlua_debugger/wxluadebugger.i</a><br>
 <br><HR>
 
 <h2><a name="wxwidgets_wxbase_base.i">wxwidgets/wxbase_base.i</a> - Lua table = 'wx'</h2>
@@ -10182,21 +10187,19 @@
 </font>
 </blockquote><font color=#0066CC><i>%endenum</i></font><br>
 <br>
-<i>%if</i> wxUSE_HOTKEY<br>
-<b><font size=+1 color=#0066CC><i>%enum</i> <a name="wxHotkeyModifier">wxHotkeyModifier</a></font></b>
+<b><font size=+1 color=#0066CC><i>%enum</i> <a name="wxKeyModifier">wxKeyModifier</a></font></b>
 <blockquote><font color=#0066CC>
     wxMOD_NONE<br>
     wxMOD_ALT<br>
     wxMOD_CONTROL<br>
-    <i>%wxchkver_2_8</i> wxMOD_ALTGR<br>
+    wxMOD_ALTGR<br>
     wxMOD_SHIFT<br>
-    <i>%wxchkver_2_8</i> wxMOD_META<br>
+    wxMOD_META<br>
     wxMOD_WIN<br>
-    <i>%wxchkver_2_8</i> wxMOD_CMD<br>
-    <i>%wxchkver_2_8</i> wxMOD_ALL<br>
+    wxMOD_CMD<br>
+    wxMOD_ALL<br>
 </font>
 </blockquote><font color=#0066CC><i>%endenum</i></font><br>
-<i>%endif</i><br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
 <font color=#009900>// <a href="#wxBusyCursor">wxBusyCursor</a></font><br>
@@ -15963,7 +15966,7 @@
 <br>
 <i>%if</i> wxLUA_USE_wxLuaPrintout<br>
 <br>
-<i>%include</i> "wxlua/include/wxlua_bind.h" <font color=#009900>// for <a href="#wxLuaObject">wxLuaObject</a> tag</font><br>
+<i>%include</i> "wxlua/wxlua_bind.h" <font color=#009900>// for <a href="#wxLuaObject">wxLuaObject</a> tag</font><br>
 <i>%include</i> "wxbind/include/wxcore_wxlcore.h"<br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <i>%delete</i> <a name="wxLuaPrintout">wxLuaPrintout</a>, <a href="#wxPrintout">wxPrintout</a></font></b>
@@ -16551,22 +16554,37 @@
     <a href="#wxSizerFlags">wxSizerFlags</a>&amp; Shaped()<br>
     <a href="#wxSizerFlags">wxSizerFlags</a>&amp; FixedMinSize()<br>
 <br>
+<i>%if</i> (wxABI_VERSION &gt;= 20808)<br>
+    <a href="#wxSizerFlags">wxSizerFlags</a>&amp; ReserveSpaceEvenIfHidden()<br>
+<i>%endif</i><br>
+<br>
     <font color=#009900>// accessors for <a href="#wxSizer">wxSizer</a> only</font><br>
     int GetProportion() const<br>
     int GetFlags() const<br>
     int GetBorderInPixels() const<br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
 <br>
+<font color=#009900>// ----------------------------------------------------------------------------</font><br>
+<font color=#009900>// wxSizerSpacer - No real need to create one of these in wxLua</font><br>
+<br>
+<font color=#009900>//<i>%class</i> wxSizerSpacer</font><br>
+<font color=#009900>//    wxSizerSpacer(const <a href="#wxSize">wxSize</a>&amp; size)</font><br>
+<font color=#009900>//    void SetSize(const <a href="#wxSize">wxSize</a>&amp; size)</font><br>
+<font color=#009900>//    const <a href="#wxSize">wxSize</a>&amp; GetSize() const</font><br>
+<font color=#009900>//    void Show(bool show)</font><br>
+<font color=#009900>//    bool IsShown() const</font><br>
+<font color=#009900>//<i>%endclass</i></font><br>
+<br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
 <font color=#009900>// <a href="#wxSizerItem">wxSizerItem</a></font><br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <a name="wxSizerItem">wxSizerItem</a>, <a href="#wxObject">wxObject</a></font></b>
 <blockquote>
-    <a href="#wxSizerItem">wxSizerItem</a>(int width, int height, int proportion, int flag, int border, <a href="#wxObject">wxObject</a>* userData)<br>
-    <a href="#wxSizerItem">wxSizerItem</a>(<a href="#wxWindow">wxWindow</a>* window, int proportion, int flag, int border, <a href="#wxObject">wxObject</a>* userData)<br>
-    <a href="#wxSizerItem">wxSizerItem</a>(<a href="#wxSizer">wxSizer</a>* sizer, int proportion, int flag, int border, <a href="#wxObject">wxObject</a>* userData)<br>
-    <font color=#009900>//<a href="#wxSizerItem">wxSizerItem</a>(<a href="#wxWindow">wxWindow</a>* window, const <a href="#wxSizerFlags">wxSizerFlags</a>&amp; flags)</font><br>
-    <font color=#009900>//<a href="#wxSizerItem">wxSizerItem</a>(<a href="#wxSizer">wxSizer</a>* window, const <a href="#wxSizerFlags">wxSizerFlags</a>&amp; flags)</font><br>
+    <a href="#wxSizerItem">wxSizerItem</a>(int width, int height, int proportion, int flag, int border, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>(<a href="#wxWindow">wxWindow</a>* window, int proportion, int flag, int border, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>(<a href="#wxSizer">wxSizer</a>* sizer, int proportion, int flag, int border, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>(<a href="#wxWindow">wxWindow</a>* window, const <a href="#wxSizerFlags">wxSizerFlags</a>&amp; flags)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>(<a href="#wxSizer">wxSizer</a>* window, const <a href="#wxSizerFlags">wxSizerFlags</a>&amp; flags)<br>
 <br>
     <a href="#wxSize">wxSize</a> CalcMin()<br>
     void DeleteWindows()<br>
@@ -16574,6 +16592,7 @@
     int GetBorder() const<br>
     int GetFlag() const<br>
     <a href="#wxSize">wxSize</a> GetMinSize() const<br>
+    <a href="#wxSize">wxSize</a> GetMinSizeWithBorder() const<br>
     <a href="#wxPoint">wxPoint</a> GetPosition() const<br>
     int GetProportion() const<br>
     float GetRatio() const<br>
@@ -16591,12 +16610,16 @@
     void SetDimension(const <a href="#wxPoint">wxPoint</a>&amp; pos, const <a href="#wxSize">wxSize</a>&amp; size)<br>
     void SetFlag(int flag)<br>
     void SetInitSize(int x, int y)<br>
+    void SetMinSize(const <a href="#wxSize">wxSize</a>&amp; size)<br>
+    void SetMinSize( int x, int y )<br>
     void SetProportion(int proportion)<br>
     void SetRatio(int width, int height)<br>
-    <font color=#009900>//void SetRatio(const <a href="#wxSize">wxSize</a>&amp; size)</font><br>
+    void SetRatio(const <a href="#wxSize">wxSize</a>&amp; size)<br>
     void SetRatio(float ratio)<br>
     void SetSizer(<a href="#wxSizer">wxSizer</a>* sizer)<br>
     void SetSpacer(const <a href="#wxSize">wxSize</a>&amp; size)<br>
+    void SetSpacer(int width, int height)<br>
+    void SetUserData(<i>%ungc</i> <a href="#wxObject">wxObject</a>* userData)<br>
     void SetWindow(<a href="#wxWindow">wxWindow</a>* window)<br>
     void Show(bool show)<br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
@@ -16608,44 +16631,67 @@
 <blockquote>
     <font color=#009900>// base class no constructors</font><br>
 <br>
-    <a href="#wxSizerItem">wxSizerItem</a>* Add(<a href="#wxWindow">wxWindow</a>* window, int proportion = 0,int flag = 0, int border = 0, <a href="#wxObject">wxObject</a>* userData = NULL)<br>
-    <a href="#wxSizerItem">wxSizerItem</a>* Add(<a href="#wxSizer">wxSizer</a>* sizer, int proportion = 0, int flag = 0, int border = 0, <a href="#wxObject">wxObject</a>* userData = NULL)<br>
-    <a href="#wxSizerItem">wxSizerItem</a>* Add(int width, int height, int proportion = 0, int flag = 0, int border = 0, <a href="#wxObject">wxObject</a>* userData = NULL)<br>
-    <font color=#009900>//<a href="#wxSizerItem">wxSizerItem</a>* Add(<a href="#wxWindow">wxWindow</a>* window, const <a href="#wxSizerFlags">wxSizerFlags</a>&amp; flags)</font><br>
-    <font color=#009900>//<a href="#wxSizerItem">wxSizerItem</a>* Add(<a href="#wxSizer">wxSizer</a>* sizer, const <a href="#wxSizerFlags">wxSizerFlags</a>&amp; flags)</font><br>
+    <a href="#wxSizerItem">wxSizerItem</a>* Add(<a href="#wxWindow">wxWindow</a>* window, int proportion = 0,int flag = 0, int border = 0, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData = NULL)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>* Add(<a href="#wxSizer">wxSizer</a>* sizer, int proportion = 0, int flag = 0, int border = 0, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData = NULL)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>* Add(int width, int height, int proportion = 0, int flag = 0, int border = 0, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData = NULL)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>* Add(<a href="#wxWindow">wxWindow</a>* window, const <a href="#wxSizerFlags">wxSizerFlags</a>&amp; flags)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>* Add(<a href="#wxSizer">wxSizer</a>* sizer, const <a href="#wxSizerFlags">wxSizerFlags</a>&amp; flags)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>* Add( <a href="#wxSizerItem">wxSizerItem</a> *item)<br>
     <a href="#wxSizerItem">wxSizerItem</a>* AddSpacer(int size)<br>
     <a href="#wxSizerItem">wxSizerItem</a>* AddStretchSpacer(int prop = 1)<br>
     <a href="#wxSize">wxSize</a> CalcMin()<br>
+    virtual void Clear( bool delete_windows = false )<br>
+<br>
+<i>%if</i> (wxABI_VERSION &gt;= 20808)<br>
+    <a href="#wxSize">wxSize</a> ComputeFittingClientSize(<a href="#wxWindow">wxWindow</a> *window)<br>
+    <a href="#wxSize">wxSize</a> ComputeFittingWindowSize(<a href="#wxWindow">wxWindow</a> *window)<br>
+<i>%endif</i><br>
+<br>
+    virtual void DeleteWindows()<br>
     bool Detach(<a href="#wxWindow">wxWindow</a>* window)<br>
     bool Detach(<a href="#wxSizer">wxSizer</a>* sizer)<br>
     bool Detach(size_t index)<br>
     void Fit(<a href="#wxWindow">wxWindow</a>* window)<br>
     void FitInside(<a href="#wxWindow">wxWindow</a>* window)<br>
+    <a href="#wxSizerItemList">wxSizerItemList</a>&amp; GetChildren()<br>
+    <a href="#wxWindow">wxWindow</a> *GetContainingWindow() const<br>
     <a href="#wxSizerItem">wxSizerItem</a>* GetItem(<a href="#wxWindow">wxWindow</a>* window, bool recursive = false)<br>
     <a href="#wxSizerItem">wxSizerItem</a>* GetItem(<a href="#wxSizer">wxSizer</a>* sizer, bool recursive = false)<br>
     <a href="#wxSizerItem">wxSizerItem</a>* GetItem(size_t index)<br>
     <a href="#wxSize">wxSize</a> GetSize()<br>
     <a href="#wxPoint">wxPoint</a> GetPosition()<br>
     <a href="#wxSize">wxSize</a> GetMinSize()<br>
-    <a href="#wxSizerItem">wxSizerItem</a>* Insert(size_t index, <a href="#wxWindow">wxWindow</a>* window, int proportion = 0,int flag = 0, int border = 0, <a href="#wxObject">wxObject</a>* userData = NULL)<br>
-    <a href="#wxSizerItem">wxSizerItem</a>* Insert(size_t index, <a href="#wxSizer">wxSizer</a>* sizer, int proportion = 0, int flag = 0, int border = 0, <a href="#wxObject">wxObject</a>* userData = NULL)<br>
-    <a href="#wxSizerItem">wxSizerItem</a>* Insert(size_t index, int width, int height, int proportion = 0, int flag = 0, int border = 0, <a href="#wxObject">wxObject</a>* userData = NULL)<br>
-    <font color=#009900>//<a href="#wxSizerItem">wxSizerItem</a>* Insert(size_t index, <a href="#wxWindow">wxWindow</a>* window, const <a href="#wxSizerFlags">wxSizerFlags</a>&amp; flags)</font><br>
-    <font color=#009900>//<a href="#wxSizerItem">wxSizerItem</a>* Insert(size_t index, <a href="#wxSizer">wxSizer</a>* sizer, const <a href="#wxSizerFlags">wxSizerFlags</a>&amp; flags)</font><br>
+    bool Hide( <a href="#wxSizer">wxSizer</a> *sizer, bool recursive = false )<br>
+    bool Hide( <a href="#wxWindow">wxWindow</a> *window, bool recursive = false )<br>
+    bool Hide( size_t index )<br>
+    <a href="#wxSizerItem">wxSizerItem</a>* Insert(size_t index, <a href="#wxWindow">wxWindow</a>* window, int proportion = 0,int flag = 0, int border = 0, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData = NULL)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>* Insert(size_t index, <a href="#wxSizer">wxSizer</a>* sizer, int proportion = 0, int flag = 0, int border = 0, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData = NULL)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>* Insert(size_t index, int width, int height, int proportion = 0, int flag = 0, int border = 0, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData = NULL)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>* Insert(size_t index, <a href="#wxWindow">wxWindow</a>* window, const <a href="#wxSizerFlags">wxSizerFlags</a>&amp; flags)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>* Insert(size_t index, <a href="#wxSizer">wxSizer</a>* sizer, const <a href="#wxSizerFlags">wxSizerFlags</a>&amp; flags)<br>
+    virtual <a href="#wxSizerItem">wxSizerItem</a>* Insert( size_t index, <a href="#wxSizerItem">wxSizerItem</a> *item)<br>
     <a href="#wxSizerItem">wxSizerItem</a>* InsertSpacer(size_t index, int size)<br>
     <a href="#wxSizerItem">wxSizerItem</a>* InsertStretchSpacer(size_t index, int prop = 1)<br>
+    bool IsShown( <a href="#wxWindow">wxWindow</a> *window ) const<br>
+    bool IsShown( <a href="#wxSizer">wxSizer</a> *sizer ) const<br>
+    bool IsShown( size_t index ) const<br>
     void Layout()<br>
-    void Prepend(<a href="#wxWindow">wxWindow</a>* window, int proportion = 0, int flag = 0, int border = 0, <a href="#wxObject">wxObject</a>* userData = NULL)<br>
-    void Prepend(<a href="#wxSizer">wxSizer</a>* sizer, int proportion = 0, int flag = 0, int border = 0, <a href="#wxObject">wxObject</a>* userData = NULL)<br>
-    void Prepend(int width, int height, int proportion = 0, int flag = 0, int border= 0, <a href="#wxObject">wxObject</a>* userData = NULL)<br>
-    <font color=#009900>//<a href="#wxSizerItem">wxSizerItem</a>* Prepend(<a href="#wxWindow">wxWindow</a>* window, const <a href="#wxSizerFlags">wxSizerFlags</a>&amp; flags)</font><br>
-    <font color=#009900>//<a href="#wxSizerItem">wxSizerItem</a>* Prepend(<a href="#wxSizer">wxSizer</a>* sizer, const <a href="#wxSizerFlags">wxSizerFlags</a>&amp; flags)</font><br>
+    void Prepend(<a href="#wxWindow">wxWindow</a>* window, int proportion = 0, int flag = 0, int border = 0, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData = NULL)<br>
+    void Prepend(<a href="#wxSizer">wxSizer</a>* sizer, int proportion = 0, int flag = 0, int border = 0, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData = NULL)<br>
+    void Prepend(int width, int height, int proportion = 0, int flag = 0, int border= 0, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData = NULL)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>* Prepend(<a href="#wxWindow">wxWindow</a>* window, const <a href="#wxSizerFlags">wxSizerFlags</a>&amp; flags)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>* Prepend(<a href="#wxSizer">wxSizer</a>* sizer, const <a href="#wxSizerFlags">wxSizerFlags</a>&amp; flags)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>* Prepend(<a href="#wxSizerItem">wxSizerItem</a> *item)<br>
     <a href="#wxSizerItem">wxSizerItem</a>* PrependSpacer(int size)<br>
     <a href="#wxSizerItem">wxSizerItem</a>* PrependStretchSpacer(int prop = 1)<br>
     void RecalcSizes()<br>
     <font color=#009900>//bool Remove(<a href="#wxWindow">wxWindow</a>* window) - deprecated use Detach</font><br>
     <font color=#009900>//bool Remove(<a href="#wxSizer">wxSizer</a>* sizer)</font><br>
     <font color=#009900>//bool Remove(size_t index)</font><br>
+    virtual bool Replace( <a href="#wxWindow">wxWindow</a> *oldwin, <a href="#wxWindow">wxWindow</a> *newwin, bool recursive = false )<br>
+    virtual bool Replace( <a href="#wxSizer">wxSizer</a> *oldsz, <a href="#wxSizer">wxSizer</a> *newsz, bool recursive = false )<br>
+    virtual bool Replace( size_t index, <a href="#wxSizerItem">wxSizerItem</a> *newitem )<br>
+    void SetContainingWindow(<a href="#wxWindow">wxWindow</a> *window)<br>
     void SetDimension(int x, int y, int width, int height)<br>
     void SetMinSize(int width, int height)<br>
     void SetMinSize(const <a href="#wxSize">wxSize</a>&amp; size)<br>
@@ -16657,7 +16703,27 @@
     bool Show(<a href="#wxWindow">wxWindow</a>* window, bool show = true, bool recursive = false)<br>
     bool Show(<a href="#wxSizer">wxSizer</a>* sizer, bool show = true, bool recursive = false)<br>
     bool Show(size_t index, bool show = true)<br>
+    <font color=#009900>//void Show(bool show) - simply calls ShowItems()</font><br>
+    virtual void ShowItems (bool show)<br>
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxSizerItemList">wxSizerItemList</a></font><br>
+<br>
+<font color=#009900>//<i>%if</i> wxLUA_USE_wxSizerItemList &amp;&amp; !wxUSE_STL</font><br>
+<br>
+<b><font size=+1 color=#DD0000><i>%class</i> <a name="wxSizerItemList">wxSizerItemList</a>, <a href="#wxList">wxList</a></font></b>
+<blockquote>
+    <font color=#009900>//<a href="#wxSizerItemList">wxSizerItemList</a>() - no constructor, just get this from wxSizer::GetChildren()</font><br>
+<br>
+    <font color=#009900>// This is returned from wxSizer::GetChildren(), use <a href="#wxList">wxList</a> methods and</font><br>
+    <font color=#009900>//   wxNode::GetData():DynamicCast("wxSizer") to retrieve the <a href="#wxSizer">wxSizer</a></font><br>
+<br>
+    <font color=#009900>// Use the <a href="#wxList">wxList</a> methods, see also <a href="#wxNode">wxNode</a></font><br>
+<br>
+</blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
+<br>
+<font color=#009900>//<i>%endif</i> //wxLUA_USE_wxSizerItemList &amp;&amp; !wxUSE_STL</font><br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
 <font color=#009900>// <a href="#wxBoxSizer">wxBoxSizer</a></font><br>
@@ -16724,9 +16790,9 @@
 <blockquote>
     <a href="#wxGridBagSizer">wxGridBagSizer</a>(int vgap=0, int hgap=0)<br>
 <br>
-    <a href="#wxSizerItem">wxSizerItem</a>* Add(<a href="#wxWindow">wxWindow</a>* window, const <a href="#wxGBPosition">wxGBPosition</a>&amp; pos, const <a href="#wxGBSpan">wxGBSpan</a>&amp; span = wxDefaultSpan, int flag = 0, int border = 0, <a href="#wxObject">wxObject</a>* userData = NULL)<br>
-    <a href="#wxSizerItem">wxSizerItem</a>* Add(<a href="#wxSizer">wxSizer</a>* sizer, const <a href="#wxGBPosition">wxGBPosition</a>&amp; pos, const <a href="#wxGBSpan">wxGBSpan</a>&amp; span = wxDefaultSpan, int flag = 0, int border = 0, <a href="#wxObject">wxObject</a>* userData = NULL)<br>
-    <a href="#wxSizerItem">wxSizerItem</a>* Add(int width, int height, const <a href="#wxGBPosition">wxGBPosition</a>&amp; pos, const <a href="#wxGBSpan">wxGBSpan</a>&amp; span = wxDefaultSpan, int flag = 0, int border = 0, <a href="#wxObject">wxObject</a>* userData = NULL)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>* Add(<a href="#wxWindow">wxWindow</a>* window, const <a href="#wxGBPosition">wxGBPosition</a>&amp; pos, const <a href="#wxGBSpan">wxGBSpan</a>&amp; span = wxDefaultSpan, int flag = 0, int border = 0, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData = NULL)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>* Add(<a href="#wxSizer">wxSizer</a>* sizer, const <a href="#wxGBPosition">wxGBPosition</a>&amp; pos, const <a href="#wxGBSpan">wxGBSpan</a>&amp; span = wxDefaultSpan, int flag = 0, int border = 0, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData = NULL)<br>
+    <a href="#wxSizerItem">wxSizerItem</a>* Add(int width, int height, const <a href="#wxGBPosition">wxGBPosition</a>&amp; pos, const <a href="#wxGBSpan">wxGBSpan</a>&amp; span = wxDefaultSpan, int flag = 0, int border = 0, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData = NULL)<br>
     <a href="#wxSizerItem">wxSizerItem</a>* Add(<a href="#wxGBSizerItem">wxGBSizerItem</a>* item)<br>
 <br>
     bool CheckForIntersection(<a href="#wxGBSizerItem">wxGBSizerItem</a>* item, <a href="#wxGBSizerItem">wxGBSizerItem</a>* excludeItem = NULL)<br>
@@ -16796,9 +16862,9 @@
 <b><font size=+1 color=#DD0000><i>%class</i> <a name="wxGBSizerItem">wxGBSizerItem</a>, <a href="#wxSizerItem">wxSizerItem</a></font></b>
 <blockquote>
     <a href="#wxGBSizerItem">wxGBSizerItem</a>()<br>
-    <a href="#wxGBSizerItem">wxGBSizerItem</a>( int width, int height, const <a href="#wxGBPosition">wxGBPosition</a>&amp; pos, const <a href="#wxGBSpan">wxGBSpan</a>&amp; span, int flag, int border, <a href="#wxObject">wxObject</a>* userData)<br>
-    <a href="#wxGBSizerItem">wxGBSizerItem</a>( <a href="#wxWindow">wxWindow</a> *window, const <a href="#wxGBPosition">wxGBPosition</a>&amp; pos, const <a href="#wxGBSpan">wxGBSpan</a>&amp; span, int flag, int border, <a href="#wxObject">wxObject</a>* userData )<br>
-    <a href="#wxGBSizerItem">wxGBSizerItem</a>( <a href="#wxSizer">wxSizer</a> *sizer, const <a href="#wxGBPosition">wxGBPosition</a>&amp; pos, const <a href="#wxGBSpan">wxGBSpan</a>&amp; span, int flag, int border, <a href="#wxObject">wxObject</a>* userData )<br>
+    <a href="#wxGBSizerItem">wxGBSizerItem</a>( int width, int height, const <a href="#wxGBPosition">wxGBPosition</a>&amp; pos, const <a href="#wxGBSpan">wxGBSpan</a>&amp; span, int flag, int border, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData)<br>
+    <a href="#wxGBSizerItem">wxGBSizerItem</a>( <a href="#wxWindow">wxWindow</a> *window, const <a href="#wxGBPosition">wxGBPosition</a>&amp; pos, const <a href="#wxGBSpan">wxGBSpan</a>&amp; span, int flag, int border, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData )<br>
+    <a href="#wxGBSizerItem">wxGBSizerItem</a>( <a href="#wxSizer">wxSizer</a> *sizer, const <a href="#wxGBPosition">wxGBPosition</a>&amp; pos, const <a href="#wxGBSpan">wxGBSpan</a>&amp; span, int flag, int border, <i>%ungc</i> <a href="#wxObject">wxObject</a>* userData )<br>
 <br>
     <a href="#wxGBPosition">wxGBPosition</a> GetPos() const<br>
     <font color=#009900>//void GetPos(int&amp; row, int&amp; col) const;</font><br>
@@ -25759,7 +25825,7 @@
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
 <font color=#009900>// <a href="#wxLuaState">wxLuaState</a></font><br>
 <br>
-<i>%include</i> "wxlua/include/wxlstate.h"<br>
+<i>%include</i> "wxlua/wxlstate.h"<br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <i>%delete</i> <a name="wxLuaState">wxLuaState</a>, <a href="#wxObject">wxObject</a></font></b>
 <blockquote>
@@ -25824,11 +25890,11 @@
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
 <br><HR>
 
-<h2><a name="wxluasocket_wxluasocket.i">wxluasocket/wxluasocket.i</a> - Lua table = 'wxlua'</h2>
+<h2><a name="wxlua_debugger_wxluadebugger.i">wxlua_debugger/wxluadebugger.i</a> - Lua table = 'wxlua'</h2>
 <HR>
 
 <font color=#009900>// ===========================================================================</font><br>
-<font color=#009900>// Purpose:     wxLuaSocket specific wrappers</font><br>
+<font color=#009900>// Purpose:     wxLuaDebugger specific wrappers</font><br>
 <font color=#009900>// Author:      J Winwood, John Labenski</font><br>
 <font color=#009900>// Created:     14/11/2001</font><br>
 <font color=#009900>// Copyright:   (c) 2001-2002 Lomtick Software. All rights reserved.</font><br>
@@ -25839,8 +25905,8 @@
 <i>%include</i> "wx/defs.h"<br>
 <i>%include</i> "wx/object.h"<br>
 <br>
-<i>%include</i> "wxlua/include/wxlstate.h"<br>
-<i>%include</i> "wxlua/include/wxlbind.h"<br>
+<i>%include</i> "wxlua/wxlstate.h"<br>
+<i>%include</i> "wxlua/wxlbind.h"<br>
 <br>
 <br>
 <font color=#009900>// Show a dialog of the current stack and all of the global data in a <a href="#wxListCtrl">wxListCtrl</a></font><br>
@@ -25852,7 +25918,7 @@
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
 <font color=#009900>// wxLuaDebugServer</font><br>
 <br>
-<i>%include</i> "wxluasocket/include/wxldserv.h"<br>
+<i>%include</i> "wxlua/debugger/wxldserv.h"<br>
 <br>
 <b><font size=+1 color=#DD0000><i>%class</i> <i>%delete</i> <a name="wxLuaDebuggerServer">wxLuaDebuggerServer</a>, <a href="#wxEvtHandler">wxEvtHandler</a></font></b>
 <blockquote>

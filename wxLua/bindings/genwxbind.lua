@@ -1102,6 +1102,8 @@ function InitKeywords()
     preprocConditionTable["wxLUA_USE_wxPenList"]               = "wxLUA_USE_wxPenList"
     preprocConditionTable["wxLUA_USE_wxPicker"]                = "wxLUA_USE_wxPicker"
     preprocConditionTable["wxLUA_USE_wxPointSizeRect"]         = "wxLUA_USE_wxPointSizeRect"
+    preprocConditionTable["wxLUA_USE_wxPopupWindow"]           = "wxLUA_USE_wxPopupWindow"
+    preprocConditionTable["wxLUA_USE_wxPopupTransientWindow"]  = "wxLUA_USE_wxPopupTransientWindow"
     preprocConditionTable["wxLUA_USE_wxPrint"]                 = "wxLUA_USE_wxPrint"
     preprocConditionTable["wxLUA_USE_wxProcess"]               = "wxLUA_USE_wxProcess"
     preprocConditionTable["wxLUA_USE_wxProgressDialog"]        = "wxLUA_USE_wxProgressDialog"
@@ -1157,6 +1159,10 @@ function InitKeywords()
     preprocOperatorTable["||"] = "||"
     preprocOperatorTable["&"]  = "&&"
     preprocOperatorTable["&&"] = "&&"
+    preprocOperatorTable[">"]  = ">"
+    preprocOperatorTable[">="] = ">="
+    preprocOperatorTable["<"]  = "<"
+    preprocOperatorTable["<="] = "<="
     preprocOperatorTable["!"]  = "!"
     preprocOperatorTable["("]  = "("
     preprocOperatorTable[")"]  = ")"
@@ -2219,8 +2225,9 @@ function ParseData(interfaceData)
                         if not lineState.Condition then
                             lineState.Condition = ""
                         else
-                            local c = string.sub(lineState.Condition, -1, -1) -- get last char
-                            if (c ~= "(") and (c ~= "!") then -- eg. not start of condition
+                            local c0 = string.sub(lineState.Condition,  1,  1) -- get first char
+                            local c  = string.sub(lineState.Condition, -1, -1) -- get last char
+                            if (c0 ~= "(") and (c ~= "(") and (c ~= "!") then -- eg. not start of condition
                                 if not preprocOperatorTable[c] then
                                     print("ERROR: Expected Conditional Operator "..tag..". "..LineTableErrString(lineTable))
                                 end

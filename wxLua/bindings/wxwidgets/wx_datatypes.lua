@@ -4147,6 +4147,15 @@ wx_dataTypeTable =
     Name = "wxSizerItem",
     ValueType = "class",
   },
+  wxSizerItemList = {
+    BaseClasses = {
+      [1] = "wxList",
+    },
+    Condition = "(wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))",
+    IsNumber = false,
+    Name = "wxSizerItemList",
+    ValueType = "class",
+  },
   wxSlider = {
     BaseClasses = {
       [1] = "wxControl",
@@ -5313,6 +5322,8 @@ wx_preprocConditionTable =
   wxLUA_USE_wxPenList = "wxLUA_USE_wxPenList",
   wxLUA_USE_wxPicker = "wxLUA_USE_wxPicker",
   wxLUA_USE_wxPointSizeRect = "wxLUA_USE_wxPointSizeRect",
+  wxLUA_USE_wxPopupTransientWindow = "wxLUA_USE_wxPopupTransientWindow",
+  wxLUA_USE_wxPopupWindow = "wxLUA_USE_wxPopupWindow",
   wxLUA_USE_wxPrint = "wxLUA_USE_wxPrint",
   wxLUA_USE_wxProcess = "wxLUA_USE_wxProcess",
   wxLUA_USE_wxProgressDialog = "wxLUA_USE_wxProgressDialog",
