@@ -12,6 +12,8 @@
 
 #include "wxlua/wxldefs.h"
 #include "wxlua/wxlbind.h"
+#include "wxlua/wxlobject.h"
+
 #include <wx/filefn.h>
 #include <wx/filename.h>
 #include <wx/hashmap.h>
@@ -643,7 +645,7 @@ public:
 //                     please use the wxLuaState accessor functions
 //----------------------------------------------------------------------------
 
-#include "wx/hashmap.h"
+#include <wx/hashmap.h>
 WX_DECLARE_VOIDPTR_HASH_MAP_WITH_DECL(wxLuaState *, wxHashMapLuaState, class WXDLLIMPEXP_WXLUA);
 
 class WXDLLIMPEXP_WXLUA wxLuaStateRefData : public wxObjectRefData

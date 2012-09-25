@@ -3,12 +3,17 @@
 
  version 2.8.12.3 
  --------------------------------------------------------------------
- - Remove Bakefile build files since the next-gen version is
+ * Remove Bakefile build files since the next-gen Bakefile version is
    incompatible with the current Bakefiles anyway. 
    http://permalink.gmane.org/gmane.comp.sysutils.bakefile.devel/1502
- - Change the dir structure by removing the include/ and src/ dirs
-   to flatten and simplify it.
+ * Change the dir structure by removing the include/ and src/ dirs
+   to flatten, simplify, and make it possible to "install" into a 
+   normal include directory structure.
  - Rename the wxLuaSocket lib to wxLuaDebugger lib since that what it is.
+ - Move wxLuaObject and "smart" helper classes into wxlobject.h/cpp
+ - Add lbitlib.c and create the "bit32" table to help the transition
+   to Lua 5.2. (Using backport version by Sean Bolton)
+ - Start to use Markdown for documentation to make maintenance easier.
 
  version 2.8.12.2 (released 7/26/2012)
  --------------------------------------------------------------------

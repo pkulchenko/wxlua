@@ -1,0 +1,804 @@
+% wxLua 2.8.12 - Installation Guide
+% John Labenski, Francesco Montorsi
+% 2012-09-23
+
+This document describes how to build the wxLua libraries, editors, and
+interpreters. wxLua is written in C and C++ and can be built on MS
+Windows, Linux, and OSX with the Visual Studio, Borland, Watcom, MingW,
+and GCC compilers. Most of the build settings and platforms that are
+supported by wxWidgets are supported by wxLua.
+
+
+## Table of Contents
+
+1. [Required Libraries (dependencies)](#C1)
+2. [Building wxWidgets](#C2) \
+    2.1 [Getting the wxWidgets Source Code](#C2.1) \
+    2.2 [Build using Microsoft Visual Studio GUI](#C2.2) \
+    2.3 [Build using MSVC NMake](#C2.3) \
+    2.4 [Build using MinGW](#C2.4) \
+    2.5 [Build using GCC in Linux](#C2.5) \
+    2.6 [Build using GCC in OSX](#C2.6)
+3. [wxLua Components](#C3) \
+    3.1 [wxLua applications](#C3.1) \
+    3.2 [wxLua libraries](#C3.2) \
+    3.3 [wxLua utilities](#C3.3)
+4. [Building wxLua](#C4) \
+    4.1 [Getting the wxLua Source Code](#C4.1) \
+    4.2 [Initial CMake Setup](#C4.2) \
+    4.3 [CMake Configuration Variables](#C4.3) \
+    4.4 [CMake with MSVC](#C4.4) \
+    4.5 [CMake with MinGW](#C4.5) \
+    4.6 [CMake with GCC in Linux and OSX](#C4.6)
+5. [Advanced building options](#C5) \
+    5.1 [Building a minimal set of wxWidgets wrappers](#C5.1) \
+    5.2 [Embedding wxLua into a C++ Application](#C5.2) \
+    5.2 [wxLua libraries and linking order](#C5.3)
+
+
+<a name="C1"/>
+
+## 1 - Required Libraries (dependencies)
+
+- wxWidgets - Version 2.8.x or 2.9.x
+    -   [http://www.wxwidgets.org](http://www.wxwidgets.org)
+    -   Please see [Building wxWidgets](#C2) for information about building
+        wxWidgets on a variety of platforms.
+    -   The wxStyledTextCtrl (wxSTC) library is a wrapper around the
+        Scintilla text editor control and is required to build the `wxlua` and
+        `wxluaedit` applications and the `wxbindstc` binding library.
+        -   wxWidgets < 2.9 Windows users can build the wxSTC library using the
+            makefiles or the MSVC build files in `contrib/stc/stc`.
+        -   wxWidgets < 2.9 Unix/OSX users can use the Makefile in created
+            in `contrib/src/stc` after you have run `configure` and have
+            successfully built the main wxWidgets libraries.
+        -   wxWidgets >= 2.9 has wxSTC built in and there is no longer
+            a `wxWidgets/contrib` directory.
+    -   **Before attempting to compile wxLua you should be able to compile and
+        successfully run at least one of the wxWidgets samples.**
+
+- wxSTEdit - Version 1.2.6 or higher.
+    -   [http://wxcode.sourceforge.net](http://wxcode.sourceforge.net);
+        [http://wxcode.sourceforge.net/components/stedit/](http://wxcode.sourceforge.net/components/stedit)
+    -   The source code is included in `wxLua/modules/wxstedit`
+    -   There is more information about wxStEdit with the source code.
+    -   By default, wxStEdit will be built automatically when you build wxLua.
+
+- Lua - Version 5.1.5
+    -   wxLua comes with the source files for Lua to build both the Lua
+        library and Lua executable.
+    -   It is is the unmodified source, except that patches have been applied.
+        Please see `wxLua/docs/changelog.txt` to learn which ones.
+        [http://www.lua.org/bugs.html](http://www.lua.org/bugs.html)
+    -   You may also use a system or your own Lua library as described below.
+
+
+<a name="C2"/>
+
+## 2 - Building wxWidgets
+
+wxWidgets is fairly easy to build from its source code. You should build it
+yourself in MS Windows and in OSX using the instructions below, refering to the
+wxWidgets documentation as needed. In Linux, you can use the precompiled
+development distribution packages, if available, or build it yourself.
+
+<a name="C2.1"/>
+
+### 2.1 - Getting the wxWidgets Source Code
+
+-   Download a source code archive
+    [http://wxwidgets.org/downloads/](http://wxwidgets.org/downloads/)
+    for your platform.
+-   Or use subversion to get the most up to date source code or the code
+    at a specific revision number.
+    -   For more information see here :
+        [http://www.wxwidgets.org/develop/svn.htm](http://www.wxwidgets.org/develop/svn.htm)
+    -   To get the latest trunk, version 2.9.x at this time, use this command
+        -   `svn checkout http://svn.wxwidgets.org/svn/wx/wxWidgets/trunk wxWidgets-trunk`
+    -   To get the latest 2.8.x version use this command:
+        -   `svn checkout http://svn.wxwidgets.org/svn/wx/wxWidgets/branches/WX_2_8_BRANCH wxWidgets-2.8`
+-   Do not checkout into a directory name with spaces to make your life easier.
+
+<a name="C2.2"/>
+
+### 2.2 - Build using Microsoft Visual Studio GUI
+
+-   If you want to modify the default configuration, copy
+    `wxWidgets\include\wx\msw\setup0.h` to
+    `wxWidgets\include\wx\msw\setup.h` and adjust as desired.
+-   The file should be automatically copied over, but in case you get a
+    compiler error about not finding `"wx/msw/setup.h"` copy it by hand.
+-   There are comments above each #define describing the setting.
+-   However, you might want to compile wxWidgets and wxLua with the
+    default settings at least once before trying more advanced settings.
+
+-   For wxWidgets < 2.9 open `wxWidgets\build\msw\wx.dsw`
+    (written for for MSVC 6)
+    and allow MSVC to convert it for a newer version of MSVC if asked.
+-   For wxWidgets >= 2.9 open the appropriate solution file
+    `wxWidgets\build\msw\wx_vc9.sln` (for MSVC 2008 for example) or the
+    one closest to the version of MSVC you use.
+
+-   64-bit builds (MSVC > 6 only, the steps below are for MSVC 2008 and note
+    that a default MSVC install does not install the 64-bit compiler,
+    you must do a custom MSVC install)
+
+    1.  Right-click on the main "Solution" to bring up the menu.
+    2.  Select "Properties..." to get the properties dialog.
+    3.  Select "Configuration Properties" on the left.
+    4.  Then the "Configuration Manager..." button in the top-right to get
+        another dialog.
+    5.  Drop down the "Active Solution Platform" choice and select "x64" and
+        copy settings from "Win32" and check "Create new project platforms.".
+
+<br\>
+
+-   The recommended build configurations are "Debug" and "Release" which
+    build static libraries.
+-   If you really want DLLs choose "Debug DLL" or "Release DLL".
+-   The "Universal" configurations build wxWidgets with a "Universal"
+    widget toolkit as opposed to native MS Windows widgets.
+    -   Note that this configuration has not been tested with wxLua
+        extensively.
+
+-   Either choose the desired "Solution Config" and "Solution Platform"
+    from the toolbar and press the build button or right-click on the
+    main solution and choose "Build Solution".
+-   Or select the menu item "Build"->"Batch Build..." and check the projects
+    you want built (note that you can sort the columns in MSVC >=
+    2008).
+-   It is best to simply build ALL the wxWidgets libraries per
+    configuration since you can choose to not link wxLua to them if you
+    don't want them. This will guarantee that they're all built the same
+    way as opposed to building a few now and deciding you want more
+    later, but forgetting you changed `setup.h` in between... You'll end up
+    with mismatched libs leading to very strange and hard to debug crashes.
+
+-   For wxWidgets 2.8.x you will also need to open
+    `wxWidgets\contrib\build\stc\stc.dsw` and build the Scintilla and
+    wxStyledTextCtrl library for each configuration too.
+
+-   Hopefully it will all build... You shouldn't have any problems if
+    you don't modify the `wx/msw/setup.h` file too much.
+
+<a name="C2.3"/>
+
+### 2.3 - Build using MSVC NMake
+
+-   Open a `cmd.exe` (DOS) prompt and `cd wxWidgets\build\msw\`
+-   You need to setup the environment before running `nmake.exe`
+    -   For 32-bit Visual Studio 2008 run this
+        -   `c:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\vcvars32.bat`
+    -   For 64-bit Visual Studio 2008 run this
+        -   `c:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\amd64\vcvarsamd64.bat`
+    -   For 32-bit Visual Studio 6 run this
+        -   `c:\Program Files\Microsoft Visual Studio\VC98\Bin\VCVARS32.BAT`
+    -   For other versions or different install directories run the
+        appropriate command...
+-   The build is configured by `config.vc`, but don't edit it, rather
+    override the default values of the variables on the `nmake` command line.
+
+-   To build static libs run this command :
+    -   32-bit : `nmake -f makefile.vc SHARED=0 UNICODE=[0,1] BUILD=[debug,release]`
+    -   64-bit : `nmake -f makefile.vc SHARED=0 UNICODE=[0,1] BUILD=[debug,release] TARGET_CPU=AMD64`
+    -   Where typically `UNICODE=1` and `BUILD=release` would be appropriate.
+
+-   To build shared libs (DLLs) run this command :
+    -   32-bit : `nmake -f makefile.vc SHARED=1 UNICODE=[0,1] BUILD=[debug,release] MONOLITHIC=1`
+    -   64-bit : `nmake -f makefile.vc SHARED=1 UNICODE=[0,1] BUILD=[debug,release] MONOLITHIC=1 TARGET_CPU=AMD64`
+    -   Where typically `UNICODE=1` and `BUILD=release` would be appropriate.
+    -   Note that monolithic means that only a single DLL will be
+        created which usually easier to work with, but wxLua can work with the
+        non-monolithic libraries too.
+
+-   You can run any and all of the commands above to build multiple
+    configurations since the generated libs will not conflict with each
+    other in the `wxWidgets/lib` directory.
+
+-   For wxWidgets 2.8.x you will also need to `cd wxWidgets\contrib\build\stc\`
+    and run the exact same `nmake.exe ...` command to build
+    the wxStyledTextCtrl lib.
+
+<a name="C2.4"/>
+
+### 2.4 - Build using MinGW
+
+-   Download mingw-get-inst-20120426.exe or an appropriate newer version
+    to automatically download and install a fully working system.
+-   Run the installer and select "C Compiler," "C++ Compiler," "MSYS
+    Basic System," and the "MinGW Developer Toolkit" at minimum.
+    -   It is probably best to install to a directory without a space in
+        the name, typically `c:\MinGW`.
+
+-   Open a `cmd.exe` (DOS) prompt and `cd wxWidgets\build\msw\`
+    -   Run `set PATH=C:\MinGW\bin;%PATH%` so that the compiler can be found.
+    -   Or optionally add to a system wide PATH environment variable to
+        point to the `C:\MinGW\bin` directory.
+
+-   Or use the MinGW shell and `cd /c/path/to/wxWidgets/build/msw`.
+    -   The MinGW shell has MinGW/bin PATH already set, but note that
+        this shell is a Linux (Cygwin) shell rather than a DOS shell so it
+        works a little differently.
+    -   If you are unfamiliar with Unix or Linux you should probably use
+        the `cmd.exe` (DOS) prompt.
+    -   Briefly; use `/` forward-slashes instead of `\` back-slashes for
+        path separators.
+    -   Drives are accessed using `/c/...` or `/d/...` instead of `c:` or `d:`.
+
+-   The build is configured by `config.gcc`, but don't edit it, rather
+    override the default values of the variables on the `make` command line.
+-   To build static libs run this command :
+    -   32-bit : `mingw32-make.exe -f makefile.gcc SHARED=0 UNICODE=1 BUILD=[debug,release]`
+-   To build shared libs (DLLs) run this command :
+    -   32-bit : `mingw32-make.exe -f makefile.gcc SHARED=1 UNICODE=1 BUILD=[debug,release] MONOLITHIC=1`
+
+-   You can speed up compilation using multiple processors by adding the
+    flag `-jN`, e.g. `-j4` to use four processors.
+    -   Note that you may have to run `make` multiple times since you
+        may initially get errors since the compilers are not synced.
+
+-   For wxWidgets 2.8.x you will also need to `cd wxWidgets\contrib\build\stc\`
+    and run the exact same `mingw32-make.exe ...` command to build the
+    wxStyledTextCtrl lib.
+
+<a name="C2.5"/>
+
+### 2.5 - Build using GCC in Linux
+
+-   Install the wxwidgets and wxwidgets-devel prebuilt packages for your
+    Linux distribution and you're done...
+    -   They may be called wxBase, wxGTK and wxBase-devel, wxGTK-devel.
+
+-   Or install the required development packages needed to build wxWidgets
+    yourself.
+    -   Below is a list for Fedora 15, but they should be named
+        similarly on other distributions.
+    -   There are others, but hopefully they'llbe dependent on the packages
+        below so you won't need to explicitly install them.
+
+~~~
+        glibc-headers
+        cairo, cairo-devel
+        GConf2, GConf2-devel
+        gstreamer, gstreamer-devel, gstreamer-plugins-base, gstreamer-plugins-base-devel
+        gtk2, gtk2-devel
+        libjpeg, libjpeg-devel
+        libpng, libpng-devel
+        libtiff, libtiff-devel
+        libXinerama, libXinerama-devel
+        mesa-libGL, mesa-libGL-devel, mesa-libGLU, mesa-libGLU-devel
+        pango, pango-devel
+~~~
+
+-   In the example below a GTK2, Unicode, Debug build will be created, `gtk2ud`.
+-   Create a sub-directory in the wxWidgets directory for the build files.
+    -   You can create this directory anywhere, but it is convenient to
+        keep it contained within the wxWidgets directory.
+    -   E.G. `wxWidgets/build_gtk2ud` for a GTK2, Unicode, Debug build.
+
+-   Create a script in the build directory named `configure-gtk2ud.sh`
+    (or named appropriately) with this as its content :
+
+~~~
+    ../configure --prefix=$PWD \
+                 --enable-gtk2 \
+                 --enable-unicode \
+                 --enable-shared \
+                 --enable-optimise=no \
+                 --enable-mem_tracing=no \
+                 --enable-profile=no \
+                 --with-dmalloc=no \
+                 \
+                 --enable-debug \
+                 --enable-debug_flag \
+                 --enable-debug_info \
+                 --enable-debug_gdb \
+                 --enable-debug_cntxt \
+                 \
+                 --with-sdl \
+                 --with-gnomeprint \
+                 \
+                 --with-opengl \
+                 --enable-sound \
+                 --enable-mediactrl \
+                 --enable-graphics_ctx \
+                 --enable-controls \
+                 --enable-dataviewctrl 2>&1 | tee configure-gtk2ud.log
+~~~
+
+-   This enables most everything and you can adjust it as required.
+-   Note that the `configure` script in the root wxWidgets source
+    directory will generate the build files in the directory it is run
+    from so do not run it in the root wxWidgets dir.
+-   Review the output file, `configure-gtk2ud.log`, to find any problems.
+-   On success, you can then run `make -j4` (set 4 to the number of
+    processors you have) to build wxWidgets.
+-   The build settings are created in the shell script `wx-config`.
+    -   Run `./wx-config --prefix` and `./wx-config --cxxflags`
+        and `./wx-config --libs` to print the wxWidgets build settings.
+
+-   You DO NOT NEED to run `make install` and in fact by setting
+    `--prefix=$PWD` it would only be installed to the build directory
+    where it already is.
+    -   If you must install it, adjust the `--prefix` directory as desired.
+
+-   For wxWidgets 2.8.x you will also need to
+    `cd wxWidgets/build_gtk2ud/contrib/src/stc/` and run `make` to build
+    the wxStyledTextCtrl lib.
+
+-   Build a wxWidgets sample program as a sanity check,
+    `samples/widgets` for example, `cd build_gtk2ud/samples/widgets`,
+    run `make`, then `./widgets` to execute it.
+
+<a name="C2.6"/>
+
+### 2.6 - Build using GCC in OSX
+
+-   Install XCode which should install the command line GCC tools, the
+    "app store" should have it.
+-   You should use wxWidgets >= 2.9 on OSX, there is no good reason to
+    use 2.8.x.
+
+-   In the example below an OSX, Unicode, Debug build will be created, `osx2ud`.
+-   Create a sub-directory in the wxWidgets directory for the build files.
+    -   You can create this directory anywhere, but it is convenient to
+        keep it contained within the wxWidgets directory.
+    -   E.G. `wxWidgets/build_osxud` for a OSX, Unicode, Debug build.
+
+-   Create a script in the build directory named `configure-osxud.sh`
+    (or named appropriately) with this as its content :
+
+~~~
+    ../configure --prefix=$PWD \
+                 --with-osx-cocoa \
+                 --enable-unicode \
+                 --disable-shared \
+                 --enable-optimise=no \
+                 --enable-mem_tracing=no \
+                 --enable-profile=no \
+                 --with-dmalloc=no \
+                 \
+                 --enable-debug \
+                 --enable-debug_flag \
+                 --enable-debug_info \
+                 --enable-debug_gdb \
+                 --enable-debug_cntxt \
+                 \
+                 --with-opengl \
+                 --enable-sound \
+                 --enable-mediactrl \
+                 --enable-graphics_ctx \
+                 --enable-controls \
+                 --enable-dataviewctrl 2>&1 | tee configure-osx2ud.log
+~~~
+
+-   This enables most everything and you can adjust it as required.
+-   Note that the `configure` script in the root wxWidgets source
+    directory will generate the build files in the directory it is run
+    from so do not run it in the root wxWidgets dir.
+-   Review the output file, `configure-osxud.log`, to find any problems.
+-   On success, you can then run `make -j4` (set 4 to the number of
+    processors you have) to build wxWidgets.
+-   The build settings are created in the shell script `wx-config`.
+    -   Run `./wx-config --prefix` and `./wx-config --cxxflags`
+        and `./wx-config --libs` to print the wxWidgets build settings.
+
+-   You DO NOT NEED to run `make install` and in fact by setting
+    `--prefix=$PWD` it would only be installed to the build directory
+    where it already is.
+    -   If you must install it, adjust the `--prefix` directory as desired.
+
+-   For wxWidgets 2.8.x you will also need to
+    `cd wxWidgets/build_osxud/contrib/src/stc/` and run `make` build the
+    wxStyledTextCtrl lib.
+
+-   Build a wxWidgets sample program as a sanity check,
+    `samples/widgets` for example, `cd build_osxud/samples/widgets`,
+    run `make`, then `./widgets` to execute it.
+
+<a name="C3"/>
+
+## 3 - wxLua Components
+
+wxLua has three components: **applications** (`wxLua/apps`), **modules**
+(`wxLua/modules`), and **utilities** (`wxLua/utils`). You should
+simply build them all.
+
+<a name="C3.1"/>
+
+### 3.1 - wxLua applications
+
+-   `wxLua/apps/wxlua`
+    -   A wxLua code editor, interpreter, and debugger;
+        runs an embedded copy of the Lua program `samples/editor.wx.lua`.
+-   `wxLua/apps/wxluaedit`
+    -   Another wxLua code editor and interpreter, based on wxStEdit.
+-   `wxLua/apps/wxluafreeze`
+    -   A program to execute Lua or wxLua programs. A replacement for the Lua
+        executable that is capable of running wxLua apps.
+-   `wxLua/apps/wxluacan`
+    -   An example of how to create C++ applications
+        with an embedded wxLua interpreter.
+
+<a name="C3.2"/>
+
+### 3.2 - wxLua libraries
+
+-   `wxLua/modules/lua`
+    -   Lua sources with patches applied, see [www.lua.org](http://www.lua.org)
+-   `wxLua/modules/wxlua`
+    -   The base wxLua library, contains the wxLuaState class that wraps a
+        lua_State and loads the bindings.
+-   `wxLua/modules/wxbind`
+    -   The wxLua bindings for wxWidgets broken up by the wxWidgets libraries:
+        `adv, aui, base, core, gl, html, media, net, richtext, stc, xml, xrc`.
+    -   To determine what classes are part of what libs you can use the
+        [wxluaref.html](wxluaref.html) document and search for the class.
+    -   For example, class wxGrid is in the file wxadv_grid.i so it is
+        part of the adv library.
+-   `wxLua/modules/wxluadebug`
+    -   Classes for debugging Lua in C++; wxLuaCheckStack and wxLuaStackDialog.
+-   `wxLua/modules/wxluadebugger`
+    -   Debugger socket classes to run a wxLua program in a separate process
+        and communicate with the parent debugger.
+
+<a name="C3.3"/>
+
+### 3.3 - wxLua Utilities
+
+-   `wxLua/utilities/bin2c.lua`
+    -   Lua script to convert any text file to a C const char* string.
+
+
+<a name="C4"/>
+
+## 4 - Building wxLua
+
+wxLua uses uses CMake as its build system. The `CMakeLists.txt` files describe
+how wxLua is to be built so that when CMake is run it can generate the
+appropriate build files for the compiler of your choice.
+
+There is also a `Makefile.wx-config` in the root directory of the wxLua that
+can be used to build wxLua using GCC in Linux. It simply requires that the
+wxWidgets `wx-config` script is in the path to work. These files are kept as a
+backup, they work, but the CMake build is preferred since it is far more
+flexible.
+
+
+<a name="C4.1"/>
+
+### 4.1 - Getting the wxLua Source Code
+
+-   For more information see :
+    [http://wxlua.sourceforge.net/download.php](http://wxlua.sourceforge.net/download.php)
+-   Briefly, download a source code archive
+    [http://sourceforge.net/projects/wxlua/files/wxlua/](http://sourceforge.net/projects/wxlua/files/wxlua/)
+    for your platform.
+-   Or use subversion to get the most up to date source code or the code
+    at a specific revision number.
+    -   For more information see here :
+        [http://sourceforge.net/scm/?type=svn&group_id=140042](http://sourceforge.net/scm/?type=svn&group_id=140042)
+    -   To get the latest trunk, use this command :
+        -   `svn checkout https://wxlua.svn.sourceforge.net/svnroot/wxlua/trunk/wxLua wxLua-trunk`
+-   Do not checkout into a directory name with spaces to make your life easier.
+
+
+<a name="C4.2"/>
+
+### 4.2 - Initial CMake Setup
+
+1.   Install CMake version >= 2.8
+    -   In MSW and OSX download and run the installer from
+        [http://www.cmake.org/cmake/resources/software.html](http://www.cmake.org/cmake/resources/software.html)
+    -   In Linux you can typically install the CMake package that your Linux
+        distribution provides.
+2.  Run the cmake-gui program.
+3.  Choose the compiler you wish to use, it should match the compiler
+    wxWidgets was compiled with.
+    -   Select "Use default native compilers" unless you have some reason not to.
+4.  Select the root of the wxLua directory as the "Where is the source code"
+    directory, it has the root `CMakeLists.txt` file in it.
+5.  Select a directory, perhaps named `wxLua-build`, at the same level
+    as the `wxLua/` directory for "Where to build the binaries."
+    -   The build directory can be anywhere, but ideally not the same as the
+        wxLua source code directory since you may want to completely delete it.
+    -   If anything goes very wrong, consider deleting the build
+        directory you created so you can start fresh.
+6.  Choose the type of library you want, static or shared libs (DLLs) by
+    checking the `BUILD_SHARED_LIBS` variable.
+    -   Typically this will match what your wxWidgets build is.
+7.  Press the "Configure" button a few times.
+    -   Each time configure is run more variables are found and these
+        appear in red, reconfigure until no more items are red.
+    -   There will probably be an error configuring the first time through,
+        this is normal.
+8.  Adjust the CMake variable wxWidgets_COMPONENTS to match what wxWidgets
+    libraries you have and want to use.
+9.  Adjust the CMake variable wxLuaBind_COMPONENTS to match or have fewer
+    libraries than the wxWidgets_COMPONENTS list.
+8.  Review the available settings in section [4.3](#C4.3) before continuing.
+9.  Skip to the section below that is appropriate for your compiler to
+    complete the build process.
+
+
+<a name="C4.3"/>
+
+### 4.3 - CMake Configuration Variables
+
+Below are the CMake variables that you can and in some cases must adjust
+to build wxLua. If you want to run CMake from the command line you would
+specify these variables as : `cmake -DBUILD_SHARED_LIBS=TRUE ...`
+
+-   BUILD_INSTALL_PREFIX="/path/to/install/the/files/to/after/building"
+-   BUILD_SHARED_LIBS=[TRUE, FALSE] - Build shared libs (DLLs in MSW)
+    or if FALSE, static libs.
+-   BUILD_USE_MULTIPROCESSOR=[TRUE, FALSE] - Build using multiple
+    processors (MSVC). Does nothing using gcc.
+-   BUILD_USE_PRECOMPILED_HEADERS=[TRUE, FALSE] - Build quicker by
+    precompiling the headers in MSVC.
+    (When using GCC install ccache since it is even faster)
+-   BUILD_USE_SOLUTION_FOLDERS=[TRUE, FALSE] - Put projects into
+    folders in MSVC.
+-   BUILD_VERBOSELY=[TRUE, FALSE] - Print more information when
+    building. In GCC you can run `make VERBOSE=1` to get the same
+    effect if this was set to FALSE.
+-   BUILD_WARNINGS_HIGH=[TRUE, FALSE] - Build with more or less warnings.
+-   CMAKE_DEBUG_VARIABLES=[TRUE, FALSE] - Print all CMake variables to the log.
+-   CMAKE_SKIP_INSTALL_ALL_DEPENDENCY=[TRUE, FALSE] - Allow running
+    install without having built all the targets.
+-   wxLuaBind_COMPONENTS="gl;stc;xrc;richtext;html;media;aui;adv;core;xml;net;base"
+    -   Choose the wxWidgets libraries to build wxLua bindings for.
+    -   Note that libraries will be automatically removed if they are
+        not in the wxWidgets_COMPONENTS list and a warning given.
+-   wxLuaBind_WXLUASETUP_DIR="wxLua/modules/wxbind/setup"
+    -   You can provide an alternative `wxluasetp.h` to customize what parts of
+        wxWidgets are compiled into the wxLua bindings.
+    -   By default, everything is built-in.
+    -   See
+
+-   CMAKE_BUILD_TYPE=[Debug, Release, RelWithDebInfo, MinSizeRel]
+    -   Set the build for Debug, Release, Release with Debug Info,
+        and Min Size Release (stripped).
+    -   This variable will not shown in the CMake Gui when building with
+        Visual Studio since you can choose the build type in the MSVC IDE.
+    -   Note that you can only build one at a time so you will have to
+        create a separate build directory for each different build type.
+    -   Do not try to change the build type in CMake and reuse the same
+        build directory. It may work. but can cause problems, just avoid
+        doing it.
+
+-   wxWidgets_COMPONENTS=[semicolon separated list of wxWidgets library names]
+    -   wxWidgets has a number of components that are either built into
+        separate libs (default build) or into a monolithic lib.
+    -   Therefore you either specify the desired separate libs or the
+        monolithic lib. The GL and scintilla libs are always built separately.
+    -   The order and the dependencies are important, the lists below
+        show the correct order and the dependencies can be found here :
+        [http://docs.wxwidgets.org/trunk/page_libs.html](http://docs.wxwidgets.org/trunk/page_libs.html)\
+    -   wxWidgets 2.8 :
+        `gl;stc;scintilla;xrc;media;richtext;aui;html;adv;core;xml;net;base`
+    -   wxWidgets 2.9 :
+        `gl;stc;xrc;media;richtext;aui;html;adv;core;xml;net;base`
+    -   wxWidgets 2.8 monolithic : `gl;mono`
+    -   wxWidgets 2.9 monolithic : `gl;scintilla;mono`
+    -   A warning will given if you specify a wxWidgets library that was
+        not found.
+    -   Note that the contents of the monolithic library can't be
+        easily known so it is assumed that it has everything.
+    -   If you get a linker error about "unresolved symbols" for a
+        wxWidgets function you are probably missing the library for it.
+    -   Adjust the wxLuaBind_COMPONENTS to match the wxWidgets libraries that
+        you are linking to or that are actually in your monolithic library.
+
+MS Windows configuration options
+
+-   wxWidgets_CONFIGURATION=[msw, mswu]
+    -   Choose the Unicode or ANSI (non-Unicode) wxWidgets build.
+    -   If you have only built one or the other then this variable will be
+        automatically set.
+    -   If you have built both, set this variable to choose which to link to.
+    -   Note that the wxWidgets puts the libs for both builds in the same
+        directory, but with different names.
+-   wxWidgets_LIB_DIR="/path/to/wxWidgets/lib/{vc_lib, vc_dll, gcc_lib, gcc_dll, ...}"
+    -   The wxWidgets directory with the compiled libraries.
+-   wxWidgets_ROOT_DIR="/path/to/wxWidgets"
+    -   The root dir of wxWidgets that has `include/wx` as a subdirectory.
+-   wxWidgets_USE_REL_AND_DBG=[TRUE,FALSE]
+    -   Use both release and debug configurations.
+    -   You probably always want this checked if you have built both and
+        you will not be able to check this if you do not have
+        both a release and debug configuration in the wxWidgets lib dir.
+
+-   wxWidgets_VERSION=[2.8.x,2.9.x]
+    -   In order to help find all the libs you may have to set this variable
+        to the correct wxWidgets version as a hint to CMake.
+    -   This is because different wxWidgets versions have different libs
+        and it is hard to tell if a lib is missing or if a different
+        version is being used.
+
+Linux and OSX configuration options
+
+-   wxWidgets_CONFIG_EXECUTABLE=/path/to/wx-config
+    -   Set the path to the `wx-config` script that CMake can use to get
+        everything it needs to know about the wxWidgets library.
+
+<a name="C4.4"/>
+
+### 4.4 - CMake with MSVC
+
+1.  To find wxWidgets you must set the CMake variable
+    -   `wxWidgets_ROOT_DIR=/path/to/wxWidgets`
+2.  Press "Configure," but it probably won't work just yet.
+3.  To find the libraries for wxWidgets (you may have compiled a variety
+    of them) you must also set the variable
+    -   `wxWidgets_LIB_DIR=/path/to/wxWidgets/lib/vc_lib`
+    -   Where you must set `vc_lib` appropriately; `vc_amd64` for 64-bit,
+        `vc_dll` for DLLs, and `vc_amd64_dll` for 64-bit DLLs
+4.  Press "Configure" again, if it doesn't work set
+    -   `wxWidgets_CONFIGURATION=[msw, mswu]`
+5.  Press "Configure" again, if it doesn't work set
+    -   `wxWidgets_VERSION=[2.8.x,2.9.x]`
+    -   Where you will use the actual number, 2.8.12 or 2.9.4 for example.
+6.  If "Configure" still doesn't work, then something is wrong with your
+    wxWidgets build... go back and fix it.
+7.  If "Configure" succeeds, the output window should say "Configuring done"
+    and the log should have a complete description of your wxWidgets build.
+9.  Press "Generate" to have CMake write out the build files.
+9.  Open `wxLua.sln` in the build directory...
+10. Choose the "Solution Configuration"
+    (`Debug, Release, MinSizeRel, RelWithDebInfo`) that matches your
+    wxWidgets build and build everything.
+    -   Note that you MUST have built wxWidgets in debug for a wxLua
+        `Debug` build, but a wxWidgets release build works with a wxLua
+        `Release, MinSizeRel, RelWithDebInfo` build.
+11. All the apps are put into `build\bin\Debug` or
+    `Release, MinSizeRel, RelWithDebInfo` as appropriate.
+12. Right-click on "wxLua_app" and select as "Startup project" and
+    press the "Start Debugging" program to run it in the GUI... etc.
+13. If you built as a DLL using the wxWidgets DLLs you will have to
+    either have the wxWidgets DLLs in you PATH environment variable or
+    copy them into the same directory as the wxLua executables.
+    -   If you run a program and it silently closes with no error you
+        can open a `cmd.exe` (DOS) prompt and run it there and, if
+        you're lucky, an error message about a missing DLL will be
+        printed to the console.
+
+<a name="C4.5"/>
+
+### 4.5 - CMake with MinGW
+
+-   See the section above titled [Build using MinGW](#C2.4) for more
+    information about getting and using MinGW.
+
+<br/>
+
+1.  Choose the `CMAKE_BUILD_TYPE` that you want.
+    -   Note that you MUST have built wxWidgets in debug for a wxLua
+        `Debug` build, but a wxWidgets release build works with a wxLua
+        `Release, MinSizeRel, RelWithDebInfo` build.
+2.  To find wxWidgets you must set the variable
+    -   `wxWidgets_ROOT_DIR=/path/to/wxWidgets`
+4.  Press "Configure," but it probably won't work just yet.
+5.  To find the libraries for wxWidgets (you may have compilied a
+    variety of them) you must also set the variable
+    -   `wxWidgets_LIB_DIR=/path/to/wxWidgets/lib/gcc_lib`
+    -   Where you must set `gcc_lib` appropriately; `gcc_dll` for DLLs.
+6.  Press "Configure" again, if it doesn't work set
+    -   `wxWidgets_CONFIGURATION=[msw, mswu]`
+7.  Press "Configure" again, if it doesn't work set
+    -   `wxWidgets_VERSION=[2.8.x,2.9.x]`
+8.  If "Configure" still doesn't work, then something is wrong with your
+    wxWidgets build... go back and fix it.
+9.  If "Configure" succeeds, the output window should say "Configuring done"
+    and the log should have a complete description of your wxWidgets build.
+10. Press "Generate" to have CMake write out the build files.
+11. Open a `cmd.exe` prompt to run `mingw32-make.exe help` to
+    display all the available targets.
+12. If you run `mingw32-make.exe` with no parameters you will build
+    everything, which is probably best.
+13. All the apps are put into `build\bin\Debug` or
+    `Release, MinSizeRel, RelWithDebInfo` as appropriate.
+
+<a name="C4.6"/>
+
+### 4.6 - CMake with GCC in Linux or OSX
+
+1.  Choose the `CMAKE_BUILD_TYPE` that you want.
+    -   Note that in Linux you can mix and match Release and Debug versions.
+2.  To find wxWidgets you must set the variable
+    -   `wxWidgets_CONFIG_EXECUTABLE=/path/to/wx-config`
+    -   See above about building wxWidgets for Linux for a description of it.
+3.  Press "Configure" and the output window should say "Configuring done"
+    and the log should have a complete description of your wxWidgets build.
+4.  Press "Generate" to have CMake write out the build files.
+5.  Open a terminal, change into your wxLua build dir and run
+    `make help` to display all the available targets.
+6.  If you run `make` with no parameters you will build everything,
+    which is probably best.
+7.  All the apps are put into `build\bin\Debug` or
+    `Release, MinSizeRel, RelWithDebInfo` as appropriate.
+8.  You can run all the apps without installing them.
+
+
+<a name="C5"/>
+
+## 5 - Advanced Building
+
+These instructions are for developers who wish to customize wxLua's
+wxWidgets bindings or for those who want to use wxLua as a script interpreter
+in their own C++ project.
+
+
+<a name="C5.1"/>
+
+### 5.1 - Building a minimal set of wxWidgets wrappers
+
+The functionality of wxLua's wxWidgets bindings are limited by your wxWidgets
+build settings; i.e. if you built wxWidgets with `wxUSE_TIMER=0` then you will
+not be able to use the wxTimer class in wxLua.
+
+If you want all of the wxWidgets API that's available in your wxWidgets build
+wrapped by wxLua, simply build wxLua using the directions above,
+no modifications required.
+
+On the other hand, if you wish to make the wxLua bindings smaller, you will
+need to set the CMake variable `wxLuaBind_WXLUASETUP_DIR` to point to the
+directory of a customized `wxluasetup.h` header which should start as a copy of
+`modules/wxbind/setup/wxluasetup.h`. It is best to copy it to a new directory
+instead of modifying the original one. This way you will have the original as
+a backup to compare your changes to.
+
+The `wxluasetup.h` header file contains a number of `wxLUA_USE_XXX` #defines
+that are fairly self explanitory. By setting some of them to `0` you can block
+out large chunks of the wxWidgets bindings making the library smaller.
+
+Be careful about which parts you remove since you can badly cripple your
+ability to create and use higher-level objects if you disable the lower-level
+parts they rely on. Though, this may be your goal, some experimentation may
+be required.
+
+Once you have created and edited your `wxluasetup.h` you can build your custom
+wxLuaBind library following the directions above.
+
+
+<a name="C5.2"/>
+
+### 5.2 - Embedding wxLua into a C++ Application
+
+In order to embed wxLua in your project, you will need the `wxLua/modules/lua`
+and `wxLua/modules/wxlua` libraries at a minimum.
+With these two libraries you have the ability to start an interpreter
+and run straight Lua code in it using the wxLuaState class.
+
+To enable creation and use of wxWidgets objects in Lua you will also need to
+build and link to the libraries in `modules/wxbind`.
+The wxWidgets bindings contain the appropriate `#if wxUSE_XXX` statements and
+platform dependent `#ifdef __WXMSW/GTK/MAC__`  checks
+that wxWidgets uses in its headers to ensure that no matter what platform or
+what type of build you use, the bindings will compile without errors
+(if they don't compile for your settings, please be sure to tell us on the
+[wxlua-users mailing list](mailto:wxlua-users@lists.sourceforge.net)).
+
+
+<a name="C5.3"/>
+
+### 5.3 - wxLua libraries and linking order
+
+The order in which you link to the wxLua libraries is important. You
+must always link to any binding library **after** (in terms of
+initialization) linking with the wxLua libraries.
+
+**NOTE**: Many linkers actually link libraries in the opposite order in
+which they appear on the command line. This means that the libraries that
+are first in the linker list are initialized last.
+
+-   The library order for the gcc/MSVC linker is:
+    -   `wxbind..., wxbindcore, wxbindbase, wxluadebugger, wxluadebug, wxlua, lua, wxWidgets libs`
+-   Obviously, you should remove the libraries you don't use
+    (e.g. wxluadebugger, wxluadebug)
+-   wxLua names its libraries similarly to the wxWidgets naming convention:
+    -   `{wxlua_libname}-wx$(WX_VERSION_MAJOR)$(WX_VERSION_MINOR)$(WX_PORT)$(WXLIBPOSTFIX)`
+    -   `WX_PORT` can be `gtk2, msw, x11, etc`
+    -   `WXLIBPOSTFIX` can be `u, d, ud`.
+    -   E.G. `libwxlua-wx29gtk2ud-2.8.12.so, libwxlua_debug-wx29gtk2ud-2.8.12.so,
+        libwxlua_debugger-wx29gtk2ud-2.8.12.so, libwxlua_bind-wx29gtk2ud-2.8.12.so`

@@ -54,6 +54,11 @@ wxLuaState wxNullLuaState(false);
 
 int LUACALL luaopen_bit(lua_State *L); // implemented at bottom of file
 
+extern "C"
+{
+    int luaopen_bit32 (lua_State *L);
+}
+
 // ----------------------------------------------------------------------------
 // C functions for Lua used in wxLuaState
 // ----------------------------------------------------------------------------
@@ -571,6 +576,7 @@ bool LUACALL wxluaO_deletegcobject(lua_State *L, int stack_idx, int flags)
 
             lua_pop(L, 1); // pop delobj table
 
+printf("DELLL %p %p\n", obj_ptr, L); fflush(stdout);
             // delete the object using the function stored in the wxLuaBindClass
             if (obj_ptr)
                 wxlClass->delete_fn(&obj_ptr);
@@ -2620,6 +2626,10 @@ bool wxLuaState::Create(lua_State* L, int state_type)
             // load the bit lib, this is the accepted way, see luaL_openlibs(L)
             lua_pushcfunction(L, luaopen_bit);
             lua_pushstring(L, "bit");
+            lua_call(L, 1, 0);
+
+            lua_pushcfunction(L, luaopen_bit32);
+            lua_pushstring(L, "bit32");
             lua_call(L, 1, 0);
 
             RegisterBindings();

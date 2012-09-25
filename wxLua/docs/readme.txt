@@ -27,3 +27,8 @@ References:
 http://wxlua.sourceforge.net
 http://www.lua.org
 http://www.wxwidgets.org
+
+
+Note: Documentation in this folder is written in Markdown in the *.txt
+files and the *.html files are genererated using :    
+$ pandoc -f markdown -t html -c wxlua.css install.txt > install.html
