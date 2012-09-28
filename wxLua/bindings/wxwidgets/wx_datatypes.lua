@@ -3605,14 +3605,10 @@ wx_dataTypeTable =
     Name = "wxPoint2DInt",
     ValueType = "class",
   },
-  wxPointList = {
-    BaseClasses = {
-      [1] = "wxList",
-    },
-    Condition = "(wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0))",
-    IsNumber = false,
-    Name = "wxPointList",
-    ValueType = "class",
+  wxPointArray_FromLuaTable = {
+    IsNumber = true,
+    Name = "wxPointArray_FromLuaTable",
+    ValueType = "special",
   },
   wxPolygonFillMode = {
     Condition = "wxLUA_USE_wxDC",

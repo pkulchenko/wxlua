@@ -214,6 +214,8 @@ function (wxLua_Modules_wxLua_TARGETS)
 
 ADD_LIBRARY_FULL( wxLuaLib
     HEADERS
+        ${wxLua_ROOT_DIR}/modules/wxlua/atomic.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/sharedptr.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlbind.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlcallb.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlconsole.h

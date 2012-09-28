@@ -54,6 +54,7 @@ int* p_wxluatype_wxString            = &wxluatype_TUNKNOWN;
 int* p_wxluatype_wxArrayString       = &wxluatype_TUNKNOWN;
 int* p_wxluatype_wxSortedArrayString = &wxluatype_TUNKNOWN;
 int* p_wxluatype_wxArrayInt          = &wxluatype_TUNKNOWN;
+int* p_wxluatype_wxPoint             = &wxluatype_TUNKNOWN;
 
 // ----------------------------------------------------------------------------
 // wxlua_tableErrorHandler

@@ -576,7 +576,6 @@ bool LUACALL wxluaO_deletegcobject(lua_State *L, int stack_idx, int flags)
 
             lua_pop(L, 1); // pop delobj table
 
-printf("DELLL %p %p\n", obj_ptr, L); fflush(stdout);
             // delete the object using the function stored in the wxLuaBindClass
             if (obj_ptr)
                 wxlClass->delete_fn(&obj_ptr);
@@ -1883,6 +1882,105 @@ wxLuaSmartwxArrayInt LUACALL wxlua_getwxArrayInt(lua_State* L, int stack_idx)
     return arr;
 }
 
+wxLuaSharedPtr<std::vector<wxPoint> > LUACALL wxlua_getwxPointArray(lua_State* L, int stack_idx)
+{
+    wxLuaSharedPtr<std::vector<wxPoint> > pointArray(new std::vector<wxPoint>);
+    int count = -1;       // used to check for failure
+    int is_xy_table = -1; // is it a table with x,y fields or a number array {1,2}
+
+    if (lua_istable(L, stack_idx))
+    {
+        count = lua_objlen(L, stack_idx); /* get size of table */
+
+        double x, y;
+        for (int i = 1; i <= count; ++i)
+        {
+            lua_rawgeti(L, stack_idx, i); /* get next point as {x,y} */
+            int t = wxluaT_type(L, -1);
+            if (t == WXLUA_TTABLE)
+            {
+                // First time, check how it was formatted
+                if (is_xy_table == -1)
+                {
+                    lua_rawgeti(L, -1, 1);
+                    is_xy_table = (lua_isnumber(L, -1) == 0) ? 1 : 0;
+                    lua_pop(L, 1);
+                }
+
+                if (is_xy_table == 1)
+                {
+                    lua_pushstring(L, "x");
+                    lua_rawget(L, -2);
+                    if (!lua_isnumber(L, -1))
+                        wxlua_argerror(L, stack_idx, wxT("a 'number' for x-coordinate of a wxPoint array, valid tables are {{1,2},...}, {{x=1,y=2},...}, or {wx.wxPoint(1,2),,...}."));
+                    x = lua_tonumber(L, -1);
+                    lua_pop(L, 1);
+
+                    lua_pushstring(L, "y");
+                    lua_rawget(L, -2);
+                    if (!lua_isnumber(L, -1))
+                        wxlua_argerror(L, stack_idx, wxT("a 'number' for y-coordinate of a wxPoint array, valid tables are {{1,2},...}, {{x=1,y=2},...}, or {wx.wxPoint(1,2),,...}."));
+                    y = lua_tonumber(L, -1);
+                    lua_pop(L, 1);
+                }
+                else
+                {
+                    lua_rawgeti(L, -1, 1);
+                    if (!lua_isnumber(L, -1))
+                        wxlua_argerror(L, stack_idx, wxT("a 'number' for [1] index (x-coordinate) of a wxPoint array, valid tables {{1,2},...}, {{x=1,y=2},...}, or {wx.wxPoint(1,2),,...}."));
+                    x = lua_tonumber(L, -1);
+                    lua_pop(L, 1);
+
+                    lua_rawgeti(L, -1, 2);
+                    if (!lua_isnumber(L, -1))
+                        wxlua_argerror(L, stack_idx, wxT("a 'number' for [2] index (y-coordinate) of a wxPoint array, valid tables {{1,2},...}, {{x=1,y=2},...}, or {wx.wxPoint(1,2),,...}."));
+                    y = lua_tonumber(L,-1);
+                    lua_pop(L, 1);
+                }
+
+                pointArray->push_back(wxPoint((int)x, (int)y));
+            }
+            else if (t == *p_wxluatype_wxPoint)
+            {
+                const wxPoint* point = (const wxPoint *)wxluaT_getuserdatatype(L, -1, *p_wxluatype_wxPoint);
+                pointArray->push_back(*point);
+            }
+            else
+            {
+                wxlua_argerror(L, stack_idx, wxT("a Lua table of 'wxPoints', valid tables {{1,2},...}, {{x=1,y=2},...}, or {wx.wxPoint(1,2),,...}."));
+                return pointArray;
+            }
+
+            lua_pop(L, 1);
+        }
+    }
+/*
+
+    // Binding the wxPointList is a problem since we have to worry about
+    // wxList::DeleteContents() and who calls it, it'll be accident waiting to happen.
+
+    else if (wxlua_iswxuserdata(L, stack_idx))
+    {
+        int pointlist_wxltype = wxluaT_gettype(L, "wxPointList");
+
+        if (wxluaT_isuserdatatype(L, stack_idx, pointlist_wxltype))
+        {
+            wxPointList *ptList = (wxPointList *)wxluaT_getuserdatatype(L, stack_idx, pointlist_wxltype);
+            if (ptList)
+            {
+                //pointArray.reset(ptList);
+                //pointArray.SetDelete(false);
+                count = ptList->GetCount();
+            }
+        }
+    }
+*/
+
+    if (count < 0)
+        wxlua_argerror(L, stack_idx, wxT("a Lua table of 'wxPoints', valid tables {{1,2},...}, {{x=1,y=2},...}, or {wx.wxPoint(1,2),,...}."));
+
+    return pointArray;
+}
 
 int LUACALL wxlua_pushwxArrayStringtable(lua_State *L, const wxArrayString &strArray)
 {

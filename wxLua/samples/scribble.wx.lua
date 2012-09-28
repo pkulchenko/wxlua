@@ -80,13 +80,17 @@ function DrawPoints(drawDC)
         drawDC:SetPen(pen)
         pen:delete()
 
-        local point = listValue[1]
-        local last_point = point
-        for point_index = 2, #listValue do
-            point = listValue[point_index]
-            drawDC:DrawLine(last_point.x, last_point.y, point.x, point.y)
-            last_point = point
-        end
+        -- Draw each point individually...
+        --local point = listValue[1]
+        --local last_point = point
+        --for point_index = 2, #listValue do
+        --    point = listValue[point_index]
+        --    drawDC:DrawLine(last_point.x, last_point.y, point.x, point.y)
+        --    last_point = point
+        --end
+
+        -- or draw them all at once...
+        drawDC:DrawLines(listValue)
     end
 
     lastDrawn = #pointsList

@@ -59,13 +59,13 @@
 // ---------------------------------------------------------------------------
 // wxPointList
 
-%if %wxchkver_2_9
+//%if %wxchkver_2_9
 
-%class wxPointList, wxList
+//%class %delete wxPointList, wxList
+//    wxPointList()
+//%endclass
 
-%endclass
-
-%endif
+//%endif
 
 // ---------------------------------------------------------------------------
 // wxRealPoint - Used nowhere in wxWidgets
@@ -1229,23 +1229,30 @@
     void DrawLabel(const wxString& text, const wxRect& rect, int alignment = wxALIGN_LEFT | wxALIGN_TOP, int indexAccel = -1)
     void DrawLine(wxCoord x1, wxCoord y1, wxCoord x2, wxCoord y2)
 
-    //void DrawLines(int n, wxPoint points[], wxCoord xoffset = 0, wxCoord yoffset = 0) // FIXME add this
-    %wxchkver_2_9  void DrawLines(const wxPointList *points, wxCoord xoffset = 0, wxCoord yoffset = 0)
-    !%wxchkver_2_9 void DrawLines(const wxList *points, wxCoord xoffset = 0, wxCoord yoffset = 0)
+    //void DrawLines(int n, wxPoint points[], wxCoord xoffset = 0, wxCoord yoffset = 0)
+    // Provide a Lua Table of {{1,2},{3,4},...}, {{x=1,y=2},{x=3,y=4},...}, or {wx.wxPoint(1,2),wx.wxPoint(3,4),...}
+    void DrawLines(wxPointArray_FromLuaTable points, wxCoord xoffset = 0, wxCoord yoffset = 0)
+    //%wxchkver_2_9  void DrawLines(const wxPointList *points, wxCoord xoffset = 0, wxCoord yoffset = 0)
+    //!%wxchkver_2_9 void DrawLines(const wxList *points, wxCoord xoffset = 0, wxCoord yoffset = 0)
 
-    //void DrawPolygon(int n, wxPoint points[], wxCoord xoffset = 0, wxCoord yoffset = 0, wxPolygonFillMode fill_style = wxODDEVEN_RULE) // FIXME add this
-    %wxchkver_2_9 void DrawPolygon(const wxPointList *points, wxCoord xoffset = 0, wxCoord yoffset = 0, wxPolygonFillMode fill_style = wxODDEVEN_RULE)
-    !%wxchkver_2_9 void DrawPolygon(const wxList *points, wxCoord xoffset = 0, wxCoord yoffset = 0, wxPolygonFillMode fill_style = wxODDEVEN_RULE)
+    //void DrawPolygon(int n, wxPoint points[], wxCoord xoffset = 0, wxCoord yoffset = 0, wxPolygonFillMode fill_style = wxODDEVEN_RULE)
+    // Provide a Lua Table of {{1,2},{3,4},...}, {{x=1,y=2},{x=3,y=4},...}, or {wx.wxPoint(1,2),wx.wxPoint(3,4),...}
+    void DrawPolygon(wxPointArray_FromLuaTable points, wxCoord xoffset = 0, wxCoord yoffset = 0, wxPolygonFillMode fill_style = wxODDEVEN_RULE)
+    //%wxchkver_2_9 void DrawPolygon(const wxPointList *points, wxCoord xoffset = 0, wxCoord yoffset = 0, wxPolygonFillMode fill_style = wxODDEVEN_RULE)
+    //!%wxchkver_2_9 void DrawPolygon(const wxList *points, wxCoord xoffset = 0, wxCoord yoffset = 0, wxPolygonFillMode fill_style = wxODDEVEN_RULE)
 
     //void DrawPolyPolygon(int n, int count[], wxPoint points[], wxCoord xoffset = 0, wxCoord yoffset = 0, wxPolygonFillMode fill_style = wxODDEVEN_RULE)
+
     void DrawPoint(wxCoord x, wxCoord y)
     void DrawRectangle(wxCoord x, wxCoord y, wxCoord width, wxCoord height)
     void DrawRotatedText(const wxString& text, wxCoord x, wxCoord y, double angle)
     void DrawRoundedRectangle(wxCoord x, wxCoord y, wxCoord width, wxCoord height, double radius = 20)
-    //%if wxUSE_SPLINES
-    //void DrawSpline(int n, wxPoint points[])
-    //void DrawSpline(wxList *points)
-    //%endif wxUSE_SPLINES
+    %if wxUSE_SPLINES
+        //void DrawSpline(int n, wxPoint points[])
+        // Provide a Lua Table of {{1,2},{3,4},...}, {{x=1,y=2},{x=3,y=4},...}, or {wx.wxPoint(1,2),wx.wxPoint(3,4),...}
+        void DrawSpline(wxPointArray_FromLuaTable points)
+        //void DrawSpline(wxList *points)
+    %endif //wxUSE_SPLINES
     void DrawText(const wxString& text, wxCoord x, wxCoord y)
     void EndDoc()
     //void EndDrawing()  // these are deprecated in 2.8 and didn't do anything anyway

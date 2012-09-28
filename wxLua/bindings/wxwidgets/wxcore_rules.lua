@@ -271,9 +271,10 @@ wxLuaBinding_class_implementation =
     bool ret = wxLuaBinding::RegisterBinding(wxlState);
 
     p_wxluatype_wxEvent       = &wxluatype_wxEvent;
-    p_wxluatype_wxWindow      = &wxluatype_wxWindow;
+    p_wxluatype_wxPoint       = &wxluatype_wxPoint;
     p_wxluatype_wxScrollEvent = &wxluatype_wxScrollEvent;
     p_wxluatype_wxSpinEvent   = &wxluatype_wxSpinEvent;
+    p_wxluatype_wxWindow      = &wxluatype_wxWindow;
 
     return ret;
 }

@@ -3,6 +3,7 @@
 
  version 2.8.12.3 
  --------------------------------------------------------------------
+ - Implement wxDC::DrawLines(), DrawPolygon().
  * Remove Bakefile build files since the next-gen Bakefile version is
    incompatible with the current Bakefiles anyway. 
    http://permalink.gmane.org/gmane.comp.sysutils.bakefile.devel/1502

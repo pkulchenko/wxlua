@@ -501,32 +501,6 @@ int wxPoint_methodCount = sizeof(wxPoint_methods)/sizeof(wxLuaBindMethod) - 1;
 #endif  // wxLUA_USE_wxPointSizeRect
 
 
-#if (wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0))
-// ---------------------------------------------------------------------------
-// Bind class wxPointList
-// ---------------------------------------------------------------------------
-
-// Lua MetaTable Tag for Class 'wxPointList'
-int wxluatype_wxPointList = WXLUA_TUNKNOWN;
-
-
-
-void wxLua_wxPointList_delete_function(void** p)
-{
-    wxPointList* o = (wxPointList*)(*p);
-    delete o;
-}
-
-// Map Lua Class Methods to C Binding Functions
-wxLuaBindMethod wxPointList_methods[] = {
-    { 0, 0, 0, 0 },
-};
-
-int wxPointList_methodCount = sizeof(wxPointList_methods)/sizeof(wxLuaBindMethod) - 1;
-
-#endif  // (wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0))
-
-
 #if wxLUA_USE_wxPointSizeRect
 // ---------------------------------------------------------------------------
 // Bind class wxSize
@@ -9642,37 +9616,10 @@ static int LUACALL wxLua_wxDC_DrawLine(lua_State *L)
     return 0;
 }
 
-
-#if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxList && !wxUSE_STL)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_DrawLines1[] = { &wxluatype_wxDC, &wxluatype_wxList, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxDC_DrawLines1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_DrawLines1[1] = {{ wxLua_wxDC_DrawLines1, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxDC_DrawLines1 }};
-//     !%wxchkver_2_9 void DrawLines(const wxList *points, wxCoord xoffset = 0, wxCoord yoffset = 0)
-static int LUACALL wxLua_wxDC_DrawLines1(lua_State *L)
-{
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // wxCoord yoffset = 0
-    wxCoord yoffset = (argCount >= 4 ? (wxCoord)wxlua_getnumbertype(L, 4) : 0);
-    // wxCoord xoffset = 0
-    wxCoord xoffset = (argCount >= 3 ? (wxCoord)wxlua_getnumbertype(L, 3) : 0);
-    // const wxList points
-    const wxList * points = (const wxList *)wxluaT_getuserdatatype(L, 2, wxluatype_wxList);
-    // get this
-    wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
-    // call DrawLines
-    self->DrawLines(points, xoffset, yoffset);
-
-    return 0;
-}
-
-#endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxList && !wxUSE_STL)
-
-#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && ((wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0)))
-static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_DrawLines[] = { &wxluatype_wxDC, &wxluatype_wxPointList, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_DrawLines[] = { &wxluatype_wxDC, &wxluatype_TTABLE, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDC_DrawLines(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_DrawLines[1] = {{ wxLua_wxDC_DrawLines, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxDC_DrawLines }};
-//     %wxchkver_2_9  void DrawLines(const wxPointList *points, wxCoord xoffset = 0, wxCoord yoffset = 0)
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_DrawLines[1] = {{ wxLua_wxDC_DrawLines, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxDC_DrawLines }};
+//     void DrawLines(wxPointArray_FromLuaTable points, wxCoord xoffset = 0, wxCoord yoffset = 0)
 static int LUACALL wxLua_wxDC_DrawLines(lua_State *L)
 {
     // get number of arguments
@@ -9681,17 +9628,15 @@ static int LUACALL wxLua_wxDC_DrawLines(lua_State *L)
     wxCoord yoffset = (argCount >= 4 ? (wxCoord)wxlua_getnumbertype(L, 4) : 0);
     // wxCoord xoffset = 0
     wxCoord xoffset = (argCount >= 3 ? (wxCoord)wxlua_getnumbertype(L, 3) : 0);
-    // const wxPointList points
-    const wxPointList * points = (const wxPointList *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPointList);
+    // wxPointArray_FromLuaTable points
+    wxLuaSharedPtr<std::vector<wxPoint> > points = wxlua_getwxPointArray(L, 2);
     // get this
     wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
     // call DrawLines
-    self->DrawLines(points, xoffset, yoffset);
+    self->DrawLines((int)(points ? points->size() : 0), (points && (!points->empty())) ? &points->at(0) : NULL, xoffset, yoffset);
 
     return 0;
 }
-
-#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && ((wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0)))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_DrawPoint[] = { &wxluatype_wxDC, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDC_DrawPoint(lua_State *L);
@@ -9711,39 +9656,10 @@ static int LUACALL wxLua_wxDC_DrawPoint(lua_State *L)
     return 0;
 }
 
-
-#if (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxList && !wxUSE_STL)) && (wxLUA_USE_wxDC)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_DrawPolygon1[] = { &wxluatype_wxDC, &wxluatype_wxList, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
-static int LUACALL wxLua_wxDC_DrawPolygon1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_DrawPolygon1[1] = {{ wxLua_wxDC_DrawPolygon1, WXLUAMETHOD_METHOD, 2, 5, s_wxluatypeArray_wxLua_wxDC_DrawPolygon1 }};
-//     !%wxchkver_2_9 void DrawPolygon(const wxList *points, wxCoord xoffset = 0, wxCoord yoffset = 0, wxPolygonFillMode fill_style = wxODDEVEN_RULE)
-static int LUACALL wxLua_wxDC_DrawPolygon1(lua_State *L)
-{
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // wxPolygonFillMode fill_style = wxODDEVEN_RULE
-    wxPolygonFillMode fill_style = (argCount >= 5 ? (wxPolygonFillMode)wxlua_getenumtype(L, 5) : wxODDEVEN_RULE);
-    // wxCoord yoffset = 0
-    wxCoord yoffset = (argCount >= 4 ? (wxCoord)wxlua_getnumbertype(L, 4) : 0);
-    // wxCoord xoffset = 0
-    wxCoord xoffset = (argCount >= 3 ? (wxCoord)wxlua_getnumbertype(L, 3) : 0);
-    // const wxList points
-    const wxList * points = (const wxList *)wxluaT_getuserdatatype(L, 2, wxluatype_wxList);
-    // get this
-    wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
-    // call DrawPolygon
-    self->DrawPolygon(points, xoffset, yoffset, fill_style);
-
-    return 0;
-}
-
-#endif // (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxList && !wxUSE_STL)) && (wxLUA_USE_wxDC)
-
-#if (((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && ((wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0)))) && (wxLUA_USE_wxDC)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_DrawPolygon[] = { &wxluatype_wxDC, &wxluatype_wxPointList, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_DrawPolygon[] = { &wxluatype_wxDC, &wxluatype_TTABLE, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDC_DrawPolygon(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_DrawPolygon[1] = {{ wxLua_wxDC_DrawPolygon, WXLUAMETHOD_METHOD, 2, 5, s_wxluatypeArray_wxLua_wxDC_DrawPolygon }};
-//     %wxchkver_2_9 void DrawPolygon(const wxPointList *points, wxCoord xoffset = 0, wxCoord yoffset = 0, wxPolygonFillMode fill_style = wxODDEVEN_RULE)
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_DrawPolygon[1] = {{ wxLua_wxDC_DrawPolygon, WXLUAMETHOD_METHOD, 2, 5, s_wxluatypeArray_wxLua_wxDC_DrawPolygon }};
+//     void DrawPolygon(wxPointArray_FromLuaTable points, wxCoord xoffset = 0, wxCoord yoffset = 0, wxPolygonFillMode fill_style = wxODDEVEN_RULE)
 static int LUACALL wxLua_wxDC_DrawPolygon(lua_State *L)
 {
     // get number of arguments
@@ -9754,17 +9670,15 @@ static int LUACALL wxLua_wxDC_DrawPolygon(lua_State *L)
     wxCoord yoffset = (argCount >= 4 ? (wxCoord)wxlua_getnumbertype(L, 4) : 0);
     // wxCoord xoffset = 0
     wxCoord xoffset = (argCount >= 3 ? (wxCoord)wxlua_getnumbertype(L, 3) : 0);
-    // const wxPointList points
-    const wxPointList * points = (const wxPointList *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPointList);
+    // wxPointArray_FromLuaTable points
+    wxLuaSharedPtr<std::vector<wxPoint> > points = wxlua_getwxPointArray(L, 2);
     // get this
     wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
     // call DrawPolygon
-    self->DrawPolygon(points, xoffset, yoffset, fill_style);
+    self->DrawPolygon((int)(points ? points->size() : 0), (points && (!points->empty())) ? &points->at(0) : NULL, xoffset, yoffset, fill_style);
 
     return 0;
 }
-
-#endif // (((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && ((wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0)))) && (wxLUA_USE_wxDC)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_DrawRectangle[] = { &wxluatype_wxDC, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDC_DrawRectangle(lua_State *L);
@@ -9835,6 +9749,26 @@ static int LUACALL wxLua_wxDC_DrawRoundedRectangle(lua_State *L)
 
     return 0;
 }
+
+
+#if (wxLUA_USE_wxDC) && (wxUSE_SPLINES)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_DrawSpline[] = { &wxluatype_wxDC, &wxluatype_TTABLE, NULL };
+static int LUACALL wxLua_wxDC_DrawSpline(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_DrawSpline[1] = {{ wxLua_wxDC_DrawSpline, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDC_DrawSpline }};
+//         void DrawSpline(wxPointArray_FromLuaTable points)
+static int LUACALL wxLua_wxDC_DrawSpline(lua_State *L)
+{
+    // wxPointArray_FromLuaTable points
+    wxLuaSharedPtr<std::vector<wxPoint> > points = wxlua_getwxPointArray(L, 2);
+    // get this
+    wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
+    // call DrawSpline
+    self->DrawSpline((int)(points ? points->size() : 0), (points && (!points->empty())) ? &points->at(0) : NULL);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxDC) && (wxUSE_SPLINES)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_DrawText[] = { &wxluatype_wxDC, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDC_DrawText(lua_State *L);
@@ -10956,40 +10890,6 @@ static int s_wxluafunc_wxLua_wxDC_DrawLabel_overload_count = sizeof(s_wxluafunc_
 
 #endif // ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxDC))||(((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC))
 
-#if (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxList && !wxUSE_STL))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && ((wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0))))
-// function overload table
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_DrawLines_overload[] =
-{
-
-#if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxList && !wxUSE_STL)
-    { wxLua_wxDC_DrawLines1, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxDC_DrawLines1 },
-#endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxList && !wxUSE_STL)
-
-#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && ((wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0)))
-    { wxLua_wxDC_DrawLines, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxDC_DrawLines },
-#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && ((wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0)))
-};
-static int s_wxluafunc_wxLua_wxDC_DrawLines_overload_count = sizeof(s_wxluafunc_wxLua_wxDC_DrawLines_overload)/sizeof(wxLuaBindCFunc);
-
-#endif // (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxList && !wxUSE_STL))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && ((wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0))))
-
-#if ((((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxList && !wxUSE_STL)) && (wxLUA_USE_wxDC))||((((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && ((wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0)))) && (wxLUA_USE_wxDC))
-// function overload table
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_DrawPolygon_overload[] =
-{
-
-#if (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxList && !wxUSE_STL)) && (wxLUA_USE_wxDC)
-    { wxLua_wxDC_DrawPolygon1, WXLUAMETHOD_METHOD, 2, 5, s_wxluatypeArray_wxLua_wxDC_DrawPolygon1 },
-#endif // (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxList && !wxUSE_STL)) && (wxLUA_USE_wxDC)
-
-#if (((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && ((wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0)))) && (wxLUA_USE_wxDC)
-    { wxLua_wxDC_DrawPolygon, WXLUAMETHOD_METHOD, 2, 5, s_wxluatypeArray_wxLua_wxDC_DrawPolygon },
-#endif // (((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && ((wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0)))) && (wxLUA_USE_wxDC)
-};
-static int s_wxluafunc_wxLua_wxDC_DrawPolygon_overload_count = sizeof(s_wxluafunc_wxLua_wxDC_DrawPolygon_overload)/sizeof(wxLuaBindCFunc);
-
-#endif // ((((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxList && !wxUSE_STL)) && (wxLUA_USE_wxDC))||((((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && ((wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0)))) && (wxLUA_USE_wxDC))
-
 #if ((wxLUA_USE_wxRegion) && (wxLUA_USE_wxDC))||(wxLUA_USE_wxDC)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_SetClippingRegion_overload[] =
@@ -11044,20 +10944,17 @@ wxLuaBindMethod wxDC_methods[] = {
 #endif // ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxDC))||(((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC))
 
     { "DrawLine", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_DrawLine, 1, NULL },
-
-#if (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxList && !wxUSE_STL))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && ((wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0))))
-    { "DrawLines", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_DrawLines_overload, s_wxluafunc_wxLua_wxDC_DrawLines_overload_count, 0 },
-#endif // (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxList && !wxUSE_STL))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && ((wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0))))
-
+    { "DrawLines", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_DrawLines, 1, NULL },
     { "DrawPoint", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_DrawPoint, 1, NULL },
-
-#if ((((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxList && !wxUSE_STL)) && (wxLUA_USE_wxDC))||((((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && ((wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0)))) && (wxLUA_USE_wxDC))
-    { "DrawPolygon", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_DrawPolygon_overload, s_wxluafunc_wxLua_wxDC_DrawPolygon_overload_count, 0 },
-#endif // ((((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxList && !wxUSE_STL)) && (wxLUA_USE_wxDC))||((((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDC)) && ((wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,0)))) && (wxLUA_USE_wxDC))
-
+    { "DrawPolygon", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_DrawPolygon, 1, NULL },
     { "DrawRectangle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_DrawRectangle, 1, NULL },
     { "DrawRotatedText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_DrawRotatedText, 1, NULL },
     { "DrawRoundedRectangle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_DrawRoundedRectangle, 1, NULL },
+
+#if (wxLUA_USE_wxDC) && (wxUSE_SPLINES)
+    { "DrawSpline", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_DrawSpline, 1, NULL },
+#endif // (wxLUA_USE_wxDC) && (wxUSE_SPLINES)
+
     { "DrawText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_DrawText, 1, NULL },
     { "EndDoc", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_EndDoc, 1, NULL },
     { "EndPage", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_EndPage, 1, NULL },

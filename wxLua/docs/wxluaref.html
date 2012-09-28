@@ -2340,11 +2340,6 @@
 <td align="center" bgcolor=#AAFFAA>X
 <td>&nbsp;
 <tr>
-<td><a href="#wxPointList">wxPointList</a>
-<td bgcolor=#FFAAAA>&nbsp;
-<td align="center" bgcolor=#AAFFAA>X
-<td>&nbsp;
-<tr>
 <td><a href="#wxPopupTransientWindow">wxPopupTransientWindow</a>
 <td bgcolor=#FFAAAA>&nbsp;
 <td align="center" bgcolor=#AAFFAA>X
@@ -11834,16 +11829,15 @@
 </blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
-<font color=#009900>// <a href="#wxPointList">wxPointList</a></font><br>
+<font color=#009900>// wxPointList</font><br>
 <br>
-<i>%if</i> <i>%wxchkver_2_9</i><br>
+<font color=#009900>//<i>%if</i> <i>%wxchkver_2_9</i></font><br>
 <br>
-<b><font size=+1 color=#DD0000><i>%class</i> <a name="wxPointList">wxPointList</a>, <a href="#wxList">wxList</a></font></b>
-<blockquote>
+<font color=#009900>//<i>%class</i> <i>%delete</i> wxPointList, <a href="#wxList">wxList</a></font><br>
+<font color=#009900>//    wxPointList()</font><br>
+<font color=#009900>//<i>%endclass</i></font><br>
 <br>
-</blockquote><font color=#DD0000><font color=#DD0000><i>%endclass</i></font></font><br>
-<br>
-<i>%endif</i><br>
+<font color=#009900>//<i>%endif</i></font><br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
 <font color=#009900>// wxRealPoint - Used nowhere in wxWidgets</font><br>
@@ -13066,23 +13060,30 @@
     void DrawLabel(const <a href="#wxString">wxString</a>&amp; text, const <a href="#wxRect">wxRect</a>&amp; rect, int alignment = wxALIGN_LEFT | wxALIGN_TOP, int indexAccel = -1)<br>
     void DrawLine(wxCoord x1, wxCoord y1, wxCoord x2, wxCoord y2)<br>
 <br>
-    <font color=#009900>//void DrawLines(int n, <a href="#wxPoint">wxPoint</a> points[], wxCoord xoffset = 0, wxCoord yoffset = 0) // FIXME add this</font><br>
-    <i>%wxchkver_2_9</i>  void DrawLines(const <a href="#wxPointList">wxPointList</a> *points, wxCoord xoffset = 0, wxCoord yoffset = 0)<br>
-    !<i>%wxchkver_2_9</i> void DrawLines(const <a href="#wxList">wxList</a> *points, wxCoord xoffset = 0, wxCoord yoffset = 0)<br>
+    <font color=#009900>//void DrawLines(int n, <a href="#wxPoint">wxPoint</a> points[], wxCoord xoffset = 0, wxCoord yoffset = 0)</font><br>
+    <font color=#009900>// Provide a Lua Table of {{1,2},{3,4},...}, {{x=1,y=2},{x=3,y=4},...}, or {wx.<a href="#wxPoint">wxPoint</a>(1,2),wx.<a href="#wxPoint">wxPoint</a>(3,4),...}</font><br>
+    void DrawLines(wxPointArray_FromLuaTable points, wxCoord xoffset = 0, wxCoord yoffset = 0)<br>
+    <font color=#009900>//<i>%wxchkver_2_9</i>  void DrawLines(const wxPointList *points, wxCoord xoffset = 0, wxCoord yoffset = 0)</font><br>
+    <font color=#009900>//!<i>%wxchkver_2_9</i> void DrawLines(const <a href="#wxList">wxList</a> *points, wxCoord xoffset = 0, wxCoord yoffset = 0)</font><br>
 <br>
-    <font color=#009900>//void DrawPolygon(int n, <a href="#wxPoint">wxPoint</a> points[], wxCoord xoffset = 0, wxCoord yoffset = 0, <a href="#wxPolygonFillMode">wxPolygonFillMode</a> fill_style = wxODDEVEN_RULE) // FIXME add this</font><br>
-    <i>%wxchkver_2_9</i> void DrawPolygon(const <a href="#wxPointList">wxPointList</a> *points, wxCoord xoffset = 0, wxCoord yoffset = 0, <a href="#wxPolygonFillMode">wxPolygonFillMode</a> fill_style = wxODDEVEN_RULE)<br>
-    !<i>%wxchkver_2_9</i> void DrawPolygon(const <a href="#wxList">wxList</a> *points, wxCoord xoffset = 0, wxCoord yoffset = 0, <a href="#wxPolygonFillMode">wxPolygonFillMode</a> fill_style = wxODDEVEN_RULE)<br>
+    <font color=#009900>//void DrawPolygon(int n, <a href="#wxPoint">wxPoint</a> points[], wxCoord xoffset = 0, wxCoord yoffset = 0, <a href="#wxPolygonFillMode">wxPolygonFillMode</a> fill_style = wxODDEVEN_RULE)</font><br>
+    <font color=#009900>// Provide a Lua Table of {{1,2},{3,4},...}, {{x=1,y=2},{x=3,y=4},...}, or {wx.<a href="#wxPoint">wxPoint</a>(1,2),wx.<a href="#wxPoint">wxPoint</a>(3,4),...}</font><br>
+    void DrawPolygon(wxPointArray_FromLuaTable points, wxCoord xoffset = 0, wxCoord yoffset = 0, <a href="#wxPolygonFillMode">wxPolygonFillMode</a> fill_style = wxODDEVEN_RULE)<br>
+    <font color=#009900>//<i>%wxchkver_2_9</i> void DrawPolygon(const wxPointList *points, wxCoord xoffset = 0, wxCoord yoffset = 0, <a href="#wxPolygonFillMode">wxPolygonFillMode</a> fill_style = wxODDEVEN_RULE)</font><br>
+    <font color=#009900>//!<i>%wxchkver_2_9</i> void DrawPolygon(const <a href="#wxList">wxList</a> *points, wxCoord xoffset = 0, wxCoord yoffset = 0, <a href="#wxPolygonFillMode">wxPolygonFillMode</a> fill_style = wxODDEVEN_RULE)</font><br>
 <br>
     <font color=#009900>//void DrawPolyPolygon(int n, int count[], <a href="#wxPoint">wxPoint</a> points[], wxCoord xoffset = 0, wxCoord yoffset = 0, <a href="#wxPolygonFillMode">wxPolygonFillMode</a> fill_style = wxODDEVEN_RULE)</font><br>
+<br>
     void DrawPoint(wxCoord x, wxCoord y)<br>
     void DrawRectangle(wxCoord x, wxCoord y, wxCoord width, wxCoord height)<br>
     void DrawRotatedText(const <a href="#wxString">wxString</a>&amp; text, wxCoord x, wxCoord y, double angle)<br>
     void DrawRoundedRectangle(wxCoord x, wxCoord y, wxCoord width, wxCoord height, double radius = 20)<br>
-    <font color=#009900>//<i>%if</i> wxUSE_SPLINES</font><br>
-    <font color=#009900>//void DrawSpline(int n, <a href="#wxPoint">wxPoint</a> points[])</font><br>
-    <font color=#009900>//void DrawSpline(<a href="#wxList">wxList</a> *points)</font><br>
-    <font color=#009900>//<i>%endif</i> wxUSE_SPLINES</font><br>
+    <i>%if</i> wxUSE_SPLINES<br>
+        <font color=#009900>//void DrawSpline(int n, <a href="#wxPoint">wxPoint</a> points[])</font><br>
+        <font color=#009900>// Provide a Lua Table of {{1,2},{3,4},...}, {{x=1,y=2},{x=3,y=4},...}, or {wx.<a href="#wxPoint">wxPoint</a>(1,2),wx.<a href="#wxPoint">wxPoint</a>(3,4),...}</font><br>
+        void DrawSpline(wxPointArray_FromLuaTable points)<br>
+        <font color=#009900>//void DrawSpline(<a href="#wxList">wxList</a> *points)</font><br>
+    <i>%endif</i> <font color=#009900>//wxUSE_SPLINES</font><br>
     void DrawText(const <a href="#wxString">wxString</a>&amp; text, wxCoord x, wxCoord y)<br>
     void EndDoc()<br>
     <font color=#009900>//void EndDrawing()  // these are deprecated in 2.8 and didn't do anything anyway</font><br>

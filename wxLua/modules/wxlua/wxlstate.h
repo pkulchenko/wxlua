@@ -13,10 +13,13 @@
 #include "wxlua/wxldefs.h"
 #include "wxlua/wxlbind.h"
 #include "wxlua/wxlobject.h"
+#include "wxlua/sharedptr.h"
 
 #include <wx/filefn.h>
 #include <wx/filename.h>
 #include <wx/hashmap.h>
+
+#include <vector>
 
 class WXDLLIMPEXP_FWD_WXLUA wxLuaEvent;
 class WXDLLIMPEXP_FWD_WXLUA wxLuaState;
@@ -541,8 +544,9 @@ WXDLLIMPEXP_WXLUA wxLuaSmartwxSortedArrayString LUACALL wxlua_getwxSortedArraySt
 // Convert a table array or a wxArrayInt object at the stack_idx to a wxArrayInt.
 // If it's a table, it must have integer keys and values.
 WXDLLIMPEXP_WXLUA wxLuaSmartwxArrayInt LUACALL wxlua_getwxArrayInt(lua_State* L, int stack_idx);
-
-
+// Convert a table array at the stack_idx to a vector of wxPoints.
+// Valid tables are : {{1,2},...}, {{x=1,y=2},...}, or {wx.wxPoint(1,2),,...}
+WXDLLIMPEXP_WXLUA wxLuaSharedPtr<std::vector<wxPoint> > LUACALL wxlua_getwxPointArray(lua_State* L, int stack_idx);
 // Creates a Lua table array and pushes Lua strings into it, returns the number of items added.
 //   The table is left on the stack.
 WXDLLIMPEXP_WXLUA int LUACALL wxlua_pushwxArrayStringtable(lua_State* L, const wxArrayString& strArray);

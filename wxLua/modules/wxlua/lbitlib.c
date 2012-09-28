@@ -2,6 +2,7 @@
  * This is the bit32 library from lua 5.2.0, backported to
  * lua 5.1.4.
  *
+ * http://smbolton.com/lua/lbitlib-5.2.0-backport4.c
  * version 5.2.0-backport4
  *
  * This backport was assembled by Sean Bolton (sean at smbolton
