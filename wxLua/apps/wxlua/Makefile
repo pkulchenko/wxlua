@@ -20,7 +20,7 @@ include $(WXLUA_DIR)/build/Makefile_wx-config.in
 PROGRAM = wxLua
 
 HEADERS =
-SOURCES = wxlua.cpp lconsole.cpp
+SOURCES = wxlua.cpp
 
 OBJECTS=$(SOURCES:.cpp=.o)
 DEPFILES=$(OBJECTS:.o=.d)
@@ -34,7 +34,7 @@ DEPFILES=$(OBJECTS:.o=.d)
 
 all: $(wxLuaALL_TARGETS) $(PROGRAM)
 
-$(PROGRAM): $(OBJECTS) $(LUA_LIBS)
+$(PROGRAM): $(OBJECTS)
 	$(CXX) -o $@ $(OBJECTS) $(LDLIBS) $(APPEXTRALIBS)
 
 editor:

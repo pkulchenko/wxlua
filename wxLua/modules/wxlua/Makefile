@@ -26,11 +26,17 @@ HEADERS = \
 	wxlua.h \
 	wxlbind.h \
 	wxlcallb.h \
-	wxlstate.h
+	wxlconsole.h \
+	wxlobject.h \
+	wxlstate.h \
+	wxlversion.h
 
 SOURCES = \
+	lbitlib.cpp \
 	wxlbind.cpp \
 	wxlcallb.cpp \
+	wxlconsole.cpp \
+	wxlobject.cpp \
 	wxlstate.cpp \
 	wxlua_bind.cpp
 

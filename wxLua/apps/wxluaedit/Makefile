@@ -32,9 +32,9 @@ APPEXTRALIBS := -L$(WXSTEDIT_DIR)/lib -l$(WXSTEDIT_LIB) $(APPEXTRALIBS)
 .cpp.o:
 	$(CXX) -c $(CXXFLAGS) $(APPEXTRADEFS) -o $@ $<
 
-all: $(wxLuaALL_TARGETS) wxStEdit $(PROGRAM)
+all: $(wxLuaALL_TARGETS) $(PROGRAM)
 
-$(PROGRAM): $(OBJECTS) $(LUA_LIBS)
+$(PROGRAM): wxStEdit $(OBJECTS)
 	$(CXX) -o $@ $(OBJECTS) $(LDLIBS) $(APPEXTRALIBS)
 
 clean:

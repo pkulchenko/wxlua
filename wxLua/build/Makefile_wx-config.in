@@ -77,7 +77,7 @@ WXSTC_LIB  := $(WXBASENAME)_stc-$(WXRELEASE)
 # ----------------------------------------------------------------------------
 # The wxSTEditor library compiled from wxCode/components/wxstedit
 
-WXSTEDIT_DIR   := $(WXLUA_DIR)/wxstedit
+WXSTEDIT_DIR   := $(WXLUA_DIR)/modules/wxstedit
 WXSTEDIT_LIB   := $(WXBASENAME)_stedit-$(WXRELEASE)
 WXSTEDIT_LIB   := $(patsubst wx_%,wxcode_%,$(WXSTEDIT_LIB))
 
@@ -126,6 +126,7 @@ WXLUABINDSTD_LIBS  := -l$(WXLUABINDNET_LIB) -l$(WXLUABINDCORE_LIB) -l$(WXLUABIND
 # ----------------------------------------------------------------------------
 
 CXXFLAGS := $(WXCXXFLAGS) -MMD -g -Wall -fPIC
+CFLAGS   := -g -Wall -fPIC
 LDLIBS   := $(WXLDLIBS) -ldl -Wl,--rpath -Wl,$(WXLUA_DIR_ABS)/lib
 CXX      := $(WXCXX)
 

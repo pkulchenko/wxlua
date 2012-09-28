@@ -34,7 +34,7 @@ DEPFILES=$(OBJECTS:.o=.d)
 
 all: $(wxLuaALL_TARGETS) $(PROGRAM)
 
-$(PROGRAM): $(OBJECTS) $(LUA_LIBS) $(wxLuaALL_TARGETS)
+$(PROGRAM): $(OBJECTS)
 	$(CXX) -o $@ $(OBJECTS) $(LDLIBS) $(APPEXTRALIBS)
 
 clean:
