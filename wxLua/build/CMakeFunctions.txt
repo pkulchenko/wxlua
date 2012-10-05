@@ -135,7 +135,7 @@ FUNCTION( CONFIGURE_FILE_TO_BUILD_CONFIGURATION_DIRS filename input_dir output_d
         endforeach()
     else() # MSW
         # Only a single build type in Unix, don't create other dirs and confuse people
-        configure_file("${input_dir}/${filename}" "${output_dir}/${CMAKE_BUILD_TYPE}/${filename}" ${ARGN})
+        configure_file("${input_dir}/${filename}" "${output_dir}/${filename}" ${ARGN})
     endif()
 ENDFUNCTION()
 
@@ -1234,7 +1234,14 @@ ENDFUNCTION()
 
 FUNCTION( DO_GET_TARGET_FLAGS target_name )
 
+    set(_CONFIGS "" Release Debug RelWithDebInfo MinSizeRel)
+
     set(cxx_flags "")
+
+    foreach(c ${_CONFIGS})
+        string(TOUPPER ${c} c_UPPERCASE)
+        set(cxx_flags_${c_UPPERCASE} "")
+    endforeach()
 
     # Get DLL export define, CMake automatically defines ${target_name}_EXPORTS
     # unless it has been changed.
@@ -1265,11 +1272,36 @@ FUNCTION( DO_GET_TARGET_FLAGS target_name )
         endforeach()
     endif()
 
+    foreach(c ${_CONFIGS})
+        string(TOUPPER ${c} c_UPPERCASE)
+
+        get_target_property(target_defs ${target_name} COMPILE_DEFINITIONS_${c_UPPERCASE})
+
+        if (target_defs)
+            foreach (i ${target_defs})
+                list(APPEND cxx_flags_${c_UPPERCASE} "-D${i}")
+            endforeach()
+        endif()
+    endforeach()
+
     set(list_dir ${CMAKE_CURRENT_LIST_DIR})
     #while (EXISTS ${list_dir})
+
         get_directory_property( dir_defs DIRECTORY ${list_dir} COMPILE_DEFINITIONS)
         foreach (i ${dir_defs})
             list(APPEND cxx_flags "-D${i}")
+        endforeach()
+
+        foreach(c ${_CONFIGS})
+            string(TOUPPER ${c} c_UPPERCASE)
+
+            get_directory_property( dir_defs DIRECTORY ${list_dir} COMPILE_DEFINITIONS_${c_UPPERCASE})
+
+            if (dir_defs)
+                foreach (i ${dir_defs})
+                    list(APPEND cxx_flags_${c_UPPERCASE} "-D${i}")
+                endforeach()
+            endif()
         endforeach()
 
         get_directory_property(dir_includes DIRECTORY ${list_dir} INCLUDE_DIRECTORIES)
@@ -1289,7 +1321,7 @@ FUNCTION( DO_GET_TARGET_FLAGS target_name )
     set(_CONFIGS "" Release Debug RelWithDebInfo MinSizeRel)
     foreach(c ${_CONFIGS})
         string(TOUPPER ${c} c_UPPERCASE)
-        set("${target_name}_CXX_FLAGS_${c}" ${cxx_flags} ${CMAKE_CXX_FLAGS_${c_UPPERCASE}} CACHE INTERNAL "")
+        set("${target_name}_CXX_FLAGS_${c}" ${cxx_flags} ${cxx_flags_${c_UPPERCASE}} ${CMAKE_CXX_FLAGS_${c_UPPERCASE}} CACHE INTERNAL "")
         list(REMOVE_DUPLICATES "${target_name}_CXX_FLAGS_${c}")
     endforeach()
 
@@ -1329,11 +1361,13 @@ function( TARGET_PRECOMPILED_HEADER target_name )
     #   MSVC 2008 Tools->Options->Projects and Solutions->VC++ Project Settings->Build Timing [True]
 
     if ("${BUILD_USE_PRECOMPILED_HEADERS}" STREQUAL "")
-        if (CMAKE_COMPILER_IS_GNUCXX)
-            # ccache is much faster when not using our own precomp header so disable them
-            set(BUILD_USE_PRECOMPILED_HEADERS FALSE)
-        else()
-            set(BUILD_USE_PRECOMPILED_HEADERS TRUE)
+        set(BUILD_USE_PRECOMPILED_HEADERS TRUE)
+
+        if (NOT "${CMAKE_GENERATOR}" MATCHES "MinGW Makefiles")
+            if (CMAKE_COMPILER_IS_GNUCXX)
+                # ccache is much faster when not using our own precomp header so disable them
+                set(BUILD_USE_PRECOMPILED_HEADERS FALSE)
+            endif()
         endif()
     endif()
     set(BUILD_USE_PRECOMPILED_HEADERS ${BUILD_USE_PRECOMPILED_HEADERS} CACHE BOOL "Enable the use of precompiled headers? (disable if using gcc and ccache)" FORCE)
@@ -1470,10 +1504,18 @@ function( TARGET_PRECOMPILED_HEADER target_name )
         list(APPEND cxx_flags -c ${_PCH_HEADER} -o ${PCH_BINARY})
         separate_arguments(cxx_flags)
 
-        add_custom_command(OUTPUT "${PCH_BINARY}"
-                           COMMAND rm -f ${PCH_BINARY}
-                           COMMAND ${CMAKE_CXX_COMPILER} ${cxx_flags}
-                           DEPENDS "${_PCH_HEADER}")
+        if (WIN32)
+            add_custom_command(OUTPUT "${PCH_BINARY}"
+                               COMMAND "${CMAKE_COMMAND}" -E remove "${PCH_BINARY}" # can't use 'del' here for some reason
+                               COMMAND ${CMAKE_CXX_COMPILER} ${cxx_flags}
+                               DEPENDS "${_PCH_HEADER}"
+                               VERBATIM)
+        else()
+            add_custom_command(OUTPUT "${PCH_BINARY}"
+                               COMMAND rm -f "${PCH_BINARY}"
+                               COMMAND ${CMAKE_CXX_COMPILER} ${cxx_flags}
+                               DEPENDS "${_PCH_HEADER}")
+        endif()
 
         add_custom_target( "${target_name}_precomp" ALL DEPENDS "${PCH_BINARY}")
 

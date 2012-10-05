@@ -34,26 +34,33 @@ set( LUA_EXE_PROPERTIES ) # target properties for Lua exe
 set( LUA_LINK_LIBRARIES ) # libaries to link Lua exe to
 
 if (MSVC)
-    set( LUA_DLL_PROPERTIES PROPERTIES DEFINE_SYMBOL LUA_BUILD_AS_DLL )
-    add_definitions( -D_CRT_SECURE_NO_WARNINGS )
 
     # NOTE! We always export the Lua functions to allow the EXEs to be treated as DLLs.
     # We use modules/luaproxydll as the lua51.dll, but the functions are in the executables.
+    set( LUA_DLL_PROPERTIES PROPERTIES DEFINE_SYMBOL LUA_BUILD_AS_DLL )
     add_definitions( -DLUA_BUILD_AS_DLL )
     set(LUA_EXE_PROPERTIES PROPERTIES COMPILE_DEFINITIONS "LUA_CORE")
 
+    add_definitions( -D_CRT_SECURE_NO_WARNINGS )
+
+elseif ("${CMAKE_GENERATOR}" MATCHES "MinGW Makefiles")
+
+    # NOTE! We always export the Lua functions to allow the EXEs to be treated as DLLs.
+    # We use modules/luaproxydll as the lua51.dll, but the functions are in the executables.
+    set(LUA_DLL_PROPERTIES PROPERTIES DEFINE_SYMBOL LUA_BUILD_AS_DLL )
+    add_definitions( -DLUA_BUILD_AS_DLL )
+    set(LUA_EXE_PROPERTIES PROPERTIES COMPILE_DEFINITIONS "LUA_CORE")
+
+    set(LUA_LINK_LIBRARIES m)
+
 elseif (APPLE)
-    #$(MAKE) all MYCFLAGS="-DLUA_USE_LINUX" MYLIBS="-lreadline"
+    # Lua's Makefile : $(MAKE) all MYCFLAGS="-DLUA_USE_LINUX" MYLIBS="-lreadline"
 
     add_definitions( -DLUA_USE_LINUX )
     set(LUA_LINK_LIBRARIES m readline)
 
-elseif ("${CMAKE_GENERATOR}" MATCHES "MinGW Makefiles")
-
-    set(LUA_LINK_LIBRARIES m)
-
 else () # UNIX
-    #$(MAKE) all MYCFLAGS="-DLUA_USE_LINUX -fPIC" MYLIBS="-fPIC -Wl,-E -ldl -lreadline -lhistory -lncurses"
+    # Lua's Makefile : $(MAKE) all MYCFLAGS="-DLUA_USE_LINUX -fPIC" MYLIBS="-fPIC -Wl,-E -ldl -lreadline -lhistory -lncurses"
 
     add_definitions( -DLUA_USE_LINUX )
     set(LUA_LINK_LIBRARIES m dl readline history ncurses)
@@ -94,8 +101,6 @@ set( LuaLib_ADD_LIBRARY_FULL_FILES
         src/linit.c )
 
 # ---------------------------------------------------------------------------
-
-
 
 ADD_LIBRARY_FULL( LuaLib ${wxLua_LUA_LIBRARY_BUILD_SHARED_FLAG}
     HEADERS
@@ -179,17 +184,26 @@ else()
 
     if (WIN32)
         set_target_properties(LuaLibShared PROPERTIES OUTPUT_NAME lua51)
-        # Want these in subdir, note that RUNTIME_OUTPUT_DIRECTORY_<CONFIG> is ignored for some reason.
-        #set_target_properties(LuaLibShared PROPERTIES PREFIX "shared/")
+
+        # Don't let CMake prepend "lib" on lua51.dll with MingW
+        if ("${CMAKE_GENERATOR}" MATCHES "MinGW Makefiles")
+            set_target_properties(LuaLibShared PROPERTIES PREFIX "")
+        endif()
     else()
+        # They can make symbolic links to call it whatever they want
         WXLIKE_LIBRARY_NAMES( LuaLibShared wxlua_lua51 "${wxLua_VERSION}")
     endif()
 
-    set_target_properties(LuaLibShared PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin-shared)
-    set_target_properties(LuaLibShared PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin-shared)
-    set_target_properties(LuaLibShared PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin-shared)
+    set(WXLUA_BINSHARED_DIR "${CMAKE_BINARY_DIR}/bin-shared")
+    if (NOT MSVC)
+        set(WXLUA_BINSHARED_DIR "${CMAKE_BINARY_DIR}/bin-shared/${CMAKE_BUILD_TYPE}")
+    endif()
 
-    ADD_EXECUTABLE_FULL( lua51-shared
+    set_target_properties(LuaLibShared PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${WXLUA_BINSHARED_DIR})
+    set_target_properties(LuaLibShared PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${WXLUA_BINSHARED_DIR})
+    set_target_properties(LuaLibShared PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${WXLUA_BINSHARED_DIR})
+
+    ADD_EXECUTABLE_FULL( lua-shared
         HEADERS
         SOURCES
             src/lua.c
@@ -197,11 +211,12 @@ else()
             LuaLibShared
             ${LUA_LINK_LIBRARIES}
         PROPERTIES LINKER_LANGUAGE C
-        PROPERTIES FOLDER "wxLua/apps")
+        PROPERTIES FOLDER "wxLua/apps"
+        PROPERTIES OUTPUT_NAME lua)
 
-    set_target_properties(lua51-shared PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin-shared)
-    set_target_properties(lua51-shared PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin-shared)
-    set_target_properties(lua51-shared PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin-shared)
+    set_target_properties(lua-shared PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${WXLUA_BINSHARED_DIR})
+    set_target_properties(lua-shared PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${WXLUA_BINSHARED_DIR})
+    set_target_properties(lua-shared PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${WXLUA_BINSHARED_DIR})
 
 endif (BUILD_SHARED_LIBS OR wxLua_LUA_LIBRARY_BUILD_SHARED)
 
@@ -654,6 +669,14 @@ ADD_LIBRARY_FULL( wxLuaBindLib ALLOW_MISSING_FILES
     WXLIKE_LIBRARY_NAMES( wxLuaBindLib wxlua_bind "${wxLua_VERSION}")
     set(wxLuaBind_ALL_LIBS wxLuaBindLib CACHE INTERNAL "")
 
+
+    # Silence the deprecated warnings since there isn't much we can do about them.
+    if (MSVC)
+        set_property(TARGET wxLuaBindLib APPEND PROPERTY COMPILE_FLAGS "/wd4996")
+    elseif (CMAKE_COMPILER_IS_GNUCXX)
+        set_property(TARGET wxLuaBindLib APPEND PROPERTY COMPILE_FLAGS "-Wno-deprecated-declarations")
+    endif()
+
 endif (wxLuaBind_SEPARATE_LIBS)
 
 endfunction (wxLua_Modules_wxBind_TARGETS)
@@ -695,6 +718,18 @@ ADD_LIBRARY_FULL( wxLuaModule SHARED # ALLOW_MISSING_FILES
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_LUAMODULE"
     PROPERTIES FOLDER "wxLua/Modules"
     INSTALL "${WXLUA_LIB_INSTALL_FLAGS_NO_EXPORT}")
+
+    # Silence the deprecated warnings since there isn't much we can do about them.
+    if (MSVC)
+        set_property(TARGET wxLuaModule APPEND PROPERTY COMPILE_FLAGS "/wd4996")
+    elseif (CMAKE_COMPILER_IS_GNUCXX)
+        set_property(TARGET wxLuaModule APPEND PROPERTY COMPILE_FLAGS "-Wno-deprecated-declarations")
+    endif()
+
+# Don't let CMake prepend "lib" on wx.dll with MingW
+if ("${CMAKE_GENERATOR}" MATCHES "MinGW Makefiles")
+    set_target_properties(wxLuaModule PROPERTIES PREFIX "")
+endif()
 
 # When we link to the static wxWidgets lib ignore warnings about not exporting the wx symbols
 # since we don't want to export them.

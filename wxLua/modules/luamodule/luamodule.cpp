@@ -18,7 +18,7 @@
 #include <wx/image.h>       // for wxInitAllImageHandlers
 
 #if defined(__WXMSW__)
-    #include "wx/msw/private.h" // for wxSetInstance
+    #include <wx/msw/private.h> // for wxSetInstance
 #endif
 
 #include "wxlua/wxlstate.h"
@@ -26,7 +26,9 @@
 
 extern "C"
 {
-    WXDLLIMPEXP_LUAMODULE int luaopen_wx(lua_State *L); // force C linkage w/o name mangling
+    // force C linkage w/o name mangling
+    WXDLLIMPEXP_LUAMODULE int luaopen_wx(lua_State *L); 
+    BOOL APIENTRY DllMain( HANDLE hModule, DWORD ul_reason_for_call, LPVOID );
 }
 
 static wxLuaState s_wxlState; // This is our wxLuaState for the module
@@ -45,14 +47,14 @@ WXLUA_DECLARE_BIND_ALL
 
 #ifdef __WXMSW__
 
-static HINSTANCE hDll = NULL;
+static HINSTANCE wxLuaModule_hDll = NULL;
 
 BOOL APIENTRY DllMain( HANDLE hModule, DWORD ul_reason_for_call, LPVOID )
 {
    switch (ul_reason_for_call)
    {
-      case DLL_PROCESS_ATTACH : hDll = (HINSTANCE)hModule; break;
-      case DLL_PROCESS_DETACH : hDll = NULL;
+      case DLL_PROCESS_ATTACH : wxLuaModule_hDll = (HINSTANCE)hModule; break;
+      case DLL_PROCESS_DETACH : wxLuaModule_hDll = NULL;
       default : break;
    }
 
@@ -99,9 +101,11 @@ END_EVENT_TABLE()
 bool wxLuaModuleApp::OnInit()
 {
 #ifdef __WXMSW__
-    HMODULE h = ::LoadLibrary(_T("comctl32.dll"));
+    HMODULE h_comctl32 = ::LoadLibrary(_T("comctl32.dll"));
     //wxPrintf(wxT("comctl32.dll = %p \n"), (void*)h); fflush(stdout);
     //wxCHECK_MSG(0 && h != NULL, true, wxT("Error loading comctl32.dll, you can try to continue..."));
+    if (h_comctl32 == NULL)
+        wxPrintf(wxT("wxLuaModule - Error loading comctl32.dll, trying to continue...\n"));
 #endif
 
     //wxPrintf(wxT("wxLuaModuleApp::OnInit wxLuaState.IsOk()=%d \n"), (int)s_wxlState.IsOk()); fflush(stdout);
@@ -110,7 +114,7 @@ bool wxLuaModuleApp::OnInit()
 
 int wxLuaModuleApp::OnExit()
 {
-    // This is never called...
+    // This is never called... it is here for completeness.
     //wxPrintf(wxT("wxLuaModuleApp::OnExit wxLuaState.IsOk()=%d \n"), (int)s_wxlState.IsOk()); fflush(stdout);
     return wxApp::OnExit();
 }
@@ -136,7 +140,7 @@ void wxLuaModuleApp::OnLuaError( wxLuaEvent &event )
 {
     // Note that we don't get this error normally since lua.exe installed
     // their error handler before calling pcall(), however we might get this
-    // event if in Lua they call pcall.
+    // event if pcall() is called in Lua code.
     wxPrintf(wxT("wxLua Runtime Error:\n%s\n"), event.GetString().c_str()); fflush(stdout);
 
     int ret = wxMessageBox(event.GetString(), wxT("wxLua Runtime Error"), wxOK|wxCANCEL|wxICON_ERROR);
@@ -159,20 +163,30 @@ int luaopen_wx(lua_State *L)
         wxChar **argv = NULL;
 
 #ifdef __WXMSW__
-        // wxEntryStart() calls DoCommonPreInit() which calls
-        // wxSetInstance(::GetModuleHandle(NULL)); if wxGetInstance() is NULL.
-        wxSetInstance(hDll);
+        // Set the HINSTANCE to *this* DLL's instance, not the caller app's HINSTANCE.
+        // NOTE: If wxGetInstance() is NULL then wxEntryStart() calls DoCommonPreInit() 
+        //       which calls wxSetInstance(::GetModuleHandle(NULL));
+        wxSetInstance(wxLuaModule_hDll);
+
+        // This has been a problem in the past, help people debug it...
+        // The problem will be that cursors/icons probably won't be loaded from 
+        // the resources and an assert will be given.
+        if (wxLuaModule_hDll == NULL)
+        {
+            wxPrintf(wxT("wxLuaModule - Error getting HINSTANCE, DllMain() wasn't called! trying to continue...\n")); 
+            // Don't exit... it may still work...
+        }
 #endif // __WXMSW__
 
         if (!wxEntryStart(argc, argv))
         {
-            wxPrintf(wxT("Error calling wxEntryStart(argc, argv), aborting.\n"));
+            wxPrintf(wxT("wxLuaModule - Error calling wxEntryStart(argc, argv), aborting.\n"));
             return 0;
         }
 
         if (!wxTheApp || !wxTheApp->CallOnInit())
         {
-            wxPrintf(wxT("Error calling wxTheApp->CallOnInit(), aborting.\n"));
+            wxPrintf(wxT("wxLuaModule - Error calling wxTheApp->CallOnInit(), aborting.\n"));
             return 0;
         }
 

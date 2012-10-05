@@ -233,18 +233,52 @@ if (BUILD_SHARED_LIBS) # CMake has problems with "if ("ON" AND "TRUE")"
     endif()
 endif()
 
+
 # ---------------------------------------------------------------------------
-# Put all the binaries, libs, and DLL's from different targets into the same dir.
-# By default they go into the build dir equivalent to the src dir, so they're
+# Specify where to put the built files. The default will put all the binaries,
+# libs, and DLL's from different targets into the same dir.
+# Normally each build runtime (exe,dll) and library/archive (libs) are put in
+# the build/project/dir_with_CMakeLists.txt directory, so they're
 # spread all over and it's hard to find/run them unless you already know
 # about them.
 # ---------------------------------------------------------------------------
 
-if (NOT DEFINED CMAKE_RUNTIME_OUTPUT_DIRECTORY)
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
-    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
-    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
+if (NOT DEFINED BUILD_OUTPUT_DIRECTORY_RUNTIME)
+    set(BUILD_OUTPUT_DIRECTORY_RUNTIME ${CMAKE_BINARY_DIR}/bin)
 endif()
+if (NOT DEFINED BUILD_OUTPUT_DIRECTORY_LIBRARY)
+    set(BUILD_OUTPUT_DIRECTORY_LIBRARY ${CMAKE_BINARY_DIR}/lib)
+endif()
+if (NOT DEFINED BUILD_OUTPUT_DIRECTORY_ARCHIVE)
+    set(BUILD_OUTPUT_DIRECTORY_ARCHIVE ${CMAKE_BINARY_DIR}/lib)
+endif()
+
+if (MSVC)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BUILD_OUTPUT_DIRECTORY_RUNTIME}) # + /Debug/Release/...
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${BUILD_OUTPUT_DIRECTORY_LIBRARY}) # + /Debug/Release/...
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BUILD_OUTPUT_DIRECTORY_ARCHIVE}) # + /Debug/Release/...
+else() # MSW
+    # Put into Debug/Release/... subdirs to mimic MSVC appending dirs
+    # We need this so that relative paths from exe to data files are correct on both platforms
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BUILD_OUTPUT_DIRECTORY_RUNTIME}/${CMAKE_BUILD_TYPE})
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${BUILD_OUTPUT_DIRECTORY_LIBRARY}/${CMAKE_BUILD_TYPE})
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BUILD_OUTPUT_DIRECTORY_ARCHIVE}/${CMAKE_BUILD_TYPE})
+endif()
+
+# To simplify logic - if these were blank then unset the CMAKE_XXX vars to get default behavior
+if ("${BUILD_OUTPUT_DIRECTORY_RUNTIME}" STREQUAL "")
+    unset(CMAKE_RUNTIME_OUTPUT_DIRECTORY)
+endif()
+if ("${BUILD_OUTPUT_DIRECTORY_LIBRARY}" STREQUAL "")
+    unset(CMAKE_LIBRARY_OUTPUT_DIRECTORY)
+endif()
+if ("${BUILD_OUTPUT_DIRECTORY_ARCHIVE}" STREQUAL "")
+    unset(CMAKE_ARCHIVE_OUTPUT_DIRECTORY)
+endif()
+
+set(BUILD_OUTPUT_DIRECTORY_RUNTIME ${BUILD_OUTPUT_DIRECTORY_RUNTIME} CACHE PATH "Dir to put all built executables, blank to output to each project dir." FORCE)
+set(BUILD_OUTPUT_DIRECTORY_LIBRARY ${BUILD_OUTPUT_DIRECTORY_LIBRARY} CACHE PATH "Dir to put all built libraries, blank to output to each project dir." FORCE)
+set(BUILD_OUTPUT_DIRECTORY_ARCHIVE ${BUILD_OUTPUT_DIRECTORY_ARCHIVE} CACHE PATH "Dir to put all built libraries, blank to output to each project dir." FORCE)
 
 # ---------------------------------------------------------------------------
 # RPath options to allow execution of Linux programs in the build tree to
@@ -322,14 +356,19 @@ if (MSVC) # if (CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")
             add_definitions( /MP )
         endif()
     endif()
-elseif (UNIX) # elseif (CMAKE_BUILD_TOOL MATCHES "(gmake)")
+
+elseif (CMAKE_COMPILER_IS_GNUCXX) # elseif (CMAKE_BUILD_TOOL MATCHES "(gmake)")
+
+    # NOTE : MingW's windres.exe is given everything from add_definitions()
+    #        so we use CMAKE_XXX_FLAGS.
 
     # -----------------------------------------------------------------------
     # Set compiler warning level
     if (BUILD_WARNINGS_HIGH)
-        add_definitions( -Wall -Wextra ) # -Wextra gives warnings about unused parameters and others
+        # -Wextra gives warnings about unused parameters and others
+        set(GNUC_EXTRA_FLAGS "${GNUC_EXTRA_FLAGS} -Wall -Wextra")
     else()
-        add_definitions( -Wall )
+        set(GNUC_EXTRA_FLAGS "${GNUC_EXTRA_FLAGS} -Wall")
     endif()
 
     # -----------------------------------------------------------------------
@@ -341,9 +380,13 @@ elseif (UNIX) # elseif (CMAKE_BUILD_TOOL MATCHES "(gmake)")
 
     # -----------------------------------------------------------------------
     if (IS_64_BIT)
-        add_definitions( -fPIC )
+        set(GNUC_EXTRA_FLAGS "${GNUC_EXTRA_FLAGS} -fPIC")
     endif()
+
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GNUC_EXTRA_FLAGS}")
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   ${GNUC_EXTRA_FLAGS}")
 endif()
+
 
 # ---------------------------------------------------------------------------
 # Print out the basic settings
@@ -603,9 +646,9 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
             set( wxWidgets_DEFINITIONS ${wxWidgets_DEFINITIONS} ${wxUSE_UNICODE_DEFINE} )
         endif()
     endif( wxWidgets_FOUND )
-    
+
     # -----------------------------------------------------------------------
-    # Print out what we've found so far    
+    # Print out what we've found so far
     message(STATUS "* - wxWidgets_VERSION           = ${wxWidgets_VERSION} = ${wxWidgets_MAJOR_VERSION}.${wxWidgets_MINOR_VERSION}.${wxWidgets_RELEASE_NUMBER}")
     message(STATUS "* - wxWidgets_COMPONENTS        = ${wxWidgets_COMPONENTS}" )
     message(STATUS "* - wxWidgets_INCLUDE_DIRS      = ${wxWidgets_INCLUDE_DIRS}" )
