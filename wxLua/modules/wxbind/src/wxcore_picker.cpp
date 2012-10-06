@@ -904,24 +904,6 @@ int wxDatePickerCtrl_methodCount = sizeof(wxDatePickerCtrl_methods)/sizeof(wxLua
 // Lua MetaTable Tag for Class 'wxFileDirPickerCtrlBase'
 int wxluatype_wxFileDirPickerCtrlBase = WXLUA_TUNKNOWN;
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxFileDirPickerCtrlBase_CheckPath[] = { &wxluatype_wxFileDirPickerCtrlBase, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxFileDirPickerCtrlBase_CheckPath(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDirPickerCtrlBase_CheckPath[1] = {{ wxLua_wxFileDirPickerCtrlBase_CheckPath, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileDirPickerCtrlBase_CheckPath }};
-//     bool CheckPath(const wxString& path) const
-static int LUACALL wxLua_wxFileDirPickerCtrlBase_CheckPath(lua_State *L)
-{
-    // const wxString path
-    const wxString path = wxlua_getwxStringtype(L, 2);
-    // get this
-    wxFileDirPickerCtrlBase * self = (wxFileDirPickerCtrlBase *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileDirPickerCtrlBase);
-    // call CheckPath
-    bool returns = (self->CheckPath(path));
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
-}
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileDirPickerCtrlBase_GetPath[] = { &wxluatype_wxFileDirPickerCtrlBase, NULL };
 static int LUACALL wxLua_wxFileDirPickerCtrlBase_GetPath(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDirPickerCtrlBase_GetPath[1] = {{ wxLua_wxFileDirPickerCtrlBase_GetPath, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFileDirPickerCtrlBase_GetPath }};
@@ -981,7 +963,6 @@ void wxLua_wxFileDirPickerCtrlBase_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxFileDirPickerCtrlBase_methods[] = {
-    { "CheckPath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileDirPickerCtrlBase_CheckPath, 1, NULL },
     { "GetPath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileDirPickerCtrlBase_GetPath, 1, NULL },
     { "GetTextCtrlValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileDirPickerCtrlBase_GetTextCtrlValue, 1, NULL },
     { "SetPath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileDirPickerCtrlBase_SetPath, 1, NULL },

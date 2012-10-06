@@ -32,7 +32,7 @@
 %define wxSTC_CP_UTF8
 
 // The SC_CP_DBCS value can be used to indicate a DBCS mode for GTK+.
-%define wxSTC_CP_DBCS
+// %define wxSTC_CP_DBCS - removed in 2.9.5
 %define wxSTC_MARKER_MAX
 %define wxSTC_MARK_CIRCLE
 %define wxSTC_MARK_ROUNDRECT
@@ -1418,11 +1418,11 @@
 %define wxSTC_FS_DATE
 %define wxSTC_FS_STRINGEOL
 %define wxSTC_FS_CONSTANT
-%define wxSTC_FS_ASM
-%define wxSTC_FS_LABEL
-%define wxSTC_FS_ERROR
-%define wxSTC_FS_HEXNUMBER
-%define wxSTC_FS_BINNUMBER
+//%define wxSTC_FS_ASM        - Removed in 2.9.5
+//%define wxSTC_FS_LABEL      - Removed in 2.9.5
+//%define wxSTC_FS_ERROR      - Removed in 2.9.5
+//%define wxSTC_FS_HEXNUMBER  - Removed in 2.9.5
+//%define wxSTC_FS_BINNUMBER  - Removed in 2.9.5
 
 // Lexical states for SCLEX_CSOUND
 %define wxSTC_CSOUND_DEFAULT

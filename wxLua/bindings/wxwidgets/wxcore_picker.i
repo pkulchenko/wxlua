@@ -135,7 +135,8 @@
     void SetPath(const wxString &str)
 
     // return true if the given path is valid for this control
-    bool CheckPath(const wxString& path) const
+    // bool CheckPath(const wxString& path) const - Removed in 2.9.5
+
     // return the text control value in canonical form
     wxString GetTextCtrlValue() const
 %endclass
