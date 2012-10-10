@@ -28,7 +28,9 @@ extern "C"
 {
     // force C linkage w/o name mangling
     WXDLLIMPEXP_LUAMODULE int luaopen_wx(lua_State *L); 
+#ifdef __WXMSW__
     BOOL APIENTRY DllMain( HANDLE hModule, DWORD ul_reason_for_call, LPVOID );
+#endif //__WXMSW__
 }
 
 static wxLuaState s_wxlState; // This is our wxLuaState for the module
