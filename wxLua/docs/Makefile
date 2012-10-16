@@ -5,7 +5,7 @@ WXLUA_DIR    = ../
 
 #----------------------------------------------------------------------------
 
-ALL_DOCS = binding FAQ install 
+ALL_DOCS = binding FAQ install wxlua
 
 # Always try to build all targets, let the other Makefiles do dep checking
 .PHONY: all clean $(ALL_BINDINGS)
@@ -38,6 +38,14 @@ install:
 	pandoc -f markdown -t html -c wxlua.css install.txt > install.html
     else
 	@echo install.html is up to date.
+    endif
+
+wxlua:
+    ifneq ("$(shell svn status wxlua.txt)", "")
+	@echo Generating wxlua.html
+	pandoc -f markdown -t html -c wxlua.css wxlua.txt > wxlua.html
+    else
+        @echo wxlua.html is up to date.
     endif
 
 # ---------------------------------------------------------------------------

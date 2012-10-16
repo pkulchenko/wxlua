@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="John Labenski, Francesco Montorsi" />
-  <meta name="date" content="2012-09-23" />
+  <meta name="date" content="2012-10-12" />
   <title>wxLua 2.8.12 - Installation Guide</title>
   <link rel="stylesheet" href="wxlua.css" type="text/css" />
 </head>
@@ -353,7 +353,7 @@
 <ul>
 <li><code>wxLua/utilities/bin2c.lua</code>
 <ul>
-<li>Lua script to convert any text file to a C const char* string.</li>
+<li>Lua script to convert any text file to a 'C' const char* string.</li>
 </ul></li>
 </ul>
 <a name="C4"/>
@@ -388,15 +388,17 @@
 <ul>
 <li>Select &quot;Use default native compilers&quot; unless you have some reason not to.</li>
 </ul></li>
-<li>Select the root of the wxLua directory as the &quot;Where is the source code&quot; directory, it has the root <code>CMakeLists.txt</code> file in it.</li>
+<li>Select the root of the wxLua directory as the &quot;Where is the source code&quot; directory, it has the root <code>CMakeLists.txt</code> file in it and subdirectories of <code>apps, art, bindings, modules, ...</code>.</li>
 <li>Select a directory, perhaps named <code>wxLua-build</code>, at the same level as the <code>wxLua/</code> directory for &quot;Where to build the binaries.&quot;
 <ul>
 <li>The build directory can be anywhere, but ideally not the same as the wxLua source code directory since you may want to completely delete it.</li>
 <li>If anything goes very wrong, consider deleting the build directory you created so you can start fresh.</li>
+<li>If you drasticly change the CMake build settings after having compiled wxLua you should simply start with a new build directory. Everything will have to be rebuilt anyway and once the new settings are applied you can no longer <code>clean</code> the old files that have different names.</li>
 </ul></li>
-<li>Choose the type of library you want, static or shared libs (DLLs) by checking the <code>BUILD_SHARED_LIBS</code> variable.
+<li>Choose the type of library you want, static or shared libs (DLLs), by setting the <code>BUILD_SHARED_LIBS</code> variable.
 <ul>
 <li>Typically this will match what your wxWidgets build is.</li>
+<li>By default, a shared version of wxWidgets will be used if <code>BUILD_SHARED_LIBS</code> is TRUE, if available. See the build settings for particular compilers to choose the wxWidgets build you actually want.</li>
 </ul></li>
 <li>Press the &quot;Configure&quot; button a few times.
 <ul>
@@ -408,11 +410,12 @@
 <li>Review the available settings in section <a href="#C4.3">4.3</a> before continuing.</li>
 <li>Skip to the section below that is appropriate for your compiler to complete the build process.</li>
 </ol>
+<p><strong>ALWAYS CONFIGURE CMAKE MORE THAN ONCE to ensure that wxWidgets is properly found and the wxLua settings are synced to it.</strong> <br/> This also applies to the command-line cmake configuration too. Double check the cmake output to ensure that wxLua will be built to your specifications.</p>
 <a name="C4.3"/>
 <h3 id="cmake-configuration-variables">4.3 - CMake Configuration Variables</h3>
 <p>Below are the CMake variables that you can and in some cases must adjust to build wxLua. If you want to run CMake from the command line you would specify these variables as : <code>cmake -DBUILD_SHARED_LIBS=TRUE ...</code></p>
 <ul>
-<li>BUILD_INSTALL_PREFIX=&quot;/path/to/install/the/files/to/after/building&quot;</li>
+<li>BUILD_INSTALL_PREFIX=&quot;/path/the/install/target/copies/the/files/to/after/building&quot;</li>
 <li>BUILD_SHARED_LIBS=[TRUE, FALSE] - Build shared libs (DLLs in MSW) or if FALSE, static libs.</li>
 <li>BUILD_USE_MULTIPROCESSOR=[TRUE, FALSE] - Build using multiple processors (MSVC). Does nothing using gcc.</li>
 <li>BUILD_USE_PRECOMPILED_HEADERS=[TRUE, FALSE] - Build quicker by precompiling the headers in MSVC. (When using GCC install ccache since it is even faster)</li>

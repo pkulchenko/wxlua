@@ -1,6 +1,6 @@
 % wxLua 2.8.12 - Installation Guide
 % John Labenski, Francesco Montorsi
-% 2012-09-23
+% 2012-10-12
 
 This document describes how to build the wxLua libraries, editors, and
 interpreters. wxLua is written in C and C++ and can be built on MS
@@ -447,7 +447,7 @@ simply build them all.
 ### 3.3 - wxLua Utilities
 
 -   `wxLua/utilities/bin2c.lua`
-    -   Lua script to convert any text file to a C const char* string.
+    -   Lua script to convert any text file to a 'C' const char* string.
 
 
 <a name="C4"/>
@@ -497,16 +497,24 @@ flexible.
     wxWidgets was compiled with.
     -   Select "Use default native compilers" unless you have some reason not to.
 4.  Select the root of the wxLua directory as the "Where is the source code"
-    directory, it has the root `CMakeLists.txt` file in it.
+    directory, it has the root `CMakeLists.txt` file in it and subdirectories
+    of `apps, art, bindings, modules, ...`.
 5.  Select a directory, perhaps named `wxLua-build`, at the same level
     as the `wxLua/` directory for "Where to build the binaries."
     -   The build directory can be anywhere, but ideally not the same as the
         wxLua source code directory since you may want to completely delete it.
     -   If anything goes very wrong, consider deleting the build
         directory you created so you can start fresh.
-6.  Choose the type of library you want, static or shared libs (DLLs) by
-    checking the `BUILD_SHARED_LIBS` variable.
+    -   If you drasticly change the CMake build settings after having compiled
+        wxLua you should simply start with a new build directory. Everything
+        will have to be rebuilt anyway and once the new settings are applied
+        you can no longer `clean` the old files that have different names.
+6.  Choose the type of library you want, static or shared libs (DLLs), by
+    setting the `BUILD_SHARED_LIBS` variable.
     -   Typically this will match what your wxWidgets build is.
+    -   By default, a shared version of wxWidgets will be used if
+        `BUILD_SHARED_LIBS` is TRUE, if available. See the build settings for
+        particular compilers to choose the wxWidgets build you actually want.
 7.  Press the "Configure" button a few times.
     -   Each time configure is run more variables are found and these
         appear in red, reconfigure until no more items are red.
@@ -516,9 +524,14 @@ flexible.
     libraries you have and want to use.
 9.  Adjust the CMake variable wxLuaBind_COMPONENTS to match or have fewer
     libraries than the wxWidgets_COMPONENTS list.
-8.  Review the available settings in section [4.3](#C4.3) before continuing.
-9.  Skip to the section below that is appropriate for your compiler to
+10. Review the available settings in section [4.3](#C4.3) before continuing.
+11. Skip to the section below that is appropriate for your compiler to
     complete the build process.
+
+**ALWAYS CONFIGURE CMAKE MORE THAN ONCE to ensure that wxWidgets is properly
+found and the wxLua settings are synced to it.** <br/>
+This also applies to the command-line cmake configuration too. Double check
+the cmake output to ensure that wxLua will be built to your specifications.
 
 
 <a name="C4.3"/>
@@ -529,7 +542,7 @@ Below are the CMake variables that you can and in some cases must adjust
 to build wxLua. If you want to run CMake from the command line you would
 specify these variables as : `cmake -DBUILD_SHARED_LIBS=TRUE ...`
 
--   BUILD_INSTALL_PREFIX="/path/to/install/the/files/to/after/building"
+-   BUILD_INSTALL_PREFIX="/path/the/install/target/copies/the/files/to/after/building"
 -   BUILD_SHARED_LIBS=[TRUE, FALSE] - Build shared libs (DLLs in MSW)
     or if FALSE, static libs.
 -   BUILD_USE_MULTIPROCESSOR=[TRUE, FALSE] - Build using multiple
