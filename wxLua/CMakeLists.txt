@@ -271,9 +271,9 @@ endif()
 # ===========================================================================
 
 export( TARGETS ${LuaLib_Export} wxLuaLib wxLuaDebugLib wxLuaDebuggerLib wxLuaBindLib ${LuaLibShared_export_name}
-        FILE "${CMAKE_BINARY_DIR}/build/wxLua-config.cmake")
+        FILE "${CMAKE_BINARY_DIR}/build/wxLuaConfig.cmake")
 
-file( APPEND "${CMAKE_BINARY_DIR}/build/wxLua-config.cmake"
+file( APPEND "${CMAKE_BINARY_DIR}/build/wxLuaConfig.cmake"
 "\n
 # ---------------------------------------------------------------------------
 # Add the compiler flags in the variable wxLua_CXX_DEFINITIONS to your target
@@ -287,7 +287,7 @@ endmacro(SETUP_wxLua)
 
 install(EXPORT wxLua_export
         DESTINATION share/wxlua/
-        FILE wxLua-config.cmake)
+        FILE wxLuaConfig.cmake)
 
 # ===========================================================================
 # Install the remaining files
@@ -335,12 +335,17 @@ install(FILES
         DESTINATION "include/wxlua/lua")
 
 install(FILES
+        ${wxLua_ROOT_DIR}/modules/wxlua/atomic.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/sharedptr.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlbind.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlcallb.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxlconsole.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxldefs.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxlobject.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlstate.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlua.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlua_bind.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxlversion.h
         DESTINATION "include/wxlua")
 
 install(FILES

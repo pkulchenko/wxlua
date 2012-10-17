@@ -1676,6 +1676,10 @@ function CreateFindReplaceDialog(replace)
         findReplaceSizer:Add(replaceTextCombo, 1, wx.wxTOP + wx.wxGROW + wx.wxCENTER, 5)
     end
 
+    -- Create the static box sizer before adding items to it.
+    local optionsSizer = wx.wxStaticBoxSizer(wx.wxVERTICAL, findDialog, "Options" );
+    local optionSizer = wx.wxBoxSizer(wx.wxVERTICAL, findDialog)
+
     -- Create find/replace option checkboxes
     local wholeWordCheckBox  = wx.wxCheckBox(findDialog, wx.wxID_ANY, "Match &whole word")
     local matchCaseCheckBox  = wx.wxCheckBox(findDialog, wx.wxID_ANY, "Match &case")
@@ -1686,12 +1690,10 @@ function CreateFindReplaceDialog(replace)
     wrapAroundCheckBox:SetValue(findReplace.fWrap)
     regexCheckBox:SetValue(findReplace.fRegularExpr)
 
-    local optionSizer = wx.wxBoxSizer(wx.wxVERTICAL, findDialog)
     optionSizer:Add(wholeWordCheckBox,  0, wx.wxALL + wx.wxGROW + wx.wxCENTER, 3)
     optionSizer:Add(matchCaseCheckBox,  0, wx.wxALL + wx.wxGROW + wx.wxCENTER, 3)
     optionSizer:Add(wrapAroundCheckBox, 0, wx.wxALL + wx.wxGROW + wx.wxCENTER, 3)
     optionSizer:Add(regexCheckBox,      0, wx.wxALL + wx.wxGROW + wx.wxCENTER, 3)
-    local optionsSizer = wx.wxStaticBoxSizer(wx.wxVERTICAL, findDialog, "Options" );
     optionsSizer:Add(optionSizer, 0, 0, 5)
 
     -- Create scope radiobox
