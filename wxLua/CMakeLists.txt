@@ -273,6 +273,18 @@ endif()
 export( TARGETS ${LuaLib_Export} wxLuaLib wxLuaDebugLib wxLuaDebuggerLib wxLuaBindLib ${LuaLibShared_export_name}
         FILE "${CMAKE_BINARY_DIR}/build/wxLuaConfig.cmake")
 
+# We need to add the system LuaLib to the export list by hand since CMake
+# gives an error if an imported LuaLib is added to export()
+if ("${LuaLib_Export}" STREQUAL "")
+    file( APPEND "${CMAKE_BINARY_DIR}/build/wxLuaConfig.cmake"
+"\n
+# Create imported target LuaLib
+ADD_LIBRARY(LuaLib UNKNOWN IMPORTED)
+# Import target "LuaLib"
+SET_TARGET_PROPERTIES(LuaLib PROPERTIES IMPORTED_LOCATION \"${wxLua_LUA_LIBRARY}\")
+\n")
+endif()
+
 file( APPEND "${CMAKE_BINARY_DIR}/build/wxLuaConfig.cmake"
 "\n
 # ---------------------------------------------------------------------------
