@@ -248,7 +248,7 @@ bool wxLuaEditorApp::OnInit()
     steOptions.SetFrameOption(STF_CREATE_NOTEBOOK, true);
     steOptions.SetFrameOption(STF_CREATE_SINGLEPAGE, false);
     steOptions.SetFrameOption(STF_CREATE_SIDEBAR, true);
-    steOptions.GetMenuManager()->SetToolbarToolType(STE_TOOLBAR_EDIT_FIND_CTRL, true);
+    steOptions.GetMenuManager()->SetToolbarToolType(STE_TOOLBAR_EDIT_SEARCH_CTRL, true);
 
     // use a wxFileConfig to load/save our preferences
     wxFileConfig *config = new wxFileConfig(wxT("wxLuaEdit"), wxT("wxLua"));
