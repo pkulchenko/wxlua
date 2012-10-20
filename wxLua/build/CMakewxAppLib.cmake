@@ -325,6 +325,10 @@ set( CMAKE_VERBOSE_MAKEFILE ${BUILD_VERBOSELY} CACHE BOOL "Verbose build output 
 # Compiler specific settings
 # ---------------------------------------------------------------------------
 
+# NOTE : Don't use add_definitions() for CMAKE_XXX_FLAGS since MSVC2010 and
+#        MingW's windres.exe error basic compiler flags.
+
+
 if (NOT DEFINED BUILD_WARNINGS_HIGH)
     SET(BUILD_WARNINGS_HIGH FALSE)
 endif()
@@ -335,9 +339,9 @@ if (MSVC) # if (CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")
     # -----------------------------------------------------------------------
     # Set the compiler warning level
     if (BUILD_WARNINGS_HIGH)
-        add_definitions( /W4 )
+        set(MSVC_EXTRA_FLAGS "${MSVC_EXTRA_FLAGS} /W4")
     else()
-        add_definitions( /W3 )
+        set(MSVC_EXTRA_FLAGS "${MSVC_EXTRA_FLAGS} /W3")
     endif()
 
     # -----------------------------------------------------------------------
@@ -353,14 +357,14 @@ if (MSVC) # if (CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")
         set(BUILD_USE_MULTIPROCESSOR ${BUILD_USE_MULTIPROCESSOR} CACHE BOOL "Build in MSVC using multiple processors (TRUE) else single processor (FALSE)" FORCE)
 
         if (BUILD_USE_MULTIPROCESSOR)
-            add_definitions( /MP )
+            set(MSVC_EXTRA_FLAGS "${MSVC_EXTRA_FLAGS} /MP")
         endif()
     endif()
 
-elseif (CMAKE_COMPILER_IS_GNUCXX) # elseif (CMAKE_BUILD_TOOL MATCHES "(gmake)")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${MSVC_EXTRA_FLAGS}")
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   ${MSVC_EXTRA_FLAGS}")
 
-    # NOTE : MingW's windres.exe is given everything from add_definitions()
-    #        so we use CMAKE_XXX_FLAGS.
+elseif (CMAKE_COMPILER_IS_GNUCXX) # elseif (CMAKE_BUILD_TOOL MATCHES "(gmake)")
 
     # -----------------------------------------------------------------------
     # Set compiler warning level
@@ -649,10 +653,16 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
 
     # -----------------------------------------------------------------------
     # Print out what we've found so far
+
+    # This is from FindwxWidgets.cmake and is "typically an empty string" in MSW.
+    if (WIN32 AND ("${wxWidgets_LIBRARY_DIRS}" STREQUAL ""))
+        set(wxWidgets_LIBRARY_DIRS2 "${wxWidgets_LIB_DIR}")
+    endif()
+
     message(STATUS "* - wxWidgets_VERSION           = ${wxWidgets_VERSION} = ${wxWidgets_MAJOR_VERSION}.${wxWidgets_MINOR_VERSION}.${wxWidgets_RELEASE_NUMBER}")
     message(STATUS "* - wxWidgets_COMPONENTS        = ${wxWidgets_COMPONENTS}" )
     message(STATUS "* - wxWidgets_INCLUDE_DIRS      = ${wxWidgets_INCLUDE_DIRS}" )
-    message(STATUS "* - wxWidgets_LIBRARY_DIRS      = ${wxWidgets_LIBRARY_DIRS}" )
+    message(STATUS "* - wxWidgets_LIBRARY_DIRS      = ${wxWidgets_LIBRARY_DIRS2}" )
     message(STATUS "* - wxWidgets_LIBRARIES         = ${wxWidgets_LIBRARIES}" )
     message(STATUS "* - wxWidgets_CXX_FLAGS         = ${wxWidgets_CXX_FLAGS}" )
     message(STATUS "* - wxWidgets_DEFINITIONS       = ${wxWidgets_DEFINITIONS}" )
@@ -663,6 +673,7 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
     message(STATUS "* - wxWidgets_UNICODEFLAG       = ${wxWidgets_UNICODEFLAG}" )
     message(STATUS "* - wxWidgets_DEBUGFLAG         = ${wxWidgets_DEBUGFLAG}" )
 
+    unset(wxWidgets_LIBRARY_DIRS2)
     # -----------------------------------------------------------------------
     # Always verify the libs, for success or failure in finding wxWidgets.
     VERIFY_WXWIDGETS_COMPONENTS()
