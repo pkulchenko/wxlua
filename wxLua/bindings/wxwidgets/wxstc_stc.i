@@ -11,197 +11,197 @@
 // NOTE: This file is mostly copied from wxWidget's stc.h header
 // to make updating it easier, the comments help diff follow along better.
 
-%include "wx/stc/stc.h"
+#include "wx/stc/stc.h"
 
-%define wxSTC_INVALID_POSITION
+#define wxSTC_INVALID_POSITION
 
 // Define start of Scintilla messages to be greater than all Windows edit (EM_*) messages
 // as many EM_ messages can be used although that use is deprecated.
-%define wxSTC_START
-%define wxSTC_OPTIONAL_START
-%define wxSTC_LEXER_START
-%define wxSTC_WS_INVISIBLE
-%define wxSTC_WS_VISIBLEALWAYS
-%define wxSTC_WS_VISIBLEAFTERINDENT
-%define wxSTC_EOL_CRLF
-%define wxSTC_EOL_CR
-%define wxSTC_EOL_LF
+#define wxSTC_START
+#define wxSTC_OPTIONAL_START
+#define wxSTC_LEXER_START
+#define wxSTC_WS_INVISIBLE
+#define wxSTC_WS_VISIBLEALWAYS
+#define wxSTC_WS_VISIBLEAFTERINDENT
+#define wxSTC_EOL_CRLF
+#define wxSTC_EOL_CR
+#define wxSTC_EOL_LF
 
 // The SC_CP_UTF8 value can be used to enter Unicode mode.
 // This is the same value as CP_UTF8 in Windows
-%define wxSTC_CP_UTF8
+#define wxSTC_CP_UTF8
 
 // The SC_CP_DBCS value can be used to indicate a DBCS mode for GTK+.
-// %define wxSTC_CP_DBCS - removed in 2.9.5
-%define wxSTC_MARKER_MAX
-%define wxSTC_MARK_CIRCLE
-%define wxSTC_MARK_ROUNDRECT
-%define wxSTC_MARK_ARROW
-%define wxSTC_MARK_SMALLRECT
-%define wxSTC_MARK_SHORTARROW
-%define wxSTC_MARK_EMPTY
-%define wxSTC_MARK_ARROWDOWN
-%define wxSTC_MARK_MINUS
-%define wxSTC_MARK_PLUS
+// #define wxSTC_CP_DBCS - removed in 2.9.5
+#define wxSTC_MARKER_MAX
+#define wxSTC_MARK_CIRCLE
+#define wxSTC_MARK_ROUNDRECT
+#define wxSTC_MARK_ARROW
+#define wxSTC_MARK_SMALLRECT
+#define wxSTC_MARK_SHORTARROW
+#define wxSTC_MARK_EMPTY
+#define wxSTC_MARK_ARROWDOWN
+#define wxSTC_MARK_MINUS
+#define wxSTC_MARK_PLUS
 
 // Shapes used for outlining column.
-%define wxSTC_MARK_VLINE
-%define wxSTC_MARK_LCORNER
-%define wxSTC_MARK_TCORNER
-%define wxSTC_MARK_BOXPLUS
-%define wxSTC_MARK_BOXPLUSCONNECTED
-%define wxSTC_MARK_BOXMINUS
-%define wxSTC_MARK_BOXMINUSCONNECTED
-%define wxSTC_MARK_LCORNERCURVE
-%define wxSTC_MARK_TCORNERCURVE
-%define wxSTC_MARK_CIRCLEPLUS
-%define wxSTC_MARK_CIRCLEPLUSCONNECTED
-%define wxSTC_MARK_CIRCLEMINUS
-%define wxSTC_MARK_CIRCLEMINUSCONNECTED
+#define wxSTC_MARK_VLINE
+#define wxSTC_MARK_LCORNER
+#define wxSTC_MARK_TCORNER
+#define wxSTC_MARK_BOXPLUS
+#define wxSTC_MARK_BOXPLUSCONNECTED
+#define wxSTC_MARK_BOXMINUS
+#define wxSTC_MARK_BOXMINUSCONNECTED
+#define wxSTC_MARK_LCORNERCURVE
+#define wxSTC_MARK_TCORNERCURVE
+#define wxSTC_MARK_CIRCLEPLUS
+#define wxSTC_MARK_CIRCLEPLUSCONNECTED
+#define wxSTC_MARK_CIRCLEMINUS
+#define wxSTC_MARK_CIRCLEMINUSCONNECTED
 
 // Invisible mark that only sets the line background color.
 
 
-%define wxSTC_MARK_BACKGROUND
-%define wxSTC_MARK_DOTDOTDOT
-%define wxSTC_MARK_ARROWS
-%define wxSTC_MARK_PIXMAP
-%define wxSTC_MARK_FULLRECT
+#define wxSTC_MARK_BACKGROUND
+#define wxSTC_MARK_DOTDOTDOT
+#define wxSTC_MARK_ARROWS
+#define wxSTC_MARK_PIXMAP
+#define wxSTC_MARK_FULLRECT
 
-%if %wxchkver_2_9_2
-%define wxSTC_MARK_LEFTRECT
-%define wxSTC_MARK_AVAILABLE
-%define wxSTC_MARK_UNDERLINE
-%endif
+#if %wxchkver_2_9_2
+#define wxSTC_MARK_LEFTRECT
+#define wxSTC_MARK_AVAILABLE
+#define wxSTC_MARK_UNDERLINE
+#endif
 
-%define wxSTC_MARK_CHARACTER
+#define wxSTC_MARK_CHARACTER
 
 // Markers used for outlining column.
-%define wxSTC_MARKNUM_FOLDEREND
-%define wxSTC_MARKNUM_FOLDEROPENMID
-%define wxSTC_MARKNUM_FOLDERMIDTAIL
-%define wxSTC_MARKNUM_FOLDERTAIL
-%define wxSTC_MARKNUM_FOLDERSUB
-%define wxSTC_MARKNUM_FOLDER
-%define wxSTC_MARKNUM_FOLDEROPEN
-%define wxSTC_MASK_FOLDERS
-%define wxSTC_MARGIN_SYMBOL
-%define wxSTC_MARGIN_NUMBER
-%if %wxchkver_2_9_2
-%define wxSTC_MARGIN_BACK
-%define wxSTC_MARGIN_FORE
-%define wxSTC_MARGIN_TEXT
-%define wxSTC_MARGIN_RTEXT
-%endif
+#define wxSTC_MARKNUM_FOLDEREND
+#define wxSTC_MARKNUM_FOLDEROPENMID
+#define wxSTC_MARKNUM_FOLDERMIDTAIL
+#define wxSTC_MARKNUM_FOLDERTAIL
+#define wxSTC_MARKNUM_FOLDERSUB
+#define wxSTC_MARKNUM_FOLDER
+#define wxSTC_MARKNUM_FOLDEROPEN
+#define wxSTC_MASK_FOLDERS
+#define wxSTC_MARGIN_SYMBOL
+#define wxSTC_MARGIN_NUMBER
+#if %wxchkver_2_9_2
+#define wxSTC_MARGIN_BACK
+#define wxSTC_MARGIN_FORE
+#define wxSTC_MARGIN_TEXT
+#define wxSTC_MARGIN_RTEXT
+#endif
 
 // Styles in range 32..37 are predefined for parts of the UI and are not used as normal styles.
 // Styles 38 and 39 are for future use.
-%define wxSTC_STYLE_DEFAULT
-%define wxSTC_STYLE_LINENUMBER
-%define wxSTC_STYLE_BRACELIGHT
-%define wxSTC_STYLE_BRACEBAD
-%define wxSTC_STYLE_CONTROLCHAR
-%define wxSTC_STYLE_INDENTGUIDE
-%wxchkver_2_9_2 %define wxSTC_STYLE_CALLTIP
-%define wxSTC_STYLE_LASTPREDEFINED
-%define wxSTC_STYLE_MAX
+#define wxSTC_STYLE_DEFAULT
+#define wxSTC_STYLE_LINENUMBER
+#define wxSTC_STYLE_BRACELIGHT
+#define wxSTC_STYLE_BRACEBAD
+#define wxSTC_STYLE_CONTROLCHAR
+#define wxSTC_STYLE_INDENTGUIDE
+%wxchkver_2_9_2 #define wxSTC_STYLE_CALLTIP
+#define wxSTC_STYLE_LASTPREDEFINED
+#define wxSTC_STYLE_MAX
 
 // Character set identifiers are used in StyleSetCharacterSet.
 // The values are the same as the Windows *_CHARSET values.
-%define wxSTC_CHARSET_ANSI
-%define wxSTC_CHARSET_DEFAULT
-%define wxSTC_CHARSET_BALTIC
-%define wxSTC_CHARSET_CHINESEBIG5
-%define wxSTC_CHARSET_EASTEUROPE
-%define wxSTC_CHARSET_GB2312
-%define wxSTC_CHARSET_GREEK
-%define wxSTC_CHARSET_HANGUL
-%define wxSTC_CHARSET_MAC
-%define wxSTC_CHARSET_OEM
-%define wxSTC_CHARSET_RUSSIAN
-%define wxSTC_CHARSET_CYRILLIC
-%define wxSTC_CHARSET_SHIFTJIS
-%define wxSTC_CHARSET_SYMBOL
-%define wxSTC_CHARSET_TURKISH
-%define wxSTC_CHARSET_JOHAB
-%define wxSTC_CHARSET_HEBREW
-%define wxSTC_CHARSET_ARABIC
-%define wxSTC_CHARSET_VIETNAMESE
-%define wxSTC_CHARSET_THAI
-%define wxSTC_CHARSET_8859_15
-%define wxSTC_CASE_MIXED
-%define wxSTC_CASE_UPPER
-%define wxSTC_CASE_LOWER
+#define wxSTC_CHARSET_ANSI
+#define wxSTC_CHARSET_DEFAULT
+#define wxSTC_CHARSET_BALTIC
+#define wxSTC_CHARSET_CHINESEBIG5
+#define wxSTC_CHARSET_EASTEUROPE
+#define wxSTC_CHARSET_GB2312
+#define wxSTC_CHARSET_GREEK
+#define wxSTC_CHARSET_HANGUL
+#define wxSTC_CHARSET_MAC
+#define wxSTC_CHARSET_OEM
+#define wxSTC_CHARSET_RUSSIAN
+#define wxSTC_CHARSET_CYRILLIC
+#define wxSTC_CHARSET_SHIFTJIS
+#define wxSTC_CHARSET_SYMBOL
+#define wxSTC_CHARSET_TURKISH
+#define wxSTC_CHARSET_JOHAB
+#define wxSTC_CHARSET_HEBREW
+#define wxSTC_CHARSET_ARABIC
+#define wxSTC_CHARSET_VIETNAMESE
+#define wxSTC_CHARSET_THAI
+#define wxSTC_CHARSET_8859_15
+#define wxSTC_CASE_MIXED
+#define wxSTC_CASE_UPPER
+#define wxSTC_CASE_LOWER
 
-%define wxSTC_INDIC_MAX
-%define wxSTC_INDIC_PLAIN
-%define wxSTC_INDIC_SQUIGGLE
-%define wxSTC_INDIC_TT
-%define wxSTC_INDIC_DIAGONAL
-%define wxSTC_INDIC_STRIKE
-%define wxSTC_INDIC_HIDDEN
-%define wxSTC_INDIC_BOX
-%define wxSTC_INDIC0_MASK
-%define wxSTC_INDIC1_MASK
-%define wxSTC_INDIC2_MASK
-%define wxSTC_INDICS_MASK
+#define wxSTC_INDIC_MAX
+#define wxSTC_INDIC_PLAIN
+#define wxSTC_INDIC_SQUIGGLE
+#define wxSTC_INDIC_TT
+#define wxSTC_INDIC_DIAGONAL
+#define wxSTC_INDIC_STRIKE
+#define wxSTC_INDIC_HIDDEN
+#define wxSTC_INDIC_BOX
+#define wxSTC_INDIC0_MASK
+#define wxSTC_INDIC1_MASK
+#define wxSTC_INDIC2_MASK
+#define wxSTC_INDICS_MASK
 
 // PrintColourMode - use same colours as screen.
-%define wxSTC_PRINT_NORMAL
+#define wxSTC_PRINT_NORMAL
 
 // PrintColourMode - invert the light value of each style for printing.
-%define wxSTC_PRINT_INVERTLIGHT
+#define wxSTC_PRINT_INVERTLIGHT
 
 // PrintColourMode - force black text on white background for printing.
-%define wxSTC_PRINT_BLACKONWHITE
+#define wxSTC_PRINT_BLACKONWHITE
 
 // PrintColourMode - text stays coloured, but all background is forced to be white for printing.
-%define wxSTC_PRINT_COLOURONWHITE
+#define wxSTC_PRINT_COLOURONWHITE
 
 // PrintColourMode - only the default-background is forced to be white for printing.
-%define wxSTC_PRINT_COLOURONWHITEDEFAULTBG
-%define wxSTC_FIND_WHOLEWORD
-%define wxSTC_FIND_MATCHCASE
-%define wxSTC_FIND_WORDSTART
-%define wxSTC_FIND_REGEXP
-%define wxSTC_FIND_POSIX
-%define wxSTC_FOLDLEVELBASE
-%define wxSTC_FOLDLEVELWHITEFLAG
-%define wxSTC_FOLDLEVELHEADERFLAG
-!%wxchkver_2_9_2 %define wxSTC_FOLDLEVELBOXHEADERFLAG
-!%wxchkver_2_9_2 %define wxSTC_FOLDLEVELBOXFOOTERFLAG
-!%wxchkver_2_9_2 %define wxSTC_FOLDLEVELCONTRACTED
-!%wxchkver_2_9_2 %define wxSTC_FOLDLEVELUNINDENT
-%define wxSTC_FOLDLEVELNUMBERMASK
-%define wxSTC_FOLDFLAG_LINEBEFORE_EXPANDED
-%define wxSTC_FOLDFLAG_LINEBEFORE_CONTRACTED
-%define wxSTC_FOLDFLAG_LINEAFTER_EXPANDED
-%define wxSTC_FOLDFLAG_LINEAFTER_CONTRACTED
-%define wxSTC_FOLDFLAG_LEVELNUMBERS
-!%wxchkver_2_9_2 %define wxSTC_FOLDFLAG_BOX
-%define wxSTC_TIME_FOREVER
-%define wxSTC_WRAP_NONE
-%define wxSTC_WRAP_WORD
-%define wxSTC_WRAP_CHAR
-%define wxSTC_WRAPVISUALFLAG_NONE
-%define wxSTC_WRAPVISUALFLAG_END
-%define wxSTC_WRAPVISUALFLAG_START
-%define wxSTC_WRAPVISUALFLAGLOC_DEFAULT
-%define wxSTC_WRAPVISUALFLAGLOC_END_BY_TEXT
-%define wxSTC_WRAPVISUALFLAGLOC_START_BY_TEXT
-%define wxSTC_CACHE_NONE
-%define wxSTC_CACHE_CARET
-%define wxSTC_CACHE_PAGE
-%define wxSTC_CACHE_DOCUMENT
-%define wxSTC_EDGE_NONE
-%define wxSTC_EDGE_LINE
-%define wxSTC_EDGE_BACKGROUND
-%define wxSTC_CURSORNORMAL
-%define wxSTC_CURSORWAIT
+#define wxSTC_PRINT_COLOURONWHITEDEFAULTBG
+#define wxSTC_FIND_WHOLEWORD
+#define wxSTC_FIND_MATCHCASE
+#define wxSTC_FIND_WORDSTART
+#define wxSTC_FIND_REGEXP
+#define wxSTC_FIND_POSIX
+#define wxSTC_FOLDLEVELBASE
+#define wxSTC_FOLDLEVELWHITEFLAG
+#define wxSTC_FOLDLEVELHEADERFLAG
+!%wxchkver_2_9_2 #define wxSTC_FOLDLEVELBOXHEADERFLAG
+!%wxchkver_2_9_2 #define wxSTC_FOLDLEVELBOXFOOTERFLAG
+!%wxchkver_2_9_2 #define wxSTC_FOLDLEVELCONTRACTED
+!%wxchkver_2_9_2 #define wxSTC_FOLDLEVELUNINDENT
+#define wxSTC_FOLDLEVELNUMBERMASK
+#define wxSTC_FOLDFLAG_LINEBEFORE_EXPANDED
+#define wxSTC_FOLDFLAG_LINEBEFORE_CONTRACTED
+#define wxSTC_FOLDFLAG_LINEAFTER_EXPANDED
+#define wxSTC_FOLDFLAG_LINEAFTER_CONTRACTED
+#define wxSTC_FOLDFLAG_LEVELNUMBERS
+!%wxchkver_2_9_2 #define wxSTC_FOLDFLAG_BOX
+#define wxSTC_TIME_FOREVER
+#define wxSTC_WRAP_NONE
+#define wxSTC_WRAP_WORD
+#define wxSTC_WRAP_CHAR
+#define wxSTC_WRAPVISUALFLAG_NONE
+#define wxSTC_WRAPVISUALFLAG_END
+#define wxSTC_WRAPVISUALFLAG_START
+#define wxSTC_WRAPVISUALFLAGLOC_DEFAULT
+#define wxSTC_WRAPVISUALFLAGLOC_END_BY_TEXT
+#define wxSTC_WRAPVISUALFLAGLOC_START_BY_TEXT
+#define wxSTC_CACHE_NONE
+#define wxSTC_CACHE_CARET
+#define wxSTC_CACHE_PAGE
+#define wxSTC_CACHE_DOCUMENT
+#define wxSTC_EDGE_NONE
+#define wxSTC_EDGE_LINE
+#define wxSTC_EDGE_BACKGROUND
+#define wxSTC_CURSORNORMAL
+#define wxSTC_CURSORWAIT
 
 // Constants for use with SetVisiblePolicy, similar to SetCaretPolicy.
-%define wxSTC_VISIBLE_SLOP
-%define wxSTC_VISIBLE_STRICT
+#define wxSTC_VISIBLE_SLOP
+#define wxSTC_VISIBLE_STRICT
 
 // Caret policy, used by SetXCaretPolicy and SetYCaretPolicy.
 // If CARET_SLOP is set, we can define a slop value: caretSlop.
@@ -212,1235 +212,1235 @@
 // so it is likely that the identifier that the caret is on can be completely seen,
 // and that the current line is seen with some of the lines following it which are
 // often dependent on that line.
-%define wxSTC_CARET_SLOP
+#define wxSTC_CARET_SLOP
 
 // If CARET_STRICT is set, the policy is enforced... strictly.
 // The caret is centred on the display if slop is not set,
 // and cannot go in the UZ if slop is set.
-%define wxSTC_CARET_STRICT
+#define wxSTC_CARET_STRICT
 
 // If CARET_JUMPS is set, the display is moved more energetically
 // so the caret can move in the same direction longer before the policy is applied again.
-%define wxSTC_CARET_JUMPS
+#define wxSTC_CARET_JUMPS
 
 // If CARET_EVEN is not set, instead of having symmetrical UZs,
 // the left and bottom UZs are extended up to right and top UZs respectively.
 // This way, we favour the displaying of useful information: the begining of lines,
 // where most code reside, and the lines after the caret, eg. the body of a function.
-%define wxSTC_CARET_EVEN
+#define wxSTC_CARET_EVEN
 
 // Selection modes
-%define wxSTC_SEL_STREAM
-%define wxSTC_SEL_RECTANGLE
-%define wxSTC_SEL_LINES
+#define wxSTC_SEL_STREAM
+#define wxSTC_SEL_RECTANGLE
+#define wxSTC_SEL_LINES
 
 // Maximum value of keywordSet parameter of SetKeyWords.
-%define wxSTC_KEYWORDSET_MAX
+#define wxSTC_KEYWORDSET_MAX
 
 // Notifications
 // Type of modification and the action which caused the modification.
 // These are defined as a bit mask to make it easy to specify which notifications are wanted.
 // One bit is set from each of SC_MOD_* and SC_PERFORMED_*.
-%define wxSTC_MOD_INSERTTEXT
-%define wxSTC_MOD_DELETETEXT
-%define wxSTC_MOD_CHANGESTYLE
-%define wxSTC_MOD_CHANGEFOLD
-%define wxSTC_PERFORMED_USER
-%define wxSTC_PERFORMED_UNDO
-%define wxSTC_PERFORMED_REDO
-%define wxSTC_MULTISTEPUNDOREDO
-%define wxSTC_LASTSTEPINUNDOREDO
-%define wxSTC_MOD_CHANGEMARKER
-%define wxSTC_MOD_BEFOREINSERT
-%define wxSTC_MOD_BEFOREDELETE
-%define wxSTC_MULTILINEUNDOREDO
-%define wxSTC_MODEVENTMASKALL
+#define wxSTC_MOD_INSERTTEXT
+#define wxSTC_MOD_DELETETEXT
+#define wxSTC_MOD_CHANGESTYLE
+#define wxSTC_MOD_CHANGEFOLD
+#define wxSTC_PERFORMED_USER
+#define wxSTC_PERFORMED_UNDO
+#define wxSTC_PERFORMED_REDO
+#define wxSTC_MULTISTEPUNDOREDO
+#define wxSTC_LASTSTEPINUNDOREDO
+#define wxSTC_MOD_CHANGEMARKER
+#define wxSTC_MOD_BEFOREINSERT
+#define wxSTC_MOD_BEFOREDELETE
+#define wxSTC_MULTILINEUNDOREDO
+#define wxSTC_MODEVENTMASKALL
 
 // Symbolic key codes and modifier flags.
 // ASCII and other printable characters below 256.
 // Extended keys above 300.
-%define wxSTC_KEY_DOWN
-%define wxSTC_KEY_UP
-%define wxSTC_KEY_LEFT
-%define wxSTC_KEY_RIGHT
-%define wxSTC_KEY_HOME
-%define wxSTC_KEY_END
-%define wxSTC_KEY_PRIOR
-%define wxSTC_KEY_NEXT
-%define wxSTC_KEY_DELETE
-%define wxSTC_KEY_INSERT
-%define wxSTC_KEY_ESCAPE
-%define wxSTC_KEY_BACK
-%define wxSTC_KEY_TAB
-%define wxSTC_KEY_RETURN
-%define wxSTC_KEY_ADD
-%define wxSTC_KEY_SUBTRACT
-%define wxSTC_KEY_DIVIDE
-%define wxSTC_SCMOD_NORM
-%define wxSTC_SCMOD_SHIFT
-%define wxSTC_SCMOD_CTRL
-%define wxSTC_SCMOD_ALT
+#define wxSTC_KEY_DOWN
+#define wxSTC_KEY_UP
+#define wxSTC_KEY_LEFT
+#define wxSTC_KEY_RIGHT
+#define wxSTC_KEY_HOME
+#define wxSTC_KEY_END
+#define wxSTC_KEY_PRIOR
+#define wxSTC_KEY_NEXT
+#define wxSTC_KEY_DELETE
+#define wxSTC_KEY_INSERT
+#define wxSTC_KEY_ESCAPE
+#define wxSTC_KEY_BACK
+#define wxSTC_KEY_TAB
+#define wxSTC_KEY_RETURN
+#define wxSTC_KEY_ADD
+#define wxSTC_KEY_SUBTRACT
+#define wxSTC_KEY_DIVIDE
+#define wxSTC_SCMOD_NORM
+#define wxSTC_SCMOD_SHIFT
+#define wxSTC_SCMOD_CTRL
+#define wxSTC_SCMOD_ALT
 
 // For SciLexer.h
-%define wxSTC_LEX_CONTAINER
-%define wxSTC_LEX_NULL
-%define wxSTC_LEX_PYTHON
-%define wxSTC_LEX_CPP
-%define wxSTC_LEX_HTML
-%define wxSTC_LEX_XML
-%define wxSTC_LEX_PERL
-%define wxSTC_LEX_SQL
-%define wxSTC_LEX_VB
-%define wxSTC_LEX_PROPERTIES
-%define wxSTC_LEX_ERRORLIST
-%define wxSTC_LEX_MAKEFILE
-%define wxSTC_LEX_BATCH
-%define wxSTC_LEX_XCODE
-%define wxSTC_LEX_LATEX
-%define wxSTC_LEX_LUA
-%define wxSTC_LEX_DIFF
-%define wxSTC_LEX_CONF
-%define wxSTC_LEX_PASCAL
-%define wxSTC_LEX_AVE
-%define wxSTC_LEX_ADA
-%define wxSTC_LEX_LISP
-%define wxSTC_LEX_RUBY
-%define wxSTC_LEX_EIFFEL
-%define wxSTC_LEX_EIFFELKW
-%define wxSTC_LEX_TCL
-%define wxSTC_LEX_NNCRONTAB
-%define wxSTC_LEX_BULLANT
-%define wxSTC_LEX_VBSCRIPT
-%define wxSTC_LEX_BAAN
-%define wxSTC_LEX_MATLAB
-%define wxSTC_LEX_SCRIPTOL
-%define wxSTC_LEX_ASM
-%define wxSTC_LEX_CPPNOCASE
-%define wxSTC_LEX_FORTRAN
-%define wxSTC_LEX_F77
-%define wxSTC_LEX_CSS
-%define wxSTC_LEX_POV
-%define wxSTC_LEX_LOUT
-%define wxSTC_LEX_ESCRIPT
-%define wxSTC_LEX_PS
-%define wxSTC_LEX_NSIS
-%define wxSTC_LEX_MMIXAL
-%define wxSTC_LEX_CLW
-%define wxSTC_LEX_CLWNOCASE
-%define wxSTC_LEX_LOT
-%define wxSTC_LEX_YAML
-%define wxSTC_LEX_TEX
-%define wxSTC_LEX_METAPOST
-%define wxSTC_LEX_POWERBASIC
-%define wxSTC_LEX_FORTH
-%define wxSTC_LEX_ERLANG
-%define wxSTC_LEX_OCTAVE
-%define wxSTC_LEX_MSSQL
-%define wxSTC_LEX_VERILOG
-%define wxSTC_LEX_KIX
-%define wxSTC_LEX_GUI4CLI
-%define wxSTC_LEX_SPECMAN
-%define wxSTC_LEX_AU3
-%define wxSTC_LEX_APDL
-%define wxSTC_LEX_BASH
-%define wxSTC_LEX_ASN1
-%define wxSTC_LEX_VHDL
-%define wxSTC_LEX_CAML
-%define wxSTC_LEX_BLITZBASIC
-%define wxSTC_LEX_PUREBASIC
-%define wxSTC_LEX_HASKELL
-%define wxSTC_LEX_PHPSCRIPT
-%define wxSTC_LEX_TADS3
-%define wxSTC_LEX_REBOL
-%define wxSTC_LEX_SMALLTALK
-%define wxSTC_LEX_FLAGSHIP
-%define wxSTC_LEX_CSOUND
-%define wxSTC_LEX_FREEBASIC
+#define wxSTC_LEX_CONTAINER
+#define wxSTC_LEX_NULL
+#define wxSTC_LEX_PYTHON
+#define wxSTC_LEX_CPP
+#define wxSTC_LEX_HTML
+#define wxSTC_LEX_XML
+#define wxSTC_LEX_PERL
+#define wxSTC_LEX_SQL
+#define wxSTC_LEX_VB
+#define wxSTC_LEX_PROPERTIES
+#define wxSTC_LEX_ERRORLIST
+#define wxSTC_LEX_MAKEFILE
+#define wxSTC_LEX_BATCH
+#define wxSTC_LEX_XCODE
+#define wxSTC_LEX_LATEX
+#define wxSTC_LEX_LUA
+#define wxSTC_LEX_DIFF
+#define wxSTC_LEX_CONF
+#define wxSTC_LEX_PASCAL
+#define wxSTC_LEX_AVE
+#define wxSTC_LEX_ADA
+#define wxSTC_LEX_LISP
+#define wxSTC_LEX_RUBY
+#define wxSTC_LEX_EIFFEL
+#define wxSTC_LEX_EIFFELKW
+#define wxSTC_LEX_TCL
+#define wxSTC_LEX_NNCRONTAB
+#define wxSTC_LEX_BULLANT
+#define wxSTC_LEX_VBSCRIPT
+#define wxSTC_LEX_BAAN
+#define wxSTC_LEX_MATLAB
+#define wxSTC_LEX_SCRIPTOL
+#define wxSTC_LEX_ASM
+#define wxSTC_LEX_CPPNOCASE
+#define wxSTC_LEX_FORTRAN
+#define wxSTC_LEX_F77
+#define wxSTC_LEX_CSS
+#define wxSTC_LEX_POV
+#define wxSTC_LEX_LOUT
+#define wxSTC_LEX_ESCRIPT
+#define wxSTC_LEX_PS
+#define wxSTC_LEX_NSIS
+#define wxSTC_LEX_MMIXAL
+#define wxSTC_LEX_CLW
+#define wxSTC_LEX_CLWNOCASE
+#define wxSTC_LEX_LOT
+#define wxSTC_LEX_YAML
+#define wxSTC_LEX_TEX
+#define wxSTC_LEX_METAPOST
+#define wxSTC_LEX_POWERBASIC
+#define wxSTC_LEX_FORTH
+#define wxSTC_LEX_ERLANG
+#define wxSTC_LEX_OCTAVE
+#define wxSTC_LEX_MSSQL
+#define wxSTC_LEX_VERILOG
+#define wxSTC_LEX_KIX
+#define wxSTC_LEX_GUI4CLI
+#define wxSTC_LEX_SPECMAN
+#define wxSTC_LEX_AU3
+#define wxSTC_LEX_APDL
+#define wxSTC_LEX_BASH
+#define wxSTC_LEX_ASN1
+#define wxSTC_LEX_VHDL
+#define wxSTC_LEX_CAML
+#define wxSTC_LEX_BLITZBASIC
+#define wxSTC_LEX_PUREBASIC
+#define wxSTC_LEX_HASKELL
+#define wxSTC_LEX_PHPSCRIPT
+#define wxSTC_LEX_TADS3
+#define wxSTC_LEX_REBOL
+#define wxSTC_LEX_SMALLTALK
+#define wxSTC_LEX_FLAGSHIP
+#define wxSTC_LEX_CSOUND
+#define wxSTC_LEX_FREEBASIC
 
 // These are deprecated, STC_LEX_HTML should be used instead.
-!%wxchkver_2_8 %define wxSTC_LEX_ASP
-!%wxchkver_2_8 %define wxSTC_LEX_PHP
+!%wxchkver_2_8 #define wxSTC_LEX_ASP
+!%wxchkver_2_8 #define wxSTC_LEX_PHP
 
 // When a lexer specifies its language as SCLEX_AUTOMATIC it receives a
 // value assigned in sequence from SCLEX_AUTOMATIC+1.
-%define wxSTC_LEX_AUTOMATIC
+#define wxSTC_LEX_AUTOMATIC
 
 // Lexical states for SCLEX_PYTHON
-%define wxSTC_P_DEFAULT
-%define wxSTC_P_COMMENTLINE
-%define wxSTC_P_NUMBER
-%define wxSTC_P_STRING
-%define wxSTC_P_CHARACTER
-%define wxSTC_P_WORD
-%define wxSTC_P_TRIPLE
-%define wxSTC_P_TRIPLEDOUBLE
-%define wxSTC_P_CLASSNAME
-%define wxSTC_P_DEFNAME
-%define wxSTC_P_OPERATOR
-%define wxSTC_P_IDENTIFIER
-%define wxSTC_P_COMMENTBLOCK
-%define wxSTC_P_STRINGEOL
-%define wxSTC_P_WORD2
-%define wxSTC_P_DECORATOR
+#define wxSTC_P_DEFAULT
+#define wxSTC_P_COMMENTLINE
+#define wxSTC_P_NUMBER
+#define wxSTC_P_STRING
+#define wxSTC_P_CHARACTER
+#define wxSTC_P_WORD
+#define wxSTC_P_TRIPLE
+#define wxSTC_P_TRIPLEDOUBLE
+#define wxSTC_P_CLASSNAME
+#define wxSTC_P_DEFNAME
+#define wxSTC_P_OPERATOR
+#define wxSTC_P_IDENTIFIER
+#define wxSTC_P_COMMENTBLOCK
+#define wxSTC_P_STRINGEOL
+#define wxSTC_P_WORD2
+#define wxSTC_P_DECORATOR
 
 // Lexical states for SCLEX_CPP
-%define wxSTC_C_DEFAULT
-%define wxSTC_C_COMMENT
-%define wxSTC_C_COMMENTLINE
-%define wxSTC_C_COMMENTDOC
-%define wxSTC_C_NUMBER
-%define wxSTC_C_WORD
-%define wxSTC_C_STRING
-%define wxSTC_C_CHARACTER
-%define wxSTC_C_UUID
-%define wxSTC_C_PREPROCESSOR
-%define wxSTC_C_OPERATOR
-%define wxSTC_C_IDENTIFIER
-%define wxSTC_C_STRINGEOL
-%define wxSTC_C_VERBATIM
-%define wxSTC_C_REGEX
-%define wxSTC_C_COMMENTLINEDOC
-%define wxSTC_C_WORD2
-%define wxSTC_C_COMMENTDOCKEYWORD
-%define wxSTC_C_COMMENTDOCKEYWORDERROR
-%define wxSTC_C_GLOBALCLASS
+#define wxSTC_C_DEFAULT
+#define wxSTC_C_COMMENT
+#define wxSTC_C_COMMENTLINE
+#define wxSTC_C_COMMENTDOC
+#define wxSTC_C_NUMBER
+#define wxSTC_C_WORD
+#define wxSTC_C_STRING
+#define wxSTC_C_CHARACTER
+#define wxSTC_C_UUID
+#define wxSTC_C_PREPROCESSOR
+#define wxSTC_C_OPERATOR
+#define wxSTC_C_IDENTIFIER
+#define wxSTC_C_STRINGEOL
+#define wxSTC_C_VERBATIM
+#define wxSTC_C_REGEX
+#define wxSTC_C_COMMENTLINEDOC
+#define wxSTC_C_WORD2
+#define wxSTC_C_COMMENTDOCKEYWORD
+#define wxSTC_C_COMMENTDOCKEYWORDERROR
+#define wxSTC_C_GLOBALCLASS
 
 // Lexical states for SCLEX_HTML, SCLEX_XML
-%define wxSTC_H_DEFAULT
-%define wxSTC_H_TAG
-%define wxSTC_H_TAGUNKNOWN
-%define wxSTC_H_ATTRIBUTE
-%define wxSTC_H_ATTRIBUTEUNKNOWN
-%define wxSTC_H_NUMBER
-%define wxSTC_H_DOUBLESTRING
-%define wxSTC_H_SINGLESTRING
-%define wxSTC_H_OTHER
-%define wxSTC_H_COMMENT
-%define wxSTC_H_ENTITY
+#define wxSTC_H_DEFAULT
+#define wxSTC_H_TAG
+#define wxSTC_H_TAGUNKNOWN
+#define wxSTC_H_ATTRIBUTE
+#define wxSTC_H_ATTRIBUTEUNKNOWN
+#define wxSTC_H_NUMBER
+#define wxSTC_H_DOUBLESTRING
+#define wxSTC_H_SINGLESTRING
+#define wxSTC_H_OTHER
+#define wxSTC_H_COMMENT
+#define wxSTC_H_ENTITY
 
 // XML and ASP
-%define wxSTC_H_TAGEND
-%define wxSTC_H_XMLSTART
-%define wxSTC_H_XMLEND
-%define wxSTC_H_SCRIPT
-%define wxSTC_H_ASP
-%define wxSTC_H_ASPAT
-%define wxSTC_H_CDATA
-%define wxSTC_H_QUESTION
+#define wxSTC_H_TAGEND
+#define wxSTC_H_XMLSTART
+#define wxSTC_H_XMLEND
+#define wxSTC_H_SCRIPT
+#define wxSTC_H_ASP
+#define wxSTC_H_ASPAT
+#define wxSTC_H_CDATA
+#define wxSTC_H_QUESTION
 
 // More HTML
-%define wxSTC_H_VALUE
+#define wxSTC_H_VALUE
 
 // X-Code
-%define wxSTC_H_XCCOMMENT
+#define wxSTC_H_XCCOMMENT
 
 // SGML
-%define wxSTC_H_SGML_DEFAULT
-%define wxSTC_H_SGML_COMMAND
-%define wxSTC_H_SGML_1ST_PARAM
-%define wxSTC_H_SGML_DOUBLESTRING
-%define wxSTC_H_SGML_SIMPLESTRING
-%define wxSTC_H_SGML_ERROR
-%define wxSTC_H_SGML_SPECIAL
-%define wxSTC_H_SGML_ENTITY
-%define wxSTC_H_SGML_COMMENT
-%define wxSTC_H_SGML_1ST_PARAM_COMMENT
-%define wxSTC_H_SGML_BLOCK_DEFAULT
+#define wxSTC_H_SGML_DEFAULT
+#define wxSTC_H_SGML_COMMAND
+#define wxSTC_H_SGML_1ST_PARAM
+#define wxSTC_H_SGML_DOUBLESTRING
+#define wxSTC_H_SGML_SIMPLESTRING
+#define wxSTC_H_SGML_ERROR
+#define wxSTC_H_SGML_SPECIAL
+#define wxSTC_H_SGML_ENTITY
+#define wxSTC_H_SGML_COMMENT
+#define wxSTC_H_SGML_1ST_PARAM_COMMENT
+#define wxSTC_H_SGML_BLOCK_DEFAULT
 
 // Embedded Javascript
-%define wxSTC_HJ_START
-%define wxSTC_HJ_DEFAULT
-%define wxSTC_HJ_COMMENT
-%define wxSTC_HJ_COMMENTLINE
-%define wxSTC_HJ_COMMENTDOC
-%define wxSTC_HJ_NUMBER
-%define wxSTC_HJ_WORD
-%define wxSTC_HJ_KEYWORD
-%define wxSTC_HJ_DOUBLESTRING
-%define wxSTC_HJ_SINGLESTRING
-%define wxSTC_HJ_SYMBOLS
-%define wxSTC_HJ_STRINGEOL
-%define wxSTC_HJ_REGEX
+#define wxSTC_HJ_START
+#define wxSTC_HJ_DEFAULT
+#define wxSTC_HJ_COMMENT
+#define wxSTC_HJ_COMMENTLINE
+#define wxSTC_HJ_COMMENTDOC
+#define wxSTC_HJ_NUMBER
+#define wxSTC_HJ_WORD
+#define wxSTC_HJ_KEYWORD
+#define wxSTC_HJ_DOUBLESTRING
+#define wxSTC_HJ_SINGLESTRING
+#define wxSTC_HJ_SYMBOLS
+#define wxSTC_HJ_STRINGEOL
+#define wxSTC_HJ_REGEX
 
 // ASP Javascript
-%define wxSTC_HJA_START
-%define wxSTC_HJA_DEFAULT
-%define wxSTC_HJA_COMMENT
-%define wxSTC_HJA_COMMENTLINE
-%define wxSTC_HJA_COMMENTDOC
-%define wxSTC_HJA_NUMBER
-%define wxSTC_HJA_WORD
-%define wxSTC_HJA_KEYWORD
-%define wxSTC_HJA_DOUBLESTRING
-%define wxSTC_HJA_SINGLESTRING
-%define wxSTC_HJA_SYMBOLS
-%define wxSTC_HJA_STRINGEOL
-%define wxSTC_HJA_REGEX
+#define wxSTC_HJA_START
+#define wxSTC_HJA_DEFAULT
+#define wxSTC_HJA_COMMENT
+#define wxSTC_HJA_COMMENTLINE
+#define wxSTC_HJA_COMMENTDOC
+#define wxSTC_HJA_NUMBER
+#define wxSTC_HJA_WORD
+#define wxSTC_HJA_KEYWORD
+#define wxSTC_HJA_DOUBLESTRING
+#define wxSTC_HJA_SINGLESTRING
+#define wxSTC_HJA_SYMBOLS
+#define wxSTC_HJA_STRINGEOL
+#define wxSTC_HJA_REGEX
 
 // Embedded VBScript
-%define wxSTC_HB_START
-%define wxSTC_HB_DEFAULT
-%define wxSTC_HB_COMMENTLINE
-%define wxSTC_HB_NUMBER
-%define wxSTC_HB_WORD
-%define wxSTC_HB_STRING
-%define wxSTC_HB_IDENTIFIER
-%define wxSTC_HB_STRINGEOL
+#define wxSTC_HB_START
+#define wxSTC_HB_DEFAULT
+#define wxSTC_HB_COMMENTLINE
+#define wxSTC_HB_NUMBER
+#define wxSTC_HB_WORD
+#define wxSTC_HB_STRING
+#define wxSTC_HB_IDENTIFIER
+#define wxSTC_HB_STRINGEOL
 
 // ASP VBScript
-%define wxSTC_HBA_START
-%define wxSTC_HBA_DEFAULT
-%define wxSTC_HBA_COMMENTLINE
-%define wxSTC_HBA_NUMBER
-%define wxSTC_HBA_WORD
-%define wxSTC_HBA_STRING
-%define wxSTC_HBA_IDENTIFIER
-%define wxSTC_HBA_STRINGEOL
+#define wxSTC_HBA_START
+#define wxSTC_HBA_DEFAULT
+#define wxSTC_HBA_COMMENTLINE
+#define wxSTC_HBA_NUMBER
+#define wxSTC_HBA_WORD
+#define wxSTC_HBA_STRING
+#define wxSTC_HBA_IDENTIFIER
+#define wxSTC_HBA_STRINGEOL
 
 // Embedded Python
-%define wxSTC_HP_START
-%define wxSTC_HP_DEFAULT
-%define wxSTC_HP_COMMENTLINE
-%define wxSTC_HP_NUMBER
-%define wxSTC_HP_STRING
-%define wxSTC_HP_CHARACTER
-%define wxSTC_HP_WORD
-%define wxSTC_HP_TRIPLE
-%define wxSTC_HP_TRIPLEDOUBLE
-%define wxSTC_HP_CLASSNAME
-%define wxSTC_HP_DEFNAME
-%define wxSTC_HP_OPERATOR
-%define wxSTC_HP_IDENTIFIER
+#define wxSTC_HP_START
+#define wxSTC_HP_DEFAULT
+#define wxSTC_HP_COMMENTLINE
+#define wxSTC_HP_NUMBER
+#define wxSTC_HP_STRING
+#define wxSTC_HP_CHARACTER
+#define wxSTC_HP_WORD
+#define wxSTC_HP_TRIPLE
+#define wxSTC_HP_TRIPLEDOUBLE
+#define wxSTC_HP_CLASSNAME
+#define wxSTC_HP_DEFNAME
+#define wxSTC_HP_OPERATOR
+#define wxSTC_HP_IDENTIFIER
 
 // PHP
-%define wxSTC_HPHP_COMPLEX_VARIABLE
+#define wxSTC_HPHP_COMPLEX_VARIABLE
 
 // ASP Python
-%define wxSTC_HPA_START
-%define wxSTC_HPA_DEFAULT
-%define wxSTC_HPA_COMMENTLINE
-%define wxSTC_HPA_NUMBER
-%define wxSTC_HPA_STRING
-%define wxSTC_HPA_CHARACTER
-%define wxSTC_HPA_WORD
-%define wxSTC_HPA_TRIPLE
-%define wxSTC_HPA_TRIPLEDOUBLE
-%define wxSTC_HPA_CLASSNAME
-%define wxSTC_HPA_DEFNAME
-%define wxSTC_HPA_OPERATOR
-%define wxSTC_HPA_IDENTIFIER
+#define wxSTC_HPA_START
+#define wxSTC_HPA_DEFAULT
+#define wxSTC_HPA_COMMENTLINE
+#define wxSTC_HPA_NUMBER
+#define wxSTC_HPA_STRING
+#define wxSTC_HPA_CHARACTER
+#define wxSTC_HPA_WORD
+#define wxSTC_HPA_TRIPLE
+#define wxSTC_HPA_TRIPLEDOUBLE
+#define wxSTC_HPA_CLASSNAME
+#define wxSTC_HPA_DEFNAME
+#define wxSTC_HPA_OPERATOR
+#define wxSTC_HPA_IDENTIFIER
 
 // PHP
-%define wxSTC_HPHP_DEFAULT
-%define wxSTC_HPHP_HSTRING
-%define wxSTC_HPHP_SIMPLESTRING
-%define wxSTC_HPHP_WORD
-%define wxSTC_HPHP_NUMBER
-%define wxSTC_HPHP_VARIABLE
-%define wxSTC_HPHP_COMMENT
-%define wxSTC_HPHP_COMMENTLINE
-%define wxSTC_HPHP_HSTRING_VARIABLE
-%define wxSTC_HPHP_OPERATOR
+#define wxSTC_HPHP_DEFAULT
+#define wxSTC_HPHP_HSTRING
+#define wxSTC_HPHP_SIMPLESTRING
+#define wxSTC_HPHP_WORD
+#define wxSTC_HPHP_NUMBER
+#define wxSTC_HPHP_VARIABLE
+#define wxSTC_HPHP_COMMENT
+#define wxSTC_HPHP_COMMENTLINE
+#define wxSTC_HPHP_HSTRING_VARIABLE
+#define wxSTC_HPHP_OPERATOR
 
 // Lexical states for SCLEX_PERL
-%define wxSTC_PL_DEFAULT
-%define wxSTC_PL_ERROR
-%define wxSTC_PL_COMMENTLINE
-%define wxSTC_PL_POD
-%define wxSTC_PL_NUMBER
-%define wxSTC_PL_WORD
-%define wxSTC_PL_STRING
-%define wxSTC_PL_CHARACTER
-%define wxSTC_PL_PUNCTUATION
-%define wxSTC_PL_PREPROCESSOR
-%define wxSTC_PL_OPERATOR
-%define wxSTC_PL_IDENTIFIER
-%define wxSTC_PL_SCALAR
-%define wxSTC_PL_ARRAY
-%define wxSTC_PL_HASH
-%define wxSTC_PL_SYMBOLTABLE
-%define wxSTC_PL_VARIABLE_INDEXER
-%define wxSTC_PL_REGEX
-%define wxSTC_PL_REGSUBST
-%define wxSTC_PL_LONGQUOTE
-%define wxSTC_PL_BACKTICKS
-%define wxSTC_PL_DATASECTION
-%define wxSTC_PL_HERE_DELIM
-%define wxSTC_PL_HERE_Q
-%define wxSTC_PL_HERE_QQ
-%define wxSTC_PL_HERE_QX
-%define wxSTC_PL_STRING_Q
-%define wxSTC_PL_STRING_QQ
-%define wxSTC_PL_STRING_QX
-%define wxSTC_PL_STRING_QR
-%define wxSTC_PL_STRING_QW
-%define wxSTC_PL_POD_VERB
+#define wxSTC_PL_DEFAULT
+#define wxSTC_PL_ERROR
+#define wxSTC_PL_COMMENTLINE
+#define wxSTC_PL_POD
+#define wxSTC_PL_NUMBER
+#define wxSTC_PL_WORD
+#define wxSTC_PL_STRING
+#define wxSTC_PL_CHARACTER
+#define wxSTC_PL_PUNCTUATION
+#define wxSTC_PL_PREPROCESSOR
+#define wxSTC_PL_OPERATOR
+#define wxSTC_PL_IDENTIFIER
+#define wxSTC_PL_SCALAR
+#define wxSTC_PL_ARRAY
+#define wxSTC_PL_HASH
+#define wxSTC_PL_SYMBOLTABLE
+#define wxSTC_PL_VARIABLE_INDEXER
+#define wxSTC_PL_REGEX
+#define wxSTC_PL_REGSUBST
+#define wxSTC_PL_LONGQUOTE
+#define wxSTC_PL_BACKTICKS
+#define wxSTC_PL_DATASECTION
+#define wxSTC_PL_HERE_DELIM
+#define wxSTC_PL_HERE_Q
+#define wxSTC_PL_HERE_QQ
+#define wxSTC_PL_HERE_QX
+#define wxSTC_PL_STRING_Q
+#define wxSTC_PL_STRING_QQ
+#define wxSTC_PL_STRING_QX
+#define wxSTC_PL_STRING_QR
+#define wxSTC_PL_STRING_QW
+#define wxSTC_PL_POD_VERB
 
 // Lexical states for SCLEX_RUBY
-%define wxSTC_RB_DEFAULT
-%define wxSTC_RB_ERROR
-%define wxSTC_RB_COMMENTLINE
-%define wxSTC_RB_POD
-%define wxSTC_RB_NUMBER
-%define wxSTC_RB_WORD
-%define wxSTC_RB_STRING
-%define wxSTC_RB_CHARACTER
-%define wxSTC_RB_CLASSNAME
-%define wxSTC_RB_DEFNAME
-%define wxSTC_RB_OPERATOR
-%define wxSTC_RB_IDENTIFIER
-%define wxSTC_RB_REGEX
-%define wxSTC_RB_GLOBAL
-%define wxSTC_RB_SYMBOL
-%define wxSTC_RB_MODULE_NAME
-%define wxSTC_RB_INSTANCE_VAR
-%define wxSTC_RB_CLASS_VAR
-%define wxSTC_RB_BACKTICKS
-%define wxSTC_RB_DATASECTION
-%define wxSTC_RB_HERE_DELIM
-%define wxSTC_RB_HERE_Q
-%define wxSTC_RB_HERE_QQ
-%define wxSTC_RB_HERE_QX
-%define wxSTC_RB_STRING_Q
-%define wxSTC_RB_STRING_QQ
-%define wxSTC_RB_STRING_QX
-%define wxSTC_RB_STRING_QR
-%define wxSTC_RB_STRING_QW
-%define wxSTC_RB_WORD_DEMOTED
-%define wxSTC_RB_STDIN
-%define wxSTC_RB_STDOUT
-%define wxSTC_RB_STDERR
-%define wxSTC_RB_UPPER_BOUND
+#define wxSTC_RB_DEFAULT
+#define wxSTC_RB_ERROR
+#define wxSTC_RB_COMMENTLINE
+#define wxSTC_RB_POD
+#define wxSTC_RB_NUMBER
+#define wxSTC_RB_WORD
+#define wxSTC_RB_STRING
+#define wxSTC_RB_CHARACTER
+#define wxSTC_RB_CLASSNAME
+#define wxSTC_RB_DEFNAME
+#define wxSTC_RB_OPERATOR
+#define wxSTC_RB_IDENTIFIER
+#define wxSTC_RB_REGEX
+#define wxSTC_RB_GLOBAL
+#define wxSTC_RB_SYMBOL
+#define wxSTC_RB_MODULE_NAME
+#define wxSTC_RB_INSTANCE_VAR
+#define wxSTC_RB_CLASS_VAR
+#define wxSTC_RB_BACKTICKS
+#define wxSTC_RB_DATASECTION
+#define wxSTC_RB_HERE_DELIM
+#define wxSTC_RB_HERE_Q
+#define wxSTC_RB_HERE_QQ
+#define wxSTC_RB_HERE_QX
+#define wxSTC_RB_STRING_Q
+#define wxSTC_RB_STRING_QQ
+#define wxSTC_RB_STRING_QX
+#define wxSTC_RB_STRING_QR
+#define wxSTC_RB_STRING_QW
+#define wxSTC_RB_WORD_DEMOTED
+#define wxSTC_RB_STDIN
+#define wxSTC_RB_STDOUT
+#define wxSTC_RB_STDERR
+#define wxSTC_RB_UPPER_BOUND
 
 // Lexical states for SCLEX_VB, SCLEX_VBSCRIPT, SCLEX_POWERBASIC
-%define wxSTC_B_DEFAULT
-%define wxSTC_B_COMMENT
-%define wxSTC_B_NUMBER
-%define wxSTC_B_KEYWORD
-%define wxSTC_B_STRING
-%define wxSTC_B_PREPROCESSOR
-%define wxSTC_B_OPERATOR
-%define wxSTC_B_IDENTIFIER
-%define wxSTC_B_DATE
-%define wxSTC_B_STRINGEOL
-%define wxSTC_B_KEYWORD2
-%define wxSTC_B_KEYWORD3
-%define wxSTC_B_KEYWORD4
-%define wxSTC_B_CONSTANT
-%define wxSTC_B_ASM
-%define wxSTC_B_LABEL
-%define wxSTC_B_ERROR
-%define wxSTC_B_HEXNUMBER
-%define wxSTC_B_BINNUMBER
+#define wxSTC_B_DEFAULT
+#define wxSTC_B_COMMENT
+#define wxSTC_B_NUMBER
+#define wxSTC_B_KEYWORD
+#define wxSTC_B_STRING
+#define wxSTC_B_PREPROCESSOR
+#define wxSTC_B_OPERATOR
+#define wxSTC_B_IDENTIFIER
+#define wxSTC_B_DATE
+#define wxSTC_B_STRINGEOL
+#define wxSTC_B_KEYWORD2
+#define wxSTC_B_KEYWORD3
+#define wxSTC_B_KEYWORD4
+#define wxSTC_B_CONSTANT
+#define wxSTC_B_ASM
+#define wxSTC_B_LABEL
+#define wxSTC_B_ERROR
+#define wxSTC_B_HEXNUMBER
+#define wxSTC_B_BINNUMBER
 
 // Lexical states for SCLEX_PROPERTIES
-%define wxSTC_PROPS_DEFAULT
-%define wxSTC_PROPS_COMMENT
-%define wxSTC_PROPS_SECTION
-%define wxSTC_PROPS_ASSIGNMENT
-%define wxSTC_PROPS_DEFVAL
+#define wxSTC_PROPS_DEFAULT
+#define wxSTC_PROPS_COMMENT
+#define wxSTC_PROPS_SECTION
+#define wxSTC_PROPS_ASSIGNMENT
+#define wxSTC_PROPS_DEFVAL
 
 // Lexical states for SCLEX_LATEX
-%define wxSTC_L_DEFAULT
-%define wxSTC_L_COMMAND
-%define wxSTC_L_TAG
-%define wxSTC_L_MATH
-%define wxSTC_L_COMMENT
+#define wxSTC_L_DEFAULT
+#define wxSTC_L_COMMAND
+#define wxSTC_L_TAG
+#define wxSTC_L_MATH
+#define wxSTC_L_COMMENT
 
 // Lexical states for SCLEX_LUA
-%define wxSTC_LUA_DEFAULT
-%define wxSTC_LUA_COMMENT
-%define wxSTC_LUA_COMMENTLINE
-%define wxSTC_LUA_COMMENTDOC
-%define wxSTC_LUA_NUMBER
-%define wxSTC_LUA_WORD
-%define wxSTC_LUA_STRING
-%define wxSTC_LUA_CHARACTER
-%define wxSTC_LUA_LITERALSTRING
-%define wxSTC_LUA_PREPROCESSOR
-%define wxSTC_LUA_OPERATOR
-%define wxSTC_LUA_IDENTIFIER
-%define wxSTC_LUA_STRINGEOL
-%define wxSTC_LUA_WORD2
-%define wxSTC_LUA_WORD3
-%define wxSTC_LUA_WORD4
-%define wxSTC_LUA_WORD5
-%define wxSTC_LUA_WORD6
-%define wxSTC_LUA_WORD7
-%define wxSTC_LUA_WORD8
+#define wxSTC_LUA_DEFAULT
+#define wxSTC_LUA_COMMENT
+#define wxSTC_LUA_COMMENTLINE
+#define wxSTC_LUA_COMMENTDOC
+#define wxSTC_LUA_NUMBER
+#define wxSTC_LUA_WORD
+#define wxSTC_LUA_STRING
+#define wxSTC_LUA_CHARACTER
+#define wxSTC_LUA_LITERALSTRING
+#define wxSTC_LUA_PREPROCESSOR
+#define wxSTC_LUA_OPERATOR
+#define wxSTC_LUA_IDENTIFIER
+#define wxSTC_LUA_STRINGEOL
+#define wxSTC_LUA_WORD2
+#define wxSTC_LUA_WORD3
+#define wxSTC_LUA_WORD4
+#define wxSTC_LUA_WORD5
+#define wxSTC_LUA_WORD6
+#define wxSTC_LUA_WORD7
+#define wxSTC_LUA_WORD8
 
 // Lexical states for SCLEX_ERRORLIST
-%define wxSTC_ERR_DEFAULT
-%define wxSTC_ERR_PYTHON
-%define wxSTC_ERR_GCC
-%define wxSTC_ERR_MS
-%define wxSTC_ERR_CMD
-%define wxSTC_ERR_BORLAND
-%define wxSTC_ERR_PERL
-%define wxSTC_ERR_NET
-%define wxSTC_ERR_LUA
-%define wxSTC_ERR_CTAG
-%define wxSTC_ERR_DIFF_CHANGED
-%define wxSTC_ERR_DIFF_ADDITION
-%define wxSTC_ERR_DIFF_DELETION
-%define wxSTC_ERR_DIFF_MESSAGE
-%define wxSTC_ERR_PHP
-%define wxSTC_ERR_ELF
-%define wxSTC_ERR_IFC
-%define wxSTC_ERR_IFORT
-%define wxSTC_ERR_ABSF
-%define wxSTC_ERR_TIDY
-%define wxSTC_ERR_JAVA_STACK
+#define wxSTC_ERR_DEFAULT
+#define wxSTC_ERR_PYTHON
+#define wxSTC_ERR_GCC
+#define wxSTC_ERR_MS
+#define wxSTC_ERR_CMD
+#define wxSTC_ERR_BORLAND
+#define wxSTC_ERR_PERL
+#define wxSTC_ERR_NET
+#define wxSTC_ERR_LUA
+#define wxSTC_ERR_CTAG
+#define wxSTC_ERR_DIFF_CHANGED
+#define wxSTC_ERR_DIFF_ADDITION
+#define wxSTC_ERR_DIFF_DELETION
+#define wxSTC_ERR_DIFF_MESSAGE
+#define wxSTC_ERR_PHP
+#define wxSTC_ERR_ELF
+#define wxSTC_ERR_IFC
+#define wxSTC_ERR_IFORT
+#define wxSTC_ERR_ABSF
+#define wxSTC_ERR_TIDY
+#define wxSTC_ERR_JAVA_STACK
 
 // Lexical states for SCLEX_BATCH
-%define wxSTC_BAT_DEFAULT
-%define wxSTC_BAT_COMMENT
-%define wxSTC_BAT_WORD
-%define wxSTC_BAT_LABEL
-%define wxSTC_BAT_HIDE
-%define wxSTC_BAT_COMMAND
-%define wxSTC_BAT_IDENTIFIER
-%define wxSTC_BAT_OPERATOR
+#define wxSTC_BAT_DEFAULT
+#define wxSTC_BAT_COMMENT
+#define wxSTC_BAT_WORD
+#define wxSTC_BAT_LABEL
+#define wxSTC_BAT_HIDE
+#define wxSTC_BAT_COMMAND
+#define wxSTC_BAT_IDENTIFIER
+#define wxSTC_BAT_OPERATOR
 
 // Lexical states for SCLEX_MAKEFILE
-%define wxSTC_MAKE_DEFAULT
-%define wxSTC_MAKE_COMMENT
-%define wxSTC_MAKE_PREPROCESSOR
-%define wxSTC_MAKE_IDENTIFIER
-%define wxSTC_MAKE_OPERATOR
-%define wxSTC_MAKE_TARGET
-%define wxSTC_MAKE_IDEOL
+#define wxSTC_MAKE_DEFAULT
+#define wxSTC_MAKE_COMMENT
+#define wxSTC_MAKE_PREPROCESSOR
+#define wxSTC_MAKE_IDENTIFIER
+#define wxSTC_MAKE_OPERATOR
+#define wxSTC_MAKE_TARGET
+#define wxSTC_MAKE_IDEOL
 
 // Lexical states for SCLEX_DIFF
-%define wxSTC_DIFF_DEFAULT
-%define wxSTC_DIFF_COMMENT
-%define wxSTC_DIFF_COMMAND
-%define wxSTC_DIFF_HEADER
-%define wxSTC_DIFF_POSITION
-%define wxSTC_DIFF_DELETED
-%define wxSTC_DIFF_ADDED
+#define wxSTC_DIFF_DEFAULT
+#define wxSTC_DIFF_COMMENT
+#define wxSTC_DIFF_COMMAND
+#define wxSTC_DIFF_HEADER
+#define wxSTC_DIFF_POSITION
+#define wxSTC_DIFF_DELETED
+#define wxSTC_DIFF_ADDED
 
-// Lexical states for SCLEX_CONF (Apache Configuration Files Lexer)
-%define wxSTC_CONF_DEFAULT
-%define wxSTC_CONF_COMMENT
-%define wxSTC_CONF_NUMBER
-%define wxSTC_CONF_IDENTIFIER
-%define wxSTC_CONF_EXTENSION
-%define wxSTC_CONF_PARAMETER
-%define wxSTC_CONF_STRING
-%define wxSTC_CONF_OPERATOR
-%define wxSTC_CONF_IP
-%define wxSTC_CONF_DIRECTIVE
+// Lexical states for SCLEX_CONF (Apache Configuration Files Lexer );
+#define wxSTC_CONF_DEFAULT
+#define wxSTC_CONF_COMMENT
+#define wxSTC_CONF_NUMBER
+#define wxSTC_CONF_IDENTIFIER
+#define wxSTC_CONF_EXTENSION
+#define wxSTC_CONF_PARAMETER
+#define wxSTC_CONF_STRING
+#define wxSTC_CONF_OPERATOR
+#define wxSTC_CONF_IP
+#define wxSTC_CONF_DIRECTIVE
 
 // Lexical states for SCLEX_AVE, Avenue
-%define wxSTC_AVE_DEFAULT
-%define wxSTC_AVE_COMMENT
-%define wxSTC_AVE_NUMBER
-%define wxSTC_AVE_WORD
-%define wxSTC_AVE_STRING
-%define wxSTC_AVE_ENUM
-%define wxSTC_AVE_STRINGEOL
-%define wxSTC_AVE_IDENTIFIER
-%define wxSTC_AVE_OPERATOR
-%define wxSTC_AVE_WORD1
-%define wxSTC_AVE_WORD2
-%define wxSTC_AVE_WORD3
-%define wxSTC_AVE_WORD4
-%define wxSTC_AVE_WORD5
-%define wxSTC_AVE_WORD6
+#define wxSTC_AVE_DEFAULT
+#define wxSTC_AVE_COMMENT
+#define wxSTC_AVE_NUMBER
+#define wxSTC_AVE_WORD
+#define wxSTC_AVE_STRING
+#define wxSTC_AVE_ENUM
+#define wxSTC_AVE_STRINGEOL
+#define wxSTC_AVE_IDENTIFIER
+#define wxSTC_AVE_OPERATOR
+#define wxSTC_AVE_WORD1
+#define wxSTC_AVE_WORD2
+#define wxSTC_AVE_WORD3
+#define wxSTC_AVE_WORD4
+#define wxSTC_AVE_WORD5
+#define wxSTC_AVE_WORD6
 
 // Lexical states for SCLEX_ADA
-%define wxSTC_ADA_DEFAULT
-%define wxSTC_ADA_WORD
-%define wxSTC_ADA_IDENTIFIER
-%define wxSTC_ADA_NUMBER
-%define wxSTC_ADA_DELIMITER
-%define wxSTC_ADA_CHARACTER
-%define wxSTC_ADA_CHARACTEREOL
-%define wxSTC_ADA_STRING
-%define wxSTC_ADA_STRINGEOL
-%define wxSTC_ADA_LABEL
-%define wxSTC_ADA_COMMENTLINE
-%define wxSTC_ADA_ILLEGAL
+#define wxSTC_ADA_DEFAULT
+#define wxSTC_ADA_WORD
+#define wxSTC_ADA_IDENTIFIER
+#define wxSTC_ADA_NUMBER
+#define wxSTC_ADA_DELIMITER
+#define wxSTC_ADA_CHARACTER
+#define wxSTC_ADA_CHARACTEREOL
+#define wxSTC_ADA_STRING
+#define wxSTC_ADA_STRINGEOL
+#define wxSTC_ADA_LABEL
+#define wxSTC_ADA_COMMENTLINE
+#define wxSTC_ADA_ILLEGAL
 
 // Lexical states for SCLEX_BAAN
-%define wxSTC_BAAN_DEFAULT
-%define wxSTC_BAAN_COMMENT
-%define wxSTC_BAAN_COMMENTDOC
-%define wxSTC_BAAN_NUMBER
-%define wxSTC_BAAN_WORD
-%define wxSTC_BAAN_STRING
-%define wxSTC_BAAN_PREPROCESSOR
-%define wxSTC_BAAN_OPERATOR
-%define wxSTC_BAAN_IDENTIFIER
-%define wxSTC_BAAN_STRINGEOL
-%define wxSTC_BAAN_WORD2
+#define wxSTC_BAAN_DEFAULT
+#define wxSTC_BAAN_COMMENT
+#define wxSTC_BAAN_COMMENTDOC
+#define wxSTC_BAAN_NUMBER
+#define wxSTC_BAAN_WORD
+#define wxSTC_BAAN_STRING
+#define wxSTC_BAAN_PREPROCESSOR
+#define wxSTC_BAAN_OPERATOR
+#define wxSTC_BAAN_IDENTIFIER
+#define wxSTC_BAAN_STRINGEOL
+#define wxSTC_BAAN_WORD2
 
 // Lexical states for SCLEX_LISP
-%define wxSTC_LISP_DEFAULT
-%define wxSTC_LISP_COMMENT
-%define wxSTC_LISP_NUMBER
-%define wxSTC_LISP_KEYWORD
-%define wxSTC_LISP_KEYWORD_KW
-%define wxSTC_LISP_SYMBOL
-%define wxSTC_LISP_STRING
-%define wxSTC_LISP_STRINGEOL
-%define wxSTC_LISP_IDENTIFIER
-%define wxSTC_LISP_OPERATOR
-%define wxSTC_LISP_SPECIAL
-%define wxSTC_LISP_MULTI_COMMENT
+#define wxSTC_LISP_DEFAULT
+#define wxSTC_LISP_COMMENT
+#define wxSTC_LISP_NUMBER
+#define wxSTC_LISP_KEYWORD
+#define wxSTC_LISP_KEYWORD_KW
+#define wxSTC_LISP_SYMBOL
+#define wxSTC_LISP_STRING
+#define wxSTC_LISP_STRINGEOL
+#define wxSTC_LISP_IDENTIFIER
+#define wxSTC_LISP_OPERATOR
+#define wxSTC_LISP_SPECIAL
+#define wxSTC_LISP_MULTI_COMMENT
 
 // Lexical states for SCLEX_EIFFEL and SCLEX_EIFFELKW
-%define wxSTC_EIFFEL_DEFAULT
-%define wxSTC_EIFFEL_COMMENTLINE
-%define wxSTC_EIFFEL_NUMBER
-%define wxSTC_EIFFEL_WORD
-%define wxSTC_EIFFEL_STRING
-%define wxSTC_EIFFEL_CHARACTER
-%define wxSTC_EIFFEL_OPERATOR
-%define wxSTC_EIFFEL_IDENTIFIER
-%define wxSTC_EIFFEL_STRINGEOL
+#define wxSTC_EIFFEL_DEFAULT
+#define wxSTC_EIFFEL_COMMENTLINE
+#define wxSTC_EIFFEL_NUMBER
+#define wxSTC_EIFFEL_WORD
+#define wxSTC_EIFFEL_STRING
+#define wxSTC_EIFFEL_CHARACTER
+#define wxSTC_EIFFEL_OPERATOR
+#define wxSTC_EIFFEL_IDENTIFIER
+#define wxSTC_EIFFEL_STRINGEOL
 
-// Lexical states for SCLEX_NNCRONTAB (nnCron crontab Lexer)
-%define wxSTC_NNCRONTAB_DEFAULT
-%define wxSTC_NNCRONTAB_COMMENT
-%define wxSTC_NNCRONTAB_TASK
-%define wxSTC_NNCRONTAB_SECTION
-%define wxSTC_NNCRONTAB_KEYWORD
-%define wxSTC_NNCRONTAB_MODIFIER
-%define wxSTC_NNCRONTAB_ASTERISK
-%define wxSTC_NNCRONTAB_NUMBER
-%define wxSTC_NNCRONTAB_STRING
-%define wxSTC_NNCRONTAB_ENVIRONMENT
-%define wxSTC_NNCRONTAB_IDENTIFIER
+// Lexical states for SCLEX_NNCRONTAB (nnCron crontab Lexer );
+#define wxSTC_NNCRONTAB_DEFAULT
+#define wxSTC_NNCRONTAB_COMMENT
+#define wxSTC_NNCRONTAB_TASK
+#define wxSTC_NNCRONTAB_SECTION
+#define wxSTC_NNCRONTAB_KEYWORD
+#define wxSTC_NNCRONTAB_MODIFIER
+#define wxSTC_NNCRONTAB_ASTERISK
+#define wxSTC_NNCRONTAB_NUMBER
+#define wxSTC_NNCRONTAB_STRING
+#define wxSTC_NNCRONTAB_ENVIRONMENT
+#define wxSTC_NNCRONTAB_IDENTIFIER
 
-// Lexical states for SCLEX_FORTH (Forth Lexer)
-%define wxSTC_FORTH_DEFAULT
-%define wxSTC_FORTH_COMMENT
-%define wxSTC_FORTH_COMMENT_ML
-%define wxSTC_FORTH_IDENTIFIER
-%define wxSTC_FORTH_CONTROL
-%define wxSTC_FORTH_KEYWORD
-%define wxSTC_FORTH_DEFWORD
-%define wxSTC_FORTH_PREWORD1
-%define wxSTC_FORTH_PREWORD2
-%define wxSTC_FORTH_NUMBER
-%define wxSTC_FORTH_STRING
-%define wxSTC_FORTH_LOCALE
+// Lexical states for SCLEX_FORTH (Forth Lexer );
+#define wxSTC_FORTH_DEFAULT
+#define wxSTC_FORTH_COMMENT
+#define wxSTC_FORTH_COMMENT_ML
+#define wxSTC_FORTH_IDENTIFIER
+#define wxSTC_FORTH_CONTROL
+#define wxSTC_FORTH_KEYWORD
+#define wxSTC_FORTH_DEFWORD
+#define wxSTC_FORTH_PREWORD1
+#define wxSTC_FORTH_PREWORD2
+#define wxSTC_FORTH_NUMBER
+#define wxSTC_FORTH_STRING
+#define wxSTC_FORTH_LOCALE
 
 // Lexical states for SCLEX_MATLAB
-%define wxSTC_MATLAB_DEFAULT
-%define wxSTC_MATLAB_COMMENT
-%define wxSTC_MATLAB_COMMAND
-%define wxSTC_MATLAB_NUMBER
-%define wxSTC_MATLAB_KEYWORD
+#define wxSTC_MATLAB_DEFAULT
+#define wxSTC_MATLAB_COMMENT
+#define wxSTC_MATLAB_COMMAND
+#define wxSTC_MATLAB_NUMBER
+#define wxSTC_MATLAB_KEYWORD
 
 // single quoted string
-%define wxSTC_MATLAB_STRING
-%define wxSTC_MATLAB_OPERATOR
-%define wxSTC_MATLAB_IDENTIFIER
-%define wxSTC_MATLAB_DOUBLEQUOTESTRING
+#define wxSTC_MATLAB_STRING
+#define wxSTC_MATLAB_OPERATOR
+#define wxSTC_MATLAB_IDENTIFIER
+#define wxSTC_MATLAB_DOUBLEQUOTESTRING
 
 // Lexical states for SCLEX_SCRIPTOL
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_DEFAULT
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_COMMENT
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_COMMENTLINE
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_COMMENTDOC
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_NUMBER
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_WORD
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_STRING
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_CHARACTER
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_UUID
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_PREPROCESSOR
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_OPERATOR
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_IDENTIFIER
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_STRINGEOL
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_VERBATIM
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_REGEX
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_COMMENTLINEDOC
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_WORD2
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_COMMENTDOCKEYWORD
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_COMMENTDOCKEYWORDERROR
-!%wxchkver_2_6 %define wxSTC_SCRIPTOL_COMMENTBASIC
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_DEFAULT
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENT
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENTLINE
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENTDOC
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_NUMBER
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_WORD
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_STRING
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_CHARACTER
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_UUID
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_PREPROCESSOR
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_OPERATOR
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_IDENTIFIER
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_STRINGEOL
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_VERBATIM
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_REGEX
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENTLINEDOC
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_WORD2
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENTDOCKEYWORD
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENTDOCKEYWORDERROR
+!%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENTBASIC
 
-%wxchkver_2_6 %define wxSTC_SCRIPTOL_DEFAULT
-%wxchkver_2_6 %define wxSTC_SCRIPTOL_WHITE
-%wxchkver_2_6 %define wxSTC_SCRIPTOL_COMMENTLINE
-%wxchkver_2_6 %define wxSTC_SCRIPTOL_PERSISTENT
-%wxchkver_2_6 %define wxSTC_SCRIPTOL_CSTYLE
-%wxchkver_2_6 %define wxSTC_SCRIPTOL_COMMENTBLOCK
-%wxchkver_2_6 %define wxSTC_SCRIPTOL_NUMBER
-%wxchkver_2_6 %define wxSTC_SCRIPTOL_STRING
-%wxchkver_2_6 %define wxSTC_SCRIPTOL_CHARACTER
-%wxchkver_2_6 %define wxSTC_SCRIPTOL_STRINGEOL
-%wxchkver_2_6 %define wxSTC_SCRIPTOL_KEYWORD
-%wxchkver_2_6 %define wxSTC_SCRIPTOL_OPERATOR
-%wxchkver_2_6 %define wxSTC_SCRIPTOL_IDENTIFIER
-%wxchkver_2_6 %define wxSTC_SCRIPTOL_TRIPLE
-%wxchkver_2_6 %define wxSTC_SCRIPTOL_CLASSNAME
-%wxchkver_2_6 %define wxSTC_SCRIPTOL_PREPROCESSOR
+%wxchkver_2_6 #define wxSTC_SCRIPTOL_DEFAULT
+%wxchkver_2_6 #define wxSTC_SCRIPTOL_WHITE
+%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENTLINE
+%wxchkver_2_6 #define wxSTC_SCRIPTOL_PERSISTENT
+%wxchkver_2_6 #define wxSTC_SCRIPTOL_CSTYLE
+%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENTBLOCK
+%wxchkver_2_6 #define wxSTC_SCRIPTOL_NUMBER
+%wxchkver_2_6 #define wxSTC_SCRIPTOL_STRING
+%wxchkver_2_6 #define wxSTC_SCRIPTOL_CHARACTER
+%wxchkver_2_6 #define wxSTC_SCRIPTOL_STRINGEOL
+%wxchkver_2_6 #define wxSTC_SCRIPTOL_KEYWORD
+%wxchkver_2_6 #define wxSTC_SCRIPTOL_OPERATOR
+%wxchkver_2_6 #define wxSTC_SCRIPTOL_IDENTIFIER
+%wxchkver_2_6 #define wxSTC_SCRIPTOL_TRIPLE
+%wxchkver_2_6 #define wxSTC_SCRIPTOL_CLASSNAME
+%wxchkver_2_6 #define wxSTC_SCRIPTOL_PREPROCESSOR
 
 // Lexical states for SCLEX_ASM
-%define wxSTC_ASM_DEFAULT
-%define wxSTC_ASM_COMMENT
-%define wxSTC_ASM_NUMBER
-%define wxSTC_ASM_STRING
-%define wxSTC_ASM_OPERATOR
-%define wxSTC_ASM_IDENTIFIER
-%define wxSTC_ASM_CPUINSTRUCTION
-%define wxSTC_ASM_MATHINSTRUCTION
-%define wxSTC_ASM_REGISTER
-%define wxSTC_ASM_DIRECTIVE
-%define wxSTC_ASM_DIRECTIVEOPERAND
-%define wxSTC_ASM_COMMENTBLOCK
-%define wxSTC_ASM_CHARACTER
-%define wxSTC_ASM_STRINGEOL
-%define wxSTC_ASM_EXTINSTRUCTION
+#define wxSTC_ASM_DEFAULT
+#define wxSTC_ASM_COMMENT
+#define wxSTC_ASM_NUMBER
+#define wxSTC_ASM_STRING
+#define wxSTC_ASM_OPERATOR
+#define wxSTC_ASM_IDENTIFIER
+#define wxSTC_ASM_CPUINSTRUCTION
+#define wxSTC_ASM_MATHINSTRUCTION
+#define wxSTC_ASM_REGISTER
+#define wxSTC_ASM_DIRECTIVE
+#define wxSTC_ASM_DIRECTIVEOPERAND
+#define wxSTC_ASM_COMMENTBLOCK
+#define wxSTC_ASM_CHARACTER
+#define wxSTC_ASM_STRINGEOL
+#define wxSTC_ASM_EXTINSTRUCTION
 
 // Lexical states for SCLEX_FORTRAN
-%define wxSTC_F_DEFAULT
-%define wxSTC_F_COMMENT
-%define wxSTC_F_NUMBER
-%define wxSTC_F_STRING1
-%define wxSTC_F_STRING2
-%define wxSTC_F_STRINGEOL
-%define wxSTC_F_OPERATOR
-%define wxSTC_F_IDENTIFIER
-%define wxSTC_F_WORD
-%define wxSTC_F_WORD2
-%define wxSTC_F_WORD3
-%define wxSTC_F_PREPROCESSOR
-%define wxSTC_F_OPERATOR2
-%define wxSTC_F_LABEL
-%define wxSTC_F_CONTINUATION
+#define wxSTC_F_DEFAULT
+#define wxSTC_F_COMMENT
+#define wxSTC_F_NUMBER
+#define wxSTC_F_STRING1
+#define wxSTC_F_STRING2
+#define wxSTC_F_STRINGEOL
+#define wxSTC_F_OPERATOR
+#define wxSTC_F_IDENTIFIER
+#define wxSTC_F_WORD
+#define wxSTC_F_WORD2
+#define wxSTC_F_WORD3
+#define wxSTC_F_PREPROCESSOR
+#define wxSTC_F_OPERATOR2
+#define wxSTC_F_LABEL
+#define wxSTC_F_CONTINUATION
 
 // Lexical states for SCLEX_CSS
-%define wxSTC_CSS_DEFAULT
-%define wxSTC_CSS_TAG
-%define wxSTC_CSS_CLASS
-%define wxSTC_CSS_PSEUDOCLASS
-%define wxSTC_CSS_UNKNOWN_PSEUDOCLASS
-%define wxSTC_CSS_OPERATOR
-%define wxSTC_CSS_IDENTIFIER
-%define wxSTC_CSS_UNKNOWN_IDENTIFIER
-%define wxSTC_CSS_VALUE
-%define wxSTC_CSS_COMMENT
-%define wxSTC_CSS_ID
-%define wxSTC_CSS_IMPORTANT
-%define wxSTC_CSS_DIRECTIVE
-%define wxSTC_CSS_DOUBLESTRING
-%define wxSTC_CSS_SINGLESTRING
-%define wxSTC_CSS_IDENTIFIER2
-%define wxSTC_CSS_ATTRIBUTE
+#define wxSTC_CSS_DEFAULT
+#define wxSTC_CSS_TAG
+#define wxSTC_CSS_CLASS
+#define wxSTC_CSS_PSEUDOCLASS
+#define wxSTC_CSS_UNKNOWN_PSEUDOCLASS
+#define wxSTC_CSS_OPERATOR
+#define wxSTC_CSS_IDENTIFIER
+#define wxSTC_CSS_UNKNOWN_IDENTIFIER
+#define wxSTC_CSS_VALUE
+#define wxSTC_CSS_COMMENT
+#define wxSTC_CSS_ID
+#define wxSTC_CSS_IMPORTANT
+#define wxSTC_CSS_DIRECTIVE
+#define wxSTC_CSS_DOUBLESTRING
+#define wxSTC_CSS_SINGLESTRING
+#define wxSTC_CSS_IDENTIFIER2
+#define wxSTC_CSS_ATTRIBUTE
 
 // Lexical states for SCLEX_POV
-%define wxSTC_POV_DEFAULT
-%define wxSTC_POV_COMMENT
-%define wxSTC_POV_COMMENTLINE
-%define wxSTC_POV_NUMBER
-%define wxSTC_POV_OPERATOR
-%define wxSTC_POV_IDENTIFIER
-%define wxSTC_POV_STRING
-%define wxSTC_POV_STRINGEOL
-%define wxSTC_POV_DIRECTIVE
-%define wxSTC_POV_BADDIRECTIVE
-%define wxSTC_POV_WORD2
-%define wxSTC_POV_WORD3
-%define wxSTC_POV_WORD4
-%define wxSTC_POV_WORD5
-%define wxSTC_POV_WORD6
-%define wxSTC_POV_WORD7
-%define wxSTC_POV_WORD8
+#define wxSTC_POV_DEFAULT
+#define wxSTC_POV_COMMENT
+#define wxSTC_POV_COMMENTLINE
+#define wxSTC_POV_NUMBER
+#define wxSTC_POV_OPERATOR
+#define wxSTC_POV_IDENTIFIER
+#define wxSTC_POV_STRING
+#define wxSTC_POV_STRINGEOL
+#define wxSTC_POV_DIRECTIVE
+#define wxSTC_POV_BADDIRECTIVE
+#define wxSTC_POV_WORD2
+#define wxSTC_POV_WORD3
+#define wxSTC_POV_WORD4
+#define wxSTC_POV_WORD5
+#define wxSTC_POV_WORD6
+#define wxSTC_POV_WORD7
+#define wxSTC_POV_WORD8
 
 // Lexical states for SCLEX_LOUT
-%define wxSTC_LOUT_DEFAULT
-%define wxSTC_LOUT_COMMENT
-%define wxSTC_LOUT_NUMBER
-%define wxSTC_LOUT_WORD
-%define wxSTC_LOUT_WORD2
-%define wxSTC_LOUT_WORD3
-%define wxSTC_LOUT_WORD4
-%define wxSTC_LOUT_STRING
-%define wxSTC_LOUT_OPERATOR
-%define wxSTC_LOUT_IDENTIFIER
-%define wxSTC_LOUT_STRINGEOL
+#define wxSTC_LOUT_DEFAULT
+#define wxSTC_LOUT_COMMENT
+#define wxSTC_LOUT_NUMBER
+#define wxSTC_LOUT_WORD
+#define wxSTC_LOUT_WORD2
+#define wxSTC_LOUT_WORD3
+#define wxSTC_LOUT_WORD4
+#define wxSTC_LOUT_STRING
+#define wxSTC_LOUT_OPERATOR
+#define wxSTC_LOUT_IDENTIFIER
+#define wxSTC_LOUT_STRINGEOL
 
 // Lexical states for SCLEX_ESCRIPT
-%define wxSTC_ESCRIPT_DEFAULT
-%define wxSTC_ESCRIPT_COMMENT
-%define wxSTC_ESCRIPT_COMMENTLINE
-%define wxSTC_ESCRIPT_COMMENTDOC
-%define wxSTC_ESCRIPT_NUMBER
-%define wxSTC_ESCRIPT_WORD
-%define wxSTC_ESCRIPT_STRING
-%define wxSTC_ESCRIPT_OPERATOR
-%define wxSTC_ESCRIPT_IDENTIFIER
-%define wxSTC_ESCRIPT_BRACE
-%define wxSTC_ESCRIPT_WORD2
-%define wxSTC_ESCRIPT_WORD3
+#define wxSTC_ESCRIPT_DEFAULT
+#define wxSTC_ESCRIPT_COMMENT
+#define wxSTC_ESCRIPT_COMMENTLINE
+#define wxSTC_ESCRIPT_COMMENTDOC
+#define wxSTC_ESCRIPT_NUMBER
+#define wxSTC_ESCRIPT_WORD
+#define wxSTC_ESCRIPT_STRING
+#define wxSTC_ESCRIPT_OPERATOR
+#define wxSTC_ESCRIPT_IDENTIFIER
+#define wxSTC_ESCRIPT_BRACE
+#define wxSTC_ESCRIPT_WORD2
+#define wxSTC_ESCRIPT_WORD3
 
 // Lexical states for SCLEX_PS
-%define wxSTC_PS_DEFAULT
-%define wxSTC_PS_COMMENT
-%define wxSTC_PS_DSC_COMMENT
-%define wxSTC_PS_DSC_VALUE
-%define wxSTC_PS_NUMBER
-%define wxSTC_PS_NAME
-%define wxSTC_PS_KEYWORD
-%define wxSTC_PS_LITERAL
-%define wxSTC_PS_IMMEVAL
-%define wxSTC_PS_PAREN_ARRAY
-%define wxSTC_PS_PAREN_DICT
-%define wxSTC_PS_PAREN_PROC
-%define wxSTC_PS_TEXT
-%define wxSTC_PS_HEXSTRING
-%define wxSTC_PS_BASE85STRING
-%define wxSTC_PS_BADSTRINGCHAR
+#define wxSTC_PS_DEFAULT
+#define wxSTC_PS_COMMENT
+#define wxSTC_PS_DSC_COMMENT
+#define wxSTC_PS_DSC_VALUE
+#define wxSTC_PS_NUMBER
+#define wxSTC_PS_NAME
+#define wxSTC_PS_KEYWORD
+#define wxSTC_PS_LITERAL
+#define wxSTC_PS_IMMEVAL
+#define wxSTC_PS_PAREN_ARRAY
+#define wxSTC_PS_PAREN_DICT
+#define wxSTC_PS_PAREN_PROC
+#define wxSTC_PS_TEXT
+#define wxSTC_PS_HEXSTRING
+#define wxSTC_PS_BASE85STRING
+#define wxSTC_PS_BADSTRINGCHAR
 
 // Lexical states for SCLEX_NSIS
-%define wxSTC_NSIS_DEFAULT
-%define wxSTC_NSIS_COMMENT
-%define wxSTC_NSIS_STRINGDQ
-%define wxSTC_NSIS_STRINGLQ
-%define wxSTC_NSIS_STRINGRQ
-%define wxSTC_NSIS_FUNCTION
-%define wxSTC_NSIS_VARIABLE
-%define wxSTC_NSIS_LABEL
-%define wxSTC_NSIS_USERDEFINED
-%define wxSTC_NSIS_SECTIONDEF
-%define wxSTC_NSIS_SUBSECTIONDEF
-%define wxSTC_NSIS_IFDEFINEDEF
-%define wxSTC_NSIS_MACRODEF
-%define wxSTC_NSIS_STRINGVAR
-%define wxSTC_NSIS_NUMBER
-%define wxSTC_NSIS_SECTIONGROUP
-%define wxSTC_NSIS_PAGEEX
-%define wxSTC_NSIS_FUNCTIONDEF
-%define wxSTC_NSIS_COMMENTBOX
+#define wxSTC_NSIS_DEFAULT
+#define wxSTC_NSIS_COMMENT
+#define wxSTC_NSIS_STRINGDQ
+#define wxSTC_NSIS_STRINGLQ
+#define wxSTC_NSIS_STRINGRQ
+#define wxSTC_NSIS_FUNCTION
+#define wxSTC_NSIS_VARIABLE
+#define wxSTC_NSIS_LABEL
+#define wxSTC_NSIS_USERDEFINED
+#define wxSTC_NSIS_SECTIONDEF
+#define wxSTC_NSIS_SUBSECTIONDEF
+#define wxSTC_NSIS_IFDEFINEDEF
+#define wxSTC_NSIS_MACRODEF
+#define wxSTC_NSIS_STRINGVAR
+#define wxSTC_NSIS_NUMBER
+#define wxSTC_NSIS_SECTIONGROUP
+#define wxSTC_NSIS_PAGEEX
+#define wxSTC_NSIS_FUNCTIONDEF
+#define wxSTC_NSIS_COMMENTBOX
 
 // Lexical states for SCLEX_MMIXAL
-%define wxSTC_MMIXAL_LEADWS
-%define wxSTC_MMIXAL_COMMENT
-%define wxSTC_MMIXAL_LABEL
-%define wxSTC_MMIXAL_OPCODE
-%define wxSTC_MMIXAL_OPCODE_PRE
-%define wxSTC_MMIXAL_OPCODE_VALID
-%define wxSTC_MMIXAL_OPCODE_UNKNOWN
-%define wxSTC_MMIXAL_OPCODE_POST
-%define wxSTC_MMIXAL_OPERANDS
-%define wxSTC_MMIXAL_NUMBER
-%define wxSTC_MMIXAL_REF
-%define wxSTC_MMIXAL_CHAR
-%define wxSTC_MMIXAL_STRING
-%define wxSTC_MMIXAL_REGISTER
-%define wxSTC_MMIXAL_HEX
-%define wxSTC_MMIXAL_OPERATOR
-%define wxSTC_MMIXAL_SYMBOL
-%define wxSTC_MMIXAL_INCLUDE
+#define wxSTC_MMIXAL_LEADWS
+#define wxSTC_MMIXAL_COMMENT
+#define wxSTC_MMIXAL_LABEL
+#define wxSTC_MMIXAL_OPCODE
+#define wxSTC_MMIXAL_OPCODE_PRE
+#define wxSTC_MMIXAL_OPCODE_VALID
+#define wxSTC_MMIXAL_OPCODE_UNKNOWN
+#define wxSTC_MMIXAL_OPCODE_POST
+#define wxSTC_MMIXAL_OPERANDS
+#define wxSTC_MMIXAL_NUMBER
+#define wxSTC_MMIXAL_REF
+#define wxSTC_MMIXAL_CHAR
+#define wxSTC_MMIXAL_STRING
+#define wxSTC_MMIXAL_REGISTER
+#define wxSTC_MMIXAL_HEX
+#define wxSTC_MMIXAL_OPERATOR
+#define wxSTC_MMIXAL_SYMBOL
+#define wxSTC_MMIXAL_INCLUDE
 
 // Lexical states for SCLEX_CLW
-%define wxSTC_CLW_DEFAULT
-%define wxSTC_CLW_LABEL
-%define wxSTC_CLW_COMMENT
-%define wxSTC_CLW_STRING
-%define wxSTC_CLW_USER_IDENTIFIER
-%define wxSTC_CLW_INTEGER_CONSTANT
-%define wxSTC_CLW_REAL_CONSTANT
-%define wxSTC_CLW_PICTURE_STRING
-%define wxSTC_CLW_KEYWORD
-%define wxSTC_CLW_COMPILER_DIRECTIVE
-%define wxSTC_CLW_RUNTIME_EXPRESSIONS
-%define wxSTC_CLW_BUILTIN_PROCEDURES_FUNCTION
-%define wxSTC_CLW_STRUCTURE_DATA_TYPE
-%define wxSTC_CLW_ATTRIBUTE
-%define wxSTC_CLW_STANDARD_EQUATE
-%define wxSTC_CLW_ERROR
-%define wxSTC_CLW_DEPRECATED
+#define wxSTC_CLW_DEFAULT
+#define wxSTC_CLW_LABEL
+#define wxSTC_CLW_COMMENT
+#define wxSTC_CLW_STRING
+#define wxSTC_CLW_USER_IDENTIFIER
+#define wxSTC_CLW_INTEGER_CONSTANT
+#define wxSTC_CLW_REAL_CONSTANT
+#define wxSTC_CLW_PICTURE_STRING
+#define wxSTC_CLW_KEYWORD
+#define wxSTC_CLW_COMPILER_DIRECTIVE
+#define wxSTC_CLW_RUNTIME_EXPRESSIONS
+#define wxSTC_CLW_BUILTIN_PROCEDURES_FUNCTION
+#define wxSTC_CLW_STRUCTURE_DATA_TYPE
+#define wxSTC_CLW_ATTRIBUTE
+#define wxSTC_CLW_STANDARD_EQUATE
+#define wxSTC_CLW_ERROR
+#define wxSTC_CLW_DEPRECATED
 
 // Lexical states for SCLEX_LOT
-%define wxSTC_LOT_DEFAULT
-%define wxSTC_LOT_HEADER
-%define wxSTC_LOT_BREAK
-%define wxSTC_LOT_SET
-%define wxSTC_LOT_PASS
-%define wxSTC_LOT_FAIL
-%define wxSTC_LOT_ABORT
+#define wxSTC_LOT_DEFAULT
+#define wxSTC_LOT_HEADER
+#define wxSTC_LOT_BREAK
+#define wxSTC_LOT_SET
+#define wxSTC_LOT_PASS
+#define wxSTC_LOT_FAIL
+#define wxSTC_LOT_ABORT
 
 // Lexical states for SCLEX_YAML
-%define wxSTC_YAML_DEFAULT
-%define wxSTC_YAML_COMMENT
-%define wxSTC_YAML_IDENTIFIER
-%define wxSTC_YAML_KEYWORD
-%define wxSTC_YAML_NUMBER
-%define wxSTC_YAML_REFERENCE
-%define wxSTC_YAML_DOCUMENT
-%define wxSTC_YAML_TEXT
-%define wxSTC_YAML_ERROR
+#define wxSTC_YAML_DEFAULT
+#define wxSTC_YAML_COMMENT
+#define wxSTC_YAML_IDENTIFIER
+#define wxSTC_YAML_KEYWORD
+#define wxSTC_YAML_NUMBER
+#define wxSTC_YAML_REFERENCE
+#define wxSTC_YAML_DOCUMENT
+#define wxSTC_YAML_TEXT
+#define wxSTC_YAML_ERROR
 
 // Lexical states for SCLEX_TEX
-%define wxSTC_TEX_DEFAULT
-%define wxSTC_TEX_SPECIAL
-%define wxSTC_TEX_GROUP
-%define wxSTC_TEX_SYMBOL
-%define wxSTC_TEX_COMMAND
-%define wxSTC_TEX_TEXT
-%define wxSTC_METAPOST_DEFAULT
-%define wxSTC_METAPOST_SPECIAL
-%define wxSTC_METAPOST_GROUP
-%define wxSTC_METAPOST_SYMBOL
-%define wxSTC_METAPOST_COMMAND
-%define wxSTC_METAPOST_TEXT
-%define wxSTC_METAPOST_EXTRA
+#define wxSTC_TEX_DEFAULT
+#define wxSTC_TEX_SPECIAL
+#define wxSTC_TEX_GROUP
+#define wxSTC_TEX_SYMBOL
+#define wxSTC_TEX_COMMAND
+#define wxSTC_TEX_TEXT
+#define wxSTC_METAPOST_DEFAULT
+#define wxSTC_METAPOST_SPECIAL
+#define wxSTC_METAPOST_GROUP
+#define wxSTC_METAPOST_SYMBOL
+#define wxSTC_METAPOST_COMMAND
+#define wxSTC_METAPOST_TEXT
+#define wxSTC_METAPOST_EXTRA
 
 // Lexical states for SCLEX_ERLANG
-%define wxSTC_ERLANG_DEFAULT
-%define wxSTC_ERLANG_COMMENT
-%define wxSTC_ERLANG_VARIABLE
-%define wxSTC_ERLANG_NUMBER
-%define wxSTC_ERLANG_KEYWORD
-%define wxSTC_ERLANG_STRING
-%define wxSTC_ERLANG_OPERATOR
-%define wxSTC_ERLANG_ATOM
-%define wxSTC_ERLANG_FUNCTION_NAME
-%define wxSTC_ERLANG_CHARACTER
-%define wxSTC_ERLANG_MACRO
-%define wxSTC_ERLANG_RECORD
-!%wxchkver_2_9_2 %define wxSTC_ERLANG_SEPARATOR
-%define wxSTC_ERLANG_NODE_NAME
-%define wxSTC_ERLANG_UNKNOWN
+#define wxSTC_ERLANG_DEFAULT
+#define wxSTC_ERLANG_COMMENT
+#define wxSTC_ERLANG_VARIABLE
+#define wxSTC_ERLANG_NUMBER
+#define wxSTC_ERLANG_KEYWORD
+#define wxSTC_ERLANG_STRING
+#define wxSTC_ERLANG_OPERATOR
+#define wxSTC_ERLANG_ATOM
+#define wxSTC_ERLANG_FUNCTION_NAME
+#define wxSTC_ERLANG_CHARACTER
+#define wxSTC_ERLANG_MACRO
+#define wxSTC_ERLANG_RECORD
+!%wxchkver_2_9_2 #define wxSTC_ERLANG_SEPARATOR
+#define wxSTC_ERLANG_NODE_NAME
+#define wxSTC_ERLANG_UNKNOWN
 
 // Lexical states for SCLEX_OCTAVE are identical to MatLab
 // Lexical states for SCLEX_MSSQL
-%define wxSTC_MSSQL_DEFAULT
-%define wxSTC_MSSQL_COMMENT
-%define wxSTC_MSSQL_LINE_COMMENT
-%define wxSTC_MSSQL_NUMBER
-%define wxSTC_MSSQL_STRING
-%define wxSTC_MSSQL_OPERATOR
-%define wxSTC_MSSQL_IDENTIFIER
-%define wxSTC_MSSQL_VARIABLE
-%define wxSTC_MSSQL_COLUMN_NAME
-%define wxSTC_MSSQL_STATEMENT
-%define wxSTC_MSSQL_DATATYPE
-%define wxSTC_MSSQL_SYSTABLE
-%define wxSTC_MSSQL_GLOBAL_VARIABLE
-%define wxSTC_MSSQL_FUNCTION
-%define wxSTC_MSSQL_STORED_PROCEDURE
-%define wxSTC_MSSQL_DEFAULT_PREF_DATATYPE
-%define wxSTC_MSSQL_COLUMN_NAME_2
+#define wxSTC_MSSQL_DEFAULT
+#define wxSTC_MSSQL_COMMENT
+#define wxSTC_MSSQL_LINE_COMMENT
+#define wxSTC_MSSQL_NUMBER
+#define wxSTC_MSSQL_STRING
+#define wxSTC_MSSQL_OPERATOR
+#define wxSTC_MSSQL_IDENTIFIER
+#define wxSTC_MSSQL_VARIABLE
+#define wxSTC_MSSQL_COLUMN_NAME
+#define wxSTC_MSSQL_STATEMENT
+#define wxSTC_MSSQL_DATATYPE
+#define wxSTC_MSSQL_SYSTABLE
+#define wxSTC_MSSQL_GLOBAL_VARIABLE
+#define wxSTC_MSSQL_FUNCTION
+#define wxSTC_MSSQL_STORED_PROCEDURE
+#define wxSTC_MSSQL_DEFAULT_PREF_DATATYPE
+#define wxSTC_MSSQL_COLUMN_NAME_2
 
 // Lexical states for SCLEX_VERILOG
-%define wxSTC_V_DEFAULT
-%define wxSTC_V_COMMENT
-%define wxSTC_V_COMMENTLINE
-%define wxSTC_V_COMMENTLINEBANG
-%define wxSTC_V_NUMBER
-%define wxSTC_V_WORD
-%define wxSTC_V_STRING
-%define wxSTC_V_WORD2
-%define wxSTC_V_WORD3
-%define wxSTC_V_PREPROCESSOR
-%define wxSTC_V_OPERATOR
-%define wxSTC_V_IDENTIFIER
-%define wxSTC_V_STRINGEOL
-%define wxSTC_V_USER
+#define wxSTC_V_DEFAULT
+#define wxSTC_V_COMMENT
+#define wxSTC_V_COMMENTLINE
+#define wxSTC_V_COMMENTLINEBANG
+#define wxSTC_V_NUMBER
+#define wxSTC_V_WORD
+#define wxSTC_V_STRING
+#define wxSTC_V_WORD2
+#define wxSTC_V_WORD3
+#define wxSTC_V_PREPROCESSOR
+#define wxSTC_V_OPERATOR
+#define wxSTC_V_IDENTIFIER
+#define wxSTC_V_STRINGEOL
+#define wxSTC_V_USER
 
 // Lexical states for SCLEX_KIX
-%define wxSTC_KIX_DEFAULT
-%define wxSTC_KIX_COMMENT
-%define wxSTC_KIX_STRING1
-%define wxSTC_KIX_STRING2
-%define wxSTC_KIX_NUMBER
-%define wxSTC_KIX_VAR
-%define wxSTC_KIX_MACRO
-%define wxSTC_KIX_KEYWORD
-%define wxSTC_KIX_FUNCTIONS
-%define wxSTC_KIX_OPERATOR
-%define wxSTC_KIX_IDENTIFIER
+#define wxSTC_KIX_DEFAULT
+#define wxSTC_KIX_COMMENT
+#define wxSTC_KIX_STRING1
+#define wxSTC_KIX_STRING2
+#define wxSTC_KIX_NUMBER
+#define wxSTC_KIX_VAR
+#define wxSTC_KIX_MACRO
+#define wxSTC_KIX_KEYWORD
+#define wxSTC_KIX_FUNCTIONS
+#define wxSTC_KIX_OPERATOR
+#define wxSTC_KIX_IDENTIFIER
 
 // Lexical states for SCLEX_GUI4CLI
-%define wxSTC_GC_DEFAULT
-%define wxSTC_GC_COMMENTLINE
-%define wxSTC_GC_COMMENTBLOCK
-%define wxSTC_GC_GLOBAL
-%define wxSTC_GC_EVENT
-%define wxSTC_GC_ATTRIBUTE
-%define wxSTC_GC_CONTROL
-%define wxSTC_GC_COMMAND
-%define wxSTC_GC_STRING
-%define wxSTC_GC_OPERATOR
+#define wxSTC_GC_DEFAULT
+#define wxSTC_GC_COMMENTLINE
+#define wxSTC_GC_COMMENTBLOCK
+#define wxSTC_GC_GLOBAL
+#define wxSTC_GC_EVENT
+#define wxSTC_GC_ATTRIBUTE
+#define wxSTC_GC_CONTROL
+#define wxSTC_GC_COMMAND
+#define wxSTC_GC_STRING
+#define wxSTC_GC_OPERATOR
 
 // Lexical states for SCLEX_SPECMAN
-%define wxSTC_SN_DEFAULT
-%define wxSTC_SN_CODE
-%define wxSTC_SN_COMMENTLINE
-%define wxSTC_SN_COMMENTLINEBANG
-%define wxSTC_SN_NUMBER
-%define wxSTC_SN_WORD
-%define wxSTC_SN_STRING
-%define wxSTC_SN_WORD2
-%define wxSTC_SN_WORD3
-%define wxSTC_SN_PREPROCESSOR
-%define wxSTC_SN_OPERATOR
-%define wxSTC_SN_IDENTIFIER
-%define wxSTC_SN_STRINGEOL
-%define wxSTC_SN_REGEXTAG
-%define wxSTC_SN_SIGNAL
-%define wxSTC_SN_USER
+#define wxSTC_SN_DEFAULT
+#define wxSTC_SN_CODE
+#define wxSTC_SN_COMMENTLINE
+#define wxSTC_SN_COMMENTLINEBANG
+#define wxSTC_SN_NUMBER
+#define wxSTC_SN_WORD
+#define wxSTC_SN_STRING
+#define wxSTC_SN_WORD2
+#define wxSTC_SN_WORD3
+#define wxSTC_SN_PREPROCESSOR
+#define wxSTC_SN_OPERATOR
+#define wxSTC_SN_IDENTIFIER
+#define wxSTC_SN_STRINGEOL
+#define wxSTC_SN_REGEXTAG
+#define wxSTC_SN_SIGNAL
+#define wxSTC_SN_USER
 
 // Lexical states for SCLEX_AU3
-%define wxSTC_AU3_DEFAULT
-%define wxSTC_AU3_COMMENT
-%define wxSTC_AU3_COMMENTBLOCK
-%define wxSTC_AU3_NUMBER
-%define wxSTC_AU3_FUNCTION
-%define wxSTC_AU3_KEYWORD
-%define wxSTC_AU3_MACRO
-%define wxSTC_AU3_STRING
-%define wxSTC_AU3_OPERATOR
-%define wxSTC_AU3_VARIABLE
-%define wxSTC_AU3_SENT
-%define wxSTC_AU3_PREPROCESSOR
-%define wxSTC_AU3_SPECIAL
-%define wxSTC_AU3_EXPAND
-%define wxSTC_AU3_COMOBJ
+#define wxSTC_AU3_DEFAULT
+#define wxSTC_AU3_COMMENT
+#define wxSTC_AU3_COMMENTBLOCK
+#define wxSTC_AU3_NUMBER
+#define wxSTC_AU3_FUNCTION
+#define wxSTC_AU3_KEYWORD
+#define wxSTC_AU3_MACRO
+#define wxSTC_AU3_STRING
+#define wxSTC_AU3_OPERATOR
+#define wxSTC_AU3_VARIABLE
+#define wxSTC_AU3_SENT
+#define wxSTC_AU3_PREPROCESSOR
+#define wxSTC_AU3_SPECIAL
+#define wxSTC_AU3_EXPAND
+#define wxSTC_AU3_COMOBJ
 
 // Lexical states for SCLEX_APDL
-%define wxSTC_APDL_DEFAULT
-%define wxSTC_APDL_COMMENT
-%define wxSTC_APDL_COMMENTBLOCK
-%define wxSTC_APDL_NUMBER
-%define wxSTC_APDL_STRING
-%define wxSTC_APDL_OPERATOR
-%define wxSTC_APDL_WORD
-%define wxSTC_APDL_PROCESSOR
-%define wxSTC_APDL_COMMAND
-%define wxSTC_APDL_SLASHCOMMAND
-%define wxSTC_APDL_STARCOMMAND
-%define wxSTC_APDL_ARGUMENT
-%define wxSTC_APDL_FUNCTION
+#define wxSTC_APDL_DEFAULT
+#define wxSTC_APDL_COMMENT
+#define wxSTC_APDL_COMMENTBLOCK
+#define wxSTC_APDL_NUMBER
+#define wxSTC_APDL_STRING
+#define wxSTC_APDL_OPERATOR
+#define wxSTC_APDL_WORD
+#define wxSTC_APDL_PROCESSOR
+#define wxSTC_APDL_COMMAND
+#define wxSTC_APDL_SLASHCOMMAND
+#define wxSTC_APDL_STARCOMMAND
+#define wxSTC_APDL_ARGUMENT
+#define wxSTC_APDL_FUNCTION
 
 // Lexical states for SCLEX_BASH
-%define wxSTC_SH_DEFAULT
-%define wxSTC_SH_ERROR
-%define wxSTC_SH_COMMENTLINE
-%define wxSTC_SH_NUMBER
-%define wxSTC_SH_WORD
-%define wxSTC_SH_STRING
-%define wxSTC_SH_CHARACTER
-%define wxSTC_SH_OPERATOR
-%define wxSTC_SH_IDENTIFIER
-%define wxSTC_SH_SCALAR
-%define wxSTC_SH_PARAM
-%define wxSTC_SH_BACKTICKS
-%define wxSTC_SH_HERE_DELIM
-%define wxSTC_SH_HERE_Q
+#define wxSTC_SH_DEFAULT
+#define wxSTC_SH_ERROR
+#define wxSTC_SH_COMMENTLINE
+#define wxSTC_SH_NUMBER
+#define wxSTC_SH_WORD
+#define wxSTC_SH_STRING
+#define wxSTC_SH_CHARACTER
+#define wxSTC_SH_OPERATOR
+#define wxSTC_SH_IDENTIFIER
+#define wxSTC_SH_SCALAR
+#define wxSTC_SH_PARAM
+#define wxSTC_SH_BACKTICKS
+#define wxSTC_SH_HERE_DELIM
+#define wxSTC_SH_HERE_Q
 
 // Lexical states for SCLEX_ASN1
-%define wxSTC_ASN1_DEFAULT
-%define wxSTC_ASN1_COMMENT
-%define wxSTC_ASN1_IDENTIFIER
-%define wxSTC_ASN1_STRING
-%define wxSTC_ASN1_OID
-%define wxSTC_ASN1_SCALAR
-%define wxSTC_ASN1_KEYWORD
-%define wxSTC_ASN1_ATTRIBUTE
-%define wxSTC_ASN1_DESCRIPTOR
-%define wxSTC_ASN1_TYPE
-%define wxSTC_ASN1_OPERATOR
+#define wxSTC_ASN1_DEFAULT
+#define wxSTC_ASN1_COMMENT
+#define wxSTC_ASN1_IDENTIFIER
+#define wxSTC_ASN1_STRING
+#define wxSTC_ASN1_OID
+#define wxSTC_ASN1_SCALAR
+#define wxSTC_ASN1_KEYWORD
+#define wxSTC_ASN1_ATTRIBUTE
+#define wxSTC_ASN1_DESCRIPTOR
+#define wxSTC_ASN1_TYPE
+#define wxSTC_ASN1_OPERATOR
 
 // Lexical states for SCLEX_VHDL
-%define wxSTC_VHDL_DEFAULT
-%define wxSTC_VHDL_COMMENT
-%define wxSTC_VHDL_COMMENTLINEBANG
-%define wxSTC_VHDL_NUMBER
-%define wxSTC_VHDL_STRING
-%define wxSTC_VHDL_OPERATOR
-%define wxSTC_VHDL_IDENTIFIER
-%define wxSTC_VHDL_STRINGEOL
-%define wxSTC_VHDL_KEYWORD
-%define wxSTC_VHDL_STDOPERATOR
-%define wxSTC_VHDL_ATTRIBUTE
-%define wxSTC_VHDL_STDFUNCTION
-%define wxSTC_VHDL_STDPACKAGE
-%define wxSTC_VHDL_STDTYPE
-%define wxSTC_VHDL_USERWORD
+#define wxSTC_VHDL_DEFAULT
+#define wxSTC_VHDL_COMMENT
+#define wxSTC_VHDL_COMMENTLINEBANG
+#define wxSTC_VHDL_NUMBER
+#define wxSTC_VHDL_STRING
+#define wxSTC_VHDL_OPERATOR
+#define wxSTC_VHDL_IDENTIFIER
+#define wxSTC_VHDL_STRINGEOL
+#define wxSTC_VHDL_KEYWORD
+#define wxSTC_VHDL_STDOPERATOR
+#define wxSTC_VHDL_ATTRIBUTE
+#define wxSTC_VHDL_STDFUNCTION
+#define wxSTC_VHDL_STDPACKAGE
+#define wxSTC_VHDL_STDTYPE
+#define wxSTC_VHDL_USERWORD
 
 // Lexical states for SCLEX_CAML
-%define wxSTC_CAML_DEFAULT
-%define wxSTC_CAML_IDENTIFIER
-%define wxSTC_CAML_TAGNAME
-%define wxSTC_CAML_KEYWORD
-%define wxSTC_CAML_KEYWORD2
-%define wxSTC_CAML_KEYWORD3
-%define wxSTC_CAML_LINENUM
-%define wxSTC_CAML_OPERATOR
-%define wxSTC_CAML_NUMBER
-%define wxSTC_CAML_CHAR
-%define wxSTC_CAML_STRING
-%define wxSTC_CAML_COMMENT
-%define wxSTC_CAML_COMMENT1
-%define wxSTC_CAML_COMMENT2
-%define wxSTC_CAML_COMMENT3
+#define wxSTC_CAML_DEFAULT
+#define wxSTC_CAML_IDENTIFIER
+#define wxSTC_CAML_TAGNAME
+#define wxSTC_CAML_KEYWORD
+#define wxSTC_CAML_KEYWORD2
+#define wxSTC_CAML_KEYWORD3
+#define wxSTC_CAML_LINENUM
+#define wxSTC_CAML_OPERATOR
+#define wxSTC_CAML_NUMBER
+#define wxSTC_CAML_CHAR
+#define wxSTC_CAML_STRING
+#define wxSTC_CAML_COMMENT
+#define wxSTC_CAML_COMMENT1
+#define wxSTC_CAML_COMMENT2
+#define wxSTC_CAML_COMMENT3
 
 // Lexical states for SCLEX_HASKELL
-%define wxSTC_HA_DEFAULT
-%define wxSTC_HA_IDENTIFIER
-%define wxSTC_HA_KEYWORD
-%define wxSTC_HA_NUMBER
-%define wxSTC_HA_STRING
-%define wxSTC_HA_CHARACTER
-%define wxSTC_HA_CLASS
-%define wxSTC_HA_MODULE
-%define wxSTC_HA_CAPITAL
-%define wxSTC_HA_DATA
-%define wxSTC_HA_IMPORT
-%define wxSTC_HA_OPERATOR
-%define wxSTC_HA_INSTANCE
-%define wxSTC_HA_COMMENTLINE
-%define wxSTC_HA_COMMENTBLOCK
-%define wxSTC_HA_COMMENTBLOCK2
-%define wxSTC_HA_COMMENTBLOCK3
+#define wxSTC_HA_DEFAULT
+#define wxSTC_HA_IDENTIFIER
+#define wxSTC_HA_KEYWORD
+#define wxSTC_HA_NUMBER
+#define wxSTC_HA_STRING
+#define wxSTC_HA_CHARACTER
+#define wxSTC_HA_CLASS
+#define wxSTC_HA_MODULE
+#define wxSTC_HA_CAPITAL
+#define wxSTC_HA_DATA
+#define wxSTC_HA_IMPORT
+#define wxSTC_HA_OPERATOR
+#define wxSTC_HA_INSTANCE
+#define wxSTC_HA_COMMENTLINE
+#define wxSTC_HA_COMMENTBLOCK
+#define wxSTC_HA_COMMENTBLOCK2
+#define wxSTC_HA_COMMENTBLOCK3
 
 // Lexical states of SCLEX_TADS3
-%define wxSTC_T3_DEFAULT
-%define wxSTC_T3_X_DEFAULT
-%define wxSTC_T3_PREPROCESSOR
-%define wxSTC_T3_BLOCK_COMMENT
-%define wxSTC_T3_LINE_COMMENT
-%define wxSTC_T3_OPERATOR
-%define wxSTC_T3_KEYWORD
-%define wxSTC_T3_NUMBER
-%define wxSTC_T3_IDENTIFIER
-%define wxSTC_T3_S_STRING
-%define wxSTC_T3_D_STRING
-%define wxSTC_T3_X_STRING
-%define wxSTC_T3_LIB_DIRECTIVE
-%define wxSTC_T3_MSG_PARAM
-%define wxSTC_T3_HTML_TAG
-%define wxSTC_T3_HTML_DEFAULT
-%define wxSTC_T3_HTML_STRING
-%define wxSTC_T3_USER1
-%define wxSTC_T3_USER2
-%define wxSTC_T3_USER3
+#define wxSTC_T3_DEFAULT
+#define wxSTC_T3_X_DEFAULT
+#define wxSTC_T3_PREPROCESSOR
+#define wxSTC_T3_BLOCK_COMMENT
+#define wxSTC_T3_LINE_COMMENT
+#define wxSTC_T3_OPERATOR
+#define wxSTC_T3_KEYWORD
+#define wxSTC_T3_NUMBER
+#define wxSTC_T3_IDENTIFIER
+#define wxSTC_T3_S_STRING
+#define wxSTC_T3_D_STRING
+#define wxSTC_T3_X_STRING
+#define wxSTC_T3_LIB_DIRECTIVE
+#define wxSTC_T3_MSG_PARAM
+#define wxSTC_T3_HTML_TAG
+#define wxSTC_T3_HTML_DEFAULT
+#define wxSTC_T3_HTML_STRING
+#define wxSTC_T3_USER1
+#define wxSTC_T3_USER2
+#define wxSTC_T3_USER3
 
 // Lexical states for SCLEX_REBOL
-%define wxSTC_REBOL_DEFAULT
-%define wxSTC_REBOL_COMMENTLINE
-%define wxSTC_REBOL_COMMENTBLOCK
-%define wxSTC_REBOL_PREFACE
-%define wxSTC_REBOL_OPERATOR
-%define wxSTC_REBOL_CHARACTER
-%define wxSTC_REBOL_QUOTEDSTRING
-%define wxSTC_REBOL_BRACEDSTRING
-%define wxSTC_REBOL_NUMBER
-%define wxSTC_REBOL_PAIR
-%define wxSTC_REBOL_TUPLE
-%define wxSTC_REBOL_BINARY
-%define wxSTC_REBOL_MONEY
-%define wxSTC_REBOL_ISSUE
-%define wxSTC_REBOL_TAG
-%define wxSTC_REBOL_FILE
-%define wxSTC_REBOL_EMAIL
-%define wxSTC_REBOL_URL
-%define wxSTC_REBOL_DATE
-%define wxSTC_REBOL_TIME
-%define wxSTC_REBOL_IDENTIFIER
-%define wxSTC_REBOL_WORD
-%define wxSTC_REBOL_WORD2
-%define wxSTC_REBOL_WORD3
-%define wxSTC_REBOL_WORD4
-%define wxSTC_REBOL_WORD5
-%define wxSTC_REBOL_WORD6
-%define wxSTC_REBOL_WORD7
-%define wxSTC_REBOL_WORD8
+#define wxSTC_REBOL_DEFAULT
+#define wxSTC_REBOL_COMMENTLINE
+#define wxSTC_REBOL_COMMENTBLOCK
+#define wxSTC_REBOL_PREFACE
+#define wxSTC_REBOL_OPERATOR
+#define wxSTC_REBOL_CHARACTER
+#define wxSTC_REBOL_QUOTEDSTRING
+#define wxSTC_REBOL_BRACEDSTRING
+#define wxSTC_REBOL_NUMBER
+#define wxSTC_REBOL_PAIR
+#define wxSTC_REBOL_TUPLE
+#define wxSTC_REBOL_BINARY
+#define wxSTC_REBOL_MONEY
+#define wxSTC_REBOL_ISSUE
+#define wxSTC_REBOL_TAG
+#define wxSTC_REBOL_FILE
+#define wxSTC_REBOL_EMAIL
+#define wxSTC_REBOL_URL
+#define wxSTC_REBOL_DATE
+#define wxSTC_REBOL_TIME
+#define wxSTC_REBOL_IDENTIFIER
+#define wxSTC_REBOL_WORD
+#define wxSTC_REBOL_WORD2
+#define wxSTC_REBOL_WORD3
+#define wxSTC_REBOL_WORD4
+#define wxSTC_REBOL_WORD5
+#define wxSTC_REBOL_WORD6
+#define wxSTC_REBOL_WORD7
+#define wxSTC_REBOL_WORD8
 
 // Lexical states for SCLEX_SQL
-%define wxSTC_SQL_DEFAULT
-%define wxSTC_SQL_COMMENT
-%define wxSTC_SQL_COMMENTLINE
-%define wxSTC_SQL_COMMENTDOC
-%define wxSTC_SQL_NUMBER
-%define wxSTC_SQL_WORD
-%define wxSTC_SQL_STRING
-%define wxSTC_SQL_CHARACTER
-%define wxSTC_SQL_SQLPLUS
-%define wxSTC_SQL_SQLPLUS_PROMPT
-%define wxSTC_SQL_OPERATOR
-%define wxSTC_SQL_IDENTIFIER
-%define wxSTC_SQL_SQLPLUS_COMMENT
-%define wxSTC_SQL_COMMENTLINEDOC
-%define wxSTC_SQL_WORD2
-%define wxSTC_SQL_COMMENTDOCKEYWORD
-%define wxSTC_SQL_COMMENTDOCKEYWORDERROR
-%define wxSTC_SQL_USER1
-%define wxSTC_SQL_USER2
-%define wxSTC_SQL_USER3
-%define wxSTC_SQL_USER4
-%define wxSTC_SQL_QUOTEDIDENTIFIER
+#define wxSTC_SQL_DEFAULT
+#define wxSTC_SQL_COMMENT
+#define wxSTC_SQL_COMMENTLINE
+#define wxSTC_SQL_COMMENTDOC
+#define wxSTC_SQL_NUMBER
+#define wxSTC_SQL_WORD
+#define wxSTC_SQL_STRING
+#define wxSTC_SQL_CHARACTER
+#define wxSTC_SQL_SQLPLUS
+#define wxSTC_SQL_SQLPLUS_PROMPT
+#define wxSTC_SQL_OPERATOR
+#define wxSTC_SQL_IDENTIFIER
+#define wxSTC_SQL_SQLPLUS_COMMENT
+#define wxSTC_SQL_COMMENTLINEDOC
+#define wxSTC_SQL_WORD2
+#define wxSTC_SQL_COMMENTDOCKEYWORD
+#define wxSTC_SQL_COMMENTDOCKEYWORDERROR
+#define wxSTC_SQL_USER1
+#define wxSTC_SQL_USER2
+#define wxSTC_SQL_USER3
+#define wxSTC_SQL_USER4
+#define wxSTC_SQL_QUOTEDIDENTIFIER
 
 // Lexical states for SCLEX_SMALLTALK
-%define wxSTC_ST_DEFAULT
-%define wxSTC_ST_STRING
-%define wxSTC_ST_NUMBER
-%define wxSTC_ST_COMMENT
-%define wxSTC_ST_SYMBOL
-%define wxSTC_ST_BINARY
-%define wxSTC_ST_BOOL
-%define wxSTC_ST_SELF
-%define wxSTC_ST_SUPER
-%define wxSTC_ST_NIL
-%define wxSTC_ST_GLOBAL
-%define wxSTC_ST_RETURN
-%define wxSTC_ST_SPECIAL
-%define wxSTC_ST_KWSEND
-%define wxSTC_ST_ASSIGN
-%define wxSTC_ST_CHARACTER
-%define wxSTC_ST_SPEC_SEL
+#define wxSTC_ST_DEFAULT
+#define wxSTC_ST_STRING
+#define wxSTC_ST_NUMBER
+#define wxSTC_ST_COMMENT
+#define wxSTC_ST_SYMBOL
+#define wxSTC_ST_BINARY
+#define wxSTC_ST_BOOL
+#define wxSTC_ST_SELF
+#define wxSTC_ST_SUPER
+#define wxSTC_ST_NIL
+#define wxSTC_ST_GLOBAL
+#define wxSTC_ST_RETURN
+#define wxSTC_ST_SPECIAL
+#define wxSTC_ST_KWSEND
+#define wxSTC_ST_ASSIGN
+#define wxSTC_ST_CHARACTER
+#define wxSTC_ST_SPEC_SEL
 
-// Lexical states for SCLEX_FLAGSHIP (clipper)
-%define wxSTC_FS_DEFAULT
-%define wxSTC_FS_COMMENT
-%define wxSTC_FS_COMMENTLINE
-%define wxSTC_FS_COMMENTDOC
-%define wxSTC_FS_COMMENTLINEDOC
-%define wxSTC_FS_COMMENTDOCKEYWORD
-%define wxSTC_FS_COMMENTDOCKEYWORDERROR
-%define wxSTC_FS_KEYWORD
-%define wxSTC_FS_KEYWORD2
-%define wxSTC_FS_KEYWORD3
-%define wxSTC_FS_KEYWORD4
-%define wxSTC_FS_NUMBER
-%define wxSTC_FS_STRING
-%define wxSTC_FS_PREPROCESSOR
-%define wxSTC_FS_OPERATOR
-%define wxSTC_FS_IDENTIFIER
-%define wxSTC_FS_DATE
-%define wxSTC_FS_STRINGEOL
-%define wxSTC_FS_CONSTANT
-//%define wxSTC_FS_ASM        - Removed in 2.9.5
-//%define wxSTC_FS_LABEL      - Removed in 2.9.5
-//%define wxSTC_FS_ERROR      - Removed in 2.9.5
-//%define wxSTC_FS_HEXNUMBER  - Removed in 2.9.5
-//%define wxSTC_FS_BINNUMBER  - Removed in 2.9.5
+// Lexical states for SCLEX_FLAGSHIP (clipper );
+#define wxSTC_FS_DEFAULT
+#define wxSTC_FS_COMMENT
+#define wxSTC_FS_COMMENTLINE
+#define wxSTC_FS_COMMENTDOC
+#define wxSTC_FS_COMMENTLINEDOC
+#define wxSTC_FS_COMMENTDOCKEYWORD
+#define wxSTC_FS_COMMENTDOCKEYWORDERROR
+#define wxSTC_FS_KEYWORD
+#define wxSTC_FS_KEYWORD2
+#define wxSTC_FS_KEYWORD3
+#define wxSTC_FS_KEYWORD4
+#define wxSTC_FS_NUMBER
+#define wxSTC_FS_STRING
+#define wxSTC_FS_PREPROCESSOR
+#define wxSTC_FS_OPERATOR
+#define wxSTC_FS_IDENTIFIER
+#define wxSTC_FS_DATE
+#define wxSTC_FS_STRINGEOL
+#define wxSTC_FS_CONSTANT
+//#define wxSTC_FS_ASM        - Removed in 2.9.5
+//#define wxSTC_FS_LABEL      - Removed in 2.9.5
+//#define wxSTC_FS_ERROR      - Removed in 2.9.5
+//#define wxSTC_FS_HEXNUMBER  - Removed in 2.9.5
+//#define wxSTC_FS_BINNUMBER  - Removed in 2.9.5
 
 // Lexical states for SCLEX_CSOUND
-%define wxSTC_CSOUND_DEFAULT
-%define wxSTC_CSOUND_COMMENT
-%define wxSTC_CSOUND_NUMBER
-%define wxSTC_CSOUND_OPERATOR
-%define wxSTC_CSOUND_INSTR
-%define wxSTC_CSOUND_IDENTIFIER
-%define wxSTC_CSOUND_OPCODE
-%define wxSTC_CSOUND_HEADERSTMT
-%define wxSTC_CSOUND_USERKEYWORD
-%define wxSTC_CSOUND_COMMENTBLOCK
-%define wxSTC_CSOUND_PARAM
-%define wxSTC_CSOUND_ARATE_VAR
-%define wxSTC_CSOUND_KRATE_VAR
-%define wxSTC_CSOUND_IRATE_VAR
-%define wxSTC_CSOUND_GLOBAL_VAR
-%define wxSTC_CSOUND_STRINGEOL
+#define wxSTC_CSOUND_DEFAULT
+#define wxSTC_CSOUND_COMMENT
+#define wxSTC_CSOUND_NUMBER
+#define wxSTC_CSOUND_OPERATOR
+#define wxSTC_CSOUND_INSTR
+#define wxSTC_CSOUND_IDENTIFIER
+#define wxSTC_CSOUND_OPCODE
+#define wxSTC_CSOUND_HEADERSTMT
+#define wxSTC_CSOUND_USERKEYWORD
+#define wxSTC_CSOUND_COMMENTBLOCK
+#define wxSTC_CSOUND_PARAM
+#define wxSTC_CSOUND_ARATE_VAR
+#define wxSTC_CSOUND_KRATE_VAR
+#define wxSTC_CSOUND_IRATE_VAR
+#define wxSTC_CSOUND_GLOBAL_VAR
+#define wxSTC_CSOUND_STRINGEOL
 
 
 //-----------------------------------------
@@ -1448,280 +1448,281 @@
 
 
 // Redoes the next action on the undo history.
-%define wxSTC_CMD_REDO
+#define wxSTC_CMD_REDO
 
 // Select all the text in the document.
-%define wxSTC_CMD_SELECTALL
+#define wxSTC_CMD_SELECTALL
 
 // Undo one action in the undo history.
-%define wxSTC_CMD_UNDO
+#define wxSTC_CMD_UNDO
 
 // Cut the selection to the clipboard.
-%define wxSTC_CMD_CUT
+#define wxSTC_CMD_CUT
 
 // Copy the selection to the clipboard.
-%define wxSTC_CMD_COPY
+#define wxSTC_CMD_COPY
 
 // Paste the contents of the clipboard into the document replacing the selection.
-%define wxSTC_CMD_PASTE
+#define wxSTC_CMD_PASTE
 
 // Clear the selection.
-%define wxSTC_CMD_CLEAR
+#define wxSTC_CMD_CLEAR
 
 // Move caret down one line.
-%define wxSTC_CMD_LINEDOWN
+#define wxSTC_CMD_LINEDOWN
 
 // Move caret down one line extending selection to new caret position.
-%define wxSTC_CMD_LINEDOWNEXTEND
+#define wxSTC_CMD_LINEDOWNEXTEND
 
 // Move caret up one line.
-%define wxSTC_CMD_LINEUP
+#define wxSTC_CMD_LINEUP
 
 // Move caret up one line extending selection to new caret position.
-%define wxSTC_CMD_LINEUPEXTEND
+#define wxSTC_CMD_LINEUPEXTEND
 
 // Move caret left one character.
-%define wxSTC_CMD_CHARLEFT
+#define wxSTC_CMD_CHARLEFT
 
 // Move caret left one character extending selection to new caret position.
-%define wxSTC_CMD_CHARLEFTEXTEND
+#define wxSTC_CMD_CHARLEFTEXTEND
 
 // Move caret right one character.
-%define wxSTC_CMD_CHARRIGHT
+#define wxSTC_CMD_CHARRIGHT
 
 // Move caret right one character extending selection to new caret position.
-%define wxSTC_CMD_CHARRIGHTEXTEND
+#define wxSTC_CMD_CHARRIGHTEXTEND
 
 // Move caret left one word.
-%define wxSTC_CMD_WORDLEFT
+#define wxSTC_CMD_WORDLEFT
 
 // Move caret left one word extending selection to new caret position.
-%define wxSTC_CMD_WORDLEFTEXTEND
+#define wxSTC_CMD_WORDLEFTEXTEND
 
 // Move caret right one word.
-%define wxSTC_CMD_WORDRIGHT
+#define wxSTC_CMD_WORDRIGHT
 
 // Move caret right one word extending selection to new caret position.
-%define wxSTC_CMD_WORDRIGHTEXTEND
+#define wxSTC_CMD_WORDRIGHTEXTEND
 
 // Move caret to first position on line.
-%define wxSTC_CMD_HOME
+#define wxSTC_CMD_HOME
 
 // Move caret to first position on line extending selection to new caret position.
-%define wxSTC_CMD_HOMEEXTEND
+#define wxSTC_CMD_HOMEEXTEND
 
 // Move caret to last position on line.
-%define wxSTC_CMD_LINEEND
+#define wxSTC_CMD_LINEEND
 
 // Move caret to last position on line extending selection to new caret position.
-%define wxSTC_CMD_LINEENDEXTEND
+#define wxSTC_CMD_LINEENDEXTEND
 
 // Move caret to first position in document.
-%define wxSTC_CMD_DOCUMENTSTART
+#define wxSTC_CMD_DOCUMENTSTART
 
 // Move caret to first position in document extending selection to new caret position.
-%define wxSTC_CMD_DOCUMENTSTARTEXTEND
+#define wxSTC_CMD_DOCUMENTSTARTEXTEND
 
 // Move caret to last position in document.
-%define wxSTC_CMD_DOCUMENTEND
+#define wxSTC_CMD_DOCUMENTEND
 
 // Move caret to last position in document extending selection to new caret position.
-%define wxSTC_CMD_DOCUMENTENDEXTEND
+#define wxSTC_CMD_DOCUMENTENDEXTEND
 
 // Move caret one page up.
-%define wxSTC_CMD_PAGEUP
+#define wxSTC_CMD_PAGEUP
 
 // Move caret one page up extending selection to new caret position.
-%define wxSTC_CMD_PAGEUPEXTEND
+#define wxSTC_CMD_PAGEUPEXTEND
 
 // Move caret one page down.
-%define wxSTC_CMD_PAGEDOWN
+#define wxSTC_CMD_PAGEDOWN
 
 // Move caret one page down extending selection to new caret position.
-%define wxSTC_CMD_PAGEDOWNEXTEND
+#define wxSTC_CMD_PAGEDOWNEXTEND
 
 // Switch from insert to overtype mode or the reverse.
-%define wxSTC_CMD_EDITTOGGLEOVERTYPE
+#define wxSTC_CMD_EDITTOGGLEOVERTYPE
 
 // Cancel any modes such as call tip or auto-completion list display.
-%define wxSTC_CMD_CANCEL
+#define wxSTC_CMD_CANCEL
 
 // Delete the selection or if no selection, the character before the caret.
-%define wxSTC_CMD_DELETEBACK
+#define wxSTC_CMD_DELETEBACK
 
 // If selection is empty or all on one line replace the selection with a tab character.
 // If more than one line selected, indent the lines.
-%define wxSTC_CMD_TAB
+#define wxSTC_CMD_TAB
 
 // Dedent the selected lines.
-%define wxSTC_CMD_BACKTAB
+#define wxSTC_CMD_BACKTAB
 
 // Insert a new line, may use a CRLF, CR or LF depending on EOL mode.
-%define wxSTC_CMD_NEWLINE
+#define wxSTC_CMD_NEWLINE
 
 // Insert a Form Feed character.
-%define wxSTC_CMD_FORMFEED
+#define wxSTC_CMD_FORMFEED
 
 // Move caret to before first visible character on line.
 // If already there move to first character on line.
-%define wxSTC_CMD_VCHOME
+#define wxSTC_CMD_VCHOME
 
 // Like VCHome but extending selection to new caret position.
-%define wxSTC_CMD_VCHOMEEXTEND
+#define wxSTC_CMD_VCHOMEEXTEND
 
 // Magnify the displayed text by increasing the sizes by 1 point.
-%define wxSTC_CMD_ZOOMIN
+#define wxSTC_CMD_ZOOMIN
 
 // Make the displayed text smaller by decreasing the sizes by 1 point.
-%define wxSTC_CMD_ZOOMOUT
+#define wxSTC_CMD_ZOOMOUT
 
 // Delete the word to the left of the caret.
-%define wxSTC_CMD_DELWORDLEFT
+#define wxSTC_CMD_DELWORDLEFT
 
 // Delete the word to the right of the caret.
-%define wxSTC_CMD_DELWORDRIGHT
+#define wxSTC_CMD_DELWORDRIGHT
 
 // Cut the line containing the caret.
-%define wxSTC_CMD_LINECUT
+#define wxSTC_CMD_LINECUT
 
 // Delete the line containing the caret.
-%define wxSTC_CMD_LINEDELETE
+#define wxSTC_CMD_LINEDELETE
 
 // Switch the current line with the previous.
-%define wxSTC_CMD_LINETRANSPOSE
+#define wxSTC_CMD_LINETRANSPOSE
 
 // Duplicate the current line.
-%define wxSTC_CMD_LINEDUPLICATE
+#define wxSTC_CMD_LINEDUPLICATE
 
 // Transform the selection to lower case.
-%define wxSTC_CMD_LOWERCASE
+#define wxSTC_CMD_LOWERCASE
 
 // Transform the selection to upper case.
-%define wxSTC_CMD_UPPERCASE
+#define wxSTC_CMD_UPPERCASE
 
 // Scroll the document down, keeping the caret visible.
-%define wxSTC_CMD_LINESCROLLDOWN
+#define wxSTC_CMD_LINESCROLLDOWN
 
 // Scroll the document up, keeping the caret visible.
-%define wxSTC_CMD_LINESCROLLUP
+#define wxSTC_CMD_LINESCROLLUP
 
 // Delete the selection or if no selection, the character before the caret.
 // Will not delete the character before at the start of a line.
-%define wxSTC_CMD_DELETEBACKNOTLINE
+#define wxSTC_CMD_DELETEBACKNOTLINE
 
 // Move caret to first position on display line.
-%define wxSTC_CMD_HOMEDISPLAY
+#define wxSTC_CMD_HOMEDISPLAY
 
 // Move caret to first position on display line extending selection to
 // new caret position.
-%define wxSTC_CMD_HOMEDISPLAYEXTEND
+#define wxSTC_CMD_HOMEDISPLAYEXTEND
 
 // Move caret to last position on display line.
-%define wxSTC_CMD_LINEENDDISPLAY
+#define wxSTC_CMD_LINEENDDISPLAY
 
 // Move caret to last position on display line extending selection to new
 // caret position.
-%define wxSTC_CMD_LINEENDDISPLAYEXTEND
+#define wxSTC_CMD_LINEENDDISPLAYEXTEND
 
 // These are like their namesakes Home(Extend)?, LineEnd(Extend)?, VCHome(Extend)?
 // except they behave differently when word-wrap is enabled:
 // They go first to the start / end of the display line, like (Home|LineEnd)Display
 // The difference is that, the cursor is already at the point, it goes on to the start
 // or end of the document line, as appropriate for (Home|LineEnd|VCHome)(Extend)?.
-%define wxSTC_CMD_HOMEWRAP
-%define wxSTC_CMD_HOMEWRAPEXTEND
-%define wxSTC_CMD_LINEENDWRAP
-%define wxSTC_CMD_LINEENDWRAPEXTEND
-%define wxSTC_CMD_VCHOMEWRAP
-%define wxSTC_CMD_VCHOMEWRAPEXTEND
+#define wxSTC_CMD_HOMEWRAP
+#define wxSTC_CMD_HOMEWRAPEXTEND
+#define wxSTC_CMD_LINEENDWRAP
+#define wxSTC_CMD_LINEENDWRAPEXTEND
+#define wxSTC_CMD_VCHOMEWRAP
+#define wxSTC_CMD_VCHOMEWRAPEXTEND
 
 // Copy the line containing the caret.
-%define wxSTC_CMD_LINECOPY
+#define wxSTC_CMD_LINECOPY
 
 // Move to the previous change in capitalisation.
-%define wxSTC_CMD_WORDPARTLEFT
+#define wxSTC_CMD_WORDPARTLEFT
 
 // Move to the previous change in capitalisation extending selection
 // to new caret position.
-%define wxSTC_CMD_WORDPARTLEFTEXTEND
+#define wxSTC_CMD_WORDPARTLEFTEXTEND
 
 // Move to the change next in capitalisation.
-%define wxSTC_CMD_WORDPARTRIGHT
+#define wxSTC_CMD_WORDPARTRIGHT
 
 // Move to the next change in capitalisation extending selection
 // to new caret position.
-%define wxSTC_CMD_WORDPARTRIGHTEXTEND
+#define wxSTC_CMD_WORDPARTRIGHTEXTEND
 
 // Delete back from the current position to the start of the line.
-%define wxSTC_CMD_DELLINELEFT
+#define wxSTC_CMD_DELLINELEFT
 
 // Delete forwards from the current position to the end of the line.
-%define wxSTC_CMD_DELLINERIGHT
+#define wxSTC_CMD_DELLINERIGHT
 
 // Move caret between paragraphs (delimited by empty lines).
-%define wxSTC_CMD_PARADOWN
-%define wxSTC_CMD_PARADOWNEXTEND
-%define wxSTC_CMD_PARAUP
-%define wxSTC_CMD_PARAUPEXTEND
+#define wxSTC_CMD_PARADOWN
+#define wxSTC_CMD_PARADOWNEXTEND
+#define wxSTC_CMD_PARAUP
+#define wxSTC_CMD_PARAUPEXTEND
 
 // Move caret down one line, extending rectangular selection to new caret position.
-%define wxSTC_CMD_LINEDOWNRECTEXTEND
+#define wxSTC_CMD_LINEDOWNRECTEXTEND
 
 // Move caret up one line, extending rectangular selection to new caret position.
-%define wxSTC_CMD_LINEUPRECTEXTEND
+#define wxSTC_CMD_LINEUPRECTEXTEND
 
 // Move caret left one character, extending rectangular selection to new caret position.
-%define wxSTC_CMD_CHARLEFTRECTEXTEND
+#define wxSTC_CMD_CHARLEFTRECTEXTEND
 
 // Move caret right one character, extending rectangular selection to new caret position.
-%define wxSTC_CMD_CHARRIGHTRECTEXTEND
+#define wxSTC_CMD_CHARRIGHTRECTEXTEND
 
 // Move caret to first position on line, extending rectangular selection to new caret position.
-%define wxSTC_CMD_HOMERECTEXTEND
+#define wxSTC_CMD_HOMERECTEXTEND
 
 // Move caret to before first visible character on line.
 // If already there move to first character on line.
 // In either case, extend rectangular selection to new caret position.
-%define wxSTC_CMD_VCHOMERECTEXTEND
+#define wxSTC_CMD_VCHOMERECTEXTEND
 
 // Move caret to last position on line, extending rectangular selection to new caret position.
-%define wxSTC_CMD_LINEENDRECTEXTEND
+#define wxSTC_CMD_LINEENDRECTEXTEND
 
 // Move caret one page up, extending rectangular selection to new caret position.
-%define wxSTC_CMD_PAGEUPRECTEXTEND
+#define wxSTC_CMD_PAGEUPRECTEXTEND
 
 // Move caret one page down, extending rectangular selection to new caret position.
-%define wxSTC_CMD_PAGEDOWNRECTEXTEND
+#define wxSTC_CMD_PAGEDOWNRECTEXTEND
 
 // Move caret to top of page, or one page up if already at top of page.
-%define wxSTC_CMD_STUTTEREDPAGEUP
+#define wxSTC_CMD_STUTTEREDPAGEUP
 
 // Move caret to top of page, or one page up if already at top of page, extending selection to new caret position.
-%define wxSTC_CMD_STUTTEREDPAGEUPEXTEND
+#define wxSTC_CMD_STUTTEREDPAGEUPEXTEND
 
 // Move caret to bottom of page, or one page down if already at bottom of page.
-%define wxSTC_CMD_STUTTEREDPAGEDOWN
+#define wxSTC_CMD_STUTTEREDPAGEDOWN
 
 // Move caret to bottom of page, or one page down if already at bottom of page, extending selection to new caret position.
-%define wxSTC_CMD_STUTTEREDPAGEDOWNEXTEND
+#define wxSTC_CMD_STUTTEREDPAGEDOWNEXTEND
 
 // Move caret left one word, position cursor at end of word.
-%define wxSTC_CMD_WORDLEFTEND
+#define wxSTC_CMD_WORDLEFTEND
 
 // Move caret left one word, position cursor at end of word, extending selection to new caret position.
-%define wxSTC_CMD_WORDLEFTENDEXTEND
+#define wxSTC_CMD_WORDLEFTENDEXTEND
 
 // Move caret right one word, position cursor at end of word.
-%define wxSTC_CMD_WORDRIGHTEND
+#define wxSTC_CMD_WORDRIGHTEND
 
 // Move caret right one word, position cursor at end of word, extending selection to new caret position.
-%define wxSTC_CMD_WORDRIGHTENDEXTEND
+#define wxSTC_CMD_WORDRIGHTENDEXTEND
 
 ///////////////////////////////////////////////////////////////////////////////
 // wxStyledTextCtrl
 
-%class wxStyledTextCtrl, wxControl
-    wxStyledTextCtrl(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString &name = "wxStyledTextCtrl")
+class wxStyledTextCtrl : public wxControl
+{
+    wxStyledTextCtrl(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString &name = "wxStyledTextCtrl" );
 
 //----------------------------------------------------------------------
 // BEGIN generated section.  The following code is automatically generated
@@ -1816,7 +1817,7 @@
 //#ifdef SWIG
 //    wxString GetCurLine(int* OUTPUT);
 //#else
-    // %override [int linePos] wxStyledTextCtrl::GetCurLine()
+    // %override [int linePos] wxStyledTextCtrl::GetCurLine( );
     // C++ Func: wxString GetCurLine(int* linePos=NULL);
     wxString GetCurLine();
 //#endif
@@ -1971,7 +1972,7 @@
 
     // Set the styles for a segment of the document.
 
-    // %override [Lua string styleBytes] wxStyledTextCtrl::SetStyleBytes(int length, Lua string styleBytes)
+    // %override [Lua string styleBytes] wxStyledTextCtrl::SetStyleBytes(int length, Lua string styleBytes );
     // C++ Func: void SetStyleBytes(int length, char* styleBytes);
     void SetStyleBytes(int length, char* styleBytes);
 
@@ -3116,7 +3117,7 @@
 //#ifdef SWIG
 //    void GetSelection(int* OUTPUT, int* OUTPUT);
 //#else
-    // %override [int startPos, int endPos] wxStyledTextCtrl::GetSelection()
+    // %override [int startPos, int endPos] wxStyledTextCtrl::GetSelection( );
     // C++ Func: void GetSelection(int* startPos, int* endPos);
     void GetSelection();
 //#endif
@@ -3145,8 +3146,8 @@
     void SetHScrollBar(wxScrollBar* bar);
 
     // Can be used to prevent the EVT_CHAR handler from adding the char
-    bool GetLastKeydownProcessed()
-    void SetLastKeydownProcessed(bool val)
+    bool GetLastKeydownProcessed( );
+    void SetLastKeydownProcessed(bool val );
 
     // Write the contents of the editor to filename
     bool SaveFile(const wxString& filename);
@@ -3210,86 +3211,87 @@
     // Append a string to the end of the document without changing the selection.
 //    void AppendTextRaw(const char* text);
 
-%endclass
+};
 
 ///////////////////////////////////////////////////////////////////////////////
 // wxStyledTextEvent
 
 //----------------------------------------------------------------------
 
-%class %delete wxStyledTextEvent, wxCommandEvent
-    %define_event wxEVT_STC_CHANGE              // EVT_STC_CHANGE(id, fn)
-    %define_event wxEVT_STC_STYLENEEDED         // EVT_STC_STYLENEEDED(id, fn)
-    %define_event wxEVT_STC_CHARADDED           // EVT_STC_CHARADDED(id, fn)
-    %define_event wxEVT_STC_SAVEPOINTREACHED    // EVT_STC_SAVEPOINTREACHED(id, fn)
-    %define_event wxEVT_STC_SAVEPOINTLEFT       // EVT_STC_SAVEPOINTLEFT(id, fn)
-    %define_event wxEVT_STC_ROMODIFYATTEMPT     // EVT_STC_ROMODIFYATTEMPT(id, fn)
-    %define_event wxEVT_STC_KEY                 // EVT_STC_KEY(id, fn)
-    %define_event wxEVT_STC_DOUBLECLICK         // EVT_STC_DOUBLECLICK(id, fn)
-    %define_event wxEVT_STC_UPDATEUI            // EVT_STC_UPDATEUI(id, fn)
-    %define_event wxEVT_STC_MODIFIED            // EVT_STC_MODIFIED(id, fn)
-    %define_event wxEVT_STC_MACRORECORD         // EVT_STC_MACRORECORD(id, fn)
-    %define_event wxEVT_STC_MARGINCLICK         // EVT_STC_MARGINCLICK(id, fn)
-    %define_event wxEVT_STC_NEEDSHOWN           // EVT_STC_NEEDSHOWN(id, fn)
-    !%wxchkver_2_6 %define_event wxEVT_STC_POSCHANGED // ??
-    %define_event wxEVT_STC_PAINTED             // EVT_STC_PAINTED(id, fn)
-    %define_event wxEVT_STC_USERLISTSELECTION   // EVT_STC_USERLISTSELECTION(id, fn)
-    %define_event wxEVT_STC_URIDROPPED          // EVT_STC_URIDROPPED(id, fn)
-    %define_event wxEVT_STC_DWELLSTART          // EVT_STC_DWELLSTART(id, fn)
-    %define_event wxEVT_STC_DWELLEND            // EVT_STC_DWELLEND(id, fn)
-    %define_event wxEVT_STC_START_DRAG          // EVT_STC_START_DRAG(id, fn)
-    %define_event wxEVT_STC_DRAG_OVER           // EVT_STC_DRAG_OVER(id, fn)
-    %define_event wxEVT_STC_DO_DROP             // EVT_STC_DO_DROP(id, fn)
-    %define_event wxEVT_STC_ZOOM                // EVT_STC_ZOOM(id, fn)
-    %define_event wxEVT_STC_HOTSPOT_CLICK       // EVT_STC_HOTSPOT_CLICK(id, fn)
-    %define_event wxEVT_STC_HOTSPOT_DCLICK      // EVT_STC_HOTSPOT_DCLICK(id, fn)
-    %define_event wxEVT_STC_CALLTIP_CLICK       // EVT_STC_CALLTIP_CLICK(id, fn)
-    %define_event wxEVT_STC_AUTOCOMP_SELECTION  // EVT_STC_AUTOCOMP_SELECTION(id, fn)
+class %delete wxStyledTextEvent : public wxCommandEvent
+{
+    %wxEventType wxEVT_STC_CHANGE              // EVT_STC_CHANGE(id, fn );
+    %wxEventType wxEVT_STC_STYLENEEDED         // EVT_STC_STYLENEEDED(id, fn );
+    %wxEventType wxEVT_STC_CHARADDED           // EVT_STC_CHARADDED(id, fn );
+    %wxEventType wxEVT_STC_SAVEPOINTREACHED    // EVT_STC_SAVEPOINTREACHED(id, fn );
+    %wxEventType wxEVT_STC_SAVEPOINTLEFT       // EVT_STC_SAVEPOINTLEFT(id, fn );
+    %wxEventType wxEVT_STC_ROMODIFYATTEMPT     // EVT_STC_ROMODIFYATTEMPT(id, fn );
+    %wxEventType wxEVT_STC_KEY                 // EVT_STC_KEY(id, fn );
+    %wxEventType wxEVT_STC_DOUBLECLICK         // EVT_STC_DOUBLECLICK(id, fn );
+    %wxEventType wxEVT_STC_UPDATEUI            // EVT_STC_UPDATEUI(id, fn );
+    %wxEventType wxEVT_STC_MODIFIED            // EVT_STC_MODIFIED(id, fn );
+    %wxEventType wxEVT_STC_MACRORECORD         // EVT_STC_MACRORECORD(id, fn );
+    %wxEventType wxEVT_STC_MARGINCLICK         // EVT_STC_MARGINCLICK(id, fn );
+    %wxEventType wxEVT_STC_NEEDSHOWN           // EVT_STC_NEEDSHOWN(id, fn );
+    !%wxchkver_2_6 %wxEventType wxEVT_STC_POSCHANGED // ??
+    %wxEventType wxEVT_STC_PAINTED             // EVT_STC_PAINTED(id, fn );
+    %wxEventType wxEVT_STC_USERLISTSELECTION   // EVT_STC_USERLISTSELECTION(id, fn );
+    %wxEventType wxEVT_STC_URIDROPPED          // EVT_STC_URIDROPPED(id, fn );
+    %wxEventType wxEVT_STC_DWELLSTART          // EVT_STC_DWELLSTART(id, fn );
+    %wxEventType wxEVT_STC_DWELLEND            // EVT_STC_DWELLEND(id, fn );
+    %wxEventType wxEVT_STC_START_DRAG          // EVT_STC_START_DRAG(id, fn );
+    %wxEventType wxEVT_STC_DRAG_OVER           // EVT_STC_DRAG_OVER(id, fn );
+    %wxEventType wxEVT_STC_DO_DROP             // EVT_STC_DO_DROP(id, fn );
+    %wxEventType wxEVT_STC_ZOOM                // EVT_STC_ZOOM(id, fn );
+    %wxEventType wxEVT_STC_HOTSPOT_CLICK       // EVT_STC_HOTSPOT_CLICK(id, fn );
+    %wxEventType wxEVT_STC_HOTSPOT_DCLICK      // EVT_STC_HOTSPOT_DCLICK(id, fn );
+    %wxEventType wxEVT_STC_CALLTIP_CLICK       // EVT_STC_CALLTIP_CLICK(id, fn );
+    %wxEventType wxEVT_STC_AUTOCOMP_SELECTION  // EVT_STC_AUTOCOMP_SELECTION(id, fn );
 
-    wxStyledTextEvent(wxEventType commandType = 0, int id = 0)
-    void SetPosition(int pos)
-    void SetKey(int k)
-    void SetModifiers(int m)
-    void SetModificationType(int t)
-    void SetText(const wxString& t)
-    void SetLength(int len)
-    void SetLinesAdded(int num)
-    void SetLine(int val)
-    void SetFoldLevelNow(int val)
-    void SetFoldLevelPrev(int val)
-    void SetMargin(int val)
-    void SetMessage(int val)
-    void SetWParam(int val)
-    void SetLParam(int val)
-    void SetListType(int val)
-    void SetX(int val)
-    void SetY(int val)
-    void SetDragText(const wxString& val)
-    void SetDragAllowMove(bool val)
-    void SetDragResult(wxDragResult val)
+    wxStyledTextEvent(wxEventType commandType = 0, int id = 0 );
+    void SetPosition(int pos );
+    void SetKey(int k );
+    void SetModifiers(int m );
+    void SetModificationType(int t );
+    void SetText(const wxString& t );
+    void SetLength(int len );
+    void SetLinesAdded(int num );
+    void SetLine(int val );
+    void SetFoldLevelNow(int val );
+    void SetFoldLevelPrev(int val );
+    void SetMargin(int val );
+    void SetMessage(int val );
+    void SetWParam(int val );
+    void SetLParam(int val );
+    void SetListType(int val );
+    void SetX(int val );
+    void SetY(int val );
+    void SetDragText(const wxString& val );
+    void SetDragAllowMove(bool val );
+    void SetDragResult(wxDragResult val );
 
-    int  GetPosition() const
-    int  GetKey()  const
-    int  GetModifiers() const
-    int  GetModificationType() const
-    wxString GetText() const
-    int  GetLength() const
-    int  GetLinesAdded() const
-    int  GetLine() const
-    int  GetFoldLevelNow() const
-    int  GetFoldLevelPrev() const
-    int  GetMargin() const
-    int  GetMessage() const
-    int  GetWParam() const
-    int  GetLParam() const
-    int  GetListType() const
-    int  GetX() const
-    int  GetY() const
-    wxString GetDragText()
-    bool GetDragAllowMove()
-    wxDragResult GetDragResult()
-    bool GetShift() const
-    bool GetControl() const
-    bool GetAlt() const
-%endclass
+    int  GetPosition() const;
+    int  GetKey() const;
+    int  GetModifiers() const;
+    int  GetModificationType() const;
+    wxString GetText() const;
+    int  GetLength() const;
+    int  GetLinesAdded() const;
+    int  GetLine() const;
+    int  GetFoldLevelNow() const;
+    int  GetFoldLevelPrev() const;
+    int  GetMargin() const;
+    int  GetMessage() const;
+    int  GetWParam() const;
+    int  GetLParam() const;
+    int  GetListType() const;
+    int  GetX() const;
+    int  GetY() const;
+    wxString GetDragText( );
+    bool GetDragAllowMove( );
+    wxDragResult GetDragResult( );
+    bool GetShift() const;
+    bool GetControl() const;
+    bool GetAlt() const;
+};
 

@@ -280,7 +280,7 @@ static int LUACALL wxLua_wxHtmlCell_Find(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_GetDescent[] = { &wxluatype_wxHtmlCell, NULL };
 static int LUACALL wxLua_wxHtmlCell_GetDescent(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_GetDescent[1] = {{ wxLua_wxHtmlCell_GetDescent, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlCell_GetDescent }};
-//     int GetDescent() const
+//     int GetDescent() const;
 static int LUACALL wxLua_wxHtmlCell_GetDescent(lua_State *L)
 {
     // get this
@@ -296,7 +296,7 @@ static int LUACALL wxLua_wxHtmlCell_GetDescent(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_GetFirstChild[] = { &wxluatype_wxHtmlCell, NULL };
 static int LUACALL wxLua_wxHtmlCell_GetFirstChild(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_GetFirstChild[1] = {{ wxLua_wxHtmlCell_GetFirstChild, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlCell_GetFirstChild }};
-//     wxHtmlCell* GetFirstChild()
+//     wxHtmlCell* GetFirstChild( );
 static int LUACALL wxLua_wxHtmlCell_GetFirstChild(lua_State *L)
 {
     // get this
@@ -312,7 +312,7 @@ static int LUACALL wxLua_wxHtmlCell_GetFirstChild(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_GetHeight[] = { &wxluatype_wxHtmlCell, NULL };
 static int LUACALL wxLua_wxHtmlCell_GetHeight(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_GetHeight[1] = {{ wxLua_wxHtmlCell_GetHeight, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlCell_GetHeight }};
-//     int GetHeight() const
+//     int GetHeight() const;
 static int LUACALL wxLua_wxHtmlCell_GetHeight(lua_State *L)
 {
     // get this
@@ -328,7 +328,7 @@ static int LUACALL wxLua_wxHtmlCell_GetHeight(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_GetId[] = { &wxluatype_wxHtmlCell, NULL };
 static int LUACALL wxLua_wxHtmlCell_GetId(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_GetId[1] = {{ wxLua_wxHtmlCell_GetId, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlCell_GetId }};
-//     virtual wxString GetId() const
+//     virtual wxString GetId() const;
 static int LUACALL wxLua_wxHtmlCell_GetId(lua_State *L)
 {
     // get this
@@ -344,7 +344,7 @@ static int LUACALL wxLua_wxHtmlCell_GetId(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_GetLink[] = { &wxluatype_wxHtmlCell, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlCell_GetLink(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_GetLink[1] = {{ wxLua_wxHtmlCell_GetLink, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxHtmlCell_GetLink }};
-//     virtual wxHtmlLinkInfo* GetLink(int x = 0, int y = 0) const
+//     virtual wxHtmlLinkInfo* GetLink(int x = 0, int y = 0) const;
 static int LUACALL wxLua_wxHtmlCell_GetLink(lua_State *L)
 {
     // get number of arguments
@@ -366,7 +366,7 @@ static int LUACALL wxLua_wxHtmlCell_GetLink(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_GetNext[] = { &wxluatype_wxHtmlCell, NULL };
 static int LUACALL wxLua_wxHtmlCell_GetNext(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_GetNext[1] = {{ wxLua_wxHtmlCell_GetNext, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlCell_GetNext }};
-//     wxHtmlCell* GetNext() const
+//     wxHtmlCell* GetNext() const;
 static int LUACALL wxLua_wxHtmlCell_GetNext(lua_State *L)
 {
     // get this
@@ -382,7 +382,7 @@ static int LUACALL wxLua_wxHtmlCell_GetNext(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_GetParent[] = { &wxluatype_wxHtmlCell, NULL };
 static int LUACALL wxLua_wxHtmlCell_GetParent(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_GetParent[1] = {{ wxLua_wxHtmlCell_GetParent, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlCell_GetParent }};
-//     wxHtmlContainerCell* GetParent() const
+//     wxHtmlContainerCell* GetParent() const;
 static int LUACALL wxLua_wxHtmlCell_GetParent(lua_State *L)
 {
     // get this
@@ -398,7 +398,7 @@ static int LUACALL wxLua_wxHtmlCell_GetParent(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_GetPosX[] = { &wxluatype_wxHtmlCell, NULL };
 static int LUACALL wxLua_wxHtmlCell_GetPosX(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_GetPosX[1] = {{ wxLua_wxHtmlCell_GetPosX, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlCell_GetPosX }};
-//     int GetPosX() const
+//     int GetPosX() const;
 static int LUACALL wxLua_wxHtmlCell_GetPosX(lua_State *L)
 {
     // get this
@@ -414,7 +414,7 @@ static int LUACALL wxLua_wxHtmlCell_GetPosX(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_GetPosY[] = { &wxluatype_wxHtmlCell, NULL };
 static int LUACALL wxLua_wxHtmlCell_GetPosY(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_GetPosY[1] = {{ wxLua_wxHtmlCell_GetPosY, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlCell_GetPosY }};
-//     int GetPosY() const
+//     int GetPosY() const;
 static int LUACALL wxLua_wxHtmlCell_GetPosY(lua_State *L)
 {
     // get this
@@ -430,7 +430,7 @@ static int LUACALL wxLua_wxHtmlCell_GetPosY(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_GetWidth[] = { &wxluatype_wxHtmlCell, NULL };
 static int LUACALL wxLua_wxHtmlCell_GetWidth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_GetWidth[1] = {{ wxLua_wxHtmlCell_GetWidth, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlCell_GetWidth }};
-//     int GetWidth() const
+//     int GetWidth() const;
 static int LUACALL wxLua_wxHtmlCell_GetWidth(lua_State *L)
 {
     // get this
@@ -446,7 +446,7 @@ static int LUACALL wxLua_wxHtmlCell_GetWidth(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_Layout[] = { &wxluatype_wxHtmlCell, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlCell_Layout(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_Layout[1] = {{ wxLua_wxHtmlCell_Layout, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlCell_Layout }};
-//     virtual void Layout(int w)
+//     virtual void Layout(int w );
 static int LUACALL wxLua_wxHtmlCell_Layout(lua_State *L)
 {
     // int w
@@ -462,7 +462,7 @@ static int LUACALL wxLua_wxHtmlCell_Layout(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_SetId[] = { &wxluatype_wxHtmlCell, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlCell_SetId(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_SetId[1] = {{ wxLua_wxHtmlCell_SetId, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlCell_SetId }};
-//     void SetId(const wxString& id)
+//     void SetId(const wxString& id );
 static int LUACALL wxLua_wxHtmlCell_SetId(lua_State *L)
 {
     // const wxString id
@@ -478,7 +478,7 @@ static int LUACALL wxLua_wxHtmlCell_SetId(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_SetLink[] = { &wxluatype_wxHtmlCell, &wxluatype_wxHtmlLinkInfo, NULL };
 static int LUACALL wxLua_wxHtmlCell_SetLink(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_SetLink[1] = {{ wxLua_wxHtmlCell_SetLink, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlCell_SetLink }};
-//     void SetLink(const wxHtmlLinkInfo& link)
+//     void SetLink(const wxHtmlLinkInfo& link );
 static int LUACALL wxLua_wxHtmlCell_SetLink(lua_State *L)
 {
     // const wxHtmlLinkInfo link
@@ -494,7 +494,7 @@ static int LUACALL wxLua_wxHtmlCell_SetLink(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_SetNext[] = { &wxluatype_wxHtmlCell, &wxluatype_wxHtmlCell, NULL };
 static int LUACALL wxLua_wxHtmlCell_SetNext(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_SetNext[1] = {{ wxLua_wxHtmlCell_SetNext, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlCell_SetNext }};
-//     void SetNext(wxHtmlCell *cell)
+//     void SetNext(wxHtmlCell *cell );
 static int LUACALL wxLua_wxHtmlCell_SetNext(lua_State *L)
 {
     // wxHtmlCell cell
@@ -510,7 +510,7 @@ static int LUACALL wxLua_wxHtmlCell_SetNext(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_SetParent[] = { &wxluatype_wxHtmlCell, &wxluatype_wxHtmlContainerCell, NULL };
 static int LUACALL wxLua_wxHtmlCell_SetParent(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_SetParent[1] = {{ wxLua_wxHtmlCell_SetParent, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlCell_SetParent }};
-//     void SetParent(wxHtmlContainerCell *p)
+//     void SetParent(wxHtmlContainerCell *p );
 static int LUACALL wxLua_wxHtmlCell_SetParent(lua_State *L)
 {
     // wxHtmlContainerCell p
@@ -526,7 +526,7 @@ static int LUACALL wxLua_wxHtmlCell_SetParent(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCell_SetPos[] = { &wxluatype_wxHtmlCell, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlCell_SetPos(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_SetPos[1] = {{ wxLua_wxHtmlCell_SetPos, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxHtmlCell_SetPos }};
-//     void SetPos(int x, int y)
+//     void SetPos(int x, int y );
 static int LUACALL wxLua_wxHtmlCell_SetPos(lua_State *L)
 {
     // int y
@@ -546,7 +546,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_delete[1] = {{ wxlua_userdata
 
 static int LUACALL wxLua_wxHtmlCell_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCell_constructor[1] = {{ wxLua_wxHtmlCell_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxHtmlCell()
+//     wxHtmlCell( );
 static int LUACALL wxLua_wxHtmlCell_constructor(lua_State *L)
 {
     // call constructor
@@ -616,7 +616,7 @@ int wxluatype_wxHtmlWidgetCell = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWidgetCell_constructor[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlWidgetCell_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWidgetCell_constructor[1] = {{ wxLua_wxHtmlWidgetCell_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxHtmlWidgetCell_constructor }};
-//     wxHtmlWidgetCell(wxWindow* wnd, int w = 0)
+//     wxHtmlWidgetCell(wxWindow* wnd, int w = 0 );
 static int LUACALL wxLua_wxHtmlWidgetCell_constructor(lua_State *L)
 {
     // get number of arguments
@@ -665,7 +665,7 @@ int wxluatype_wxHtmlContainerCell = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlContainerCell_GetAlignHor[] = { &wxluatype_wxHtmlContainerCell, NULL };
 static int LUACALL wxLua_wxHtmlContainerCell_GetAlignHor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlContainerCell_GetAlignHor[1] = {{ wxLua_wxHtmlContainerCell_GetAlignHor, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlContainerCell_GetAlignHor }};
-//     int GetAlignHor() const
+//     int GetAlignHor() const;
 static int LUACALL wxLua_wxHtmlContainerCell_GetAlignHor(lua_State *L)
 {
     // get this
@@ -681,7 +681,7 @@ static int LUACALL wxLua_wxHtmlContainerCell_GetAlignHor(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlContainerCell_GetAlignVer[] = { &wxluatype_wxHtmlContainerCell, NULL };
 static int LUACALL wxLua_wxHtmlContainerCell_GetAlignVer(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlContainerCell_GetAlignVer[1] = {{ wxLua_wxHtmlContainerCell_GetAlignVer, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlContainerCell_GetAlignVer }};
-//     int GetAlignVer() const
+//     int GetAlignVer() const;
 static int LUACALL wxLua_wxHtmlContainerCell_GetAlignVer(lua_State *L)
 {
     // get this
@@ -699,7 +699,7 @@ static int LUACALL wxLua_wxHtmlContainerCell_GetAlignVer(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlContainerCell_GetBackgroundColour[] = { &wxluatype_wxHtmlContainerCell, NULL };
 static int LUACALL wxLua_wxHtmlContainerCell_GetBackgroundColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlContainerCell_GetBackgroundColour[1] = {{ wxLua_wxHtmlContainerCell_GetBackgroundColour, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlContainerCell_GetBackgroundColour }};
-//     wxColour GetBackgroundColour()
+//     wxColour GetBackgroundColour( );
 static int LUACALL wxLua_wxHtmlContainerCell_GetBackgroundColour(lua_State *L)
 {
     // get this
@@ -720,7 +720,7 @@ static int LUACALL wxLua_wxHtmlContainerCell_GetBackgroundColour(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlContainerCell_GetIndent[] = { &wxluatype_wxHtmlContainerCell, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlContainerCell_GetIndent(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlContainerCell_GetIndent[1] = {{ wxLua_wxHtmlContainerCell_GetIndent, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlContainerCell_GetIndent }};
-//     int GetIndent(int ind) const
+//     int GetIndent(int ind) const;
 static int LUACALL wxLua_wxHtmlContainerCell_GetIndent(lua_State *L)
 {
     // int ind
@@ -738,7 +738,7 @@ static int LUACALL wxLua_wxHtmlContainerCell_GetIndent(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlContainerCell_GetIndentUnits[] = { &wxluatype_wxHtmlContainerCell, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlContainerCell_GetIndentUnits(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlContainerCell_GetIndentUnits[1] = {{ wxLua_wxHtmlContainerCell_GetIndentUnits, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlContainerCell_GetIndentUnits }};
-//     int GetIndentUnits(int ind) const
+//     int GetIndentUnits(int ind) const;
 static int LUACALL wxLua_wxHtmlContainerCell_GetIndentUnits(lua_State *L)
 {
     // int ind
@@ -756,7 +756,7 @@ static int LUACALL wxLua_wxHtmlContainerCell_GetIndentUnits(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlContainerCell_InsertCell[] = { &wxluatype_wxHtmlContainerCell, &wxluatype_wxHtmlCell, NULL };
 static int LUACALL wxLua_wxHtmlContainerCell_InsertCell(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlContainerCell_InsertCell[1] = {{ wxLua_wxHtmlContainerCell_InsertCell, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlContainerCell_InsertCell }};
-//     void InsertCell(wxHtmlCell *cell)
+//     void InsertCell(wxHtmlCell *cell );
 static int LUACALL wxLua_wxHtmlContainerCell_InsertCell(lua_State *L)
 {
     // wxHtmlCell cell
@@ -772,7 +772,7 @@ static int LUACALL wxLua_wxHtmlContainerCell_InsertCell(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetAlign[] = { &wxluatype_wxHtmlContainerCell, &wxluatype_wxHtmlTag, NULL };
 static int LUACALL wxLua_wxHtmlContainerCell_SetAlign(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlContainerCell_SetAlign[1] = {{ wxLua_wxHtmlContainerCell_SetAlign, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetAlign }};
-//     void SetAlign(const wxHtmlTag& tag)
+//     void SetAlign(const wxHtmlTag& tag );
 static int LUACALL wxLua_wxHtmlContainerCell_SetAlign(lua_State *L)
 {
     // const wxHtmlTag tag
@@ -788,7 +788,7 @@ static int LUACALL wxLua_wxHtmlContainerCell_SetAlign(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetAlignHor[] = { &wxluatype_wxHtmlContainerCell, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlContainerCell_SetAlignHor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlContainerCell_SetAlignHor[1] = {{ wxLua_wxHtmlContainerCell_SetAlignHor, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetAlignHor }};
-//     void SetAlignHor(int al)
+//     void SetAlignHor(int al );
 static int LUACALL wxLua_wxHtmlContainerCell_SetAlignHor(lua_State *L)
 {
     // int al
@@ -804,7 +804,7 @@ static int LUACALL wxLua_wxHtmlContainerCell_SetAlignHor(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetAlignVer[] = { &wxluatype_wxHtmlContainerCell, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlContainerCell_SetAlignVer(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlContainerCell_SetAlignVer[1] = {{ wxLua_wxHtmlContainerCell_SetAlignVer, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetAlignVer }};
-//     void SetAlignVer(int al)
+//     void SetAlignVer(int al );
 static int LUACALL wxLua_wxHtmlContainerCell_SetAlignVer(lua_State *L)
 {
     // int al
@@ -822,7 +822,7 @@ static int LUACALL wxLua_wxHtmlContainerCell_SetAlignVer(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetBackgroundColour[] = { &wxluatype_wxHtmlContainerCell, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxHtmlContainerCell_SetBackgroundColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlContainerCell_SetBackgroundColour[1] = {{ wxLua_wxHtmlContainerCell_SetBackgroundColour, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetBackgroundColour }};
-//     void SetBackgroundColour(const wxColour& clr)
+//     void SetBackgroundColour(const wxColour& clr );
 static int LUACALL wxLua_wxHtmlContainerCell_SetBackgroundColour(lua_State *L)
 {
     // const wxColour clr
@@ -838,7 +838,7 @@ static int LUACALL wxLua_wxHtmlContainerCell_SetBackgroundColour(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetBorder[] = { &wxluatype_wxHtmlContainerCell, &wxluatype_wxColour, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxHtmlContainerCell_SetBorder(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlContainerCell_SetBorder[1] = {{ wxLua_wxHtmlContainerCell_SetBorder, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetBorder }};
-//     void SetBorder(const wxColour& clr1, const wxColour& clr2)
+//     void SetBorder(const wxColour& clr1, const wxColour& clr2 );
 static int LUACALL wxLua_wxHtmlContainerCell_SetBorder(lua_State *L)
 {
     // const wxColour clr2
@@ -858,7 +858,7 @@ static int LUACALL wxLua_wxHtmlContainerCell_SetBorder(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetIndent[] = { &wxluatype_wxHtmlContainerCell, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlContainerCell_SetIndent(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlContainerCell_SetIndent[1] = {{ wxLua_wxHtmlContainerCell_SetIndent, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetIndent }};
-//     void SetIndent(int i, int what, int units = wxHTML_UNITS_PIXELS)
+//     void SetIndent(int i, int what, int units = wxHTML_UNITS_PIXELS );
 static int LUACALL wxLua_wxHtmlContainerCell_SetIndent(lua_State *L)
 {
     // get number of arguments
@@ -880,7 +880,7 @@ static int LUACALL wxLua_wxHtmlContainerCell_SetIndent(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetMinHeight[] = { &wxluatype_wxHtmlContainerCell, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlContainerCell_SetMinHeight(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlContainerCell_SetMinHeight[1] = {{ wxLua_wxHtmlContainerCell_SetMinHeight, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetMinHeight }};
-//     void SetMinHeight(int h, int align = wxHTML_ALIGN_TOP)
+//     void SetMinHeight(int h, int align = wxHTML_ALIGN_TOP );
 static int LUACALL wxLua_wxHtmlContainerCell_SetMinHeight(lua_State *L)
 {
     // get number of arguments
@@ -900,7 +900,7 @@ static int LUACALL wxLua_wxHtmlContainerCell_SetMinHeight(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetWidthFloat1[] = { &wxluatype_wxHtmlContainerCell, &wxluatype_wxHtmlTag, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlContainerCell_SetWidthFloat1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlContainerCell_SetWidthFloat1[1] = {{ wxLua_wxHtmlContainerCell_SetWidthFloat1, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetWidthFloat1 }};
-//     void SetWidthFloat(const wxHtmlTag& tag, double pixel_scale = 1.0)
+//     void SetWidthFloat(const wxHtmlTag& tag, double pixel_scale = 1.0 );
 static int LUACALL wxLua_wxHtmlContainerCell_SetWidthFloat1(lua_State *L)
 {
     // get number of arguments
@@ -920,7 +920,7 @@ static int LUACALL wxLua_wxHtmlContainerCell_SetWidthFloat1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetWidthFloat[] = { &wxluatype_wxHtmlContainerCell, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlContainerCell_SetWidthFloat(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlContainerCell_SetWidthFloat[1] = {{ wxLua_wxHtmlContainerCell_SetWidthFloat, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxHtmlContainerCell_SetWidthFloat }};
-//     void SetWidthFloat(int w, int units)
+//     void SetWidthFloat(int w, int units );
 static int LUACALL wxLua_wxHtmlContainerCell_SetWidthFloat(lua_State *L)
 {
     // int units
@@ -938,7 +938,7 @@ static int LUACALL wxLua_wxHtmlContainerCell_SetWidthFloat(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlContainerCell_constructor[] = { &wxluatype_wxHtmlContainerCell, NULL };
 static int LUACALL wxLua_wxHtmlContainerCell_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlContainerCell_constructor[1] = {{ wxLua_wxHtmlContainerCell_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxHtmlContainerCell_constructor }};
-//     wxHtmlContainerCell(wxHtmlContainerCell *parent)
+//     wxHtmlContainerCell(wxHtmlContainerCell *parent );
 static int LUACALL wxLua_wxHtmlContainerCell_constructor(lua_State *L)
 {
     // wxHtmlContainerCell parent
@@ -1021,7 +1021,7 @@ int wxluatype_wxHtmlColourCell = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlColourCell_constructor[] = { &wxluatype_wxColour, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlColourCell_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlColourCell_constructor[1] = {{ wxLua_wxHtmlColourCell_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxHtmlColourCell_constructor }};
-//     wxHtmlColourCell(const wxColour& clr, int flags = wxHTML_CLR_FOREGROUND)
+//     wxHtmlColourCell(const wxColour& clr, int flags = wxHTML_CLR_FOREGROUND );
 static int LUACALL wxLua_wxHtmlColourCell_constructor(lua_State *L)
 {
     // get number of arguments
@@ -1074,7 +1074,7 @@ int wxluatype_wxHtmlFontCell = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlFontCell_constructor[] = { &wxluatype_wxFont, NULL };
 static int LUACALL wxLua_wxHtmlFontCell_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlFontCell_constructor[1] = {{ wxLua_wxHtmlFontCell_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxHtmlFontCell_constructor }};
-//     wxHtmlFontCell(wxFont *font)
+//     wxHtmlFontCell(wxFont *font );
 static int LUACALL wxLua_wxHtmlFontCell_constructor(lua_State *L)
 {
     // wxFont font
@@ -1123,7 +1123,7 @@ int wxluatype_wxHtmlCellEvent = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCellEvent_GetCell[] = { &wxluatype_wxHtmlCellEvent, NULL };
 static int LUACALL wxLua_wxHtmlCellEvent_GetCell(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCellEvent_GetCell[1] = {{ wxLua_wxHtmlCellEvent_GetCell, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlCellEvent_GetCell }};
-//     wxHtmlCell* GetCell() const
+//     wxHtmlCell* GetCell() const;
 static int LUACALL wxLua_wxHtmlCellEvent_GetCell(lua_State *L)
 {
     // get this
@@ -1141,7 +1141,7 @@ static int LUACALL wxLua_wxHtmlCellEvent_GetCell(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCellEvent_GetLinkClicked[] = { &wxluatype_wxHtmlCellEvent, NULL };
 static int LUACALL wxLua_wxHtmlCellEvent_GetLinkClicked(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCellEvent_GetLinkClicked[1] = {{ wxLua_wxHtmlCellEvent_GetLinkClicked, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlCellEvent_GetLinkClicked }};
-//     bool GetLinkClicked() const
+//     bool GetLinkClicked() const;
 static int LUACALL wxLua_wxHtmlCellEvent_GetLinkClicked(lua_State *L)
 {
     // get this
@@ -1157,7 +1157,7 @@ static int LUACALL wxLua_wxHtmlCellEvent_GetLinkClicked(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCellEvent_GetMouseEvent[] = { &wxluatype_wxHtmlCellEvent, NULL };
 static int LUACALL wxLua_wxHtmlCellEvent_GetMouseEvent(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCellEvent_GetMouseEvent[1] = {{ wxLua_wxHtmlCellEvent_GetMouseEvent, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlCellEvent_GetMouseEvent }};
-//     wxMouseEvent GetMouseEvent() const
+//     wxMouseEvent GetMouseEvent() const;
 static int LUACALL wxLua_wxHtmlCellEvent_GetMouseEvent(lua_State *L)
 {
     // get this
@@ -1178,7 +1178,7 @@ static int LUACALL wxLua_wxHtmlCellEvent_GetMouseEvent(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCellEvent_GetPoint[] = { &wxluatype_wxHtmlCellEvent, NULL };
 static int LUACALL wxLua_wxHtmlCellEvent_GetPoint(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCellEvent_GetPoint[1] = {{ wxLua_wxHtmlCellEvent_GetPoint, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlCellEvent_GetPoint }};
-//     wxPoint GetPoint() const
+//     wxPoint GetPoint() const;
 static int LUACALL wxLua_wxHtmlCellEvent_GetPoint(lua_State *L)
 {
     // get this
@@ -1199,7 +1199,7 @@ static int LUACALL wxLua_wxHtmlCellEvent_GetPoint(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCellEvent_SetLinkClicked[] = { &wxluatype_wxHtmlCellEvent, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxHtmlCellEvent_SetLinkClicked(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCellEvent_SetLinkClicked[1] = {{ wxLua_wxHtmlCellEvent_SetLinkClicked, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlCellEvent_SetLinkClicked }};
-//     void SetLinkClicked(bool linkclicked)
+//     void SetLinkClicked(bool linkclicked );
 static int LUACALL wxLua_wxHtmlCellEvent_SetLinkClicked(lua_State *L)
 {
     // bool linkclicked
@@ -1220,7 +1220,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCellEvent_delete[1] = {{ wxlua_use
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlCellEvent_constructor1[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxHtmlCell, &wxluatype_wxPoint, &wxluatype_wxMouseEvent, NULL };
 static int LUACALL wxLua_wxHtmlCellEvent_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCellEvent_constructor1[1] = {{ wxLua_wxHtmlCellEvent_constructor1, WXLUAMETHOD_CONSTRUCTOR, 5, 5, s_wxluatypeArray_wxLua_wxHtmlCellEvent_constructor1 }};
-//     wxHtmlCellEvent(wxEventType commandType, int id, wxHtmlCell *cell, const wxPoint &pt, const wxMouseEvent &ev)
+//     wxHtmlCellEvent(wxEventType commandType, int id, wxHtmlCell *cell, const wxPoint &pt, const wxMouseEvent &ev );
 static int LUACALL wxLua_wxHtmlCellEvent_constructor1(lua_State *L)
 {
     // const wxMouseEvent ev
@@ -1247,7 +1247,7 @@ static int LUACALL wxLua_wxHtmlCellEvent_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxHtmlCellEvent_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlCellEvent_constructor[1] = {{ wxLua_wxHtmlCellEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxHtmlCellEvent()
+//     wxHtmlCellEvent( );
 static int LUACALL wxLua_wxHtmlCellEvent_constructor(lua_State *L)
 {
     // call constructor
@@ -1322,7 +1322,7 @@ int wxluatype_wxHtmlLinkInfo = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlLinkInfo_GetEvent[] = { &wxluatype_wxHtmlLinkInfo, NULL };
 static int LUACALL wxLua_wxHtmlLinkInfo_GetEvent(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlLinkInfo_GetEvent[1] = {{ wxLua_wxHtmlLinkInfo_GetEvent, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlLinkInfo_GetEvent }};
-//     const wxMouseEvent * GetEvent()
+//     const wxMouseEvent * GetEvent( );
 static int LUACALL wxLua_wxHtmlLinkInfo_GetEvent(lua_State *L)
 {
     // get this
@@ -1338,7 +1338,7 @@ static int LUACALL wxLua_wxHtmlLinkInfo_GetEvent(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlLinkInfo_GetHref[] = { &wxluatype_wxHtmlLinkInfo, NULL };
 static int LUACALL wxLua_wxHtmlLinkInfo_GetHref(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlLinkInfo_GetHref[1] = {{ wxLua_wxHtmlLinkInfo_GetHref, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlLinkInfo_GetHref }};
-//     wxString GetHref()
+//     wxString GetHref( );
 static int LUACALL wxLua_wxHtmlLinkInfo_GetHref(lua_State *L)
 {
     // get this
@@ -1354,7 +1354,7 @@ static int LUACALL wxLua_wxHtmlLinkInfo_GetHref(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlLinkInfo_GetHtmlCell[] = { &wxluatype_wxHtmlLinkInfo, NULL };
 static int LUACALL wxLua_wxHtmlLinkInfo_GetHtmlCell(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlLinkInfo_GetHtmlCell[1] = {{ wxLua_wxHtmlLinkInfo_GetHtmlCell, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlLinkInfo_GetHtmlCell }};
-//     const wxHtmlCell * GetHtmlCell()
+//     const wxHtmlCell * GetHtmlCell( );
 static int LUACALL wxLua_wxHtmlLinkInfo_GetHtmlCell(lua_State *L)
 {
     // get this
@@ -1370,7 +1370,7 @@ static int LUACALL wxLua_wxHtmlLinkInfo_GetHtmlCell(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlLinkInfo_GetTarget[] = { &wxluatype_wxHtmlLinkInfo, NULL };
 static int LUACALL wxLua_wxHtmlLinkInfo_GetTarget(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlLinkInfo_GetTarget[1] = {{ wxLua_wxHtmlLinkInfo_GetTarget, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlLinkInfo_GetTarget }};
-//     wxString GetTarget()
+//     wxString GetTarget( );
 static int LUACALL wxLua_wxHtmlLinkInfo_GetTarget(lua_State *L)
 {
     // get this
@@ -1389,7 +1389,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlLinkInfo_delete[1] = {{ wxlua_user
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlLinkInfo_constructor[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlLinkInfo_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlLinkInfo_constructor[1] = {{ wxLua_wxHtmlLinkInfo_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxHtmlLinkInfo_constructor }};
-//     wxHtmlLinkInfo(const wxString& href, const wxString& target = "")
+//     wxHtmlLinkInfo(const wxString& href, const wxString& target = "" );
 static int LUACALL wxLua_wxHtmlLinkInfo_constructor(lua_State *L)
 {
     // get number of arguments
@@ -1445,7 +1445,7 @@ int wxluatype_wxHtmlTag = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlTag_GetAllParams[] = { &wxluatype_wxHtmlTag, NULL };
 static int LUACALL wxLua_wxHtmlTag_GetAllParams(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlTag_GetAllParams[1] = {{ wxLua_wxHtmlTag_GetAllParams, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlTag_GetAllParams }};
-//     const wxString GetAllParams() const
+//     const wxString GetAllParams() const;
 static int LUACALL wxLua_wxHtmlTag_GetAllParams(lua_State *L)
 {
     // get this
@@ -1461,7 +1461,7 @@ static int LUACALL wxLua_wxHtmlTag_GetAllParams(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlTag_GetBeginPos[] = { &wxluatype_wxHtmlTag, NULL };
 static int LUACALL wxLua_wxHtmlTag_GetBeginPos(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlTag_GetBeginPos[1] = {{ wxLua_wxHtmlTag_GetBeginPos, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlTag_GetBeginPos }};
-//     int GetBeginPos() const
+//     int GetBeginPos() const;
 static int LUACALL wxLua_wxHtmlTag_GetBeginPos(lua_State *L)
 {
     // get this
@@ -1477,7 +1477,7 @@ static int LUACALL wxLua_wxHtmlTag_GetBeginPos(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlTag_GetEndPos1[] = { &wxluatype_wxHtmlTag, NULL };
 static int LUACALL wxLua_wxHtmlTag_GetEndPos1(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlTag_GetEndPos1[1] = {{ wxLua_wxHtmlTag_GetEndPos1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlTag_GetEndPos1 }};
-//     int GetEndPos1() const
+//     int GetEndPos1() const;
 static int LUACALL wxLua_wxHtmlTag_GetEndPos1(lua_State *L)
 {
     // get this
@@ -1493,7 +1493,7 @@ static int LUACALL wxLua_wxHtmlTag_GetEndPos1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlTag_GetEndPos2[] = { &wxluatype_wxHtmlTag, NULL };
 static int LUACALL wxLua_wxHtmlTag_GetEndPos2(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlTag_GetEndPos2[1] = {{ wxLua_wxHtmlTag_GetEndPos2, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlTag_GetEndPos2 }};
-//     int GetEndPos2() const
+//     int GetEndPos2() const;
 static int LUACALL wxLua_wxHtmlTag_GetEndPos2(lua_State *L)
 {
     // get this
@@ -1509,7 +1509,7 @@ static int LUACALL wxLua_wxHtmlTag_GetEndPos2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlTag_GetName[] = { &wxluatype_wxHtmlTag, NULL };
 static int LUACALL wxLua_wxHtmlTag_GetName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlTag_GetName[1] = {{ wxLua_wxHtmlTag_GetName, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlTag_GetName }};
-//     wxString GetName() const
+//     wxString GetName() const;
 static int LUACALL wxLua_wxHtmlTag_GetName(lua_State *L)
 {
     // get this
@@ -1525,7 +1525,7 @@ static int LUACALL wxLua_wxHtmlTag_GetName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlTag_GetParam[] = { &wxluatype_wxHtmlTag, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxHtmlTag_GetParam(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlTag_GetParam[1] = {{ wxLua_wxHtmlTag_GetParam, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxHtmlTag_GetParam }};
-//     wxString GetParam(const wxString& par, bool with_commas = false) const
+//     wxString GetParam(const wxString& par, bool with_commas = false) const;
 static int LUACALL wxLua_wxHtmlTag_GetParam(lua_State *L)
 {
     // get number of arguments
@@ -1593,7 +1593,7 @@ static int LUACALL wxLua_wxHtmlTag_GetParamAsInt(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlTag_HasEnding[] = { &wxluatype_wxHtmlTag, NULL };
 static int LUACALL wxLua_wxHtmlTag_HasEnding(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlTag_HasEnding[1] = {{ wxLua_wxHtmlTag_HasEnding, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlTag_HasEnding }};
-//     bool HasEnding() const
+//     bool HasEnding() const;
 static int LUACALL wxLua_wxHtmlTag_HasEnding(lua_State *L)
 {
     // get this
@@ -1609,7 +1609,7 @@ static int LUACALL wxLua_wxHtmlTag_HasEnding(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlTag_HasParam[] = { &wxluatype_wxHtmlTag, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlTag_HasParam(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlTag_HasParam[1] = {{ wxLua_wxHtmlTag_HasParam, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlTag_HasParam }};
-//     bool HasParam(const wxString& par) const
+//     bool HasParam(const wxString& par) const;
 static int LUACALL wxLua_wxHtmlTag_HasParam(lua_State *L)
 {
     // const wxString par
@@ -1665,7 +1665,7 @@ int wxluatype_wxHtmlWindow = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_AppendToPage[] = { &wxluatype_wxHtmlWindow, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlWindow_AppendToPage(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_AppendToPage[1] = {{ wxLua_wxHtmlWindow_AppendToPage, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWindow_AppendToPage }};
-//     bool AppendToPage(const wxString& source)
+//     bool AppendToPage(const wxString& source );
 static int LUACALL wxLua_wxHtmlWindow_AppendToPage(lua_State *L)
 {
     // const wxString source
@@ -1683,7 +1683,7 @@ static int LUACALL wxLua_wxHtmlWindow_AppendToPage(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_GetInternalRepresentation[] = { &wxluatype_wxHtmlWindow, NULL };
 static int LUACALL wxLua_wxHtmlWindow_GetInternalRepresentation(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_GetInternalRepresentation[1] = {{ wxLua_wxHtmlWindow_GetInternalRepresentation, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWindow_GetInternalRepresentation }};
-//     wxHtmlContainerCell* GetInternalRepresentation() const
+//     wxHtmlContainerCell* GetInternalRepresentation() const;
 static int LUACALL wxLua_wxHtmlWindow_GetInternalRepresentation(lua_State *L)
 {
     // get this
@@ -1699,7 +1699,7 @@ static int LUACALL wxLua_wxHtmlWindow_GetInternalRepresentation(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_GetOpenedAnchor[] = { &wxluatype_wxHtmlWindow, NULL };
 static int LUACALL wxLua_wxHtmlWindow_GetOpenedAnchor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_GetOpenedAnchor[1] = {{ wxLua_wxHtmlWindow_GetOpenedAnchor, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWindow_GetOpenedAnchor }};
-//     wxString GetOpenedAnchor()
+//     wxString GetOpenedAnchor( );
 static int LUACALL wxLua_wxHtmlWindow_GetOpenedAnchor(lua_State *L)
 {
     // get this
@@ -1715,7 +1715,7 @@ static int LUACALL wxLua_wxHtmlWindow_GetOpenedAnchor(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_GetOpenedPage[] = { &wxluatype_wxHtmlWindow, NULL };
 static int LUACALL wxLua_wxHtmlWindow_GetOpenedPage(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_GetOpenedPage[1] = {{ wxLua_wxHtmlWindow_GetOpenedPage, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWindow_GetOpenedPage }};
-//     wxString GetOpenedPage()
+//     wxString GetOpenedPage( );
 static int LUACALL wxLua_wxHtmlWindow_GetOpenedPage(lua_State *L)
 {
     // get this
@@ -1731,7 +1731,7 @@ static int LUACALL wxLua_wxHtmlWindow_GetOpenedPage(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_GetOpenedPageTitle[] = { &wxluatype_wxHtmlWindow, NULL };
 static int LUACALL wxLua_wxHtmlWindow_GetOpenedPageTitle(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_GetOpenedPageTitle[1] = {{ wxLua_wxHtmlWindow_GetOpenedPageTitle, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWindow_GetOpenedPageTitle }};
-//     wxString GetOpenedPageTitle()
+//     wxString GetOpenedPageTitle( );
 static int LUACALL wxLua_wxHtmlWindow_GetOpenedPageTitle(lua_State *L)
 {
     // get this
@@ -1749,7 +1749,7 @@ static int LUACALL wxLua_wxHtmlWindow_GetOpenedPageTitle(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_GetRelatedFrame[] = { &wxluatype_wxHtmlWindow, NULL };
 static int LUACALL wxLua_wxHtmlWindow_GetRelatedFrame(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_GetRelatedFrame[1] = {{ wxLua_wxHtmlWindow_GetRelatedFrame, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWindow_GetRelatedFrame }};
-//     wxFrame* GetRelatedFrame() const
+//     wxFrame* GetRelatedFrame() const;
 static int LUACALL wxLua_wxHtmlWindow_GetRelatedFrame(lua_State *L)
 {
     // get this
@@ -1767,7 +1767,7 @@ static int LUACALL wxLua_wxHtmlWindow_GetRelatedFrame(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_HistoryBack[] = { &wxluatype_wxHtmlWindow, NULL };
 static int LUACALL wxLua_wxHtmlWindow_HistoryBack(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_HistoryBack[1] = {{ wxLua_wxHtmlWindow_HistoryBack, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWindow_HistoryBack }};
-//     bool HistoryBack()
+//     bool HistoryBack( );
 static int LUACALL wxLua_wxHtmlWindow_HistoryBack(lua_State *L)
 {
     // get this
@@ -1783,7 +1783,7 @@ static int LUACALL wxLua_wxHtmlWindow_HistoryBack(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_HistoryCanBack[] = { &wxluatype_wxHtmlWindow, NULL };
 static int LUACALL wxLua_wxHtmlWindow_HistoryCanBack(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_HistoryCanBack[1] = {{ wxLua_wxHtmlWindow_HistoryCanBack, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWindow_HistoryCanBack }};
-//     bool HistoryCanBack()
+//     bool HistoryCanBack( );
 static int LUACALL wxLua_wxHtmlWindow_HistoryCanBack(lua_State *L)
 {
     // get this
@@ -1799,7 +1799,7 @@ static int LUACALL wxLua_wxHtmlWindow_HistoryCanBack(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_HistoryCanForward[] = { &wxluatype_wxHtmlWindow, NULL };
 static int LUACALL wxLua_wxHtmlWindow_HistoryCanForward(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_HistoryCanForward[1] = {{ wxLua_wxHtmlWindow_HistoryCanForward, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWindow_HistoryCanForward }};
-//     bool HistoryCanForward()
+//     bool HistoryCanForward( );
 static int LUACALL wxLua_wxHtmlWindow_HistoryCanForward(lua_State *L)
 {
     // get this
@@ -1815,7 +1815,7 @@ static int LUACALL wxLua_wxHtmlWindow_HistoryCanForward(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_HistoryClear[] = { &wxluatype_wxHtmlWindow, NULL };
 static int LUACALL wxLua_wxHtmlWindow_HistoryClear(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_HistoryClear[1] = {{ wxLua_wxHtmlWindow_HistoryClear, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWindow_HistoryClear }};
-//     void HistoryClear()
+//     void HistoryClear( );
 static int LUACALL wxLua_wxHtmlWindow_HistoryClear(lua_State *L)
 {
     // get this
@@ -1829,7 +1829,7 @@ static int LUACALL wxLua_wxHtmlWindow_HistoryClear(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_HistoryForward[] = { &wxluatype_wxHtmlWindow, NULL };
 static int LUACALL wxLua_wxHtmlWindow_HistoryForward(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_HistoryForward[1] = {{ wxLua_wxHtmlWindow_HistoryForward, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWindow_HistoryForward }};
-//     bool HistoryForward()
+//     bool HistoryForward( );
 static int LUACALL wxLua_wxHtmlWindow_HistoryForward(lua_State *L)
 {
     // get this
@@ -1847,7 +1847,7 @@ static int LUACALL wxLua_wxHtmlWindow_HistoryForward(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_LoadFile[] = { &wxluatype_wxHtmlWindow, &wxluatype_wxFileName, NULL };
 static int LUACALL wxLua_wxHtmlWindow_LoadFile(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_LoadFile[1] = {{ wxLua_wxHtmlWindow_LoadFile, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWindow_LoadFile }};
-//     virtual bool LoadFile(const wxFileName& filename)
+//     virtual bool LoadFile(const wxFileName& filename );
 static int LUACALL wxLua_wxHtmlWindow_LoadFile(lua_State *L)
 {
     // const wxFileName filename
@@ -1867,7 +1867,7 @@ static int LUACALL wxLua_wxHtmlWindow_LoadFile(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_LoadPage[] = { &wxluatype_wxHtmlWindow, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlWindow_LoadPage(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_LoadPage[1] = {{ wxLua_wxHtmlWindow_LoadPage, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWindow_LoadPage }};
-//     bool LoadPage(const wxString& location)
+//     bool LoadPage(const wxString& location );
 static int LUACALL wxLua_wxHtmlWindow_LoadPage(lua_State *L)
 {
     // const wxString location
@@ -1887,7 +1887,7 @@ static int LUACALL wxLua_wxHtmlWindow_LoadPage(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_ReadCustomization[] = { &wxluatype_wxHtmlWindow, &wxluatype_wxConfigBase, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlWindow_ReadCustomization(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_ReadCustomization[1] = {{ wxLua_wxHtmlWindow_ReadCustomization, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxHtmlWindow_ReadCustomization }};
-//     void ReadCustomization(wxConfigBase *cfg, wxString path = wxEmptyString)
+//     void ReadCustomization(wxConfigBase *cfg, wxString path = wxEmptyString );
 static int LUACALL wxLua_wxHtmlWindow_ReadCustomization(lua_State *L)
 {
     // get number of arguments
@@ -1909,7 +1909,7 @@ static int LUACALL wxLua_wxHtmlWindow_ReadCustomization(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_SelectAll[] = { &wxluatype_wxHtmlWindow, NULL };
 static int LUACALL wxLua_wxHtmlWindow_SelectAll(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_SelectAll[1] = {{ wxLua_wxHtmlWindow_SelectAll, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWindow_SelectAll }};
-//     void SelectAll()
+//     void SelectAll( );
 static int LUACALL wxLua_wxHtmlWindow_SelectAll(lua_State *L)
 {
     // get this
@@ -1925,7 +1925,7 @@ static int LUACALL wxLua_wxHtmlWindow_SelectAll(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_SelectLine[] = { &wxluatype_wxHtmlWindow, &wxluatype_wxPoint, NULL };
 static int LUACALL wxLua_wxHtmlWindow_SelectLine(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_SelectLine[1] = {{ wxLua_wxHtmlWindow_SelectLine, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWindow_SelectLine }};
-//     void SelectLine(const wxPoint& pos)
+//     void SelectLine(const wxPoint& pos );
 static int LUACALL wxLua_wxHtmlWindow_SelectLine(lua_State *L)
 {
     // const wxPoint pos
@@ -1941,7 +1941,7 @@ static int LUACALL wxLua_wxHtmlWindow_SelectLine(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_SelectWord[] = { &wxluatype_wxHtmlWindow, &wxluatype_wxPoint, NULL };
 static int LUACALL wxLua_wxHtmlWindow_SelectWord(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_SelectWord[1] = {{ wxLua_wxHtmlWindow_SelectWord, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWindow_SelectWord }};
-//     void SelectWord(const wxPoint& pos)
+//     void SelectWord(const wxPoint& pos );
 static int LUACALL wxLua_wxHtmlWindow_SelectWord(lua_State *L)
 {
     // const wxPoint pos
@@ -1959,7 +1959,7 @@ static int LUACALL wxLua_wxHtmlWindow_SelectWord(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_SelectionToText[] = { &wxluatype_wxHtmlWindow, NULL };
 static int LUACALL wxLua_wxHtmlWindow_SelectionToText(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_SelectionToText[1] = {{ wxLua_wxHtmlWindow_SelectionToText, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWindow_SelectionToText }};
-//     wxString SelectionToText()
+//     wxString SelectionToText( );
 static int LUACALL wxLua_wxHtmlWindow_SelectionToText(lua_State *L)
 {
     // get this
@@ -1975,7 +1975,7 @@ static int LUACALL wxLua_wxHtmlWindow_SelectionToText(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_SetBorders[] = { &wxluatype_wxHtmlWindow, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlWindow_SetBorders(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_SetBorders[1] = {{ wxLua_wxHtmlWindow_SetBorders, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWindow_SetBorders }};
-//     void SetBorders(int b)
+//     void SetBorders(int b );
 static int LUACALL wxLua_wxHtmlWindow_SetBorders(lua_State *L)
 {
     // int b
@@ -2050,7 +2050,7 @@ static int LUACALL wxLua_wxHtmlWindow_SetFonts(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_SetPage[] = { &wxluatype_wxHtmlWindow, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlWindow_SetPage(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_SetPage[1] = {{ wxLua_wxHtmlWindow_SetPage, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWindow_SetPage }};
-//     bool SetPage(const wxString& source)
+//     bool SetPage(const wxString& source );
 static int LUACALL wxLua_wxHtmlWindow_SetPage(lua_State *L)
 {
     // const wxString source
@@ -2070,7 +2070,7 @@ static int LUACALL wxLua_wxHtmlWindow_SetPage(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_SetRelatedFrame[] = { &wxluatype_wxHtmlWindow, &wxluatype_wxFrame, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlWindow_SetRelatedFrame(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_SetRelatedFrame[1] = {{ wxLua_wxHtmlWindow_SetRelatedFrame, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxHtmlWindow_SetRelatedFrame }};
-//     void SetRelatedFrame(wxFrame* frame, const wxString& format)
+//     void SetRelatedFrame(wxFrame* frame, const wxString& format );
 static int LUACALL wxLua_wxHtmlWindow_SetRelatedFrame(lua_State *L)
 {
     // const wxString format
@@ -2090,7 +2090,7 @@ static int LUACALL wxLua_wxHtmlWindow_SetRelatedFrame(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_SetRelatedStatusBar[] = { &wxluatype_wxHtmlWindow, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlWindow_SetRelatedStatusBar(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_SetRelatedStatusBar[1] = {{ wxLua_wxHtmlWindow_SetRelatedStatusBar, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWindow_SetRelatedStatusBar }};
-//     void SetRelatedStatusBar(int bar)
+//     void SetRelatedStatusBar(int bar );
 static int LUACALL wxLua_wxHtmlWindow_SetRelatedStatusBar(lua_State *L)
 {
     // int bar
@@ -2106,7 +2106,7 @@ static int LUACALL wxLua_wxHtmlWindow_SetRelatedStatusBar(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_ToText[] = { &wxluatype_wxHtmlWindow, NULL };
 static int LUACALL wxLua_wxHtmlWindow_ToText(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_ToText[1] = {{ wxLua_wxHtmlWindow_ToText, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWindow_ToText }};
-//     wxString ToText()
+//     wxString ToText( );
 static int LUACALL wxLua_wxHtmlWindow_ToText(lua_State *L)
 {
     // get this
@@ -2124,7 +2124,7 @@ static int LUACALL wxLua_wxHtmlWindow_ToText(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_WriteCustomization[] = { &wxluatype_wxHtmlWindow, &wxluatype_wxConfigBase, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlWindow_WriteCustomization(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_WriteCustomization[1] = {{ wxLua_wxHtmlWindow_WriteCustomization, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxHtmlWindow_WriteCustomization }};
-//     void WriteCustomization(wxConfigBase *cfg, wxString path = wxEmptyString)
+//     void WriteCustomization(wxConfigBase *cfg, wxString path = wxEmptyString );
 static int LUACALL wxLua_wxHtmlWindow_WriteCustomization(lua_State *L)
 {
     // get number of arguments
@@ -2147,7 +2147,7 @@ static int LUACALL wxLua_wxHtmlWindow_WriteCustomization(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindow_constructor[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlWindow_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindow_constructor[1] = {{ wxLua_wxHtmlWindow_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 6, s_wxluatypeArray_wxLua_wxHtmlWindow_constructor }};
-//     wxHtmlWindow(wxWindow *parent, wxWindowID id = -1, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxHW_SCROLLBAR_AUTO, const wxString& name = "wxHtmlWindow")
+//     wxHtmlWindow(wxWindow *parent, wxWindowID id = -1, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxHW_SCROLLBAR_AUTO, const wxString& name = "wxHtmlWindow" );
 static int LUACALL wxLua_wxHtmlWindow_constructor(lua_State *L)
 {
     // get number of arguments
@@ -2326,7 +2326,7 @@ int wxluatype_wxLuaHtmlWinTagEvent = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaHtmlWinTagEvent_GetHtmlParser[] = { &wxluatype_wxLuaHtmlWinTagEvent, NULL };
 static int LUACALL wxLua_wxLuaHtmlWinTagEvent_GetHtmlParser(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaHtmlWinTagEvent_GetHtmlParser[1] = {{ wxLua_wxLuaHtmlWinTagEvent_GetHtmlParser, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaHtmlWinTagEvent_GetHtmlParser }};
-//     wxHtmlWinParser      *GetHtmlParser() const
+//     wxHtmlWinParser      *GetHtmlParser() const;
 static int LUACALL wxLua_wxLuaHtmlWinTagEvent_GetHtmlParser(lua_State *L)
 {
     // get this
@@ -2342,7 +2342,7 @@ static int LUACALL wxLua_wxLuaHtmlWinTagEvent_GetHtmlParser(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaHtmlWinTagEvent_GetHtmlTag[] = { &wxluatype_wxLuaHtmlWinTagEvent, NULL };
 static int LUACALL wxLua_wxLuaHtmlWinTagEvent_GetHtmlTag(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaHtmlWinTagEvent_GetHtmlTag[1] = {{ wxLua_wxLuaHtmlWinTagEvent_GetHtmlTag, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaHtmlWinTagEvent_GetHtmlTag }};
-//     const wxHtmlTag      *GetHtmlTag() const
+//     const wxHtmlTag      *GetHtmlTag() const;
 static int LUACALL wxLua_wxLuaHtmlWinTagEvent_GetHtmlTag(lua_State *L)
 {
     // get this
@@ -2360,7 +2360,7 @@ static int LUACALL wxLua_wxLuaHtmlWinTagEvent_GetHtmlTag(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaHtmlWinTagEvent_GetParseInnerCalled[] = { &wxluatype_wxLuaHtmlWinTagEvent, NULL };
 static int LUACALL wxLua_wxLuaHtmlWinTagEvent_GetParseInnerCalled(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaHtmlWinTagEvent_GetParseInnerCalled[1] = {{ wxLua_wxLuaHtmlWinTagEvent_GetParseInnerCalled, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaHtmlWinTagEvent_GetParseInnerCalled }};
-//     bool                  GetParseInnerCalled() const
+//     bool                  GetParseInnerCalled() const;
 static int LUACALL wxLua_wxLuaHtmlWinTagEvent_GetParseInnerCalled(lua_State *L)
 {
     // get this
@@ -2376,7 +2376,7 @@ static int LUACALL wxLua_wxLuaHtmlWinTagEvent_GetParseInnerCalled(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaHtmlWinTagEvent_SetParseInnerCalled[] = { &wxluatype_wxLuaHtmlWinTagEvent, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxLuaHtmlWinTagEvent_SetParseInnerCalled(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaHtmlWinTagEvent_SetParseInnerCalled[1] = {{ wxLua_wxLuaHtmlWinTagEvent_SetParseInnerCalled, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxLuaHtmlWinTagEvent_SetParseInnerCalled }};
-//     void                  SetParseInnerCalled(bool fParseInnerCalled = true)
+//     void                  SetParseInnerCalled(bool fParseInnerCalled = true );
 static int LUACALL wxLua_wxLuaHtmlWinTagEvent_SetParseInnerCalled(lua_State *L)
 {
     // get number of arguments
@@ -2433,7 +2433,7 @@ int wxluatype_wxHtmlParser = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing2[] = { &wxluatype_wxHtmlParser, NULL };
 static int LUACALL wxLua_wxHtmlParser_DoParsing2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlParser_DoParsing2[1] = {{ wxLua_wxHtmlParser_DoParsing2, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing2 }};
-//     void DoParsing()
+//     void DoParsing( );
 static int LUACALL wxLua_wxHtmlParser_DoParsing2(lua_State *L)
 {
     // get this
@@ -2449,7 +2449,7 @@ static int LUACALL wxLua_wxHtmlParser_DoParsing2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing1[] = { &wxluatype_wxHtmlParser, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlParser_DoParsing1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlParser_DoParsing1[1] = {{ wxLua_wxHtmlParser_DoParsing1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing1 }};
-//     !%wxchkver_2_9_2 void DoParsing(int begin_pos, int end_pos)
+//     !%wxchkver_2_9_2 void DoParsing(int begin_pos, int end_pos );
 static int LUACALL wxLua_wxHtmlParser_DoParsing1(lua_State *L)
 {
     // int end_pos
@@ -2470,7 +2470,7 @@ static int LUACALL wxLua_wxHtmlParser_DoParsing1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing[] = { &wxluatype_wxHtmlParser, &wxluatype_wxString_const_iterator, &wxluatype_wxString_const_iterator, NULL };
 static int LUACALL wxLua_wxHtmlParser_DoParsing(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlParser_DoParsing[1] = {{ wxLua_wxHtmlParser_DoParsing, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxHtmlParser_DoParsing }};
-//     %wxchkver_2_9_2 void DoParsing(const wxString::const_iterator& begin_pos, const wxString::const_iterator& end_pos)
+//     %wxchkver_2_9_2 void DoParsing(const wxString::const_iterator& begin_pos, const wxString::const_iterator& end_pos );
 static int LUACALL wxLua_wxHtmlParser_DoParsing(lua_State *L)
 {
     // const wxString::const_iterator end_pos
@@ -2490,7 +2490,7 @@ static int LUACALL wxLua_wxHtmlParser_DoParsing(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlParser_DoneParser[] = { &wxluatype_wxHtmlParser, NULL };
 static int LUACALL wxLua_wxHtmlParser_DoneParser(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlParser_DoneParser[1] = {{ wxLua_wxHtmlParser_DoneParser, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlParser_DoneParser }};
-//     virtual void DoneParser()
+//     virtual void DoneParser( );
 static int LUACALL wxLua_wxHtmlParser_DoneParser(lua_State *L)
 {
     // get this
@@ -2504,7 +2504,7 @@ static int LUACALL wxLua_wxHtmlParser_DoneParser(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlParser_InitParser[] = { &wxluatype_wxHtmlParser, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlParser_InitParser(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlParser_InitParser[1] = {{ wxLua_wxHtmlParser_InitParser, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlParser_InitParser }};
-//     void InitParser(const wxString& source)
+//     void InitParser(const wxString& source );
 static int LUACALL wxLua_wxHtmlParser_InitParser(lua_State *L)
 {
     // const wxString source
@@ -2572,7 +2572,7 @@ int wxluatype_wxHtmlWinParser = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_CloseContainer[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_CloseContainer(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_CloseContainer[1] = {{ wxLua_wxHtmlWinParser_CloseContainer, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_CloseContainer }};
-//     wxHtmlContainerCell* CloseContainer()
+//     wxHtmlContainerCell* CloseContainer( );
 static int LUACALL wxLua_wxHtmlWinParser_CloseContainer(lua_State *L)
 {
     // get this
@@ -2590,7 +2590,7 @@ static int LUACALL wxLua_wxHtmlWinParser_CloseContainer(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_CreateCurrentFont[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_CreateCurrentFont(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_CreateCurrentFont[1] = {{ wxLua_wxHtmlWinParser_CreateCurrentFont, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_CreateCurrentFont }};
-//     wxFont* CreateCurrentFont()
+//     wxFont* CreateCurrentFont( );
 static int LUACALL wxLua_wxHtmlWinParser_CreateCurrentFont(lua_State *L)
 {
     // get this
@@ -2609,7 +2609,7 @@ static int LUACALL wxLua_wxHtmlWinParser_CreateCurrentFont(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_GetActualColor[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_GetActualColor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_GetActualColor[1] = {{ wxLua_wxHtmlWinParser_GetActualColor, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_GetActualColor }};
-//     wxColour GetActualColor() const
+//     wxColour GetActualColor() const;
 static int LUACALL wxLua_wxHtmlWinParser_GetActualColor(lua_State *L)
 {
     // get this
@@ -2630,7 +2630,7 @@ static int LUACALL wxLua_wxHtmlWinParser_GetActualColor(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_GetAlign[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_GetAlign(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_GetAlign[1] = {{ wxLua_wxHtmlWinParser_GetAlign, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_GetAlign }};
-//     int GetAlign() const
+//     int GetAlign() const;
 static int LUACALL wxLua_wxHtmlWinParser_GetAlign(lua_State *L)
 {
     // get this
@@ -2646,7 +2646,7 @@ static int LUACALL wxLua_wxHtmlWinParser_GetAlign(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_GetCharHeight[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_GetCharHeight(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_GetCharHeight[1] = {{ wxLua_wxHtmlWinParser_GetCharHeight, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_GetCharHeight }};
-//     int GetCharHeight() const
+//     int GetCharHeight() const;
 static int LUACALL wxLua_wxHtmlWinParser_GetCharHeight(lua_State *L)
 {
     // get this
@@ -2662,7 +2662,7 @@ static int LUACALL wxLua_wxHtmlWinParser_GetCharHeight(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_GetCharWidth[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_GetCharWidth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_GetCharWidth[1] = {{ wxLua_wxHtmlWinParser_GetCharWidth, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_GetCharWidth }};
-//     int GetCharWidth() const
+//     int GetCharWidth() const;
 static int LUACALL wxLua_wxHtmlWinParser_GetCharWidth(lua_State *L)
 {
     // get this
@@ -2678,7 +2678,7 @@ static int LUACALL wxLua_wxHtmlWinParser_GetCharWidth(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_GetContainer[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_GetContainer(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_GetContainer[1] = {{ wxLua_wxHtmlWinParser_GetContainer, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_GetContainer }};
-//     wxHtmlContainerCell* GetContainer() const
+//     wxHtmlContainerCell* GetContainer() const;
 static int LUACALL wxLua_wxHtmlWinParser_GetContainer(lua_State *L)
 {
     // get this
@@ -2696,7 +2696,7 @@ static int LUACALL wxLua_wxHtmlWinParser_GetContainer(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_GetDC[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_GetDC(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_GetDC[1] = {{ wxLua_wxHtmlWinParser_GetDC, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_GetDC }};
-//     wxDC* GetDC()
+//     wxDC* GetDC( );
 static int LUACALL wxLua_wxHtmlWinParser_GetDC(lua_State *L)
 {
     // get this
@@ -2714,7 +2714,7 @@ static int LUACALL wxLua_wxHtmlWinParser_GetDC(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_GetFontBold[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_GetFontBold(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_GetFontBold[1] = {{ wxLua_wxHtmlWinParser_GetFontBold, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_GetFontBold }};
-//     int GetFontBold() const
+//     int GetFontBold() const;
 static int LUACALL wxLua_wxHtmlWinParser_GetFontBold(lua_State *L)
 {
     // get this
@@ -2730,7 +2730,7 @@ static int LUACALL wxLua_wxHtmlWinParser_GetFontBold(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_GetFontFace[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_GetFontFace(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_GetFontFace[1] = {{ wxLua_wxHtmlWinParser_GetFontFace, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_GetFontFace }};
-//     wxString GetFontFace() const
+//     wxString GetFontFace() const;
 static int LUACALL wxLua_wxHtmlWinParser_GetFontFace(lua_State *L)
 {
     // get this
@@ -2746,7 +2746,7 @@ static int LUACALL wxLua_wxHtmlWinParser_GetFontFace(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_GetFontFixed[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_GetFontFixed(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_GetFontFixed[1] = {{ wxLua_wxHtmlWinParser_GetFontFixed, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_GetFontFixed }};
-//     int GetFontFixed() const
+//     int GetFontFixed() const;
 static int LUACALL wxLua_wxHtmlWinParser_GetFontFixed(lua_State *L)
 {
     // get this
@@ -2762,7 +2762,7 @@ static int LUACALL wxLua_wxHtmlWinParser_GetFontFixed(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_GetFontItalic[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_GetFontItalic(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_GetFontItalic[1] = {{ wxLua_wxHtmlWinParser_GetFontItalic, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_GetFontItalic }};
-//     int GetFontItalic() const
+//     int GetFontItalic() const;
 static int LUACALL wxLua_wxHtmlWinParser_GetFontItalic(lua_State *L)
 {
     // get this
@@ -2778,7 +2778,7 @@ static int LUACALL wxLua_wxHtmlWinParser_GetFontItalic(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_GetFontSize[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_GetFontSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_GetFontSize[1] = {{ wxLua_wxHtmlWinParser_GetFontSize, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_GetFontSize }};
-//     int GetFontSize() const
+//     int GetFontSize() const;
 static int LUACALL wxLua_wxHtmlWinParser_GetFontSize(lua_State *L)
 {
     // get this
@@ -2794,7 +2794,7 @@ static int LUACALL wxLua_wxHtmlWinParser_GetFontSize(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_GetFontUnderlined[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_GetFontUnderlined(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_GetFontUnderlined[1] = {{ wxLua_wxHtmlWinParser_GetFontUnderlined, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_GetFontUnderlined }};
-//     int GetFontUnderlined() const
+//     int GetFontUnderlined() const;
 static int LUACALL wxLua_wxHtmlWinParser_GetFontUnderlined(lua_State *L)
 {
     // get this
@@ -2810,7 +2810,7 @@ static int LUACALL wxLua_wxHtmlWinParser_GetFontUnderlined(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_GetLink[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_GetLink(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_GetLink[1] = {{ wxLua_wxHtmlWinParser_GetLink, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_GetLink }};
-//     const wxHtmlLinkInfo& GetLink() const
+//     const wxHtmlLinkInfo& GetLink() const;
 static int LUACALL wxLua_wxHtmlWinParser_GetLink(lua_State *L)
 {
     // get this
@@ -2828,7 +2828,7 @@ static int LUACALL wxLua_wxHtmlWinParser_GetLink(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_GetLinkColor[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_GetLinkColor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_GetLinkColor[1] = {{ wxLua_wxHtmlWinParser_GetLinkColor, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_GetLinkColor }};
-//     wxColour GetLinkColor() const
+//     wxColour GetLinkColor() const;
 static int LUACALL wxLua_wxHtmlWinParser_GetLinkColor(lua_State *L)
 {
     // get this
@@ -2850,7 +2850,7 @@ static int LUACALL wxLua_wxHtmlWinParser_GetLinkColor(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_GetWindow[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_GetWindow(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_GetWindow[1] = {{ wxLua_wxHtmlWinParser_GetWindow, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_GetWindow }};
-//     !%wxchkver_2_8 wxWindow* GetWindow()
+//     !%wxchkver_2_8 wxWindow* GetWindow( );
 static int LUACALL wxLua_wxHtmlWinParser_GetWindow(lua_State *L)
 {
     // get this
@@ -2869,7 +2869,7 @@ static int LUACALL wxLua_wxHtmlWinParser_GetWindow(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_GetWindowInterface[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_GetWindowInterface(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_GetWindowInterface[1] = {{ wxLua_wxHtmlWinParser_GetWindowInterface, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_GetWindowInterface }};
-//     %wxchkver_2_8 wxHtmlWindowInterface *GetWindowInterface()
+//     %wxchkver_2_8 wxHtmlWindowInterface *GetWindowInterface( );
 static int LUACALL wxLua_wxHtmlWinParser_GetWindowInterface(lua_State *L)
 {
     // get this
@@ -2887,7 +2887,7 @@ static int LUACALL wxLua_wxHtmlWinParser_GetWindowInterface(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_OpenContainer[] = { &wxluatype_wxHtmlWinParser, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_OpenContainer(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_OpenContainer[1] = {{ wxLua_wxHtmlWinParser_OpenContainer, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_OpenContainer }};
-//     wxHtmlContainerCell* OpenContainer()
+//     wxHtmlContainerCell* OpenContainer( );
 static int LUACALL wxLua_wxHtmlWinParser_OpenContainer(lua_State *L)
 {
     // get this
@@ -2905,7 +2905,7 @@ static int LUACALL wxLua_wxHtmlWinParser_OpenContainer(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_SetActualColor[] = { &wxluatype_wxHtmlWinParser, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_SetActualColor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_SetActualColor[1] = {{ wxLua_wxHtmlWinParser_SetActualColor, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWinParser_SetActualColor }};
-//     void SetActualColor(const wxColour& clr)
+//     void SetActualColor(const wxColour& clr );
 static int LUACALL wxLua_wxHtmlWinParser_SetActualColor(lua_State *L)
 {
     // const wxColour clr
@@ -2923,7 +2923,7 @@ static int LUACALL wxLua_wxHtmlWinParser_SetActualColor(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_SetAlign[] = { &wxluatype_wxHtmlWinParser, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_SetAlign(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_SetAlign[1] = {{ wxLua_wxHtmlWinParser_SetAlign, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWinParser_SetAlign }};
-//     void SetAlign(int a)
+//     void SetAlign(int a );
 static int LUACALL wxLua_wxHtmlWinParser_SetAlign(lua_State *L)
 {
     // int a
@@ -2939,7 +2939,7 @@ static int LUACALL wxLua_wxHtmlWinParser_SetAlign(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_SetContainer[] = { &wxluatype_wxHtmlWinParser, &wxluatype_wxHtmlContainerCell, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_SetContainer(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_SetContainer[1] = {{ wxLua_wxHtmlWinParser_SetContainer, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWinParser_SetContainer }};
-//     wxHtmlContainerCell* SetContainer(wxHtmlContainerCell *c)
+//     wxHtmlContainerCell* SetContainer(wxHtmlContainerCell *c );
 static int LUACALL wxLua_wxHtmlWinParser_SetContainer(lua_State *L)
 {
     // wxHtmlContainerCell c
@@ -2959,7 +2959,7 @@ static int LUACALL wxLua_wxHtmlWinParser_SetContainer(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_SetDC[] = { &wxluatype_wxHtmlWinParser, &wxluatype_wxDC, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_SetDC(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_SetDC[1] = {{ wxLua_wxHtmlWinParser_SetDC, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxHtmlWinParser_SetDC }};
-//     void SetDC(wxDC *dc, double pixel_scale = 1.0)
+//     void SetDC(wxDC *dc, double pixel_scale = 1.0 );
 static int LUACALL wxLua_wxHtmlWinParser_SetDC(lua_State *L)
 {
     // get number of arguments
@@ -2981,7 +2981,7 @@ static int LUACALL wxLua_wxHtmlWinParser_SetDC(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_SetFontBold[] = { &wxluatype_wxHtmlWinParser, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_SetFontBold(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_SetFontBold[1] = {{ wxLua_wxHtmlWinParser_SetFontBold, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWinParser_SetFontBold }};
-//     void SetFontBold(int x)
+//     void SetFontBold(int x );
 static int LUACALL wxLua_wxHtmlWinParser_SetFontBold(lua_State *L)
 {
     // int x
@@ -2997,7 +2997,7 @@ static int LUACALL wxLua_wxHtmlWinParser_SetFontBold(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_SetFontFace[] = { &wxluatype_wxHtmlWinParser, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_SetFontFace(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_SetFontFace[1] = {{ wxLua_wxHtmlWinParser_SetFontFace, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWinParser_SetFontFace }};
-//     void SetFontFace(const wxString& face)
+//     void SetFontFace(const wxString& face );
 static int LUACALL wxLua_wxHtmlWinParser_SetFontFace(lua_State *L)
 {
     // const wxString face
@@ -3013,7 +3013,7 @@ static int LUACALL wxLua_wxHtmlWinParser_SetFontFace(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_SetFontFixed[] = { &wxluatype_wxHtmlWinParser, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_SetFontFixed(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_SetFontFixed[1] = {{ wxLua_wxHtmlWinParser_SetFontFixed, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWinParser_SetFontFixed }};
-//     void SetFontFixed(int x)
+//     void SetFontFixed(int x );
 static int LUACALL wxLua_wxHtmlWinParser_SetFontFixed(lua_State *L)
 {
     // int x
@@ -3029,7 +3029,7 @@ static int LUACALL wxLua_wxHtmlWinParser_SetFontFixed(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_SetFontItalic[] = { &wxluatype_wxHtmlWinParser, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_SetFontItalic(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_SetFontItalic[1] = {{ wxLua_wxHtmlWinParser_SetFontItalic, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWinParser_SetFontItalic }};
-//     void SetFontItalic(int x)
+//     void SetFontItalic(int x );
 static int LUACALL wxLua_wxHtmlWinParser_SetFontItalic(lua_State *L)
 {
     // int x
@@ -3045,7 +3045,7 @@ static int LUACALL wxLua_wxHtmlWinParser_SetFontItalic(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_SetFontSize[] = { &wxluatype_wxHtmlWinParser, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_SetFontSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_SetFontSize[1] = {{ wxLua_wxHtmlWinParser_SetFontSize, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWinParser_SetFontSize }};
-//     void SetFontSize(int s)
+//     void SetFontSize(int s );
 static int LUACALL wxLua_wxHtmlWinParser_SetFontSize(lua_State *L)
 {
     // int s
@@ -3061,7 +3061,7 @@ static int LUACALL wxLua_wxHtmlWinParser_SetFontSize(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_SetFontUnderlined[] = { &wxluatype_wxHtmlWinParser, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_SetFontUnderlined(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_SetFontUnderlined[1] = {{ wxLua_wxHtmlWinParser_SetFontUnderlined, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWinParser_SetFontUnderlined }};
-//     void SetFontUnderlined(int x)
+//     void SetFontUnderlined(int x );
 static int LUACALL wxLua_wxHtmlWinParser_SetFontUnderlined(lua_State *L)
 {
     // int x
@@ -3135,7 +3135,7 @@ static int LUACALL wxLua_wxHtmlWinParser_SetFonts(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_SetLink[] = { &wxluatype_wxHtmlWinParser, &wxluatype_wxHtmlLinkInfo, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_SetLink(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_SetLink[1] = {{ wxLua_wxHtmlWinParser_SetLink, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWinParser_SetLink }};
-//     void SetLink(const wxHtmlLinkInfo& link)
+//     void SetLink(const wxHtmlLinkInfo& link );
 static int LUACALL wxLua_wxHtmlWinParser_SetLink(lua_State *L)
 {
     // const wxHtmlLinkInfo link
@@ -3153,7 +3153,7 @@ static int LUACALL wxLua_wxHtmlWinParser_SetLink(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_SetLinkColor[] = { &wxluatype_wxHtmlWinParser, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_SetLinkColor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_SetLinkColor[1] = {{ wxLua_wxHtmlWinParser_SetLinkColor, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWinParser_SetLinkColor }};
-//     void SetLinkColor(const wxColour& clr)
+//     void SetLinkColor(const wxColour& clr );
 static int LUACALL wxLua_wxHtmlWinParser_SetLinkColor(lua_State *L)
 {
     // const wxColour clr
@@ -3171,7 +3171,7 @@ static int LUACALL wxLua_wxHtmlWinParser_SetLinkColor(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWinParser_constructor[] = { &wxluatype_wxHtmlWindow, NULL };
 static int LUACALL wxLua_wxHtmlWinParser_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWinParser_constructor[1] = {{ wxLua_wxHtmlWinParser_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWinParser_constructor }};
-//     wxHtmlWinParser(wxHtmlWindow *wnd)
+//     wxHtmlWinParser(wxHtmlWindow *wnd );
 static int LUACALL wxLua_wxHtmlWinParser_constructor(lua_State *L)
 {
     // wxHtmlWindow wnd
@@ -3282,7 +3282,7 @@ int wxluatype_wxHtmlWindowInterface = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindowInterface_GetHTMLBackgroundColour[] = { &wxluatype_wxHtmlWindowInterface, NULL };
 static int LUACALL wxLua_wxHtmlWindowInterface_GetHTMLBackgroundColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindowInterface_GetHTMLBackgroundColour[1] = {{ wxLua_wxHtmlWindowInterface_GetHTMLBackgroundColour, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWindowInterface_GetHTMLBackgroundColour }};
-//     virtual wxColour GetHTMLBackgroundColour() const
+//     virtual wxColour GetHTMLBackgroundColour() const;
 static int LUACALL wxLua_wxHtmlWindowInterface_GetHTMLBackgroundColour(lua_State *L)
 {
     // get this
@@ -3304,7 +3304,7 @@ static int LUACALL wxLua_wxHtmlWindowInterface_GetHTMLBackgroundColour(lua_State
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindowInterface_GetHTMLCursor[] = { &wxluatype_wxHtmlWindowInterface, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxHtmlWindowInterface_GetHTMLCursor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindowInterface_GetHTMLCursor[1] = {{ wxLua_wxHtmlWindowInterface_GetHTMLCursor, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWindowInterface_GetHTMLCursor }};
-//     virtual wxCursor GetHTMLCursor(wxHtmlWindowInterface::HTMLCursor type) const
+//     virtual wxCursor GetHTMLCursor(wxHtmlWindowInterface::HTMLCursor type) const;
 static int LUACALL wxLua_wxHtmlWindowInterface_GetHTMLCursor(lua_State *L)
 {
     // wxHtmlWindowInterface::HTMLCursor type
@@ -3327,7 +3327,7 @@ static int LUACALL wxLua_wxHtmlWindowInterface_GetHTMLCursor(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindowInterface_GetHTMLWindow[] = { &wxluatype_wxHtmlWindowInterface, NULL };
 static int LUACALL wxLua_wxHtmlWindowInterface_GetHTMLWindow(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindowInterface_GetHTMLWindow[1] = {{ wxLua_wxHtmlWindowInterface_GetHTMLWindow, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlWindowInterface_GetHTMLWindow }};
-//     virtual wxWindow* GetHTMLWindow()
+//     virtual wxWindow* GetHTMLWindow( );
 static int LUACALL wxLua_wxHtmlWindowInterface_GetHTMLWindow(lua_State *L)
 {
     // get this
@@ -3345,7 +3345,7 @@ static int LUACALL wxLua_wxHtmlWindowInterface_GetHTMLWindow(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindowInterface_HTMLCoordsToWindow[] = { &wxluatype_wxHtmlWindowInterface, &wxluatype_wxHtmlCell, &wxluatype_wxPoint, NULL };
 static int LUACALL wxLua_wxHtmlWindowInterface_HTMLCoordsToWindow(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindowInterface_HTMLCoordsToWindow[1] = {{ wxLua_wxHtmlWindowInterface_HTMLCoordsToWindow, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxHtmlWindowInterface_HTMLCoordsToWindow }};
-//     virtual wxPoint HTMLCoordsToWindow(wxHtmlCell *cell, const wxPoint& pos) const
+//     virtual wxPoint HTMLCoordsToWindow(wxHtmlCell *cell, const wxPoint& pos) const;
 static int LUACALL wxLua_wxHtmlWindowInterface_HTMLCoordsToWindow(lua_State *L)
 {
     // const wxPoint pos
@@ -3371,7 +3371,7 @@ static int LUACALL wxLua_wxHtmlWindowInterface_HTMLCoordsToWindow(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindowInterface_OnHTMLLinkClicked[] = { &wxluatype_wxHtmlWindowInterface, &wxluatype_wxHtmlLinkInfo, NULL };
 static int LUACALL wxLua_wxHtmlWindowInterface_OnHTMLLinkClicked(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindowInterface_OnHTMLLinkClicked[1] = {{ wxLua_wxHtmlWindowInterface_OnHTMLLinkClicked, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWindowInterface_OnHTMLLinkClicked }};
-//     virtual void OnHTMLLinkClicked(const wxHtmlLinkInfo& link)
+//     virtual void OnHTMLLinkClicked(const wxHtmlLinkInfo& link );
 static int LUACALL wxLua_wxHtmlWindowInterface_OnHTMLLinkClicked(lua_State *L)
 {
     // const wxHtmlLinkInfo link
@@ -3390,7 +3390,7 @@ static int LUACALL wxLua_wxHtmlWindowInterface_OnHTMLLinkClicked(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindowInterface_SetHTMLBackgroundColour[] = { &wxluatype_wxHtmlWindowInterface, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxHtmlWindowInterface_SetHTMLBackgroundColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindowInterface_SetHTMLBackgroundColour[1] = {{ wxLua_wxHtmlWindowInterface_SetHTMLBackgroundColour, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWindowInterface_SetHTMLBackgroundColour }};
-//     virtual void SetHTMLBackgroundColour(const wxColour& clr)
+//     virtual void SetHTMLBackgroundColour(const wxColour& clr );
 static int LUACALL wxLua_wxHtmlWindowInterface_SetHTMLBackgroundColour(lua_State *L)
 {
     // const wxColour clr
@@ -3409,7 +3409,7 @@ static int LUACALL wxLua_wxHtmlWindowInterface_SetHTMLBackgroundColour(lua_State
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindowInterface_SetHTMLBackgroundImage[] = { &wxluatype_wxHtmlWindowInterface, &wxluatype_wxBitmap, NULL };
 static int LUACALL wxLua_wxHtmlWindowInterface_SetHTMLBackgroundImage(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindowInterface_SetHTMLBackgroundImage[1] = {{ wxLua_wxHtmlWindowInterface_SetHTMLBackgroundImage, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWindowInterface_SetHTMLBackgroundImage }};
-//     virtual void SetHTMLBackgroundImage(const wxBitmap& bmpBg)
+//     virtual void SetHTMLBackgroundImage(const wxBitmap& bmpBg );
 static int LUACALL wxLua_wxHtmlWindowInterface_SetHTMLBackgroundImage(lua_State *L)
 {
     // const wxBitmap bmpBg
@@ -3427,7 +3427,7 @@ static int LUACALL wxLua_wxHtmlWindowInterface_SetHTMLBackgroundImage(lua_State 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindowInterface_SetHTMLStatusText[] = { &wxluatype_wxHtmlWindowInterface, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlWindowInterface_SetHTMLStatusText(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindowInterface_SetHTMLStatusText[1] = {{ wxLua_wxHtmlWindowInterface_SetHTMLStatusText, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWindowInterface_SetHTMLStatusText }};
-//     virtual void SetHTMLStatusText(const wxString& text)
+//     virtual void SetHTMLStatusText(const wxString& text );
 static int LUACALL wxLua_wxHtmlWindowInterface_SetHTMLStatusText(lua_State *L)
 {
     // const wxString text
@@ -3443,7 +3443,7 @@ static int LUACALL wxLua_wxHtmlWindowInterface_SetHTMLStatusText(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlWindowInterface_SetHTMLWindowTitle[] = { &wxluatype_wxHtmlWindowInterface, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlWindowInterface_SetHTMLWindowTitle(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlWindowInterface_SetHTMLWindowTitle[1] = {{ wxLua_wxHtmlWindowInterface_SetHTMLWindowTitle, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlWindowInterface_SetHTMLWindowTitle }};
-//     virtual void SetHTMLWindowTitle(const wxString& title)
+//     virtual void SetHTMLWindowTitle(const wxString& title );
 static int LUACALL wxLua_wxHtmlWindowInterface_SetHTMLWindowTitle(lua_State *L)
 {
     // const wxString title
@@ -3525,7 +3525,7 @@ int wxluatype_wxSimpleHtmlListBox = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_Append3[] = { &wxluatype_wxSimpleHtmlListBox, &wxluatype_TSTRING, &wxluatype_wxClientData, NULL };
 static int LUACALL wxLua_wxSimpleHtmlListBox_Append3(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSimpleHtmlListBox_Append3[1] = {{ wxLua_wxSimpleHtmlListBox_Append3, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_Append3 }};
-//     int Append(const wxString& item, wxClientData *clientData)
+//     int Append(const wxString& item, wxClientData *clientData );
 static int LUACALL wxLua_wxSimpleHtmlListBox_Append3(lua_State *L)
 {
     // wxClientData clientData
@@ -3545,7 +3545,7 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_Append3(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_Append2[] = { &wxluatype_wxSimpleHtmlListBox, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSimpleHtmlListBox_Append2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSimpleHtmlListBox_Append2[1] = {{ wxLua_wxSimpleHtmlListBox_Append2, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_Append2 }};
-//     int Append(const wxString& item, voidptr_long number) // C++ is (void *clientData) You can put a number here
+//     int Append(const wxString& item, voidptr_long number); // C++ is (void *clientData) You can put a number here
 static int LUACALL wxLua_wxSimpleHtmlListBox_Append2(lua_State *L)
 {
     // voidptr_long number
@@ -3565,7 +3565,7 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_Append2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_Append1[] = { &wxluatype_wxSimpleHtmlListBox, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxSimpleHtmlListBox_Append1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSimpleHtmlListBox_Append1[1] = {{ wxLua_wxSimpleHtmlListBox_Append1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_Append1 }};
-//     int Append(const wxString& item)
+//     int Append(const wxString& item );
 static int LUACALL wxLua_wxSimpleHtmlListBox_Append1(lua_State *L)
 {
     // const wxString item
@@ -3585,7 +3585,7 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_Append1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_Append[] = { &wxluatype_wxSimpleHtmlListBox, &wxluatype_wxArrayString, NULL };
 static int LUACALL wxLua_wxSimpleHtmlListBox_Append(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSimpleHtmlListBox_Append[1] = {{ wxLua_wxSimpleHtmlListBox_Append, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_Append }};
-//     void Append(const wxArrayString& strings)
+//     void Append(const wxArrayString& strings );
 static int LUACALL wxLua_wxSimpleHtmlListBox_Append(lua_State *L)
 {
     // const wxArrayString strings
@@ -3603,7 +3603,7 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_Append(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_Clear[] = { &wxluatype_wxSimpleHtmlListBox, NULL };
 static int LUACALL wxLua_wxSimpleHtmlListBox_Clear(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSimpleHtmlListBox_Clear[1] = {{ wxLua_wxSimpleHtmlListBox_Clear, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_Clear }};
-//     virtual void Clear()
+//     virtual void Clear( );
 static int LUACALL wxLua_wxSimpleHtmlListBox_Clear(lua_State *L)
 {
     // get this
@@ -3619,7 +3619,7 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_Clear(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_Create[] = { &wxluatype_wxSimpleHtmlListBox, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_wxArrayString, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxSimpleHtmlListBox_Create(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSimpleHtmlListBox_Create[1] = {{ wxLua_wxSimpleHtmlListBox_Create, WXLUAMETHOD_METHOD, 6, 9, s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_Create }};
-//     bool Create(wxWindow *parent, wxWindowID id, const wxPoint& pos, const wxSize& size, const wxArrayString& choices, long style = wxHLB_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxSimpleHtmlListBox")
+//     bool Create(wxWindow *parent, wxWindowID id, const wxPoint& pos, const wxSize& size, const wxArrayString& choices, long style = wxHLB_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxSimpleHtmlListBox" );
 static int LUACALL wxLua_wxSimpleHtmlListBox_Create(lua_State *L)
 {
     // get number of arguments
@@ -3655,7 +3655,7 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_Create(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_Delete[] = { &wxluatype_wxSimpleHtmlListBox, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxSimpleHtmlListBox_Delete(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSimpleHtmlListBox_Delete[1] = {{ wxLua_wxSimpleHtmlListBox_Delete, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_Delete }};
-//     virtual void Delete(unsigned int n)
+//     virtual void Delete(unsigned int n );
 static int LUACALL wxLua_wxSimpleHtmlListBox_Delete(lua_State *L)
 {
     // unsigned int n
@@ -3671,7 +3671,7 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_Delete(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_GetCount[] = { &wxluatype_wxSimpleHtmlListBox, NULL };
 static int LUACALL wxLua_wxSimpleHtmlListBox_GetCount(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSimpleHtmlListBox_GetCount[1] = {{ wxLua_wxSimpleHtmlListBox_GetCount, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_GetCount }};
-//     virtual unsigned int GetCount() const
+//     virtual unsigned int GetCount() const;
 static int LUACALL wxLua_wxSimpleHtmlListBox_GetCount(lua_State *L)
 {
     // get this
@@ -3687,7 +3687,7 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_GetCount(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_GetSelection[] = { &wxluatype_wxSimpleHtmlListBox, NULL };
 static int LUACALL wxLua_wxSimpleHtmlListBox_GetSelection(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSimpleHtmlListBox_GetSelection[1] = {{ wxLua_wxSimpleHtmlListBox_GetSelection, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_GetSelection }};
-//     int GetSelection() const
+//     int GetSelection() const;
 static int LUACALL wxLua_wxSimpleHtmlListBox_GetSelection(lua_State *L)
 {
     // get this
@@ -3703,7 +3703,7 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_GetSelection(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_GetString[] = { &wxluatype_wxSimpleHtmlListBox, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxSimpleHtmlListBox_GetString(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSimpleHtmlListBox_GetString[1] = {{ wxLua_wxSimpleHtmlListBox_GetString, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_GetString }};
-//     virtual wxString GetString(unsigned int n) const
+//     virtual wxString GetString(unsigned int n) const;
 static int LUACALL wxLua_wxSimpleHtmlListBox_GetString(lua_State *L)
 {
     // unsigned int n
@@ -3723,7 +3723,7 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_GetString(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_GetStrings[] = { &wxluatype_wxSimpleHtmlListBox, NULL };
 static int LUACALL wxLua_wxSimpleHtmlListBox_GetStrings(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSimpleHtmlListBox_GetStrings[1] = {{ wxLua_wxSimpleHtmlListBox_GetStrings, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_GetStrings }};
-//     wxArrayString GetStrings() const
+//     wxArrayString GetStrings() const;
 static int LUACALL wxLua_wxSimpleHtmlListBox_GetStrings(lua_State *L)
 {
     // get this
@@ -3744,7 +3744,7 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_GetStrings(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_SetSelection[] = { &wxluatype_wxSimpleHtmlListBox, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSimpleHtmlListBox_SetSelection(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSimpleHtmlListBox_SetSelection[1] = {{ wxLua_wxSimpleHtmlListBox_SetSelection, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_SetSelection }};
-//     void SetSelection(int n)
+//     void SetSelection(int n );
 static int LUACALL wxLua_wxSimpleHtmlListBox_SetSelection(lua_State *L)
 {
     // int n
@@ -3760,7 +3760,7 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_SetSelection(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_SetString[] = { &wxluatype_wxSimpleHtmlListBox, &wxluatype_TINTEGER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxSimpleHtmlListBox_SetString(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSimpleHtmlListBox_SetString[1] = {{ wxLua_wxSimpleHtmlListBox_SetString, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_SetString }};
-//     virtual void SetString(unsigned int n, const wxString& s)
+//     virtual void SetString(unsigned int n, const wxString& s );
 static int LUACALL wxLua_wxSimpleHtmlListBox_SetString(lua_State *L)
 {
     // const wxString s
@@ -3780,7 +3780,7 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_SetString(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_wxArrayString, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxSimpleHtmlListBox_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSimpleHtmlListBox_constructor1[1] = {{ wxLua_wxSimpleHtmlListBox_constructor1, WXLUAMETHOD_CONSTRUCTOR, 5, 8, s_wxluatypeArray_wxLua_wxSimpleHtmlListBox_constructor1 }};
-//     wxSimpleHtmlListBox(wxWindow *parent, wxWindowID id, const wxPoint& pos, const wxSize& size, const wxArrayString& choices, long style = wxHLB_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxSimpleHtmlListBox")
+//     wxSimpleHtmlListBox(wxWindow *parent, wxWindowID id, const wxPoint& pos, const wxSize& size, const wxArrayString& choices, long style = wxHLB_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxSimpleHtmlListBox" );
 static int LUACALL wxLua_wxSimpleHtmlListBox_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -3815,7 +3815,7 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxSimpleHtmlListBox_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSimpleHtmlListBox_constructor[1] = {{ wxLua_wxSimpleHtmlListBox_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxSimpleHtmlListBox()
+//     wxSimpleHtmlListBox( );
 static int LUACALL wxLua_wxSimpleHtmlListBox_constructor(lua_State *L)
 {
     // call constructor
@@ -3914,7 +3914,7 @@ int wxluatype_wxHtmlDCRenderer = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlDCRenderer_GetTotalHeight[] = { &wxluatype_wxHtmlDCRenderer, NULL };
 static int LUACALL wxLua_wxHtmlDCRenderer_GetTotalHeight(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlDCRenderer_GetTotalHeight[1] = {{ wxLua_wxHtmlDCRenderer_GetTotalHeight, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlDCRenderer_GetTotalHeight }};
-//     int GetTotalHeight()
+//     int GetTotalHeight( );
 static int LUACALL wxLua_wxHtmlDCRenderer_GetTotalHeight(lua_State *L)
 {
     // get this
@@ -3965,7 +3965,7 @@ static int LUACALL wxLua_wxHtmlDCRenderer_Render1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlDCRenderer_Render[] = { &wxluatype_wxHtmlDCRenderer, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlDCRenderer_Render(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlDCRenderer_Render[1] = {{ wxLua_wxHtmlDCRenderer_Render, WXLUAMETHOD_METHOD, 3, 5, s_wxluatypeArray_wxLua_wxHtmlDCRenderer_Render }};
-//     !%wxchkver_2_8 int Render(int x, int y, int from = 0, int dont_render = false) //, int *known_pagebreaks = NULL, int number_of_pages = 0)
+//     !%wxchkver_2_8 int Render(int x, int y, int from = 0, int dont_render = false); //, int *known_pagebreaks = NULL, int number_of_pages = 0 );
 static int LUACALL wxLua_wxHtmlDCRenderer_Render(lua_State *L)
 {
     // get number of arguments
@@ -3994,7 +3994,7 @@ static int LUACALL wxLua_wxHtmlDCRenderer_Render(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlDCRenderer_SetDC[] = { &wxluatype_wxHtmlDCRenderer, &wxluatype_wxDC, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlDCRenderer_SetDC(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlDCRenderer_SetDC[1] = {{ wxLua_wxHtmlDCRenderer_SetDC, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxHtmlDCRenderer_SetDC }};
-//     void SetDC(wxDC* dc, double pixel_scale = 1.0)
+//     void SetDC(wxDC* dc, double pixel_scale = 1.0 );
 static int LUACALL wxLua_wxHtmlDCRenderer_SetDC(lua_State *L)
 {
     // get number of arguments
@@ -4016,7 +4016,7 @@ static int LUACALL wxLua_wxHtmlDCRenderer_SetDC(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlDCRenderer_SetHtmlText[] = { &wxluatype_wxHtmlDCRenderer, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxHtmlDCRenderer_SetHtmlText(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlDCRenderer_SetHtmlText[1] = {{ wxLua_wxHtmlDCRenderer_SetHtmlText, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxHtmlDCRenderer_SetHtmlText }};
-//     void SetHtmlText(const wxString& html, const wxString& basepath = "", bool isdir = true)
+//     void SetHtmlText(const wxString& html, const wxString& basepath = "", bool isdir = true );
 static int LUACALL wxLua_wxHtmlDCRenderer_SetHtmlText(lua_State *L)
 {
     // get number of arguments
@@ -4038,7 +4038,7 @@ static int LUACALL wxLua_wxHtmlDCRenderer_SetHtmlText(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlDCRenderer_SetSize[] = { &wxluatype_wxHtmlDCRenderer, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlDCRenderer_SetSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlDCRenderer_SetSize[1] = {{ wxLua_wxHtmlDCRenderer_SetSize, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxHtmlDCRenderer_SetSize }};
-//     void SetSize(int width, int height)
+//     void SetSize(int width, int height );
 static int LUACALL wxLua_wxHtmlDCRenderer_SetSize(lua_State *L)
 {
     // int height
@@ -4058,7 +4058,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlDCRenderer_delete[1] = {{ wxlua_us
 
 static int LUACALL wxLua_wxHtmlDCRenderer_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlDCRenderer_constructor[1] = {{ wxLua_wxHtmlDCRenderer_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxHtmlDCRenderer()
+//     wxHtmlDCRenderer( );
 static int LUACALL wxLua_wxHtmlDCRenderer_constructor(lua_State *L)
 {
     // call constructor
@@ -4134,7 +4134,7 @@ int wxluatype_wxHtmlEasyPrinting = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_GetPageSetupData[] = { &wxluatype_wxHtmlEasyPrinting, NULL };
 static int LUACALL wxLua_wxHtmlEasyPrinting_GetPageSetupData(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlEasyPrinting_GetPageSetupData[1] = {{ wxLua_wxHtmlEasyPrinting_GetPageSetupData, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_GetPageSetupData }};
-//     wxPageSetupDialogData* GetPageSetupData()
+//     wxPageSetupDialogData* GetPageSetupData( );
 static int LUACALL wxLua_wxHtmlEasyPrinting_GetPageSetupData(lua_State *L)
 {
     // get this
@@ -4150,7 +4150,7 @@ static int LUACALL wxLua_wxHtmlEasyPrinting_GetPageSetupData(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_GetPrintData[] = { &wxluatype_wxHtmlEasyPrinting, NULL };
 static int LUACALL wxLua_wxHtmlEasyPrinting_GetPrintData(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlEasyPrinting_GetPrintData[1] = {{ wxLua_wxHtmlEasyPrinting_GetPrintData, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_GetPrintData }};
-//     wxPrintData* GetPrintData()
+//     wxPrintData* GetPrintData( );
 static int LUACALL wxLua_wxHtmlEasyPrinting_GetPrintData(lua_State *L)
 {
     // get this
@@ -4168,7 +4168,7 @@ static int LUACALL wxLua_wxHtmlEasyPrinting_GetPrintData(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_PageSetup[] = { &wxluatype_wxHtmlEasyPrinting, NULL };
 static int LUACALL wxLua_wxHtmlEasyPrinting_PageSetup(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlEasyPrinting_PageSetup[1] = {{ wxLua_wxHtmlEasyPrinting_PageSetup, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_PageSetup }};
-//     void PageSetup()
+//     void PageSetup( );
 static int LUACALL wxLua_wxHtmlEasyPrinting_PageSetup(lua_State *L)
 {
     // get this
@@ -4182,7 +4182,7 @@ static int LUACALL wxLua_wxHtmlEasyPrinting_PageSetup(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_PreviewFile[] = { &wxluatype_wxHtmlEasyPrinting, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlEasyPrinting_PreviewFile(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlEasyPrinting_PreviewFile[1] = {{ wxLua_wxHtmlEasyPrinting_PreviewFile, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_PreviewFile }};
-//     bool PreviewFile(const wxString& htmlfile)
+//     bool PreviewFile(const wxString& htmlfile );
 static int LUACALL wxLua_wxHtmlEasyPrinting_PreviewFile(lua_State *L)
 {
     // const wxString htmlfile
@@ -4200,7 +4200,7 @@ static int LUACALL wxLua_wxHtmlEasyPrinting_PreviewFile(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_PreviewText[] = { &wxluatype_wxHtmlEasyPrinting, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlEasyPrinting_PreviewText(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlEasyPrinting_PreviewText[1] = {{ wxLua_wxHtmlEasyPrinting_PreviewText, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_PreviewText }};
-//     bool PreviewText(const wxString& htmltext, const wxString& basepath = "")
+//     bool PreviewText(const wxString& htmltext, const wxString& basepath = "" );
 static int LUACALL wxLua_wxHtmlEasyPrinting_PreviewText(lua_State *L)
 {
     // get number of arguments
@@ -4222,7 +4222,7 @@ static int LUACALL wxLua_wxHtmlEasyPrinting_PreviewText(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_PrintFile[] = { &wxluatype_wxHtmlEasyPrinting, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlEasyPrinting_PrintFile(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlEasyPrinting_PrintFile[1] = {{ wxLua_wxHtmlEasyPrinting_PrintFile, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_PrintFile }};
-//     bool PrintFile(const wxString& htmlfile)
+//     bool PrintFile(const wxString& htmlfile );
 static int LUACALL wxLua_wxHtmlEasyPrinting_PrintFile(lua_State *L)
 {
     // const wxString htmlfile
@@ -4240,7 +4240,7 @@ static int LUACALL wxLua_wxHtmlEasyPrinting_PrintFile(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_PrintText[] = { &wxluatype_wxHtmlEasyPrinting, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlEasyPrinting_PrintText(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlEasyPrinting_PrintText[1] = {{ wxLua_wxHtmlEasyPrinting_PrintText, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_PrintText }};
-//     bool PrintText(const wxString& htmltext, const wxString& basepath = "")
+//     bool PrintText(const wxString& htmltext, const wxString& basepath = "" );
 static int LUACALL wxLua_wxHtmlEasyPrinting_PrintText(lua_State *L)
 {
     // get number of arguments
@@ -4264,7 +4264,7 @@ static int LUACALL wxLua_wxHtmlEasyPrinting_PrintText(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_PrinterSetup[] = { &wxluatype_wxHtmlEasyPrinting, NULL };
 static int LUACALL wxLua_wxHtmlEasyPrinting_PrinterSetup(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlEasyPrinting_PrinterSetup[1] = {{ wxLua_wxHtmlEasyPrinting_PrinterSetup, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_PrinterSetup }};
-//     %wxchkver_2_4&!%wxchkver_2_6 void PrinterSetup()
+//     %wxchkver_2_4&!%wxchkver_2_6 void PrinterSetup( );
 static int LUACALL wxLua_wxHtmlEasyPrinting_PrinterSetup(lua_State *L)
 {
     // get this
@@ -4280,7 +4280,7 @@ static int LUACALL wxLua_wxHtmlEasyPrinting_PrinterSetup(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_SetFooter[] = { &wxluatype_wxHtmlEasyPrinting, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlEasyPrinting_SetFooter(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlEasyPrinting_SetFooter[1] = {{ wxLua_wxHtmlEasyPrinting_SetFooter, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_SetFooter }};
-//     void SetFooter(const wxString& footer, int pg = wxPAGE_ALL)
+//     void SetFooter(const wxString& footer, int pg = wxPAGE_ALL );
 static int LUACALL wxLua_wxHtmlEasyPrinting_SetFooter(lua_State *L)
 {
     // get number of arguments
@@ -4300,7 +4300,7 @@ static int LUACALL wxLua_wxHtmlEasyPrinting_SetFooter(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_SetHeader[] = { &wxluatype_wxHtmlEasyPrinting, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlEasyPrinting_SetHeader(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlEasyPrinting_SetHeader[1] = {{ wxLua_wxHtmlEasyPrinting_SetHeader, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_SetHeader }};
-//     void SetHeader(const wxString& header, int pg = wxPAGE_ALL)
+//     void SetHeader(const wxString& header, int pg = wxPAGE_ALL );
 static int LUACALL wxLua_wxHtmlEasyPrinting_SetHeader(lua_State *L)
 {
     // get number of arguments
@@ -4325,7 +4325,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlEasyPrinting_delete[1] = {{ wxlua_
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_constructor[] = { &wxluatype_TSTRING, &wxluatype_wxFrame, NULL };
 static int LUACALL wxLua_wxHtmlEasyPrinting_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlEasyPrinting_constructor[1] = {{ wxLua_wxHtmlEasyPrinting_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxHtmlEasyPrinting_constructor }};
-//     wxHtmlEasyPrinting(const wxString& name = "Printing", wxFrame* parent_frame = NULL)
+//     wxHtmlEasyPrinting(const wxString& name = "Printing", wxFrame* parent_frame = NULL );
 static int LUACALL wxLua_wxHtmlEasyPrinting_constructor(lua_State *L)
 {
     // get number of arguments
@@ -4398,7 +4398,7 @@ int wxluatype_wxHtmlPrintout = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlPrintout_SetFooter[] = { &wxluatype_wxHtmlPrintout, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlPrintout_SetFooter(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlPrintout_SetFooter[1] = {{ wxLua_wxHtmlPrintout_SetFooter, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxHtmlPrintout_SetFooter }};
-//     void SetFooter(const wxString& footer, int pg = wxPAGE_ALL)
+//     void SetFooter(const wxString& footer, int pg = wxPAGE_ALL );
 static int LUACALL wxLua_wxHtmlPrintout_SetFooter(lua_State *L)
 {
     // get number of arguments
@@ -4418,7 +4418,7 @@ static int LUACALL wxLua_wxHtmlPrintout_SetFooter(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlPrintout_SetHeader[] = { &wxluatype_wxHtmlPrintout, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlPrintout_SetHeader(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlPrintout_SetHeader[1] = {{ wxLua_wxHtmlPrintout_SetHeader, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxHtmlPrintout_SetHeader }};
-//     void SetHeader(const wxString& header, int pg = wxPAGE_ALL)
+//     void SetHeader(const wxString& header, int pg = wxPAGE_ALL );
 static int LUACALL wxLua_wxHtmlPrintout_SetHeader(lua_State *L)
 {
     // get number of arguments
@@ -4438,7 +4438,7 @@ static int LUACALL wxLua_wxHtmlPrintout_SetHeader(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlPrintout_SetHtmlFile[] = { &wxluatype_wxHtmlPrintout, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlPrintout_SetHtmlFile(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlPrintout_SetHtmlFile[1] = {{ wxLua_wxHtmlPrintout_SetHtmlFile, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlPrintout_SetHtmlFile }};
-//     void SetHtmlFile(const wxString& htmlfile)
+//     void SetHtmlFile(const wxString& htmlfile );
 static int LUACALL wxLua_wxHtmlPrintout_SetHtmlFile(lua_State *L)
 {
     // const wxString htmlfile
@@ -4454,7 +4454,7 @@ static int LUACALL wxLua_wxHtmlPrintout_SetHtmlFile(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlPrintout_SetHtmlText[] = { &wxluatype_wxHtmlPrintout, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxHtmlPrintout_SetHtmlText(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlPrintout_SetHtmlText[1] = {{ wxLua_wxHtmlPrintout_SetHtmlText, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxHtmlPrintout_SetHtmlText }};
-//     void SetHtmlText(const wxString& html, const wxString& basepath = "", bool isdir = true)
+//     void SetHtmlText(const wxString& html, const wxString& basepath = "", bool isdir = true );
 static int LUACALL wxLua_wxHtmlPrintout_SetHtmlText(lua_State *L)
 {
     // get number of arguments
@@ -4476,7 +4476,7 @@ static int LUACALL wxLua_wxHtmlPrintout_SetHtmlText(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlPrintout_SetMargins[] = { &wxluatype_wxHtmlPrintout, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlPrintout_SetMargins(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlPrintout_SetMargins[1] = {{ wxLua_wxHtmlPrintout_SetMargins, WXLUAMETHOD_METHOD, 1, 6, s_wxluatypeArray_wxLua_wxHtmlPrintout_SetMargins }};
-//     void SetMargins(float top = 25.2, float bottom = 25.2, float left = 25.2, float right = 25.2, float spaces = 5)
+//     void SetMargins(float top = 25.2, float bottom = 25.2, float left = 25.2, float right = 25.2, float spaces = 5 );
 static int LUACALL wxLua_wxHtmlPrintout_SetMargins(lua_State *L)
 {
     // get number of arguments
@@ -4505,7 +4505,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlPrintout_delete[1] = {{ wxlua_user
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlPrintout_constructor[] = { &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlPrintout_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlPrintout_constructor[1] = {{ wxLua_wxHtmlPrintout_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 1, s_wxluatypeArray_wxLua_wxHtmlPrintout_constructor }};
-//     wxHtmlPrintout(const wxString& title = "Printout")
+//     wxHtmlPrintout(const wxString& title = "Printout" );
 static int LUACALL wxLua_wxHtmlPrintout_constructor(lua_State *L)
 {
     // get number of arguments
@@ -4560,7 +4560,7 @@ int wxluatype_wxHtmlHelpData = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlHelpData_AddBook[] = { &wxluatype_wxHtmlHelpData, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlHelpData_AddBook(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpData_AddBook[1] = {{ wxLua_wxHtmlHelpData_AddBook, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlHelpData_AddBook }};
-//     bool AddBook(const wxString& book)
+//     bool AddBook(const wxString& book );
 static int LUACALL wxLua_wxHtmlHelpData_AddBook(lua_State *L)
 {
     // const wxString book
@@ -4578,7 +4578,7 @@ static int LUACALL wxLua_wxHtmlHelpData_AddBook(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlHelpData_FindPageById[] = { &wxluatype_wxHtmlHelpData, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlHelpData_FindPageById(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpData_FindPageById[1] = {{ wxLua_wxHtmlHelpData_FindPageById, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlHelpData_FindPageById }};
-//     wxString FindPageById(int id)
+//     wxString FindPageById(int id );
 static int LUACALL wxLua_wxHtmlHelpData_FindPageById(lua_State *L)
 {
     // int id
@@ -4596,7 +4596,7 @@ static int LUACALL wxLua_wxHtmlHelpData_FindPageById(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlHelpData_FindPageByName[] = { &wxluatype_wxHtmlHelpData, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlHelpData_FindPageByName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpData_FindPageByName[1] = {{ wxLua_wxHtmlHelpData_FindPageByName, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlHelpData_FindPageByName }};
-//     wxString FindPageByName(const wxString& page)
+//     wxString FindPageByName(const wxString& page );
 static int LUACALL wxLua_wxHtmlHelpData_FindPageByName(lua_State *L)
 {
     // const wxString page
@@ -4614,7 +4614,7 @@ static int LUACALL wxLua_wxHtmlHelpData_FindPageByName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlHelpData_SetTempDir[] = { &wxluatype_wxHtmlHelpData, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlHelpData_SetTempDir(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpData_SetTempDir[1] = {{ wxLua_wxHtmlHelpData_SetTempDir, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlHelpData_SetTempDir }};
-//     void SetTempDir(const wxString& path)
+//     void SetTempDir(const wxString& path );
 static int LUACALL wxLua_wxHtmlHelpData_SetTempDir(lua_State *L)
 {
     // const wxString path
@@ -4632,7 +4632,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpData_delete[1] = {{ wxlua_user
 
 static int LUACALL wxLua_wxHtmlHelpData_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpData_constructor[1] = {{ wxLua_wxHtmlHelpData_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxHtmlHelpData()
+//     wxHtmlHelpData( );
 static int LUACALL wxLua_wxHtmlHelpData_constructor(lua_State *L)
 {
     // call constructor
@@ -4683,7 +4683,7 @@ int wxluatype_wxHtmlHelpController = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlHelpController_AddBook1[] = { &wxluatype_wxHtmlHelpController, &wxluatype_wxFileName, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxHtmlHelpController_AddBook1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpController_AddBook1[1] = {{ wxLua_wxHtmlHelpController_AddBook1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxHtmlHelpController_AddBook1 }};
-//     bool AddBook(const wxFileName& book_file, bool show_wait_msg)
+//     bool AddBook(const wxFileName& book_file, bool show_wait_msg );
 static int LUACALL wxLua_wxHtmlHelpController_AddBook1(lua_State *L)
 {
     // bool show_wait_msg
@@ -4705,7 +4705,7 @@ static int LUACALL wxLua_wxHtmlHelpController_AddBook1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlHelpController_AddBook[] = { &wxluatype_wxHtmlHelpController, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxHtmlHelpController_AddBook(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpController_AddBook[1] = {{ wxLua_wxHtmlHelpController_AddBook, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxHtmlHelpController_AddBook }};
-//     bool AddBook(const wxString& book, bool show_wait_msg)
+//     bool AddBook(const wxString& book, bool show_wait_msg );
 static int LUACALL wxLua_wxHtmlHelpController_AddBook(lua_State *L)
 {
     // bool show_wait_msg
@@ -4725,7 +4725,7 @@ static int LUACALL wxLua_wxHtmlHelpController_AddBook(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlHelpController_Display1[] = { &wxluatype_wxHtmlHelpController, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlHelpController_Display1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpController_Display1[1] = {{ wxLua_wxHtmlHelpController_Display1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlHelpController_Display1 }};
-//     void Display(const int id)
+//     void Display(const int id );
 static int LUACALL wxLua_wxHtmlHelpController_Display1(lua_State *L)
 {
     // const int id
@@ -4741,7 +4741,7 @@ static int LUACALL wxLua_wxHtmlHelpController_Display1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlHelpController_Display[] = { &wxluatype_wxHtmlHelpController, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlHelpController_Display(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpController_Display[1] = {{ wxLua_wxHtmlHelpController_Display, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlHelpController_Display }};
-//     void Display(const wxString& x)
+//     void Display(const wxString& x );
 static int LUACALL wxLua_wxHtmlHelpController_Display(lua_State *L)
 {
     // const wxString x
@@ -4757,7 +4757,7 @@ static int LUACALL wxLua_wxHtmlHelpController_Display(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlHelpController_DisplayIndex[] = { &wxluatype_wxHtmlHelpController, NULL };
 static int LUACALL wxLua_wxHtmlHelpController_DisplayIndex(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpController_DisplayIndex[1] = {{ wxLua_wxHtmlHelpController_DisplayIndex, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlHelpController_DisplayIndex }};
-//     void DisplayIndex()
+//     void DisplayIndex( );
 static int LUACALL wxLua_wxHtmlHelpController_DisplayIndex(lua_State *L)
 {
     // get this
@@ -4773,7 +4773,7 @@ static int LUACALL wxLua_wxHtmlHelpController_DisplayIndex(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlHelpController_ReadCustomization[] = { &wxluatype_wxHtmlHelpController, &wxluatype_wxConfigBase, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlHelpController_ReadCustomization(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpController_ReadCustomization[1] = {{ wxLua_wxHtmlHelpController_ReadCustomization, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxHtmlHelpController_ReadCustomization }};
-//     void ReadCustomization(wxConfigBase* cfg, wxString path = "")
+//     void ReadCustomization(wxConfigBase* cfg, wxString path = "" );
 static int LUACALL wxLua_wxHtmlHelpController_ReadCustomization(lua_State *L)
 {
     // get number of arguments
@@ -4795,7 +4795,7 @@ static int LUACALL wxLua_wxHtmlHelpController_ReadCustomization(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlHelpController_SetTempDir[] = { &wxluatype_wxHtmlHelpController, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlHelpController_SetTempDir(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpController_SetTempDir[1] = {{ wxLua_wxHtmlHelpController_SetTempDir, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlHelpController_SetTempDir }};
-//     void SetTempDir(const wxString& path)
+//     void SetTempDir(const wxString& path );
 static int LUACALL wxLua_wxHtmlHelpController_SetTempDir(lua_State *L)
 {
     // const wxString path
@@ -4811,7 +4811,7 @@ static int LUACALL wxLua_wxHtmlHelpController_SetTempDir(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlHelpController_SetTitleFormat[] = { &wxluatype_wxHtmlHelpController, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlHelpController_SetTitleFormat(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpController_SetTitleFormat[1] = {{ wxLua_wxHtmlHelpController_SetTitleFormat, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHtmlHelpController_SetTitleFormat }};
-//     void SetTitleFormat(const wxString& format)
+//     void SetTitleFormat(const wxString& format );
 static int LUACALL wxLua_wxHtmlHelpController_SetTitleFormat(lua_State *L)
 {
     // const wxString format
@@ -4829,7 +4829,7 @@ static int LUACALL wxLua_wxHtmlHelpController_SetTitleFormat(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlHelpController_UseConfig[] = { &wxluatype_wxHtmlHelpController, &wxluatype_wxConfigBase, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlHelpController_UseConfig(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpController_UseConfig[1] = {{ wxLua_wxHtmlHelpController_UseConfig, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxHtmlHelpController_UseConfig }};
-//     void UseConfig(wxConfigBase* config, const wxString& rootpath = "")
+//     void UseConfig(wxConfigBase* config, const wxString& rootpath = "" );
 static int LUACALL wxLua_wxHtmlHelpController_UseConfig(lua_State *L)
 {
     // get number of arguments
@@ -4849,7 +4849,7 @@ static int LUACALL wxLua_wxHtmlHelpController_UseConfig(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlHelpController_WriteCustomization[] = { &wxluatype_wxHtmlHelpController, &wxluatype_wxConfigBase, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHtmlHelpController_WriteCustomization(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpController_WriteCustomization[1] = {{ wxLua_wxHtmlHelpController_WriteCustomization, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxHtmlHelpController_WriteCustomization }};
-//     void WriteCustomization(wxConfigBase* cfg, wxString path = "")
+//     void WriteCustomization(wxConfigBase* cfg, wxString path = "" );
 static int LUACALL wxLua_wxHtmlHelpController_WriteCustomization(lua_State *L)
 {
     // get number of arguments
@@ -4874,7 +4874,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpController_delete[1] = {{ wxlu
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlHelpController_constructor[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHtmlHelpController_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlHelpController_constructor[1] = {{ wxLua_wxHtmlHelpController_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 1, s_wxluatypeArray_wxLua_wxHtmlHelpController_constructor }};
-//     wxHtmlHelpController(int style = wxHF_DEFAULT_STYLE)
+//     wxHtmlHelpController(int style = wxHF_DEFAULT_STYLE );
 static int LUACALL wxLua_wxHtmlHelpController_constructor(lua_State *L)
 {
     // get number of arguments
@@ -4988,7 +4988,7 @@ wxLuaBindEvent* wxLuaGetEventList_wxhtml(size_t &count)
 }
 
 // ---------------------------------------------------------------------------
-// wxLuaGetDefineList_wxhtml() is called to register %define and %enum
+// wxLuaGetDefineList_wxhtml() is called to register #define and enum
 // ---------------------------------------------------------------------------
 
 wxLuaBindNumber* wxLuaGetDefineList_wxhtml(size_t &count)
@@ -5048,7 +5048,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxhtml(size_t &count)
 
 // ---------------------------------------------------------------------------
 
-// wxLuaGetStringList_wxhtml() is called to register %define %string
+// wxLuaGetStringList_wxhtml() is called to register #define_string
 // ---------------------------------------------------------------------------
 
 wxLuaBindString* wxLuaGetStringList_wxhtml(size_t &count)

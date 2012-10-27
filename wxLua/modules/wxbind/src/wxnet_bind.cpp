@@ -31,7 +31,7 @@ int wxluatype_wxSocketBase = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_Close[] = { &wxluatype_wxSocketBase, NULL };
 static int LUACALL wxLua_wxSocketBase_Close(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_Close[1] = {{ wxLua_wxSocketBase_Close, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketBase_Close }};
-//     void Close()
+//     void Close( );
 static int LUACALL wxLua_wxSocketBase_Close(lua_State *L)
 {
     // get this
@@ -45,7 +45,7 @@ static int LUACALL wxLua_wxSocketBase_Close(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_Destroy[] = { &wxluatype_wxSocketBase, NULL };
 static int LUACALL wxLua_wxSocketBase_Destroy(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_Destroy[1] = {{ wxLua_wxSocketBase_Destroy, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketBase_Destroy }};
-//     bool Destroy()
+//     bool Destroy( );
 static int LUACALL wxLua_wxSocketBase_Destroy(lua_State *L)
 {
     // get this
@@ -61,7 +61,7 @@ static int LUACALL wxLua_wxSocketBase_Destroy(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_Discard[] = { &wxluatype_wxSocketBase, NULL };
 static int LUACALL wxLua_wxSocketBase_Discard(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_Discard[1] = {{ wxLua_wxSocketBase_Discard, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketBase_Discard }};
-//     void Discard()
+//     void Discard( );
 static int LUACALL wxLua_wxSocketBase_Discard(lua_State *L)
 {
     // get this
@@ -75,7 +75,7 @@ static int LUACALL wxLua_wxSocketBase_Discard(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_Error[] = { &wxluatype_wxSocketBase, NULL };
 static int LUACALL wxLua_wxSocketBase_Error(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_Error[1] = {{ wxLua_wxSocketBase_Error, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketBase_Error }};
-//     bool Error() const
+//     bool Error() const;
 static int LUACALL wxLua_wxSocketBase_Error(lua_State *L)
 {
     // get this
@@ -91,7 +91,7 @@ static int LUACALL wxLua_wxSocketBase_Error(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_GetClientData[] = { &wxluatype_wxSocketBase, NULL };
 static int LUACALL wxLua_wxSocketBase_GetClientData(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_GetClientData[1] = {{ wxLua_wxSocketBase_GetClientData, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketBase_GetClientData }};
-//     voidptr_long GetClientData() const // C++ returns (void *) You get a number here
+//     voidptr_long GetClientData() const; // C++ returns (void *) You get a number here
 static int LUACALL wxLua_wxSocketBase_GetClientData(lua_State *L)
 {
     // get this
@@ -107,7 +107,7 @@ static int LUACALL wxLua_wxSocketBase_GetClientData(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_GetFlags[] = { &wxluatype_wxSocketBase, NULL };
 static int LUACALL wxLua_wxSocketBase_GetFlags(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_GetFlags[1] = {{ wxLua_wxSocketBase_GetFlags, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketBase_GetFlags }};
-//     wxSocketFlags GetFlags() const
+//     wxSocketFlags GetFlags() const;
 static int LUACALL wxLua_wxSocketBase_GetFlags(lua_State *L)
 {
     // get this
@@ -123,7 +123,7 @@ static int LUACALL wxLua_wxSocketBase_GetFlags(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_GetLocal[] = { &wxluatype_wxSocketBase, &wxluatype_wxSockAddress, NULL };
 static int LUACALL wxLua_wxSocketBase_GetLocal(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_GetLocal[1] = {{ wxLua_wxSocketBase_GetLocal, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSocketBase_GetLocal }};
-//     bool GetLocal(wxSockAddress& addr) const
+//     bool GetLocal(wxSockAddress& addr) const;
 static int LUACALL wxLua_wxSocketBase_GetLocal(lua_State *L)
 {
     // wxSockAddress addr
@@ -141,7 +141,7 @@ static int LUACALL wxLua_wxSocketBase_GetLocal(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_GetPeer[] = { &wxluatype_wxSocketBase, &wxluatype_wxSockAddress, NULL };
 static int LUACALL wxLua_wxSocketBase_GetPeer(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_GetPeer[1] = {{ wxLua_wxSocketBase_GetPeer, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSocketBase_GetPeer }};
-//     bool GetPeer(wxSockAddress& addr) const
+//     bool GetPeer(wxSockAddress& addr) const;
 static int LUACALL wxLua_wxSocketBase_GetPeer(lua_State *L)
 {
     // wxSockAddress addr
@@ -159,7 +159,7 @@ static int LUACALL wxLua_wxSocketBase_GetPeer(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_InterruptWait[] = { &wxluatype_wxSocketBase, NULL };
 static int LUACALL wxLua_wxSocketBase_InterruptWait(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_InterruptWait[1] = {{ wxLua_wxSocketBase_InterruptWait, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketBase_InterruptWait }};
-//     void InterruptWait()
+//     void InterruptWait( );
 static int LUACALL wxLua_wxSocketBase_InterruptWait(lua_State *L)
 {
     // get this
@@ -173,7 +173,7 @@ static int LUACALL wxLua_wxSocketBase_InterruptWait(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_IsConnected[] = { &wxluatype_wxSocketBase, NULL };
 static int LUACALL wxLua_wxSocketBase_IsConnected(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_IsConnected[1] = {{ wxLua_wxSocketBase_IsConnected, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketBase_IsConnected }};
-//     bool IsConnected() const
+//     bool IsConnected() const;
 static int LUACALL wxLua_wxSocketBase_IsConnected(lua_State *L)
 {
     // get this
@@ -189,7 +189,7 @@ static int LUACALL wxLua_wxSocketBase_IsConnected(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_IsData[] = { &wxluatype_wxSocketBase, NULL };
 static int LUACALL wxLua_wxSocketBase_IsData(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_IsData[1] = {{ wxLua_wxSocketBase_IsData, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketBase_IsData }};
-//     bool IsData() const
+//     bool IsData() const;
 static int LUACALL wxLua_wxSocketBase_IsData(lua_State *L)
 {
     // get this
@@ -205,7 +205,7 @@ static int LUACALL wxLua_wxSocketBase_IsData(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_IsDisconnected[] = { &wxluatype_wxSocketBase, NULL };
 static int LUACALL wxLua_wxSocketBase_IsDisconnected(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_IsDisconnected[1] = {{ wxLua_wxSocketBase_IsDisconnected, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketBase_IsDisconnected }};
-//     bool IsDisconnected() const
+//     bool IsDisconnected() const;
 static int LUACALL wxLua_wxSocketBase_IsDisconnected(lua_State *L)
 {
     // get this
@@ -221,7 +221,7 @@ static int LUACALL wxLua_wxSocketBase_IsDisconnected(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_LastCount[] = { &wxluatype_wxSocketBase, NULL };
 static int LUACALL wxLua_wxSocketBase_LastCount(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_LastCount[1] = {{ wxLua_wxSocketBase_LastCount, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketBase_LastCount }};
-//     unsigned long LastCount() const
+//     unsigned long LastCount() const;
 static int LUACALL wxLua_wxSocketBase_LastCount(lua_State *L)
 {
     // get this
@@ -237,7 +237,7 @@ static int LUACALL wxLua_wxSocketBase_LastCount(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_LastError[] = { &wxluatype_wxSocketBase, NULL };
 static int LUACALL wxLua_wxSocketBase_LastError(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_LastError[1] = {{ wxLua_wxSocketBase_LastError, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketBase_LastError }};
-//     wxSocketError LastError() const // %gtk|%mac causes link error with Borland C++ w/DLL not exported?
+//     wxSocketError LastError() const; // %gtk|%mac causes link error with Borland C++ w/DLL not exported?
 static int LUACALL wxLua_wxSocketBase_LastError(lua_State *L)
 {
     // get this
@@ -253,7 +253,7 @@ static int LUACALL wxLua_wxSocketBase_LastError(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_Notify[] = { &wxluatype_wxSocketBase, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxSocketBase_Notify(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_Notify[1] = {{ wxLua_wxSocketBase_Notify, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSocketBase_Notify }};
-//     void Notify(bool notify)
+//     void Notify(bool notify );
 static int LUACALL wxLua_wxSocketBase_Notify(lua_State *L)
 {
     // bool notify
@@ -269,7 +269,7 @@ static int LUACALL wxLua_wxSocketBase_Notify(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_Ok[] = { &wxluatype_wxSocketBase, NULL };
 static int LUACALL wxLua_wxSocketBase_Ok(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_Ok[1] = {{ wxLua_wxSocketBase_Ok, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketBase_Ok }};
-//     bool Ok() const
+//     bool Ok() const;
 static int LUACALL wxLua_wxSocketBase_Ok(lua_State *L)
 {
     // get this
@@ -363,7 +363,7 @@ static int LUACALL wxLua_wxSocketBase_ReadMsg(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_RestoreState[] = { &wxluatype_wxSocketBase, NULL };
 static int LUACALL wxLua_wxSocketBase_RestoreState(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_RestoreState[1] = {{ wxLua_wxSocketBase_RestoreState, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketBase_RestoreState }};
-//     void RestoreState()
+//     void RestoreState( );
 static int LUACALL wxLua_wxSocketBase_RestoreState(lua_State *L)
 {
     // get this
@@ -377,7 +377,7 @@ static int LUACALL wxLua_wxSocketBase_RestoreState(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_SaveState[] = { &wxluatype_wxSocketBase, NULL };
 static int LUACALL wxLua_wxSocketBase_SaveState(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_SaveState[1] = {{ wxLua_wxSocketBase_SaveState, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketBase_SaveState }};
-//     void SaveState()
+//     void SaveState( );
 static int LUACALL wxLua_wxSocketBase_SaveState(lua_State *L)
 {
     // get this
@@ -391,7 +391,7 @@ static int LUACALL wxLua_wxSocketBase_SaveState(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_SetClientData[] = { &wxluatype_wxSocketBase, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSocketBase_SetClientData(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_SetClientData[1] = {{ wxLua_wxSocketBase_SetClientData, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSocketBase_SetClientData }};
-//     void SetClientData(voidptr_long number) // C++ is (void *clientData) You can put a number here
+//     void SetClientData(voidptr_long number); // C++ is (void *clientData) You can put a number here
 static int LUACALL wxLua_wxSocketBase_SetClientData(lua_State *L)
 {
     // voidptr_long number
@@ -407,7 +407,7 @@ static int LUACALL wxLua_wxSocketBase_SetClientData(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_SetEventHandler[] = { &wxluatype_wxSocketBase, &wxluatype_wxEvtHandler, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSocketBase_SetEventHandler(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_SetEventHandler[1] = {{ wxLua_wxSocketBase_SetEventHandler, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxSocketBase_SetEventHandler }};
-//     void SetEventHandler(wxEvtHandler& handler, int id = -1)
+//     void SetEventHandler(wxEvtHandler& handler, int id = -1 );
 static int LUACALL wxLua_wxSocketBase_SetEventHandler(lua_State *L)
 {
     // get number of arguments
@@ -427,7 +427,7 @@ static int LUACALL wxLua_wxSocketBase_SetEventHandler(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_SetFlags[] = { &wxluatype_wxSocketBase, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxSocketBase_SetFlags(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_SetFlags[1] = {{ wxLua_wxSocketBase_SetFlags, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSocketBase_SetFlags }};
-//     void SetFlags(wxSocketFlags flags)
+//     void SetFlags(wxSocketFlags flags );
 static int LUACALL wxLua_wxSocketBase_SetFlags(lua_State *L)
 {
     // wxSocketFlags flags
@@ -443,7 +443,7 @@ static int LUACALL wxLua_wxSocketBase_SetFlags(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_SetNotify[] = { &wxluatype_wxSocketBase, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxSocketBase_SetNotify(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_SetNotify[1] = {{ wxLua_wxSocketBase_SetNotify, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSocketBase_SetNotify }};
-//     void SetNotify(wxSocketEventFlags flags)
+//     void SetNotify(wxSocketEventFlags flags );
 static int LUACALL wxLua_wxSocketBase_SetNotify(lua_State *L)
 {
     // wxSocketEventFlags flags
@@ -459,7 +459,7 @@ static int LUACALL wxLua_wxSocketBase_SetNotify(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_SetTimeout[] = { &wxluatype_wxSocketBase, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSocketBase_SetTimeout(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_SetTimeout[1] = {{ wxLua_wxSocketBase_SetTimeout, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSocketBase_SetTimeout }};
-//     void SetTimeout(int seconds)
+//     void SetTimeout(int seconds );
 static int LUACALL wxLua_wxSocketBase_SetTimeout(lua_State *L)
 {
     // int seconds
@@ -497,7 +497,7 @@ static int LUACALL wxLua_wxSocketBase_Unread(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_Wait[] = { &wxluatype_wxSocketBase, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSocketBase_Wait(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_Wait[1] = {{ wxLua_wxSocketBase_Wait, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxSocketBase_Wait }};
-//     bool Wait(long seconds = -1, long millisecond = 0)
+//     bool Wait(long seconds = -1, long millisecond = 0 );
 static int LUACALL wxLua_wxSocketBase_Wait(lua_State *L)
 {
     // get number of arguments
@@ -519,7 +519,7 @@ static int LUACALL wxLua_wxSocketBase_Wait(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_WaitForLost[] = { &wxluatype_wxSocketBase, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSocketBase_WaitForLost(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_WaitForLost[1] = {{ wxLua_wxSocketBase_WaitForLost, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxSocketBase_WaitForLost }};
-//     bool WaitForLost(long seconds = -1, long millisecond = 0)
+//     bool WaitForLost(long seconds = -1, long millisecond = 0 );
 static int LUACALL wxLua_wxSocketBase_WaitForLost(lua_State *L)
 {
     // get number of arguments
@@ -541,7 +541,7 @@ static int LUACALL wxLua_wxSocketBase_WaitForLost(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_WaitForRead[] = { &wxluatype_wxSocketBase, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSocketBase_WaitForRead(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_WaitForRead[1] = {{ wxLua_wxSocketBase_WaitForRead, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxSocketBase_WaitForRead }};
-//     bool WaitForRead(long seconds = -1, long millisecond = 0)
+//     bool WaitForRead(long seconds = -1, long millisecond = 0 );
 static int LUACALL wxLua_wxSocketBase_WaitForRead(lua_State *L)
 {
     // get number of arguments
@@ -563,7 +563,7 @@ static int LUACALL wxLua_wxSocketBase_WaitForRead(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_WaitForWrite[] = { &wxluatype_wxSocketBase, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSocketBase_WaitForWrite(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_WaitForWrite[1] = {{ wxLua_wxSocketBase_WaitForWrite, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxSocketBase_WaitForWrite }};
-//     bool WaitForWrite(long seconds = -1, long millisecond = 0)
+//     bool WaitForWrite(long seconds = -1, long millisecond = 0 );
 static int LUACALL wxLua_wxSocketBase_WaitForWrite(lua_State *L)
 {
     // get number of arguments
@@ -690,7 +690,7 @@ int wxluatype_wxSocketClient = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketClient_Connect[] = { &wxluatype_wxSocketClient, &wxluatype_wxSockAddress, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxSocketClient_Connect(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketClient_Connect[1] = {{ wxLua_wxSocketClient_Connect, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxSocketClient_Connect }};
-//     bool Connect(wxSockAddress& address, bool wait = true)
+//     bool Connect(wxSockAddress& address, bool wait = true );
 static int LUACALL wxLua_wxSocketClient_Connect(lua_State *L)
 {
     // get number of arguments
@@ -712,7 +712,7 @@ static int LUACALL wxLua_wxSocketClient_Connect(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketClient_WaitOnConnect[] = { &wxluatype_wxSocketClient, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSocketClient_WaitOnConnect(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketClient_WaitOnConnect[1] = {{ wxLua_wxSocketClient_WaitOnConnect, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxSocketClient_WaitOnConnect }};
-//     bool WaitOnConnect(long seconds = -1, long milliseconds = 0)
+//     bool WaitOnConnect(long seconds = -1, long milliseconds = 0 );
 static int LUACALL wxLua_wxSocketClient_WaitOnConnect(lua_State *L)
 {
     // get number of arguments
@@ -737,7 +737,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketClient_delete[1] = {{ wxlua_user
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketClient_constructor[] = { &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxSocketClient_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketClient_constructor[1] = {{ wxLua_wxSocketClient_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 1, s_wxluatypeArray_wxLua_wxSocketClient_constructor }};
-//     wxSocketClient(wxSocketFlags flags = wxSOCKET_NONE)
+//     wxSocketClient(wxSocketFlags flags = wxSOCKET_NONE );
 static int LUACALL wxLua_wxSocketClient_constructor(lua_State *L)
 {
     // get number of arguments
@@ -789,7 +789,7 @@ int wxluatype_wxSocketServer = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketServer_Accept[] = { &wxluatype_wxSocketServer, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxSocketServer_Accept(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketServer_Accept[1] = {{ wxLua_wxSocketServer_Accept, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxSocketServer_Accept }};
-//     wxSocketBase* Accept(bool wait = true)
+//     wxSocketBase* Accept(bool wait = true );
 static int LUACALL wxLua_wxSocketServer_Accept(lua_State *L)
 {
     // get number of arguments
@@ -809,7 +809,7 @@ static int LUACALL wxLua_wxSocketServer_Accept(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketServer_AcceptWith[] = { &wxluatype_wxSocketServer, &wxluatype_wxSocketBase, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxSocketServer_AcceptWith(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketServer_AcceptWith[1] = {{ wxLua_wxSocketServer_AcceptWith, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxSocketServer_AcceptWith }};
-//     bool AcceptWith(wxSocketBase& socket, bool wait = true)
+//     bool AcceptWith(wxSocketBase& socket, bool wait = true );
 static int LUACALL wxLua_wxSocketServer_AcceptWith(lua_State *L)
 {
     // get number of arguments
@@ -831,7 +831,7 @@ static int LUACALL wxLua_wxSocketServer_AcceptWith(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketServer_WaitForAccept[] = { &wxluatype_wxSocketServer, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSocketServer_WaitForAccept(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketServer_WaitForAccept[1] = {{ wxLua_wxSocketServer_WaitForAccept, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxSocketServer_WaitForAccept }};
-//     bool WaitForAccept(long seconds = -1, long millisecond = 0)
+//     bool WaitForAccept(long seconds = -1, long millisecond = 0 );
 static int LUACALL wxLua_wxSocketServer_WaitForAccept(lua_State *L)
 {
     // get number of arguments
@@ -856,7 +856,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketServer_delete[1] = {{ wxlua_user
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketServer_constructor[] = { &wxluatype_wxSockAddress, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxSocketServer_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketServer_constructor[1] = {{ wxLua_wxSocketServer_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxSocketServer_constructor }};
-//     wxSocketServer(wxSockAddress& address, wxSocketFlags flags = wxSOCKET_NONE)
+//     wxSocketServer(wxSockAddress& address, wxSocketFlags flags = wxSOCKET_NONE );
 static int LUACALL wxLua_wxSocketServer_constructor(lua_State *L)
 {
     // get number of arguments
@@ -911,7 +911,7 @@ int wxluatype_wxSocketEvent = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketEvent_GetClientData[] = { &wxluatype_wxSocketEvent, NULL };
 static int LUACALL wxLua_wxSocketEvent_GetClientData(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketEvent_GetClientData[1] = {{ wxLua_wxSocketEvent_GetClientData, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketEvent_GetClientData }};
-//     voidptr_long GetClientData() // C++ returns (void *) You get a number here
+//     voidptr_long GetClientData(); // C++ returns (void *) You get a number here
 static int LUACALL wxLua_wxSocketEvent_GetClientData(lua_State *L)
 {
     // get this
@@ -927,7 +927,7 @@ static int LUACALL wxLua_wxSocketEvent_GetClientData(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketEvent_GetSocket[] = { &wxluatype_wxSocketEvent, NULL };
 static int LUACALL wxLua_wxSocketEvent_GetSocket(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketEvent_GetSocket[1] = {{ wxLua_wxSocketEvent_GetSocket, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketEvent_GetSocket }};
-//     wxSocketBase * GetSocket() const
+//     wxSocketBase * GetSocket() const;
 static int LUACALL wxLua_wxSocketEvent_GetSocket(lua_State *L)
 {
     // get this
@@ -943,7 +943,7 @@ static int LUACALL wxLua_wxSocketEvent_GetSocket(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketEvent_GetSocketEvent[] = { &wxluatype_wxSocketEvent, NULL };
 static int LUACALL wxLua_wxSocketEvent_GetSocketEvent(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketEvent_GetSocketEvent[1] = {{ wxLua_wxSocketEvent_GetSocketEvent, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketEvent_GetSocketEvent }};
-//     wxSocketNotify GetSocketEvent() const
+//     wxSocketNotify GetSocketEvent() const;
 static int LUACALL wxLua_wxSocketEvent_GetSocketEvent(lua_State *L)
 {
     // get this
@@ -962,7 +962,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketEvent_delete[1] = {{ wxlua_userd
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketEvent_constructor[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSocketEvent_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketEvent_constructor[1] = {{ wxLua_wxSocketEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 1, s_wxluatypeArray_wxLua_wxSocketEvent_constructor }};
-//     wxSocketEvent(int id = 0)
+//     wxSocketEvent(int id = 0 );
 static int LUACALL wxLua_wxSocketEvent_constructor(lua_State *L)
 {
     // get number of arguments
@@ -1015,7 +1015,7 @@ int wxluatype_wxSockAddress = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSockAddress_Clear[] = { &wxluatype_wxSockAddress, NULL };
 static int LUACALL wxLua_wxSockAddress_Clear(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSockAddress_Clear[1] = {{ wxLua_wxSockAddress_Clear, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSockAddress_Clear }};
-//     void Clear()
+//     void Clear( );
 static int LUACALL wxLua_wxSockAddress_Clear(lua_State *L)
 {
     // get this
@@ -1058,7 +1058,7 @@ int wxluatype_wxIPaddress = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIPaddress_AnyAddress[] = { &wxluatype_wxIPaddress, NULL };
 static int LUACALL wxLua_wxIPaddress_AnyAddress(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_AnyAddress[1] = {{ wxLua_wxIPaddress_AnyAddress, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxIPaddress_AnyAddress }};
-//     bool AnyAddress()
+//     bool AnyAddress( );
 static int LUACALL wxLua_wxIPaddress_AnyAddress(lua_State *L)
 {
     // get this
@@ -1074,7 +1074,7 @@ static int LUACALL wxLua_wxIPaddress_AnyAddress(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIPaddress_Hostname1[] = { &wxluatype_wxIPaddress, NULL };
 static int LUACALL wxLua_wxIPaddress_Hostname1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_Hostname1[1] = {{ wxLua_wxIPaddress_Hostname1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxIPaddress_Hostname1 }};
-//     wxString Hostname()
+//     wxString Hostname( );
 static int LUACALL wxLua_wxIPaddress_Hostname1(lua_State *L)
 {
     // get this
@@ -1090,7 +1090,7 @@ static int LUACALL wxLua_wxIPaddress_Hostname1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIPaddress_Hostname[] = { &wxluatype_wxIPaddress, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxIPaddress_Hostname(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_Hostname[1] = {{ wxLua_wxIPaddress_Hostname, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxIPaddress_Hostname }};
-//     bool Hostname(const wxString& hostname)
+//     bool Hostname(const wxString& hostname );
 static int LUACALL wxLua_wxIPaddress_Hostname(lua_State *L)
 {
     // const wxString hostname
@@ -1108,7 +1108,7 @@ static int LUACALL wxLua_wxIPaddress_Hostname(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIPaddress_IPAddress[] = { &wxluatype_wxIPaddress, NULL };
 static int LUACALL wxLua_wxIPaddress_IPAddress(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_IPAddress[1] = {{ wxLua_wxIPaddress_IPAddress, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxIPaddress_IPAddress }};
-//     wxString  IPAddress()
+//     wxString  IPAddress( );
 static int LUACALL wxLua_wxIPaddress_IPAddress(lua_State *L)
 {
     // get this
@@ -1124,7 +1124,7 @@ static int LUACALL wxLua_wxIPaddress_IPAddress(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIPaddress_IsLocalHost[] = { &wxluatype_wxIPaddress, NULL };
 static int LUACALL wxLua_wxIPaddress_IsLocalHost(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_IsLocalHost[1] = {{ wxLua_wxIPaddress_IsLocalHost, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxIPaddress_IsLocalHost }};
-//     virtual bool IsLocalHost()
+//     virtual bool IsLocalHost( );
 static int LUACALL wxLua_wxIPaddress_IsLocalHost(lua_State *L)
 {
     // get this
@@ -1140,7 +1140,7 @@ static int LUACALL wxLua_wxIPaddress_IsLocalHost(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIPaddress_LocalHost[] = { &wxluatype_wxIPaddress, NULL };
 static int LUACALL wxLua_wxIPaddress_LocalHost(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_LocalHost[1] = {{ wxLua_wxIPaddress_LocalHost, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxIPaddress_LocalHost }};
-//     bool LocalHost()
+//     bool LocalHost( );
 static int LUACALL wxLua_wxIPaddress_LocalHost(lua_State *L)
 {
     // get this
@@ -1156,7 +1156,7 @@ static int LUACALL wxLua_wxIPaddress_LocalHost(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIPaddress_Service2[] = { &wxluatype_wxIPaddress, NULL };
 static int LUACALL wxLua_wxIPaddress_Service2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_Service2[1] = {{ wxLua_wxIPaddress_Service2, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxIPaddress_Service2 }};
-//     unsigned short Service()
+//     unsigned short Service( );
 static int LUACALL wxLua_wxIPaddress_Service2(lua_State *L)
 {
     // get this
@@ -1172,7 +1172,7 @@ static int LUACALL wxLua_wxIPaddress_Service2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIPaddress_Service1[] = { &wxluatype_wxIPaddress, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxIPaddress_Service1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_Service1[1] = {{ wxLua_wxIPaddress_Service1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxIPaddress_Service1 }};
-//     bool Service(unsigned short service)
+//     bool Service(unsigned short service );
 static int LUACALL wxLua_wxIPaddress_Service1(lua_State *L)
 {
     // unsigned short service
@@ -1190,7 +1190,7 @@ static int LUACALL wxLua_wxIPaddress_Service1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIPaddress_Service[] = { &wxluatype_wxIPaddress, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxIPaddress_Service(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_Service[1] = {{ wxLua_wxIPaddress_Service, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxIPaddress_Service }};
-//     bool Service(const wxString& service)
+//     bool Service(const wxString& service );
 static int LUACALL wxLua_wxIPaddress_Service(lua_State *L)
 {
     // const wxString service
@@ -1274,7 +1274,7 @@ int wxluatype_wxIPV4address = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIPV4address_Hostname[] = { &wxluatype_wxIPV4address, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxIPV4address_Hostname(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPV4address_Hostname[1] = {{ wxLua_wxIPV4address_Hostname, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxIPV4address_Hostname }};
-//     bool Hostname(unsigned long addr)
+//     bool Hostname(unsigned long addr );
 static int LUACALL wxLua_wxIPV4address_Hostname(lua_State *L)
 {
     // unsigned long addr
@@ -1312,7 +1312,7 @@ static int LUACALL wxLua_wxIPV4address_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxIPV4address_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPV4address_constructor[1] = {{ wxLua_wxIPV4address_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxIPV4address()
+//     wxIPV4address( );
 static int LUACALL wxLua_wxIPV4address_constructor(lua_State *L)
 {
     // call constructor
@@ -1373,7 +1373,7 @@ int wxluatype_wxProtocol = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProtocol_Abort[] = { &wxluatype_wxProtocol, NULL };
 static int LUACALL wxLua_wxProtocol_Abort(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxProtocol_Abort[1] = {{ wxLua_wxProtocol_Abort, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxProtocol_Abort }};
-//     bool Abort()
+//     bool Abort( );
 static int LUACALL wxLua_wxProtocol_Abort(lua_State *L)
 {
     // get this
@@ -1389,7 +1389,7 @@ static int LUACALL wxLua_wxProtocol_Abort(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProtocol_GetContentType[] = { &wxluatype_wxProtocol, NULL };
 static int LUACALL wxLua_wxProtocol_GetContentType(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxProtocol_GetContentType[1] = {{ wxLua_wxProtocol_GetContentType, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxProtocol_GetContentType }};
-//     wxString GetContentType()
+//     wxString GetContentType( );
 static int LUACALL wxLua_wxProtocol_GetContentType(lua_State *L)
 {
     // get this
@@ -1405,7 +1405,7 @@ static int LUACALL wxLua_wxProtocol_GetContentType(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProtocol_GetError[] = { &wxluatype_wxProtocol, NULL };
 static int LUACALL wxLua_wxProtocol_GetError(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxProtocol_GetError[1] = {{ wxLua_wxProtocol_GetError, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxProtocol_GetError }};
-//     wxProtocolError GetError()
+//     wxProtocolError GetError( );
 static int LUACALL wxLua_wxProtocol_GetError(lua_State *L)
 {
     // get this
@@ -1423,7 +1423,7 @@ static int LUACALL wxLua_wxProtocol_GetError(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProtocol_GetInputStream[] = { &wxluatype_wxProtocol, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxProtocol_GetInputStream(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxProtocol_GetInputStream[1] = {{ wxLua_wxProtocol_GetInputStream, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxProtocol_GetInputStream }};
-//     wxInputStream *GetInputStream(const wxString& path)
+//     wxInputStream *GetInputStream(const wxString& path );
 static int LUACALL wxLua_wxProtocol_GetInputStream(lua_State *L)
 {
     // const wxString path
@@ -1443,7 +1443,7 @@ static int LUACALL wxLua_wxProtocol_GetInputStream(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProtocol_Reconnect[] = { &wxluatype_wxProtocol, NULL };
 static int LUACALL wxLua_wxProtocol_Reconnect(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxProtocol_Reconnect[1] = {{ wxLua_wxProtocol_Reconnect, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxProtocol_Reconnect }};
-//     bool Reconnect()
+//     bool Reconnect( );
 static int LUACALL wxLua_wxProtocol_Reconnect(lua_State *L)
 {
     // get this
@@ -1459,7 +1459,7 @@ static int LUACALL wxLua_wxProtocol_Reconnect(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProtocol_SetPassword[] = { &wxluatype_wxProtocol, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxProtocol_SetPassword(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxProtocol_SetPassword[1] = {{ wxLua_wxProtocol_SetPassword, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxProtocol_SetPassword }};
-//     void SetPassword(const wxString& user)
+//     void SetPassword(const wxString& user );
 static int LUACALL wxLua_wxProtocol_SetPassword(lua_State *L)
 {
     // const wxString user
@@ -1475,7 +1475,7 @@ static int LUACALL wxLua_wxProtocol_SetPassword(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProtocol_SetUser[] = { &wxluatype_wxProtocol, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxProtocol_SetUser(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxProtocol_SetUser[1] = {{ wxLua_wxProtocol_SetUser, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxProtocol_SetUser }};
-//     void SetUser(const wxString& user)
+//     void SetUser(const wxString& user );
 static int LUACALL wxLua_wxProtocol_SetUser(lua_State *L)
 {
     // const wxString user
@@ -1534,7 +1534,7 @@ int wxluatype_wxHTTP = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHTTP_GetHeader[] = { &wxluatype_wxHTTP, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHTTP_GetHeader(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHTTP_GetHeader[1] = {{ wxLua_wxHTTP_GetHeader, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHTTP_GetHeader }};
-//     wxString GetHeader(const wxString& header)
+//     wxString GetHeader(const wxString& header );
 static int LUACALL wxLua_wxHTTP_GetHeader(lua_State *L)
 {
     // const wxString header
@@ -1552,7 +1552,7 @@ static int LUACALL wxLua_wxHTTP_GetHeader(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHTTP_GetResponse[] = { &wxluatype_wxHTTP, NULL };
 static int LUACALL wxLua_wxHTTP_GetResponse(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHTTP_GetResponse[1] = {{ wxLua_wxHTTP_GetResponse, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHTTP_GetResponse }};
-//     int GetResponse() const
+//     int GetResponse() const;
 static int LUACALL wxLua_wxHTTP_GetResponse(lua_State *L)
 {
     // get this
@@ -1568,7 +1568,7 @@ static int LUACALL wxLua_wxHTTP_GetResponse(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHTTP_SetHeader[] = { &wxluatype_wxHTTP, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHTTP_SetHeader(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHTTP_SetHeader[1] = {{ wxLua_wxHTTP_SetHeader, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxHTTP_SetHeader }};
-//     void SetHeader(const wxString& header, const wxString& h_data)
+//     void SetHeader(const wxString& header, const wxString& h_data );
 static int LUACALL wxLua_wxHTTP_SetHeader(lua_State *L)
 {
     // const wxString h_data
@@ -1588,7 +1588,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxHTTP_delete[1] = {{ wxlua_userdata_del
 
 static int LUACALL wxLua_wxHTTP_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHTTP_constructor[1] = {{ wxLua_wxHTTP_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxHTTP()
+//     wxHTTP( );
 static int LUACALL wxLua_wxHTTP_constructor(lua_State *L)
 {
     // call constructor
@@ -1637,7 +1637,7 @@ int wxluatype_wxFTP = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_ChDir[] = { &wxluatype_wxFTP, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFTP_ChDir(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_ChDir[1] = {{ wxLua_wxFTP_ChDir, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFTP_ChDir }};
-//     bool ChDir(const wxString& dir)
+//     bool ChDir(const wxString& dir );
 static int LUACALL wxLua_wxFTP_ChDir(lua_State *L)
 {
     // const wxString dir
@@ -1655,7 +1655,7 @@ static int LUACALL wxLua_wxFTP_ChDir(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_CheckCommand[] = { &wxluatype_wxFTP, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxFTP_CheckCommand(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_CheckCommand[1] = {{ wxLua_wxFTP_CheckCommand, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxFTP_CheckCommand }};
-//     bool CheckCommand(const wxString& command, char ret)
+//     bool CheckCommand(const wxString& command, char ret );
 static int LUACALL wxLua_wxFTP_CheckCommand(lua_State *L)
 {
     // char ret
@@ -1675,7 +1675,7 @@ static int LUACALL wxLua_wxFTP_CheckCommand(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_FileExists[] = { &wxluatype_wxFTP, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFTP_FileExists(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_FileExists[1] = {{ wxLua_wxFTP_FileExists, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFTP_FileExists }};
-//     bool FileExists(const wxString& filename)
+//     bool FileExists(const wxString& filename );
 static int LUACALL wxLua_wxFTP_FileExists(lua_State *L)
 {
     // const wxString filename
@@ -1695,7 +1695,7 @@ static int LUACALL wxLua_wxFTP_FileExists(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_GetDirList[] = { &wxluatype_wxFTP, &wxluatype_wxArrayString, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFTP_GetDirList(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_GetDirList[1] = {{ wxLua_wxFTP_GetDirList, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxFTP_GetDirList }};
-//     bool GetDirList(wxArrayString& files, const wxString& wildcard = "")
+//     bool GetDirList(wxArrayString& files, const wxString& wildcard = "" );
 static int LUACALL wxLua_wxFTP_GetDirList(lua_State *L)
 {
     // get number of arguments
@@ -1719,7 +1719,7 @@ static int LUACALL wxLua_wxFTP_GetDirList(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_GetFileSize[] = { &wxluatype_wxFTP, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFTP_GetFileSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_GetFileSize[1] = {{ wxLua_wxFTP_GetFileSize, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFTP_GetFileSize }};
-//     int GetFileSize(const wxString& filename)
+//     int GetFileSize(const wxString& filename );
 static int LUACALL wxLua_wxFTP_GetFileSize(lua_State *L)
 {
     // const wxString filename
@@ -1739,7 +1739,7 @@ static int LUACALL wxLua_wxFTP_GetFileSize(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_GetFilesList[] = { &wxluatype_wxFTP, &wxluatype_wxArrayString, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFTP_GetFilesList(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_GetFilesList[1] = {{ wxLua_wxFTP_GetFilesList, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxFTP_GetFilesList }};
-//     bool GetFilesList(wxArrayString& files, const wxString& wildcard = "")
+//     bool GetFilesList(wxArrayString& files, const wxString& wildcard = "" );
 static int LUACALL wxLua_wxFTP_GetFilesList(lua_State *L)
 {
     // get number of arguments
@@ -1763,7 +1763,7 @@ static int LUACALL wxLua_wxFTP_GetFilesList(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_GetLastResult[] = { &wxluatype_wxFTP, NULL };
 static int LUACALL wxLua_wxFTP_GetLastResult(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_GetLastResult[1] = {{ wxLua_wxFTP_GetLastResult, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFTP_GetLastResult }};
-//     wxString GetLastResult()
+//     wxString GetLastResult( );
 static int LUACALL wxLua_wxFTP_GetLastResult(lua_State *L)
 {
     // get this
@@ -1781,7 +1781,7 @@ static int LUACALL wxLua_wxFTP_GetLastResult(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_GetOutputStream[] = { &wxluatype_wxFTP, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFTP_GetOutputStream(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_GetOutputStream[1] = {{ wxLua_wxFTP_GetOutputStream, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFTP_GetOutputStream }};
-//     wxOutputStream * GetOutputStream(const wxString& file)
+//     wxOutputStream * GetOutputStream(const wxString& file );
 static int LUACALL wxLua_wxFTP_GetOutputStream(lua_State *L)
 {
     // const wxString file
@@ -1801,7 +1801,7 @@ static int LUACALL wxLua_wxFTP_GetOutputStream(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_MkDir[] = { &wxluatype_wxFTP, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFTP_MkDir(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_MkDir[1] = {{ wxLua_wxFTP_MkDir, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFTP_MkDir }};
-//     bool MkDir(const wxString& dir)
+//     bool MkDir(const wxString& dir );
 static int LUACALL wxLua_wxFTP_MkDir(lua_State *L)
 {
     // const wxString dir
@@ -1819,7 +1819,7 @@ static int LUACALL wxLua_wxFTP_MkDir(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_Pwd[] = { &wxluatype_wxFTP, NULL };
 static int LUACALL wxLua_wxFTP_Pwd(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_Pwd[1] = {{ wxLua_wxFTP_Pwd, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFTP_Pwd }};
-//     wxString Pwd()
+//     wxString Pwd( );
 static int LUACALL wxLua_wxFTP_Pwd(lua_State *L)
 {
     // get this
@@ -1835,7 +1835,7 @@ static int LUACALL wxLua_wxFTP_Pwd(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_Rename[] = { &wxluatype_wxFTP, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFTP_Rename(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_Rename[1] = {{ wxLua_wxFTP_Rename, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxFTP_Rename }};
-//     bool Rename(const wxString& src, const wxString& dst)
+//     bool Rename(const wxString& src, const wxString& dst );
 static int LUACALL wxLua_wxFTP_Rename(lua_State *L)
 {
     // const wxString dst
@@ -1855,7 +1855,7 @@ static int LUACALL wxLua_wxFTP_Rename(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_RmDir[] = { &wxluatype_wxFTP, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFTP_RmDir(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_RmDir[1] = {{ wxLua_wxFTP_RmDir, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFTP_RmDir }};
-//     bool RmDir(const wxString& dir)
+//     bool RmDir(const wxString& dir );
 static int LUACALL wxLua_wxFTP_RmDir(lua_State *L)
 {
     // const wxString dir
@@ -1873,7 +1873,7 @@ static int LUACALL wxLua_wxFTP_RmDir(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_RmFile[] = { &wxluatype_wxFTP, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFTP_RmFile(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_RmFile[1] = {{ wxLua_wxFTP_RmFile, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFTP_RmFile }};
-//     bool RmFile(const wxString& path)
+//     bool RmFile(const wxString& path );
 static int LUACALL wxLua_wxFTP_RmFile(lua_State *L)
 {
     // const wxString path
@@ -1891,7 +1891,7 @@ static int LUACALL wxLua_wxFTP_RmFile(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_SendCommand[] = { &wxluatype_wxFTP, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFTP_SendCommand(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_SendCommand[1] = {{ wxLua_wxFTP_SendCommand, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFTP_SendCommand }};
-//     char SendCommand(const wxString& command)
+//     char SendCommand(const wxString& command );
 static int LUACALL wxLua_wxFTP_SendCommand(lua_State *L)
 {
     // const wxString command
@@ -1909,7 +1909,7 @@ static int LUACALL wxLua_wxFTP_SendCommand(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_SetAscii[] = { &wxluatype_wxFTP, NULL };
 static int LUACALL wxLua_wxFTP_SetAscii(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_SetAscii[1] = {{ wxLua_wxFTP_SetAscii, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFTP_SetAscii }};
-//     bool SetAscii()
+//     bool SetAscii( );
 static int LUACALL wxLua_wxFTP_SetAscii(lua_State *L)
 {
     // get this
@@ -1925,7 +1925,7 @@ static int LUACALL wxLua_wxFTP_SetAscii(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_SetBinary[] = { &wxluatype_wxFTP, NULL };
 static int LUACALL wxLua_wxFTP_SetBinary(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_SetBinary[1] = {{ wxLua_wxFTP_SetBinary, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFTP_SetBinary }};
-//     bool SetBinary()
+//     bool SetBinary( );
 static int LUACALL wxLua_wxFTP_SetBinary(lua_State *L)
 {
     // get this
@@ -1941,7 +1941,7 @@ static int LUACALL wxLua_wxFTP_SetBinary(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_SetPassive[] = { &wxluatype_wxFTP, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxFTP_SetPassive(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_SetPassive[1] = {{ wxLua_wxFTP_SetPassive, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFTP_SetPassive }};
-//     void SetPassive(bool pasv)
+//     void SetPassive(bool pasv );
 static int LUACALL wxLua_wxFTP_SetPassive(lua_State *L)
 {
     // bool pasv
@@ -1957,7 +1957,7 @@ static int LUACALL wxLua_wxFTP_SetPassive(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_SetTransferMode[] = { &wxluatype_wxFTP, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFTP_SetTransferMode(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_SetTransferMode[1] = {{ wxLua_wxFTP_SetTransferMode, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFTP_SetTransferMode }};
-//     bool SetTransferMode(wxFTP::TransferMode mode)
+//     bool SetTransferMode(wxFTP::TransferMode mode );
 static int LUACALL wxLua_wxFTP_SetTransferMode(lua_State *L)
 {
     // wxFTP::TransferMode mode
@@ -1977,7 +1977,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_delete[1] = {{ wxlua_userdata_dele
 
 static int LUACALL wxLua_wxFTP_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_constructor[1] = {{ wxLua_wxFTP_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxFTP()
+//     wxFTP( );
 static int LUACALL wxLua_wxFTP_constructor(lua_State *L)
 {
     // call constructor
@@ -2063,7 +2063,7 @@ int wxluatype_wxURI = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_BuildURI[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_BuildURI(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_BuildURI[1] = {{ wxLua_wxURI_BuildURI, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_BuildURI }};
-//     wxString BuildURI() const
+//     wxString BuildURI() const;
 static int LUACALL wxLua_wxURI_BuildURI(lua_State *L)
 {
     // get this
@@ -2079,7 +2079,7 @@ static int LUACALL wxLua_wxURI_BuildURI(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_BuildUnescapedURI[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_BuildUnescapedURI(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_BuildUnescapedURI[1] = {{ wxLua_wxURI_BuildUnescapedURI, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_BuildUnescapedURI }};
-//     wxString BuildUnescapedURI() const
+//     wxString BuildUnescapedURI() const;
 static int LUACALL wxLua_wxURI_BuildUnescapedURI(lua_State *L)
 {
     // get this
@@ -2097,7 +2097,7 @@ static int LUACALL wxLua_wxURI_BuildUnescapedURI(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_Create1[] = { &wxluatype_wxURI, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxURI_Create1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_Create1[1] = {{ wxLua_wxURI_Create1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxURI_Create1 }};
-//     !%wxchkver_2_9_2 wxString Create(const wxString& uri)
+//     !%wxchkver_2_9_2 wxString Create(const wxString& uri );
 static int LUACALL wxLua_wxURI_Create1(lua_State *L)
 {
     // const wxString uri
@@ -2118,7 +2118,7 @@ static int LUACALL wxLua_wxURI_Create1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_Create[] = { &wxluatype_wxURI, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxURI_Create(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_Create[1] = {{ wxLua_wxURI_Create, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxURI_Create }};
-//     %wxchkver_2_9_2 bool Create(const wxString& uri)
+//     %wxchkver_2_9_2 bool Create(const wxString& uri );
 static int LUACALL wxLua_wxURI_Create(lua_State *L)
 {
     // const wxString uri
@@ -2138,7 +2138,7 @@ static int LUACALL wxLua_wxURI_Create(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_GetFragment[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_GetFragment(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_GetFragment[1] = {{ wxLua_wxURI_GetFragment, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_GetFragment }};
-//     wxString GetFragment() const
+//     wxString GetFragment() const;
 static int LUACALL wxLua_wxURI_GetFragment(lua_State *L)
 {
     // get this
@@ -2154,7 +2154,7 @@ static int LUACALL wxLua_wxURI_GetFragment(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_GetHostType[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_GetHostType(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_GetHostType[1] = {{ wxLua_wxURI_GetHostType, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_GetHostType }};
-//     wxURIHostType GetHostType() const
+//     wxURIHostType GetHostType() const;
 static int LUACALL wxLua_wxURI_GetHostType(lua_State *L)
 {
     // get this
@@ -2170,7 +2170,7 @@ static int LUACALL wxLua_wxURI_GetHostType(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_GetPassword[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_GetPassword(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_GetPassword[1] = {{ wxLua_wxURI_GetPassword, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_GetPassword }};
-//     wxString GetPassword() const
+//     wxString GetPassword() const;
 static int LUACALL wxLua_wxURI_GetPassword(lua_State *L)
 {
     // get this
@@ -2186,7 +2186,7 @@ static int LUACALL wxLua_wxURI_GetPassword(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_GetPath[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_GetPath(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_GetPath[1] = {{ wxLua_wxURI_GetPath, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_GetPath }};
-//     wxString GetPath() const
+//     wxString GetPath() const;
 static int LUACALL wxLua_wxURI_GetPath(lua_State *L)
 {
     // get this
@@ -2202,7 +2202,7 @@ static int LUACALL wxLua_wxURI_GetPath(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_GetPort[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_GetPort(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_GetPort[1] = {{ wxLua_wxURI_GetPort, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_GetPort }};
-//     wxString GetPort() const
+//     wxString GetPort() const;
 static int LUACALL wxLua_wxURI_GetPort(lua_State *L)
 {
     // get this
@@ -2218,7 +2218,7 @@ static int LUACALL wxLua_wxURI_GetPort(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_GetQuery[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_GetQuery(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_GetQuery[1] = {{ wxLua_wxURI_GetQuery, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_GetQuery }};
-//     wxString GetQuery() const
+//     wxString GetQuery() const;
 static int LUACALL wxLua_wxURI_GetQuery(lua_State *L)
 {
     // get this
@@ -2234,7 +2234,7 @@ static int LUACALL wxLua_wxURI_GetQuery(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_GetScheme[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_GetScheme(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_GetScheme[1] = {{ wxLua_wxURI_GetScheme, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_GetScheme }};
-//     wxString GetScheme() const
+//     wxString GetScheme() const;
 static int LUACALL wxLua_wxURI_GetScheme(lua_State *L)
 {
     // get this
@@ -2250,7 +2250,7 @@ static int LUACALL wxLua_wxURI_GetScheme(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_GetServer[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_GetServer(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_GetServer[1] = {{ wxLua_wxURI_GetServer, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_GetServer }};
-//     wxString GetServer() const
+//     wxString GetServer() const;
 static int LUACALL wxLua_wxURI_GetServer(lua_State *L)
 {
     // get this
@@ -2266,7 +2266,7 @@ static int LUACALL wxLua_wxURI_GetServer(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_GetUser[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_GetUser(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_GetUser[1] = {{ wxLua_wxURI_GetUser, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_GetUser }};
-//     wxString GetUser() const
+//     wxString GetUser() const;
 static int LUACALL wxLua_wxURI_GetUser(lua_State *L)
 {
     // get this
@@ -2282,7 +2282,7 @@ static int LUACALL wxLua_wxURI_GetUser(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_GetUserInfo[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_GetUserInfo(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_GetUserInfo[1] = {{ wxLua_wxURI_GetUserInfo, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_GetUserInfo }};
-//     wxString GetUserInfo() const
+//     wxString GetUserInfo() const;
 static int LUACALL wxLua_wxURI_GetUserInfo(lua_State *L)
 {
     // get this
@@ -2298,7 +2298,7 @@ static int LUACALL wxLua_wxURI_GetUserInfo(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_HasFragment[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_HasFragment(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_HasFragment[1] = {{ wxLua_wxURI_HasFragment, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_HasFragment }};
-//     bool HasFragment() const
+//     bool HasFragment() const;
 static int LUACALL wxLua_wxURI_HasFragment(lua_State *L)
 {
     // get this
@@ -2314,7 +2314,7 @@ static int LUACALL wxLua_wxURI_HasFragment(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_HasPath[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_HasPath(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_HasPath[1] = {{ wxLua_wxURI_HasPath, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_HasPath }};
-//     bool HasPath() const
+//     bool HasPath() const;
 static int LUACALL wxLua_wxURI_HasPath(lua_State *L)
 {
     // get this
@@ -2330,7 +2330,7 @@ static int LUACALL wxLua_wxURI_HasPath(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_HasPort[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_HasPort(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_HasPort[1] = {{ wxLua_wxURI_HasPort, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_HasPort }};
-//     bool HasPort() const
+//     bool HasPort() const;
 static int LUACALL wxLua_wxURI_HasPort(lua_State *L)
 {
     // get this
@@ -2346,7 +2346,7 @@ static int LUACALL wxLua_wxURI_HasPort(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_HasQuery[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_HasQuery(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_HasQuery[1] = {{ wxLua_wxURI_HasQuery, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_HasQuery }};
-//     bool HasQuery() const
+//     bool HasQuery() const;
 static int LUACALL wxLua_wxURI_HasQuery(lua_State *L)
 {
     // get this
@@ -2362,7 +2362,7 @@ static int LUACALL wxLua_wxURI_HasQuery(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_HasScheme[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_HasScheme(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_HasScheme[1] = {{ wxLua_wxURI_HasScheme, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_HasScheme }};
-//     bool HasScheme() const
+//     bool HasScheme() const;
 static int LUACALL wxLua_wxURI_HasScheme(lua_State *L)
 {
     // get this
@@ -2378,7 +2378,7 @@ static int LUACALL wxLua_wxURI_HasScheme(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_HasServer[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_HasServer(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_HasServer[1] = {{ wxLua_wxURI_HasServer, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_HasServer }};
-//     bool HasServer() const
+//     bool HasServer() const;
 static int LUACALL wxLua_wxURI_HasServer(lua_State *L)
 {
     // get this
@@ -2394,7 +2394,7 @@ static int LUACALL wxLua_wxURI_HasServer(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_HasUserInfo[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_HasUserInfo(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_HasUserInfo[1] = {{ wxLua_wxURI_HasUserInfo, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_HasUserInfo }};
-//     bool HasUserInfo() const
+//     bool HasUserInfo() const;
 static int LUACALL wxLua_wxURI_HasUserInfo(lua_State *L)
 {
     // get this
@@ -2410,7 +2410,7 @@ static int LUACALL wxLua_wxURI_HasUserInfo(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_IsReference[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_IsReference(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_IsReference[1] = {{ wxLua_wxURI_IsReference, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURI_IsReference }};
-//     bool IsReference() const
+//     bool IsReference() const;
 static int LUACALL wxLua_wxURI_IsReference(lua_State *L)
 {
     // get this
@@ -2426,7 +2426,7 @@ static int LUACALL wxLua_wxURI_IsReference(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_Resolve[] = { &wxluatype_wxURI, &wxluatype_wxURI, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxURI_Resolve(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_Resolve[1] = {{ wxLua_wxURI_Resolve, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxURI_Resolve }};
-//     void Resolve(const wxURI& base, int flags = wxURI_STRICT)
+//     void Resolve(const wxURI& base, int flags = wxURI_STRICT );
 static int LUACALL wxLua_wxURI_Resolve(lua_State *L)
 {
     // get number of arguments
@@ -2446,7 +2446,7 @@ static int LUACALL wxLua_wxURI_Resolve(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_Unescape[] = { &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxURI_Unescape(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_Unescape[1] = {{ wxLua_wxURI_Unescape, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxURI_Unescape }};
-//     static wxString Unescape (const wxString& szEscapedURI)
+//     static wxString Unescape (const wxString& szEscapedURI );
 static int LUACALL wxLua_wxURI_Unescape(lua_State *L)
 {
     // const wxString szEscapedURI
@@ -2465,7 +2465,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_delete[1] = {{ wxlua_userdata_dele
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_op_eq[] = { &wxluatype_wxURI, &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_op_eq(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_op_eq[1] = {{ wxLua_wxURI_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxURI_op_eq }};
-//     %operator bool operator == (const wxURI& uri) const
+//     %operator bool operator == (const wxURI& uri) const;
 static int LUACALL wxLua_wxURI_op_eq(lua_State *L)
 {
     // const wxURI uri
@@ -2502,7 +2502,7 @@ static int LUACALL wxLua_wxURI_op_set(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_constructor2[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_constructor2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_constructor2[1] = {{ wxLua_wxURI_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxURI_constructor2 }};
-//     wxURI(const wxURI& uri)
+//     wxURI(const wxURI& uri );
 static int LUACALL wxLua_wxURI_constructor2(lua_State *L)
 {
     // const wxURI uri
@@ -2520,7 +2520,7 @@ static int LUACALL wxLua_wxURI_constructor2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_constructor1[] = { &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxURI_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_constructor1[1] = {{ wxLua_wxURI_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxURI_constructor1 }};
-//     wxURI(const wxString& uri)
+//     wxURI(const wxString& uri );
 static int LUACALL wxLua_wxURI_constructor1(lua_State *L)
 {
     // const wxString uri
@@ -2537,7 +2537,7 @@ static int LUACALL wxLua_wxURI_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxURI_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_constructor[1] = {{ wxLua_wxURI_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxURI()
+//     wxURI( );
 static int LUACALL wxLua_wxURI_constructor(lua_State *L)
 {
     // call constructor
@@ -2644,7 +2644,7 @@ int wxluatype_wxURL = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURL_GetError[] = { &wxluatype_wxURL, NULL };
 static int LUACALL wxLua_wxURL_GetError(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURL_GetError[1] = {{ wxLua_wxURL_GetError, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURL_GetError }};
-//     wxURLError GetError() const
+//     wxURLError GetError() const;
 static int LUACALL wxLua_wxURL_GetError(lua_State *L)
 {
     // get this
@@ -2662,7 +2662,7 @@ static int LUACALL wxLua_wxURL_GetError(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURL_GetInputStream[] = { &wxluatype_wxURL, NULL };
 static int LUACALL wxLua_wxURL_GetInputStream(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURL_GetInputStream[1] = {{ wxLua_wxURL_GetInputStream, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURL_GetInputStream }};
-//     wxInputStream *GetInputStream()
+//     wxInputStream *GetInputStream( );
 static int LUACALL wxLua_wxURL_GetInputStream(lua_State *L)
 {
     // get this
@@ -2681,7 +2681,7 @@ static int LUACALL wxLua_wxURL_GetInputStream(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURL_GetProtocol[] = { &wxluatype_wxURL, NULL };
 static int LUACALL wxLua_wxURL_GetProtocol(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURL_GetProtocol[1] = {{ wxLua_wxURL_GetProtocol, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURL_GetProtocol }};
-//     wxProtocol& GetProtocol()
+//     wxProtocol& GetProtocol( );
 static int LUACALL wxLua_wxURL_GetProtocol(lua_State *L)
 {
     // get this
@@ -2699,7 +2699,7 @@ static int LUACALL wxLua_wxURL_GetProtocol(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURL_GetURL[] = { &wxluatype_wxURL, NULL };
 static int LUACALL wxLua_wxURL_GetURL(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURL_GetURL[1] = {{ wxLua_wxURL_GetURL, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURL_GetURL }};
-//     wxString GetURL() const
+//     wxString GetURL() const;
 static int LUACALL wxLua_wxURL_GetURL(lua_State *L)
 {
     // get this
@@ -2717,7 +2717,7 @@ static int LUACALL wxLua_wxURL_GetURL(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURL_SetDefaultProxy[] = { &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxURL_SetDefaultProxy(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURL_SetDefaultProxy[1] = {{ wxLua_wxURL_SetDefaultProxy, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxURL_SetDefaultProxy }};
-//     static void SetDefaultProxy(const wxString& url_proxy)
+//     static void SetDefaultProxy(const wxString& url_proxy );
 static int LUACALL wxLua_wxURL_SetDefaultProxy(lua_State *L)
 {
     // const wxString url_proxy
@@ -2731,7 +2731,7 @@ static int LUACALL wxLua_wxURL_SetDefaultProxy(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURL_SetProxy[] = { &wxluatype_wxURL, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxURL_SetProxy(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURL_SetProxy[1] = {{ wxLua_wxURL_SetProxy, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxURL_SetProxy }};
-//     void SetProxy(const wxString& url_proxy)
+//     void SetProxy(const wxString& url_proxy );
 static int LUACALL wxLua_wxURL_SetProxy(lua_State *L)
 {
     // const wxString url_proxy
@@ -2754,7 +2754,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxURL_delete[1] = {{ wxlua_userdata_dele
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURL_constructor1[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURL_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxURL_constructor1[1] = {{ wxLua_wxURL_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxURL_constructor1 }};
-//     wxURL(const wxURI& url)
+//     wxURL(const wxURI& url );
 static int LUACALL wxLua_wxURL_constructor1(lua_State *L)
 {
     // const wxURI url
@@ -2774,7 +2774,7 @@ static int LUACALL wxLua_wxURL_constructor1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURL_constructor[] = { &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxURL_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxURL_constructor[1] = {{ wxLua_wxURL_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxURL_constructor }};
-//     wxURL(const wxString& sUrl)
+//     wxURL(const wxString& sUrl );
 static int LUACALL wxLua_wxURL_constructor(lua_State *L)
 {
     // const wxString sUrl
@@ -2873,7 +2873,7 @@ wxLuaBindEvent* wxLuaGetEventList_wxnet(size_t &count)
 }
 
 // ---------------------------------------------------------------------------
-// wxLuaGetDefineList_wxnet() is called to register %define and %enum
+// wxLuaGetDefineList_wxnet() is called to register #define and enum
 // ---------------------------------------------------------------------------
 
 wxLuaBindNumber* wxLuaGetDefineList_wxnet(size_t &count)
@@ -2955,7 +2955,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxnet(size_t &count)
 
 // ---------------------------------------------------------------------------
 
-// wxLuaGetStringList_wxnet() is called to register %define %string
+// wxLuaGetStringList_wxnet() is called to register #define_string
 // ---------------------------------------------------------------------------
 
 wxLuaBindString* wxLuaGetStringList_wxnet(size_t &count)

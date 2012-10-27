@@ -80,6 +80,8 @@ a:hover {
 .codelua {
   background-color: #FFFFD0;
 }
+
+/* This is pandoc's source code highligher */
 .sourceCode {
-  background-color: #AAAAAA;
+  background-color: #F6F6F0;
 }

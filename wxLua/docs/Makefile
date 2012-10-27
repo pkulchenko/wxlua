@@ -45,7 +45,7 @@ wxlua:
 	@echo Generating wxlua.html
 	pandoc -f markdown -t html -c wxlua.css wxlua.txt > wxlua.html
     else
-        @echo wxlua.html is up to date.
+	@echo wxlua.html is up to date.
     endif
 
 # ---------------------------------------------------------------------------

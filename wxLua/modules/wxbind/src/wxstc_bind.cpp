@@ -2047,7 +2047,7 @@ static int LUACALL wxLua_wxStyledTextCtrl_GetLastChild(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetLastKeydownProcessed[] = { &wxluatype_wxStyledTextCtrl, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_GetLastKeydownProcessed(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetLastKeydownProcessed[1] = {{ wxLua_wxStyledTextCtrl_GetLastKeydownProcessed, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetLastKeydownProcessed }};
-//     bool GetLastKeydownProcessed()
+//     bool GetLastKeydownProcessed( );
 static int LUACALL wxLua_wxStyledTextCtrl_GetLastKeydownProcessed(lua_State *L)
 {
     // get this
@@ -5286,7 +5286,7 @@ static int LUACALL wxLua_wxStyledTextCtrl_SetKeyWords(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetLastKeydownProcessed[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_SetLastKeydownProcessed(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_SetLastKeydownProcessed[1] = {{ wxLua_wxStyledTextCtrl_SetLastKeydownProcessed, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetLastKeydownProcessed }};
-//     void SetLastKeydownProcessed(bool val)
+//     void SetLastKeydownProcessed(bool val );
 static int LUACALL wxLua_wxStyledTextCtrl_SetLastKeydownProcessed(lua_State *L)
 {
     // bool val
@@ -7360,7 +7360,7 @@ static int LUACALL wxLua_wxStyledTextCtrl_ZoomOut(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_constructor[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_constructor[1] = {{ wxLua_wxStyledTextCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 6, s_wxluatypeArray_wxLua_wxStyledTextCtrl_constructor }};
-//     wxStyledTextCtrl(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString &name = "wxStyledTextCtrl")
+//     wxStyledTextCtrl(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString &name = "wxStyledTextCtrl" );
 static int LUACALL wxLua_wxStyledTextCtrl_constructor(lua_State *L)
 {
     // get number of arguments
@@ -7972,7 +7972,7 @@ int wxluatype_wxStyledTextEvent = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetAlt[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetAlt(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetAlt[1] = {{ wxLua_wxStyledTextEvent_GetAlt, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetAlt }};
-//     bool GetAlt() const
+//     bool GetAlt() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetAlt(lua_State *L)
 {
     // get this
@@ -7988,7 +7988,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetAlt(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetControl[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetControl(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetControl[1] = {{ wxLua_wxStyledTextEvent_GetControl, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetControl }};
-//     bool GetControl() const
+//     bool GetControl() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetControl(lua_State *L)
 {
     // get this
@@ -8004,7 +8004,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetControl(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetDragAllowMove[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetDragAllowMove(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetDragAllowMove[1] = {{ wxLua_wxStyledTextEvent_GetDragAllowMove, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetDragAllowMove }};
-//     bool GetDragAllowMove()
+//     bool GetDragAllowMove( );
 static int LUACALL wxLua_wxStyledTextEvent_GetDragAllowMove(lua_State *L)
 {
     // get this
@@ -8022,7 +8022,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetDragAllowMove(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetDragResult[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetDragResult(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetDragResult[1] = {{ wxLua_wxStyledTextEvent_GetDragResult, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetDragResult }};
-//     wxDragResult GetDragResult()
+//     wxDragResult GetDragResult( );
 static int LUACALL wxLua_wxStyledTextEvent_GetDragResult(lua_State *L)
 {
     // get this
@@ -8040,7 +8040,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetDragResult(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetDragText[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetDragText(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetDragText[1] = {{ wxLua_wxStyledTextEvent_GetDragText, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetDragText }};
-//     wxString GetDragText()
+//     wxString GetDragText( );
 static int LUACALL wxLua_wxStyledTextEvent_GetDragText(lua_State *L)
 {
     // get this
@@ -8056,7 +8056,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetDragText(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetFoldLevelNow[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetFoldLevelNow(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetFoldLevelNow[1] = {{ wxLua_wxStyledTextEvent_GetFoldLevelNow, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetFoldLevelNow }};
-//     int  GetFoldLevelNow() const
+//     int  GetFoldLevelNow() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetFoldLevelNow(lua_State *L)
 {
     // get this
@@ -8072,7 +8072,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetFoldLevelNow(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetFoldLevelPrev[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetFoldLevelPrev(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetFoldLevelPrev[1] = {{ wxLua_wxStyledTextEvent_GetFoldLevelPrev, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetFoldLevelPrev }};
-//     int  GetFoldLevelPrev() const
+//     int  GetFoldLevelPrev() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetFoldLevelPrev(lua_State *L)
 {
     // get this
@@ -8088,7 +8088,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetFoldLevelPrev(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetKey[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetKey(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetKey[1] = {{ wxLua_wxStyledTextEvent_GetKey, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetKey }};
-//     int  GetKey()  const
+//     int  GetKey() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetKey(lua_State *L)
 {
     // get this
@@ -8104,7 +8104,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetKey(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetLParam[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetLParam(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetLParam[1] = {{ wxLua_wxStyledTextEvent_GetLParam, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetLParam }};
-//     int  GetLParam() const
+//     int  GetLParam() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetLParam(lua_State *L)
 {
     // get this
@@ -8120,7 +8120,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetLParam(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetLength[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetLength(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetLength[1] = {{ wxLua_wxStyledTextEvent_GetLength, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetLength }};
-//     int  GetLength() const
+//     int  GetLength() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetLength(lua_State *L)
 {
     // get this
@@ -8136,7 +8136,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetLength(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetLine[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetLine(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetLine[1] = {{ wxLua_wxStyledTextEvent_GetLine, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetLine }};
-//     int  GetLine() const
+//     int  GetLine() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetLine(lua_State *L)
 {
     // get this
@@ -8152,7 +8152,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetLine(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetLinesAdded[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetLinesAdded(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetLinesAdded[1] = {{ wxLua_wxStyledTextEvent_GetLinesAdded, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetLinesAdded }};
-//     int  GetLinesAdded() const
+//     int  GetLinesAdded() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetLinesAdded(lua_State *L)
 {
     // get this
@@ -8168,7 +8168,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetLinesAdded(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetListType[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetListType(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetListType[1] = {{ wxLua_wxStyledTextEvent_GetListType, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetListType }};
-//     int  GetListType() const
+//     int  GetListType() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetListType(lua_State *L)
 {
     // get this
@@ -8184,7 +8184,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetListType(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetMargin[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetMargin(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetMargin[1] = {{ wxLua_wxStyledTextEvent_GetMargin, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetMargin }};
-//     int  GetMargin() const
+//     int  GetMargin() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetMargin(lua_State *L)
 {
     // get this
@@ -8200,7 +8200,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetMargin(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetMessage[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetMessage(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetMessage[1] = {{ wxLua_wxStyledTextEvent_GetMessage, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetMessage }};
-//     int  GetMessage() const
+//     int  GetMessage() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetMessage(lua_State *L)
 {
     // get this
@@ -8216,7 +8216,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetMessage(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetModificationType[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetModificationType(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetModificationType[1] = {{ wxLua_wxStyledTextEvent_GetModificationType, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetModificationType }};
-//     int  GetModificationType() const
+//     int  GetModificationType() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetModificationType(lua_State *L)
 {
     // get this
@@ -8232,7 +8232,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetModificationType(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetModifiers[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetModifiers(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetModifiers[1] = {{ wxLua_wxStyledTextEvent_GetModifiers, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetModifiers }};
-//     int  GetModifiers() const
+//     int  GetModifiers() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetModifiers(lua_State *L)
 {
     // get this
@@ -8248,7 +8248,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetModifiers(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetPosition[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetPosition(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetPosition[1] = {{ wxLua_wxStyledTextEvent_GetPosition, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetPosition }};
-//     int  GetPosition() const
+//     int  GetPosition() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetPosition(lua_State *L)
 {
     // get this
@@ -8264,7 +8264,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetPosition(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetShift[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetShift(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetShift[1] = {{ wxLua_wxStyledTextEvent_GetShift, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetShift }};
-//     bool GetShift() const
+//     bool GetShift() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetShift(lua_State *L)
 {
     // get this
@@ -8280,7 +8280,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetShift(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetText[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetText(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetText[1] = {{ wxLua_wxStyledTextEvent_GetText, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetText }};
-//     wxString GetText() const
+//     wxString GetText() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetText(lua_State *L)
 {
     // get this
@@ -8296,7 +8296,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetText(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetWParam[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetWParam(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetWParam[1] = {{ wxLua_wxStyledTextEvent_GetWParam, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetWParam }};
-//     int  GetWParam() const
+//     int  GetWParam() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetWParam(lua_State *L)
 {
     // get this
@@ -8312,7 +8312,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetWParam(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetX[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetX(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetX[1] = {{ wxLua_wxStyledTextEvent_GetX, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetX }};
-//     int  GetX() const
+//     int  GetX() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetX(lua_State *L)
 {
     // get this
@@ -8328,7 +8328,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetX(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetY[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetY(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetY[1] = {{ wxLua_wxStyledTextEvent_GetY, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetY }};
-//     int  GetY() const
+//     int  GetY() const;
 static int LUACALL wxLua_wxStyledTextEvent_GetY(lua_State *L)
 {
     // get this
@@ -8344,7 +8344,7 @@ static int LUACALL wxLua_wxStyledTextEvent_GetY(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetDragAllowMove[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetDragAllowMove(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetDragAllowMove[1] = {{ wxLua_wxStyledTextEvent_SetDragAllowMove, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetDragAllowMove }};
-//     void SetDragAllowMove(bool val)
+//     void SetDragAllowMove(bool val );
 static int LUACALL wxLua_wxStyledTextEvent_SetDragAllowMove(lua_State *L)
 {
     // bool val
@@ -8362,7 +8362,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetDragAllowMove(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetDragResult[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetDragResult(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetDragResult[1] = {{ wxLua_wxStyledTextEvent_SetDragResult, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetDragResult }};
-//     void SetDragResult(wxDragResult val)
+//     void SetDragResult(wxDragResult val );
 static int LUACALL wxLua_wxStyledTextEvent_SetDragResult(lua_State *L)
 {
     // wxDragResult val
@@ -8380,7 +8380,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetDragResult(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetDragText[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetDragText(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetDragText[1] = {{ wxLua_wxStyledTextEvent_SetDragText, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetDragText }};
-//     void SetDragText(const wxString& val)
+//     void SetDragText(const wxString& val );
 static int LUACALL wxLua_wxStyledTextEvent_SetDragText(lua_State *L)
 {
     // const wxString val
@@ -8396,7 +8396,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetDragText(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetFoldLevelNow[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetFoldLevelNow(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetFoldLevelNow[1] = {{ wxLua_wxStyledTextEvent_SetFoldLevelNow, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetFoldLevelNow }};
-//     void SetFoldLevelNow(int val)
+//     void SetFoldLevelNow(int val );
 static int LUACALL wxLua_wxStyledTextEvent_SetFoldLevelNow(lua_State *L)
 {
     // int val
@@ -8412,7 +8412,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetFoldLevelNow(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetFoldLevelPrev[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetFoldLevelPrev(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetFoldLevelPrev[1] = {{ wxLua_wxStyledTextEvent_SetFoldLevelPrev, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetFoldLevelPrev }};
-//     void SetFoldLevelPrev(int val)
+//     void SetFoldLevelPrev(int val );
 static int LUACALL wxLua_wxStyledTextEvent_SetFoldLevelPrev(lua_State *L)
 {
     // int val
@@ -8428,7 +8428,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetFoldLevelPrev(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetKey[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetKey(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetKey[1] = {{ wxLua_wxStyledTextEvent_SetKey, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetKey }};
-//     void SetKey(int k)
+//     void SetKey(int k );
 static int LUACALL wxLua_wxStyledTextEvent_SetKey(lua_State *L)
 {
     // int k
@@ -8444,7 +8444,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetKey(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetLParam[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetLParam(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetLParam[1] = {{ wxLua_wxStyledTextEvent_SetLParam, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetLParam }};
-//     void SetLParam(int val)
+//     void SetLParam(int val );
 static int LUACALL wxLua_wxStyledTextEvent_SetLParam(lua_State *L)
 {
     // int val
@@ -8460,7 +8460,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetLParam(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetLength[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetLength(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetLength[1] = {{ wxLua_wxStyledTextEvent_SetLength, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetLength }};
-//     void SetLength(int len)
+//     void SetLength(int len );
 static int LUACALL wxLua_wxStyledTextEvent_SetLength(lua_State *L)
 {
     // int len
@@ -8476,7 +8476,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetLength(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetLine[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetLine(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetLine[1] = {{ wxLua_wxStyledTextEvent_SetLine, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetLine }};
-//     void SetLine(int val)
+//     void SetLine(int val );
 static int LUACALL wxLua_wxStyledTextEvent_SetLine(lua_State *L)
 {
     // int val
@@ -8492,7 +8492,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetLine(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetLinesAdded[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetLinesAdded(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetLinesAdded[1] = {{ wxLua_wxStyledTextEvent_SetLinesAdded, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetLinesAdded }};
-//     void SetLinesAdded(int num)
+//     void SetLinesAdded(int num );
 static int LUACALL wxLua_wxStyledTextEvent_SetLinesAdded(lua_State *L)
 {
     // int num
@@ -8508,7 +8508,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetLinesAdded(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetListType[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetListType(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetListType[1] = {{ wxLua_wxStyledTextEvent_SetListType, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetListType }};
-//     void SetListType(int val)
+//     void SetListType(int val );
 static int LUACALL wxLua_wxStyledTextEvent_SetListType(lua_State *L)
 {
     // int val
@@ -8524,7 +8524,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetListType(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetMargin[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetMargin(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetMargin[1] = {{ wxLua_wxStyledTextEvent_SetMargin, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetMargin }};
-//     void SetMargin(int val)
+//     void SetMargin(int val );
 static int LUACALL wxLua_wxStyledTextEvent_SetMargin(lua_State *L)
 {
     // int val
@@ -8540,7 +8540,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetMargin(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetMessage[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetMessage(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetMessage[1] = {{ wxLua_wxStyledTextEvent_SetMessage, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetMessage }};
-//     void SetMessage(int val)
+//     void SetMessage(int val );
 static int LUACALL wxLua_wxStyledTextEvent_SetMessage(lua_State *L)
 {
     // int val
@@ -8556,7 +8556,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetMessage(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetModificationType[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetModificationType(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetModificationType[1] = {{ wxLua_wxStyledTextEvent_SetModificationType, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetModificationType }};
-//     void SetModificationType(int t)
+//     void SetModificationType(int t );
 static int LUACALL wxLua_wxStyledTextEvent_SetModificationType(lua_State *L)
 {
     // int t
@@ -8572,7 +8572,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetModificationType(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetModifiers[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetModifiers(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetModifiers[1] = {{ wxLua_wxStyledTextEvent_SetModifiers, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetModifiers }};
-//     void SetModifiers(int m)
+//     void SetModifiers(int m );
 static int LUACALL wxLua_wxStyledTextEvent_SetModifiers(lua_State *L)
 {
     // int m
@@ -8588,7 +8588,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetModifiers(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetPosition[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetPosition(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetPosition[1] = {{ wxLua_wxStyledTextEvent_SetPosition, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetPosition }};
-//     void SetPosition(int pos)
+//     void SetPosition(int pos );
 static int LUACALL wxLua_wxStyledTextEvent_SetPosition(lua_State *L)
 {
     // int pos
@@ -8604,7 +8604,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetPosition(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetText[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetText(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetText[1] = {{ wxLua_wxStyledTextEvent_SetText, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetText }};
-//     void SetText(const wxString& t)
+//     void SetText(const wxString& t );
 static int LUACALL wxLua_wxStyledTextEvent_SetText(lua_State *L)
 {
     // const wxString t
@@ -8620,7 +8620,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetText(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetWParam[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetWParam(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetWParam[1] = {{ wxLua_wxStyledTextEvent_SetWParam, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetWParam }};
-//     void SetWParam(int val)
+//     void SetWParam(int val );
 static int LUACALL wxLua_wxStyledTextEvent_SetWParam(lua_State *L)
 {
     // int val
@@ -8636,7 +8636,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetWParam(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetX[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetX(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetX[1] = {{ wxLua_wxStyledTextEvent_SetX, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetX }};
-//     void SetX(int val)
+//     void SetX(int val );
 static int LUACALL wxLua_wxStyledTextEvent_SetX(lua_State *L)
 {
     // int val
@@ -8652,7 +8652,7 @@ static int LUACALL wxLua_wxStyledTextEvent_SetX(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetY[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetY(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetY[1] = {{ wxLua_wxStyledTextEvent_SetY, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetY }};
-//     void SetY(int val)
+//     void SetY(int val );
 static int LUACALL wxLua_wxStyledTextEvent_SetY(lua_State *L)
 {
     // int val
@@ -8671,7 +8671,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_delete[1] = {{ wxlua_u
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_constructor[1] = {{ wxLua_wxStyledTextEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_constructor }};
-//     wxStyledTextEvent(wxEventType commandType = 0, int id = 0)
+//     wxStyledTextEvent(wxEventType commandType = 0, int id = 0 );
 static int LUACALL wxLua_wxStyledTextEvent_constructor(lua_State *L)
 {
     // get number of arguments
@@ -8815,7 +8815,7 @@ wxLuaBindEvent* wxLuaGetEventList_wxstc(size_t &count)
 }
 
 // ---------------------------------------------------------------------------
-// wxLuaGetDefineList_wxstc() is called to register %define and %enum
+// wxLuaGetDefineList_wxstc() is called to register #define and enum
 // ---------------------------------------------------------------------------
 
 wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
@@ -10233,7 +10233,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
 
 // ---------------------------------------------------------------------------
 
-// wxLuaGetStringList_wxstc() is called to register %define %string
+// wxLuaGetStringList_wxstc() is called to register #define_string
 // ---------------------------------------------------------------------------
 
 wxLuaBindString* wxLuaGetStringList_wxstc(size_t &count)

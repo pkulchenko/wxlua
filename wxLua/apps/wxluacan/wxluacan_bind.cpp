@@ -29,7 +29,7 @@ int wxluatype_wxlCanObj = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlCanObj_AddObject[] = { &wxluatype_wxlCanObj, &wxluatype_wxlCanObj, NULL };
 static int LUACALL wxLua_wxlCanObj_AddObject(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlCanObj_AddObject[1] = {{ wxLua_wxlCanObj_AddObject, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxlCanObj_AddObject }};
-//     void AddObject( wxlCanObj *canobj )
+//     void AddObject( wxlCanObj *canobj );
 static int LUACALL wxLua_wxlCanObj_AddObject(lua_State *L)
 {
     // wxlCanObj canobj
@@ -45,7 +45,7 @@ static int LUACALL wxLua_wxlCanObj_AddObject(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlCanObj_GetX[] = { &wxluatype_wxlCanObj, NULL };
 static int LUACALL wxLua_wxlCanObj_GetX(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlCanObj_GetX[1] = {{ wxLua_wxlCanObj_GetX, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxlCanObj_GetX }};
-//     double GetX()
+//     double GetX( );
 static int LUACALL wxLua_wxlCanObj_GetX(lua_State *L)
 {
     // get this
@@ -61,7 +61,7 @@ static int LUACALL wxLua_wxlCanObj_GetX(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlCanObj_GetY[] = { &wxluatype_wxlCanObj, NULL };
 static int LUACALL wxLua_wxlCanObj_GetY(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlCanObj_GetY[1] = {{ wxLua_wxlCanObj_GetY, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxlCanObj_GetY }};
-//     double GetY()
+//     double GetY( );
 static int LUACALL wxLua_wxlCanObj_GetY(lua_State *L)
 {
     // get this
@@ -79,7 +79,7 @@ static int LUACALL wxLua_wxlCanObj_GetY(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlCanObj_SetBrush[] = { &wxluatype_wxlCanObj, &wxluatype_wxBrush, NULL };
 static int LUACALL wxLua_wxlCanObj_SetBrush(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlCanObj_SetBrush[1] = {{ wxLua_wxlCanObj_SetBrush, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxlCanObj_SetBrush }};
-//     void SetBrush( const wxBrush& brush )
+//     void SetBrush( const wxBrush& brush );
 static int LUACALL wxLua_wxlCanObj_SetBrush(lua_State *L)
 {
     // const wxBrush brush
@@ -95,7 +95,7 @@ static int LUACALL wxLua_wxlCanObj_SetBrush(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlCanObj_SetPen[] = { &wxluatype_wxlCanObj, &wxluatype_wxPen, NULL };
 static int LUACALL wxLua_wxlCanObj_SetPen(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlCanObj_SetPen[1] = {{ wxLua_wxlCanObj_SetPen, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxlCanObj_SetPen }};
-//     void SetPen( const wxPen& pen )
+//     void SetPen( const wxPen& pen );
 static int LUACALL wxLua_wxlCanObj_SetPen(lua_State *L)
 {
     // const wxPen pen
@@ -113,7 +113,7 @@ static int LUACALL wxLua_wxlCanObj_SetPen(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlCanObj_SetPending[] = { &wxluatype_wxlCanObj, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxlCanObj_SetPending(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlCanObj_SetPending[1] = {{ wxLua_wxlCanObj_SetPending, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxlCanObj_SetPending }};
-//     void SetPending( bool pending = true )
+//     void SetPending( bool pending = true );
 static int LUACALL wxLua_wxlCanObj_SetPending(lua_State *L)
 {
     // get number of arguments
@@ -131,7 +131,7 @@ static int LUACALL wxLua_wxlCanObj_SetPending(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlCanObj_SetPos[] = { &wxluatype_wxlCanObj, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxlCanObj_SetPos(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlCanObj_SetPos[1] = {{ wxLua_wxlCanObj_SetPos, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxlCanObj_SetPos }};
-//    	void SetPos( double x, double y )
+//    	void SetPos( double x, double y );
 static int LUACALL wxLua_wxlCanObj_SetPos(lua_State *L)
 {
     // double y
@@ -149,7 +149,7 @@ static int LUACALL wxLua_wxlCanObj_SetPos(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlCanObj_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxlCanObj_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlCanObj_constructor[1] = {{ wxLua_wxlCanObj_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxlCanObj_constructor }};
-//     wxlCanObj( double x = 0, double y = 0 )
+//     wxlCanObj( double x = 0, double y = 0 );
 static int LUACALL wxLua_wxlCanObj_constructor(lua_State *L)
 {
     // get number of arguments
@@ -204,7 +204,7 @@ int wxluatype_wxlCanObjRect = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlCanObjRect_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxlCanObjRect_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlCanObjRect_constructor[1] = {{ wxLua_wxlCanObjRect_constructor, WXLUAMETHOD_CONSTRUCTOR, 4, 4, s_wxluatypeArray_wxLua_wxlCanObjRect_constructor }};
-//     wxlCanObjRect(  double x, double y, double w, double h )
+//     wxlCanObjRect(  double x, double y, double w, double h );
 static int LUACALL wxLua_wxlCanObjRect_constructor(lua_State *L)
 {
     // double h
@@ -250,7 +250,7 @@ int wxluatype_wxlCanObjCircle = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlCanObjCircle_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxlCanObjCircle_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlCanObjCircle_constructor[1] = {{ wxLua_wxlCanObjCircle_constructor, WXLUAMETHOD_CONSTRUCTOR, 3, 3, s_wxluatypeArray_wxLua_wxlCanObjCircle_constructor }};
-//     wxlCanObjCircle( double x, double y, double r )
+//     wxlCanObjCircle( double x, double y, double r );
 static int LUACALL wxLua_wxlCanObjCircle_constructor(lua_State *L)
 {
     // double r
@@ -294,7 +294,7 @@ int wxluatype_wxlCanObjScript = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlCanObjScript_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxlCanObjScript_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlCanObjScript_constructor[1] = {{ wxLua_wxlCanObjScript_constructor, WXLUAMETHOD_CONSTRUCTOR, 3, 3, s_wxluatypeArray_wxLua_wxlCanObjScript_constructor }};
-//     wxlCanObjScript( double x, double y, const wxString& name )
+//     wxlCanObjScript( double x, double y, const wxString& name );
 static int LUACALL wxLua_wxlCanObjScript_constructor(lua_State *L)
 {
     // const wxString name
@@ -338,7 +338,7 @@ int wxluatype_wxlCanObjAddScript = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlCanObjAddScript_SetScript[] = { &wxluatype_wxlCanObjAddScript, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxlCanObjAddScript_SetScript(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlCanObjAddScript_SetScript[1] = {{ wxLua_wxlCanObjAddScript_SetScript, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxlCanObjAddScript_SetScript }};
-//     void SetScript( const wxString& script )
+//     void SetScript( const wxString& script );
 static int LUACALL wxLua_wxlCanObjAddScript_SetScript(lua_State *L)
 {
     // const wxString script
@@ -354,7 +354,7 @@ static int LUACALL wxLua_wxlCanObjAddScript_SetScript(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlCanObjAddScript_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxlCanObjAddScript_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlCanObjAddScript_constructor[1] = {{ wxLua_wxlCanObjAddScript_constructor, WXLUAMETHOD_CONSTRUCTOR, 3, 3, s_wxluatypeArray_wxLua_wxlCanObjAddScript_constructor }};
-//     wxlCanObjAddScript( double x, double y,  const wxString& script )
+//     wxlCanObjAddScript( double x, double y,  const wxString& script );
 static int LUACALL wxLua_wxlCanObjAddScript_constructor(lua_State *L)
 {
     // const wxString script
@@ -399,7 +399,7 @@ int wxluatype_wxlCan = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlCan_AddObject[] = { &wxluatype_wxlCan, &wxluatype_wxlCanObj, NULL };
 static int LUACALL wxLua_wxlCan_AddObject(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlCan_AddObject[1] = {{ wxLua_wxlCan_AddObject, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxlCan_AddObject }};
-//     void AddObject( wxlCanObj *canobj )
+//     void AddObject( wxlCanObj *canobj );
 static int LUACALL wxLua_wxlCan_AddObject(lua_State *L)
 {
     // wxlCanObj canobj
@@ -415,7 +415,7 @@ static int LUACALL wxLua_wxlCan_AddObject(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlCan_GetCmdh[] = { &wxluatype_wxlCan, NULL };
 static int LUACALL wxLua_wxlCan_GetCmdh(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlCan_GetCmdh[1] = {{ wxLua_wxlCan_GetCmdh, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxlCan_GetCmdh }};
-//     wxlLuaCanCmd* GetCmdh()
+//     wxlLuaCanCmd* GetCmdh( );
 static int LUACALL wxLua_wxlCan_GetCmdh(lua_State *L)
 {
     // get this
@@ -431,7 +431,7 @@ static int LUACALL wxLua_wxlCan_GetCmdh(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlCan_GetYaxis[] = { &wxluatype_wxlCan, NULL };
 static int LUACALL wxLua_wxlCan_GetYaxis(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlCan_GetYaxis[1] = {{ wxLua_wxlCan_GetYaxis, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxlCan_GetYaxis }};
-//     bool GetYaxis()
+//     bool GetYaxis( );
 static int LUACALL wxLua_wxlCan_GetYaxis(lua_State *L)
 {
     // get this
@@ -449,7 +449,7 @@ static int LUACALL wxLua_wxlCan_GetYaxis(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlCan_constructor[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, NULL };
 static int LUACALL wxLua_wxlCan_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlCan_constructor[1] = {{ wxLua_wxlCan_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 4, s_wxluatypeArray_wxLua_wxlCan_constructor }};
-//     wxlCan( wxWindow* parent, wxWindowID id = -1, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize )
+//     wxlCan( wxWindow* parent, wxWindowID id = -1, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize );
 static int LUACALL wxLua_wxlCan_constructor(lua_State *L)
 {
     // get number of arguments
@@ -508,7 +508,7 @@ int wxluatype_wxlLuaCanCmd = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlLuaCanCmd_MoveObject[] = { &wxluatype_wxlLuaCanCmd, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxlLuaCanCmd_MoveObject(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlLuaCanCmd_MoveObject[1] = {{ wxLua_wxlLuaCanCmd_MoveObject, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxlLuaCanCmd_MoveObject }};
-//     void MoveObject( int index, double x, double y )
+//     void MoveObject( int index, double x, double y );
 static int LUACALL wxLua_wxlLuaCanCmd_MoveObject(lua_State *L)
 {
     // double y
@@ -528,7 +528,7 @@ static int LUACALL wxLua_wxlLuaCanCmd_MoveObject(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxlLuaCanCmd_constructor[] = { &wxluatype_wxlCan, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxlLuaCanCmd_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxlLuaCanCmd_constructor[1] = {{ wxLua_wxlLuaCanCmd_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxlLuaCanCmd_constructor }};
-//     wxlLuaCanCmd( wxlCan* canvas, int maxCommands = -1 )
+//     wxlLuaCanCmd( wxlCan* canvas, int maxCommands = -1 );
 static int LUACALL wxLua_wxlLuaCanCmd_constructor(lua_State *L)
 {
     // get number of arguments
@@ -588,7 +588,7 @@ wxLuaBindEvent* wxLuaGetEventList_wxluacan(size_t &count)
 }
 
 // ---------------------------------------------------------------------------
-// wxLuaGetDefineList_wxluacan() is called to register %define and %enum
+// wxLuaGetDefineList_wxluacan() is called to register #define and enum
 // ---------------------------------------------------------------------------
 
 wxLuaBindNumber* wxLuaGetDefineList_wxluacan(size_t &count)
@@ -604,7 +604,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxluacan(size_t &count)
 
 // ---------------------------------------------------------------------------
 
-// wxLuaGetStringList_wxluacan() is called to register %define %string
+// wxLuaGetStringList_wxluacan() is called to register #define_string
 // ---------------------------------------------------------------------------
 
 wxLuaBindString* wxLuaGetStringList_wxluacan(size_t &count)
@@ -637,7 +637,7 @@ wxLuaBindObject* wxLuaGetObjectList_wxluacan(size_t &count)
 // wxLuaGetFunctionList_wxluacan() is called to register global functions
 // ---------------------------------------------------------------------------
 
-// %function wxlCan* GetCan()
+// %function wxlCan* GetCan( );
 static int LUACALL wxLua_function_GetCan(lua_State *L)
 {
     // call GetCan
@@ -649,7 +649,7 @@ static int LUACALL wxLua_function_GetCan(lua_State *L)
 }
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_GetCan[1] = {{ wxLua_function_GetCan, WXLUAMETHOD_CFUNCTION, 0, 0, g_wxluaargtypeArray_None }};
 
-// %function wxlLuaCanCmd* GetCmdhMain()
+// %function wxlLuaCanCmd* GetCmdhMain( );
 static int LUACALL wxLua_function_GetCmdhMain(lua_State *L)
 {
     // call GetCmdhMain

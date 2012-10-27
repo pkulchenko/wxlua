@@ -1,4 +1,4 @@
-% wxLua 2.8.12 - Installation Guide
+% wxLua 2.8.12.3 - Installation Guide
 % John Labenski, Francesco Montorsi
 % 2012-10-12
 

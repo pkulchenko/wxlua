@@ -1,4 +1,4 @@
-% wxLua 2.8.12 - FAQ
+% wxLua 2.8.12.3 - FAQ
 % John Labenski
 % 2012-09-28
 
@@ -21,7 +21,7 @@
 4.  [Lua Module using require()](#C4) \
     4.1 [Why does the GUI not work from the Lua console?](#C4.1)
 5.  [Building wxLua](#C5) \
-    5.1 [Why are there so many warnings?](#C5.1)
+    5.1 [Why are there so many warnings when building from source?](#C5.1)
 
 
 <a name="C1"/>
@@ -230,7 +230,7 @@
 
 <a name="C5.1"/>
 
-### 5.1 - Why are there so many warnings?
+### 5.1 - Why are there so many warnings when building from source?
 
 -   wxLua was initially written before 2000 for wxWindows (now wxWidgets) 2.2.
 -   As wxWidgets changes so too must wxLua.

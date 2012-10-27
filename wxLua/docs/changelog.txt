@@ -1,20 +1,47 @@
  wxLua ChangeLog
  ===============
 
- version 2.8.12.3 
+ version 2.8.12.3
  --------------------------------------------------------------------
  - Implement wxDC::DrawLines(), DrawPolygon().
  * Remove Bakefile build files since the next-gen Bakefile version is
-   incompatible with the current Bakefiles anyway. 
+   incompatible with the current Bakefiles anyway.
    http://permalink.gmane.org/gmane.comp.sysutils.bakefile.devel/1502
  * Change the dir structure by removing the include/ and src/ dirs
-   to flatten, simplify, and make it possible to "install" into a 
+   to flatten, simplify, and make it possible to "install" into a
    normal include directory structure.
  - Rename the wxLuaSocket lib to wxLuaDebugger lib since that what it is.
  - Move wxLuaObject and "smart" helper classes into wxlobject.h/cpp
  - Add lbitlib.c and create the "bit32" table to help the transition
    to Lua 5.2. (Using backport version by Sean Bolton)
  - Start to use Markdown for documentation to make maintenance easier.
+ * CONVERT *.i BINDINGS TO BE VALID(ish) C++ CODE!
+   If you have written you own, you will have to make these changes.
+   - Find/Replace "%if"              -> "#if"
+   - Find/Replace "%endif"           -> "#endif"
+   - Find/Replace "%include"         -> "#include"
+   - Find/Replace "%define"          -> "#define"      (still only for numbers)
+   - Find/Replace "%define_string"   -> "#define_string"
+   - Find/Replace "%define_wxstring" -> "#define_wxstring"
+   - Find/Replace "%define_object"   -> "#define_object"
+   - Find/Replace "%define_pointer"  -> "#define_pointer"
+   - Find/Replace "%define_event"    -> "%wxEventType" (not always #defines,
+                                                        special to wx)
+   - Find/Replace "%public"          -> "public"    (not currently used)
+   - Find/Replace "%protected"       -> "protected" (not currently used)
+   - Find/Replace "%private"         -> "private"   (not currently used)
+   - Find/Replace "%typedef"         -> "typedef"
+   - Change %class ClassName ... %endclass  to
+        class ClassName [: public BaseClassName [, public BaseClassName2]]
+        {
+        ... // Note that {} braces must be on separate lines.
+        };
+   - Change %struct StructName ... %endstruct as per class change.
+   - Change %enum [EnumName] ... %endenum to
+        enum EnumName
+        {
+        ... // Note that {} braces must be on separate lines.
+        };
 
  version 2.8.12.2 (released 7/26/2012)
  --------------------------------------------------------------------
@@ -424,7 +451,7 @@
    when compiling wxLua with different settings.
  - Added the --with-lua-prefix configure's option or LUA_DIR option to allow
    to use an external LUA library for building wxLua.
- - Building under wxMac has been greatly improved thanks to Anders F Björklund;
+ - Building under wxMac has been greatly improved thanks to Anders F BjÃ¶rklund;
    release 2.8.0.0 also includes a Mac bundle.
 
 

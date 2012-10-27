@@ -1,4 +1,4 @@
-% wxLua 2.8.12 - Writing and Generating Binding Files
+% wxLua 2.8.12.3 - Writing and Generating Binding Files
 % John Labenski
 % 2012-09-28
 
@@ -76,11 +76,11 @@ to implement it in any way you want.
 -   These are generated files that contain Lua tables of typedefs, datatypes,
     and preprocessor conditions defined in a binding that may be used by
     another binding by adding them to the
-    `datatype_cache_input_fileTable`{.codelua} variable of the rules file.
+    `datatype_cache_input_fileTable`{.lua} variable of the rules file.
 -   The checking of known datatypes enforces that the generated bindings will
     work correctly. If a datatype is missing it will be unusable in Lua.
--   The items are added to the `typedefTable`{.codelua},
-    `dataTypeTable`{.codelua}, and `preprocConditionTable`{.codelua} variables
+-   The items are added to the `typedefTable`{.lua},
+    `dataTypeTable`{.lua}, and `preprocConditionTable`{.lua} variables
     of the `genwxbind.lua` program.
 -   All of the wxWidgets types are added to the
     `bindings/wxwidgets/wx_datatypes.lua` file which may be used by external
@@ -112,7 +112,7 @@ to implement it in any way you want.
 -   Contains functions that cannot be automatically wrapped.
 -   You can name the file anything you want and have multiple files
     since it is specified as a table in the rules file.
-    -   `override_fileTable = { "override.hpp" }`{.codelua}
+    -   `override_fileTable = { "override.hpp" }`{.lua}
 
 -   Functions that take pointers or references and return values through
     the variables passed in must be reworked to return multiple values.
@@ -358,14 +358,14 @@ To summarize, here's the function calls and where in each function
         objects, it's safe to leave it in the interface files as a reminder.
 
 -   **static**
-    -   Can be used with class member functions inside the *%class* tag.
+    -   Can be used with class member functions inside the *class* tag.
     -   Do not use with C style global functions.
     -   The generated code will call ClassName::FunctionName() and not
         use the object even if called with an object.
     -   Example : In the class wxFileName the function \
         *"static wxFileName DirExists(const wxString& dir)"* \
-        `dir = wx.wxFileName.DirExists("/some/dir")`{.codelua} or \
-        `f = wx.wxFileName(); dir = f.DirExists("/some/dir")`{.codelua}
+        `dir = wx.wxFileName.DirExists("/some/dir")`{.lua} or \
+        `f = wx.wxFileName(); dir = f.DirExists("/some/dir")`{.lua}
     -   The bindings generate code to make the function accessible in the
         class table (first example above) as well as when called using a object.
 
@@ -390,16 +390,17 @@ Other bindings would, of course, use their own tables.
 
 -   Reference a class by another name (currently unused).
 
-***%class [%delete] ClassName [, BaseClassName] \
+***class [%delete] ClassName [: public BaseClassName [, public BaseClassName2]] \
+{ \
     ClassName(...) \
     member functions \
     ... \
-%endclass***
+};***
 
 -   Declare a class and optionally its base class.
 -   All methods of the base class can be called by an instance of the class.
 -   If the class is in a namespace, such as `ns::ClassName`, the class must be
-    declared as `%class [...] ns::ClassName` and the constructor must also be
+    declared as `class [...] ns::ClassName` and the constructor must also be
     declared as `ns::ClassName(...)`.
     The generator will change the "::" to "_" for use in Lua.
 -   ***%delete*** can be used for classes you want the Lua garbage collector
@@ -416,51 +417,52 @@ Other bindings would, of course, use their own tables.
         should not use this tag.
     -   See also %gc, %ungc, %gc_this, %ungc_this.
 
-***%define NUMBER_NAME [Value]***
+***#define NUMBER_NAME [Value]***
 
 -   Declare a number which can be accessed in Lua using `wx.NUMBER_NAME`.
 -   The *NUMBER_NAME* can be a #define, an integer, a double...
 -   The optional parameter *[Value]* can be used to override or set the
     numerical value. This can be used to set preprocessor directives
     such as, *"#define A_DEFINE"* that don't have a value itself.
-    In this case assign it to be 1 using `%define A_DEFINE 1`.
--   There are many examples of *%define* in `bindings/wxwidgets/defsutils.i`.
+    In this case assign it to be 1 using `#define A_DEFINE 1`.
+-   There are many examples of *#define* in `bindings/wxwidgets/defsutils.i`.
 
-***%define_event wxEVT_XXX***
-
--   Declares a wxEventType *wxEVT_XXX* which can be accessed in Lua
-    using *wx.wxEVT_XXX*.
--   This tag must be used inside of the `%class` tag for the wxEvent
-    derived class it corresponds to so the event's methods can be known
-    to Lua and the generator can assign the correct class type to it.
--   An example of this is the wxCommandEvent class's interface in
-    *bindings/wxwidgets/event.i*, *"%define %event wxEVT_COMMAND_ENTER"*.
-
-***%define_object OBJECT_NAME***
+***#define_object OBJECT_NAME***
 
 -   Declares an object in the binding table which can be accessed in
     Lua using *wx.OBJECT_NAME*.
--   This tag must be used inside the corresponding *%class* tag so that
+-   This tag must be used inside the corresponding *class* tag so that
     the object's class methods can be known to Lua and the generator can
     assign the correct class type to it.
 -   An example of this is in the wxPoint class interface in
-    *bindings/wxwidgets/gdi.i*, *"%define %object wxDefaultPosition"*
+    *bindings/wxwidgets/gdi.i*, *"#define_object wxDefaultPosition"*
     where wxWidgets has created wxDefaultPosition as
     *"const wxPoint wxDefaultPosition;"*.
 
-***%define_pointer POINTER_NAME***
+***#define_pointer POINTER_NAME***
 
 -   Declares a pointer to an object in the binding table which can be
     accessed in wxLua using *wx.POINTER_NAME*.
--   This tag must be used inside the corresponding *%class* tag so that
+-   This tag must be used inside the corresponding *class* tag so that
     the pointer's methods can be known to Lua and the generator can
     assign the correct class type to it.
 -   An example of this is in the wxPenList class interface in
-    *bindings/wxwidgets/gdi.i*, *"%define %pointer wxThePenList"* where
+    *bindings/wxwidgets/gdi.i*, *"#define_pointer wxThePenList"* where
     wxWidgets has created the wxThePenList as
     *"wxPenList* wxThePenList;"*.
 
-***%define_string STRING_NAME [Value]***
+***#define_string STRING_NAME [Value]***
+
+-   Declares a string in the binding table which can be accessed in wxLua using
+    *wx.STRING_NAME*.
+-   The *STRING_NAME* must be defined as
+    *"const char* STRING_NAME = "str"* or some way that
+    allows it to be converted easily to *"const char*"*.
+-   The optional parameter *[Value]* can be the actual string value to
+    use and should be "str" or a const char*
+    variable declared elsewhere.
+
+***#define_wxstring STRING_NAME [Value]***
 
 -   Declares a string in the binding table which can be accessed in wxLua using
     *wx.STRING_NAME*.
@@ -473,19 +475,18 @@ Other bindings would, of course, use their own tables.
 -   Note : wxString is not used since tou can't get the data from a wxString
     if you need to convert from Unicode and VC has problems having the
     class wxString as a member of a struct.
--   Note : const char* is not used since there currently isn't a need for
-    it, but it would be easy to add if there was.
 
-***%enum [Enum_Type] or [ClassName::Enum_Type] \
+***enum [Enum_Type or ClassName::Enum_Type or Namespace::Enum_Type] \
+{ \
     ENUM_ITEM1 \
     ENUM_ITEM2 \
     ... \
- %endenum***
+ };***
 
 -   Declares enumerations in the binding table which can be accessed in
     wxLua using *wx.ENUM_ITEM1* as it could be in C++, meaning that the
     *Enum_Type* is stripped off.
--   If the enum is a part of a class use *"%enum ClassName::Enum_Type"*
+-   If the enum is a part of a class use *"enum ClassName::Enum_Type"*
     and the enums will be accessed in wxLua as *"wx.ClassName.ENUM_ITEM1"*.
 
 ***%function FUNCTION_NAME(int value, ...)***
@@ -508,7 +509,7 @@ Other bindings would, of course, use their own tables.
     cases as they needed.
 -   Note that by default, functions that return a pointer '*' or a reference
     '&' do NOT add the return value to the list of objects to be garbage
-    collected even if it is a *%class* data type with the *%delete* tag.
+    collected even if it is a *class* data type with the *%delete* tag.
     This is because it is assumed that the return value is 'owned' by someone
     else that will delete it. Use the *%gc* tag to override this behavior.
 -   See also *%ungc*.
@@ -529,16 +530,16 @@ Other bindings would, of course, use their own tables.
     for other cases as they needed.
 -   See also *%ungc_this*.
 
-***%if wxLUA_USE_XXX && %\_\_WXMSW\_\_ \
+***#if wxLUA_USE_XXX && %\_\_WXMSW\_\_ \
     Interface file data... \
-%endif // wxLUA_USE_XXX***
+#endif // wxLUA_USE_XXX***
 
 -   The C++ generated code within this block will be surrounded by
     *"#if wxLUA_USE_XXX && \_\_WXMSW\_\_" ... #endif*.
--   You can use any #defined value in the %if statement as well as the
+-   You can use any #defined value in the #if statement as well as the
     operators !, &, |.
 
-***%include "headerfile.h"***
+***#include "headerfile.h"***
 
 -   Include a C/C++ header file by generating the C code
     *#include "headerfile.h"*.
@@ -550,7 +551,7 @@ Other bindings would, of course, use their own tables.
 ***%member int m_x***
 
 -   Declare a property to access member variables in a class.
--   This tag must be used inside of the *%class* tag.
+-   This tag must be used inside of the *class* tag.
 -   The variables will be accessible only using the '.' convention as if
     they were table members.
 -   If the variable is const, it is only read-only.
@@ -558,7 +559,7 @@ Other bindings would, of course, use their own tables.
 ***%member_func int m_x***
 
 -   Declare a function to access member variables in a class.
--   This tag must be used inside of the *%class* tag.
+-   This tag must be used inside of the *class* tag.
 -   The generated functions in the example above will be named
     Get_m_x() and Set_m_x(int x) therefore, you may want to use *%rename*
     in conjunction with *%member*.
@@ -571,7 +572,7 @@ Other bindings would, of course, use their own tables.
 
 -   Declare that the operator == is defined for the class which can be
     accessed in wxLua using *point:op_eq(otherPoint)*.
--   This tag must be used inside of the %class tag.
+-   This tag must be used inside of the class tag.
 -   The functions that will be generated for the declared operators use
     the semantics given below.
 -   The reason that the operators are not overridden in Lua using the
@@ -681,20 +682,6 @@ Other bindings would, of course, use their own tables.
     used for the proper function you can use this tag followed by the
     exact same name you gave the C function in your override.
 
-***%property NAME, read, write***
-
--   **This tag is DEPRECATED and does nothing!** These "functions" are
-    generated on the fly.
--   Defines a way to access Get/SetNAME() class member functions as variables.
--   This tag must be used inside of the %class tag.
--   The Get/SetNAME() functions must exist already.
--   An example of this is in the wxSize class in *bindings/wxwidgets/gdi.i*
-    where the *"%property Height, read, write"* is declared. In wxLua you can
-    *read* and *write* to the *Height* variable using the wxSize::GetHeight()
-    and wxSize::SetHeight(int height) as "size = wx.wxSize(1,2); size.Height
-    = 3; print(size.Height)". Note that the period, not colon, is used
-    to access the property for both reading and writing.
-
 ***%rename NEW_FUNC_NAME void FUNC_NAME()***
 
 -   Rename a C/C++ method to a new name which can be accessed in Lua as
@@ -718,15 +705,33 @@ Other bindings would, of course, use their own tables.
 
 -   The next item is skipped, either a single line or a whole class.
 
-***%typedef KNOWN_DATATYPE*** ***UNKNOWN_DATATYPE***
+
+***struct [%delete] StructName \
+{ \
+    member variables \
+    ... \
+};***
+
+-   Declare a struct.
+-   If the struct is in a namespace, such as `ns::StructName`, the struct must
+    be declared as `struct [...] ns::StructName` and the constructor must also
+    be declared as `ns::StructName(...)`.
+    The generator will change the "::" to "_" for use in Lua.
+-   ***%delete*** can be used for structs you want the Lua garbage collector
+    to delete when the object goes out of scope.
+-   See ***class*** for more information.
+    The wxLua binding treats classes and structs nearly the same.
+
+
+***typedef KNOWN_DATATYPE*** ***UNKNOWN_DATATYPE***
 
 -   Declares to the binding that the *UNKNOWN_DATATYPE* should be
     treated as *KNOWN_DATATYPE*.
--   An example of this is *"%typedef long wxTextCoord"* where the
+-   An example of this is *"typedef long wxTextCoord"* where the
     wxTextCoord is just a long integer.
--   Without the %typedef the binding generator would give an error about
+-   Without the `typedef` the binding generator would give an error about
     an unknown data type, since it would assume that a typo or an error
-    in the interface file has been made.
+    in the interface file had been made.
 
 ***%ungc***
 
@@ -765,7 +770,7 @@ Other bindings would, of course, use their own tables.
     should be supported.
 -   *%wxcompatXY is now deprecated, please use %wxcompat_X_Y*
 
- **Standard wxWidgets #defines for conditional use using the %if directive**
+ **Standard wxWidgets #defines for conditional use using the #if directive**
 
 ~~~
     %__WINDOWS__
@@ -798,3 +803,13 @@ Other bindings would, of course, use their own tables.
     %__X__
     %__WXWINCE__
 ~~~
+
+***%wxEventType wxEVT_XXX***
+
+-   Declares a wxEventType *wxEVT_XXX* which can be accessed in Lua
+    using *wx.wxEVT_XXX*.
+-   This tag must be used inside of the `class` tag for the wxEvent
+    derived class it corresponds to so the event's methods can be known
+    to Lua and the generator can assign the correct class type to it.
+-   An example of this is the wxCommandEvent class's interface in
+    *bindings/wxwidgets/event.i*, *"%wxEventType wxEVT_COMMAND_ENTER"*.

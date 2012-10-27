@@ -29,7 +29,7 @@ int wxluatype_wxLuaDebuggerServer = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_AddBreakPoint[] = { &wxluatype_wxLuaDebuggerServer, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_AddBreakPoint(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_AddBreakPoint[1] = {{ wxLua_wxLuaDebuggerServer_AddBreakPoint, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_AddBreakPoint }};
-//     bool AddBreakPoint(const wxString &fileName, int lineNumber)
+//     bool AddBreakPoint(const wxString &fileName, int lineNumber );
 static int LUACALL wxLua_wxLuaDebuggerServer_AddBreakPoint(lua_State *L)
 {
     // int lineNumber
@@ -49,7 +49,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_AddBreakPoint(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_Break[] = { &wxluatype_wxLuaDebuggerServer, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_Break(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_Break[1] = {{ wxLua_wxLuaDebuggerServer_Break, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_Break }};
-//     bool Break()
+//     bool Break( );
 static int LUACALL wxLua_wxLuaDebuggerServer_Break(lua_State *L)
 {
     // get this
@@ -65,7 +65,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_Break(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_ClearAllBreakPoints[] = { &wxluatype_wxLuaDebuggerServer, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_ClearAllBreakPoints(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_ClearAllBreakPoints[1] = {{ wxLua_wxLuaDebuggerServer_ClearAllBreakPoints, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_ClearAllBreakPoints }};
-//     bool ClearAllBreakPoints()
+//     bool ClearAllBreakPoints( );
 static int LUACALL wxLua_wxLuaDebuggerServer_ClearAllBreakPoints(lua_State *L)
 {
     // get this
@@ -81,7 +81,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_ClearAllBreakPoints(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_Continue[] = { &wxluatype_wxLuaDebuggerServer, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_Continue(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_Continue[1] = {{ wxLua_wxLuaDebuggerServer_Continue, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_Continue }};
-//     bool Continue()
+//     bool Continue( );
 static int LUACALL wxLua_wxLuaDebuggerServer_Continue(lua_State *L)
 {
     // get this
@@ -97,7 +97,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_Continue(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_DisplayStackDialog[] = { &wxluatype_wxLuaDebuggerServer, &wxluatype_wxWindow, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_DisplayStackDialog(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_DisplayStackDialog[1] = {{ wxLua_wxLuaDebuggerServer_DisplayStackDialog, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_DisplayStackDialog }};
-//     void DisplayStackDialog(wxWindow *pParent, wxWindowID id = wxID_ANY)
+//     void DisplayStackDialog(wxWindow *pParent, wxWindowID id = wxID_ANY );
 static int LUACALL wxLua_wxLuaDebuggerServer_DisplayStackDialog(lua_State *L)
 {
     // get number of arguments
@@ -117,7 +117,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_DisplayStackDialog(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_EvaluateExpr[] = { &wxluatype_wxLuaDebuggerServer, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_EvaluateExpr(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_EvaluateExpr[1] = {{ wxLua_wxLuaDebuggerServer_EvaluateExpr, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_EvaluateExpr }};
-//     bool EvaluateExpr(int exprRef, const wxString &expr)
+//     bool EvaluateExpr(int exprRef, const wxString &expr );
 static int LUACALL wxLua_wxLuaDebuggerServer_EvaluateExpr(lua_State *L)
 {
     // const wxString expr
@@ -137,7 +137,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_EvaluateExpr(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_GetDebuggeeProcessId[] = { &wxluatype_wxLuaDebuggerServer, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_GetDebuggeeProcessId(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_GetDebuggeeProcessId[1] = {{ wxLua_wxLuaDebuggerServer_GetDebuggeeProcessId, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_GetDebuggeeProcessId }};
-//     long GetDebuggeeProcessId() const
+//     long GetDebuggeeProcessId() const;
 static int LUACALL wxLua_wxLuaDebuggerServer_GetDebuggeeProcessId(lua_State *L)
 {
     // get this
@@ -152,7 +152,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_GetDebuggeeProcessId(lua_State *L)
 
 static int LUACALL wxLua_wxLuaDebuggerServer_GetNetworkName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_GetNetworkName[1] = {{ wxLua_wxLuaDebuggerServer_GetNetworkName, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static wxString GetNetworkName()
+//     static wxString GetNetworkName( );
 static int LUACALL wxLua_wxLuaDebuggerServer_GetNetworkName(lua_State *L)
 {
     // call GetNetworkName
@@ -165,7 +165,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_GetNetworkName(lua_State *L)
 
 static int LUACALL wxLua_wxLuaDebuggerServer_GetProgramName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_GetProgramName[1] = {{ wxLua_wxLuaDebuggerServer_GetProgramName, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static wxString GetProgramName()
+//     static wxString GetProgramName( );
 static int LUACALL wxLua_wxLuaDebuggerServer_GetProgramName(lua_State *L)
 {
     // call GetProgramName
@@ -179,7 +179,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_GetProgramName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_KillDebuggee[] = { &wxluatype_wxLuaDebuggerServer, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_KillDebuggee(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_KillDebuggee[1] = {{ wxLua_wxLuaDebuggerServer_KillDebuggee, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_KillDebuggee }};
-//     bool KillDebuggee()
+//     bool KillDebuggee( );
 static int LUACALL wxLua_wxLuaDebuggerServer_KillDebuggee(lua_State *L)
 {
     // get this
@@ -195,7 +195,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_KillDebuggee(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_RemoveBreakPoint[] = { &wxluatype_wxLuaDebuggerServer, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_RemoveBreakPoint(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_RemoveBreakPoint[1] = {{ wxLua_wxLuaDebuggerServer_RemoveBreakPoint, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_RemoveBreakPoint }};
-//     bool RemoveBreakPoint(const wxString &fileName, int lineNumber)
+//     bool RemoveBreakPoint(const wxString &fileName, int lineNumber );
 static int LUACALL wxLua_wxLuaDebuggerServer_RemoveBreakPoint(lua_State *L)
 {
     // int lineNumber
@@ -215,7 +215,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_RemoveBreakPoint(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_Reset[] = { &wxluatype_wxLuaDebuggerServer, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_Reset(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_Reset[1] = {{ wxLua_wxLuaDebuggerServer_Reset, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_Reset }};
-//     bool Reset()
+//     bool Reset( );
 static int LUACALL wxLua_wxLuaDebuggerServer_Reset(lua_State *L)
 {
     // get this
@@ -231,7 +231,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_Reset(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_Run[] = { &wxluatype_wxLuaDebuggerServer, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_Run(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_Run[1] = {{ wxLua_wxLuaDebuggerServer_Run, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_Run }};
-//     bool Run(const wxString &fileName, const wxString &buffer)
+//     bool Run(const wxString &fileName, const wxString &buffer );
 static int LUACALL wxLua_wxLuaDebuggerServer_Run(lua_State *L)
 {
     // const wxString buffer
@@ -251,7 +251,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_Run(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_StartClient[] = { &wxluatype_wxLuaDebuggerServer, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_StartClient(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_StartClient[1] = {{ wxLua_wxLuaDebuggerServer_StartClient, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_StartClient }};
-//     long StartClient()
+//     long StartClient( );
 static int LUACALL wxLua_wxLuaDebuggerServer_StartClient(lua_State *L)
 {
     // get this
@@ -267,7 +267,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_StartClient(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_StartServer[] = { &wxluatype_wxLuaDebuggerServer, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_StartServer(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_StartServer[1] = {{ wxLua_wxLuaDebuggerServer_StartServer, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_StartServer }};
-//     bool StartServer()
+//     bool StartServer( );
 static int LUACALL wxLua_wxLuaDebuggerServer_StartServer(lua_State *L)
 {
     // get this
@@ -283,7 +283,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_StartServer(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_Step[] = { &wxluatype_wxLuaDebuggerServer, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_Step(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_Step[1] = {{ wxLua_wxLuaDebuggerServer_Step, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_Step }};
-//     bool Step()
+//     bool Step( );
 static int LUACALL wxLua_wxLuaDebuggerServer_Step(lua_State *L)
 {
     // get this
@@ -299,7 +299,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_Step(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_StepOut[] = { &wxluatype_wxLuaDebuggerServer, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_StepOut(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_StepOut[1] = {{ wxLua_wxLuaDebuggerServer_StepOut, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_StepOut }};
-//     bool StepOut()
+//     bool StepOut( );
 static int LUACALL wxLua_wxLuaDebuggerServer_StepOut(lua_State *L)
 {
     // get this
@@ -315,7 +315,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_StepOut(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_StepOver[] = { &wxluatype_wxLuaDebuggerServer, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_StepOver(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_StepOver[1] = {{ wxLua_wxLuaDebuggerServer_StepOver, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_StepOver }};
-//     bool StepOver()
+//     bool StepOver( );
 static int LUACALL wxLua_wxLuaDebuggerServer_StepOver(lua_State *L)
 {
     // get this
@@ -331,7 +331,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_StepOver(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_StopServer[] = { &wxluatype_wxLuaDebuggerServer, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_StopServer(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_StopServer[1] = {{ wxLua_wxLuaDebuggerServer_StopServer, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_StopServer }};
-//     bool StopServer()
+//     bool StopServer( );
 static int LUACALL wxLua_wxLuaDebuggerServer_StopServer(lua_State *L)
 {
     // get this
@@ -350,7 +350,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_delete[1] = {{ wxlua
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerServer_constructor[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxLuaDebuggerServer_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerServer_constructor[1] = {{ wxLua_wxLuaDebuggerServer_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxLuaDebuggerServer_constructor }};
-//     wxLuaDebuggerServer(int portNumber)
+//     wxLuaDebuggerServer(int portNumber );
 static int LUACALL wxLua_wxLuaDebuggerServer_constructor(lua_State *L)
 {
     // int portNumber
@@ -412,7 +412,7 @@ int wxluatype_wxLuaDebuggerEvent = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerEvent_GetFileName[] = { &wxluatype_wxLuaDebuggerEvent, NULL };
 static int LUACALL wxLua_wxLuaDebuggerEvent_GetFileName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerEvent_GetFileName[1] = {{ wxLua_wxLuaDebuggerEvent_GetFileName, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaDebuggerEvent_GetFileName }};
-//     wxString GetFileName() const
+//     wxString GetFileName() const;
 static int LUACALL wxLua_wxLuaDebuggerEvent_GetFileName(lua_State *L)
 {
     // get this
@@ -428,7 +428,7 @@ static int LUACALL wxLua_wxLuaDebuggerEvent_GetFileName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerEvent_GetLineNumber[] = { &wxluatype_wxLuaDebuggerEvent, NULL };
 static int LUACALL wxLua_wxLuaDebuggerEvent_GetLineNumber(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerEvent_GetLineNumber[1] = {{ wxLua_wxLuaDebuggerEvent_GetLineNumber, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaDebuggerEvent_GetLineNumber }};
-//     int GetLineNumber() const
+//     int GetLineNumber() const;
 static int LUACALL wxLua_wxLuaDebuggerEvent_GetLineNumber(lua_State *L)
 {
     // get this
@@ -444,7 +444,7 @@ static int LUACALL wxLua_wxLuaDebuggerEvent_GetLineNumber(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerEvent_GetMessage[] = { &wxluatype_wxLuaDebuggerEvent, NULL };
 static int LUACALL wxLua_wxLuaDebuggerEvent_GetMessage(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerEvent_GetMessage[1] = {{ wxLua_wxLuaDebuggerEvent_GetMessage, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaDebuggerEvent_GetMessage }};
-//     wxString GetMessage() const
+//     wxString GetMessage() const;
 static int LUACALL wxLua_wxLuaDebuggerEvent_GetMessage(lua_State *L)
 {
     // get this
@@ -460,7 +460,7 @@ static int LUACALL wxLua_wxLuaDebuggerEvent_GetMessage(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaDebuggerEvent_GetReference[] = { &wxluatype_wxLuaDebuggerEvent, NULL };
 static int LUACALL wxLua_wxLuaDebuggerEvent_GetReference(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaDebuggerEvent_GetReference[1] = {{ wxLua_wxLuaDebuggerEvent_GetReference, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaDebuggerEvent_GetReference }};
-//     int GetReference() const
+//     int GetReference() const;
 static int LUACALL wxLua_wxLuaDebuggerEvent_GetReference(lua_State *L)
 {
     // get this
@@ -532,7 +532,7 @@ wxLuaBindEvent* wxLuaGetEventList_wxluadebugger(size_t &count)
 }
 
 // ---------------------------------------------------------------------------
-// wxLuaGetDefineList_wxluadebugger() is called to register %define and %enum
+// wxLuaGetDefineList_wxluadebugger() is called to register #define and enum
 // ---------------------------------------------------------------------------
 
 wxLuaBindNumber* wxLuaGetDefineList_wxluadebugger(size_t &count)
@@ -548,7 +548,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxluadebugger(size_t &count)
 
 // ---------------------------------------------------------------------------
 
-// wxLuaGetStringList_wxluadebugger() is called to register %define %string
+// wxLuaGetStringList_wxluadebugger() is called to register #define_string
 // ---------------------------------------------------------------------------
 
 wxLuaBindString* wxLuaGetStringList_wxluadebugger(size_t &count)

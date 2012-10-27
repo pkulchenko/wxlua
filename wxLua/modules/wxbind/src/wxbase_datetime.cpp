@@ -37,7 +37,7 @@ int wxluatype_wxDateTime_TimeZone = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_TimeZone_GetOffset[] = { &wxluatype_wxDateTime_TimeZone, NULL };
 static int LUACALL wxLua_wxDateTime_TimeZone_GetOffset(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_TimeZone_GetOffset[1] = {{ wxLua_wxDateTime_TimeZone_GetOffset, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_TimeZone_GetOffset }};
-//     long GetOffset() const
+//     long GetOffset() const;
 static int LUACALL wxLua_wxDateTime_TimeZone_GetOffset(lua_State *L)
 {
     // get this
@@ -53,7 +53,7 @@ static int LUACALL wxLua_wxDateTime_TimeZone_GetOffset(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_TimeZone_Make[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_TimeZone_Make(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_TimeZone_Make[1] = {{ wxLua_wxDateTime_TimeZone_Make, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_TimeZone_Make }};
-//     static wxDateTime::TimeZone Make(long offset)
+//     static wxDateTime::TimeZone Make(long offset );
 static int LUACALL wxLua_wxDateTime_TimeZone_Make(lua_State *L)
 {
     // long offset
@@ -75,7 +75,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_TimeZone_delete[1] = {{ wxlua
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_TimeZone_constructor[] = { &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_TimeZone_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_TimeZone_constructor[1] = {{ wxLua_wxDateTime_TimeZone_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_TimeZone_constructor }};
-//     wxDateTime::TimeZone(wxDateTime::TZ tz)
+//     wxDateTime::TimeZone(wxDateTime::TZ tz );
 static int LUACALL wxLua_wxDateTime_TimeZone_constructor(lua_State *L)
 {
     // wxDateTime::TZ tz
@@ -126,7 +126,7 @@ int wxluatype_wxDateTime = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_Add1[] = { &wxluatype_wxDateTime, &wxluatype_wxDateSpan, NULL };
 static int LUACALL wxLua_wxDateTime_Add1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_Add1[1] = {{ wxLua_wxDateTime_Add1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_Add1 }};
-//     wxDateTime& Add(const wxDateSpan& diff)
+//     wxDateTime& Add(const wxDateSpan& diff );
 static int LUACALL wxLua_wxDateTime_Add1(lua_State *L)
 {
     // const wxDateSpan diff
@@ -147,7 +147,7 @@ static int LUACALL wxLua_wxDateTime_Add1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_Add[] = { &wxluatype_wxDateTime, &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxDateTime_Add(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_Add[1] = {{ wxLua_wxDateTime_Add, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_Add }};
-//     wxDateTime& Add(const wxTimeSpan& diff)
+//     wxDateTime& Add(const wxTimeSpan& diff );
 static int LUACALL wxLua_wxDateTime_Add(lua_State *L)
 {
     // const wxTimeSpan diff
@@ -167,7 +167,7 @@ static int LUACALL wxLua_wxDateTime_Add(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_ConvertYearToBC[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_ConvertYearToBC(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_ConvertYearToBC[1] = {{ wxLua_wxDateTime_ConvertYearToBC, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_ConvertYearToBC }};
-//     static int ConvertYearToBC(int year)
+//     static int ConvertYearToBC(int year );
 static int LUACALL wxLua_wxDateTime_ConvertYearToBC(lua_State *L)
 {
     // int year
@@ -183,7 +183,7 @@ static int LUACALL wxLua_wxDateTime_ConvertYearToBC(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_Format[] = { &wxluatype_wxDateTime, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_Format(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_Format[1] = {{ wxLua_wxDateTime_Format, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxDateTime_Format }};
-//     wxString Format(wxString format = "%c", wxDateTime::TZ tz = wxDateTime::Local) const
+//     wxString Format(wxString format = "%c", wxDateTime::TZ tz = wxDateTime::Local) const;
 static int LUACALL wxLua_wxDateTime_Format(lua_State *L)
 {
     // get number of arguments
@@ -205,7 +205,7 @@ static int LUACALL wxLua_wxDateTime_Format(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_FormatDate[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_FormatDate(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_FormatDate[1] = {{ wxLua_wxDateTime_FormatDate, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_FormatDate }};
-//     wxString FormatDate() const
+//     wxString FormatDate() const;
 static int LUACALL wxLua_wxDateTime_FormatDate(lua_State *L)
 {
     // get this
@@ -221,7 +221,7 @@ static int LUACALL wxLua_wxDateTime_FormatDate(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_FormatISODate[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_FormatISODate(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_FormatISODate[1] = {{ wxLua_wxDateTime_FormatISODate, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_FormatISODate }};
-//     wxString FormatISODate() const
+//     wxString FormatISODate() const;
 static int LUACALL wxLua_wxDateTime_FormatISODate(lua_State *L)
 {
     // get this
@@ -237,7 +237,7 @@ static int LUACALL wxLua_wxDateTime_FormatISODate(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_FormatISOTime[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_FormatISOTime(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_FormatISOTime[1] = {{ wxLua_wxDateTime_FormatISOTime, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_FormatISOTime }};
-//     wxString FormatISOTime() const
+//     wxString FormatISOTime() const;
 static int LUACALL wxLua_wxDateTime_FormatISOTime(lua_State *L)
 {
     // get this
@@ -253,7 +253,7 @@ static int LUACALL wxLua_wxDateTime_FormatISOTime(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_FormatTime[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_FormatTime(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_FormatTime[1] = {{ wxLua_wxDateTime_FormatTime, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_FormatTime }};
-//     wxString FormatTime() const
+//     wxString FormatTime() const;
 static int LUACALL wxLua_wxDateTime_FormatTime(lua_State *L)
 {
     // get this
@@ -269,7 +269,7 @@ static int LUACALL wxLua_wxDateTime_FormatTime(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_FromTimezone[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime_TimeZone, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxDateTime_FromTimezone(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_FromTimezone[1] = {{ wxLua_wxDateTime_FromTimezone, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxDateTime_FromTimezone }};
-//     wxDateTime FromTimezone(const wxDateTime::TimeZone& tz, bool noDST = false) const
+//     wxDateTime FromTimezone(const wxDateTime::TimeZone& tz, bool noDST = false) const;
 static int LUACALL wxLua_wxDateTime_FromTimezone(lua_State *L)
 {
     // get number of arguments
@@ -294,7 +294,7 @@ static int LUACALL wxLua_wxDateTime_FromTimezone(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_FromUTC[] = { &wxluatype_wxDateTime, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxDateTime_FromUTC(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_FromUTC[1] = {{ wxLua_wxDateTime_FromUTC, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_FromUTC }};
-//     wxDateTime FromUTC(bool noDST = false) const
+//     wxDateTime FromUTC(bool noDST = false) const;
 static int LUACALL wxLua_wxDateTime_FromUTC(lua_State *L)
 {
     // get number of arguments
@@ -333,7 +333,7 @@ static int LUACALL wxLua_wxDateTime_GetAsDOS(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetBeginDST[] = { &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_GetBeginDST(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetBeginDST[1] = {{ wxLua_wxDateTime_GetBeginDST, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 2, s_wxluatypeArray_wxLua_wxDateTime_GetBeginDST }};
-//     static wxDateTime GetBeginDST(int year = wxDateTime::Inv_Year, wxDateTime::Country country = wxDateTime::Country_Default)
+//     static wxDateTime GetBeginDST(int year = wxDateTime::Inv_Year, wxDateTime::Country country = wxDateTime::Country_Default );
 static int LUACALL wxLua_wxDateTime_GetBeginDST(lua_State *L)
 {
     // get number of arguments
@@ -356,7 +356,7 @@ static int LUACALL wxLua_wxDateTime_GetBeginDST(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetCentury1[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime_TimeZone, NULL };
 static int LUACALL wxLua_wxDateTime_GetCentury1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetCentury1[1] = {{ wxLua_wxDateTime_GetCentury1, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_GetCentury1 }};
-//     int GetCentury(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+//     int GetCentury(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const;
 static int LUACALL wxLua_wxDateTime_GetCentury1(lua_State *L)
 {
     // get number of arguments
@@ -376,7 +376,7 @@ static int LUACALL wxLua_wxDateTime_GetCentury1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetCentury[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_GetCentury(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetCentury[1] = {{ wxLua_wxDateTime_GetCentury, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_GetCentury }};
-//     static int GetCentury(int year)
+//     static int GetCentury(int year );
 static int LUACALL wxLua_wxDateTime_GetCentury(lua_State *L)
 {
     // int year
@@ -391,7 +391,7 @@ static int LUACALL wxLua_wxDateTime_GetCentury(lua_State *L)
 
 static int LUACALL wxLua_wxDateTime_GetCountry(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetCountry[1] = {{ wxLua_wxDateTime_GetCountry, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static wxDateTime::Country GetCountry()
+//     static wxDateTime::Country GetCountry( );
 static int LUACALL wxLua_wxDateTime_GetCountry(lua_State *L)
 {
     // call GetCountry
@@ -405,7 +405,7 @@ static int LUACALL wxLua_wxDateTime_GetCountry(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetCurrentMonth[] = { &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_GetCurrentMonth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetCurrentMonth[1] = {{ wxLua_wxDateTime_GetCurrentMonth, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 1, s_wxluatypeArray_wxLua_wxDateTime_GetCurrentMonth }};
-//     static wxDateTime::Month GetCurrentMonth(wxDateTime::Calendar cal = wxDateTime::Gregorian)
+//     static wxDateTime::Month GetCurrentMonth(wxDateTime::Calendar cal = wxDateTime::Gregorian );
 static int LUACALL wxLua_wxDateTime_GetCurrentMonth(lua_State *L)
 {
     // get number of arguments
@@ -423,7 +423,7 @@ static int LUACALL wxLua_wxDateTime_GetCurrentMonth(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetCurrentYear[] = { &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_GetCurrentYear(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetCurrentYear[1] = {{ wxLua_wxDateTime_GetCurrentYear, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 1, s_wxluatypeArray_wxLua_wxDateTime_GetCurrentYear }};
-//     static int GetCurrentYear(wxDateTime::Calendar cal = wxDateTime::Gregorian)
+//     static int GetCurrentYear(wxDateTime::Calendar cal = wxDateTime::Gregorian );
 static int LUACALL wxLua_wxDateTime_GetCurrentYear(lua_State *L)
 {
     // get number of arguments
@@ -441,7 +441,7 @@ static int LUACALL wxLua_wxDateTime_GetCurrentYear(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetDateOnly[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_GetDateOnly(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetDateOnly[1] = {{ wxLua_wxDateTime_GetDateOnly, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_GetDateOnly }};
-//     wxDateTime GetDateOnly() const
+//     wxDateTime GetDateOnly() const;
 static int LUACALL wxLua_wxDateTime_GetDateOnly(lua_State *L)
 {
     // get this
@@ -460,7 +460,7 @@ static int LUACALL wxLua_wxDateTime_GetDateOnly(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetDay[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime_TimeZone, NULL };
 static int LUACALL wxLua_wxDateTime_GetDay(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetDay[1] = {{ wxLua_wxDateTime_GetDay, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_GetDay }};
-//     wxDateTime::wxDateTime_t GetDay(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+//     wxDateTime::wxDateTime_t GetDay(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const;
 static int LUACALL wxLua_wxDateTime_GetDay(lua_State *L)
 {
     // get number of arguments
@@ -480,7 +480,7 @@ static int LUACALL wxLua_wxDateTime_GetDay(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetDayOfYear[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime_TimeZone, NULL };
 static int LUACALL wxLua_wxDateTime_GetDayOfYear(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetDayOfYear[1] = {{ wxLua_wxDateTime_GetDayOfYear, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_GetDayOfYear }};
-//     wxDateTime::wxDateTime_t GetDayOfYear(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+//     wxDateTime::wxDateTime_t GetDayOfYear(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const;
 static int LUACALL wxLua_wxDateTime_GetDayOfYear(lua_State *L)
 {
     // get number of arguments
@@ -500,7 +500,7 @@ static int LUACALL wxLua_wxDateTime_GetDayOfYear(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetEndDST[] = { &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_GetEndDST(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetEndDST[1] = {{ wxLua_wxDateTime_GetEndDST, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 2, s_wxluatypeArray_wxLua_wxDateTime_GetEndDST }};
-//     static wxDateTime GetEndDST(int year = wxDateTime::Inv_Year, wxDateTime::Country country = wxDateTime::Country_Default)
+//     static wxDateTime GetEndDST(int year = wxDateTime::Inv_Year, wxDateTime::Country country = wxDateTime::Country_Default );
 static int LUACALL wxLua_wxDateTime_GetEndDST(lua_State *L)
 {
     // get number of arguments
@@ -523,7 +523,7 @@ static int LUACALL wxLua_wxDateTime_GetEndDST(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetHour[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime_TimeZone, NULL };
 static int LUACALL wxLua_wxDateTime_GetHour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetHour[1] = {{ wxLua_wxDateTime_GetHour, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_GetHour }};
-//     wxDateTime::wxDateTime_t GetHour(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+//     wxDateTime::wxDateTime_t GetHour(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const;
 static int LUACALL wxLua_wxDateTime_GetHour(lua_State *L)
 {
     // get number of arguments
@@ -543,7 +543,7 @@ static int LUACALL wxLua_wxDateTime_GetHour(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetJDN[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_GetJDN(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetJDN[1] = {{ wxLua_wxDateTime_GetJDN, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_GetJDN }};
-//     double GetJDN() const
+//     double GetJDN() const;
 static int LUACALL wxLua_wxDateTime_GetJDN(lua_State *L)
 {
     // get this
@@ -559,7 +559,7 @@ static int LUACALL wxLua_wxDateTime_GetJDN(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetJulianDayNumber[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_GetJulianDayNumber(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetJulianDayNumber[1] = {{ wxLua_wxDateTime_GetJulianDayNumber, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_GetJulianDayNumber }};
-//     double GetJulianDayNumber() const
+//     double GetJulianDayNumber() const;
 static int LUACALL wxLua_wxDateTime_GetJulianDayNumber(lua_State *L)
 {
     // get this
@@ -575,7 +575,7 @@ static int LUACALL wxLua_wxDateTime_GetJulianDayNumber(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetLastMonthDay[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_GetLastMonthDay(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetLastMonthDay[1] = {{ wxLua_wxDateTime_GetLastMonthDay, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxDateTime_GetLastMonthDay }};
-//     wxDateTime GetLastMonthDay(wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year) const
+//     wxDateTime GetLastMonthDay(wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year) const;
 static int LUACALL wxLua_wxDateTime_GetLastMonthDay(lua_State *L)
 {
     // get number of arguments
@@ -600,7 +600,7 @@ static int LUACALL wxLua_wxDateTime_GetLastMonthDay(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetLastWeekDay[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, &wxluatype_TINTEGER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_GetLastWeekDay(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetLastWeekDay[1] = {{ wxLua_wxDateTime_GetLastWeekDay, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxDateTime_GetLastWeekDay }};
-//     wxDateTime GetLastWeekDay(wxDateTime::WeekDay weekday, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year)
+//     wxDateTime GetLastWeekDay(wxDateTime::WeekDay weekday, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year );
 static int LUACALL wxLua_wxDateTime_GetLastWeekDay(lua_State *L)
 {
     // get number of arguments
@@ -627,7 +627,7 @@ static int LUACALL wxLua_wxDateTime_GetLastWeekDay(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetMJD[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_GetMJD(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetMJD[1] = {{ wxLua_wxDateTime_GetMJD, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_GetMJD }};
-//     double GetMJD() const
+//     double GetMJD() const;
 static int LUACALL wxLua_wxDateTime_GetMJD(lua_State *L)
 {
     // get this
@@ -643,7 +643,7 @@ static int LUACALL wxLua_wxDateTime_GetMJD(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetMillisecond[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime_TimeZone, NULL };
 static int LUACALL wxLua_wxDateTime_GetMillisecond(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetMillisecond[1] = {{ wxLua_wxDateTime_GetMillisecond, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_GetMillisecond }};
-//     wxDateTime::wxDateTime_t GetMillisecond(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+//     wxDateTime::wxDateTime_t GetMillisecond(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const;
 static int LUACALL wxLua_wxDateTime_GetMillisecond(lua_State *L)
 {
     // get number of arguments
@@ -663,7 +663,7 @@ static int LUACALL wxLua_wxDateTime_GetMillisecond(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetMinute[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime_TimeZone, NULL };
 static int LUACALL wxLua_wxDateTime_GetMinute(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetMinute[1] = {{ wxLua_wxDateTime_GetMinute, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_GetMinute }};
-//     wxDateTime::wxDateTime_t GetMinute(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+//     wxDateTime::wxDateTime_t GetMinute(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const;
 static int LUACALL wxLua_wxDateTime_GetMinute(lua_State *L)
 {
     // get number of arguments
@@ -683,7 +683,7 @@ static int LUACALL wxLua_wxDateTime_GetMinute(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetModifiedJulianDayNumber[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_GetModifiedJulianDayNumber(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetModifiedJulianDayNumber[1] = {{ wxLua_wxDateTime_GetModifiedJulianDayNumber, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_GetModifiedJulianDayNumber }};
-//     double GetModifiedJulianDayNumber() const
+//     double GetModifiedJulianDayNumber() const;
 static int LUACALL wxLua_wxDateTime_GetModifiedJulianDayNumber(lua_State *L)
 {
     // get this
@@ -699,7 +699,7 @@ static int LUACALL wxLua_wxDateTime_GetModifiedJulianDayNumber(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetMonth[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime_TimeZone, NULL };
 static int LUACALL wxLua_wxDateTime_GetMonth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetMonth[1] = {{ wxLua_wxDateTime_GetMonth, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_GetMonth }};
-//     wxDateTime::Month GetMonth(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+//     wxDateTime::Month GetMonth(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const;
 static int LUACALL wxLua_wxDateTime_GetMonth(lua_State *L)
 {
     // get number of arguments
@@ -719,7 +719,7 @@ static int LUACALL wxLua_wxDateTime_GetMonth(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetMonthName[] = { &wxluatype_TINTEGER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_GetMonthName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetMonthName[1] = {{ wxLua_wxDateTime_GetMonthName, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_GetMonthName }};
-//     static wxString GetMonthName(wxDateTime::Month month, wxDateTime::NameFlags flags = wxDateTime::Name_Full)
+//     static wxString GetMonthName(wxDateTime::Month month, wxDateTime::NameFlags flags = wxDateTime::Name_Full );
 static int LUACALL wxLua_wxDateTime_GetMonthName(lua_State *L)
 {
     // get number of arguments
@@ -739,7 +739,7 @@ static int LUACALL wxLua_wxDateTime_GetMonthName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetNextWeekDay[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_GetNextWeekDay(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetNextWeekDay[1] = {{ wxLua_wxDateTime_GetNextWeekDay, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_GetNextWeekDay }};
-//     wxDateTime GetNextWeekDay(wxDateTime::WeekDay weekday) const
+//     wxDateTime GetNextWeekDay(wxDateTime::WeekDay weekday) const;
 static int LUACALL wxLua_wxDateTime_GetNextWeekDay(lua_State *L)
 {
     // wxDateTime::WeekDay weekday
@@ -760,7 +760,7 @@ static int LUACALL wxLua_wxDateTime_GetNextWeekDay(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetNumberOfDays1[] = { &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_GetNumberOfDays1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetNumberOfDays1[1] = {{ wxLua_wxDateTime_GetNumberOfDays1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 3, s_wxluatypeArray_wxLua_wxDateTime_GetNumberOfDays1 }};
-//     static wxDateTime::wxDateTime_t GetNumberOfDays(wxDateTime::Month month, int year = wxDateTime::Inv_Year, wxDateTime::Calendar cal = wxDateTime::Gregorian)
+//     static wxDateTime::wxDateTime_t GetNumberOfDays(wxDateTime::Month month, int year = wxDateTime::Inv_Year, wxDateTime::Calendar cal = wxDateTime::Gregorian );
 static int LUACALL wxLua_wxDateTime_GetNumberOfDays1(lua_State *L)
 {
     // get number of arguments
@@ -782,7 +782,7 @@ static int LUACALL wxLua_wxDateTime_GetNumberOfDays1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetNumberOfDays[] = { &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_GetNumberOfDays(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetNumberOfDays[1] = {{ wxLua_wxDateTime_GetNumberOfDays, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_GetNumberOfDays }};
-//     static wxDateTime::wxDateTime_t GetNumberOfDays(int year, wxDateTime::Calendar cal = wxDateTime::Gregorian)
+//     static wxDateTime::wxDateTime_t GetNumberOfDays(int year, wxDateTime::Calendar cal = wxDateTime::Gregorian );
 static int LUACALL wxLua_wxDateTime_GetNumberOfDays(lua_State *L)
 {
     // get number of arguments
@@ -802,7 +802,7 @@ static int LUACALL wxLua_wxDateTime_GetNumberOfDays(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetPrevWeekDay[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_GetPrevWeekDay(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetPrevWeekDay[1] = {{ wxLua_wxDateTime_GetPrevWeekDay, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_GetPrevWeekDay }};
-//     wxDateTime GetPrevWeekDay(wxDateTime::WeekDay weekday) const
+//     wxDateTime GetPrevWeekDay(wxDateTime::WeekDay weekday) const;
 static int LUACALL wxLua_wxDateTime_GetPrevWeekDay(lua_State *L)
 {
     // wxDateTime::WeekDay weekday
@@ -823,7 +823,7 @@ static int LUACALL wxLua_wxDateTime_GetPrevWeekDay(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetRataDie[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_GetRataDie(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetRataDie[1] = {{ wxLua_wxDateTime_GetRataDie, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_GetRataDie }};
-//     double GetRataDie() const
+//     double GetRataDie() const;
 static int LUACALL wxLua_wxDateTime_GetRataDie(lua_State *L)
 {
     // get this
@@ -839,7 +839,7 @@ static int LUACALL wxLua_wxDateTime_GetRataDie(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetSecond[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime_TimeZone, NULL };
 static int LUACALL wxLua_wxDateTime_GetSecond(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetSecond[1] = {{ wxLua_wxDateTime_GetSecond, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_GetSecond }};
-//     wxDateTime::wxDateTime_t GetSecond(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+//     wxDateTime::wxDateTime_t GetSecond(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const;
 static int LUACALL wxLua_wxDateTime_GetSecond(lua_State *L)
 {
     // get number of arguments
@@ -859,7 +859,7 @@ static int LUACALL wxLua_wxDateTime_GetSecond(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetTicks1[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_GetTicks1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetTicks1[1] = {{ wxLua_wxDateTime_GetTicks1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_GetTicks1 }};
-//     time_t GetTicks() const
+//     time_t GetTicks() const;
 static int LUACALL wxLua_wxDateTime_GetTicks1(lua_State *L)
 {
     // get this
@@ -875,7 +875,7 @@ static int LUACALL wxLua_wxDateTime_GetTicks1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetTicks[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_GetTicks(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetTicks[1] = {{ wxLua_wxDateTime_GetTicks, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_GetTicks }};
-//     long GetTicks()
+//     long GetTicks( );
 static int LUACALL wxLua_wxDateTime_GetTicks(lua_State *L)
 {
     // get this
@@ -893,7 +893,7 @@ static int LUACALL wxLua_wxDateTime_GetTicks(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetWeek[] = { &wxluatype_wxDateTime, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_GetWeek(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetWeek[1] = {{ wxLua_wxDateTime_GetWeek, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxDateTime_GetWeek }};
-//     !%wxchkver_2_6 wxDateTime GetWeek(wxDateTime::wxDateTime_t numWeek, wxDateTime::WeekDay weekday = wxDateTime::Mon) const
+//     !%wxchkver_2_6 wxDateTime GetWeek(wxDateTime::wxDateTime_t numWeek, wxDateTime::WeekDay weekday = wxDateTime::Mon) const;
 static int LUACALL wxLua_wxDateTime_GetWeek(lua_State *L)
 {
     // get number of arguments
@@ -920,7 +920,7 @@ static int LUACALL wxLua_wxDateTime_GetWeek(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetWeekDay1[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime_TimeZone, NULL };
 static int LUACALL wxLua_wxDateTime_GetWeekDay1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetWeekDay1[1] = {{ wxLua_wxDateTime_GetWeekDay1, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_GetWeekDay1 }};
-//     wxDateTime::WeekDay GetWeekDay(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+//     wxDateTime::WeekDay GetWeekDay(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const;
 static int LUACALL wxLua_wxDateTime_GetWeekDay1(lua_State *L)
 {
     // get number of arguments
@@ -940,7 +940,7 @@ static int LUACALL wxLua_wxDateTime_GetWeekDay1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetWeekDay[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_GetWeekDay(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetWeekDay[1] = {{ wxLua_wxDateTime_GetWeekDay, WXLUAMETHOD_METHOD, 2, 5, s_wxluatypeArray_wxLua_wxDateTime_GetWeekDay }};
-//     wxDateTime GetWeekDay(wxDateTime::WeekDay weekday, int n = 1, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year) const
+//     wxDateTime GetWeekDay(wxDateTime::WeekDay weekday, int n = 1, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year) const;
 static int LUACALL wxLua_wxDateTime_GetWeekDay(lua_State *L)
 {
     // get number of arguments
@@ -969,7 +969,7 @@ static int LUACALL wxLua_wxDateTime_GetWeekDay(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetWeekDayInSameWeek[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_GetWeekDayInSameWeek(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetWeekDayInSameWeek[1] = {{ wxLua_wxDateTime_GetWeekDayInSameWeek, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_GetWeekDayInSameWeek }};
-//     wxDateTime  GetWeekDayInSameWeek(wxDateTime::WeekDay weekday) const
+//     wxDateTime  GetWeekDayInSameWeek(wxDateTime::WeekDay weekday) const;
 static int LUACALL wxLua_wxDateTime_GetWeekDayInSameWeek(lua_State *L)
 {
     // wxDateTime::WeekDay weekday
@@ -990,7 +990,7 @@ static int LUACALL wxLua_wxDateTime_GetWeekDayInSameWeek(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetWeekDayName[] = { &wxluatype_TINTEGER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_GetWeekDayName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetWeekDayName[1] = {{ wxLua_wxDateTime_GetWeekDayName, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_GetWeekDayName }};
-//     static wxString GetWeekDayName(wxDateTime::WeekDay weekday, wxDateTime::NameFlags flags = wxDateTime::Name_Full)
+//     static wxString GetWeekDayName(wxDateTime::WeekDay weekday, wxDateTime::NameFlags flags = wxDateTime::Name_Full );
 static int LUACALL wxLua_wxDateTime_GetWeekDayName(lua_State *L)
 {
     // get number of arguments
@@ -1010,7 +1010,7 @@ static int LUACALL wxLua_wxDateTime_GetWeekDayName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetWeekOfMonth[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, &wxluatype_wxDateTime_TimeZone, NULL };
 static int LUACALL wxLua_wxDateTime_GetWeekOfMonth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetWeekOfMonth[1] = {{ wxLua_wxDateTime_GetWeekOfMonth, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxDateTime_GetWeekOfMonth }};
-//     wxDateTime::wxDateTime_t GetWeekOfMonth(wxDateTime::WeekFlags flags = wxDateTime::Monday_First, const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+//     wxDateTime::wxDateTime_t GetWeekOfMonth(wxDateTime::WeekFlags flags = wxDateTime::Monday_First, const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const;
 static int LUACALL wxLua_wxDateTime_GetWeekOfMonth(lua_State *L)
 {
     // get number of arguments
@@ -1032,7 +1032,7 @@ static int LUACALL wxLua_wxDateTime_GetWeekOfMonth(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetWeekOfYear[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, &wxluatype_wxDateTime_TimeZone, NULL };
 static int LUACALL wxLua_wxDateTime_GetWeekOfYear(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetWeekOfYear[1] = {{ wxLua_wxDateTime_GetWeekOfYear, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxDateTime_GetWeekOfYear }};
-//     wxDateTime::wxDateTime_t GetWeekOfYear(wxDateTime::WeekFlags flags = wxDateTime::Monday_First, const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+//     wxDateTime::wxDateTime_t GetWeekOfYear(wxDateTime::WeekFlags flags = wxDateTime::Monday_First, const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const;
 static int LUACALL wxLua_wxDateTime_GetWeekOfYear(lua_State *L)
 {
     // get number of arguments
@@ -1054,7 +1054,7 @@ static int LUACALL wxLua_wxDateTime_GetWeekOfYear(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetYear[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime_TimeZone, NULL };
 static int LUACALL wxLua_wxDateTime_GetYear(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetYear[1] = {{ wxLua_wxDateTime_GetYear, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_GetYear }};
-//     int GetYear(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const
+//     int GetYear(const wxDateTime::TimeZone& tz = wxLua_wxDateTime_TimeZone_Local) const;
 static int LUACALL wxLua_wxDateTime_GetYear(lua_State *L)
 {
     // get number of arguments
@@ -1074,7 +1074,7 @@ static int LUACALL wxLua_wxDateTime_GetYear(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetYearDay[] = { &wxluatype_wxDateTime, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_GetYearDay(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetYearDay[1] = {{ wxLua_wxDateTime_GetYearDay, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_GetYearDay }};
-//     wxDateTime GetYearDay(wxDateTime::wxDateTime_t yday) const
+//     wxDateTime GetYearDay(wxDateTime::wxDateTime_t yday) const;
 static int LUACALL wxLua_wxDateTime_GetYearDay(lua_State *L)
 {
     // wxDateTime::wxDateTime_t yday
@@ -1115,7 +1115,7 @@ static int LUACALL wxLua_wxDateTime_IsBetween1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_IsBetween[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_IsBetween(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_IsBetween[1] = {{ wxLua_wxDateTime_IsBetween, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxDateTime_IsBetween }};
-//     bool IsBetween(const wxDateTime& t1, const wxDateTime& t2) const
+//     bool IsBetween(const wxDateTime& t1, const wxDateTime& t2) const;
 static int LUACALL wxLua_wxDateTime_IsBetween(lua_State *L)
 {
     // const wxDateTime t2
@@ -1135,7 +1135,7 @@ static int LUACALL wxLua_wxDateTime_IsBetween(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_IsDST[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_IsDST(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_IsDST[1] = {{ wxLua_wxDateTime_IsDST, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_IsDST }};
-//     int IsDST(wxDateTime::Country country = wxDateTime::Country_Default) const
+//     int IsDST(wxDateTime::Country country = wxDateTime::Country_Default) const;
 static int LUACALL wxLua_wxDateTime_IsDST(lua_State *L)
 {
     // get number of arguments
@@ -1155,7 +1155,7 @@ static int LUACALL wxLua_wxDateTime_IsDST(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_IsDSTApplicable[] = { &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_IsDSTApplicable(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_IsDSTApplicable[1] = {{ wxLua_wxDateTime_IsDSTApplicable, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 2, s_wxluatypeArray_wxLua_wxDateTime_IsDSTApplicable }};
-//     static bool IsDSTApplicable(int year = wxDateTime::Inv_Year, wxDateTime::Country country = wxDateTime::Country_Default)
+//     static bool IsDSTApplicable(int year = wxDateTime::Inv_Year, wxDateTime::Country country = wxDateTime::Country_Default );
 static int LUACALL wxLua_wxDateTime_IsDSTApplicable(lua_State *L)
 {
     // get number of arguments
@@ -1193,7 +1193,7 @@ static int LUACALL wxLua_wxDateTime_IsEarlierThan1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_IsEarlierThan[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_IsEarlierThan(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_IsEarlierThan[1] = {{ wxLua_wxDateTime_IsEarlierThan, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_IsEarlierThan }};
-//     bool IsEarlierThan(const wxDateTime& datetime) const
+//     bool IsEarlierThan(const wxDateTime& datetime) const;
 static int LUACALL wxLua_wxDateTime_IsEarlierThan(lua_State *L)
 {
     // const wxDateTime datetime
@@ -1229,7 +1229,7 @@ static int LUACALL wxLua_wxDateTime_IsEqualTo1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_IsEqualTo[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_IsEqualTo(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_IsEqualTo[1] = {{ wxLua_wxDateTime_IsEqualTo, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_IsEqualTo }};
-//     bool IsEqualTo(const wxDateTime& datetime) const
+//     bool IsEqualTo(const wxDateTime& datetime) const;
 static int LUACALL wxLua_wxDateTime_IsEqualTo(lua_State *L)
 {
     // const wxDateTime datetime
@@ -1269,7 +1269,7 @@ static int LUACALL wxLua_wxDateTime_IsEqualUpTo1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_IsEqualUpTo[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxDateTime_IsEqualUpTo(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_IsEqualUpTo[1] = {{ wxLua_wxDateTime_IsEqualUpTo, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxDateTime_IsEqualUpTo }};
-//     bool IsEqualUpTo(const wxDateTime& dt, const wxTimeSpan& ts) const
+//     bool IsEqualUpTo(const wxDateTime& dt, const wxTimeSpan& ts) const;
 static int LUACALL wxLua_wxDateTime_IsEqualUpTo(lua_State *L)
 {
     // const wxTimeSpan ts
@@ -1309,7 +1309,7 @@ static int LUACALL wxLua_wxDateTime_IsLaterThan1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_IsLaterThan[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_IsLaterThan(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_IsLaterThan[1] = {{ wxLua_wxDateTime_IsLaterThan, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_IsLaterThan }};
-//     bool IsLaterThan(const wxDateTime& datetime) const
+//     bool IsLaterThan(const wxDateTime& datetime) const;
 static int LUACALL wxLua_wxDateTime_IsLaterThan(lua_State *L)
 {
     // const wxDateTime datetime
@@ -1327,7 +1327,7 @@ static int LUACALL wxLua_wxDateTime_IsLaterThan(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_IsLeapYear[] = { &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_IsLeapYear(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_IsLeapYear[1] = {{ wxLua_wxDateTime_IsLeapYear, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 2, s_wxluatypeArray_wxLua_wxDateTime_IsLeapYear }};
-//     static bool IsLeapYear(int year = wxDateTime::Inv_Year, wxDateTime::Calendar cal = wxDateTime::Gregorian)
+//     static bool IsLeapYear(int year = wxDateTime::Inv_Year, wxDateTime::Calendar cal = wxDateTime::Gregorian );
 static int LUACALL wxLua_wxDateTime_IsLeapYear(lua_State *L)
 {
     // get number of arguments
@@ -1365,7 +1365,7 @@ static int LUACALL wxLua_wxDateTime_IsSameDate1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_IsSameDate[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_IsSameDate(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_IsSameDate[1] = {{ wxLua_wxDateTime_IsSameDate, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_IsSameDate }};
-//     bool IsSameDate(const wxDateTime& dt) const
+//     bool IsSameDate(const wxDateTime& dt) const;
 static int LUACALL wxLua_wxDateTime_IsSameDate(lua_State *L)
 {
     // const wxDateTime dt
@@ -1401,7 +1401,7 @@ static int LUACALL wxLua_wxDateTime_IsSameTime1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_IsSameTime[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_IsSameTime(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_IsSameTime[1] = {{ wxLua_wxDateTime_IsSameTime, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_IsSameTime }};
-//     bool IsSameTime(const wxDateTime& dt) const
+//     bool IsSameTime(const wxDateTime& dt) const;
 static int LUACALL wxLua_wxDateTime_IsSameTime(lua_State *L)
 {
     // const wxDateTime dt
@@ -1439,7 +1439,7 @@ static int LUACALL wxLua_wxDateTime_IsStrictlyBetween1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_IsStrictlyBetween[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_IsStrictlyBetween(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_IsStrictlyBetween[1] = {{ wxLua_wxDateTime_IsStrictlyBetween, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxDateTime_IsStrictlyBetween }};
-//     bool IsStrictlyBetween(const wxDateTime& t1, const wxDateTime& t2) const
+//     bool IsStrictlyBetween(const wxDateTime& t1, const wxDateTime& t2) const;
 static int LUACALL wxLua_wxDateTime_IsStrictlyBetween(lua_State *L)
 {
     // const wxDateTime t2
@@ -1459,7 +1459,7 @@ static int LUACALL wxLua_wxDateTime_IsStrictlyBetween(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_IsValid1[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_IsValid1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_IsValid1[1] = {{ wxLua_wxDateTime_IsValid1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_IsValid1 }};
-//     bool IsValid() const
+//     bool IsValid() const;
 static int LUACALL wxLua_wxDateTime_IsValid1(lua_State *L)
 {
     // get this
@@ -1475,7 +1475,7 @@ static int LUACALL wxLua_wxDateTime_IsValid1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_IsValid[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_IsValid(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_IsValid[1] = {{ wxLua_wxDateTime_IsValid, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_IsValid }};
-//     bool IsValid()
+//     bool IsValid( );
 static int LUACALL wxLua_wxDateTime_IsValid(lua_State *L)
 {
     // get this
@@ -1491,7 +1491,7 @@ static int LUACALL wxLua_wxDateTime_IsValid(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_IsWestEuropeanCountry[] = { &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_IsWestEuropeanCountry(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_IsWestEuropeanCountry[1] = {{ wxLua_wxDateTime_IsWestEuropeanCountry, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 1, s_wxluatypeArray_wxLua_wxDateTime_IsWestEuropeanCountry }};
-//     static bool IsWestEuropeanCountry(wxDateTime::Country country = wxDateTime::Country_Default)
+//     static bool IsWestEuropeanCountry(wxDateTime::Country country = wxDateTime::Country_Default );
 static int LUACALL wxLua_wxDateTime_IsWestEuropeanCountry(lua_State *L)
 {
     // get number of arguments
@@ -1509,7 +1509,7 @@ static int LUACALL wxLua_wxDateTime_IsWestEuropeanCountry(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_IsWorkDay1[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_IsWorkDay1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_IsWorkDay1[1] = {{ wxLua_wxDateTime_IsWorkDay1, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_IsWorkDay1 }};
-//     bool IsWorkDay(wxDateTime::Country country = wxDateTime::Country_Default) const
+//     bool IsWorkDay(wxDateTime::Country country = wxDateTime::Country_Default) const;
 static int LUACALL wxLua_wxDateTime_IsWorkDay1(lua_State *L)
 {
     // get number of arguments
@@ -1529,7 +1529,7 @@ static int LUACALL wxLua_wxDateTime_IsWorkDay1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_IsWorkDay[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_IsWorkDay(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_IsWorkDay[1] = {{ wxLua_wxDateTime_IsWorkDay, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_IsWorkDay }};
-//     bool IsWorkDay(wxDateTime::Country country = wxDateTime::Country_Default) const
+//     bool IsWorkDay(wxDateTime::Country country = wxDateTime::Country_Default) const;
 static int LUACALL wxLua_wxDateTime_IsWorkDay(lua_State *L)
 {
     // get number of arguments
@@ -1549,7 +1549,7 @@ static int LUACALL wxLua_wxDateTime_IsWorkDay(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_MakeFromTimezone[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime_TimeZone, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxDateTime_MakeFromTimezone(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_MakeFromTimezone[1] = {{ wxLua_wxDateTime_MakeFromTimezone, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxDateTime_MakeFromTimezone }};
-//     wxDateTime& MakeFromTimezone(const wxDateTime::TimeZone& tz, bool noDST = false)
+//     wxDateTime& MakeFromTimezone(const wxDateTime::TimeZone& tz, bool noDST = false );
 static int LUACALL wxLua_wxDateTime_MakeFromTimezone(lua_State *L)
 {
     // get number of arguments
@@ -1571,7 +1571,7 @@ static int LUACALL wxLua_wxDateTime_MakeFromTimezone(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_MakeFromUTC[] = { &wxluatype_wxDateTime, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxDateTime_MakeFromUTC(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_MakeFromUTC[1] = {{ wxLua_wxDateTime_MakeFromUTC, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_MakeFromUTC }};
-//     wxDateTime& MakeFromUTC(bool noDST = false)
+//     wxDateTime& MakeFromUTC(bool noDST = false );
 static int LUACALL wxLua_wxDateTime_MakeFromUTC(lua_State *L)
 {
     // get number of arguments
@@ -1591,7 +1591,7 @@ static int LUACALL wxLua_wxDateTime_MakeFromUTC(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_MakeGMT[] = { &wxluatype_wxDateTime, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxDateTime_MakeGMT(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_MakeGMT[1] = {{ wxLua_wxDateTime_MakeGMT, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_MakeGMT }};
-//     wxDateTime& MakeGMT(bool noDST = false)
+//     wxDateTime& MakeGMT(bool noDST = false );
 static int LUACALL wxLua_wxDateTime_MakeGMT(lua_State *L)
 {
     // get number of arguments
@@ -1611,7 +1611,7 @@ static int LUACALL wxLua_wxDateTime_MakeGMT(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_MakeTimezone[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime_TimeZone, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxDateTime_MakeTimezone(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_MakeTimezone[1] = {{ wxLua_wxDateTime_MakeTimezone, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxDateTime_MakeTimezone }};
-//     wxDateTime& MakeTimezone(const wxDateTime::TimeZone& tz, bool noDST = false)
+//     wxDateTime& MakeTimezone(const wxDateTime::TimeZone& tz, bool noDST = false );
 static int LUACALL wxLua_wxDateTime_MakeTimezone(lua_State *L)
 {
     // get number of arguments
@@ -1633,7 +1633,7 @@ static int LUACALL wxLua_wxDateTime_MakeTimezone(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_MakeUTC[] = { &wxluatype_wxDateTime, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxDateTime_MakeUTC(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_MakeUTC[1] = {{ wxLua_wxDateTime_MakeUTC, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_MakeUTC }};
-//     wxDateTime& MakeUTC(bool noDST = false)
+//     wxDateTime& MakeUTC(bool noDST = false );
 static int LUACALL wxLua_wxDateTime_MakeUTC(lua_State *L)
 {
     // get number of arguments
@@ -1652,7 +1652,7 @@ static int LUACALL wxLua_wxDateTime_MakeUTC(lua_State *L)
 
 static int LUACALL wxLua_wxDateTime_Now(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_Now[1] = {{ wxLua_wxDateTime_Now, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static wxDateTime Now()
+//     static wxDateTime Now( );
 static int LUACALL wxLua_wxDateTime_Now(lua_State *L)
 {
     // call Now
@@ -1671,7 +1671,7 @@ static int LUACALL wxLua_wxDateTime_Now(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_ParseDate1[] = { &wxluatype_wxDateTime, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDateTime_ParseDate1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_ParseDate1[1] = {{ wxLua_wxDateTime_ParseDate1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_ParseDate1 }};
-//     !%wxchkver_2_9 wxString ParseDate(wxString date)
+//     !%wxchkver_2_9 wxString ParseDate(wxString date );
 static int LUACALL wxLua_wxDateTime_ParseDate1(lua_State *L)
 {
     // wxString date
@@ -1722,7 +1722,7 @@ static int LUACALL wxLua_wxDateTime_ParseDate(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_ParseDateTime1[] = { &wxluatype_wxDateTime, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDateTime_ParseDateTime1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_ParseDateTime1[1] = {{ wxLua_wxDateTime_ParseDateTime1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_ParseDateTime1 }};
-//     !%wxchkver_2_9 wxString ParseDateTime(wxString datetime)
+//     !%wxchkver_2_9 wxString ParseDateTime(wxString datetime );
 static int LUACALL wxLua_wxDateTime_ParseDateTime1(lua_State *L)
 {
     // wxString datetime
@@ -1773,7 +1773,7 @@ static int LUACALL wxLua_wxDateTime_ParseDateTime(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_ParseFormat3[] = { &wxluatype_wxDateTime, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_ParseFormat3(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_ParseFormat3[1] = {{ wxLua_wxDateTime_ParseFormat3, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxDateTime_ParseFormat3 }};
-//     !%wxchkver_2_9 wxString ParseFormat(wxString date, wxString format = "%c", const wxDateTime& dateDef = wxDefaultDateTime)
+//     !%wxchkver_2_9 wxString ParseFormat(wxString date, wxString format = "%c", const wxDateTime& dateDef = wxDefaultDateTime );
 static int LUACALL wxLua_wxDateTime_ParseFormat3(lua_State *L)
 {
     // get number of arguments
@@ -1894,7 +1894,7 @@ static int LUACALL wxLua_wxDateTime_ParseFormat(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_ParseRfc822Date1[] = { &wxluatype_wxDateTime, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDateTime_ParseRfc822Date1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_ParseRfc822Date1[1] = {{ wxLua_wxDateTime_ParseRfc822Date1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_ParseRfc822Date1 }};
-//     !%wxchkver_2_9 wxString ParseRfc822Date(wxString date)
+//     !%wxchkver_2_9 wxString ParseRfc822Date(wxString date );
 static int LUACALL wxLua_wxDateTime_ParseRfc822Date1(lua_State *L)
 {
     // wxString date
@@ -1945,7 +1945,7 @@ static int LUACALL wxLua_wxDateTime_ParseRfc822Date(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_ParseTime1[] = { &wxluatype_wxDateTime, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDateTime_ParseTime1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_ParseTime1[1] = {{ wxLua_wxDateTime_ParseTime1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_ParseTime1 }};
-//     !%wxchkver_2_9 wxString ParseTime(wxString time)
+//     !%wxchkver_2_9 wxString ParseTime(wxString time );
 static int LUACALL wxLua_wxDateTime_ParseTime1(lua_State *L)
 {
     // wxString time
@@ -1996,7 +1996,7 @@ static int LUACALL wxLua_wxDateTime_ParseTime(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_ResetTime[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_ResetTime(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_ResetTime[1] = {{ wxLua_wxDateTime_ResetTime, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_ResetTime }};
-//     wxDateTime& ResetTime()
+//     wxDateTime& ResetTime( );
 static int LUACALL wxLua_wxDateTime_ResetTime(lua_State *L)
 {
     // get this
@@ -2012,7 +2012,7 @@ static int LUACALL wxLua_wxDateTime_ResetTime(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_Set[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_Set(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_Set[1] = {{ wxLua_wxDateTime_Set, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_Set }};
-//     wxDateTime& Set(time_t time) // use with Lua's os.time() on MSW, Linux, others?
+//     wxDateTime& Set(time_t time); // use with Lua's os.time() on MSW, Linux, others?
 static int LUACALL wxLua_wxDateTime_Set(lua_State *L)
 {
     // time_t time
@@ -2030,7 +2030,7 @@ static int LUACALL wxLua_wxDateTime_Set(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetCountry[] = { &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_SetCountry(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetCountry[1] = {{ wxLua_wxDateTime_SetCountry, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_SetCountry }};
-//     static void SetCountry(wxDateTime::Country country)
+//     static void SetCountry(wxDateTime::Country country );
 static int LUACALL wxLua_wxDateTime_SetCountry(lua_State *L)
 {
     // wxDateTime::Country country
@@ -2044,7 +2044,7 @@ static int LUACALL wxLua_wxDateTime_SetCountry(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetDay[] = { &wxluatype_wxDateTime, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_SetDay(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetDay[1] = {{ wxLua_wxDateTime_SetDay, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_SetDay }};
-//     wxDateTime& SetDay(int day)
+//     wxDateTime& SetDay(int day );
 static int LUACALL wxLua_wxDateTime_SetDay(lua_State *L)
 {
     // int day
@@ -2080,7 +2080,7 @@ static int LUACALL wxLua_wxDateTime_SetFromDOS(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetHour[] = { &wxluatype_wxDateTime, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_SetHour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetHour[1] = {{ wxLua_wxDateTime_SetHour, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_SetHour }};
-//     wxDateTime& SetHour(int hour)
+//     wxDateTime& SetHour(int hour );
 static int LUACALL wxLua_wxDateTime_SetHour(lua_State *L)
 {
     // int hour
@@ -2098,7 +2098,7 @@ static int LUACALL wxLua_wxDateTime_SetHour(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetMillisecond[] = { &wxluatype_wxDateTime, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_SetMillisecond(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetMillisecond[1] = {{ wxLua_wxDateTime_SetMillisecond, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_SetMillisecond }};
-//     wxDateTime& SetMillisecond(int millisecond)
+//     wxDateTime& SetMillisecond(int millisecond );
 static int LUACALL wxLua_wxDateTime_SetMillisecond(lua_State *L)
 {
     // int millisecond
@@ -2116,7 +2116,7 @@ static int LUACALL wxLua_wxDateTime_SetMillisecond(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetMinute[] = { &wxluatype_wxDateTime, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_SetMinute(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetMinute[1] = {{ wxLua_wxDateTime_SetMinute, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_SetMinute }};
-//     wxDateTime& SetMinute(int minute)
+//     wxDateTime& SetMinute(int minute );
 static int LUACALL wxLua_wxDateTime_SetMinute(lua_State *L)
 {
     // int minute
@@ -2134,7 +2134,7 @@ static int LUACALL wxLua_wxDateTime_SetMinute(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetMonth[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_SetMonth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetMonth[1] = {{ wxLua_wxDateTime_SetMonth, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_SetMonth }};
-//     wxDateTime& SetMonth(wxDateTime::Month month)
+//     wxDateTime& SetMonth(wxDateTime::Month month );
 static int LUACALL wxLua_wxDateTime_SetMonth(lua_State *L)
 {
     // wxDateTime::Month month
@@ -2152,7 +2152,7 @@ static int LUACALL wxLua_wxDateTime_SetMonth(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetSecond[] = { &wxluatype_wxDateTime, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_SetSecond(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetSecond[1] = {{ wxLua_wxDateTime_SetSecond, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_SetSecond }};
-//     wxDateTime& SetSecond(int second)
+//     wxDateTime& SetSecond(int second );
 static int LUACALL wxLua_wxDateTime_SetSecond(lua_State *L)
 {
     // int second
@@ -2170,7 +2170,7 @@ static int LUACALL wxLua_wxDateTime_SetSecond(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetToCurrent[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_SetToCurrent(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetToCurrent[1] = {{ wxLua_wxDateTime_SetToCurrent, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_SetToCurrent }};
-//     wxDateTime& SetToCurrent()
+//     wxDateTime& SetToCurrent( );
 static int LUACALL wxLua_wxDateTime_SetToCurrent(lua_State *L)
 {
     // get this
@@ -2186,7 +2186,7 @@ static int LUACALL wxLua_wxDateTime_SetToCurrent(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetToDMY[] = { &wxluatype_wxDateTime, &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_SetToDMY(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetToDMY[1] = {{ wxLua_wxDateTime_SetToDMY, WXLUAMETHOD_METHOD, 2, 8, s_wxluatypeArray_wxLua_wxDateTime_SetToDMY }};
-//     %rename SetToDMY wxDateTime& Set(int day, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year, int hour = 0, int minute = 0, int second = 0, int millisec = 0)
+//     %rename SetToDMY wxDateTime& Set(int day, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year, int hour = 0, int minute = 0, int second = 0, int millisec = 0 );
 static int LUACALL wxLua_wxDateTime_SetToDMY(lua_State *L)
 {
     // get number of arguments
@@ -2218,7 +2218,7 @@ static int LUACALL wxLua_wxDateTime_SetToDMY(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetToHMS[] = { &wxluatype_wxDateTime, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_SetToHMS(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetToHMS[1] = {{ wxLua_wxDateTime_SetToHMS, WXLUAMETHOD_METHOD, 5, 5, s_wxluatypeArray_wxLua_wxDateTime_SetToHMS }};
-//     %rename SetToHMS wxDateTime& Set(int hour, int minute, int second, int millisec)
+//     %rename SetToHMS wxDateTime& Set(int hour, int minute, int second, int millisec );
 static int LUACALL wxLua_wxDateTime_SetToHMS(lua_State *L)
 {
     // int millisec
@@ -2242,7 +2242,7 @@ static int LUACALL wxLua_wxDateTime_SetToHMS(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetToJDN[] = { &wxluatype_wxDateTime, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_SetToJDN(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetToJDN[1] = {{ wxLua_wxDateTime_SetToJDN, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_SetToJDN }};
-//     %rename SetToJDN wxDateTime& Set(double dateTime)
+//     %rename SetToJDN wxDateTime& Set(double dateTime );
 static int LUACALL wxLua_wxDateTime_SetToJDN(lua_State *L)
 {
     // double dateTime
@@ -2260,7 +2260,7 @@ static int LUACALL wxLua_wxDateTime_SetToJDN(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetToLastMonthDay[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_SetToLastMonthDay(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetToLastMonthDay[1] = {{ wxLua_wxDateTime_SetToLastMonthDay, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxDateTime_SetToLastMonthDay }};
-//     wxDateTime& SetToLastMonthDay(wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year)
+//     wxDateTime& SetToLastMonthDay(wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year );
 static int LUACALL wxLua_wxDateTime_SetToLastMonthDay(lua_State *L)
 {
     // get number of arguments
@@ -2282,7 +2282,7 @@ static int LUACALL wxLua_wxDateTime_SetToLastMonthDay(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetToLastWeekDay[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, &wxluatype_TINTEGER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_SetToLastWeekDay(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetToLastWeekDay[1] = {{ wxLua_wxDateTime_SetToLastWeekDay, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxDateTime_SetToLastWeekDay }};
-//     bool SetToLastWeekDay(wxDateTime::WeekDay weekday, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year)
+//     bool SetToLastWeekDay(wxDateTime::WeekDay weekday, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year );
 static int LUACALL wxLua_wxDateTime_SetToLastWeekDay(lua_State *L)
 {
     // get number of arguments
@@ -2306,7 +2306,7 @@ static int LUACALL wxLua_wxDateTime_SetToLastWeekDay(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetToNextWeekDay[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_SetToNextWeekDay(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetToNextWeekDay[1] = {{ wxLua_wxDateTime_SetToNextWeekDay, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_SetToNextWeekDay }};
-//     wxDateTime& SetToNextWeekDay(wxDateTime::WeekDay weekday)
+//     wxDateTime& SetToNextWeekDay(wxDateTime::WeekDay weekday );
 static int LUACALL wxLua_wxDateTime_SetToNextWeekDay(lua_State *L)
 {
     // wxDateTime::WeekDay weekday
@@ -2324,7 +2324,7 @@ static int LUACALL wxLua_wxDateTime_SetToNextWeekDay(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetToPrevWeekDay[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_SetToPrevWeekDay(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetToPrevWeekDay[1] = {{ wxLua_wxDateTime_SetToPrevWeekDay, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_SetToPrevWeekDay }};
-//     wxDateTime& SetToPrevWeekDay(wxDateTime::WeekDay weekday)
+//     wxDateTime& SetToPrevWeekDay(wxDateTime::WeekDay weekday );
 static int LUACALL wxLua_wxDateTime_SetToPrevWeekDay(lua_State *L)
 {
     // wxDateTime::WeekDay weekday
@@ -2344,7 +2344,7 @@ static int LUACALL wxLua_wxDateTime_SetToPrevWeekDay(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetToTheWeek[] = { &wxluatype_wxDateTime, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_SetToTheWeek(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetToTheWeek[1] = {{ wxLua_wxDateTime_SetToTheWeek, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxDateTime_SetToTheWeek }};
-//     !%wxchkver_2_6 bool SetToTheWeek(wxDateTime::wxDateTime_t numWeek, wxDateTime::WeekDay weekday = wxDateTime::Mon)
+//     !%wxchkver_2_6 bool SetToTheWeek(wxDateTime::wxDateTime_t numWeek, wxDateTime::WeekDay weekday = wxDateTime::Mon );
 static int LUACALL wxLua_wxDateTime_SetToTheWeek(lua_State *L)
 {
     // get number of arguments
@@ -2368,7 +2368,7 @@ static int LUACALL wxLua_wxDateTime_SetToTheWeek(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetToWeekDay[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_SetToWeekDay(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetToWeekDay[1] = {{ wxLua_wxDateTime_SetToWeekDay, WXLUAMETHOD_METHOD, 2, 5, s_wxluatypeArray_wxLua_wxDateTime_SetToWeekDay }};
-//     bool SetToWeekDay(wxDateTime::WeekDay weekday, int n = 1, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year)
+//     bool SetToWeekDay(wxDateTime::WeekDay weekday, int n = 1, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year );
 static int LUACALL wxLua_wxDateTime_SetToWeekDay(lua_State *L)
 {
     // get number of arguments
@@ -2394,7 +2394,7 @@ static int LUACALL wxLua_wxDateTime_SetToWeekDay(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetToWeekDayInSameWeek[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_SetToWeekDayInSameWeek(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetToWeekDayInSameWeek[1] = {{ wxLua_wxDateTime_SetToWeekDayInSameWeek, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_SetToWeekDayInSameWeek }};
-//     wxDateTime& SetToWeekDayInSameWeek(wxDateTime::WeekDay weekday)
+//     wxDateTime& SetToWeekDayInSameWeek(wxDateTime::WeekDay weekday );
 static int LUACALL wxLua_wxDateTime_SetToWeekDayInSameWeek(lua_State *L)
 {
     // wxDateTime::WeekDay weekday
@@ -2414,7 +2414,7 @@ static int LUACALL wxLua_wxDateTime_SetToWeekDayInSameWeek(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetToWeekOfYear[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_SetToWeekOfYear(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetToWeekOfYear[1] = {{ wxLua_wxDateTime_SetToWeekOfYear, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 2, 3, s_wxluatypeArray_wxLua_wxDateTime_SetToWeekOfYear }};
-//     %wxchkver_2_6 static wxDateTime SetToWeekOfYear(int year, wxDateTime::wxDateTime_t numWeek, wxDateTime::WeekDay weekday = wxDateTime::Mon)
+//     %wxchkver_2_6 static wxDateTime SetToWeekOfYear(int year, wxDateTime::wxDateTime_t numWeek, wxDateTime::WeekDay weekday = wxDateTime::Mon );
 static int LUACALL wxLua_wxDateTime_SetToWeekOfYear(lua_State *L)
 {
     // get number of arguments
@@ -2441,7 +2441,7 @@ static int LUACALL wxLua_wxDateTime_SetToWeekOfYear(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetToYearDay[] = { &wxluatype_wxDateTime, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_SetToYearDay(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetToYearDay[1] = {{ wxLua_wxDateTime_SetToYearDay, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_SetToYearDay }};
-//     wxDateTime& SetToYearDay(wxDateTime::wxDateTime_t yday)
+//     wxDateTime& SetToYearDay(wxDateTime::wxDateTime_t yday );
 static int LUACALL wxLua_wxDateTime_SetToYearDay(lua_State *L)
 {
     // wxDateTime::wxDateTime_t yday
@@ -2459,7 +2459,7 @@ static int LUACALL wxLua_wxDateTime_SetToYearDay(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetYear[] = { &wxluatype_wxDateTime, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_SetYear(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetYear[1] = {{ wxLua_wxDateTime_SetYear, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_SetYear }};
-//     wxDateTime& SetYear(int year)
+//     wxDateTime& SetYear(int year );
 static int LUACALL wxLua_wxDateTime_SetYear(lua_State *L)
 {
     // int year
@@ -2479,7 +2479,7 @@ static int LUACALL wxLua_wxDateTime_SetYear(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_Subtract1[] = { &wxluatype_wxDateTime, &wxluatype_wxDateSpan, NULL };
 static int LUACALL wxLua_wxDateTime_Subtract1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_Subtract1[1] = {{ wxLua_wxDateTime_Subtract1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_Subtract1 }};
-//     wxDateTime& Subtract(const wxDateSpan& diff)
+//     wxDateTime& Subtract(const wxDateSpan& diff );
 static int LUACALL wxLua_wxDateTime_Subtract1(lua_State *L)
 {
     // const wxDateSpan diff
@@ -2500,7 +2500,7 @@ static int LUACALL wxLua_wxDateTime_Subtract1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_Subtract[] = { &wxluatype_wxDateTime, &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxDateTime_Subtract(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_Subtract[1] = {{ wxLua_wxDateTime_Subtract, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_Subtract }};
-//     wxDateTime& Subtract(const wxTimeSpan& diff)
+//     wxDateTime& Subtract(const wxTimeSpan& diff );
 static int LUACALL wxLua_wxDateTime_Subtract(lua_State *L)
 {
     // const wxTimeSpan diff
@@ -2520,7 +2520,7 @@ static int LUACALL wxLua_wxDateTime_Subtract(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_ToGMT[] = { &wxluatype_wxDateTime, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxDateTime_ToGMT(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_ToGMT[1] = {{ wxLua_wxDateTime_ToGMT, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_ToGMT }};
-//     wxDateTime ToGMT(bool noDST = false) const
+//     wxDateTime ToGMT(bool noDST = false) const;
 static int LUACALL wxLua_wxDateTime_ToGMT(lua_State *L)
 {
     // get number of arguments
@@ -2543,7 +2543,7 @@ static int LUACALL wxLua_wxDateTime_ToGMT(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_ToTimezone[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime_TimeZone, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxDateTime_ToTimezone(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_ToTimezone[1] = {{ wxLua_wxDateTime_ToTimezone, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxDateTime_ToTimezone }};
-//     wxDateTime ToTimezone(const wxDateTime::TimeZone& tz, bool noDST = false) const
+//     wxDateTime ToTimezone(const wxDateTime::TimeZone& tz, bool noDST = false) const;
 static int LUACALL wxLua_wxDateTime_ToTimezone(lua_State *L)
 {
     // get number of arguments
@@ -2568,7 +2568,7 @@ static int LUACALL wxLua_wxDateTime_ToTimezone(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_ToUTC[] = { &wxluatype_wxDateTime, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxDateTime_ToUTC(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_ToUTC[1] = {{ wxLua_wxDateTime_ToUTC, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxDateTime_ToUTC }};
-//     wxDateTime ToUTC(bool noDST = false) const
+//     wxDateTime ToUTC(bool noDST = false) const;
 static int LUACALL wxLua_wxDateTime_ToUTC(lua_State *L)
 {
     // get number of arguments
@@ -2590,7 +2590,7 @@ static int LUACALL wxLua_wxDateTime_ToUTC(lua_State *L)
 
 static int LUACALL wxLua_wxDateTime_Today(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_Today[1] = {{ wxLua_wxDateTime_Today, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static wxDateTime Today()
+//     static wxDateTime Today( );
 static int LUACALL wxLua_wxDateTime_Today(lua_State *L)
 {
     // call Today
@@ -2606,7 +2606,7 @@ static int LUACALL wxLua_wxDateTime_Today(lua_State *L)
 
 static int LUACALL wxLua_wxDateTime_UNow(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_UNow[1] = {{ wxLua_wxDateTime_UNow, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static wxDateTime UNow()
+//     static wxDateTime UNow( );
 static int LUACALL wxLua_wxDateTime_UNow(lua_State *L)
 {
     // call UNow
@@ -2626,7 +2626,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_delete[1] = {{ wxlua_userdata
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_op_eq[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_op_eq(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_op_eq[1] = {{ wxLua_wxDateTime_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_op_eq }};
-//     %operator bool operator==(const wxDateTime& dt) const
+//     %operator bool operator==(const wxDateTime& dt) const;
 static int LUACALL wxLua_wxDateTime_op_eq(lua_State *L)
 {
     // const wxDateTime dt
@@ -2644,7 +2644,7 @@ static int LUACALL wxLua_wxDateTime_op_eq(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_op_ge[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_op_ge(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_op_ge[1] = {{ wxLua_wxDateTime_op_ge, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_op_ge }};
-//     %operator bool operator>=(const wxDateTime& dt) const
+//     %operator bool operator>=(const wxDateTime& dt) const;
 static int LUACALL wxLua_wxDateTime_op_ge(lua_State *L)
 {
     // const wxDateTime dt
@@ -2662,7 +2662,7 @@ static int LUACALL wxLua_wxDateTime_op_ge(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_op_gt[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_op_gt(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_op_gt[1] = {{ wxLua_wxDateTime_op_gt, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_op_gt }};
-//     %operator bool operator>(const wxDateTime& dt) const
+//     %operator bool operator>(const wxDateTime& dt) const;
 static int LUACALL wxLua_wxDateTime_op_gt(lua_State *L)
 {
     // const wxDateTime dt
@@ -2680,7 +2680,7 @@ static int LUACALL wxLua_wxDateTime_op_gt(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_op_le[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_op_le(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_op_le[1] = {{ wxLua_wxDateTime_op_le, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_op_le }};
-//     %operator bool operator<=(const wxDateTime& dt) const
+//     %operator bool operator<=(const wxDateTime& dt) const;
 static int LUACALL wxLua_wxDateTime_op_le(lua_State *L)
 {
     // const wxDateTime dt
@@ -2698,7 +2698,7 @@ static int LUACALL wxLua_wxDateTime_op_le(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_op_lt[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_op_lt(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_op_lt[1] = {{ wxLua_wxDateTime_op_lt, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_op_lt }};
-//     %operator bool operator<(const wxDateTime& dt) const
+//     %operator bool operator<(const wxDateTime& dt) const;
 static int LUACALL wxLua_wxDateTime_op_lt(lua_State *L)
 {
     // const wxDateTime dt
@@ -2716,7 +2716,7 @@ static int LUACALL wxLua_wxDateTime_op_lt(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_op_ne[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_op_ne(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_op_ne[1] = {{ wxLua_wxDateTime_op_ne, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_op_ne }};
-//     %operator bool operator!=(const wxDateTime& dt) const
+//     %operator bool operator!=(const wxDateTime& dt) const;
 static int LUACALL wxLua_wxDateTime_op_ne(lua_State *L)
 {
     // const wxDateTime dt
@@ -2734,7 +2734,7 @@ static int LUACALL wxLua_wxDateTime_op_ne(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_constructor2[] = { &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_constructor2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_constructor2[1] = {{ wxLua_wxDateTime_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_constructor2 }};
-//     wxDateTime(time_t dateTime) // use with Lua's os.time() on MSW, Linux, others?
+//     wxDateTime(time_t dateTime); // use with Lua's os.time() on MSW, Linux, others?
 static int LUACALL wxLua_wxDateTime_constructor2(lua_State *L)
 {
     // time_t dateTime
@@ -2752,7 +2752,7 @@ static int LUACALL wxLua_wxDateTime_constructor2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_constructor1[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_constructor1[1] = {{ wxLua_wxDateTime_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxDateTime_constructor1 }};
-//     wxDateTime(const wxDateTime& dateTime)
+//     wxDateTime(const wxDateTime& dateTime );
 static int LUACALL wxLua_wxDateTime_constructor1(lua_State *L)
 {
     // const wxDateTime dateTime
@@ -2769,7 +2769,7 @@ static int LUACALL wxLua_wxDateTime_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxDateTime_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_constructor[1] = {{ wxLua_wxDateTime_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxDateTime()
+//     wxDateTime( );
 static int LUACALL wxLua_wxDateTime_constructor(lua_State *L)
 {
     // call constructor
@@ -2785,7 +2785,7 @@ static int LUACALL wxLua_wxDateTime_constructor(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeFromDMY_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTimeFromDMY_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeFromDMY_constructor[1] = {{ wxLua_wxDateTimeFromDMY_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 7, s_wxluatypeArray_wxLua_wxDateTimeFromDMY_constructor }};
-//     %rename wxDateTimeFromDMY wxDateTime(int day, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year, int hour = 0, int minute = 0, int second = 0, int millisec = 0)
+//     %rename wxDateTimeFromDMY wxDateTime(int day, wxDateTime::Month month = wxDateTime::Inv_Month, int year = wxDateTime::Inv_Year, int hour = 0, int minute = 0, int second = 0, int millisec = 0 );
 static int LUACALL wxLua_wxDateTimeFromDMY_constructor(lua_State *L)
 {
     // get number of arguments
@@ -2817,7 +2817,7 @@ static int LUACALL wxLua_wxDateTimeFromDMY_constructor(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeFromHMS_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTimeFromHMS_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeFromHMS_constructor[1] = {{ wxLua_wxDateTimeFromHMS_constructor, WXLUAMETHOD_CONSTRUCTOR, 4, 4, s_wxluatypeArray_wxLua_wxDateTimeFromHMS_constructor }};
-//     %rename wxDateTimeFromHMS wxDateTime(int hour, int minute, int second, int millisec)
+//     %rename wxDateTimeFromHMS wxDateTime(int hour, int minute, int second, int millisec );
 static int LUACALL wxLua_wxDateTimeFromHMS_constructor(lua_State *L)
 {
     // int millisec
@@ -2841,7 +2841,7 @@ static int LUACALL wxLua_wxDateTimeFromHMS_constructor(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeFromJDN_constructor[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTimeFromJDN_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeFromJDN_constructor[1] = {{ wxLua_wxDateTimeFromJDN_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxDateTimeFromJDN_constructor }};
-//     %rename wxDateTimeFromJDN wxDateTime(double dateTime)
+//     %rename wxDateTimeFromJDN wxDateTime(double dateTime );
 static int LUACALL wxLua_wxDateTimeFromJDN_constructor(lua_State *L)
 {
     // double dateTime
@@ -3439,7 +3439,7 @@ int wxluatype_wxDateTimeArray = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeArray_Add[] = { &wxluatype_wxDateTimeArray, &wxluatype_wxDateTime, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTimeArray_Add(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeArray_Add[1] = {{ wxLua_wxDateTimeArray_Add, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxDateTimeArray_Add }};
-//     void Add(const wxDateTime& dateTime, size_t copies = 1)
+//     void Add(const wxDateTime& dateTime, size_t copies = 1 );
 static int LUACALL wxLua_wxDateTimeArray_Add(lua_State *L)
 {
     // get number of arguments
@@ -3459,7 +3459,7 @@ static int LUACALL wxLua_wxDateTimeArray_Add(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeArray_Alloc[] = { &wxluatype_wxDateTimeArray, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTimeArray_Alloc(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeArray_Alloc[1] = {{ wxLua_wxDateTimeArray_Alloc, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTimeArray_Alloc }};
-//     void Alloc(size_t nCount)
+//     void Alloc(size_t nCount );
 static int LUACALL wxLua_wxDateTimeArray_Alloc(lua_State *L)
 {
     // size_t nCount
@@ -3475,7 +3475,7 @@ static int LUACALL wxLua_wxDateTimeArray_Alloc(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeArray_Clear[] = { &wxluatype_wxDateTimeArray, NULL };
 static int LUACALL wxLua_wxDateTimeArray_Clear(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeArray_Clear[1] = {{ wxLua_wxDateTimeArray_Clear, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTimeArray_Clear }};
-//     void Clear()
+//     void Clear( );
 static int LUACALL wxLua_wxDateTimeArray_Clear(lua_State *L)
 {
     // get this
@@ -3489,7 +3489,7 @@ static int LUACALL wxLua_wxDateTimeArray_Clear(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeArray_Empty[] = { &wxluatype_wxDateTimeArray, NULL };
 static int LUACALL wxLua_wxDateTimeArray_Empty(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeArray_Empty[1] = {{ wxLua_wxDateTimeArray_Empty, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTimeArray_Empty }};
-//     void Empty()
+//     void Empty( );
 static int LUACALL wxLua_wxDateTimeArray_Empty(lua_State *L)
 {
     // get this
@@ -3503,7 +3503,7 @@ static int LUACALL wxLua_wxDateTimeArray_Empty(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeArray_GetCount[] = { &wxluatype_wxDateTimeArray, NULL };
 static int LUACALL wxLua_wxDateTimeArray_GetCount(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeArray_GetCount[1] = {{ wxLua_wxDateTimeArray_GetCount, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTimeArray_GetCount }};
-//     int GetCount() const
+//     int GetCount() const;
 static int LUACALL wxLua_wxDateTimeArray_GetCount(lua_State *L)
 {
     // get this
@@ -3519,7 +3519,7 @@ static int LUACALL wxLua_wxDateTimeArray_GetCount(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeArray_Insert[] = { &wxluatype_wxDateTimeArray, &wxluatype_wxDateTime, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTimeArray_Insert(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeArray_Insert[1] = {{ wxLua_wxDateTimeArray_Insert, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxDateTimeArray_Insert }};
-//     void Insert(const wxDateTime& dt, int nIndex, size_t copies = 1)
+//     void Insert(const wxDateTime& dt, int nIndex, size_t copies = 1 );
 static int LUACALL wxLua_wxDateTimeArray_Insert(lua_State *L)
 {
     // get number of arguments
@@ -3541,7 +3541,7 @@ static int LUACALL wxLua_wxDateTimeArray_Insert(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeArray_IsEmpty[] = { &wxluatype_wxDateTimeArray, NULL };
 static int LUACALL wxLua_wxDateTimeArray_IsEmpty(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeArray_IsEmpty[1] = {{ wxLua_wxDateTimeArray_IsEmpty, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTimeArray_IsEmpty }};
-//     bool IsEmpty()
+//     bool IsEmpty( );
 static int LUACALL wxLua_wxDateTimeArray_IsEmpty(lua_State *L)
 {
     // get this
@@ -3557,7 +3557,7 @@ static int LUACALL wxLua_wxDateTimeArray_IsEmpty(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeArray_Item[] = { &wxluatype_wxDateTimeArray, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTimeArray_Item(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeArray_Item[1] = {{ wxLua_wxDateTimeArray_Item, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTimeArray_Item }};
-//     wxDateTime Item(size_t nIndex) const
+//     wxDateTime Item(size_t nIndex) const;
 static int LUACALL wxLua_wxDateTimeArray_Item(lua_State *L)
 {
     // size_t nIndex
@@ -3578,7 +3578,7 @@ static int LUACALL wxLua_wxDateTimeArray_Item(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeArray_Last[] = { &wxluatype_wxDateTimeArray, NULL };
 static int LUACALL wxLua_wxDateTimeArray_Last(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeArray_Last[1] = {{ wxLua_wxDateTimeArray_Last, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTimeArray_Last }};
-//     wxDateTime Last()
+//     wxDateTime Last( );
 static int LUACALL wxLua_wxDateTimeArray_Last(lua_State *L)
 {
     // get this
@@ -3597,7 +3597,7 @@ static int LUACALL wxLua_wxDateTimeArray_Last(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeArray_RemoveAt[] = { &wxluatype_wxDateTimeArray, &wxluatype_TINTEGER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTimeArray_RemoveAt(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeArray_RemoveAt[1] = {{ wxLua_wxDateTimeArray_RemoveAt, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxDateTimeArray_RemoveAt }};
-//     void RemoveAt(size_t nIndex, size_t count = 1)
+//     void RemoveAt(size_t nIndex, size_t count = 1 );
 static int LUACALL wxLua_wxDateTimeArray_RemoveAt(lua_State *L)
 {
     // get number of arguments
@@ -3617,7 +3617,7 @@ static int LUACALL wxLua_wxDateTimeArray_RemoveAt(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeArray_Shrink[] = { &wxluatype_wxDateTimeArray, NULL };
 static int LUACALL wxLua_wxDateTimeArray_Shrink(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeArray_Shrink[1] = {{ wxLua_wxDateTimeArray_Shrink, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateTimeArray_Shrink }};
-//     void Shrink()
+//     void Shrink( );
 static int LUACALL wxLua_wxDateTimeArray_Shrink(lua_State *L)
 {
     // get this
@@ -3634,7 +3634,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeArray_delete[1] = {{ wxlua_use
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeArray_constructor1[] = { &wxluatype_wxDateTimeArray, NULL };
 static int LUACALL wxLua_wxDateTimeArray_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeArray_constructor1[1] = {{ wxLua_wxDateTimeArray_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxDateTimeArray_constructor1 }};
-//     wxDateTimeArray(const wxDateTimeArray& array)
+//     wxDateTimeArray(const wxDateTimeArray& array );
 static int LUACALL wxLua_wxDateTimeArray_constructor1(lua_State *L)
 {
     // const wxDateTimeArray array
@@ -3651,7 +3651,7 @@ static int LUACALL wxLua_wxDateTimeArray_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxDateTimeArray_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeArray_constructor[1] = {{ wxLua_wxDateTimeArray_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxDateTimeArray()
+//     wxDateTimeArray( );
 static int LUACALL wxLua_wxDateTimeArray_constructor(lua_State *L)
 {
     // call constructor
@@ -3722,7 +3722,7 @@ int wxluatype_wxTimeSpan = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_Abs[] = { &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_Abs(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_Abs[1] = {{ wxLua_wxTimeSpan_Abs, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_Abs }};
-//     wxTimeSpan Abs()
+//     wxTimeSpan Abs( );
 static int LUACALL wxLua_wxTimeSpan_Abs(lua_State *L)
 {
     // get this
@@ -3741,7 +3741,7 @@ static int LUACALL wxLua_wxTimeSpan_Abs(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_Add[] = { &wxluatype_wxTimeSpan, &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_Add(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_Add[1] = {{ wxLua_wxTimeSpan_Add, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTimeSpan_Add }};
-//     wxTimeSpan Add(const wxTimeSpan& diff) const
+//     wxTimeSpan Add(const wxTimeSpan& diff) const;
 static int LUACALL wxLua_wxTimeSpan_Add(lua_State *L)
 {
     // const wxTimeSpan diff
@@ -3761,7 +3761,7 @@ static int LUACALL wxLua_wxTimeSpan_Add(lua_State *L)
 
 static int LUACALL wxLua_wxTimeSpan_Day(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_Day[1] = {{ wxLua_wxTimeSpan_Day, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static wxTimeSpan Day()
+//     static wxTimeSpan Day( );
 static int LUACALL wxLua_wxTimeSpan_Day(lua_State *L)
 {
     // call Day
@@ -3778,7 +3778,7 @@ static int LUACALL wxLua_wxTimeSpan_Day(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_Days[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxTimeSpan_Days(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_Days[1] = {{ wxLua_wxTimeSpan_Days, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_Days }};
-//     static wxTimeSpan Days(long days)
+//     static wxTimeSpan Days(long days );
 static int LUACALL wxLua_wxTimeSpan_Days(lua_State *L)
 {
     // long days
@@ -3797,7 +3797,7 @@ static int LUACALL wxLua_wxTimeSpan_Days(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_Format[] = { &wxluatype_wxTimeSpan, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxTimeSpan_Format(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_Format[1] = {{ wxLua_wxTimeSpan_Format, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxTimeSpan_Format }};
-//     wxString Format(wxString format = "%H:%M:%S") const
+//     wxString Format(wxString format = "%H:%M:%S") const;
 static int LUACALL wxLua_wxTimeSpan_Format(lua_State *L)
 {
     // get number of arguments
@@ -3817,7 +3817,7 @@ static int LUACALL wxLua_wxTimeSpan_Format(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_GetDays[] = { &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_GetDays(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_GetDays[1] = {{ wxLua_wxTimeSpan_GetDays, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_GetDays }};
-//     int GetDays() const
+//     int GetDays() const;
 static int LUACALL wxLua_wxTimeSpan_GetDays(lua_State *L)
 {
     // get this
@@ -3833,7 +3833,7 @@ static int LUACALL wxLua_wxTimeSpan_GetDays(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_GetHours[] = { &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_GetHours(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_GetHours[1] = {{ wxLua_wxTimeSpan_GetHours, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_GetHours }};
-//     int GetHours() const
+//     int GetHours() const;
 static int LUACALL wxLua_wxTimeSpan_GetHours(lua_State *L)
 {
     // get this
@@ -3851,7 +3851,7 @@ static int LUACALL wxLua_wxTimeSpan_GetHours(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_GetMilliseconds[] = { &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_GetMilliseconds(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_GetMilliseconds[1] = {{ wxLua_wxTimeSpan_GetMilliseconds, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_GetMilliseconds }};
-//     wxLongLong GetMilliseconds() const
+//     wxLongLong GetMilliseconds() const;
 static int LUACALL wxLua_wxTimeSpan_GetMilliseconds(lua_State *L)
 {
     // get this
@@ -3872,7 +3872,7 @@ static int LUACALL wxLua_wxTimeSpan_GetMilliseconds(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_GetMinutes[] = { &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_GetMinutes(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_GetMinutes[1] = {{ wxLua_wxTimeSpan_GetMinutes, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_GetMinutes }};
-//     int GetMinutes() const
+//     int GetMinutes() const;
 static int LUACALL wxLua_wxTimeSpan_GetMinutes(lua_State *L)
 {
     // get this
@@ -3890,7 +3890,7 @@ static int LUACALL wxLua_wxTimeSpan_GetMinutes(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_GetSeconds[] = { &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_GetSeconds(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_GetSeconds[1] = {{ wxLua_wxTimeSpan_GetSeconds, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_GetSeconds }};
-//     wxLongLong GetSeconds() const
+//     wxLongLong GetSeconds() const;
 static int LUACALL wxLua_wxTimeSpan_GetSeconds(lua_State *L)
 {
     // get this
@@ -3909,7 +3909,7 @@ static int LUACALL wxLua_wxTimeSpan_GetSeconds(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_GetValue[] = { &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_GetValue(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_GetValue[1] = {{ wxLua_wxTimeSpan_GetValue, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_GetValue }};
-//     wxLongLong GetValue() const
+//     wxLongLong GetValue() const;
 static int LUACALL wxLua_wxTimeSpan_GetValue(lua_State *L)
 {
     // get this
@@ -3930,7 +3930,7 @@ static int LUACALL wxLua_wxTimeSpan_GetValue(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_GetWeeks[] = { &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_GetWeeks(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_GetWeeks[1] = {{ wxLua_wxTimeSpan_GetWeeks, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_GetWeeks }};
-//     int GetWeeks() const
+//     int GetWeeks() const;
 static int LUACALL wxLua_wxTimeSpan_GetWeeks(lua_State *L)
 {
     // get this
@@ -3945,7 +3945,7 @@ static int LUACALL wxLua_wxTimeSpan_GetWeeks(lua_State *L)
 
 static int LUACALL wxLua_wxTimeSpan_Hour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_Hour[1] = {{ wxLua_wxTimeSpan_Hour, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static wxTimeSpan  Hour()
+//     static wxTimeSpan  Hour( );
 static int LUACALL wxLua_wxTimeSpan_Hour(lua_State *L)
 {
     // call Hour
@@ -3962,7 +3962,7 @@ static int LUACALL wxLua_wxTimeSpan_Hour(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_Hours[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxTimeSpan_Hours(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_Hours[1] = {{ wxLua_wxTimeSpan_Hours, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_Hours }};
-//     static wxTimeSpan  Hours(long hours)
+//     static wxTimeSpan  Hours(long hours );
 static int LUACALL wxLua_wxTimeSpan_Hours(lua_State *L)
 {
     // long hours
@@ -3981,7 +3981,7 @@ static int LUACALL wxLua_wxTimeSpan_Hours(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_IsEqualTo[] = { &wxluatype_wxTimeSpan, &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_IsEqualTo(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_IsEqualTo[1] = {{ wxLua_wxTimeSpan_IsEqualTo, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTimeSpan_IsEqualTo }};
-//     bool IsEqualTo(const wxTimeSpan& ts) const
+//     bool IsEqualTo(const wxTimeSpan& ts) const;
 static int LUACALL wxLua_wxTimeSpan_IsEqualTo(lua_State *L)
 {
     // const wxTimeSpan ts
@@ -3999,7 +3999,7 @@ static int LUACALL wxLua_wxTimeSpan_IsEqualTo(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_IsLongerThan[] = { &wxluatype_wxTimeSpan, &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_IsLongerThan(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_IsLongerThan[1] = {{ wxLua_wxTimeSpan_IsLongerThan, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTimeSpan_IsLongerThan }};
-//     bool IsLongerThan(const wxTimeSpan& ts) const
+//     bool IsLongerThan(const wxTimeSpan& ts) const;
 static int LUACALL wxLua_wxTimeSpan_IsLongerThan(lua_State *L)
 {
     // const wxTimeSpan ts
@@ -4017,7 +4017,7 @@ static int LUACALL wxLua_wxTimeSpan_IsLongerThan(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_IsNegative[] = { &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_IsNegative(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_IsNegative[1] = {{ wxLua_wxTimeSpan_IsNegative, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_IsNegative }};
-//     bool IsNegative() const
+//     bool IsNegative() const;
 static int LUACALL wxLua_wxTimeSpan_IsNegative(lua_State *L)
 {
     // get this
@@ -4033,7 +4033,7 @@ static int LUACALL wxLua_wxTimeSpan_IsNegative(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_IsNull[] = { &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_IsNull(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_IsNull[1] = {{ wxLua_wxTimeSpan_IsNull, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_IsNull }};
-//     bool IsNull() const
+//     bool IsNull() const;
 static int LUACALL wxLua_wxTimeSpan_IsNull(lua_State *L)
 {
     // get this
@@ -4049,7 +4049,7 @@ static int LUACALL wxLua_wxTimeSpan_IsNull(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_IsPositive[] = { &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_IsPositive(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_IsPositive[1] = {{ wxLua_wxTimeSpan_IsPositive, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_IsPositive }};
-//     bool IsPositive() const
+//     bool IsPositive() const;
 static int LUACALL wxLua_wxTimeSpan_IsPositive(lua_State *L)
 {
     // get this
@@ -4065,7 +4065,7 @@ static int LUACALL wxLua_wxTimeSpan_IsPositive(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_IsShorterThan[] = { &wxluatype_wxTimeSpan, &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_IsShorterThan(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_IsShorterThan[1] = {{ wxLua_wxTimeSpan_IsShorterThan, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTimeSpan_IsShorterThan }};
-//     bool IsShorterThan(const wxTimeSpan& ts) const
+//     bool IsShorterThan(const wxTimeSpan& ts) const;
 static int LUACALL wxLua_wxTimeSpan_IsShorterThan(lua_State *L)
 {
     // const wxTimeSpan ts
@@ -4082,7 +4082,7 @@ static int LUACALL wxLua_wxTimeSpan_IsShorterThan(lua_State *L)
 
 static int LUACALL wxLua_wxTimeSpan_Minute(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_Minute[1] = {{ wxLua_wxTimeSpan_Minute, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static wxTimeSpan  Minute()
+//     static wxTimeSpan  Minute( );
 static int LUACALL wxLua_wxTimeSpan_Minute(lua_State *L)
 {
     // call Minute
@@ -4099,7 +4099,7 @@ static int LUACALL wxLua_wxTimeSpan_Minute(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_Minutes[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxTimeSpan_Minutes(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_Minutes[1] = {{ wxLua_wxTimeSpan_Minutes, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_Minutes }};
-//     static wxTimeSpan  Minutes(long min)
+//     static wxTimeSpan  Minutes(long min );
 static int LUACALL wxLua_wxTimeSpan_Minutes(lua_State *L)
 {
     // long min
@@ -4118,7 +4118,7 @@ static int LUACALL wxLua_wxTimeSpan_Minutes(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_Multiply[] = { &wxluatype_wxTimeSpan, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxTimeSpan_Multiply(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_Multiply[1] = {{ wxLua_wxTimeSpan_Multiply, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTimeSpan_Multiply }};
-//     wxTimeSpan Multiply(int n) const
+//     wxTimeSpan Multiply(int n) const;
 static int LUACALL wxLua_wxTimeSpan_Multiply(lua_State *L)
 {
     // int n
@@ -4139,7 +4139,7 @@ static int LUACALL wxLua_wxTimeSpan_Multiply(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_Neg[] = { &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_Neg(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_Neg[1] = {{ wxLua_wxTimeSpan_Neg, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_Neg }};
-//     wxTimeSpan& Neg()
+//     wxTimeSpan& Neg( );
 static int LUACALL wxLua_wxTimeSpan_Neg(lua_State *L)
 {
     // get this
@@ -4155,7 +4155,7 @@ static int LUACALL wxLua_wxTimeSpan_Neg(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_Negate[] = { &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_Negate(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_Negate[1] = {{ wxLua_wxTimeSpan_Negate, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_Negate }};
-//     wxTimeSpan Negate() const
+//     wxTimeSpan Negate() const;
 static int LUACALL wxLua_wxTimeSpan_Negate(lua_State *L)
 {
     // get this
@@ -4173,7 +4173,7 @@ static int LUACALL wxLua_wxTimeSpan_Negate(lua_State *L)
 
 static int LUACALL wxLua_wxTimeSpan_Second(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_Second[1] = {{ wxLua_wxTimeSpan_Second, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static wxTimeSpan Second()
+//     static wxTimeSpan Second( );
 static int LUACALL wxLua_wxTimeSpan_Second(lua_State *L)
 {
     // call Second
@@ -4190,7 +4190,7 @@ static int LUACALL wxLua_wxTimeSpan_Second(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_Seconds[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxTimeSpan_Seconds(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_Seconds[1] = {{ wxLua_wxTimeSpan_Seconds, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_Seconds }};
-//     static wxTimeSpan Seconds(long sec)
+//     static wxTimeSpan Seconds(long sec );
 static int LUACALL wxLua_wxTimeSpan_Seconds(lua_State *L)
 {
     // long sec
@@ -4209,7 +4209,7 @@ static int LUACALL wxLua_wxTimeSpan_Seconds(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_Subtract[] = { &wxluatype_wxTimeSpan, &wxluatype_wxTimeSpan, NULL };
 static int LUACALL wxLua_wxTimeSpan_Subtract(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_Subtract[1] = {{ wxLua_wxTimeSpan_Subtract, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTimeSpan_Subtract }};
-//     wxTimeSpan Subtract(const wxTimeSpan& diff) const
+//     wxTimeSpan Subtract(const wxTimeSpan& diff) const;
 static int LUACALL wxLua_wxTimeSpan_Subtract(lua_State *L)
 {
     // const wxTimeSpan diff
@@ -4229,7 +4229,7 @@ static int LUACALL wxLua_wxTimeSpan_Subtract(lua_State *L)
 
 static int LUACALL wxLua_wxTimeSpan_Week(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_Week[1] = {{ wxLua_wxTimeSpan_Week, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static wxTimeSpan Week()
+//     static wxTimeSpan Week( );
 static int LUACALL wxLua_wxTimeSpan_Week(lua_State *L)
 {
     // call Week
@@ -4246,7 +4246,7 @@ static int LUACALL wxLua_wxTimeSpan_Week(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_Weeks[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxTimeSpan_Weeks(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_Weeks[1] = {{ wxLua_wxTimeSpan_Weeks, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxTimeSpan_Weeks }};
-//     static wxTimeSpan Weeks(long weeks)
+//     static wxTimeSpan Weeks(long weeks );
 static int LUACALL wxLua_wxTimeSpan_Weeks(lua_State *L)
 {
     // long weeks
@@ -4268,7 +4268,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_delete[1] = {{ wxlua_userdata
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimeSpan_constructor1[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxTimeSpan_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_constructor1[1] = {{ wxLua_wxTimeSpan_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 4, s_wxluatypeArray_wxLua_wxTimeSpan_constructor1 }};
-//     wxTimeSpan(long hours, long minutes = 0, long seconds = 0, long milliseconds = 0)
+//     wxTimeSpan(long hours, long minutes = 0, long seconds = 0, long milliseconds = 0 );
 static int LUACALL wxLua_wxTimeSpan_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -4293,7 +4293,7 @@ static int LUACALL wxLua_wxTimeSpan_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxTimeSpan_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimeSpan_constructor[1] = {{ wxLua_wxTimeSpan_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxTimeSpan()
+//     wxTimeSpan( );
 static int LUACALL wxLua_wxTimeSpan_constructor(lua_State *L)
 {
     // call constructor
@@ -4391,7 +4391,7 @@ int wxluatype_wxDateSpan = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_Add[] = { &wxluatype_wxDateSpan, &wxluatype_wxDateSpan, NULL };
 static int LUACALL wxLua_wxDateSpan_Add(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_Add[1] = {{ wxLua_wxDateSpan_Add, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateSpan_Add }};
-//     wxDateSpan Add(const wxDateSpan& other) const
+//     wxDateSpan Add(const wxDateSpan& other) const;
 static int LUACALL wxLua_wxDateSpan_Add(lua_State *L)
 {
     // const wxDateSpan other
@@ -4411,7 +4411,7 @@ static int LUACALL wxLua_wxDateSpan_Add(lua_State *L)
 
 static int LUACALL wxLua_wxDateSpan_Day(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_Day[1] = {{ wxLua_wxDateSpan_Day, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static wxDateSpan Day()
+//     static wxDateSpan Day( );
 static int LUACALL wxLua_wxDateSpan_Day(lua_State *L)
 {
     // call Day
@@ -4428,7 +4428,7 @@ static int LUACALL wxLua_wxDateSpan_Day(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_Days[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateSpan_Days(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_Days[1] = {{ wxLua_wxDateSpan_Days, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxDateSpan_Days }};
-//     static wxDateSpan Days(int days)
+//     static wxDateSpan Days(int days );
 static int LUACALL wxLua_wxDateSpan_Days(lua_State *L)
 {
     // int days
@@ -4447,7 +4447,7 @@ static int LUACALL wxLua_wxDateSpan_Days(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_GetDays[] = { &wxluatype_wxDateSpan, NULL };
 static int LUACALL wxLua_wxDateSpan_GetDays(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_GetDays[1] = {{ wxLua_wxDateSpan_GetDays, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateSpan_GetDays }};
-//     int GetDays() const
+//     int GetDays() const;
 static int LUACALL wxLua_wxDateSpan_GetDays(lua_State *L)
 {
     // get this
@@ -4463,7 +4463,7 @@ static int LUACALL wxLua_wxDateSpan_GetDays(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_GetMonths[] = { &wxluatype_wxDateSpan, NULL };
 static int LUACALL wxLua_wxDateSpan_GetMonths(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_GetMonths[1] = {{ wxLua_wxDateSpan_GetMonths, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateSpan_GetMonths }};
-//     int GetMonths() const
+//     int GetMonths() const;
 static int LUACALL wxLua_wxDateSpan_GetMonths(lua_State *L)
 {
     // get this
@@ -4479,7 +4479,7 @@ static int LUACALL wxLua_wxDateSpan_GetMonths(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_GetTotalDays[] = { &wxluatype_wxDateSpan, NULL };
 static int LUACALL wxLua_wxDateSpan_GetTotalDays(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_GetTotalDays[1] = {{ wxLua_wxDateSpan_GetTotalDays, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateSpan_GetTotalDays }};
-//     int GetTotalDays() const
+//     int GetTotalDays() const;
 static int LUACALL wxLua_wxDateSpan_GetTotalDays(lua_State *L)
 {
     // get this
@@ -4495,7 +4495,7 @@ static int LUACALL wxLua_wxDateSpan_GetTotalDays(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_GetWeeks[] = { &wxluatype_wxDateSpan, NULL };
 static int LUACALL wxLua_wxDateSpan_GetWeeks(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_GetWeeks[1] = {{ wxLua_wxDateSpan_GetWeeks, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateSpan_GetWeeks }};
-//     int GetWeeks() const
+//     int GetWeeks() const;
 static int LUACALL wxLua_wxDateSpan_GetWeeks(lua_State *L)
 {
     // get this
@@ -4511,7 +4511,7 @@ static int LUACALL wxLua_wxDateSpan_GetWeeks(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_GetYears[] = { &wxluatype_wxDateSpan, NULL };
 static int LUACALL wxLua_wxDateSpan_GetYears(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_GetYears[1] = {{ wxLua_wxDateSpan_GetYears, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateSpan_GetYears }};
-//     int GetYears() const
+//     int GetYears() const;
 static int LUACALL wxLua_wxDateSpan_GetYears(lua_State *L)
 {
     // get this
@@ -4526,7 +4526,7 @@ static int LUACALL wxLua_wxDateSpan_GetYears(lua_State *L)
 
 static int LUACALL wxLua_wxDateSpan_Month(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_Month[1] = {{ wxLua_wxDateSpan_Month, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static wxDateSpan  Month()
+//     static wxDateSpan  Month( );
 static int LUACALL wxLua_wxDateSpan_Month(lua_State *L)
 {
     // call Month
@@ -4543,7 +4543,7 @@ static int LUACALL wxLua_wxDateSpan_Month(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_Months[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateSpan_Months(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_Months[1] = {{ wxLua_wxDateSpan_Months, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxDateSpan_Months }};
-//     static wxDateSpan  Months(int mon)
+//     static wxDateSpan  Months(int mon );
 static int LUACALL wxLua_wxDateSpan_Months(lua_State *L)
 {
     // int mon
@@ -4562,7 +4562,7 @@ static int LUACALL wxLua_wxDateSpan_Months(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_Multiply[] = { &wxluatype_wxDateSpan, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateSpan_Multiply(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_Multiply[1] = {{ wxLua_wxDateSpan_Multiply, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateSpan_Multiply }};
-//     wxDateSpan Multiply(int factor) const
+//     wxDateSpan Multiply(int factor) const;
 static int LUACALL wxLua_wxDateSpan_Multiply(lua_State *L)
 {
     // int factor
@@ -4583,7 +4583,7 @@ static int LUACALL wxLua_wxDateSpan_Multiply(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_Neg[] = { &wxluatype_wxDateSpan, NULL };
 static int LUACALL wxLua_wxDateSpan_Neg(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_Neg[1] = {{ wxLua_wxDateSpan_Neg, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateSpan_Neg }};
-//     wxDateSpan& Neg()
+//     wxDateSpan& Neg( );
 static int LUACALL wxLua_wxDateSpan_Neg(lua_State *L)
 {
     // get this
@@ -4599,7 +4599,7 @@ static int LUACALL wxLua_wxDateSpan_Neg(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_Negate[] = { &wxluatype_wxDateSpan, NULL };
 static int LUACALL wxLua_wxDateSpan_Negate(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_Negate[1] = {{ wxLua_wxDateSpan_Negate, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDateSpan_Negate }};
-//     wxDateSpan Negate() const
+//     wxDateSpan Negate() const;
 static int LUACALL wxLua_wxDateSpan_Negate(lua_State *L)
 {
     // get this
@@ -4618,7 +4618,7 @@ static int LUACALL wxLua_wxDateSpan_Negate(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_SetDays[] = { &wxluatype_wxDateSpan, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateSpan_SetDays(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_SetDays[1] = {{ wxLua_wxDateSpan_SetDays, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateSpan_SetDays }};
-//     wxDateSpan& SetDays(int n)
+//     wxDateSpan& SetDays(int n );
 static int LUACALL wxLua_wxDateSpan_SetDays(lua_State *L)
 {
     // int n
@@ -4636,7 +4636,7 @@ static int LUACALL wxLua_wxDateSpan_SetDays(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_SetMonths[] = { &wxluatype_wxDateSpan, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateSpan_SetMonths(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_SetMonths[1] = {{ wxLua_wxDateSpan_SetMonths, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateSpan_SetMonths }};
-//     wxDateSpan& SetMonths(int n)
+//     wxDateSpan& SetMonths(int n );
 static int LUACALL wxLua_wxDateSpan_SetMonths(lua_State *L)
 {
     // int n
@@ -4654,7 +4654,7 @@ static int LUACALL wxLua_wxDateSpan_SetMonths(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_SetWeeks[] = { &wxluatype_wxDateSpan, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateSpan_SetWeeks(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_SetWeeks[1] = {{ wxLua_wxDateSpan_SetWeeks, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateSpan_SetWeeks }};
-//     wxDateSpan& SetWeeks(int n)
+//     wxDateSpan& SetWeeks(int n );
 static int LUACALL wxLua_wxDateSpan_SetWeeks(lua_State *L)
 {
     // int n
@@ -4672,7 +4672,7 @@ static int LUACALL wxLua_wxDateSpan_SetWeeks(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_SetYears[] = { &wxluatype_wxDateSpan, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateSpan_SetYears(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_SetYears[1] = {{ wxLua_wxDateSpan_SetYears, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateSpan_SetYears }};
-//     wxDateSpan& SetYears(int n)
+//     wxDateSpan& SetYears(int n );
 static int LUACALL wxLua_wxDateSpan_SetYears(lua_State *L)
 {
     // int n
@@ -4690,7 +4690,7 @@ static int LUACALL wxLua_wxDateSpan_SetYears(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_Subtract[] = { &wxluatype_wxDateSpan, &wxluatype_wxDateSpan, NULL };
 static int LUACALL wxLua_wxDateSpan_Subtract(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_Subtract[1] = {{ wxLua_wxDateSpan_Subtract, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateSpan_Subtract }};
-//     wxDateSpan Subtract(const wxDateSpan& other) const
+//     wxDateSpan Subtract(const wxDateSpan& other) const;
 static int LUACALL wxLua_wxDateSpan_Subtract(lua_State *L)
 {
     // const wxDateSpan other
@@ -4710,7 +4710,7 @@ static int LUACALL wxLua_wxDateSpan_Subtract(lua_State *L)
 
 static int LUACALL wxLua_wxDateSpan_Week(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_Week[1] = {{ wxLua_wxDateSpan_Week, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static wxDateSpan Week()
+//     static wxDateSpan Week( );
 static int LUACALL wxLua_wxDateSpan_Week(lua_State *L)
 {
     // call Week
@@ -4727,7 +4727,7 @@ static int LUACALL wxLua_wxDateSpan_Week(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_Weeks[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateSpan_Weeks(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_Weeks[1] = {{ wxLua_wxDateSpan_Weeks, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxDateSpan_Weeks }};
-//     static wxDateSpan Weeks(int weeks)
+//     static wxDateSpan Weeks(int weeks );
 static int LUACALL wxLua_wxDateSpan_Weeks(lua_State *L)
 {
     // int weeks
@@ -4745,7 +4745,7 @@ static int LUACALL wxLua_wxDateSpan_Weeks(lua_State *L)
 
 static int LUACALL wxLua_wxDateSpan_Year(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_Year[1] = {{ wxLua_wxDateSpan_Year, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static wxDateSpan Year()
+//     static wxDateSpan Year( );
 static int LUACALL wxLua_wxDateSpan_Year(lua_State *L)
 {
     // call Year
@@ -4762,7 +4762,7 @@ static int LUACALL wxLua_wxDateSpan_Year(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_Years[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateSpan_Years(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_Years[1] = {{ wxLua_wxDateSpan_Years, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxDateSpan_Years }};
-//     static wxDateSpan Years(int years)
+//     static wxDateSpan Years(int years );
 static int LUACALL wxLua_wxDateSpan_Years(lua_State *L)
 {
     // int years
@@ -4784,7 +4784,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_delete[1] = {{ wxlua_userdata
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_op_eq[] = { &wxluatype_wxDateSpan, &wxluatype_wxDateSpan, NULL };
 static int LUACALL wxLua_wxDateSpan_op_eq(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_op_eq[1] = {{ wxLua_wxDateSpan_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateSpan_op_eq }};
-//     %operator bool operator==(wxDateSpan& other) const
+//     %operator bool operator==(wxDateSpan& other) const;
 static int LUACALL wxLua_wxDateSpan_op_eq(lua_State *L)
 {
     // wxDateSpan other
@@ -4802,7 +4802,7 @@ static int LUACALL wxLua_wxDateSpan_op_eq(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateSpan_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_constructor[1] = {{ wxLua_wxDateSpan_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 4, s_wxluatypeArray_wxLua_wxDateSpan_constructor }};
-//     wxDateSpan(int years = 0, int months = 0, int weeks = 0, int days = 0)
+//     wxDateSpan(int years = 0, int months = 0, int weeks = 0, int days = 0 );
 static int LUACALL wxLua_wxDateSpan_constructor(lua_State *L)
 {
     // get number of arguments
@@ -4881,7 +4881,7 @@ int wxluatype_wxDateTimeHolidayAuthority = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeHolidayAuthority_AddAuthority[] = { &wxluatype_wxDateTimeHolidayAuthority, NULL };
 static int LUACALL wxLua_wxDateTimeHolidayAuthority_AddAuthority(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeHolidayAuthority_AddAuthority[1] = {{ wxLua_wxDateTimeHolidayAuthority_AddAuthority, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxDateTimeHolidayAuthority_AddAuthority }};
-//     static void AddAuthority(wxDateTimeHolidayAuthority *auth)
+//     static void AddAuthority(wxDateTimeHolidayAuthority *auth );
 static int LUACALL wxLua_wxDateTimeHolidayAuthority_AddAuthority(lua_State *L)
 {
     // wxDateTimeHolidayAuthority auth
@@ -4894,7 +4894,7 @@ static int LUACALL wxLua_wxDateTimeHolidayAuthority_AddAuthority(lua_State *L)
 
 static int LUACALL wxLua_wxDateTimeHolidayAuthority_ClearAllAuthorities(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeHolidayAuthority_ClearAllAuthorities[1] = {{ wxLua_wxDateTimeHolidayAuthority_ClearAllAuthorities, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static void ClearAllAuthorities()
+//     static void ClearAllAuthorities( );
 static int LUACALL wxLua_wxDateTimeHolidayAuthority_ClearAllAuthorities(lua_State *L)
 {
     // call ClearAllAuthorities
@@ -4908,7 +4908,7 @@ static int LUACALL wxLua_wxDateTimeHolidayAuthority_ClearAllAuthorities(lua_Stat
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeHolidayAuthority_GetHolidaysInRange[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, &wxluatype_wxDateTimeArray, NULL };
 static int LUACALL wxLua_wxDateTimeHolidayAuthority_GetHolidaysInRange(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeHolidayAuthority_GetHolidaysInRange[1] = {{ wxLua_wxDateTimeHolidayAuthority_GetHolidaysInRange, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 3, 3, s_wxluatypeArray_wxLua_wxDateTimeHolidayAuthority_GetHolidaysInRange }};
-//     static size_t GetHolidaysInRange(const wxDateTime& dtStart, const wxDateTime& dtEnd, wxDateTimeArray& holidays)
+//     static size_t GetHolidaysInRange(const wxDateTime& dtStart, const wxDateTime& dtEnd, wxDateTimeArray& holidays );
 static int LUACALL wxLua_wxDateTimeHolidayAuthority_GetHolidaysInRange(lua_State *L)
 {
     // wxDateTimeArray holidays
@@ -4928,7 +4928,7 @@ static int LUACALL wxLua_wxDateTimeHolidayAuthority_GetHolidaysInRange(lua_State
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTimeHolidayAuthority_IsHoliday[] = { &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTimeHolidayAuthority_IsHoliday(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeHolidayAuthority_IsHoliday[1] = {{ wxLua_wxDateTimeHolidayAuthority_IsHoliday, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxDateTimeHolidayAuthority_IsHoliday }};
-//     static bool IsHoliday(const wxDateTime& dt)
+//     static bool IsHoliday(const wxDateTime& dt );
 static int LUACALL wxLua_wxDateTimeHolidayAuthority_IsHoliday(lua_State *L)
 {
     // const wxDateTime dt
@@ -4982,7 +4982,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeWorkDays_delete[1] = {{ wxlua_
 
 static int LUACALL wxLua_wxDateTimeWorkDays_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTimeWorkDays_constructor[1] = {{ wxLua_wxDateTimeWorkDays_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxDateTimeWorkDays()
+//     wxDateTimeWorkDays( );
 static int LUACALL wxLua_wxDateTimeWorkDays_constructor(lua_State *L)
 {
     // call constructor
@@ -5028,7 +5028,7 @@ int wxluatype_wxStopWatch = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStopWatch_Pause[] = { &wxluatype_wxStopWatch, NULL };
 static int LUACALL wxLua_wxStopWatch_Pause(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStopWatch_Pause[1] = {{ wxLua_wxStopWatch_Pause, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStopWatch_Pause }};
-//     void Pause()
+//     void Pause( );
 static int LUACALL wxLua_wxStopWatch_Pause(lua_State *L)
 {
     // get this
@@ -5042,7 +5042,7 @@ static int LUACALL wxLua_wxStopWatch_Pause(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStopWatch_Resume[] = { &wxluatype_wxStopWatch, NULL };
 static int LUACALL wxLua_wxStopWatch_Resume(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStopWatch_Resume[1] = {{ wxLua_wxStopWatch_Resume, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStopWatch_Resume }};
-//     void Resume()
+//     void Resume( );
 static int LUACALL wxLua_wxStopWatch_Resume(lua_State *L)
 {
     // get this
@@ -5056,7 +5056,7 @@ static int LUACALL wxLua_wxStopWatch_Resume(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStopWatch_Start[] = { &wxluatype_wxStopWatch, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStopWatch_Start(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStopWatch_Start[1] = {{ wxLua_wxStopWatch_Start, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxStopWatch_Start }};
-//     void Start(long t0 = 0) // start the stop watch at the moment t0
+//     void Start(long t0 = 0); // start the stop watch at the moment t0
 static int LUACALL wxLua_wxStopWatch_Start(lua_State *L)
 {
     // get number of arguments
@@ -5074,7 +5074,7 @@ static int LUACALL wxLua_wxStopWatch_Start(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStopWatch_Time[] = { &wxluatype_wxStopWatch, NULL };
 static int LUACALL wxLua_wxStopWatch_Time(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStopWatch_Time[1] = {{ wxLua_wxStopWatch_Time, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStopWatch_Time }};
-//     long Time() const
+//     long Time() const;
 static int LUACALL wxLua_wxStopWatch_Time(lua_State *L)
 {
     // get this
@@ -5092,7 +5092,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxStopWatch_delete[1] = {{ wxlua_userdat
 
 static int LUACALL wxLua_wxStopWatch_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStopWatch_constructor[1] = {{ wxLua_wxStopWatch_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxStopWatch() // ctor starts the stop watch
+//     wxStopWatch(); // ctor starts the stop watch
 static int LUACALL wxLua_wxStopWatch_constructor(lua_State *L)
 {
     // call constructor
@@ -5272,7 +5272,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxLanguageInfo_delete[1] = {{ wxlua_user
 
 static int LUACALL wxLua_wxLanguageInfo_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLanguageInfo_constructor[1] = {{ wxLua_wxLanguageInfo_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxLanguageInfo() // you must set all the values by hand
+//     wxLanguageInfo(); // you must set all the values by hand
 static int LUACALL wxLua_wxLanguageInfo_constructor(lua_State *L)
 {
     // call constructor
@@ -5430,7 +5430,7 @@ static int LUACALL wxLua_wxLocale_FindLanguageInfo(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_GetCanonicalName[] = { &wxluatype_wxLocale, NULL };
 static int LUACALL wxLua_wxLocale_GetCanonicalName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_GetCanonicalName[1] = {{ wxLua_wxLocale_GetCanonicalName, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLocale_GetCanonicalName }};
-//     wxString GetCanonicalName() const
+//     wxString GetCanonicalName() const;
 static int LUACALL wxLua_wxLocale_GetCanonicalName(lua_State *L)
 {
     // get this
@@ -5486,7 +5486,7 @@ static int LUACALL wxLua_wxLocale_GetInfo(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_GetLanguage[] = { &wxluatype_wxLocale, NULL };
 static int LUACALL wxLua_wxLocale_GetLanguage(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_GetLanguage[1] = {{ wxLua_wxLocale_GetLanguage, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLocale_GetLanguage }};
-//     int GetLanguage() const
+//     int GetLanguage() const;
 static int LUACALL wxLua_wxLocale_GetLanguage(lua_State *L)
 {
     // get this
@@ -5534,7 +5534,7 @@ static int LUACALL wxLua_wxLocale_GetLanguageName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_GetLocale[] = { &wxluatype_wxLocale, NULL };
 static int LUACALL wxLua_wxLocale_GetLocale(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_GetLocale[1] = {{ wxLua_wxLocale_GetLocale, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLocale_GetLocale }};
-//     wxString GetLocale() const
+//     wxString GetLocale() const;
 static int LUACALL wxLua_wxLocale_GetLocale(lua_State *L)
 {
     // get this
@@ -5550,7 +5550,7 @@ static int LUACALL wxLua_wxLocale_GetLocale(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_GetName[] = { &wxluatype_wxLocale, NULL };
 static int LUACALL wxLua_wxLocale_GetName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_GetName[1] = {{ wxLua_wxLocale_GetName, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLocale_GetName }};
-//     const wxString& GetName() const
+//     const wxString& GetName() const;
 static int LUACALL wxLua_wxLocale_GetName(lua_State *L)
 {
     // get this
@@ -5716,7 +5716,7 @@ static int LUACALL wxLua_wxLocale_GetSystemEncodingName(lua_State *L)
 
 static int LUACALL wxLua_wxLocale_GetSystemLanguage(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_GetSystemLanguage[1] = {{ wxLua_wxLocale_GetSystemLanguage, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static int GetSystemLanguage()
+//     static int GetSystemLanguage( );
 static int LUACALL wxLua_wxLocale_GetSystemLanguage(lua_State *L)
 {
     // call GetSystemLanguage
@@ -5752,7 +5752,7 @@ static int LUACALL wxLua_wxLocale_Init1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_Init[] = { &wxluatype_wxLocale, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxLocale_Init(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_Init[1] = {{ wxLua_wxLocale_Init, WXLUAMETHOD_METHOD, 2, 6, s_wxluatypeArray_wxLua_wxLocale_Init }};
-//     bool Init(const wxString &szName, const wxString &szShort = "", const wxString &szLocale = "", bool bLoadDefault = true, bool bConvertEncoding = false)
+//     bool Init(const wxString &szName, const wxString &szShort = "", const wxString &szLocale = "", bool bLoadDefault = true, bool bConvertEncoding = false );
 static int LUACALL wxLua_wxLocale_Init(lua_State *L)
 {
     // get number of arguments
@@ -5818,7 +5818,7 @@ static int LUACALL wxLua_wxLocale_IsLoaded(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_IsOk[] = { &wxluatype_wxLocale, NULL };
 static int LUACALL wxLua_wxLocale_IsOk(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_IsOk[1] = {{ wxLua_wxLocale_IsOk, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLocale_IsOk }};
-//     bool IsOk() const
+//     bool IsOk() const;
 static int LUACALL wxLua_wxLocale_IsOk(lua_State *L)
 {
     // get this
@@ -5837,7 +5837,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_delete[1] = {{ wxlua_userdata_d
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_constructor2[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxLocale_constructor2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_constructor2[1] = {{ wxLua_wxLocale_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxLocale_constructor2 }};
-//     wxLocale(int language, int flags = wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING)
+//     wxLocale(int language, int flags = wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING );
 static int LUACALL wxLua_wxLocale_constructor2(lua_State *L)
 {
     // get number of arguments
@@ -5859,7 +5859,7 @@ static int LUACALL wxLua_wxLocale_constructor2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_constructor1[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxLocale_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_constructor1[1] = {{ wxLua_wxLocale_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 5, s_wxluatypeArray_wxLua_wxLocale_constructor1 }};
-//     wxLocale(const wxString& szName, const wxString& szShort = "", const wxString& szLocale = "", bool bLoadDefault = true, bool bConvertEncoding = false)
+//     wxLocale(const wxString& szName, const wxString& szShort = "", const wxString& szLocale = "", bool bLoadDefault = true, bool bConvertEncoding = false );
 static int LUACALL wxLua_wxLocale_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -5886,7 +5886,7 @@ static int LUACALL wxLua_wxLocale_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxLocale_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_constructor[1] = {{ wxLua_wxLocale_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxLocale()
+//     wxLocale( );
 static int LUACALL wxLua_wxLocale_constructor(lua_State *L)
 {
     // call constructor

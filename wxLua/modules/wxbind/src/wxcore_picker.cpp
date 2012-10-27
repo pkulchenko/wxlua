@@ -37,7 +37,7 @@ int wxluatype_wxPickerBase = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPickerBase_GetInternalMargin[] = { &wxluatype_wxPickerBase, NULL };
 static int LUACALL wxLua_wxPickerBase_GetInternalMargin(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPickerBase_GetInternalMargin[1] = {{ wxLua_wxPickerBase_GetInternalMargin, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPickerBase_GetInternalMargin }};
-//     int GetInternalMargin() const
+//     int GetInternalMargin() const;
 static int LUACALL wxLua_wxPickerBase_GetInternalMargin(lua_State *L)
 {
     // get this
@@ -53,7 +53,7 @@ static int LUACALL wxLua_wxPickerBase_GetInternalMargin(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPickerBase_GetPickerCtrl[] = { &wxluatype_wxPickerBase, NULL };
 static int LUACALL wxLua_wxPickerBase_GetPickerCtrl(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPickerBase_GetPickerCtrl[1] = {{ wxLua_wxPickerBase_GetPickerCtrl, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPickerBase_GetPickerCtrl }};
-//     wxControl *GetPickerCtrl()
+//     wxControl *GetPickerCtrl( );
 static int LUACALL wxLua_wxPickerBase_GetPickerCtrl(lua_State *L)
 {
     // get this
@@ -69,7 +69,7 @@ static int LUACALL wxLua_wxPickerBase_GetPickerCtrl(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPickerBase_GetPickerCtrlProportion[] = { &wxluatype_wxPickerBase, NULL };
 static int LUACALL wxLua_wxPickerBase_GetPickerCtrlProportion(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPickerBase_GetPickerCtrlProportion[1] = {{ wxLua_wxPickerBase_GetPickerCtrlProportion, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPickerBase_GetPickerCtrlProportion }};
-//     int GetPickerCtrlProportion() const
+//     int GetPickerCtrlProportion() const;
 static int LUACALL wxLua_wxPickerBase_GetPickerCtrlProportion(lua_State *L)
 {
     // get this
@@ -87,7 +87,7 @@ static int LUACALL wxLua_wxPickerBase_GetPickerCtrlProportion(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPickerBase_GetTextCtrl[] = { &wxluatype_wxPickerBase, NULL };
 static int LUACALL wxLua_wxPickerBase_GetTextCtrl(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPickerBase_GetTextCtrl[1] = {{ wxLua_wxPickerBase_GetTextCtrl, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPickerBase_GetTextCtrl }};
-//     wxTextCtrl *GetTextCtrl()
+//     wxTextCtrl *GetTextCtrl( );
 static int LUACALL wxLua_wxPickerBase_GetTextCtrl(lua_State *L)
 {
     // get this
@@ -105,7 +105,7 @@ static int LUACALL wxLua_wxPickerBase_GetTextCtrl(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPickerBase_GetTextCtrlProportion[] = { &wxluatype_wxPickerBase, NULL };
 static int LUACALL wxLua_wxPickerBase_GetTextCtrlProportion(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPickerBase_GetTextCtrlProportion[1] = {{ wxLua_wxPickerBase_GetTextCtrlProportion, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPickerBase_GetTextCtrlProportion }};
-//     int GetTextCtrlProportion() const
+//     int GetTextCtrlProportion() const;
 static int LUACALL wxLua_wxPickerBase_GetTextCtrlProportion(lua_State *L)
 {
     // get this
@@ -121,7 +121,7 @@ static int LUACALL wxLua_wxPickerBase_GetTextCtrlProportion(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPickerBase_HasTextCtrl[] = { &wxluatype_wxPickerBase, NULL };
 static int LUACALL wxLua_wxPickerBase_HasTextCtrl(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPickerBase_HasTextCtrl[1] = {{ wxLua_wxPickerBase_HasTextCtrl, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPickerBase_HasTextCtrl }};
-//    bool HasTextCtrl() const
+//    bool HasTextCtrl() const;
 static int LUACALL wxLua_wxPickerBase_HasTextCtrl(lua_State *L)
 {
     // get this
@@ -137,7 +137,7 @@ static int LUACALL wxLua_wxPickerBase_HasTextCtrl(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPickerBase_IsPickerCtrlGrowable[] = { &wxluatype_wxPickerBase, NULL };
 static int LUACALL wxLua_wxPickerBase_IsPickerCtrlGrowable(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPickerBase_IsPickerCtrlGrowable[1] = {{ wxLua_wxPickerBase_IsPickerCtrlGrowable, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPickerBase_IsPickerCtrlGrowable }};
-//     bool IsPickerCtrlGrowable() const
+//     bool IsPickerCtrlGrowable() const;
 static int LUACALL wxLua_wxPickerBase_IsPickerCtrlGrowable(lua_State *L)
 {
     // get this
@@ -153,7 +153,7 @@ static int LUACALL wxLua_wxPickerBase_IsPickerCtrlGrowable(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPickerBase_IsTextCtrlGrowable[] = { &wxluatype_wxPickerBase, NULL };
 static int LUACALL wxLua_wxPickerBase_IsTextCtrlGrowable(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPickerBase_IsTextCtrlGrowable[1] = {{ wxLua_wxPickerBase_IsTextCtrlGrowable, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPickerBase_IsTextCtrlGrowable }};
-//     bool IsTextCtrlGrowable() const
+//     bool IsTextCtrlGrowable() const;
 static int LUACALL wxLua_wxPickerBase_IsTextCtrlGrowable(lua_State *L)
 {
     // get this
@@ -169,7 +169,7 @@ static int LUACALL wxLua_wxPickerBase_IsTextCtrlGrowable(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPickerBase_SetInternalMargin[] = { &wxluatype_wxPickerBase, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPickerBase_SetInternalMargin(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPickerBase_SetInternalMargin[1] = {{ wxLua_wxPickerBase_SetInternalMargin, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPickerBase_SetInternalMargin }};
-//     void SetInternalMargin(int newmargin)
+//     void SetInternalMargin(int newmargin );
 static int LUACALL wxLua_wxPickerBase_SetInternalMargin(lua_State *L)
 {
     // int newmargin
@@ -185,7 +185,7 @@ static int LUACALL wxLua_wxPickerBase_SetInternalMargin(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPickerBase_SetPickerCtrlGrowable[] = { &wxluatype_wxPickerBase, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxPickerBase_SetPickerCtrlGrowable(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPickerBase_SetPickerCtrlGrowable[1] = {{ wxLua_wxPickerBase_SetPickerCtrlGrowable, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxPickerBase_SetPickerCtrlGrowable }};
-//     void SetPickerCtrlGrowable(bool grow = true)
+//     void SetPickerCtrlGrowable(bool grow = true );
 static int LUACALL wxLua_wxPickerBase_SetPickerCtrlGrowable(lua_State *L)
 {
     // get number of arguments
@@ -203,7 +203,7 @@ static int LUACALL wxLua_wxPickerBase_SetPickerCtrlGrowable(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPickerBase_SetPickerCtrlProportion[] = { &wxluatype_wxPickerBase, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPickerBase_SetPickerCtrlProportion(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPickerBase_SetPickerCtrlProportion[1] = {{ wxLua_wxPickerBase_SetPickerCtrlProportion, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPickerBase_SetPickerCtrlProportion }};
-//     void SetPickerCtrlProportion(int prop)
+//     void SetPickerCtrlProportion(int prop );
 static int LUACALL wxLua_wxPickerBase_SetPickerCtrlProportion(lua_State *L)
 {
     // int prop
@@ -219,7 +219,7 @@ static int LUACALL wxLua_wxPickerBase_SetPickerCtrlProportion(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPickerBase_SetTextCtrlGrowable[] = { &wxluatype_wxPickerBase, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxPickerBase_SetTextCtrlGrowable(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPickerBase_SetTextCtrlGrowable[1] = {{ wxLua_wxPickerBase_SetTextCtrlGrowable, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxPickerBase_SetTextCtrlGrowable }};
-//     void SetTextCtrlGrowable(bool grow = true)
+//     void SetTextCtrlGrowable(bool grow = true );
 static int LUACALL wxLua_wxPickerBase_SetTextCtrlGrowable(lua_State *L)
 {
     // get number of arguments
@@ -237,7 +237,7 @@ static int LUACALL wxLua_wxPickerBase_SetTextCtrlGrowable(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPickerBase_SetTextCtrlProportion[] = { &wxluatype_wxPickerBase, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPickerBase_SetTextCtrlProportion(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPickerBase_SetTextCtrlProportion[1] = {{ wxLua_wxPickerBase_SetTextCtrlProportion, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPickerBase_SetTextCtrlProportion }};
-//     void SetTextCtrlProportion(int prop)
+//     void SetTextCtrlProportion(int prop );
 static int LUACALL wxLua_wxPickerBase_SetTextCtrlProportion(lua_State *L)
 {
     // int prop
@@ -253,7 +253,7 @@ static int LUACALL wxLua_wxPickerBase_SetTextCtrlProportion(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPickerBase_UpdatePickerFromTextCtrl[] = { &wxluatype_wxPickerBase, NULL };
 static int LUACALL wxLua_wxPickerBase_UpdatePickerFromTextCtrl(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPickerBase_UpdatePickerFromTextCtrl[1] = {{ wxLua_wxPickerBase_UpdatePickerFromTextCtrl, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPickerBase_UpdatePickerFromTextCtrl }};
-//     virtual void UpdatePickerFromTextCtrl()
+//     virtual void UpdatePickerFromTextCtrl( );
 static int LUACALL wxLua_wxPickerBase_UpdatePickerFromTextCtrl(lua_State *L)
 {
     // get this
@@ -267,7 +267,7 @@ static int LUACALL wxLua_wxPickerBase_UpdatePickerFromTextCtrl(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPickerBase_UpdateTextCtrlFromPicker[] = { &wxluatype_wxPickerBase, NULL };
 static int LUACALL wxLua_wxPickerBase_UpdateTextCtrlFromPicker(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPickerBase_UpdateTextCtrlFromPicker[1] = {{ wxLua_wxPickerBase_UpdateTextCtrlFromPicker, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPickerBase_UpdateTextCtrlFromPicker }};
-//     virtual void UpdateTextCtrlFromPicker()
+//     virtual void UpdateTextCtrlFromPicker( );
 static int LUACALL wxLua_wxPickerBase_UpdateTextCtrlFromPicker(lua_State *L)
 {
     // get this
@@ -329,7 +329,7 @@ int wxluatype_wxColourPickerCtrl = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColourPickerCtrl_Create[] = { &wxluatype_wxColourPickerCtrl, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxColour, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxColourPickerCtrl_Create(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourPickerCtrl_Create[1] = {{ wxLua_wxColourPickerCtrl_Create, WXLUAMETHOD_METHOD, 4, 9, s_wxluatypeArray_wxLua_wxColourPickerCtrl_Create }};
-//     bool Create(wxWindow *parent, wxWindowID id, const wxColour& col, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxCLRP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxColourPickerCtrl")
+//     bool Create(wxWindow *parent, wxWindowID id, const wxColour& col, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxCLRP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxColourPickerCtrl" );
 static int LUACALL wxLua_wxColourPickerCtrl_Create(lua_State *L)
 {
     // get number of arguments
@@ -366,7 +366,7 @@ static int LUACALL wxLua_wxColourPickerCtrl_Create(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColourPickerCtrl_GetColour[] = { &wxluatype_wxColourPickerCtrl, NULL };
 static int LUACALL wxLua_wxColourPickerCtrl_GetColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourPickerCtrl_GetColour[1] = {{ wxLua_wxColourPickerCtrl_GetColour, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxColourPickerCtrl_GetColour }};
-//     wxColour GetColour() const
+//     wxColour GetColour() const;
 static int LUACALL wxLua_wxColourPickerCtrl_GetColour(lua_State *L)
 {
     // get this
@@ -387,7 +387,7 @@ static int LUACALL wxLua_wxColourPickerCtrl_GetColour(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColourPickerCtrl_SetColour1[] = { &wxluatype_wxColourPickerCtrl, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxColourPickerCtrl_SetColour1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourPickerCtrl_SetColour1[1] = {{ wxLua_wxColourPickerCtrl_SetColour1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxColourPickerCtrl_SetColour1 }};
-//     bool SetColour(const wxString& text)
+//     bool SetColour(const wxString& text );
 static int LUACALL wxLua_wxColourPickerCtrl_SetColour1(lua_State *L)
 {
     // const wxString text
@@ -407,7 +407,7 @@ static int LUACALL wxLua_wxColourPickerCtrl_SetColour1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColourPickerCtrl_SetColour[] = { &wxluatype_wxColourPickerCtrl, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxColourPickerCtrl_SetColour(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourPickerCtrl_SetColour[1] = {{ wxLua_wxColourPickerCtrl_SetColour, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxColourPickerCtrl_SetColour }};
-//     void SetColour(const wxColour& col)
+//     void SetColour(const wxColour& col );
 static int LUACALL wxLua_wxColourPickerCtrl_SetColour(lua_State *L)
 {
     // const wxColour col
@@ -426,7 +426,7 @@ static int LUACALL wxLua_wxColourPickerCtrl_SetColour(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColourPickerCtrl_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxColour, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxColourPickerCtrl_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourPickerCtrl_constructor1[1] = {{ wxLua_wxColourPickerCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 3, 8, s_wxluatypeArray_wxLua_wxColourPickerCtrl_constructor1 }};
-//     wxColourPickerCtrl(wxWindow *parent, wxWindowID id, const wxColour& col, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxCLRP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxColourPickerCtrl")
+//     wxColourPickerCtrl(wxWindow *parent, wxWindowID id, const wxColour& col, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxCLRP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxColourPickerCtrl" );
 static int LUACALL wxLua_wxColourPickerCtrl_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -461,7 +461,7 @@ static int LUACALL wxLua_wxColourPickerCtrl_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxColourPickerCtrl_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourPickerCtrl_constructor[1] = {{ wxLua_wxColourPickerCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxColourPickerCtrl()
+//     wxColourPickerCtrl( );
 static int LUACALL wxLua_wxColourPickerCtrl_constructor(lua_State *L)
 {
     // call constructor
@@ -549,7 +549,7 @@ int wxluatype_wxColourPickerEvent = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColourPickerEvent_GetColour[] = { &wxluatype_wxColourPickerEvent, NULL };
 static int LUACALL wxLua_wxColourPickerEvent_GetColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourPickerEvent_GetColour[1] = {{ wxLua_wxColourPickerEvent_GetColour, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxColourPickerEvent_GetColour }};
-//     wxColour GetColour() const
+//     wxColour GetColour() const;
 static int LUACALL wxLua_wxColourPickerEvent_GetColour(lua_State *L)
 {
     // get this
@@ -568,7 +568,7 @@ static int LUACALL wxLua_wxColourPickerEvent_GetColour(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColourPickerEvent_SetColour[] = { &wxluatype_wxColourPickerEvent, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxColourPickerEvent_SetColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourPickerEvent_SetColour[1] = {{ wxLua_wxColourPickerEvent_SetColour, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxColourPickerEvent_SetColour }};
-//     void SetColour(const wxColour &c)
+//     void SetColour(const wxColour &c );
 static int LUACALL wxLua_wxColourPickerEvent_SetColour(lua_State *L)
 {
     // const wxColour c
@@ -591,7 +591,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourPickerEvent_delete[1] = {{ wxlua
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColourPickerEvent_constructor1[] = { &wxluatype_wxObject, &wxluatype_TNUMBER, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxColourPickerEvent_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourPickerEvent_constructor1[1] = {{ wxLua_wxColourPickerEvent_constructor1, WXLUAMETHOD_CONSTRUCTOR, 3, 3, s_wxluatypeArray_wxLua_wxColourPickerEvent_constructor1 }};
-//     wxColourPickerEvent(wxObject *generator, int id, const wxColour &col)
+//     wxColourPickerEvent(wxObject *generator, int id, const wxColour &col );
 static int LUACALL wxLua_wxColourPickerEvent_constructor1(lua_State *L)
 {
     // const wxColour col
@@ -614,7 +614,7 @@ static int LUACALL wxLua_wxColourPickerEvent_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxColourPickerEvent_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourPickerEvent_constructor[1] = {{ wxLua_wxColourPickerEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxColourPickerEvent()
+//     wxColourPickerEvent( );
 static int LUACALL wxLua_wxColourPickerEvent_constructor(lua_State *L)
 {
     // call constructor
@@ -683,7 +683,7 @@ int wxluatype_wxDatePickerCtrl = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDatePickerCtrl_Create[] = { &wxluatype_wxDatePickerCtrl, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxDateTime, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDatePickerCtrl_Create(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDatePickerCtrl_Create[1] = {{ wxLua_wxDatePickerCtrl_Create, WXLUAMETHOD_METHOD, 3, 9, s_wxluatypeArray_wxLua_wxDatePickerCtrl_Create }};
-//     bool Create(wxWindow *parent, wxWindowID id, const wxDateTime& dt = wxDefaultDateTime, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDP_DEFAULT | wxDP_SHOWCENTURY, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxDatePickerCtrl")
+//     bool Create(wxWindow *parent, wxWindowID id, const wxDateTime& dt = wxDefaultDateTime, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDP_DEFAULT | wxDP_SHOWCENTURY, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxDatePickerCtrl" );
 static int LUACALL wxLua_wxDatePickerCtrl_Create(lua_State *L)
 {
     // get number of arguments
@@ -743,7 +743,7 @@ static int LUACALL wxLua_wxDatePickerCtrl_GetRange(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDatePickerCtrl_GetValue[] = { &wxluatype_wxDatePickerCtrl, NULL };
 static int LUACALL wxLua_wxDatePickerCtrl_GetValue(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDatePickerCtrl_GetValue[1] = {{ wxLua_wxDatePickerCtrl_GetValue, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDatePickerCtrl_GetValue }};
-//     wxDateTime GetValue() const
+//     wxDateTime GetValue() const;
 static int LUACALL wxLua_wxDatePickerCtrl_GetValue(lua_State *L)
 {
     // get this
@@ -762,7 +762,7 @@ static int LUACALL wxLua_wxDatePickerCtrl_GetValue(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDatePickerCtrl_SetRange[] = { &wxluatype_wxDatePickerCtrl, &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDatePickerCtrl_SetRange(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDatePickerCtrl_SetRange[1] = {{ wxLua_wxDatePickerCtrl_SetRange, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxDatePickerCtrl_SetRange }};
-//     void SetRange(const wxDateTime& dt1, const wxDateTime& dt2)
+//     void SetRange(const wxDateTime& dt1, const wxDateTime& dt2 );
 static int LUACALL wxLua_wxDatePickerCtrl_SetRange(lua_State *L)
 {
     // const wxDateTime dt2
@@ -780,7 +780,7 @@ static int LUACALL wxLua_wxDatePickerCtrl_SetRange(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDatePickerCtrl_SetValue[] = { &wxluatype_wxDatePickerCtrl, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDatePickerCtrl_SetValue(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDatePickerCtrl_SetValue[1] = {{ wxLua_wxDatePickerCtrl_SetValue, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDatePickerCtrl_SetValue }};
-//     void SetValue(const wxDateTime& dt)
+//     void SetValue(const wxDateTime& dt );
 static int LUACALL wxLua_wxDatePickerCtrl_SetValue(lua_State *L)
 {
     // const wxDateTime dt
@@ -799,7 +799,7 @@ static int LUACALL wxLua_wxDatePickerCtrl_SetValue(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDatePickerCtrl_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxDateTime, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDatePickerCtrl_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDatePickerCtrl_constructor1[1] = {{ wxLua_wxDatePickerCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 8, s_wxluatypeArray_wxLua_wxDatePickerCtrl_constructor1 }};
-//     wxDatePickerCtrl(wxWindow *parent, wxWindowID id, const wxDateTime& dt = wxDefaultDateTime, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDP_DEFAULT | wxDP_SHOWCENTURY, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxDatePickerCtrl")
+//     wxDatePickerCtrl(wxWindow *parent, wxWindowID id, const wxDateTime& dt = wxDefaultDateTime, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDP_DEFAULT | wxDP_SHOWCENTURY, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxDatePickerCtrl" );
 static int LUACALL wxLua_wxDatePickerCtrl_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -834,7 +834,7 @@ static int LUACALL wxLua_wxDatePickerCtrl_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxDatePickerCtrl_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDatePickerCtrl_constructor[1] = {{ wxLua_wxDatePickerCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxDatePickerCtrl()
+//     wxDatePickerCtrl( );
 static int LUACALL wxLua_wxDatePickerCtrl_constructor(lua_State *L)
 {
     // call constructor
@@ -907,7 +907,7 @@ int wxluatype_wxFileDirPickerCtrlBase = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileDirPickerCtrlBase_GetPath[] = { &wxluatype_wxFileDirPickerCtrlBase, NULL };
 static int LUACALL wxLua_wxFileDirPickerCtrlBase_GetPath(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDirPickerCtrlBase_GetPath[1] = {{ wxLua_wxFileDirPickerCtrlBase_GetPath, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFileDirPickerCtrlBase_GetPath }};
-//     wxString GetPath() const
+//     wxString GetPath() const;
 static int LUACALL wxLua_wxFileDirPickerCtrlBase_GetPath(lua_State *L)
 {
     // get this
@@ -923,7 +923,7 @@ static int LUACALL wxLua_wxFileDirPickerCtrlBase_GetPath(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileDirPickerCtrlBase_GetTextCtrlValue[] = { &wxluatype_wxFileDirPickerCtrlBase, NULL };
 static int LUACALL wxLua_wxFileDirPickerCtrlBase_GetTextCtrlValue(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDirPickerCtrlBase_GetTextCtrlValue[1] = {{ wxLua_wxFileDirPickerCtrlBase_GetTextCtrlValue, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFileDirPickerCtrlBase_GetTextCtrlValue }};
-//     wxString GetTextCtrlValue() const
+//     wxString GetTextCtrlValue() const;
 static int LUACALL wxLua_wxFileDirPickerCtrlBase_GetTextCtrlValue(lua_State *L)
 {
     // get this
@@ -939,7 +939,7 @@ static int LUACALL wxLua_wxFileDirPickerCtrlBase_GetTextCtrlValue(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileDirPickerCtrlBase_SetPath[] = { &wxluatype_wxFileDirPickerCtrlBase, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFileDirPickerCtrlBase_SetPath(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDirPickerCtrlBase_SetPath[1] = {{ wxLua_wxFileDirPickerCtrlBase_SetPath, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileDirPickerCtrlBase_SetPath }};
-//     void SetPath(const wxString &str)
+//     void SetPath(const wxString &str );
 static int LUACALL wxLua_wxFileDirPickerCtrlBase_SetPath(lua_State *L)
 {
     // const wxString str
@@ -986,7 +986,7 @@ int wxluatype_wxFileDirPickerEvent = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileDirPickerEvent_GetPath[] = { &wxluatype_wxFileDirPickerEvent, NULL };
 static int LUACALL wxLua_wxFileDirPickerEvent_GetPath(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDirPickerEvent_GetPath[1] = {{ wxLua_wxFileDirPickerEvent_GetPath, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFileDirPickerEvent_GetPath }};
-//     wxString GetPath() const
+//     wxString GetPath() const;
 static int LUACALL wxLua_wxFileDirPickerEvent_GetPath(lua_State *L)
 {
     // get this
@@ -1002,7 +1002,7 @@ static int LUACALL wxLua_wxFileDirPickerEvent_GetPath(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileDirPickerEvent_SetPath[] = { &wxluatype_wxFileDirPickerEvent, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFileDirPickerEvent_SetPath(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDirPickerEvent_SetPath[1] = {{ wxLua_wxFileDirPickerEvent_SetPath, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileDirPickerEvent_SetPath }};
-//     void SetPath(const wxString &p)
+//     void SetPath(const wxString &p );
 static int LUACALL wxLua_wxFileDirPickerEvent_SetPath(lua_State *L)
 {
     // const wxString p
@@ -1023,7 +1023,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDirPickerEvent_delete[1] = {{ wxlu
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileDirPickerEvent_constructor[] = { &wxluatype_TNUMBER, &wxluatype_wxObject, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFileDirPickerEvent_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDirPickerEvent_constructor[1] = {{ wxLua_wxFileDirPickerEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 4, 4, s_wxluatypeArray_wxLua_wxFileDirPickerEvent_constructor }};
-//     wxFileDirPickerEvent(wxEventType type, wxObject *generator, int id, const wxString &path)
+//     wxFileDirPickerEvent(wxEventType type, wxObject *generator, int id, const wxString &path );
 static int LUACALL wxLua_wxFileDirPickerEvent_constructor(lua_State *L)
 {
     // const wxString path
@@ -1084,7 +1084,7 @@ int wxluatype_wxDirPickerCtrl = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDirPickerCtrl_Create[] = { &wxluatype_wxDirPickerCtrl, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDirPickerCtrl_Create(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDirPickerCtrl_Create[1] = {{ wxLua_wxDirPickerCtrl_Create, WXLUAMETHOD_METHOD, 3, 10, s_wxluatypeArray_wxLua_wxDirPickerCtrl_Create }};
-//     bool Create(wxWindow *parent, wxWindowID id, const wxString& path = "", const wxString& message = wxDirSelectorPromptStr, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDIRP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxDirPickerCtrl")
+//     bool Create(wxWindow *parent, wxWindowID id, const wxString& path = "", const wxString& message = wxDirSelectorPromptStr, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDIRP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxDirPickerCtrl" );
 static int LUACALL wxLua_wxDirPickerCtrl_Create(lua_State *L)
 {
     // get number of arguments
@@ -1120,7 +1120,7 @@ static int LUACALL wxLua_wxDirPickerCtrl_Create(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDirPickerCtrl_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDirPickerCtrl_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDirPickerCtrl_constructor1[1] = {{ wxLua_wxDirPickerCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 9, s_wxluatypeArray_wxLua_wxDirPickerCtrl_constructor1 }};
-//     wxDirPickerCtrl(wxWindow *parent, wxWindowID id, const wxString& path = "", const wxString& message = wxDirSelectorPromptStr, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDIRP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxDirPickerCtrl")
+//     wxDirPickerCtrl(wxWindow *parent, wxWindowID id, const wxString& path = "", const wxString& message = wxDirSelectorPromptStr, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDIRP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxDirPickerCtrl" );
 static int LUACALL wxLua_wxDirPickerCtrl_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -1157,7 +1157,7 @@ static int LUACALL wxLua_wxDirPickerCtrl_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxDirPickerCtrl_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDirPickerCtrl_constructor[1] = {{ wxLua_wxDirPickerCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxDirPickerCtrl()
+//     wxDirPickerCtrl( );
 static int LUACALL wxLua_wxDirPickerCtrl_constructor(lua_State *L)
 {
     // call constructor
@@ -1223,7 +1223,7 @@ int wxluatype_wxFilePickerCtrl = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFilePickerCtrl_Create[] = { &wxluatype_wxFilePickerCtrl, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFilePickerCtrl_Create(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFilePickerCtrl_Create[1] = {{ wxLua_wxFilePickerCtrl_Create, WXLUAMETHOD_METHOD, 3, 11, s_wxluatypeArray_wxLua_wxFilePickerCtrl_Create }};
-//     bool Create(wxWindow *parent, wxWindowID id, const wxString& path = "", const wxString& message = wxFileSelectorPromptStr, const wxString& wildcard = wxFileSelectorDefaultWildcardStr, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxFLP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxFilePickerCtrl")
+//     bool Create(wxWindow *parent, wxWindowID id, const wxString& path = "", const wxString& message = wxFileSelectorPromptStr, const wxString& wildcard = wxFileSelectorDefaultWildcardStr, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxFLP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxFilePickerCtrl" );
 static int LUACALL wxLua_wxFilePickerCtrl_Create(lua_State *L)
 {
     // get number of arguments
@@ -1261,7 +1261,7 @@ static int LUACALL wxLua_wxFilePickerCtrl_Create(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFilePickerCtrl_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFilePickerCtrl_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFilePickerCtrl_constructor1[1] = {{ wxLua_wxFilePickerCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 10, s_wxluatypeArray_wxLua_wxFilePickerCtrl_constructor1 }};
-//     wxFilePickerCtrl(wxWindow *parent, wxWindowID id, const wxString& path = "", const wxString& message = wxFileSelectorPromptStr, const wxString& wildcard = wxFileSelectorDefaultWildcardStr, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxFLP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxFilePickerCtrl")
+//     wxFilePickerCtrl(wxWindow *parent, wxWindowID id, const wxString& path = "", const wxString& message = wxFileSelectorPromptStr, const wxString& wildcard = wxFileSelectorDefaultWildcardStr, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxFLP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxFilePickerCtrl" );
 static int LUACALL wxLua_wxFilePickerCtrl_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -1300,7 +1300,7 @@ static int LUACALL wxLua_wxFilePickerCtrl_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxFilePickerCtrl_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFilePickerCtrl_constructor[1] = {{ wxLua_wxFilePickerCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxFilePickerCtrl()
+//     wxFilePickerCtrl( );
 static int LUACALL wxLua_wxFilePickerCtrl_constructor(lua_State *L)
 {
     // call constructor
@@ -1366,7 +1366,7 @@ int wxluatype_wxFontPickerCtrl = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontPickerCtrl_Create[] = { &wxluatype_wxFontPickerCtrl, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxFont, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFontPickerCtrl_Create(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontPickerCtrl_Create[1] = {{ wxLua_wxFontPickerCtrl_Create, WXLUAMETHOD_METHOD, 3, 9, s_wxluatypeArray_wxLua_wxFontPickerCtrl_Create }};
-//     bool Create(wxWindow *parent, wxWindowID id, const wxFont& initial = wxNullFont, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxFNTP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxFontPickerCtrl")
+//     bool Create(wxWindow *parent, wxWindowID id, const wxFont& initial = wxNullFont, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxFNTP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxFontPickerCtrl" );
 static int LUACALL wxLua_wxFontPickerCtrl_Create(lua_State *L)
 {
     // get number of arguments
@@ -1402,7 +1402,7 @@ static int LUACALL wxLua_wxFontPickerCtrl_Create(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontPickerCtrl_GetMaxPointSize[] = { &wxluatype_wxFontPickerCtrl, NULL };
 static int LUACALL wxLua_wxFontPickerCtrl_GetMaxPointSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontPickerCtrl_GetMaxPointSize[1] = {{ wxLua_wxFontPickerCtrl_GetMaxPointSize, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFontPickerCtrl_GetMaxPointSize }};
-//     unsigned int GetMaxPointSize() const
+//     unsigned int GetMaxPointSize() const;
 static int LUACALL wxLua_wxFontPickerCtrl_GetMaxPointSize(lua_State *L)
 {
     // get this
@@ -1420,7 +1420,7 @@ static int LUACALL wxLua_wxFontPickerCtrl_GetMaxPointSize(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontPickerCtrl_GetSelectedFont[] = { &wxluatype_wxFontPickerCtrl, NULL };
 static int LUACALL wxLua_wxFontPickerCtrl_GetSelectedFont(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontPickerCtrl_GetSelectedFont[1] = {{ wxLua_wxFontPickerCtrl_GetSelectedFont, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFontPickerCtrl_GetSelectedFont }};
-//     wxFont GetSelectedFont() const
+//     wxFont GetSelectedFont() const;
 static int LUACALL wxLua_wxFontPickerCtrl_GetSelectedFont(lua_State *L)
 {
     // get this
@@ -1441,7 +1441,7 @@ static int LUACALL wxLua_wxFontPickerCtrl_GetSelectedFont(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontPickerCtrl_SetMaxPointSize[] = { &wxluatype_wxFontPickerCtrl, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFontPickerCtrl_SetMaxPointSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontPickerCtrl_SetMaxPointSize[1] = {{ wxLua_wxFontPickerCtrl_SetMaxPointSize, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFontPickerCtrl_SetMaxPointSize }};
-//     void SetMaxPointSize(unsigned int max)
+//     void SetMaxPointSize(unsigned int max );
 static int LUACALL wxLua_wxFontPickerCtrl_SetMaxPointSize(lua_State *L)
 {
     // unsigned int max
@@ -1459,7 +1459,7 @@ static int LUACALL wxLua_wxFontPickerCtrl_SetMaxPointSize(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontPickerCtrl_SetSelectedFont[] = { &wxluatype_wxFontPickerCtrl, &wxluatype_wxFont, NULL };
 static int LUACALL wxLua_wxFontPickerCtrl_SetSelectedFont(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontPickerCtrl_SetSelectedFont[1] = {{ wxLua_wxFontPickerCtrl_SetSelectedFont, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFontPickerCtrl_SetSelectedFont }};
-//     virtual void SetSelectedFont(const wxFont &f)
+//     virtual void SetSelectedFont(const wxFont &f );
 static int LUACALL wxLua_wxFontPickerCtrl_SetSelectedFont(lua_State *L)
 {
     // const wxFont f
@@ -1478,7 +1478,7 @@ static int LUACALL wxLua_wxFontPickerCtrl_SetSelectedFont(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontPickerCtrl_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxFont, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFontPickerCtrl_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontPickerCtrl_constructor1[1] = {{ wxLua_wxFontPickerCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 8, s_wxluatypeArray_wxLua_wxFontPickerCtrl_constructor1 }};
-//     wxFontPickerCtrl(wxWindow *parent, wxWindowID id, const wxFont& initial = wxNullFont, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxFNTP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxFontPickerCtrl")
+//     wxFontPickerCtrl(wxWindow *parent, wxWindowID id, const wxFont& initial = wxNullFont, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxFNTP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxFontPickerCtrl" );
 static int LUACALL wxLua_wxFontPickerCtrl_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -1513,7 +1513,7 @@ static int LUACALL wxLua_wxFontPickerCtrl_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxFontPickerCtrl_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontPickerCtrl_constructor[1] = {{ wxLua_wxFontPickerCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxFontPickerCtrl()
+//     wxFontPickerCtrl( );
 static int LUACALL wxLua_wxFontPickerCtrl_constructor(lua_State *L)
 {
     // call constructor
@@ -1591,7 +1591,7 @@ int wxluatype_wxFontPickerEvent = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontPickerEvent_GetFont[] = { &wxluatype_wxFontPickerEvent, NULL };
 static int LUACALL wxLua_wxFontPickerEvent_GetFont(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontPickerEvent_GetFont[1] = {{ wxLua_wxFontPickerEvent_GetFont, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFontPickerEvent_GetFont }};
-//     wxFont GetFont() const
+//     wxFont GetFont() const;
 static int LUACALL wxLua_wxFontPickerEvent_GetFont(lua_State *L)
 {
     // get this
@@ -1610,7 +1610,7 @@ static int LUACALL wxLua_wxFontPickerEvent_GetFont(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontPickerEvent_SetFont[] = { &wxluatype_wxFontPickerEvent, &wxluatype_wxFont, NULL };
 static int LUACALL wxLua_wxFontPickerEvent_SetFont(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontPickerEvent_SetFont[1] = {{ wxLua_wxFontPickerEvent_SetFont, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFontPickerEvent_SetFont }};
-//     void SetFont(const wxFont &c)
+//     void SetFont(const wxFont &c );
 static int LUACALL wxLua_wxFontPickerEvent_SetFont(lua_State *L)
 {
     // const wxFont c
@@ -1633,7 +1633,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontPickerEvent_delete[1] = {{ wxlua_u
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontPickerEvent_constructor[] = { &wxluatype_wxObject, &wxluatype_TNUMBER, &wxluatype_wxFont, NULL };
 static int LUACALL wxLua_wxFontPickerEvent_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontPickerEvent_constructor[1] = {{ wxLua_wxFontPickerEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 3, 3, s_wxluatypeArray_wxLua_wxFontPickerEvent_constructor }};
-//     wxFontPickerEvent(wxObject *generator, int id, const wxFont &f)
+//     wxFontPickerEvent(wxObject *generator, int id, const wxFont &f );
 static int LUACALL wxLua_wxFontPickerEvent_constructor(lua_State *L)
 {
     // const wxFont f

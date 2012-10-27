@@ -76,9 +76,77 @@ function parse()
 
 end
 
-DoxyXMLTable   = {}
-DoxyClassTable = {}
-DoxyFileTable  = {}
+DoxyXMLTable   =
+{
+    -- ["filename.xml"] = ParseXmlFile("filename.xml")
+}
+DoxyClassTable =
+{
+    -- ["wxDateTime"] = {
+    --      baseclassnames[1]   = { name="BaseClassName", prot="public/protected/private", virt="virtual/non-virtual" }
+    --      classname           = "wxDateTime"
+    --      includes[1]         = { local="yes/no", name="wx/datetime.h" }
+    --      innerclass          = { "wxDateTime::TimeZone", "wxDateTime::Tm" }  // member classes, if any.
+    --      kind                = "class"
+    --      memberdef_enums[1]  = {
+    --          kind    = "enum",
+    --          name    = "TZ",
+    --          prot    = "public",
+    --          static  = "no",
+    --          { {name = "Local"} {name = "EEST", initializer = "GMT3"} }
+    --      }
+    --      memberdef_functions = {
+    --          "Add"[1]  = {                                           // an array since there may be overloads
+    --              argstring   = "(const wxDateSpan& diff) const",     // everything after the function name
+    --              const       = "yes/no",
+    --              definition  = "virtual wxDateTime wxDateTime::Add"  // everything before the '('
+    --              explicit    = "yes/no"
+    --              inline      = "yes/no"
+    --              kind        = "function"
+    --              name        = "Add"
+    --              params[1]   = { declname = "diff", kind = "param", type = "const wxDateSpan&", types = { "const", "wxDateSpan", "&" } }
+    --              prot        = "public"
+    --              static      = "yes/no"
+    --              type        = "wxDateTime"      // the return value
+    --              types       = { "wxDateTime" }  // the return value unrolled, like types in params above
+    --              virt        = "virtual/non-virtual"
+    --          }
+    --      }
+    --      memberdef_typedefs  = {
+    --          definition      = "typedef unsigned short wxDateTime::wxDateTime_t"
+    --          kind            = "typedef"
+    --          name            = "wxDateTime_t"
+    --          prot            = "public"
+    --          static          = "no"
+    --          type            = "unsigned short"
+    --          types           = { "unsigned short" }
+    --      }
+    --      memberdef_variables = {}
+    --      prot                = "public/protected/private"
+    --      xml_filename        = "/path/to/filename.xml"
+    --  }
+
+}
+DoxyFileTable  = {
+--  classes = { "wxBrush", "wxBrushList" }
+--  defines = {}
+--  enums[1] = {
+--      { initializer = "-1", name = "wxBRUSHSTYLE_INVALID" },
+--      kind = "enum",
+--      name = "wxBrushStyle",
+--      prot = "public",
+--      static = "no"
+--  }
+--  filename = "brush.h"
+--  functions = {}
+--  kind = "file"
+--  typedefs = {}
+--  variables = {
+--      { definition = "wxBrush wxNullBrush", kind = "variable", mutable = "no",
+--        name = "wxNullBrush", prot = "public", static = "no", type = "wxBrush" }
+--  }
+--  xml_filename = "file.xml"
+}
 DoxyIndexTable = {}
 
 -- --------------------------------------------------------------------------
@@ -1272,6 +1340,90 @@ function IsEmptyTable(T)
     end
 
     return true
+end
+
+-- ---------------------------------------------------------------------------
+-- Replacement for pairs(table) that sorts them alphabetically, returns iterator
+--  Code from "Programming in Lua" by Roberto Ierusalimschy
+--  the input is a Lua table and optional comp function (see table.sort)
+-- ---------------------------------------------------------------------------
+function pairs_sort(atable, comp_func)
+    local a = {}
+    for n in pairs(atable) do table.insert(a, n) end
+    table.sort(a, table_sort_comp)
+    local i = 0                -- iterator variable
+    local iter = function ()   -- iterator function
+        i = i + 1
+        if a[i] == nil then return nil
+        else return a[i], atable[a[i]] end
+    end
+    return iter
+end
+
+function table_sort_comp(a, b)
+    local ta = type(a)
+    local tb = type(b)
+
+    if (ta ~= tb) then
+        return ta < tb
+    end
+
+    return a < b
+end
+
+-- --------------------------------------------------------------------------
+-- http://www2.dcs.elf.stuba.sk/TeamProject/2003/team05/produkt/player/utils/serialize/serialize.lua
+--! Serialization
+
+--% Serializes a lua variable (good for table visualization)
+--@ o (any) Variable to serialize
+--@ d (number) INTERNAL (RECURSIVE FUNCTION)
+function Serialize(o, d)
+    if not d then d = 0 end
+    local s = ""
+
+    if type(o) == "number" then
+        s = s..o
+    elseif type(o) == "string" then
+        s = s..string.format("%q", o)
+    elseif type(o) == "boolean" then
+        if(o) then s = s.."true" else s = s.."false" end
+    elseif type(o) == "table" then
+        s = s.."{\n"
+        for k,v in pairs_sort(o) do
+
+            for f = 1,d do
+                s = s.."  "
+            end
+
+            if type(k) == "string" and not string.find(k, "[^%w_]") then
+                s = s.."  "..k.." = "
+            else
+                s = s.."  ["
+                s = s..Serialize(k)
+                s = s.."] = "
+            end
+
+            s = s..Serialize(v, d + 1)
+            if type(v) ~= "table" then s = s..",\n" end
+        end
+
+        for f = 1,d do
+            s = s.."  "
+        end
+
+        s = s.."}"
+        if d ~= 0 then
+            s = s..","
+        end
+        s = s.."\n"
+    elseif type(o) == "function" then
+        s = s..tostring(o)
+    else
+        error("cannot serialize a "..type(o))
+    end
+
+    return s
 end
 
 -- --------------------------------------------------------------------------

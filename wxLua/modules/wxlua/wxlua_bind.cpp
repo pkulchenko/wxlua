@@ -62,7 +62,7 @@ int wxluatype_wxLuaObject = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaObject_GetAllocationFlag[] = { &wxluatype_wxLuaObject, NULL };
 static int LUACALL wxLua_wxLuaObject_GetAllocationFlag(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaObject_GetAllocationFlag[1] = {{ wxLua_wxLuaObject_GetAllocationFlag, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaObject_GetAllocationFlag }};
-//     int  GetAllocationFlag() const
+//     int  GetAllocationFlag() const;
 static int LUACALL wxLua_wxLuaObject_GetAllocationFlag(lua_State *L)
 {
     // get this
@@ -175,7 +175,7 @@ wxLuaBindEvent* wxLuaGetEventList_wxlua(size_t &count)
 }
 
 // ---------------------------------------------------------------------------
-// wxLuaGetDefineList_wxlua() is called to register %define and %enum
+// wxLuaGetDefineList_wxlua() is called to register #define and enum
 // ---------------------------------------------------------------------------
 
 wxLuaBindNumber* wxLuaGetDefineList_wxlua(size_t &count)
@@ -230,7 +230,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxlua(size_t &count)
 
 // ---------------------------------------------------------------------------
 
-// wxLuaGetStringList_wxlua() is called to register %define %string
+// wxLuaGetStringList_wxlua() is called to register #define_string
 // ---------------------------------------------------------------------------
 
 wxLuaBindString* wxLuaGetStringList_wxlua(size_t &count)
@@ -1089,7 +1089,7 @@ static int LUACALL wxLua_function_istrackedobject(lua_State *L)
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_istrackedobject[1] = {{ wxLua_function_istrackedobject, WXLUAMETHOD_CFUNCTION, 1, 1, s_wxluatypeArray_wxLua_function_istrackedobject }};
 
 static wxLuaArgType s_wxluatypeArray_wxLua_function_iswxluatype[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
-// %rename iswxluatype %function int wxlua_iswxluatype(int luatype, int wxluaarg_tag)
+// %rename iswxluatype %function int wxlua_iswxluatype(int luatype, int wxluaarg_tag );
 static int LUACALL wxLua_function_iswxluatype(lua_State *L)
 {
     // int wxluaarg_tag
@@ -1171,7 +1171,7 @@ static int LUACALL wxLua_function_ungcobject(lua_State *L)
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_ungcobject[1] = {{ wxLua_function_ungcobject, WXLUAMETHOD_CFUNCTION, 1, 1, s_wxluatypeArray_wxLua_function_ungcobject }};
 
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxLUA_CHECK_VERSION[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
-// %function bool wxLUA_CHECK_VERSION(int major, int minor, int release) // actually a define
+// %function bool wxLUA_CHECK_VERSION(int major, int minor, int release); // actually a define
 static int LUACALL wxLua_function_wxLUA_CHECK_VERSION(lua_State *L)
 {
     // int release
@@ -1190,7 +1190,7 @@ static int LUACALL wxLua_function_wxLUA_CHECK_VERSION(lua_State *L)
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxLUA_CHECK_VERSION[1] = {{ wxLua_function_wxLUA_CHECK_VERSION, WXLUAMETHOD_CFUNCTION, 3, 3, s_wxluatypeArray_wxLua_function_wxLUA_CHECK_VERSION }};
 
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxLUA_CHECK_VERSION_FULL[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
-// %function bool wxLUA_CHECK_VERSION_FULL(int major, int minor, int release, int subrel) // actually a define
+// %function bool wxLUA_CHECK_VERSION_FULL(int major, int minor, int release, int subrel); // actually a define
 static int LUACALL wxLua_function_wxLUA_CHECK_VERSION_FULL(lua_State *L)
 {
     // int subrel

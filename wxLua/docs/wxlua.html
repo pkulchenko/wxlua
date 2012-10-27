@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="author" content="John Labenski" />
   <meta name="date" content="2012-10-12" />
-  <title>wxLua 2.8.12 - User Manual</title>
+  <title>wxLua 2.8.12.3 - User Manual</title>
   <style type="text/css">
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode, table.sourceCode pre 
    { margin: 0; padding: 0; border: 0; vertical-align: baseline; border: none; }
@@ -28,7 +28,7 @@ code.sourceCode span.er { color: red; font-weight: bold; }
   <link rel="stylesheet" href="wxlua.css" type="text/css" />
 </head>
 <body>
-<h1 class="title">wxLua 2.8.12 - User Manual</h1>
+<h1 class="title">wxLua 2.8.12.3 - User Manual</h1>
 <p><a href="http://wxlua.sourceforge.net">wxLua</a> is a <a href="http://www.lua.org">Lua</a> scripting language wrapper around the <a href="http://www.wxwidgets.org">wxWidgets</a> cross-platform C++ GUI library. It consists of two IDE type editors that can edit, debug, and run Lua programs (wxLua and wxLuaEdit), an executable for running standalone wxLua scripts (wxLuaFreeze), a Lua module that may be loaded using <code class="sourceCode lua"><span class="fu">require</span><span class="ot">(</span><span class="st">&quot;wx&quot;</span><span class="ot">)</span></code> when using the standard Lua executable, and a library for extending C++ programs with a fast, small, fully embeddable scripting language.</p>
 <p>Lua is a small scripting language written in ANSI C that can load and run interpreted scripts as either files or strings. The Lua language is fast, dynamic, and easy to learn. Lua contains a limited number of data types, mainly numbers, booleans, strings, functions, tables, and userdata. Perhaps the most powerful feature of the Lua language is that tables can be used as either numerically indexed arrays or associative arrays that can cross-reference any variable type to any other variable type.</p>
 <p>wxLua adds to this small and elegant language the power of the C++ wxWidgets cross-platform GUI library. This includes the ability to create complex user interface dialogs, file and image manipulation, drawing, networking, displaying HTML, and printing to name a few. You can use as much or as little of wxWidgets as you like and C++ developers can trim down the size the bindings by turning off preprocessor directives.</p>
@@ -82,8 +82,6 @@ code.sourceCode span.er { color: red; font-weight: bold; }
 <li>The wxLua version number is set to the stable version of wxWidgets that it has been updated to.
 <ul>
 <li>The revision number (X.Y.Z.revision) can be thought of as the wxLua version number.</li>
-<li>It may compile with newer versions of wxWidgets as well as older ones.</li>
-<li>The number is the</li>
 </ul></li>
 <li>Lua 5.1.5
 <ul>
@@ -350,62 +348,62 @@ code.sourceCode span.er { color: red; font-weight: bold; }
 <table>
 <tbody>
 <tr class="odd">
-<td align="left">bit32.rshift(x, disp)</td>
+<td align="left"><code class="sourceCode lua"><span class="kw">bit32</span><span class="ot">.</span>rshift<span class="ot">(</span><span class="kw">x</span>, <span class="kw">disp</span><span class="ot">)</span></code></td>
 <td align="left">-</td>
 <td align="left">returns <code>x</code> shifted logically right <code>disp</code> places or left if negative</td>
 </tr>
 <tr class="even">
-<td align="left">bit32.band(...)</td>
+<td align="left"><code class="sourceCode lua"><span class="kw">bit32</span><span class="ot">.</span>band<span class="ot">(...)</span></code></td>
 <td align="left">-</td>
 <td align="left">returns the bitwise <code>and</code> of the input values</td>
 </tr>
 <tr class="odd">
-<td align="left">bit32.bnot(x)</td>
+<td align="left"><code class="sourceCode lua"><span class="kw">bit32</span><span class="ot">.</span>bnot<span class="ot">(</span><span class="kw">x</span><span class="ot">)</span></code></td>
 <td align="left">-</td>
 <td align="left">returns the one's complement of <code>x</code></td>
 </tr>
 <tr class="even">
-<td align="left">bit32.bor(...)</td>
+<td align="left"><code class="sourceCode lua"><span class="kw">bit32</span><span class="ot">.</span>bor<span class="ot">(...)</span></code></td>
 <td align="left">-</td>
 <td align="left">returns the bitwise <code>or</code> of the input values</td>
 </tr>
 <tr class="odd">
-<td align="left">bit32.btest(···)</td>
+<td align="left"><code class="sourceCode lua"><span class="kw">bit32</span><span class="ot">.</span>btest<span class="ot">(</span>&#194;&#183;&#194;&#183;&#194;&#183;<span class="ot">)</span></code></td>
 <td align="left">-</td>
 <td align="left">returns true if the <code>and</code> of the input values is not 0</td>
 </tr>
 <tr class="even">
-<td align="left">bit32.bxor(...)</td>
+<td align="left"><code class="sourceCode lua"><span class="kw">bit32</span><span class="ot">.</span>bxor<span class="ot">(...)</span></code></td>
 <td align="left">-</td>
 <td align="left">returns the bitwise exclusive <code>or</code> of the input values</td>
 </tr>
 <tr class="odd">
-<td align="left">bit32.extract(n, field [, width])</td>
+<td align="left"><code class="sourceCode lua"><span class="kw">bit32</span><span class="ot">.</span>extract<span class="ot">(</span><span class="kw">n</span>, <span class="kw">field</span> <span class="ot">[</span>, <span class="kw">width</span><span class="ot">])</span></code></td>
 <td align="left">-</td>
 <td align="left">returns the number of bits set in <code>n</code> for the given 0-31 starting <code>field</code> to optionally <code>field+width-1</code></td>
 </tr>
 <tr class="even">
-<td align="left">bit32.replace(n, v, field [, width])</td>
+<td align="left"><code class="sourceCode lua"><span class="kw">bit32</span><span class="ot">.</span>replace<span class="ot">(</span><span class="kw">n</span>, <span class="kw">v</span>, <span class="kw">field</span> <span class="ot">[</span>, <span class="kw">width</span><span class="ot">])</span></code></td>
 <td align="left">-</td>
 <td align="left">returns <code>n</code> with the bits in <code>field</code> to optionally <code>field+width-1</code> replaced by the value <code>v</code></td>
 </tr>
 <tr class="odd">
-<td align="left">bit32.lrotate(x, disp)</td>
+<td align="left"><code class="sourceCode lua"><span class="kw">bit32</span><span class="ot">.</span>lrotate<span class="ot">(</span><span class="kw">x</span>, <span class="kw">disp</span><span class="ot">)</span></code></td>
 <td align="left">-</td>
 <td align="left">returns <code>x</code> rotated <code>disp</code> bits to the left</td>
 </tr>
 <tr class="even">
-<td align="left">bit32.lshift(x, disp)</td>
+<td align="left"><code class="sourceCode lua"><span class="kw">bit32</span><span class="ot">.</span>lshift<span class="ot">(</span><span class="kw">x</span>, <span class="kw">disp</span><span class="ot">)</span></code></td>
 <td align="left">-</td>
 <td align="left">returns <code>x</code> shifted left <code>disp</code> places or right if negative</td>
 </tr>
 <tr class="odd">
-<td align="left">bit32.rrotate(x, disp)</td>
+<td align="left"><code class="sourceCode lua"><span class="kw">bit32</span><span class="ot">.</span>rrotate<span class="ot">(</span><span class="kw">x</span>, <span class="kw">disp</span><span class="ot">)</span></code></td>
 <td align="left">-</td>
 <td align="left">returns <code>x</code> rotated <code>disp</code> bits to the right</td>
 </tr>
 <tr class="even">
-<td align="left">bit32.rshift(x, disp)</td>
+<td align="left"><code class="sourceCode lua"><span class="kw">bit32</span><span class="ot">.</span>rshift<span class="ot">(</span><span class="kw">x</span>, <span class="kw">disp</span><span class="ot">)</span></code></td>
 <td align="left">-</td>
 <td align="left">returns <code>x</code> shifted right <code>disp</code> places or left if negative</td>
 </tr>

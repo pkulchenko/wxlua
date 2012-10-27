@@ -7,26 +7,29 @@
 // wxWidgets:   Updated to 2.8.4
 // ===========================================================================
 
-%if wxLUA_USE_wxXRC && wxUSE_XRC
+#if wxLUA_USE_wxXRC && wxUSE_XRC
 
-%include "wx/xrc/xmlres.h"
+#include "wx/xrc/xmlres.h"
 
 // ---------------------------------------------------------------------------
 // wxXmlResourceHandler - wxLua shouldn't need this
 
-//%class wxXmlResourceHandler, wxObject
-//%endclass
+//class wxXmlResourceHandler : public wxObject
+//{
+//};
 
-%enum wxXmlResourceFlags
+enum wxXmlResourceFlags
+{
     wxXRC_USE_LOCALE
     wxXRC_NO_SUBCLASSING
     wxXRC_NO_RELOADING
-%endenum
+};
 
 // ---------------------------------------------------------------------------
 // wxXmlResource
 
-%class %delete wxXmlResource, wxObject
+class %delete wxXmlResource : public wxObject
+{
     //wxXmlResource();
     wxXmlResource(int flags = wxXRC_USE_LOCALE, const wxString& domain = "");
     wxXmlResource(const wxString& filemask, int flags = wxXRC_USE_LOCALE, const wxString& domain = "");
@@ -36,7 +39,7 @@
     void ClearHandlers();
     int CompareVersion(int major, int minor, int release, int revision) const;
     static wxXmlResource* Get();
-    int GetFlags()
+    int GetFlags( );
     long GetVersion() const;
     static int GetXRCID(const wxString &stringID, int value_if_not_found = wxID_NONE);
     void InitAllHandlers();
@@ -55,9 +58,9 @@
     wxToolBar* LoadToolBar(wxWindow *parent, const wxString& name);
 
     static %gc wxXmlResource* Set(%ungc wxXmlResource *res);
-    void SetDomain(const wxString& domain)
+    void SetDomain(const wxString& domain );
     void SetFlags(int flags);
-    bool Unload(const wxString& filename)
-%endclass
+    bool Unload(const wxString& filename );
+};
 
-%endif //wxLUA_USE_wxXRC && wxUSE_XRC
+#endif //wxLUA_USE_wxXRC && wxUSE_XRC

@@ -44,7 +44,7 @@ wxLuaBindEvent* wxLuaGetEventList_wxrichtext(size_t &count)
 }
 
 // ---------------------------------------------------------------------------
-// wxLuaGetDefineList_wxrichtext() is called to register %define and %enum
+// wxLuaGetDefineList_wxrichtext() is called to register #define and enum
 // ---------------------------------------------------------------------------
 
 wxLuaBindNumber* wxLuaGetDefineList_wxrichtext(size_t &count)
@@ -69,7 +69,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxrichtext(size_t &count)
 
 // ---------------------------------------------------------------------------
 
-// wxLuaGetStringList_wxrichtext() is called to register %define %string
+// wxLuaGetStringList_wxrichtext() is called to register #define_string
 // ---------------------------------------------------------------------------
 
 wxLuaBindString* wxLuaGetStringList_wxrichtext(size_t &count)
