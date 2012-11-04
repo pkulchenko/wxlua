@@ -489,9 +489,9 @@ class %delete wxGridCellCoords
     void SetCol( int n );
     void Set(int row, int col );
 
-    %operator wxGridCellCoords& operator=( const wxGridCellCoords& other );
-    %operator bool operator==( const wxGridCellCoords& other ) const;
-    %operator bool operator!() const;
+    wxGridCellCoords& operator=( const wxGridCellCoords& other );
+    bool operator==( const wxGridCellCoords& other ) const;
+    bool operator!() const;
 };
 
 // ---------------------------------------------------------------------------
@@ -514,7 +514,7 @@ class %delete wxGridCellCoordsArray
     void RemoveAt(size_t index );
     void Shrink( );
 
-    %operator wxGridCellCoords operator[](size_t nIndex );
+    wxGridCellCoords operator[](size_t nIndex );
 };
 
 // ---------------------------------------------------------------------------

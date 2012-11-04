@@ -504,7 +504,7 @@ class %delete wxAuiPaneInfo
     wxAuiPaneInfo();
     wxAuiPaneInfo(const wxAuiPaneInfo& c);
 
-    %operator wxAuiPaneInfo& operator=(const wxAuiPaneInfo& c);
+    wxAuiPaneInfo& operator=(const wxAuiPaneInfo& c);
 
     // Write the safe parts of a newly loaded PaneInfo structure "source" into "this"
     // used on loading perspectives etc.
@@ -739,7 +739,7 @@ class %delete wxAuiDockInfo
     wxAuiDockInfo();
     wxAuiDockInfo(const wxAuiDockInfo& c);
 
-    %operator wxAuiDockInfo& operator=(const wxAuiDockInfo& c);
+    wxAuiDockInfo& operator=(const wxAuiDockInfo& c);
 
     bool IsOk() const;
     bool IsHorizontal() const;

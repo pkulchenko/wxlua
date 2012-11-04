@@ -60,8 +60,8 @@ overrideTableUsed = {} -- table set to true if override was used, indexed by C f
 
 -- Table of delimiters in the binding text that separate different elements.
 -- Used in SplitString when reading the binding files.
-bindingDelimiters   = { "[]", "==", ">=", "<=", "&&", "||", "//", "/*", "*/", "*", "&", "|", "(", ")", "[", "]", ",", "=", "{", "}", "!", ";", "\t", "\r", "\n", " " }
-bindingDelimsToKeep = { "[]", "==", ">=", "<=", "&&", "||", "//", "/*", "*/", "*", "&", "|", "(", ")", "[", "]", ",", "=", "{", "}", "!", ";" }
+bindingDelimiters   = { "[]", "==", ">=", "<=", "&&", "||", "//", "/*", "*/", "*", "&", "|", "(", ")", "[", "]", ",", "=", "+", "-", "/", "~", "<", ">", "{", "}", "!", ";", "\t", "\r", "\n", " " }
+bindingDelimsToKeep = { "[]", "==", ">=", "<=", "&&", "||", "//", "/*", "*/", "*", "&", "|", "(", ")", "[", "]", ",", "=", "+", "-", "/", "~", "<", ">", "{", "}", "!", ";" }
 
 bindingDelimiters_hash = {}
 for i = 1, #bindingDelimiters do
@@ -75,6 +75,13 @@ local string_byte = string.byte
 
 local char_BACKSLASH   = string.byte("\\")
 local char_DOUBLEQUOTE = string.byte("\"")
+local char_DASH        = string.byte("-")
+
+digitTable = { [string_byte("0")]=true, [string_byte("1")]=true,
+               [string_byte("2")]=true, [string_byte("3")]=true,
+               [string_byte("4")]=true, [string_byte("5")]=true,
+               [string_byte("6")]=true, [string_byte("7")]=true,
+               [string_byte("8")]=true, [string_byte("9")]=true }
 
 -- ---------------------------------------------------------------------------
 -- CheckRules - check the settings in the rules file for common errors
@@ -1224,7 +1231,6 @@ function InitKeywords()
         -- keywords that come after class tag
         bindingKeywordTable["%delete"]      = true
         -- keywords that can only be used within class tag
-        bindingKeywordTable["%constructor"] = true
         bindingKeywordTable["%member"]      = true
         bindingKeywordTable["%member_func"] = true
         bindingKeywordTable["%operator"]    = true
@@ -1254,7 +1260,7 @@ function InitKeywords()
         bindingKeywordTable["public"]       = true
         bindingKeywordTable["protected"]    = true
         bindingKeywordTable["private"]      = true
-        --bindingKeywordTable["operator"]     = true
+        bindingKeywordTable["operator"]     = true
     bindingKeywordTable["enum"]             = true
     bindingKeywordTable["struct"]           = true
     bindingKeywordTable["typedef"]          = true
@@ -1365,6 +1371,10 @@ function SplitString(str, delimTable, keepTable, stringliterals, lineTable)
             -- check single char delimiters
             if not delim and delimTable_char[char] then
                 delim = delimTable_char[char]
+            end
+            -- check if unairy '-' on a number, if it is keep the - with the number
+            if (char == char_DASH) and digitTable[string_byte(str, i+1)] then
+                delim = nil
             end
             -- keep delimiter in list
             if delim and keepTable and keepTable_hash[delim] then
@@ -1935,8 +1945,10 @@ function ParseData(interfaceData)
                 -- ignore until end of block comment
                 elseif parseState.IsBlockComment == 0 then
 
+                    local class_operator = (tag == "operator") and (lineState.Action == "action_method")
+
                     -- warn if we're expecting something and it's not there
-                    if not lineState.ActionAttributes[tag] and lineState.ActionMandatory then
+                    if (not lineState.ActionAttributes[tag]) and lineState.ActionMandatory and (not class_operator) then
                         print("ERROR: Expected Line Action '"..lineState.Action.."', got '"..tag.."'. "..LineTableErrString(lineTable))
                     end
 
@@ -2093,19 +2105,30 @@ function ParseData(interfaceData)
                             print("ERROR: %member_func is not used for a class or struct. "..LineTableErrString(lineTable))
                         end
 
-                    elseif tag == "%constructor" then
-                        lineState.IsConstructor = true
-
-                        if parseState.ObjectStack[1].ObjType ~= "objtype_class" then
-                            print("ERROR: %constructor is not used for a class. "..LineTableErrString(lineTable))
-                        end
-
-                    elseif tag == "%operator" then
+                    elseif (tag == "operator") or (tag == "%operator") then
                         lineState["%operator"] = true
 
                         if parseState.ObjectStack[1].ObjType ~= "objtype_class" then
                             print("ERROR: %operator is not used for a class. "..LineTableErrString(lineTable))
                         end
+
+                        -- eat the rest of the "operator+=(...)" symbols which may be split before (
+                        if (string.sub(tag, -1) == "r") and (lineTags[t+1] == "(") and (lineTags[t+2] == ")") then -- op_func
+                            tag = tag..lineTags[t+1]..lineTags[t+2]
+                            t = t + 2
+                        else
+                            while lineTags[t+1] and (lineTags[t+1] ~= "(") do
+                                tag = tag..lineTags[t+1]
+                                t = t + 1
+                            end
+                        end
+
+                        local a, b = string.find(tag, "operator", 1, 1)
+                        local op = string.sub(tag, b+1)
+                        lineState["%operator"] = op
+
+                        lineState.Action = "action_methodbracket" -- next char should be (
+                        lineState.Name = bindingOperatorTable[op]
 
                     -- -------------------------------------------------------
                     elseif tag == "struct" then
@@ -2204,6 +2227,7 @@ function ParseData(interfaceData)
             -- else !keyword[tag]
             -- ---------------------------------------------------------------
             elseif parseState.IsBlockComment == 0 then
+
                 -- handle condition operators, note can have leading ! for not
                 if (tag == "!") or (((lineState.DefType == "deftype_#if") or lineState.InlineConditionIf) and preprocOperatorTable[tag]) then
                     if lineState.Condition or (preprocOperatorTable[tag] == "!") or (preprocOperatorTable[tag] == "(") then
@@ -2514,25 +2538,6 @@ function ParseData(interfaceData)
 
                             elseif tag == "static" then
                                 lineState.IsStaticFunction = true
-
-                            elseif lineState["%operator"] and string.find(tag, "operator", 1, 1) then
-                                -- eat the rest of the "operator+=(...)" symbols which may be split before (
-                                if (string.sub(tag, -1) == "r") and (lineTags[t+1] == "(") and (lineTags[t+2] == ")") then -- op_func
-                                    tag = tag..lineTags[t+1]..lineTags[t+2]
-                                    t = t + 2
-                                else
-                                    while lineTags[t+1] and (lineTags[t+1] ~= "(") do
-                                        tag = tag..lineTags[t+1]
-                                        t = t + 1
-                                    end
-                                end
-
-                                local a, b = string.find(tag, "operator", 1, 1)
-                                local op = string.sub(tag, b+1)
-                                lineState["%operator"] = op
-
-                                lineState.Action = "action_methodbracket" -- next char should be (
-                                lineState.Name = bindingOperatorTable[op]
 
                             elseif tag == "(" then
                                 if lineState.DataType == parseState.ObjectStack[1].Name then

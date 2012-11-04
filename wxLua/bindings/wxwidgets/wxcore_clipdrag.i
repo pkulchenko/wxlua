@@ -41,7 +41,7 @@ class %delete wxClipboardLocker
     // NOTE: ALWAYS delete() this when done since Lua's gc may not delete it soon enough
     wxClipboardLocker(wxClipboard *clipboard = NULL );
 
-    %operator bool operator!() const;
+    bool operator!() const;
 };
 
 // ---------------------------------------------------------------------------
@@ -107,7 +107,7 @@ class %delete wxDataFormat
     void SetId(const wxString &format );
     void SetType(wxDataFormatId format );
 
-    %operator bool operator==(const wxDataFormat& format) const;
+    bool operator==(const wxDataFormat& format) const;
 };
 
 // ---------------------------------------------------------------------------

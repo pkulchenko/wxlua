@@ -417,9 +417,9 @@ class %delete wxAcceleratorEntry
     #endif // %wxchkver_2_8
 
     // these are probably not necessary
-    //%operator wxAcceleratorEntry& operator=(const wxAcceleratorEntry& entry );
-    //%operator bool operator==(const wxAcceleratorEntry& entry) const;
-    //%operator bool operator!=(const wxAcceleratorEntry& entry) const;
+    //wxAcceleratorEntry& operator=(const wxAcceleratorEntry& entry );
+    //bool operator==(const wxAcceleratorEntry& entry) const;
+    //bool operator!=(const wxAcceleratorEntry& entry) const;
 };
 
 #endif //wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL

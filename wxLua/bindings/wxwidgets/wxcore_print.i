@@ -330,7 +330,7 @@ class %delete wxPrintData : public wxObject
     wxString GetFilename() const;
     void SetFilename( const wxString &filename );
 
-    %operator void operator=(const wxPrintData& data );
+    void operator=(const wxPrintData& data );
 
     // these are all WXWIN_COMPATIBILITY_2_4 and for postscript printing only
     //!%wxchkver_2_8 wxString GetPrinterCommand( );
@@ -471,7 +471,7 @@ class %delete wxPrintDialogData : public wxObject
     wxPrintData& GetPrintData( );
     void SetPrintData(const wxPrintData& printData );
 
-    %operator void operator=(const wxPrintDialogData& data );
+    void operator=(const wxPrintDialogData& data );
 };
 
 // ---------------------------------------------------------------------------

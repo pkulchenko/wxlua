@@ -2142,7 +2142,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_delete[1] = {{ wxlua_userdata
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_op_eq[] = { &wxluatype_wxFileName, &wxluatype_wxFileName, NULL };
 static int LUACALL wxLua_wxFileName_op_eq(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_op_eq[1] = {{ wxLua_wxFileName_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileName_op_eq }};
-//     %operator bool operator==(const wxFileName& filename) const;
+//     bool operator==(const wxFileName& filename) const;
 static int LUACALL wxLua_wxFileName_op_eq(lua_State *L)
 {
     // const wxFileName filename
@@ -2160,7 +2160,7 @@ static int LUACALL wxLua_wxFileName_op_eq(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_op_set[] = { &wxluatype_wxFileName, &wxluatype_wxFileName, NULL };
 static int LUACALL wxLua_wxFileName_op_set(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_op_set[1] = {{ wxLua_wxFileName_op_set, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileName_op_set }};
-//     %operator wxFileName& operator=(const wxFileName& filename );
+//     wxFileName& operator=(const wxFileName& filename );
 static int LUACALL wxLua_wxFileName_op_set(lua_State *L)
 {
     // const wxFileName filename

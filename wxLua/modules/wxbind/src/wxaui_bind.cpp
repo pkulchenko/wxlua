@@ -5408,7 +5408,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiPaneInfo_delete[1] = {{ wxlua_userd
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiPaneInfo_op_set[] = { &wxluatype_wxAuiPaneInfo, &wxluatype_wxAuiPaneInfo, NULL };
 static int LUACALL wxLua_wxAuiPaneInfo_op_set(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiPaneInfo_op_set[1] = {{ wxLua_wxAuiPaneInfo_op_set, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiPaneInfo_op_set }};
-//     %operator wxAuiPaneInfo& operator=(const wxAuiPaneInfo& c);
+//     wxAuiPaneInfo& operator=(const wxAuiPaneInfo& c);
 static int LUACALL wxLua_wxAuiPaneInfo_op_set(lua_State *L)
 {
     // const wxAuiPaneInfo c
@@ -7429,7 +7429,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiDockInfo_delete[1] = {{ wxlua_userd
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiDockInfo_op_set[] = { &wxluatype_wxAuiDockInfo, &wxluatype_wxAuiDockInfo, NULL };
 static int LUACALL wxLua_wxAuiDockInfo_op_set(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiDockInfo_op_set[1] = {{ wxLua_wxAuiDockInfo_op_set, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiDockInfo_op_set }};
-//     %operator wxAuiDockInfo& operator=(const wxAuiDockInfo& c);
+//     wxAuiDockInfo& operator=(const wxAuiDockInfo& c);
 static int LUACALL wxLua_wxAuiDockInfo_op_set(lua_State *L)
 {
     // const wxAuiDockInfo c

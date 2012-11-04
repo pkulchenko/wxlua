@@ -294,12 +294,12 @@ class %delete wxDateTime
     bool IsSameTime(const wxDateTime& dt) const;
     bool IsEqualUpTo(const wxDateTime& dt, const wxTimeSpan& ts) const;
 
-    %operator bool operator<(const wxDateTime& dt) const;
-    %operator bool operator<=(const wxDateTime& dt) const;
-    %operator bool operator>(const wxDateTime& dt) const;
-    %operator bool operator>=(const wxDateTime& dt) const;
-    %operator bool operator==(const wxDateTime& dt) const;
-    %operator bool operator!=(const wxDateTime& dt) const;
+    bool operator<(const wxDateTime& dt) const;
+    bool operator<=(const wxDateTime& dt) const;
+    bool operator>(const wxDateTime& dt) const;
+    bool operator>=(const wxDateTime& dt) const;
+    bool operator==(const wxDateTime& dt) const;
+    bool operator!=(const wxDateTime& dt) const;
 
     wxDateTime& Add(const wxTimeSpan& diff );
     wxDateTime& Add(const wxDateSpan& diff );
@@ -448,7 +448,7 @@ class %delete wxDateSpan
     static wxDateSpan Year( );
     static wxDateSpan Years(int years );
 
-    %operator bool operator==(wxDateSpan& other) const;
+    bool operator==(wxDateSpan& other) const;
 };
 
 #endif //wxLUA_USE_wxDateSpan && wxUSE_DATETIME

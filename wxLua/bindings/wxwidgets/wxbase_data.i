@@ -54,11 +54,11 @@ class %delete wxString::const_iterator
     wxString::const_iterator(const wxString::iterator& i );
 
     //wxUniChar operator*() const;
-    %operator char operator*() const;
+    char operator*() const;
 
-    %operator wxString::const_iterator& operator=(const wxString::const_iterator& i );
-    %operator wxString::const_iterator operator+(ptrdiff_t n) const;
-    %operator wxString::const_iterator operator-(ptrdiff_t n) const;
+    wxString::const_iterator& operator=(const wxString::const_iterator& i );
+    wxString::const_iterator operator+(ptrdiff_t n) const;
+    wxString::const_iterator operator-(ptrdiff_t n) const;
 };
 
 // ---------------------------------------------------------------------------
@@ -70,11 +70,11 @@ class %delete wxString::iterator
     wxString::iterator(const wxString::iterator& i );
 
     //wxUniChar operator*() const;
-    %operator char operator*() const;
+    char operator*() const;
 
-    %operator wxString::iterator& operator=(const wxString::iterator& i );
-    %operator wxString::iterator operator+(ptrdiff_t n) const;
-    %operator wxString::iterator operator-(ptrdiff_t n) const;
+    wxString::iterator& operator=(const wxString::iterator& i );
+    wxString::iterator operator+(ptrdiff_t n) const;
+    wxString::iterator operator-(ptrdiff_t n) const;
 };
 
 #endif
@@ -189,7 +189,7 @@ class %delete wxObject
     void  SetRefData(wxObjectRefData* data );
     void  UnRef( );
 
-    //%operator wxObject& operator=(const wxObject& other );
+    //wxObject& operator=(const wxObject& other );
 };
 
 class wxObjectRefData // no %delete since this should be from a wxObject
@@ -350,7 +350,7 @@ class %delete wxArrayInt
     void RemoveAt(size_t index );
     void Shrink( );
 
-    %operator int operator[](size_t nIndex );
+    int operator[](size_t nIndex );
 };
 
 #endif //wxLUA_USE_wxArrayInt
@@ -389,7 +389,7 @@ class %delete wxArrayString
     void Shrink( );
     void Sort(bool reverseOrder = false );
 
-    %operator wxString& operator[](size_t nIndex );
+    wxString& operator[](size_t nIndex );
 };
 
 // ---------------------------------------------------------------------------
@@ -478,11 +478,11 @@ class %delete wxLongLong
     long ToLong() const;
     wxString ToString() const;
 
-    //%operator wxLongLong operator+(const wxLongLong& ll) const;
-    //%operator wxLongLong& operator+(const wxLongLong& ll );
-    //%operator wxLongLong& operator++( );
-    //%operator wxLongLong operator-() const;
-    //%operator wxLongLong operator-(const wxLongLong& ll) const;
+    //wxLongLong operator+(const wxLongLong& ll) const;
+    //wxLongLong& operator+(const wxLongLong& ll );
+    //wxLongLong& operator++( );
+    //wxLongLong operator-() const;
+    //wxLongLong operator-(const wxLongLong& ll) const;
 };
 
 // ---------------------------------------------------------------------------

@@ -51,21 +51,21 @@ class %delete wxPoint2DInt
     %rename X %member_func wxInt32 m_x
     %rename Y %member_func wxInt32 m_y
 
-    %operator wxPoint2DInt operator-( );
-    %operator wxPoint2DInt& operator=(const wxPoint2DInt& pt );
-    %operator wxPoint2DInt& operator+=(const wxPoint2DInt& pt );
-    %operator wxPoint2DInt& operator-=(const wxPoint2DInt& pt );
-    %operator wxPoint2DInt& operator*=(const wxPoint2DInt& pt );
+    wxPoint2DInt operator-( );
+    wxPoint2DInt& operator=(const wxPoint2DInt& pt );
+    wxPoint2DInt& operator+=(const wxPoint2DInt& pt );
+    wxPoint2DInt& operator-=(const wxPoint2DInt& pt );
+    wxPoint2DInt& operator*=(const wxPoint2DInt& pt );
     //wxPoint2DInt& operator*=(wxDouble n) - no function body in wxWidgets
     //wxPoint2DInt& operator*=(wxInt32 n) - no function body in wxWidgets
-    %operator wxPoint2DInt& operator/=(const wxPoint2DInt& pt );
+    wxPoint2DInt& operator/=(const wxPoint2DInt& pt );
     //wxPoint2DInt& operator/=(wxDouble n) - no function body in wxWidgets
     //wxPoint2DInt& operator/=(wxInt32 n) - no function body in wxWidgets
     //operator wxPoint() const;
-    %operator bool operator==(const wxPoint2DInt& pt) const;
+    bool operator==(const wxPoint2DInt& pt) const;
     //bool operator!=(const wxPoint2DInt& pt) const;
 
-    %operator wxPoint2DInt operator*(wxInt32 n );
+    wxPoint2DInt operator*(wxInt32 n );
 };
 
 // ---------------------------------------------------------------------------
@@ -96,17 +96,17 @@ class %delete wxPoint2DDouble
     %rename X %member_func wxDouble m_x
     %rename Y %member_func wxDouble m_y
 
-    %operator wxPoint2DDouble operator-( );
-    %operator wxPoint2DDouble& operator=(const wxPoint2DDouble& pt );
-    %operator wxPoint2DDouble& operator+=(const wxPoint2DDouble& pt );
-    %operator wxPoint2DDouble& operator-=(const wxPoint2DDouble& pt );
-    %operator wxPoint2DDouble& operator*=(const wxPoint2DDouble& pt );
+    wxPoint2DDouble operator-( );
+    wxPoint2DDouble& operator=(const wxPoint2DDouble& pt );
+    wxPoint2DDouble& operator+=(const wxPoint2DDouble& pt );
+    wxPoint2DDouble& operator-=(const wxPoint2DDouble& pt );
+    wxPoint2DDouble& operator*=(const wxPoint2DDouble& pt );
     //wxPoint2DDouble& operator*=(wxDouble n );
     //wxPoint2DDouble& operator*=(wxInt32 n );
-    %operator wxPoint2DDouble& operator/=(const wxPoint2DDouble& pt );
+    wxPoint2DDouble& operator/=(const wxPoint2DDouble& pt );
     //wxPoint2DDouble& operator/=(wxDouble n );
     //wxPoint2DDouble& operator/=(wxInt32 n );
-    %operator bool operator==(const wxPoint2DDouble& pt) const;
+    bool operator==(const wxPoint2DDouble& pt) const;
     //bool operator!=(const wxPoint2DDouble& pt) const;
 };
 
@@ -176,7 +176,7 @@ class %delete wxRect2DDouble
     %rename Height %member_func wxDouble m_height
 
     //wxRect2DDouble& operator = (const wxRect2DDouble& rect) - use copy constructor
-    %operator bool operator==(const wxRect2DDouble& rect );
+    bool operator==(const wxRect2DDouble& rect );
     //bool operator != (const wxRect2DDouble& rect) const;
 };
 
@@ -252,7 +252,7 @@ class %delete wxRect2DInt
     %rename Height %member_func wxInt32 m_height
 
     //wxRect2DInt& operator = (const wxRect2DInt& rect) - use copy constructor
-    %operator bool operator == (const wxRect2DInt& rect) const;
+    bool operator == (const wxRect2DInt& rect) const;
     //bool operator != (const wxRect2DInt& rect) const;
 };
 

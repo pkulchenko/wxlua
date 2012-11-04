@@ -366,9 +366,9 @@ class %delete wxURI : public wxObject
     bool IsReference() const;
     static wxString Unescape (const wxString& szEscapedURI );
 
-    %operator wxURI& operator = (const wxURI& uri);
+    wxURI& operator = (const wxURI& uri);
     //wxURI& operator = (const wxString& string);
-    %operator bool operator == (const wxURI& uri) const;
+    bool operator == (const wxURI& uri) const;
 };
 
 // ---------------------------------------------------------------------------

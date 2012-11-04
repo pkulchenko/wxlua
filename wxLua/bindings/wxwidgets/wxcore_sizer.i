@@ -325,7 +325,7 @@ class %delete wxGBPosition
     void SetRow(int row );
     void SetCol(int col );
 
-    %operator bool operator==(const wxGBPosition& p) const;
+    bool operator==(const wxGBPosition& p) const;
 };
 
 // ---------------------------------------------------------------------------
@@ -341,7 +341,7 @@ class %delete wxGBSpan
     void SetRowspan(int rowspan );
     void SetColspan(int colspan );
 
-    %operator bool operator==(const wxGBSpan& o) const;
+    bool operator==(const wxGBSpan& o) const;
 };
 
 // ---------------------------------------------------------------------------

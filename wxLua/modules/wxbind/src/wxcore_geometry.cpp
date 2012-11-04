@@ -248,7 +248,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DInt_delete[1] = {{ wxlua_userda
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DInt_op_eq[] = { &wxluatype_wxPoint2DInt, &wxluatype_wxPoint2DInt, NULL };
 static int LUACALL wxLua_wxPoint2DInt_op_eq(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DInt_op_eq[1] = {{ wxLua_wxPoint2DInt_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint2DInt_op_eq }};
-//     %operator bool operator==(const wxPoint2DInt& pt) const;
+//     bool operator==(const wxPoint2DInt& pt) const;
 static int LUACALL wxLua_wxPoint2DInt_op_eq(lua_State *L)
 {
     // const wxPoint2DInt pt
@@ -266,7 +266,7 @@ static int LUACALL wxLua_wxPoint2DInt_op_eq(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DInt_op_iadd[] = { &wxluatype_wxPoint2DInt, &wxluatype_wxPoint2DInt, NULL };
 static int LUACALL wxLua_wxPoint2DInt_op_iadd(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DInt_op_iadd[1] = {{ wxLua_wxPoint2DInt_op_iadd, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint2DInt_op_iadd }};
-//     %operator wxPoint2DInt& operator+=(const wxPoint2DInt& pt );
+//     wxPoint2DInt& operator+=(const wxPoint2DInt& pt );
 static int LUACALL wxLua_wxPoint2DInt_op_iadd(lua_State *L)
 {
     // const wxPoint2DInt pt
@@ -285,7 +285,7 @@ static int LUACALL wxLua_wxPoint2DInt_op_iadd(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DInt_op_idiv[] = { &wxluatype_wxPoint2DInt, &wxluatype_wxPoint2DInt, NULL };
 static int LUACALL wxLua_wxPoint2DInt_op_idiv(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DInt_op_idiv[1] = {{ wxLua_wxPoint2DInt_op_idiv, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint2DInt_op_idiv }};
-//     %operator wxPoint2DInt& operator/=(const wxPoint2DInt& pt );
+//     wxPoint2DInt& operator/=(const wxPoint2DInt& pt );
 static int LUACALL wxLua_wxPoint2DInt_op_idiv(lua_State *L)
 {
     // const wxPoint2DInt pt
@@ -304,7 +304,7 @@ static int LUACALL wxLua_wxPoint2DInt_op_idiv(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DInt_op_imul[] = { &wxluatype_wxPoint2DInt, &wxluatype_wxPoint2DInt, NULL };
 static int LUACALL wxLua_wxPoint2DInt_op_imul(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DInt_op_imul[1] = {{ wxLua_wxPoint2DInt_op_imul, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint2DInt_op_imul }};
-//     %operator wxPoint2DInt& operator*=(const wxPoint2DInt& pt );
+//     wxPoint2DInt& operator*=(const wxPoint2DInt& pt );
 static int LUACALL wxLua_wxPoint2DInt_op_imul(lua_State *L)
 {
     // const wxPoint2DInt pt
@@ -323,7 +323,7 @@ static int LUACALL wxLua_wxPoint2DInt_op_imul(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DInt_op_isub[] = { &wxluatype_wxPoint2DInt, &wxluatype_wxPoint2DInt, NULL };
 static int LUACALL wxLua_wxPoint2DInt_op_isub(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DInt_op_isub[1] = {{ wxLua_wxPoint2DInt_op_isub, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint2DInt_op_isub }};
-//     %operator wxPoint2DInt& operator-=(const wxPoint2DInt& pt );
+//     wxPoint2DInt& operator-=(const wxPoint2DInt& pt );
 static int LUACALL wxLua_wxPoint2DInt_op_isub(lua_State *L)
 {
     // const wxPoint2DInt pt
@@ -342,7 +342,7 @@ static int LUACALL wxLua_wxPoint2DInt_op_isub(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DInt_op_mul[] = { &wxluatype_wxPoint2DInt, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPoint2DInt_op_mul(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DInt_op_mul[1] = {{ wxLua_wxPoint2DInt_op_mul, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint2DInt_op_mul }};
-//     %operator wxPoint2DInt operator*(wxInt32 n );
+//     wxPoint2DInt operator*(wxInt32 n );
 static int LUACALL wxLua_wxPoint2DInt_op_mul(lua_State *L)
 {
     // wxInt32 n
@@ -363,7 +363,7 @@ static int LUACALL wxLua_wxPoint2DInt_op_mul(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DInt_op_neg[] = { &wxluatype_wxPoint2DInt, NULL };
 static int LUACALL wxLua_wxPoint2DInt_op_neg(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DInt_op_neg[1] = {{ wxLua_wxPoint2DInt_op_neg, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPoint2DInt_op_neg }};
-//     %operator wxPoint2DInt operator-( );
+//     wxPoint2DInt operator-( );
 static int LUACALL wxLua_wxPoint2DInt_op_neg(lua_State *L)
 {
     // get this
@@ -382,7 +382,7 @@ static int LUACALL wxLua_wxPoint2DInt_op_neg(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DInt_op_set[] = { &wxluatype_wxPoint2DInt, &wxluatype_wxPoint2DInt, NULL };
 static int LUACALL wxLua_wxPoint2DInt_op_set(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DInt_op_set[1] = {{ wxLua_wxPoint2DInt_op_set, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint2DInt_op_set }};
-//     %operator wxPoint2DInt& operator=(const wxPoint2DInt& pt );
+//     wxPoint2DInt& operator=(const wxPoint2DInt& pt );
 static int LUACALL wxLua_wxPoint2DInt_op_set(lua_State *L)
 {
     // const wxPoint2DInt pt
@@ -733,7 +733,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DDouble_delete[1] = {{ wxlua_use
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DDouble_op_eq[] = { &wxluatype_wxPoint2DDouble, &wxluatype_wxPoint2DDouble, NULL };
 static int LUACALL wxLua_wxPoint2DDouble_op_eq(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DDouble_op_eq[1] = {{ wxLua_wxPoint2DDouble_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint2DDouble_op_eq }};
-//     %operator bool operator==(const wxPoint2DDouble& pt) const;
+//     bool operator==(const wxPoint2DDouble& pt) const;
 static int LUACALL wxLua_wxPoint2DDouble_op_eq(lua_State *L)
 {
     // const wxPoint2DDouble pt
@@ -751,7 +751,7 @@ static int LUACALL wxLua_wxPoint2DDouble_op_eq(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DDouble_op_iadd[] = { &wxluatype_wxPoint2DDouble, &wxluatype_wxPoint2DDouble, NULL };
 static int LUACALL wxLua_wxPoint2DDouble_op_iadd(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DDouble_op_iadd[1] = {{ wxLua_wxPoint2DDouble_op_iadd, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint2DDouble_op_iadd }};
-//     %operator wxPoint2DDouble& operator+=(const wxPoint2DDouble& pt );
+//     wxPoint2DDouble& operator+=(const wxPoint2DDouble& pt );
 static int LUACALL wxLua_wxPoint2DDouble_op_iadd(lua_State *L)
 {
     // const wxPoint2DDouble pt
@@ -770,7 +770,7 @@ static int LUACALL wxLua_wxPoint2DDouble_op_iadd(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DDouble_op_idiv[] = { &wxluatype_wxPoint2DDouble, &wxluatype_wxPoint2DDouble, NULL };
 static int LUACALL wxLua_wxPoint2DDouble_op_idiv(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DDouble_op_idiv[1] = {{ wxLua_wxPoint2DDouble_op_idiv, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint2DDouble_op_idiv }};
-//     %operator wxPoint2DDouble& operator/=(const wxPoint2DDouble& pt );
+//     wxPoint2DDouble& operator/=(const wxPoint2DDouble& pt );
 static int LUACALL wxLua_wxPoint2DDouble_op_idiv(lua_State *L)
 {
     // const wxPoint2DDouble pt
@@ -789,7 +789,7 @@ static int LUACALL wxLua_wxPoint2DDouble_op_idiv(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DDouble_op_imul[] = { &wxluatype_wxPoint2DDouble, &wxluatype_wxPoint2DDouble, NULL };
 static int LUACALL wxLua_wxPoint2DDouble_op_imul(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DDouble_op_imul[1] = {{ wxLua_wxPoint2DDouble_op_imul, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint2DDouble_op_imul }};
-//     %operator wxPoint2DDouble& operator*=(const wxPoint2DDouble& pt );
+//     wxPoint2DDouble& operator*=(const wxPoint2DDouble& pt );
 static int LUACALL wxLua_wxPoint2DDouble_op_imul(lua_State *L)
 {
     // const wxPoint2DDouble pt
@@ -808,7 +808,7 @@ static int LUACALL wxLua_wxPoint2DDouble_op_imul(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DDouble_op_isub[] = { &wxluatype_wxPoint2DDouble, &wxluatype_wxPoint2DDouble, NULL };
 static int LUACALL wxLua_wxPoint2DDouble_op_isub(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DDouble_op_isub[1] = {{ wxLua_wxPoint2DDouble_op_isub, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint2DDouble_op_isub }};
-//     %operator wxPoint2DDouble& operator-=(const wxPoint2DDouble& pt );
+//     wxPoint2DDouble& operator-=(const wxPoint2DDouble& pt );
 static int LUACALL wxLua_wxPoint2DDouble_op_isub(lua_State *L)
 {
     // const wxPoint2DDouble pt
@@ -827,7 +827,7 @@ static int LUACALL wxLua_wxPoint2DDouble_op_isub(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DDouble_op_neg[] = { &wxluatype_wxPoint2DDouble, NULL };
 static int LUACALL wxLua_wxPoint2DDouble_op_neg(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DDouble_op_neg[1] = {{ wxLua_wxPoint2DDouble_op_neg, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPoint2DDouble_op_neg }};
-//     %operator wxPoint2DDouble operator-( );
+//     wxPoint2DDouble operator-( );
 static int LUACALL wxLua_wxPoint2DDouble_op_neg(lua_State *L)
 {
     // get this
@@ -846,7 +846,7 @@ static int LUACALL wxLua_wxPoint2DDouble_op_neg(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DDouble_op_set[] = { &wxluatype_wxPoint2DDouble, &wxluatype_wxPoint2DDouble, NULL };
 static int LUACALL wxLua_wxPoint2DDouble_op_set(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DDouble_op_set[1] = {{ wxLua_wxPoint2DDouble_op_set, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint2DDouble_op_set }};
-//     %operator wxPoint2DDouble& operator=(const wxPoint2DDouble& pt );
+//     wxPoint2DDouble& operator=(const wxPoint2DDouble& pt );
 static int LUACALL wxLua_wxPoint2DDouble_op_set(lua_State *L)
 {
     // const wxPoint2DDouble pt
@@ -1914,7 +1914,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DDouble_delete[1] = {{ wxlua_user
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DDouble_op_eq[] = { &wxluatype_wxRect2DDouble, &wxluatype_wxRect2DDouble, NULL };
 static int LUACALL wxLua_wxRect2DDouble_op_eq(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DDouble_op_eq[1] = {{ wxLua_wxRect2DDouble_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRect2DDouble_op_eq }};
-//     %operator bool operator==(const wxRect2DDouble& rect );
+//     bool operator==(const wxRect2DDouble& rect );
 static int LUACALL wxLua_wxRect2DDouble_op_eq(lua_State *L)
 {
     // const wxRect2DDouble rect
@@ -3005,7 +3005,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DInt_delete[1] = {{ wxlua_userdat
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DInt_op_eq[] = { &wxluatype_wxRect2DInt, &wxluatype_wxRect2DInt, NULL };
 static int LUACALL wxLua_wxRect2DInt_op_eq(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DInt_op_eq[1] = {{ wxLua_wxRect2DInt_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRect2DInt_op_eq }};
-//     %operator bool operator == (const wxRect2DInt& rect) const;
+//     bool operator == (const wxRect2DInt& rect) const;
 static int LUACALL wxLua_wxRect2DInt_op_eq(lua_State *L)
 {
     // const wxRect2DInt rect

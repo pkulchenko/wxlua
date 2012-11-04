@@ -2465,7 +2465,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_delete[1] = {{ wxlua_userdata_dele
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_op_eq[] = { &wxluatype_wxURI, &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_op_eq(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_op_eq[1] = {{ wxLua_wxURI_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxURI_op_eq }};
-//     %operator bool operator == (const wxURI& uri) const;
+//     bool operator == (const wxURI& uri) const;
 static int LUACALL wxLua_wxURI_op_eq(lua_State *L)
 {
     // const wxURI uri
@@ -2483,7 +2483,7 @@ static int LUACALL wxLua_wxURI_op_eq(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_op_set[] = { &wxluatype_wxURI, &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_op_set(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_op_set[1] = {{ wxLua_wxURI_op_set, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxURI_op_set }};
-//     %operator wxURI& operator = (const wxURI& uri);
+//     wxURI& operator = (const wxURI& uri);
 static int LUACALL wxLua_wxURI_op_set(lua_State *L)
 {
     // const wxURI uri

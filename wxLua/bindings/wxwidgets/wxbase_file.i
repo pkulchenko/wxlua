@@ -321,8 +321,8 @@ class %delete wxFileName
 
     bool Touch( );
 
-    %operator wxFileName& operator=(const wxFileName& filename );
-    %operator bool operator==(const wxFileName& filename) const;
+    wxFileName& operator=(const wxFileName& filename );
+    bool operator==(const wxFileName& filename) const;
 };
 
 #endif //wxLUA_USE_wxFileName

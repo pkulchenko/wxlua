@@ -1640,7 +1640,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxImage_delete[1] = {{ wxlua_userdata_de
 static wxLuaArgType s_wxluatypeArray_wxLua_wxImage_op_set[] = { &wxluatype_wxImage, &wxluatype_wxImage, NULL };
 static int LUACALL wxLua_wxImage_op_set(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxImage_op_set[1] = {{ wxLua_wxImage_op_set, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxImage_op_set }};
-//     %operator wxImage& operator=(const wxImage& image );
+//     wxImage& operator=(const wxImage& image );
 static int LUACALL wxLua_wxImage_op_set(lua_State *L)
 {
     // const wxImage image
@@ -2281,7 +2281,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxImageHistogram_iterator_delete[1] = {{
 static wxLuaArgType s_wxluatypeArray_wxLua_wxImageHistogram_iterator_op_eq[] = { &wxluatype_wxImageHistogram_iterator, &wxluatype_wxImageHistogram_iterator, NULL };
 static int LUACALL wxLua_wxImageHistogram_iterator_op_eq(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxImageHistogram_iterator_op_eq[1] = {{ wxLua_wxImageHistogram_iterator_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxImageHistogram_iterator_op_eq }};
-//     %operator bool operator==(const wxImageHistogram::iterator& other) const;
+//     bool operator==(const wxImageHistogram::iterator& other) const;
 static int LUACALL wxLua_wxImageHistogram_iterator_op_eq(lua_State *L)
 {
     // const wxImageHistogram::iterator other
@@ -2299,7 +2299,7 @@ static int LUACALL wxLua_wxImageHistogram_iterator_op_eq(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxImageHistogram_iterator_op_inc[] = { &wxluatype_wxImageHistogram_iterator, NULL };
 static int LUACALL wxLua_wxImageHistogram_iterator_op_inc(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxImageHistogram_iterator_op_inc[1] = {{ wxLua_wxImageHistogram_iterator_op_inc, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxImageHistogram_iterator_op_inc }};
-//     %operator void operator++(); // it's best if we don't return the iterator
+//     void operator++(); // it's best if we don't return the iterator
 static int LUACALL wxLua_wxImageHistogram_iterator_op_inc(lua_State *L)
 {
     // get this

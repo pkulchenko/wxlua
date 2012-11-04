@@ -359,7 +359,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_const_iterator_delete[1] = {{ w
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_const_iterator_op_add[] = { &wxluatype_wxString_const_iterator, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxString_const_iterator_op_add(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_const_iterator_op_add[1] = {{ wxLua_wxString_const_iterator_op_add, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxString_const_iterator_op_add }};
-//     %operator wxString::const_iterator operator+(ptrdiff_t n) const;
+//     wxString::const_iterator operator+(ptrdiff_t n) const;
 static int LUACALL wxLua_wxString_const_iterator_op_add(lua_State *L)
 {
     // ptrdiff_t n
@@ -380,7 +380,7 @@ static int LUACALL wxLua_wxString_const_iterator_op_add(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_const_iterator_op_deref[] = { &wxluatype_wxString_const_iterator, NULL };
 static int LUACALL wxLua_wxString_const_iterator_op_deref(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_const_iterator_op_deref[1] = {{ wxLua_wxString_const_iterator_op_deref, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxString_const_iterator_op_deref }};
-//     %operator char operator*() const;
+//     char operator*() const;
 static int LUACALL wxLua_wxString_const_iterator_op_deref(lua_State *L)
 {
     // get this
@@ -396,7 +396,7 @@ static int LUACALL wxLua_wxString_const_iterator_op_deref(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_const_iterator_op_set[] = { &wxluatype_wxString_const_iterator, &wxluatype_wxString_const_iterator, NULL };
 static int LUACALL wxLua_wxString_const_iterator_op_set(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_const_iterator_op_set[1] = {{ wxLua_wxString_const_iterator_op_set, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxString_const_iterator_op_set }};
-//     %operator wxString::const_iterator& operator=(const wxString::const_iterator& i );
+//     wxString::const_iterator& operator=(const wxString::const_iterator& i );
 static int LUACALL wxLua_wxString_const_iterator_op_set(lua_State *L)
 {
     // const wxString::const_iterator i
@@ -415,7 +415,7 @@ static int LUACALL wxLua_wxString_const_iterator_op_set(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_const_iterator_op_sub[] = { &wxluatype_wxString_const_iterator, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxString_const_iterator_op_sub(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_const_iterator_op_sub[1] = {{ wxLua_wxString_const_iterator_op_sub, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxString_const_iterator_op_sub }};
-//     %operator wxString::const_iterator operator-(ptrdiff_t n) const;
+//     wxString::const_iterator operator-(ptrdiff_t n) const;
 static int LUACALL wxLua_wxString_const_iterator_op_sub(lua_State *L)
 {
     // ptrdiff_t n
@@ -539,7 +539,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_iterator_delete[1] = {{ wxlua_u
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_iterator_op_add[] = { &wxluatype_wxString_iterator, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxString_iterator_op_add(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_iterator_op_add[1] = {{ wxLua_wxString_iterator_op_add, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxString_iterator_op_add }};
-//     %operator wxString::iterator operator+(ptrdiff_t n) const;
+//     wxString::iterator operator+(ptrdiff_t n) const;
 static int LUACALL wxLua_wxString_iterator_op_add(lua_State *L)
 {
     // ptrdiff_t n
@@ -560,7 +560,7 @@ static int LUACALL wxLua_wxString_iterator_op_add(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_iterator_op_deref[] = { &wxluatype_wxString_iterator, NULL };
 static int LUACALL wxLua_wxString_iterator_op_deref(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_iterator_op_deref[1] = {{ wxLua_wxString_iterator_op_deref, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxString_iterator_op_deref }};
-//     %operator char operator*() const;
+//     char operator*() const;
 static int LUACALL wxLua_wxString_iterator_op_deref(lua_State *L)
 {
     // get this
@@ -576,7 +576,7 @@ static int LUACALL wxLua_wxString_iterator_op_deref(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_iterator_op_set[] = { &wxluatype_wxString_iterator, &wxluatype_wxString_iterator, NULL };
 static int LUACALL wxLua_wxString_iterator_op_set(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_iterator_op_set[1] = {{ wxLua_wxString_iterator_op_set, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxString_iterator_op_set }};
-//     %operator wxString::iterator& operator=(const wxString::iterator& i );
+//     wxString::iterator& operator=(const wxString::iterator& i );
 static int LUACALL wxLua_wxString_iterator_op_set(lua_State *L)
 {
     // const wxString::iterator i
@@ -595,7 +595,7 @@ static int LUACALL wxLua_wxString_iterator_op_set(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_iterator_op_sub[] = { &wxluatype_wxString_iterator, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxString_iterator_op_sub(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_iterator_op_sub[1] = {{ wxLua_wxString_iterator_op_sub, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxString_iterator_op_sub }};
-//     %operator wxString::iterator operator-(ptrdiff_t n) const;
+//     wxString::iterator operator-(ptrdiff_t n) const;
 static int LUACALL wxLua_wxString_iterator_op_sub(lua_State *L)
 {
     // ptrdiff_t n
@@ -2530,7 +2530,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxArrayInt_delete[1] = {{ wxlua_userdata
 static wxLuaArgType s_wxluatypeArray_wxLua_wxArrayInt_op_index[] = { &wxluatype_wxArrayInt, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxArrayInt_op_index(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxArrayInt_op_index[1] = {{ wxLua_wxArrayInt_op_index, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxArrayInt_op_index }};
-//     %operator int operator[](size_t nIndex );
+//     int operator[](size_t nIndex );
 static int LUACALL wxLua_wxArrayInt_op_index(lua_State *L)
 {
     // size_t nIndex
@@ -2901,7 +2901,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxArrayString_delete[1] = {{ wxlua_userd
 static wxLuaArgType s_wxluatypeArray_wxLua_wxArrayString_op_index[] = { &wxluatype_wxArrayString, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxArrayString_op_index(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxArrayString_op_index[1] = {{ wxLua_wxArrayString_op_index, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxArrayString_op_index }};
-//     %operator wxString& operator[](size_t nIndex );
+//     wxString& operator[](size_t nIndex );
 static int LUACALL wxLua_wxArrayString_op_index(lua_State *L)
 {
     // size_t nIndex

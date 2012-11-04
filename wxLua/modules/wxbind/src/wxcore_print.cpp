@@ -1246,7 +1246,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxPrintData_delete[1] = {{ wxlua_userdat
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPrintData_op_set[] = { &wxluatype_wxPrintData, &wxluatype_wxPrintData, NULL };
 static int LUACALL wxLua_wxPrintData_op_set(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPrintData_op_set[1] = {{ wxLua_wxPrintData_op_set, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPrintData_op_set }};
-//     %operator void operator=(const wxPrintData& data );
+//     void operator=(const wxPrintData& data );
 static int LUACALL wxLua_wxPrintData_op_set(lua_State *L)
 {
     // const wxPrintData data
@@ -2788,7 +2788,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxPrintDialogData_delete[1] = {{ wxlua_u
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPrintDialogData_op_set[] = { &wxluatype_wxPrintDialogData, &wxluatype_wxPrintDialogData, NULL };
 static int LUACALL wxLua_wxPrintDialogData_op_set(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPrintDialogData_op_set[1] = {{ wxLua_wxPrintDialogData_op_set, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPrintDialogData_op_set }};
-//     %operator void operator=(const wxPrintDialogData& data );
+//     void operator=(const wxPrintDialogData& data );
 static int LUACALL wxLua_wxPrintDialogData_op_set(lua_State *L)
 {
     // const wxPrintDialogData data

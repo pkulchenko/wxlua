@@ -10821,7 +10821,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellCoords_delete[1] = {{ wxlua_us
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGridCellCoords_op_eq[] = { &wxluatype_wxGridCellCoords, &wxluatype_wxGridCellCoords, NULL };
 static int LUACALL wxLua_wxGridCellCoords_op_eq(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellCoords_op_eq[1] = {{ wxLua_wxGridCellCoords_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGridCellCoords_op_eq }};
-//     %operator bool operator==( const wxGridCellCoords& other ) const;
+//     bool operator==( const wxGridCellCoords& other ) const;
 static int LUACALL wxLua_wxGridCellCoords_op_eq(lua_State *L)
 {
     // const wxGridCellCoords other
@@ -10839,7 +10839,7 @@ static int LUACALL wxLua_wxGridCellCoords_op_eq(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGridCellCoords_op_not[] = { &wxluatype_wxGridCellCoords, NULL };
 static int LUACALL wxLua_wxGridCellCoords_op_not(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellCoords_op_not[1] = {{ wxLua_wxGridCellCoords_op_not, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGridCellCoords_op_not }};
-//     %operator bool operator!() const;
+//     bool operator!() const;
 static int LUACALL wxLua_wxGridCellCoords_op_not(lua_State *L)
 {
     // get this
@@ -10855,7 +10855,7 @@ static int LUACALL wxLua_wxGridCellCoords_op_not(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGridCellCoords_op_set[] = { &wxluatype_wxGridCellCoords, &wxluatype_wxGridCellCoords, NULL };
 static int LUACALL wxLua_wxGridCellCoords_op_set(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellCoords_op_set[1] = {{ wxLua_wxGridCellCoords_op_set, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGridCellCoords_op_set }};
-//     %operator wxGridCellCoords& operator=( const wxGridCellCoords& other );
+//     wxGridCellCoords& operator=( const wxGridCellCoords& other );
 static int LUACALL wxLua_wxGridCellCoords_op_set(lua_State *L)
 {
     // const wxGridCellCoords other
@@ -11088,7 +11088,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellCoordsArray_delete[1] = {{ wxl
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGridCellCoordsArray_op_index[] = { &wxluatype_wxGridCellCoordsArray, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxGridCellCoordsArray_op_index(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellCoordsArray_op_index[1] = {{ wxLua_wxGridCellCoordsArray_op_index, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGridCellCoordsArray_op_index }};
-//     %operator wxGridCellCoords operator[](size_t nIndex );
+//     wxGridCellCoords operator[](size_t nIndex );
 static int LUACALL wxLua_wxGridCellCoordsArray_op_index(lua_State *L)
 {
     // size_t nIndex

@@ -36,25 +36,25 @@ class %delete wxPoint
     %rename X %member_func int x // GetX() and SetX(int x );
     %rename Y %member_func int y // GetY() and SetY(int y );
 
-    %operator wxPoint& operator=(const wxPoint& p) const;
+    wxPoint& operator=(const wxPoint& p) const;
 
-    %operator bool operator==(const wxPoint& p) const; //{ return x == p.x && y == p.y; }
-    %operator bool operator!=(const wxPoint& p) const; //{ return !(*this == p); }
+    bool operator==(const wxPoint& p) const; //{ return x == p.x && y == p.y; }
+    bool operator!=(const wxPoint& p) const; //{ return !(*this == p); }
 
     // arithmetic operations (component wise );
-    %operator wxPoint operator+(const wxPoint& p) const; //{ return wxPoint(x + p.x, y + p.y); }
-    %operator wxPoint operator-(const wxPoint& p) const; //{ return wxPoint(x - p.x, y - p.y); }
+    wxPoint operator+(const wxPoint& p) const; //{ return wxPoint(x + p.x, y + p.y); }
+    wxPoint operator-(const wxPoint& p) const; //{ return wxPoint(x - p.x, y - p.y); }
 
-    %operator wxPoint& operator+=(const wxPoint& p); //{ x += p.x; y += p.y; return *this; }
-    %operator wxPoint& operator-=(const wxPoint& p); //{ x -= p.x; y -= p.y; return *this; }
+    wxPoint& operator+=(const wxPoint& p); //{ x += p.x; y += p.y; return *this; }
+    wxPoint& operator-=(const wxPoint& p); //{ x -= p.x; y -= p.y; return *this; }
 
-    %operator wxPoint& operator+=(const wxSize& s); //{ x += s.GetWidth(); y += s.GetHeight(); return *this; }
-    %operator wxPoint& operator-=(const wxSize& s); //{ x -= s.GetWidth(); y -= s.GetHeight(); return *this; }
+    wxPoint& operator+=(const wxSize& s); //{ x += s.GetWidth(); y += s.GetHeight(); return *this; }
+    wxPoint& operator-=(const wxSize& s); //{ x -= s.GetWidth(); y -= s.GetHeight(); return *this; }
 
-    %operator wxPoint operator+(const wxSize& s) const; //{ return wxPoint(x + s.GetWidth(), y + s.GetHeight()); }
-    %operator wxPoint operator-(const wxSize& s) const; //{ return wxPoint(x - s.GetWidth(), y - s.GetHeight()); }
+    wxPoint operator+(const wxSize& s) const; //{ return wxPoint(x + s.GetWidth(), y + s.GetHeight()); }
+    wxPoint operator-(const wxSize& s) const; //{ return wxPoint(x - s.GetWidth(), y - s.GetHeight()); }
 
-    %operator wxPoint operator-() const; //{ return wxPoint(-x, -y); }
+    wxPoint operator-() const; //{ return wxPoint(-x, -y); }
 };
 
 // ---------------------------------------------------------------------------
@@ -107,20 +107,20 @@ class %delete wxSize
     void SetHeight(int height );
     void SetWidth(int width );
 
-    %operator wxSize& operator=(const wxSize& s) const;
+    wxSize& operator=(const wxSize& s) const;
 
-    %operator bool operator==(const wxSize& sz) const; //{ return x == sz.x && y == sz.y; }
-    %operator bool operator!=(const wxSize& sz) const; //{ return x != sz.x || y != sz.y; }
+    bool operator==(const wxSize& sz) const; //{ return x == sz.x && y == sz.y; }
+    bool operator!=(const wxSize& sz) const; //{ return x != sz.x || y != sz.y; }
 
-    %operator wxSize operator+(const wxSize& sz) const; //{ return wxSize(x + sz.x, y + sz.y); }
-    %operator wxSize operator-(const wxSize& sz) const; //{ return wxSize(x - sz.x, y - sz.y); }
-    %operator wxSize operator/(int i) const; //{ return wxSize(x / i, y / i); }
-    %operator wxSize operator*(int i) const; //{ return wxSize(x * i, y * i); }
+    wxSize operator+(const wxSize& sz) const; //{ return wxSize(x + sz.x, y + sz.y); }
+    wxSize operator-(const wxSize& sz) const; //{ return wxSize(x - sz.x, y - sz.y); }
+    wxSize operator/(int i) const; //{ return wxSize(x / i, y / i); }
+    wxSize operator*(int i) const; //{ return wxSize(x * i, y * i); }
 
-    %operator wxSize& operator+=(const wxSize& sz); //{ x += sz.x; y += sz.y; return *this; }
-    %operator wxSize& operator-=(const wxSize& sz); //{ x -= sz.x; y -= sz.y; return *this; }
-    %operator wxSize& operator/=(const int i);      //{ x /= i; y /= i; return *this; }
-    %operator wxSize& operator*=(const int i);      //{ x *= i; y *= i; return *this; }
+    wxSize& operator+=(const wxSize& sz); //{ x += sz.x; y += sz.y; return *this; }
+    wxSize& operator-=(const wxSize& sz); //{ x -= sz.x; y -= sz.y; return *this; }
+    wxSize& operator/=(const int i);      //{ x /= i; y /= i; return *this; }
+    wxSize& operator*=(const int i);      //{ x *= i; y *= i; return *this; }
 };
 
 // ---------------------------------------------------------------------------
@@ -176,11 +176,11 @@ class %delete wxRect
     void    SetY(int Y );
     wxRect  Union(const wxRect& rect) const; //wxRect& Union(const wxRect& rect);
 
-    %operator wxRect& operator=(const wxRect& r) const;
+    wxRect& operator=(const wxRect& r) const;
 
-    %operator bool operator==(const wxRect& rect) const;
-    %operator wxRect operator+(const wxRect& rect) const;
-    %operator wxRect& operator+=(const wxRect& rect );
+    bool operator==(const wxRect& rect) const;
+    wxRect operator+(const wxRect& rect) const;
+    wxRect& operator+=(const wxRect& rect );
 };
 
 #endif //wxLUA_USE_wxPointSizeRect
@@ -270,7 +270,7 @@ class %delete wxRegion : public wxGDIObject
     bool Xor(const wxRect& rect );
     bool Xor(const wxRegion& region );
 
-    %operator wxRegion& operator=(const wxRegion& r) const;
+    wxRegion& operator=(const wxRegion& r) const;
     // operator == just calls IsEqual( );
 };
 
@@ -406,8 +406,8 @@ class %delete wxFont : public wxGDIObject
     void     SetUnderlined(const bool underlined );
     void     SetWeight(int weight );
 
-    %operator wxFont& operator=(const wxFont& f) const;
-    %operator bool operator == (const wxFont& font) const;
+    wxFont& operator=(const wxFont& f) const;
+    bool operator == (const wxFont& font) const;
 };
 
 // ---------------------------------------------------------------------------
@@ -593,8 +593,8 @@ class %delete wxColour : public wxGDIObject
         void Set(unsigned long colRGB );
     #endif // %wxchkver_2_8
 
-    %operator wxColour& operator=(const wxColour& c) const;
-    %operator bool operator == (const wxColour& c) const;
+    wxColour& operator=(const wxColour& c) const;
+    bool operator == (const wxColour& c) const;
 };
 
 // ---------------------------------------------------------------------------
@@ -693,8 +693,8 @@ class %delete wxPen : public wxGDIObject
     void SetStyle(wxPenStyle style );
     void SetWidth(int width );
 
-    %operator wxPen& operator=(const wxPen& p) const;
-    %operator bool operator == (const wxPen& p) const;
+    wxPen& operator=(const wxPen& p) const;
+    bool operator == (const wxPen& p) const;
 };
 
 // ---------------------------------------------------------------------------
@@ -750,8 +750,8 @@ class %delete wxBrush : public wxGDIObject
     void SetStipple(const wxBitmap& bitmap );
     void SetStyle(int style );
 
-    %operator wxBrush& operator=(const wxBrush& b) const;
-    %operator bool operator == (const wxBrush& b) const;
+    wxBrush& operator=(const wxBrush& b) const;
+    bool operator == (const wxBrush& b) const;
 };
 
 // ---------------------------------------------------------------------------
@@ -896,7 +896,7 @@ class %delete wxIcon : public wxGDIObject
     void    SetWidth(int w );
     //%win void SetSize(const wxSize& size );
 
-    %operator wxIcon& operator=(const wxIcon& i) const;
+    wxIcon& operator=(const wxIcon& i) const;
 };
 
 // ---------------------------------------------------------------------------
@@ -995,7 +995,7 @@ class %delete wxBitmap : public wxGDIObject
     %win void SetPalette(const wxPalette& palette );
     void SetWidth(int width );
 
-    %operator wxBitmap& operator=(const wxBitmap& b) const;
+    wxBitmap& operator=(const wxBitmap& b) const;
 };
 
 #endif //wxLUA_USE_wxBitmap
@@ -1084,7 +1084,7 @@ class %delete wxCursor : public wxObject // wxObject in gtk, wxGDIImage in msw, 
     //%win void SetDepth(int depth );
     //%win void SetSize(const wxSize& size );
 
-    %operator wxCursor& operator=(const wxCursor& c) const;
+    wxCursor& operator=(const wxCursor& c) const;
 };
 
 #endif //wxLUA_USE_wxCursor
@@ -1107,7 +1107,7 @@ class %delete wxMask : public wxObject
     bool Create(const wxBitmap& bitmap, const wxColour& colour );
     %win bool Create(const wxBitmap& bitmap, int index );
 
-    %operator wxMask& operator=(const wxMask& m) const;
+    wxMask& operator=(const wxMask& m) const;
 };
 
 #endif //wxLUA_USE_wxMask
@@ -1577,7 +1577,7 @@ class %delete wxVideoMode
     int  GetDepth() const;
     bool IsOk() const;
 
-    %operator bool operator==(const wxVideoMode& v) const;
+    bool operator==(const wxVideoMode& v) const;
 };
 
 // ---------------------------------------------------------------------------
@@ -1600,7 +1600,7 @@ class %delete wxArrayVideoModes
     void RemoveAt(size_t nIndex, size_t count = 1 );
     void Shrink( );
 
-    %operator wxVideoMode& operator[](size_t nIndex );
+    wxVideoMode& operator[](size_t nIndex );
 };
 
 // ---------------------------------------------------------------------------

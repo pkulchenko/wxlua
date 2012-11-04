@@ -4357,7 +4357,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxGBPosition_delete[1] = {{ wxlua_userda
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGBPosition_op_eq[] = { &wxluatype_wxGBPosition, &wxluatype_wxGBPosition, NULL };
 static int LUACALL wxLua_wxGBPosition_op_eq(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGBPosition_op_eq[1] = {{ wxLua_wxGBPosition_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGBPosition_op_eq }};
-//     %operator bool operator==(const wxGBPosition& p) const;
+//     bool operator==(const wxGBPosition& p) const;
 static int LUACALL wxLua_wxGBPosition_op_eq(lua_State *L)
 {
     // const wxGBPosition p
@@ -4531,7 +4531,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxGBSpan_delete[1] = {{ wxlua_userdata_d
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGBSpan_op_eq[] = { &wxluatype_wxGBSpan, &wxluatype_wxGBSpan, NULL };
 static int LUACALL wxLua_wxGBSpan_op_eq(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGBSpan_op_eq[1] = {{ wxLua_wxGBSpan_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGBSpan_op_eq }};
-//     %operator bool operator==(const wxGBSpan& o) const;
+//     bool operator==(const wxGBSpan& o) const;
 static int LUACALL wxLua_wxGBSpan_op_eq(lua_State *L)
 {
     // const wxGBSpan o

@@ -296,7 +296,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxClipboardLocker_delete[1] = {{ wxlua_u
 static wxLuaArgType s_wxluatypeArray_wxLua_wxClipboardLocker_op_not[] = { &wxluatype_wxClipboardLocker, NULL };
 static int LUACALL wxLua_wxClipboardLocker_op_not(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxClipboardLocker_op_not[1] = {{ wxLua_wxClipboardLocker_op_not, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxClipboardLocker_op_not }};
-//     %operator bool operator!() const;
+//     bool operator!() const;
 static int LUACALL wxLua_wxClipboardLocker_op_not(lua_State *L)
 {
     // get this
@@ -485,7 +485,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataFormat_delete[1] = {{ wxlua_userda
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataFormat_op_eq[] = { &wxluatype_wxDataFormat, &wxluatype_wxDataFormat, NULL };
 static int LUACALL wxLua_wxDataFormat_op_eq(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataFormat_op_eq[1] = {{ wxLua_wxDataFormat_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDataFormat_op_eq }};
-//     %operator bool operator==(const wxDataFormat& format) const;
+//     bool operator==(const wxDataFormat& format) const;
 static int LUACALL wxLua_wxDataFormat_op_eq(lua_State *L)
 {
     // const wxDataFormat format

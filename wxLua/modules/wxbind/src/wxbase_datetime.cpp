@@ -2626,7 +2626,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_delete[1] = {{ wxlua_userdata
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_op_eq[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_op_eq(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_op_eq[1] = {{ wxLua_wxDateTime_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_op_eq }};
-//     %operator bool operator==(const wxDateTime& dt) const;
+//     bool operator==(const wxDateTime& dt) const;
 static int LUACALL wxLua_wxDateTime_op_eq(lua_State *L)
 {
     // const wxDateTime dt
@@ -2644,7 +2644,7 @@ static int LUACALL wxLua_wxDateTime_op_eq(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_op_ge[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_op_ge(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_op_ge[1] = {{ wxLua_wxDateTime_op_ge, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_op_ge }};
-//     %operator bool operator>=(const wxDateTime& dt) const;
+//     bool operator>=(const wxDateTime& dt) const;
 static int LUACALL wxLua_wxDateTime_op_ge(lua_State *L)
 {
     // const wxDateTime dt
@@ -2662,7 +2662,7 @@ static int LUACALL wxLua_wxDateTime_op_ge(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_op_gt[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_op_gt(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_op_gt[1] = {{ wxLua_wxDateTime_op_gt, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_op_gt }};
-//     %operator bool operator>(const wxDateTime& dt) const;
+//     bool operator>(const wxDateTime& dt) const;
 static int LUACALL wxLua_wxDateTime_op_gt(lua_State *L)
 {
     // const wxDateTime dt
@@ -2680,7 +2680,7 @@ static int LUACALL wxLua_wxDateTime_op_gt(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_op_le[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_op_le(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_op_le[1] = {{ wxLua_wxDateTime_op_le, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_op_le }};
-//     %operator bool operator<=(const wxDateTime& dt) const;
+//     bool operator<=(const wxDateTime& dt) const;
 static int LUACALL wxLua_wxDateTime_op_le(lua_State *L)
 {
     // const wxDateTime dt
@@ -2698,7 +2698,7 @@ static int LUACALL wxLua_wxDateTime_op_le(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_op_lt[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_op_lt(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_op_lt[1] = {{ wxLua_wxDateTime_op_lt, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_op_lt }};
-//     %operator bool operator<(const wxDateTime& dt) const;
+//     bool operator<(const wxDateTime& dt) const;
 static int LUACALL wxLua_wxDateTime_op_lt(lua_State *L)
 {
     // const wxDateTime dt
@@ -2716,7 +2716,7 @@ static int LUACALL wxLua_wxDateTime_op_lt(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_op_ne[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_op_ne(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_op_ne[1] = {{ wxLua_wxDateTime_op_ne, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_op_ne }};
-//     %operator bool operator!=(const wxDateTime& dt) const;
+//     bool operator!=(const wxDateTime& dt) const;
 static int LUACALL wxLua_wxDateTime_op_ne(lua_State *L)
 {
     // const wxDateTime dt
@@ -4784,7 +4784,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_delete[1] = {{ wxlua_userdata
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateSpan_op_eq[] = { &wxluatype_wxDateSpan, &wxluatype_wxDateSpan, NULL };
 static int LUACALL wxLua_wxDateSpan_op_eq(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateSpan_op_eq[1] = {{ wxLua_wxDateSpan_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateSpan_op_eq }};
-//     %operator bool operator==(wxDateSpan& other) const;
+//     bool operator==(wxDateSpan& other) const;
 static int LUACALL wxLua_wxDateSpan_op_eq(lua_State *L)
 {
     // wxDateSpan other

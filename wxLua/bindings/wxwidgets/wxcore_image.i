@@ -221,8 +221,8 @@ class %delete wxImage : public wxObject
     void SetRGB(int x, int y, unsigned char red, unsigned char green, unsigned char blue );
     void SetRGB(wxRect& rect, unsigned char red, unsigned char green, unsigned char blue );
 
-    %operator wxImage& operator=(const wxImage& image );
-    //%operator bool operator==(const wxImage& image) const; // not in 2.8
+    wxImage& operator=(const wxImage& image );
+    //bool operator==(const wxImage& image) const; // not in 2.8
 };
 
 // ---------------------------------------------------------------------------
@@ -241,10 +241,10 @@ class %delete wxImageHistogram::iterator
     %member wxImageHistogramEntry second
 
     // operator used to compare with wxImageHistogram::end() iterator
-    %operator bool operator==(const wxImageHistogram::iterator& other) const;
+    bool operator==(const wxImageHistogram::iterator& other) const;
 
-    //%operator wxImageHistogram::iterator& operator++(); // it just returns *this
-    %operator void operator++(); // it's best if we don't return the iterator
+    //wxImageHistogram::iterator& operator++(); // it just returns *this
+    void operator++(); // it's best if we don't return the iterator
 };
 
 class %delete wxImageHistogram // wxImageHistogramBase actually a hash map

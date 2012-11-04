@@ -1236,8 +1236,8 @@ class %delete wxTreeItemId
     bool IsOk( );
     wxTreeItemIdValue GetValue() const; // get a pointer to the internal data to use as a reference in a Lua table
 
-    %operator wxTreeItemId& operator=(const wxTreeItemId& otherId );
-    %operator bool operator==(const wxTreeItemId& otherId) const;
+    wxTreeItemId& operator=(const wxTreeItemId& otherId );
+    bool operator==(const wxTreeItemId& otherId) const;
 };
 
 // ---------------------------------------------------------------------------
