@@ -18,7 +18,7 @@
 // This also shows information about the number and kind of userdata items that
 // wxLua is tracking and will delete.
 // %override void StackDialog( );
-%function void LuaStackDialog( );
+void LuaStackDialog( );
 
 // ---------------------------------------------------------------------------
 // wxLuaDebugServer

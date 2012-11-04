@@ -385,7 +385,7 @@ class %delete wxAcceleratorTable : public wxObject
 // ---------------------------------------------------------------------------
 // wxAcceleratorEntry
 
-%wxcompat_2_6 %function wxAcceleratorEntry* wxGetAccelFromString(const wxString& label); // deprecated in 2.8 use wxAcceleratorEntry::Create() or FromString( );
+%wxcompat_2_6 wxAcceleratorEntry* wxGetAccelFromString(const wxString& label); // deprecated in 2.8 use wxAcceleratorEntry::Create() or FromString( );
 
 #include "wx/accel.h"
 

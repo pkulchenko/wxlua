@@ -12,48 +12,48 @@
 
 // global functions from the wxWindow's functions docs
 
-%function bool wxDirExists(const wxString& dirname );
-%function bool wxFileExists(const wxString& filename );
+bool wxDirExists(const wxString& dirname );
+bool wxFileExists(const wxString& filename );
 
 // %override [new Lua string] wxDos2UnixFilename(Lua string );
 // C++ Func: void wxDos2UnixFilename(wxChar *s );
-!%wxchkver_2_9_0 %function wxString wxDos2UnixFilename(const wxString& s );
+!%wxchkver_2_9_0 wxString wxDos2UnixFilename(const wxString& s );
 // %override wxDateTime wxFileModificationTime(const wxString& filename) (not overridden, just return wxDateTime );
 // C++ Func: time_t wxFileModificationTime(const wxString& filename );
-%function wxDateTime wxFileModificationTime(const wxString& filename );
-//%function wxString wxFileNameFromPath(const wxString& path); // obsolete use wxFileName::SplitPath
-%function wxString wxFindFirstFile(const wxString& spec, int flags = 0 );
-%function wxString wxFindNextFile( );
+wxDateTime wxFileModificationTime(const wxString& filename );
+//wxString wxFileNameFromPath(const wxString& path); // obsolete use wxFileName::SplitPath
+wxString wxFindFirstFile(const wxString& spec, int flags = 0 );
+wxString wxFindNextFile( );
 // bool wxGetDiskSpace(const wxString& path, wxLongLong *total = NULL, wxLongLong *free = NULL );
 //wxFileKind wxGetFileKind(FILE* fd );
-%function wxString wxGetOSDirectory( );
-%function bool wxIsAbsolutePath(const wxString& filename );
-%function wxString wxPathOnly(const wxString& path );
+wxString wxGetOSDirectory( );
+bool wxIsAbsolutePath(const wxString& filename );
+wxString wxPathOnly(const wxString& path );
 // %override [new Lua string] wxUnix2DosFilename(Lua string );
 // C++ Func: void wxUnix2DosFilename(wxChar *s );
-!%wxchkver_2_9 %function wxString wxUnix2DosFilename(const wxString& s );
-%function bool wxConcatFiles(const wxString& file1, const wxString& file2,const wxString& file3 );
-%function bool wxCopyFile(const wxString& file1, const wxString& file2, bool overwrite = true );
-%function wxString wxGetCwd( );
-//%function char* wxGetTempFileName(const wxString& prefix); // obsolete use wxFileName::CreateTempFileName
-%function bool wxIsWild(const wxString& pattern );
-%function bool wxMatchWild(const wxString& pattern, const wxString& text, bool dot_special );
-%function bool wxMkdir(const wxString& dir, int perm = 0777 );
+!%wxchkver_2_9 wxString wxUnix2DosFilename(const wxString& s );
+bool wxConcatFiles(const wxString& file1, const wxString& file2,const wxString& file3 );
+bool wxCopyFile(const wxString& file1, const wxString& file2, bool overwrite = true );
+wxString wxGetCwd( );
+//char* wxGetTempFileName(const wxString& prefix); // obsolete use wxFileName::CreateTempFileName
+bool wxIsWild(const wxString& pattern );
+bool wxMatchWild(const wxString& pattern, const wxString& text, bool dot_special );
+bool wxMkdir(const wxString& dir, int perm = 0777 );
 //int wxParseCommonDialogsFilter(const wxString& wildCard, wxArrayString& descriptions, wxArrayString& filters );
-%wxchkver_2_8  %function wxString wxRealPath(const wxString& path );
-%function bool wxRemoveFile(const wxString& file );
-!%wxchkver_2_8 %function bool wxRenameFile(const wxString& file1, const wxString& file2 );
-%wxchkver_2_8  %function bool wxRenameFile(const wxString& file1, const wxString& file2, bool overwrite = true );
-%function bool wxRmdir(const wxString& dir, int flags=0 );
-%function bool wxSetWorkingDirectory(const wxString& dir );
+%wxchkver_2_8  wxString wxRealPath(const wxString& path );
+bool wxRemoveFile(const wxString& file );
+!%wxchkver_2_8 bool wxRenameFile(const wxString& file1, const wxString& file2 );
+%wxchkver_2_8  bool wxRenameFile(const wxString& file1, const wxString& file2, bool overwrite = true );
+bool wxRmdir(const wxString& dir, int flags=0 );
+bool wxSetWorkingDirectory(const wxString& dir );
 
-%wxchkver_2_8 %function bool wxIsWritable(const wxString &path );
-%wxchkver_2_8 %function bool wxIsReadable(const wxString &path );
-%wxchkver_2_8 %function bool wxIsExecutable(const wxString &path );
+%wxchkver_2_8 bool wxIsWritable(const wxString &path );
+%wxchkver_2_8 bool wxIsReadable(const wxString &path );
+%wxchkver_2_8 bool wxIsExecutable(const wxString &path );
 
 // These two methods are for wxLua
 // %override long wxFileSize(const wxString& fileName) - gets the filesize
-%function long wxFileSize(const wxString& fileName );
+long wxFileSize(const wxString& fileName );
 
 // wxLua only has storage for wxChar* in bindings, wxFILE_SEP_XXX are #defined
 //   as wxChar wxT('.'), so we just redefine them to be wxT(".") or wxChar*
@@ -73,8 +73,8 @@
 
 #define wxARE_FILENAMES_CASE_SENSITIVE // bool 1/0
 
-//%function bool wxIsPathSeparator(wxChar c) FIXME
-%function bool wxEndsWithPathSeparator(const wxString& pszFileName );
+//bool wxIsPathSeparator(wxChar c) FIXME
+bool wxEndsWithPathSeparator(const wxString& pszFileName );
 
 
 // ---------------------------------------------------------------------------

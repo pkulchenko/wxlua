@@ -74,7 +74,7 @@ class %delete wxAboutDialogInfo
     wxString GetDescriptionAndCredits() const;
 };
 
-%function void wxAboutBox(const wxAboutDialogInfo& info );
+void wxAboutBox(const wxAboutDialogInfo& info );
 
 #endif //%wxchkver_2_8 && wxUSE_ABOUTDLG && wxLUA_USE_wxAboutDialog
 

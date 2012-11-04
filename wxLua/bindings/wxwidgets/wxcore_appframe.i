@@ -17,7 +17,7 @@
 
 // %override wxApp* wxGetApp( );
 // C++ func: wxApp* wxGetApp() - use wxTheApp* since this requires IMPLEMENT_APP( );
-%function wxApp* wxGetApp( );
+wxApp* wxGetApp( );
 
 class wxApp : public wxEvtHandler
 {

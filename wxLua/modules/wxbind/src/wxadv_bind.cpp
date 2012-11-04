@@ -16278,7 +16278,7 @@ wxLuaBindObject* wxLuaGetObjectList_wxadv(size_t &count)
 
 #if wxCHECK_VERSION(2,8,0) && wxUSE_ABOUTDLG && wxLUA_USE_wxAboutDialog
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxAboutBox[] = { &wxluatype_wxAboutDialogInfo, NULL };
-// %function void wxAboutBox(const wxAboutDialogInfo& info );
+// void wxAboutBox(const wxAboutDialogInfo& info );
 static int LUACALL wxLua_function_wxAboutBox(lua_State *L)
 {
     // const wxAboutDialogInfo info

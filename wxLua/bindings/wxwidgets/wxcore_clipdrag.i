@@ -285,7 +285,7 @@ enum wxDragResult
     wxDragCancel
 };
 
-%function bool wxIsDragResultOk(wxDragResult res );
+bool wxIsDragResultOk(wxDragResult res );
 
 class wxDropTarget // FIXME implement virtual
 {
@@ -367,7 +367,7 @@ class %delete wxDropFilesEvent : public wxEvent
 
 #include "wx/metafile.h"
 
-//%function bool wxMakeMetafilePlaceable(const wxString& filename, int minX, int minY, int maxX, int maxY, float scale = 1.0 );
+//bool wxMakeMetafilePlaceable(const wxString& filename, int minX, int minY, int maxX, int maxY, float scale = 1.0 );
 
 class %delete wxMetafile : public wxObject
 {

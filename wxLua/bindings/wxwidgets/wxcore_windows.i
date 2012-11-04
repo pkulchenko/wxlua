@@ -8,7 +8,7 @@
 // ===========================================================================
 
 
-%wxchkver_2_8 %function wxWindow* wxFindFocusDescendant(wxWindow* ancestor );
+%wxchkver_2_8 wxWindow* wxFindFocusDescendant(wxWindow* ancestor );
 
 // ---------------------------------------------------------------------------
 // wxTooltip

@@ -1089,7 +1089,7 @@ static int LUACALL wxLua_function_istrackedobject(lua_State *L)
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_istrackedobject[1] = {{ wxLua_function_istrackedobject, WXLUAMETHOD_CFUNCTION, 1, 1, s_wxluatypeArray_wxLua_function_istrackedobject }};
 
 static wxLuaArgType s_wxluatypeArray_wxLua_function_iswxluatype[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
-// %rename iswxluatype %function int wxlua_iswxluatype(int luatype, int wxluaarg_tag );
+// %rename iswxluatype int wxlua_iswxluatype(int luatype, int wxluaarg_tag );
 static int LUACALL wxLua_function_iswxluatype(lua_State *L)
 {
     // int wxluaarg_tag
@@ -1171,7 +1171,7 @@ static int LUACALL wxLua_function_ungcobject(lua_State *L)
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_ungcobject[1] = {{ wxLua_function_ungcobject, WXLUAMETHOD_CFUNCTION, 1, 1, s_wxluatypeArray_wxLua_function_ungcobject }};
 
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxLUA_CHECK_VERSION[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
-// %function bool wxLUA_CHECK_VERSION(int major, int minor, int release); // actually a define
+// bool wxLUA_CHECK_VERSION(int major, int minor, int release); // actually a define
 static int LUACALL wxLua_function_wxLUA_CHECK_VERSION(lua_State *L)
 {
     // int release
@@ -1190,7 +1190,7 @@ static int LUACALL wxLua_function_wxLUA_CHECK_VERSION(lua_State *L)
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxLUA_CHECK_VERSION[1] = {{ wxLua_function_wxLUA_CHECK_VERSION, WXLUAMETHOD_CFUNCTION, 3, 3, s_wxluatypeArray_wxLua_function_wxLUA_CHECK_VERSION }};
 
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxLUA_CHECK_VERSION_FULL[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
-// %function bool wxLUA_CHECK_VERSION_FULL(int major, int minor, int release, int subrel); // actually a define
+// bool wxLUA_CHECK_VERSION_FULL(int major, int minor, int release, int subrel); // actually a define
 static int LUACALL wxLua_function_wxLUA_CHECK_VERSION_FULL(lua_State *L)
 {
     // int subrel

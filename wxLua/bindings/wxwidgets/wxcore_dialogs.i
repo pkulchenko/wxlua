@@ -49,34 +49,34 @@ enum
 // ---------------------------------------------------------------------------
 // Dialog functions from wxWidgets functions documentation
 
-%function void wxBeginBusyCursor(wxCursor *cursor = wxLua_wxHOURGLASS_CURSOR );
-%function void wxEndBusyCursor( );
-%function void wxBell( );
-// %function wxTipProvider* wxCreateFileTipProvider(const wxString& filename, size_t currentTip );
+void wxBeginBusyCursor(wxCursor *cursor = wxLua_wxHOURGLASS_CURSOR );
+void wxEndBusyCursor( );
+void wxBell( );
+// wxTipProvider* wxCreateFileTipProvider(const wxString& filename, size_t currentTip );
 
 #define_wxstring wxDirSelectorPromptStr wxT("Select a directory" );
-%function wxString wxDirSelector(const wxString& message = wxDirSelectorPromptStr, const wxString& default_path = "", long style = wxDD_DEFAULT_STYLE, const wxPoint& pos = wxDefaultPosition, wxWindow *parent = NULL );
-%function wxString wxFileSelector(const wxString& message, const wxString& default_path = "", const wxString& default_filename = "", const wxString& default_extension = "", const wxString& wildcard = "*.*", int flags = 0, wxWindow *parent = NULL, int x = -1, int y = -1 );
-wxUSE_COLOURDLG&&!%wxchkver_2_8 %function wxColour wxGetColourFromUser(wxWindow *parent, const wxColour& colInit );
-wxUSE_COLOURDLG&&%wxchkver_2_8 %function wxColour wxGetColourFromUser(wxWindow *parent, const wxColour& colInit, const wxString& caption = "" );
-!%wxchkver_2_8&&wxUSE_FONTDLG %function wxFont wxGetFontFromUser(wxWindow *parent, const wxFont& fontInit );
-%wxchkver_2_8&&wxUSE_FONTDLG %function wxFont wxGetFontFromUser(wxWindow *parent = NULL, const wxFont& fontInit = wxNullFont, const wxString& caption = "" );
+wxString wxDirSelector(const wxString& message = wxDirSelectorPromptStr, const wxString& default_path = "", long style = wxDD_DEFAULT_STYLE, const wxPoint& pos = wxDefaultPosition, wxWindow *parent = NULL );
+wxString wxFileSelector(const wxString& message, const wxString& default_path = "", const wxString& default_filename = "", const wxString& default_extension = "", const wxString& wildcard = "*.*", int flags = 0, wxWindow *parent = NULL, int x = -1, int y = -1 );
+wxUSE_COLOURDLG&&!%wxchkver_2_8 wxColour wxGetColourFromUser(wxWindow *parent, const wxColour& colInit );
+wxUSE_COLOURDLG&&%wxchkver_2_8 wxColour wxGetColourFromUser(wxWindow *parent, const wxColour& colInit, const wxString& caption = "" );
+!%wxchkver_2_8&&wxUSE_FONTDLG wxFont wxGetFontFromUser(wxWindow *parent, const wxFont& fontInit );
+%wxchkver_2_8&&wxUSE_FONTDLG wxFont wxGetFontFromUser(wxWindow *parent = NULL, const wxFont& fontInit = wxNullFont, const wxString& caption = "" );
 // %override [int, Lua int table] wxGetMultipleChoices(const wxString& message, const wxString& caption, Lua string table, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200 );
 //  int wxGetMultipleChoices(const wxString& message, const wxString& caption, int n, const wxString choices[], int nsel, int *selection, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200 );
-wxUSE_CHOICEDLG %function int wxGetMultipleChoices(const wxString& message, const wxString& caption, LuaTable strTable, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200 );
+wxUSE_CHOICEDLG int wxGetMultipleChoices(const wxString& message, const wxString& caption, LuaTable strTable, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200 );
 
 #if wxUSE_NUMBERDLG
 %wxchkver_2_6 #include "wx/numdlg.h" // FIXME not in 2.4
-%function long wxGetNumberFromUser(const wxString& message, const wxString& prompt, const wxString& caption, long value, long min = 0, long max = 100, wxWindow *parent = NULL, const wxPoint& pos = wxDefaultPosition );
+long wxGetNumberFromUser(const wxString& message, const wxString& prompt, const wxString& caption, long value, long min = 0, long max = 100, wxWindow *parent = NULL, const wxPoint& pos = wxDefaultPosition );
 #endif // wxUSE_NUMBERDLG
 
-wxUSE_TEXTDLG %function wxString wxGetPasswordFromUser(const wxString& message, const wxString& caption = "Input text", const wxString& default_value = "", wxWindow *parent = NULL );
-wxUSE_TEXTDLG %function wxString wxGetTextFromUser(const wxString& message, const wxString& caption = "Input text", const wxString& default_value = "", wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true );
+wxUSE_TEXTDLG wxString wxGetPasswordFromUser(const wxString& message, const wxString& caption = "Input text", const wxString& default_value = "", wxWindow *parent = NULL );
+wxUSE_TEXTDLG wxString wxGetTextFromUser(const wxString& message, const wxString& caption = "Input text", const wxString& default_value = "", wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true );
 // int wxGetMultipleChoice(const wxString& message, const wxString& caption, int n, const wxString& choices[], int nsel, int *selection, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200 );
-wxUSE_CHOICEDLG %function wxString wxGetSingleChoice(const wxString& message, const wxString& caption, const wxArrayString& choices, wxWindow *parent = NULL, int x = wxDefaultCoord, int y = wxDefaultCoord, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT );
-wxUSE_CHOICEDLG %function int wxGetSingleChoiceIndex(const wxString& message, const wxString& caption, const wxArrayString& choices, wxWindow *parent = NULL, int x = wxDefaultCoord, int y = wxDefaultCoord, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT );
-%function bool wxIsBusy( );
-%function int wxMessageBox(const wxString& message, const wxString& caption = "Message", int style = wxOK | wxCENTRE, wxWindow *parent = NULL, int x = -1, int y = -1 );
+wxUSE_CHOICEDLG wxString wxGetSingleChoice(const wxString& message, const wxString& caption, const wxArrayString& choices, wxWindow *parent = NULL, int x = wxDefaultCoord, int y = wxDefaultCoord, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT );
+wxUSE_CHOICEDLG int wxGetSingleChoiceIndex(const wxString& message, const wxString& caption, const wxArrayString& choices, wxWindow *parent = NULL, int x = wxDefaultCoord, int y = wxDefaultCoord, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT );
+bool wxIsBusy( );
+int wxMessageBox(const wxString& message, const wxString& caption = "Message", int style = wxOK | wxCENTRE, wxWindow *parent = NULL, int x = -1, int y = -1 );
 // bool wxShowTip(wxWindow *parent, wxTipProvider *tipProvider, bool showAtStartup = true );
 
 // ---------------------------------------------------------------------------

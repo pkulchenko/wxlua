@@ -46,8 +46,8 @@ class wxlCan : public wxScrolledWindow
     wxlLuaCanCmd* GetCmdh( );
 };
 
-%function wxlCan* GetCan( );
-%function wxlLuaCanCmd* GetCmdhMain( );
+wxlCan* GetCan( );
+wxlLuaCanCmd* GetCmdhMain( );
 
 class wxlLuaCanCmd : public wxCommandProcessor
 {

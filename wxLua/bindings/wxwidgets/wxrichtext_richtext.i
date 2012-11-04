@@ -1682,43 +1682,43 @@ class %delete wxRichTextStdRenderer : public wxRichTextRenderer
  *
  */
 
-%function bool wxRichTextHasStyle(int flags, int style );
+bool wxRichTextHasStyle(int flags, int style );
 
 /// Compare two attribute objects
-%function bool wxTextAttrEq(const wxTextAttrEx& attr1, const wxTextAttrEx& attr2);
-%function bool wxTextAttrEq(const wxTextAttr& attr1, const wxRichTextAttr& attr2);
+bool wxTextAttrEq(const wxTextAttrEx& attr1, const wxTextAttrEx& attr2);
+bool wxTextAttrEq(const wxTextAttr& attr1, const wxRichTextAttr& attr2);
 
 /// Compare two attribute objects, but take into account the flags
 /// specifying attributes of interest.
-%function bool wxTextAttrEqPartial(const wxTextAttrEx& attr1, const wxTextAttrEx& attr2, int flags);
-%function bool wxTextAttrEqPartial(const wxTextAttrEx& attr1, const wxRichTextAttr& attr2, int flags);
+bool wxTextAttrEqPartial(const wxTextAttrEx& attr1, const wxTextAttrEx& attr2, int flags);
+bool wxTextAttrEqPartial(const wxTextAttrEx& attr1, const wxRichTextAttr& attr2, int flags);
 
 /// Apply one style to another
-%function bool wxRichTextApplyStyle(wxTextAttrEx& destStyle, const wxTextAttrEx& style);
-%function bool wxRichTextApplyStyle(wxRichTextAttr& destStyle, const wxTextAttrEx& style);
-%function bool wxRichTextApplyStyle(wxTextAttrEx& destStyle, const wxRichTextAttr& style, wxRichTextAttr* compareWith = NULL);
-%function bool wxRichTextApplyStyle(wxRichTextAttr& destStyle, const wxRichTextAttr& style, wxRichTextAttr* compareWith = NULL);
+bool wxRichTextApplyStyle(wxTextAttrEx& destStyle, const wxTextAttrEx& style);
+bool wxRichTextApplyStyle(wxRichTextAttr& destStyle, const wxTextAttrEx& style);
+bool wxRichTextApplyStyle(wxTextAttrEx& destStyle, const wxRichTextAttr& style, wxRichTextAttr* compareWith = NULL);
+bool wxRichTextApplyStyle(wxRichTextAttr& destStyle, const wxRichTextAttr& style, wxRichTextAttr* compareWith = NULL);
 
 // Remove attributes
-%function bool wxRichTextRemoveStyle(wxTextAttrEx& destStyle, const wxRichTextAttr& style);
+bool wxRichTextRemoveStyle(wxTextAttrEx& destStyle, const wxRichTextAttr& style);
 
 /// Combine two bitlists
-%function bool wxRichTextCombineBitlists(int& valueA, int valueB, int& flagsA, int flagsB);
+bool wxRichTextCombineBitlists(int& valueA, int valueB, int& flagsA, int flagsB);
 
 /// Compare two bitlists
-%function bool wxRichTextBitlistsEqPartial(int valueA, int valueB, int flags);
+bool wxRichTextBitlistsEqPartial(int valueA, int valueB, int flags);
 
 /// Split into paragraph and character styles
-%function bool wxRichTextSplitParaCharStyles(const wxTextAttrEx& style, wxTextAttrEx& parStyle, wxTextAttrEx& charStyle);
+bool wxRichTextSplitParaCharStyles(const wxTextAttrEx& style, wxTextAttrEx& parStyle, wxTextAttrEx& charStyle);
 
 /// Compare tabs
-%function bool wxRichTextTabsEq(const wxArrayInt& tabs1, const wxArrayInt& tabs2);
+bool wxRichTextTabsEq(const wxArrayInt& tabs1, const wxArrayInt& tabs2);
 
 /// Set the font without changing the font attributes
-%function void wxSetFontPreservingStyles(wxTextAttr& attr, const wxFont& font);
+void wxSetFontPreservingStyles(wxTextAttr& attr, const wxFont& font);
 
 /// Convert a decimal to Roman numerals
-%function wxString wxRichTextDecimalToRoman(long n);
+wxString wxRichTextDecimalToRoman(long n);
 
 
 

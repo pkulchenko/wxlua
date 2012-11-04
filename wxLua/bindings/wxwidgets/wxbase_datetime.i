@@ -10,16 +10,16 @@
 #include "wx/utils.h"
 #include "wx/timer.h"
 
-%function wxString wxNow( );
-%function long wxGetLocalTime( );
-%function long wxGetUTCTime( );
-%function wxLongLong wxGetLocalTimeMillis( );
-%wxcompat_2_6 %function void wxStartTimer();                           // deprecated in 2.8 use wxStopWatch
-%wxcompat_2_6 %function long wxGetElapsedTime(bool resetTimer = true); // deprecated in 2.8 use wxStopWatch
-%function void wxSleep(int secs );
-%wxchkver_2_6 %function void wxMilliSleep(unsigned long milliseconds );
-%wxchkver_2_6 %function void wxMicroSleep(unsigned long microseconds );
-!%wxchkver_2_6 %function void wxUsleep(unsigned long milliseconds );
+wxString wxNow( );
+long wxGetLocalTime( );
+long wxGetUTCTime( );
+wxLongLong wxGetLocalTimeMillis( );
+%wxcompat_2_6 void wxStartTimer();                           // deprecated in 2.8 use wxStopWatch
+%wxcompat_2_6 long wxGetElapsedTime(bool resetTimer = true); // deprecated in 2.8 use wxStopWatch
+void wxSleep(int secs );
+%wxchkver_2_6 void wxMilliSleep(unsigned long milliseconds );
+%wxchkver_2_6 void wxMicroSleep(unsigned long microseconds );
+!%wxchkver_2_6 void wxUsleep(unsigned long milliseconds );
 
 // ---------------------------------------------------------------------------
 // wxDateTime
@@ -1031,14 +1031,14 @@ class %delete wxLocale
     wxString GetHeaderValue( const wxString& szHeader, const wxString& szDomain = "" ) const;
 };
 
-%function wxLocale* wxGetLocale( );
+wxLocale* wxGetLocale( );
 
-%wxchkver_2_9  %function wxString wxGetTranslation(const wxString& sz, const wxString& domain = "" );
-!%wxchkver_2_9 && %wxchkver_2_8  %function wxString wxGetTranslation(const wxString& sz, const wxChar* domain=NULL );
-!%wxchkver_2_8 %function wxString wxGetTranslation(const wxString& sz );
+%wxchkver_2_9  wxString wxGetTranslation(const wxString& sz, const wxString& domain = "" );
+!%wxchkver_2_9 && %wxchkver_2_8  wxString wxGetTranslation(const wxString& sz, const wxChar* domain=NULL );
+!%wxchkver_2_8 wxString wxGetTranslation(const wxString& sz );
 
-%wxchkver_2_9  %rename wxGetTranslationPlural %function wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n, const wxString& domain = "" );
-!%wxchkver_2_9 && %wxchkver_2_8  %rename wxGetTranslationPlural %function wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n, const wxChar* domain=NULL );
-!%wxchkver_2_8 %rename wxGetTranslationPlural %function wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n );
+%wxchkver_2_9  %rename wxGetTranslationPlural wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n, const wxString& domain = "" );
+!%wxchkver_2_9 && %wxchkver_2_8  %rename wxGetTranslationPlural wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n, const wxChar* domain=NULL );
+!%wxchkver_2_8 %rename wxGetTranslationPlural wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n );
 
 #endif //wxUSE_INTL

@@ -169,7 +169,7 @@ class wxClientDataContainer
 
 #include "wx/object.h"
 
-%function wxObject* wxCreateDynamicObject(const wxString& className );
+wxObject* wxCreateDynamicObject(const wxString& className );
 
 class %delete wxObject
 {

@@ -15,10 +15,10 @@
 // ---------------------------------------------------------------------------
 // Application initialization and termination
 
-%function void wxInitAllImageHandlers( );
-%function bool wxSafeYield(wxWindow* win = NULL, bool onlyIfNeeded = false );
-%function bool wxYield( );
-%function void wxWakeUpIdle( );
+void wxInitAllImageHandlers( );
+bool wxSafeYield(wxWindow* win = NULL, bool onlyIfNeeded = false );
+bool wxYield( );
+void wxWakeUpIdle( );
 
 // ---------------------------------------------------------------------------
 // wxProcess
@@ -106,19 +106,19 @@ class %delete wxProcess : public wxEvtHandler
 // ---------------------------------------------------------------------------
 // Process control functions
 
-!%wxchkver_2_6 %function long wxExecute(const wxString& command, bool sync = false, wxProcess *callback = NULL );
-%wxchkver_2_6 %function long wxExecute(const wxString& command, int flags = wxEXEC_ASYNC, wxProcess *process = NULL );
+!%wxchkver_2_6 long wxExecute(const wxString& command, bool sync = false, wxProcess *callback = NULL );
+%wxchkver_2_6 long wxExecute(const wxString& command, int flags = wxEXEC_ASYNC, wxProcess *process = NULL );
 // %override [long, Lua table of output strings] wxExecuteStdout(const wxString& command, int flags = 0 );
-%function %rename wxExecuteStdout long wxExecute(const wxString& command, wxArrayString& output, int flags = 0 );
+%rename wxExecuteStdout long wxExecute(const wxString& command, wxArrayString& output, int flags = 0 );
 // %override [long, Lua table of output strings, Lua table of error strings] wxExecuteStdoutStderr(const wxString& command, int flags = 0 );
-%function %rename wxExecuteStdoutStderr long wxExecute(const wxString& command, wxArrayString& output, wxArrayString& errors, int flags = 0 );
-%function void wxExit( );
+%rename wxExecuteStdoutStderr long wxExecute(const wxString& command, wxArrayString& output, wxArrayString& errors, int flags = 0 );
+void wxExit( );
 
 // %override [int, wxKillError rc] wxKill(long pid, wxSignal sig = wxSIGTERM, int flags = 0 );
 // C++ Func: int wxKill(long pid, wxSignal sig = wxSIGTERM, wxKillError *rc = NULL, int flags = 0 );
-%function int wxKill(long pid, wxSignal sig = wxSIGTERM, int flags = 0 );
-%function unsigned long wxGetProcessId( );
-%function bool wxShell(const wxString& command = "" );
+int wxKill(long pid, wxSignal sig = wxSIGTERM, int flags = 0 );
+unsigned long wxGetProcessId( );
+bool wxShell(const wxString& command = "" );
 
 
 enum wxShutdownFlags
@@ -127,7 +127,7 @@ enum wxShutdownFlags
     wxSHUTDOWN_REBOOT
 };
 
-%function bool wxShutdown(wxShutdownFlags flags );
+bool wxShutdown(wxShutdownFlags flags );
 
 // ---------------------------------------------------------------------------
 // File functions - see file.i
@@ -141,10 +141,10 @@ enum wxShutdownFlags
 // ---------------------------------------------------------------------------
 // Dialog functions - see dialogs.i
 
-//%function void wxBeginBusyCursor(wxCursor *cursor = wxLua_wxHOURGLASS_CURSOR );
-//%function void wxBell( );
-//%function void wxEndBusyCursor( );
-//%function bool wxIsBusy( );
+//void wxBeginBusyCursor(wxCursor *cursor = wxLua_wxHOURGLASS_CURSOR );
+//void wxBell( );
+//void wxEndBusyCursor( );
+//bool wxIsBusy( );
 
 // ---------------------------------------------------------------------------
 // Math functions - nothing useful here
@@ -154,24 +154,24 @@ enum wxShutdownFlags
 
 // %override [int x, int y, int width, int height] wxClientDisplayRect( );
 // void wxClientDisplayRect(int *x, int *y, int *width, int *height );
-%function void wxClientDisplayRect( );
+void wxClientDisplayRect( );
 
-%function wxRect wxGetClientDisplayRect( );
-%function bool wxColourDisplay( );
-%function int wxDisplayDepth( );
+wxRect wxGetClientDisplayRect( );
+bool wxColourDisplay( );
+int wxDisplayDepth( );
 // %override [int width, int height] wxDisplaySize( );
 // void wxDisplaySize(int *width, int *height );
-%function void wxDisplaySize( );
+void wxDisplaySize( );
 
-%function wxSize wxGetDisplaySize( );
+wxSize wxGetDisplaySize( );
 // %override [int width, int height] wxDisplaySizeMM( );
 // void wxDisplaySizeMM(int *width, int *height );
-%function void wxDisplaySizeMM( );
+void wxDisplaySizeMM( );
 
-%function wxSize wxGetDisplaySizeMM( );
+wxSize wxGetDisplaySizeMM( );
 
-%function void wxSetCursor(const wxCursor &cursor );
-// %function wxIconOrCursor wxDROP_ICON(wxString name );
+void wxSetCursor(const wxCursor &cursor );
+// wxIconOrCursor wxDROP_ICON(wxString name );
 
 // ---------------------------------------------------------------------------
 // Printer settings - are marked obsolete
@@ -182,21 +182,21 @@ enum wxShutdownFlags
 // ---------------------------------------------------------------------------
 // Miscellaneous functions
 
-%function bool wxGetKeyState(wxKeyCode key );
-%function long wxNewId( );
-%function void wxRegisterId(long id );
-%function void wxEnableTopLevelWindows(bool enable = true );
-%function int wxFindMenuItemId(wxFrame *frame, const wxString& menuString, const wxString& itemString );
-%function wxWindow* wxFindWindowByLabel(const wxString& label, wxWindow *parent=NULL );
-%function wxWindow* wxFindWindowByName(const wxString& name, wxWindow *parent=NULL );
-%function wxWindow* wxFindWindowAtPoint(const wxPoint& pt );
-%function wxWindow* wxFindWindowAtPointer(wxPoint& pt );
-%wxchkver_2_8_4 %function wxWindow* wxGetActiveWindow( );
+bool wxGetKeyState(wxKeyCode key );
+long wxNewId( );
+void wxRegisterId(long id );
+void wxEnableTopLevelWindows(bool enable = true );
+int wxFindMenuItemId(wxFrame *frame, const wxString& menuString, const wxString& itemString );
+wxWindow* wxFindWindowByLabel(const wxString& label, wxWindow *parent=NULL );
+wxWindow* wxFindWindowByName(const wxString& name, wxWindow *parent=NULL );
+wxWindow* wxFindWindowAtPoint(const wxPoint& pt );
+wxWindow* wxFindWindowAtPointer(wxPoint& pt );
+%wxchkver_2_8_4 wxWindow* wxGetActiveWindow( );
 // wxBatteryState wxGetBatteryState( );
-// X only %function wxString wxGetDisplayName( );
-// X only %function void wxSetDisplayName(const wxString& displayName );
+// X only wxString wxGetDisplayName( );
+// X only void wxSetDisplayName(const wxString& displayName );
 // wxPowerType wxGetPowerType( );
-%function wxPoint wxGetMousePosition( );
+wxPoint wxGetMousePosition( );
 
 #if %wxchkver_2_8
 // This is in wxWidgets 2.6 docs, but it's only in >=2.7
@@ -225,16 +225,16 @@ class %delete wxMouseState
     void        SetMetaDown(bool down );
 };
 
-%function wxMouseState wxGetMouseState( );
+wxMouseState wxGetMouseState( );
 #endif
 
-// %function bool wxGetResource(const wxString& section, const wxString& entry, const wxString& *value, const wxString& file = "" );
-// %function bool wxWriteResource(const wxString& section, const wxString& entry, const wxString& value, const wxString& file = "" );
+// bool wxGetResource(const wxString& section, const wxString& entry, const wxString& *value, const wxString& file = "" );
+// bool wxWriteResource(const wxString& section, const wxString& entry, const wxString& value, const wxString& file = "" );
 // wxString  wxGetStockLabel(wxWindowID id, bool withCodes = true, wxString accelerator = wxEmptyString );
-%function wxWindow* wxGetTopLevelParent(wxWindow *win );
-%function bool wxLaunchDefaultBrowser(const wxString& sUrl );
-//%win %function wxString wxLoadUserResource(const wxString& resourceName, const wxString& resourceType="TEXT" );
-%function void wxPostEvent(wxEvtHandler *dest, wxEvent& event );
+wxWindow* wxGetTopLevelParent(wxWindow *win );
+bool wxLaunchDefaultBrowser(const wxString& sUrl );
+//%win wxString wxLoadUserResource(const wxString& resourceName, const wxString& resourceType="TEXT" );
+void wxPostEvent(wxEvtHandler *dest, wxEvent& event );
 
 // ---------------------------------------------------------------------------
 // Byte order macros - nothing useful

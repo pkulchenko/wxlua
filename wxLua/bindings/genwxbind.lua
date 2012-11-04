@@ -2584,6 +2584,10 @@ function ParseData(interfaceData)
                                     print("ERROR: Expected Method Tag '(', got Tag='"..tag.."'. "..msg.." "..LineTableErrString(lineTable))
                                 end
 
+                                if parseState.ObjectStack[1].Name == "globals" then
+                                    lineState["%function"] = true
+                                end
+
                                 lineState.IsFunction = true
                                 lineState.Action = "action_methodparam"
                                 lineState.ActionMandatory = true

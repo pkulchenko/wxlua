@@ -16,8 +16,8 @@
 #define wxSUBRELEASE_NUMBER
 #define_wxstring wxVERSION_STRING
 
-%function bool wxCHECK_VERSION(int major, int minor, int release); // actually a define
-%function bool wxCHECK_VERSION_FULL(int major, int minor, int release, int subrel); // actually a define
+bool wxCHECK_VERSION(int major, int minor, int release); // actually a define
+bool wxCHECK_VERSION_FULL(int major, int minor, int release, int subrel); // actually a define
 
 #define wxABI_VERSION
 
@@ -56,7 +56,7 @@
 // ---------------------------------------------------------------------------
 
 #if wxUSE_ON_FATAL_EXCEPTION
-    %function bool wxHandleFatalExceptions(bool doIt = true );
+    bool wxHandleFatalExceptions(bool doIt = true );
 #endif // wxUSE_ON_FATAL_EXCEPTION
 
 // ---------------------------------------------------------------------------
@@ -103,19 +103,19 @@ enum
 };
 #endif // !%wxchkver_2_8
 
-%function wxString wxGetEmailAddress( );
-%function wxLongLong wxGetFreeMemory( );
-%function wxString wxGetFullHostName( );
-%function wxString wxGetHomeDir( );
-%function wxString wxGetHostName( );
-%function wxString wxGetOsDescription( );
+wxString wxGetEmailAddress( );
+wxLongLong wxGetFreeMemory( );
+wxString wxGetFullHostName( );
+wxString wxGetHomeDir( );
+wxString wxGetHostName( );
+wxString wxGetOsDescription( );
 // %override [int version, int major, int minor] wxGetOsVersion( );
 // int wxGetOsVersion(int *major = NULL, int *minor = NULL );
-%function int wxGetOsVersion( );
+int wxGetOsVersion( );
 
-%function wxString wxGetUserHome(const wxString& user = "" );
-%function wxString wxGetUserId( );
-%function wxString wxGetUserName( );
+wxString wxGetUserHome(const wxString& user = "" );
+wxString wxGetUserId( );
+wxString wxGetUserName( );
 
 // ---------------------------------------------------------------------------
 // Environmental access functions
@@ -123,9 +123,9 @@ enum
 // %override [bool lua_string] wxGetEnv(const wxString& var );
 // Returns success and the string environment variable.
 // C++ Func: bool wxGetEnv(const wxString& var, wxString *value );
-%function bool wxGetEnv(const wxString& var );
-%function bool wxSetEnv(const wxString& var, const wxString& value );
-%function bool wxUnsetEnv(const wxString& var );
+bool wxGetEnv(const wxString& var );
+bool wxSetEnv(const wxString& var, const wxString& value );
+bool wxUnsetEnv(const wxString& var );
 
 
 // ---------------------------------------------------------------------------
@@ -324,34 +324,34 @@ class %delete wxSingleInstanceChecker
 #include "wx/log.h"
 
 // These functions are in log.h
-%function unsigned long wxSysErrorCode( );
-%function wxString wxSysErrorMsg(unsigned long nErrCode = 0 );
+unsigned long wxSysErrorCode( );
+wxString wxSysErrorMsg(unsigned long nErrCode = 0 );
 
-%function void wxSafeShowMessage(const wxString& title, const wxString& text );
+void wxSafeShowMessage(const wxString& title, const wxString& text );
 
 // All of the wxLogXXX functions take only a single string,
 // use string.format(...) to format the string in Lua.
 
 // C++ Func: void wxLogError(const char *formatString, ... );
-%function void wxLogError(const wxString& message );
+void wxLogError(const wxString& message );
 // C++ Func: void wxLogFatalError(const char *formatString, ... );
-%function void wxLogFatalError(const wxString& message );
+void wxLogFatalError(const wxString& message );
 // C++ Func: void wxLogWarning(const char *formatString, ... );
-%function void wxLogWarning(const wxString& message );
+void wxLogWarning(const wxString& message );
 // C++ Func: void wxLogMessage(const char *formatString, ... );
-%function void wxLogMessage(const wxString& message );
+void wxLogMessage(const wxString& message );
 // C++ Func: void wxLogVerbose(const char *formatString, ... );
-%function void wxLogVerbose(const wxString& message );
+void wxLogVerbose(const wxString& message );
 // C++ Func: void wxLogStatus(wxFrame *frame, const char *formatString, ... );
 // void wxLogStatus(const char *formatString, ...); // this just uses the toplevel frame, use wx.NULL for the frame
-// IN wxCore %function void wxLogStatus(wxFrame *frame, const wxString& message );
+// IN wxCore void wxLogStatus(wxFrame *frame, const wxString& message );
 
 // C++ Func: void wxLogSysError(const char *formatString, ... );
-%function void wxLogSysError(const wxString& message );
+void wxLogSysError(const wxString& message );
 // C++ Func: void wxLogDebug(const char *formatString, ... );
-%function void wxLogDebug(const wxString& message );
+void wxLogDebug(const wxString& message );
 // C++ Func: void wxLogTrace(const char *mask, const char *formatString, ... );
-%function void wxLogTrace(const wxString& mask, const wxString& message );
+void wxLogTrace(const wxString& mask, const wxString& message );
 // void wxLogTrace(const char *formatString, ... );
 // void wxLogTrace(wxTraceMask mask, const char *formatString, ...) - deprecated
 

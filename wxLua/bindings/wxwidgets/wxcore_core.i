@@ -11,7 +11,7 @@
 
 // C++ Func: void wxLogStatus(wxFrame *frame, const char *formatString, ... );
 // void wxLogStatus(const char *formatString, ...); // this just uses the toplevel frame, use wx.NULL for the frame
-%function void wxLogStatus(wxFrame *frame, const wxString& message );
+void wxLogStatus(wxFrame *frame, const wxString& message );
 
 // ---------------------------------------------------------------------------
 // wxLogGui - wxWidgets creates and installs one of these at startup,

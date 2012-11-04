@@ -16,14 +16,14 @@
 #define wxLUA_SUBRELEASE_NUMBER
 #define_wxstring wxLUA_VERSION_STRING
 
-%function bool wxLUA_CHECK_VERSION(int major, int minor, int release); // actually a define
-%function bool wxLUA_CHECK_VERSION_FULL(int major, int minor, int release, int subrel); // actually a define
+bool wxLUA_CHECK_VERSION(int major, int minor, int release); // actually a define
+bool wxLUA_CHECK_VERSION_FULL(int major, int minor, int release, int subrel); // actually a define
 
 // ---------------------------------------------------------------------------
 // Compile the luaScript of the given name and return the lua error code, a message
 // and the line number (or -1) of the error.
 // %override [int return, lua_string err_msg, int line_number] CompileLuaScript(const wxString& luaScript, const wxString& fileName );
-%function int CompileLuaScript(const wxString& luaScript, const wxString& fileName );
+int CompileLuaScript(const wxString& luaScript, const wxString& fileName );
 
 // ---------------------------------------------------------------------------
 // Get information about the status of wxLua.
@@ -31,35 +31,35 @@
 // Get a table or string of all tracked top level windows that wxLua will
 // Destroy() when lua is closed.
 // Example output : { "ClassName(&win id=wxWindowID)", ...}
-%function LuaTable GetTrackedWindowInfo(bool as_string = false );
+LuaTable GetTrackedWindowInfo(bool as_string = false );
 
 // Get a table or string of all tracked userdata wxLua will delete when lua
 // is closed or lua will eventually garbage collect.
 // Example output : { "ClassName(&obj)", ... }
-%function LuaTable GetGCUserdataInfo(bool as_string = false );
+LuaTable GetGCUserdataInfo(bool as_string = false );
 
 // Get a table or string of all tracked userdata wxLua has pushed.
 // A single object may have multiple types if it has been casted.
 // Example output : { "&obj wxLuaTypeName(type#), ...", ... }
-%function LuaTable GetTrackedObjectInfo(bool as_string = false );
+LuaTable GetTrackedObjectInfo(bool as_string = false );
 
 // Get a table or string of all tracked wxEvent callbacks that have been
 // installed using wxEvtHandler::Connect(... );
 // "wxEVT_XXX(evt#) -> wxLuaEventCallback(&callback, ids %d %d)|wxEvtHandler(&evthandler) -> wxEvtHandlerClassName"
-%function LuaTable GetTrackedEventCallbackInfo(bool as_string = false );
+LuaTable GetTrackedEventCallbackInfo(bool as_string = false );
 
 // Get a table or string of all wxWindow derived classes that have been created in wxLua.
 // "wxWindowClassName(&win, id=%d)|wxLuaDestroyCallback(&callback)"
-%function LuaTable GetTrackedWinDestroyCallbackInfo(bool as_string = false );
+LuaTable GetTrackedWinDestroyCallbackInfo(bool as_string = false );
 
 // Is the wxLua userdata object on the list to be garbage collected by Lua?
-%function bool isgcobject(void* object );
+bool isgcobject(void* object );
 
 // Is the wxLua userdata object on the list of tracked objects?
-%function bool istrackedobject(void* object );
+bool istrackedobject(void* object );
 
 // Is the wxLua object refed by wxLua
-%function bool isrefed(void* object );
+bool isrefed(void* object );
 
 // ---------------------------------------------------------------------------
 // Force the Lua garbage collector to act or ignore object *DANGEROUS*
@@ -70,11 +70,11 @@
 
 // Add the userdata object to the list of objects that will be deleted when
 // it goes out of scope and the Lua garbage collector runs.
-// %function bool gcobject(void* object );
+// bool gcobject(void* object );
 
 // Remove the userdata object from the list of objects that will be deleted when
 // it goes out of scope and the Lua garbage collector runs.
-%function bool ungcobject(void* object );
+bool ungcobject(void* object );
 
 // ---------------------------------------------------------------------------
 // Type information about the bindings or current userdata
@@ -121,7 +121,7 @@ enum wxLuaMethod_Type      // The type of a Lua method
 #define LUA_TTHREAD            // 8
 
 // Is this lua_type() (or in lua the type() function) considered equivalent
-%rename iswxluatype %function int wxlua_iswxluatype(int luatype, int wxluaarg_tag );
+%rename iswxluatype int wxlua_iswxluatype(int luatype, int wxluaarg_tag );
 
 // %override [wxlua_typename, wxlua_type#, lua_typename, lua_type#] type(any object );
 // Given any type of object, returns four values:
@@ -129,11 +129,11 @@ enum wxLuaMethod_Type      // The type of a Lua method
 //    wxlua number of the type  - wxluaT_type(L, stack_idx );
 //    lua name of the type      - lua_typename(L, lua_type(L, stack_idx) );
 //    lua number of the type    - lua_type(L, stack_idx );
-%function wxString type(void* object );
+wxString type(void* object );
 
 // %override wxString typename(int wxluaarg_tag );
 // Returns the wxLua name binding wxLua class type numbers.
-%function wxString typename(int wxluaarg_tag );
+wxString typename(int wxluaarg_tag );
 
 // ---------------------------------------------------------------------------
 // wxLuaBinding - These are not wrapped in the standard way, but coded by hand
@@ -151,7 +151,7 @@ enum wxLuaMethod_Type      // The type of a Lua method
 
 // Entry point to get the objects below.
 // returns a table array of each installed binding { wxLuaBinding* }
-%function LuaTable GetBindings( );
+LuaTable GetBindings( );
 
 /*
 

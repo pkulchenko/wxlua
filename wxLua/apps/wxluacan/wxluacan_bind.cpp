@@ -637,7 +637,7 @@ wxLuaBindObject* wxLuaGetObjectList_wxluacan(size_t &count)
 // wxLuaGetFunctionList_wxluacan() is called to register global functions
 // ---------------------------------------------------------------------------
 
-// %function wxlCan* GetCan( );
+// wxlCan* GetCan( );
 static int LUACALL wxLua_function_GetCan(lua_State *L)
 {
     // call GetCan
@@ -649,7 +649,7 @@ static int LUACALL wxLua_function_GetCan(lua_State *L)
 }
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_GetCan[1] = {{ wxLua_function_GetCan, WXLUAMETHOD_CFUNCTION, 0, 0, g_wxluaargtypeArray_None }};
 
-// %function wxlLuaCanCmd* GetCmdhMain( );
+// wxlLuaCanCmd* GetCmdhMain( );
 static int LUACALL wxLua_function_GetCmdhMain(lua_State *L)
 {
     // call GetCmdhMain
