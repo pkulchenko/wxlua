@@ -101,9 +101,9 @@ enum wxUpdateUI
 
 class %delete wxVisualAttributes
 {
-    %member wxFont font
-    %member wxColour colFg
-    %member wxColour colBg
+    wxFont font;
+    wxColour colFg;
+    wxColour colBg;
 };
 
 

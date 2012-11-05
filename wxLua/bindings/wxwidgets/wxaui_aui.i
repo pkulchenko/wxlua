@@ -84,11 +84,11 @@ class %delete wxAuiNotebookEvent : public wxNotifyEvent
 
 class %delete wxAuiNotebookPage
 {
-    %member wxWindow* window;     // page's associated window
-    %member wxString caption;     // caption displayed on the tab
-    %member wxBitmap bitmap;      // tab's bitmap
-    %member wxRect rect;          // tab's hit rectangle
-    %member bool active;          // true if the page is currently active
+    wxWindow* window;     // page's associated window
+    wxString caption;     // caption displayed on the tab
+    wxBitmap bitmap;      // tab's bitmap
+    wxRect rect;          // tab's hit rectangle
+    bool active;          // true if the page is currently active
 };
 
 
@@ -115,14 +115,14 @@ class %delete wxAuiNotebookPageArray
 
 class %delete wxAuiTabContainerButton
 {
-    %member int id;               // button's id
-    !%wxchkver_2_9_3 %member int cur_state;        // current state (normal, hover, pressed, etc. );
-    %wxchkver_2_9_3  %member int curState;
-    %member int location;         // buttons location (wxLEFT, wxRIGHT, or wxCENTER );
-    %member wxBitmap bitmap;      // button's hover bitmap
-    !%wxchkver_2_9_3 %member wxBitmap dis_bitmap;  // button's disabled bitmap
-    %wxchkver_2_9_3  %member wxBitmap disBitmap;
-    %member wxRect rect;          // button's hit rectangle
+    int id;               // button's id
+    !%wxchkver_2_9_3 int cur_state;        // current state (normal, hover, pressed, etc. );
+    %wxchkver_2_9_3  int curState;
+    int location;         // buttons location (wxLEFT, wxRIGHT, or wxCENTER );
+    wxBitmap bitmap;      // button's hover bitmap
+    !%wxchkver_2_9_3 wxBitmap dis_bitmap;  // button's disabled bitmap
+    %wxchkver_2_9_3  wxBitmap disBitmap;
+    wxRect rect;          // button's hit rectangle
 };
 
 //WX_DECLARE_USER_EXPORTED_OBJARRAY(wxAuiTabContainerButton, wxAuiTabContainerButtonArray, WXDLLIMPEXP_AUI);
@@ -592,29 +592,29 @@ class %delete wxAuiPaneInfo
     bool HasFlag(unsigned int flag) const;
 
 
-    %member wxString name;        // name of the pane
-    %member wxString caption;     // caption displayed on the window
+    wxString name;        // name of the pane
+    wxString caption;     // caption displayed on the window
 
-    %member wxWindow* window;     // window that is in this pane
-    %member wxFrame* frame;       // floating frame window that holds the pane
-    %member unsigned int state;   // a combination of wxPaneState values
+    wxWindow* window;     // window that is in this pane
+    wxFrame* frame;       // floating frame window that holds the pane
+    unsigned int state;   // a combination of wxPaneState values
 
-    %member int dock_direction;   // dock direction (top, bottom, left, right, center );
-    %member int dock_layer;       // layer number (0 = innermost layer );
-    %member int dock_row;         // row number on the docking bar (0 = first row );
-    %member int dock_pos;         // position inside the row (0 = first position );
+    int dock_direction;   // dock direction (top, bottom, left, right, center );
+    int dock_layer;       // layer number (0 = innermost layer );
+    int dock_row;         // row number on the docking bar (0 = first row );
+    int dock_pos;         // position inside the row (0 = first position );
 
-    %member wxSize best_size;     // size that the layout engine will prefer
-    %member wxSize min_size;      // minimum size the pane window can tolerate
-    %member wxSize max_size;      // maximum size the pane window can tolerate
+    wxSize best_size;     // size that the layout engine will prefer
+    wxSize min_size;      // minimum size the pane window can tolerate
+    wxSize max_size;      // maximum size the pane window can tolerate
 
-    %member wxPoint floating_pos; // position while floating
-    %member wxSize floating_size; // size while floating
-    %member int dock_proportion;  // proportion while docked
+    wxPoint floating_pos; // position while floating
+    wxSize floating_size; // size while floating
+    int dock_proportion;  // proportion while docked
 
-    //%member wxAuiPaneButtonArray buttons; // buttons on the pane
+    //wxAuiPaneButtonArray buttons; // buttons on the pane
 
-    %member wxRect rect;              // current rectangle (populated by wxAUI );
+    wxRect rect;              // current rectangle (populated by wxAUI );
 };
 
 
@@ -746,18 +746,18 @@ class %delete wxAuiDockInfo
     bool IsVertical() const;
 
 
-    //%member wxAuiPaneInfoPtrArray panes; // array of panes - FIXME
-    %member wxRect rect;              // current rectangle
-    %member int dock_direction;       // dock direction (top, bottom, left, right, center );
-    %member int dock_layer;           // layer number (0 = innermost layer );
-    %member int dock_row;             // row number on the docking bar (0 = first row );
-    %member int size;                 // size of the dock
-    %member int min_size;             // minimum size of a dock (0 if there is no min );
-    %member bool resizable;           // flag indicating whether the dock is resizable
-    %member bool toolbar;             // flag indicating dock contains only toolbars
-    %member bool fixed;               // flag indicating that the dock operates on
-                                      // absolute coordinates as opposed to proportional
-    %member bool reserved1;
+    //wxAuiPaneInfoPtrArray panes; // array of panes - FIXME
+    wxRect rect;              // current rectangle
+    int dock_direction;       // dock direction (top, bottom, left, right, center );
+    int dock_layer;           // layer number (0 = innermost layer );
+    int dock_row;             // row number on the docking bar (0 = first row );
+    int size;                 // size of the dock
+    int min_size;             // minimum size of a dock (0 if there is no min );
+    bool resizable;           // flag indicating whether the dock is resizable
+    bool toolbar;             // flag indicating dock contains only toolbars
+    bool fixed;               // flag indicating that the dock operates on
+                              // absolute coordinates as opposed to proportional
+    bool reserved1;
 };
 
 
@@ -779,14 +779,14 @@ enum wxAuiDockUIPart::dummy
 
 class %delete wxAuiDockUIPart
 {
-    %member int type;                // ui part type (see enum above );
-    %member int orientation;         // orientation (either wxHORIZONTAL or wxVERTICAL );
-    %member wxAuiDockInfo* dock;        // which dock the item is associated with
-    %member wxAuiPaneInfo* pane;        // which pane the item is associated with
-    %member wxAuiPaneButton* button;    // which pane button the item is associated with
-    %member wxSizer* cont_sizer;     // the part's containing sizer
-    %member wxSizerItem* sizer_item; // the sizer item of the part
-    %member wxRect rect;             // client coord rectangle of the part itself
+    int type;                // ui part type (see enum above );
+    int orientation;         // orientation (either wxHORIZONTAL or wxVERTICAL );
+    wxAuiDockInfo* dock;        // which dock the item is associated with
+    wxAuiPaneInfo* pane;        // which pane the item is associated with
+    wxAuiPaneButton* button;    // which pane button the item is associated with
+    wxSizer* cont_sizer;     // the part's containing sizer
+    wxSizerItem* sizer_item; // the sizer item of the part
+    wxRect rect;             // client coord rectangle of the part itself
 };
 
 
@@ -795,7 +795,7 @@ class %delete wxAuiDockUIPart
 
 class %delete wxAuiPaneButton
 {
-    %member int button_id;        // id of the button (e.g. buttonClose );
+    int button_id;        // id of the button (e.g. buttonClose );
 };
 
 

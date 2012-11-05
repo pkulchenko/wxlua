@@ -48,8 +48,8 @@ class %delete wxPoint2DInt
     //void WriteTo( wxDataOutputStream &stream ) const;
     //void ReadFrom( wxDataInputStream &stream );
 
-    %rename X %member_func wxInt32 m_x
-    %rename Y %member_func wxInt32 m_y
+    %rename X %member_func wxInt32 m_x;
+    %rename Y %member_func wxInt32 m_y;
 
     wxPoint2DInt operator-( );
     wxPoint2DInt& operator=(const wxPoint2DInt& pt );
@@ -93,8 +93,8 @@ class %delete wxPoint2DDouble
     wxDouble GetDotProduct( const wxPoint2DDouble &vec ) const;
     wxDouble GetCrossProduct( const wxPoint2DDouble &vec ) const;
 
-    %rename X %member_func wxDouble m_x
-    %rename Y %member_func wxDouble m_y
+    %rename X %member_func wxDouble m_x;
+    %rename Y %member_func wxDouble m_y;
 
     wxPoint2DDouble operator-( );
     wxPoint2DDouble& operator=(const wxPoint2DDouble& pt );
@@ -170,10 +170,10 @@ class %delete wxRect2DDouble
     void Scale( wxDouble f );
     //void Scale( wxInt32 num , wxInt32 denum );
 
-    %rename X %member_func wxDouble m_x
-    %rename Y %member_func wxDouble m_y
-    %rename Width %member_func wxDouble m_width
-    %rename Height %member_func wxDouble m_height
+    %rename X %member_func wxDouble m_x;
+    %rename Y %member_func wxDouble m_y;
+    %rename Width %member_func wxDouble m_width;
+    %rename Height %member_func wxDouble m_height;
 
     //wxRect2DDouble& operator = (const wxRect2DDouble& rect) - use copy constructor
     bool operator==(const wxRect2DDouble& rect );
@@ -246,10 +246,10 @@ class %delete wxRect2DInt
     //void WriteTo( wxDataOutputStream &stream ) const;
     //void ReadFrom( wxDataInputStream &stream );
 
-    %rename X %member_func wxInt32 m_x
-    %rename Y %member_func wxInt32 m_y
-    %rename Width %member_func wxInt32 m_width
-    %rename Height %member_func wxInt32 m_height
+    %rename X %member_func wxInt32 m_x;
+    %rename Y %member_func wxInt32 m_y;
+    %rename Width %member_func wxInt32 m_width;
+    %rename Height %member_func wxInt32 m_height;
 
     //wxRect2DInt& operator = (const wxRect2DInt& rect) - use copy constructor
     bool operator == (const wxRect2DInt& rect) const;

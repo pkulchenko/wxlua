@@ -904,10 +904,10 @@ struct %delete wxLanguageInfo
 {
     wxLanguageInfo(); // you must set all the values by hand
 
-    %member int Language;                   // wxLanguage id
-    %member wxString CanonicalName;         // Canonical name, e.g. fr_FR
-    %member wxString Description;           // human-readable name of the language
-    %wxchkver_2_8 %member wxLayoutDirection LayoutDirection;
+    int Language;                   // wxLanguage id
+    wxString CanonicalName;         // Canonical name, e.g. fr_FR
+    wxString Description;           // human-readable name of the language
+    %wxchkver_2_8 wxLayoutDirection LayoutDirection;
 };
 
 

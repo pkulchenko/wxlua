@@ -37,7 +37,7 @@ int wxluatype_wxPoint = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint_GetX[] = { &wxluatype_wxPoint, NULL };
 static int LUACALL wxLua_wxPoint_GetX(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint_GetX[1] = {{ wxLua_wxPoint_GetX, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPoint_GetX }};
-//     %rename X %member_func int x // GetX() and SetX(int x );
+//     %rename X %member_func int x; // GetX() and SetX(int x );
 static int LUACALL wxLua_wxPoint_GetX(lua_State *L)
 {
     // get this
@@ -68,7 +68,7 @@ static int LUACALL wxLua_wxPoint_GetXY(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint_GetY[] = { &wxluatype_wxPoint, NULL };
 static int LUACALL wxLua_wxPoint_GetY(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint_GetY[1] = {{ wxLua_wxPoint_GetY, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPoint_GetY }};
-//     %rename Y %member_func int y // GetY() and SetY(int y );
+//     %rename Y %member_func int y; // GetY() and SetY(int y );
 static int LUACALL wxLua_wxPoint_GetY(lua_State *L)
 {
     // get this
@@ -102,7 +102,7 @@ static int LUACALL wxLua_wxPoint_Set(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint_SetX[] = { &wxluatype_wxPoint, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPoint_SetX(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint_SetX[1] = {{ wxLua_wxPoint_SetX, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint_SetX }};
-//     %rename X %member_func int x // GetX() and SetX(int x );
+//     %rename X %member_func int x; // GetX() and SetX(int x );
 static int LUACALL wxLua_wxPoint_SetX(lua_State *L)
 {
     // get the number value
@@ -117,7 +117,7 @@ static int LUACALL wxLua_wxPoint_SetX(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint_SetY[] = { &wxluatype_wxPoint, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPoint_SetY(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint_SetY[1] = {{ wxLua_wxPoint_SetY, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint_SetY }};
-//     %rename Y %member_func int y // GetY() and SetY(int y );
+//     %rename Y %member_func int y; // GetY() and SetY(int y );
 static int LUACALL wxLua_wxPoint_SetY(lua_State *L)
 {
     // get the number value
@@ -13641,7 +13641,7 @@ int wxluatype_wxSplitterRenderParams = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSplitterRenderParams_Get_border[] = { &wxluatype_wxSplitterRenderParams, NULL };
 static int LUACALL wxLua_wxSplitterRenderParams_Get_border(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSplitterRenderParams_Get_border[1] = {{ wxLua_wxSplitterRenderParams_Get_border, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSplitterRenderParams_Get_border }};
-//     %member const wxCoord border        // the width of the border of the splitter window
+//     const wxCoord border;        // the width of the border of the splitter window
 static int LUACALL wxLua_wxSplitterRenderParams_Get_border(lua_State *L)
 {
     // get this
@@ -13655,7 +13655,7 @@ static int LUACALL wxLua_wxSplitterRenderParams_Get_border(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSplitterRenderParams_Get_isHotSensitive[] = { &wxluatype_wxSplitterRenderParams, NULL };
 static int LUACALL wxLua_wxSplitterRenderParams_Get_isHotSensitive(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSplitterRenderParams_Get_isHotSensitive[1] = {{ wxLua_wxSplitterRenderParams_Get_isHotSensitive, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSplitterRenderParams_Get_isHotSensitive }};
-//     %member const bool isHotSensitive   // true if the splitter changes its appearance when the mouse is over it
+//     const bool isHotSensitive;   // true if the splitter changes its appearance when the mouse is over it
 static int LUACALL wxLua_wxSplitterRenderParams_Get_isHotSensitive(lua_State *L)
 {
     // get this
@@ -13669,7 +13669,7 @@ static int LUACALL wxLua_wxSplitterRenderParams_Get_isHotSensitive(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSplitterRenderParams_Get_widthSash[] = { &wxluatype_wxSplitterRenderParams, NULL };
 static int LUACALL wxLua_wxSplitterRenderParams_Get_widthSash(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSplitterRenderParams_Get_widthSash[1] = {{ wxLua_wxSplitterRenderParams_Get_widthSash, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSplitterRenderParams_Get_widthSash }};
-//     %member const wxCoord widthSash     // the width of the splitter sash
+//     const wxCoord widthSash;     // the width of the splitter sash
 static int LUACALL wxLua_wxSplitterRenderParams_Get_widthSash(lua_State *L)
 {
     // get this
@@ -13745,7 +13745,7 @@ int wxluatype_wxHeaderButtonParams = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHeaderButtonParams_Get_m_arrowColour[] = { &wxluatype_wxHeaderButtonParams, NULL };
 static int LUACALL wxLua_wxHeaderButtonParams_Get_m_arrowColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHeaderButtonParams_Get_m_arrowColour[1] = {{ wxLua_wxHeaderButtonParams_Get_m_arrowColour, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHeaderButtonParams_Get_m_arrowColour }};
-//     %member wxColour    m_arrowColour;
+//     wxColour    m_arrowColour;
 static int LUACALL wxLua_wxHeaderButtonParams_Get_m_arrowColour(lua_State *L)
 {
     // get this
@@ -13761,7 +13761,7 @@ static int LUACALL wxLua_wxHeaderButtonParams_Get_m_arrowColour(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHeaderButtonParams_Get_m_labelAlignment[] = { &wxluatype_wxHeaderButtonParams, NULL };
 static int LUACALL wxLua_wxHeaderButtonParams_Get_m_labelAlignment(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHeaderButtonParams_Get_m_labelAlignment[1] = {{ wxLua_wxHeaderButtonParams_Get_m_labelAlignment, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHeaderButtonParams_Get_m_labelAlignment }};
-//     %member int         m_labelAlignment;
+//     int         m_labelAlignment;
 static int LUACALL wxLua_wxHeaderButtonParams_Get_m_labelAlignment(lua_State *L)
 {
     // get this
@@ -13777,7 +13777,7 @@ static int LUACALL wxLua_wxHeaderButtonParams_Get_m_labelAlignment(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHeaderButtonParams_Get_m_labelBitmap[] = { &wxluatype_wxHeaderButtonParams, NULL };
 static int LUACALL wxLua_wxHeaderButtonParams_Get_m_labelBitmap(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHeaderButtonParams_Get_m_labelBitmap[1] = {{ wxLua_wxHeaderButtonParams_Get_m_labelBitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHeaderButtonParams_Get_m_labelBitmap }};
-//     %member wxBitmap    m_labelBitmap;
+//     wxBitmap    m_labelBitmap;
 static int LUACALL wxLua_wxHeaderButtonParams_Get_m_labelBitmap(lua_State *L)
 {
     // get this
@@ -13794,7 +13794,7 @@ static int LUACALL wxLua_wxHeaderButtonParams_Get_m_labelBitmap(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHeaderButtonParams_Get_m_labelColour[] = { &wxluatype_wxHeaderButtonParams, NULL };
 static int LUACALL wxLua_wxHeaderButtonParams_Get_m_labelColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHeaderButtonParams_Get_m_labelColour[1] = {{ wxLua_wxHeaderButtonParams_Get_m_labelColour, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHeaderButtonParams_Get_m_labelColour }};
-//     %member wxColour    m_labelColour;
+//     wxColour    m_labelColour;
 static int LUACALL wxLua_wxHeaderButtonParams_Get_m_labelColour(lua_State *L)
 {
     // get this
@@ -13811,7 +13811,7 @@ static int LUACALL wxLua_wxHeaderButtonParams_Get_m_labelColour(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHeaderButtonParams_Get_m_labelFont[] = { &wxluatype_wxHeaderButtonParams, NULL };
 static int LUACALL wxLua_wxHeaderButtonParams_Get_m_labelFont(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHeaderButtonParams_Get_m_labelFont[1] = {{ wxLua_wxHeaderButtonParams_Get_m_labelFont, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHeaderButtonParams_Get_m_labelFont }};
-//     %member wxFont      m_labelFont;
+//     wxFont      m_labelFont;
 static int LUACALL wxLua_wxHeaderButtonParams_Get_m_labelFont(lua_State *L)
 {
     // get this
@@ -13827,7 +13827,7 @@ static int LUACALL wxLua_wxHeaderButtonParams_Get_m_labelFont(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHeaderButtonParams_Get_m_labelText[] = { &wxluatype_wxHeaderButtonParams, NULL };
 static int LUACALL wxLua_wxHeaderButtonParams_Get_m_labelText(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHeaderButtonParams_Get_m_labelText[1] = {{ wxLua_wxHeaderButtonParams_Get_m_labelText, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHeaderButtonParams_Get_m_labelText }};
-//     %member wxString    m_labelText;
+//     wxString    m_labelText;
 static int LUACALL wxLua_wxHeaderButtonParams_Get_m_labelText(lua_State *L)
 {
     // get this
@@ -13843,7 +13843,7 @@ static int LUACALL wxLua_wxHeaderButtonParams_Get_m_labelText(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHeaderButtonParams_Get_m_selectionColour[] = { &wxluatype_wxHeaderButtonParams, NULL };
 static int LUACALL wxLua_wxHeaderButtonParams_Get_m_selectionColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHeaderButtonParams_Get_m_selectionColour[1] = {{ wxLua_wxHeaderButtonParams_Get_m_selectionColour, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHeaderButtonParams_Get_m_selectionColour }};
-//     %member wxColour    m_selectionColour;
+//     wxColour    m_selectionColour;
 static int LUACALL wxLua_wxHeaderButtonParams_Get_m_selectionColour(lua_State *L)
 {
     // get this
@@ -13857,7 +13857,7 @@ static int LUACALL wxLua_wxHeaderButtonParams_Get_m_selectionColour(lua_State *L
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHeaderButtonParams_Set_m_arrowColour[] = { &wxluatype_wxHeaderButtonParams, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxHeaderButtonParams_Set_m_arrowColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHeaderButtonParams_Set_m_arrowColour[1] = {{ wxLua_wxHeaderButtonParams_Set_m_arrowColour, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHeaderButtonParams_Set_m_arrowColour }};
-//     %member wxColour    m_arrowColour;
+//     wxColour    m_arrowColour;
 static int LUACALL wxLua_wxHeaderButtonParams_Set_m_arrowColour(lua_State *L)
 {
     // get the data type value
@@ -13874,7 +13874,7 @@ static int LUACALL wxLua_wxHeaderButtonParams_Set_m_arrowColour(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHeaderButtonParams_Set_m_labelAlignment[] = { &wxluatype_wxHeaderButtonParams, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxHeaderButtonParams_Set_m_labelAlignment(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHeaderButtonParams_Set_m_labelAlignment[1] = {{ wxLua_wxHeaderButtonParams_Set_m_labelAlignment, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHeaderButtonParams_Set_m_labelAlignment }};
-//     %member int         m_labelAlignment;
+//     int         m_labelAlignment;
 static int LUACALL wxLua_wxHeaderButtonParams_Set_m_labelAlignment(lua_State *L)
 {
     // get the number value
@@ -13891,7 +13891,7 @@ static int LUACALL wxLua_wxHeaderButtonParams_Set_m_labelAlignment(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHeaderButtonParams_Set_m_labelBitmap[] = { &wxluatype_wxHeaderButtonParams, &wxluatype_wxBitmap, NULL };
 static int LUACALL wxLua_wxHeaderButtonParams_Set_m_labelBitmap(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHeaderButtonParams_Set_m_labelBitmap[1] = {{ wxLua_wxHeaderButtonParams_Set_m_labelBitmap, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHeaderButtonParams_Set_m_labelBitmap }};
-//     %member wxBitmap    m_labelBitmap;
+//     wxBitmap    m_labelBitmap;
 static int LUACALL wxLua_wxHeaderButtonParams_Set_m_labelBitmap(lua_State *L)
 {
     // get the data type value
@@ -13909,7 +13909,7 @@ static int LUACALL wxLua_wxHeaderButtonParams_Set_m_labelBitmap(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHeaderButtonParams_Set_m_labelColour[] = { &wxluatype_wxHeaderButtonParams, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxHeaderButtonParams_Set_m_labelColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHeaderButtonParams_Set_m_labelColour[1] = {{ wxLua_wxHeaderButtonParams_Set_m_labelColour, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHeaderButtonParams_Set_m_labelColour }};
-//     %member wxColour    m_labelColour;
+//     wxColour    m_labelColour;
 static int LUACALL wxLua_wxHeaderButtonParams_Set_m_labelColour(lua_State *L)
 {
     // get the data type value
@@ -13927,7 +13927,7 @@ static int LUACALL wxLua_wxHeaderButtonParams_Set_m_labelColour(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHeaderButtonParams_Set_m_labelFont[] = { &wxluatype_wxHeaderButtonParams, &wxluatype_wxFont, NULL };
 static int LUACALL wxLua_wxHeaderButtonParams_Set_m_labelFont(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHeaderButtonParams_Set_m_labelFont[1] = {{ wxLua_wxHeaderButtonParams_Set_m_labelFont, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHeaderButtonParams_Set_m_labelFont }};
-//     %member wxFont      m_labelFont;
+//     wxFont      m_labelFont;
 static int LUACALL wxLua_wxHeaderButtonParams_Set_m_labelFont(lua_State *L)
 {
     // get the data type value
@@ -13944,7 +13944,7 @@ static int LUACALL wxLua_wxHeaderButtonParams_Set_m_labelFont(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHeaderButtonParams_Set_m_labelText[] = { &wxluatype_wxHeaderButtonParams, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxHeaderButtonParams_Set_m_labelText(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHeaderButtonParams_Set_m_labelText[1] = {{ wxLua_wxHeaderButtonParams_Set_m_labelText, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHeaderButtonParams_Set_m_labelText }};
-//     %member wxString    m_labelText;
+//     wxString    m_labelText;
 static int LUACALL wxLua_wxHeaderButtonParams_Set_m_labelText(lua_State *L)
 {
     // get the string value
@@ -13961,7 +13961,7 @@ static int LUACALL wxLua_wxHeaderButtonParams_Set_m_labelText(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHeaderButtonParams_Set_m_selectionColour[] = { &wxluatype_wxHeaderButtonParams, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxHeaderButtonParams_Set_m_selectionColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHeaderButtonParams_Set_m_selectionColour[1] = {{ wxLua_wxHeaderButtonParams_Set_m_selectionColour, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHeaderButtonParams_Set_m_selectionColour }};
-//     %member wxColour    m_selectionColour;
+//     wxColour    m_selectionColour;
 static int LUACALL wxLua_wxHeaderButtonParams_Set_m_selectionColour(lua_State *L)
 {
     // get the data type value
@@ -14121,7 +14121,7 @@ int wxluatype_wxRendererVersion = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRendererVersion_Get_age[] = { &wxluatype_wxRendererVersion, NULL };
 static int LUACALL wxLua_wxRendererVersion_Get_age(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRendererVersion_Get_age[1] = {{ wxLua_wxRendererVersion_Get_age, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRendererVersion_Get_age }};
-//     %member const int age;
+//     const int age;
 static int LUACALL wxLua_wxRendererVersion_Get_age(lua_State *L)
 {
     // get this
@@ -14135,7 +14135,7 @@ static int LUACALL wxLua_wxRendererVersion_Get_age(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRendererVersion_Get_version[] = { &wxluatype_wxRendererVersion, NULL };
 static int LUACALL wxLua_wxRendererVersion_Get_version(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRendererVersion_Get_version[1] = {{ wxLua_wxRendererVersion_Get_version, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRendererVersion_Get_version }};
-//     %member const int version;
+//     const int version;
 static int LUACALL wxLua_wxRendererVersion_Get_version(lua_State *L)
 {
     // get this

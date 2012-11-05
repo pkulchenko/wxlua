@@ -5142,7 +5142,7 @@ int wxluatype_wxLanguageInfo = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLanguageInfo_Get_CanonicalName[] = { &wxluatype_wxLanguageInfo, NULL };
 static int LUACALL wxLua_wxLanguageInfo_Get_CanonicalName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLanguageInfo_Get_CanonicalName[1] = {{ wxLua_wxLanguageInfo_Get_CanonicalName, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLanguageInfo_Get_CanonicalName }};
-//     %member wxString CanonicalName;         // Canonical name, e.g. fr_FR
+//     wxString CanonicalName;         // Canonical name, e.g. fr_FR
 static int LUACALL wxLua_wxLanguageInfo_Get_CanonicalName(lua_State *L)
 {
     // get this
@@ -5156,7 +5156,7 @@ static int LUACALL wxLua_wxLanguageInfo_Get_CanonicalName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLanguageInfo_Get_Description[] = { &wxluatype_wxLanguageInfo, NULL };
 static int LUACALL wxLua_wxLanguageInfo_Get_Description(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLanguageInfo_Get_Description[1] = {{ wxLua_wxLanguageInfo_Get_Description, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLanguageInfo_Get_Description }};
-//     %member wxString Description;           // human-readable name of the language
+//     wxString Description;           // human-readable name of the language
 static int LUACALL wxLua_wxLanguageInfo_Get_Description(lua_State *L)
 {
     // get this
@@ -5170,7 +5170,7 @@ static int LUACALL wxLua_wxLanguageInfo_Get_Description(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLanguageInfo_Get_Language[] = { &wxluatype_wxLanguageInfo, NULL };
 static int LUACALL wxLua_wxLanguageInfo_Get_Language(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLanguageInfo_Get_Language[1] = {{ wxLua_wxLanguageInfo_Get_Language, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLanguageInfo_Get_Language }};
-//     %member int Language;                   // wxLanguage id
+//     int Language;                   // wxLanguage id
 static int LUACALL wxLua_wxLanguageInfo_Get_Language(lua_State *L)
 {
     // get this
@@ -5186,7 +5186,7 @@ static int LUACALL wxLua_wxLanguageInfo_Get_Language(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLanguageInfo_Get_LayoutDirection[] = { &wxluatype_wxLanguageInfo, NULL };
 static int LUACALL wxLua_wxLanguageInfo_Get_LayoutDirection(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLanguageInfo_Get_LayoutDirection[1] = {{ wxLua_wxLanguageInfo_Get_LayoutDirection, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLanguageInfo_Get_LayoutDirection }};
-//     %wxchkver_2_8 %member wxLayoutDirection LayoutDirection;
+//     %wxchkver_2_8 wxLayoutDirection LayoutDirection;
 static int LUACALL wxLua_wxLanguageInfo_Get_LayoutDirection(lua_State *L)
 {
     // get this
@@ -5206,7 +5206,7 @@ static int LUACALL wxLua_wxLanguageInfo_Get_LayoutDirection(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLanguageInfo_Set_CanonicalName[] = { &wxluatype_wxLanguageInfo, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxLanguageInfo_Set_CanonicalName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLanguageInfo_Set_CanonicalName[1] = {{ wxLua_wxLanguageInfo_Set_CanonicalName, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxLanguageInfo_Set_CanonicalName }};
-//     %member wxString CanonicalName;         // Canonical name, e.g. fr_FR
+//     wxString CanonicalName;         // Canonical name, e.g. fr_FR
 static int LUACALL wxLua_wxLanguageInfo_Set_CanonicalName(lua_State *L)
 {
     // get the string value
@@ -5221,7 +5221,7 @@ static int LUACALL wxLua_wxLanguageInfo_Set_CanonicalName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLanguageInfo_Set_Description[] = { &wxluatype_wxLanguageInfo, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxLanguageInfo_Set_Description(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLanguageInfo_Set_Description[1] = {{ wxLua_wxLanguageInfo_Set_Description, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxLanguageInfo_Set_Description }};
-//     %member wxString Description;           // human-readable name of the language
+//     wxString Description;           // human-readable name of the language
 static int LUACALL wxLua_wxLanguageInfo_Set_Description(lua_State *L)
 {
     // get the string value
@@ -5236,7 +5236,7 @@ static int LUACALL wxLua_wxLanguageInfo_Set_Description(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLanguageInfo_Set_Language[] = { &wxluatype_wxLanguageInfo, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxLanguageInfo_Set_Language(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLanguageInfo_Set_Language[1] = {{ wxLua_wxLanguageInfo_Set_Language, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxLanguageInfo_Set_Language }};
-//     %member int Language;                   // wxLanguage id
+//     int Language;                   // wxLanguage id
 static int LUACALL wxLua_wxLanguageInfo_Set_Language(lua_State *L)
 {
     // get the number value
@@ -5253,7 +5253,7 @@ static int LUACALL wxLua_wxLanguageInfo_Set_Language(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLanguageInfo_Set_LayoutDirection[] = { &wxluatype_wxLanguageInfo, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxLanguageInfo_Set_LayoutDirection(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLanguageInfo_Set_LayoutDirection[1] = {{ wxLua_wxLanguageInfo_Set_LayoutDirection, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxLanguageInfo_Set_LayoutDirection }};
-//     %wxchkver_2_8 %member wxLayoutDirection LayoutDirection;
+//     %wxchkver_2_8 wxLayoutDirection LayoutDirection;
 static int LUACALL wxLua_wxLanguageInfo_Set_LayoutDirection(lua_State *L)
 {
     // get the enum value

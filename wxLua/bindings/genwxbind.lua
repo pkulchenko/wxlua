@@ -2579,11 +2579,29 @@ function ParseData(interfaceData)
                                     print("ERROR: Method requires DataType to be assigned. Tag='"..tag.."'. "..LineTableErrString(lineTable))
                                 end
 
-                                lineState.Action = "action_methodbracket"
-                                lineState.ActionMandatory = true
+                                if lineTags[t+1] == ";" then
+
+                                    t = t + 1
+                                    tag = lineTags[t]
+
+                                    lineState.DefType = "deftype_%member"
+                                    lineState.Action = nil
+                                    lineState.ActionMandatory = false
+
+                                    if (parseState.ObjectStack[1].ObjType ~= "objtype_class") and (parseState.ObjectStack[1].ObjType ~= "objtype_struct") then
+                                        print("ERROR: %member is not used for a class or struct. "..LineTableErrString(lineTable))
+                                    end
+
+                                else
+
+                                    lineState.Action = "action_methodbracket"
+                                    lineState.ActionMandatory = true
+
+                                end
                             end
 
                         elseif lineState.Action == "action_methodbracket" then
+
                                 if tag ~= "(" then
                                     local msg = "(Name="..tostring(lineState.Name).."; DataType="..tostring(lineState.DataType)..")"
                                     print("ERROR: Expected Method Tag '(', got Tag='"..tag.."'. "..msg.." "..LineTableErrString(lineTable))

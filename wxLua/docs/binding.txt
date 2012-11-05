@@ -489,12 +489,12 @@ Other bindings would, of course, use their own tables.
 -   If the enum is a part of a class use *"enum ClassName::Enum_Type"*
     and the enums will be accessed in wxLua as *"wx.ClassName.ENUM_ITEM1"*.
 
-***%function FUNCTION_NAME(int value, ...)***
+***functions : return_type FUNCTION_NAME(int value, ...)***
 
 -   Declares a global C style function in the binding table which can be
     accessed in wxLua using *wx.FUNCTION_NAME(int value, ...)*.
 -   An example of this is in *bindings/wxwidgets/datetime.i*,
-    *"%function wxString wxNow()"*.
+    *"wxString wxNow()"*.
 
 ***%gc***
 
@@ -548,10 +548,9 @@ Other bindings would, of course, use their own tables.
 
 -   Includes another wrapper file that is added to the list of files to process.
 
-***%member int m_x***
+***member variables of classes : int m_x***
 
 -   Declare a property to access member variables in a class.
--   This tag must be used inside of the *class* tag.
 -   The variables will be accessible only using the '.' convention as if
     they were table members.
 -   If the variable is const, it is only read-only.
@@ -568,11 +567,10 @@ Other bindings would, of course, use their own tables.
     class as well as properties to access them as if they were table
     members, print(pt:x) and "pt:x = 5".
 
-***%operator bool operator==(const wxPoint& otherPt) const***
+***operators for classes : bool operator==(const wxPoint& otherPt) const***
 
 -   Declare that the operator == is defined for the class which can be
     accessed in wxLua using *point:op_eq(otherPoint)*.
--   This tag must be used inside of the class tag.
 -   The functions that will be generated for the declared operators use
     the semantics given below.
 -   The reason that the operators are not overridden in Lua using the

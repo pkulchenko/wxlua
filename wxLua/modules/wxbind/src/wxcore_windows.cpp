@@ -264,7 +264,7 @@ int wxluatype_wxVisualAttributes = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxVisualAttributes_Get_colBg[] = { &wxluatype_wxVisualAttributes, NULL };
 static int LUACALL wxLua_wxVisualAttributes_Get_colBg(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxVisualAttributes_Get_colBg[1] = {{ wxLua_wxVisualAttributes_Get_colBg, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxVisualAttributes_Get_colBg }};
-//     %member wxColour colBg
+//     wxColour colBg;
 static int LUACALL wxLua_wxVisualAttributes_Get_colBg(lua_State *L)
 {
     // get this
@@ -278,7 +278,7 @@ static int LUACALL wxLua_wxVisualAttributes_Get_colBg(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxVisualAttributes_Get_colFg[] = { &wxluatype_wxVisualAttributes, NULL };
 static int LUACALL wxLua_wxVisualAttributes_Get_colFg(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxVisualAttributes_Get_colFg[1] = {{ wxLua_wxVisualAttributes_Get_colFg, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxVisualAttributes_Get_colFg }};
-//     %member wxColour colFg
+//     wxColour colFg;
 static int LUACALL wxLua_wxVisualAttributes_Get_colFg(lua_State *L)
 {
     // get this
@@ -295,7 +295,7 @@ static int LUACALL wxLua_wxVisualAttributes_Get_colFg(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxVisualAttributes_Get_font[] = { &wxluatype_wxVisualAttributes, NULL };
 static int LUACALL wxLua_wxVisualAttributes_Get_font(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxVisualAttributes_Get_font[1] = {{ wxLua_wxVisualAttributes_Get_font, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxVisualAttributes_Get_font }};
-//     %member wxFont font
+//     wxFont font;
 static int LUACALL wxLua_wxVisualAttributes_Get_font(lua_State *L)
 {
     // get this
@@ -312,7 +312,7 @@ static int LUACALL wxLua_wxVisualAttributes_Get_font(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxVisualAttributes_Set_colBg[] = { &wxluatype_wxVisualAttributes, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxVisualAttributes_Set_colBg(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxVisualAttributes_Set_colBg[1] = {{ wxLua_wxVisualAttributes_Set_colBg, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxVisualAttributes_Set_colBg }};
-//     %member wxColour colBg
+//     wxColour colBg;
 static int LUACALL wxLua_wxVisualAttributes_Set_colBg(lua_State *L)
 {
     // get the data type value
@@ -327,7 +327,7 @@ static int LUACALL wxLua_wxVisualAttributes_Set_colBg(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxVisualAttributes_Set_colFg[] = { &wxluatype_wxVisualAttributes, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxVisualAttributes_Set_colFg(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxVisualAttributes_Set_colFg[1] = {{ wxLua_wxVisualAttributes_Set_colFg, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxVisualAttributes_Set_colFg }};
-//     %member wxColour colFg
+//     wxColour colFg;
 static int LUACALL wxLua_wxVisualAttributes_Set_colFg(lua_State *L)
 {
     // get the data type value
@@ -345,7 +345,7 @@ static int LUACALL wxLua_wxVisualAttributes_Set_colFg(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxVisualAttributes_Set_font[] = { &wxluatype_wxVisualAttributes, &wxluatype_wxFont, NULL };
 static int LUACALL wxLua_wxVisualAttributes_Set_font(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxVisualAttributes_Set_font[1] = {{ wxLua_wxVisualAttributes_Set_font, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxVisualAttributes_Set_font }};
-//     %member wxFont font
+//     wxFont font;
 static int LUACALL wxLua_wxVisualAttributes_Set_font(lua_State *L)
 {
     // get the data type value

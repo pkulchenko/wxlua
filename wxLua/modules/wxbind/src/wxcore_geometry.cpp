@@ -141,7 +141,7 @@ static int LUACALL wxLua_wxPoint2DInt_GetVectorLength(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DInt_GetX[] = { &wxluatype_wxPoint2DInt, NULL };
 static int LUACALL wxLua_wxPoint2DInt_GetX(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DInt_GetX[1] = {{ wxLua_wxPoint2DInt_GetX, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPoint2DInt_GetX }};
-//     %rename X %member_func wxInt32 m_x
+//     %rename X %member_func wxInt32 m_x;
 static int LUACALL wxLua_wxPoint2DInt_GetX(lua_State *L)
 {
     // get this
@@ -155,7 +155,7 @@ static int LUACALL wxLua_wxPoint2DInt_GetX(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DInt_GetY[] = { &wxluatype_wxPoint2DInt, NULL };
 static int LUACALL wxLua_wxPoint2DInt_GetY(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DInt_GetY[1] = {{ wxLua_wxPoint2DInt_GetY, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPoint2DInt_GetY }};
-//     %rename Y %member_func wxInt32 m_y
+//     %rename Y %member_func wxInt32 m_y;
 static int LUACALL wxLua_wxPoint2DInt_GetY(lua_State *L)
 {
     // get this
@@ -215,7 +215,7 @@ static int LUACALL wxLua_wxPoint2DInt_SetVectorLength(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DInt_SetX[] = { &wxluatype_wxPoint2DInt, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPoint2DInt_SetX(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DInt_SetX[1] = {{ wxLua_wxPoint2DInt_SetX, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint2DInt_SetX }};
-//     %rename X %member_func wxInt32 m_x
+//     %rename X %member_func wxInt32 m_x;
 static int LUACALL wxLua_wxPoint2DInt_SetX(lua_State *L)
 {
     // get the number value
@@ -230,7 +230,7 @@ static int LUACALL wxLua_wxPoint2DInt_SetX(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DInt_SetY[] = { &wxluatype_wxPoint2DInt, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPoint2DInt_SetY(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DInt_SetY[1] = {{ wxLua_wxPoint2DInt_SetY, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint2DInt_SetY }};
-//     %rename Y %member_func wxInt32 m_y
+//     %rename Y %member_func wxInt32 m_y;
 static int LUACALL wxLua_wxPoint2DInt_SetY(lua_State *L)
 {
     // get the number value
@@ -640,7 +640,7 @@ static int LUACALL wxLua_wxPoint2DDouble_GetVectorLength(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DDouble_GetX[] = { &wxluatype_wxPoint2DDouble, NULL };
 static int LUACALL wxLua_wxPoint2DDouble_GetX(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DDouble_GetX[1] = {{ wxLua_wxPoint2DDouble_GetX, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPoint2DDouble_GetX }};
-//     %rename X %member_func wxDouble m_x
+//     %rename X %member_func wxDouble m_x;
 static int LUACALL wxLua_wxPoint2DDouble_GetX(lua_State *L)
 {
     // get this
@@ -654,7 +654,7 @@ static int LUACALL wxLua_wxPoint2DDouble_GetX(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DDouble_GetY[] = { &wxluatype_wxPoint2DDouble, NULL };
 static int LUACALL wxLua_wxPoint2DDouble_GetY(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DDouble_GetY[1] = {{ wxLua_wxPoint2DDouble_GetY, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPoint2DDouble_GetY }};
-//     %rename Y %member_func wxDouble m_y
+//     %rename Y %member_func wxDouble m_y;
 static int LUACALL wxLua_wxPoint2DDouble_GetY(lua_State *L)
 {
     // get this
@@ -700,7 +700,7 @@ static int LUACALL wxLua_wxPoint2DDouble_SetVectorLength(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DDouble_SetX[] = { &wxluatype_wxPoint2DDouble, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPoint2DDouble_SetX(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DDouble_SetX[1] = {{ wxLua_wxPoint2DDouble_SetX, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint2DDouble_SetX }};
-//     %rename X %member_func wxDouble m_x
+//     %rename X %member_func wxDouble m_x;
 static int LUACALL wxLua_wxPoint2DDouble_SetX(lua_State *L)
 {
     // get the number value
@@ -715,7 +715,7 @@ static int LUACALL wxLua_wxPoint2DDouble_SetX(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPoint2DDouble_SetY[] = { &wxluatype_wxPoint2DDouble, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPoint2DDouble_SetY(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPoint2DDouble_SetY[1] = {{ wxLua_wxPoint2DDouble_SetY, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPoint2DDouble_SetY }};
-//     %rename Y %member_func wxDouble m_y
+//     %rename Y %member_func wxDouble m_y;
 static int LUACALL wxLua_wxPoint2DDouble_SetY(lua_State *L)
 {
     // get the number value
@@ -1146,7 +1146,7 @@ static int LUACALL wxLua_wxRect2DDouble_GetCentre(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DDouble_GetHeight[] = { &wxluatype_wxRect2DDouble, NULL };
 static int LUACALL wxLua_wxRect2DDouble_GetHeight(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DDouble_GetHeight[1] = {{ wxLua_wxRect2DDouble_GetHeight, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRect2DDouble_GetHeight }};
-//     %rename Height %member_func wxDouble m_height
+//     %rename Height %member_func wxDouble m_height;
 static int LUACALL wxLua_wxRect2DDouble_GetHeight(lua_State *L)
 {
     // get this
@@ -1344,7 +1344,7 @@ static int LUACALL wxLua_wxRect2DDouble_GetTop(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DDouble_GetWidth[] = { &wxluatype_wxRect2DDouble, NULL };
 static int LUACALL wxLua_wxRect2DDouble_GetWidth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DDouble_GetWidth[1] = {{ wxLua_wxRect2DDouble_GetWidth, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRect2DDouble_GetWidth }};
-//     %rename Width %member_func wxDouble m_width
+//     %rename Width %member_func wxDouble m_width;
 static int LUACALL wxLua_wxRect2DDouble_GetWidth(lua_State *L)
 {
     // get this
@@ -1358,7 +1358,7 @@ static int LUACALL wxLua_wxRect2DDouble_GetWidth(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DDouble_GetX[] = { &wxluatype_wxRect2DDouble, NULL };
 static int LUACALL wxLua_wxRect2DDouble_GetX(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DDouble_GetX[1] = {{ wxLua_wxRect2DDouble_GetX, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRect2DDouble_GetX }};
-//     %rename X %member_func wxDouble m_x
+//     %rename X %member_func wxDouble m_x;
 static int LUACALL wxLua_wxRect2DDouble_GetX(lua_State *L)
 {
     // get this
@@ -1372,7 +1372,7 @@ static int LUACALL wxLua_wxRect2DDouble_GetX(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DDouble_GetY[] = { &wxluatype_wxRect2DDouble, NULL };
 static int LUACALL wxLua_wxRect2DDouble_GetY(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DDouble_GetY[1] = {{ wxLua_wxRect2DDouble_GetY, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRect2DDouble_GetY }};
-//     %rename Y %member_func wxDouble m_y
+//     %rename Y %member_func wxDouble m_y;
 static int LUACALL wxLua_wxRect2DDouble_GetY(lua_State *L)
 {
     // get this
@@ -1707,7 +1707,7 @@ static int LUACALL wxLua_wxRect2DDouble_SetCentre(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DDouble_SetHeight[] = { &wxluatype_wxRect2DDouble, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxRect2DDouble_SetHeight(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DDouble_SetHeight[1] = {{ wxLua_wxRect2DDouble_SetHeight, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRect2DDouble_SetHeight }};
-//     %rename Height %member_func wxDouble m_height
+//     %rename Height %member_func wxDouble m_height;
 static int LUACALL wxLua_wxRect2DDouble_SetHeight(lua_State *L)
 {
     // get the number value
@@ -1834,7 +1834,7 @@ static int LUACALL wxLua_wxRect2DDouble_SetTop(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DDouble_SetWidth[] = { &wxluatype_wxRect2DDouble, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxRect2DDouble_SetWidth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DDouble_SetWidth[1] = {{ wxLua_wxRect2DDouble_SetWidth, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRect2DDouble_SetWidth }};
-//     %rename Width %member_func wxDouble m_width
+//     %rename Width %member_func wxDouble m_width;
 static int LUACALL wxLua_wxRect2DDouble_SetWidth(lua_State *L)
 {
     // get the number value
@@ -1849,7 +1849,7 @@ static int LUACALL wxLua_wxRect2DDouble_SetWidth(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DDouble_SetX[] = { &wxluatype_wxRect2DDouble, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxRect2DDouble_SetX(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DDouble_SetX[1] = {{ wxLua_wxRect2DDouble_SetX, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRect2DDouble_SetX }};
-//     %rename X %member_func wxDouble m_x
+//     %rename X %member_func wxDouble m_x;
 static int LUACALL wxLua_wxRect2DDouble_SetX(lua_State *L)
 {
     // get the number value
@@ -1864,7 +1864,7 @@ static int LUACALL wxLua_wxRect2DDouble_SetX(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DDouble_SetY[] = { &wxluatype_wxRect2DDouble, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxRect2DDouble_SetY(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DDouble_SetY[1] = {{ wxLua_wxRect2DDouble_SetY, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRect2DDouble_SetY }};
-//     %rename Y %member_func wxDouble m_y
+//     %rename Y %member_func wxDouble m_y;
 static int LUACALL wxLua_wxRect2DDouble_SetY(lua_State *L)
 {
     // get the number value
@@ -2237,7 +2237,7 @@ static int LUACALL wxLua_wxRect2DInt_GetCentre(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DInt_GetHeight[] = { &wxluatype_wxRect2DInt, NULL };
 static int LUACALL wxLua_wxRect2DInt_GetHeight(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DInt_GetHeight[1] = {{ wxLua_wxRect2DInt_GetHeight, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRect2DInt_GetHeight }};
-//     %rename Height %member_func wxInt32 m_height
+//     %rename Height %member_func wxInt32 m_height;
 static int LUACALL wxLua_wxRect2DInt_GetHeight(lua_State *L)
 {
     // get this
@@ -2435,7 +2435,7 @@ static int LUACALL wxLua_wxRect2DInt_GetTop(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DInt_GetWidth[] = { &wxluatype_wxRect2DInt, NULL };
 static int LUACALL wxLua_wxRect2DInt_GetWidth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DInt_GetWidth[1] = {{ wxLua_wxRect2DInt_GetWidth, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRect2DInt_GetWidth }};
-//     %rename Width %member_func wxInt32 m_width
+//     %rename Width %member_func wxInt32 m_width;
 static int LUACALL wxLua_wxRect2DInt_GetWidth(lua_State *L)
 {
     // get this
@@ -2449,7 +2449,7 @@ static int LUACALL wxLua_wxRect2DInt_GetWidth(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DInt_GetX[] = { &wxluatype_wxRect2DInt, NULL };
 static int LUACALL wxLua_wxRect2DInt_GetX(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DInt_GetX[1] = {{ wxLua_wxRect2DInt_GetX, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRect2DInt_GetX }};
-//     %rename X %member_func wxInt32 m_x
+//     %rename X %member_func wxInt32 m_x;
 static int LUACALL wxLua_wxRect2DInt_GetX(lua_State *L)
 {
     // get this
@@ -2463,7 +2463,7 @@ static int LUACALL wxLua_wxRect2DInt_GetX(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DInt_GetY[] = { &wxluatype_wxRect2DInt, NULL };
 static int LUACALL wxLua_wxRect2DInt_GetY(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DInt_GetY[1] = {{ wxLua_wxRect2DInt_GetY, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRect2DInt_GetY }};
-//     %rename Y %member_func wxInt32 m_y
+//     %rename Y %member_func wxInt32 m_y;
 static int LUACALL wxLua_wxRect2DInt_GetY(lua_State *L)
 {
     // get this
@@ -2798,7 +2798,7 @@ static int LUACALL wxLua_wxRect2DInt_SetCentre(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DInt_SetHeight[] = { &wxluatype_wxRect2DInt, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxRect2DInt_SetHeight(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DInt_SetHeight[1] = {{ wxLua_wxRect2DInt_SetHeight, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRect2DInt_SetHeight }};
-//     %rename Height %member_func wxInt32 m_height
+//     %rename Height %member_func wxInt32 m_height;
 static int LUACALL wxLua_wxRect2DInt_SetHeight(lua_State *L)
 {
     // get the number value
@@ -2925,7 +2925,7 @@ static int LUACALL wxLua_wxRect2DInt_SetTop(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DInt_SetWidth[] = { &wxluatype_wxRect2DInt, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxRect2DInt_SetWidth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DInt_SetWidth[1] = {{ wxLua_wxRect2DInt_SetWidth, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRect2DInt_SetWidth }};
-//     %rename Width %member_func wxInt32 m_width
+//     %rename Width %member_func wxInt32 m_width;
 static int LUACALL wxLua_wxRect2DInt_SetWidth(lua_State *L)
 {
     // get the number value
@@ -2940,7 +2940,7 @@ static int LUACALL wxLua_wxRect2DInt_SetWidth(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DInt_SetX[] = { &wxluatype_wxRect2DInt, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxRect2DInt_SetX(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DInt_SetX[1] = {{ wxLua_wxRect2DInt_SetX, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRect2DInt_SetX }};
-//     %rename X %member_func wxInt32 m_x
+//     %rename X %member_func wxInt32 m_x;
 static int LUACALL wxLua_wxRect2DInt_SetX(lua_State *L)
 {
     // get the number value
@@ -2955,7 +2955,7 @@ static int LUACALL wxLua_wxRect2DInt_SetX(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect2DInt_SetY[] = { &wxluatype_wxRect2DInt, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxRect2DInt_SetY(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect2DInt_SetY[1] = {{ wxLua_wxRect2DInt_SetY, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRect2DInt_SetY }};
-//     %rename Y %member_func wxInt32 m_y
+//     %rename Y %member_func wxInt32 m_y;
 static int LUACALL wxLua_wxRect2DInt_SetY(lua_State *L)
 {
     // get the number value

@@ -2094,7 +2094,7 @@ int wxluatype_wxImageHistogramEntry = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxImageHistogramEntry_Get_index[] = { &wxluatype_wxImageHistogramEntry, NULL };
 static int LUACALL wxLua_wxImageHistogramEntry_Get_index(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxImageHistogramEntry_Get_index[1] = {{ wxLua_wxImageHistogramEntry_Get_index, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxImageHistogramEntry_Get_index }};
-//     %member unsigned long index // GetIndex() only, SetIndex(idx) is not allowed
+//     unsigned long index; // GetIndex() only, SetIndex(idx) is not allowed
 static int LUACALL wxLua_wxImageHistogramEntry_Get_index(lua_State *L)
 {
     // get this
@@ -2108,7 +2108,7 @@ static int LUACALL wxLua_wxImageHistogramEntry_Get_index(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxImageHistogramEntry_Get_value[] = { &wxluatype_wxImageHistogramEntry, NULL };
 static int LUACALL wxLua_wxImageHistogramEntry_Get_value(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxImageHistogramEntry_Get_value[1] = {{ wxLua_wxImageHistogramEntry_Get_value, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxImageHistogramEntry_Get_value }};
-//     %member unsigned long value // GetValue() and SetValue(val );
+//     unsigned long value; // GetValue() and SetValue(val );
 static int LUACALL wxLua_wxImageHistogramEntry_Get_value(lua_State *L)
 {
     // get this
@@ -2122,7 +2122,7 @@ static int LUACALL wxLua_wxImageHistogramEntry_Get_value(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxImageHistogramEntry_Set_index[] = { &wxluatype_wxImageHistogramEntry, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxImageHistogramEntry_Set_index(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxImageHistogramEntry_Set_index[1] = {{ wxLua_wxImageHistogramEntry_Set_index, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxImageHistogramEntry_Set_index }};
-//     %member unsigned long index // GetIndex() only, SetIndex(idx) is not allowed
+//     unsigned long index; // GetIndex() only, SetIndex(idx) is not allowed
 static int LUACALL wxLua_wxImageHistogramEntry_Set_index(lua_State *L)
 {
     // get the number value
@@ -2137,7 +2137,7 @@ static int LUACALL wxLua_wxImageHistogramEntry_Set_index(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxImageHistogramEntry_Set_value[] = { &wxluatype_wxImageHistogramEntry, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxImageHistogramEntry_Set_value(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxImageHistogramEntry_Set_value[1] = {{ wxLua_wxImageHistogramEntry_Set_value, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxImageHistogramEntry_Set_value }};
-//     %member unsigned long value // GetValue() and SetValue(val );
+//     unsigned long value; // GetValue() and SetValue(val );
 static int LUACALL wxLua_wxImageHistogramEntry_Set_value(lua_State *L)
 {
     // get the number value

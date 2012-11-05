@@ -45,6 +45,7 @@
    - Remove the keyword %function before all global 'C' style functions.
    - Remove the keyword %operator before all class member operator functions.
    - Remove the keyword %constructor before all class constructor functions.
+   - Remove the keyword %member before all class member variables.
 
 
  version 2.8.12.2 (released 7/26/2012)

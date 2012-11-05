@@ -33,8 +33,8 @@ class %delete wxPoint
     // wxLua added function
     void Set(int x, int y );
 
-    %rename X %member_func int x // GetX() and SetX(int x );
-    %rename Y %member_func int y // GetY() and SetY(int y );
+    %rename X %member_func int x; // GetX() and SetX(int x );
+    %rename Y %member_func int y; // GetY() and SetY(int y );
 
     wxPoint& operator=(const wxPoint& p) const;
 
@@ -76,8 +76,8 @@ class %delete wxPoint
 //{
 //    wxRealPoint(double xx = 0, double yy = 0 );
 //
-//    %rename X %member double x // GetX() and SetX(int x );
-//    %rename Y %member double y // GetY() and SetY(int y );
+//    %rename X double x; // GetX() and SetX(int x );
+//    %rename Y double y; // GetY() and SetY(int y );
 //};
 
 // ---------------------------------------------------------------------------
@@ -1691,9 +1691,9 @@ struct %delete wxSplitterRenderParams
     // the only way to initialize this struct is by using this ctor
     wxSplitterRenderParams(wxCoord widthSash_, wxCoord border_, bool isSens_ );
 
-    %member const wxCoord widthSash     // the width of the splitter sash
-    %member const wxCoord border        // the width of the border of the splitter window
-    %member const bool isHotSensitive   // true if the splitter changes its appearance when the mouse is over it
+    const wxCoord widthSash;     // the width of the splitter sash
+    const wxCoord border;        // the width of the border of the splitter window
+    const bool isHotSensitive;   // true if the splitter changes its appearance when the mouse is over it
 };
 
 
@@ -1702,13 +1702,13 @@ struct %delete wxHeaderButtonParams
 {
     wxHeaderButtonParams( );
 
-    %member wxColour    m_arrowColour;
-    %member wxColour    m_selectionColour;
-    %member wxString    m_labelText;
-    %member wxFont      m_labelFont;
-    %member wxColour    m_labelColour;
-    %member wxBitmap    m_labelBitmap;
-    %member int         m_labelAlignment;
+    wxColour    m_arrowColour;
+    wxColour    m_selectionColour;
+    wxString    m_labelText;
+    wxFont      m_labelFont;
+    wxColour    m_labelColour;
+    wxBitmap    m_labelBitmap;
+    int         m_labelAlignment;
 };
 
 enum wxHeaderSortIconType
@@ -1737,8 +1737,8 @@ struct %delete wxRendererVersion
     // check if the given version is compatible with the current one
     static bool IsCompatible(const wxRendererVersion& ver );
 
-    %member const int version;
-    %member const int age;
+    const int version;
+    const int age;
 };
 
 

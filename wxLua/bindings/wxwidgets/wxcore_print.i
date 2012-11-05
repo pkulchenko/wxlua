@@ -86,7 +86,7 @@ class %delete wxLuaPrintout : public wxPrintout
     // This base class function appends "-Base" to the val string and returns it.
     virtual wxString TestVirtualFunctionBinding(const wxString& val); // { return val + wxT("-Base"); }
 
-    %member static int ms_test_int
+    static int ms_test_int;
 };
 
 

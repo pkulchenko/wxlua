@@ -231,14 +231,14 @@ class %delete wxImage : public wxObject
 class %delete wxImageHistogramEntry
 {
     wxImageHistogramEntry( );
-    %member unsigned long index // GetIndex() only, SetIndex(idx) is not allowed
-    %member unsigned long value // GetValue() and SetValue(val );
+    unsigned long index; // GetIndex() only, SetIndex(idx) is not allowed
+    unsigned long value; // GetValue() and SetValue(val );
 };
 
 class %delete wxImageHistogram::iterator
 {
-    %member long first
-    %member wxImageHistogramEntry second
+    long first;
+    wxImageHistogramEntry second;
 
     // operator used to compare with wxImageHistogram::end() iterator
     bool operator==(const wxImageHistogram::iterator& other) const;

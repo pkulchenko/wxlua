@@ -365,7 +365,7 @@ static int LUACALL wxLua_wxLuaPrintout_GetID(lua_State *L)
 
 static int LUACALL wxLua_wxLuaPrintout_Get_ms_test_int(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaPrintout_Get_ms_test_int[1] = {{ wxLua_wxLuaPrintout_Get_ms_test_int, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, g_wxluaargtypeArray_None }};
-//     %member static int ms_test_int
+//     static int ms_test_int;
 static int LUACALL wxLua_wxLuaPrintout_Get_ms_test_int(lua_State *L)
 {
     // push the result number
@@ -401,7 +401,7 @@ static int LUACALL wxLua_wxLuaPrintout_SetPageInfo(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaPrintout_Set_ms_test_int[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxLuaPrintout_Set_ms_test_int(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaPrintout_Set_ms_test_int[1] = {{ wxLua_wxLuaPrintout_Set_ms_test_int, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 2, 2, s_wxluatypeArray_wxLua_wxLuaPrintout_Set_ms_test_int }};
-//     %member static int ms_test_int
+//     static int ms_test_int;
 static int LUACALL wxLua_wxLuaPrintout_Set_ms_test_int(lua_State *L)
 {
     // get the number value
