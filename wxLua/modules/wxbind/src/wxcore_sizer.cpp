@@ -4967,6 +4967,78 @@ int wxGBSizerItem_methodCount = sizeof(wxGBSizerItem_methods)/sizeof(wxLuaBindMe
 #endif  // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
 
 
+#if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
+// ---------------------------------------------------------------------------
+// Bind class wxWrapSizer
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxWrapSizer'
+int wxluatype_wxWrapSizer = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWrapSizer_InformFirstDirection[] = { &wxluatype_wxWrapSizer, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxWrapSizer_InformFirstDirection(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWrapSizer_InformFirstDirection[1] = {{ wxLua_wxWrapSizer_InformFirstDirection, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxWrapSizer_InformFirstDirection }};
+//     bool InformFirstDirection(int direction, int size, int availableOtherDir);
+static int LUACALL wxLua_wxWrapSizer_InformFirstDirection(lua_State *L)
+{
+    // int availableOtherDir
+    int availableOtherDir = (int)wxlua_getnumbertype(L, 4);
+    // int size
+    int size = (int)wxlua_getnumbertype(L, 3);
+    // int direction
+    int direction = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxWrapSizer * self = (wxWrapSizer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWrapSizer);
+    // call InformFirstDirection
+    bool returns = (self->InformFirstDirection(direction, size, availableOtherDir));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWrapSizer_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxWrapSizer_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWrapSizer_constructor[1] = {{ wxLua_wxWrapSizer_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxWrapSizer_constructor }};
+//     wxWrapSizer(int orient = wxHORIZONTAL, int flags = wxWRAPSIZER_DEFAULT_FLAGS);
+static int LUACALL wxLua_wxWrapSizer_constructor(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int flags = wxWRAPSIZER_DEFAULT_FLAGS
+    int flags = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : wxWRAPSIZER_DEFAULT_FLAGS);
+    // int orient = wxHORIZONTAL
+    int orient = (argCount >= 1 ? (int)wxlua_getnumbertype(L, 1) : wxHORIZONTAL);
+    // call constructor
+    wxWrapSizer* returns = new wxWrapSizer(orient, flags);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxWrapSizer);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxWrapSizer_delete_function(void** p)
+{
+    wxWrapSizer* o = (wxWrapSizer*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxWrapSizer_methods[] = {
+    { "InformFirstDirection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWrapSizer_InformFirstDirection, 1, NULL },
+    { "wxWrapSizer", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxWrapSizer_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxWrapSizer_methodCount = sizeof(wxWrapSizer_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
+
+
 #if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxUSE_NOTEBOOK && (!wxCHECK_VERSION(2,6,0)))
 // ---------------------------------------------------------------------------
 // Bind class wxNotebookSizer

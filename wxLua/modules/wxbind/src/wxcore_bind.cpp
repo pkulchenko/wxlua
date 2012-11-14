@@ -1013,6 +1013,10 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
 
         { "wxEXPAND", wxEXPAND },
 
+#if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
+        { "wxEXTEND_LAST_ON_EACH_LINE", wxEXTEND_LAST_ON_EACH_LINE },
+#endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
+
 #if wxLUA_USE_wxColourPenBrush
         { "wxFDIAGONAL_HATCH", wxFDIAGONAL_HATCH },
 #endif // wxLUA_USE_wxColourPenBrush
@@ -1960,6 +1964,10 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxRB_SINGLE", wxRB_SINGLE },
 #endif // wxLUA_USE_wxRadioButton && wxUSE_RADIOBTN
 
+#if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
+        { "wxREMOVE_LEADING_SPACES", wxREMOVE_LEADING_SPACES },
+#endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
+
 #if wxCHECK_VERSION(2,8,8)
         { "wxRESERVE_SPACE_EVEN_IF_HIDDEN", wxRESERVE_SPACE_EVEN_IF_HIDDEN },
 #endif // wxCHECK_VERSION(2,8,8)
@@ -2473,6 +2481,11 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxWINDOW_VARIANT_MINI", wxWINDOW_VARIANT_MINI },
         { "wxWINDOW_VARIANT_NORMAL", wxWINDOW_VARIANT_NORMAL },
         { "wxWINDOW_VARIANT_SMALL", wxWINDOW_VARIANT_SMALL },
+
+#if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
+        { "wxWRAPSIZER_DEFAULT_FLAGS", wxWRAPSIZER_DEFAULT_FLAGS },
+#endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
+
         { "wxWS_EX_BLOCK_EVENTS", wxWS_EX_BLOCK_EVENTS },
         { "wxWS_EX_PROCESS_IDLE", wxWS_EX_PROCESS_IDLE },
         { "wxWS_EX_PROCESS_UI_UPDATES", wxWS_EX_PROCESS_UI_UPDATES },
@@ -4684,6 +4697,7 @@ static const char* wxluaclassname_wxWindowDestroyEvent = "wxWindowDestroyEvent";
 static const char* wxluaclassname_wxWindowDisabler = "wxWindowDisabler";
 static const char* wxluaclassname_wxWindowList = "wxWindowList";
 static const char* wxluaclassname_wxWindowUpdateLocker = "wxWindowUpdateLocker";
+static const char* wxluaclassname_wxWrapSizer = "wxWrapSizer";
 static const char* wxluaclassname_wxXPMHandler = "wxXPMHandler";
 
 static const char* wxluabaseclassnames_wxANIHandler[] = { wxluaclassname_wxCURHandler, NULL };
@@ -5186,6 +5200,8 @@ static const char* wxluabaseclassnames_wxWindowDestroyEvent[] = { wxluaclassname
 static wxLuaBindClass* wxluabaseclassbinds_wxWindowDestroyEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxWindowList[] = { wxluaclassname_wxList, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxWindowList[] = { NULL };
+static const char* wxluabaseclassnames_wxWrapSizer[] = { wxluaclassname_wxBoxSizer, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxWrapSizer[] = { NULL };
 static const char* wxluabaseclassnames_wxXPMHandler[] = { wxluaclassname_wxImageHandler, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxXPMHandler[] = { NULL };
 // ---------------------------------------------------------------------------
@@ -5468,6 +5484,12 @@ static wxLuaBindClass* wxluabaseclassbinds_wxXPMHandler[] = { NULL };
     extern int wxSizerItemList_methodCount;
     extern void wxLua_wxSizerItemList_delete_function(void** p);
 #endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
+
+#if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
+    extern wxLuaBindMethod wxWrapSizer_methods[];
+    extern int wxWrapSizer_methodCount;
+    extern void wxLua_wxWrapSizer_delete_function(void** p);
+#endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
 
 #if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxUSE_BUTTON)
     extern wxLuaBindMethod wxStdDialogButtonSizer_methods[];
@@ -7416,6 +7438,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #endif // wxLUA_USE_wxWindowList && !wxUSE_STL
 
         { wxluaclassname_wxWindowUpdateLocker, wxWindowUpdateLocker_methods, wxWindowUpdateLocker_methodCount, NULL, &wxluatype_wxWindowUpdateLocker, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxWindowUpdateLocker_delete_function, }, 
+
+#if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
+        { wxluaclassname_wxWrapSizer, wxWrapSizer_methods, wxWrapSizer_methodCount, CLASSINFO(wxWrapSizer), &wxluatype_wxWrapSizer, wxluabaseclassnames_wxWrapSizer, wxluabaseclassbinds_wxWrapSizer, NULL, NULL, NULL, 0, &wxLua_wxWrapSizer_delete_function, }, 
+#endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
 
 #if wxLUA_USE_wxImage && wxUSE_IMAGE
         { wxluaclassname_wxXPMHandler, wxXPMHandler_methods, wxXPMHandler_methodCount, CLASSINFO(wxXPMHandler), &wxluatype_wxXPMHandler, wxluabaseclassnames_wxXPMHandler, wxluabaseclassbinds_wxXPMHandler, NULL, NULL, NULL, 0, &wxLua_wxXPMHandler_delete_function, }, 

@@ -118,6 +118,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/gbsizer.h"
 #endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
 
+#if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
+    #include "wx/wrapsizer.h"
+#endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
+
 #if (wxLUA_USE_wxSizer) && (wxLUA_USE_wxLayoutConstraints && (!wxCHECK_VERSION(2,6,0)))
     #include "wx/layout.h"
 #endif // (wxLUA_USE_wxSizer) && (wxLUA_USE_wxLayoutConstraints && (!wxCHECK_VERSION(2,6,0)))
@@ -675,6 +679,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSizerItem;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSizerItemList;
 #endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
+
+#if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWrapSizer;
+#endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
 
 #if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxUSE_BUTTON)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStdDialogButtonSizer;

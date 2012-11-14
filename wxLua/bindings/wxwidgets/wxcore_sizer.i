@@ -372,6 +372,30 @@ class wxGBSizerItem : public wxSizerItem
 };
 
 // ---------------------------------------------------------------------------
+// wxWrapSizer
+
+#if %wxchkver_2_9
+
+#include "wx/wrapsizer.h"
+
+enum
+{
+    wxEXTEND_LAST_ON_EACH_LINE,
+    wxREMOVE_LEADING_SPACES,
+    wxWRAPSIZER_DEFAULT_FLAGS
+};
+
+class wxWrapSizer : public wxBoxSizer
+{
+    wxWrapSizer(int orient = wxHORIZONTAL, int flags = wxWRAPSIZER_DEFAULT_FLAGS);
+    
+    // This will probably not be needed to be called by user code.
+    bool InformFirstDirection(int direction, int size, int availableOtherDir);
+};
+
+#endif
+
+// ---------------------------------------------------------------------------
 // wxNotebookSizer - deprecated
 
 #if wxUSE_NOTEBOOK && (!%wxchkver_2_6 );

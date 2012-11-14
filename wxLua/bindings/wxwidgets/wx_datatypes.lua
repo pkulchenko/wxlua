@@ -5097,6 +5097,15 @@ wx_dataTypeTable =
     Name = "wxWord",
     ValueType = "number",
   },
+  wxWrapSizer = {
+    BaseClasses = {
+      [1] = "wxBoxSizer",
+    },
+    Condition = "(wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))",
+    IsNumber = false,
+    Name = "wxWrapSizer",
+    ValueType = "class",
+  },
   wxXPMHandler = {
     BaseClasses = {
       [1] = "wxImageHandler",
