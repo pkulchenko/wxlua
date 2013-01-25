@@ -144,7 +144,10 @@ class %delete wxGridCellEditor : public wxGridCellWorker
     //virtual wxGridCellEditor *Clone() const;
     virtual void SetSize(const wxRect& rect );
     virtual void Show(bool show, wxGridCellAttr *attr = NULL );
-    virtual void PaintBackground(const wxRect& rectCell, wxGridCellAttr *attr );
+    
+    !%wxchkver_2_9_5 virtual void PaintBackground(const wxRect& rectCell, wxGridCellAttr *attr );
+    %wxchkver_2_9_5  virtual void PaintBackground(const wxRect& rectCell, const wxGridCellAttr &attr );
+
     virtual bool IsAcceptedKey(wxKeyEvent& event );
     virtual void StartingKey(wxKeyEvent& event );
     virtual void StartingClick( );
