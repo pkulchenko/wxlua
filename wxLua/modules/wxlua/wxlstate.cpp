@@ -357,6 +357,12 @@ void LUACALL wxlua_argerrormsg(lua_State *L, const wxString& msg_)
 
 void* LUACALL wxlua_touserdata(lua_State *L, int stack_idx, bool null_ptr /*= false*/)
 {
+    if (lua_islightuserdata(L, stack_idx) != 0)
+    {
+        // can't NULL the ptr, just return the lightuserdata as is
+        return lua_touserdata(L, stack_idx);
+    }
+
     void *pdata = NULL;
     void **ptr = (void **)lua_touserdata(L, stack_idx);
 
