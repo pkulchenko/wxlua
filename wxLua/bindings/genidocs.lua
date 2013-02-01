@@ -54,16 +54,16 @@ function GenerateTestColours(fileTable)
     table.insert(fileTable, MakeColour("Comments - //", colours.comment).."<br>")
     table.insert(fileTable, MakeColour("Block Comments - /* ... */", colours.blkcomment).."<br>")
 
-    table.insert(fileTable, MakeColour("Enums - %enum", colours.enum).."<br>")
-    table.insert(fileTable, MakeColour("Defines - %define [_string] [_object] [_pointer]", colours.define).."<br>")
+    table.insert(fileTable, MakeColour("Enums - enum", colours.enum).."<br>")
+    table.insert(fileTable, MakeColour("Defines - #define [_string] [_object] [_pointer]", colours.define).."<br>")
     table.insert(fileTable, MakeColour("Events - %define_event", colours.event).."<br>")
     table.insert(fileTable, MakeColour("Functions - %function", colours.func).."<br>")
 
-    table.insert(fileTable, MakeColour("Classes - %class", colours.class).."<br>")
+    table.insert(fileTable, MakeColour("Classes - class", colours.class).."<br>")
     table.insert(fileTable, MakeColour("Class Members - %member", colours.member).."<br>")
     table.insert(fileTable, MakeColour("Renamed Functions - %rename", colours.rename).."<br>")
     table.insert(fileTable, MakeColour("Overridden Functions - %override", colours.override).."<br>")
-    table.insert(fileTable, MakeColour("Operator Functions - %operator", colours.operator).."<br><br>")
+    table.insert(fileTable, MakeColour("Operator Functions - operator", colours.operator).."<br><br>")
 end
 
 
@@ -316,7 +316,11 @@ function ReadInterfaceFiles(fileTable)
         table.insert(fileTable, "<h2>"..MakeTag(MakeTagName(filename), filename).." - Lua table = '"..interface_fileTable[i].namespace.."'</h2>")
         table.insert(fileTable, "<HR>\n")
 
-        local in_blk_comment = false
+        local in_comment  = false
+        local in_class    = false
+        local in_enum     = false
+        local brace_count = 0
+        local in_block    = false
 
         local line_n = 0
 
@@ -334,31 +338,45 @@ function ReadInterfaceFiles(fileTable)
                     out_line = string.sub(out_line, 1, t[n].s-1)..MakeColour(string.sub(out_line, t[n].s), colours.comment)
                     break
                 elseif t[n].txt == "/*" then
-                    if in_blk_comment then print("ERROR mismatched /* */ in :", filename, line_n, line) end
+                    if in_comment then print("ERROR mismatched /* */ in :", filename, line_n, line) end
 
-                    in_blk_comment = true
+                    in_comment = true
                     out_line = string.sub(out_line, 1, t[n].s-1).."<font color=#"..colours.blkcomment..">"..string.sub(out_line, t[n].s)
                     t = GetAllComments(out_line)
                 elseif t[n].txt == "*/" then
-                    if not in_blk_comment then print("ERROR mismatched /* */ in :", filename, line_n, line) end
-                    in_blk_comment = false
+                    if not in_comment then print("ERROR mismatched /* */ in :", filename, line_n, line) end
+                    in_comment = false
                     out_line = string.sub(out_line, 1, t[n].s+1).."</font>"..string.sub(out_line, t[n].s+2)
                     t = GetAllComments(out_line)
                 end
             end
 
-            local class_pos, class_pos2   = string.find(line, "%class", 1, 1)
-            local enum_pos,  enum_pos2    = string.find(line, "%enum", 1, 1)
+            local class_pos, class_pos2 = string.find(line, "class ", 1, 1)
+            local enum_pos,  enum_pos2  = string.find(line, "enum ", 1, 1)
 
             if not class_pos then
-                class_pos, class_pos2   = string.find(line, "%struct", 1, 1)
+                class_pos, class_pos2 = string.find(line, "struct ", 1, 1)
             end
 
-            local start_block = nil
-            local end_block   = nil
+            local brace_open_pos  = string.find(line, "{", 1, 1)
+            local brace_close_pos = string.find(line, "}", 1, 1)
 
-            if (class_pos and (class_pos < comment_pos)) or (enum_pos and (enum_pos < comment_pos)) then
-                start_block = true
+            if (brace_open_pos and (brace_open_pos < comment_pos)) then
+                brace_count = brace_count + 1
+            end
+            if (brace_close_pos and (brace_close_pos < comment_pos)) then
+                brace_count = brace_count - 1
+            end
+
+            if (brace_count < 0) then
+                print("ERROR - brace mismatch ", filename, line_n, "'"..line.."'") 
+            end
+
+            if (class_pos and (class_pos < comment_pos)) or 
+               (enum_pos  and (enum_pos  < comment_pos)) then
+
+                in_class = (class_pos ~= nil)
+                in_enum  = (enum_pos  ~= nil)
 
                 -- find this class not the base class
                 local comma = string.find(line, ",", 1, 1)
@@ -388,17 +406,10 @@ function ReadInterfaceFiles(fileTable)
             else
                 -- priortize the colouring so we don't have to check for every single case
 
-                if TagIsBefore(line, "%endclass", comment_pos)  then
-                    out_line = MakeColour(out_line, colours.class)
-                    end_block = true
-                    class_pos = string.find(line, "%endclass", 1, 1)
-                elseif TagIsBefore(line, "%endstruct", comment_pos)  then
-                    out_line = MakeColour(out_line, colours.class)
-                    end_block = true
-                    class_pos = string.find(line, "%endstruct", 1, 1)
-                elseif TagIsBefore(line, "%endenum", comment_pos)  then
-                    end_block = true
-                    enum_pos = string.find(line, "%endenum", 1, 1)
+                if TagIsBefore(line, "}", comment_pos) and (brace_count == 0) then
+                    --out_line = MakeColour(out_line, colours.class)
+                    --end_block = true
+                    --class_pos = string.find(line, "}", 1, 1)
                 elseif TagIsBefore(line, "%member", comment_pos) then
                     out_line = MakeColour(out_line, colours.member)
                 elseif TagIsBefore(line, "%rename", comment_pos) then
@@ -407,7 +418,7 @@ function ReadInterfaceFiles(fileTable)
                     out_line = MakeColour(out_line, colours.override)
                 elseif TagIsBefore(line, "%event", comment_pos) then
                     out_line = MakeColour(out_line, colours.event)
-                elseif TagIsBefore(line, "%define", comment_pos) then
+                elseif TagIsBefore(line, "#define", comment_pos) then
                     out_line = MakeColour(out_line, colours.define)
                 elseif TagIsBefore(line, "%function", comment_pos) then
                     out_line = MakeColour(out_line, colours.func)
@@ -459,10 +470,21 @@ function ReadInterfaceFiles(fileTable)
 
             local tail = "<br>"
 
+            local start_block = false
+            local end_block   = false
+
+            if (in_class or in_enum) and (not in_block) and (brace_count > 0) then
+                start_block = true
+            elseif (in_class or in_enum) and in_block and (brace_count == 0) then
+                end_block = true
+            end
+
             if start_block then
                 tail = "" -- don't add extra space since blockquote already gives a linebreak
 
-                if in_blk_comment then
+                in_block = true
+
+                if in_comment then
                     out_line = out_line.."</font>"
                 end
 
@@ -473,21 +495,27 @@ function ReadInterfaceFiles(fileTable)
                     out_line = out_line.."<font color=#"..colours.enum..">"
                 end
                 -- restart the block comment after blockquote, overrides enum colour
-                if in_blk_comment then
+                if in_comment then
                     out_line = out_line.."<font color=#"..colours.blkcomment..">"
                 end
             elseif end_block then
                 -- need to restart font color after blockquote for "tidy"
-                if class_pos then
-                    out_line = "</blockquote>"..MakeColour(out_line, colours.class)
+
+                in_block = false
+
+                if in_class then
+                    in_class = false
+                    out_line = "</blockquote>"..out_line -- MakeColour(out_line, colours.class)
                 end
-                if enum_pos then
-                    out_line = "</font>\n</blockquote>"..MakeColour(out_line, colours.enum)
+                if in_enum then
+                    in_enum = false
+                    out_line = "</font>\n</blockquote>"..out_line --MakeColour(out_line, colours.enum)
                 end
                 -- restart the block comment after blockquote
-                if in_blk_comment then
+                if in_comment then
                     out_line = "</font>"..out_line.."<font color=#"..colours.blkcomment..">"
                 end
+
             end
 
             table.insert(fileTable, out_line..tail)
