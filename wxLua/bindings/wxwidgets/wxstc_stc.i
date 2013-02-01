@@ -4,7 +4,7 @@
 // Created:     14/11/2001
 // Copyright:   (c) 2001-2002 Lomtick Software. All rights reserved.
 // Licence:     wxWidgets licence
-// wxWidgets:   Updated to 2.8.4
+// wxWidgets:   Updated to 2.8.12
 // ===========================================================================
 
 
@@ -60,13 +60,12 @@
 #define wxSTC_MARK_CIRCLEMINUSCONNECTED
 
 // Invisible mark that only sets the line background color.
-
-
 #define wxSTC_MARK_BACKGROUND
 #define wxSTC_MARK_DOTDOTDOT
 #define wxSTC_MARK_ARROWS
 #define wxSTC_MARK_PIXMAP
 #define wxSTC_MARK_FULLRECT
+#define wxSTC_MARK_CHARACTER
 
 #if %wxchkver_2_9_2
 #define wxSTC_MARK_LEFTRECT
@@ -74,7 +73,6 @@
 #define wxSTC_MARK_UNDERLINE
 #endif
 
-#define wxSTC_MARK_CHARACTER
 
 // Markers used for outlining column.
 #define wxSTC_MARKNUM_FOLDEREND
@@ -87,12 +85,10 @@
 #define wxSTC_MASK_FOLDERS
 #define wxSTC_MARGIN_SYMBOL
 #define wxSTC_MARGIN_NUMBER
-#if %wxchkver_2_9_2
-#define wxSTC_MARGIN_BACK
-#define wxSTC_MARGIN_FORE
-#define wxSTC_MARGIN_TEXT
-#define wxSTC_MARGIN_RTEXT
-#endif
+%wxchkver_2_8_12 #define wxSTC_MARGIN_BACK
+%wxchkver_2_8_12 #define wxSTC_MARGIN_FORE
+%wxchkver_2_9_2  #define wxSTC_MARGIN_TEXT
+%wxchkver_2_9_2  #define wxSTC_MARGIN_RTEXT
 
 // Styles in range 32..37 are predefined for parts of the UI and are not used as normal styles.
 // Styles 38 and 39 are for future use.
@@ -102,7 +98,7 @@
 #define wxSTC_STYLE_BRACEBAD
 #define wxSTC_STYLE_CONTROLCHAR
 #define wxSTC_STYLE_INDENTGUIDE
-%wxchkver_2_9_2 #define wxSTC_STYLE_CALLTIP
+%wxchkver_2_8_12 #define wxSTC_STYLE_CALLTIP
 #define wxSTC_STYLE_LASTPREDEFINED
 #define wxSTC_STYLE_MAX
 
@@ -141,6 +137,7 @@
 #define wxSTC_INDIC_STRIKE
 #define wxSTC_INDIC_HIDDEN
 #define wxSTC_INDIC_BOX
+%wxchkver_2_8_12 #define wxSTC_INDIC_ROUNDBOX
 #define wxSTC_INDIC0_MASK
 #define wxSTC_INDIC1_MASK
 #define wxSTC_INDIC2_MASK
@@ -233,6 +230,9 @@
 #define wxSTC_SEL_STREAM
 #define wxSTC_SEL_RECTANGLE
 #define wxSTC_SEL_LINES
+%wxchkver_2_8_12 #define wxSTC_ALPHA_TRANSPARENT
+%wxchkver_2_8_12 #define wxSTC_ALPHA_OPAQUE
+%wxchkver_2_8_12 #define wxSTC_ALPHA_NOALPHA
 
 // Maximum value of keywordSet parameter of SetKeyWords.
 #define wxSTC_KEYWORDSET_MAX
@@ -356,6 +356,9 @@
 #define wxSTC_LEX_FLAGSHIP
 #define wxSTC_LEX_CSOUND
 #define wxSTC_LEX_FREEBASIC
+%wxchkver_2_8_12 #define wxSTC_LEX_INNOSETUP
+%wxchkver_2_8_12 #define wxSTC_LEX_OPAL
+%wxchkver_2_8_12 #define wxSTC_LEX_SPICE
 
 // These are deprecated, STC_LEX_HTML should be used instead.
 !%wxchkver_2_8 #define wxSTC_LEX_ASP
@@ -404,6 +407,32 @@
 #define wxSTC_C_COMMENTDOCKEYWORD
 #define wxSTC_C_COMMENTDOCKEYWORDERROR
 #define wxSTC_C_GLOBALCLASS
+
+// Lexical states for SCLEX_TCL
+#if %wxchkver_2_8_12 
+#define wxSTC_TCL_DEFAULT
+#define wxSTC_TCL_COMMENT
+#define wxSTC_TCL_COMMENTLINE
+#define wxSTC_TCL_NUMBER
+#define wxSTC_TCL_WORD_IN_QUOTE
+#define wxSTC_TCL_IN_QUOTE
+#define wxSTC_TCL_OPERATOR
+#define wxSTC_TCL_IDENTIFIER
+#define wxSTC_TCL_SUBSTITUTION
+#define wxSTC_TCL_SUB_BRACE
+#define wxSTC_TCL_MODIFIER
+#define wxSTC_TCL_EXPAND
+#define wxSTC_TCL_WORD
+#define wxSTC_TCL_WORD2
+#define wxSTC_TCL_WORD3
+#define wxSTC_TCL_WORD4
+#define wxSTC_TCL_WORD5
+#define wxSTC_TCL_WORD6
+#define wxSTC_TCL_WORD7
+#define wxSTC_TCL_WORD8
+#define wxSTC_TCL_COMMENT_BOX
+#define wxSTC_TCL_BLOCK_COMMENT
+#endif //%wxchkver_2_8_12 
 
 // Lexical states for SCLEX_HTML, SCLEX_XML
 #define wxSTC_H_DEFAULT
@@ -639,6 +668,7 @@
 #define wxSTC_PROPS_SECTION
 #define wxSTC_PROPS_ASSIGNMENT
 #define wxSTC_PROPS_DEFVAL
+%wxchkver_2_8_12 #define wxSTC_PROPS_KEY
 
 // Lexical states for SCLEX_LATEX
 #define wxSTC_L_DEFAULT
@@ -720,7 +750,7 @@
 #define wxSTC_DIFF_DELETED
 #define wxSTC_DIFF_ADDED
 
-// Lexical states for SCLEX_CONF (Apache Configuration Files Lexer );
+// Lexical states for SCLEX_CONF (Apache Configuration Files Lexer)
 #define wxSTC_CONF_DEFAULT
 #define wxSTC_CONF_COMMENT
 #define wxSTC_CONF_NUMBER
@@ -801,7 +831,7 @@
 #define wxSTC_EIFFEL_IDENTIFIER
 #define wxSTC_EIFFEL_STRINGEOL
 
-// Lexical states for SCLEX_NNCRONTAB (nnCron crontab Lexer );
+// Lexical states for SCLEX_NNCRONTAB (nnCron crontab Lexer)
 #define wxSTC_NNCRONTAB_DEFAULT
 #define wxSTC_NNCRONTAB_COMMENT
 #define wxSTC_NNCRONTAB_TASK
@@ -814,7 +844,7 @@
 #define wxSTC_NNCRONTAB_ENVIRONMENT
 #define wxSTC_NNCRONTAB_IDENTIFIER
 
-// Lexical states for SCLEX_FORTH (Forth Lexer );
+// Lexical states for SCLEX_FORTH (Forth Lexer)
 #define wxSTC_FORTH_DEFAULT
 #define wxSTC_FORTH_COMMENT
 #define wxSTC_FORTH_COMMENT_ML
@@ -842,43 +872,22 @@
 #define wxSTC_MATLAB_DOUBLEQUOTESTRING
 
 // Lexical states for SCLEX_SCRIPTOL
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_DEFAULT
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENT
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENTLINE
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENTDOC
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_NUMBER
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_WORD
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_STRING
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_CHARACTER
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_UUID
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_PREPROCESSOR
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_OPERATOR
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_IDENTIFIER
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_STRINGEOL
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_VERBATIM
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_REGEX
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENTLINEDOC
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_WORD2
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENTDOCKEYWORD
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENTDOCKEYWORDERROR
-!%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENTBASIC
-
-%wxchkver_2_6 #define wxSTC_SCRIPTOL_DEFAULT
-%wxchkver_2_6 #define wxSTC_SCRIPTOL_WHITE
-%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENTLINE
-%wxchkver_2_6 #define wxSTC_SCRIPTOL_PERSISTENT
-%wxchkver_2_6 #define wxSTC_SCRIPTOL_CSTYLE
-%wxchkver_2_6 #define wxSTC_SCRIPTOL_COMMENTBLOCK
-%wxchkver_2_6 #define wxSTC_SCRIPTOL_NUMBER
-%wxchkver_2_6 #define wxSTC_SCRIPTOL_STRING
-%wxchkver_2_6 #define wxSTC_SCRIPTOL_CHARACTER
-%wxchkver_2_6 #define wxSTC_SCRIPTOL_STRINGEOL
-%wxchkver_2_6 #define wxSTC_SCRIPTOL_KEYWORD
-%wxchkver_2_6 #define wxSTC_SCRIPTOL_OPERATOR
-%wxchkver_2_6 #define wxSTC_SCRIPTOL_IDENTIFIER
-%wxchkver_2_6 #define wxSTC_SCRIPTOL_TRIPLE
-%wxchkver_2_6 #define wxSTC_SCRIPTOL_CLASSNAME
-%wxchkver_2_6 #define wxSTC_SCRIPTOL_PREPROCESSOR
+#define wxSTC_SCRIPTOL_DEFAULT
+#define wxSTC_SCRIPTOL_WHITE
+#define wxSTC_SCRIPTOL_COMMENTLINE
+#define wxSTC_SCRIPTOL_PERSISTENT
+#define wxSTC_SCRIPTOL_CSTYLE
+#define wxSTC_SCRIPTOL_COMMENTBLOCK
+#define wxSTC_SCRIPTOL_NUMBER
+#define wxSTC_SCRIPTOL_STRING
+#define wxSTC_SCRIPTOL_CHARACTER
+#define wxSTC_SCRIPTOL_STRINGEOL
+#define wxSTC_SCRIPTOL_KEYWORD
+#define wxSTC_SCRIPTOL_OPERATOR
+#define wxSTC_SCRIPTOL_IDENTIFIER
+#define wxSTC_SCRIPTOL_TRIPLE
+#define wxSTC_SCRIPTOL_CLASSNAME
+#define wxSTC_SCRIPTOL_PREPROCESSOR
 
 // Lexical states for SCLEX_ASM
 #define wxSTC_ASM_DEFAULT
@@ -1204,6 +1213,7 @@
 #define wxSTC_AU3_SPECIAL
 #define wxSTC_AU3_EXPAND
 #define wxSTC_AU3_COMOBJ
+%wxchkver_2_8_12 #define wxSTC_AU3_UDF
 
 // Lexical states for SCLEX_APDL
 #define wxSTC_APDL_DEFAULT
@@ -1398,7 +1408,7 @@
 #define wxSTC_ST_CHARACTER
 #define wxSTC_ST_SPEC_SEL
 
-// Lexical states for SCLEX_FLAGSHIP (clipper );
+// Lexical states for SCLEX_FLAGSHIP (clipper)
 #define wxSTC_FS_DEFAULT
 #define wxSTC_FS_COMMENT
 #define wxSTC_FS_COMMENTLINE
@@ -1442,6 +1452,47 @@
 #define wxSTC_CSOUND_GLOBAL_VAR
 #define wxSTC_CSOUND_STRINGEOL
 
+#if %wxchkver_2_8_12
+
+// Lexical states for SCLEX_INNOSETUP
+#define wxSTC_INNO_DEFAULT
+#define wxSTC_INNO_COMMENT
+#define wxSTC_INNO_KEYWORD
+#define wxSTC_INNO_PARAMETER
+#define wxSTC_INNO_SECTION
+#define wxSTC_INNO_PREPROC
+#define wxSTC_INNO_PREPROC_INLINE
+#define wxSTC_INNO_COMMENT_PASCAL
+#define wxSTC_INNO_KEYWORD_PASCAL
+#define wxSTC_INNO_KEYWORD_USER
+#define wxSTC_INNO_STRING_DOUBLE
+#define wxSTC_INNO_STRING_SINGLE
+#define wxSTC_INNO_IDENTIFIER
+
+// Lexical states for SCLEX_OPAL
+#define wxSTC_OPAL_SPACE
+#define wxSTC_OPAL_COMMENT_BLOCK
+#define wxSTC_OPAL_COMMENT_LINE
+#define wxSTC_OPAL_INTEGER
+#define wxSTC_OPAL_KEYWORD
+#define wxSTC_OPAL_SORT
+#define wxSTC_OPAL_STRING
+#define wxSTC_OPAL_PAR
+#define wxSTC_OPAL_BOOL_CONST
+#define wxSTC_OPAL_DEFAULT
+
+// Lexical states for SCLEX_SPICE
+#define wxSTC_SPICE_DEFAULT
+#define wxSTC_SPICE_IDENTIFIER
+#define wxSTC_SPICE_KEYWORD
+#define wxSTC_SPICE_KEYWORD2
+#define wxSTC_SPICE_KEYWORD3
+#define wxSTC_SPICE_NUMBER
+#define wxSTC_SPICE_DELIMITER
+#define wxSTC_SPICE_VALUE
+#define wxSTC_SPICE_COMMENTLINE
+
+#endif //%wxchkver_2_8_12
 
 //-----------------------------------------
 // Commands that can be bound to keystrokes
@@ -1729,6 +1780,7 @@ class wxStyledTextCtrl : public wxControl
 //       by gen_iface.py.  Do not edit this file.  Edit stc.h.in instead
 //       and regenerate
 
+
     // Add text to the document at current position.
     void AddText(const wxString& text);
 
@@ -1836,7 +1888,7 @@ class wxStyledTextCtrl : public wxControl
 
     // Set the current styling position to pos and the styling mask to mask.
     // The styling mask can be used to protect some bits in each styling byte from modification.
-    void StartStyling(int pos, unsigned int mask);
+    void StartStyling(int pos, unsigned int mask); // wxLua - mask is unsigned to keep all the bits
 
     // Change style from current styling position for length characters to a style
     // and move the current styling position to after this newly styled segment.
@@ -1878,19 +1930,22 @@ class wxStyledTextCtrl : public wxControl
     void MarkerDeleteAll(int markerNumber);
 
     // Get a bit mask of all the markers set on a line.
-    unsigned int MarkerGet(int line);
+    unsigned int MarkerGet(int line); // wxLua - mask is unsigned to keep all the bits
 
     // Find the next line after lineStart that includes a marker in mask.
-    int MarkerNext(int lineStart, unsigned int markerMask);
+    int MarkerNext(int lineStart, unsigned int markerMask); // wxLua - mask is unsigned to keep all the bits
 
     // Find the previous line before lineStart that includes a marker in mask.
-    int MarkerPrevious(int lineStart, unsigned int markerMask);
+    int MarkerPrevious(int lineStart, unsigned int markerMask); // wxLua - mask is unsigned to keep all the bits
 
     // Define a marker from a bitmap
     void MarkerDefineBitmap(int markerNumber, const wxBitmap& bmp);
 
     // Add a set of markers to a line.
     void MarkerAddSet(int line, int set);
+
+    // Set the alpha used for a marker that is drawn in the text area, not the margin.
+    %wxchkver_2_8_12 void MarkerSetAlpha(int markerNumber, int alpha);
 
     // Set a margin to be either numeric or symbolic.
     void SetMarginType(int margin, int marginType);
@@ -1957,6 +2012,12 @@ class wxStyledTextCtrl : public wxControl
 
     // Set the background colour of the selection and whether to use this setting.
     void SetSelBackground(bool useSetting, const wxColour& back);
+
+    // Get the alpha of the selection.
+    %wxchkver_2_8_12 int GetSelAlpha();
+
+    // Set the alpha of the selection.
+    %wxchkver_2_8_12 void SetSelAlpha(int alpha);
 
     // Set the foreground colour of the caret.
     void SetCaretForeground(const wxColour& fore);
@@ -2395,6 +2456,9 @@ class wxStyledTextCtrl : public wxControl
 
     // Set the foreground colour for the highlighted part of the call tip.
     void CallTipSetForegroundHighlight(const wxColour& fore);
+
+    // Enable use of STYLE_CALLTIP and set call tip tab size in pixels.
+    %wxchkver_2_8_12 void CallTipUseStyle(int tabSize);
 
     // Find the display line of a document line taking hidden lines into account.
     int VisibleFromDocLine(int line);
@@ -3024,6 +3088,12 @@ class wxStyledTextCtrl : public wxControl
     // Duplicate the selection. If selection empty duplicate the line containing the caret.
     void SelectionDuplicate();
 
+    // Set background alpha of the caret line.
+    %wxchkver_2_8_12 void SetCaretLineBackAlpha(int alpha);
+
+    // Get the background alpha of the caret line.
+    %wxchkver_2_8_12 int GetCaretLineBackAlpha();
+
     // Start notifying the container of all key presses and commands.
     void StartRecord();
 
@@ -3061,7 +3131,6 @@ class wxStyledTextCtrl : public wxControl
 
     // Retrieve the number of bits the current lexer needs for styling.
     int GetStyleBitsNeeded();
-
 
 // END of generated section
 //----------------------------------------------------------------------
@@ -3213,9 +3282,6 @@ class wxStyledTextCtrl : public wxControl
 
 };
 
-///////////////////////////////////////////////////////////////////////////////
-// wxStyledTextEvent
-
 //----------------------------------------------------------------------
 
 class %delete wxStyledTextEvent : public wxCommandEvent
@@ -3233,7 +3299,6 @@ class %delete wxStyledTextEvent : public wxCommandEvent
     %wxEventType wxEVT_STC_MACRORECORD         // EVT_STC_MACRORECORD(id, fn );
     %wxEventType wxEVT_STC_MARGINCLICK         // EVT_STC_MARGINCLICK(id, fn );
     %wxEventType wxEVT_STC_NEEDSHOWN           // EVT_STC_NEEDSHOWN(id, fn );
-    !%wxchkver_2_6 %wxEventType wxEVT_STC_POSCHANGED // ??
     %wxEventType wxEVT_STC_PAINTED             // EVT_STC_PAINTED(id, fn );
     %wxEventType wxEVT_STC_USERLISTSELECTION   // EVT_STC_USERLISTSELECTION(id, fn );
     %wxEventType wxEVT_STC_URIDROPPED          // EVT_STC_URIDROPPED(id, fn );
@@ -3247,6 +3312,7 @@ class %delete wxStyledTextEvent : public wxCommandEvent
     %wxEventType wxEVT_STC_HOTSPOT_DCLICK      // EVT_STC_HOTSPOT_DCLICK(id, fn );
     %wxEventType wxEVT_STC_CALLTIP_CLICK       // EVT_STC_CALLTIP_CLICK(id, fn );
     %wxEventType wxEVT_STC_AUTOCOMP_SELECTION  // EVT_STC_AUTOCOMP_SELECTION(id, fn );
+
 
     wxStyledTextEvent(wxEventType commandType = 0, int id = 0 );
     void SetPosition(int pos );

@@ -750,6 +750,26 @@ static int LUACALL wxLua_wxStyledTextCtrl_CallTipShow(lua_State *L)
     return 0;
 }
 
+
+#if wxCHECK_VERSION(2,8,12)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_CallTipUseStyle[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_CallTipUseStyle(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_CallTipUseStyle[1] = {{ wxLua_wxStyledTextCtrl_CallTipUseStyle, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_CallTipUseStyle }};
+//     %wxchkver_2_8_12 void CallTipUseStyle(int tabSize);
+static int LUACALL wxLua_wxStyledTextCtrl_CallTipUseStyle(lua_State *L)
+{
+    // int tabSize
+    int tabSize = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call CallTipUseStyle
+    self->CallTipUseStyle(tabSize);
+
+    return 0;
+}
+
+#endif // wxCHECK_VERSION(2,8,12)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_CanPaste[] = { &wxluatype_wxStyledTextCtrl, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_CanPaste(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_CanPaste[1] = {{ wxLua_wxStyledTextCtrl_CanPaste, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_CanPaste }};
@@ -1580,6 +1600,25 @@ static int LUACALL wxLua_wxStyledTextCtrl_GetCaretLineBack(lua_State *L)
 }
 
 #endif // (!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
+
+#if wxCHECK_VERSION(2,8,12)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetCaretLineBackAlpha[] = { &wxluatype_wxStyledTextCtrl, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_GetCaretLineBackAlpha(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetCaretLineBackAlpha[1] = {{ wxLua_wxStyledTextCtrl_GetCaretLineBackAlpha, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetCaretLineBackAlpha }};
+//     %wxchkver_2_8_12 int GetCaretLineBackAlpha();
+static int LUACALL wxLua_wxStyledTextCtrl_GetCaretLineBackAlpha(lua_State *L)
+{
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call GetCaretLineBackAlpha
+    int returns = (self->GetCaretLineBackAlpha());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(2,8,12)
 
 #if (wxLUA_USE_wxColourPenBrush) && (wxCHECK_VERSION(2,8,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetCaretLineBackground[] = { &wxluatype_wxStyledTextCtrl, NULL };
@@ -2665,6 +2704,26 @@ static int LUACALL wxLua_wxStyledTextCtrl_GetSearchFlags(lua_State *L)
 
     return 1;
 }
+
+
+#if wxCHECK_VERSION(2,8,12)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetSelAlpha[] = { &wxluatype_wxStyledTextCtrl, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_GetSelAlpha(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetSelAlpha[1] = {{ wxLua_wxStyledTextCtrl_GetSelAlpha, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetSelAlpha }};
+//     %wxchkver_2_8_12 int GetSelAlpha();
+static int LUACALL wxLua_wxStyledTextCtrl_GetSelAlpha(lua_State *L)
+{
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call GetSelAlpha
+    int returns = (self->GetSelAlpha());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(2,8,12)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetSelectedText[] = { &wxluatype_wxStyledTextCtrl, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_GetSelectedText(lua_State *L);
@@ -3992,7 +4051,7 @@ static int LUACALL wxLua_wxStyledTextCtrl_MarkerDeleteHandle(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerGet[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_MarkerGet(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerGet[1] = {{ wxLua_wxStyledTextCtrl_MarkerGet, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerGet }};
-//     unsigned int MarkerGet(int line);
+//     unsigned int MarkerGet(int line); // wxLua - mask is unsigned to keep all the bits
 static int LUACALL wxLua_wxStyledTextCtrl_MarkerGet(lua_State *L)
 {
     // int line
@@ -4028,7 +4087,7 @@ static int LUACALL wxLua_wxStyledTextCtrl_MarkerLineFromHandle(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerNext[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_MarkerNext(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerNext[1] = {{ wxLua_wxStyledTextCtrl_MarkerNext, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerNext }};
-//     int MarkerNext(int lineStart, unsigned int markerMask);
+//     int MarkerNext(int lineStart, unsigned int markerMask); // wxLua - mask is unsigned to keep all the bits
 static int LUACALL wxLua_wxStyledTextCtrl_MarkerNext(lua_State *L)
 {
     // unsigned int markerMask
@@ -4048,7 +4107,7 @@ static int LUACALL wxLua_wxStyledTextCtrl_MarkerNext(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerPrevious[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_MarkerPrevious(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerPrevious[1] = {{ wxLua_wxStyledTextCtrl_MarkerPrevious, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerPrevious }};
-//     int MarkerPrevious(int lineStart, unsigned int markerMask);
+//     int MarkerPrevious(int lineStart, unsigned int markerMask); // wxLua - mask is unsigned to keep all the bits
 static int LUACALL wxLua_wxStyledTextCtrl_MarkerPrevious(lua_State *L)
 {
     // unsigned int markerMask
@@ -4065,6 +4124,27 @@ static int LUACALL wxLua_wxStyledTextCtrl_MarkerPrevious(lua_State *L)
     return 1;
 }
 
+
+#if wxCHECK_VERSION(2,8,12)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerSetAlpha[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_MarkerSetAlpha(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerSetAlpha[1] = {{ wxLua_wxStyledTextCtrl_MarkerSetAlpha, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerSetAlpha }};
+//     %wxchkver_2_8_12 void MarkerSetAlpha(int markerNumber, int alpha);
+static int LUACALL wxLua_wxStyledTextCtrl_MarkerSetAlpha(lua_State *L)
+{
+    // int alpha
+    int alpha = (int)wxlua_getnumbertype(L, 3);
+    // int markerNumber
+    int markerNumber = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call MarkerSetAlpha
+    self->MarkerSetAlpha(markerNumber, alpha);
+
+    return 0;
+}
+
+#endif // wxCHECK_VERSION(2,8,12)
 
 #if wxLUA_USE_wxColourPenBrush
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerSetBackground[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_wxColour, NULL };
@@ -4788,6 +4868,25 @@ static int LUACALL wxLua_wxStyledTextCtrl_SetCaretLineBack(lua_State *L)
 }
 
 #endif // (!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
+
+#if wxCHECK_VERSION(2,8,12)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetCaretLineBackAlpha[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_SetCaretLineBackAlpha(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_SetCaretLineBackAlpha[1] = {{ wxLua_wxStyledTextCtrl_SetCaretLineBackAlpha, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetCaretLineBackAlpha }};
+//     %wxchkver_2_8_12 void SetCaretLineBackAlpha(int alpha);
+static int LUACALL wxLua_wxStyledTextCtrl_SetCaretLineBackAlpha(lua_State *L)
+{
+    // int alpha
+    int alpha = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call SetCaretLineBackAlpha
+    self->SetCaretLineBackAlpha(alpha);
+
+    return 0;
+}
+
+#endif // wxCHECK_VERSION(2,8,12)
 
 #if (wxLUA_USE_wxColourPenBrush) && (wxCHECK_VERSION(2,8,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetCaretLineBackground[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_wxColour, NULL };
@@ -5746,6 +5845,25 @@ static int LUACALL wxLua_wxStyledTextCtrl_SetSearchFlags(lua_State *L)
 }
 
 
+#if wxCHECK_VERSION(2,8,12)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetSelAlpha[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_SetSelAlpha(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_SetSelAlpha[1] = {{ wxLua_wxStyledTextCtrl_SetSelAlpha, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetSelAlpha }};
+//     %wxchkver_2_8_12 void SetSelAlpha(int alpha);
+static int LUACALL wxLua_wxStyledTextCtrl_SetSelAlpha(lua_State *L)
+{
+    // int alpha
+    int alpha = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call SetSelAlpha
+    self->SetSelAlpha(alpha);
+
+    return 0;
+}
+
+#endif // wxCHECK_VERSION(2,8,12)
+
 #if wxLUA_USE_wxColourPenBrush
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetSelBackground[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TBOOLEAN, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_SetSelBackground(lua_State *L);
@@ -6410,7 +6528,7 @@ static int LUACALL wxLua_wxStyledTextCtrl_StartRecord(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_StartStyling[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_StartStyling(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_StartStyling[1] = {{ wxLua_wxStyledTextCtrl_StartStyling, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_StartStyling }};
-//     void StartStyling(int pos, unsigned int mask);
+//     void StartStyling(int pos, unsigned int mask); // wxLua - mask is unsigned to keep all the bits
 static int LUACALL wxLua_wxStyledTextCtrl_StartStyling(lua_State *L)
 {
     // unsigned int mask
@@ -7448,6 +7566,11 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
 
     { "CallTipSetHighlight", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_CallTipSetHighlight, 1, NULL },
     { "CallTipShow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_CallTipShow, 1, NULL },
+
+#if wxCHECK_VERSION(2,8,12)
+    { "CallTipUseStyle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_CallTipUseStyle, 1, NULL },
+#endif // wxCHECK_VERSION(2,8,12)
+
     { "CanPaste", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_CanPaste, 1, NULL },
     { "CanRedo", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_CanRedo, 1, NULL },
     { "CanUndo", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_CanUndo, 1, NULL },
@@ -7510,6 +7633,10 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
 #if (!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
     { "GetCaretLineBack", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetCaretLineBack, 1, NULL },
 #endif // (!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
+
+#if wxCHECK_VERSION(2,8,12)
+    { "GetCaretLineBackAlpha", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetCaretLineBackAlpha, 1, NULL },
+#endif // wxCHECK_VERSION(2,8,12)
 
 #if (wxLUA_USE_wxColourPenBrush) && (wxCHECK_VERSION(2,8,0))
     { "GetCaretLineBackground", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetCaretLineBackground, 1, NULL },
@@ -7582,6 +7709,11 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "GetSTCFocus", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetSTCFocus, 1, NULL },
     { "GetScrollWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetScrollWidth, 1, NULL },
     { "GetSearchFlags", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetSearchFlags, 1, NULL },
+
+#if wxCHECK_VERSION(2,8,12)
+    { "GetSelAlpha", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetSelAlpha, 1, NULL },
+#endif // wxCHECK_VERSION(2,8,12)
+
     { "GetSelectedText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetSelectedText, 1, NULL },
     { "GetSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetSelection, 1, NULL },
     { "GetSelectionEnd", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetSelectionEnd, 1, NULL },
@@ -7684,6 +7816,10 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "MarkerNext", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerNext, 1, NULL },
     { "MarkerPrevious", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerPrevious, 1, NULL },
 
+#if wxCHECK_VERSION(2,8,12)
+    { "MarkerSetAlpha", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerSetAlpha, 1, NULL },
+#endif // wxCHECK_VERSION(2,8,12)
+
 #if wxLUA_USE_wxColourPenBrush
     { "MarkerSetBackground", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerSetBackground, 1, NULL },
     { "MarkerSetForeground", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerSetForeground, 1, NULL },
@@ -7748,6 +7884,10 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
 #if (!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
     { "SetCaretLineBack", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetCaretLineBack, 1, NULL },
 #endif // (!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
+
+#if wxCHECK_VERSION(2,8,12)
+    { "SetCaretLineBackAlpha", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetCaretLineBackAlpha, 1, NULL },
+#endif // wxCHECK_VERSION(2,8,12)
 
 #if (wxLUA_USE_wxColourPenBrush) && (wxCHECK_VERSION(2,8,0))
     { "SetCaretLineBackground", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetCaretLineBackground, 1, NULL },
@@ -7824,6 +7964,10 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "SetSavePoint", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetSavePoint, 1, NULL },
     { "SetScrollWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetScrollWidth, 1, NULL },
     { "SetSearchFlags", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetSearchFlags, 1, NULL },
+
+#if wxCHECK_VERSION(2,8,12)
+    { "SetSelAlpha", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetSelAlpha, 1, NULL },
+#endif // wxCHECK_VERSION(2,8,12)
 
 #if wxLUA_USE_wxColourPenBrush
     { "SetSelBackground", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetSelBackground, 1, NULL },
@@ -8793,11 +8937,6 @@ wxLuaBindEvent* wxLuaGetEventList_wxstc(size_t &count)
         { "wxEVT_STC_MODIFIED", WXLUA_GET_wxEventType_ptr(wxEVT_STC_MODIFIED), &wxluatype_wxStyledTextEvent },
         { "wxEVT_STC_NEEDSHOWN", WXLUA_GET_wxEventType_ptr(wxEVT_STC_NEEDSHOWN), &wxluatype_wxStyledTextEvent },
         { "wxEVT_STC_PAINTED", WXLUA_GET_wxEventType_ptr(wxEVT_STC_PAINTED), &wxluatype_wxStyledTextEvent },
-
-#if !wxCHECK_VERSION(2,6,0)
-        { "wxEVT_STC_POSCHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_STC_POSCHANGED), &wxluatype_wxStyledTextEvent },
-#endif // !wxCHECK_VERSION(2,6,0)
-
         { "wxEVT_STC_ROMODIFYATTEMPT", WXLUA_GET_wxEventType_ptr(wxEVT_STC_ROMODIFYATTEMPT), &wxluatype_wxStyledTextEvent },
         { "wxEVT_STC_SAVEPOINTLEFT", WXLUA_GET_wxEventType_ptr(wxEVT_STC_SAVEPOINTLEFT), &wxluatype_wxStyledTextEvent },
         { "wxEVT_STC_SAVEPOINTREACHED", WXLUA_GET_wxEventType_ptr(wxEVT_STC_SAVEPOINTREACHED), &wxluatype_wxStyledTextEvent },
@@ -8834,6 +8973,13 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_ADA_STRING", wxSTC_ADA_STRING },
         { "wxSTC_ADA_STRINGEOL", wxSTC_ADA_STRINGEOL },
         { "wxSTC_ADA_WORD", wxSTC_ADA_WORD },
+
+#if wxCHECK_VERSION(2,8,12)
+        { "wxSTC_ALPHA_NOALPHA", 256 },
+        { "wxSTC_ALPHA_OPAQUE", 255 },
+        { "wxSTC_ALPHA_TRANSPARENT", 0 },
+#endif // wxCHECK_VERSION(2,8,12)
+
         { "wxSTC_APDL_ARGUMENT", wxSTC_APDL_ARGUMENT },
         { "wxSTC_APDL_COMMAND", wxSTC_APDL_COMMAND },
         { "wxSTC_APDL_COMMENT", wxSTC_APDL_COMMENT },
@@ -8887,6 +9033,11 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_AU3_SENT", wxSTC_AU3_SENT },
         { "wxSTC_AU3_SPECIAL", wxSTC_AU3_SPECIAL },
         { "wxSTC_AU3_STRING", wxSTC_AU3_STRING },
+
+#if wxCHECK_VERSION(2,8,12)
+        { "wxSTC_AU3_UDF", wxSTC_AU3_UDF },
+#endif // wxCHECK_VERSION(2,8,12)
+
         { "wxSTC_AU3_VARIABLE", wxSTC_AU3_VARIABLE },
         { "wxSTC_AVE_COMMENT", wxSTC_AVE_COMMENT },
         { "wxSTC_AVE_DEFAULT", wxSTC_AVE_DEFAULT },
@@ -9460,9 +9611,31 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_INDIC_HIDDEN", wxSTC_INDIC_HIDDEN },
         { "wxSTC_INDIC_MAX", wxSTC_INDIC_MAX },
         { "wxSTC_INDIC_PLAIN", wxSTC_INDIC_PLAIN },
+
+#if wxCHECK_VERSION(2,8,12)
+        { "wxSTC_INDIC_ROUNDBOX", wxSTC_INDIC_ROUNDBOX },
+#endif // wxCHECK_VERSION(2,8,12)
+
         { "wxSTC_INDIC_SQUIGGLE", wxSTC_INDIC_SQUIGGLE },
         { "wxSTC_INDIC_STRIKE", wxSTC_INDIC_STRIKE },
         { "wxSTC_INDIC_TT", wxSTC_INDIC_TT },
+
+#if wxCHECK_VERSION(2,8,12)
+        { "wxSTC_INNO_COMMENT", wxSTC_INNO_COMMENT },
+        { "wxSTC_INNO_COMMENT_PASCAL", wxSTC_INNO_COMMENT_PASCAL },
+        { "wxSTC_INNO_DEFAULT", wxSTC_INNO_DEFAULT },
+        { "wxSTC_INNO_IDENTIFIER", wxSTC_INNO_IDENTIFIER },
+        { "wxSTC_INNO_KEYWORD", wxSTC_INNO_KEYWORD },
+        { "wxSTC_INNO_KEYWORD_PASCAL", wxSTC_INNO_KEYWORD_PASCAL },
+        { "wxSTC_INNO_KEYWORD_USER", wxSTC_INNO_KEYWORD_USER },
+        { "wxSTC_INNO_PARAMETER", wxSTC_INNO_PARAMETER },
+        { "wxSTC_INNO_PREPROC", wxSTC_INNO_PREPROC },
+        { "wxSTC_INNO_PREPROC_INLINE", wxSTC_INNO_PREPROC_INLINE },
+        { "wxSTC_INNO_SECTION", wxSTC_INNO_SECTION },
+        { "wxSTC_INNO_STRING_DOUBLE", wxSTC_INNO_STRING_DOUBLE },
+        { "wxSTC_INNO_STRING_SINGLE", wxSTC_INNO_STRING_SINGLE },
+#endif // wxCHECK_VERSION(2,8,12)
+
         { "wxSTC_INVALID_POSITION", wxSTC_INVALID_POSITION },
         { "wxSTC_KEYWORDSET_MAX", wxSTC_KEYWORDSET_MAX },
         { "wxSTC_KEY_ADD", wxSTC_KEY_ADD },
@@ -9535,6 +9708,11 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_LEX_GUI4CLI", wxSTC_LEX_GUI4CLI },
         { "wxSTC_LEX_HASKELL", wxSTC_LEX_HASKELL },
         { "wxSTC_LEX_HTML", wxSTC_LEX_HTML },
+
+#if wxCHECK_VERSION(2,8,12)
+        { "wxSTC_LEX_INNOSETUP", wxSTC_LEX_INNOSETUP },
+#endif // wxCHECK_VERSION(2,8,12)
+
         { "wxSTC_LEX_KIX", wxSTC_LEX_KIX },
         { "wxSTC_LEX_LATEX", wxSTC_LEX_LATEX },
         { "wxSTC_LEX_LISP", wxSTC_LEX_LISP },
@@ -9550,6 +9728,11 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_LEX_NSIS", wxSTC_LEX_NSIS },
         { "wxSTC_LEX_NULL", wxSTC_LEX_NULL },
         { "wxSTC_LEX_OCTAVE", wxSTC_LEX_OCTAVE },
+
+#if wxCHECK_VERSION(2,8,12)
+        { "wxSTC_LEX_OPAL", wxSTC_LEX_OPAL },
+#endif // wxCHECK_VERSION(2,8,12)
+
         { "wxSTC_LEX_PASCAL", wxSTC_LEX_PASCAL },
         { "wxSTC_LEX_PERL", wxSTC_LEX_PERL },
 
@@ -9569,6 +9752,11 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_LEX_SCRIPTOL", wxSTC_LEX_SCRIPTOL },
         { "wxSTC_LEX_SMALLTALK", wxSTC_LEX_SMALLTALK },
         { "wxSTC_LEX_SPECMAN", wxSTC_LEX_SPECMAN },
+
+#if wxCHECK_VERSION(2,8,12)
+        { "wxSTC_LEX_SPICE", wxSTC_LEX_SPICE },
+#endif // wxCHECK_VERSION(2,8,12)
+
         { "wxSTC_LEX_SQL", wxSTC_LEX_SQL },
         { "wxSTC_LEX_TADS3", wxSTC_LEX_TADS3 },
         { "wxSTC_LEX_TCL", wxSTC_LEX_TCL },
@@ -9643,10 +9831,10 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_MAKE_PREPROCESSOR", wxSTC_MAKE_PREPROCESSOR },
         { "wxSTC_MAKE_TARGET", wxSTC_MAKE_TARGET },
 
-#if wxCHECK_VERSION(2,9,2)
+#if wxCHECK_VERSION(2,8,12)
         { "wxSTC_MARGIN_BACK", wxSTC_MARGIN_BACK },
         { "wxSTC_MARGIN_FORE", wxSTC_MARGIN_FORE },
-#endif // wxCHECK_VERSION(2,9,2)
+#endif // wxCHECK_VERSION(2,8,12)
 
         { "wxSTC_MARGIN_NUMBER", wxSTC_MARGIN_NUMBER },
 
@@ -9803,6 +9991,20 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_NSIS_SUBSECTIONDEF", wxSTC_NSIS_SUBSECTIONDEF },
         { "wxSTC_NSIS_USERDEFINED", wxSTC_NSIS_USERDEFINED },
         { "wxSTC_NSIS_VARIABLE", wxSTC_NSIS_VARIABLE },
+
+#if wxCHECK_VERSION(2,8,12)
+        { "wxSTC_OPAL_BOOL_CONST", wxSTC_OPAL_BOOL_CONST },
+        { "wxSTC_OPAL_COMMENT_BLOCK", wxSTC_OPAL_COMMENT_BLOCK },
+        { "wxSTC_OPAL_COMMENT_LINE", wxSTC_OPAL_COMMENT_LINE },
+        { "wxSTC_OPAL_DEFAULT", wxSTC_OPAL_DEFAULT },
+        { "wxSTC_OPAL_INTEGER", wxSTC_OPAL_INTEGER },
+        { "wxSTC_OPAL_KEYWORD", wxSTC_OPAL_KEYWORD },
+        { "wxSTC_OPAL_PAR", wxSTC_OPAL_PAR },
+        { "wxSTC_OPAL_SORT", wxSTC_OPAL_SORT },
+        { "wxSTC_OPAL_SPACE", wxSTC_OPAL_SPACE },
+        { "wxSTC_OPAL_STRING", wxSTC_OPAL_STRING },
+#endif // wxCHECK_VERSION(2,8,12)
+
         { "wxSTC_OPTIONAL_START", wxSTC_OPTIONAL_START },
         { "wxSTC_PERFORMED_REDO", wxSTC_PERFORMED_REDO },
         { "wxSTC_PERFORMED_UNDO", wxSTC_PERFORMED_UNDO },
@@ -9865,6 +10067,11 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_PROPS_COMMENT", wxSTC_PROPS_COMMENT },
         { "wxSTC_PROPS_DEFAULT", wxSTC_PROPS_DEFAULT },
         { "wxSTC_PROPS_DEFVAL", wxSTC_PROPS_DEFVAL },
+
+#if wxCHECK_VERSION(2,8,12)
+        { "wxSTC_PROPS_KEY", wxSTC_PROPS_KEY },
+#endif // wxCHECK_VERSION(2,8,12)
+
         { "wxSTC_PROPS_SECTION", wxSTC_PROPS_SECTION },
         { "wxSTC_PS_BADSTRINGCHAR", wxSTC_PS_BADSTRINGCHAR },
         { "wxSTC_PS_BASE85STRING", wxSTC_PS_BASE85STRING },
@@ -9965,100 +10172,22 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_SCMOD_CTRL", wxSTC_SCMOD_CTRL },
         { "wxSTC_SCMOD_NORM", wxSTC_SCMOD_NORM },
         { "wxSTC_SCMOD_SHIFT", wxSTC_SCMOD_SHIFT },
-
-#if wxCHECK_VERSION(2,6,0)
         { "wxSTC_SCRIPTOL_CHARACTER", wxSTC_SCRIPTOL_CHARACTER },
-#elif !wxCHECK_VERSION(2,6,0)
-        { "wxSTC_SCRIPTOL_CHARACTER", wxSTC_SCRIPTOL_CHARACTER },
-#endif // !wxCHECK_VERSION(2,6,0)
-#if wxCHECK_VERSION(2,6,0)
         { "wxSTC_SCRIPTOL_CLASSNAME", wxSTC_SCRIPTOL_CLASSNAME },
-#endif // wxCHECK_VERSION(2,6,0)
-
-#if !wxCHECK_VERSION(2,6,0)
-        { "wxSTC_SCRIPTOL_COMMENT", wxSTC_SCRIPTOL_COMMENT },
-        { "wxSTC_SCRIPTOL_COMMENTBASIC", wxSTC_SCRIPTOL_COMMENTBASIC },
-#endif // !wxCHECK_VERSION(2,6,0)
-
-#if wxCHECK_VERSION(2,6,0)
         { "wxSTC_SCRIPTOL_COMMENTBLOCK", wxSTC_SCRIPTOL_COMMENTBLOCK },
-#endif // wxCHECK_VERSION(2,6,0)
-
-#if !wxCHECK_VERSION(2,6,0)
-        { "wxSTC_SCRIPTOL_COMMENTDOC", wxSTC_SCRIPTOL_COMMENTDOC },
-        { "wxSTC_SCRIPTOL_COMMENTDOCKEYWORD", wxSTC_SCRIPTOL_COMMENTDOCKEYWORD },
-        { "wxSTC_SCRIPTOL_COMMENTDOCKEYWORDERROR", wxSTC_SCRIPTOL_COMMENTDOCKEYWORDERROR },
-#endif // !wxCHECK_VERSION(2,6,0)
-
-#if wxCHECK_VERSION(2,6,0)
         { "wxSTC_SCRIPTOL_COMMENTLINE", wxSTC_SCRIPTOL_COMMENTLINE },
-#elif !wxCHECK_VERSION(2,6,0)
-        { "wxSTC_SCRIPTOL_COMMENTLINE", wxSTC_SCRIPTOL_COMMENTLINE },
-#endif // !wxCHECK_VERSION(2,6,0)
-#if !wxCHECK_VERSION(2,6,0)
-        { "wxSTC_SCRIPTOL_COMMENTLINEDOC", wxSTC_SCRIPTOL_COMMENTLINEDOC },
-#endif // !wxCHECK_VERSION(2,6,0)
-
-#if wxCHECK_VERSION(2,6,0)
         { "wxSTC_SCRIPTOL_CSTYLE", wxSTC_SCRIPTOL_CSTYLE },
         { "wxSTC_SCRIPTOL_DEFAULT", wxSTC_SCRIPTOL_DEFAULT },
-#elif !wxCHECK_VERSION(2,6,0)
-        { "wxSTC_SCRIPTOL_DEFAULT", wxSTC_SCRIPTOL_DEFAULT },
-#endif // !wxCHECK_VERSION(2,6,0)
-#if wxCHECK_VERSION(2,6,0)
         { "wxSTC_SCRIPTOL_IDENTIFIER", wxSTC_SCRIPTOL_IDENTIFIER },
-#elif !wxCHECK_VERSION(2,6,0)
-        { "wxSTC_SCRIPTOL_IDENTIFIER", wxSTC_SCRIPTOL_IDENTIFIER },
-#endif // !wxCHECK_VERSION(2,6,0)
-#if wxCHECK_VERSION(2,6,0)
         { "wxSTC_SCRIPTOL_KEYWORD", wxSTC_SCRIPTOL_KEYWORD },
         { "wxSTC_SCRIPTOL_NUMBER", wxSTC_SCRIPTOL_NUMBER },
-#elif !wxCHECK_VERSION(2,6,0)
-        { "wxSTC_SCRIPTOL_NUMBER", wxSTC_SCRIPTOL_NUMBER },
-#endif // !wxCHECK_VERSION(2,6,0)
-#if wxCHECK_VERSION(2,6,0)
         { "wxSTC_SCRIPTOL_OPERATOR", wxSTC_SCRIPTOL_OPERATOR },
-#elif !wxCHECK_VERSION(2,6,0)
-        { "wxSTC_SCRIPTOL_OPERATOR", wxSTC_SCRIPTOL_OPERATOR },
-#endif // !wxCHECK_VERSION(2,6,0)
-#if wxCHECK_VERSION(2,6,0)
         { "wxSTC_SCRIPTOL_PERSISTENT", wxSTC_SCRIPTOL_PERSISTENT },
         { "wxSTC_SCRIPTOL_PREPROCESSOR", wxSTC_SCRIPTOL_PREPROCESSOR },
-#elif !wxCHECK_VERSION(2,6,0)
-        { "wxSTC_SCRIPTOL_PREPROCESSOR", wxSTC_SCRIPTOL_PREPROCESSOR },
-#endif // !wxCHECK_VERSION(2,6,0)
-#if !wxCHECK_VERSION(2,6,0)
-        { "wxSTC_SCRIPTOL_REGEX", wxSTC_SCRIPTOL_REGEX },
-#endif // !wxCHECK_VERSION(2,6,0)
-
-#if wxCHECK_VERSION(2,6,0)
         { "wxSTC_SCRIPTOL_STRING", wxSTC_SCRIPTOL_STRING },
-#elif !wxCHECK_VERSION(2,6,0)
-        { "wxSTC_SCRIPTOL_STRING", wxSTC_SCRIPTOL_STRING },
-#endif // !wxCHECK_VERSION(2,6,0)
-#if wxCHECK_VERSION(2,6,0)
         { "wxSTC_SCRIPTOL_STRINGEOL", wxSTC_SCRIPTOL_STRINGEOL },
-#elif !wxCHECK_VERSION(2,6,0)
-        { "wxSTC_SCRIPTOL_STRINGEOL", wxSTC_SCRIPTOL_STRINGEOL },
-#endif // !wxCHECK_VERSION(2,6,0)
-#if wxCHECK_VERSION(2,6,0)
         { "wxSTC_SCRIPTOL_TRIPLE", wxSTC_SCRIPTOL_TRIPLE },
-#endif // wxCHECK_VERSION(2,6,0)
-
-#if !wxCHECK_VERSION(2,6,0)
-        { "wxSTC_SCRIPTOL_UUID", wxSTC_SCRIPTOL_UUID },
-        { "wxSTC_SCRIPTOL_VERBATIM", wxSTC_SCRIPTOL_VERBATIM },
-#endif // !wxCHECK_VERSION(2,6,0)
-
-#if wxCHECK_VERSION(2,6,0)
         { "wxSTC_SCRIPTOL_WHITE", wxSTC_SCRIPTOL_WHITE },
-#endif // wxCHECK_VERSION(2,6,0)
-
-#if !wxCHECK_VERSION(2,6,0)
-        { "wxSTC_SCRIPTOL_WORD", wxSTC_SCRIPTOL_WORD },
-        { "wxSTC_SCRIPTOL_WORD2", wxSTC_SCRIPTOL_WORD2 },
-#endif // !wxCHECK_VERSION(2,6,0)
-
         { "wxSTC_SEL_LINES", wxSTC_SEL_LINES },
         { "wxSTC_SEL_RECTANGLE", wxSTC_SEL_RECTANGLE },
         { "wxSTC_SEL_STREAM", wxSTC_SEL_STREAM },
@@ -10092,6 +10221,19 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_SN_WORD", wxSTC_SN_WORD },
         { "wxSTC_SN_WORD2", wxSTC_SN_WORD2 },
         { "wxSTC_SN_WORD3", wxSTC_SN_WORD3 },
+
+#if wxCHECK_VERSION(2,8,12)
+        { "wxSTC_SPICE_COMMENTLINE", wxSTC_SPICE_COMMENTLINE },
+        { "wxSTC_SPICE_DEFAULT", wxSTC_SPICE_DEFAULT },
+        { "wxSTC_SPICE_DELIMITER", wxSTC_SPICE_DELIMITER },
+        { "wxSTC_SPICE_IDENTIFIER", wxSTC_SPICE_IDENTIFIER },
+        { "wxSTC_SPICE_KEYWORD", wxSTC_SPICE_KEYWORD },
+        { "wxSTC_SPICE_KEYWORD2", wxSTC_SPICE_KEYWORD2 },
+        { "wxSTC_SPICE_KEYWORD3", wxSTC_SPICE_KEYWORD3 },
+        { "wxSTC_SPICE_NUMBER", wxSTC_SPICE_NUMBER },
+        { "wxSTC_SPICE_VALUE", wxSTC_SPICE_VALUE },
+#endif // wxCHECK_VERSION(2,8,12)
+
         { "wxSTC_SQL_CHARACTER", wxSTC_SQL_CHARACTER },
         { "wxSTC_SQL_COMMENT", wxSTC_SQL_COMMENT },
         { "wxSTC_SQL_COMMENTDOC", wxSTC_SQL_COMMENTDOC },
@@ -10118,9 +10260,9 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_STYLE_BRACEBAD", wxSTC_STYLE_BRACEBAD },
         { "wxSTC_STYLE_BRACELIGHT", wxSTC_STYLE_BRACELIGHT },
 
-#if wxCHECK_VERSION(2,9,2)
+#if wxCHECK_VERSION(2,8,12)
         { "wxSTC_STYLE_CALLTIP", wxSTC_STYLE_CALLTIP },
-#endif // wxCHECK_VERSION(2,9,2)
+#endif // wxCHECK_VERSION(2,8,12)
 
         { "wxSTC_STYLE_CONTROLCHAR", wxSTC_STYLE_CONTROLCHAR },
         { "wxSTC_STYLE_DEFAULT", wxSTC_STYLE_DEFAULT },
@@ -10165,6 +10307,32 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_T3_USER3", wxSTC_T3_USER3 },
         { "wxSTC_T3_X_DEFAULT", wxSTC_T3_X_DEFAULT },
         { "wxSTC_T3_X_STRING", wxSTC_T3_X_STRING },
+
+#if wxCHECK_VERSION(2,8,12)
+        { "wxSTC_TCL_BLOCK_COMMENT", wxSTC_TCL_BLOCK_COMMENT },
+        { "wxSTC_TCL_COMMENT", wxSTC_TCL_COMMENT },
+        { "wxSTC_TCL_COMMENTLINE", wxSTC_TCL_COMMENTLINE },
+        { "wxSTC_TCL_COMMENT_BOX", wxSTC_TCL_COMMENT_BOX },
+        { "wxSTC_TCL_DEFAULT", wxSTC_TCL_DEFAULT },
+        { "wxSTC_TCL_EXPAND", wxSTC_TCL_EXPAND },
+        { "wxSTC_TCL_IDENTIFIER", wxSTC_TCL_IDENTIFIER },
+        { "wxSTC_TCL_IN_QUOTE", wxSTC_TCL_IN_QUOTE },
+        { "wxSTC_TCL_MODIFIER", wxSTC_TCL_MODIFIER },
+        { "wxSTC_TCL_NUMBER", wxSTC_TCL_NUMBER },
+        { "wxSTC_TCL_OPERATOR", wxSTC_TCL_OPERATOR },
+        { "wxSTC_TCL_SUBSTITUTION", wxSTC_TCL_SUBSTITUTION },
+        { "wxSTC_TCL_SUB_BRACE", wxSTC_TCL_SUB_BRACE },
+        { "wxSTC_TCL_WORD", wxSTC_TCL_WORD },
+        { "wxSTC_TCL_WORD2", wxSTC_TCL_WORD2 },
+        { "wxSTC_TCL_WORD3", wxSTC_TCL_WORD3 },
+        { "wxSTC_TCL_WORD4", wxSTC_TCL_WORD4 },
+        { "wxSTC_TCL_WORD5", wxSTC_TCL_WORD5 },
+        { "wxSTC_TCL_WORD6", wxSTC_TCL_WORD6 },
+        { "wxSTC_TCL_WORD7", wxSTC_TCL_WORD7 },
+        { "wxSTC_TCL_WORD8", wxSTC_TCL_WORD8 },
+        { "wxSTC_TCL_WORD_IN_QUOTE", wxSTC_TCL_WORD_IN_QUOTE },
+#endif // wxCHECK_VERSION(2,8,12)
+
         { "wxSTC_TEX_COMMAND", wxSTC_TEX_COMMAND },
         { "wxSTC_TEX_DEFAULT", wxSTC_TEX_DEFAULT },
         { "wxSTC_TEX_GROUP", wxSTC_TEX_GROUP },
