@@ -3549,7 +3549,11 @@ function GenerateLuaLanguageBinding(interface)
                             argItem = "wxlua_getstringtype(L, "..argNum..")"
 
                             argTypeWithAttrib = "wxCharBuffer"
-                            argCast = "const char*" -- allows for "unsigned char*"
+                            if (origArgTypeWithAttrib ~= "const char") then
+                                argCast = "("..origArgTypeWithAttrib.."*)(const char*)"
+                            else
+                                argCast = origArgTypeWithAttrib.."*" 
+                            end
                         else
                             if isTranslated and (origIndirectionCount == 0) then
                                 argTypeWithAttrib = origArgTypeWithAttrib
@@ -3657,7 +3661,11 @@ function GenerateLuaLanguageBinding(interface)
                     end
 
                     if argCast then
-                        argList = argList.."("..argCast..")"
+                        if (string.sub(argCast, 1, 1) == "(") then
+                            argList = argList..argCast
+                        else
+                            argList = argList.."("..argCast..")"
+                        end
                     end
 
                     argList = argList..(argListOverride or argName)

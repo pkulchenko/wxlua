@@ -19538,7 +19538,8 @@ enum<br>
     virtual void Show(bool show, <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr = NULL );<br>
     <br>
     !<i>%wxchkver_2_9_5</i> virtual void PaintBackground(const <a href="#wxRect">wxRect</a>&amp; rectCell, <a href="#wxGridCellAttr">wxGridCellAttr</a> *attr );<br>
-    <i>%wxchkver_2_9_5</i>  virtual void PaintBackground(const <a href="#wxRect">wxRect</a>&amp; rectCell, const <a href="#wxGridCellAttr">wxGridCellAttr</a> &amp;attr );<br>
+    <font color=#009900>//<i>%wxchkver_2_9_5</i>  virtual void PaintBackground(const <a href="#wxRect">wxRect</a>&amp; rectCell, const <a href="#wxGridCellAttr">wxGridCellAttr</a> &amp;attr ); // it very briefly had this signature</font><br>
+    <i>%wxchkver_2_9_5</i>  virtual void PaintBackground(<a href="#wxDC">wxDC</a>&amp; dc, const <a href="#wxRect">wxRect</a>&amp; rectCell, const <a href="#wxGridCellAttr">wxGridCellAttr</a> &amp;attr );<br>
 <br>
     virtual bool IsAcceptedKey(<a href="#wxKeyEvent">wxKeyEvent</a>&amp; event );<br>
     virtual void StartingKey(<a href="#wxKeyEvent">wxKeyEvent</a>&amp; event );<br>
@@ -22867,6 +22868,9 @@ enum<br>
 <br>
 #include "wx/stc/stc.h"<br>
 <br>
+<font color=#009900>//----------------------------------------------------------------------</font><br>
+<font color=#009900>// STC constants generated section {{{</font><br>
+<br>
 <font color=#006666>#define wxSTC_INVALID_POSITION</font><br>
 <br>
 <font color=#009900>// Define start of Scintilla messages to be greater than all Windows edit (EM_*) messages</font><br>
@@ -22919,14 +22923,13 @@ enum<br>
 <font color=#006666>#define wxSTC_MARK_ARROWS</font><br>
 <font color=#006666>#define wxSTC_MARK_PIXMAP</font><br>
 <font color=#006666>#define wxSTC_MARK_FULLRECT</font><br>
-<font color=#006666>#define wxSTC_MARK_CHARACTER</font><br>
-<br>
 #if <i>%wxchkver_2_9_2</i><br>
 <font color=#006666>#define wxSTC_MARK_LEFTRECT</font><br>
 <font color=#006666>#define wxSTC_MARK_AVAILABLE</font><br>
 <font color=#006666>#define wxSTC_MARK_UNDERLINE</font><br>
-#endif<br>
-<br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_2</i></font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_MARK_RGBAIMAGE</font><br>
+<font color=#006666>#define wxSTC_MARK_CHARACTER</font><br>
 <br>
 <font color=#009900>// Markers used for outlining column.</font><br>
 <font color=#006666>#define wxSTC_MARKNUM_FOLDEREND</font><br>
@@ -22982,8 +22985,14 @@ enum<br>
 <font color=#006666>#define wxSTC_CASE_MIXED</font><br>
 <font color=#006666>#define wxSTC_CASE_UPPER</font><br>
 <font color=#006666>#define wxSTC_CASE_LOWER</font><br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#006666>#define wxSTC_FONT_SIZE_MULTIPLIER</font><br>
+<font color=#006666>#define wxSTC_WEIGHT_NORMAL</font><br>
+<font color=#006666>#define wxSTC_WEIGHT_SEMIBOLD</font><br>
+<font color=#006666>#define wxSTC_WEIGHT_BOLD</font><br>
+#endif <font color=#009900>// <i>%wxchkver_2_9_5</i></font><br>
 <br>
-<font color=#006666>#define wxSTC_INDIC_MAX</font><br>
+<font color=#009900>// Indicator style enumeration and some constants</font><br>
 <font color=#006666>#define wxSTC_INDIC_PLAIN</font><br>
 <font color=#006666>#define wxSTC_INDIC_SQUIGGLE</font><br>
 <font color=#006666>#define wxSTC_INDIC_TT</font><br>
@@ -22992,10 +23001,25 @@ enum<br>
 <font color=#006666>#define wxSTC_INDIC_HIDDEN</font><br>
 <font color=#006666>#define wxSTC_INDIC_BOX</font><br>
 <font color=#006666><i>%wxchkver_2_8_12</i> #define wxSTC_INDIC_ROUNDBOX</font><br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#006666>#define wxSTC_INDIC_STRAIGHTBOX</font><br>
+<font color=#006666>#define wxSTC_INDIC_DASH</font><br>
+<font color=#006666>#define wxSTC_INDIC_DOTS</font><br>
+<font color=#006666>#define wxSTC_INDIC_SQUIGGLELOW</font><br>
+<font color=#006666>#define wxSTC_INDIC_DOTBOX</font><br>
+<font color=#006666>#define wxSTC_INDIC_MAX</font><br>
+<font color=#006666>#define wxSTC_INDIC_CONTAINER</font><br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_5</i></font><br>
 <font color=#006666>#define wxSTC_INDIC0_MASK</font><br>
 <font color=#006666>#define wxSTC_INDIC1_MASK</font><br>
 <font color=#006666>#define wxSTC_INDIC2_MASK</font><br>
 <font color=#006666>#define wxSTC_INDICS_MASK</font><br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#006666>#define wxSTC_IV_NONE</font><br>
+<font color=#006666>#define wxSTC_IV_REAL</font><br>
+<font color=#006666>#define wxSTC_IV_LOOKFORWARD</font><br>
+<font color=#006666>#define wxSTC_IV_LOOKBOTH</font><br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_5</i></font><br>
 <br>
 <font color=#009900>// PrintColourMode - use same colours as screen.</font><br>
 <font color=#006666>#define wxSTC_PRINT_NORMAL</font><br>
@@ -23037,18 +23061,38 @@ enum<br>
 <font color=#006666>#define wxSTC_WRAPVISUALFLAG_NONE</font><br>
 <font color=#006666>#define wxSTC_WRAPVISUALFLAG_END</font><br>
 <font color=#006666>#define wxSTC_WRAPVISUALFLAG_START</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_WRAPVISUALFLAG_MARGIN</font><br>
 <font color=#006666>#define wxSTC_WRAPVISUALFLAGLOC_DEFAULT</font><br>
 <font color=#006666>#define wxSTC_WRAPVISUALFLAGLOC_END_BY_TEXT</font><br>
 <font color=#006666>#define wxSTC_WRAPVISUALFLAGLOC_START_BY_TEXT</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_WRAPINDENT_FIXED</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_WRAPINDENT_SAME</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_WRAPINDENT_INDENT</font><br>
 <font color=#006666>#define wxSTC_CACHE_NONE</font><br>
 <font color=#006666>#define wxSTC_CACHE_CARET</font><br>
 <font color=#006666>#define wxSTC_CACHE_PAGE</font><br>
 <font color=#006666>#define wxSTC_CACHE_DOCUMENT</font><br>
+<br>
+<font color=#009900>// Control font anti-aliasing.</font><br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#006666>#define wxSTC_EFF_QUALITY_MASK</font><br>
+<font color=#006666>#define wxSTC_EFF_QUALITY_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_EFF_QUALITY_NON_ANTIALIASED</font><br>
+<font color=#006666>#define wxSTC_EFF_QUALITY_ANTIALIASED</font><br>
+<font color=#006666>#define wxSTC_EFF_QUALITY_LCD_OPTIMIZED</font><br>
+<font color=#006666>#define wxSTC_MULTIPASTE_ONCE</font><br>
+<font color=#006666>#define wxSTC_MULTIPASTE_EACH</font><br>
+#endif <font color=#009900>// <i>%wxchkver_2_9_5</i></font><br>
 <font color=#006666>#define wxSTC_EDGE_NONE</font><br>
 <font color=#006666>#define wxSTC_EDGE_LINE</font><br>
 <font color=#006666>#define wxSTC_EDGE_BACKGROUND</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_STATUS_OK</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_STATUS_FAILURE</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_STATUS_BADALLOC</font><br>
 <font color=#006666>#define wxSTC_CURSORNORMAL</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_CURSORARROW</font><br>
 <font color=#006666>#define wxSTC_CURSORWAIT</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_CURSORREVERSEARROW</font><br>
 <br>
 <font color=#009900>// Constants for use with SetVisiblePolicy, similar to SetCaretPolicy.</font><br>
 <font color=#006666>#define wxSTC_VISIBLE_SLOP</font><br>
@@ -23084,12 +23128,41 @@ enum<br>
 <font color=#006666>#define wxSTC_SEL_STREAM</font><br>
 <font color=#006666>#define wxSTC_SEL_RECTANGLE</font><br>
 <font color=#006666>#define wxSTC_SEL_LINES</font><br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#006666>#define wxSTC_SEL_THIN</font><br>
+<font color=#006666>#define wxSTC_CASEINSENSITIVEBEHAVIOUR_RESPECTCASE</font><br>
+<font color=#006666>#define wxSTC_CASEINSENSITIVEBEHAVIOUR_IGNORECASE</font><br>
+<font color=#006666>#define wxSTC_CARETSTICKY_OFF</font><br>
+<font color=#006666>#define wxSTC_CARETSTICKY_ON</font><br>
+<font color=#006666>#define wxSTC_CARETSTICKY_WHITESPACE</font><br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_5</i></font><br>
 <font color=#006666><i>%wxchkver_2_8_12</i> #define wxSTC_ALPHA_TRANSPARENT</font><br>
 <font color=#006666><i>%wxchkver_2_8_12</i> #define wxSTC_ALPHA_OPAQUE</font><br>
 <font color=#006666><i>%wxchkver_2_8_12</i> #define wxSTC_ALPHA_NOALPHA</font><br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#006666>#define wxSTC_CARETSTYLE_INVISIBLE</font><br>
+<font color=#006666>#define wxSTC_CARETSTYLE_LINE</font><br>
+<font color=#006666>#define wxSTC_CARETSTYLE_BLOCK</font><br>
+<font color=#006666>#define wxSTC_MARGINOPTION_NONE</font><br>
+<font color=#006666>#define wxSTC_MARGINOPTION_SUBLINESELECT</font><br>
+<font color=#006666>#define wxSTC_ANNOTATION_HIDDEN</font><br>
+<font color=#006666>#define wxSTC_ANNOTATION_STANDARD</font><br>
+<font color=#006666>#define wxSTC_ANNOTATION_BOXED</font><br>
+<font color=#006666>#define wxSTC_UNDO_MAY_COALESCE</font><br>
+<font color=#006666>#define wxSTC_SCVS_NONE</font><br>
+<font color=#006666>#define wxSTC_SCVS_RECTANGULARSELECTION</font><br>
+<font color=#006666>#define wxSTC_SCVS_USERACCESSIBLE</font><br>
+<font color=#006666>#define wxSTC_TECHNOLOGY_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_TECHNOLOGY_DIRECTWRITE</font><br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_5</i></font><br>
 <br>
 <font color=#009900>// Maximum value of keywordSet parameter of SetKeyWords.</font><br>
 <font color=#006666>#define wxSTC_KEYWORDSET_MAX</font><br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#006666>#define wxSTC_TYPE_BOOLEAN</font><br>
+<font color=#006666>#define wxSTC_TYPE_INTEGER</font><br>
+<font color=#006666>#define wxSTC_TYPE_STRING</font><br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_5</i></font><br>
 <br>
 <font color=#009900>// Notifications</font><br>
 <font color=#009900>// Type of modification and the action which caused the modification.</font><br>
@@ -23108,7 +23181,22 @@ enum<br>
 <font color=#006666>#define wxSTC_MOD_BEFOREINSERT</font><br>
 <font color=#006666>#define wxSTC_MOD_BEFOREDELETE</font><br>
 <font color=#006666>#define wxSTC_MULTILINEUNDOREDO</font><br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#006666>#define wxSTC_STARTACTION</font><br>
+<font color=#006666>#define wxSTC_MOD_CHANGEINDICATOR</font><br>
+<font color=#006666>#define wxSTC_MOD_CHANGELINESTATE</font><br>
+<font color=#006666>#define wxSTC_MOD_CHANGEMARGIN</font><br>
+<font color=#006666>#define wxSTC_MOD_CHANGEANNOTATION</font><br>
+<font color=#006666>#define wxSTC_MOD_CONTAINER</font><br>
+<font color=#006666>#define wxSTC_MOD_LEXERSTATE</font><br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_5</i></font><br>
 <font color=#006666>#define wxSTC_MODEVENTMASKALL</font><br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#006666>#define wxSTC_UPDATE_CONTENT</font><br>
+<font color=#006666>#define wxSTC_UPDATE_SELECTION</font><br>
+<font color=#006666>#define wxSTC_UPDATE_V_SCROLL</font><br>
+<font color=#006666>#define wxSTC_UPDATE_H_SCROLL</font><br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_5</i></font><br>
 <br>
 <font color=#009900>// Symbolic key codes and modifier flags.</font><br>
 <font color=#009900>// ASCII and other printable characters below 256.</font><br>
@@ -23130,10 +23218,15 @@ enum<br>
 <font color=#006666>#define wxSTC_KEY_ADD</font><br>
 <font color=#006666>#define wxSTC_KEY_SUBTRACT</font><br>
 <font color=#006666>#define wxSTC_KEY_DIVIDE</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_KEY_WIN</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_KEY_RWIN</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_KEY_MENU</font><br>
 <font color=#006666>#define wxSTC_SCMOD_NORM</font><br>
 <font color=#006666>#define wxSTC_SCMOD_SHIFT</font><br>
 <font color=#006666>#define wxSTC_SCMOD_CTRL</font><br>
 <font color=#006666>#define wxSTC_SCMOD_ALT</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_SCMOD_SUPER</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_SCMOD_META</font><br>
 <br>
 <font color=#009900>// For SciLexer.h</font><br>
 <font color=#006666>#define wxSTC_LEX_CONTAINER</font><br>
@@ -23213,6 +23306,39 @@ enum<br>
 <font color=#006666><i>%wxchkver_2_8_12</i> #define wxSTC_LEX_INNOSETUP</font><br>
 <font color=#006666><i>%wxchkver_2_8_12</i> #define wxSTC_LEX_OPAL</font><br>
 <font color=#006666><i>%wxchkver_2_8_12</i> #define wxSTC_LEX_SPICE</font><br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#006666>#define wxSTC_LEX_OPAL</font><br>
+<font color=#006666>#define wxSTC_LEX_SPICE</font><br>
+<font color=#006666>#define wxSTC_LEX_D</font><br>
+<font color=#006666>#define wxSTC_LEX_CMAKE</font><br>
+<font color=#006666>#define wxSTC_LEX_GAP</font><br>
+<font color=#006666>#define wxSTC_LEX_PLM</font><br>
+<font color=#006666>#define wxSTC_LEX_PROGRESS</font><br>
+<font color=#006666>#define wxSTC_LEX_ABAQUS</font><br>
+<font color=#006666>#define wxSTC_LEX_ASYMPTOTE</font><br>
+<font color=#006666>#define wxSTC_LEX_R</font><br>
+<font color=#006666>#define wxSTC_LEX_MAGIK</font><br>
+<font color=#006666>#define wxSTC_LEX_POWERSHELL</font><br>
+<font color=#006666>#define wxSTC_LEX_MYSQL</font><br>
+<font color=#006666>#define wxSTC_LEX_PO</font><br>
+<font color=#006666>#define wxSTC_LEX_TAL</font><br>
+<font color=#006666>#define wxSTC_LEX_COBOL</font><br>
+<font color=#006666>#define wxSTC_LEX_TACL</font><br>
+<font color=#006666>#define wxSTC_LEX_SORCUS</font><br>
+<font color=#006666>#define wxSTC_LEX_POWERPRO</font><br>
+<font color=#006666>#define wxSTC_LEX_NIMROD</font><br>
+<font color=#006666>#define wxSTC_LEX_SML</font><br>
+<font color=#006666>#define wxSTC_LEX_MARKDOWN</font><br>
+<font color=#006666>#define wxSTC_LEX_TXT2TAGS</font><br>
+<font color=#006666>#define wxSTC_LEX_A68K</font><br>
+<font color=#006666>#define wxSTC_LEX_MODULA</font><br>
+<font color=#006666>#define wxSTC_LEX_COFFEESCRIPT</font><br>
+<font color=#006666>#define wxSTC_LEX_TCMD</font><br>
+<font color=#006666>#define wxSTC_LEX_AVS</font><br>
+<font color=#006666>#define wxSTC_LEX_ECL</font><br>
+<font color=#006666>#define wxSTC_LEX_OSCRIPT</font><br>
+<font color=#006666>#define wxSTC_LEX_VISUALPROLOG</font><br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_5</i></font><br>
 <br>
 <font color=#009900>// These are deprecated, STC_LEX_HTML should be used instead.</font><br>
 <font color=#006666>!<i>%wxchkver_2_8</i> #define wxSTC_LEX_ASP</font><br>
@@ -23261,6 +23387,39 @@ enum<br>
 <font color=#006666>#define wxSTC_C_COMMENTDOCKEYWORD</font><br>
 <font color=#006666>#define wxSTC_C_COMMENTDOCKEYWORDERROR</font><br>
 <font color=#006666>#define wxSTC_C_GLOBALCLASS</font><br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#006666>#define wxSTC_C_STRINGRAW</font><br>
+<font color=#006666>#define wxSTC_C_TRIPLEVERBATIM</font><br>
+<font color=#006666>#define wxSTC_C_HASHQUOTEDSTRING</font><br>
+<font color=#006666>#define wxSTC_C_PREPROCESSORCOMMENT</font><br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_5</i></font><br>
+<br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#009900>// Lexical states for SCLEX_D</font><br>
+<font color=#006666>#define wxSTC_D_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_D_COMMENT</font><br>
+<font color=#006666>#define wxSTC_D_COMMENTLINE</font><br>
+<font color=#006666>#define wxSTC_D_COMMENTDOC</font><br>
+<font color=#006666>#define wxSTC_D_COMMENTNESTED</font><br>
+<font color=#006666>#define wxSTC_D_NUMBER</font><br>
+<font color=#006666>#define wxSTC_D_WORD</font><br>
+<font color=#006666>#define wxSTC_D_WORD2</font><br>
+<font color=#006666>#define wxSTC_D_WORD3</font><br>
+<font color=#006666>#define wxSTC_D_TYPEDEF</font><br>
+<font color=#006666>#define wxSTC_D_STRING</font><br>
+<font color=#006666>#define wxSTC_D_STRINGEOL</font><br>
+<font color=#006666>#define wxSTC_D_CHARACTER</font><br>
+<font color=#006666>#define wxSTC_D_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_D_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_D_COMMENTLINEDOC</font><br>
+<font color=#006666>#define wxSTC_D_COMMENTDOCKEYWORD</font><br>
+<font color=#006666>#define wxSTC_D_COMMENTDOCKEYWORDERROR</font><br>
+<font color=#006666>#define wxSTC_D_STRINGB</font><br>
+<font color=#006666>#define wxSTC_D_STRINGR</font><br>
+<font color=#006666>#define wxSTC_D_WORD5</font><br>
+<font color=#006666>#define wxSTC_D_WORD6</font><br>
+<font color=#006666>#define wxSTC_D_WORD7</font><br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_5</i></font><br>
 <br>
 <font color=#009900>// Lexical states for SCLEX_TCL</font><br>
 #if <i>%wxchkver_2_8_12</i> <br>
@@ -23458,6 +23617,21 @@ enum<br>
 <font color=#006666>#define wxSTC_PL_STRING_QR</font><br>
 <font color=#006666>#define wxSTC_PL_STRING_QW</font><br>
 <font color=#006666>#define wxSTC_PL_POD_VERB</font><br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#006666>#define wxSTC_PL_SUB_PROTOTYPE</font><br>
+<font color=#006666>#define wxSTC_PL_FORMAT_IDENT</font><br>
+<font color=#006666>#define wxSTC_PL_FORMAT</font><br>
+<font color=#006666>#define wxSTC_PL_STRING_VAR</font><br>
+<font color=#006666>#define wxSTC_PL_XLAT</font><br>
+<font color=#006666>#define wxSTC_PL_REGEX_VAR</font><br>
+<font color=#006666>#define wxSTC_PL_REGSUBST_VAR</font><br>
+<font color=#006666>#define wxSTC_PL_BACKTICKS_VAR</font><br>
+<font color=#006666>#define wxSTC_PL_HERE_QQ_VAR</font><br>
+<font color=#006666>#define wxSTC_PL_HERE_QX_VAR</font><br>
+<font color=#006666>#define wxSTC_PL_STRING_QQ_VAR</font><br>
+<font color=#006666>#define wxSTC_PL_STRING_QX_VAR</font><br>
+<font color=#006666>#define wxSTC_PL_STRING_QR_VAR</font><br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_5</i></font><br>
 <br>
 <font color=#009900>// Lexical states for SCLEX_RUBY</font><br>
 <font color=#006666>#define wxSTC_RB_DEFAULT</font><br>
@@ -23530,6 +23704,16 @@ enum<br>
 <font color=#006666>#define wxSTC_L_TAG</font><br>
 <font color=#006666>#define wxSTC_L_MATH</font><br>
 <font color=#006666>#define wxSTC_L_COMMENT</font><br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#006666>#define wxSTC_L_TAG2</font><br>
+<font color=#006666>#define wxSTC_L_MATH2</font><br>
+<font color=#006666>#define wxSTC_L_COMMENT2</font><br>
+<font color=#006666>#define wxSTC_L_VERBATIM</font><br>
+<font color=#006666>#define wxSTC_L_SHORTCMD</font><br>
+<font color=#006666>#define wxSTC_L_SPECIAL</font><br>
+<font color=#006666>#define wxSTC_L_CMDOPT</font><br>
+<font color=#006666>#define wxSTC_L_ERROR</font><br>
+#endif <font color=#009900>// <i>%wxchkver_2_9_5</i></font><br>
 <br>
 <font color=#009900>// Lexical states for SCLEX_LUA</font><br>
 <font color=#006666>#define wxSTC_LUA_DEFAULT</font><br>
@@ -23552,6 +23736,7 @@ enum<br>
 <font color=#006666>#define wxSTC_LUA_WORD6</font><br>
 <font color=#006666>#define wxSTC_LUA_WORD7</font><br>
 <font color=#006666>#define wxSTC_LUA_WORD8</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_LUA_LABEL</font><br>
 <br>
 <font color=#009900>// Lexical states for SCLEX_ERRORLIST</font><br>
 <font color=#006666>#define wxSTC_ERR_DEFAULT</font><br>
@@ -23575,6 +23760,7 @@ enum<br>
 <font color=#006666>#define wxSTC_ERR_ABSF</font><br>
 <font color=#006666>#define wxSTC_ERR_TIDY</font><br>
 <font color=#006666>#define wxSTC_ERR_JAVA_STACK</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_ERR_VALUE</font><br>
 <br>
 <font color=#009900>// Lexical states for SCLEX_BATCH</font><br>
 <font color=#006666>#define wxSTC_BAT_DEFAULT</font><br>
@@ -23585,6 +23771,21 @@ enum<br>
 <font color=#006666>#define wxSTC_BAT_COMMAND</font><br>
 <font color=#006666>#define wxSTC_BAT_IDENTIFIER</font><br>
 <font color=#006666>#define wxSTC_BAT_OPERATOR</font><br>
+<br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#009900>// Lexical states for SCLEX_TCMD</font><br>
+<font color=#006666>#define wxSTC_TCMD_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_TCMD_COMMENT</font><br>
+<font color=#006666>#define wxSTC_TCMD_WORD</font><br>
+<font color=#006666>#define wxSTC_TCMD_LABEL</font><br>
+<font color=#006666>#define wxSTC_TCMD_HIDE</font><br>
+<font color=#006666>#define wxSTC_TCMD_COMMAND</font><br>
+<font color=#006666>#define wxSTC_TCMD_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_TCMD_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_TCMD_ENVIRONMENT</font><br>
+<font color=#006666>#define wxSTC_TCMD_EXPANSION</font><br>
+<font color=#006666>#define wxSTC_TCMD_CLABEL</font><br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_5</i></font><br>
 <br>
 <font color=#009900>// Lexical states for SCLEX_MAKEFILE</font><br>
 <font color=#006666>#define wxSTC_MAKE_DEFAULT</font><br>
@@ -23603,6 +23804,7 @@ enum<br>
 <font color=#006666>#define wxSTC_DIFF_POSITION</font><br>
 <font color=#006666>#define wxSTC_DIFF_DELETED</font><br>
 <font color=#006666>#define wxSTC_DIFF_ADDED</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_DIFF_CHANGED</font><br>
 <br>
 <font color=#009900>// Lexical states for SCLEX_CONF (Apache Configuration Files Lexer)</font><br>
 <font color=#006666>#define wxSTC_CONF_DEFAULT</font><br>
@@ -23759,6 +23961,7 @@ enum<br>
 <font color=#006666>#define wxSTC_ASM_CHARACTER</font><br>
 <font color=#006666>#define wxSTC_ASM_STRINGEOL</font><br>
 <font color=#006666>#define wxSTC_ASM_EXTINSTRUCTION</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_ASM_COMMENTDIRECTIVE</font><br>
 <br>
 <font color=#009900>// Lexical states for SCLEX_FORTRAN</font><br>
 <font color=#006666>#define wxSTC_F_DEFAULT</font><br>
@@ -23795,6 +23998,15 @@ enum<br>
 <font color=#006666>#define wxSTC_CSS_SINGLESTRING</font><br>
 <font color=#006666>#define wxSTC_CSS_IDENTIFIER2</font><br>
 <font color=#006666>#define wxSTC_CSS_ATTRIBUTE</font><br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#006666>#define wxSTC_CSS_IDENTIFIER3</font><br>
+<font color=#006666>#define wxSTC_CSS_PSEUDOELEMENT</font><br>
+<font color=#006666>#define wxSTC_CSS_EXTENDED_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_CSS_EXTENDED_PSEUDOCLASS</font><br>
+<font color=#006666>#define wxSTC_CSS_EXTENDED_PSEUDOELEMENT</font><br>
+<font color=#006666>#define wxSTC_CSS_MEDIA</font><br>
+<font color=#006666>#define wxSTC_CSS_VARIABLE</font><br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_5</i> </font><br>
 <br>
 <font color=#009900>// Lexical states for SCLEX_POV</font><br>
 <font color=#006666>#define wxSTC_POV_DEFAULT</font><br>
@@ -23939,6 +24151,7 @@ enum<br>
 <font color=#006666>#define wxSTC_YAML_DOCUMENT</font><br>
 <font color=#006666>#define wxSTC_YAML_TEXT</font><br>
 <font color=#006666>#define wxSTC_YAML_ERROR</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_YAML_OPERATOR</font><br>
 <br>
 <font color=#009900>// Lexical states for SCLEX_TEX</font><br>
 <font color=#006666>#define wxSTC_TEX_DEFAULT</font><br>
@@ -23969,7 +24182,21 @@ enum<br>
 <font color=#006666>#define wxSTC_ERLANG_MACRO</font><br>
 <font color=#006666>#define wxSTC_ERLANG_RECORD</font><br>
 <font color=#006666>!<i>%wxchkver_2_9_2</i> #define wxSTC_ERLANG_SEPARATOR</font><br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#006666>#define wxSTC_ERLANG_PREPROC</font><br>
 <font color=#006666>#define wxSTC_ERLANG_NODE_NAME</font><br>
+<font color=#006666>#define wxSTC_ERLANG_COMMENT_FUNCTION</font><br>
+<font color=#006666>#define wxSTC_ERLANG_COMMENT_MODULE</font><br>
+<font color=#006666>#define wxSTC_ERLANG_COMMENT_DOC</font><br>
+<font color=#006666>#define wxSTC_ERLANG_COMMENT_DOC_MACRO</font><br>
+<font color=#006666>#define wxSTC_ERLANG_ATOM_QUOTED</font><br>
+<font color=#006666>#define wxSTC_ERLANG_MACRO_QUOTED</font><br>
+<font color=#006666>#define wxSTC_ERLANG_RECORD_QUOTED</font><br>
+<font color=#006666>#define wxSTC_ERLANG_NODE_NAME_QUOTED</font><br>
+<font color=#006666>#define wxSTC_ERLANG_BIFS</font><br>
+<font color=#006666>#define wxSTC_ERLANG_MODULES</font><br>
+<font color=#006666>#define wxSTC_ERLANG_MODULES_ATT</font><br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_5</i></font><br>
 <font color=#006666>#define wxSTC_ERLANG_UNKNOWN</font><br>
 <br>
 <font color=#009900>// Lexical states for SCLEX_OCTAVE are identical to MatLab</font><br>
@@ -24141,6 +24368,7 @@ enum<br>
 <font color=#006666>#define wxSTC_CAML_OPERATOR</font><br>
 <font color=#006666>#define wxSTC_CAML_NUMBER</font><br>
 <font color=#006666>#define wxSTC_CAML_CHAR</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_CAML_WHITE</font><br>
 <font color=#006666>#define wxSTC_CAML_STRING</font><br>
 <font color=#006666>#define wxSTC_CAML_COMMENT</font><br>
 <font color=#006666>#define wxSTC_CAML_COMMENT1</font><br>
@@ -24187,6 +24415,7 @@ enum<br>
 <font color=#006666>#define wxSTC_T3_USER1</font><br>
 <font color=#006666>#define wxSTC_T3_USER2</font><br>
 <font color=#006666>#define wxSTC_T3_USER3</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_T3_BRACE</font><br>
 <br>
 <font color=#009900>// Lexical states for SCLEX_REBOL</font><br>
 <font color=#006666>#define wxSTC_REBOL_DEFAULT</font><br>
@@ -24282,6 +24511,21 @@ enum<br>
 <font color=#006666>#define wxSTC_FS_DATE</font><br>
 <font color=#006666>#define wxSTC_FS_STRINGEOL</font><br>
 <font color=#006666>#define wxSTC_FS_CONSTANT</font><br>
+#if <i>%wxchkver_2_9_5</i><br>
+<font color=#006666>#define wxSTC_FS_WORDOPERATOR</font><br>
+<font color=#006666>#define wxSTC_FS_DISABLEDCODE</font><br>
+<font color=#006666>#define wxSTC_FS_DEFAULT_C</font><br>
+<font color=#006666>#define wxSTC_FS_COMMENTDOC_C</font><br>
+<font color=#006666>#define wxSTC_FS_COMMENTLINEDOC_C</font><br>
+<font color=#006666>#define wxSTC_FS_KEYWORD_C</font><br>
+<font color=#006666>#define wxSTC_FS_KEYWORD2_C</font><br>
+<font color=#006666>#define wxSTC_FS_NUMBER_C</font><br>
+<font color=#006666>#define wxSTC_FS_STRING_C</font><br>
+<font color=#006666>#define wxSTC_FS_PREPROCESSOR_C</font><br>
+<font color=#006666>#define wxSTC_FS_OPERATOR_C</font><br>
+<font color=#006666>#define wxSTC_FS_IDENTIFIER_C</font><br>
+<font color=#006666>#define wxSTC_FS_STRINGEOL_C</font><br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_5</i></font><br>
 <font color=#009900>//#define wxSTC_FS_ASM        - Removed in 2.9.5</font><br>
 <font color=#009900>//#define wxSTC_FS_LABEL      - Removed in 2.9.5</font><br>
 <font color=#009900>//#define wxSTC_FS_ERROR      - Removed in 2.9.5</font><br>
@@ -24315,7 +24559,7 @@ enum<br>
 <font color=#006666>#define wxSTC_INNO_PARAMETER</font><br>
 <font color=#006666>#define wxSTC_INNO_SECTION</font><br>
 <font color=#006666>#define wxSTC_INNO_PREPROC</font><br>
-<font color=#006666>#define wxSTC_INNO_PREPROC_INLINE</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_INNO_INLINE_EXPANSION</font><br>
 <font color=#006666>#define wxSTC_INNO_COMMENT_PASCAL</font><br>
 <font color=#006666>#define wxSTC_INNO_KEYWORD_PASCAL</font><br>
 <font color=#006666>#define wxSTC_INNO_KEYWORD_USER</font><br>
@@ -24347,6 +24591,479 @@ enum<br>
 <font color=#006666>#define wxSTC_SPICE_COMMENTLINE</font><br>
 <br>
 #endif <font color=#009900>//<i>%wxchkver_2_8_12</i></font><br>
+<br>
+#if <i>%wxchkver_2_9_5</i><br>
+<br>
+<font color=#009900>// Lexical states for SCLEX_CMAKE</font><br>
+<font color=#006666>#define wxSTC_CMAKE_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_CMAKE_COMMENT</font><br>
+<font color=#006666>#define wxSTC_CMAKE_STRINGDQ</font><br>
+<font color=#006666>#define wxSTC_CMAKE_STRINGLQ</font><br>
+<font color=#006666>#define wxSTC_CMAKE_STRINGRQ</font><br>
+<font color=#006666>#define wxSTC_CMAKE_COMMANDS</font><br>
+<font color=#006666>#define wxSTC_CMAKE_PARAMETERS</font><br>
+<font color=#006666>#define wxSTC_CMAKE_VARIABLE</font><br>
+<font color=#006666>#define wxSTC_CMAKE_USERDEFINED</font><br>
+<font color=#006666>#define wxSTC_CMAKE_WHILEDEF</font><br>
+<font color=#006666>#define wxSTC_CMAKE_FOREACHDEF</font><br>
+<font color=#006666>#define wxSTC_CMAKE_IFDEFINEDEF</font><br>
+<font color=#006666>#define wxSTC_CMAKE_MACRODEF</font><br>
+<font color=#006666>#define wxSTC_CMAKE_STRINGVAR</font><br>
+<font color=#006666>#define wxSTC_CMAKE_NUMBER</font><br>
+<br>
+<font color=#009900>// Lexical states for SCLEX_GAP</font><br>
+<font color=#006666>#define wxSTC_GAP_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_GAP_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_GAP_KEYWORD</font><br>
+<font color=#006666>#define wxSTC_GAP_KEYWORD2</font><br>
+<font color=#006666>#define wxSTC_GAP_KEYWORD3</font><br>
+<font color=#006666>#define wxSTC_GAP_KEYWORD4</font><br>
+<font color=#006666>#define wxSTC_GAP_STRING</font><br>
+<font color=#006666>#define wxSTC_GAP_CHAR</font><br>
+<font color=#006666>#define wxSTC_GAP_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_GAP_COMMENT</font><br>
+<font color=#006666>#define wxSTC_GAP_NUMBER</font><br>
+<font color=#006666>#define wxSTC_GAP_STRINGEOL</font><br>
+<br>
+<font color=#009900>// Lexical state for SCLEX_PLM</font><br>
+<font color=#006666>#define wxSTC_PLM_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_PLM_COMMENT</font><br>
+<font color=#006666>#define wxSTC_PLM_STRING</font><br>
+<font color=#006666>#define wxSTC_PLM_NUMBER</font><br>
+<font color=#006666>#define wxSTC_PLM_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_PLM_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_PLM_CONTROL</font><br>
+<font color=#006666>#define wxSTC_PLM_KEYWORD</font><br>
+<br>
+<font color=#009900>// Lexical state for SCLEX_PROGRESS</font><br>
+<font color=#006666>#define wxSTC_4GL_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_4GL_NUMBER</font><br>
+<font color=#006666>#define wxSTC_4GL_WORD</font><br>
+<font color=#006666>#define wxSTC_4GL_STRING</font><br>
+<font color=#006666>#define wxSTC_4GL_CHARACTER</font><br>
+<font color=#006666>#define wxSTC_4GL_PREPROCESSOR</font><br>
+<font color=#006666>#define wxSTC_4GL_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_4GL_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_4GL_BLOCK</font><br>
+<font color=#006666>#define wxSTC_4GL_END</font><br>
+<font color=#006666>#define wxSTC_4GL_COMMENT1</font><br>
+<font color=#006666>#define wxSTC_4GL_COMMENT2</font><br>
+<font color=#006666>#define wxSTC_4GL_COMMENT3</font><br>
+<font color=#006666>#define wxSTC_4GL_COMMENT4</font><br>
+<font color=#006666>#define wxSTC_4GL_COMMENT5</font><br>
+<font color=#006666>#define wxSTC_4GL_COMMENT6</font><br>
+<font color=#006666>#define wxSTC_4GL_DEFAULT_</font><br>
+<font color=#006666>#define wxSTC_4GL_NUMBER_</font><br>
+<font color=#006666>#define wxSTC_4GL_WORD_</font><br>
+<font color=#006666>#define wxSTC_4GL_STRING_</font><br>
+<font color=#006666>#define wxSTC_4GL_CHARACTER_</font><br>
+<font color=#006666>#define wxSTC_4GL_PREPROCESSOR_</font><br>
+<font color=#006666>#define wxSTC_4GL_OPERATOR_</font><br>
+<font color=#006666>#define wxSTC_4GL_IDENTIFIER_</font><br>
+<font color=#006666>#define wxSTC_4GL_BLOCK_</font><br>
+<font color=#006666>#define wxSTC_4GL_END_</font><br>
+<font color=#006666>#define wxSTC_4GL_COMMENT1_</font><br>
+<font color=#006666>#define wxSTC_4GL_COMMENT2_</font><br>
+<font color=#006666>#define wxSTC_4GL_COMMENT3_</font><br>
+<font color=#006666>#define wxSTC_4GL_COMMENT4_</font><br>
+<font color=#006666>#define wxSTC_4GL_COMMENT5_</font><br>
+<font color=#006666>#define wxSTC_4GL_COMMENT6_</font><br>
+<br>
+<font color=#009900>// Lexical states for SCLEX_ABAQUS</font><br>
+<font color=#006666>#define wxSTC_ABAQUS_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_ABAQUS_COMMENT</font><br>
+<font color=#006666>#define wxSTC_ABAQUS_COMMENTBLOCK</font><br>
+<font color=#006666>#define wxSTC_ABAQUS_NUMBER</font><br>
+<font color=#006666>#define wxSTC_ABAQUS_STRING</font><br>
+<font color=#006666>#define wxSTC_ABAQUS_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_ABAQUS_WORD</font><br>
+<font color=#006666>#define wxSTC_ABAQUS_PROCESSOR</font><br>
+<font color=#006666>#define wxSTC_ABAQUS_COMMAND</font><br>
+<font color=#006666>#define wxSTC_ABAQUS_SLASHCOMMAND</font><br>
+<font color=#006666>#define wxSTC_ABAQUS_STARCOMMAND</font><br>
+<font color=#006666>#define wxSTC_ABAQUS_ARGUMENT</font><br>
+<font color=#006666>#define wxSTC_ABAQUS_FUNCTION</font><br>
+<br>
+<font color=#009900>// Lexical states for SCLEX_ASYMPTOTE</font><br>
+<font color=#006666>#define wxSTC_ASY_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_ASY_COMMENT</font><br>
+<font color=#006666>#define wxSTC_ASY_COMMENTLINE</font><br>
+<font color=#006666>#define wxSTC_ASY_NUMBER</font><br>
+<font color=#006666>#define wxSTC_ASY_WORD</font><br>
+<font color=#006666>#define wxSTC_ASY_STRING</font><br>
+<font color=#006666>#define wxSTC_ASY_CHARACTER</font><br>
+<font color=#006666>#define wxSTC_ASY_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_ASY_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_ASY_STRINGEOL</font><br>
+<font color=#006666>#define wxSTC_ASY_COMMENTLINEDOC</font><br>
+<font color=#006666>#define wxSTC_ASY_WORD2</font><br>
+<br>
+<font color=#009900>// Lexical states for SCLEX_R</font><br>
+<font color=#006666>#define wxSTC_R_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_R_COMMENT</font><br>
+<font color=#006666>#define wxSTC_R_KWORD</font><br>
+<font color=#006666>#define wxSTC_R_BASEKWORD</font><br>
+<font color=#006666>#define wxSTC_R_OTHERKWORD</font><br>
+<font color=#006666>#define wxSTC_R_NUMBER</font><br>
+<font color=#006666>#define wxSTC_R_STRING</font><br>
+<font color=#006666>#define wxSTC_R_STRING2</font><br>
+<font color=#006666>#define wxSTC_R_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_R_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_R_INFIX</font><br>
+<font color=#006666>#define wxSTC_R_INFIXEOL</font><br>
+<br>
+<font color=#009900>// Lexical state for SCLEX_MAGIKSF</font><br>
+<font color=#006666>#define wxSTC_MAGIK_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_MAGIK_COMMENT</font><br>
+<font color=#006666>#define wxSTC_MAGIK_HYPER_COMMENT</font><br>
+<font color=#006666>#define wxSTC_MAGIK_STRING</font><br>
+<font color=#006666>#define wxSTC_MAGIK_CHARACTER</font><br>
+<font color=#006666>#define wxSTC_MAGIK_NUMBER</font><br>
+<font color=#006666>#define wxSTC_MAGIK_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_MAGIK_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_MAGIK_FLOW</font><br>
+<font color=#006666>#define wxSTC_MAGIK_CONTAINER</font><br>
+<font color=#006666>#define wxSTC_MAGIK_BRACKET_BLOCK</font><br>
+<font color=#006666>#define wxSTC_MAGIK_BRACE_BLOCK</font><br>
+<font color=#006666>#define wxSTC_MAGIK_SQBRACKET_BLOCK</font><br>
+<font color=#006666>#define wxSTC_MAGIK_UNKNOWN_KEYWORD</font><br>
+<font color=#006666>#define wxSTC_MAGIK_KEYWORD</font><br>
+<font color=#006666>#define wxSTC_MAGIK_PRAGMA</font><br>
+<font color=#006666>#define wxSTC_MAGIK_SYMBOL</font><br>
+<br>
+<font color=#009900>// Lexical state for SCLEX_POWERSHELL</font><br>
+<font color=#006666>#define wxSTC_POWERSHELL_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_POWERSHELL_COMMENT</font><br>
+<font color=#006666>#define wxSTC_POWERSHELL_STRING</font><br>
+<font color=#006666>#define wxSTC_POWERSHELL_CHARACTER</font><br>
+<font color=#006666>#define wxSTC_POWERSHELL_NUMBER</font><br>
+<font color=#006666>#define wxSTC_POWERSHELL_VARIABLE</font><br>
+<font color=#006666>#define wxSTC_POWERSHELL_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_POWERSHELL_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_POWERSHELL_KEYWORD</font><br>
+<font color=#006666>#define wxSTC_POWERSHELL_CMDLET</font><br>
+<font color=#006666>#define wxSTC_POWERSHELL_ALIAS</font><br>
+<font color=#006666>#define wxSTC_POWERSHELL_FUNCTION</font><br>
+<font color=#006666>#define wxSTC_POWERSHELL_USER1</font><br>
+<font color=#006666>#define wxSTC_POWERSHELL_COMMENTSTREAM</font><br>
+<br>
+<font color=#009900>// Lexical state for SCLEX_MYSQL</font><br>
+<font color=#006666>#define wxSTC_MYSQL_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_MYSQL_COMMENT</font><br>
+<font color=#006666>#define wxSTC_MYSQL_COMMENTLINE</font><br>
+<font color=#006666>#define wxSTC_MYSQL_VARIABLE</font><br>
+<font color=#006666>#define wxSTC_MYSQL_SYSTEMVARIABLE</font><br>
+<font color=#006666>#define wxSTC_MYSQL_KNOWNSYSTEMVARIABLE</font><br>
+<font color=#006666>#define wxSTC_MYSQL_NUMBER</font><br>
+<font color=#006666>#define wxSTC_MYSQL_MAJORKEYWORD</font><br>
+<font color=#006666>#define wxSTC_MYSQL_KEYWORD</font><br>
+<font color=#006666>#define wxSTC_MYSQL_DATABASEOBJECT</font><br>
+<font color=#006666>#define wxSTC_MYSQL_PROCEDUREKEYWORD</font><br>
+<font color=#006666>#define wxSTC_MYSQL_STRING</font><br>
+<font color=#006666>#define wxSTC_MYSQL_SQSTRING</font><br>
+<font color=#006666>#define wxSTC_MYSQL_DQSTRING</font><br>
+<font color=#006666>#define wxSTC_MYSQL_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_MYSQL_FUNCTION</font><br>
+<font color=#006666>#define wxSTC_MYSQL_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_MYSQL_QUOTEDIDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_MYSQL_USER1</font><br>
+<font color=#006666>#define wxSTC_MYSQL_USER2</font><br>
+<font color=#006666>#define wxSTC_MYSQL_USER3</font><br>
+<font color=#006666>#define wxSTC_MYSQL_HIDDENCOMMAND</font><br>
+<br>
+<font color=#009900>// Lexical state for SCLEX_PO</font><br>
+<font color=#006666>#define wxSTC_PO_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_PO_COMMENT</font><br>
+<font color=#006666>#define wxSTC_PO_MSGID</font><br>
+<font color=#006666>#define wxSTC_PO_MSGID_TEXT</font><br>
+<font color=#006666>#define wxSTC_PO_MSGSTR</font><br>
+<font color=#006666>#define wxSTC_PO_MSGSTR_TEXT</font><br>
+<font color=#006666>#define wxSTC_PO_MSGCTXT</font><br>
+<font color=#006666>#define wxSTC_PO_MSGCTXT_TEXT</font><br>
+<font color=#006666>#define wxSTC_PO_FUZZY</font><br>
+<br>
+<font color=#009900>// Lexical states for SCLEX_PASCAL</font><br>
+<font color=#006666>#define wxSTC_PAS_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_PAS_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_PAS_COMMENT</font><br>
+<font color=#006666>#define wxSTC_PAS_COMMENT2</font><br>
+<font color=#006666>#define wxSTC_PAS_COMMENTLINE</font><br>
+<font color=#006666>#define wxSTC_PAS_PREPROCESSOR</font><br>
+<font color=#006666>#define wxSTC_PAS_PREPROCESSOR2</font><br>
+<font color=#006666>#define wxSTC_PAS_NUMBER</font><br>
+<font color=#006666>#define wxSTC_PAS_HEXNUMBER</font><br>
+<font color=#006666>#define wxSTC_PAS_WORD</font><br>
+<font color=#006666>#define wxSTC_PAS_STRING</font><br>
+<font color=#006666>#define wxSTC_PAS_STRINGEOL</font><br>
+<font color=#006666>#define wxSTC_PAS_CHARACTER</font><br>
+<font color=#006666>#define wxSTC_PAS_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_PAS_ASM</font><br>
+<br>
+<font color=#009900>// Lexical state for SCLEX_SORCUS</font><br>
+<font color=#006666>#define wxSTC_SORCUS_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_SORCUS_COMMAND</font><br>
+<font color=#006666>#define wxSTC_SORCUS_PARAMETER</font><br>
+<font color=#006666>#define wxSTC_SORCUS_COMMENTLINE</font><br>
+<font color=#006666>#define wxSTC_SORCUS_STRING</font><br>
+<font color=#006666>#define wxSTC_SORCUS_STRINGEOL</font><br>
+<font color=#006666>#define wxSTC_SORCUS_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_SORCUS_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_SORCUS_NUMBER</font><br>
+<font color=#006666>#define wxSTC_SORCUS_CONSTANT</font><br>
+<br>
+<font color=#009900>// Lexical state for SCLEX_POWERPRO</font><br>
+<font color=#006666>#define wxSTC_POWERPRO_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_POWERPRO_COMMENTBLOCK</font><br>
+<font color=#006666>#define wxSTC_POWERPRO_COMMENTLINE</font><br>
+<font color=#006666>#define wxSTC_POWERPRO_NUMBER</font><br>
+<font color=#006666>#define wxSTC_POWERPRO_WORD</font><br>
+<font color=#006666>#define wxSTC_POWERPRO_WORD2</font><br>
+<font color=#006666>#define wxSTC_POWERPRO_WORD3</font><br>
+<font color=#006666>#define wxSTC_POWERPRO_WORD4</font><br>
+<font color=#006666>#define wxSTC_POWERPRO_DOUBLEQUOTEDSTRING</font><br>
+<font color=#006666>#define wxSTC_POWERPRO_SINGLEQUOTEDSTRING</font><br>
+<font color=#006666>#define wxSTC_POWERPRO_LINECONTINUE</font><br>
+<font color=#006666>#define wxSTC_POWERPRO_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_POWERPRO_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_POWERPRO_STRINGEOL</font><br>
+<font color=#006666>#define wxSTC_POWERPRO_VERBATIM</font><br>
+<font color=#006666>#define wxSTC_POWERPRO_ALTQUOTE</font><br>
+<font color=#006666>#define wxSTC_POWERPRO_FUNCTION</font><br>
+<br>
+<font color=#009900>// Lexical states for SCLEX_SML</font><br>
+<font color=#006666>#define wxSTC_SML_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_SML_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_SML_TAGNAME</font><br>
+<font color=#006666>#define wxSTC_SML_KEYWORD</font><br>
+<font color=#006666>#define wxSTC_SML_KEYWORD2</font><br>
+<font color=#006666>#define wxSTC_SML_KEYWORD3</font><br>
+<font color=#006666>#define wxSTC_SML_LINENUM</font><br>
+<font color=#006666>#define wxSTC_SML_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_SML_NUMBER</font><br>
+<font color=#006666>#define wxSTC_SML_CHAR</font><br>
+<font color=#006666>#define wxSTC_SML_STRING</font><br>
+<font color=#006666>#define wxSTC_SML_COMMENT</font><br>
+<font color=#006666>#define wxSTC_SML_COMMENT1</font><br>
+<font color=#006666>#define wxSTC_SML_COMMENT2</font><br>
+<font color=#006666>#define wxSTC_SML_COMMENT3</font><br>
+<br>
+<font color=#009900>// Lexical state for SCLEX_MARKDOWN</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_LINE_BEGIN</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_STRONG1</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_STRONG2</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_EM1</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_EM2</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_HEADER1</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_HEADER2</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_HEADER3</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_HEADER4</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_HEADER5</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_HEADER6</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_PRECHAR</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_ULIST_ITEM</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_OLIST_ITEM</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_BLOCKQUOTE</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_STRIKEOUT</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_HRULE</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_LINK</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_CODE</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_CODE2</font><br>
+<font color=#006666>#define wxSTC_MARKDOWN_CODEBK</font><br>
+<br>
+<font color=#009900>// Lexical state for SCLEX_TXT2TAGS</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_LINE_BEGIN</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_STRONG1</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_STRONG2</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_EM1</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_EM2</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_HEADER1</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_HEADER2</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_HEADER3</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_HEADER4</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_HEADER5</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_HEADER6</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_PRECHAR</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_ULIST_ITEM</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_OLIST_ITEM</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_BLOCKQUOTE</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_STRIKEOUT</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_HRULE</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_LINK</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_CODE</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_CODE2</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_CODEBK</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_COMMENT</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_OPTION</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_PREPROC</font><br>
+<font color=#006666>#define wxSTC_TXT2TAGS_POSTPROC</font><br>
+<br>
+<font color=#009900>// Lexical states for SCLEX_A68K</font><br>
+<font color=#006666>#define wxSTC_A68K_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_A68K_COMMENT</font><br>
+<font color=#006666>#define wxSTC_A68K_NUMBER_DEC</font><br>
+<font color=#006666>#define wxSTC_A68K_NUMBER_BIN</font><br>
+<font color=#006666>#define wxSTC_A68K_NUMBER_HEX</font><br>
+<font color=#006666>#define wxSTC_A68K_STRING1</font><br>
+<font color=#006666>#define wxSTC_A68K_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_A68K_CPUINSTRUCTION</font><br>
+<font color=#006666>#define wxSTC_A68K_EXTINSTRUCTION</font><br>
+<font color=#006666>#define wxSTC_A68K_REGISTER</font><br>
+<font color=#006666>#define wxSTC_A68K_DIRECTIVE</font><br>
+<font color=#006666>#define wxSTC_A68K_MACRO_ARG</font><br>
+<font color=#006666>#define wxSTC_A68K_LABEL</font><br>
+<font color=#006666>#define wxSTC_A68K_STRING2</font><br>
+<font color=#006666>#define wxSTC_A68K_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_A68K_MACRO_DECLARATION</font><br>
+<font color=#006666>#define wxSTC_A68K_COMMENT_WORD</font><br>
+<font color=#006666>#define wxSTC_A68K_COMMENT_SPECIAL</font><br>
+<font color=#006666>#define wxSTC_A68K_COMMENT_DOXYGEN</font><br>
+<br>
+<font color=#009900>// Lexical states for SCLEX_MODULA</font><br>
+<font color=#006666>#define wxSTC_MODULA_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_MODULA_COMMENT</font><br>
+<font color=#006666>#define wxSTC_MODULA_DOXYCOMM</font><br>
+<font color=#006666>#define wxSTC_MODULA_DOXYKEY</font><br>
+<font color=#006666>#define wxSTC_MODULA_KEYWORD</font><br>
+<font color=#006666>#define wxSTC_MODULA_RESERVED</font><br>
+<font color=#006666>#define wxSTC_MODULA_NUMBER</font><br>
+<font color=#006666>#define wxSTC_MODULA_BASENUM</font><br>
+<font color=#006666>#define wxSTC_MODULA_FLOAT</font><br>
+<font color=#006666>#define wxSTC_MODULA_STRING</font><br>
+<font color=#006666>#define wxSTC_MODULA_STRSPEC</font><br>
+<font color=#006666>#define wxSTC_MODULA_CHAR</font><br>
+<font color=#006666>#define wxSTC_MODULA_CHARSPEC</font><br>
+<font color=#006666>#define wxSTC_MODULA_PROC</font><br>
+<font color=#006666>#define wxSTC_MODULA_PRAGMA</font><br>
+<font color=#006666>#define wxSTC_MODULA_PRGKEY</font><br>
+<font color=#006666>#define wxSTC_MODULA_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_MODULA_BADSTR</font><br>
+<br>
+<font color=#009900>// Lexical states for SCLEX_COFFEESCRIPT</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_COMMENT</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_COMMENTLINE</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_COMMENTDOC</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_NUMBER</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_WORD</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_STRING</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_CHARACTER</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_UUID</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_PREPROCESSOR</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_STRINGEOL</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_VERBATIM</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_REGEX</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_COMMENTLINEDOC</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_WORD2</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_COMMENTDOCKEYWORD</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_COMMENTDOCKEYWORDERROR</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_GLOBALCLASS</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_STRINGRAW</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_TRIPLEVERBATIM</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_HASHQUOTEDSTRING</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_COMMENTBLOCK</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_VERBOSE_REGEX</font><br>
+<font color=#006666>#define wxSTC_COFFEESCRIPT_VERBOSE_REGEX_COMMENT</font><br>
+<br>
+<font color=#009900>// Lexical states for SCLEX_AVS</font><br>
+<font color=#006666>#define wxSTC_AVS_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_AVS_COMMENTBLOCK</font><br>
+<font color=#006666>#define wxSTC_AVS_COMMENTBLOCKN</font><br>
+<font color=#006666>#define wxSTC_AVS_COMMENTLINE</font><br>
+<font color=#006666>#define wxSTC_AVS_NUMBER</font><br>
+<font color=#006666>#define wxSTC_AVS_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_AVS_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_AVS_STRING</font><br>
+<font color=#006666>#define wxSTC_AVS_TRIPLESTRING</font><br>
+<font color=#006666>#define wxSTC_AVS_KEYWORD</font><br>
+<font color=#006666>#define wxSTC_AVS_FILTER </font><br>
+<font color=#006666>#define wxSTC_AVS_PLUGIN</font><br>
+<font color=#006666>#define wxSTC_AVS_FUNCTION</font><br>
+<font color=#006666>#define wxSTC_AVS_CLIPPROP</font><br>
+<font color=#006666>#define wxSTC_AVS_USERDFN</font><br>
+<br>
+<font color=#009900>// Lexical states for SCLEX_ECL</font><br>
+<font color=#006666>#define wxSTC_ECL_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_ECL_COMMENT</font><br>
+<font color=#006666>#define wxSTC_ECL_COMMENTLINE</font><br>
+<font color=#006666>#define wxSTC_ECL_NUMBER</font><br>
+<font color=#006666>#define wxSTC_ECL_STRING</font><br>
+<font color=#006666>#define wxSTC_ECL_WORD0</font><br>
+<font color=#006666>#define wxSTC_ECL_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_ECL_CHARACTER</font><br>
+<font color=#006666>#define wxSTC_ECL_UUID</font><br>
+<font color=#006666>#define wxSTC_ECL_PREPROCESSOR</font><br>
+<font color=#006666>#define wxSTC_ECL_UNKNOWN</font><br>
+<font color=#006666>#define wxSTC_ECL_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_ECL_STRINGEOL</font><br>
+<font color=#006666>#define wxSTC_ECL_VERBATIM</font><br>
+<font color=#006666>#define wxSTC_ECL_REGEX</font><br>
+<font color=#006666>#define wxSTC_ECL_COMMENTLINEDOC</font><br>
+<font color=#006666>#define wxSTC_ECL_WORD1</font><br>
+<font color=#006666>#define wxSTC_ECL_COMMENTDOCKEYWORD</font><br>
+<font color=#006666>#define wxSTC_ECL_COMMENTDOCKEYWORDERROR</font><br>
+<font color=#006666>#define wxSTC_ECL_WORD2</font><br>
+<font color=#006666>#define wxSTC_ECL_WORD3</font><br>
+<font color=#006666>#define wxSTC_ECL_WORD4</font><br>
+<font color=#006666>#define wxSTC_ECL_WORD5</font><br>
+<font color=#006666>#define wxSTC_ECL_COMMENTDOC</font><br>
+<font color=#006666>#define wxSTC_ECL_ADDED</font><br>
+<font color=#006666>#define wxSTC_ECL_DELETED</font><br>
+<font color=#006666>#define wxSTC_ECL_CHANGED</font><br>
+<font color=#006666>#define wxSTC_ECL_MOVED</font><br>
+<br>
+<font color=#009900>// Lexical states for SCLEX_OSCRIPT</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_LINE_COMMENT</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_BLOCK_COMMENT</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_DOC_COMMENT</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_PREPROCESSOR</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_NUMBER</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_SINGLEQUOTE_STRING</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_DOUBLEQUOTE_STRING</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_CONSTANT</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_GLOBAL</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_KEYWORD</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_LABEL</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_TYPE</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_FUNCTION</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_OBJECT</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_PROPERTY</font><br>
+<font color=#006666>#define wxSTC_OSCRIPT_METHOD</font><br>
+<br>
+<font color=#009900>// Lexical states for SCLEX_VISUALPROLOG</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_DEFAULT</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_KEY_MAJOR</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_KEY_MINOR</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_KEY_DIRECTIVE</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_COMMENT_BLOCK</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_COMMENT_LINE</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_COMMENT_KEY</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_COMMENT_KEY_ERROR</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_IDENTIFIER</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_VARIABLE</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_ANONYMOUS</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_NUMBER</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_OPERATOR</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_CHARACTER</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_CHARACTER_TOO_MANY</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_CHARACTER_ESCAPE_ERROR</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_STRING</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_STRING_ESCAPE</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_STRING_ESCAPE_ERROR</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_STRING_EOL_OPEN</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_STRING_VERBATIM</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_STRING_VERBATIM_SPECIAL</font><br>
+<font color=#006666>#define wxSTC_VISUALPROLOG_STRING_VERBATIM_EOL</font><br>
+<br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_5</i></font><br>
+<br>
+<br>
 <br>
 <font color=#009900>//-----------------------------------------</font><br>
 <font color=#009900>// Commands that can be bound to keystrokes</font><br>
@@ -24486,6 +25203,9 @@ enum<br>
 <font color=#009900>// Delete the word to the right of the caret.</font><br>
 <font color=#006666>#define wxSTC_CMD_DELWORDRIGHT</font><br>
 <br>
+<font color=#009900>// Delete the word to the right of the caret, but not the trailing non-word characters.</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_CMD_DELWORDRIGHTEND</font><br>
+<br>
 <font color=#009900>// Cut the line containing the caret.</font><br>
 <font color=#006666>#define wxSTC_CMD_LINECUT</font><br>
 <br>
@@ -24622,6 +25342,22 @@ enum<br>
 <font color=#009900>// Move caret right one word, position cursor at end of word, extending selection to new caret position.</font><br>
 <font color=#006666>#define wxSTC_CMD_WORDRIGHTENDEXTEND</font><br>
 <br>
+<font color=#009900>// Centre current line in window.</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_CMD_VERTICALCENTRECARET</font><br>
+<br>
+<font color=#009900>// Move the selected lines up one line, shifting the line above after the selection</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_CMD_MOVESELECTEDLINESUP</font><br>
+<br>
+<font color=#009900>// Move the selected lines down one line, shifting the line below before the selection</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_CMD_MOVESELECTEDLINESDOWN</font><br>
+<br>
+<font color=#009900>// Scroll to start of document.</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_CMD_SCROLLTOSTART</font><br>
+<br>
+<font color=#009900>// Scroll to end of document.</font><br>
+<font color=#006666><i>%wxchkver_2_9_5</i> #define wxSTC_CMD_SCROLLTOEND</font><br>
+<br>
+<br>
 <font color=#009900>///////////////////////////////////////////////////////////////////////////////</font><br>
 <font color=#009900>// <a href="#wxStyledTextCtrl">wxStyledTextCtrl</a></font><br>
 <br>
@@ -24630,6 +25366,8 @@ enum<br>
 <blockquote>
     <a href="#wxStyledTextCtrl">wxStyledTextCtrl</a>(<a href="#wxWindow">wxWindow</a> *parent, wxWindowID id, const <a href="#wxPoint">wxPoint</a>&amp; pos = wxDefaultPosition, const <a href="#wxSize">wxSize</a>&amp; size = wxDefaultSize, long style = 0, const <a href="#wxString">wxString</a> &amp;name = "wxStyledTextCtrl" );<br>
 <br>
+<br>
+<font color=#009900>//}}}</font><br>
 <font color=#009900>//----------------------------------------------------------------------</font><br>
 <font color=#009900>// BEGIN generated section.  The following code is automatically generated</font><br>
 <font color=#009900>//       by gen_iface.py.  Do not edit this file.  Edit stc.h.in instead</font><br>
@@ -24648,23 +25386,26 @@ enum<br>
     <font color=#009900>// Delete all text in the document.</font><br>
     void ClearAll();<br>
 <br>
+    <font color=#009900>// Delete a range of text in the document.</font><br>
+    <i>%wxchkver_2_9_5</i> void DeleteRange(int pos, int deleteLength);<br>
+<br>
     <font color=#009900>// Set all style bytes to 0, remove all folding information.</font><br>
     void ClearDocumentStyle();<br>
 <br>
-    <font color=#009900>// Returns the number of characters in the document.</font><br>
-    int GetLength();<br>
+    <font color=#009900>// Returns the number of bytes in the document.</font><br>
+    int GetLength() const;<br>
 <br>
     <font color=#009900>// Returns the character byte at the position.</font><br>
-    int GetCharAt(int pos);<br>
+    int GetCharAt(int pos) const;<br>
 <br>
     <font color=#009900>// Returns the position of the caret.</font><br>
-    int GetCurrentPos();<br>
+    int GetCurrentPos() const;<br>
 <br>
     <font color=#009900>// Returns the position of the opposite end of the selection to the caret.</font><br>
-    int GetAnchor();<br>
+    int GetAnchor() const;<br>
 <br>
     <font color=#009900>// Returns the style byte at the position.</font><br>
-    int GetStyleAt(int pos);<br>
+    int GetStyleAt(int pos) const;<br>
 <br>
     <font color=#009900>// Redoes the next action on the undo history.</font><br>
     void Redo();<br>
@@ -24684,7 +25425,7 @@ enum<br>
     <font color=#009900>//wxMemoryBuffer GetStyledText(int startPos, int endPos);</font><br>
 <br>
     <font color=#009900>// Are there any redoable actions in the undo history?</font><br>
-    bool CanRedo();<br>
+    bool CanRedo() const;<br>
 <br>
     <font color=#009900>// Retrieve the line number at which a particular marker is located.</font><br>
     int MarkerLineFromHandle(int handle);<br>
@@ -24693,17 +25434,17 @@ enum<br>
     void MarkerDeleteHandle(int handle);<br>
 <br>
     <font color=#009900>// Is undo history being collected?</font><br>
-    bool GetUndoCollection();<br>
+    bool GetUndoCollection() const;<br>
 <br>
     <font color=#009900>// Are white space characters currently visible?</font><br>
     <font color=#009900>// Returns one of SCWS_* constants.</font><br>
-    int GetViewWhiteSpace();<br>
+    int GetViewWhiteSpace() const;<br>
 <br>
     <font color=#009900>// Make white space characters invisible, always visible or visible outside indentation.</font><br>
     void SetViewWhiteSpace(int viewWS);<br>
 <br>
     <font color=#009900>// Find the position from a point within the window.</font><br>
-    int PositionFromPoint(const <a href="#wxPoint">wxPoint</a>&amp; pt);<br>
+    int PositionFromPoint(const <a href="#wxPoint">wxPoint</a>&amp; pt) const;<br>
 <br>
     <font color=#009900>// Find the position from a point within the window but return</font><br>
     <font color=#009900>// INVALID_POSITION if not close to text.</font><br>
@@ -24730,13 +25471,13 @@ enum<br>
 <font color=#009900>//#endif</font><br>
 <br>
     <font color=#009900>// Retrieve the position of the last correctly styled character.</font><br>
-    int GetEndStyled();<br>
+    int GetEndStyled() const;<br>
 <br>
     <font color=#009900>// Convert all line endings in the document to one mode.</font><br>
     void ConvertEOLs(int eolMode);<br>
 <br>
     <font color=#009900>// Retrieve the current end of line mode - one of CRLF, CR, or LF.</font><br>
-    int GetEOLMode();<br>
+    int GetEOLMode() const;<br>
 <br>
     <font color=#009900>// Set the current end of line mode.</font><br>
     void SetEOLMode(int eolMode);<br>
@@ -24750,7 +25491,7 @@ enum<br>
     void SetStyling(int length, int style);<br>
 <br>
     <font color=#009900>// Is drawing done first into a buffer or direct to the screen?</font><br>
-    bool GetBufferedDraw();<br>
+    bool GetBufferedDraw() const;<br>
 <br>
     <font color=#009900>// If drawing is buffered then each line of text is drawn into a bitmap buffer</font><br>
     <font color=#009900>// before drawing it to the screen to avoid flicker.</font><br>
@@ -24760,7 +25501,7 @@ enum<br>
     void SetTabWidth(int tabWidth);<br>
 <br>
     <font color=#009900>// Retrieve the visible size of a tab.</font><br>
-    int GetTabWidth();<br>
+    int GetTabWidth() const;<br>
 <br>
     <font color=#009900>// Set the code page used to interpret the bytes of the document as characters.</font><br>
     void SetCodePage(int codePage);<br>
@@ -24775,6 +25516,12 @@ enum<br>
     <font color=#009900>// Set the background colour used for a particular marker number.</font><br>
     void MarkerSetBackground(int markerNumber, const <a href="#wxColour">wxColour</a>&amp; back);<br>
 <br>
+    <font color=#009900>// Set the background colour used for a particular marker number when its folding block is selected.</font><br>
+    <i>%wxchkver_2_9_5</i> void MarkerSetBackgroundSelected(int markerNumber, const <a href="#wxColour">wxColour</a>&amp; back);<br>
+<br>
+    <font color=#009900>// Enable/disable highlight for current folding bloc (smallest one that contains the caret)</font><br>
+    <i>%wxchkver_2_9_5</i> void MarkerEnableHighlight(bool enabled);<br>
+<br>
     <font color=#009900>// Add a marker to a line, returning an ID which can be used to find or delete the marker.</font><br>
     int MarkerAdd(int line, int markerNumber);<br>
 <br>
@@ -24787,7 +25534,8 @@ enum<br>
     <font color=#009900>// Get a bit mask of all the markers set on a line.</font><br>
     unsigned int MarkerGet(int line); <font color=#009900>// wxLua - mask is unsigned to keep all the bits</font><br>
 <br>
-    <font color=#009900>// Find the next line after lineStart that includes a marker in mask.</font><br>
+    <font color=#009900>// Find the next line at or after lineStart that includes a marker in mask.</font><br>
+    <font color=#009900>// Return -1 when no more lines.</font><br>
     int MarkerNext(int lineStart, unsigned int markerMask); <font color=#009900>// wxLua - mask is unsigned to keep all the bits</font><br>
 <br>
     <font color=#009900>// Find the previous line before lineStart that includes a marker in mask.</font><br>
@@ -24806,25 +25554,31 @@ enum<br>
     void SetMarginType(int margin, int marginType);<br>
 <br>
     <font color=#009900>// Retrieve the type of a margin.</font><br>
-    int GetMarginType(int margin);<br>
+    int GetMarginType(int margin) const;<br>
 <br>
     <font color=#009900>// Set the width of a margin to a width expressed in pixels.</font><br>
     void SetMarginWidth(int margin, int pixelWidth);<br>
 <br>
     <font color=#009900>// Retrieve the width of a margin in pixels.</font><br>
-    int GetMarginWidth(int margin);<br>
+    int GetMarginWidth(int margin) const;<br>
 <br>
     <font color=#009900>// Set a mask that determines which markers are displayed in a margin.</font><br>
     void SetMarginMask(int margin, unsigned int mask); <font color=#009900>// NOTE: wxSTC has "int mask", but we need all the bits so we force uint</font><br>
 <br>
     <font color=#009900>// Retrieve the marker mask of a margin.</font><br>
-    unsigned int GetMarginMask(int margin);<br>
+    unsigned int GetMarginMask(int margin) const;<br>
 <br>
     <font color=#009900>// Make a margin sensitive or insensitive to mouse clicks.</font><br>
     void SetMarginSensitive(int margin, bool sensitive);<br>
 <br>
     <font color=#009900>// Retrieve the mouse click sensitivity of a margin.</font><br>
-    bool GetMarginSensitive(int margin);<br>
+    bool GetMarginSensitive(int margin) const;<br>
+<br>
+    <font color=#009900>// Set the cursor shown when the mouse is inside a margin.</font><br>
+    <i>%wxchkver_2_9_5</i> void SetMarginCursor(int margin, int cursor);<br>
+<br>
+    <font color=#009900>// Retrieve the cursor shown in a margin.</font><br>
+    <i>%wxchkver_2_9_5</i> int GetMarginCursor(int margin) const;<br>
 <br>
     <font color=#009900>// Clear all the styles and make equivalent to the global default style.</font><br>
     void StyleClearAll();<br>
@@ -24856,23 +25610,81 @@ enum<br>
     <font color=#009900>// Set a style to be underlined or not.</font><br>
     void StyleSetUnderline(int style, bool underline);<br>
 <br>
+    <font color=#009900>// Get the foreground colour of a style.</font><br>
+    <i>%wxchkver_2_9_5</i> <a href="#wxColour">wxColour</a> StyleGetForeground(int style) const;<br>
+<br>
+    <font color=#009900>// Get the background colour of a style.</font><br>
+    <i>%wxchkver_2_9_5</i> <a href="#wxColour">wxColour</a> StyleGetBackground(int style) const;<br>
+<br>
+    <font color=#009900>// Get is a style bold or not.</font><br>
+    <i>%wxchkver_2_9_5</i> bool StyleGetBold(int style) const;<br>
+<br>
+    <font color=#009900>// Get is a style italic or not.</font><br>
+    <i>%wxchkver_2_9_5</i> bool StyleGetItalic(int style) const;<br>
+<br>
+    <font color=#009900>// Get the size of characters of a style.</font><br>
+    <i>%wxchkver_2_9_5</i> int StyleGetSize(int style) const;<br>
+<br>
+    <font color=#009900>// Get the font facename of a style</font><br>
+    <i>%wxchkver_2_9_5</i> <a href="#wxString">wxString</a> StyleGetFaceName(int style);<br>
+<br>
+    <font color=#009900>// Get is a style to have its end of line filled or not.</font><br>
+    <i>%wxchkver_2_9_5</i> bool StyleGetEOLFilled(int style) const;<br>
+<br>
+    <font color=#009900>// Get is a style underlined or not.</font><br>
+    <i>%wxchkver_2_9_5</i> bool StyleGetUnderline(int style) const;<br>
+<br>
+    <font color=#009900>// Get is a style mixed case, or to force upper or lower case.</font><br>
+    <i>%wxchkver_2_9_5</i> int StyleGetCase(int style) const;<br>
+<br>
+    <font color=#009900>// Get the character set of the font in a style.</font><br>
+    <i>%wxchkver_2_9_5</i> int StyleGetCharacterSet(int style) const;<br>
+<br>
+    <font color=#009900>// Get is a style visible or not.</font><br>
+    <i>%wxchkver_2_9_5</i> bool StyleGetVisible(int style) const;<br>
+<br>
+    <font color=#009900>// Get is a style changeable or not (read only).</font><br>
+    <font color=#009900>// Experimental feature, currently buggy.</font><br>
+    <i>%wxchkver_2_9_5</i> bool StyleGetChangeable(int style) const;<br>
+<br>
+    <font color=#009900>// Get is a style a hotspot or not.</font><br>
+    <i>%wxchkver_2_9_5</i> bool StyleGetHotSpot(int style) const;<br>
+<br>
     <font color=#009900>// Set a style to be mixed case, or to force upper or lower case.</font><br>
     void StyleSetCase(int style, int caseForce);<br>
+<br>
+    <font color=#009900>// Set the size of characters of a style. Size is in points multiplied by 100.</font><br>
+    <i>%wxchkver_2_9_5</i> void StyleSetSizeFractional(int style, int caseForce);<br>
+<br>
+    <font color=#009900>// Get the size of characters of a style in points multiplied by 100</font><br>
+    <i>%wxchkver_2_9_5</i> int StyleGetSizeFractional(int style) const;<br>
+<br>
+    <font color=#009900>// Set the weight of characters of a style.</font><br>
+    <i>%wxchkver_2_9_5</i> void StyleSetWeight(int style, int weight);<br>
+<br>
+    <font color=#009900>// Get the weight of characters of a style.</font><br>
+    <i>%wxchkver_2_9_5</i> int StyleGetWeight(int style) const;<br>
 <br>
     <font color=#009900>// Set a style to be a hotspot or not.</font><br>
     void StyleSetHotSpot(int style, bool hotspot);<br>
 <br>
-    <font color=#009900>// Set the foreground colour of the selection and whether to use this setting.</font><br>
+    <font color=#009900>// Set the foreground colour of the main and additional selections and whether to use this setting.</font><br>
     void SetSelForeground(bool useSetting, const <a href="#wxColour">wxColour</a>&amp; fore);<br>
 <br>
-    <font color=#009900>// Set the background colour of the selection and whether to use this setting.</font><br>
+    <font color=#009900>// Set the background colour of the main and additional selections and whether to use this setting.</font><br>
     void SetSelBackground(bool useSetting, const <a href="#wxColour">wxColour</a>&amp; back);<br>
 <br>
     <font color=#009900>// Get the alpha of the selection.</font><br>
-    <i>%wxchkver_2_8_12</i> int GetSelAlpha();<br>
+    <i>%wxchkver_2_8_12</i> int GetSelAlpha() const;<br>
 <br>
     <font color=#009900>// Set the alpha of the selection.</font><br>
     <i>%wxchkver_2_8_12</i> void SetSelAlpha(int alpha);<br>
+<br>
+    <font color=#009900>// Is the selection end of line filled?</font><br>
+    <i>%wxchkver_2_9_5</i> bool GetSelEOLFilled() const;<br>
+<br>
+    <font color=#009900>// Set the selection to have its end of line filled or not.</font><br>
+    <i>%wxchkver_2_9_5</i> void SetSelEOLFilled(bool filled);<br>
 <br>
     <font color=#009900>// Set the foreground colour of the caret.</font><br>
     void SetCaretForeground(const <a href="#wxColour">wxColour</a>&amp; fore);<br>
@@ -24896,14 +25708,17 @@ enum<br>
     void StyleSetVisible(int style, bool visible);<br>
 <br>
     <font color=#009900>// Get the time in milliseconds that the caret is on and off.</font><br>
-    int GetCaretPeriod();<br>
+    int GetCaretPeriod() const;<br>
 <br>
     <font color=#009900>// Get the time in milliseconds that the caret is on and off. 0 = steady on.</font><br>
     void SetCaretPeriod(int periodMilliseconds);<br>
 <br>
     <font color=#009900>// Set the set of characters making up words for when moving or selecting by word.</font><br>
-    <font color=#009900>// First sets deaults like SetCharsDefault.</font><br>
+    <font color=#009900>// First sets defaults like SetCharsDefault.</font><br>
     void SetWordChars(const <a href="#wxString">wxString</a>&amp; characters);<br>
+<br>
+    <font color=#009900>// Get the set of characters making up words for when moving or selecting by word.</font><br>
+    <i>%wxchkver_2_9_5</i> <a href="#wxString">wxString</a> GetWordChars() const;<br>
 <br>
     <font color=#009900>// Start a sequence of actions that is undone and redone as a unit.</font><br>
     <font color=#009900>// May be nested.</font><br>
@@ -24916,13 +25731,19 @@ enum<br>
     void IndicatorSetStyle(int indic, int style);<br>
 <br>
     <font color=#009900>// Retrieve the style of an indicator.</font><br>
-    int IndicatorGetStyle(int indic);<br>
+    int IndicatorGetStyle(int indic) const;<br>
 <br>
     <font color=#009900>// Set the foreground colour of an indicator.</font><br>
     void IndicatorSetForeground(int indic, const <a href="#wxColour">wxColour</a>&amp; fore);<br>
 <br>
     <font color=#009900>// Retrieve the foreground colour of an indicator.</font><br>
-    <a href="#wxColour">wxColour</a> IndicatorGetForeground(int indic);<br>
+    <a href="#wxColour">wxColour</a> IndicatorGetForeground(int indic) const;<br>
+<br>
+    <font color=#009900>// Set an indicator to draw under text or over(default).</font><br>
+    <i>%wxchkver_2_9_5</i> void IndicatorSetUnder(int indic, bool under);<br>
+<br>
+    <font color=#009900>// Retrieve whether indicator drawn under or over text.</font><br>
+    <i>%wxchkver_2_9_5</i> bool IndicatorGetUnder(int indic) const;<br>
 <br>
     <font color=#009900>// Set the foreground colour of all whitespace and whether to use this setting.</font><br>
     void SetWhitespaceForeground(bool useSetting, const <a href="#wxColour">wxColour</a>&amp; fore);<br>
@@ -24930,32 +25751,38 @@ enum<br>
     <font color=#009900>// Set the background colour of all whitespace and whether to use this setting.</font><br>
     void SetWhitespaceBackground(bool useSetting, const <a href="#wxColour">wxColour</a>&amp; back);<br>
 <br>
+    <font color=#009900>// Set the size of the dots used to mark space characters.</font><br>
+    <i>%wxchkver_2_9_5</i> void SetWhitespaceSize(int size);<br>
+<br>
+    <font color=#009900>// Get the size of the dots used to mark space characters.</font><br>
+    <i>%wxchkver_2_9_5</i> int GetWhitespaceSize() const;<br>
+<br>
     <font color=#009900>// Divide each styling byte into lexical class bits (default: 5) and indicator</font><br>
     <font color=#009900>// bits (default: 3). If a lexer requires more than 32 lexical states, then this</font><br>
     <font color=#009900>// is used to expand the possible states.</font><br>
     void SetStyleBits(int bits);<br>
 <br>
     <font color=#009900>// Retrieve number of bits in style bytes used to hold the lexical state.</font><br>
-    int GetStyleBits();<br>
+    int GetStyleBits() const;<br>
 <br>
     <font color=#009900>// Used to hold extra styling information for each line.</font><br>
     void SetLineState(int line, int state);<br>
 <br>
     <font color=#009900>// Retrieve the extra styling information for a line.</font><br>
-    int GetLineState(int line);<br>
+    int GetLineState(int line) const;<br>
 <br>
     <font color=#009900>// Retrieve the last line number that has line state.</font><br>
-    int GetMaxLineState();<br>
+    int GetMaxLineState() const;<br>
 <br>
     <font color=#009900>// Is the background of the line containing the caret in a different colour?</font><br>
-    bool GetCaretLineVisible();<br>
+    bool GetCaretLineVisible() const;<br>
 <br>
     <font color=#009900>// Display the background of the line containing the caret in a different colour.</font><br>
     void SetCaretLineVisible(bool show);<br>
 <br>
     <font color=#009900>// Get the colour of the background of the line containing the caret.</font><br>
     !<i>%wxchkver_2_8</i> <a href="#wxColour">wxColour</a> GetCaretLineBack();<br>
-    <i>%wxchkver_2_8</i>  <a href="#wxColour">wxColour</a> GetCaretLineBackground();<br>
+    <i>%wxchkver_2_8</i>  <a href="#wxColour">wxColour</a> GetCaretLineBackground() const;<br>
 <br>
     <font color=#009900>// Set the colour of the background of the line containing the caret.</font><br>
     !<i>%wxchkver_2_8</i> void SetCaretLineBack(const <a href="#wxColour">wxColour</a>&amp; back);<br>
@@ -24990,7 +25817,7 @@ enum<br>
     void AutoCompSetSeparator(int separatorCharacter);<br>
 <br>
     <font color=#009900>// Retrieve the auto-completion list separator character.</font><br>
-    int AutoCompGetSeparator();<br>
+    int AutoCompGetSeparator() const;<br>
 <br>
     <font color=#009900>// Select the item in the auto-completion list that starts with a string.</font><br>
     void AutoCompSelect(const <a href="#wxString">wxString</a>&amp; text);<br>
@@ -25000,7 +25827,7 @@ enum<br>
     void AutoCompSetCancelAtStart(bool cancel);<br>
 <br>
     <font color=#009900>// Retrieve whether auto-completion cancelled by backspacing before start.</font><br>
-    bool AutoCompGetCancelAtStart();<br>
+    bool AutoCompGetCancelAtStart() const;<br>
 <br>
     <font color=#009900>// Define a set of characters that when typed will cause the autocompletion to</font><br>
     <font color=#009900>// choose the selected item.</font><br>
@@ -25010,13 +25837,13 @@ enum<br>
     void AutoCompSetChooseSingle(bool chooseSingle);<br>
 <br>
     <font color=#009900>// Retrieve whether a single item auto-completion list automatically choose the item.</font><br>
-    bool AutoCompGetChooseSingle();<br>
+    bool AutoCompGetChooseSingle() const;<br>
 <br>
     <font color=#009900>// Set whether case is significant when performing auto-completion searches.</font><br>
     void AutoCompSetIgnoreCase(bool ignoreCase);<br>
 <br>
     <font color=#009900>// Retrieve state of ignore case flag.</font><br>
-    bool AutoCompGetIgnoreCase();<br>
+    bool AutoCompGetIgnoreCase() const;<br>
 <br>
     <font color=#009900>// Display a list of strings and send notification when user chooses one.</font><br>
     void UserListShow(int listType, const <a href="#wxString">wxString</a>&amp; itemList);<br>
@@ -25025,7 +25852,7 @@ enum<br>
     void AutoCompSetAutoHide(bool autoHide);<br>
 <br>
     <font color=#009900>// Retrieve whether or not autocompletion is hidden automatically when nothing matches.</font><br>
-    bool AutoCompGetAutoHide();<br>
+    bool AutoCompGetAutoHide() const;<br>
 <br>
     <font color=#009900>// Set whether or not autocompletion deletes any word characters</font><br>
     <font color=#009900>// after the inserted text upon completion.</font><br>
@@ -25033,7 +25860,7 @@ enum<br>
 <br>
     <font color=#009900>// Retrieve whether or not autocompletion deletes any word characters</font><br>
     <font color=#009900>// after the inserted text upon completion.</font><br>
-    bool AutoCompGetDropRestOfWord();<br>
+    bool AutoCompGetDropRestOfWord() const;<br>
 <br>
     <font color=#009900>// Register an image for use in autocompletion lists.</font><br>
     void RegisterImage(int type, const <a href="#wxBitmap">wxBitmap</a>&amp; bmp);<br>
@@ -25042,7 +25869,7 @@ enum<br>
     void ClearRegisteredImages();<br>
 <br>
     <font color=#009900>// Retrieve the auto-completion list type-separator character.</font><br>
-    int AutoCompGetTypeSeparator();<br>
+    int AutoCompGetTypeSeparator() const;<br>
 <br>
     <font color=#009900>// Change the type-separator character in the string setting up an auto-completion list.</font><br>
     <font color=#009900>// Default is '?' but can be changed if items contain '?'.</font><br>
@@ -25053,70 +25880,75 @@ enum<br>
     void AutoCompSetMaxWidth(int characterCount);<br>
 <br>
     <font color=#009900>// Get the maximum width, in characters, of auto-completion and user lists.</font><br>
-    int AutoCompGetMaxWidth();<br>
+    int AutoCompGetMaxWidth() const;<br>
 <br>
     <font color=#009900>// Set the maximum height, in rows, of auto-completion and user lists.</font><br>
     <font color=#009900>// The default is 5 rows.</font><br>
     void AutoCompSetMaxHeight(int rowCount);<br>
 <br>
     <font color=#009900>// Set the maximum height, in rows, of auto-completion and user lists.</font><br>
-    int AutoCompGetMaxHeight();<br>
+    int AutoCompGetMaxHeight() const;<br>
 <br>
     <font color=#009900>// Set the number of spaces used for one level of indentation.</font><br>
     void SetIndent(int indentSize);<br>
 <br>
     <font color=#009900>// Retrieve indentation size.</font><br>
-    int GetIndent();<br>
+    int GetIndent() const;<br>
 <br>
     <font color=#009900>// Indentation will only use space characters if useTabs is false, otherwise</font><br>
     <font color=#009900>// it will use a combination of tabs and spaces.</font><br>
     void SetUseTabs(bool useTabs);<br>
 <br>
     <font color=#009900>// Retrieve whether tabs will be used in indentation.</font><br>
-    bool GetUseTabs();<br>
+    bool GetUseTabs() const;<br>
 <br>
     <font color=#009900>// Change the indentation of a line to a number of columns.</font><br>
     void SetLineIndentation(int line, int indentSize);<br>
 <br>
     <font color=#009900>// Retrieve the number of columns that a line is indented.</font><br>
-    int GetLineIndentation(int line);<br>
+    int GetLineIndentation(int line) const;<br>
 <br>
     <font color=#009900>// Retrieve the position before the first non indentation character on a line.</font><br>
-    int GetLineIndentPosition(int line);<br>
+    int GetLineIndentPosition(int line) const;<br>
 <br>
     <font color=#009900>// Retrieve the column number of a position, taking tab width into account.</font><br>
-    int GetColumn(int pos);<br>
+    int GetColumn(int pos) const;<br>
+<br>
+    <font color=#009900>// Count characters between two positions.</font><br>
+    <i>%wxchkver_2_9_5</i> int CountCharacters(int startPos, int endPos);<br>
 <br>
     <font color=#009900>// Show or hide the horizontal scroll bar.</font><br>
     void SetUseHorizontalScrollBar(bool show);<br>
 <br>
     <font color=#009900>// Is the horizontal scroll bar visible?</font><br>
-    bool GetUseHorizontalScrollBar();<br>
+    bool GetUseHorizontalScrollBar() const;<br>
 <br>
     <font color=#009900>// Show or hide indentation guides.</font><br>
-    void SetIndentationGuides(bool show);<br>
+    !<i>%wxchkver_2_9_5</i> void SetIndentationGuides(bool show);<br>
+    <i>%wxchkver_2_9_5</i> void SetIndentationGuides(int indentView);<br>
 <br>
     <font color=#009900>// Are the indentation guides visible?</font><br>
-    bool GetIndentationGuides();<br>
+    !<i>%wxchkver_2_9_5</i> bool GetIndentationGuides();<br>
+    <i>%wxchkver_2_9_5</i> int GetIndentationGuides();<br>
 <br>
     <font color=#009900>// Set the highlighted indentation guide column.</font><br>
     <font color=#009900>// 0 = no highlighted guide.</font><br>
     void SetHighlightGuide(int column);<br>
 <br>
     <font color=#009900>// Get the highlighted indentation guide column.</font><br>
-    int GetHighlightGuide();<br>
+    int GetHighlightGuide() const;<br>
 <br>
     <font color=#009900>// Get the position after the last visible characters on a line.</font><br>
-    int GetLineEndPosition(int line);<br>
+    int GetLineEndPosition(int line) const;<br>
 <br>
     <font color=#009900>// Get the code page used to interpret the bytes of the document as characters.</font><br>
-    int GetCodePage();<br>
+    int GetCodePage() const;<br>
 <br>
     <font color=#009900>// Get the foreground colour of the caret.</font><br>
-    <a href="#wxColour">wxColour</a> GetCaretForeground();<br>
+    <a href="#wxColour">wxColour</a> GetCaretForeground() const;<br>
 <br>
     <font color=#009900>// In read-only mode?</font><br>
-    bool GetReadOnly();<br>
+    bool GetReadOnly() const;<br>
 <br>
     <font color=#009900>// Sets the position of the caret.</font><br>
     void SetCurrentPos(int pos);<br>
@@ -25125,25 +25957,28 @@ enum<br>
     void SetSelectionStart(int pos);<br>
 <br>
     <font color=#009900>// Returns the position at the start of the selection.</font><br>
-    int GetSelectionStart();<br>
+    int GetSelectionStart() const;<br>
 <br>
     <font color=#009900>// Sets the position that ends the selection - this becomes the currentPosition.</font><br>
     void SetSelectionEnd(int pos);<br>
 <br>
     <font color=#009900>// Returns the position at the end of the selection.</font><br>
-    int GetSelectionEnd();<br>
+    int GetSelectionEnd() const;<br>
+<br>
+    <font color=#009900>// Set caret to a position, while removing any existing selection.</font><br>
+    <i>%wxchkver_2_9_5</i> void SetEmptySelection(int pos);<br>
 <br>
     <font color=#009900>// Sets the print magnification added to the point size of each style for printing.</font><br>
     void SetPrintMagnification(int magnification);<br>
 <br>
     <font color=#009900>// Returns the print magnification.</font><br>
-    int GetPrintMagnification();<br>
+    int GetPrintMagnification() const;<br>
 <br>
     <font color=#009900>// Modify colours when printing for clearer printed text.</font><br>
     void SetPrintColourMode(int mode);<br>
 <br>
     <font color=#009900>// Returns the print colour mode.</font><br>
-    int GetPrintColourMode();<br>
+    int GetPrintColourMode() const;<br>
 <br>
     <font color=#009900>// Find some text in the document.</font><br>
     int FindText(int minPos, int maxPos, const <a href="#wxString">wxString</a>&amp; text, int flags=0);<br>
@@ -25152,28 +25987,28 @@ enum<br>
     int FormatRange(bool   doDraw, int    startPos, int    endPos, <a href="#wxDC">wxDC</a>*  draw, <a href="#wxDC">wxDC</a>*  target,  const <a href="#wxRect">wxRect</a>&amp; renderRect, const <a href="#wxRect">wxRect</a>&amp; pageRect);<br>
 <br>
     <font color=#009900>// Retrieve the display line at the top of the display.</font><br>
-    int GetFirstVisibleLine();<br>
+    int GetFirstVisibleLine() const;<br>
 <br>
     <font color=#009900>// Retrieve the contents of a line.</font><br>
-    <a href="#wxString">wxString</a> GetLine(int line);<br>
+    <a href="#wxString">wxString</a> GetLine(int line) const;<br>
 <br>
     <font color=#009900>// Returns the number of lines in the document. There is always at least one.</font><br>
-    int GetLineCount();<br>
+    int GetLineCount() const;<br>
 <br>
     <font color=#009900>// Sets the size in pixels of the left margin.</font><br>
     void SetMarginLeft(int pixelWidth);<br>
 <br>
     <font color=#009900>// Returns the size in pixels of the left margin.</font><br>
-    int GetMarginLeft();<br>
+    int GetMarginLeft() const;<br>
 <br>
     <font color=#009900>// Sets the size in pixels of the right margin.</font><br>
     void SetMarginRight(int pixelWidth);<br>
 <br>
     <font color=#009900>// Returns the size in pixels of the right margin.</font><br>
-    int GetMarginRight();<br>
+    int GetMarginRight() const;<br>
 <br>
     <font color=#009900>// Is the document different from when it was last saved?</font><br>
-    bool GetModify();<br>
+    bool GetModify() const;<br>
 <br>
     <font color=#009900>// Select a range of text.</font><br>
     void SetSelection(int start, int end);<br>
@@ -25188,10 +26023,10 @@ enum<br>
     void HideSelection(bool normal);<br>
 <br>
     <font color=#009900>// Retrieve the line containing a position.</font><br>
-    int LineFromPosition(int pos);<br>
+    int LineFromPosition(int pos) const;<br>
 <br>
     <font color=#009900>// Retrieve the position at the start of a line.</font><br>
-    int PositionFromLine(int line);<br>
+    int PositionFromLine(int line) const;<br>
 <br>
     <font color=#009900>// Scroll horizontally and vertically.</font><br>
     void LineScroll(int columns, int lines);<br>
@@ -25206,10 +26041,10 @@ enum<br>
     void SetReadOnly(bool readOnly);<br>
 <br>
     <font color=#009900>// Will a paste succeed?</font><br>
-    bool CanPaste();<br>
+    bool CanPaste() const;<br>
 <br>
     <font color=#009900>// Are there any undoable actions in the undo history?</font><br>
-    bool CanUndo();<br>
+    bool CanUndo() const;<br>
 <br>
     <font color=#009900>// Delete the undo history.</font><br>
     void EmptyUndoBuffer();<br>
@@ -25233,36 +26068,36 @@ enum<br>
     void SetText(const <a href="#wxString">wxString</a>&amp; text);<br>
 <br>
     <font color=#009900>// Retrieve all the text in the document.</font><br>
-    <a href="#wxString">wxString</a> GetText();<br>
+    <a href="#wxString">wxString</a> GetText() const;<br>
 <br>
     <font color=#009900>// Retrieve the number of characters in the document.</font><br>
-    int GetTextLength();<br>
+    int GetTextLength() const;<br>
 <br>
     <font color=#009900>// Set to overtype (true) or insert mode.</font><br>
     void SetOvertype(bool overtype);<br>
 <br>
     <font color=#009900>// Returns true if overtype mode is active otherwise false is returned.</font><br>
-    bool GetOvertype();<br>
+    bool GetOvertype() const;<br>
 <br>
     <font color=#009900>// Set the width of the insert mode caret.</font><br>
     void SetCaretWidth(int pixelWidth);<br>
 <br>
     <font color=#009900>// Returns the width of the insert mode caret.</font><br>
-    int GetCaretWidth();<br>
+    int GetCaretWidth() const;<br>
 <br>
     <font color=#009900>// Sets the position that starts the target which is used for updating the</font><br>
     <font color=#009900>// document without affecting the scroll position.</font><br>
     void SetTargetStart(int pos);<br>
 <br>
     <font color=#009900>// Get the position that starts the target.</font><br>
-    int GetTargetStart();<br>
+    int GetTargetStart() const;<br>
 <br>
     <font color=#009900>// Sets the position that ends the target which is used for updating the</font><br>
     <font color=#009900>// document without affecting the scroll position.</font><br>
     void SetTargetEnd(int pos);<br>
 <br>
     <font color=#009900>// Get the position that ends the target.</font><br>
-    int GetTargetEnd();<br>
+    int GetTargetEnd() const;<br>
 <br>
     <font color=#009900>// Replace the target text with the argument text.</font><br>
     <font color=#009900>// Text is counted so it can contain NULs.</font><br>
@@ -25286,7 +26121,7 @@ enum<br>
     void SetSearchFlags(int flags);<br>
 <br>
     <font color=#009900>// Get the search flags used by SearchInTarget.</font><br>
-    int GetSearchFlags();<br>
+    int GetSearchFlags() const;<br>
 <br>
     <font color=#009900>// Show a call tip containing a definition near position pos.</font><br>
     void CallTipShow(int pos, const <a href="#wxString">wxString</a>&amp; definition);<br>
@@ -25315,6 +26150,9 @@ enum<br>
     <font color=#009900>// Enable use of STYLE_CALLTIP and set call tip tab size in pixels.</font><br>
     <i>%wxchkver_2_8_12</i> void CallTipUseStyle(int tabSize);<br>
 <br>
+    <font color=#009900>// Set position of calltip, above or below text.</font><br>
+    <i>%wxchkver_2_9_5</i> void CallTipSetPosition(bool above);<br>
+<br>
     <font color=#009900>// Find the display line of a document line taking hidden lines into account.</font><br>
     int VisibleFromDocLine(int line);<br>
 <br>
@@ -25330,13 +26168,13 @@ enum<br>
     void SetFoldLevel(int line, int level);<br>
 <br>
     <font color=#009900>// Retrieve the fold level of a line.</font><br>
-    int GetFoldLevel(int line);<br>
+    int GetFoldLevel(int line) const;<br>
 <br>
     <font color=#009900>// Find the last child line of a header line.</font><br>
-    int GetLastChild(int line, int level);<br>
+    int GetLastChild(int line, int level) const;<br>
 <br>
     <font color=#009900>// Find the parent line of a child line.</font><br>
-    int GetFoldParent(int line);<br>
+    int GetFoldParent(int line) const;<br>
 <br>
     <font color=#009900>// Make a range of lines visible.</font><br>
     void ShowLines(int lineStart, int lineEnd);<br>
@@ -25345,13 +26183,16 @@ enum<br>
     void HideLines(int lineStart, int lineEnd);<br>
 <br>
     <font color=#009900>// Is a line visible?</font><br>
-    bool GetLineVisible(int line);<br>
+    bool GetLineVisible(int line) const;<br>
+<br>
+    <font color=#009900>// Are all lines visible?</font><br>
+    <i>%wxchkver_2_9_5</i> bool GetAllLinesVisible() const;<br>
 <br>
     <font color=#009900>// Show the children of a header line.</font><br>
     void SetFoldExpanded(int line, bool expanded);<br>
 <br>
     <font color=#009900>// Is a header line expanded?</font><br>
-    bool GetFoldExpanded(int line);<br>
+    bool GetFoldExpanded(int line) const;<br>
 <br>
     <font color=#009900>// Switch a header line between expanded and contracted.</font><br>
     void ToggleFold(int line);<br>
@@ -25370,19 +26211,19 @@ enum<br>
     void SetTabIndents(bool tabIndents);<br>
 <br>
     <font color=#009900>// Does a tab pressed when caret is within indentation indent?</font><br>
-    bool GetTabIndents();<br>
+    bool GetTabIndents() const;<br>
 <br>
     <font color=#009900>// Sets whether a backspace pressed when caret is within indentation unindents.</font><br>
     void SetBackSpaceUnIndents(bool bsUnIndents);<br>
 <br>
     <font color=#009900>// Does a backspace pressed when caret is within indentation unindent?</font><br>
-    bool GetBackSpaceUnIndents();<br>
+    bool GetBackSpaceUnIndents() const;<br>
 <br>
     <font color=#009900>// Sets the time the mouse must sit still to generate a mouse dwell event.</font><br>
     void SetMouseDwellTime(int periodMilliseconds);<br>
 <br>
     <font color=#009900>// Retrieve the time the mouse must sit still to generate a mouse dwell event.</font><br>
-    int GetMouseDwellTime();<br>
+    int GetMouseDwellTime() const;<br>
 <br>
     <font color=#009900>// Get position of start of word.</font><br>
     int WordStartPosition(int pos, bool onlyWordCharacters);<br>
@@ -25394,37 +26235,49 @@ enum<br>
     void SetWrapMode(int mode);<br>
 <br>
     <font color=#009900>// Retrieve whether text is word wrapped.</font><br>
-    int GetWrapMode();<br>
+    int GetWrapMode() const;<br>
 <br>
     <font color=#009900>// Set the display mode of visual flags for wrapped lines.</font><br>
     void SetWrapVisualFlags(int wrapVisualFlags);<br>
 <br>
     <font color=#009900>// Retrive the display mode of visual flags for wrapped lines.</font><br>
-    int GetWrapVisualFlags();<br>
+    int GetWrapVisualFlags() const;<br>
 <br>
     <font color=#009900>// Set the location of visual flags for wrapped lines.</font><br>
     void SetWrapVisualFlagsLocation(int wrapVisualFlagsLocation);<br>
 <br>
     <font color=#009900>// Retrive the location of visual flags for wrapped lines.</font><br>
-    int GetWrapVisualFlagsLocation();<br>
+    int GetWrapVisualFlagsLocation() const;<br>
 <br>
     <font color=#009900>// Set the start indent for wrapped lines.</font><br>
     void SetWrapStartIndent(int indent);<br>
 <br>
     <font color=#009900>// Retrive the start indent for wrapped lines.</font><br>
-    int GetWrapStartIndent();<br>
+    int GetWrapStartIndent() const;<br>
+<br>
+    <font color=#009900>// Sets how wrapped sublines are placed. Default is fixed.</font><br>
+    <i>%wxchkver_2_9_5</i> void SetWrapIndentMode(int mode);<br>
+<br>
+    <font color=#009900>// Retrieve how wrapped sublines are placed. Default is fixed.</font><br>
+    <i>%wxchkver_2_9_5</i> int GetWrapIndentMode() const;<br>
 <br>
     <font color=#009900>// Sets the degree of caching of layout information.</font><br>
     void SetLayoutCache(int mode);<br>
 <br>
     <font color=#009900>// Retrieve the degree of caching of layout information.</font><br>
-    int GetLayoutCache();<br>
+    int GetLayoutCache() const;<br>
 <br>
     <font color=#009900>// Sets the document width assumed for scrolling.</font><br>
     void SetScrollWidth(int pixelWidth);<br>
 <br>
     <font color=#009900>// Retrieve the document width assumed for scrolling.</font><br>
-    int GetScrollWidth();<br>
+    int GetScrollWidth() const;<br>
+<br>
+    <font color=#009900>// Sets whether the maximum width line displayed is used to set scroll width.</font><br>
+    <i>%wxchkver_2_9_5</i> void SetScrollWidthTracking(bool tracking);<br>
+<br>
+    <font color=#009900>// Retrieve whether the scroll width tracks wide lines.</font><br>
+    <i>%wxchkver_2_9_5</i> bool GetScrollWidthTracking() const;<br>
 <br>
     <font color=#009900>// Measure the pixel width of some text in a particular style.</font><br>
     <font color=#009900>// NUL terminated text argument.</font><br>
@@ -25438,7 +26291,7 @@ enum<br>
 <br>
     <font color=#009900>// Retrieve whether the maximum scroll position has the last</font><br>
     <font color=#009900>// line at the bottom of the view.</font><br>
-    bool GetEndAtLastLine();<br>
+    bool GetEndAtLastLine() const;<br>
 <br>
     <font color=#009900>// Retrieve the height of a particular line of text in pixels.</font><br>
     int TextHeight(int line);<br>
@@ -25447,17 +26300,29 @@ enum<br>
     void SetUseVerticalScrollBar(bool show);<br>
 <br>
     <font color=#009900>// Is the vertical scroll bar visible?</font><br>
-    bool GetUseVerticalScrollBar();<br>
+    bool GetUseVerticalScrollBar() const;<br>
 <br>
     <font color=#009900>// Append a string to the end of the document without changing the selection.</font><br>
     void AppendText(const <a href="#wxString">wxString</a>&amp; text);<br>
 <br>
     <font color=#009900>// Is drawing done in two phases with backgrounds drawn before foregrounds?</font><br>
-    bool GetTwoPhaseDraw();<br>
+    bool GetTwoPhaseDraw() const;<br>
 <br>
     <font color=#009900>// In twoPhaseDraw mode, drawing is performed in two phases, first the background</font><br>
     <font color=#009900>// and then the foreground. This avoids chopping off characters that overlap the next run.</font><br>
     void SetTwoPhaseDraw(bool twoPhase);<br>
+<br>
+    <font color=#009900>// Scroll so that a display line is at the top of the display.</font><br>
+    <i>%wxchkver_2_9_5</i> void SetFirstVisibleLine(int lineDisplay);<br>
+<br>
+    <font color=#009900>// Change the effect of pasting when there are multiple selections.</font><br>
+    <i>%wxchkver_2_9_5</i> void SetMultiPaste(int multiPaste);<br>
+<br>
+    <font color=#009900>// Retrieve the effect of pasting when there are multiple selections..</font><br>
+    <i>%wxchkver_2_9_5</i> int GetMultiPaste() const;<br>
+<br>
+    <font color=#009900>// Retrieve the value of a tag from a regular expression search.</font><br>
+    <i>%wxchkver_2_9_5</i> <a href="#wxString">wxString</a> GetTag(int tagNumber) const;<br>
 <br>
     <font color=#009900>// Make the target range start and end be the same as the selection range start and end.</font><br>
     void TargetFromSelection();<br>
@@ -25586,6 +26451,9 @@ enum<br>
     <font color=#009900>// Delete the word to the right of the caret.</font><br>
     void DelWordRight();<br>
 <br>
+    <font color=#009900>// Delete the word to the right of the caret, but not the trailing non-word characters.</font><br>
+    <i>%wxchkver_2_9_5</i> void DelWordRightEnd();<br>
+<br>
     <font color=#009900>// Cut the line containing the caret.</font><br>
     void LineCut();<br>
 <br>
@@ -25646,20 +26514,26 @@ enum<br>
     <font color=#009900>// Move the caret inside current view if it's not there already.</font><br>
     void MoveCaretInsideView();<br>
 <br>
-    <font color=#009900>// How many characters are on a line, not including end of line characters?</font><br>
-    int LineLength(int line);<br>
+    <font color=#009900>// How many characters are on a line, including end of line characters?</font><br>
+    int LineLength(int line) const;<br>
 <br>
     <font color=#009900>// Highlight the characters at two positions.</font><br>
     void BraceHighlight(int pos1, int pos2);<br>
 <br>
+    <font color=#009900>// Use specified indicator to highlight matching braces instead of changing their style.</font><br>
+    <i>%wxchkver_2_9_5</i> void BraceHighlightIndicator(bool useBraceHighlightIndicator, int indicator);<br>
+<br>
     <font color=#009900>// Highlight the character at a position indicating there is no matching brace.</font><br>
     void BraceBadLight(int pos);<br>
+<br>
+    <font color=#009900>// Use specified indicator to highlight non matching brace instead of changing its style.</font><br>
+    <i>%wxchkver_2_9_5</i> void BraceBadLightIndicator(bool useBraceBadLightIndicator, int indicator);<br>
 <br>
     <font color=#009900>// Find the position of a matching brace or INVALID_POSITION if no match.</font><br>
     int BraceMatch(int pos);<br>
 <br>
     <font color=#009900>// Are the end of line characters visible?</font><br>
-    bool GetViewEOL();<br>
+    bool GetViewEOL() const;<br>
 <br>
     <font color=#009900>// Make the end of line characters visible or invisible.</font><br>
     void SetViewEOL(bool visible);<br>
@@ -25674,21 +26548,21 @@ enum<br>
     void SetModEventMask(int mask);<br>
 <br>
     <font color=#009900>// Retrieve the column number which text should be kept within.</font><br>
-    int GetEdgeColumn();<br>
+    int GetEdgeColumn() const;<br>
 <br>
     <font color=#009900>// Set the column number of the edge.</font><br>
     <font color=#009900>// If text goes past the edge then it is highlighted.</font><br>
     void SetEdgeColumn(int column);<br>
 <br>
     <font color=#009900>// Retrieve the edge highlight mode.</font><br>
-    int GetEdgeMode();<br>
+    int GetEdgeMode() const;<br>
 <br>
     <font color=#009900>// The edge may be displayed by a line (EDGE_LINE) or by highlighting text that</font><br>
     <font color=#009900>// goes beyond it (EDGE_BACKGROUND) or not displayed at all (EDGE_NONE).</font><br>
     void SetEdgeMode(int mode);<br>
 <br>
     <font color=#009900>// Retrieve the colour used in edge indication.</font><br>
-    <a href="#wxColour">wxColour</a> GetEdgeColour();<br>
+    <a href="#wxColour">wxColour</a> GetEdgeColour() const;<br>
 <br>
     <font color=#009900>// Change the colour used in edge indication.</font><br>
     void SetEdgeColour(const <a href="#wxColour">wxColour</a>&amp; edgeColour);<br>
@@ -25705,21 +26579,21 @@ enum<br>
     int SearchPrev(int flags, const <a href="#wxString">wxString</a>&amp; text);<br>
 <br>
     <font color=#009900>// Retrieves the number of lines completely visible.</font><br>
-    int LinesOnScreen();<br>
+    int LinesOnScreen() const;<br>
 <br>
     <font color=#009900>// Set whether a pop up menu is displayed automatically when the user presses</font><br>
     <font color=#009900>// the wrong mouse button.</font><br>
     void UsePopUp(bool allowPopUp);<br>
 <br>
     <font color=#009900>// Is the selection rectangular? The alternative is the more common stream selection.</font><br>
-    bool SelectionIsRectangle();<br>
+    bool SelectionIsRectangle() const;<br>
 <br>
     <font color=#009900>// Set the zoom level. This number of points is added to the size of all fonts.</font><br>
     <font color=#009900>// It may be positive to magnify or negative to reduce.</font><br>
     void SetZoom(int zoom);<br>
 <br>
     <font color=#009900>// Retrieve the zoom level.</font><br>
-    int GetZoom();<br>
+    int GetZoom() const;<br>
 <br>
     <font color=#009900>// Create a new document object.</font><br>
     <font color=#009900>// Starts with reference count of 1 and not selected into editor.</font><br>
@@ -25732,38 +26606,38 @@ enum<br>
     void ReleaseDocument(void* docPointer);<br>
 <br>
     <font color=#009900>// Get which document modification events are sent to the container.</font><br>
-    int GetModEventMask();<br>
+    int GetModEventMask() const;<br>
 <br>
     <font color=#009900>// Change internal focus flag.</font><br>
     void SetSTCFocus(bool focus);<br>
 <br>
     <font color=#009900>// Get internal focus flag.</font><br>
-    bool GetSTCFocus();<br>
+    bool GetSTCFocus() const;<br>
 <br>
     <font color=#009900>// Change error status - 0 = OK.</font><br>
     void SetStatus(int statusCode);<br>
 <br>
     <font color=#009900>// Get error status.</font><br>
-    int GetStatus();<br>
+    int GetStatus() const;<br>
 <br>
     <font color=#009900>// Set whether the mouse is captured when its button is pressed.</font><br>
     void SetMouseDownCaptures(bool captures);<br>
 <br>
     <font color=#009900>// Get whether mouse gets captured.</font><br>
-    bool GetMouseDownCaptures();<br>
+    bool GetMouseDownCaptures() const;<br>
 <br>
     <font color=#009900>// Sets the cursor to one of the SC_CURSOR* values.</font><br>
     void SetSTCCursor(int cursorType);<br>
 <br>
     <font color=#009900>// Get cursor type.</font><br>
-    int GetSTCCursor();<br>
+    int GetSTCCursor() const;<br>
 <br>
     <font color=#009900>// Change the way control characters are displayed:</font><br>
     <font color=#009900>// If symbol is &lt; 32, keep the drawn way, else, use the given character.</font><br>
     void SetControlCharSymbol(int symbol);<br>
 <br>
     <font color=#009900>// Get the way control characters are displayed.</font><br>
-    int GetControlCharSymbol();<br>
+    int GetControlCharSymbol() const;<br>
 <br>
     <font color=#009900>// Move to the previous change in capitalisation.</font><br>
     void WordPartLeft();<br>
@@ -25789,14 +26663,14 @@ enum<br>
     <font color=#009900>// Delete forwards from the current position to the end of the line.</font><br>
     void DelLineRight();<br>
 <br>
-    <font color=#009900>// Get and Set the xOffset (ie, horizonal scroll position).</font><br>
+    <font color=#009900>// Get and Set the xOffset (ie, horizontal scroll position).</font><br>
     void SetXOffset(int newOffset);<br>
-    int GetXOffset();<br>
+    int GetXOffset() const;<br>
 <br>
     <font color=#009900>// Set the last x chosen value to be the caret x position.</font><br>
     void ChooseCaretX();<br>
 <br>
-    <font color=#009900>// Set the way the caret is kept visible when going sideway.</font><br>
+    <font color=#009900>// Set the way the caret is kept visible when going sideways.</font><br>
     <font color=#009900>// The exclusion zone is given in pixels.</font><br>
     void SetXCaretPolicy(int caretPolicy, int caretSlop);<br>
 <br>
@@ -25808,19 +26682,31 @@ enum<br>
     void SetPrintWrapMode(int mode);<br>
 <br>
     <font color=#009900>// Is printing line wrapped?</font><br>
-    int GetPrintWrapMode();<br>
+    int GetPrintWrapMode() const;<br>
 <br>
     <font color=#009900>// Set a fore colour for active hotspots.</font><br>
     void SetHotspotActiveForeground(bool useSetting, const <a href="#wxColour">wxColour</a>&amp; fore);<br>
 <br>
+    <font color=#009900>// Get the fore colour for active hotspots.</font><br>
+    <i>%wxchkver_2_9_5</i> <a href="#wxColour">wxColour</a> GetHotspotActiveForeground() const;<br>
+<br>
     <font color=#009900>// Set a back colour for active hotspots.</font><br>
     void SetHotspotActiveBackground(bool useSetting, const <a href="#wxColour">wxColour</a>&amp; back);<br>
+<br>
+    <font color=#009900>// Get the back colour for active hotspots.</font><br>
+    <i>%wxchkver_2_9_5</i> <a href="#wxColour">wxColour</a> GetHotspotActiveBackground() const;<br>
 <br>
     <font color=#009900>// Enable / Disable underlining active hotspots.</font><br>
     void SetHotspotActiveUnderline(bool underline);<br>
 <br>
+    <font color=#009900>// Get whether underlining for active hotspots.</font><br>
+    <i>%wxchkver_2_9_5</i> bool GetHotspotActiveUnderline() const;<br>
+<br>
     <font color=#009900>// Limit hotspots to single line so hotspots on two lines don't merge.</font><br>
     void SetHotspotSingleLine(bool singleLine);<br>
+<br>
+    <font color=#009900>// Get the HotspotSingleLine property</font><br>
+    <i>%wxchkver_2_9_5</i> bool GetHotspotSingleLine() const;<br>
 <br>
     <font color=#009900>// Move caret between paragraphs (delimited by empty lines).</font><br>
     void ParaDown();<br>
@@ -25842,12 +26728,12 @@ enum<br>
     <font color=#009900>// Copy argument text to the clipboard.</font><br>
     void CopyText(int length, const <a href="#wxString">wxString</a>&amp; text);<br>
 <br>
-    <font color=#009900>// Set the selection mode to stream (SC_SEL_STREAM) or rectangular (SC_SEL_RECTANGLE) or</font><br>
+    <font color=#009900>// Set the selection mode to stream (SC_SEL_STREAM) or rectangular (SC_SEL_RECTANGLE/SC_SEL_THIN) or</font><br>
     <font color=#009900>// by lines (SC_SEL_LINES).</font><br>
     void SetSelectionMode(int mode);<br>
 <br>
     <font color=#009900>// Get the mode of the current selection.</font><br>
-    int GetSelectionMode();<br>
+    int GetSelectionMode() const;<br>
 <br>
     <font color=#009900>// Retrieve the position of the start of the selection at the given line (INVALID_POSITION if no selection on this line).</font><br>
     int GetLineSelStartPosition(int line);<br>
@@ -25912,11 +26798,27 @@ enum<br>
     <font color=#009900>// Should be called after SetWordChars.</font><br>
     void SetWhitespaceChars(const <a href="#wxString">wxString</a>&amp; characters);<br>
 <br>
+    <font color=#009900>// Get the set of characters making up whitespace for when moving or selecting by word.</font><br>
+    <i>%wxchkver_2_9_5</i> <a href="#wxString">wxString</a> GetWhitespaceChars() const;<br>
+<br>
+    <font color=#009900>// Set the set of characters making up punctuation characters</font><br>
+    <font color=#009900>// Should be called after SetWordChars.</font><br>
+    <i>%wxchkver_2_9_5</i> void SetPunctuationChars(const <a href="#wxString">wxString</a>&amp; characters);<br>
+<br>
+    <font color=#009900>// Get the set of characters making up punctuation characters</font><br>
+    <i>%wxchkver_2_9_5</i> <a href="#wxString">wxString</a> GetPunctuationChars() const;<br>
+<br>
     <font color=#009900>// Reset the set of characters for whitespace and word characters to the defaults.</font><br>
     void SetCharsDefault();<br>
 <br>
     <font color=#009900>// Get currently selected item position in the auto-completion list</font><br>
-    int AutoCompGetCurrent();<br>
+    int AutoCompGetCurrent() const;<br>
+<br>
+    <font color=#009900>// Set auto-completion case insensitive behaviour to either prefer case-sensitive matches or have no preference.</font><br>
+    <i>%wxchkver_2_9_5</i> void AutoCompSetCaseInsensitiveBehaviour(int behaviour);<br>
+<br>
+    <font color=#009900>// Get auto-completion case insensitive behaviour.</font><br>
+    <i>%wxchkver_2_9_5</i> int AutoCompGetCaseInsensitiveBehaviour() const;<br>
 <br>
     <font color=#009900>// Enlarge the document to a particular size of text bytes.</font><br>
     void Allocate(int bytes);<br>
@@ -25926,10 +26828,12 @@ enum<br>
     int FindColumn(int line, int column);<br>
 <br>
     <font color=#009900>// Can the caret preferred x position only be changed by explicit movement commands?</font><br>
-    bool GetCaretSticky();<br>
+    !<i>%wxchkver_2_9_5</i> bool GetCaretSticky() const;<br>
+    <i>%wxchkver_2_9_5</i> int GetCaretSticky() const;<br>
 <br>
     <font color=#009900>// Stop the caret preferred x position changing when the user types.</font><br>
-    void SetCaretSticky(bool useCaretStickyBehaviour);<br>
+    !<i>%wxchkver_2_9_5</i> void SetCaretSticky(bool useCaretStickyBehaviour);<br>
+    <i>%wxchkver_2_9_5</i> void SetCaretSticky(int useCaretStickyBehaviour);<br>
 <br>
     <font color=#009900>// Switch between sticky and non-sticky: meant to be bound to a key.</font><br>
     void ToggleCaretSticky();<br>
@@ -25938,7 +26842,7 @@ enum<br>
     void SetPasteConvertEndings(bool convert);<br>
 <br>
     <font color=#009900>// Get convert-on-paste setting</font><br>
-    bool GetPasteConvertEndings();<br>
+    bool GetPasteConvertEndings() const;<br>
 <br>
     <font color=#009900>// Duplicate the selection. If selection empty duplicate the line containing the caret.</font><br>
     void SelectionDuplicate();<br>
@@ -25947,7 +26851,336 @@ enum<br>
     <i>%wxchkver_2_8_12</i> void SetCaretLineBackAlpha(int alpha);<br>
 <br>
     <font color=#009900>// Get the background alpha of the caret line.</font><br>
-    <i>%wxchkver_2_8_12</i> int GetCaretLineBackAlpha();<br>
+    <i>%wxchkver_2_8_12</i> int GetCaretLineBackAlpha() const;<br>
+<br>
+#if <i>%wxchkver_2_9_5</i><br>
+    <font color=#009900>// Set the style of the caret to be drawn.</font><br>
+    void SetCaretStyle(int caretStyle);<br>
+<br>
+    <font color=#009900>// Returns the current style of the caret.</font><br>
+    int GetCaretStyle() const;<br>
+<br>
+    <font color=#009900>// Set the indicator used for IndicatorFillRange and IndicatorClearRange</font><br>
+    void SetIndicatorCurrent(int indicator);<br>
+<br>
+    <font color=#009900>// Get the current indicator</font><br>
+    int GetIndicatorCurrent() const;<br>
+<br>
+    <font color=#009900>// Set the value used for IndicatorFillRange</font><br>
+    void SetIndicatorValue(int value);<br>
+<br>
+    <font color=#009900>// Get the current indicator value</font><br>
+    int GetIndicatorValue() const;<br>
+<br>
+    <font color=#009900>// Turn a indicator on over a range.</font><br>
+    void IndicatorFillRange(int position, int fillLength);<br>
+<br>
+    <font color=#009900>// Turn a indicator off over a range.</font><br>
+    void IndicatorClearRange(int position, int clearLength);<br>
+<br>
+    <font color=#009900>// Are any indicators present at position?</font><br>
+    int IndicatorAllOnFor(int position);<br>
+<br>
+    <font color=#009900>// What value does a particular indicator have at at a position?</font><br>
+    int IndicatorValueAt(int indicator, int position);<br>
+<br>
+    <font color=#009900>// Where does a particular indicator start?</font><br>
+    int IndicatorStart(int indicator, int position);<br>
+<br>
+    <font color=#009900>// Where does a particular indicator end?</font><br>
+    int IndicatorEnd(int indicator, int position);<br>
+<br>
+    <font color=#009900>// Set number of entries in position cache</font><br>
+    void SetPositionCacheSize(int size);<br>
+<br>
+    <font color=#009900>// How many entries are allocated to the position cache?</font><br>
+    int GetPositionCacheSize() const;<br>
+<br>
+    <font color=#009900>// Copy the selection, if selection empty copy the line with the caret</font><br>
+    void CopyAllowLine();<br>
+<br>
+    <font color=#009900>// Compact the document buffer and return a read-only pointer to the</font><br>
+    <font color=#009900>// characters in the document.</font><br>
+    <font color=#009900>//const char* GetCharacterPointer() const;</font><br>
+<br>
+    <font color=#009900>// Return a read-only pointer to a range of characters in the document.</font><br>
+    <font color=#009900>// May move the gap so that the range is contiguous, but will only move up</font><br>
+    <font color=#009900>// to rangeLength bytes.</font><br>
+    <font color=#009900>//const char* GetRangePointer(int position, int rangeLength) const;</font><br>
+<br>
+    <font color=#009900>// Return a position which, to avoid performance costs, should not be within</font><br>
+    <font color=#009900>// the range of a call to GetRangePointer.</font><br>
+    int GetGapPosition() const;<br>
+<br>
+    <font color=#009900>// Always interpret keyboard input as Unicode</font><br>
+    void SetKeysUnicode(bool keysUnicode);<br>
+<br>
+    <font color=#009900>// Are keys always interpreted as Unicode?</font><br>
+    bool GetKeysUnicode() const;<br>
+<br>
+    <font color=#009900>// Set the alpha fill colour of the given indicator.</font><br>
+    void IndicatorSetAlpha(int indicator, int alpha);<br>
+<br>
+    <font color=#009900>// Get the alpha fill colour of the given indicator.</font><br>
+    int IndicatorGetAlpha(int indicator) const;<br>
+<br>
+    <font color=#009900>// Set the alpha outline colour of the given indicator.</font><br>
+    void IndicatorSetOutlineAlpha(int indicator, int alpha);<br>
+<br>
+    <font color=#009900>// Get the alpha outline colour of the given indicator.</font><br>
+    int IndicatorGetOutlineAlpha(int indicator) const;<br>
+<br>
+    <font color=#009900>// Set extra ascent for each line</font><br>
+    void SetExtraAscent(int extraAscent);<br>
+<br>
+    <font color=#009900>// Get extra ascent for each line</font><br>
+    int GetExtraAscent() const;<br>
+<br>
+    <font color=#009900>// Set extra descent for each line</font><br>
+    void SetExtraDescent(int extraDescent);<br>
+<br>
+    <font color=#009900>// Get extra descent for each line</font><br>
+    int GetExtraDescent() const;<br>
+<br>
+    <font color=#009900>// Which symbol was defined for markerNumber with MarkerDefine</font><br>
+    int GetMarkerSymbolDefined(int markerNumber);<br>
+<br>
+    <font color=#009900>// Set the text in the text margin for a line</font><br>
+    void MarginSetText(int line, const <a href="#wxString">wxString</a>&amp; text);<br>
+<br>
+    <font color=#009900>// Get the text in the text margin for a line</font><br>
+    <a href="#wxString">wxString</a> MarginGetText(int line) const;<br>
+<br>
+    <font color=#009900>// Set the style number for the text margin for a line</font><br>
+    void MarginSetStyle(int line, int style);<br>
+<br>
+    <font color=#009900>// Get the style number for the text margin for a line</font><br>
+    int MarginGetStyle(int line) const;<br>
+<br>
+    <font color=#009900>// Set the style in the text margin for a line</font><br>
+    void MarginSetStyles(int line, const <a href="#wxString">wxString</a>&amp; styles);<br>
+<br>
+    <font color=#009900>// Get the styles in the text margin for a line</font><br>
+    <a href="#wxString">wxString</a> MarginGetStyles(int line) const;<br>
+<br>
+    <font color=#009900>// Clear the margin text on all lines</font><br>
+    void MarginTextClearAll();<br>
+<br>
+    <font color=#009900>// Get the start of the range of style numbers used for margin text</font><br>
+    void MarginSetStyleOffset(int style);<br>
+<br>
+    <font color=#009900>// Get the start of the range of style numbers used for margin text</font><br>
+    int MarginGetStyleOffset() const;<br>
+<br>
+    <font color=#009900>// Set the margin options.</font><br>
+    void SetMarginOptions(int marginOptions);<br>
+<br>
+    <font color=#009900>// Get the margin options.</font><br>
+    int GetMarginOptions() const;<br>
+<br>
+    <font color=#009900>// Set the annotation text for a line</font><br>
+    void AnnotationSetText(int line, const <a href="#wxString">wxString</a>&amp; text);<br>
+<br>
+    <font color=#009900>// Get the annotation text for a line</font><br>
+    <a href="#wxString">wxString</a> AnnotationGetText(int line) const;<br>
+<br>
+    <font color=#009900>// Set the style number for the annotations for a line</font><br>
+    void AnnotationSetStyle(int line, int style);<br>
+<br>
+    <font color=#009900>// Get the style number for the annotations for a line</font><br>
+    int AnnotationGetStyle(int line) const;<br>
+<br>
+    <font color=#009900>// Set the annotation styles for a line</font><br>
+    void AnnotationSetStyles(int line, const <a href="#wxString">wxString</a>&amp; styles);<br>
+<br>
+    <font color=#009900>// Get the annotation styles for a line</font><br>
+    <a href="#wxString">wxString</a> AnnotationGetStyles(int line) const;<br>
+<br>
+    <font color=#009900>// Get the number of annotation lines for a line</font><br>
+    int AnnotationGetLines(int line) const;<br>
+<br>
+    <font color=#009900>// Clear the annotations from all lines</font><br>
+    void AnnotationClearAll();<br>
+<br>
+    <font color=#009900>// Set the visibility for the annotations for a view</font><br>
+    void AnnotationSetVisible(int visible);<br>
+<br>
+    <font color=#009900>// Get the visibility for the annotations for a view</font><br>
+    int AnnotationGetVisible() const;<br>
+<br>
+    <font color=#009900>// Get the start of the range of style numbers used for annotations</font><br>
+    void AnnotationSetStyleOffset(int style);<br>
+<br>
+    <font color=#009900>// Get the start of the range of style numbers used for annotations</font><br>
+    int AnnotationGetStyleOffset() const;<br>
+<br>
+    <font color=#009900>// Add a container action to the undo stack</font><br>
+    void AddUndoAction(int token, int flags);<br>
+<br>
+    <font color=#009900>// Find the position of a character from a point within the window.</font><br>
+    int CharPositionFromPoint(int x, int y);<br>
+<br>
+    <font color=#009900>// Find the position of a character from a point within the window.</font><br>
+    <font color=#009900>// Return INVALID_POSITION if not close to text.</font><br>
+    int CharPositionFromPointClose(int x, int y);<br>
+<br>
+    <font color=#009900>// Set whether multiple selections can be made</font><br>
+    void SetMultipleSelection(bool multipleSelection);<br>
+<br>
+    <font color=#009900>// Whether multiple selections can be made</font><br>
+    bool GetMultipleSelection() const;<br>
+<br>
+    <font color=#009900>// Set whether typing can be performed into multiple selections</font><br>
+    void SetAdditionalSelectionTyping(bool additionalSelectionTyping);<br>
+<br>
+    <font color=#009900>// Whether typing can be performed into multiple selections</font><br>
+    bool GetAdditionalSelectionTyping() const;<br>
+<br>
+    <font color=#009900>// Set whether additional carets will blink</font><br>
+    void SetAdditionalCaretsBlink(bool additionalCaretsBlink);<br>
+<br>
+    <font color=#009900>// Whether additional carets will blink</font><br>
+    bool GetAdditionalCaretsBlink() const;<br>
+<br>
+    <font color=#009900>// Set whether additional carets are visible</font><br>
+    void SetAdditionalCaretsVisible(bool additionalCaretsBlink);<br>
+<br>
+    <font color=#009900>// Whether additional carets are visible</font><br>
+    bool GetAdditionalCaretsVisible() const;<br>
+<br>
+    <font color=#009900>// How many selections are there?</font><br>
+    int GetSelections() const;<br>
+<br>
+    <font color=#009900>// Clear selections to a single empty stream selection</font><br>
+    void ClearSelections();<br>
+<br>
+    <font color=#009900>// Add a selection</font><br>
+    int AddSelection(int caret, int anchor);<br>
+<br>
+    <font color=#009900>// Set the main selection</font><br>
+    void SetMainSelection(int selection);<br>
+<br>
+    <font color=#009900>// Which selection is the main selection</font><br>
+    int GetMainSelection() const;<br>
+    void SetSelectionNCaret(int selection, int pos);<br>
+    int GetSelectionNCaret(int selection) const;<br>
+    void SetSelectionNAnchor(int selection, int posAnchor);<br>
+    int GetSelectionNAnchor(int selection) const;<br>
+    void SetSelectionNCaretVirtualSpace(int selection, int space);<br>
+    int GetSelectionNCaretVirtualSpace(int selection) const;<br>
+    void SetSelectionNAnchorVirtualSpace(int selection, int space);<br>
+    int GetSelectionNAnchorVirtualSpace(int selection) const;<br>
+<br>
+    <font color=#009900>// Sets the position that starts the selection - this becomes the anchor.</font><br>
+    void SetSelectionNStart(int selection, int pos);<br>
+<br>
+    <font color=#009900>// Returns the position at the start of the selection.</font><br>
+    int GetSelectionNStart(int selection) const;<br>
+<br>
+    <font color=#009900>// Sets the position that ends the selection - this becomes the currentPosition.</font><br>
+    void SetSelectionNEnd(int selection, int pos);<br>
+<br>
+    <font color=#009900>// Returns the position at the end of the selection.</font><br>
+    int GetSelectionNEnd(int selection) const;<br>
+    void SetRectangularSelectionCaret(int pos);<br>
+    int GetRectangularSelectionCaret() const;<br>
+    void SetRectangularSelectionAnchor(int posAnchor);<br>
+    int GetRectangularSelectionAnchor() const;<br>
+    void SetRectangularSelectionCaretVirtualSpace(int space);<br>
+    int GetRectangularSelectionCaretVirtualSpace() const;<br>
+    void SetRectangularSelectionAnchorVirtualSpace(int space);<br>
+    int GetRectangularSelectionAnchorVirtualSpace() const;<br>
+    void SetVirtualSpaceOptions(int virtualSpaceOptions);<br>
+    int GetVirtualSpaceOptions() const;<br>
+<br>
+    <font color=#009900>// On GTK+, allow selecting the modifier key to use for mouse-based</font><br>
+    <font color=#009900>// rectangular selection. Often the window manager requires Alt+Mouse Drag</font><br>
+    <font color=#009900>// for moving windows.</font><br>
+    <font color=#009900>// Valid values are SCMOD_CTRL(default), SCMOD_ALT, or SCMOD_SUPER.</font><br>
+    void SetRectangularSelectionModifier(int modifier);<br>
+<br>
+    <font color=#009900>// Get the modifier key used for rectangular selection.</font><br>
+    int GetRectangularSelectionModifier() const;<br>
+<br>
+    <font color=#009900>// Set the foreground colour of additional selections.</font><br>
+    <font color=#009900>// Must have previously called SetSelFore with non-zero first argument for this to have an effect.</font><br>
+    void SetAdditionalSelForeground(const <a href="#wxColour">wxColour</a>&amp; fore);<br>
+<br>
+    <font color=#009900>// Set the background colour of additional selections.</font><br>
+    <font color=#009900>// Must have previously called SetSelBack with non-zero first argument for this to have an effect.</font><br>
+    void SetAdditionalSelBackground(const <a href="#wxColour">wxColour</a>&amp; back);<br>
+<br>
+    <font color=#009900>// Set the alpha of the selection.</font><br>
+    void SetAdditionalSelAlpha(int alpha);<br>
+<br>
+    <font color=#009900>// Get the alpha of the selection.</font><br>
+    int GetAdditionalSelAlpha() const;<br>
+<br>
+    <font color=#009900>// Set the foreground colour of additional carets.</font><br>
+    void SetAdditionalCaretForeground(const <a href="#wxColour">wxColour</a>&amp; fore);<br>
+<br>
+    <font color=#009900>// Get the foreground colour of additional carets.</font><br>
+    <a href="#wxColour">wxColour</a> GetAdditionalCaretForeground() const;<br>
+<br>
+    <font color=#009900>// Set the main selection to the next selection.</font><br>
+    void RotateSelection();<br>
+<br>
+    <font color=#009900>// Swap that caret and anchor of the main selection.</font><br>
+    void SwapMainAnchorCaret();<br>
+<br>
+    <font color=#009900>// Indicate that the internal state of a lexer has changed over a range and therefore</font><br>
+    <font color=#009900>// there may be a need to redraw.</font><br>
+    int ChangeLexerState(int start, int end);<br>
+<br>
+    <font color=#009900>// Find the next line at or after lineStart that is a contracted fold header line.</font><br>
+    <font color=#009900>// Return -1 when no more lines.</font><br>
+    int ContractedFoldNext(int lineStart);<br>
+<br>
+    <font color=#009900>// Centre current line in window.</font><br>
+    void VerticalCentreCaret();<br>
+<br>
+    <font color=#009900>// Move the selected lines up one line, shifting the line above after the selection</font><br>
+    void MoveSelectedLinesUp();<br>
+<br>
+    <font color=#009900>// Move the selected lines down one line, shifting the line below before the selection</font><br>
+    void MoveSelectedLinesDown();<br>
+<br>
+    <font color=#009900>// Set the identifier reported as idFrom in notification messages.</font><br>
+    void SetIdentifier(int identifier);<br>
+<br>
+    <font color=#009900>// Get the identifier.</font><br>
+    int GetIdentifier() const;<br>
+<br>
+    <font color=#009900>// Set the width for future RGBA image data.</font><br>
+    void RGBAImageSetWidth(int width);<br>
+<br>
+    <font color=#009900>// Set the height for future RGBA image data.</font><br>
+    void RGBAImageSetHeight(int height);<br>
+<br>
+    <font color=#009900>// Define a marker from RGBA data.</font><br>
+    <font color=#009900>// It has the width and height from RGBAImageSetWidth/Height</font><br>
+    void MarkerDefineRGBAImage(int markerNumber, const unsigned char* pixels);<br>
+<br>
+    <font color=#009900>// Register an RGBA image for use in autocompletion lists.</font><br>
+    <font color=#009900>// It has the width and height from RGBAImageSetWidth/Height</font><br>
+    void RegisterRGBAImage(int type, const unsigned char* pixels);<br>
+<br>
+    <font color=#009900>// Scroll to start of document.</font><br>
+    void ScrollToStart();<br>
+<br>
+    <font color=#009900>// Scroll to end of document.</font><br>
+    void ScrollToEnd();<br>
+<br>
+    <font color=#009900>// Set the technology used.</font><br>
+    void SetTechnology(int technology);<br>
+<br>
+    <font color=#009900>// Get the tech.</font><br>
+    int GetTechnology() const;<br>
+<br>
+    <font color=#009900>// Create an ILoader*.</font><br>
+    <font color=#009900>//void* CreateLoader(int bytes) const;</font><br>
+<br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_5</i></font><br>
 <br>
     <font color=#009900>// Start notifying the container of all key presses and commands.</font><br>
     void StartRecord();<br>
@@ -25959,7 +27192,7 @@ enum<br>
     void SetLexer(int lexer);<br>
 <br>
     <font color=#009900>// Retrieve the lexing language of the document.</font><br>
-    int GetLexer();<br>
+    int GetLexer() const;<br>
 <br>
     <font color=#009900>// Colourise a segment of the document using the current lexing language.</font><br>
     void Colourise(int start, int end);<br>
@@ -25982,15 +27215,31 @@ enum<br>
 <br>
     <font color=#009900>// Retrieve a 'property' value previously set with SetProperty,</font><br>
     <font color=#009900>// interpreted as an int AFTER any '$()' variable replacement.</font><br>
-    int GetPropertyInt(const <a href="#wxString">wxString</a>&amp; key);<br>
+    int GetPropertyInt(const <a href="#wxString">wxString</a>&amp; key) const;<br>
 <br>
     <font color=#009900>// Retrieve the number of bits the current lexer needs for styling.</font><br>
-    int GetStyleBitsNeeded();<br>
+    int GetStyleBitsNeeded() const;<br>
 <br>
 <font color=#009900>// END of generated section</font><br>
 <font color=#009900>//----------------------------------------------------------------------</font><br>
 <font color=#009900>// Others...</font><br>
 <br>
+    <font color=#009900>// Retrieve a '\n' separated list of properties understood by the current lexer.</font><br>
+    <i>%wxchkver_2_9_5</i> <a href="#wxString">wxString</a> PropertyNames() const;<br>
+<br>
+    <font color=#009900>// Retrieve the type of a property.</font><br>
+    <i>%wxchkver_2_9_5</i> int PropertyType(const <a href="#wxString">wxString</a>&amp; name);<br>
+<br>
+    <font color=#009900>// Describe a property.</font><br>
+    <i>%wxchkver_2_9_5</i> <a href="#wxString">wxString</a> DescribeProperty(const <a href="#wxString">wxString</a>&amp; name) const;<br>
+<br>
+    <font color=#009900>// Retrieve a '\n' separated list of descriptions of the keyword sets understood by the current lexer.</font><br>
+    <i>%wxchkver_2_9_5</i> <a href="#wxString">wxString</a> DescribeKeyWordSets() const;<br>
+<br>
+    <font color=#009900>//}}}</font><br>
+    <font color=#009900>//----------------------------------------------------------------------</font><br>
+<br>
+    <font color=#009900>// Manually declared methods</font><br>
 <br>
     <font color=#009900>// Returns the line number of the line with the caret.</font><br>
     int GetCurrentLine();<br>
@@ -26009,6 +27258,9 @@ enum<br>
     <font color=#009900>//</font><br>
     void StyleSetSpec(int styleNum, const <a href="#wxString">wxString</a>&amp; spec);<br>
 <br>
+<br>
+    <font color=#009900>// Get the font of a style.</font><br>
+    <i>%wxchkver_2_9_5</i> <a href="#wxFont">wxFont</a> StyleGetFont(int style);<br>
 <br>
 <br>
     <font color=#009900>// Set style size, face, bold, italic, and underline attributes from</font><br>
@@ -26095,9 +27347,10 @@ enum<br>
     <font color=#009900>// Returns the current UseAntiAliasing setting.</font><br>
     bool GetUseAntiAliasing();<br>
 <br>
+    <font color=#009900>// Clear annotations from the given line.</font><br>
+    <i>%wxchkver_2_9_5</i> void AnnotationClearLine(int line);<br>
 <br>
-<br>
-    <font color=#009900>// The following methods are nearly equivallent to their similarly named</font><br>
+    <font color=#009900>// The following methods are nearly equivalent to their similarly named</font><br>
     <font color=#009900>// cousins above.  The difference is that these methods bypass <a href="#wxString">wxString</a></font><br>
     <font color=#009900>// and always use a char* even if used in a unicode build of wxWidgets.</font><br>
     <font color=#009900>// In that case the character data will be utf-8 encoded since that is</font><br>
@@ -26209,6 +27462,9 @@ enum<br>
     int  GetListType() const;<br>
     int  GetX() const;<br>
     int  GetY() const;<br>
+    <i>%wxchkver_2_9_5</i> int  GetToken() const;<br>
+    <i>%wxchkver_2_9_5</i> int  GetAnnotationsLinesAdded() const;<br>
+    <i>%wxchkver_2_9_5</i> int  GetUpdated() const;<br>
     <a href="#wxString">wxString</a> GetDragText( );<br>
     bool GetDragAllowMove( );<br>
     <a href="#wxDragResult">wxDragResult</a> GetDragResult( );<br>

@@ -146,7 +146,8 @@ class %delete wxGridCellEditor : public wxGridCellWorker
     virtual void Show(bool show, wxGridCellAttr *attr = NULL );
     
     !%wxchkver_2_9_5 virtual void PaintBackground(const wxRect& rectCell, wxGridCellAttr *attr );
-    %wxchkver_2_9_5  virtual void PaintBackground(const wxRect& rectCell, const wxGridCellAttr &attr );
+    //%wxchkver_2_9_5  virtual void PaintBackground(const wxRect& rectCell, const wxGridCellAttr &attr ); // it very briefly had this signature
+    %wxchkver_2_9_5  virtual void PaintBackground(wxDC& dc, const wxRect& rectCell, const wxGridCellAttr &attr );
 
     virtual bool IsAcceptedKey(wxKeyEvent& event );
     virtual void StartingKey(wxKeyEvent& event );
