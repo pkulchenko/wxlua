@@ -145,6 +145,11 @@
 <td align="center" bgcolor=#AAFFAA>X
 <td>&nbsp;
 <tr>
+<td><a href="#wxAuiDefaultToolBarArt">wxAuiDefaultToolBarArt</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
 <td><a href="#wxAuiDockArt">wxAuiDockArt</a>
 <td align="center" bgcolor=#AAFFAA>X
 <td align="center" bgcolor=#AAFFAA>X
@@ -241,6 +246,31 @@
 <td>&nbsp;
 <tr>
 <td><a href="#wxAuiTabCtrl">wxAuiTabCtrl</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
+<td><a href="#wxAuiToolBar">wxAuiToolBar</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
+<td><a href="#wxAuiToolBarArt">wxAuiToolBarArt</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
+<td><a href="#wxAuiToolBarEvent">wxAuiToolBarEvent</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
+<td><a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
+<td><a href="#wxAuiToolBarItemArray">wxAuiToolBarItemArray</a>
 <td bgcolor=#FFAAAA>&nbsp;
 <td align="center" bgcolor=#AAFFAA>X
 <td>&nbsp;
@@ -3467,6 +3497,9 @@
 <a href="#wxAuiPaneDockArtSetting">wxAuiPaneDockArtSetting</a><br>
 <a href="#wxAuiPaneInfo::wxAuiPaneState">wxAuiPaneInfo::wxAuiPaneState</a><br>
 <a href="#wxAuiPaneInsertLevel">wxAuiPaneInsertLevel</a><br>
+<a href="#wxAuiToolBarArtSetting">wxAuiToolBarArtSetting</a><br>
+<a href="#wxAuiToolBarStyle">wxAuiToolBarStyle</a><br>
+<a href="#wxAuiToolBarToolTextOrientation">wxAuiToolBarToolTextOrientation</a><br>
 <a href="#wxBackgroundStyle">wxBackgroundStyle</a><br>
 <a href="#wxBatteryState">wxBatteryState</a><br>
 <a href="#wxBitmapType">wxBitmapType</a><br>
@@ -21267,6 +21300,303 @@ enum<br>
 #if wxLUA_USE_wxAUI &amp;&amp; <i>%wxchkver_2_8</i> &amp;&amp; wxUSE_AUI<br>
 <br>
 #include "wx/aui/aui.h"<br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<br>
+<font color=#009900>//#include "wx/aui/auibar.h" // already included by aui.h</font><br>
+<br>
+<br>
+<b><font size=+1 color=#0066CC>enum <a name="wxAuiToolBarStyle">wxAuiToolBarStyle</a></font></b><br>
+{
+<blockquote>
+    wxAUI_TB_TEXT          <font color=#009900>//= 1 &lt;&lt; 0,</font><br>
+    wxAUI_TB_NO_TOOLTIPS   <font color=#009900>//= 1 &lt;&lt; 1,</font><br>
+    wxAUI_TB_NO_AUTORESIZE <font color=#009900>//= 1 &lt;&lt; 2,</font><br>
+    wxAUI_TB_GRIPPER       <font color=#009900>//= 1 &lt;&lt; 3,</font><br>
+    wxAUI_TB_OVERFLOW      <font color=#009900>//= 1 &lt;&lt; 4,</font><br>
+    wxAUI_TB_VERTICAL      <font color=#009900>//= 1 &lt;&lt; 5,</font><br>
+    wxAUI_TB_HORZ_LAYOUT   <font color=#009900>//= 1 &lt;&lt; 6,</font><br>
+    wxAUI_TB_HORZ_TEXT     <font color=#009900>//= (wxAUI_TB_HORZ_LAYOUT | wxAUI_TB_TEXT),</font><br>
+    wxAUI_TB_DEFAULT_STYLE <font color=#009900>//= 0</font><br>
+</font>
+</blockquote>};<br>
+<br>
+<b><font size=+1 color=#0066CC>enum <a name="wxAuiToolBarArtSetting">wxAuiToolBarArtSetting</a></font></b><br>
+{
+<blockquote>
+    wxAUI_TBART_SEPARATOR_SIZE <font color=#009900>//= 0,</font><br>
+    wxAUI_TBART_GRIPPER_SIZE   <font color=#009900>//= 1,</font><br>
+    wxAUI_TBART_OVERFLOW_SIZE  <font color=#009900>//= 2</font><br>
+</font>
+</blockquote>};<br>
+<br>
+<b><font size=+1 color=#0066CC>enum <a name="wxAuiToolBarToolTextOrientation">wxAuiToolBarToolTextOrientation</a></font></b><br>
+{
+<blockquote>
+    wxAUI_TBTOOL_TEXT_LEFT   <font color=#009900>//= 0,     // unused/unimplemented</font><br>
+    wxAUI_TBTOOL_TEXT_RIGHT  <font color=#009900>//= 1,</font><br>
+    wxAUI_TBTOOL_TEXT_TOP    <font color=#009900>//= 2,      // unused/unimplemented</font><br>
+    wxAUI_TBTOOL_TEXT_BOTTOM <font color=#009900>//= 3</font><br>
+</font>
+</blockquote>};<br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxAuiToolBarEvent">wxAuiToolBarEvent</a></font><br>
+<br>
+<b><font size=+1 color=#DD0000>class <a href="#wxAuiToolBarEvent">wxAuiToolBarEvent</a> : public <a name="wxNotifyEvent">wxNotifyEvent</a></font></b><br>
+{
+<blockquote>
+    <i>%wxEventType</i> wxEVT_COMMAND_AUITOOLBAR_TOOL_DROPDOWN   <font color=#009900>// EVT_AUITOOLBAR_TOOL_DROPDOWN(winid, fn)</font><br>
+    <i>%wxEventType</i> wxEVT_COMMAND_AUITOOLBAR_OVERFLOW_CLICK  <font color=#009900>// EVT_AUITOOLBAR_OVERFLOW_CLICK(winid, fn)</font><br>
+    <i>%wxEventType</i> wxEVT_COMMAND_AUITOOLBAR_RIGHT_CLICK     <font color=#009900>// EVT_AUITOOLBAR_RIGHT_CLICK(winid, fn)</font><br>
+    <i>%wxEventType</i> wxEVT_COMMAND_AUITOOLBAR_MIDDLE_CLICK    <font color=#009900>// EVT_AUITOOLBAR_MIDDLE_CLICK(winid, fn)</font><br>
+    <i>%wxEventType</i> wxEVT_COMMAND_AUITOOLBAR_BEGIN_DRAG      <font color=#009900>// EVT_AUITOOLBAR_BEGIN_DRAG(winid, fn)</font><br>
+<br>
+    <a href="#wxAuiToolBarEvent">wxAuiToolBarEvent</a>(wxEventType command_type = wxEVT_NULL, int win_id = 0);<br>
+    <a href="#wxAuiToolBarEvent">wxAuiToolBarEvent</a>(const <a href="#wxAuiToolBarEvent">wxAuiToolBarEvent</a>&amp; c);<br>
+<br>
+    <a href="#wxEvent">wxEvent</a> *Clone() const;<br>
+<br>
+    bool IsDropDownClicked() const;<br>
+    void SetDropDownClicked(bool c);<br>
+<br>
+    <a href="#wxPoint">wxPoint</a> GetClickPoint() const;<br>
+    void SetClickPoint(const <a href="#wxPoint">wxPoint</a>&amp; p);<br>
+<br>
+    <a href="#wxRect">wxRect</a> GetItemRect() const;<br>
+    void SetItemRect(const <a href="#wxRect">wxRect</a>&amp; r);<br>
+<br>
+    int GetToolId() const;<br>
+    void SetToolId(int id);<br>
+</blockquote>};<br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a></font><br>
+<br>
+<b><font size=+1 color=#DD0000>class <a name="wxAuiToolBarItem">wxAuiToolBarItem</a></font></b><br>
+{
+<blockquote>
+    <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>();<br>
+    <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>(const <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>&amp; c);<br>
+<br>
+    <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>&amp; operator=(const <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>&amp; c);<br>
+<br>
+    void Assign(const <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>&amp; c);<br>
+<br>
+    void SetWindow(<a href="#wxWindow">wxWindow</a>* w);<br>
+    <a href="#wxWindow">wxWindow</a>* GetWindow();<br>
+    <br>
+    void SetId(int new_id);<br>
+    int GetId() const;<br>
+    <br>
+    void SetKind(int new_kind);<br>
+    int GetKind() const;<br>
+    <br>
+    void SetState(int new_state);<br>
+    int GetState() const;<br>
+    <br>
+    void SetSizerItem(<a href="#wxSizerItem">wxSizerItem</a>* s);<br>
+    <a href="#wxSizerItem">wxSizerItem</a>* GetSizerItem() const;<br>
+    <br>
+    void SetLabel(const <a href="#wxString">wxString</a>&amp; s);<br>
+    const <a href="#wxString">wxString</a>&amp; GetLabel() const;<br>
+    <br>
+    void SetBitmap(const <a href="#wxBitmap">wxBitmap</a>&amp; bmp);<br>
+    const <a href="#wxBitmap">wxBitmap</a>&amp; GetBitmap() const;<br>
+    <br>
+    void SetDisabledBitmap(const <a href="#wxBitmap">wxBitmap</a>&amp; bmp);<br>
+    const <a href="#wxBitmap">wxBitmap</a>&amp; GetDisabledBitmap() const;<br>
+    <br>
+    void SetHoverBitmap(const <a href="#wxBitmap">wxBitmap</a>&amp; bmp);<br>
+    const <a href="#wxBitmap">wxBitmap</a>&amp; GetHoverBitmap() const;<br>
+    <br>
+    void SetShortHelp(const <a href="#wxString">wxString</a>&amp; s);<br>
+    const <a href="#wxString">wxString</a>&amp; GetShortHelp() const;<br>
+    <br>
+    void SetLongHelp(const <a href="#wxString">wxString</a>&amp; s);<br>
+    const <a href="#wxString">wxString</a>&amp; GetLongHelp() const;<br>
+    <br>
+    void SetMinSize(const <a href="#wxSize">wxSize</a>&amp; s);<br>
+    const <a href="#wxSize">wxSize</a>&amp; GetMinSize() const;<br>
+    <br>
+    void SetSpacerPixels(int s);<br>
+    int GetSpacerPixels() const;<br>
+    <br>
+    void SetProportion(int p);<br>
+    int GetProportion() const;<br>
+    <br>
+    void SetActive(bool b);<br>
+    bool IsActive() const;<br>
+    <br>
+    void SetHasDropDown(bool b);<br>
+    bool HasDropDown() const;<br>
+    <br>
+    void SetSticky(bool b);<br>
+    bool IsSticky() const;<br>
+    <br>
+    void SetUserData(long l);<br>
+    long GetUserData() const;<br>
+</blockquote>};<br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxAuiToolBarItemArray">wxAuiToolBarItemArray</a></font><br>
+<br>
+<b><font size=+1 color=#DD0000>class <i>%delete</i> <a name="wxAuiToolBarItemArray">wxAuiToolBarItemArray</a></font></b><br>
+{
+<blockquote>
+    <a href="#wxAuiToolBarItemArray">wxAuiToolBarItemArray</a>();<br>
+    <a href="#wxAuiToolBarItemArray">wxAuiToolBarItemArray</a>(const <a href="#wxAuiToolBarItemArray">wxAuiToolBarItemArray</a>&amp; array);<br>
+<br>
+    void Add(const <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>&amp; item);<br>
+    void Clear();<br>
+    int  GetCount() const;<br>
+    void Insert(const <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>&amp; item, int nIndex);<br>
+    bool IsEmpty();<br>
+    <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a> Item(size_t nIndex) const;<br>
+    void RemoveAt(size_t nIndex);<br>
+</blockquote>};<br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxAuiToolBarArt">wxAuiToolBarArt</a></font><br>
+<br>
+<b><font size=+1 color=#DD0000>class <a name="wxAuiToolBarArt">wxAuiToolBarArt</a></font></b><br>
+{
+<blockquote>
+    <font color=#009900>//<a href="#wxAuiToolBarArt">wxAuiToolBarArt</a>(); - pure virtual class see <a href="#wxAuiDefaultToolBarArt">wxAuiDefaultToolBarArt</a></font><br>
+<br>
+    virtual <a href="#wxAuiToolBarArt">wxAuiToolBarArt</a>* Clone();<br>
+    virtual void SetFlags(unsigned int flags);<br>
+    virtual void SetFont(const <a href="#wxFont">wxFont</a>&amp; font);<br>
+    virtual void SetTextOrientation(int orientation);<br>
+<br>
+    virtual void DrawBackground( <a href="#wxDC">wxDC</a>&amp; dc, <a href="#wxWindow">wxWindow</a>* wnd, const <a href="#wxRect">wxRect</a>&amp; rect);<br>
+    virtual void DrawLabel( <a href="#wxDC">wxDC</a>&amp; dc, <a href="#wxWindow">wxWindow</a>* wnd, const <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>&amp; item, const <a href="#wxRect">wxRect</a>&amp; rect);<br>
+    virtual void DrawButton( <a href="#wxDC">wxDC</a>&amp; dc, <a href="#wxWindow">wxWindow</a>* wnd, const <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>&amp; item, const <a href="#wxRect">wxRect</a>&amp; rect);<br>
+    virtual void DrawDropDownButton( <a href="#wxDC">wxDC</a>&amp; dc, <a href="#wxWindow">wxWindow</a>* wnd, const <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>&amp; item, const <a href="#wxRect">wxRect</a>&amp; rect);<br>
+    virtual void DrawControlLabel( <a href="#wxDC">wxDC</a>&amp; dc, <a href="#wxWindow">wxWindow</a>* wnd, const <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>&amp; item, const <a href="#wxRect">wxRect</a>&amp; rect);<br>
+    virtual void DrawSeparator( <a href="#wxDC">wxDC</a>&amp; dc, <a href="#wxWindow">wxWindow</a>* wnd, const <a href="#wxRect">wxRect</a>&amp; rect);<br>
+    virtual void DrawGripper( <a href="#wxDC">wxDC</a>&amp; dc, <a href="#wxWindow">wxWindow</a>* wnd, const <a href="#wxRect">wxRect</a>&amp; rect);<br>
+    virtual void DrawOverflowButton( <a href="#wxDC">wxDC</a>&amp; dc, <a href="#wxWindow">wxWindow</a>* wnd, const <a href="#wxRect">wxRect</a>&amp; rect, int state);<br>
+<br>
+    virtual <a href="#wxSize">wxSize</a> GetLabelSize( <a href="#wxDC">wxDC</a>&amp; dc, <a href="#wxWindow">wxWindow</a>* wnd, const <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>&amp; item);<br>
+    virtual <a href="#wxSize">wxSize</a> GetToolSize( <a href="#wxDC">wxDC</a>&amp; dc, <a href="#wxWindow">wxWindow</a>* wnd, const <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>&amp; item);<br>
+    virtual int  GetElementSize(int element_id);<br>
+    virtual void SetElementSize(int element_id, int size);<br>
+    virtual int ShowDropDown( <a href="#wxWindow">wxWindow</a>* wnd, const <a href="#wxAuiToolBarItemArray">wxAuiToolBarItemArray</a>&amp; items);<br>
+</blockquote>};<br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxAuiDefaultToolBarArt">wxAuiDefaultToolBarArt</a></font><br>
+<br>
+<b><font size=+1 color=#DD0000>class <a href="#wxAuiDefaultToolBarArt">wxAuiDefaultToolBarArt</a> : public <a name="wxAuiToolBarArt">wxAuiToolBarArt</a></font></b><br>
+{
+<blockquote>
+    <a href="#wxAuiDefaultToolBarArt">wxAuiDefaultToolBarArt</a>();<br>
+</blockquote>};<br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxAuiToolBar">wxAuiToolBar</a></font><br>
+<br>
+<b><font size=+1 color=#DD0000>class <a href="#wxAuiToolBar">wxAuiToolBar</a> : public <a name="wxControl">wxControl</a></font></b><br>
+{
+<blockquote>
+    <a href="#wxAuiToolBar">wxAuiToolBar</a>(<a href="#wxWindow">wxWindow</a>* parent, wxWindowID id = -1, const <a href="#wxPoint">wxPoint</a>&amp; position = wxDefaultPosition, const <a href="#wxSize">wxSize</a>&amp; size = wxDefaultSize, long style = wxAUI_TB_DEFAULT_STYLE);<br>
+<br>
+    void SetWindowStyleFlag(long style);<br>
+    long GetWindowStyleFlag() const;<br>
+<br>
+    void SetArtProvider(<a href="#wxAuiToolBarArt">wxAuiToolBarArt</a>* art);<br>
+    <a href="#wxAuiToolBarArt">wxAuiToolBarArt</a>* GetArtProvider() const;<br>
+<br>
+    bool SetFont(const <a href="#wxFont">wxFont</a>&amp; font);<br>
+<br>
+    void AddTool(int tool_id, const <a href="#wxString">wxString</a>&amp; label, const <a href="#wxBitmap">wxBitmap</a>&amp; bitmap, const <a href="#wxString">wxString</a>&amp; short_help_string = wxEmptyString, <a href="#wxItemKind">wxItemKind</a> kind = wxITEM_NORMAL);<br>
+<br>
+    void AddTool(int tool_id, const <a href="#wxString">wxString</a>&amp; label, const <a href="#wxBitmap">wxBitmap</a>&amp; bitmap, const <a href="#wxBitmap">wxBitmap</a>&amp; disabled_bitmap, <a href="#wxItemKind">wxItemKind</a> kind, const <a href="#wxString">wxString</a>&amp; short_help_string, const <a href="#wxString">wxString</a>&amp; long_help_string, <a href="#wxObject">wxObject</a>* client_data);<br>
+<br>
+    void AddTool(int tool_id, const <a href="#wxBitmap">wxBitmap</a>&amp; bitmap, const <a href="#wxBitmap">wxBitmap</a>&amp; disabled_bitmap, bool toggle = false, <a href="#wxObject">wxObject</a>* client_data = NULL, const <a href="#wxString">wxString</a>&amp; short_help_string = wxEmptyString, const <a href="#wxString">wxString</a>&amp; long_help_string = wxEmptyString);<br>
+<br>
+    void AddLabel(int tool_id, const <a href="#wxString">wxString</a>&amp; label = wxEmptyString, const int width = -1);<br>
+    void AddControl(<a href="#wxControl">wxControl</a>* control, const <a href="#wxString">wxString</a>&amp; label = wxEmptyString);<br>
+    void AddSeparator();<br>
+    void AddSpacer(int pixels);<br>
+    void AddStretchSpacer(int proportion = 1);<br>
+<br>
+    bool Realize();<br>
+<br>
+    <a href="#wxControl">wxControl</a>* FindControl(int window_id);<br>
+    <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>* FindToolByPosition(wxCoord x, wxCoord y) const;<br>
+    <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>* FindToolByIndex(int idx) const;<br>
+    <a href="#wxAuiToolBarItem">wxAuiToolBarItem</a>* FindTool(int tool_id) const;<br>
+<br>
+    void ClearTools();<br>
+    void Clear();<br>
+    bool DeleteTool(int tool_id);<br>
+    bool DeleteByIndex(int tool_id);<br>
+<br>
+    size_t GetToolCount() const;<br>
+    int GetToolPos(int tool_id) const;<br>
+    int GetToolIndex(int tool_id) const;<br>
+    bool GetToolFits(int tool_id) const;<br>
+    <a href="#wxRect">wxRect</a> GetToolRect(int tool_id) const;<br>
+    bool GetToolFitsByIndex(int tool_id) const;<br>
+    bool GetToolBarFits() const;<br>
+<br>
+    void SetMargins(const <a href="#wxSize">wxSize</a>&amp; size);<br>
+    void SetMargins(int x, int y);<br>
+    void SetMargins(int left, int right, int top, int bottom);<br>
+<br>
+    void SetToolBitmapSize(const <a href="#wxSize">wxSize</a>&amp; size);<br>
+    <a href="#wxSize">wxSize</a> GetToolBitmapSize() const;<br>
+<br>
+    bool GetOverflowVisible() const;<br>
+    void SetOverflowVisible(bool visible);<br>
+<br>
+    bool GetGripperVisible() const;<br>
+    void SetGripperVisible(bool visible);<br>
+<br>
+    void ToggleTool(int tool_id, bool state);<br>
+    bool GetToolToggled(int tool_id) const;<br>
+<br>
+    void EnableTool(int tool_id, bool state);<br>
+    bool GetToolEnabled(int tool_id) const;<br>
+<br>
+    void SetToolDropDown(int tool_id, bool dropdown);<br>
+    bool GetToolDropDown(int tool_id) const;<br>
+<br>
+    void SetToolBorderPadding(int padding);<br>
+    int  GetToolBorderPadding() const;<br>
+<br>
+    void SetToolTextOrientation(int orientation);<br>
+    int  GetToolTextOrientation() const;<br>
+<br>
+    void SetToolPacking(int packing);<br>
+    int  GetToolPacking() const;<br>
+<br>
+    void SetToolProportion(int tool_id, int proportion);<br>
+    int  GetToolProportion(int tool_id) const;<br>
+<br>
+    void SetToolSeparation(int separation);<br>
+    int GetToolSeparation() const;<br>
+<br>
+    void SetToolSticky(int tool_id, bool sticky);<br>
+    bool GetToolSticky(int tool_id) const;<br>
+<br>
+    <a href="#wxString">wxString</a> GetToolLabel(int tool_id) const;<br>
+    void SetToolLabel(int tool_id, const <a href="#wxString">wxString</a>&amp; label);<br>
+<br>
+    <a href="#wxBitmap">wxBitmap</a> GetToolBitmap(int tool_id) const;<br>
+    void SetToolBitmap(int tool_id, const <a href="#wxBitmap">wxBitmap</a>&amp; bitmap);<br>
+<br>
+    <a href="#wxString">wxString</a> GetToolShortHelp(int tool_id) const;<br>
+    void SetToolShortHelp(int tool_id, const <a href="#wxString">wxString</a>&amp; help_string);<br>
+<br>
+    <a href="#wxString">wxString</a> GetToolLongHelp(int tool_id) const;<br>
+    void SetToolLongHelp(int tool_id, const <a href="#wxString">wxString</a>&amp; help_string);<br>
+<br>
+    void SetCustomOverflowItems(const <a href="#wxAuiToolBarItemArray">wxAuiToolBarItemArray</a>&amp; prepend, const <a href="#wxAuiToolBarItemArray">wxAuiToolBarItemArray</a>&amp; append);<br>
+</blockquote>};<br>
 <br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>

@@ -314,6 +314,15 @@ wx_dataTypeTable =
     Name = "wxAuiDefaultTabArt",
     ValueType = "class",
   },
+  wxAuiDefaultToolBarArt = {
+    BaseClasses = {
+      [1] = "wxAuiToolBarArt",
+    },
+    Condition = "wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI",
+    IsNumber = false,
+    Name = "wxAuiDefaultToolBarArt",
+    ValueType = "class",
+  },
   wxAuiDockArt = {
     Condition = "wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI",
     IsNumber = false,
@@ -517,6 +526,60 @@ wx_dataTypeTable =
     IsNumber = false,
     Name = "wxAuiTabCtrl",
     ValueType = "class",
+  },
+  wxAuiToolBar = {
+    BaseClasses = {
+      [1] = "wxControl",
+    },
+    Condition = "wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI",
+    IsNumber = false,
+    Name = "wxAuiToolBar",
+    ValueType = "class",
+  },
+  wxAuiToolBarArt = {
+    Condition = "wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI",
+    IsNumber = false,
+    Name = "wxAuiToolBarArt",
+    ValueType = "class",
+  },
+  wxAuiToolBarArtSetting = {
+    Condition = "wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI",
+    IsNumber = true,
+    Name = "wxAuiToolBarArtSetting",
+    ValueType = "enum",
+  },
+  wxAuiToolBarEvent = {
+    BaseClasses = {
+      [1] = "wxNotifyEvent",
+    },
+    Condition = "wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI",
+    IsNumber = false,
+    Name = "wxAuiToolBarEvent",
+    ValueType = "class",
+  },
+  wxAuiToolBarItem = {
+    Condition = "wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI",
+    IsNumber = false,
+    Name = "wxAuiToolBarItem",
+    ValueType = "class",
+  },
+  wxAuiToolBarItemArray = {
+    Condition = "wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI",
+    IsNumber = false,
+    Name = "wxAuiToolBarItemArray",
+    ValueType = "class",
+  },
+  wxAuiToolBarStyle = {
+    Condition = "wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI",
+    IsNumber = true,
+    Name = "wxAuiToolBarStyle",
+    ValueType = "enum",
+  },
+  wxAuiToolBarToolTextOrientation = {
+    Condition = "wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI",
+    IsNumber = true,
+    Name = "wxAuiToolBarToolTextOrientation",
+    ValueType = "enum",
   },
   wxAutoBufferedPaintDC = {
     BaseClasses = {

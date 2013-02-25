@@ -54,6 +54,7 @@ extern WXDLLIMPEXP_BINDWXAUI wxLuaBinding* wxLuaBinding_wxaui_init();
 #if wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiDefaultDockArt;
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiDefaultTabArt;
+    extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiDefaultToolBarArt;
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiDockArt;
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiDockInfo;
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiDockUIPart;
@@ -74,6 +75,11 @@ extern WXDLLIMPEXP_BINDWXAUI wxLuaBinding* wxLuaBinding_wxaui_init();
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiTabArt;
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiTabContainerButton;
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiTabCtrl;
+    extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiToolBar;
+    extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiToolBarArt;
+    extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiToolBarEvent;
+    extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiToolBarItem;
+    extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiToolBarItemArray;
 #endif // wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI
 
 
