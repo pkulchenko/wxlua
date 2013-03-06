@@ -57,6 +57,7 @@ function PenToTable(pen)
 end
 
 function TableToPen(penTable)
+    local unpack = unpack or table.unpack -- Lua 5.1/5.2 compat
     local c = wx.wxColour(unpack(penTable.colour))
     local pen = wx.wxPen(c, penTable.width, penTable.style)
     c:delete()

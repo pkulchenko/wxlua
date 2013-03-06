@@ -27,7 +27,8 @@
 extern "C"
 {
     // force C linkage w/o name mangling
-    WXDLLIMPEXP_LUAMODULE int luaopen_wx(lua_State *L); 
+    WXDLLIMPEXP_LUAMODULE int luaopen_wx(lua_State *L);
+
 #ifdef __WXMSW__
     BOOL APIENTRY DllMain( HANDLE hModule, DWORD ul_reason_for_call, LPVOID );
 #endif //__WXMSW__
@@ -64,6 +65,14 @@ BOOL APIENTRY DllMain( HANDLE hModule, DWORD ul_reason_for_call, LPVOID )
 }
 
 #endif // __WXMSW__
+
+
+#ifdef _MSC_VER
+    // warning C4275: non dll-interface class 'wxApp' used as base for dll-interface class 'wxLuaModuleApp'
+    // This file is built into a DLL, but we can link to a static wxWidgets and 
+    // we don't want or need to export their functions, only luaopen_wx().
+    #pragma warning( disable : 4275 )
+#endif // _MSC_VER
 
 // ----------------------------------------------------------------------------
 // wxLuaModuleApp

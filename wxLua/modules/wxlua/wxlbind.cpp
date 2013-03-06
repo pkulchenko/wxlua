@@ -818,17 +818,17 @@ bool wxLuaBinding::RegisterBinding(const wxLuaState& wxlState)
     lua_State *L = wxlState.GetLuaState();
 
     // Let Lua create a new table for us and add it to these places.
-    // We use an empty luaL_Reg since we just want luaI_openlib to create the
+    // We use an empty luaL_Reg since we just want luaL_register to create the
     // tables for us, but we want to install the elements ourselves since
-    // wxLua is too large to follow the luaI_openlib method without being
+    // wxLua is too large to follow the luaL_register method without being
     // wasteful of memory and slow down the initialization.
     //    LUA_REGISTRYINDEX["_LOADED"][m_nameSpace] = table
     //    LUA_GLOBALSINDEX[m_nameSpace] = table
     //    LUA_GLOBALSINDEX["package"]["loaded"][m_nameSpace] = table
     static const luaL_Reg wxlualib[] = { {NULL, NULL} };
-    luaI_openlib(L, wx2lua(m_nameSpace), wxlualib, 0);
+    luaL_register(L, wx2lua(m_nameSpace), wxlualib);
 
-    // luaI_openlib should have given error message about why it couldn't
+    // luaL_register should have given an error message about why it couldn't
     // create the table for us
     if (!lua_istable(L, -1))
     {
@@ -959,7 +959,7 @@ void wxLuaBinding::DoRegisterBinding(const wxLuaState& wxlState) const
 bool wxLuaBinding::InstallClassMetatable(lua_State* L, const wxLuaBindClass* wxlClass)
 {
     // Replace the metatable functions for the classes we push into Lua
-    static const luaL_reg s_funcTable[] =
+    static const luaL_Reg s_funcTable[] =
     {
         {"__gc",       wxlua_wxLuaBindClass__gc },
         {"__index",    wxlua_wxLuaBindClass__index },

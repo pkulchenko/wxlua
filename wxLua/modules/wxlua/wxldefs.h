@@ -16,14 +16,18 @@
 
 extern "C"
 {
+    #define LUA_COMPAT_ALL // Use Lua's 5.1 compat functions in 5.2
+
     #include "lua.h"
     #include "lualib.h"
     #include "lauxlib.h"
 
-    // To not include "lua.h" use these
-    //typedef struct lua_State lua_State;
-    //typedef struct lua_Debug lua_Debug;
-    //typedef int (*lua_CFunction)(lua_State *);
+    #if LUA_VERSION_NUM < 502
+        #define lua_pushglobaltable(L) lua_pushvalue(L, LUA_GLOBALSINDEX)
+    #else
+        #define luaL_getn luaL_len
+        #define LUA_GLOBALSINDEX LUA_RIDX_GLOBALS
+    #endif // LUA_VERSION_NUM < 502
 }
 
 #include <wx/defs.h>

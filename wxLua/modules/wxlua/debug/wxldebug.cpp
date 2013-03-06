@@ -292,7 +292,7 @@ int wxLuaDebugData::EnumerateTable(lua_State* L, int tableRef, int nIndex, wxArr
 
     if (tableRef == LUA_GLOBALSINDEX)
     {
-        lua_pushvalue(L, LUA_GLOBALSINDEX);
+        lua_pushglobaltable(L);
         GetTypeValue(L, -1, &wxl_valuetype, value);
 
         int flag_type = 0;
@@ -301,6 +301,8 @@ int wxLuaDebugData::EnumerateTable(lua_State* L, int tableRef, int nIndex, wxArr
 
         Add(new wxLuaDebugItem(wxT("Globals"), WXLUA_TNONE, value, WXLUA_TTABLE, wxEmptyString, val_ref, 0, flag_type));
     }
+#if LUA_VERSION_NUM < 502
+    // LUA_ENVIRONINDEX is no longer in 5.2
     else if (tableRef == LUA_ENVIRONINDEX)
     {
         lua_pushvalue(L, LUA_ENVIRONINDEX);
@@ -312,6 +314,7 @@ int wxLuaDebugData::EnumerateTable(lua_State* L, int tableRef, int nIndex, wxArr
 
         Add(new wxLuaDebugItem(wxT("Environment"), WXLUA_TNONE, value, WXLUA_TTABLE, wxEmptyString, val_ref, 0, flag_type));
     }
+#endif // LUA_VERSION_NUM < 502
     else if (tableRef == LUA_REGISTRYINDEX)
     {
         lua_pushvalue(L, LUA_REGISTRYINDEX);
@@ -783,7 +786,7 @@ wxString wxLuaCheckStack::DumpTable(const wxString &tablename, const wxString& m
 
     // Allow iteration through table1.table2.table3...
     wxString tname(tablename);
-    lua_pushvalue(L, LUA_GLOBALSINDEX);
+    lua_pushglobaltable(L);
 
     do {
         lua_pushstring(L, wx2lua(tname.BeforeFirst(wxT('.'))));

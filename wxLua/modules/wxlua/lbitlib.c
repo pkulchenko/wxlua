@@ -36,6 +36,8 @@
 #include "lua.h"
 #include "lauxlib.h"
 
+#if LUA_VERSION_NUM < 502
+
 /* ----- adapted from lua-5.2.0 luaconf.h: ----- */
 
 /*
@@ -370,3 +372,5 @@ LUAMOD_API int luaopen_bit32 (lua_State *L) {
   luaL_newlib(L, bitlib);
   return 1;
 }
+
+#endif // LUA_VERSION_NUM < 502

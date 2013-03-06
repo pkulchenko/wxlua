@@ -721,9 +721,19 @@ bool wxLuaDebugTarget::DebugHook(int event)
     }
     else
     {
-        if (event == LUA_HOOKCALL) // call
+        if ((event == LUA_HOOKCALL) // call
+#if LUA_VERSION_NUM > 501
+              || (event == LUA_HOOKTAILCALL)
+#endif // LUA_VERSION_NUM < 501
+            )
+        {
             m_nframes_until_break++;
-        else if ((event == LUA_HOOKRET) || (event == LUA_HOOKTAILRET)) // return
+        }
+        else if ((event == LUA_HOOKRET) // return
+#if LUA_VERSION_NUM < 502
+              || (event == LUA_HOOKTAILRET)
+#endif // LUA_VERSION_NUM < 502
+            )
         {
             if (m_nframes_until_break > 0)
                 m_nframes_until_break--;

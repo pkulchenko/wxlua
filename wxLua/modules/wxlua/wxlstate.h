@@ -1149,7 +1149,10 @@ public:
     void  lua_NewTable();
     void* lua_NewUserdata(size_t sz);
     int   lua_GetMetatable(int objindex);
+
+#if LUA_VERSION_NUM < 502
     void  lua_GetFenv(int idx);
+#endif // LUA_VERSION_NUM < 502
 
     // -----------------------------------------------------------------------
     // Raw Lua set functions (stack -> Lua), lua.h
@@ -1160,7 +1163,10 @@ public:
     void  lua_RawSet(int idx);
     void  lua_RawSeti(int idx, int n);
     int   lua_SetMetatable(int objindex);
+
+#if LUA_VERSION_NUM < 502
     int   lua_SetFenv(int idx);
+#endif // LUA_VERSION_NUM < 502
 
     // -----------------------------------------------------------------------
     // Raw Lua `load' and `call' functions (load and run Lua code), lua.h
@@ -1168,8 +1174,14 @@ public:
     void lua_Call(int nargs, int nresults);
     int  lua_PCall(int nargs, int nresults, int errfunc);
     int  lua_CPCall(lua_CFunction func, void *ud);
+
+#if LUA_VERSION_NUM < 502
     int  lua_Load(lua_Reader reader, void *dt, const char* chunkname);
     wxLUA_UNICODE_ONLY(int lua_Load(lua_Reader reader, void *dt, const wxString& chunkname) { return lua_Load(reader, dt, wx2lua(chunkname)); })
+#else
+    int  lua_Load(lua_Reader reader, void *dt, const char* chunkname, const char* mode);
+    wxLUA_UNICODE_ONLY(int lua_Load(lua_Reader reader, void *dt, const wxString& chunkname, const wxString& mode) { return lua_Load(reader, dt, wx2lua(chunkname), wx2lua(mode)); })
+#endif // LUA_VERSION_NUM < 502
 
     int lua_Dump(lua_Writer writer, void *data);
 
@@ -1177,13 +1189,15 @@ public:
     // Raw Lua coroutine functions, lua.h
 
     int lua_Yield(int nresults);
+#if LUA_VERSION_NUM < 502
     int lua_Resume(int narg);
+#endif // LUA_VERSION_NUM < 502
     int lua_Status();
 
     // -----------------------------------------------------------------------
     // Raw Lua garbage-collection functions, lua.h
 
-    int lua_GetGCCount();
+    int lua_GC(int what, int data);
 
     // -----------------------------------------------------------------------
     // Raw Lua miscellaneous functions, lua.h
@@ -1240,11 +1254,12 @@ public:
     // -----------------------------------------------------------------------
     // Raw Lua auxlib functions, lauxlib.h
 
-    void luaI_OpenLib(const char *libname, const luaL_reg *l, int nup);
-    void luaL_Register(const char *libname, const luaL_reg *l);
+    void luaL_Register(const char *libname, const luaL_Reg *l);
     int luaL_GetMetafield(int obj, const char *e);
     int luaL_CallMeta(int obj, const char *e);
+#if LUA_VERSION_NUM < 502
     int luaL_TypeError(int narg, const char *tname);
+#endif // LUA_VERSION_NUM < 502
     int luaL_ArgError(int numarg, const char *extramsg);
     const char *luaL_CheckLString(int numArg, size_t *l);
     const char *luaL_OptLString(int numArg, const char *def, size_t *len);

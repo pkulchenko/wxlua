@@ -624,9 +624,12 @@ void wxLuaStackDialog::FillStackEntry(int WXUNUSED(nEntry), const wxLuaDebugData
         // from the debuggee so we can't expect that the item has been added
         // to the listctrl yet, but we assume they eventually will be, hence n+x.
         int n = m_listCtrl->GetItemCount();
-        EnumerateTable(LUA_GLOBALSINDEX,  -1, n);
-        EnumerateTable(LUA_ENVIRONINDEX,  -1, n+1);
-        EnumerateTable(LUA_REGISTRYINDEX, -1, n+2);
+        EnumerateTable(LUA_GLOBALSINDEX,  -1, n++);
+#if LUA_VERSION_NUM < 502
+        // LUA_ENVIRONINDEX is no longer in 5.2
+        EnumerateTable(LUA_ENVIRONINDEX,  -1, n++);
+#endif // LUA_VERSION_NUM < 502
+        EnumerateTable(LUA_REGISTRYINDEX, -1, n++);
     }
 }
 

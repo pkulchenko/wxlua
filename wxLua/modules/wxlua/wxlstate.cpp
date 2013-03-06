@@ -2600,7 +2600,7 @@ bool wxLuaState::Create(wxEvtHandler *handler, wxWindowID id)
 {
     Destroy();
 
-    lua_State* L = lua_open();
+    lua_State* L = luaL_newstate();
     // load some useful libraries, loads all of them
     luaL_openlibs(L);
 
@@ -2705,11 +2705,18 @@ bool wxLuaState::Create(lua_State* L, int state_type)
         wxlua_lreg_createtable(L, &wxlua_lreg_topwindows_key);
 
         // copy Lua's print function in case someone wants to use it
-        lua_pushlstring(L, "print", 5);
-        lua_rawget( L, LUA_GLOBALSINDEX );  // pop key, push print function
+        lua_getglobal(L, "print");
+#if LUA_VERSION_NUM < 502
         lua_pushlstring(L, "print_lua", 9);
         lua_pushvalue(L, -2);               // copy print function
         lua_rawset(L, LUA_GLOBALSINDEX);    // set t[key] = value, pops key and value
+#else
+        lua_pushglobaltable(L);
+        lua_pushlstring(L, "print_lua", 9);
+        lua_pushvalue(L, -3);               // copy print function
+        lua_rawset(L, -3);                  // set t[key] = value, pops key and value
+        lua_pop(L, 1);                      // pop the global table
+#endif // LUA_VERSION_NUM < 502
 
         lua_pushlstring(L, "print_lua", 9); // also keep a permanent copy in registry
         lua_pushvalue(L, -2);               // copy print function
@@ -2944,7 +2951,7 @@ bool wxLuaState::IsRunning() const
 static int LUACALL wxlua_traceback (lua_State *L) {
   if (!lua_isstring(L, 1))  /* 'message' not a string? */
     return 1;  /* keep it intact */
-  lua_getfield(L, LUA_GLOBALSINDEX, "debug");
+  lua_getglobal(L, "debug");
   if (!lua_istable(L, -1)) {
     lua_pop(L, 1);
   }
@@ -3017,7 +3024,7 @@ int wxLuaState::CompileString(const wxString &script, const wxString& name, wxSt
 int wxLuaState::CompileBuffer(const char buf[], size_t size, const wxString &name, wxString* errMsg_, int* line_num_)
 {
     // create a new lua_State so we don't mess up our own
-    lua_State *L = lua_open();
+    lua_State *L = luaL_newstate();
     luaL_openlibs(L); // load some useful libraries, loads all of them
     int top = lua_gettop(L);
     int status = luaL_loadbuffer(L, (const char*)buf, size, wx2lua(name));
@@ -3824,11 +3831,14 @@ int wxLuaState::lua_GetMetatable(int objindex)
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
     return lua_getmetatable(M_WXLSTATEDATA->m_lua_State, objindex);
 }
+
+#if LUA_VERSION_NUM < 502
 void wxLuaState::lua_GetFenv(int idx)
 {
     wxCHECK_RET(Ok(), wxT("Invalid wxLuaState"));
     lua_getfenv(M_WXLSTATEDATA->m_lua_State, idx);
 }
+#endif // LUA_VERSION_NUM < 502
 
 // -----------------------------------------------------------------------
 // Raw Lua set functions (stack -> Lua)
@@ -3858,11 +3868,14 @@ int wxLuaState::lua_SetMetatable(int objindex)
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
     return lua_setmetatable(M_WXLSTATEDATA->m_lua_State, objindex);
 }
+
+#if LUA_VERSION_NUM < 502
 int wxLuaState::lua_SetFenv(int idx)
 {
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
     return lua_setfenv(M_WXLSTATEDATA->m_lua_State, idx);
 }
+#endif // LUA_VERSION_NUM < 502
 
 // ----------------------------------------------------------------------------
 // Raw Lua `load' and `call' functions (load and run Lua code)
@@ -3882,11 +3895,19 @@ int wxLuaState::lua_CPCall(lua_CFunction func, void *ud)
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
     return lua_cpcall(M_WXLSTATEDATA->m_lua_State, func, ud);
 }
-int  wxLuaState::lua_Load(lua_Chunkreader reader, void *dt, const char* chunkname)
+#if LUA_VERSION_NUM < 502
+int  wxLuaState::lua_Load(lua_Reader reader, void *dt, const char* chunkname)
 {
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
     return lua_load(M_WXLSTATEDATA->m_lua_State, reader, dt, chunkname);
 }
+#else
+int  wxLuaState::lua_Load(lua_Reader reader, void *dt, const char* chunkname, const char* mode)
+{
+    wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
+    return lua_load(M_WXLSTATEDATA->m_lua_State, reader, dt, chunkname, mode);
+}
+#endif // LUA_VERSION_NUM < 502
 int wxLuaState::lua_Dump(lua_Writer writer, void *data)
 {
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
@@ -3901,11 +3922,15 @@ int wxLuaState::lua_Yield(int nresults)
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
     return lua_yield(M_WXLSTATEDATA->m_lua_State, nresults);
 }
+
+#if LUA_VERSION_NUM < 502
 int wxLuaState::lua_Resume(int narg)
 {
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
     return lua_resume(M_WXLSTATEDATA->m_lua_State, narg);
 }
+#endif // LUA_VERSION_NUM < 502
+
 int wxLuaState::lua_Status()
 {
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
@@ -3915,10 +3940,10 @@ int wxLuaState::lua_Status()
 // ----------------------------------------------------------------------------
 // Raw Lua garbage-collection functions
 
-int wxLuaState::lua_GetGCCount()
+int wxLuaState::lua_GC(int what, int data)
 {
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
-    return lua_getgccount(M_WXLSTATEDATA->m_lua_State);
+    return lua_gc(M_WXLSTATEDATA->m_lua_State, what, data);
 }
 
 // ----------------------------------------------------------------------------
@@ -4068,12 +4093,7 @@ int wxLuaState::lua_GetHookCount()
 // ----------------------------------------------------------------------------
 // Raw Lua auxlib functions, lauxlib.h
 
-void wxLuaState::luaI_OpenLib(const char *libname, const luaL_reg *l, int nup)
-{
-    wxCHECK_RET(Ok(), wxT("Invalid wxLuaState"));
-    luaI_openlib(M_WXLSTATEDATA->m_lua_State, libname, l, nup);
-}
-void wxLuaState::luaL_Register(const char *libname, const luaL_reg *l)
+void wxLuaState::luaL_Register(const char *libname, const luaL_Reg *l)
 {
     wxCHECK_RET(Ok(), wxT("Invalid wxLuaState"));
     luaL_register(M_WXLSTATEDATA->m_lua_State, libname, l);
@@ -4088,11 +4108,13 @@ int wxLuaState::luaL_CallMeta(int obj, const char *e)
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
     return luaL_callmeta(M_WXLSTATEDATA->m_lua_State, obj, e);
 }
+#if LUA_VERSION_NUM < 502
 int wxLuaState::luaL_TypeError(int narg, const char *tname)
 {
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
     return luaL_typerror(M_WXLSTATEDATA->m_lua_State, narg, tname);
 }
+#endif // LUA_VERSION_NUM < 502
 int wxLuaState::luaL_ArgError(int numarg, const char *extramsg)
 {
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
@@ -4247,7 +4269,7 @@ long wxLuaState::luaL_OptLong(int numArg, int def)
 void wxLuaState::GetGlobals()
 {
     wxCHECK_RET(Ok(), wxT("Invalid wxLuaState"));
-    lua_pushvalue(M_WXLSTATEDATA->m_lua_State, LUA_GLOBALSINDEX);
+    lua_pushglobaltable(M_WXLSTATEDATA->m_lua_State);
 }
 
 #define LUA_PATH "LUA_PATH"
@@ -4469,7 +4491,7 @@ ARITHMETIC_SHIFT(lshift,  <<)
 LOGICAL_SHIFT(rshift,     >>)
 //ARITHMETIC_SHIFT(arshift, >>) // broken in 64 bit
 
-static const struct luaL_reg bitlib[] = {
+static const struct luaL_Reg bitlib[] = {
   {"cast",    bit_cast},
   {"bnot",    bit_bnot},
   {"band",    bit_band},
