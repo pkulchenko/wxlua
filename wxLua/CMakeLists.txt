@@ -84,7 +84,7 @@ set(wxLuaBind_COMPONENTS ${wxLuaBind_COMPONENTS} CACHE STRING
     "wxWidgets libs wxLua should build bindings for, choose from '${wxLuaBind_ALL_COMPONENTS}', the wxWidgets_COMPONENTS must contain all of these." FORCE)
 
 # We will create this list of the source files to compile in the next section.
-set(wxLuaBindLib_SOURCES)
+set(wxLuaBindLib_SOURCES "" CACHE INTERNAL "")
 # These are the wxLua compiler definitions, see SETUP_wxLua().
 set(wxLua_CXX_DEFINITIONS)
 
@@ -113,7 +113,7 @@ foreach( wxlua_comp ${wxLuaBind_ALL_COMPONENTS} )
     if (wx_comp_found AND ("${wxlua_comp}" STREQUAL "${wxlua_comp_found}"))
         set(WXLUA_BINDTO_${wxlua_comp} TRUE CACHE INTERNAL "")
         set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} "-DwxLUA_USEBINDING_WX${wxlua_comp_upper}=1")
-        set(wxLuaBindLib_SOURCES ${wxLuaBindLib_SOURCES} "src/wx${wxlua_comp}_*.cpp")
+        set(wxLuaBindLib_SOURCES ${wxLuaBindLib_SOURCES} "src/wx${wxlua_comp}_*.cpp" CACHE INTERNAL "")
     else()
         message(STATUS "* WARNING: Specified wxLuaBinding lib '${wxlua_comp}' in variable wxLuaBind_COMPONENTS is missing from wxWidgets_COMPONENTS so it will not be compiled.")
 
@@ -352,8 +352,6 @@ endif()
 # ===========================================================================
 # Export and install the CMake export files
 # ===========================================================================
-
-MESSAGE("AAA ${wxLuaBind_ALL_LIBS}")
 
 export( TARGETS ${LuaLib_Export} wxLuaLib wxLuaDebugLib wxLuaDebuggerLib ${wxLuaBind_ALL_LIBS}
         FILE "${CMAKE_BINARY_DIR}/build/wxLuaConfig.cmake")

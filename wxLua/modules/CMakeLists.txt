@@ -161,9 +161,11 @@ ADD_LIBRARY_FULL( LuaLib ${wxLua_LUA_LIBRARY_BUILD_SHARED_FLAG}
     INSTALL "${WXLUA_LIB_INSTALL_FLAGS}")
 
 if (WIN32 AND wxLua_LUA_LIBRARY_BUILD_SHARED)
+    # If we're building a DLL in MSW name it lua51.dll and we don't need the proxydll.
     set_target_properties(LuaLib PROPERTIES OUTPUT_NAME ${wxLua_LuaLibShared_NAME})
 else()
     # It's a static lib or on Unix, give it an explicit name to avoid conflicts/confusion.
+    # On Unix they can simply create symbolic links to give it whatever name they want.
     WXLIKE_LIBRARY_NAMES( LuaLib ${wxLua_LuaLib_NAME} "${wxLua_VERSION}")
 endif()
 
@@ -175,8 +177,8 @@ if (MSVC60)
     # so somehow the path is stripped off.
     set(LUAC_SOURCES ${LuaLib_SOURCE_FILES})
 else()
-    # we can reuse the object files since we cannot link to the LuaLib DLL
-    # since the LUAI_FUNC Lua functions are not exported.
+    # Reuse the object files since we cannot link to the LuaLib DLL
+    # because the LUAI_FUNC Lua functions are not exported.
     set(LuaLib_OBJECTS ${LuaLib_OBJECT_FILES})
     set_source_files_properties(${LuaLib_OBJECTS} PROPERTIES GENERATED TRUE)
     set(LUAC_SOURCES ${LuaLib_OBJECTS})
@@ -192,7 +194,6 @@ ADD_EXECUTABLE_FULL( luac ALLOW_MISSING_FILES
         src/luac.c
         ${luac_EXTRA_SOURCES}
         #${LuaLib_SOURCE_FILES} # alternatively we could simply recompile these
-        #${LuaLib_OBJECTS}      # see note above about DLL linking
         ${LUAC_SOURCES}
     LINK_LIBRARIES
         # LuaLib                # see note above about DLL linking
@@ -230,7 +231,7 @@ else()
         HEADERS
             src/*.h
         SOURCES
-            ${LuaLib_ADD_LIBRARY_FULL_FILES}
+            ${LuaLib_ADD_LIBRARY_FULL_FILES_${wxLua_LUA_LIBRARY_VERSION_NUM}}
         LINK_LIBRARIES
             ${LUA_LINK_LIBRARIES}
         ${LUA_DLL_PROPERTIES}
@@ -318,7 +319,7 @@ ADD_LIBRARY_FULL( wxLuaLib
 endfunction (wxLua_Modules_wxLua_TARGETS)
 
 # ===========================================================================
-# wxLua/modules/wxluadebug
+# wxLua/modules/wxlua/debug
 # ===========================================================================
 
 function (wxLua_Modules_wxLua_Debug_TARGETS)
@@ -390,8 +391,6 @@ macro (ADD_LIBRARY_FULL_wxLuaBind name link_libraries)
                 ${wxLua_ROOT_DIR}/modules/wxbind/src/dummy.cpp
             LINK_LIBRARIES
                 ${link_libraries}
-                #wxLuaBind_core_Lib
-                #wxLuaLib
             PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_BINDWX${_NAME}"
             PROPERTIES FOLDER "wxLua/Modules"
             INSTALL "${WXLUA_LIB_INSTALL_FLAGS}")
@@ -460,7 +459,7 @@ set(wxLuaBindLib_SOURCES
     ${wxLuaBind_richtext_Lib_SOURCE_FILES}
     ${wxLuaBind_stc_Lib_SOURCE_FILES}
     ${wxLuaBind_xml_Lib_SOURCE_FILES}
-    ${wxLuaBind_xrc_Lib_SOURCE_FILES})
+    ${wxLuaBind_xrc_Lib_SOURCE_FILES} CACHE INTERNAL "")
 list(REMOVE_DUPLICATES wxLuaBindLib_SOURCES)
 set(wxLuaBindLib_SOURCES ${wxLuaBindLib_SOURCES} CACHE INTERNAL "")
 
@@ -474,11 +473,15 @@ ADD_LIBRARY_FULL( wxLuaBindLib ALLOW_MISSING_FILES
     SOURCES
         #${wxLua_ROOT_DIR}/modules/wxbind/src/*.cpp
         ${wxLuaBindLib_SOURCES} # set in root CMakeLists.txt when parsing wxLuaBind_COMPONENTS
+                                # or when creating separate binding libs above.
     LINK_LIBRARIES
         wxLuaLib
     PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXBIND"
     PROPERTIES FOLDER "wxLua/Modules"
     INSTALL "${WXLUA_LIB_INSTALL_FLAGS}")
+
+    # Replace them with the fully specified path and filenames.
+    set(wxLuaBindLib_SOURCES ${wxLuaBindLib_SOURCE_FILES} CACHE INTERNAL "")
 
     WXLIKE_LIBRARY_NAMES( wxLuaBindLib wxlua_bind "${wxLua_VERSION}")
     set(wxLuaBind_ALL_LIBS wxLuaBindLib CACHE INTERNAL "")
