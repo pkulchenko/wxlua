@@ -184,7 +184,7 @@ FUNCTION( REMOVE_MATCHING_FILE_FROM_BUILD_CONFIGURATION_DIRS build_dir original_
             execute_process(COMMAND ${CMAKE_COMMAND} -E compare_files ${original_file} "${build_dir}/${t}/${a}"
                             RESULT_VARIABLE file_is_not_the_same
                             OUTPUT_QUIET ERROR_QUIET)
-            if (NOT file_is_not_the_same)
+            if (file_is_not_the_same EQ 0)
                 file(REMOVE "${build_dir}/${a}")
             endif()
         endforeach()

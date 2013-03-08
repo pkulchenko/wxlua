@@ -134,16 +134,16 @@ private:
 class WXDLLIMPEXP_BINDWXCORE wxLuaTreeItemData : public wxTreeItemData
 {
 public:
-	wxLuaTreeItemData() : m_data(NULL) {}
-	wxLuaTreeItemData(wxLuaObject* obj) : m_data(obj) {}
+    wxLuaTreeItemData() : m_data(NULL) {}
+    wxLuaTreeItemData(wxLuaObject* obj) : m_data(obj) {}
 
     virtual ~wxLuaTreeItemData() { if (m_data) delete m_data; }
 
-	wxLuaObject* GetData() const { return m_data; }
-	void         SetData(wxLuaObject* obj) { if (m_data) delete m_data; m_data = obj; }
+    wxLuaObject* GetData() const { return m_data; }
+    void         SetData(wxLuaObject* obj) { if (m_data) delete m_data; m_data = obj; }
 
 private:
-	wxLuaObject* m_data;
+    wxLuaObject* m_data;
 };
 
 #endif //wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL
