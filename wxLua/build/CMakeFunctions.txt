@@ -159,7 +159,7 @@ FUNCTION( REMOVE_FILE_FROM_BUILD_CONFIGURATION_DIRS build_dir )
     else() # MSW
         # Only a single build type in Unix
         foreach (a ${ARGN})
-            file(REMOVE "${build_dir}/${a}")
+            file(REMOVE "${build_dir}/${CMAKE_BUILD_TYPE}/${a}")
         endforeach()
     endif()
 ENDFUNCTION()
@@ -170,10 +170,10 @@ FUNCTION( REMOVE_MATCHING_FILE_FROM_BUILD_CONFIGURATION_DIRS build_dir original_
         foreach (a ${ARGN})
             foreach (t ${CMAKE_CONFIGURATION_TYPES})            
                 execute_process(COMMAND ${CMAKE_COMMAND} -E compare_files ${original_file} "${build_dir}/${t}/${a}"
-                                RESULT_VARIABLE file_is_not_the_same
+                                RESULT_VARIABLE compare_result
                                 OUTPUT_QUIET ERROR_QUIET)
-            
-                if (file_is_not_the_same EQ 0)
+
+                if (compare_result EQUAL 0)
                     file(REMOVE "${build_dir}/${t}/${a}")
                 endif()
             endforeach()
@@ -181,11 +181,12 @@ FUNCTION( REMOVE_MATCHING_FILE_FROM_BUILD_CONFIGURATION_DIRS build_dir original_
     else() # MSW
         # Only a single build type in Unix
         foreach (a ${ARGN})
-            execute_process(COMMAND ${CMAKE_COMMAND} -E compare_files ${original_file} "${build_dir}/${t}/${a}"
+            execute_process(COMMAND ${CMAKE_COMMAND} -E compare_files ${original_file} "${build_dir}/${CMAKE_BUILD_TYPE}/${a}"
                             RESULT_VARIABLE file_is_not_the_same
                             OUTPUT_QUIET ERROR_QUIET)
-            if (file_is_not_the_same EQ 0)
-                file(REMOVE "${build_dir}/${a}")
+
+            if (compare_result EQUAL 0)
+                file(REMOVE "${build_dir}/${CMAKE_BUILD_TYPE}/${a}")
             endif()
         endforeach()
     endif()
