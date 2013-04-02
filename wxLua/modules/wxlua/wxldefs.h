@@ -105,7 +105,11 @@ extern "C"
 
 // initializes a lua_debug by nulling everything before use since the
 //  functions that take it do not initialize it properly
-#define INIT_LUA_DEBUG { 0, 0, 0, 0, 0, 0, 0, 0, 0, {0}, 0 }
+#if LUA_VERSION_NUM >= 502 // 5.2
+    #define INIT_LUA_DEBUG { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, {0}, 0 }
+#else // 501, 5.1
+    #define INIT_LUA_DEBUG { 0, 0, 0, 0, 0, 0, 0, 0, 0, {0}, 0 }
+#endif
 
 // Create a wxString from the lua_Debug struct for debugging
 #define lua_Debug_to_wxString(ld) \

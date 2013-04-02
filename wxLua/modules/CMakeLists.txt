@@ -38,7 +38,7 @@ set( LUA_EXE_PROPERTIES ) # target properties for Lua exe
 set( LUA_LINK_LIBRARIES ) # libaries to link Lua exe to
 
 if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.2)
-    add_definitions( -DLUA_COMPAT_MODULE )
+    add_definitions( -DLUA_COMPAT_ALL ) # Match default 5.2 Makefile
 endif()
 
 if (MSVC)
@@ -62,13 +62,22 @@ elseif ("${CMAKE_GENERATOR}" MATCHES "MinGW Makefiles")
     set(LUA_LINK_LIBRARIES m)
 
 elseif (APPLE)
-    # Lua's Makefile : $(MAKE) all MYCFLAGS="-DLUA_USE_LINUX" MYLIBS="-lreadline"
+    # Lua 5.1 Makefile : $(MAKE) all MYCFLAGS="-DLUA_USE_LINUX" MYLIBS="-lreadline"
+    # Lua 5.2 Makefile : $(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_MACOSX" SYSLIBS="-lreadline"
 
-    add_definitions( -DLUA_USE_LINUX )
+    if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.2)
+        add_definitions( -DLUA_USE_MACOSX ) # is the same as LUA_USE_LINUX in 5.2.2 (at least)
+    else()
+        add_definitions( -DLUA_USE_LINUX ) # adds readline so which make the lua exe a little nicer.
+    endif()
+
     set(LUA_LINK_LIBRARIES m readline)
 
 else () # UNIX
-    # Lua's Makefile : $(MAKE) all MYCFLAGS="-DLUA_USE_LINUX -fPIC" MYLIBS="-fPIC -Wl,-E -ldl -lreadline -lhistory -lncurses"
+    # Lua 5.1 Makefile : $(MAKE) all MYCFLAGS="-DLUA_USE_LINUX -fPIC" MYLIBS="-fPIC -Wl,-E -ldl -lreadline -lhistory -lncurses"
+    # Lua 5.2 Makefile : $(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_LINUX" SYSLIBS="-Wl,-E -ldl -lreadline"
+    #                    CFLAGS= -O2 -Wall -DLUA_COMPAT_ALL $(SYSCFLAGS) $(MYCFLAGS)
+    #                    LDFLAGS= $(SYSLDFLAGS) $(MYLDFLAGS)
 
     add_definitions( -DLUA_USE_LINUX )
     set(LUA_LINK_LIBRARIES m dl readline history ncurses)
