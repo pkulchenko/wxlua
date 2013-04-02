@@ -37,6 +37,12 @@ endif()
 
 set_property(GLOBAL PROPERTY CMAKEWXAPPLIB_RUN_ONCE TRUE)
 
+# Backwards compat to CMake < 2.8.3
+if ("${CMAKE_CURRENT_LIST_DIR}" STREQUAL "")
+    get_filename_component(CMAKE_CURRENT_LIST_DIR
+                           ${CMAKE_CURRENT_LIST_FILE} PATH ABSOLUTE)
+endif()
+
 set(CMakewxAppLib_LIST_DIR ${CMAKE_CURRENT_LIST_DIR})
 
 # Load the helper file with additional functions
@@ -190,7 +196,9 @@ if (NOT MSVC)
     # This is used only for the Makefile generator.
     # In MSVC you can choose the build type in the IDE.
     SET(CMAKE_BUILD_TYPE "${CMAKE_BUILD_TYPE}" CACHE STRING "Set build type, options are one of ${CMAKE_BUILD_TYPES}" FORCE)
-    set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS ${CMAKE_BUILD_TYPES})
+    if (${CMAKE_VERSION} VERSION_GREATER 2.8.0)
+        set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS ${CMAKE_BUILD_TYPES})
+    endif ()
 endif ()
 
 # Useful, since I cannot find a case-insensitive string comparison function
@@ -906,7 +914,7 @@ function( VERIFY_WXWIDGETS_COMPONENTS )
             endif()
         endforeach()
 
-        if (${wx_comp_found})
+        if (wx_comp_found)
             set(WX_HASLIB_${wx_comp} TRUE CACHE INTERNAL "")
             #message("found ${wx_comp}")
         endif()

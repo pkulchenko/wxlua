@@ -5,6 +5,8 @@
 # Author:  John Labenski
 # Created: Oct 15, 2011
 #
+# GET_CMAKE_CURRENT_LIST_DIR() - Get CMAKE_CURRENT_LIST_DIR var for CMake < 2.8.3
+#
 # HAS_WILDCARD()     - checks if input string has * or ? in it
 # ADD_FILE_TO_LIST() - adds a file to a list after expanding wildcards and getting path
 # GET_OBJECT_FILES() - returns a list of object files CMake would create for a list of source files.
@@ -54,6 +56,14 @@ set_property(DIRECTORY ${CMAKE_HOME_DIRECTORY}
 # ===========================================================================
 # Helper functions
 # ===========================================================================
+
+MACRO( GET_CMAKE_CURRENT_LIST_DIR )
+    # Backwards compat to CMake < 2.8.3
+    if ("${CMAKE_CURRENT_LIST_DIR}" STREQUAL "")
+        get_filename_component(CMAKE_CURRENT_LIST_DIR
+                               ${CMAKE_CURRENT_LIST_FILE} PATH ABSOLUTE)
+    endif()
+ENDMACRO()
 
 # ---------------------------------------------------------------------------
 # Set bool variables IS_32_BIT and IS_64_BIT
@@ -1337,7 +1347,7 @@ FUNCTION( DO_GET_TARGET_FLAGS target_name )
         endif()
     endforeach()
 
-    set(list_dir ${CMAKE_CURRENT_LIST_DIR})
+    set(list_dir ${CMAKE_CURRENT_SOURCE_DIR})
     #while (EXISTS ${list_dir})
 
         get_directory_property( dir_defs DIRECTORY ${list_dir} COMPILE_DEFINITIONS)
