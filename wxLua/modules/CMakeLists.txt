@@ -37,10 +37,6 @@ set( LUA_DLL_PROPERTIES ) # target properties for Lua built as a DLL
 set( LUA_EXE_PROPERTIES ) # target properties for Lua exe
 set( LUA_LINK_LIBRARIES ) # libaries to link Lua exe to
 
-if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.2)
-    add_definitions( -DLUA_COMPAT_ALL ) # Match default 5.2 Makefile
-endif()
-
 if (MSVC)
 
     # NOTE! We always export the Lua functions to allow the EXEs to be treated as DLLs.

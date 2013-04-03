@@ -172,6 +172,10 @@ if (NOT DEFINED wxLua_LUA_LIBRARY)
     set(wxLua_LUA_LIBRARY )
 endif()
 
+if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.2)
+    add_definitions( -DLUA_COMPAT_ALL ) # Match build used in default 5.2 Makefile
+endif()
+
 if (NOT wxLua_LUA_LIBRARY_USE_BUILTIN)
     # They can enter these by hand so don't overwrite them if they're already valid
     if (NOT EXISTS "${wxLua_LUA_LIBRARY}") # OR (NOT EXISTS "${wxLua_LUA_INCLUDE_DIR}"))

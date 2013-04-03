@@ -16,8 +16,6 @@
 
 extern "C"
 {
-    #define LUA_COMPAT_ALL // Use Lua's 5.1 compat functions in 5.2
-
     #include "lua.h"
     #include "lualib.h"
     #include "lauxlib.h"
@@ -27,6 +25,27 @@ extern "C"
     #else
         #define luaL_getn luaL_len
         #define LUA_GLOBALSINDEX LUA_RIDX_GLOBALS
+
+        // For compatiblity with Lua 5.1 and 5.2, wxLua needs the luaL_openlib() function.
+        // The function is compiled into the Lua library when -DLUA_COMPAT_MODULE is defined
+        // when building the Lua library.
+        // If you get a unresolved symbol luaL_openlib linker error, you need to rebuild your
+        // Lua library with LUA_COMPAT_MODULE defined.
+        #if (LUA_VERSION_NUM == 502) & !defined(LUA_COMPAT_MODULE)
+            #error wxLua using Lua 5.2 requires LUA_COMPAT_MODULE defined for luaL_openlib().
+        #endif
+
+        // These are #defined with LUA_COMPAT_ALL (but we don't require that)
+        #ifndef lua_strlen 
+            #define lua_strlen(L,i)             lua_rawlen(L, (i))
+            #define lua_objlen(L,i)             lua_rawlen(L, (i))
+            #define lua_equal(L,idx1,idx2)      lua_compare(L,(idx1),(idx2),LUA_OPEQ)
+            #define lua_lessthan(L,idx1,idx2)   lua_compare(L,(idx1),(idx2),LUA_OPLT)
+
+            #define lua_cpcall(L,f,u)           (lua_pushcfunction(L, (f)), \
+                                                lua_pushlightuserdata(L,(u)), \
+                                                lua_pcall(L,1,0,0))
+        #endif
     #endif // LUA_VERSION_NUM < 502
 }
 
