@@ -86,8 +86,9 @@ set(wxLuaBind_COMPONENTS ${wxLuaBind_COMPONENTS} CACHE STRING
 # We will create this list of the source files to compile in the next section.
 set(wxLuaBindLib_SOURCES "" CACHE INTERNAL "")
 # These are the wxLua compiler definitions, see SETUP_wxLua().
-set(wxLua_CXX_DEFINITIONS)
-
+set(wxLua_CXX_DEFINITIONS "" CACHE INTERNAL 
+    "wxLua C++ compiler flags to include/exclude wxLua binding libs" FORCE)
+    
 # check the specified wxLuaBind_COMPONENTS for typos
 foreach( wxlua_comp ${wxLuaBind_COMPONENTS} )
     string(REGEX MATCH ${wxlua_comp} wxlua_comp_found "${wxLuaBind_ALL_COMPONENTS}")
@@ -122,9 +123,6 @@ foreach( wxlua_comp ${wxLuaBind_ALL_COMPONENTS} )
     endif()
 endforeach()
 
-set(wxLua_CXX_DEFINITIONS "${wxLua_CXX_DEFINITIONS}" CACHE INTERNAL 
-    "wxLua C++ compiler flags to include/exclude wxLua binding libs" FORCE)
-
 # ---------------------------------------------------------------------------
 # This function must be called in any other CMakeLists.txt for projects that 
 # use any wxLua headers to ensure that the compiler #defines are correct.
@@ -134,8 +132,6 @@ macro(SETUP_wxLua)
     # These have to be defined so that the macros in modules/wxbind/include/wxbinddefs.h work
     add_definitions(${wxLua_CXX_DEFINITIONS})
 endmacro()
-
-SETUP_wxLua()
 
 # ===========================================================================
 # Set the Lua lib to an imported lib or build it from the provided sources.
@@ -173,8 +169,11 @@ if (NOT DEFINED wxLua_LUA_LIBRARY)
 endif()
 
 if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.2)
-    add_definitions( -DLUA_COMPAT_ALL ) # Match build used in default 5.2 Makefile
+    set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} -DLUA_COMPAT_ALL) # Match build used in default 5.2 Makefile
 endif()
+
+set(wxLua_CXX_DEFINITIONS "${wxLua_CXX_DEFINITIONS}" CACHE INTERNAL 
+    "wxLua C++ compiler flags to include/exclude wxLua binding libs" FORCE)
 
 if (NOT wxLua_LUA_LIBRARY_USE_BUILTIN)
     # They can enter these by hand so don't overwrite them if they're already valid
@@ -338,6 +337,8 @@ ADD_DOXYGEN( wxLua_doxygen
 # ===========================================================================
 # Add the subdirectories with their projects in them
 # ===========================================================================
+
+SETUP_wxLua() # all libraries are built with these settings
 
 if (NOT TARGET wxStEditLib)
     add_subdirectory( modules/wxstedit )
