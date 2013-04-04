@@ -233,11 +233,11 @@ endif()
 set(BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS} CACHE BOOL "Build shared libraries (TRUE) or static libraries (FALSE)" FORCE)
 
 # Set if we are building DLLs, MSWindows and shared libraries
-set(BUILD_SHARED_LIBS_WIN_DLLS FALSE)
+set(BUILD_SHARED_LIBS_WIN_DLLS FALSE CACHE INTERNAL "TRUE when building shared libs on MSW, else FALSE" FORCE)
 
 if (BUILD_SHARED_LIBS) # CMake has problems with "if ("ON" AND "TRUE")"
     if (WIN32)
-        set(BUILD_SHARED_LIBS_WIN_DLLS TRUE)
+        set(BUILD_SHARED_LIBS_WIN_DLLS TRUE CACHE INTERNAL "TRUE when building shared libs on MSW, else FALSE" FORCE)
     endif()
 endif()
 
@@ -662,7 +662,7 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
     # -----------------------------------------------------------------------
     # Fix WXUSINGDLL being defined for BUILD_SHARED_LIBS, even in Linux...
     
-    if (NOT BUILD_SHARED_LIBS_WIN_DLL)
+    if (NOT BUILD_SHARED_LIBS_WIN_DLLS)
         # awkwardly remove leading or trailing ; (compat with old cmake versions)
         string(REPLACE ";WXUSINGDLL" "" wxWidgets_DEFINITIONS "${wxWidgets_DEFINITIONS}")
         string(REPLACE "WXUSINGDLL;" "" wxWidgets_DEFINITIONS "${wxWidgets_DEFINITIONS}")
