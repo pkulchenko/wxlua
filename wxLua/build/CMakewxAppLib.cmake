@@ -233,11 +233,11 @@ endif()
 set(BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS} CACHE BOOL "Build shared libraries (TRUE) or static libraries (FALSE)" FORCE)
 
 # Set if we are building DLLs, MSWindows and shared libraries
-set(BUILDING_DLLS FALSE)
+set(BUILD_SHARED_LIBS_WIN_DLLS FALSE)
 
 if (BUILD_SHARED_LIBS) # CMake has problems with "if ("ON" AND "TRUE")"
     if (WIN32)
-        set(BUILDING_DLLS TRUE)
+        set(BUILD_SHARED_LIBS_WIN_DLLS TRUE)
     endif()
 endif()
 
