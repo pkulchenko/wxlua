@@ -290,6 +290,11 @@ endfunction (wxLua_Modules_Lua_TARGETS)
 
 function (wxLua_Modules_wxLua_TARGETS)
 
+set( WXLUALIB_PROPERTIES_DEFINE_SYMBOL )
+if ( BUILD_SHARED_LIBS_WIN_DLL )
+    set( WXLUALIB_PROPERTIES_DEFINE_SYMBOL "PROPERTIES DEFINE_SYMBOL WXMAKINGDLL_WXLUA")
+endif()
+
 ADD_LIBRARY_FULL( wxLuaLib
     HEADERS
         ${wxLua_ROOT_DIR}/modules/wxlua/atomic.h
@@ -315,7 +320,7 @@ ADD_LIBRARY_FULL( wxLuaLib
     LINK_LIBRARIES
         LuaLib
         ${wxWidgets_LIBRARIES}
-    PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUA"
+    ${WXLUALIB_PROPERTIES_DEFINE_SYMBOL}
     PROPERTIES FOLDER "wxLua/Modules"
     INSTALL "${WXLUA_LIB_INSTALL_FLAGS}")
 
@@ -329,6 +334,11 @@ endfunction (wxLua_Modules_wxLua_TARGETS)
 
 function (wxLua_Modules_wxLua_Debug_TARGETS)
 
+set( WXLUALIB_PROPERTIES_DEFINE_SYMBOL )
+if ( BUILD_SHARED_LIBS_WIN_DLL )
+    set( WXLUALIB_PROPERTIES_DEFINE_SYMBOL "PROPERTIES DEFINE_SYMBOL WXMAKINGDLL_WXLUADEBUG")
+endif()
+
 ADD_LIBRARY_FULL( wxLuaDebugLib
     HEADERS
         ${wxLua_ROOT_DIR}/modules/wxlua/debug/wxldebug.h
@@ -340,7 +350,7 @@ ADD_LIBRARY_FULL( wxLuaDebugLib
         ${wxLua_ROOT_DIR}/modules/wxlua/debug/wxlstack.cpp
     LINK_LIBRARIES
         wxLuaLib
-    PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUADEBUG"
+    ${WXLUALIB_PROPERTIES_DEFINE_SYMBOL}
     PROPERTIES FOLDER "wxLua/Modules"
     INSTALL "${WXLUA_LIB_INSTALL_FLAGS}")
 
@@ -353,6 +363,11 @@ endfunction (wxLua_Modules_wxLua_Debug_TARGETS)
 # ===========================================================================
 
 function (wxLua_Modules_wxLua_Debugger_TARGETS)
+
+set( WXLUADEBUGGER_PROPERTIES_DEFINE_SYMBOL )
+if ( BUILD_SHARED_LIBS_WIN_DLL )
+    set( WXLUADEBUGGER_PROPERTIES_DEFINE_SYMBOL "PROPERTIES DEFINE_SYMBOL WXMAKINGDLL_WXLUADEBUGGER")
+endif()
 
 ADD_LIBRARY_FULL( wxLuaDebuggerLib
     HEADERS
@@ -371,7 +386,7 @@ ADD_LIBRARY_FULL( wxLuaDebuggerLib
         #wxLuaBind_core_Lib
         ${wxLuaBind_ALL_LIBS} # Only need core for wxluatype_wxWindow
         wxLuaDebugLib
-    PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_WXLUADEBUGGER"
+    ${WXLUADEBUGGER_PROPERTIES_DEFINE_SYMBOL}
     PROPERTIES FOLDER "wxLua/Modules"
     INSTALL "${WXLUA_LIB_INSTALL_FLAGS}")
 
@@ -388,6 +403,11 @@ macro (ADD_LIBRARY_FULL_wxLuaBind name link_libraries)
     if (WXLUA_BINDTO_${name})
         string(TOUPPER ${name} _NAME)
 
+        set( WXLUABIND_${_NAME}_PROPERTIES_DEFINE_SYMBOL )
+        if ( BUILD_SHARED_LIBS_WIN_DLL )
+            set( WXLUABIND_${_NAME}_PROPERTIES_DEFINE_SYMBOL "PROPERTIES DEFINE_SYMBOL WXMAKINGDLL_BINDWX${_NAME}")
+        endif()
+
         ADD_LIBRARY_FULL( wxLuaBind_${name}_Lib
             HEADERS
                 ${wxLua_ROOT_DIR}/modules/wxbind/include/wx${name}_*.h
@@ -396,7 +416,7 @@ macro (ADD_LIBRARY_FULL_wxLuaBind name link_libraries)
                 ${wxLua_ROOT_DIR}/modules/wxbind/src/dummy.cpp
             LINK_LIBRARIES
                 ${link_libraries}
-            PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_BINDWX${_NAME}"
+            ${WXLUABIND_${_NAME}_PROPERTIES_DEFINE_SYMBOL}
             PROPERTIES FOLDER "wxLua/Modules"
             INSTALL "${WXLUA_LIB_INSTALL_FLAGS}")
 
@@ -508,6 +528,11 @@ endfunction (wxLua_Modules_wxBind_TARGETS)
 
 function (wxLua_Modules_LuaModule_TARGETS)
 
+set( WXLUAMODULE_PROPERTIES_DEFINE_SYMBOL )
+if ( BUILD_SHARED_LIBS_WIN_DLL )
+    set( WXLUAMODULE_PROPERTIES_DEFINE_SYMBOL "PROPERTIES DEFINE_SYMBOL WXMAKINGDLL_LUAMODULE")
+endif()
+
 # Build from fresh sources so we have a clean stand-alone Lua module and
 # we get all the DLL exports right.
 ADD_LIBRARY_FULL( wxLuaModule SHARED # ALLOW_MISSING_FILES
@@ -528,7 +553,7 @@ ADD_LIBRARY_FULL( wxLuaModule SHARED # ALLOW_MISSING_FILES
         ${LuaLibShared_TARGET_NAME} # either target LuaLib or LuaLibShared (always a shared lib)
         ${wxWidgets_LIBRARIES}
     PROPERTIES OUTPUT_NAME   "wx"
-    PROPERTIES DEFINE_SYMBOL "WXMAKINGDLL_LUAMODULE"
+    ${WXLUAMODULE_PROPERTIES_DEFINE_SYMBOL}
     PROPERTIES FOLDER "wxLua/Modules"
     INSTALL "${WXLUA_LIB_INSTALL_FLAGS_NO_EXPORT}")
 

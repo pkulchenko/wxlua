@@ -660,6 +660,16 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
     endif( wxWidgets_FOUND )
 
     # -----------------------------------------------------------------------
+    # Fix WXUSINGDLL being defined for BUILD_SHARED_LIBS, even in Linux...
+    
+    if (NOT BUILD_SHARED_LIBS_WIN_DLL)
+        # awkwardly remove leading or trailing ; (compat with old cmake versions)
+        string(REPLACE ";WXUSINGDLL" "" wxWidgets_DEFINITIONS "${wxWidgets_DEFINITIONS}")
+        string(REPLACE "WXUSINGDLL;" "" wxWidgets_DEFINITIONS "${wxWidgets_DEFINITIONS}")
+        string(REPLACE "WXUSINGDLL"  "" wxWidgets_DEFINITIONS "${wxWidgets_DEFINITIONS}")
+    endif()
+
+    # -----------------------------------------------------------------------
     # Print out what we've found so far
 
     # This is from FindwxWidgets.cmake and is "typically an empty string" in MSW.
