@@ -150,6 +150,156 @@ wxLuaBindMethod wxLuaObject_methods[] = {
 int wxLuaObject_methodCount = sizeof(wxLuaObject_methods)/sizeof(wxLuaBindMethod) - 1;
 
 
+// ---------------------------------------------------------------------------
+// Bind class wxLuaEvent
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxLuaEvent'
+int wxluatype_wxLuaEvent = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaEvent_DebugHookBreak[] = { &wxluatype_wxLuaEvent, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxLuaEvent_DebugHookBreak(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaEvent_DebugHookBreak[1] = {{ wxLua_wxLuaEvent_DebugHookBreak, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxLuaEvent_DebugHookBreak }};
+//     void DebugHookBreak(bool stop)
+static int LUACALL wxLua_wxLuaEvent_DebugHookBreak(lua_State *L)
+{
+    // bool stop
+    bool stop = wxlua_getbooleantype(L, 2);
+    // get this
+    wxLuaEvent * self = (wxLuaEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLuaEvent);
+    // call DebugHookBreak
+    self->DebugHookBreak(stop);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaEvent_GetLineNum[] = { &wxluatype_wxLuaEvent, NULL };
+static int LUACALL wxLua_wxLuaEvent_GetLineNum(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaEvent_GetLineNum[1] = {{ wxLua_wxLuaEvent_GetLineNum, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaEvent_GetLineNum }};
+//     int GetLineNum() const;
+static int LUACALL wxLua_wxLuaEvent_GetLineNum(lua_State *L)
+{
+    // get this
+    wxLuaEvent * self = (wxLuaEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLuaEvent);
+    // call GetLineNum
+    int returns = (self->GetLineNum());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaEvent_GetwxLuaState[] = { &wxluatype_wxLuaEvent, NULL };
+static int LUACALL wxLua_wxLuaEvent_GetwxLuaState(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaEvent_GetwxLuaState[1] = {{ wxLua_wxLuaEvent_GetwxLuaState, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaEvent_GetwxLuaState }};
+//     wxLuaState GetwxLuaState() const;
+static int LUACALL wxLua_wxLuaEvent_GetwxLuaState(lua_State *L)
+{
+    // get this
+    wxLuaEvent * self = (wxLuaEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLuaEvent);
+    // call GetwxLuaState
+    // allocate a new object using the copy constructor
+    wxLuaState* returns = new wxLuaState(self->GetwxLuaState());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxLuaState);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxLuaState);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaEvent_SetwxLuaState[] = { &wxluatype_wxLuaEvent, &wxluatype_wxLuaState, NULL };
+static int LUACALL wxLua_wxLuaEvent_SetwxLuaState(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaEvent_SetwxLuaState[1] = {{ wxLua_wxLuaEvent_SetwxLuaState, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxLuaEvent_SetwxLuaState }};
+//     void SetwxLuaState(const wxLuaState& wxlState);
+static int LUACALL wxLua_wxLuaEvent_SetwxLuaState(lua_State *L)
+{
+    // const wxLuaState wxlState
+    const wxLuaState * wxlState = (const wxLuaState *)wxluaT_getuserdatatype(L, 2, wxluatype_wxLuaState);
+    // get this
+    wxLuaEvent * self = (wxLuaEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLuaEvent);
+    // call SetwxLuaState
+    self->SetwxLuaState(*wxlState);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaEvent_delete[] = { &wxluatype_wxLuaEvent, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaEvent_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxLuaEvent_delete }};
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaEvent_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxLuaEvent_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaEvent_constructor[1] = {{ wxLua_wxLuaEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxLuaEvent_constructor }};
+//     wxLuaEvent(wxEventType commandType = wxEVT_NULL, wxWindowID id = wxID_ANY); // , const wxLuaState& wxlState = wxNullLuaState);
+static int LUACALL wxLua_wxLuaEvent_constructor(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxWindowID id = wxID_ANY
+    wxWindowID id = (argCount >= 2 ? (wxWindowID)wxlua_getnumbertype(L, 2) : wxID_ANY);
+    // wxEventType commandType = wxEVT_NULL
+    wxEventType commandType = (argCount >= 1 ? (wxEventType)wxlua_getnumbertype(L, 1) : wxEVT_NULL);
+    // call constructor
+    wxLuaEvent* returns = new wxLuaEvent(commandType, id);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxLuaEvent);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxLuaEvent);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaEvent_constructor1[] = { &wxluatype_wxLuaEvent, NULL };
+static int LUACALL wxLua_wxLuaEvent_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaEvent_constructor1[1] = {{ wxLua_wxLuaEvent_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxLuaEvent_constructor1 }};
+//     wxLuaEvent(const wxLuaEvent& event);
+static int LUACALL wxLua_wxLuaEvent_constructor1(lua_State *L)
+{
+    // const wxLuaEvent event
+    const wxLuaEvent * event = (const wxLuaEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLuaEvent);
+    // call constructor
+    wxLuaEvent* returns = new wxLuaEvent(*event);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxLuaEvent);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxLuaEvent);
+
+    return 1;
+}
+
+
+
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaEvent_constructor_overload[] =
+{
+    { wxLua_wxLuaEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxLuaEvent_constructor },
+    { wxLua_wxLuaEvent_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxLuaEvent_constructor1 },
+};
+static int s_wxluafunc_wxLua_wxLuaEvent_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxLuaEvent_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+
+void wxLua_wxLuaEvent_delete_function(void** p)
+{
+    wxLuaEvent* o = (wxLuaEvent*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxLuaEvent_methods[] = {
+    { "DebugHookBreak", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLuaEvent_DebugHookBreak, 1, NULL },
+    { "GetLineNum", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLuaEvent_GetLineNum, 1, NULL },
+    { "GetwxLuaState", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLuaEvent_GetwxLuaState, 1, NULL },
+    { "SetwxLuaState", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLuaEvent_SetwxLuaState, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxLuaEvent_delete, 1, NULL },
+
+    { "wxLuaEvent", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxLuaEvent_constructor_overload, s_wxluafunc_wxLua_wxLuaEvent_constructor_overload_count, 0 },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxLuaEvent_methodCount = sizeof(wxLuaEvent_methods)/sizeof(wxLuaBindMethod) - 1;
+
+
 
 
 // ---------------------------------------------------------------------------
@@ -167,6 +317,10 @@ wxLuaBindEvent* wxLuaGetEventList_wxlua(size_t &count)
 {
     static wxLuaBindEvent eventList[] =
     {
+        { "wxEVT_LUA_CREATION", WXLUA_GET_wxEventType_ptr(wxEVT_LUA_CREATION), &wxluatype_wxLuaEvent },
+        { "wxEVT_LUA_DEBUG_HOOK", WXLUA_GET_wxEventType_ptr(wxEVT_LUA_DEBUG_HOOK), &wxluatype_wxLuaEvent },
+        { "wxEVT_LUA_ERROR", WXLUA_GET_wxEventType_ptr(wxEVT_LUA_ERROR), &wxluatype_wxLuaEvent },
+        { "wxEVT_LUA_PRINT", WXLUA_GET_wxEventType_ptr(wxEVT_LUA_PRINT), &wxluatype_wxLuaEvent },
 
         { 0, 0, 0 },
     };
@@ -1247,10 +1401,14 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxlua(size_t &count)
 // wxLuaGetClassList_wxlua() is called to register classes
 // ---------------------------------------------------------------------------
 
+static const char* wxluaclassname_wxLuaEvent = "wxLuaEvent";
 static const char* wxluaclassname_wxLuaObject = "wxLuaObject";
 static const char* wxluaclassname_wxLuaState = "wxLuaState";
+static const char* wxluaclassname_wxNotifyEvent = "wxNotifyEvent";
 static const char* wxluaclassname_wxObject = "wxObject";
 
+static const char* wxluabaseclassnames_wxLuaEvent[] = { wxluaclassname_wxNotifyEvent, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxLuaEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxLuaObject[] = { wxluaclassname_wxObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxLuaObject[] = { NULL };
 static const char* wxluabaseclassnames_wxLuaState[] = { wxluaclassname_wxObject, NULL };
@@ -1259,6 +1417,9 @@ static wxLuaBindClass* wxluabaseclassbinds_wxLuaState[] = { NULL };
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
 
+extern wxLuaBindMethod wxLuaEvent_methods[];
+extern int wxLuaEvent_methodCount;
+extern void wxLua_wxLuaEvent_delete_function(void** p);
 extern wxLuaBindMethod wxLuaObject_methods[];
 extern int wxLuaObject_methodCount;
 extern void wxLua_wxLuaObject_delete_function(void** p);
@@ -1273,6 +1434,7 @@ wxLuaBindClass* wxLuaGetClassList_wxlua(size_t &count)
 {
     static wxLuaBindClass classList[] =
     {
+        { wxluaclassname_wxLuaEvent, wxLuaEvent_methods, wxLuaEvent_methodCount, NULL, &wxluatype_wxLuaEvent, wxluabaseclassnames_wxLuaEvent, wxluabaseclassbinds_wxLuaEvent, NULL, NULL, NULL, 0, &wxLua_wxLuaEvent_delete_function, }, 
         { wxluaclassname_wxLuaObject, wxLuaObject_methods, wxLuaObject_methodCount, CLASSINFO(wxLuaObject), &wxluatype_wxLuaObject, wxluabaseclassnames_wxLuaObject, wxluabaseclassbinds_wxLuaObject, NULL, NULL, NULL, 0, &wxLua_wxLuaObject_delete_function, }, 
         { wxluaclassname_wxLuaState, wxLuaState_methods, wxLuaState_methodCount, CLASSINFO(wxLuaState), &wxluatype_wxLuaState, wxluabaseclassnames_wxLuaState, wxluabaseclassbinds_wxLuaState, NULL, NULL, NULL, 0, &wxLua_wxLuaState_delete_function, }, 
 

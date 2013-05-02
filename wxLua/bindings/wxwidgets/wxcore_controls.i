@@ -1092,6 +1092,10 @@ enum wxTreeItemIcon
 #define wxTREE_HITTEST_ONITEMLOWERPART
 #define wxTREE_HITTEST_ONITEM
 
+%wxchkver_2_9 #define wxTREE_ITEMSTATE_NONE // not state (no display state image)
+%wxchkver_2_9 #define wxTREE_ITEMSTATE_NEXT // cycle to the next state
+%wxchkver_2_9 #define wxTREE_ITEMSTATE_PREV // cycle to the previous state
+
 class wxTreeCtrl : public wxControl
 {
     wxTreeCtrl( );
@@ -1183,7 +1187,7 @@ class wxTreeCtrl : public wxControl
     void SetItemFont(const wxTreeItemId& item, const wxFont& font );
     void SetItemHasChildren(const wxTreeItemId& item, bool hasChildren = true );
     void SetItemImage(const wxTreeItemId& item, int image, wxTreeItemIcon which = wxTreeItemIcon_Normal );
-    //!%wxchkver_2_6|%wxcompat_2_4 void SetItemSelectedImage(const wxTreeItemId& item, int selImage); // obsolete function
+    %wxchkver_2_9 void SetItemState(const wxTreeItemId& item, int state);
     void SetItemText(const wxTreeItemId& item, const wxString& text );
     void SetItemTextColour(const wxTreeItemId& item, const wxColour& col );
     void SetQuickBestSize(bool quickBestSize );

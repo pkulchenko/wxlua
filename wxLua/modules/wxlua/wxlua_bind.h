@@ -47,6 +47,7 @@ extern WXDLLIMPEXP_WXLUA wxLuaBinding* wxLuaBinding_wxlua_init();
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
 
+extern WXDLLIMPEXP_DATA_WXLUA(int) wxluatype_wxLuaEvent;
 extern WXDLLIMPEXP_DATA_WXLUA(int) wxluatype_wxLuaObject;
 extern WXDLLIMPEXP_DATA_WXLUA(int) wxluatype_wxLuaState;
 

@@ -354,6 +354,10 @@ if (NOT TARGET wxLuaCan)
     add_subdirectory( apps/ )
 endif()
 
+if (NOT TARGET wxLuaBindings)
+    add_subdirectory( bindings/ )
+endif()
+
 # ===========================================================================
 # Export and install the CMake export files
 # ===========================================================================

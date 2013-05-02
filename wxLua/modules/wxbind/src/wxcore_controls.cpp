@@ -10995,6 +10995,28 @@ static int LUACALL wxLua_wxTreeCtrl_SetItemImage(lua_State *L)
     return 0;
 }
 
+
+#if (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL) && ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeCtrl_SetItemState[] = { &wxluatype_wxTreeCtrl, &wxluatype_wxTreeItemId, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxTreeCtrl_SetItemState(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeCtrl_SetItemState[1] = {{ wxLua_wxTreeCtrl_SetItemState, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxTreeCtrl_SetItemState }};
+//     %wxchkver_2_9 void SetItemState(const wxTreeItemId& item, int state);
+static int LUACALL wxLua_wxTreeCtrl_SetItemState(lua_State *L)
+{
+    // int state
+    int state = (int)wxlua_getnumbertype(L, 3);
+    // const wxTreeItemId item
+    const wxTreeItemId * item = (const wxTreeItemId *)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeItemId);
+    // get this
+    wxTreeCtrl * self = (wxTreeCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeCtrl);
+    // call SetItemState
+    self->SetItemState(*item, state);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL) && ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL))
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeCtrl_SetItemText[] = { &wxluatype_wxTreeCtrl, &wxluatype_wxTreeItemId, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxTreeCtrl_SetItemText(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeCtrl_SetItemText[1] = {{ wxLua_wxTreeCtrl_SetItemText, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxTreeCtrl_SetItemText }};
@@ -11371,6 +11393,11 @@ wxLuaBindMethod wxTreeCtrl_methods[] = {
 
     { "SetItemHasChildren", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeCtrl_SetItemHasChildren, 1, NULL },
     { "SetItemImage", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeCtrl_SetItemImage, 1, NULL },
+
+#if (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL) && ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL))
+    { "SetItemState", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeCtrl_SetItemState, 1, NULL },
+#endif // (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL) && ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL))
+
     { "SetItemText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeCtrl_SetItemText, 1, NULL },
 
 #if (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL) && (wxLUA_USE_wxColourPenBrush)

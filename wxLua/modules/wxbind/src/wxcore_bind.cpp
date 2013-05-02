@@ -2405,6 +2405,15 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxTREE_HITTEST_ONITEMUPPERPART", wxTREE_HITTEST_ONITEMUPPERPART },
         { "wxTREE_HITTEST_TOLEFT", wxTREE_HITTEST_TOLEFT },
         { "wxTREE_HITTEST_TORIGHT", wxTREE_HITTEST_TORIGHT },
+#endif // wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL)
+        { "wxTREE_ITEMSTATE_NEXT", wxTREE_ITEMSTATE_NEXT },
+        { "wxTREE_ITEMSTATE_NONE", wxTREE_ITEMSTATE_NONE },
+        { "wxTREE_ITEMSTATE_PREV", wxTREE_ITEMSTATE_PREV },
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL)
+
+#if wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL
         { "wxTR_DEFAULT_STYLE", wxTR_DEFAULT_STYLE },
         { "wxTR_EDIT_LABELS", wxTR_EDIT_LABELS },
         { "wxTR_EXTENDED", wxTR_EXTENDED },

@@ -287,3 +287,31 @@ class %delete wxLuaObject : public wxObject // ALSO! wxClientData use it anywher
 
     int  GetAllocationFlag() const;
 };
+
+class %delete wxLuaEvent : public wxNotifyEvent
+{
+    %wxEventType wxEVT_LUA_CREATION    // EVT_LUA_CREATION(winid, func );
+    %wxEventType wxEVT_LUA_PRINT       // EVT_LUA_PRINT(winid, func );
+    %wxEventType wxEVT_LUA_ERROR       // EVT_LUA_ERROR(winid, func );
+    %wxEventType wxEVT_LUA_DEBUG_HOOK  // EVT_LUA_DEBUG_HOOK(winid, func );
+
+
+    wxLuaEvent(wxEventType commandType = wxEVT_NULL, wxWindowID id = wxID_ANY); // , const wxLuaState& wxlState = wxNullLuaState);
+    wxLuaEvent(const wxLuaEvent& event);
+
+    // use GetString method to retrieve info
+
+    // Get the line number in the code, -1 if unknown
+    int GetLineNum() const;
+
+    wxLuaState GetwxLuaState() const;
+    void SetwxLuaState(const wxLuaState& wxlState);
+
+    //lua_State *GetLuaState() const;
+    // non null only for wxEVT_LUA_DEBUG_HOOK
+    //lua_Debug *GetLuaDebug() const;
+
+    // If called from a wxEVT_LUA_DEBUG_HOOK the interpreter will stop
+    void DebugHookBreak(bool stop)
+};
+
