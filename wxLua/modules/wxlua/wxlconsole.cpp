@@ -26,6 +26,7 @@
 #include <wx/filename.h>
 #include <wx/numdlg.h>
 #include <wx/artprov.h>
+#include <wx/dynlib.h>
 
 #include "wxlua/wxlua.h"
 #include "wxlconsole.h"
@@ -268,6 +269,11 @@ void wxLuaConsole::DisplayStack(const wxLuaState& wxlState)
 
 #include <iostream>
 
+#ifndef wxDL_INIT_FUNC // not in wx < 2.9
+    #define wxDL_INIT_FUNC(pfx, name, dynlib) \
+        pfx ## name = (name ## _t)(dynlib).RawGetSymbol(wxT(#name))
+#endif // wxDL_INIT_FUNC
+
 // Code from http://dslweb.nwnexus.com/~ast/dload/guicon.htm
 // Andrew Tucker, no license, assumed to be public domain.
 void wxlua_RedirectIOToDosConsole(bool alloc_new_if_needed, short max_console_lines)
@@ -278,8 +284,24 @@ void wxlua_RedirectIOToDosConsole(bool alloc_new_if_needed, short max_console_li
     memset(&coninfo, 0, sizeof(CONSOLE_SCREEN_BUFFER_INFO));
     FILE *fp = 0; // we don't close this, let the OS close it when the app exits
 
-    // Try to attach to the parent process if it's a console, i.e. we're run from a DOS prompt.
-    BOOL attached_ok = AttachConsole( ATTACH_PARENT_PROCESS );
+    wxDynamicLibrary kernel;
+    // Dynamically load kernel32 because AttachConsole() is not supported pre-XP
+    BOOL attached_ok = kernel.Load(wxT("kernel32.dll"));
+    
+    if (attached_ok)
+    {
+        // Try to attach to the parent process if it's a console, i.e. we're run from a DOS prompt.
+        // The code below is equivalent to calling this code:
+        //   BOOL attached_ok = AttachConsole( ATTACH_PARENT_PROCESS );
+
+        typedef BOOL (WINAPI *AttachConsole_t)(DWORD dwProcessId);
+        AttachConsole_t wxDL_INIT_FUNC(pfn, AttachConsole, kernel);
+
+        if (pfnAttachConsole)
+            attached_ok = pfnAttachConsole( ATTACH_PARENT_PROCESS );
+        else
+            attached_ok = 0;
+    }
 
     if (attached_ok == 0) // failed attaching
     {
