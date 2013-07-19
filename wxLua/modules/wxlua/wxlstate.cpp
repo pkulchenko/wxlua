@@ -71,15 +71,21 @@ int LUACALL wxlua_printFunction( lua_State *L )
     wxLuaState wxlState(L); // doesn't have to be ok
 
     // If the wxLuaState is not going to print, we'll let Lua print normally
-    if (!wxlState.Ok() || (wxlState.GetEventHandler() == NULL) || (!wxApp::IsMainLoopRunning() && !wxlState.sm_wxAppMainLoop_will_run))
+    if (!wxlState.Ok() || (wxlState.GetEventHandler() == NULL) || 
+        (!wxApp::IsMainLoopRunning() && !wxlState.sm_wxAppMainLoop_will_run))
     {
         // Get our saved copy of the Lua's print function from the registry
         lua_pushlstring(L, "print_lua", 9);
         lua_rawget( L, LUA_REGISTRYINDEX ); // pop key, push print function
 
-        lua_CFunction lua_print = lua_tocfunction(L, -1);
-        lua_pop(L, 1);                      // pop the print function
-        return lua_print(L);
+        // LuaJIT's print() is not a lua_CFunction and it is more flexible to
+        // simply lua_call() whatever was saved when wxLua was loaded.
+        //lua_CFunction lua_print = lua_tocfunction(L, -1);
+        //lua_pop(L, 1);                      // pop the print function
+        //return lua_print(L);
+        lua_insert(L, 1);
+        lua_call(L, lua_gettop(L)-1, 0);
+        return 0;
     }
 
     // The wxLuaState can print by sending an event
@@ -111,7 +117,7 @@ int LUACALL wxlua_printFunction( lua_State *L )
                               LUA_QL("print"));
         }
 
-        if (i > 1) msg.Append(wxT("\t")); // Lua uses a tab too in luaB_print
+        if (i > 1) msg.Append(wxT("\t")); // Lua uses a tab in luaB_print
         msg += lua2wx(s);
 
         lua_pop(L, 1);  /* pop result */

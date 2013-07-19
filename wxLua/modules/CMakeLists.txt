@@ -528,10 +528,8 @@ endfunction (wxLua_Modules_wxBind_TARGETS)
 
 function (wxLua_Modules_LuaModule_TARGETS)
 
-set( WXLUAMODULE_PROPERTIES_DEFINE_SYMBOL )
-if ( BUILD_SHARED_LIBS_WIN_DLLS )
-    set( WXLUAMODULE_PROPERTIES_DEFINE_SYMBOL PROPERTIES DEFINE_SYMBOL WXMAKINGDLL_LUAMODULE)
-endif()
+# This is always built as a DLL
+set( WXLUAMODULE_PROPERTIES_DEFINE_SYMBOL PROPERTIES DEFINE_SYMBOL WXMAKINGDLL_LUAMODULE)
 
 # Build from fresh sources so we have a clean stand-alone Lua module and
 # we get all the DLL exports right.
