@@ -312,6 +312,6 @@ class %delete wxLuaEvent : public wxNotifyEvent
     //lua_Debug *GetLuaDebug() const;
 
     // If called from a wxEVT_LUA_DEBUG_HOOK the interpreter will stop
-    void DebugHookBreak(bool stop)
+    void DebugHookBreak(bool stop);
 };
 

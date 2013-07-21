@@ -160,7 +160,7 @@ int wxluatype_wxLuaEvent = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaEvent_DebugHookBreak[] = { &wxluatype_wxLuaEvent, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxLuaEvent_DebugHookBreak(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaEvent_DebugHookBreak[1] = {{ wxLua_wxLuaEvent_DebugHookBreak, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxLuaEvent_DebugHookBreak }};
-//     void DebugHookBreak(bool stop)
+//     void DebugHookBreak(bool stop);
 static int LUACALL wxLua_wxLuaEvent_DebugHookBreak(lua_State *L)
 {
     // bool stop
