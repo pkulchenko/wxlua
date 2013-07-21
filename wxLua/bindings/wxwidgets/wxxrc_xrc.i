@@ -20,8 +20,8 @@
 
 enum wxXmlResourceFlags
 {
-    wxXRC_USE_LOCALE
-    wxXRC_NO_SUBCLASSING
+    wxXRC_USE_LOCALE,
+    wxXRC_NO_SUBCLASSING,
     wxXRC_NO_RELOADING
 };
 

@@ -30,109 +30,109 @@ void wxSleep(int secs );
 
 enum wxDateTime::TZ
 {
-    Local
-    GMT_12
-    GMT_11
-    GMT_10
-    GMT_9
-    GMT_8
-    GMT_7
-    GMT_6
-    GMT_5
-    GMT_4
-    GMT_3
-    GMT_2
-    GMT_1
-    GMT0
-    GMT1
-    GMT2
-    GMT3
-    GMT4
-    GMT5
-    GMT6
-    GMT7
-    GMT8
-    GMT9
-    GMT10
-    GMT11
-    GMT12
-    %wxchkver_2_8 GMT13
-    WET
-    WEST
-    CET
-    CEST
-    EET
-    EEST
-    MSK
-    MSD
-    AST
-    ADT
-    EST
-    EDT
-    CST
-    CDT
-    MST
-    MDT
-    PST
-    PDT
-    HST
-    AKST
-    AKDT
-    A_WST
-    A_CST
-    A_EST
-    A_ESST
-    %wxchkver_2_8 NZST
-    %wxchkver_2_8 NZDT
+    Local,
+    GMT_12,
+    GMT_11,
+    GMT_10,
+    GMT_9,
+    GMT_8,
+    GMT_7,
+    GMT_6,
+    GMT_5,
+    GMT_4,
+    GMT_3,
+    GMT_2,
+    GMT_1,
+    GMT0,
+    GMT1,
+    GMT2,
+    GMT3,
+    GMT4,
+    GMT5,
+    GMT6,
+    GMT7,
+    GMT8,
+    GMT9,
+    GMT10,
+    GMT11,
+    GMT12,
+    %wxchkver_2_8 GMT13,
+    WET,
+    WEST,
+    CET,
+    CEST,
+    EET,
+    EEST,
+    MSK,
+    MSD,
+    AST,
+    ADT,
+    EST,
+    EDT,
+    CST,
+    CDT,
+    MST,
+    MDT,
+    PST,
+    PDT,
+    HST,
+    AKST,
+    AKDT,
+    A_WST,
+    A_CST,
+    A_EST,
+    A_ESST,
+    %wxchkver_2_8 NZST,
+    %wxchkver_2_8 NZDT,
     UTC
 };
 
 enum wxDateTime::Calendar
 {
-    Gregorian
+    Gregorian,
     Julian
 };
 
 enum wxDateTime::Country
 {
-    Country_Unknown
-    Country_Default
-    Country_WesternEurope_Start
-    Country_EEC
-    France
-    Germany
-    UK
-    Country_WesternEurope_End
-    Russia
+    Country_Unknown,
+    Country_Default,
+    Country_WesternEurope_Start,
+    Country_EEC,
+    France,
+    Germany,
+    UK,
+    Country_WesternEurope_End,
+    Russia,
     USA
 };
 
 enum wxDateTime::Month
 {
-    Jan
-    Feb
-    Mar
-    Apr
-    May
-    Jun
-    Jul
-    Aug
-    Sep
-    Oct
-    Nov
-    Dec
+    Jan,
+    Feb,
+    Mar,
+    Apr,
+    May,
+    Jun,
+    Jul,
+    Aug,
+    Sep,
+    Oct,
+    Nov,
+    Dec,
     Inv_Month
 };
 
 enum wxDateTime::WeekDay
 {
-    Sun
-    Mon
-    Tue
-    Wed
-    Thu
-    Fri
-    Sat
+    Sun,
+    Mon,
+    Tue,
+    Wed,
+    Thu,
+    Fri,
+    Sat,
     Inv_WeekDay
 };
 
@@ -143,14 +143,14 @@ enum wxDateTime::Year
 
 enum wxDateTime::NameFlags
 {
-    Name_Full
+    Name_Full,
     Name_Abbr
 };
 
 enum wxDateTime::WeekFlags
 {
-    Default_First
-    Monday_First
+    Default_First,
+    Monday_First,
     Sunday_First
 };
 
@@ -748,127 +748,127 @@ enum wxLanguage
 
 enum wxFontEncoding
 {
-    wxFONTENCODING_SYSTEM           // system default
-    wxFONTENCODING_DEFAULT         // current default encoding
+    wxFONTENCODING_SYSTEM,           // system default
+    wxFONTENCODING_DEFAULT,         // current default encoding
 
     // ISO8859 standard defines a number of single-byte charsets
-    wxFONTENCODING_ISO8859_1       // West European (Latin1 );
-    wxFONTENCODING_ISO8859_2       // Central and East European (Latin2 );
-    wxFONTENCODING_ISO8859_3       // Esperanto (Latin3 );
-    wxFONTENCODING_ISO8859_4       // Baltic (old) (Latin4 );
-    wxFONTENCODING_ISO8859_5       // Cyrillic
-    wxFONTENCODING_ISO8859_6       // Arabic
-    wxFONTENCODING_ISO8859_7       // Greek
-    wxFONTENCODING_ISO8859_8       // Hebrew
-    wxFONTENCODING_ISO8859_9       // Turkish (Latin5 );
-    wxFONTENCODING_ISO8859_10      // Variation of Latin4 (Latin6 );
-    wxFONTENCODING_ISO8859_11      // Thai
-    wxFONTENCODING_ISO8859_12      // doesn't exist currently, but put it
+    wxFONTENCODING_ISO8859_1,       // West European (Latin1 );
+    wxFONTENCODING_ISO8859_2,       // Central and East European (Latin2 );
+    wxFONTENCODING_ISO8859_3,       // Esperanto (Latin3 );
+    wxFONTENCODING_ISO8859_4,       // Baltic (old) (Latin4 );
+    wxFONTENCODING_ISO8859_5,       // Cyrillic
+    wxFONTENCODING_ISO8859_6,       // Arabic
+    wxFONTENCODING_ISO8859_7,       // Greek
+    wxFONTENCODING_ISO8859_8,       // Hebrew
+    wxFONTENCODING_ISO8859_9,       // Turkish (Latin5 );
+    wxFONTENCODING_ISO8859_10,      // Variation of Latin4 (Latin6 );
+    wxFONTENCODING_ISO8859_11,      // Thai
+    wxFONTENCODING_ISO8859_12,      // doesn't exist currently, but put it
                                     // here anyhow to make all ISO8859
                                     // consecutive numbers
-    wxFONTENCODING_ISO8859_13      // Baltic (Latin7 );
-    wxFONTENCODING_ISO8859_14      // Latin8
-    wxFONTENCODING_ISO8859_15      // Latin9 (a.k.a. Latin0, includes euro );
-    wxFONTENCODING_ISO8859_MAX
+    wxFONTENCODING_ISO8859_13,      // Baltic (Latin7 );
+    wxFONTENCODING_ISO8859_14,      // Latin8
+    wxFONTENCODING_ISO8859_15,      // Latin9 (a.k.a. Latin0, includes euro );
+    wxFONTENCODING_ISO8859_MAX,
 
     // Cyrillic charset soup (see http://czyborra.com/charsets/cyrillic.html );
-    wxFONTENCODING_KOI8            // KOI8 Russian
-    wxFONTENCODING_KOI8_U          // KOI8 Ukrainian
-    wxFONTENCODING_ALTERNATIVE     // same as MS-DOS CP866
-    wxFONTENCODING_BULGARIAN       // used under Linux in Bulgaria
+    wxFONTENCODING_KOI8,            // KOI8 Russian
+    wxFONTENCODING_KOI8_U,          // KOI8 Ukrainian
+    wxFONTENCODING_ALTERNATIVE,     // same as MS-DOS CP866
+    wxFONTENCODING_BULGARIAN,       // used under Linux in Bulgaria
 
     // what would we do without Microsoft? They have their own encodings
         // for DOS
-    wxFONTENCODING_CP437           // original MS-DOS codepage
-    wxFONTENCODING_CP850           // CP437 merged with Latin1
-    wxFONTENCODING_CP852           // CP437 merged with Latin2
-    wxFONTENCODING_CP855           // another cyrillic encoding
-    wxFONTENCODING_CP866           // and another one
+    wxFONTENCODING_CP437,           // original MS-DOS codepage
+    wxFONTENCODING_CP850,           // CP437 merged with Latin1
+    wxFONTENCODING_CP852,           // CP437 merged with Latin2
+    wxFONTENCODING_CP855,           // another cyrillic encoding
+    wxFONTENCODING_CP866,           // and another one
         // and for Windows
-    wxFONTENCODING_CP874           // WinThai
-    wxFONTENCODING_CP932           // Japanese (shift-JIS );
-    wxFONTENCODING_CP936           // Chinese simplified (GB );
-    wxFONTENCODING_CP949           // Korean (Hangul charset );
-    wxFONTENCODING_CP950           // Chinese (traditional - Big5 );
-    wxFONTENCODING_CP1250          // WinLatin2
-    wxFONTENCODING_CP1251          // WinCyrillic
-    wxFONTENCODING_CP1252          // WinLatin1
-    wxFONTENCODING_CP1253          // WinGreek (8859-7 );
-    wxFONTENCODING_CP1254          // WinTurkish
-    wxFONTENCODING_CP1255          // WinHebrew
-    wxFONTENCODING_CP1256          // WinArabic
-    wxFONTENCODING_CP1257          // WinBaltic (same as Latin 7 );
-    wxFONTENCODING_CP12_MAX
+    wxFONTENCODING_CP874,           // WinThai
+    wxFONTENCODING_CP932,           // Japanese (shift-JIS );
+    wxFONTENCODING_CP936,           // Chinese simplified (GB );
+    wxFONTENCODING_CP949,           // Korean (Hangul charset );
+    wxFONTENCODING_CP950,           // Chinese (traditional - Big5 );
+    wxFONTENCODING_CP1250,          // WinLatin2
+    wxFONTENCODING_CP1251,          // WinCyrillic
+    wxFONTENCODING_CP1252,          // WinLatin1
+    wxFONTENCODING_CP1253,          // WinGreek (8859-7 );
+    wxFONTENCODING_CP1254,          // WinTurkish
+    wxFONTENCODING_CP1255,          // WinHebrew
+    wxFONTENCODING_CP1256,          // WinArabic
+    wxFONTENCODING_CP1257,          // WinBaltic (same as Latin 7 );
+    wxFONTENCODING_CP12_MAX,
 
-    wxFONTENCODING_UTF7            // UTF-7 Unicode encoding
-    wxFONTENCODING_UTF8            // UTF-8 Unicode encoding
-    wxFONTENCODING_EUC_JP          // Extended Unix Codepage for Japanese
-    wxFONTENCODING_UTF16BE         // UTF-16 Big Endian Unicode encoding
-    wxFONTENCODING_UTF16LE         // UTF-16 Little Endian Unicode encoding
-    wxFONTENCODING_UTF32BE         // UTF-32 Big Endian Unicode encoding
-    wxFONTENCODING_UTF32LE         // UTF-32 Little Endian Unicode encoding
+    wxFONTENCODING_UTF7,            // UTF-7 Unicode encoding
+    wxFONTENCODING_UTF8,            // UTF-8 Unicode encoding
+    wxFONTENCODING_EUC_JP,          // Extended Unix Codepage for Japanese
+    wxFONTENCODING_UTF16BE,         // UTF-16 Big Endian Unicode encoding
+    wxFONTENCODING_UTF16LE,         // UTF-16 Little Endian Unicode encoding
+    wxFONTENCODING_UTF32BE,         // UTF-32 Big Endian Unicode encoding
+    wxFONTENCODING_UTF32LE,         // UTF-32 Little Endian Unicode encoding
 
-    wxFONTENCODING_MACROMAN        // the standard mac encodings
-    wxFONTENCODING_MACJAPANESE
-    wxFONTENCODING_MACCHINESETRAD
-    wxFONTENCODING_MACKOREAN
-    wxFONTENCODING_MACARABIC
-    wxFONTENCODING_MACHEBREW
-    wxFONTENCODING_MACGREEK
-    wxFONTENCODING_MACCYRILLIC
-    wxFONTENCODING_MACDEVANAGARI
-    wxFONTENCODING_MACGURMUKHI
-    wxFONTENCODING_MACGUJARATI
-    wxFONTENCODING_MACORIYA
-    wxFONTENCODING_MACBENGALI
-    wxFONTENCODING_MACTAMIL
-    wxFONTENCODING_MACTELUGU
-    wxFONTENCODING_MACKANNADA
-    wxFONTENCODING_MACMALAJALAM
-    wxFONTENCODING_MACSINHALESE
-    wxFONTENCODING_MACBURMESE
-    wxFONTENCODING_MACKHMER
-    wxFONTENCODING_MACTHAI
-    wxFONTENCODING_MACLAOTIAN
-    wxFONTENCODING_MACGEORGIAN
-    wxFONTENCODING_MACARMENIAN
-    wxFONTENCODING_MACCHINESESIMP
-    wxFONTENCODING_MACTIBETAN
-    wxFONTENCODING_MACMONGOLIAN
-    wxFONTENCODING_MACETHIOPIC
-    wxFONTENCODING_MACCENTRALEUR
-    wxFONTENCODING_MACVIATNAMESE
-    wxFONTENCODING_MACARABICEXT
-    wxFONTENCODING_MACSYMBOL
-    wxFONTENCODING_MACDINGBATS
-    wxFONTENCODING_MACTURKISH
-    wxFONTENCODING_MACCROATIAN
-    wxFONTENCODING_MACICELANDIC
-    wxFONTENCODING_MACROMANIAN
-    wxFONTENCODING_MACCELTIC
-    wxFONTENCODING_MACGAELIC
-    wxFONTENCODING_MACKEYBOARD
+    wxFONTENCODING_MACROMAN,        // the standard mac encodings
+    wxFONTENCODING_MACJAPANESE,
+    wxFONTENCODING_MACCHINESETRAD,
+    wxFONTENCODING_MACKOREAN,
+    wxFONTENCODING_MACARABIC,
+    wxFONTENCODING_MACHEBREW,
+    wxFONTENCODING_MACGREEK,
+    wxFONTENCODING_MACCYRILLIC,
+    wxFONTENCODING_MACDEVANAGARI,
+    wxFONTENCODING_MACGURMUKHI,
+    wxFONTENCODING_MACGUJARATI,
+    wxFONTENCODING_MACORIYA,
+    wxFONTENCODING_MACBENGALI,
+    wxFONTENCODING_MACTAMIL,
+    wxFONTENCODING_MACTELUGU,
+    wxFONTENCODING_MACKANNADA,
+    wxFONTENCODING_MACMALAJALAM,
+    wxFONTENCODING_MACSINHALESE,
+    wxFONTENCODING_MACBURMESE,
+    wxFONTENCODING_MACKHMER,
+    wxFONTENCODING_MACTHAI,
+    wxFONTENCODING_MACLAOTIAN,
+    wxFONTENCODING_MACGEORGIAN,
+    wxFONTENCODING_MACARMENIAN,
+    wxFONTENCODING_MACCHINESESIMP,
+    wxFONTENCODING_MACTIBETAN,
+    wxFONTENCODING_MACMONGOLIAN,
+    wxFONTENCODING_MACETHIOPIC,
+    wxFONTENCODING_MACCENTRALEUR,
+    wxFONTENCODING_MACVIATNAMESE,
+    wxFONTENCODING_MACARABICEXT,
+    wxFONTENCODING_MACSYMBOL,
+    wxFONTENCODING_MACDINGBATS,
+    wxFONTENCODING_MACTURKISH,
+    wxFONTENCODING_MACCROATIAN,
+    wxFONTENCODING_MACICELANDIC,
+    wxFONTENCODING_MACROMANIAN,
+    wxFONTENCODING_MACCELTIC,
+    wxFONTENCODING_MACGAELIC,
+    wxFONTENCODING_MACKEYBOARD,
 
-    wxFONTENCODING_MAX             // highest enumerated encoding value
+    wxFONTENCODING_MAX,             // highest enumerated encoding value
 
-    wxFONTENCODING_MACMIN //= wxFONTENCODING_MACROMAN ,
-    wxFONTENCODING_MACMAX //= wxFONTENCODING_MACKEYBOARD ,
+    wxFONTENCODING_MACMIN, //= wxFONTENCODING_MACROMAN ,
+    wxFONTENCODING_MACMAX, //= wxFONTENCODING_MACKEYBOARD ,
 
     // aliases for endian-dependent UTF encodings
-    wxFONTENCODING_UTF16   // native UTF-16
-    wxFONTENCODING_UTF32   // native UTF-32
+    wxFONTENCODING_UTF16,   // native UTF-16
+    wxFONTENCODING_UTF32,   // native UTF-32
 
     // alias for the native Unicode encoding on this platform
     // (this is used by wxEncodingConverter and wxUTFFile only for now );
-    wxFONTENCODING_UNICODE
+    wxFONTENCODING_UNICODE,
 
     // alternative names for Far Eastern encodings
         // Chinese
-    wxFONTENCODING_GB2312  // Simplified Chinese
-    wxFONTENCODING_BIG5    // Traditional Chinese
+    wxFONTENCODING_GB2312,  // Simplified Chinese
+    wxFONTENCODING_BIG5,    // Traditional Chinese
 
         // Japanese (see http://zsigri.tripod.com/fontboard/cjk/jis.html );
-    wxFONTENCODING_SHIFT_JIS // Shift JIS
+    wxFONTENCODING_SHIFT_JIS, // Shift JIS
 };
 
 enum wxLocaleCategory
@@ -887,15 +887,15 @@ enum wxLocaleInfo
 
 enum wxLocaleInitFlags
 {
-    wxLOCALE_LOAD_DEFAULT       // load wxwin.mo?
+    wxLOCALE_LOAD_DEFAULT,       // load wxwin.mo?
     wxLOCALE_CONV_ENCODING      // convert encoding on the fly?
 };
 
 #if %wxchkver_2_8
 enum wxLayoutDirection
 {
-    wxLayout_Default
-    wxLayout_LeftToRight
+    wxLayout_Default,
+    wxLayout_LeftToRight,
     wxLayout_RightToLeft
 };
 #endif %wxchkver_2_8

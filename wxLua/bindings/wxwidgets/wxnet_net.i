@@ -16,49 +16,49 @@
 
 enum wxSocketError
 {
-    wxSOCKET_NOERROR
-    wxSOCKET_INVOP
-    wxSOCKET_IOERR
-    wxSOCKET_INVADDR
-    wxSOCKET_INVSOCK
-    wxSOCKET_NOHOST
-    wxSOCKET_INVPORT
-    wxSOCKET_WOULDBLOCK
-    wxSOCKET_TIMEDOUT
+    wxSOCKET_NOERROR,
+    wxSOCKET_INVOP,
+    wxSOCKET_IOERR,
+    wxSOCKET_INVADDR,
+    wxSOCKET_INVSOCK,
+    wxSOCKET_NOHOST,
+    wxSOCKET_INVPORT,
+    wxSOCKET_WOULDBLOCK,
+    wxSOCKET_TIMEDOUT,
     wxSOCKET_MEMERR
 };
 
 enum wxSocketFlags // actually typedef int wxSocketFlags
 {
-    wxSOCKET_NONE
-    wxSOCKET_NOWAIT
-    wxSOCKET_WAITALL
-    wxSOCKET_BLOCK
+    wxSOCKET_NONE,
+    wxSOCKET_NOWAIT,
+    wxSOCKET_WAITALL,
+    wxSOCKET_BLOCK,
     wxSOCKET_REUSEADDR
 };
 
 enum wxSocketNotify
 {
-    wxSOCKET_INPUT
-    wxSOCKET_OUTPUT
-    wxSOCKET_CONNECTION
+    wxSOCKET_INPUT,
+    wxSOCKET_OUTPUT,
+    wxSOCKET_CONNECTION,
     wxSOCKET_LOST
 };
 
 enum wxSocketEventFlags
 {
-    wxSOCKET_INPUT_FLAG
-    wxSOCKET_OUTPUT_FLAG
-    wxSOCKET_CONNECTION_FLAG
+    wxSOCKET_INPUT_FLAG,
+    wxSOCKET_OUTPUT_FLAG,
+    wxSOCKET_CONNECTION_FLAG,
     wxSOCKET_LOST_FLAG
 };
 
 enum wxSocketType
 {
-    wxSOCKET_UNINIT
-    wxSOCKET_CLIENT
-    wxSOCKET_SERVER
-    wxSOCKET_BASE
+    wxSOCKET_UNINIT,
+    wxSOCKET_CLIENT,
+    wxSOCKET_SERVER,
+    wxSOCKET_BASE,
     wxSOCKET_DATAGRAM
 };
 
@@ -215,15 +215,15 @@ class %delete wxIPV4address : public wxIPaddress
 
 enum wxProtocolError
 {
-    wxPROTO_NOERR
-    wxPROTO_NETERR
-    wxPROTO_PROTERR
-    wxPROTO_CONNERR
-    wxPROTO_INVVAL
-    wxPROTO_NOHNDLR
-    wxPROTO_NOFILE
-    wxPROTO_ABRT
-    wxPROTO_RCNCT
+    wxPROTO_NOERR,
+    wxPROTO_NETERR,
+    wxPROTO_PROTERR,
+    wxPROTO_CONNERR,
+    wxPROTO_INVVAL,
+    wxPROTO_NOHNDLR,
+    wxPROTO_NOFILE,
+    wxPROTO_ABRT,
+    wxPROTO_RCNCT,
     wxPROTO_STREAMING
 };
 
@@ -270,8 +270,8 @@ class %delete wxHTTP : public wxProtocol
 
 enum wxFTP::TransferMode
 {
-    NONE
-    ASCII
+    NONE,
+    ASCII,
     BINARY
 };
 
@@ -312,20 +312,20 @@ class %delete wxFTP : public wxProtocol
 
 enum wxURIHostType
 {
-    wxURI_REGNAME
-    wxURI_IPV4ADDRESS
-    wxURI_IPV6ADDRESS
+    wxURI_REGNAME,
+    wxURI_IPV4ADDRESS,
+    wxURI_IPV6ADDRESS,
     wxURI_IPVFUTURE
 };
 
 enum wxURIFieldType
 {
-    wxURI_SCHEME
-    wxURI_USERINFO
-    wxURI_SERVER
-    wxURI_PORT
-    wxURI_PATH
-    wxURI_QUERY
+    wxURI_SCHEME,
+    wxURI_USERINFO,
+    wxURI_SERVER,
+    wxURI_PORT,
+    wxURI_PATH,
+    wxURI_QUERY,
     wxURI_FRAGMENT
 };
 
@@ -380,12 +380,12 @@ class %delete wxURI : public wxObject
 
 enum wxURLError
 {
-    wxURL_NOERR
-    wxURL_SNTXERR
-    wxURL_NOPROTO
-    wxURL_NOHOST
-    wxURL_NOPATH
-    wxURL_CONNERR
+    wxURL_NOERR,
+    wxURL_SNTXERR,
+    wxURL_NOPROTO,
+    wxURL_NOHOST,
+    wxURL_NOPATH,
+    wxURL_CONNERR,
     wxURL_PROTOERR
 };
 
@@ -418,23 +418,23 @@ class %delete wxURL : public wxURI
 //
 //enum wxIPCFormat
 //{
-//    wxIPC_INVALID
-//    wxIPC_TEXT
-//    wxIPC_BITMAP
-//    wxIPC_METAFILE
-//    wxIPC_SYLK
-//    wxIPC_DIF
-//    wxIPC_TIFF
-//    wxIPC_OEMTEXT
-//    wxIPC_DIB
-//    wxIPC_PALETTE
-//    wxIPC_PENDATA
-//    wxIPC_RIFF
-//    wxIPC_WAVE
-//    wxIPC_UNICODETEXT
-//    wxIPC_ENHMETAFILE
-//    wxIPC_FILENAME
-//    wxIPC_LOCALE
+//    wxIPC_INVALID,
+//    wxIPC_TEXT,
+//    wxIPC_BITMAP,
+//    wxIPC_METAFILE,
+//    wxIPC_SYLK,
+//    wxIPC_DIF,
+//    wxIPC_TIFF,
+//    wxIPC_OEMTEXT,
+//    wxIPC_DIB,
+//    wxIPC_PALETTE,
+//    wxIPC_PENDATA,
+//    wxIPC_RIFF,
+//    wxIPC_WAVE,
+//    wxIPC_UNICODETEXT,
+//    wxIPC_ENHMETAFILE,
+//    wxIPC_FILENAME,
+//    wxIPC_LOCALE,
 //    wxIPC_PRIVATE
 //};
 //

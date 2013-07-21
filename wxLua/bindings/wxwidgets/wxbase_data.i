@@ -86,12 +86,12 @@ class %delete wxString::iterator
 
 enum wxStringTokenizerMode
 {
-    wxTOKEN_INVALID         // set by def ctor until SetString() is called
-    wxTOKEN_DEFAULT         // strtok() for whitespace delims, RET_EMPTY else
-    wxTOKEN_RET_EMPTY       // return empty token in the middle of the string
-    wxTOKEN_RET_EMPTY_ALL   // return trailing empty tokens too
-    wxTOKEN_RET_DELIMS      // return the delim with token (implies RET_EMPTY );
-    wxTOKEN_STRTOK          // behave exactly like strtok(3 );
+    wxTOKEN_INVALID,         // set by def ctor until SetString() is called
+    wxTOKEN_DEFAULT,         // strtok() for whitespace delims, RET_EMPTY else
+    wxTOKEN_RET_EMPTY,       // return empty token in the middle of the string
+    wxTOKEN_RET_EMPTY_ALL,   // return trailing empty tokens too
+    wxTOKEN_RET_DELIMS,      // return the delim with token (implies RET_EMPTY );
+    wxTOKEN_STRTOK           // behave exactly like strtok(3 );
 };
 
 class %delete wxStringTokenizer : public wxObject
@@ -122,8 +122,8 @@ class %delete wxStringTokenizer : public wxObject
 
 //enum wxClientDataType - used internally so we don't need it
 //{
-//    wxClientData_None
-//    wxClientData_Object
+//    wxClientData_None,
+//    wxClientData_Object,
 //    wxClientData_Void
 //};
 
@@ -238,8 +238,8 @@ class wxClassInfo // no %delete since we're always getting a static instance
 
 enum wxKeyType
 {
-    wxKEY_NONE
-    wxKEY_INTEGER
+    wxKEY_NONE,
+    wxKEY_INTEGER,
     wxKEY_STRING
 };
 

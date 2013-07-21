@@ -80,17 +80,17 @@ class %delete wxWindowUpdateLocker
 
 enum wxWindowVariant
 {
-    wxWINDOW_VARIANT_NORMAL
-    wxWINDOW_VARIANT_SMALL
-    wxWINDOW_VARIANT_MINI
-    wxWINDOW_VARIANT_LARGE
+    wxWINDOW_VARIANT_NORMAL,
+    wxWINDOW_VARIANT_SMALL,
+    wxWINDOW_VARIANT_MINI,
+    wxWINDOW_VARIANT_LARGE,
     wxWINDOW_VARIANT_MAX
 };
 
 enum wxUpdateUI
 {
-    wxUPDATE_UI_NONE
-    wxUPDATE_UI_RECURSE
+    wxUPDATE_UI_NONE,
+    wxUPDATE_UI_RECURSE,
     wxUPDATE_UI_FROMIDLE
 };
 
@@ -229,6 +229,8 @@ class wxWindow : public wxEvtHandler
     %override_name wxLua_wxWindow_GetVirtualSizeWH %rename GetVirtualSizeWH void GetVirtualSize() const;
 
     wxSize GetVirtualSize() const;
+    %wxchkver_2_9_4 virtual wxSize GetBestVirtualSize() const;
+    %wxchkver_2_9_4 virtual double GetContentScaleFactor() const;    
     long GetWindowStyleFlag() const;
     wxWindowVariant GetWindowVariant() const;
     %wxchkver_2_4 bool HasCapture() const;
@@ -411,10 +413,10 @@ class wxControl : public wxWindow
 
     enum
     {
-        wxBK_HITTEST_NOWHERE
-        wxBK_HITTEST_ONICON
-        wxBK_HITTEST_ONLABEL
-        wxBK_HITTEST_ONITEM
+        wxBK_HITTEST_NOWHERE,
+        wxBK_HITTEST_ONICON,
+        wxBK_HITTEST_ONLABEL,
+        wxBK_HITTEST_ONITEM,
         wxBK_HITTEST_ONPAGE
     };
 #endif // %wxchkver_2_8
@@ -496,9 +498,9 @@ class %delete wxBookCtrlBaseEvent : public wxNotifyEvent
 
 enum
 {
-    wxNB_HITTEST_NOWHERE
-    wxNB_HITTEST_ONICON
-    wxNB_HITTEST_ONLABEL
+    wxNB_HITTEST_NOWHERE,
+    wxNB_HITTEST_ONICON,
+    wxNB_HITTEST_ONLABEL,
     wxNB_HITTEST_ONITEM
 };
 

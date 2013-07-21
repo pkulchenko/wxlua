@@ -119,8 +119,13 @@ function(ADD_WXLUABIND_GENERATION name)
 
     file( GLOB WXLUABIND_FILES ${ARG_WXLUABIND_FILES_VALUE} ) # get the real list of files for *.lua
     set( ARG_WXLUABIND_FILES_VALUE_ABS )
+    
+    # sort in reverse order so that they are run in the specified order
     foreach(WXLUABIND_FILE ${WXLUABIND_FILES})
-
+        set(WXLUABIND_FILES2 ${WXLUABIND_FILE} ${WXLUABIND_FILES2})
+    endforeach()
+    
+    foreach(WXLUABIND_FILE ${WXLUABIND_FILES2})
         if (NOT EXISTS ${WXLUABIND_FILE})
             # Try to see if it's already absolute
             get_filename_component(ABS_WXLUABIND_FILE "${ABS_WORKING_DIRECTORY}/${WXLUABIND_FILE}" ABSOLUTE)
@@ -178,14 +183,15 @@ endfunction()
 
 ADD_WXLUABIND_GENERATION( wxluabindings 
     WXLUABIND_FILES 
+        wxwidgets/wxbase_rules.lua
+        wxwidgets/wxnet_rules.lua
+        wxwidgets/wxcore_rules.lua
         wxwidgets/wxadv_rules.lua
         wxwidgets/wxaui_rules.lua
-        wxwidgets/wxbase_rules.lua
-        wxwidgets/wxcore_rules.lua
         wxwidgets/wxgl_rules.lua
         wxwidgets/wxhtml_rules.lua
         wxwidgets/wxmedia_rules.lua
-        wxwidgets/wxnet_rules.lua
+        wxwidgets/wxpropgrid_rules.lua
         wxwidgets/wxrichtext_rules.lua
         wxwidgets/wxstc_rules.lua
         wxwidgets/wxxml_rules.lua
@@ -225,6 +231,7 @@ ADD_WXLUABIND_GENERATION( wxluabindings
         wxwidgets/wxhtml_html.i
         wxwidgets/wxmedia_media.i
         wxwidgets/wxnet_net.i
+        wxwidgets/wxpropgrid_propgrid.i
         wxwidgets/wxrichtext_richtext.i
         wxwidgets/wxstc_stc.i
         wxwidgets/wxxml_xml.i

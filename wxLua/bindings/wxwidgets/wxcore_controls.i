@@ -99,8 +99,8 @@ class wxToggleButton : public wxControl
 
 enum wxCheckBoxState
 {
-    wxCHK_UNCHECKED
-    wxCHK_CHECKED
+    wxCHK_UNCHECKED,
+    wxCHK_CHECKED,
     wxCHK_UNDETERMINED
 };
 
@@ -538,9 +538,9 @@ class %delete wxListItemAttr
 
 enum wxListColumnFormat
 {
-    wxLIST_FORMAT_LEFT
-    wxLIST_FORMAT_RIGHT
-    wxLIST_FORMAT_CENTRE
+    wxLIST_FORMAT_LEFT,
+    wxLIST_FORMAT_RIGHT,
+    wxLIST_FORMAT_CENTRE,
     wxLIST_FORMAT_CENTER
 };
 
@@ -887,10 +887,10 @@ class wxSpinCtrl : public wxControl
 
 enum wxTextCtrlHitTestResult
 {
-    wxTE_HT_UNKNOWN
-    wxTE_HT_BEFORE
-    wxTE_HT_ON_TEXT
-    wxTE_HT_BELOW
+    wxTE_HT_UNKNOWN,
+    wxTE_HT_BEFORE,
+    wxTE_HT_ON_TEXT,
+    wxTE_HT_BELOW,
     wxTE_HT_BEYOND
 };
 
@@ -973,11 +973,11 @@ class wxTextCtrl : public wxControl
 
 enum wxTextAttrAlignment
 {
-    wxTEXT_ALIGNMENT_DEFAULT
-    wxTEXT_ALIGNMENT_LEFT
-    wxTEXT_ALIGNMENT_CENTRE
-    wxTEXT_ALIGNMENT_CENTER
-    wxTEXT_ALIGNMENT_RIGHT
+    wxTEXT_ALIGNMENT_DEFAULT,
+    wxTEXT_ALIGNMENT_LEFT,
+    wxTEXT_ALIGNMENT_CENTRE,
+    wxTEXT_ALIGNMENT_CENTER,
+    wxTEXT_ALIGNMENT_RIGHT,
     wxTEXT_ALIGNMENT_JUSTIFIED
 };
 
@@ -1070,10 +1070,10 @@ class %delete wxTextUrlEvent : public wxCommandEvent
 
 enum wxTreeItemIcon
 {
-    wxTreeItemIcon_Normal
-    wxTreeItemIcon_Selected
-    wxTreeItemIcon_Expanded
-    wxTreeItemIcon_SelectedExpanded
+    wxTreeItemIcon_Normal,
+    wxTreeItemIcon_Selected,
+    wxTreeItemIcon_Expanded,
+    wxTreeItemIcon_SelectedExpanded,
     wxTreeItemIcon_Max
 };
 
@@ -1364,10 +1364,10 @@ class %delete wxTreeEvent : public wxNotifyEvent
 
 enum
 {
-    wxDIRCTRL_DIR_ONLY
-    wxDIRCTRL_SELECT_FIRST
-    wxDIRCTRL_SHOW_FILTERS
-    wxDIRCTRL_3D_INTERNAL
+    wxDIRCTRL_DIR_ONLY,
+    wxDIRCTRL_SELECT_FIRST,
+    wxDIRCTRL_SHOW_FILTERS,
+    wxDIRCTRL_3D_INTERNAL,
     wxDIRCTRL_EDIT_LABELS
 };
 

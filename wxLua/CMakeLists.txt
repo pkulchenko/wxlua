@@ -75,7 +75,7 @@ endif()
 # ---------------------------------------------------------------------------
 
 # This is the list of all the wxLua bindings for wxWidgets with the same names as the wxWidgets libs.
-set(wxLuaBind_ALL_COMPONENTS gl stc xrc richtext html media aui adv core xml net base )
+set(wxLuaBind_ALL_COMPONENTS gl stc xrc richtext propgrid html media aui adv core xml net base )
 
 if (NOT DEFINED wxLuaBind_COMPONENTS)
     set(wxLuaBind_COMPONENTS ${wxLuaBind_ALL_COMPONENTS})

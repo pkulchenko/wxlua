@@ -9985,6 +9985,25 @@ static int LUACALL wxLua_wxDC_GetClippingBox(lua_State *L)
 
 
 
+#if (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxDC)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_GetContentScaleFactor[] = { &wxluatype_wxDC, NULL };
+static int LUACALL wxLua_wxDC_GetContentScaleFactor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_GetContentScaleFactor[1] = {{ wxLua_wxDC_GetContentScaleFactor, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDC_GetContentScaleFactor }};
+//     %wxchkver_2_9_4 virtual double GetContentScaleFactor() const;
+static int LUACALL wxLua_wxDC_GetContentScaleFactor(lua_State *L)
+{
+    // get this
+    wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
+    // call GetContentScaleFactor
+    double returns = (self->GetContentScaleFactor());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxDC)
+
 #if (wxLUA_USE_wxFont) && (wxLUA_USE_wxDC)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_GetFont[] = { &wxluatype_wxDC, NULL };
 static int LUACALL wxLua_wxDC_GetFont(lua_State *L);
@@ -10980,6 +10999,10 @@ wxLuaBindMethod wxDC_methods[] = {
     { "GetCharHeight", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_GetCharHeight, 1, NULL },
     { "GetCharWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_GetCharWidth, 1, NULL },
     { "GetClippingBox", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_GetClippingBox, 1, NULL },
+
+#if (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxDC)
+    { "GetContentScaleFactor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_GetContentScaleFactor, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxDC)
 
 #if (wxLUA_USE_wxFont) && (wxLUA_USE_wxDC)
     { "GetFont", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_GetFont, 1, NULL },

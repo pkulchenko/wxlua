@@ -14,10 +14,10 @@ typedef double wxDouble
 
 enum wxOutCode
 {
-    wxInside
-    wxOutLeft
-    wxOutRight
-    wxOutTop
+    wxInside,
+    wxOutLeft,
+    wxOutRight,
+    wxOutTop,
     wxOutBottom
 };
 

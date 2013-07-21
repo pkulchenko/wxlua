@@ -16,10 +16,10 @@
 
 enum wxItemKind
 {
-   wxITEM_SEPARATOR
-   wxITEM_NORMAL
-   wxITEM_CHECK
-   wxITEM_RADIO
+   wxITEM_SEPARATOR,
+   wxITEM_NORMAL,
+   wxITEM_CHECK,
+   wxITEM_RADIO,
    wxITEM_MAX
 };
 
@@ -306,8 +306,8 @@ class wxToolBarSimple : public wxToolBarBase
 
 enum wxToolBarToolStyle
 {
-    wxTOOL_STYLE_BUTTON
-    wxTOOL_STYLE_SEPARATOR
+    wxTOOL_STYLE_BUTTON,
+    wxTOOL_STYLE_SEPARATOR,
     wxTOOL_STYLE_CONTROL
 };
 
@@ -391,10 +391,10 @@ class %delete wxAcceleratorTable : public wxObject
 
 enum
 {
-    wxACCEL_NORMAL
-    wxACCEL_ALT
-    wxACCEL_CTRL
-    wxACCEL_SHIFT
+    wxACCEL_NORMAL,
+    wxACCEL_ALT,
+    wxACCEL_CTRL,
+    wxACCEL_SHIFT,
     %wxchkver_2_8 wxACCEL_CMD // Command key on OS X else wxACCEL_CTRL
 };
 

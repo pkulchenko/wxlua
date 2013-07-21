@@ -21,12 +21,12 @@
 #if %wxcompat_2_6
 enum    // for wxFileSelector and wxFileDialog
 {
-    wxOPEN
-    wxSAVE
-    wxOVERWRITE_PROMPT
-    %wxcompat_2_4 wxHIDE_READONLY
-    wxFILE_MUST_EXIST
-    wxMULTIPLE
+    wxOPEN,
+    wxSAVE,
+    wxOVERWRITE_PROMPT,
+    %wxcompat_2_4 wxHIDE_READONLY,
+    wxFILE_MUST_EXIST,
+    wxMULTIPLE,
     wxCHANGE_DIR
 };
 #endif //%wxcompat_2_6
@@ -34,13 +34,13 @@ enum    // for wxFileSelector and wxFileDialog
 #if %wxchkver_2_8
 enum
 {
-    wxFD_OPEN
-    wxFD_SAVE
-    wxFD_OVERWRITE_PROMPT
-    wxFD_FILE_MUST_EXIST
-    wxFD_MULTIPLE
-    wxFD_CHANGE_DIR
-    wxFD_PREVIEW
+    wxFD_OPEN,
+    wxFD_SAVE,
+    wxFD_OVERWRITE_PROMPT,
+    wxFD_FILE_MUST_EXIST,
+    wxFD_MULTIPLE,
+    wxFD_CHANGE_DIR,
+    wxFD_PREVIEW,
 
     wxFD_DEFAULT_STYLE
 };
@@ -365,9 +365,9 @@ class %delete wxFontData : public wxObject
 
 enum wxFindReplaceDialogStyles
 {
-    wxFR_REPLACEDIALOG
-    wxFR_NOUPDOWN
-    wxFR_NOMATCHCASE
+    wxFR_REPLACEDIALOG,
+    wxFR_NOUPDOWN,
+    wxFR_NOMATCHCASE,
     wxFR_NOWHOLEWORD
 };
 
@@ -387,8 +387,8 @@ class wxFindReplaceDialog : public wxDialog
 
 enum wxFindReplaceFlags
 {
-    wxFR_DOWN
-    wxFR_WHOLEWORD
+    wxFR_DOWN,
+    wxFR_WHOLEWORD,
     wxFR_MATCHCASE
 };
 

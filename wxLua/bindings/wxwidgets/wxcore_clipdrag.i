@@ -73,25 +73,25 @@ class %delete wxClipboardTextEvent : public wxCommandEvent
 
 enum wxDataFormatId
 {
-    wxDF_INVALID
-    wxDF_TEXT
-    wxDF_BITMAP
-    wxDF_METAFILE
-    wxDF_SYLK
-    wxDF_DIF
-    wxDF_TIFF
-    wxDF_OEMTEXT
-    wxDF_DIB
-    wxDF_PALETTE
-    wxDF_PENDATA
-    wxDF_RIFF
-    wxDF_WAVE
-    wxDF_UNICODETEXT
-    wxDF_ENHMETAFILE
-    wxDF_FILENAME
-    wxDF_LOCALE
-    wxDF_PRIVATE
-    wxDF_HTML
+    wxDF_INVALID,
+    wxDF_TEXT,
+    wxDF_BITMAP,
+    wxDF_METAFILE,
+    wxDF_SYLK,
+    wxDF_DIF,
+    wxDF_TIFF,
+    wxDF_OEMTEXT,
+    wxDF_DIB,
+    wxDF_PALETTE,
+    wxDF_PENDATA,
+    wxDF_RIFF,
+    wxDF_WAVE,
+    wxDF_UNICODETEXT,
+    wxDF_ENHMETAFILE,
+    wxDF_FILENAME,
+    wxDF_LOCALE,
+    wxDF_PRIVATE,
+    wxDF_HTML,
     wxDF_MAX
 };
 
@@ -113,14 +113,14 @@ class %delete wxDataFormat
 // ---------------------------------------------------------------------------
 // wxDataObject
 
-enum wxDataObject::Direction
-{
-    Get
-    Set
-};
-
 class wxDataObject
 {
+    enum Direction
+    {
+        Get,
+        Set
+    };
+
     //wxDataObject() this is a base class, use simplified derived classes
 
     // %override [Lua table of wxDataFormat objects] wxDataObject::GetAllFormats(wxDataObject::Direction dir = wxDataObject );
@@ -270,18 +270,18 @@ class %delete wxURLDataObject : public wxTextDataObject
 
 enum
 {
-    wxDrag_CopyOnly
-    wxDrag_AllowMove
+    wxDrag_CopyOnly,
+    wxDrag_AllowMove,
     wxDrag_DefaultMove
 };
 
 enum wxDragResult
 {
-    wxDragError
-    wxDragNone
-    wxDragCopy
-    wxDragMove
-    wxDragLink
+    wxDragError,
+    wxDragNone,
+    wxDragCopy,
+    wxDragMove,
+    wxDragLink,
     wxDragCancel
 };
 

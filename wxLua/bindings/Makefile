@@ -13,9 +13,11 @@ else
 	LUA=$(WXLUA_DIR)/bin/lua
 endif
 
+LUA_ABS = $(realpath $(LUA))
+
 #----------------------------------------------------------------------------
 
-ALL_BINDINGS = wxbase wxcore wxadv wxaui wxgl wxhtml wxnet wxmedia wxstc wxxml wxxrc wxrichtext wxlua wxlua_debugger wxluacan wxdatatypes
+ALL_BINDINGS = wxbase wxcore wxadv wxaui wxgl wxhtml wxnet wxmedia wxstc wxxml wxxrc wxpropgrid wxrichtext wxlua wxlua_debugger wxluacan wxdatatypes
 
 # Always try to build all targets, let the other Makefiles do dep checking
 .PHONY: all clean genidocs $(ALL_BINDINGS)
@@ -58,6 +60,10 @@ wxnet:
 	@echo Building wxNet
 	@($(LUA) -e"rulesFilename=\"wxwidgets/wxnet_rules.lua\"" genwxbind.lua)
 
+wxpropgrid:
+	@echo Building wxPropertyGrid
+	@($(LUA) -e"rulesFilename=\"wxwidgets/wxpropgrid_rules.lua\"" genwxbind.lua)
+
 wxrichtext:
 	@echo Building wxRichText
 	@($(LUA) -e"rulesFilename=\"wxwidgets/wxrichtext_rules.lua\"" genwxbind.lua)
@@ -89,7 +95,7 @@ wxlua_debugger:
 
 wxluacan:
 	@echo Building wxLuaCan
-	@(cd $(WXLUA_DIR)/apps/wxluacan && $(MAKE) -e LUA=../../$(LUA) genwxbind)
+	@(cd $(WXLUA_DIR)/apps/wxluacan && $(MAKE) LUA=$(LUA_ABS) genwxbind)
 
 # ---------------------------------------------------------------------------
 # Generate the datatypes file that declares all the known data types.

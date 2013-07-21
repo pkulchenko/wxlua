@@ -26,6 +26,7 @@
     #define WXMAKINGDLL_WXBINDHTML
     #define WXMAKINGDLL_WXBINDMEDIA
     #define WXMAKINGDLL_WXBINDNET
+    #define WXMAKINGDLL_WXBINDPROPGRID
     #define WXMAKINGDLL_WXBINDRICHTEXT
     #define WXMAKINGDLL_WXBINDSTC
     #define WXMAKINGDLL_WXBINDXML
@@ -191,6 +192,26 @@
     #define WXDLLIMPEXP_FWD_BINDWXNET
 #else
     #define WXDLLIMPEXP_FWD_BINDWXNET WXDLLIMPEXP_BINDWXNET
+#endif
+
+// --------------------------------------------------------------------------
+
+#if defined(WXMAKINGDLL_BINDWXPROPGRID) || defined(WXMAKINGDLL_WXBINDPROPGRID)
+    #define WXDLLIMPEXP_BINDWXPROPGRID WXEXPORT
+    #define WXDLLIMPEXP_DATA_BINDWXPROPGRID(type) WXEXPORT type
+#elif defined(WXUSINGDLL)
+    #define WXDLLIMPEXP_BINDWXPROPGRID WXIMPORT
+    #define WXDLLIMPEXP_DATA_BINDWXPROPGRID(type) WXIMPORT type
+#else // not making nor using DLL
+    #define WXDLLIMPEXP_BINDWXPROPGRID
+    #define WXDLLIMPEXP_DATA_BINDWXPROPGRID(type) type
+#endif
+
+// Forward declare classes with this macro
+#if defined(HAVE_VISIBILITY) || (defined(__WINDOWS__) && defined(__GNUC__))
+    #define WXDLLIMPEXP_FWD_BINDWXPROPGRID
+#else
+    #define WXDLLIMPEXP_FWD_BINDWXPROPGRID WXDLLIMPEXP_BINDWXPROPGRID
 #endif
 
 // --------------------------------------------------------------------------

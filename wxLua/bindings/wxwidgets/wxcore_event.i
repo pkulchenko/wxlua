@@ -57,7 +57,7 @@ class %delete wxEvtHandler : public wxObject
 
 enum Propagation_state
 {
-    wxEVENT_PROPAGATE_NONE // don't propagate it at all
+    wxEVENT_PROPAGATE_NONE, // don't propagate it at all
     wxEVENT_PROPAGATE_MAX  // propagate it until it is processed
 };
 
@@ -310,108 +310,108 @@ class %delete wxPaletteChangedEvent : public wxEvent
 
 enum wxKeyCode
 {
-    WXK_ADD
-    WXK_ALT
-    WXK_BACK
-    WXK_CANCEL
-    WXK_CAPITAL
-    WXK_CLEAR
-    WXK_CONTROL
-    WXK_DECIMAL
-    WXK_DELETE
-    WXK_DIVIDE
-    WXK_DOWN
-    WXK_END
-    WXK_ESCAPE
-    WXK_EXECUTE
-    WXK_F1
-    WXK_F10
-    WXK_F11
-    WXK_F12
-    WXK_F13
-    WXK_F14
-    WXK_F15
-    WXK_F16
-    WXK_F17
-    WXK_F18
-    WXK_F19
-    WXK_F2
-    WXK_F20
-    WXK_F21
-    WXK_F22
-    WXK_F23
-    WXK_F24
-    WXK_F3
-    WXK_F4
-    WXK_F5
-    WXK_F6
-    WXK_F7
-    WXK_F8
-    WXK_F9
-    WXK_HELP
-    WXK_HOME
-    WXK_INSERT
-    WXK_LBUTTON
-    WXK_LEFT
-    WXK_MBUTTON
-    WXK_MENU
-    WXK_MULTIPLY
+    WXK_ADD,
+    WXK_ALT,
+    WXK_BACK,
+    WXK_CANCEL,
+    WXK_CAPITAL,
+    WXK_CLEAR,
+    WXK_CONTROL,
+    WXK_DECIMAL,
+    WXK_DELETE,
+    WXK_DIVIDE,
+    WXK_DOWN,
+    WXK_END,
+    WXK_ESCAPE,
+    WXK_EXECUTE,
+    WXK_F1,
+    WXK_F10,
+    WXK_F11,
+    WXK_F12,
+    WXK_F13,
+    WXK_F14,
+    WXK_F15,
+    WXK_F16,
+    WXK_F17,
+    WXK_F18,
+    WXK_F19,
+    WXK_F2,
+    WXK_F20,
+    WXK_F21,
+    WXK_F22,
+    WXK_F23,
+    WXK_F24,
+    WXK_F3,
+    WXK_F4,
+    WXK_F5,
+    WXK_F6,
+    WXK_F7,
+    WXK_F8,
+    WXK_F9,
+    WXK_HELP,
+    WXK_HOME,
+    WXK_INSERT,
+    WXK_LBUTTON,
+    WXK_LEFT,
+    WXK_MBUTTON,
+    WXK_MENU,
+    WXK_MULTIPLY,
     //WXK_NEXT = WXK_PAGEDOWN since 2.6
-    WXK_NUMLOCK
-    WXK_NUMPAD_ADD
-    WXK_NUMPAD_BEGIN
-    WXK_NUMPAD_DECIMAL
-    WXK_NUMPAD_DELETE
-    WXK_NUMPAD_DIVIDE
-    WXK_NUMPAD_DOWN
-    WXK_NUMPAD_END
-    WXK_NUMPAD_ENTER
-    WXK_NUMPAD_EQUAL
-    WXK_NUMPAD_F1
-    WXK_NUMPAD_F2
-    WXK_NUMPAD_F3
-    WXK_NUMPAD_F4
-    WXK_NUMPAD_HOME
-    WXK_NUMPAD_INSERT
-    WXK_NUMPAD_LEFT
-    WXK_NUMPAD_MULTIPLY
+    WXK_NUMLOCK,
+    WXK_NUMPAD_ADD,
+    WXK_NUMPAD_BEGIN,
+    WXK_NUMPAD_DECIMAL,
+    WXK_NUMPAD_DELETE,
+    WXK_NUMPAD_DIVIDE,
+    WXK_NUMPAD_DOWN,
+    WXK_NUMPAD_END,
+    WXK_NUMPAD_ENTER,
+    WXK_NUMPAD_EQUAL,
+    WXK_NUMPAD_F1,
+    WXK_NUMPAD_F2,
+    WXK_NUMPAD_F3,
+    WXK_NUMPAD_F4,
+    WXK_NUMPAD_HOME,
+    WXK_NUMPAD_INSERT,
+    WXK_NUMPAD_LEFT,
+    WXK_NUMPAD_MULTIPLY,
     // WXK_NUMPAD_NEXT = WXK_NUMPAD_PAGEDOWN since 2.6
-    WXK_NUMPAD_PAGEDOWN
-    WXK_NUMPAD_PAGEUP
+    WXK_NUMPAD_PAGEDOWN,
+    WXK_NUMPAD_PAGEUP,
     // WXK_NUMPAD_PRIOR = WXK_NUMPAD_PAGEUP since 2.6
-    WXK_NUMPAD_RIGHT
-    WXK_NUMPAD_SEPARATOR
-    WXK_NUMPAD_SPACE
-    WXK_NUMPAD_SUBTRACT
-    WXK_NUMPAD_TAB
-    WXK_NUMPAD_UP
-    WXK_NUMPAD0
-    WXK_NUMPAD1
-    WXK_NUMPAD2
-    WXK_NUMPAD3
-    WXK_NUMPAD4
-    WXK_NUMPAD5
-    WXK_NUMPAD6
-    WXK_NUMPAD7
-    WXK_NUMPAD8
-    WXK_NUMPAD9
-    WXK_PAGEDOWN
-    WXK_PAGEUP
-    WXK_PAUSE
-    WXK_PRINT
+    WXK_NUMPAD_RIGHT,
+    WXK_NUMPAD_SEPARATOR,
+    WXK_NUMPAD_SPACE,
+    WXK_NUMPAD_SUBTRACT,
+    WXK_NUMPAD_TAB,
+    WXK_NUMPAD_UP,
+    WXK_NUMPAD0,
+    WXK_NUMPAD1,
+    WXK_NUMPAD2,
+    WXK_NUMPAD3,
+    WXK_NUMPAD4,
+    WXK_NUMPAD5,
+    WXK_NUMPAD6,
+    WXK_NUMPAD7,
+    WXK_NUMPAD8,
+    WXK_NUMPAD9,
+    WXK_PAGEDOWN,
+    WXK_PAGEUP,
+    WXK_PAUSE,
+    WXK_PRINT,
     // WXK_PRIOR = WXK_PAGEUP since 2.6
-    WXK_RBUTTON
-    WXK_RETURN
-    WXK_RIGHT
-    WXK_SCROLL
-    WXK_SELECT
-    WXK_SEPARATOR
-    WXK_SHIFT
-    WXK_SNAPSHOT
-    WXK_SPACE
-    WXK_START
-    WXK_SUBTRACT
-    WXK_TAB
+    WXK_RBUTTON,
+    WXK_RETURN,
+    WXK_RIGHT,
+    WXK_SCROLL,
+    WXK_SELECT,
+    WXK_SEPARATOR,
+    WXK_SHIFT,
+    WXK_SNAPSHOT,
+    WXK_SPACE,
+    WXK_START,
+    WXK_SUBTRACT,
+    WXK_TAB,
     WXK_UP
 };
 
@@ -455,9 +455,9 @@ class %delete wxKeyEvent : public wxEvent
 
 enum wxNavigationKeyEvent::dummy
 {
-    IsBackward
-    IsForward
-    WinChange
+    IsBackward,
+    IsForward,
+    WinChange,
     FromTab
 };
 
@@ -485,7 +485,7 @@ class %delete wxNavigationKeyEvent : public wxEvent
 
 enum wxIdleMode
 {
-    wxIDLE_PROCESS_ALL
+    wxIDLE_PROCESS_ALL,
     wxIDLE_PROCESS_SPECIFIED
 };
 
@@ -535,10 +535,10 @@ class %delete wxContextMenuEvent : public wxCommandEvent
 
 enum
 {
-    wxMOUSE_BTN_ANY
-    wxMOUSE_BTN_NONE
-    wxMOUSE_BTN_LEFT
-    wxMOUSE_BTN_MIDDLE
+    wxMOUSE_BTN_ANY,
+    wxMOUSE_BTN_NONE,
+    wxMOUSE_BTN_LEFT,
+    wxMOUSE_BTN_MIDDLE,
     wxMOUSE_BTN_RIGHT
 };
 
@@ -868,17 +868,17 @@ class %delete wxDisplayChangedEvent : public wxEvent
 
 enum wxPowerType
 {
-    wxPOWER_SOCKET
-    wxPOWER_BATTERY
+    wxPOWER_SOCKET,
+    wxPOWER_BATTERY,
     wxPOWER_UNKNOWN
 };
 
 enum wxBatteryState
 {
-    wxBATTERY_NORMAL_STATE     // system is fully usable
-    wxBATTERY_LOW_STATE        // start to worry
-    wxBATTERY_CRITICAL_STATE   // save quickly
-    wxBATTERY_SHUTDOWN_STATE   // too late
+    wxBATTERY_NORMAL_STATE,     // system is fully usable
+    wxBATTERY_LOW_STATE,        // start to worry
+    wxBATTERY_CRITICAL_STATE,   // save quickly
+    wxBATTERY_SHUTDOWN_STATE,   // too late
     wxBATTERY_UNKNOWN_STATE
 };
 
@@ -930,7 +930,7 @@ class %delete wxSetCursorEvent : public wxEvent
 
 enum wxUpdateUIMode
 {
-    wxUPDATE_UI_PROCESS_ALL
+    wxUPDATE_UI_PROCESS_ALL,
     wxUPDATE_UI_PROCESS_SPECIFIED
 };
 
@@ -968,8 +968,8 @@ class %delete wxUpdateUIEvent : public wxCommandEvent
 #if %wxchkver_2_8
 enum wxHelpEvent::Origin
 {
-    Origin_Unknown    // unrecognized event source
-    Origin_Keyboard   // event generated from F1 key press
+    Origin_Unknown,    // unrecognized event source
+    Origin_Keyboard,   // event generated from F1 key press
     Origin_HelpButton // event from [?] button on the title bar (Windows );
 };
 #endif //%wxchkver_2_8

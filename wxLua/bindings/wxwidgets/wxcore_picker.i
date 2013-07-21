@@ -101,10 +101,10 @@ class %delete wxColourPickerEvent : public wxCommandEvent
 
 enum
 {
-    wxDP_SPIN           // MSW only
-    wxDP_DROPDOWN
-    wxDP_DEFAULT
-    wxDP_ALLOWNONE
+    wxDP_SPIN,           // MSW only
+    wxDP_DROPDOWN,
+    wxDP_DEFAULT,
+    wxDP_ALLOWNONE,
     wxDP_SHOWCENTURY
 };
 

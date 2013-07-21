@@ -65,40 +65,40 @@ bool wxCHECK_VERSION_FULL(int major, int minor, int release, int subrel); // act
 #if !%wxchkver_2_8
 enum
 {
-    wxUNKNOWN_PLATFORM
-    wxCURSES
-    wxXVIEW_X
-    wxMOTIF_X
-    wxCOSE_X
-    wxNEXTSTEP
-    wxMAC
-    wxMAC_DARWIN
-    wxBEOS
-    wxGTK
-    wxGTK_WIN32
-    wxGTK_OS2
-    wxGTK_BEOS
-    wxGEOS
-    wxOS2_PM
-    wxWINDOWS
-    wxMICROWINDOWS
-    wxPENWINDOWS
-    wxWINDOWS_NT
-    wxWIN32S
-    wxWIN95
-    wxWIN386
-    wxWINDOWS_CE
-    wxWINDOWS_POCKETPC
-    wxWINDOWS_SMARTPHONE
-    wxMGL_UNIX
-    wxMGL_X
-    wxMGL_WIN32
-    wxMGL_OS2
-    wxMGL_DOS
-    wxWINDOWS_OS2
-    wxUNIX
-    wxX11
-    wxPALMOS
+    wxUNKNOWN_PLATFORM,
+    wxCURSES,
+    wxXVIEW_X,
+    wxMOTIF_X,
+    wxCOSE_X,
+    wxNEXTSTEP,
+    wxMAC,
+    wxMAC_DARWIN,
+    wxBEOS,
+    wxGTK,
+    wxGTK_WIN32,
+    wxGTK_OS2,
+    wxGTK_BEOS,
+    wxGEOS,
+    wxOS2_PM,
+    wxWINDOWS,
+    wxMICROWINDOWS,
+    wxPENWINDOWS,
+    wxWINDOWS_NT,
+    wxWIN32S,
+    wxWIN95,
+    wxWIN386,
+    wxWINDOWS_CE,
+    wxWINDOWS_POCKETPC,
+    wxWINDOWS_SMARTPHONE,
+    wxMGL_UNIX,
+    wxMGL_X,
+    wxMGL_WIN32,
+    wxMGL_OS2,
+    wxMGL_DOS,
+    wxWINDOWS_OS2,
+    wxUNIX,
+    wxX11,
+    wxPALMOS,
     wxDOS
 };
 #endif // !%wxchkver_2_8
@@ -158,68 +158,68 @@ class wxSystemOptions : public wxObject
 
 enum wxOperatingSystemId
 {
-    wxOS_UNKNOWN                     // returned on error
+    wxOS_UNKNOWN,                     // returned on error
 
-    wxOS_MAC_OS                      // Apple Mac OS 8/9/X with Mac paths
-    wxOS_MAC_OSX_DARWIN              // Apple Mac OS X with Unix paths
-    wxOS_MAC                         // wxOS_MAC_OS|wxOS_MAC_OSX_DARWIN,
+    wxOS_MAC_OS,                      // Apple Mac OS 8/9/X with Mac paths
+    wxOS_MAC_OSX_DARWIN,              // Apple Mac OS X with Unix paths
+    wxOS_MAC,                         // wxOS_MAC_OS|wxOS_MAC_OSX_DARWIN,
 
-    wxOS_WINDOWS_9X                   // Windows 9x family (95/98/ME );
-    wxOS_WINDOWS_NT                   // Windows NT family (NT/2000/XP );
-    wxOS_WINDOWS_MICRO                // MicroWindows
-    wxOS_WINDOWS_CE                   // Windows CE (Window Mobile );
-    wxOS_WINDOWS                      //  wxOS_WINDOWS_9X|wxOS_WINDOWS_NT|wxOS_WINDOWS_MICRO|wxOS_WINDOWS_CE,
+    wxOS_WINDOWS_9X,                   // Windows 9x family (95/98/ME );
+    wxOS_WINDOWS_NT,                   // Windows NT family (NT/2000/XP );
+    wxOS_WINDOWS_MICRO,                // MicroWindows
+    wxOS_WINDOWS_CE,                   // Windows CE (Window Mobile );
+    wxOS_WINDOWS,                      //  wxOS_WINDOWS_9X|wxOS_WINDOWS_NT|wxOS_WINDOWS_MICRO|wxOS_WINDOWS_CE,
 
-    wxOS_UNIX_LINUX                    // Linux
-    wxOS_UNIX_FREEBSD                  // FreeBSD
-    wxOS_UNIX_OPENBSD                  // OpenBSD
-    wxOS_UNIX_NETBSD                   // NetBSD
-    wxOS_UNIX_SOLARIS                  // SunOS
-    wxOS_UNIX_AIX                      // AIX
-    wxOS_UNIX_HPUX                     // HP/UX
-    wxOS_UNIX                          // wxOS_UNIX_LINUX|wxOS_UNIX_FREEBSD|wxOS_UNIX_OPENBSD|wxOS_UNIX_NETBSD|wxOS_UNIX_SOLARIS|wxOS_UNIX_AIX|wxOS_UNIX_HPUX,
+    wxOS_UNIX_LINUX,                    // Linux
+    wxOS_UNIX_FREEBSD,                  // FreeBSD
+    wxOS_UNIX_OPENBSD,                  // OpenBSD
+    wxOS_UNIX_NETBSD,                   // NetBSD
+    wxOS_UNIX_SOLARIS,                  // SunOS
+    wxOS_UNIX_AIX,                      // AIX
+    wxOS_UNIX_HPUX,                     // HP/UX
+    wxOS_UNIX,                          // wxOS_UNIX_LINUX|wxOS_UNIX_FREEBSD|wxOS_UNIX_OPENBSD|wxOS_UNIX_NETBSD|wxOS_UNIX_SOLARIS|wxOS_UNIX_AIX|wxOS_UNIX_HPUX,
 
-    wxOS_DOS                           // Microsoft DOS
-    wxOS_OS2                           // OS/2
+    wxOS_DOS,                           // Microsoft DOS
+    wxOS_OS2                            // OS/2
 };
 
 enum wxPortId
 {
-    wxPORT_UNKNOWN      // returned on error
+    wxPORT_UNKNOWN,      // returned on error
 
-    wxPORT_BASE         // wxBase, no native toolkit used
+    wxPORT_BASE,         // wxBase, no native toolkit used
 
-    wxPORT_MSW          // wxMSW, native toolkit is Windows API
-    wxPORT_MOTIF        // wxMotif, using [Open]Motif or Lesstif
-    wxPORT_GTK          // wxGTK, using GTK+ 1.x, 2.x, GPE or Maemo
-    !%wxchkver_2_9 wxPORT_MGL          // wxMGL, using wxUniversal
-    wxPORT_X11          // wxX11, using wxUniversal
-    wxPORT_PM           // wxOS2, using OS/2 Presentation Manager
-    wxPORT_OS2          // wxOS2, using OS/2 Presentation Manager
-    wxPORT_MAC          // wxMac, using Carbon or Classic Mac API
-    wxPORT_COCOA        // wxCocoa, using Cocoa NextStep/Mac API
-    wxPORT_WINCE        // wxWinCE, toolkit is WinCE SDK API
-    !%wxchkver_2_9 wxPORT_PALMOS       // wxPalmOS, toolkit is PalmOS API
-    wxPORT_DFB          // wxDFB, using wxUniversal
+    wxPORT_MSW,          // wxMSW, native toolkit is Windows API
+    wxPORT_MOTIF,        // wxMotif, using [Open]Motif or Lesstif
+    wxPORT_GTK,          // wxGTK, using GTK+ 1.x, 2.x, GPE or Maemo
+    !%wxchkver_2_9 wxPORT_MGL,          // wxMGL, using wxUniversal
+    wxPORT_X11,          // wxX11, using wxUniversal
+    wxPORT_PM,           // wxOS2, using OS/2 Presentation Manager
+    wxPORT_OS2,          // wxOS2, using OS/2 Presentation Manager
+    wxPORT_MAC,          // wxMac, using Carbon or Classic Mac API
+    wxPORT_COCOA,        // wxCocoa, using Cocoa NextStep/Mac API
+    wxPORT_WINCE,        // wxWinCE, toolkit is WinCE SDK API
+    !%wxchkver_2_9 wxPORT_PALMOS,       // wxPalmOS, toolkit is PalmOS API
+    wxPORT_DFB           // wxDFB, using wxUniversal
 };
 
 enum wxArchitecture
 {
-    wxARCH_INVALID         // returned on error
+    wxARCH_INVALID,         // returned on error
 
-    wxARCH_32              // 32 bit
-    wxARCH_64
+    wxARCH_32,              // 32 bit
+    wxARCH_64,
 
     wxARCH_MAX
 };
 
 enum wxEndianness
 {
-    wxENDIAN_INVALID           // returned on error
+    wxENDIAN_INVALID,           // returned on error
 
-    wxENDIAN_BIG               // 4321
-    wxENDIAN_LITTLE            // 1234
-    wxENDIAN_PDP               // 3412
+    wxENDIAN_BIG,               // 4321
+    wxENDIAN_LITTLE,            // 1234
+    wxENDIAN_PDP,               // 3412
 
     wxENDIAN_MAX
 };
@@ -507,19 +507,19 @@ class %delete wxLogStream : public wxLog
 
 enum wxDLFlags
 {
-    wxDL_LAZY       // resolve undefined symbols at first use
+    wxDL_LAZY,       // resolve undefined symbols at first use
                     // (only works on some Unix versions );
-    wxDL_NOW        // resolve undefined symbols on load
+    wxDL_NOW,        // resolve undefined symbols on load
                     // (default, always the case under Win32 );
-    wxDL_GLOBAL     // export extern symbols to subsequently
+    wxDL_GLOBAL,     // export extern symbols to subsequently
                     // loaded libs.
-    wxDL_VERBATIM   // attempt to load the supplied library
+    wxDL_VERBATIM,   // attempt to load the supplied library
                     // name without appending the usual dll
                     // filename extension.
-    wxDL_NOSHARE    // load new DLL, don't reuse already loaded
+    wxDL_NOSHARE,    // load new DLL, don't reuse already loaded
                     // (only for wxPluginManager );
 
-    wxDL_DEFAULT    // = wxDL_NOW // default flags correspond to Win32
+    wxDL_DEFAULT,    // = wxDL_NOW // default flags correspond to Win32
 };
 
 enum wxDynamicLibraryCategory
@@ -689,17 +689,17 @@ class %delete wxCriticalSectionLocker
 
 enum
 {
-    wxRE_EXTENDED
-    wxRE_BASIC
-    wxRE_ICASE
-    wxRE_NOSUB
-    wxRE_NEWLINE
+    wxRE_EXTENDED,
+    wxRE_BASIC,
+    wxRE_ICASE,
+    wxRE_NOSUB,
+    wxRE_NEWLINE,
     wxRE_DEFAULT
 };
 
 enum
 {
-    wxRE_NOTBOL
+    wxRE_NOTBOL,
     wxRE_NOTEOL
 };
 

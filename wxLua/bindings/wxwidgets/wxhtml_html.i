@@ -305,8 +305,8 @@ class %delete wxLuaHtmlWinTagEvent : public wxEvent
 
 //enum wxHtmlURLType
 //{
-//    wxHTML_URL_PAGE
-//    wxHTML_URL_IMAGE
+//    wxHTML_URL_PAGE,
+//    wxHTML_URL_IMAGE,
 //    wxHTML_URL_OTHER
 //};
 
@@ -387,8 +387,8 @@ class wxHtmlWinParser : public wxHtmlParser
 
 enum wxHtmlWindowInterface::HTMLCursor
 {
-    HTMLCursor_Default
-    HTMLCursor_Link
+    HTMLCursor_Default,
+    HTMLCursor_Link,
     HTMLCursor_Text
 };
 

@@ -27,51 +27,51 @@ void wxWakeUpIdle( );
 
 enum
 {
-    wxEXEC_ASYNC
-    wxEXEC_SYNC
-    wxEXEC_NOHIDE
-    wxEXEC_MAKE_GROUP_LEADER
+    wxEXEC_ASYNC,
+    wxEXEC_SYNC,
+    wxEXEC_NOHIDE,
+    wxEXEC_MAKE_GROUP_LEADER,
     wxEXEC_NODISABLE
 };
 
 enum
 {
-    wxPROCESS_DEFAULT
+    wxPROCESS_DEFAULT,
     wxPROCESS_REDIRECT
 };
 
 enum wxSignal
 {
-    wxSIGNONE
-    wxSIGHUP
-    wxSIGINT
-    wxSIGQUIT
-    wxSIGILL
-    wxSIGTRAP
-    wxSIGABRT
-    wxSIGEMT
-    wxSIGFPE
-    wxSIGKILL
-    wxSIGBUS
-    wxSIGSEGV
-    wxSIGSYS
-    wxSIGPIPE
-    wxSIGALRM
+    wxSIGNONE,
+    wxSIGHUP,
+    wxSIGINT,
+    wxSIGQUIT,
+    wxSIGILL,
+    wxSIGTRAP,
+    wxSIGABRT,
+    wxSIGEMT,
+    wxSIGFPE,
+    wxSIGKILL,
+    wxSIGBUS,
+    wxSIGSEGV,
+    wxSIGSYS,
+    wxSIGPIPE,
+    wxSIGALRM,
     wxSIGTERM
 };
 
 enum wxKillError
 {
-    wxKILL_OK
-    wxKILL_BAD_SIGNAL
-    wxKILL_ACCESS_DENIED
-    wxKILL_NO_PROCESS
+    wxKILL_OK,
+    wxKILL_BAD_SIGNAL,
+    wxKILL_ACCESS_DENIED,
+    wxKILL_NO_PROCESS,
     wxKILL_ERROR
 };
 
 enum wxKillFlags
 {
-    wxKILL_NOCHILDREN
+    wxKILL_NOCHILDREN,
     wxKILL_CHILDREN
 };
 
@@ -123,7 +123,7 @@ bool wxShell(const wxString& command = "" );
 
 enum wxShutdownFlags
 {
-    wxSHUTDOWN_POWEROFF
+    wxSHUTDOWN_POWEROFF,
     wxSHUTDOWN_REBOOT
 };
 
@@ -422,86 +422,86 @@ void wxPostEvent(wxEvtHandler *dest, wxEvent& event );
 
 enum wxOrientation
 {
-    wxHORIZONTAL
-    wxVERTICAL
+    wxHORIZONTAL,
+    wxVERTICAL,
     wxBOTH
 };
 
 enum wxDirection
 {
-    wxLEFT
-    wxRIGHT
-    wxUP
-    wxDOWN
-    wxTOP
-    wxBOTTOM
-    wxNORTH
-    wxSOUTH
-    wxWEST
-    wxEAST
+    wxLEFT,
+    wxRIGHT,
+    wxUP,
+    wxDOWN,
+    wxTOP,
+    wxBOTTOM,
+    wxNORTH,
+    wxSOUTH,
+    wxWEST,
+    wxEAST,
     wxALL
 };
 
 enum wxAlignment
 {
-    wxALIGN_NOT
-    wxALIGN_CENTER_HORIZONTAL
-    wxALIGN_CENTRE_HORIZONTAL
-    wxALIGN_LEFT
-    wxALIGN_TOP
-    wxALIGN_RIGHT
-    wxALIGN_BOTTOM
-    wxALIGN_CENTER_VERTICAL
-    wxALIGN_CENTRE_VERTICAL
-    wxALIGN_CENTER
-    wxALIGN_CENTRE
+    wxALIGN_NOT,
+    wxALIGN_CENTER_HORIZONTAL,
+    wxALIGN_CENTRE_HORIZONTAL,
+    wxALIGN_LEFT,
+    wxALIGN_TOP,
+    wxALIGN_RIGHT,
+    wxALIGN_BOTTOM,
+    wxALIGN_CENTER_VERTICAL,
+    wxALIGN_CENTRE_VERTICAL,
+    wxALIGN_CENTER,
+    wxALIGN_CENTRE,
     wxALIGN_MASK
 };
 
 enum wxStretch
 {
-    wxSTRETCH_NOT
-    wxSHRINK
-    wxGROW
-    wxEXPAND
-    wxSHAPED
-    wxTILE
+    wxSTRETCH_NOT,
+    wxSHRINK,
+    wxGROW,
+    wxEXPAND,
+    wxSHAPED,
+    wxTILE,
 
-    wxADJUST_MINSIZE // deprecated after 2.4 and takes the value of 0
+    wxADJUST_MINSIZE, // deprecated after 2.4 and takes the value of 0
 
-    %wxchkver_2_8_8 wxFIXED_MINSIZE
+    %wxchkver_2_8_8 wxFIXED_MINSIZE,
     %wxchkver_2_8_8 wxRESERVE_SPACE_EVEN_IF_HIDDEN
 };
 
 enum wxBorder
 {
-    wxBORDER_DEFAULT
-    wxBORDER_NONE
-    wxBORDER_STATIC
-    wxBORDER_SIMPLE
-    wxBORDER_RAISED
-    wxBORDER_SUNKEN
-    wxBORDER_DOUBLE
+    wxBORDER_DEFAULT,
+    wxBORDER_NONE,
+    wxBORDER_STATIC,
+    wxBORDER_SIMPLE,
+    wxBORDER_RAISED,
+    wxBORDER_SUNKEN,
+    wxBORDER_DOUBLE,
     wxBORDER_MASK
 };
 
 enum wxBackgroundStyle
 {
-    wxBG_STYLE_SYSTEM
-    wxBG_STYLE_COLOUR
+    wxBG_STYLE_SYSTEM,
+    wxBG_STYLE_COLOUR,
     wxBG_STYLE_CUSTOM
 };
 
 enum wxKeyModifier
 {
-    wxMOD_NONE
-    wxMOD_ALT
-    wxMOD_CONTROL
-    wxMOD_ALTGR
-    wxMOD_SHIFT
-    wxMOD_META
-    wxMOD_WIN
-    wxMOD_CMD
+    wxMOD_NONE,
+    wxMOD_ALT,
+    wxMOD_CONTROL,
+    wxMOD_ALTGR,
+    wxMOD_SHIFT,
+    wxMOD_META,
+    wxMOD_WIN,
+    wxMOD_CMD,
     wxMOD_ALL
 };
 

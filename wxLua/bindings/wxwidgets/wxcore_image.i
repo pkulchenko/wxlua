@@ -14,39 +14,39 @@
 
 enum wxBitmapType
 {
-    wxBITMAP_TYPE_INVALID
-    wxBITMAP_TYPE_BMP
-    wxBITMAP_TYPE_BMP_RESOURCE
-    wxBITMAP_TYPE_RESOURCE
-    wxBITMAP_TYPE_ICO
-    wxBITMAP_TYPE_ICO_RESOURCE
-    wxBITMAP_TYPE_CUR
-    wxBITMAP_TYPE_CUR_RESOURCE
-    wxBITMAP_TYPE_XBM
-    wxBITMAP_TYPE_XBM_DATA
-    wxBITMAP_TYPE_XPM
-    wxBITMAP_TYPE_XPM_DATA
-    wxBITMAP_TYPE_TIF
-    wxBITMAP_TYPE_TIF_RESOURCE
-    wxBITMAP_TYPE_GIF
-    wxBITMAP_TYPE_GIF_RESOURCE
-    wxBITMAP_TYPE_PNG
-    wxBITMAP_TYPE_PNG_RESOURCE
-    wxBITMAP_TYPE_JPEG
-    wxBITMAP_TYPE_JPEG_RESOURCE
-    wxBITMAP_TYPE_PNM
-    wxBITMAP_TYPE_PNM_RESOURCE
-    wxBITMAP_TYPE_PCX
-    wxBITMAP_TYPE_PCX_RESOURCE
-    wxBITMAP_TYPE_PICT
-    wxBITMAP_TYPE_PICT_RESOURCE
-    wxBITMAP_TYPE_ICON
-    wxBITMAP_TYPE_ICON_RESOURCE
-    wxBITMAP_TYPE_ANI
-    wxBITMAP_TYPE_IFF
-    %wxchkver_2_8 wxBITMAP_TYPE_TGA
-    wxBITMAP_TYPE_MACCURSOR
-    wxBITMAP_TYPE_MACCURSOR_RESOURCE
+    wxBITMAP_TYPE_INVALID,
+    wxBITMAP_TYPE_BMP,
+    wxBITMAP_TYPE_BMP_RESOURCE,
+    wxBITMAP_TYPE_RESOURCE,
+    wxBITMAP_TYPE_ICO,
+    wxBITMAP_TYPE_ICO_RESOURCE,
+    wxBITMAP_TYPE_CUR,
+    wxBITMAP_TYPE_CUR_RESOURCE,
+    wxBITMAP_TYPE_XBM,
+    wxBITMAP_TYPE_XBM_DATA,
+    wxBITMAP_TYPE_XPM,
+    wxBITMAP_TYPE_XPM_DATA,
+    wxBITMAP_TYPE_TIF,
+    wxBITMAP_TYPE_TIF_RESOURCE,
+    wxBITMAP_TYPE_GIF,
+    wxBITMAP_TYPE_GIF_RESOURCE,
+    wxBITMAP_TYPE_PNG,
+    wxBITMAP_TYPE_PNG_RESOURCE,
+    wxBITMAP_TYPE_JPEG,
+    wxBITMAP_TYPE_JPEG_RESOURCE,
+    wxBITMAP_TYPE_PNM,
+    wxBITMAP_TYPE_PNM_RESOURCE,
+    wxBITMAP_TYPE_PCX,
+    wxBITMAP_TYPE_PCX_RESOURCE,
+    wxBITMAP_TYPE_PICT,
+    wxBITMAP_TYPE_PICT_RESOURCE,
+    wxBITMAP_TYPE_ICON,
+    wxBITMAP_TYPE_ICON_RESOURCE,
+    wxBITMAP_TYPE_ANI,
+    wxBITMAP_TYPE_IFF,
+    %wxchkver_2_8 wxBITMAP_TYPE_TGA,
+    wxBITMAP_TYPE_MACCURSOR,
+    wxBITMAP_TYPE_MACCURSOR_RESOURCE,
     wxBITMAP_TYPE_ANY
 };
 
@@ -75,7 +75,7 @@ enum wxBitmapType
 enum
 {
     // constants used with wxIMAGE_OPTION_RESOLUTIONUNIT
-    wxIMAGE_RESOLUTION_INCHES
+    wxIMAGE_RESOLUTION_INCHES,
     wxIMAGE_RESOLUTION_CM
 };
 
@@ -83,13 +83,13 @@ enum
 enum wxImageResizeQuality
 {
     // different image resizing algorithms used by Scale() and Rescale( );
-    %wxchkver_2_9_2 wxIMAGE_QUALITY_NEAREST
-    %wxchkver_2_9_2 wxIMAGE_QUALITY_BILINEAR
-    %wxchkver_2_9_2 wxIMAGE_QUALITY_BICUBIC
-    %wxchkver_2_9_2 wxIMAGE_QUALITY_BOX_AVERAGE
+    %wxchkver_2_9_2 wxIMAGE_QUALITY_NEAREST,
+    %wxchkver_2_9_2 wxIMAGE_QUALITY_BILINEAR,
+    %wxchkver_2_9_2 wxIMAGE_QUALITY_BICUBIC,
+    %wxchkver_2_9_2 wxIMAGE_QUALITY_BOX_AVERAGE,
 
     // default quality is low (but fast );
-    %wxchkver_2_8 wxIMAGE_QUALITY_NORMAL
+    %wxchkver_2_8 wxIMAGE_QUALITY_NORMAL,
 
     // highest (but best) quality
     %wxchkver_2_8 wxIMAGE_QUALITY_HIGH
@@ -318,15 +318,15 @@ class %delete wxImageHandler : public wxObject
 
 enum
 {
-    wxBMP_24BPP
-    //wxBMP_16BPP  - remmed out in wxWidgets
-    wxBMP_8BPP
-    wxBMP_8BPP_GREY
-    wxBMP_8BPP_GRAY
-    wxBMP_8BPP_RED
-    wxBMP_8BPP_PALETTE
-    wxBMP_4BPP
-    wxBMP_1BPP
+    wxBMP_24BPP,
+    //wxBMP_16BPP,  - remmed out in wxWidgets
+    wxBMP_8BPP,
+    wxBMP_8BPP_GREY,
+    wxBMP_8BPP_GRAY,
+    wxBMP_8BPP_RED,
+    wxBMP_8BPP_PALETTE,
+    wxBMP_4BPP,
+    wxBMP_1BPP,
     wxBMP_1BPP_BW
 };
 
@@ -424,8 +424,8 @@ class %delete wxPCXHandler : public wxImageHandler
 
 enum
 {
-    wxPNG_TYPE_COLOUR
-    wxPNG_TYPE_GREY
+    wxPNG_TYPE_COLOUR,
+    wxPNG_TYPE_GREY,
     wxPNG_TYPE_GREY_RED
 };
 

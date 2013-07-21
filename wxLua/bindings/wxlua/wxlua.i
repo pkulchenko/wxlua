@@ -81,17 +81,17 @@ bool ungcobject(void* object );
 
 enum wxLuaMethod_Type      // The type of a Lua method
 {
-    WXLUAMETHOD_CONSTRUCTOR // constructor
-    WXLUAMETHOD_METHOD      // class member function
-    WXLUAMETHOD_CFUNCTION   // global C function (not part of a class );
-    WXLUAMETHOD_GETPROP     // Get %property funcName, read
-    WXLUAMETHOD_SETPROP     // Set %property funcName, write
+    WXLUAMETHOD_CONSTRUCTOR, // constructor
+    WXLUAMETHOD_METHOD,      // class member function
+    WXLUAMETHOD_CFUNCTION,   // global C function (not part of a class)
+    WXLUAMETHOD_GETPROP,     // Get %property funcName, read
+    WXLUAMETHOD_SETPROP,     // Set %property funcName, write
 
-    WXLUAMETHOD_STATIC      // Class member function is static
+    WXLUAMETHOD_STATIC,      // Class member function is static
 
-    WXLUAMETHOD_DELETE      // This is the delete function that wxLua has generated
-                            // to delete this class and is not part of the
-                            // original class.
+    WXLUAMETHOD_DELETE       // This is the delete function that wxLua has generated
+                             // to delete this class and is not part of the
+                             // original class.
 };
 
 #define WXLUA_TNONE
@@ -255,10 +255,10 @@ class %delete wxLuaState : public wxObject
 
 enum wxLuaObject_Type
 {
-    wxLUAOBJECT_NONE
-    wxLUAOBJECT_BOOL
-    wxLUAOBJECT_INT
-    wxLUAOBJECT_STRING
+    wxLUAOBJECT_NONE,
+    wxLUAOBJECT_BOOL,
+    wxLUAOBJECT_INT,
+    wxLUAOBJECT_STRING,
     wxLUAOBJECT_ARRAYINT
 };
 

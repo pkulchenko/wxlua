@@ -192,6 +192,10 @@ wxLuaBindNumber* wxLuaGetDefineList_wxbase(size_t &count)
         { "wxDIR", wxDIR },
 #endif // wxLUA_USE_wxFileName
 
+#if (wxLUA_USE_wxDir) && (wxCHECK_VERSION(2,9,4))
+        { "wxDIR_CONTINUE", wxDIR_CONTINUE },
+#endif // (wxLUA_USE_wxDir) && (wxCHECK_VERSION(2,9,4))
+
 #if wxLUA_USE_wxDir
         { "wxDIR_DEFAULT", wxDIR_DEFAULT },
         { "wxDIR_DIRS", wxDIR_DIRS },
@@ -199,6 +203,18 @@ wxLuaBindNumber* wxLuaGetDefineList_wxbase(size_t &count)
         { "wxDIR_FILES", wxDIR_FILES },
         { "wxDIR_HIDDEN", wxDIR_HIDDEN },
 #endif // wxLUA_USE_wxDir
+
+#if (wxLUA_USE_wxDir) && (wxCHECK_VERSION(2,9,4))
+        { "wxDIR_IGNORE", wxDIR_IGNORE },
+#endif // (wxLUA_USE_wxDir) && (wxCHECK_VERSION(2,9,4))
+
+#if (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxDir)
+        { "wxDIR_NO_FOLLOW", wxDIR_NO_FOLLOW },
+#endif // (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxDir)
+
+#if (wxLUA_USE_wxDir) && (wxCHECK_VERSION(2,9,4))
+        { "wxDIR_STOP", wxDIR_STOP },
+#endif // (wxLUA_USE_wxDir) && (wxCHECK_VERSION(2,9,4))
 
         { "wxDL_DEFAULT", wxDL_DEFAULT },
         { "wxDL_GLOBAL", wxDL_GLOBAL },

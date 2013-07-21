@@ -22,30 +22,30 @@
 
 enum wxAuiToolBarStyle
 {
-    wxAUI_TB_TEXT          //= 1 << 0,
-    wxAUI_TB_NO_TOOLTIPS   //= 1 << 1,
-    wxAUI_TB_NO_AUTORESIZE //= 1 << 2,
-    wxAUI_TB_GRIPPER       //= 1 << 3,
-    wxAUI_TB_OVERFLOW      //= 1 << 4,
-    wxAUI_TB_VERTICAL      //= 1 << 5,
-    wxAUI_TB_HORZ_LAYOUT   //= 1 << 6,
-    wxAUI_TB_HORZ_TEXT     //= (wxAUI_TB_HORZ_LAYOUT | wxAUI_TB_TEXT),
-    wxAUI_TB_DEFAULT_STYLE //= 0
+    wxAUI_TB_TEXT,          //= 1 << 0,
+    wxAUI_TB_NO_TOOLTIPS,   //= 1 << 1,
+    wxAUI_TB_NO_AUTORESIZE, //= 1 << 2,
+    wxAUI_TB_GRIPPER,       //= 1 << 3,
+    wxAUI_TB_OVERFLOW,      //= 1 << 4,
+    wxAUI_TB_VERTICAL,      //= 1 << 5,
+    wxAUI_TB_HORZ_LAYOUT,   //= 1 << 6,
+    wxAUI_TB_HORZ_TEXT,     //= (wxAUI_TB_HORZ_LAYOUT | wxAUI_TB_TEXT),
+    wxAUI_TB_DEFAULT_STYLE  //= 0
 };
 
 enum wxAuiToolBarArtSetting
 {
-    wxAUI_TBART_SEPARATOR_SIZE //= 0,
-    wxAUI_TBART_GRIPPER_SIZE   //= 1,
-    wxAUI_TBART_OVERFLOW_SIZE  //= 2
+    wxAUI_TBART_SEPARATOR_SIZE, //= 0,
+    wxAUI_TBART_GRIPPER_SIZE,   //= 1,
+    wxAUI_TBART_OVERFLOW_SIZE   //= 2
 };
 
 enum wxAuiToolBarToolTextOrientation
 {
-    wxAUI_TBTOOL_TEXT_LEFT   //= 0,     // unused/unimplemented
-    wxAUI_TBTOOL_TEXT_RIGHT  //= 1,
-    wxAUI_TBTOOL_TEXT_TOP    //= 2,      // unused/unimplemented
-    wxAUI_TBTOOL_TEXT_BOTTOM //= 3
+    wxAUI_TBTOOL_TEXT_LEFT,   //= 0,     // unused/unimplemented
+    wxAUI_TBTOOL_TEXT_RIGHT,  //= 1,
+    wxAUI_TBTOOL_TEXT_TOP,    //= 2,      // unused/unimplemented
+    wxAUI_TBTOOL_TEXT_BOTTOM  //= 3
 };
 
 // ---------------------------------------------------------------------------
@@ -307,20 +307,20 @@ class wxAuiToolBar : public wxControl
 
 enum wxAuiNotebookOption
 {
-    wxAUI_NB_TOP
-    wxAUI_NB_LEFT                 // not implemented yet
-    wxAUI_NB_RIGHT                // not implemented yet
-    wxAUI_NB_BOTTOM               // not implemented yet
-    wxAUI_NB_TAB_SPLIT
-    wxAUI_NB_TAB_MOVE
-    wxAUI_NB_TAB_EXTERNAL_MOVE
-    wxAUI_NB_TAB_FIXED_WIDTH
-    wxAUI_NB_SCROLL_BUTTONS
-    wxAUI_NB_WINDOWLIST_BUTTON
-    wxAUI_NB_CLOSE_BUTTON
-    wxAUI_NB_CLOSE_ON_ACTIVE_TAB
-    wxAUI_NB_CLOSE_ON_ALL_TABS
-    %wxchkver_2_8_6 wxAUI_NB_MIDDLE_CLICK_CLOSE
+    wxAUI_NB_TOP,
+    wxAUI_NB_LEFT,                 // not implemented yet
+    wxAUI_NB_RIGHT,                // not implemented yet
+    wxAUI_NB_BOTTOM,               // not implemented yet
+    wxAUI_NB_TAB_SPLIT,
+    wxAUI_NB_TAB_MOVE,
+    wxAUI_NB_TAB_EXTERNAL_MOVE,
+    wxAUI_NB_TAB_FIXED_WIDTH,
+    wxAUI_NB_SCROLL_BUTTONS,
+    wxAUI_NB_WINDOWLIST_BUTTON,
+    wxAUI_NB_CLOSE_BUTTON,
+    wxAUI_NB_CLOSE_ON_ACTIVE_TAB,
+    wxAUI_NB_CLOSE_ON_ALL_TABS,
+    %wxchkver_2_8_6 wxAUI_NB_MIDDLE_CLICK_CLOSE,
 
     wxAUI_NB_DEFAULT_STYLE //= wxAUI_NB_TOP|wxAUI_NB_TAB_SPLIT|wxAUI_NB_TAB_MOVE|wxAUI_NB_SCROLL_BUTTONS|wxAUI_NB_CLOSE_ON_ACTIVE_TAB|wxAUI_NB_MIDDLE_CLICK_CLOSE
 };
@@ -646,88 +646,88 @@ class wxAuiFloatingFrame : public wxFrame // wxAuiFloatingFrameBaseClass
 
 enum wxAuiManagerDock
 {
-    wxAUI_DOCK_NONE
-    wxAUI_DOCK_TOP
-    wxAUI_DOCK_RIGHT
-    wxAUI_DOCK_BOTTOM
-    wxAUI_DOCK_LEFT
-    wxAUI_DOCK_CENTER
+    wxAUI_DOCK_NONE,
+    wxAUI_DOCK_TOP,
+    wxAUI_DOCK_RIGHT,
+    wxAUI_DOCK_BOTTOM,
+    wxAUI_DOCK_LEFT,
+    wxAUI_DOCK_CENTER,
     wxAUI_DOCK_CENTRE //= wxAUI_DOCK_CENTER
 };
 
 enum wxAuiManagerOption
 {
-    wxAUI_MGR_ALLOW_FLOATING
-    wxAUI_MGR_ALLOW_ACTIVE_PANE
-    wxAUI_MGR_TRANSPARENT_DRAG
-    wxAUI_MGR_TRANSPARENT_HINT
-    wxAUI_MGR_VENETIAN_BLINDS_HINT
-    wxAUI_MGR_RECTANGLE_HINT
-    wxAUI_MGR_HINT_FADE
-    wxAUI_MGR_NO_VENETIAN_BLINDS_FADE
+    wxAUI_MGR_ALLOW_FLOATING,
+    wxAUI_MGR_ALLOW_ACTIVE_PANE,
+    wxAUI_MGR_TRANSPARENT_DRAG,
+    wxAUI_MGR_TRANSPARENT_HINT,
+    wxAUI_MGR_VENETIAN_BLINDS_HINT,
+    wxAUI_MGR_RECTANGLE_HINT,
+    wxAUI_MGR_HINT_FADE,
+    wxAUI_MGR_NO_VENETIAN_BLINDS_FADE,
 
-    wxAUI_MGR_DEFAULT //= wxAUI_MGR_ALLOW_FLOATING | wxAUI_MGR_TRANSPARENT_HINT | wxAUI_MGR_HINT_FADE | wxAUI_MGR_NO_VENETIAN_BLINDS_FADE
+    wxAUI_MGR_DEFAULT, //= wxAUI_MGR_ALLOW_FLOATING | wxAUI_MGR_TRANSPARENT_HINT | wxAUI_MGR_HINT_FADE | wxAUI_MGR_NO_VENETIAN_BLINDS_FADE
 };
 
 enum wxAuiPaneDockArtSetting
 {
-    wxAUI_DOCKART_SASH_SIZE
-    wxAUI_DOCKART_CAPTION_SIZE
-    wxAUI_DOCKART_GRIPPER_SIZE
-    wxAUI_DOCKART_PANE_BORDER_SIZE
-    wxAUI_DOCKART_PANE_BUTTON_SIZE
-    wxAUI_DOCKART_BACKGROUND_COLOUR
-    wxAUI_DOCKART_SASH_COLOUR
-    wxAUI_DOCKART_ACTIVE_CAPTION_COLOUR
-    wxAUI_DOCKART_ACTIVE_CAPTION_GRADIENT_COLOUR
-    wxAUI_DOCKART_INACTIVE_CAPTION_COLOUR
-    wxAUI_DOCKART_INACTIVE_CAPTION_GRADIENT_COLOUR
-    wxAUI_DOCKART_ACTIVE_CAPTION_TEXT_COLOUR
-    wxAUI_DOCKART_INACTIVE_CAPTION_TEXT_COLOUR
-    wxAUI_DOCKART_BORDER_COLOUR
-    wxAUI_DOCKART_GRIPPER_COLOUR
-    wxAUI_DOCKART_CAPTION_FONT
+    wxAUI_DOCKART_SASH_SIZE,
+    wxAUI_DOCKART_CAPTION_SIZE,
+    wxAUI_DOCKART_GRIPPER_SIZE,
+    wxAUI_DOCKART_PANE_BORDER_SIZE,
+    wxAUI_DOCKART_PANE_BUTTON_SIZE,
+    wxAUI_DOCKART_BACKGROUND_COLOUR,
+    wxAUI_DOCKART_SASH_COLOUR,
+    wxAUI_DOCKART_ACTIVE_CAPTION_COLOUR,
+    wxAUI_DOCKART_ACTIVE_CAPTION_GRADIENT_COLOUR,
+    wxAUI_DOCKART_INACTIVE_CAPTION_COLOUR,
+    wxAUI_DOCKART_INACTIVE_CAPTION_GRADIENT_COLOUR,
+    wxAUI_DOCKART_ACTIVE_CAPTION_TEXT_COLOUR,
+    wxAUI_DOCKART_INACTIVE_CAPTION_TEXT_COLOUR,
+    wxAUI_DOCKART_BORDER_COLOUR,
+    wxAUI_DOCKART_GRIPPER_COLOUR,
+    wxAUI_DOCKART_CAPTION_FONT,
     wxAUI_DOCKART_GRADIENT_TYPE
 };
 
 enum wxAuiPaneDockArtGradients
 {
-    wxAUI_GRADIENT_NONE
-    wxAUI_GRADIENT_VERTICAL
+    wxAUI_GRADIENT_NONE,
+    wxAUI_GRADIENT_VERTICAL,
     wxAUI_GRADIENT_HORIZONTAL
 };
 
 enum wxAuiPaneButtonState
 {
-    wxAUI_BUTTON_STATE_NORMAL
-    wxAUI_BUTTON_STATE_HOVER
-    wxAUI_BUTTON_STATE_PRESSED
-    wxAUI_BUTTON_STATE_DISABLED
-    wxAUI_BUTTON_STATE_HIDDEN
+    wxAUI_BUTTON_STATE_NORMAL,
+    wxAUI_BUTTON_STATE_HOVER,
+    wxAUI_BUTTON_STATE_PRESSED,
+    wxAUI_BUTTON_STATE_DISABLED,
+    wxAUI_BUTTON_STATE_HIDDEN,
     wxAUI_BUTTON_STATE_CHECKED
 };
 
 enum wxAuiButtonId
 {
-    wxAUI_BUTTON_CLOSE
-    wxAUI_BUTTON_MAXIMIZE_RESTORE
-    wxAUI_BUTTON_MINIMIZE
-    wxAUI_BUTTON_PIN
-    wxAUI_BUTTON_OPTIONS
-    wxAUI_BUTTON_WINDOWLIST
-    wxAUI_BUTTON_LEFT
-    wxAUI_BUTTON_RIGHT
-    wxAUI_BUTTON_UP
-    wxAUI_BUTTON_DOWN
-    wxAUI_BUTTON_CUSTOM1
-    wxAUI_BUTTON_CUSTOM2
+    wxAUI_BUTTON_CLOSE,
+    wxAUI_BUTTON_MAXIMIZE_RESTORE,
+    wxAUI_BUTTON_MINIMIZE,
+    wxAUI_BUTTON_PIN,
+    wxAUI_BUTTON_OPTIONS,
+    wxAUI_BUTTON_WINDOWLIST,
+    wxAUI_BUTTON_LEFT,
+    wxAUI_BUTTON_RIGHT,
+    wxAUI_BUTTON_UP,
+    wxAUI_BUTTON_DOWN,
+    wxAUI_BUTTON_CUSTOM1,
+    wxAUI_BUTTON_CUSTOM2,
     wxAUI_BUTTON_CUSTOM3
 };
 
 enum wxAuiPaneInsertLevel
 {
-    wxAUI_INSERT_PANE
-    wxAUI_INSERT_ROW
+    wxAUI_INSERT_PANE,
+    wxAUI_INSERT_ROW,
     wxAUI_INSERT_DOCK
 };
 
@@ -750,34 +750,34 @@ enum wxAuiPaneInsertLevel
 // in the perspective loading code.
 enum wxAuiPaneInfo::wxAuiPaneState
 {
-    optionFloating
-    optionHidden
-    optionLeftDockable
-    optionRightDockable
-    optionTopDockable
-    optionBottomDockable
-    optionFloatable
-    optionMovable
-    optionResizable
-    optionPaneBorder
-    optionCaption
-    optionGripper
-    optionDestroyOnClose
-    optionToolbar
-    optionActive
-    optionGripperTop
-    optionMaximized
+    optionFloating,
+    optionHidden,
+    optionLeftDockable,
+    optionRightDockable,
+    optionTopDockable,
+    optionBottomDockable,
+    optionFloatable,
+    optionMovable,
+    optionResizable,
+    optionPaneBorder,
+    optionCaption,
+    optionGripper,
+    optionDestroyOnClose,
+    optionToolbar,
+    optionActive,
+    optionGripperTop,
+    optionMaximized,
 
-    buttonClose
-    buttonMaximize
-    buttonMinimize
-    buttonPin
+    buttonClose,
+    buttonMaximize,
+    buttonMinimize,
+    buttonPin,
 
-    buttonCustom1
-    buttonCustom2
-    buttonCustom3
+    buttonCustom1,
+    buttonCustom2,
+    buttonCustom3,
 
-    savedHiddenState       // used internally
+    savedHiddenState,       // used internally
     actionPane             // used internally
 };
 

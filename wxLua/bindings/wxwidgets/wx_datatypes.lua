@@ -1364,6 +1364,12 @@ wx_dataTypeTable =
     Name = "wxDirPickerCtrl",
     ValueType = "class",
   },
+  wxDirTraverseResult = {
+    Condition = "(wxLUA_USE_wxDir) && (wxCHECK_VERSION(2,9,4))",
+    IsNumber = true,
+    Name = "wxDirTraverseResult",
+    ValueType = "enum",
+  },
   wxDirection = {
     IsNumber = true,
     Name = "wxDirection",
@@ -4990,6 +4996,11 @@ wx_dataTypeTable =
   wxUint8 = {
     IsNumber = true,
     Name = "wxUint8",
+    ValueType = "number",
+  },
+  wxUniChar = {
+    IsNumber = true,
+    Name = "wxUniChar",
     ValueType = "number",
   },
   wxUpdateUI = {

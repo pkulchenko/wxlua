@@ -42,7 +42,8 @@
    - Change %enum [EnumName] ... %endenum to
         enum EnumName
         {
-        ... // Note that {} braces must be on separate lines.
+          A,  // commas are now required as in C
+          ... // Note that {} braces must be on separate lines.
         };
    - Remove the keyword %function before all global 'C' style functions.
    - Remove the keyword %operator before all class member operator functions.

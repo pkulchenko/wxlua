@@ -250,8 +250,8 @@ class wxGridSizer : public wxSizer
 
 enum wxFlexSizerGrowMode
 {
-    wxFLEX_GROWMODE_NONE
-    wxFLEX_GROWMODE_SPECIFIED
+    wxFLEX_GROWMODE_NONE,
+    wxFLEX_GROWMODE_SPECIFIED,
     wxFLEX_GROWMODE_ALL
 };
 
@@ -462,28 +462,28 @@ class wxStdDialogButtonSizer : public wxBoxSizer
 
 enum wxRelationship
 {
-    wxUnconstrained
-    wxAsIs
-    wxPercentOf
-    wxAbove
-    wxBelow
-    wxLeftOf
-    wxRightOf
-    wxSameAs
+    wxUnconstrained,
+    wxAsIs,
+    wxPercentOf,
+    wxAbove,
+    wxBelow,
+    wxLeftOf,
+    wxRightOf,
+    wxSameAs,
     wxAbsolute
 };
 
 enum wxEdge
 {
-    wxLeft
-    wxTop
-    wxRight
-    wxBottom
-    wxWidth
-    wxHeight
-    wxCentre
-    wxCenter
-    wxCentreX
+    wxLeft,
+    wxTop,
+    wxRight,
+    wxBottom,
+    wxWidth,
+    wxHeight,
+    wxCentre,
+    wxCenter,
+    wxCentreX,
     wxCentreY
 };
 

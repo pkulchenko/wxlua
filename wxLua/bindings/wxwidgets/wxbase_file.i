@@ -86,8 +86,8 @@ bool wxEndsWithPathSeparator(const wxString& pszFileName );
 
 enum wxStandardPaths::ResourceCat
 {
-    ResourceCat_None     // no special category
-    ResourceCat_Messages // message catalog resources
+    ResourceCat_None,     // no special category
+    ResourceCat_Messages, // message catalog resources
     ResourceCat_Max      // end of enum marker
 };
 
@@ -165,26 +165,26 @@ class %delete wxPathList : public wxArrayString
 
 enum wxPathFormat
 {
-    wxPATH_NATIVE
-    wxPATH_UNIX
-    wxPATH_MAC
-    wxPATH_DOS
-    wxPATH_VMS
-    wxPATH_BEOS
-    wxPATH_WIN
-    wxPATH_OS2
+    wxPATH_NATIVE,
+    wxPATH_UNIX,
+    wxPATH_MAC,
+    wxPATH_DOS,
+    wxPATH_VMS,
+    wxPATH_BEOS,
+    wxPATH_WIN,
+    wxPATH_OS2,
     wxPATH_MAX
 };
 
 enum wxPathNormalize
 {
-    wxPATH_NORM_ENV_VARS
-    wxPATH_NORM_DOTS
-    wxPATH_NORM_TILDE
-    wxPATH_NORM_CASE
-    wxPATH_NORM_ABSOLUTE
-    wxPATH_NORM_LONG
-    wxPATH_NORM_SHORTCUT
+    wxPATH_NORM_ENV_VARS,
+    wxPATH_NORM_DOTS,
+    wxPATH_NORM_TILDE,
+    wxPATH_NORM_CASE,
+    wxPATH_NORM_ABSOLUTE,
+    wxPATH_NORM_LONG,
+    wxPATH_NORM_SHORTCUT,
     wxPATH_NORM_ALL
 };
 
@@ -336,34 +336,34 @@ class %delete wxFileName
 
 enum wxFile::OpenMode
 {
-    read
-    write
-    read_write
-    write_append
+    read,
+    write,
+    read_write,
+    write_append,
     write_excl
 };
 
 enum wxFile::dummy
 {
-    fd_invalid // = -1
-    fd_stdin
-    fd_stdout
+    fd_invalid, // = -1
+    fd_stdin,
+    fd_stdout,
     fd_stderr
 };
 
 enum wxSeekMode
 {
-    wxFromStart
-    wxFromCurrent
-    wxFromEnd
+    wxFromStart,
+    wxFromCurrent,
+    wxFromEnd,
     wxInvalidOffset
 };
 
 enum wxFileKind
 {
-    wxFILE_KIND_UNKNOWN
-    wxFILE_KIND_DISK
-    wxFILE_KIND_TERMINAL
+    wxFILE_KIND_UNKNOWN,
+    wxFILE_KIND_DISK,
+    wxFILE_KIND_TERMINAL,
     wxFILE_KIND_PIPE
 };
 
@@ -458,7 +458,22 @@ class %delete wxTempFile
 #define wxDIR_DIRS
 #define wxDIR_HIDDEN
 #define wxDIR_DOTDOT
+%wxchkver_2_9_4 #define wxDIR_NO_FOLLOW
 #define wxDIR_DEFAULT
+
+
+#if %wxchkver_2_9_4
+
+// these constants are possible return value of wxDirTraverser::OnDir()
+enum wxDirTraverseResult
+{
+    wxDIR_IGNORE,           // ignore this directory but continue with others
+    wxDIR_STOP,             // stop traversing
+    wxDIR_CONTINUE          // continue into this directory
+};
+
+#endif //%wxchkver_2_9_4
+
 
 class %delete wxDir
 {
@@ -688,17 +703,17 @@ class wxMimeTypesManager
 
 enum wxEOL
 {
-    wxEOL_NATIVE
-    wxEOL_UNIX
-    wxEOL_MAC
+    wxEOL_NATIVE,
+    wxEOL_UNIX,
+    wxEOL_MAC,
     wxEOL_DOS
 };
 
 enum wxStreamError
 {
-    wxSTREAM_NO_ERROR
-    wxSTREAM_EOF
-    wxSTREAM_WRITE_ERROR
+    wxSTREAM_NO_ERROR,
+    wxSTREAM_EOF,
+    wxSTREAM_WRITE_ERROR,
     wxSTREAM_READ_ERROR
 };
 
@@ -979,7 +994,7 @@ class %delete wxLocalFSHandler : public wxFileSystemHandler
 
 enum
 {
-    wxFS_READ        // Open for reading
+    wxFS_READ,        // Open for reading
     wxFS_SEEKABLE    // Returned stream will be seekable
 };
 

@@ -206,19 +206,19 @@ class %delete wxGDIObject : public wxObject
 
 enum wxRegionContain
 {
-    wxOutRegion
-    wxPartRegion
+    wxOutRegion,
+    wxPartRegion,
     wxInRegion
 };
 
 #if defined(wxHAS_REGION_COMBINE); // MSW and MAC
     enum wxRegionOp
     {
-        wxRGN_AND   // Creates the intersection of the two combined regions.
-        wxRGN_COPY  // Creates a copy of the region
-        wxRGN_DIFF  // Combines the parts of first region that are not in the second one
-        wxRGN_OR    // Creates the union of two combined regions.
-        wxRGN_XOR   // Creates the union of two regions except for any overlapping areas.
+        wxRGN_AND,   // Creates the intersection of the two combined regions.
+        wxRGN_COPY,  // Creates a copy of the region
+        wxRGN_DIFF,  // Combines the parts of first region that are not in the second one
+        wxRGN_OR,    // Creates the union of two combined regions.
+        wxRGN_XOR    // Creates the union of two regions except for any overlapping areas.
     };
 
 #define wxHAS_REGION_COMBINE 1
@@ -305,64 +305,64 @@ class %delete wxRegionIterator : public wxObject
 
 enum
 {
-    wxDEFAULT      // these are deprecated use wxFONTFAMILY_XXX
-    wxDECORATIVE
-    wxROMAN
-    wxSCRIPT
-    wxSWISS
-    wxMODERN
-    wxTELETYPE
+    wxDEFAULT,      // these are deprecated use wxFONTFAMILY_XXX
+    wxDECORATIVE,
+    wxROMAN,
+    wxSCRIPT,
+    wxSWISS,
+    wxMODERN,
+    wxTELETYPE,
 
-    wxVARIABLE      // unused ?
-    wxFIXED         // unused ?
+    wxVARIABLE,      // unused ?
+    wxFIXED,         // unused ?
 
-    wxNORMAL
-    wxLIGHT
-    wxBOLD
-    wxITALIC
+    wxNORMAL,
+    wxLIGHT,
+    wxBOLD,
+    wxITALIC,
     wxSLANT
 };
 
 enum wxFontFamily
 {
-    wxFONTFAMILY_DEFAULT
-    wxFONTFAMILY_DECORATIVE
-    wxFONTFAMILY_ROMAN
-    wxFONTFAMILY_SCRIPT
-    wxFONTFAMILY_SWISS
-    wxFONTFAMILY_MODERN
-    wxFONTFAMILY_TELETYPE
-    wxFONTFAMILY_MAX
+    wxFONTFAMILY_DEFAULT,
+    wxFONTFAMILY_DECORATIVE,
+    wxFONTFAMILY_ROMAN,
+    wxFONTFAMILY_SCRIPT,
+    wxFONTFAMILY_SWISS,
+    wxFONTFAMILY_MODERN,
+    wxFONTFAMILY_TELETYPE,
+    wxFONTFAMILY_MAX,
     wxFONTFAMILY_UNKNOWN
 };
 
 enum wxFontStyle
 {
-    wxFONTSTYLE_NORMAL
-    wxFONTSTYLE_ITALIC
-    wxFONTSTYLE_SLANT
+    wxFONTSTYLE_NORMAL,
+    wxFONTSTYLE_ITALIC,
+    wxFONTSTYLE_SLANT,
     wxFONTSTYLE_MAX
 };
 
 enum wxFontWeight
 {
-    wxFONTWEIGHT_NORMAL
-    wxFONTWEIGHT_LIGHT
-    wxFONTWEIGHT_BOLD
+    wxFONTWEIGHT_NORMAL,
+    wxFONTWEIGHT_LIGHT,
+    wxFONTWEIGHT_BOLD,
     wxFONTWEIGHT_MAX
 };
 
 enum
 {
-    wxFONTFLAG_DEFAULT
-    wxFONTFLAG_ITALIC
-    wxFONTFLAG_SLANT
-    wxFONTFLAG_LIGHT
-    wxFONTFLAG_BOLD
-    wxFONTFLAG_ANTIALIASED
-    wxFONTFLAG_NOT_ANTIALIASED
-    wxFONTFLAG_UNDERLINED
-    wxFONTFLAG_STRIKETHROUGH
+    wxFONTFLAG_DEFAULT,
+    wxFONTFLAG_ITALIC,
+    wxFONTFLAG_SLANT,
+    wxFONTFLAG_LIGHT,
+    wxFONTFLAG_BOLD,
+    wxFONTFLAG_ANTIALIASED,
+    wxFONTFLAG_NOT_ANTIALIASED,
+    wxFONTFLAG_UNDERLINED,
+    wxFONTFLAG_STRIKETHROUGH,
     wxFONTFLAG_MASK
 };
 
@@ -616,40 +616,40 @@ class %delete wxColourDatabase
 
 enum wxPenCap
 {
-    wxCAP_BUTT
-    wxCAP_PROJECTING
+    wxCAP_BUTT,
+    wxCAP_PROJECTING,
     wxCAP_ROUND
 };
 
 enum wxPenStyle
 {
-    wxDOT
-    wxDOT_DASH
-    wxSOLID
-    wxLONG_DASH
-    wxSHORT_DASH
+    wxDOT,
+    wxDOT_DASH,
+    wxSOLID,
+    wxLONG_DASH,
+    wxSHORT_DASH,
     wxUSER_DASH
 };
 
 enum wxPenJoin
 {
-    wxJOIN_BEVEL
-    wxJOIN_MITER
+    wxJOIN_BEVEL,
+    wxJOIN_MITER,
     wxJOIN_ROUND
 };
 
 enum
 {
-    wxTRANSPARENT
+    wxTRANSPARENT,
 
-    wxSTIPPLE_MASK_OPAQUE
-    wxSTIPPLE_MASK
-    wxSTIPPLE
-    wxBDIAGONAL_HATCH
-    wxCROSSDIAG_HATCH
-    wxFDIAGONAL_HATCH
-    wxCROSS_HATCH
-    wxHORIZONTAL_HATCH
+    wxSTIPPLE_MASK_OPAQUE,
+    wxSTIPPLE_MASK,
+    wxSTIPPLE,
+    wxBDIAGONAL_HATCH,
+    wxCROSSDIAG_HATCH,
+    wxFDIAGONAL_HATCH,
+    wxCROSS_HATCH,
+    wxHORIZONTAL_HATCH,
     wxVERTICAL_HATCH
 };
 
@@ -785,40 +785,40 @@ class wxBrushList // : public wxList - it's not really derived from it
 
 enum wxStockGDI::Item
 {
-        BRUSH_BLACK
-        BRUSH_BLUE
-        BRUSH_CYAN
-        BRUSH_GREEN
-        BRUSH_GREY
-        BRUSH_LIGHTGREY
-        BRUSH_MEDIUMGREY
-        BRUSH_RED
-        BRUSH_TRANSPARENT
-        BRUSH_WHITE
-        COLOUR_BLACK
-        COLOUR_BLUE
-        COLOUR_CYAN
-        COLOUR_GREEN
-        COLOUR_LIGHTGREY
-        COLOUR_RED
-        COLOUR_WHITE
-        CURSOR_CROSS
-        CURSOR_HOURGLASS
-        CURSOR_STANDARD
-        FONT_ITALIC
-        FONT_NORMAL
-        FONT_SMALL
-        FONT_SWISS
-        PEN_BLACK
-        PEN_BLACKDASHED
-        PEN_CYAN
-        PEN_GREEN
-        PEN_GREY
-        PEN_LIGHTGREY
-        PEN_MEDIUMGREY
-        PEN_RED
-        PEN_TRANSPARENT
-        PEN_WHITE
+        BRUSH_BLACK,
+        BRUSH_BLUE,
+        BRUSH_CYAN,
+        BRUSH_GREEN,
+        BRUSH_GREY,
+        BRUSH_LIGHTGREY,
+        BRUSH_MEDIUMGREY,
+        BRUSH_RED,
+        BRUSH_TRANSPARENT,
+        BRUSH_WHITE,
+        COLOUR_BLACK,
+        COLOUR_BLUE,
+        COLOUR_CYAN,
+        COLOUR_GREEN,
+        COLOUR_LIGHTGREY,
+        COLOUR_RED,
+        COLOUR_WHITE,
+        CURSOR_CROSS,
+        CURSOR_HOURGLASS,
+        CURSOR_STANDARD,
+        FONT_ITALIC,
+        FONT_NORMAL,
+        FONT_SMALL,
+        FONT_SWISS,
+        PEN_BLACK,
+        PEN_BLACKDASHED,
+        PEN_CYAN,
+        PEN_GREEN,
+        PEN_GREY,
+        PEN_LIGHTGREY,
+        PEN_MEDIUMGREY,
+        PEN_RED,
+        PEN_TRANSPARENT,
+        PEN_WHITE,
         ITEMCOUNT
 };
 
@@ -1011,35 +1011,35 @@ class %delete wxBitmap : public wxGDIObject
 
 enum wxStockCursor
 {
-    wxCURSOR_NONE
-    wxCURSOR_ARROW
-    wxCURSOR_RIGHT_ARROW
-    wxCURSOR_BULLSEYE
-    wxCURSOR_CHAR
-    wxCURSOR_CROSS
-    wxCURSOR_HAND
-    wxCURSOR_IBEAM
-    wxCURSOR_LEFT_BUTTON
-    wxCURSOR_MAGNIFIER
-    wxCURSOR_MIDDLE_BUTTON
-    wxCURSOR_NO_ENTRY
-    wxCURSOR_PAINT_BRUSH
-    wxCURSOR_PENCIL
-    wxCURSOR_POINT_LEFT
-    wxCURSOR_POINT_RIGHT
-    wxCURSOR_QUESTION_ARROW
-    wxCURSOR_RIGHT_BUTTON
-    wxCURSOR_SIZENESW
-    wxCURSOR_SIZENS
-    wxCURSOR_SIZENWSE
-    wxCURSOR_SIZEWE
-    wxCURSOR_SIZING
-    wxCURSOR_SPRAYCAN
-    wxCURSOR_WAIT
-    wxCURSOR_WATCH
-    wxCURSOR_BLANK
-    wxCURSOR_DEFAULT
-    %mac wxCURSOR_COPY_ARROW
+    wxCURSOR_NONE,
+    wxCURSOR_ARROW,
+    wxCURSOR_RIGHT_ARROW,
+    wxCURSOR_BULLSEYE,
+    wxCURSOR_CHAR,
+    wxCURSOR_CROSS,
+    wxCURSOR_HAND,
+    wxCURSOR_IBEAM,
+    wxCURSOR_LEFT_BUTTON,
+    wxCURSOR_MAGNIFIER,
+    wxCURSOR_MIDDLE_BUTTON,
+    wxCURSOR_NO_ENTRY,
+    wxCURSOR_PAINT_BRUSH,
+    wxCURSOR_PENCIL,
+    wxCURSOR_POINT_LEFT,
+    wxCURSOR_POINT_RIGHT,
+    wxCURSOR_QUESTION_ARROW,
+    wxCURSOR_RIGHT_BUTTON,
+    wxCURSOR_SIZENESW,
+    wxCURSOR_SIZENS,
+    wxCURSOR_SIZENWSE,
+    wxCURSOR_SIZEWE,
+    wxCURSOR_SIZING,
+    wxCURSOR_SPRAYCAN,
+    wxCURSOR_WAIT,
+    wxCURSOR_WATCH,
+    wxCURSOR_BLANK,
+    wxCURSOR_DEFAULT,
+    %mac wxCURSOR_COPY_ARROW,
 
     #if defined(__X__ );
         // Not yet implemented for Windows
@@ -1049,7 +1049,7 @@ enum wxStockCursor
         wxCURSOR_BASED_ARROW_DOWN,
     #endif // X11
 
-    wxCURSOR_ARROWWAIT
+    wxCURSOR_ARROWWAIT,
     wxCURSOR_MAX
 };
 
@@ -1162,84 +1162,84 @@ class %delete wxImageList : public wxObject
 
 enum wxMappingMode
 {
-    wxMM_TEXT
-    wxMM_METRIC
-    wxMM_LOMETRIC
-    wxMM_TWIPS
-    wxMM_POINTS
+    wxMM_TEXT,
+    wxMM_METRIC,
+    wxMM_LOMETRIC,
+    wxMM_TWIPS,
+    wxMM_POINTS,
 
-    !%wxchkver_2_9_2 wxMM_HIMETRIC
-    !%wxchkver_2_9_2 wxMM_LOENGLISH
-    !%wxchkver_2_9_2 wxMM_HIENGLISH
-    !%wxchkver_2_9_2 wxMM_ISOTROPIC
+    !%wxchkver_2_9_2 wxMM_HIMETRIC,
+    !%wxchkver_2_9_2 wxMM_LOENGLISH,
+    !%wxchkver_2_9_2 wxMM_HIENGLISH,
+    !%wxchkver_2_9_2 wxMM_ISOTROPIC,
     !%wxchkver_2_9_2 wxMM_ANISOTROPIC
 };
 
 enum wxRasterOperationMode
 {
-    wxCLEAR
-    wxXOR
-    wxINVERT
-    wxOR_REVERSE
-    wxAND_REVERSE
-    wxCOPY
-    wxAND
-    wxAND_INVERT
-    wxNO_OP
-    wxNOR
-    wxEQUIV
-    wxSRC_INVERT
-    wxOR_INVERT
-    wxNAND
-    wxOR
-    wxSET
+    wxCLEAR,
+    wxXOR,
+    wxINVERT,
+    wxOR_REVERSE,
+    wxAND_REVERSE,
+    wxCOPY,
+    wxAND,
+    wxAND_INVERT,
+    wxNO_OP,
+    wxNOR,
+    wxEQUIV,
+    wxSRC_INVERT,
+    wxOR_INVERT,
+    wxNAND,
+    wxOR,
+    wxSET,
 
     // wxROP_XXX and wxBLIT_XXX are wxcompat_2_8
 
-    wxROP_BLACK
-    wxROP_COPYPEN
-    wxROP_MASKNOTPEN
-    wxROP_MASKPEN
-    wxROP_MASKPENNOT
-    wxROP_MERGENOTPEN
-    wxROP_MERGEPEN
-    wxROP_MERGEPENNOT
-    wxROP_NOP
-    wxROP_NOT
-    wxROP_NOTCOPYPEN
-    wxROP_NOTMASKPEN
-    wxROP_NOTMERGEPEN
-    wxROP_NOTXORPEN
-    wxROP_WHITE
-    wxROP_XORPEN
+    wxROP_BLACK,
+    wxROP_COPYPEN,
+    wxROP_MASKNOTPEN,
+    wxROP_MASKPEN,
+    wxROP_MASKPENNOT,
+    wxROP_MERGENOTPEN,
+    wxROP_MERGEPEN,
+    wxROP_MERGEPENNOT,
+    wxROP_NOP,
+    wxROP_NOT,
+    wxROP_NOTCOPYPEN,
+    wxROP_NOTMASKPEN,
+    wxROP_NOTMERGEPEN,
+    wxROP_NOTXORPEN,
+    wxROP_WHITE,
+    wxROP_XORPEN,
 
-    wxBLIT_00220326
-    wxBLIT_007700E6
-    wxBLIT_00990066
-    wxBLIT_00AA0029
-    wxBLIT_00DD0228
-    wxBLIT_BLACKNESS
-    wxBLIT_DSTINVERT
-    wxBLIT_MERGEPAINT
-    wxBLIT_NOTSCRCOPY
-    wxBLIT_NOTSRCERASE
-    wxBLIT_SRCAND
-    wxBLIT_SRCCOPY
-    wxBLIT_SRCERASE
-    wxBLIT_SRCINVERT
-    wxBLIT_SRCPAINT
+    wxBLIT_00220326,
+    wxBLIT_007700E6,
+    wxBLIT_00990066,
+    wxBLIT_00AA0029,
+    wxBLIT_00DD0228,
+    wxBLIT_BLACKNESS,
+    wxBLIT_DSTINVERT,
+    wxBLIT_MERGEPAINT,
+    wxBLIT_NOTSCRCOPY,
+    wxBLIT_NOTSRCERASE,
+    wxBLIT_SRCAND,
+    wxBLIT_SRCCOPY,
+    wxBLIT_SRCERASE,
+    wxBLIT_SRCINVERT,
+    wxBLIT_SRCPAINT,
     wxBLIT_WHITENESS
 };
 
 enum wxFloodFillStyle
 {
-    wxFLOOD_BORDER
+    wxFLOOD_BORDER,
     wxFLOOD_SURFACE
 };
 
 enum wxPolygonFillMode
 {
-    wxODDEVEN_RULE
+    wxODDEVEN_RULE,
     wxWINDING_RULE
 };
 
@@ -1358,6 +1358,7 @@ class %delete wxDC : public wxObject
     bool IsOk( );
     void ResetBoundingBox( );
     void SetAxisOrientation(bool xLeftRight, bool yBottomUp );
+    %wxchkver_2_9_4 virtual double GetContentScaleFactor() const;
     void SetBackground(const wxBrush& brush );
     void SetBackgroundMode(int mode );
     void SetBrush(const wxBrush& brush );
@@ -1665,25 +1666,25 @@ class %delete wxEffects : public wxObject
 
 enum
 {
-    wxCONTROL_DISABLED   //= 0x00000001,  // control is disabled
-    wxCONTROL_FOCUSED    //= 0x00000002,  // currently has keyboard focus
-    wxCONTROL_PRESSED    //= 0x00000004,  // (button) is pressed
-    wxCONTROL_SPECIAL    //= 0x00000008,  // control-specific bit:
-    wxCONTROL_ISDEFAULT  //= wxCONTROL_SPECIAL, // only for the buttons
-    wxCONTROL_ISSUBMENU  //= wxCONTROL_SPECIAL, // only for the menu items
-    wxCONTROL_EXPANDED   //= wxCONTROL_SPECIAL, // only for the tree items
-    wxCONTROL_SIZEGRIP   //= wxCONTROL_SPECIAL, // only for the status bar panes
-    wxCONTROL_CURRENT    //= 0x00000010,  // mouse is currently over the control
-    wxCONTROL_SELECTED   //= 0x00000020,  // selected item in e.g. listbox
-    wxCONTROL_CHECKED    //= 0x00000040,  // (check/radio button) is checked
-    wxCONTROL_CHECKABLE  //= 0x00000080,  // (menu) item can be checked
-    wxCONTROL_UNDETERMINED //= wxCONTROL_CHECKABLE, // (check) undetermined state
+    wxCONTROL_DISABLED,   //= 0x00000001,  // control is disabled
+    wxCONTROL_FOCUSED,    //= 0x00000002,  // currently has keyboard focus
+    wxCONTROL_PRESSED,    //= 0x00000004,  // (button) is pressed
+    wxCONTROL_SPECIAL,    //= 0x00000008,  // control-specific bit:
+    wxCONTROL_ISDEFAULT,  //= wxCONTROL_SPECIAL, // only for the buttons
+    wxCONTROL_ISSUBMENU,  //= wxCONTROL_SPECIAL, // only for the menu items
+    wxCONTROL_EXPANDED,   //= wxCONTROL_SPECIAL, // only for the tree items
+    wxCONTROL_SIZEGRIP,   //= wxCONTROL_SPECIAL, // only for the status bar panes
+    wxCONTROL_CURRENT,    //= 0x00000010,  // mouse is currently over the control
+    wxCONTROL_SELECTED,   //= 0x00000020,  // selected item in e.g. listbox
+    wxCONTROL_CHECKED,    //= 0x00000040,  // (check/radio button) is checked
+    wxCONTROL_CHECKABLE,  //= 0x00000080,  // (menu) item can be checked
+    wxCONTROL_UNDETERMINED, //= wxCONTROL_CHECKABLE, // (check) undetermined state
 
-    wxCONTROL_FLAGS_MASK //= 0x000000ff,
+    wxCONTROL_FLAGS_MASK, //= 0x000000ff,
 
     // this is a pseudo flag not used directly by wxRenderer but rather by some
     // controls internally
-    wxCONTROL_DIRTY      //= 0x80000000
+    wxCONTROL_DIRTY       //= 0x80000000
 };
 
 struct %delete wxSplitterRenderParams
@@ -1725,8 +1726,8 @@ enum wxHeaderSortIconType
 // highergreater or equal to it
 enum wxRendererVersion::dummy
 {
-    Current_Version //= 1,
-    Current_Age     //= 5
+    Current_Version, //= 1,
+    Current_Age      //= 5
 };
 
 // wxRendererNative interface version

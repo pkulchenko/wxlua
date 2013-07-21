@@ -1162,6 +1162,28 @@ static int LUACALL wxLua_wxWindow_GetBestSize(lua_State *L)
 
 #endif // wxLUA_USE_wxPointSizeRect
 
+#if (wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,4))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_GetBestVirtualSize[] = { &wxluatype_wxWindow, NULL };
+static int LUACALL wxLua_wxWindow_GetBestVirtualSize(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_GetBestVirtualSize[1] = {{ wxLua_wxWindow_GetBestVirtualSize, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWindow_GetBestVirtualSize }};
+//     %wxchkver_2_9_4 virtual wxSize GetBestVirtualSize() const;
+static int LUACALL wxLua_wxWindow_GetBestVirtualSize(lua_State *L)
+{
+    // get this
+    wxWindow * self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call GetBestVirtualSize
+    // allocate a new object using the copy constructor
+    wxSize* returns = new wxSize(self->GetBestVirtualSize());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,4))
+
 static int LUACALL wxLua_wxWindow_GetCapture(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_GetCapture[1] = {{ wxLua_wxWindow_GetCapture, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
 //     static wxWindow* GetCapture( );
@@ -1324,6 +1346,25 @@ static int LUACALL wxLua_wxWindow_GetContainingSizer(lua_State *L)
 }
 
 #endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
+
+#if wxCHECK_VERSION(2,9,4)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_GetContentScaleFactor[] = { &wxluatype_wxWindow, NULL };
+static int LUACALL wxLua_wxWindow_GetContentScaleFactor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_GetContentScaleFactor[1] = {{ wxLua_wxWindow_GetContentScaleFactor, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWindow_GetContentScaleFactor }};
+//     %wxchkver_2_9_4 virtual double GetContentScaleFactor() const;    
+static int LUACALL wxLua_wxWindow_GetContentScaleFactor(lua_State *L)
+{
+    // get this
+    wxWindow * self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call GetContentScaleFactor
+    double returns = (self->GetContentScaleFactor());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(2,9,4)
 
 #if wxLUA_USE_wxCursor
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_GetCursor[] = { &wxluatype_wxWindow, NULL };
@@ -4219,6 +4260,10 @@ wxLuaBindMethod wxWindow_methods[] = {
     { "GetBestSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_GetBestSize, 1, NULL },
 #endif // wxLUA_USE_wxPointSizeRect
 
+#if (wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,4))
+    { "GetBestVirtualSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_GetBestVirtualSize, 1, NULL },
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxCHECK_VERSION(2,9,4))
+
     { "GetCapture", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxWindow_GetCapture, 1, NULL },
 
 #if wxLUA_USE_wxCaret && wxUSE_CARET
@@ -4245,6 +4290,10 @@ wxLuaBindMethod wxWindow_methods[] = {
 #if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
     { "GetContainingSizer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_GetContainingSizer, 1, NULL },
 #endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
+
+#if wxCHECK_VERSION(2,9,4)
+    { "GetContentScaleFactor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_GetContentScaleFactor, 1, NULL },
+#endif // wxCHECK_VERSION(2,9,4)
 
 #if wxLUA_USE_wxCursor
     { "GetCursor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_GetCursor, 1, NULL },

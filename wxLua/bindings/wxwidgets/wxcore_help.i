@@ -103,7 +103,7 @@ class %delete wxHelpControllerHelpProvider : public wxSimpleHelpProvider
 
 enum wxHelpSearchMode
 {
-    wxHELP_SEARCH_INDEX
+    wxHELP_SEARCH_INDEX,
     wxHELP_SEARCH_ALL
 };
 

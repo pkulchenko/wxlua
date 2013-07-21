@@ -20,19 +20,19 @@
 
 enum
 {
-    wxCONFIG_USE_LOCAL_FILE
-    wxCONFIG_USE_GLOBAL_FILE
-    wxCONFIG_USE_RELATIVE_PATH
-    wxCONFIG_USE_NO_ESCAPE_CHARACTERS
+    wxCONFIG_USE_LOCAL_FILE,
+    wxCONFIG_USE_GLOBAL_FILE,
+    wxCONFIG_USE_RELATIVE_PATH,
+    wxCONFIG_USE_NO_ESCAPE_CHARACTERS,
     %wxchkver_2_8_1 wxCONFIG_USE_SUBDIR
 };
 
 enum wxConfigBase::EntryType
 {
-    Type_Unknown
-    Type_String
-    Type_Boolean
-    Type_Integer
+    Type_Unknown,
+    Type_String,
+    Type_Boolean,
+    Type_Integer,
     Type_Float
 };
 

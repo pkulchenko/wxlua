@@ -88,9 +88,9 @@ void wxAboutBox(const wxAboutDialogInfo& info );
 
 enum wxAnimationType
 {
-    wxANIMATION_TYPE_INVALID
-    wxANIMATION_TYPE_GIF
-    wxANIMATION_TYPE_ANI
+    wxANIMATION_TYPE_INVALID,
+    wxANIMATION_TYPE_GIF,
+    wxANIMATION_TYPE_ANI,
 
     wxANIMATION_TYPE_ANY
 };
@@ -200,29 +200,29 @@ class wxBitmapComboBox : public wxControl
 
 enum
 {
-    wxCAL_SUNDAY_FIRST
-    wxCAL_MONDAY_FIRST
-    wxCAL_SHOW_HOLIDAYS
-    wxCAL_NO_YEAR_CHANGE
-    wxCAL_NO_MONTH_CHANGE
-    wxCAL_SHOW_SURROUNDING_WEEKS
+    wxCAL_SUNDAY_FIRST,
+    wxCAL_MONDAY_FIRST,
+    wxCAL_SHOW_HOLIDAYS,
+    wxCAL_NO_YEAR_CHANGE,
+    wxCAL_NO_MONTH_CHANGE,
+    wxCAL_SHOW_SURROUNDING_WEEKS,
     wxCAL_SEQUENTIAL_MONTH_SELECTION
 };
 
 enum wxCalendarHitTestResult
 {
-    wxCAL_HITTEST_NOWHERE
-    wxCAL_HITTEST_HEADER
-    wxCAL_HITTEST_DAY
-    wxCAL_HITTEST_INCMONTH
-    wxCAL_HITTEST_DECMONTH
+    wxCAL_HITTEST_NOWHERE,
+    wxCAL_HITTEST_HEADER,
+    wxCAL_HITTEST_DAY,
+    wxCAL_HITTEST_INCMONTH,
+    wxCAL_HITTEST_DECMONTH,
     wxCAL_HITTEST_SURROUNDING_WEEK
 };
 
 enum wxCalendarDateBorder
 {
-    wxCAL_BORDER_NONE
-    wxCAL_BORDER_SQUARE
+    wxCAL_BORDER_NONE,
+    wxCAL_BORDER_SQUARE,
     wxCAL_BORDER_ROUND
 };
 
@@ -390,16 +390,16 @@ class %delete wxHyperlinkEvent : public wxCommandEvent
 
 enum wxSashEdgePosition
 {
-    wxSASH_TOP
-    wxSASH_RIGHT
-    wxSASH_BOTTOM
-    wxSASH_LEFT
+    wxSASH_TOP,
+    wxSASH_RIGHT,
+    wxSASH_BOTTOM,
+    wxSASH_LEFT,
     wxSASH_NONE
 };
 
 enum wxSashDragStatus
 {
-    wxSASH_STATUS_OK
+    wxSASH_STATUS_OK,
     wxSASH_STATUS_OUT_OF_RANGE
 };
 
@@ -431,16 +431,16 @@ class wxSashWindow : public wxWindow
 
 enum wxLayoutAlignment
 {
-    wxLAYOUT_NONE
-    wxLAYOUT_TOP
-    wxLAYOUT_LEFT
-    wxLAYOUT_RIGHT
+    wxLAYOUT_NONE,
+    wxLAYOUT_TOP,
+    wxLAYOUT_LEFT,
+    wxLAYOUT_RIGHT,
     wxLAYOUT_BOTTOM
 };
 
 enum wxLayoutOrientation
 {
-    wxLAYOUT_HORIZONTAL
+    wxLAYOUT_HORIZONTAL,
     wxLAYOUT_VERTICAL
 };
 
@@ -688,16 +688,16 @@ class %delete wxTaskBarIconEvent : public wxEvent
 
 enum
 {
-    wxJOYSTICK1
+    wxJOYSTICK1,
     wxJOYSTICK2
 };
 
 enum
 {
-    wxJOY_BUTTON_ANY
-    wxJOY_BUTTON1
-    wxJOY_BUTTON2
-    wxJOY_BUTTON3
+    wxJOY_BUTTON_ANY,
+    wxJOY_BUTTON1,
+    wxJOY_BUTTON2,
+    wxJOY_BUTTON3,
     wxJOY_BUTTON4
 };
 

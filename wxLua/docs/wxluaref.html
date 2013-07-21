@@ -1985,6 +1985,11 @@
 <td align="center" bgcolor=#AAFFAA>X
 <td>&nbsp;
 <tr>
+<td><a href="#wxLuaEvent">wxLuaEvent</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
 <td><a href="#wxLuaGridTableBase">wxLuaGridTableBase</a>
 <td bgcolor=#FFAAAA>&nbsp;
 <td align="center" bgcolor=#AAFFAA>X
@@ -3519,6 +3524,7 @@
 <a href="#wxDateTime::WeekDay">wxDateTime::WeekDay</a><br>
 <a href="#wxDateTime::WeekFlags">wxDateTime::WeekFlags</a><br>
 <a href="#wxDateTime::Year">wxDateTime::Year</a><br>
+<a href="#wxDirTraverseResult">wxDirTraverseResult</a><br>
 <a href="#wxDirection">wxDirection</a><br>
 <a href="#wxDragResult">wxDragResult</a><br>
 <a href="#wxDuplexMode">wxDuplexMode</a><br>
@@ -3746,40 +3752,40 @@ bool wxCHECK_VERSION_FULL(int major, int minor, int release, int subrel); <font 
 #if !<i>%wxchkver_2_8</i><br>
 enum<br>
 {<br>
-    wxUNKNOWN_PLATFORM<br>
-    wxCURSES<br>
-    wxXVIEW_X<br>
-    wxMOTIF_X<br>
-    wxCOSE_X<br>
-    wxNEXTSTEP<br>
-    wxMAC<br>
-    wxMAC_DARWIN<br>
-    wxBEOS<br>
-    wxGTK<br>
-    wxGTK_WIN32<br>
-    wxGTK_OS2<br>
-    wxGTK_BEOS<br>
-    wxGEOS<br>
-    wxOS2_PM<br>
-    wxWINDOWS<br>
-    wxMICROWINDOWS<br>
-    wxPENWINDOWS<br>
-    wxWINDOWS_NT<br>
-    wxWIN32S<br>
-    wxWIN95<br>
-    wxWIN386<br>
-    wxWINDOWS_CE<br>
-    wxWINDOWS_POCKETPC<br>
-    wxWINDOWS_SMARTPHONE<br>
-    wxMGL_UNIX<br>
-    wxMGL_X<br>
-    wxMGL_WIN32<br>
-    wxMGL_OS2<br>
-    wxMGL_DOS<br>
-    wxWINDOWS_OS2<br>
-    wxUNIX<br>
-    wxX11<br>
-    wxPALMOS<br>
+    wxUNKNOWN_PLATFORM,<br>
+    wxCURSES,<br>
+    wxXVIEW_X,<br>
+    wxMOTIF_X,<br>
+    wxCOSE_X,<br>
+    wxNEXTSTEP,<br>
+    wxMAC,<br>
+    wxMAC_DARWIN,<br>
+    wxBEOS,<br>
+    wxGTK,<br>
+    wxGTK_WIN32,<br>
+    wxGTK_OS2,<br>
+    wxGTK_BEOS,<br>
+    wxGEOS,<br>
+    wxOS2_PM,<br>
+    wxWINDOWS,<br>
+    wxMICROWINDOWS,<br>
+    wxPENWINDOWS,<br>
+    wxWINDOWS_NT,<br>
+    wxWIN32S,<br>
+    wxWIN95,<br>
+    wxWIN386,<br>
+    wxWINDOWS_CE,<br>
+    wxWINDOWS_POCKETPC,<br>
+    wxWINDOWS_SMARTPHONE,<br>
+    wxMGL_UNIX,<br>
+    wxMGL_X,<br>
+    wxMGL_WIN32,<br>
+    wxMGL_OS2,<br>
+    wxMGL_DOS,<br>
+    wxWINDOWS_OS2,<br>
+    wxUNIX,<br>
+    wxX11,<br>
+    wxPALMOS,<br>
     wxDOS<br>
 };<br>
 #endif <font color=#009900>// !<i>%wxchkver_2_8</i></font><br>
@@ -3841,61 +3847,61 @@ bool wxUnsetEnv(const <a href="#wxString">wxString</a>&amp; var );<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxOperatingSystemId">wxOperatingSystemId</a></font></b><br>
 {
 <blockquote>
-    wxOS_UNKNOWN                     <font color=#009900>// returned on error</font><br>
+    wxOS_UNKNOWN,                     <font color=#009900>// returned on error</font><br>
 <br>
-    wxOS_MAC_OS                      <font color=#009900>// Apple Mac OS 8/9/X with Mac paths</font><br>
-    wxOS_MAC_OSX_DARWIN              <font color=#009900>// Apple Mac OS X with Unix paths</font><br>
-    wxOS_MAC                         <font color=#009900>// wxOS_MAC_OS|wxOS_MAC_OSX_DARWIN,</font><br>
+    wxOS_MAC_OS,                      <font color=#009900>// Apple Mac OS 8/9/X with Mac paths</font><br>
+    wxOS_MAC_OSX_DARWIN,              <font color=#009900>// Apple Mac OS X with Unix paths</font><br>
+    wxOS_MAC,                         <font color=#009900>// wxOS_MAC_OS|wxOS_MAC_OSX_DARWIN,</font><br>
 <br>
-    wxOS_WINDOWS_9X                   <font color=#009900>// Windows 9x family (95/98/ME );</font><br>
-    wxOS_WINDOWS_NT                   <font color=#009900>// Windows NT family (NT/2000/XP );</font><br>
-    wxOS_WINDOWS_MICRO                <font color=#009900>// MicroWindows</font><br>
-    wxOS_WINDOWS_CE                   <font color=#009900>// Windows CE (Window Mobile );</font><br>
-    wxOS_WINDOWS                      <font color=#009900>//  wxOS_WINDOWS_9X|wxOS_WINDOWS_NT|wxOS_WINDOWS_MICRO|wxOS_WINDOWS_CE,</font><br>
+    wxOS_WINDOWS_9X,                   <font color=#009900>// Windows 9x family (95/98/ME );</font><br>
+    wxOS_WINDOWS_NT,                   <font color=#009900>// Windows NT family (NT/2000/XP );</font><br>
+    wxOS_WINDOWS_MICRO,                <font color=#009900>// MicroWindows</font><br>
+    wxOS_WINDOWS_CE,                   <font color=#009900>// Windows CE (Window Mobile );</font><br>
+    wxOS_WINDOWS,                      <font color=#009900>//  wxOS_WINDOWS_9X|wxOS_WINDOWS_NT|wxOS_WINDOWS_MICRO|wxOS_WINDOWS_CE,</font><br>
 <br>
-    wxOS_UNIX_LINUX                    <font color=#009900>// Linux</font><br>
-    wxOS_UNIX_FREEBSD                  <font color=#009900>// FreeBSD</font><br>
-    wxOS_UNIX_OPENBSD                  <font color=#009900>// OpenBSD</font><br>
-    wxOS_UNIX_NETBSD                   <font color=#009900>// NetBSD</font><br>
-    wxOS_UNIX_SOLARIS                  <font color=#009900>// SunOS</font><br>
-    wxOS_UNIX_AIX                      <font color=#009900>// AIX</font><br>
-    wxOS_UNIX_HPUX                     <font color=#009900>// HP/UX</font><br>
-    wxOS_UNIX                          <font color=#009900>// wxOS_UNIX_LINUX|wxOS_UNIX_FREEBSD|wxOS_UNIX_OPENBSD|wxOS_UNIX_NETBSD|wxOS_UNIX_SOLARIS|wxOS_UNIX_AIX|wxOS_UNIX_HPUX,</font><br>
+    wxOS_UNIX_LINUX,                    <font color=#009900>// Linux</font><br>
+    wxOS_UNIX_FREEBSD,                  <font color=#009900>// FreeBSD</font><br>
+    wxOS_UNIX_OPENBSD,                  <font color=#009900>// OpenBSD</font><br>
+    wxOS_UNIX_NETBSD,                   <font color=#009900>// NetBSD</font><br>
+    wxOS_UNIX_SOLARIS,                  <font color=#009900>// SunOS</font><br>
+    wxOS_UNIX_AIX,                      <font color=#009900>// AIX</font><br>
+    wxOS_UNIX_HPUX,                     <font color=#009900>// HP/UX</font><br>
+    wxOS_UNIX,                          <font color=#009900>// wxOS_UNIX_LINUX|wxOS_UNIX_FREEBSD|wxOS_UNIX_OPENBSD|wxOS_UNIX_NETBSD|wxOS_UNIX_SOLARIS|wxOS_UNIX_AIX|wxOS_UNIX_HPUX,</font><br>
 <br>
-    wxOS_DOS                           <font color=#009900>// Microsoft DOS</font><br>
-    wxOS_OS2                           <font color=#009900>// OS/2</font><br>
+    wxOS_DOS,                           <font color=#009900>// Microsoft DOS</font><br>
+    wxOS_OS2                            <font color=#009900>// OS/2</font><br>
 </font>
 </blockquote>};<br>
 <br>
 <b><font size=+1 color=#0066CC>enum <a name="wxPortId">wxPortId</a></font></b><br>
 {
 <blockquote>
-    wxPORT_UNKNOWN      <font color=#009900>// returned on error</font><br>
+    wxPORT_UNKNOWN,      <font color=#009900>// returned on error</font><br>
 <br>
-    wxPORT_BASE         <font color=#009900>// wxBase, no native toolkit used</font><br>
+    wxPORT_BASE,         <font color=#009900>// wxBase, no native toolkit used</font><br>
 <br>
-    wxPORT_MSW          <font color=#009900>// wxMSW, native toolkit is Windows API</font><br>
-    wxPORT_MOTIF        <font color=#009900>// wxMotif, using [Open]Motif or Lesstif</font><br>
-    wxPORT_GTK          <font color=#009900>// wxGTK, using GTK+ 1.x, 2.x, GPE or Maemo</font><br>
-    !<i>%wxchkver_2_9</i> wxPORT_MGL          <font color=#009900>// wxMGL, using wxUniversal</font><br>
-    wxPORT_X11          <font color=#009900>// wxX11, using wxUniversal</font><br>
-    wxPORT_PM           <font color=#009900>// wxOS2, using OS/2 Presentation Manager</font><br>
-    wxPORT_OS2          <font color=#009900>// wxOS2, using OS/2 Presentation Manager</font><br>
-    wxPORT_MAC          <font color=#009900>// wxMac, using Carbon or Classic Mac API</font><br>
-    wxPORT_COCOA        <font color=#009900>// wxCocoa, using Cocoa NextStep/Mac API</font><br>
-    wxPORT_WINCE        <font color=#009900>// wxWinCE, toolkit is WinCE SDK API</font><br>
-    !<i>%wxchkver_2_9</i> wxPORT_PALMOS       <font color=#009900>// wxPalmOS, toolkit is PalmOS API</font><br>
-    wxPORT_DFB          <font color=#009900>// wxDFB, using wxUniversal</font><br>
+    wxPORT_MSW,          <font color=#009900>// wxMSW, native toolkit is Windows API</font><br>
+    wxPORT_MOTIF,        <font color=#009900>// wxMotif, using [Open]Motif or Lesstif</font><br>
+    wxPORT_GTK,          <font color=#009900>// wxGTK, using GTK+ 1.x, 2.x, GPE or Maemo</font><br>
+    !<i>%wxchkver_2_9</i> wxPORT_MGL,          <font color=#009900>// wxMGL, using wxUniversal</font><br>
+    wxPORT_X11,          <font color=#009900>// wxX11, using wxUniversal</font><br>
+    wxPORT_PM,           <font color=#009900>// wxOS2, using OS/2 Presentation Manager</font><br>
+    wxPORT_OS2,          <font color=#009900>// wxOS2, using OS/2 Presentation Manager</font><br>
+    wxPORT_MAC,          <font color=#009900>// wxMac, using Carbon or Classic Mac API</font><br>
+    wxPORT_COCOA,        <font color=#009900>// wxCocoa, using Cocoa NextStep/Mac API</font><br>
+    wxPORT_WINCE,        <font color=#009900>// wxWinCE, toolkit is WinCE SDK API</font><br>
+    !<i>%wxchkver_2_9</i> wxPORT_PALMOS,       <font color=#009900>// wxPalmOS, toolkit is PalmOS API</font><br>
+    wxPORT_DFB           <font color=#009900>// wxDFB, using wxUniversal</font><br>
 </font>
 </blockquote>};<br>
 <br>
 <b><font size=+1 color=#0066CC>enum <a name="wxArchitecture">wxArchitecture</a></font></b><br>
 {
 <blockquote>
-    wxARCH_INVALID         <font color=#009900>// returned on error</font><br>
+    wxARCH_INVALID,         <font color=#009900>// returned on error</font><br>
 <br>
-    wxARCH_32              <font color=#009900>// 32 bit</font><br>
-    wxARCH_64<br>
+    wxARCH_32,              <font color=#009900>// 32 bit</font><br>
+    wxARCH_64,<br>
 <br>
     wxARCH_MAX<br>
 </font>
@@ -3904,11 +3910,11 @@ bool wxUnsetEnv(const <a href="#wxString">wxString</a>&amp; var );<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxEndianness">wxEndianness</a></font></b><br>
 {
 <blockquote>
-    wxENDIAN_INVALID           <font color=#009900>// returned on error</font><br>
+    wxENDIAN_INVALID,           <font color=#009900>// returned on error</font><br>
 <br>
-    wxENDIAN_BIG               <font color=#009900>// 4321</font><br>
-    wxENDIAN_LITTLE            <font color=#009900>// 1234</font><br>
-    wxENDIAN_PDP               <font color=#009900>// 3412</font><br>
+    wxENDIAN_BIG,               <font color=#009900>// 4321</font><br>
+    wxENDIAN_LITTLE,            <font color=#009900>// 1234</font><br>
+    wxENDIAN_PDP,               <font color=#009900>// 3412</font><br>
 <br>
     wxENDIAN_MAX<br>
 </font>
@@ -4209,19 +4215,19 @@ typedef unsigned long wxLogLevel<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxDLFlags">wxDLFlags</a></font></b><br>
 {
 <blockquote>
-    wxDL_LAZY       <font color=#009900>// resolve undefined symbols at first use</font><br>
+    wxDL_LAZY,       <font color=#009900>// resolve undefined symbols at first use</font><br>
                     <font color=#009900>// (only works on some Unix versions );</font><br>
-    wxDL_NOW        <font color=#009900>// resolve undefined symbols on load</font><br>
+    wxDL_NOW,        <font color=#009900>// resolve undefined symbols on load</font><br>
                     <font color=#009900>// (default, always the case under Win32 );</font><br>
-    wxDL_GLOBAL     <font color=#009900>// export extern symbols to subsequently</font><br>
+    wxDL_GLOBAL,     <font color=#009900>// export extern symbols to subsequently</font><br>
                     <font color=#009900>// loaded libs.</font><br>
-    wxDL_VERBATIM   <font color=#009900>// attempt to load the supplied library</font><br>
+    wxDL_VERBATIM,   <font color=#009900>// attempt to load the supplied library</font><br>
                     <font color=#009900>// name without appending the usual dll</font><br>
                     <font color=#009900>// filename extension.</font><br>
-    wxDL_NOSHARE    <font color=#009900>// load new DLL, don't reuse already loaded</font><br>
+    wxDL_NOSHARE,    <font color=#009900>// load new DLL, don't reuse already loaded</font><br>
                     <font color=#009900>// (only for wxPluginManager );</font><br>
 <br>
-    wxDL_DEFAULT    <font color=#009900>// = wxDL_NOW // default flags correspond to Win32</font><br>
+    wxDL_DEFAULT,    <font color=#009900>// = wxDL_NOW // default flags correspond to Win32</font><br>
 </font>
 </blockquote>};<br>
 <br>
@@ -4401,17 +4407,17 @@ typedef unsigned long wxLogLevel<br>
 <br>
 enum<br>
 {<br>
-    wxRE_EXTENDED<br>
-    wxRE_BASIC<br>
-    wxRE_ICASE<br>
-    wxRE_NOSUB<br>
-    wxRE_NEWLINE<br>
+    wxRE_EXTENDED,<br>
+    wxRE_BASIC,<br>
+    wxRE_ICASE,<br>
+    wxRE_NOSUB,<br>
+    wxRE_NEWLINE,<br>
     wxRE_DEFAULT<br>
 };<br>
 <br>
 enum<br>
 {<br>
-    wxRE_NOTBOL<br>
+    wxRE_NOTBOL,<br>
     wxRE_NOTEOL<br>
 };<br>
 <br>
@@ -4475,20 +4481,20 @@ enum<br>
 <br>
 enum<br>
 {<br>
-    wxCONFIG_USE_LOCAL_FILE<br>
-    wxCONFIG_USE_GLOBAL_FILE<br>
-    wxCONFIG_USE_RELATIVE_PATH<br>
-    wxCONFIG_USE_NO_ESCAPE_CHARACTERS<br>
+    wxCONFIG_USE_LOCAL_FILE,<br>
+    wxCONFIG_USE_GLOBAL_FILE,<br>
+    wxCONFIG_USE_RELATIVE_PATH,<br>
+    wxCONFIG_USE_NO_ESCAPE_CHARACTERS,<br>
     <i>%wxchkver_2_8_1</i> wxCONFIG_USE_SUBDIR<br>
 };<br>
 <br>
 <b><font size=+1 color=#0066CC>enum <a name="wxConfigBase::EntryType">wxConfigBase::EntryType</a></font></b><br>
 {
 <blockquote>
-    Type_Unknown<br>
-    Type_String<br>
-    Type_Boolean<br>
-    Type_Integer<br>
+    Type_Unknown,<br>
+    Type_String,<br>
+    Type_Boolean,<br>
+    Type_Integer,<br>
     Type_Float<br>
 </font>
 </blockquote>};<br>
@@ -4725,12 +4731,12 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxStringTokenizerMode">wxStringTokenizerMode</a></font></b><br>
 {
 <blockquote>
-    wxTOKEN_INVALID         <font color=#009900>// set by def ctor until SetString() is called</font><br>
-    wxTOKEN_DEFAULT         <font color=#009900>// strtok() for whitespace delims, RET_EMPTY else</font><br>
-    wxTOKEN_RET_EMPTY       <font color=#009900>// return empty token in the middle of the string</font><br>
-    wxTOKEN_RET_EMPTY_ALL   <font color=#009900>// return trailing empty tokens too</font><br>
-    wxTOKEN_RET_DELIMS      <font color=#009900>// return the delim with token (implies RET_EMPTY );</font><br>
-    wxTOKEN_STRTOK          <font color=#009900>// behave exactly like strtok(3 );</font><br>
+    wxTOKEN_INVALID,         <font color=#009900>// set by def ctor until SetString() is called</font><br>
+    wxTOKEN_DEFAULT,         <font color=#009900>// strtok() for whitespace delims, RET_EMPTY else</font><br>
+    wxTOKEN_RET_EMPTY,       <font color=#009900>// return empty token in the middle of the string</font><br>
+    wxTOKEN_RET_EMPTY_ALL,   <font color=#009900>// return trailing empty tokens too</font><br>
+    wxTOKEN_RET_DELIMS,      <font color=#009900>// return the delim with token (implies RET_EMPTY );</font><br>
+    wxTOKEN_STRTOK           <font color=#009900>// behave exactly like strtok(3 );</font><br>
 </font>
 </blockquote>};<br>
 <br>
@@ -4763,8 +4769,8 @@ enum<br>
 <br>
 <font color=#009900>//enum wxClientDataType - used internally so we don't need it</font><br>
 <font color=#009900>//{</font><br>
-<font color=#009900>//    wxClientData_None</font><br>
-<font color=#009900>//    wxClientData_Object</font><br>
+<font color=#009900>//    wxClientData_None,</font><br>
+<font color=#009900>//    wxClientData_Object,</font><br>
 <font color=#009900>//    wxClientData_Void</font><br>
 <font color=#009900>//};</font><br>
 <br>
@@ -4886,8 +4892,8 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxKeyType">wxKeyType</a></font></b><br>
 {
 <blockquote>
-    wxKEY_NONE<br>
-    wxKEY_INTEGER<br>
+    wxKEY_NONE,<br>
+    wxKEY_INTEGER,<br>
     wxKEY_STRING<br>
 </font>
 </blockquote>};<br>
@@ -5193,60 +5199,60 @@ void wxSleep(int secs );<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxDateTime::TZ">wxDateTime::TZ</a></font></b><br>
 {
 <blockquote>
-    Local<br>
-    GMT_12<br>
-    GMT_11<br>
-    GMT_10<br>
-    GMT_9<br>
-    GMT_8<br>
-    GMT_7<br>
-    GMT_6<br>
-    GMT_5<br>
-    GMT_4<br>
-    GMT_3<br>
-    GMT_2<br>
-    GMT_1<br>
-    GMT0<br>
-    GMT1<br>
-    GMT2<br>
-    GMT3<br>
-    GMT4<br>
-    GMT5<br>
-    GMT6<br>
-    GMT7<br>
-    GMT8<br>
-    GMT9<br>
-    GMT10<br>
-    GMT11<br>
-    GMT12<br>
-    <i>%wxchkver_2_8</i> GMT13<br>
-    WET<br>
-    WEST<br>
-    CET<br>
-    CEST<br>
-    EET<br>
-    EEST<br>
-    MSK<br>
-    MSD<br>
-    AST<br>
-    ADT<br>
-    EST<br>
-    EDT<br>
-    CST<br>
-    CDT<br>
-    MST<br>
-    MDT<br>
-    PST<br>
-    PDT<br>
-    HST<br>
-    AKST<br>
-    AKDT<br>
-    A_WST<br>
-    A_CST<br>
-    A_EST<br>
-    A_ESST<br>
-    <i>%wxchkver_2_8</i> NZST<br>
-    <i>%wxchkver_2_8</i> NZDT<br>
+    Local,<br>
+    GMT_12,<br>
+    GMT_11,<br>
+    GMT_10,<br>
+    GMT_9,<br>
+    GMT_8,<br>
+    GMT_7,<br>
+    GMT_6,<br>
+    GMT_5,<br>
+    GMT_4,<br>
+    GMT_3,<br>
+    GMT_2,<br>
+    GMT_1,<br>
+    GMT0,<br>
+    GMT1,<br>
+    GMT2,<br>
+    GMT3,<br>
+    GMT4,<br>
+    GMT5,<br>
+    GMT6,<br>
+    GMT7,<br>
+    GMT8,<br>
+    GMT9,<br>
+    GMT10,<br>
+    GMT11,<br>
+    GMT12,<br>
+    <i>%wxchkver_2_8</i> GMT13,<br>
+    WET,<br>
+    WEST,<br>
+    CET,<br>
+    CEST,<br>
+    EET,<br>
+    EEST,<br>
+    MSK,<br>
+    MSD,<br>
+    AST,<br>
+    ADT,<br>
+    EST,<br>
+    EDT,<br>
+    CST,<br>
+    CDT,<br>
+    MST,<br>
+    MDT,<br>
+    PST,<br>
+    PDT,<br>
+    HST,<br>
+    AKST,<br>
+    AKDT,<br>
+    A_WST,<br>
+    A_CST,<br>
+    A_EST,<br>
+    A_ESST,<br>
+    <i>%wxchkver_2_8</i> NZST,<br>
+    <i>%wxchkver_2_8</i> NZDT,<br>
     UTC<br>
 </font>
 </blockquote>};<br>
@@ -5254,7 +5260,7 @@ void wxSleep(int secs );<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxDateTime::Calendar">wxDateTime::Calendar</a></font></b><br>
 {
 <blockquote>
-    Gregorian<br>
+    Gregorian,<br>
     Julian<br>
 </font>
 </blockquote>};<br>
@@ -5262,15 +5268,15 @@ void wxSleep(int secs );<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxDateTime::Country">wxDateTime::Country</a></font></b><br>
 {
 <blockquote>
-    Country_Unknown<br>
-    Country_Default<br>
-    Country_WesternEurope_Start<br>
-    Country_EEC<br>
-    France<br>
-    Germany<br>
-    UK<br>
-    Country_WesternEurope_End<br>
-    Russia<br>
+    Country_Unknown,<br>
+    Country_Default,<br>
+    Country_WesternEurope_Start,<br>
+    Country_EEC,<br>
+    France,<br>
+    Germany,<br>
+    UK,<br>
+    Country_WesternEurope_End,<br>
+    Russia,<br>
     USA<br>
 </font>
 </blockquote>};<br>
@@ -5278,18 +5284,18 @@ void wxSleep(int secs );<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxDateTime::Month">wxDateTime::Month</a></font></b><br>
 {
 <blockquote>
-    Jan<br>
-    Feb<br>
-    Mar<br>
-    Apr<br>
-    May<br>
-    Jun<br>
-    Jul<br>
-    Aug<br>
-    Sep<br>
-    Oct<br>
-    Nov<br>
-    Dec<br>
+    Jan,<br>
+    Feb,<br>
+    Mar,<br>
+    Apr,<br>
+    May,<br>
+    Jun,<br>
+    Jul,<br>
+    Aug,<br>
+    Sep,<br>
+    Oct,<br>
+    Nov,<br>
+    Dec,<br>
     Inv_Month<br>
 </font>
 </blockquote>};<br>
@@ -5297,13 +5303,13 @@ void wxSleep(int secs );<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxDateTime::WeekDay">wxDateTime::WeekDay</a></font></b><br>
 {
 <blockquote>
-    Sun<br>
-    Mon<br>
-    Tue<br>
-    Wed<br>
-    Thu<br>
-    Fri<br>
-    Sat<br>
+    Sun,<br>
+    Mon,<br>
+    Tue,<br>
+    Wed,<br>
+    Thu,<br>
+    Fri,<br>
+    Sat,<br>
     Inv_WeekDay<br>
 </font>
 </blockquote>};<br>
@@ -5318,7 +5324,7 @@ void wxSleep(int secs );<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxDateTime::NameFlags">wxDateTime::NameFlags</a></font></b><br>
 {
 <blockquote>
-    Name_Full<br>
+    Name_Full,<br>
     Name_Abbr<br>
 </font>
 </blockquote>};<br>
@@ -5326,8 +5332,8 @@ void wxSleep(int secs );<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxDateTime::WeekFlags">wxDateTime::WeekFlags</a></font></b><br>
 {
 <blockquote>
-    Default_First<br>
-    Monday_First<br>
+    Default_First,<br>
+    Monday_First,<br>
     Sunday_First<br>
 </font>
 </blockquote>};<br>
@@ -5937,127 +5943,127 @@ typedef unsigned short wxDateTime::wxDateTime_t<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxFontEncoding">wxFontEncoding</a></font></b><br>
 {
 <blockquote>
-    wxFONTENCODING_SYSTEM           <font color=#009900>// system default</font><br>
-    wxFONTENCODING_DEFAULT         <font color=#009900>// current default encoding</font><br>
+    wxFONTENCODING_SYSTEM,           <font color=#009900>// system default</font><br>
+    wxFONTENCODING_DEFAULT,         <font color=#009900>// current default encoding</font><br>
 <br>
     <font color=#009900>// ISO8859 standard defines a number of single-byte charsets</font><br>
-    wxFONTENCODING_ISO8859_1       <font color=#009900>// West European (Latin1 );</font><br>
-    wxFONTENCODING_ISO8859_2       <font color=#009900>// Central and East European (Latin2 );</font><br>
-    wxFONTENCODING_ISO8859_3       <font color=#009900>// Esperanto (Latin3 );</font><br>
-    wxFONTENCODING_ISO8859_4       <font color=#009900>// Baltic (old) (Latin4 );</font><br>
-    wxFONTENCODING_ISO8859_5       <font color=#009900>// Cyrillic</font><br>
-    wxFONTENCODING_ISO8859_6       <font color=#009900>// Arabic</font><br>
-    wxFONTENCODING_ISO8859_7       <font color=#009900>// Greek</font><br>
-    wxFONTENCODING_ISO8859_8       <font color=#009900>// Hebrew</font><br>
-    wxFONTENCODING_ISO8859_9       <font color=#009900>// Turkish (Latin5 );</font><br>
-    wxFONTENCODING_ISO8859_10      <font color=#009900>// Variation of Latin4 (Latin6 );</font><br>
-    wxFONTENCODING_ISO8859_11      <font color=#009900>// Thai</font><br>
-    wxFONTENCODING_ISO8859_12      <font color=#009900>// doesn't exist currently, but put it</font><br>
+    wxFONTENCODING_ISO8859_1,       <font color=#009900>// West European (Latin1 );</font><br>
+    wxFONTENCODING_ISO8859_2,       <font color=#009900>// Central and East European (Latin2 );</font><br>
+    wxFONTENCODING_ISO8859_3,       <font color=#009900>// Esperanto (Latin3 );</font><br>
+    wxFONTENCODING_ISO8859_4,       <font color=#009900>// Baltic (old) (Latin4 );</font><br>
+    wxFONTENCODING_ISO8859_5,       <font color=#009900>// Cyrillic</font><br>
+    wxFONTENCODING_ISO8859_6,       <font color=#009900>// Arabic</font><br>
+    wxFONTENCODING_ISO8859_7,       <font color=#009900>// Greek</font><br>
+    wxFONTENCODING_ISO8859_8,       <font color=#009900>// Hebrew</font><br>
+    wxFONTENCODING_ISO8859_9,       <font color=#009900>// Turkish (Latin5 );</font><br>
+    wxFONTENCODING_ISO8859_10,      <font color=#009900>// Variation of Latin4 (Latin6 );</font><br>
+    wxFONTENCODING_ISO8859_11,      <font color=#009900>// Thai</font><br>
+    wxFONTENCODING_ISO8859_12,      <font color=#009900>// doesn't exist currently, but put it</font><br>
                                     <font color=#009900>// here anyhow to make all ISO8859</font><br>
                                     <font color=#009900>// consecutive numbers</font><br>
-    wxFONTENCODING_ISO8859_13      <font color=#009900>// Baltic (Latin7 );</font><br>
-    wxFONTENCODING_ISO8859_14      <font color=#009900>// Latin8</font><br>
-    wxFONTENCODING_ISO8859_15      <font color=#009900>// Latin9 (a.k.a. Latin0, includes euro );</font><br>
-    wxFONTENCODING_ISO8859_MAX<br>
+    wxFONTENCODING_ISO8859_13,      <font color=#009900>// Baltic (Latin7 );</font><br>
+    wxFONTENCODING_ISO8859_14,      <font color=#009900>// Latin8</font><br>
+    wxFONTENCODING_ISO8859_15,      <font color=#009900>// Latin9 (a.k.a. Latin0, includes euro );</font><br>
+    wxFONTENCODING_ISO8859_MAX,<br>
 <br>
     <font color=#009900>// Cyrillic charset soup (see http://czyborra.com/charsets/cyrillic.html );</font><br>
-    wxFONTENCODING_KOI8            <font color=#009900>// KOI8 Russian</font><br>
-    wxFONTENCODING_KOI8_U          <font color=#009900>// KOI8 Ukrainian</font><br>
-    wxFONTENCODING_ALTERNATIVE     <font color=#009900>// same as MS-DOS CP866</font><br>
-    wxFONTENCODING_BULGARIAN       <font color=#009900>// used under Linux in Bulgaria</font><br>
+    wxFONTENCODING_KOI8,            <font color=#009900>// KOI8 Russian</font><br>
+    wxFONTENCODING_KOI8_U,          <font color=#009900>// KOI8 Ukrainian</font><br>
+    wxFONTENCODING_ALTERNATIVE,     <font color=#009900>// same as MS-DOS CP866</font><br>
+    wxFONTENCODING_BULGARIAN,       <font color=#009900>// used under Linux in Bulgaria</font><br>
 <br>
     <font color=#009900>// what would we do without Microsoft? They have their own encodings</font><br>
         <font color=#009900>// for DOS</font><br>
-    wxFONTENCODING_CP437           <font color=#009900>// original MS-DOS codepage</font><br>
-    wxFONTENCODING_CP850           <font color=#009900>// CP437 merged with Latin1</font><br>
-    wxFONTENCODING_CP852           <font color=#009900>// CP437 merged with Latin2</font><br>
-    wxFONTENCODING_CP855           <font color=#009900>// another cyrillic encoding</font><br>
-    wxFONTENCODING_CP866           <font color=#009900>// and another one</font><br>
+    wxFONTENCODING_CP437,           <font color=#009900>// original MS-DOS codepage</font><br>
+    wxFONTENCODING_CP850,           <font color=#009900>// CP437 merged with Latin1</font><br>
+    wxFONTENCODING_CP852,           <font color=#009900>// CP437 merged with Latin2</font><br>
+    wxFONTENCODING_CP855,           <font color=#009900>// another cyrillic encoding</font><br>
+    wxFONTENCODING_CP866,           <font color=#009900>// and another one</font><br>
         <font color=#009900>// and for Windows</font><br>
-    wxFONTENCODING_CP874           <font color=#009900>// WinThai</font><br>
-    wxFONTENCODING_CP932           <font color=#009900>// Japanese (shift-JIS );</font><br>
-    wxFONTENCODING_CP936           <font color=#009900>// Chinese simplified (GB );</font><br>
-    wxFONTENCODING_CP949           <font color=#009900>// Korean (Hangul charset );</font><br>
-    wxFONTENCODING_CP950           <font color=#009900>// Chinese (traditional - Big5 );</font><br>
-    wxFONTENCODING_CP1250          <font color=#009900>// WinLatin2</font><br>
-    wxFONTENCODING_CP1251          <font color=#009900>// WinCyrillic</font><br>
-    wxFONTENCODING_CP1252          <font color=#009900>// WinLatin1</font><br>
-    wxFONTENCODING_CP1253          <font color=#009900>// WinGreek (8859-7 );</font><br>
-    wxFONTENCODING_CP1254          <font color=#009900>// WinTurkish</font><br>
-    wxFONTENCODING_CP1255          <font color=#009900>// WinHebrew</font><br>
-    wxFONTENCODING_CP1256          <font color=#009900>// WinArabic</font><br>
-    wxFONTENCODING_CP1257          <font color=#009900>// WinBaltic (same as Latin 7 );</font><br>
-    wxFONTENCODING_CP12_MAX<br>
+    wxFONTENCODING_CP874,           <font color=#009900>// WinThai</font><br>
+    wxFONTENCODING_CP932,           <font color=#009900>// Japanese (shift-JIS );</font><br>
+    wxFONTENCODING_CP936,           <font color=#009900>// Chinese simplified (GB );</font><br>
+    wxFONTENCODING_CP949,           <font color=#009900>// Korean (Hangul charset );</font><br>
+    wxFONTENCODING_CP950,           <font color=#009900>// Chinese (traditional - Big5 );</font><br>
+    wxFONTENCODING_CP1250,          <font color=#009900>// WinLatin2</font><br>
+    wxFONTENCODING_CP1251,          <font color=#009900>// WinCyrillic</font><br>
+    wxFONTENCODING_CP1252,          <font color=#009900>// WinLatin1</font><br>
+    wxFONTENCODING_CP1253,          <font color=#009900>// WinGreek (8859-7 );</font><br>
+    wxFONTENCODING_CP1254,          <font color=#009900>// WinTurkish</font><br>
+    wxFONTENCODING_CP1255,          <font color=#009900>// WinHebrew</font><br>
+    wxFONTENCODING_CP1256,          <font color=#009900>// WinArabic</font><br>
+    wxFONTENCODING_CP1257,          <font color=#009900>// WinBaltic (same as Latin 7 );</font><br>
+    wxFONTENCODING_CP12_MAX,<br>
 <br>
-    wxFONTENCODING_UTF7            <font color=#009900>// UTF-7 Unicode encoding</font><br>
-    wxFONTENCODING_UTF8            <font color=#009900>// UTF-8 Unicode encoding</font><br>
-    wxFONTENCODING_EUC_JP          <font color=#009900>// Extended Unix Codepage for Japanese</font><br>
-    wxFONTENCODING_UTF16BE         <font color=#009900>// UTF-16 Big Endian Unicode encoding</font><br>
-    wxFONTENCODING_UTF16LE         <font color=#009900>// UTF-16 Little Endian Unicode encoding</font><br>
-    wxFONTENCODING_UTF32BE         <font color=#009900>// UTF-32 Big Endian Unicode encoding</font><br>
-    wxFONTENCODING_UTF32LE         <font color=#009900>// UTF-32 Little Endian Unicode encoding</font><br>
+    wxFONTENCODING_UTF7,            <font color=#009900>// UTF-7 Unicode encoding</font><br>
+    wxFONTENCODING_UTF8,            <font color=#009900>// UTF-8 Unicode encoding</font><br>
+    wxFONTENCODING_EUC_JP,          <font color=#009900>// Extended Unix Codepage for Japanese</font><br>
+    wxFONTENCODING_UTF16BE,         <font color=#009900>// UTF-16 Big Endian Unicode encoding</font><br>
+    wxFONTENCODING_UTF16LE,         <font color=#009900>// UTF-16 Little Endian Unicode encoding</font><br>
+    wxFONTENCODING_UTF32BE,         <font color=#009900>// UTF-32 Big Endian Unicode encoding</font><br>
+    wxFONTENCODING_UTF32LE,         <font color=#009900>// UTF-32 Little Endian Unicode encoding</font><br>
 <br>
-    wxFONTENCODING_MACROMAN        <font color=#009900>// the standard mac encodings</font><br>
-    wxFONTENCODING_MACJAPANESE<br>
-    wxFONTENCODING_MACCHINESETRAD<br>
-    wxFONTENCODING_MACKOREAN<br>
-    wxFONTENCODING_MACARABIC<br>
-    wxFONTENCODING_MACHEBREW<br>
-    wxFONTENCODING_MACGREEK<br>
-    wxFONTENCODING_MACCYRILLIC<br>
-    wxFONTENCODING_MACDEVANAGARI<br>
-    wxFONTENCODING_MACGURMUKHI<br>
-    wxFONTENCODING_MACGUJARATI<br>
-    wxFONTENCODING_MACORIYA<br>
-    wxFONTENCODING_MACBENGALI<br>
-    wxFONTENCODING_MACTAMIL<br>
-    wxFONTENCODING_MACTELUGU<br>
-    wxFONTENCODING_MACKANNADA<br>
-    wxFONTENCODING_MACMALAJALAM<br>
-    wxFONTENCODING_MACSINHALESE<br>
-    wxFONTENCODING_MACBURMESE<br>
-    wxFONTENCODING_MACKHMER<br>
-    wxFONTENCODING_MACTHAI<br>
-    wxFONTENCODING_MACLAOTIAN<br>
-    wxFONTENCODING_MACGEORGIAN<br>
-    wxFONTENCODING_MACARMENIAN<br>
-    wxFONTENCODING_MACCHINESESIMP<br>
-    wxFONTENCODING_MACTIBETAN<br>
-    wxFONTENCODING_MACMONGOLIAN<br>
-    wxFONTENCODING_MACETHIOPIC<br>
-    wxFONTENCODING_MACCENTRALEUR<br>
-    wxFONTENCODING_MACVIATNAMESE<br>
-    wxFONTENCODING_MACARABICEXT<br>
-    wxFONTENCODING_MACSYMBOL<br>
-    wxFONTENCODING_MACDINGBATS<br>
-    wxFONTENCODING_MACTURKISH<br>
-    wxFONTENCODING_MACCROATIAN<br>
-    wxFONTENCODING_MACICELANDIC<br>
-    wxFONTENCODING_MACROMANIAN<br>
-    wxFONTENCODING_MACCELTIC<br>
-    wxFONTENCODING_MACGAELIC<br>
-    wxFONTENCODING_MACKEYBOARD<br>
+    wxFONTENCODING_MACROMAN,        <font color=#009900>// the standard mac encodings</font><br>
+    wxFONTENCODING_MACJAPANESE,<br>
+    wxFONTENCODING_MACCHINESETRAD,<br>
+    wxFONTENCODING_MACKOREAN,<br>
+    wxFONTENCODING_MACARABIC,<br>
+    wxFONTENCODING_MACHEBREW,<br>
+    wxFONTENCODING_MACGREEK,<br>
+    wxFONTENCODING_MACCYRILLIC,<br>
+    wxFONTENCODING_MACDEVANAGARI,<br>
+    wxFONTENCODING_MACGURMUKHI,<br>
+    wxFONTENCODING_MACGUJARATI,<br>
+    wxFONTENCODING_MACORIYA,<br>
+    wxFONTENCODING_MACBENGALI,<br>
+    wxFONTENCODING_MACTAMIL,<br>
+    wxFONTENCODING_MACTELUGU,<br>
+    wxFONTENCODING_MACKANNADA,<br>
+    wxFONTENCODING_MACMALAJALAM,<br>
+    wxFONTENCODING_MACSINHALESE,<br>
+    wxFONTENCODING_MACBURMESE,<br>
+    wxFONTENCODING_MACKHMER,<br>
+    wxFONTENCODING_MACTHAI,<br>
+    wxFONTENCODING_MACLAOTIAN,<br>
+    wxFONTENCODING_MACGEORGIAN,<br>
+    wxFONTENCODING_MACARMENIAN,<br>
+    wxFONTENCODING_MACCHINESESIMP,<br>
+    wxFONTENCODING_MACTIBETAN,<br>
+    wxFONTENCODING_MACMONGOLIAN,<br>
+    wxFONTENCODING_MACETHIOPIC,<br>
+    wxFONTENCODING_MACCENTRALEUR,<br>
+    wxFONTENCODING_MACVIATNAMESE,<br>
+    wxFONTENCODING_MACARABICEXT,<br>
+    wxFONTENCODING_MACSYMBOL,<br>
+    wxFONTENCODING_MACDINGBATS,<br>
+    wxFONTENCODING_MACTURKISH,<br>
+    wxFONTENCODING_MACCROATIAN,<br>
+    wxFONTENCODING_MACICELANDIC,<br>
+    wxFONTENCODING_MACROMANIAN,<br>
+    wxFONTENCODING_MACCELTIC,<br>
+    wxFONTENCODING_MACGAELIC,<br>
+    wxFONTENCODING_MACKEYBOARD,<br>
 <br>
-    wxFONTENCODING_MAX             <font color=#009900>// highest enumerated encoding value</font><br>
+    wxFONTENCODING_MAX,             <font color=#009900>// highest enumerated encoding value</font><br>
 <br>
-    wxFONTENCODING_MACMIN <font color=#009900>//= wxFONTENCODING_MACROMAN ,</font><br>
-    wxFONTENCODING_MACMAX <font color=#009900>//= wxFONTENCODING_MACKEYBOARD ,</font><br>
+    wxFONTENCODING_MACMIN, <font color=#009900>//= wxFONTENCODING_MACROMAN ,</font><br>
+    wxFONTENCODING_MACMAX, <font color=#009900>//= wxFONTENCODING_MACKEYBOARD ,</font><br>
 <br>
     <font color=#009900>// aliases for endian-dependent UTF encodings</font><br>
-    wxFONTENCODING_UTF16   <font color=#009900>// native UTF-16</font><br>
-    wxFONTENCODING_UTF32   <font color=#009900>// native UTF-32</font><br>
+    wxFONTENCODING_UTF16,   <font color=#009900>// native UTF-16</font><br>
+    wxFONTENCODING_UTF32,   <font color=#009900>// native UTF-32</font><br>
 <br>
     <font color=#009900>// alias for the native Unicode encoding on this platform</font><br>
     <font color=#009900>// (this is used by wxEncodingConverter and wxUTFFile only for now );</font><br>
-    wxFONTENCODING_UNICODE<br>
+    wxFONTENCODING_UNICODE,<br>
 <br>
     <font color=#009900>// alternative names for Far Eastern encodings</font><br>
         <font color=#009900>// Chinese</font><br>
-    wxFONTENCODING_GB2312  <font color=#009900>// Simplified Chinese</font><br>
-    wxFONTENCODING_BIG5    <font color=#009900>// Traditional Chinese</font><br>
+    wxFONTENCODING_GB2312,  <font color=#009900>// Simplified Chinese</font><br>
+    wxFONTENCODING_BIG5,    <font color=#009900>// Traditional Chinese</font><br>
 <br>
         <font color=#009900>// Japanese (see http://zsigri.tripod.com/fontboard/cjk/jis.html );</font><br>
-    wxFONTENCODING_SHIFT_JIS <font color=#009900>// Shift JIS</font><br>
+    wxFONTENCODING_SHIFT_JIS, <font color=#009900>// Shift JIS</font><br>
 </font>
 </blockquote>};<br>
 <br>
@@ -6082,7 +6088,7 @@ typedef unsigned short wxDateTime::wxDateTime_t<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxLocaleInitFlags">wxLocaleInitFlags</a></font></b><br>
 {
 <blockquote>
-    wxLOCALE_LOAD_DEFAULT       <font color=#009900>// load wxwin.mo?</font><br>
+    wxLOCALE_LOAD_DEFAULT,       <font color=#009900>// load wxwin.mo?</font><br>
     wxLOCALE_CONV_ENCODING      <font color=#009900>// convert encoding on the fly?</font><br>
 </font>
 </blockquote>};<br>
@@ -6091,8 +6097,8 @@ typedef unsigned short wxDateTime::wxDateTime_t<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxLayoutDirection">wxLayoutDirection</a></font></b><br>
 {
 <blockquote>
-    wxLayout_Default<br>
-    wxLayout_LeftToRight<br>
+    wxLayout_Default,<br>
+    wxLayout_LeftToRight,<br>
     wxLayout_RightToLeft<br>
 </font>
 </blockquote>};<br>
@@ -6336,8 +6342,8 @@ bool wxEndsWithPathSeparator(const <a href="#wxString">wxString</a>&amp; pszFile
 <b><font size=+1 color=#0066CC>enum <a name="wxStandardPaths::ResourceCat">wxStandardPaths::ResourceCat</a></font></b><br>
 {
 <blockquote>
-    ResourceCat_None     <font color=#009900>// no special category</font><br>
-    ResourceCat_Messages <font color=#009900>// message catalog resources</font><br>
+    ResourceCat_None,     <font color=#009900>// no special category</font><br>
+    ResourceCat_Messages, <font color=#009900>// message catalog resources</font><br>
     ResourceCat_Max      <font color=#009900>// end of enum marker</font><br>
 </font>
 </blockquote>};<br>
@@ -6419,14 +6425,14 @@ bool wxEndsWithPathSeparator(const <a href="#wxString">wxString</a>&amp; pszFile
 <b><font size=+1 color=#0066CC>enum <a name="wxPathFormat">wxPathFormat</a></font></b><br>
 {
 <blockquote>
-    wxPATH_NATIVE<br>
-    wxPATH_UNIX<br>
-    wxPATH_MAC<br>
-    wxPATH_DOS<br>
-    wxPATH_VMS<br>
-    wxPATH_BEOS<br>
-    wxPATH_WIN<br>
-    wxPATH_OS2<br>
+    wxPATH_NATIVE,<br>
+    wxPATH_UNIX,<br>
+    wxPATH_MAC,<br>
+    wxPATH_DOS,<br>
+    wxPATH_VMS,<br>
+    wxPATH_BEOS,<br>
+    wxPATH_WIN,<br>
+    wxPATH_OS2,<br>
     wxPATH_MAX<br>
 </font>
 </blockquote>};<br>
@@ -6434,13 +6440,13 @@ bool wxEndsWithPathSeparator(const <a href="#wxString">wxString</a>&amp; pszFile
 <b><font size=+1 color=#0066CC>enum <a name="wxPathNormalize">wxPathNormalize</a></font></b><br>
 {
 <blockquote>
-    wxPATH_NORM_ENV_VARS<br>
-    wxPATH_NORM_DOTS<br>
-    wxPATH_NORM_TILDE<br>
-    wxPATH_NORM_CASE<br>
-    wxPATH_NORM_ABSOLUTE<br>
-    wxPATH_NORM_LONG<br>
-    wxPATH_NORM_SHORTCUT<br>
+    wxPATH_NORM_ENV_VARS,<br>
+    wxPATH_NORM_DOTS,<br>
+    wxPATH_NORM_TILDE,<br>
+    wxPATH_NORM_CASE,<br>
+    wxPATH_NORM_ABSOLUTE,<br>
+    wxPATH_NORM_LONG,<br>
+    wxPATH_NORM_SHORTCUT,<br>
     wxPATH_NORM_ALL<br>
 </font>
 </blockquote>};<br>
@@ -6595,10 +6601,10 @@ bool wxEndsWithPathSeparator(const <a href="#wxString">wxString</a>&amp; pszFile
 <b><font size=+1 color=#0066CC>enum <a name="wxFile::OpenMode">wxFile::OpenMode</a></font></b><br>
 {
 <blockquote>
-    read<br>
-    write<br>
-    read_write<br>
-    write_append<br>
+    read,<br>
+    write,<br>
+    read_write,<br>
+    write_append,<br>
     write_excl<br>
 </font>
 </blockquote>};<br>
@@ -6606,9 +6612,9 @@ bool wxEndsWithPathSeparator(const <a href="#wxString">wxString</a>&amp; pszFile
 <b><font size=+1 color=#0066CC>enum <a name="wxFile::dummy">wxFile::dummy</a></font></b><br>
 {
 <blockquote>
-    fd_invalid <font color=#009900>// = -1</font><br>
-    fd_stdin<br>
-    fd_stdout<br>
+    fd_invalid, <font color=#009900>// = -1</font><br>
+    fd_stdin,<br>
+    fd_stdout,<br>
     fd_stderr<br>
 </font>
 </blockquote>};<br>
@@ -6616,9 +6622,9 @@ bool wxEndsWithPathSeparator(const <a href="#wxString">wxString</a>&amp; pszFile
 <b><font size=+1 color=#0066CC>enum <a name="wxSeekMode">wxSeekMode</a></font></b><br>
 {
 <blockquote>
-    wxFromStart<br>
-    wxFromCurrent<br>
-    wxFromEnd<br>
+    wxFromStart,<br>
+    wxFromCurrent,<br>
+    wxFromEnd,<br>
     wxInvalidOffset<br>
 </font>
 </blockquote>};<br>
@@ -6626,9 +6632,9 @@ bool wxEndsWithPathSeparator(const <a href="#wxString">wxString</a>&amp; pszFile
 <b><font size=+1 color=#0066CC>enum <a name="wxFileKind">wxFileKind</a></font></b><br>
 {
 <blockquote>
-    wxFILE_KIND_UNKNOWN<br>
-    wxFILE_KIND_DISK<br>
-    wxFILE_KIND_TERMINAL<br>
+    wxFILE_KIND_UNKNOWN,<br>
+    wxFILE_KIND_DISK,<br>
+    wxFILE_KIND_TERMINAL,<br>
     wxFILE_KIND_PIPE<br>
 </font>
 </blockquote>};<br>
@@ -6726,7 +6732,24 @@ bool wxEndsWithPathSeparator(const <a href="#wxString">wxString</a>&amp; pszFile
 <font color=#006666>#define wxDIR_DIRS</font><br>
 <font color=#006666>#define wxDIR_HIDDEN</font><br>
 <font color=#006666>#define wxDIR_DOTDOT</font><br>
+<font color=#006666><i>%wxchkver_2_9_4</i> #define wxDIR_NO_FOLLOW</font><br>
 <font color=#006666>#define wxDIR_DEFAULT</font><br>
+<br>
+<br>
+#if <i>%wxchkver_2_9_4</i><br>
+<br>
+<font color=#009900>// these constants are possible return value of wxDirTraverser::OnDir()</font><br>
+<b><font size=+1 color=#0066CC>enum <a name="wxDirTraverseResult">wxDirTraverseResult</a></font></b><br>
+{
+<blockquote>
+    wxDIR_IGNORE,           <font color=#009900>// ignore this directory but continue with others</font><br>
+    wxDIR_STOP,             <font color=#009900>// stop traversing</font><br>
+    wxDIR_CONTINUE          <font color=#009900>// continue into this directory</font><br>
+</font>
+</blockquote>};<br>
+<br>
+#endif <font color=#009900>//<i>%wxchkver_2_9_4</i></font><br>
+<br>
 <br>
 <b><font size=+1 color=#DD0000>class <i>%delete</i> <a name="wxDir">wxDir</a></font></b><br>
 {
@@ -6963,9 +6986,9 @@ bool wxEndsWithPathSeparator(const <a href="#wxString">wxString</a>&amp; pszFile
 <b><font size=+1 color=#0066CC>enum <a name="wxEOL">wxEOL</a></font></b><br>
 {
 <blockquote>
-    wxEOL_NATIVE<br>
-    wxEOL_UNIX<br>
-    wxEOL_MAC<br>
+    wxEOL_NATIVE,<br>
+    wxEOL_UNIX,<br>
+    wxEOL_MAC,<br>
     wxEOL_DOS<br>
 </font>
 </blockquote>};<br>
@@ -6973,9 +6996,9 @@ bool wxEndsWithPathSeparator(const <a href="#wxString">wxString</a>&amp; pszFile
 <b><font size=+1 color=#0066CC>enum <a name="wxStreamError">wxStreamError</a></font></b><br>
 {
 <blockquote>
-    wxSTREAM_NO_ERROR<br>
-    wxSTREAM_EOF<br>
-    wxSTREAM_WRITE_ERROR<br>
+    wxSTREAM_NO_ERROR,<br>
+    wxSTREAM_EOF,<br>
+    wxSTREAM_WRITE_ERROR,<br>
     wxSTREAM_READ_ERROR<br>
 </font>
 </blockquote>};<br>
@@ -7268,7 +7291,7 @@ bool wxEndsWithPathSeparator(const <a href="#wxString">wxString</a>&amp; pszFile
 <br>
 enum<br>
 {<br>
-    wxFS_READ        <font color=#009900>// Open for reading</font><br>
+    wxFS_READ,        <font color=#009900>// Open for reading</font><br>
     wxFS_SEEKABLE    <font color=#009900>// Returned stream will be seekable</font><br>
 };<br>
 <br>
@@ -7462,17 +7485,17 @@ enum<br>
 <br>
 enum<br>
 {<br>
-    wxUSER_ATTENTION_INFO<br>
+    wxUSER_ATTENTION_INFO,<br>
     wxUSER_ATTENTION_ERROR<br>
 };<br>
 <br>
 enum<br>
 {<br>
-    wxFULLSCREEN_NOMENUBAR<br>
-    wxFULLSCREEN_NOTOOLBAR<br>
-    wxFULLSCREEN_NOSTATUSBAR<br>
-    wxFULLSCREEN_NOBORDER<br>
-    wxFULLSCREEN_NOCAPTION<br>
+    wxFULLSCREEN_NOMENUBAR,<br>
+    wxFULLSCREEN_NOTOOLBAR,<br>
+    wxFULLSCREEN_NOSTATUSBAR,<br>
+    wxFULLSCREEN_NOBORDER,<br>
+    wxFULLSCREEN_NOCAPTION,<br>
     wxFULLSCREEN_ALL<br>
 };<br>
 <br>
@@ -7722,25 +7745,25 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxDataFormatId">wxDataFormatId</a></font></b><br>
 {
 <blockquote>
-    wxDF_INVALID<br>
-    wxDF_TEXT<br>
-    wxDF_BITMAP<br>
-    wxDF_METAFILE<br>
-    wxDF_SYLK<br>
-    wxDF_DIF<br>
-    wxDF_TIFF<br>
-    wxDF_OEMTEXT<br>
-    wxDF_DIB<br>
-    wxDF_PALETTE<br>
-    wxDF_PENDATA<br>
-    wxDF_RIFF<br>
-    wxDF_WAVE<br>
-    wxDF_UNICODETEXT<br>
-    wxDF_ENHMETAFILE<br>
-    wxDF_FILENAME<br>
-    wxDF_LOCALE<br>
-    wxDF_PRIVATE<br>
-    wxDF_HTML<br>
+    wxDF_INVALID,<br>
+    wxDF_TEXT,<br>
+    wxDF_BITMAP,<br>
+    wxDF_METAFILE,<br>
+    wxDF_SYLK,<br>
+    wxDF_DIF,<br>
+    wxDF_TIFF,<br>
+    wxDF_OEMTEXT,<br>
+    wxDF_DIB,<br>
+    wxDF_PALETTE,<br>
+    wxDF_PENDATA,<br>
+    wxDF_RIFF,<br>
+    wxDF_WAVE,<br>
+    wxDF_UNICODETEXT,<br>
+    wxDF_ENHMETAFILE,<br>
+    wxDF_FILENAME,<br>
+    wxDF_LOCALE,<br>
+    wxDF_PRIVATE,<br>
+    wxDF_HTML,<br>
     wxDF_MAX<br>
 </font>
 </blockquote>};<br>
@@ -7764,17 +7787,15 @@ enum<br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
 <font color=#009900>// <a href="#wxDataObject">wxDataObject</a></font><br>
 <br>
-<b><font size=+1 color=#0066CC>enum <a name="wxDataObject::Direction">wxDataObject::Direction</a></font></b><br>
-{
-<blockquote>
-    Get<br>
-    Set<br>
-</font>
-</blockquote>};<br>
-<br>
 <b><font size=+1 color=#DD0000>class <a name="wxDataObject">wxDataObject</a></font></b><br>
 {
 <blockquote>
+<b><font size=+1 color=#0066CC>    enum <a name="Direction">Direction</a></font></b><br>
+    {<br>
+        Get,<br>
+        Set<br>
+    };<br>
+<br>
     <font color=#009900>//<a href="#wxDataObject">wxDataObject</a>() this is a base class, use simplified derived classes</font><br>
 <br>
 <font color=#BB0055>    <font color=#009900>// <i>%override</i> [Lua table of <a href="#wxDataFormat">wxDataFormat</a> objects] wxDataObject::GetAllFormats(wxDataObject::Direction dir = <a href="#wxDataObject">wxDataObject</a> );</font></font><br>
@@ -7792,6 +7813,7 @@ enum<br>
 <font color=#BB0055>    <font color=#009900>// <i>%override</i> bool wxDataObject::SetData(const <a href="#wxDataFormat">wxDataFormat</a>&amp; format, Lua string );</font></font><br>
     <font color=#009900>// C++ Func: virtual bool SetData(const <a href="#wxDataFormat">wxDataFormat</a>&amp; format, int len, const void *buf );</font><br>
     virtual bool SetData(const <a href="#wxDataFormat">wxDataFormat</a>&amp; format, const <a href="#wxString">wxString</a>&amp; str );<br>
+</font>
 </blockquote>};<br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
@@ -7931,19 +7953,19 @@ enum<br>
 <br>
 enum<br>
 {<br>
-    wxDrag_CopyOnly<br>
-    wxDrag_AllowMove<br>
+    wxDrag_CopyOnly,<br>
+    wxDrag_AllowMove,<br>
     wxDrag_DefaultMove<br>
 };<br>
 <br>
 <b><font size=+1 color=#0066CC>enum <a name="wxDragResult">wxDragResult</a></font></b><br>
 {
 <blockquote>
-    wxDragError<br>
-    wxDragNone<br>
-    wxDragCopy<br>
-    wxDragMove<br>
-    wxDragLink<br>
+    wxDragError,<br>
+    wxDragNone,<br>
+    wxDragCopy,<br>
+    wxDragMove,<br>
+    wxDragLink,<br>
     wxDragCancel<br>
 </font>
 </blockquote>};<br>
@@ -8168,8 +8190,8 @@ bool wxIsDragResultOk(<a href="#wxDragResult">wxDragResult</a> res );<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxCheckBoxState">wxCheckBoxState</a></font></b><br>
 {
 <blockquote>
-    wxCHK_UNCHECKED<br>
-    wxCHK_CHECKED<br>
+    wxCHK_UNCHECKED,<br>
+    wxCHK_CHECKED,<br>
     wxCHK_UNDETERMINED<br>
 </font>
 </blockquote>};<br>
@@ -8620,9 +8642,9 @@ bool wxIsDragResultOk(<a href="#wxDragResult">wxDragResult</a> res );<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxListColumnFormat">wxListColumnFormat</a></font></b><br>
 {
 <blockquote>
-    wxLIST_FORMAT_LEFT<br>
-    wxLIST_FORMAT_RIGHT<br>
-    wxLIST_FORMAT_CENTRE<br>
+    wxLIST_FORMAT_LEFT,<br>
+    wxLIST_FORMAT_RIGHT,<br>
+    wxLIST_FORMAT_CENTRE,<br>
     wxLIST_FORMAT_CENTER<br>
 </font>
 </blockquote>};<br>
@@ -8981,10 +9003,10 @@ bool wxIsDragResultOk(<a href="#wxDragResult">wxDragResult</a> res );<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxTextCtrlHitTestResult">wxTextCtrlHitTestResult</a></font></b><br>
 {
 <blockquote>
-    wxTE_HT_UNKNOWN<br>
-    wxTE_HT_BEFORE<br>
-    wxTE_HT_ON_TEXT<br>
-    wxTE_HT_BELOW<br>
+    wxTE_HT_UNKNOWN,<br>
+    wxTE_HT_BEFORE,<br>
+    wxTE_HT_ON_TEXT,<br>
+    wxTE_HT_BELOW,<br>
     wxTE_HT_BEYOND<br>
 </font>
 </blockquote>};<br>
@@ -9070,11 +9092,11 @@ typedef long wxTextCoord<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxTextAttrAlignment">wxTextAttrAlignment</a></font></b><br>
 {
 <blockquote>
-    wxTEXT_ALIGNMENT_DEFAULT<br>
-    wxTEXT_ALIGNMENT_LEFT<br>
-    wxTEXT_ALIGNMENT_CENTRE<br>
-    wxTEXT_ALIGNMENT_CENTER<br>
-    wxTEXT_ALIGNMENT_RIGHT<br>
+    wxTEXT_ALIGNMENT_DEFAULT,<br>
+    wxTEXT_ALIGNMENT_LEFT,<br>
+    wxTEXT_ALIGNMENT_CENTRE,<br>
+    wxTEXT_ALIGNMENT_CENTER,<br>
+    wxTEXT_ALIGNMENT_RIGHT,<br>
     wxTEXT_ALIGNMENT_JUSTIFIED<br>
 </font>
 </blockquote>};<br>
@@ -9171,10 +9193,10 @@ typedef long wxTextCoord<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxTreeItemIcon">wxTreeItemIcon</a></font></b><br>
 {
 <blockquote>
-    wxTreeItemIcon_Normal<br>
-    wxTreeItemIcon_Selected<br>
-    wxTreeItemIcon_Expanded<br>
-    wxTreeItemIcon_SelectedExpanded<br>
+    wxTreeItemIcon_Normal,<br>
+    wxTreeItemIcon_Selected,<br>
+    wxTreeItemIcon_Expanded,<br>
+    wxTreeItemIcon_SelectedExpanded,<br>
     wxTreeItemIcon_Max<br>
 </font>
 </blockquote>};<br>
@@ -9193,6 +9215,10 @@ typedef long wxTextCoord<br>
 <font color=#006666>#define wxTREE_HITTEST_ONITEMUPPERPART</font><br>
 <font color=#006666>#define wxTREE_HITTEST_ONITEMLOWERPART</font><br>
 <font color=#006666>#define wxTREE_HITTEST_ONITEM</font><br>
+<br>
+<font color=#006666><i>%wxchkver_2_9</i> #define wxTREE_ITEMSTATE_NONE <font color=#009900>// not state (no display state image)</font></font><br>
+<font color=#006666><i>%wxchkver_2_9</i> #define wxTREE_ITEMSTATE_NEXT <font color=#009900>// cycle to the next state</font></font><br>
+<font color=#006666><i>%wxchkver_2_9</i> #define wxTREE_ITEMSTATE_PREV <font color=#009900>// cycle to the previous state</font></font><br>
 <br>
 <b><font size=+1 color=#DD0000>class <a href="#wxTreeCtrl">wxTreeCtrl</a> : public <a name="wxControl">wxControl</a></font></b><br>
 {
@@ -9286,7 +9312,7 @@ typedef long wxTextCoord<br>
     void SetItemFont(const <a href="#wxTreeItemId">wxTreeItemId</a>&amp; item, const <a href="#wxFont">wxFont</a>&amp; font );<br>
     void SetItemHasChildren(const <a href="#wxTreeItemId">wxTreeItemId</a>&amp; item, bool hasChildren = true );<br>
     void SetItemImage(const <a href="#wxTreeItemId">wxTreeItemId</a>&amp; item, int image, <a href="#wxTreeItemIcon">wxTreeItemIcon</a> which = wxTreeItemIcon_Normal );<br>
-    <font color=#009900>//!<i>%wxchkver_2_6</i>|<i>%wxcompat_2_4</i> void SetItemSelectedImage(const <a href="#wxTreeItemId">wxTreeItemId</a>&amp; item, int selImage); // obsolete function</font><br>
+    <i>%wxchkver_2_9</i> void SetItemState(const <a href="#wxTreeItemId">wxTreeItemId</a>&amp; item, int state);<br>
     void SetItemText(const <a href="#wxTreeItemId">wxTreeItemId</a>&amp; item, const <a href="#wxString">wxString</a>&amp; text );<br>
     void SetItemTextColour(const <a href="#wxTreeItemId">wxTreeItemId</a>&amp; item, const <a href="#wxColour">wxColour</a>&amp; col );<br>
     void SetQuickBestSize(bool quickBestSize );<br>
@@ -9469,10 +9495,10 @@ typedef double wxTreeItemIdValue<br>
 <br>
 enum<br>
 {<br>
-    wxDIRCTRL_DIR_ONLY<br>
-    wxDIRCTRL_SELECT_FIRST<br>
-    wxDIRCTRL_SHOW_FILTERS<br>
-    wxDIRCTRL_3D_INTERNAL<br>
+    wxDIRCTRL_DIR_ONLY,<br>
+    wxDIRCTRL_SELECT_FIRST,<br>
+    wxDIRCTRL_SHOW_FILTERS,<br>
+    wxDIRCTRL_3D_INTERNAL,<br>
     wxDIRCTRL_EDIT_LABELS<br>
 };<br>
 <br>
@@ -9588,10 +9614,10 @@ void wxLogStatus(<a href="#wxFrame">wxFrame</a> *frame, const <a href="#wxString
 <b><font size=+1 color=#0066CC>enum <a name="wxSystemScreenType">wxSystemScreenType</a></font></b><br>
 {
 <blockquote>
-    wxSYS_SCREEN_NONE<br>
-    wxSYS_SCREEN_TINY<br>
-    wxSYS_SCREEN_PDA<br>
-    wxSYS_SCREEN_SMALL<br>
+    wxSYS_SCREEN_NONE,<br>
+    wxSYS_SCREEN_TINY,<br>
+    wxSYS_SCREEN_PDA,<br>
+    wxSYS_SCREEN_SMALL,<br>
     wxSYS_SCREEN_DESKTOP<br>
 </font>
 </blockquote>};<br>
@@ -9599,42 +9625,42 @@ void wxLogStatus(<a href="#wxFrame">wxFrame</a> *frame, const <a href="#wxString
 <b><font size=+1 color=#0066CC>enum <a name="wxSystemMetric">wxSystemMetric</a></font></b><br>
 {
 <blockquote>
-    wxSYS_MOUSE_BUTTONS<br>
-    wxSYS_BORDER_X<br>
-    wxSYS_BORDER_Y<br>
-    wxSYS_CURSOR_X<br>
-    wxSYS_CURSOR_Y<br>
-    wxSYS_DCLICK_X<br>
-    wxSYS_DCLICK_Y<br>
-    wxSYS_DRAG_X<br>
-    wxSYS_DRAG_Y<br>
-    wxSYS_EDGE_X<br>
-    wxSYS_EDGE_Y<br>
-    wxSYS_HSCROLL_ARROW_X<br>
-    wxSYS_HSCROLL_ARROW_Y<br>
-    wxSYS_HTHUMB_X<br>
-    wxSYS_ICON_X<br>
-    wxSYS_ICON_Y<br>
-    wxSYS_ICONSPACING_X<br>
-    wxSYS_ICONSPACING_Y<br>
-    wxSYS_WINDOWMIN_X<br>
-    wxSYS_WINDOWMIN_Y<br>
-    wxSYS_SCREEN_X<br>
-    wxSYS_SCREEN_Y<br>
-    wxSYS_FRAMESIZE_X<br>
-    wxSYS_FRAMESIZE_Y<br>
-    wxSYS_SMALLICON_X<br>
-    wxSYS_SMALLICON_Y<br>
-    wxSYS_HSCROLL_Y<br>
-    wxSYS_VSCROLL_X<br>
-    wxSYS_VSCROLL_ARROW_X<br>
-    wxSYS_VSCROLL_ARROW_Y<br>
-    wxSYS_VTHUMB_Y<br>
-    wxSYS_CAPTION_Y<br>
-    wxSYS_MENU_Y<br>
-    wxSYS_NETWORK_PRESENT<br>
-    wxSYS_PENWINDOWS_PRESENT<br>
-    wxSYS_SHOW_SOUNDS<br>
+    wxSYS_MOUSE_BUTTONS,<br>
+    wxSYS_BORDER_X,<br>
+    wxSYS_BORDER_Y,<br>
+    wxSYS_CURSOR_X,<br>
+    wxSYS_CURSOR_Y,<br>
+    wxSYS_DCLICK_X,<br>
+    wxSYS_DCLICK_Y,<br>
+    wxSYS_DRAG_X,<br>
+    wxSYS_DRAG_Y,<br>
+    wxSYS_EDGE_X,<br>
+    wxSYS_EDGE_Y,<br>
+    wxSYS_HSCROLL_ARROW_X,<br>
+    wxSYS_HSCROLL_ARROW_Y,<br>
+    wxSYS_HTHUMB_X,<br>
+    wxSYS_ICON_X,<br>
+    wxSYS_ICON_Y,<br>
+    wxSYS_ICONSPACING_X,<br>
+    wxSYS_ICONSPACING_Y,<br>
+    wxSYS_WINDOWMIN_X,<br>
+    wxSYS_WINDOWMIN_Y,<br>
+    wxSYS_SCREEN_X,<br>
+    wxSYS_SCREEN_Y,<br>
+    wxSYS_FRAMESIZE_X,<br>
+    wxSYS_FRAMESIZE_Y,<br>
+    wxSYS_SMALLICON_X,<br>
+    wxSYS_SMALLICON_Y,<br>
+    wxSYS_HSCROLL_Y,<br>
+    wxSYS_VSCROLL_X,<br>
+    wxSYS_VSCROLL_ARROW_X,<br>
+    wxSYS_VSCROLL_ARROW_Y,<br>
+    wxSYS_VTHUMB_Y,<br>
+    wxSYS_CAPTION_Y,<br>
+    wxSYS_MENU_Y,<br>
+    wxSYS_NETWORK_PRESENT,<br>
+    wxSYS_PENWINDOWS_PRESENT,<br>
+    wxSYS_SHOW_SOUNDS,<br>
     wxSYS_SWAP_BUTTONS<br>
 </font>
 </blockquote>};<br>
@@ -9642,7 +9668,7 @@ void wxLogStatus(<a href="#wxFrame">wxFrame</a> *frame, const <a href="#wxString
 <b><font size=+1 color=#0066CC>enum <a name="wxSystemFeature">wxSystemFeature</a></font></b><br>
 {
 <blockquote>
-     wxSYS_CAN_DRAW_FRAME_DECORATIONS<br>
+     wxSYS_CAN_DRAW_FRAME_DECORATIONS,<br>
      wxSYS_CAN_ICONIZE_FRAME<br>
 </font>
 </blockquote>};<br>
@@ -9650,43 +9676,43 @@ void wxLogStatus(<a href="#wxFrame">wxFrame</a> *frame, const <a href="#wxString
 <b><font size=+1 color=#0066CC>enum <a name="wxSystemColour">wxSystemColour</a></font></b><br>
 {
 <blockquote>
-    wxSYS_COLOUR_SCROLLBAR<br>
-    wxSYS_COLOUR_BACKGROUND<br>
-    wxSYS_COLOUR_DESKTOP<br>
-    wxSYS_COLOUR_ACTIVECAPTION<br>
-    wxSYS_COLOUR_INACTIVECAPTION<br>
-    wxSYS_COLOUR_MENU<br>
-    wxSYS_COLOUR_WINDOW<br>
-    wxSYS_COLOUR_WINDOWFRAME<br>
-    wxSYS_COLOUR_MENUTEXT<br>
-    wxSYS_COLOUR_WINDOWTEXT<br>
-    wxSYS_COLOUR_CAPTIONTEXT<br>
-    wxSYS_COLOUR_ACTIVEBORDER<br>
-    wxSYS_COLOUR_INACTIVEBORDER<br>
-    wxSYS_COLOUR_APPWORKSPACE<br>
-    wxSYS_COLOUR_HIGHLIGHT<br>
-    wxSYS_COLOUR_HIGHLIGHTTEXT<br>
-    wxSYS_COLOUR_BTNFACE<br>
-    wxSYS_COLOUR_3DFACE<br>
-    wxSYS_COLOUR_BTNSHADOW<br>
-    wxSYS_COLOUR_3DSHADOW<br>
-    wxSYS_COLOUR_GRAYTEXT<br>
-    wxSYS_COLOUR_BTNTEXT<br>
-    wxSYS_COLOUR_INACTIVECAPTIONTEXT<br>
-    wxSYS_COLOUR_BTNHIGHLIGHT<br>
-    wxSYS_COLOUR_BTNHILIGHT<br>
-    wxSYS_COLOUR_3DHIGHLIGHT<br>
-    wxSYS_COLOUR_3DHILIGHT<br>
-    wxSYS_COLOUR_3DDKSHADOW<br>
-    wxSYS_COLOUR_3DLIGHT<br>
-    wxSYS_COLOUR_INFOTEXT<br>
-    wxSYS_COLOUR_INFOBK<br>
-    wxSYS_COLOUR_LISTBOX<br>
-    wxSYS_COLOUR_HOTLIGHT<br>
-    wxSYS_COLOUR_GRADIENTACTIVECAPTION<br>
-    wxSYS_COLOUR_GRADIENTINACTIVECAPTION<br>
-    wxSYS_COLOUR_MENUHILIGHT<br>
-    wxSYS_COLOUR_MENUBAR<br>
+    wxSYS_COLOUR_SCROLLBAR,<br>
+    wxSYS_COLOUR_BACKGROUND,<br>
+    wxSYS_COLOUR_DESKTOP,<br>
+    wxSYS_COLOUR_ACTIVECAPTION,<br>
+    wxSYS_COLOUR_INACTIVECAPTION,<br>
+    wxSYS_COLOUR_MENU,<br>
+    wxSYS_COLOUR_WINDOW,<br>
+    wxSYS_COLOUR_WINDOWFRAME,<br>
+    wxSYS_COLOUR_MENUTEXT,<br>
+    wxSYS_COLOUR_WINDOWTEXT,<br>
+    wxSYS_COLOUR_CAPTIONTEXT,<br>
+    wxSYS_COLOUR_ACTIVEBORDER,<br>
+    wxSYS_COLOUR_INACTIVEBORDER,<br>
+    wxSYS_COLOUR_APPWORKSPACE,<br>
+    wxSYS_COLOUR_HIGHLIGHT,<br>
+    wxSYS_COLOUR_HIGHLIGHTTEXT,<br>
+    wxSYS_COLOUR_BTNFACE,<br>
+    wxSYS_COLOUR_3DFACE,<br>
+    wxSYS_COLOUR_BTNSHADOW,<br>
+    wxSYS_COLOUR_3DSHADOW,<br>
+    wxSYS_COLOUR_GRAYTEXT,<br>
+    wxSYS_COLOUR_BTNTEXT,<br>
+    wxSYS_COLOUR_INACTIVECAPTIONTEXT,<br>
+    wxSYS_COLOUR_BTNHIGHLIGHT,<br>
+    wxSYS_COLOUR_BTNHILIGHT,<br>
+    wxSYS_COLOUR_3DHIGHLIGHT,<br>
+    wxSYS_COLOUR_3DHILIGHT,<br>
+    wxSYS_COLOUR_3DDKSHADOW,<br>
+    wxSYS_COLOUR_3DLIGHT,<br>
+    wxSYS_COLOUR_INFOTEXT,<br>
+    wxSYS_COLOUR_INFOBK,<br>
+    wxSYS_COLOUR_LISTBOX,<br>
+    wxSYS_COLOUR_HOTLIGHT,<br>
+    wxSYS_COLOUR_GRADIENTACTIVECAPTION,<br>
+    wxSYS_COLOUR_GRADIENTINACTIVECAPTION,<br>
+    wxSYS_COLOUR_MENUHILIGHT,<br>
+    wxSYS_COLOUR_MENUBAR,<br>
     wxSYS_COLOUR_MAX<br>
 </font>
 </blockquote>};<br>
@@ -9694,13 +9720,13 @@ void wxLogStatus(<a href="#wxFrame">wxFrame</a> *frame, const <a href="#wxString
 <b><font size=+1 color=#0066CC>enum <a name="wxSystemFont">wxSystemFont</a></font></b><br>
 {
 <blockquote>
-    wxSYS_OEM_FIXED_FONT<br>
-    wxSYS_ANSI_FIXED_FONT<br>
-    wxSYS_ANSI_VAR_FONT<br>
-    wxSYS_SYSTEM_FONT<br>
-    wxSYS_DEVICE_DEFAULT_FONT<br>
-    wxSYS_DEFAULT_PALETTE<br>
-    wxSYS_SYSTEM_FIXED_FONT<br>
+    wxSYS_OEM_FIXED_FONT,<br>
+    wxSYS_ANSI_FIXED_FONT,<br>
+    wxSYS_ANSI_VAR_FONT,<br>
+    wxSYS_SYSTEM_FONT,<br>
+    wxSYS_DEVICE_DEFAULT_FONT,<br>
+    wxSYS_DEFAULT_PALETTE,<br>
+    wxSYS_SYSTEM_FIXED_FONT,<br>
     wxSYS_DEFAULT_GUI_FONT<br>
 </font>
 </blockquote>};<br>
@@ -9886,37 +9912,37 @@ void wxWakeUpIdle( );<br>
 <br>
 enum<br>
 {<br>
-    wxEXEC_ASYNC<br>
-    wxEXEC_SYNC<br>
-    wxEXEC_NOHIDE<br>
-    wxEXEC_MAKE_GROUP_LEADER<br>
+    wxEXEC_ASYNC,<br>
+    wxEXEC_SYNC,<br>
+    wxEXEC_NOHIDE,<br>
+    wxEXEC_MAKE_GROUP_LEADER,<br>
     wxEXEC_NODISABLE<br>
 };<br>
 <br>
 enum<br>
 {<br>
-    wxPROCESS_DEFAULT<br>
+    wxPROCESS_DEFAULT,<br>
     wxPROCESS_REDIRECT<br>
 };<br>
 <br>
 <b><font size=+1 color=#0066CC>enum <a name="wxSignal">wxSignal</a></font></b><br>
 {
 <blockquote>
-    wxSIGNONE<br>
-    wxSIGHUP<br>
-    wxSIGINT<br>
-    wxSIGQUIT<br>
-    wxSIGILL<br>
-    wxSIGTRAP<br>
-    wxSIGABRT<br>
-    wxSIGEMT<br>
-    wxSIGFPE<br>
-    wxSIGKILL<br>
-    wxSIGBUS<br>
-    wxSIGSEGV<br>
-    wxSIGSYS<br>
-    wxSIGPIPE<br>
-    wxSIGALRM<br>
+    wxSIGNONE,<br>
+    wxSIGHUP,<br>
+    wxSIGINT,<br>
+    wxSIGQUIT,<br>
+    wxSIGILL,<br>
+    wxSIGTRAP,<br>
+    wxSIGABRT,<br>
+    wxSIGEMT,<br>
+    wxSIGFPE,<br>
+    wxSIGKILL,<br>
+    wxSIGBUS,<br>
+    wxSIGSEGV,<br>
+    wxSIGSYS,<br>
+    wxSIGPIPE,<br>
+    wxSIGALRM,<br>
     wxSIGTERM<br>
 </font>
 </blockquote>};<br>
@@ -9924,10 +9950,10 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxKillError">wxKillError</a></font></b><br>
 {
 <blockquote>
-    wxKILL_OK<br>
-    wxKILL_BAD_SIGNAL<br>
-    wxKILL_ACCESS_DENIED<br>
-    wxKILL_NO_PROCESS<br>
+    wxKILL_OK,<br>
+    wxKILL_BAD_SIGNAL,<br>
+    wxKILL_ACCESS_DENIED,<br>
+    wxKILL_NO_PROCESS,<br>
     wxKILL_ERROR<br>
 </font>
 </blockquote>};<br>
@@ -9935,7 +9961,7 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxKillFlags">wxKillFlags</a></font></b><br>
 {
 <blockquote>
-    wxKILL_NOCHILDREN<br>
+    wxKILL_NOCHILDREN,<br>
     wxKILL_CHILDREN<br>
 </font>
 </blockquote>};<br>
@@ -9990,7 +10016,7 @@ bool wxShell(const <a href="#wxString">wxString</a>&amp; command = "" );<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxShutdownFlags">wxShutdownFlags</a></font></b><br>
 {
 <blockquote>
-    wxSHUTDOWN_POWEROFF<br>
+    wxSHUTDOWN_POWEROFF,<br>
     wxSHUTDOWN_REBOOT<br>
 </font>
 </blockquote>};<br>
@@ -10292,8 +10318,8 @@ void wxPostEvent(<a href="#wxEvtHandler">wxEvtHandler</a> *dest, <a href="#wxEve
 <b><font size=+1 color=#0066CC>enum <a name="wxOrientation">wxOrientation</a></font></b><br>
 {
 <blockquote>
-    wxHORIZONTAL<br>
-    wxVERTICAL<br>
+    wxHORIZONTAL,<br>
+    wxVERTICAL,<br>
     wxBOTH<br>
 </font>
 </blockquote>};<br>
@@ -10301,16 +10327,16 @@ void wxPostEvent(<a href="#wxEvtHandler">wxEvtHandler</a> *dest, <a href="#wxEve
 <b><font size=+1 color=#0066CC>enum <a name="wxDirection">wxDirection</a></font></b><br>
 {
 <blockquote>
-    wxLEFT<br>
-    wxRIGHT<br>
-    wxUP<br>
-    wxDOWN<br>
-    wxTOP<br>
-    wxBOTTOM<br>
-    wxNORTH<br>
-    wxSOUTH<br>
-    wxWEST<br>
-    wxEAST<br>
+    wxLEFT,<br>
+    wxRIGHT,<br>
+    wxUP,<br>
+    wxDOWN,<br>
+    wxTOP,<br>
+    wxBOTTOM,<br>
+    wxNORTH,<br>
+    wxSOUTH,<br>
+    wxWEST,<br>
+    wxEAST,<br>
     wxALL<br>
 </font>
 </blockquote>};<br>
@@ -10318,17 +10344,17 @@ void wxPostEvent(<a href="#wxEvtHandler">wxEvtHandler</a> *dest, <a href="#wxEve
 <b><font size=+1 color=#0066CC>enum <a name="wxAlignment">wxAlignment</a></font></b><br>
 {
 <blockquote>
-    wxALIGN_NOT<br>
-    wxALIGN_CENTER_HORIZONTAL<br>
-    wxALIGN_CENTRE_HORIZONTAL<br>
-    wxALIGN_LEFT<br>
-    wxALIGN_TOP<br>
-    wxALIGN_RIGHT<br>
-    wxALIGN_BOTTOM<br>
-    wxALIGN_CENTER_VERTICAL<br>
-    wxALIGN_CENTRE_VERTICAL<br>
-    wxALIGN_CENTER<br>
-    wxALIGN_CENTRE<br>
+    wxALIGN_NOT,<br>
+    wxALIGN_CENTER_HORIZONTAL,<br>
+    wxALIGN_CENTRE_HORIZONTAL,<br>
+    wxALIGN_LEFT,<br>
+    wxALIGN_TOP,<br>
+    wxALIGN_RIGHT,<br>
+    wxALIGN_BOTTOM,<br>
+    wxALIGN_CENTER_VERTICAL,<br>
+    wxALIGN_CENTRE_VERTICAL,<br>
+    wxALIGN_CENTER,<br>
+    wxALIGN_CENTRE,<br>
     wxALIGN_MASK<br>
 </font>
 </blockquote>};<br>
@@ -10336,16 +10362,16 @@ void wxPostEvent(<a href="#wxEvtHandler">wxEvtHandler</a> *dest, <a href="#wxEve
 <b><font size=+1 color=#0066CC>enum <a name="wxStretch">wxStretch</a></font></b><br>
 {
 <blockquote>
-    wxSTRETCH_NOT<br>
-    wxSHRINK<br>
-    wxGROW<br>
-    wxEXPAND<br>
-    wxSHAPED<br>
-    wxTILE<br>
+    wxSTRETCH_NOT,<br>
+    wxSHRINK,<br>
+    wxGROW,<br>
+    wxEXPAND,<br>
+    wxSHAPED,<br>
+    wxTILE,<br>
 <br>
-    wxADJUST_MINSIZE <font color=#009900>// deprecated after 2.4 and takes the value of 0</font><br>
+    wxADJUST_MINSIZE, <font color=#009900>// deprecated after 2.4 and takes the value of 0</font><br>
 <br>
-    <i>%wxchkver_2_8_8</i> wxFIXED_MINSIZE<br>
+    <i>%wxchkver_2_8_8</i> wxFIXED_MINSIZE,<br>
     <i>%wxchkver_2_8_8</i> wxRESERVE_SPACE_EVEN_IF_HIDDEN<br>
 </font>
 </blockquote>};<br>
@@ -10353,13 +10379,13 @@ void wxPostEvent(<a href="#wxEvtHandler">wxEvtHandler</a> *dest, <a href="#wxEve
 <b><font size=+1 color=#0066CC>enum <a name="wxBorder">wxBorder</a></font></b><br>
 {
 <blockquote>
-    wxBORDER_DEFAULT<br>
-    wxBORDER_NONE<br>
-    wxBORDER_STATIC<br>
-    wxBORDER_SIMPLE<br>
-    wxBORDER_RAISED<br>
-    wxBORDER_SUNKEN<br>
-    wxBORDER_DOUBLE<br>
+    wxBORDER_DEFAULT,<br>
+    wxBORDER_NONE,<br>
+    wxBORDER_STATIC,<br>
+    wxBORDER_SIMPLE,<br>
+    wxBORDER_RAISED,<br>
+    wxBORDER_SUNKEN,<br>
+    wxBORDER_DOUBLE,<br>
     wxBORDER_MASK<br>
 </font>
 </blockquote>};<br>
@@ -10367,8 +10393,8 @@ void wxPostEvent(<a href="#wxEvtHandler">wxEvtHandler</a> *dest, <a href="#wxEve
 <b><font size=+1 color=#0066CC>enum <a name="wxBackgroundStyle">wxBackgroundStyle</a></font></b><br>
 {
 <blockquote>
-    wxBG_STYLE_SYSTEM<br>
-    wxBG_STYLE_COLOUR<br>
+    wxBG_STYLE_SYSTEM,<br>
+    wxBG_STYLE_COLOUR,<br>
     wxBG_STYLE_CUSTOM<br>
 </font>
 </blockquote>};<br>
@@ -10376,14 +10402,14 @@ void wxPostEvent(<a href="#wxEvtHandler">wxEvtHandler</a> *dest, <a href="#wxEve
 <b><font size=+1 color=#0066CC>enum <a name="wxKeyModifier">wxKeyModifier</a></font></b><br>
 {
 <blockquote>
-    wxMOD_NONE<br>
-    wxMOD_ALT<br>
-    wxMOD_CONTROL<br>
-    wxMOD_ALTGR<br>
-    wxMOD_SHIFT<br>
-    wxMOD_META<br>
-    wxMOD_WIN<br>
-    wxMOD_CMD<br>
+    wxMOD_NONE,<br>
+    wxMOD_ALT,<br>
+    wxMOD_CONTROL,<br>
+    wxMOD_ALTGR,<br>
+    wxMOD_SHIFT,<br>
+    wxMOD_META,<br>
+    wxMOD_WIN,<br>
+    wxMOD_CMD,<br>
     wxMOD_ALL<br>
 </font>
 </blockquote>};<br>
@@ -10498,12 +10524,12 @@ void wxPostEvent(<a href="#wxEvtHandler">wxEvtHandler</a> *dest, <a href="#wxEve
 <b><font size=+1 color=#0066CC>enum    <font color=#009900>// for wxFileSelector and <a href="#wxFileDialog">wxFileDialog</a></font></font></b><br>
 {
 <blockquote>
-    wxOPEN<br>
-    wxSAVE<br>
-    wxOVERWRITE_PROMPT<br>
-    <i>%wxcompat_2_4</i> wxHIDE_READONLY<br>
-    wxFILE_MUST_EXIST<br>
-    wxMULTIPLE<br>
+    wxOPEN,<br>
+    wxSAVE,<br>
+    wxOVERWRITE_PROMPT,<br>
+    <i>%wxcompat_2_4</i> wxHIDE_READONLY,<br>
+    wxFILE_MUST_EXIST,<br>
+    wxMULTIPLE,<br>
     wxCHANGE_DIR<br>
 </font>
 </blockquote>};<br>
@@ -10512,13 +10538,13 @@ void wxPostEvent(<a href="#wxEvtHandler">wxEvtHandler</a> *dest, <a href="#wxEve
 #if <i>%wxchkver_2_8</i><br>
 enum<br>
 {<br>
-    wxFD_OPEN<br>
-    wxFD_SAVE<br>
-    wxFD_OVERWRITE_PROMPT<br>
-    wxFD_FILE_MUST_EXIST<br>
-    wxFD_MULTIPLE<br>
-    wxFD_CHANGE_DIR<br>
-    wxFD_PREVIEW<br>
+    wxFD_OPEN,<br>
+    wxFD_SAVE,<br>
+    wxFD_OVERWRITE_PROMPT,<br>
+    wxFD_FILE_MUST_EXIST,<br>
+    wxFD_MULTIPLE,<br>
+    wxFD_CHANGE_DIR,<br>
+    wxFD_PREVIEW,<br>
 <br>
     wxFD_DEFAULT_STYLE<br>
 };<br>
@@ -10856,9 +10882,9 @@ int wxMessageBox(const <a href="#wxString">wxString</a>&amp; message, const <a h
 <b><font size=+1 color=#0066CC>enum <a name="wxFindReplaceDialogStyles">wxFindReplaceDialogStyles</a></font></b><br>
 {
 <blockquote>
-    wxFR_REPLACEDIALOG<br>
-    wxFR_NOUPDOWN<br>
-    wxFR_NOMATCHCASE<br>
+    wxFR_REPLACEDIALOG,<br>
+    wxFR_NOUPDOWN,<br>
+    wxFR_NOMATCHCASE,<br>
     wxFR_NOWHOLEWORD<br>
 </font>
 </blockquote>};<br>
@@ -10881,8 +10907,8 @@ int wxMessageBox(const <a href="#wxString">wxString</a>&amp; message, const <a h
 <b><font size=+1 color=#0066CC>enum <a name="wxFindReplaceFlags">wxFindReplaceFlags</a></font></b><br>
 {
 <blockquote>
-    wxFR_DOWN<br>
-    wxFR_WHOLEWORD<br>
+    wxFR_DOWN,<br>
+    wxFR_WHOLEWORD,<br>
     wxFR_MATCHCASE<br>
 </font>
 </blockquote>};<br>
@@ -11032,7 +11058,7 @@ int wxMessageBox(const <a href="#wxString">wxString</a>&amp; message, const <a h
 <b><font size=+1 color=#0066CC>enum <a name="Propagation_state">Propagation_state</a></font></b><br>
 {
 <blockquote>
-    wxEVENT_PROPAGATE_NONE <font color=#009900>// don't propagate it at all</font><br>
+    wxEVENT_PROPAGATE_NONE, <font color=#009900>// don't propagate it at all</font><br>
     wxEVENT_PROPAGATE_MAX  <font color=#009900>// propagate it until it is processed</font><br>
 </font>
 </blockquote>};<br>
@@ -11299,108 +11325,108 @@ int wxMessageBox(const <a href="#wxString">wxString</a>&amp; message, const <a h
 <b><font size=+1 color=#0066CC>enum <a name="wxKeyCode">wxKeyCode</a></font></b><br>
 {
 <blockquote>
-    WXK_ADD<br>
-    WXK_ALT<br>
-    WXK_BACK<br>
-    WXK_CANCEL<br>
-    WXK_CAPITAL<br>
-    WXK_CLEAR<br>
-    WXK_CONTROL<br>
-    WXK_DECIMAL<br>
-    WXK_DELETE<br>
-    WXK_DIVIDE<br>
-    WXK_DOWN<br>
-    WXK_END<br>
-    WXK_ESCAPE<br>
-    WXK_EXECUTE<br>
-    WXK_F1<br>
-    WXK_F10<br>
-    WXK_F11<br>
-    WXK_F12<br>
-    WXK_F13<br>
-    WXK_F14<br>
-    WXK_F15<br>
-    WXK_F16<br>
-    WXK_F17<br>
-    WXK_F18<br>
-    WXK_F19<br>
-    WXK_F2<br>
-    WXK_F20<br>
-    WXK_F21<br>
-    WXK_F22<br>
-    WXK_F23<br>
-    WXK_F24<br>
-    WXK_F3<br>
-    WXK_F4<br>
-    WXK_F5<br>
-    WXK_F6<br>
-    WXK_F7<br>
-    WXK_F8<br>
-    WXK_F9<br>
-    WXK_HELP<br>
-    WXK_HOME<br>
-    WXK_INSERT<br>
-    WXK_LBUTTON<br>
-    WXK_LEFT<br>
-    WXK_MBUTTON<br>
-    WXK_MENU<br>
-    WXK_MULTIPLY<br>
+    WXK_ADD,<br>
+    WXK_ALT,<br>
+    WXK_BACK,<br>
+    WXK_CANCEL,<br>
+    WXK_CAPITAL,<br>
+    WXK_CLEAR,<br>
+    WXK_CONTROL,<br>
+    WXK_DECIMAL,<br>
+    WXK_DELETE,<br>
+    WXK_DIVIDE,<br>
+    WXK_DOWN,<br>
+    WXK_END,<br>
+    WXK_ESCAPE,<br>
+    WXK_EXECUTE,<br>
+    WXK_F1,<br>
+    WXK_F10,<br>
+    WXK_F11,<br>
+    WXK_F12,<br>
+    WXK_F13,<br>
+    WXK_F14,<br>
+    WXK_F15,<br>
+    WXK_F16,<br>
+    WXK_F17,<br>
+    WXK_F18,<br>
+    WXK_F19,<br>
+    WXK_F2,<br>
+    WXK_F20,<br>
+    WXK_F21,<br>
+    WXK_F22,<br>
+    WXK_F23,<br>
+    WXK_F24,<br>
+    WXK_F3,<br>
+    WXK_F4,<br>
+    WXK_F5,<br>
+    WXK_F6,<br>
+    WXK_F7,<br>
+    WXK_F8,<br>
+    WXK_F9,<br>
+    WXK_HELP,<br>
+    WXK_HOME,<br>
+    WXK_INSERT,<br>
+    WXK_LBUTTON,<br>
+    WXK_LEFT,<br>
+    WXK_MBUTTON,<br>
+    WXK_MENU,<br>
+    WXK_MULTIPLY,<br>
     <font color=#009900>//WXK_NEXT = WXK_PAGEDOWN since 2.6</font><br>
-    WXK_NUMLOCK<br>
-    WXK_NUMPAD_ADD<br>
-    WXK_NUMPAD_BEGIN<br>
-    WXK_NUMPAD_DECIMAL<br>
-    WXK_NUMPAD_DELETE<br>
-    WXK_NUMPAD_DIVIDE<br>
-    WXK_NUMPAD_DOWN<br>
-    WXK_NUMPAD_END<br>
-    WXK_NUMPAD_ENTER<br>
-    WXK_NUMPAD_EQUAL<br>
-    WXK_NUMPAD_F1<br>
-    WXK_NUMPAD_F2<br>
-    WXK_NUMPAD_F3<br>
-    WXK_NUMPAD_F4<br>
-    WXK_NUMPAD_HOME<br>
-    WXK_NUMPAD_INSERT<br>
-    WXK_NUMPAD_LEFT<br>
-    WXK_NUMPAD_MULTIPLY<br>
+    WXK_NUMLOCK,<br>
+    WXK_NUMPAD_ADD,<br>
+    WXK_NUMPAD_BEGIN,<br>
+    WXK_NUMPAD_DECIMAL,<br>
+    WXK_NUMPAD_DELETE,<br>
+    WXK_NUMPAD_DIVIDE,<br>
+    WXK_NUMPAD_DOWN,<br>
+    WXK_NUMPAD_END,<br>
+    WXK_NUMPAD_ENTER,<br>
+    WXK_NUMPAD_EQUAL,<br>
+    WXK_NUMPAD_F1,<br>
+    WXK_NUMPAD_F2,<br>
+    WXK_NUMPAD_F3,<br>
+    WXK_NUMPAD_F4,<br>
+    WXK_NUMPAD_HOME,<br>
+    WXK_NUMPAD_INSERT,<br>
+    WXK_NUMPAD_LEFT,<br>
+    WXK_NUMPAD_MULTIPLY,<br>
     <font color=#009900>// WXK_NUMPAD_NEXT = WXK_NUMPAD_PAGEDOWN since 2.6</font><br>
-    WXK_NUMPAD_PAGEDOWN<br>
-    WXK_NUMPAD_PAGEUP<br>
+    WXK_NUMPAD_PAGEDOWN,<br>
+    WXK_NUMPAD_PAGEUP,<br>
     <font color=#009900>// WXK_NUMPAD_PRIOR = WXK_NUMPAD_PAGEUP since 2.6</font><br>
-    WXK_NUMPAD_RIGHT<br>
-    WXK_NUMPAD_SEPARATOR<br>
-    WXK_NUMPAD_SPACE<br>
-    WXK_NUMPAD_SUBTRACT<br>
-    WXK_NUMPAD_TAB<br>
-    WXK_NUMPAD_UP<br>
-    WXK_NUMPAD0<br>
-    WXK_NUMPAD1<br>
-    WXK_NUMPAD2<br>
-    WXK_NUMPAD3<br>
-    WXK_NUMPAD4<br>
-    WXK_NUMPAD5<br>
-    WXK_NUMPAD6<br>
-    WXK_NUMPAD7<br>
-    WXK_NUMPAD8<br>
-    WXK_NUMPAD9<br>
-    WXK_PAGEDOWN<br>
-    WXK_PAGEUP<br>
-    WXK_PAUSE<br>
-    WXK_PRINT<br>
+    WXK_NUMPAD_RIGHT,<br>
+    WXK_NUMPAD_SEPARATOR,<br>
+    WXK_NUMPAD_SPACE,<br>
+    WXK_NUMPAD_SUBTRACT,<br>
+    WXK_NUMPAD_TAB,<br>
+    WXK_NUMPAD_UP,<br>
+    WXK_NUMPAD0,<br>
+    WXK_NUMPAD1,<br>
+    WXK_NUMPAD2,<br>
+    WXK_NUMPAD3,<br>
+    WXK_NUMPAD4,<br>
+    WXK_NUMPAD5,<br>
+    WXK_NUMPAD6,<br>
+    WXK_NUMPAD7,<br>
+    WXK_NUMPAD8,<br>
+    WXK_NUMPAD9,<br>
+    WXK_PAGEDOWN,<br>
+    WXK_PAGEUP,<br>
+    WXK_PAUSE,<br>
+    WXK_PRINT,<br>
     <font color=#009900>// WXK_PRIOR = WXK_PAGEUP since 2.6</font><br>
-    WXK_RBUTTON<br>
-    WXK_RETURN<br>
-    WXK_RIGHT<br>
-    WXK_SCROLL<br>
-    WXK_SELECT<br>
-    WXK_SEPARATOR<br>
-    WXK_SHIFT<br>
-    WXK_SNAPSHOT<br>
-    WXK_SPACE<br>
-    WXK_START<br>
-    WXK_SUBTRACT<br>
-    WXK_TAB<br>
+    WXK_RBUTTON,<br>
+    WXK_RETURN,<br>
+    WXK_RIGHT,<br>
+    WXK_SCROLL,<br>
+    WXK_SELECT,<br>
+    WXK_SEPARATOR,<br>
+    WXK_SHIFT,<br>
+    WXK_SNAPSHOT,<br>
+    WXK_SPACE,<br>
+    WXK_START,<br>
+    WXK_SUBTRACT,<br>
+    WXK_TAB,<br>
     WXK_UP<br>
 </font>
 </blockquote>};<br>
@@ -11447,9 +11473,9 @@ int wxMessageBox(const <a href="#wxString">wxString</a>&amp; message, const <a h
 <b><font size=+1 color=#0066CC>enum <a name="wxNavigationKeyEvent::dummy">wxNavigationKeyEvent::dummy</a></font></b><br>
 {
 <blockquote>
-    IsBackward<br>
-    IsForward<br>
-    WinChange<br>
+    IsBackward,<br>
+    IsForward,<br>
+    WinChange,<br>
     FromTab<br>
 </font>
 </blockquote>};<br>
@@ -11480,7 +11506,7 @@ int wxMessageBox(const <a href="#wxString">wxString</a>&amp; message, const <a h
 <b><font size=+1 color=#0066CC>enum <a name="wxIdleMode">wxIdleMode</a></font></b><br>
 {
 <blockquote>
-    wxIDLE_PROCESS_ALL<br>
+    wxIDLE_PROCESS_ALL,<br>
     wxIDLE_PROCESS_SPECIFIED<br>
 </font>
 </blockquote>};<br>
@@ -11534,10 +11560,10 @@ int wxMessageBox(const <a href="#wxString">wxString</a>&amp; message, const <a h
 <br>
 enum<br>
 {<br>
-    wxMOUSE_BTN_ANY<br>
-    wxMOUSE_BTN_NONE<br>
-    wxMOUSE_BTN_LEFT<br>
-    wxMOUSE_BTN_MIDDLE<br>
+    wxMOUSE_BTN_ANY,<br>
+    wxMOUSE_BTN_NONE,<br>
+    wxMOUSE_BTN_LEFT,<br>
+    wxMOUSE_BTN_MIDDLE,<br>
     wxMOUSE_BTN_RIGHT<br>
 };<br>
 <br>
@@ -11884,8 +11910,8 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxPowerType">wxPowerType</a></font></b><br>
 {
 <blockquote>
-    wxPOWER_SOCKET<br>
-    wxPOWER_BATTERY<br>
+    wxPOWER_SOCKET,<br>
+    wxPOWER_BATTERY,<br>
     wxPOWER_UNKNOWN<br>
 </font>
 </blockquote>};<br>
@@ -11893,10 +11919,10 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxBatteryState">wxBatteryState</a></font></b><br>
 {
 <blockquote>
-    wxBATTERY_NORMAL_STATE     <font color=#009900>// system is fully usable</font><br>
-    wxBATTERY_LOW_STATE        <font color=#009900>// start to worry</font><br>
-    wxBATTERY_CRITICAL_STATE   <font color=#009900>// save quickly</font><br>
-    wxBATTERY_SHUTDOWN_STATE   <font color=#009900>// too late</font><br>
+    wxBATTERY_NORMAL_STATE,     <font color=#009900>// system is fully usable</font><br>
+    wxBATTERY_LOW_STATE,        <font color=#009900>// start to worry</font><br>
+    wxBATTERY_CRITICAL_STATE,   <font color=#009900>// save quickly</font><br>
+    wxBATTERY_SHUTDOWN_STATE,   <font color=#009900>// too late</font><br>
     wxBATTERY_UNKNOWN_STATE<br>
 </font>
 </blockquote>};<br>
@@ -11952,7 +11978,7 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxUpdateUIMode">wxUpdateUIMode</a></font></b><br>
 {
 <blockquote>
-    wxUPDATE_UI_PROCESS_ALL<br>
+    wxUPDATE_UI_PROCESS_ALL,<br>
     wxUPDATE_UI_PROCESS_SPECIFIED<br>
 </font>
 </blockquote>};<br>
@@ -11993,8 +12019,8 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxHelpEvent::Origin">wxHelpEvent::Origin</a></font></b><br>
 {
 <blockquote>
-    Origin_Unknown    <font color=#009900>// unrecognized event source</font><br>
-    Origin_Keyboard   <font color=#009900>// event generated from F1 key press</font><br>
+    Origin_Unknown,    <font color=#009900>// unrecognized event source</font><br>
+    Origin_Keyboard,   <font color=#009900>// event generated from F1 key press</font><br>
     Origin_HelpButton <font color=#009900>// event from [?] button on the title bar (Windows );</font><br>
 </font>
 </blockquote>};<br>
@@ -12236,8 +12262,8 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxRegionContain">wxRegionContain</a></font></b><br>
 {
 <blockquote>
-    wxOutRegion<br>
-    wxPartRegion<br>
+    wxOutRegion,<br>
+    wxPartRegion,<br>
     wxInRegion<br>
 </font>
 </blockquote>};<br>
@@ -12246,11 +12272,11 @@ enum<br>
 <b><font size=+1 color=#0066CC>    enum <a name="wxRegionOp">wxRegionOp</a></font></b><br>
     {
 <blockquote>
-        wxRGN_AND   <font color=#009900>// Creates the intersection of the two combined regions.</font><br>
-        wxRGN_COPY  <font color=#009900>// Creates a copy of the region</font><br>
-        wxRGN_DIFF  <font color=#009900>// Combines the parts of first region that are not in the second one</font><br>
-        wxRGN_OR    <font color=#009900>// Creates the union of two combined regions.</font><br>
-        wxRGN_XOR   <font color=#009900>// Creates the union of two regions except for any overlapping areas.</font><br>
+        wxRGN_AND,   <font color=#009900>// Creates the intersection of the two combined regions.</font><br>
+        wxRGN_COPY,  <font color=#009900>// Creates a copy of the region</font><br>
+        wxRGN_DIFF,  <font color=#009900>// Combines the parts of first region that are not in the second one</font><br>
+        wxRGN_OR,    <font color=#009900>// Creates the union of two combined regions.</font><br>
+        wxRGN_XOR    <font color=#009900>// Creates the union of two regions except for any overlapping areas.</font><br>
 </font>
 </blockquote>    };<br>
 <br>
@@ -12340,35 +12366,35 @@ enum<br>
 <br>
 enum<br>
 {<br>
-    wxDEFAULT      <font color=#009900>// these are deprecated use wxFONTFAMILY_XXX</font><br>
-    wxDECORATIVE<br>
-    wxROMAN<br>
-    wxSCRIPT<br>
-    wxSWISS<br>
-    wxMODERN<br>
-    wxTELETYPE<br>
+    wxDEFAULT,      <font color=#009900>// these are deprecated use wxFONTFAMILY_XXX</font><br>
+    wxDECORATIVE,<br>
+    wxROMAN,<br>
+    wxSCRIPT,<br>
+    wxSWISS,<br>
+    wxMODERN,<br>
+    wxTELETYPE,<br>
 <br>
-    wxVARIABLE      <font color=#009900>// unused ?</font><br>
-    wxFIXED         <font color=#009900>// unused ?</font><br>
+    wxVARIABLE,      <font color=#009900>// unused ?</font><br>
+    wxFIXED,         <font color=#009900>// unused ?</font><br>
 <br>
-    wxNORMAL<br>
-    wxLIGHT<br>
-    wxBOLD<br>
-    wxITALIC<br>
+    wxNORMAL,<br>
+    wxLIGHT,<br>
+    wxBOLD,<br>
+    wxITALIC,<br>
     wxSLANT<br>
 };<br>
 <br>
 <b><font size=+1 color=#0066CC>enum <a name="wxFontFamily">wxFontFamily</a></font></b><br>
 {
 <blockquote>
-    wxFONTFAMILY_DEFAULT<br>
-    wxFONTFAMILY_DECORATIVE<br>
-    wxFONTFAMILY_ROMAN<br>
-    wxFONTFAMILY_SCRIPT<br>
-    wxFONTFAMILY_SWISS<br>
-    wxFONTFAMILY_MODERN<br>
-    wxFONTFAMILY_TELETYPE<br>
-    wxFONTFAMILY_MAX<br>
+    wxFONTFAMILY_DEFAULT,<br>
+    wxFONTFAMILY_DECORATIVE,<br>
+    wxFONTFAMILY_ROMAN,<br>
+    wxFONTFAMILY_SCRIPT,<br>
+    wxFONTFAMILY_SWISS,<br>
+    wxFONTFAMILY_MODERN,<br>
+    wxFONTFAMILY_TELETYPE,<br>
+    wxFONTFAMILY_MAX,<br>
     wxFONTFAMILY_UNKNOWN<br>
 </font>
 </blockquote>};<br>
@@ -12376,9 +12402,9 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxFontStyle">wxFontStyle</a></font></b><br>
 {
 <blockquote>
-    wxFONTSTYLE_NORMAL<br>
-    wxFONTSTYLE_ITALIC<br>
-    wxFONTSTYLE_SLANT<br>
+    wxFONTSTYLE_NORMAL,<br>
+    wxFONTSTYLE_ITALIC,<br>
+    wxFONTSTYLE_SLANT,<br>
     wxFONTSTYLE_MAX<br>
 </font>
 </blockquote>};<br>
@@ -12386,24 +12412,24 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxFontWeight">wxFontWeight</a></font></b><br>
 {
 <blockquote>
-    wxFONTWEIGHT_NORMAL<br>
-    wxFONTWEIGHT_LIGHT<br>
-    wxFONTWEIGHT_BOLD<br>
+    wxFONTWEIGHT_NORMAL,<br>
+    wxFONTWEIGHT_LIGHT,<br>
+    wxFONTWEIGHT_BOLD,<br>
     wxFONTWEIGHT_MAX<br>
 </font>
 </blockquote>};<br>
 <br>
 enum<br>
 {<br>
-    wxFONTFLAG_DEFAULT<br>
-    wxFONTFLAG_ITALIC<br>
-    wxFONTFLAG_SLANT<br>
-    wxFONTFLAG_LIGHT<br>
-    wxFONTFLAG_BOLD<br>
-    wxFONTFLAG_ANTIALIASED<br>
-    wxFONTFLAG_NOT_ANTIALIASED<br>
-    wxFONTFLAG_UNDERLINED<br>
-    wxFONTFLAG_STRIKETHROUGH<br>
+    wxFONTFLAG_DEFAULT,<br>
+    wxFONTFLAG_ITALIC,<br>
+    wxFONTFLAG_SLANT,<br>
+    wxFONTFLAG_LIGHT,<br>
+    wxFONTFLAG_BOLD,<br>
+    wxFONTFLAG_ANTIALIASED,<br>
+    wxFONTFLAG_NOT_ANTIALIASED,<br>
+    wxFONTFLAG_UNDERLINED,<br>
+    wxFONTFLAG_STRIKETHROUGH,<br>
     wxFONTFLAG_MASK<br>
 };<br>
 <br>
@@ -12665,8 +12691,8 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxPenCap">wxPenCap</a></font></b><br>
 {
 <blockquote>
-    wxCAP_BUTT<br>
-    wxCAP_PROJECTING<br>
+    wxCAP_BUTT,<br>
+    wxCAP_PROJECTING,<br>
     wxCAP_ROUND<br>
 </font>
 </blockquote>};<br>
@@ -12674,11 +12700,11 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxPenStyle">wxPenStyle</a></font></b><br>
 {
 <blockquote>
-    wxDOT<br>
-    wxDOT_DASH<br>
-    wxSOLID<br>
-    wxLONG_DASH<br>
-    wxSHORT_DASH<br>
+    wxDOT,<br>
+    wxDOT_DASH,<br>
+    wxSOLID,<br>
+    wxLONG_DASH,<br>
+    wxSHORT_DASH,<br>
     wxUSER_DASH<br>
 </font>
 </blockquote>};<br>
@@ -12686,24 +12712,24 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxPenJoin">wxPenJoin</a></font></b><br>
 {
 <blockquote>
-    wxJOIN_BEVEL<br>
-    wxJOIN_MITER<br>
+    wxJOIN_BEVEL,<br>
+    wxJOIN_MITER,<br>
     wxJOIN_ROUND<br>
 </font>
 </blockquote>};<br>
 <br>
 enum<br>
 {<br>
-    wxTRANSPARENT<br>
+    wxTRANSPARENT,<br>
 <br>
-    wxSTIPPLE_MASK_OPAQUE<br>
-    wxSTIPPLE_MASK<br>
-    wxSTIPPLE<br>
-    wxBDIAGONAL_HATCH<br>
-    wxCROSSDIAG_HATCH<br>
-    wxFDIAGONAL_HATCH<br>
-    wxCROSS_HATCH<br>
-    wxHORIZONTAL_HATCH<br>
+    wxSTIPPLE_MASK_OPAQUE,<br>
+    wxSTIPPLE_MASK,<br>
+    wxSTIPPLE,<br>
+    wxBDIAGONAL_HATCH,<br>
+    wxCROSSDIAG_HATCH,<br>
+    wxFDIAGONAL_HATCH,<br>
+    wxCROSS_HATCH,<br>
+    wxHORIZONTAL_HATCH,<br>
     wxVERTICAL_HATCH<br>
 };<br>
 <br>
@@ -12844,40 +12870,40 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxStockGDI::Item">wxStockGDI::Item</a></font></b><br>
 {
 <blockquote>
-        BRUSH_BLACK<br>
-        BRUSH_BLUE<br>
-        BRUSH_CYAN<br>
-        BRUSH_GREEN<br>
-        BRUSH_GREY<br>
-        BRUSH_LIGHTGREY<br>
-        BRUSH_MEDIUMGREY<br>
-        BRUSH_RED<br>
-        BRUSH_TRANSPARENT<br>
-        BRUSH_WHITE<br>
-        COLOUR_BLACK<br>
-        COLOUR_BLUE<br>
-        COLOUR_CYAN<br>
-        COLOUR_GREEN<br>
-        COLOUR_LIGHTGREY<br>
-        COLOUR_RED<br>
-        COLOUR_WHITE<br>
-        CURSOR_CROSS<br>
-        CURSOR_HOURGLASS<br>
-        CURSOR_STANDARD<br>
-        FONT_ITALIC<br>
-        FONT_NORMAL<br>
-        FONT_SMALL<br>
-        FONT_SWISS<br>
-        PEN_BLACK<br>
-        PEN_BLACKDASHED<br>
-        PEN_CYAN<br>
-        PEN_GREEN<br>
-        PEN_GREY<br>
-        PEN_LIGHTGREY<br>
-        PEN_MEDIUMGREY<br>
-        PEN_RED<br>
-        PEN_TRANSPARENT<br>
-        PEN_WHITE<br>
+        BRUSH_BLACK,<br>
+        BRUSH_BLUE,<br>
+        BRUSH_CYAN,<br>
+        BRUSH_GREEN,<br>
+        BRUSH_GREY,<br>
+        BRUSH_LIGHTGREY,<br>
+        BRUSH_MEDIUMGREY,<br>
+        BRUSH_RED,<br>
+        BRUSH_TRANSPARENT,<br>
+        BRUSH_WHITE,<br>
+        COLOUR_BLACK,<br>
+        COLOUR_BLUE,<br>
+        COLOUR_CYAN,<br>
+        COLOUR_GREEN,<br>
+        COLOUR_LIGHTGREY,<br>
+        COLOUR_RED,<br>
+        COLOUR_WHITE,<br>
+        CURSOR_CROSS,<br>
+        CURSOR_HOURGLASS,<br>
+        CURSOR_STANDARD,<br>
+        FONT_ITALIC,<br>
+        FONT_NORMAL,<br>
+        FONT_SMALL,<br>
+        FONT_SWISS,<br>
+        PEN_BLACK,<br>
+        PEN_BLACKDASHED,<br>
+        PEN_CYAN,<br>
+        PEN_GREEN,<br>
+        PEN_GREY,<br>
+        PEN_LIGHTGREY,<br>
+        PEN_MEDIUMGREY,<br>
+        PEN_RED,<br>
+        PEN_TRANSPARENT,<br>
+        PEN_WHITE,<br>
         ITEMCOUNT<br>
 </font>
 </blockquote>};<br>
@@ -13077,35 +13103,35 @@ typedef void* WXHANDLE<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxStockCursor">wxStockCursor</a></font></b><br>
 {
 <blockquote>
-    wxCURSOR_NONE<br>
-    wxCURSOR_ARROW<br>
-    wxCURSOR_RIGHT_ARROW<br>
-    wxCURSOR_BULLSEYE<br>
-    wxCURSOR_CHAR<br>
-    wxCURSOR_CROSS<br>
-    wxCURSOR_HAND<br>
-    wxCURSOR_IBEAM<br>
-    wxCURSOR_LEFT_BUTTON<br>
-    wxCURSOR_MAGNIFIER<br>
-    wxCURSOR_MIDDLE_BUTTON<br>
-    wxCURSOR_NO_ENTRY<br>
-    wxCURSOR_PAINT_BRUSH<br>
-    wxCURSOR_PENCIL<br>
-    wxCURSOR_POINT_LEFT<br>
-    wxCURSOR_POINT_RIGHT<br>
-    wxCURSOR_QUESTION_ARROW<br>
-    wxCURSOR_RIGHT_BUTTON<br>
-    wxCURSOR_SIZENESW<br>
-    wxCURSOR_SIZENS<br>
-    wxCURSOR_SIZENWSE<br>
-    wxCURSOR_SIZEWE<br>
-    wxCURSOR_SIZING<br>
-    wxCURSOR_SPRAYCAN<br>
-    wxCURSOR_WAIT<br>
-    wxCURSOR_WATCH<br>
-    wxCURSOR_BLANK<br>
-    wxCURSOR_DEFAULT<br>
-    <i>%mac</i> wxCURSOR_COPY_ARROW<br>
+    wxCURSOR_NONE,<br>
+    wxCURSOR_ARROW,<br>
+    wxCURSOR_RIGHT_ARROW,<br>
+    wxCURSOR_BULLSEYE,<br>
+    wxCURSOR_CHAR,<br>
+    wxCURSOR_CROSS,<br>
+    wxCURSOR_HAND,<br>
+    wxCURSOR_IBEAM,<br>
+    wxCURSOR_LEFT_BUTTON,<br>
+    wxCURSOR_MAGNIFIER,<br>
+    wxCURSOR_MIDDLE_BUTTON,<br>
+    wxCURSOR_NO_ENTRY,<br>
+    wxCURSOR_PAINT_BRUSH,<br>
+    wxCURSOR_PENCIL,<br>
+    wxCURSOR_POINT_LEFT,<br>
+    wxCURSOR_POINT_RIGHT,<br>
+    wxCURSOR_QUESTION_ARROW,<br>
+    wxCURSOR_RIGHT_BUTTON,<br>
+    wxCURSOR_SIZENESW,<br>
+    wxCURSOR_SIZENS,<br>
+    wxCURSOR_SIZENWSE,<br>
+    wxCURSOR_SIZEWE,<br>
+    wxCURSOR_SIZING,<br>
+    wxCURSOR_SPRAYCAN,<br>
+    wxCURSOR_WAIT,<br>
+    wxCURSOR_WATCH,<br>
+    wxCURSOR_BLANK,<br>
+    wxCURSOR_DEFAULT,<br>
+    <i>%mac</i> wxCURSOR_COPY_ARROW,<br>
 <br>
     #if defined(__X__ );<br>
         <font color=#009900>// Not yet implemented for Windows</font><br>
@@ -13115,7 +13141,7 @@ typedef void* WXHANDLE<br>
         wxCURSOR_BASED_ARROW_DOWN,<br>
     #endif <font color=#009900>// X11</font><br>
 <br>
-    wxCURSOR_ARROWWAIT<br>
+    wxCURSOR_ARROWWAIT,<br>
     wxCURSOR_MAX<br>
 </font>
 </blockquote>};<br>
@@ -13233,16 +13259,16 @@ typedef void* WXHANDLE<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxMappingMode">wxMappingMode</a></font></b><br>
 {
 <blockquote>
-    wxMM_TEXT<br>
-    wxMM_METRIC<br>
-    wxMM_LOMETRIC<br>
-    wxMM_TWIPS<br>
-    wxMM_POINTS<br>
+    wxMM_TEXT,<br>
+    wxMM_METRIC,<br>
+    wxMM_LOMETRIC,<br>
+    wxMM_TWIPS,<br>
+    wxMM_POINTS,<br>
 <br>
-    !<i>%wxchkver_2_9_2</i> wxMM_HIMETRIC<br>
-    !<i>%wxchkver_2_9_2</i> wxMM_LOENGLISH<br>
-    !<i>%wxchkver_2_9_2</i> wxMM_HIENGLISH<br>
-    !<i>%wxchkver_2_9_2</i> wxMM_ISOTROPIC<br>
+    !<i>%wxchkver_2_9_2</i> wxMM_HIMETRIC,<br>
+    !<i>%wxchkver_2_9_2</i> wxMM_LOENGLISH,<br>
+    !<i>%wxchkver_2_9_2</i> wxMM_HIENGLISH,<br>
+    !<i>%wxchkver_2_9_2</i> wxMM_ISOTROPIC,<br>
     !<i>%wxchkver_2_9_2</i> wxMM_ANISOTROPIC<br>
 </font>
 </blockquote>};<br>
@@ -13250,57 +13276,57 @@ typedef void* WXHANDLE<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxRasterOperationMode">wxRasterOperationMode</a></font></b><br>
 {
 <blockquote>
-    wxCLEAR<br>
-    wxXOR<br>
-    wxINVERT<br>
-    wxOR_REVERSE<br>
-    wxAND_REVERSE<br>
-    wxCOPY<br>
-    wxAND<br>
-    wxAND_INVERT<br>
-    wxNO_OP<br>
-    wxNOR<br>
-    wxEQUIV<br>
-    wxSRC_INVERT<br>
-    wxOR_INVERT<br>
-    wxNAND<br>
-    wxOR<br>
-    wxSET<br>
+    wxCLEAR,<br>
+    wxXOR,<br>
+    wxINVERT,<br>
+    wxOR_REVERSE,<br>
+    wxAND_REVERSE,<br>
+    wxCOPY,<br>
+    wxAND,<br>
+    wxAND_INVERT,<br>
+    wxNO_OP,<br>
+    wxNOR,<br>
+    wxEQUIV,<br>
+    wxSRC_INVERT,<br>
+    wxOR_INVERT,<br>
+    wxNAND,<br>
+    wxOR,<br>
+    wxSET,<br>
 <br>
     <font color=#009900>// wxROP_XXX and wxBLIT_XXX are wxcompat_2_8</font><br>
 <br>
-    wxROP_BLACK<br>
-    wxROP_COPYPEN<br>
-    wxROP_MASKNOTPEN<br>
-    wxROP_MASKPEN<br>
-    wxROP_MASKPENNOT<br>
-    wxROP_MERGENOTPEN<br>
-    wxROP_MERGEPEN<br>
-    wxROP_MERGEPENNOT<br>
-    wxROP_NOP<br>
-    wxROP_NOT<br>
-    wxROP_NOTCOPYPEN<br>
-    wxROP_NOTMASKPEN<br>
-    wxROP_NOTMERGEPEN<br>
-    wxROP_NOTXORPEN<br>
-    wxROP_WHITE<br>
-    wxROP_XORPEN<br>
+    wxROP_BLACK,<br>
+    wxROP_COPYPEN,<br>
+    wxROP_MASKNOTPEN,<br>
+    wxROP_MASKPEN,<br>
+    wxROP_MASKPENNOT,<br>
+    wxROP_MERGENOTPEN,<br>
+    wxROP_MERGEPEN,<br>
+    wxROP_MERGEPENNOT,<br>
+    wxROP_NOP,<br>
+    wxROP_NOT,<br>
+    wxROP_NOTCOPYPEN,<br>
+    wxROP_NOTMASKPEN,<br>
+    wxROP_NOTMERGEPEN,<br>
+    wxROP_NOTXORPEN,<br>
+    wxROP_WHITE,<br>
+    wxROP_XORPEN,<br>
 <br>
-    wxBLIT_00220326<br>
-    wxBLIT_007700E6<br>
-    wxBLIT_00990066<br>
-    wxBLIT_00AA0029<br>
-    wxBLIT_00DD0228<br>
-    wxBLIT_BLACKNESS<br>
-    wxBLIT_DSTINVERT<br>
-    wxBLIT_MERGEPAINT<br>
-    wxBLIT_NOTSCRCOPY<br>
-    wxBLIT_NOTSRCERASE<br>
-    wxBLIT_SRCAND<br>
-    wxBLIT_SRCCOPY<br>
-    wxBLIT_SRCERASE<br>
-    wxBLIT_SRCINVERT<br>
-    wxBLIT_SRCPAINT<br>
+    wxBLIT_00220326,<br>
+    wxBLIT_007700E6,<br>
+    wxBLIT_00990066,<br>
+    wxBLIT_00AA0029,<br>
+    wxBLIT_00DD0228,<br>
+    wxBLIT_BLACKNESS,<br>
+    wxBLIT_DSTINVERT,<br>
+    wxBLIT_MERGEPAINT,<br>
+    wxBLIT_NOTSCRCOPY,<br>
+    wxBLIT_NOTSRCERASE,<br>
+    wxBLIT_SRCAND,<br>
+    wxBLIT_SRCCOPY,<br>
+    wxBLIT_SRCERASE,<br>
+    wxBLIT_SRCINVERT,<br>
+    wxBLIT_SRCPAINT,<br>
     wxBLIT_WHITENESS<br>
 </font>
 </blockquote>};<br>
@@ -13308,7 +13334,7 @@ typedef void* WXHANDLE<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxFloodFillStyle">wxFloodFillStyle</a></font></b><br>
 {
 <blockquote>
-    wxFLOOD_BORDER<br>
+    wxFLOOD_BORDER,<br>
     wxFLOOD_SURFACE<br>
 </font>
 </blockquote>};<br>
@@ -13316,7 +13342,7 @@ typedef void* WXHANDLE<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxPolygonFillMode">wxPolygonFillMode</a></font></b><br>
 {
 <blockquote>
-    wxODDEVEN_RULE<br>
+    wxODDEVEN_RULE,<br>
     wxWINDING_RULE<br>
 </font>
 </blockquote>};<br>
@@ -13437,6 +13463,7 @@ typedef void* WXHANDLE<br>
     bool IsOk( );<br>
     void ResetBoundingBox( );<br>
     void SetAxisOrientation(bool xLeftRight, bool yBottomUp );<br>
+    <i>%wxchkver_2_9_4</i> virtual double GetContentScaleFactor() const;<br>
     void SetBackground(const <a href="#wxBrush">wxBrush</a>&amp; brush );<br>
     void SetBackgroundMode(int mode );<br>
     void SetBrush(const <a href="#wxBrush">wxBrush</a>&amp; brush );<br>
@@ -13760,25 +13787,25 @@ typedef void* WXHANDLE<br>
 <br>
 enum<br>
 {<br>
-    wxCONTROL_DISABLED   <font color=#009900>//= 0x00000001,  // control is disabled</font><br>
-    wxCONTROL_FOCUSED    <font color=#009900>//= 0x00000002,  // currently has keyboard focus</font><br>
-    wxCONTROL_PRESSED    <font color=#009900>//= 0x00000004,  // (button) is pressed</font><br>
-    wxCONTROL_SPECIAL    <font color=#009900>//= 0x00000008,  // control-specific bit:</font><br>
-    wxCONTROL_ISDEFAULT  <font color=#009900>//= wxCONTROL_SPECIAL, // only for the buttons</font><br>
-    wxCONTROL_ISSUBMENU  <font color=#009900>//= wxCONTROL_SPECIAL, // only for the menu items</font><br>
-    wxCONTROL_EXPANDED   <font color=#009900>//= wxCONTROL_SPECIAL, // only for the tree items</font><br>
-    wxCONTROL_SIZEGRIP   <font color=#009900>//= wxCONTROL_SPECIAL, // only for the status bar panes</font><br>
-    wxCONTROL_CURRENT    <font color=#009900>//= 0x00000010,  // mouse is currently over the control</font><br>
-    wxCONTROL_SELECTED   <font color=#009900>//= 0x00000020,  // selected item in e.g. listbox</font><br>
-    wxCONTROL_CHECKED    <font color=#009900>//= 0x00000040,  // (check/radio button) is checked</font><br>
-    wxCONTROL_CHECKABLE  <font color=#009900>//= 0x00000080,  // (menu) item can be checked</font><br>
-    wxCONTROL_UNDETERMINED <font color=#009900>//= wxCONTROL_CHECKABLE, // (check) undetermined state</font><br>
+    wxCONTROL_DISABLED,   <font color=#009900>//= 0x00000001,  // control is disabled</font><br>
+    wxCONTROL_FOCUSED,    <font color=#009900>//= 0x00000002,  // currently has keyboard focus</font><br>
+    wxCONTROL_PRESSED,    <font color=#009900>//= 0x00000004,  // (button) is pressed</font><br>
+    wxCONTROL_SPECIAL,    <font color=#009900>//= 0x00000008,  // control-specific bit:</font><br>
+    wxCONTROL_ISDEFAULT,  <font color=#009900>//= wxCONTROL_SPECIAL, // only for the buttons</font><br>
+    wxCONTROL_ISSUBMENU,  <font color=#009900>//= wxCONTROL_SPECIAL, // only for the menu items</font><br>
+    wxCONTROL_EXPANDED,   <font color=#009900>//= wxCONTROL_SPECIAL, // only for the tree items</font><br>
+    wxCONTROL_SIZEGRIP,   <font color=#009900>//= wxCONTROL_SPECIAL, // only for the status bar panes</font><br>
+    wxCONTROL_CURRENT,    <font color=#009900>//= 0x00000010,  // mouse is currently over the control</font><br>
+    wxCONTROL_SELECTED,   <font color=#009900>//= 0x00000020,  // selected item in e.g. listbox</font><br>
+    wxCONTROL_CHECKED,    <font color=#009900>//= 0x00000040,  // (check/radio button) is checked</font><br>
+    wxCONTROL_CHECKABLE,  <font color=#009900>//= 0x00000080,  // (menu) item can be checked</font><br>
+    wxCONTROL_UNDETERMINED, <font color=#009900>//= wxCONTROL_CHECKABLE, // (check) undetermined state</font><br>
 <br>
-    wxCONTROL_FLAGS_MASK <font color=#009900>//= 0x000000ff,</font><br>
+    wxCONTROL_FLAGS_MASK, <font color=#009900>//= 0x000000ff,</font><br>
 <br>
     <font color=#009900>// this is a pseudo flag not used directly by wxRenderer but rather by some</font><br>
     <font color=#009900>// controls internally</font><br>
-    wxCONTROL_DIRTY      <font color=#009900>//= 0x80000000</font><br>
+    wxCONTROL_DIRTY       <font color=#009900>//= 0x80000000</font><br>
 };<br>
 <br>
 <b><font size=+1 color=#DD0000>struct <i>%delete</i> <a name="wxSplitterRenderParams">wxSplitterRenderParams</a></font></b><br>
@@ -13825,8 +13852,8 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxRendererVersion::dummy">wxRendererVersion::dummy</a></font></b><br>
 {
 <blockquote>
-    Current_Version <font color=#009900>//= 1,</font><br>
-    Current_Age     <font color=#009900>//= 5</font><br>
+    Current_Version, <font color=#009900>//= 1,</font><br>
+    Current_Age      <font color=#009900>//= 5</font><br>
 </font>
 </blockquote>};<br>
 <br>
@@ -13953,10 +13980,10 @@ typedef double wxDouble<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxOutCode">wxOutCode</a></font></b><br>
 {
 <blockquote>
-    wxInside<br>
-    wxOutLeft<br>
-    wxOutRight<br>
-    wxOutTop<br>
+    wxInside,<br>
+    wxOutLeft,<br>
+    wxOutRight,<br>
+    wxOutTop,<br>
     wxOutBottom<br>
 </font>
 </blockquote>};<br>
@@ -14340,7 +14367,7 @@ typedef double wxDouble<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxHelpSearchMode">wxHelpSearchMode</a></font></b><br>
 {
 <blockquote>
-    wxHELP_SEARCH_INDEX<br>
+    wxHELP_SEARCH_INDEX,<br>
     wxHELP_SEARCH_ALL<br>
 </font>
 </blockquote>};<br>
@@ -14461,39 +14488,39 @@ typedef double wxDouble<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxBitmapType">wxBitmapType</a></font></b><br>
 {
 <blockquote>
-    wxBITMAP_TYPE_INVALID<br>
-    wxBITMAP_TYPE_BMP<br>
-    wxBITMAP_TYPE_BMP_RESOURCE<br>
-    wxBITMAP_TYPE_RESOURCE<br>
-    wxBITMAP_TYPE_ICO<br>
-    wxBITMAP_TYPE_ICO_RESOURCE<br>
-    wxBITMAP_TYPE_CUR<br>
-    wxBITMAP_TYPE_CUR_RESOURCE<br>
-    wxBITMAP_TYPE_XBM<br>
-    wxBITMAP_TYPE_XBM_DATA<br>
-    wxBITMAP_TYPE_XPM<br>
-    wxBITMAP_TYPE_XPM_DATA<br>
-    wxBITMAP_TYPE_TIF<br>
-    wxBITMAP_TYPE_TIF_RESOURCE<br>
-    wxBITMAP_TYPE_GIF<br>
-    wxBITMAP_TYPE_GIF_RESOURCE<br>
-    wxBITMAP_TYPE_PNG<br>
-    wxBITMAP_TYPE_PNG_RESOURCE<br>
-    wxBITMAP_TYPE_JPEG<br>
-    wxBITMAP_TYPE_JPEG_RESOURCE<br>
-    wxBITMAP_TYPE_PNM<br>
-    wxBITMAP_TYPE_PNM_RESOURCE<br>
-    wxBITMAP_TYPE_PCX<br>
-    wxBITMAP_TYPE_PCX_RESOURCE<br>
-    wxBITMAP_TYPE_PICT<br>
-    wxBITMAP_TYPE_PICT_RESOURCE<br>
-    wxBITMAP_TYPE_ICON<br>
-    wxBITMAP_TYPE_ICON_RESOURCE<br>
-    wxBITMAP_TYPE_ANI<br>
-    wxBITMAP_TYPE_IFF<br>
-    <i>%wxchkver_2_8</i> wxBITMAP_TYPE_TGA<br>
-    wxBITMAP_TYPE_MACCURSOR<br>
-    wxBITMAP_TYPE_MACCURSOR_RESOURCE<br>
+    wxBITMAP_TYPE_INVALID,<br>
+    wxBITMAP_TYPE_BMP,<br>
+    wxBITMAP_TYPE_BMP_RESOURCE,<br>
+    wxBITMAP_TYPE_RESOURCE,<br>
+    wxBITMAP_TYPE_ICO,<br>
+    wxBITMAP_TYPE_ICO_RESOURCE,<br>
+    wxBITMAP_TYPE_CUR,<br>
+    wxBITMAP_TYPE_CUR_RESOURCE,<br>
+    wxBITMAP_TYPE_XBM,<br>
+    wxBITMAP_TYPE_XBM_DATA,<br>
+    wxBITMAP_TYPE_XPM,<br>
+    wxBITMAP_TYPE_XPM_DATA,<br>
+    wxBITMAP_TYPE_TIF,<br>
+    wxBITMAP_TYPE_TIF_RESOURCE,<br>
+    wxBITMAP_TYPE_GIF,<br>
+    wxBITMAP_TYPE_GIF_RESOURCE,<br>
+    wxBITMAP_TYPE_PNG,<br>
+    wxBITMAP_TYPE_PNG_RESOURCE,<br>
+    wxBITMAP_TYPE_JPEG,<br>
+    wxBITMAP_TYPE_JPEG_RESOURCE,<br>
+    wxBITMAP_TYPE_PNM,<br>
+    wxBITMAP_TYPE_PNM_RESOURCE,<br>
+    wxBITMAP_TYPE_PCX,<br>
+    wxBITMAP_TYPE_PCX_RESOURCE,<br>
+    wxBITMAP_TYPE_PICT,<br>
+    wxBITMAP_TYPE_PICT_RESOURCE,<br>
+    wxBITMAP_TYPE_ICON,<br>
+    wxBITMAP_TYPE_ICON_RESOURCE,<br>
+    wxBITMAP_TYPE_ANI,<br>
+    wxBITMAP_TYPE_IFF,<br>
+    <i>%wxchkver_2_8</i> wxBITMAP_TYPE_TGA,<br>
+    wxBITMAP_TYPE_MACCURSOR,<br>
+    wxBITMAP_TYPE_MACCURSOR_RESOURCE,<br>
     wxBITMAP_TYPE_ANY<br>
 </font>
 </blockquote>};<br>
@@ -14523,7 +14550,7 @@ typedef double wxDouble<br>
 enum<br>
 {<br>
     <font color=#009900>// constants used with wxIMAGE_OPTION_RESOLUTIONUNIT</font><br>
-    wxIMAGE_RESOLUTION_INCHES<br>
+    wxIMAGE_RESOLUTION_INCHES,<br>
     wxIMAGE_RESOLUTION_CM<br>
 };<br>
 <br>
@@ -14532,13 +14559,13 @@ enum<br>
 {
 <blockquote>
     <font color=#009900>// different image resizing algorithms used by Scale() and Rescale( );</font><br>
-    <i>%wxchkver_2_9_2</i> wxIMAGE_QUALITY_NEAREST<br>
-    <i>%wxchkver_2_9_2</i> wxIMAGE_QUALITY_BILINEAR<br>
-    <i>%wxchkver_2_9_2</i> wxIMAGE_QUALITY_BICUBIC<br>
-    <i>%wxchkver_2_9_2</i> wxIMAGE_QUALITY_BOX_AVERAGE<br>
+    <i>%wxchkver_2_9_2</i> wxIMAGE_QUALITY_NEAREST,<br>
+    <i>%wxchkver_2_9_2</i> wxIMAGE_QUALITY_BILINEAR,<br>
+    <i>%wxchkver_2_9_2</i> wxIMAGE_QUALITY_BICUBIC,<br>
+    <i>%wxchkver_2_9_2</i> wxIMAGE_QUALITY_BOX_AVERAGE,<br>
 <br>
     <font color=#009900>// default quality is low (but fast );</font><br>
-    <i>%wxchkver_2_8</i> wxIMAGE_QUALITY_NORMAL<br>
+    <i>%wxchkver_2_8</i> wxIMAGE_QUALITY_NORMAL,<br>
 <br>
     <font color=#009900>// highest (but best) quality</font><br>
     <i>%wxchkver_2_8</i> wxIMAGE_QUALITY_HIGH<br>
@@ -14774,15 +14801,15 @@ enum<br>
 <br>
 enum<br>
 {<br>
-    wxBMP_24BPP<br>
-    <font color=#009900>//wxBMP_16BPP  - remmed out in wxWidgets</font><br>
-    wxBMP_8BPP<br>
-    wxBMP_8BPP_GREY<br>
-    wxBMP_8BPP_GRAY<br>
-    wxBMP_8BPP_RED<br>
-    wxBMP_8BPP_PALETTE<br>
-    wxBMP_4BPP<br>
-    wxBMP_1BPP<br>
+    wxBMP_24BPP,<br>
+    <font color=#009900>//wxBMP_16BPP,  - remmed out in wxWidgets</font><br>
+    wxBMP_8BPP,<br>
+    wxBMP_8BPP_GREY,<br>
+    wxBMP_8BPP_GRAY,<br>
+    wxBMP_8BPP_RED,<br>
+    wxBMP_8BPP_PALETTE,<br>
+    wxBMP_4BPP,<br>
+    wxBMP_1BPP,<br>
     wxBMP_1BPP_BW<br>
 };<br>
 <br>
@@ -14888,8 +14915,8 @@ enum<br>
 <br>
 enum<br>
 {<br>
-    wxPNG_TYPE_COLOUR<br>
-    wxPNG_TYPE_GREY<br>
+    wxPNG_TYPE_COLOUR,<br>
+    wxPNG_TYPE_GREY,<br>
     wxPNG_TYPE_GREY_RED<br>
 };<br>
 <br>
@@ -15586,10 +15613,10 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxItemKind">wxItemKind</a></font></b><br>
 {
 <blockquote>
-   wxITEM_SEPARATOR<br>
-   wxITEM_NORMAL<br>
-   wxITEM_CHECK<br>
-   wxITEM_RADIO<br>
+   wxITEM_SEPARATOR,<br>
+   wxITEM_NORMAL,<br>
+   wxITEM_CHECK,<br>
+   wxITEM_RADIO,<br>
    wxITEM_MAX<br>
 </font>
 </blockquote>};<br>
@@ -15886,8 +15913,8 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxToolBarToolStyle">wxToolBarToolStyle</a></font></b><br>
 {
 <blockquote>
-    wxTOOL_STYLE_BUTTON<br>
-    wxTOOL_STYLE_SEPARATOR<br>
+    wxTOOL_STYLE_BUTTON,<br>
+    wxTOOL_STYLE_SEPARATOR,<br>
     wxTOOL_STYLE_CONTROL<br>
 </font>
 </blockquote>};<br>
@@ -15974,10 +16001,10 @@ enum<br>
 <br>
 enum<br>
 {<br>
-    wxACCEL_NORMAL<br>
-    wxACCEL_ALT<br>
-    wxACCEL_CTRL<br>
-    wxACCEL_SHIFT<br>
+    wxACCEL_NORMAL,<br>
+    wxACCEL_ALT,<br>
+    wxACCEL_CTRL,<br>
+    wxACCEL_SHIFT,<br>
     <i>%wxchkver_2_8</i> wxACCEL_CMD <font color=#009900>// Command key on OS X else wxACCEL_CTRL</font><br>
 };<br>
 <br>
@@ -16118,10 +16145,10 @@ enum<br>
 <br>
 enum<br>
 {<br>
-    wxDP_SPIN           <font color=#009900>// MSW only</font><br>
-    wxDP_DROPDOWN<br>
-    wxDP_DEFAULT<br>
-    wxDP_ALLOWNONE<br>
+    wxDP_SPIN,           <font color=#009900>// MSW only</font><br>
+    wxDP_DROPDOWN,<br>
+    wxDP_DEFAULT,<br>
+    wxDP_ALLOWNONE,<br>
     wxDP_SHOWCENTURY<br>
 };<br>
 <br>
@@ -16380,8 +16407,8 @@ typedef <a href="#wxScrolledWindow">wxScrolledWindow</a> wxPreviewWindow<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxPrinterError">wxPrinterError</a></font></b><br>
 {
 <blockquote>
-    wxPRINTER_NO_ERROR<br>
-    wxPRINTER_CANCELLED<br>
+    wxPRINTER_NO_ERROR,<br>
+    wxPRINTER_CANCELLED,<br>
     wxPRINTER_ERROR<br>
 </font>
 </blockquote>};<br>
@@ -16413,8 +16440,8 @@ typedef <a href="#wxScrolledWindow">wxScrolledWindow</a> wxPreviewWindow<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxDuplexMode">wxDuplexMode</a></font></b><br>
 {
 <blockquote>
-    wxDUPLEX_HORIZONTAL<br>
-    wxDUPLEX_SIMPLEX<br>
+    wxDUPLEX_HORIZONTAL,<br>
+    wxDUPLEX_SIMPLEX,<br>
     wxDUPLEX_VERTICAL<br>
 </font>
 </blockquote>};<br>
@@ -16422,124 +16449,124 @@ typedef <a href="#wxScrolledWindow">wxScrolledWindow</a> wxPreviewWindow<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxPaperSize">wxPaperSize</a></font></b><br>
 {
 <blockquote>
-    wxPAPER_NONE<br>
-    wxPAPER_LETTER<br>
-    wxPAPER_LEGAL<br>
-    wxPAPER_A4<br>
-    wxPAPER_CSHEET<br>
-    wxPAPER_DSHEET<br>
-    wxPAPER_ESHEET<br>
-    wxPAPER_LETTERSMALL<br>
-    wxPAPER_TABLOID<br>
-    wxPAPER_LEDGER<br>
-    wxPAPER_STATEMENT<br>
-    wxPAPER_EXECUTIVE<br>
-    wxPAPER_A3<br>
-    wxPAPER_A4SMALL<br>
-    wxPAPER_A5<br>
-    wxPAPER_B4<br>
-    wxPAPER_B5<br>
-    wxPAPER_FOLIO<br>
-    wxPAPER_QUARTO<br>
-    wxPAPER_10X14<br>
-    wxPAPER_11X17<br>
-    wxPAPER_NOTE<br>
-    wxPAPER_ENV_9<br>
-    wxPAPER_ENV_10<br>
-    wxPAPER_ENV_11<br>
-    wxPAPER_ENV_12<br>
-    wxPAPER_ENV_14<br>
-    wxPAPER_ENV_DL<br>
-    wxPAPER_ENV_C5<br>
-    wxPAPER_ENV_C3<br>
-    wxPAPER_ENV_C4<br>
-    wxPAPER_ENV_C6<br>
-    wxPAPER_ENV_C65<br>
-    wxPAPER_ENV_B4<br>
-    wxPAPER_ENV_B5<br>
-    wxPAPER_ENV_B6<br>
-    wxPAPER_ENV_ITALY<br>
-    wxPAPER_ENV_MONARCH<br>
-    wxPAPER_ENV_PERSONAL<br>
-    wxPAPER_FANFOLD_US<br>
-    wxPAPER_FANFOLD_STD_GERMAN<br>
-    wxPAPER_FANFOLD_LGL_GERMAN<br>
+    wxPAPER_NONE,<br>
+    wxPAPER_LETTER,<br>
+    wxPAPER_LEGAL,<br>
+    wxPAPER_A4,<br>
+    wxPAPER_CSHEET,<br>
+    wxPAPER_DSHEET,<br>
+    wxPAPER_ESHEET,<br>
+    wxPAPER_LETTERSMALL,<br>
+    wxPAPER_TABLOID,<br>
+    wxPAPER_LEDGER,<br>
+    wxPAPER_STATEMENT,<br>
+    wxPAPER_EXECUTIVE,<br>
+    wxPAPER_A3,<br>
+    wxPAPER_A4SMALL,<br>
+    wxPAPER_A5,<br>
+    wxPAPER_B4,<br>
+    wxPAPER_B5,<br>
+    wxPAPER_FOLIO,<br>
+    wxPAPER_QUARTO,<br>
+    wxPAPER_10X14,<br>
+    wxPAPER_11X17,<br>
+    wxPAPER_NOTE,<br>
+    wxPAPER_ENV_9,<br>
+    wxPAPER_ENV_10,<br>
+    wxPAPER_ENV_11,<br>
+    wxPAPER_ENV_12,<br>
+    wxPAPER_ENV_14,<br>
+    wxPAPER_ENV_DL,<br>
+    wxPAPER_ENV_C5,<br>
+    wxPAPER_ENV_C3,<br>
+    wxPAPER_ENV_C4,<br>
+    wxPAPER_ENV_C6,<br>
+    wxPAPER_ENV_C65,<br>
+    wxPAPER_ENV_B4,<br>
+    wxPAPER_ENV_B5,<br>
+    wxPAPER_ENV_B6,<br>
+    wxPAPER_ENV_ITALY,<br>
+    wxPAPER_ENV_MONARCH,<br>
+    wxPAPER_ENV_PERSONAL,<br>
+    wxPAPER_FANFOLD_US,<br>
+    wxPAPER_FANFOLD_STD_GERMAN,<br>
+    wxPAPER_FANFOLD_LGL_GERMAN,<br>
 <br>
-    wxPAPER_ISO_B4<br>
-    wxPAPER_JAPANESE_POSTCARD<br>
-    wxPAPER_9X11<br>
-    wxPAPER_10X11<br>
-    wxPAPER_15X11<br>
-    wxPAPER_ENV_INVITE<br>
-    wxPAPER_LETTER_EXTRA<br>
-    wxPAPER_LEGAL_EXTRA<br>
-    wxPAPER_TABLOID_EXTRA<br>
-    wxPAPER_A4_EXTRA<br>
-    wxPAPER_LETTER_TRANSVERSE<br>
-    wxPAPER_A4_TRANSVERSE<br>
-    wxPAPER_LETTER_EXTRA_TRANSVERSE<br>
-    wxPAPER_A_PLUS<br>
-    wxPAPER_B_PLUS<br>
-    wxPAPER_LETTER_PLUS<br>
-    wxPAPER_A4_PLUS<br>
-    wxPAPER_A5_TRANSVERSE<br>
-    wxPAPER_B5_TRANSVERSE<br>
-    wxPAPER_A3_EXTRA<br>
-    wxPAPER_A5_EXTRA<br>
-    wxPAPER_B5_EXTRA<br>
-    wxPAPER_A2<br>
-    wxPAPER_A3_TRANSVERSE<br>
-    wxPAPER_A3_EXTRA_TRANSVERSE<br>
+    wxPAPER_ISO_B4,<br>
+    wxPAPER_JAPANESE_POSTCARD,<br>
+    wxPAPER_9X11,<br>
+    wxPAPER_10X11,<br>
+    wxPAPER_15X11,<br>
+    wxPAPER_ENV_INVITE,<br>
+    wxPAPER_LETTER_EXTRA,<br>
+    wxPAPER_LEGAL_EXTRA,<br>
+    wxPAPER_TABLOID_EXTRA,<br>
+    wxPAPER_A4_EXTRA,<br>
+    wxPAPER_LETTER_TRANSVERSE,<br>
+    wxPAPER_A4_TRANSVERSE,<br>
+    wxPAPER_LETTER_EXTRA_TRANSVERSE,<br>
+    wxPAPER_A_PLUS,<br>
+    wxPAPER_B_PLUS,<br>
+    wxPAPER_LETTER_PLUS,<br>
+    wxPAPER_A4_PLUS,<br>
+    wxPAPER_A5_TRANSVERSE,<br>
+    wxPAPER_B5_TRANSVERSE,<br>
+    wxPAPER_A3_EXTRA,<br>
+    wxPAPER_A5_EXTRA,<br>
+    wxPAPER_B5_EXTRA,<br>
+    wxPAPER_A2,<br>
+    wxPAPER_A3_TRANSVERSE,<br>
+    wxPAPER_A3_EXTRA_TRANSVERSE,<br>
 <br>
-    wxPAPER_DBL_JAPANESE_POSTCARD<br>
-    wxPAPER_A6<br>
-    wxPAPER_JENV_KAKU2<br>
-    wxPAPER_JENV_KAKU3<br>
-    wxPAPER_JENV_CHOU3<br>
-    wxPAPER_JENV_CHOU4<br>
-    wxPAPER_LETTER_ROTATED<br>
-    wxPAPER_A3_ROTATED<br>
-    wxPAPER_A4_ROTATED<br>
-    wxPAPER_A5_ROTATED<br>
-    wxPAPER_B4_JIS_ROTATED<br>
-    wxPAPER_B5_JIS_ROTATED<br>
-    wxPAPER_JAPANESE_POSTCARD_ROTATED<br>
-    wxPAPER_DBL_JAPANESE_POSTCARD_ROTATED<br>
-    wxPAPER_A6_ROTATED<br>
-    wxPAPER_JENV_KAKU2_ROTATED<br>
-    wxPAPER_JENV_KAKU3_ROTATED<br>
-    wxPAPER_JENV_CHOU3_ROTATED<br>
-    wxPAPER_JENV_CHOU4_ROTATED<br>
-    wxPAPER_B6_JIS<br>
-    wxPAPER_B6_JIS_ROTATED<br>
-    wxPAPER_12X11<br>
-    wxPAPER_JENV_YOU4<br>
-    wxPAPER_JENV_YOU4_ROTATED<br>
-    wxPAPER_P16K<br>
-    wxPAPER_P32K<br>
-    wxPAPER_P32KBIG<br>
-    wxPAPER_PENV_1<br>
-    wxPAPER_PENV_2<br>
-    wxPAPER_PENV_3<br>
-    wxPAPER_PENV_4<br>
-    wxPAPER_PENV_5<br>
-    wxPAPER_PENV_6<br>
-    wxPAPER_PENV_7<br>
-    wxPAPER_PENV_8<br>
-    wxPAPER_PENV_9<br>
-    wxPAPER_PENV_10<br>
-    wxPAPER_P16K_ROTATED<br>
-    wxPAPER_P32K_ROTATED<br>
-    wxPAPER_P32KBIG_ROTATED<br>
-    wxPAPER_PENV_1_ROTATED<br>
-    wxPAPER_PENV_2_ROTATED<br>
-    wxPAPER_PENV_3_ROTATED<br>
-    wxPAPER_PENV_4_ROTATED<br>
-    wxPAPER_PENV_5_ROTATED<br>
-    wxPAPER_PENV_6_ROTATED<br>
-    wxPAPER_PENV_7_ROTATED<br>
-    wxPAPER_PENV_8_ROTATED<br>
-    wxPAPER_PENV_9_ROTATED<br>
+    wxPAPER_DBL_JAPANESE_POSTCARD,<br>
+    wxPAPER_A6,<br>
+    wxPAPER_JENV_KAKU2,<br>
+    wxPAPER_JENV_KAKU3,<br>
+    wxPAPER_JENV_CHOU3,<br>
+    wxPAPER_JENV_CHOU4,<br>
+    wxPAPER_LETTER_ROTATED,<br>
+    wxPAPER_A3_ROTATED,<br>
+    wxPAPER_A4_ROTATED,<br>
+    wxPAPER_A5_ROTATED,<br>
+    wxPAPER_B4_JIS_ROTATED,<br>
+    wxPAPER_B5_JIS_ROTATED,<br>
+    wxPAPER_JAPANESE_POSTCARD_ROTATED,<br>
+    wxPAPER_DBL_JAPANESE_POSTCARD_ROTATED,<br>
+    wxPAPER_A6_ROTATED,<br>
+    wxPAPER_JENV_KAKU2_ROTATED,<br>
+    wxPAPER_JENV_KAKU3_ROTATED,<br>
+    wxPAPER_JENV_CHOU3_ROTATED,<br>
+    wxPAPER_JENV_CHOU4_ROTATED,<br>
+    wxPAPER_B6_JIS,<br>
+    wxPAPER_B6_JIS_ROTATED,<br>
+    wxPAPER_12X11,<br>
+    wxPAPER_JENV_YOU4,<br>
+    wxPAPER_JENV_YOU4_ROTATED,<br>
+    wxPAPER_P16K,<br>
+    wxPAPER_P32K,<br>
+    wxPAPER_P32KBIG,<br>
+    wxPAPER_PENV_1,<br>
+    wxPAPER_PENV_2,<br>
+    wxPAPER_PENV_3,<br>
+    wxPAPER_PENV_4,<br>
+    wxPAPER_PENV_5,<br>
+    wxPAPER_PENV_6,<br>
+    wxPAPER_PENV_7,<br>
+    wxPAPER_PENV_8,<br>
+    wxPAPER_PENV_9,<br>
+    wxPAPER_PENV_10,<br>
+    wxPAPER_P16K_ROTATED,<br>
+    wxPAPER_P32K_ROTATED,<br>
+    wxPAPER_P32KBIG_ROTATED,<br>
+    wxPAPER_PENV_1_ROTATED,<br>
+    wxPAPER_PENV_2_ROTATED,<br>
+    wxPAPER_PENV_3_ROTATED,<br>
+    wxPAPER_PENV_4_ROTATED,<br>
+    wxPAPER_PENV_5_ROTATED,<br>
+    wxPAPER_PENV_6_ROTATED,<br>
+    wxPAPER_PENV_7_ROTATED,<br>
+    wxPAPER_PENV_8_ROTATED,<br>
+    wxPAPER_PENV_9_ROTATED,<br>
     wxPAPER_PENV_10_ROTATED<br>
 </font>
 </blockquote>};<br>
@@ -16547,9 +16574,9 @@ typedef <a href="#wxScrolledWindow">wxScrolledWindow</a> wxPreviewWindow<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxPrintQuality">wxPrintQuality</a> <font color=#009900>// actually not an enum, but a typedef int</font></font></b><br>
 {
 <blockquote>
-    wxPRINT_QUALITY_DRAFT<br>
-    wxPRINT_QUALITY_HIGH<br>
-    wxPRINT_QUALITY_LOW<br>
+    wxPRINT_QUALITY_DRAFT,<br>
+    wxPRINT_QUALITY_HIGH,<br>
+    wxPRINT_QUALITY_LOW,<br>
     wxPRINT_QUALITY_MEDIUM<br>
 </font>
 </blockquote>};<br>
@@ -16557,9 +16584,9 @@ typedef <a href="#wxScrolledWindow">wxScrolledWindow</a> wxPreviewWindow<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxPrintMode">wxPrintMode</a></font></b><br>
 {
 <blockquote>
-    wxPRINT_MODE_FILE<br>
-    wxPRINT_MODE_NONE<br>
-    wxPRINT_MODE_PREVIEW<br>
+    wxPRINT_MODE_FILE,<br>
+    wxPRINT_MODE_NONE,<br>
+    wxPRINT_MODE_PREVIEW,<br>
     wxPRINT_MODE_PRINTER<br>
 </font>
 </blockquote>};<br>
@@ -16568,21 +16595,21 @@ typedef <a href="#wxScrolledWindow">wxScrolledWindow</a> wxPreviewWindow<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxPrintBin">wxPrintBin</a></font></b><br>
 {
 <blockquote>
-    wxPRINTBIN_DEFAULT<br>
+    wxPRINTBIN_DEFAULT,<br>
 <br>
-    wxPRINTBIN_ONLYONE<br>
-    wxPRINTBIN_LOWER<br>
-    wxPRINTBIN_MIDDLE<br>
-    wxPRINTBIN_MANUAL<br>
-    wxPRINTBIN_ENVELOPE<br>
-    wxPRINTBIN_ENVMANUAL<br>
-    wxPRINTBIN_AUTO<br>
-    wxPRINTBIN_TRACTOR<br>
-    wxPRINTBIN_SMALLFMT<br>
-    wxPRINTBIN_LARGEFMT<br>
-    wxPRINTBIN_LARGECAPACITY<br>
-    wxPRINTBIN_CASSETTE<br>
-    wxPRINTBIN_FORMSOURCE<br>
+    wxPRINTBIN_ONLYONE,<br>
+    wxPRINTBIN_LOWER,<br>
+    wxPRINTBIN_MIDDLE,<br>
+    wxPRINTBIN_MANUAL,<br>
+    wxPRINTBIN_ENVELOPE,<br>
+    wxPRINTBIN_ENVMANUAL,<br>
+    wxPRINTBIN_AUTO,<br>
+    wxPRINTBIN_TRACTOR,<br>
+    wxPRINTBIN_SMALLFMT,<br>
+    wxPRINTBIN_LARGEFMT,<br>
+    wxPRINTBIN_LARGECAPACITY,<br>
+    wxPRINTBIN_CASSETTE,<br>
+    wxPRINTBIN_FORMSOURCE,<br>
 <br>
     wxPRINTBIN_USER<br>
 </font>
@@ -17158,8 +17185,8 @@ typedef <a href="#wxScrolledWindow">wxScrolledWindow</a> wxPreviewWindow<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxFlexSizerGrowMode">wxFlexSizerGrowMode</a></font></b><br>
 {
 <blockquote>
-    wxFLEX_GROWMODE_NONE<br>
-    wxFLEX_GROWMODE_SPECIFIED<br>
+    wxFLEX_GROWMODE_NONE,<br>
+    wxFLEX_GROWMODE_SPECIFIED,<br>
     wxFLEX_GROWMODE_ALL<br>
 </font>
 </blockquote>};<br>
@@ -17381,14 +17408,14 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxRelationship">wxRelationship</a></font></b><br>
 {
 <blockquote>
-    wxUnconstrained<br>
-    wxAsIs<br>
-    wxPercentOf<br>
-    wxAbove<br>
-    wxBelow<br>
-    wxLeftOf<br>
-    wxRightOf<br>
-    wxSameAs<br>
+    wxUnconstrained,<br>
+    wxAsIs,<br>
+    wxPercentOf,<br>
+    wxAbove,<br>
+    wxBelow,<br>
+    wxLeftOf,<br>
+    wxRightOf,<br>
+    wxSameAs,<br>
     wxAbsolute<br>
 </font>
 </blockquote>};<br>
@@ -17396,15 +17423,15 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxEdge">wxEdge</a></font></b><br>
 {
 <blockquote>
-    wxLeft<br>
-    wxTop<br>
-    wxRight<br>
-    wxBottom<br>
-    wxWidth<br>
-    wxHeight<br>
-    wxCentre<br>
-    wxCenter<br>
-    wxCentreX<br>
+    wxLeft,<br>
+    wxTop,<br>
+    wxRight,<br>
+    wxBottom,<br>
+    wxWidth,<br>
+    wxHeight,<br>
+    wxCentre,<br>
+    wxCenter,<br>
+    wxCentreX,<br>
     wxCentreY<br>
 </font>
 </blockquote>};<br>
@@ -17529,10 +17556,10 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxWindowVariant">wxWindowVariant</a></font></b><br>
 {
 <blockquote>
-    wxWINDOW_VARIANT_NORMAL<br>
-    wxWINDOW_VARIANT_SMALL<br>
-    wxWINDOW_VARIANT_MINI<br>
-    wxWINDOW_VARIANT_LARGE<br>
+    wxWINDOW_VARIANT_NORMAL,<br>
+    wxWINDOW_VARIANT_SMALL,<br>
+    wxWINDOW_VARIANT_MINI,<br>
+    wxWINDOW_VARIANT_LARGE,<br>
     wxWINDOW_VARIANT_MAX<br>
 </font>
 </blockquote>};<br>
@@ -17540,8 +17567,8 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxUpdateUI">wxUpdateUI</a></font></b><br>
 {
 <blockquote>
-    wxUPDATE_UI_NONE<br>
-    wxUPDATE_UI_RECURSE<br>
+    wxUPDATE_UI_NONE,<br>
+    wxUPDATE_UI_RECURSE,<br>
     wxUPDATE_UI_FROMIDLE<br>
 </font>
 </blockquote>};<br>
@@ -17683,6 +17710,8 @@ enum<br>
 <font color=#990099>    <i>%override_name</i> wxLua_wxWindow_GetVirtualSizeWH <i>%rename</i> GetVirtualSizeWH void GetVirtualSize() const;</font><br>
 <br>
     <a href="#wxSize">wxSize</a> GetVirtualSize() const;<br>
+    <i>%wxchkver_2_9_4</i> virtual <a href="#wxSize">wxSize</a> GetBestVirtualSize() const;<br>
+    <i>%wxchkver_2_9_4</i> virtual double GetContentScaleFactor() const;    <br>
     long GetWindowStyleFlag() const;<br>
     <a href="#wxWindowVariant">wxWindowVariant</a> GetWindowVariant() const;<br>
     <i>%wxchkver_2_4</i> bool HasCapture() const;<br>
@@ -17868,10 +17897,10 @@ enum<br>
 <br>
     enum<br>
     {<br>
-        wxBK_HITTEST_NOWHERE<br>
-        wxBK_HITTEST_ONICON<br>
-        wxBK_HITTEST_ONLABEL<br>
-        wxBK_HITTEST_ONITEM<br>
+        wxBK_HITTEST_NOWHERE,<br>
+        wxBK_HITTEST_ONICON,<br>
+        wxBK_HITTEST_ONLABEL,<br>
+        wxBK_HITTEST_ONITEM,<br>
         wxBK_HITTEST_ONPAGE<br>
     };<br>
 #endif <font color=#009900>// <i>%wxchkver_2_8</i></font><br>
@@ -17955,9 +17984,9 @@ enum<br>
 <br>
 enum<br>
 {<br>
-    wxNB_HITTEST_NOWHERE<br>
-    wxNB_HITTEST_ONICON<br>
-    wxNB_HITTEST_ONLABEL<br>
+    wxNB_HITTEST_NOWHERE,<br>
+    wxNB_HITTEST_ONICON,<br>
+    wxNB_HITTEST_ONLABEL,<br>
     wxNB_HITTEST_ONITEM<br>
 };<br>
 <br>
@@ -18626,9 +18655,9 @@ void wxAboutBox(const <a href="#wxAboutDialogInfo">wxAboutDialogInfo</a>&amp; in
 <b><font size=+1 color=#0066CC>enum <a name="wxAnimationType">wxAnimationType</a></font></b><br>
 {
 <blockquote>
-    wxANIMATION_TYPE_INVALID<br>
-    wxANIMATION_TYPE_GIF<br>
-    wxANIMATION_TYPE_ANI<br>
+    wxANIMATION_TYPE_INVALID,<br>
+    wxANIMATION_TYPE_GIF,<br>
+    wxANIMATION_TYPE_ANI,<br>
 <br>
     wxANIMATION_TYPE_ANY<br>
 </font>
@@ -18742,23 +18771,23 @@ void wxAboutBox(const <a href="#wxAboutDialogInfo">wxAboutDialogInfo</a>&amp; in
 <br>
 enum<br>
 {<br>
-    wxCAL_SUNDAY_FIRST<br>
-    wxCAL_MONDAY_FIRST<br>
-    wxCAL_SHOW_HOLIDAYS<br>
-    wxCAL_NO_YEAR_CHANGE<br>
-    wxCAL_NO_MONTH_CHANGE<br>
-    wxCAL_SHOW_SURROUNDING_WEEKS<br>
+    wxCAL_SUNDAY_FIRST,<br>
+    wxCAL_MONDAY_FIRST,<br>
+    wxCAL_SHOW_HOLIDAYS,<br>
+    wxCAL_NO_YEAR_CHANGE,<br>
+    wxCAL_NO_MONTH_CHANGE,<br>
+    wxCAL_SHOW_SURROUNDING_WEEKS,<br>
     wxCAL_SEQUENTIAL_MONTH_SELECTION<br>
 };<br>
 <br>
 <b><font size=+1 color=#0066CC>enum <a name="wxCalendarHitTestResult">wxCalendarHitTestResult</a></font></b><br>
 {
 <blockquote>
-    wxCAL_HITTEST_NOWHERE<br>
-    wxCAL_HITTEST_HEADER<br>
-    wxCAL_HITTEST_DAY<br>
-    wxCAL_HITTEST_INCMONTH<br>
-    wxCAL_HITTEST_DECMONTH<br>
+    wxCAL_HITTEST_NOWHERE,<br>
+    wxCAL_HITTEST_HEADER,<br>
+    wxCAL_HITTEST_DAY,<br>
+    wxCAL_HITTEST_INCMONTH,<br>
+    wxCAL_HITTEST_DECMONTH,<br>
     wxCAL_HITTEST_SURROUNDING_WEEK<br>
 </font>
 </blockquote>};<br>
@@ -18766,8 +18795,8 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxCalendarDateBorder">wxCalendarDateBorder</a></font></b><br>
 {
 <blockquote>
-    wxCAL_BORDER_NONE<br>
-    wxCAL_BORDER_SQUARE<br>
+    wxCAL_BORDER_NONE,<br>
+    wxCAL_BORDER_SQUARE,<br>
     wxCAL_BORDER_ROUND<br>
 </font>
 </blockquote>};<br>
@@ -18943,10 +18972,10 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxSashEdgePosition">wxSashEdgePosition</a></font></b><br>
 {
 <blockquote>
-    wxSASH_TOP<br>
-    wxSASH_RIGHT<br>
-    wxSASH_BOTTOM<br>
-    wxSASH_LEFT<br>
+    wxSASH_TOP,<br>
+    wxSASH_RIGHT,<br>
+    wxSASH_BOTTOM,<br>
+    wxSASH_LEFT,<br>
     wxSASH_NONE<br>
 </font>
 </blockquote>};<br>
@@ -18954,7 +18983,7 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxSashDragStatus">wxSashDragStatus</a></font></b><br>
 {
 <blockquote>
-    wxSASH_STATUS_OK<br>
+    wxSASH_STATUS_OK,<br>
     wxSASH_STATUS_OUT_OF_RANGE<br>
 </font>
 </blockquote>};<br>
@@ -18989,10 +19018,10 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxLayoutAlignment">wxLayoutAlignment</a></font></b><br>
 {
 <blockquote>
-    wxLAYOUT_NONE<br>
-    wxLAYOUT_TOP<br>
-    wxLAYOUT_LEFT<br>
-    wxLAYOUT_RIGHT<br>
+    wxLAYOUT_NONE,<br>
+    wxLAYOUT_TOP,<br>
+    wxLAYOUT_LEFT,<br>
+    wxLAYOUT_RIGHT,<br>
     wxLAYOUT_BOTTOM<br>
 </font>
 </blockquote>};<br>
@@ -19000,7 +19029,7 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxLayoutOrientation">wxLayoutOrientation</a></font></b><br>
 {
 <blockquote>
-    wxLAYOUT_HORIZONTAL<br>
+    wxLAYOUT_HORIZONTAL,<br>
     wxLAYOUT_VERTICAL<br>
 </font>
 </blockquote>};<br>
@@ -19262,16 +19291,16 @@ enum<br>
 <br>
 enum<br>
 {<br>
-    wxJOYSTICK1<br>
+    wxJOYSTICK1,<br>
     wxJOYSTICK2<br>
 };<br>
 <br>
 enum<br>
 {<br>
-    wxJOY_BUTTON_ANY<br>
-    wxJOY_BUTTON1<br>
-    wxJOY_BUTTON2<br>
-    wxJOY_BUTTON3<br>
+    wxJOY_BUTTON_ANY,<br>
+    wxJOY_BUTTON1,<br>
+    wxJOY_BUTTON2,<br>
+    wxJOY_BUTTON3,<br>
     wxJOY_BUTTON4<br>
 };<br>
 <br>
@@ -19650,11 +19679,11 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxGridCellAttr::wxAttrKind">wxGridCellAttr::wxAttrKind</a></font></b><br>
 {
 <blockquote>
-    Any<br>
-    Default<br>
-    Cell<br>
-    Row<br>
-    Col<br>
+    Any,<br>
+    Default,<br>
+    Cell,<br>
+    Row,<br>
+    Col,<br>
     Merged<br>
 </font>
 </blockquote>};<br>
@@ -19893,13 +19922,13 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxGridTableRequest">wxGridTableRequest</a></font></b><br>
 {
 <blockquote>
-    wxGRIDTABLE_REQUEST_VIEW_GET_VALUES<br>
-    wxGRIDTABLE_REQUEST_VIEW_SEND_VALUES<br>
-    wxGRIDTABLE_NOTIFY_ROWS_INSERTED<br>
-    wxGRIDTABLE_NOTIFY_ROWS_APPENDED<br>
-    wxGRIDTABLE_NOTIFY_ROWS_DELETED<br>
-    wxGRIDTABLE_NOTIFY_COLS_INSERTED<br>
-    wxGRIDTABLE_NOTIFY_COLS_APPENDED<br>
+    wxGRIDTABLE_REQUEST_VIEW_GET_VALUES,<br>
+    wxGRIDTABLE_REQUEST_VIEW_SEND_VALUES,<br>
+    wxGRIDTABLE_NOTIFY_ROWS_INSERTED,<br>
+    wxGRIDTABLE_NOTIFY_ROWS_APPENDED,<br>
+    wxGRIDTABLE_NOTIFY_ROWS_DELETED,<br>
+    wxGRIDTABLE_NOTIFY_COLS_INSERTED,<br>
+    wxGRIDTABLE_NOTIFY_COLS_APPENDED,<br>
     wxGRIDTABLE_NOTIFY_COLS_DELETED<br>
 </font>
 </blockquote>};<br>
@@ -19971,8 +20000,8 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxGrid::wxGridSelectionModes">wxGrid::wxGridSelectionModes</a></font></b><br>
 {
 <blockquote>
-    wxGridSelectCells<br>
-    wxGridSelectRows<br>
+    wxGridSelectCells,<br>
+    wxGridSelectRows,<br>
     wxGridSelectColumns<br>
 </font>
 </blockquote>};<br>
@@ -20406,15 +20435,15 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxSocketError">wxSocketError</a></font></b><br>
 {
 <blockquote>
-    wxSOCKET_NOERROR<br>
-    wxSOCKET_INVOP<br>
-    wxSOCKET_IOERR<br>
-    wxSOCKET_INVADDR<br>
-    wxSOCKET_INVSOCK<br>
-    wxSOCKET_NOHOST<br>
-    wxSOCKET_INVPORT<br>
-    wxSOCKET_WOULDBLOCK<br>
-    wxSOCKET_TIMEDOUT<br>
+    wxSOCKET_NOERROR,<br>
+    wxSOCKET_INVOP,<br>
+    wxSOCKET_IOERR,<br>
+    wxSOCKET_INVADDR,<br>
+    wxSOCKET_INVSOCK,<br>
+    wxSOCKET_NOHOST,<br>
+    wxSOCKET_INVPORT,<br>
+    wxSOCKET_WOULDBLOCK,<br>
+    wxSOCKET_TIMEDOUT,<br>
     wxSOCKET_MEMERR<br>
 </font>
 </blockquote>};<br>
@@ -20422,10 +20451,10 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxSocketFlags">wxSocketFlags</a> <font color=#009900>// actually typedef int wxSocketFlags</font></font></b><br>
 {
 <blockquote>
-    wxSOCKET_NONE<br>
-    wxSOCKET_NOWAIT<br>
-    wxSOCKET_WAITALL<br>
-    wxSOCKET_BLOCK<br>
+    wxSOCKET_NONE,<br>
+    wxSOCKET_NOWAIT,<br>
+    wxSOCKET_WAITALL,<br>
+    wxSOCKET_BLOCK,<br>
     wxSOCKET_REUSEADDR<br>
 </font>
 </blockquote>};<br>
@@ -20433,9 +20462,9 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxSocketNotify">wxSocketNotify</a></font></b><br>
 {
 <blockquote>
-    wxSOCKET_INPUT<br>
-    wxSOCKET_OUTPUT<br>
-    wxSOCKET_CONNECTION<br>
+    wxSOCKET_INPUT,<br>
+    wxSOCKET_OUTPUT,<br>
+    wxSOCKET_CONNECTION,<br>
     wxSOCKET_LOST<br>
 </font>
 </blockquote>};<br>
@@ -20443,9 +20472,9 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxSocketEventFlags">wxSocketEventFlags</a></font></b><br>
 {
 <blockquote>
-    wxSOCKET_INPUT_FLAG<br>
-    wxSOCKET_OUTPUT_FLAG<br>
-    wxSOCKET_CONNECTION_FLAG<br>
+    wxSOCKET_INPUT_FLAG,<br>
+    wxSOCKET_OUTPUT_FLAG,<br>
+    wxSOCKET_CONNECTION_FLAG,<br>
     wxSOCKET_LOST_FLAG<br>
 </font>
 </blockquote>};<br>
@@ -20453,10 +20482,10 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxSocketType">wxSocketType</a></font></b><br>
 {
 <blockquote>
-    wxSOCKET_UNINIT<br>
-    wxSOCKET_CLIENT<br>
-    wxSOCKET_SERVER<br>
-    wxSOCKET_BASE<br>
+    wxSOCKET_UNINIT,<br>
+    wxSOCKET_CLIENT,<br>
+    wxSOCKET_SERVER,<br>
+    wxSOCKET_BASE,<br>
     wxSOCKET_DATAGRAM<br>
 </font>
 </blockquote>};<br>
@@ -20622,15 +20651,15 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxProtocolError">wxProtocolError</a></font></b><br>
 {
 <blockquote>
-    wxPROTO_NOERR<br>
-    wxPROTO_NETERR<br>
-    wxPROTO_PROTERR<br>
-    wxPROTO_CONNERR<br>
-    wxPROTO_INVVAL<br>
-    wxPROTO_NOHNDLR<br>
-    wxPROTO_NOFILE<br>
-    wxPROTO_ABRT<br>
-    wxPROTO_RCNCT<br>
+    wxPROTO_NOERR,<br>
+    wxPROTO_NETERR,<br>
+    wxPROTO_PROTERR,<br>
+    wxPROTO_CONNERR,<br>
+    wxPROTO_INVVAL,<br>
+    wxPROTO_NOHNDLR,<br>
+    wxPROTO_NOFILE,<br>
+    wxPROTO_ABRT,<br>
+    wxPROTO_RCNCT,<br>
     wxPROTO_STREAMING<br>
 </font>
 </blockquote>};<br>
@@ -20681,8 +20710,8 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxFTP::TransferMode">wxFTP::TransferMode</a></font></b><br>
 {
 <blockquote>
-    NONE<br>
-    ASCII<br>
+    NONE,<br>
+    ASCII,<br>
     BINARY<br>
 </font>
 </blockquote>};<br>
@@ -20726,9 +20755,9 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxURIHostType">wxURIHostType</a></font></b><br>
 {
 <blockquote>
-    wxURI_REGNAME<br>
-    wxURI_IPV4ADDRESS<br>
-    wxURI_IPV6ADDRESS<br>
+    wxURI_REGNAME,<br>
+    wxURI_IPV4ADDRESS,<br>
+    wxURI_IPV6ADDRESS,<br>
     wxURI_IPVFUTURE<br>
 </font>
 </blockquote>};<br>
@@ -20736,12 +20765,12 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxURIFieldType">wxURIFieldType</a></font></b><br>
 {
 <blockquote>
-    wxURI_SCHEME<br>
-    wxURI_USERINFO<br>
-    wxURI_SERVER<br>
-    wxURI_PORT<br>
-    wxURI_PATH<br>
-    wxURI_QUERY<br>
+    wxURI_SCHEME,<br>
+    wxURI_USERINFO,<br>
+    wxURI_SERVER,<br>
+    wxURI_PORT,<br>
+    wxURI_PATH,<br>
+    wxURI_QUERY,<br>
     wxURI_FRAGMENT<br>
 </font>
 </blockquote>};<br>
@@ -20801,12 +20830,12 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxURLError">wxURLError</a></font></b><br>
 {
 <blockquote>
-    wxURL_NOERR<br>
-    wxURL_SNTXERR<br>
-    wxURL_NOPROTO<br>
-    wxURL_NOHOST<br>
-    wxURL_NOPATH<br>
-    wxURL_CONNERR<br>
+    wxURL_NOERR,<br>
+    wxURL_SNTXERR,<br>
+    wxURL_NOPROTO,<br>
+    wxURL_NOHOST,<br>
+    wxURL_NOPATH,<br>
+    wxURL_CONNERR,<br>
     wxURL_PROTOERR<br>
 </font>
 </blockquote>};<br>
@@ -20841,23 +20870,23 @@ enum<br>
 <font color=#009900>//</font><br>
 <font color=#009900>//enum wxIPCFormat</font><br>
 <font color=#009900>//{</font><br>
-<font color=#009900>//    wxIPC_INVALID</font><br>
-<font color=#009900>//    wxIPC_TEXT</font><br>
-<font color=#009900>//    wxIPC_BITMAP</font><br>
-<font color=#009900>//    wxIPC_METAFILE</font><br>
-<font color=#009900>//    wxIPC_SYLK</font><br>
-<font color=#009900>//    wxIPC_DIF</font><br>
-<font color=#009900>//    wxIPC_TIFF</font><br>
-<font color=#009900>//    wxIPC_OEMTEXT</font><br>
-<font color=#009900>//    wxIPC_DIB</font><br>
-<font color=#009900>//    wxIPC_PALETTE</font><br>
-<font color=#009900>//    wxIPC_PENDATA</font><br>
-<font color=#009900>//    wxIPC_RIFF</font><br>
-<font color=#009900>//    wxIPC_WAVE</font><br>
-<font color=#009900>//    wxIPC_UNICODETEXT</font><br>
-<font color=#009900>//    wxIPC_ENHMETAFILE</font><br>
-<font color=#009900>//    wxIPC_FILENAME</font><br>
-<font color=#009900>//    wxIPC_LOCALE</font><br>
+<font color=#009900>//    wxIPC_INVALID,</font><br>
+<font color=#009900>//    wxIPC_TEXT,</font><br>
+<font color=#009900>//    wxIPC_BITMAP,</font><br>
+<font color=#009900>//    wxIPC_METAFILE,</font><br>
+<font color=#009900>//    wxIPC_SYLK,</font><br>
+<font color=#009900>//    wxIPC_DIF,</font><br>
+<font color=#009900>//    wxIPC_TIFF,</font><br>
+<font color=#009900>//    wxIPC_OEMTEXT,</font><br>
+<font color=#009900>//    wxIPC_DIB,</font><br>
+<font color=#009900>//    wxIPC_PALETTE,</font><br>
+<font color=#009900>//    wxIPC_PENDATA,</font><br>
+<font color=#009900>//    wxIPC_RIFF,</font><br>
+<font color=#009900>//    wxIPC_WAVE,</font><br>
+<font color=#009900>//    wxIPC_UNICODETEXT,</font><br>
+<font color=#009900>//    wxIPC_ENHMETAFILE,</font><br>
+<font color=#009900>//    wxIPC_FILENAME,</font><br>
+<font color=#009900>//    wxIPC_LOCALE,</font><br>
 <font color=#009900>//    wxIPC_PRIVATE</font><br>
 <font color=#009900>//};</font><br>
 <font color=#009900>//</font><br>
@@ -20914,8 +20943,8 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxMediaState">wxMediaState</a></font></b><br>
 {
 <blockquote>
-    wxMEDIASTATE_STOPPED<br>
-    wxMEDIASTATE_PAUSED<br>
+    wxMEDIASTATE_STOPPED,<br>
+    wxMEDIASTATE_PAUSED,<br>
     wxMEDIASTATE_PLAYING<br>
 </font>
 </blockquote>};<br>
@@ -20923,9 +20952,9 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxMediaCtrlPlayerControls">wxMediaCtrlPlayerControls</a></font></b><br>
 {
 <blockquote>
-    wxMEDIACTRLPLAYERCONTROLS_NONE<br>
-    wxMEDIACTRLPLAYERCONTROLS_STEP<br>
-    wxMEDIACTRLPLAYERCONTROLS_VOLUME<br>
+    wxMEDIACTRLPLAYERCONTROLS_NONE,<br>
+    wxMEDIACTRLPLAYERCONTROLS_STEP,<br>
+    wxMEDIACTRLPLAYERCONTROLS_VOLUME,<br>
     wxMEDIACTRLPLAYERCONTROLS_DEFAULT<br>
 </font>
 </blockquote>};<br>
@@ -21017,21 +21046,21 @@ enum<br>
 <br>
 enum<br>
 {<br>
-    WX_GL_RGBA<br>
-    WX_GL_BUFFER_SIZE<br>
-    WX_GL_LEVEL<br>
-    WX_GL_DOUBLEBUFFER<br>
-    WX_GL_STEREO<br>
-    WX_GL_AUX_BUFFERS<br>
-    WX_GL_MIN_RED<br>
-    WX_GL_MIN_GREEN<br>
-    WX_GL_MIN_BLUE<br>
-    WX_GL_MIN_ALPHA<br>
-    WX_GL_DEPTH_SIZE<br>
-    WX_GL_STENCIL_SIZE<br>
-    WX_GL_MIN_ACCUM_RED<br>
-    WX_GL_MIN_ACCUM_GREEN<br>
-    WX_GL_MIN_ACCUM_BLUE<br>
+    WX_GL_RGBA,<br>
+    WX_GL_BUFFER_SIZE,<br>
+    WX_GL_LEVEL,<br>
+    WX_GL_DOUBLEBUFFER,<br>
+    WX_GL_STEREO,<br>
+    WX_GL_AUX_BUFFERS,<br>
+    WX_GL_MIN_RED,<br>
+    WX_GL_MIN_GREEN,<br>
+    WX_GL_MIN_BLUE,<br>
+    WX_GL_MIN_ALPHA,<br>
+    WX_GL_DEPTH_SIZE,<br>
+    WX_GL_STENCIL_SIZE,<br>
+    WX_GL_MIN_ACCUM_RED,<br>
+    WX_GL_MIN_ACCUM_GREEN,<br>
+    WX_GL_MIN_ACCUM_BLUE,<br>
     WX_GL_MIN_ACCUM_ALPHA<br>
 };<br>
 <br>
@@ -21098,18 +21127,18 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxXmlNodeType">wxXmlNodeType</a></font></b><br>
 {
 <blockquote>
-    wxXML_ELEMENT_NODE<br>
-    wxXML_ATTRIBUTE_NODE<br>
-    wxXML_TEXT_NODE<br>
-    wxXML_CDATA_SECTION_NODE<br>
-    wxXML_ENTITY_REF_NODE<br>
-    wxXML_ENTITY_NODE<br>
-    wxXML_PI_NODE<br>
-    wxXML_COMMENT_NODE<br>
-    wxXML_DOCUMENT_NODE<br>
-    wxXML_DOCUMENT_TYPE_NODE<br>
-    wxXML_DOCUMENT_FRAG_NODE<br>
-    wxXML_NOTATION_NODE<br>
+    wxXML_ELEMENT_NODE,<br>
+    wxXML_ATTRIBUTE_NODE,<br>
+    wxXML_TEXT_NODE,<br>
+    wxXML_CDATA_SECTION_NODE,<br>
+    wxXML_ENTITY_REF_NODE,<br>
+    wxXML_ENTITY_NODE,<br>
+    wxXML_PI_NODE,<br>
+    wxXML_COMMENT_NODE,<br>
+    wxXML_DOCUMENT_NODE,<br>
+    wxXML_DOCUMENT_TYPE_NODE,<br>
+    wxXML_DOCUMENT_FRAG_NODE,<br>
+    wxXML_NOTATION_NODE,<br>
     wxXML_HTML_DOCUMENT_NODE<br>
 </font>
 </blockquote>};<br>
@@ -21234,8 +21263,8 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxXmlResourceFlags">wxXmlResourceFlags</a></font></b><br>
 {
 <blockquote>
-    wxXRC_USE_LOCALE<br>
-    wxXRC_NO_SUBCLASSING<br>
+    wxXRC_USE_LOCALE,<br>
+    wxXRC_NO_SUBCLASSING,<br>
     wxXRC_NO_RELOADING<br>
 </font>
 </blockquote>};<br>
@@ -21310,34 +21339,34 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxAuiToolBarStyle">wxAuiToolBarStyle</a></font></b><br>
 {
 <blockquote>
-    wxAUI_TB_TEXT          <font color=#009900>//= 1 &lt;&lt; 0,</font><br>
-    wxAUI_TB_NO_TOOLTIPS   <font color=#009900>//= 1 &lt;&lt; 1,</font><br>
-    wxAUI_TB_NO_AUTORESIZE <font color=#009900>//= 1 &lt;&lt; 2,</font><br>
-    wxAUI_TB_GRIPPER       <font color=#009900>//= 1 &lt;&lt; 3,</font><br>
-    wxAUI_TB_OVERFLOW      <font color=#009900>//= 1 &lt;&lt; 4,</font><br>
-    wxAUI_TB_VERTICAL      <font color=#009900>//= 1 &lt;&lt; 5,</font><br>
-    wxAUI_TB_HORZ_LAYOUT   <font color=#009900>//= 1 &lt;&lt; 6,</font><br>
-    wxAUI_TB_HORZ_TEXT     <font color=#009900>//= (wxAUI_TB_HORZ_LAYOUT | wxAUI_TB_TEXT),</font><br>
-    wxAUI_TB_DEFAULT_STYLE <font color=#009900>//= 0</font><br>
+    wxAUI_TB_TEXT,          <font color=#009900>//= 1 &lt;&lt; 0,</font><br>
+    wxAUI_TB_NO_TOOLTIPS,   <font color=#009900>//= 1 &lt;&lt; 1,</font><br>
+    wxAUI_TB_NO_AUTORESIZE, <font color=#009900>//= 1 &lt;&lt; 2,</font><br>
+    wxAUI_TB_GRIPPER,       <font color=#009900>//= 1 &lt;&lt; 3,</font><br>
+    wxAUI_TB_OVERFLOW,      <font color=#009900>//= 1 &lt;&lt; 4,</font><br>
+    wxAUI_TB_VERTICAL,      <font color=#009900>//= 1 &lt;&lt; 5,</font><br>
+    wxAUI_TB_HORZ_LAYOUT,   <font color=#009900>//= 1 &lt;&lt; 6,</font><br>
+    wxAUI_TB_HORZ_TEXT,     <font color=#009900>//= (wxAUI_TB_HORZ_LAYOUT | wxAUI_TB_TEXT),</font><br>
+    wxAUI_TB_DEFAULT_STYLE  <font color=#009900>//= 0</font><br>
 </font>
 </blockquote>};<br>
 <br>
 <b><font size=+1 color=#0066CC>enum <a name="wxAuiToolBarArtSetting">wxAuiToolBarArtSetting</a></font></b><br>
 {
 <blockquote>
-    wxAUI_TBART_SEPARATOR_SIZE <font color=#009900>//= 0,</font><br>
-    wxAUI_TBART_GRIPPER_SIZE   <font color=#009900>//= 1,</font><br>
-    wxAUI_TBART_OVERFLOW_SIZE  <font color=#009900>//= 2</font><br>
+    wxAUI_TBART_SEPARATOR_SIZE, <font color=#009900>//= 0,</font><br>
+    wxAUI_TBART_GRIPPER_SIZE,   <font color=#009900>//= 1,</font><br>
+    wxAUI_TBART_OVERFLOW_SIZE   <font color=#009900>//= 2</font><br>
 </font>
 </blockquote>};<br>
 <br>
 <b><font size=+1 color=#0066CC>enum <a name="wxAuiToolBarToolTextOrientation">wxAuiToolBarToolTextOrientation</a></font></b><br>
 {
 <blockquote>
-    wxAUI_TBTOOL_TEXT_LEFT   <font color=#009900>//= 0,     // unused/unimplemented</font><br>
-    wxAUI_TBTOOL_TEXT_RIGHT  <font color=#009900>//= 1,</font><br>
-    wxAUI_TBTOOL_TEXT_TOP    <font color=#009900>//= 2,      // unused/unimplemented</font><br>
-    wxAUI_TBTOOL_TEXT_BOTTOM <font color=#009900>//= 3</font><br>
+    wxAUI_TBTOOL_TEXT_LEFT,   <font color=#009900>//= 0,     // unused/unimplemented</font><br>
+    wxAUI_TBTOOL_TEXT_RIGHT,  <font color=#009900>//= 1,</font><br>
+    wxAUI_TBTOOL_TEXT_TOP,    <font color=#009900>//= 2,      // unused/unimplemented</font><br>
+    wxAUI_TBTOOL_TEXT_BOTTOM  <font color=#009900>//= 3</font><br>
 </font>
 </blockquote>};<br>
 <br>
@@ -21607,20 +21636,20 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxAuiNotebookOption">wxAuiNotebookOption</a></font></b><br>
 {
 <blockquote>
-    wxAUI_NB_TOP<br>
-    wxAUI_NB_LEFT                 <font color=#009900>// not implemented yet</font><br>
-    wxAUI_NB_RIGHT                <font color=#009900>// not implemented yet</font><br>
-    wxAUI_NB_BOTTOM               <font color=#009900>// not implemented yet</font><br>
-    wxAUI_NB_TAB_SPLIT<br>
-    wxAUI_NB_TAB_MOVE<br>
-    wxAUI_NB_TAB_EXTERNAL_MOVE<br>
-    wxAUI_NB_TAB_FIXED_WIDTH<br>
-    wxAUI_NB_SCROLL_BUTTONS<br>
-    wxAUI_NB_WINDOWLIST_BUTTON<br>
-    wxAUI_NB_CLOSE_BUTTON<br>
-    wxAUI_NB_CLOSE_ON_ACTIVE_TAB<br>
-    wxAUI_NB_CLOSE_ON_ALL_TABS<br>
-    <i>%wxchkver_2_8_6</i> wxAUI_NB_MIDDLE_CLICK_CLOSE<br>
+    wxAUI_NB_TOP,<br>
+    wxAUI_NB_LEFT,                 <font color=#009900>// not implemented yet</font><br>
+    wxAUI_NB_RIGHT,                <font color=#009900>// not implemented yet</font><br>
+    wxAUI_NB_BOTTOM,               <font color=#009900>// not implemented yet</font><br>
+    wxAUI_NB_TAB_SPLIT,<br>
+    wxAUI_NB_TAB_MOVE,<br>
+    wxAUI_NB_TAB_EXTERNAL_MOVE,<br>
+    wxAUI_NB_TAB_FIXED_WIDTH,<br>
+    wxAUI_NB_SCROLL_BUTTONS,<br>
+    wxAUI_NB_WINDOWLIST_BUTTON,<br>
+    wxAUI_NB_CLOSE_BUTTON,<br>
+    wxAUI_NB_CLOSE_ON_ACTIVE_TAB,<br>
+    wxAUI_NB_CLOSE_ON_ALL_TABS,<br>
+    <i>%wxchkver_2_8_6</i> wxAUI_NB_MIDDLE_CLICK_CLOSE,<br>
 <br>
     wxAUI_NB_DEFAULT_STYLE <font color=#009900>//= wxAUI_NB_TOP|wxAUI_NB_TAB_SPLIT|wxAUI_NB_TAB_MOVE|wxAUI_NB_SCROLL_BUTTONS|wxAUI_NB_CLOSE_ON_ACTIVE_TAB|wxAUI_NB_MIDDLE_CLICK_CLOSE</font><br>
 </font>
@@ -21960,12 +21989,12 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxAuiManagerDock">wxAuiManagerDock</a></font></b><br>
 {
 <blockquote>
-    wxAUI_DOCK_NONE<br>
-    wxAUI_DOCK_TOP<br>
-    wxAUI_DOCK_RIGHT<br>
-    wxAUI_DOCK_BOTTOM<br>
-    wxAUI_DOCK_LEFT<br>
-    wxAUI_DOCK_CENTER<br>
+    wxAUI_DOCK_NONE,<br>
+    wxAUI_DOCK_TOP,<br>
+    wxAUI_DOCK_RIGHT,<br>
+    wxAUI_DOCK_BOTTOM,<br>
+    wxAUI_DOCK_LEFT,<br>
+    wxAUI_DOCK_CENTER,<br>
     wxAUI_DOCK_CENTRE <font color=#009900>//= wxAUI_DOCK_CENTER</font><br>
 </font>
 </blockquote>};<br>
@@ -21973,38 +22002,38 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxAuiManagerOption">wxAuiManagerOption</a></font></b><br>
 {
 <blockquote>
-    wxAUI_MGR_ALLOW_FLOATING<br>
-    wxAUI_MGR_ALLOW_ACTIVE_PANE<br>
-    wxAUI_MGR_TRANSPARENT_DRAG<br>
-    wxAUI_MGR_TRANSPARENT_HINT<br>
-    wxAUI_MGR_VENETIAN_BLINDS_HINT<br>
-    wxAUI_MGR_RECTANGLE_HINT<br>
-    wxAUI_MGR_HINT_FADE<br>
-    wxAUI_MGR_NO_VENETIAN_BLINDS_FADE<br>
+    wxAUI_MGR_ALLOW_FLOATING,<br>
+    wxAUI_MGR_ALLOW_ACTIVE_PANE,<br>
+    wxAUI_MGR_TRANSPARENT_DRAG,<br>
+    wxAUI_MGR_TRANSPARENT_HINT,<br>
+    wxAUI_MGR_VENETIAN_BLINDS_HINT,<br>
+    wxAUI_MGR_RECTANGLE_HINT,<br>
+    wxAUI_MGR_HINT_FADE,<br>
+    wxAUI_MGR_NO_VENETIAN_BLINDS_FADE,<br>
 <br>
-    wxAUI_MGR_DEFAULT <font color=#009900>//= wxAUI_MGR_ALLOW_FLOATING | wxAUI_MGR_TRANSPARENT_HINT | wxAUI_MGR_HINT_FADE | wxAUI_MGR_NO_VENETIAN_BLINDS_FADE</font><br>
+    wxAUI_MGR_DEFAULT, <font color=#009900>//= wxAUI_MGR_ALLOW_FLOATING | wxAUI_MGR_TRANSPARENT_HINT | wxAUI_MGR_HINT_FADE | wxAUI_MGR_NO_VENETIAN_BLINDS_FADE</font><br>
 </font>
 </blockquote>};<br>
 <br>
 <b><font size=+1 color=#0066CC>enum <a name="wxAuiPaneDockArtSetting">wxAuiPaneDockArtSetting</a></font></b><br>
 {
 <blockquote>
-    wxAUI_DOCKART_SASH_SIZE<br>
-    wxAUI_DOCKART_CAPTION_SIZE<br>
-    wxAUI_DOCKART_GRIPPER_SIZE<br>
-    wxAUI_DOCKART_PANE_BORDER_SIZE<br>
-    wxAUI_DOCKART_PANE_BUTTON_SIZE<br>
-    wxAUI_DOCKART_BACKGROUND_COLOUR<br>
-    wxAUI_DOCKART_SASH_COLOUR<br>
-    wxAUI_DOCKART_ACTIVE_CAPTION_COLOUR<br>
-    wxAUI_DOCKART_ACTIVE_CAPTION_GRADIENT_COLOUR<br>
-    wxAUI_DOCKART_INACTIVE_CAPTION_COLOUR<br>
-    wxAUI_DOCKART_INACTIVE_CAPTION_GRADIENT_COLOUR<br>
-    wxAUI_DOCKART_ACTIVE_CAPTION_TEXT_COLOUR<br>
-    wxAUI_DOCKART_INACTIVE_CAPTION_TEXT_COLOUR<br>
-    wxAUI_DOCKART_BORDER_COLOUR<br>
-    wxAUI_DOCKART_GRIPPER_COLOUR<br>
-    wxAUI_DOCKART_CAPTION_FONT<br>
+    wxAUI_DOCKART_SASH_SIZE,<br>
+    wxAUI_DOCKART_CAPTION_SIZE,<br>
+    wxAUI_DOCKART_GRIPPER_SIZE,<br>
+    wxAUI_DOCKART_PANE_BORDER_SIZE,<br>
+    wxAUI_DOCKART_PANE_BUTTON_SIZE,<br>
+    wxAUI_DOCKART_BACKGROUND_COLOUR,<br>
+    wxAUI_DOCKART_SASH_COLOUR,<br>
+    wxAUI_DOCKART_ACTIVE_CAPTION_COLOUR,<br>
+    wxAUI_DOCKART_ACTIVE_CAPTION_GRADIENT_COLOUR,<br>
+    wxAUI_DOCKART_INACTIVE_CAPTION_COLOUR,<br>
+    wxAUI_DOCKART_INACTIVE_CAPTION_GRADIENT_COLOUR,<br>
+    wxAUI_DOCKART_ACTIVE_CAPTION_TEXT_COLOUR,<br>
+    wxAUI_DOCKART_INACTIVE_CAPTION_TEXT_COLOUR,<br>
+    wxAUI_DOCKART_BORDER_COLOUR,<br>
+    wxAUI_DOCKART_GRIPPER_COLOUR,<br>
+    wxAUI_DOCKART_CAPTION_FONT,<br>
     wxAUI_DOCKART_GRADIENT_TYPE<br>
 </font>
 </blockquote>};<br>
@@ -22012,8 +22041,8 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxAuiPaneDockArtGradients">wxAuiPaneDockArtGradients</a></font></b><br>
 {
 <blockquote>
-    wxAUI_GRADIENT_NONE<br>
-    wxAUI_GRADIENT_VERTICAL<br>
+    wxAUI_GRADIENT_NONE,<br>
+    wxAUI_GRADIENT_VERTICAL,<br>
     wxAUI_GRADIENT_HORIZONTAL<br>
 </font>
 </blockquote>};<br>
@@ -22021,11 +22050,11 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxAuiPaneButtonState">wxAuiPaneButtonState</a></font></b><br>
 {
 <blockquote>
-    wxAUI_BUTTON_STATE_NORMAL<br>
-    wxAUI_BUTTON_STATE_HOVER<br>
-    wxAUI_BUTTON_STATE_PRESSED<br>
-    wxAUI_BUTTON_STATE_DISABLED<br>
-    wxAUI_BUTTON_STATE_HIDDEN<br>
+    wxAUI_BUTTON_STATE_NORMAL,<br>
+    wxAUI_BUTTON_STATE_HOVER,<br>
+    wxAUI_BUTTON_STATE_PRESSED,<br>
+    wxAUI_BUTTON_STATE_DISABLED,<br>
+    wxAUI_BUTTON_STATE_HIDDEN,<br>
     wxAUI_BUTTON_STATE_CHECKED<br>
 </font>
 </blockquote>};<br>
@@ -22033,18 +22062,18 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxAuiButtonId">wxAuiButtonId</a></font></b><br>
 {
 <blockquote>
-    wxAUI_BUTTON_CLOSE<br>
-    wxAUI_BUTTON_MAXIMIZE_RESTORE<br>
-    wxAUI_BUTTON_MINIMIZE<br>
-    wxAUI_BUTTON_PIN<br>
-    wxAUI_BUTTON_OPTIONS<br>
-    wxAUI_BUTTON_WINDOWLIST<br>
-    wxAUI_BUTTON_LEFT<br>
-    wxAUI_BUTTON_RIGHT<br>
-    wxAUI_BUTTON_UP<br>
-    wxAUI_BUTTON_DOWN<br>
-    wxAUI_BUTTON_CUSTOM1<br>
-    wxAUI_BUTTON_CUSTOM2<br>
+    wxAUI_BUTTON_CLOSE,<br>
+    wxAUI_BUTTON_MAXIMIZE_RESTORE,<br>
+    wxAUI_BUTTON_MINIMIZE,<br>
+    wxAUI_BUTTON_PIN,<br>
+    wxAUI_BUTTON_OPTIONS,<br>
+    wxAUI_BUTTON_WINDOWLIST,<br>
+    wxAUI_BUTTON_LEFT,<br>
+    wxAUI_BUTTON_RIGHT,<br>
+    wxAUI_BUTTON_UP,<br>
+    wxAUI_BUTTON_DOWN,<br>
+    wxAUI_BUTTON_CUSTOM1,<br>
+    wxAUI_BUTTON_CUSTOM2,<br>
     wxAUI_BUTTON_CUSTOM3<br>
 </font>
 </blockquote>};<br>
@@ -22052,8 +22081,8 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxAuiPaneInsertLevel">wxAuiPaneInsertLevel</a></font></b><br>
 {
 <blockquote>
-    wxAUI_INSERT_PANE<br>
-    wxAUI_INSERT_ROW<br>
+    wxAUI_INSERT_PANE,<br>
+    wxAUI_INSERT_ROW,<br>
     wxAUI_INSERT_DOCK<br>
 </font>
 </blockquote>};<br>
@@ -22078,34 +22107,34 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxAuiPaneInfo::wxAuiPaneState">wxAuiPaneInfo::wxAuiPaneState</a></font></b><br>
 {
 <blockquote>
-    optionFloating<br>
-    optionHidden<br>
-    optionLeftDockable<br>
-    optionRightDockable<br>
-    optionTopDockable<br>
-    optionBottomDockable<br>
-    optionFloatable<br>
-    optionMovable<br>
-    optionResizable<br>
-    optionPaneBorder<br>
-    optionCaption<br>
-    optionGripper<br>
-    optionDestroyOnClose<br>
-    optionToolbar<br>
-    optionActive<br>
-    optionGripperTop<br>
-    optionMaximized<br>
+    optionFloating,<br>
+    optionHidden,<br>
+    optionLeftDockable,<br>
+    optionRightDockable,<br>
+    optionTopDockable,<br>
+    optionBottomDockable,<br>
+    optionFloatable,<br>
+    optionMovable,<br>
+    optionResizable,<br>
+    optionPaneBorder,<br>
+    optionCaption,<br>
+    optionGripper,<br>
+    optionDestroyOnClose,<br>
+    optionToolbar,<br>
+    optionActive,<br>
+    optionGripperTop,<br>
+    optionMaximized,<br>
 <br>
-    buttonClose<br>
-    buttonMaximize<br>
-    buttonMinimize<br>
-    buttonPin<br>
+    buttonClose,<br>
+    buttonMaximize,<br>
+    buttonMinimize,<br>
+    buttonPin,<br>
 <br>
-    buttonCustom1<br>
-    buttonCustom2<br>
-    buttonCustom3<br>
+    buttonCustom1,<br>
+    buttonCustom2,<br>
+    buttonCustom3,<br>
 <br>
-    savedHiddenState       <font color=#009900>// used internally</font><br>
+    savedHiddenState,       <font color=#009900>// used internally</font><br>
     actionPane             <font color=#009900>// used internally</font><br>
 </font>
 </blockquote>};<br>
@@ -22874,8 +22903,8 @@ enum<br>
 <br>
 <font color=#009900>//enum wxHtmlURLType</font><br>
 <font color=#009900>//{</font><br>
-<font color=#009900>//    wxHTML_URL_PAGE</font><br>
-<font color=#009900>//    wxHTML_URL_IMAGE</font><br>
+<font color=#009900>//    wxHTML_URL_PAGE,</font><br>
+<font color=#009900>//    wxHTML_URL_IMAGE,</font><br>
 <font color=#009900>//    wxHTML_URL_OTHER</font><br>
 <font color=#009900>//};</font><br>
 <br>
@@ -22959,8 +22988,8 @@ enum<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxHtmlWindowInterface::HTMLCursor">wxHtmlWindowInterface::HTMLCursor</a></font></b><br>
 {
 <blockquote>
-    HTMLCursor_Default<br>
-    HTMLCursor_Link<br>
+    HTMLCursor_Default,<br>
+    HTMLCursor_Link,<br>
     HTMLCursor_Text<br>
 </font>
 </blockquote>};<br>
@@ -27892,17 +27921,17 @@ bool ungcobject(void* object );<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxLuaMethod_Type">wxLuaMethod_Type</a>      <font color=#009900>// The type of a Lua method</font></font></b><br>
 {
 <blockquote>
-    WXLUAMETHOD_CONSTRUCTOR <font color=#009900>// constructor</font><br>
-    WXLUAMETHOD_METHOD      <font color=#009900>// class member function</font><br>
-    WXLUAMETHOD_CFUNCTION   <font color=#009900>// global C function (not part of a class );</font><br>
-    WXLUAMETHOD_GETPROP     <font color=#009900>// Get <i>%property</i> funcName, read</font><br>
-    WXLUAMETHOD_SETPROP     <font color=#009900>// Set <i>%property</i> funcName, write</font><br>
+    WXLUAMETHOD_CONSTRUCTOR, <font color=#009900>// constructor</font><br>
+    WXLUAMETHOD_METHOD,      <font color=#009900>// class member function</font><br>
+    WXLUAMETHOD_CFUNCTION,   <font color=#009900>// global C function (not part of a class)</font><br>
+    WXLUAMETHOD_GETPROP,     <font color=#009900>// Get <i>%property</i> funcName, read</font><br>
+    WXLUAMETHOD_SETPROP,     <font color=#009900>// Set <i>%property</i> funcName, write</font><br>
 <br>
-    WXLUAMETHOD_STATIC      <font color=#009900>// Class member function is static</font><br>
+    WXLUAMETHOD_STATIC,      <font color=#009900>// Class member function is static</font><br>
 <br>
-    WXLUAMETHOD_DELETE      <font color=#009900>// This is the delete function that wxLua has generated</font><br>
-                            <font color=#009900>// to delete this class and is not part of the</font><br>
-                            <font color=#009900>// original class.</font><br>
+    WXLUAMETHOD_DELETE       <font color=#009900>// This is the delete function that wxLua has generated</font><br>
+                             <font color=#009900>// to delete this class and is not part of the</font><br>
+                             <font color=#009900>// original class.</font><br>
 </font>
 </blockquote>};<br>
 <br>
@@ -28059,7 +28088,7 @@ LuaTable GetBindings( );<br>
     <a href="#wxEvtHandler">wxEvtHandler</a> *GetEventHandler() const;<br>
     void SetId(wxWindowID id );<br>
     wxWindowID GetId() const;<br>
-    void SendEvent( wxLuaEvent &amp;event ) const;<br>
+    void SendEvent( <a href="#wxLuaEvent">wxLuaEvent</a> &amp;event ) const;<br>
 <br>
     int RunFile(const <a href="#wxString">wxString</a> &amp;fileName );<br>
     int RunString(const <a href="#wxString">wxString</a> &amp;script, const <a href="#wxString">wxString</a>&amp; name = "" );<br>
@@ -28073,10 +28102,10 @@ LuaTable GetBindings( );<br>
 <b><font size=+1 color=#0066CC>enum <a name="wxLuaObject_Type">wxLuaObject_Type</a></font></b><br>
 {
 <blockquote>
-    wxLUAOBJECT_NONE<br>
-    wxLUAOBJECT_BOOL<br>
-    wxLUAOBJECT_INT<br>
-    wxLUAOBJECT_STRING<br>
+    wxLUAOBJECT_NONE,<br>
+    wxLUAOBJECT_BOOL,<br>
+    wxLUAOBJECT_INT,<br>
+    wxLUAOBJECT_STRING,<br>
     wxLUAOBJECT_ARRAYINT<br>
 </font>
 </blockquote>};<br>
@@ -28107,6 +28136,35 @@ LuaTable GetBindings( );<br>
 <br>
     int  GetAllocationFlag() const;<br>
 </blockquote>};<br>
+<br>
+<b><font size=+1 color=#DD0000>class <i>%delete</i> <a href="#wxLuaEvent">wxLuaEvent</a> : public <a name="wxNotifyEvent">wxNotifyEvent</a></font></b><br>
+{
+<blockquote>
+    <i>%wxEventType</i> wxEVT_LUA_CREATION    <font color=#009900>// EVT_LUA_CREATION(winid, func );</font><br>
+    <i>%wxEventType</i> wxEVT_LUA_PRINT       <font color=#009900>// EVT_LUA_PRINT(winid, func );</font><br>
+    <i>%wxEventType</i> wxEVT_LUA_ERROR       <font color=#009900>// EVT_LUA_ERROR(winid, func );</font><br>
+    <i>%wxEventType</i> wxEVT_LUA_DEBUG_HOOK  <font color=#009900>// EVT_LUA_DEBUG_HOOK(winid, func );</font><br>
+<br>
+<br>
+    <a href="#wxLuaEvent">wxLuaEvent</a>(wxEventType commandType = wxEVT_NULL, wxWindowID id = wxID_ANY); <font color=#009900>// , const <a href="#wxLuaState">wxLuaState</a>&amp; wxlState = wxNullLuaState);</font><br>
+    <a href="#wxLuaEvent">wxLuaEvent</a>(const <a href="#wxLuaEvent">wxLuaEvent</a>&amp; event);<br>
+<br>
+    <font color=#009900>// use GetString method to retrieve info</font><br>
+<br>
+    <font color=#009900>// Get the line number in the code, -1 if unknown</font><br>
+    int GetLineNum() const;<br>
+<br>
+    <a href="#wxLuaState">wxLuaState</a> Get<a href="#wxLuaState">wxLuaState</a>() const;<br>
+    void Set<a href="#wxLuaState">wxLuaState</a>(const <a href="#wxLuaState">wxLuaState</a>&amp; wxlState);<br>
+<br>
+    <font color=#009900>//lua_State *GetLuaState() const;</font><br>
+    <font color=#009900>// non null only for wxEVT_LUA_DEBUG_HOOK</font><br>
+    <font color=#009900>//lua_Debug *GetLuaDebug() const;</font><br>
+<br>
+    <font color=#009900>// If called from a wxEVT_LUA_DEBUG_HOOK the interpreter will stop</font><br>
+    void DebugHookBreak(bool stop)<br>
+</blockquote>};<br>
+<br>
 <br><HR>
 
 <h2><a name="wxlua_debugger_wxluadebugger.i">wxlua_debugger/wxluadebugger.i</a> - Lua table = 'wxlua'</h2>

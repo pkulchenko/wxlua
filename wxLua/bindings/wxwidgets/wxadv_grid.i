@@ -217,11 +217,11 @@ class %delete wxGridCellAutoWrapStringEditor : public wxGridCellTextEditor
 
 enum wxGridCellAttr::wxAttrKind
 {
-    Any
-    Default
-    Cell
-    Row
-    Col
+    Any,
+    Default,
+    Cell,
+    Row,
+    Col,
     Merged
 };
 
@@ -453,13 +453,13 @@ class %delete wxGridStringTable : public wxGridTableBase
 
 enum wxGridTableRequest
 {
-    wxGRIDTABLE_REQUEST_VIEW_GET_VALUES
-    wxGRIDTABLE_REQUEST_VIEW_SEND_VALUES
-    wxGRIDTABLE_NOTIFY_ROWS_INSERTED
-    wxGRIDTABLE_NOTIFY_ROWS_APPENDED
-    wxGRIDTABLE_NOTIFY_ROWS_DELETED
-    wxGRIDTABLE_NOTIFY_COLS_INSERTED
-    wxGRIDTABLE_NOTIFY_COLS_APPENDED
+    wxGRIDTABLE_REQUEST_VIEW_GET_VALUES,
+    wxGRIDTABLE_REQUEST_VIEW_SEND_VALUES,
+    wxGRIDTABLE_NOTIFY_ROWS_INSERTED,
+    wxGRIDTABLE_NOTIFY_ROWS_APPENDED,
+    wxGRIDTABLE_NOTIFY_ROWS_DELETED,
+    wxGRIDTABLE_NOTIFY_COLS_INSERTED,
+    wxGRIDTABLE_NOTIFY_COLS_APPENDED,
     wxGRIDTABLE_NOTIFY_COLS_DELETED
 };
 
@@ -526,8 +526,8 @@ class %delete wxGridCellCoordsArray
 
 enum wxGrid::wxGridSelectionModes
 {
-    wxGridSelectCells
-    wxGridSelectRows
+    wxGridSelectCells,
+    wxGridSelectRows,
     wxGridSelectColumns
 };
 
