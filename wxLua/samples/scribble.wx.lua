@@ -488,7 +488,8 @@ function main()
             local i = math.floor(8*x/w)+1 + 8*math.floor(2*y/h)
             if colourWinColours[i] then
                 local s = "Set pen color : "..colourWinColours[i]
-                if colourWin:GetToolTip() ~= s then
+                local toolTip = colourWin:GetToolTip()
+                if (toolTip == nil) or (toolTip:GetTip() ~= s) then
                     colourWin:SetToolTip(s)
                 end
             end
