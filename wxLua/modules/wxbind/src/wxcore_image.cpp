@@ -1381,8 +1381,8 @@ static int LUACALL wxLua_wxImage_SetAlphaData(lua_State *L)
     if ((len == 0) || !self->Ok()) wxlua_argerrormsg(L, wxT("Invalid data or wxImage to call SetAlphaData() to."));
     // don't actually call SetAlpha since it takes ownership of data
     // just copy it to the image
-    self->SetAlpha(NULL); // the wxImage has created the alpha channel
-    size_t size = 3*self->GetWidth()*self->GetHeight();
+    self->SetAlpha(NULL); // the wxImage will create the alpha channel for us
+    size_t size = self->GetWidth()*self->GetHeight();
     memcpy(self->GetAlpha(), data, wxMin(len, size));
     // return the number of parameters
     return 0;
