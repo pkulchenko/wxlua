@@ -138,6 +138,10 @@ class %delete wxImage : public wxObject
     unsigned char GetAlpha(int x, int y) const;
     unsigned char GetBlue(int x, int y) const;
 
+    // %override [Lua string] wxImage::GetAlpha() const;
+    // C++ Func: unsigned char* GetAlpha() const;
+    %override_name wxLua_wxImage_GetAlphaData unsigned char* GetAlpha() const;
+
     // %override [Lua string] wxImage::GetData() const;
     // C++ Func: unsigned char* GetData() const;
     unsigned char* GetData() const;

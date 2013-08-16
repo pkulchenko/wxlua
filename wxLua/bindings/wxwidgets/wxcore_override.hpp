@@ -1961,6 +1961,26 @@ static int LUACALL wxLua_wxImage_HSVtoRGB(lua_State *L)
 }
 %end
 
+%override wxLua_wxImage_GetAlphaData
+//     unsigned char* GetAlpha() const
+static int LUACALL wxLua_wxImage_GetAlphaData(lua_State *L)
+{
+    // get this
+    wxImage * self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
+    // call GetAlpha
+    char* returns = (char*)self->GetAlpha();
+
+    if(returns) {
+        // push the result pointer
+        lua_pushlstring(L, returns, self->GetWidth()*self->GetHeight());
+    } else {
+        lua_pushnil(L);
+    }
+
+    return 1;
+}
+%end
+
 %override wxLua_wxImage_SetAlphaData
 // void SetAlpha(unsigned char *alpha = NULL,bool static_data = false)
 static int LUACALL wxLua_wxImage_SetAlphaData(lua_State *L)
