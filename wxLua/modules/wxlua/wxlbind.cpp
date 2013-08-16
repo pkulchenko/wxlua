@@ -621,7 +621,7 @@ wxString wxlua_getBindMethodArgsMsg(lua_State* L, struct wxLuaBindMethod* wxlMet
             for (arg = 0; arg < wxluacfuncs[i].maxargs; ++arg)
             {
                 // optional args?
-                if ((wxluacfuncs[i].minargs < wxluacfuncs[i].maxargs) && (arg+1 == wxluacfuncs[i].minargs))
+                if ((wxluacfuncs[i].minargs < wxluacfuncs[i].maxargs) && (arg == wxluacfuncs[i].minargs))
                 {
                     if (arg > 0) funcStr += wxT(" ");
                     funcStr += wxT("[");
