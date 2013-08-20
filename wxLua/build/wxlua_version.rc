@@ -56,7 +56,7 @@ BEGIN
             VALUE "ProductVersion",   WINRC_VER_PRODUCTVERSION_STR
             VALUE "InternalName",     WINRC_VER_InternalName_STR
             VALUE "OriginalFilename", WINRC_VER_OriginalFilename_STR
-            VALUE "LegalCopyright",   "Copyright © 2012 John Labenski and others...\0"
+            VALUE "LegalCopyright",   "Copyright © 2012 John Labenski, et al.\0"
         END
     END
 

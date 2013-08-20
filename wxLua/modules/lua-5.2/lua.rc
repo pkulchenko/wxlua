@@ -1,0 +1,75 @@
+/////////////////////////////////////////////////////////////////////////////
+// Purpose:     Resources for Lua.exe
+// Author:      John Labenski
+// Created:     08/18/2013
+// Copyright:   (c) 2013 John Labenski. All rights reserved.
+// Licence:     wxWidgets licence
+/////////////////////////////////////////////////////////////////////////////
+
+lua   ICON   "../../art/wxlua.ico"
+
+//#include <wx/msw/wx.rc> // manifests code copied below
+#include <windows.h>
+
+#if defined(_WIN32_WCE)
+    #include "wx/msw/wince/wince.rc"
+#endif
+
+#include "wx/msw/rcdefs.h"
+
+#include "src/lua.h"
+
+// --------------------------------------------------------------------------
+// Setup the file properties dialog fields
+#define WINRC_VER_FileDescription_STR  "Lua executable. " LUA_RELEASE "\0"
+#define WINRC_VER_InternalName_STR     "Lua\0"
+#define WINRC_VER_OriginalFilename_STR "Lua.exe\0"
+
+
+#if defined(LUA_BUILD_AS_DLL)
+	#define WINRC_VER_Productname_STR      "Lua shared executable, requires lua.dll.\0"
+#else
+	#define WINRC_VER_Productname_STR      "Lua static executable.\0"
+#endif
+
+
+#include "../../build/wxlua_version.rc"
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Include manifest file for common controls library v6 required to use themes.
+//
+// Predefining wxUSE_NO_MANIFEST as 1 always disables the use of the manifest.
+// Otherwise we include it only if wxUSE_RC_MANIFEST is defined as 1.
+//
+
+#if !defined(wxUSE_NO_MANIFEST) || (wxUSE_NO_MANIFEST == 0)
+
+#if defined(wxUSE_RC_MANIFEST) && wxUSE_RC_MANIFEST
+
+// see "about isolated applications" topic in MSDN
+#ifdef ISOLATION_AWARE_ENABLED
+#define wxMANIFEST_ID 2
+#else
+#define wxMANIFEST_ID 1
+#endif
+
+#if defined(WX_CPU_AMD64)
+wxMANIFEST_ID 24 "wx/msw/amd64.manifest"
+#elif defined(WX_CPU_IA64)
+wxMANIFEST_ID 24 "wx/msw/ia64.manifest"
+#elif defined(WX_CPU_X86)
+wxMANIFEST_ID 24 "wx/msw/wx.manifest"
+#else
+// Notice that if the manifest is included, WX_CPU_XXX constant corresponding
+// to the architecture we're compiling for must be defined. This can be done
+// either manually in your make/project file or by configuring the resource
+// compiler paths to search in $(WXWIN)/lib/$(COMPILER_PREFIX)_lib/mswu[d]
+// directory for its include files, as wx/msw/rcdefs.h file in this directory
+// is generated during wxWidgets build and contains the correct definition.
+#error "One of WX_CPU_XXX constants must be defined. See comment above."
+#endif
+
+#endif // wxUSE_RC_MANIFEST
+
+#endif // !defined(wxUSE_NO_MANIFEST) || (wxUSE_NO_MANIFEST == 0)

@@ -215,6 +215,7 @@ ADD_EXECUTABLE_FULL( lua
     HEADERS
     SOURCES
         src/lua.c
+        "${wxLua_ROOT_DIR}/modules/lua-5.2/lua.rc"
     LINK_LIBRARIES
         LuaLib
         ${LUA_LINK_LIBRARIES}
@@ -269,6 +270,7 @@ else()
         HEADERS
         SOURCES
             src/lua.c
+            "${wxLua_ROOT_DIR}/modules/lua-5.2/lua.rc"
         LINK_LIBRARIES
             LuaLibShared
             ${LUA_LINK_LIBRARIES}
