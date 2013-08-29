@@ -2,7 +2,7 @@
 # CMake build file
 # ---------------------------------------------------------------------------
 
-include(../build/CMakeFunctions.txt)
+include(../build/CMakeFunctions.cmake)
 
 # ---------------------------------------------------------------------------
 # Project name, sets ${wxLuaApps_SOURCE_DIR} and ${wxLuaApps_BINARY_DIR}
@@ -10,7 +10,7 @@ include(../build/CMakeFunctions.txt)
 project( wxLuaApps )
 
 if (NOT DEFINED wxLua_ROOT_DIR)
-    set(wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../ CACHE INTERNAL 
+    set(wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../ CACHE INTERNAL
         "Root dir of wxLua" FORCE)
 endif()
 

@@ -7,7 +7,7 @@
 
 project( wxLua )
 
-set(wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE PATH 
+set(wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE PATH
     "Root dir of wxLua" FORCE)
 
 # ===========================================================================
@@ -22,8 +22,8 @@ cmake_minimum_required( VERSION 2.8 )
 # ---------------------------------------------------------------------------
 # Setup the CMake environment
 
+include( build/CMakeProject.cmake )
 include( build/CMakewxAppLib.cmake )
-include( build/CMakeFunctions.txt )
 
 # ===========================================================================
 # wxLua version
@@ -61,7 +61,7 @@ include( "${wxWidgets_USE_FILE}" )
 if (NOT DEFINED wxLuaBind_WXLUASETUP_DIR)
     set(wxLuaBind_WXLUASETUP_DIR "${wxLua_ROOT_DIR}/modules/wxbind/setup")
 endif()
-set(wxLuaBind_WXLUASETUP_DIR ${wxLuaBind_WXLUASETUP_DIR} CACHE PATH 
+set(wxLuaBind_WXLUASETUP_DIR ${wxLuaBind_WXLUASETUP_DIR} CACHE PATH
     "Path to wxLua's wxWidgets binding wxluasetup.h setup file." FORCE)
 
 if (NOT EXISTS "${wxLuaBind_WXLUASETUP_DIR}")
@@ -80,19 +80,19 @@ set(wxLuaBind_ALL_COMPONENTS gl stc xrc richtext propgrid html media aui adv cor
 if (NOT DEFINED wxLuaBind_COMPONENTS)
     set(wxLuaBind_COMPONENTS ${wxLuaBind_ALL_COMPONENTS})
 endif()
-set(wxLuaBind_COMPONENTS ${wxLuaBind_COMPONENTS} CACHE STRING 
+set(wxLuaBind_COMPONENTS ${wxLuaBind_COMPONENTS} CACHE STRING
     "wxWidgets libs wxLua should build bindings for, choose from '${wxLuaBind_ALL_COMPONENTS}', the wxWidgets_COMPONENTS must contain all of these." FORCE)
 
 # We will create this list of the source files to compile in the next section.
 set(wxLuaBindLib_SOURCES "" CACHE INTERNAL "")
 # These are the wxLua compiler definitions, see SETUP_wxLua().
-set(wxLua_CXX_DEFINITIONS "" CACHE INTERNAL 
+set(wxLua_CXX_DEFINITIONS "" CACHE INTERNAL
     "wxLua C++ compiler flags to include/exclude wxLua binding libs" FORCE)
-    
+
 # check the specified wxLuaBind_COMPONENTS for typos
 foreach( wxlua_comp ${wxLuaBind_COMPONENTS} )
     string(REGEX MATCH ${wxlua_comp} wxlua_comp_found "${wxLuaBind_ALL_COMPONENTS}")
-    
+
     if (NOT wxlua_comp_found)
         message(FATAL_ERROR "Unknown wxLua binding library '${wxlua_comp}' in the wxLuaBind_COMPONENTS list, please choose from '${wxLuaBind_ALL_COMPONENTS}'")
     endif()
@@ -124,7 +124,7 @@ foreach( wxlua_comp ${wxLuaBind_ALL_COMPONENTS} )
 endforeach()
 
 # ---------------------------------------------------------------------------
-# This function must be called in any other CMakeLists.txt for projects that 
+# This function must be called in any other CMakeLists.txt for projects that
 # use any wxLua headers to ensure that the compiler #defines are correct.
 # ---------------------------------------------------------------------------
 
@@ -142,13 +142,13 @@ endmacro()
 if (NOT DEFINED wxLua_LUA_LIBRARY_USE_BUILTIN)
     set(wxLua_LUA_LIBRARY_USE_BUILTIN TRUE)
 endif()
-set(wxLua_LUA_LIBRARY_USE_BUILTIN ${wxLua_LUA_LIBRARY_USE_BUILTIN} CACHE BOOL 
+set(wxLua_LUA_LIBRARY_USE_BUILTIN ${wxLua_LUA_LIBRARY_USE_BUILTIN} CACHE BOOL
     "Use the built-in Lua 5.1 or 5.2 library, else specify an external or try to find a system Lua library, see wxLua_LUA_INCLUDE_DIR and wxLua_LUA_LIBRARY" FORCE)
 
 if (NOT DEFINED wxLua_LUA_LIBRARY_VERSION)
     set(wxLua_LUA_LIBRARY_VERSION "5.1")
 endif()
-set(wxLua_LUA_LIBRARY_VERSION ${wxLua_LUA_LIBRARY_VERSION} CACHE STRING 
+set(wxLua_LUA_LIBRARY_VERSION ${wxLua_LUA_LIBRARY_VERSION} CACHE STRING
     "Choose the Lua library version to use, '5.1' or '5.2', see also wxLua_LUA_LIBRARY_USE_BUILTIN" FORCE)
 
 if ((NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.1") AND (NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.2"))
@@ -172,7 +172,7 @@ if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.2)
     set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} -DLUA_COMPAT_ALL) # Match build used in default 5.2 Makefile
 endif()
 
-set(wxLua_CXX_DEFINITIONS "${wxLua_CXX_DEFINITIONS}" CACHE INTERNAL 
+set(wxLua_CXX_DEFINITIONS "${wxLua_CXX_DEFINITIONS}" CACHE INTERNAL
     "wxLua C++ compiler flags to include/exclude wxLua binding libs" FORCE)
 
 if (NOT wxLua_LUA_LIBRARY_USE_BUILTIN)
@@ -185,7 +185,7 @@ if (NOT wxLua_LUA_LIBRARY_USE_BUILTIN)
         else()
             FIND_PACKAGE(Lua52)
         endif()
-        
+
         if (LUA51_FOUND OR LUA52_FOUND)
             set(wxLua_LUA_INCLUDE_DIR ${LUA_INCLUDE_DIR})
             set(wxLua_LUA_LIBRARY     ${LUA_LIBRARY})
@@ -222,7 +222,7 @@ else() # Use the built-in Lua library
     else()
         set(wxLua_LUA_ROOT_DIR "${wxLua_ROOT_DIR}/modules/lua-5.2")
     endif()
-    
+
     set(wxLua_LUA_INCLUDE_DIR "${wxLua_LUA_ROOT_DIR}/src")
     set(wxLua_LUA_LIBRARY     "")
 
@@ -231,9 +231,9 @@ else() # Use the built-in Lua library
 endif()
 
 # Update cache
-set(wxLua_LUA_INCLUDE_DIR ${wxLua_LUA_INCLUDE_DIR} CACHE PATH 
+set(wxLua_LUA_INCLUDE_DIR ${wxLua_LUA_INCLUDE_DIR} CACHE PATH
     "Set the path to an external Lua library's include directory, overwritten if wxLua_LUA_LIBRARY_USE_BUILTIN" FORCE )
-set(wxLua_LUA_LIBRARY ${wxLua_LUA_LIBRARY} CACHE FILEPATH 
+set(wxLua_LUA_LIBRARY ${wxLua_LUA_LIBRARY} CACHE FILEPATH
     "Set the path to an external Lua library to link to (E.G. lua.so or lua.lib), overwritten if wxLua_LUA_LIBRARY_USE_BUILTIN" FORCE )
 
 # ===========================================================================
@@ -246,7 +246,7 @@ if (NOT DEFINED wxLua_LUA_LIBRARY_BUILD_SHARED)
     set(wxLua_LUA_LIBRARY_BUILD_SHARED ${BUILD_SHARED_LIBS})
 endif()
 
-set(wxLua_LUA_LIBRARY_BUILD_SHARED ${wxLua_LUA_LIBRARY_BUILD_SHARED} CACHE BOOL 
+set(wxLua_LUA_LIBRARY_BUILD_SHARED ${wxLua_LUA_LIBRARY_BUILD_SHARED} CACHE BOOL
     "Build the built-in Lua library as a shared library regardless of the BUILD_SHARED_LIBS setting" FORCE )
 
 if (wxLua_LUA_LIBRARY_BUILD_SHARED)
@@ -299,7 +299,7 @@ if (WIN32)
                                                     ${wxLua_ROOT_DIR}/modules/luaproxydll
                                                     ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
                                                     COPYONLY)
- 
+
         if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.1)
             set(wxLua_proxydlls_to_not_copy "lua52.dll" "lua5.2.dll")
         else()
@@ -308,8 +308,8 @@ if (WIN32)
     endif()
 
     # Cleanup if they accidently configured with one version or shared/static then switched.
-    foreach (f ${wxLua_proxydlls_to_not_copy})    
-        REMOVE_MATCHING_FILE_FROM_BUILD_CONFIGURATION_DIRS("${CMAKE_RUNTIME_OUTPUT_DIRECTORY}" 
+    foreach (f ${wxLua_proxydlls_to_not_copy})
+        REMOVE_MATCHING_FILE_FROM_BUILD_CONFIGURATION_DIRS("${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
                                                            "${wxLua_ROOT_DIR}/modules/luaproxydll/${f}" ${f})
     endforeach()
 endif(WIN32)

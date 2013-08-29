@@ -2,7 +2,7 @@
 # CMake build file
 # ---------------------------------------------------------------------------
 
-include(../build/CMakeFunctions.txt)
+include(../build/CMakeFunctions.cmake)
 
 # ---------------------------------------------------------------------------
 # Project name, sets ${wxLuaModules_SOURCE_DIR} and ${wxLuaModules_BINARY_DIR}
@@ -10,7 +10,7 @@ include(../build/CMakeFunctions.txt)
 project( wxLuaModules )
 
 if (NOT DEFINED wxLua_ROOT_DIR)
-    set(wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../ CACHE INTERNAL 
+    set(wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../ CACHE INTERNAL
         "Root dir of wxLua" FORCE)
 endif()
 
@@ -440,7 +440,7 @@ function (wxLua_Modules_wxBind_TARGETS)
 
 # A large monolithic binding library is easier to manage,
 # but the bindings libs can be built separately, one for each wxLuaBind_COMPONENTS.
-set(wxLuaBind_SEPARATE_LIBS FALSE) 
+set(wxLuaBind_SEPARATE_LIBS FALSE)
 
 if (wxLuaBind_SEPARATE_LIBS)
 
@@ -578,7 +578,7 @@ if (MSVC)
 endif()
 
 if (BUILD_SHARED_LIBS_WIN_DLLS)
-    SET_TARGET_PROPERTIES(wxLuaModule PROPERTIES COMPILE_DEFINITIONS 
+    SET_TARGET_PROPERTIES(wxLuaModule PROPERTIES COMPILE_DEFINITIONS
                           "WXMAKINGDLL_WXLUA;WXMAKINGDLL_WXLUADEBUGGER;WXMAKINGDLL_WXLUADEBUG;WXMAKINGDLL_WXBIND")
 endif()
 
