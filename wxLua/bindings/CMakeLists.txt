@@ -20,8 +20,7 @@ cmake_minimum_required( VERSION 2.8 )
 # Setup the CMake environment
 
 include( ../build/CMakewxAppLib.cmake )
-include( ../build/CMakeFunctions.txt )
-
+include( ../build/CMakeFunctions.cmake )
 
 # ----------------------------------------------------------------------------
 # FUNCTION_ARG_PARSER( 
