@@ -4,6 +4,11 @@
 ** See Copyright Notice in lua.h
 */
 
+// wxLua added to enable visual styles, the modern Win7+ controls in v6 of comctrl32.dll.
+#ifdef _MSC_VER
+    #pragma comment(lib,"comctl32.lib")
+    #pragma comment(linker,"\"/manifestdependency:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
+#endif // _MSC_VER
 
 #include <signal.h>
 #include <stdio.h>

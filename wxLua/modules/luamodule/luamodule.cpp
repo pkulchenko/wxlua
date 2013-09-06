@@ -12,6 +12,12 @@
     //#include <wx/wx.h>
 #endif
 
+// This is a method of enabling v6 of comctrl32 controls w/o a manifest.
+// However, it doesn't seem possible to enable them from a DLL even by calling
+// InitCommonControls(), InitCommonControlsEx(), or the EnableVisualStyles() hack.
+//#pragma comment(lib,"comctl32.lib")
+//#pragma comment(linker,"\"/manifestdependency:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
+
 #include <wx/app.h>
 #include <wx/frame.h>
 #include <wx/msgdlg.h>

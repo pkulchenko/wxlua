@@ -27,9 +27,9 @@ lua   ICON   "../../art/wxlua.ico"
 
 
 #if defined(LUA_BUILD_AS_DLL)
-	#define WINRC_VER_Productname_STR      "Lua shared executable, requires lua.dll.\0"
+    #define WINRC_VER_Productname_STR      "Lua shared executable, requires lua.dll.\0"
 #else
-	#define WINRC_VER_Productname_STR      "Lua static executable.\0"
+    #define WINRC_VER_Productname_STR      "Lua static executable.\0"
 #endif
 
 
@@ -37,15 +37,18 @@ lua   ICON   "../../art/wxlua.ico"
 
 //////////////////////////////////////////////////////////////////////////////
 //
-// Include manifest file for common controls library v6 required to use themes.
+// Include manifest file for common controls library v6 to use themes
+// if wxLUA_USE_RC_MANIFEST is defined as 1.
 //
-// Predefining wxUSE_NO_MANIFEST as 1 always disables the use of the manifest.
-// Otherwise we include it only if wxUSE_RC_MANIFEST is defined as 1.
-//
+// In MSVC 2008 (and others?) if this manifest file is included and even if
+// "/MANIFEST:NO /INCREMENTAL:NO" are passed as flags to the compiler
+// the debug executable complains about a missing MSVCR90D.dll when run.
+// None of the solutions found online fixed it for me.
+// 
+// Note: This does not work in a .rc file, however it does work in .cpp file.
+//#pragma comment(linker,"\"/manifestdependency:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 
-#if !defined(wxUSE_NO_MANIFEST) || (wxUSE_NO_MANIFEST == 0)
-
-#if defined(wxUSE_RC_MANIFEST) && wxUSE_RC_MANIFEST
+#if defined(wxLUA_USE_RC_MANIFEST) && wxLUA_USE_RC_MANIFEST
 
 // see "about isolated applications" topic in MSDN
 #ifdef ISOLATION_AWARE_ENABLED
@@ -70,6 +73,4 @@ wxMANIFEST_ID 24 "wx/msw/wx.manifest"
 #error "One of WX_CPU_XXX constants must be defined. See comment above."
 #endif
 
-#endif // wxUSE_RC_MANIFEST
-
-#endif // !defined(wxUSE_NO_MANIFEST) || (wxUSE_NO_MANIFEST == 0)
+#endif // wxLUA_USE_RC_MANIFEST

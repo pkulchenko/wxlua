@@ -221,6 +221,7 @@ ADD_EXECUTABLE_FULL( lua
         ${LUA_LINK_LIBRARIES}
     ${LUA_EXE_PROPERTIES}
     PROPERTIES LINKER_LANGUAGE C
+    #PROPERTIES LINK_FLAGS "/MANIFEST:NO /INCREMENTAL:NO" # MSVC flags to use when trying to use manifest file
     PROPERTIES FOLDER "wxLua/apps"
     INSTALL ${WXLUA_APP_INSTALL_FLAGS})
 
@@ -275,6 +276,7 @@ else()
             LuaLibShared
             ${LUA_LINK_LIBRARIES}
         PROPERTIES LINKER_LANGUAGE C
+        #PROPERTIES LINK_FLAGS "/MANIFEST:NO /INCREMENTAL:NO" # MSVC flags to use when trying to use manifest file
         PROPERTIES FOLDER "wxLua/apps"
         PROPERTIES OUTPUT_NAME lua)
 
