@@ -227,6 +227,15 @@ notebook = wx.wxNotebook(splitter, wx.wxID_ANY,
                          wx.wxDefaultPosition, wx.wxDefaultSize,
                          wx.wxCLIP_CHILDREN)
 
+notebookFileDropTarget = wx.wxLuaFileDropTarget();
+notebookFileDropTarget.OnDropFiles = function(x, y, filenames)
+                                        for i = 1, #filenames do
+                                            LoadFile(filenames[i], nil, true)
+                                        end
+                                        return true
+                                     end
+notebook:SetDropTarget(notebookFileDropTarget)
+
 notebook:Connect(wx.wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED,
         function (event)
             if not exitingProgram then

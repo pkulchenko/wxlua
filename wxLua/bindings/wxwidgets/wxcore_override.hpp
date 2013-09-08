@@ -340,6 +340,40 @@ static int LUACALL wxLua_wxDropFilesEvent_GetFiles(lua_State *L)
 }
 %end
 
+%override wxLua_wxLuaFileDropTarget_constructor
+//     wxLuaFileDropTarget()
+static int LUACALL wxLua_wxLuaFileDropTarget_constructor(lua_State *L)
+{
+    wxLuaState wxlState(L);
+
+    // call constructor
+    wxLuaFileDropTarget* returns = new wxLuaFileDropTarget(wxlState);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxLuaFileDropTarget);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxLuaFileDropTarget);
+
+    return 1;
+}
+%end
+
+%override wxLua_wxLuaTextDropTarget_constructor
+//     wxLuaTextDropTarget()
+static int LUACALL wxLua_wxLuaTextDropTarget_constructor(lua_State *L)
+{
+    wxLuaState wxlState(L);
+
+    // call constructor
+    wxLuaTextDropTarget* returns = new wxLuaTextDropTarget(wxlState);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxLuaTextDropTarget);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxLuaTextDropTarget);
+
+    return 1;
+}
+%end
+
 // ----------------------------------------------------------------------------
 // Overrides for controls.i
 // ----------------------------------------------------------------------------

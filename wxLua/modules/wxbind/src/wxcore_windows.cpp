@@ -3039,11 +3039,12 @@ static int LUACALL wxLua_wxWindow_SetDefaultItem(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_SetDropTarget[] = { &wxluatype_wxWindow, &wxluatype_wxDropTarget, NULL };
 static int LUACALL wxLua_wxWindow_SetDropTarget(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_SetDropTarget[1] = {{ wxLua_wxWindow_SetDropTarget, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxWindow_SetDropTarget }};
-//     void SetDropTarget(wxDropTarget* target );
+//     void SetDropTarget(%ungc wxDropTarget* target );
 static int LUACALL wxLua_wxWindow_SetDropTarget(lua_State *L)
 {
     // wxDropTarget target
     wxDropTarget * target = (wxDropTarget *)wxluaT_getuserdatatype(L, 2, wxluatype_wxDropTarget);
+    if (wxluaO_isgcobject(L, target)) wxluaO_undeletegcobject(L, target);
     // get this
     wxWindow * self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call SetDropTarget

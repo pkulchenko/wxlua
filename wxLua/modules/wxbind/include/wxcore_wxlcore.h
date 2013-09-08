@@ -34,7 +34,7 @@ class WXDLLIMPEXP_FWD_WXLUA wxLuaObject;
 
 #include <wx/dataobj.h>
 
-class wxLuaDataObjectSimple : public wxDataObjectSimple
+class WXDLLIMPEXP_BINDWXCORE wxLuaDataObjectSimple : public wxDataObjectSimple
 {
 public:
     wxLuaDataObjectSimple(const wxLuaState& wxlState,
@@ -49,6 +49,54 @@ private:
 };
 
 #endif // wxLUA_USE_wxDataObject && wxUSE_DATAOBJ
+
+// ----------------------------------------------------------------------------
+// wxLuaFileDropTarget
+// ----------------------------------------------------------------------------
+#if wxLUA_USE_wxDataObject && wxUSE_DRAG_AND_DROP
+
+#include <wx/dnd.h>
+
+class WXDLLIMPEXP_BINDWXCORE wxLuaFileDropTarget : public wxFileDropTarget
+{
+public:
+    wxLuaFileDropTarget(const wxLuaState& wxlState);
+
+    // parameters are the number of files and the array of file names
+    virtual bool OnDropFiles(wxCoord x, wxCoord y,
+                             const wxArrayString& filenames);
+
+    virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
+
+private:
+    mutable wxLuaState m_wxlState;
+};
+
+#endif // wxLUA_USE_wxDataObject && wxUSE_DRAG_AND_DROP
+
+// ----------------------------------------------------------------------------
+// wxLuaTextDropTarget
+// ----------------------------------------------------------------------------
+#if wxLUA_USE_wxDataObject && wxUSE_DRAG_AND_DROP
+
+#include <wx/dnd.h>
+
+class WXDLLIMPEXP_BINDWXCORE wxLuaTextDropTarget : public wxTextDropTarget
+{
+public:
+    wxLuaTextDropTarget(const wxLuaState& wxlState);
+
+    // parameters are the number of files and the array of file names
+    virtual bool OnDropText(wxCoord x, wxCoord y,
+                            const wxString& text);
+
+    virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
+
+private:
+    mutable wxLuaState m_wxlState;
+};
+
+#endif // wxLUA_USE_wxDataObject && wxUSE_DRAG_AND_DROP
 
 // ----------------------------------------------------------------------------
 // wxLuaPrintout

@@ -302,25 +302,61 @@ class wxDropTarget // FIXME implement virtual
 };
 
 // ---------------------------------------------------------------------------
-// wxFileDropTarget
+// wxFileDropTarget - Base class only, use a wxLuaFileDropTarget and override the virtuals
 
-//class wxFileDropTarget : public wxDropTarget // FIXME implement virtual
-//{
-//    wxFileDropTarget( );
-//    virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def );
-//    virtual bool OnDrop(long x, long y, const void *data, size_t size );
-//    virtual bool OnDropFiles(wxCoord x, wxCoord y,const wxArrayString& filenames );
-//};
+class wxFileDropTarget : public wxDropTarget
+{
+    //wxFileDropTarget( );
+    //virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
+    //virtual bool OnDrop(long x, long y, const void *data, size_t size);
+    //virtual bool OnDropFiles(wxCoord x, wxCoord y,const wxArrayString& filenames);
+};
 
 // ---------------------------------------------------------------------------
-// wxTextDropTarget
+// wxLuaFileDropTarget
 
-//class wxTextDropTarget : public wxDropTarget // FIXME implement virtual
-//{
-//    wxTextDropTarget( );
-//    virtual bool OnDropText(wxCoord x, wxCoord y, const wxString& text );
-//    virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def );
-//};
+class wxLuaFileDropTarget : public wxFileDropTarget
+{
+    wxLuaFileDropTarget( );
+
+    // Create a Lua function that returns a wxDragResult.
+    // %override wxDragResult wxLuaFileDropTarget::OnData(wxCoord x, wxCoord y, wxDragResult def);
+    // C++ Func: virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
+    virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
+
+    // Create a Lua function that returns a bool.
+    // %override bool OnDropFiles(wxCoord x, wxCoord y,const wxArrayString& filenames);
+    // C++ Func: virtual bool OnDropFiles(wxCoord x, wxCoord y,const wxArrayString& filenames);
+    virtual bool OnDropFiles(wxCoord x, wxCoord y,const wxArrayString& filenames);
+};
+
+// ---------------------------------------------------------------------------
+// wxTextDropTarget - Base class only, use a wxLuaTextDropTarget and override the virtuals
+
+class wxTextDropTarget : public wxDropTarget
+{
+    //wxTextDropTarget( );
+    //virtual bool OnDropText(wxCoord x, wxCoord y, const wxString& text);
+    //virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
+};
+
+// ---------------------------------------------------------------------------
+// wxLuaTextDropTarget
+
+class wxLuaTextDropTarget : public wxTextDropTarget
+{
+    wxLuaTextDropTarget( );
+
+    // Create a Lua function that returns a wxDragResult.
+    // %override wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
+    // C++ Func: virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
+    virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def );
+
+    // Create a Lua function that returns a bool.
+    // %override bool OnDropText(wxCoord x, wxCoord y, const wxString& text);
+    // C++ Func: virtual bool OnDropText(wxCoord x, wxCoord y, const wxString& text);
+    virtual bool OnDropText(wxCoord x, wxCoord y, const wxString& text);
+};
 
 // ---------------------------------------------------------------------------
 // wxDropSource

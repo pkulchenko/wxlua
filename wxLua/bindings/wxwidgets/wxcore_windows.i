@@ -297,7 +297,7 @@ class wxWindow : public wxEvtHandler
     void SetOwnBackgroundColour(const wxColour& colour );
     void SetOwnFont(const wxFont& font );
     void SetOwnForegroundColour(const wxColour& colour );
-    void SetDropTarget(wxDropTarget* target );
+    void SetDropTarget(%ungc wxDropTarget* target );
     void SetEventHandler(wxEvtHandler* handler );
     void SetExtraStyle(long exStyle );
     virtual void SetFocus( );

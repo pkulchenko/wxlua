@@ -1660,6 +1660,15 @@ wx_dataTypeTable =
     Name = "wxFileDirPickerEvent",
     ValueType = "class",
   },
+  wxFileDropTarget = {
+    BaseClasses = {
+      [1] = "wxDropTarget",
+    },
+    Condition = "wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP",
+    IsNumber = false,
+    Name = "wxFileDropTarget",
+    ValueType = "class",
+  },
   wxFileHistory = {
     BaseClasses = {
       [1] = "wxObject",
@@ -3066,6 +3075,15 @@ wx_dataTypeTable =
     Name = "wxLuaDataObjectSimple",
     ValueType = "class",
   },
+  wxLuaFileDropTarget = {
+    BaseClasses = {
+      [1] = "wxFileDropTarget",
+    },
+    Condition = "wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP",
+    IsNumber = false,
+    Name = "wxLuaFileDropTarget",
+    ValueType = "class",
+  },
   wxLuaGridTableBase = {
     BaseClasses = {
       [1] = "wxGridTableBase",
@@ -3105,6 +3123,15 @@ wx_dataTypeTable =
     Condition = "(wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout)",
     IsNumber = false,
     Name = "wxLuaPrintout",
+    ValueType = "class",
+  },
+  wxLuaTextDropTarget = {
+    BaseClasses = {
+      [1] = "wxTextDropTarget",
+    },
+    Condition = "wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP",
+    IsNumber = false,
+    Name = "wxLuaTextDropTarget",
     ValueType = "class",
   },
   wxLuaTreeItemData = {
@@ -4714,6 +4741,15 @@ wx_dataTypeTable =
     Condition = "wxLUA_USE_wxDataObject && wxUSE_DATAOBJ",
     IsNumber = false,
     Name = "wxTextDataObject",
+    ValueType = "class",
+  },
+  wxTextDropTarget = {
+    BaseClasses = {
+      [1] = "wxDropTarget",
+    },
+    Condition = "wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP",
+    IsNumber = false,
+    Name = "wxTextDropTarget",
     ValueType = "class",
   },
   wxTextEntryDialog = {

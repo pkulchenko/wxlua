@@ -1530,6 +1530,254 @@ int wxDropTarget_methodCount = sizeof(wxDropTarget_methods)/sizeof(wxLuaBindMeth
 
 #if wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
 // ---------------------------------------------------------------------------
+// Bind class wxFileDropTarget
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxFileDropTarget'
+int wxluatype_wxFileDropTarget = WXLUA_TUNKNOWN;
+
+
+
+void wxLua_wxFileDropTarget_delete_function(void** p)
+{
+    wxFileDropTarget* o = (wxFileDropTarget*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxFileDropTarget_methods[] = {
+    { 0, 0, 0, 0 },
+};
+
+int wxFileDropTarget_methodCount = sizeof(wxFileDropTarget_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
+
+
+#if wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
+// ---------------------------------------------------------------------------
+// Bind class wxLuaFileDropTarget
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxLuaFileDropTarget'
+int wxluatype_wxLuaFileDropTarget = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaFileDropTarget_OnData[] = { &wxluatype_wxLuaFileDropTarget, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxLuaFileDropTarget_OnData(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaFileDropTarget_OnData[1] = {{ wxLua_wxLuaFileDropTarget_OnData, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxLuaFileDropTarget_OnData }};
+//     virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
+static int LUACALL wxLua_wxLuaFileDropTarget_OnData(lua_State *L)
+{
+    // wxDragResult def
+    wxDragResult def = (wxDragResult)wxlua_getenumtype(L, 4);
+    // wxCoord y
+    wxCoord y = (wxCoord)wxlua_getnumbertype(L, 3);
+    // wxCoord x
+    wxCoord x = (wxCoord)wxlua_getnumbertype(L, 2);
+    // get this
+    wxLuaFileDropTarget * self = (wxLuaFileDropTarget *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLuaFileDropTarget);
+    // call OnData
+    wxDragResult returns = (self->OnData(x, y, def));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+
+#if (wxLUA_USE_wxArrayString) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaFileDropTarget_OnDropFiles[] = { &wxluatype_wxLuaFileDropTarget, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxArrayString, NULL };
+static int LUACALL wxLua_wxLuaFileDropTarget_OnDropFiles(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaFileDropTarget_OnDropFiles[1] = {{ wxLua_wxLuaFileDropTarget_OnDropFiles, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxLuaFileDropTarget_OnDropFiles }};
+//     virtual bool OnDropFiles(wxCoord x, wxCoord y,const wxArrayString& filenames);
+static int LUACALL wxLua_wxLuaFileDropTarget_OnDropFiles(lua_State *L)
+{
+    // const wxArrayString filenames
+    wxLuaSmartwxArrayString filenames = wxlua_getwxArrayString(L, 4);
+    // wxCoord y
+    wxCoord y = (wxCoord)wxlua_getnumbertype(L, 3);
+    // wxCoord x
+    wxCoord x = (wxCoord)wxlua_getnumbertype(L, 2);
+    // get this
+    wxLuaFileDropTarget * self = (wxLuaFileDropTarget *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLuaFileDropTarget);
+    // call OnDropFiles
+    bool returns = (self->OnDropFiles(x, y, filenames));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxArrayString) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)
+
+static int LUACALL wxLua_wxLuaFileDropTarget_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaFileDropTarget_constructor[1] = {{ wxLua_wxLuaFileDropTarget_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+// %override wxLua_wxLuaFileDropTarget_constructor
+//     wxLuaFileDropTarget()
+static int LUACALL wxLua_wxLuaFileDropTarget_constructor(lua_State *L)
+{
+    wxLuaState wxlState(L);
+
+    // call constructor
+    wxLuaFileDropTarget* returns = new wxLuaFileDropTarget(wxlState);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxLuaFileDropTarget);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxLuaFileDropTarget);
+
+    return 1;
+}
+
+
+
+
+
+void wxLua_wxLuaFileDropTarget_delete_function(void** p)
+{
+    wxLuaFileDropTarget* o = (wxLuaFileDropTarget*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxLuaFileDropTarget_methods[] = {
+    { "OnData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLuaFileDropTarget_OnData, 1, NULL },
+
+#if (wxLUA_USE_wxArrayString) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)
+    { "OnDropFiles", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLuaFileDropTarget_OnDropFiles, 1, NULL },
+#endif // (wxLUA_USE_wxArrayString) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)
+
+    { "wxLuaFileDropTarget", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxLuaFileDropTarget_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxLuaFileDropTarget_methodCount = sizeof(wxLuaFileDropTarget_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
+
+
+#if wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
+// ---------------------------------------------------------------------------
+// Bind class wxTextDropTarget
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxTextDropTarget'
+int wxluatype_wxTextDropTarget = WXLUA_TUNKNOWN;
+
+
+
+void wxLua_wxTextDropTarget_delete_function(void** p)
+{
+    wxTextDropTarget* o = (wxTextDropTarget*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxTextDropTarget_methods[] = {
+    { 0, 0, 0, 0 },
+};
+
+int wxTextDropTarget_methodCount = sizeof(wxTextDropTarget_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
+
+
+#if wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
+// ---------------------------------------------------------------------------
+// Bind class wxLuaTextDropTarget
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxLuaTextDropTarget'
+int wxluatype_wxLuaTextDropTarget = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaTextDropTarget_OnData[] = { &wxluatype_wxLuaTextDropTarget, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxLuaTextDropTarget_OnData(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaTextDropTarget_OnData[1] = {{ wxLua_wxLuaTextDropTarget_OnData, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxLuaTextDropTarget_OnData }};
+//     virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def );
+static int LUACALL wxLua_wxLuaTextDropTarget_OnData(lua_State *L)
+{
+    // wxDragResult def
+    wxDragResult def = (wxDragResult)wxlua_getenumtype(L, 4);
+    // wxCoord y
+    wxCoord y = (wxCoord)wxlua_getnumbertype(L, 3);
+    // wxCoord x
+    wxCoord x = (wxCoord)wxlua_getnumbertype(L, 2);
+    // get this
+    wxLuaTextDropTarget * self = (wxLuaTextDropTarget *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLuaTextDropTarget);
+    // call OnData
+    wxDragResult returns = (self->OnData(x, y, def));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaTextDropTarget_OnDropText[] = { &wxluatype_wxLuaTextDropTarget, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxLuaTextDropTarget_OnDropText(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaTextDropTarget_OnDropText[1] = {{ wxLua_wxLuaTextDropTarget_OnDropText, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxLuaTextDropTarget_OnDropText }};
+//     virtual bool OnDropText(wxCoord x, wxCoord y, const wxString& text);
+static int LUACALL wxLua_wxLuaTextDropTarget_OnDropText(lua_State *L)
+{
+    // const wxString text
+    const wxString text = wxlua_getwxStringtype(L, 4);
+    // wxCoord y
+    wxCoord y = (wxCoord)wxlua_getnumbertype(L, 3);
+    // wxCoord x
+    wxCoord x = (wxCoord)wxlua_getnumbertype(L, 2);
+    // get this
+    wxLuaTextDropTarget * self = (wxLuaTextDropTarget *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLuaTextDropTarget);
+    // call OnDropText
+    bool returns = (self->OnDropText(x, y, text));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static int LUACALL wxLua_wxLuaTextDropTarget_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaTextDropTarget_constructor[1] = {{ wxLua_wxLuaTextDropTarget_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+// %override wxLua_wxLuaTextDropTarget_constructor
+//     wxLuaTextDropTarget()
+static int LUACALL wxLua_wxLuaTextDropTarget_constructor(lua_State *L)
+{
+    wxLuaState wxlState(L);
+
+    // call constructor
+    wxLuaTextDropTarget* returns = new wxLuaTextDropTarget(wxlState);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxLuaTextDropTarget);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxLuaTextDropTarget);
+
+    return 1;
+}
+
+
+
+
+
+void wxLua_wxLuaTextDropTarget_delete_function(void** p)
+{
+    wxLuaTextDropTarget* o = (wxLuaTextDropTarget*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxLuaTextDropTarget_methods[] = {
+    { "OnData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLuaTextDropTarget_OnData, 1, NULL },
+    { "OnDropText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLuaTextDropTarget_OnDropText, 1, NULL },
+    { "wxLuaTextDropTarget", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxLuaTextDropTarget_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxLuaTextDropTarget_methodCount = sizeof(wxLuaTextDropTarget_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
+
+
+#if wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
+// ---------------------------------------------------------------------------
 // Bind class wxDropSource
 // ---------------------------------------------------------------------------
 

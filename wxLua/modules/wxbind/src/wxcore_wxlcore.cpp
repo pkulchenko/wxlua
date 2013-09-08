@@ -118,6 +118,148 @@ bool wxLuaDataObjectSimple::SetData(size_t len, const void* buf)
 #endif //wxLUA_USE_wxDataObject && wxUSE_DATAOBJ
 
 // ----------------------------------------------------------------------------
+// wxLuaFileDropTarget
+// ----------------------------------------------------------------------------
+
+#if wxLUA_USE_wxDataObject && wxUSE_DRAG_AND_DROP
+
+// This lua tag is defined in bindings
+extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxLuaFileDropTarget;
+
+wxLuaFileDropTarget::wxLuaFileDropTarget(const wxLuaState& wxlState)
+                    :wxFileDropTarget()
+{
+    m_wxlState = wxlState;
+}
+
+bool wxLuaFileDropTarget::OnDropFiles(wxCoord x, wxCoord y,
+                                      const wxArrayString& filenames)
+{
+    bool result = false;
+
+    if (m_wxlState.Ok() && !m_wxlState.GetCallBaseClassFunction() &&
+        m_wxlState.HasDerivedMethod(this, "OnDropFiles", true))
+    {
+        int nOldTop = m_wxlState.lua_GetTop();
+
+        m_wxlState.lua_PushInteger(x);
+        m_wxlState.lua_PushInteger(y);
+        m_wxlState.PushwxArrayStringTable(filenames);
+
+        if (m_wxlState.LuaPCall(3, 1) == 0)
+            result = m_wxlState.GetBooleanType(-1);
+
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
+    }
+    //else - do nothing, the base class function is pure virtual
+    //    result = wxFileDropTarget::OnDropFiles(x, y, filenames);
+
+    m_wxlState.SetCallBaseClassFunction(false); // clear flag always
+
+    return result;
+}
+
+wxDragResult wxLuaFileDropTarget::OnData(wxCoord x, wxCoord y,
+                                         wxDragResult def)
+{
+    wxDragResult result = wxDragNone;
+
+    if (m_wxlState.Ok() && !m_wxlState.GetCallBaseClassFunction() &&
+        m_wxlState.HasDerivedMethod(this, "OnData", true))
+    {
+        int nOldTop = m_wxlState.lua_GetTop();
+
+        m_wxlState.lua_PushInteger(x);
+        m_wxlState.lua_PushInteger(y);
+        m_wxlState.lua_PushInteger(def);
+
+        if (m_wxlState.LuaPCall(3, 1) == 0)
+            result = (wxDragResult)m_wxlState.GetIntegerType(-1);
+
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
+    }
+    else
+        result = wxFileDropTarget::OnData(x, y, def);
+
+    m_wxlState.SetCallBaseClassFunction(false); // clear flag always
+
+    return result;
+}
+
+#endif //wxLUA_USE_wxDataObject && wxUSE_DRAG_AND_DROP
+
+// ----------------------------------------------------------------------------
+// wxLuaFileDropTarget
+// ----------------------------------------------------------------------------
+
+#if wxLUA_USE_wxDataObject && wxUSE_DRAG_AND_DROP
+
+// This lua tag is defined in bindings
+extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxLuaTextDropTarget;
+
+wxLuaTextDropTarget::wxLuaTextDropTarget(const wxLuaState& wxlState)
+                    :wxTextDropTarget()
+{
+    m_wxlState = wxlState;
+}
+
+bool wxLuaTextDropTarget::OnDropText(wxCoord x, wxCoord y,
+                                     const wxString& text)
+{
+    bool result = false;
+
+    if (m_wxlState.Ok() && !m_wxlState.GetCallBaseClassFunction() &&
+        m_wxlState.HasDerivedMethod(this, "OnDropFiles", true))
+    {
+        int nOldTop = m_wxlState.lua_GetTop();
+
+        m_wxlState.lua_PushInteger(x);
+        m_wxlState.lua_PushInteger(y);
+        m_wxlState.lua_PushString(wx2lua(text));
+
+        if (m_wxlState.LuaPCall(3, 1) == 0)
+            result = m_wxlState.GetBooleanType(-1);
+
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
+    }
+    //else - do nothing, the base class function is pure virtual
+    //    result = wxTextDropTarget::OnDropText(x, y, text);
+
+    m_wxlState.SetCallBaseClassFunction(false); // clear flag always
+
+    return result;
+}
+
+wxDragResult wxLuaTextDropTarget::OnData(wxCoord x, wxCoord y,
+                                         wxDragResult def)
+{
+    wxDragResult result = wxDragNone;
+
+    if (m_wxlState.Ok() && !m_wxlState.GetCallBaseClassFunction() &&
+        m_wxlState.HasDerivedMethod(this, "OnData", true))
+    {
+        int nOldTop = m_wxlState.lua_GetTop();
+
+        m_wxlState.lua_PushInteger(x);
+        m_wxlState.lua_PushInteger(y);
+        m_wxlState.lua_PushInteger(def);
+
+        if (m_wxlState.LuaPCall(3, 1) == 0)
+            result = (wxDragResult)m_wxlState.GetIntegerType(-1);
+
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
+    }
+    else
+        result = wxTextDropTarget::OnData(x, y, def);
+
+    m_wxlState.SetCallBaseClassFunction(false); // clear flag always
+
+    return result;
+}
+
+#endif //wxLUA_USE_wxDataObject && wxUSE_DRAG_AND_DROP
+
+// ----------------------------------------------------------------------------
 // wxLuaPrintout
 // ----------------------------------------------------------------------------
 
