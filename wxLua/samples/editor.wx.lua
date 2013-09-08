@@ -228,7 +228,7 @@ notebook = wx.wxNotebook(splitter, wx.wxID_ANY,
                          wx.wxCLIP_CHILDREN)
 
 notebookFileDropTarget = wx.wxLuaFileDropTarget();
-notebookFileDropTarget.OnDropFiles = function(x, y, filenames)
+notebookFileDropTarget.OnDropFiles = function(self, x, y, filenames)
                                         for i = 1, #filenames do
                                             LoadFile(filenames[i], nil, true)
                                         end

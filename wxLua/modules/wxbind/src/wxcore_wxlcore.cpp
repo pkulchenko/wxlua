@@ -141,12 +141,12 @@ bool wxLuaFileDropTarget::OnDropFiles(wxCoord x, wxCoord y,
         m_wxlState.HasDerivedMethod(this, "OnDropFiles", true))
     {
         int nOldTop = m_wxlState.lua_GetTop();
-
+        m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaFileDropTarget, true);
         m_wxlState.lua_PushInteger(x);
         m_wxlState.lua_PushInteger(y);
         m_wxlState.PushwxArrayStringTable(filenames);
 
-        if (m_wxlState.LuaPCall(3, 1) == 0)
+        if (m_wxlState.LuaPCall(4, 1) == 0)
             result = m_wxlState.GetBooleanType(-1);
 
         m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
@@ -168,12 +168,12 @@ wxDragResult wxLuaFileDropTarget::OnData(wxCoord x, wxCoord y,
         m_wxlState.HasDerivedMethod(this, "OnData", true))
     {
         int nOldTop = m_wxlState.lua_GetTop();
-
+        m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaFileDropTarget, true);
         m_wxlState.lua_PushInteger(x);
         m_wxlState.lua_PushInteger(y);
         m_wxlState.lua_PushInteger(def);
 
-        if (m_wxlState.LuaPCall(3, 1) == 0)
+        if (m_wxlState.LuaPCall(4, 1) == 0)
             result = (wxDragResult)m_wxlState.GetIntegerType(-1);
 
         m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
@@ -212,12 +212,12 @@ bool wxLuaTextDropTarget::OnDropText(wxCoord x, wxCoord y,
         m_wxlState.HasDerivedMethod(this, "OnDropFiles", true))
     {
         int nOldTop = m_wxlState.lua_GetTop();
-
+        m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaTextDropTarget, true);
         m_wxlState.lua_PushInteger(x);
         m_wxlState.lua_PushInteger(y);
         m_wxlState.lua_PushString(wx2lua(text));
 
-        if (m_wxlState.LuaPCall(3, 1) == 0)
+        if (m_wxlState.LuaPCall(4, 1) == 0)
             result = m_wxlState.GetBooleanType(-1);
 
         m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
@@ -239,12 +239,12 @@ wxDragResult wxLuaTextDropTarget::OnData(wxCoord x, wxCoord y,
         m_wxlState.HasDerivedMethod(this, "OnData", true))
     {
         int nOldTop = m_wxlState.lua_GetTop();
-
+        m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaTextDropTarget, true);
         m_wxlState.lua_PushInteger(x);
         m_wxlState.lua_PushInteger(y);
         m_wxlState.lua_PushInteger(def);
 
-        if (m_wxlState.LuaPCall(3, 1) == 0)
+        if (m_wxlState.LuaPCall(4, 1) == 0)
             result = (wxDragResult)m_wxlState.GetIntegerType(-1);
 
         m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
