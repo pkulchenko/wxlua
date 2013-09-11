@@ -140,7 +140,7 @@ set(CMAKE_SKIP_INSTALL_ALL_DEPENDENCY ${CMAKE_SKIP_INSTALL_ALL_DEPENDENCY} CACHE
 # There are differences between CMake versions showing (or not) CMAKE_INSTALL_PREFIX to the user.
 # ---------------------------------------------------------------------------
 
-set(CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX} CACHE INTERNAL
+set(CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX} CACHE PATH
     "Install Directory prefix for the INSTALL target" FORCE)
 
 # ---------------------------------------------------------------------------
