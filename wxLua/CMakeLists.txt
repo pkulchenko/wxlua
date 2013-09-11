@@ -288,24 +288,28 @@ SET(WXLUA_APP_INSTALL_FLAGS
 if (WIN32)
     set(wxLua_proxydlls_to_not_copy "lua51.dll" "lua5.1.dll" "lua52.dll" "lua5.2.dll")
 
-    if (wxLua_LUA_LIBRARY_USE_BUILTIN AND NOT wxLua_LUA_LIBRARY_BUILD_SHARED)
-        # In msw these are the shared lua.dlls we'll use.
-        # The LuaLibShared is built into bin/Debug/shared/* so it won't conflict.
-        CONFIGURE_FILE_TO_BUILD_CONFIGURATION_DIRS( lua${wxLua_LUA_LIBRARY_VERSION_NUM}.dll
-                                                    ${wxLua_ROOT_DIR}/modules/luaproxydll
-                                                    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-                                                    COPYONLY)
-        CONFIGURE_FILE_TO_BUILD_CONFIGURATION_DIRS( lua${wxLua_LUA_LIBRARY_VERSION}.dll
-                                                    ${wxLua_ROOT_DIR}/modules/luaproxydll
-                                                    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-                                                    COPYONLY)
+    if (IS_64_BIT)
+        message(STATUS "* Not copying the Lua proxydlls since they do not work in the 64-bit build.")
+    else()
+        if (wxLua_LUA_LIBRARY_USE_BUILTIN AND NOT wxLua_LUA_LIBRARY_BUILD_SHARED)
+            # In msw these are the shared lua.dlls we'll use.
+            # The LuaLibShared is built into bin/Debug/shared/* so it won't conflict.
+            CONFIGURE_FILE_TO_BUILD_CONFIGURATION_DIRS( lua${wxLua_LUA_LIBRARY_VERSION_NUM}.dll
+                                                        ${wxLua_ROOT_DIR}/modules/luaproxydll
+                                                        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+                                                        COPYONLY)
+            CONFIGURE_FILE_TO_BUILD_CONFIGURATION_DIRS( lua${wxLua_LUA_LIBRARY_VERSION}.dll
+                                                        ${wxLua_ROOT_DIR}/modules/luaproxydll
+                                                        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+                                                        COPYONLY)
 
-        if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.1)
-            set(wxLua_proxydlls_to_not_copy "lua52.dll" "lua5.2.dll")
-        else()
-            set(wxLua_proxydlls_to_not_copy "lua51.dll" "lua5.1.dll")
+            if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.1)
+                set(wxLua_proxydlls_to_not_copy "lua52.dll" "lua5.2.dll")
+            else()
+                set(wxLua_proxydlls_to_not_copy "lua51.dll" "lua5.1.dll")
+            endif()
         endif()
-    endif()
+    endif (IS_64_BIT)
 
     # Cleanup if they accidently configured with one version or shared/static then switched.
     foreach (f ${wxLua_proxydlls_to_not_copy})
