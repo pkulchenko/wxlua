@@ -2,23 +2,48 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="John Labenski" />
-  <meta name="date" content="2012-09-28" />
+  <meta name="date" content="2013-09-10" />
   <title>wxLua 2.8.12.3 - FAQ</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="wxlua.css" type="text/css" />
 </head>
 <body>
+<div id="header">
 <h1 class="title">wxLua 2.8.12.3 - FAQ</h1>
+<h2 class="author">John Labenski</h2>
+<h3 class="date">2013-09-10</h3>
+</div>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol style="list-style-type: decimal">
-<li><a href="#C1">Why wxLua?</a> <br /> 1.1 <a href="#C1.1">What's best for my needs: wxLua, wxPython, wxSomethingElse?</a> <br /> 1.2 <a href="#C1.2">Can I use wxLua as script interpreter embedded in my own C++ applications?</a> <br /></li>
-<li><a href="#C2">How to learn wxLua</a> <br /> 2.1 <a href="#C2.1">Read the wxLua documentation</a> <br /> 2.2 <a href="#C2.2">Read the C++ wxWidgets documentation</a> <br /> 2.3 <a href="#C2.3">Run and trace through the samples</a></li>
-<li><a href="#C3">Programming in wxLua</a> <br /> 3.1 <a href="#C3.1">wxStrings?</a> <br /> 3.2 <a href="#C3.2">wxArrayString and wxSortedArrayString?</a> <br /> 3.3 <a href="#C3.3">wxArrayInt?</a> <br /> 3.4 <a href="#C3.4">When and how should you delete() objects?</a> <br /> 3.5 <a href="#C3.5">Why do the samples use the function main() and is it special to wxLua?</a> <br /> 3.6 <a href="#C3.6">Why are the arguments shifted +1 for error messages from class member function calls?</a></li>
-<li><a href="#C4">Lua Module using require()</a> <br /> 4.1 <a href="#C4.1">Why does the GUI not work from the Lua console?</a></li>
-<li><a href="#C5">Building wxLua</a> <br /> 5.1 <a href="#C5.1">Why are there so many warnings when building from source?</a></li>
+<li><a href="#C1">Why wxLua?</a><br /> 1.1 <a href="#C1.1">What's best for my needs: wxLua, wxPython, wxSomethingElse?</a><br /> 1.2 <a href="#C1.2">Can I use wxLua as script interpreter embedded in my own C++ applications?</a><br /></li>
+<li><a href="#C2">How to learn wxLua</a><br /> 2.1 <a href="#C2.1">Read the wxLua documentation</a><br /> 2.2 <a href="#C2.2">Read the C++ wxWidgets documentation</a><br /> 2.3 <a href="#C2.3">Run and trace through the samples</a></li>
+<li><a href="#C3">Programming in wxLua</a><br /> 3.1 <a href="#C3.1">wxStrings?</a><br /> 3.2 <a href="#C3.2">wxArrayString and wxSortedArrayString?</a><br /> 3.3 <a href="#C3.3">wxArrayInt?</a><br /> 3.4 <a href="#C3.4">When and how should you delete() objects?</a><br /> 3.5 <a href="#C3.5">Why do the samples use the function main() and is it special to wxLua?</a><br /> 3.6 <a href="#C3.6">Why are the arguments shifted +1 for error messages from class member function calls?</a></li>
+<li><a href="#C4">Lua Module using require()</a><br /> 4.1 <a href="#C4.1">Why does the GUI not work from the Lua console?</a></li>
+<li><a href="#C5">Building wxLua</a><br /> 5.1 <a href="#C5.1">Why are there so many warnings when building from source?</a></li>
 </ol>
-<a name="C1"/>
+<p><a name="C1"/></p>
 <h2 id="why-wxlua">1 - Why wxLua?</h2>
 <ul>
 <li>Because the Lua language is easy and straightforward to program in.</li>
@@ -28,7 +53,7 @@
 <li>Speed : Lua is one of the fastest interpreted languages; see the Great Computer Language Shootout.</li>
 <li>Again, why Lua? See <a href="http://www.lua.org/about.html">http://www.lua.org/about.html</a></li>
 </ul>
-<a name="C1.1"/>
+<p><a name="C1.1"/></p>
 <h3 id="whats-best-for-my-needs-wxlua-wxpython-or-wxsomethingelse">1.1 - What's best for my needs: wxLua, wxPython, or wxSomethingElse?</h3>
 <ul>
 <li>It depends, wxPython has a much larger footprint and greater overhead than wxLua, but it does provide more add-ons from the Python standard library.</li>
@@ -36,62 +61,62 @@
 <li>wxLua is designed to be easily interfaced with C++ code making it a powerful extension language.</li>
 <li>In conclusion, if you want to write an entire application in a scripting language and you need things supported by Python which are not present in wxLua out-of-the-box, then you should use wxPython. Instead, if you want to write applications with little overhead or extend your C++ applications, try wxLua.</li>
 </ul>
-<a name="C1.2"/>
+<p><a name="C1.2"/></p>
 <h3 id="can-i-use-wxlua-as-script-interpreter-embedded-in-my-own-c-applications">1.2 - Can I use wxLua as script interpreter embedded in my own C++ applications?</h3>
 <ul>
 <li>Yes, the C++ programming guide in the <a href="wxlua.html#cpp_programming_guide">wxLua Manual</a> describes how to create and use a wxLuaState.</li>
 <li>This is a strong point of wxLua; it is a fast and lightweight interpreter that is easy to use to extend an application and/or let users customize it.</li>
 <li>You may create as many wxLua interpreters in a single program as you like.</li>
 </ul>
-<a name="C2"/>
+<p><a name="C2"/></p>
 <h2 id="how-to-learn-wxlua">2 - How to learn wxLua</h2>
-<a name="C2.1"/>
+<p><a name="C2.1"/></p>
 <h3 id="read-the-wxlua-documentation">2.1 - Read the wxLua documentation</h3>
 <ul>
 <li><a href="wxlua.html">wxlua.html</a> is the manual for wxLua that briefly describes the Lua language as well as where the wxWidgets C++ types are placed in Lua and how to create and use them.</li>
 <li><a href="wxluaref.html">wxluaref.html</a> is an autogenerated document that can be thought of as a reference manual. It shows exactly what wxLua binds from wxWidgets. It also has usage notes for the cases where wxLua differs from C++ wxWidgets.</li>
 <li><a href="binding.html">binding.html</a> describes how to write your own bindings for a C or C++ library. People who will only write Lua code should also read it to be able to interpret the <a href="wxluaref.html">wxluaref.html</a> document.</li>
 </ul>
-<a name="C2.2"/>
+<p><a name="C2.2"/></p>
 <h3 id="read-the-c-wxwidgets-documentation">2.2 - Read the C++ wxWidgets documentation</h3>
 <ul>
 <li>wxLua is mapped very closely to wxWidgets which means that descriptions for the C++ functions and values also apply to wxLua. See the <a href="wxluaref.html">wxluaref.html</a> document to verify that this is the case since any non-default behavior will be clearly marked.</li>
 <li>See the wxWidgets Wiki for examples of code, beginner howtos, and other useful bits of information.</li>
 <li>See wxPython documentation and their Wiki, but note that wxLua follows the C++ notation a little closer than wxPython does.</li>
 </ul>
-<a name="C2.3"/>
+<p><a name="C2.3"/></p>
 <h3 id="run-and-trace-through-the-samples">2.3 - Run and trace through the samples</h3>
 <ul>
 <li>The wxLua samples try to show off various classes and their usage.</li>
 <li><code>unittest.wx.lua</code> is used to confirm that wxLua is operating properly, however it provides a wealth of information about what is allowed in terms of calling functions, casting classes to other classes, using virtual functions, and derived functions.</li>
 <li><code>binding.wx.lua</code> traverses the C structs that store the data used for wxLua and it's worth taking the time to browse them to see what is where and how it all fits together.</li>
 </ul>
-<a name="C3"/>
+<p><a name="C3"/></p>
 <h2 id="programming-in-wxlua">3 - Programming in wxLua</h2>
-<a name="C3.1"/>
+<p><a name="C3.1"/></p>
 <h3 id="wxstrings-or-ansi-lua-strings">3.1 - wxStrings or ANSI Lua strings?</h3>
 <ul>
 <li>wxLua uses Lua strings and so all functions that take or return a wxString take or return a Lua string.</li>
 <li>However, you can also use a wxString in Lua if you really want to.</li>
 </ul>
-<a name="C3.2"/>
+<p><a name="C3.2"/></p>
 <h3 id="wxarraystring-and-wxsortedarraystring">3.2 - wxArrayString and wxSortedArrayString?</h3>
 <ul>
 <li>All functions that take a wxArrayString or wxSortedArrayString can also take a numerically indexed Lua table of strings.</li>
 <li>Functions that return wxArrayStrings or wxSortedArrayStrings will return a wxArrayString or wxSortedArrayString unless specified otherwise in <a href="wxluaref.html">wxluaref.html</a></li>
 </ul>
-<a name="C3.3"/>
+<p><a name="C3.3"/></p>
 <h3 id="wxarrayint">3.3 - wxArrayInt?</h3>
 <ul>
 <li>All functions that take a wxArrayInt can also take a numerically indexed table of numbers.</li>
 <li>Functions that return wxArrayInts will return a wxArrayInt unless specified otherwise in <a href="wxluaref.html">wxluaref.html</a>.</li>
 </ul>
-<a name="C3.4"/>
+<p><a name="C3.4"/></p>
 <h3 id="when-and-how-should-you-delete-objects">3.4 - When and how should you delete() objects?</h3>
 <ul>
 <li>You should read the subsection &quot;C++ Classes CLASS_NAME&quot; of the &quot;Programming in wxLua&quot; section of the <a href="wxlua.html">wxlua.html</a> manual.</li>
-<li>In short, all objects that you create that deal with graphics should be delete()ed as soon as they're no longer used. Functions that take a <code class="codelua">const wxPen&amp; pen</code> or any wxObject derived class that are passed to a function that is const and not a pointer* will make a refed copy of them and so you may immediately delete them after the function call.</li>
-<li>Use the function <code class="codelua">t = wxlua.GetGCUserdataInfo()</code> to get a table of items that are tracked and either have an active variable pointing to them or are waiting to be garbage collected.</li>
+<li>In short, all objects that you create that deal with graphics should be delete()ed as soon as they're no longer used. Functions that take a <code class="sourceCode lua"><span class="kw">const</span> <span class="kw">wxPen</span>&amp; <span class="kw">pen</span></code> or any wxObject derived class that are passed to a function that is const and not a pointer* will make a refed copy of them and so you may immediately delete them after the function call.</li>
+<li>Use the function <code class="sourceCode lua"><span class="kw">t</span> <span class="ot">=</span> <span class="kw">wxlua</span><span class="ot">.</span>GetGCUserdataInfo<span class="ot">()</span></code> to get a table of items that are tracked and either have an active variable pointing to them or are waiting to be garbage collected.</li>
 <li>Class objects that have the <code>%delete</code> tag in their declaration (see <a href="wxluaref.html">wxluaref.html</a>) will be automatically garbage collected or can be delete()ed with the wxLua added function for the class. There are, of course, exceptions and these occur when you pass the object as a parameter to a function with the <code>%ungc</code> tag on it. The ungarbage collect tag specifies that the object is now owned by something else and you can no longer delete it in wxLua.</li>
 <li>Bottom line - don't worry about delete()ing anything except:
 <ul>
@@ -100,34 +125,34 @@
 <li>Objects that may be very large, like a wxImage(1000, 1000).</li>
 </ul></li>
 </ul>
-<a name="C3.5"/>
+<p><a name="C3.5"/></p>
 <h3 id="why-do-the-samples-use-the-function-main-and-is-it-special-to-wxlua">3.5 - Why do the samples use the function main() and is it special to wxLua?</h3>
 <ul>
-<li>There's nothing special about the function <code class="codelua">main()</code> other than that it's a common name for an entry point into a program.</li>
+<li>There's nothing special about the function <code class="sourceCode lua">main<span class="ot">()</span></code> other than that it's a common name for an entry point into a program.</li>
 <li>It is often a good idea to encapsulate the program initialization code within a function so that you can use local variables and not pollute the global table with temporary variables that won't be needed again.</li>
-<li>Additionally, it allows you to break out of this initialization code at any point by putting <code class="codelua">do return end</code> inside of the function for debugging, as opposed to wrapping parts you don't want using <code class="codelua">if false then ... end</code>.</li>
+<li>Additionally, it allows you to break out of this initialization code at any point by putting <code class="sourceCode lua"><span class="kw">do</span> <span class="kw">return</span> <span class="kw">end</span></code> inside of the function for debugging, as opposed to wrapping parts you don't want using <code class="sourceCode lua"><span class="kw">if</span> <span class="kw">false</span> <span class="kw">then</span> <span class="ot">...</span> <span class="kw">end</span></code>.</li>
 </ul>
-<a name="C3.6"/>
+<p><a name="C3.6"/></p>
 <h3 id="why-are-the-arguments-shifted-1-for-error-messages-from-class-member-function-calls">3.6 - Why are the arguments shifted +1 for error messages from class member function calls?</h3>
 <ul>
 <li>Because the ':' calling convention is syntaxic sugar for putting the 'self' as the first parameter.</li>
-<li><code class="codelua">s = wx.wxSize(1, 2); s:Set(3, 4)</code> is the same as <code class="codelua">s.Set(s, 3, 4)</code> and the first parameter is always the self, therefore <code class="codelua">s.Set(s, &quot;hello&quot;, 4)</code> or <code class="codelua">s:Set(&quot;hello&quot;, 4)</code> will give an error that parameter 2 is not a number.</li>
+<li><code class="sourceCode lua"><span class="kw">s</span> <span class="ot">=</span> <span class="kw">wx</span><span class="ot">.</span>wxSize<span class="ot">(</span><span class="dv">1</span><span class="ot">,</span> <span class="dv">2</span><span class="ot">);</span> <span class="kw">s</span>:Set<span class="ot">(</span><span class="dv">3</span><span class="ot">,</span> <span class="dv">4</span><span class="ot">)</span></code> is the same as <code class="sourceCode lua"><span class="kw">s</span><span class="ot">.</span>Set<span class="ot">(</span><span class="kw">s</span><span class="ot">,</span> <span class="dv">3</span><span class="ot">,</span> <span class="dv">4</span><span class="ot">)</span></code> and the first parameter is always the self, therefore <code class="sourceCode lua"><span class="kw">s</span><span class="ot">.</span>Set<span class="ot">(</span><span class="kw">s</span><span class="ot">,</span> <span class="st">&quot;hello&quot;</span><span class="ot">,</span> <span class="dv">4</span><span class="ot">)</span></code> or <code class="sourceCode lua"><span class="kw">s</span>:Set<span class="ot">(</span><span class="st">&quot;hello&quot;</span><span class="ot">,</span> <span class="dv">4</span><span class="ot">)</span></code> will give an error that parameter 2 is not a number.</li>
 <li>Unfortunately there is no way to tell whether the user has used the '.' or ':' calling convention and so the error message cannot be tailored for both static and nonstatic member functions. Just remember that the first parameter for nonstatic class member functions called using the ':' notation is the 'self'.</li>
 </ul>
-<a name="C4"/>
+<p><a name="C4"/></p>
 <h2 id="lua-module-using-require">4 - Lua Module using require()</h2>
-<a name="C4.1"/>
+<p><a name="C4.1"/></p>
 <h3 id="why-does-the-gui-not-work-from-the-lua-console">4.1 - Why does the GUI not work from the Lua console?</h3>
 <ul>
 <li>wxLua is a user-interactive GUI library that requires an event-loop to process user interaction with the controls, E.G. key presses and mouse-clicks.</li>
 <li><a href="wxlua.html">wxlua.html</a> in section <a href="wxlua.html#C6.1">6.1 - How to Run the Samples</a> has more informaton about using wxLua from the Lua console.</li>
-<li>Briefly - In order to use wxLua as a module, the Lua code must have <code class="codelua">require(&quot;wx&quot;)</code> to load the wxLua bindings in the beginning and <code class="codelua">wx.wxGetApp():MainLoop()</code> at the end of the source code to run the wxWidgets event loop.</li>
-<li>When <code class="codelua">wx.wxGetApp():MainLoop()</code> is called, the console will appear to be hung, but you have simply started the wxWidgets event-loop and the program is waiting for you to press buttons, open menus...</li>
+<li>Briefly - In order to use wxLua as a module, the Lua code must have <code class="sourceCode lua"><span class="fu">require</span><span class="ot">(</span><span class="st">&quot;wx&quot;</span><span class="ot">)</span></code> to load the wxLua bindings in the beginning and <code class="sourceCode lua"><span class="kw">wx</span><span class="ot">.</span>wxGetApp<span class="ot">()</span>:MainLoop<span class="ot">()</span></code> at the end of the source code to run the wxWidgets event loop.</li>
+<li>When <code class="sourceCode lua"><span class="kw">wx</span><span class="ot">.</span>wxGetApp<span class="ot">()</span>:MainLoop<span class="ot">()</span></code> is called, the console will appear to be hung, but you have simply started the wxWidgets event-loop and the program is waiting for you to press buttons, open menus...</li>
 <li>A soon as there are no longer any top-level windows open the MainLoop() exits and control is either returned to the Lua console or, if run without the console, the program exits.</li>
 </ul>
-<a name="C5"/>
+<p><a name="C5"/></p>
 <h2 id="building-wxlua">5 - Building wxLua</h2>
-<a name="C5.1"/>
+<p><a name="C5.1"/></p>
 <h3 id="why-are-there-so-many-warnings-when-building-from-source">5.1 - Why are there so many warnings when building from source?</h3>
 <ul>
 <li>wxLua was initially written before 2000 for wxWindows (now wxWidgets) 2.2.</li>

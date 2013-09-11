@@ -1,6 +1,6 @@
 % wxLua 2.8.12.3 - FAQ
 % John Labenski
-% 2012-09-28
+% 2013-09-10
 
 ## Table of Contents
 
@@ -149,10 +149,10 @@
     "Programming in wxLua" section of the [wxlua.html](wxlua.html) manual.
 -   In short, all objects that you create that deal with graphics should
     be delete()ed as soon as they're no longer used. Functions that take a
-    `const wxPen& pen`{.codelua} or any wxObject derived class that are passed
+    `const wxPen& pen`{.lua} or any wxObject derived class that are passed
     to a function that is const and not a pointer\* will make a refed copy of
     them and so you may immediately delete them after the function call.
--   Use the function `t = wxlua.GetGCUserdataInfo()`{.codelua} to get a table
+-   Use the function `t = wxlua.GetGCUserdataInfo()`{.lua} to get a table
     of items that are tracked and either have an active variable pointing
     to them or are waiting to be garbage collected.
 -   Class objects that have the `%delete` tag in their declaration (see
@@ -173,15 +173,15 @@
 
 ### 3.5 - Why do the samples use the function main() and is it special to wxLua?
 
--   There's nothing special about the function `main()`{.codelua} other than
+-   There's nothing special about the function `main()`{.lua} other than
     that it's a common name for an entry point into a program.
 -   It is often a good idea to encapsulate the program initialization code
     within a function so that you can use local variables and not pollute the
     global table with temporary variables that won't be needed again.
 -   Additionally, it allows you to break out of this initialization code
-    at any point by putting `do return end`{.codelua} inside of the function
+    at any point by putting `do return end`{.lua} inside of the function
     for debugging, as opposed to wrapping parts you don't want using
-    `if false then ... end`{.codelua}.
+    `if false then ... end`{.lua}.
 
 <a name="C3.6"/>
 
@@ -189,9 +189,9 @@
 
 -   Because the ':' calling convention is syntaxic sugar for putting the
     'self' as the first parameter.
--   `s = wx.wxSize(1, 2); s:Set(3, 4)`{.codelua} is the same as
-    `s.Set(s, 3, 4)`{.codelua} and the first parameter is always the self,
-    therefore `s.Set(s, "hello", 4)`{.codelua} or `s:Set("hello", 4)`{.codelua}
+-   `s = wx.wxSize(1, 2); s:Set(3, 4)`{.lua} is the same as
+    `s.Set(s, 3, 4)`{.lua} and the first parameter is always the self,
+    therefore `s.Set(s, "hello", 4)`{.lua} or `s:Set("hello", 4)`{.lua}
     will give an error that parameter 2 is not a number.
 -   Unfortunately there is no way to tell whether the user has used the
     '.' or ':' calling convention and so the error message cannot be
@@ -214,10 +214,10 @@
     [6.1 - How to Run the Samples](wxlua.html#C6.1)
     has more informaton about using wxLua from the Lua console.
 -   Briefly - In order to use wxLua as a module, the Lua code must have
-    `require("wx")`{.codelua} to load the wxLua bindings in the
-    beginning and `wx.wxGetApp():MainLoop()`{.codelua} at the end of the
+    `require("wx")`{.lua} to load the wxLua bindings in the
+    beginning and `wx.wxGetApp():MainLoop()`{.lua} at the end of the
     source code to run the wxWidgets event loop.
--   When `wx.wxGetApp():MainLoop()`{.codelua} is called, the console will
+-   When `wx.wxGetApp():MainLoop()`{.lua} is called, the console will
     appear to be hung, but you have simply started the wxWidgets event-loop
     and the program is waiting for you to press buttons, open menus...
 -   A soon as there are no longer any top-level windows open the MainLoop()

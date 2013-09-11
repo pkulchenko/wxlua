@@ -1,6 +1,6 @@
 % wxLua 2.8.12.3 - Installation Guide
 % John Labenski, Francesco Montorsi
-% 2013-03-01
+% 2013-09-10
 
 This document describes how to build the wxLua libraries, editors, and
 interpreters. wxLua is written in C and C++ and can be built on MS
@@ -138,6 +138,8 @@ development distribution packages, if available, or build it yourself.
 -   The recommended build configurations are "Debug" and "Release" which
     build static libraries.
 -   If you really want DLLs choose "Debug DLL" or "Release DLL".
+    Remember to copy the wxWidgets DLLs into the wxLua bin dir or set
+    the %PATH% environment variable to their directory.
 -   The "Universal" configurations build wxWidgets with a "Universal"
     widget toolkit as opposed to native MS Windows widgets.
     -   Note that this configuration has not been tested with wxLua
@@ -416,10 +418,10 @@ simply build them all.
 -   `wxLua/apps/wxluaedit`
     -   Another wxLua code editor and interpreter, based on wxStEdit.
 -   `wxLua/apps/wxluafreeze`
-    -   A program to execute Lua or wxLua programs. A replacement for the Lua
-        executable that is capable of running wxLua apps.
+    -   A simple program to execute Lua or wxLua programs that can be used as a 
+        replacement for the Lua executable that is capable of running wxLua apps.
 -   `wxLua/apps/wxluacan`
-    -   An example of how to create C++ applications
+    -   An example of how to create a C++ application
         with an embedded wxLua interpreter.
 
 <a name="C3.2"/>
@@ -582,23 +584,21 @@ Below are the CMake variables that you can and in some cases must adjust
 to build wxLua. If you want to run CMake from the command line you would
 specify these variables as : `cmake -DBUILD_SHARED_LIBS=TRUE ...`
 
--   BUILD_INSTALL_PREFIX="/path/the/install/target/copies/the/files/to/after/building"
-
 -   BUILD_OUTPUT_DIRECTORY_ARCHIVE="/path/to/put/built/archive_lib files"
 -   BUILD_OUTPUT_DIRECTORY_LIBRARY="/path/to/put/built/library files"
 -   BUILD_OUTPUT_DIRECTORY_RUNTIME="/path/to/put/built/exe and dll files"
-
 -   BUILD_SHARED_LIBS=[TRUE, FALSE]
     -   Build shared libs (DLLs in MSW) or static libs if FALSE (the default).
 -   BUILD_USE_MULTIPROCESSOR=[TRUE, FALSE]
     -   Build using multiple processors in MSVC.
-    -   Does nothing using if using gcc.
+    -   Does nothing using if using gcc, use 'make -j4' instead.
 -   BUILD_USE_PRECOMPILED_HEADERS=[TRUE, FALSE]
     -   Build quicker by precompiling the headers in MSVC.
-    -   When using GCC, disable precompiled headers and install ccache
+    -   When using GCC, disable precompiled headers and install 'ccache'
         since it is even faster.
 -   BUILD_USE_SOLUTION_FOLDERS=[TRUE, FALSE]
     -   Put projects into folders in MSVC, always a good idea.
+    -   Does nothing for other build systems.
 -   BUILD_VERBOSELY=[TRUE, FALSE]
     -   Print more information when building.
     -   In GCC you can run `make VERBOSE=1` to get the same effect if this was set to FALSE.
@@ -607,9 +607,9 @@ specify these variables as : `cmake -DBUILD_SHARED_LIBS=TRUE ...`
 
 -   CMAKE_BUILD_TYPE=[Debug, Release, RelWithDebInfo, MinSizeRel]
     -   Set the build for Debug, Release, Release with Debug Info,
-        and Min Size Release (stripped).
+        and Minimum Size Release (stripped).
     -   This variable will not be shown in the CMake Gui when building with
-        Visual Studio since you can choose the build type in the MSVC IDE
+        Visual Studio since you choose the build type in the MSVC IDE
         and you can build them all using the same CMake configuration.
     -   For other compilers, you can only build one at a time so you will have to
         create a separate build directory for each different build type.
@@ -619,6 +619,7 @@ specify these variables as : `cmake -DBUILD_SHARED_LIBS=TRUE ...`
 
 -   CMAKE_DEBUG_VARIABLES=[TRUE, FALSE]
     -   Print all CMake variables to the log.
+-   CMAKE_INSTALL_PREFIX="/path/the/install/target/copies/the/files/to/after/building"
 -   CMAKE_SKIP_INSTALL_ALL_DEPENDENCY=[TRUE, FALSE]
     -   Allow running install without having built all the targets.
 

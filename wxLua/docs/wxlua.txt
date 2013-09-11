@@ -1,6 +1,6 @@
 % wxLua 2.8.12.3 - User Manual
 % John Labenski
-% 2012-10-12
+% 2013-09-10
 
 [wxLua](http://wxlua.sourceforge.net) is a [Lua](http://www.lua.org) scripting
 language wrapper around the [wxWidgets](http://www.wxwidgets.org)
@@ -73,10 +73,14 @@ numbers using a back-ported `bit32` library from Lua 5.2.
     -   The revision number (X.Y.Z.revision) can be thought of as the wxLua
         version number.
 
--   Lua 5.1.5
-    -   wxLua uses an unmodified copy of Lua 5.1.5.
-    -   However, official patches on www.lua.org are applied as they are
-        released.
+-   Lua 5.1.5 or 5.2.2
+    -   wxLua uses a nearly unmodified copy of Lua 5.1.5 or 5.2.2.
+    -   Official patches on [www.lua.org](www.lua.org) are applied as 
+        they are released.
+    -   In MSW the Lua executable has a manifest set to load version 6
+        of the comctrl32.dll (if available) so that in MS Windows 7+
+        the controls look modern. When not running wxLua GUI code the 
+        executable behaves no differently.
     -   Any program that works using the official release of Lua will
         work in wxLua.
 
@@ -94,8 +98,8 @@ numbers using a back-ported `bit32` library from Lua 5.2.
         You need to have compiled this into a library if you want to
         compile the wxLua apps. In wxWidgets >= 2.9 the
         wxStyledTextCtrl is now part of the main distribution.
-    -   The wxLua library links to these wxWidgets libs: `stc, xrc, html,
-        media, adv, net, xml, core, base, tiff, jpeg, png, zlib, regex, expat`.
+    -   The wxLua library links to these wxWidgets libs: 
+        `stc, xrc, html, media, adv, net, xml, core, base, tiff, jpeg, png, zlib, regex, expat`.
     -   See the wxLua [install.html](install.html) for more information.
 
 
@@ -559,7 +563,7 @@ reserved words; although "xor" isn't a reserved word, it is consistent.
   `bit32.band(...)`{.lua}                       -   returns the bitwise `and` of the input values
   `bit32.bnot(x)`{.lua}                         -   returns the one's complement of `x`
   `bit32.bor(...)`{.lua}                        -   returns the bitwise `or` of the input values
-  `bit32.btest(Â·Â·Â·)`{.lua}                      -   returns true if the `and` of the input values is not 0
+  `bit32.btest(···)`{.lua}                      -   returns true if the `and` of the input values is not 0
   `bit32.bxor(...)`{.lua}                       -   returns the bitwise exclusive `or` of the input values
   `bit32.extract(n, field [, width])`{.lua}     -   returns the number of bits set in `n` for the given 0-31 starting `field` to optionally `field+width-1`
   `bit32.replace(n, v, field [, width])`{.lua}  -   returns `n` with the bits in `field` to optionally `field+width-1` replaced by the value `v`
@@ -588,8 +592,8 @@ Note that the `wxaui` and `wxstc` libraries have been separated into their own
 tables since they are fairly specialized libraries.
 
   ---------- --- ------------------------------------------------------------
-  **bit32**  -   A backport of the Lua 5.2 bit32 library for manipulating integer bits.
-  **wxlua**  -   Special functions for introspecting into wxLua or
+  **bit32**  -   A backport of the Lua 5.2 bit32 library for manipulating integer bits added to Lua 5.1.
+  **wxlua**  -   Special functions for introspecting wxLua or
                  generic functions that wxLua provides that are independent of wxWidgets.
   **wx**     -   wxWidgets functions, classes, defines, enums, strings,
                  events, and objects are placed here.
@@ -610,7 +614,7 @@ document. You should also look at the [binding.html](binding.html) file,
 even if you do not plan to write your own bindings, to get a better
 understanding of the [wxluaref.html](wxluaref.html) file.
 
-**Strings**: wxLua does not typically use the wxString class for strings,
+**Strings** : wxLua does not typically use the wxString class for strings,
 rather it uses Lua strings. This means that all wxWidgets functions that take
 a wxString parameter take either a wxString userdata or preferrably a
 Lua string (Lua variables that are of type(var) == "string"). Functions that
@@ -618,7 +622,7 @@ return wxStrings convert the value into a Lua string for convenience.
 The conversion from the Lua ANSI C 8-bit char* string to a wxString
 (which may be a Unicode wchar* string) is done internally.
 
-**wxArrayString and wxSortedArrayString:** Function parameters that take a
+**wxArrayString and wxSortedArrayString** : Function parameters that take a
 "const wxArrayString& arr" or "wxArrayString arr" will accept either a
 wxArrayString userdata or a Lua table that has numeric indexes and string
 values and convert it into a wxArrayString for the function call.
@@ -626,18 +630,28 @@ If the function call is "wxArrayString& arr" or "wxArrayString* arr" you must
 provide a wxArrayString userdata since the C++ function will most likely
 modify the wxArrayString that's passed to it.
 
-**wxArrayInt**: Function parameters that take a "const wxArrayInt& arr"
+**wxArrayInt** : Function parameters that take a "const wxArrayInt& arr"
 or "wxArrayInt arr" will accept either a wxArrayInt userdata or a Lua
 table that has numeric indexes and numeric values and convert it into a
 wxArrayInt for the function call. If the function call is "wxArrayInt& arr"
 or "wxArrayInt* arr" you must provide a wxArrayInt userdata since the C++
 function will most likely modify the wxArrayInt that's passed to it.
 
+**Coroutines** : wxLua works with coroutines with one important caveat. \
+`NEVER connect an event handler function callback from within a coroutine`{.boldred}
+
+1.  There is no way for wxLua to detect that a coroutine is closed
+    until the garbage collector runs and it is usually too late by then
+    and the program crashes.
+2.  The callback function may be and probably will be called when the 
+    coroutine is yielded, Lua throws an error for this condition.
+3.  The **one** exception to this rule is if you run the whole
+    wxLua program in a coroutine, which doesn't make typically make sense.
+
 
 <a name="C5.1"/>
 
-### 5.1 - Naming, location, and usage of the wxWidgets objects declared
-in the C++ header files in the `wx`{.lua} Lua table
+### 5.1 - Naming, location, and usage of the wxWidgets objects declared in the C++ header files in the `wx`{.lua} Lua table
 
 -   **#define NUMBER_DEFINE VALUE**
     -   All #defined numerical values are available as
@@ -836,9 +850,9 @@ in the C++ header files in the `wx`{.lua} Lua table
                 slate since program startup time is usually not a concern.
 
         -   This is a list of classes by order of importance of deleting them:
-            -   **Must delete : wxDC, wxPaintDC, and ALL classed derived from wxDC.**
-            -   **Must delete if > 50 : wxBitmap, wxBrush, wxColour,
-                wxCursor, wxFont, wxIcon, wxPen, wxRegion**
+            -   `Must delete : wxDC, wxPaintDC, and ALL classed derived from wxDC.`{.boldred}
+            -   `Must delete if > 50 : wxBitmap, wxBrush, wxColour,
+                wxCursor, wxFont, wxIcon, wxPen, wxRegion`{.boldred}
                 -   To be sure, delete them when you're done and not worry.
             -   Must delete if large and you're creating many of them :
                 wxImage, wxBitmap, etc.
@@ -1681,9 +1695,9 @@ at bool wxLuaState::Create(wxEvtHandler *handler, wxWindowID id) in
 
 ### 10.1 - Data stored in Lua's LUA_REGISTRYINDEX table
 
-wxLua stores its book keeping data in the Lua's LUA_REGISTRYINDEX table
+wxLua stores its bookkeeping data in the Lua's LUA_REGISTRYINDEX table
 that the wxLuaState creates and uses. The keys are const char* strings
-with its address pushed as a light userdata because a pushing the string
+with its address pushed as a light userdata. Pushing the string
 itself requires that it be hashed and it was found to take a considerable
 amount of the total time of a function call. A list of all of the tables is at
 the top of the `wxlstate.h` header file.

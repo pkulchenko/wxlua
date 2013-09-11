@@ -17,7 +17,7 @@ h1 {
   font-size:        xx-large;
   font-weight:      bold;
   color:            #336699;
-  background-color: #E6E0D0;
+  background-color: #E0E0E0;
   padding-top:      10px;
   padding-bottom:   10px;
   text-align:       center;
@@ -47,7 +47,11 @@ h4 {
   font-weight:      bold;
 }
 body {
+  font-size:        medium;
   font-family:      Arial,Helvetica,sans-serif;
+}
+code {
+  font-size:        12pt;
 }
 a:link {
   color:            #336699;
@@ -73,6 +77,12 @@ a:hover {
 .contents ol a {
   text-decoration:  none;
 }
+.boldred {
+  color:            #FF0000;
+  font-size:        medium;
+  font-family:      Arial,Helvetica,sans-serif;
+  font-weight:      bold;
+}
 .codebox {
   background-color: #FFFFD0;
   border: 1px solid #533419;
@@ -83,5 +93,6 @@ a:hover {
 
 /* This is pandoc's source code highligher */
 .sourceCode {
-  background-color: #F6F6F0;
+  font-size:        11pt;
+  background-color: #FAFAF0;
 }
