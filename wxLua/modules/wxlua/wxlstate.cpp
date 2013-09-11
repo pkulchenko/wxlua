@@ -56,6 +56,7 @@ int LUACALL luaopen_bit(lua_State *L); // implemented at bottom of file
 
 extern "C"
 {
+    // provided by lbitlib.c for 5.1 or we use the one in 5.2 or LuaJIT.
     int luaopen_bit32 (lua_State *L);
 }
 
@@ -71,7 +72,7 @@ int LUACALL wxlua_printFunction( lua_State *L )
     wxLuaState wxlState(L); // doesn't have to be ok
 
     // If the wxLuaState is not going to print, we'll let Lua print normally
-    if (!wxlState.Ok() || (wxlState.GetEventHandler() == NULL) || 
+    if (!wxlState.Ok() || (wxlState.GetEventHandler() == NULL) ||
         (!wxApp::IsMainLoopRunning() && !wxlState.sm_wxAppMainLoop_will_run))
     {
         // Get our saved copy of the Lua's print function from the registry
