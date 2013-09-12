@@ -29,10 +29,11 @@ include( build/CMakewxAppLib.cmake )
 # wxLua version
 # ===========================================================================
 
-set( wxLua_VERSION         "2.8.12" )
-set( wxLua_MAJOR_VERSION   "2" )
-set( wxLua_MINOR_VERSION   "8" )
-set( wxLua_RELEASE_VERSION "12" )
+set( wxLua_VERSION           "2.8.12.3" )
+set( wxLua_MAJOR_VERSION     "2" )
+set( wxLua_MINOR_VERSION     "8" )
+set( wxLua_RELEASE_VERSION   "12" )
+set( wxLua_SUBRELEASE_NUMBER "3")
 
 # ===========================================================================
 # wxWidgets libraries and wxLua bindings setup
@@ -45,7 +46,7 @@ set( wxLua_RELEASE_VERSION "12" )
 # Specify what wxWidgets libs we need to link to. Note: 'core' must be before 'base'.
 # If this CMakeLists.txt was called from another, FIND_WXWIDGETS() may have already been called.
 if (NOT DEFINED wxWidgets_COMPONENTS)
-    set(wxWidgets_COMPONENTS xrc xml net media propgrid richtext aui stc html adv core base)     # complete set for static lib/dll
+    set(wxWidgets_COMPONENTS gl xrc xml net media propgrid richtext aui stc html adv core base)  # complete set for static lib/dll
     #set(wxWidgets_COMPONENTS gl xrc xml net media propgrid richtext aui stc html adv core base) # for multilib/dll
     #set(wxWidgets_COMPONENTS stc mono) # for monolithic
 endif()
@@ -480,3 +481,36 @@ install(FILES
         ${wxLua_ROOT_DIR}/apps/wxluafreeze/readme.txt
         ${wxLua_ROOT_DIR}/apps/wxluafreeze/wxluafreeze.lua
         DESTINATION "${WXLUA_SHARE_DIR}apps/wxluafreeze")
+
+# ===========================================================================
+# Setup the CPack distribution
+# ===========================================================================
+
+SET(CPACK_GENERATOR "ZIP")
+
+SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "wxLua")
+SET(CPACK_PACKAGE_VENDOR              "John Labenski")
+SET(CPACK_PACKAGE_DESCRIPTION_FILE    "${CMAKE_CURRENT_SOURCE_DIR}/docs/readme.txt")
+SET(CPACK_RESOURCE_FILE_LICENSE       "${CMAKE_CURRENT_SOURCE_DIR}/docs/licence.txt")
+SET(CPACK_PACKAGE_VERSION_MAJOR       "${wxLua_MAJOR_VERSION}")
+SET(CPACK_PACKAGE_VERSION_MINOR       "${wxLua_MINOR_VERSION}")
+SET(CPACK_PACKAGE_VERSION_PATCH       "${wxLua_RELEASE_VERSION}")
+SET(CPACK_PACKAGE_INSTALL_DIRECTORY   "wxLua-${wxLua_VERSION}")
+IF(WIN32 AND NOT UNIX)
+  # There is a bug in NSI that does not handle full unix paths properly. Make
+  # sure there is at least one set of four (4) backslasshes.
+  SET(CPACK_PACKAGE_ICON             "${CMAKE_CURRENT_SOURCE_DIR}/art\\\\wxlualogo.png")
+  SET(CPACK_NSIS_INSTALLED_ICON_NAME "/art\\\\wxlualogo.png")
+  SET(CPACK_NSIS_DISPLAY_NAME        "${CPACK_PACKAGE_INSTALL_DIRECTORY} wxLua")
+  SET(CPACK_NSIS_HELP_LINK           "http:\\\\\\\\wxlua.sourceforge.com")
+  SET(CPACK_NSIS_URL_INFO_ABOUT      "http:\\\\\\\\wxlua.sourceforge.com")
+  SET(CPACK_NSIS_CONTACT             "wxlua-users@lists.sourceforge.net")
+  SET(CPACK_NSIS_MODIFY_PATH         ON)
+ELSE(WIN32 AND NOT UNIX)
+  #SET(CPACK_STRIP_FILES "bin/MyExecutable")
+  SET(CPACK_SOURCE_STRIP_FILES "")
+ENDIF(WIN32 AND NOT UNIX)
+
+#SET(CPACK_PACKAGE_EXECUTABLES "MyExecutable" "My Executable")
+INCLUDE(CPack)
+

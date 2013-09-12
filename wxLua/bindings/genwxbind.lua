@@ -604,7 +604,7 @@ end
 --   returns true for a match or false if not
 -- ---------------------------------------------------------------------------
 function FileDataIsStringData(filename, strData)
-    local file_handle = io.open(filename, "rt")
+    local file_handle = io.open(filename, "r")
     if not file_handle then return false end -- ok if it doesn't exist
 
     local f = file_handle:read("*a")

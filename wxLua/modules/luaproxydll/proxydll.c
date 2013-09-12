@@ -48,7 +48,7 @@
 
 static struct {
     #define SYMBOL(name) FARPROC name;
-    #include "proxydll_exports.h"
+    #include "proxydll_exports_lua51.h"
     #undef SYMBOL
 } s_funcs;
 
@@ -60,7 +60,7 @@ static struct {
  */
 
 #define SYMBOL(name) void __declspec(dllexport,naked) name() { __asm { jmp s_funcs.name } }
-#include "proxydll_exports.h"
+#include "proxydll_exports_lua51.h"
 #undef SYMBOL
 
 BOOL APIENTRY
@@ -68,7 +68,7 @@ DllMain(HANDLE module, DWORD reason, LPVOID reserved)
 {
     HANDLE h = GetModuleHandle(NULL);
     #define SYMBOL(name) s_funcs.name = GetProcAddress(h, #name); /* printf("%p %s, %p\n", h, #name, s_funcs.name); */
-    #include "proxydll_exports.h"
+    #include "proxydll_exports_lua51.h"
     #undef SYMBOL
     return TRUE;
 }

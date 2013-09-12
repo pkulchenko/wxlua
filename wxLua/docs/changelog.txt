@@ -1,11 +1,12 @@
  wxLua ChangeLog
  ===============
 
- version 2.8.12.3
+ version 2.8.12.3 (released 9/12/2013)
  --------------------------------------------------------------------
  - wxLua now builds with Lua 5.1 and 5.2
  - Update wxStyledTextCtrl with new functions in 2.9
  - Implement wxDC::DrawLines(), DrawPolygon().
+ - Handle drag and drop for files and text.
  * Remove Bakefile build files since the next-gen Bakefile version is
    incompatible with the current Bakefiles anyway.
    http://permalink.gmane.org/gmane.comp.sysutils.bakefile.devel/1502
