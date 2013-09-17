@@ -1,4 +1,4 @@
-% wxLua 2.8.12.3 - User Manual
+﻿% wxLua 2.8.12.3 - User Manual
 % John Labenski
 % 2013-09-10
 
@@ -640,13 +640,12 @@ function will most likely modify the wxArrayInt that's passed to it.
 **Coroutines** : wxLua works with coroutines with one important caveat. \
 `NEVER connect an event handler function callback from within a coroutine`{.boldred}
 
-1.  There is no way for wxLua to detect that a coroutine is closed
-    until the garbage collector runs and it is usually too late by then
-    and the program crashes.
-2.  The callback function may be and probably will be called when the 
-    coroutine is yielded, Lua throws an error for this condition.
-3.  The **one** exception to this rule is if you run the whole
-    wxLua program in a coroutine, which doesn't make typically make sense.
+1.  There is no way for wxLua to detect that a coroutine is closed until the 
+    garbage collector runs which is usually too late and the program crashes.
+2.  The callback function will probably only be called when the 
+    coroutine is yielded and Lua throws an error for this condition.
+3.  The **one** exception to this rule is if the whole wxLua program is run 
+    in a coroutine that never yields, which doesn't make typically make sense.
 
 
 <a name="C5.1"/>

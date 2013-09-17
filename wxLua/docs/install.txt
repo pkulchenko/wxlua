@@ -11,7 +11,8 @@ supported by wxWidgets are supported by wxLua.
 
 ## Table of Contents
 
-1. [Required Libraries (dependencies)](#C1)
+1. [Required Libraries (dependencies)](#C1) \
+    1.1 [Recommended build settings](#C1.1)
 2. [Building wxWidgets](#C2) \
     2.1 [Getting the wxWidgets Source Code](#C2.1) \
     2.2 [Build using Microsoft Visual Studio GUI](#C2.2) \
@@ -66,7 +67,7 @@ wxSTEdit - Version 1.2.6 or higher.
 -   There is more information about wxStEdit with the source code.
 -   By default, wxStEdit will be built automatically when you build wxLua.
 
-Lua - Version 5.1 and 5.2
+Lua - Version 5.1, 5.2, or LuaJIT
 
 -   wxLua comes with the Lua 5.1.5 and 5.2.2 source files to build both the Lua
     library and Lua executable.
@@ -74,7 +75,35 @@ Lua - Version 5.1 and 5.2
     Please see [wxLua/docs/changelog.txt](changelog.txt) to learn which ones.
     [http://www.lua.org/bugs.html](http://www.lua.org/bugs.html)
 -   An external Lua development library may be used to build wxLua against
-    your own Lua library as described below.
+    as described below.
+
+<a name="C1.1"/>
+
+### 1.1 - Recommended build settings
+
+-   Static or shared libraries
+    -   The wxWidgets, wxLua, and Lua libs may be built and linked together
+        in any combination of static and/or shared libs.
+    -   In MSW, a static build is easier to manage since the executables will
+        not require all the DLLs to be in the same directory or in the path.
+    -   On Unix type operating systems, shared libs are usually easy enough 
+        to manage, but the same reasoning for MSW can apply.
+    -   In OSX, a package directory structure has to be made which means that 
+        there is a convenient place to put the shared libs.
+    -   Note that the wx.dll/wx.so lib used for `require("wx")`{.lua} must
+        must always be built as a shared lib which requires a shared Lua library.
+        A static lua.exe and a proxydll may be used in lieu of a shared Lua.exe and dll.
+-   Ansi or Unicode
+    -   The choice of Ansi or Unicode strings is your preference.
+    -   wxWidgets >= 2.9 recommends a Unicode build using UTF-8 strings
+        and may drop support for an Ansi build in the future.
+    -   There is a performance hit for the Lua Ansi to wxWidgets Unicode
+        string conversion, but they should mostly be GUI strings which 
+        are typically small.
+-   Debug, MinSizeRel, Release, or RelWithDebInfo
+    -   If you plan to use a C++ debugger you should build in Debug or RelWithDebInfo.
+        Variable values may not be shown correctly in RelWithDebInfo, but you can
+        step through function calls.
 
 
 <a name="C2"/>
@@ -436,8 +465,11 @@ simply build them all.
     -   A shared library (wx.so or wx.dll) for Lua code to call `require("wx")` to
         load the wxLua bindings.
 -   `wxLua/modules/luaproxydll`
-    -   MS Windows only libraries that allow a staticly built lua.exe to look and act
+    -   MS Windows 32-bit only libraries that allow a staticly built lua.exe to look and act
         like the lua.dll shared library.
+    -   The source code uses the `__asm` instruction and cannot currently be compiled
+        for a 64-bit architecture since Visual Studio does not support it and gcc
+        does not support `__declspec(dllexport,naked)`.
     -   Briefly, a staticly built lua.exe contains all of the compiled Lua code
         and is a stand-alone application. A shared lua.exe would be linked to a
         lua.dll which would contain the code and so the lua.exe and lua.dll must
@@ -737,7 +769,7 @@ Linux and OSX configuration options
 6.  If "Configure" still doesn't work, then something is wrong with your
     wxWidgets build... go back and fix it.
 7.  If "Configure" succeeds, the output window should say "Configuring done"
-    and the log should have a complete description of your wxWidgets build.
+    and the log should have a complete description of your wxLua build.
 9.  Press "Generate" to have CMake write out the build files.
 9.  Open `wxLua.sln` in the build directory...
 10. Choose the "Solution Configuration"
@@ -785,7 +817,7 @@ Linux and OSX configuration options
 8.  If "Configure" still doesn't work, then something is wrong with your
     wxWidgets build... go back and fix it.
 9.  If "Configure" succeeds, the output window should say "Configuring done"
-    and the log should have a complete description of your wxWidgets build.
+    and the log should have a complete description of your wxLua build.
 10. Press "Generate" to have CMake write out the build files.
 11. Open a `cmd.exe` prompt to run `mingw32-make.exe help` to
     display all the available targets.
@@ -799,12 +831,13 @@ Linux and OSX configuration options
 ### 4.6 - CMake with GCC in Linux or OSX
 
 1.  Choose the `CMAKE_BUILD_TYPE` that you want.
-    -   Note that in Linux you can mix and match Release and Debug versions.
+    -   Note that the CMake Makefile generator requires separate directories
+        for each Debug, Release, MinSizeRel, and RelWithDebInfo builds.
 2.  To find wxWidgets you must set the variable
     -   `wxWidgets_CONFIG_EXECUTABLE=/path/to/wx-config`
     -   See above about building wxWidgets for Linux for a description of it.
 3.  Press "Configure" and the output window should say "Configuring done"
-    and the log should have a complete description of your wxWidgets build.
+    and the log should have a complete description of your wxLua build.
 4.  Press "Generate" to have CMake write out the build files.
 5.  Open a terminal, change into your wxLua build dir and run
     `make help` to display all the available targets.
@@ -838,7 +871,7 @@ no modifications required.
 
 On the other hand, if you wish to make the wxLua bindings smaller, you will
 need to set the CMake variable `wxLuaBind_WXLUASETUP_DIR` to point to the
-directory of a customized `wxluasetup.h` header which should start as a copy of
+directory with a customized `wxluasetup.h` header copied from
 `modules/wxbind/setup/wxluasetup.h`. It is best to copy it to a new directory
 instead of modifying the original one. This way you will have the original as
 a backup to compare your changes to.
@@ -889,11 +922,11 @@ are first in the linker list are initialized last.
 
 -   The library order for the gcc/MSVC linker is:
     -   `wxbind..., wxbindcore, wxbindbase, wxluadebugger, wxluadebug, wxlua, lua, wxWidgets libs`
--   Obviously, you should remove the libraries you don't use
-    (e.g. wxluadebugger, wxluadebug)
--   wxLua names its libraries similarly to the wxWidgets naming convention:
+-   You may be able to remove the libraries you don't use, 
+    e.g. wxluadebugger or wxluadebug.
+-   wxLua names its libraries using the wxWidgets naming convention:
     -   `{wxlua_libname}-wx$(WX_VERSION_MAJOR)$(WX_VERSION_MINOR)$(WX_PORT)$(WXLIBPOSTFIX)`
     -   `WX_PORT` can be `gtk2, msw, x11, etc`
-    -   `WXLIBPOSTFIX` can be `u, d, ud`.
-    -   E.G. `libwxlua-wx29gtk2ud-2.8.12.so, libwxlua_debug-wx29gtk2ud-2.8.12.so,
-        libwxlua_debugger-wx29gtk2ud-2.8.12.so, libwxlua_bind-wx29gtk2ud-2.8.12.so`
+    -   `WXLIBPOSTFIX` can be `u, d, ud` for Unicode and debug.
+    -   E.G. `libwxlua-wx29gtk2ud-2.8.12.so`, `libwxlua_debug-wx29gtk2ud-2.8.12.so`, 
+        `libwxlua_debugger-wx29gtk2ud-2.8.12.so`, `libwxlua_bind-wx29gtk2ud-2.8.12.so`

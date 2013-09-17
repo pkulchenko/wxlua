@@ -550,9 +550,9 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p><strong>wxArrayInt</strong> : Function parameters that take a &quot;const wxArrayInt&amp; arr&quot; or &quot;wxArrayInt arr&quot; will accept either a wxArrayInt userdata or a Lua table that has numeric indexes and numeric values and convert it into a wxArrayInt for the function call. If the function call is &quot;wxArrayInt&amp; arr&quot; or &quot;wxArrayInt* arr&quot; you must provide a wxArrayInt userdata since the C++ function will most likely modify the wxArrayInt that's passed to it.</p>
 <p><strong>Coroutines</strong> : wxLua works with coroutines with one important caveat.<br /><code class="boldred">NEVER connect an event handler function callback from within a coroutine</code></p>
 <ol style="list-style-type: decimal">
-<li>There is no way for wxLua to detect that a coroutine is closed until the garbage collector runs and it is usually too late by then and the program crashes.</li>
-<li>The callback function may be and probably will be called when the coroutine is yielded, Lua throws an error for this condition.</li>
-<li>The <strong>one</strong> exception to this rule is if you run the whole wxLua program in a coroutine, which doesn't make typically make sense.</li>
+<li>There is no way for wxLua to detect that a coroutine is closed until the garbage collector runs which is usually too late and the program crashes.</li>
+<li>The callback function will probably only be called when the coroutine is yielded and Lua throws an error for this condition.</li>
+<li>The <strong>one</strong> exception to this rule is if the whole wxLua program is run in a coroutine that never yields, which doesn't make typically make sense.</li>
 </ol>
 <p><a name="C5.1"/></p>
 <h3 id="naming-location-and-usage-of-the-wxwidgets-objects-declared-in-the-c-header-files-in-the-wx-lua-table">5.1 - Naming, location, and usage of the wxWidgets objects declared in the C++ header files in the <code class="sourceCode lua"><span class="kw">wx</span></code> Lua table</h3>

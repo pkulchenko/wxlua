@@ -38,7 +38,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>This document describes how to build the wxLua libraries, editors, and interpreters. wxLua is written in C and C++ and can be built on MS Windows, Linux, and OSX with the Visual Studio, Borland, Watcom, MingW, and GCC compilers. Most of the build settings and platforms that are supported by wxWidgets are supported by wxLua.</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol style="list-style-type: decimal">
-<li><a href="#C1">Required Libraries (dependencies)</a></li>
+<li><a href="#C1">Required Libraries (dependencies)</a><br /> 1.1 <a href="#C1.1">Recommended build settings</a></li>
 <li><a href="#C2">Building wxWidgets</a><br /> 2.1 <a href="#C2.1">Getting the wxWidgets Source Code</a><br /> 2.2 <a href="#C2.2">Build using Microsoft Visual Studio GUI</a><br /> 2.3 <a href="#C2.3">Build using MSVC NMake</a><br /> 2.4 <a href="#C2.4">Build using MinGW</a><br /> 2.5 <a href="#C2.5">Build using GCC in Linux</a><br /> 2.6 <a href="#C2.6">Build using GCC in OSX</a></li>
 <li><a href="#C3">wxLua Components</a><br /> 3.1 <a href="#C3.1">wxLua applications</a><br /> 3.2 <a href="#C3.2">wxLua libraries</a><br /> 3.3 <a href="#C3.3">wxLua utilities</a></li>
 <li><a href="#C4">Building wxLua</a><br /> 4.1 <a href="#C4.1">Getting the wxLua Source Code</a><br /> 4.2 <a href="#C4.2">Initial CMake Setup</a><br /> 4.3 <a href="#C4.3">CMake Configuration Variables</a><br /> 4.4 <a href="#C4.4">CMake with MSVC</a><br /> 4.5 <a href="#C4.5">CMake with MinGW</a><br /> 4.6 <a href="#C4.6">CMake with GCC in Linux and OSX</a></li>
@@ -65,11 +65,33 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li>There is more information about wxStEdit with the source code.</li>
 <li>By default, wxStEdit will be built automatically when you build wxLua.</li>
 </ul>
-<p>Lua - Version 5.1 and 5.2</p>
+<p>Lua - Version 5.1, 5.2, or LuaJIT</p>
 <ul>
 <li>wxLua comes with the Lua 5.1.5 and 5.2.2 source files to build both the Lua library and Lua executable.</li>
 <li>It is is the unmodified source, except that bug-fix patches have been applied. Please see <a href="changelog.txt">wxLua/docs/changelog.txt</a> to learn which ones. <a href="http://www.lua.org/bugs.html">http://www.lua.org/bugs.html</a></li>
-<li>An external Lua development library may be used to build wxLua against your own Lua library as described below.</li>
+<li>An external Lua development library may be used to build wxLua against as described below.</li>
+</ul>
+<p><a name="C1.1"/></p>
+<h3 id="recommended-build-settings">1.1 - Recommended build settings</h3>
+<ul>
+<li>Static or shared libraries
+<ul>
+<li>The wxWidgets, wxLua, and Lua libs may be built and linked together in any combination of static and/or shared libs.</li>
+<li>In MSW, a static build is easier to manage since the executables will not require all the DLLs to be in the same directory or in the path.</li>
+<li>On Unix type operating systems, shared libs are usually easy enough to manage, but the same reasoning for MSW can apply.</li>
+<li>In OSX, a package directory structure has to be made which means that there is a convenient place to put the shared libs.</li>
+<li>Note that the wx.dll/wx.so lib used for <code class="sourceCode lua"><span class="fu">require</span><span class="ot">(</span><span class="st">&quot;wx&quot;</span><span class="ot">)</span></code> must must always be built as a shared lib which requires a shared Lua library. A static lua.exe and a proxydll may be used in lieu of a shared Lua.exe and dll.</li>
+</ul></li>
+<li>Ansi or Unicode
+<ul>
+<li>The choice of Ansi or Unicode strings is your preference.</li>
+<li>wxWidgets &gt;= 2.9 recommends a Unicode build using UTF-8 strings and may drop support for an Ansi build in the future.</li>
+<li>There is a performance hit for the Lua Ansi to wxWidgets Unicode string conversion, but they should mostly be GUI strings which are typically small.</li>
+</ul></li>
+<li>Debug, MinSizeRel, Release, or RelWithDebInfo
+<ul>
+<li>If you plan to use a C++ debugger you should build in Debug or RelWithDebInfo. Variable values may not be shown correctly in RelWithDebInfo, but you can step through function calls.</li>
+</ul></li>
 </ul>
 <p><a name="C2"/></p>
 <h2 id="building-wxwidgets">2 - Building wxWidgets</h2>
@@ -360,7 +382,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </ul></li>
 <li><code>wxLua/modules/luaproxydll</code>
 <ul>
-<li>MS Windows only libraries that allow a staticly built lua.exe to look and act like the lua.dll shared library.</li>
+<li>MS Windows 32-bit only libraries that allow a staticly built lua.exe to look and act like the lua.dll shared library.</li>
+<li>The source code uses the <code>__asm</code> instruction and cannot currently be compiled for a 64-bit architecture since Visual Studio does not support it and gcc does not support <code>__declspec(dllexport,naked)</code>.</li>
 <li>Briefly, a staticly built lua.exe contains all of the compiled Lua code and is a stand-alone application. A shared lua.exe would be linked to a lua.dll which would contain the code and so the lua.exe and lua.dll must be kept together or the lua.dll must at least be in the %PATH%.</li>
 <li>The luaproxydll directory contains prebuilt shared libraries lua5.1.dll, lua51.dll, lua5.2.dll, and lua52.dll that when loaded by an application (lua.exe) simply points the load request back to the caller application itself to find the functions and symbols.</li>
 <li>This allows the same static lua.exe to be used to as a convenient stand-alone application, but also as the lua.dll when calling <code class="sourceCode lua"><span class="fu">require</span><span class="ot">(</span><span class="st">&quot;wx&quot;</span><span class="ot">)</span></code> from Lua code.</li>
@@ -625,7 +648,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li>Where you will use the actual number, 2.8.12 or 2.9.4 for example.</li>
 </ul></li>
 <li>If &quot;Configure&quot; still doesn't work, then something is wrong with your wxWidgets build... go back and fix it.</li>
-<li>If &quot;Configure&quot; succeeds, the output window should say &quot;Configuring done&quot; and the log should have a complete description of your wxWidgets build.</li>
+<li>If &quot;Configure&quot; succeeds, the output window should say &quot;Configuring done&quot; and the log should have a complete description of your wxLua build.</li>
 <li>Press &quot;Generate&quot; to have CMake write out the build files.</li>
 <li>Open <code>wxLua.sln</code> in the build directory...</li>
 <li>Choose the &quot;Solution Configuration&quot; (<code>Debug, Release, MinSizeRel, RelWithDebInfo</code>) that matches your wxWidgets build and build everything.
@@ -669,7 +692,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><code>wxWidgets_VERSION=[2.8.x,2.9.x]</code></li>
 </ul></li>
 <li>If &quot;Configure&quot; still doesn't work, then something is wrong with your wxWidgets build... go back and fix it.</li>
-<li>If &quot;Configure&quot; succeeds, the output window should say &quot;Configuring done&quot; and the log should have a complete description of your wxWidgets build.</li>
+<li>If &quot;Configure&quot; succeeds, the output window should say &quot;Configuring done&quot; and the log should have a complete description of your wxLua build.</li>
 <li>Press &quot;Generate&quot; to have CMake write out the build files.</li>
 <li>Open a <code>cmd.exe</code> prompt to run <code>mingw32-make.exe help</code> to display all the available targets.</li>
 <li>If you run <code>mingw32-make.exe</code> with no parameters you will build everything, which is probably best.</li>
@@ -680,14 +703,14 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <ol style="list-style-type: decimal">
 <li>Choose the <code>CMAKE_BUILD_TYPE</code> that you want.
 <ul>
-<li>Note that in Linux you can mix and match Release and Debug versions.</li>
+<li>Note that the CMake Makefile generator requires separate directories for each Debug, Release, MinSizeRel, and RelWithDebInfo builds.</li>
 </ul></li>
 <li>To find wxWidgets you must set the variable
 <ul>
 <li><code>wxWidgets_CONFIG_EXECUTABLE=/path/to/wx-config</code></li>
 <li>See above about building wxWidgets for Linux for a description of it.</li>
 </ul></li>
-<li>Press &quot;Configure&quot; and the output window should say &quot;Configuring done&quot; and the log should have a complete description of your wxWidgets build.</li>
+<li>Press &quot;Configure&quot; and the output window should say &quot;Configuring done&quot; and the log should have a complete description of your wxLua build.</li>
 <li>Press &quot;Generate&quot; to have CMake write out the build files.</li>
 <li>Open a terminal, change into your wxLua build dir and run <code>make help</code> to display all the available targets.</li>
 <li>If you run <code>make</code> with no parameters you will build everything, which is probably best.</li>
@@ -701,7 +724,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h3 id="building-a-minimal-set-of-wxwidgets-wrappers">5.1 - Building a minimal set of wxWidgets wrappers</h3>
 <p>The functionality of wxLua's wxWidgets bindings are limited by your wxWidgets build settings; i.e. if you built wxWidgets with <code>wxUSE_TIMER=0</code> then you will not be able to use the wxTimer class in wxLua.</p>
 <p>If you want all of the wxWidgets API that's available in your wxWidgets build wrapped by wxLua, simply build wxLua using the directions above, no modifications required.</p>
-<p>On the other hand, if you wish to make the wxLua bindings smaller, you will need to set the CMake variable <code>wxLuaBind_WXLUASETUP_DIR</code> to point to the directory of a customized <code>wxluasetup.h</code> header which should start as a copy of <code>modules/wxbind/setup/wxluasetup.h</code>. It is best to copy it to a new directory instead of modifying the original one. This way you will have the original as a backup to compare your changes to.</p>
+<p>On the other hand, if you wish to make the wxLua bindings smaller, you will need to set the CMake variable <code>wxLuaBind_WXLUASETUP_DIR</code> to point to the directory with a customized <code>wxluasetup.h</code> header copied from <code>modules/wxbind/setup/wxluasetup.h</code>. It is best to copy it to a new directory instead of modifying the original one. This way you will have the original as a backup to compare your changes to.</p>
 <p>The <code>wxluasetup.h</code> header file contains a number of <code>wxLUA_USE_XXX</code> #defines that are fairly self explanitory. By setting some of them to <code>0</code> you can block out large chunks of the wxWidgets bindings making the library smaller.</p>
 <p>Be careful about which parts you remove since you can badly cripple your ability to create and use higher-level objects if you disable the lower-level parts they rely on. Though, this may be your goal, some experimentation may be required.</p>
 <p>Once you have created and edited your <code>wxluasetup.h</code> you can build your custom wxLuaBind library following the directions above.</p>
@@ -723,13 +746,13 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+'wxlua-users mailing list'+
 <ul>
 <li><code>wxbind..., wxbindcore, wxbindbase, wxluadebugger, wxluadebug, wxlua, lua, wxWidgets libs</code></li>
 </ul></li>
-<li>Obviously, you should remove the libraries you don't use (e.g. wxluadebugger, wxluadebug)</li>
-<li>wxLua names its libraries similarly to the wxWidgets naming convention:
+<li>You may be able to remove the libraries you don't use, e.g. wxluadebugger or wxluadebug.</li>
+<li>wxLua names its libraries using the wxWidgets naming convention:
 <ul>
 <li><code>{wxlua_libname}-wx$(WX_VERSION_MAJOR)$(WX_VERSION_MINOR)$(WX_PORT)$(WXLIBPOSTFIX)</code></li>
 <li><code>WX_PORT</code> can be <code>gtk2, msw, x11, etc</code></li>
-<li><code>WXLIBPOSTFIX</code> can be <code>u, d, ud</code>.</li>
-<li>E.G. <code>libwxlua-wx29gtk2ud-2.8.12.so, libwxlua_debug-wx29gtk2ud-2.8.12.so,     libwxlua_debugger-wx29gtk2ud-2.8.12.so, libwxlua_bind-wx29gtk2ud-2.8.12.so</code></li>
+<li><code>WXLIBPOSTFIX</code> can be <code>u, d, ud</code> for Unicode and debug.</li>
+<li>E.G. <code>libwxlua-wx29gtk2ud-2.8.12.so</code>, <code>libwxlua_debug-wx29gtk2ud-2.8.12.so</code>, <code>libwxlua_debugger-wx29gtk2ud-2.8.12.so</code>, <code>libwxlua_bind-wx29gtk2ud-2.8.12.so</code></li>
 </ul></li>
 </ul>
 </body>

@@ -225,11 +225,6 @@ and notes about how it all works.
         from when it was created since otherwise the function
         `wxLuaPrintout::OnBeginDocument()` wouldn't know what `lua_State`
         is active since wxWidgets doesn't know anything about wxLua.
-    -   In the past wxLua would iterate through a list of wxLuaStates to
-        try to find the C++ userdata object, the `wxLuaPrintout` instance,
-        in order to find the correct lua_State. This can impose a large
-        performance penalty if there are multiple states and/or a large
-        number of userdata objects.
 
 -   In `wxLuaPrintout::OnBeginDocument()` we first check to see if
     `wxLuaState::GetCallBaseClassFunction()` is true, if not, check to

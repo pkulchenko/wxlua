@@ -139,7 +139,6 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li>The wxWidgets printing framework calls <code>virtual wxPrintout::OnBeginDocument(...)</code>, but we've subclassed wxPrintout and so its function <code>wxLuaPrintout::OnBeginDocument(...)</code> gets called.
 <ul>
 <li>The class <code>wxLuaPrintout</code> keeps a refed copy of the <code>wxLuaState</code> from when it was created since otherwise the function <code>wxLuaPrintout::OnBeginDocument()</code> wouldn't know what <code>lua_State</code> is active since wxWidgets doesn't know anything about wxLua.</li>
-<li>In the past wxLua would iterate through a list of wxLuaStates to try to find the C++ userdata object, the <code>wxLuaPrintout</code> instance, in order to find the correct lua_State. This can impose a large performance penalty if there are multiple states and/or a large number of userdata objects.</li>
 </ul></li>
 <li>In <code>wxLuaPrintout::OnBeginDocument()</code> we first check to see if <code>wxLuaState::GetCallBaseClassFunction()</code> is true, if not, check to see if <code>wxLuaState::HasDerivedMethod(this, &quot;OnBeginDocument&quot;)</code> is true, where <em>this</em> is the particular instance of the <code>wxLuaPrintout</code> class.
 <ul>
