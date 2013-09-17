@@ -12,12 +12,14 @@
 
 #include "wxlua/wxldefs.h"
 
+#include <wx/event.h>
+
 #ifdef GetObject
     #undef GetObject // MSVC defines this
 #endif
 
-class WXDLLIMPEXP_FWD_WXLUA wxLuaBinding;
-class WXDLLIMPEXP_FWD_WXLUA wxLuaState;
+class  WXDLLIMPEXP_FWD_WXLUA wxLuaBinding;
+class  WXDLLIMPEXP_FWD_WXLUA wxLuaState;
 struct WXDLLIMPEXP_FWD_WXLUA wxLuaBindClass;
 
 // ----------------------------------------------------------------------------
@@ -332,11 +334,11 @@ public:
     // Get/Set the binding name, a unique name of the binding.
     //   By default it is the "hook_cpp_namespace" used in the binding
     //   generator which needs to be a unique name.
-    wxString GetBindingName() const { return m_bindingName; }
+    wxString GetBindingName() const           { return m_bindingName; }
     void SetBindingName(const wxString& name) { m_bindingName = name; }
 
     // Get/Set the namespace table in Lua that this binding will be installed to
-    wxString GetLuaNamespace() const { return m_nameSpace; }
+    wxString GetLuaNamespace() const                { return m_nameSpace; }
     void SetLuaNamespace(const wxString& nameSpace) { m_nameSpace = nameSpace; }
 
     size_t GetClassCount() const        { return m_classCount; }

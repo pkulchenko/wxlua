@@ -27,6 +27,7 @@ HEADERS = \
 	wxlbind.h \
 	wxlcallb.h \
 	wxlconsole.h \
+	wxllua.h \
 	wxlobject.h \
 	wxlstate.h \
 	wxlversion.h
@@ -36,6 +37,7 @@ SOURCES = \
 	wxlbind.cpp \
 	wxlcallb.cpp \
 	wxlconsole.cpp \
+	wxllua.cpp \
 	wxlobject.cpp \
 	wxlstate.cpp \
 	wxlua_bind.cpp

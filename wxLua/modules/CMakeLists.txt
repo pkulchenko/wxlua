@@ -307,6 +307,7 @@ ADD_LIBRARY_FULL( wxLuaLib
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlcallb.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlconsole.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxldefs.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxllua.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlobject.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlstate.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlua.h
@@ -318,6 +319,7 @@ ADD_LIBRARY_FULL( wxLuaLib
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlbind.cpp
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlcallb.cpp
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlconsole.cpp
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxllua.cpp
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlobject.cpp
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlstate.cpp
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlua_bind.cpp
