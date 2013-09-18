@@ -1,15 +1,17 @@
-local math_floor = math.floor
-local string_find = string.find
-local string_sub = string.sub
-local string_gsub = string.gsub
+local math_floor   = math.floor
+local string_find  = string.find
+local string_sub   = string.sub
+local string_gsub  = string.gsub
 local table_insert = table.insert
 
 
-p = 'c:/labenski/wx/wxWidgets/wxWidgets_a/docs/doxygen/out/xml/'
-p = "/home/jlabenski/wx/wx-svn/wx/wxWidgets/wxWidgets-trunk/docs/doxygen/out/xml/"
+p = 'C:/jlabenski/development/wx/wx/wxWidgets/wxWidgets-trunk/docs/doxygen/out/xml/'
+--p = "/home/jlabenski/wx/wx-svn/wx/wxWidgets/wxWidgets-trunk/docs/doxygen/out/xml/"
 
 f_html = {
 'index.xml',
+
+'defs_8h.xml',
 
 'brush_8h.xml',
 'classwx_brush.xml',
@@ -664,7 +666,7 @@ end
 function ParseDoxyXML_compounddef_class(T_xml, T_class)
     local func_name = "ParseDoxyXML_compounddef_class"
 
-    CheckDoxyXML_xarg(T_xml, {"kind", "~id", "~prot"}, func_name)
+    CheckDoxyXML_xarg(T_xml, {"kind", "~id", "~prot", "~abstract"}, func_name)
 
     if not T_class.kind then
         T_class.kind = "class"
@@ -677,6 +679,9 @@ function ParseDoxyXML_compounddef_class(T_xml, T_class)
 
     if T_xml.xarg.prot then
         AddToTable(T_class, "prot", T_xml.xarg.prot)
+    end
+    if T_xml.xarg.abstract then
+        AddToTable(T_class, "abstract", T_xml.xarg.abstract)
     end
 
     for k, v in ipairs(T_xml) do
@@ -694,7 +699,7 @@ function ParseDoxyXML_compounddef_class(T_xml, T_class)
 
             if not T_class["baseclassnames"] then T_class["baseclassnames"] = {} end
 
-            T_baseclass = {}
+            local T_baseclass = {}
             T_baseclass.name = v[1]
             T_baseclass.prot = v.xarg.prot
             T_baseclass.virt = v.xarg.virt
@@ -707,7 +712,7 @@ function ParseDoxyXML_compounddef_class(T_xml, T_class)
 
             if not T_class["includes"] then T_class["includes"] = {} end
 
-            T_include = {}
+            local T_include = {}
             T_include.name  = v[1]
             T_include["local"] = v.xarg["local"]
             T_class["includes"][#T_class["includes"]+1] = T_include
@@ -948,14 +953,14 @@ function ParseDoxyXML_param(T_xml, T_class)
 
         elseif (v.label == "defval") then
 
-            local v1 = RemoveDoxyXML_ref(v[1])
-            local v2 = RemoveDoxyXML_ref(v[2] or "")
-            local v3 = RemoveDoxyXML_ref(v[3] or "")
-            AddToTable(T_param, "defval", v1..(v2 or "")..(v3 or "")) -- e.g. v[1]=wxString v[2]=()
+            local defval = ""
+            for i = 1,#v do
+                defval = defval..RemoveDoxyXML_ref(v[i])
+            end
 
-            CheckDoxyXML_nvalues(v, #v == 1 or #v == 2 or #v == 3, func_name)
+            AddToTable(T_param, "defval", defval)
+
             CheckDoxyXML_xarg(v, {}, func_name)
-
         else
             print("Unknown label in ParseDoxyXML_param:", v.label)
         end
@@ -1277,18 +1282,21 @@ function CheckDoxyXML_xarg(T, T_known_xarg, func_name)
         else
             T_known_xarg_v[v] = 1
             if (T_xarg[v] == nil) then
-                printf("WARNING: Missing xarg '%s' on line %d in func '%s'.", v, T.line, func_name)
+                local linenumber = debug.getinfo(2).currentline -- get source line #
+                printf("WARNING: Missing xarg '%s' on line %d in func '%s' line %d.", v, T.line, func_name, linenumber)
             end
         end
     end
     for k, v in pairs(T_xarg) do
         if T_known_xarg_v[k] == nil then
-            printf("WARNING: Extra xarg '%s' on line %d in func '%s'.", k, T.line, func_name)
+            local linenumber = debug.getinfo(2).currentline -- get source line #
+            printf("WARNING: Extra xarg '%s' on line %d in func '%s' line %d.", k, T.line, func_name, linenumber)
         end
     end
 
     if n_T_xarg ~= n_T_known_xarg then
-        --printf("WARNING: Different number of xargs on line %d in func '%s'.", T.line, func_name)
+        --local linenumber = debug.getinfo(2).currentline -- get source line #
+        --printf("WARNING: Different number of xargs on line %d in func '%s' line %d.", T.line, func_name, linenumber)
     end
 
 end
@@ -1298,7 +1306,8 @@ end
 
 function CheckDoxyXML_nvalues(T, ok, func_name)
     if not ok then
-        printf("WARNING: '%s' has %d values on line %s in func %s.", T.label, #T, tostring(T.line), func_name)
+        local linenumber = debug.getinfo(2).currentline -- get source line #
+        printf("WARNING: '%s' has %d values on line %s in func '%s' on line %d.", T.label, #T, tostring(T.line), func_name, linenumber)
     end
 end
 
