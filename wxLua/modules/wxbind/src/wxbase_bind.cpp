@@ -208,9 +208,9 @@ wxLuaBindNumber* wxLuaGetDefineList_wxbase(size_t &count)
         { "wxDIR_IGNORE", wxDIR_IGNORE },
 #endif // (wxLUA_USE_wxDir) && (wxCHECK_VERSION(2,9,4))
 
-#if (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxDir)
+#if (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxDir)
         { "wxDIR_NO_FOLLOW", wxDIR_NO_FOLLOW },
-#endif // (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxDir)
+#endif // (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxDir)
 
 #if (wxLUA_USE_wxDir) && (wxCHECK_VERSION(2,9,4))
         { "wxDIR_STOP", wxDIR_STOP },

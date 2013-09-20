@@ -1358,7 +1358,7 @@ class %delete wxDC : public wxObject
     bool IsOk( );
     void ResetBoundingBox( );
     void SetAxisOrientation(bool xLeftRight, bool yBottomUp );
-    %wxchkver_2_9_4 virtual double GetContentScaleFactor() const;
+    %wxchkver_2_9_5 virtual double GetContentScaleFactor() const;
     void SetBackground(const wxBrush& brush );
     void SetBackgroundMode(int mode );
     void SetBrush(const wxBrush& brush );

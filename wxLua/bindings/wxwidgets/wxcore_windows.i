@@ -230,7 +230,7 @@ class wxWindow : public wxEvtHandler
 
     wxSize GetVirtualSize() const;
     %wxchkver_2_9_4 virtual wxSize GetBestVirtualSize() const;
-    %wxchkver_2_9_4 virtual double GetContentScaleFactor() const;    
+    %wxchkver_2_9_5 virtual double GetContentScaleFactor() const;    
     long GetWindowStyleFlag() const;
     wxWindowVariant GetWindowVariant() const;
     %wxchkver_2_4 bool HasCapture() const;

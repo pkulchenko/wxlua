@@ -1347,11 +1347,11 @@ static int LUACALL wxLua_wxWindow_GetContainingSizer(lua_State *L)
 
 #endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
 
-#if wxCHECK_VERSION(2,9,4)
+#if wxCHECK_VERSION(2,9,5)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_GetContentScaleFactor[] = { &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxWindow_GetContentScaleFactor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_GetContentScaleFactor[1] = {{ wxLua_wxWindow_GetContentScaleFactor, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWindow_GetContentScaleFactor }};
-//     %wxchkver_2_9_4 virtual double GetContentScaleFactor() const;    
+//     %wxchkver_2_9_5 virtual double GetContentScaleFactor() const;    
 static int LUACALL wxLua_wxWindow_GetContentScaleFactor(lua_State *L)
 {
     // get this
@@ -1364,7 +1364,7 @@ static int LUACALL wxLua_wxWindow_GetContentScaleFactor(lua_State *L)
     return 1;
 }
 
-#endif // wxCHECK_VERSION(2,9,4)
+#endif // wxCHECK_VERSION(2,9,5)
 
 #if wxLUA_USE_wxCursor
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_GetCursor[] = { &wxluatype_wxWindow, NULL };
@@ -4292,9 +4292,9 @@ wxLuaBindMethod wxWindow_methods[] = {
     { "GetContainingSizer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_GetContainingSizer, 1, NULL },
 #endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
 
-#if wxCHECK_VERSION(2,9,4)
+#if wxCHECK_VERSION(2,9,5)
     { "GetContentScaleFactor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_GetContentScaleFactor, 1, NULL },
-#endif // wxCHECK_VERSION(2,9,4)
+#endif // wxCHECK_VERSION(2,9,5)
 
 #if wxLUA_USE_wxCursor
     { "GetCursor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_GetCursor, 1, NULL },

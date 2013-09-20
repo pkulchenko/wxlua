@@ -458,7 +458,7 @@ class %delete wxTempFile
 #define wxDIR_DIRS
 #define wxDIR_HIDDEN
 #define wxDIR_DOTDOT
-%wxchkver_2_9_4 #define wxDIR_NO_FOLLOW
+%wxchkver_2_9_5 #define wxDIR_NO_FOLLOW
 #define wxDIR_DEFAULT
 
 
