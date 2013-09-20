@@ -376,11 +376,12 @@ static int LUACALL wxLua_wxEvtHandler_ProcessEvent(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_QueueEvent[] = { &wxluatype_wxEvtHandler, &wxluatype_wxEvent, NULL };
 static int LUACALL wxLua_wxEvtHandler_QueueEvent(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_QueueEvent[1] = {{ wxLua_wxEvtHandler_QueueEvent, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxEvtHandler_QueueEvent }};
-//     %wxchkver_2_9 virtual void QueueEvent(wxEvent *event);
+//     %wxchkver_2_9 virtual void QueueEvent(%ungc wxEvent *event);
 static int LUACALL wxLua_wxEvtHandler_QueueEvent(lua_State *L)
 {
     // wxEvent event
     wxEvent * event = (wxEvent *)wxluaT_getuserdatatype(L, 2, wxluatype_wxEvent);
+    if (wxluaO_isgcobject(L, event)) wxluaO_undeletegcobject(L, event);
     // get this
     wxEvtHandler * self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
     // call QueueEvent
