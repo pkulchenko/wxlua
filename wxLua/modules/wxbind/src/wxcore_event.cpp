@@ -371,6 +371,26 @@ static int LUACALL wxLua_wxEvtHandler_ProcessEvent(lua_State *L)
     return 1;
 }
 
+
+#if wxCHECK_VERSION(2,9,0)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_QueueEvent[] = { &wxluatype_wxEvtHandler, &wxluatype_wxEvent, NULL };
+static int LUACALL wxLua_wxEvtHandler_QueueEvent(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_QueueEvent[1] = {{ wxLua_wxEvtHandler_QueueEvent, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxEvtHandler_QueueEvent }};
+//     %wxchkver_2_9 virtual void QueueEvent(wxEvent *event);
+static int LUACALL wxLua_wxEvtHandler_QueueEvent(lua_State *L)
+{
+    // wxEvent event
+    wxEvent * event = (wxEvent *)wxluaT_getuserdatatype(L, 2, wxluatype_wxEvent);
+    // get this
+    wxEvtHandler * self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+    // call QueueEvent
+    self->QueueEvent(event);
+
+    return 0;
+}
+
+#endif // wxCHECK_VERSION(2,9,0)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_SetClientData[] = { &wxluatype_wxEvtHandler, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxEvtHandler_SetClientData(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_SetClientData[1] = {{ wxLua_wxEvtHandler_SetClientData, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxEvtHandler_SetClientData }};
@@ -488,6 +508,11 @@ wxLuaBindMethod wxEvtHandler_methods[] = {
     { "GetNextHandler", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_GetNextHandler, 1, NULL },
     { "GetPreviousHandler", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_GetPreviousHandler, 1, NULL },
     { "ProcessEvent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_ProcessEvent, 1, NULL },
+
+#if wxCHECK_VERSION(2,9,0)
+    { "QueueEvent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_QueueEvent, 1, NULL },
+#endif // wxCHECK_VERSION(2,9,0)
+
     { "SetClientData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_SetClientData, 1, NULL },
     { "SetClientObject", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_SetClientObject, 1, NULL },
     { "SetEvtHandlerEnabled", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_SetEvtHandlerEnabled, 1, NULL },

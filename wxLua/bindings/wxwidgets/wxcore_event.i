@@ -42,6 +42,7 @@ class %delete wxEvtHandler : public wxObject
     wxEvtHandler* GetNextHandler( );
     wxEvtHandler* GetPreviousHandler( );
     virtual bool ProcessEvent(wxEvent& event );
+    %wxchkver_2_9 virtual void QueueEvent(wxEvent *event);
     //virtual bool SearchEventTable(wxEventTable& table, wxEvent& event );
     void SetClientData(voidptr_long number); // C++ is (void *clientData) You can put a number here
     void SetClientObject(wxClientData* data );
