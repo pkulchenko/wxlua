@@ -24,7 +24,7 @@
 
 -- formatted print statement
 function printf(...)
-    io.write(string.format(unpack(arg)))
+    io.write(string.format(unpack({...})))
 end
 
 -- simple test to see if the file exits or not
