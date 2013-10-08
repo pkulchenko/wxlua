@@ -579,6 +579,11 @@ class wxAuiNotebook : public wxControl
 
     // Shows the window menu
     bool ShowWindowMenu();
+    
+    wxString GetPageToolTip( size_t pageIdx ) const;
+    bool SetPageToolTip( size_t page, const wxString& text );
+
+    
 #endif
 };
 
