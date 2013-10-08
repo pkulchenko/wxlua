@@ -103,6 +103,12 @@ enum
 };
 #endif // !%wxchkver_2_8
 
+// ---------------------------------------------------------------------------
+
+#define wxNOT_FOUND        //      (-1)
+
+// ---------------------------------------------------------------------------
+
 wxString wxGetEmailAddress( );
 wxLongLong wxGetFreeMemory( );
 wxString wxGetFullHostName( );

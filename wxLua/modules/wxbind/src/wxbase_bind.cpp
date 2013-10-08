@@ -667,6 +667,11 @@ wxLuaBindNumber* wxLuaGetDefineList_wxbase(size_t &count)
 #if !wxCHECK_VERSION(2,8,0)
         { "wxMOTIF_X", wxMOTIF_X },
         { "wxNEXTSTEP", wxNEXTSTEP },
+#endif // !wxCHECK_VERSION(2,8,0)
+
+        { "wxNOT_FOUND", wxNOT_FOUND },
+
+#if !wxCHECK_VERSION(2,8,0)
         { "wxOS2_PM", wxOS2_PM },
 #endif // !wxCHECK_VERSION(2,8,0)
 
