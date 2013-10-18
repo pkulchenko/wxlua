@@ -377,7 +377,7 @@ if ("${LuaLib_Export}" STREQUAL "")
 "\n
 # Create imported target LuaLib
 ADD_LIBRARY(LuaLib UNKNOWN IMPORTED)
-# Import target "LuaLib"
+# Import target \"LuaLib\"
 SET_TARGET_PROPERTIES(LuaLib PROPERTIES IMPORTED_LOCATION \"${wxLua_LUA_LIBRARY}\")
 \n")
 endif()
