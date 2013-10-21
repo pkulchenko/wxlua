@@ -1170,6 +1170,16 @@
 <td align="center" bgcolor=#AAFFAA>X
 <td>&nbsp;
 <tr>
+<td><a href="#wxFileSystemWatcher">wxFileSystemWatcher</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
+<td><a href="#wxFileSystemWatcherEvent">wxFileSystemWatcherEvent</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
 <td><a href="#wxFileType">wxFileType</a>
 <td align="center" bgcolor=#AAFFAA>X
 <td align="center" bgcolor=#AAFFAA>X
@@ -3542,6 +3552,8 @@
 <a href="#wxEOL">wxEOL</a><br>
 <a href="#wxEdge">wxEdge</a><br>
 <a href="#wxEndianness">wxEndianness</a><br>
+<a href="#wxFSWPathType">wxFSWPathType</a><br>
+<a href="#wxFSWWarningType">wxFSWWarningType</a><br>
 <a href="#wxFTP::TransferMode">wxFTP::TransferMode</a><br>
 <a href="#wxFile::OpenMode">wxFile::OpenMode</a><br>
 <a href="#wxFile::dummy">wxFile::dummy</a><br>
@@ -3799,6 +3811,12 @@ enum<br>
     wxDOS<br>
 };<br>
 #endif <font color=#009900>// !<i>%wxchkver_2_8</i></font><br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<br>
+<font color=#006666>#define wxNOT_FOUND        <font color=#009900>//      (-1)</font></font><br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
 <br>
 <a href="#wxString">wxString</a> wxGetEmailAddress( );<br>
 <a href="#wxLongLong">wxLongLong</a> wxGetFreeMemory( );<br>
@@ -4464,6 +4482,82 @@ enum<br>
 <br>
 #endif <font color=#009900>//wxLUA_USE_wxRegEx &amp;&amp; wxUSE_REGEX</font><br>
 <br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxEvtHandler">wxEvtHandler</a></font><br>
+<br>
+#include "wx/event.h"<br>
+<br>
+<b><font size=+1 color=#DD0000>class <i>%delete</i> <a href="#wxEvtHandler">wxEvtHandler</a> : public <a name="wxObject">wxObject</a></font></b><br>
+{
+<blockquote>
+    <a href="#wxEvtHandler">wxEvtHandler</a>( );<br>
+<br>
+    void AddPendingEvent(<a href="#wxEvent">wxEvent</a>&amp; event );<br>
+<br>
+    <font color=#009900>// NOTE: Connect used to be called ConnectEvent in wxLua which is not the name of any C++ function.</font><br>
+<br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> wxEvtHandler::Connect(int id, int lastId, wxEventType eventType, Lua function );</font></font><br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> wxEvtHandler::Connect(int id, wxEventType eventType, Lua function );</font></font><br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> wxEvtHandler::Connect(wxEventType eventType, Lua function );</font></font><br>
+    <font color=#009900>// The function type above is determined at runtime depending on the inputs.</font><br>
+    <font color=#009900>// C++ Func: void Connect(int id, int lastId, wxEventType eventType, wxObjectEventFunction function, <a href="#wxObject">wxObject</a>* userData = NULL, <a href="#wxEvtHandler">wxEvtHandler</a>* eventSink = NULL );</font><br>
+    <font color=#009900>// Note: wxLua uses the userdata and the event sink and so they're not available</font><br>
+    void Connect(int id, int lastId, wxEventType eventType, LuaFunction func );<br>
+<br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> bool Disconnect(int winid, int lastId, wxEventType eventType );</font></font><br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> bool Disconnect(int winid, wxEventType eventType );</font></font><br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> bool Disconnect(wxEventType eventType );</font></font><br>
+    <font color=#009900>// The function type above is determined at runtime depending on the inputs.</font><br>
+    <font color=#009900>// C++ Func: bool Disconnect(int id, int lastId = wxID_ANY, wxEventType eventType = wxEVT_NULL, wxObjectEventFunction function = NULL, <a href="#wxObject">wxObject</a>* userData = NULL, <a href="#wxEvtHandler">wxEvtHandler</a>* eventSink = NULL );</font><br>
+    <font color=#009900>// Note: wxLua uses the userdata and the event sink and so they're not available</font><br>
+    bool Disconnect(int id, int lastId, wxEventType eventType );<br>
+<br>
+    voidptr_long GetClientData(); <font color=#009900>// C++ returns (void *) You get a number here</font><br>
+    <a href="#wxClientData">wxClientData</a>* GetClientObject() const;<br>
+    bool GetEvtHandlerEnabled( );<br>
+    <a href="#wxEvtHandler">wxEvtHandler</a>* GetNextHandler( );<br>
+    <a href="#wxEvtHandler">wxEvtHandler</a>* GetPreviousHandler( );<br>
+    virtual bool ProcessEvent(<a href="#wxEvent">wxEvent</a>&amp; event );<br>
+    <i>%wxchkver_2_9</i> virtual void QueueEvent(<i>%ungc</i> <a href="#wxEvent">wxEvent</a> *event);<br>
+    <font color=#009900>//virtual bool SearchEventTable(wxEventTable&amp; table, <a href="#wxEvent">wxEvent</a>&amp; event );</font><br>
+    void SetClientData(voidptr_long number); <font color=#009900>// C++ is (void *clientData) You can put a number here</font><br>
+    void SetClientObject(<a href="#wxClientData">wxClientData</a>* data );<br>
+    void SetEvtHandlerEnabled(bool enabled );<br>
+    void SetNextHandler(<a href="#wxEvtHandler">wxEvtHandler</a>* handler );<br>
+    void SetPreviousHandler(<a href="#wxEvtHandler">wxEvtHandler</a>* handler );<br>
+</blockquote>};<br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxEvent">wxEvent</a></font><br>
+<br>
+<b><font size=+1 color=#0066CC>enum <a name="Propagation_state">Propagation_state</a></font></b><br>
+{
+<blockquote>
+    wxEVENT_PROPAGATE_NONE, <font color=#009900>// don't propagate it at all</font><br>
+    wxEVENT_PROPAGATE_MAX  <font color=#009900>// propagate it until it is processed</font><br>
+</font>
+</blockquote>};<br>
+<br>
+<b><font size=+1 color=#DD0000>class <i>%delete</i> <a href="#wxEvent">wxEvent</a> : public <a name="wxObject">wxObject</a></font></b><br>
+{
+<blockquote>
+    <font color=#009900>// <a href="#wxEvent">wxEvent</a>(int id = 0, wxEventType eventType = wxEVT_NULL) virtual base class</font><br>
+<br>
+    <a href="#wxObject">wxObject</a>* GetEventObject( );<br>
+    wxEventType GetEventType( );<br>
+    int GetId( );<br>
+    bool GetSkipped( );<br>
+    long GetTimestamp( );<br>
+    bool IsCommandEvent() const;<br>
+    void ResumePropagation(int propagationLevel );<br>
+    void SetEventObject(<a href="#wxObject">wxObject</a>* object );<br>
+    void SetEventType(wxEventType type );<br>
+    void SetId(int id );<br>
+    void SetTimestamp(long timeStamp );<br>
+    bool ShouldPropagate() const;<br>
+    void Skip(bool skip = true );<br>
+    int StopPropagation( );<br>
+</blockquote>};<br>
 <br><HR>
 
 <h2><a name="wxwidgets_wxbase_config.i">wxwidgets/wxbase_config.i</a> - Lua table = 'wx'</h2>
@@ -7411,6 +7505,104 @@ enum<br>
 <br>
 <br>
 #endif <font color=#009900>// wxUSE_STREAMS</font><br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>//  <a href="#wxFileSystemWatcher">wxFileSystemWatcher</a> classes</font><br>
+<br>
+#if wxUSE_FSWATCHER &amp;&amp; <i>%wxchkver_2_9_4</i><br>
+<br>
+#include "wx/fswatcher.h"<br>
+<br>
+enum<br>
+{<br>
+    wxFSW_EVENT_CREATE, <font color=#009900>// = 0x01,</font><br>
+    wxFSW_EVENT_DELETE, <font color=#009900>// = 0x02,</font><br>
+    wxFSW_EVENT_RENAME, <font color=#009900>// = 0x04,</font><br>
+    wxFSW_EVENT_MODIFY, <font color=#009900>// = 0x08,</font><br>
+    wxFSW_EVENT_ACCESS, <font color=#009900>// = 0x10,</font><br>
+    wxFSW_EVENT_ATTRIB, <font color=#009900>// = 0x20, // Currently this is wxGTK-only</font><br>
+<br>
+    <font color=#009900>// error events</font><br>
+    wxFSW_EVENT_WARNING, <font color=#009900>// = 0x40,</font><br>
+    wxFSW_EVENT_ERROR, <font color=#009900>// = 0x80,</font><br>
+    wxFSW_EVENT_ALL, <font color=#009900>// = wxFSW_EVENT_CREATE | wxFSW_EVENT_DELETE |</font><br>
+                     <font color=#009900>//    wxFSW_EVENT_RENAME | wxFSW_EVENT_MODIFY |</font><br>
+                     <font color=#009900>//    wxFSW_EVENT_ACCESS | wxFSW_EVENT_ATTRIB |</font><br>
+                     <font color=#009900>//    wxFSW_EVENT_WARNING | wxFSW_EVENT_ERROR</font><br>
+#if defined(wxHAS_INOTIFY)<br>
+    wxFSW_EVENT_UNMOUNT, <font color=#009900>// = 0x2000</font><br>
+#endif<br>
+};<br>
+<br>
+<font color=#009900>// Type of the path watched, used only internally for now.</font><br>
+<b><font size=+1 color=#0066CC>enum <a name="wxFSWPathType">wxFSWPathType</a></font></b><br>
+{
+<blockquote>
+    wxFSWPath_None,     <font color=#009900>// Invalid value for an initialized watch.</font><br>
+    wxFSWPath_File,     <font color=#009900>// Plain file.</font><br>
+    wxFSWPath_Dir,      <font color=#009900>// Watch a directory and the files in it.</font><br>
+    wxFSWPath_Tree      <font color=#009900>// Watch a directory and all its children recursively.</font><br>
+</font>
+</blockquote>};<br>
+<br>
+<font color=#009900>// Type of the warning for the events notifying about them.</font><br>
+<b><font size=+1 color=#0066CC>enum <a name="wxFSWWarningType">wxFSWWarningType</a></font></b><br>
+{
+<blockquote>
+    wxFSW_WARNING_NONE,<br>
+    wxFSW_WARNING_GENERAL,<br>
+    wxFSW_WARNING_OVERFLOW<br>
+</font>
+</blockquote>};<br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxFileSystemWatcherEvent">wxFileSystemWatcherEvent</a></font><br>
+<br>
+<b><font size=+1 color=#DD0000>class <i>%delete</i> wxFileSystemWatcherEvent: public <a name="wxEvent">wxEvent</a></font></b><br>
+{
+<blockquote>
+public:<br>
+    <i>%wxEventType</i> wxEVT_FSWATCHER   <font color=#009900>// EVT_FSWATCHER(winid, func);</font><br>
+<br>
+    <a href="#wxFileSystemWatcherEvent">wxFileSystemWatcherEvent</a>(int changeType = 0, int watchid = wxID_ANY);<br>
+    <a href="#wxFileSystemWatcherEvent">wxFileSystemWatcherEvent</a>(int changeType, <a href="#wxFSWWarningType">wxFSWWarningType</a> warningType, const <a href="#wxString">wxString</a>&amp; errorMsg = "", int watchid = wxID_ANY);<br>
+    <a href="#wxFileSystemWatcherEvent">wxFileSystemWatcherEvent</a>(int changeType, const <a href="#wxFileName">wxFileName</a>&amp; path, const <a href="#wxFileName">wxFileName</a>&amp; newPath, int watchid = wxID_ANY);<br>
+<br>
+    const <a href="#wxFileName">wxFileName</a>&amp; GetPath() const;<br>
+    void SetPath(const <a href="#wxFileName">wxFileName</a>&amp; path);<br>
+    const <a href="#wxFileName">wxFileName</a>&amp; GetNewPath() const;<br>
+    void SetNewPath(const <a href="#wxFileName">wxFileName</a>&amp; path);<br>
+    int GetChangeType() const;<br>
+    <font color=#009900>//virtual <a href="#wxEvent">wxEvent</a>* Clone() const;</font><br>
+    <font color=#009900>//virtual wxEventCategory GetEventCategory() const;</font><br>
+    bool IsError() const;<br>
+    <a href="#wxString">wxString</a> GetErrorDescription() const;<br>
+    <a href="#wxFSWWarningType">wxFSWWarningType</a> GetWarningType() const;<br>
+    <a href="#wxString">wxString</a> ToString() const;<br>
+</blockquote>};<br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxFileSystemWatcher">wxFileSystemWatcher</a></font><br>
+<br>
+<b><font size=+1 color=#DD0000>class <a href="#wxFileSystemWatcher">wxFileSystemWatcher</a> : public <a name="wxEvtHandler">wxEvtHandler</a></font></b><br>
+{
+<blockquote>
+public:<br>
+    <a href="#wxFileSystemWatcher">wxFileSystemWatcher</a>();<br>
+<br>
+    virtual bool Add(const <a href="#wxFileName">wxFileName</a>&amp; path, int events = wxFSW_EVENT_ALL);<br>
+    bool AddAny(const <a href="#wxFileName">wxFileName</a>&amp; path, int events, <a href="#wxFSWPathType">wxFSWPathType</a> type, const <a href="#wxString">wxString</a>&amp; filespec = "");<br>
+    virtual bool AddTree(const <a href="#wxFileName">wxFileName</a>&amp; path, int events = wxFSW_EVENT_ALL, const <a href="#wxString">wxString</a>&amp; filespec = wxEmptyString);<br>
+    virtual bool Remove(const <a href="#wxFileName">wxFileName</a>&amp; path);<br>
+    virtual bool RemoveTree(const <a href="#wxFileName">wxFileName</a>&amp; path);<br>
+    virtual bool RemoveAll();<br>
+    int GetWatchedPathsCount() const;<br>
+    int GetWatchedPaths(<a href="#wxArrayString">wxArrayString</a>* paths) const;<br>
+    <a href="#wxEvtHandler">wxEvtHandler</a>* GetOwner() const;<br>
+    void SetOwner(<a href="#wxEvtHandler">wxEvtHandler</a>* handler);<br>
+</blockquote>};<br>
+<br>
+#endif <font color=#009900>// wxUSE_FSWATCHER &amp;&amp; <i>%wxchkver_2_9_4</i></font><br>
 <br><HR>
 
 <h2><a name="wxwidgets_wxcore_appframe.i">wxwidgets/wxcore_appframe.i</a> - Lua table = 'wx'</h2>
@@ -11057,83 +11249,7 @@ int wxMessageBox(const <a href="#wxString">wxString</a>&amp; message, const <a h
 <font color=#009900>// wxWidgets:   Updated to 2.8.4</font><br>
 <font color=#009900>// ===========================================================================</font><br>
 <br>
-<br>
-<font color=#009900>// ---------------------------------------------------------------------------</font><br>
-<font color=#009900>// <a href="#wxEvtHandler">wxEvtHandler</a></font><br>
-<br>
-<b><font size=+1 color=#DD0000>class <i>%delete</i> <a href="#wxEvtHandler">wxEvtHandler</a> : public <a name="wxObject">wxObject</a></font></b><br>
-{
-<blockquote>
-    <a href="#wxEvtHandler">wxEvtHandler</a>( );<br>
-<br>
-    void AddPendingEvent(<a href="#wxEvent">wxEvent</a>&amp; event );<br>
-<br>
-    <font color=#009900>// NOTE: Connect used to be called ConnectEvent in wxLua which is not the name of any C++ function.</font><br>
-<br>
-<font color=#BB0055>    <font color=#009900>// <i>%override</i> wxEvtHandler::Connect(int id, int lastId, wxEventType eventType, Lua function );</font></font><br>
-<font color=#BB0055>    <font color=#009900>// <i>%override</i> wxEvtHandler::Connect(int id, wxEventType eventType, Lua function );</font></font><br>
-<font color=#BB0055>    <font color=#009900>// <i>%override</i> wxEvtHandler::Connect(wxEventType eventType, Lua function );</font></font><br>
-    <font color=#009900>// The function type above is determined at runtime depending on the inputs.</font><br>
-    <font color=#009900>// C++ Func: void Connect(int id, int lastId, wxEventType eventType, wxObjectEventFunction function, <a href="#wxObject">wxObject</a>* userData = NULL, <a href="#wxEvtHandler">wxEvtHandler</a>* eventSink = NULL );</font><br>
-    <font color=#009900>// Note: wxLua uses the userdata and the event sink and so they're not available</font><br>
-    void Connect(int id, int lastId, wxEventType eventType, LuaFunction func );<br>
-<br>
-<font color=#BB0055>    <font color=#009900>// <i>%override</i> bool Disconnect(int winid, int lastId, wxEventType eventType );</font></font><br>
-<font color=#BB0055>    <font color=#009900>// <i>%override</i> bool Disconnect(int winid, wxEventType eventType );</font></font><br>
-<font color=#BB0055>    <font color=#009900>// <i>%override</i> bool Disconnect(wxEventType eventType );</font></font><br>
-    <font color=#009900>// The function type above is determined at runtime depending on the inputs.</font><br>
-    <font color=#009900>// C++ Func: bool Disconnect(int id, int lastId = wxID_ANY, wxEventType eventType = wxEVT_NULL, wxObjectEventFunction function = NULL, <a href="#wxObject">wxObject</a>* userData = NULL, <a href="#wxEvtHandler">wxEvtHandler</a>* eventSink = NULL );</font><br>
-    <font color=#009900>// Note: wxLua uses the userdata and the event sink and so they're not available</font><br>
-    bool Disconnect(int id, int lastId, wxEventType eventType );<br>
-<br>
-    voidptr_long GetClientData(); <font color=#009900>// C++ returns (void *) You get a number here</font><br>
-    <a href="#wxClientData">wxClientData</a>* GetClientObject() const;<br>
-    bool GetEvtHandlerEnabled( );<br>
-    <a href="#wxEvtHandler">wxEvtHandler</a>* GetNextHandler( );<br>
-    <a href="#wxEvtHandler">wxEvtHandler</a>* GetPreviousHandler( );<br>
-    virtual bool ProcessEvent(<a href="#wxEvent">wxEvent</a>&amp; event );<br>
-    <i>%wxchkver_2_9</i> virtual void QueueEvent(<i>%ungc</i> <a href="#wxEvent">wxEvent</a> *event);<br>
-    <font color=#009900>//virtual bool SearchEventTable(wxEventTable&amp; table, <a href="#wxEvent">wxEvent</a>&amp; event );</font><br>
-    void SetClientData(voidptr_long number); <font color=#009900>// C++ is (void *clientData) You can put a number here</font><br>
-    void SetClientObject(<a href="#wxClientData">wxClientData</a>* data );<br>
-    void SetEvtHandlerEnabled(bool enabled );<br>
-    void SetNextHandler(<a href="#wxEvtHandler">wxEvtHandler</a>* handler );<br>
-    void SetPreviousHandler(<a href="#wxEvtHandler">wxEvtHandler</a>* handler );<br>
-</blockquote>};<br>
-<br>
-<font color=#009900>// ---------------------------------------------------------------------------</font><br>
-<font color=#009900>// <a href="#wxEvent">wxEvent</a></font><br>
-<br>
-#include "wx/event.h"<br>
-<br>
-<b><font size=+1 color=#0066CC>enum <a name="Propagation_state">Propagation_state</a></font></b><br>
-{
-<blockquote>
-    wxEVENT_PROPAGATE_NONE, <font color=#009900>// don't propagate it at all</font><br>
-    wxEVENT_PROPAGATE_MAX  <font color=#009900>// propagate it until it is processed</font><br>
-</font>
-</blockquote>};<br>
-<br>
-<b><font size=+1 color=#DD0000>class <i>%delete</i> <a href="#wxEvent">wxEvent</a> : public <a name="wxObject">wxObject</a></font></b><br>
-{
-<blockquote>
-    <font color=#009900>// <a href="#wxEvent">wxEvent</a>(int id = 0, wxEventType eventType = wxEVT_NULL) virtual base class</font><br>
-<br>
-    <a href="#wxObject">wxObject</a>* GetEventObject( );<br>
-    wxEventType GetEventType( );<br>
-    int GetId( );<br>
-    bool GetSkipped( );<br>
-    long GetTimestamp( );<br>
-    bool IsCommandEvent() const;<br>
-    void ResumePropagation(int propagationLevel );<br>
-    void SetEventObject(<a href="#wxObject">wxObject</a>* object );<br>
-    void SetEventType(wxEventType type );<br>
-    void SetId(int id );<br>
-    void SetTimestamp(long timeStamp );<br>
-    bool ShouldPropagate() const;<br>
-    void Skip(bool skip = true );<br>
-    int StopPropagation( );<br>
-</blockquote>};<br>
+<font color=#009900>// Note: <a href="#wxEvtHandler">wxEvtHandler</a> and <a href="#wxEvent">wxEvent</a> in wxBase bindings.</font><br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
 <font color=#009900>// <a href="#wxPropagationDisabler">wxPropagationDisabler</a></font><br>
@@ -21973,6 +22089,12 @@ enum<br>
 <br>
     <font color=#009900>// Shows the window menu</font><br>
     bool ShowWindowMenu();<br>
+<br>
+#if <i>%wxchkver_2_9_4</i><br>
+    <a href="#wxString">wxString</a> GetPageToolTip( size_t pageIdx ) const;<br>
+    bool SetPageToolTip( size_t page, const <a href="#wxString">wxString</a>&amp; text );<br>
+#endif <br>
+    <br>
 #endif<br>
 </blockquote>};<br>
 <br>

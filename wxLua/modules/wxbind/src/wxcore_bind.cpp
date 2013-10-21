@@ -1000,9 +1000,6 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxEQUIV", wxEQUIV },
 #endif // wxLUA_USE_wxDC
 
-        { "wxEVENT_PROPAGATE_MAX", wxEVENT_PROPAGATE_MAX },
-        { "wxEVENT_PROPAGATE_NONE", wxEVENT_PROPAGATE_NONE },
-
 #if wxLUA_USE_wxProcess
         { "wxEXEC_ASYNC", wxEXEC_ASYNC },
         { "wxEXEC_MAKE_GROUP_LEADER", wxEXEC_MAKE_GROUP_LEADER },
@@ -4843,10 +4840,6 @@ static const char* wxluabaseclassnames_wxEffects[] = { wxluaclassname_wxObject, 
 static wxLuaBindClass* wxluabaseclassbinds_wxEffects[] = { NULL };
 static const char* wxluabaseclassnames_wxEraseEvent[] = { wxluaclassname_wxEvent, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxEraseEvent[] = { NULL };
-static const char* wxluabaseclassnames_wxEvent[] = { wxluaclassname_wxObject, NULL };
-static wxLuaBindClass* wxluabaseclassbinds_wxEvent[] = { NULL };
-static const char* wxluabaseclassnames_wxEvtHandler[] = { wxluaclassname_wxObject, NULL };
-static wxLuaBindClass* wxluabaseclassbinds_wxEvtHandler[] = { NULL };
 static const char* wxluabaseclassnames_wxExtHelpController[] = { wxluaclassname_wxHelpControllerBase, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxExtHelpController[] = { NULL };
 static const char* wxluabaseclassnames_wxFileDataObject[] = { wxluaclassname_wxDataObjectSimple, NULL };
@@ -5589,12 +5582,6 @@ extern void wxLua_wxEffects_delete_function(void** p);
 extern wxLuaBindMethod wxEraseEvent_methods[];
 extern int wxEraseEvent_methodCount;
 extern void wxLua_wxEraseEvent_delete_function(void** p);
-extern wxLuaBindMethod wxEvent_methods[];
-extern int wxEvent_methodCount;
-extern void wxLua_wxEvent_delete_function(void** p);
-extern wxLuaBindMethod wxEvtHandler_methods[];
-extern int wxEvtHandler_methodCount;
-extern void wxLua_wxEvtHandler_delete_function(void** p);
 extern wxLuaBindMethod wxFocusEvent_methods[];
 extern int wxFocusEvent_methodCount;
 extern void wxLua_wxFocusEvent_delete_function(void** p);
@@ -6812,8 +6799,6 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 
         { wxluaclassname_wxEffects, wxEffects_methods, wxEffects_methodCount, CLASSINFO(wxEffects), &wxluatype_wxEffects, wxluabaseclassnames_wxEffects, wxluabaseclassbinds_wxEffects, NULL, NULL, NULL, 0, &wxLua_wxEffects_delete_function, }, 
         { wxluaclassname_wxEraseEvent, wxEraseEvent_methods, wxEraseEvent_methodCount, CLASSINFO(wxEraseEvent), &wxluatype_wxEraseEvent, wxluabaseclassnames_wxEraseEvent, wxluabaseclassbinds_wxEraseEvent, NULL, NULL, NULL, 0, &wxLua_wxEraseEvent_delete_function, }, 
-        { wxluaclassname_wxEvent, wxEvent_methods, wxEvent_methodCount, CLASSINFO(wxEvent), &wxluatype_wxEvent, wxluabaseclassnames_wxEvent, wxluabaseclassbinds_wxEvent, NULL, NULL, NULL, 0, &wxLua_wxEvent_delete_function, }, 
-        { wxluaclassname_wxEvtHandler, wxEvtHandler_methods, wxEvtHandler_methodCount, CLASSINFO(wxEvtHandler), &wxluatype_wxEvtHandler, wxluabaseclassnames_wxEvtHandler, wxluabaseclassbinds_wxEvtHandler, NULL, NULL, NULL, 0, &wxLua_wxEvtHandler_delete_function, }, 
 
 #if (wxLUA_USE_wxHelpController && wxUSE_HELP) && (!defined(__WXMSW__))
         { wxluaclassname_wxExtHelpController, wxExtHelpController_methods, wxExtHelpController_methodCount, CLASSINFO(wxExtHelpController), &wxluatype_wxExtHelpController, wxluabaseclassnames_wxExtHelpController, wxluabaseclassbinds_wxExtHelpController, NULL, NULL, NULL, 0, &wxLua_wxExtHelpController_delete_function, }, 

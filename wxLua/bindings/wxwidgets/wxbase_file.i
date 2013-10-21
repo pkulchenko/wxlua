@@ -1100,3 +1100,95 @@ class %delete wxInternetFSHandler : public wxFileSystemHandler
 
 
 #endif // wxUSE_STREAMS
+
+// ---------------------------------------------------------------------------
+//  wxFileSystemWatcher classes
+
+#if wxUSE_FSWATCHER && %wxchkver_2_9_4
+
+#include "wx/fswatcher.h"
+
+enum
+{
+    wxFSW_EVENT_CREATE, // = 0x01,
+    wxFSW_EVENT_DELETE, // = 0x02,
+    wxFSW_EVENT_RENAME, // = 0x04,
+    wxFSW_EVENT_MODIFY, // = 0x08,
+    wxFSW_EVENT_ACCESS, // = 0x10,
+    wxFSW_EVENT_ATTRIB, // = 0x20, // Currently this is wxGTK-only
+
+    // error events
+    wxFSW_EVENT_WARNING, // = 0x40,
+    wxFSW_EVENT_ERROR, // = 0x80,
+    wxFSW_EVENT_ALL, // = wxFSW_EVENT_CREATE | wxFSW_EVENT_DELETE |
+                     //    wxFSW_EVENT_RENAME | wxFSW_EVENT_MODIFY |
+                     //    wxFSW_EVENT_ACCESS | wxFSW_EVENT_ATTRIB |
+                     //    wxFSW_EVENT_WARNING | wxFSW_EVENT_ERROR
+#if defined(wxHAS_INOTIFY)
+    wxFSW_EVENT_UNMOUNT, // = 0x2000
+#endif
+};
+
+// Type of the path watched, used only internally for now.
+enum wxFSWPathType
+{
+    wxFSWPath_None,     // Invalid value for an initialized watch.
+    wxFSWPath_File,     // Plain file.
+    wxFSWPath_Dir,      // Watch a directory and the files in it.
+    wxFSWPath_Tree      // Watch a directory and all its children recursively.
+};
+
+// Type of the warning for the events notifying about them.
+enum wxFSWWarningType
+{
+    wxFSW_WARNING_NONE,
+    wxFSW_WARNING_GENERAL,
+    wxFSW_WARNING_OVERFLOW
+};
+
+// ---------------------------------------------------------------------------
+// wxFileSystemWatcherEvent
+
+class %delete wxFileSystemWatcherEvent: public wxEvent
+{
+public:
+    %wxEventType wxEVT_FSWATCHER   // EVT_FSWATCHER(winid, func);
+
+    wxFileSystemWatcherEvent(int changeType = 0, int watchid = wxID_ANY);
+    wxFileSystemWatcherEvent(int changeType, wxFSWWarningType warningType, const wxString& errorMsg = "", int watchid = wxID_ANY);
+    wxFileSystemWatcherEvent(int changeType, const wxFileName& path, const wxFileName& newPath, int watchid = wxID_ANY);
+
+    const wxFileName& GetPath() const;
+    void SetPath(const wxFileName& path);
+    const wxFileName& GetNewPath() const;
+    void SetNewPath(const wxFileName& path);
+    int GetChangeType() const;
+    //virtual wxEvent* Clone() const;
+    //virtual wxEventCategory GetEventCategory() const;
+    bool IsError() const;
+    wxString GetErrorDescription() const;
+    wxFSWWarningType GetWarningType() const;
+    wxString ToString() const;
+};
+
+// ---------------------------------------------------------------------------
+// wxFileSystemWatcher
+
+class wxFileSystemWatcher : public wxEvtHandler
+{
+public:
+    wxFileSystemWatcher();
+
+    virtual bool Add(const wxFileName& path, int events = wxFSW_EVENT_ALL);
+    bool AddAny(const wxFileName& path, int events, wxFSWPathType type, const wxString& filespec = "");
+    virtual bool AddTree(const wxFileName& path, int events = wxFSW_EVENT_ALL, const wxString& filespec = wxEmptyString);
+    virtual bool Remove(const wxFileName& path);
+    virtual bool RemoveTree(const wxFileName& path);
+    virtual bool RemoveAll();
+    int GetWatchedPathsCount() const;
+    int GetWatchedPaths(wxArrayString* paths) const;
+    wxEvtHandler* GetOwner() const;
+    void SetOwner(wxEvtHandler* handler);
+};
+
+#endif // wxUSE_FSWATCHER && %wxchkver_2_9_4

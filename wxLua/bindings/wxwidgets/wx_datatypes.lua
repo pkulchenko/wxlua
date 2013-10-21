@@ -1582,6 +1582,18 @@ wx_dataTypeTable =
     Name = "wxFSFile",
     ValueType = "class",
   },
+  wxFSWPathType = {
+    Condition = "wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)",
+    IsNumber = true,
+    Name = "wxFSWPathType",
+    ValueType = "enum",
+  },
+  wxFSWWarningType = {
+    Condition = "wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)",
+    IsNumber = true,
+    Name = "wxFSWWarningType",
+    ValueType = "enum",
+  },
   wxFTP = {
     BaseClasses = {
       [1] = "wxProtocol",
@@ -1738,6 +1750,24 @@ wx_dataTypeTable =
     Condition = "(wxUSE_STREAMS) && (wxUSE_FILESYSTEM)",
     IsNumber = false,
     Name = "wxFileSystemHandler",
+    ValueType = "class",
+  },
+  wxFileSystemWatcher = {
+    BaseClasses = {
+      [1] = "wxEvtHandler",
+    },
+    Condition = "wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)",
+    IsNumber = false,
+    Name = "wxFileSystemWatcher",
+    ValueType = "class",
+  },
+  wxFileSystemWatcherEvent = {
+    BaseClasses = {
+      [1] = "wxEvent",
+    },
+    Condition = "wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)",
+    IsNumber = false,
+    Name = "wxFileSystemWatcherEvent",
     ValueType = "class",
   },
   wxFileType = {

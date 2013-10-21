@@ -71,6 +71,7 @@ extern WXDLLIMPEXP_BINDWXBASE wxLuaBinding* wxLuaBinding_wxbase_init();
 
 #include "sys/stat.h"
 #include "wx/dynlib.h"
+#include "wx/event.h"
 #include "wx/filefn.h"
 #include "wx/iconloc.h"
 #include "wx/intl.h"
@@ -158,6 +159,10 @@ extern WXDLLIMPEXP_BINDWXBASE wxLuaBinding* wxLuaBinding_wxbase_init();
     #include "wx/datetime.h"
 #endif // wxLUA_USE_wxTimeSpan && wxUSE_DATETIME
 
+#if wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)
+    #include "wx/fswatcher.h"
+#endif // wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)
+
 #if wxUSE_LONGLONG
     #include "wx/longlong.h"
 #endif // wxUSE_LONGLONG
@@ -196,6 +201,8 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxClientDataContainer;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxDynamicLibrary;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxDynamicLibraryDetails;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxDynamicLibraryDetailsArray;
+extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxEvent;
+extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxEvtHandler;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxFileType;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxFileType_MessageParameters;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxFileTypeInfo;
@@ -306,6 +313,11 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringTokenizer;
 #if wxLUA_USE_wxTimeSpan && wxUSE_DATETIME
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxTimeSpan;
 #endif // wxLUA_USE_wxTimeSpan && wxUSE_DATETIME
+
+#if wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxFileSystemWatcher;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxFileSystemWatcherEvent;
+#endif // wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)
 
 #if wxUSE_INTL
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxLanguageInfo;

@@ -2494,3 +2494,786 @@ int wxRegEx_methodCount = sizeof(wxRegEx_methods)/sizeof(wxLuaBindMethod) - 1;
 
 #endif  // wxLUA_USE_wxRegEx && wxUSE_REGEX
 
+// ---------------------------------------------------------------------------
+// Bind class wxEvtHandler
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxEvtHandler'
+int wxluatype_wxEvtHandler = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_AddPendingEvent[] = { &wxluatype_wxEvtHandler, &wxluatype_wxEvent, NULL };
+static int LUACALL wxLua_wxEvtHandler_AddPendingEvent(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_AddPendingEvent[1] = {{ wxLua_wxEvtHandler_AddPendingEvent, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxEvtHandler_AddPendingEvent }};
+//     void AddPendingEvent(wxEvent& event );
+static int LUACALL wxLua_wxEvtHandler_AddPendingEvent(lua_State *L)
+{
+    // wxEvent event
+    wxEvent * event = (wxEvent *)wxluaT_getuserdatatype(L, 2, wxluatype_wxEvent);
+    // get this
+    wxEvtHandler * self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+    // call AddPendingEvent
+    self->AddPendingEvent(*event);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_Connect[] = { &wxluatype_wxEvtHandler, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TFUNCTION, NULL };
+static int LUACALL wxLua_wxEvtHandler_Connect(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_Connect[1] = {{ wxLua_wxEvtHandler_Connect, WXLUAMETHOD_METHOD, 5, 5, s_wxluatypeArray_wxLua_wxEvtHandler_Connect }};
+// %override wxLua_wxEvtHandler_Connect
+// void Connect(int id, int lastId, wxEventType eventType, LuaFunction func)
+
+#include "wxlua/wxlcallb.h"
+// Connect an event to a handler. This Lua 'C' function supports
+// function calls with either three or four parameters. These parameters
+// are:         The class (which must be derived from wxEvtHandler),
+//              The event type
+// (Optional)   The ID of the object the event is for
+//              A Lua function to call to handle the event.
+//              The Lua function gets called with a single parameter
+//              which is a reference to the event object
+//              associated with the event.
+static int LUACALL wxLua_wxEvtHandler_Connect(lua_State *L)
+{
+    wxCHECK_MSG(wxluatype_wxEvtHandler != -1, 0, wxT("wxEvtHandler is not wrapped by wxLua"));
+    wxLuaState wxlState(L);
+    wxCHECK_MSG(wxlState.Ok(), 0, wxT("Invalid wxLuaState"));
+
+    wxWindowID  winId     = wxID_ANY;
+    wxWindowID  lastId    = wxID_ANY;
+    wxEventType eventType = wxEVT_NULL;
+
+    int nParams = lua_gettop(L);
+
+    wxEvtHandler *evtHandler = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+
+    int func_idx = 0;
+    int evttype_idx = 0;
+
+    switch (nParams)
+    {
+        case 5:
+        {
+            //void Connect(int winid, int lastId, int eventType, wxObjectEventFunction func, wxObject *userData = (wxObject *) NULL, wxEvtHandler *eventSink = (wxEvtHandler *) NULL);
+            func_idx = 5;
+            evttype_idx = 4;
+
+            if (wxlua_isintegertype(L, 3))
+                lastId = (wxWindowID)lua_tonumber(L, 3);
+            else
+            {
+                wxlua_argerror(L, 3, wxT("an 'integer wxWindowID'"));
+                return 0;
+            }
+
+            if (wxlua_isintegertype(L, 2))
+                winId = (wxWindowID)lua_tonumber(L, 2);
+            else
+            {
+                wxlua_argerror(L, 2, wxT("an 'integer wxWindowID'"));
+                return 0;
+            }
+
+            break;
+        }
+        case 4:
+        {
+            //void Connect(int winid, int eventType, wxObjectEventFunction func, wxObject *userData = (wxObject *) NULL, wxEvtHandler *eventSink = (wxEvtHandler *) NULL)
+            func_idx = 4;
+            evttype_idx = 3;
+
+            if (wxlua_isintegertype(L, 2))
+                winId  = (wxWindowID)lua_tonumber(L, 2);
+            else
+            {
+                wxlua_argerror(L, 2, wxT("an 'integer wxWindowID'"));
+                return 0;
+            }
+
+            break;
+        }
+        case 3:
+        {
+            //void Connect(int eventType, wxObjectEventFunction func, wxObject *userData = (wxObject *) NULL, wxEvtHandler *eventSink = (wxEvtHandler *) NULL)
+            func_idx = 3;
+            evttype_idx = 2;
+/*
+            // Is this right? wxWidgets just uses wxID_ANY for no winId overload
+            if (evtHandler->IsKindOf(CLASSINFO(wxWindow)))
+            {
+                // FIXME! bug in Mac this is the fix
+#if !defined(__WXMAC__) || wxCHECK_VERSION(2,6,0)
+                winId = ((wxWindow *)evtHandler)->GetId();
+                wxPrintf(wxT("winId %d\n"), winId);
+#endif
+            }
+            else
+            {
+                wxlua_error(L, "wxLua: Connect: Unexpected event object type, expected a wxWindow.");
+                return 0;
+            }
+*/
+            break;
+        }
+        default:
+        {
+            wxlua_argerrormsg(L, wxT("Incorrect number of arguments to wxEventHandler::Connect()."));
+            return 0;
+        }
+    }
+
+    if (!lua_isfunction(L, func_idx))
+    {
+        wxlua_argerror(L, func_idx, wxT("a 'Lua function'"));
+        return 0;
+    }
+
+    if (wxlua_isintegertype(L, evttype_idx))
+        eventType = (wxEventType)lua_tonumber(L, evttype_idx);
+    else
+    {
+        wxlua_argerror(L, evttype_idx, wxT("an 'integer wxEventType'"));
+        return 0;
+    }
+
+    // Create and connect the callback
+    wxLuaEventCallback* pCallback = new wxLuaEventCallback;
+    wxString errMsg(pCallback->Connect(wxlState, func_idx, winId, lastId, eventType, evtHandler));
+    if (!errMsg.IsEmpty())
+    {
+        delete pCallback;
+        wxlua_error(L, errMsg);
+    }
+
+    return 0;
+}
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_Disconnect[] = { &wxluatype_wxEvtHandler, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxEvtHandler_Disconnect(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_Disconnect[1] = {{ wxLua_wxEvtHandler_Disconnect, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxEvtHandler_Disconnect }};
+// %override wxLua_wxEvtHandler_Disconnect
+// void Disconnect(int id, int lastId, wxEventType eventType)
+
+#include "wxlua/wxlcallb.h"
+static int LUACALL wxLua_wxEvtHandler_Disconnect(lua_State *L)
+{
+    wxCHECK_MSG(wxluatype_wxEvtHandler != -1, 0, wxT("wxEvtHandler is not wrapped by wxLua"));
+    wxLuaState wxlState(L);
+    wxCHECK_MSG(wxlState.Ok(), 0, wxT("Invalid wxLuaState"));
+
+    wxWindowID  winId     = wxID_ANY;
+    wxWindowID  lastId    = wxID_ANY;
+    wxEventType eventType = wxEVT_NULL;
+
+    int nParams = lua_gettop(L);
+
+    wxEvtHandler *evtHandler = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+
+    int evttype_idx = 0;
+
+    switch (nParams)
+    {
+        case 4:
+        {
+            //bool Disconnect(int winid, int lastId, wxEventType eventType, wxObjectEventFunction func = NULL, wxObject *userData = (wxObject *) NULL, wxEvtHandler *eventSink = (wxEvtHandler *) NULL);
+            evttype_idx = 4;
+
+            if (wxlua_isintegertype(L, 3))
+                lastId = (wxWindowID)lua_tonumber(L, 3);
+            else
+            {
+                wxlua_argerror(L, 3, wxT("an 'integer wxWindowID'"));
+                return 0;
+            }
+
+            if (wxlua_isintegertype(L, 2))
+                winId = (wxWindowID)lua_tonumber(L, 2);
+            else
+            {
+                wxlua_argerror(L, 2, wxT("an 'integer wxWindowID'"));
+                return 0;
+            }
+
+            break;
+        }
+        case 3:
+        {
+            //bool Disconnect(int winid = wxID_ANY, wxEventType eventType = wxEVT_NULL, wxObjectEventFunction func = NULL, wxObject *userData = (wxObject *) NULL, wxEvtHandler *eventSink = (wxEvtHandler *) NULL)
+            evttype_idx = 3;
+
+            if (wxlua_isintegertype(L, 2))
+                winId  = (wxWindowID)lua_tonumber(L, 2);
+            else
+            {
+                wxlua_argerror(L, 1, wxT("an 'integer wxWindowID'"));
+                return 0;
+            }
+
+            break;
+        }
+        case 2:
+        {
+            //bool Disconnect(wxEventType eventType, wxObjectEventFunction func, wxObject *userData = (wxObject *) NULL, wxEvtHandler *eventSink = (wxEvtHandler *) NULL)
+            evttype_idx = 2;
+
+            break;
+        }
+        default:
+        {
+            wxlua_argerrormsg(L, wxT("Incorrect number of arguments to wxEventHandler::Disconnect()."));
+            return 0;
+        }
+    }
+
+    if (wxlua_isintegertype(L, evttype_idx))
+        eventType = (wxEventType)lua_tonumber(L, evttype_idx);
+    else
+    {
+        wxlua_argerror(L, evttype_idx, wxT("an 'integer wxEventType'"));
+        return 0;
+    }
+
+    // Try to disconnect from the callback, it will delete the wxLuaEventCallback.
+    bool returns = evtHandler->Disconnect(winId, lastId, eventType, (wxObjectEventFunction)&wxLuaEventCallback::OnAllEvents);
+
+    lua_pushboolean(L, returns);
+    return 1;
+}
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_GetClientData[] = { &wxluatype_wxEvtHandler, NULL };
+static int LUACALL wxLua_wxEvtHandler_GetClientData(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_GetClientData[1] = {{ wxLua_wxEvtHandler_GetClientData, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxEvtHandler_GetClientData }};
+//     voidptr_long GetClientData(); // C++ returns (void *) You get a number here
+static int LUACALL wxLua_wxEvtHandler_GetClientData(lua_State *L)
+{
+    // get this
+    wxEvtHandler * self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+    // call GetClientData
+    long  returns = (long )self->GetClientData();
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_GetClientObject[] = { &wxluatype_wxEvtHandler, NULL };
+static int LUACALL wxLua_wxEvtHandler_GetClientObject(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_GetClientObject[1] = {{ wxLua_wxEvtHandler_GetClientObject, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxEvtHandler_GetClientObject }};
+//     wxClientData* GetClientObject() const;
+static int LUACALL wxLua_wxEvtHandler_GetClientObject(lua_State *L)
+{
+    // get this
+    wxEvtHandler * self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+    // call GetClientObject
+    wxClientData* returns = (wxClientData*)self->GetClientObject();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxClientData);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_GetEvtHandlerEnabled[] = { &wxluatype_wxEvtHandler, NULL };
+static int LUACALL wxLua_wxEvtHandler_GetEvtHandlerEnabled(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_GetEvtHandlerEnabled[1] = {{ wxLua_wxEvtHandler_GetEvtHandlerEnabled, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxEvtHandler_GetEvtHandlerEnabled }};
+//     bool GetEvtHandlerEnabled( );
+static int LUACALL wxLua_wxEvtHandler_GetEvtHandlerEnabled(lua_State *L)
+{
+    // get this
+    wxEvtHandler * self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+    // call GetEvtHandlerEnabled
+    bool returns = (self->GetEvtHandlerEnabled());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_GetNextHandler[] = { &wxluatype_wxEvtHandler, NULL };
+static int LUACALL wxLua_wxEvtHandler_GetNextHandler(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_GetNextHandler[1] = {{ wxLua_wxEvtHandler_GetNextHandler, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxEvtHandler_GetNextHandler }};
+//     wxEvtHandler* GetNextHandler( );
+static int LUACALL wxLua_wxEvtHandler_GetNextHandler(lua_State *L)
+{
+    // get this
+    wxEvtHandler * self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+    // call GetNextHandler
+    wxEvtHandler* returns = (wxEvtHandler*)self->GetNextHandler();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxEvtHandler);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_GetPreviousHandler[] = { &wxluatype_wxEvtHandler, NULL };
+static int LUACALL wxLua_wxEvtHandler_GetPreviousHandler(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_GetPreviousHandler[1] = {{ wxLua_wxEvtHandler_GetPreviousHandler, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxEvtHandler_GetPreviousHandler }};
+//     wxEvtHandler* GetPreviousHandler( );
+static int LUACALL wxLua_wxEvtHandler_GetPreviousHandler(lua_State *L)
+{
+    // get this
+    wxEvtHandler * self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+    // call GetPreviousHandler
+    wxEvtHandler* returns = (wxEvtHandler*)self->GetPreviousHandler();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxEvtHandler);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_ProcessEvent[] = { &wxluatype_wxEvtHandler, &wxluatype_wxEvent, NULL };
+static int LUACALL wxLua_wxEvtHandler_ProcessEvent(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_ProcessEvent[1] = {{ wxLua_wxEvtHandler_ProcessEvent, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxEvtHandler_ProcessEvent }};
+//     virtual bool ProcessEvent(wxEvent& event );
+static int LUACALL wxLua_wxEvtHandler_ProcessEvent(lua_State *L)
+{
+    // wxEvent event
+    wxEvent * event = (wxEvent *)wxluaT_getuserdatatype(L, 2, wxluatype_wxEvent);
+    // get this
+    wxEvtHandler * self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+    // call ProcessEvent
+    bool returns = (self->ProcessEvent(*event));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+
+#if wxCHECK_VERSION(2,9,0)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_QueueEvent[] = { &wxluatype_wxEvtHandler, &wxluatype_wxEvent, NULL };
+static int LUACALL wxLua_wxEvtHandler_QueueEvent(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_QueueEvent[1] = {{ wxLua_wxEvtHandler_QueueEvent, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxEvtHandler_QueueEvent }};
+//     %wxchkver_2_9 virtual void QueueEvent(%ungc wxEvent *event);
+static int LUACALL wxLua_wxEvtHandler_QueueEvent(lua_State *L)
+{
+    // wxEvent event
+    wxEvent * event = (wxEvent *)wxluaT_getuserdatatype(L, 2, wxluatype_wxEvent);
+    if (wxluaO_isgcobject(L, event)) wxluaO_undeletegcobject(L, event);
+    // get this
+    wxEvtHandler * self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+    // call QueueEvent
+    self->QueueEvent(event);
+
+    return 0;
+}
+
+#endif // wxCHECK_VERSION(2,9,0)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_SetClientData[] = { &wxluatype_wxEvtHandler, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxEvtHandler_SetClientData(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_SetClientData[1] = {{ wxLua_wxEvtHandler_SetClientData, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxEvtHandler_SetClientData }};
+//     void SetClientData(voidptr_long number); // C++ is (void *clientData) You can put a number here
+static int LUACALL wxLua_wxEvtHandler_SetClientData(lua_State *L)
+{
+    // voidptr_long number
+    long number = (long)wxlua_getnumbertype(L, 2);
+    // get this
+    wxEvtHandler * self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+    // call SetClientData
+    self->SetClientData((void*)number);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_SetClientObject[] = { &wxluatype_wxEvtHandler, &wxluatype_wxClientData, NULL };
+static int LUACALL wxLua_wxEvtHandler_SetClientObject(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_SetClientObject[1] = {{ wxLua_wxEvtHandler_SetClientObject, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxEvtHandler_SetClientObject }};
+//     void SetClientObject(wxClientData* data );
+static int LUACALL wxLua_wxEvtHandler_SetClientObject(lua_State *L)
+{
+    // wxClientData data
+    wxClientData * data = (wxClientData *)wxluaT_getuserdatatype(L, 2, wxluatype_wxClientData);
+    // get this
+    wxEvtHandler * self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+    // call SetClientObject
+    self->SetClientObject(data);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_SetEvtHandlerEnabled[] = { &wxluatype_wxEvtHandler, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxEvtHandler_SetEvtHandlerEnabled(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_SetEvtHandlerEnabled[1] = {{ wxLua_wxEvtHandler_SetEvtHandlerEnabled, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxEvtHandler_SetEvtHandlerEnabled }};
+//     void SetEvtHandlerEnabled(bool enabled );
+static int LUACALL wxLua_wxEvtHandler_SetEvtHandlerEnabled(lua_State *L)
+{
+    // bool enabled
+    bool enabled = wxlua_getbooleantype(L, 2);
+    // get this
+    wxEvtHandler * self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+    // call SetEvtHandlerEnabled
+    self->SetEvtHandlerEnabled(enabled);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_SetNextHandler[] = { &wxluatype_wxEvtHandler, &wxluatype_wxEvtHandler, NULL };
+static int LUACALL wxLua_wxEvtHandler_SetNextHandler(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_SetNextHandler[1] = {{ wxLua_wxEvtHandler_SetNextHandler, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxEvtHandler_SetNextHandler }};
+//     void SetNextHandler(wxEvtHandler* handler );
+static int LUACALL wxLua_wxEvtHandler_SetNextHandler(lua_State *L)
+{
+    // wxEvtHandler handler
+    wxEvtHandler * handler = (wxEvtHandler *)wxluaT_getuserdatatype(L, 2, wxluatype_wxEvtHandler);
+    // get this
+    wxEvtHandler * self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+    // call SetNextHandler
+    self->SetNextHandler(handler);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_SetPreviousHandler[] = { &wxluatype_wxEvtHandler, &wxluatype_wxEvtHandler, NULL };
+static int LUACALL wxLua_wxEvtHandler_SetPreviousHandler(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_SetPreviousHandler[1] = {{ wxLua_wxEvtHandler_SetPreviousHandler, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxEvtHandler_SetPreviousHandler }};
+//     void SetPreviousHandler(wxEvtHandler* handler );
+static int LUACALL wxLua_wxEvtHandler_SetPreviousHandler(lua_State *L)
+{
+    // wxEvtHandler handler
+    wxEvtHandler * handler = (wxEvtHandler *)wxluaT_getuserdatatype(L, 2, wxluatype_wxEvtHandler);
+    // get this
+    wxEvtHandler * self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+    // call SetPreviousHandler
+    self->SetPreviousHandler(handler);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_delete[] = { &wxluatype_wxEvtHandler, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxEvtHandler_delete }};
+
+static int LUACALL wxLua_wxEvtHandler_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_constructor[1] = {{ wxLua_wxEvtHandler_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxEvtHandler( );
+static int LUACALL wxLua_wxEvtHandler_constructor(lua_State *L)
+{
+    // call constructor
+    wxEvtHandler* returns = new wxEvtHandler();
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxEvtHandler);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxEvtHandler);
+
+    return 1;
+}
+
+
+
+void wxLua_wxEvtHandler_delete_function(void** p)
+{
+    wxEvtHandler* o = (wxEvtHandler*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxEvtHandler_methods[] = {
+    { "AddPendingEvent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_AddPendingEvent, 1, NULL },
+    { "Connect", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_Connect, 1, NULL },
+    { "Disconnect", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_Disconnect, 1, NULL },
+    { "GetClientData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_GetClientData, 1, NULL },
+    { "GetClientObject", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_GetClientObject, 1, NULL },
+    { "GetEvtHandlerEnabled", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_GetEvtHandlerEnabled, 1, NULL },
+    { "GetNextHandler", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_GetNextHandler, 1, NULL },
+    { "GetPreviousHandler", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_GetPreviousHandler, 1, NULL },
+    { "ProcessEvent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_ProcessEvent, 1, NULL },
+
+#if wxCHECK_VERSION(2,9,0)
+    { "QueueEvent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_QueueEvent, 1, NULL },
+#endif // wxCHECK_VERSION(2,9,0)
+
+    { "SetClientData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_SetClientData, 1, NULL },
+    { "SetClientObject", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_SetClientObject, 1, NULL },
+    { "SetEvtHandlerEnabled", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_SetEvtHandlerEnabled, 1, NULL },
+    { "SetNextHandler", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_SetNextHandler, 1, NULL },
+    { "SetPreviousHandler", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_SetPreviousHandler, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxEvtHandler_delete, 1, NULL },
+    { "wxEvtHandler", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxEvtHandler_constructor, 1, NULL },
+    { 0, 0, 0, 0 },
+};
+
+int wxEvtHandler_methodCount = sizeof(wxEvtHandler_methods)/sizeof(wxLuaBindMethod) - 1;
+
+
+// ---------------------------------------------------------------------------
+// Bind class wxEvent
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxEvent'
+int wxluatype_wxEvent = WXLUA_TUNKNOWN;
+
+#if wxLUA_USE_wxObject
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvent_GetEventObject[] = { &wxluatype_wxEvent, NULL };
+static int LUACALL wxLua_wxEvent_GetEventObject(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvent_GetEventObject[1] = {{ wxLua_wxEvent_GetEventObject, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxEvent_GetEventObject }};
+//     wxObject* GetEventObject( );
+static int LUACALL wxLua_wxEvent_GetEventObject(lua_State *L)
+{
+    // get this
+    wxEvent * self = (wxEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvent);
+    // call GetEventObject
+    wxObject* returns = (wxObject*)self->GetEventObject();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxObject);
+
+    return 1;
+}
+
+#endif // wxLUA_USE_wxObject
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvent_GetEventType[] = { &wxluatype_wxEvent, NULL };
+static int LUACALL wxLua_wxEvent_GetEventType(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvent_GetEventType[1] = {{ wxLua_wxEvent_GetEventType, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxEvent_GetEventType }};
+//     wxEventType GetEventType( );
+static int LUACALL wxLua_wxEvent_GetEventType(lua_State *L)
+{
+    // get this
+    wxEvent * self = (wxEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvent);
+    // call GetEventType
+    wxEventType returns = (self->GetEventType());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvent_GetId[] = { &wxluatype_wxEvent, NULL };
+static int LUACALL wxLua_wxEvent_GetId(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvent_GetId[1] = {{ wxLua_wxEvent_GetId, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxEvent_GetId }};
+//     int GetId( );
+static int LUACALL wxLua_wxEvent_GetId(lua_State *L)
+{
+    // get this
+    wxEvent * self = (wxEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvent);
+    // call GetId
+    int returns = (self->GetId());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvent_GetSkipped[] = { &wxluatype_wxEvent, NULL };
+static int LUACALL wxLua_wxEvent_GetSkipped(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvent_GetSkipped[1] = {{ wxLua_wxEvent_GetSkipped, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxEvent_GetSkipped }};
+//     bool GetSkipped( );
+static int LUACALL wxLua_wxEvent_GetSkipped(lua_State *L)
+{
+    // get this
+    wxEvent * self = (wxEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvent);
+    // call GetSkipped
+    bool returns = (self->GetSkipped());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvent_GetTimestamp[] = { &wxluatype_wxEvent, NULL };
+static int LUACALL wxLua_wxEvent_GetTimestamp(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvent_GetTimestamp[1] = {{ wxLua_wxEvent_GetTimestamp, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxEvent_GetTimestamp }};
+//     long GetTimestamp( );
+static int LUACALL wxLua_wxEvent_GetTimestamp(lua_State *L)
+{
+    // get this
+    wxEvent * self = (wxEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvent);
+    // call GetTimestamp
+    long  returns = (self->GetTimestamp());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvent_IsCommandEvent[] = { &wxluatype_wxEvent, NULL };
+static int LUACALL wxLua_wxEvent_IsCommandEvent(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvent_IsCommandEvent[1] = {{ wxLua_wxEvent_IsCommandEvent, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxEvent_IsCommandEvent }};
+//     bool IsCommandEvent() const;
+static int LUACALL wxLua_wxEvent_IsCommandEvent(lua_State *L)
+{
+    // get this
+    wxEvent * self = (wxEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvent);
+    // call IsCommandEvent
+    bool returns = (self->IsCommandEvent());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvent_ResumePropagation[] = { &wxluatype_wxEvent, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxEvent_ResumePropagation(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvent_ResumePropagation[1] = {{ wxLua_wxEvent_ResumePropagation, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxEvent_ResumePropagation }};
+//     void ResumePropagation(int propagationLevel );
+static int LUACALL wxLua_wxEvent_ResumePropagation(lua_State *L)
+{
+    // int propagationLevel
+    int propagationLevel = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxEvent * self = (wxEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvent);
+    // call ResumePropagation
+    self->ResumePropagation(propagationLevel);
+
+    return 0;
+}
+
+
+#if wxLUA_USE_wxObject
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvent_SetEventObject[] = { &wxluatype_wxEvent, &wxluatype_wxObject, NULL };
+static int LUACALL wxLua_wxEvent_SetEventObject(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvent_SetEventObject[1] = {{ wxLua_wxEvent_SetEventObject, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxEvent_SetEventObject }};
+//     void SetEventObject(wxObject* object );
+static int LUACALL wxLua_wxEvent_SetEventObject(lua_State *L)
+{
+    // wxObject object
+    wxObject * object = (wxObject *)wxluaT_getuserdatatype(L, 2, wxluatype_wxObject);
+    // get this
+    wxEvent * self = (wxEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvent);
+    // call SetEventObject
+    self->SetEventObject(object);
+
+    return 0;
+}
+
+#endif // wxLUA_USE_wxObject
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvent_SetEventType[] = { &wxluatype_wxEvent, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxEvent_SetEventType(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvent_SetEventType[1] = {{ wxLua_wxEvent_SetEventType, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxEvent_SetEventType }};
+//     void SetEventType(wxEventType type );
+static int LUACALL wxLua_wxEvent_SetEventType(lua_State *L)
+{
+    // wxEventType type
+    wxEventType type = (wxEventType)wxlua_getnumbertype(L, 2);
+    // get this
+    wxEvent * self = (wxEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvent);
+    // call SetEventType
+    self->SetEventType(type);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvent_SetId[] = { &wxluatype_wxEvent, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxEvent_SetId(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvent_SetId[1] = {{ wxLua_wxEvent_SetId, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxEvent_SetId }};
+//     void SetId(int id );
+static int LUACALL wxLua_wxEvent_SetId(lua_State *L)
+{
+    // int id
+    int id = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxEvent * self = (wxEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvent);
+    // call SetId
+    self->SetId(id);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvent_SetTimestamp[] = { &wxluatype_wxEvent, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxEvent_SetTimestamp(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvent_SetTimestamp[1] = {{ wxLua_wxEvent_SetTimestamp, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxEvent_SetTimestamp }};
+//     void SetTimestamp(long timeStamp );
+static int LUACALL wxLua_wxEvent_SetTimestamp(lua_State *L)
+{
+    // long timeStamp
+    long timeStamp = (long)wxlua_getnumbertype(L, 2);
+    // get this
+    wxEvent * self = (wxEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvent);
+    // call SetTimestamp
+    self->SetTimestamp(timeStamp);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvent_ShouldPropagate[] = { &wxluatype_wxEvent, NULL };
+static int LUACALL wxLua_wxEvent_ShouldPropagate(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvent_ShouldPropagate[1] = {{ wxLua_wxEvent_ShouldPropagate, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxEvent_ShouldPropagate }};
+//     bool ShouldPropagate() const;
+static int LUACALL wxLua_wxEvent_ShouldPropagate(lua_State *L)
+{
+    // get this
+    wxEvent * self = (wxEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvent);
+    // call ShouldPropagate
+    bool returns = (self->ShouldPropagate());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvent_Skip[] = { &wxluatype_wxEvent, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxEvent_Skip(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvent_Skip[1] = {{ wxLua_wxEvent_Skip, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxEvent_Skip }};
+//     void Skip(bool skip = true );
+static int LUACALL wxLua_wxEvent_Skip(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool skip = true
+    bool skip = (argCount >= 2 ? wxlua_getbooleantype(L, 2) : true);
+    // get this
+    wxEvent * self = (wxEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvent);
+    // call Skip
+    self->Skip(skip);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvent_StopPropagation[] = { &wxluatype_wxEvent, NULL };
+static int LUACALL wxLua_wxEvent_StopPropagation(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvent_StopPropagation[1] = {{ wxLua_wxEvent_StopPropagation, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxEvent_StopPropagation }};
+//     int StopPropagation( );
+static int LUACALL wxLua_wxEvent_StopPropagation(lua_State *L)
+{
+    // get this
+    wxEvent * self = (wxEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvent);
+    // call StopPropagation
+    int returns = (self->StopPropagation());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvent_delete[] = { &wxluatype_wxEvent, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvent_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxEvent_delete }};
+
+
+
+void wxLua_wxEvent_delete_function(void** p)
+{
+    wxEvent* o = (wxEvent*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxEvent_methods[] = {
+#if wxLUA_USE_wxObject
+    { "GetEventObject", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvent_GetEventObject, 1, NULL },
+#endif // wxLUA_USE_wxObject
+
+    { "GetEventType", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvent_GetEventType, 1, NULL },
+    { "GetId", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvent_GetId, 1, NULL },
+    { "GetSkipped", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvent_GetSkipped, 1, NULL },
+    { "GetTimestamp", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvent_GetTimestamp, 1, NULL },
+    { "IsCommandEvent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvent_IsCommandEvent, 1, NULL },
+    { "ResumePropagation", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvent_ResumePropagation, 1, NULL },
+
+#if wxLUA_USE_wxObject
+    { "SetEventObject", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvent_SetEventObject, 1, NULL },
+#endif // wxLUA_USE_wxObject
+
+    { "SetEventType", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvent_SetEventType, 1, NULL },
+    { "SetId", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvent_SetId, 1, NULL },
+    { "SetTimestamp", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvent_SetTimestamp, 1, NULL },
+    { "ShouldPropagate", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvent_ShouldPropagate, 1, NULL },
+    { "Skip", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvent_Skip, 1, NULL },
+    { "StopPropagation", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvent_StopPropagation, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxEvent_delete, 1, NULL },
+    { 0, 0, 0, 0 },
+};
+
+int wxEvent_methodCount = sizeof(wxEvent_methods)/sizeof(wxLuaBindMethod) - 1;
+
+

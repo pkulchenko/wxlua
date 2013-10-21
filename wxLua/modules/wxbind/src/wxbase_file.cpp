@@ -6818,3 +6818,573 @@ int wxInternetFSHandler_methodCount = sizeof(wxInternetFSHandler_methods)/sizeof
 
 #endif  // (wxUSE_STREAMS) && (wxUSE_FILESYSTEM) && (wxUSE_FS_INET && wxUSE_SOCKETS)
 
+
+#if wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)
+// ---------------------------------------------------------------------------
+// Bind class wxFileSystemWatcherEvent
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxFileSystemWatcherEvent'
+int wxluatype_wxFileSystemWatcherEvent = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_GetChangeType[] = { &wxluatype_wxFileSystemWatcherEvent, NULL };
+static int LUACALL wxLua_wxFileSystemWatcherEvent_GetChangeType(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_GetChangeType[1] = {{ wxLua_wxFileSystemWatcherEvent_GetChangeType, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_GetChangeType }};
+//     int GetChangeType() const;
+static int LUACALL wxLua_wxFileSystemWatcherEvent_GetChangeType(lua_State *L)
+{
+    // get this
+    wxFileSystemWatcherEvent * self = (wxFileSystemWatcherEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcherEvent);
+    // call GetChangeType
+    int returns = (self->GetChangeType());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_GetErrorDescription[] = { &wxluatype_wxFileSystemWatcherEvent, NULL };
+static int LUACALL wxLua_wxFileSystemWatcherEvent_GetErrorDescription(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_GetErrorDescription[1] = {{ wxLua_wxFileSystemWatcherEvent_GetErrorDescription, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_GetErrorDescription }};
+//     wxString GetErrorDescription() const;
+static int LUACALL wxLua_wxFileSystemWatcherEvent_GetErrorDescription(lua_State *L)
+{
+    // get this
+    wxFileSystemWatcherEvent * self = (wxFileSystemWatcherEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcherEvent);
+    // call GetErrorDescription
+    wxString returns = (self->GetErrorDescription());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+
+#if (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_GetNewPath[] = { &wxluatype_wxFileSystemWatcherEvent, NULL };
+static int LUACALL wxLua_wxFileSystemWatcherEvent_GetNewPath(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_GetNewPath[1] = {{ wxLua_wxFileSystemWatcherEvent_GetNewPath, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_GetNewPath }};
+//     const wxFileName& GetNewPath() const;
+static int LUACALL wxLua_wxFileSystemWatcherEvent_GetNewPath(lua_State *L)
+{
+    // get this
+    wxFileSystemWatcherEvent * self = (wxFileSystemWatcherEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcherEvent);
+    // call GetNewPath
+    const wxFileName* returns = (const wxFileName*)&self->GetNewPath();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxFileName);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_GetPath[] = { &wxluatype_wxFileSystemWatcherEvent, NULL };
+static int LUACALL wxLua_wxFileSystemWatcherEvent_GetPath(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_GetPath[1] = {{ wxLua_wxFileSystemWatcherEvent_GetPath, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_GetPath }};
+//     const wxFileName& GetPath() const;
+static int LUACALL wxLua_wxFileSystemWatcherEvent_GetPath(lua_State *L)
+{
+    // get this
+    wxFileSystemWatcherEvent * self = (wxFileSystemWatcherEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcherEvent);
+    // call GetPath
+    const wxFileName* returns = (const wxFileName*)&self->GetPath();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxFileName);
+
+    return 1;
+}
+
+#endif // (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_GetWarningType[] = { &wxluatype_wxFileSystemWatcherEvent, NULL };
+static int LUACALL wxLua_wxFileSystemWatcherEvent_GetWarningType(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_GetWarningType[1] = {{ wxLua_wxFileSystemWatcherEvent_GetWarningType, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_GetWarningType }};
+//     wxFSWWarningType GetWarningType() const;
+static int LUACALL wxLua_wxFileSystemWatcherEvent_GetWarningType(lua_State *L)
+{
+    // get this
+    wxFileSystemWatcherEvent * self = (wxFileSystemWatcherEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcherEvent);
+    // call GetWarningType
+    wxFSWWarningType returns = (self->GetWarningType());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_IsError[] = { &wxluatype_wxFileSystemWatcherEvent, NULL };
+static int LUACALL wxLua_wxFileSystemWatcherEvent_IsError(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_IsError[1] = {{ wxLua_wxFileSystemWatcherEvent_IsError, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_IsError }};
+//     bool IsError() const;
+static int LUACALL wxLua_wxFileSystemWatcherEvent_IsError(lua_State *L)
+{
+    // get this
+    wxFileSystemWatcherEvent * self = (wxFileSystemWatcherEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcherEvent);
+    // call IsError
+    bool returns = (self->IsError());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+
+#if (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_SetNewPath[] = { &wxluatype_wxFileSystemWatcherEvent, &wxluatype_wxFileName, NULL };
+static int LUACALL wxLua_wxFileSystemWatcherEvent_SetNewPath(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_SetNewPath[1] = {{ wxLua_wxFileSystemWatcherEvent_SetNewPath, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_SetNewPath }};
+//     void SetNewPath(const wxFileName& path);
+static int LUACALL wxLua_wxFileSystemWatcherEvent_SetNewPath(lua_State *L)
+{
+    // const wxFileName path
+    const wxFileName * path = (const wxFileName *)wxluaT_getuserdatatype(L, 2, wxluatype_wxFileName);
+    // get this
+    wxFileSystemWatcherEvent * self = (wxFileSystemWatcherEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcherEvent);
+    // call SetNewPath
+    self->SetNewPath(*path);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_SetPath[] = { &wxluatype_wxFileSystemWatcherEvent, &wxluatype_wxFileName, NULL };
+static int LUACALL wxLua_wxFileSystemWatcherEvent_SetPath(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_SetPath[1] = {{ wxLua_wxFileSystemWatcherEvent_SetPath, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_SetPath }};
+//     void SetPath(const wxFileName& path);
+static int LUACALL wxLua_wxFileSystemWatcherEvent_SetPath(lua_State *L)
+{
+    // const wxFileName path
+    const wxFileName * path = (const wxFileName *)wxluaT_getuserdatatype(L, 2, wxluatype_wxFileName);
+    // get this
+    wxFileSystemWatcherEvent * self = (wxFileSystemWatcherEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcherEvent);
+    // call SetPath
+    self->SetPath(*path);
+
+    return 0;
+}
+
+#endif // (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_ToString[] = { &wxluatype_wxFileSystemWatcherEvent, NULL };
+static int LUACALL wxLua_wxFileSystemWatcherEvent_ToString(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_ToString[1] = {{ wxLua_wxFileSystemWatcherEvent_ToString, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_ToString }};
+//     wxString ToString() const;
+static int LUACALL wxLua_wxFileSystemWatcherEvent_ToString(lua_State *L)
+{
+    // get this
+    wxFileSystemWatcherEvent * self = (wxFileSystemWatcherEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcherEvent);
+    // call ToString
+    wxString returns = (self->ToString());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_delete[] = { &wxluatype_wxFileSystemWatcherEvent, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_delete }};
+
+
+#if (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_constructor2[] = { &wxluatype_TNUMBER, &wxluatype_wxFileName, &wxluatype_wxFileName, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxFileSystemWatcherEvent_constructor2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_constructor2[1] = {{ wxLua_wxFileSystemWatcherEvent_constructor2, WXLUAMETHOD_CONSTRUCTOR, 3, 4, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_constructor2 }};
+//     wxFileSystemWatcherEvent(int changeType, const wxFileName& path, const wxFileName& newPath, int watchid = wxID_ANY);
+static int LUACALL wxLua_wxFileSystemWatcherEvent_constructor2(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int watchid = wxID_ANY
+    int watchid = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : wxID_ANY);
+    // const wxFileName newPath
+    const wxFileName * newPath = (const wxFileName *)wxluaT_getuserdatatype(L, 3, wxluatype_wxFileName);
+    // const wxFileName path
+    const wxFileName * path = (const wxFileName *)wxluaT_getuserdatatype(L, 2, wxluatype_wxFileName);
+    // int changeType
+    int changeType = (int)wxlua_getnumbertype(L, 1);
+    // call constructor
+    wxFileSystemWatcherEvent* returns = new wxFileSystemWatcherEvent(changeType, *path, *newPath, watchid);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxFileSystemWatcherEvent);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxFileSystemWatcherEvent);
+
+    return 1;
+}
+
+#endif // (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_constructor1[] = { &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxFileSystemWatcherEvent_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_constructor1[1] = {{ wxLua_wxFileSystemWatcherEvent_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 4, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_constructor1 }};
+//     wxFileSystemWatcherEvent(int changeType, wxFSWWarningType warningType, const wxString& errorMsg = "", int watchid = wxID_ANY);
+static int LUACALL wxLua_wxFileSystemWatcherEvent_constructor1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int watchid = wxID_ANY
+    int watchid = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : wxID_ANY);
+    // const wxString errorMsg = ""
+    const wxString errorMsg = (argCount >= 3 ? wxlua_getwxStringtype(L, 3) : wxString(wxEmptyString));
+    // wxFSWWarningType warningType
+    wxFSWWarningType warningType = (wxFSWWarningType)wxlua_getenumtype(L, 2);
+    // int changeType
+    int changeType = (int)wxlua_getnumbertype(L, 1);
+    // call constructor
+    wxFileSystemWatcherEvent* returns = new wxFileSystemWatcherEvent(changeType, warningType, errorMsg, watchid);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxFileSystemWatcherEvent);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxFileSystemWatcherEvent);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxFileSystemWatcherEvent_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_constructor[1] = {{ wxLua_wxFileSystemWatcherEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_constructor }};
+//     wxFileSystemWatcherEvent(int changeType = 0, int watchid = wxID_ANY);
+static int LUACALL wxLua_wxFileSystemWatcherEvent_constructor(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int watchid = wxID_ANY
+    int watchid = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : wxID_ANY);
+    // int changeType = 0
+    int changeType = (argCount >= 1 ? (int)wxlua_getnumbertype(L, 1) : 0);
+    // call constructor
+    wxFileSystemWatcherEvent* returns = new wxFileSystemWatcherEvent(changeType, watchid);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxFileSystemWatcherEvent);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxFileSystemWatcherEvent);
+
+    return 1;
+}
+
+
+
+
+#if ((wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName))||(wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_constructor_overload[] =
+{
+
+#if (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+    { wxLua_wxFileSystemWatcherEvent_constructor2, WXLUAMETHOD_CONSTRUCTOR, 3, 4, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_constructor2 },
+#endif // (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+    { wxLua_wxFileSystemWatcherEvent_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 4, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_constructor1 },
+    { wxLua_wxFileSystemWatcherEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_constructor },
+};
+static int s_wxluafunc_wxLua_wxFileSystemWatcherEvent_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxFileSystemWatcherEvent_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName))||(wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
+
+void wxLua_wxFileSystemWatcherEvent_delete_function(void** p)
+{
+    wxFileSystemWatcherEvent* o = (wxFileSystemWatcherEvent*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxFileSystemWatcherEvent_methods[] = {
+    { "GetChangeType", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_GetChangeType, 1, NULL },
+    { "GetErrorDescription", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_GetErrorDescription, 1, NULL },
+
+#if (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+    { "GetNewPath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_GetNewPath, 1, NULL },
+    { "GetPath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_GetPath, 1, NULL },
+#endif // (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+
+    { "GetWarningType", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_GetWarningType, 1, NULL },
+    { "IsError", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_IsError, 1, NULL },
+
+#if (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+    { "SetNewPath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_SetNewPath, 1, NULL },
+    { "SetPath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_SetPath, 1, NULL },
+#endif // (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+
+    { "ToString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_ToString, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_delete, 1, NULL },
+
+#if ((wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName))||(wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
+    { "wxFileSystemWatcherEvent", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_constructor_overload, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_constructor_overload_count, 0 },
+#endif // ((wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName))||(wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
+
+    { 0, 0, 0, 0 },
+};
+
+int wxFileSystemWatcherEvent_methodCount = sizeof(wxFileSystemWatcherEvent_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)
+
+
+#if wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)
+// ---------------------------------------------------------------------------
+// Bind class wxFileSystemWatcher
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxFileSystemWatcher'
+int wxluatype_wxFileSystemWatcher = WXLUA_TUNKNOWN;
+
+#if (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcher_Add[] = { &wxluatype_wxFileSystemWatcher, &wxluatype_wxFileName, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxFileSystemWatcher_Add(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcher_Add[1] = {{ wxLua_wxFileSystemWatcher_Add, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxFileSystemWatcher_Add }};
+//     virtual bool Add(const wxFileName& path, int events = wxFSW_EVENT_ALL);
+static int LUACALL wxLua_wxFileSystemWatcher_Add(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int events = wxFSW_EVENT_ALL
+    int events = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : wxFSW_EVENT_ALL);
+    // const wxFileName path
+    const wxFileName * path = (const wxFileName *)wxluaT_getuserdatatype(L, 2, wxluatype_wxFileName);
+    // get this
+    wxFileSystemWatcher * self = (wxFileSystemWatcher *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcher);
+    // call Add
+    bool returns = (self->Add(*path, events));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcher_AddAny[] = { &wxluatype_wxFileSystemWatcher, &wxluatype_wxFileName, &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxFileSystemWatcher_AddAny(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcher_AddAny[1] = {{ wxLua_wxFileSystemWatcher_AddAny, WXLUAMETHOD_METHOD, 4, 5, s_wxluatypeArray_wxLua_wxFileSystemWatcher_AddAny }};
+//     bool AddAny(const wxFileName& path, int events, wxFSWPathType type, const wxString& filespec = "");
+static int LUACALL wxLua_wxFileSystemWatcher_AddAny(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString filespec = ""
+    const wxString filespec = (argCount >= 5 ? wxlua_getwxStringtype(L, 5) : wxString(wxEmptyString));
+    // wxFSWPathType type
+    wxFSWPathType type = (wxFSWPathType)wxlua_getenumtype(L, 4);
+    // int events
+    int events = (int)wxlua_getnumbertype(L, 3);
+    // const wxFileName path
+    const wxFileName * path = (const wxFileName *)wxluaT_getuserdatatype(L, 2, wxluatype_wxFileName);
+    // get this
+    wxFileSystemWatcher * self = (wxFileSystemWatcher *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcher);
+    // call AddAny
+    bool returns = (self->AddAny(*path, events, type, filespec));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcher_AddTree[] = { &wxluatype_wxFileSystemWatcher, &wxluatype_wxFileName, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxFileSystemWatcher_AddTree(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcher_AddTree[1] = {{ wxLua_wxFileSystemWatcher_AddTree, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxFileSystemWatcher_AddTree }};
+//     virtual bool AddTree(const wxFileName& path, int events = wxFSW_EVENT_ALL, const wxString& filespec = wxEmptyString);
+static int LUACALL wxLua_wxFileSystemWatcher_AddTree(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString filespec = wxEmptyString
+    const wxString filespec = (argCount >= 4 ? wxlua_getwxStringtype(L, 4) : wxString(wxEmptyString));
+    // int events = wxFSW_EVENT_ALL
+    int events = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : wxFSW_EVENT_ALL);
+    // const wxFileName path
+    const wxFileName * path = (const wxFileName *)wxluaT_getuserdatatype(L, 2, wxluatype_wxFileName);
+    // get this
+    wxFileSystemWatcher * self = (wxFileSystemWatcher *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcher);
+    // call AddTree
+    bool returns = (self->AddTree(*path, events, filespec));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcher_GetOwner[] = { &wxluatype_wxFileSystemWatcher, NULL };
+static int LUACALL wxLua_wxFileSystemWatcher_GetOwner(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcher_GetOwner[1] = {{ wxLua_wxFileSystemWatcher_GetOwner, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFileSystemWatcher_GetOwner }};
+//     wxEvtHandler* GetOwner() const;
+static int LUACALL wxLua_wxFileSystemWatcher_GetOwner(lua_State *L)
+{
+    // get this
+    wxFileSystemWatcher * self = (wxFileSystemWatcher *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcher);
+    // call GetOwner
+    wxEvtHandler* returns = (wxEvtHandler*)self->GetOwner();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxEvtHandler);
+
+    return 1;
+}
+
+
+#if (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxArrayString)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcher_GetWatchedPaths[] = { &wxluatype_wxFileSystemWatcher, &wxluatype_wxArrayString, NULL };
+static int LUACALL wxLua_wxFileSystemWatcher_GetWatchedPaths(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcher_GetWatchedPaths[1] = {{ wxLua_wxFileSystemWatcher_GetWatchedPaths, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileSystemWatcher_GetWatchedPaths }};
+//     int GetWatchedPaths(wxArrayString* paths) const;
+static int LUACALL wxLua_wxFileSystemWatcher_GetWatchedPaths(lua_State *L)
+{
+    // wxArrayString paths
+    wxArrayString * paths = (wxArrayString *)wxluaT_getuserdatatype(L, 2, wxluatype_wxArrayString);
+    // get this
+    wxFileSystemWatcher * self = (wxFileSystemWatcher *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcher);
+    // call GetWatchedPaths
+    int returns = (self->GetWatchedPaths(paths));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxArrayString)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcher_GetWatchedPathsCount[] = { &wxluatype_wxFileSystemWatcher, NULL };
+static int LUACALL wxLua_wxFileSystemWatcher_GetWatchedPathsCount(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcher_GetWatchedPathsCount[1] = {{ wxLua_wxFileSystemWatcher_GetWatchedPathsCount, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFileSystemWatcher_GetWatchedPathsCount }};
+//     int GetWatchedPathsCount() const;
+static int LUACALL wxLua_wxFileSystemWatcher_GetWatchedPathsCount(lua_State *L)
+{
+    // get this
+    wxFileSystemWatcher * self = (wxFileSystemWatcher *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcher);
+    // call GetWatchedPathsCount
+    int returns = (self->GetWatchedPathsCount());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+
+#if (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcher_Remove[] = { &wxluatype_wxFileSystemWatcher, &wxluatype_wxFileName, NULL };
+static int LUACALL wxLua_wxFileSystemWatcher_Remove(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcher_Remove[1] = {{ wxLua_wxFileSystemWatcher_Remove, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileSystemWatcher_Remove }};
+//     virtual bool Remove(const wxFileName& path);
+static int LUACALL wxLua_wxFileSystemWatcher_Remove(lua_State *L)
+{
+    // const wxFileName path
+    const wxFileName * path = (const wxFileName *)wxluaT_getuserdatatype(L, 2, wxluatype_wxFileName);
+    // get this
+    wxFileSystemWatcher * self = (wxFileSystemWatcher *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcher);
+    // call Remove
+    bool returns = (self->Remove(*path));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcher_RemoveAll[] = { &wxluatype_wxFileSystemWatcher, NULL };
+static int LUACALL wxLua_wxFileSystemWatcher_RemoveAll(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcher_RemoveAll[1] = {{ wxLua_wxFileSystemWatcher_RemoveAll, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFileSystemWatcher_RemoveAll }};
+//     virtual bool RemoveAll();
+static int LUACALL wxLua_wxFileSystemWatcher_RemoveAll(lua_State *L)
+{
+    // get this
+    wxFileSystemWatcher * self = (wxFileSystemWatcher *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcher);
+    // call RemoveAll
+    bool returns = (self->RemoveAll());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+
+#if (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcher_RemoveTree[] = { &wxluatype_wxFileSystemWatcher, &wxluatype_wxFileName, NULL };
+static int LUACALL wxLua_wxFileSystemWatcher_RemoveTree(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcher_RemoveTree[1] = {{ wxLua_wxFileSystemWatcher_RemoveTree, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileSystemWatcher_RemoveTree }};
+//     virtual bool RemoveTree(const wxFileName& path);
+static int LUACALL wxLua_wxFileSystemWatcher_RemoveTree(lua_State *L)
+{
+    // const wxFileName path
+    const wxFileName * path = (const wxFileName *)wxluaT_getuserdatatype(L, 2, wxluatype_wxFileName);
+    // get this
+    wxFileSystemWatcher * self = (wxFileSystemWatcher *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcher);
+    // call RemoveTree
+    bool returns = (self->RemoveTree(*path));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcher_SetOwner[] = { &wxluatype_wxFileSystemWatcher, &wxluatype_wxEvtHandler, NULL };
+static int LUACALL wxLua_wxFileSystemWatcher_SetOwner(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcher_SetOwner[1] = {{ wxLua_wxFileSystemWatcher_SetOwner, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileSystemWatcher_SetOwner }};
+//     void SetOwner(wxEvtHandler* handler);
+static int LUACALL wxLua_wxFileSystemWatcher_SetOwner(lua_State *L)
+{
+    // wxEvtHandler handler
+    wxEvtHandler * handler = (wxEvtHandler *)wxluaT_getuserdatatype(L, 2, wxluatype_wxEvtHandler);
+    // get this
+    wxFileSystemWatcher * self = (wxFileSystemWatcher *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileSystemWatcher);
+    // call SetOwner
+    self->SetOwner(handler);
+
+    return 0;
+}
+
+static int LUACALL wxLua_wxFileSystemWatcher_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcher_constructor[1] = {{ wxLua_wxFileSystemWatcher_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxFileSystemWatcher();
+static int LUACALL wxLua_wxFileSystemWatcher_constructor(lua_State *L)
+{
+    // call constructor
+    wxFileSystemWatcher* returns = new wxFileSystemWatcher();
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxFileSystemWatcher);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxFileSystemWatcher_delete_function(void** p)
+{
+    wxFileSystemWatcher* o = (wxFileSystemWatcher*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxFileSystemWatcher_methods[] = {
+#if (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+    { "Add", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcher_Add, 1, NULL },
+    { "AddAny", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcher_AddAny, 1, NULL },
+    { "AddTree", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcher_AddTree, 1, NULL },
+#endif // (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+
+    { "GetOwner", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcher_GetOwner, 1, NULL },
+
+#if (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxArrayString)
+    { "GetWatchedPaths", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcher_GetWatchedPaths, 1, NULL },
+#endif // (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxArrayString)
+
+    { "GetWatchedPathsCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcher_GetWatchedPathsCount, 1, NULL },
+
+#if (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+    { "Remove", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcher_Remove, 1, NULL },
+#endif // (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+
+    { "RemoveAll", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcher_RemoveAll, 1, NULL },
+
+#if (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+    { "RemoveTree", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcher_RemoveTree, 1, NULL },
+#endif // (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxFileName)
+
+    { "SetOwner", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcher_SetOwner, 1, NULL },
+    { "wxFileSystemWatcher", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxFileSystemWatcher_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxFileSystemWatcher_methodCount = sizeof(wxFileSystemWatcher_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)
+

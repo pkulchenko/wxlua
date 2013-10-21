@@ -723,8 +723,6 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxControlWithItems;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxDisplayChangedEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxEffects;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxEraseEvent;
-extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxEvent;
-extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxEvtHandler;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFocusEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGDIObject;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxHelpEvent;
