@@ -43,7 +43,8 @@ macro(FUNCTION_ARG_PARSER function_name arg_names )
 
     FOREACH(arg_ ${ARGN})
         set(a_ "")
-        string(FIND "${arg_names}" "${arg_}" a_) # simple find, no regexp
+        #string(FIND "${arg_names}" "${arg_}" a_) # simple find, no regexp
+        list(FIND "${arg_names}" "${arg_}" a_) # simple find, no regexp
 
         if ( ${a_} GREATER -1 )
             SET( arg_name_ "${arg_}" ) # now handling this arg_name
