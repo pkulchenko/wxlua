@@ -362,17 +362,17 @@ function CreatewxLuaBindClass(tbl)
 
     local function GetVTableOffsets(cbind_tbl)
         local s = ""
-        
+
         local baseclass_wxluatypes     = cbind_tbl.baseclass_wxluatypes
         local baseclass_vtable_offsets = cbind_tbl.baseclass_vtable_offsets
-        
+
         if baseclass_wxluatypes then
             for i = 1, #baseclass_wxluatypes do
                 s = s..string.format("%s(+%d),", wxlua.typename(baseclass_wxluatypes[i]), baseclass_vtable_offsets[i])
             end
             s = string.sub(s, 1, -2)
         end
-        
+
         return s
     end
 
@@ -450,11 +450,11 @@ function CreatewxLuaBindMethod(tbl, classname)
 
     for i = 1, #tbl do
         local class_name = ""
-        if tbl[i].class_name then 
-            class_name = tbl[i].class_name.."::" 
+        if tbl[i].class_name then
+            class_name = tbl[i].class_name.."::"
         end
-        if classname then 
-            class_name = classname.."::" 
+        if classname then
+            class_name = classname.."::"
         end
 
         -- keys for CFunc = { "lua_cfunc", "type", "minargs", "maxargs", "argtype_names", "argtypes" }
@@ -462,23 +462,23 @@ function CreatewxLuaBindMethod(tbl, classname)
         for j = 2, #cfunc_t do
             local cft = {
                 class_name..tbl[i].name,
-                cfunc_t[j][2], 
-                tostring(cfunc_t[j][1]), 
-                "", 
-                cfunc_t[j][3], 
-                cfunc_t[j][4], 
-                cfunc_t[j][5], 
+                cfunc_t[j][2],
+                tostring(cfunc_t[j][1]),
+                "",
+                cfunc_t[j][3],
+                cfunc_t[j][4],
+                cfunc_t[j][5],
                 cfunc_t[j][6],
                 ["icon"] = nil,
                 ["col_icons"] = {},
                 ["data"] = {}
             }
 
-            if string.find(cfunc_t[j][2], "Overload", 1, 1) then 
-                cft.color = list_colors.green 
+            if string.find(cfunc_t[j][2], "Overload", 1, 1) then
+                cft.color = list_colors.green
             end
-            if #cfunc_t > 2 then 
-                cft[1] = cft[1].." "..tostring(j-1) 
+            if #cfunc_t > 2 then
+                cft[1] = cft[1].." "..tostring(j-1)
             end
 
             -- This method has a basemethod and can be expanded
@@ -509,7 +509,8 @@ function CreatewxLuaBindNumber(tbl)
     table.insert(t.col_labels, "hex")
 
     for i = 2, #t do
-        t[i][3] = string.format("0x%X", t[i][2])
+        -- print 0xffffffff for -1
+        t[i][3] = string.format("0x%X", (t[i][2] < 0) and (2^32 + t[i][2]) or t[i][2])
     end
 
     return t
@@ -839,7 +840,7 @@ function OnListItemActivated(event)
             if frame:GetMenuBar():IsChecked(ID_VIEW_BASECLASS_FUNCTIONS) then
                 print("hi")
                 local ct = data[data_index].data[5]
-                
+
                 local function recurse_baseclasstable(ct, t)
                     for i, c in ipairs(ct) do
                         print(c.name)
@@ -851,17 +852,17 @@ function OnListItemActivated(event)
                                 table.insert(t, tt[i])
                             end
                         end
-                        
+
                         if c.baseBindClasses then
                             recurse_baseclasstable(c.baseBindClasses, t)
                         end
                     end
                 end
-                
+
                 if type(ct) == "table" then
                     recurse_baseclasstable(ct, t)
                 end
-                
+
                 --while type(ct) == "table" do
                 --    local tt = CreatewxLuaBindMethod(c.wxluamethods, c.name)
                 --    for i = 2, #tt do -- skip ".."
@@ -905,7 +906,7 @@ function OnListItemActivated(event)
         local t = nil
 
         if (col == 3) and (type(data[data_index].data[col+1]) == "userdata") then
-            t = CreatewxLuaBindClass({data[data_index].data[col+1]})       
+            t = CreatewxLuaBindClass({data[data_index].data[col+1]})
         end
 
         if t ~= nil then
@@ -919,7 +920,7 @@ function OnListItemActivated(event)
         local t = nil
 
         if (col == 3) and (type(data[data_index].data[col+1]) == "userdata") then
-            t = CreatewxLuaBindClass({data[data_index].data[col+1]})       
+            t = CreatewxLuaBindClass({data[data_index].data[col+1]})
         end
 
         if t ~= nil then
@@ -1050,7 +1051,7 @@ function CreateAllClassesTable()
 
         local bc_list = baseBindClasses
         local c_table_lens = {}
-         
+
         for bc_i = 1, #bc_list do
             local bc = bc_list[bc_i]
             -- check for mistakes in the bindings
@@ -1065,20 +1066,20 @@ function CreateAllClassesTable()
                     if (tonumber(k) == nil) then
                         c_table[c_table_pos+1][k] = v
                     elseif (k < c_table_lens[c_table_pos]) then
-                        -- use "" to blank out 
+                        -- use "" to blank out
                         c_table[c_table_pos+1][k] = v -- ""
                     end
                 end
-                
+
                 c_table[c_table_pos+bc_i-1][1] = c_table[c_table_pos][1]..string.char(string.byte("a")+c_table_pos+bc_i-3)
                 c_table[c_table_pos+bc_i-1][2] = c_table[c_table_pos][2]
             end
             table.insert(c_table[c_table_pos+bc_i-1], bc.name)
-            
+
             for i = 1, #c_table do
                 c_table_lens[i] = #c_table[i]
             end
-            
+
             BaseClassRecursor(bc.baseBindClasses, c_table, c_table_pos+bc_i-1)
         end
     end
@@ -1141,7 +1142,7 @@ function CreateAllClassesTable()
                             end
                         end
                     end
-                    
+
                     if max_cols < #c_table2 then max_cols = #c_table2 end
                     table.insert(t, c_table2)
                 end
@@ -1344,7 +1345,7 @@ function main()
     menuBar:Append(viewMenu, "&View")
     menuBar:Append(helpMenu, "&Help")
     frame:SetMenuBar(menuBar)
-  
+
     -- -----------------------------------------------------------------------
 
     frame:Connect(wx.wxID_EXIT, wx.wxEVT_COMMAND_MENU_SELECTED,
@@ -1393,9 +1394,9 @@ function main()
 
     -- -----------------------------------------------------------------------
     -- Create the toolbar
-    
+
     toolbar = frame:CreateToolBar()
-    
+
     local bmp = wx.wxArtProvider.GetBitmap(wx.wxART_GO_HOME, wx.wxART_TOOLBAR, wx.wxDefaultSize)
     toolbar:AddTool(wx.wxID_HOME, "Home", bmp, "Go to root level")
     bmp:delete()
