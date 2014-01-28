@@ -1221,6 +1221,11 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxICON_HAND", wxICON_HAND },
         { "wxICON_INFORMATION", wxICON_INFORMATION },
         { "wxICON_MASK", wxICON_MASK },
+
+#if wxCHECK_VERSION(3,0,0)
+        { "wxICON_NONE", wxICON_NONE },
+#endif // wxCHECK_VERSION(3,0,0)
+
         { "wxICON_QUESTION", wxICON_QUESTION },
         { "wxICON_STOP", wxICON_STOP },
         { "wxICON_WARNING", wxICON_WARNING },
@@ -4530,6 +4535,7 @@ static const char* wxluaclassname_wxImageHistogramEntry = "wxImageHistogramEntry
 static const char* wxluaclassname_wxImageHistogram_iterator = "wxImageHistogram_iterator";
 static const char* wxluaclassname_wxImageList = "wxImageList";
 static const char* wxluaclassname_wxIndividualLayoutConstraint = "wxIndividualLayoutConstraint";
+static const char* wxluaclassname_wxInfoBar = "wxInfoBar";
 static const char* wxluaclassname_wxInitDialogEvent = "wxInitDialogEvent";
 static const char* wxluaclassname_wxItemContainer = "wxItemContainer";
 static const char* wxluaclassname_wxItemContainerImmutable = "wxItemContainerImmutable";
@@ -4920,6 +4926,8 @@ static const char* wxluabaseclassnames_wxImageList[] = { wxluaclassname_wxObject
 static wxLuaBindClass* wxluabaseclassbinds_wxImageList[] = { NULL };
 static const char* wxluabaseclassnames_wxIndividualLayoutConstraint[] = { wxluaclassname_wxObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxIndividualLayoutConstraint[] = { NULL };
+static const char* wxluabaseclassnames_wxInfoBar[] = { wxluaclassname_wxControl, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxInfoBar[] = { NULL };
 static const char* wxluabaseclassnames_wxInitDialogEvent[] = { wxluaclassname_wxEvent, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxInitDialogEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxItemContainer[] = { wxluaclassname_wxItemContainerImmutable, NULL };
@@ -6539,6 +6547,12 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern void wxLua_wxFontDialog_delete_function(void** p);
 #endif // wxUSE_FONTDLG && wxLUA_USE_wxFontDialog
 
+#if wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)
+    extern wxLuaBindMethod wxInfoBar_methods[];
+    extern int wxInfoBar_methodCount;
+    extern void wxLua_wxInfoBar_delete_function(void** p);
+#endif // wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)
+
 #if wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog
     extern wxLuaBindMethod wxProgressDialog_methods[];
     extern int wxProgressDialog_methodCount;
@@ -6947,6 +6961,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #if (wxLUA_USE_wxSizer) && (wxLUA_USE_wxLayoutConstraints && (!wxCHECK_VERSION(2,6,0)))
         { wxluaclassname_wxIndividualLayoutConstraint, wxIndividualLayoutConstraint_methods, wxIndividualLayoutConstraint_methodCount, CLASSINFO(wxIndividualLayoutConstraint), &wxluatype_wxIndividualLayoutConstraint, wxluabaseclassnames_wxIndividualLayoutConstraint, wxluabaseclassbinds_wxIndividualLayoutConstraint, NULL, NULL, NULL, 0, &wxLua_wxIndividualLayoutConstraint_delete_function, }, 
 #endif // (wxLUA_USE_wxSizer) && (wxLUA_USE_wxLayoutConstraints && (!wxCHECK_VERSION(2,6,0)))
+
+#if wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)
+        { wxluaclassname_wxInfoBar, wxInfoBar_methods, wxInfoBar_methodCount, CLASSINFO(wxInfoBar), &wxluatype_wxInfoBar, wxluabaseclassnames_wxInfoBar, wxluabaseclassbinds_wxInfoBar, NULL, NULL, NULL, 0, &wxLua_wxInfoBar_delete_function, }, 
+#endif // wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)
 
         { wxluaclassname_wxInitDialogEvent, wxInitDialogEvent_methods, wxInitDialogEvent_methodCount, CLASSINFO(wxInitDialogEvent), &wxluatype_wxInitDialogEvent, wxluabaseclassnames_wxInitDialogEvent, wxluabaseclassbinds_wxInitDialogEvent, NULL, NULL, NULL, 0, &wxLua_wxInitDialogEvent_delete_function, }, 
 

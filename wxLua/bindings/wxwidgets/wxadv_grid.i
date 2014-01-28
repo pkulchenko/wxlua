@@ -666,10 +666,18 @@ class wxGrid : public wxScrolledWindow
 
     void    EnableDragRowSize( bool enable = true );
     void    DisableDragRowSize( );
-    bool    CanDragRowSize( );
+
+    #if !%wxchkver_3_0 || %wxcompat_2_8 
+        bool CanDragColSize( );
+        bool CanDragRowSize( );
+    #endif
+    #if %wxchkver_3_0 
+        bool CanDragColSize( int col );
+        bool CanDragRowSize( int row );
+    #endif
+
     void    EnableDragColSize( bool enable = true );
     void    DisableDragColSize( );
-    bool    CanDragColSize( );
     void    EnableDragGridSize(bool enable = true );
     void    DisableDragGridSize( );
     bool    CanDragGridSize( );
@@ -855,11 +863,18 @@ class %delete wxGridEvent : public wxNotifyEvent
     %wxEventType wxEVT_GRID_LABEL_RIGHT_CLICK  // EVT_GRID_LABEL_RIGHT_CLICK(fn );
     %wxEventType wxEVT_GRID_LABEL_LEFT_DCLICK  // EVT_GRID_LABEL_LEFT_DCLICK(fn );
     %wxEventType wxEVT_GRID_LABEL_RIGHT_DCLICK // EVT_GRID_LABEL_RIGHT_DCLICK(fn );
-    %wxEventType wxEVT_GRID_CELL_CHANGE        // EVT_GRID_CELL_CHANGE(fn );
     %wxEventType wxEVT_GRID_SELECT_CELL        // EVT_GRID_SELECT_CELL(fn );
     %wxEventType wxEVT_GRID_EDITOR_SHOWN       // EVT_GRID_EDITOR_SHOWN(fn );
     %wxEventType wxEVT_GRID_EDITOR_HIDDEN      // EVT_GRID_EDITOR_HIDDEN(fn );
     %wxEventType wxEVT_GRID_CELL_BEGIN_DRAG    // EVT_GRID_CELL_BEGIN_DRAG(fn );
+
+    #if !%wxchkver_3_0 || %wxcompat_2_8
+        %wxEventType wxEVT_GRID_CELL_CHANGE    // EVT_GRID_CELL_CHANGE(fn );
+    #endif
+    #if %wxchkver_3_0 
+        %wxEventType wxEVT_GRID_CELL_CHANGING  // EVT_GRID_CELL_CHANGE(fn );
+        %wxEventType wxEVT_GRID_CELL_CHANGED   // EVT_GRID_CELL_CHANGE(fn );
+    #endif
 
     !%wxchkver_2_9_0 wxGridEvent(int id, wxEventType type, wxObject* obj, int row = -1, int col = -1, int x = -1, int y = -1, bool sel = true, bool control = false, bool shift = false, bool alt = false, bool meta = false );
 

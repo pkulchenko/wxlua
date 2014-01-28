@@ -507,6 +507,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/fontdlg.h"
 #endif // wxUSE_FONTDLG && wxLUA_USE_wxFontDialog
 
+#if wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)
+    #include "wx/infobar.h"
+#endif // wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)
+
 #if wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog
     #include "wx/progdlg.h"
 #endif // wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog
@@ -1213,6 +1217,10 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFontData;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFontDialog;
 #endif // wxUSE_FONTDLG && wxLUA_USE_wxFontDialog
+
+#if wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxInfoBar;
+#endif // wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)
 
 #if wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxProgressDialog;

@@ -12441,3 +12441,176 @@ int wxGenericDirCtrl_methodCount = sizeof(wxGenericDirCtrl_methods)/sizeof(wxLua
 
 #endif  // wxLUA_USE_wxGenericDirCtrl && wxUSE_DIRDLG
 
+
+#if wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)
+// ---------------------------------------------------------------------------
+// Bind class wxInfoBar
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxInfoBar'
+int wxluatype_wxInfoBar = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxInfoBar_AddButton[] = { &wxluatype_wxInfoBar, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxInfoBar_AddButton(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxInfoBar_AddButton[1] = {{ wxLua_wxInfoBar_AddButton, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxInfoBar_AddButton }};
+//     void AddButton(wxWindowID btnid, const wxString &label = wxEmptyString );
+static int LUACALL wxLua_wxInfoBar_AddButton(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString label = wxEmptyString
+    const wxString label = (argCount >= 3 ? wxlua_getwxStringtype(L, 3) : wxString(wxEmptyString));
+    // wxWindowID btnid
+    wxWindowID btnid = (wxWindowID)wxlua_getnumbertype(L, 2);
+    // get this
+    wxInfoBar * self = (wxInfoBar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxInfoBar);
+    // call AddButton
+    self->AddButton(btnid, label);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxInfoBar_Create[] = { &wxluatype_wxInfoBar, &wxluatype_wxWindow, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxInfoBar_Create(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxInfoBar_Create[1] = {{ wxLua_wxInfoBar_Create, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxInfoBar_Create }};
+//     bool Create(wxWindow *parent, wxWindowID id );
+static int LUACALL wxLua_wxInfoBar_Create(lua_State *L)
+{
+    // wxWindowID id
+    wxWindowID id = (wxWindowID)wxlua_getnumbertype(L, 3);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxInfoBar * self = (wxInfoBar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxInfoBar);
+    // call Create
+    bool returns = (self->Create(parent, id));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxInfoBar_Dismiss[] = { &wxluatype_wxInfoBar, NULL };
+static int LUACALL wxLua_wxInfoBar_Dismiss(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxInfoBar_Dismiss[1] = {{ wxLua_wxInfoBar_Dismiss, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxInfoBar_Dismiss }};
+//     void Dismiss( );
+static int LUACALL wxLua_wxInfoBar_Dismiss(lua_State *L)
+{
+    // get this
+    wxInfoBar * self = (wxInfoBar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxInfoBar);
+    // call Dismiss
+    self->Dismiss();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxInfoBar_RemoveButton[] = { &wxluatype_wxInfoBar, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxInfoBar_RemoveButton(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxInfoBar_RemoveButton[1] = {{ wxLua_wxInfoBar_RemoveButton, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxInfoBar_RemoveButton }};
+//     void RemoveButton(wxWindowID btnid );
+static int LUACALL wxLua_wxInfoBar_RemoveButton(lua_State *L)
+{
+    // wxWindowID btnid
+    wxWindowID btnid = (wxWindowID)wxlua_getnumbertype(L, 2);
+    // get this
+    wxInfoBar * self = (wxInfoBar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxInfoBar);
+    // call RemoveButton
+    self->RemoveButton(btnid);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxInfoBar_ShowMessage[] = { &wxluatype_wxInfoBar, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxInfoBar_ShowMessage(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxInfoBar_ShowMessage[1] = {{ wxLua_wxInfoBar_ShowMessage, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxInfoBar_ShowMessage }};
+//     void ShowMessage(const wxString &msg, int flags = wxICON_INFORMATION );
+static int LUACALL wxLua_wxInfoBar_ShowMessage(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int flags = wxICON_INFORMATION
+    int flags = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : wxICON_INFORMATION);
+    // const wxString msg
+    const wxString msg = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxInfoBar * self = (wxInfoBar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxInfoBar);
+    // call ShowMessage
+    self->ShowMessage(msg, flags);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxInfoBar_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxInfoBar_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxInfoBar_constructor1[1] = {{ wxLua_wxInfoBar_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxInfoBar_constructor1 }};
+//     wxInfoBar(wxWindow *parent, wxWindowID id );
+static int LUACALL wxLua_wxInfoBar_constructor1(lua_State *L)
+{
+    // wxWindowID id
+    wxWindowID id = (wxWindowID)wxlua_getnumbertype(L, 2);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call constructor
+    wxInfoBar* returns = new wxInfoBar(parent, id);
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxInfoBar);
+
+    return 1;
+}
+
+static int LUACALL wxLua_wxInfoBar_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxInfoBar_constructor[1] = {{ wxLua_wxInfoBar_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxInfoBar( );
+static int LUACALL wxLua_wxInfoBar_constructor(lua_State *L)
+{
+    // call constructor
+    wxInfoBar* returns = new wxInfoBar();
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxInfoBar);
+
+    return 1;
+}
+
+
+
+
+#if (wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxInfoBar_constructor_overload[] =
+{
+    { wxLua_wxInfoBar_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxInfoBar_constructor1 },
+    { wxLua_wxInfoBar_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+};
+static int s_wxluafunc_wxLua_wxInfoBar_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxInfoBar_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1))
+
+void wxLua_wxInfoBar_delete_function(void** p)
+{
+    wxInfoBar* o = (wxInfoBar*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxInfoBar_methods[] = {
+    { "AddButton", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxInfoBar_AddButton, 1, NULL },
+    { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxInfoBar_Create, 1, NULL },
+    { "Dismiss", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxInfoBar_Dismiss, 1, NULL },
+    { "RemoveButton", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxInfoBar_RemoveButton, 1, NULL },
+    { "ShowMessage", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxInfoBar_ShowMessage, 1, NULL },
+
+#if (wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1))
+    { "wxInfoBar", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxInfoBar_constructor_overload, s_wxluafunc_wxLua_wxInfoBar_constructor_overload_count, 0 },
+#endif // (wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1))
+
+    { 0, 0, 0, 0 },
+};
+
+int wxInfoBar_methodCount = sizeof(wxInfoBar_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)
+

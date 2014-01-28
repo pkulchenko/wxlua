@@ -8,6 +8,7 @@
 // ===========================================================================
 
 
+%wxchkver_3_0 #define wxICON_NONE
 #define wxICON_ASTERISK
 #define wxICON_ERROR
 #define wxICON_EXCLAMATION

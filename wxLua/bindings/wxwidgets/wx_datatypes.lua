@@ -2718,6 +2718,15 @@ wx_dataTypeTable =
     Name = "wxIndividualLayoutConstraint",
     ValueType = "class",
   },
+  wxInfoBar = {
+    BaseClasses = {
+      [1] = "wxControl",
+    },
+    Condition = "wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)",
+    IsNumber = false,
+    Name = "wxInfoBar",
+    ValueType = "class",
+  },
   wxInitDialogEvent = {
     BaseClasses = {
       [1] = "wxEvent",
@@ -5358,12 +5367,15 @@ wx_preprocConditionTable =
   ["%wxchkver_2_8_8"] = "wxCHECK_VERSION(2,8,8)",
   ["%wxchkver_2_9"] = "wxCHECK_VERSION(2,9,0)",
   ["%wxchkver_2_9_0"] = "wxCHECK_VERSION(2,9,0)",
+  ["%wxchkver_2_9_1"] = "wxCHECK_VERSION(2,9,1)",
   ["%wxchkver_2_9_2"] = "wxCHECK_VERSION(2,9,2)",
   ["%wxchkver_2_9_3"] = "wxCHECK_VERSION(2,9,3)",
   ["%wxchkver_2_9_4"] = "wxCHECK_VERSION(2,9,4)",
   ["%wxchkver_2_9_5"] = "wxCHECK_VERSION(2,9,5)",
+  ["%wxchkver_3_0"] = "wxCHECK_VERSION(3,0,0)",
   ["%wxcompat_2_4"] = "(defined(WXWIN_COMPATIBILITY_2_4) && WXWIN_COMPATIBILITY_2_4)",
   ["%wxcompat_2_6"] = "(defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)",
+  ["%wxcompat_2_8"] = "(defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)",
   ["%x11"] = "defined(__WXX11__)",
   WXWIN_COMPATIBILITY_2 = "(defined(WXWIN_COMPATIBILITY_2) && WXWIN_COMPATIBILITY_2)",
   WXWIN_COMPATIBILITY_2_2 = "(defined(WXWIN_COMPATIBILITY_2_2) && WXWIN_COMPATIBILITY_2_2)",

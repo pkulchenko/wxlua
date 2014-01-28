@@ -11456,10 +11456,33 @@ static int LUACALL wxLua_wxGrid_CanDragCell(lua_State *L)
     return 1;
 }
 
+
+#if (wxLUA_USE_wxGrid && wxUSE_GRID) && (wxCHECK_VERSION(3,0,0))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGrid_CanDragColSize1[] = { &wxluatype_wxGrid, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxGrid_CanDragColSize1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGrid_CanDragColSize1[1] = {{ wxLua_wxGrid_CanDragColSize1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGrid_CanDragColSize1 }};
+//         bool CanDragColSize( int col );
+static int LUACALL wxLua_wxGrid_CanDragColSize1(lua_State *L)
+{
+    // int col
+    int col = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGrid * self = (wxGrid *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGrid);
+    // call CanDragColSize
+    bool returns = (self->CanDragColSize(col));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxGrid && wxUSE_GRID) && (wxCHECK_VERSION(3,0,0))
+
+#if (wxLUA_USE_wxGrid && wxUSE_GRID) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGrid_CanDragColSize[] = { &wxluatype_wxGrid, NULL };
 static int LUACALL wxLua_wxGrid_CanDragColSize(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxGrid_CanDragColSize[1] = {{ wxLua_wxGrid_CanDragColSize, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGrid_CanDragColSize }};
-//     bool    CanDragColSize( );
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGrid_CanDragColSize[1] = {{ wxLua_wxGrid_CanDragColSize, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGrid_CanDragColSize }};
+//         bool CanDragColSize( );
 static int LUACALL wxLua_wxGrid_CanDragColSize(lua_State *L)
 {
     // get this
@@ -11471,6 +11494,8 @@ static int LUACALL wxLua_wxGrid_CanDragColSize(lua_State *L)
 
     return 1;
 }
+
+#endif // (wxLUA_USE_wxGrid && wxUSE_GRID) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGrid_CanDragGridSize[] = { &wxluatype_wxGrid, NULL };
 static int LUACALL wxLua_wxGrid_CanDragGridSize(lua_State *L);
@@ -11488,10 +11513,33 @@ static int LUACALL wxLua_wxGrid_CanDragGridSize(lua_State *L)
     return 1;
 }
 
+
+#if (wxLUA_USE_wxGrid && wxUSE_GRID) && (wxCHECK_VERSION(3,0,0))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGrid_CanDragRowSize1[] = { &wxluatype_wxGrid, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxGrid_CanDragRowSize1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGrid_CanDragRowSize1[1] = {{ wxLua_wxGrid_CanDragRowSize1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGrid_CanDragRowSize1 }};
+//         bool CanDragRowSize( int row );
+static int LUACALL wxLua_wxGrid_CanDragRowSize1(lua_State *L)
+{
+    // int row
+    int row = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGrid * self = (wxGrid *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGrid);
+    // call CanDragRowSize
+    bool returns = (self->CanDragRowSize(row));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxGrid && wxUSE_GRID) && (wxCHECK_VERSION(3,0,0))
+
+#if (wxLUA_USE_wxGrid && wxUSE_GRID) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGrid_CanDragRowSize[] = { &wxluatype_wxGrid, NULL };
 static int LUACALL wxLua_wxGrid_CanDragRowSize(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxGrid_CanDragRowSize[1] = {{ wxLua_wxGrid_CanDragRowSize, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGrid_CanDragRowSize }};
-//     bool    CanDragRowSize( );
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGrid_CanDragRowSize[1] = {{ wxLua_wxGrid_CanDragRowSize, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGrid_CanDragRowSize }};
+//         bool CanDragRowSize( );
 static int LUACALL wxLua_wxGrid_CanDragRowSize(lua_State *L)
 {
     // get this
@@ -11503,6 +11551,8 @@ static int LUACALL wxLua_wxGrid_CanDragRowSize(lua_State *L)
 
     return 1;
 }
+
+#endif // (wxLUA_USE_wxGrid && wxUSE_GRID) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGrid_CanEnableCellControl[] = { &wxluatype_wxGrid, NULL };
 static int LUACALL wxLua_wxGrid_CanEnableCellControl(lua_State *L);
@@ -14851,6 +14901,37 @@ static int LUACALL wxLua_wxGrid_constructor(lua_State *L)
 
 
 
+#if ((wxLUA_USE_wxGrid && wxUSE_GRID) && (wxCHECK_VERSION(3,0,0)))||((wxLUA_USE_wxGrid && wxUSE_GRID) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGrid_CanDragColSize_overload[] =
+{
+
+#if (wxLUA_USE_wxGrid && wxUSE_GRID) && (wxCHECK_VERSION(3,0,0))
+    { wxLua_wxGrid_CanDragColSize1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGrid_CanDragColSize1 },
+#endif // (wxLUA_USE_wxGrid && wxUSE_GRID) && (wxCHECK_VERSION(3,0,0))
+
+#if (wxLUA_USE_wxGrid && wxUSE_GRID) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8))
+    { wxLua_wxGrid_CanDragColSize, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGrid_CanDragColSize },
+#endif // (wxLUA_USE_wxGrid && wxUSE_GRID) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8))
+};
+static int s_wxluafunc_wxLua_wxGrid_CanDragColSize_overload_count = sizeof(s_wxluafunc_wxLua_wxGrid_CanDragColSize_overload)/sizeof(wxLuaBindCFunc);
+
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGrid_CanDragRowSize_overload[] =
+{
+
+#if (wxLUA_USE_wxGrid && wxUSE_GRID) && (wxCHECK_VERSION(3,0,0))
+    { wxLua_wxGrid_CanDragRowSize1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGrid_CanDragRowSize1 },
+#endif // (wxLUA_USE_wxGrid && wxUSE_GRID) && (wxCHECK_VERSION(3,0,0))
+
+#if (wxLUA_USE_wxGrid && wxUSE_GRID) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8))
+    { wxLua_wxGrid_CanDragRowSize, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGrid_CanDragRowSize },
+#endif // (wxLUA_USE_wxGrid && wxUSE_GRID) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8))
+};
+static int s_wxluafunc_wxLua_wxGrid_CanDragRowSize_overload_count = sizeof(s_wxluafunc_wxLua_wxGrid_CanDragRowSize_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxLUA_USE_wxGrid && wxUSE_GRID) && (wxCHECK_VERSION(3,0,0)))||((wxLUA_USE_wxGrid && wxUSE_GRID) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)))
+
 void wxLua_wxGrid_delete_function(void** p)
 {
     wxGrid* o = (wxGrid*)(*p);
@@ -14875,9 +14956,17 @@ wxLuaBindMethod wxGrid_methods[] = {
 #endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxGrid && wxUSE_GRID)
 
     { "CanDragCell", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGrid_CanDragCell, 1, NULL },
-    { "CanDragColSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGrid_CanDragColSize, 1, NULL },
+
+#if ((wxLUA_USE_wxGrid && wxUSE_GRID) && (wxCHECK_VERSION(3,0,0)))||((wxLUA_USE_wxGrid && wxUSE_GRID) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)))
+    { "CanDragColSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGrid_CanDragColSize_overload, s_wxluafunc_wxLua_wxGrid_CanDragColSize_overload_count, 0 },
+#endif // ((wxLUA_USE_wxGrid && wxUSE_GRID) && (wxCHECK_VERSION(3,0,0)))||((wxLUA_USE_wxGrid && wxUSE_GRID) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)))
+
     { "CanDragGridSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGrid_CanDragGridSize, 1, NULL },
-    { "CanDragRowSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGrid_CanDragRowSize, 1, NULL },
+
+#if ((wxLUA_USE_wxGrid && wxUSE_GRID) && (wxCHECK_VERSION(3,0,0)))||((wxLUA_USE_wxGrid && wxUSE_GRID) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)))
+    { "CanDragRowSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGrid_CanDragRowSize_overload, s_wxluafunc_wxLua_wxGrid_CanDragRowSize_overload_count, 0 },
+#endif // ((wxLUA_USE_wxGrid && wxUSE_GRID) && (wxCHECK_VERSION(3,0,0)))||((wxLUA_USE_wxGrid && wxUSE_GRID) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)))
+
     { "CanEnableCellControl", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGrid_CanEnableCellControl, 1, NULL },
 
 #if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxGrid && wxUSE_GRID)
@@ -16079,7 +16168,18 @@ wxLuaBindEvent* wxLuaGetEventList_wxadv(size_t &count)
 
 #if wxLUA_USE_wxGrid && wxUSE_GRID
         { "wxEVT_GRID_CELL_BEGIN_DRAG", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_CELL_BEGIN_DRAG), &wxluatype_wxGridEvent },
+#endif // wxLUA_USE_wxGrid && wxUSE_GRID
+
+#if (wxLUA_USE_wxGrid && wxUSE_GRID) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8))
         { "wxEVT_GRID_CELL_CHANGE", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_CELL_CHANGE), &wxluatype_wxGridEvent },
+#endif // (wxLUA_USE_wxGrid && wxUSE_GRID) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8))
+
+#if (wxLUA_USE_wxGrid && wxUSE_GRID) && (wxCHECK_VERSION(3,0,0))
+        { "wxEVT_GRID_CELL_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_CELL_CHANGED), &wxluatype_wxGridEvent },
+        { "wxEVT_GRID_CELL_CHANGING", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_CELL_CHANGING), &wxluatype_wxGridEvent },
+#endif // (wxLUA_USE_wxGrid && wxUSE_GRID) && (wxCHECK_VERSION(3,0,0))
+
+#if wxLUA_USE_wxGrid && wxUSE_GRID
         { "wxEVT_GRID_CELL_LEFT_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_CELL_LEFT_CLICK), &wxluatype_wxGridEvent },
         { "wxEVT_GRID_CELL_LEFT_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_CELL_LEFT_DCLICK), &wxluatype_wxGridEvent },
         { "wxEVT_GRID_CELL_RIGHT_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_CELL_RIGHT_CLICK), &wxluatype_wxGridEvent },

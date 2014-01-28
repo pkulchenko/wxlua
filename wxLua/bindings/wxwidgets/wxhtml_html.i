@@ -200,9 +200,13 @@ class wxHtmlTag // !%wxchkver_2_9_2 wxObject
     //wxHtmlTag(const wxString& source, int pos, int end_pos, wxHtmlTagsCache* cache );
 
     const wxString GetAllParams() const;
+    
+#if !%wxchkver_3_0 || WXWIN_COMPATIBILITY_2_8
     int GetBeginPos() const;
     int GetEndPos1() const;
     int GetEndPos2() const;
+#endif // !%wxchkver_3_0 || WXWIN_COMPATIBILITY_2_8
+    
     wxString GetName() const;
     wxString GetParam(const wxString& par, bool with_commas = false) const;
 

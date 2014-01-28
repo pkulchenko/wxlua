@@ -96,7 +96,6 @@ class wxMenuBar : public wxWindow
     wxMenuItem* FindItem(int id, wxMenu **menu = NULL) const;
     wxString GetHelpString(int id) const;
     wxString GetLabel(int id) const;
-    wxString GetLabelTop(int pos) const;
     wxMenu* GetMenu(int menuIndex) const;
     int GetMenuCount() const;
     bool Insert(size_t pos, %ungc wxMenu *menu, const wxString& title );
@@ -107,9 +106,18 @@ class wxMenuBar : public wxWindow
     %gc wxMenu* Replace(size_t pos, %ungc wxMenu *menu, const wxString& title );
     void SetHelpString(int id, const wxString& helpString );
     void SetLabel(int id, const wxString& label );
-    void SetLabelTop(int pos, const wxString& label );
 
     %wxchkver_2_8 virtual void UpdateMenus( );
+
+    #if !%wxchkver_3_0 || %wxcompat_2_8
+        wxString GetLabelTop(int pos) const;
+        void SetLabelTop(int pos, const wxString& label);
+    #endif
+    #if %wxchkver_3_0
+        void SetMenuLabel(size_t pos, const wxString& label);
+        wxString GetMenuLabel(size_t pos) const;
+        wxString GetMenuLabelText(size_t pos) const;
+    #endif
 };
 
 // ---------------------------------------------------------------------------
@@ -133,12 +141,9 @@ class %delete wxMenuItem : public wxObject
     wxString GetHelp() const;
     int GetId() const;
     wxItemKind GetKind() const;
-    wxString GetLabel() const;
-    static wxString GetLabelFromText(const wxString& text );
     //%win int GetMarginWidth() const;
     wxMenu* GetMenu() const;
     // wxString GetName() const; - deprecated
-    wxString GetText() const;
     wxMenu* GetSubMenu() const;
     //%win wxColour& GetTextColour() const;
     bool IsCheckable() const;
@@ -154,7 +159,6 @@ class %delete wxMenuItem : public wxObject
     //%win void SetMarginWidth(int width) const;
     //void SetMenu(wxMenu* menu );
     void SetSubMenu(wxMenu* menu );
-    void SetText(const wxString& text );
     // void SetName(const wxString& text) const; - deprecated
     %win void SetTextColour(const wxColour& colour) const;
 
@@ -164,6 +168,19 @@ class %delete wxMenuItem : public wxObject
         wxString GetItemLabelText() const;
 
         static wxString GetLabelText(const wxString& label );
+    #endif
+
+    #if !%wxchkver_3_0 || %wxcompat_2_8
+        wxString GetLabel() const;
+        static wxString GetLabelFromText(const wxString& text );
+        wxString GetText() const;
+        void SetText(const wxString& text );
+    #endif
+    #if %wxchkver_3_0
+        wxString GetItemLabelText() const;
+        static wxString GetLabelText(const wxString& label);
+        wxString GetItemLabel() const;
+        void SetItemLabel(const wxString& str);
     #endif
 };
 
@@ -248,8 +265,13 @@ class wxToolBarBase : public wxControl
     bool    GetToolState(int id );
     wxToolBarToolBase* InsertControl(size_t pos, wxControl *control );
     wxToolBarToolBase* InsertSeparator(size_t pos );
-    wxToolBarToolBase* InsertTool(size_t pos, int id, const wxBitmap& bitmap, const wxBitmap& pushedBitmap = wxNullBitmap, bool isToggle = false, wxObject *clientData = NULL, const wxString& shortHelpString = "", const wxString& longHelpString = "" );
+
+    #if !%wxchkver_3_0 || %wxcompat_2_8
+        wxToolBarToolBase* InsertTool(size_t pos, int id, const wxBitmap& bitmap, const wxBitmap& pushedBitmap = wxNullBitmap, bool isToggle = false, wxObject *clientData = NULL, const wxString& shortHelpString = "", const wxString& longHelpString = "" );
+    #endif
+
     wxToolBarToolBase* InsertTool(size_t pos, int toolid, const wxString& label, const wxBitmap& bitmap, const wxBitmap& bmpDisabled = wxNullBitmap, wxItemKind kind = wxITEM_NORMAL, const wxString& shortHelp = "", const wxString& longHelp = "", wxObject *clientData = NULL );
+
     //wxToolBarToolBase * InsertTool(size_t pos, wxToolBarToolBase* tool );
     wxToolBarToolBase* RemoveTool(int id );
     bool    Realize( );

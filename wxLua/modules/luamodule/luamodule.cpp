@@ -18,6 +18,7 @@
 //#pragma comment(lib,"comctl32.lib")
 //#pragma comment(linker,"\"/manifestdependency:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 
+#include <wx/string.h>
 #include <wx/app.h>
 #include <wx/frame.h>
 #include <wx/msgdlg.h>
@@ -26,6 +27,10 @@
 #if defined(__WXMSW__)
     #include <wx/msw/private.h> // for wxSetInstance
 #endif
+
+#if wxCHECK_VERSION(3,0,0)
+    #include <wx/wxcrtvararg.h>
+#endif // wxCHECK_VERSION(3,0,0)
 
 #include "wxlua/wxlstate.h"
 #include "luamoduledefs.h"

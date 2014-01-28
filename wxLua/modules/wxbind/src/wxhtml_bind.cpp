@@ -1458,6 +1458,8 @@ static int LUACALL wxLua_wxHtmlTag_GetAllParams(lua_State *L)
     return 1;
 }
 
+
+#if (wxLUA_USE_wxHTML && wxUSE_HTML) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlTag_GetBeginPos[] = { &wxluatype_wxHtmlTag, NULL };
 static int LUACALL wxLua_wxHtmlTag_GetBeginPos(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlTag_GetBeginPos[1] = {{ wxLua_wxHtmlTag_GetBeginPos, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlTag_GetBeginPos }};
@@ -1505,6 +1507,8 @@ static int LUACALL wxLua_wxHtmlTag_GetEndPos2(lua_State *L)
 
     return 1;
 }
+
+#endif // (wxLUA_USE_wxHTML && wxUSE_HTML) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlTag_GetName[] = { &wxluatype_wxHtmlTag, NULL };
 static int LUACALL wxLua_wxHtmlTag_GetName(lua_State *L);
@@ -1636,9 +1640,13 @@ void wxLua_wxHtmlTag_delete_function(void** p)
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxHtmlTag_methods[] = {
     { "GetAllParams", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHtmlTag_GetAllParams, 1, NULL },
+
+#if (wxLUA_USE_wxHTML && wxUSE_HTML) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8))
     { "GetBeginPos", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHtmlTag_GetBeginPos, 1, NULL },
     { "GetEndPos1", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHtmlTag_GetEndPos1, 1, NULL },
     { "GetEndPos2", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHtmlTag_GetEndPos2, 1, NULL },
+#endif // (wxLUA_USE_wxHTML && wxUSE_HTML) && (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8))
+
     { "GetName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHtmlTag_GetName, 1, NULL },
     { "GetParam", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHtmlTag_GetParam, 1, NULL },
     { "GetParamAsColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHtmlTag_GetParamAsColour, 1, NULL },

@@ -1402,3 +1402,26 @@ class wxGenericDirCtrl : public wxControl
 };
 
 #endif //wxLUA_USE_wxGenericDirCtrl && wxUSE_DIRDLG
+
+
+// ---------------------------------------------------------------------------
+// wxInfoBar
+
+#if wxUSE_INFOBAR && %wxchkver_2_9_1
+
+#include "wx/infobar.h"
+
+class wxInfoBar : public wxControl
+{
+    wxInfoBar( );
+    wxInfoBar(wxWindow *parent, wxWindowID id );
+    bool Create(wxWindow *parent, wxWindowID id );
+
+    void AddButton(wxWindowID btnid, const wxString &label = wxEmptyString );
+    void Dismiss( );
+    void RemoveButton(wxWindowID btnid );
+    void ShowMessage(const wxString &msg, int flags = wxICON_INFORMATION );
+};
+
+#endif //wxUSE_INFOBAR && %wxchkver_2_9_1
+
