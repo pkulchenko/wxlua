@@ -1508,6 +1508,79 @@ static int LUACALL wxLua_wxDropTarget_GetData(lua_State *L)
 }
 
 
+#if (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDropTarget_GetDataObject[] = { &wxluatype_wxDropTarget, NULL };
+static int LUACALL wxLua_wxDropTarget_GetDataObject(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDropTarget_GetDataObject[1] = {{ wxLua_wxDropTarget_GetDataObject, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDropTarget_GetDataObject }};
+//     wxDataObject *GetDataObject() const;
+static int LUACALL wxLua_wxDropTarget_GetDataObject(lua_State *L)
+{
+    // get this
+    wxDropTarget * self = (wxDropTarget *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDropTarget);
+    // call GetDataObject
+    wxDataObject* returns = (wxDataObject*)self->GetDataObject();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxDataObject);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDropTarget_GetDefaultAction[] = { &wxluatype_wxDropTarget, NULL };
+static int LUACALL wxLua_wxDropTarget_GetDefaultAction(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDropTarget_GetDefaultAction[1] = {{ wxLua_wxDropTarget_GetDefaultAction, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDropTarget_GetDefaultAction }};
+//     wxDragResult GetDefaultAction();
+static int LUACALL wxLua_wxDropTarget_GetDefaultAction(lua_State *L)
+{
+    // get this
+    wxDropTarget * self = (wxDropTarget *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDropTarget);
+    // call GetDefaultAction
+    wxDragResult returns = (self->GetDefaultAction());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+
+#if (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDropTarget_SetDataObject[] = { &wxluatype_wxDropTarget, &wxluatype_wxDataObject, NULL };
+static int LUACALL wxLua_wxDropTarget_SetDataObject(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDropTarget_SetDataObject[1] = {{ wxLua_wxDropTarget_SetDataObject, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDropTarget_SetDataObject }};
+//     void SetDataObject(%ungc wxDataObject* data );
+static int LUACALL wxLua_wxDropTarget_SetDataObject(lua_State *L)
+{
+    // wxDataObject data
+    wxDataObject * data = (wxDataObject *)wxluaT_getuserdatatype(L, 2, wxluatype_wxDataObject);
+    if (wxluaO_isgcobject(L, data)) wxluaO_undeletegcobject(L, data);
+    // get this
+    wxDropTarget * self = (wxDropTarget *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDropTarget);
+    // call SetDataObject
+    self->SetDataObject(data);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDropTarget_SetDefaultAction[] = { &wxluatype_wxDropTarget, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxDropTarget_SetDefaultAction(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDropTarget_SetDefaultAction[1] = {{ wxLua_wxDropTarget_SetDefaultAction, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDropTarget_SetDefaultAction }};
+//     void SetDefaultAction(wxDragResult action );
+static int LUACALL wxLua_wxDropTarget_SetDefaultAction(lua_State *L)
+{
+    // wxDragResult action
+    wxDragResult action = (wxDragResult)wxlua_getenumtype(L, 2);
+    // get this
+    wxDropTarget * self = (wxDropTarget *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDropTarget);
+    // call SetDefaultAction
+    self->SetDefaultAction(action);
+
+    return 0;
+}
+
+
 
 
 void wxLua_wxDropTarget_delete_function(void** p)
@@ -1519,6 +1592,18 @@ void wxLua_wxDropTarget_delete_function(void** p)
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxDropTarget_methods[] = {
     { "GetData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDropTarget_GetData, 1, NULL },
+
+#if (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)
+    { "GetDataObject", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDropTarget_GetDataObject, 1, NULL },
+#endif // (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)
+
+    { "GetDefaultAction", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDropTarget_GetDefaultAction, 1, NULL },
+
+#if (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)
+    { "SetDataObject", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDropTarget_SetDataObject, 1, NULL },
+#endif // (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)
+
+    { "SetDefaultAction", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDropTarget_SetDefaultAction, 1, NULL },
 
     { 0, 0, 0, 0 },
 };

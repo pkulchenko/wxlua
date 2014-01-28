@@ -287,18 +287,23 @@ enum wxDragResult
 
 bool wxIsDragResultOk(wxDragResult res );
 
-class wxDropTarget // FIXME implement virtual
+class wxDropTarget
 {
     //wxDropTarget(wxDataObject* data = NULL) pure virtual functions in MSW
+
     virtual bool GetData( );
-    //wxDragResult GetDefaultAction( );
+
     //virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def );
     //virtual bool OnDrop(wxCoord x, wxCoord y );
     //virtual wxDragResult OnEnter(wxCoord x, wxCoord y, wxDragResult def );
     //virtual wxDragResult OnDragOver(wxCoord x, wxCoord y, wxDragResult def );
     //virtual void OnLeave( );
-    //void SetDataObject(wxDataObject* data );
-    //void SetDefaultAction(wxDragResult action );
+
+    wxDataObject *GetDataObject() const;
+    void SetDataObject(%ungc wxDataObject* data );
+
+    wxDragResult GetDefaultAction();
+    void SetDefaultAction(wxDragResult action );
 };
 
 // ---------------------------------------------------------------------------
