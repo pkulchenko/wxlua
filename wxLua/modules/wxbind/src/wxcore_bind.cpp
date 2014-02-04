@@ -4562,6 +4562,7 @@ static const char* wxluaclassname_wxLuaFileDropTarget = "wxLuaFileDropTarget";
 static const char* wxluaclassname_wxLuaPrintout = "wxLuaPrintout";
 static const char* wxluaclassname_wxLuaTextDropTarget = "wxLuaTextDropTarget";
 static const char* wxluaclassname_wxLuaTreeItemData = "wxLuaTreeItemData";
+static const char* wxluaclassname_wxLuaURLDropTarget = "wxLuaURLDropTarget";
 static const char* wxluaclassname_wxMDIChildFrame = "wxMDIChildFrame";
 static const char* wxluaclassname_wxMDIClientWindow = "wxMDIClientWindow";
 static const char* wxluaclassname_wxMDIParentFrame = "wxMDIParentFrame";
@@ -4970,6 +4971,8 @@ static const char* wxluabaseclassnames_wxLuaTextDropTarget[] = { wxluaclassname_
 static wxLuaBindClass* wxluabaseclassbinds_wxLuaTextDropTarget[] = { NULL };
 static const char* wxluabaseclassnames_wxLuaTreeItemData[] = { wxluaclassname_wxTreeItemData, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxLuaTreeItemData[] = { NULL };
+static const char* wxluabaseclassnames_wxLuaURLDropTarget[] = { wxluaclassname_wxDropTarget, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxLuaURLDropTarget[] = { NULL };
 static const char* wxluabaseclassnames_wxMDIChildFrame[] = { wxluaclassname_wxFrame, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxMDIChildFrame[] = { NULL };
 static const char* wxluabaseclassnames_wxMDIClientWindow[] = { wxluaclassname_wxWindow, NULL };
@@ -6028,6 +6031,9 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern wxLuaBindMethod wxLuaTextDropTarget_methods[];
     extern int wxLuaTextDropTarget_methodCount;
     extern void wxLua_wxLuaTextDropTarget_delete_function(void** p);
+    extern wxLuaBindMethod wxLuaURLDropTarget_methods[];
+    extern int wxLuaURLDropTarget_methodCount;
+    extern void wxLua_wxLuaURLDropTarget_delete_function(void** p);
     extern wxLuaBindMethod wxTextDropTarget_methods[];
     extern int wxTextDropTarget_methodCount;
     extern void wxLua_wxTextDropTarget_delete_function(void** p);
@@ -7035,6 +7041,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #if wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL
         { wxluaclassname_wxLuaTreeItemData, wxLuaTreeItemData_methods, wxLuaTreeItemData_methodCount, NULL, &wxluatype_wxLuaTreeItemData, wxluabaseclassnames_wxLuaTreeItemData, wxluabaseclassbinds_wxLuaTreeItemData, NULL, NULL, NULL, 0, &wxLua_wxLuaTreeItemData_delete_function, }, 
 #endif // wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL
+
+#if wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
+        { wxluaclassname_wxLuaURLDropTarget, wxLuaURLDropTarget_methods, wxLuaURLDropTarget_methodCount, NULL, &wxluatype_wxLuaURLDropTarget, wxluabaseclassnames_wxLuaURLDropTarget, wxluabaseclassbinds_wxLuaURLDropTarget, NULL, NULL, NULL, 0, &wxLua_wxLuaURLDropTarget_delete_function, }, 
+#endif // wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
 
 #if wxLUA_USE_MDI && wxUSE_MDI && wxUSE_DOC_VIEW_ARCHITECTURE
         { wxluaclassname_wxMDIChildFrame, wxMDIChildFrame_methods, wxMDIChildFrame_methodCount, CLASSINFO(wxMDIChildFrame), &wxluatype_wxMDIChildFrame, wxluabaseclassnames_wxMDIChildFrame, wxluabaseclassbinds_wxMDIChildFrame, NULL, NULL, NULL, 0, &wxLua_wxMDIChildFrame_delete_function, }, 

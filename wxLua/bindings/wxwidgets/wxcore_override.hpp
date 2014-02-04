@@ -374,6 +374,23 @@ static int LUACALL wxLua_wxLuaTextDropTarget_constructor(lua_State *L)
 }
 %end
 
+%override wxLua_wxLuaURLDropTarget_constructor
+//     wxLuaTextDropTarget()
+static int LUACALL wxLua_wxLuaURLDropTarget_constructor(lua_State *L)
+{
+    wxLuaState wxlState(L);
+
+    // call constructor
+    wxLuaURLDropTarget* returns = new wxLuaURLDropTarget(wxlState);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxLuaURLDropTarget);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxLuaURLDropTarget);
+
+    return 1;
+}
+%end
+
 // ----------------------------------------------------------------------------
 // Overrides for controls.i
 // ----------------------------------------------------------------------------

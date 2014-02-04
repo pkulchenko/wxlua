@@ -162,6 +162,20 @@ html:SetRelatedStatusBar(1)
 html:SetPage(htmlTextPage)
 --  html:LoadPage("testpage.html")
 
+
+-- Create a URL drop target, this has nothing to do with the HTML win, just a demo.
+urlDropTarget = wx.wxLuaURLDropTarget()
+urlDropTarget.OnData = function(self, x, y, def)
+    print("URL OnData ", x, y, def)
+    return self:_OnData(x, y, def)
+end
+urlDropTarget.OnDropURL = function(self, x, y, text)
+    print("URL OnDropURL ", x, y, text)
+    return true
+end
+html:SetDropTarget(urlDropTarget)
+
+
 -- show the frame window
 wx.wxGetApp().TopWindow = frame
 frame:Show(true)

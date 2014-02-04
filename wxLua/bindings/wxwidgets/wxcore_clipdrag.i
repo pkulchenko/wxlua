@@ -364,6 +364,24 @@ class wxLuaTextDropTarget : public wxTextDropTarget
 };
 
 // ---------------------------------------------------------------------------
+// wxLuaURLDropTarget - wxLua added class, see wxWidgets/samples/dnd
+
+class wxLuaURLDropTarget : public wxDropTarget 
+{
+    wxLuaURLDropTarget( );
+
+    // Create a Lua function that returns a wxDragResult.
+    // %override wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
+    // C++ Func: virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
+    virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def );
+
+    // Create a Lua function that returns a bool.
+    // %override bool OnDropURL(wxCoord x, wxCoord y, const wxString& text);
+    // C++ Func: virtual bool OnDropURL(wxCoord x, wxCoord y, const wxString& text);
+    virtual bool OnDropURL(wxCoord x, wxCoord y, const wxString& text);
+};
+
+// ---------------------------------------------------------------------------
 // wxDropSource
 
 class %delete wxDropSource // FIXME implement virtual

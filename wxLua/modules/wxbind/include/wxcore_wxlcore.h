@@ -62,10 +62,7 @@ class WXDLLIMPEXP_BINDWXCORE wxLuaFileDropTarget : public wxFileDropTarget
 public:
     wxLuaFileDropTarget(const wxLuaState& wxlState);
 
-    // parameters are the number of files and the array of file names
-    virtual bool OnDropFiles(wxCoord x, wxCoord y,
-                             const wxArrayString& filenames);
-
+    virtual bool OnDropFiles(wxCoord x, wxCoord y, const wxArrayString& filenames);
     virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
 
 private:
@@ -86,11 +83,40 @@ class WXDLLIMPEXP_BINDWXCORE wxLuaTextDropTarget : public wxTextDropTarget
 public:
     wxLuaTextDropTarget(const wxLuaState& wxlState);
 
-    // parameters are the number of files and the array of file names
-    virtual bool OnDropText(wxCoord x, wxCoord y,
-                            const wxString& text);
-
+    virtual bool OnDropText(wxCoord x, wxCoord y, const wxString& text);
     virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
+
+private:
+    mutable wxLuaState m_wxlState;
+};
+
+#endif // wxLUA_USE_wxDataObject && wxUSE_DRAG_AND_DROP
+
+// ----------------------------------------------------------------------------
+// wxLuaURLDropTarget - Copied from wxWidgets/samples/dnd/dnd.cpp
+// Unfortunately the wxURLDataObject does not derive from a wxTextDataObject
+// in MSW so we need to create this class.
+// ----------------------------------------------------------------------------
+#if wxLUA_USE_wxDataObject && wxUSE_DRAG_AND_DROP
+
+#include <wx/dnd.h>
+
+class WXDLLIMPEXP_BINDWXCORE wxLuaURLDropTarget : public wxDropTarget
+{
+public:
+    wxLuaURLDropTarget(const wxLuaState& wxlState);
+
+    virtual bool OnDropURL(wxCoord x, wxCoord y, const wxString& text);
+    virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
+
+
+    // URLs can't be moved, only copied
+    virtual wxDragResult OnDragOver(wxCoord WXUNUSED(x), wxCoord WXUNUSED(y),
+                                    wxDragResult WXUNUSED(def))
+    {
+        return wxDragLink; // At least IE 5.x needs wxDragLink, the
+                           // other browsers on MSW seem okay with it too.
+    }
 
 private:
     mutable wxLuaState m_wxlState;

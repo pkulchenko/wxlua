@@ -1805,6 +1805,11 @@
 <td align="center" bgcolor=#AAFFAA>X
 <td>&nbsp;
 <tr>
+<td><a href="#wxInfoBar">wxInfoBar</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
 <td><a href="#wxInitDialogEvent">wxInitDialogEvent</a>
 <td align="center" bgcolor=#AAFFAA>X
 <td align="center" bgcolor=#AAFFAA>X
@@ -2041,6 +2046,11 @@
 <td>&nbsp;
 <tr>
 <td><a href="#wxLuaTreeItemData">wxLuaTreeItemData</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
+<td><a href="#wxLuaURLDropTarget">wxLuaURLDropTarget</a>
 <td bgcolor=#FFAAAA>&nbsp;
 <td align="center" bgcolor=#AAFFAA>X
 <td>&nbsp;
@@ -8174,19 +8184,24 @@ enum<br>
 <br>
 bool wxIsDragResultOk(<a href="#wxDragResult">wxDragResult</a> res );<br>
 <br>
-<b><font size=+1 color=#DD0000>class <a name="wxDropTarget">wxDropTarget</a> <font color=#009900>// FIXME implement virtual</font></font></b><br>
+<b><font size=+1 color=#DD0000>class <a name="wxDropTarget">wxDropTarget</a></font></b><br>
 {
 <blockquote>
     <font color=#009900>//<a href="#wxDropTarget">wxDropTarget</a>(<a href="#wxDataObject">wxDataObject</a>* data = NULL) pure virtual functions in MSW</font><br>
+<br>
     virtual bool GetData( );<br>
-    <font color=#009900>//<a href="#wxDragResult">wxDragResult</a> GetDefaultAction( );</font><br>
+<br>
     <font color=#009900>//virtual <a href="#wxDragResult">wxDragResult</a> OnData(wxCoord x, wxCoord y, <a href="#wxDragResult">wxDragResult</a> def );</font><br>
     <font color=#009900>//virtual bool OnDrop(wxCoord x, wxCoord y );</font><br>
     <font color=#009900>//virtual <a href="#wxDragResult">wxDragResult</a> OnEnter(wxCoord x, wxCoord y, <a href="#wxDragResult">wxDragResult</a> def );</font><br>
     <font color=#009900>//virtual <a href="#wxDragResult">wxDragResult</a> OnDragOver(wxCoord x, wxCoord y, <a href="#wxDragResult">wxDragResult</a> def );</font><br>
     <font color=#009900>//virtual void OnLeave( );</font><br>
-    <font color=#009900>//void SetDataObject(<a href="#wxDataObject">wxDataObject</a>* data );</font><br>
-    <font color=#009900>//void SetDefaultAction(<a href="#wxDragResult">wxDragResult</a> action );</font><br>
+<br>
+    <a href="#wxDataObject">wxDataObject</a> *GetDataObject() const;<br>
+    void SetDataObject(<i>%ungc</i> <a href="#wxDataObject">wxDataObject</a>* data );<br>
+<br>
+    <a href="#wxDragResult">wxDragResult</a> GetDefaultAction();<br>
+    void SetDefaultAction(<a href="#wxDragResult">wxDragResult</a> action );<br>
 </blockquote>};<br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
@@ -8248,6 +8263,25 @@ bool wxIsDragResultOk(<a href="#wxDragResult">wxDragResult</a> res );<br>
 <font color=#BB0055>    <font color=#009900>// <i>%override</i> bool OnDropText(wxCoord x, wxCoord y, const <a href="#wxString">wxString</a>&amp; text);</font></font><br>
     <font color=#009900>// C++ Func: virtual bool OnDropText(wxCoord x, wxCoord y, const <a href="#wxString">wxString</a>&amp; text);</font><br>
     virtual bool OnDropText(wxCoord x, wxCoord y, const <a href="#wxString">wxString</a>&amp; text);<br>
+</blockquote>};<br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxLuaURLDropTarget">wxLuaURLDropTarget</a> - wxLua added class, see wxWidgets/samples/dnd</font><br>
+<br>
+<b><font size=+1 color=#DD0000>class <a href="#wxLuaURLDropTarget">wxLuaURLDropTarget</a> : public <a name="wxDropTarget">wxDropTarget</a> </font></b><br>
+{
+<blockquote>
+    <a href="#wxLuaURLDropTarget">wxLuaURLDropTarget</a>( );<br>
+<br>
+    <font color=#009900>// Create a Lua function that returns a <a href="#wxDragResult">wxDragResult</a>.</font><br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> <a href="#wxDragResult">wxDragResult</a> OnData(wxCoord x, wxCoord y, <a href="#wxDragResult">wxDragResult</a> def);</font></font><br>
+    <font color=#009900>// C++ Func: virtual <a href="#wxDragResult">wxDragResult</a> OnData(wxCoord x, wxCoord y, <a href="#wxDragResult">wxDragResult</a> def);</font><br>
+    virtual <a href="#wxDragResult">wxDragResult</a> OnData(wxCoord x, wxCoord y, <a href="#wxDragResult">wxDragResult</a> def );<br>
+<br>
+    <font color=#009900>// Create a Lua function that returns a bool.</font><br>
+<font color=#BB0055>    <font color=#009900>// <i>%override</i> bool OnDropURL(wxCoord x, wxCoord y, const <a href="#wxString">wxString</a>&amp; text);</font></font><br>
+    <font color=#009900>// C++ Func: virtual bool OnDropURL(wxCoord x, wxCoord y, const <a href="#wxString">wxString</a>&amp; text);</font><br>
+    virtual bool OnDropURL(wxCoord x, wxCoord y, const <a href="#wxString">wxString</a>&amp; text);<br>
 </blockquote>};<br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
@@ -9776,6 +9810,30 @@ enum<br>
 </blockquote>};<br>
 <br>
 #endif <font color=#009900>//wxLUA_USE_wxGenericDirCtrl &amp;&amp; wxUSE_DIRDLG</font><br>
+<br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxInfoBar">wxInfoBar</a></font><br>
+<br>
+#if wxUSE_INFOBAR &amp;&amp; <i>%wxchkver_2_9_1</i><br>
+<br>
+#include "wx/infobar.h"<br>
+<br>
+<b><font size=+1 color=#DD0000>class <a href="#wxInfoBar">wxInfoBar</a> : public <a name="wxControl">wxControl</a></font></b><br>
+{
+<blockquote>
+    <a href="#wxInfoBar">wxInfoBar</a>( );<br>
+    <a href="#wxInfoBar">wxInfoBar</a>(<a href="#wxWindow">wxWindow</a> *parent, wxWindowID id );<br>
+    bool Create(<a href="#wxWindow">wxWindow</a> *parent, wxWindowID id );<br>
+<br>
+    void AddButton(wxWindowID btnid, const <a href="#wxString">wxString</a> &amp;label = wxEmptyString );<br>
+    void Dismiss( );<br>
+    void RemoveButton(wxWindowID btnid );<br>
+    void ShowMessage(const <a href="#wxString">wxString</a> &amp;msg, int flags = wxICON_INFORMATION );<br>
+</blockquote>};<br>
+<br>
+#endif <font color=#009900>//wxUSE_INFOBAR &amp;&amp; <i>%wxchkver_2_9_1</i></font><br>
+<br>
 <br><HR>
 
 <h2><a name="wxwidgets_wxcore_core.i">wxwidgets/wxcore_core.i</a> - Lua table = 'wx'</h2>
@@ -10752,6 +10810,7 @@ void wxPostEvent(<a href="#wxEvtHandler">wxEvtHandler</a> *dest, <a href="#wxEve
 <font color=#009900>// ===========================================================================</font><br>
 <br>
 <br>
+<font color=#006666><i>%wxchkver_3_0</i> #define wxICON_NONE</font><br>
 <font color=#006666>#define wxICON_ASTERISK</font><br>
 <font color=#006666>#define wxICON_ERROR</font><br>
 <font color=#006666>#define wxICON_EXCLAMATION</font><br>
@@ -15867,7 +15926,6 @@ enum<br>
     <a href="#wxMenuItem">wxMenuItem</a>* FindItem(int id, <a href="#wxMenu">wxMenu</a> **menu = NULL) const;<br>
     <a href="#wxString">wxString</a> GetHelpString(int id) const;<br>
     <a href="#wxString">wxString</a> GetLabel(int id) const;<br>
-    <a href="#wxString">wxString</a> GetLabelTop(int pos) const;<br>
     <a href="#wxMenu">wxMenu</a>* GetMenu(int menuIndex) const;<br>
     int GetMenuCount() const;<br>
     bool Insert(size_t pos, <i>%ungc</i> <a href="#wxMenu">wxMenu</a> *menu, const <a href="#wxString">wxString</a>&amp; title );<br>
@@ -15878,9 +15936,18 @@ enum<br>
     <i>%gc</i> <a href="#wxMenu">wxMenu</a>* Replace(size_t pos, <i>%ungc</i> <a href="#wxMenu">wxMenu</a> *menu, const <a href="#wxString">wxString</a>&amp; title );<br>
     void SetHelpString(int id, const <a href="#wxString">wxString</a>&amp; helpString );<br>
     void SetLabel(int id, const <a href="#wxString">wxString</a>&amp; label );<br>
-    void SetLabelTop(int pos, const <a href="#wxString">wxString</a>&amp; label );<br>
 <br>
     <i>%wxchkver_2_8</i> virtual void UpdateMenus( );<br>
+<br>
+    #if !<i>%wxchkver_3_0</i> || <i>%wxcompat_2_8</i><br>
+        <a href="#wxString">wxString</a> GetLabelTop(int pos) const;<br>
+        void SetLabelTop(int pos, const <a href="#wxString">wxString</a>&amp; label);<br>
+    #endif<br>
+    #if <i>%wxchkver_3_0</i><br>
+        void SetMenuLabel(size_t pos, const <a href="#wxString">wxString</a>&amp; label);<br>
+        <a href="#wxString">wxString</a> GetMenuLabel(size_t pos) const;<br>
+        <a href="#wxString">wxString</a> GetMenuLabelText(size_t pos) const;<br>
+    #endif<br>
 </blockquote>};<br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
@@ -15905,12 +15972,9 @@ enum<br>
     <a href="#wxString">wxString</a> GetHelp() const;<br>
     int GetId() const;<br>
     <a href="#wxItemKind">wxItemKind</a> GetKind() const;<br>
-    <a href="#wxString">wxString</a> GetLabel() const;<br>
-    static <a href="#wxString">wxString</a> GetLabelFromText(const <a href="#wxString">wxString</a>&amp; text );<br>
     <font color=#009900>//<i>%win</i> int GetMarginWidth() const;</font><br>
     <a href="#wxMenu">wxMenu</a>* GetMenu() const;<br>
     <font color=#009900>// <a href="#wxString">wxString</a> GetName() const; - deprecated</font><br>
-    <a href="#wxString">wxString</a> GetText() const;<br>
     <a href="#wxMenu">wxMenu</a>* GetSubMenu() const;<br>
     <font color=#009900>//<i>%win</i> <a href="#wxColour">wxColour</a>&amp; GetTextColour() const;</font><br>
     bool IsCheckable() const;<br>
@@ -15926,7 +15990,6 @@ enum<br>
     <font color=#009900>//<i>%win</i> void SetMarginWidth(int width) const;</font><br>
     <font color=#009900>//void SetMenu(<a href="#wxMenu">wxMenu</a>* menu );</font><br>
     void SetSubMenu(<a href="#wxMenu">wxMenu</a>* menu );<br>
-    void SetText(const <a href="#wxString">wxString</a>&amp; text );<br>
     <font color=#009900>// void SetName(const <a href="#wxString">wxString</a>&amp; text) const; - deprecated</font><br>
     <i>%win</i> void SetTextColour(const <a href="#wxColour">wxColour</a>&amp; colour) const;<br>
 <br>
@@ -15936,6 +15999,19 @@ enum<br>
         <a href="#wxString">wxString</a> GetItemLabelText() const;<br>
 <br>
         static <a href="#wxString">wxString</a> GetLabelText(const <a href="#wxString">wxString</a>&amp; label );<br>
+    #endif<br>
+<br>
+    #if !<i>%wxchkver_3_0</i> || <i>%wxcompat_2_8</i><br>
+        <a href="#wxString">wxString</a> GetLabel() const;<br>
+        static <a href="#wxString">wxString</a> GetLabelFromText(const <a href="#wxString">wxString</a>&amp; text );<br>
+        <a href="#wxString">wxString</a> GetText() const;<br>
+        void SetText(const <a href="#wxString">wxString</a>&amp; text );<br>
+    #endif<br>
+    #if <i>%wxchkver_3_0</i><br>
+        <a href="#wxString">wxString</a> GetItemLabelText() const;<br>
+        static <a href="#wxString">wxString</a> GetLabelText(const <a href="#wxString">wxString</a>&amp; label);<br>
+        <a href="#wxString">wxString</a> GetItemLabel() const;<br>
+        void SetItemLabel(const <a href="#wxString">wxString</a>&amp; str);<br>
     #endif<br>
 </blockquote>};<br>
 <br>
@@ -16023,8 +16099,13 @@ enum<br>
     bool    GetToolState(int id );<br>
     <a href="#wxToolBarToolBase">wxToolBarToolBase</a>* InsertControl(size_t pos, <a href="#wxControl">wxControl</a> *control );<br>
     <a href="#wxToolBarToolBase">wxToolBarToolBase</a>* InsertSeparator(size_t pos );<br>
-    <a href="#wxToolBarToolBase">wxToolBarToolBase</a>* InsertTool(size_t pos, int id, const <a href="#wxBitmap">wxBitmap</a>&amp; bitmap, const <a href="#wxBitmap">wxBitmap</a>&amp; pushedBitmap = wxNullBitmap, bool isToggle = false, <a href="#wxObject">wxObject</a> *clientData = NULL, const <a href="#wxString">wxString</a>&amp; shortHelpString = "", const <a href="#wxString">wxString</a>&amp; longHelpString = "" );<br>
+<br>
+    #if !<i>%wxchkver_3_0</i> || <i>%wxcompat_2_8</i><br>
+        <a href="#wxToolBarToolBase">wxToolBarToolBase</a>* InsertTool(size_t pos, int id, const <a href="#wxBitmap">wxBitmap</a>&amp; bitmap, const <a href="#wxBitmap">wxBitmap</a>&amp; pushedBitmap = wxNullBitmap, bool isToggle = false, <a href="#wxObject">wxObject</a> *clientData = NULL, const <a href="#wxString">wxString</a>&amp; shortHelpString = "", const <a href="#wxString">wxString</a>&amp; longHelpString = "" );<br>
+    #endif<br>
+<br>
     <a href="#wxToolBarToolBase">wxToolBarToolBase</a>* InsertTool(size_t pos, int toolid, const <a href="#wxString">wxString</a>&amp; label, const <a href="#wxBitmap">wxBitmap</a>&amp; bitmap, const <a href="#wxBitmap">wxBitmap</a>&amp; bmpDisabled = wxNullBitmap, <a href="#wxItemKind">wxItemKind</a> kind = wxITEM_NORMAL, const <a href="#wxString">wxString</a>&amp; shortHelp = "", const <a href="#wxString">wxString</a>&amp; longHelp = "", <a href="#wxObject">wxObject</a> *clientData = NULL );<br>
+<br>
     <font color=#009900>//<a href="#wxToolBarToolBase">wxToolBarToolBase</a> * InsertTool(size_t pos, <a href="#wxToolBarToolBase">wxToolBarToolBase</a>* tool );</font><br>
     <a href="#wxToolBarToolBase">wxToolBarToolBase</a>* RemoveTool(int id );<br>
     bool    Realize( );<br>
@@ -20313,10 +20394,18 @@ enum<br>
 <br>
     void    EnableDragRowSize( bool enable = true );<br>
     void    DisableDragRowSize( );<br>
-    bool    CanDragRowSize( );<br>
+<br>
+    #if !<i>%wxchkver_3_0</i> || <i>%wxcompat_2_8</i> <br>
+        bool CanDragColSize( );<br>
+        bool CanDragRowSize( );<br>
+    #endif<br>
+    #if <i>%wxchkver_3_0</i> <br>
+        bool CanDragColSize( int col );<br>
+        bool CanDragRowSize( int row );<br>
+    #endif<br>
+<br>
     void    EnableDragColSize( bool enable = true );<br>
     void    DisableDragColSize( );<br>
-    bool    CanDragColSize( );<br>
     void    EnableDragGridSize(bool enable = true );<br>
     void    DisableDragGridSize( );<br>
     bool    CanDragGridSize( );<br>
@@ -20503,11 +20592,18 @@ enum<br>
     <i>%wxEventType</i> wxEVT_GRID_LABEL_RIGHT_CLICK  <font color=#009900>// EVT_GRID_LABEL_RIGHT_CLICK(fn );</font><br>
     <i>%wxEventType</i> wxEVT_GRID_LABEL_LEFT_DCLICK  <font color=#009900>// EVT_GRID_LABEL_LEFT_DCLICK(fn );</font><br>
     <i>%wxEventType</i> wxEVT_GRID_LABEL_RIGHT_DCLICK <font color=#009900>// EVT_GRID_LABEL_RIGHT_DCLICK(fn );</font><br>
-    <i>%wxEventType</i> wxEVT_GRID_CELL_CHANGE        <font color=#009900>// EVT_GRID_CELL_CHANGE(fn );</font><br>
     <i>%wxEventType</i> wxEVT_GRID_SELECT_CELL        <font color=#009900>// EVT_GRID_SELECT_CELL(fn );</font><br>
     <i>%wxEventType</i> wxEVT_GRID_EDITOR_SHOWN       <font color=#009900>// EVT_GRID_EDITOR_SHOWN(fn );</font><br>
     <i>%wxEventType</i> wxEVT_GRID_EDITOR_HIDDEN      <font color=#009900>// EVT_GRID_EDITOR_HIDDEN(fn );</font><br>
     <i>%wxEventType</i> wxEVT_GRID_CELL_BEGIN_DRAG    <font color=#009900>// EVT_GRID_CELL_BEGIN_DRAG(fn );</font><br>
+<br>
+    #if !<i>%wxchkver_3_0</i> || <i>%wxcompat_2_8</i><br>
+        <i>%wxEventType</i> wxEVT_GRID_CELL_CHANGE    <font color=#009900>// EVT_GRID_CELL_CHANGE(fn );</font><br>
+    #endif<br>
+    #if <i>%wxchkver_3_0</i> <br>
+        <i>%wxEventType</i> wxEVT_GRID_CELL_CHANGING  <font color=#009900>// EVT_GRID_CELL_CHANGE(fn );</font><br>
+        <i>%wxEventType</i> wxEVT_GRID_CELL_CHANGED   <font color=#009900>// EVT_GRID_CELL_CHANGE(fn );</font><br>
+    #endif<br>
 <br>
     !<i>%wxchkver_2_9_0</i> <a href="#wxGridEvent">wxGridEvent</a>(int id, wxEventType type, <a href="#wxObject">wxObject</a>* obj, int row = -1, int col = -1, int x = -1, int y = -1, bool sel = true, bool control = false, bool shift = false, bool alt = false, bool meta = false );<br>
 <br>
@@ -21238,14 +21334,21 @@ enum<br>
 <b><font size=+1 color=#DD0000>class <a href="#wxGLCanvas">wxGLCanvas</a> : public <a name="wxWindow">wxWindow</a></font></b><br>
 {
 <blockquote>
+#if !<i>%wxchkver_3_0</i><br>
     <a href="#wxGLCanvas">wxGLCanvas</a>(<a href="#wxWindow">wxWindow</a>* parent, wxWindowID id = wxID_ANY, const <a href="#wxPoint">wxPoint</a>&amp; pos = wxDefaultPosition, const <a href="#wxSize">wxSize</a>&amp; size = wxDefaultSize, long style=0, const <a href="#wxString">wxString</a>&amp; name="GLCanvas", int attribList[] = 0, const <a href="#wxPalette">wxPalette</a>&amp; palette = wxNullPalette );<br>
     <a href="#wxGLCanvas">wxGLCanvas</a>(<a href="#wxWindow">wxWindow</a>* parent, <a href="#wxGLContext">wxGLContext</a>* sharedContext, wxWindowID id = -1, const <a href="#wxPoint">wxPoint</a>&amp; pos = wxDefaultPosition, const <a href="#wxSize">wxSize</a>&amp; size = wxDefaultSize, long style=0, const <a href="#wxString">wxString</a>&amp; name="GLCanvas", int attribList[] = 0, const <a href="#wxPalette">wxPalette</a>&amp; palette = wxNullPalette );<br>
     <a href="#wxGLCanvas">wxGLCanvas</a>(<a href="#wxWindow">wxWindow</a>* parent, <a href="#wxGLCanvas">wxGLCanvas</a>* sharedCanvas, wxWindowID id = -1, const <a href="#wxPoint">wxPoint</a>&amp; pos = wxDefaultPosition, const <a href="#wxSize">wxSize</a>&amp; size = wxDefaultSize, long style=0, const <a href="#wxString">wxString</a>&amp; name="GLCanvas", int attribList[] = 0, const <a href="#wxPalette">wxPalette</a>&amp; palette = wxNullPalette );<br>
     !<i>%mac</i> <a href="#wxGLCanvas">wxGLCanvas</a>(<a href="#wxWindow">wxWindow</a>* parent, wxWindowID id = wxID_ANY, int attribList[] = 0, const <a href="#wxPoint">wxPoint</a>&amp; pos = wxDefaultPosition, const <a href="#wxSize">wxSize</a>&amp; size = wxDefaultSize, long style=0, const <a href="#wxString">wxString</a>&amp; name="GLCanvas", const <a href="#wxPalette">wxPalette</a>&amp; palette = wxNullPalette );<br>
+#endif<br>
 <br>
-    <a href="#wxGLContext">wxGLContext</a>* GetContext() const;<br>
+#if <i>%wxchkver_3_0</i><br>
+    !<i>%mac</i> <a href="#wxGLCanvas">wxGLCanvas</a>(<a href="#wxWindow">wxWindow</a>* parent, wxWindowID id = wxID_ANY, int attribList[] = 0, const <a href="#wxPoint">wxPoint</a>&amp; pos = wxDefaultPosition, const <a href="#wxSize">wxSize</a>&amp; size = wxDefaultSize, long style=0, const <a href="#wxString">wxString</a>&amp; name="GLCanvas", const <a href="#wxPalette">wxPalette</a>&amp; palette = wxNullPalette );<br>
+#endif<br>
+<br>
+    <font color=#009900>//<a href="#wxGLContext">wxGLContext</a>* GetContext() const; - removed in wx 3.0</font><br>
     <i>%mac</i> void SetCurrent( );<br>
     <i>%wxchkver_2_8</i>&amp;!<i>%mac</i> void SetCurrent(const <a href="#wxGLContext">wxGLContext</a>&amp; RC) const;<br>
+<br>
     void SetColour(const <a href="#wxString">wxString</a>&amp; colour );<br>
     void SwapBuffers( );<br>
 </blockquote>};<br>
@@ -22972,9 +23075,13 @@ enum<br>
     <font color=#009900>//<a href="#wxHtmlTag">wxHtmlTag</a>(const <a href="#wxString">wxString</a>&amp; source, int pos, int end_pos, wxHtmlTagsCache* cache );</font><br>
 <br>
     const <a href="#wxString">wxString</a> GetAllParams() const;<br>
+    <br>
+#if !<i>%wxchkver_3_0</i> || WXWIN_COMPATIBILITY_2_8<br>
     int GetBeginPos() const;<br>
     int GetEndPos1() const;<br>
     int GetEndPos2() const;<br>
+#endif <font color=#009900>// !<i>%wxchkver_3_0</i> || WXWIN_COMPATIBILITY_2_8</font><br>
+    <br>
     <a href="#wxString">wxString</a> GetName() const;<br>
     <a href="#wxString">wxString</a> GetParam(const <a href="#wxString">wxString</a>&amp; par, bool with_commas = false) const;<br>
 <br>

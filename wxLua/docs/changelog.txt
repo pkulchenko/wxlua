@@ -1,6 +1,11 @@
  wxLua ChangeLog
  ===============
 
+ version 3.0.0 (unreleased)
+ --------------------------------------------------------------------
+ - Add wxLuaURLDropTarget.
+
+
  version 2.8.12.3 (released 9/12/2013)
  --------------------------------------------------------------------
  - wxLua now builds with Lua 5.1 and 5.2

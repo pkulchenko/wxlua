@@ -3182,6 +3182,15 @@ wx_dataTypeTable =
     Name = "wxLuaTreeItemData",
     ValueType = "class",
   },
+  wxLuaURLDropTarget = {
+    BaseClasses = {
+      [1] = "wxDropTarget",
+    },
+    Condition = "wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP",
+    IsNumber = false,
+    Name = "wxLuaURLDropTarget",
+    ValueType = "class",
+  },
   wxMDIChildFrame = {
     BaseClasses = {
       [1] = "wxFrame",
