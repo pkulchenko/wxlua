@@ -326,7 +326,7 @@ wxDragResult wxLuaURLDropTarget::OnData(wxCoord x, wxCoord y, wxDragResult def)
         m_wxlState.SetCallBaseClassFunction(false); // clear flag before next virtual call
 
         wxURLDataObject *dobj = (wxURLDataObject *)m_dataObject;
-        return OnDropURL( x, y, dobj->GetText() ) ? def : wxDragNone;
+        return OnDropURL( x, y, dobj->GetURL() ) ? def : wxDragNone;
     }
 
     m_wxlState.SetCallBaseClassFunction(false); // clear flag always

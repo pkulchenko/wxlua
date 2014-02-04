@@ -11056,6 +11056,30 @@ int wxMessageBox(const <a href="#wxString">wxString</a>&amp; message, const <a h
     <a href="#wxMessageDialog">wxMessageDialog</a>(<a href="#wxWindow">wxWindow</a>* parent, const <a href="#wxString">wxString</a>&amp; message, const <a href="#wxString">wxString</a>&amp; caption = "Message box", long style = wxOK | wxCANCEL | wxCENTRE, const <a href="#wxPoint">wxPoint</a>&amp; pos = wxDefaultPosition );<br>
 <br>
     <font color=#009900>// int ShowModal() - in <a href="#wxDialog">wxDialog</a></font><br>
+    <br>
+    <i>%wxchkver_2_9_0</i> void SetExtendedMessage(const <a href="#wxString">wxString</a>&amp; extendedMessage);<br>
+    <i>%wxchkver_2_9_3</i> bool SetHelpLabel(const <a href="#wxString">wxString</a>&amp; help);<br>
+    <i>%wxchkver_2_9_3</i> bool SetHelpLabel(int help);<br>
+    <i>%wxchkver_2_9_0</i> void SetMessage(const <a href="#wxString">wxString</a>&amp; message);<br>
+    <i>%wxchkver_2_9_0</i> bool SetOKCancelLabels(const <a href="#wxString">wxString</a>&amp; ok, const <a href="#wxString">wxString</a>&amp; cancel);<br>
+    <i>%wxchkver_2_9_0</i> bool SetOKCancelLabels(int ok, int cancel);<br>
+    <i>%wxchkver_2_9_0</i> bool SetOKLabel(const <a href="#wxString">wxString</a>&amp; ok);<br>
+    <i>%wxchkver_2_9_0</i> bool SetOKLabel(int ok);<br>
+    <i>%wxchkver_2_9_0</i> bool SetYesNoCancelLabels(const <a href="#wxString">wxString</a>&amp; yes, const <a href="#wxString">wxString</a>&amp; no, const <a href="#wxString">wxString</a>&amp; cancel);<br>
+    <i>%wxchkver_2_9_0</i> bool SetYesNoCancelLabels(int yes, int no, int cancel);<br>
+    <i>%wxchkver_2_9_0</i> bool SetYesNoLabels(const <a href="#wxString">wxString</a>&amp; yes, const <a href="#wxString">wxString</a>&amp; no);<br>
+    <i>%wxchkver_2_9_0</i> bool SetYesNoLabels(int yes, int no);<br>
+    <i>%wxchkver_2_9_3</i> <a href="#wxString">wxString</a> GetCaption() const;<br>
+    <i>%wxchkver_2_9_0</i> <a href="#wxString">wxString</a> GetMessage() const;<br>
+    <i>%wxchkver_2_9_0</i> <a href="#wxString">wxString</a> GetExtendedMessage() const;<br>
+    <i>%wxchkver_2_9_0</i> long GetMessageDialogStyle() const;<br>
+    <i>%wxchkver_2_9_0</i> bool HasCustomLabels() const;<br>
+    <i>%wxchkver_2_9_0</i> <a href="#wxString">wxString</a> GetYesLabel() const;<br>
+    <i>%wxchkver_2_9_0</i> <a href="#wxString">wxString</a> GetOKLabel() const;<br>
+    <i>%wxchkver_2_9_0</i> <a href="#wxString">wxString</a> GetNoLabel() const;<br>
+    <i>%wxchkver_2_9_0</i> <a href="#wxString">wxString</a> GetCancelLabel() const;<br>
+    <i>%wxchkver_2_9_3</i> <a href="#wxString">wxString</a> GetHelpLabel() const;<br>
+    <i>%wxchkver_2_9_3</i> long GetEffectiveIcon() const;<br>
 </blockquote>};<br>
 <br>
 #endif <font color=#009900>//wxLUA_USE_wxMessageDialog &amp;&amp; wxUSE_MSGDLG</font><br>

@@ -246,6 +246,30 @@ class wxMessageDialog : public wxDialog
     wxMessageDialog(wxWindow* parent, const wxString& message, const wxString& caption = "Message box", long style = wxOK | wxCANCEL | wxCENTRE, const wxPoint& pos = wxDefaultPosition );
 
     // int ShowModal() - in wxDialog
+    
+    %wxchkver_2_9_0 void SetExtendedMessage(const wxString& extendedMessage);
+    %wxchkver_2_9_3 bool SetHelpLabel(const wxString& help);
+    %wxchkver_2_9_3 bool SetHelpLabel(int help);
+    %wxchkver_2_9_0 void SetMessage(const wxString& message);
+    %wxchkver_2_9_0 bool SetOKCancelLabels(const wxString& ok, const wxString& cancel);
+    %wxchkver_2_9_0 bool SetOKCancelLabels(int ok, int cancel);
+    %wxchkver_2_9_0 bool SetOKLabel(const wxString& ok);
+    %wxchkver_2_9_0 bool SetOKLabel(int ok);
+    %wxchkver_2_9_0 bool SetYesNoCancelLabels(const wxString& yes, const wxString& no, const wxString& cancel);
+    %wxchkver_2_9_0 bool SetYesNoCancelLabels(int yes, int no, int cancel);
+    %wxchkver_2_9_0 bool SetYesNoLabels(const wxString& yes, const wxString& no);
+    %wxchkver_2_9_0 bool SetYesNoLabels(int yes, int no);
+    %wxchkver_2_9_3 wxString GetCaption() const;
+    %wxchkver_2_9_0 wxString GetMessage() const;
+    %wxchkver_2_9_0 wxString GetExtendedMessage() const;
+    %wxchkver_2_9_0 long GetMessageDialogStyle() const;
+    %wxchkver_2_9_0 bool HasCustomLabels() const;
+    %wxchkver_2_9_0 wxString GetYesLabel() const;
+    %wxchkver_2_9_0 wxString GetOKLabel() const;
+    %wxchkver_2_9_0 wxString GetNoLabel() const;
+    %wxchkver_2_9_0 wxString GetCancelLabel() const;
+    %wxchkver_2_9_3 wxString GetHelpLabel() const;
+    %wxchkver_2_9_3 long GetEffectiveIcon() const;
 };
 
 #endif //wxLUA_USE_wxMessageDialog && wxUSE_MSGDLG
