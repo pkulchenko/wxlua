@@ -662,3 +662,153 @@ wxBitmap wxLuaArtProvider::CreateBitmap(const wxArtID& id, const wxArtClient& cl
 
     return bitmap;
 }
+
+
+// ----------------------------------------------------------------------------
+// wxLuaListCtrl
+// ----------------------------------------------------------------------------
+
+#if wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL
+
+IMPLEMENT_ABSTRACT_CLASS(wxLuaListCtrl, wxListCtrl)
+
+extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxLuaListCtrl;
+extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxListItemAttr;
+
+wxLuaListCtrl::wxLuaListCtrl(const wxLuaState& wxlState)
+              :m_wxlState(wxlState)
+{
+}
+
+wxLuaListCtrl::wxLuaListCtrl(const wxLuaState& wxlState, wxWindow *parent, wxWindowID id,
+                             const wxPoint &pos, const wxSize &size, long style,
+                             const wxValidator &validator, const wxString &name)
+              :wxListCtrl(parent, id, pos, size, style, validator, name), m_wxlState(wxlState)
+{
+}
+
+wxListItemAttr * wxLuaListCtrl::OnGetItemAttr(long item) const
+{
+    wxListItemAttr * attr = NULL;
+
+    if (m_wxlState.Ok() && !m_wxlState.GetCallBaseClassFunction() &&
+        m_wxlState.HasDerivedMethod(this, "OnGetItemAttr", true))
+    {
+        int nOldTop = m_wxlState.lua_GetTop();
+        m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaListCtrl, true);
+        m_wxlState.lua_PushNumber(item);
+
+        if (m_wxlState.LuaPCall(2, 1) == 0)
+            attr = (wxListItemAttr*)m_wxlState.GetUserDataType(-1, wxluatype_wxListItemAttr);
+
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
+    }
+    else
+        attr = wxListCtrl::OnGetItemAttr(item);
+
+    m_wxlState.SetCallBaseClassFunction(false); // clear flag always
+
+    return attr;
+}
+
+#if wxCHECK_VERSION(3,0,0) && defined(__WXMSW__)
+wxListItemAttr * wxLuaListCtrl::OnGetItemColumnAttr(long item, long column) const
+{
+    wxListItemAttr * attr = NULL;
+
+    if (m_wxlState.Ok() && !m_wxlState.GetCallBaseClassFunction() &&
+        m_wxlState.HasDerivedMethod(this, "OnGetItemColumnAttr", true))
+    {
+        int nOldTop = m_wxlState.lua_GetTop();
+        m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaListCtrl, true);
+        m_wxlState.lua_PushNumber(item);
+        m_wxlState.lua_PushNumber(column);
+
+        if (m_wxlState.LuaPCall(3, 1) == 0)
+            attr = (wxListItemAttr*)m_wxlState.GetUserDataType(-1, wxluatype_wxListItemAttr);
+
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
+    }
+    else
+        attr = wxListCtrl::OnGetItemColumnAttr(item, column);
+
+    m_wxlState.SetCallBaseClassFunction(false); // clear flag always
+
+    return attr;
+}
+#endif //wxCHECK_VERSION(3,0,0) && defined(__WXMSW__)
+
+int wxLuaListCtrl::OnGetItemColumnImage(long item, long column) const
+{
+    int image = 0;
+
+    if (m_wxlState.Ok() && !m_wxlState.GetCallBaseClassFunction() &&
+        m_wxlState.HasDerivedMethod(this, "OnGetItemColumnImage", true))
+    {
+        int nOldTop = m_wxlState.lua_GetTop();
+        m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaListCtrl, true);
+        m_wxlState.lua_PushNumber(item);
+        m_wxlState.lua_PushNumber(column);
+
+        if (m_wxlState.LuaPCall(3, 1) == 0)
+            image = m_wxlState.GetIntegerType(-1);
+
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
+    }
+    else
+        image = wxListCtrl::OnGetItemColumnImage(item, column);
+
+    m_wxlState.SetCallBaseClassFunction(false); // clear flag always
+
+    return image;
+}
+
+int wxLuaListCtrl::OnGetItemImage(long item) const
+{
+    int image = 0;
+
+    if (m_wxlState.Ok() && !m_wxlState.GetCallBaseClassFunction() &&
+        m_wxlState.HasDerivedMethod(this, "OnGetItemImage", true))
+    {
+        int nOldTop = m_wxlState.lua_GetTop();
+        m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaListCtrl, true);
+        m_wxlState.lua_PushNumber(item);
+
+        if (m_wxlState.LuaPCall(2, 1) == 0)
+            image = m_wxlState.GetIntegerType(-1);
+
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
+    }
+    // no else since the class must override this function
+
+    m_wxlState.SetCallBaseClassFunction(false); // clear flag always
+
+    return image;
+}
+
+wxString wxLuaListCtrl::OnGetItemText(long item, long column) const
+{
+    wxString str;
+
+    if (m_wxlState.Ok() && !m_wxlState.GetCallBaseClassFunction() &&
+        m_wxlState.HasDerivedMethod(this, "OnGetItemText", true))
+    {
+        int nOldTop = m_wxlState.lua_GetTop();
+        m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaListCtrl, true);
+        m_wxlState.lua_PushNumber(item);
+        m_wxlState.lua_PushNumber(column);
+
+        if (m_wxlState.LuaPCall(3, 1) == 0)
+            str = m_wxlState.GetwxStringType(-1);
+
+        m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
+    }
+    else
+        str = wxListCtrl::OnGetItemText(item, column);
+
+    m_wxlState.SetCallBaseClassFunction(false); // clear flag always
+
+    return str;
+}
+
+#endif //wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL

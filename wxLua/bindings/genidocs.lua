@@ -379,10 +379,10 @@ function ReadInterfaceFiles(fileTable)
                 in_enum  = (enum_pos  ~= nil)
 
                 -- find this class not the base class
-                local comma = string.find(line, ",", 1, 1)
+                local colon = string.find(line, ":", 1, 1)
                 local start_pos = 0
-                if class_pos and comma then
-                    cname, start_pos = GetPreviousWord(line, comma-1)
+                if class_pos and colon then
+                    cname, start_pos = GetPreviousWord(line, colon-1)
                 elseif comment_pos < 1E6 then
                     cname, start_pos = GetPreviousWord(line, comment_pos-1)
                 else

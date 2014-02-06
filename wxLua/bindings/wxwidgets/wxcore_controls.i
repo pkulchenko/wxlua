@@ -514,6 +514,31 @@ class wxListCtrl : public wxControl
     bool SortItems(LuaFunction fnSortCallBack, long data );
 };
 
+
+// ---------------------------------------------------------------------------
+// wxLuaListCtrl - A wxListCtrl for the wxLC_VIRTUAL style.
+
+class wxLuaListCtrl : public wxListCtrl
+{
+    // %override - the C++ function takes the wxLuaState as the first param
+    wxLuaListCtrl(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxLC_ICON|wxLC_VIRTUAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxLuaListCtrl");
+
+    // SetItemCount is needed with wxLC_VIRTUAL
+    void SetItemCount(long count );
+
+    // This function must be overridden
+    // virtual wxString OnGetItemText (long item, long column) const;
+
+    // This function must be overridden if there is an image list
+    // virtual int OnGetItemImage (long item) const;
+
+    // These functions may be overridden
+    // virtual wxListItemAttr * OnGetItemAttr(long item) const;
+    // virtual wxListItemAttr * OnGetItemColumnAttr(long item, long column) const;
+    // virtual int OnGetItemColumnImage(long item, long column) const;
+    // %wxchkver_3_0 && %msw virtual int OnGetItemColumnAttr(long item, long column) const;
+};
+
 // ---------------------------------------------------------------------------
 // wxListItemAttr - wxListCtrl
 

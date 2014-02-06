@@ -3150,6 +3150,15 @@ wx_dataTypeTable =
     Name = "wxLuaHtmlWindow",
     ValueType = "class",
   },
+  wxLuaListCtrl = {
+    BaseClasses = {
+      [1] = "wxListCtrl",
+    },
+    Condition = "wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL",
+    IsNumber = false,
+    Name = "wxLuaListCtrl",
+    ValueType = "class",
+  },
   wxLuaObject = {
     IsNumber = false,
     Name = "wxLuaObject",

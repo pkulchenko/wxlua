@@ -223,5 +223,46 @@ private:
 #endif //wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL
 
 
+
+// ----------------------------------------------------------------------------
+// wxLuaListCtrl - Allows wxLC_VIRTUAL style
+// ----------------------------------------------------------------------------
+#if wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL
+
+#include <wx/listctrl.h>
+
+class WXDLLIMPEXP_BINDWXCORE wxLuaListCtrl : public wxListCtrl
+{
+public:
+    // Constructors
+    wxLuaListCtrl(const wxLuaState& wxlState);
+    wxLuaListCtrl(const wxLuaState& wxlState,
+                  wxWindow *parent, wxWindowID id,
+                  const wxPoint &pos=wxDefaultPosition,
+                  const wxSize &size=wxDefaultSize, long style=wxLC_ICON,
+                  const wxValidator &validator=wxDefaultValidator,
+                  const wxString &name=wxListCtrlNameStr);
+
+
+    // Virtual functions used with wxLC_VIRTUAL
+    virtual wxListItemAttr * OnGetItemAttr(long item) const;
+
+#if wxCHECK_VERSION(3,0,0) && defined(__WXMSW__)
+    virtual wxListItemAttr * OnGetItemColumnAttr(long item, long column) const;
+#endif // wxCHECK_VERSION(3,0,0) && defined(__WXMSW__)
+
+    virtual int OnGetItemColumnImage(long item, long column) const;
+    virtual int OnGetItemImage (long item) const;
+    virtual wxString OnGetItemText (long item, long column) const;
+
+private:
+    mutable wxLuaState m_wxlState;
+
+    DECLARE_ABSTRACT_CLASS(wxLuaListCtrl)
+};
+
+#endif //wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL
+
+
 #endif //WX_LUA_WXLCORE_H
 

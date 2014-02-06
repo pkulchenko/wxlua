@@ -4559,6 +4559,7 @@ static const char* wxluaclassname_wxLogWindow = "wxLogWindow";
 static const char* wxluaclassname_wxLuaArtProvider = "wxLuaArtProvider";
 static const char* wxluaclassname_wxLuaDataObjectSimple = "wxLuaDataObjectSimple";
 static const char* wxluaclassname_wxLuaFileDropTarget = "wxLuaFileDropTarget";
+static const char* wxluaclassname_wxLuaListCtrl = "wxLuaListCtrl";
 static const char* wxluaclassname_wxLuaPrintout = "wxLuaPrintout";
 static const char* wxluaclassname_wxLuaTextDropTarget = "wxLuaTextDropTarget";
 static const char* wxluaclassname_wxLuaTreeItemData = "wxLuaTreeItemData";
@@ -4965,6 +4966,8 @@ static const char* wxluabaseclassnames_wxLuaDataObjectSimple[] = { wxluaclassnam
 static wxLuaBindClass* wxluabaseclassbinds_wxLuaDataObjectSimple[] = { NULL };
 static const char* wxluabaseclassnames_wxLuaFileDropTarget[] = { wxluaclassname_wxFileDropTarget, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxLuaFileDropTarget[] = { NULL };
+static const char* wxluabaseclassnames_wxLuaListCtrl[] = { wxluaclassname_wxListCtrl, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxLuaListCtrl[] = { NULL };
 static const char* wxluabaseclassnames_wxLuaPrintout[] = { wxluaclassname_wxPrintout, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxLuaPrintout[] = { NULL };
 static const char* wxluabaseclassnames_wxLuaTextDropTarget[] = { wxluaclassname_wxTextDropTarget, NULL };
@@ -6189,6 +6192,9 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern wxLuaBindMethod wxListView_methods[];
     extern int wxListView_methodCount;
     extern void wxLua_wxListView_delete_function(void** p);
+    extern wxLuaBindMethod wxLuaListCtrl_methods[];
+    extern int wxLuaListCtrl_methodCount;
+    extern void wxLua_wxLuaListCtrl_delete_function(void** p);
 #endif // wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL
 
 #if wxLUA_USE_wxMask
@@ -7029,6 +7035,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #if wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
         { wxluaclassname_wxLuaFileDropTarget, wxLuaFileDropTarget_methods, wxLuaFileDropTarget_methodCount, NULL, &wxluatype_wxLuaFileDropTarget, wxluabaseclassnames_wxLuaFileDropTarget, wxluabaseclassbinds_wxLuaFileDropTarget, NULL, NULL, NULL, 0, &wxLua_wxLuaFileDropTarget_delete_function, }, 
 #endif // wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
+
+#if wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL
+        { wxluaclassname_wxLuaListCtrl, wxLuaListCtrl_methods, wxLuaListCtrl_methodCount, CLASSINFO(wxLuaListCtrl), &wxluatype_wxLuaListCtrl, wxluabaseclassnames_wxLuaListCtrl, wxluabaseclassbinds_wxLuaListCtrl, NULL, NULL, NULL, 0, &wxLua_wxLuaListCtrl_delete_function, }, 
+#endif // wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL
 
 #if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout)
         { wxluaclassname_wxLuaPrintout, wxLuaPrintout_methods, wxLuaPrintout_methodCount, CLASSINFO(wxLuaPrintout), &wxluatype_wxLuaPrintout, wxluabaseclassnames_wxLuaPrintout, wxluabaseclassbinds_wxLuaPrintout, NULL, NULL, NULL, 0, &wxLua_wxLuaPrintout_delete_function, }, 

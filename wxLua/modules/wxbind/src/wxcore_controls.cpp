@@ -4630,6 +4630,109 @@ int wxListCtrl_methodCount = sizeof(wxListCtrl_methods)/sizeof(wxLuaBindMethod) 
 
 #if wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL
 // ---------------------------------------------------------------------------
+// Bind class wxLuaListCtrl
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxLuaListCtrl'
+int wxluatype_wxLuaListCtrl = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaListCtrl_SetItemCount[] = { &wxluatype_wxLuaListCtrl, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxLuaListCtrl_SetItemCount(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaListCtrl_SetItemCount[1] = {{ wxLua_wxLuaListCtrl_SetItemCount, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxLuaListCtrl_SetItemCount }};
+//     void SetItemCount(long count );
+static int LUACALL wxLua_wxLuaListCtrl_SetItemCount(lua_State *L)
+{
+    // long count
+    long count = (long)wxlua_getnumbertype(L, 2);
+    // get this
+    wxLuaListCtrl * self = (wxLuaListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLuaListCtrl);
+    // call SetItemCount
+    self->SetItemCount(count);
+
+    return 0;
+}
+
+
+#if ((wxLUA_USE_wxValidator && wxUSE_VALIDATORS) && (wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL)) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaListCtrl_constructor[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxLuaListCtrl_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaListCtrl_constructor[1] = {{ wxLua_wxLuaListCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 7, s_wxluatypeArray_wxLua_wxLuaListCtrl_constructor }};
+// %override wxLua_wxLuaListCtrl_constructor
+// wxLuaListCtrl(const wxLuaState& wxlState);
+// wxLuaListCtrl(const wxLuaState& wxlState,
+//               wxWindow *parent, wxWindowID id,
+//               const wxPoint &pos=wxDefaultPosition,
+//               const wxSize &size=wxDefaultSize, long style=wxLC_ICON,
+//               const wxValidator &validator=wxDefaultValidator,
+//               const wxString &name=wxListCtrlNameStr);
+static int LUACALL wxLua_wxLuaListCtrl_constructor(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+
+    wxLuaState wxlState(L);
+    wxListCtrl* returns;
+
+    if (argCount == 0) // Default constructor
+    {
+        returns = new wxLuaListCtrl(wxlState);
+    }
+    else // Construct and create
+    {
+        // const wxString name = "wxLuaListCtrl"
+        const wxString name = (argCount >= 7 ? wxlua_getwxStringtype(L, 7) : wxString(wxT("wxLuaListCtrl")));
+        // const wxValidator validator = wxDefaultValidator
+        const wxValidator * validator = (argCount >= 6 ? (const wxValidator *)wxluaT_getuserdatatype(L, 6, wxluatype_wxValidator) : &wxDefaultValidator);
+        // long style = wxLC_ICON
+        long style = (argCount >= 5 ? (long)wxlua_getnumbertype(L, 5) : wxLC_ICON);
+        // const wxSize size = wxDefaultSize
+        const wxSize * size = (argCount >= 4 ? (const wxSize *)wxluaT_getuserdatatype(L, 4, wxluatype_wxSize) : &wxDefaultSize);
+        // const wxPoint pos = wxDefaultPosition
+        const wxPoint * pos = (argCount >= 3 ? (const wxPoint *)wxluaT_getuserdatatype(L, 3, wxluatype_wxPoint) : &wxDefaultPosition);
+        // wxWindowID id
+        wxWindowID id = (wxWindowID)wxlua_getnumbertype(L, 2);
+        // wxWindow parent
+        wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+        // call constructor
+        returns = new wxLuaListCtrl(wxlState, parent, id, *pos, *size, style, *validator, name);
+    }
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxLuaListCtrl);
+
+    return 1;
+}
+
+
+#endif // ((wxLUA_USE_wxValidator && wxUSE_VALIDATORS) && (wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL)) && (wxLUA_USE_wxPointSizeRect)
+
+
+
+void wxLua_wxLuaListCtrl_delete_function(void** p)
+{
+    wxLuaListCtrl* o = (wxLuaListCtrl*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxLuaListCtrl_methods[] = {
+    { "SetItemCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLuaListCtrl_SetItemCount, 1, NULL },
+
+#if ((wxLUA_USE_wxValidator && wxUSE_VALIDATORS) && (wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL)) && (wxLUA_USE_wxPointSizeRect)
+    { "wxLuaListCtrl", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxLuaListCtrl_constructor, 1, NULL },
+#endif // ((wxLUA_USE_wxValidator && wxUSE_VALIDATORS) && (wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL)) && (wxLUA_USE_wxPointSizeRect)
+
+    { 0, 0, 0, 0 },
+};
+
+int wxLuaListCtrl_methodCount = sizeof(wxLuaListCtrl_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL
+
+
+#if wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL
+// ---------------------------------------------------------------------------
 // Bind class wxListItemAttr
 // ---------------------------------------------------------------------------
 
