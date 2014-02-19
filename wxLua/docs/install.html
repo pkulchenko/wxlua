@@ -226,25 +226,26 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <ul>
 <li>They may be called wxBase, wxGTK and wxBase-devel, wxGTK-devel.</li>
 </ul></li>
-<li>Or install the required development packages needed to build wxWidgets yourself.
+<li>Or install the required development packages and build wxWidgets yourself.
 <ul>
-<li>Below is a list for Fedora 15, but they should be named similarly on other distributions.</li>
-<li>There are others, but hopefully they'llbe dependent on the packages below so you won't need to explicitly install them.</li>
+<li>Below is a package list for Fedora 20, but they should be named similarly on other distributions.</li>
+<li>There are others, but hopefully they're dependent on the packages below so you won't need to explicitly install them.</li>
 </ul></li>
 </ul>
 <pre><code>        glibc-headers
-        cairo, cairo-devel
-        GConf2, GConf2-devel
-        gstreamer, gstreamer-devel, gstreamer-plugins-base, gstreamer-plugins-base-devel
-        gtk2, gtk2-devel
-        libjpeg, libjpeg-devel
-        libpng, libpng-devel
-        libtiff, libtiff-devel
+        cairo cairo-devel
+        GConf2 GConf2-devel
+        gstreamer gstreamer-devel gstreamer-plugins-base gstreamer-plugins-base-devel
+        gtk2 gtk2-devel
+        libjpeg libjpeg-devel libpng libpng-devel libtiff libtiff-devel
         libXinerama, libXinerama-devel
         mesa-libGL, mesa-libGL-devel, mesa-libGLU, mesa-libGLU-devel
-        pango, pango-devel</code></pre>
+        pango, pango-devel
+        libgnomeprintui libgnomeprintui-devel
+        libnotify libnotify-devel libnotifymm libnotifymm-devel
+        webkitgtk webkitgtk-devel</code></pre>
 <ul>
-<li>In the example below a GTK2, Unicode, Debug build will be created, <code>gtk2ud</code>.</li>
+<li>In the example below; a GTK2, Unicode, Debug build will be created, <code>gtk2ud</code>.</li>
 <li>Create a sub-directory in the wxWidgets directory for the build files.
 <ul>
 <li>You can create this directory anywhere, but it is convenient to keep it contained within the wxWidgets directory.</li>
@@ -281,7 +282,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li>Note that the <code>configure</code> script in the root wxWidgets source directory will generate the build files in the directory it is run from so do not run it in the root wxWidgets dir.</li>
 <li>Review the output file, <code>configure-gtk2ud.log</code>, to find any problems.</li>
 <li>On success, you can then run <code>make -j4</code> (set 4 to the number of processors you have) to build wxWidgets.</li>
-<li>The build settings are created in the shell script <code>wx-config</code>.
+<li>The build settings are stored in the shell script <code>wx-config</code>.
 <ul>
 <li>Run <code>./wx-config --prefix</code> and <code>./wx-config --cxxflags</code> and <code>./wx-config --libs</code> to print the wxWidgets build settings.</li>
 </ul></li>

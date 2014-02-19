@@ -219,6 +219,28 @@ FUNCTION( HAS_WILDCARD has_wild file_name )
 ENDFUNCTION()
 
 # ---------------------------------------------------------------------------
+# FILE_GLOB_RECURSE_DIR( variable root_dir wildcard1 wildcard2 ... )
+#
+# Append to 'variable' the recursively globbed filenames starting from the
+# root_dir using a list of wildcards.
+# Usage: FILE_GLOB_RECURSE_DIR( filenames /path/to/file *.h *.cpp )
+# ---------------------------------------------------------------------------
+
+function( FILE_GLOB_RECURSE_DIR variable root_dir )
+
+    set(glob_patterns )
+    foreach( arg ${ARGN} )
+        set(glob_patterns ${glob_patterns} ${root_dir}/${arg})
+    endforeach()
+
+    file(GLOB_RECURSE v ${glob_patterns})
+
+    set(v ${${variable}} ${v})
+    set(${variable} ${v} PARENT_SCOPE)
+
+endfunction( FILE_GLOB_RECURSE_DIR variable root_dir wildcards )
+
+# ---------------------------------------------------------------------------
 # ADD_FILE_TO_LIST(file_list filename [ALLOW_MISSING])
 #
 # Append to the list the file(s) in filename which may be a list and/or contain wildcards.

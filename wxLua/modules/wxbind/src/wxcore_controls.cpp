@@ -4662,7 +4662,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaListCtrl_constructor[1] = {{ wxLua_
 // wxLuaListCtrl(const wxLuaState& wxlState,
 //               wxWindow *parent, wxWindowID id,
 //               const wxPoint &pos=wxDefaultPosition,
-//               const wxSize &size=wxDefaultSize, long style=wxLC_ICON,
+//               const wxSize &size=wxDefaultSize, long style=wxLC_REPORT|wxLC_VIRTUAL,
 //               const wxValidator &validator=wxDefaultValidator,
 //               const wxString &name=wxListCtrlNameStr);
 static int LUACALL wxLua_wxLuaListCtrl_constructor(lua_State *L)
@@ -4684,7 +4684,7 @@ static int LUACALL wxLua_wxLuaListCtrl_constructor(lua_State *L)
         // const wxValidator validator = wxDefaultValidator
         const wxValidator * validator = (argCount >= 6 ? (const wxValidator *)wxluaT_getuserdatatype(L, 6, wxluatype_wxValidator) : &wxDefaultValidator);
         // long style = wxLC_ICON
-        long style = (argCount >= 5 ? (long)wxlua_getnumbertype(L, 5) : wxLC_ICON);
+        long style = (argCount >= 5 ? (long)wxlua_getnumbertype(L, 5) : wxLC_REPORT|wxLC_VIRTUAL);
         // const wxSize size = wxDefaultSize
         const wxSize * size = (argCount >= 4 ? (const wxSize *)wxluaT_getuserdatatype(L, 4, wxluatype_wxSize) : &wxDefaultSize);
         // const wxPoint pos = wxDefaultPosition

@@ -28,7 +28,10 @@ class %delete wxString
     size_t Len() const;
 
     const wxCharBuffer ToUTF8() const;
-    static wxString FromUTF8(const char* s );
+    static wxString FromUTF8(const char* s);
+
+    static wxString From8BitData(const char* s);
+    wxCharBuffer To8BitData();
 
 #if %wxchkver_2_9
     //wxString(wxString::const_iterator first, wxString::const_iterator last );

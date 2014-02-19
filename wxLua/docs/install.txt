@@ -282,28 +282,28 @@ development distribution packages, if available, or build it yourself.
     Linux distribution and you're done...
     -   They may be called wxBase, wxGTK and wxBase-devel, wxGTK-devel.
 
--   Or install the required development packages needed to build wxWidgets
-    yourself.
-    -   Below is a list for Fedora 15, but they should be named
+-   Or install the required development packages and build wxWidgets yourself.
+    -   Below is a package list for Fedora 20, but they should be named
         similarly on other distributions.
-    -   There are others, but hopefully they'llbe dependent on the packages
+    -   There are others, but hopefully they're dependent on the packages
         below so you won't need to explicitly install them.
 
 ~~~
         glibc-headers
-        cairo, cairo-devel
-        GConf2, GConf2-devel
-        gstreamer, gstreamer-devel, gstreamer-plugins-base, gstreamer-plugins-base-devel
-        gtk2, gtk2-devel
-        libjpeg, libjpeg-devel
-        libpng, libpng-devel
-        libtiff, libtiff-devel
+        cairo cairo-devel
+        GConf2 GConf2-devel
+        gstreamer gstreamer-devel gstreamer-plugins-base gstreamer-plugins-base-devel
+        gtk2 gtk2-devel
+        libjpeg libjpeg-devel libpng libpng-devel libtiff libtiff-devel
         libXinerama, libXinerama-devel
         mesa-libGL, mesa-libGL-devel, mesa-libGLU, mesa-libGLU-devel
         pango, pango-devel
+        libgnomeprintui libgnomeprintui-devel
+        libnotify libnotify-devel libnotifymm libnotifymm-devel
+        webkitgtk webkitgtk-devel
 ~~~
 
--   In the example below a GTK2, Unicode, Debug build will be created, `gtk2ud`.
+-   In the example below; a GTK2, Unicode, Debug build will be created, `gtk2ud`.
 -   Create a sub-directory in the wxWidgets directory for the build files.
     -   You can create this directory anywhere, but it is convenient to
         keep it contained within the wxWidgets directory.
@@ -346,7 +346,7 @@ development distribution packages, if available, or build it yourself.
 -   Review the output file, `configure-gtk2ud.log`, to find any problems.
 -   On success, you can then run `make -j4` (set 4 to the number of
     processors you have) to build wxWidgets.
--   The build settings are created in the shell script `wx-config`.
+-   The build settings are stored in the shell script `wx-config`.
     -   Run `./wx-config --prefix` and `./wx-config --cxxflags`
         and `./wx-config --libs` to print the wxWidgets build settings.
 

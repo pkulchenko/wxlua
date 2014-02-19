@@ -357,7 +357,7 @@ class wxCheckListBox : public wxListBox
 #endif //wxLUA_USE_wxListBox && wxUSE_LISTBOX
 
 // ---------------------------------------------------------------------------
-// wxListCtrl
+// wxListCtrl - See wxLuaListCtrl to use the wxLC_VIRTUAL style.
 
 #if wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL
 
@@ -521,9 +521,9 @@ class wxListCtrl : public wxControl
 class wxLuaListCtrl : public wxListCtrl
 {
     // %override - the C++ function takes the wxLuaState as the first param
-    wxLuaListCtrl(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxLC_ICON|wxLC_VIRTUAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxLuaListCtrl");
+    wxLuaListCtrl(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxLC_REPORT|wxLC_VIRTUAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxLuaListCtrl");
 
-    // SetItemCount is needed with wxLC_VIRTUAL
+    // SetItemCount is needed for wxLC_VIRTUAL
     void SetItemCount(long count );
 
     // This function must be overridden

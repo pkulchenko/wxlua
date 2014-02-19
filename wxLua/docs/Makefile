@@ -8,7 +8,7 @@ WXLUA_DIR    = ../
 ALL_DOCS = binding FAQ install wxlua
 
 # Always try to build all targets, let the other Makefiles do dep checking
-.PHONY: all clean $(ALL_BINDINGS)
+.PHONY: all clean $(ALL_DOCS)
 
 # These have to be in order of their dependencies
 all: $(ALL_DOCS)

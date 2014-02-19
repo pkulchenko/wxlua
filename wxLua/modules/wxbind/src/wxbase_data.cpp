@@ -104,10 +104,26 @@ static int LUACALL wxLua_wxString_BeforeLast(lua_State *L)
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxString_From8BitData[] = { &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxString_From8BitData(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_From8BitData[1] = {{ wxLua_wxString_From8BitData, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxString_From8BitData }};
+//     static wxString From8BitData(const char* s);
+static int LUACALL wxLua_wxString_From8BitData(lua_State *L)
+{
+    // const char s
+    wxCharBuffer s = wxlua_getstringtype(L, 1);
+    // call From8BitData
+    wxString returns = (wxString::From8BitData((const char*)s));
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_FromUTF8[] = { &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxString_FromUTF8(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_FromUTF8[1] = {{ wxLua_wxString_FromUTF8, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxString_FromUTF8 }};
-//     static wxString FromUTF8(const char* s );
+//     static wxString FromUTF8(const char* s);
 static int LUACALL wxLua_wxString_FromUTF8(lua_State *L)
 {
     // const char s
@@ -148,6 +164,22 @@ static int LUACALL wxLua_wxString_Len(lua_State *L)
     size_t returns = (self->Len());
     // push the result number
     lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxString_To8BitData[] = { &wxluatype_wxString, NULL };
+static int LUACALL wxLua_wxString_To8BitData(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_To8BitData[1] = {{ wxLua_wxString_To8BitData, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxString_To8BitData }};
+//     wxCharBuffer To8BitData();
+static int LUACALL wxLua_wxString_To8BitData(lua_State *L)
+{
+    // get this
+    wxString * self = (wxString *)wxluaT_getuserdatatype(L, 1, wxluatype_wxString);
+    // call To8BitData
+    wxCharBuffer returns = (self->To8BitData());
+    // push the result string
+    lua_pushstring(L, returns.data());
 
     return 1;
 }
@@ -322,9 +354,11 @@ wxLuaBindMethod wxString_methods[] = {
     { "AfterLast", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxString_AfterLast, 1, NULL },
     { "BeforeFirst", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxString_BeforeFirst, 1, NULL },
     { "BeforeLast", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxString_BeforeLast, 1, NULL },
+    { "From8BitData", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxString_From8BitData, 1, NULL },
     { "FromUTF8", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxString_FromUTF8, 1, NULL },
     { "GetData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxString_GetData, 1, NULL },
     { "Len", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxString_Len, 1, NULL },
+    { "To8BitData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxString_To8BitData, 1, NULL },
     { "ToUTF8", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxString_ToUTF8, 1, NULL },
 
 #if (wxCHECK_VERSION(2,9,0))

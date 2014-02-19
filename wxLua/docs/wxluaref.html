@@ -4789,7 +4789,10 @@ enum<br>
     size_t Len() const;<br>
 <br>
     const wxCharBuffer ToUTF8() const;<br>
-    static <a href="#wxString">wxString</a> FromUTF8(const char* s );<br>
+    static <a href="#wxString">wxString</a> FromUTF8(const char* s);<br>
+<br>
+    static <a href="#wxString">wxString</a> From8BitData(const char* s);<br>
+    wxCharBuffer To8BitData();<br>
 <br>
 #if <i>%wxchkver_2_9</i><br>
     <font color=#009900>//<a href="#wxString">wxString</a>(wxString::const_iterator first, wxString::const_iterator last );</font><br>
@@ -8739,7 +8742,7 @@ bool wxIsDragResultOk(<a href="#wxDragResult">wxDragResult</a> res );<br>
 #endif <font color=#009900>//wxLUA_USE_wxListBox &amp;&amp; wxUSE_LISTBOX</font><br>
 <br>
 <font color=#009900>// ---------------------------------------------------------------------------</font><br>
-<font color=#009900>// <a href="#wxListCtrl">wxListCtrl</a></font><br>
+<font color=#009900>// <a href="#wxListCtrl">wxListCtrl</a> - See <a href="#wxLuaListCtrl">wxLuaListCtrl</a> to use the wxLC_VIRTUAL style.</font><br>
 <br>
 #if wxLUA_USE_wxListCtrl &amp;&amp; wxUSE_LISTCTRL<br>
 <br>
@@ -8905,9 +8908,9 @@ bool wxIsDragResultOk(<a href="#wxDragResult">wxDragResult</a> res );<br>
 {
 <blockquote>
 <font color=#BB0055>    <font color=#009900>// <i>%override</i> - the C++ function takes the <a href="#wxLuaState">wxLuaState</a> as the first param</font></font><br>
-    <a href="#wxLuaListCtrl">wxLuaListCtrl</a>(<a href="#wxWindow">wxWindow</a>* parent, wxWindowID id, const <a href="#wxPoint">wxPoint</a>&amp; pos = wxDefaultPosition, const <a href="#wxSize">wxSize</a>&amp; size = wxDefaultSize, long style = wxLC_ICON|wxLC_VIRTUAL, const <a href="#wxValidator">wxValidator</a>&amp; validator = wxDefaultValidator, const <a href="#wxString">wxString</a>&amp; name = "wxLuaListCtrl");<br>
+    <a href="#wxLuaListCtrl">wxLuaListCtrl</a>(<a href="#wxWindow">wxWindow</a>* parent, wxWindowID id, const <a href="#wxPoint">wxPoint</a>&amp; pos = wxDefaultPosition, const <a href="#wxSize">wxSize</a>&amp; size = wxDefaultSize, long style = wxLC_REPORT|wxLC_VIRTUAL, const <a href="#wxValidator">wxValidator</a>&amp; validator = wxDefaultValidator, const <a href="#wxString">wxString</a>&amp; name = "wxLuaListCtrl");<br>
 <br>
-    <font color=#009900>// SetItemCount is needed with wxLC_VIRTUAL</font><br>
+    <font color=#009900>// SetItemCount is needed for wxLC_VIRTUAL</font><br>
     void SetItemCount(long count );<br>
 <br>
     <font color=#009900>// This function must be overridden</font><br>
