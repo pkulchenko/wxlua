@@ -73,8 +73,8 @@ numbers using a back-ported `bit32` library from Lua 5.2.
     -   The revision number (X.Y.Z.revision) can be thought of as the wxLua
         version number.
 
--   Lua 5.1.5 or 5.2.2
-    -   wxLua uses a nearly unmodified copy of Lua 5.1.5 or 5.2.2.
+-   Lua 5.1.5 or 5.2.3
+    -   wxLua uses a nearly unmodified copy of Lua 5.1.5 or 5.2.3.
     -   Official patches on [www.lua.org](www.lua.org) are applied as 
         they are released.
     -   In MSW the Lua executable has a manifest set to load version 6
