@@ -3,8 +3,8 @@
 
  version 3.0.0 (unreleased)
  --------------------------------------------------------------------
+ - Update to Lua 5.2.3
  - Add wxLuaURLDropTarget and wxLuaListCtrl.
-
 
  version 2.8.12.3 (released 9/12/2013)
  --------------------------------------------------------------------
