@@ -138,6 +138,15 @@ interface_fileTable =
             "wxstc_stc.i"
         }
     },
+    { 
+        ["namespace"] = "wxwebview",
+        ["file_path"] = "wxwidgets/",
+        ["prepend_name"] = "wxwebview/",
+        ["datatypes_filename"] = "wxwebview_datatypes.lua",
+        ["files"] = {
+            "wxwebview_webview.i"
+        }
+    },
 
     {
         ["namespace"] = "wxlua",

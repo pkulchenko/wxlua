@@ -46,8 +46,8 @@ set( wxLua_SUBRELEASE_NUMBER "3")
 # Specify what wxWidgets libs we need to link to. Note: 'core' must be before 'base'.
 # If this CMakeLists.txt was called from another, FIND_WXWIDGETS() may have already been called.
 if (NOT DEFINED wxWidgets_COMPONENTS)
-    set(wxWidgets_COMPONENTS gl xrc xml net media propgrid richtext aui stc html adv core base)  # complete set for static lib/dll
-    #set(wxWidgets_COMPONENTS gl xrc xml net media propgrid richtext aui stc html adv core base) # for multilib/dll
+    set(wxWidgets_COMPONENTS webview gl xrc xml net media propgrid richtext aui stc html adv core base)  # complete set for static lib/dll
+    #set(wxWidgets_COMPONENTS webview gl xrc xml net media propgrid richtext aui stc html adv core base) # for multilib/dll
     #set(wxWidgets_COMPONENTS stc mono) # for monolithic
 endif()
 
@@ -76,7 +76,7 @@ endif()
 # ---------------------------------------------------------------------------
 
 # This is the list of all the wxLua bindings for wxWidgets with the same names as the wxWidgets libs.
-set(wxLuaBind_ALL_COMPONENTS gl stc xrc richtext propgrid html media aui adv core xml net base )
+set(wxLuaBind_ALL_COMPONENTS webview gl stc xrc richtext propgrid html media aui adv core xml net base )
 
 if (NOT DEFINED wxLuaBind_COMPONENTS)
     set(wxLuaBind_COMPONENTS ${wxLuaBind_ALL_COMPONENTS})

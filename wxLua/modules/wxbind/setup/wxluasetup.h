@@ -162,6 +162,7 @@
 #define wxLUA_USE_wxTreeCtrl                    1
 #define wxLUA_USE_wxValidator                   1
 #define wxLUA_USE_wxWave                        1
+#define wxLUA_USE_wxWebView                     1 // must link to lib, also wxUSE_WEBVIEW
 #define wxLUA_USE_wxWindowList                  1
 #define wxLUA_USE_wxWizard                      1
 #define wxLUA_USE_wxXML                         1

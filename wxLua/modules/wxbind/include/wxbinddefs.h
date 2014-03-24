@@ -29,6 +29,7 @@
     #define WXMAKINGDLL_WXBINDPROPGRID
     #define WXMAKINGDLL_WXBINDRICHTEXT
     #define WXMAKINGDLL_WXBINDSTC
+    #define WXMAKINGDLL_WXBINDWEBVIEW
     #define WXMAKINGDLL_WXBINDXML
     #define WXMAKINGDLL_WXBINDXRC
 #endif // WXMAKINGDLL_WXBIND
@@ -256,6 +257,26 @@
 
 // --------------------------------------------------------------------------
 
+#if defined(WXMAKINGDLL_BINDWXWEBVIEW) || defined(WXMAKINGDLL_WXBINDWEBVIEW)
+    #define WXDLLIMPEXP_BINDWXWEBVIEW WXEXPORT
+    #define WXDLLIMPEXP_DATA_BINDWXWEBVIEW(type) WXEXPORT type
+#elif defined(WXUSINGDLL)
+    #define WXDLLIMPEXP_BINDWXWEBVIEW WXIMPORT
+    #define WXDLLIMPEXP_DATA_BINDWXWEBVIEW(type) WXIMPORT type
+#else // not making nor using DLL
+    #define WXDLLIMPEXP_BINDWXWEBVIEW
+    #define WXDLLIMPEXP_DATA_BINDWXWEBVIEW(type) type
+#endif
+
+// Forward declare classes with this macro
+#if defined(HAVE_VISIBILITY) || (defined(__WINDOWS__) && defined(__GNUC__))
+    #define WXDLLIMPEXP_FWD_BINDWXWEBVIEW
+#else
+    #define WXDLLIMPEXP_FWD_BINDWXWEBVIEW WXDLLIMPEXP_BINDWXWEBVIEW
+#endif
+
+// --------------------------------------------------------------------------
+
 #if defined(WXMAKINGDLL_BINDWXXML) || defined(WXMAKINGDLL_WXBINDXML)
     #define WXDLLIMPEXP_BINDWXXML WXEXPORT
     #define WXDLLIMPEXP_DATA_BINDWXXML(type) WXEXPORT type
@@ -368,6 +389,9 @@
 #endif
 #ifndef wxLUA_USEBINDING_WXSTC
     #define wxLUA_USEBINDING_WXSTC                      1
+#endif
+#ifndef wxLUA_USEBINDING_WXWEBVIEW
+    #define wxLUA_USEBINDING_WXWEBVIEW                  1
 #endif
 #ifndef wxLUA_USEBINDING_WXXML
     #define wxLUA_USEBINDING_WXXML                      1
@@ -492,6 +516,14 @@
     #define WXLUA_IMPLEMENT_BIND_WXSTC
 #endif // wxLUA_USEBINDING_WXSTC
 
+#if wxLUA_USEBINDING_WXWEBVIEW && wxUSE_WEBVIEW
+    #define WXLUA_DECLARE_BIND_WXWEBVIEW extern WXDLLIMPEXP_BINDWXWEBVIEW wxLuaBinding* wxLuaBinding_wxwebview_init(); // modules/wxbind
+    #define WXLUA_IMPLEMENT_BIND_WXWEBVIEW wxLuaBinding_wxwebview_init();
+#else
+    #define WXLUA_DECLARE_BIND_WXWEBVIEW
+    #define WXLUA_IMPLEMENT_BIND_WXWEBVIEW
+#endif // wxLUA_USEBINDING_WXWEBVIEW && wxUSE_WEBVIEW
+
 #if wxLUA_USEBINDING_WXXML && wxUSE_XML
     #define WXLUA_DECLARE_BIND_WXXML extern WXDLLIMPEXP_BINDWXXML wxLuaBinding* wxLuaBinding_wxxml_init(); // modules/wxbind
     #define WXLUA_IMPLEMENT_BIND_WXXML wxLuaBinding_wxxml_init();
@@ -526,6 +558,7 @@
     WXLUA_DECLARE_BIND_WXAUI \
     WXLUA_DECLARE_BIND_WXMEDIA \
     WXLUA_DECLARE_BIND_WXRICHTEXT \
+    WXLUA_DECLARE_BIND_WXWEBVIEW \
     WXLUA_DECLARE_BIND_WXGL \
     WXLUA_DECLARE_BIND_WXSTC
 
@@ -554,6 +587,7 @@
     WXLUA_IMPLEMENT_BIND_WXAUI \
     WXLUA_IMPLEMENT_BIND_WXMEDIA \
     WXLUA_IMPLEMENT_BIND_WXRICHTEXT \
+    WXLUA_IMPLEMENT_BIND_WXWEBVIEW \
     WXLUA_IMPLEMENT_BIND_WXGL \
     WXLUA_IMPLEMENT_BIND_WXSTC
 

@@ -463,6 +463,10 @@ ADD_LIBRARY_wxLuaBind(stc       "wxLuaBind_core_Lib;wxLuaLib")
 ADD_LIBRARY_wxLuaBind(xml       "wxLuaBind_base_Lib;wxLuaLib")
 ADD_LIBRARY_wxLuaBind(xrc       "wxLuaBind_core_Lib;wxLuaLib")
 
+if ("${wxWidgets_VERSION}" VERSION GREATER "2.9.0")
+    ADD_LIBRARY_wxLuaBind(webview   "wxLuaBind_core_Lib;wxLuaLib")
+endif()
+
 set(wxLuaBind_ALL_LIBS
     ${wxLuaBind_adv_Lib_}
     ${wxLuaBind_aui_Lib_}
@@ -474,6 +478,7 @@ set(wxLuaBind_ALL_LIBS
     ${wxLuaBind_net_Lib_}
     ${wxLuaBind_richtext_Lib_}
     ${wxLuaBind_stc_Lib_}
+    ${wxLuaBind_webview_Lib_}
     ${wxLuaBind_xml_Lib_}
     ${wxLuaBind_xrc_Lib_}
     CACHE INTERNAL "")
@@ -489,6 +494,7 @@ set(wxLuaBindLib_SOURCES
     ${wxLuaBind_net_Lib_SOURCE_FILES}
     ${wxLuaBind_richtext_Lib_SOURCE_FILES}
     ${wxLuaBind_stc_Lib_SOURCE_FILES}
+    ${wxLuaBind_webview_Lib_SOURCE_FILES}
     ${wxLuaBind_xml_Lib_SOURCE_FILES}
     ${wxLuaBind_xrc_Lib_SOURCE_FILES} CACHE INTERNAL "")
 list(REMOVE_DUPLICATES wxLuaBindLib_SOURCES)

@@ -3390,6 +3390,41 @@
 <td align="center" bgcolor=#AAFFAA>X
 <td>&nbsp;
 <tr>
+<td><a href="#wxWebView">wxWebView</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
+<td><a href="#wxWebViewArchiveHandler">wxWebViewArchiveHandler</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
+<td><a href="#wxWebViewEvent">wxWebViewEvent</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
+<td><a href="#wxWebViewFSHandler">wxWebViewFSHandler</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
+<td><a href="#wxWebViewFactory">wxWebViewFactory</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
+<td><a href="#wxWebViewHandler">wxWebViewHandler</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
+<td><a href="#wxWebViewHistoryItem">wxWebViewHistoryItem</a>
+<td bgcolor=#FFAAAA>&nbsp;
+<td align="center" bgcolor=#AAFFAA>X
+<td>&nbsp;
+<tr>
 <td><a href="#wxWinHelpController">wxWinHelpController</a>
 <td bgcolor=#FFAAAA>&nbsp;
 <td align="center" bgcolor=#AAFFAA>X
@@ -3664,6 +3699,11 @@
 <a href="#wxURLError">wxURLError</a><br>
 <a href="#wxUpdateUI">wxUpdateUI</a><br>
 <a href="#wxUpdateUIMode">wxUpdateUIMode</a><br>
+<a href="#wxWebViewFindFlags">wxWebViewFindFlags</a><br>
+<a href="#wxWebViewNavigationError">wxWebViewNavigationError</a><br>
+<a href="#wxWebViewReloadFlags">wxWebViewReloadFlags</a><br>
+<a href="#wxWebViewZoom">wxWebViewZoom</a><br>
+<a href="#wxWebViewZoomType">wxWebViewZoomType</a><br>
 <a href="#wxWindowVariant">wxWindowVariant</a><br>
 <a href="#wxXmlNodeType">wxXmlNodeType</a><br>
 <a href="#wxXmlResourceFlags">wxXmlResourceFlags</a><br>
@@ -3715,6 +3755,7 @@
 <a href="#wxwidgets_wxaui_aui.i">wxwidgets/wxaui_aui.i</a><br>
 <a href="#wxwidgets_wxhtml_html.i">wxwidgets/wxhtml_html.i</a><br>
 <a href="#wxwidgets_wxstc_stc.i">wxwidgets/wxstc_stc.i</a><br>
+<a href="#wxwidgets_wxwebview_webview.i">wxwidgets/wxwebview_webview.i</a><br>
 <a href="#wxlua_wxlua.i">wxlua/wxlua.i</a><br>
 <a href="#wxlua_debugger_wxluadebugger.i">wxlua_debugger/wxluadebugger.i</a><br>
 <br><HR>
@@ -28174,6 +28215,308 @@ enum<br>
     bool GetAlt() const;<br>
 </blockquote>};<br>
 <br>
+<br><HR>
+
+<h2><a name="wxwidgets_wxwebview_webview.i">wxwidgets/wxwebview_webview.i</a> - Lua table = 'wxwebview'</h2>
+<HR>
+
+<font color=#009900>/////////////////////////////////////////////////////////////////////////////</font><br>
+<font color=#009900>// Name:        webview.h</font><br>
+<font color=#009900>// Purpose:     Common interface and events for web view component</font><br>
+<font color=#009900>// Author:      Marianne Gagnon</font><br>
+<font color=#009900>// Copyright:   (c) 2010 Marianne Gagnon, 2011 Steven Lamerton</font><br>
+<font color=#009900>// Licence:     wxWindows licence</font><br>
+<font color=#009900>/////////////////////////////////////////////////////////////////////////////</font><br>
+<br>
+<font color=#009900>//#include "wx/defs.h"</font><br>
+<br>
+#if wxUSE_WEBVIEW<br>
+<br>
+#include "wx/webview.h"<br>
+<br>
+<font color=#009900>//#include "wx/control.h"</font><br>
+<font color=#009900>//#include "wx/event.h"</font><br>
+<font color=#009900>//#include "wx/sstream.h"</font><br>
+<font color=#009900>//#include "wx/sharedptr.h"</font><br>
+<font color=#009900>//#include "wx/vector.h"</font><br>
+<br>
+<font color=#009900>//#if defined(__WXOSX__)</font><br>
+<font color=#009900>//    #include "wx/osx/webviewhistoryitem_webkit.h"</font><br>
+<font color=#009900>//#elif defined(__WXGTK__)</font><br>
+<font color=#009900>//    #include "wx/gtk/webviewhistoryitem_webkit.h"</font><br>
+<font color=#009900>//#elif defined(__WXMSW__)</font><br>
+<font color=#009900>//    #include "wx/msw/webviewhistoryitem_ie.h"</font><br>
+<font color=#009900>//#else</font><br>
+<font color=#009900>//    #error "<a href="#wxWebView">wxWebView</a> not implemented on this platform."</font><br>
+<font color=#009900>//#endif</font><br>
+<br>
+<br>
+<font color=#009900>//class wxFSFile;</font><br>
+<font color=#009900>//class wxFileSystem;</font><br>
+<font color=#009900>//class wxWebView;</font><br>
+<br>
+<b><font size=+1 color=#0066CC>enum <a name="wxWebViewZoom">wxWebViewZoom</a></font></b><br>
+{
+<blockquote>
+    wxWEBVIEW_ZOOM_TINY,<br>
+    wxWEBVIEW_ZOOM_SMALL,<br>
+    wxWEBVIEW_ZOOM_MEDIUM,<br>
+    wxWEBVIEW_ZOOM_LARGE,<br>
+    wxWEBVIEW_ZOOM_LARGEST<br>
+</font>
+</blockquote>};<br>
+<br>
+<b><font size=+1 color=#0066CC>enum <a name="wxWebViewZoomType">wxWebViewZoomType</a></font></b><br>
+{
+<blockquote>
+    <font color=#009900>//Scales entire page, including images</font><br>
+    wxWEBVIEW_ZOOM_TYPE_LAYOUT,<br>
+    wxWEBVIEW_ZOOM_TYPE_TEXT<br>
+</font>
+</blockquote>};<br>
+<br>
+<b><font size=+1 color=#0066CC>enum <a name="wxWebViewNavigationError">wxWebViewNavigationError</a></font></b><br>
+{
+<blockquote>
+    wxWEBVIEW_NAV_ERR_CONNECTION,<br>
+    wxWEBVIEW_NAV_ERR_CERTIFICATE,<br>
+    wxWEBVIEW_NAV_ERR_AUTH,<br>
+    wxWEBVIEW_NAV_ERR_SECURITY,<br>
+    wxWEBVIEW_NAV_ERR_NOT_FOUND,<br>
+    wxWEBVIEW_NAV_ERR_REQUEST,<br>
+    wxWEBVIEW_NAV_ERR_USER_CANCELLED,<br>
+    wxWEBVIEW_NAV_ERR_OTHER<br>
+</font>
+</blockquote>};<br>
+<br>
+<b><font size=+1 color=#0066CC>enum <a name="wxWebViewReloadFlags">wxWebViewReloadFlags</a></font></b><br>
+{
+<blockquote>
+    <font color=#009900>//Default, may access cache</font><br>
+    wxWEBVIEW_RELOAD_DEFAULT,<br>
+    wxWEBVIEW_RELOAD_NO_CACHE<br>
+</font>
+</blockquote>};<br>
+<br>
+<b><font size=+1 color=#0066CC>enum <a name="wxWebViewFindFlags">wxWebViewFindFlags</a></font></b><br>
+{
+<blockquote>
+    wxWEBVIEW_FIND_WRAP,             <font color=#009900>// = 0x0001,</font><br>
+    wxWEBVIEW_FIND_ENTIRE_WORD,      <font color=#009900>// = 0x0002,</font><br>
+    wxWEBVIEW_FIND_MATCH_CASE,       <font color=#009900>// = 0x0004,</font><br>
+    wxWEBVIEW_FIND_HIGHLIGHT_RESULT, <font color=#009900>// = 0x0008,</font><br>
+    wxWEBVIEW_FIND_BACKWARDS,        <font color=#009900>// = 0x0010,</font><br>
+    wxWEBVIEW_FIND_DEFAULT           <font color=#009900>// = 0</font><br>
+</font>
+</blockquote>};<br>
+<br>
+<font color=#009900>//Base class for custom scheme handlers</font><br>
+<b><font size=+1 color=#DD0000>class <a name="wxWebViewHandler">wxWebViewHandler</a></font></b><br>
+{
+<blockquote>
+public:<br>
+    <font color=#009900>//<a href="#wxWebViewHandler">wxWebViewHandler</a>(const <a href="#wxString">wxString</a>&amp; scheme); = No constructor, base class with pure virtual functions.</font><br>
+    virtual <a href="#wxString">wxString</a> GetName() const;<br>
+    virtual <a href="#wxFSFile">wxFSFile</a>* GetFile(const <a href="#wxString">wxString</a> &amp;uri); <font color=#009900>// = 0;</font><br>
+private:<br>
+    <a href="#wxString">wxString</a> m_scheme;<br>
+</blockquote>};<br>
+<br>
+<font color=#006666>#define_string wxWebViewNameStr        <font color=#009900>// extern WXDLLIMPEXP_DATA_WEBVIEW(const char) wxWebViewNameStr[];</font></font><br>
+<font color=#006666>#define_string wxWebViewDefaultURLStr  <font color=#009900>// extern WXDLLIMPEXP_DATA_WEBVIEW(const char) wxWebViewDefaultURLStr[];</font></font><br>
+<font color=#006666>#define_string wxWebViewBackendDefault <font color=#009900>// extern WXDLLIMPEXP_DATA_WEBVIEW(const char) wxWebViewBackendDefault[];</font></font><br>
+<font color=#006666>#define_string wxWebViewBackendIE      <font color=#009900>// extern WXDLLIMPEXP_DATA_WEBVIEW(const char) wxWebViewBackendIE[];</font></font><br>
+<font color=#006666>#define_string wxWebViewBackendWebKit  <font color=#009900>// extern WXDLLIMPEXP_DATA_WEBVIEW(const char) wxWebViewBackendWebKit[];</font></font><br>
+<br>
+<b><font size=+1 color=#DD0000>class <a name="wxWebViewFactory">wxWebViewFactory</a> : public <a href="#wxObject">wxObject</a></font></b><br>
+{
+<blockquote>
+public:<br>
+    <font color=#009900>// No constructor, base class with pure virtual functions.</font><br>
+    virtual <a href="#wxWebView">wxWebView</a>* Create(); <font color=#009900>// = 0;</font><br>
+    virtual <a href="#wxWebView">wxWebView</a>* Create(<a href="#wxWindow">wxWindow</a>* parent, wxWindowID id, const <a href="#wxString">wxString</a>&amp; url = wxWebViewDefaultURLStr, const <a href="#wxPoint">wxPoint</a>&amp; pos = wxDefaultPosition, const <a href="#wxSize">wxSize</a>&amp; size = wxDefaultSize, long style = 0, const <a href="#wxString">wxString</a>&amp; name = wxWebViewNameStr); <font color=#009900>// = 0;</font><br>
+</blockquote>};<br>
+<br>
+<font color=#009900>//WX_DECLARE_STRING_HASH_MAP(wxSharedPtr&lt;<a href="#wxWebViewFactory">wxWebViewFactory</a>&gt;, wxStringWebViewFactoryMap);</font><br>
+<br>
+<b><font size=+1 color=#DD0000>class <a name="wxWebView">wxWebView</a> : public <a href="#wxControl">wxControl</a></font></b><br>
+{
+<blockquote>
+public:<br>
+    <font color=#009900>//<a href="#wxWebView">wxWebView</a>(); // use New() to create a <a href="#wxWebView">wxWebView</a> instance.</font><br>
+    <font color=#009900>//virtual ~<a href="#wxWebView">wxWebView</a>() {}</font><br>
+<br>
+    virtual bool Create(<a href="#wxWindow">wxWindow</a>* parent, wxWindowID id, const <a href="#wxString">wxString</a>&amp; url = wxWebViewDefaultURLStr, const <a href="#wxPoint">wxPoint</a>&amp; pos = wxDefaultPosition, const <a href="#wxSize">wxSize</a>&amp; size = wxDefaultSize, long style = 0, const <a href="#wxString">wxString</a>&amp; name = wxWebViewNameStr); <font color=#009900>// = 0;</font><br>
+<br>
+    <font color=#009900>// Factory methods allowing the use of custom factories registered with</font><br>
+    <font color=#009900>// RegisterFactory</font><br>
+    static <a href="#wxWebView">wxWebView</a>* New(const <a href="#wxString">wxString</a>&amp; backend = wxWebViewBackendDefault);<br>
+    static <a href="#wxWebView">wxWebView</a>* New(<a href="#wxWindow">wxWindow</a>* parent, wxWindowID id, const <a href="#wxString">wxString</a>&amp; url = wxWebViewDefaultURLStr, const <a href="#wxPoint">wxPoint</a>&amp; pos = wxDefaultPosition, const <a href="#wxSize">wxSize</a>&amp; size = wxDefaultSize, const <a href="#wxString">wxString</a>&amp; backend = wxWebViewBackendDefault, long style = 0, const <a href="#wxString">wxString</a>&amp; name = wxWebViewNameStr);<br>
+<br>
+    <font color=#009900>//static void RegisterFactory(const <a href="#wxString">wxString</a>&amp; backend, wxSharedPtr&lt;<a href="#wxWebViewFactory">wxWebViewFactory</a>&gt; factory);</font><br>
+<br>
+    <font color=#009900>// General methods</font><br>
+    virtual void EnableContextMenu(bool enable = true);<br>
+    virtual <a href="#wxString">wxString</a> GetCurrentTitle() const; <font color=#009900>// = 0;</font><br>
+    virtual <a href="#wxString">wxString</a> GetCurrentURL() const; <font color=#009900>// = 0;</font><br>
+    <font color=#009900>// TODO: handle choosing a frame when calling GetPageSource()?</font><br>
+    virtual <a href="#wxString">wxString</a> GetPageSource() const; <font color=#009900>// = 0;</font><br>
+    virtual <a href="#wxString">wxString</a> GetPageText() const; <font color=#009900>// = 0;</font><br>
+    virtual bool IsBusy() const; <font color=#009900>// = 0;</font><br>
+    virtual bool IsContextMenuEnabled() const; <font color=#009900>// { return m_showMenu; }</font><br>
+    virtual bool IsEditable() const; <font color=#009900>// = 0;</font><br>
+    virtual void LoadURL(const <a href="#wxString">wxString</a>&amp; url); <font color=#009900>// = 0;</font><br>
+    virtual void Print(); <font color=#009900>// = 0;</font><br>
+    <font color=#009900>//virtual void RegisterHandler(wxSharedPtr&lt;<a href="#wxWebViewHandler">wxWebViewHandler</a>&gt; handler); // = 0;</font><br>
+    virtual void Reload(<a href="#wxWebViewReloadFlags">wxWebViewReloadFlags</a> flags = wxWEBVIEW_RELOAD_DEFAULT); <font color=#009900>// = 0;</font><br>
+    virtual void RunScript(const <a href="#wxString">wxString</a>&amp; javascript); <font color=#009900>// = 0;</font><br>
+    virtual void SetEditable(bool enable = true); <font color=#009900>// = 0;</font><br>
+    void SetPage(const <a href="#wxString">wxString</a>&amp; html, const <a href="#wxString">wxString</a>&amp; baseUrl);<br>
+    void SetPage(<a href="#wxInputStream">wxInputStream</a>&amp; html, <a href="#wxString">wxString</a> baseUrl);<br>
+    virtual void Stop(); <font color=#009900>// = 0;</font><br>
+<br>
+    <font color=#009900>//History</font><br>
+    virtual bool CanGoBack() const; <font color=#009900>// = 0;</font><br>
+    virtual bool CanGoForward() const; <font color=#009900>// = 0;</font><br>
+    virtual void GoBack(); <font color=#009900>// = 0;</font><br>
+    virtual void GoForward(); <font color=#009900>// = 0;</font><br>
+    virtual void ClearHistory(); <font color=#009900>// = 0;</font><br>
+    virtual void EnableHistory(bool enable = true); <font color=#009900>// = 0;</font><br>
+    <font color=#009900>//virtual wxVector&lt;wxSharedPtr&lt;<a href="#wxWebViewHistoryItem">wxWebViewHistoryItem</a>&gt; &gt; GetBackwardHistory(); // = 0;</font><br>
+    <font color=#009900>//virtual wxVector&lt;wxSharedPtr&lt;<a href="#wxWebViewHistoryItem">wxWebViewHistoryItem</a>&gt; &gt; GetForwardHistory(); // = 0;</font><br>
+    <font color=#009900>//virtual void LoadHistoryItem(wxSharedPtr&lt;<a href="#wxWebViewHistoryItem">wxWebViewHistoryItem</a>&gt; item); // = 0;</font><br>
+<br>
+    <font color=#009900>//Zoom</font><br>
+    virtual bool CanSetZoomType(<a href="#wxWebViewZoomType">wxWebViewZoomType</a> type) const; <font color=#009900>// = 0;</font><br>
+    virtual <a href="#wxWebViewZoom">wxWebViewZoom</a> GetZoom() const; <font color=#009900>// = 0;</font><br>
+    virtual <a href="#wxWebViewZoomType">wxWebViewZoomType</a> GetZoomType() const; <font color=#009900>// = 0;</font><br>
+    virtual void SetZoom(<a href="#wxWebViewZoom">wxWebViewZoom</a> zoom); <font color=#009900>// = 0;</font><br>
+    virtual void SetZoomType(<a href="#wxWebViewZoomType">wxWebViewZoomType</a> zoomType); <font color=#009900>// = 0;</font><br>
+<br>
+    <font color=#009900>//Selection</font><br>
+    virtual void SelectAll(); <font color=#009900>// = 0;</font><br>
+    virtual bool HasSelection() const; <font color=#009900>// = 0;</font><br>
+    virtual void DeleteSelection(); <font color=#009900>// = 0;</font><br>
+    virtual <a href="#wxString">wxString</a> GetSelectedText() const; <font color=#009900>// = 0;</font><br>
+    virtual <a href="#wxString">wxString</a> GetSelectedSource() const; <font color=#009900>// = 0;</font><br>
+    virtual void ClearSelection(); <font color=#009900>// = 0;</font><br>
+<br>
+    <font color=#009900>//Clipboard functions</font><br>
+    virtual bool CanCut() const; <font color=#009900>// = 0;</font><br>
+    virtual bool CanCopy() const; <font color=#009900>// = 0;</font><br>
+    virtual bool CanPaste() const; <font color=#009900>// = 0;</font><br>
+    virtual void Cut(); <font color=#009900>// = 0;</font><br>
+    virtual void Copy(); <font color=#009900>// = 0;</font><br>
+    virtual void Paste(); <font color=#009900>// = 0;</font><br>
+<br>
+    <font color=#009900>//Undo / redo functionality</font><br>
+    virtual bool CanUndo() const; <font color=#009900>// = 0;</font><br>
+    virtual bool CanRedo() const; <font color=#009900>// = 0;</font><br>
+    virtual void Undo(); <font color=#009900>// = 0;</font><br>
+    virtual void Redo(); <font color=#009900>// = 0;</font><br>
+<br>
+    <font color=#009900>//Get the pointer to the underlying native engine.</font><br>
+    virtual void* GetNativeBackend() const; <font color=#009900>// = 0;</font><br>
+    <font color=#009900>//Find function</font><br>
+    virtual long Find(const <a href="#wxString">wxString</a>&amp; text, int flags = wxWEBVIEW_FIND_DEFAULT); <font color=#009900>// = 0;</font><br>
+<font color=#888888>/*<br>
+protected:<br>
+    virtual void DoSetPage(const <a href="#wxString">wxString</a>&amp; html, const <a href="#wxString">wxString</a>&amp; baseUrl) = 0;<br>
+<br>
+private:<br>
+    static void InitFactoryMap();<br>
+    static wxStringWebViewFactoryMap::iterator FindFactory(const <a href="#wxString">wxString</a> &amp;backend);<br>
+<br>
+    bool m_showMenu;<br>
+    static wxStringWebViewFactoryMap m_factoryMap;<br>
+<br>
+    wxDECLARE_ABSTRACT_CLASS(<a href="#wxWebView">wxWebView</a>);<br>
+*/</font><br>
+</blockquote>};<br>
+<br>
+<b><font size=+1 color=#DD0000>class <a name="wxWebViewEvent">wxWebViewEvent</a> : public <a href="#wxNotifyEvent">wxNotifyEvent</a></font></b><br>
+{
+<blockquote>
+public:<br>
+    <i>%wxEventType</i> wxEVT_WEBVIEW_NAVIGATING       <font color=#009900>// EVT_WEBVIEW_NAVIGATING(id, fn);</font><br>
+    <i>%wxEventType</i> wxEVT_WEBVIEW_NAVIGATED        <font color=#009900>// EVT_WEBVIEW_NAVIGATED(id, fn);</font><br>
+    <i>%wxEventType</i> wxEVT_WEBVIEW_LOADED           <font color=#009900>// EVT_WEBVIEW_LOADED(id, fn);</font><br>
+    <i>%wxEventType</i> wxEVT_WEBVIEW_ERROR            <font color=#009900>// EVT_WEBVIEW_ERROR(id, fn);</font><br>
+    <i>%wxEventType</i> wxEVT_WEBVIEW_NEWWINDOW        <font color=#009900>// EVT_WEBVIEW_NEWWINDOW(id, fn);</font><br>
+    <i>%wxEventType</i> wxEVT_WEBVIEW_TITLE_CHANGED    <font color=#009900>// EVT_WEBVIEW_TITLE_CHANGED(id, fn);</font><br>
+<br>
+    <a href="#wxWebViewEvent">wxWebViewEvent</a>(); <font color=#009900>// {}</font><br>
+    <a href="#wxWebViewEvent">wxWebViewEvent</a>(wxEventType type, int id, const <a href="#wxString">wxString</a>&amp; url, const <a href="#wxString">wxString</a>&amp; target);<br>
+<br>
+    const <a href="#wxString">wxString</a>&amp; GetURL() const; <font color=#009900>// { return m_url; }</font><br>
+    const <a href="#wxString">wxString</a>&amp; GetTarget() const; <font color=#009900>// { return m_target; }</font><br>
+<br>
+    virtual <a href="#wxEvent">wxEvent</a>* Clone() const; <font color=#009900>// { return new <a href="#wxWebViewEvent">wxWebViewEvent</a>(*this); }</font><br>
+</blockquote>};<br>
+<br>
+<font color=#888888>/*<br>
+<br>
+wxDECLARE_EXPORTED_EVENT( WXDLLIMPEXP_WEBVIEW, wxEVT_WEBVIEW_NAVIGATING, <a href="#wxWebViewEvent">wxWebViewEvent</a> );<br>
+wxDECLARE_EXPORTED_EVENT( WXDLLIMPEXP_WEBVIEW, wxEVT_WEBVIEW_NAVIGATED, <a href="#wxWebViewEvent">wxWebViewEvent</a> );<br>
+wxDECLARE_EXPORTED_EVENT( WXDLLIMPEXP_WEBVIEW, wxEVT_WEBVIEW_LOADED, <a href="#wxWebViewEvent">wxWebViewEvent</a> );<br>
+wxDECLARE_EXPORTED_EVENT( WXDLLIMPEXP_WEBVIEW, wxEVT_WEBVIEW_ERROR, <a href="#wxWebViewEvent">wxWebViewEvent</a> );<br>
+wxDECLARE_EXPORTED_EVENT( WXDLLIMPEXP_WEBVIEW, wxEVT_WEBVIEW_NEWWINDOW, <a href="#wxWebViewEvent">wxWebViewEvent</a> );<br>
+wxDECLARE_EXPORTED_EVENT( WXDLLIMPEXP_WEBVIEW, wxEVT_WEBVIEW_TITLE_CHANGED, <a href="#wxWebViewEvent">wxWebViewEvent</a> );<br>
+<br>
+<font color=#009900>// old wxEVT_COMMAND_* constants</font><br>
+<font color=#006666>#define wxEVT_COMMAND_WEBVIEW_NAVIGATING      wxEVT_WEBVIEW_NAVIGATING</font><br>
+<font color=#006666>#define wxEVT_COMMAND_WEBVIEW_NAVIGATED       wxEVT_WEBVIEW_NAVIGATED</font><br>
+<font color=#006666>#define wxEVT_COMMAND_WEBVIEW_LOADED          wxEVT_WEBVIEW_LOADED</font><br>
+<font color=#006666>#define wxEVT_COMMAND_WEBVIEW_ERROR           wxEVT_WEBVIEW_ERROR</font><br>
+<font color=#006666>#define wxEVT_COMMAND_WEBVIEW_NEWWINDOW       wxEVT_WEBVIEW_NEWWINDOW</font><br>
+<font color=#006666>#define wxEVT_COMMAND_WEBVIEW_TITLE_CHANGED   wxEVT_WEBVIEW_TITLE_CHANGED</font><br>
+<br>
+*/</font><br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxWebViewHistoryItem">wxWebViewHistoryItem</a></font><br>
+<br>
+<b><font size=+1 color=#DD0000>class <a name="wxWebViewHistoryItem">wxWebViewHistoryItem</a></font></b><br>
+{
+<blockquote>
+public:<br>
+    <a href="#wxWebViewHistoryItem">wxWebViewHistoryItem</a>(const <a href="#wxString">wxString</a>&amp; url, const <a href="#wxString">wxString</a>&amp; title);<br>
+    <a href="#wxString">wxString</a> GetUrl();<br>
+    <a href="#wxString">wxString</a> GetTitle();<br>
+</blockquote>};<br>
+<br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxWebViewFSHandler">wxWebViewFSHandler</a></font><br>
+<br>
+#include "wx/webviewfshandler.h"<br>
+<br>
+<b><font size=+1 color=#DD0000>class <a name="wxWebViewFSHandler">wxWebViewFSHandler</a> : public <a href="#wxWebViewHandler">wxWebViewHandler</a></font></b><br>
+{
+<blockquote>
+public:<br>
+    <a href="#wxWebViewFSHandler">wxWebViewFSHandler</a>(const <a href="#wxString">wxString</a>&amp; scheme);<br>
+    virtual <a href="#wxFSFile">wxFSFile</a>* GetFile(const <a href="#wxString">wxString</a> &amp;uri);<br>
+</blockquote>};<br>
+<br>
+<font color=#009900>// ---------------------------------------------------------------------------</font><br>
+<font color=#009900>// <a href="#wxWebViewArchiveHandler">wxWebViewArchiveHandler</a></font><br>
+<br>
+#include "wx/webviewarchivehandler.h"<br>
+<br>
+<font color=#009900>//Loads from uris such as scheme:///C:/example/example.html or archives such as</font><br>
+<font color=#009900>//scheme:///C:/example/example.zip;protocol=zip/example.html</font><br>
+<br>
+<b><font size=+1 color=#DD0000>class <a name="wxWebViewArchiveHandler">wxWebViewArchiveHandler</a> : public <a href="#wxWebViewHandler">wxWebViewHandler</a></font></b><br>
+{
+<blockquote>
+public:<br>
+    <a href="#wxWebViewArchiveHandler">wxWebViewArchiveHandler</a>(const <a href="#wxString">wxString</a>&amp; scheme);<br>
+    virtual <a href="#wxFSFile">wxFSFile</a>* GetFile(const <a href="#wxString">wxString</a> &amp;uri);<br>
+</blockquote>};<br>
+<br>
+<br>
+#endif <font color=#009900>// wxUSE_WEBVIEW</font><br>
 <br><HR>
 
 <h2><a name="wxlua_wxlua.i">wxlua/wxlua.i</a> - Lua table = 'wxlua'</h2>

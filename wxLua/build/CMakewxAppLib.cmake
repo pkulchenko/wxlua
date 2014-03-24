@@ -123,9 +123,9 @@ message( STATUS " " )
 set(DOXYGEN_PREDEFINED_WXWIDGETS "WXUNUSED(x)=x DECLARE_EXPORTED_EVENT_TYPE(x,y,z)=y")
 
 # The component list is in wxWidgets/build/bakefiles/wxwin.py
-set(wxWidgets_ALL_COMPONENTS_29 gl stc richtext propgrid ribbon aui xrc qa media webview net xml html adv core base)
+set(wxWidgets_ALL_COMPONENTS_29 webview propgrid ribbon gl stc richtext aui xrc qa media net xml html adv core base)
 # contrib libs in 28 gizmos, ogl, plot, ...
-set(wxWidgets_ALL_COMPONENTS_28 gl stc richtext                 aui xrc qa media         net xml html adv core base)
+set(wxWidgets_ALL_COMPONENTS_28                         gl stc richtext aui xrc qa media net xml html adv core base)
 
 set(wxWidgets_ALL_COMPONENTS ${wxWidgets_ALL_COMPONENTS_28} ${wxWidgets_ALL_COMPONENTS_29})
 list(REMOVE_DUPLICATES wxWidgets_ALL_COMPONENTS)
@@ -202,6 +202,12 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
             message(STATUS "* Note: wxWidgets libs; Linking to 'stc' lib and not 'scintilla' lib for wx < 2.9")
             list(REMOVE_ITEM wxWidgets_COMPONENTS scintilla)
             set(wxWidgets_COMPONENTS stc ${wxWidgets_COMPONENTS})
+        endif()
+
+        list(FIND wxWidgets_COMPONENTS webview idx_webview)
+        if (idx_webview GREATER "-1")
+            message(STATUS "* Note: wxWidgets libs; Removing 'webview' lib from wxWidgets_COMPONENTS since it didn't exit in wx < 2.9")
+            list(REMOVE_ITEM wxWidgets_COMPONENTS webview)
         endif()
 
         if (NOT UNIX)

@@ -17,7 +17,7 @@ LUA_ABS = $(realpath $(LUA))
 
 #----------------------------------------------------------------------------
 
-ALL_BINDINGS = wxbase wxcore wxadv wxaui wxgl wxhtml wxnet wxmedia wxstc wxxml wxxrc wxpropgrid wxrichtext wxlua wxlua_debugger wxluacan wxdatatypes
+ALL_BINDINGS = wxbase wxcore wxadv wxaui wxgl wxhtml wxnet wxmedia wxstc wxxml wxxrc wxpropgrid wxrichtext wxwebview wxlua wxlua_debugger wxluacan wxdatatypes
 
 # Always try to build all targets, let the other Makefiles do dep checking
 .PHONY: all clean genidocs $(ALL_BINDINGS)
@@ -71,6 +71,10 @@ wxrichtext:
 wxstc:
 	@echo Building wxStc
 	@($(LUA) -e"rulesFilename=\"wxwidgets/wxstc_rules.lua\"" genwxbind.lua)
+
+wxwebview:
+	@echo Building wxWebView
+	@($(LUA) -e"rulesFilename=\"wxwidgets/wxwebview_rules.lua\"" genwxbind.lua)
 
 wxxml:
 	@echo Building wxXml

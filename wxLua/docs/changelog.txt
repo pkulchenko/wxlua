@@ -3,6 +3,7 @@
 
  version 3.0.0 (unreleased)
  --------------------------------------------------------------------
+ - Add wxWebView class for wx2.9+
  - Update to Lua 5.2.3
  - Add wxLuaURLDropTarget and wxLuaListCtrl.
 
