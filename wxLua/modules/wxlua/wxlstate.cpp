@@ -337,11 +337,24 @@ bool wxLuaCleanupWindows(lua_State* L, bool only_check)
 }
 
 //----------------------------------------------------------------------------
+// wxLuaStateRunLocker
+//----------------------------------------------------------------------------
+
+class wxLuaStateRunLocker
+{
+public:
+    wxLuaStateRunLocker(int &is_running) : m_is_running(++is_running) {}
+    ~wxLuaStateRunLocker() { m_is_running = wxMax(0, --m_is_running); } // DebugHookBreak sets to 0.
+
+    int &m_is_running;
+};
+
+//----------------------------------------------------------------------------
 // wxLuaStateData
 //----------------------------------------------------------------------------
 
 wxLuaStateData::wxLuaStateData()
-               :m_is_running(false),
+               :m_is_running(0),
                 m_is_closing(false),
                 m_lua_debug_hook_count(100), m_lua_debug_hook_yield(50),
                 m_lua_debug_hook(0), m_lua_debug_hook_send_evt(false),
@@ -840,10 +853,10 @@ bool wxLuaState::SendEvent( wxLuaEvent &event ) const
 int wxLuaState::RunFile(const wxString &filename, int nresults)
 {
     wxCHECK_MSG(Ok(), LUA_ERRRUN, wxT("Lua interpreter not created"));
-    wxCHECK_MSG(!M_WXLSTATEDATA->m_wxlStateData->m_is_running, LUA_ERRRUN, wxT("Lua interpreter is already running"));
+    //wxCHECK_MSG(!M_WXLSTATEDATA->m_wxlStateData->m_is_running, LUA_ERRRUN, wxT("Lua interpreter is already running"));
 
     M_WXLSTATEDATA->m_wxlStateData->m_debug_hook_break = false;
-    M_WXLSTATEDATA->m_wxlStateData->m_is_running = true;
+    wxLuaStateRunLocker runLocker(M_WXLSTATEDATA->m_wxlStateData->m_is_running);
 
     int top = lua_GetTop();
     int status = luaL_LoadFile(wx2lua(filename));
@@ -856,7 +869,6 @@ int wxLuaState::RunFile(const wxString &filename, int nresults)
         lua_SetTop(top); // restore original top (removes err msg)
 
     M_WXLSTATEDATA->m_wxlStateData->m_debug_hook_break = false;
-    M_WXLSTATEDATA->m_wxlStateData->m_is_running = false;
 
     return status;
 }
@@ -870,10 +882,10 @@ int wxLuaState::RunString(const wxString &script, const wxString& name, int nres
 int wxLuaState::RunBuffer(const char buf[], size_t size, const wxString &name, int nresults)
 {
     wxCHECK_MSG(Ok(), LUA_ERRRUN, wxT("Invalid wxLuaState"));
-    wxCHECK_MSG(!M_WXLSTATEDATA->m_wxlStateData->m_is_running, LUA_ERRRUN, wxT("Lua interpreter is already running"));
+    //wxCHECK_MSG(!M_WXLSTATEDATA->m_wxlStateData->m_is_running, LUA_ERRRUN, wxT("Lua interpreter is already running"));
 
     M_WXLSTATEDATA->m_wxlStateData->m_debug_hook_break = false;
-    M_WXLSTATEDATA->m_wxlStateData->m_is_running = true;
+    wxLuaStateRunLocker runLocker(M_WXLSTATEDATA->m_wxlStateData->m_is_running);
 
     int top = lua_GetTop();
     int status = luaL_LoadBuffer(buf, size, wx2lua(name));
@@ -886,7 +898,6 @@ int wxLuaState::RunBuffer(const char buf[], size_t size, const wxString &name, i
         lua_SetTop(top); // restore original top (removes err msg)
 
     M_WXLSTATEDATA->m_wxlStateData->m_debug_hook_break = false;
-    M_WXLSTATEDATA->m_wxlStateData->m_is_running = false;
 
     return status;
 }
@@ -894,7 +905,7 @@ int wxLuaState::RunBuffer(const char buf[], size_t size, const wxString &name, i
 bool wxLuaState::IsRunning() const
 {
     wxCHECK_MSG(Ok(), false, wxT("Invalid wxLuaState"));
-    return M_WXLSTATEDATA->m_wxlStateData->m_is_running;
+    return M_WXLSTATEDATA->m_wxlStateData->m_is_running > 0;
 }
 
 // this function taken from lua.c, the lua executable
@@ -986,7 +997,7 @@ int wxLuaState::CompileBuffer(const char buf[], size_t size, const wxString &nam
 void wxLuaState::DebugHookBreak(const wxString &msg)
 {
     wxCHECK_RET(Ok(), wxT("Invalid wxLuaState"));
-    wxCHECK_RET(M_WXLSTATEDATA->m_wxlStateData->m_is_running, wxT("Lua interpreter not running"));
+    //wxCHECK_RET(M_WXLSTATEDATA->m_wxlStateData->m_is_running, wxT("Lua interpreter not running"));
 
     // Lua likes to be stopped within the debug hook, you get funny wxYield
     //  recursion asserts if you call wxlua_Error() within another wxYield, i.e. from a gui button
@@ -994,7 +1005,7 @@ void wxLuaState::DebugHookBreak(const wxString &msg)
     M_WXLSTATEDATA->m_wxlStateData->m_debug_hook_break_msg = msg;
     M_WXLSTATEDATA->m_wxlStateData->m_debug_hook_break = true;
     lua_sethook(GetLuaState(), wxlua_debugHookFunction, LUA_MASKCALL|LUA_MASKRET|LUA_MASKLINE|LUA_MASKCOUNT, 1);
-    M_WXLSTATEDATA->m_wxlStateData->m_is_running = false;
+    M_WXLSTATEDATA->m_wxlStateData->m_is_running = 0;
 }
 
 void wxLuaState::ClearDebugHookBreak()

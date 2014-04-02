@@ -94,6 +94,7 @@ ID_TOOLBOOK         = 1042
 ID_TREEBOOK         = 1043
 ID_TREECTRL         = 1044
 ID_WINDOW           = 1045
+ID_WEBVIEW          = 1046
 
 -- ---------------------------------------------------------------------------
 -- Gather up some data from the bindings
@@ -266,6 +267,7 @@ wxEvent_GetFuncs = {
     ["wxTreebookEvent"]            = {},
     ["wxTreeEvent"]                = {"GetKeyCode", "GetItem", "GetOldItem", "GetLabel", "GetPoint", "IsEditCancelled"},
     ["wxUpdateUIEvent"]            = {"GetText", "GetChecked", "GetEnabled", "GetShown", "GetSetChecked", "GetSetEnabled", "GetSetShown", "GetSetText"},
+    ["wxWebViewEvent"]             = {"GetURL", "GetTarget"},
     ["wxWindowCreateEvent"]        = {"GetWindow"},
     ["wxWindowDestroyEvent"]       = {"GetWindow"},
     ["wxWizardEvent"]              = {"GetDirection", "GetPage"}
@@ -906,6 +908,15 @@ function CreateControlsWindow(parent)
                             wx.wxDefaultPosition, wx.wxDefaultSize,
                             wx.wxSUNKEN_BORDER)
     AddControl("wxWindow", control)
+
+    -- -----------------------------------------------------------------------
+
+    if wxwebview and wxwebview.wxWebView then
+    control = wxwebview.wxWebView.New(scrollWin, ID_WEBVIEW, "http://wxlua.sourceforge.net",
+                                      wx.wxDefaultPosition, wx.wxSize(200, 200))
+    control:LoadURL("http://wxlua.sourceforge.net")
+    AddControl("wxWebView", control)
+    end
 
     -- -----------------------------------------------------------------------
 

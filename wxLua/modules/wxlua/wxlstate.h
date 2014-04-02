@@ -44,7 +44,7 @@ public:
     wxLuaStateData();
     ~wxLuaStateData();
 
-    bool m_is_running;                    // is the lua_State running a script
+    int  m_is_running;                    // is the lua_State running a script
     bool m_is_closing;                    // are we currently being closed
 
     int  m_lua_debug_hook_count;          // values from wxLuaState::SetLuaDebugHook()

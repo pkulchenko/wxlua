@@ -284,6 +284,22 @@ static int LUACALL wxLua_wxCommandEvent_SetClientData(lua_State *L)
     return 0;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxCommandEvent_SetClientObject[] = { &wxluatype_wxCommandEvent, &wxluatype_wxClientData, NULL };
+static int LUACALL wxLua_wxCommandEvent_SetClientObject(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxCommandEvent_SetClientObject[1] = {{ wxLua_wxCommandEvent_SetClientObject, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxCommandEvent_SetClientObject }};
+//     void SetClientObject(wxClientData* clientObject);
+static int LUACALL wxLua_wxCommandEvent_SetClientObject(lua_State *L)
+{
+    // wxClientData clientObject
+    wxClientData * clientObject = (wxClientData *)wxluaT_getuserdatatype(L, 2, wxluatype_wxClientData);
+    // get this
+    wxCommandEvent * self = (wxCommandEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxCommandEvent);
+    // call SetClientObject
+    self->SetClientObject(clientObject);
+
+    return 0;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxCommandEvent_SetExtraLong[] = { &wxluatype_wxCommandEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxCommandEvent_SetExtraLong(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxCommandEvent_SetExtraLong[1] = {{ wxLua_wxCommandEvent_SetExtraLong, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxCommandEvent_SetExtraLong }};
@@ -377,6 +393,7 @@ wxLuaBindMethod wxCommandEvent_methods[] = {
     { "IsChecked", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCommandEvent_IsChecked, 1, NULL },
     { "IsSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCommandEvent_IsSelection, 1, NULL },
     { "SetClientData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCommandEvent_SetClientData, 1, NULL },
+    { "SetClientObject", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCommandEvent_SetClientObject, 1, NULL },
     { "SetExtraLong", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCommandEvent_SetExtraLong, 1, NULL },
     { "SetInt", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCommandEvent_SetInt, 1, NULL },
     { "SetString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCommandEvent_SetString, 1, NULL },

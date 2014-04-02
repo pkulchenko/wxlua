@@ -88,6 +88,7 @@ class %delete wxCommandEvent : public wxEvent
     bool IsChecked() const;
     bool IsSelection( );
     void SetClientData(voidptr_long number); // C++ is (void *clientData) You can put a number here
+    void SetClientObject(wxClientData* clientObject);
     void SetExtraLong(int extraLong );
     void SetInt(int intCommand );
     void SetString(const wxString &string );
