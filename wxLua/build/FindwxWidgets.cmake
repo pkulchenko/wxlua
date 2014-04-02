@@ -278,6 +278,9 @@ if(wxWidgets_FIND_STYLE STREQUAL "win32")
     unset(WX_base${_DBG} CACHE) # jl - Must unset if they choose msw then wanted mswu
     find_library(WX_base${_DBG}
       NAMES
+      wxbase33${_UCD}${_DBG}
+      wxbase32${_UCD}${_DBG}
+      wxbase31${_UCD}${_DBG}
       wxbase30${_UCD}${_DBG}
       wxbase29${_UCD}${_DBG}
       wxbase28${_UCD}${_DBG}
@@ -292,6 +295,9 @@ if(wxWidgets_FIND_STYLE STREQUAL "win32")
       unset(WX_${LIB}${_DBG} CACHE) # jl - Must unset if they choose msw then wanted mswu
       find_library(WX_${LIB}${_DBG}
         NAMES
+        wxbase33${_UCD}${_DBG}_${LIB}
+        wxbase32${_UCD}${_DBG}_${LIB}
+        wxbase31${_UCD}${_DBG}_${LIB}
         wxbase30${_UCD}${_DBG}_${LIB}
         wxbase29${_UCD}${_DBG}_${LIB}
         wxbase28${_UCD}${_DBG}_${LIB}
@@ -308,6 +314,9 @@ if(wxWidgets_FIND_STYLE STREQUAL "win32")
     unset(WX_mono${_DBG} CACHE) # jl - Must unset if they choose msw then wanted mswu
     find_library(WX_mono${_DBG}
       NAMES
+      wxmsw${_UNV}33${_UCD}${_DBG}
+      wxmsw${_UNV}32${_UCD}${_DBG}
+      wxmsw${_UNV}31${_UCD}${_DBG}
       wxmsw${_UNV}30${_UCD}${_DBG}
       wxmsw${_UNV}29${_UCD}${_DBG}
       wxmsw${_UNV}28${_UCD}${_DBG}
@@ -325,6 +334,9 @@ if(wxWidgets_FIND_STYLE STREQUAL "win32")
       unset(WX_${LIB}${_DBG} CACHE) # jl - Must unset if they choose msw then wanted mswu
       find_library(WX_${LIB}${_DBG}
         NAMES
+        wxmsw${_UNV}33${_UCD}${_DBG}_${LIB}
+        wxmsw${_UNV}32${_UCD}${_DBG}_${LIB}
+        wxmsw${_UNV}31${_UCD}${_DBG}_${LIB}
         wxmsw${_UNV}30${_UCD}${_DBG}_${LIB}
         wxmsw${_UNV}29${_UCD}${_DBG}_${LIB}
         wxmsw${_UNV}28${_UCD}${_DBG}_${LIB}
