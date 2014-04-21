@@ -495,14 +495,15 @@ int wxLuaPrintout_methodCount = sizeof(wxLuaPrintout_methods)/sizeof(wxLuaBindMe
 // Lua MetaTable Tag for Class 'wxPrinter'
 int wxluatype_wxPrinter = WXLUA_TUNKNOWN;
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPrinter_CreateAbortWindow[] = { &wxluatype_wxPrinter, &wxluatype_wxWindow, &wxluatype_wxLuaPrintout, NULL };
+#if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPrinter_CreateAbortWindow[] = { &wxluatype_wxPrinter, &wxluatype_wxWindow, &wxluatype_wxPrintout, NULL };
 static int LUACALL wxLua_wxPrinter_CreateAbortWindow(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPrinter_CreateAbortWindow[1] = {{ wxLua_wxPrinter_CreateAbortWindow, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxPrinter_CreateAbortWindow }};
-//     virtual void CreateAbortWindow(wxWindow* parent, wxLuaPrintout* printout );
+//     virtual void CreateAbortWindow(wxWindow* parent, wxPrintout* printout );
 static int LUACALL wxLua_wxPrinter_CreateAbortWindow(lua_State *L)
 {
-    // wxLuaPrintout printout
-    wxLuaPrintout * printout = (wxLuaPrintout *)wxluaT_getuserdatatype(L, 3, wxluatype_wxLuaPrintout);
+    // wxPrintout printout
+    wxPrintout * printout = (wxPrintout *)wxluaT_getuserdatatype(L, 3, wxluatype_wxPrintout);
     // wxWindow parent
     wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
     // get this
@@ -512,6 +513,8 @@ static int LUACALL wxLua_wxPrinter_CreateAbortWindow(lua_State *L)
 
     return 0;
 }
+
+#endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPrinter_GetAbort[] = { &wxluatype_wxPrinter, NULL };
 static int LUACALL wxLua_wxPrinter_GetAbort(lua_State *L);
@@ -560,20 +563,18 @@ static int LUACALL wxLua_wxPrinter_GetPrintDialogData(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPrinter_Print[] = { &wxluatype_wxPrinter, &wxluatype_wxWindow, &wxluatype_wxLuaPrintout, &wxluatype_TBOOLEAN, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPrinter_Print[] = { &wxluatype_wxPrinter, &wxluatype_wxWindow, &wxluatype_wxPrintout, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxPrinter_Print(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPrinter_Print[1] = {{ wxLua_wxPrinter_Print, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxPrinter_Print }};
-//     bool Print(wxWindow *parent, wxLuaPrintout *printout, bool prompt=true );
+//     bool Print(wxWindow *parent, wxPrintout *printout, bool prompt=true );
 static int LUACALL wxLua_wxPrinter_Print(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
     // bool prompt = true
     bool prompt = (argCount >= 4 ? wxlua_getbooleantype(L, 4) : true);
-    // wxLuaPrintout printout
-    wxLuaPrintout * printout = (wxLuaPrintout *)wxluaT_getuserdatatype(L, 3, wxluatype_wxLuaPrintout);
+    // wxPrintout printout
+    wxPrintout * printout = (wxPrintout *)wxluaT_getuserdatatype(L, 3, wxluatype_wxPrintout);
     // wxWindow parent
     wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
     // get this
@@ -586,6 +587,7 @@ static int LUACALL wxLua_wxPrinter_Print(lua_State *L)
     return 1;
 }
 
+#endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
 
 #if (wxLUA_USE_wxDC) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPrinter_PrintDialog[] = { &wxluatype_wxPrinter, &wxluatype_wxWindow, NULL };
@@ -608,16 +610,17 @@ static int LUACALL wxLua_wxPrinter_PrintDialog(lua_State *L)
 
 #endif // (wxLUA_USE_wxDC) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPrinter_ReportError[] = { &wxluatype_wxPrinter, &wxluatype_wxWindow, &wxluatype_wxLuaPrintout, &wxluatype_TSTRING, NULL };
+#if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPrinter_ReportError[] = { &wxluatype_wxPrinter, &wxluatype_wxWindow, &wxluatype_wxPrintout, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxPrinter_ReportError(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPrinter_ReportError[1] = {{ wxLua_wxPrinter_ReportError, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxPrinter_ReportError }};
-//     void ReportError(wxWindow *parent, wxLuaPrintout *printout, const wxString& message );
+//     void ReportError(wxWindow *parent, wxPrintout *printout, const wxString& message );
 static int LUACALL wxLua_wxPrinter_ReportError(lua_State *L)
 {
     // const wxString message
     const wxString message = wxlua_getwxStringtype(L, 4);
-    // wxLuaPrintout printout
-    wxLuaPrintout * printout = (wxLuaPrintout *)wxluaT_getuserdatatype(L, 3, wxluatype_wxLuaPrintout);
+    // wxPrintout printout
+    wxPrintout * printout = (wxPrintout *)wxluaT_getuserdatatype(L, 3, wxluatype_wxPrintout);
     // wxWindow parent
     wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
     // get this
@@ -627,6 +630,8 @@ static int LUACALL wxLua_wxPrinter_ReportError(lua_State *L)
 
     return 0;
 }
+
+#endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPrinter_Setup[] = { &wxluatype_wxPrinter, &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxPrinter_Setup(lua_State *L);
@@ -683,21 +688,26 @@ void wxLua_wxPrinter_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxPrinter_methods[] = {
+#if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
     { "CreateAbortWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPrinter_CreateAbortWindow, 1, NULL },
+#endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
+
     { "GetAbort", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPrinter_GetAbort, 1, NULL },
     { "GetLastError", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxPrinter_GetLastError, 1, NULL },
 
 #if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
     { "GetPrintDialogData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPrinter_GetPrintDialogData, 1, NULL },
-#endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
-
     { "Print", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPrinter_Print, 1, NULL },
+#endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
 
 #if (wxLUA_USE_wxDC) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
     { "PrintDialog", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPrinter_PrintDialog, 1, NULL },
 #endif // (wxLUA_USE_wxDC) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
 
+#if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
     { "ReportError", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPrinter_ReportError, 1, NULL },
+#endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
+
     { "Setup", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPrinter_Setup, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxPrinter_delete, 1, NULL },
 
@@ -3369,14 +3379,15 @@ static int LUACALL wxLua_wxPrintPreview_SetFrame(lua_State *L)
 
 #endif // (wxLUA_USE_wxFrame) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPrintPreview_SetPrintout[] = { &wxluatype_wxPrintPreview, &wxluatype_wxLuaPrintout, NULL };
+#if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPrintPreview_SetPrintout[] = { &wxluatype_wxPrintPreview, &wxluatype_wxPrintout, NULL };
 static int LUACALL wxLua_wxPrintPreview_SetPrintout(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPrintPreview_SetPrintout[1] = {{ wxLua_wxPrintPreview_SetPrintout, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPrintPreview_SetPrintout }};
-//     void SetPrintout(wxLuaPrintout *printout );
+//     void SetPrintout(wxPrintout *printout );
 static int LUACALL wxLua_wxPrintPreview_SetPrintout(lua_State *L)
 {
-    // wxLuaPrintout printout
-    wxLuaPrintout * printout = (wxLuaPrintout *)wxluaT_getuserdatatype(L, 2, wxluatype_wxLuaPrintout);
+    // wxPrintout printout
+    wxPrintout * printout = (wxPrintout *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPrintout);
     // get this
     wxPrintPreview * self = (wxPrintPreview *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPrintPreview);
     // call SetPrintout
@@ -3384,6 +3395,8 @@ static int LUACALL wxLua_wxPrintPreview_SetPrintout(lua_State *L)
 
     return 0;
 }
+
+#endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPrintPreview_SetZoom[] = { &wxluatype_wxPrintPreview, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPrintPreview_SetZoom(lua_State *L);
@@ -3403,7 +3416,7 @@ static int LUACALL wxLua_wxPrintPreview_SetZoom(lua_State *L)
 
 
 #if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPrintPreview_constructor[] = { &wxluatype_wxLuaPrintout, &wxluatype_wxLuaPrintout, &wxluatype_wxPrintData, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPrintPreview_constructor[] = { &wxluatype_wxPrintout, &wxluatype_wxPrintout, &wxluatype_wxPrintData, NULL };
 static int LUACALL wxLua_wxPrintPreview_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPrintPreview_constructor[1] = {{ wxLua_wxPrintPreview_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 3, s_wxluatypeArray_wxLua_wxPrintPreview_constructor }};
 // %override wxLua_wxPrintPreview_constructor
@@ -3488,7 +3501,10 @@ wxLuaBindMethod wxPrintPreview_methods[] = {
     { "SetFrame", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPrintPreview_SetFrame, 1, NULL },
 #endif // (wxLUA_USE_wxFrame) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
 
+#if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
     { "SetPrintout", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPrintPreview_SetPrintout, 1, NULL },
+#endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))
+
     { "SetZoom", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPrintPreview_SetZoom, 1, NULL },
 
 #if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && ((wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout))

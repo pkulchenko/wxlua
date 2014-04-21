@@ -105,13 +105,13 @@ class %delete wxPrinter : public wxObject
     wxPrinter(wxPrintDialogData* data = NULL );
 
     //bool Abort( );
-    virtual void CreateAbortWindow(wxWindow* parent, wxLuaPrintout* printout );
+    virtual void CreateAbortWindow(wxWindow* parent, wxPrintout* printout );
     bool GetAbort() const;
     static wxPrinterError GetLastError( );
     wxPrintDialogData& GetPrintDialogData( );
-    bool Print(wxWindow *parent, wxLuaPrintout *printout, bool prompt=true );
+    bool Print(wxWindow *parent, wxPrintout *printout, bool prompt=true );
     wxDC* PrintDialog(wxWindow *parent );
-    void ReportError(wxWindow *parent, wxLuaPrintout *printout, const wxString& message );
+    void ReportError(wxWindow *parent, wxPrintout *printout, const wxString& message );
     bool Setup(wxWindow *parent );
 };
 
@@ -518,7 +518,7 @@ class wxPreviewControlBar : public wxWindow
 
 class wxPrintPreview : public wxObject
 {
-    wxPrintPreview(wxLuaPrintout* printout, wxLuaPrintout* printoutForPrinting, wxPrintData* data=NULL );
+    wxPrintPreview(wxPrintout* printout, wxPrintout* printoutForPrinting, wxPrintData* data=NULL );
 
     bool DrawBlankPage(wxPreviewCanvas* window, wxDC& dc );
     wxPreviewCanvas* GetCanvas( );
@@ -535,7 +535,7 @@ class wxPrintPreview : public wxObject
     void SetCanvas(wxPreviewCanvas* window );
     void SetCurrentPage(int pageNum );
     void SetFrame(wxFrame *frame );
-    void SetPrintout(wxLuaPrintout *printout );
+    void SetPrintout(wxPrintout *printout );
     void SetZoom(int percent );
 };
 
