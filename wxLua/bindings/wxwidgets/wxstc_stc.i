@@ -515,7 +515,7 @@ class WXDLLIMPEXP_FWD_CORE wxScrollBar;
 #define wxSTC_LEX_TXT2TAGS
 #define wxSTC_LEX_A68K
 #define wxSTC_LEX_MODULA
-#define wxSTC_LEX_COFFEESCRIPT
+!%wxchkver_3_1_0 #define wxSTC_LEX_COFFEESCRIPT
 #define wxSTC_LEX_TCMD
 #define wxSTC_LEX_AVS
 #define wxSTC_LEX_ECL
@@ -2124,6 +2124,7 @@ class WXDLLIMPEXP_FWD_CORE wxScrollBar;
 #define wxSTC_MODULA_BADSTR
 
 /// Lexical states for SCLEX_COFFEESCRIPT
+#if !%wxchkver_3_1_0
 #define wxSTC_COFFEESCRIPT_DEFAULT
 #define wxSTC_COFFEESCRIPT_COMMENT
 #define wxSTC_COFFEESCRIPT_COMMENTLINE
@@ -2150,6 +2151,7 @@ class WXDLLIMPEXP_FWD_CORE wxScrollBar;
 #define wxSTC_COFFEESCRIPT_COMMENTBLOCK
 #define wxSTC_COFFEESCRIPT_VERBOSE_REGEX
 #define wxSTC_COFFEESCRIPT_VERBOSE_REGEX_COMMENT
+#endif // !%wxchkver_3_1_0
 
 /// Lexical states for SCLEX_AVS
 #define wxSTC_AVS_DEFAULT

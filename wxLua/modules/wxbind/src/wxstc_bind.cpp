@@ -13479,7 +13479,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_CMD_ZOOMIN", wxSTC_CMD_ZOOMIN },
         { "wxSTC_CMD_ZOOMOUT", wxSTC_CMD_ZOOMOUT },
 
-#if wxCHECK_VERSION(2,9,5)
+#if (wxCHECK_VERSION(2,9,5)) && (!wxCHECK_VERSION(3,1,0))
         { "wxSTC_COFFEESCRIPT_CHARACTER", wxSTC_COFFEESCRIPT_CHARACTER },
         { "wxSTC_COFFEESCRIPT_COMMENT", wxSTC_COFFEESCRIPT_COMMENT },
         { "wxSTC_COFFEESCRIPT_COMMENTBLOCK", wxSTC_COFFEESCRIPT_COMMENTBLOCK },
@@ -13506,7 +13506,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_COFFEESCRIPT_VERBOSE_REGEX_COMMENT", wxSTC_COFFEESCRIPT_VERBOSE_REGEX_COMMENT },
         { "wxSTC_COFFEESCRIPT_WORD", wxSTC_COFFEESCRIPT_WORD },
         { "wxSTC_COFFEESCRIPT_WORD2", wxSTC_COFFEESCRIPT_WORD2 },
-#endif // wxCHECK_VERSION(2,9,5)
+#endif // (wxCHECK_VERSION(2,9,5)) && (!wxCHECK_VERSION(3,1,0))
 
         { "wxSTC_CONF_COMMENT", wxSTC_CONF_COMMENT },
         { "wxSTC_CONF_DEFAULT", wxSTC_CONF_DEFAULT },
@@ -14247,8 +14247,11 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
 #if wxCHECK_VERSION(2,9,5)
         { "wxSTC_LEX_CMAKE", wxSTC_LEX_CMAKE },
         { "wxSTC_LEX_COBOL", wxSTC_LEX_COBOL },
-        { "wxSTC_LEX_COFFEESCRIPT", wxSTC_LEX_COFFEESCRIPT },
 #endif // wxCHECK_VERSION(2,9,5)
+
+#if (!wxCHECK_VERSION(3,1,0)) && (wxCHECK_VERSION(2,9,5))
+        { "wxSTC_LEX_COFFEESCRIPT", wxSTC_LEX_COFFEESCRIPT },
+#endif // (!wxCHECK_VERSION(3,1,0)) && (wxCHECK_VERSION(2,9,5))
 
         { "wxSTC_LEX_CONF", wxSTC_LEX_CONF },
         { "wxSTC_LEX_CONTAINER", wxSTC_LEX_CONTAINER },

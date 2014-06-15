@@ -19,7 +19,17 @@ require("wx")
 -- ----------------------------------------------------------------------------
 -- ----------------------------------------------------------------------------
 
-function ColumnDumpTable(t, keys)
+function ColumnDumpTable(t, keys, funcs)
+    funcs = funcs or {}
+
+
+    local function GetTableValue(tbl, key)
+        if funcs[key] then
+            return funcs[key](tbl[key])
+        end
+
+        return tostring(tbl[key])
+    end
 
     local lens = {}
 
@@ -30,7 +40,7 @@ function ColumnDumpTable(t, keys)
     for i = 1, #t do
         local u = t[i]
         for k = 1, #keys do
-            local len = string.len(tostring(u[keys[k]]))
+            local len = string.len(GetTableValue(u, keys[k]))
             if (len > lens[k]) then
                 lens[k] = len
             end
@@ -49,7 +59,7 @@ function ColumnDumpTable(t, keys)
         local u = t[i]
         local s = ""
         for k = 1, #keys do
-            local val = tostring(u[keys[k]])
+            local val = GetTableValue(u, keys[k])
             local buf = string.rep(" ", lens[k] - string.len(val) + 1)
             s = s..val..buf
         end
@@ -57,10 +67,33 @@ function ColumnDumpTable(t, keys)
     end
 end
 
+function GetBindingObjectKeys(binding_obj)
+    local keys = {}
+    if type(binding_obj) == "table" then
+        for k, v in pairs(binding_obj) do
+            keys[#keys+1] = k
+        end
+    elseif (type(binding_obj) == "userdata") and (type(binding_obj.fields) == "table") then
+        keys = binding_obj.fields
+    end
+
+    return keys
+end
+
+function TableToString(tbl, sep, prefix, postfix)
+    if #tbl == 0 then return "" end
+    return (prefix or "")..table.concat(tbl, sep)..(postfix or "")
+end
+function iff(condition, return_if_true, return_if_false)
+    if condition then return return_if_true else return return_if_false end
+end
+
+
+
 function DumpBindingInfo(binding)
 
-    print("GetBindingName  : "..tostring(binding.GetBindingName))
-    print("GetLuaNamespace : "..tostring(binding.GetLuaNamespace))
+    print("GetBindingName   : "..tostring(binding.GetBindingName))
+    print("GetLuaNamespace  : "..tostring(binding.GetLuaNamespace))
 
     print("GetClassCount    : "..tostring(binding.GetClassCount))
     print("GetNumberCount   : "..tostring(binding.GetNumberCount))
@@ -69,16 +102,63 @@ function DumpBindingInfo(binding)
     print("GetObjectCount   : "..tostring(binding.GetObjectCount))
     print("GetFunctionCount : "..tostring(binding.GetFunctionCount))
 
+    --print("GetClassArray    : "..tostring(#binding.GetClassArray))
+    --print("GetFunctionArray : "..tostring(#binding.GetFunctionArray))
+    --print("GetNumberArray   : "..tostring(#binding.GetNumberArray))
+    --print("GetStringArray   : "..tostring(#binding.GetStringArray))
+    --print("GetEventArray    : "..tostring(#binding.GetEventArray))
+    --print("GetObjectArray   : "..tostring(#binding.GetObjectArray))
+
     if true then
+        local classArray = binding.GetClassArray
         print("\nDUMPING binding.GetClassArray ==================================\n")
-        local keys = { "name", "wxluamethods", "wxluamethods_n", "classInfo", "wxluatype", "baseclassNames", "baseBindClasses", "enums", "enums_n" }
-        ColumnDumpTable(binding.GetClassArray, keys)
+        --local keys = GetBindingObjectKeys(classArray[1])
+        local keys = { "name", --[["wxluamethods",]] "wxluamethods_n", "classInfo", --[["wxluatype",]] "baseclassNames", --[["baseBindClasses", "enums",]] "enums_n" }
+        ColumnDumpTable(classArray, keys,
+                        {classInfo=function(ci) if ci then return ci:GetClassName() end return "" end,
+                         baseclassNames=function(tbl) return table.concat(tbl, ",") end} )
+
+        print(" ")
+
+        for i, class in ipairs(classArray) do
+
+            print("class "..class.name..TableToString(class.baseclassNames, ", ", " : public ").."\n{")
+
+            if class.enums_n > 0 then
+                print("    enum\n    {")
+                for j, enum in pairs(class.enums) do
+                    print("        "..enum.name.." = "..enum.value..",")
+                end
+                print("    };\n")
+            end
+
+            for j, method in ipairs(class.wxluamethods) do
+                for j, func in ipairs(method.wxluacfuncs) do
+                    local type_str = CreatewxLuaMethod_TypeString(func.method_type)
+
+                    local s = iff(string.find(type_str, "static"), "static ", "")..method.name.."("..
+                              CreateArgTagsString(func.argtypes, method.method_type)..");"
+                    print("    "..s)
+                end
+            end
+
+            print("};\n")
+        end
     end
 
     if true then
         print("\nDUMPING binding.GetFunctionArray ==================================\n")
-        local keys = { "name", "type", "wxluacfuncs", "wxluacfuncs_n", "basemethod" }
-        ColumnDumpTable(binding.GetFunctionArray, keys)
+        --local keys = { "name", "method_type", "wxluacfuncs", "wxluacfuncs_n", "basemethod" }
+        --ColumnDumpTable(binding.GetFunctionArray, keys)
+
+        for j, method in ipairs(binding.GetFunctionArray) do
+            for j, func in ipairs(method.wxluacfuncs) do
+                local s = method.name.."("
+
+                s = s..CreateArgTagsString(func.argtypes, method.method_type)
+                print(s..");") -- ..CreatewxLuaMethod_TypeString(func.method_type))
+            end
+        end
     end
 
     if true then
@@ -90,19 +170,23 @@ function DumpBindingInfo(binding)
     if true then
         print("\nDUMPING binding.GetStringArray ==================================\n")
         local keys = { "name", "value" }
-        ColumnDumpTable(binding.GetStringArray, keys)
+        ColumnDumpTable(binding.GetStringArray, keys, {value=function(v) return "'"..v.."'" end} )
     end
 
     if true then
         print("\nDUMPING binding.GetEventArray ==================================\n")
-        local keys = { "name", "eventType", "wxluatype" }
-        ColumnDumpTable(binding.GetEventArray, keys)
+        local keys = { "name", "eventType", "wxLuaBindClass" }
+        ColumnDumpTable(binding.GetEventArray, keys, {wxLuaBindClass=function(c) return c.name end} )
     end
 
     if true then
         print("\nDUMPING binding.GetObjectArray ==================================\n")
-        local keys = { "name", "object", "wxluatype" }
-        ColumnDumpTable(binding.GetObjectArray, keys)
+        --local keys = { "name", "wxLuaBindClass" }
+        --ColumnDumpTable(binding.GetObjectArray, keys, {wxLuaBindClass=function(c) return c.name end})
+
+        for i, obj in ipairs(binding.GetObjectArray) do
+            print(obj.wxLuaBindClass.name.." "..obj.name..";")
+        end
     end
 
 end
@@ -292,17 +376,18 @@ function CreatewxLuaMethod_TypeString(t_)
     end
 
     -- subtract values from high to low value
-    t = HasBit(t, wxlua.WXLUAMETHOD_DELETE,      s, "Delete")
-    t = HasBit(t, wxlua.WXLUAMETHOD_STATIC,      s, "Static")
-    t = HasBit(t, wxlua.WXLUAMETHOD_SETPROP,     s, "SetProp")
-    t = HasBit(t, wxlua.WXLUAMETHOD_GETPROP,     s, "GetProp")
-    t = HasBit(t, wxlua.WXLUAMETHOD_CFUNCTION,   s, "CFunc")
-    t = HasBit(t, wxlua.WXLUAMETHOD_METHOD,      s, "Method")
-    t = HasBit(t, wxlua.WXLUAMETHOD_CONSTRUCTOR, s, "Constructor")
+    t = HasBit(t, wxlua.WXLUAMETHOD_DELETE,      s, "delete")
+    t = HasBit(t, wxlua.WXLUAMETHOD_STATIC,      s, "static")
+    t = HasBit(t, wxlua.WXLUAMETHOD_SETPROP,     s, "setprop")
+    t = HasBit(t, wxlua.WXLUAMETHOD_GETPROP,     s, "getprop")
+    t = HasBit(t, wxlua.WXLUAMETHOD_CFUNCTION,   s, "cfunc")
+    t = HasBit(t, wxlua.WXLUAMETHOD_METHOD,      s, "method")
+    t = HasBit(t, wxlua.WXLUAMETHOD_CONSTRUCTOR, s, "constructor")
 
     assert(t == 0, "The wxLuaMethod_Type is not handled correctly, remainder "..tostring(t).." of "..tostring(t_))
 
-    return string.format("0x%04X (%s)", t, table.concat(s, ", "))
+    --return string.format("0x%04X (%s)", t_, table.concat(s, ", "))
+    return table.concat(s, ", ")
 end
 
 -- ----------------------------------------------------------------------------
@@ -316,10 +401,10 @@ function CreateArgTagsString(args_table, wxlua_type)
 
         -- The first arg for a class member function is the self
         if (j == 1) and
-           (bit.band(wxlua_type, wxlua.WXLUAMETHOD_CFUNCTION) == 0) and
-           (bit.band(wxlua_type, wxlua.WXLUAMETHOD_CONSTRUCTOR) == 0) and
-           (bit.band(wxlua_type, wxlua.WXLUAMETHOD_STATIC) == 0) then
-           s = s.."(self)"
+            (bit.band(wxlua_type, wxlua.WXLUAMETHOD_CFUNCTION) == 0) and
+            (bit.band(wxlua_type, wxlua.WXLUAMETHOD_CONSTRUCTOR) == 0) and
+            (bit.band(wxlua_type, wxlua.WXLUAMETHOD_STATIC) == 0) then
+            s = "self"
         end
 
         table.insert(arg_names, s)

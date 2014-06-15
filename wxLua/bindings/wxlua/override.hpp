@@ -271,6 +271,15 @@ int LUACALL wxluabind_wxLuaBindClass__index(lua_State* L);
 
 int LUACALL wxluabind_wxLuaBindCFunc__index(lua_State* L)
 {
+    static const char* fields[] = { "lua_cfunc",
+                                    "method_type",
+                                    "minargs",
+                                    "maxargs",
+                                    "argtypes",
+                                    "class",
+                                    "class_name" };
+    static const size_t fields_count = sizeof(fields)/sizeof(fields[0]);
+
     void **ptr = (void **)lua_touserdata(L, 1);
     wxLuaBindCFunc* wxlCFunc= (wxLuaBindCFunc*)*ptr;
     wxLuaBinding *wxlBinding = (wxLuaBinding *)lua_touserdata(L, lua_upvalueindex(1));
@@ -281,7 +290,17 @@ int LUACALL wxluabind_wxLuaBindCFunc__index(lua_State* L)
     {
         const char* idx_str = lua_tostring(L, 2);
 
-        if (strcmp(idx_str, "lua_cfunc") == 0)
+        if (strcmp(idx_str, "fields") == 0)
+        {
+            lua_newtable(L);
+            for (size_t i = 0; i < fields_count; ++i)
+            {
+                lua_pushstring(L, fields[i]);
+                lua_rawseti(L, -2, i + 1);
+            }
+            return 1;
+        }
+        else if (strcmp(idx_str, "lua_cfunc") == 0)
         {
             lua_pushcfunction(L, wxlCFunc->lua_cfunc);
             return 1;
@@ -352,6 +371,15 @@ int LUACALL wxluabind_wxLuaBindCFunc__index(lua_State* L)
 
 int LUACALL wxluabind_wxLuaBindMethod__index(lua_State* L)
 {
+    static const char* fields[] = { "name",
+                                    "method_type",
+                                    "wxluacfuncs",
+                                    "wxluacfuncs_n",
+                                    "basemethod",
+                                    "class",
+                                    "class_name" };
+    static const size_t fields_count = sizeof(fields)/sizeof(fields[0]);
+
     void **ptr = (void **)lua_touserdata(L, 1);
     wxLuaBindMethod* wxlMethod = (wxLuaBindMethod*)*ptr;
     wxLuaBinding *wxlBinding = (wxLuaBinding *)lua_touserdata(L, lua_upvalueindex(1));
@@ -362,7 +390,17 @@ int LUACALL wxluabind_wxLuaBindMethod__index(lua_State* L)
     {
         const char* idx_str = lua_tostring(L, 2);
 
-        if (strcmp(idx_str, "name") == 0)
+        if (strcmp(idx_str, "fields") == 0)
+        {
+            lua_newtable(L);
+            for (size_t i = 0; i < fields_count; ++i)
+            {
+                lua_pushstring(L, fields[i]);
+                lua_rawseti(L, -2, i + 1);
+            }
+            return 1;
+        }
+        else if (strcmp(idx_str, "name") == 0)
         {
             lua_pushstring(L, wxlMethod->name);
             return 1;
@@ -454,6 +492,19 @@ int LUACALL wxluabind_wxLuaBindMethod__index(lua_State* L)
 
 int LUACALL wxluabind_wxLuaBindClass__index(lua_State* L)
 {
+    static const char* fields[] = { "name",
+                                    "wxluamethods",
+                                    "wxluamethods_n",
+                                    "classInfo",
+                                    "wxluatype",
+                                    "baseclassNames",
+                                    "baseBindClasses",
+                                    "baseclass_wxluatypes",
+                                    "baseclass_vtable_offsets",
+                                    "enums",
+                                    "enums_n" };
+    static const size_t fields_count = sizeof(fields)/sizeof(fields[0]);
+
     void **ptr = (void **)lua_touserdata(L, 1);
     wxLuaBindClass* wxlClass = (wxLuaBindClass*)*ptr;
     wxLuaBinding *wxlBinding = (wxLuaBinding *)lua_touserdata(L, lua_upvalueindex(1));
@@ -464,18 +515,28 @@ int LUACALL wxluabind_wxLuaBindClass__index(lua_State* L)
     {
         const char* idx_str = lua_tostring(L, 2);
 
-        if (strcmp(idx_str, "name") == 0)
+        if (strcmp(idx_str, "fields") == 0)
+        {
+            lua_newtable(L);
+            for (size_t i = 0; i < fields_count; ++i)
+            {
+                lua_pushstring(L, fields[i]);
+                lua_rawseti(L, -2, i + 1);
+            }
+            return 1;
+        }
+        else if (strcmp(idx_str, "name") == 0)
         {
             lua_pushstring(L, wxlClass->name);
             return 1;
         }
         else if (strcmp(idx_str, "wxluamethods") == 0)
         {
+            size_t idx, count = wxlClass->wxluamethods_n;
+            lua_createtable(L, count, 0);
             if (wxlClass->wxluamethods_n > 0)
             {
                 wxLuaBindMethod* wxlMethod = wxlClass->wxluamethods;
-                size_t idx, count = wxlClass->wxluamethods_n;
-                lua_createtable(L, count, 0);
 
                 for (idx = 0; idx < count; ++idx, ++wxlMethod)
                 {
@@ -495,11 +556,9 @@ int LUACALL wxluabind_wxLuaBindClass__index(lua_State* L)
                 lua_pushstring(L, "wxLuaBindClass"); // so we know where this came from
                 lua_pushvalue(L, 1);
                 lua_rawset(L, -3);
-
-                return 1;
             }
 
-            return 0;
+            return 1;
         }
         else if (strcmp(idx_str, "wxluamethods_n") == 0)
         {
@@ -527,24 +586,23 @@ int LUACALL wxluabind_wxLuaBindClass__index(lua_State* L)
         }
         else if (strcmp(idx_str, "baseclassNames") == 0)
         {
+            lua_newtable(L);
             if (wxlClass->baseclassNames)
             {
-                lua_newtable(L);
                 for (size_t i = 0; wxlClass->baseclassNames[i]; ++i)
                 {
                     lua_pushstring(L, wxlClass->baseclassNames[i]);
                     lua_rawseti(L, -2, i + 1);
                 }
-                return 1;
             }
 
-            return 0;
+            return 1;
         }
         else if (strcmp(idx_str, "baseBindClasses") == 0)
         {
+            lua_newtable(L);
             if (wxlClass->baseBindClasses)
             {
-                lua_newtable(L);
                 for (size_t i = 0; wxlClass->baseclassNames[i]; ++i) // use names to check for terminating NULL
                 {
                     if (wxlClass->baseBindClasses[i] == NULL) // may be NULL if not loaded
@@ -565,17 +623,15 @@ int LUACALL wxluabind_wxLuaBindClass__index(lua_State* L)
 
                     lua_rawseti(L, -2, i + 1);
                 }
-
-                return 1;
             }
 
-            return 0;
+            return 1;
         }
         else if (strcmp(idx_str, "baseclass_wxluatypes") == 0)
         {
+            lua_newtable(L);
             if (wxlClass->baseclass_wxluatypes)
             {
-                lua_newtable(L);
                 size_t i = 0;
                 while (wxlClass->baseclass_wxluatypes[i])
                 {
@@ -583,16 +639,15 @@ int LUACALL wxluabind_wxLuaBindClass__index(lua_State* L)
                     lua_rawseti(L, -2, i + 1);
                     ++i;
                 }
-                return 1;
             }
 
-            return 0;
+            return 1;
         }
         else if (strcmp(idx_str, "baseclass_vtable_offsets") == 0)
         {
+            lua_newtable(L);
             if (wxlClass->baseclass_wxluatypes) // check this for NULL not baseclass_vtable_offsets
             {
-                lua_newtable(L);
                 size_t i = 0;
                 while (wxlClass->baseclass_wxluatypes[i]) // see above
                 {
@@ -600,18 +655,17 @@ int LUACALL wxluabind_wxLuaBindClass__index(lua_State* L)
                     lua_rawseti(L, -2, i + 1);
                     ++i;
                 }
-                return 1;
             }
 
-            return 0;
+            return 1;
         }
         else if (strcmp(idx_str, "enums") == 0)
         {
+            size_t idx, count = wxlClass->enums_n;
+            lua_createtable(L, count, 0);
             if (wxlClass->enums_n > 0)
             {
                 wxLuaBindNumber* wxlNumber = wxlClass->enums;
-                size_t idx, count = wxlClass->enums_n;
-                lua_createtable(L, count, 0);
 
                 for (idx = 0; idx < count; ++idx, ++wxlNumber)
                 {
@@ -627,14 +681,12 @@ int LUACALL wxluabind_wxLuaBindClass__index(lua_State* L)
                     lua_rawseti(L, -2, idx + 1);
                 }
 
-                lua_pushstring(L, "wxLuaBindClass"); // so we know where this came from
-                lua_pushvalue(L, 1);
-                lua_rawset(L, -3);
-
-                return 1;
+                //lua_pushstring(L, "wxLuaBindClass"); // so we know where this came from
+                //lua_pushvalue(L, 1);
+                //lua_rawset(L, -3);
             }
 
-            return 0;
+            return 1;
         }
         else if (strcmp(idx_str, "enums_n") == 0)
         {
@@ -652,6 +704,22 @@ int LUACALL wxluabind_wxLuaBindClass__index(lua_State* L)
 
 int LUACALL wxluabind_wxLuaBinding__index(lua_State* L)
 {
+    static const char* fields[] = { "GetBindingName",
+                                    "GetLuaNamespace",
+                                    "GetClassCount",
+                                    "GetFunctionCount",
+                                    "GetNumberCount",
+                                    "GetStringCount",
+                                    "GetEventCount",
+                                    "GetObjectCount",
+                                    "GetClassArray",
+                                    "GetFunctionArray",
+                                    "GetNumberArray",
+                                    "GetStringArray",
+                                    "GetEventArray",
+                                    "GetObjectArray" };
+    static const size_t fields_count = sizeof(fields)/sizeof(fields[0]);
+
     void **ptr = (void **)lua_touserdata(L, 1);
     wxLuaBinding* wxlBinding = (wxLuaBinding*)*ptr;
 
@@ -661,7 +729,17 @@ int LUACALL wxluabind_wxLuaBinding__index(lua_State* L)
     {
         const char* idx_str = lua_tostring(L, 2);
 
-        if (strcmp(idx_str, "GetBindingName") == 0)
+        if (strcmp(idx_str, "fields") == 0)
+        {
+            lua_newtable(L);
+            for (size_t i = 0; i < fields_count; ++i)
+            {
+                lua_pushstring(L, fields[i]);
+                lua_rawseti(L, -2, i + 1);
+            }
+            return 1;
+        }
+        else if (strcmp(idx_str, "GetBindingName") == 0)
         {
             lua_pushstring(L, wx2lua(wxlBinding->GetBindingName()));
             return 1;
@@ -674,6 +752,11 @@ int LUACALL wxluabind_wxLuaBinding__index(lua_State* L)
         else if (strcmp(idx_str, "GetClassCount") == 0)
         {
             lua_pushnumber(L, wxlBinding->GetClassCount());
+            return 1;
+        }
+        else if (strcmp(idx_str, "GetFunctionCount") == 0)
+        {
+            lua_pushnumber(L, wxlBinding->GetFunctionCount());
             return 1;
         }
         else if (strcmp(idx_str, "GetNumberCount") == 0)
@@ -694,11 +777,6 @@ int LUACALL wxluabind_wxLuaBinding__index(lua_State* L)
         else if (strcmp(idx_str, "GetObjectCount") == 0)
         {
             lua_pushnumber(L, wxlBinding->GetObjectCount());
-            return 1;
-        }
-        else if (strcmp(idx_str, "GetFunctionCount") == 0)
-        {
-            lua_pushnumber(L, wxlBinding->GetFunctionCount());
             return 1;
         }
         else if (strcmp(idx_str, "GetClassArray") == 0)

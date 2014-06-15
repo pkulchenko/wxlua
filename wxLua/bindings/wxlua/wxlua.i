@@ -159,51 +159,55 @@ class wxLuaBinding
 {
     // No constructor as this is read only
 
-    wxString GetBindingName
-    wxString GetLuaNamespace
+    string GetBindingName
+    string GetLuaNamespace
 
     int GetClassCount
+    int GetFunctionCount
     int GetNumberCount
     int GetStringCount
     int GetEventCount
     int GetObjectCount
-    int GetFunctionCount
 
-    {wxLuaBindClass*}                            GetClassArray
-    {wxLuaBindMethod*}                           GetFunctionArray
-    {name, value}                                GetNumberArray
-    {name, value}                                GetStringArray
-    {name, eventType, wxluatype, wxLuaBindClass} GetEventArray
-    {name, object, wxluatype, wxLuaBindClass}    GetObjectArray
+    {wxLuaBindClass*}                              GetClassArray
+    {wxLuaBindMethod*}                             GetFunctionArray
+    {name, value}                                  GetNumberArray
+    {name, value}                                  GetStringArray
+    {name, wxEventType, wxluatype, wxLuaBindClass} GetEventArray
+    {name, object, wxluatype, wxLuaBindClass}      GetObjectArray
 };
 
 struct wxLuaBindClass
 {
     // No constructor as this is read only
 
-    wxString            name
+    string              name
     {wxLuaBindMethod*}  wxluamethods
     int                 wxluamethods_n
     wxClassInfo*        classInfo
     int                 wxluatype
-    {wxString}          baseclassNames
+    {string}            baseclassNames
     {wxLuaBindClass*}   baseBindClasses
     {name, value}       enums
     int                 enums_n
+
+    {string}            fields // array of member field names
 };
 
 struct wxLuaBindMethod
 {
     // No constructor as this is read only
 
-    wxString            name
+    string              name
     int                 method_type
     {wxLuaBindCFunc*}   wxluacfuncs
     int                 wxluacfuncs_n
     wxLuaBindMethod*    basemethod
 
     wxLuaBindClass*     class      // class this is part of (not in struct );
-    wxString            class_name // class name this is part of (not in struct );
+    string              class_name // class name this is part of (not in struct );
+
+    {string}            fields // array of member field names
 };
 
 struct wxLuaBindCFunc
@@ -216,7 +220,9 @@ struct wxLuaBindCFunc
     int                 maxargs
     {int}               argtypes
 
-    wxString            class_name // added, not in struct
+    string              class_name // added, not in struct
+
+    {string}            fields // array of member field names
 };
 
 */

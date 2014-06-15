@@ -5391,6 +5391,7 @@ wx_preprocConditionTable =
   ["%wxchkver_2_9_4"] = "wxCHECK_VERSION(2,9,4)",
   ["%wxchkver_2_9_5"] = "wxCHECK_VERSION(2,9,5)",
   ["%wxchkver_3_0"] = "wxCHECK_VERSION(3,0,0)",
+  ["%wxchkver_3_1_0"] = "wxCHECK_VERSION(3,1,0)",
   ["%wxcompat_2_4"] = "(defined(WXWIN_COMPATIBILITY_2_4) && WXWIN_COMPATIBILITY_2_4)",
   ["%wxcompat_2_6"] = "(defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)",
   ["%wxcompat_2_8"] = "(defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)",
