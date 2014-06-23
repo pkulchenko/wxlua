@@ -132,7 +132,7 @@ void LUACALL wxlua_debugHookFunction(lua_State *L, lua_Debug *LDebug)
 
         // restore hook to previous state
         wxlState.ClearDebugHookBreak();
-        wxlua_error(L, wxlStateData->m_debug_hook_break_msg);
+        wxlua_error(L, wxlStateData->m_debug_hook_break_msg.c_str());
         return;
     }
 
@@ -2284,7 +2284,7 @@ void wxLuaState::AddLuaPath(const wxFileName& filename)
     // append path
     luapath += path + wxT(';');
 
-    lua_PushString(luapath);
+    lua_PushString(luapath.c_str());
     lua_SetGlobal(LUA_PATH);
 }
 

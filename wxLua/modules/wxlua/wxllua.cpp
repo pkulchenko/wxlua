@@ -199,7 +199,7 @@ void LUACALL wxlua_argerrormsg(lua_State *L, const wxString& msg_)
 
     wxString msg;
     msg.Printf(wxT("%s\nFunction called: '%s'%s"), msg_.c_str(), argMsg.c_str(), funcArgs.c_str());
-    wxlua_error(L, msg);
+    wxlua_error(L, msg.c_str());
 }
 
 void* LUACALL wxlua_touserdata(lua_State *L, int stack_idx, bool null_ptr /*= false*/)

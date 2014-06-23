@@ -142,7 +142,7 @@ void wxLuaGridTableBase::SetValue( int row, int col, const wxString& value )
         m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaGridTableBase, true);
         m_wxlState.lua_PushNumber(row);
         m_wxlState.lua_PushNumber(col);
-        m_wxlState.lua_PushString(value);
+        m_wxlState.lua_PushString(value.c_str());
 
         m_wxlState.LuaPCall(4, 0);
         m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
@@ -191,7 +191,7 @@ bool wxLuaGridTableBase::CanGetValueAs( int row, int col, const wxString& typeNa
         m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaGridTableBase, true);
         m_wxlState.lua_PushNumber(row);
         m_wxlState.lua_PushNumber(col);
-        m_wxlState.lua_PushString(typeName);
+        m_wxlState.lua_PushString(typeName.c_str());
 
         if (m_wxlState.LuaPCall(4, 1) == 0)
             fResult = m_wxlState.GetBooleanType(-1);
@@ -218,7 +218,7 @@ bool wxLuaGridTableBase::CanSetValueAs( int row, int col, const wxString& typeNa
         m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaGridTableBase, true);
         m_wxlState.lua_PushNumber(row);
         m_wxlState.lua_PushNumber(col);
-        m_wxlState.lua_PushString(typeName);
+        m_wxlState.lua_PushString(typeName.c_str());
 
         if (m_wxlState.LuaPCall(4, 1) == 0)
             fResult = m_wxlState.GetBooleanType(-1);
@@ -621,7 +621,7 @@ void wxLuaGridTableBase::SetRowLabelValue( int row, const wxString& val )
         int nOldTop = m_wxlState.lua_GetTop();
         m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaGridTableBase, true);
         m_wxlState.lua_PushNumber(row);
-        m_wxlState.lua_PushString(val);
+        m_wxlState.lua_PushString(val.c_str());
 
         m_wxlState.LuaPCall(3, 0);
         m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too
@@ -641,7 +641,7 @@ void wxLuaGridTableBase::SetColLabelValue( int col, const wxString& val )
         int nOldTop = m_wxlState.lua_GetTop();
         m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaGridTableBase, true);
         m_wxlState.lua_PushNumber(col);
-        m_wxlState.lua_PushString(val);
+        m_wxlState.lua_PushString(val.c_str());
 
         m_wxlState.LuaPCall(3, 0);
         m_wxlState.lua_SetTop(nOldTop-1); // -1 to remove pushed derived method func too

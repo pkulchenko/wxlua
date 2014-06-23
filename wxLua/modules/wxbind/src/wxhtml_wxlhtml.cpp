@@ -140,7 +140,7 @@ void wxLuaHtmlWindow::OnSetTitle(const wxString& title)
         lua_State *L = m_wxlState.GetLuaState();
         int nOldTop = lua_gettop(L);
         m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaHtmlWindow, true);
-        m_wxlState.lua_PushString(title);
+        m_wxlState.lua_PushString(title.c_str());
 
         m_wxlState.LuaPCall(2, 0);
         lua_settop(L, nOldTop-1); // -1 to remove pushed derived method func too

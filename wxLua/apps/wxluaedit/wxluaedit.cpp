@@ -64,7 +64,7 @@ static const wxCmdLineEntryDesc g_cmdLineDesc[] =
 {
     // help
     { wxCMD_LINE_SWITCH, wxLuaT("h"), wxLuaT("help"),
-        _("Show this help message"),
+        wxLuaT("Show this help message"),
         wxCMD_LINE_VAL_NONE, wxCMD_LINE_OPTION_HELP },
 
     { wxCMD_LINE_OPTION, wxLuaT("d"), wxLuaT("debuggee"), wxLuaT("run as debuggee, internal use"),
@@ -75,7 +75,7 @@ static const wxCmdLineEntryDesc g_cmdLineDesc[] =
 
     // filenames to open in the editor
     { wxCMD_LINE_PARAM, wxLuaT(""), wxLuaT(""),
-        _("lua files to open in the editor"),
+        wxLuaT("lua files to open in the editor"),
         wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL | wxCMD_LINE_PARAM_MULTIPLE },
 
     { wxCMD_LINE_NONE }

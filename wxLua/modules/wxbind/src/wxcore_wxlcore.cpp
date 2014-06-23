@@ -573,7 +573,7 @@ wxString wxLuaPrintout::TestVirtualFunctionBinding(const wxString& val)
     {
         int nOldTop = m_wxlState.lua_GetTop();
         m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaPrintout, true);
-        m_wxlState.lua_PushString(val);
+        m_wxlState.lua_PushString(val.c_str());
 
         if (m_wxlState.LuaPCall(2, 1) == 0)
             result = m_wxlState.GetwxStringType(-1);
@@ -612,7 +612,7 @@ wxSize wxLuaArtProvider::DoGetSizeHint(const wxArtClient& client)
     {
         int nOldTop = m_wxlState.lua_GetTop();
         m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaArtProvider, true);
-        m_wxlState.lua_PushString(client);
+        m_wxlState.lua_PushString(client.c_str());
 
         if (m_wxlState.LuaPCall(2, 1) == 0)
         {
@@ -639,8 +639,8 @@ wxBitmap wxLuaArtProvider::CreateBitmap(const wxArtID& id, const wxArtClient& cl
     {
         int nOldTop = m_wxlState.lua_GetTop();
         m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaArtProvider, true);
-        m_wxlState.lua_PushString(id);
-        m_wxlState.lua_PushString(client);
+        m_wxlState.lua_PushString(id.c_str());
+        m_wxlState.lua_PushString(client.c_str());
 
         // allocate a new object using the copy constructor
         wxSize* s = new wxSize(size);
