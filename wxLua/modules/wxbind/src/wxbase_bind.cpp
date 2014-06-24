@@ -24,6 +24,9 @@
     #undef Below
 #endif
 
+#ifdef __GNUC__
+    #pragma GCC diagnostic ignored "-Wunused-variable"
+#endif // __GNUC__
 wxDateTime::TimeZone wxLua_wxDateTime_TimeZone_Local(wxDateTime::Local);
 
 // ---------------------------------------------------------------------------

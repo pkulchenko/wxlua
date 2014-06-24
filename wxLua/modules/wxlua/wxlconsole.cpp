@@ -66,7 +66,7 @@ wxLuaConsole::wxLuaConsole(wxWindow* parent, wxWindowID id, const wxString& titl
     m_textCtrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString,
                                 wxDefaultPosition, wxDefaultSize,
                                 wxTE_MULTILINE | wxTE_READONLY | wxTE_RICH2 | wxTE_DONTWRAP);
-    wxFont monoFont(10, wxTELETYPE, wxNORMAL, wxNORMAL); // monospace
+    wxFont monoFont(10, wxFONTFAMILY_TELETYPE, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL); // monospace
     m_textCtrl->SetFont(monoFont);
 
     // Only set it to this if it wasn't already set, typically there will only be one of these.

@@ -24,6 +24,9 @@
     #undef Below
 #endif
 
+#ifdef __GNUC__
+    #pragma GCC diagnostic ignored "-Wunused-variable"
+#endif // __GNUC__
 
 
 #if wxLUA_USE_wxHelpController && wxUSE_HELP

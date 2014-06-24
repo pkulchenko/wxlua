@@ -4779,6 +4779,11 @@ function GenerateHookCppFileHeader(fileData, fileName, add_includes)
         table.insert(fileData, "#include \""..hook_cpp_header_filename.."\"\n")
         table.insert(fileData, hook_cpp_binding_post_includes or "")
         table.insert(fileData, "\n")
+        
+        -- It would be awkward to #ifdef the static string names of the classes
+        table.insert(fileData, "#ifdef __GNUC__\n")
+        table.insert(fileData, "    #pragma GCC diagnostic ignored \"-Wunused-variable\"\n")
+        table.insert(fileData, "#endif // __GNUC__\n")
     end
 
     return fileData

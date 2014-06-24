@@ -24,6 +24,9 @@
     #undef Below
 #endif
 
+#ifdef __GNUC__
+    #pragma GCC diagnostic ignored "-Wunused-variable"
+#endif // __GNUC__
 
 
 #if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths

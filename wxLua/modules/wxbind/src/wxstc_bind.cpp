@@ -18,6 +18,9 @@
 #include "wxlua/wxlstate.h"
 #include "wxbind/include/wxstc_bind.h"
 
+#ifdef __GNUC__
+    #pragma GCC diagnostic ignored "-Wunused-variable"
+#endif // __GNUC__
 
 // ---------------------------------------------------------------------------
 // Bind class wxStyledTextCtrl

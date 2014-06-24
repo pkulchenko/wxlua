@@ -18,6 +18,9 @@
 #include "wxlua/wxlstate.h"
 #include "wxbind/include/wxadv_bind.h"
 
+#ifdef __GNUC__
+    #pragma GCC diagnostic ignored "-Wunused-variable"
+#endif // __GNUC__
 
 
 #if wxCHECK_VERSION(2,8,0) && wxUSE_ABOUTDLG && wxLUA_USE_wxAboutDialog

@@ -24,6 +24,9 @@
     #undef Below
 #endif
 
+#ifdef __GNUC__
+    #pragma GCC diagnostic ignored "-Wunused-variable"
+#endif // __GNUC__
 // wxWidgets >= 2.7 doesn't have static versions of stock GDI objects anymore
 wxColour* wxLua_wxBLACK = NULL;
 wxColour* wxLua_wxWHITE = NULL;

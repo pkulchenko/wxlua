@@ -60,11 +60,13 @@ int* p_wxluatype_wxPoint             = &wxluatype_TUNKNOWN;
 // wxlua_tableErrorHandler
 // ----------------------------------------------------------------------------
 
+/*
 static int LUACALL wxlua_tableErrorHandler(lua_State *L)
 {
     wxlua_error(L, "Cannot modify read-only wxLua table");
     return 0;
 }
+*/
 
 // ----------------------------------------------------------------------------
 // Generic delete function for bindings

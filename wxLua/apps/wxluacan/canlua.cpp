@@ -23,6 +23,7 @@
 #include <wx/listimpl.cpp>
 WX_DEFINE_LIST(wxlCanObjList);
 
+
 //------------------------------------------------------------------
 //-------- wxlCanObj
 //------------------------------------------------------------------
@@ -564,7 +565,7 @@ void wxlCan::OnScroll(wxScrollWinEvent& event)
     int dx,dy;
     GetClientSize(&dx,&dy);
 
-    wxScrolledWindow::OnScroll( event );
+    wxScrolledWindow::HandleOnScroll( event );
 
     m_pendingObjects = true;
 }

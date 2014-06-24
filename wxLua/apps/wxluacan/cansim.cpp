@@ -24,6 +24,12 @@
     #include "art/wxlualogo.xpm"
 #endif
 
+#if !wxCHECK_VERSION(2,9,2)
+    #define wxBRUSHSTYLE_CROSS_HATCH     wxCROSS_HATCH
+    #define wxBRUSHSTYLE_FDIAGONAL_HATCH wxFDIAGONAL_HATCH
+    #define wxBRUSHSTYLE_CROSSDIAG_HATCH wxCROSSDIAG_HATCH
+#endif
+
 // Declare the binding initialization functions
 // Note : We could also do this "extern wxLuaBinding* wxLuaBinding_XXX_init();" and
 //        later call "wxLuaBinding_XXX_init();" to initialize it.
@@ -88,7 +94,7 @@ MyFrame::MyFrame( wxWindow *parent, wxWindowID id, const wxString &title,
     m_canvas->SetVirtualSize( 1000, 1000 );
     m_canvas->SetScrollRate( 50, 50 );
     m_canvas->SetBackgroundColour( wxColour(223, 234, 251) );
-    m_canvas->SetBackgroundBrush( wxBrush( wxColour(30, 174, 171), wxCROSS_HATCH ) );
+    m_canvas->SetBackgroundBrush( wxBrush( wxColour(30, 174, 171), wxBRUSHSTYLE_CROSS_HATCH ) );
     m_canvas->SetYaxis( false ); //true );
 
     //defines the minimum x and y to show and the number of world units per pixel in x and y
@@ -107,7 +113,7 @@ MyFrame::MyFrame( wxWindow *parent, wxWindowID id, const wxString &title,
 
     wxlCanObjCircle* circ = new wxlCanObjCircle( 140, 160,100 );
     circ->SetPen(*wxRED_PEN);
-    circ->SetBrush( wxBrush( wxColour( 30,74,71), wxFDIAGONAL_HATCH ) );
+    circ->SetBrush( wxBrush( wxColour( 30,74,71), wxBRUSHSTYLE_FDIAGONAL_HATCH ) );
     m_canvas->AddObject( circ );
 
     m_timer = new wxTimer( this );
@@ -242,7 +248,7 @@ void MyFrame::OnOption(wxCommandEvent& event)
         {
             wxlCanObjCircle* circ = new wxlCanObjCircle( 140, 160,50 );
             circ->SetPen(*wxGREEN_PEN);
-            circ->SetBrush( wxBrush( wxColour(130,74,71), wxCROSSDIAG_HATCH  ) );
+            circ->SetBrush( wxBrush( wxColour(130,74,71), wxBRUSHSTYLE_CROSSDIAG_HATCH  ) );
             m_canvas->AddObject( circ );
             m_canvas->GetCmdh()->MoveObject( -1, 100,100 );
 

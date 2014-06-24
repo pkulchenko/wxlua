@@ -297,7 +297,7 @@ static int LUACALL wxLua_wxEvtHandler_Connect(lua_State *L)
     if (!errMsg.IsEmpty())
     {
         delete pCallback;
-        wxlua_error(L, errMsg);
+        wxlua_error(L, errMsg.c_str());
     }
 
     return 0;
