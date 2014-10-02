@@ -5197,7 +5197,7 @@ static wxLuaBindClass* wxluabaseclassbinds_wxSimpleHtmlListBox[] = { NULL, NULL 
     extern wxLuaBindMethod wxSimpleHtmlListBox_methods[];
     extern int wxSimpleHtmlListBox_methodCount;
     static wxLuaArgType wxluabaseclass_wxluatypes_wxSimpleHtmlListBox[] = { &wxluatype_wxHtmlWindowInterface, NULL };
-    static int wxluabaseclass_vtable_offsets_wxSimpleHtmlListBox[] = { ((long int)(wxHtmlWindowInterface*)(wxSimpleHtmlListBox*)&wxluatype_TNONE) - ((long int)(wxSimpleHtmlListBox*)&wxluatype_TNONE) };
+    static int wxluabaseclass_vtable_offsets_wxSimpleHtmlListBox[] = { int(((long int)(wxHtmlWindowInterface*)(wxSimpleHtmlListBox*)&wxluatype_TNONE) - ((long int)(wxSimpleHtmlListBox*)&wxluatype_TNONE)) };
     extern void wxLua_wxSimpleHtmlListBox_delete_function(void** p);
 #endif // (wxLUA_USE_wxHTML && wxUSE_HTML) && (wxCHECK_VERSION(2,8,0))
 

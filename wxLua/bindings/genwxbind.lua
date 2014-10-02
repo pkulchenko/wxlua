@@ -4419,7 +4419,7 @@ function GenerateLuaLanguageBinding(interface)
 
                             -- only store the ptr_diffs to higher base classes, the 1st level is always 0
                             if level > 1 then
-                                local ptr_diff = "((long int)("..dataTypeTable[name].BaseClasses[i].."*)("..parseObject.Name.."*)&wxluatype_TNONE) - ((long int)("..parseObject.Name.."*)&wxluatype_TNONE)"
+                                local ptr_diff = "int(((long int)("..dataTypeTable[name].BaseClasses[i].."*)("..parseObject.Name.."*)&wxluatype_TNONE) - ((long int)("..parseObject.Name.."*)&wxluatype_TNONE))"
                                 base_diff_table[#base_diff_table+1] = ptr_diff
                                 base_type_table[#base_type_table+1] = "&wxluatype_"..dataTypeTable[name].BaseClasses[i]
                             end

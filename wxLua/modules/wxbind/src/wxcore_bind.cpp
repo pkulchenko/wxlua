@@ -5431,7 +5431,7 @@ static wxLuaBindClass* wxluabaseclassbinds_wxXPMHandler[] = { NULL };
     extern wxLuaBindMethod wxCheckListBox_methods[];
     extern int wxCheckListBox_methodCount;
     static wxLuaArgType wxluabaseclass_wxluatypes_wxCheckListBox[] = { &wxluatype_wxItemContainer, &wxluatype_wxItemContainerImmutable, NULL };
-    static int wxluabaseclass_vtable_offsets_wxCheckListBox[] = { ((long int)(wxItemContainer*)(wxCheckListBox*)&wxluatype_TNONE) - ((long int)(wxCheckListBox*)&wxluatype_TNONE), ((long int)(wxItemContainerImmutable*)(wxCheckListBox*)&wxluatype_TNONE) - ((long int)(wxCheckListBox*)&wxluatype_TNONE) };
+    static int wxluabaseclass_vtable_offsets_wxCheckListBox[] = { int(((long int)(wxItemContainer*)(wxCheckListBox*)&wxluatype_TNONE) - ((long int)(wxCheckListBox*)&wxluatype_TNONE)), int(((long int)(wxItemContainerImmutable*)(wxCheckListBox*)&wxluatype_TNONE) - ((long int)(wxCheckListBox*)&wxluatype_TNONE)) };
     extern void wxLua_wxCheckListBox_delete_function(void** p);
 #endif // (wxLUA_USE_wxListBox && wxUSE_LISTBOX) && (wxLUA_USE_wxCheckListBox && wxUSE_CHECKLISTBOX)
 
@@ -5588,7 +5588,7 @@ extern void wxLua_wxControl_delete_function(void** p);
 extern wxLuaBindMethod wxControlWithItems_methods[];
 extern int wxControlWithItems_methodCount;
 static wxLuaArgType wxluabaseclass_wxluatypes_wxControlWithItems[] = { &wxluatype_wxItemContainer, &wxluatype_wxItemContainerImmutable, NULL };
-static int wxluabaseclass_vtable_offsets_wxControlWithItems[] = { ((long int)(wxItemContainer*)(wxControlWithItems*)&wxluatype_TNONE) - ((long int)(wxControlWithItems*)&wxluatype_TNONE), ((long int)(wxItemContainerImmutable*)(wxControlWithItems*)&wxluatype_TNONE) - ((long int)(wxControlWithItems*)&wxluatype_TNONE) };
+static int wxluabaseclass_vtable_offsets_wxControlWithItems[] = { int(((long int)(wxItemContainer*)(wxControlWithItems*)&wxluatype_TNONE) - ((long int)(wxControlWithItems*)&wxluatype_TNONE)), int(((long int)(wxItemContainerImmutable*)(wxControlWithItems*)&wxluatype_TNONE) - ((long int)(wxControlWithItems*)&wxluatype_TNONE)) };
 extern void wxLua_wxControlWithItems_delete_function(void** p);
 extern wxLuaBindMethod wxDisplayChangedEvent_methods[];
 extern int wxDisplayChangedEvent_methodCount;
@@ -5872,7 +5872,7 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern wxLuaBindMethod wxChoice_methods[];
     extern int wxChoice_methodCount;
     static wxLuaArgType wxluabaseclass_wxluatypes_wxChoice[] = { &wxluatype_wxItemContainer, &wxluatype_wxItemContainerImmutable, NULL };
-    static int wxluabaseclass_vtable_offsets_wxChoice[] = { ((long int)(wxItemContainer*)(wxChoice*)&wxluatype_TNONE) - ((long int)(wxChoice*)&wxluatype_TNONE), ((long int)(wxItemContainerImmutable*)(wxChoice*)&wxluatype_TNONE) - ((long int)(wxChoice*)&wxluatype_TNONE) };
+    static int wxluabaseclass_vtable_offsets_wxChoice[] = { int(((long int)(wxItemContainer*)(wxChoice*)&wxluatype_TNONE) - ((long int)(wxChoice*)&wxluatype_TNONE)), int(((long int)(wxItemContainerImmutable*)(wxChoice*)&wxluatype_TNONE) - ((long int)(wxChoice*)&wxluatype_TNONE)) };
     extern void wxLua_wxChoice_delete_function(void** p);
 #endif // wxLUA_USE_wxChoice && wxUSE_CHOICE
 
@@ -5913,7 +5913,7 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern wxLuaBindMethod wxComboBox_methods[];
     extern int wxComboBox_methodCount;
     static wxLuaArgType wxluabaseclass_wxluatypes_wxComboBox[] = { &wxluatype_wxItemContainer, &wxluatype_wxItemContainerImmutable, NULL };
-    static int wxluabaseclass_vtable_offsets_wxComboBox[] = { ((long int)(wxItemContainer*)(wxComboBox*)&wxluatype_TNONE) - ((long int)(wxComboBox*)&wxluatype_TNONE), ((long int)(wxItemContainerImmutable*)(wxComboBox*)&wxluatype_TNONE) - ((long int)(wxComboBox*)&wxluatype_TNONE) };
+    static int wxluabaseclass_vtable_offsets_wxComboBox[] = { int(((long int)(wxItemContainer*)(wxComboBox*)&wxluatype_TNONE) - ((long int)(wxComboBox*)&wxluatype_TNONE)), int(((long int)(wxItemContainerImmutable*)(wxComboBox*)&wxluatype_TNONE) - ((long int)(wxComboBox*)&wxluatype_TNONE)) };
     extern void wxLua_wxComboBox_delete_function(void** p);
 #endif // wxLUA_USE_wxComboBox && wxUSE_COMBOBOX
 
@@ -6175,7 +6175,7 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern wxLuaBindMethod wxListBox_methods[];
     extern int wxListBox_methodCount;
     static wxLuaArgType wxluabaseclass_wxluatypes_wxListBox[] = { &wxluatype_wxItemContainer, &wxluatype_wxItemContainerImmutable, NULL };
-    static int wxluabaseclass_vtable_offsets_wxListBox[] = { ((long int)(wxItemContainer*)(wxListBox*)&wxluatype_TNONE) - ((long int)(wxListBox*)&wxluatype_TNONE), ((long int)(wxItemContainerImmutable*)(wxListBox*)&wxluatype_TNONE) - ((long int)(wxListBox*)&wxluatype_TNONE) };
+    static int wxluabaseclass_vtable_offsets_wxListBox[] = { int(((long int)(wxItemContainer*)(wxListBox*)&wxluatype_TNONE) - ((long int)(wxListBox*)&wxluatype_TNONE)), int(((long int)(wxItemContainerImmutable*)(wxListBox*)&wxluatype_TNONE) - ((long int)(wxListBox*)&wxluatype_TNONE)) };
     extern void wxLua_wxListBox_delete_function(void** p);
 #endif // wxLUA_USE_wxListBox && wxUSE_LISTBOX
 
