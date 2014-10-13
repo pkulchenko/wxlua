@@ -344,7 +344,7 @@ class wxLuaStateRunLocker
 {
 public:
     wxLuaStateRunLocker(int &is_running) : m_is_running(++is_running) {}
-    ~wxLuaStateRunLocker() { m_is_running = wxMax(0, --m_is_running); } // DebugHookBreak sets to 0.
+    ~wxLuaStateRunLocker() { m_is_running = wxMax(0, m_is_running-1); } // DebugHookBreak sets to 0.
 
     int &m_is_running;
 };
