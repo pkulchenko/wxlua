@@ -581,7 +581,7 @@ class %delete wxColour : public wxGDIObject
     %wxchkver_2_8 unsigned char Alpha() const;
     unsigned char Blue() const;
     %wxchkver_2_8 virtual wxString GetAsString(long flags = wxC2S_NAME | wxC2S_CSS_SYNTAX) const;
-    !%mac long GetPixel() const;
+    //!%mac long GetPixel() const; // Not in wx3.1 wxGTK3 or Mac
     unsigned char Green() const;
     bool Ok() const;
     unsigned char Red() const;

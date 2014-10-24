@@ -5159,25 +5159,6 @@ static int LUACALL wxLua_wxColour_GetAsString(lua_State *L)
 
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
 
-#if (!defined(__WXMAC__)) && (wxLUA_USE_wxColourPenBrush)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxColour_GetPixel[] = { &wxluatype_wxColour, NULL };
-static int LUACALL wxLua_wxColour_GetPixel(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxColour_GetPixel[1] = {{ wxLua_wxColour_GetPixel, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxColour_GetPixel }};
-//     !%mac long GetPixel() const;
-static int LUACALL wxLua_wxColour_GetPixel(lua_State *L)
-{
-    // get this
-    wxColour * self = (wxColour *)wxluaT_getuserdatatype(L, 1, wxluatype_wxColour);
-    // call GetPixel
-    long  returns = (self->GetPixel());
-    // push the result number
-    lua_pushnumber(L, returns);
-
-    return 1;
-}
-
-#endif // (!defined(__WXMAC__)) && (wxLUA_USE_wxColourPenBrush)
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColour_Green[] = { &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxColour_Green(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxColour_Green[1] = {{ wxLua_wxColour_Green, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxColour_Green }};
@@ -5505,10 +5486,6 @@ wxLuaBindMethod wxColour_methods[] = {
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
     { "GetAsString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxColour_GetAsString, 1, NULL },
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
-
-#if (!defined(__WXMAC__)) && (wxLUA_USE_wxColourPenBrush)
-    { "GetPixel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxColour_GetPixel, 1, NULL },
-#endif // (!defined(__WXMAC__)) && (wxLUA_USE_wxColourPenBrush)
 
     { "Green", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxColour_Green, 1, NULL },
     { "Ok", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxColour_Ok, 1, NULL },
