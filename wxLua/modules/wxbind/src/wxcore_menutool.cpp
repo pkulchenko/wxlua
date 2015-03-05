@@ -173,6 +173,30 @@ static int LUACALL wxLua_wxMenu_AppendSeparator(lua_State *L)
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMenu_AppendSubMenu[] = { &wxluatype_wxMenu, &wxluatype_wxMenu, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxMenu_AppendSubMenu(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenu_AppendSubMenu[1] = {{ wxLua_wxMenu_AppendSubMenu, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxMenu_AppendSubMenu }};
+//     wxMenuItem* AppendSubMenu(wxMenu *submenu, const wxString& text, const wxString& help = "");
+static int LUACALL wxLua_wxMenu_AppendSubMenu(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString help = ""
+    const wxString help = (argCount >= 4 ? wxlua_getwxStringtype(L, 4) : wxString(wxEmptyString));
+    // const wxString text
+    const wxString text = wxlua_getwxStringtype(L, 3);
+    // wxMenu submenu
+    wxMenu * submenu = (wxMenu *)wxluaT_getuserdatatype(L, 2, wxluatype_wxMenu);
+    // get this
+    wxMenu * self = (wxMenu *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenu);
+    // call AppendSubMenu
+    wxMenuItem* returns = (wxMenuItem*)self->AppendSubMenu(submenu, text, help);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxMenuItem);
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenu_Break[] = { &wxluatype_wxMenu, NULL };
 static int LUACALL wxLua_wxMenu_Break(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenu_Break[1] = {{ wxLua_wxMenu_Break, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMenu_Break }};
@@ -994,6 +1018,7 @@ wxLuaBindMethod wxMenu_methods[] = {
     { "AppendCheckItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenu_AppendCheckItem, 1, NULL },
     { "AppendRadioItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenu_AppendRadioItem, 1, NULL },
     { "AppendSeparator", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenu_AppendSeparator, 1, NULL },
+    { "AppendSubMenu", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenu_AppendSubMenu, 1, NULL },
     { "Break", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenu_Break, 1, NULL },
     { "Check", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenu_Check, 1, NULL },
 

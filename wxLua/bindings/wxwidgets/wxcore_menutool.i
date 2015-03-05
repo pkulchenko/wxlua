@@ -40,6 +40,7 @@ class %delete wxMenu : public wxEvtHandler
     wxMenuItem* AppendCheckItem(int id, const wxString& item, const wxString& helpString = "" );
     wxMenuItem* AppendRadioItem(int id, const wxString& item, const wxString& helpString = "" );
     wxMenuItem* AppendSeparator( );
+    wxMenuItem* AppendSubMenu(wxMenu *submenu, const wxString& text, const wxString& help = "");
     void Break( );
     void Check(int id, bool check );
     void Delete(int id );

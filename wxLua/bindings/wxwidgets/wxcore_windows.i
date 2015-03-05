@@ -263,7 +263,9 @@ class wxWindow : public wxEvtHandler
     void Raise( );
     virtual void Refresh(bool eraseBackground = true, const wxRect* rect = NULL );
     // don't need to worry about rect, void RefreshRect(const wxRect& rect, bool eraseBackground = true );
-    // %win bool RegisterHotKey(int hotkeyId, int modifiers, int virtualKeyCode) - only under WinCE
+#if wxUSE_HOTKEY
+    bool RegisterHotKey(int hotkeyId, int modifiers, int virtualKeyCode); // not in gtk
+#endif // wxUSE_HOTKEY
     virtual void ReleaseMouse( );
     virtual void RemoveChild(wxWindow* child );
     bool RemoveEventHandler(wxEvtHandler *handler );
@@ -336,7 +338,9 @@ class wxWindow : public wxEvtHandler
     virtual void Thaw( );
     virtual bool TransferDataFromWindow( );
     virtual bool TransferDataToWindow( );
-    //%win bool UnregisterHotKey(int hotkeyId) - only under WinCE
+#if wxUSE_HOTKEY
+    bool UnregisterHotKey(int hotkeyId); // not in gtk
+#endif // wxUSE_HOTKEY
     virtual void Update( );
     virtual void UpdateWindowUI(long flags = wxUPDATE_UI_NONE );
     virtual bool Validate( );

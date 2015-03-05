@@ -2636,6 +2636,31 @@ static int LUACALL wxLua_wxWindow_Refresh(lua_State *L)
 
 #endif // wxLUA_USE_wxPointSizeRect
 
+#if wxUSE_HOTKEY
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_RegisterHotKey[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxWindow_RegisterHotKey(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_RegisterHotKey[1] = {{ wxLua_wxWindow_RegisterHotKey, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxWindow_RegisterHotKey }};
+//     bool RegisterHotKey(int hotkeyId, int modifiers, int virtualKeyCode); // not in gtk
+static int LUACALL wxLua_wxWindow_RegisterHotKey(lua_State *L)
+{
+    // int virtualKeyCode
+    int virtualKeyCode = (int)wxlua_getnumbertype(L, 4);
+    // int modifiers
+    int modifiers = (int)wxlua_getnumbertype(L, 3);
+    // int hotkeyId
+    int hotkeyId = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxWindow * self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call RegisterHotKey
+    bool returns = (self->RegisterHotKey(hotkeyId, modifiers, virtualKeyCode));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // wxUSE_HOTKEY
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_ReleaseMouse[] = { &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxWindow_ReleaseMouse(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_ReleaseMouse[1] = {{ wxLua_wxWindow_ReleaseMouse, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWindow_ReleaseMouse }};
@@ -3856,6 +3881,28 @@ static int LUACALL wxLua_wxWindow_TransferDataToWindow(lua_State *L)
     return 1;
 }
 
+
+#if wxUSE_HOTKEY
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_UnregisterHotKey[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxWindow_UnregisterHotKey(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_UnregisterHotKey[1] = {{ wxLua_wxWindow_UnregisterHotKey, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxWindow_UnregisterHotKey }};
+//     bool UnregisterHotKey(int hotkeyId); // not in gtk
+static int LUACALL wxLua_wxWindow_UnregisterHotKey(lua_State *L)
+{
+    // int hotkeyId
+    int hotkeyId = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxWindow * self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call UnregisterHotKey
+    bool returns = (self->UnregisterHotKey(hotkeyId));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // wxUSE_HOTKEY
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_Update[] = { &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxWindow_Update(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_Update[1] = {{ wxLua_wxWindow_Update, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWindow_Update }};
@@ -4440,6 +4487,10 @@ wxLuaBindMethod wxWindow_methods[] = {
     { "Refresh", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_Refresh, 1, NULL },
 #endif // wxLUA_USE_wxPointSizeRect
 
+#if wxUSE_HOTKEY
+    { "RegisterHotKey", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_RegisterHotKey, 1, NULL },
+#endif // wxUSE_HOTKEY
+
     { "ReleaseMouse", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_ReleaseMouse, 1, NULL },
     { "RemoveChild", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_RemoveChild, 1, NULL },
     { "RemoveEventHandler", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_RemoveEventHandler, 1, NULL },
@@ -4580,6 +4631,11 @@ wxLuaBindMethod wxWindow_methods[] = {
     { "Thaw", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_Thaw, 1, NULL },
     { "TransferDataFromWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_TransferDataFromWindow, 1, NULL },
     { "TransferDataToWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_TransferDataToWindow, 1, NULL },
+
+#if wxUSE_HOTKEY
+    { "UnregisterHotKey", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_UnregisterHotKey, 1, NULL },
+#endif // wxUSE_HOTKEY
+
     { "Update", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_Update, 1, NULL },
     { "UpdateWindowUI", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_UpdateWindowUI, 1, NULL },
     { "Validate", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_Validate, 1, NULL },
