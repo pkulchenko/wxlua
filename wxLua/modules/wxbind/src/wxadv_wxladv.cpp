@@ -691,7 +691,7 @@ bool wxLuaGridTableBase::CanHaveAttributes()
 wxGridCellAttr *wxLuaGridTableBase::GetAttr( int row, int col,
                                  wxGridCellAttr::wxAttrKind  kind )
 {
-    wxGridCellAttr *attr;
+    wxGridCellAttr *attr = NULL;
 
     if (m_wxlState.Ok() && !m_wxlState.GetCallBaseClassFunction() &&
         m_wxlState.HasDerivedMethod(this, "GetAttr", true))
