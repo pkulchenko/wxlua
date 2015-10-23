@@ -283,16 +283,16 @@ class wxGauge : public wxControl
     wxGauge(wxWindow* parent, wxWindowID id, int range, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxGA_HORIZONTAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxGauge" );
     bool Create(wxWindow* parent, wxWindowID id, int range, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxGA_HORIZONTAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxGauge" );
 
-    int      GetBezelFace() const;
-    int      GetRange() const;
-    int      GetShadowWidth() const;
-    int      GetValue() const;
-    bool     IsVertical() const;
+     !%wxchkver_3_1_0 int GetBezelFace() const;
+    int GetRange() const;
+     !%wxchkver_3_1_0 int GetShadowWidth() const;
+    int GetValue() const;
+    bool IsVertical() const;
     %wxchkver_2_8 void Pulse( );
-    void     SetBezelFace(int width );
-    void     SetRange(int range );
-    void     SetShadowWidth(int width );
-    void     SetValue(int pos );
+     !%wxchkver_3_1_0 void SetBezelFace(int width );
+    void SetRange(int range );
+     !%wxchkver_3_1_0 void SetShadowWidth(int width );
+    void SetValue(int pos );
 };
 
 #endif //wxLUA_USE_wxGauge && wxUSE_GAUGE

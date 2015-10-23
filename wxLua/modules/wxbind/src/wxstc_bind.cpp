@@ -3032,10 +3032,13 @@ static int LUACALL wxLua_wxStyledTextCtrl_GetIndicatorValue(lua_State *L)
     return 1;
 }
 
+#endif // wxCHECK_VERSION(2,9,5)
+
+#if (!wxCHECK_VERSION(3,1,0)) && (wxCHECK_VERSION(2,9,5))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetKeysUnicode[] = { &wxluatype_wxStyledTextCtrl, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_GetKeysUnicode(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetKeysUnicode[1] = {{ wxLua_wxStyledTextCtrl_GetKeysUnicode, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetKeysUnicode }};
-//     bool GetKeysUnicode() const;
+//      !%wxchkver_3_1_0 bool GetKeysUnicode() const;
 static int LUACALL wxLua_wxStyledTextCtrl_GetKeysUnicode(lua_State *L)
 {
     // get this
@@ -3048,7 +3051,7 @@ static int LUACALL wxLua_wxStyledTextCtrl_GetKeysUnicode(lua_State *L)
     return 1;
 }
 
-#endif // wxCHECK_VERSION(2,9,5)
+#endif // (!wxCHECK_VERSION(3,1,0)) && (wxCHECK_VERSION(2,9,5))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetLastChild[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_GetLastChild(lua_State *L);
@@ -7932,11 +7935,11 @@ static int LUACALL wxLua_wxStyledTextCtrl_SetKeyWords(lua_State *L)
 }
 
 
-#if wxCHECK_VERSION(2,9,5)
+#if (!wxCHECK_VERSION(3,1,0)) && (wxCHECK_VERSION(2,9,5))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetKeysUnicode[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_SetKeysUnicode(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_SetKeysUnicode[1] = {{ wxLua_wxStyledTextCtrl_SetKeysUnicode, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetKeysUnicode }};
-//     void SetKeysUnicode(bool keysUnicode);
+//      !%wxchkver_3_1_0 void SetKeysUnicode(bool keysUnicode);
 static int LUACALL wxLua_wxStyledTextCtrl_SetKeysUnicode(lua_State *L)
 {
     // bool keysUnicode
@@ -7949,7 +7952,7 @@ static int LUACALL wxLua_wxStyledTextCtrl_SetKeysUnicode(lua_State *L)
     return 0;
 }
 
-#endif // wxCHECK_VERSION(2,9,5)
+#endif // (!wxCHECK_VERSION(3,1,0)) && (wxCHECK_VERSION(2,9,5))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetLastKeydownProcessed[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_SetLastKeydownProcessed(lua_State *L);
@@ -11301,8 +11304,11 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
 #if wxCHECK_VERSION(2,9,5)
     { "GetIndicatorCurrent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetIndicatorCurrent, 1, NULL },
     { "GetIndicatorValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetIndicatorValue, 1, NULL },
-    { "GetKeysUnicode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetKeysUnicode, 1, NULL },
 #endif // wxCHECK_VERSION(2,9,5)
+
+#if (!wxCHECK_VERSION(3,1,0)) && (wxCHECK_VERSION(2,9,5))
+    { "GetKeysUnicode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetKeysUnicode, 1, NULL },
+#endif // (!wxCHECK_VERSION(3,1,0)) && (wxCHECK_VERSION(2,9,5))
 
     { "GetLastChild", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetLastChild, 1, NULL },
     { "GetLastKeydownProcessed", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetLastKeydownProcessed, 1, NULL },
@@ -11802,9 +11808,9 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
 
     { "SetKeyWords", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetKeyWords, 1, NULL },
 
-#if wxCHECK_VERSION(2,9,5)
+#if (!wxCHECK_VERSION(3,1,0)) && (wxCHECK_VERSION(2,9,5))
     { "SetKeysUnicode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetKeysUnicode, 1, NULL },
-#endif // wxCHECK_VERSION(2,9,5)
+#endif // (!wxCHECK_VERSION(3,1,0)) && (wxCHECK_VERSION(2,9,5))
 
     { "SetLastKeydownProcessed", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetLastKeydownProcessed, 1, NULL },
     { "SetLayoutCache", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetLayoutCache, 1, NULL },

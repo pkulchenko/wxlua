@@ -2347,10 +2347,11 @@ static int LUACALL wxLua_wxGauge_Create(lua_State *L)
 
 #endif // ((wxLUA_USE_wxValidator && wxUSE_VALIDATORS) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
 
+#if (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGauge_GetBezelFace[] = { &wxluatype_wxGauge, NULL };
 static int LUACALL wxLua_wxGauge_GetBezelFace(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGauge_GetBezelFace[1] = {{ wxLua_wxGauge_GetBezelFace, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGauge_GetBezelFace }};
-//     int      GetBezelFace() const;
+//      !%wxchkver_3_1_0 int GetBezelFace() const;
 static int LUACALL wxLua_wxGauge_GetBezelFace(lua_State *L)
 {
     // get this
@@ -2363,10 +2364,12 @@ static int LUACALL wxLua_wxGauge_GetBezelFace(lua_State *L)
     return 1;
 }
 
+#endif // (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGauge_GetRange[] = { &wxluatype_wxGauge, NULL };
 static int LUACALL wxLua_wxGauge_GetRange(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGauge_GetRange[1] = {{ wxLua_wxGauge_GetRange, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGauge_GetRange }};
-//     int      GetRange() const;
+//     int GetRange() const;
 static int LUACALL wxLua_wxGauge_GetRange(lua_State *L)
 {
     // get this
@@ -2379,10 +2382,12 @@ static int LUACALL wxLua_wxGauge_GetRange(lua_State *L)
     return 1;
 }
 
+
+#if (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGauge_GetShadowWidth[] = { &wxluatype_wxGauge, NULL };
 static int LUACALL wxLua_wxGauge_GetShadowWidth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGauge_GetShadowWidth[1] = {{ wxLua_wxGauge_GetShadowWidth, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGauge_GetShadowWidth }};
-//     int      GetShadowWidth() const;
+//      !%wxchkver_3_1_0 int GetShadowWidth() const;
 static int LUACALL wxLua_wxGauge_GetShadowWidth(lua_State *L)
 {
     // get this
@@ -2395,10 +2400,12 @@ static int LUACALL wxLua_wxGauge_GetShadowWidth(lua_State *L)
     return 1;
 }
 
+#endif // (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGauge_GetValue[] = { &wxluatype_wxGauge, NULL };
 static int LUACALL wxLua_wxGauge_GetValue(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGauge_GetValue[1] = {{ wxLua_wxGauge_GetValue, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGauge_GetValue }};
-//     int      GetValue() const;
+//     int GetValue() const;
 static int LUACALL wxLua_wxGauge_GetValue(lua_State *L)
 {
     // get this
@@ -2414,7 +2421,7 @@ static int LUACALL wxLua_wxGauge_GetValue(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGauge_IsVertical[] = { &wxluatype_wxGauge, NULL };
 static int LUACALL wxLua_wxGauge_IsVertical(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGauge_IsVertical[1] = {{ wxLua_wxGauge_IsVertical, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGauge_IsVertical }};
-//     bool     IsVertical() const;
+//     bool IsVertical() const;
 static int LUACALL wxLua_wxGauge_IsVertical(lua_State *L)
 {
     // get this
@@ -2445,10 +2452,11 @@ static int LUACALL wxLua_wxGauge_Pulse(lua_State *L)
 
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
 
+#if (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGauge_SetBezelFace[] = { &wxluatype_wxGauge, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxGauge_SetBezelFace(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGauge_SetBezelFace[1] = {{ wxLua_wxGauge_SetBezelFace, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGauge_SetBezelFace }};
-//     void     SetBezelFace(int width );
+//      !%wxchkver_3_1_0 void SetBezelFace(int width );
 static int LUACALL wxLua_wxGauge_SetBezelFace(lua_State *L)
 {
     // int width
@@ -2461,10 +2469,12 @@ static int LUACALL wxLua_wxGauge_SetBezelFace(lua_State *L)
     return 0;
 }
 
+#endif // (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGauge_SetRange[] = { &wxluatype_wxGauge, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxGauge_SetRange(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGauge_SetRange[1] = {{ wxLua_wxGauge_SetRange, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGauge_SetRange }};
-//     void     SetRange(int range );
+//     void SetRange(int range );
 static int LUACALL wxLua_wxGauge_SetRange(lua_State *L)
 {
     // int range
@@ -2477,10 +2487,12 @@ static int LUACALL wxLua_wxGauge_SetRange(lua_State *L)
     return 0;
 }
 
+
+#if (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGauge_SetShadowWidth[] = { &wxluatype_wxGauge, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxGauge_SetShadowWidth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGauge_SetShadowWidth[1] = {{ wxLua_wxGauge_SetShadowWidth, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGauge_SetShadowWidth }};
-//     void     SetShadowWidth(int width );
+//      !%wxchkver_3_1_0 void SetShadowWidth(int width );
 static int LUACALL wxLua_wxGauge_SetShadowWidth(lua_State *L)
 {
     // int width
@@ -2493,10 +2505,12 @@ static int LUACALL wxLua_wxGauge_SetShadowWidth(lua_State *L)
     return 0;
 }
 
+#endif // (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGauge_SetValue[] = { &wxluatype_wxGauge, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxGauge_SetValue(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGauge_SetValue[1] = {{ wxLua_wxGauge_SetValue, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGauge_SetValue }};
-//     void     SetValue(int pos );
+//     void SetValue(int pos );
 static int LUACALL wxLua_wxGauge_SetValue(lua_State *L)
 {
     // int pos
@@ -2591,9 +2605,16 @@ wxLuaBindMethod wxGauge_methods[] = {
     { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGauge_Create, 1, NULL },
 #endif // ((wxLUA_USE_wxValidator && wxUSE_VALIDATORS) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
 
+#if (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
     { "GetBezelFace", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGauge_GetBezelFace, 1, NULL },
+#endif // (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
+
     { "GetRange", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGauge_GetRange, 1, NULL },
+
+#if (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
     { "GetShadowWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGauge_GetShadowWidth, 1, NULL },
+#endif // (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
+
     { "GetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGauge_GetValue, 1, NULL },
     { "IsVertical", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGauge_IsVertical, 1, NULL },
 
@@ -2601,9 +2622,16 @@ wxLuaBindMethod wxGauge_methods[] = {
     { "Pulse", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGauge_Pulse, 1, NULL },
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
 
+#if (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
     { "SetBezelFace", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGauge_SetBezelFace, 1, NULL },
+#endif // (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
+
     { "SetRange", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGauge_SetRange, 1, NULL },
+
+#if (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
     { "SetShadowWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGauge_SetShadowWidth, 1, NULL },
+#endif // (!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
+
     { "SetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGauge_SetValue, 1, NULL },
 
 #if (((wxLUA_USE_wxValidator && wxUSE_VALIDATORS) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE))||(wxLUA_USE_wxGauge && wxUSE_GAUGE)

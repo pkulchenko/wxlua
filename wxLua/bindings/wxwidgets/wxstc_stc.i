@@ -4106,10 +4106,10 @@ class wxStyledTextCtrl : public wxControl
     int GetGapPosition() const;
 
     // Always interpret keyboard input as Unicode
-    void SetKeysUnicode(bool keysUnicode);
+     !%wxchkver_3_1_0 void SetKeysUnicode(bool keysUnicode);
 
     // Are keys always interpreted as Unicode?
-    bool GetKeysUnicode() const;
+     !%wxchkver_3_1_0 bool GetKeysUnicode() const;
 
     // Set the alpha fill colour of the given indicator.
     void IndicatorSetAlpha(int indicator, int alpha);
