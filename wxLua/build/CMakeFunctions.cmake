@@ -1197,7 +1197,7 @@ function(APPEND_TARGET_PROPERTIES)
 
                 set(PROP_NAME "")
             endif()
-        elseif ("${arg}" STREQUAL "PROPERTIES")
+        elseif ("a${arg}" STREQUAL "aPROPERTIES")
             set(PROPERTIES TRUE)
         else()
             set(TARGETS ${TARGETS} ${arg})

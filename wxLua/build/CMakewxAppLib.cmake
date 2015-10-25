@@ -50,6 +50,23 @@ set(CMakewxAppLib_LIST_DIR ${CMAKE_CURRENT_LIST_DIR})
 # Load the helper file with additional functions
 include( "${CMAKE_CURRENT_LIST_DIR}/CMakeFunctions.cmake" )
 
+# ---------------------------------------------------------------------------
+# Set common compiler options for wxWidgets
+
+if (GCC_VERSION VERSION_GREATER 4.7.9)
+    # gcc 4.8.1 enables this warning and wx28 gives thousands of warnings
+    if (NOT "${CMAKE_CXX_FLAGS}" MATCHES "-Wno-unused-local-typedefs")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-local-typedefs")
+    endif()
+endif()
+
+if (APPLE)
+    # Fix for Xcode 6.2: fatal error: 'tr1/type_traits' file not found #include <tr1/type_traits>
+    if (NOT "${CMAKE_CXX_FLAGS}" MATCHES "-stdlib\\=libstdc\\+\\+")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libstdc++")
+    endif()
+endif()
+
 # ===========================================================================
 # Display to the user what the options are that may be passed to CMake
 # to control the build before we do anything.
