@@ -5992,7 +5992,6 @@ class wxStyledTextCtrl : public wxControl
     !%wxchkver_2_9_5 void SetCaretSticky(bool useCaretStickyBehaviour);
     !%wxchkver_2_9_5 void SetIndentationGuides(bool show);
     !%wxchkver_3_1_0 int PositionFromPoint(const wxPoint& pt) const;
-    !%wxchkver_3_1_0 void SetSelection(int start, int end);
     // %override [Lua string styleBytes] wxStyledTextCtrl::SetStyleBytes(int length, Lua string styleBytes );
     // Set an indicator to draw under text or over(default).
     // These are like their namesakes Home(Extend)?, LineEnd(Extend)?, VCHome(Extend)?
@@ -6216,9 +6215,13 @@ class wxStyledTextCtrl : public wxControl
 //    wxCharBuffer GetCurLineRaw(int* linePos=NULL);
 
     // wxTextEntryBase pure virtual methods
+
     // Retrieve the start and end positions of the current selection.
     void GetSelection();
+    // Select a range of text.
+    void SetSelection(int start, int end);
     // ....the rest is skipped
+
     // wxTextAreaBase pure virtual methods
     // ....skipped
 
