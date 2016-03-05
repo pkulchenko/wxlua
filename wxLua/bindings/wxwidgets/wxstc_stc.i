@@ -36,6 +36,7 @@
 #define wxSTC_WS_INVISIBLE
 #define wxSTC_WS_VISIBLEALWAYS
 #define wxSTC_WS_VISIBLEAFTERINDENT
+%wxchkver_3_1_1 #define wxSTC_WS_VISIBLEONLYININDENT
 #define wxSTC_EOL_CRLF
 #define wxSTC_EOL_CR
 #define wxSTC_EOL_LF
@@ -126,6 +127,7 @@
 #define wxSTC_CHARSET_MAC
 #define wxSTC_CHARSET_OEM
 #define wxSTC_CHARSET_RUSSIAN
+%wxchkver_3_1_1 #define wxSTC_CHARSET_OEM866
 #define wxSTC_CHARSET_CYRILLIC
 #define wxSTC_CHARSET_SHIFTJIS
 #define wxSTC_CHARSET_SYMBOL
@@ -139,6 +141,7 @@
 #define wxSTC_CASE_MIXED
 #define wxSTC_CASE_UPPER
 #define wxSTC_CASE_LOWER
+%wxchkver_3_1_1 #define wxSTC_CASE_CAMEL
 %wxchkver_2_9_5 #define wxSTC_FONT_SIZE_MULTIPLIER
 %wxchkver_2_9_5 #define wxSTC_WEIGHT_NORMAL
 %wxchkver_2_9_5 #define wxSTC_WEIGHT_SEMIBOLD
@@ -216,6 +219,10 @@
 #define wxSTC_FOLDFLAG_LEVELNUMBERS
 %wxchkver_3_1_0 #define wxSTC_FOLDFLAG_LINESTATE
 #define wxSTC_TIME_FOREVER
+%wxchkver_3_1_1 #define wxSTC_IDLESTYLING_NONE
+%wxchkver_3_1_1 #define wxSTC_IDLESTYLING_TOVISIBLE
+%wxchkver_3_1_1 #define wxSTC_IDLESTYLING_AFTERVISIBLE
+%wxchkver_3_1_1 #define wxSTC_IDLESTYLING_ALL
 #define wxSTC_WRAP_NONE
 #define wxSTC_WRAP_WORD
 #define wxSTC_WRAP_CHAR
@@ -285,7 +292,7 @@
 
 /// If CARET_EVEN is not set, instead of having symmetrical UZs,
 /// the left and bottom UZs are extended up to right and top UZs respectively.
-/// This way, we favour the displaying of useful information: the begining of lines,
+/// This way, we favour the displaying of useful information: the beginning of lines,
 /// where most code reside, and the lines after the caret, eg. the body of a function.
 #define wxSTC_CARET_EVEN
 #define wxSTC_SEL_STREAM
@@ -396,6 +403,11 @@
 #define wxSTC_SCMOD_ALT
 %wxchkver_2_9_5 #define wxSTC_SCMOD_SUPER
 %wxchkver_2_9_5 #define wxSTC_SCMOD_META
+%wxchkver_3_1_1 #define wxSTC_AC_FILLUP
+%wxchkver_3_1_1 #define wxSTC_AC_DOUBLECLICK
+%wxchkver_3_1_1 #define wxSTC_AC_TAB
+%wxchkver_3_1_1 #define wxSTC_AC_NEWLINE
+%wxchkver_3_1_1 #define wxSTC_AC_COMMAND
 
 /// For SciLexer.h
 #define wxSTC_LEX_CONTAINER
@@ -539,7 +551,7 @@
 #define wxSTC_P_WORD2
 #define wxSTC_P_DECORATOR
 
-/// Lexical states for SCLEX_CPP
+/// Lexical states for SCLEX_CPP, SCLEX_BULLANT, SCLEX_COBOL, SCLEX_TACL, SCLEX_TAL
 #define wxSTC_C_DEFAULT
 #define wxSTC_C_COMMENT
 #define wxSTC_C_COMMENTLINE
@@ -838,7 +850,7 @@
 #define wxSTC_RB_STDERR
 #define wxSTC_RB_UPPER_BOUND
 
-/// Lexical states for SCLEX_VB, SCLEX_VBSCRIPT, SCLEX_POWERBASIC
+/// Lexical states for SCLEX_VB, SCLEX_VBSCRIPT, SCLEX_POWERBASIC, SCLEX_BLITZBASIC, SCLEX_PUREBASIC, SCLEX_FREEBASIC
 #define wxSTC_B_DEFAULT
 #define wxSTC_B_COMMENT
 #define wxSTC_B_NUMBER
@@ -933,6 +945,24 @@
 #define wxSTC_ERR_JAVA_STACK
 %wxchkver_2_9_5 #define wxSTC_ERR_VALUE
 %wxchkver_3_1_0 #define wxSTC_ERR_GCC_INCLUDED_FROM
+%wxchkver_3_1_1 #define wxSTC_ERR_ESCSEQ
+%wxchkver_3_1_1 #define wxSTC_ERR_ESCSEQ_UNKNOWN
+%wxchkver_3_1_1 #define wxSTC_ERR_ES_BLACK
+%wxchkver_3_1_1 #define wxSTC_ERR_ES_RED
+%wxchkver_3_1_1 #define wxSTC_ERR_ES_GREEN
+%wxchkver_3_1_1 #define wxSTC_ERR_ES_BROWN
+%wxchkver_3_1_1 #define wxSTC_ERR_ES_BLUE
+%wxchkver_3_1_1 #define wxSTC_ERR_ES_MAGENTA
+%wxchkver_3_1_1 #define wxSTC_ERR_ES_CYAN
+%wxchkver_3_1_1 #define wxSTC_ERR_ES_GRAY
+%wxchkver_3_1_1 #define wxSTC_ERR_ES_DARK_GRAY
+%wxchkver_3_1_1 #define wxSTC_ERR_ES_BRIGHT_RED
+%wxchkver_3_1_1 #define wxSTC_ERR_ES_BRIGHT_GREEN
+%wxchkver_3_1_1 #define wxSTC_ERR_ES_YELLOW
+%wxchkver_3_1_1 #define wxSTC_ERR_ES_BRIGHT_BLUE
+%wxchkver_3_1_1 #define wxSTC_ERR_ES_BRIGHT_MAGENTA
+%wxchkver_3_1_1 #define wxSTC_ERR_ES_BRIGHT_CYAN
+%wxchkver_3_1_1 #define wxSTC_ERR_ES_WHITE
 
 /// Lexical states for SCLEX_BATCH
 #define wxSTC_BAT_DEFAULT
@@ -2143,6 +2173,7 @@
 %wxchkver_2_9_5 #define wxSTC_COFFEESCRIPT_COMMENTBLOCK
 %wxchkver_2_9_5 #define wxSTC_COFFEESCRIPT_VERBOSE_REGEX
 %wxchkver_2_9_5 #define wxSTC_COFFEESCRIPT_VERBOSE_REGEX_COMMENT
+%wxchkver_3_1_1 #define wxSTC_COFFEESCRIPT_INSTANCEPROPERTY
 
 /// Lexical states for SCLEX_AVS
 %wxchkver_2_9_5 #define wxSTC_AVS_DEFAULT
@@ -2939,7 +2970,7 @@ class wxStyledTextCtrl : public wxControl
     void SetCodePage(int codePage);
 
     /**
-        Is the IME displayed in a winow or inline?
+        Is the IME displayed in a window or inline?
     */
     %wxchkver_3_1_0 int GetIMEInteraction() const;
 
@@ -3953,6 +3984,16 @@ class wxStyledTextCtrl : public wxControl
     %wxchkver_3_1_0 wxString GetTargetText() const;
 
     /**
+        Make the target range start and end be the same as the selection range start and end.
+    */
+    void TargetFromSelection();
+
+    /**
+        Sets the target to the whole document.
+    */
+    %wxchkver_3_1_1 void TargetWholeDocument();
+
+    /**
         Replace the target text with the argument text.
         Text is counted so it can contain NULs.
         Returns the length of the replacement text.
@@ -4200,6 +4241,21 @@ class wxStyledTextCtrl : public wxControl
     int WordEndPosition(int pos, bool onlyWordCharacters);
 
     /**
+        Is the range start..end considered a word?
+    */
+    %wxchkver_3_1_1 bool IsRangeWord(int start, int end);
+
+    /**
+        Sets limits to idle styling.
+    */
+    %wxchkver_3_1_1 void SetIdleStyling(int idleStyling);
+
+    /**
+        Retrieve the limits to idle styling.
+    */
+    %wxchkver_3_1_1 int GetIdleStyling() const;
+
+    /**
         Sets whether text is word wrapped.
     */
     void SetWrapMode(int mode);
@@ -4363,11 +4419,6 @@ class wxStyledTextCtrl : public wxControl
         Result is NUL-terminated.
     */
     %wxchkver_2_9_5 wxString GetTag(int tagNumber) const;
-
-    /**
-        Make the target range start and end be the same as the selection range start and end.
-    */
-    void TargetFromSelection();
 
     /**
         Join the lines in the target.
@@ -5176,7 +5227,7 @@ class wxStyledTextCtrl : public wxControl
     %wxchkver_3_1_0 void AutoCompSetMulti(int multi);
 
     /**
-        Retrieve the effect of autocompleting when there are multiple selections..
+        Retrieve the effect of autocompleting when there are multiple selections.
     */
     %wxchkver_3_1_0 int AutoCompGetMulti() const;
 
@@ -5698,6 +5749,18 @@ class wxStyledTextCtrl : public wxControl
         Swap that caret and anchor of the main selection.
     */
     %wxchkver_2_9_5 void SwapMainAnchorCaret();
+
+    /**
+        Add the next occurrence of the main selection to the set of selections as main.
+        If the current selection is empty then select word around caret.
+    */
+    %wxchkver_3_1_1 void MultipleSelectAddNext();
+
+    /**
+        Add each occurrence of the main selection in the target to the set of selections.
+        If the current selection is empty then select word around caret.
+    */
+    %wxchkver_3_1_1 void MultipleSelectAddEach();
 
     /**
         Indicate that the internal state of a lexer has changed over a range and therefore
