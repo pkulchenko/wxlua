@@ -13573,6 +13573,25 @@ static int LUACALL wxLua_wxStyledTextEvent_GetDragAllowMove(lua_State *L)
 }
 
 
+#if wxCHECK_VERSION(3,1,0)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetDragFlags[] = { &wxluatype_wxStyledTextEvent, NULL };
+static int LUACALL wxLua_wxStyledTextEvent_GetDragFlags(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_GetDragFlags[1] = {{ wxLua_wxStyledTextEvent_GetDragFlags, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextEvent_GetDragFlags }};
+//     %wxchkver_3_1_0 int GetDragFlags();
+static int LUACALL wxLua_wxStyledTextEvent_GetDragFlags(lua_State *L)
+{
+    // get this
+    wxStyledTextEvent * self = (wxStyledTextEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextEvent);
+    // call GetDragFlags
+    int returns = (self->GetDragFlags());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(3,1,0)
+
 #if wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_GetDragResult[] = { &wxluatype_wxStyledTextEvent, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_GetDragResult(lua_State *L);
@@ -13932,10 +13951,30 @@ static int LUACALL wxLua_wxStyledTextEvent_GetY(lua_State *L)
     return 1;
 }
 
+
+#if wxCHECK_VERSION(2,9,5)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetAnnotationLinesAdded[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStyledTextEvent_SetAnnotationLinesAdded(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetAnnotationLinesAdded[1] = {{ wxLua_wxStyledTextEvent_SetAnnotationLinesAdded, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetAnnotationLinesAdded }};
+//     %wxchkver_2_9_5 void SetAnnotationLinesAdded(int val);
+static int LUACALL wxLua_wxStyledTextEvent_SetAnnotationLinesAdded(lua_State *L)
+{
+    // int val
+    int val = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextEvent * self = (wxStyledTextEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextEvent);
+    // call SetAnnotationLinesAdded
+    self->SetAnnotationLinesAdded(val);
+
+    return 0;
+}
+
+#endif // wxCHECK_VERSION(2,9,5)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetDragAllowMove[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetDragAllowMove(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetDragAllowMove[1] = {{ wxLua_wxStyledTextEvent_SetDragAllowMove, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetDragAllowMove }};
-//     void SetDragAllowMove(bool val );
+//     void SetDragAllowMove(bool val);
 static int LUACALL wxLua_wxStyledTextEvent_SetDragAllowMove(lua_State *L)
 {
     // bool val
@@ -13948,6 +13987,25 @@ static int LUACALL wxLua_wxStyledTextEvent_SetDragAllowMove(lua_State *L)
     return 0;
 }
 
+
+#if wxCHECK_VERSION(3,1,0)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetDragFlags[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStyledTextEvent_SetDragFlags(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetDragFlags[1] = {{ wxLua_wxStyledTextEvent_SetDragFlags, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetDragFlags }};
+//     %wxchkver_3_1_0 void SetDragFlags(int flags);
+static int LUACALL wxLua_wxStyledTextEvent_SetDragFlags(lua_State *L)
+{
+    // int flags
+    int flags = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextEvent * self = (wxStyledTextEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextEvent);
+    // call SetDragFlags
+    self->SetDragFlags(flags);
+
+    return 0;
+}
+
+#endif // wxCHECK_VERSION(3,1,0)
 
 #if wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetDragResult[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TINTEGER, NULL };
@@ -14208,6 +14266,42 @@ static int LUACALL wxLua_wxStyledTextEvent_SetText(lua_State *L)
     return 0;
 }
 
+
+#if wxCHECK_VERSION(2,9,5)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetToken[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStyledTextEvent_SetToken(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetToken[1] = {{ wxLua_wxStyledTextEvent_SetToken, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetToken }};
+//     %wxchkver_2_9_5 void SetToken(int val);
+static int LUACALL wxLua_wxStyledTextEvent_SetToken(lua_State *L)
+{
+    // int val
+    int val = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextEvent * self = (wxStyledTextEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextEvent);
+    // call SetToken
+    self->SetToken(val);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetUpdated[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStyledTextEvent_SetUpdated(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetUpdated[1] = {{ wxLua_wxStyledTextEvent_SetUpdated, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetUpdated }};
+//     %wxchkver_2_9_5 void SetUpdated(int val);
+static int LUACALL wxLua_wxStyledTextEvent_SetUpdated(lua_State *L)
+{
+    // int val
+    int val = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextEvent * self = (wxStyledTextEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextEvent);
+    // call SetUpdated
+    self->SetUpdated(val);
+
+    return 0;
+}
+
+#endif // wxCHECK_VERSION(2,9,5)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextEvent_SetWParam[] = { &wxluatype_wxStyledTextEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextEvent_SetWParam(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextEvent_SetWParam[1] = {{ wxLua_wxStyledTextEvent_SetWParam, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextEvent_SetWParam }};
@@ -14300,6 +14394,10 @@ wxLuaBindMethod wxStyledTextEvent_methods[] = {
     { "GetControl", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_GetControl, 1, NULL },
     { "GetDragAllowMove", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_GetDragAllowMove, 1, NULL },
 
+#if wxCHECK_VERSION(3,1,0)
+    { "GetDragFlags", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_GetDragFlags, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,0)
+
 #if wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
     { "GetDragResult", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_GetDragResult, 1, NULL },
 #endif // wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
@@ -14329,7 +14427,16 @@ wxLuaBindMethod wxStyledTextEvent_methods[] = {
     { "GetWParam", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_GetWParam, 1, NULL },
     { "GetX", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_GetX, 1, NULL },
     { "GetY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_GetY, 1, NULL },
+
+#if wxCHECK_VERSION(2,9,5)
+    { "SetAnnotationLinesAdded", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_SetAnnotationLinesAdded, 1, NULL },
+#endif // wxCHECK_VERSION(2,9,5)
+
     { "SetDragAllowMove", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_SetDragAllowMove, 1, NULL },
+
+#if wxCHECK_VERSION(3,1,0)
+    { "SetDragFlags", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_SetDragFlags, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,0)
 
 #if wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
     { "SetDragResult", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_SetDragResult, 1, NULL },
@@ -14350,6 +14457,12 @@ wxLuaBindMethod wxStyledTextEvent_methods[] = {
     { "SetModifiers", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_SetModifiers, 1, NULL },
     { "SetPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_SetPosition, 1, NULL },
     { "SetText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_SetText, 1, NULL },
+
+#if wxCHECK_VERSION(2,9,5)
+    { "SetToken", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_SetToken, 1, NULL },
+    { "SetUpdated", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_SetUpdated, 1, NULL },
+#endif // wxCHECK_VERSION(2,9,5)
+
     { "SetWParam", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_SetWParam, 1, NULL },
     { "SetX", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_SetX, 1, NULL },
     { "SetY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextEvent_SetY, 1, NULL },
@@ -14378,10 +14491,21 @@ wxLuaBindEvent* wxLuaGetEventList_wxstc(size_t &count)
 {
     static wxLuaBindEvent eventList[] =
     {
+#if wxCHECK_VERSION(3,1,0)
+        { "wxEVT_STC_AUTOCOMP_CANCELLED", WXLUA_GET_wxEventType_ptr(wxEVT_STC_AUTOCOMP_CANCELLED), &wxluatype_wxStyledTextEvent },
+        { "wxEVT_STC_AUTOCOMP_CHAR_DELETED", WXLUA_GET_wxEventType_ptr(wxEVT_STC_AUTOCOMP_CHAR_DELETED), &wxluatype_wxStyledTextEvent },
+#endif // wxCHECK_VERSION(3,1,0)
+
         { "wxEVT_STC_AUTOCOMP_SELECTION", WXLUA_GET_wxEventType_ptr(wxEVT_STC_AUTOCOMP_SELECTION), &wxluatype_wxStyledTextEvent },
         { "wxEVT_STC_CALLTIP_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_STC_CALLTIP_CLICK), &wxluatype_wxStyledTextEvent },
         { "wxEVT_STC_CHANGE", WXLUA_GET_wxEventType_ptr(wxEVT_STC_CHANGE), &wxluatype_wxStyledTextEvent },
         { "wxEVT_STC_CHARADDED", WXLUA_GET_wxEventType_ptr(wxEVT_STC_CHARADDED), &wxluatype_wxStyledTextEvent },
+
+#if wxCHECK_VERSION(3,1,0)
+        { "wxEVT_STC_CLIPBOARD_COPY", WXLUA_GET_wxEventType_ptr(wxEVT_STC_CLIPBOARD_COPY), &wxluatype_wxStyledTextEvent },
+        { "wxEVT_STC_CLIPBOARD_PASTE", WXLUA_GET_wxEventType_ptr(wxEVT_STC_CLIPBOARD_PASTE), &wxluatype_wxStyledTextEvent },
+#endif // wxCHECK_VERSION(3,1,0)
+
         { "wxEVT_STC_DOUBLECLICK", WXLUA_GET_wxEventType_ptr(wxEVT_STC_DOUBLECLICK), &wxluatype_wxStyledTextEvent },
         { "wxEVT_STC_DO_DROP", WXLUA_GET_wxEventType_ptr(wxEVT_STC_DO_DROP), &wxluatype_wxStyledTextEvent },
         { "wxEVT_STC_DRAG_OVER", WXLUA_GET_wxEventType_ptr(wxEVT_STC_DRAG_OVER), &wxluatype_wxStyledTextEvent },
@@ -14389,6 +14513,13 @@ wxLuaBindEvent* wxLuaGetEventList_wxstc(size_t &count)
         { "wxEVT_STC_DWELLSTART", WXLUA_GET_wxEventType_ptr(wxEVT_STC_DWELLSTART), &wxluatype_wxStyledTextEvent },
         { "wxEVT_STC_HOTSPOT_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_STC_HOTSPOT_CLICK), &wxluatype_wxStyledTextEvent },
         { "wxEVT_STC_HOTSPOT_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_STC_HOTSPOT_DCLICK), &wxluatype_wxStyledTextEvent },
+
+#if wxCHECK_VERSION(3,1,0)
+        { "wxEVT_STC_HOTSPOT_RELEASE_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_STC_HOTSPOT_RELEASE_CLICK), &wxluatype_wxStyledTextEvent },
+        { "wxEVT_STC_INDICATOR_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_STC_INDICATOR_CLICK), &wxluatype_wxStyledTextEvent },
+        { "wxEVT_STC_INDICATOR_RELEASE", WXLUA_GET_wxEventType_ptr(wxEVT_STC_INDICATOR_RELEASE), &wxluatype_wxStyledTextEvent },
+#endif // wxCHECK_VERSION(3,1,0)
+
         { "wxEVT_STC_KEY", WXLUA_GET_wxEventType_ptr(wxEVT_STC_KEY), &wxluatype_wxStyledTextEvent },
         { "wxEVT_STC_MACRORECORD", WXLUA_GET_wxEventType_ptr(wxEVT_STC_MACRORECORD), &wxluatype_wxStyledTextEvent },
         { "wxEVT_STC_MARGINCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_STC_MARGINCLICK), &wxluatype_wxStyledTextEvent },

@@ -6254,13 +6254,20 @@ class %delete wxStyledTextEvent : public wxCommandEvent
     %wxEventType wxEVT_STC_HOTSPOT_DCLICK      // EVT_STC_HOTSPOT_DCLICK(id, fn );
     %wxEventType wxEVT_STC_CALLTIP_CLICK       // EVT_STC_CALLTIP_CLICK(id, fn );
     %wxEventType wxEVT_STC_AUTOCOMP_SELECTION  // EVT_STC_AUTOCOMP_SELECTION(id, fn );
-
+    %wxchkver_3_1_0 %wxEventType wxEVT_STC_INDICATOR_CLICK       // EVT_STC_INDICATOR_CLICK(id, fn);
+    %wxchkver_3_1_0 %wxEventType wxEVT_STC_INDICATOR_RELEASE     // EVT_STC_INDICATOR_RELEASE(id, fn);
+    %wxchkver_3_1_0 %wxEventType wxEVT_STC_AUTOCOMP_CANCELLED    // EVT_STC_AUTOCOMP_CANCELLED(id, fn);
+    %wxchkver_3_1_0 %wxEventType wxEVT_STC_AUTOCOMP_CHAR_DELETED // EVT_STC_AUTOCOMP_CHAR_DELETED(id, fn);
+    %wxchkver_3_1_0 %wxEventType wxEVT_STC_HOTSPOT_RELEASE_CLICK // EVT_STC_HOTSPOT_RELEASE_CLICK(id, fn);
+    %wxchkver_3_1_0 %wxEventType wxEVT_STC_CLIPBOARD_COPY        // EVT_STC_CLIPBOARD_COPY(id, fn);
+    %wxchkver_3_1_0 %wxEventType wxEVT_STC_CLIPBOARD_PASTE       // EVT_STC_CLIPBOARD_PASTE(id, fn);
 
     wxStyledTextEvent(wxEventType commandType = 0, int id = 0 );
     void SetPosition(int pos );
     void SetKey(int k );
     void SetModifiers(int m );
     void SetModificationType(int t );
+
     void SetText(const wxString& t );
     void SetLength(int len );
     void SetLinesAdded(int num );
@@ -6274,14 +6281,22 @@ class %delete wxStyledTextEvent : public wxCommandEvent
     void SetListType(int val );
     void SetX(int val );
     void SetY(int val );
+    %wxchkver_2_9_5 void SetToken(int val);
+    %wxchkver_2_9_5 void SetAnnotationLinesAdded(int val);
+    %wxchkver_2_9_5 void SetUpdated(int val);
+    // Kept for backwards compatibility, use SetString().
     void SetDragText(const wxString& val );
-    void SetDragAllowMove(bool val );
+    %wxchkver_3_1_0 void SetDragFlags(int flags);
     void SetDragResult(wxDragResult val );
+    // This method is kept mainly for backwards compatibility, use
+    // SetDragFlags() in the new code.
+    void SetDragAllowMove(bool val);
 
     int  GetPosition() const;
     int  GetKey() const;
     int  GetModifiers() const;
     int  GetModificationType() const;
+    // Kept for backwards compatibility, use GetString().
     wxString GetText() const;
     int  GetLength() const;
     int  GetLinesAdded() const;
@@ -6299,8 +6314,10 @@ class %delete wxStyledTextEvent : public wxCommandEvent
     %wxchkver_2_9_5 int  GetAnnotationsLinesAdded() const;
     %wxchkver_2_9_5 int  GetUpdated() const;
     wxString GetDragText( );
-    bool GetDragAllowMove( );
+    %wxchkver_3_1_0 int GetDragFlags();
     wxDragResult GetDragResult( );
+    bool GetDragAllowMove( );
+
     bool GetShift() const;
     bool GetControl() const;
     bool GetAlt() const;
