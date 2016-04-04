@@ -3932,6 +3932,17 @@ class wxStyledTextCtrl : public wxControl
     int GetTextLength() const;
 
     /**
+        Retrieve a pointer to a function that processes messages for this Scintilla.
+    */
+    %wxchkver_3_1_1 void* GetDirectFunction() const;
+
+    /**
+        Retrieve a pointer value to use as the first argument when calling
+        the function returned by GetDirectFunction.
+    */
+    %wxchkver_3_1_1 void* GetDirectPointer() const;
+
+    /**
         Set to overtype (true) or insert mode.
     */
     void SetOvertype(bool overtype);
@@ -5944,6 +5955,11 @@ class wxStyledTextCtrl : public wxControl
     void SetLexerLanguage(const wxString& language);
 
     /**
+        Load a lexer library (dll / so).
+    */
+    %wxchkver_3_1_1 void LoadLexerLibrary(const wxString& path);
+
+    /**
         Retrieve a 'property' value previously set with SetProperty.
     */
     wxString GetProperty(const wxString& key);
@@ -5964,6 +5980,11 @@ class wxStyledTextCtrl : public wxControl
         Retrieve the number of bits the current lexer needs for styling.
     */
     int GetStyleBitsNeeded() const;
+
+    /**
+        Retrieve the lexing language of the document.
+    */
+    %wxchkver_3_1_1 wxString GetLexerLanguage() const;
 
     /**
         For private communication between an application and a known lexer.
@@ -6388,4 +6409,3 @@ class %delete wxStyledTextEvent : public wxCommandEvent
     bool GetControl() const;
     bool GetAlt() const;
 };
-

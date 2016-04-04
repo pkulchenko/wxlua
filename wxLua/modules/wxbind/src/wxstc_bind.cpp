@@ -2990,6 +2990,42 @@ static int LUACALL wxLua_wxStyledTextCtrl_GetCurrentPos(lua_State *L)
     return 1;
 }
 
+
+#if wxCHECK_VERSION(3,1,1)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetDirectFunction[] = { &wxluatype_wxStyledTextCtrl, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_GetDirectFunction(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetDirectFunction[1] = {{ wxLua_wxStyledTextCtrl_GetDirectFunction, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetDirectFunction }};
+//     %wxchkver_3_1_1 void* GetDirectFunction() const;
+static int LUACALL wxLua_wxStyledTextCtrl_GetDirectFunction(lua_State *L)
+{
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call GetDirectFunction
+    void* returns = (void*)self->GetDirectFunction();
+    // push the result pointer
+    lua_pushlightuserdata(L, (void *)returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetDirectPointer[] = { &wxluatype_wxStyledTextCtrl, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_GetDirectPointer(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetDirectPointer[1] = {{ wxLua_wxStyledTextCtrl_GetDirectPointer, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetDirectPointer }};
+//     %wxchkver_3_1_1 void* GetDirectPointer() const;
+static int LUACALL wxLua_wxStyledTextCtrl_GetDirectPointer(lua_State *L)
+{
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call GetDirectPointer
+    void* returns = (void*)self->GetDirectPointer();
+    // push the result pointer
+    lua_pushlightuserdata(L, (void *)returns);
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(3,1,1)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetDocPointer[] = { &wxluatype_wxStyledTextCtrl, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_GetDocPointer(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetDocPointer[1] = {{ wxLua_wxStyledTextCtrl_GetDocPointer, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetDocPointer }};
@@ -3574,6 +3610,26 @@ static int LUACALL wxLua_wxStyledTextCtrl_GetLexer(lua_State *L)
 
     return 1;
 }
+
+
+#if wxCHECK_VERSION(3,1,1)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetLexerLanguage[] = { &wxluatype_wxStyledTextCtrl, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_GetLexerLanguage(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetLexerLanguage[1] = {{ wxLua_wxStyledTextCtrl_GetLexerLanguage, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetLexerLanguage }};
+//     %wxchkver_3_1_1 wxString GetLexerLanguage() const;
+static int LUACALL wxLua_wxStyledTextCtrl_GetLexerLanguage(lua_State *L)
+{
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call GetLexerLanguage
+    wxString returns = (self->GetLexerLanguage());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(3,1,1)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetLine[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_GetLine(lua_State *L);
@@ -6594,6 +6650,26 @@ static int LUACALL wxLua_wxStyledTextCtrl_LoadFile(lua_State *L)
 
     return 1;
 }
+
+
+#if wxCHECK_VERSION(3,1,1)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_LoadLexerLibrary[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_LoadLexerLibrary(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_LoadLexerLibrary[1] = {{ wxLua_wxStyledTextCtrl_LoadLexerLibrary, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_LoadLexerLibrary }};
+//     %wxchkver_3_1_1 void LoadLexerLibrary(const wxString& path);
+static int LUACALL wxLua_wxStyledTextCtrl_LoadLexerLibrary(lua_State *L)
+{
+    // const wxString path
+    const wxString path = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call LoadLexerLibrary
+    self->LoadLexerLibrary(path);
+
+    return 0;
+}
+
+#endif // wxCHECK_VERSION(3,1,1)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_LowerCase[] = { &wxluatype_wxStyledTextCtrl, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_LowerCase(lua_State *L);
@@ -12600,6 +12676,12 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "GetCurLine", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetCurLine, 1, NULL },
     { "GetCurrentLine", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetCurrentLine, 1, NULL },
     { "GetCurrentPos", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetCurrentPos, 1, NULL },
+
+#if wxCHECK_VERSION(3,1,1)
+    { "GetDirectFunction", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetDirectFunction, 1, NULL },
+    { "GetDirectPointer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetDirectPointer, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,1)
+
     { "GetDocPointer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetDocPointer, 1, NULL },
     { "GetEOLMode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetEOLMode, 1, NULL },
 
@@ -12670,6 +12752,11 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "GetLayoutCache", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetLayoutCache, 1, NULL },
     { "GetLength", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetLength, 1, NULL },
     { "GetLexer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetLexer, 1, NULL },
+
+#if wxCHECK_VERSION(3,1,1)
+    { "GetLexerLanguage", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetLexerLanguage, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,1)
+
     { "GetLine", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetLine, 1, NULL },
     { "GetLineCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetLineCount, 1, NULL },
     { "GetLineEndPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetLineEndPosition, 1, NULL },
@@ -12983,6 +13070,11 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "LinesOnScreen", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_LinesOnScreen, 1, NULL },
     { "LinesSplit", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_LinesSplit, 1, NULL },
     { "LoadFile", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_LoadFile, 1, NULL },
+
+#if wxCHECK_VERSION(3,1,1)
+    { "LoadLexerLibrary", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_LoadLexerLibrary, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,1)
+
     { "LowerCase", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_LowerCase, 1, NULL },
 
 #if wxCHECK_VERSION(2,9,5)
