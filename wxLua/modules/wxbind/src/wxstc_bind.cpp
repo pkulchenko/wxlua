@@ -7594,11 +7594,13 @@ static int LUACALL wxLua_wxStyledTextCtrl_PositionRelative(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_PrivateLexerCall[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TLIGHTUSERDATA, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_PrivateLexerCall(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_PrivateLexerCall[1] = {{ wxLua_wxStyledTextCtrl_PrivateLexerCall, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_PrivateLexerCall }};
-//     %wxchkver_3_1_0 void* PrivateLexerCall(int operation, void* pointer);
+// %override wxLua_wxStyledTextCtrl_PrivateLexerCall
 static int LUACALL wxLua_wxStyledTextCtrl_PrivateLexerCall(lua_State *L)
 {
     // void pointer
-    void * pointer = (void *)wxlua_touserdata(L, 3);
+    // check if the parameter is a string; if not, assume it's userdata
+    void * pointer = (void *)lua_tostring(L, 3);
+    if (pointer == NULL) pointer = (void *)wxlua_touserdata(L, 3);
     // int operation
     int operation = (int)wxlua_getnumbertype(L, 2);
     // get this
@@ -7610,6 +7612,7 @@ static int LUACALL wxLua_wxStyledTextCtrl_PrivateLexerCall(lua_State *L)
 
     return 1;
 }
+
 
 #endif // wxCHECK_VERSION(3,1,0)
 
