@@ -133,31 +133,31 @@ class %delete wxMenuItem : public wxObject
 
     void Check(bool check);
     void Enable(bool enable);
-    //%win wxColour GetBackgroundColour() const;
-    //%win wxBitmap GetBitmap(bool checked = true) const;
-    //%win wxFont GetFont() const;
+    %win wxColour GetBackgroundColour() const;
+    %win wxBitmap GetBitmap(bool checked = true) const;
+    %win wxBitmap& GetDisabledBitmap() const;
+    %win wxFont GetFont() const;
     wxString GetHelp() const;
     int GetId() const;
     wxItemKind GetKind() const;
-    //%win int GetMarginWidth() const;
+    %win int GetMarginWidth() const;
     wxMenu* GetMenu() const;
-    // wxString GetName() const; - deprecated
     wxMenu* GetSubMenu() const;
-    //%win wxColour& GetTextColour() const;
+    %win wxColour& GetTextColour() const;
     bool IsCheckable() const;
     bool IsChecked() const;
     bool IsEnabled() const;
     bool IsSeparator() const;
     bool IsSubMenu() const;
-    //%win void SetBackgroundColour(const wxColour& colour) const;
+    %win void SetBackgroundColour(const wxColour& colour) const;
     void SetBitmap(const wxBitmap& bmp);
-    //%win void SetBitmaps(const wxBitmap& checked, const wxBitmap& unchecked = wxNullBitmap) const;
-    //%win void SetFont(const wxFont& font) const;
+    %win void SetBitmaps(const wxBitmap& checked, const wxBitmap& unchecked = wxNullBitmap) const;
+    %win void SetDisabledBitmap(const wxBitmap& disabled);
+    %win void SetFont(const wxFont& font) const;
     void SetHelp(const wxString& helpString) const;
-    //%win void SetMarginWidth(int width) const;
-    //void SetMenu(wxMenu* menu);
+    %win void SetMarginWidth(int width) const;
+    void SetMenu(wxMenu* menu);
     void SetSubMenu(wxMenu* menu);
-    // void SetName(const wxString& text) const; - deprecated
     %win void SetTextColour(const wxColour& colour) const;
 
     %wxchkver_2_8 void SetItemLabel(const wxString& str);
