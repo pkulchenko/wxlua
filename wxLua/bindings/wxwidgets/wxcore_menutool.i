@@ -37,8 +37,8 @@ class %delete wxMenu : public wxEvtHandler
     wxMenuItem* Append(int id, const wxString& item, const wxString& helpString = "", wxItemKind kind = wxITEM_NORMAL);
     wxMenuItem* Append(int id, const wxString& item, %ungc wxMenu *subMenu, const wxString& helpString = "");
     wxMenuItem* Append(%ungc wxMenuItem* menuItem);
-    wxMenuItem* AppendCheckItem(int id, const wxString& item, const wxString& helpString = "");
-    wxMenuItem* AppendRadioItem(int id, const wxString& item, const wxString& helpString = "");
+    wxMenuItem* AppendCheckItem(int id, const wxString& item, const wxString& help = "");
+    wxMenuItem* AppendRadioItem(int id, const wxString& item, const wxString& help = "");
     wxMenuItem* AppendSeparator();
     wxMenuItem* AppendSubMenu(wxMenu *submenu, const wxString& text, const wxString& help = "");
     void Break();
@@ -61,7 +61,7 @@ class %delete wxMenu : public wxEvtHandler
     wxMenuItemList& GetMenuItems() const;
     wxString GetTitle() const;
     wxMenuItem* Insert(size_t pos, int id, const wxString& item, const wxString& helpString = "", wxItemKind kind = wxITEM_NORMAL);
-    wxMenuItem* Insert(size_t pos, %ungc wxMenuItem *item);
+    wxMenuItem* Insert(size_t pos, %ungc wxMenuItem *menuItem);
     wxMenuItem* InsertCheckItem(size_t pos, int id, const wxString& item, const wxString& helpString = "");
     wxMenuItem* InsertRadioItem(size_t pos, int id, const wxString& item, const wxString& helpString = "");
     wxMenuItem* InsertSeparator(size_t pos);
@@ -77,7 +77,7 @@ class %delete wxMenu : public wxEvtHandler
     void SetHelpString(int id, const wxString& helpString);
     void SetLabel(int id, const wxString& label);
     void SetTitle(const wxString& title);
-    void UpdateUI(wxEvtHandler* source = NULL) const;
+    void UpdateUI(wxEvtHandler* source = NULL);
 };
 
 // ---------------------------------------------------------------------------
