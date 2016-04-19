@@ -28,12 +28,8 @@ enum wxItemKind
 
 class %delete wxMenu : public wxEvtHandler
 {
+
     wxMenu(const wxString& title = "", long style = 0);
-
-    // %override wxMenu* wxMenu({{wx.wxID_NEW, "&New\tCtrl-N", "New doc", [wx.wxITEM_NORMAL]}, {}, {item 2}}, const wxString& title = "", long style = "") - empty tables are separators
-    // wxLua provides this function
-    %override_name wxLua_wxCreateMenu_constructor wxMenu(LuaTable, const wxString& title = "", long style = 0);
-
     wxMenuItem* Append(int id, const wxString& item, const wxString& helpString = "", wxItemKind kind = wxITEM_NORMAL);
     wxMenuItem* Append(int id, const wxString& item, %ungc wxMenu *subMenu, const wxString& helpString = "");
     wxMenuItem* Append(%ungc wxMenuItem* menuItem);
@@ -48,36 +44,49 @@ class %delete wxMenu : public wxEvtHandler
     void Destroy(int id);
     void Destroy(wxMenuItem *item);
     void Enable(int id, bool enable);
+    %wxchkver_3_1_1 wxMenuItem *FindChildItem(int id, size_t *pos = NULL) const;
     int FindItem(const wxString& itemString) const;
-
-    // %override [wxMenuItem* menuItem, wxMenu* ownerMenu] wxMenu::FindItem(int id);
     // C++ Func: wxMenuItem* FindItem(int id, wxMenu **menu = NULL) const;
-    %override_name wxLua_wxMenu_FindItemById wxMenuItem* FindItem(int id) const;
-
     wxMenuItem* FindItemByPosition(size_t position) const;
     wxString GetHelpString(int id) const;
     wxString GetLabel(int id) const;
+    %wxchkver_3_1_1 wxString GetLabelText(int id) const;
     size_t GetMenuItemCount() const;
     wxMenuItemList& GetMenuItems() const;
     wxString GetTitle() const;
-    wxMenuItem* Insert(size_t pos, int id, const wxString& item, const wxString& helpString = "", wxItemKind kind = wxITEM_NORMAL);
     wxMenuItem* Insert(size_t pos, %ungc wxMenuItem *menuItem);
+    wxMenuItem* Insert(size_t pos, int id, const wxString& item, const wxString& helpString = "", wxItemKind kind = wxITEM_NORMAL);
+    %wxchkver_3_1_1 wxMenuItem* Insert(size_t pos, int id, const wxString& text, wxMenu* submenu, const wxString& help = wxEmptyString);
     wxMenuItem* InsertCheckItem(size_t pos, int id, const wxString& item, const wxString& helpString = "");
     wxMenuItem* InsertRadioItem(size_t pos, int id, const wxString& item, const wxString& helpString = "");
     wxMenuItem* InsertSeparator(size_t pos);
     bool IsChecked(int id) const;
     bool IsEnabled(int id) const;
-    wxMenuItem* Prepend(int id, const wxString& item, const wxString& helpString = "", wxItemKind kind = wxITEM_NORMAL);
     wxMenuItem* Prepend(%ungc wxMenuItem *item);
+    wxMenuItem* Prepend(int id, const wxString& item, const wxString& helpString = "", wxItemKind kind = wxITEM_NORMAL);
+    %wxchkver_3_1_1 wxMenuItem* Prepend(int id, const wxString& text, wxMenu* submenu, const wxString& help = wxEmptyString);
     wxMenuItem* PrependCheckItem(int id, const wxString& item, const wxString& helpString = "");
     wxMenuItem* PrependRadioItem(int id, const wxString& item, const wxString& helpString = "");
     wxMenuItem* PrependSeparator();
-    %gc wxMenuItem* Remove(wxMenuItem *item);
     %gc wxMenuItem* Remove(int id);
+    %gc wxMenuItem* Remove(wxMenuItem *item);
     void SetHelpString(int id, const wxString& helpString);
     void SetLabel(int id, const wxString& label);
     void SetTitle(const wxString& title);
     void UpdateUI(wxEvtHandler* source = NULL);
+    %wxchkver_3_1_1 void SetInvokingWindow(wxWindow *win);
+    %wxchkver_3_1_1 wxWindow *GetInvokingWindow() const;
+    %wxchkver_3_1_1 wxWindow *GetWindow() const;
+    %wxchkver_3_1_1 long GetStyle() const;
+    %wxchkver_3_1_1 void SetParent(wxMenu *parent);
+    %wxchkver_3_1_1 wxMenu *GetParent() const;
+    %wxchkver_3_1_1 virtual void Attach(wxMenuBar *menubar);
+    %wxchkver_3_1_1 virtual void Detach();
+    %wxchkver_3_1_1 bool IsAttached() const;
+    %override_name wxLua_wxCreateMenu_constructor wxMenu(LuaTable, const wxString& title = "", long style = 0);
+    %override_name wxLua_wxMenu_FindItemById wxMenuItem* FindItem(int id) const;
+    // %override [wxMenuItem* menuItem, wxMenu* ownerMenu] wxMenu::FindItem(int id);
+    // C++ Func: wxMenuItem* FindItem(int id, wxMenu **menu = NULL) const;
 };
 
 // ---------------------------------------------------------------------------
