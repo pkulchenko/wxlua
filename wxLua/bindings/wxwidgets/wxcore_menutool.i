@@ -138,46 +138,55 @@ class wxMenuBar : public wxWindow
 
 class %delete wxMenuItem : public wxObject
 {
-    %ungc_this wxMenuItem(wxMenu *parentMenu = NULL, int id = wxID_SEPARATOR, const wxString& text = "", const wxString& help = "", wxItemKind kind = wxITEM_NORMAL, wxMenu *subMenu = NULL);
 
+    %ungc_this wxMenuItem(wxMenu *parentMenu = NULL, int id = wxID_SEPARATOR, const wxString& text = "", const wxString& help = "", wxItemKind kind = wxITEM_NORMAL, wxMenu *subMenu = NULL);
     void Check(bool check);
     void Enable(bool enable);
+    !%wxchkver_3_0 || %wxcompat_2_8 static wxString GetLabelFromText(const wxString& text);
+    %wxchkver_2_8 static wxString GetLabelText(const wxString& text);
     %win wxColour GetBackgroundColour() const;
     %win wxBitmap GetBitmap(bool checked = true) const;
     %win wxBitmap& GetDisabledBitmap() const;
     %win wxFont GetFont() const;
     wxString GetHelp() const;
     int GetId() const;
+    %wxchkver_2_8 wxString GetItemLabel() const;
+    %wxchkver_2_8 wxString GetItemLabelText() const;
     wxItemKind GetKind() const;
+    !%wxchkver_3_0 || %wxcompat_2_8 wxString GetLabel() const;
     %win int GetMarginWidth() const;
     wxMenu* GetMenu() const;
+    %wxchkver_3_1_1 wxString GetName() const;
     wxMenu* GetSubMenu() const;
+    !%wxchkver_3_0 || %wxcompat_2_8 wxString GetText() const;
     %win wxColour& GetTextColour() const;
+    %wxchkver_3_1_1 static wxAcceleratorEntry *GetAccelFromString(const wxString& label);
+    %wxchkver_3_1_1 wxAcceleratorEntry *GetAccel() const;
+    %wxchkver_3_1_1 bool IsCheck() const;
     bool IsCheckable() const;
     bool IsChecked() const;
     bool IsEnabled() const;
+    %wxchkver_3_1_1 bool IsRadio() const;
     bool IsSeparator() const;
     bool IsSubMenu() const;
     %win void SetBackgroundColour(const wxColour& colour) const;
-    void SetBitmap(const wxBitmap& bmp);
+    %wxchkver_3_1_1 void SetBitmap(const wxBitmap& bmp, bool checked = true);
     %win void SetBitmaps(const wxBitmap& checked, const wxBitmap& unchecked = wxNullBitmap) const;
     %win void SetDisabledBitmap(const wxBitmap& disabled);
     %win void SetFont(const wxFont& font) const;
     void SetHelp(const wxString& helpString) const;
+    %wxchkver_2_8 void SetItemLabel(const wxString& label);
     %win void SetMarginWidth(int width) const;
     void SetMenu(wxMenu* menu);
     void SetSubMenu(wxMenu* menu);
-    %win void SetTextColour(const wxColour& colour) const;
-
-    %wxchkver_2_8 void SetItemLabel(const wxString& label);
-    %wxchkver_2_8 wxString GetItemLabel() const;
-    %wxchkver_2_8 wxString GetItemLabelText() const;
-    %wxchkver_2_8 static wxString GetLabelText(const wxString& text);
-
-    !%wxchkver_3_0 || %wxcompat_2_8 wxString GetLabel() const;
-    !%wxchkver_3_0 || %wxcompat_2_8 static wxString GetLabelFromText(const wxString& text);
-    !%wxchkver_3_0 || %wxcompat_2_8 wxString GetText() const;
     !%wxchkver_3_0 || %wxcompat_2_8 void SetText(const wxString& text);
+    %win void SetTextColour(const wxColour& colour) const;
+    %wxchkver_3_1_1 void SetAccel(wxAcceleratorEntry *accel);
+    !%wxchkver_3_0 || %wxcompat_2_8 static wxString GetLabelFromText(const wxString& text);
+    !%wxchkver_3_0 || %wxcompat_2_8 void SetText(const wxString& text);
+    !%wxchkver_3_0 || %wxcompat_2_8 wxString GetLabel() const;
+    !%wxchkver_3_0 || %wxcompat_2_8 wxString GetText() const;
+    !%wxchkver_3_1_1 void SetBitmap(const wxBitmap& bmp);
 };
 
 // ---------------------------------------------------------------------------
