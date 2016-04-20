@@ -169,21 +169,15 @@ class %delete wxMenuItem : public wxObject
     void SetSubMenu(wxMenu* menu);
     %win void SetTextColour(const wxColour& colour) const;
 
-    %wxchkver_2_8 void SetItemLabel(const wxString& str);
+    %wxchkver_2_8 void SetItemLabel(const wxString& label);
     %wxchkver_2_8 wxString GetItemLabel() const;
     %wxchkver_2_8 wxString GetItemLabelText() const;
-
-    %wxchkver_2_8 static wxString GetLabelText(const wxString& label);
+    %wxchkver_2_8 static wxString GetLabelText(const wxString& text);
 
     !%wxchkver_3_0 || %wxcompat_2_8 wxString GetLabel() const;
     !%wxchkver_3_0 || %wxcompat_2_8 static wxString GetLabelFromText(const wxString& text);
     !%wxchkver_3_0 || %wxcompat_2_8 wxString GetText() const;
     !%wxchkver_3_0 || %wxcompat_2_8 void SetText(const wxString& text);
-
-    %wxchkver_3_0 wxString GetItemLabelText() const;
-    %wxchkver_3_0 static wxString GetLabelText(const wxString& label);
-    %wxchkver_3_0 wxString GetItemLabel() const;
-    %wxchkver_3_0 void SetItemLabel(const wxString& str);
 };
 
 // ---------------------------------------------------------------------------
