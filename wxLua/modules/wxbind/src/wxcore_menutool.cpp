@@ -2047,41 +2047,6 @@ static int LUACALL wxLua_wxMenuItem_Enable(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
-static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_GetAccel[] = { &wxluatype_wxMenuItem, NULL };
-static int LUACALL wxLua_wxMenuItem_GetAccel(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_GetAccel[1] = {{ wxLua_wxMenuItem_GetAccel, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMenuItem_GetAccel }};
-//     %wxchkver_3_1_1 wxAcceleratorEntry *GetAccel() const;
-static int LUACALL wxLua_wxMenuItem_GetAccel(lua_State *L)
-{
-    // get this
-    wxMenuItem * self = (wxMenuItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenuItem);
-    // call GetAccel
-    wxAcceleratorEntry* returns = (wxAcceleratorEntry*)self->GetAccel();
-    // push the result datatype
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxAcceleratorEntry);
-
-    return 1;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_GetAccelFromString[] = { &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxMenuItem_GetAccelFromString(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_GetAccelFromString[1] = {{ wxLua_wxMenuItem_GetAccelFromString, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxMenuItem_GetAccelFromString }};
-//     %wxchkver_3_1_1 static wxAcceleratorEntry *GetAccelFromString(const wxString& label);
-static int LUACALL wxLua_wxMenuItem_GetAccelFromString(lua_State *L)
-{
-    // const wxString label
-    const wxString label = wxlua_getwxStringtype(L, 1);
-    // call GetAccelFromString
-    wxAcceleratorEntry* returns = (wxAcceleratorEntry*)wxMenuItem::GetAccelFromString(label);
-    // push the result datatype
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxAcceleratorEntry);
-
-    return 1;
-}
-
-#endif // (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
-
 #if (wxLUA_USE_wxColourPenBrush) && ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_GetBackgroundColour[] = { &wxluatype_wxMenuItem, NULL };
 static int LUACALL wxLua_wxMenuItem_GetBackgroundColour(lua_State *L);
@@ -2585,25 +2550,6 @@ static int LUACALL wxLua_wxMenuItem_IsSubMenu(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
-static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_SetAccel[] = { &wxluatype_wxMenuItem, &wxluatype_wxAcceleratorEntry, NULL };
-static int LUACALL wxLua_wxMenuItem_SetAccel(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_SetAccel[1] = {{ wxLua_wxMenuItem_SetAccel, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_SetAccel }};
-//     %wxchkver_3_1_1 void SetAccel(wxAcceleratorEntry *accel);
-static int LUACALL wxLua_wxMenuItem_SetAccel(lua_State *L)
-{
-    // wxAcceleratorEntry accel
-    wxAcceleratorEntry * accel = (wxAcceleratorEntry *)wxluaT_getuserdatatype(L, 2, wxluatype_wxAcceleratorEntry);
-    // get this
-    wxMenuItem * self = (wxMenuItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenuItem);
-    // call SetAccel
-    self->SetAccel(accel);
-
-    return 0;
-}
-
-#endif // (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
-
 #if (wxLUA_USE_wxColourPenBrush) && ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_SetBackgroundColour[] = { &wxluatype_wxMenuItem, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxMenuItem_SetBackgroundColour(lua_State *L);
@@ -2992,11 +2938,6 @@ wxLuaBindMethod wxMenuItem_methods[] = {
     { "Check", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_Check, 1, NULL },
     { "Enable", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_Enable, 1, NULL },
 
-#if (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
-    { "GetAccel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_GetAccel, 1, NULL },
-    { "GetAccelFromString", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxMenuItem_GetAccelFromString, 1, NULL },
-#endif // (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
-
 #if (wxLUA_USE_wxColourPenBrush) && ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
     { "GetBackgroundColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_GetBackgroundColour, 1, NULL },
 #endif // (wxLUA_USE_wxColourPenBrush) && ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
@@ -3063,10 +3004,6 @@ wxLuaBindMethod wxMenuItem_methods[] = {
 
     { "IsSeparator", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_IsSeparator, 1, NULL },
     { "IsSubMenu", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_IsSubMenu, 1, NULL },
-
-#if (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
-    { "SetAccel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetAccel, 1, NULL },
-#endif // (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
 
 #if (wxLUA_USE_wxColourPenBrush) && ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
     { "SetBackgroundColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetBackgroundColour, 1, NULL },

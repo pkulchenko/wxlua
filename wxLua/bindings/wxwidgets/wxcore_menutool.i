@@ -86,7 +86,6 @@ class %delete wxMenu : public wxEvtHandler
     %override_name wxLua_wxCreateMenu_constructor wxMenu(LuaTable, const wxString& title = "", long style = 0);
     %override_name wxLua_wxMenu_FindItemById wxMenuItem* FindItem(int id) const;
     // %override [wxMenuItem* menuItem, wxMenu* ownerMenu] wxMenu::FindItem(int id);
-    // C++ Func: wxMenuItem* FindItem(int id, wxMenu **menu = NULL) const;
 };
 
 // ---------------------------------------------------------------------------
@@ -160,8 +159,8 @@ class %delete wxMenuItem : public wxObject
     wxMenu* GetSubMenu() const;
     !%wxchkver_3_0 || %wxcompat_2_8 wxString GetText() const;
     %win wxColour& GetTextColour() const;
-    %wxchkver_3_1_1 static wxAcceleratorEntry *GetAccelFromString(const wxString& label);
-    %wxchkver_3_1_1 wxAcceleratorEntry *GetAccel() const;
+    // static wxAcceleratorEntry *GetAccelFromString(const wxString& label);
+    // wxAcceleratorEntry *GetAccel() const;
     %wxchkver_3_1_1 bool IsCheck() const;
     bool IsCheckable() const;
     bool IsChecked() const;
@@ -181,7 +180,7 @@ class %delete wxMenuItem : public wxObject
     void SetSubMenu(wxMenu* menu);
     !%wxchkver_3_0 || %wxcompat_2_8 void SetText(const wxString& text);
     %win void SetTextColour(const wxColour& colour) const;
-    %wxchkver_3_1_1 void SetAccel(wxAcceleratorEntry *accel);
+    // void SetAccel(wxAcceleratorEntry *accel);
     !%wxchkver_3_0 || %wxcompat_2_8 static wxString GetLabelFromText(const wxString& text);
     !%wxchkver_3_0 || %wxcompat_2_8 void SetText(const wxString& text);
     !%wxchkver_3_0 || %wxcompat_2_8 wxString GetLabel() const;
