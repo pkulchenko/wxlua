@@ -25,12 +25,12 @@
 
 class wxButton : public wxControl
 {
-    wxButton( );
-    wxButton(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxButton" );
-    bool Create(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxButton" );
+    wxButton();
+    wxButton(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxButton");
+    bool Create(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxButton");
 
     static wxSize GetDefaultSize(); // static is ok, use on existing button
-    void     SetDefault( );
+    void     SetDefault();
 
     //wxString GetLabel() const;                 // in wxWindow
     //void     SetLabel(const wxString& label);  // in wxWindow
@@ -45,20 +45,20 @@ class wxButton : public wxControl
 
 class wxBitmapButton : public wxButton
 {
-    wxBitmapButton( );
-    wxBitmapButton( wxWindow* parent, wxWindowID id, const wxBitmap& bitmap, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxBU_AUTODRAW, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxBitmapButton" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxBitmap& bitmap, const wxPoint& pos, const wxSize& size = wxDefaultSize, long style = wxBU_AUTODRAW, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxBitmapButton" );
+    wxBitmapButton();
+    wxBitmapButton( wxWindow* parent, wxWindowID id, const wxBitmap& bitmap, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxBU_AUTODRAW, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxBitmapButton");
+    bool Create(wxWindow* parent, wxWindowID id, const wxBitmap& bitmap, const wxPoint& pos, const wxSize& size = wxDefaultSize, long style = wxBU_AUTODRAW, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxBitmapButton");
 
     wxBitmap GetBitmapDisabled() const;
     wxBitmap GetBitmapFocus() const;
     %wxchkver_2_8 wxBitmap GetBitmapHover() const;
     wxBitmap GetBitmapLabel() const;
     wxBitmap GetBitmapSelected() const;
-    void     SetBitmapDisabled(const wxBitmap& bitmap );
-    void     SetBitmapFocus(const wxBitmap& bitmap );
-    %wxchkver_2_8 void SetBitmapHover(const wxBitmap& hover );
-    void     SetBitmapLabel(const wxBitmap& bitmap );
-    void     SetBitmapSelected(const wxBitmap& bitmap );
+    void     SetBitmapDisabled(const wxBitmap& bitmap);
+    void     SetBitmapFocus(const wxBitmap& bitmap);
+    %wxchkver_2_8 void SetBitmapHover(const wxBitmap& hover);
+    void     SetBitmapLabel(const wxBitmap& bitmap);
+    void     SetBitmapSelected(const wxBitmap& bitmap);
 };
 
 #endif //wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON
@@ -73,11 +73,11 @@ class wxBitmapButton : public wxButton
 
 class wxToggleButton : public wxControl
 {
-    wxToggleButton( );
-    wxToggleButton(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxToggleButton" );
-    bool Create(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxToggleButton" );
+    wxToggleButton();
+    wxToggleButton(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxToggleButton");
+    bool Create(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxToggleButton");
 
-    void SetValue(bool state );
+    void SetValue(bool state);
     bool GetValue() const;
 
     //wxString GetLabel() const;                 // in wxWindow
@@ -106,17 +106,17 @@ enum wxCheckBoxState
 
 class wxCheckBox : public wxControl
 {
-    wxCheckBox( );
-    wxCheckBox(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& val = wxDefaultValidator, const wxString& name = "wxCheckBox" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& val = wxDefaultValidator, const wxString& name = "wxCheckBox" );
+    wxCheckBox();
+    wxCheckBox(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& val = wxDefaultValidator, const wxString& name = "wxCheckBox");
+    bool Create(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& val = wxDefaultValidator, const wxString& name = "wxCheckBox");
 
     bool GetValue() const;
     wxCheckBoxState Get3StateValue() const;
     bool Is3rdStateAllowedForUser() const;
     bool Is3State() const;
     bool IsChecked() const;
-    void SetValue(const bool state );
-    void Set3StateValue(const wxCheckBoxState state );
+    void SetValue(const bool state);
+    void Set3StateValue(const wxCheckBoxState state);
 };
 
 #endif //wxLUA_USE_wxCheckBox && wxUSE_CHECKBOX
@@ -144,10 +144,10 @@ class wxItemContainerImmutable
     virtual void SetSelection(int n); //= 0;
     virtual int GetSelection() const; //= 0;
 
-    bool SetStringSelection(const wxString& s );
+    bool SetStringSelection(const wxString& s);
     wxString GetStringSelection() const;
 
-    void Select(int n );
+    void Select(int n);
 };
 
 // ---------------------------------------------------------------------------
@@ -159,15 +159,15 @@ class wxItemContainer : public wxItemContainerImmutable
 {
     // no constructor, used only as base class
 
-    int Append(const wxString& item );
+    int Append(const wxString& item);
     int Append(const wxString&  item, voidptr_long number); // C++ is (void *clientData) You can put a number here
-    int Append(const wxString& item, wxClientData *clientData );
+    int Append(const wxString& item, wxClientData *clientData);
 
-    void AppendString( const wxString& item );
+    void AppendString( const wxString& item);
 
     void Append(const wxArrayString& strings);
 
-    int Insert(const wxString& item, unsigned int pos );
+    int Insert(const wxString& item, unsigned int pos);
     int Insert(const wxString&  item, unsigned int pos, voidptr_long number); // C++ is (void *clientData) You can put a number here
     int Insert(const wxString& item, unsigned int pos, wxClientData *clientData);
 
@@ -178,7 +178,7 @@ class wxItemContainer : public wxItemContainerImmutable
     void SetClientData(unsigned int n, voidptr_long number); // C++ is (void *clientData) You can put a number here
     voidptr_long GetClientData(unsigned int n) const; // C++ returns (void *) You get a number here
 
-    void SetClientObject(unsigned int n, wxClientData* clientData );
+    void SetClientObject(unsigned int n, wxClientData* clientData);
     wxClientData* GetClientObject(unsigned int n) const;
 
     bool HasClientObjectData() const;
@@ -210,15 +210,15 @@ class wxControlWithItems : public wxControl, public wxItemContainer
 
 class wxChoice : public wxControlWithItems
 {
-    wxChoice( );
-    wxChoice(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxChoice" );
-    bool Create(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxChoice" );
+    wxChoice();
+    wxChoice(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxChoice");
+    bool Create(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxChoice");
 
     int    GetCurrentSelection() const;
     //int  GetColumns() const;       // Motif only but returns 1 otherwise
-    //void SetColumns(int n = 1 );
+    //void SetColumns(int n = 1);
 
-    void Command(wxCommandEvent& event );
+    void Command(wxCommandEvent& event);
 };
 
 #endif //wxLUA_USE_wxChoice && wxUSE_CHOICE
@@ -237,30 +237,30 @@ class wxChoice : public wxControlWithItems
 
 class wxComboBox : public wxControl, public wxItemContainer
 {
-    wxComboBox( );
-    wxComboBox(wxWindow* parent, wxWindowID id, const wxString& value = "", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxComboBox" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxString& value = "", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxComboBox" );
+    wxComboBox();
+    wxComboBox(wxWindow* parent, wxWindowID id, const wxString& value = "", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxComboBox");
+    bool Create(wxWindow* parent, wxWindowID id, const wxString& value = "", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxComboBox");
 
     bool     CanCopy() const;
     bool     CanCut() const;
     bool     CanPaste() const;
     bool     CanRedo() const;
     bool     CanUndo() const;
-    void     Copy( );
-    void     Cut( );
+    void     Copy();
+    void     Cut();
     %wxchkver_2_8 virtual int GetCurrentSelection() const;
     long     GetInsertionPoint() const;
     long     GetLastPosition() const;
     wxString GetValue() const;
-    void     Paste( );
-    void     Redo( );
-    void     Replace(long from, long to, const wxString& text );
-    void     Remove(long from, long to );
-    void     SetInsertionPoint(long pos );
-    void     SetInsertionPointEnd( );
-    void     SetSelection(long from, long to );
-    void     SetValue(const wxString& text );
-    void     Undo( );
+    void     Paste();
+    void     Redo();
+    void     Replace(long from, long to, const wxString& text);
+    void     Remove(long from, long to);
+    void     SetInsertionPoint(long pos);
+    void     SetInsertionPointEnd();
+    void     SetSelection(long from, long to);
+    void     SetValue(const wxString& text);
+    void     Undo();
 };
 
 #endif //wxLUA_USE_wxComboBox && wxUSE_COMBOBOX
@@ -279,20 +279,20 @@ class wxComboBox : public wxControl, public wxItemContainer
 
 class wxGauge : public wxControl
 {
-    wxGauge( );
-    wxGauge(wxWindow* parent, wxWindowID id, int range, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxGA_HORIZONTAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxGauge" );
-    bool Create(wxWindow* parent, wxWindowID id, int range, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxGA_HORIZONTAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxGauge" );
+    wxGauge();
+    wxGauge(wxWindow* parent, wxWindowID id, int range, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxGA_HORIZONTAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxGauge");
+    bool Create(wxWindow* parent, wxWindowID id, int range, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxGA_HORIZONTAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxGauge");
 
      !%wxchkver_3_1_0 int GetBezelFace() const;
     int GetRange() const;
      !%wxchkver_3_1_0 int GetShadowWidth() const;
     int GetValue() const;
     bool IsVertical() const;
-    %wxchkver_2_8 void Pulse( );
-     !%wxchkver_3_1_0 void SetBezelFace(int width );
-    void SetRange(int range );
-     !%wxchkver_3_1_0 void SetShadowWidth(int width );
-    void SetValue(int pos );
+    %wxchkver_2_8 void Pulse();
+     !%wxchkver_3_1_0 void SetBezelFace(int width);
+    void SetRange(int range);
+     !%wxchkver_3_1_0 void SetShadowWidth(int width);
+    void SetValue(int pos);
 };
 
 #endif //wxLUA_USE_wxGauge && wxUSE_GAUGE
@@ -315,25 +315,25 @@ class wxGauge : public wxControl
 
 class wxListBox : public wxControlWithItems
 {
-    wxListBox( );
-    wxListBox(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxListBox" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxListBox" );
+    wxListBox();
+    wxListBox(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxListBox");
+    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxListBox");
 
-    void     Deselect(int n );
+    void     Deselect(int n);
 
-    // %override [Lua table of int selections] wxListBox::GetSelections( );
+    // %override [Lua table of int selections] wxListBox::GetSelections();
     // C++ Func: int GetSelections(wxArrayInt& selections) const;
     int GetSelections() const;
 
     %wxchkver_2_8 int HitTest(const wxPoint& point) const;
-    //void     InsertItems(int nItems, const wxString items[], int pos );
-    void     InsertItems(const wxArrayString& items, int pos );
+    //void     InsertItems(int nItems, const wxString items[], int pos);
+    void     InsertItems(const wxArrayString& items, int pos);
     bool     IsSelected(int n) const;
-    //void     Set(int n, const wxString* choices );
-    void     Set(const wxArrayString& choices );
-    void     SetFirstItem(int n );
-    void     SetSelection(int n, bool select = true );
-    void     SetStringSelection(const wxString& string, bool select = true );
+    //void     Set(int n, const wxString* choices);
+    void     Set(const wxArrayString& choices);
+    void     SetFirstItem(int n);
+    void     SetSelection(int n, bool select = true);
+    void     SetStringSelection(const wxString& string, bool select = true);
 };
 
 // ---------------------------------------------------------------------------
@@ -345,11 +345,11 @@ class wxListBox : public wxControlWithItems
 
 class wxCheckListBox : public wxListBox
 {
-    wxCheckListBox( );
-    wxCheckListBox(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxCheckListBox" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxCheckListBox" );
+    wxCheckListBox();
+    wxCheckListBox(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxCheckListBox");
+    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxCheckListBox");
 
-    void     Check(int item, bool check = true );
+    void     Check(int item, bool check = true);
     bool     IsChecked(int item) const;
 };
 
@@ -381,9 +381,9 @@ class wxCheckListBox : public wxListBox
 #define wxLC_VIRTUAL
 #define wxLC_VRULES
 
-#define wxLC_MASK_TYPE     //  (wxLC_ICON | wxLC_SMALL_ICON | wxLC_LIST | wxLC_REPORT );
-#define wxLC_MASK_ALIGN    //  (wxLC_ALIGN_TOP | wxLC_ALIGN_LEFT );
-#define wxLC_MASK_SORT     //  (wxLC_SORT_ASCENDING | wxLC_SORT_DESCENDING );
+#define wxLC_MASK_TYPE     //  (wxLC_ICON | wxLC_SMALL_ICON | wxLC_LIST | wxLC_REPORT);
+#define wxLC_MASK_ALIGN    //  (wxLC_ALIGN_TOP | wxLC_ALIGN_LEFT);
+#define wxLC_MASK_SORT     //  (wxLC_SORT_ASCENDING | wxLC_SORT_DESCENDING);
 
 #define wxLIST_ALIGN_DEFAULT
 #define wxLIST_ALIGN_LEFT
@@ -430,21 +430,21 @@ class wxCheckListBox : public wxListBox
 
 class wxListCtrl : public wxControl
 {
-    wxListCtrl( );
-    wxListCtrl(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxLC_ICON, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxListCtrl" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxLC_ICON, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxListCtrl" );
+    wxListCtrl();
+    wxListCtrl(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxLC_ICON, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxListCtrl");
+    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxLC_ICON, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxListCtrl");
 
-    bool     Arrange(int flag = wxLIST_ALIGN_DEFAULT );
-    void     AssignImageList(%ungc wxImageList *imageList, int which );
-    void     ClearAll( );
-    bool     DeleteAllItems( );
-    bool     DeleteColumn(int col );
-    bool     DeleteItem(long item );
-    void     EditLabel(long item );
-    bool     EnsureVisible(long item );
-    long     FindItem(long start, const wxString& str, const bool partial = false );
-    long     FindItem(long start, long data );
-    long     FindItem(long start, const wxPoint& pt, int direction );
+    bool     Arrange(int flag = wxLIST_ALIGN_DEFAULT);
+    void     AssignImageList(%ungc wxImageList *imageList, int which);
+    void     ClearAll();
+    bool     DeleteAllItems();
+    bool     DeleteColumn(int col);
+    bool     DeleteItem(long item);
+    void     EditLabel(long item);
+    bool     EnsureVisible(long item);
+    long     FindItem(long start, const wxString& str, const bool partial = false);
+    long     FindItem(long start, long data);
+    long     FindItem(long start, const wxPoint& pt, int direction);
     bool     GetColumn(int col, wxListItem& item) const;
     int      GetColumnCount() const;
     int      GetColumnWidth(int col) const;
@@ -467,43 +467,43 @@ class wxListCtrl : public wxControl
     long     GetTopItem() const;
     wxRect   GetViewRect() const;
 
-    // %override [long, int flags] wxListCtrl::HitTest(const wxPoint& point );
-    // C++ Func: long HitTest(const wxPoint& point, int& flags );
-    long     HitTest(const wxPoint& point );
+    // %override [long, int flags] wxListCtrl::HitTest(const wxPoint& point);
+    // C++ Func: long HitTest(const wxPoint& point, int& flags);
+    long     HitTest(const wxPoint& point);
 
-    long     InsertColumn(long col, wxListItem& info );
-    long     InsertColumn(long col, const wxString& heading, int format = wxLIST_FORMAT_LEFT, int width = -1 );
-    long     InsertItem(wxListItem& info );
-    long     InsertItem(long index, const wxString& label );
-    long     InsertItem(long index, int imageIndex );
-    long     InsertItem(long index, const wxString& label, int imageIndex );
+    long     InsertColumn(long col, wxListItem& info);
+    long     InsertColumn(long col, const wxString& heading, int format = wxLIST_FORMAT_LEFT, int width = -1);
+    long     InsertItem(wxListItem& info);
+    long     InsertItem(long index, const wxString& label);
+    long     InsertItem(long index, int imageIndex);
+    long     InsertItem(long index, const wxString& label, int imageIndex);
     //virtual wxListItemAttr * OnGetItemAttr(long item) const;
-    //virtual int OnGetItemImage(long item );
+    //virtual int OnGetItemImage(long item);
     //virtual wxString OnGetItemText(long item, long column) const;
-    //void RefreshItem(long item );
-    //void RefreshItems(long itemFrom, long itemTo );
-    bool     ScrollList(int dx, int dy );
+    //void RefreshItem(long item);
+    //void RefreshItems(long itemFrom, long itemTo);
+    bool     ScrollList(int dx, int dy);
     //void     SetBackgroundColour(const wxColour& col) - see wxWindow
-    bool     SetColumn(int col, wxListItem& item );
-    bool     SetColumnWidth(int col, int width );
-    void     SetImageList(wxImageList* imageList, int which );
-    bool     SetItem(wxListItem& info );
-    long     SetItem(long index, int col, const wxString& label, int imageId = -1 );
-    void     SetItemBackgroundColour(long item, const wxColour& col );
-    bool     SetItemColumnImage(long item, long column, int image );
-    //void SetItemCount(long count );
-    bool     SetItemData(long item, long data );
+    bool     SetColumn(int col, wxListItem& item);
+    bool     SetColumnWidth(int col, int width);
+    void     SetImageList(wxImageList* imageList, int which);
+    bool     SetItem(wxListItem& info);
+    long     SetItem(long index, int col, const wxString& label, int imageId = -1);
+    void     SetItemBackgroundColour(long item, const wxColour& col);
+    bool     SetItemColumnImage(long item, long column, int image);
+    //void SetItemCount(long count);
+    bool     SetItemData(long item, long data);
     bool     SetItemImage(long item, int image); // int selImage) selImage is deprecated and isn't used anyway
-    bool     SetItemPosition(long item, const wxPoint& pos );
-    bool     SetItemState(long item, long state, long stateMask );
-    void     SetItemText(long item, const wxString& text );
-    void     SetItemTextColour(long item, const wxColour& col );
-    void     SetSingleStyle(long style, const bool add = true );
-    void     SetTextColour(const wxColour& col );
+    bool     SetItemPosition(long item, const wxPoint& pos);
+    bool     SetItemState(long item, long state, long stateMask);
+    void     SetItemText(long item, const wxString& text);
+    void     SetItemTextColour(long item, const wxColour& col);
+    void     SetSingleStyle(long style, const bool add = true);
+    void     SetTextColour(const wxColour& col);
     //void     SetWindowStyleFlag(long style) - see wxWindow
 
-    // %override bool SortItems(Lua function(long item1, long item2, long data) returning int, long data );
-    // C++ Func: bool SortItems(wxListCtrlCompare fnSortCallBack, long data );
+    // %override bool SortItems(Lua function(long item1, long item2, long data) returning int, long data);
+    // C++ Func: bool SortItems(wxListCtrlCompare fnSortCallBack, long data);
     // Note: the data can only be a number, but you can create a table where the data is
     // an index of it if you need more information.
     // Also, the item1 and item2 are NOT the indexes in the wxListCtrl, but are the
@@ -511,7 +511,7 @@ class wxListCtrl : public wxControl
     // you may want to make this "data" equal to an index in a table where you
     // store more information needed for sorting.
     // Your Lua function should return 1, 0, -1 for item1 > item2, item1 == item2, item1 < item2
-    bool SortItems(LuaFunction fnSortCallBack, long data );
+    bool SortItems(LuaFunction fnSortCallBack, long data);
 };
 
 
@@ -524,7 +524,7 @@ class wxLuaListCtrl : public wxListCtrl
     wxLuaListCtrl(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxLC_REPORT|wxLC_VIRTUAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxLuaListCtrl");
 
     // SetItemCount is needed for wxLC_VIRTUAL
-    void SetItemCount(long count );
+    void SetItemCount(long count);
 
     // This function must be overridden
     // virtual wxString OnGetItemText (long item, long column) const;
@@ -544,18 +544,18 @@ class wxLuaListCtrl : public wxListCtrl
 
 class %delete wxListItemAttr
 {
-    wxListItemAttr(const wxColour& colText = wxNullColour, const wxColour& colBack = wxNullColour, const wxFont& font = wxNullFont );
+    wxListItemAttr(const wxColour& colText = wxNullColour, const wxColour& colBack = wxNullColour, const wxFont& font = wxNullFont);
 
-    %wxchkver_2_8 void AssignFrom(const wxListItemAttr& source );
-    wxColour GetBackgroundColour( );
-    wxFont GetFont( );
-    wxColour GetTextColour( );
-    bool HasBackgroundColour( );
-    bool HasFont( );
-    bool HasTextColour( );
-    void SetBackgroundColour(const wxColour& colBack );
-    void SetFont(const wxFont& font );
-    void SetTextColour(const wxColour& colText );
+    %wxchkver_2_8 void AssignFrom(const wxListItemAttr& source);
+    wxColour GetBackgroundColour();
+    wxFont GetFont();
+    wxColour GetTextColour();
+    bool HasBackgroundColour();
+    bool HasFont();
+    bool HasTextColour();
+    void SetBackgroundColour(const wxColour& colBack);
+    void SetFont(const wxFont& font);
+    void SetTextColour(const wxColour& colText);
 };
 
 // ---------------------------------------------------------------------------
@@ -571,38 +571,38 @@ enum wxListColumnFormat
 
 class %delete wxListItem : public wxObject
 {
-    wxListItem( );
-    wxListItem(const wxListItem& item );
+    wxListItem();
+    wxListItem(const wxListItem& item);
 
-    void     Clear( );
-    void     ClearAttributes( );
-    wxListColumnFormat GetAlign( );
-    wxListItemAttr *GetAttributes( );
+    void     Clear();
+    void     ClearAttributes();
+    wxListColumnFormat GetAlign();
+    wxListItemAttr *GetAttributes();
     wxColour GetBackgroundColour() const;
-    int      GetColumn( );
-    long     GetData( );
+    int      GetColumn();
+    long     GetData();
     wxFont   GetFont() const;
-    long     GetId( );
-    int      GetImage( );
-    long     GetMask( );
-    long     GetState( );
-    wxString GetText( );
+    long     GetId();
+    int      GetImage();
+    long     GetMask();
+    long     GetState();
+    wxString GetText();
     wxColour GetTextColour() const;
-    int      GetWidth( );
-    bool     HasAttributes( );
-    void     SetAlign(wxListColumnFormat align );
-    void     SetBackgroundColour(const wxColour& colBack );
-    void     SetColumn(int col );
-    void     SetData(long data );
-    void     SetFont(const wxFont& font );
-    void     SetId(long id );
-    void     SetImage(int image );
-    void     SetMask(long mask );
-    void     SetState(long state );
-    void     SetStateMask(long stateMask );
-    void     SetText(const wxString& text );
-    void     SetTextColour(const wxColour& colText );
-    void     SetWidth(int width );
+    int      GetWidth();
+    bool     HasAttributes();
+    void     SetAlign(wxListColumnFormat align);
+    void     SetBackgroundColour(const wxColour& colBack);
+    void     SetColumn(int col);
+    void     SetData(long data);
+    void     SetFont(const wxFont& font);
+    void     SetId(long id);
+    void     SetImage(int image);
+    void     SetMask(long mask);
+    void     SetState(long state);
+    void     SetStateMask(long stateMask);
+    void     SetText(const wxString& text);
+    void     SetTextColour(const wxColour& colText);
+    void     SetWidth(int width);
 };
 
 // ---------------------------------------------------------------------------
@@ -610,30 +610,30 @@ class %delete wxListItem : public wxObject
 
 class %delete wxListEvent : public wxNotifyEvent
 {
-    %wxEventType wxEVT_COMMAND_LIST_BEGIN_DRAG             // EVT_LIST_BEGIN_DRAG(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_BEGIN_RDRAG            // EVT_LIST_BEGIN_RDRAG(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_BEGIN_LABEL_EDIT       // EVT_LIST_BEGIN_LABEL_EDIT(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_COL_CLICK              // EVT_LIST_COL_CLICK(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_DELETE_ALL_ITEMS       // EVT_LIST_DELETE_ALL_ITEMS(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_DELETE_ITEM            // EVT_LIST_DELETE_ITEM(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_END_LABEL_EDIT         // EVT_LIST_END_LABEL_EDIT(id, fn );
-    !%wxchkver_2_6 %wxEventType wxEVT_COMMAND_LIST_GET_INFO // EVT_LIST_GET_INFO(id, fn );
-    !%wxchkver_2_6 %wxEventType wxEVT_COMMAND_LIST_SET_INFO // EVT_LIST_SET_INFO(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_INSERT_ITEM            // EVT_LIST_INSERT_ITEM(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_ITEM_ACTIVATED         // EVT_LIST_ITEM_ACTIVATED(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_ITEM_DESELECTED        // EVT_LIST_ITEM_DESELECTED(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_ITEM_MIDDLE_CLICK      // EVT_LIST_ITEM_MIDDLE_CLICK(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_ITEM_RIGHT_CLICK       // EVT_LIST_ITEM_RIGHT_CLICK(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_ITEM_SELECTED          // EVT_LIST_ITEM_SELECTED(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_KEY_DOWN               // EVT_LIST_KEY_DOWN(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_CACHE_HINT             // EVT_LIST_CACHE_HINT(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_COL_RIGHT_CLICK        // EVT_LIST_COL_RIGHT_CLICK(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_COL_BEGIN_DRAG         // EVT_LIST_COL_BEGIN_DRAG(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_COL_DRAGGING           // EVT_LIST_COL_DRAGGING(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_COL_END_DRAG           // EVT_LIST_COL_END_DRAG(id, fn );
-    %wxEventType wxEVT_COMMAND_LIST_ITEM_FOCUSED           // EVT_LIST_ITEM_FOCUSED(id, fn );
+    %wxEventType wxEVT_COMMAND_LIST_BEGIN_DRAG             // EVT_LIST_BEGIN_DRAG(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_BEGIN_RDRAG            // EVT_LIST_BEGIN_RDRAG(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_BEGIN_LABEL_EDIT       // EVT_LIST_BEGIN_LABEL_EDIT(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_COL_CLICK              // EVT_LIST_COL_CLICK(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_DELETE_ALL_ITEMS       // EVT_LIST_DELETE_ALL_ITEMS(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_DELETE_ITEM            // EVT_LIST_DELETE_ITEM(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_END_LABEL_EDIT         // EVT_LIST_END_LABEL_EDIT(id, fn);
+    !%wxchkver_2_6 %wxEventType wxEVT_COMMAND_LIST_GET_INFO // EVT_LIST_GET_INFO(id, fn);
+    !%wxchkver_2_6 %wxEventType wxEVT_COMMAND_LIST_SET_INFO // EVT_LIST_SET_INFO(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_INSERT_ITEM            // EVT_LIST_INSERT_ITEM(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_ITEM_ACTIVATED         // EVT_LIST_ITEM_ACTIVATED(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_ITEM_DESELECTED        // EVT_LIST_ITEM_DESELECTED(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_ITEM_MIDDLE_CLICK      // EVT_LIST_ITEM_MIDDLE_CLICK(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_ITEM_RIGHT_CLICK       // EVT_LIST_ITEM_RIGHT_CLICK(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_ITEM_SELECTED          // EVT_LIST_ITEM_SELECTED(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_KEY_DOWN               // EVT_LIST_KEY_DOWN(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_CACHE_HINT             // EVT_LIST_CACHE_HINT(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_COL_RIGHT_CLICK        // EVT_LIST_COL_RIGHT_CLICK(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_COL_BEGIN_DRAG         // EVT_LIST_COL_BEGIN_DRAG(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_COL_DRAGGING           // EVT_LIST_COL_DRAGGING(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_COL_END_DRAG           // EVT_LIST_COL_END_DRAG(id, fn);
+    %wxEventType wxEVT_COMMAND_LIST_ITEM_FOCUSED           // EVT_LIST_ITEM_FOCUSED(id, fn);
 
-    wxListEvent(wxEventType commandType = 0, int id = 0 );
+    wxListEvent(wxEventType commandType = 0, int id = 0);
 
     //long GetCacheFrom() const; // - only useful for virtual controls
     //long GetCacheTo() const;
@@ -655,18 +655,18 @@ class %delete wxListEvent : public wxNotifyEvent
 
 class wxListView : public wxListCtrl
 {
-    wxListView( );
-    wxListView(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxLC_ICON, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxListView" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxLC_ICON, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxListView" );
+    wxListView();
+    wxListView(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxLC_ICON, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxListView");
+    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxLC_ICON, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxListView");
 
-    void ClearColumnImage(int col );
-    void Focus(long index );
+    void ClearColumnImage(int col);
+    void Focus(long index);
     long GetFirstSelected() const;
     long GetFocusedItem() const;
     long GetNextSelected(long item) const;
-    bool IsSelected(long index );
-    void Select(long n, bool on = true );
-    void SetColumnImage(int col, int image );
+    bool IsSelected(long index);
+    void Select(long n, bool on = true);
+    void SetColumnImage(int col, int image);
 };
 
 #endif //wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL
@@ -686,26 +686,26 @@ class wxListView : public wxListCtrl
 
 class wxRadioBox : public wxControl
 {
-    wxRadioBox( );
-    wxRadioBox(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& point = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, int majorDimension = 0, long style = wxRA_SPECIFY_COLS, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxRadioBox" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& point = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, int majorDimension = 0, long style = wxRA_SPECIFY_COLS, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxRadioBox" );
+    wxRadioBox();
+    wxRadioBox(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& point = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, int majorDimension = 0, long style = wxRA_SPECIFY_COLS, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxRadioBox");
+    bool Create(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& point = wxDefaultPosition, const wxSize& size = wxDefaultSize, const wxArrayString& choices = wxLuaNullSmartwxArrayString, int majorDimension = 0, long style = wxRA_SPECIFY_COLS, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxRadioBox");
 
     // these are marked deprecated in 2.6, use wxWindow::Get/SetLabel and Get/SetString below
     // wxString GetLabel() const; // - see wxWindow
     // void SetLabel(const wxString& label); // - see wxWindow
     // wxString GetLabel(int n) const;
-    // void SetLabel(int n, const wxString& label );
+    // void SetLabel(int n, const wxString& label);
 
-    void Enable(bool enable );
-    void Enable(int n, bool enable );
+    void Enable(bool enable);
+    void Enable(int n, bool enable);
     int FindString(const wxString& string) const;
     int GetCount() const;
     int GetSelection() const;
     wxString GetStringSelection() const;
     wxString GetString(int n) const;
-    void SetString(int n, const wxString &label );
-    void SetSelection(int n );
-    void SetStringSelection(const wxString& string );
+    void SetString(int n, const wxString &label);
+    void SetSelection(int n);
+    void SetStringSelection(const wxString& string);
     //bool Show(bool show = true); // see wxWindow
     bool Show(int item, bool show); // must specify both for overload
 };
@@ -725,12 +725,12 @@ class wxRadioBox : public wxControl
 
 class wxRadioButton : public wxControl
 {
-    wxRadioButton( );
-    wxRadioButton(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxRadioButton" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxRadioButton" );
+    wxRadioButton();
+    wxRadioButton(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxRadioButton");
+    bool Create(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxRadioButton");
 
     bool GetValue() const;
-    void SetValue(const bool value );
+    void SetValue(const bool value);
 };
 
 #endif //wxLUA_USE_wxRadioButton && wxUSE_RADIOBTN
@@ -747,16 +747,16 @@ class wxRadioButton : public wxControl
 
 class wxScrollBar : public wxControl
 {
-    wxScrollBar( );
-    wxScrollBar(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSB_HORIZONTAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxScrollBar" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSB_HORIZONTAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxScrollBar" );
+    wxScrollBar();
+    wxScrollBar(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSB_HORIZONTAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxScrollBar");
+    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSB_HORIZONTAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxScrollBar");
 
     int GetRange() const;
     int GetPageSize() const;
     int GetThumbPosition() const;
     int GetThumbSize() const;
-    void SetThumbPosition(int viewStart );
-    virtual void SetScrollbar(int position, int thumbSize, int range, int pageSize, const bool refresh = true );
+    void SetThumbPosition(int viewStart);
+    virtual void SetScrollbar(int position, int thumbSize, int range, int pageSize, const bool refresh = true);
 };
 
 #endif //wxLUA_USE_wxScrollBar && wxUSE_SCROLLBAR
@@ -782,12 +782,12 @@ class wxScrollBar : public wxControl
 
 class wxSlider : public wxControl
 {
-    wxSlider( );
-    wxSlider(wxWindow* parent, wxWindowID id, int value , int minValue, int maxValue, const wxPoint& point = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSL_HORIZONTAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxSlider" );
-    bool Create(wxWindow* parent, wxWindowID id, int value , int minValue, int maxValue, const wxPoint& point = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSL_HORIZONTAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxSlider" );
+    wxSlider();
+    wxSlider(wxWindow* parent, wxWindowID id, int value , int minValue, int maxValue, const wxPoint& point = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSL_HORIZONTAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxSlider");
+    bool Create(wxWindow* parent, wxWindowID id, int value , int minValue, int maxValue, const wxPoint& point = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSL_HORIZONTAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxSlider");
 
-    void ClearSel( );
-    void ClearTicks( );
+    void ClearSel();
+    void ClearTicks();
     int GetLineSize() const;
     int GetMax() const;
     int GetMin() const;
@@ -797,14 +797,14 @@ class wxSlider : public wxControl
     int GetThumbLength() const;
     int GetTickFreq() const;
     int GetValue() const;
-    void SetLineSize(int lineSize );
-    void SetPageSize(int pageSize );
-    void SetRange(int minValue, int maxValue );
-    void SetSelection(int startPos, int endPos );
-    void SetThumbLength(int len );
-    void SetTick(int tickPos );
-    void SetTickFreq(int n, int pos );
-    void SetValue(int value );
+    void SetLineSize(int lineSize);
+    void SetPageSize(int pageSize);
+    void SetRange(int minValue, int maxValue);
+    void SetSelection(int startPos, int endPos);
+    void SetThumbLength(int len);
+    void SetTick(int tickPos);
+    void SetTickFreq(int n, int pos);
+    void SetValue(int value);
 };
 
 #endif //wxLUA_USE_wxSlider && wxUSE_SLIDER
@@ -823,15 +823,15 @@ class wxSlider : public wxControl
 
 class wxSpinButton : public wxControl
 {
-    wxSpinButton( );
-    wxSpinButton(wxWindow *parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_VERTICAL | wxSP_ARROW_KEYS, const wxString& name = "wxSpinButton" );
-    bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_VERTICAL | wxSP_ARROW_KEYS, const wxString& name = "wxSpinButton" );
+    wxSpinButton();
+    wxSpinButton(wxWindow *parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_VERTICAL | wxSP_ARROW_KEYS, const wxString& name = "wxSpinButton");
+    bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_VERTICAL | wxSP_ARROW_KEYS, const wxString& name = "wxSpinButton");
 
     int GetMax() const;
     int GetMin() const;
     int GetValue() const;
-    void SetRange(int min, int max );
-    void SetValue(int value );
+    void SetRange(int min, int max);
+    void SetValue(int value);
 };
 
 // ---------------------------------------------------------------------------
@@ -842,15 +842,15 @@ class wxSpinButton : public wxControl
 
 class %delete wxSpinEvent : public wxNotifyEvent
 {
-    %wxEventType wxEVT_SCROLL_LINEUP     // EVT_SPIN_UP(winid, func );
-    %wxEventType wxEVT_SCROLL_LINEDOWN   // EVT_SPIN_DOWN(winid, func );
-    %wxEventType wxEVT_SCROLL_THUMBTRACK // EVT_SPIN(winid, func );
+    %wxEventType wxEVT_SCROLL_LINEUP     // EVT_SPIN_UP(winid, func);
+    %wxEventType wxEVT_SCROLL_LINEDOWN   // EVT_SPIN_DOWN(winid, func);
+    %wxEventType wxEVT_SCROLL_THUMBTRACK // EVT_SPIN(winid, func);
     //%wxEventType wxEVT_COMMAND_SPINCTRL_UPDATED - actually a wxCommandEvent is sent
 
-    wxSpinEvent(wxEventType commandType = wxEVT_NULL, int id = 0 );
+    wxSpinEvent(wxEventType commandType = wxEVT_NULL, int id = 0);
 
     int GetPosition() const;
-    void SetPosition(int pos );
+    void SetPosition(int pos);
 };
 
 #endif //wxLUA_USE_wxSpinButton && wxUSE_SPINBTN
@@ -867,17 +867,17 @@ class %delete wxSpinEvent : public wxNotifyEvent
 
 class wxSpinCtrl : public wxControl
 {
-    wxSpinCtrl( );
-    wxSpinCtrl(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& value = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_ARROW_KEYS, int min = 0, int max = 100, int initial = 0, const wxString& name = "wxSpinCtrl" );
-    bool Create(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& value = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_ARROW_KEYS, int min = 0, int max = 100, int initial = 0, const wxString& name = "wxSpinCtrl" );
+    wxSpinCtrl();
+    wxSpinCtrl(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& value = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_ARROW_KEYS, int min = 0, int max = 100, int initial = 0, const wxString& name = "wxSpinCtrl");
+    bool Create(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& value = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_ARROW_KEYS, int min = 0, int max = 100, int initial = 0, const wxString& name = "wxSpinCtrl");
 
     int GetMax() const;
     int GetMin() const;
     int GetValue() const;
-    void SetRange(int minVal, int maxVal );
-    void SetSelection(long from, long to );
-    void SetValue(const wxString& text );
-    void SetValue(int iValue );
+    void SetRange(int minVal, int maxVal);
+    void SetSelection(long from, long to);
+    void SetValue(const wxString& text);
+    void SetValue(int iValue);
 };
 
 #endif //wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL
@@ -925,22 +925,22 @@ typedef long wxTextCoord
 
 class wxTextCtrl : public wxControl
 {
-    wxTextCtrl( );
-    wxTextCtrl(wxWindow *parent, wxWindowID id, const wxString& value = "", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxTextCtrl" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxString& value = "", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxTextCtrl" );
+    wxTextCtrl();
+    wxTextCtrl(wxWindow *parent, wxWindowID id, const wxString& value = "", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxTextCtrl");
+    bool Create(wxWindow* parent, wxWindowID id, const wxString& value = "", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxTextCtrl");
 
-    void AppendText(const wxString& text );
-    virtual bool CanCopy( );
-    virtual bool CanCut( );
-    virtual bool CanPaste( );
-    virtual bool CanRedo( );
-    virtual bool CanUndo( );
-    virtual void ChangeValue(const wxString& value );
-    virtual void Clear( );
-    virtual void Copy( );
-    virtual void Cut( );
-    void DiscardEdits( );
-    bool EmulateKeyPress(const wxKeyEvent& event );
+    void AppendText(const wxString& text);
+    virtual bool CanCopy();
+    virtual bool CanCut();
+    virtual bool CanPaste();
+    virtual bool CanRedo();
+    virtual bool CanUndo();
+    virtual void ChangeValue(const wxString& value);
+    virtual void Clear();
+    virtual void Copy();
+    virtual void Cut();
+    void DiscardEdits();
+    bool EmulateKeyPress(const wxKeyEvent& event);
     const wxTextAttr&  GetDefaultStyle() const;
     virtual long GetInsertionPoint() const;
     virtual long GetLastPosition() const;
@@ -949,19 +949,19 @@ class wxTextCtrl : public wxControl
     int GetNumberOfLines() const;
     virtual wxString GetRange(long from, long to) const;
 
-    // %override [long from, long to] wxTextCtrl::GetSelection( );
+    // %override [long from, long to] wxTextCtrl::GetSelection();
     // C++ Func: virtual void GetSelection(long* from, long* to) const;
     virtual void GetSelection() const;
 
-    virtual wxString GetStringSelection( );
-    bool GetStyle(long position, wxTextAttr& style );
+    virtual wxString GetStringSelection();
+    bool GetStyle(long position, wxTextAttr& style);
     wxString GetValue() const;
 
-    // %override [wxTextCtrlHitTestResult, int col, int row] wxTextCtrl::HitTest(const wxPoint& pt );
+    // %override [wxTextCtrlHitTestResult, int col, int row] wxTextCtrl::HitTest(const wxPoint& pt);
     // C++ Func: wxTextCtrlHitTestResult HitTest(const wxPoint& pt, wxTextCoord *col, wxTextCoord *row) const;
     wxTextCtrlHitTestResult HitTest(const wxPoint& pt) const;
 
-    // %override [wxTextCtrlHitTestResult, int pos] wxTextCtrl::HitTestPos(const wxPoint& pt );
+    // %override [wxTextCtrlHitTestResult, int pos] wxTextCtrl::HitTestPos(const wxPoint& pt);
     // C++ Func: wxTextCtrlHitTestResult HitTest(const wxPoint& pt, long *pos) const;
     %rename HitTestPos wxTextCtrlHitTestResult HitTest(const wxPoint& pt) const;
 
@@ -969,31 +969,31 @@ class wxTextCtrl : public wxControl
     bool IsModified() const;
     bool IsMultiLine() const;
     bool IsSingleLine() const;
-    bool LoadFile(const wxString& filename );
-    void MarkDirty( );
-    //void OnDropFiles(wxDropFilesEvent& event );
-    virtual void Paste( );
+    bool LoadFile(const wxString& filename);
+    void MarkDirty();
+    //void OnDropFiles(wxDropFilesEvent& event);
+    virtual void Paste();
 
-    // %override [bool, int x, int y] wxTextCtrl::PositionToXY(pos );
+    // %override [bool, int x, int y] wxTextCtrl::PositionToXY(pos);
     // C++ Func: bool PositionToXY(long pos, long *x, long *y) const;
     bool PositionToXY(long pos) const;
 
-    virtual void Redo( );
-    virtual void Remove(long from, long to );
-    virtual void Replace(long from, long to, const wxString& value );
-    bool SaveFile(const wxString& filename );
-    bool SetDefaultStyle(const wxTextAttr& style );
-    virtual void SetEditable(bool editable );
-    virtual void SetInsertionPoint(long pos );
-    virtual void SetInsertionPointEnd( );
-    virtual void SetMaxLength(unsigned long value );
-    virtual void SetSelection(long from, long to );
-    bool SetStyle(long start, long end, const wxTextAttr& style );
-    virtual void SetValue(const wxString& value );
-    void ShowPosition(long pos );
-    virtual void Undo( );
-    void WriteText(const wxString& text );
-    long XYToPosition(long x, long y );
+    virtual void Redo();
+    virtual void Remove(long from, long to);
+    virtual void Replace(long from, long to, const wxString& value);
+    bool SaveFile(const wxString& filename);
+    bool SetDefaultStyle(const wxTextAttr& style);
+    virtual void SetEditable(bool editable);
+    virtual void SetInsertionPoint(long pos);
+    virtual void SetInsertionPointEnd();
+    virtual void SetMaxLength(unsigned long value);
+    virtual void SetSelection(long from, long to);
+    bool SetStyle(long start, long end, const wxTextAttr& style);
+    virtual void SetValue(const wxString& value);
+    void ShowPosition(long pos);
+    virtual void Undo();
+    void WriteText(const wxString& text);
+    long XYToPosition(long x, long y);
 };
 
 enum wxTextAttrAlignment
@@ -1021,8 +1021,8 @@ enum wxTextAttrAlignment
 
 class %delete wxTextAttr
 {
-    //wxTextAttr( );
-    wxTextAttr(const wxColour& colText = wxNullColour, const wxColour& colBack = wxNullColour, const wxFont& font = wxNullFont, wxTextAttrAlignment alignment = wxTEXT_ALIGNMENT_DEFAULT );
+    //wxTextAttr();
+    wxTextAttr(const wxColour& colText = wxNullColour, const wxColour& colBack = wxNullColour, const wxFont& font = wxNullFont, wxTextAttrAlignment alignment = wxTEXT_ALIGNMENT_DEFAULT);
 
     wxTextAttrAlignment GetAlignment() const;
     wxColour GetBackgroundColour() const;
@@ -1042,14 +1042,14 @@ class %delete wxTextAttr
     bool HasTabs() const;
     bool HasTextColour() const;
     bool IsDefault() const;
-    void SetAlignment(wxTextAttrAlignment alignment );
-    void SetBackgroundColour(const wxColour& colBack );
-    void SetFlags(long flags );
-    void SetFont(const wxFont& font, long flags = wxTEXT_ATTR_FONT );
-    void SetLeftIndent(int indent, int subIndent = 0 );
-    void SetRightIndent(int indent );
-    void SetTabs(const wxArrayInt& tabs );
-    void SetTextColour(const wxColour& colText );
+    void SetAlignment(wxTextAttrAlignment alignment);
+    void SetBackgroundColour(const wxColour& colBack);
+    void SetFlags(long flags);
+    void SetFont(const wxFont& font, long flags = wxTEXT_ATTR_FONT);
+    void SetLeftIndent(int indent, int subIndent = 0);
+    void SetRightIndent(int indent);
+    void SetTabs(const wxArrayInt& tabs);
+    void SetTextColour(const wxColour& colText);
 };
 
 // ---------------------------------------------------------------------------
@@ -1057,9 +1057,9 @@ class %delete wxTextAttr
 
 class %delete wxTextUrlEvent : public wxCommandEvent
 {
-    %wxchkver_2_8_0 %wxEventType wxEVT_COMMAND_TEXT_URL        // EVT_TEXT_URL(id, fn );
+    %wxchkver_2_8_0 %wxEventType wxEVT_COMMAND_TEXT_URL        // EVT_TEXT_URL(id, fn);
 
-    wxTextUrlEvent(int winid, const wxMouseEvent& evtMouse, long start, long end );
+    wxTextUrlEvent(int winid, const wxMouseEvent& evtMouse, long start, long end);
 
     const wxMouseEvent& GetMouseEvent() const;
     long GetURLStart() const;
@@ -1089,9 +1089,6 @@ class %delete wxTextUrlEvent : public wxCommandEvent
 #define wxTR_HAS_VARIABLE_ROW_HEIGHT
 #define wxTR_FULL_ROW_HIGHLIGHT
 #define wxTR_DEFAULT_STYLE
-
-//#define wxTR_MAC_BUTTONS   both deprecated
-//#define wxTR_AQUA_BUTTONS
 
 enum wxTreeItemIcon
 {
@@ -1123,37 +1120,35 @@ enum wxTreeItemIcon
 
 class wxTreeCtrl : public wxControl
 {
-    wxTreeCtrl( );
-    wxTreeCtrl(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxTR_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxTreeCtrl" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxTR_HAS_BUTTONS, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxTreeCtrl" );
+    wxTreeCtrl();
+    wxTreeCtrl(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxTR_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxTreeCtrl");
+    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxTR_HAS_BUTTONS, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxTreeCtrl");
 
-    wxTreeItemId AddRoot(const wxString& text, int image = -1, int selImage = -1, %ungc wxLuaTreeItemData* data = NULL );
-    wxTreeItemId AppendItem(const wxTreeItemId& parent, const wxString& text, int image = -1, int selImage = -1, %ungc wxLuaTreeItemData* data = NULL );
-    //void AssignButtonsImageList(wxImageList* imageList );
-    void AssignImageList(%ungc wxImageList* imageList );
-    void AssignStateImageList(%ungc wxImageList* imageList );
-    void Collapse(const wxTreeItemId& item );
-    void CollapseAll( );
-    void CollapseAllChildren(const wxTreeItemId& item );
-    void CollapseAndReset(const wxTreeItemId& item );
-    void Delete(const wxTreeItemId& item );
-    void DeleteAllItems( );
-    void DeleteChildren(const wxTreeItemId& item );
-    void EditLabel(const wxTreeItemId& item );
-    %win void EndEditLabel(const wxTreeItemId& item, bool discardChanges = false );
-    void EnsureVisible(const wxTreeItemId& item );
-    void Expand(const wxTreeItemId& item );
-    void ExpandAll( );
-    void ExpandAllChildren(const wxTreeItemId& item );
+    wxTreeItemId AddRoot(const wxString& text, int image = -1, int selImage = -1, %ungc wxLuaTreeItemData* data = NULL);
+    wxTreeItemId AppendItem(const wxTreeItemId& parent, const wxString& text, int image = -1, int selImage = -1, %ungc wxLuaTreeItemData* data = NULL);
+    void AssignButtonsImageList(%ungc wxImageList* imageList);
+    void AssignImageList(%ungc wxImageList* imageList);
+    void AssignStateImageList(%ungc wxImageList* imageList);
+    void Collapse(const wxTreeItemId& item);
+    void CollapseAll();
+    void CollapseAllChildren(const wxTreeItemId& item);
+    void CollapseAndReset(const wxTreeItemId& item);
+    void Delete(const wxTreeItemId& item);
+    void DeleteAllItems();
+    void DeleteChildren(const wxTreeItemId& item);
+    void EditLabel(const wxTreeItemId& item);
+    %win void EndEditLabel(const wxTreeItemId& item, bool discardChanges = false);
+    void EnsureVisible(const wxTreeItemId& item);
+    void Expand(const wxTreeItemId& item);
+    void ExpandAll();
+    void ExpandAllChildren(const wxTreeItemId& item);
     bool GetBoundingRect(const wxTreeItemId& item, wxRect& rect, bool textOnly = false) const;
-    //wxImageList* GetButtonsImageList() const;
+    wxImageList* GetButtonsImageList() const;
     size_t GetChildrenCount(const wxTreeItemId& item, bool recursively = true) const;
     int GetCount() const;
-    //wxTextCtrl* GetEditControl() const; // MSW only
+    %win wxTextCtrl* GetEditControl() const;
 
-    // %override [wxTreeItemId, wxTreeItemIdValue cookie] wxTreeCtrl::GetFirstChild(const wxTreeItemId& item );
-    // C++ Func: wxTreeItemId GetFirstChild(const wxTreeItemId& item, wxTreeItemIdValue& cookie) const;
-    wxTreeItemId GetFirstChild(const wxTreeItemId& item) const;
+    wxTreeItemId GetFirstChild(const wxTreeItemId& item) const; // %override return [wxTreeItemId, wxTreeItemIdValue cookie]
 
     wxTreeItemId GetFirstVisibleItem() const;
     wxImageList* GetImageList() const;
@@ -1166,9 +1161,7 @@ class wxTreeCtrl : public wxControl
     wxColour GetItemTextColour(const wxTreeItemId& item) const;
     wxTreeItemId GetLastChild(const wxTreeItemId& item) const;
 
-    // %override [wxTreeItemId, wxTreeItemIdValue cookie] wxTreeCtrl::GetNextChild(const wxTreeItemId& item, long cookie );
-    // C++ Func: wxTreeItemId GetNextChild(const wxTreeItemId& item, wxTreeItemIdValue& cookie) const;
-    wxTreeItemId GetNextChild(const wxTreeItemId& item, wxTreeItemIdValue& cookie) const;
+    wxTreeItemId GetNextChild(const wxTreeItemId& item, wxTreeItemIdValue& cookie) const; // %override return [wxTreeItemId, wxTreeItemIdValue cookie]
 
     wxTreeItemId GetNextSibling(const wxTreeItemId& item) const;
     wxTreeItemId GetNextVisible(const wxTreeItemId& item) const;
@@ -1177,53 +1170,48 @@ class wxTreeCtrl : public wxControl
     wxTreeItemId GetPrevVisible(const wxTreeItemId& item) const;
     wxTreeItemId GetRootItem() const;
     bool GetQuickBestSize() const;
-    //!%wxchkver_2_6|%wxcompat_2_4 int GetItemSelectedImage(const wxTreeItemId& item) const; // obsolete function
     wxTreeItemId GetSelection() const;
 
-    // %override [size_t, Lua table of wxTreeItemIds] wxTreeCtrl::GetSelections( );
-    // C++ Func: size_t GetSelections(wxArrayTreeItemIds& selection) const;
-    size_t GetSelections() const;
+    size_t GetSelections() const; // %override return [size_t, Lua table of wxTreeItemIds]
 
     wxImageList* GetStateImageList() const;
 
-    // %override [wxTreeItemId, int flags] wxTreeCtrl::HitTest(const wxPoint& point );
-    // C++ Func: wxTreeItemId HitTest(const wxPoint& point, int& flags );
-    wxTreeItemId HitTest(const wxPoint& point );
+    wxTreeItemId HitTest(const wxPoint& point); // %override return [wxTreeItemId, int flags]
 
-    wxTreeItemId InsertItem(const wxTreeItemId& parent, const wxTreeItemId& previous, const wxString& text, int image = -1, int selImage = -1, %ungc wxLuaTreeItemData* data = NULL );
-    wxTreeItemId InsertItem(const wxTreeItemId& parent, size_t before, const wxString& text, int image = -1, int selImage = -1, %ungc wxLuaTreeItemData* data = NULL );
+    wxTreeItemId InsertItem(const wxTreeItemId& parent, const wxTreeItemId& previous, const wxString& text, int image = -1, int selImage = -1, %ungc wxLuaTreeItemData* data = NULL);
+    wxTreeItemId InsertItem(const wxTreeItemId& parent, size_t before, const wxString& text, int image = -1, int selImage = -1, %ungc wxLuaTreeItemData* data = NULL);
     bool IsBold(const wxTreeItemId& item) const;
     bool IsEmpty() const;
     bool IsExpanded(const wxTreeItemId& item) const;
     bool IsSelected(const wxTreeItemId& item) const;
     bool IsVisible(const wxTreeItemId& item) const;
     bool ItemHasChildren(const wxTreeItemId& item) const;
-    //int OnCompareItems(const wxTreeItemId& item1, const wxTreeItemId& item2 );
-    wxTreeItemId PrependItem(const wxTreeItemId& parent, const wxString& text, int image = -1, int selImage = -1, %ungc wxLuaTreeItemData* data = NULL );
-    void ScrollTo(const wxTreeItemId& item );
-    void SelectItem(const wxTreeItemId& item, bool select = true );
-    //void SetButtonsImageList(wxImageList* imageList );
-    void SetIndent(int indent );
-    void SetImageList(wxImageList* imageList );
-    void SetItemBackgroundColour(const wxTreeItemId& item, const wxColour& col );
-    void SetItemBold(const wxTreeItemId& item, bool bold = true );
-    void SetItemData(const wxTreeItemId& item, %ungc wxLuaTreeItemData* data );
-    void SetItemDropHighlight(const wxTreeItemId& item, boolhighlight = true );
-    void SetItemFont(const wxTreeItemId& item, const wxFont& font );
-    void SetItemHasChildren(const wxTreeItemId& item, bool hasChildren = true );
-    void SetItemImage(const wxTreeItemId& item, int image, wxTreeItemIcon which = wxTreeItemIcon_Normal );
+    //int OnCompareItems(const wxTreeItemId& item1, const wxTreeItemId& item2);
+    wxTreeItemId PrependItem(const wxTreeItemId& parent, const wxString& text, int image = -1, int selImage = -1, %ungc wxLuaTreeItemData* data = NULL);
+    void ScrollTo(const wxTreeItemId& item);
+    void SelectItem(const wxTreeItemId& item, bool select = true);
+    void SetButtonsImageList(wxImageList* imageList);
+    void SetIndent(int indent);
+    void SetImageList(wxImageList* imageList);
+    void SetItemBackgroundColour(const wxTreeItemId& item, const wxColour& col);
+    void SetItemBold(const wxTreeItemId& item, bool bold = true);
+    void SetItemData(const wxTreeItemId& item, %ungc wxLuaTreeItemData* data);
+    void SetItemDropHighlight(const wxTreeItemId& item, bool highlight = true);
+    void SetItemFont(const wxTreeItemId& item, const wxFont& font);
+    void SetItemHasChildren(const wxTreeItemId& item, bool hasChildren = true);
+    void SetItemImage(const wxTreeItemId& item, int image, wxTreeItemIcon which = wxTreeItemIcon_Normal);
     %wxchkver_2_9 void SetItemState(const wxTreeItemId& item, int state);
-    void SetItemText(const wxTreeItemId& item, const wxString& text );
-    void SetItemTextColour(const wxTreeItemId& item, const wxColour& col );
-    void SetQuickBestSize(bool quickBestSize );
-    void SetStateImageList(wxImageList* imageList );
-    // void SetWindowStyle(long styles) - see wxWindow
-    void SortChildren(const wxTreeItemId& item );
-    void Toggle(const wxTreeItemId& item );
-    void ToggleItemSelection(const wxTreeItemId& item );
-    void Unselect( );
-    void UnselectAll( );
-    void UnselectItem(const wxTreeItemId& item );
+    void SetItemText(const wxTreeItemId& item, const wxString& text);
+    void SetItemTextColour(const wxTreeItemId& item, const wxColour& col);
+    void SetQuickBestSize(bool quickBestSize);
+    void SetStateImageList(wxImageList* imageList);
+    void SetWindowStyle(long styles);
+    void SortChildren(const wxTreeItemId& item);
+    void Toggle(const wxTreeItemId& item);
+    void ToggleItemSelection(const wxTreeItemId& item);
+    void Unselect();
+    void UnselectAll();
+    void UnselectItem(const wxTreeItemId& item);
 };
 
 // ---------------------------------------------------------------------------
@@ -1233,17 +1221,17 @@ class wxTreeCtrl : public wxControl
 /*
 class %delete wxTreeItemAttr
 {
-    wxTreeItemAttr(const wxColour& colText = wxNullColour, const wxColour& colBack = wxNullColour, const wxFont& font = wxNullFont );
+    wxTreeItemAttr(const wxColour& colText = wxNullColour, const wxColour& colBack = wxNullColour, const wxFont& font = wxNullFont);
 
     wxColour GetBackgroundColour() const;
     wxFont   GetFont() const;
     wxColour GetTextColour() const;
-    bool     HasBackgroundColour( );
-    bool     HasFont( );
-    bool     HasTextColour( );
-    void     SetBackgroundColour(const wxColour& colBack );
-    void     SetFont(const wxFont& font );
-    void     SetTextColour(const wxColour& colText );
+    bool     HasBackgroundColour();
+    bool     HasFont();
+    bool     HasTextColour();
+    void     SetBackgroundColour(const wxColour& colBack);
+    void     SetFont(const wxFont& font);
+    void     SetTextColour(const wxColour& colText);
 };
 */
 
@@ -1259,19 +1247,19 @@ typedef double wxTreeItemIdValue
 
 class %delete wxTreeItemId
 {
-    wxTreeItemId( );
-    wxTreeItemId(const wxTreeItemId& id );
+    wxTreeItemId();
+    wxTreeItemId(const wxTreeItemId& id);
 
-    bool IsOk( );
+    bool IsOk();
     wxTreeItemIdValue GetValue() const; // get a pointer to the internal data to use as a reference in a Lua table
 
-    wxTreeItemId& operator=(const wxTreeItemId& otherId );
+    wxTreeItemId& operator=(const wxTreeItemId& otherId);
     bool operator==(const wxTreeItemId& otherId) const;
 };
 
 // ---------------------------------------------------------------------------
 // wxArrayTreeItemIds - wxTreeCtrl
-// This is only used by the function wxTreeCtrl::GetSelections(wxArrayTreeItemIds& arr );
+// This is only used by the function wxTreeCtrl::GetSelections(wxArrayTreeItemIds& arr);
 //    which we have overridden to return a table. This is not necessary.
 //
 // Note: This is actually an array of the internal wxTreeItemIdValue data
@@ -1281,22 +1269,22 @@ class %delete wxTreeItemId
 /*
 class %delete wxArrayTreeItemIds
 {
-    wxArrayTreeItemIds( );
-    wxArrayTreeItemIds(const wxArrayTreeItemIds& array );
+    wxArrayTreeItemIds();
+    wxArrayTreeItemIds(const wxArrayTreeItemIds& array);
 
-    void Add(const wxTreeItemId& id );
-    void Alloc(size_t nCount );
-    void Clear( );
-    void Empty( );
+    void Add(const wxTreeItemId& id);
+    void Alloc(size_t nCount);
+    void Clear();
+    void Empty();
     int GetCount() const;
-    int Index(wxTreeItemIdValue treeItemIdValue, bool bFromEnd = false );
-    //void Insert(wxTreeItemId& str, int nIndex, size_t copies = 1 );
-    bool IsEmpty( );
+    int Index(wxTreeItemIdValue treeItemIdValue, bool bFromEnd = false);
+    //void Insert(wxTreeItemId& str, int nIndex, size_t copies = 1);
+    bool IsEmpty();
     wxTreeItemId Item(size_t nIndex) const;
-    wxTreeItemId Last( );
-    void Remove(wxTreeItemIdValue treeItemIdValue );
-    void RemoveAt(size_t nIndex, size_t count = 1 );
-    void Shrink( );
+    wxTreeItemId Last();
+    void Remove(wxTreeItemIdValue treeItemIdValue);
+    void RemoveAt(size_t nIndex, size_t count = 1);
+    void Shrink();
 };
 */
 
@@ -1308,10 +1296,10 @@ class %delete wxArrayTreeItemIds
 
 class %delete wxTreeItemData : public wxClientData
 {
-    wxTreeItemData( );
+    wxTreeItemData();
 
-    wxTreeItemId GetId( );
-    void         SetId(const wxTreeItemId& id );
+    wxTreeItemId GetId();
+    void         SetId(const wxTreeItemId& id);
 };
 
 // ---------------------------------------------------------------------------
@@ -1324,17 +1312,17 @@ class %delete wxTreeItemData : public wxClientData
 
 class %delete wxLuaTreeItemData : public wxTreeItemData
 {
-    wxLuaTreeItemData( );
+    wxLuaTreeItemData();
 
-    // %override wxLuaTreeItemData(any );
-    // C++ Func: wxLuaTreeItemData(wxLuaObject* obj );
-    wxLuaTreeItemData(any );
+    // %override wxLuaTreeItemData(any);
+    // C++ Func: wxLuaTreeItemData(wxLuaObject* obj);
+    wxLuaTreeItemData(any);
 
     // %override any wxLuaTreeItemData::GetData() const;
     // C++ Func: wxLuaObject* GetData() const;
     any  GetData() const;
-    // %override void wxLuaTreeItemData::SetData(any );
-    // C++ Func: void SetData(wxLuaObject* obj );
+    // %override void wxLuaTreeItemData::SetData(any);
+    // C++ Func: void SetData(wxLuaObject* obj);
     void SetData(any);
 };
 
@@ -1344,29 +1332,29 @@ class %delete wxLuaTreeItemData : public wxTreeItemData
 
 class %delete wxTreeEvent : public wxNotifyEvent
 {
-    %wxEventType wxEVT_COMMAND_TREE_BEGIN_DRAG        // EVT_TREE_BEGIN_DRAG(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_BEGIN_LABEL_EDIT  // EVT_TREE_BEGIN_LABEL_EDIT(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_BEGIN_RDRAG       // EVT_TREE_BEGIN_RDRAG(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_DELETE_ITEM       // EVT_TREE_DELETE_ITEM(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_END_DRAG          // EVT_TREE_END_DRAG(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_END_LABEL_EDIT    // EVT_TREE_END_LABEL_EDIT(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_GET_INFO          // EVT_TREE_GET_INFO(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_ITEM_ACTIVATED    // EVT_TREE_ITEM_ACTIVATED(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_ITEM_COLLAPSED    // EVT_TREE_ITEM_COLLAPSED(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_ITEM_COLLAPSING   // EVT_TREE_ITEM_COLLAPSING(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_ITEM_EXPANDED     // EVT_TREE_ITEM_EXPANDED(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_ITEM_EXPANDING    // EVT_TREE_ITEM_EXPANDING(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_ITEM_MIDDLE_CLICK // EVT_TREE_ITEM_MIDDLE_CLICK(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_ITEM_RIGHT_CLICK  // EVT_TREE_ITEM_RIGHT_CLICK(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_KEY_DOWN          // EVT_TREE_KEY_DOWN(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_SEL_CHANGED       // EVT_TREE_SEL_CHANGED(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_SEL_CHANGING      // EVT_TREE_SEL_CHANGING(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_SET_INFO          // EVT_TREE_SET_INFO(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_ITEM_MENU         // EVT_TREE_ITEM_MENU(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_STATE_IMAGE_CLICK // EVT_TREE_STATE_IMAGE_CLICK(id, fn );
-    %wxEventType wxEVT_COMMAND_TREE_ITEM_GETTOOLTIP   // EVT_TREE_ITEM_GETTOOLTIP(id, fn );
+    %wxEventType wxEVT_COMMAND_TREE_BEGIN_DRAG        // EVT_TREE_BEGIN_DRAG(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_BEGIN_LABEL_EDIT  // EVT_TREE_BEGIN_LABEL_EDIT(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_BEGIN_RDRAG       // EVT_TREE_BEGIN_RDRAG(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_DELETE_ITEM       // EVT_TREE_DELETE_ITEM(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_END_DRAG          // EVT_TREE_END_DRAG(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_END_LABEL_EDIT    // EVT_TREE_END_LABEL_EDIT(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_GET_INFO          // EVT_TREE_GET_INFO(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_ITEM_ACTIVATED    // EVT_TREE_ITEM_ACTIVATED(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_ITEM_COLLAPSED    // EVT_TREE_ITEM_COLLAPSED(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_ITEM_COLLAPSING   // EVT_TREE_ITEM_COLLAPSING(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_ITEM_EXPANDED     // EVT_TREE_ITEM_EXPANDED(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_ITEM_EXPANDING    // EVT_TREE_ITEM_EXPANDING(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_ITEM_MIDDLE_CLICK // EVT_TREE_ITEM_MIDDLE_CLICK(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_ITEM_RIGHT_CLICK  // EVT_TREE_ITEM_RIGHT_CLICK(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_KEY_DOWN          // EVT_TREE_KEY_DOWN(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_SEL_CHANGED       // EVT_TREE_SEL_CHANGED(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_SEL_CHANGING      // EVT_TREE_SEL_CHANGING(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_SET_INFO          // EVT_TREE_SET_INFO(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_ITEM_MENU         // EVT_TREE_ITEM_MENU(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_STATE_IMAGE_CLICK // EVT_TREE_STATE_IMAGE_CLICK(id, fn);
+    %wxEventType wxEVT_COMMAND_TREE_ITEM_GETTOOLTIP   // EVT_TREE_ITEM_GETTOOLTIP(id, fn);
 
-    wxTreeEvent(wxEventType commandType = wxEVT_NULL, int id = 0 );
+    wxTreeEvent(wxEventType commandType = wxEVT_NULL, int id = 0);
 
     int GetKeyCode() const;
     wxTreeItemId GetItem() const;
@@ -1375,7 +1363,7 @@ class %delete wxTreeEvent : public wxNotifyEvent
     wxTreeItemId GetOldItem() const;
     wxPoint GetPoint() const;
     bool IsEditCancelled() const;
-    void SetToolTip(const wxString& tooltip );
+    void SetToolTip(const wxString& tooltip);
 };
 
 #endif //wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL
@@ -1401,29 +1389,29 @@ enum
 
 class wxGenericDirCtrl : public wxControl
 {
-    wxGenericDirCtrl( );
-    wxGenericDirCtrl(wxWindow *parent, const wxWindowID id = wxID_ANY, const wxString &dir = wxDirDialogDefaultFolderStr, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDIRCTRL_3D_INTERNAL|wxSUNKEN_BORDER, const wxString& filter = "", int defaultFilter = 0, const wxString& name = "wxGenericDirCtrl" );
-    bool Create(wxWindow *parent, const wxWindowID id = wxID_ANY, const wxString &dir = wxDirDialogDefaultFolderStr, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDIRCTRL_3D_INTERNAL|wxSUNKEN_BORDER, const wxString& filter = "", int defaultFilter = 0, const wxString& name = "wxGenericDirCtrl" );
+    wxGenericDirCtrl();
+    wxGenericDirCtrl(wxWindow *parent, const wxWindowID id = wxID_ANY, const wxString &dir = wxDirDialogDefaultFolderStr, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDIRCTRL_3D_INTERNAL|wxSUNKEN_BORDER, const wxString& filter = "", int defaultFilter = 0, const wxString& name = "wxGenericDirCtrl");
+    bool Create(wxWindow *parent, const wxWindowID id = wxID_ANY, const wxString &dir = wxDirDialogDefaultFolderStr, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDIRCTRL_3D_INTERNAL|wxSUNKEN_BORDER, const wxString& filter = "", int defaultFilter = 0, const wxString& name = "wxGenericDirCtrl");
 
-    void CollapseTree( );
-    bool ExpandPath(const wxString& path );
+    void CollapseTree();
+    bool ExpandPath(const wxString& path);
     wxString GetDefaultPath() const;
     wxString GetPath() const;
     wxString GetFilePath() const;
     wxString GetFilter() const;
     int GetFilterIndex() const;
     //wxDirFilterListCtrl* GetFilterListCtrl() const;
-    wxTreeItemId GetRootId( );
+    wxTreeItemId GetRootId();
     wxTreeCtrl* GetTreeCtrl() const;
-    void ReCreateTree( );
-    void SetDefaultPath(const wxString& path );
-    void SetFilter(const wxString& filter );
-    void SetFilterIndex(int n );
-    void SetPath(const wxString& path );
-    void ShowHidden( bool show );
-    bool GetShowHidden( );
+    void ReCreateTree();
+    void SetDefaultPath(const wxString& path);
+    void SetFilter(const wxString& filter);
+    void SetFilterIndex(int n);
+    void SetPath(const wxString& path);
+    void ShowHidden( bool show);
+    bool GetShowHidden();
 
-    //wxTreeItemId FindChild(wxTreeItemId parentId, const wxString& path, bool& done );
+    //wxTreeItemId FindChild(wxTreeItemId parentId, const wxString& path, bool& done);
 };
 
 #endif //wxLUA_USE_wxGenericDirCtrl && wxUSE_DIRDLG
@@ -1438,14 +1426,14 @@ class wxGenericDirCtrl : public wxControl
 
 class wxInfoBar : public wxControl
 {
-    wxInfoBar( );
-    wxInfoBar(wxWindow *parent, wxWindowID id );
-    bool Create(wxWindow *parent, wxWindowID id );
+    wxInfoBar();
+    wxInfoBar(wxWindow *parent, wxWindowID id);
+    bool Create(wxWindow *parent, wxWindowID id);
 
-    void AddButton(wxWindowID btnid, const wxString &label = wxEmptyString );
-    void Dismiss( );
-    void RemoveButton(wxWindowID btnid );
-    void ShowMessage(const wxString &msg, int flags = wxICON_INFORMATION );
+    void AddButton(wxWindowID btnid, const wxString &label = wxEmptyString);
+    void Dismiss();
+    void RemoveButton(wxWindowID btnid);
+    void ShowMessage(const wxString &msg, int flags = wxICON_INFORMATION);
 };
 
 #endif //wxUSE_INFOBAR && %wxchkver_2_9_1
