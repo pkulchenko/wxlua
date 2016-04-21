@@ -473,28 +473,26 @@ enum wxDirTraverseResult
 
 class %delete wxDir
 {
+
     wxDir();
     wxDir(const wxString& dir);
-
+    %wxchkver_3_1_1 void Close();
     static bool Exists(const wxString& dir);
-
-    static unsigned int GetAllFiles(const wxString& dirname, const wxString& filespec = "", int flags = wxDIR_DEFAULT); // returns [unsigned int, Lua string table]
-
-    bool GetFirst(const wxString& filespec = "", int flags = wxDIR_DEFAULT) const; // returns [bool, string filename]
-
+    %wxchkver_2_8 static wxString FindFirst(const wxString& dirname, const wxString& filespec, int flags = wxDIR_DEFAULT);
+    static unsigned int GetAllFiles(const wxString& dirname, const wxString& filespec = "", int flags = wxDIR_DEFAULT); // %override return [unsigned int, Lua string table]
+    bool GetFirst(const wxString& filespec = "", int flags = wxDIR_DEFAULT) const; // %override return [bool, string filename]
     wxString GetName() const;
-
-    bool GetNext() const; // returns [bool, string filename]
-
+    %wxchkver_3_1_1 wxString GetNameWithSep() const;
+    bool GetNext() const; // %override return [bool, string filename]
+    %wxchkver_2_8 static wxULongLong GetTotalSize(const wxString &dir); // %override ..., wxArrayString *filesSkipped = NULL)
     bool HasFiles(const wxString& filespec = "");
     bool HasSubDirs(const wxString& dirspec = "");
     bool IsOpened() const;
+    %wxchkver_3_1_1 static bool Make(const wxString &dir, int perm = wxS_DIR_DEFAULT, int flags = 0);
     bool Open(const wxString& dir);
-
-    %wxchkver_2_8 static wxString FindFirst(const wxString& dirname, const wxString& filespec, int flags = wxDIR_DEFAULT);
-    %wxchkver_2_8 static wxULongLong GetTotalSize(const wxString &dir); //, wxArrayString *filesSkipped = NULL) FIXME override
-
+    %wxchkver_3_1_1 static bool Remove(const wxString &dir, int flags = 0);
     // size_t Traverse(wxDirTraverser& sink, const wxString& filespec = wxEmptyString, int flags = wxDIR_DEFAULT);
+
 };
 
 #endif //wxLUA_USE_wxDir
