@@ -18,6 +18,7 @@ wx_typedefTable =
   wxNotebookPage = "wxWindow",
   wxPreviewWindow = "wxScrolledWindow",
   wxTextCoord = "long",
+  wxTextPos = "long",
   wxTraceMask = "unsigned long",
   wxTreeItemIdValue = "double",
 }
@@ -4779,6 +4780,7 @@ wx_dataTypeTable =
   wxTextCtrl = {
     BaseClasses = {
       [1] = "wxControl",
+      [2] = "wxTextEntry",
     },
     Condition = "wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL",
     IsNumber = false,
@@ -4809,6 +4811,12 @@ wx_dataTypeTable =
     Name = "wxTextDropTarget",
     ValueType = "class",
   },
+  wxTextEntry = {
+    Condition = "wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL",
+    IsNumber = false,
+    Name = "wxTextEntry",
+    ValueType = "class",
+  },
   wxTextEntryDialog = {
     BaseClasses = {
       [1] = "wxDialog",
@@ -4817,6 +4825,11 @@ wx_dataTypeTable =
     IsNumber = false,
     Name = "wxTextEntryDialog",
     ValueType = "class",
+  },
+  wxTextPos = {
+    IsNumber = true,
+    Name = "wxTextPos",
+    ValueType = "number",
   },
   wxTextUrlEvent = {
     BaseClasses = {

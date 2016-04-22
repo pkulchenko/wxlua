@@ -923,7 +923,57 @@ typedef long wxTextCoord
 #define wxOutOfRangeTextCoord
 #define wxInvalidTextCoord
 
-class wxTextCtrl : public wxControl
+typedef long wxTextPos;
+
+class wxTextEntry
+{
+
+    %wxchkver_3_1_1 void AppendText(const wxString& text);
+    %wxchkver_3_1_1 bool AutoComplete(const wxArrayString& choices);
+    // bool AutoComplete(wxTextCompleter *completer);
+    %wxchkver_3_1_1 bool AutoCompleteFileNames();
+    %wxchkver_3_1_1 bool AutoCompleteDirectories();
+    %wxchkver_3_1_1 bool CanCopy() const;
+    %wxchkver_3_1_1 bool CanCut() const;
+    %wxchkver_3_1_1 bool CanPaste() const;
+    %wxchkver_3_1_1 bool CanRedo() const;
+    %wxchkver_3_1_1 bool CanUndo() const;
+    %wxchkver_3_1_1 void ChangeValue(const wxString& value);
+    %wxchkver_3_1_1 void Clear();
+    %wxchkver_3_1_1 void Copy();
+    %wxchkver_3_1_1 void Cut();
+    %wxchkver_3_1_1 void ForceUpper();
+    %wxchkver_3_1_1 long GetInsertionPoint() const;
+    %wxchkver_3_1_1 wxTextPos GetLastPosition() const;
+    %wxchkver_3_1_1 wxString GetRange(long from, long to) const;
+    %wxchkver_3_1_1 void GetSelection() const; // %override return [long from, long to]
+    %wxchkver_3_1_1 wxString GetStringSelection() const;
+    %wxchkver_3_1_1 wxString GetValue() const;
+    %wxchkver_3_1_1 bool IsEditable() const;
+    %wxchkver_3_1_1 bool IsEmpty() const;
+    %wxchkver_3_1_1 void Paste();
+    %wxchkver_3_1_1 void Redo();
+    %wxchkver_3_1_1 void Remove(long from, long to);
+    %wxchkver_3_1_1 void Replace(long from, long to, const wxString& value);
+    %wxchkver_3_1_1 void SetEditable(bool editable);
+    %wxchkver_3_1_1 void SetInsertionPoint(long pos);
+    %wxchkver_3_1_1 void SetInsertionPointEnd();
+    %wxchkver_3_1_1 void SetMaxLength(unsigned long len);
+    %wxchkver_3_1_1 void SetSelection(long from, long to);
+    %wxchkver_3_1_1 void SelectAll();
+    %wxchkver_3_1_1 void SelectNone();
+    %wxchkver_3_1_1 bool SetHint(const wxString& hint);
+    %wxchkver_3_1_1 wxString GetHint() const;
+    %wxchkver_3_1_1 bool SetMargins(const wxPoint& pt);
+    %wxchkver_3_1_1 bool SetMargins(wxCoord left, wxCoord top = -1);
+    %wxchkver_3_1_1 wxPoint GetMargins() const;
+    %wxchkver_3_1_1 void SetValue(const wxString& value);
+    %wxchkver_3_1_1 void Undo();
+    %wxchkver_3_1_1 void WriteText(const wxString& text);
+
+};
+
+class wxTextCtrl : public wxControl, public wxTextEntry
 {
 
     wxTextCtrl();
@@ -954,35 +1004,35 @@ class wxTextCtrl : public wxControl
     !%wxchkver_3_1_1 bool IsEditable() const;
     !%wxchkver_3_1_1 bool LoadFile(const wxString& filename);
     !%wxchkver_3_1_1 bool SaveFile(const wxString& filename);
+    !%wxchkver_3_1_1 virtual bool CanCopy();
+    !%wxchkver_3_1_1 virtual bool CanCut();
+    !%wxchkver_3_1_1 virtual bool CanPaste();
+    !%wxchkver_3_1_1 virtual bool CanRedo();
+    !%wxchkver_3_1_1 virtual bool CanUndo();
+    !%wxchkver_3_1_1 virtual long GetInsertionPoint() const;
+    !%wxchkver_3_1_1 virtual long GetLastPosition() const;
+    !%wxchkver_3_1_1 virtual void ChangeValue(const wxString& value);
+    !%wxchkver_3_1_1 virtual void Clear();
+    !%wxchkver_3_1_1 virtual void Copy();
+    !%wxchkver_3_1_1 virtual void Cut();
+    !%wxchkver_3_1_1 virtual void Paste();
+    !%wxchkver_3_1_1 virtual void Redo();
+    !%wxchkver_3_1_1 virtual void Remove(long from, long to);
+    !%wxchkver_3_1_1 virtual void Replace(long from, long to, const wxString& value);
+    !%wxchkver_3_1_1 virtual void SetEditable(bool editable);
+    !%wxchkver_3_1_1 virtual void SetInsertionPoint(long pos);
+    !%wxchkver_3_1_1 virtual void SetInsertionPointEnd();
+    !%wxchkver_3_1_1 virtual void SetMaxLength(unsigned long value);
+    !%wxchkver_3_1_1 virtual void SetSelection(long from, long to);
+    !%wxchkver_3_1_1 virtual void SetValue(const wxString& value);
+    !%wxchkver_3_1_1 virtual void Undo();
+    !%wxchkver_3_1_1 virtual wxString GetRange(long from, long to) const;
+    !%wxchkver_3_1_1 virtual wxString GetStringSelection();
+    !%wxchkver_3_1_1 void AppendText(const wxString& text);
+    !%wxchkver_3_1_1 void GetSelection() const; // %override return [long from, long to]
+    !%wxchkver_3_1_1 void WriteText(const wxString& text);
+    !%wxchkver_3_1_1 wxString GetValue() const;
     %rename HitTestPos wxTextCtrlHitTestResult HitTest(const wxPoint& pt) const; // return [wxTextCtrlHitTestResult, int pos]
-    virtual bool CanCopy(); // %add: inherited from wxTextEntry
-    virtual bool CanCut(); // %add: inherited from wxTextEntry
-    virtual bool CanPaste(); // %add: inherited from wxTextEntry
-    virtual bool CanRedo(); // %add: inherited from wxTextEntry
-    virtual bool CanUndo(); // %add: inherited from wxTextEntry
-    virtual long GetInsertionPoint() const; // %add: inherited from wxTextEntry
-    virtual long GetLastPosition() const; // %add: inherited from wxTextEntry
-    virtual void ChangeValue(const wxString& value); // %add: inherited from wxTextEntry
-    virtual void Clear(); // %add: inherited from wxTextEntry
-    virtual void Copy(); // %add: inherited from wxTextEntry
-    virtual void Cut(); // %add: inherited from wxTextEntry
-    virtual void GetSelection() const; // %add: return [long from, long to]
-    virtual void Paste(); // %add: inherited from wxTextEntry
-    virtual void Redo(); // %add: inherited from wxTextEntry
-    virtual void Remove(long from, long to); // %add: inherited from wxTextEntry
-    virtual void Replace(long from, long to, const wxString& value); // %add: inherited from wxTextEntry
-    virtual void SetEditable(bool editable); // %add: inherited from wxTextEntry
-    virtual void SetInsertionPoint(long pos); // %add: inherited from wxTextEntry
-    virtual void SetInsertionPointEnd(); // %add: inherited from wxTextEntry
-    virtual void SetMaxLength(unsigned long value); // %add: inherited from wxTextEntry
-    virtual void SetSelection(long from, long to); // %add: inherited from wxTextEntry
-    virtual void SetValue(const wxString& value); // %add: inherited from wxTextEntry
-    virtual void Undo(); // %add: inherited from wxTextEntry
-    virtual wxString GetRange(long from, long to) const; // %add: inherited from wxTextEntry
-    virtual wxString GetStringSelection(); // %add: inherited from wxTextEntry
-    void AppendText(const wxString& text); // %add: inherited from wxTextEntry
-    void WriteText(const wxString& text); // %add: inherited from wxTextEntry
-    wxString GetValue() const; // %add: inherited from wxTextEntry
 };
 
 enum wxTextAttrAlignment

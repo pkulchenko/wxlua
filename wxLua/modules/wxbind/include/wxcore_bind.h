@@ -1163,6 +1163,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 #if wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTextAttr;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTextCtrl;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTextEntry;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTextUrlEvent;
 #endif // wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL
 

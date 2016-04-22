@@ -3456,7 +3456,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxFindWindowByName[1] = {{ wxLu
 
 #if (((defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)) && (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL)) && (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL)
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetAccelFromString[] = { &wxluatype_TSTRING, NULL };
-// %wxcompat_2_6 wxAcceleratorEntry* wxGetAccelFromString(const wxString& label); // deprecated in 2.8 use wxAcceleratorEntry::Create() or FromString( );
+// %wxcompat_2_6 wxAcceleratorEntry* wxGetAccelFromString(const wxString& label); // deprecated in 2.8 use wxAcceleratorEntry::Create() or FromString();
 static int LUACALL wxLua_function_wxGetAccelFromString(lua_State *L)
 {
     // const wxString label
@@ -3620,7 +3620,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetDisplaySizeMM[1] = {{ wxLu
 
 #endif // wxLUA_USE_wxPointSizeRect
 
-#if (wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG) && (wxLUA_USE_wxFont)
+#if (wxLUA_USE_wxFont) && (wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG)
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetFontFromUser1[] = { &wxluatype_wxWindow, &wxluatype_wxFont, &wxluatype_TSTRING, NULL };
 // %wxchkver_2_8&&wxUSE_FONTDLG wxFont wxGetFontFromUser(wxWindow *parent = NULL, const wxFont& fontInit = wxNullFont, const wxString& caption = "" );
 static int LUACALL wxLua_function_wxGetFontFromUser1(lua_State *L)
@@ -3645,9 +3645,9 @@ static int LUACALL wxLua_function_wxGetFontFromUser1(lua_State *L)
 }
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetFontFromUser1[1] = {{ wxLua_function_wxGetFontFromUser1, WXLUAMETHOD_CFUNCTION, 0, 3, s_wxluatypeArray_wxLua_function_wxGetFontFromUser1 }};
 
-#endif // (wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG) && (wxLUA_USE_wxFont)
+#endif // (wxLUA_USE_wxFont) && (wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG)
 
-#if (wxLUA_USE_wxFont) && (!wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG)
+#if (!wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG) && (wxLUA_USE_wxFont)
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetFontFromUser[] = { &wxluatype_wxWindow, &wxluatype_wxFont, NULL };
 // !%wxchkver_2_8&&wxUSE_FONTDLG wxFont wxGetFontFromUser(wxWindow *parent, const wxFont& fontInit );
 static int LUACALL wxLua_function_wxGetFontFromUser(lua_State *L)
@@ -3668,7 +3668,7 @@ static int LUACALL wxLua_function_wxGetFontFromUser(lua_State *L)
 }
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetFontFromUser[1] = {{ wxLua_function_wxGetFontFromUser, WXLUAMETHOD_CFUNCTION, 2, 2, s_wxluatypeArray_wxLua_function_wxGetFontFromUser }};
 
-#endif // (wxLUA_USE_wxFont) && (!wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG)
+#endif // (!wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG) && (wxLUA_USE_wxFont)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetKeyState[] = { &wxluatype_TINTEGER, NULL };
 // bool wxGetKeyState(wxKeyCode key );
@@ -3766,7 +3766,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetMultipleChoices[1] = {{ wx
 
 #endif // wxUSE_CHOICEDLG
 
-#if (wxUSE_NUMBERDLG) && (wxLUA_USE_wxPointSizeRect)
+#if (wxLUA_USE_wxPointSizeRect) && (wxUSE_NUMBERDLG)
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetNumberFromUser[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxWindow, &wxluatype_wxPoint, NULL };
 // long wxGetNumberFromUser(const wxString& message, const wxString& prompt, const wxString& caption, long value, long min = 0, long max = 100, wxWindow *parent = NULL, const wxPoint& pos = wxDefaultPosition );
 static int LUACALL wxLua_function_wxGetNumberFromUser(lua_State *L)
@@ -3798,7 +3798,7 @@ static int LUACALL wxLua_function_wxGetNumberFromUser(lua_State *L)
 }
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetNumberFromUser[1] = {{ wxLua_function_wxGetNumberFromUser, WXLUAMETHOD_CFUNCTION, 4, 8, s_wxluatypeArray_wxLua_function_wxGetNumberFromUser }};
 
-#endif // (wxUSE_NUMBERDLG) && (wxLUA_USE_wxPointSizeRect)
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxUSE_NUMBERDLG)
 
 #if wxUSE_TEXTDLG
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetPasswordFromUser[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxWindow, NULL };
@@ -4317,11 +4317,11 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxcore(size_t &count)
         { "wxGetDisplaySizeMM", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetDisplaySizeMM, 1, NULL },
 #endif // wxLUA_USE_wxPointSizeRect
 
-#if (wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG) && (wxLUA_USE_wxFont)
+#if (wxLUA_USE_wxFont) && (wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG)
         { "wxGetFontFromUser", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetFontFromUser1, 1, NULL },
-#elif (wxLUA_USE_wxFont) && (!wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG)
+#elif (!wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG) && (wxLUA_USE_wxFont)
         { "wxGetFontFromUser", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetFontFromUser, 1, NULL },
-#endif // (wxLUA_USE_wxFont) && (!wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG)
+#endif // (!wxCHECK_VERSION(2,8,0) && wxUSE_FONTDLG) && (wxLUA_USE_wxFont)
         { "wxGetKeyState", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetKeyState, 1, NULL },
 
 #if wxLUA_USE_wxPointSizeRect
@@ -4336,9 +4336,9 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxcore(size_t &count)
         { "wxGetMultipleChoices", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetMultipleChoices, 1, NULL },
 #endif // wxUSE_CHOICEDLG
 
-#if (wxUSE_NUMBERDLG) && (wxLUA_USE_wxPointSizeRect)
+#if (wxLUA_USE_wxPointSizeRect) && (wxUSE_NUMBERDLG)
         { "wxGetNumberFromUser", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetNumberFromUser, 1, NULL },
-#endif // (wxUSE_NUMBERDLG) && (wxLUA_USE_wxPointSizeRect)
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxUSE_NUMBERDLG)
 
 #if wxUSE_TEXTDLG
         { "wxGetPasswordFromUser", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetPasswordFromUser, 1, NULL },
@@ -4684,6 +4684,7 @@ static const char* wxluaclassname_wxTextAttr = "wxTextAttr";
 static const char* wxluaclassname_wxTextCtrl = "wxTextCtrl";
 static const char* wxluaclassname_wxTextDataObject = "wxTextDataObject";
 static const char* wxluaclassname_wxTextDropTarget = "wxTextDropTarget";
+static const char* wxluaclassname_wxTextEntry = "wxTextEntry";
 static const char* wxluaclassname_wxTextEntryDialog = "wxTextEntryDialog";
 static const char* wxluaclassname_wxTextUrlEvent = "wxTextUrlEvent";
 static const char* wxluaclassname_wxTextValidator = "wxTextValidator";
@@ -5167,8 +5168,8 @@ static const char* wxluabaseclassnames_wxTabCtrl[] = { wxluaclassname_wxControl,
 static wxLuaBindClass* wxluabaseclassbinds_wxTabCtrl[] = { NULL };
 static const char* wxluabaseclassnames_wxTabEvent[] = { wxluaclassname_wxCommandEvent, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxTabEvent[] = { NULL };
-static const char* wxluabaseclassnames_wxTextCtrl[] = { wxluaclassname_wxControl, NULL };
-static wxLuaBindClass* wxluabaseclassbinds_wxTextCtrl[] = { NULL };
+static const char* wxluabaseclassnames_wxTextCtrl[] = { wxluaclassname_wxControl, wxluaclassname_wxTextEntry, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxTextCtrl[] = { NULL, NULL };
 static const char* wxluabaseclassnames_wxTextDataObject[] = { wxluaclassname_wxDataObjectSimple, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxTextDataObject[] = { NULL };
 static const char* wxluabaseclassnames_wxTextDropTarget[] = { wxluaclassname_wxDropTarget, NULL };
@@ -6460,7 +6461,12 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern void wxLua_wxTextAttr_delete_function(void** p);
     extern wxLuaBindMethod wxTextCtrl_methods[];
     extern int wxTextCtrl_methodCount;
+    static wxLuaArgType wxluabaseclass_wxluatypes_wxTextCtrl[] = { &wxluatype_wxTextEntry, NULL };
+    static int wxluabaseclass_vtable_offsets_wxTextCtrl[] = { int(((long int)(wxTextEntry*)(wxTextCtrl*)&wxluatype_TNONE) - ((long int)(wxTextCtrl*)&wxluatype_TNONE)) };
     extern void wxLua_wxTextCtrl_delete_function(void** p);
+    extern wxLuaBindMethod wxTextEntry_methods[];
+    extern int wxTextEntry_methodCount;
+    extern void wxLua_wxTextEntry_delete_function(void** p);
     extern wxLuaBindMethod wxTextUrlEvent_methods[];
     extern int wxTextUrlEvent_methodCount;
     extern void wxLua_wxTextUrlEvent_delete_function(void** p);
@@ -7404,7 +7410,7 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 
 #if wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL
         { wxluaclassname_wxTextAttr, wxTextAttr_methods, wxTextAttr_methodCount, NULL, &wxluatype_wxTextAttr, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxTextAttr_delete_function, }, 
-        { wxluaclassname_wxTextCtrl, wxTextCtrl_methods, wxTextCtrl_methodCount, CLASSINFO(wxTextCtrl), &wxluatype_wxTextCtrl, wxluabaseclassnames_wxTextCtrl, wxluabaseclassbinds_wxTextCtrl, NULL, NULL, NULL, 0, &wxLua_wxTextCtrl_delete_function, }, 
+        { wxluaclassname_wxTextCtrl, wxTextCtrl_methods, wxTextCtrl_methodCount, CLASSINFO(wxTextCtrl), &wxluatype_wxTextCtrl, wxluabaseclassnames_wxTextCtrl, wxluabaseclassbinds_wxTextCtrl, wxluabaseclass_wxluatypes_wxTextCtrl, wxluabaseclass_vtable_offsets_wxTextCtrl, NULL, 0, &wxLua_wxTextCtrl_delete_function, }, 
 #endif // wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL
 
 #if wxLUA_USE_wxDataObject && wxUSE_DATAOBJ
@@ -7414,6 +7420,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #if wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
         { wxluaclassname_wxTextDropTarget, wxTextDropTarget_methods, wxTextDropTarget_methodCount, NULL, &wxluatype_wxTextDropTarget, wxluabaseclassnames_wxTextDropTarget, wxluabaseclassbinds_wxTextDropTarget, NULL, NULL, NULL, 0, &wxLua_wxTextDropTarget_delete_function, }, 
 #endif // wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
+
+#if wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL
+        { wxluaclassname_wxTextEntry, wxTextEntry_methods, wxTextEntry_methodCount, NULL, &wxluatype_wxTextEntry, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxTextEntry_delete_function, }, 
+#endif // wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL
 
 #if wxUSE_TEXTDLG && wxLUA_USE_wxTextEntryDialog
         { wxluaclassname_wxTextEntryDialog, wxTextEntryDialog_methods, wxTextEntryDialog_methodCount, CLASSINFO(wxTextEntryDialog), &wxluatype_wxTextEntryDialog, wxluabaseclassnames_wxTextEntryDialog, wxluabaseclassbinds_wxTextEntryDialog, NULL, NULL, NULL, 0, &wxLua_wxTextEntryDialog_delete_function, }, 

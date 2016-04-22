@@ -554,6 +554,24 @@ static int LUACALL wxLua_wxLuaListCtrl_constructor(lua_State *L)
 }
 %end
 
+#if wxCHECK_VERSION(3, 1, 1)
+%override wxLua_wxTextEntry_GetSelection
+// virtual void GetSelection(long* from, long* to)
+static int LUACALL wxLua_wxTextEntry_GetSelection(lua_State *L)
+{
+    long to;
+    long from;
+    // get this
+    wxTextEntry *self = (wxTextEntry *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextEntry);
+    // call GetSelection
+    self->GetSelection(&from, &to);
+    lua_pushnumber(L, from);
+    lua_pushnumber(L, to);
+    // return the number of parameters
+    return 2;
+}
+%end
+#else
 %override wxLua_wxTextCtrl_GetSelection
 // virtual void GetSelection(long* from, long* to)
 static int LUACALL wxLua_wxTextCtrl_GetSelection(lua_State *L)
@@ -570,6 +588,7 @@ static int LUACALL wxLua_wxTextCtrl_GetSelection(lua_State *L)
     return 2;
 }
 %end
+#endif
 
 %override wxLua_wxTextCtrl_HitTest
 //     wxTextCtrlHitTestResult HitTest(const wxPoint& pt, wxTextCoord *col, wxTextCoord *row) const
