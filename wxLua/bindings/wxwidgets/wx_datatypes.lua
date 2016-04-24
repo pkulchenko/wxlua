@@ -241,6 +241,15 @@ wx_dataTypeTable =
     Name = "wxAnimationType",
     ValueType = "enum",
   },
+  wxAnyButton = {
+    BaseClasses = {
+      [1] = "wxControl",
+    },
+    Condition = "wxLUA_USE_wxButton && wxUSE_BUTTON",
+    IsNumber = false,
+    Name = "wxAnyButton",
+    ValueType = "class",
+  },
   wxApp = {
     BaseClasses = {
       [1] = "wxEvtHandler",
@@ -631,7 +640,7 @@ wx_dataTypeTable =
   },
   wxBitmapButton = {
     BaseClasses = {
-      [1] = "wxButton",
+      [1] = "wxAnyButton",
     },
     Condition = "(wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)",
     IsNumber = false,
@@ -654,6 +663,15 @@ wx_dataTypeTable =
     Condition = "wxLUA_USE_wxDataObject && wxUSE_DATAOBJ",
     IsNumber = false,
     Name = "wxBitmapDataObject",
+    ValueType = "class",
+  },
+  wxBitmapToggleButton = {
+    BaseClasses = {
+      [1] = "wxToggleButton",
+    },
+    Condition = "wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN",
+    IsNumber = false,
+    Name = "wxBitmapToggleButton",
     ValueType = "class",
   },
   wxBitmapType = {
@@ -743,7 +761,7 @@ wx_dataTypeTable =
   },
   wxButton = {
     BaseClasses = {
-      [1] = "wxControl",
+      [1] = "wxAnyButton",
     },
     Condition = "wxLUA_USE_wxButton && wxUSE_BUTTON",
     IsNumber = false,
@@ -4875,7 +4893,7 @@ wx_dataTypeTable =
   },
   wxToggleButton = {
     BaseClasses = {
-      [1] = "wxControl",
+      [1] = "wxAnyButton",
     },
     Condition = "wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN",
     IsNumber = false,

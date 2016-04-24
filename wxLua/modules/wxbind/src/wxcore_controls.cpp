@@ -31,6 +31,405 @@
 
 #if wxLUA_USE_wxButton && wxUSE_BUTTON
 // ---------------------------------------------------------------------------
+// Bind class wxAnyButton
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxAnyButton'
+int wxluatype_wxAnyButton = WXLUA_TUNKNOWN;
+
+#if (wxLUA_USE_wxBitmap) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAnyButton_GetBitmap[] = { &wxluatype_wxAnyButton, NULL };
+static int LUACALL wxLua_wxAnyButton_GetBitmap(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_GetBitmap[1] = {{ wxLua_wxAnyButton_GetBitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAnyButton_GetBitmap }};
+//     %wxchkver_3_1_1 wxBitmap GetBitmap() const;
+static int LUACALL wxLua_wxAnyButton_GetBitmap(lua_State *L)
+{
+    // get this
+    wxAnyButton * self = (wxAnyButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAnyButton);
+    // call GetBitmap
+    // allocate a new object using the copy constructor
+    wxBitmap* returns = new wxBitmap(self->GetBitmap());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmap);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAnyButton_GetBitmapCurrent[] = { &wxluatype_wxAnyButton, NULL };
+static int LUACALL wxLua_wxAnyButton_GetBitmapCurrent(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_GetBitmapCurrent[1] = {{ wxLua_wxAnyButton_GetBitmapCurrent, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAnyButton_GetBitmapCurrent }};
+//     %wxchkver_3_1_1 wxBitmap GetBitmapCurrent() const;
+static int LUACALL wxLua_wxAnyButton_GetBitmapCurrent(lua_State *L)
+{
+    // get this
+    wxAnyButton * self = (wxAnyButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAnyButton);
+    // call GetBitmapCurrent
+    // allocate a new object using the copy constructor
+    wxBitmap* returns = new wxBitmap(self->GetBitmapCurrent());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmap);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAnyButton_GetBitmapDisabled[] = { &wxluatype_wxAnyButton, NULL };
+static int LUACALL wxLua_wxAnyButton_GetBitmapDisabled(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_GetBitmapDisabled[1] = {{ wxLua_wxAnyButton_GetBitmapDisabled, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAnyButton_GetBitmapDisabled }};
+//     %wxchkver_3_1_1 wxBitmap GetBitmapDisabled() const;
+static int LUACALL wxLua_wxAnyButton_GetBitmapDisabled(lua_State *L)
+{
+    // get this
+    wxAnyButton * self = (wxAnyButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAnyButton);
+    // call GetBitmapDisabled
+    // allocate a new object using the copy constructor
+    wxBitmap* returns = new wxBitmap(self->GetBitmapDisabled());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmap);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAnyButton_GetBitmapFocus[] = { &wxluatype_wxAnyButton, NULL };
+static int LUACALL wxLua_wxAnyButton_GetBitmapFocus(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_GetBitmapFocus[1] = {{ wxLua_wxAnyButton_GetBitmapFocus, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAnyButton_GetBitmapFocus }};
+//     %wxchkver_3_1_1 wxBitmap GetBitmapFocus() const;
+static int LUACALL wxLua_wxAnyButton_GetBitmapFocus(lua_State *L)
+{
+    // get this
+    wxAnyButton * self = (wxAnyButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAnyButton);
+    // call GetBitmapFocus
+    // allocate a new object using the copy constructor
+    wxBitmap* returns = new wxBitmap(self->GetBitmapFocus());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmap);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAnyButton_GetBitmapLabel[] = { &wxluatype_wxAnyButton, NULL };
+static int LUACALL wxLua_wxAnyButton_GetBitmapLabel(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_GetBitmapLabel[1] = {{ wxLua_wxAnyButton_GetBitmapLabel, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAnyButton_GetBitmapLabel }};
+//     %wxchkver_3_1_1 wxBitmap GetBitmapLabel() const;
+static int LUACALL wxLua_wxAnyButton_GetBitmapLabel(lua_State *L)
+{
+    // get this
+    wxAnyButton * self = (wxAnyButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAnyButton);
+    // call GetBitmapLabel
+    // allocate a new object using the copy constructor
+    wxBitmap* returns = new wxBitmap(self->GetBitmapLabel());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmap);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxBitmap) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+
+#if (wxLUA_USE_wxPointSizeRect) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAnyButton_GetBitmapMargins[] = { &wxluatype_wxAnyButton, NULL };
+static int LUACALL wxLua_wxAnyButton_GetBitmapMargins(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_GetBitmapMargins[1] = {{ wxLua_wxAnyButton_GetBitmapMargins, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAnyButton_GetBitmapMargins }};
+//     %wxchkver_3_1_1 wxSize GetBitmapMargins();
+static int LUACALL wxLua_wxAnyButton_GetBitmapMargins(lua_State *L)
+{
+    // get this
+    wxAnyButton * self = (wxAnyButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAnyButton);
+    // call GetBitmapMargins
+    // allocate a new object using the copy constructor
+    wxSize* returns = new wxSize(self->GetBitmapMargins());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxPointSizeRect) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+
+#if (wxLUA_USE_wxBitmap) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAnyButton_GetBitmapPressed[] = { &wxluatype_wxAnyButton, NULL };
+static int LUACALL wxLua_wxAnyButton_GetBitmapPressed(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_GetBitmapPressed[1] = {{ wxLua_wxAnyButton_GetBitmapPressed, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAnyButton_GetBitmapPressed }};
+//     %wxchkver_3_1_1 wxBitmap GetBitmapPressed() const;
+static int LUACALL wxLua_wxAnyButton_GetBitmapPressed(lua_State *L)
+{
+    // get this
+    wxAnyButton * self = (wxAnyButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAnyButton);
+    // call GetBitmapPressed
+    // allocate a new object using the copy constructor
+    wxBitmap* returns = new wxBitmap(self->GetBitmapPressed());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmap);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAnyButton_SetBitmap[] = { &wxluatype_wxAnyButton, &wxluatype_wxBitmap, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxAnyButton_SetBitmap(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_SetBitmap[1] = {{ wxLua_wxAnyButton_SetBitmap, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxAnyButton_SetBitmap }};
+//     %wxchkver_3_1_1 void SetBitmap(const wxBitmap& bitmap, wxDirection dir = wxLEFT);
+static int LUACALL wxLua_wxAnyButton_SetBitmap(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxDirection dir = wxLEFT
+    wxDirection dir = (argCount >= 3 ? (wxDirection)wxlua_getenumtype(L, 3) : wxLEFT);
+    // const wxBitmap bitmap
+    const wxBitmap * bitmap = (const wxBitmap *)wxluaT_getuserdatatype(L, 2, wxluatype_wxBitmap);
+    // get this
+    wxAnyButton * self = (wxAnyButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAnyButton);
+    // call SetBitmap
+    self->SetBitmap(*bitmap, dir);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapCurrent[] = { &wxluatype_wxAnyButton, &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxAnyButton_SetBitmapCurrent(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_SetBitmapCurrent[1] = {{ wxLua_wxAnyButton_SetBitmapCurrent, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapCurrent }};
+//     %wxchkver_3_1_1 void SetBitmapCurrent(const wxBitmap& bitmap);
+static int LUACALL wxLua_wxAnyButton_SetBitmapCurrent(lua_State *L)
+{
+    // const wxBitmap bitmap
+    const wxBitmap * bitmap = (const wxBitmap *)wxluaT_getuserdatatype(L, 2, wxluatype_wxBitmap);
+    // get this
+    wxAnyButton * self = (wxAnyButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAnyButton);
+    // call SetBitmapCurrent
+    self->SetBitmapCurrent(*bitmap);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapDisabled[] = { &wxluatype_wxAnyButton, &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxAnyButton_SetBitmapDisabled(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_SetBitmapDisabled[1] = {{ wxLua_wxAnyButton_SetBitmapDisabled, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapDisabled }};
+//     %wxchkver_3_1_1 void SetBitmapDisabled(const wxBitmap& bitmap);
+static int LUACALL wxLua_wxAnyButton_SetBitmapDisabled(lua_State *L)
+{
+    // const wxBitmap bitmap
+    const wxBitmap * bitmap = (const wxBitmap *)wxluaT_getuserdatatype(L, 2, wxluatype_wxBitmap);
+    // get this
+    wxAnyButton * self = (wxAnyButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAnyButton);
+    // call SetBitmapDisabled
+    self->SetBitmapDisabled(*bitmap);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapFocus[] = { &wxluatype_wxAnyButton, &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxAnyButton_SetBitmapFocus(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_SetBitmapFocus[1] = {{ wxLua_wxAnyButton_SetBitmapFocus, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapFocus }};
+//     %wxchkver_3_1_1 void SetBitmapFocus(const wxBitmap& bitmap);
+static int LUACALL wxLua_wxAnyButton_SetBitmapFocus(lua_State *L)
+{
+    // const wxBitmap bitmap
+    const wxBitmap * bitmap = (const wxBitmap *)wxluaT_getuserdatatype(L, 2, wxluatype_wxBitmap);
+    // get this
+    wxAnyButton * self = (wxAnyButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAnyButton);
+    // call SetBitmapFocus
+    self->SetBitmapFocus(*bitmap);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapLabel[] = { &wxluatype_wxAnyButton, &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxAnyButton_SetBitmapLabel(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_SetBitmapLabel[1] = {{ wxLua_wxAnyButton_SetBitmapLabel, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapLabel }};
+//     %wxchkver_3_1_1 void SetBitmapLabel(const wxBitmap& bitmap);
+static int LUACALL wxLua_wxAnyButton_SetBitmapLabel(lua_State *L)
+{
+    // const wxBitmap bitmap
+    const wxBitmap * bitmap = (const wxBitmap *)wxluaT_getuserdatatype(L, 2, wxluatype_wxBitmap);
+    // get this
+    wxAnyButton * self = (wxAnyButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAnyButton);
+    // call SetBitmapLabel
+    self->SetBitmapLabel(*bitmap);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxBitmap) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+
+#if (wxLUA_USE_wxPointSizeRect) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapMargins1[] = { &wxluatype_wxAnyButton, &wxluatype_wxSize, NULL };
+static int LUACALL wxLua_wxAnyButton_SetBitmapMargins1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_SetBitmapMargins1[1] = {{ wxLua_wxAnyButton_SetBitmapMargins1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapMargins1 }};
+//     %wxchkver_3_1_1 void SetBitmapMargins(const wxSize& sz);
+static int LUACALL wxLua_wxAnyButton_SetBitmapMargins1(lua_State *L)
+{
+    // const wxSize sz
+    const wxSize * sz = (const wxSize *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSize);
+    // get this
+    wxAnyButton * self = (wxAnyButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAnyButton);
+    // call SetBitmapMargins
+    self->SetBitmapMargins(*sz);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxPointSizeRect) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapMargins[] = { &wxluatype_wxAnyButton, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxAnyButton_SetBitmapMargins(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_SetBitmapMargins[1] = {{ wxLua_wxAnyButton_SetBitmapMargins, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapMargins }};
+//     %wxchkver_3_1_1 void SetBitmapMargins(wxCoord x, wxCoord y);
+static int LUACALL wxLua_wxAnyButton_SetBitmapMargins(lua_State *L)
+{
+    // wxCoord y
+    wxCoord y = (wxCoord)wxlua_getnumbertype(L, 3);
+    // wxCoord x
+    wxCoord x = (wxCoord)wxlua_getnumbertype(L, 2);
+    // get this
+    wxAnyButton * self = (wxAnyButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAnyButton);
+    // call SetBitmapMargins
+    self->SetBitmapMargins(x, y);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapPosition[] = { &wxluatype_wxAnyButton, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxAnyButton_SetBitmapPosition(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_SetBitmapPosition[1] = {{ wxLua_wxAnyButton_SetBitmapPosition, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapPosition }};
+//     %wxchkver_3_1_1 void SetBitmapPosition(wxDirection dir);
+static int LUACALL wxLua_wxAnyButton_SetBitmapPosition(lua_State *L)
+{
+    // wxDirection dir
+    wxDirection dir = (wxDirection)wxlua_getenumtype(L, 2);
+    // get this
+    wxAnyButton * self = (wxAnyButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAnyButton);
+    // call SetBitmapPosition
+    self->SetBitmapPosition(dir);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+
+#if (wxLUA_USE_wxBitmap) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapPressed[] = { &wxluatype_wxAnyButton, &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxAnyButton_SetBitmapPressed(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_SetBitmapPressed[1] = {{ wxLua_wxAnyButton_SetBitmapPressed, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapPressed }};
+//     %wxchkver_3_1_1 void SetBitmapPressed(const wxBitmap& bitmap);
+static int LUACALL wxLua_wxAnyButton_SetBitmapPressed(lua_State *L)
+{
+    // const wxBitmap bitmap
+    const wxBitmap * bitmap = (const wxBitmap *)wxluaT_getuserdatatype(L, 2, wxluatype_wxBitmap);
+    // get this
+    wxAnyButton * self = (wxAnyButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAnyButton);
+    // call SetBitmapPressed
+    self->SetBitmapPressed(*bitmap);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxBitmap) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+
+#if (wxLUA_USE_wxButton && wxUSE_BUTTON) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+static int LUACALL wxLua_wxAnyButton_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_constructor[1] = {{ wxLua_wxAnyButton_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     %wxchkver_3_1_1 wxAnyButton();
+static int LUACALL wxLua_wxAnyButton_constructor(lua_State *L)
+{
+    // call constructor
+    wxAnyButton* returns = new wxAnyButton();
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxAnyButton);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxButton && wxUSE_BUTTON) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+
+
+
+#if ((wxLUA_USE_wxPointSizeRect) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)))||((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAnyButton_SetBitmapMargins_overload[] =
+{
+
+#if (wxLUA_USE_wxPointSizeRect) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+    { wxLua_wxAnyButton_SetBitmapMargins1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapMargins1 },
+#endif // (wxLUA_USE_wxPointSizeRect) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+    { wxLua_wxAnyButton_SetBitmapMargins, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxAnyButton_SetBitmapMargins },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+};
+static int s_wxluafunc_wxLua_wxAnyButton_SetBitmapMargins_overload_count = sizeof(s_wxluafunc_wxLua_wxAnyButton_SetBitmapMargins_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxLUA_USE_wxPointSizeRect) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)))||((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+
+void wxLua_wxAnyButton_delete_function(void** p)
+{
+    wxAnyButton* o = (wxAnyButton*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxAnyButton_methods[] = {
+#if (wxLUA_USE_wxBitmap) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+    { "GetBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAnyButton_GetBitmap, 1, NULL },
+    { "GetBitmapCurrent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAnyButton_GetBitmapCurrent, 1, NULL },
+    { "GetBitmapDisabled", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAnyButton_GetBitmapDisabled, 1, NULL },
+    { "GetBitmapFocus", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAnyButton_GetBitmapFocus, 1, NULL },
+    { "GetBitmapLabel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAnyButton_GetBitmapLabel, 1, NULL },
+#endif // (wxLUA_USE_wxBitmap) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+
+#if (wxLUA_USE_wxPointSizeRect) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+    { "GetBitmapMargins", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAnyButton_GetBitmapMargins, 1, NULL },
+#endif // (wxLUA_USE_wxPointSizeRect) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+
+#if (wxLUA_USE_wxBitmap) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+    { "GetBitmapPressed", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAnyButton_GetBitmapPressed, 1, NULL },
+    { "SetBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAnyButton_SetBitmap, 1, NULL },
+    { "SetBitmapCurrent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAnyButton_SetBitmapCurrent, 1, NULL },
+    { "SetBitmapDisabled", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAnyButton_SetBitmapDisabled, 1, NULL },
+    { "SetBitmapFocus", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAnyButton_SetBitmapFocus, 1, NULL },
+    { "SetBitmapLabel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAnyButton_SetBitmapLabel, 1, NULL },
+#endif // (wxLUA_USE_wxBitmap) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+
+#if ((wxLUA_USE_wxPointSizeRect) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)))||((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+    { "SetBitmapMargins", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAnyButton_SetBitmapMargins_overload, s_wxluafunc_wxLua_wxAnyButton_SetBitmapMargins_overload_count, 0 },
+#endif // ((wxLUA_USE_wxPointSizeRect) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)))||((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+    { "SetBitmapPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAnyButton_SetBitmapPosition, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+
+#if (wxLUA_USE_wxBitmap) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+    { "SetBitmapPressed", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAnyButton_SetBitmapPressed, 1, NULL },
+#endif // (wxLUA_USE_wxBitmap) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+
+#if (wxLUA_USE_wxButton && wxUSE_BUTTON) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+    { "wxAnyButton", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxAnyButton_constructor, 1, NULL },
+#endif // (wxLUA_USE_wxButton && wxUSE_BUTTON) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON))
+
+    { 0, 0, 0, 0 },
+};
+
+int wxAnyButton_methodCount = sizeof(wxAnyButton_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxButton && wxUSE_BUTTON
+
+
+#if wxLUA_USE_wxButton && wxUSE_BUTTON
+// ---------------------------------------------------------------------------
 // Bind class wxButton
 // ---------------------------------------------------------------------------
 
@@ -74,6 +473,25 @@ static int LUACALL wxLua_wxButton_Create(lua_State *L)
 
 #endif // ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxButton_GetAuthNeeded[] = { &wxluatype_wxButton, NULL };
+static int LUACALL wxLua_wxButton_GetAuthNeeded(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxButton_GetAuthNeeded[1] = {{ wxLua_wxButton_GetAuthNeeded, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxButton_GetAuthNeeded }};
+//     %wxchkver_3_1_1 bool GetAuthNeeded() const;
+static int LUACALL wxLua_wxButton_GetAuthNeeded(lua_State *L)
+{
+    // get this
+    wxButton * self = (wxButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxButton);
+    // call GetAuthNeeded
+    bool returns = (self->GetAuthNeeded());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+
 #if (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxPointSizeRect)
 static int LUACALL wxLua_wxButton_GetDefaultSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxButton_GetDefaultSize[1] = {{ wxLua_wxButton_GetDefaultSize, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
@@ -93,6 +511,43 @@ static int LUACALL wxLua_wxButton_GetDefaultSize(lua_State *L)
 
 #endif // (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxPointSizeRect)
 
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxButton_GetLabel[] = { &wxluatype_wxButton, NULL };
+static int LUACALL wxLua_wxButton_GetLabel(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxButton_GetLabel[1] = {{ wxLua_wxButton_GetLabel, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxButton_GetLabel }};
+//     %wxchkver_3_1_1 wxString GetLabel() const;
+static int LUACALL wxLua_wxButton_GetLabel(lua_State *L)
+{
+    // get this
+    wxButton * self = (wxButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxButton);
+    // call GetLabel
+    wxString returns = (self->GetLabel());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxButton_SetAuthNeeded[] = { &wxluatype_wxButton, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxButton_SetAuthNeeded(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxButton_SetAuthNeeded[1] = {{ wxLua_wxButton_SetAuthNeeded, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxButton_SetAuthNeeded }};
+//     %wxchkver_3_1_1 void SetAuthNeeded(bool needed = true);
+static int LUACALL wxLua_wxButton_SetAuthNeeded(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool needed = true
+    bool needed = (argCount >= 2 ? wxlua_getbooleantype(L, 2) : true);
+    // get this
+    wxButton * self = (wxButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxButton);
+    // call SetAuthNeeded
+    self->SetAuthNeeded(needed);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxButton_SetDefault[] = { &wxluatype_wxButton, NULL };
 static int LUACALL wxLua_wxButton_SetDefault(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxButton_SetDefault[1] = {{ wxLua_wxButton_SetDefault, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxButton_SetDefault }};
@@ -107,6 +562,25 @@ static int LUACALL wxLua_wxButton_SetDefault(lua_State *L)
     return 0;
 }
 
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxButton_SetLabel[] = { &wxluatype_wxButton, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxButton_SetLabel(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxButton_SetLabel[1] = {{ wxLua_wxButton_SetLabel, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxButton_SetLabel }};
+//     %wxchkver_3_1_1 void SetLabel(const wxString& label);
+static int LUACALL wxLua_wxButton_SetLabel(lua_State *L)
+{
+    // const wxString label
+    const wxString label = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxButton * self = (wxButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxButton);
+    // call SetLabel
+    self->SetLabel(label);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
 
 #if ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxButton_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
@@ -189,11 +663,24 @@ wxLuaBindMethod wxButton_methods[] = {
     { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxButton_Create, 1, NULL },
 #endif // ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+    { "GetAuthNeeded", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxButton_GetAuthNeeded, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+
 #if (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxPointSizeRect)
     { "GetDefaultSize", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxButton_GetDefaultSize, 1, NULL },
 #endif // (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxPointSizeRect)
 
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+    { "GetLabel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxButton_GetLabel, 1, NULL },
+    { "SetAuthNeeded", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxButton_SetAuthNeeded, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+
     { "SetDefault", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxButton_SetDefault, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+    { "SetLabel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxButton_SetLabel, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
 
 #if (((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||(wxLUA_USE_wxButton && wxUSE_BUTTON)
     { "wxButton", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxButton_constructor_overload, s_wxluafunc_wxLua_wxButton_constructor_overload_count, 0 },
@@ -252,11 +739,11 @@ static int LUACALL wxLua_wxBitmapButton_Create(lua_State *L)
 
 #endif // (((wxLUA_USE_wxBitmap) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 
-#if (wxLUA_USE_wxBitmap) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))
+#if (wxLUA_USE_wxBitmap) && ((!wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapButton_GetBitmapDisabled[] = { &wxluatype_wxBitmapButton, NULL };
 static int LUACALL wxLua_wxBitmapButton_GetBitmapDisabled(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapButton_GetBitmapDisabled[1] = {{ wxLua_wxBitmapButton_GetBitmapDisabled, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxBitmapButton_GetBitmapDisabled }};
-//     wxBitmap GetBitmapDisabled() const;
+//     !%wxchkver_3_1_1 wxBitmap GetBitmapDisabled() const;
 static int LUACALL wxLua_wxBitmapButton_GetBitmapDisabled(lua_State *L)
 {
     // get this
@@ -275,7 +762,7 @@ static int LUACALL wxLua_wxBitmapButton_GetBitmapDisabled(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapButton_GetBitmapFocus[] = { &wxluatype_wxBitmapButton, NULL };
 static int LUACALL wxLua_wxBitmapButton_GetBitmapFocus(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapButton_GetBitmapFocus[1] = {{ wxLua_wxBitmapButton_GetBitmapFocus, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxBitmapButton_GetBitmapFocus }};
-//     wxBitmap GetBitmapFocus() const;
+//     !%wxchkver_3_1_1 wxBitmap GetBitmapFocus() const;
 static int LUACALL wxLua_wxBitmapButton_GetBitmapFocus(lua_State *L)
 {
     // get this
@@ -291,13 +778,13 @@ static int LUACALL wxLua_wxBitmapButton_GetBitmapFocus(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxBitmap) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))
+#endif // (wxLUA_USE_wxBitmap) && ((!wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)))
 
-#if ((wxCHECK_VERSION(2,8,0)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapButton_GetBitmapHover[] = { &wxluatype_wxBitmapButton, NULL };
 static int LUACALL wxLua_wxBitmapButton_GetBitmapHover(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapButton_GetBitmapHover[1] = {{ wxLua_wxBitmapButton_GetBitmapHover, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxBitmapButton_GetBitmapHover }};
-//     %wxchkver_2_8 wxBitmap GetBitmapHover() const;
+//     !%wxchkver_3_1_1 && %wxchkver_2_8 wxBitmap GetBitmapHover() const;
 static int LUACALL wxLua_wxBitmapButton_GetBitmapHover(lua_State *L)
 {
     // get this
@@ -313,13 +800,13 @@ static int LUACALL wxLua_wxBitmapButton_GetBitmapHover(lua_State *L)
     return 1;
 }
 
-#endif // ((wxCHECK_VERSION(2,8,0)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxBitmap)
 
-#if (wxLUA_USE_wxBitmap) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))
+#if (wxLUA_USE_wxBitmap) && ((!wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapButton_GetBitmapLabel[] = { &wxluatype_wxBitmapButton, NULL };
 static int LUACALL wxLua_wxBitmapButton_GetBitmapLabel(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapButton_GetBitmapLabel[1] = {{ wxLua_wxBitmapButton_GetBitmapLabel, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxBitmapButton_GetBitmapLabel }};
-//     wxBitmap GetBitmapLabel() const;
+//     !%wxchkver_3_1_1 wxBitmap GetBitmapLabel() const;
 static int LUACALL wxLua_wxBitmapButton_GetBitmapLabel(lua_State *L)
 {
     // get this
@@ -338,7 +825,7 @@ static int LUACALL wxLua_wxBitmapButton_GetBitmapLabel(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapButton_GetBitmapSelected[] = { &wxluatype_wxBitmapButton, NULL };
 static int LUACALL wxLua_wxBitmapButton_GetBitmapSelected(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapButton_GetBitmapSelected[1] = {{ wxLua_wxBitmapButton_GetBitmapSelected, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxBitmapButton_GetBitmapSelected }};
-//     wxBitmap GetBitmapSelected() const;
+//     !%wxchkver_3_1_1 wxBitmap GetBitmapSelected() const;
 static int LUACALL wxLua_wxBitmapButton_GetBitmapSelected(lua_State *L)
 {
     // get this
@@ -354,10 +841,34 @@ static int LUACALL wxLua_wxBitmapButton_GetBitmapSelected(lua_State *L)
     return 1;
 }
 
+#endif // (wxLUA_USE_wxBitmap) && ((!wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)))
+
+#if ((wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapButton_NewCloseButton[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxBitmapButton_NewCloseButton(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapButton_NewCloseButton[1] = {{ wxLua_wxBitmapButton_NewCloseButton, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 2, 2, s_wxluatypeArray_wxLua_wxBitmapButton_NewCloseButton }};
+//     %wxchkver_3_1_1 static wxBitmapButton* NewCloseButton(wxWindow* parent, wxWindowID winid);
+static int LUACALL wxLua_wxBitmapButton_NewCloseButton(lua_State *L)
+{
+    // wxWindowID winid
+    wxWindowID winid = (wxWindowID)wxlua_getnumbertype(L, 2);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call NewCloseButton
+    wxBitmapButton* returns = (wxBitmapButton*)wxBitmapButton::NewCloseButton(parent, winid);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmapButton);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))
+
+#if (wxLUA_USE_wxBitmap) && ((!wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapButton_SetBitmapDisabled[] = { &wxluatype_wxBitmapButton, &wxluatype_wxBitmap, NULL };
 static int LUACALL wxLua_wxBitmapButton_SetBitmapDisabled(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapButton_SetBitmapDisabled[1] = {{ wxLua_wxBitmapButton_SetBitmapDisabled, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxBitmapButton_SetBitmapDisabled }};
-//     void     SetBitmapDisabled(const wxBitmap& bitmap);
+//     !%wxchkver_3_1_1 void     SetBitmapDisabled(const wxBitmap& bitmap);
 static int LUACALL wxLua_wxBitmapButton_SetBitmapDisabled(lua_State *L)
 {
     // const wxBitmap bitmap
@@ -373,7 +884,7 @@ static int LUACALL wxLua_wxBitmapButton_SetBitmapDisabled(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapButton_SetBitmapFocus[] = { &wxluatype_wxBitmapButton, &wxluatype_wxBitmap, NULL };
 static int LUACALL wxLua_wxBitmapButton_SetBitmapFocus(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapButton_SetBitmapFocus[1] = {{ wxLua_wxBitmapButton_SetBitmapFocus, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxBitmapButton_SetBitmapFocus }};
-//     void     SetBitmapFocus(const wxBitmap& bitmap);
+//     !%wxchkver_3_1_1 void     SetBitmapFocus(const wxBitmap& bitmap);
 static int LUACALL wxLua_wxBitmapButton_SetBitmapFocus(lua_State *L)
 {
     // const wxBitmap bitmap
@@ -386,13 +897,13 @@ static int LUACALL wxLua_wxBitmapButton_SetBitmapFocus(lua_State *L)
     return 0;
 }
 
-#endif // (wxLUA_USE_wxBitmap) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))
+#endif // (wxLUA_USE_wxBitmap) && ((!wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)))
 
-#if ((wxCHECK_VERSION(2,8,0)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapButton_SetBitmapHover[] = { &wxluatype_wxBitmapButton, &wxluatype_wxBitmap, NULL };
 static int LUACALL wxLua_wxBitmapButton_SetBitmapHover(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapButton_SetBitmapHover[1] = {{ wxLua_wxBitmapButton_SetBitmapHover, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxBitmapButton_SetBitmapHover }};
-//     %wxchkver_2_8 void SetBitmapHover(const wxBitmap& hover);
+//     !%wxchkver_3_1_1 && %wxchkver_2_8 void SetBitmapHover(const wxBitmap& hover);
 static int LUACALL wxLua_wxBitmapButton_SetBitmapHover(lua_State *L)
 {
     // const wxBitmap hover
@@ -405,13 +916,13 @@ static int LUACALL wxLua_wxBitmapButton_SetBitmapHover(lua_State *L)
     return 0;
 }
 
-#endif // ((wxCHECK_VERSION(2,8,0)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxBitmap)
 
-#if (wxLUA_USE_wxBitmap) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))
+#if (wxLUA_USE_wxBitmap) && ((!wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapButton_SetBitmapLabel[] = { &wxluatype_wxBitmapButton, &wxluatype_wxBitmap, NULL };
 static int LUACALL wxLua_wxBitmapButton_SetBitmapLabel(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapButton_SetBitmapLabel[1] = {{ wxLua_wxBitmapButton_SetBitmapLabel, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxBitmapButton_SetBitmapLabel }};
-//     void     SetBitmapLabel(const wxBitmap& bitmap);
+//     !%wxchkver_3_1_1 void     SetBitmapLabel(const wxBitmap& bitmap);
 static int LUACALL wxLua_wxBitmapButton_SetBitmapLabel(lua_State *L)
 {
     // const wxBitmap bitmap
@@ -427,7 +938,7 @@ static int LUACALL wxLua_wxBitmapButton_SetBitmapLabel(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapButton_SetBitmapSelected[] = { &wxluatype_wxBitmapButton, &wxluatype_wxBitmap, NULL };
 static int LUACALL wxLua_wxBitmapButton_SetBitmapSelected(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapButton_SetBitmapSelected[1] = {{ wxLua_wxBitmapButton_SetBitmapSelected, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxBitmapButton_SetBitmapSelected }};
-//     void     SetBitmapSelected(const wxBitmap& bitmap);
+//     !%wxchkver_3_1_1 void     SetBitmapSelected(const wxBitmap& bitmap);
 static int LUACALL wxLua_wxBitmapButton_SetBitmapSelected(lua_State *L)
 {
     // const wxBitmap bitmap
@@ -440,7 +951,7 @@ static int LUACALL wxLua_wxBitmapButton_SetBitmapSelected(lua_State *L)
     return 0;
 }
 
-#endif // (wxLUA_USE_wxBitmap) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))
+#endif // (wxLUA_USE_wxBitmap) && ((!wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)))
 
 #if (((wxLUA_USE_wxBitmap) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapButton_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxBitmap, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
@@ -523,30 +1034,37 @@ wxLuaBindMethod wxBitmapButton_methods[] = {
     { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapButton_Create, 1, NULL },
 #endif // (((wxLUA_USE_wxBitmap) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 
-#if (wxLUA_USE_wxBitmap) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))
+#if (wxLUA_USE_wxBitmap) && ((!wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)))
     { "GetBitmapDisabled", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapButton_GetBitmapDisabled, 1, NULL },
     { "GetBitmapFocus", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapButton_GetBitmapFocus, 1, NULL },
-#endif // (wxLUA_USE_wxBitmap) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))
+#endif // (wxLUA_USE_wxBitmap) && ((!wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)))
 
-#if ((wxCHECK_VERSION(2,8,0)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxBitmap)
     { "GetBitmapHover", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapButton_GetBitmapHover, 1, NULL },
-#endif // ((wxCHECK_VERSION(2,8,0)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxBitmap)
 
-#if (wxLUA_USE_wxBitmap) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))
+#if (wxLUA_USE_wxBitmap) && ((!wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)))
     { "GetBitmapLabel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapButton_GetBitmapLabel, 1, NULL },
     { "GetBitmapSelected", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapButton_GetBitmapSelected, 1, NULL },
+#endif // (wxLUA_USE_wxBitmap) && ((!wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)))
+
+#if ((wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))
+    { "NewCloseButton", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxBitmapButton_NewCloseButton, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))
+
+#if (wxLUA_USE_wxBitmap) && ((!wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)))
     { "SetBitmapDisabled", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapButton_SetBitmapDisabled, 1, NULL },
     { "SetBitmapFocus", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapButton_SetBitmapFocus, 1, NULL },
-#endif // (wxLUA_USE_wxBitmap) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))
+#endif // (wxLUA_USE_wxBitmap) && ((!wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)))
 
-#if ((wxCHECK_VERSION(2,8,0)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxBitmap)
     { "SetBitmapHover", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapButton_SetBitmapHover, 1, NULL },
-#endif // ((wxCHECK_VERSION(2,8,0)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxBitmap)
 
-#if (wxLUA_USE_wxBitmap) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))
+#if (wxLUA_USE_wxBitmap) && ((!wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)))
     { "SetBitmapLabel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapButton_SetBitmapLabel, 1, NULL },
     { "SetBitmapSelected", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapButton_SetBitmapSelected, 1, NULL },
-#endif // (wxLUA_USE_wxBitmap) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))
+#endif // (wxLUA_USE_wxBitmap) && ((!wxCHECK_VERSION(3,1,1)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)))
 
 #if ((((wxLUA_USE_wxBitmap) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON))
     { "wxBitmapButton", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxBitmapButton_constructor_overload, s_wxluafunc_wxLua_wxBitmapButton_constructor_overload_count, 0 },
@@ -730,6 +1248,189 @@ wxLuaBindMethod wxToggleButton_methods[] = {
 };
 
 int wxToggleButton_methodCount = sizeof(wxToggleButton_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN
+
+
+#if wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN
+// ---------------------------------------------------------------------------
+// Bind class wxBitmapToggleButton
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxBitmapToggleButton'
+int wxluatype_wxBitmapToggleButton = WXLUA_TUNKNOWN;
+
+#if (((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxLUA_USE_wxPointSizeRect)) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapToggleButton_Create[] = { &wxluatype_wxBitmapToggleButton, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxBitmap, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxBitmapToggleButton_Create(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapToggleButton_Create[1] = {{ wxLua_wxBitmapToggleButton_Create, WXLUAMETHOD_METHOD, 4, 9, s_wxluatypeArray_wxLua_wxBitmapToggleButton_Create }};
+//     %wxchkver_3_1_1 bool Create(wxWindow* parent, wxWindowID id, const wxBitmap& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& val = wxDefaultValidator, const wxString& name = wxCheckBoxNameStr);
+static int LUACALL wxLua_wxBitmapToggleButton_Create(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString name = wxCheckBoxNameStr
+    const wxString name = (argCount >= 9 ? wxlua_getwxStringtype(L, 9) : wxString(wxCheckBoxNameStr));
+    // const wxValidator val = wxDefaultValidator
+    const wxValidator * val = (argCount >= 8 ? (const wxValidator *)wxluaT_getuserdatatype(L, 8, wxluatype_wxValidator) : &wxDefaultValidator);
+    // long style = 0
+    long style = (argCount >= 7 ? (long)wxlua_getnumbertype(L, 7) : 0);
+    // const wxSize size = wxDefaultSize
+    const wxSize * size = (argCount >= 6 ? (const wxSize *)wxluaT_getuserdatatype(L, 6, wxluatype_wxSize) : &wxDefaultSize);
+    // const wxPoint pos = wxDefaultPosition
+    const wxPoint * pos = (argCount >= 5 ? (const wxPoint *)wxluaT_getuserdatatype(L, 5, wxluatype_wxPoint) : &wxDefaultPosition);
+    // const wxBitmap label
+    const wxBitmap * label = (const wxBitmap *)wxluaT_getuserdatatype(L, 4, wxluatype_wxBitmap);
+    // wxWindowID id
+    wxWindowID id = (wxWindowID)wxlua_getnumbertype(L, 3);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxBitmapToggleButton * self = (wxBitmapToggleButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmapToggleButton);
+    // call Create
+    bool returns = (self->Create(parent, id, *label, *pos, *size, style, *val, name));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxLUA_USE_wxPointSizeRect)) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN))
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapToggleButton_GetValue[] = { &wxluatype_wxBitmapToggleButton, NULL };
+static int LUACALL wxLua_wxBitmapToggleButton_GetValue(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapToggleButton_GetValue[1] = {{ wxLua_wxBitmapToggleButton_GetValue, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxBitmapToggleButton_GetValue }};
+//     %wxchkver_3_1_1 bool GetValue() const;
+static int LUACALL wxLua_wxBitmapToggleButton_GetValue(lua_State *L)
+{
+    // get this
+    wxBitmapToggleButton * self = (wxBitmapToggleButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmapToggleButton);
+    // call GetValue
+    bool returns = (self->GetValue());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapToggleButton_SetValue[] = { &wxluatype_wxBitmapToggleButton, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxBitmapToggleButton_SetValue(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapToggleButton_SetValue[1] = {{ wxLua_wxBitmapToggleButton_SetValue, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxBitmapToggleButton_SetValue }};
+//     %wxchkver_3_1_1 void SetValue(bool state);
+static int LUACALL wxLua_wxBitmapToggleButton_SetValue(lua_State *L)
+{
+    // bool state
+    bool state = wxlua_getbooleantype(L, 2);
+    // get this
+    wxBitmapToggleButton * self = (wxBitmapToggleButton *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmapToggleButton);
+    // call SetValue
+    self->SetValue(state);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)
+
+#if (((((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapToggleButton_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxBitmap, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxBitmapToggleButton_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapToggleButton_constructor1[1] = {{ wxLua_wxBitmapToggleButton_constructor1, WXLUAMETHOD_CONSTRUCTOR, 3, 8, s_wxluatypeArray_wxLua_wxBitmapToggleButton_constructor1 }};
+//     %wxchkver_3_1_1 wxBitmapToggleButton(wxWindow* parent, wxWindowID id, const wxBitmap& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& val = wxDefaultValidator, const wxString& name = wxCheckBoxNameStr);
+static int LUACALL wxLua_wxBitmapToggleButton_constructor1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString name = wxCheckBoxNameStr
+    const wxString name = (argCount >= 8 ? wxlua_getwxStringtype(L, 8) : wxString(wxCheckBoxNameStr));
+    // const wxValidator val = wxDefaultValidator
+    const wxValidator * val = (argCount >= 7 ? (const wxValidator *)wxluaT_getuserdatatype(L, 7, wxluatype_wxValidator) : &wxDefaultValidator);
+    // long style = 0
+    long style = (argCount >= 6 ? (long)wxlua_getnumbertype(L, 6) : 0);
+    // const wxSize size = wxDefaultSize
+    const wxSize * size = (argCount >= 5 ? (const wxSize *)wxluaT_getuserdatatype(L, 5, wxluatype_wxSize) : &wxDefaultSize);
+    // const wxPoint pos = wxDefaultPosition
+    const wxPoint * pos = (argCount >= 4 ? (const wxPoint *)wxluaT_getuserdatatype(L, 4, wxluatype_wxPoint) : &wxDefaultPosition);
+    // const wxBitmap label
+    const wxBitmap * label = (const wxBitmap *)wxluaT_getuserdatatype(L, 3, wxluatype_wxBitmap);
+    // wxWindowID id
+    wxWindowID id = (wxWindowID)wxlua_getnumbertype(L, 2);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call constructor
+    wxBitmapToggleButton* returns = new wxBitmapToggleButton(parent, id, *label, *pos, *size, style, *val, name);
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmapToggleButton);
+
+    return 1;
+}
+
+#endif // (((((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+
+#if (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN))
+static int LUACALL wxLua_wxBitmapToggleButton_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapToggleButton_constructor[1] = {{ wxLua_wxBitmapToggleButton_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     %wxchkver_3_1_1 wxBitmapToggleButton();
+static int LUACALL wxLua_wxBitmapToggleButton_constructor(lua_State *L)
+{
+    // call constructor
+    wxBitmapToggleButton* returns = new wxBitmapToggleButton();
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmapToggleButton);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN))
+
+
+
+#if ((((((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||((wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapToggleButton_constructor_overload[] =
+{
+
+#if (((((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+    { wxLua_wxBitmapToggleButton_constructor1, WXLUAMETHOD_CONSTRUCTOR, 3, 8, s_wxluatypeArray_wxLua_wxBitmapToggleButton_constructor1 },
+#endif // (((((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+
+#if (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN))
+    { wxLua_wxBitmapToggleButton_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+#endif // (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN))
+};
+static int s_wxluafunc_wxLua_wxBitmapToggleButton_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxBitmapToggleButton_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((((((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||((wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)))
+
+void wxLua_wxBitmapToggleButton_delete_function(void** p)
+{
+    wxBitmapToggleButton* o = (wxBitmapToggleButton*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxBitmapToggleButton_methods[] = {
+#if (((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxLUA_USE_wxPointSizeRect)) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN))
+    { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapToggleButton_Create, 1, NULL },
+#endif // (((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxLUA_USE_wxPointSizeRect)) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN))
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)
+    { "GetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapToggleButton_GetValue, 1, NULL },
+    { "SetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmapToggleButton_SetValue, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)
+
+#if ((((((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||((wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)))
+    { "wxBitmapToggleButton", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxBitmapToggleButton_constructor_overload, s_wxluafunc_wxLua_wxBitmapToggleButton_constructor_overload_count, 0 },
+#endif // ((((((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||((wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN) && ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN)))
+
+    { 0, 0, 0, 0 },
+};
+
+int wxBitmapToggleButton_methodCount = sizeof(wxBitmapToggleButton_methods)/sizeof(wxLuaBindMethod) - 1;
 
 #endif  // wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN
 

@@ -20,20 +20,45 @@
 #define wxBU_RIGHT
 #define wxBU_TOP
 #define wxBU_BOTTOM
+#define wxBU_ALIGN_MASK
 #define wxBU_EXACTFIT
 %wxchkver_2_6 #define wxBU_AUTODRAW
+%wxchkver_3_0 #define wxBU_NOTEXT
 
-class wxButton : public wxControl
+class wxAnyButton : public wxControl
 {
+
+    %wxchkver_3_1_1 wxAnyButton();
+    %wxchkver_3_1_1 wxBitmap GetBitmap() const;
+    %wxchkver_3_1_1 wxBitmap GetBitmapCurrent() const;
+    %wxchkver_3_1_1 wxBitmap GetBitmapDisabled() const;
+    %wxchkver_3_1_1 wxBitmap GetBitmapFocus() const;
+    %wxchkver_3_1_1 wxBitmap GetBitmapLabel() const;
+    %wxchkver_3_1_1 wxBitmap GetBitmapPressed() const;
+    %wxchkver_3_1_1 void SetBitmap(const wxBitmap& bitmap, wxDirection dir = wxLEFT);
+    %wxchkver_3_1_1 void SetBitmapCurrent(const wxBitmap& bitmap);
+    %wxchkver_3_1_1 void SetBitmapDisabled(const wxBitmap& bitmap);
+    %wxchkver_3_1_1 void SetBitmapFocus(const wxBitmap& bitmap);
+    %wxchkver_3_1_1 void SetBitmapLabel(const wxBitmap& bitmap);
+    %wxchkver_3_1_1 void SetBitmapPressed(const wxBitmap& bitmap);
+    %wxchkver_3_1_1 wxSize GetBitmapMargins();
+    %wxchkver_3_1_1 void SetBitmapMargins(wxCoord x, wxCoord y);
+    %wxchkver_3_1_1 void SetBitmapMargins(const wxSize& sz);
+    %wxchkver_3_1_1 void SetBitmapPosition(wxDirection dir);
+};
+
+class wxButton : public wxAnyButton
+{
+
     wxButton();
     wxButton(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxButton");
     bool Create(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxButton");
-
+    %wxchkver_3_1_1 bool GetAuthNeeded() const;
     static wxSize GetDefaultSize(); // static is ok, use on existing button
+    %wxchkver_3_1_1 wxString GetLabel() const;
+    %wxchkver_3_1_1 void SetAuthNeeded(bool needed = true);
     void     SetDefault();
-
-    //wxString GetLabel() const;                 // in wxWindow
-    //void     SetLabel(const wxString& label);  // in wxWindow
+    %wxchkver_3_1_1 void SetLabel(const wxString& label);
 };
 
 // ---------------------------------------------------------------------------
@@ -43,22 +68,23 @@ class wxButton : public wxControl
 
 #include "wx/bmpbuttn.h"
 
-class wxBitmapButton : public wxButton
+class wxBitmapButton : public wxAnyButton
 {
+
     wxBitmapButton();
     wxBitmapButton( wxWindow* parent, wxWindowID id, const wxBitmap& bitmap, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxBU_AUTODRAW, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxBitmapButton");
     bool Create(wxWindow* parent, wxWindowID id, const wxBitmap& bitmap, const wxPoint& pos, const wxSize& size = wxDefaultSize, long style = wxBU_AUTODRAW, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxBitmapButton");
-
-    wxBitmap GetBitmapDisabled() const;
-    wxBitmap GetBitmapFocus() const;
-    %wxchkver_2_8 wxBitmap GetBitmapHover() const;
-    wxBitmap GetBitmapLabel() const;
-    wxBitmap GetBitmapSelected() const;
-    void     SetBitmapDisabled(const wxBitmap& bitmap);
-    void     SetBitmapFocus(const wxBitmap& bitmap);
-    %wxchkver_2_8 void SetBitmapHover(const wxBitmap& hover);
-    void     SetBitmapLabel(const wxBitmap& bitmap);
-    void     SetBitmapSelected(const wxBitmap& bitmap);
+    %wxchkver_3_1_1 static wxBitmapButton* NewCloseButton(wxWindow* parent, wxWindowID winid);
+    !%wxchkver_3_1_1 && %wxchkver_2_8 void SetBitmapHover(const wxBitmap& hover);
+    !%wxchkver_3_1_1 && %wxchkver_2_8 wxBitmap GetBitmapHover() const;
+    !%wxchkver_3_1_1 void     SetBitmapDisabled(const wxBitmap& bitmap);
+    !%wxchkver_3_1_1 void     SetBitmapFocus(const wxBitmap& bitmap);
+    !%wxchkver_3_1_1 void     SetBitmapLabel(const wxBitmap& bitmap);
+    !%wxchkver_3_1_1 void     SetBitmapSelected(const wxBitmap& bitmap);
+    !%wxchkver_3_1_1 wxBitmap GetBitmapDisabled() const;
+    !%wxchkver_3_1_1 wxBitmap GetBitmapFocus() const;
+    !%wxchkver_3_1_1 wxBitmap GetBitmapLabel() const;
+    !%wxchkver_3_1_1 wxBitmap GetBitmapSelected() const;
 };
 
 #endif //wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON
@@ -71,17 +97,24 @@ class wxBitmapButton : public wxButton
 
 #include "wx/tglbtn.h"
 
-class wxToggleButton : public wxControl
+class wxToggleButton : public wxAnyButton
 {
+
     wxToggleButton();
     wxToggleButton(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxToggleButton");
     bool Create(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxToggleButton");
-
-    void SetValue(bool state);
     bool GetValue() const;
+    void SetValue(bool state);
+};
 
-    //wxString GetLabel() const;                 // in wxWindow
-    //void     SetLabel(const wxString& label);  // in wxWindow
+class wxBitmapToggleButton : public wxToggleButton
+{
+
+    %wxchkver_3_1_1 wxBitmapToggleButton();
+    %wxchkver_3_1_1 wxBitmapToggleButton(wxWindow* parent, wxWindowID id, const wxBitmap& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& val = wxDefaultValidator, const wxString& name = wxCheckBoxNameStr);
+    %wxchkver_3_1_1 bool Create(wxWindow* parent, wxWindowID id, const wxBitmap& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& val = wxDefaultValidator, const wxString& name = wxCheckBoxNameStr);
+    %wxchkver_3_1_1 bool GetValue() const;
+    %wxchkver_3_1_1 void SetValue(bool state);
 };
 
 #endif //wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN

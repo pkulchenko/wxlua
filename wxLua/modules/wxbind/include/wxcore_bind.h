@@ -838,6 +838,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 #endif // wxLUA_USE_wxBusyInfo && wxUSE_BUSYINFO
 
 #if wxLUA_USE_wxButton && wxUSE_BUTTON
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxAnyButton;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxButton;
 #endif // wxLUA_USE_wxButton && wxUSE_BUTTON
 
@@ -1173,6 +1174,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 #endif // wxLUA_USE_wxTimer && wxUSE_TIMER
 
 #if wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxBitmapToggleButton;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxToggleButton;
 #endif // wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN
 

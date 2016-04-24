@@ -682,6 +682,10 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxBOTH", wxBOTH },
         { "wxBOTTOM", wxBOTTOM },
 
+#if wxLUA_USE_wxButton && wxUSE_BUTTON
+        { "wxBU_ALIGN_MASK", wxBU_ALIGN_MASK },
+#endif // wxLUA_USE_wxButton && wxUSE_BUTTON
+
 #if (wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
         { "wxBU_AUTODRAW", wxBU_AUTODRAW },
 #endif // (wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
@@ -690,6 +694,13 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxBU_BOTTOM", wxBU_BOTTOM },
         { "wxBU_EXACTFIT", wxBU_EXACTFIT },
         { "wxBU_LEFT", wxBU_LEFT },
+#endif // wxLUA_USE_wxButton && wxUSE_BUTTON
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+        { "wxBU_NOTEXT", wxBU_NOTEXT },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+
+#if wxLUA_USE_wxButton && wxUSE_BUTTON
         { "wxBU_RIGHT", wxBU_RIGHT },
         { "wxBU_TOP", wxBU_TOP },
 #endif // wxLUA_USE_wxButton && wxUSE_BUTTON
@@ -4408,6 +4419,7 @@ static const char* wxluaclassname_wxANIHandler = "wxANIHandler";
 static const char* wxluaclassname_wxAcceleratorEntry = "wxAcceleratorEntry";
 static const char* wxluaclassname_wxAcceleratorTable = "wxAcceleratorTable";
 static const char* wxluaclassname_wxActivateEvent = "wxActivateEvent";
+static const char* wxluaclassname_wxAnyButton = "wxAnyButton";
 static const char* wxluaclassname_wxApp = "wxApp";
 static const char* wxluaclassname_wxArrayVideoModes = "wxArrayVideoModes";
 static const char* wxluaclassname_wxArtProvider = "wxArtProvider";
@@ -4417,6 +4429,7 @@ static const char* wxluaclassname_wxBestHelpController = "wxBestHelpController";
 static const char* wxluaclassname_wxBitmap = "wxBitmap";
 static const char* wxluaclassname_wxBitmapButton = "wxBitmapButton";
 static const char* wxluaclassname_wxBitmapDataObject = "wxBitmapDataObject";
+static const char* wxluaclassname_wxBitmapToggleButton = "wxBitmapToggleButton";
 static const char* wxluaclassname_wxBookCtrlBase = "wxBookCtrlBase";
 static const char* wxluaclassname_wxBookCtrlBaseEvent = "wxBookCtrlBaseEvent";
 static const char* wxluaclassname_wxBoxSizer = "wxBoxSizer";
@@ -4728,6 +4741,8 @@ static const char* wxluabaseclassnames_wxAcceleratorTable[] = { wxluaclassname_w
 static wxLuaBindClass* wxluabaseclassbinds_wxAcceleratorTable[] = { NULL };
 static const char* wxluabaseclassnames_wxActivateEvent[] = { wxluaclassname_wxEvent, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxActivateEvent[] = { NULL };
+static const char* wxluabaseclassnames_wxAnyButton[] = { wxluaclassname_wxControl, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxAnyButton[] = { NULL };
 static const char* wxluabaseclassnames_wxApp[] = { wxluaclassname_wxEvtHandler, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxApp[] = { NULL };
 static const char* wxluabaseclassnames_wxArtProvider[] = { wxluaclassname_wxObject, NULL };
@@ -4740,10 +4755,12 @@ static const char* wxluabaseclassnames_wxBestHelpController[] = { wxluaclassname
 static wxLuaBindClass* wxluabaseclassbinds_wxBestHelpController[] = { NULL };
 static const char* wxluabaseclassnames_wxBitmap[] = { wxluaclassname_wxGDIObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxBitmap[] = { NULL };
-static const char* wxluabaseclassnames_wxBitmapButton[] = { wxluaclassname_wxButton, NULL };
+static const char* wxluabaseclassnames_wxBitmapButton[] = { wxluaclassname_wxAnyButton, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxBitmapButton[] = { NULL };
 static const char* wxluabaseclassnames_wxBitmapDataObject[] = { wxluaclassname_wxDataObjectSimple, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxBitmapDataObject[] = { NULL };
+static const char* wxluabaseclassnames_wxBitmapToggleButton[] = { wxluaclassname_wxToggleButton, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxBitmapToggleButton[] = { NULL };
 static const char* wxluabaseclassnames_wxBookCtrlBase[] = { wxluaclassname_wxControl, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxBookCtrlBase[] = { NULL };
 static const char* wxluabaseclassnames_wxBookCtrlBaseEvent[] = { wxluaclassname_wxNotifyEvent, NULL };
@@ -4758,7 +4775,7 @@ static const char* wxluabaseclassnames_wxBufferedPaintDC[] = { wxluaclassname_wx
 static wxLuaBindClass* wxluabaseclassbinds_wxBufferedPaintDC[] = { NULL };
 static const char* wxluabaseclassnames_wxBusyInfo[] = { wxluaclassname_wxObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxBusyInfo[] = { NULL };
-static const char* wxluabaseclassnames_wxButton[] = { wxluaclassname_wxControl, NULL };
+static const char* wxluabaseclassnames_wxButton[] = { wxluaclassname_wxAnyButton, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxButton[] = { NULL };
 static const char* wxluabaseclassnames_wxCURHandler[] = { wxluaclassname_wxICOHandler, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxCURHandler[] = { NULL };
@@ -5184,7 +5201,7 @@ static const char* wxluabaseclassnames_wxTimer[] = { wxluaclassname_wxEvtHandler
 static wxLuaBindClass* wxluabaseclassbinds_wxTimer[] = { NULL };
 static const char* wxluabaseclassnames_wxTimerEvent[] = { wxluaclassname_wxEvent, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxTimerEvent[] = { NULL };
-static const char* wxluabaseclassnames_wxToggleButton[] = { wxluaclassname_wxControl, NULL };
+static const char* wxluabaseclassnames_wxToggleButton[] = { wxluaclassname_wxAnyButton, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxToggleButton[] = { NULL };
 static const char* wxluabaseclassnames_wxToolBar[] = { wxluaclassname_wxToolBarBase, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxToolBar[] = { NULL };
@@ -5849,6 +5866,9 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
 #endif // wxLUA_USE_wxBusyInfo && wxUSE_BUSYINFO
 
 #if wxLUA_USE_wxButton && wxUSE_BUTTON
+    extern wxLuaBindMethod wxAnyButton_methods[];
+    extern int wxAnyButton_methodCount;
+    extern void wxLua_wxAnyButton_delete_function(void** p);
     extern wxLuaBindMethod wxButton_methods[];
     extern int wxButton_methodCount;
     extern void wxLua_wxButton_delete_function(void** p);
@@ -6482,6 +6502,9 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
 #endif // wxLUA_USE_wxTimer && wxUSE_TIMER
 
 #if wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN
+    extern wxLuaBindMethod wxBitmapToggleButton_methods[];
+    extern int wxBitmapToggleButton_methodCount;
+    extern void wxLua_wxBitmapToggleButton_delete_function(void** p);
     extern wxLuaBindMethod wxToggleButton_methods[];
     extern int wxToggleButton_methodCount;
     extern void wxLua_wxToggleButton_delete_function(void** p);
@@ -6613,6 +6636,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 
         { wxluaclassname_wxActivateEvent, wxActivateEvent_methods, wxActivateEvent_methodCount, CLASSINFO(wxActivateEvent), &wxluatype_wxActivateEvent, wxluabaseclassnames_wxActivateEvent, wxluabaseclassbinds_wxActivateEvent, NULL, NULL, NULL, 0, &wxLua_wxActivateEvent_delete_function, }, 
 
+#if wxLUA_USE_wxButton && wxUSE_BUTTON
+        { wxluaclassname_wxAnyButton, wxAnyButton_methods, wxAnyButton_methodCount, CLASSINFO(wxAnyButton), &wxluatype_wxAnyButton, wxluabaseclassnames_wxAnyButton, wxluabaseclassbinds_wxAnyButton, NULL, NULL, NULL, 0, &wxLua_wxAnyButton_delete_function, }, 
+#endif // wxLUA_USE_wxButton && wxUSE_BUTTON
+
 #if wxLUA_USE_wxApp
         { wxluaclassname_wxApp, wxApp_methods, wxApp_methodCount, CLASSINFO(wxApp), &wxluatype_wxApp, wxluabaseclassnames_wxApp, wxluabaseclassbinds_wxApp, NULL, NULL, NULL, 0, &wxLua_wxApp_delete_function, }, 
 #endif // wxLUA_USE_wxApp
@@ -6648,6 +6675,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #if wxLUA_USE_wxDataObject && wxUSE_DATAOBJ
         { wxluaclassname_wxBitmapDataObject, wxBitmapDataObject_methods, wxBitmapDataObject_methodCount, NULL, &wxluatype_wxBitmapDataObject, wxluabaseclassnames_wxBitmapDataObject, wxluabaseclassbinds_wxBitmapDataObject, NULL, NULL, NULL, 0, &wxLua_wxBitmapDataObject_delete_function, }, 
 #endif // wxLUA_USE_wxDataObject && wxUSE_DATAOBJ
+
+#if wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN
+        { wxluaclassname_wxBitmapToggleButton, wxBitmapToggleButton_methods, wxBitmapToggleButton_methodCount, CLASSINFO(wxBitmapToggleButton), &wxluatype_wxBitmapToggleButton, wxluabaseclassnames_wxBitmapToggleButton, wxluabaseclassbinds_wxBitmapToggleButton, NULL, NULL, NULL, 0, &wxLua_wxBitmapToggleButton_delete_function, }, 
+#endif // wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN
 
 #if wxLUA_USE_wxNotebook && wxUSE_BOOKCTRL
         { wxluaclassname_wxBookCtrlBase, wxBookCtrlBase_methods, wxBookCtrlBase_methodCount, CLASSINFO(wxBookCtrlBase), &wxluatype_wxBookCtrlBase, wxluabaseclassnames_wxBookCtrlBase, wxluabaseclassbinds_wxBookCtrlBase, NULL, NULL, NULL, 0, &wxLua_wxBookCtrlBase_delete_function, }, 
