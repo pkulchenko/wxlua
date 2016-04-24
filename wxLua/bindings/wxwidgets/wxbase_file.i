@@ -473,7 +473,6 @@ enum wxDirTraverseResult
 
 class %delete wxDir
 {
-
     wxDir();
     wxDir(const wxString& dir);
     %wxchkver_3_1_1 void Close();
@@ -492,7 +491,6 @@ class %delete wxDir
     bool Open(const wxString& dir);
     %wxchkver_3_1_1 static bool Remove(const wxString &dir, int flags = 0);
     // size_t Traverse(wxDirTraverser& sink, const wxString& filespec = wxEmptyString, int flags = wxDIR_DEFAULT);
-
 };
 
 #endif //wxLUA_USE_wxDir

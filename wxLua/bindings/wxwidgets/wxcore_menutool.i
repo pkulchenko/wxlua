@@ -28,7 +28,6 @@ enum wxItemKind
 
 class %delete wxMenu : public wxEvtHandler
 {
-
     wxMenu(const wxString& title = "", long style = 0);
     wxMenuItem* Append(int id, const wxString& item, const wxString& helpString = "", wxItemKind kind = wxITEM_NORMAL);
     wxMenuItem* Append(int id, const wxString& item, %ungc wxMenu *subMenu, const wxString& helpString = "");
@@ -137,7 +136,6 @@ class wxMenuBar : public wxWindow
 
 class %delete wxMenuItem : public wxObject
 {
-
     %ungc_this wxMenuItem(wxMenu *parentMenu = NULL, int id = wxID_SEPARATOR, const wxString& text = "", const wxString& help = "", wxItemKind kind = wxITEM_NORMAL, wxMenu *subMenu = NULL);
     void Check(bool check);
     void Enable(bool enable);

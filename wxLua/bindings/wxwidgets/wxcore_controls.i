@@ -27,7 +27,6 @@
 
 class wxAnyButton : public wxControl
 {
-
     %wxchkver_3_1_1 wxAnyButton();
     %wxchkver_3_1_1 wxBitmap GetBitmap() const;
     %wxchkver_3_1_1 wxBitmap GetBitmapCurrent() const;
@@ -49,7 +48,6 @@ class wxAnyButton : public wxControl
 
 class wxButton : public wxAnyButton
 {
-
     wxButton();
     wxButton(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxButton");
     bool Create(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxButton");
@@ -70,7 +68,6 @@ class wxButton : public wxAnyButton
 
 class wxBitmapButton : public wxAnyButton
 {
-
     wxBitmapButton();
     wxBitmapButton( wxWindow* parent, wxWindowID id, const wxBitmap& bitmap, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxBU_AUTODRAW, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxBitmapButton");
     bool Create(wxWindow* parent, wxWindowID id, const wxBitmap& bitmap, const wxPoint& pos, const wxSize& size = wxDefaultSize, long style = wxBU_AUTODRAW, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxBitmapButton");
@@ -99,7 +96,6 @@ class wxBitmapButton : public wxAnyButton
 
 class wxToggleButton : public wxAnyButton
 {
-
     wxToggleButton();
     wxToggleButton(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxToggleButton");
     bool Create(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxToggleButton");
@@ -109,7 +105,6 @@ class wxToggleButton : public wxAnyButton
 
 class wxBitmapToggleButton : public wxToggleButton
 {
-
     %wxchkver_3_1_1 wxBitmapToggleButton();
     %wxchkver_3_1_1 wxBitmapToggleButton(wxWindow* parent, wxWindowID id, const wxBitmap& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& val = wxDefaultValidator, const wxString& name = wxCheckBoxNameStr);
     %wxchkver_3_1_1 bool Create(wxWindow* parent, wxWindowID id, const wxBitmap& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& val = wxDefaultValidator, const wxString& name = wxCheckBoxNameStr);
@@ -960,7 +955,6 @@ typedef long wxTextPos;
 
 class wxTextEntry
 {
-
     %wxchkver_3_1_1 void AppendText(const wxString& text);
     %wxchkver_3_1_1 bool AutoComplete(const wxArrayString& choices);
     // bool AutoComplete(wxTextCompleter *completer);
@@ -1003,12 +997,10 @@ class wxTextEntry
     %wxchkver_3_1_1 void SetValue(const wxString& value);
     %wxchkver_3_1_1 void Undo();
     %wxchkver_3_1_1 void WriteText(const wxString& text);
-
 };
 
 class wxTextCtrl : public wxControl, public wxTextEntry
 {
-
     wxTextCtrl();
     wxTextCtrl(wxWindow *parent, wxWindowID id, const wxString& value = "", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxTextCtrl");
     bool Create(wxWindow* parent, wxWindowID id, const wxString& value = "", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxTextCtrl");
@@ -1192,7 +1184,6 @@ enum wxTreeItemIcon
 
 class wxTreeCtrl : public wxControl
 {
-
     wxTreeCtrl();
     wxTreeCtrl(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxTR_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxTreeCtrl");
     wxTreeItemId AddRoot(const wxString& text, int image = -1, int selImage = -1, %ungc wxLuaTreeItemData* data = NULL);
