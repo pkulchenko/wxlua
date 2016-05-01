@@ -8,7 +8,7 @@
 // ===========================================================================
 
 
-%wxchkver_2_8 wxWindow* wxFindFocusDescendant(wxWindow* ancestor );
+%wxchkver_2_8 wxWindow* wxFindFocusDescendant(wxWindow* ancestor);
 
 // ---------------------------------------------------------------------------
 // wxTooltip
@@ -19,12 +19,12 @@
 
 class %delete wxToolTip : public wxObject
 {
-    wxToolTip(const wxString &tip );
+    wxToolTip(const wxString &tip);
 
-    static void Enable(bool flag );
-    static void SetDelay(long milliseconds );
-    void    SetTip(const wxString& tip );
-    wxString GetTip( );
+    static void Enable(bool flag);
+    static void SetDelay(long milliseconds);
+    void    SetTip(const wxString& tip);
+    wxString GetTip();
     wxWindow *GetWindow() const;
 };
 
@@ -39,18 +39,18 @@ class %delete wxToolTip : public wxObject
 class %delete wxWindowDisabler
 {
     // NOTE: ALWAYS delete() this when done since Lua's gc may not delete it soon enough
-    wxWindowDisabler(wxWindow *winToSkip = NULL );
+    wxWindowDisabler(wxWindow *winToSkip = NULL);
 };
 
 // ---------------------------------------------------------------------------
-// wxWindowUpdateLocker - Note this only calls wxWindow::Freeze() -> Thaw( );
+// wxWindowUpdateLocker - Note this only calls wxWindow::Freeze() -> Thaw();
 
 #include "wx/wupdlock.h"
 
 class %delete wxWindowUpdateLocker
 {
     // NOTE: ALWAYS delete() this when done since Lua's gc may not delete it soon enough
-    wxWindowUpdateLocker(wxWindow *winToLock = NULL );
+    wxWindowUpdateLocker(wxWindow *winToLock = NULL);
 };
 
 // ---------------------------------------------------------------------------
@@ -109,68 +109,60 @@ class %delete wxVisualAttributes
 
 class wxWindow : public wxEvtHandler
 {
-    wxWindow( );
-    wxWindow(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxWindow" );
-    bool Create(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxWindow" );
+    wxWindow();
+    wxWindow(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxWindow");
+    bool Create(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxWindow");
 
-    virtual void AddChild(wxWindow* child );
+    virtual void AddChild(wxWindow* child);
     void CacheBestSize(const wxSize& size) const;
-    virtual void CaptureMouse( );
-    void Center(int direction = wxBOTH );
-    void CenterOnParent(int direction = wxBOTH );
-    !%wxchkver_2_8 void CenterOnScreen(int direction = wxBOTH );
-    void Centre(int direction = wxBOTH );
-    void CentreOnParent(int direction = wxBOTH );
-    !%wxchkver_2_8 void CentreOnScreen(int direction = wxBOTH );
-    !%wxchkver_2_6 void Clear( );
-    %wxchkver_2_6 void ClearBackground( );
+    virtual void CaptureMouse();
+    void Center(int direction = wxBOTH);
+    void CenterOnParent(int direction = wxBOTH);
+    !%wxchkver_2_8 void CenterOnScreen(int direction = wxBOTH);
+    void Centre(int direction = wxBOTH);
+    void CentreOnParent(int direction = wxBOTH);
+    !%wxchkver_2_8 void CentreOnScreen(int direction = wxBOTH);
+    !%wxchkver_2_6 void Clear();
+    %wxchkver_2_6 void ClearBackground();
 
-    // %override [int x, int y] ClientToScreen(int x, int y) const;
-    // C++ Func: virtual void ClientToScreen(int* x, int* y) const;
-    %override_name wxLua_wxWindow_ClientToScreenXY virtual void ClientToScreen(int x, int y) const;
+    %override_name wxLua_wxWindow_ClientToScreenXY virtual void ClientToScreen(int x, int y) const; // %override return [int x, int y]
 
     virtual wxPoint ClientToScreen(const wxPoint& pt) const;
-    virtual bool Close(bool force = false );
-    wxPoint ConvertDialogToPixels(const wxPoint& pt );
-    wxSize ConvertDialogToPixels(const wxSize& sz );
-    wxPoint ConvertPixelsToDialog(const wxPoint& pt );
-    wxSize ConvertPixelsToDialog(const wxSize& sz );
-    virtual bool Destroy( );
-    virtual void DestroyChildren( );
-    bool Disable( );
-    // virtual wxSize DoGetBestSize() const; // protected
-    //virtual void DoUpdateWindowUI(wxUpdateUIEvent& event );
-    %win virtual void DragAcceptFiles(bool accept );
-    virtual void Enable(bool enable );
-    static wxWindow* FindFocus( );
-    wxWindow* FindWindow(long id );
-    wxWindow* FindWindow(const wxString& name );
-    static wxWindow* FindWindowById(long id, wxWindow* parent = NULL );
-    static wxWindow* FindWindowByName(const wxString& name, wxWindow* parent = NULL );
-    static wxWindow* FindWindowByLabel(const wxString& label, wxWindow* parent = NULL );
-    virtual void Fit( );
-    virtual void FitInside( );
-    virtual void Freeze( );
+    virtual bool Close(bool force = false);
+    wxPoint ConvertDialogToPixels(const wxPoint& pt);
+    wxSize ConvertDialogToPixels(const wxSize& sz);
+    wxPoint ConvertPixelsToDialog(const wxPoint& pt);
+    wxSize ConvertPixelsToDialog(const wxSize& sz);
+    virtual bool Destroy();
+    virtual void DestroyChildren();
+    bool Disable();
+    %win virtual void DragAcceptFiles(bool accept);
+    virtual void Enable(bool enable);
+    static wxWindow* FindFocus();
+    wxWindow* FindWindow(long id);
+    wxWindow* FindWindow(const wxString& name);
+    static wxWindow* FindWindowById(long id, wxWindow* parent = NULL);
+    static wxWindow* FindWindowByName(const wxString& name, wxWindow* parent = NULL);
+    static wxWindow* FindWindowByLabel(const wxString& label, wxWindow* parent = NULL);
+    virtual void Fit();
+    virtual void FitInside();
+    virtual void Freeze();
     wxAcceleratorTable* GetAcceleratorTable() const;
-    //wxAccessible* GetAccessible( );
+    // wxAccessible* GetAccessible();
     !%wxchkver_2_8 wxSize GetAdjustedBestSize() const;
     virtual wxColour GetBackgroundColour() const;
     virtual wxBackgroundStyle GetBackgroundStyle() const;
     wxSize GetBestFittingSize() const; // deprecated in 2.8 use GetEffectiveMinSize
     virtual wxSize GetBestSize() const;
     wxCaret* GetCaret() const;
-    static wxWindow* GetCapture( );
+    static wxWindow* GetCapture();
     virtual int GetCharHeight() const;
     virtual int GetCharWidth() const;
-    wxWindowList& GetChildren( );
-    //static wxVisualAttributes GetClassDefaultAttributes(wxWindowVariant variant = wxWINDOW_VARIANT_NORMAL );
+    wxWindowList& GetChildren();
 
-    // %override [int width, int height] wxWindow::GetClientSizeWH() const;
-    // C++ Func: virtual void GetClientSize(int* width, int* height) const;
-    %rename GetClientSizeWH virtual void GetClientSize() const;
+    %rename GetClientSizeWH virtual void GetClientSize() const; // %override return [int width, int height]
 
     wxSize GetClientSize() const;
-    !%wxchkver_2_6 wxLayoutConstraints* GetConstraints() const; // deprecated use sizers
     const wxSizer* GetContainingSizer() const;
     wxCursor GetCursor() const;
     virtual wxVisualAttributes GetDefaultAttributes() const;
@@ -179,7 +171,7 @@ class wxWindow : public wxEvtHandler
     wxEvtHandler* GetEventHandler() const;
     long GetExtraStyle() const;
     wxFont GetFont() const;
-    virtual wxColour GetForegroundColour( );
+    virtual wxColour GetForegroundColour();
     wxWindow* GetGrandParent() const;
     void* GetHandle() const;
     virtual wxString GetHelpText() const;
@@ -190,56 +182,45 @@ class wxWindow : public wxEvtHandler
     virtual wxString GetName() const;
     virtual wxWindow* GetParent() const;
 
-    // %override [int x, int y] wxWindow::GetPosition() const;
-    // C++ Func: virtual void GetPosition(int* x, int* y) const;
-    %override_name wxLua_wxWindow_GetPositionXY %rename GetPositionXY virtual void GetPosition() const;
+    %override_name wxLua_wxWindow_GetPositionXY %rename GetPositionXY virtual void GetPosition() const; // %override return [int x, int y]
 
     wxPoint GetPosition() const;
     virtual wxRect GetRect() const;
 
-    // %override [int x, int y] wxWindow::GetScreenPosition() const;
-    // C++ Func: virtual void GetScreenPosition(int* x, int* y) const;
-    %override_name wxLua_wxWindow_GetScreenPositionXY %rename GetScreenPositionXY virtual void GetScreenPosition() const;
+    %override_name wxLua_wxWindow_GetScreenPositionXY %rename GetScreenPositionXY virtual void GetScreenPosition() const; // %override return [int x, int y]
 
-    virtual wxPoint GetScreenPosition( );
+    virtual wxPoint GetScreenPosition();
     virtual wxRect GetScreenRect() const;
-    virtual int GetScrollPos(int orientation );
-    virtual int GetScrollRange(int orientation );
-    virtual int GetScrollThumb(int orientation );
+    virtual int GetScrollPos(int orientation);
+    virtual int GetScrollRange(int orientation);
+    virtual int GetScrollThumb(int orientation);
     virtual wxSize GetSize() const;
 
-    // %override [int width, int height] wxWindow::GetSizeWH() const;
-    // C++ Func: virtual void GetSize(int* width, int* height) const;
-    %rename GetSizeWH virtual void GetSize() const;
+    %rename GetSizeWH virtual void GetSize() const; // %override return [int width, int height]
 
     wxSizer* GetSizer() const;
 
-    // %override [int x, int y, int descent, int externalLeading] int wxWindow::GetTextExtent(const wxString& string, const wxFont* font = NULL ) const;
-    // Note: Cannot use use16 from Lua, virtual void GetTextExtent(const wxString& string, int* x, int* y, int* descent = NULL, int* externalLeading = NULL, const wxFont* font = NULL, bool use16 = false) const;
-    // C++ Func: virtual void GetTextExtent(const wxString& string, int* x, int* y, int* descent = NULL, int* externalLeading = NULL, const wxFont* font = NULL ) const;
-    virtual void GetTextExtent(const wxString& string, const wxFont* font = NULL ) const;
+    virtual void GetTextExtent(const wxString& string, const wxFont* font = NULL) const; // %override return [int x, int y, int descent, int externalLeading]
 
-    !%wxchkver_2_8 virtual wxString GetTitle( );
+    !%wxchkver_2_8 virtual wxString GetTitle();
     wxToolTip* GetToolTip() const;
     virtual wxRegion GetUpdateRegion() const;
     wxValidator* GetValidator() const;
 
-    // %override [int width, int height] wxWindow::GetVirtualSizeWH() const;
-    // C++ Func: void GetVirtualSize(int* width, int* height) const;
-    %override_name wxLua_wxWindow_GetVirtualSizeWH %rename GetVirtualSizeWH void GetVirtualSize() const;
+    %override_name wxLua_wxWindow_GetVirtualSizeWH %rename GetVirtualSizeWH void GetVirtualSize() const; // %override return [int width, int height]
 
     wxSize GetVirtualSize() const;
     %wxchkver_2_9_4 virtual wxSize GetBestVirtualSize() const;
-    %wxchkver_2_9_5 virtual double GetContentScaleFactor() const;    
+    %wxchkver_2_9_5 virtual double GetContentScaleFactor() const;
     long GetWindowStyleFlag() const;
     wxWindowVariant GetWindowVariant() const;
     %wxchkver_2_4 bool HasCapture() const;
     virtual bool HasScrollbar(int orient) const;
     virtual bool HasTransparentBackground() const;
-    bool Hide( );
-    void InheritAttributes( );
-    void InitDialog( );
-    void InvalidateBestSize( );
+    bool Hide();
+    void InheritAttributes();
+    void InitDialog();
+    void InvalidateBestSize();
     virtual bool IsEnabled() const;
     bool IsExposed(int x, int y) const;
     bool IsExposed(const wxPoint &pt) const;
@@ -248,103 +229,92 @@ class wxWindow : public wxEvtHandler
     virtual bool IsRetained() const;
     virtual bool IsShown() const;
     bool IsTopLevel() const;
-    void Layout( );
-    void Lower( );
-    virtual void MakeModal(bool flag );
-    void Move(int x, int y );
-    void Move(const wxPoint& pt );
-    void MoveAfterInTabOrder(wxWindow *win );
-    void MoveBeforeInTabOrder(wxWindow *win );
-    bool Navigate(int flags = wxNavigationKeyEvent::IsForward );
+    void Layout();
+    void Lower();
+    virtual void MakeModal(bool flag);
+    void Move(int x, int y);
+    void Move(const wxPoint& pt);
+    void MoveAfterInTabOrder(wxWindow *win);
+    void MoveBeforeInTabOrder(wxWindow *win);
+    bool Navigate(int flags = wxNavigationKeyEvent::IsForward);
     wxEvtHandler* PopEventHandler(bool deleteHandler = false) const;
-    bool PopupMenu(wxMenu* menu, const wxPoint& pos = wxDefaultPosition );
-    bool PopupMenu(wxMenu* menu, int x, int y );
-    void PushEventHandler(wxEvtHandler* handler );
-    void Raise( );
-    virtual void Refresh(bool eraseBackground = true, const wxRect* rect = NULL );
-    // don't need to worry about rect, void RefreshRect(const wxRect& rect, bool eraseBackground = true );
-#if wxUSE_HOTKEY
-    bool RegisterHotKey(int hotkeyId, int modifiers, int virtualKeyCode); // not in gtk
-#endif // wxUSE_HOTKEY
-    virtual void ReleaseMouse( );
-    virtual void RemoveChild(wxWindow* child );
-    bool RemoveEventHandler(wxEvtHandler *handler );
-    virtual bool Reparent(wxWindow* newParent );
+    bool PopupMenu(wxMenu* menu, const wxPoint& pos = wxDefaultPosition);
+    bool PopupMenu(wxMenu* menu, int x, int y);
+    void PushEventHandler(wxEvtHandler* handler);
+    void Raise();
+    virtual void Refresh(bool eraseBackground = true, const wxRect* rect = NULL);
+    wxUSE_HOTKEY bool RegisterHotKey(int hotkeyId, int modifiers, int virtualKeyCode); // %override wxUSE_HOTKEY
+    virtual void ReleaseMouse();
+    virtual void RemoveChild(wxWindow* child);
+    bool RemoveEventHandler(wxEvtHandler *handler);
+    virtual bool Reparent(wxWindow* newParent);
     virtual wxPoint ScreenToClient(const wxPoint& pt) const;
 
-    // %override [int x, int y] wxWindow::ScreenToClient(int x, int y) const;
-    // C++ Func: virtual void ScreenToClient(int* x, int* y) const;
-    %override_name wxLua_wxWindow_ScreenToClientXY virtual void ScreenToClient(int x, int y) const;
+    %override_name wxLua_wxWindow_ScreenToClientXY virtual void ScreenToClient(int x, int y) const; // %override return [int x, int y]
 
-    virtual bool ScrollLines(int lines );
-    virtual bool ScrollPages(int pages );
-    virtual void ScrollWindow(int dx, int dy, const wxRect* rect = NULL );
-    virtual void SetAcceleratorTable(const wxAcceleratorTable& accel );
-    //void SetAccessible(wxAccessible* accessible );
-    void SetAutoLayout(bool autoLayout );
-    virtual void SetBackgroundColour(const wxColour& colour );
-    virtual void SetBackgroundStyle(wxBackgroundStyle style );
-    !%wxchkver_2_8 void SetBestFittingSize(const wxSize& size = wxDefaultSize); // deprecated in 2.8 use SetInitialSize
+    virtual bool ScrollLines(int lines);
+    virtual bool ScrollPages(int pages);
+    virtual void ScrollWindow(int dx, int dy, const wxRect* rect = NULL);
+    virtual void SetAcceleratorTable(const wxAcceleratorTable& accel);
+    // void SetAccessible(wxAccessible* accessible);
+    void SetAutoLayout(bool autoLayout);
+    virtual void SetBackgroundColour(const wxColour& colour);
+    virtual void SetBackgroundStyle(wxBackgroundStyle style);
     void SetCaret(wxCaret *caret) const;
-    virtual void SetClientSize(const wxSize& size );
-    virtual void SetClientSize(int width, int height );
-    void SetContainingSizer(wxSizer* sizer );
-    virtual void SetCursor(const wxCursor& cursor );
-    !%wxchkver_2_6 void SetConstraints(wxLayoutConstraints* constraints );
-    !%wxchkver_2_8 wxWindow* SetDefaultItem(wxWindow *win );
-    // virtual void SetInitialBestSize(const wxSize& size) protected
-    %wxchkver_2_8 void SetInitialSize(const wxSize& size = wxDefaultSize );
-    void SetMaxSize(const wxSize& size );
-    void SetMinSize(const wxSize& size );
-    void SetOwnBackgroundColour(const wxColour& colour );
-    void SetOwnFont(const wxFont& font );
-    void SetOwnForegroundColour(const wxColour& colour );
-    void SetDropTarget(%ungc wxDropTarget* target );
-    void SetEventHandler(wxEvtHandler* handler );
-    void SetExtraStyle(long exStyle );
-    virtual void SetFocus( );
-    //virtual void SetFocusFromKbd( );
-    void SetFont(const wxFont& font );
-    virtual void SetForegroundColour(const wxColour& colour );
-    virtual void SetHelpText(const wxString& helpText );
-    void SetId(int id );
-    virtual void SetLabel(const wxString& label );
-    virtual void SetName(const wxString& name );
-    // virtual void SetPalette(wxPalette* palette) - obsolete
-    virtual void SetScrollbar(int orientation, int position, int thumbSize, int range, bool refresh = true );
-    virtual void SetScrollPos(int orientation, int pos, bool refresh = true );
-    virtual void SetSize(int x, int y, int width, int height, int sizeFlags = wxSIZE_AUTO );
-    virtual void SetSize(int width, int height );
-    void SetSize(const wxSize& size );
-    virtual void SetSize(const wxRect& rect );
-    virtual void SetSizeHints(int minW, int minH, int maxW=-1, int maxH=-1, int incW=-1, int incH=-1 );
-    void SetSizeHints(const wxSize& minSize, const wxSize& maxSize=wxDefaultSize, const wxSize& incSize=wxDefaultSize );
-    void SetSizer(wxSizer* sizer, bool deleteOld=true );
-    void SetSizerAndFit(wxSizer* sizer, bool deleteOld=true );
-    !%wxchkver_2_8 virtual void SetTitle(const wxString& title );
-    virtual void SetThemeEnabled(bool enable );
-    void SetToolTip(const wxString& tip );
-    void SetToolTip(%ungc wxToolTip* tip );
-    virtual void SetValidator(const wxValidator& validator );
-    void SetVirtualSize(int width, int height );
-    void SetVirtualSize(const wxSize& size );
-    virtual void SetVirtualSizeHints(int minW,int minH, int maxW=-1, int maxH=-1 );
-    void SetVirtualSizeHints(const wxSize& minSize=wxDefaultSize, const wxSize& maxSize=wxDefaultSize );
-    void SetWindowStyle(long style );
-    virtual void SetWindowStyleFlag(long style );
-    void SetWindowVariant(wxWindowVariant variant );
-    virtual bool ShouldInheritColours( );
-    virtual bool Show(bool show = true );
-    virtual void Thaw( );
-    virtual bool TransferDataFromWindow( );
-    virtual bool TransferDataToWindow( );
-#if wxUSE_HOTKEY
-    bool UnregisterHotKey(int hotkeyId); // not in gtk
-#endif // wxUSE_HOTKEY
-    virtual void Update( );
-    virtual void UpdateWindowUI(long flags = wxUPDATE_UI_NONE );
-    virtual bool Validate( );
-    void WarpPointer(int x, int y );
+    virtual void SetClientSize(const wxSize& size);
+    virtual void SetClientSize(int width, int height);
+    void SetContainingSizer(wxSizer* sizer);
+    virtual void SetCursor(const wxCursor& cursor);
+    !%wxchkver_2_8 wxWindow* SetDefaultItem(wxWindow *win);
+    %wxchkver_2_8 void SetInitialSize(const wxSize& size = wxDefaultSize);
+    void SetMaxSize(const wxSize& size);
+    void SetMinSize(const wxSize& size);
+    void SetOwnBackgroundColour(const wxColour& colour);
+    void SetOwnFont(const wxFont& font);
+    void SetOwnForegroundColour(const wxColour& colour);
+    void SetDropTarget(%ungc wxDropTarget* target);
+    void SetEventHandler(wxEvtHandler* handler);
+    void SetExtraStyle(long exStyle);
+    virtual void SetFocus();
+    void SetFont(const wxFont& font);
+    virtual void SetForegroundColour(const wxColour& colour);
+    virtual void SetHelpText(const wxString& helpText);
+    void SetId(int id);
+    virtual void SetLabel(const wxString& label);
+    virtual void SetName(const wxString& name);
+    virtual void SetScrollbar(int orientation, int position, int thumbSize, int range, bool refresh = true);
+    virtual void SetScrollPos(int orientation, int pos, bool refresh = true);
+    virtual void SetSize(int x, int y, int width, int height, int sizeFlags = wxSIZE_AUTO);
+    virtual void SetSize(int width, int height);
+    void SetSize(const wxSize& size);
+    virtual void SetSize(const wxRect& rect);
+    virtual void SetSizeHints(int minW, int minH, int maxW=-1, int maxH=-1, int incW=-1, int incH=-1);
+    void SetSizeHints(const wxSize& minSize, const wxSize& maxSize=wxDefaultSize, const wxSize& incSize=wxDefaultSize);
+    void SetSizer(wxSizer* sizer, bool deleteOld=true);
+    void SetSizerAndFit(wxSizer* sizer, bool deleteOld=true);
+    !%wxchkver_2_8 virtual void SetTitle(const wxString& title);
+    virtual void SetThemeEnabled(bool enable);
+    void SetToolTip(const wxString& tip);
+    void SetToolTip(%ungc wxToolTip* tip);
+    virtual void SetValidator(const wxValidator& validator);
+    void SetVirtualSize(int width, int height);
+    void SetVirtualSize(const wxSize& size);
+    virtual void SetVirtualSizeHints(int minW,int minH, int maxW=-1, int maxH=-1);
+    void SetVirtualSizeHints(const wxSize& minSize=wxDefaultSize, const wxSize& maxSize=wxDefaultSize);
+    void SetWindowStyle(long style);
+    virtual void SetWindowStyleFlag(long style);
+    void SetWindowVariant(wxWindowVariant variant);
+    virtual bool ShouldInheritColours();
+    virtual bool Show(bool show = true);
+    virtual void Thaw();
+    virtual bool TransferDataFromWindow();
+    virtual bool TransferDataToWindow();
+    wxUSE_HOTKEY bool UnregisterHotKey(int hotkeyId); // %override wxUSE_HOTKEY
+    virtual void Update();
+    virtual void UpdateWindowUI(long flags = wxUPDATE_UI_NONE);
+    virtual bool Validate();
+    void WarpPointer(int x, int y);
+    %wxchkver_3_1_1 bool IsDescendant(wxWindow* win) const; // %override wxWindow* instead of wxWindowBase* as the latter is not in public interface
 };
 
 // ---------------------------------------------------------------------------
@@ -354,7 +324,7 @@ class wxWindow : public wxEvtHandler
 
 class wxWindowList : public wxList
 {
-    //wxWindowList() - no constructor, just get this from wxWindow::GetChildren( );
+    //wxWindowList() - no constructor, just get this from wxWindow::GetChildren();
 
     // This is returned from wxWindow::GetChildren(), use wxList methods and
     //   wxNode::GetData():DynamicCast("wxWindow") to retrieve the wxWindow
@@ -369,15 +339,15 @@ class wxWindowList : public wxList
 
 class wxPanel : public wxWindow
 {
-    wxPanel( );
-    wxPanel(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxTAB_TRAVERSAL, const wxString& name = "wxPanel" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxTAB_TRAVERSAL, const wxString& name = "wxPanel" );
+    wxPanel();
+    wxPanel(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxTAB_TRAVERSAL, const wxString& name = "wxPanel");
+    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxTAB_TRAVERSAL, const wxString& name = "wxPanel");
 
     //!%wxchkver_2_8 wxWindow* GetDefaultItem() const; // - see wxWindow
     // void InitDialog() see wxWindow
     //!%wxchkver_2_8 wxWindow* SetDefaultItem(wxWindow *win) - see wxWindow
     //virtual void SetFocus() - see wxWindow
-    virtual void SetFocusIgnoringChildren( );
+    virtual void SetFocusIgnoringChildren();
 };
 
 // ---------------------------------------------------------------------------
@@ -387,15 +357,15 @@ class wxPanel : public wxWindow
 
 class wxControl : public wxWindow
 {
-    wxControl( );
-    wxControl(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxControl" );
-    bool Create(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxControl" );
+    wxControl();
+    wxControl(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxControl");
+    bool Create(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxControl");
 
-    void Command(wxCommandEvent& event );
+    void Command(wxCommandEvent& event);
     // wxString GetLabel();                      // see wxWindow
     // void     SetLabel(const wxString& label); // see wxWindow
 
-    //static wxString GetLabelText(const wxString& label) translates arbitrary string, removes mnemonic characters ('&' );
+    //static wxString GetLabelText(const wxString& label) translates arbitrary string, removes mnemonic characters ('&');
     %wxchkver_2_8 wxString GetLabelText() const;
 };
 
@@ -429,37 +399,37 @@ class wxBookCtrlBase : public wxControl
 {
     // no constructors, base class
 
-    void AdvanceSelection(bool forward = true );
-    virtual bool AddPage(wxWindow *page, const wxString& text, bool bSelect = false, int imageId = -1 );
-    //void AssignImageList(wxImageList *imageList );
+    void AdvanceSelection(bool forward = true);
+    virtual bool AddPage(wxWindow *page, const wxString& text, bool bSelect = false, int imageId = -1);
+    //void AssignImageList(wxImageList *imageList);
     virtual wxSize CalcSizeFromPage(const wxSize& sizePage) const;
-    virtual bool DeleteAllPages( );
-    virtual bool DeletePage(size_t n );
+    virtual bool DeleteAllPages();
+    virtual bool DeletePage(size_t n);
     wxWindow *GetCurrentPage() const;
     wxImageList* GetImageList() const;
-    virtual wxWindow *GetPage(size_t n );
+    virtual wxWindow *GetPage(size_t n);
     virtual size_t GetPageCount() const;
     virtual int GetPageImage(size_t n) const;
     virtual wxString GetPageText(size_t n) const;
     virtual int  GetSelection() const;
-    virtual bool InsertPage(size_t n, wxWindow *page, const wxString& text, bool bSelect = false, int imageId = -1 );
-    virtual bool RemovePage(size_t n );
-    virtual void SetImageList(wxImageList *imageList );
-    virtual bool SetPageImage(size_t n, int imageId );
-    virtual void SetPageSize(const wxSize& size );
-    virtual bool SetPageText(size_t n, const wxString& strText );
-    virtual int  SetSelection(size_t n );
+    virtual bool InsertPage(size_t n, wxWindow *page, const wxString& text, bool bSelect = false, int imageId = -1);
+    virtual bool RemovePage(size_t n);
+    virtual void SetImageList(wxImageList *imageList);
+    virtual bool SetPageImage(size_t n, int imageId);
+    virtual void SetPageSize(const wxSize& size);
+    virtual bool SetPageText(size_t n, const wxString& strText);
+    virtual int  SetSelection(size_t n);
 
     #if %wxchkver_2_8
         unsigned int GetInternalBorder() const;
-        void SetInternalBorder(unsigned int border );
-        void SetControlMargin(int margin );
+        void SetInternalBorder(unsigned int border);
+        void SetControlMargin(int margin);
         int GetControlMargin() const;
         bool IsVertical() const;
-        void SetFitToCurrentPage(bool fit );
+        void SetFitToCurrentPage(bool fit);
         bool GetFitToCurrentPage() const;
 
-        %wxchkver_2_8 virtual int ChangeSelection(size_t n );
+        %wxchkver_2_8 virtual int ChangeSelection(size_t n);
 
         //virtual int HitTest(const wxPoint& pt, long* flags = NULL) const; // FIXME add this
         //virtual bool HasMultiplePages() const; // - FIXME do we need this?
@@ -473,12 +443,12 @@ class wxBookCtrlBase : public wxControl
 
 class %delete wxBookCtrlBaseEvent : public wxNotifyEvent
 {
-    wxBookCtrlBaseEvent(wxEventType commandType = wxEVT_NULL, int winid = 0, int nSel = -1, int nOldSel = -1 );
+    wxBookCtrlBaseEvent(wxEventType commandType = wxEVT_NULL, int winid = 0, int nSel = -1, int nOldSel = -1);
 
     int GetOldSelection() const;
     int GetSelection() const;         // note : must override wxCommandEvent func since it's not virtual
-    void SetOldSelection(int page );
-    void SetSelection(int page );
+    void SetOldSelection(int page);
+    void SetSelection(int page);
 };
 
 #endif //wxLUA_USE_wxNotebook && wxUSE_BOOKCTRL
@@ -512,20 +482,20 @@ typedef wxWindow wxNotebookPage
 
 class wxNotebook : public wxBookCtrlBase
 {
-    wxNotebook( );
-    wxNotebook(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxNotebook" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxNotebook" );
+    wxNotebook();
+    wxNotebook(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxNotebook");
+    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxNotebook");
 
     // NOTE: All remmed out functions are located in wxBookCtrlBase
 
-    //bool AddPage(wxNotebookPage* page, const wxString& text, bool select = false, int imageId = -1 );
-    //void AdvanceSelection(bool forward = true );
-    //void AssignImageList(wxImageList* imageList );
-    //bool DeleteAllPages( );
-    //bool DeletePage(int page );
+    //bool AddPage(wxNotebookPage* page, const wxString& text, bool select = false, int imageId = -1);
+    //void AdvanceSelection(bool forward = true);
+    //void AssignImageList(wxImageList* imageList);
+    //bool DeleteAllPages();
+    //bool DeletePage(int page);
     //wxWindow* GetCurrentPage() const;
     //wxImageList* GetImageList() const;
-    //wxNotebookPage* GetPage(int page );
+    //wxNotebookPage* GetPage(int page);
     //int GetPageCount() const;
     //int GetPageImage(int nPage) const;
     //wxString GetPageText(int nPage) const;
@@ -533,18 +503,18 @@ class wxNotebook : public wxBookCtrlBase
     //int GetSelection() const;
     wxColour GetThemeBackgroundColour() const;
 
-    // %override [int page, int flags] wxNotebook::HitTest(const wxPoint& pt );
-    // C++ Func: int HitTest(const wxPoint& pt, long *flags = NULL );
-    int HitTest(const wxPoint& pt );
+    // %override [int page, int flags] wxNotebook::HitTest(const wxPoint& pt);
+    // C++ Func: int HitTest(const wxPoint& pt, long *flags = NULL);
+    int HitTest(const wxPoint& pt);
 
-    //bool InsertPage(int index, wxNotebookPage* page, const wxString& text, bool select = false, int imageId = -1 );
-    //bool RemovePage(int page );
-    //void SetImageList(wxImageList* imageList );
-    void SetPadding(const wxSize& padding );
-    //void SetPageSize(const wxSize& size );
-    //bool SetPageImage(int page, int image );
-    //bool SetPageText(int page, const wxString& text );
-    //int  SetSelection(int page );
+    //bool InsertPage(int index, wxNotebookPage* page, const wxString& text, bool select = false, int imageId = -1);
+    //bool RemovePage(int page);
+    //void SetImageList(wxImageList* imageList);
+    void SetPadding(const wxSize& padding);
+    //void SetPageSize(const wxSize& size);
+    //bool SetPageImage(int page, int image);
+    //bool SetPageText(int page, const wxString& text);
+    //int  SetSelection(int page);
 };
 
 // ---------------------------------------------------------------------------
@@ -552,16 +522,16 @@ class wxNotebook : public wxBookCtrlBase
 
 class %delete wxNotebookEvent : public wxBookCtrlBaseEvent
 {
-    %wxEventType wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED   // EVT_NOTEBOOK_PAGE_CHANGED(winid, fn );
-    %wxEventType wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING  // EVT_NOTEBOOK_PAGE_CHANGING(winid, fn );
+    %wxEventType wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED   // EVT_NOTEBOOK_PAGE_CHANGED(winid, fn);
+    %wxEventType wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING  // EVT_NOTEBOOK_PAGE_CHANGING(winid, fn);
 
-    wxNotebookEvent(wxEventType eventType = wxEVT_NULL, int id = 0, int sel = -1, int oldSel = -1 );
+    wxNotebookEvent(wxEventType eventType = wxEVT_NULL, int id = 0, int sel = -1, int oldSel = -1);
 
     // functions in wxBookCtrlBaseEvent
     //int GetOldSelection() const;
     //int GetSelection() const;
-    //void SetOldSelection(int page );
-    //void SetSelection(int page );
+    //void SetOldSelection(int page);
+    //void SetSelection(int page);
 };
 
 #endif //wxLUA_USE_wxNotebook && wxUSE_NOTEBOOK
@@ -582,14 +552,14 @@ class %delete wxNotebookEvent : public wxBookCtrlBaseEvent
 
 class wxListbook : public wxBookCtrlBase
 {
-    wxListbook( );
-    wxListbook(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxListbook" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxListbook" );
+    wxListbook();
+    wxListbook(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxListbook");
+    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxListbook");
 
     // NOTE: See functions in wxBookCtrlBase
 
     !%wxchkver_2_8 bool IsVertical() const; // in wxBookCtrlBase in 2.8
-    wxListView* GetListView( );
+    wxListView* GetListView();
 };
 
 // ---------------------------------------------------------------------------
@@ -597,16 +567,16 @@ class wxListbook : public wxBookCtrlBase
 
 class %delete wxListbookEvent : public wxBookCtrlBaseEvent
 {
-    %wxEventType wxEVT_COMMAND_LISTBOOK_PAGE_CHANGED   // EVT_LISTBOOK_PAGE_CHANGED(winid, fn );
-    %wxEventType wxEVT_COMMAND_LISTBOOK_PAGE_CHANGING  // EVT_LISTBOOK_PAGE_CHANGING(winid, fn );
+    %wxEventType wxEVT_COMMAND_LISTBOOK_PAGE_CHANGED   // EVT_LISTBOOK_PAGE_CHANGED(winid, fn);
+    %wxEventType wxEVT_COMMAND_LISTBOOK_PAGE_CHANGING  // EVT_LISTBOOK_PAGE_CHANGING(winid, fn);
 
-    wxListbookEvent(wxEventType eventType = wxEVT_NULL, int id = 0, int sel = -1, int oldSel = -1 );
+    wxListbookEvent(wxEventType eventType = wxEVT_NULL, int id = 0, int sel = -1, int oldSel = -1);
 
     // functions in wxBookCtrlBaseEvent
     //int GetOldSelection() const;
     //int GetSelection() const;
-    //void SetOldSelection(int page );
-    //void SetSelection(int page );
+    //void SetOldSelection(int page);
+    //void SetSelection(int page);
 };
 
 #endif //wxLUA_USE_wxNotebook && wxLUA_USE_wxListCtrl && wxUSE_LISTBOOK
@@ -627,9 +597,9 @@ class %delete wxListbookEvent : public wxBookCtrlBaseEvent
 
 class wxChoicebook : public wxBookCtrlBase
 {
-    wxChoicebook( );
-    wxChoicebook(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxChoicebook" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxChoicebook" );
+    wxChoicebook();
+    wxChoicebook(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxChoicebook");
+    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxChoicebook");
 
     // NOTE: See functions in wxBookCtrlBase
 
@@ -642,16 +612,16 @@ class wxChoicebook : public wxBookCtrlBase
 
 class %delete wxChoicebookEvent : public wxBookCtrlBaseEvent
 {
-    %wxEventType wxEVT_COMMAND_CHOICEBOOK_PAGE_CHANGED  // EVT_CHOICEBOOK_PAGE_CHANGED(winid, fn );
-    %wxEventType wxEVT_COMMAND_CHOICEBOOK_PAGE_CHANGING // EVT_CHOICEBOOK_PAGE_CHANGING(winid, fn );
+    %wxEventType wxEVT_COMMAND_CHOICEBOOK_PAGE_CHANGED  // EVT_CHOICEBOOK_PAGE_CHANGED(winid, fn);
+    %wxEventType wxEVT_COMMAND_CHOICEBOOK_PAGE_CHANGING // EVT_CHOICEBOOK_PAGE_CHANGING(winid, fn);
 
-    wxChoicebookEvent(wxEventType eventType = wxEVT_NULL, int id = 0, int sel = -1, int oldSel = -1 );
+    wxChoicebookEvent(wxEventType eventType = wxEVT_NULL, int id = 0, int sel = -1, int oldSel = -1);
 
     // functions in wxBookCtrlBaseEvent
     //int GetOldSelection() const;
     //int GetSelection() const;
-    //void SetOldSelection(int page );
-    //void SetSelection(int page );
+    //void SetOldSelection(int page);
+    //void SetSelection(int page);
 };
 
 #endif //wxLUA_USE_wxNotebook && wxLUA_USE_wxChoice && wxUSE_CHOICEBOOK
@@ -665,9 +635,9 @@ class %delete wxChoicebookEvent : public wxBookCtrlBaseEvent
 
 class wxTreebook : public wxBookCtrlBase
 {
-    wxTreebook( );
-    wxTreebook(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxBK_DEFAULT, const wxString& name = "wxTreebook" );
-    bool Create(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxBK_DEFAULT,const wxString& name = "wxTreebook" );
+    wxTreebook();
+    wxTreebook(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxBK_DEFAULT, const wxString& name = "wxTreebook");
+    bool Create(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxBK_DEFAULT,const wxString& name = "wxTreebook");
 
     virtual bool InsertPage(size_t pos, wxWindow *page, const wxString& text, bool bSelect = false, int imageId = wxNOT_FOUND);
     virtual bool InsertSubPage(size_t pos, wxWindow *page, const wxString& text, bool bSelect = false, int imageId = wxNOT_FOUND);
@@ -676,7 +646,7 @@ class wxTreebook : public wxBookCtrlBase
     virtual bool IsNodeExpanded(size_t pos) const;
 
     virtual bool ExpandNode(size_t pos, bool expand = true);
-    bool CollapseNode(size_t pos );
+    bool CollapseNode(size_t pos);
     int GetPageParent(size_t pos) const;
     wxTreeCtrl* GetTreeCtrl() const;
 };
@@ -686,13 +656,13 @@ class wxTreebook : public wxBookCtrlBase
 
 class %delete wxTreebookEvent : public wxBookCtrlBaseEvent
 {
-    %wxEventType wxEVT_COMMAND_TREEBOOK_PAGE_CHANGED   // EVT_TREEBOOK_PAGE_CHANGED(winid, fn );
-    %wxEventType wxEVT_COMMAND_TREEBOOK_PAGE_CHANGING  // EVT_TREEBOOK_PAGE_CHANGING(winid, fn );
-    %wxEventType wxEVT_COMMAND_TREEBOOK_NODE_COLLAPSED // EVT_TREEBOOK_NODE_COLLAPSED(winid, fn );
-    %wxEventType wxEVT_COMMAND_TREEBOOK_NODE_EXPANDED  // EVT_TREEBOOK_NODE_EXPANDED(winid, fn );
+    %wxEventType wxEVT_COMMAND_TREEBOOK_PAGE_CHANGED   // EVT_TREEBOOK_PAGE_CHANGED(winid, fn);
+    %wxEventType wxEVT_COMMAND_TREEBOOK_PAGE_CHANGING  // EVT_TREEBOOK_PAGE_CHANGING(winid, fn);
+    %wxEventType wxEVT_COMMAND_TREEBOOK_NODE_COLLAPSED // EVT_TREEBOOK_NODE_COLLAPSED(winid, fn);
+    %wxEventType wxEVT_COMMAND_TREEBOOK_NODE_EXPANDED  // EVT_TREEBOOK_NODE_EXPANDED(winid, fn);
 
-    wxTreebookEvent(const wxTreebookEvent& event );
-    wxTreebookEvent(wxEventType commandType = wxEVT_NULL, int id = 0, int nSel = wxNOT_FOUND, int nOldSel = wxNOT_FOUND );
+    wxTreebookEvent(const wxTreebookEvent& event);
+    wxTreebookEvent(wxEventType commandType = wxEVT_NULL, int id = 0, int nSel = wxNOT_FOUND, int nOldSel = wxNOT_FOUND);
 };
 
 #endif // %wxchkver_2_8 && wxUSE_TREEBOOK && wxLUA_USE_wxTreebook
@@ -706,9 +676,9 @@ class %delete wxTreebookEvent : public wxBookCtrlBaseEvent
 
 class wxToolbook : public wxBookCtrlBase
 {
-    wxToolbook( );
-    wxToolbook(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxToolbook" );
-    bool Create(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxToolbook" );
+    wxToolbook();
+    wxToolbook(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxToolbook");
+    bool Create(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxToolbook");
 
     wxToolBarBase* GetToolBar() const;
     // must be called in OnIdle or by application to realize the toolbar and select the initial page.
@@ -720,11 +690,11 @@ class wxToolbook : public wxBookCtrlBase
 
 class %delete wxToolbookEvent : public wxBookCtrlBaseEvent
 {
-    %wxEventType wxEVT_COMMAND_TOOLBOOK_PAGE_CHANGED   // EVT_TOOLBOOK_PAGE_CHANGED(winid, fn );
-    %wxEventType wxEVT_COMMAND_TOOLBOOK_PAGE_CHANGING  // EVT_TOOLBOOK_PAGE_CHANGING(winid, fn );
+    %wxEventType wxEVT_COMMAND_TOOLBOOK_PAGE_CHANGED   // EVT_TOOLBOOK_PAGE_CHANGED(winid, fn);
+    %wxEventType wxEVT_COMMAND_TOOLBOOK_PAGE_CHANGING  // EVT_TOOLBOOK_PAGE_CHANGING(winid, fn);
 
-    wxToolbookEvent(const wxToolbookEvent& event );
-    wxToolbookEvent(wxEventType commandType = wxEVT_NULL, int id = 0, int nSel = wxNOT_FOUND, int nOldSel = wxNOT_FOUND );
+    wxToolbookEvent(const wxToolbookEvent& event);
+    wxToolbookEvent(wxEventType commandType = wxEVT_NULL, int id = 0, int nSel = wxNOT_FOUND, int nOldSel = wxNOT_FOUND);
 };
 
 #endif // %wxchkver_2_8 && wxUSE_TOOLBOOK && wxLUA_USE_wxToolbook
@@ -747,11 +717,11 @@ class wxTabCtrl : public wxControl
     #define wxTC_MULTILINE
     #define wxTC_OWNERDRAW
 
-    wxTabCtrl(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxTabCtrl" );
-    //bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxTabCtrl" );
+    wxTabCtrl(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxTabCtrl");
+    //bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxTabCtrl");
 
-    bool DeleteAllItems( );
-    bool DeleteItem(int item );
+    bool DeleteAllItems();
+    bool DeleteItem(int item);
     int GetCurFocus() const;
     wxImageList* GetImageList() const;
     int GetItemCount() const;
@@ -761,15 +731,15 @@ class wxTabCtrl : public wxControl
     wxString GetItemText(int item) const;
     int GetRowCount() const;
     int GetSelection() const;
-    int HitTest(const wxPoint& pt, long& flags );
-    void InsertItem(int item, const wxString& text, int imageId = -1, wxObject *clientData = NULL );
-    bool SetItemData(int item, wxObject * data );
-    bool SetItemImage(int item, int image );
-    void SetImageList(wxImageList* imageList );
-    void SetItemSize(const wxSize& size );
-    bool SetItemText(int item, const wxString& text );
-    void SetPadding(const wxSize& padding );
-    int SetSelection(int item );
+    int HitTest(const wxPoint& pt, long& flags);
+    void InsertItem(int item, const wxString& text, int imageId = -1, wxObject *clientData = NULL);
+    bool SetItemData(int item, wxObject * data);
+    bool SetItemImage(int item, int image);
+    void SetImageList(wxImageList* imageList);
+    void SetItemSize(const wxSize& size);
+    bool SetItemText(int item, const wxString& text);
+    void SetPadding(const wxSize& padding);
+    int SetSelection(int item);
 };
 
 // ---------------------------------------------------------------------------
@@ -777,10 +747,10 @@ class wxTabCtrl : public wxControl
 
 class %delete wxTabEvent : public wxCommandEvent
 {
-    %win %wxEventType wxEVT_COMMAND_TAB_SEL_CHANGED    // EVT_TAB_SEL_CHANGED(id, fn );
-    %win %wxEventType wxEVT_COMMAND_TAB_SEL_CHANGING   // EVT_TAB_SEL_CHANGING(id, fn );
+    %win %wxEventType wxEVT_COMMAND_TAB_SEL_CHANGED    // EVT_TAB_SEL_CHANGED(id, fn);
+    %win %wxEventType wxEVT_COMMAND_TAB_SEL_CHANGING   // EVT_TAB_SEL_CHANGING(id, fn);
 
-    wxTabEvent(wxEventType commandType = 0, int id = 0 );
+    wxTabEvent(wxEventType commandType = 0, int id = 0);
 };
 
 #endif //%wxchkver_2_4 && %msw && wxLUA_USE_wxTabCtrl && wxUSE_TAB_DIALOG
@@ -793,9 +763,9 @@ class %delete wxTabEvent : public wxCommandEvent
 
 class wxScrolledWindow : public wxPanel
 {
-    wxScrolledWindow( );
-    wxScrolledWindow(wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxHSCROLL | wxVSCROLL, const wxString& name = "wxScrolledWindow" );
-    bool Create(wxWindow* parent, wxWindowID id = -1, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxHSCROLL | wxVSCROLL, const wxString& name = "wxScrolledWindow" );
+    wxScrolledWindow();
+    wxScrolledWindow(wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxHSCROLL | wxVSCROLL, const wxString& name = "wxScrolledWindow");
+    bool Create(wxWindow* parent, wxWindowID id = -1, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxHSCROLL | wxVSCROLL, const wxString& name = "wxScrolledWindow");
 
     // %override [int xx, int yy] void wxScrolledWindow::CalcScrolledPosition(int x, int y) const;
     // C++ Func: void CalcScrolledPosition( int x, int y, int *xx, int *yy) const;
@@ -805,7 +775,7 @@ class wxScrolledWindow : public wxPanel
     // C++ Func: void CalcUnscrolledPosition( int x, int y, int *xx, int *yy) const;
     void CalcUnscrolledPosition( int x, int y) const;
 
-    void EnableScrolling(const bool xScrolling, const bool yScrolling );
+    void EnableScrolling(const bool xScrolling, const bool yScrolling);
 
     // %override [int xUnit, int yUnit] wxScrolledWindow::GetScrollPixelsPerUnit() const;
     // C++ Func: void GetScrollPixelsPerUnit(int* xUnit, int* yUnit) const;
@@ -820,14 +790,14 @@ class wxScrolledWindow : public wxPanel
     //void GetVirtualSize() const; // see wxWindow::GetVirtualSize
 
     //bool IsRetained() const; // see wxWindow::IsRetained
-    void PrepareDC(wxDC& dc );
-    void Scroll(int x, int y );
-    void SetScrollbars(int pixelsPerUnitX, int pixelsPerUnitY, int noUnitsX, int noUnitsY, int xPos = 0, int yPos = 0, bool noRefresh = false );
-    void SetScrollRate(int xstep, int ystep );
-    void SetTargetWindow(wxWindow* window );
+    void PrepareDC(wxDC& dc);
+    void Scroll(int x, int y);
+    void SetScrollbars(int pixelsPerUnitX, int pixelsPerUnitY, int noUnitsX, int noUnitsY, int xPos = 0, int yPos = 0, bool noRefresh = false);
+    void SetScrollRate(int xstep, int ystep);
+    void SetTargetWindow(wxWindow* window);
     // void SetVirtualSize(int width, int height) -- see wxWindow
 
-    //void DoPrepareDC(wxDC& dc );
+    //void DoPrepareDC(wxDC& dc);
 };
 
 #endif //wxLUA_USE_wxScrolledWindow
@@ -853,28 +823,28 @@ class wxScrolledWindow : public wxPanel
 
 class wxSplitterWindow : public wxWindow
 {
-    wxSplitterWindow( );
-    wxSplitterWindow(wxWindow* parent, wxWindowID id, const wxPoint& point = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style=wxSP_3D, const wxString& name = "wxSplitterWindow" );
-    bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_3D|wxCLIP_CHILDREN, const wxString& name = "wxSplitterWindow" );
+    wxSplitterWindow();
+    wxSplitterWindow(wxWindow* parent, wxWindowID id, const wxPoint& point = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style=wxSP_3D, const wxString& name = "wxSplitterWindow");
+    bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_3D|wxCLIP_CHILDREN, const wxString& name = "wxSplitterWindow");
 
     int      GetMinimumPaneSize() const;
-    double   GetSashGravity( );
-    int      GetSashPosition( );
+    double   GetSashGravity();
+    int      GetSashPosition();
     int      GetSplitMode() const;
     wxWindow *GetWindow1() const;
     wxWindow *GetWindow2() const;
-    void     Initialize(wxWindow* window );
+    void     Initialize(wxWindow* window);
     bool     IsSplit() const;
-    bool     ReplaceWindow(wxWindow * winOld, wxWindow * winNew );
-    void     SetSashGravity(double gravity );
-    void     SetSashPosition(int position, const bool redraw = true );
-    void     SetSashSize(int size );
-    void     SetMinimumPaneSize(int paneSize );
-    void     SetSplitMode(int mode );
-    bool     SplitHorizontally(wxWindow* window1, wxWindow* window2, int sashPosition = 0 );
-    bool     SplitVertically(wxWindow* window1, wxWindow* window2, int sashPosition = 0 );
-    bool     Unsplit(wxWindow* toRemove = NULL );
-    void     UpdateSize( );
+    bool     ReplaceWindow(wxWindow * winOld, wxWindow * winNew);
+    void     SetSashGravity(double gravity);
+    void     SetSashPosition(int position, const bool redraw = true);
+    void     SetSashSize(int size);
+    void     SetMinimumPaneSize(int paneSize);
+    void     SetSplitMode(int mode);
+    bool     SplitHorizontally(wxWindow* window1, wxWindow* window2, int sashPosition = 0);
+    bool     SplitVertically(wxWindow* window1, wxWindow* window2, int sashPosition = 0);
+    bool     Unsplit(wxWindow* toRemove = NULL);
+    void     UpdateSize();
 };
 
 // ---------------------------------------------------------------------------
@@ -882,20 +852,20 @@ class wxSplitterWindow : public wxWindow
 
 class %delete wxSplitterEvent : public wxNotifyEvent
 {
-    %wxEventType wxEVT_COMMAND_SPLITTER_SASH_POS_CHANGING  // EVT_SPLITTER_SASH_POS_CHANGING(id, fn );
-    %wxEventType wxEVT_COMMAND_SPLITTER_SASH_POS_CHANGED   // EVT_SPLITTER_SASH_POS_CHANGED(id, fn );
-    %wxEventType wxEVT_COMMAND_SPLITTER_DOUBLECLICKED      // EVT_SPLITTER_DCLICK(id, fn );
-    %wxEventType wxEVT_COMMAND_SPLITTER_UNSPLIT            // EVT_SPLITTER_UNSPLIT(id, fn );
+    %wxEventType wxEVT_COMMAND_SPLITTER_SASH_POS_CHANGING  // EVT_SPLITTER_SASH_POS_CHANGING(id, fn);
+    %wxEventType wxEVT_COMMAND_SPLITTER_SASH_POS_CHANGED   // EVT_SPLITTER_SASH_POS_CHANGED(id, fn);
+    %wxEventType wxEVT_COMMAND_SPLITTER_DOUBLECLICKED      // EVT_SPLITTER_DCLICK(id, fn);
+    %wxEventType wxEVT_COMMAND_SPLITTER_UNSPLIT            // EVT_SPLITTER_UNSPLIT(id, fn);
 
-    wxSplitterEvent(wxEventType type = wxEVT_NULL, wxSplitterWindow *splitter = NULL );
+    wxSplitterEvent(wxEventType type = wxEVT_NULL, wxSplitterWindow *splitter = NULL);
 
     // NOTE! These functions will assert if you call them for an unspupported
     //       event type. Please refer to the wxWidgets C++ manual.
-    int GetSashPosition( );
-    int GetX( );
-    int GetY( );
-    wxWindow* GetWindowBeingRemoved( );
-    void SetSashPosition(int pos );
+    int GetSashPosition();
+    int GetX();
+    int GetY();
+    wxWindow* GetWindowBeingRemoved();
+    void SetSashPosition(int pos);
 };
 
 #endif //wxLUA_USE_wxSplitterWindow
@@ -910,9 +880,9 @@ class %delete wxSplitterEvent : public wxNotifyEvent
 
 class wxPopupWindow : public wxWindow
 {
-    wxPopupWindow(wxWindow* parent, int flags = wxBORDER_NONE );
-    bool Create(wxWindow* parent, int flags = wxBORDER_NONE );
-    virtual void Position(const wxPoint &ptOrigin, const wxSize &sizePopup );
+    wxPopupWindow(wxWindow* parent, int flags = wxBORDER_NONE);
+    bool Create(wxWindow* parent, int flags = wxBORDER_NONE);
+    virtual void Position(const wxPoint &ptOrigin, const wxSize &sizePopup);
 };
 
 #endif // wxLUA_USE_wxPopupWindow
@@ -926,11 +896,11 @@ class wxPopupWindow : public wxWindow
 
 class wxPopupTransientWindow : public wxPopupWindow
 {
-    wxPopupTransientWindow( );
-    wxPopupTransientWindow(wxWindow *parent, int flags = wxBORDER_NONE );
-    virtual void Popup(wxWindow *focus = NULL );
-    virtual void Dismiss( );
-    virtual void ProcessLeftDown(wxMouseEvent &event );
+    wxPopupTransientWindow();
+    wxPopupTransientWindow(wxWindow *parent, int flags = wxBORDER_NONE);
+    virtual void Popup(wxWindow *focus = NULL);
+    virtual void Dismiss();
+    virtual void ProcessLeftDown(wxMouseEvent &event);
 };
 
 #endif // wxLUA_USE_wxPopupTransientWindow
@@ -946,14 +916,14 @@ class wxPopupTransientWindow : public wxPopupWindow
 
 class wxCollapsiblePane : public wxControl
 {
-    wxCollapsiblePane( );
-    wxCollapsiblePane(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxCP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxCollapsiblePane" );
-    bool Create(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxCP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxCollapsiblePane" );
+    wxCollapsiblePane();
+    wxCollapsiblePane(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxCP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxCollapsiblePane");
+    bool Create(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxCP_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxCollapsiblePane");
 
     bool IsCollapsed() const;
     bool IsExpanded() const;
-    void Collapse(bool collapse = true );
-    void Expand( );
+    void Collapse(bool collapse = true);
+    void Expand();
     wxWindow* GetPane() const;
 };
 
@@ -962,13 +932,13 @@ class wxCollapsiblePane : public wxControl
 
 class %delete wxCollapsiblePaneEvent : public wxCommandEvent
 {
-    %wxEventType wxEVT_COMMAND_COLLPANE_CHANGED // EVT_COLLAPSIBLEPANE_CHANGED(id, fn );
+    %wxEventType wxEVT_COMMAND_COLLPANE_CHANGED // EVT_COLLAPSIBLEPANE_CHANGED(id, fn);
 
-    wxCollapsiblePaneEvent( );
-    wxCollapsiblePaneEvent(wxObject *generator, int id, bool collapsed );
+    wxCollapsiblePaneEvent();
+    wxCollapsiblePaneEvent(wxObject *generator, int id, bool collapsed);
 
     bool GetCollapsed() const;
-    void SetCollapsed(bool c );
+    void SetCollapsed(bool c);
 };
 
 #endif // %wxchkver_2_8 && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE
@@ -982,9 +952,9 @@ class %delete wxCollapsiblePaneEvent : public wxCommandEvent
 
 class wxStaticBox : public wxControl
 {
-    wxStaticBox( );
-    wxStaticBox(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxStaticBox" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxStaticBox" );
+    wxStaticBox();
+    wxStaticBox(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxStaticBox");
+    bool Create(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxStaticBox");
 };
 
 #endif //wxLUA_USE_wxStaticBox && wxUSE_STATBOX
@@ -998,12 +968,12 @@ class wxStaticBox : public wxControl
 
 class wxStaticBitmap : public wxControl
 {
-    wxStaticBitmap( );
-    wxStaticBitmap(wxWindow* parent, wxWindowID id, const wxBitmap& label = wxNullBitmap, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxStaticBitmap" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxBitmap& label = wxNullBitmap, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxStaticBitmap" );
+    wxStaticBitmap();
+    wxStaticBitmap(wxWindow* parent, wxWindowID id, const wxBitmap& label = wxNullBitmap, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxStaticBitmap");
+    bool Create(wxWindow* parent, wxWindowID id, const wxBitmap& label = wxNullBitmap, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxStaticBitmap");
 
     wxBitmap GetBitmap() const;
-    virtual void SetBitmap(const wxBitmap& label );
+    virtual void SetBitmap(const wxBitmap& label);
 };
 
 #endif //wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP
@@ -1021,13 +991,13 @@ class wxStaticBitmap : public wxControl
 
 class wxStaticText : public wxControl
 {
-    wxStaticText( );
-    wxStaticText(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxStaticText" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxStaticText" );
+    wxStaticText();
+    wxStaticText(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxStaticText");
+    bool Create(wxWindow* parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxStaticText");
 
     // wxString GetLabel() const; // - see wxWindow
     // void SetLabel(const wxString& label) - see wxWindow
-    void Wrap(int width );
+    void Wrap(int width);
 };
 
 #endif //wxLUA_USE_wxStaticText && wxUSE_STATTEXT
@@ -1044,12 +1014,12 @@ class wxStaticText : public wxControl
 
 class wxStaticLine : public wxControl
 {
-    wxStaticLine( );
-    wxStaticLine(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxLI_HORIZONTAL, const wxString& name = "wxStaticLine" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxStaticLine" );
+    wxStaticLine();
+    wxStaticLine(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxLI_HORIZONTAL, const wxString& name = "wxStaticLine");
+    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxStaticLine");
 
     bool IsVertical() const;
-    static int GetDefaultSize( );
+    static int GetDefaultSize();
 };
 
 #endif //wxLUA_USE_wxStaticLine && wxUSE_STATLINE
