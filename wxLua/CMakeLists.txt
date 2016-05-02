@@ -452,6 +452,7 @@ install(FILES
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlcallb.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlconsole.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxldefs.h
+        ${wxLua_ROOT_DIR}/modules/wxlua/wxllua.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlobject.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlstate.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlua.h
