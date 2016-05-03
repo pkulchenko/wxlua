@@ -94,6 +94,24 @@ enum wxUpdateUI
     wxUPDATE_UI_FROMIDLE
 };
 
+#if %wxchkver_3_1_1
+enum wxShowEffect
+{
+  wxSHOW_EFFECT_NONE,
+  wxSHOW_EFFECT_ROLL_TO_LEFT,
+  wxSHOW_EFFECT_ROLL_TO_RIGHT,
+  wxSHOW_EFFECT_ROLL_TO_TOP,
+  wxSHOW_EFFECT_ROLL_TO_BOTTOM,
+  wxSHOW_EFFECT_SLIDE_TO_LEFT,
+  wxSHOW_EFFECT_SLIDE_TO_RIGHT,
+  wxSHOW_EFFECT_SLIDE_TO_TOP,
+  wxSHOW_EFFECT_SLIDE_TO_BOTTOM,
+  wxSHOW_EFFECT_BLEND,
+  wxSHOW_EFFECT_EXPAND,
+  wxSHOW_EFFECT_MAX
+};
+#endif // %wxchkver_3_1_1
+
 //%mac|%x11|%motif typedef void* WXWidget
 //%gtk typedef unsigned long WXWidget // GtkWidget* what could you do with it?
 //%mgl typedef window_t WXWidget

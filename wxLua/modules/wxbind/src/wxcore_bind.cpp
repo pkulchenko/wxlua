@@ -581,8 +581,22 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
 #endif // wxLUA_USE_wxColourPenBrush
 
         { "wxBG_STYLE_COLOUR", wxBG_STYLE_COLOUR },
+
+#if !wxCHECK_VERSION(3,1,0)
         { "wxBG_STYLE_CUSTOM", wxBG_STYLE_CUSTOM },
+#endif // !wxCHECK_VERSION(3,1,0)
+
+#if wxCHECK_VERSION(3,1,0)
+        { "wxBG_STYLE_ERASE", wxBG_STYLE_ERASE },
+        { "wxBG_STYLE_PAINT", wxBG_STYLE_PAINT },
+#endif // wxCHECK_VERSION(3,1,0)
+
         { "wxBG_STYLE_SYSTEM", wxBG_STYLE_SYSTEM },
+
+#if wxCHECK_VERSION(3,1,0)
+        { "wxBG_STYLE_TRANSPARENT", wxBG_STYLE_TRANSPARENT },
+#endif // wxCHECK_VERSION(3,1,0)
+
         { "wxBITMAP_TYPE_ANI", wxBITMAP_TYPE_ANI },
         { "wxBITMAP_TYPE_ANY", wxBITMAP_TYPE_ANY },
         { "wxBITMAP_TYPE_BMP", wxBITMAP_TYPE_BMP },
@@ -1221,6 +1235,25 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
 
         { "wxHSCROLL", wxHSCROLL },
 
+#if wxCHECK_VERSION(3,1,1)
+        { "wxHT_MAX", wxHT_MAX },
+        { "wxHT_NOWHERE", wxHT_NOWHERE },
+        { "wxHT_SCROLLBAR_ARROW_LINE_1", wxHT_SCROLLBAR_ARROW_LINE_1 },
+        { "wxHT_SCROLLBAR_ARROW_LINE_2", wxHT_SCROLLBAR_ARROW_LINE_2 },
+        { "wxHT_SCROLLBAR_ARROW_PAGE_1", wxHT_SCROLLBAR_ARROW_PAGE_1 },
+        { "wxHT_SCROLLBAR_ARROW_PAGE_2", wxHT_SCROLLBAR_ARROW_PAGE_2 },
+        { "wxHT_SCROLLBAR_BAR_1", wxHT_SCROLLBAR_BAR_1 },
+        { "wxHT_SCROLLBAR_BAR_2", wxHT_SCROLLBAR_BAR_2 },
+        { "wxHT_SCROLLBAR_FIRST", wxHT_SCROLLBAR_FIRST },
+        { "wxHT_SCROLLBAR_LAST", wxHT_SCROLLBAR_LAST },
+        { "wxHT_SCROLLBAR_THUMB", wxHT_SCROLLBAR_THUMB },
+        { "wxHT_WINDOW_CORNER", wxHT_WINDOW_CORNER },
+        { "wxHT_WINDOW_HORZ_SCROLLBAR", wxHT_WINDOW_HORZ_SCROLLBAR },
+        { "wxHT_WINDOW_INSIDE", wxHT_WINDOW_INSIDE },
+        { "wxHT_WINDOW_OUTSIDE", wxHT_WINDOW_OUTSIDE },
+        { "wxHT_WINDOW_VERT_SCROLLBAR", wxHT_WINDOW_VERT_SCROLLBAR },
+#endif // wxCHECK_VERSION(3,1,1)
+
 #if (wxLUA_USE_wxSizer) && (wxLUA_USE_wxLayoutConstraints && (!wxCHECK_VERSION(2,6,0)))
         { "wxHeight", wxHeight },
 #endif // (wxLUA_USE_wxSizer) && (wxLUA_USE_wxLayoutConstraints && (!wxCHECK_VERSION(2,6,0)))
@@ -1666,6 +1699,11 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxMOD_CONTROL", wxMOD_CONTROL },
         { "wxMOD_META", wxMOD_META },
         { "wxMOD_NONE", wxMOD_NONE },
+
+#if wxCHECK_VERSION(3,0,0)
+        { "wxMOD_RAW_CONTROL", wxMOD_RAW_CONTROL },
+#endif // wxCHECK_VERSION(3,0,0)
+
         { "wxMOD_SHIFT", wxMOD_SHIFT },
         { "wxMOD_WIN", wxMOD_WIN },
         { "wxMORE", wxMORE },
@@ -2069,6 +2107,21 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
 #if wxLUA_USE_wxColourPenBrush
         { "wxSHORT_DASH", wxSHORT_DASH },
 #endif // wxLUA_USE_wxColourPenBrush
+
+#if wxCHECK_VERSION(3,1,1)
+        { "wxSHOW_EFFECT_BLEND", wxSHOW_EFFECT_BLEND },
+        { "wxSHOW_EFFECT_EXPAND", wxSHOW_EFFECT_EXPAND },
+        { "wxSHOW_EFFECT_MAX", wxSHOW_EFFECT_MAX },
+        { "wxSHOW_EFFECT_NONE", wxSHOW_EFFECT_NONE },
+        { "wxSHOW_EFFECT_ROLL_TO_BOTTOM", wxSHOW_EFFECT_ROLL_TO_BOTTOM },
+        { "wxSHOW_EFFECT_ROLL_TO_LEFT", wxSHOW_EFFECT_ROLL_TO_LEFT },
+        { "wxSHOW_EFFECT_ROLL_TO_RIGHT", wxSHOW_EFFECT_ROLL_TO_RIGHT },
+        { "wxSHOW_EFFECT_ROLL_TO_TOP", wxSHOW_EFFECT_ROLL_TO_TOP },
+        { "wxSHOW_EFFECT_SLIDE_TO_BOTTOM", wxSHOW_EFFECT_SLIDE_TO_BOTTOM },
+        { "wxSHOW_EFFECT_SLIDE_TO_LEFT", wxSHOW_EFFECT_SLIDE_TO_LEFT },
+        { "wxSHOW_EFFECT_SLIDE_TO_RIGHT", wxSHOW_EFFECT_SLIDE_TO_RIGHT },
+        { "wxSHOW_EFFECT_SLIDE_TO_TOP", wxSHOW_EFFECT_SLIDE_TO_TOP },
+#endif // wxCHECK_VERSION(3,1,1)
 
         { "wxSHRINK", wxSHRINK },
         { "wxSHUTDOWN_POWEROFF", wxSHUTDOWN_POWEROFF },
@@ -3355,7 +3408,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxFileSelector[1] = {{ wxLua_fu
 
 #if wxCHECK_VERSION(2,8,0)
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxFindFocusDescendant[] = { &wxluatype_wxWindow, NULL };
-// %wxchkver_2_8 wxWindow* wxFindFocusDescendant(wxWindow* ancestor );
+// %wxchkver_2_8 wxWindow* wxFindFocusDescendant(wxWindow* ancestor);
 static int LUACALL wxLua_function_wxFindFocusDescendant(lua_State *L)
 {
     // wxWindow ancestor

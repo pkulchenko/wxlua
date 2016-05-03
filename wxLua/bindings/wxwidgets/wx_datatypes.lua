@@ -2432,6 +2432,12 @@ wx_dataTypeTable =
     Name = "wxHelpSearchMode",
     ValueType = "enum",
   },
+  wxHitTest = {
+    Condition = "wxCHECK_VERSION(3,1,1)",
+    IsNumber = true,
+    Name = "wxHitTest",
+    ValueType = "enum",
+  },
   wxHtmlCell = {
     BaseClasses = {
       [1] = "wxObject",
@@ -4224,6 +4230,12 @@ wx_dataTypeTable =
     Name = "wxSetCursorEvent",
     ValueType = "class",
   },
+  wxShowEffect = {
+    Condition = "wxCHECK_VERSION(3,1,1)",
+    IsNumber = true,
+    Name = "wxShowEffect",
+    ValueType = "enum",
+  },
   wxShowEvent = {
     BaseClasses = {
       [1] = "wxEvent",
@@ -5422,6 +5434,7 @@ wx_preprocConditionTable =
   ["%wxchkver_2_9_4"] = "wxCHECK_VERSION(2,9,4)",
   ["%wxchkver_2_9_5"] = "wxCHECK_VERSION(2,9,5)",
   ["%wxchkver_3_0"] = "wxCHECK_VERSION(3,0,0)",
+  ["%wxchkver_3_1"] = "wxCHECK_VERSION(3,1,0)",
   ["%wxchkver_3_1_0"] = "wxCHECK_VERSION(3,1,0)",
   ["%wxchkver_3_1_1"] = "wxCHECK_VERSION(3,1,1)",
   ["%wxcompat_2_4"] = "(defined(WXWIN_COMPATIBILITY_2_4) && WXWIN_COMPATIBILITY_2_4)",

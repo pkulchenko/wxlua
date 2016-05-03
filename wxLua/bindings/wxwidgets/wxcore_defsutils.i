@@ -487,9 +487,12 @@ enum wxBorder
 
 enum wxBackgroundStyle
 {
+    %wxchkver_3_1 wxBG_STYLE_ERASE,
     wxBG_STYLE_SYSTEM,
+    %wxchkver_3_1 wxBG_STYLE_PAINT,
     wxBG_STYLE_COLOUR,
-    wxBG_STYLE_CUSTOM
+    %wxchkver_3_1 wxBG_STYLE_TRANSPARENT,
+    !%wxchkver_3_1 wxBG_STYLE_CUSTOM
 };
 
 enum wxKeyModifier
@@ -501,9 +504,37 @@ enum wxKeyModifier
     wxMOD_SHIFT,
     wxMOD_META,
     wxMOD_WIN,
+    %wxchkver_3_0 wxMOD_RAW_CONTROL,
     wxMOD_CMD,
     wxMOD_ALL
 };
+
+#if %wxchkver_3_1_1
+enum wxHitTest
+{
+    wxHT_NOWHERE,
+
+    /*  scrollbar */
+    wxHT_SCROLLBAR_FIRST = wxHT_NOWHERE,
+    wxHT_SCROLLBAR_ARROW_LINE_1,    /**< left or upper arrow to scroll by line */
+    wxHT_SCROLLBAR_ARROW_LINE_2,    /**< right or down */
+    wxHT_SCROLLBAR_ARROW_PAGE_1,    /**< left or upper arrow to scroll by page */
+    wxHT_SCROLLBAR_ARROW_PAGE_2,    /**< right or down */
+    wxHT_SCROLLBAR_THUMB,           /**< on the thumb */
+    wxHT_SCROLLBAR_BAR_1,           /**< bar to the left/above the thumb */
+    wxHT_SCROLLBAR_BAR_2,           /**< bar to the right/below the thumb */
+    wxHT_SCROLLBAR_LAST,
+
+    /*  window */
+    wxHT_WINDOW_OUTSIDE,            /**< not in this window at all */
+    wxHT_WINDOW_INSIDE,             /**< in the client area */
+    wxHT_WINDOW_VERT_SCROLLBAR,     /**< on the vertical scrollbar */
+    wxHT_WINDOW_HORZ_SCROLLBAR,     /**< on the horizontal scrollbar */
+    wxHT_WINDOW_CORNER,             /**< on the corner between 2 scrollbars */
+
+    wxHT_MAX
+};
+#endif // %wxchkver_3_1_1
 
 // ---------------------------------------------------------------------------
 // wxBusyCursor
