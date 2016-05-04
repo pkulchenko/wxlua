@@ -714,22 +714,14 @@ end
 -- Build condition string using condition stack (number indexed Lua table)
 -- ---------------------------------------------------------------------------
 function BuildCondition(conditionStack)
-    local condition = nil
-
-    if HasCondition(conditionStack[1]) then
-        if not HasCondition(conditionStack[2]) then -- only one item
-            condition = conditionStack[1]
-        else
-            condition = "("..conditionStack[1]..")"
-            for i = 2, #conditionStack do
-                if HasCondition(conditionStack[i]) then
-                    condition = condition.." && ("..conditionStack[i]..")"
-                end
-            end
-        end
+    local conditions = {}
+    for i = 1, #conditionStack do
+        if HasCondition(conditionStack[i]) then table.insert(conditions, conditionStack[i]) end
     end
-
-    return condition
+    table.sort(conditions)
+    return #conditions > 1 and "("..table.concat(conditions, ") && (")..")"
+        or #conditions == 1 and conditions[1]
+        or nil
 end
 
 -- ---------------------------------------------------------------------------
@@ -739,7 +731,9 @@ function AddCondition(condition1, condition2)
     local condition = nil
 
     if HasCondition(condition1) and HasCondition(condition2) then
-        condition = "("..condition1..") && ("..condition2..")"
+        condition = condition1 <= condition2
+          and "("..condition1..") && ("..condition2..")"
+          or "("..condition2..") && ("..condition1..")"
     elseif HasCondition(condition1) then
         condition = condition1
     elseif HasCondition(condition2) then

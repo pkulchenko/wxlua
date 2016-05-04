@@ -1226,7 +1226,7 @@ static int LUACALL wxLua_wxObject_DynamicCast(lua_State *L)
 
 
 
-#if (wxLUA_USE_wxObject) && (wxLUA_USE_wxClassInfo)
+#if (wxLUA_USE_wxClassInfo) && (wxLUA_USE_wxObject)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxObject_GetClassInfo[] = { &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxObject_GetClassInfo(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxObject_GetClassInfo[1] = {{ wxLua_wxObject_GetClassInfo, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxObject_GetClassInfo }};
@@ -1243,7 +1243,7 @@ static int LUACALL wxLua_wxObject_GetClassInfo(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxObject) && (wxLUA_USE_wxClassInfo)
+#endif // (wxLUA_USE_wxClassInfo) && (wxLUA_USE_wxObject)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxObject_GetRefData[] = { &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxObject_GetRefData(lua_State *L);
@@ -1262,7 +1262,7 @@ static int LUACALL wxLua_wxObject_GetRefData(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxObject) && (wxLUA_USE_wxClassInfo)
+#if (wxLUA_USE_wxClassInfo) && (wxLUA_USE_wxObject)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxObject_IsKindOf[] = { &wxluatype_wxObject, &wxluatype_wxClassInfo, NULL };
 static int LUACALL wxLua_wxObject_IsKindOf(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxObject_IsKindOf[1] = {{ wxLua_wxObject_IsKindOf, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxObject_IsKindOf }};
@@ -1281,7 +1281,7 @@ static int LUACALL wxLua_wxObject_IsKindOf(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxObject) && (wxLUA_USE_wxClassInfo)
+#endif // (wxLUA_USE_wxClassInfo) && (wxLUA_USE_wxObject)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxObject_IsSameAs[] = { &wxluatype_wxObject, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxObject_IsSameAs(lua_State *L);
@@ -1378,15 +1378,15 @@ void wxLua_wxObject_delete_function(void** p)
 wxLuaBindMethod wxObject_methods[] = {
     { "DynamicCast", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxObject_DynamicCast, 1, NULL },
 
-#if (wxLUA_USE_wxObject) && (wxLUA_USE_wxClassInfo)
+#if (wxLUA_USE_wxClassInfo) && (wxLUA_USE_wxObject)
     { "GetClassInfo", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxObject_GetClassInfo, 1, NULL },
-#endif // (wxLUA_USE_wxObject) && (wxLUA_USE_wxClassInfo)
+#endif // (wxLUA_USE_wxClassInfo) && (wxLUA_USE_wxObject)
 
     { "GetRefData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxObject_GetRefData, 1, NULL },
 
-#if (wxLUA_USE_wxObject) && (wxLUA_USE_wxClassInfo)
+#if (wxLUA_USE_wxClassInfo) && (wxLUA_USE_wxObject)
     { "IsKindOf", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxObject_IsKindOf, 1, NULL },
-#endif // (wxLUA_USE_wxObject) && (wxLUA_USE_wxClassInfo)
+#endif // (wxLUA_USE_wxClassInfo) && (wxLUA_USE_wxObject)
 
     { "IsSameAs", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxObject_IsSameAs, 1, NULL },
     { "Ref", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxObject_Ref, 1, NULL },

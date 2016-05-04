@@ -125,7 +125,7 @@ int wxDateTime_TimeZone_methodCount = sizeof(wxDateTime_TimeZone_methods)/sizeof
 // Lua MetaTable Tag for Class 'wxDateTime'
 int wxluatype_wxDateTime = WXLUA_TUNKNOWN;
 
-#if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxDateSpan && wxUSE_DATETIME)
+#if (wxLUA_USE_wxDateSpan && wxUSE_DATETIME) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_Add1[] = { &wxluatype_wxDateTime, &wxluatype_wxDateSpan, NULL };
 static int LUACALL wxLua_wxDateTime_Add1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_Add1[1] = {{ wxLua_wxDateTime_Add1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_Add1 }};
@@ -144,7 +144,7 @@ static int LUACALL wxLua_wxDateTime_Add1(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxDateSpan && wxUSE_DATETIME)
+#endif // (wxLUA_USE_wxDateSpan && wxUSE_DATETIME) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 
 #if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_Add[] = { &wxluatype_wxDateTime, &wxluatype_wxTimeSpan, NULL };
@@ -892,7 +892,7 @@ static int LUACALL wxLua_wxDateTime_GetTicks(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
+#if ((!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetWeek[] = { &wxluatype_wxDateTime, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_GetWeek(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_GetWeek[1] = {{ wxLua_wxDateTime_GetWeek, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxDateTime_GetWeek }};
@@ -918,7 +918,7 @@ static int LUACALL wxLua_wxDateTime_GetWeek(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
+#endif // ((!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_GetWeekDay1[] = { &wxluatype_wxDateTime, &wxluatype_wxDateTime_TimeZone, NULL };
 static int LUACALL wxLua_wxDateTime_GetWeekDay1(lua_State *L);
@@ -1859,7 +1859,7 @@ static int LUACALL wxLua_wxDateTime_ParseFormat1(lua_State *L)
 
 #endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 
-#if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_ParseFormat[] = { &wxluatype_wxDateTime, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateTime_ParseFormat(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_ParseFormat[1] = {{ wxLua_wxDateTime_ParseFormat, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxDateTime_ParseFormat }};
@@ -1891,7 +1891,7 @@ static int LUACALL wxLua_wxDateTime_ParseFormat(lua_State *L)
 }
 
 
-#endif // (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 
 #if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_ParseRfc822Date1[] = { &wxluatype_wxDateTime, &wxluatype_TSTRING, NULL };
@@ -2343,7 +2343,7 @@ static int LUACALL wxLua_wxDateTime_SetToPrevWeekDay(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
+#if ((!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetToTheWeek[] = { &wxluatype_wxDateTime, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_SetToTheWeek(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetToTheWeek[1] = {{ wxLua_wxDateTime_SetToTheWeek, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxDateTime_SetToTheWeek }};
@@ -2366,7 +2366,7 @@ static int LUACALL wxLua_wxDateTime_SetToTheWeek(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
+#endif // ((!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetToWeekDay[] = { &wxluatype_wxDateTime, &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_SetToWeekDay(lua_State *L);
@@ -2413,7 +2413,7 @@ static int LUACALL wxLua_wxDateTime_SetToWeekDayInSameWeek(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
+#if ((wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetToWeekOfYear[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDateTime_SetToWeekOfYear(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_SetToWeekOfYear[1] = {{ wxLua_wxDateTime_SetToWeekOfYear, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 2, 3, s_wxluatypeArray_wxLua_wxDateTime_SetToWeekOfYear }};
@@ -2439,7 +2439,7 @@ static int LUACALL wxLua_wxDateTime_SetToWeekOfYear(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
+#endif // ((wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_SetToYearDay[] = { &wxluatype_wxDateTime, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateTime_SetToYearDay(lua_State *L);
@@ -2478,7 +2478,7 @@ static int LUACALL wxLua_wxDateTime_SetYear(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxDateSpan && wxUSE_DATETIME)
+#if (wxLUA_USE_wxDateSpan && wxUSE_DATETIME) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_Subtract1[] = { &wxluatype_wxDateTime, &wxluatype_wxDateSpan, NULL };
 static int LUACALL wxLua_wxDateTime_Subtract1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_Subtract1[1] = {{ wxLua_wxDateTime_Subtract1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_Subtract1 }};
@@ -2497,7 +2497,7 @@ static int LUACALL wxLua_wxDateTime_Subtract1(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxDateSpan && wxUSE_DATETIME)
+#endif // (wxLUA_USE_wxDateSpan && wxUSE_DATETIME) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 
 #if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateTime_Subtract[] = { &wxluatype_wxDateTime, &wxluatype_wxTimeSpan, NULL };
@@ -2862,14 +2862,14 @@ static int LUACALL wxLua_wxDateTimeFromJDN_constructor(lua_State *L)
 
 
 
-#if ((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxDateSpan && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME))
+#if ((wxLUA_USE_wxDateSpan && wxUSE_DATETIME) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_Add_overload[] =
 {
 
-#if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxDateSpan && wxUSE_DATETIME)
+#if (wxLUA_USE_wxDateSpan && wxUSE_DATETIME) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
     { wxLua_wxDateTime_Add1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_Add1 },
-#endif // (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxDateSpan && wxUSE_DATETIME)
+#endif // (wxLUA_USE_wxDateSpan && wxUSE_DATETIME) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 
 #if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME)
     { wxLua_wxDateTime_Add, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_Add },
@@ -2877,7 +2877,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_Add_overload[] =
 };
 static int s_wxluafunc_wxLua_wxDateTime_Add_overload_count = sizeof(s_wxluafunc_wxLua_wxDateTime_Add_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxDateSpan && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME))
+#endif // ((wxLUA_USE_wxDateSpan && wxUSE_DATETIME) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME))
 
 #if (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 // function overload table
@@ -3037,7 +3037,7 @@ static int s_wxluafunc_wxLua_wxDateTime_ParseDateTime_overload_count = sizeof(s_
 
 #endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
 
-#if (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)))
+#if (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_ParseFormat_overload[] =
 {
@@ -3054,13 +3054,13 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_ParseFormat_overload[] =
     { wxLua_wxDateTime_ParseFormat1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxDateTime_ParseFormat1 },
 #endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 
-#if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
     { wxLua_wxDateTime_ParseFormat, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxDateTime_ParseFormat },
-#endif // (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 };
 static int s_wxluafunc_wxLua_wxDateTime_ParseFormat_overload_count = sizeof(s_wxluafunc_wxLua_wxDateTime_ParseFormat_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)))
+#endif // (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
 
 #if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
 // function overload table
@@ -3093,14 +3093,14 @@ static int s_wxluafunc_wxLua_wxDateTime_ParseTime_overload_count = sizeof(s_wxlu
 
 #endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
 
-#if ((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxDateSpan && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME))
+#if ((wxLUA_USE_wxDateSpan && wxUSE_DATETIME) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_Subtract_overload[] =
 {
 
-#if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxDateSpan && wxUSE_DATETIME)
+#if (wxLUA_USE_wxDateSpan && wxUSE_DATETIME) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
     { wxLua_wxDateTime_Subtract1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_Subtract1 },
-#endif // (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxDateSpan && wxUSE_DATETIME)
+#endif // (wxLUA_USE_wxDateSpan && wxUSE_DATETIME) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 
 #if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME)
     { wxLua_wxDateTime_Subtract, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateTime_Subtract },
@@ -3108,7 +3108,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateTime_Subtract_overload[] =
 };
 static int s_wxluafunc_wxLua_wxDateTime_Subtract_overload_count = sizeof(s_wxluafunc_wxLua_wxDateTime_Subtract_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxDateSpan && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME))
+#endif // ((wxLUA_USE_wxDateSpan && wxUSE_DATETIME) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME))
 
 #if (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 // function overload table
@@ -3130,9 +3130,9 @@ void wxLua_wxDateTime_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxDateTime_methods[] = {
-#if ((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxDateSpan && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME))
+#if ((wxLUA_USE_wxDateSpan && wxUSE_DATETIME) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME))
     { "Add", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_Add_overload, s_wxluafunc_wxLua_wxDateTime_Add_overload_count, 0 },
-#endif // ((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxDateSpan && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME))
+#endif // ((wxLUA_USE_wxDateSpan && wxUSE_DATETIME) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME))
 
     { "ConvertYearToBC", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxDateTime_ConvertYearToBC, 1, NULL },
     { "Format", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_Format, 1, NULL },
@@ -3181,9 +3181,9 @@ wxLuaBindMethod wxDateTime_methods[] = {
     { "GetTicks", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_GetTicks_overload, s_wxluafunc_wxLua_wxDateTime_GetTicks_overload_count, 0 },
 #endif // (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 
-#if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
+#if ((!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
     { "GetWeek", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_GetWeek, 1, NULL },
-#endif // (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
+#endif // ((!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 
 #if (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
     { "GetWeekDay", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_GetWeekDay_overload, s_wxluafunc_wxLua_wxDateTime_GetWeekDay_overload_count, 0 },
@@ -3243,9 +3243,9 @@ wxLuaBindMethod wxDateTime_methods[] = {
     { "ParseDateTime", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_ParseDateTime_overload, s_wxluafunc_wxLua_wxDateTime_ParseDateTime_overload_count, 0 },
 #endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
 
-#if (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)))
+#if (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
     { "ParseFormat", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_ParseFormat_overload, s_wxluafunc_wxLua_wxDateTime_ParseFormat_overload_count, 0 },
-#endif // (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)))
+#endif // (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
 
 #if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
     { "ParseRfc822Date", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_ParseRfc822Date_overload, s_wxluafunc_wxLua_wxDateTime_ParseRfc822Date_overload_count, 0 },
@@ -3271,23 +3271,23 @@ wxLuaBindMethod wxDateTime_methods[] = {
     { "SetToNextWeekDay", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_SetToNextWeekDay, 1, NULL },
     { "SetToPrevWeekDay", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_SetToPrevWeekDay, 1, NULL },
 
-#if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
+#if ((!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
     { "SetToTheWeek", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_SetToTheWeek, 1, NULL },
-#endif // (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
+#endif // ((!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 
     { "SetToWeekDay", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_SetToWeekDay, 1, NULL },
     { "SetToWeekDayInSameWeek", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_SetToWeekDayInSameWeek, 1, NULL },
 
-#if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
+#if ((wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
     { "SetToWeekOfYear", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxDateTime_SetToWeekOfYear, 1, NULL },
-#endif // (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && ((wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))
+#endif // ((wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
 
     { "SetToYearDay", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_SetToYearDay, 1, NULL },
     { "SetYear", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_SetYear, 1, NULL },
 
-#if ((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxDateSpan && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME))
+#if ((wxLUA_USE_wxDateSpan && wxUSE_DATETIME) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME))
     { "Subtract", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_Subtract_overload, s_wxluafunc_wxLua_wxDateTime_Subtract_overload_count, 0 },
-#endif // ((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxDateSpan && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME))
+#endif // ((wxLUA_USE_wxDateSpan && wxUSE_DATETIME) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME))||((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxTimeSpan && wxUSE_DATETIME))
 
     { "ToGMT", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_ToGMT, 1, NULL },
     { "ToTimezone", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDateTime_ToTimezone, 1, NULL },
@@ -5185,7 +5185,7 @@ static int LUACALL wxLua_wxLanguageInfo_Get_Language(lua_State *L)
 }
 
 
-#if ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0))) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#if (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLanguageInfo_Get_LayoutDirection[] = { &wxluatype_wxLanguageInfo, NULL };
 static int LUACALL wxLua_wxLanguageInfo_Get_LayoutDirection(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLanguageInfo_Get_LayoutDirection[1] = {{ wxLua_wxLanguageInfo_Get_LayoutDirection, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLanguageInfo_Get_LayoutDirection }};
@@ -5200,11 +5200,11 @@ static int LUACALL wxLua_wxLanguageInfo_Get_LayoutDirection(lua_State *L)
     return 1;
 }
 
-#endif // ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0))) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
 
 
-#if ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0))) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
-#endif // ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0))) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#if (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLanguageInfo_Set_CanonicalName[] = { &wxluatype_wxLanguageInfo, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxLanguageInfo_Set_CanonicalName(lua_State *L);
@@ -5252,7 +5252,7 @@ static int LUACALL wxLua_wxLanguageInfo_Set_Language(lua_State *L)
 }
 
 
-#if ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0))) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#if (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLanguageInfo_Set_LayoutDirection[] = { &wxluatype_wxLanguageInfo, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxLanguageInfo_Set_LayoutDirection(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLanguageInfo_Set_LayoutDirection[1] = {{ wxLua_wxLanguageInfo_Set_LayoutDirection, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxLanguageInfo_Set_LayoutDirection }};
@@ -5268,7 +5268,7 @@ static int LUACALL wxLua_wxLanguageInfo_Set_LayoutDirection(lua_State *L)
     return 0;
 }
 
-#endif // ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0))) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLanguageInfo_delete[] = { &wxluatype_wxLanguageInfo, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLanguageInfo_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxLanguageInfo_delete }};
@@ -5307,25 +5307,25 @@ wxLuaBindMethod wxLanguageInfo_methods[] = {
     // %member    { "Get_Description", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLanguageInfo_Get_Description, 1, NULL },
     // %member    { "Get_Language", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLanguageInfo_Get_Language, 1, NULL },
 
-#if ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0))) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#if (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
     // %member    { "Get_LayoutDirection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLanguageInfo_Get_LayoutDirection, 1, NULL },
-#endif // ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0))) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
 
     { "Language", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxLanguageInfo_Set_Language, 1, NULL },
     { "Language", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxLanguageInfo_Get_Language, 1, NULL },
 
-#if ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0))) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#if (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
     { "LayoutDirection", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxLanguageInfo_Set_LayoutDirection, 1, NULL },
     { "LayoutDirection", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxLanguageInfo_Get_LayoutDirection, 1, NULL },
-#endif // ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0))) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
 
     // %member    { "Set_CanonicalName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLanguageInfo_Set_CanonicalName, 1, NULL },
     // %member    { "Set_Description", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLanguageInfo_Set_Description, 1, NULL },
     // %member    { "Set_Language", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLanguageInfo_Set_Language, 1, NULL },
 
-#if ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0))) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#if (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
     // %member    { "Set_LayoutDirection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLanguageInfo_Set_LayoutDirection, 1, NULL },
-#endif // ((wxUSE_INTL) && (wxCHECK_VERSION(2,8,0))) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
 
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxLanguageInfo_delete, 1, NULL },
     { "wxLanguageInfo", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxLanguageInfo_constructor, 1, NULL },

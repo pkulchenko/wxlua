@@ -1127,7 +1127,7 @@ static int LUACALL wxLua_wxLog_GetTraceMask(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxLog && wxUSE_LOG) && (wxLUA_USE_wxArrayString)
+#if (wxLUA_USE_wxArrayString) && (wxLUA_USE_wxLog && wxUSE_LOG)
 static int LUACALL wxLua_wxLog_GetTraceMasks(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLog_GetTraceMasks[1] = {{ wxLua_wxLog_GetTraceMasks, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
 //     static wxArrayString GetTraceMasks(); // not const wxArrayString since we copy it anyway
@@ -1144,7 +1144,7 @@ static int LUACALL wxLua_wxLog_GetTraceMasks(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxLog && wxUSE_LOG) && (wxLUA_USE_wxArrayString)
+#endif // (wxLUA_USE_wxArrayString) && (wxLUA_USE_wxLog && wxUSE_LOG)
 
 static int LUACALL wxLua_wxLog_GetVerbose(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLog_GetVerbose[1] = {{ wxLua_wxLog_GetVerbose, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
@@ -1364,9 +1364,9 @@ wxLuaBindMethod wxLog_methods[] = {
     { "GetTimestamp", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxLog_GetTimestamp, 1, NULL },
     { "GetTraceMask", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxLog_GetTraceMask, 1, NULL },
 
-#if (wxLUA_USE_wxLog && wxUSE_LOG) && (wxLUA_USE_wxArrayString)
+#if (wxLUA_USE_wxArrayString) && (wxLUA_USE_wxLog && wxUSE_LOG)
     { "GetTraceMasks", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxLog_GetTraceMasks, 1, NULL },
-#endif // (wxLUA_USE_wxLog && wxUSE_LOG) && (wxLUA_USE_wxArrayString)
+#endif // (wxLUA_USE_wxArrayString) && (wxLUA_USE_wxLog && wxUSE_LOG)
 
     { "GetVerbose", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxLog_GetVerbose, 1, NULL },
     { "IsAllowedTraceMask", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxLog_IsAllowedTraceMask, 1, NULL },
@@ -2145,7 +2145,7 @@ static wxLuaArgType s_wxluatypeArray_wxLua_wxCriticalSectionLocker_delete[] = { 
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxCriticalSectionLocker_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxCriticalSectionLocker_delete }};
 
 
-#if (wxLUA_USE_wxCriticalSectionLocker) && (wxLUA_USE_wxCriticalSection && wxUSE_THREADS)
+#if (wxLUA_USE_wxCriticalSection && wxUSE_THREADS) && (wxLUA_USE_wxCriticalSectionLocker)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxCriticalSectionLocker_constructor[] = { &wxluatype_wxCriticalSection, NULL };
 static int LUACALL wxLua_wxCriticalSectionLocker_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxCriticalSectionLocker_constructor[1] = {{ wxLua_wxCriticalSectionLocker_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxCriticalSectionLocker_constructor }};
@@ -2164,7 +2164,7 @@ static int LUACALL wxLua_wxCriticalSectionLocker_constructor(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxCriticalSectionLocker) && (wxLUA_USE_wxCriticalSection && wxUSE_THREADS)
+#endif // (wxLUA_USE_wxCriticalSection && wxUSE_THREADS) && (wxLUA_USE_wxCriticalSectionLocker)
 
 
 
@@ -2178,9 +2178,9 @@ void wxLua_wxCriticalSectionLocker_delete_function(void** p)
 wxLuaBindMethod wxCriticalSectionLocker_methods[] = {
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxCriticalSectionLocker_delete, 1, NULL },
 
-#if (wxLUA_USE_wxCriticalSectionLocker) && (wxLUA_USE_wxCriticalSection && wxUSE_THREADS)
+#if (wxLUA_USE_wxCriticalSection && wxUSE_THREADS) && (wxLUA_USE_wxCriticalSectionLocker)
     { "wxCriticalSectionLocker", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxCriticalSectionLocker_constructor, 1, NULL },
-#endif // (wxLUA_USE_wxCriticalSectionLocker) && (wxLUA_USE_wxCriticalSection && wxUSE_THREADS)
+#endif // (wxLUA_USE_wxCriticalSection && wxUSE_THREADS) && (wxLUA_USE_wxCriticalSectionLocker)
 
     { 0, 0, 0, 0 },
 };

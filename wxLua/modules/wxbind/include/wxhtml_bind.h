@@ -43,11 +43,11 @@ extern WXDLLIMPEXP_BINDWXHTML wxLuaBinding* wxLuaBinding_wxhtml_init();
 // Includes
 // ---------------------------------------------------------------------------
 
-#if (wxLUA_USE_wxHTML && wxUSE_HTML) && (wxCHECK_VERSION(2,8,0))
+#if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
     #include "wx/html/htmlcell.h"
     #include "wx/html/htmlwin.h"
     #include "wx/htmllbox.h"
-#endif // (wxLUA_USE_wxHTML && wxUSE_HTML) && (wxCHECK_VERSION(2,8,0))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
 
 #if (wxLUA_USE_wxHTML && wxUSE_HTML) && (wxLUA_USE_wxHtmlHelpController && wxUSE_WXHTML_HELP)
     #include "wx/html/helpctrl.h"
@@ -69,13 +69,13 @@ extern WXDLLIMPEXP_BINDWXHTML wxLuaBinding* wxLuaBinding_wxhtml_init();
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
 
-#if (wxLUA_USE_wxHTML && wxUSE_HTML) && (wxCHECK_VERSION(2,8,0))
+#if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
     extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxHtmlCellEvent;
     extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxHtmlColourCell;
     extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxHtmlFontCell;
     extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxHtmlWindowInterface;
     extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxSimpleHtmlListBox;
-#endif // (wxLUA_USE_wxHTML && wxUSE_HTML) && (wxCHECK_VERSION(2,8,0))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
 
 #if (wxLUA_USE_wxHTML && wxUSE_HTML) && (wxLUA_USE_wxHtmlHelpController && wxUSE_WXHTML_HELP)
     extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxHtmlHelpController;

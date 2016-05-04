@@ -59,15 +59,15 @@ extern WXDLLIMPEXP_BINDWXBASE wxLuaBinding* wxLuaBinding_wxbase_init();
 // Includes
 // ---------------------------------------------------------------------------
 
-#if (wxUSE_STREAMS) && (wxUSE_FILESYSTEM)
+#if (wxUSE_FILESYSTEM) && (wxUSE_FS_INET && wxUSE_SOCKETS) && (wxUSE_STREAMS)
+    #include "wx/fs_inet.h"
+#endif // (wxUSE_FILESYSTEM) && (wxUSE_FS_INET && wxUSE_SOCKETS) && (wxUSE_STREAMS)
+
+#if (wxUSE_FILESYSTEM) && (wxUSE_STREAMS)
     #include "wx/filesys.h"
     #include "wx/fs_arc.h"
     #include "wx/fs_filter.h"
-#endif // (wxUSE_STREAMS) && (wxUSE_FILESYSTEM)
-
-#if (wxUSE_STREAMS) && (wxUSE_FILESYSTEM) && (wxUSE_FS_INET && wxUSE_SOCKETS)
-    #include "wx/fs_inet.h"
-#endif // (wxUSE_STREAMS) && (wxUSE_FILESYSTEM) && (wxUSE_FS_INET && wxUSE_SOCKETS)
+#endif // (wxUSE_FILESYSTEM) && (wxUSE_STREAMS)
 
 #include "sys/stat.h"
 #include "wx/dynlib.h"
@@ -183,18 +183,18 @@ extern WXDLLIMPEXP_BINDWXBASE wxLuaBinding* wxLuaBinding_wxbase_init();
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
 
-#if (wxUSE_STREAMS) && (wxUSE_FILESYSTEM)
+#if (wxUSE_FILESYSTEM) && (wxUSE_FS_INET && wxUSE_SOCKETS) && (wxUSE_STREAMS)
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxInternetFSHandler;
+#endif // (wxUSE_FILESYSTEM) && (wxUSE_FS_INET && wxUSE_SOCKETS) && (wxUSE_STREAMS)
+
+#if (wxUSE_FILESYSTEM) && (wxUSE_STREAMS)
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxArchiveFSHandler;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxFSFile;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxFileSystem;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxFileSystemHandler;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxFilterFSHandler;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxLocalFSHandler;
-#endif // (wxUSE_STREAMS) && (wxUSE_FILESYSTEM)
-
-#if (wxUSE_STREAMS) && (wxUSE_FILESYSTEM) && (wxUSE_FS_INET && wxUSE_SOCKETS)
-    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxInternetFSHandler;
-#endif // (wxUSE_STREAMS) && (wxUSE_FILESYSTEM) && (wxUSE_FS_INET && wxUSE_SOCKETS)
+#endif // (wxUSE_FILESYSTEM) && (wxUSE_STREAMS)
 
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxClientData;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxClientDataContainer;

@@ -1422,7 +1422,7 @@ static int LUACALL wxLua_wxProtocol_GetError(lua_State *L)
 }
 
 
-#if (wxUSE_STREAMS) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL))
+#if ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL)) && (wxUSE_STREAMS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProtocol_GetInputStream[] = { &wxluatype_wxProtocol, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxProtocol_GetInputStream(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxProtocol_GetInputStream[1] = {{ wxLua_wxProtocol_GetInputStream, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxProtocol_GetInputStream }};
@@ -1441,7 +1441,7 @@ static int LUACALL wxLua_wxProtocol_GetInputStream(lua_State *L)
     return 1;
 }
 
-#endif // (wxUSE_STREAMS) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL))
+#endif // ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL)) && (wxUSE_STREAMS)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProtocol_Reconnect[] = { &wxluatype_wxProtocol, NULL };
 static int LUACALL wxLua_wxProtocol_Reconnect(lua_State *L);
@@ -1509,9 +1509,9 @@ wxLuaBindMethod wxProtocol_methods[] = {
     { "GetContentType", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProtocol_GetContentType, 1, NULL },
     { "GetError", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProtocol_GetError, 1, NULL },
 
-#if (wxUSE_STREAMS) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL))
+#if ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL)) && (wxUSE_STREAMS)
     { "GetInputStream", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProtocol_GetInputStream, 1, NULL },
-#endif // (wxUSE_STREAMS) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL))
+#endif // ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL)) && (wxUSE_STREAMS)
 
     { "Reconnect", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProtocol_Reconnect, 1, NULL },
     { "SetPassword", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProtocol_SetPassword, 1, NULL },
@@ -1694,7 +1694,7 @@ static int LUACALL wxLua_wxFTP_FileExists(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxArrayString) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP))
+#if ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP)) && (wxLUA_USE_wxArrayString)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_GetDirList[] = { &wxluatype_wxFTP, &wxluatype_wxArrayString, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFTP_GetDirList(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_GetDirList[1] = {{ wxLua_wxFTP_GetDirList, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxFTP_GetDirList }};
@@ -1717,7 +1717,7 @@ static int LUACALL wxLua_wxFTP_GetDirList(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxArrayString) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP))
+#endif // ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP)) && (wxLUA_USE_wxArrayString)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_GetFileSize[] = { &wxluatype_wxFTP, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFTP_GetFileSize(lua_State *L);
@@ -1738,7 +1738,7 @@ static int LUACALL wxLua_wxFTP_GetFileSize(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxArrayString) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP))
+#if ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP)) && (wxLUA_USE_wxArrayString)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_GetFilesList[] = { &wxluatype_wxFTP, &wxluatype_wxArrayString, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFTP_GetFilesList(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_GetFilesList[1] = {{ wxLua_wxFTP_GetFilesList, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxFTP_GetFilesList }};
@@ -1761,7 +1761,7 @@ static int LUACALL wxLua_wxFTP_GetFilesList(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxArrayString) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP))
+#endif // ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP)) && (wxLUA_USE_wxArrayString)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_GetLastResult[] = { &wxluatype_wxFTP, NULL };
 static int LUACALL wxLua_wxFTP_GetLastResult(lua_State *L);
@@ -1780,7 +1780,7 @@ static int LUACALL wxLua_wxFTP_GetLastResult(lua_State *L)
 }
 
 
-#if (wxUSE_STREAMS) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP))
+#if ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP)) && (wxUSE_STREAMS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_GetOutputStream[] = { &wxluatype_wxFTP, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFTP_GetOutputStream(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFTP_GetOutputStream[1] = {{ wxLua_wxFTP_GetOutputStream, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFTP_GetOutputStream }};
@@ -1799,7 +1799,7 @@ static int LUACALL wxLua_wxFTP_GetOutputStream(lua_State *L)
     return 1;
 }
 
-#endif // (wxUSE_STREAMS) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP))
+#endif // ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP)) && (wxUSE_STREAMS)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFTP_MkDir[] = { &wxluatype_wxFTP, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFTP_MkDir(lua_State *L);
@@ -2008,21 +2008,21 @@ wxLuaBindMethod wxFTP_methods[] = {
     { "CheckCommand", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFTP_CheckCommand, 1, NULL },
     { "FileExists", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFTP_FileExists, 1, NULL },
 
-#if (wxLUA_USE_wxArrayString) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP))
+#if ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP)) && (wxLUA_USE_wxArrayString)
     { "GetDirList", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFTP_GetDirList, 1, NULL },
-#endif // (wxLUA_USE_wxArrayString) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP))
+#endif // ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP)) && (wxLUA_USE_wxArrayString)
 
     { "GetFileSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFTP_GetFileSize, 1, NULL },
 
-#if (wxLUA_USE_wxArrayString) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP))
+#if ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP)) && (wxLUA_USE_wxArrayString)
     { "GetFilesList", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFTP_GetFilesList, 1, NULL },
-#endif // (wxLUA_USE_wxArrayString) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP))
+#endif // ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP)) && (wxLUA_USE_wxArrayString)
 
     { "GetLastResult", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFTP_GetLastResult, 1, NULL },
 
-#if (wxUSE_STREAMS) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP))
+#if ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP)) && (wxUSE_STREAMS)
     { "GetOutputStream", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFTP_GetOutputStream, 1, NULL },
-#endif // (wxUSE_STREAMS) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP))
+#endif // ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_FTP)) && (wxUSE_STREAMS)
 
     { "MkDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFTP_MkDir, 1, NULL },
     { "Pwd", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFTP_Pwd, 1, NULL },
@@ -2680,7 +2680,7 @@ static int LUACALL wxLua_wxURL_GetInputStream(lua_State *L)
 
 #endif // ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_URL)) && (wxUSE_STREAMS)
 
-#if ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_URL)) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL))
+#if ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL)) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_URL))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURL_GetProtocol[] = { &wxluatype_wxURL, NULL };
 static int LUACALL wxLua_wxURL_GetProtocol(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURL_GetProtocol[1] = {{ wxLua_wxURL_GetProtocol, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxURL_GetProtocol }};
@@ -2697,7 +2697,7 @@ static int LUACALL wxLua_wxURL_GetProtocol(lua_State *L)
     return 1;
 }
 
-#endif // ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_URL)) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL))
+#endif // ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL)) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_URL))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURL_GetURL[] = { &wxluatype_wxURL, NULL };
 static int LUACALL wxLua_wxURL_GetURL(lua_State *L);
@@ -2716,7 +2716,7 @@ static int LUACALL wxLua_wxURL_GetURL(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_URL) && (wxUSE_PROTOCOL_HTTP)
+#if (wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_HTTP) && (wxUSE_URL)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURL_SetDefaultProxy[] = { &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxURL_SetDefaultProxy(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURL_SetDefaultProxy[1] = {{ wxLua_wxURL_SetDefaultProxy, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxURL_SetDefaultProxy }};
@@ -2747,7 +2747,7 @@ static int LUACALL wxLua_wxURL_SetProxy(lua_State *L)
     return 0;
 }
 
-#endif // (wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_URL) && (wxUSE_PROTOCOL_HTTP)
+#endif // (wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_HTTP) && (wxUSE_URL)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURL_delete[] = { &wxluatype_wxURL, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxURL_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxURL_delete }};
@@ -2823,16 +2823,16 @@ wxLuaBindMethod wxURL_methods[] = {
     { "GetInputStream", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxURL_GetInputStream, 1, NULL },
 #endif // ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_URL)) && (wxUSE_STREAMS)
 
-#if ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_URL)) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL))
+#if ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL)) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_URL))
     { "GetProtocol", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxURL_GetProtocol, 1, NULL },
-#endif // ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_URL)) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL))
+#endif // ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL)) && ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_URL))
 
     { "GetURL", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxURL_GetURL, 1, NULL },
 
-#if (wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_URL) && (wxUSE_PROTOCOL_HTTP)
+#if (wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_HTTP) && (wxUSE_URL)
     { "SetDefaultProxy", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxURL_SetDefaultProxy, 1, NULL },
     { "SetProxy", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxURL_SetProxy, 1, NULL },
-#endif // (wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_URL) && (wxUSE_PROTOCOL_HTTP)
+#endif // (wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_PROTOCOL_HTTP) && (wxUSE_URL)
 
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxURL_delete, 1, NULL },
 

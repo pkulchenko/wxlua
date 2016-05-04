@@ -44,13 +44,30 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
 // Includes
 // ---------------------------------------------------------------------------
 
+#if (!defined(__WXMSW__)) && (wxLUA_USE_wxHelpController && wxUSE_HELP)
+    #include "wx/generic/helpext.h"
+#endif // (!defined(__WXMSW__)) && (wxLUA_USE_wxHelpController && wxUSE_HELP)
+
+#if (!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxToolbar)
+    #include "wx/tbarsmpl.h"
+#endif // (!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxToolbar)
+
+#if ((wxLUA_USE_wxDirPickerCtrl || wxLUA_USE_wxFilePickerCtrl ) && (wxUSE_FILEPICKERCTRL || wxUSE_DIRPICKERCTRL )) && (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker)
+    #include "wx/filepicker.h"
+#endif // ((wxLUA_USE_wxDirPickerCtrl || wxLUA_USE_wxFilePickerCtrl ) && (wxUSE_FILEPICKERCTRL || wxUSE_DIRPICKERCTRL )) && (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker)
+
+#if (defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
+    #include "wx/dcprint.h"
+#endif // (defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
+
+#if (defined(__WXMSW__)) && (wxLUA_USE_wxHelpController && wxUSE_HELP)
+    #include "wx/helpwin.h"
+    #include "wx/msw/helpbest.h"
+#endif // (defined(__WXMSW__)) && (wxLUA_USE_wxHelpController && wxUSE_HELP)
+
 #if (wxCHECK_VERSION(2,6,0)) && (wxUSE_NUMBERDLG)
     #include "wx/numdlg.h"
 #endif // (wxCHECK_VERSION(2,6,0)) && (wxUSE_NUMBERDLG)
-
-#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && ((wxLUA_USE_wxDirPickerCtrl || wxLUA_USE_wxFilePickerCtrl ) && (wxUSE_FILEPICKERCTRL || wxUSE_DIRPICKERCTRL ))
-    #include "wx/filepicker.h"
-#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && ((wxLUA_USE_wxDirPickerCtrl || wxLUA_USE_wxFilePickerCtrl ) && (wxUSE_FILEPICKERCTRL || wxUSE_DIRPICKERCTRL ))
 
 #if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxColourPickerCtrl && wxUSE_COLOURPICKERCTRL)
     #include "wx/clrpicker.h"
@@ -64,79 +81,62 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/fontpicker.h"
 #endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxFontPickerCtrl && wxUSE_FONTPICKERCTRL)
 
-#if (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)
+#if (wxCHECK_VERSION(2,8,0) && wxUSE_TGA) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+    #include "wx/imagtga.h"
+#endif // (wxCHECK_VERSION(2,8,0) && wxUSE_TGA) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+
+#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxSizer)
+    #include "wx/wrapsizer.h"
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxSizer)
+
+#if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxClipboard && wxUSE_CLIPBOARD)
+    #include "wx/event.h"
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxClipboard && wxUSE_CLIPBOARD)
+
+#if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)
+    #include "wx/gbsizer.h"
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)
+
+#if (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
     #include "wx/bmpbuttn.h"
-#endif // (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)
+#endif // (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+
+#if (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxHelpController && wxUSE_HELP)
+    #include "wx/cshelp.h"
+#endif // (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxHelpController && wxUSE_HELP)
+
+#if (wxLUA_USE_wxCheckListBox && wxUSE_CHECKLISTBOX) && (wxLUA_USE_wxListBox && wxUSE_LISTBOX)
+    #include "wx/checklst.h"
+#endif // (wxLUA_USE_wxCheckListBox && wxUSE_CHECKLISTBOX) && (wxLUA_USE_wxListBox && wxUSE_LISTBOX)
 
 #if (wxLUA_USE_wxChoice || wxLUA_USE_wxComboBox || wxLUA_USE_wxListBox ) && wxUSE_CONTROLS
     #include "wx/ctrlsub.h"
 #endif // (wxLUA_USE_wxChoice || wxLUA_USE_wxComboBox || wxLUA_USE_wxListBox ) && wxUSE_CONTROLS
 
-#if (wxLUA_USE_wxClipboard && wxUSE_CLIPBOARD) && (wxCHECK_VERSION(2,8,0))
-    #include "wx/event.h"
-#endif // (wxLUA_USE_wxClipboard && wxUSE_CLIPBOARD) && (wxCHECK_VERSION(2,8,0))
-
 #if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)
     #include "wx/minifram.h"
 #endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)
 
-#if (wxLUA_USE_wxHelpController && wxUSE_HELP) && (!defined(__WXMSW__))
-    #include "wx/generic/helpext.h"
-#endif // (wxLUA_USE_wxHelpController && wxUSE_HELP) && (!defined(__WXMSW__))
+#if (wxLUA_USE_wxGenericValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+    #include "wx/valgen.h"
+#endif // (wxLUA_USE_wxGenericValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 
-#if (wxLUA_USE_wxHelpController && wxUSE_HELP) && (defined(__WXMSW__))
-    #include "wx/helpwin.h"
-    #include "wx/msw/helpbest.h"
-#endif // (wxLUA_USE_wxHelpController && wxUSE_HELP) && (defined(__WXMSW__))
+#if (wxLUA_USE_wxLayoutConstraints && (!wxCHECK_VERSION(2,6,0))) && (wxLUA_USE_wxSizer)
+    #include "wx/layout.h"
+#endif // (wxLUA_USE_wxLayoutConstraints && (!wxCHECK_VERSION(2,6,0))) && (wxLUA_USE_wxSizer)
 
-#if (wxLUA_USE_wxHelpController && wxUSE_HELP) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)
-    #include "wx/cshelp.h"
-#endif // (wxLUA_USE_wxHelpController && wxUSE_HELP) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)
-
-#if (wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxCHECK_VERSION(2,8,0) && wxUSE_TGA)
-    #include "wx/imagtga.h"
-#endif // (wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxCHECK_VERSION(2,8,0) && wxUSE_TGA)
-
-#if (wxLUA_USE_wxListBox && wxUSE_LISTBOX) && (wxLUA_USE_wxCheckListBox && wxUSE_CHECKLISTBOX)
-    #include "wx/checklst.h"
-#endif // (wxLUA_USE_wxListBox && wxUSE_LISTBOX) && (wxLUA_USE_wxCheckListBox && wxUSE_CHECKLISTBOX)
-
-#if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (defined(__WXMSW__) || defined(__WXMAC__))
-    #include "wx/dcprint.h"
-#endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (defined(__WXMSW__) || defined(__WXMAC__))
-
-#if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout)
+#if (wxLUA_USE_wxLuaPrintout) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
     #include "wxbind/include/wxcore_wxlcore.h"
     #include "wxlua/wxlua_bind.h"
-#endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout)
+#endif // (wxLUA_USE_wxLuaPrintout) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
 
 #if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT)
     #include "wx/dcps.h"
 #endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT)
 
-#if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
-    #include "wx/gbsizer.h"
-#endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
-
-#if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
-    #include "wx/wrapsizer.h"
-#endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
-
-#if (wxLUA_USE_wxSizer) && (wxLUA_USE_wxLayoutConstraints && (!wxCHECK_VERSION(2,6,0)))
-    #include "wx/layout.h"
-#endif // (wxLUA_USE_wxSizer) && (wxLUA_USE_wxLayoutConstraints && (!wxCHECK_VERSION(2,6,0)))
-
-#if (wxLUA_USE_wxToolbar) && (!wxCHECK_VERSION(2,6,0))
-    #include "wx/tbarsmpl.h"
-#endif // (wxLUA_USE_wxToolbar) && (!wxCHECK_VERSION(2,6,0))
-
-#if (wxLUA_USE_wxValidator && wxUSE_VALIDATORS) && (wxLUA_USE_wxGenericValidator)
-    #include "wx/valgen.h"
-#endif // (wxLUA_USE_wxValidator && wxUSE_VALIDATORS) && (wxLUA_USE_wxGenericValidator)
-
-#if (wxLUA_USE_wxValidator && wxUSE_VALIDATORS) && (wxLUA_USE_wxTextValidator)
+#if (wxLUA_USE_wxTextValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
     #include "wx/valtext.h"
-#endif // (wxLUA_USE_wxValidator && wxUSE_VALIDATORS) && (wxLUA_USE_wxTextValidator)
+#endif // (wxLUA_USE_wxTextValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 
 #include "wx/control.h"
 #include "wx/ctrlsub.h"
@@ -523,10 +523,31 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
 
-#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && ((wxLUA_USE_wxDirPickerCtrl || wxLUA_USE_wxFilePickerCtrl ) && (wxUSE_FILEPICKERCTRL || wxUSE_DIRPICKERCTRL ))
+#if (!defined(__WXMSW__)) && (wxLUA_USE_wxHelpController && wxUSE_HELP)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxExtHelpController;
+#endif // (!defined(__WXMSW__)) && (wxLUA_USE_wxHelpController && wxUSE_HELP)
+
+#if (!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxToolbar)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxToolBarSimple;
+#endif // (!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxToolbar)
+
+#if ((wxLUA_USE_wxDirPickerCtrl || wxLUA_USE_wxFilePickerCtrl ) && (wxUSE_FILEPICKERCTRL || wxUSE_DIRPICKERCTRL )) && (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFileDirPickerCtrlBase;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFileDirPickerEvent;
-#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && ((wxLUA_USE_wxDirPickerCtrl || wxLUA_USE_wxFilePickerCtrl ) && (wxUSE_FILEPICKERCTRL || wxUSE_DIRPICKERCTRL ))
+#endif // ((wxLUA_USE_wxDirPickerCtrl || wxLUA_USE_wxFilePickerCtrl ) && (wxUSE_FILEPICKERCTRL || wxUSE_DIRPICKERCTRL )) && (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker)
+
+#if (defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPrinterDC;
+#endif // (defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
+
+#if (defined(__WXMSW__)) && (wxLUA_USE_wxHelpController && wxUSE_HELP)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxBestHelpController;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWinHelpController;
+#endif // (defined(__WXMSW__)) && (wxLUA_USE_wxHelpController && wxUSE_HELP)
+
+#if (defined(wxHAS_POWER_EVENTS)) && (wxCHECK_VERSION(2,8,0))
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPowerEvent;
+#endif // (defined(wxHAS_POWER_EVENTS)) && (wxCHECK_VERSION(2,8,0))
 
 #if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxColourPickerCtrl && wxUSE_COLOURPICKERCTRL)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxColourPickerCtrl;
@@ -547,63 +568,88 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFontPickerEvent;
 #endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxFontPickerCtrl && wxUSE_FONTPICKERCTRL)
 
-#if (wxCHECK_VERSION(2,8,0)) && (defined(wxHAS_POWER_EVENTS))
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPowerEvent;
-#endif // (wxCHECK_VERSION(2,8,0)) && (defined(wxHAS_POWER_EVENTS))
+#if (wxCHECK_VERSION(2,8,0) && wxUSE_TGA) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTGAHandler;
+#endif // (wxCHECK_VERSION(2,8,0) && wxUSE_TGA) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
 
-#if (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)
+#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxSizer)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWrapSizer;
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxSizer)
+
+#if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxClipboard && wxUSE_CLIPBOARD)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxClipboardTextEvent;
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxClipboard && wxUSE_CLIPBOARD)
+
+#if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStockGDI;
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
+
+#if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxAutoBufferedPaintDC;
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)
+
+#if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxURLDataObject;
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)
+
+#if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxBoxSizer;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFlexGridSizer;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGBPosition;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGBSizerItem;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGBSpan;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGridBagSizer;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGridSizer;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSizer;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSizerFlags;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSizerItem;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSizerItemList;
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)
+
+#if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_BUTTON)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStdDialogButtonSizer;
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_BUTTON)
+
+#if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_NOTEBOOK && (!wxCHECK_VERSION(2,6,0)))
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxNotebookSizer;
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_NOTEBOOK && (!wxCHECK_VERSION(2,6,0)))
+
+#if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStaticBoxSizer;
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)
+
+#if (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxBitmapButton;
-#endif // (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)
+#endif // (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
+
+#if (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxHelpController && wxUSE_HELP)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxContextHelpButton;
+#endif // (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxHelpController && wxUSE_HELP)
+
+#if (wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxBrushList;
+#endif // (wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush)
+
+#if (wxLUA_USE_wxCheckListBox && wxUSE_CHECKLISTBOX) && (wxLUA_USE_wxListBox && wxUSE_LISTBOX)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxCheckListBox;
+#endif // (wxLUA_USE_wxCheckListBox && wxUSE_CHECKLISTBOX) && (wxLUA_USE_wxListBox && wxUSE_LISTBOX)
 
 #if (wxLUA_USE_wxChoice || wxLUA_USE_wxComboBox || wxLUA_USE_wxListBox ) && wxUSE_CONTROLS
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxItemContainer;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxItemContainerImmutable;
 #endif // (wxLUA_USE_wxChoice || wxLUA_USE_wxComboBox || wxLUA_USE_wxListBox ) && wxUSE_CONTROLS
 
-#if (wxLUA_USE_wxClipboard && wxUSE_CLIPBOARD) && (wxCHECK_VERSION(2,8,0))
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxClipboardTextEvent;
-#endif // (wxLUA_USE_wxClipboard && wxUSE_CLIPBOARD) && (wxCHECK_VERSION(2,8,0))
-
-#if (wxLUA_USE_wxColourPenBrush) && (wxCHECK_VERSION(2,8,0))
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStockGDI;
-#endif // (wxLUA_USE_wxColourPenBrush) && (wxCHECK_VERSION(2,8,0))
-
-#if (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxBrushList)
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxBrushList;
-#endif // (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxBrushList)
-
 #if (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPenList;
 #endif // (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList)
-
-#if (wxLUA_USE_wxDC) && (wxCHECK_VERSION(2,8,0))
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxAutoBufferedPaintDC;
-#endif // (wxLUA_USE_wxDC) && (wxCHECK_VERSION(2,8,0))
-
-#if (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ) && (wxCHECK_VERSION(2,8,0))
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxURLDataObject;
-#endif // (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ) && (wxCHECK_VERSION(2,8,0))
 
 #if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxMiniFrame;
 #endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame)
 
-#if (wxLUA_USE_wxHelpController && wxUSE_HELP) && (!defined(__WXMSW__))
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxExtHelpController;
-#endif // (wxLUA_USE_wxHelpController && wxUSE_HELP) && (!defined(__WXMSW__))
-
-#if (wxLUA_USE_wxHelpController && wxUSE_HELP) && (defined(__WXMSW__))
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxBestHelpController;
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWinHelpController;
-#endif // (wxLUA_USE_wxHelpController && wxUSE_HELP) && (defined(__WXMSW__))
-
-#if (wxLUA_USE_wxHelpController && wxUSE_HELP) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxContextHelpButton;
-#endif // (wxLUA_USE_wxHelpController && wxUSE_HELP) && (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON)
-
-#if (wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxCHECK_VERSION(2,8,0) && wxUSE_TGA)
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTGAHandler;
-#endif // (wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxCHECK_VERSION(2,8,0) && wxUSE_TGA)
+#if (wxLUA_USE_wxGenericValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGenericValidator;
+#endif // (wxLUA_USE_wxGenericValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 
 #if (wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxUSE_GIF)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGIFHandler;
@@ -639,9 +685,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPNMHandler;
 #endif // (wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxUSE_PNM)
 
-#if (wxLUA_USE_wxListBox && wxUSE_LISTBOX) && (wxLUA_USE_wxCheckListBox && wxUSE_CHECKLISTBOX)
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxCheckListBox;
-#endif // (wxLUA_USE_wxListBox && wxUSE_LISTBOX) && (wxLUA_USE_wxCheckListBox && wxUSE_CHECKLISTBOX)
+#if (wxLUA_USE_wxLayoutConstraints && (!wxCHECK_VERSION(2,6,0))) && (wxLUA_USE_wxSizer)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxIndividualLayoutConstraint;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxLayoutConstraints;
+#endif // (wxLUA_USE_wxLayoutConstraints && (!wxCHECK_VERSION(2,6,0))) && (wxLUA_USE_wxSizer)
 
 #if (wxLUA_USE_wxLog && wxUSE_LOG) && (wxLUA_USE_wxLogWindow && wxUSE_LOGWINDOW)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxLogWindow;
@@ -655,67 +702,20 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxLogGui;
 #endif // (wxLUA_USE_wxLog && wxUSE_LOG) && (wxUSE_LOGGUI)
 
-#if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (defined(__WXMSW__) || defined(__WXMAC__))
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPrinterDC;
-#endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (defined(__WXMSW__) || defined(__WXMAC__))
-
-#if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout)
+#if (wxLUA_USE_wxLuaPrintout) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxLuaPrintout;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPreviewFrame;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPrintPreview;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPrinter;
-#endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxLUA_USE_wxLuaPrintout)
+#endif // (wxLUA_USE_wxLuaPrintout) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
 
 #if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPostScriptDC;
 #endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT)
 
-#if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxBoxSizer;
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFlexGridSizer;
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGBPosition;
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGBSizerItem;
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGBSpan;
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGridBagSizer;
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGridSizer;
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSizer;
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSizerFlags;
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSizerItem;
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSizerItemList;
-#endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0))
-
-#if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWrapSizer;
-#endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(2,9,0))
-
-#if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxUSE_BUTTON)
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStdDialogButtonSizer;
-#endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxUSE_BUTTON)
-
-#if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxUSE_NOTEBOOK && (!wxCHECK_VERSION(2,6,0)))
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxNotebookSizer;
-#endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxUSE_NOTEBOOK && (!wxCHECK_VERSION(2,6,0)))
-
-#if (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxUSE_STATBOX)
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStaticBoxSizer;
-#endif // (wxLUA_USE_wxSizer) && (wxCHECK_VERSION(2,8,0)) && (wxUSE_STATBOX)
-
-#if (wxLUA_USE_wxSizer) && (wxLUA_USE_wxLayoutConstraints && (!wxCHECK_VERSION(2,6,0)))
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxIndividualLayoutConstraint;
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxLayoutConstraints;
-#endif // (wxLUA_USE_wxSizer) && (wxLUA_USE_wxLayoutConstraints && (!wxCHECK_VERSION(2,6,0)))
-
-#if (wxLUA_USE_wxToolbar) && (!wxCHECK_VERSION(2,6,0))
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxToolBarSimple;
-#endif // (wxLUA_USE_wxToolbar) && (!wxCHECK_VERSION(2,6,0))
-
-#if (wxLUA_USE_wxValidator && wxUSE_VALIDATORS) && (wxLUA_USE_wxGenericValidator)
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGenericValidator;
-#endif // (wxLUA_USE_wxValidator && wxUSE_VALIDATORS) && (wxLUA_USE_wxGenericValidator)
-
-#if (wxLUA_USE_wxValidator && wxUSE_VALIDATORS) && (wxLUA_USE_wxTextValidator)
+#if (wxLUA_USE_wxTextValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTextValidator;
-#endif // (wxLUA_USE_wxValidator && wxUSE_VALIDATORS) && (wxLUA_USE_wxTextValidator)
+#endif // (wxLUA_USE_wxTextValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxActivateEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxChildFocusEvent;

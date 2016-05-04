@@ -31,7 +31,7 @@
 // Lua MetaTable Tag for Class 'wxMediaCtrl'
 int wxluatype_wxMediaCtrl = WXLUA_TUNKNOWN;
 
-#if ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxLUA_USE_wxPointSizeRect)
+#if ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_Create[] = { &wxluatype_wxMediaCtrl, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxMediaCtrl_Create(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_Create[1] = {{ wxLua_wxMediaCtrl_Create, WXLUAMETHOD_METHOD, 3, 10, s_wxluatypeArray_wxLua_wxMediaCtrl_Create }};
@@ -68,7 +68,7 @@ static int LUACALL wxLua_wxMediaCtrl_Create(lua_State *L)
     return 1;
 }
 
-#endif // ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxLUA_USE_wxPointSizeRect)
+#endif // ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_GetDownloadProgress[] = { &wxluatype_wxMediaCtrl, NULL };
 static int LUACALL wxLua_wxMediaCtrl_GetDownloadProgress(lua_State *L);
@@ -297,7 +297,7 @@ static int LUACALL wxLua_wxMediaCtrl_Play(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxFile && wxUSE_FILE)
+#if (wxLUA_USE_wxFile && wxUSE_FILE) && (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_Seek[] = { &wxluatype_wxMediaCtrl, &wxluatype_TINTEGER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxMediaCtrl_Seek(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_Seek[1] = {{ wxLua_wxMediaCtrl_Seek, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxMediaCtrl_Seek }};
@@ -320,7 +320,7 @@ static int LUACALL wxLua_wxMediaCtrl_Seek(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxFile && wxUSE_FILE)
+#endif // (wxLUA_USE_wxFile && wxUSE_FILE) && (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_SetVolume[] = { &wxluatype_wxMediaCtrl, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxMediaCtrl_SetVolume(lua_State *L);
@@ -393,7 +393,7 @@ static int LUACALL wxLua_wxMediaCtrl_Tell(lua_State *L)
 }
 
 
-#if ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxLUA_USE_wxPointSizeRect)
+#if ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxMediaCtrl_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_constructor1[1] = {{ wxLua_wxMediaCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 9, s_wxluatypeArray_wxLua_wxMediaCtrl_constructor1 }};
@@ -430,7 +430,7 @@ static int LUACALL wxLua_wxMediaCtrl_constructor1(lua_State *L)
     return 1;
 }
 
-#endif // ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxLUA_USE_wxPointSizeRect)
+#endif // ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 
 static int LUACALL wxLua_wxMediaCtrl_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_constructor[1] = {{ wxLua_wxMediaCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
@@ -479,19 +479,19 @@ static int s_wxluafunc_wxLua_wxMediaCtrl_Load_overload_count = sizeof(s_wxluafun
 
 #endif // ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS))||(wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
 
-#if (((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
+#if (((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||(wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_constructor_overload[] =
 {
 
-#if ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxLUA_USE_wxPointSizeRect)
+#if ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
     { wxLua_wxMediaCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 9, s_wxluatypeArray_wxLua_wxMediaCtrl_constructor1 },
-#endif // ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxLUA_USE_wxPointSizeRect)
+#endif // ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
     { wxLua_wxMediaCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
 };
 static int s_wxluafunc_wxLua_wxMediaCtrl_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxMediaCtrl_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
+#endif // (((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||(wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
 
 void wxLua_wxMediaCtrl_delete_function(void** p)
 {
@@ -501,9 +501,9 @@ void wxLua_wxMediaCtrl_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxMediaCtrl_methods[] = {
-#if ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxLUA_USE_wxPointSizeRect)
+#if ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
     { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMediaCtrl_Create, 1, NULL },
-#endif // ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxLUA_USE_wxPointSizeRect)
+#endif // ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 
     { "GetDownloadProgress", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMediaCtrl_GetDownloadProgress, 1, NULL },
     { "GetDownloadTotal", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMediaCtrl_GetDownloadTotal, 1, NULL },
@@ -524,18 +524,18 @@ wxLuaBindMethod wxMediaCtrl_methods[] = {
     { "Pause", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMediaCtrl_Pause, 1, NULL },
     { "Play", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMediaCtrl_Play, 1, NULL },
 
-#if (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxFile && wxUSE_FILE)
+#if (wxLUA_USE_wxFile && wxUSE_FILE) && (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
     { "Seek", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMediaCtrl_Seek, 1, NULL },
-#endif // (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxFile && wxUSE_FILE)
+#endif // (wxLUA_USE_wxFile && wxUSE_FILE) && (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
 
     { "SetVolume", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMediaCtrl_SetVolume, 1, NULL },
     { "ShowPlayerControls", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMediaCtrl_ShowPlayerControls, 1, NULL },
     { "Stop", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMediaCtrl_Stop, 1, NULL },
     { "Tell", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMediaCtrl_Tell, 1, NULL },
 
-#if (((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
+#if (((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||(wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
     { "wxMediaCtrl", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxMediaCtrl_constructor_overload, s_wxluafunc_wxLua_wxMediaCtrl_constructor_overload_count, 0 },
-#endif // (((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
+#endif // (((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||(wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
 
     { 0, 0, 0, 0 },
 };
@@ -656,20 +656,20 @@ wxLuaBindNumber* wxLuaGetDefineList_wxmedia(size_t &count)
         { "wxMEDIASTATE_STOPPED", wxMEDIASTATE_STOPPED },
 #endif // wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL
 
-#if (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (!wxCHECK_VERSION(2,9,2))
+#if (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
         { "wxMEDIA_FINISHED_ID", wxMEDIA_FINISHED_ID },
         { "wxMEDIA_LOADED_ID", wxMEDIA_LOADED_ID },
-#endif // (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (!wxCHECK_VERSION(2,9,2))
+#endif // (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
 
-#if (wxCHECK_VERSION(2,6,4)) && ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (!wxCHECK_VERSION(2,9,2)))
+#if ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)) && (wxCHECK_VERSION(2,6,4))
         { "wxMEDIA_PAUSE_ID", wxMEDIA_PAUSE_ID },
         { "wxMEDIA_PLAY_ID", wxMEDIA_PLAY_ID },
         { "wxMEDIA_STATECHANGED_ID", wxMEDIA_STATECHANGED_ID },
-#endif // (wxCHECK_VERSION(2,6,4)) && ((wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (!wxCHECK_VERSION(2,9,2)))
+#endif // ((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)) && (wxCHECK_VERSION(2,6,4))
 
-#if (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (!wxCHECK_VERSION(2,9,2))
+#if (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
         { "wxMEDIA_STOP_ID", wxMEDIA_STOP_ID },
-#endif // (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL) && (!wxCHECK_VERSION(2,9,2))
+#endif // (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxMediaCtrl && wxUSE_MEDIACTRL)
 
 
         { 0, 0 },
