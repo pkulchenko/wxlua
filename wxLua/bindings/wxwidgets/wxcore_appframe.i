@@ -15,54 +15,31 @@
 
 #include "wx/app.h"
 
-// %override wxApp* wxGetApp( );
-// C++ func: wxApp* wxGetApp() - use wxTheApp* since this requires IMPLEMENT_APP( );
-wxApp* wxGetApp( );
+wxApp* wxGetApp(); // %override wxApp* wxGetApp();
 
 class wxApp : public wxEvtHandler
 {
-    // wxApp() NO CONSTRUCTOR! the wxApp is created in C++, use wxGetApp( );
-
-    // These two are pushed into Lua by C++ at startup as table arg = { argv }
-    // int wxApp::argc
-    // wxChar** wxApp::argv
-
-    //!%wxchkver_2_6|%wxcompat_2_4 virtual wxLog* CreateLogTarget( );
-    void Dispatch( );
-    void ExitMainLoop( );
-    // virtual int FilterEvent(wxEvent& event) too dangerous, use ConnectEvent
+    void Dispatch();
+    void ExitMainLoop();
     wxString GetAppName() const;
-    //!%wxchkver_2_6&%win bool GetAuto3D() const;
     wxString GetClassName() const;
     bool GetExitOnFrameDelete() const;
-    // static wxAppConsole *GetInstance() FIXME
     wxWindow* GetTopWindow() const;
     bool GetUseBestVisual() const;
     wxString GetVendorName() const;
     bool IsActive() const;
-    static bool IsMainLoopRunning( );
-    // bool Initialized() obsolete in wxWidgets
+    static bool IsMainLoopRunning();
 
-    // %override int wxApp::MainLoop( );
-    // C++ Func: int MainLoop( );
-    // Only calls it if (!IsMainLoopRuinning() && !wxLuaState::sm_wxAppMainLoop_will_run), returns 0 if not called.
-    int MainLoop( );
+    int MainLoop(); // %override int wxApp::MainLoop();
 
-    // virtual int OnExit() nothing we can do here
-    // virtual bool OnInit() nothing we can do here
-    // virtual int OnRun() nothing we can do here
-    bool Pending( );
-    // !%wxchkver_2_6 bool SendIdleEvents( );
-    %wxchkver_2_6 && !%wxchkver_2_9_2 bool SendIdleEvents(wxWindow* win, wxIdleEvent& event );
-    void SetAppName(const wxString& name );
-    //!%wxchkver_2_4&(%win|%mac) void SetAuto3D(const bool auto3D );
-    void SetClassName(const wxString& name );
-    void SetExitOnFrameDelete(bool flag );
-    // static void SetInstance(wxAppConsole* app) nothing we can do here
-    void SetTopWindow(wxWindow* window );
-    void SetVendorName(const wxString& name );
-    //virtual wxIcon GetStdIcon(int which) const;
-    void SetUseBestVisual(bool flag );
+    bool Pending();
+    %wxchkver_2_6 && !%wxchkver_2_9_2 bool SendIdleEvents(wxWindow* win, wxIdleEvent& event);
+    void SetAppName(const wxString& name);
+    void SetClassName(const wxString& name);
+    void SetExitOnFrameDelete(bool flag);
+    void SetTopWindow(wxWindow* window);
+    void SetVendorName(const wxString& name);
+    void SetUseBestVisual(bool flag);
 };
 
 #endif //wxLUA_USE_wxApp
@@ -90,40 +67,43 @@ enum
     wxFULLSCREEN_ALL
 };
 
-class wxTopLevelWindow : public wxWindow
+class wxNonOwnedWindow : public wxWindow
 {
-    // No constructors, virtual base class, use wxFrame or wxDialog
+    // bool SetShape(const wxGraphicsPath& path); // skip for too many dependencies on wxGraphicsPath
+};
 
-    bool CanSetTransparent( );
-    bool EnableCloseButton(bool enable = true );
+class wxTopLevelWindow : public wxNonOwnedWindow
+{
+    bool CanSetTransparent();
+    bool EnableCloseButton(bool enable = true);
     %wxchkver_2_8 wxWindow* GetDefaultItem() const;
     wxIcon GetIcon() const;
-    //const wxIconBundle& GetIcons() const;
     wxString GetTitle() const;
     %wxchkver_2_8 wxWindow* GetTmpDefaultItem() const;
     bool IsActive() const;
     bool IsAlwaysMaximized() const;
-    void Iconize(bool iconize );
+    void Iconize(bool iconize);
     bool IsFullScreen() const;
     bool IsIconized() const;
     bool IsMaximized() const;
-    void Maximize(bool maximize );
-    void RequestUserAttention(int flags = wxUSER_ATTENTION_INFO );
-    %wxchkver_2_8 wxWindow* SetDefaultItem(wxWindow *win );
-    void SetIcon(const wxIcon& icon );
-    void SetIcons(const wxIconBundle& icons );
-    //void SetLeftMenu(int id = wxID_ANY, const wxString& label = wxEmptyString, wxMenu * subMenu = NULL); // for phones
-    //void SetRightMenu(int id = wxID_ANY, const wxString& label = wxEmptyString, wxMenu * subMenu = NULL );
-    void SetMaxSize(const wxSize& size );
-    void SetMinSize(const wxSize& size );
-    void SetSizeHints(int minW, int minH, int maxW=-1, int maxH=-1, int incW=-1, int incH=-1 );
-    void SetSizeHints(const wxSize& minSize, const wxSize& maxSize=wxDefaultSize, const wxSize& incSize=wxDefaultSize );
-    bool SetShape(const wxRegion& region );
-    virtual void SetTitle(const wxString& title );
-    virtual bool SetTransparent(int alpha );
-    //virtual bool ShouldPreventAppExit() const; // must be overridden
-    %wxchkver_2_8 wxWindow* SetTmpDefaultItem(wxWindow *win );
-    bool ShowFullScreen(bool show, long style = wxFULLSCREEN_ALL );
+    void Maximize(bool maximize);
+    void RequestUserAttention(int flags = wxUSER_ATTENTION_INFO);
+    %wxchkver_2_8 wxWindow* SetDefaultItem(wxWindow *win);
+    void SetIcon(const wxIcon& icon);
+    void SetIcons(const wxIconBundle& icons);
+    void SetMaxSize(const wxSize& size);
+    void SetMinSize(const wxSize& size);
+    void SetSizeHints(int minW, int minH, int maxW=-1, int maxH=-1, int incW=-1, int incH=-1);
+    void SetSizeHints(const wxSize& minSize, const wxSize& maxSize=wxDefaultSize, const wxSize& incSize=wxDefaultSize);
+    bool SetShape(const wxRegion& region);
+    virtual void SetTitle(const wxString& title);
+    virtual bool SetTransparent(int alpha);
+    // virtual bool ShouldPreventAppExit() const; // must be overridden
+    // static void UseNativeDecorationsByDefault(bool native = true); // skip wxUniv method
+    // void UseNativeDecorations(bool native = true); // skip wxUniv method
+    // bool IsUsingNativeDecorations() const; // skip wxUniv method
+    %wxchkver_2_8 wxWindow* SetTmpDefaultItem(wxWindow *win);
+    bool ShowFullScreen(bool show, long style = wxFULLSCREEN_ALL);
 };
 
 #endif //wxLUA_USE_wxFrame|wxLUA_USE_wxDialog
@@ -154,37 +134,33 @@ class wxTopLevelWindow : public wxWindow
 #define wxFRAME_EX_CONTEXTHELP
 %wxchkver_2_6 #define wxFRAME_SHAPED
 %wxchkver_2_6 #define wxFRAME_EX_METAL
-// #define wxTHICK_FRAME %wxcompat_2_6 use %wxchkver_2_6
 
 class wxFrame : public wxTopLevelWindow
 {
-    wxFrame( );
-    wxFrame(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_FRAME_STYLE, const wxString& name = "wxFrame" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_FRAME_STYLE, const wxString& name = "wxFrame" );
+    wxFrame();
+    wxFrame(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_FRAME_STYLE, const wxString& name = "wxFrame");
+    bool Create(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_FRAME_STYLE, const wxString& name = "wxFrame");
 
-    // void Centre(int direction = wxBOTH) - see wxWindow
-    virtual wxStatusBar* CreateStatusBar(int number = 1, long style = 0, wxWindowID id = wxID_ANY, const wxString& name = "wxStatusBar" );
-    virtual wxToolBar* CreateToolBar(long style = wxNO_BORDER|wxTB_HORIZONTAL, wxWindowID id = wxID_ANY, const wxString& name = "wxToolBar" );
+    virtual wxStatusBar* CreateStatusBar(int number = 1, long style = 0, wxWindowID id = wxID_ANY, const wxString& name = "wxStatusBar");
+    virtual wxToolBar* CreateToolBar(long style = wxNO_BORDER|wxTB_HORIZONTAL, wxWindowID id = wxID_ANY, const wxString& name = "wxToolBar");
     wxPoint GetClientAreaOrigin() const;
     wxMenuBar* GetMenuBar() const;
     wxStatusBar* GetStatusBar() const;
-    int GetStatusBarPane( );
+    int GetStatusBarPane();
     wxToolBar* GetToolBar() const;
 
-    %wxchkver_2_4 void ProcessCommand(int id );
-    //!%wxchkver_2_4 void Command(int id );
+    %wxchkver_2_4 void ProcessCommand(int id);
 
-    void SendSizeEvent( );
-    void SetMenuBar(wxMenuBar* menuBar );
-    void SetStatusBar(wxStatusBar* statusBar );
-    void SetStatusBarPane(int n );
-    virtual void SetStatusText(const wxString& text, int number = 0 );
+    void SendSizeEvent();
+    void SetMenuBar(wxMenuBar* menuBar);
+    void SetStatusBar(wxStatusBar* statusBar);
+    void SetStatusBarPane(int n);
+    virtual void SetStatusText(const wxString& text, int number = 0);
 
-    // void wxFrame::SetStatusWidths(Lua table with number indexes and values );
-    // C++ Func: virtual void SetStatusWidths(int n, int *widths );
-    virtual void SetStatusWidths(IntArray_FromLuaTable intTable );
+    virtual void SetStatusWidths(IntArray_FromLuaTable intTable); // %override parameters
 
-    void SetToolBar(wxToolBar* toolBar );
+    void SetToolBar(wxToolBar* toolBar);
+    // wxTaskBarButton* MSWGetTaskBarButton(); // skip for too many dependencies on wxTaskBarButton
 };
 
 // ---------------------------------------------------------------------------
@@ -199,9 +175,9 @@ class wxFrame : public wxTopLevelWindow
 
 class wxMiniFrame : public wxFrame
 {
-    wxMiniFrame( );
-    wxMiniFrame(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_FRAME_STYLE, const wxString& name = "wxMiniFrame" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_FRAME_STYLE, const wxString& name = "wxMiniFrame" );
+    wxMiniFrame();
+    wxMiniFrame(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_FRAME_STYLE, const wxString& name = "wxMiniFrame");
+    bool Create(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_FRAME_STYLE, const wxString& name = "wxMiniFrame");
 };
 
 #endif //wxLUA_USE_wxMiniFrame
@@ -221,30 +197,30 @@ class wxMiniFrame : public wxFrame
 
 class wxStatusBar : public wxWindow
 {
-    wxStatusBar( );
-    wxStatusBar(wxWindow* parent, wxWindowID id, long style = wxST_SIZEGRIP, const wxString& name = "wxStatusBar" );
-    bool Create(wxWindow *parent, wxWindowID id, long style = wxST_SIZEGRIP, const wxString& name = "wxStatusBar" );
+    wxStatusBar();
+    wxStatusBar(wxWindow* parent, wxWindowID id, long style = wxST_SIZEGRIP, const wxString& name = "wxStatusBar");
+    bool Create(wxWindow *parent, wxWindowID id, long style = wxST_SIZEGRIP, const wxString& name = "wxStatusBar");
 
     virtual bool GetFieldRect(int i, wxRect& rect) const;
     int GetFieldsCount() const;
     virtual wxString GetStatusText(int ir = 0) const;
-    void PopStatusText(int field = 0 );
-    void PushStatusText(const wxString& string, int field = 0 );
+    void PopStatusText(int field = 0);
+    void PushStatusText(const wxString& string, int field = 0);
 
-    // %override void wxStatusBar::SetFieldsCount(either a single number or a Lua table with number indexes and values );
-    // C++ Func: virtual void SetFieldsCount(int number = 1, int* widths = NULL );
-    virtual void SetFieldsCount(LuaTable intTable );
+    // %override void wxStatusBar::SetFieldsCount(either a single number or a Lua table with number indexes and values);
+    // C++ Func: virtual void SetFieldsCount(int number = 1, int* widths = NULL);
+    virtual void SetFieldsCount(LuaTable intTable);
 
-    void SetMinHeight(int height );
-    virtual void SetStatusText(const wxString& text, int i = 0 );
+    void SetMinHeight(int height);
+    virtual void SetStatusText(const wxString& text, int i = 0);
 
-    // void wxStatusBar::SetStatusWidths(Lua table with number indexes and values );
-    // C++ Func: virtual void SetStatusWidths(int n, int *widths );
-    virtual void SetStatusWidths(IntArray_FromLuaTable intTable );
+    // void wxStatusBar::SetStatusWidths(Lua table with number indexes and values);
+    // C++ Func: virtual void SetStatusWidths(int n, int *widths);
+    virtual void SetStatusWidths(IntArray_FromLuaTable intTable);
 
-    // void wxStatusBar::SetStatusStyles(Lua table with number indexes and values );
-    // C++ Func: virtual void SetStatusStyles(int n, int *styles );
-    virtual void SetStatusStyles(IntArray_FromLuaTable intTable );
+    // void wxStatusBar::SetStatusStyles(Lua table with number indexes and values);
+    // C++ Func: virtual void SetStatusStyles(int n, int *styles);
+    virtual void SetStatusStyles(IntArray_FromLuaTable intTable);
 };
 
 #endif //wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR

@@ -3514,6 +3514,15 @@ wx_dataTypeTable =
     Name = "wxNode",
     ValueType = "class",
   },
+  wxNonOwnedWindow = {
+    BaseClasses = {
+      [1] = "wxWindow",
+    },
+    Condition = "wxLUA_USE_wxFrame || wxLUA_USE_wxDialog",
+    IsNumber = false,
+    Name = "wxNonOwnedWindow",
+    ValueType = "class",
+  },
   wxNotebook = {
     BaseClasses = {
       [1] = "wxBookCtrlBase",
@@ -4983,7 +4992,7 @@ wx_dataTypeTable =
   },
   wxTopLevelWindow = {
     BaseClasses = {
-      [1] = "wxWindow",
+      [1] = "wxNonOwnedWindow",
     },
     Condition = "wxLUA_USE_wxFrame || wxLUA_USE_wxDialog",
     IsNumber = false,

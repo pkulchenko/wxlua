@@ -964,6 +964,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 #endif // wxLUA_USE_wxFrame
 
 #if wxLUA_USE_wxFrame || wxLUA_USE_wxDialog
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxNonOwnedWindow;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTopLevelWindow;
 #endif // wxLUA_USE_wxFrame || wxLUA_USE_wxDialog
 

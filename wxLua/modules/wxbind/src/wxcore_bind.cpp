@@ -4658,6 +4658,7 @@ static const char* wxluaclassname_wxMoveEvent = "wxMoveEvent";
 static const char* wxluaclassname_wxMultiChoiceDialog = "wxMultiChoiceDialog";
 static const char* wxluaclassname_wxNativeFontInfo = "wxNativeFontInfo";
 static const char* wxluaclassname_wxNavigationKeyEvent = "wxNavigationKeyEvent";
+static const char* wxluaclassname_wxNonOwnedWindow = "wxNonOwnedWindow";
 static const char* wxluaclassname_wxNotebook = "wxNotebook";
 static const char* wxluaclassname_wxNotebookEvent = "wxNotebookEvent";
 static const char* wxluaclassname_wxNotebookSizer = "wxNotebookSizer";
@@ -5096,6 +5097,8 @@ static const char* wxluabaseclassnames_wxMultiChoiceDialog[] = { wxluaclassname_
 static wxLuaBindClass* wxluabaseclassbinds_wxMultiChoiceDialog[] = { NULL };
 static const char* wxluabaseclassnames_wxNavigationKeyEvent[] = { wxluaclassname_wxEvent, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxNavigationKeyEvent[] = { NULL };
+static const char* wxluabaseclassnames_wxNonOwnedWindow[] = { wxluaclassname_wxWindow, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxNonOwnedWindow[] = { NULL };
 static const char* wxluabaseclassnames_wxNotebook[] = { wxluaclassname_wxBookCtrlBase, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxNotebook[] = { NULL };
 static const char* wxluabaseclassnames_wxNotebookEvent[] = { wxluaclassname_wxBookCtrlBaseEvent, NULL };
@@ -5270,7 +5273,7 @@ static const char* wxluabaseclassnames_wxToolbook[] = { wxluaclassname_wxBookCtr
 static wxLuaBindClass* wxluabaseclassbinds_wxToolbook[] = { NULL };
 static const char* wxluabaseclassnames_wxToolbookEvent[] = { wxluaclassname_wxBookCtrlBaseEvent, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxToolbookEvent[] = { NULL };
-static const char* wxluabaseclassnames_wxTopLevelWindow[] = { wxluaclassname_wxWindow, NULL };
+static const char* wxluabaseclassnames_wxTopLevelWindow[] = { wxluaclassname_wxNonOwnedWindow, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxTopLevelWindow[] = { NULL };
 static const char* wxluabaseclassnames_wxTreeCtrl[] = { wxluaclassname_wxControl, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxTreeCtrl[] = { NULL };
@@ -6165,6 +6168,9 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
 #endif // wxLUA_USE_wxFrame
 
 #if wxLUA_USE_wxFrame || wxLUA_USE_wxDialog
+    extern wxLuaBindMethod wxNonOwnedWindow_methods[];
+    extern int wxNonOwnedWindow_methodCount;
+    extern void wxLua_wxNonOwnedWindow_delete_function(void** p);
     extern wxLuaBindMethod wxTopLevelWindow_methods[];
     extern int wxTopLevelWindow_methodCount;
     extern void wxLua_wxTopLevelWindow_delete_function(void** p);
@@ -7217,6 +7223,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #endif // wxLUA_USE_wxFont
 
         { wxluaclassname_wxNavigationKeyEvent, wxNavigationKeyEvent_methods, wxNavigationKeyEvent_methodCount, CLASSINFO(wxNavigationKeyEvent), &wxluatype_wxNavigationKeyEvent, wxluabaseclassnames_wxNavigationKeyEvent, wxluabaseclassbinds_wxNavigationKeyEvent, NULL, NULL, wxNavigationKeyEvent_enums, wxNavigationKeyEvent_enumCount, &wxLua_wxNavigationKeyEvent_delete_function, }, 
+
+#if wxLUA_USE_wxFrame || wxLUA_USE_wxDialog
+        { wxluaclassname_wxNonOwnedWindow, wxNonOwnedWindow_methods, wxNonOwnedWindow_methodCount, CLASSINFO(wxNonOwnedWindow), &wxluatype_wxNonOwnedWindow, wxluabaseclassnames_wxNonOwnedWindow, wxluabaseclassbinds_wxNonOwnedWindow, NULL, NULL, NULL, 0, &wxLua_wxNonOwnedWindow_delete_function, }, 
+#endif // wxLUA_USE_wxFrame || wxLUA_USE_wxDialog
 
 #if wxLUA_USE_wxNotebook && wxUSE_NOTEBOOK
         { wxluaclassname_wxNotebook, wxNotebook_methods, wxNotebook_methodCount, CLASSINFO(wxNotebook), &wxluatype_wxNotebook, wxluabaseclassnames_wxNotebook, wxluabaseclassbinds_wxNotebook, NULL, NULL, NULL, 0, &wxLua_wxNotebook_delete_function, }, 
