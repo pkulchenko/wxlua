@@ -4810,11 +4810,11 @@ static int LUACALL wxLua_wxWindow_SetDefaultItem(lua_State *L)
 
 #endif // !wxCHECK_VERSION(2,8,0)
 
-#if wxCHECK_VERSION(3,1,1)
+#if wxCHECK_VERSION(3,1,1) && !defined(__WXMAC__)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_SetDoubleBuffered[] = { &wxluatype_wxWindow, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxWindow_SetDoubleBuffered(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_SetDoubleBuffered[1] = {{ wxLua_wxWindow_SetDoubleBuffered, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxWindow_SetDoubleBuffered }};
-//     %wxchkver_3_1_1 void SetDoubleBuffered(bool on);
+//     %wxchkver_3_1_1 && !%mac void SetDoubleBuffered(bool on); // %override doesn't exist on OSX
 static int LUACALL wxLua_wxWindow_SetDoubleBuffered(lua_State *L)
 {
     // bool on
@@ -4827,7 +4827,7 @@ static int LUACALL wxLua_wxWindow_SetDoubleBuffered(lua_State *L)
     return 0;
 }
 
-#endif // wxCHECK_VERSION(3,1,1)
+#endif // wxCHECK_VERSION(3,1,1) && !defined(__WXMAC__)
 
 #if wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_SetDropTarget[] = { &wxluatype_wxWindow, &wxluatype_wxDropTarget, NULL };
@@ -7239,9 +7239,9 @@ wxLuaBindMethod wxWindow_methods[] = {
     { "SetDefaultItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_SetDefaultItem, 1, NULL },
 #endif // !wxCHECK_VERSION(2,8,0)
 
-#if wxCHECK_VERSION(3,1,1)
+#if wxCHECK_VERSION(3,1,1) && !defined(__WXMAC__)
     { "SetDoubleBuffered", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_SetDoubleBuffered, 1, NULL },
-#endif // wxCHECK_VERSION(3,1,1)
+#endif // wxCHECK_VERSION(3,1,1) && !defined(__WXMAC__)
 
 #if wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
     { "SetDropTarget", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_SetDropTarget, 1, NULL },

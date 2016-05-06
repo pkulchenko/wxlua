@@ -383,7 +383,7 @@ class wxWindow : public wxEvtHandler
     void InheritAttributes();
     void InitDialog();
     %wxchkver_3_1_1 bool IsDoubleBuffered() const;
-    %wxchkver_3_1_1 void SetDoubleBuffered(bool on);
+    %wxchkver_3_1_1 && !%mac void SetDoubleBuffered(bool on); // %override doesn't exist on OSX
     virtual bool IsRetained() const;
     %wxchkver_3_1_1 bool IsThisEnabled() const;
     bool IsTopLevel() const;
