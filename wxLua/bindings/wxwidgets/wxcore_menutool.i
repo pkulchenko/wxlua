@@ -169,7 +169,7 @@ class %delete wxMenuItem : public wxObject
     bool IsSeparator() const;
     bool IsSubMenu() const;
     %win void SetBackgroundColour(const wxColour& colour) const;
-    %wxchkver_3_1_1 void SetBitmap(const wxBitmap& bmp, bool checked = true);
+    void SetBitmap(const wxBitmap& bmp); // %override use one parameter as "bool checked = true" doesn't exist on OSX/Linux
     %win void SetBitmaps(const wxBitmap& checked, const wxBitmap& unchecked = wxNullBitmap) const;
     %win void SetDisabledBitmap(const wxBitmap& disabled);
     %win void SetFont(const wxFont& font) const;
@@ -185,7 +185,6 @@ class %delete wxMenuItem : public wxObject
     !%wxchkver_3_0 || %wxcompat_2_8 void SetText(const wxString& text);
     !%wxchkver_3_0 || %wxcompat_2_8 wxString GetLabel() const;
     !%wxchkver_3_0 || %wxcompat_2_8 wxString GetText() const;
-    !%wxchkver_3_1_1 void SetBitmap(const wxBitmap& bmp);
 };
 
 // ---------------------------------------------------------------------------
