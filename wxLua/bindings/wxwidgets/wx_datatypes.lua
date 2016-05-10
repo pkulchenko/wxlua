@@ -252,11 +252,20 @@ wx_dataTypeTable =
   },
   wxApp = {
     BaseClasses = {
-      [1] = "wxEvtHandler",
+      [1] = "wxAppConsole",
     },
     Condition = "wxLUA_USE_wxApp",
     IsNumber = false,
     Name = "wxApp",
+    ValueType = "class",
+  },
+  wxAppConsole = {
+    BaseClasses = {
+      [1] = "wxEvtHandler",
+    },
+    Condition = "wxLUA_USE_wxApp",
+    IsNumber = false,
+    Name = "wxAppConsole",
     ValueType = "class",
   },
   wxArchitecture = {
@@ -1568,6 +1577,22 @@ wx_dataTypeTable =
     },
     IsNumber = false,
     Name = "wxEvent",
+    ValueType = "class",
+  },
+  wxEventCategory = {
+    Condition = "wxCHECK_VERSION(3,1,1)",
+    IsNumber = true,
+    Name = "wxEventCategory",
+    ValueType = "enum",
+  },
+  wxEventFilter = {
+    IsNumber = false,
+    Name = "wxEventFilter",
+    ValueType = "class",
+  },
+  wxEventLoopBase = {
+    IsNumber = false,
+    Name = "wxEventLoopBase",
     ValueType = "class",
   },
   wxEventType = {

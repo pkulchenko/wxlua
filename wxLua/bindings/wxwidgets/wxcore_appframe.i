@@ -17,7 +17,18 @@
 
 wxApp* wxGetApp(); // %override wxApp* wxGetApp();
 
-class wxApp : public wxEvtHandler
+class wxAppConsole : public wxEvtHandler
+{
+    // void HandleEvent(wxEvtHandler* handler, wxEventFunction func, wxEvent& event) const;
+    // bool OnCmdLineError(wxCmdLineParser& parser);
+    // bool OnCmdLineHelp(wxCmdLineParser& parser);
+    // bool OnCmdLineParsed(wxCmdLineParser& parser);
+    // void OnInitCmdLine(wxCmdLineParser& parser);
+    // wxAppTraits* GetTraits(); // no wxAppTraits support
+    // void OnAssertFailure(const wxChar *file, int line, const wxChar *func, const wxChar *cond, const wxChar *msg); // not supported
+};
+
+class wxApp : public wxAppConsole
 {
     void Dispatch();
     void ExitMainLoop();
@@ -40,6 +51,7 @@ class wxApp : public wxEvtHandler
     void SetTopWindow(wxWindow* window);
     void SetVendorName(const wxString& name);
     void SetUseBestVisual(bool flag);
+    // %win bool ProcessMessage(WXMSG* msg);
 };
 
 #endif //wxLUA_USE_wxApp

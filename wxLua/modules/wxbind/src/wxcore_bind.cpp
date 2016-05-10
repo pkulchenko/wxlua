@@ -4474,6 +4474,7 @@ static const char* wxluaclassname_wxAcceleratorTable = "wxAcceleratorTable";
 static const char* wxluaclassname_wxActivateEvent = "wxActivateEvent";
 static const char* wxluaclassname_wxAnyButton = "wxAnyButton";
 static const char* wxluaclassname_wxApp = "wxApp";
+static const char* wxluaclassname_wxAppConsole = "wxAppConsole";
 static const char* wxluaclassname_wxArrayVideoModes = "wxArrayVideoModes";
 static const char* wxluaclassname_wxArtProvider = "wxArtProvider";
 static const char* wxluaclassname_wxAutoBufferedPaintDC = "wxAutoBufferedPaintDC";
@@ -4797,8 +4798,10 @@ static const char* wxluabaseclassnames_wxActivateEvent[] = { wxluaclassname_wxEv
 static wxLuaBindClass* wxluabaseclassbinds_wxActivateEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxAnyButton[] = { wxluaclassname_wxControl, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxAnyButton[] = { NULL };
-static const char* wxluabaseclassnames_wxApp[] = { wxluaclassname_wxEvtHandler, NULL };
+static const char* wxluabaseclassnames_wxApp[] = { wxluaclassname_wxAppConsole, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxApp[] = { NULL };
+static const char* wxluabaseclassnames_wxAppConsole[] = { wxluaclassname_wxEvtHandler, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxAppConsole[] = { NULL };
 static const char* wxluabaseclassnames_wxArtProvider[] = { wxluaclassname_wxObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxArtProvider[] = { NULL };
 static const char* wxluabaseclassnames_wxAutoBufferedPaintDC[] = { wxluaclassname_wxDC, NULL };
@@ -5892,6 +5895,9 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern wxLuaBindMethod wxApp_methods[];
     extern int wxApp_methodCount;
     extern void wxLua_wxApp_delete_function(void** p);
+    extern wxLuaBindMethod wxAppConsole_methods[];
+    extern int wxAppConsole_methodCount;
+    extern void wxLua_wxAppConsole_delete_function(void** p);
 #endif // wxLUA_USE_wxApp
 
 #if wxLUA_USE_wxArtProvider
@@ -6701,6 +6707,7 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 
 #if wxLUA_USE_wxApp
         { wxluaclassname_wxApp, wxApp_methods, wxApp_methodCount, CLASSINFO(wxApp), &wxluatype_wxApp, wxluabaseclassnames_wxApp, wxluabaseclassbinds_wxApp, NULL, NULL, NULL, 0, &wxLua_wxApp_delete_function, }, 
+        { wxluaclassname_wxAppConsole, wxAppConsole_methods, wxAppConsole_methodCount, CLASSINFO(wxAppConsole), &wxluatype_wxAppConsole, wxluabaseclassnames_wxAppConsole, wxluabaseclassbinds_wxAppConsole, NULL, NULL, NULL, 0, &wxLua_wxAppConsole_delete_function, }, 
 #endif // wxLUA_USE_wxApp
 
 #if wxLUA_USE_wxDisplay && wxUSE_DISPLAY

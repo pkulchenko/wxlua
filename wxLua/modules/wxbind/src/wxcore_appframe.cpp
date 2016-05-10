@@ -31,6 +31,32 @@
 
 #if wxLUA_USE_wxApp
 // ---------------------------------------------------------------------------
+// Bind class wxAppConsole
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxAppConsole'
+int wxluatype_wxAppConsole = WXLUA_TUNKNOWN;
+
+
+
+void wxLua_wxAppConsole_delete_function(void** p)
+{
+    wxAppConsole* o = (wxAppConsole*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxAppConsole_methods[] = {
+    { 0, 0, 0, 0 },
+};
+
+int wxAppConsole_methodCount = sizeof(wxAppConsole_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxApp
+
+
+#if wxLUA_USE_wxApp
+// ---------------------------------------------------------------------------
 // Bind class wxApp
 // ---------------------------------------------------------------------------
 
