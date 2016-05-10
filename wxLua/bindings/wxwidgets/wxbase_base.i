@@ -748,40 +748,65 @@ class %delete wxRegEx
 
 class %delete wxEventLoopBase
 {
+    %wxchkver_3_1_1 static wxEventLoopBase *GetActive();
+    %wxchkver_3_1_1 static void SetActive(wxEventLoopBase* loop);
+    %wxchkver_3_1_1 bool IsMain() const;
+    %wxchkver_3_1_1 int Run() = 0;
+    %wxchkver_3_1_1 bool IsRunning() const;
+    %wxchkver_3_1_1 bool IsOk() const;
+    %wxchkver_3_1_1 void Exit(int rc = 0);
+    %wxchkver_3_1_1 void ScheduleExit(int rc = 0) = 0;
+    %wxchkver_3_1_1 bool Pending() const = 0;
+    %wxchkver_3_1_1 bool Dispatch() = 0;
+    %wxchkver_3_1_1 int DispatchTimeout(unsigned long timeout) = 0;
+    %wxchkver_3_1_1 void WakeUp() = 0;
+    %wxchkver_3_1_1 void WakeUpIdle();
+    %wxchkver_3_1_1 bool ProcessIdle();
+    %wxchkver_3_1_1 bool IsYielding() const;
+    %wxchkver_3_1_1 bool Yield(bool onlyIfNeeded = false);
+    %wxchkver_3_1_1 bool YieldFor(long eventsToProcess);
+    %wxchkver_3_1_1 bool IsEventAllowedInsideYield(wxEventCategory cat) const;
 };
 
 class wxEventFilter
 {
+    %wxchkver_3_1_1 wxEventFilter();
+    %wxchkver_3_1_1 int FilterEvent(wxEvent& event) = 0;
 };
 
 class %delete wxEvtHandler : public wxObject
 {
     wxEvtHandler();
-
-    void AddPendingEvent(wxEvent& event);
-
-    void Connect(int id, int lastId, wxEventType eventType, LuaFunction func); // %add parameters
+    %wxchkver_2_9 virtual void QueueEvent(%ungc wxEvent *event);
+    %wxchkver_3_1_1 void AddPendingEvent(const wxEvent& event);
+    virtual bool ProcessEvent(wxEvent& event);
+    %wxchkver_3_1_1 bool ProcessEventLocally(wxEvent& event);
+    %wxchkver_3_1_1 bool SafelyProcessEvent(wxEvent& event);
+    %wxchkver_3_1_1 void ProcessPendingEvents();
+    %wxchkver_3_1_1 void DeletePendingEvents();
+    // bool SearchEventTable(wxEventTable& table, wxEvent& event); // no wxEventTable
     // void Connect(int id, int lastId, wxEventType eventType, wxObjectEventFunction function, wxObject* userData = NULL, wxEvtHandler* eventSink = NULL);
     // void Connect(int id, wxEventType eventType, wxObjectEventFunction function, wxObject* userData = NULL, wxEvtHandler* eventSink = NULL);
     // void Connect(wxEventType eventType, wxObjectEventFunction function, wxObject* userData = NULL, wxEvtHandler* eventSink = NULL);
-
     bool Disconnect(int id, int lastId, wxEventType eventType); // %override parameters
     // void Bind(const EventTag& eventType, Functor functor, int id = wxID_ANY, int lastId = wxID_ANY, wxObject *userData = NULL);
     // bool Unbind(const EventTag& eventType, Functor functor, int id = wxID_ANY, int lastId = wxID_ANY, wxObject *userData = NULL);
-
     voidptr_long GetClientData(); // %override C++ returns (void *) You get a number here
     wxClientData* GetClientObject() const;
+    void SetClientData(voidptr_long number); // %override C++ is (void *clientData) You can put a number here
+    void SetClientObject(wxClientData* data);
     bool GetEvtHandlerEnabled();
     wxEvtHandler* GetNextHandler();
     wxEvtHandler* GetPreviousHandler();
-    virtual bool ProcessEvent(wxEvent& event);
-    %wxchkver_2_9 virtual void QueueEvent(%ungc wxEvent *event);
-    void SetClientData(voidptr_long number); // %override C++ is (void *clientData) You can put a number here
-    void SetClientObject(wxClientData* data);
     void SetEvtHandlerEnabled(bool enabled);
     void SetNextHandler(wxEvtHandler* handler);
     void SetPreviousHandler(wxEvtHandler* handler);
-    // bool SearchEventTable(wxEventTable& table, wxEvent& event); // no wxEventTable
+    %wxchkver_3_1_1 void Unlink();
+    %wxchkver_3_1_1 bool IsUnlinked() const;
+    %wxchkver_3_1_1 static void AddFilter(wxEventFilter* filter);
+    %wxchkver_3_1_1 static void RemoveFilter(wxEventFilter* filter);
+    !%wxchkver_3_1_1 void AddPendingEvent(wxEvent& event);
+    void Connect(int id, int lastId, wxEventType eventType, LuaFunction func); // %add parameters
 };
 
 // ---------------------------------------------------------------------------
@@ -839,9 +864,13 @@ enum wxEventCategory
 
 class %delete wxEvent : public wxObject
 {
+    %wxchkver_3_1_1 wxEvent(int id = 0, wxEventType eventType = wxEVT_NULL);
+    %wxchkver_3_1_1 wxEvent* Clone() const = 0;
     wxObject* GetEventObject();
     wxEventType GetEventType();
+    %wxchkver_3_1_1 wxEventCategory GetEventCategory() const;
     int GetId();
+    %wxchkver_3_1_1 wxObject *GetEventUserData() const;
     bool GetSkipped();
     long GetTimestamp();
     bool IsCommandEvent() const;

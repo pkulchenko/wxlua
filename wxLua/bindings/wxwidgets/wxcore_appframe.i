@@ -19,39 +19,88 @@ wxApp* wxGetApp(); // %override wxApp* wxGetApp();
 
 class wxAppConsole : public wxEvtHandler
 {
+    %wxchkver_3_1_1 int MainLoop();
+    %wxchkver_3_1_1 void ExitMainLoop();
+    %wxchkver_3_1_1 int FilterEvent(wxEvent& event);
+    %wxchkver_3_1_1 wxEventLoopBase* GetMainLoop() const;
     // void HandleEvent(wxEvtHandler* handler, wxEventFunction func, wxEvent& event) const;
+    %wxchkver_3_1_1 bool UsesEventLoop() const;
+    %wxchkver_3_1_1 void ProcessPendingEvents();
+    %wxchkver_3_1_1 void DeletePendingEvents();
+    %wxchkver_3_1_1 bool HasPendingEvents() const;
+    %wxchkver_3_1_1 void SuspendProcessingOfPendingEvents();
+    %wxchkver_3_1_1 void ResumeProcessingOfPendingEvents();
+    %wxchkver_3_1_1 void ScheduleForDestruction(wxObject *object);
+    %wxchkver_3_1_1 bool IsScheduledForDestruction(wxObject *object) const;
+    %wxchkver_3_1_1 bool Yield(bool onlyIfNeeded = false);
+    %wxchkver_3_1_1 static void SetInstance(wxAppConsole* app);
+    %wxchkver_3_1_1 static wxAppConsole* GetInstance();
+    %wxchkver_3_1_1 static bool IsMainLoopRunning();
+    // void OnAssertFailure(const wxChar *file, int line, const wxChar *func, const wxChar *cond, const wxChar *msg); // not supported
     // bool OnCmdLineError(wxCmdLineParser& parser);
     // bool OnCmdLineHelp(wxCmdLineParser& parser);
     // bool OnCmdLineParsed(wxCmdLineParser& parser);
+    %wxchkver_3_1_1 void OnEventLoopEnter(wxEventLoopBase* loop);
+    %wxchkver_3_1_1 void OnEventLoopExit(wxEventLoopBase* loop);
+    %wxchkver_3_1_1 int OnExit();
+    %wxchkver_3_1_1 void OnFatalException();
+    %wxchkver_3_1_1 bool OnInit();
     // void OnInitCmdLine(wxCmdLineParser& parser);
+    %wxchkver_3_1_1 int OnRun();
+    %wxchkver_3_1_1 bool OnExceptionInMainLoop();
+    %wxchkver_3_1_1 void OnUnhandledException();
+    %wxchkver_3_1_1 bool StoreCurrentException();
+    %wxchkver_3_1_1 void RethrowStoredException();
+    %wxchkver_3_1_1 wxString GetAppDisplayName() const;
+    %wxchkver_3_1_1 wxString GetAppName() const;
+    %wxchkver_3_1_1 wxString GetClassName() const;
     // wxAppTraits* GetTraits(); // no wxAppTraits support
-    // void OnAssertFailure(const wxChar *file, int line, const wxChar *func, const wxChar *cond, const wxChar *msg); // not supported
+    %wxchkver_3_1_1 const wxString& GetVendorDisplayName() const;
+    %wxchkver_3_1_1 const wxString& GetVendorName() const;
+    %wxchkver_3_1_1 void SetAppDisplayName(const wxString& name);
+    %wxchkver_3_1_1 void SetAppName(const wxString& name);
+    %wxchkver_3_1_1 void SetClassName(const wxString& name);
+    %wxchkver_3_1_1 void SetVendorDisplayName(const wxString& name);
+    %wxchkver_3_1_1 void SetVendorName(const wxString& name);
+    %wxchkver_3_1_1 void SetCLocale();
 };
 
 class wxApp : public wxAppConsole
 {
-    void Dispatch();
-    void ExitMainLoop();
-    wxString GetAppName() const;
-    wxString GetClassName() const;
+    %wxchkver_3_1_1 wxApp();
+    %wxchkver_3_1_1 wxVideoMode GetDisplayMode() const;
     bool GetExitOnFrameDelete() const;
-    wxWindow* GetTopWindow() const;
+    %wxchkver_3_1_1 wxLayoutDirection GetLayoutDirection() const;
     bool GetUseBestVisual() const;
-    wxString GetVendorName() const;
+    wxWindow* GetTopWindow() const;
     bool IsActive() const;
-    static bool IsMainLoopRunning();
-
-    int MainLoop(); // %override int wxApp::MainLoop();
-
-    bool Pending();
-    %wxchkver_2_6 && !%wxchkver_2_9_2 bool SendIdleEvents(wxWindow* win, wxIdleEvent& event);
-    void SetAppName(const wxString& name);
-    void SetClassName(const wxString& name);
-    void SetExitOnFrameDelete(bool flag);
-    void SetTopWindow(wxWindow* window);
-    void SetVendorName(const wxString& name);
-    void SetUseBestVisual(bool flag);
+    %wxchkver_3_1_1 bool SafeYield(wxWindow *win, bool onlyIfNeeded);
+    %wxchkver_3_1_1 bool SafeYieldFor(wxWindow *win, long eventsToProcess);
     // %win bool ProcessMessage(WXMSG* msg);
+    %wxchkver_3_1_1 bool SetDisplayMode(const wxVideoMode& info);
+    void SetExitOnFrameDelete(bool flag);
+    %wxchkver_3_1_1 bool SetNativeTheme(const wxString& theme);
+    void SetTopWindow(wxWindow* window);
+    %wxchkver_3_1_1 void SetUseBestVisual(bool flag, bool forceTrueColour = false);
+    %wxchkver_3_1_1 && %mac void MacNewFile();
+    %wxchkver_3_1_1 && %mac void MacOpenFiles(const wxArrayString& fileNames);
+    %wxchkver_3_1_1 && %mac void MacOpenFile(const wxString& fileName);
+    %wxchkver_3_1_1 && %mac void MacOpenURL(const wxString& url);
+    %wxchkver_3_1_1 && %mac void MacPrintFile(const wxString& fileName);
+    %wxchkver_3_1_1 && %mac void MacReopenApp();
+    %wxchkver_3_1_1 && %mac bool OSXIsGUIApplication();
+    !%wxchkver_3_1_1 bool Pending();
+    !%wxchkver_3_1_1 static bool IsMainLoopRunning();
+    !%wxchkver_3_1_1 void Dispatch();
+    !%wxchkver_3_1_1 void ExitMainLoop();
+    !%wxchkver_3_1_1 void SetAppName(const wxString& name);
+    !%wxchkver_3_1_1 void SetClassName(const wxString& name);
+    !%wxchkver_3_1_1 void SetUseBestVisual(bool flag);
+    !%wxchkver_3_1_1 void SetVendorName(const wxString& name);
+    !%wxchkver_3_1_1 wxString GetAppName() const;
+    !%wxchkver_3_1_1 wxString GetClassName() const;
+    !%wxchkver_3_1_1 wxString GetVendorName() const;
+    %wxchkver_2_6 && !%wxchkver_2_9_2 bool SendIdleEvents(wxWindow* win, wxIdleEvent& event);
 };
 
 #endif //wxLUA_USE_wxApp

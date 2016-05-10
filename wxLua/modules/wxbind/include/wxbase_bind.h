@@ -202,6 +202,8 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxDynamicLibrary;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxDynamicLibraryDetails;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxDynamicLibraryDetailsArray;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxEvent;
+extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxEventFilter;
+extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxEventLoopBase;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxEvtHandler;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxFileType;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxFileType_MessageParameters;

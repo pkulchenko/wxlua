@@ -818,6 +818,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 
 #if wxLUA_USE_wxApp
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxApp;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxAppConsole;
 #endif // wxLUA_USE_wxApp
 
 #if wxLUA_USE_wxArtProvider
