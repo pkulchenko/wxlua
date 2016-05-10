@@ -56,7 +56,7 @@ bool wxCHECK_VERSION_FULL(int major, int minor, int release, int subrel); // act
 // ---------------------------------------------------------------------------
 
 #if wxUSE_ON_FATAL_EXCEPTION
-    bool wxHandleFatalExceptions(bool doIt = true );
+    bool wxHandleFatalExceptions(bool doIt = true);
 #endif // wxUSE_ON_FATAL_EXCEPTION
 
 // ---------------------------------------------------------------------------
@@ -109,29 +109,29 @@ enum
 
 // ---------------------------------------------------------------------------
 
-wxString wxGetEmailAddress( );
-wxLongLong wxGetFreeMemory( );
-wxString wxGetFullHostName( );
-wxString wxGetHomeDir( );
-wxString wxGetHostName( );
-wxString wxGetOsDescription( );
-// %override [int version, int major, int minor] wxGetOsVersion( );
-// int wxGetOsVersion(int *major = NULL, int *minor = NULL );
-int wxGetOsVersion( );
+wxString wxGetEmailAddress();
+wxLongLong wxGetFreeMemory();
+wxString wxGetFullHostName();
+wxString wxGetHomeDir();
+wxString wxGetHostName();
+wxString wxGetOsDescription();
+// %override [int version, int major, int minor] wxGetOsVersion();
+// int wxGetOsVersion(int *major = NULL, int *minor = NULL);
+int wxGetOsVersion();
 
-wxString wxGetUserHome(const wxString& user = "" );
-wxString wxGetUserId( );
-wxString wxGetUserName( );
+wxString wxGetUserHome(const wxString& user = "");
+wxString wxGetUserId();
+wxString wxGetUserName();
 
 // ---------------------------------------------------------------------------
 // Environmental access functions
 
-// %override [bool lua_string] wxGetEnv(const wxString& var );
+// %override [bool lua_string] wxGetEnv(const wxString& var);
 // Returns success and the string environment variable.
-// C++ Func: bool wxGetEnv(const wxString& var, wxString *value );
-bool wxGetEnv(const wxString& var );
-bool wxSetEnv(const wxString& var, const wxString& value );
-bool wxUnsetEnv(const wxString& var );
+// C++ Func: bool wxGetEnv(const wxString& var, wxString *value);
+bool wxGetEnv(const wxString& var);
+bool wxSetEnv(const wxString& var, const wxString& value);
+bool wxUnsetEnv(const wxString& var);
 
 
 // ---------------------------------------------------------------------------
@@ -151,8 +151,8 @@ class wxSystemOptions : public wxObject
     static bool IsFalse(const wxString& name) const;
 
     #if wxUSE_SYSTEM_OPTIONS
-        static void SetOption(const wxString& name, const wxString& value );
-        static void SetOption(const wxString& name, int value );
+        static void SetOption(const wxString& name, const wxString& value);
+        static void SetOption(const wxString& name, int value);
     #endif //wxUSE_SYSTEM_OPTIONS
 };
 
@@ -170,10 +170,10 @@ enum wxOperatingSystemId
     wxOS_MAC_OSX_DARWIN,              // Apple Mac OS X with Unix paths
     wxOS_MAC,                         // wxOS_MAC_OS|wxOS_MAC_OSX_DARWIN,
 
-    wxOS_WINDOWS_9X,                   // Windows 9x family (95/98/ME );
-    wxOS_WINDOWS_NT,                   // Windows NT family (NT/2000/XP );
+    wxOS_WINDOWS_9X,                   // Windows 9x family (95/98/ME);
+    wxOS_WINDOWS_NT,                   // Windows NT family (NT/2000/XP);
     wxOS_WINDOWS_MICRO,                // MicroWindows
-    wxOS_WINDOWS_CE,                   // Windows CE (Window Mobile );
+    wxOS_WINDOWS_CE,                   // Windows CE (Window Mobile);
     wxOS_WINDOWS,                      //  wxOS_WINDOWS_9X|wxOS_WINDOWS_NT|wxOS_WINDOWS_MICRO|wxOS_WINDOWS_CE,
 
     wxOS_UNIX_LINUX,                    // Linux
@@ -234,12 +234,12 @@ class wxPlatformInfo
 {
     // No constructor, use static Get() function
     //wxPlatformInfo();
-    //wxPlatformInfo(wxPortId pid, int tkMajor = -1, int tkMinor = -1, wxOperatingSystemId id = wxOS_UNKNOWN, int osMajor = -1, int osMinor = -1, wxArchitecture arch = wxARCH_INVALID, wxEndianness endian = wxENDIAN_INVALID, bool usingUniversal = false );
+    //wxPlatformInfo(wxPortId pid, int tkMajor = -1, int tkMinor = -1, wxOperatingSystemId id = wxOS_UNKNOWN, int osMajor = -1, int osMinor = -1, wxArchitecture arch = wxARCH_INVALID, wxEndianness endian = wxENDIAN_INVALID, bool usingUniversal = false);
 
     // Gets a wxPlatformInfo already initialized with the values for
     // the currently running platform.
     //static const wxPlatformInfo& Get();
-    static const wxPlatformInfo& Get( );
+    static const wxPlatformInfo& Get();
 
     static wxOperatingSystemId GetOperatingSystemId(const wxString &name);
     static wxPortId GetPortId(const wxString &portname);
@@ -278,12 +278,12 @@ class wxPlatformInfo
     wxString GetArchName() const;
     wxString GetEndiannessName() const;
 
-    void SetOSVersion(int major, int minor );
-    void SetToolkitVersion(int major, int minor );
-    void SetOperatingSystemId(wxOperatingSystemId n );
-    void SetPortId(wxPortId n );
-    void SetArchitecture(wxArchitecture n );
-    void SetEndianness(wxEndianness n );
+    void SetOSVersion(int major, int minor);
+    void SetToolkitVersion(int major, int minor);
+    void SetOperatingSystemId(wxOperatingSystemId n);
+    void SetPortId(wxPortId n);
+    void SetArchitecture(wxArchitecture n);
+    void SetEndianness(wxEndianness n);
 
     bool IsOk() const;
 
@@ -302,19 +302,19 @@ class wxPlatformInfo
 class %delete wxSingleInstanceChecker
 {
     wxSingleInstanceChecker(); // default ctor, use Create() after it
-    // like Create() but no error checking (dangerous! );
-    //wxSingleInstanceChecker(const wxString& name, const wxString& path = "" );
+    // like Create() but no error checking (dangerous!);
+    //wxSingleInstanceChecker(const wxString& name, const wxString& path = "");
 
     // name must be given and be as unique as possible, it is used as the mutex
     // name under Win32 and the lock file name under Unix -
     // wxTheApp->GetAppName() may be a good value for this parameter
     //
     // path is optional and is ignored under Win32 and used as the directory to
-    // create the lock file in under Unix (default is wxGetHomeDir() );
+    // create the lock file in under Unix (default is wxGetHomeDir());
     //
     // returns false if initialization failed, it doesn't mean that another
     // instance is running - use IsAnotherRunning() to check it
-    bool Create(const wxString& name, const wxString& path = "" );
+    bool Create(const wxString& name, const wxString& path = "");
 
     bool IsAnotherRunning() const; // is another copy of this program already running?
 };
@@ -330,35 +330,35 @@ class %delete wxSingleInstanceChecker
 #include "wx/log.h"
 
 // These functions are in log.h
-unsigned long wxSysErrorCode( );
-wxString wxSysErrorMsg(unsigned long nErrCode = 0 );
+unsigned long wxSysErrorCode();
+wxString wxSysErrorMsg(unsigned long nErrCode = 0);
 
-void wxSafeShowMessage(const wxString& title, const wxString& text );
+void wxSafeShowMessage(const wxString& title, const wxString& text);
 
 // All of the wxLogXXX functions take only a single string,
 // use string.format(...) to format the string in Lua.
 
-// C++ Func: void wxLogError(const char *formatString, ... );
-void wxLogError(const wxString& message );
-// C++ Func: void wxLogFatalError(const char *formatString, ... );
-void wxLogFatalError(const wxString& message );
-// C++ Func: void wxLogWarning(const char *formatString, ... );
-void wxLogWarning(const wxString& message );
-// C++ Func: void wxLogMessage(const char *formatString, ... );
-void wxLogMessage(const wxString& message );
-// C++ Func: void wxLogVerbose(const char *formatString, ... );
-void wxLogVerbose(const wxString& message );
-// C++ Func: void wxLogStatus(wxFrame *frame, const char *formatString, ... );
+// C++ Func: void wxLogError(const char *formatString, ...);
+void wxLogError(const wxString& message);
+// C++ Func: void wxLogFatalError(const char *formatString, ...);
+void wxLogFatalError(const wxString& message);
+// C++ Func: void wxLogWarning(const char *formatString, ...);
+void wxLogWarning(const wxString& message);
+// C++ Func: void wxLogMessage(const char *formatString, ...);
+void wxLogMessage(const wxString& message);
+// C++ Func: void wxLogVerbose(const char *formatString, ...);
+void wxLogVerbose(const wxString& message);
+// C++ Func: void wxLogStatus(wxFrame *frame, const char *formatString, ...);
 // void wxLogStatus(const char *formatString, ...); // this just uses the toplevel frame, use wx.NULL for the frame
-// IN wxCore void wxLogStatus(wxFrame *frame, const wxString& message );
+// IN wxCore void wxLogStatus(wxFrame *frame, const wxString& message);
 
-// C++ Func: void wxLogSysError(const char *formatString, ... );
-void wxLogSysError(const wxString& message );
-// C++ Func: void wxLogDebug(const char *formatString, ... );
-void wxLogDebug(const wxString& message );
-// C++ Func: void wxLogTrace(const char *mask, const char *formatString, ... );
-void wxLogTrace(const wxString& mask, const wxString& message );
-// void wxLogTrace(const char *formatString, ... );
+// C++ Func: void wxLogSysError(const char *formatString, ...);
+void wxLogSysError(const wxString& message);
+// C++ Func: void wxLogDebug(const char *formatString, ...);
+void wxLogDebug(const wxString& message);
+// C++ Func: void wxLogTrace(const char *mask, const char *formatString, ...);
+void wxLogTrace(const wxString& mask, const wxString& message);
+// void wxLogTrace(const char *formatString, ...);
 // void wxLogTrace(wxTraceMask mask, const char *formatString, ...) - deprecated
 
 typedef unsigned long wxTraceMask
@@ -369,12 +369,12 @@ enum // wxLogLevel - uses these enums
     wxLOG_FatalError, // program can't continue, abort immediately
     wxLOG_Error,      // a serious error, user must be informed about it
     wxLOG_Warning,    // user is normally informed about it but may be ignored
-    wxLOG_Message,    // normal message (i.e. normal output of a non GUI app );
+    wxLOG_Message,    // normal message (i.e. normal output of a non GUI app);
     wxLOG_Status,     // informational: might go to the status line of GUI app
-    wxLOG_Info,       // informational message (a.k.a. 'Verbose' );
+    wxLOG_Info,       // informational message (a.k.a. 'Verbose');
     wxLOG_Debug,      // never shown to the user, disabled in release mode
     wxLOG_Trace,      // trace messages are also only enabled in debug mode
-    wxLOG_Progress,   // used for progress indicator (not yet );
+    wxLOG_Progress,   // used for progress indicator (not yet);
 
     wxLOG_User,       // user defined levels start here
     wxLOG_Max
@@ -382,8 +382,8 @@ enum // wxLogLevel - uses these enums
 
 // symbolic trace masks - wxLogTrace("foo", "some trace message...") will be
 // discarded unless the string "foo" has been added to the list of allowed
-// ones with AddTraceMask( );
-#define_wxstring wxTRACE_MemAlloc //wxT("memalloc"); // trace memory allocation (new/delete );
+// ones with AddTraceMask();
+#define_wxstring wxTRACE_MemAlloc //wxT("memalloc"); // trace memory allocation (new/delete);
 #define_wxstring wxTRACE_Messages //wxT("messages"); // trace window messages/X callbacks
 #define_wxstring wxTRACE_ResAlloc //wxT("resalloc"); // trace GDI resource allocation
 #define_wxstring wxTRACE_RefCount //wxT("refcount"); // trace various ref counting operations
@@ -393,43 +393,43 @@ class %delete wxLog
 {
     //wxLog() - No constructor, a base class, use one of the derived classes.
 
-    static bool IsEnabled( );
-    static bool EnableLogging(bool doIt = true );
-    virtual void Flush( );
-    static void FlushActive( );
+    static bool IsEnabled();
+    static bool EnableLogging(bool doIt = true);
+    virtual void Flush();
+    static void FlushActive();
     // Don't delete the active target until you set a new one or set it to wx.NULL
     // Note, a new wxLog is created unless DontCreateOnDemand() is called.
-    static wxLog *GetActiveTarget( );
+    static wxLog *GetActiveTarget();
     // When you create a new wxLog and call "oldLog = SetActiveTarget(MyLog)"
     // the returned oldLog will be garbage collected or you can delete() the
     // oldLog unless you want to reuse it by calling "myLog = SetActiveTarget(oldLog)"
     // which releases myLog to be garbage collected or delete()ed by you.
     // Basicly, wxWidgets 'owns' the log you pass to SetActiveTarget() and
     // wxLua 'owns' the returned log.
-    static %gc wxLog *SetActiveTarget(%ungc wxLog *pLogger );
-    static void Suspend( );
-    static void Resume( );
-    static void SetVerbose(bool bVerbose = true );
-    static void SetLogLevel(wxLogLevel logLevel );
-    static void DontCreateOnDemand( );
-    %wxchkver_2_8 static void SetRepetitionCounting(bool bRepetCounting = true );
-    %wxchkver_2_8 static bool GetRepetitionCounting( );
-    static void SetTraceMask(wxTraceMask ulMask );
-    static void AddTraceMask(const wxString& str );
-    static void RemoveTraceMask(const wxString& str );
-    static void ClearTraceMasks( );
+    static %gc wxLog *SetActiveTarget(%ungc wxLog *pLogger);
+    static void Suspend();
+    static void Resume();
+    static void SetVerbose(bool bVerbose = true);
+    static void SetLogLevel(wxLogLevel logLevel);
+    static void DontCreateOnDemand();
+    %wxchkver_2_8 static void SetRepetitionCounting(bool bRepetCounting = true);
+    %wxchkver_2_8 static bool GetRepetitionCounting();
+    static void SetTraceMask(wxTraceMask ulMask);
+    static void AddTraceMask(const wxString& str);
+    static void RemoveTraceMask(const wxString& str);
+    static void ClearTraceMasks();
     static wxArrayString GetTraceMasks(); // not const wxArrayString since we copy it anyway
 
-    // %override static void wxLog::SetTimestamp(const wxString& ts );
+    // %override static void wxLog::SetTimestamp(const wxString& ts);
     // Allows an input of "nil" or no value to disable time stamping.
-    // C++ Func: static void wxLog::SetTimestamp(const wxChar* ts );
-    static void SetTimestamp(const wxString& ts );
+    // C++ Func: static void wxLog::SetTimestamp(const wxChar* ts);
+    static void SetTimestamp(const wxString& ts);
 
-    static bool GetVerbose( );
-    static wxTraceMask GetTraceMask( );
-    static bool IsAllowedTraceMask(const wxString& mask );
-    static wxLogLevel GetLogLevel( );
-    static wxString GetTimestamp( );
+    static bool GetVerbose();
+    static wxTraceMask GetTraceMask();
+    static bool IsAllowedTraceMask(const wxString& mask);
+    static wxLogLevel GetLogLevel();
+    static wxString GetTimestamp();
 };
 
 // ---------------------------------------------------------------------------
@@ -437,7 +437,7 @@ class %delete wxLog
 
 class %delete wxLogBuffer : public wxLog
 {
-    wxLogBuffer( );
+    wxLogBuffer();
 
     const wxString& GetBuffer() const; // get the string contents with all messages logged
 };
@@ -447,15 +447,15 @@ class %delete wxLogBuffer : public wxLog
 
 class %delete wxLogChain : public wxLog
 {
-    wxLogChain(wxLog *logger );
+    wxLogChain(wxLog *logger);
 
     void SetLog(wxLog *logger); // change the new log target
     // this can be used to temporarily disable (and then reenable) passing
-    // messages to the old logger (by default we do pass them );
-    void PassMessages(bool bDoPass );
+    // messages to the old logger (by default we do pass them);
+    void PassMessages(bool bDoPass);
     // are we passing the messages to the previous log target?
     bool IsPassingMessages() const;
-    // return the previous log target (may be NULL );
+    // return the previous log target (may be NULL);
     wxLog *GetOldLog() const;
 };
 
@@ -465,7 +465,7 @@ class %delete wxLogChain : public wxLog
 class %delete wxLogNull // NOTE: this is not derived from wxLog
 {
     // NOTE: ALWAYS delete() this when done since Lua's gc may not delete it soon enough
-    wxLogNull( );
+    wxLogNull();
 };
 
 // ---------------------------------------------------------------------------
@@ -473,7 +473,7 @@ class %delete wxLogNull // NOTE: this is not derived from wxLog
 
 class %delete wxLogPassThrough : public wxLogChain
 {
-    wxLogPassThrough( );
+    wxLogPassThrough();
 };
 
 // ---------------------------------------------------------------------------
@@ -487,7 +487,7 @@ class %delete wxLogStderr : public wxLog
 */
 
 // ---------------------------------------------------------------------------
-// wxLogStream - FIXME need to implement wxSTD ostream* (just use wxLogBuffer );
+// wxLogStream - FIXME need to implement wxSTD ostream* (just use wxLogBuffer);
 
 /*
 #if wxUSE_STD_IOSTREAM
@@ -514,16 +514,16 @@ class %delete wxLogStream : public wxLog
 enum wxDLFlags
 {
     wxDL_LAZY,       // resolve undefined symbols at first use
-                    // (only works on some Unix versions );
+                    // (only works on some Unix versions);
     wxDL_NOW,        // resolve undefined symbols on load
-                    // (default, always the case under Win32 );
+                    // (default, always the case under Win32);
     wxDL_GLOBAL,     // export extern symbols to subsequently
                     // loaded libs.
     wxDL_VERBATIM,   // attempt to load the supplied library
                     // name without appending the usual dll
                     // filename extension.
     wxDL_NOSHARE,    // load new DLL, don't reuse already loaded
-                    // (only for wxPluginManager );
+                    // (only for wxPluginManager);
 
     wxDL_DEFAULT,    // = wxDL_NOW // default flags correspond to Win32
 };
@@ -544,7 +544,7 @@ enum wxPluginCategory
 class %delete wxDynamicLibraryDetails
 {
     // ctor, normally never used as these objects are only created by wxDynamicLibrary
-    // wxDynamicLibrary::ListLoaded( );
+    // wxDynamicLibrary::ListLoaded();
     //wxDynamicLibraryDetails() { m_address = NULL; m_length = 0; }
 
     wxString GetName() const; // get the (base) name
@@ -553,7 +553,7 @@ class %delete wxDynamicLibraryDetails
     // get the load address and the extent, return true if this information is available
     //bool GetAddress(void **addr, size_t *len) const;
 
-    wxString GetVersion() const; // return the version of the DLL (may be empty if no version info );
+    wxString GetVersion() const; // return the version of the DLL (may be empty if no version info);
 };
 
 class %delete wxDynamicLibraryDetailsArray
@@ -561,22 +561,22 @@ class %delete wxDynamicLibraryDetailsArray
     //wxDynamicLibraryDetailsArray(); // Get this from wxDynamicLibrary::ListLoaded
 
     int  GetCount() const;
-    wxDynamicLibraryDetails Item( int n );
+    wxDynamicLibraryDetails Item( int n);
 };
 
 
 class %delete wxDynamicLibrary
 {
-    wxDynamicLibrary( );
-    wxDynamicLibrary(const wxString& libname, int flags = wxDL_DEFAULT );
+    wxDynamicLibrary();
+    wxDynamicLibrary(const wxString& libname, int flags = wxDL_DEFAULT);
 
     // return a valid handle for the main program itself or NULL if back
-    // linking is not supported by the current platform (e.g. Win32 );
+    // linking is not supported by the current platform (e.g. Win32);
     //static wxDllType GetProgramHandle();
 
-    // return the platform standard DLL extension (with leading dot );
-    //static const wxChar *GetDllExt( );
-    static wxString GetDllExt( );
+    // return the platform standard DLL extension (with leading dot);
+    //static const wxChar *GetDllExt();
+    static wxString GetDllExt();
 
     // return true if the library was loaded successfully
     bool IsLoaded() const;
@@ -591,25 +591,25 @@ class %delete wxDynamicLibrary
 
     // detach the library object from its handle, i.e. prevent the object from
     // unloading the library in its dtor -- the caller is now responsible for doing this
-    //wxDllType Detach( );
+    //wxDllType Detach();
 
-    // unload the given library handle (presumably returned by Detach() before );
+    // unload the given library handle (presumably returned by Detach() before);
     //static void Unload(wxDllType handle);
 
     // unload the library, also done automatically in dtor
-    void Unload( );
+    void Unload();
 
     // Return the raw handle from dlopen and friends.
     //wxDllType GetLibHandle() const; // { return m_handle; }
 
     // check if the given symbol is present in the library, useful to verify if
     // a loadable module is our plugin, for example, without provoking error
-    // messages from GetSymbol( );
+    // messages from GetSymbol();
     bool HasSymbol(const wxString& name) const;
 
     // resolve a symbol in a loaded DLL, such as a variable or function name.
     // 'name' is the (possibly mangled) name of the symbol. (use extern "C" to
-    // export unmangled names );
+    // export unmangled names);
     // Since it is perfectly valid for the returned symbol to actually be NULL,
     // that is not always indication of an error.  Pass and test the parameter
     // 'success' for a true indication of success or failure to load the symbol.
@@ -617,7 +617,7 @@ class %delete wxDynamicLibrary
     // or the symbol wasn't found.
     //void *GetSymbol(const wxString& name, bool *success = NULL) const;
 
-    // low-level version of GetSymbol( );
+    // low-level version of GetSymbol();
     //static void *RawGetSymbol(wxDllType handle, const wxString& name);
     //void *RawGetSymbol(const wxString& name) const;
 
@@ -625,7 +625,7 @@ class %delete wxDynamicLibrary
     // this function is useful for loading functions from the standard Windows
     // DLLs: such functions have an 'A' (in ANSI build) or 'W' (in Unicode, or
     // wide character build) suffix if they take string parameters
-    //static void *RawGetSymbolAorW(wxDllType handle, const wxString& name );
+    //static void *RawGetSymbolAorW(wxDllType handle, const wxString& name);
     //void *GetSymbolAorW(const wxString& name) const;
 //#endif // __WXMSW__
 
@@ -634,7 +634,7 @@ class %delete wxDynamicLibrary
     static wxDynamicLibraryDetailsArray ListLoaded();
 
     // return platform-specific name of dynamic library with proper extension
-    // and prefix (e.g. "foo.dll" on Windows or "libfoo.so" on Linux );
+    // and prefix (e.g. "foo.dll" on Windows or "libfoo.so" on Linux);
     static wxString CanonicalizeName(const wxString& name, wxDynamicLibraryCategory cat = wxDL_LIBRARY);
 
     // return name of wxWidgets plugin (adds compiler and version info
@@ -642,7 +642,7 @@ class %delete wxDynamicLibrary
     static wxString CanonicalizePluginName(const wxString& name, wxPluginCategory cat = wxDL_PLUGIN_GUI);
 
     // return plugin directory on platforms where it makes sense and empty string on others:
-    static wxString GetPluginsDirectory( );
+    static wxString GetPluginsDirectory();
 };
 
 // ---------------------------------------------------------------------------
@@ -663,9 +663,9 @@ class %delete wxDynamicLibrary
 
 class %delete wxCriticalSection
 {
-    wxCriticalSection( );
-    void Enter( );
-    void Leave( );
+    wxCriticalSection();
+    void Enter();
+    void Leave();
 };
 
 #endif // wxLUA_USE_wxCriticalSection
@@ -711,10 +711,10 @@ enum
 
 class %delete wxRegEx
 {
-    wxRegEx( );
-    wxRegEx(const wxString& expr, int flags = wxRE_DEFAULT );
+    wxRegEx();
+    wxRegEx(const wxString& expr, int flags = wxRE_DEFAULT);
 
-    bool Compile(const wxString& pattern, int flags = wxRE_DEFAULT );
+    bool Compile(const wxString& pattern, int flags = wxRE_DEFAULT);
     bool IsValid() const;
     wxString GetMatch(const wxString& text, size_t index = 0) const;
 
@@ -746,43 +746,42 @@ class %delete wxRegEx
 
 #include "wx/event.h"
 
+class %delete wxEventLoopBase
+{
+};
+
+class wxEventFilter
+{
+};
+
 class %delete wxEvtHandler : public wxObject
 {
-    wxEvtHandler( );
+    wxEvtHandler();
 
-    void AddPendingEvent(wxEvent& event );
+    void AddPendingEvent(wxEvent& event);
 
-    // NOTE: Connect used to be called ConnectEvent in wxLua which is not the name of any C++ function.
+    void Connect(int id, int lastId, wxEventType eventType, LuaFunction func); // %add parameters
+    // void Connect(int id, int lastId, wxEventType eventType, wxObjectEventFunction function, wxObject* userData = NULL, wxEvtHandler* eventSink = NULL);
+    // void Connect(int id, wxEventType eventType, wxObjectEventFunction function, wxObject* userData = NULL, wxEvtHandler* eventSink = NULL);
+    // void Connect(wxEventType eventType, wxObjectEventFunction function, wxObject* userData = NULL, wxEvtHandler* eventSink = NULL);
 
-    // %override wxEvtHandler::Connect(int id, int lastId, wxEventType eventType, Lua function );
-    // %override wxEvtHandler::Connect(int id, wxEventType eventType, Lua function );
-    // %override wxEvtHandler::Connect(wxEventType eventType, Lua function );
-    // The function type above is determined at runtime depending on the inputs.
-    // C++ Func: void Connect(int id, int lastId, wxEventType eventType, wxObjectEventFunction function, wxObject* userData = NULL, wxEvtHandler* eventSink = NULL );
-    // Note: wxLua uses the userdata and the event sink and so they're not available
-    void Connect(int id, int lastId, wxEventType eventType, LuaFunction func );
+    bool Disconnect(int id, int lastId, wxEventType eventType); // %override parameters
+    // void Bind(const EventTag& eventType, Functor functor, int id = wxID_ANY, int lastId = wxID_ANY, wxObject *userData = NULL);
+    // bool Unbind(const EventTag& eventType, Functor functor, int id = wxID_ANY, int lastId = wxID_ANY, wxObject *userData = NULL);
 
-    // %override bool Disconnect(int winid, int lastId, wxEventType eventType );
-    // %override bool Disconnect(int winid, wxEventType eventType );
-    // %override bool Disconnect(wxEventType eventType );
-    // The function type above is determined at runtime depending on the inputs.
-    // C++ Func: bool Disconnect(int id, int lastId = wxID_ANY, wxEventType eventType = wxEVT_NULL, wxObjectEventFunction function = NULL, wxObject* userData = NULL, wxEvtHandler* eventSink = NULL );
-    // Note: wxLua uses the userdata and the event sink and so they're not available
-    bool Disconnect(int id, int lastId, wxEventType eventType );
-
-    voidptr_long GetClientData(); // C++ returns (void *) You get a number here
+    voidptr_long GetClientData(); // %override C++ returns (void *) You get a number here
     wxClientData* GetClientObject() const;
-    bool GetEvtHandlerEnabled( );
-    wxEvtHandler* GetNextHandler( );
-    wxEvtHandler* GetPreviousHandler( );
-    virtual bool ProcessEvent(wxEvent& event );
+    bool GetEvtHandlerEnabled();
+    wxEvtHandler* GetNextHandler();
+    wxEvtHandler* GetPreviousHandler();
+    virtual bool ProcessEvent(wxEvent& event);
     %wxchkver_2_9 virtual void QueueEvent(%ungc wxEvent *event);
-    //virtual bool SearchEventTable(wxEventTable& table, wxEvent& event );
-    void SetClientData(voidptr_long number); // C++ is (void *clientData) You can put a number here
-    void SetClientObject(wxClientData* data );
-    void SetEvtHandlerEnabled(bool enabled );
-    void SetNextHandler(wxEvtHandler* handler );
-    void SetPreviousHandler(wxEvtHandler* handler );
+    void SetClientData(voidptr_long number); // %override C++ is (void *clientData) You can put a number here
+    void SetClientObject(wxClientData* data);
+    void SetEvtHandlerEnabled(bool enabled);
+    void SetNextHandler(wxEvtHandler* handler);
+    void SetPreviousHandler(wxEvtHandler* handler);
+    // bool SearchEventTable(wxEventTable& table, wxEvent& event); // no wxEventTable
 };
 
 // ---------------------------------------------------------------------------
@@ -794,22 +793,64 @@ enum Propagation_state
     wxEVENT_PROPAGATE_MAX  // propagate it until it is processed
 };
 
+#if %wxchkver_3_1_1
+enum wxEventCategory
+{
+    /**
+        This is the category for those events which are generated to update
+        the appearance of the GUI but which (usually) do not comport data
+        processing, i.e. which do not provide input or output data
+        (e.g. size events, scroll events, etc).
+        They are events NOT directly generated by the user's input devices.
+    */
+    wxEVT_CATEGORY_UI = 1,
+
+    /**
+        This category groups those events which are generated directly from the
+        user through input devices like mouse and keyboard and usually result in
+        data to be processed from the application
+        (e.g. mouse clicks, key presses, etc).
+    */
+    wxEVT_CATEGORY_USER_INPUT = 2,
+
+    /// This category is for wxSocketEvent
+    wxEVT_CATEGORY_SOCKET = 4,
+
+    /// This category is for wxTimerEvent
+    wxEVT_CATEGORY_TIMER = 8,
+
+    /**
+        This category is for any event used to send notifications from the
+        secondary threads to the main one or in general for notifications among
+        different threads (which may or may not be user-generated).
+        See e.g. wxThreadEvent.
+    */
+    wxEVT_CATEGORY_THREAD = 16,
+
+    /**
+        This mask is used in wxEventLoopBase::YieldFor to specify that all event
+        categories should be processed.
+    */
+    wxEVT_CATEGORY_ALL =
+        wxEVT_CATEGORY_UI|wxEVT_CATEGORY_USER_INPUT|wxEVT_CATEGORY_SOCKET| \
+        wxEVT_CATEGORY_TIMER|wxEVT_CATEGORY_THREAD
+};
+#endif
+
 class %delete wxEvent : public wxObject
 {
-    // wxEvent(int id = 0, wxEventType eventType = wxEVT_NULL) virtual base class
-
-    wxObject* GetEventObject( );
-    wxEventType GetEventType( );
-    int GetId( );
-    bool GetSkipped( );
-    long GetTimestamp( );
+    wxObject* GetEventObject();
+    wxEventType GetEventType();
+    int GetId();
+    bool GetSkipped();
+    long GetTimestamp();
     bool IsCommandEvent() const;
-    void ResumePropagation(int propagationLevel );
-    void SetEventObject(wxObject* object );
-    void SetEventType(wxEventType type );
-    void SetId(int id );
-    void SetTimestamp(long timeStamp );
+    void ResumePropagation(int propagationLevel);
+    void SetEventObject(wxObject* object);
+    void SetEventType(wxEventType type);
+    void SetId(int id);
+    void SetTimestamp(long timeStamp);
     bool ShouldPropagate() const;
-    void Skip(bool skip = true );
-    int StopPropagation( );
+    void Skip(bool skip = true);
+    int StopPropagation();
 };
