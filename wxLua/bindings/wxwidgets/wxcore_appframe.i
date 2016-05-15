@@ -242,6 +242,7 @@ class wxFrame : public wxTopLevelWindow
     %wxchkver_3_1_1 void PopStatusText(int number = 0);
     !%wxchkver_3_1_1 virtual wxToolBar* CreateToolBar(long style = wxNO_BORDER|wxTB_HORIZONTAL, wxWindowID id = wxID_ANY, const wxString& name = "wxToolBar");
     !%wxchkver_3_1_1 void SendSizeEvent();
+    virtual void SetStatusWidths(IntArray_FromLuaTable intTable); // %add parameters
 };
 
 // ---------------------------------------------------------------------------

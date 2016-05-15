@@ -3027,6 +3027,22 @@ static int LUACALL wxLua_wxFrame_SetStatusText(lua_State *L)
     return 0;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_SetStatusWidths[] = { &wxluatype_wxFrame, &wxluatype_TTABLE, NULL };
+static int LUACALL wxLua_wxFrame_SetStatusWidths(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_SetStatusWidths[1] = {{ wxLua_wxFrame_SetStatusWidths, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFrame_SetStatusWidths }};
+//     virtual void SetStatusWidths(IntArray_FromLuaTable intTable); // %add parameters
+static int LUACALL wxLua_wxFrame_SetStatusWidths(lua_State *L)
+{
+    // IntArray_FromLuaTable intTable
+    int count_ = 0; wxLuaSmartIntArray ptr; int* intTable = NULL; ptr = intTable = wxlua_getintarray(L, 2, count_);
+    // get this
+    wxFrame * self = (wxFrame *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFrame);
+    // call SetStatusWidths
+    self->SetStatusWidths(count_, intTable);
+
+    return 0;
+}
+
 
 #if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxToolbar)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_SetToolBar[] = { &wxluatype_wxFrame, &wxluatype_wxToolBar, NULL };
@@ -3211,6 +3227,7 @@ wxLuaBindMethod wxFrame_methods[] = {
 
     { "SetStatusBarPane", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_SetStatusBarPane, 1, NULL },
     { "SetStatusText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_SetStatusText, 1, NULL },
+    { "SetStatusWidths", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_SetStatusWidths, 1, NULL },
 
 #if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxToolbar)
     { "SetToolBar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFrame_SetToolBar, 1, NULL },
