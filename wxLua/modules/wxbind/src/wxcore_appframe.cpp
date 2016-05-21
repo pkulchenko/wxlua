@@ -255,18 +255,23 @@ static int LUACALL wxLua_wxAppConsole_IsScheduledForDestruction(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAppConsole_MainLoop[] = { &wxluatype_wxAppConsole, NULL };
 static int LUACALL wxLua_wxAppConsole_MainLoop(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAppConsole_MainLoop[1] = {{ wxLua_wxAppConsole_MainLoop, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAppConsole_MainLoop }};
-//     %wxchkver_3_1_1 int MainLoop();
+// %override wxLua_wxAppConsole_MainLoop
+//     int MainLoop()
 static int LUACALL wxLua_wxAppConsole_MainLoop(lua_State *L)
 {
     // get this
     wxAppConsole * self = (wxAppConsole *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAppConsole);
-    // call MainLoop
-    int returns = (self->MainLoop());
+    int returns = 0;
+
+    if (!wxLuaState::sm_wxAppMainLoop_will_run && !wxAppConsole::IsMainLoopRunning())
+        returns = self->MainLoop();
+
     // push the result number
     lua_pushnumber(L, returns);
 
     return 1;
 }
+
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAppConsole_OnEventLoopEnter[] = { &wxluatype_wxAppConsole, &wxluatype_wxEventLoopBase, NULL };
 static int LUACALL wxLua_wxAppConsole_OnEventLoopEnter(lua_State *L);
@@ -1033,6 +1038,33 @@ static int LUACALL wxLua_wxApp_MacReopenApp(lua_State *L)
     return 0;
 }
 
+#endif // (wxCHECK_VERSION(3,1,1) && defined(__WXMAC__)) && (wxLUA_USE_wxApp)
+
+#if (!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxApp_MainLoop[] = { &wxluatype_wxApp, NULL };
+static int LUACALL wxLua_wxApp_MainLoop(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxApp_MainLoop[1] = {{ wxLua_wxApp_MainLoop, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxApp_MainLoop }};
+// %override wxLua_wxApp_MainLoop
+//     int MainLoop()
+static int LUACALL wxLua_wxApp_MainLoop(lua_State *L)
+{
+    // get this
+    wxApp * self = (wxApp *)wxluaT_getuserdatatype(L, 1, wxluatype_wxApp);
+    int returns = 0;
+
+    if (!wxLuaState::sm_wxAppMainLoop_will_run && !wxApp::IsMainLoopRunning())
+        returns = self->MainLoop();
+
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+
+#endif // (!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
+
+#if (wxCHECK_VERSION(3,1,1) && defined(__WXMAC__)) && (wxLUA_USE_wxApp)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxApp_OSXIsGUIApplication[] = { &wxluatype_wxApp, NULL };
 static int LUACALL wxLua_wxApp_OSXIsGUIApplication(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxApp_OSXIsGUIApplication[1] = {{ wxLua_wxApp_OSXIsGUIApplication, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxApp_OSXIsGUIApplication }};
@@ -1394,6 +1426,13 @@ wxLuaBindMethod wxApp_methods[] = {
     { "MacOpenURL", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_MacOpenURL, 1, NULL },
     { "MacPrintFile", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_MacPrintFile, 1, NULL },
     { "MacReopenApp", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_MacReopenApp, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,1) && defined(__WXMAC__)) && (wxLUA_USE_wxApp)
+
+#if (!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
+    { "MainLoop", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_MainLoop, 1, NULL },
+#endif // (!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxApp)
+
+#if (wxCHECK_VERSION(3,1,1) && defined(__WXMAC__)) && (wxLUA_USE_wxApp)
     { "OSXIsGUIApplication", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_OSXIsGUIApplication, 1, NULL },
 #endif // (wxCHECK_VERSION(3,1,1) && defined(__WXMAC__)) && (wxLUA_USE_wxApp)
 

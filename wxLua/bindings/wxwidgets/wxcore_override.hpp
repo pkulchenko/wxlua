@@ -40,6 +40,24 @@ static int LUACALL wxLua_wxApp_MainLoop(lua_State *L)
 }
 %end
 
+%override wxLua_wxAppConsole_MainLoop
+//     int MainLoop()
+static int LUACALL wxLua_wxAppConsole_MainLoop(lua_State *L)
+{
+    // get this
+    wxAppConsole * self = (wxAppConsole *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAppConsole);
+    int returns = 0;
+
+    if (!wxLuaState::sm_wxAppMainLoop_will_run && !wxAppConsole::IsMainLoopRunning())
+        returns = self->MainLoop();
+
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+%end
+
 %override wxLua_wxStatusBar_SetFieldsCount
 // virtual void SetFieldsCount(int number = 1, int* widths = NULL)
 static int LUACALL wxLua_wxStatusBar_SetFieldsCount(lua_State *L)

@@ -93,6 +93,7 @@ class wxApp : public wxAppConsole
     !%wxchkver_3_1_1 static bool IsMainLoopRunning();
     !%wxchkver_3_1_1 void Dispatch();
     !%wxchkver_3_1_1 void ExitMainLoop();
+    !%wxchkver_3_1_1 int MainLoop();
     !%wxchkver_3_1_1 void SetAppName(const wxString& name);
     !%wxchkver_3_1_1 void SetClassName(const wxString& name);
     !%wxchkver_3_1_1 void SetUseBestVisual(bool flag);
