@@ -2100,7 +2100,7 @@ static int LUACALL wxLua_wxDropSource_constructor3(lua_State *L)
 
 #endif // (((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)
 
-#if (((defined(__WXMSW__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxCursor) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)
+#if ((((defined(__WXMSW__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)) && (wxLUA_USE_wxCursor)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDropSource_constructor2[] = { &wxluatype_wxDataObject, &wxluatype_wxWindow, &wxluatype_wxCursor, &wxluatype_wxCursor, &wxluatype_wxCursor, NULL };
 static int LUACALL wxLua_wxDropSource_constructor2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDropSource_constructor2[1] = {{ wxLua_wxDropSource_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 5, s_wxluatypeArray_wxLua_wxDropSource_constructor2 }};
@@ -2129,7 +2129,7 @@ static int LUACALL wxLua_wxDropSource_constructor2(lua_State *L)
     return 1;
 }
 
-#endif // (((defined(__WXMSW__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxCursor) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)
+#endif // ((((defined(__WXMSW__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)) && (wxLUA_USE_wxCursor)
 
 #if ((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDropSource_constructor1[] = { &wxluatype_wxWindow, &wxluatype_wxIcon, &wxluatype_wxIcon, &wxluatype_wxIcon, NULL };
@@ -2160,7 +2160,7 @@ static int LUACALL wxLua_wxDropSource_constructor1(lua_State *L)
 
 #endif // ((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon))
 
-#if (((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxCursor)
+#if ((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxCursor) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDropSource_constructor[] = { &wxluatype_wxWindow, &wxluatype_wxCursor, &wxluatype_wxCursor, &wxluatype_wxCursor, NULL };
 static int LUACALL wxLua_wxDropSource_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDropSource_constructor[1] = {{ wxLua_wxDropSource_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 4, s_wxluatypeArray_wxLua_wxDropSource_constructor }};
@@ -2187,11 +2187,11 @@ static int LUACALL wxLua_wxDropSource_constructor(lua_State *L)
     return 1;
 }
 
-#endif // (((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxCursor)
+#endif // ((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxCursor) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP))
 
 
 
-#if ((((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ))||((((defined(__WXMSW__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxCursor) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ))||(((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon)))||((((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxCursor))
+#if ((((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ))||(((((defined(__WXMSW__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)) && (wxLUA_USE_wxCursor))||(((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon)))||(((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxCursor) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDropSource_constructor_overload[] =
 {
@@ -2200,21 +2200,21 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxDropSource_constructor_overload[] =
     { wxLua_wxDropSource_constructor3, WXLUAMETHOD_CONSTRUCTOR, 1, 5, s_wxluatypeArray_wxLua_wxDropSource_constructor3 },
 #endif // (((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)
 
-#if (((defined(__WXMSW__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxCursor) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)
+#if ((((defined(__WXMSW__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)) && (wxLUA_USE_wxCursor)
     { wxLua_wxDropSource_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 5, s_wxluatypeArray_wxLua_wxDropSource_constructor2 },
-#endif // (((defined(__WXMSW__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxCursor) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)
+#endif // ((((defined(__WXMSW__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)) && (wxLUA_USE_wxCursor)
 
 #if ((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon))
     { wxLua_wxDropSource_constructor1, WXLUAMETHOD_CONSTRUCTOR, 0, 4, s_wxluatypeArray_wxLua_wxDropSource_constructor1 },
 #endif // ((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon))
 
-#if (((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxCursor)
+#if ((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxCursor) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP))
     { wxLua_wxDropSource_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 4, s_wxluatypeArray_wxLua_wxDropSource_constructor },
-#endif // (((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxCursor)
+#endif // ((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxCursor) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP))
 };
 static int s_wxluafunc_wxLua_wxDropSource_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxDropSource_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ))||((((defined(__WXMSW__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxCursor) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ))||(((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon)))||((((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxCursor))
+#endif // ((((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ))||(((((defined(__WXMSW__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)) && (wxLUA_USE_wxCursor))||(((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon)))||(((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxCursor) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)))
 
 void wxLua_wxDropSource_delete_function(void** p)
 {
@@ -2242,9 +2242,9 @@ wxLuaBindMethod wxDropSource_methods[] = {
 
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxDropSource_delete, 1, NULL },
 
-#if ((((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ))||((((defined(__WXMSW__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxCursor) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ))||(((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon)))||((((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxCursor))
+#if ((((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ))||(((((defined(__WXMSW__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)) && (wxLUA_USE_wxCursor))||(((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon)))||(((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxCursor) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)))
     { "wxDropSource", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxDropSource_constructor_overload, s_wxluafunc_wxLua_wxDropSource_constructor_overload_count, 0 },
-#endif // ((((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ))||((((defined(__WXMSW__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxCursor) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ))||(((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon)))||((((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxCursor))
+#endif // ((((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon))) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ))||(((((defined(__WXMSW__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)) && (wxLUA_USE_wxCursor))||(((defined(__WXGTK__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP) && (wxLUA_USE_wxIcon)))||(((defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)) && ((wxLUA_USE_wxCursor) && (wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP)))
 
     { 0, 0, 0, 0 },
 };
