@@ -35,7 +35,6 @@ wxString wxPathOnly(const wxString& path);
 bool wxConcatFiles(const wxString& file1, const wxString& file2,const wxString& file3);
 bool wxCopyFile(const wxString& file1, const wxString& file2, bool overwrite = true);
 wxString wxGetCwd();
-//char* wxGetTempFileName(const wxString& prefix); // obsolete use wxFileName::CreateTempFileName
 bool wxIsWild(const wxString& pattern);
 bool wxMatchWild(const wxString& pattern, const wxString& text, bool dot_special);
 bool wxMkdir(const wxString& dir, int perm = 0777);

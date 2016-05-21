@@ -2701,23 +2701,6 @@ static int LUACALL wxLua_wxScrolledWindow_GetScrollPixelsPerUnit(lua_State *L)
 }
 %end
 
-%override wxLua_wxScrolledWindow_GetVirtualSize
-// void GetVirtualSize(int* x, int* y) const
-static int LUACALL wxLua_wxScrolledWindow_GetVirtualSize(lua_State *L)
-{
-    int y;
-    int x;
-    // get this
-    wxScrolledWindow *self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
-    // call GetVirtualSize
-    self->GetVirtualSize(&x, &y);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
-    // return the number of parameters
-    return 2;
-}
-%end
-
 %override wxLua_wxScrolledWindow_GetViewStart
 // void GetViewStart(int* x, int* y) const
 static int LUACALL wxLua_wxScrolledWindow_GetViewStart(lua_State *L)

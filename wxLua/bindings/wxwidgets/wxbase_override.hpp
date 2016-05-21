@@ -711,37 +711,6 @@ static int LUACALL wxLua_wxArrayString_ToLuaTable(lua_State *L)
 }
 %end
 
-%override wxLua_wxStringList_constructor
-// wxStringList()
-static int LUACALL wxLua_wxStringList_constructor(lua_State *L)
-{
-    // call constructor
-    wxStringList *returns = new wxStringList();
-
-    int argCount = lua_gettop(L);
-    if (argCount > 0)
-    {
-        int idx;
-        if (argCount == 1 && lua_istable(L, 1))
-        {
-            int count = 0; wxLuaSmartStringArray choices = wxlua_getwxStringarray(L, 1, count);
-            for (idx = 0; idx < count; ++idx)
-                returns->Add(choices[idx]);
-        }
-        else
-        {
-            for (idx = 1; idx < argCount; ++idx)
-                returns->Add(wxlua_getwxStringtype(L, idx));
-        }
-    }
-
-    // push the constructed class pointer
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxStringList);
-    // return the number of parameters
-    return 1;
-}
-%end
-
 // ----------------------------------------------------------------------------
 // Overrides for wxbase_datetime.i
 // ----------------------------------------------------------------------------
@@ -959,21 +928,6 @@ static int LUACALL wxLua_function_wxUnix2DosFilename(lua_State *L)
         return 1;
     }
     return 0;
-}
-%end
-
-%override wxLua_function_wxGetTempFileName
-// %function char* wxGetTempFileName(const wxString& prefix, char* buf=NULL)
-static int LUACALL wxLua_function_wxGetTempFileName(lua_State *L)
-{
-    // const wxString& prefix
-    wxString prefix = lua2wx(wxlua_getstringtype(L, 1));
-    // call wxGetTempFileName
-    wxString returns = wxGetTempFileName(prefix, NULL);
-    // push the result number
-    wxlua_pushwxString(L, returns);
-    // return the number of parameters
-    return 1;
 }
 %end
 

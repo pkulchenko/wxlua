@@ -244,11 +244,6 @@ class %delete wxTextValidator : public wxValidator
     void SetStyle(long style );
     %wxchkver_2_6 void SetIncludes(const wxArrayString& includes );
     %wxchkver_2_6 void SetExcludes(const wxArrayString& excludes );
-
-    //!%wxchkver_2_6|%wxcompat_2_4 wxStringList& GetExcludeList() const;
-    //!%wxchkver_2_6|%wxcompat_2_4 wxStringList& GetIncludeList() const;
-    //!%wxchkver_2_6|%wxcompat_2_4 void SetExcludeList(const wxStringList& stringList );
-    //!%wxchkver_2_6|%wxcompat_2_4 void SetIncludeList(const wxStringList& stringList );
 };
 
 #endif //wxLUA_USE_wxTextValidator

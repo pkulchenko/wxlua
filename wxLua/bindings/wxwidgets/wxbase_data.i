@@ -414,22 +414,6 @@ class %delete wxSortedArrayString : public wxArrayString
 #endif //wxLUA_USE_wxArrayString
 
 // ---------------------------------------------------------------------------
-// wxStringList - is deprecated in wxWidgets since 2.2
-
-//#if wxLUA_USE_wxStringList
-//%include "wx/list.h"
-//class wxStringList : public wxList
-//{
-//    wxStringList( );
-//    wxNode *Add(const wxString& s );
-//    void Clear( );
-//    void Delete(const wxString& s );
-//    bool Member(const wxString& s );
-//    void Sort( );
-//};
-//#endif wxLUA_USE_wxStringList
-
-// ---------------------------------------------------------------------------
 // wxHashTable - Lua tables are hashtables
 
 //#if wxLUA_USE_wxHashTable
