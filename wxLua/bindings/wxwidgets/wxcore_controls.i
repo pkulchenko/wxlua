@@ -1054,7 +1054,7 @@ class wxTextCtrl : public wxControl, public wxTextEntry
     !%wxchkver_3_1_1 virtual wxString GetRange(long from, long to) const;
     !%wxchkver_3_1_1 virtual wxString GetStringSelection();
     !%wxchkver_3_1_1 void AppendText(const wxString& text);
-    !%wxchkver_3_1_1 void GetSelection() const; // %override return [long from, long to]
+    !%wxchkver_3_1_1 void GetSelection() const;
     !%wxchkver_3_1_1 void WriteText(const wxString& text);
     !%wxchkver_3_1_1 wxString GetValue() const;
     %rename HitTestPos wxTextCtrlHitTestResult HitTest(const wxPoint& pt) const; // return [wxTextCtrlHitTestResult, int pos]
