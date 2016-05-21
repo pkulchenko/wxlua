@@ -788,12 +788,10 @@ class %delete wxEvtHandler : public wxObject
     // void Connect(int id, int lastId, wxEventType eventType, wxObjectEventFunction function, wxObject* userData = NULL, wxEvtHandler* eventSink = NULL);
     // void Connect(int id, wxEventType eventType, wxObjectEventFunction function, wxObject* userData = NULL, wxEvtHandler* eventSink = NULL);
     // void Connect(wxEventType eventType, wxObjectEventFunction function, wxObject* userData = NULL, wxEvtHandler* eventSink = NULL);
-    bool Disconnect(int id, int lastId, wxEventType eventType); // %override parameters
     // void Bind(const EventTag& eventType, Functor functor, int id = wxID_ANY, int lastId = wxID_ANY, wxObject *userData = NULL);
     // bool Unbind(const EventTag& eventType, Functor functor, int id = wxID_ANY, int lastId = wxID_ANY, wxObject *userData = NULL);
     voidptr_long GetClientData(); // %override C++ returns (void *) You get a number here
     wxClientData* GetClientObject() const;
-    void SetClientData(voidptr_long number); // %override C++ is (void *clientData) You can put a number here
     void SetClientObject(wxClientData* data);
     bool GetEvtHandlerEnabled();
     wxEvtHandler* GetNextHandler();
@@ -806,7 +804,9 @@ class %delete wxEvtHandler : public wxObject
     %wxchkver_3_1_1 static void AddFilter(wxEventFilter* filter);
     %wxchkver_3_1_1 static void RemoveFilter(wxEventFilter* filter);
     !%wxchkver_3_1_1 void AddPendingEvent(wxEvent& event);
+    bool Disconnect(int id, int lastId, wxEventType eventType); // %override parameters
     void Connect(int id, int lastId, wxEventType eventType, LuaFunction func); // %add parameters
+    void SetClientData(voidptr_long number); // %override C++ is (void *clientData) You can put a number here
 };
 
 // ---------------------------------------------------------------------------

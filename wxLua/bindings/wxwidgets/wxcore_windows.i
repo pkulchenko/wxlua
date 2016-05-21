@@ -150,7 +150,6 @@ class wxWindow : public wxEvtHandler
     %wxchkver_3_1_1 wxWindow* GetNextSibling() const;
     virtual wxWindow* GetParent() const;
     %wxchkver_3_1_1 wxWindow* GetPrevSibling() const;
-    %wxchkver_3_1_1 bool IsDescendant(wxWindow* win) const; // %override wxWindow* instead of wxWindowBase* as the latter is not in public interface
     virtual bool Reparent(wxWindow* newParent);
     %wxchkver_3_1_1 void AlwaysShowScrollbars(bool hflag = true, bool vflag = true);
     virtual int GetScrollPos(int orientation);
@@ -256,7 +255,6 @@ class wxWindow : public wxEvtHandler
     virtual wxVisualAttributes GetDefaultAttributes() const;
     wxFont GetFont() const;
     virtual wxColour GetForegroundColour();
-    virtual void GetTextExtent(const wxString& string, const wxFont* font = NULL) const; // %override return [int x, int y, int descent, int externalLeading]
     virtual wxRegion GetUpdateRegion() const;
     %wxchkver_3_1_1 wxRect GetUpdateClientRect() const;
     virtual bool HasTransparentBackground() const;
@@ -428,6 +426,8 @@ class wxWindow : public wxEvtHandler
     %override_name wxLua_wxWindow_ScreenToClientXY virtual void ScreenToClient(int x, int y) const; // %override return [int x, int y]
     %rename GetClientSizeWH virtual void GetClientSize() const; // %override return [int width, int height]
     %rename GetSizeWH virtual void GetSize() const; // %override return [int width, int height]
+    %wxchkver_3_1_1 bool IsDescendant(wxWindow* win) const; // %override wxWindow* instead of wxWindowBase* as the latter is not in public interface
+    virtual void GetTextExtent(const wxString& string, const wxFont* font = NULL) const; // %override return [int x, int y, int descent, int externalLeading]
 };
 
 // ---------------------------------------------------------------------------

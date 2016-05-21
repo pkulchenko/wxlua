@@ -973,7 +973,6 @@ class wxTextEntry
     %wxchkver_3_1_1 long GetInsertionPoint() const;
     %wxchkver_3_1_1 wxTextPos GetLastPosition() const;
     %wxchkver_3_1_1 wxString GetRange(long from, long to) const;
-    %wxchkver_3_1_1 void GetSelection() const; // %override return [long from, long to]
     %wxchkver_3_1_1 wxString GetStringSelection() const;
     %wxchkver_3_1_1 wxString GetValue() const;
     %wxchkver_3_1_1 bool IsEditable() const;
@@ -997,6 +996,7 @@ class wxTextEntry
     %wxchkver_3_1_1 void SetValue(const wxString& value);
     %wxchkver_3_1_1 void Undo();
     %wxchkver_3_1_1 void WriteText(const wxString& text);
+    %wxchkver_3_1_1 void GetSelection() const; // %override return [long from, long to]
 };
 
 class wxTextCtrl : public wxControl, public wxTextEntry
@@ -1011,14 +1011,12 @@ class wxTextCtrl : public wxControl, public wxTextEntry
     wxString GetLineText(long lineNo) const;
     int GetNumberOfLines() const;
     bool GetStyle(long position, wxTextAttr& style);
-    wxTextCtrlHitTestResult HitTest(const wxPoint& pt) const; // %override return [wxTextCtrlHitTestResult, int col, int row]
     bool IsModified() const;
     bool IsMultiLine() const;
     bool IsSingleLine() const;
     %wxchkver_3_1_1 bool LoadFile(const wxString& filename, int fileType = wxTEXT_TYPE_ANY);
     void MarkDirty();
     // void OnDropFiles(wxDropFilesEvent& event);
-    bool PositionToXY(long pos) const; // %override return [bool, int x, int y]
     %wxchkver_3_1_1 wxPoint PositionToCoords(long pos) const;
     %wxchkver_3_1_1 bool SaveFile(const wxString& filename = wxEmptyString, int fileType = wxTEXT_TYPE_ANY);
     bool SetDefaultStyle(const wxTextAttr& style);
@@ -1058,6 +1056,8 @@ class wxTextCtrl : public wxControl, public wxTextEntry
     !%wxchkver_3_1_1 void WriteText(const wxString& text);
     !%wxchkver_3_1_1 wxString GetValue() const;
     %rename HitTestPos wxTextCtrlHitTestResult HitTest(const wxPoint& pt) const; // return [wxTextCtrlHitTestResult, int pos]
+    bool PositionToXY(long pos) const; // %override return [bool, int x, int y]
+    wxTextCtrlHitTestResult HitTest(const wxPoint& pt) const; // %override return [wxTextCtrlHitTestResult, int col, int row]
 };
 
 enum wxTextAttrAlignment
@@ -1199,7 +1199,6 @@ class wxTreeCtrl : public wxControl
     void Delete(const wxTreeItemId& item);
     void DeleteAllItems();
     void DeleteChildren(const wxTreeItemId& item);
-    wxTextCtrl *EditLabel(const wxTreeItemId& item); // %override , wxClassInfo* textCtrlClass = wxCLASSINFO(wxTextCtrl));
     %wxchkver_3_1_1 void EnableBellOnNoMatch(bool on = true);
     %win void EndEditLabel(const wxTreeItemId& item, bool discardChanges = false);
     void EnsureVisible(const wxTreeItemId& item);
@@ -1211,7 +1210,6 @@ class wxTreeCtrl : public wxControl
     size_t GetChildrenCount(const wxTreeItemId& item, bool recursively = true) const;
     int GetCount() const;
     %win wxTextCtrl* GetEditControl() const;
-    wxTreeItemId GetFirstChild(const wxTreeItemId& item) const; // %override return [wxTreeItemId, wxTreeItemIdValue cookie]
     wxTreeItemId GetFirstVisibleItem() const;
     %wxchkver_3_1_1 wxTreeItemId GetFocusedItem() const;
     %wxchkver_3_1_1 void ClearFocusedItem();
@@ -1235,9 +1233,7 @@ class wxTreeCtrl : public wxControl
     bool GetQuickBestSize() const;
     wxTreeItemId GetRootItem() const;
     wxTreeItemId GetSelection() const;
-    size_t GetSelections() const; // %override return [size_t, Lua table of wxTreeItemIds]
     wxImageList* GetStateImageList() const;
-    wxTreeItemId HitTest(const wxPoint& point); // %override return [wxTreeItemId, int flags]
     wxTreeItemId InsertItem(const wxTreeItemId& parent, const wxTreeItemId& previous, const wxString& text, int image = -1, int selImage = -1, %ungc wxLuaTreeItemData* data = NULL);
     wxTreeItemId InsertItem(const wxTreeItemId& parent, size_t before, const wxString& text, int image = -1, int selImage = -1, %ungc wxLuaTreeItemData* data = NULL);
     bool IsBold(const wxTreeItemId& item) const;
@@ -1274,6 +1270,10 @@ class wxTreeCtrl : public wxControl
     void UnselectItem(const wxTreeItemId& item);
     %wxchkver_3_1_1 void SelectChildren(const wxTreeItemId& parent);
     !%wxchkver_3_1_1 void SetIndent(int indent);
+    size_t GetSelections() const; // %override return [size_t, Lua table of wxTreeItemIds]
+    wxTextCtrl *EditLabel(const wxTreeItemId& item); // %override , wxClassInfo* textCtrlClass = wxCLASSINFO(wxTextCtrl));
+    wxTreeItemId GetFirstChild(const wxTreeItemId& item) const; // %override return [wxTreeItemId, wxTreeItemIdValue cookie]
+    wxTreeItemId HitTest(const wxPoint& point); // %override return [wxTreeItemId, int flags]
 };
 
 // ---------------------------------------------------------------------------
