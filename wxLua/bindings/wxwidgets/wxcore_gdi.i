@@ -634,29 +634,39 @@ class %delete wxColour : public wxGDIObject
     %rename wxGREEN      #define_pointer wxLua_wxGREEN
     %rename wxCYAN       #define_pointer wxLua_wxCYAN
     %rename wxLIGHT_GREY #define_pointer wxLua_wxLIGHT_GREY
-
-    !%wxchkver_2_8 wxColour(unsigned char red, unsigned char green, unsigned char blue);
+    %wxchkver_3_1_1 wxColour();
     %wxchkver_2_8 wxColour(unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha = wxALPHA_OPAQUE);
     wxColour(const wxString& colourName);
+    %wxchkver_3_1_1 wxColour(unsigned long colRGB);
     wxColour(const wxColour& colour);
-
     %wxchkver_2_8 unsigned char Alpha() const;
     unsigned char Blue() const;
     %wxchkver_2_8 virtual wxString GetAsString(long flags = wxC2S_NAME | wxC2S_CSS_SYNTAX) const;
-    //!%mac long GetPixel() const; // Not in wx3.1 wxGTK3 or Mac
+    %wxchkver_3_1_1 void SetRGB(wxUint32 colRGB);
+    %wxchkver_3_1_1 void SetRGBA(wxUint32 colRGBA);
+    %wxchkver_3_1_1 wxUint32 GetRGB() const;
+    %wxchkver_3_1_1 wxUint32 GetRGBA() const;
+    // long GetPixel(); // not well supported and the return type is different to map
     unsigned char Green() const;
-    bool Ok() const;
+    %wxchkver_3_1_1 bool IsOk() const;
     unsigned char Red() const;
-    !%wxchkver_2_8 void Set(unsigned char red, unsigned char green, unsigned char blue);
-
-    #if %wxchkver_2_8
-        void Set(unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha = wxALPHA_OPAQUE);
-        bool Set(const wxString &str);
-        void Set(unsigned long colRGB);
-    #endif // %wxchkver_2_8
-
+    %wxchkver_2_8 void Set(unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha = wxALPHA_OPAQUE);
+    %wxchkver_2_8 void Set(unsigned long colRGB);
+    %wxchkver_2_8 bool Set(const wxString &str);
+    bool operator !=(const wxColour& colour) const;
     wxColour& operator=(const wxColour& c) const;
-    bool operator == (const wxColour& c) const;
+    bool operator ==(const wxColour& colour) const;
+    // static void MakeMono(unsigned char* r, unsigned char* g, unsigned char* b, bool on); // requires override, but easy to do in Lua
+    // static void MakeDisabled(unsigned char* r, unsigned char* g, unsigned char* b, unsigned char brightness = 255); // requires override, but has an alternative version
+    %wxchkver_3_1_1 wxColour& MakeDisabled(unsigned char brightness = 255);
+    // static void MakeGrey(unsigned char* r, unsigned char* g, unsigned char* b); // requires override, but easy to do in Lua
+    // static void MakeGrey(unsigned char* r, unsigned char* g, unsigned char* b, double weight_r, double weight_g, double weight_b); // requires override, but easy to do in Lua
+    %wxchkver_3_1_1 static unsigned char AlphaBlend(unsigned char fg, unsigned char bg, double alpha);
+    // static void ChangeLightness(unsigned char* r, unsigned char* g, unsigned char* b, int ialpha); // requires override, but has an alternative version
+    %wxchkver_3_1_1 wxColour ChangeLightness(int ialpha) const;
+    !%wxchkver_2_8 void Set(unsigned char red, unsigned char green, unsigned char blue);
+    !%wxchkver_2_8 wxColour(unsigned char red, unsigned char green, unsigned char blue);
+    bool Ok(); // %add for compatibility with earlier versions of wxlua
 };
 
 // ---------------------------------------------------------------------------
