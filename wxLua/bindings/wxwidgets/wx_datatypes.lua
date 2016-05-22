@@ -1961,6 +1961,12 @@ wx_dataTypeTable =
     Name = "wxFontFamily",
     ValueType = "enum",
   },
+  wxFontInfo = {
+    Condition = "wxLUA_USE_wxFont",
+    IsNumber = false,
+    Name = "wxFontInfo",
+    ValueType = "class",
+  },
   wxFontList = {
     Condition = "wxLUA_USE_wxFontList",
     IsNumber = false,
@@ -1995,6 +2001,12 @@ wx_dataTypeTable =
     Condition = "wxLUA_USE_wxFont",
     IsNumber = true,
     Name = "wxFontStyle",
+    ValueType = "enum",
+  },
+  wxFontSymbolicSize = {
+    Condition = "(wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFont)",
+    IsNumber = true,
+    Name = "wxFontSymbolicSize",
     ValueType = "enum",
   },
   wxFontWeight = {

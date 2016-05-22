@@ -945,6 +945,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 
 #if wxLUA_USE_wxFont
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFont;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFontInfo;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxNativeFontInfo;
 #endif // wxLUA_USE_wxFont
 

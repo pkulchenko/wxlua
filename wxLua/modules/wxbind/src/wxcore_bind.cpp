@@ -1132,6 +1132,19 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxFONTFLAG_SLANT", wxFONTFLAG_SLANT },
         { "wxFONTFLAG_STRIKETHROUGH", wxFONTFLAG_STRIKETHROUGH },
         { "wxFONTFLAG_UNDERLINED", wxFONTFLAG_UNDERLINED },
+#endif // wxLUA_USE_wxFont
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFont)
+        { "wxFONTSIZE_LARGE", wxFONTSIZE_LARGE },
+        { "wxFONTSIZE_MEDIUM", wxFONTSIZE_MEDIUM },
+        { "wxFONTSIZE_SMALL", wxFONTSIZE_SMALL },
+        { "wxFONTSIZE_XX_LARGE", wxFONTSIZE_XX_LARGE },
+        { "wxFONTSIZE_XX_SMALL", wxFONTSIZE_XX_SMALL },
+        { "wxFONTSIZE_X_LARGE", wxFONTSIZE_X_LARGE },
+        { "wxFONTSIZE_X_SMALL", wxFONTSIZE_X_SMALL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFont)
+
+#if wxLUA_USE_wxFont
         { "wxFONTSTYLE_ITALIC", wxFONTSTYLE_ITALIC },
         { "wxFONTSTYLE_MAX", wxFONTSTYLE_MAX },
         { "wxFONTSTYLE_NORMAL", wxFONTSTYLE_NORMAL },
@@ -4571,6 +4584,7 @@ static const char* wxluaclassname_wxFont = "wxFont";
 static const char* wxluaclassname_wxFontData = "wxFontData";
 static const char* wxluaclassname_wxFontDialog = "wxFontDialog";
 static const char* wxluaclassname_wxFontEnumerator = "wxFontEnumerator";
+static const char* wxluaclassname_wxFontInfo = "wxFontInfo";
 static const char* wxluaclassname_wxFontList = "wxFontList";
 static const char* wxluaclassname_wxFontMapper = "wxFontMapper";
 static const char* wxluaclassname_wxFontPickerCtrl = "wxFontPickerCtrl";
@@ -6144,6 +6158,9 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern wxLuaBindMethod wxFont_methods[];
     extern int wxFont_methodCount;
     extern void wxLua_wxFont_delete_function(void** p);
+    extern wxLuaBindMethod wxFontInfo_methods[];
+    extern int wxFontInfo_methodCount;
+    extern void wxLua_wxFontInfo_delete_function(void** p);
     extern wxLuaBindMethod wxNativeFontInfo_methods[];
     extern int wxNativeFontInfo_methodCount;
     extern void wxLua_wxNativeFontInfo_delete_function(void** p);
@@ -6985,6 +7002,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #if wxLUA_USE_wxFontEnumerator
         { wxluaclassname_wxFontEnumerator, wxFontEnumerator_methods, wxFontEnumerator_methodCount, NULL, &wxluatype_wxFontEnumerator, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxFontEnumerator_delete_function, }, 
 #endif // wxLUA_USE_wxFontEnumerator
+
+#if wxLUA_USE_wxFont
+        { wxluaclassname_wxFontInfo, wxFontInfo_methods, wxFontInfo_methodCount, NULL, &wxluatype_wxFontInfo, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxFontInfo_delete_function, }, 
+#endif // wxLUA_USE_wxFont
 
 #if wxLUA_USE_wxFontList
         { wxluaclassname_wxFontList, wxFontList_methods, wxFontList_methodCount, NULL, &wxluatype_wxFontList, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxFontList_delete_function, }, 

@@ -366,48 +366,110 @@ enum
     wxFONTFLAG_MASK
 };
 
+#if %wxchkver_3_1_1
+enum wxFontSymbolicSize
+{
+    wxFONTSIZE_XX_SMALL = -3,   //!< Extra small.
+    wxFONTSIZE_X_SMALL,         //!< Very small.
+    wxFONTSIZE_SMALL,           //!< Small.
+    wxFONTSIZE_MEDIUM,          //!< Normal.
+    wxFONTSIZE_LARGE,           //!< Large.
+    wxFONTSIZE_X_LARGE,         //!< Very large.
+    wxFONTSIZE_XX_LARGE         //!< Extra large.
+};
+#endif // %wxchkver_3_1_1
+
+class wxFontInfo
+{
+    %wxchkver_3_1_1 wxFontInfo();
+    %wxchkver_3_1_1 wxFontInfo(int pointSize);
+    %wxchkver_3_1_1 wxFontInfo(const wxSize& pixelSize);
+    %wxchkver_3_1_1 wxFontInfo& Family(wxFontFamily family);
+    %wxchkver_3_1_1 wxFontInfo& FaceName(const wxString& faceName);
+    %wxchkver_3_1_1 wxFontInfo& Bold(bool bold = true);
+    %wxchkver_3_1_1 wxFontInfo& Light(bool light = true);
+    %wxchkver_3_1_1 wxFontInfo& Italic(bool italic = true);
+    %wxchkver_3_1_1 wxFontInfo& Slant(bool slant = true);
+    %wxchkver_3_1_1 wxFontInfo& AntiAliased(bool antiAliased = true);
+    %wxchkver_3_1_1 wxFontInfo& Underlined(bool underlined = true);
+    %wxchkver_3_1_1 wxFontInfo& Strikethrough(bool strikethrough = true);
+    %wxchkver_3_1_1 wxFontInfo& Encoding(wxFontEncoding encoding);
+    %wxchkver_3_1_1 wxFontInfo& AllFlags(int flags);
+};
+
 class %delete wxFont : public wxGDIObject
 {
-    // Note: use wxNullFont as the object for static functions
-
     #define_object wxNullFont
     %rename wxNORMAL_FONT #define_pointer wxLua_wxNORMAL_FONT // hack for wxWidgets >2.7
     %rename wxSMALL_FONT  #define_pointer wxLua_wxSMALL_FONT
     %rename wxITALIC_FONT #define_pointer wxLua_wxITALIC_FONT
     %rename wxSWISS_FONT  #define_pointer wxLua_wxSWISS_FONT
-
-    wxFont(int pointSize, wxFontFamily family, int style, wxFontWeight weight, const bool underline = false, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
-    wxFont(int pointSize, int family, int style, int weight, const bool underline = false, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
+    %wxchkver_3_1_1 wxFont();
     wxFont(const wxFont& font);
-
-    bool IsFixedWidth() const;
-    static wxFontEncoding GetDefaultEncoding();
+    %wxchkver_3_1_1 wxFont(const wxFontInfo& font);
+    %wxchkver_3_1_1 wxFont(int pointSize, wxFontFamily family, wxFontStyle style, wxFontWeight weight, bool underline = false, const wxString& faceName = wxEmptyString, wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
+    %wxchkver_3_1_1 wxFont(const wxSize& pixelSize, wxFontFamily family, wxFontStyle style, wxFontWeight weight, bool underline = false, const wxString& faceName = wxEmptyString, wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
+    %wxchkver_3_1_1 wxFont(const wxString& nativeInfoString);
+    %wxchkver_3_1_1 wxFont(const wxNativeFontInfo& nativeInfo);
+    %wxchkver_3_1_1 wxFont GetBaseFont() const;
+    %wxchkver_3_1_1 wxFontEncoding GetEncoding() const;
     wxString GetFaceName() const;
     int      GetFamily() const;
     wxString GetNativeFontInfoDesc() const;
+    %wxchkver_3_1_1 wxString GetNativeFontInfoUserDesc() const;
+    %wxchkver_3_1_1 const wxNativeFontInfo *GetNativeFontInfo() const;
     int      GetPointSize() const;
+    %wxchkver_3_1_1 wxSize GetPixelSize() const;
     int      GetStyle() const;
     bool     GetUnderlined() const;
+    %wxchkver_3_1_1 bool GetStrikethrough() const;
     int      GetWeight() const;
-    static %gc wxFont* New(int pointSize, wxFontFamily family, int style, wxFontWeight weight, const bool underline = false, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
-    static %gc wxFont* New(int pointSize, wxFontFamily family, int flags = wxFONTFLAG_DEFAULT, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
-    static %gc wxFont* New(const wxSize& pixelSize, wxFontFamily family, int style, wxFontWeight weight, const bool underline = false, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
-    static %gc wxFont* New(const wxSize& pixelSize, wxFontFamily family, int flags = wxFONTFLAG_DEFAULT, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
-    bool Ok(); // %add for compatibility with earlier versions of wxlua
-    static void SetDefaultEncoding(wxFontEncoding encoding);
-    %not_overload !%wxchkver_2_8 void SetFaceName(const wxString& faceName);
+    bool IsFixedWidth() const;
+    %wxchkver_3_1_1 bool IsOk() const;
+    %wxchkver_3_1_1 wxFont Bold() const;
+    %wxchkver_3_1_1 wxFont Italic() const;
+    %wxchkver_3_1_1 wxFont Larger() const;
+    %wxchkver_3_1_1 wxFont Smaller() const;
+    %wxchkver_3_1_1 wxFont Underlined() const;
+    %wxchkver_3_1_1 wxFont Strikethrough() const;
+    %wxchkver_3_1_1 wxFont& MakeBold();
+    %wxchkver_3_1_1 wxFont& MakeItalic();
+    %wxchkver_3_1_1 wxFont& MakeLarger();
+    %wxchkver_3_1_1 wxFont& MakeSmaller();
+    %wxchkver_3_1_1 wxFont& MakeUnderlined();
+    %wxchkver_3_1_1 wxFont& MakeStrikethrough();
+    %wxchkver_3_1_1 wxFont& Scale(float x);
+    %wxchkver_3_1_1 wxFont Scaled(float x) const;
+    %wxchkver_3_1_1 void SetEncoding(wxFontEncoding encoding);
     %not_overload %wxchkver_2_8 bool SetFaceName(const wxString& faceName);
-    void     SetFamily(int family);
-    %not_overload !%wxchkver_2_8 void SetNativeFontInfo(const wxString& info);
+    %wxchkver_3_1_1 void SetFamily(wxFontFamily family);
     %not_overload %wxchkver_2_8 bool SetNativeFontInfo(const wxString& info);
     %wxchkver_2_8 bool SetNativeFontInfoUserDesc(const wxString& info);
     void     SetPointSize(int pointSize);
-    void     SetStyle(int style);
-    void     SetUnderlined(const bool underlined);
-    void     SetWeight(int weight);
-
-    wxFont& operator=(const wxFont& f) const;
-    bool operator == (const wxFont& font) const;
+    %wxchkver_3_1_1 void SetPixelSize(const wxSize& pixelSize);
+    %wxchkver_3_1_1 void SetStyle(wxFontStyle style);
+    %wxchkver_3_1_1 void SetSymbolicSize(wxFontSymbolicSize size);
+    %wxchkver_3_1_1 void SetSymbolicSizeRelativeTo(wxFontSymbolicSize size, int base);
+    %wxchkver_3_1_1 void SetUnderlined(bool underlined);
+    %wxchkver_3_1_1 void SetStrikethrough(bool strikethrough);
+    %wxchkver_3_1_1 void SetWeight(wxFontWeight weight);
+    %wxchkver_3_1_1 bool operator!=(const wxFont& font) const;
+    %wxchkver_3_1_1 bool operator==(const wxFont& font) const;
+    wxFont& operator =(const wxFont& font);
+    static wxFontEncoding GetDefaultEncoding();
+    static void SetDefaultEncoding(wxFontEncoding encoding);
+    static %gc wxFont* New(int pointSize, wxFontFamily family, int flags = wxFONTFLAG_DEFAULT, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
+    static %gc wxFont* New(const wxSize& pixelSize, wxFontFamily family, int flags = wxFONTFLAG_DEFAULT, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
+    !%wxchkver_3_1_1 void     SetFamily(int family);
+    !%wxchkver_3_1_1 void     SetStyle(int style);
+    !%wxchkver_3_1_1 void     SetUnderlined(const bool underlined);
+    !%wxchkver_3_1_1 void     SetWeight(int weight);
+    !%wxchkver_3_1_1 wxFont& operator=(const wxFont& f) const;
+    !%wxchkver_3_1_1 wxFont(int pointSize, int family, int style, int weight, const bool underline = false, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
+    !%wxchkver_3_1_1 wxFont(int pointSize, wxFontFamily family, int style, wxFontWeight weight, const bool underline = false, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
+    bool Ok(); // %add for compatibility with earlier versions of wxlua
+    static %gc wxFont* New(const wxSize& pixelSize, wxFontFamily family, int style, wxFontWeight weight, const bool underline = false, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
+    static %gc wxFont* New(int pointSize, wxFontFamily family, int style, wxFontWeight weight, const bool underline = false, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
 };
 
 // ---------------------------------------------------------------------------
