@@ -2098,12 +2098,10 @@ static int LUACALL wxLua_wxStyledTextCtrl_DistanceToSecondaryStyles(lua_State *L
     return 1;
 }
 
-#endif // wxCHECK_VERSION(3,1,0)
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_DoDragLeave[] = { &wxluatype_wxStyledTextCtrl, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_DoDragLeave(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_DoDragLeave[1] = {{ wxLua_wxStyledTextCtrl_DoDragLeave, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_DoDragLeave }};
-//     void DoDragLeave();
+//     %wxchkver_3_1_0 void DoDragLeave();
 static int LUACALL wxLua_wxStyledTextCtrl_DoDragLeave(lua_State *L)
 {
     // get this
@@ -2113,6 +2111,8 @@ static int LUACALL wxLua_wxStyledTextCtrl_DoDragLeave(lua_State *L)
 
     return 0;
 }
+
+#endif // wxCHECK_VERSION(3,1,0)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_DoDropText[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_DoDropText(lua_State *L);
@@ -12577,9 +12577,9 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
 
 #if wxCHECK_VERSION(3,1,0)
     { "DistanceToSecondaryStyles", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_DistanceToSecondaryStyles, 1, NULL },
+    { "DoDragLeave", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_DoDragLeave, 1, NULL },
 #endif // wxCHECK_VERSION(3,1,0)
 
-    { "DoDragLeave", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_DoDragLeave, 1, NULL },
     { "DoDropText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_DoDropText, 1, NULL },
     { "DocLineFromVisible", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_DocLineFromVisible, 1, NULL },
     { "DocumentEnd", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_DocumentEnd, 1, NULL },

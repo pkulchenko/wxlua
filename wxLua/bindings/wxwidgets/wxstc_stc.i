@@ -6225,7 +6225,7 @@ class wxStyledTextCtrl : public wxControl
 
        @since 3.1.0
     */
-    void DoDragLeave();
+    %wxchkver_3_1_0 void DoDragLeave();
 
     /**
        Allow for simulating a DnD DropText
