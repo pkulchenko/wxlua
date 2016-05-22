@@ -1158,6 +1158,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 
 #if wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStatusBar;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStatusBarPane;
 #endif // wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR
 
 #if wxLUA_USE_wxSystemSettings

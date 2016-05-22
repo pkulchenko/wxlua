@@ -90,10 +90,10 @@ class wxApp : public wxAppConsole
     %wxchkver_3_1_1 && %mac void MacReopenApp();
     %wxchkver_3_1_1 && %mac bool OSXIsGUIApplication();
     !%wxchkver_3_1_1 bool Pending();
+    !%wxchkver_3_1_1 int MainLoop();
     !%wxchkver_3_1_1 static bool IsMainLoopRunning();
     !%wxchkver_3_1_1 void Dispatch();
     !%wxchkver_3_1_1 void ExitMainLoop();
-    !%wxchkver_3_1_1 int MainLoop();
     !%wxchkver_3_1_1 void SetAppName(const wxString& name);
     !%wxchkver_3_1_1 void SetClassName(const wxString& name);
     !%wxchkver_3_1_1 void SetUseBestVisual(bool flag);
@@ -278,32 +278,33 @@ class wxMiniFrame : public wxFrame
 #define wxSB_FLAT
 #define wxSB_RAISED
 
+class wxStatusBarPane
+{
+    %wxchkver_3_1_1 wxStatusBarPane(int style = wxSB_NORMAL, int width = 0);
+    %wxchkver_3_1_1 int GetWidth() const;
+    %wxchkver_3_1_1 int GetStyle() const;
+    %wxchkver_3_1_1 wxString GetText() const;
+};
+
 class wxStatusBar : public wxWindow
 {
     wxStatusBar();
     wxStatusBar(wxWindow* parent, wxWindowID id, long style = wxST_SIZEGRIP, const wxString& name = "wxStatusBar");
     bool Create(wxWindow *parent, wxWindowID id, long style = wxST_SIZEGRIP, const wxString& name = "wxStatusBar");
-
     virtual bool GetFieldRect(int i, wxRect& rect) const;
     int GetFieldsCount() const;
+    %wxchkver_3_1_1 const wxStatusBarPane& GetField(int n) const;
+    %wxchkver_3_1_1 wxSize GetBorders() const;
     virtual wxString GetStatusText(int ir = 0) const;
+    %wxchkver_3_1_1 int GetStatusWidth(int n) const;
+    %wxchkver_3_1_1 int GetStatusStyle(int n) const;
     void PopStatusText(int field = 0);
     void PushStatusText(const wxString& string, int field = 0);
-
-    // %override void wxStatusBar::SetFieldsCount(either a single number or a Lua table with number indexes and values);
-    // C++ Func: virtual void SetFieldsCount(int number = 1, int* widths = NULL);
-    virtual void SetFieldsCount(LuaTable intTable);
-
     void SetMinHeight(int height);
     virtual void SetStatusText(const wxString& text, int i = 0);
-
-    // void wxStatusBar::SetStatusWidths(Lua table with number indexes and values);
-    // C++ Func: virtual void SetStatusWidths(int n, int *widths);
-    virtual void SetStatusWidths(IntArray_FromLuaTable intTable);
-
-    // void wxStatusBar::SetStatusStyles(Lua table with number indexes and values);
-    // C++ Func: virtual void SetStatusStyles(int n, int *styles);
-    virtual void SetStatusStyles(IntArray_FromLuaTable intTable);
+    virtual void SetFieldsCount(LuaTable intTable); // %override parameters
+    virtual void SetStatusStyles(IntArray_FromLuaTable intTable); // %override parameters
+    virtual void SetStatusWidths(IntArray_FromLuaTable intTable); // %override parameters
 };
 
 #endif //wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR

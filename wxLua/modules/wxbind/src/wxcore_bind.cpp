@@ -4754,6 +4754,7 @@ static const char* wxluaclassname_wxStaticBoxSizer = "wxStaticBoxSizer";
 static const char* wxluaclassname_wxStaticLine = "wxStaticLine";
 static const char* wxluaclassname_wxStaticText = "wxStaticText";
 static const char* wxluaclassname_wxStatusBar = "wxStatusBar";
+static const char* wxluaclassname_wxStatusBarPane = "wxStatusBarPane";
 static const char* wxluaclassname_wxStdDialogButtonSizer = "wxStdDialogButtonSizer";
 static const char* wxluaclassname_wxStockGDI = "wxStockGDI";
 static const char* wxluaclassname_wxSysColourChangedEvent = "wxSysColourChangedEvent";
@@ -6549,6 +6550,9 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern wxLuaBindMethod wxStatusBar_methods[];
     extern int wxStatusBar_methodCount;
     extern void wxLua_wxStatusBar_delete_function(void** p);
+    extern wxLuaBindMethod wxStatusBarPane_methods[];
+    extern int wxStatusBarPane_methodCount;
+    extern void wxLua_wxStatusBarPane_delete_function(void** p);
 #endif // wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR
 
 #if wxLUA_USE_wxSystemSettings
@@ -7501,6 +7505,7 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 
 #if wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR
         { wxluaclassname_wxStatusBar, wxStatusBar_methods, wxStatusBar_methodCount, CLASSINFO(wxStatusBar), &wxluatype_wxStatusBar, wxluabaseclassnames_wxStatusBar, wxluabaseclassbinds_wxStatusBar, NULL, NULL, NULL, 0, &wxLua_wxStatusBar_delete_function, }, 
+        { wxluaclassname_wxStatusBarPane, wxStatusBarPane_methods, wxStatusBarPane_methodCount, NULL, &wxluatype_wxStatusBarPane, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxStatusBarPane_delete_function, }, 
 #endif // wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_BUTTON)

@@ -4619,6 +4619,12 @@ wx_dataTypeTable =
     Name = "wxStatusBar",
     ValueType = "class",
   },
+  wxStatusBarPane = {
+    Condition = "wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR",
+    IsNumber = false,
+    Name = "wxStatusBarPane",
+    ValueType = "class",
+  },
   wxStdDialogButtonSizer = {
     BaseClasses = {
       [1] = "wxBoxSizer",

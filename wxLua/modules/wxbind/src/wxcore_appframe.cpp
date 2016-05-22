@@ -3417,6 +3417,116 @@ int wxMiniFrame_methodCount = sizeof(wxMiniFrame_methods)/sizeof(wxLuaBindMethod
 
 #if wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR
 // ---------------------------------------------------------------------------
+// Bind class wxStatusBarPane
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxStatusBarPane'
+int wxluatype_wxStatusBarPane = WXLUA_TUNKNOWN;
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStatusBarPane_GetStyle[] = { &wxluatype_wxStatusBarPane, NULL };
+static int LUACALL wxLua_wxStatusBarPane_GetStyle(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStatusBarPane_GetStyle[1] = {{ wxLua_wxStatusBarPane_GetStyle, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStatusBarPane_GetStyle }};
+//     %wxchkver_3_1_1 int GetStyle() const;
+static int LUACALL wxLua_wxStatusBarPane_GetStyle(lua_State *L)
+{
+    // get this
+    wxStatusBarPane * self = (wxStatusBarPane *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStatusBarPane);
+    // call GetStyle
+    int returns = (self->GetStyle());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStatusBarPane_GetText[] = { &wxluatype_wxStatusBarPane, NULL };
+static int LUACALL wxLua_wxStatusBarPane_GetText(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStatusBarPane_GetText[1] = {{ wxLua_wxStatusBarPane_GetText, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStatusBarPane_GetText }};
+//     %wxchkver_3_1_1 wxString GetText() const;
+static int LUACALL wxLua_wxStatusBarPane_GetText(lua_State *L)
+{
+    // get this
+    wxStatusBarPane * self = (wxStatusBarPane *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStatusBarPane);
+    // call GetText
+    wxString returns = (self->GetText());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStatusBarPane_GetWidth[] = { &wxluatype_wxStatusBarPane, NULL };
+static int LUACALL wxLua_wxStatusBarPane_GetWidth(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStatusBarPane_GetWidth[1] = {{ wxLua_wxStatusBarPane_GetWidth, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStatusBarPane_GetWidth }};
+//     %wxchkver_3_1_1 int GetWidth() const;
+static int LUACALL wxLua_wxStatusBarPane_GetWidth(lua_State *L)
+{
+    // get this
+    wxStatusBarPane * self = (wxStatusBarPane *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStatusBarPane);
+    // call GetWidth
+    int returns = (self->GetWidth());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStatusBarPane_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStatusBarPane_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStatusBarPane_constructor[1] = {{ wxLua_wxStatusBarPane_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxStatusBarPane_constructor }};
+//     %wxchkver_3_1_1 wxStatusBarPane(int style = wxSB_NORMAL, int width = 0);
+static int LUACALL wxLua_wxStatusBarPane_constructor(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int width = 0
+    int width = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : 0);
+    // int style = wxSB_NORMAL
+    int style = (argCount >= 1 ? (int)wxlua_getnumbertype(L, 1) : wxSB_NORMAL);
+    // call constructor
+    wxStatusBarPane* returns = new wxStatusBarPane(style, width);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxStatusBarPane);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+
+
+
+void wxLua_wxStatusBarPane_delete_function(void** p)
+{
+    wxStatusBarPane* o = (wxStatusBarPane*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxStatusBarPane_methods[] = {
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+    { "GetStyle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStatusBarPane_GetStyle, 1, NULL },
+    { "GetText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStatusBarPane_GetText, 1, NULL },
+    { "GetWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStatusBarPane_GetWidth, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+    { "wxStatusBarPane", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxStatusBarPane_constructor, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+
+    { 0, 0, 0, 0 },
+};
+
+int wxStatusBarPane_methodCount = sizeof(wxStatusBarPane_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR
+
+
+#if wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR
+// ---------------------------------------------------------------------------
 // Bind class wxStatusBar
 // ---------------------------------------------------------------------------
 
@@ -3449,6 +3559,49 @@ static int LUACALL wxLua_wxStatusBar_Create(lua_State *L)
     return 1;
 }
 
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStatusBar_GetBorders[] = { &wxluatype_wxStatusBar, NULL };
+static int LUACALL wxLua_wxStatusBar_GetBorders(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStatusBar_GetBorders[1] = {{ wxLua_wxStatusBar_GetBorders, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStatusBar_GetBorders }};
+//     %wxchkver_3_1_1 wxSize GetBorders() const;
+static int LUACALL wxLua_wxStatusBar_GetBorders(lua_State *L)
+{
+    // get this
+    wxStatusBar * self = (wxStatusBar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStatusBar);
+    // call GetBorders
+    // allocate a new object using the copy constructor
+    wxSize* returns = new wxSize(self->GetBorders());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)) && (wxLUA_USE_wxPointSizeRect)
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStatusBar_GetField[] = { &wxluatype_wxStatusBar, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStatusBar_GetField(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStatusBar_GetField[1] = {{ wxLua_wxStatusBar_GetField, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStatusBar_GetField }};
+//     %wxchkver_3_1_1 const wxStatusBarPane& GetField(int n) const;
+static int LUACALL wxLua_wxStatusBar_GetField(lua_State *L)
+{
+    // int n
+    int n = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStatusBar * self = (wxStatusBar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStatusBar);
+    // call GetField
+    const wxStatusBarPane* returns = (const wxStatusBarPane*)&self->GetField(n);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxStatusBarPane);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
 
 #if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStatusBar_GetFieldRect[] = { &wxluatype_wxStatusBar, &wxluatype_TNUMBER, &wxluatype_wxRect, NULL };
@@ -3489,6 +3642,28 @@ static int LUACALL wxLua_wxStatusBar_GetFieldsCount(lua_State *L)
     return 1;
 }
 
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStatusBar_GetStatusStyle[] = { &wxluatype_wxStatusBar, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStatusBar_GetStatusStyle(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStatusBar_GetStatusStyle[1] = {{ wxLua_wxStatusBar_GetStatusStyle, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStatusBar_GetStatusStyle }};
+//     %wxchkver_3_1_1 int GetStatusStyle(int n) const;
+static int LUACALL wxLua_wxStatusBar_GetStatusStyle(lua_State *L)
+{
+    // int n
+    int n = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStatusBar * self = (wxStatusBar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStatusBar);
+    // call GetStatusStyle
+    int returns = (self->GetStatusStyle(n));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStatusBar_GetStatusText[] = { &wxluatype_wxStatusBar, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStatusBar_GetStatusText(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStatusBar_GetStatusText[1] = {{ wxLua_wxStatusBar_GetStatusText, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxStatusBar_GetStatusText }};
@@ -3508,6 +3683,28 @@ static int LUACALL wxLua_wxStatusBar_GetStatusText(lua_State *L)
 
     return 1;
 }
+
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStatusBar_GetStatusWidth[] = { &wxluatype_wxStatusBar, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStatusBar_GetStatusWidth(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStatusBar_GetStatusWidth[1] = {{ wxLua_wxStatusBar_GetStatusWidth, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStatusBar_GetStatusWidth }};
+//     %wxchkver_3_1_1 int GetStatusWidth(int n) const;
+static int LUACALL wxLua_wxStatusBar_GetStatusWidth(lua_State *L)
+{
+    // int n
+    int n = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStatusBar * self = (wxStatusBar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStatusBar);
+    // call GetStatusWidth
+    int returns = (self->GetStatusWidth(n));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStatusBar_PopStatusText[] = { &wxluatype_wxStatusBar, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStatusBar_PopStatusText(lua_State *L);
@@ -3592,7 +3789,7 @@ static int LUACALL wxLua_wxStatusBar_SetMinHeight(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStatusBar_SetStatusStyles[] = { &wxluatype_wxStatusBar, &wxluatype_TTABLE, NULL };
 static int LUACALL wxLua_wxStatusBar_SetStatusStyles(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStatusBar_SetStatusStyles[1] = {{ wxLua_wxStatusBar_SetStatusStyles, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStatusBar_SetStatusStyles }};
-//     virtual void SetStatusStyles(IntArray_FromLuaTable intTable);
+//     virtual void SetStatusStyles(IntArray_FromLuaTable intTable); // %override parameters
 static int LUACALL wxLua_wxStatusBar_SetStatusStyles(lua_State *L)
 {
     // IntArray_FromLuaTable intTable
@@ -3628,7 +3825,7 @@ static int LUACALL wxLua_wxStatusBar_SetStatusText(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStatusBar_SetStatusWidths[] = { &wxluatype_wxStatusBar, &wxluatype_TTABLE, NULL };
 static int LUACALL wxLua_wxStatusBar_SetStatusWidths(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStatusBar_SetStatusWidths[1] = {{ wxLua_wxStatusBar_SetStatusWidths, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStatusBar_SetStatusWidths }};
-//     virtual void SetStatusWidths(IntArray_FromLuaTable intTable);
+//     virtual void SetStatusWidths(IntArray_FromLuaTable intTable); // %override parameters
 static int LUACALL wxLua_wxStatusBar_SetStatusWidths(lua_State *L)
 {
     // IntArray_FromLuaTable intTable
@@ -3706,12 +3903,30 @@ void wxLua_wxStatusBar_delete_function(void** p)
 wxLuaBindMethod wxStatusBar_methods[] = {
     { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStatusBar_Create, 1, NULL },
 
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)) && (wxLUA_USE_wxPointSizeRect)
+    { "GetBorders", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStatusBar_GetBorders, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)) && (wxLUA_USE_wxPointSizeRect)
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+    { "GetField", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStatusBar_GetField, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+
 #if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
     { "GetFieldRect", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStatusBar_GetFieldRect, 1, NULL },
 #endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
 
     { "GetFieldsCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStatusBar_GetFieldsCount, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+    { "GetStatusStyle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStatusBar_GetStatusStyle, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+
     { "GetStatusText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStatusBar_GetStatusText, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+    { "GetStatusWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStatusBar_GetStatusWidth, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR)
+
     { "PopStatusText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStatusBar_PopStatusText, 1, NULL },
     { "PushStatusText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStatusBar_PushStatusText, 1, NULL },
     { "SetFieldsCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStatusBar_SetFieldsCount, 1, NULL },
