@@ -755,13 +755,10 @@ class %delete wxPen : public wxGDIObject
     %rename wxGREY_PEN         #define_pointer wxLua_wxGREY_PEN
     %rename wxMEDIUM_GREY_PEN  #define_pointer wxLua_wxMEDIUM_GREY_PEN
     %rename wxLIGHT_GREY_PEN   #define_pointer wxLua_wxLIGHT_GREY_PEN
-
     wxPen();
     wxPen(const wxColour& colour, int width, wxPenStyle style);
-    wxPen(const wxString& colourName, int width, wxPenStyle style);
     %win wxPen(const wxBitmap& stipple, int width);
     wxPen(const wxPen& pen);
-
     wxPenCap GetCap() const;
     wxColour GetColour() const; // not wxColur& so we allocate a new one
     // int GetDashes(wxDash** dashes) const;
@@ -769,21 +766,23 @@ class %delete wxPen : public wxGDIObject
     %win wxBitmap* GetStipple() const;
     wxPenStyle GetStyle() const;
     int GetWidth() const;
-    bool Ok() const; // %add for compatibility with earlier versions of wxlua
+    %wxchkver_3_1_1 bool IsOk() const;
+    %wxchkver_3_1_1 bool IsNonTransparent() const;
+    %wxchkver_3_1_1 bool IsTransparent() const;
     void SetCap(wxPenCap capStyle);
-
     void SetColour(wxColour& colour);
-    void SetColour(const wxString& colourName);
     void SetColour(unsigned char red, unsigned char green, unsigned char blue);
-
     // void SetDashes(int nb_dashes, const wxDash *dash);
     void SetJoin(wxPenJoin join_style);
     %win void SetStipple(const wxBitmap& stipple);
     void SetStyle(wxPenStyle style);
     void SetWidth(int width);
-
+    %wxchkver_3_1_1 bool operator!=(const wxPen& pen) const;
     wxPen& operator=(const wxPen& p) const;
-    bool operator == (const wxPen& p) const;
+    %wxchkver_3_1_1 bool operator==(const wxPen& pen) const;
+    !%wxchkver_3_1_1 void SetColour(const wxString& colourName);
+    !%wxchkver_3_1_1 wxPen(const wxString& colourName, int width, wxPenStyle style);
+    bool Ok() const; // %add for compatibility with earlier versions of wxlua
 };
 
 // ---------------------------------------------------------------------------
@@ -843,26 +842,31 @@ class %delete wxBrush : public wxGDIObject
     %rename wxTRANSPARENT_BRUSH #define_pointer wxLua_wxTRANSPARENT_BRUSH
     %rename wxCYAN_BRUSH        #define_pointer wxLua_wxCYAN_BRUSH
     %rename wxRED_BRUSH         #define_pointer wxLua_wxRED_BRUSH
-
     wxBrush();
-    wxBrush(const wxColour& colour, int style);
-    wxBrush(const wxString& colourName, int style);
+    %wxchkver_3_1_1 wxBrush(const wxColour& colour, wxBrushStyle style = wxBRUSHSTYLE_SOLID);
     wxBrush(const wxBitmap& stippleBitmap);
     wxBrush(const wxBrush& brush);
-
     wxColour GetColour() const;
     wxBitmap* GetStipple() const;
     int GetStyle() const;
     bool IsHatch() const;
-    bool Ok() const; // %add for compatibility with earlier versions of wxlua
-    void SetColour(wxColour& colour);
-    void SetColour(const wxString& colourName);
-    void SetColour(const unsigned char red, const unsigned char green, const unsigned char blue);
+    %wxchkver_3_1_1 bool IsOk() const;
+    %wxchkver_3_1_1 bool IsNonTransparent() const;
+    %wxchkver_3_1_1 bool IsTransparent() const;
+    %wxchkver_3_1_1 void SetColour(const wxColour& colour);
+    %wxchkver_3_1_1 void SetColour(unsigned char red, unsigned char green, unsigned char blue);
     void SetStipple(const wxBitmap& bitmap);
-    void SetStyle(int style);
-
-    wxBrush& operator=(const wxBrush& b) const;
-    bool operator == (const wxBrush& b) const;
+    %wxchkver_3_1_1 void SetStyle(wxBrushStyle style);
+    bool operator !=(const wxBrush& brush) const;
+    bool operator ==(const wxBrush& brush) const;
+    !%wxchkver_3_1_1 void SetColour(const unsigned char red, const unsigned char green, const unsigned char blue);
+    !%wxchkver_3_1_1 void SetColour(const wxString& colourName);
+    !%wxchkver_3_1_1 void SetColour(wxColour& colour);
+    !%wxchkver_3_1_1 void SetStyle(int style);
+    !%wxchkver_3_1_1 wxBrush& operator=(const wxBrush& b) const;
+    !%wxchkver_3_1_1 wxBrush(const wxColour& colour, int style);
+    !%wxchkver_3_1_1 wxBrush(const wxString& colourName, int style);
+    bool Ok() const; // %add for compatibility with earlier versions of wxlua
 };
 
 // ---------------------------------------------------------------------------
@@ -961,17 +965,15 @@ class wxStockGDI
 class %delete wxPalette : public wxGDIObject
 {
     #define_object wxNullPalette
-
     wxPalette();
     wxPalette(const wxPalette& palette);
-
-    bool Create(int n, const unsigned char* red, const unsigned char* green, const unsigned char* blue); // %override bool wxPalette::Create(int n, Lua string red, Lua string green, Lua string blue);
-
+    %wxchkver_3_1_1 wxPalette(int n, const unsigned char* red, const unsigned char* green, const unsigned char* blue);
     int GetColoursCount() const;
     int GetPixel(unsigned char red, unsigned char green, unsigned char blue) const;
-
+    %wxchkver_3_1_1 bool IsOk() const;
+    wxPalette& operator =(const wxPalette& palette);
+    bool Create(int n, const unsigned char* red, const unsigned char* green, const unsigned char* blue); // %override bool wxPalette::Create(int n, Lua string red, Lua string green, Lua string blue);
     bool GetRGB(int pixel) const; // %override [bool, char red, char green, char blue] wxPalette::GetRGB(int pixel) const;
-
     bool Ok() const; // %add for compatibility with earlier versions of wxlua
 };
 
@@ -986,22 +988,26 @@ typedef void* WXHANDLE
 class %delete wxIcon : public wxGDIObject
 {
     #define_object wxNullIcon
-
     wxIcon();
+    %wxchkver_3_1_1 wxIcon(const wxIcon& icon);
+    %wxchkver_3_1_1 wxIcon(const char bits[], int width, int height);
+    // wxIcon(const char* const* bits); // wxlua doesn't handle `const char* const*`
     wxIcon(const wxString& name, wxBitmapType type, int desiredWidth = -1, int desiredHeight = -1);
+    %wxchkver_3_1_1 wxIcon(const wxIconLocation& loc);
+    // bool CreateFromHICON(WXHICON icon); // skip this one as it's windows specific
+    // wxIcon ConvertToDisabled(unsigned char brightness = 255) const; // not present
+    %wxchkver_3_1_1 void CopyFromBitmap(const wxBitmap& bmp);
     int     GetDepth();
     int     GetHeight();
     int     GetWidth();
-    bool    LoadFile(const wxString& name, wxBitmapType flags);
-    bool    Ok(); // %add for compatibility with earlier versions of wxlua
+    %wxchkver_3_1_1 bool IsOk() const;
+    %wxchkver_3_1_1 bool LoadFile(const wxString& name, wxBitmapType type = wxICON_DEFAULT_TYPE, int desiredWidth = -1, int desiredHeight = -1);
     void    SetDepth(int d);
     void    SetHeight(int h);
     void    SetWidth(int w);
-
-    // bool CreateFromHICON(WXHICON icon); // skip this one as it's windows specific
-    // wxIcon ConvertToDisabled(unsigned char brightness = 255) const; // not present
-    // wxIcon(const char* const* bits); // wxlua doesn't handle `const char* const*`
     wxIcon& operator=(const wxIcon& i) const;
+    !%wxchkver_3_1_1 bool    LoadFile(const wxString& name, wxBitmapType flags);
+    bool    Ok(); // %add for compatibility with earlier versions of wxlua
 };
 
 // ---------------------------------------------------------------------------
@@ -1140,21 +1146,21 @@ class %delete wxCursor : public wxGDIObject
     %rename wxSTANDARD_CURSOR  #define_pointer wxLua_wxSTANDARD_CURSOR  // hack for wxWidgets >2.7
     %rename wxHOURGLASS_CURSOR #define_pointer wxLua_wxHOURGLASS_CURSOR
     %rename wxCROSS_CURSOR     #define_pointer wxLua_wxCROSS_CURSOR
-
     wxCursor();
-    wxCursor(int id);
-    wxCursor(const wxImage& image);
-
-    %wxchkver_2_9_0 wxCursor(const wxString& cursorName, wxBitmapType type, int hotSpotX = 0, int hotSpotY = 0);
     // wxCursor(const char bits[], int width, int height, int hotSpotX = -1, int hotSpotY = -1, const char maskBits[] = NULL); // doesn't compile in wxlua, so skip it
-
-    bool Ok(); // %add for compatibility with earlier versions of wxlua
-
-    %win int GetWidth(); // %add only for windows
-    %win int GetHeight(); // %add only for windows
+    %wxchkver_2_9_0 wxCursor(const wxString& cursorName, wxBitmapType type, int hotSpotX = 0, int hotSpotY = 0);
+    %wxchkver_3_1_1 wxCursor(wxStockCursor cursorId);
+    wxCursor(const wxImage& image);
+    %wxchkver_3_1_1 wxCursor(const wxCursor& cursor);
+    %wxchkver_3_1_1 bool IsOk() const;
+    %wxchkver_3_1_1 wxPoint GetHotSpot() const;
+    wxCursor& operator =(const wxCursor& cursor);
+    !%wxchkver_3_1_1 wxCursor& operator=(const wxCursor& c) const;
+    !%wxchkver_3_1_1 wxCursor(int id);
     %win int GetDepth(); // %add only for windows
-
-    wxCursor& operator=(const wxCursor& c) const;
+    %win int GetHeight(); // %add only for windows
+    %win int GetWidth(); // %add only for windows
+    bool Ok(); // %add for compatibility with earlier versions of wxlua
 };
 
 #endif //wxLUA_USE_wxCursor
@@ -1169,15 +1175,14 @@ class %delete wxCursor : public wxGDIObject
 class %delete wxMask : public wxObject
 {
     wxMask();
+    %win wxMask(const wxBitmap& bitmap, int index);
     wxMask(const wxBitmap& bitmap);
     wxMask(const wxBitmap& bitmap, const wxColour& colour);
-    %win wxMask(const wxBitmap& bitmap, int index);
-
+    %win bool Create(const wxBitmap& bitmap, int index);
     bool Create(const wxBitmap& bitmap);
     bool Create(const wxBitmap& bitmap, const wxColour& colour);
-    %win bool Create(const wxBitmap& bitmap, int index);
-
-    wxMask& operator=(const wxMask& m) const;
+    %wxchkver_3_1_1 wxBitmap GetBitmap() const;
+    !%wxchkver_3_1_1 wxMask& operator=(const wxMask& m) const;
 };
 
 #endif //wxLUA_USE_wxMask
@@ -1586,18 +1591,12 @@ class %delete wxDCClipper
 class %delete wxCaret
 {
     wxCaret();
-    wxCaret(wxWindow* window, const wxSize& size);
     wxCaret(wxWindow* window, int width, int height);
-
-    bool Create(wxWindow* window, const wxSize& size);
+    wxCaret(wxWindow* window, const wxSize& size);
     bool Create(wxWindow* window, int width, int height);
+    bool Create(wxWindow* window, const wxSize& size);
     static int GetBlinkTime();
-
-    %rename GetPositionXY void GetPosition(); // %override [int x, int y] wxCaret::GetPositionXY();
-
     wxPoint GetPosition();
-    %rename GetSizeWH void GetSize(); // %override [int x, int y] wxCaret::GetSizeWH();
-
     wxSize GetSize();
     wxWindow *GetWindow();
     void Hide();
@@ -1609,6 +1608,8 @@ class %delete wxCaret
     void SetSize(int width, int height);
     void SetSize(const wxSize& size);
     void Show(bool show = true);
+    %rename GetPositionXY void GetPosition(); // %override [int x, int y] wxCaret::GetPositionXY();
+    %rename GetSizeWH void GetSize(); // %override [int x, int y] wxCaret::GetSizeWH();
 };
 
 // ---------------------------------------------------------------------------
@@ -1674,19 +1675,19 @@ class %delete wxArrayVideoModes
 
 class %delete wxDisplay
 {
-    wxDisplay(size_t index = 0);
-
+    %wxchkver_3_1_1 wxDisplay(unsigned int index = 0);
     bool  ChangeMode(const wxVideoMode& mode = wxDefaultVideoMode);
+    %wxchkver_2_8 wxRect GetClientArea() const;
     static size_t GetCount();
     wxVideoMode  GetCurrentMode() const;
     static int GetFromPoint(const wxPoint& pt);
-    %wxchkver_2_8|!%gtk static int GetFromWindow(wxWindow* win);
     wxRect  GetGeometry() const;
-    %wxchkver_2_8 wxRect GetClientArea() const;
     wxArrayVideoModes  GetModes(const wxVideoMode& mode = wxDefaultVideoMode) const;
     wxString  GetName() const;
-    bool  IsOk() const;
     bool  IsPrimary();
+    !%wxchkver_3_1_1 bool  IsOk() const;
+    !%wxchkver_3_1_1 wxDisplay(size_t index = 0);
+    %wxchkver_2_8|!%gtk static int GetFromWindow(wxWindow* win);
 };
 
 #endif //wxLUA_USE_wxDisplay && wxUSE_DISPLAY
