@@ -735,6 +735,12 @@ wx_dataTypeTable =
     Name = "wxBrushList",
     ValueType = "class",
   },
+  wxBrushStyle = {
+    Condition = "(wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)",
+    IsNumber = true,
+    Name = "wxBrushStyle",
+    ValueType = "enum",
+  },
   wxBufferedDC = {
     BaseClasses = {
       [1] = "wxMemoryDC",
@@ -1168,7 +1174,7 @@ wx_dataTypeTable =
   },
   wxCursor = {
     BaseClasses = {
-      [1] = "wxObject",
+      [1] = "wxGDIObject",
     },
     Condition = "wxLUA_USE_wxCursor",
     IsNumber = false,

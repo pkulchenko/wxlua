@@ -5770,7 +5770,7 @@ int wxluatype_wxFontEnumerator = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontEnumerator_EnumerateEncodings[] = { &wxluatype_wxFontEnumerator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFontEnumerator_EnumerateEncodings(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontEnumerator_EnumerateEncodings[1] = {{ wxLua_wxFontEnumerator_EnumerateEncodings, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxFontEnumerator_EnumerateEncodings }};
-//     virtual bool EnumerateEncodings( const wxString &font = "");
+//     virtual bool EnumerateEncodings(const wxString &font = "");
 static int LUACALL wxLua_wxFontEnumerator_EnumerateEncodings(lua_State *L)
 {
     // get number of arguments
@@ -5792,7 +5792,7 @@ static int LUACALL wxLua_wxFontEnumerator_EnumerateEncodings(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontEnumerator_EnumerateFacenames[] = { &wxluatype_wxFontEnumerator, &wxluatype_TINTEGER, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxFontEnumerator_EnumerateFacenames(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontEnumerator_EnumerateFacenames[1] = {{ wxLua_wxFontEnumerator_EnumerateFacenames, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxFontEnumerator_EnumerateFacenames }};
-//     virtual bool EnumerateFacenames( wxFontEncoding encoding = wxFONTENCODING_SYSTEM, bool fixedWidthOnly = false);
+//     virtual bool EnumerateFacenames(wxFontEncoding encoding = wxFONTENCODING_SYSTEM, bool fixedWidthOnly = false);
 static int LUACALL wxLua_wxFontEnumerator_EnumerateFacenames(lua_State *L)
 {
     // get number of arguments
@@ -7289,7 +7289,7 @@ static int LUACALL wxLua_wxPen_GetWidth(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPen_Ok[] = { &wxluatype_wxPen, NULL };
 static int LUACALL wxLua_wxPen_Ok(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPen_Ok[1] = {{ wxLua_wxPen_Ok, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPen_Ok }};
-//     bool Ok() const;
+//     bool Ok() const; // %add for compatibility with earlier versions of wxlua
 static int LUACALL wxLua_wxPen_Ok(lua_State *L)
 {
     // get this
@@ -7797,7 +7797,7 @@ static int LUACALL wxLua_wxBrush_IsHatch(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBrush_Ok[] = { &wxluatype_wxBrush, NULL };
 static int LUACALL wxLua_wxBrush_Ok(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxBrush_Ok[1] = {{ wxLua_wxBrush_Ok, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxBrush_Ok }};
-//     bool Ok() const;
+//     bool Ok() const; // %add for compatibility with earlier versions of wxlua
 static int LUACALL wxLua_wxBrush_Ok(lua_State *L)
 {
     // get this
@@ -8465,7 +8465,7 @@ static int LUACALL wxLua_wxPalette_GetRGB(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPalette_Ok[] = { &wxluatype_wxPalette, NULL };
 static int LUACALL wxLua_wxPalette_Ok(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPalette_Ok[1] = {{ wxLua_wxPalette_Ok, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPalette_Ok }};
-//     bool Ok() const;
+//     bool Ok() const; // %add for compatibility with earlier versions of wxlua
 static int LUACALL wxLua_wxPalette_Ok(lua_State *L)
 {
     // get this
@@ -8563,25 +8563,6 @@ int wxPalette_methodCount = sizeof(wxPalette_methods)/sizeof(wxLuaBindMethod) - 
 // Lua MetaTable Tag for Class 'wxIcon'
 int wxluatype_wxIcon = WXLUA_TUNKNOWN;
 
-#if ((defined(__WXMSW__) || defined(__WXMAC__) || wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxBitmap)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxIcon_CopyFromBitmap[] = { &wxluatype_wxIcon, &wxluatype_wxBitmap, NULL };
-static int LUACALL wxLua_wxIcon_CopyFromBitmap(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxIcon_CopyFromBitmap[1] = {{ wxLua_wxIcon_CopyFromBitmap, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxIcon_CopyFromBitmap }};
-//     %win|%mac|%wxchkver_2_6 void CopyFromBitmap(const wxBitmap& bmp);
-static int LUACALL wxLua_wxIcon_CopyFromBitmap(lua_State *L)
-{
-    // const wxBitmap bmp
-    const wxBitmap * bmp = (const wxBitmap *)wxluaT_getuserdatatype(L, 2, wxluatype_wxBitmap);
-    // get this
-    wxIcon * self = (wxIcon *)wxluaT_getuserdatatype(L, 1, wxluatype_wxIcon);
-    // call CopyFromBitmap
-    self->CopyFromBitmap(*bmp);
-
-    return 0;
-}
-
-#endif // ((defined(__WXMSW__) || defined(__WXMAC__) || wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxBitmap)
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIcon_GetDepth[] = { &wxluatype_wxIcon, NULL };
 static int LUACALL wxLua_wxIcon_GetDepth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxIcon_GetDepth[1] = {{ wxLua_wxIcon_GetDepth, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxIcon_GetDepth }};
@@ -8653,7 +8634,7 @@ static int LUACALL wxLua_wxIcon_LoadFile(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIcon_Ok[] = { &wxluatype_wxIcon, NULL };
 static int LUACALL wxLua_wxIcon_Ok(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxIcon_Ok[1] = {{ wxLua_wxIcon_Ok, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxIcon_Ok }};
-//     bool    Ok();
+//     bool    Ok(); // %add for compatibility with earlier versions of wxlua
 static int LUACALL wxLua_wxIcon_Ok(lua_State *L)
 {
     // get this
@@ -8799,10 +8780,6 @@ void wxLua_wxIcon_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxIcon_methods[] = {
-#if ((defined(__WXMSW__) || defined(__WXMAC__) || wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxBitmap)
-    { "CopyFromBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxIcon_CopyFromBitmap, 1, NULL },
-#endif // ((defined(__WXMSW__) || defined(__WXMAC__) || wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxBitmap)
-
     { "GetDepth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxIcon_GetDepth, 1, NULL },
     { "GetHeight", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxIcon_GetHeight, 1, NULL },
     { "GetWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxIcon_GetWidth, 1, NULL },
@@ -8837,7 +8814,7 @@ int wxluatype_wxIconBundle = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIconBundle_AddIcon1[] = { &wxluatype_wxIconBundle, &wxluatype_wxIcon, NULL };
 static int LUACALL wxLua_wxIconBundle_AddIcon1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIconBundle_AddIcon1[1] = {{ wxLua_wxIconBundle_AddIcon1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxIconBundle_AddIcon1 }};
-//     void AddIcon( const wxIcon& icon);
+//     void AddIcon(const wxIcon& icon);
 static int LUACALL wxLua_wxIconBundle_AddIcon1(lua_State *L)
 {
     // const wxIcon icon
@@ -8853,7 +8830,7 @@ static int LUACALL wxLua_wxIconBundle_AddIcon1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIconBundle_AddIcon[] = { &wxluatype_wxIconBundle, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxIconBundle_AddIcon(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIconBundle_AddIcon[1] = {{ wxLua_wxIconBundle_AddIcon, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxIconBundle_AddIcon }};
-//     void AddIcon( const wxString& file, long type);
+//     void AddIcon(const wxString& file, long type);
 static int LUACALL wxLua_wxIconBundle_AddIcon(lua_State *L)
 {
     // long type
@@ -8871,7 +8848,7 @@ static int LUACALL wxLua_wxIconBundle_AddIcon(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIconBundle_GetIcon1[] = { &wxluatype_wxIconBundle, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxIconBundle_GetIcon1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIconBundle_GetIcon1[1] = {{ wxLua_wxIconBundle_GetIcon1, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxIconBundle_GetIcon1 }};
-//     wxIcon GetIcon( int size = wxDefaultCoord) const;
+//     wxIcon GetIcon(int size = wxDefaultCoord) const;
 static int LUACALL wxLua_wxIconBundle_GetIcon1(lua_State *L)
 {
     // get number of arguments
@@ -8896,7 +8873,7 @@ static int LUACALL wxLua_wxIconBundle_GetIcon1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIconBundle_GetIcon[] = { &wxluatype_wxIconBundle, &wxluatype_wxSize, NULL };
 static int LUACALL wxLua_wxIconBundle_GetIcon(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIconBundle_GetIcon[1] = {{ wxLua_wxIconBundle_GetIcon, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxIconBundle_GetIcon }};
-//     wxIcon GetIcon( const wxSize& size) const;
+//     wxIcon GetIcon(const wxSize& size) const;
 static int LUACALL wxLua_wxIconBundle_GetIcon(lua_State *L)
 {
     // const wxSize size
@@ -8922,7 +8899,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxIconBundle_delete[1] = {{ wxlua_userda
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIconBundle_constructor3[] = { &wxluatype_wxIconBundle, NULL };
 static int LUACALL wxLua_wxIconBundle_constructor3(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIconBundle_constructor3[1] = {{ wxLua_wxIconBundle_constructor3, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxIconBundle_constructor3 }};
-//     wxIconBundle( const wxIconBundle& ic);
+//     wxIconBundle(const wxIconBundle& ic);
 static int LUACALL wxLua_wxIconBundle_constructor3(lua_State *L)
 {
     // const wxIconBundle ic
@@ -8940,7 +8917,7 @@ static int LUACALL wxLua_wxIconBundle_constructor3(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIconBundle_constructor2[] = { &wxluatype_wxIcon, NULL };
 static int LUACALL wxLua_wxIconBundle_constructor2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIconBundle_constructor2[1] = {{ wxLua_wxIconBundle_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxIconBundle_constructor2 }};
-//     wxIconBundle( const wxIcon& icon);
+//     wxIconBundle(const wxIcon& icon);
 static int LUACALL wxLua_wxIconBundle_constructor2(lua_State *L)
 {
     // const wxIcon icon
@@ -8958,7 +8935,7 @@ static int LUACALL wxLua_wxIconBundle_constructor2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIconBundle_constructor1[] = { &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxIconBundle_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIconBundle_constructor1[1] = {{ wxLua_wxIconBundle_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxIconBundle_constructor1 }};
-//     wxIconBundle( const wxString& file, long type);
+//     wxIconBundle(const wxString& file, long type);
 static int LUACALL wxLua_wxIconBundle_constructor1(lua_State *L)
 {
     // long type
@@ -9270,7 +9247,7 @@ static int LUACALL wxLua_wxBitmap_LoadFile(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_Ok[] = { &wxluatype_wxBitmap, NULL };
 static int LUACALL wxLua_wxBitmap_Ok(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_Ok[1] = {{ wxLua_wxBitmap_Ok, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxBitmap_Ok }};
-//     bool Ok() const;
+//     bool Ok() const; // %add for compatibility with earlier versions of wxlua
 static int LUACALL wxLua_wxBitmap_Ok(lua_State *L)
 {
     // get this
@@ -9283,30 +9260,6 @@ static int LUACALL wxLua_wxBitmap_Ok(lua_State *L)
     return 1;
 }
 
-
-#if ((!defined(__WXMSW__) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxColourPenBrush)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_QuantizeColour[] = { &wxluatype_wxBitmap, &wxluatype_wxColour, NULL };
-static int LUACALL wxLua_wxBitmap_QuantizeColour(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_QuantizeColour[1] = {{ wxLua_wxBitmap_QuantizeColour, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxBitmap_QuantizeColour }};
-//     !%msw&%wxchkver_2_8 virtual wxColour QuantizeColour(const wxColour& colour) const; // msw doesn't derive from wxBitmapBase
-static int LUACALL wxLua_wxBitmap_QuantizeColour(lua_State *L)
-{
-    // const wxColour colour
-    const wxColour * colour = (const wxColour *)wxluaT_getuserdatatype(L, 2, wxluatype_wxColour);
-    // get this
-    wxBitmap * self = (wxBitmap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmap);
-    // call QuantizeColour
-    // allocate a new object using the copy constructor
-    wxColour* returns = new wxColour(self->QuantizeColour(*colour));
-    // add the new object to the tracked memory list
-    wxluaO_addgcobject(L, returns, wxluatype_wxColour);
-    // push the result datatype
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxColour);
-
-    return 1;
-}
-
-#endif // ((!defined(__WXMSW__) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxColourPenBrush)
 
 #if (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPalette && wxUSE_PALETTE)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_SaveFile[] = { &wxluatype_wxBitmap, &wxluatype_TSTRING, &wxluatype_TINTEGER, &wxluatype_wxPalette, NULL };
@@ -9641,7 +9594,7 @@ static int LUACALL wxLua_wxBitmap_constructor3(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_constructor2[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxBitmap_constructor2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_constructor2[1] = {{ wxLua_wxBitmap_constructor2, WXLUAMETHOD_CONSTRUCTOR, 2, 3, s_wxluatypeArray_wxLua_wxBitmap_constructor2 }};
-//     wxBitmap( int width, int height, int depth = -1);
+//     wxBitmap(int width, int height, int depth = -1);
 static int LUACALL wxLua_wxBitmap_constructor2(lua_State *L)
 {
     // get number of arguments
@@ -9758,10 +9711,6 @@ wxLuaBindMethod wxBitmap_methods[] = {
     { "LoadFile", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmap_LoadFile, 1, NULL },
     { "Ok", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmap_Ok, 1, NULL },
 
-#if ((!defined(__WXMSW__) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxColourPenBrush)
-    { "QuantizeColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmap_QuantizeColour, 1, NULL },
-#endif // ((!defined(__WXMSW__) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxColourPenBrush)
-
 #if (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPalette && wxUSE_PALETTE)
     { "SaveFile", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmap_SaveFile, 1, NULL },
 #endif // (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPalette && wxUSE_PALETTE)
@@ -9805,7 +9754,7 @@ int wxluatype_wxCursor = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxCursor_GetDepth[] = { &wxluatype_wxCursor, NULL };
 static int LUACALL wxLua_wxCursor_GetDepth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxCursor_GetDepth[1] = {{ wxLua_wxCursor_GetDepth, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxCursor_GetDepth }};
-//     %win int GetDepth();
+//     %win int GetDepth(); // %add only for windows
 static int LUACALL wxLua_wxCursor_GetDepth(lua_State *L)
 {
     // get this
@@ -9821,7 +9770,7 @@ static int LUACALL wxLua_wxCursor_GetDepth(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxCursor_GetHeight[] = { &wxluatype_wxCursor, NULL };
 static int LUACALL wxLua_wxCursor_GetHeight(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxCursor_GetHeight[1] = {{ wxLua_wxCursor_GetHeight, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxCursor_GetHeight }};
-//     %win int GetHeight();
+//     %win int GetHeight(); // %add only for windows
 static int LUACALL wxLua_wxCursor_GetHeight(lua_State *L)
 {
     // get this
@@ -9837,7 +9786,7 @@ static int LUACALL wxLua_wxCursor_GetHeight(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxCursor_GetWidth[] = { &wxluatype_wxCursor, NULL };
 static int LUACALL wxLua_wxCursor_GetWidth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxCursor_GetWidth[1] = {{ wxLua_wxCursor_GetWidth, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxCursor_GetWidth }};
-//     %win int GetWidth();
+//     %win int GetWidth(); // %add only for windows
 static int LUACALL wxLua_wxCursor_GetWidth(lua_State *L)
 {
     // get this
@@ -9855,7 +9804,7 @@ static int LUACALL wxLua_wxCursor_GetWidth(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxCursor_Ok[] = { &wxluatype_wxCursor, NULL };
 static int LUACALL wxLua_wxCursor_Ok(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxCursor_Ok[1] = {{ wxLua_wxCursor_Ok, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxCursor_Ok }};
-//     bool Ok();
+//     bool Ok(); // %add for compatibility with earlier versions of wxlua
 static int LUACALL wxLua_wxCursor_Ok(lua_State *L)
 {
     // get this
@@ -9891,40 +9840,11 @@ static int LUACALL wxLua_wxCursor_op_set(lua_State *L)
 }
 
 
-#if ((!wxCHECK_VERSION(2,9,0) && __UNICODE__ && (defined(__WXMSW__) || defined(__WXMAC__))) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxCursor_constructor4[] = { &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxCursor_constructor4(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxCursor_constructor4[1] = {{ wxLua_wxCursor_constructor4, WXLUAMETHOD_CONSTRUCTOR, 2, 4, s_wxluatypeArray_wxLua_wxCursor_constructor4 }};
-//         wxCursor(const wxString& cursorName, long type, int hotSpotX = 0, int hotSpotY = 0);
-static int LUACALL wxLua_wxCursor_constructor4(lua_State *L)
-{
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // int hotSpotY = 0
-    int hotSpotY = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : 0);
-    // int hotSpotX = 0
-    int hotSpotX = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : 0);
-    // long type
-    long type = (long)wxlua_getnumbertype(L, 2);
-    // const wxString cursorName
-    const wxString cursorName = wxlua_getwxStringtype(L, 1);
-    // call constructor
-    wxCursor* returns = new wxCursor(cursorName, type, hotSpotX, hotSpotY);
-    // add to tracked memory list
-    wxluaO_addgcobject(L, returns, wxluatype_wxCursor);
-    // push the constructed class pointer
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxCursor);
-
-    return 1;
-}
-
-#endif // ((!wxCHECK_VERSION(2,9,0) && __UNICODE__ && (defined(__WXMSW__) || defined(__WXMAC__))) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor)
-
 #if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxCursor_constructor3[] = { &wxluatype_TSTRING, &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxCursor_constructor3(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxCursor_constructor3[1] = {{ wxLua_wxCursor_constructor3, WXLUAMETHOD_CONSTRUCTOR, 2, 4, s_wxluatypeArray_wxLua_wxCursor_constructor3 }};
-//         wxCursor(const wxString& cursorName, wxBitmapType type, int hotSpotX = 0, int hotSpotY = 0);
+//     %wxchkver_2_9_0 wxCursor(const wxString& cursorName, wxBitmapType type, int hotSpotX = 0, int hotSpotY = 0);
 static int LUACALL wxLua_wxCursor_constructor3(lua_State *L)
 {
     // get number of arguments
@@ -10006,14 +9926,10 @@ static int LUACALL wxLua_wxCursor_constructor(lua_State *L)
 
 
 
-#if (((!wxCHECK_VERSION(2,9,0) && __UNICODE__ && (defined(__WXMSW__) || defined(__WXMAC__))) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxCursor) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||(wxLUA_USE_wxCursor)
+#if (((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxCursor) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||(wxLUA_USE_wxCursor)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxCursor_constructor_overload[] =
 {
-
-#if ((!wxCHECK_VERSION(2,9,0) && __UNICODE__ && (defined(__WXMSW__) || defined(__WXMAC__))) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor)
-    { wxLua_wxCursor_constructor4, WXLUAMETHOD_CONSTRUCTOR, 2, 4, s_wxluatypeArray_wxLua_wxCursor_constructor4 },
-#endif // ((!wxCHECK_VERSION(2,9,0) && __UNICODE__ && (defined(__WXMSW__) || defined(__WXMAC__))) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor)
 
 #if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor)
     { wxLua_wxCursor_constructor3, WXLUAMETHOD_CONSTRUCTOR, 2, 4, s_wxluatypeArray_wxLua_wxCursor_constructor3 },
@@ -10027,7 +9943,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxCursor_constructor_overload[] =
 };
 static int s_wxluafunc_wxLua_wxCursor_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxCursor_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (((!wxCHECK_VERSION(2,9,0) && __UNICODE__ && (defined(__WXMSW__) || defined(__WXMAC__))) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxCursor) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||(wxLUA_USE_wxCursor)
+#endif // (((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxCursor) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||(wxLUA_USE_wxCursor)
 
 void wxLua_wxCursor_delete_function(void** p)
 {
@@ -10047,9 +9963,9 @@ wxLuaBindMethod wxCursor_methods[] = {
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxCursor_delete, 1, NULL },
     { "op_set", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCursor_op_set, 1, NULL },
 
-#if (((!wxCHECK_VERSION(2,9,0) && __UNICODE__ && (defined(__WXMSW__) || defined(__WXMAC__))) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxCursor) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||(wxLUA_USE_wxCursor)
+#if (((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxCursor) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||(wxLUA_USE_wxCursor)
     { "wxCursor", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxCursor_constructor_overload, s_wxluafunc_wxLua_wxCursor_constructor_overload_count, 0 },
-#endif // (((!wxCHECK_VERSION(2,9,0) && __UNICODE__ && (defined(__WXMSW__) || defined(__WXMAC__))) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxCursor) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||(wxLUA_USE_wxCursor)
+#endif // (((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxCursor)) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxCursor) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||(wxLUA_USE_wxCursor)
 
     { 0, 0, 0, 0 },
 };

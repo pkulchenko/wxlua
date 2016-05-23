@@ -696,6 +696,23 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxBOTH", wxBOTH },
         { "wxBOTTOM", wxBOTTOM },
 
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
+        { "wxBRUSHSTYLE_BDIAGONAL_HATCH", wxBRUSHSTYLE_BDIAGONAL_HATCH },
+        { "wxBRUSHSTYLE_CROSSDIAG_HATCH", wxBRUSHSTYLE_CROSSDIAG_HATCH },
+        { "wxBRUSHSTYLE_CROSS_HATCH", wxBRUSHSTYLE_CROSS_HATCH },
+        { "wxBRUSHSTYLE_FDIAGONAL_HATCH", wxBRUSHSTYLE_FDIAGONAL_HATCH },
+        { "wxBRUSHSTYLE_FIRST_HATCH", wxBRUSHSTYLE_FIRST_HATCH },
+        { "wxBRUSHSTYLE_HORIZONTAL_HATCH", wxBRUSHSTYLE_HORIZONTAL_HATCH },
+        { "wxBRUSHSTYLE_INVALID", wxBRUSHSTYLE_INVALID },
+        { "wxBRUSHSTYLE_LAST_HATCH", wxBRUSHSTYLE_LAST_HATCH },
+        { "wxBRUSHSTYLE_SOLID", wxBRUSHSTYLE_SOLID },
+        { "wxBRUSHSTYLE_STIPPLE", wxBRUSHSTYLE_STIPPLE },
+        { "wxBRUSHSTYLE_STIPPLE_MASK", wxBRUSHSTYLE_STIPPLE_MASK },
+        { "wxBRUSHSTYLE_STIPPLE_MASK_OPAQUE", wxBRUSHSTYLE_STIPPLE_MASK_OPAQUE },
+        { "wxBRUSHSTYLE_TRANSPARENT", wxBRUSHSTYLE_TRANSPARENT },
+        { "wxBRUSHSTYLE_VERTICAL_HATCH", wxBRUSHSTYLE_VERTICAL_HATCH },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
+
 #if wxLUA_USE_wxButton && wxUSE_BUTTON
         { "wxBU_ALIGN_MASK", wxBU_ALIGN_MASK },
 #endif // wxLUA_USE_wxButton && wxUSE_BUTTON
@@ -738,6 +755,13 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
 
 #if wxLUA_USE_wxColourPenBrush
         { "wxCAP_BUTT", wxCAP_BUTT },
+#endif // wxLUA_USE_wxColourPenBrush
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)
+        { "wxCAP_INVALID", wxCAP_INVALID },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)
+
+#if wxLUA_USE_wxColourPenBrush
         { "wxCAP_PROJECTING", wxCAP_PROJECTING },
         { "wxCAP_ROUND", wxCAP_ROUND },
 #endif // wxLUA_USE_wxColourPenBrush
@@ -1515,6 +1539,13 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
 
 #if wxLUA_USE_wxColourPenBrush
         { "wxJOIN_BEVEL", wxJOIN_BEVEL },
+#endif // wxLUA_USE_wxColourPenBrush
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)
+        { "wxJOIN_INVALID", wxJOIN_INVALID },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)
+
+#if wxLUA_USE_wxColourPenBrush
         { "wxJOIN_MITER", wxJOIN_MITER },
         { "wxJOIN_ROUND", wxJOIN_ROUND },
 #endif // wxLUA_USE_wxColourPenBrush
@@ -1936,6 +1967,28 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxPD_REMAINING_TIME", wxPD_REMAINING_TIME },
         { "wxPD_SMOOTH", wxPD_SMOOTH },
 #endif // wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)
+        { "wxPENSTYLE_BDIAGONAL_HATCH", wxPENSTYLE_BDIAGONAL_HATCH },
+        { "wxPENSTYLE_CROSSDIAG_HATCH", wxPENSTYLE_CROSSDIAG_HATCH },
+        { "wxPENSTYLE_CROSS_HATCH", wxPENSTYLE_CROSS_HATCH },
+        { "wxPENSTYLE_DOT", wxPENSTYLE_DOT },
+        { "wxPENSTYLE_DOT_DASH", wxPENSTYLE_DOT_DASH },
+        { "wxPENSTYLE_FDIAGONAL_HATCH", wxPENSTYLE_FDIAGONAL_HATCH },
+        { "wxPENSTYLE_FIRST_HATCH", wxPENSTYLE_FIRST_HATCH },
+        { "wxPENSTYLE_HORIZONTAL_HATCH", wxPENSTYLE_HORIZONTAL_HATCH },
+        { "wxPENSTYLE_INVALID", wxPENSTYLE_INVALID },
+        { "wxPENSTYLE_LAST_HATCH", wxPENSTYLE_LAST_HATCH },
+        { "wxPENSTYLE_LONG_DASH", wxPENSTYLE_LONG_DASH },
+        { "wxPENSTYLE_SHORT_DASH", wxPENSTYLE_SHORT_DASH },
+        { "wxPENSTYLE_SOLID", wxPENSTYLE_SOLID },
+        { "wxPENSTYLE_STIPPLE", wxPENSTYLE_STIPPLE },
+        { "wxPENSTYLE_STIPPLE_MASK", wxPENSTYLE_STIPPLE_MASK },
+        { "wxPENSTYLE_STIPPLE_MASK_OPAQUE", wxPENSTYLE_STIPPLE_MASK_OPAQUE },
+        { "wxPENSTYLE_TRANSPARENT", wxPENSTYLE_TRANSPARENT },
+        { "wxPENSTYLE_USER_DASH", wxPENSTYLE_USER_DASH },
+        { "wxPENSTYLE_VERTICAL_HATCH", wxPENSTYLE_VERTICAL_HATCH },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)
 
 #if (wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxUSE_LIBPNG)
         { "wxPNG_TYPE_COLOUR", wxPNG_TYPE_COLOUR },
@@ -4903,7 +4956,7 @@ static const char* wxluabaseclassnames_wxControl[] = { wxluaclassname_wxWindow, 
 static wxLuaBindClass* wxluabaseclassbinds_wxControl[] = { NULL };
 static const char* wxluabaseclassnames_wxControlWithItems[] = { wxluaclassname_wxControl, wxluaclassname_wxItemContainer, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxControlWithItems[] = { NULL, NULL };
-static const char* wxluabaseclassnames_wxCursor[] = { wxluaclassname_wxObject, NULL };
+static const char* wxluabaseclassnames_wxCursor[] = { wxluaclassname_wxGDIObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxCursor[] = { NULL };
 static const char* wxluabaseclassnames_wxDC[] = { wxluaclassname_wxObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxDC[] = { NULL };

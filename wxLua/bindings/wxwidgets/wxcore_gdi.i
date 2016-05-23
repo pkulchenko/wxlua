@@ -190,10 +190,6 @@ class %delete wxRect
 
 class %delete wxGDIObject : public wxObject
 {
-    //wxGDIObject() - base class, no constructor since it doesn't do anything
-
-    //bool GetVisible()       these are NOT USED and have been removed in 2.7
-    //void SetVisible(bool visible);
     bool IsNull();
 };
 
@@ -533,8 +529,8 @@ class %delete wxFontEnumerator
 {
     wxFontEnumerator();
 
-    virtual bool EnumerateFacenames( wxFontEncoding encoding = wxFONTENCODING_SYSTEM, bool fixedWidthOnly = false);
-    virtual bool EnumerateEncodings( const wxString &font = "");
+    virtual bool EnumerateFacenames(wxFontEncoding encoding = wxFONTENCODING_SYSTEM, bool fixedWidthOnly = false);
+    virtual bool EnumerateEncodings(const wxString &font = "");
 
     %wxchkver_2_8 static wxArrayString GetEncodings(const wxString& facename = "");
     %wxchkver_2_8 static wxArrayString GetFacenames(wxFontEncoding encoding = wxFONTENCODING_SYSTEM, bool fixedWidthOnly = false);
@@ -688,6 +684,7 @@ class %delete wxColourDatabase
 
 enum wxPenCap
 {
+    %wxchkver_3_0 wxCAP_INVALID,
     wxCAP_BUTT,
     wxCAP_PROJECTING,
     wxCAP_ROUND
@@ -695,6 +692,25 @@ enum wxPenCap
 
 enum wxPenStyle
 {
+    %wxchkver_3_0 wxPENSTYLE_INVALID,
+    %wxchkver_3_0 wxPENSTYLE_SOLID, /**< Solid style. */
+    %wxchkver_3_0 wxPENSTYLE_DOT, /**< Dotted style. */
+    %wxchkver_3_0 wxPENSTYLE_LONG_DASH, /**< Long dashed style. */
+    %wxchkver_3_0 wxPENSTYLE_SHORT_DASH, /**< Short dashed style. */
+    %wxchkver_3_0 wxPENSTYLE_DOT_DASH, /**< Dot and dash style. */
+    %wxchkver_3_0 wxPENSTYLE_USER_DASH, /**< Use the user dashes: see wxPen::SetDashes. */
+    %wxchkver_3_0 wxPENSTYLE_TRANSPARENT, /**< No pen is used. */
+    %wxchkver_3_0 wxPENSTYLE_STIPPLE_MASK_OPAQUE, /**< @todo WHAT's this? */
+    %wxchkver_3_0 wxPENSTYLE_STIPPLE_MASK, /**< @todo WHAT's this? */
+    %wxchkver_3_0 wxPENSTYLE_STIPPLE, /**< Use the stipple bitmap. */
+    %wxchkver_3_0 wxPENSTYLE_BDIAGONAL_HATCH, /**< Backward diagonal hatch. */
+    %wxchkver_3_0 wxPENSTYLE_CROSSDIAG_HATCH, /**< Cross-diagonal hatch. */
+    %wxchkver_3_0 wxPENSTYLE_FDIAGONAL_HATCH, /**< Forward diagonal hatch. */
+    %wxchkver_3_0 wxPENSTYLE_CROSS_HATCH, /**< Cross hatch. */
+    %wxchkver_3_0 wxPENSTYLE_HORIZONTAL_HATCH, /**< Horizontal hatch. */
+    %wxchkver_3_0 wxPENSTYLE_VERTICAL_HATCH, /**< Vertical hatch. */
+    %wxchkver_3_0 wxPENSTYLE_FIRST_HATCH, /**< First of the hatch styles (inclusive). */
+    %wxchkver_3_0 wxPENSTYLE_LAST_HATCH, /**< Last of the hatch styles (inclusive). */
     wxDOT,
     wxDOT_DASH,
     wxSOLID,
@@ -705,6 +721,7 @@ enum wxPenStyle
 
 enum wxPenJoin
 {
+    %wxchkver_3_0 wxJOIN_INVALID,
     wxJOIN_BEVEL,
     wxJOIN_MITER,
     wxJOIN_ROUND
@@ -752,14 +769,14 @@ class %delete wxPen : public wxGDIObject
     %win wxBitmap* GetStipple() const;
     wxPenStyle GetStyle() const;
     int GetWidth() const;
-    bool Ok() const;
+    bool Ok() const; // %add for compatibility with earlier versions of wxlua
     void SetCap(wxPenCap capStyle);
 
     void SetColour(wxColour& colour);
     void SetColour(const wxString& colourName);
     void SetColour(unsigned char red, unsigned char green, unsigned char blue);
 
-    //void SetDashes(int nb_dashes, const wxDash *dash);
+    // void SetDashes(int nb_dashes, const wxDash *dash);
     void SetJoin(wxPenJoin join_style);
     %win void SetStipple(const wxBitmap& stipple);
     void SetStyle(wxPenStyle style);
@@ -791,6 +808,28 @@ class wxPenList //: public wxList - it's not really derived from a wxList
 
 #include "wx/brush.h"
 
+#if %wxchkver_3_1_1
+
+enum wxBrushStyle
+{
+    wxBRUSHSTYLE_INVALID,
+    wxBRUSHSTYLE_SOLID, /**< Solid. */
+    wxBRUSHSTYLE_TRANSPARENT, /**< Transparent (no fill). */
+    wxBRUSHSTYLE_STIPPLE_MASK_OPAQUE, /**< Uses a bitmap as a stipple; the mask is used for blitting monochrome using text foreground and background colors. */
+    wxBRUSHSTYLE_STIPPLE_MASK, /**< Uses a bitmap as a stipple; mask is used for masking areas in the stipple bitmap. */
+    wxBRUSHSTYLE_STIPPLE, /**< Uses a bitmap as a stipple. */
+    wxBRUSHSTYLE_BDIAGONAL_HATCH, /**< Backward diagonal hatch. */
+    wxBRUSHSTYLE_CROSSDIAG_HATCH, /**< Cross-diagonal hatch. */
+    wxBRUSHSTYLE_FDIAGONAL_HATCH, /**< Forward diagonal hatch. */
+    wxBRUSHSTYLE_CROSS_HATCH, /**< Cross hatch. */
+    wxBRUSHSTYLE_HORIZONTAL_HATCH, /**< Horizontal hatch. */
+    wxBRUSHSTYLE_VERTICAL_HATCH, /**< Vertical hatch. */
+    wxBRUSHSTYLE_FIRST_HATCH, /**< First of the hatch styles (inclusive). */
+    wxBRUSHSTYLE_LAST_HATCH /**< Last of the hatch styles (inclusive). */
+};
+
+#endif // %wxchkver_3_1_1
+
 class %delete wxBrush : public wxGDIObject
 {
     #define_object  wxNullBrush
@@ -815,7 +854,7 @@ class %delete wxBrush : public wxGDIObject
     wxBitmap* GetStipple() const;
     int GetStyle() const;
     bool IsHatch() const;
-    bool Ok() const;
+    bool Ok() const; // %add for compatibility with earlier versions of wxlua
     void SetColour(wxColour& colour);
     void SetColour(const wxString& colourName);
     void SetColour(const unsigned char red, const unsigned char green, const unsigned char blue);
@@ -924,21 +963,16 @@ class %delete wxPalette : public wxGDIObject
     #define_object wxNullPalette
 
     wxPalette();
-    // wxPalette(int n, const unsigned char* red, const unsigned char* green, const unsigned char* blue) - use Create
     wxPalette(const wxPalette& palette);
 
-    // %override bool wxPalette::Create(int n, Lua string red, Lua string green, Lua string blue);
-    // C++ Func: bool Create(int n, const unsigned char* red, const unsigned char* green, const unsigned char* blue);
-    bool Create(int n, const unsigned char* red, const unsigned char* green, const unsigned char* blue);
+    bool Create(int n, const unsigned char* red, const unsigned char* green, const unsigned char* blue); // %override bool wxPalette::Create(int n, Lua string red, Lua string green, Lua string blue);
 
     int GetColoursCount() const;
     int GetPixel(unsigned char red, unsigned char green, unsigned char blue) const;
 
-    // %override [bool, char red, char green, char blue] wxPalette::GetRGB(int pixel) const;
-    // C++ Func: bool GetRGB(int pixel, unsigned char* red, unsigned char* green, unsigned char* blue) const;
-    bool GetRGB(int pixel) const;
+    bool GetRGB(int pixel) const; // %override [bool, char red, char green, char blue] wxPalette::GetRGB(int pixel) const;
 
-    bool Ok() const;
+    bool Ok() const; // %add for compatibility with earlier versions of wxlua
 };
 
 #endif //wxLUA_USE_wxPalette && wxUSE_PALETTE
@@ -955,19 +989,18 @@ class %delete wxIcon : public wxGDIObject
 
     wxIcon();
     wxIcon(const wxString& name, wxBitmapType type, int desiredWidth = -1, int desiredHeight = -1);
-    //wxIcon(int width, int height, int depth = -1); // constructor does not exist
-
-    %win|%mac|%wxchkver_2_6 void CopyFromBitmap(const wxBitmap& bmp);
     int     GetDepth();
     int     GetHeight();
     int     GetWidth();
     bool    LoadFile(const wxString& name, wxBitmapType flags);
-    bool    Ok();
+    bool    Ok(); // %add for compatibility with earlier versions of wxlua
     void    SetDepth(int d);
     void    SetHeight(int h);
     void    SetWidth(int w);
-    //%win void SetSize(const wxSize& size);
 
+    // bool CreateFromHICON(WXHICON icon); // skip this one as it's windows specific
+    // wxIcon ConvertToDisabled(unsigned char brightness = 255) const; // not present
+    // wxIcon(const char* const* bits); // wxlua doesn't handle `const char* const*`
     wxIcon& operator=(const wxIcon& i) const;
 };
 
@@ -979,16 +1012,16 @@ class %delete wxIcon : public wxGDIObject
 class %delete wxIconBundle
 {
     wxIconBundle();
-    wxIconBundle( const wxString& file, long type);
-    wxIconBundle( const wxIcon& icon);
-    wxIconBundle( const wxIconBundle& ic);
+    wxIconBundle(const wxString& file, long type);
+    wxIconBundle(const wxIcon& icon);
+    wxIconBundle(const wxIconBundle& ic);
 
-    void AddIcon( const wxString& file, long type);
-    void AddIcon( const wxIcon& icon);
+    void AddIcon(const wxString& file, long type);
+    void AddIcon(const wxIcon& icon);
 
-    wxIcon GetIcon( const wxSize& size) const;
-    // equivalent to GetIcon( wxSize( size, size ));
-    wxIcon GetIcon( int size = wxDefaultCoord) const;
+    wxIcon GetIcon(const wxSize& size) const;
+    // equivalent to GetIcon(wxSize(size, size ));
+    wxIcon GetIcon(int size = wxDefaultCoord) const;
 };
 
 #endif //wxLUA_USE_wxIcon
@@ -1000,66 +1033,42 @@ class %delete wxIconBundle
 
 #include "wx/bitmap.h"
 
-//%win class %delete wxBitmapHandler   // are these even necessary?
-//{
-//};
-
-//%win class %delete wxGDIImageHandler
-//{
-//};
-//%wxchkver_2_6&%win class wxGDIImageHandlerList : public wxList
-//{
-//};
-
 class %delete wxBitmap : public wxGDIObject
 {
     #define_object wxNullBitmap
 
     wxBitmap();
     wxBitmap(const wxBitmap& bitmap);
-    wxBitmap( int width, int height, int depth = -1);
+    wxBitmap(int width, int height, int depth = -1);
     wxBitmap(const wxString& name, wxBitmapType type = wxBITMAP_TYPE_ANY);
     wxBitmap(const wxImage &image, int depth = -1);
 
-    // %override wxBitmap(lua string, int width, int height, int depth);
-    // C++ Func: wxBitmap(const char bits[], int width, int height, int depth = 1);
-    // Creates a bitmap from an array of bits in the form of a Lua string.
-    %override_name wxLua_wxBitmapFromBits_constructor wxBitmap(const char* mono_bits, int width, int height, int depth /* = 1 */);
-    // %override wxBitmap(LuaTable charTable, int width, int height, int depth);
-    // C++ Func: wxBitmap(const char bits[], int width, int height, int depth = 1);
-    // Creates a bitmap from an array of chars in a Lua table.
-    %override_name wxLua_wxBitmapFromBitTable_constructor wxBitmap(LuaTable charTable, int width, int height, int depth /* = 1 */);
+    %override_name wxLua_wxBitmapFromBits_constructor wxBitmap(const char* mono_bits, int width, int height, int depth /* = 1 */); // %override wxBitmap(lua string, int width, int height, int depth);
+    %override_name wxLua_wxBitmapFromBitTable_constructor wxBitmap(LuaTable charTable, int width, int height, int depth /* = 1 */); // %override wxBitmap(LuaTable charTable, int width, int height, int depth);
+    %override_name wxLua_wxBitmapFromXPMData_constructor wxBitmap(LuaTable charTable); // %override wxBitmap(LuaTable stringTable where each index is a row in the image);
+    %override_name wxLua_wxBitmapFromData_constructor %win wxBitmap(const wxString& data, int type, int width, int height, int depth /* = -1 */); // %override wxBitmap(Lua string of data, int type, int width, int height, int depth = -1);
 
-    // %override wxBitmap(LuaTable stringTable where each index is a row in the image);
-    // C++ Func: wxBitmap(const char **data) Load from XPM
-    %override_name wxLua_wxBitmapFromXPMData_constructor wxBitmap(LuaTable charTable);
-
-    // %override wxBitmap(Lua string of data, int type, int width, int height, int depth = -1);
-    // C++ Func: wxBitmap(const void* data, int type, int width, int height, int depth = -1);
-    %override_name wxLua_wxBitmapFromData_constructor %win wxBitmap(const wxString& data, int type, int width, int height, int depth /* = -1 */);
-
-    //%win static void AddHandler(wxBitmapHandler* handler);
-    //%win static void CleanUpHandlers();
+    // %win static void AddHandler(wxBitmapHandler* handler); // no support for wxBitmapHandler
+    // %win static void CleanUpHandlers(); // no support for wxBitmapHandler
     wxImage ConvertToImage();
     bool CopyFromIcon(const wxIcon& icon);
     virtual bool Create(int width, int height, int depth = -1);
-    //static wxBitmapHandler* FindHandler(const wxString& name);
-    //static wxBitmapHandler* FindHandler(const wxString& extension, wxBitmapType bitmapType);
-    //static wxBitmapHandler* FindHandler(wxBitmapType bitmapType);
+    // static wxBitmapHandler* FindHandler(const wxString& name); // no support for wxBitmapHandler
+    // static wxBitmapHandler* FindHandler(const wxString& extension, wxBitmapType bitmapType); // no support for wxBitmapHandler
+    // static wxBitmapHandler* FindHandler(wxBitmapType bitmapType); // no support for wxBitmapHandler
     int GetDepth() const;
-    //%wxchkver_2_6&%win static wxGDIImageHandlerList& GetHandlers();
-    //!%wxchkver_2_6&%win static wxList& GetHandlers();
+    // %wxchkver_2_6&%win static wxGDIImageHandlerList& GetHandlers(); // no support for wxBitmapHandler
     int GetHeight() const;
     wxPalette* GetPalette() const;
     wxMask* GetMask() const;
     wxBitmap GetSubBitmap(const wxRect&rect) const;
     int GetWidth() const;
-    //%win static void InitStandardHandlers();
-    //%win static void InsertHandler(wxBitmapHandler* handler);
+    // %win static void InitStandardHandlers(); // no support for wxBitmapHandler
+    // %win static void InsertHandler(wxBitmapHandler* handler); // no support for wxBitmapHandler
     bool LoadFile(const wxString& name, wxBitmapType type);
-    bool Ok() const;
-    !%msw&%wxchkver_2_8 virtual wxColour QuantizeColour(const wxColour& colour) const; // msw doesn't derive from wxBitmapBase
-    //%win static bool RemoveHandler(const wxString& name);
+    bool Ok() const; // %add for compatibility with earlier versions of wxlua
+    // !%msw&%wxchkver_2_8 virtual wxColour QuantizeColour(const wxColour& colour) const; // generic implementation only; not present in interface files
+    // %win static bool RemoveHandler(const wxString& name); // no support for wxBitmapHandler
     bool SaveFile(const wxString& name, wxBitmapType type, wxPalette* palette = NULL);
     void SetDepth(int depth);
     void SetHeight(int height);
@@ -1125,7 +1134,7 @@ enum wxStockCursor
     wxCURSOR_MAX
 };
 
-class %delete wxCursor : public wxObject // wxObject in gtk, wxGDIImage in msw, wxBitmap in osx
+class %delete wxCursor : public wxGDIObject
 {
     #define_object  wxNullCursor
     %rename wxSTANDARD_CURSOR  #define_pointer wxLua_wxSTANDARD_CURSOR  // hack for wxWidgets >2.7
@@ -1136,25 +1145,14 @@ class %delete wxCursor : public wxObject // wxObject in gtk, wxGDIImage in msw, 
     wxCursor(int id);
     wxCursor(const wxImage& image);
 
-    #if %wxchkver_2_9_0
-        wxCursor(const wxString& cursorName, wxBitmapType type, int hotSpotX = 0, int hotSpotY = 0);
-    #endif
+    %wxchkver_2_9_0 wxCursor(const wxString& cursorName, wxBitmapType type, int hotSpotX = 0, int hotSpotY = 0);
+    // wxCursor(const char bits[], int width, int height, int hotSpotX = -1, int hotSpotY = -1, const char maskBits[] = NULL); // doesn't compile in wxlua, so skip it
 
-    #if !%wxchkver_2_9_0 && __UNICODE__ && (%win || %mac);
-        // There is a version that takes a const char[] as the first param that
-        // gives an error about ambiguous overloads if wxString is ANSI.
-        wxCursor(const wxString& cursorName, long type, int hotSpotX = 0, int hotSpotY = 0);
-    #endif
+    bool Ok(); // %add for compatibility with earlier versions of wxlua
 
-    bool Ok();
-
-    %win int GetWidth();
-    %win int GetHeight();
-    %win int GetDepth();
-    //%win void SetWidth(int width);
-    //%win void SetHeight(int height);
-    //%win void SetDepth(int depth);
-    //%win void SetSize(const wxSize& size);
+    %win int GetWidth(); // %add only for windows
+    %win int GetHeight(); // %add only for windows
+    %win int GetDepth(); // %add only for windows
 
     wxCursor& operator=(const wxCursor& c) const;
 };
@@ -1595,15 +1593,10 @@ class %delete wxCaret
     bool Create(wxWindow* window, int width, int height);
     static int GetBlinkTime();
 
-    // %override [int x, int y] wxCaret::GetPositionXY();
-    // C++ Func: void GetPosition(int *x, int *y);
-    %rename GetPositionXY void GetPosition();
+    %rename GetPositionXY void GetPosition(); // %override [int x, int y] wxCaret::GetPositionXY();
 
     wxPoint GetPosition();
-
-    // %override [int x, int y] wxCaret::GetSizeWH();
-    // C++ Func: void GetSize(int *x, int *y);
-    %rename GetSizeWH void GetSize();
+    %rename GetSizeWH void GetSize(); // %override [int x, int y] wxCaret::GetSizeWH();
 
     wxSize GetSize();
     wxWindow *GetWindow();
@@ -1686,7 +1679,6 @@ class %delete wxDisplay
     bool  ChangeMode(const wxVideoMode& mode = wxDefaultVideoMode);
     static size_t GetCount();
     wxVideoMode  GetCurrentMode() const;
-    // int  GetDepth() const; // in docs BUT not in C++ header
     static int GetFromPoint(const wxPoint& pt);
     %wxchkver_2_8|!%gtk static int GetFromWindow(wxWindow* win);
     wxRect  GetGeometry() const;
