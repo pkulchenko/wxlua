@@ -173,20 +173,20 @@ class wxAuiToolBarArt
     virtual void SetFont(const wxFont& font);
     virtual void SetTextOrientation(int orientation);
 
-    virtual void DrawBackground( wxDC& dc, wxWindow* wnd, const wxRect& rect);
-    virtual void DrawLabel( wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item, const wxRect& rect);
-    virtual void DrawButton( wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item, const wxRect& rect);
-    virtual void DrawDropDownButton( wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item, const wxRect& rect);
-    virtual void DrawControlLabel( wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item, const wxRect& rect);
-    virtual void DrawSeparator( wxDC& dc, wxWindow* wnd, const wxRect& rect);
-    virtual void DrawGripper( wxDC& dc, wxWindow* wnd, const wxRect& rect);
-    virtual void DrawOverflowButton( wxDC& dc, wxWindow* wnd, const wxRect& rect, int state);
+    virtual void DrawBackground(wxDC& dc, wxWindow* wnd, const wxRect& rect);
+    virtual void DrawLabel(wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item, const wxRect& rect);
+    virtual void DrawButton(wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item, const wxRect& rect);
+    virtual void DrawDropDownButton(wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item, const wxRect& rect);
+    virtual void DrawControlLabel(wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item, const wxRect& rect);
+    virtual void DrawSeparator(wxDC& dc, wxWindow* wnd, const wxRect& rect);
+    virtual void DrawGripper(wxDC& dc, wxWindow* wnd, const wxRect& rect);
+    virtual void DrawOverflowButton(wxDC& dc, wxWindow* wnd, const wxRect& rect, int state);
 
-    virtual wxSize GetLabelSize( wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item);
-    virtual wxSize GetToolSize( wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item);
+    virtual wxSize GetLabelSize(wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item);
+    virtual wxSize GetToolSize(wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item);
     virtual int  GetElementSize(int element_id);
     virtual void SetElementSize(int element_id, int size);
-    virtual int ShowDropDown( wxWindow* wnd, const wxAuiToolBarItemArray& items);
+    virtual int ShowDropDown(wxWindow* wnd, const wxAuiToolBarItemArray& items);
 };
 
 // ---------------------------------------------------------------------------
@@ -331,26 +331,26 @@ enum wxAuiNotebookOption
 
 class %delete wxAuiNotebookEvent : public wxNotifyEvent
 {
-    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_PAGE_CLOSE      // EVT_AUINOTEBOOK_PAGE_CLOSE(winid, fn );
-    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_PAGE_CHANGED    // EVT_AUINOTEBOOK_PAGE_CHANGED(winid, fn );
-    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_PAGE_CHANGING   // EVT_AUINOTEBOOK_PAGE_CHANGING(winid, fn );
-    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_BUTTON          // EVT_AUINOTEBOOK_BUTTON(winid, fn );
-    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_BEGIN_DRAG      // EVT_AUINOTEBOOK_BEGIN_DRAG(winid, fn );
-    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_END_DRAG        // EVT_AUINOTEBOOK_END_DRAG(winid, fn );
-    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_DRAG_MOTION     // EVT_AUINOTEBOOK_DRAG_MOTION(winid, fn );
-    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_ALLOW_DND       // EVT_AUINOTEBOOK_ALLOW_DND(winid, fn );
+    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_PAGE_CLOSE      // EVT_AUINOTEBOOK_PAGE_CLOSE(winid, fn);
+    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_PAGE_CHANGED    // EVT_AUINOTEBOOK_PAGE_CHANGED(winid, fn);
+    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_PAGE_CHANGING   // EVT_AUINOTEBOOK_PAGE_CHANGING(winid, fn);
+    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_BUTTON          // EVT_AUINOTEBOOK_BUTTON(winid, fn);
+    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_BEGIN_DRAG      // EVT_AUINOTEBOOK_BEGIN_DRAG(winid, fn);
+    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_END_DRAG        // EVT_AUINOTEBOOK_END_DRAG(winid, fn);
+    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_DRAG_MOTION     // EVT_AUINOTEBOOK_DRAG_MOTION(winid, fn);
+    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_ALLOW_DND       // EVT_AUINOTEBOOK_ALLOW_DND(winid, fn);
 
 #if %wxchkver_2_8_5
-    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_TAB_MIDDLE_DOWN // EVT_AUINOTEBOOK_TAB_MIDDLE_DOWN(winid, fn );
-    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_TAB_MIDDLE_UP   // EVT_AUINOTEBOOK_TAB_MIDDLE_UP(winid, fn );
-    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_TAB_RIGHT_DOWN  // EVT_AUINOTEBOOK_TAB_RIGHT_DOWN(winid, fn );
-    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_TAB_RIGHT_UP    // EVT_AUINOTEBOOK_TAB_RIGHT_UP(winid, fn );
+    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_TAB_MIDDLE_DOWN // EVT_AUINOTEBOOK_TAB_MIDDLE_DOWN(winid, fn);
+    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_TAB_MIDDLE_UP   // EVT_AUINOTEBOOK_TAB_MIDDLE_UP(winid, fn);
+    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_TAB_RIGHT_DOWN  // EVT_AUINOTEBOOK_TAB_RIGHT_DOWN(winid, fn);
+    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_TAB_RIGHT_UP    // EVT_AUINOTEBOOK_TAB_RIGHT_UP(winid, fn);
     %wxEventType wxEVT_COMMAND_AUINOTEBOOK_PAGE_CLOSED     //
-    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_DRAG_DONE       // EVT_AUINOTEBOOK_DRAG_DONE(winid, fn );
-    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_BG_DCLICK       // EVT_AUINOTEBOOK_BG_DCLICK(winid, fn );
+    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_DRAG_DONE       // EVT_AUINOTEBOOK_DRAG_DONE(winid, fn);
+    %wxEventType wxEVT_COMMAND_AUINOTEBOOK_BG_DCLICK       // EVT_AUINOTEBOOK_BG_DCLICK(winid, fn);
 #endif //%wxchkver_2_8_5
 
-    wxAuiNotebookEvent(wxEventType command_type = wxEVT_NULL, int win_id = 0 );
+    wxAuiNotebookEvent(wxEventType command_type = wxEVT_NULL, int win_id = 0);
     wxAuiNotebookEvent(const wxAuiNotebookEvent& c);
 
     void SetSelection(int s);
@@ -401,9 +401,9 @@ class %delete wxAuiNotebookPageArray
 class %delete wxAuiTabContainerButton
 {
     int id;               // button's id
-    !%wxchkver_2_9_3 int cur_state;        // current state (normal, hover, pressed, etc. );
+    !%wxchkver_2_9_3 int cur_state;        // current state (normal, hover, pressed, etc.);
     %wxchkver_2_9_3  int curState;
-    int location;         // buttons location (wxLEFT, wxRIGHT, or wxCENTER );
+    int location;         // buttons location (wxLEFT, wxRIGHT, or wxCENTER);
     wxBitmap bitmap;      // button's hover bitmap
     !%wxchkver_2_9_3 wxBitmap dis_bitmap;  // button's disabled bitmap
     %wxchkver_2_9_3  wxBitmap disBitmap;
@@ -418,7 +418,7 @@ class %delete wxAuiTabContainerButton
 
 class %delete wxAuiTabArt
 {
-    // wxAuiTabArt() No constructor - base class
+    // wxAuiTabArt(); // no constructor as it's an abstract class
 
     %gc virtual wxAuiTabArt* Clone(); //= 0;
     virtual void SetFlags(unsigned int flags); //= 0;
@@ -427,13 +427,13 @@ class %delete wxAuiTabArt
     virtual void SetSelectedFont(const wxFont& font); //= 0;
     virtual void SetMeasuringFont(const wxFont& font); //= 0;
 
-    virtual void DrawBackground( wxDC& dc, wxWindow* wnd, const wxRect& rect); //= 0;
-    virtual void DrawTab(wxDC& dc, wxWindow* wnd, const wxAuiNotebookPage& pane, const wxRect& in_rect, int close_button_state, wxRect* out_tab_rect, wxRect* out_button_rect, int* x_extent); //= 0;
-    virtual void DrawButton( wxDC& dc, wxWindow* wnd, const wxRect& in_rect, int bitmap_id, int button_state, int orientation, wxRect* out_rect); //= 0;
-    virtual wxSize GetTabSize( wxDC& dc, wxWindow* wnd, const wxString& caption, const wxBitmap& bitmap, bool active, int close_button_state, int* x_extent); //= 0;
-    virtual int ShowDropDown( wxWindow* wnd, const wxAuiNotebookPageArray& items, int active_idx); //= 0;
+    virtual void DrawBackground(wxDC& dc, wxWindow* wnd, const wxRect& rect); //= 0;
+    virtual void DrawTab(wxDC& dc, wxWindow* wnd, const wxAuiNotebookPage& pane, const wxRect& in_rect, int close_button_state, wxRect* out_tab_rect, wxRect* out_button_rect, int* x_extent); // %add as it's missing from auibook.h
+    virtual void DrawButton(wxDC& dc, wxWindow* wnd, const wxRect& in_rect, int bitmap_id, int button_state, int orientation, wxRect* out_rect); //= 0;
+    virtual wxSize GetTabSize(wxDC& dc, wxWindow* wnd, const wxString& caption, const wxBitmap& bitmap, bool active, int close_button_state, int* x_extent); // %add as it's missing from auibook.h
+    virtual int ShowDropDown(wxWindow* wnd, const wxAuiNotebookPageArray& items, int active_idx); // %add as it's missing from auibook.h
     virtual int GetIndentSize(); //= 0;
-    virtual int GetBestTabCtrlSize( wxWindow* wnd, const wxAuiNotebookPageArray& pages, const wxSize& required_bmp_size); //= 0;
+    virtual int GetBestTabCtrlSize(wxWindow* wnd, const wxAuiNotebookPageArray& pages, const wxSize& required_bmp_size); //= 0;
 };
 
 
@@ -522,7 +522,7 @@ class wxAuiNotebook : public wxControl
     wxAuiNotebook(wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxAUI_NB_DEFAULT_STYLE);
     bool Create(wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0);
 
-    void SetWindowStyleFlag(long style);
+    void SetWindowStyleFlag(long style); // %add as it's missing from auibook.h
     void SetArtProvider(%ungc wxAuiTabArt* art);
     wxAuiTabArt* GetArtProvider() const;
 
@@ -551,41 +551,22 @@ class wxAuiNotebook : public wxControl
 
     virtual void Split(size_t page, int direction);
 
-#if %wxchkver_2_8_1 // (wxABI_VERSION >= 20801 );
-    const wxAuiManager& GetAuiManager() const;
-#endif
+    %wxchkver_2_8_1 const wxAuiManager& GetAuiManager() const; // %add as it's missing from auibook.h
 
-#if %wxchkver_2_8_5 //(wxABI_VERSION >= 20805 );
-	// Sets the normal font
-	void SetNormalFont(const wxFont& font);
+    %wxchkver_2_8_5 void SetNormalFont(const wxFont& font); // Sets the normal font
+    %wxchkver_2_8_5 void SetSelectedFont(const wxFont& font); // Sets the selected tab font
+    %wxchkver_2_8_5 void SetMeasuringFont(const wxFont& font); // Sets the measuring font
+    %wxchkver_2_8_5 virtual bool SetFont(const wxFont& font); // Sets the tab font
+    %wxchkver_2_8_5 int GetTabCtrlHeight() const; // Gets the tab control height
+    %wxchkver_2_8_5 int GetHeightForPageHeight(int pageHeight); // Gets the height of the notebook for a given page height
+    %wxchkver_2_8_5 void AdvanceSelection(bool forward = true); // Advances the selection, generation page selection events
+    %wxchkver_2_8_5 bool ShowWindowMenu(); // Shows the window menu
+    %wxchkver_2_9_4 wxString GetPageToolTip(size_t pageIdx) const;
+    %wxchkver_2_9_4 bool SetPageToolTip(size_t page, const wxString& text);
 
-	// Sets the selected tab font
-	void SetSelectedFont(const wxFont& font);
-
-	// Sets the measuring font
-	void SetMeasuringFont(const wxFont& font);
-
-	// Sets the tab font
-    virtual bool SetFont(const wxFont& font);
-
-	// Gets the tab control height
-    int GetTabCtrlHeight() const;
-
-    // Gets the height of the notebook for a given page height
-    int GetHeightForPageHeight(int pageHeight);
-
-    // Advances the selection, generation page selection events
-    void AdvanceSelection(bool forward = true);
-
-    // Shows the window menu
-    bool ShowWindowMenu();
-
-#if %wxchkver_2_9_4
-    wxString GetPageToolTip( size_t pageIdx ) const;
-    bool SetPageToolTip( size_t page, const wxString& text );
-#endif 
-    
-#endif
+    %wxchkver_3_0 void SetImageList(wxImageList *imageList); // %add as it's used by SetPageImage
+    %wxchkver_3_0 void AssignImageList(wxImageList *imageList); // %add as it's used by SetPageImage
+    %wxchkver_3_0 wxImageList* GetImageList() const; // %add as it's used by SetPageImage
 };
 
 
@@ -599,7 +580,7 @@ class wxAuiNotebook : public wxControl
 
 class %delete wxAuiDockArt
 {
-    // wxAuiDockArt() - No constructor - base class
+    // wxAuiDockArt(); // no constructor as it's an abstract class
 
     virtual int GetMetric(int id); //= 0;
     virtual void SetMetric(int id, int new_val); //= 0;
@@ -890,10 +871,10 @@ class %delete wxAuiPaneInfo
     wxFrame* frame;       // floating frame window that holds the pane
     unsigned int state;   // a combination of wxPaneState values
 
-    int dock_direction;   // dock direction (top, bottom, left, right, center );
-    int dock_layer;       // layer number (0 = innermost layer );
-    int dock_row;         // row number on the docking bar (0 = first row );
-    int dock_pos;         // position inside the row (0 = first position );
+    int dock_direction;   // dock direction (top, bottom, left, right, center);
+    int dock_layer;       // layer number (0 = innermost layer);
+    int dock_row;         // row number on the docking bar (0 = first row);
+    int dock_pos;         // position inside the row (0 = first position);
 
     wxSize best_size;     // size that the layout engine will prefer
     wxSize min_size;      // minimum size the pane window can tolerate
@@ -905,7 +886,7 @@ class %delete wxAuiPaneInfo
 
     //wxAuiPaneButtonArray buttons; // buttons on the pane
 
-    wxRect rect;              // current rectangle (populated by wxAUI );
+    wxRect rect;              // current rectangle (populated by wxAUI);
 };
 
 
@@ -974,16 +955,16 @@ class %delete wxAuiManager : public wxEvtHandler
     void RestoreMaximizedPane();
 
     virtual wxAuiFloatingFrame* CreateFloatingFrame(wxWindow* parent, const wxAuiPaneInfo& p);
-    void StartPaneDrag( wxWindow* pane_window, const wxPoint& offset);
-    wxRect CalculateHintRect( wxWindow* pane_window, const wxPoint& pt, const wxPoint& offset);
-    void DrawHintRect( wxWindow* pane_window, const wxPoint& pt, const wxPoint& offset);
+    void StartPaneDrag(wxWindow* pane_window, const wxPoint& offset);
+    wxRect CalculateHintRect(wxWindow* pane_window, const wxPoint& pt, const wxPoint& offset);
+    void DrawHintRect(wxWindow* pane_window, const wxPoint& pt, const wxPoint& offset);
 
     virtual void ShowHint(const wxRect& rect);
     virtual void HideHint();
 
-    // public events (which can be invoked externally );
-    void OnRender(wxAuiManagerEvent& evt);
-    void OnPaneButton(wxAuiManagerEvent& evt);
+    // public events (which can be invoked externally);
+    void OnRender(wxAuiManagerEvent& evt); // %add as it's missing from framemanager.h
+    void OnPaneButton(wxAuiManagerEvent& evt); // %add as it's missing from framemanager.h
 };
 
 
@@ -992,12 +973,12 @@ class %delete wxAuiManager : public wxEvtHandler
 
 class %delete wxAuiManagerEvent : public wxEvent
 {
-    %wxEventType wxEVT_AUI_PANE_BUTTON     // EVT_AUI_PANE_BUTTON(func );
-    %wxEventType wxEVT_AUI_PANE_CLOSE      // EVT_AUI_PANE_CLOSE(func );
-    %wxEventType wxEVT_AUI_PANE_MAXIMIZE   // EVT_AUI_PANE_MAXIMIZE(func );
-    %wxEventType wxEVT_AUI_PANE_RESTORE    // EVT_AUI_PANE_RESTORE(func );
-    %wxEventType wxEVT_AUI_RENDER          // EVT_AUI_RENDER(func );
-    %wxEventType wxEVT_AUI_FIND_MANAGER    // EVT_AUI_FIND_MANAGER(func );
+    %wxEventType wxEVT_AUI_PANE_BUTTON     // EVT_AUI_PANE_BUTTON(func);
+    %wxEventType wxEVT_AUI_PANE_CLOSE      // EVT_AUI_PANE_CLOSE(func);
+    %wxEventType wxEVT_AUI_PANE_MAXIMIZE   // EVT_AUI_PANE_MAXIMIZE(func);
+    %wxEventType wxEVT_AUI_PANE_RESTORE    // EVT_AUI_PANE_RESTORE(func);
+    %wxEventType wxEVT_AUI_RENDER          // EVT_AUI_RENDER(func);
+    %wxEventType wxEVT_AUI_FIND_MANAGER    // EVT_AUI_FIND_MANAGER(func);
 
     wxAuiManagerEvent(wxEventType type=wxEVT_NULL);
     wxAuiManagerEvent(const wxAuiManagerEvent& c);
@@ -1039,11 +1020,11 @@ class %delete wxAuiDockInfo
 
     //wxAuiPaneInfoPtrArray panes; // array of panes - FIXME
     wxRect rect;              // current rectangle
-    int dock_direction;       // dock direction (top, bottom, left, right, center );
-    int dock_layer;           // layer number (0 = innermost layer );
-    int dock_row;             // row number on the docking bar (0 = first row );
+    int dock_direction;       // dock direction (top, bottom, left, right, center);
+    int dock_layer;           // layer number (0 = innermost layer);
+    int dock_row;             // row number on the docking bar (0 = first row);
     int size;                 // size of the dock
-    int min_size;             // minimum size of a dock (0 if there is no min );
+    int min_size;             // minimum size of a dock (0 if there is no min);
     bool resizable;           // flag indicating whether the dock is resizable
     bool toolbar;             // flag indicating dock contains only toolbars
     bool fixed;               // flag indicating that the dock operates on
@@ -1070,8 +1051,8 @@ enum wxAuiDockUIPart::dummy
 
 class %delete wxAuiDockUIPart
 {
-    int type;                // ui part type (see enum above );
-    int orientation;         // orientation (either wxHORIZONTAL or wxVERTICAL );
+    int type;                // ui part type (see enum above);
+    int orientation;         // orientation (either wxHORIZONTAL or wxVERTICAL);
     wxAuiDockInfo* dock;        // which dock the item is associated with
     wxAuiPaneInfo* pane;        // which pane the item is associated with
     wxAuiPaneButton* button;    // which pane button the item is associated with
@@ -1086,7 +1067,7 @@ class %delete wxAuiDockUIPart
 
 class %delete wxAuiPaneButton
 {
-    int button_id;        // id of the button (e.g. buttonClose );
+    int button_id;        // id of the button (e.g. buttonClose);
 };
 
 
@@ -1104,7 +1085,7 @@ class wxAuiMDIParentFrame : public wxFrame
     wxAuiMDIParentFrame();
     wxAuiMDIParentFrame(wxWindow *parent, wxWindowID winid, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_FRAME_STYLE | wxVSCROLL | wxHSCROLL, const wxString& name = "wxAuiMDIParentFrame");
 
-    bool Create(wxWindow *parent, wxWindowID winid, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_FRAME_STYLE | wxVSCROLL | wxHSCROLL,const wxString& name = "wxAuiMDIParentFrame" );
+    bool Create(wxWindow *parent, wxWindowID winid, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_FRAME_STYLE | wxVSCROLL | wxHSCROLL,const wxString& name = "wxAuiMDIParentFrame");
 
     void SetArtProvider(%ungc wxAuiTabArt* provider);
     wxAuiTabArt* GetArtProvider();
@@ -1163,8 +1144,8 @@ class wxAuiMDIChildFrame : public wxPanel
     //virtual wxStatusBar* CreateStatusBar(int number = 1, long style = 1, wxWindowID winid = 1, const wxString& name = ""); //  FIXME
 
     //virtual wxStatusBar *GetStatusBar() const;
-    //virtual void SetStatusText( const wxString &WXUNUSED(text), int WXUNUSED(number)=0 );
-    //virtual void SetStatusWidths( int WXUNUSED(n), const int WXUNUSED(widths_field)[] );
+    //virtual void SetStatusText(const wxString &WXUNUSED(text), int WXUNUSED(number)=0);
+    //virtual void SetStatusWidths(int WXUNUSED(n), const int WXUNUSED(widths_field)[]);
 #endif //wxUSE_STATUSBAR
 
     // no size hints
