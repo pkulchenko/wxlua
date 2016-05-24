@@ -473,34 +473,34 @@ function SettingsPanel:CreateColorBitmap(c)
 end
 
 function SettingsPanel:UpdateColors()
-        local bk = self.m_frame:GetDockArt():GetColor(wxaui.wxAUI_DOCKART_BACKGROUND_COLOUR);
+        local bk = self.m_frame:GetDockArt():GetColour(wxaui.wxAUI_DOCKART_BACKGROUND_COLOUR);
         self.m_background_color:SetBitmapLabel(self:CreateColorBitmap(bk));
 
-        local cap = self.m_frame:GetDockArt():GetColor(wxaui.wxAUI_DOCKART_INACTIVE_CAPTION_COLOUR);
+        local cap = self.m_frame:GetDockArt():GetColour(wxaui.wxAUI_DOCKART_INACTIVE_CAPTION_COLOUR);
         self.m_inactive_caption_color:SetBitmapLabel(self:CreateColorBitmap(cap));
 
-        local capgrad = self.m_frame:GetDockArt():GetColor(wxaui.wxAUI_DOCKART_INACTIVE_CAPTION_GRADIENT_COLOUR);
+        local capgrad = self.m_frame:GetDockArt():GetColour(wxaui.wxAUI_DOCKART_INACTIVE_CAPTION_GRADIENT_COLOUR);
         self.m_inactive_caption_gradient_color:SetBitmapLabel(self:CreateColorBitmap(capgrad));
 
-        local captxt = self.m_frame:GetDockArt():GetColor(wxaui.wxAUI_DOCKART_INACTIVE_CAPTION_TEXT_COLOUR);
+        local captxt = self.m_frame:GetDockArt():GetColour(wxaui.wxAUI_DOCKART_INACTIVE_CAPTION_TEXT_COLOUR);
         self.m_inactive_caption_text_color:SetBitmapLabel(self:CreateColorBitmap(captxt));
 
-        local acap = self.m_frame:GetDockArt():GetColor(wxaui.wxAUI_DOCKART_ACTIVE_CAPTION_COLOUR);
+        local acap = self.m_frame:GetDockArt():GetColour(wxaui.wxAUI_DOCKART_ACTIVE_CAPTION_COLOUR);
         self.m_active_caption_color:SetBitmapLabel(self:CreateColorBitmap(acap));
 
-        local acapgrad = self.m_frame:GetDockArt():GetColor(wxaui.wxAUI_DOCKART_ACTIVE_CAPTION_GRADIENT_COLOUR);
+        local acapgrad = self.m_frame:GetDockArt():GetColour(wxaui.wxAUI_DOCKART_ACTIVE_CAPTION_GRADIENT_COLOUR);
         self.m_active_caption_gradient_color:SetBitmapLabel(self:CreateColorBitmap(acapgrad));
 
-        local acaptxt = self.m_frame:GetDockArt():GetColor(wxaui.wxAUI_DOCKART_ACTIVE_CAPTION_TEXT_COLOUR);
+        local acaptxt = self.m_frame:GetDockArt():GetColour(wxaui.wxAUI_DOCKART_ACTIVE_CAPTION_TEXT_COLOUR);
         self.m_active_caption_text_color:SetBitmapLabel(self:CreateColorBitmap(acaptxt));
 
-        local sash = self.m_frame:GetDockArt():GetColor(wxaui.wxAUI_DOCKART_SASH_COLOUR);
+        local sash = self.m_frame:GetDockArt():GetColour(wxaui.wxAUI_DOCKART_SASH_COLOUR);
         self.m_sash_color:SetBitmapLabel(self:CreateColorBitmap(sash));
 
-        local border = self.m_frame:GetDockArt():GetColor(wxaui.wxAUI_DOCKART_BORDER_COLOUR);
+        local border = self.m_frame:GetDockArt():GetColour(wxaui.wxAUI_DOCKART_BORDER_COLOUR);
         self.m_border_color:SetBitmapLabel(self:CreateColorBitmap(border));
 
-        local gripper = self.m_frame:GetDockArt():GetColor(wxaui.wxAUI_DOCKART_GRIPPER_COLOUR);
+        local gripper = self.m_frame:GetDockArt():GetColour(wxaui.wxAUI_DOCKART_GRIPPER_COLOUR);
         self.m_gripper_color:SetBitmapLabel(self:CreateColorBitmap(gripper));
 end
 
