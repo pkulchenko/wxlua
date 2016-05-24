@@ -751,15 +751,15 @@ class %delete wxEventLoopBase
     %wxchkver_3_1_1 static wxEventLoopBase *GetActive();
     %wxchkver_3_1_1 static void SetActive(wxEventLoopBase* loop);
     %wxchkver_3_1_1 bool IsMain() const;
-    %wxchkver_3_1_1 int Run() = 0;
+    %wxchkver_3_1_1 int Run();
     %wxchkver_3_1_1 bool IsRunning() const;
     %wxchkver_3_1_1 bool IsOk() const;
     %wxchkver_3_1_1 void Exit(int rc = 0);
-    %wxchkver_3_1_1 void ScheduleExit(int rc = 0) = 0;
-    %wxchkver_3_1_1 bool Pending() const = 0;
-    %wxchkver_3_1_1 bool Dispatch() = 0;
-    %wxchkver_3_1_1 int DispatchTimeout(unsigned long timeout) = 0;
-    %wxchkver_3_1_1 void WakeUp() = 0;
+    %wxchkver_3_1_1 void ScheduleExit(int rc = 0);
+    %wxchkver_3_1_1 bool Pending() const;
+    %wxchkver_3_1_1 bool Dispatch();
+    %wxchkver_3_1_1 int DispatchTimeout(unsigned long timeout);
+    %wxchkver_3_1_1 void WakeUp();
     %wxchkver_3_1_1 void WakeUpIdle();
     %wxchkver_3_1_1 bool ProcessIdle();
     %wxchkver_3_1_1 bool IsYielding() const;
@@ -770,8 +770,8 @@ class %delete wxEventLoopBase
 
 class wxEventFilter
 {
-    %wxchkver_3_1_1 wxEventFilter();
-    %wxchkver_3_1_1 int FilterEvent(wxEvent& event) = 0;
+    // wxEventFilter(); // no constructor as it's an abstract class
+    %wxchkver_3_1_1 int FilterEvent(wxEvent& event);
 };
 
 class %delete wxEvtHandler : public wxObject
@@ -864,8 +864,8 @@ enum wxEventCategory
 
 class %delete wxEvent : public wxObject
 {
-    %wxchkver_3_1_1 wxEvent(int id = 0, wxEventType eventType = wxEVT_NULL);
-    %wxchkver_3_1_1 wxEvent* Clone() const = 0;
+    // wxEvent(int id = 0, wxEventType eventType = wxEVT_NULL); // no constructor as it's an abstract class
+    // wxEvent* Clone() const; // no constructor as it's an abstract class
     wxObject* GetEventObject();
     wxEventType GetEventType();
     %wxchkver_3_1_1 wxEventCategory GetEventCategory() const;

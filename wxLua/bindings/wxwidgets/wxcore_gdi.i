@@ -968,11 +968,11 @@ class %delete wxPalette : public wxGDIObject
     wxPalette();
     wxPalette(const wxPalette& palette);
     %wxchkver_3_1_1 wxPalette(int n, const unsigned char* red, const unsigned char* green, const unsigned char* blue);
+    bool Create(int n, const unsigned char* red, const unsigned char* green, const unsigned char* blue); // %override bool wxPalette::Create(int n, Lua string red, Lua string green, Lua string blue);
     int GetColoursCount() const;
     int GetPixel(unsigned char red, unsigned char green, unsigned char blue) const;
     %wxchkver_3_1_1 bool IsOk() const;
     wxPalette& operator =(const wxPalette& palette);
-    bool Create(int n, const unsigned char* red, const unsigned char* green, const unsigned char* blue); // %override bool wxPalette::Create(int n, Lua string red, Lua string green, Lua string blue);
     bool GetRGB(int pixel) const; // %override [bool, char red, char green, char blue] wxPalette::GetRGB(int pixel) const;
     bool Ok() const; // %add for compatibility with earlier versions of wxlua
 };
