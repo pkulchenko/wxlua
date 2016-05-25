@@ -3069,7 +3069,7 @@ static int LUACALL wxLua_wxFrame_SetStatusText(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFrame_SetStatusWidths[] = { &wxluatype_wxFrame, &wxluatype_TTABLE, NULL };
 static int LUACALL wxLua_wxFrame_SetStatusWidths(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFrame_SetStatusWidths[1] = {{ wxLua_wxFrame_SetStatusWidths, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFrame_SetStatusWidths }};
-//     virtual void SetStatusWidths(IntArray_FromLuaTable intTable); // %add parameters
+//     virtual void SetStatusWidths(IntArray_FromLuaTable intTable); // %override parameters
 static int LUACALL wxLua_wxFrame_SetStatusWidths(lua_State *L)
 {
     // IntArray_FromLuaTable intTable
