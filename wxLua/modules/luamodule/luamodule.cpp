@@ -102,11 +102,13 @@ public:
     virtual bool OnInit();
     virtual int  OnExit();
     virtual int  MainLoop();
+    virtual void MacOpenFiles(const wxArrayString& fileNames);
 
     void OnLuaPrint( wxLuaEvent &event );
     void OnLuaError( wxLuaEvent &event );
 
 private:
+    wxArrayString macopenfiles;
     DECLARE_ABSTRACT_CLASS(wxLuaModuleApp)
     DECLARE_EVENT_TABLE()
 };
@@ -151,8 +153,14 @@ int wxLuaModuleApp::MainLoop()
     // they cannot exit it and they won't be able to do anything anyway.
     int  run_main = 0;
     bool have_windows = (wxTopLevelWindows.GetCount() != 0);
-    if (have_windows && !IsMainLoopRunning())
+    if (have_windows && !IsMainLoopRunning()) {
+        // process any pending files from MacOpenFiles that were stored during the initial call
+        if (macopenfiles.GetCount() > 0) {
+          MacOpenFiles(macopenfiles);
+          macopenfiles.Empty();
+        }
         run_main = wxApp::MainLoop();
+    }
 
     return run_main;
 }
@@ -173,6 +181,26 @@ void wxLuaModuleApp::OnLuaError( wxLuaEvent &event )
     if (ret == wxCANCEL)
         wxExit();
 }
+
+void wxLuaModuleApp::MacOpenFiles(const wxArrayString& fileNames)
+{
+    wxLuaState m_wxlState = s_wxlState;
+    if (m_wxlState.Ok() && m_wxlState.HasDerivedMethod(this, "MacOpenFiles", true)) {
+        int nOldTop = m_wxlState.lua_GetTop();
+        m_wxlState.PushwxArrayStringTable(fileNames);
+
+        m_wxlState.LuaPCall(1, 0);
+        m_wxlState.lua_SetTop(nOldTop-1);
+    }
+    else if (!IsMainLoopRunning()) {
+        // store any files passed when the Lua handler may not yet be set up;
+        // it will be called one more time when the MainLoop starts
+        macopenfiles.Clear();
+        macopenfiles = wxArrayString(fileNames);
+    }
+    m_wxlState.SetCallBaseClassFunction(false); // clear flag always
+}
+
 
 // ----------------------------------------------------------------------------
 // luaopen_wx the C function for require to call
