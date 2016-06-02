@@ -9,6 +9,14 @@
 
 #include <wx/wxprec.h>
 
+#ifdef __STRICT_ANSI__
+#undef __STRICT_ANSI__
+#include <cstdio>
+#define __STRICT_ANSI__
+#else
+#include <cstdio>
+#endif
+
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
