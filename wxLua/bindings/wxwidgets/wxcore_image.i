@@ -100,111 +100,132 @@ enum wxImageResizeQuality
 class %delete wxImage : public wxObject
 {
     #define_object wxNullImage
-
     wxImage();
-    wxImage(const wxImage& image);
     wxImage(int width, int height, bool clear=true);
-    wxImage(const wxString& name, long type = wxBITMAP_TYPE_ANY);
+    %wxchkver_3_1_1 wxImage(const wxSize& sz, bool clear = true);
+    %wxchkver_3_1_1 wxImage(const wxSize& sz, unsigned char* data, bool static_data = false);
+    %wxchkver_3_1_1 wxImage(int width, int height, unsigned char* data, unsigned char* alpha, bool static_data = false );
+    %wxchkver_3_1_1 wxImage(const wxSize& sz, unsigned char* data, unsigned char* alpha, bool static_data = false);
     // wxImage(const char* const* xpmData); // wxlua doesn't handle `const char* const*`
-
-    %override_name wxLua_wxImageFromData_constructor wxImage(int width, int height, unsigned char* data, bool static_data = false); // %override wxImage(int width, int height, unsigned char* data, bool static_data = false);
-
-    %override_name wxLua_wxImageFromBitmap_constructor wxImage(const wxBitmap& bitmap); // %override wxLua provides this constructor
-
-    static void AddHandler(%ungc wxImageHandler* handler);
+    %wxchkver_3_1_1 wxImage(const wxString& name, wxBitmapType type = wxBITMAP_TYPE_ANY, int index = -1);
+    %wxchkver_3_1_1 wxImage(const wxString& name, const wxString& mimetype, int index = -1);
+    %wxchkver_3_1_1 wxImage(wxInputStream& stream, wxBitmapType type = wxBITMAP_TYPE_ANY, int index = -1);
+    %wxchkver_3_1_1 wxImage(wxInputStream& stream, const wxString& mimetype, int index = -1);
+    wxImage Copy() const;
+    void Create(int width, int height, bool clear=true);
+    %wxchkver_3_1_1 bool Create( const wxSize& sz, bool clear = true );
+    %wxchkver_3_1_1 bool Create( int width, int height, unsigned char* data, bool static_data = false );
+    %wxchkver_3_1_1 bool Create( const wxSize& sz, unsigned char* data, bool static_data = false );
+    %wxchkver_3_1_1 bool Create( int width, int height, unsigned char* data, unsigned char* alpha, bool static_data = false );
+    %wxchkver_3_1_1 bool Create( const wxSize& sz, unsigned char* data, unsigned char* alpha, bool static_data = false );
+    %wxchkver_3_1_1 void Clear(unsigned char value = 0);
+    void Destroy();
+    void InitAlpha();
     %wxchkver_2_8 wxImage Blur(int radius);
     %wxchkver_2_8 wxImage BlurHorizontal(int radius);
     %wxchkver_2_8 wxImage BlurVertical(int radius);
-    static void CleanUpHandlers();
-    unsigned long ComputeHistogram(wxImageHistogram& histogram) const;
-    %wxchkver_2_8 wxImage ConvertToGreyscale(double lr = 0.299, double lg = 0.587, double lb = 0.114) const; // %override parameter initialization
-    wxImage ConvertToMono(unsigned char r, unsigned char g, unsigned char b) const;
-    wxImage Copy() const;
-    void Create(int width, int height, bool clear=true);
-    void Destroy();
-
-    bool FindFirstUnusedColour(unsigned char startR = 1, unsigned char startG = 0, unsigned char startB = 0); // %override [bool, uchar r, uchar g, char b] wxImage::FindFirstUnusedColour(unsigned char startR = 1, unsigned char startG = 0, unsigned char startB = 0);
-
-    static wxImageHandler* FindHandler(const wxString& name);
-    static wxImageHandler* FindHandler(const wxString& extension, long imageType);
-    static wxImageHandler* FindHandler(long imageType);
-    static wxImageHandler* FindHandlerMime(const wxString& mimetype);
-    static wxString GetImageExtWildcard();
-    unsigned char GetAlpha(int x, int y) const;
-    unsigned char GetBlue(int x, int y) const;
-
-    %override_name wxLua_wxImage_GetAlphaData unsigned char* GetAlpha() const; // %override [Lua string] wxImage::GetAlpha() const;
-    unsigned char* GetData() const; // %override [Lua string] wxImage::GetData() const;
-
-    unsigned char GetGreen(int x, int y) const;
-    static int GetImageCount(const wxString& filename, wxBitmapType type = wxBITMAP_TYPE_ANY);
-    static int GetImageCount(wxInputStream& stream, wxBitmapType type = wxBITMAP_TYPE_ANY);
-    static wxList& GetHandlers();
-    int GetHeight() const;
-    unsigned char GetMaskBlue() const;
-    unsigned char GetMaskGreen() const;
-    unsigned char GetMaskRed() const;
-
-    bool GetOrFindMaskColour() const; // %override [bool, uchar r, uchar g, uchar b] wxImage::GetOrFindMaskColour() const;
-
-    wxPalette GetPalette() const;
-    unsigned char GetRed(int x, int y) const;
-    wxImage GetSubImage(const wxRect& rect) const;
-    int GetWidth() const;
-
-    static int HSVtoRGB(double h, double s, double v); // %override [r, g, b] wxImage::HSVtoRGB(double h, double s, double v);
-    static int RGBtoHSV(unsigned char r, unsigned char g, unsigned char b); // %override [h, s, v] wxImage::RGBtoHSV(unsigned char r, unsigned char g, unsigned char b);
-
-    bool HasAlpha() const;
-    bool HasMask() const;
-    wxString GetOption(const wxString &name) const;
-    int GetOptionInt(const wxString &name) const;
-    int HasOption(const wxString &name) const;
-    void InitAlpha();
-    static void InitStandardHandlers();
-    static void InsertHandler(%ungc wxImageHandler* handler);
-    bool IsTransparent(int x, int y, unsigned char threshold = 128) const;
-
-    bool LoadFile(const wxString& name, wxBitmapType type = wxBITMAP_TYPE_ANY, int index = -1);
-    bool LoadFile(const wxString& name, const wxString& mimetype, int index = -1);
-    bool LoadFile(wxInputStream& stream, wxBitmapType type = wxBITMAP_TYPE_ANY, int index = -1);
-    bool LoadFile(wxInputStream& stream, const wxString& mimetype, int index = -1);
-
-    bool Ok() const; // %add for compatibility with earlier versions of wxlua
-    static bool RemoveHandler(const wxString& name);
     wxImage Mirror(bool horizontally = true) const;
+    %wxchkver_3_1_1 void Paste(const wxImage& image, int x, int y);
     void Replace(unsigned char r1, unsigned char g1, unsigned char b1, unsigned char r2, unsigned char g2, unsigned char b2);
-    %wxchkver_2_8 wxImage ResampleBox(int width, int height) const; // %add missing in interface description
-    %wxchkver_2_8 wxImage ResampleBicubic(int width, int height) const; // %add missing in interface description
-    %wxchkver_3_1 wxImage ResampleNearest(int width, int height) const; // %add missing in interface description
-    %wxchkver_3_1 wxImage ResampleBilinear(int width, int height) const; // %add missing in interface description
-    !%wxchkver_2_8 wxImage& Rescale(int width, int height);
     %wxchkver_2_8 wxImage& Rescale(int width, int height, wxImageResizeQuality quality = wxIMAGE_QUALITY_NORMAL);
     wxImage& Resize(const wxSize& size, const wxPoint& pos, int red = -1, int green = -1, int blue = -1);
     wxImage Rotate(double angle, const wxPoint& rotationCentre, bool interpolating = true, wxPoint* offsetAfterRotation = NULL);
-    void RotateHue(double angle);
     wxImage Rotate90(bool clockwise = true) const;
-    bool SaveFile(const wxString& name);
-    bool SaveFile(const wxString& name, int type);
-    bool SaveFile(const wxString& name, const wxString& mimetype);
-    !%wxchkver_2_8 wxImage Scale(int width, int height) const;
+    %wxchkver_3_1_1 wxImage Rotate180() const;
+    void RotateHue(double angle);
     %wxchkver_2_8 wxImage Scale(int width, int height, wxImageResizeQuality quality = wxIMAGE_QUALITY_NORMAL) const;
     wxImage Size(const wxSize& size, const wxPoint& pos, int red = -1, int green = -1, int blue = -1) const;
+    %wxchkver_3_1_1 bool ConvertAlphaToMask(unsigned char threshold = wxIMAGE_ALPHA_THRESHOLD);
+    %wxchkver_3_1_1 bool ConvertAlphaToMask(unsigned char mr, unsigned char mg, unsigned char mb, unsigned char threshold = wxIMAGE_ALPHA_THRESHOLD);
+    wxImage ConvertToMono(unsigned char r, unsigned char g, unsigned char b) const;
+    %wxchkver_3_1_1 wxImage ConvertToDisabled(unsigned char brightness = 255) const;
+    unsigned long ComputeHistogram(wxImageHistogram& histogram) const;
+    wxImage& operator=(const wxImage& image);
+    unsigned char* GetData() const; // %override [Lua string] wxImage::GetData() const;
+    unsigned char GetAlpha(int x, int y) const;
+    unsigned char GetRed(int x, int y) const;
+    unsigned char GetGreen(int x, int y) const;
+    unsigned char GetBlue(int x, int y) const;
+    unsigned char GetMaskRed() const;
+    unsigned char GetMaskGreen() const;
+    unsigned char GetMaskBlue() const;
+    int GetWidth() const;
+    int GetHeight() const;
+    %wxchkver_3_1_1 wxSize GetSize() const;
+    wxString GetOption(const wxString &name) const;
+    int GetOptionInt(const wxString &name) const;
+    wxPalette GetPalette() const;
+    wxImage GetSubImage(const wxRect& rect) const;
+    %wxchkver_3_1_1 wxBitmapType GetType() const;
+    bool HasAlpha() const;
+    bool HasMask() const;
+    int HasOption(const wxString &name) const;
+    %wxchkver_3_1_1 bool IsOk() const;
+    bool IsTransparent(int x, int y, unsigned char threshold = 128) const;
+    bool LoadFile(wxInputStream& stream, wxBitmapType type = wxBITMAP_TYPE_ANY, int index = -1);
+    bool LoadFile(const wxString& name, wxBitmapType type = wxBITMAP_TYPE_ANY, int index = -1);
+    bool LoadFile(const wxString& name, const wxString& mimetype, int index = -1);
+    bool LoadFile(wxInputStream& stream, const wxString& mimetype, int index = -1);
+    %wxchkver_3_1_1 bool SaveFile(wxOutputStream& stream, const wxString& mimetype) const;
+    %wxchkver_3_1_1 bool SaveFile(const wxString& name, wxBitmapType type) const;
+    bool SaveFile(const wxString& name, const wxString& mimetype);
+    bool SaveFile(const wxString& name);
+    %wxchkver_3_1_1 bool SaveFile(wxOutputStream& stream, wxBitmapType type) const;
+    %wxchkver_3_1_1 void SetAlpha(unsigned char* alpha = NULL, bool static_data = false);
     void SetAlpha(int x, int y, unsigned char alpha);
-
-    %override_name wxLua_wxImage_SetAlphaData void SetAlpha(const wxString& dataStr); // %override void wxImage::SetAlpha(Lua string) - copy contents of string to image
-    void SetData(const wxString& data); // %override void wxImage::SetData(Lua string) - copy contents of string to image
-
+    %wxchkver_3_1_1 void ClearAlpha();
+    %wxchkver_3_1_1 static void SetDefaultLoadFlags(int flags);
+    %wxchkver_3_1_1 void SetLoadFlags(int flags);
     void SetMask(bool hasMask = true);
     void SetMaskColour(unsigned char red, unsigned char blue, unsigned char green);
     bool SetMaskFromImage(const wxImage& mask, unsigned char mr, unsigned char mg, unsigned char mb);
     void SetOption(const wxString &name, const wxString &value);
     void SetOption(const wxString &name, int value);
     void SetPalette(const wxPalette& palette);
-    void SetRGB(int x, int y, unsigned char red, unsigned char green, unsigned char blue);
-    void SetRGB(wxRect& rect, unsigned char red, unsigned char green, unsigned char blue);
-
-    wxImage& operator=(const wxImage& image);
+    %wxchkver_3_1_1 void SetRGB( int x, int y, unsigned char r, unsigned char g, unsigned char b );
+    %wxchkver_3_1_1 void SetRGB(const wxRect& rect, unsigned char red, unsigned char green, unsigned char blue);
+    %wxchkver_3_1_1 void SetType(wxBitmapType type);
+    static void AddHandler(%ungc wxImageHandler* handler);
+    static void CleanUpHandlers();
+    static wxImageHandler* FindHandler(const wxString& name);
+    %wxchkver_3_1_1 static wxImageHandler* FindHandler(const wxString& extension, wxBitmapType imageType);
+    %wxchkver_3_1_1 static wxImageHandler* FindHandler(wxBitmapType imageType);
+    static wxImageHandler* FindHandlerMime(const wxString& mimetype);
+    static wxList& GetHandlers();
+    static void InitStandardHandlers();
+    static void InsertHandler(%ungc wxImageHandler* handler);
+    static bool RemoveHandler(const wxString& name);
+    %wxchkver_3_1_1 static bool CanRead(const wxString& filename);
+    %wxchkver_3_1_1 static bool CanRead(wxInputStream& stream);
+    %wxchkver_3_1_1 static int GetDefaultLoadFlags();
+    static int GetImageCount(const wxString& filename, wxBitmapType type = wxBITMAP_TYPE_ANY);
+    static int GetImageCount(wxInputStream& stream, wxBitmapType type = wxBITMAP_TYPE_ANY);
+    static wxString GetImageExtWildcard();
+    %wxchkver_3_1_1 int GetLoadFlags() const;
+    !%wxchkver_2_8 wxImage Scale(int width, int height) const;
+    !%wxchkver_2_8 wxImage& Rescale(int width, int height);
+    !%wxchkver_3_1_1 bool SaveFile(const wxString& name, int type);
+    !%wxchkver_3_1_1 static wxImageHandler* FindHandler(const wxString& extension, long imageType);
+    !%wxchkver_3_1_1 static wxImageHandler* FindHandler(long imageType);
+    !%wxchkver_3_1_1 void SetRGB(int x, int y, unsigned char red, unsigned char green, unsigned char blue);
+    !%wxchkver_3_1_1 void SetRGB(wxRect& rect, unsigned char red, unsigned char green, unsigned char blue);
+    !%wxchkver_3_1_1 wxImage(const wxImage& image);
+    !%wxchkver_3_1_1 wxImage(const wxString& name, long type = wxBITMAP_TYPE_ANY);
+    %override_name wxLua_wxImageFromBitmap_constructor wxImage(const wxBitmap& bitmap); // %override wxLua provides this constructor
+    %override_name wxLua_wxImageFromData_constructor wxImage(int width, int height, unsigned char* data, bool static_data = false); // %override wxImage(int width, int height, unsigned char* data, bool static_data = false);
+    %override_name wxLua_wxImage_GetAlphaData unsigned char* GetAlpha() const; // %override [Lua string] wxImage::GetAlpha() const;
+    %override_name wxLua_wxImage_SetAlphaData void SetAlpha(const wxString& dataStr); // %override void wxImage::SetAlpha(Lua string) - copy contents of string to image
+    %wxchkver_2_8 wxImage ConvertToGreyscale(double lr = 0.299, double lg = 0.587, double lb = 0.114) const; // %override parameter initialization
+    %wxchkver_2_8 wxImage ResampleBicubic(int width, int height) const; // %add missing in interface description
+    %wxchkver_2_8 wxImage ResampleBox(int width, int height) const; // %add missing in interface description
+    %wxchkver_3_1 wxImage ResampleBilinear(int width, int height) const; // %add missing in interface description
+    %wxchkver_3_1 wxImage ResampleNearest(int width, int height) const; // %add missing in interface description
+    bool FindFirstUnusedColour(unsigned char startR = 1, unsigned char startG = 0, unsigned char startB = 0); // %override [bool, uchar r, uchar g, char b] wxImage::FindFirstUnusedColour(unsigned char startR = 1, unsigned char startG = 0, unsigned char startB = 0);
+    bool GetOrFindMaskColour() const; // %override [bool, uchar r, uchar g, uchar b] wxImage::GetOrFindMaskColour() const;
+    bool Ok() const; // %add for compatibility with earlier versions of wxlua
+    static int HSVtoRGB(double h, double s, double v); // %override [r, g, b] wxImage::HSVtoRGB(double h, double s, double v);
+    static int RGBtoHSV(unsigned char r, unsigned char g, unsigned char b); // %override [h, s, v] wxImage::RGBtoHSV(unsigned char r, unsigned char g, unsigned char b);
+    void SetData(const wxString& data); // %override void wxImage::SetData(Lua string) - copy contents of string to image
 };
 
 // ---------------------------------------------------------------------------
