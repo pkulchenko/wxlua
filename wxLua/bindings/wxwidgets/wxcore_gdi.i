@@ -1042,47 +1042,55 @@ class %delete wxIconBundle
 class %delete wxBitmap : public wxGDIObject
 {
     #define_object wxNullBitmap
-
     wxBitmap();
     wxBitmap(const wxBitmap& bitmap);
+    %wxchkver_3_1_1 wxBitmap(const char bits[], int width, int height, int depth = 1);
     wxBitmap(int width, int height, int depth = -1);
+    %wxchkver_3_1_1 wxBitmap(const wxSize& sz, int depth = wxBITMAP_SCREEN_DEPTH);
+    // wxBitmap(const char* const* bits); // wxlua doesn't handle `const char* const*`
     wxBitmap(const wxString& name, wxBitmapType type = wxBITMAP_TYPE_ANY);
     wxBitmap(const wxImage &image, int depth = -1);
-
-    %override_name wxLua_wxBitmapFromBits_constructor wxBitmap(const char* mono_bits, int width, int height, int depth /* = 1 */); // %override wxBitmap(lua string, int width, int height, int depth);
-    %override_name wxLua_wxBitmapFromBitTable_constructor wxBitmap(LuaTable charTable, int width, int height, int depth /* = 1 */); // %override wxBitmap(LuaTable charTable, int width, int height, int depth);
-    %override_name wxLua_wxBitmapFromXPMData_constructor wxBitmap(LuaTable charTable); // %override wxBitmap(LuaTable stringTable where each index is a row in the image);
-    %override_name wxLua_wxBitmapFromData_constructor %win wxBitmap(const wxString& data, int type, int width, int height, int depth /* = -1 */); // %override wxBitmap(Lua string of data, int type, int width, int height, int depth = -1);
-
+    %wxchkver_3_1_1 wxBitmap(const wxCursor& cursor);
     // %win static void AddHandler(wxBitmapHandler* handler); // no support for wxBitmapHandler
     // %win static void CleanUpHandlers(); // no support for wxBitmapHandler
     wxImage ConvertToImage();
     bool CopyFromIcon(const wxIcon& icon);
     virtual bool Create(int width, int height, int depth = -1);
+    %wxchkver_3_1_1 bool Create(const wxSize& sz, int depth = wxBITMAP_SCREEN_DEPTH);
+    %wxchkver_3_1_1 bool Create(int width, int height, const wxDC& dc);
+    %wxchkver_3_1_1 bool CreateScaled(int logwidth, int logheight, int depth, double logicalScale);
     // static wxBitmapHandler* FindHandler(const wxString& name); // no support for wxBitmapHandler
     // static wxBitmapHandler* FindHandler(const wxString& extension, wxBitmapType bitmapType); // no support for wxBitmapHandler
     // static wxBitmapHandler* FindHandler(wxBitmapType bitmapType); // no support for wxBitmapHandler
     int GetDepth() const;
     // %wxchkver_2_6&%win static wxGDIImageHandlerList& GetHandlers(); // no support for wxBitmapHandler
     int GetHeight() const;
-    wxPalette* GetPalette() const;
     wxMask* GetMask() const;
+    wxPalette* GetPalette() const;
     wxBitmap GetSubBitmap(const wxRect&rect) const;
+    %wxchkver_3_1_1 wxSize GetSize() const;
+    %wxchkver_3_1_1 wxBitmap ConvertToDisabled(unsigned char brightness = 255) const;
     int GetWidth() const;
     // %win static void InitStandardHandlers(); // no support for wxBitmapHandler
     // %win static void InsertHandler(wxBitmapHandler* handler); // no support for wxBitmapHandler
+    %wxchkver_3_1_1 bool IsOk() const;
     bool LoadFile(const wxString& name, wxBitmapType type);
-    bool Ok() const; // %add for compatibility with earlier versions of wxlua
-    // !%msw&%wxchkver_2_8 virtual wxColour QuantizeColour(const wxColour& colour) const; // generic implementation only; not present in interface files
+    %wxchkver_3_1_1 static wxBitmap NewFromPNGData(const void* data, size_t size);
     // %win static bool RemoveHandler(const wxString& name); // no support for wxBitmapHandler
-    bool SaveFile(const wxString& name, wxBitmapType type, wxPalette* palette = NULL);
+    %wxchkver_3_1_1 bool SaveFile(const wxString& name, wxBitmapType type, const wxPalette* palette = NULL) const;
     void SetDepth(int depth);
     void SetHeight(int height);
     void SetMask(%ungc wxMask* mask);
     %win void SetPalette(const wxPalette& palette);
     void SetWidth(int width);
-
-    wxBitmap& operator=(const wxBitmap& b) const;
+    !%wxchkver_3_1_1 bool SaveFile(const wxString& name, wxBitmapType type, wxPalette* palette = NULL);
+    !%wxchkver_3_1_1 wxBitmap& operator=(const wxBitmap& b) const;
+    %override_name wxLua_wxBitmapFromBitTable_constructor wxBitmap(LuaTable charTable, int width, int height, int depth /* = 1 */); // %override wxBitmap(LuaTable charTable, int width, int height, int depth);
+    %override_name wxLua_wxBitmapFromBits_constructor wxBitmap(const char* mono_bits, int width, int height, int depth /* = 1 */); // %override wxBitmap(lua string, int width, int height, int depth);
+    %override_name wxLua_wxBitmapFromData_constructor %win wxBitmap(const wxString& data, int type, int width, int height, int depth /* = -1 */); // %override wxBitmap(Lua string of data, int type, int width, int height, int depth = -1);
+    %override_name wxLua_wxBitmapFromXPMData_constructor wxBitmap(LuaTable charTable); // %override wxBitmap(LuaTable stringTable where each index is a row in the image);
+    // !%msw&%wxchkver_2_8 virtual wxColour QuantizeColour(const wxColour& colour) const; // generic implementation only; not present in interface files
+    bool Ok() const; // %add for compatibility with earlier versions of wxlua
 };
 
 #endif //wxLUA_USE_wxBitmap
