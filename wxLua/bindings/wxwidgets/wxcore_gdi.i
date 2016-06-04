@@ -1050,7 +1050,7 @@ class %delete wxBitmap : public wxGDIObject
     // wxBitmap(const char* const* bits); // wxlua doesn't handle `const char* const*`
     wxBitmap(const wxString& name, wxBitmapType type = wxBITMAP_TYPE_ANY);
     wxBitmap(const wxImage &image, int depth = -1);
-    %wxchkver_3_1_1 wxBitmap(const wxCursor& cursor);
+    %wxchkver_3_1_1 & %win wxBitmap(const wxCursor& cursor); // %override windows only
     // %win static void AddHandler(wxBitmapHandler* handler); // no support for wxBitmapHandler
     // %win static void CleanUpHandlers(); // no support for wxBitmapHandler
     wxImage ConvertToImage();
