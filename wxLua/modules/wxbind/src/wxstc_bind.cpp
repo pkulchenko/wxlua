@@ -5160,6 +5160,25 @@ static int LUACALL wxLua_wxStyledTextCtrl_GetTargetText(lua_State *L)
 
 #endif // wxCHECK_VERSION(3,1,0)
 
+#if wxCHECK_VERSION(3,1,1)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetTargetTextRaw[] = { &wxluatype_wxStyledTextCtrl, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_GetTargetTextRaw(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetTargetTextRaw[1] = {{ wxLua_wxStyledTextCtrl_GetTargetTextRaw, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetTargetTextRaw }};
+//     %wxchkver_3_1_1 wxCharBuffer GetTargetTextRaw();
+static int LUACALL wxLua_wxStyledTextCtrl_GetTargetTextRaw(lua_State *L)
+{
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call GetTargetTextRaw
+    wxCharBuffer returns = (self->GetTargetTextRaw());
+    // push the result string
+    lua_pushstring(L, returns.data());
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(3,1,1)
+
 #if wxCHECK_VERSION(2,9,5)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetTechnology[] = { &wxluatype_wxStyledTextCtrl, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_GetTechnology(lua_State *L);
@@ -12928,6 +12947,10 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "GetTargetText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetTargetText, 1, NULL },
 #endif // wxCHECK_VERSION(3,1,0)
 
+#if wxCHECK_VERSION(3,1,1)
+    { "GetTargetTextRaw", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetTargetTextRaw, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,1)
+
 #if wxCHECK_VERSION(2,9,5)
     { "GetTechnology", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetTechnology, 1, NULL },
 #endif // wxCHECK_VERSION(2,9,5)
@@ -16165,6 +16188,23 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
         { "wxSTC_IV_REAL", wxSTC_IV_REAL },
 #endif // wxCHECK_VERSION(2,9,5)
 
+#if wxCHECK_VERSION(3,1,1)
+        { "wxSTC_JSON_BLOCKCOMMENT", wxSTC_JSON_BLOCKCOMMENT },
+        { "wxSTC_JSON_COMPACTIRI", wxSTC_JSON_COMPACTIRI },
+        { "wxSTC_JSON_DEFAULT", wxSTC_JSON_DEFAULT },
+        { "wxSTC_JSON_ERROR", wxSTC_JSON_ERROR },
+        { "wxSTC_JSON_ESCAPESEQUENCE", wxSTC_JSON_ESCAPESEQUENCE },
+        { "wxSTC_JSON_KEYWORD", wxSTC_JSON_KEYWORD },
+        { "wxSTC_JSON_LDKEYWORD", wxSTC_JSON_LDKEYWORD },
+        { "wxSTC_JSON_LINECOMMENT", wxSTC_JSON_LINECOMMENT },
+        { "wxSTC_JSON_NUMBER", wxSTC_JSON_NUMBER },
+        { "wxSTC_JSON_OPERATOR", wxSTC_JSON_OPERATOR },
+        { "wxSTC_JSON_PROPERTYNAME", wxSTC_JSON_PROPERTYNAME },
+        { "wxSTC_JSON_STRING", wxSTC_JSON_STRING },
+        { "wxSTC_JSON_STRINGEOL", wxSTC_JSON_STRINGEOL },
+        { "wxSTC_JSON_URI", wxSTC_JSON_URI },
+#endif // wxCHECK_VERSION(3,1,1)
+
         { "wxSTC_KEYWORDSET_MAX", wxSTC_KEYWORDSET_MAX },
         { "wxSTC_KEY_ADD", wxSTC_KEY_ADD },
         { "wxSTC_KEY_BACK", wxSTC_KEY_BACK },
@@ -16333,6 +16373,10 @@ wxLuaBindNumber* wxLuaGetDefineList_wxstc(size_t &count)
 #if wxCHECK_VERSION(2,8,12)
         { "wxSTC_LEX_INNOSETUP", wxSTC_LEX_INNOSETUP },
 #endif // wxCHECK_VERSION(2,8,12)
+
+#if wxCHECK_VERSION(3,1,1)
+        { "wxSTC_LEX_JSON", wxSTC_LEX_JSON },
+#endif // wxCHECK_VERSION(3,1,1)
 
         { "wxSTC_LEX_KIX", wxSTC_LEX_KIX },
 

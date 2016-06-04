@@ -528,6 +528,7 @@
 %wxchkver_3_1_0 #define wxSTC_LEX_SREC
 %wxchkver_3_1_0 #define wxSTC_LEX_IHEX
 %wxchkver_3_1_0 #define wxSTC_LEX_TEHEX
+%wxchkver_3_1_1 #define wxSTC_LEX_JSON
 
 /// When a lexer specifies its language as SCLEX_AUTOMATIC it receives a
 /// value assigned in sequence from SCLEX_AUTOMATIC+1.
@@ -2399,6 +2400,24 @@
 %wxchkver_3_1_0 #define wxSTC_HEX_CHECKSUM
 %wxchkver_3_1_0 #define wxSTC_HEX_CHECKSUM_WRONG
 %wxchkver_3_1_0 #define wxSTC_HEX_GARBAGE
+
+/// Lexical state for SCLEX_IHEX (shared with Srec)
+/// Lexical state for SCLEX_TEHEX (shared with Srec)
+/// Lexical states for SCLEX_JSON
+%wxchkver_3_1_1 #define wxSTC_JSON_DEFAULT
+%wxchkver_3_1_1 #define wxSTC_JSON_NUMBER
+%wxchkver_3_1_1 #define wxSTC_JSON_STRING
+%wxchkver_3_1_1 #define wxSTC_JSON_STRINGEOL
+%wxchkver_3_1_1 #define wxSTC_JSON_PROPERTYNAME
+%wxchkver_3_1_1 #define wxSTC_JSON_ESCAPESEQUENCE
+%wxchkver_3_1_1 #define wxSTC_JSON_LINECOMMENT
+%wxchkver_3_1_1 #define wxSTC_JSON_BLOCKCOMMENT
+%wxchkver_3_1_1 #define wxSTC_JSON_OPERATOR
+%wxchkver_3_1_1 #define wxSTC_JSON_URI
+%wxchkver_3_1_1 #define wxSTC_JSON_COMPACTIRI
+%wxchkver_3_1_1 #define wxSTC_JSON_KEYWORD
+%wxchkver_3_1_1 #define wxSTC_JSON_LDKEYWORD
+%wxchkver_3_1_1 #define wxSTC_JSON_ERROR
 
 // deprecated items
 !%wxchkver_2_8 #define wxSTC_LEX_ASP
@@ -6263,6 +6282,11 @@ class wxStyledTextCtrl : public wxControl
        Retrieve the selected text.
     */
     wxCharBuffer GetSelectedTextRaw();
+
+    /**
+       Retrieve the target text.
+    */
+    %wxchkver_3_1_1 wxCharBuffer GetTargetTextRaw();
 
     /**
        Retrieve a range of text.
