@@ -1872,7 +1872,12 @@ int  wxLuaState::lua_Load(lua_Reader reader, void *dt, const char* chunkname, co
 int wxLuaState::lua_Dump(lua_Writer writer, void *data)
 {
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
-    return lua_dump(M_WXLSTATEDATA->m_lua_State, writer, data);
+    return lua_dump(M_WXLSTATEDATA->m_lua_State, writer, data
+    // Lua 5.3+ requires additional parameter `int strip`
+#if LUA_VERSION_NUM >= 503
+      , 0
+#endif
+    );
 }
 
 // ----------------------------------------------------------------------------
@@ -2033,7 +2038,11 @@ const char* wxLuaState::lua_SetUpvalue(int funcindex, int n)
 int wxLuaState::lua_SetHook(lua_Hook func, int mask, int count)
 {
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
-    return lua_sethook(M_WXLSTATEDATA->m_lua_State, func, mask, count);
+    // lua_sethook is void in 5.3+
+#if LUA_VERSION_NUM < 503
+    return
+#endif
+    lua_sethook(M_WXLSTATEDATA->m_lua_State, func, mask, count);
 }
 lua_Hook wxLuaState::lua_GetHook()
 {
@@ -2057,7 +2066,12 @@ int wxLuaState::lua_GetHookCount()
 void wxLuaState::luaL_Register(const char *libname, const luaL_Reg *l)
 {
     wxCHECK_RET(Ok(), wxT("Invalid wxLuaState"));
+
+#if LUA_VERSION_NUM >= 502
+    luaL_openlib(M_WXLSTATEDATA->m_lua_State, libname, l, 0);
+#else
     luaL_register(M_WXLSTATEDATA->m_lua_State, libname, l);
+#endif
 }
 int wxLuaState::luaL_GetMetafield(int obj, const char *e)
 {
@@ -2206,22 +2220,38 @@ const char* wxLuaState::luaL_OptString(int numArg, const char* def)
 int wxLuaState::luaL_CheckInt(int numArg)
 {
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
+#if LUA_VERSION_NUM >= 502
+    return (int)luaL_checkinteger(M_WXLSTATEDATA->m_lua_State, numArg);
+#else
     return (int)luaL_checkint(M_WXLSTATEDATA->m_lua_State, numArg);
+#endif
 }
 int wxLuaState::luaL_OptInt(int numArg, int def)
 {
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
+#if LUA_VERSION_NUM >= 502
+    return (int)luaL_optinteger(M_WXLSTATEDATA->m_lua_State, numArg, def);
+#else
     return (int)luaL_optint(M_WXLSTATEDATA->m_lua_State, numArg, def);
+#endif
 }
 long wxLuaState::luaL_CheckLong(int numArg)
 {
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
+#if LUA_VERSION_NUM >= 502
+    return (long)luaL_checkinteger(M_WXLSTATEDATA->m_lua_State, numArg);
+#else
     return (long)luaL_checklong(M_WXLSTATEDATA->m_lua_State, numArg);
+#endif
 }
 long wxLuaState::luaL_OptLong(int numArg, int def)
 {
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
+#if LUA_VERSION_NUM >= 502
+    return (long)luaL_optinteger(M_WXLSTATEDATA->m_lua_State, numArg, def);
+#else
     return (long)luaL_optlong(M_WXLSTATEDATA->m_lua_State, numArg, def);
+#endif
 }
 
 // ----------------------------------------------------------------------------
@@ -2466,7 +2496,11 @@ static const struct luaL_Reg bitlib[] = {
 };
 
 int LUACALL luaopen_bit (lua_State *L) {
+#if LUA_VERSION_NUM >= 502
+  luaL_openlib(L, "bit", bitlib, 0);
+#else
   luaL_register(L, "bit", bitlib);
+#endif
   lua_pushnumber(L, BIT_BITS);
   lua_setfield(L, -2, "bits");
   return 1;

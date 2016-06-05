@@ -828,7 +828,12 @@ bool wxLuaBinding::RegisterBinding(const wxLuaState& wxlState)
     //    LUA_GLOBALSINDEX[m_nameSpace] = table
     //    LUA_GLOBALSINDEX["package"]["loaded"][m_nameSpace] = table
     static const luaL_Reg wxlualib[] = { {NULL, NULL} };
+
+#if LUA_VERSION_NUM >= 502
+    luaL_openlib(L, wx2lua(m_nameSpace), wxlualib, 0);
+#else
     luaL_register(L, wx2lua(m_nameSpace), wxlualib);
+#endif
 
     // luaL_register should have given an error message about why it couldn't
     // create the table for us
