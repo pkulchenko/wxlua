@@ -1436,62 +1436,39 @@ static int LUACALL wxLua_wxFileName_GetHomeDir(lua_State *L)
 }
 
 
-#if (!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize3[] = { &wxluatype_wxFileName, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize3[] = { &wxluatype_wxFileName, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFileName_GetHumanReadableSize3(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_GetHumanReadableSize3[1] = {{ wxLua_wxFileName_GetHumanReadableSize3, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize3 }};
-//     !%wxchkver_3_1_1 && %wxchkver_2_8 wxString GetHumanReadableSize(const wxString &nullsize = "Not available", int precision = 1) const;
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_GetHumanReadableSize3[1] = {{ wxLua_wxFileName_GetHumanReadableSize3, WXLUAMETHOD_METHOD, 1, 4, s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize3 }};
+//     %wxchkver_3_1_1 wxString GetHumanReadableSize(const wxString& failmsg = "Not available", int precision = 1, wxSizeConvention conv = wxSIZE_CONV_TRADITIONAL) const; // %override to remote _() as it's not handled by wxlua
 static int LUACALL wxLua_wxFileName_GetHumanReadableSize3(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
+    // wxSizeConvention conv = wxSIZE_CONV_TRADITIONAL
+    wxSizeConvention conv = (argCount >= 4 ? (wxSizeConvention)wxlua_getenumtype(L, 4) : wxSIZE_CONV_TRADITIONAL);
     // int precision = 1
     int precision = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : 1);
-    // const wxString nullsize = "Not available"
-    const wxString nullsize = (argCount >= 2 ? wxlua_getwxStringtype(L, 2) : wxString(wxT("Not available")));
+    // const wxString failmsg = "Not available"
+    const wxString failmsg = (argCount >= 2 ? wxlua_getwxStringtype(L, 2) : wxString(wxT("Not available")));
     // get this
     wxFileName * self = (wxFileName *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileName);
     // call GetHumanReadableSize
-    wxString returns = (self->GetHumanReadableSize(nullsize, precision));
+    wxString returns = (self->GetHumanReadableSize(failmsg, precision, conv));
     // push the result string
     wxlua_pushwxString(L, returns);
 
     return 1;
 }
 
-#endif // (!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)
-
-#if ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize2[] = { &wxluatype_wxULongLong, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxFileName_GetHumanReadableSize2(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_GetHumanReadableSize2[1] = {{ wxLua_wxFileName_GetHumanReadableSize2, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 3, s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize2 }};
-//     !%wxchkver_3_1_1 && %wxchkver_2_8 static wxString GetHumanReadableSize(const wxULongLong &sz, const wxString &nullsize = "Not available", int precision = 1);
-static int LUACALL wxLua_wxFileName_GetHumanReadableSize2(lua_State *L)
-{
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // int precision = 1
-    int precision = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : 1);
-    // const wxString nullsize = "Not available"
-    const wxString nullsize = (argCount >= 2 ? wxlua_getwxStringtype(L, 2) : wxString(wxT("Not available")));
-    // const wxULongLong sz
-    const wxULongLong * sz = (const wxULongLong *)wxluaT_getuserdatatype(L, 1, wxluatype_wxULongLong);
-    // call GetHumanReadableSize
-    wxString returns = (wxFileName::GetHumanReadableSize(*sz, nullsize, precision));
-    // push the result string
-    wxlua_pushwxString(L, returns);
-
-    return 1;
-}
-
-#endif // ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG)
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)
 
 #if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize1[] = { &wxluatype_wxULongLong, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
-static int LUACALL wxLua_wxFileName_GetHumanReadableSize1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_GetHumanReadableSize1[1] = {{ wxLua_wxFileName_GetHumanReadableSize1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 4, s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize1 }};
-//     %wxchkver_3_1_1 static wxString GetHumanReadableSize(const wxULongLong& bytes, const wxString& nullsize = "Not available", int precision = 1, wxSizeConvention conv = wxSIZE_CONV_TRADITIONAL);
-static int LUACALL wxLua_wxFileName_GetHumanReadableSize1(lua_State *L)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize2[] = { &wxluatype_wxULongLong, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxFileName_GetHumanReadableSize2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_GetHumanReadableSize2[1] = {{ wxLua_wxFileName_GetHumanReadableSize2, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 4, s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize2 }};
+//     %wxchkver_3_1_1 static wxString GetHumanReadableSize(const wxULongLong& bytes, const wxString& nullsize = "Not available", int precision = 1, wxSizeConvention conv = wxSIZE_CONV_TRADITIONAL); // %override to remote _() as it's not handled by wxlua
+static int LUACALL wxLua_wxFileName_GetHumanReadableSize2(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
@@ -1513,32 +1490,55 @@ static int LUACALL wxLua_wxFileName_GetHumanReadableSize1(lua_State *L)
 
 #endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG)
 
-#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize[] = { &wxluatype_wxFileName, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
-static int LUACALL wxLua_wxFileName_GetHumanReadableSize(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_GetHumanReadableSize[1] = {{ wxLua_wxFileName_GetHumanReadableSize, WXLUAMETHOD_METHOD, 1, 4, s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize }};
-//     %wxchkver_3_1_1 wxString GetHumanReadableSize(const wxString& failmsg = "Not available", int precision = 1, wxSizeConvention conv = wxSIZE_CONV_TRADITIONAL) const;
-static int LUACALL wxLua_wxFileName_GetHumanReadableSize(lua_State *L)
+#if (!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize1[] = { &wxluatype_wxFileName, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxFileName_GetHumanReadableSize1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_GetHumanReadableSize1[1] = {{ wxLua_wxFileName_GetHumanReadableSize1, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize1 }};
+//     !%wxchkver_3_1_1 && %wxchkver_2_8 wxString GetHumanReadableSize(const wxString &nullsize = "Not available", int precision = 1) const;
+static int LUACALL wxLua_wxFileName_GetHumanReadableSize1(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // wxSizeConvention conv = wxSIZE_CONV_TRADITIONAL
-    wxSizeConvention conv = (argCount >= 4 ? (wxSizeConvention)wxlua_getenumtype(L, 4) : wxSIZE_CONV_TRADITIONAL);
     // int precision = 1
     int precision = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : 1);
-    // const wxString failmsg = "Not available"
-    const wxString failmsg = (argCount >= 2 ? wxlua_getwxStringtype(L, 2) : wxString(wxT("Not available")));
+    // const wxString nullsize = "Not available"
+    const wxString nullsize = (argCount >= 2 ? wxlua_getwxStringtype(L, 2) : wxString(wxT("Not available")));
     // get this
     wxFileName * self = (wxFileName *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileName);
     // call GetHumanReadableSize
-    wxString returns = (self->GetHumanReadableSize(failmsg, precision, conv));
+    wxString returns = (self->GetHumanReadableSize(nullsize, precision));
     // push the result string
     wxlua_pushwxString(L, returns);
 
     return 1;
 }
 
-#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)
+#endif // (!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)
+
+#if ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize[] = { &wxluatype_wxULongLong, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxFileName_GetHumanReadableSize(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_GetHumanReadableSize[1] = {{ wxLua_wxFileName_GetHumanReadableSize, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 3, s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize }};
+//     !%wxchkver_3_1_1 && %wxchkver_2_8 static wxString GetHumanReadableSize(const wxULongLong &sz, const wxString &nullsize = "Not available", int precision = 1);
+static int LUACALL wxLua_wxFileName_GetHumanReadableSize(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int precision = 1
+    int precision = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : 1);
+    // const wxString nullsize = "Not available"
+    const wxString nullsize = (argCount >= 2 ? wxlua_getwxStringtype(L, 2) : wxString(wxT("Not available")));
+    // const wxULongLong sz
+    const wxULongLong * sz = (const wxULongLong *)wxluaT_getuserdatatype(L, 1, wxluatype_wxULongLong);
+    // call GetHumanReadableSize
+    wxString returns = (wxFileName::GetHumanReadableSize(*sz, nullsize, precision));
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+#endif // ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_GetLongPath[] = { &wxluatype_wxFileName, NULL };
 static int LUACALL wxLua_wxFileName_GetLongPath(lua_State *L);
@@ -1829,11 +1829,11 @@ static int LUACALL wxLua_wxFileName_GetVolumeSeparator(lua_State *L)
 }
 
 
-#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)
+#if (wxCHECK_VERSION(3,1,1) && defined(__WXMSW__)) && (wxLUA_USE_wxFileName)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_GetVolumeString[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxFileName_GetVolumeString(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_GetVolumeString[1] = {{ wxLua_wxFileName_GetVolumeString, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 2, s_wxluatypeArray_wxLua_wxFileName_GetVolumeString }};
-//     %wxchkver_3_1_1 static wxString GetVolumeString(char drive, int flags = wxPATH_GET_SEPARATOR);
+//     %wxchkver_3_1_1 && %win static wxString GetVolumeString(char drive, int flags = wxPATH_GET_SEPARATOR); // %override as it's win-only
 static int LUACALL wxLua_wxFileName_GetVolumeString(lua_State *L)
 {
     // get number of arguments
@@ -1850,7 +1850,7 @@ static int LUACALL wxLua_wxFileName_GetVolumeString(lua_State *L)
     return 1;
 }
 
-#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)
+#endif // (wxCHECK_VERSION(3,1,1) && defined(__WXMSW__)) && (wxLUA_USE_wxFileName)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_HasExt[] = { &wxluatype_wxFileName, NULL };
 static int LUACALL wxLua_wxFileName_HasExt(lua_State *L);
@@ -3303,30 +3303,30 @@ static int s_wxluafunc_wxLua_wxFileName_FileName_overload_count = sizeof(s_wxlua
 
 #endif // (((!wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)) && (wxLUA_USE_wxFileName))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)) && (wxLUA_USE_wxFileName))
 
-#if ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName))||(((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG))||((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG))||((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName))||(((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_GetHumanReadableSize_overload[] =
 {
 
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)
+    { wxLua_wxFileName_GetHumanReadableSize3, WXLUAMETHOD_METHOD, 1, 4, s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize3 },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG)
+    { wxLua_wxFileName_GetHumanReadableSize2, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 4, s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize2 },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG)
+
 #if (!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)
-    { wxLua_wxFileName_GetHumanReadableSize3, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize3 },
+    { wxLua_wxFileName_GetHumanReadableSize1, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize1 },
 #endif // (!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)
 
 #if ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG)
-    { wxLua_wxFileName_GetHumanReadableSize2, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 3, s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize2 },
+    { wxLua_wxFileName_GetHumanReadableSize, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 3, s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize },
 #endif // ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG)
-
-#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG)
-    { wxLua_wxFileName_GetHumanReadableSize1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 4, s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize1 },
-#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG)
-
-#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)
-    { wxLua_wxFileName_GetHumanReadableSize, WXLUAMETHOD_METHOD, 1, 4, s_wxluatypeArray_wxLua_wxFileName_GetHumanReadableSize },
-#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)
 };
 static int s_wxluafunc_wxLua_wxFileName_GetHumanReadableSize_overload_count = sizeof(s_wxluafunc_wxLua_wxFileName_GetHumanReadableSize_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName))||(((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG))||((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG))||((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName))||(((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG))
 
 #if (((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG))
 // function overload table
@@ -3643,9 +3643,9 @@ wxLuaBindMethod wxFileName_methods[] = {
     { "GetFullPath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileName_GetFullPath, 1, NULL },
     { "GetHomeDir", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFileName_GetHomeDir, 1, NULL },
 
-#if ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName))||(((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG))||((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName))
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG))||((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName))||(((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG))
     { "GetHumanReadableSize", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFileName_GetHumanReadableSize_overload, s_wxluafunc_wxLua_wxFileName_GetHumanReadableSize_overload_count, 0 },
-#endif // ((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName))||(((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG))||((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName))
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG))||((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName))||(((!wxCHECK_VERSION(3,1,1) && wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFileName)) && (wxUSE_LONGLONG))
 
     { "GetLongPath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileName_GetLongPath, 1, NULL },
 
@@ -3673,9 +3673,9 @@ wxLuaBindMethod wxFileName_methods[] = {
     { "GetVolume", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileName_GetVolume, 1, NULL },
     { "GetVolumeSeparator", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFileName_GetVolumeSeparator, 1, NULL },
 
-#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)
+#if (wxCHECK_VERSION(3,1,1) && defined(__WXMSW__)) && (wxLUA_USE_wxFileName)
     { "GetVolumeString", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFileName_GetVolumeString, 1, NULL },
-#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)
+#endif // (wxCHECK_VERSION(3,1,1) && defined(__WXMSW__)) && (wxLUA_USE_wxFileName)
 
     { "HasExt", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileName_HasExt, 1, NULL },
     { "HasName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileName_HasName, 1, NULL },

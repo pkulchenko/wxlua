@@ -296,8 +296,6 @@ class %delete wxFileName
     wxString GetFullName() const;
     wxString GetFullPath(wxPathFormat format = wxPATH_NATIVE) const;
     static wxString GetHomeDir();
-    %wxchkver_3_1_1 wxString GetHumanReadableSize(const wxString& failmsg = "Not available", int precision = 1, wxSizeConvention conv = wxSIZE_CONV_TRADITIONAL) const;
-    %wxchkver_3_1_1 static wxString GetHumanReadableSize(const wxULongLong& bytes, const wxString& nullsize = "Not available", int precision = 1, wxSizeConvention conv = wxSIZE_CONV_TRADITIONAL);
     wxString GetLongPath() const;
     wxDateTime GetModificationTime() const;
     wxString GetName() const;
@@ -312,7 +310,7 @@ class %delete wxFileName
     %wxchkver_3_1_1 static wxString GetTempDir();
     wxString GetVolume() const;
     static wxString GetVolumeSeparator(wxPathFormat format = wxPATH_NATIVE);
-    %wxchkver_3_1_1 static wxString GetVolumeString(char drive, int flags = wxPATH_GET_SEPARATOR);
+    %wxchkver_3_1_1 && %win static wxString GetVolumeString(char drive, int flags = wxPATH_GET_SEPARATOR); // %override as it's win-only
     bool HasExt() const;
     bool HasName() const;
     bool HasVolume() const;
@@ -377,6 +375,8 @@ class %delete wxFileName
     !%wxchkver_3_1_1 void InsertDir(int before, const wxString& dir);
     !%wxchkver_3_1_1 void RemoveDir(int pos);
     %rename SplitPathVolume static void SplitPath(const wxString& fullpath, wxPathFormat format = wxPATH_NATIVE); // %override [wxString volume, wxString path, wxString name, wxString ext] wxFileName::SplitPathVolume(const wxString& fullpath, wxPathFormat format = wxPATH_NATIVE);
+    %wxchkver_3_1_1 static wxString GetHumanReadableSize(const wxULongLong& bytes, const wxString& nullsize = "Not available", int precision = 1, wxSizeConvention conv = wxSIZE_CONV_TRADITIONAL); // %override to remote _() as it's not handled by wxlua
+    %wxchkver_3_1_1 wxString GetHumanReadableSize(const wxString& failmsg = "Not available", int precision = 1, wxSizeConvention conv = wxSIZE_CONV_TRADITIONAL) const; // %override to remote _() as it's not handled by wxlua
     // bool MacSetDefaultTypeAndCreator();
     // static bool MacFindDefaultTypeAndCreator(const wxString& ext, wxUint32* type, wxUint32* creator);
     bool GetTimes() const; // %override [bool, wxDateTime dtAccess, wxDateTime dtMod, wxDateTime dtCreate] wxFileName::GetTimes();
