@@ -37,6 +37,23 @@
 // Lua MetaTable Tag for Class 'wxStandardPaths'
 int wxluatype_wxStandardPaths = WXLUA_TUNKNOWN;
 
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1) && defined(__WXMSW__))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_DontIgnoreAppSubDir[] = { &wxluatype_wxStandardPaths, NULL };
+static int LUACALL wxLua_wxStandardPaths_DontIgnoreAppSubDir(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_DontIgnoreAppSubDir[1] = {{ wxLua_wxStandardPaths_DontIgnoreAppSubDir, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStandardPaths_DontIgnoreAppSubDir }};
+//     %wxchkver_3_1_1 && %win void DontIgnoreAppSubDir();
+static int LUACALL wxLua_wxStandardPaths_DontIgnoreAppSubDir(lua_State *L)
+{
+    // get this
+    wxStandardPaths * self = (wxStandardPaths *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStandardPaths);
+    // call DontIgnoreAppSubDir
+    self->DontIgnoreAppSubDir();
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1) && defined(__WXMSW__))
+
 static int LUACALL wxLua_wxStandardPaths_Get(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_Get[1] = {{ wxLua_wxStandardPaths_Get, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
 // %override wxLua_wxStandardPaths_Get
@@ -51,6 +68,26 @@ static int LUACALL wxLua_wxStandardPaths_Get(lua_State *L)
     return 1;
 }
 
+
+
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_GetAppDocumentsDir[] = { &wxluatype_wxStandardPaths, NULL };
+static int LUACALL wxLua_wxStandardPaths_GetAppDocumentsDir(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_GetAppDocumentsDir[1] = {{ wxLua_wxStandardPaths_GetAppDocumentsDir, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStandardPaths_GetAppDocumentsDir }};
+//     %wxchkver_3_1_1 wxString GetAppDocumentsDir() const;
+static int LUACALL wxLua_wxStandardPaths_GetAppDocumentsDir(lua_State *L)
+{
+    // get this
+    wxStandardPaths * self = (wxStandardPaths *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStandardPaths);
+    // call GetAppDocumentsDir
+    wxString returns = (self->GetAppDocumentsDir());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_GetConfigDir[] = { &wxluatype_wxStandardPaths, NULL };
 static int LUACALL wxLua_wxStandardPaths_GetConfigDir(lua_State *L);
@@ -116,6 +153,26 @@ static int LUACALL wxLua_wxStandardPaths_GetExecutablePath(lua_State *L)
     return 1;
 }
 
+
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1) && defined(__WXGTK__))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_GetInstallPrefix[] = { &wxluatype_wxStandardPaths, NULL };
+static int LUACALL wxLua_wxStandardPaths_GetInstallPrefix(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_GetInstallPrefix[1] = {{ wxLua_wxStandardPaths_GetInstallPrefix, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStandardPaths_GetInstallPrefix }};
+//     %wxchkver_3_1_1 && %gtk wxString GetInstallPrefix() const;
+static int LUACALL wxLua_wxStandardPaths_GetInstallPrefix(lua_State *L)
+{
+    // get this
+    wxStandardPaths * self = (wxStandardPaths *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStandardPaths);
+    // call GetInstallPrefix
+    wxString returns = (self->GetInstallPrefix());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1) && defined(__WXGTK__))
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_GetLocalDataDir[] = { &wxluatype_wxStandardPaths, NULL };
 static int LUACALL wxLua_wxStandardPaths_GetLocalDataDir(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_GetLocalDataDir[1] = {{ wxLua_wxStandardPaths_GetLocalDataDir, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStandardPaths_GetLocalDataDir }};
@@ -135,7 +192,7 @@ static int LUACALL wxLua_wxStandardPaths_GetLocalDataDir(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_GetLocalizedResourcesDir[] = { &wxluatype_wxStandardPaths, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxStandardPaths_GetLocalizedResourcesDir(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_GetLocalizedResourcesDir[1] = {{ wxLua_wxStandardPaths_GetLocalizedResourcesDir, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxStandardPaths_GetLocalizedResourcesDir }};
-//     virtual wxString GetLocalizedResourcesDir(const wxString& lang, wxStandardPaths::ResourceCat category = wxStandardPaths::ResourceCat_None) const;
+//     wxString GetLocalizedResourcesDir(const wxString& lang, wxStandardPaths::ResourceCat category = wxStandardPaths::ResourceCat_None) const; // %override parameter types
 static int LUACALL wxLua_wxStandardPaths_GetLocalizedResourcesDir(lua_State *L)
 {
     // get number of arguments
@@ -234,6 +291,28 @@ static int LUACALL wxLua_wxStandardPaths_GetUserDataDir(lua_State *L)
     return 1;
 }
 
+
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_GetUserDir[] = { &wxluatype_wxStandardPaths, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxStandardPaths_GetUserDir(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_GetUserDir[1] = {{ wxLua_wxStandardPaths_GetUserDir, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStandardPaths_GetUserDir }};
+//     %wxchkver_3_1_1 wxString GetUserDir(wxStandardPaths::Dir userDir) const; // %override parameter type
+static int LUACALL wxLua_wxStandardPaths_GetUserDir(lua_State *L)
+{
+    // wxStandardPaths::Dir userDir
+    wxStandardPaths::Dir userDir = (wxStandardPaths::Dir)wxlua_getenumtype(L, 2);
+    // get this
+    wxStandardPaths * self = (wxStandardPaths *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStandardPaths);
+    // call GetUserDir
+    wxString returns = (self->GetUserDir(userDir));
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_GetUserLocalDataDir[] = { &wxluatype_wxStandardPaths, NULL };
 static int LUACALL wxLua_wxStandardPaths_GetUserLocalDataDir(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_GetUserLocalDataDir[1] = {{ wxLua_wxStandardPaths_GetUserLocalDataDir, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStandardPaths_GetUserLocalDataDir }};
@@ -251,6 +330,93 @@ static int LUACALL wxLua_wxStandardPaths_GetUserLocalDataDir(lua_State *L)
 }
 
 
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1) && defined(__WXMSW__))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_IgnoreAppBuildSubDirs[] = { &wxluatype_wxStandardPaths, NULL };
+static int LUACALL wxLua_wxStandardPaths_IgnoreAppBuildSubDirs(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_IgnoreAppBuildSubDirs[1] = {{ wxLua_wxStandardPaths_IgnoreAppBuildSubDirs, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStandardPaths_IgnoreAppBuildSubDirs }};
+//     %wxchkver_3_1_1 && %win void IgnoreAppBuildSubDirs();
+static int LUACALL wxLua_wxStandardPaths_IgnoreAppBuildSubDirs(lua_State *L)
+{
+    // get this
+    wxStandardPaths * self = (wxStandardPaths *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStandardPaths);
+    // call IgnoreAppBuildSubDirs
+    self->IgnoreAppBuildSubDirs();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_IgnoreAppSubDir[] = { &wxluatype_wxStandardPaths, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxStandardPaths_IgnoreAppSubDir(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_IgnoreAppSubDir[1] = {{ wxLua_wxStandardPaths_IgnoreAppSubDir, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStandardPaths_IgnoreAppSubDir }};
+//     %wxchkver_3_1_1 && %win void IgnoreAppSubDir(const wxString& subdirPattern);
+static int LUACALL wxLua_wxStandardPaths_IgnoreAppSubDir(lua_State *L)
+{
+    // const wxString subdirPattern
+    const wxString subdirPattern = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxStandardPaths * self = (wxStandardPaths *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStandardPaths);
+    // call IgnoreAppSubDir
+    self->IgnoreAppSubDir(subdirPattern);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_MSWGetShellDir[] = { &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStandardPaths_MSWGetShellDir(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_MSWGetShellDir[1] = {{ wxLua_wxStandardPaths_MSWGetShellDir, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxStandardPaths_MSWGetShellDir }};
+//     %wxchkver_3_1_1 && %win static wxString MSWGetShellDir(int csidl);
+static int LUACALL wxLua_wxStandardPaths_MSWGetShellDir(lua_State *L)
+{
+    // int csidl
+    int csidl = (int)wxlua_getnumbertype(L, 1);
+    // call MSWGetShellDir
+    wxString returns = (wxStandardPaths::MSWGetShellDir(csidl));
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1) && defined(__WXMSW__))
+
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1) && defined(__WXGTK__))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_SetInstallPrefix[] = { &wxluatype_wxStandardPaths, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxStandardPaths_SetInstallPrefix(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_SetInstallPrefix[1] = {{ wxLua_wxStandardPaths_SetInstallPrefix, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStandardPaths_SetInstallPrefix }};
+//     %wxchkver_3_1_1 && %gtk void SetInstallPrefix(const wxString& prefix);
+static int LUACALL wxLua_wxStandardPaths_SetInstallPrefix(lua_State *L)
+{
+    // const wxString prefix
+    const wxString prefix = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxStandardPaths * self = (wxStandardPaths *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStandardPaths);
+    // call SetInstallPrefix
+    self->SetInstallPrefix(prefix);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1) && defined(__WXGTK__))
+
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_UseAppInfo[] = { &wxluatype_wxStandardPaths, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStandardPaths_UseAppInfo(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_UseAppInfo[1] = {{ wxLua_wxStandardPaths_UseAppInfo, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStandardPaths_UseAppInfo }};
+//     %wxchkver_3_1_1 void UseAppInfo(int info);
+static int LUACALL wxLua_wxStandardPaths_UseAppInfo(lua_State *L)
+{
+    // int info
+    int info = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStandardPaths * self = (wxStandardPaths *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStandardPaths);
+    // call UseAppInfo
+    self->UseAppInfo(info);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
+
 
 
 void wxLua_wxStandardPaths_delete_function(void** p)
@@ -261,11 +427,25 @@ void wxLua_wxStandardPaths_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxStandardPaths_methods[] = {
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1) && defined(__WXMSW__))
+    { "DontIgnoreAppSubDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_DontIgnoreAppSubDir, 1, NULL },
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1) && defined(__WXMSW__))
+
     { "Get", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxStandardPaths_Get, 1, NULL },
+
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
+    { "GetAppDocumentsDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetAppDocumentsDir, 1, NULL },
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
+
     { "GetConfigDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetConfigDir, 1, NULL },
     { "GetDataDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetDataDir, 1, NULL },
     { "GetDocumentsDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetDocumentsDir, 1, NULL },
     { "GetExecutablePath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetExecutablePath, 1, NULL },
+
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1) && defined(__WXGTK__))
+    { "GetInstallPrefix", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetInstallPrefix, 1, NULL },
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1) && defined(__WXGTK__))
+
     { "GetLocalDataDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetLocalDataDir, 1, NULL },
     { "GetLocalizedResourcesDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetLocalizedResourcesDir, 1, NULL },
     { "GetPluginsDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetPluginsDir, 1, NULL },
@@ -273,7 +453,26 @@ wxLuaBindMethod wxStandardPaths_methods[] = {
     { "GetTempDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetTempDir, 1, NULL },
     { "GetUserConfigDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetUserConfigDir, 1, NULL },
     { "GetUserDataDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetUserDataDir, 1, NULL },
+
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
+    { "GetUserDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetUserDir, 1, NULL },
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
+
     { "GetUserLocalDataDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetUserLocalDataDir, 1, NULL },
+
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1) && defined(__WXMSW__))
+    { "IgnoreAppBuildSubDirs", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_IgnoreAppBuildSubDirs, 1, NULL },
+    { "IgnoreAppSubDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_IgnoreAppSubDir, 1, NULL },
+    { "MSWGetShellDir", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxStandardPaths_MSWGetShellDir, 1, NULL },
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1) && defined(__WXMSW__))
+
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1) && defined(__WXGTK__))
+    { "SetInstallPrefix", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_SetInstallPrefix, 1, NULL },
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1) && defined(__WXGTK__))
+
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
+    { "UseAppInfo", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_UseAppInfo, 1, NULL },
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
 
     { 0, 0, 0, 0 },
 };
@@ -281,8 +480,20 @@ wxLuaBindMethod wxStandardPaths_methods[] = {
 int wxStandardPaths_methodCount = sizeof(wxStandardPaths_methods)/sizeof(wxLuaBindMethod) - 1;
 
 wxLuaBindNumber wxStandardPaths_enums[] = {
-#if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
+        { "Dir_Desktop", wxStandardPaths::Dir_Desktop },
+        { "Dir_Documents", wxStandardPaths::Dir_Documents },
+        { "Dir_Downloads", wxStandardPaths::Dir_Downloads },
+        { "Dir_Music", wxStandardPaths::Dir_Music },
+        { "Dir_Pictures", wxStandardPaths::Dir_Pictures },
+        { "Dir_Videos", wxStandardPaths::Dir_Videos },
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
+
+#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths)
         { "ResourceCat_Max", wxStandardPaths::ResourceCat_Max },
+#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths)
+
+#if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths
         { "ResourceCat_Messages", wxStandardPaths::ResourceCat_Messages },
         { "ResourceCat_None", wxStandardPaths::ResourceCat_None },
 #endif // wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths

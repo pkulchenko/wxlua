@@ -83,40 +83,97 @@ bool wxEndsWithPathSeparator(const wxString& pszFileName);
 
 #include "wx/stdpaths.h"
 
+#if %wxchkver_3_1_1
+enum wxStandardPaths::Dir
+{
+    /**
+        Directory containing user documents.
+
+        Example return values:
+        - Unix/Mac: @c ~/Documents
+        - Windows: @c "C:\Users\username\Documents"
+    */
+    Dir_Documents,
+
+    /**
+        Directory containing files on the users desktop.
+
+        Example return values:
+        - Unix/Mac: @c ~/Desktop
+        - Windows: @c "C:\Users\username\Desktop"
+    */
+    Dir_Desktop,
+
+    /**
+        Directory for downloaded files
+
+        Example return values:
+        - Unix/Mac: @c ~/Downloads
+        - Windows: @c "C:\Users\username\Downloads" (Only available on Vista and newer)
+    */
+    Dir_Downloads,
+
+    /**
+        Directory containing music files.
+
+        Example return values:
+        - Unix/Mac: @c ~/Music
+        - Windows: @c "C:\Users\username\Music"
+    */
+    Dir_Music,
+
+    /**
+        Directory containing picture files.
+
+        Example return values:
+        - Unix/Mac: @c ~/Pictures
+        - Windows: @c "C:\Users\username\Pictures"
+    */
+    Dir_Pictures,
+
+    /**
+        Directory containing video files.
+
+        Example return values:
+        - Unix: @c ~/Videos
+        - Windows: @c "C:\Users\username\Videos"
+        - Mac: @c ~/Movies
+    */
+    Dir_Videos
+};
+#endif // %wxchkver_3_1_1
+
 enum wxStandardPaths::ResourceCat
 {
     ResourceCat_None,     // no special category
     ResourceCat_Messages, // message catalog resources
-    ResourceCat_Max      // end of enum marker
+    !%wxchkver_3_1_1 ResourceCat_Max      // end of enum marker
 };
 
-
-class wxStandardPaths // we ignore wxStandardPathsBase
+class wxStandardPaths // ignore wxStandardPathsBase
 {
-    // No constructor - use static Get() function
-
-    // return the global standard paths object
-    // %override static wxStandardPaths& Get();
-    // C++ Func: static wxStandardPathsBase& Get();
-    // We pretend that there is no wxStandardPathsBase and just use the wxStandardPaths name
+    %wxchkver_3_1_1 && %win void DontIgnoreAppSubDir();
     static wxStandardPaths& Get();
-
-    // These are only for the generic version, probably not ever needed
-    //void SetInstallPrefix(const wxString& prefix);
-    //wxString GetInstallPrefix() const;
-
-    virtual wxString GetExecutablePath() const;
+    %wxchkver_3_1_1 wxString GetAppDocumentsDir() const;
     virtual wxString GetConfigDir() const;
-    virtual wxString GetUserConfigDir() const;
     virtual wxString GetDataDir() const;
+    virtual wxString GetDocumentsDir() const;
+    virtual wxString GetExecutablePath() const;
+    %wxchkver_3_1_1 && %gtk wxString GetInstallPrefix() const;
     virtual wxString GetLocalDataDir() const;
-    virtual wxString GetUserDataDir() const;
-    virtual wxString GetUserLocalDataDir() const;
     virtual wxString GetPluginsDir() const;
     virtual wxString GetResourcesDir() const;
-    virtual wxString GetLocalizedResourcesDir(const wxString& lang, wxStandardPaths::ResourceCat category = wxStandardPaths::ResourceCat_None) const;
-    virtual wxString GetDocumentsDir() const;
     virtual wxString GetTempDir() const;
+    virtual wxString GetUserConfigDir() const;
+    virtual wxString GetUserDataDir() const;
+    virtual wxString GetUserLocalDataDir() const;
+    %wxchkver_3_1_1 && %win void IgnoreAppSubDir(const wxString& subdirPattern);
+    %wxchkver_3_1_1 && %win void IgnoreAppBuildSubDirs();
+    %wxchkver_3_1_1 && %win static wxString MSWGetShellDir(int csidl);
+    %wxchkver_3_1_1 && %gtk void SetInstallPrefix(const wxString& prefix);
+    %wxchkver_3_1_1 void UseAppInfo(int info);
+    %wxchkver_3_1_1 wxString GetUserDir(wxStandardPaths::Dir userDir) const; // %override parameter type
+    wxString GetLocalizedResourcesDir(const wxString& lang, wxStandardPaths::ResourceCat category = wxStandardPaths::ResourceCat_None) const; // %override parameter types
 };
 
 #endif // %wxchkver_2_8 && wxLUA_USE_wxStandardPaths

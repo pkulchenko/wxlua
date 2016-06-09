@@ -4565,6 +4565,12 @@ wx_dataTypeTable =
     Name = "wxStandardPaths",
     ValueType = "class",
   },
+  ["wxStandardPaths::Dir"] = {
+    Condition = "(wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))",
+    IsNumber = true,
+    Name = "wxStandardPaths::Dir",
+    ValueType = "enum",
+  },
   ["wxStandardPaths::ResourceCat"] = {
     Condition = "wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths",
     IsNumber = true,
