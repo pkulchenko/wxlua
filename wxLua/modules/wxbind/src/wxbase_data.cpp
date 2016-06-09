@@ -139,6 +139,22 @@ static int LUACALL wxLua_wxString_FromUTF8(lua_State *L)
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxString_FromUTF8Unchecked[] = { &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxString_FromUTF8Unchecked(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_FromUTF8Unchecked[1] = {{ wxLua_wxString_FromUTF8Unchecked, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxString_FromUTF8Unchecked }};
+//     static wxString FromUTF8Unchecked(const char* s);
+static int LUACALL wxLua_wxString_FromUTF8Unchecked(lua_State *L)
+{
+    // const char s
+    wxCharBuffer s = wxlua_getstringtype(L, 1);
+    // call FromUTF8Unchecked
+    wxString returns = (wxString::FromUTF8Unchecked((const char*)s));
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_GetData[] = { &wxluatype_wxString, NULL };
 static int LUACALL wxLua_wxString_GetData(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_GetData[1] = {{ wxLua_wxString_GetData, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxString_GetData }};
@@ -359,6 +375,7 @@ wxLuaBindMethod wxString_methods[] = {
     { "BeforeLast", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxString_BeforeLast, 1, NULL },
     { "From8BitData", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxString_From8BitData, 1, NULL },
     { "FromUTF8", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxString_FromUTF8, 1, NULL },
+    { "FromUTF8Unchecked", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxString_FromUTF8Unchecked, 1, NULL },
     { "GetData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxString_GetData, 1, NULL },
     { "Len", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxString_Len, 1, NULL },
     { "To8BitData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxString_To8BitData, 1, NULL },

@@ -29,6 +29,7 @@ class %delete wxString
 
     const wxCharBuffer ToUTF8() const;
     static wxString FromUTF8(const char* s);
+    static wxString FromUTF8Unchecked(const char* s);
 
     static wxString From8BitData(const char* s);
     wxCharBuffer To8BitData();
