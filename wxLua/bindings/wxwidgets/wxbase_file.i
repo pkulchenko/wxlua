@@ -244,58 +244,60 @@ enum wxPathNormalize
     wxPATH_NORM_ALL
 };
 
+#if %wxchkver_3_1_1
+enum wxSizeConvention
+{
+    wxSIZE_CONV_TRADITIONAL, /// 1024 bytes = 1KB.
+    wxSIZE_CONV_IEC, /// 1024 bytes = 1KiB.
+    wxSIZE_CONV_SI /// 1000 bytes = 1KB.
+};
+#endif // %wxchkver_3_1_1
+
 class %delete wxFileName
 {
     wxFileName();
     wxFileName(const wxFileName& filename);
     wxFileName(const wxString& fullpath, wxPathFormat format = wxPATH_NATIVE);
     wxFileName(const wxString& path, const wxString& name, wxPathFormat format = wxPATH_NATIVE);
+    %wxchkver_3_1_1 wxFileName(const wxString& path, const wxString& name, const wxString& ext, wxPathFormat format = wxPATH_NATIVE);
     wxFileName(const wxString& volume, const wxString& path, const wxString& name, const wxString& ext, wxPathFormat format = wxPATH_NATIVE);
-
     void AppendDir(const wxString& dir);
     void Assign(const wxFileName& filepath);
     void Assign(const wxString& fullpath, wxPathFormat format = wxPATH_NATIVE);
+    %wxchkver_3_1_1 void Assign(const wxString& volume, const wxString& path, const wxString& name, const wxString& ext, bool hasExt, wxPathFormat format = wxPATH_NATIVE);
     void Assign(const wxString& volume, const wxString& path, const wxString& name, const wxString& ext, wxPathFormat format = wxPATH_NATIVE);
     void Assign(const wxString& path, const wxString& name, wxPathFormat format = wxPATH_NATIVE);
     void Assign(const wxString& path, const wxString& name, const wxString& ext, wxPathFormat format = wxPATH_NATIVE);
     void AssignCwd(const wxString& volume = "");
     void AssignDir(const wxString& dir, wxPathFormat format = wxPATH_NATIVE);
     void AssignHomeDir();
-    !%wxchkver_2_8 void AssignTempFileName(const wxString& prefix, wxFile *fileTemp = NULL);
-    %wxchkver_2_8&&(wxUSE_FILE||wxUSE_FFILE) void AssignTempFileName(const wxString& prefix);
-    %wxchkver_2_8&&wxUSE_FILE void AssignTempFileName(const wxString& prefix, wxFile *fileTemp);
-    //%wxchkver_2_8&&wxUSE_FFILE void AssignTempFileName(const wxString& prefix, wxFFile *fileTemp);
+    %wxchkver_2_8 && (wxUSE_FILE||wxUSE_FFILE) void AssignTempFileName(const wxString& prefix);
+    %wxchkver_2_8 && wxUSE_FILE void AssignTempFileName(const wxString& prefix, wxFile *fileTemp);
+    // %wxchkver_2_8 && wxUSE_FFILE void AssignTempFileName(const wxString& prefix, wxFFile *fileTemp); // wxFFile no available in wxlua
     void Clear();
     void ClearExt();
-
-    // Use AssignTempFileName(...) equivalents
-    //!%wxchkver_2_8 static wxString CreateTempFileName(const wxString& prefix, wxFile *fileTemp = NULL);
-    //%wxchkver_2_8&&(wxUSE_FILE||wxUSE_FFILE) static wxString CreateTempFileName(const wxString& prefix);
-    //%wxchkver_2_8&&wxUSE_FILE static wxString CreateTempFileName(const wxString& prefix, wxFile *fileTemp);
-    //%wxchkver_2_8&&wxUSE_FFILE static wxString CreateTempFileName(const wxString& prefix, wxFFile *fileTemp);
-
+    %wxchkver_2_8 && wxUSE_FILE static wxString CreateTempFileName(const wxString& prefix, wxFile *fileTemp);
+    // %wxchkver_2_8 && wxUSE_FFILE static wxString CreateTempFileName(const wxString& prefix, wxFFile *fileTemp); // wxFFile no available in wxlua
     bool DirExists();
     static bool DirExists(const wxString& dir);
-    static wxFileName DirName(const wxString& dir);
+    %wxchkver_3_1_1 static wxFileName DirName(const wxString& dir, wxPathFormat format = wxPATH_NATIVE);
+    %wxchkver_3_1_1 void DontFollowLink();
+    %wxchkver_3_1_1 bool Exists(int flags = wxFILE_EXISTS_ANY) const;
+    %wxchkver_3_1_1 static bool Exists(const wxString& path, int flags = wxFILE_EXISTS_ANY);
     bool FileExists();
     static bool FileExists(const wxString& file);
-    static wxFileName FileName(const wxString& file);
+    %wxchkver_3_1_1 static wxFileName FileName(const wxString& file, wxPathFormat format = wxPATH_NATIVE);
     static wxString GetCwd(const wxString& volume = "");
     int GetDirCount() const;
-
-    // %override [Lua string table] wxFileName::GetDirs();
-    // C++ Func: const wxArrayString& GetDirs() const;
-    const wxArrayString& GetDirs() const;
-
+    const wxArrayString& GetDirs() const; // %override [Lua string table] wxFileName::GetDirs();
     wxString GetExt() const;
     static wxString GetForbiddenChars(wxPathFormat format = wxPATH_NATIVE);
     static wxPathFormat GetFormat(wxPathFormat format = wxPATH_NATIVE);
     wxString GetFullName() const;
     wxString GetFullPath(wxPathFormat format = wxPATH_NATIVE) const;
     static wxString GetHomeDir();
-    %wxchkver_2_8 wxString GetHumanReadableSize(const wxString &nullsize = "Not available", int precision = 1) const;
-    //%wxchkver_2_8 wxString GetHumanReadableSize(const wxString &nullsize = wxGetTranslation(_T("Not available")), int precision = 1) const;
-    //%wxchkver_2_8 static wxString GetHumanReadableSize(const wxULongLong &sz, const wxString &nullsize = wxGetTranslation(_T("Not available")), int precision = 1);
+    %wxchkver_3_1_1 wxString GetHumanReadableSize(const wxString& failmsg = "Not available", int precision = 1, wxSizeConvention conv = wxSIZE_CONV_TRADITIONAL) const;
+    %wxchkver_3_1_1 static wxString GetHumanReadableSize(const wxULongLong& bytes, const wxString& nullsize = "Not available", int precision = 1, wxSizeConvention conv = wxSIZE_CONV_TRADITIONAL);
     wxString GetLongPath() const;
     wxDateTime GetModificationTime() const;
     wxString GetName() const;
@@ -305,76 +307,81 @@ class %delete wxFileName
     static wxString  GetPathTerminators(wxPathFormat format = wxPATH_NATIVE);
     wxString GetPathWithSep(wxPathFormat format = wxPATH_NATIVE) const;
     wxString GetShortPath() const;
-
     %wxchkver_2_8 wxULongLong GetSize() const;
     %wxchkver_2_8 static wxULongLong GetSize(const wxString &file);
-
-    // %override [bool, wxDateTime dtAccess, wxDateTime dtMod, wxDateTime dtCreate] wxFileName::GetTimes();
-    // C++ Func: bool GetTimes(wxDateTime* dtAccess, wxDateTime* dtMod, wxDateTime* dtCreate) const;
-    bool GetTimes() const;
-
+    %wxchkver_3_1_1 static wxString GetTempDir();
     wxString GetVolume() const;
     static wxString GetVolumeSeparator(wxPathFormat format = wxPATH_NATIVE);
+    %wxchkver_3_1_1 static wxString GetVolumeString(char drive, int flags = wxPATH_GET_SEPARATOR);
     bool HasExt() const;
     bool HasName() const;
     bool HasVolume() const;
-    void InsertDir(int before, const wxString& dir);
+    %wxchkver_3_1_1 bool InsertDir(size_t before, const wxString& dir);
     bool IsAbsolute(wxPathFormat format = wxPATH_NATIVE);
     static bool IsCaseSensitive(wxPathFormat format = wxPATH_NATIVE);
-    bool IsOk() const;
-    static bool IsPathSeparator(int ch, wxPathFormat format = wxPATH_NATIVE);
-    bool IsRelative(wxPathFormat format = wxPATH_NATIVE);
     bool IsDir() const;
-
-    %wxchkver_2_8 bool IsDirWritable() const;
-    %wxchkver_2_8 static bool IsDirWritable(const wxString &path);
     %wxchkver_2_8 bool IsDirReadable() const;
     %wxchkver_2_8 static bool IsDirReadable(const wxString &path);
-    %wxchkver_2_8 bool IsFileWritable() const;
-    %wxchkver_2_8 static bool IsFileWritable(const wxString &path);
-    %wxchkver_2_8 bool IsFileReadable() const;
-    %wxchkver_2_8 static bool IsFileReadable(const wxString &path);
+    %wxchkver_2_8 bool IsDirWritable() const;
+    %wxchkver_2_8 static bool IsDirWritable(const wxString &path);
     %wxchkver_2_8 bool IsFileExecutable() const;
     %wxchkver_2_8 static bool IsFileExecutable(const wxString &path);
-
-    //static bool MacFindDefaultTypeAndCreator(const wxString& ext, wxUint32* type, wxUint32* creator);
-    //bool MacSetDefaultTypeAndCreator();
+    %wxchkver_2_8 bool IsFileReadable() const;
+    %wxchkver_2_8 static bool IsFileReadable(const wxString &path);
+    %wxchkver_2_8 bool IsFileWritable() const;
+    %wxchkver_2_8 static bool IsFileWritable(const wxString &path);
+    bool IsOk() const;
+    %wxchkver_3_1_1 static bool IsPathSeparator(wxChar ch, wxPathFormat format = wxPATH_NATIVE);
+    %wxchkver_3_1_1 && %win static bool IsMSWUniqueVolumeNamePath(const wxString& path, wxPathFormat format = wxPATH_NATIVE);
+    bool IsRelative(wxPathFormat format = wxPATH_NATIVE);
     bool MakeAbsolute(const wxString& cwd = "", wxPathFormat format = wxPATH_NATIVE);
     bool MakeRelativeTo(const wxString& pathBase = "", wxPathFormat format = wxPATH_NATIVE);
     bool Mkdir(int perm = 4095, int flags = 0);
     static bool Mkdir(const wxString& dir, int perm = 4095, int flags = 0);
     bool Normalize(int flags = wxPATH_NORM_ALL, const wxString& cwd = wxEmptyString, wxPathFormat format = wxPATH_NATIVE);
     void PrependDir(const wxString& dir);
-    void RemoveDir(int pos);
+    %wxchkver_3_1_1 void RemoveDir(size_t pos);
     void RemoveLastDir();
-    bool Rmdir();
-    static bool Rmdir(const wxString& dir);
+    %wxchkver_3_1_1 bool ReplaceEnvVariable(const wxString& envname, const wxString& replacementFmtString = "$%s", wxPathFormat format = wxPATH_NATIVE);
+    %wxchkver_3_1_1 bool ReplaceHomeDir(wxPathFormat format = wxPATH_NATIVE);
+    %wxchkver_3_1_1 bool Rmdir(int flags = 0) const;
+    %wxchkver_3_1_1 static bool Rmdir(const wxString& dir, int flags = 0);
     bool SameAs(const wxFileName& filepath, wxPathFormat format = wxPATH_NATIVE) const;
     bool SetCwd();
     static bool SetCwd(const wxString& cwd);
-    void SetExt(const wxString& ext);
     void SetEmptyExt();
+    void SetExt(const wxString& ext);
     void SetFullName(const wxString& fullname);
     void SetName(const wxString& name);
+    %wxchkver_3_1_1 void SetPath(const wxString& path, wxPathFormat format = wxPATH_NATIVE);
+    %wxchkver_3_1_1 bool SetPermissions(int permissions);
     bool SetTimes(const wxDateTime* dtAccess, const wxDateTime* dtMod, const wxDateTime* dtCreate);
     void SetVolume(const wxString& volume);
-
-    // %override [wxString path, wxString name, wxString ext] wxFileName::SplitPath(const wxString& fullpath, wxPathFormat format = wxPATH_NATIVE);
-    // C++ Func: static void SplitPath(const wxString& fullpath, wxString* path, wxString* name, wxString* ext, wxPathFormat format = wxPATH_NATIVE);
-    static void SplitPath(const wxString& fullpath, wxPathFormat format = wxPATH_NATIVE);
-
-    // %override [wxString volume, wxString path, wxString name, wxString ext] wxFileName::SplitPathVolume(const wxString& fullpath, wxPathFormat format = wxPATH_NATIVE);
-    // C++ Func: static void SplitPath(const wxString& fullpath, wxString* volume, wxString* path, wxString* name, wxString* ext, wxPathFormat format = wxPATH_NATIVE);
-    %rename SplitPathVolume static void SplitPath(const wxString& fullpath, wxPathFormat format = wxPATH_NATIVE);
-
-    // %override [wxString volume, wxString path] wxFileName::SplitVolume(const wxString& fullpath, wxPathFormat format = wxPATH_NATIVE);
-    // C++ Func: static void SplitVolume(const wxString& fullpath, wxString* volume, wxString* path, wxPathFormat format = wxPATH_NATIVE);
-    static void SplitVolume(const wxString& fullpath, wxPathFormat format = wxPATH_NATIVE);
-
+    %wxchkver_3_1_1 bool ShouldFollowLink() const;
+    %wxchkver_3_1_1 static wxString StripExtension(const wxString& fullname);
     bool Touch();
-
-    wxFileName& operator=(const wxFileName& filename);
+    %wxchkver_3_1_1 bool operator!=(const wxFileName& filename) const;
+    %wxchkver_3_1_1 bool operator!=(const wxString& filename) const;
     bool operator==(const wxFileName& filename) const;
+    %wxchkver_3_1_1 bool operator==(const wxString& filename) const;
+    wxFileName& operator=(const wxFileName& filename);
+    %wxchkver_3_1_1 wxFileName& operator=(const wxString& filename);
+    !%wxchkver_3_1_1 && %wxchkver_2_8 && (wxUSE_FILE||wxUSE_FFILE) static wxString CreateTempFileName(const wxString& prefix);
+    !%wxchkver_3_1_1 && %wxchkver_2_8 static wxString GetHumanReadableSize(const wxULongLong &sz, const wxString &nullsize = "Not available", int precision = 1);
+    !%wxchkver_3_1_1 && %wxchkver_2_8 wxString GetHumanReadableSize(const wxString &nullsize = "Not available", int precision = 1) const;
+    !%wxchkver_3_1_1 bool Rmdir();
+    !%wxchkver_3_1_1 static bool IsPathSeparator(int ch, wxPathFormat format = wxPATH_NATIVE);
+    !%wxchkver_3_1_1 static bool Rmdir(const wxString& dir);
+    !%wxchkver_3_1_1 static wxFileName DirName(const wxString& dir);
+    !%wxchkver_3_1_1 static wxFileName FileName(const wxString& file);
+    !%wxchkver_3_1_1 void InsertDir(int before, const wxString& dir);
+    !%wxchkver_3_1_1 void RemoveDir(int pos);
+    %rename SplitPathVolume static void SplitPath(const wxString& fullpath, wxPathFormat format = wxPATH_NATIVE); // %override [wxString volume, wxString path, wxString name, wxString ext] wxFileName::SplitPathVolume(const wxString& fullpath, wxPathFormat format = wxPATH_NATIVE);
+    // bool MacSetDefaultTypeAndCreator();
+    // static bool MacFindDefaultTypeAndCreator(const wxString& ext, wxUint32* type, wxUint32* creator);
+    bool GetTimes() const; // %override [bool, wxDateTime dtAccess, wxDateTime dtMod, wxDateTime dtCreate] wxFileName::GetTimes();
+    static void SplitPath(const wxString& fullpath, wxPathFormat format = wxPATH_NATIVE); // %override [wxString path, wxString name, wxString ext] wxFileName::SplitPath(const wxString& fullpath, wxPathFormat format = wxPATH_NATIVE);
+    static void SplitVolume(const wxString& fullpath, wxPathFormat format = wxPATH_NATIVE); // %override [wxString volume, wxString path] wxFileName::SplitVolume(const wxString& fullpath, wxPathFormat format = wxPATH_NATIVE);
 };
 
 #endif //wxLUA_USE_wxFileName

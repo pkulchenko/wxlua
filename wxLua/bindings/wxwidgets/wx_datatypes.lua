@@ -4355,6 +4355,12 @@ wx_dataTypeTable =
     Name = "wxSize",
     ValueType = "class",
   },
+  wxSizeConvention = {
+    Condition = "(wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)",
+    IsNumber = true,
+    Name = "wxSizeConvention",
+    ValueType = "enum",
+  },
   wxSizeEvent = {
     BaseClasses = {
       [1] = "wxEvent",

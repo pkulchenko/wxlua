@@ -806,6 +806,12 @@ wxLuaBindNumber* wxLuaGetDefineList_wxbase(size_t &count)
         { "wxRE_NOTEOL", wxRE_NOTEOL },
 #endif // wxLUA_USE_wxRegEx && wxUSE_REGEX
 
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)
+        { "wxSIZE_CONV_IEC", wxSIZE_CONV_IEC },
+        { "wxSIZE_CONV_SI", wxSIZE_CONV_SI },
+        { "wxSIZE_CONV_TRADITIONAL", wxSIZE_CONV_TRADITIONAL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFileName)
+
 #if wxUSE_STREAMS
         { "wxSTREAM_EOF", wxSTREAM_EOF },
         { "wxSTREAM_NO_ERROR", wxSTREAM_NO_ERROR },
