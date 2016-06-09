@@ -5418,68 +5418,6 @@ static int LUACALL wxLua_wxWindow_SetSize3(lua_State *L)
 }
 
 
-#if !wxCHECK_VERSION(3,1,1)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_SetSizeHints2[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxWindow_SetSizeHints2(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_SetSizeHints2[1] = {{ wxLua_wxWindow_SetSizeHints2, WXLUAMETHOD_METHOD, 3, 7, s_wxluatypeArray_wxLua_wxWindow_SetSizeHints2 }};
-//     !%wxchkver_3_1_1 virtual void SetSizeHints(int minW, int minH, int maxW=-1, int maxH=-1, int incW=-1, int incH=-1);
-static int LUACALL wxLua_wxWindow_SetSizeHints2(lua_State *L)
-{
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // int incH = -1
-    int incH = (argCount >= 7 ? (int)wxlua_getnumbertype(L, 7) : -1);
-    // int incW = -1
-    int incW = (argCount >= 6 ? (int)wxlua_getnumbertype(L, 6) : -1);
-    // int maxH = -1
-    int maxH = (argCount >= 5 ? (int)wxlua_getnumbertype(L, 5) : -1);
-    // int maxW = -1
-    int maxW = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : -1);
-    // int minH
-    int minH = (int)wxlua_getnumbertype(L, 3);
-    // int minW
-    int minW = (int)wxlua_getnumbertype(L, 2);
-    // get this
-    wxWindow * self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
-    // call SetSizeHints
-    self->SetSizeHints(minW, minH, maxW, maxH, incW, incH);
-
-    return 0;
-}
-
-#endif // !wxCHECK_VERSION(3,1,1)
-
-#if wxCHECK_VERSION(3,1,1)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_SetSizeHints1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxWindow_SetSizeHints1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_SetSizeHints1[1] = {{ wxLua_wxWindow_SetSizeHints1, WXLUAMETHOD_METHOD, 3, 7, s_wxluatypeArray_wxLua_wxWindow_SetSizeHints1 }};
-//     %wxchkver_3_1_1 void SetSizeHints(int minW, int minH, int maxW = -1, int maxH = -1, int incW = -1, int incH = -1);
-static int LUACALL wxLua_wxWindow_SetSizeHints1(lua_State *L)
-{
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // int incH = -1
-    int incH = (argCount >= 7 ? (int)wxlua_getnumbertype(L, 7) : -1);
-    // int incW = -1
-    int incW = (argCount >= 6 ? (int)wxlua_getnumbertype(L, 6) : -1);
-    // int maxH = -1
-    int maxH = (argCount >= 5 ? (int)wxlua_getnumbertype(L, 5) : -1);
-    // int maxW = -1
-    int maxW = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : -1);
-    // int minH
-    int minH = (int)wxlua_getnumbertype(L, 3);
-    // int minW
-    int minW = (int)wxlua_getnumbertype(L, 2);
-    // get this
-    wxWindow * self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
-    // call SetSizeHints
-    self->SetSizeHints(minW, minH, maxW, maxH, incW, incH);
-
-    return 0;
-}
-
-#endif // wxCHECK_VERSION(3,1,1)
-
 #if wxLUA_USE_wxPointSizeRect
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_SetSizeHints[] = { &wxluatype_wxWindow, &wxluatype_wxSize, &wxluatype_wxSize, &wxluatype_wxSize, NULL };
 static int LUACALL wxLua_wxWindow_SetSizeHints(lua_State *L);
@@ -5504,6 +5442,35 @@ static int LUACALL wxLua_wxWindow_SetSizeHints(lua_State *L)
 }
 
 #endif // wxLUA_USE_wxPointSizeRect
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_SetSizeHints1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxWindow_SetSizeHints1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_SetSizeHints1[1] = {{ wxLua_wxWindow_SetSizeHints1, WXLUAMETHOD_METHOD, 3, 7, s_wxluatypeArray_wxLua_wxWindow_SetSizeHints1 }};
+//     void SetSizeHints(int minW, int minH, int maxW = -1, int maxH = -1, int incW = -1, int incH = -1);
+static int LUACALL wxLua_wxWindow_SetSizeHints1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int incH = -1
+    int incH = (argCount >= 7 ? (int)wxlua_getnumbertype(L, 7) : -1);
+    // int incW = -1
+    int incW = (argCount >= 6 ? (int)wxlua_getnumbertype(L, 6) : -1);
+    // int maxH = -1
+    int maxH = (argCount >= 5 ? (int)wxlua_getnumbertype(L, 5) : -1);
+    // int maxW = -1
+    int maxW = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : -1);
+    // int minH
+    int minH = (int)wxlua_getnumbertype(L, 3);
+    // int minW
+    int minW = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxWindow * self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call SetSizeHints
+    self->SetSizeHints(minW, minH, maxW, maxH, incW, incH);
+
+    return 0;
+}
+
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_SetSizer[] = { &wxluatype_wxWindow, &wxluatype_wxSizer, &wxluatype_TBOOLEAN, NULL };
@@ -6567,28 +6534,18 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_SetSize_overload[] =
 };
 static int s_wxluafunc_wxLua_wxWindow_SetSize_overload_count = sizeof(s_wxluafunc_wxLua_wxWindow_SetSize_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (wxLUA_USE_wxPointSizeRect)
-
-#if (!wxCHECK_VERSION(3,1,1))||(wxCHECK_VERSION(3,1,1))||(wxLUA_USE_wxPointSizeRect)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_SetSizeHints_overload[] =
 {
 
-#if !wxCHECK_VERSION(3,1,1)
-    { wxLua_wxWindow_SetSizeHints2, WXLUAMETHOD_METHOD, 3, 7, s_wxluatypeArray_wxLua_wxWindow_SetSizeHints2 },
-#endif // !wxCHECK_VERSION(3,1,1)
-
-#if wxCHECK_VERSION(3,1,1)
-    { wxLua_wxWindow_SetSizeHints1, WXLUAMETHOD_METHOD, 3, 7, s_wxluatypeArray_wxLua_wxWindow_SetSizeHints1 },
-#endif // wxCHECK_VERSION(3,1,1)
-
 #if wxLUA_USE_wxPointSizeRect
     { wxLua_wxWindow_SetSizeHints, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxWindow_SetSizeHints },
 #endif // wxLUA_USE_wxPointSizeRect
+    { wxLua_wxWindow_SetSizeHints1, WXLUAMETHOD_METHOD, 3, 7, s_wxluatypeArray_wxLua_wxWindow_SetSizeHints1 },
 };
 static int s_wxluafunc_wxLua_wxWindow_SetSizeHints_overload_count = sizeof(s_wxluafunc_wxLua_wxWindow_SetSizeHints_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (!wxCHECK_VERSION(3,1,1))||(wxCHECK_VERSION(3,1,1))||(wxLUA_USE_wxPointSizeRect)
+#endif // (wxLUA_USE_wxPointSizeRect)
 
 #if (wxLUA_USE_wxTooltip && wxUSE_TOOLTIPS)
 // function overload table
@@ -7330,11 +7287,8 @@ wxLuaBindMethod wxWindow_methods[] = {
 
 #if (wxLUA_USE_wxPointSizeRect)
     { "SetSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_SetSize_overload, s_wxluafunc_wxLua_wxWindow_SetSize_overload_count, 0 },
-#endif // (wxLUA_USE_wxPointSizeRect)
-
-#if (!wxCHECK_VERSION(3,1,1))||(wxCHECK_VERSION(3,1,1))||(wxLUA_USE_wxPointSizeRect)
     { "SetSizeHints", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_SetSizeHints_overload, s_wxluafunc_wxLua_wxWindow_SetSizeHints_overload_count, 0 },
-#endif // (!wxCHECK_VERSION(3,1,1))||(wxCHECK_VERSION(3,1,1))||(wxLUA_USE_wxPointSizeRect)
+#endif // (wxLUA_USE_wxPointSizeRect)
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)
     { "SetSizer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_SetSizer, 1, NULL },

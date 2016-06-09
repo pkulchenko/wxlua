@@ -150,6 +150,7 @@ class wxWindow : public wxEvtHandler
     %wxchkver_3_1_1 wxWindow* GetNextSibling() const;
     virtual wxWindow* GetParent() const;
     %wxchkver_3_1_1 wxWindow* GetPrevSibling() const;
+    %wxchkver_3_1_1 bool IsDescendant(wxWindow* win) const; // %override wxWindow* instead of wxWindowBase* as the latter is not in public interface
     virtual bool Reparent(wxWindow* newParent);
     %wxchkver_3_1_1 void AlwaysShowScrollbars(bool hflag = true, bool vflag = true);
     virtual int GetScrollPos(int orientation);
@@ -222,7 +223,7 @@ class wxWindow : public wxEvtHandler
     void SetSize(const wxSize& size);
     virtual void SetSize(int width, int height);
     void SetSizeHints(const wxSize& minSize, const wxSize& maxSize=wxDefaultSize, const wxSize& incSize=wxDefaultSize);
-    %wxchkver_3_1_1 void SetSizeHints(int minW, int minH, int maxW = -1, int maxH = -1, int incW = -1, int incH = -1);
+    void SetSizeHints(int minW, int minH, int maxW = -1, int maxH = -1, int incW = -1, int incH = -1);
     void SetVirtualSize(int width, int height);
     void SetVirtualSize(const wxSize& size);
     void Center(int direction = wxBOTH);
@@ -412,7 +413,6 @@ class wxWindow : public wxEvtHandler
     !%wxchkver_3_1_1 static wxWindow* FindWindowByLabel(const wxString& label, wxWindow* parent = NULL);
     !%wxchkver_3_1_1 static wxWindow* FindWindowByName(const wxString& name, wxWindow* parent = NULL);
     !%wxchkver_3_1_1 virtual void MakeModal(bool flag);
-    !%wxchkver_3_1_1 virtual void SetSizeHints(int minW, int minH, int maxW=-1, int maxH=-1, int incW=-1, int incH=-1);
     !%wxchkver_3_1_1 virtual void SetVirtualSizeHints(int minW,int minH, int maxW=-1, int maxH=-1);
     !%wxchkver_3_1_1 void Move(const wxPoint& pt);
     !%wxchkver_3_1_1 void Move(int x, int y);
@@ -426,7 +426,6 @@ class wxWindow : public wxEvtHandler
     %override_name wxLua_wxWindow_ScreenToClientXY virtual void ScreenToClient(int x, int y) const; // %override return [int x, int y]
     %rename GetClientSizeWH virtual void GetClientSize() const; // %override return [int width, int height]
     %rename GetSizeWH virtual void GetSize() const; // %override return [int width, int height]
-    %wxchkver_3_1_1 bool IsDescendant(wxWindow* win) const; // %override wxWindow* instead of wxWindowBase* as the latter is not in public interface
     virtual void GetTextExtent(const wxString& string, const wxFont* font = NULL) const; // %override return [int x, int y, int descent, int externalLeading]
 };
 

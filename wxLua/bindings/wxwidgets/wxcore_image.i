@@ -182,7 +182,7 @@ class %delete wxImage : public wxObject
     void SetOption(const wxString &name, const wxString &value);
     void SetOption(const wxString &name, int value);
     void SetPalette(const wxPalette& palette);
-    %wxchkver_3_1_1 void SetRGB(int x, int y, unsigned char r, unsigned char g, unsigned char b);
+    void SetRGB(int x, int y, unsigned char r, unsigned char g, unsigned char b);
     %wxchkver_3_1_1 void SetRGB(const wxRect& rect, unsigned char red, unsigned char green, unsigned char blue);
     %wxchkver_3_1_1 void SetType(wxBitmapType type);
     static void AddHandler(%ungc wxImageHandler* handler);
@@ -207,7 +207,6 @@ class %delete wxImage : public wxObject
     !%wxchkver_3_1_1 bool SaveFile(const wxString& name, int type);
     !%wxchkver_3_1_1 static wxImageHandler* FindHandler(const wxString& extension, long imageType);
     !%wxchkver_3_1_1 static wxImageHandler* FindHandler(long imageType);
-    !%wxchkver_3_1_1 void SetRGB(int x, int y, unsigned char red, unsigned char green, unsigned char blue);
     !%wxchkver_3_1_1 void SetRGB(wxRect& rect, unsigned char red, unsigned char green, unsigned char blue);
     !%wxchkver_3_1_1 wxImage(const wxImage& image);
     !%wxchkver_3_1_1 wxImage(const wxString& name, long type = wxBITMAP_TYPE_ANY);
