@@ -3635,7 +3635,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetApp[1] = {{ wxLua_function
 #endif // wxLUA_USE_wxApp
 
 #if wxCHECK_VERSION(2,8,0)
-// wxBatteryState wxGetBatteryState( );
+// wxBatteryState wxGetBatteryState();
 static int LUACALL wxLua_function_wxGetBatteryState(lua_State *L)
 {
     // call wxGetBatteryState
@@ -3957,7 +3957,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetPasswordFromUser[1] = {{ w
 #endif // wxUSE_TEXTDLG
 
 #if wxCHECK_VERSION(2,8,0)
-// wxPowerType wxGetPowerType( );
+// wxPowerType wxGetPowerType();
 static int LUACALL wxLua_function_wxGetPowerType(lua_State *L)
 {
     // call wxGetPowerType

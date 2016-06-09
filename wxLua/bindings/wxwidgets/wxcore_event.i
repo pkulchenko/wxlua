@@ -812,8 +812,8 @@ enum wxBatteryState
     wxBATTERY_UNKNOWN_STATE
 };
 
-wxPowerType wxGetPowerType( );
-wxBatteryState wxGetBatteryState( );
+wxPowerType wxGetPowerType();
+wxBatteryState wxGetBatteryState();
 
 #if wxHAS_POWER_EVENTS
 

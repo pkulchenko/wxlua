@@ -190,10 +190,6 @@ wxWindow* wxFindWindowByName(const wxString& name, wxWindow *parent=NULL);
 wxWindow* wxFindWindowAtPoint(const wxPoint& pt);
 wxWindow* wxFindWindowAtPointer(wxPoint& pt);
 %wxchkver_2_8_4 wxWindow* wxGetActiveWindow();
-// wxBatteryState wxGetBatteryState();
-// X only wxString wxGetDisplayName();
-// X only void wxSetDisplayName(const wxString& displayName);
-// wxPowerType wxGetPowerType();
 wxPoint wxGetMousePosition();
 
 class wxKeyboardState
