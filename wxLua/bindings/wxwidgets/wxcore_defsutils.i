@@ -15,10 +15,10 @@
 // ---------------------------------------------------------------------------
 // Application initialization and termination
 
-void wxInitAllImageHandlers( );
-bool wxSafeYield(wxWindow* win = NULL, bool onlyIfNeeded = false );
-bool wxYield( );
-void wxWakeUpIdle( );
+void wxInitAllImageHandlers();
+bool wxSafeYield(wxWindow* win = NULL, bool onlyIfNeeded = false);
+bool wxYield();
+void wxWakeUpIdle();
 
 // ---------------------------------------------------------------------------
 // wxProcess
@@ -77,26 +77,26 @@ enum wxKillFlags
 
 class %delete wxProcess : public wxEvtHandler
 {
-    wxProcess(wxEvtHandler *parent = NULL, int nId = wxID_ANY );
-    //wxProcess(int flags );
+    wxProcess(wxEvtHandler *parent = NULL, int nId = wxID_ANY);
+    //wxProcess(int flags);
 
-    void Detach( );
-    static wxKillError Kill(int pid, wxSignal sig = wxSIGTERM, int flags = wxKILL_NOCHILDREN );
-    static bool Exists(int pid );
+    void Detach();
+    static wxKillError Kill(int pid, wxSignal sig = wxSIGTERM, int flags = wxKILL_NOCHILDREN);
+    static bool Exists(int pid);
     //virtual void OnTerminate(int pid, int status) just handle the event instead
-    static wxProcess *Open(const wxString& cmd, int flags = wxEXEC_ASYNC );
-    void Redirect( );
-    bool IsRedirected( );
+    static wxProcess *Open(const wxString& cmd, int flags = wxEXEC_ASYNC);
+    void Redirect();
+    bool IsRedirected();
 
 #if wxUSE_STREAMS
-    void CloseOutput( );
+    void CloseOutput();
     wxInputStream *GetErrorStream() const;
     wxInputStream *GetInputStream() const;
     wxOutputStream *GetOutputStream() const;
     bool IsErrorAvailable() const;
     bool IsInputAvailable() const;
     bool IsInputOpened() const;
-    void SetPipeStreams(wxInputStream *outStream, wxOutputStream *inStream, wxInputStream *errStream );
+    void SetPipeStreams(wxInputStream *outStream, wxOutputStream *inStream, wxInputStream *errStream);
 #endif // wxUSE_STREAMS
 
 };
@@ -106,19 +106,19 @@ class %delete wxProcess : public wxEvtHandler
 // ---------------------------------------------------------------------------
 // Process control functions
 
-!%wxchkver_2_6 long wxExecute(const wxString& command, bool sync = false, wxProcess *callback = NULL );
-%wxchkver_2_6 long wxExecute(const wxString& command, int flags = wxEXEC_ASYNC, wxProcess *process = NULL );
-// %override [long, Lua table of output strings] wxExecuteStdout(const wxString& command, int flags = 0 );
-%rename wxExecuteStdout long wxExecute(const wxString& command, wxArrayString& output, int flags = 0 );
-// %override [long, Lua table of output strings, Lua table of error strings] wxExecuteStdoutStderr(const wxString& command, int flags = 0 );
-%rename wxExecuteStdoutStderr long wxExecute(const wxString& command, wxArrayString& output, wxArrayString& errors, int flags = 0 );
-void wxExit( );
+!%wxchkver_2_6 long wxExecute(const wxString& command, bool sync = false, wxProcess *callback = NULL);
+%wxchkver_2_6 long wxExecute(const wxString& command, int flags = wxEXEC_ASYNC, wxProcess *process = NULL);
+// %override [long, Lua table of output strings] wxExecuteStdout(const wxString& command, int flags = 0);
+%rename wxExecuteStdout long wxExecute(const wxString& command, wxArrayString& output, int flags = 0);
+// %override [long, Lua table of output strings, Lua table of error strings] wxExecuteStdoutStderr(const wxString& command, int flags = 0);
+%rename wxExecuteStdoutStderr long wxExecute(const wxString& command, wxArrayString& output, wxArrayString& errors, int flags = 0);
+void wxExit();
 
-// %override [int, wxKillError rc] wxKill(long pid, wxSignal sig = wxSIGTERM, int flags = 0 );
-// C++ Func: int wxKill(long pid, wxSignal sig = wxSIGTERM, wxKillError *rc = NULL, int flags = 0 );
-int wxKill(long pid, wxSignal sig = wxSIGTERM, int flags = 0 );
-unsigned long wxGetProcessId( );
-bool wxShell(const wxString& command = "" );
+// %override [int, wxKillError rc] wxKill(long pid, wxSignal sig = wxSIGTERM, int flags = 0);
+// C++ Func: int wxKill(long pid, wxSignal sig = wxSIGTERM, wxKillError *rc = NULL, int flags = 0);
+int wxKill(long pid, wxSignal sig = wxSIGTERM, int flags = 0);
+unsigned long wxGetProcessId();
+bool wxShell(const wxString& command = "");
 
 
 enum wxShutdownFlags
@@ -127,7 +127,7 @@ enum wxShutdownFlags
     wxSHUTDOWN_REBOOT
 };
 
-bool wxShutdown(wxShutdownFlags flags );
+bool wxShutdown(wxShutdownFlags flags);
 
 // ---------------------------------------------------------------------------
 // File functions - see file.i
@@ -141,10 +141,10 @@ bool wxShutdown(wxShutdownFlags flags );
 // ---------------------------------------------------------------------------
 // Dialog functions - see dialogs.i
 
-//void wxBeginBusyCursor(wxCursor *cursor = wxLua_wxHOURGLASS_CURSOR );
-//void wxBell( );
-//void wxEndBusyCursor( );
-//bool wxIsBusy( );
+//void wxBeginBusyCursor(wxCursor *cursor = wxLua_wxHOURGLASS_CURSOR);
+//void wxBell();
+//void wxEndBusyCursor();
+//bool wxIsBusy();
 
 // ---------------------------------------------------------------------------
 // Math functions - nothing useful here
@@ -152,26 +152,26 @@ bool wxShutdown(wxShutdownFlags flags );
 // ---------------------------------------------------------------------------
 // GDI functions
 
-// %override [int x, int y, int width, int height] wxClientDisplayRect( );
-// void wxClientDisplayRect(int *x, int *y, int *width, int *height );
-void wxClientDisplayRect( );
+// %override [int x, int y, int width, int height] wxClientDisplayRect();
+// void wxClientDisplayRect(int *x, int *y, int *width, int *height);
+void wxClientDisplayRect();
 
-wxRect wxGetClientDisplayRect( );
-bool wxColourDisplay( );
-int wxDisplayDepth( );
-// %override [int width, int height] wxDisplaySize( );
-// void wxDisplaySize(int *width, int *height );
-void wxDisplaySize( );
+wxRect wxGetClientDisplayRect();
+bool wxColourDisplay();
+int wxDisplayDepth();
+// %override [int width, int height] wxDisplaySize();
+// void wxDisplaySize(int *width, int *height);
+void wxDisplaySize();
 
-wxSize wxGetDisplaySize( );
-// %override [int width, int height] wxDisplaySizeMM( );
-// void wxDisplaySizeMM(int *width, int *height );
-void wxDisplaySizeMM( );
+wxSize wxGetDisplaySize();
+// %override [int width, int height] wxDisplaySizeMM();
+// void wxDisplaySizeMM(int *width, int *height);
+void wxDisplaySizeMM();
 
-wxSize wxGetDisplaySizeMM( );
+wxSize wxGetDisplaySizeMM();
 
-void wxSetCursor(const wxCursor &cursor );
-// wxIconOrCursor wxDROP_ICON(wxString name );
+void wxSetCursor(const wxCursor &cursor);
+// wxIconOrCursor wxDROP_ICON(wxString name);
 
 // ---------------------------------------------------------------------------
 // Printer settings - are marked obsolete
@@ -182,59 +182,59 @@ void wxSetCursor(const wxCursor &cursor );
 // ---------------------------------------------------------------------------
 // Miscellaneous functions
 
-bool wxGetKeyState(wxKeyCode key );
-long wxNewId( );
-void wxRegisterId(long id );
-void wxEnableTopLevelWindows(bool enable = true );
-int wxFindMenuItemId(wxFrame *frame, const wxString& menuString, const wxString& itemString );
-wxWindow* wxFindWindowByLabel(const wxString& label, wxWindow *parent=NULL );
-wxWindow* wxFindWindowByName(const wxString& name, wxWindow *parent=NULL );
-wxWindow* wxFindWindowAtPoint(const wxPoint& pt );
-wxWindow* wxFindWindowAtPointer(wxPoint& pt );
-%wxchkver_2_8_4 wxWindow* wxGetActiveWindow( );
-// wxBatteryState wxGetBatteryState( );
-// X only wxString wxGetDisplayName( );
-// X only void wxSetDisplayName(const wxString& displayName );
-// wxPowerType wxGetPowerType( );
-wxPoint wxGetMousePosition( );
+bool wxGetKeyState(wxKeyCode key);
+long wxNewId();
+void wxRegisterId(long id);
+void wxEnableTopLevelWindows(bool enable = true);
+int wxFindMenuItemId(wxFrame *frame, const wxString& menuString, const wxString& itemString);
+wxWindow* wxFindWindowByLabel(const wxString& label, wxWindow *parent=NULL);
+wxWindow* wxFindWindowByName(const wxString& name, wxWindow *parent=NULL);
+wxWindow* wxFindWindowAtPoint(const wxPoint& pt);
+wxWindow* wxFindWindowAtPointer(wxPoint& pt);
+%wxchkver_2_8_4 wxWindow* wxGetActiveWindow();
+// wxBatteryState wxGetBatteryState();
+// X only wxString wxGetDisplayName();
+// X only void wxSetDisplayName(const wxString& displayName);
+// wxPowerType wxGetPowerType();
+wxPoint wxGetMousePosition();
 
 #if %wxchkver_2_8
 // This is in wxWidgets 2.6 docs, but it's only in >=2.7
 class %delete wxMouseState
 {
-    wxMouseState( );
+    wxMouseState();
 
-    wxCoord     GetX( );
-    wxCoord     GetY( );
-    bool        LeftDown( );
-    bool        MiddleDown( );
-    bool        RightDown( );
-    bool        ControlDown( );
-    bool        ShiftDown( );
-    bool        AltDown( );
-    bool        MetaDown( );
-    bool        CmdDown( );
-    void        SetX(wxCoord x );
-    void        SetY(wxCoord y );
-    void        SetLeftDown(bool down );
-    void        SetMiddleDown(bool down );
-    void        SetRightDown(bool down );
-    void        SetControlDown(bool down );
-    void        SetShiftDown(bool down );
-    void        SetAltDown(bool down );
-    void        SetMetaDown(bool down );
+    wxCoord     GetX();
+    wxCoord     GetY();
+    bool        LeftDown();
+    bool        MiddleDown();
+    bool        RightDown();
+    bool        ControlDown();
+    bool        ShiftDown();
+    bool        AltDown();
+    bool        MetaDown();
+    bool        CmdDown();
+    void        SetX(wxCoord x);
+    void        SetY(wxCoord y);
+    void        SetLeftDown(bool down);
+    void        SetMiddleDown(bool down);
+    void        SetRightDown(bool down);
+    void        SetControlDown(bool down);
+    void        SetShiftDown(bool down);
+    void        SetAltDown(bool down);
+    void        SetMetaDown(bool down);
 };
 
-wxMouseState wxGetMouseState( );
+wxMouseState wxGetMouseState();
 #endif
 
-// bool wxGetResource(const wxString& section, const wxString& entry, const wxString& *value, const wxString& file = "" );
-// bool wxWriteResource(const wxString& section, const wxString& entry, const wxString& value, const wxString& file = "" );
-// wxString  wxGetStockLabel(wxWindowID id, bool withCodes = true, wxString accelerator = wxEmptyString );
-wxWindow* wxGetTopLevelParent(wxWindow *win );
-bool wxLaunchDefaultBrowser(const wxString& sUrl );
-//%win wxString wxLoadUserResource(const wxString& resourceName, const wxString& resourceType="TEXT" );
-void wxPostEvent(wxEvtHandler *dest, wxEvent& event );
+// bool wxGetResource(const wxString& section, const wxString& entry, const wxString& *value, const wxString& file = "");
+// bool wxWriteResource(const wxString& section, const wxString& entry, const wxString& value, const wxString& file = "");
+// wxString  wxGetStockLabel(wxWindowID id, bool withCodes = true, wxString accelerator = wxEmptyString);
+wxWindow* wxGetTopLevelParent(wxWindow *win);
+bool wxLaunchDefaultBrowser(const wxString& sUrl);
+//%win wxString wxLoadUserResource(const wxString& resourceName, const wxString& resourceType="TEXT");
+void wxPostEvent(wxEvtHandler *dest, wxEvent& event);
 
 // ---------------------------------------------------------------------------
 // Byte order macros - nothing useful
@@ -546,7 +546,7 @@ enum wxHitTest
 class %delete wxBusyCursor
 {
     // NOTE: ALWAYS delete() this when done since Lua's gc may not delete it soon enough
-    wxBusyCursor(wxCursor* cursor = wxHOURGLASS_CURSOR );
+    wxBusyCursor(wxCursor* cursor = wxHOURGLASS_CURSOR);
 };
 
 // ---------------------------------------------------------------------------
@@ -557,7 +557,7 @@ class %delete wxBusyCursor
 //class %delete wxBusyCursorSuspender
 //{
     // NOTE: ALWAYS delete() this when done since Lua's gc may not delete it soon enough
-//    wxBusyCursorSuspender( );
+//    wxBusyCursorSuspender();
 //};
 
 #endif //wxLUA_USE_wxBusyCursor
@@ -572,7 +572,7 @@ class %delete wxBusyCursor
 class %delete wxBusyInfo : public wxObject
 {
     // NOTE: ALWAYS delete() this when done since Lua's gc may not delete it soon enough
-    wxBusyInfo(const wxString& message, wxWindow *parent = NULL );
+    wxBusyInfo(const wxString& message, wxWindow *parent = NULL);
 };
 
 #endif //wxLUA_USE_wxBusyInfo && wxUSE_BUSYINFO
@@ -589,15 +589,15 @@ class %delete wxBusyInfo : public wxObject
 
 class %delete wxTimer : public wxEvtHandler
 {
-    wxTimer(wxEvtHandler *owner, int id = -1 );
+    wxTimer(wxEvtHandler *owner, int id = -1);
 
     int      GetInterval() const;
     bool     IsOneShot() const;
     bool     IsRunning() const;
-    void     Notify( );
-    void     SetOwner(wxEvtHandler *owner, int id = -1 );
-    bool     Start(int milliseconds = -1, bool oneShot = false );
-    void     Stop( );
+    void     Notify();
+    void     SetOwner(wxEvtHandler *owner, int id = -1);
+    bool     Start(int milliseconds = -1, bool oneShot = false);
+    void     Stop();
 };
 
 // ---------------------------------------------------------------------------
@@ -607,7 +607,7 @@ class %delete wxTimer : public wxEvtHandler
 
 class %delete wxTimerEvent : public wxEvent
 {
-    %wxEventType wxEVT_TIMER // EVT_TIMER(id, fn );
+    %wxEventType wxEVT_TIMER // EVT_TIMER(id, fn);
 
     int GetInterval() const;
 };
