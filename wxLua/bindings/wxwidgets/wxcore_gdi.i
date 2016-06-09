@@ -990,12 +990,12 @@ class %delete wxIcon : public wxGDIObject
     #define_object wxNullIcon
     wxIcon();
     %wxchkver_3_1_1 wxIcon(const wxIcon& icon);
-    %wxchkver_3_1_1 wxIcon(const char bits[], int width, int height);
+    // wxIcon(const char bits[], int width, int height); // doesn't compile on Linux using gcc 4.6-4.8.1
     // wxIcon(const char* const* bits); // wxlua doesn't handle `const char* const*`
     wxIcon(const wxString& name, wxBitmapType type, int desiredWidth = -1, int desiredHeight = -1);
     %wxchkver_3_1_1 wxIcon(const wxIconLocation& loc);
     // bool CreateFromHICON(WXHICON icon); // skip this one as it's windows specific
-    // wxIcon ConvertToDisabled(unsigned char brightness = 255) const; // not present
+    // wxIcon ConvertToDisabled(unsigned char brightness = 255) const; // skip as it's win-only; can use one from wxBitmap
     %wxchkver_3_1_1 void CopyFromBitmap(const wxBitmap& bmp);
     int     GetDepth();
     int     GetHeight();
