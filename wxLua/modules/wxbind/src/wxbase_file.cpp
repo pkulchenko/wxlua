@@ -1217,7 +1217,7 @@ static int LUACALL wxLua_wxFileName_GetPathTerminators(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_GetPathWithSep[] = { &wxluatype_wxFileName, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFileName_GetPathWithSep(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_GetPathWithSep[1] = {{ wxLua_wxFileName_GetPathWithSep, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxFileName_GetPathWithSep }};
-//     wxString GetPathWithSep(wxPathFormat format = wxPATH_NATIVE ) const;
+//     wxString GetPathWithSep(wxPathFormat format = wxPATH_NATIVE) const;
 static int LUACALL wxLua_wxFileName_GetPathWithSep(lua_State *L)
 {
     // get number of arguments

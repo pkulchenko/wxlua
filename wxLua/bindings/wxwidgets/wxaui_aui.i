@@ -157,7 +157,7 @@ class wxAuiToolBarArt
     virtual void SetTextOrientation(int orientation);
     %wxchkver_3_1_1 int GetTextOrientation();
     virtual void DrawBackground(wxDC& dc, wxWindow* wnd, const wxRect& rect);
-    %wxchkver_3_1_1 void DrawPlainBackground( wxDC& dc, wxWindow* wnd, const wxRect& rect);
+    %wxchkver_3_1_1 void DrawPlainBackground(wxDC& dc, wxWindow* wnd, const wxRect& rect);
     virtual void DrawLabel(wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item, const wxRect& rect);
     virtual void DrawButton(wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item, const wxRect& rect);
     virtual void DrawDropDownButton(wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item, const wxRect& rect);

@@ -1777,7 +1777,7 @@ static int LUACALL wxLua_wxDynamicLibraryDetailsArray_GetCount(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDynamicLibraryDetailsArray_Item[] = { &wxluatype_wxDynamicLibraryDetailsArray, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDynamicLibraryDetailsArray_Item(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDynamicLibraryDetailsArray_Item[1] = {{ wxLua_wxDynamicLibraryDetailsArray_Item, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDynamicLibraryDetailsArray_Item }};
-//     wxDynamicLibraryDetails Item( int n);
+//     wxDynamicLibraryDetails Item(int n);
 static int LUACALL wxLua_wxDynamicLibraryDetailsArray_Item(lua_State *L)
 {
     // int n

@@ -1854,7 +1854,7 @@ static int LUACALL wxLua_wxMultiChoiceDialog_SetSelections(lua_State *L)
 
 #endif // (wxLUA_USE_wxArrayInt) && (wxUSE_CHOICEDLG && wxLUA_USE_wxMultiChoiceDialog)
 
-#if ((wxLUA_USE_wxArrayString) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_CHOICEDLG && wxLUA_USE_wxMultiChoiceDialog)
+#if ((wxLUA_USE_wxArrayString) && (wxUSE_CHOICEDLG && wxLUA_USE_wxMultiChoiceDialog)) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMultiChoiceDialog_constructor[] = { &wxluatype_wxWindow, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxArrayString, &wxluatype_TNUMBER, &wxluatype_wxPoint, NULL };
 static int LUACALL wxLua_wxMultiChoiceDialog_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMultiChoiceDialog_constructor[1] = {{ wxLua_wxMultiChoiceDialog_constructor, WXLUAMETHOD_CONSTRUCTOR, 4, 6, s_wxluatypeArray_wxLua_wxMultiChoiceDialog_constructor }};
@@ -1885,7 +1885,7 @@ static int LUACALL wxLua_wxMultiChoiceDialog_constructor(lua_State *L)
     return 1;
 }
 
-#endif // ((wxLUA_USE_wxArrayString) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_CHOICEDLG && wxLUA_USE_wxMultiChoiceDialog)
+#endif // ((wxLUA_USE_wxArrayString) && (wxUSE_CHOICEDLG && wxLUA_USE_wxMultiChoiceDialog)) && (wxLUA_USE_wxPointSizeRect)
 
 
 
@@ -1902,9 +1902,9 @@ wxLuaBindMethod wxMultiChoiceDialog_methods[] = {
     { "SetSelections", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMultiChoiceDialog_SetSelections, 1, NULL },
 #endif // (wxLUA_USE_wxArrayInt) && (wxUSE_CHOICEDLG && wxLUA_USE_wxMultiChoiceDialog)
 
-#if ((wxLUA_USE_wxArrayString) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_CHOICEDLG && wxLUA_USE_wxMultiChoiceDialog)
+#if ((wxLUA_USE_wxArrayString) && (wxUSE_CHOICEDLG && wxLUA_USE_wxMultiChoiceDialog)) && (wxLUA_USE_wxPointSizeRect)
     { "wxMultiChoiceDialog", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxMultiChoiceDialog_constructor, 1, NULL },
-#endif // ((wxLUA_USE_wxArrayString) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_CHOICEDLG && wxLUA_USE_wxMultiChoiceDialog)
+#endif // ((wxLUA_USE_wxArrayString) && (wxUSE_CHOICEDLG && wxLUA_USE_wxMultiChoiceDialog)) && (wxLUA_USE_wxPointSizeRect)
 
     { 0, 0, 0, 0 },
 };
@@ -1971,7 +1971,7 @@ static int LUACALL wxLua_wxSingleChoiceDialog_SetSelection(lua_State *L)
 }
 
 
-#if ((wxLUA_USE_wxArrayString) && (wxUSE_CHOICEDLG && wxLUA_USE_wxSingleChoiceDialog)) && (wxLUA_USE_wxPointSizeRect)
+#if ((wxLUA_USE_wxPointSizeRect) && (wxUSE_CHOICEDLG && wxLUA_USE_wxSingleChoiceDialog)) && (wxLUA_USE_wxArrayString)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSingleChoiceDialog_constructor[] = { &wxluatype_wxWindow, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxArrayString, &wxluatype_TNUMBER, &wxluatype_wxPoint, NULL };
 static int LUACALL wxLua_wxSingleChoiceDialog_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSingleChoiceDialog_constructor[1] = {{ wxLua_wxSingleChoiceDialog_constructor, WXLUAMETHOD_CONSTRUCTOR, 4, 6, s_wxluatypeArray_wxLua_wxSingleChoiceDialog_constructor }};
@@ -2005,7 +2005,7 @@ static int LUACALL wxLua_wxSingleChoiceDialog_constructor(lua_State *L)
 }
 
 
-#endif // ((wxLUA_USE_wxArrayString) && (wxUSE_CHOICEDLG && wxLUA_USE_wxSingleChoiceDialog)) && (wxLUA_USE_wxPointSizeRect)
+#endif // ((wxLUA_USE_wxPointSizeRect) && (wxUSE_CHOICEDLG && wxLUA_USE_wxSingleChoiceDialog)) && (wxLUA_USE_wxArrayString)
 
 
 
@@ -2021,9 +2021,9 @@ wxLuaBindMethod wxSingleChoiceDialog_methods[] = {
     { "GetStringSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSingleChoiceDialog_GetStringSelection, 1, NULL },
     { "SetSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSingleChoiceDialog_SetSelection, 1, NULL },
 
-#if ((wxLUA_USE_wxArrayString) && (wxUSE_CHOICEDLG && wxLUA_USE_wxSingleChoiceDialog)) && (wxLUA_USE_wxPointSizeRect)
+#if ((wxLUA_USE_wxPointSizeRect) && (wxUSE_CHOICEDLG && wxLUA_USE_wxSingleChoiceDialog)) && (wxLUA_USE_wxArrayString)
     { "wxSingleChoiceDialog", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxSingleChoiceDialog_constructor, 1, NULL },
-#endif // ((wxLUA_USE_wxArrayString) && (wxUSE_CHOICEDLG && wxLUA_USE_wxSingleChoiceDialog)) && (wxLUA_USE_wxPointSizeRect)
+#endif // ((wxLUA_USE_wxPointSizeRect) && (wxUSE_CHOICEDLG && wxLUA_USE_wxSingleChoiceDialog)) && (wxLUA_USE_wxArrayString)
 
     { 0, 0, 0, 0 },
 };

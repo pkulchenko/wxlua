@@ -214,7 +214,7 @@ static int LUACALL wxLua_wxDataObject_GetAllFormats(lua_State *L)
 %end
 
 %override wxLua_wxDataObject_SetData
-// virtual bool SetData( const wxDataFormat& format, int len, const void *buf )
+// virtual bool SetData(const wxDataFormat& format, int len, const void *buf)
 static int LUACALL wxLua_wxDataObject_SetData(lua_State *L)
 {
     // const void *buf
@@ -254,7 +254,7 @@ static int LUACALL wxLua_wxDataObjectSimple_SetData(lua_State *L)
 %end
 
 %override wxLua_wxDataObject_GetDataHere
-// virtual bool GetDataHere(const wxDataFormat& format, void *buf ) const
+// virtual bool GetDataHere(const wxDataFormat& format, void *buf) const
 static int LUACALL wxLua_wxDataObject_GetDataHere(lua_State *L)
 {
     // const wxDataFormat& format
@@ -2562,7 +2562,7 @@ static int LUACALL wxLua_wxWindow_GetSizeWH(lua_State *L)
 %end
 
 %override wxLua_wxWindow_GetTextExtent
-// virtual void GetTextExtent(const wxString& string, int* x, int* y, int* descent = NULL, int* externalLeading = NULL, const wxFont* font = NULL ) const
+// virtual void GetTextExtent(const wxString& string, int* x, int* y, int* descent = NULL, int* externalLeading = NULL, const wxFont* font = NULL) const
 static int LUACALL wxLua_wxWindow_GetTextExtent(lua_State *L)
 {
     // get number of arguments
@@ -2661,7 +2661,7 @@ static int LUACALL wxLua_wxNotebook_HitTest(lua_State *L)
 %end
 
 %override wxLua_wxScrolledWindow_CalcScrolledPosition
-// void CalcScrolledPosition( int x, int y, int *xx, int *yy) const
+// void CalcScrolledPosition(int x, int y, int *xx, int *yy) const
 static int LUACALL wxLua_wxScrolledWindow_CalcScrolledPosition(lua_State *L)
 {
     int yy;
@@ -2682,7 +2682,7 @@ static int LUACALL wxLua_wxScrolledWindow_CalcScrolledPosition(lua_State *L)
 %end
 
 %override wxLua_wxScrolledWindow_CalcUnscrolledPosition
-// void CalcUnscrolledPosition( int x, int y, int *xx, int *yy) const
+// void CalcUnscrolledPosition(int x, int y, int *xx, int *yy) const
 static int LUACALL wxLua_wxScrolledWindow_CalcUnscrolledPosition(lua_State *L)
 {
     int yy;

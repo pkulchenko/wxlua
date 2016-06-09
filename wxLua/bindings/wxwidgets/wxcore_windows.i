@@ -222,7 +222,7 @@ class wxWindow : public wxEvtHandler
     void SetSize(const wxSize& size);
     virtual void SetSize(int width, int height);
     void SetSizeHints(const wxSize& minSize, const wxSize& maxSize=wxDefaultSize, const wxSize& incSize=wxDefaultSize);
-    %wxchkver_3_1_1 void SetSizeHints( int minW, int minH, int maxW = -1, int maxH = -1, int incW = -1, int incH = -1 );
+    %wxchkver_3_1_1 void SetSizeHints(int minW, int minH, int maxW = -1, int maxH = -1, int incW = -1, int incH = -1);
     void SetVirtualSize(int width, int height);
     void SetVirtualSize(const wxSize& size);
     void Center(int direction = wxBOTH);
@@ -881,12 +881,12 @@ class wxScrolledWindow : public wxPanel
     bool Create(wxWindow* parent, wxWindowID id = -1, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxHSCROLL | wxVSCROLL, const wxString& name = "wxScrolledWindow");
 
     // %override [int xx, int yy] void wxScrolledWindow::CalcScrolledPosition(int x, int y) const;
-    // C++ Func: void CalcScrolledPosition( int x, int y, int *xx, int *yy) const;
-    void CalcScrolledPosition( int x, int y) const;
+    // C++ Func: void CalcScrolledPosition(int x, int y, int *xx, int *yy) const;
+    void CalcScrolledPosition(int x, int y) const;
 
     // %override [int xx, int yy] void wxScrolledWindow::CalcUnscrolledPosition(int x, int y) const;
-    // C++ Func: void CalcUnscrolledPosition( int x, int y, int *xx, int *yy) const;
-    void CalcUnscrolledPosition( int x, int y) const;
+    // C++ Func: void CalcUnscrolledPosition(int x, int y, int *xx, int *yy) const;
+    void CalcUnscrolledPosition(int x, int y) const;
 
     void EnableScrolling(const bool xScrolling, const bool yScrolling);
 

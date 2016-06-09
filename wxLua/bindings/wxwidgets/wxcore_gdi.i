@@ -1026,7 +1026,7 @@ class %delete wxIconBundle
     void AddIcon(const wxIcon& icon);
 
     wxIcon GetIcon(const wxSize& size) const;
-    // equivalent to GetIcon(wxSize(size, size ));
+    // equivalent to GetIcon(wxSize(size, size));
     wxIcon GetIcon(int size = wxDefaultCoord) const;
 };
 

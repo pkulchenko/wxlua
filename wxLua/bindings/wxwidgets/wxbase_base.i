@@ -561,7 +561,7 @@ class %delete wxDynamicLibraryDetailsArray
     //wxDynamicLibraryDetailsArray(); // Get this from wxDynamicLibrary::ListLoaded
 
     int  GetCount() const;
-    wxDynamicLibraryDetails Item( int n);
+    wxDynamicLibraryDetails Item(int n);
 };
 
 

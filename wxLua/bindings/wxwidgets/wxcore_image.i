@@ -104,7 +104,7 @@ class %delete wxImage : public wxObject
     wxImage(int width, int height, bool clear=true);
     %wxchkver_3_1_1 wxImage(const wxSize& sz, bool clear = true);
     %wxchkver_3_1_1 wxImage(const wxSize& sz, unsigned char* data, bool static_data = false);
-    %wxchkver_3_1_1 wxImage(int width, int height, unsigned char* data, unsigned char* alpha, bool static_data = false );
+    %wxchkver_3_1_1 wxImage(int width, int height, unsigned char* data, unsigned char* alpha, bool static_data = false);
     %wxchkver_3_1_1 wxImage(const wxSize& sz, unsigned char* data, unsigned char* alpha, bool static_data = false);
     // wxImage(const char* const* xpmData); // wxlua doesn't handle `const char* const*`
     %wxchkver_3_1_1 wxImage(const wxString& name, wxBitmapType type = wxBITMAP_TYPE_ANY, int index = -1);
@@ -113,11 +113,11 @@ class %delete wxImage : public wxObject
     %wxchkver_3_1_1 wxImage(wxInputStream& stream, const wxString& mimetype, int index = -1);
     wxImage Copy() const;
     void Create(int width, int height, bool clear=true);
-    %wxchkver_3_1_1 bool Create( const wxSize& sz, bool clear = true );
-    %wxchkver_3_1_1 bool Create( int width, int height, unsigned char* data, bool static_data = false );
-    %wxchkver_3_1_1 bool Create( const wxSize& sz, unsigned char* data, bool static_data = false );
-    %wxchkver_3_1_1 bool Create( int width, int height, unsigned char* data, unsigned char* alpha, bool static_data = false );
-    %wxchkver_3_1_1 bool Create( const wxSize& sz, unsigned char* data, unsigned char* alpha, bool static_data = false );
+    %wxchkver_3_1_1 bool Create(const wxSize& sz, bool clear = true);
+    %wxchkver_3_1_1 bool Create(int width, int height, unsigned char* data, bool static_data = false);
+    %wxchkver_3_1_1 bool Create(const wxSize& sz, unsigned char* data, bool static_data = false);
+    %wxchkver_3_1_1 bool Create(int width, int height, unsigned char* data, unsigned char* alpha, bool static_data = false);
+    %wxchkver_3_1_1 bool Create(const wxSize& sz, unsigned char* data, unsigned char* alpha, bool static_data = false);
     %wxchkver_3_1_1 void Clear(unsigned char value = 0);
     void Destroy();
     void InitAlpha();
@@ -182,7 +182,7 @@ class %delete wxImage : public wxObject
     void SetOption(const wxString &name, const wxString &value);
     void SetOption(const wxString &name, int value);
     void SetPalette(const wxPalette& palette);
-    %wxchkver_3_1_1 void SetRGB( int x, int y, unsigned char r, unsigned char g, unsigned char b );
+    %wxchkver_3_1_1 void SetRGB(int x, int y, unsigned char r, unsigned char g, unsigned char b);
     %wxchkver_3_1_1 void SetRGB(const wxRect& rect, unsigned char red, unsigned char green, unsigned char blue);
     %wxchkver_3_1_1 void SetType(wxBitmapType type);
     static void AddHandler(%ungc wxImageHandler* handler);

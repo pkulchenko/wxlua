@@ -246,7 +246,7 @@ class %delete wxFileName
     static int GetPathSeparator(wxPathFormat format = wxPATH_NATIVE);
     static wxString GetPathSeparators(wxPathFormat format = wxPATH_NATIVE);
     static wxString  GetPathTerminators(wxPathFormat format = wxPATH_NATIVE);
-    wxString GetPathWithSep(wxPathFormat format = wxPATH_NATIVE ) const;
+    wxString GetPathWithSep(wxPathFormat format = wxPATH_NATIVE) const;
     wxString GetShortPath() const;
 
     %wxchkver_2_8 wxULongLong GetSize() const;

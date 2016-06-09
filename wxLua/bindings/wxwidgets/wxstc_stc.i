@@ -2756,7 +2756,7 @@ class  WXDLLIMPEXP_FWD_STC wxStyledTextEvent;
 
 class wxStyledTextCtrl : public wxControl
 {
-    wxStyledTextCtrl(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString &name = "wxStyledTextCtrl" );
+    wxStyledTextCtrl(wxWindow *parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString &name = "wxStyledTextCtrl");
 
 
     //----------------------------------------------------------------------
@@ -6095,7 +6095,7 @@ class wxStyledTextCtrl : public wxControl
     !%wxchkver_2_9_5 void SetCaretSticky(bool useCaretStickyBehaviour);
     !%wxchkver_2_9_5 void SetIndentationGuides(bool show);
     !%wxchkver_3_1_0 int PositionFromPoint(const wxPoint& pt) const;
-    // %override [Lua string styleBytes] wxStyledTextCtrl::SetStyleBytes(int length, Lua string styleBytes );
+    // %override [Lua string styleBytes] wxStyledTextCtrl::SetStyleBytes(int length, Lua string styleBytes);
     // Set an indicator to draw under text or over(default).
     // These are like their namesakes Home(Extend)?, LineEnd(Extend)?, VCHome(Extend)?
     // Valid values are SCMOD_CTRL(default), SCMOD_ALT, or SCMOD_SUPER.
@@ -6339,32 +6339,32 @@ class wxStyledTextCtrl : public wxControl
 
 class %delete wxStyledTextEvent : public wxCommandEvent
 {
-    %wxEventType wxEVT_STC_CHANGE              // EVT_STC_CHANGE(id, fn );
-    %wxEventType wxEVT_STC_STYLENEEDED         // EVT_STC_STYLENEEDED(id, fn );
-    %wxEventType wxEVT_STC_CHARADDED           // EVT_STC_CHARADDED(id, fn );
-    %wxEventType wxEVT_STC_SAVEPOINTREACHED    // EVT_STC_SAVEPOINTREACHED(id, fn );
-    %wxEventType wxEVT_STC_SAVEPOINTLEFT       // EVT_STC_SAVEPOINTLEFT(id, fn );
-    %wxEventType wxEVT_STC_ROMODIFYATTEMPT     // EVT_STC_ROMODIFYATTEMPT(id, fn );
-    %wxEventType wxEVT_STC_KEY                 // EVT_STC_KEY(id, fn );
-    %wxEventType wxEVT_STC_DOUBLECLICK         // EVT_STC_DOUBLECLICK(id, fn );
-    %wxEventType wxEVT_STC_UPDATEUI            // EVT_STC_UPDATEUI(id, fn );
-    %wxEventType wxEVT_STC_MODIFIED            // EVT_STC_MODIFIED(id, fn );
-    %wxEventType wxEVT_STC_MACRORECORD         // EVT_STC_MACRORECORD(id, fn );
-    %wxEventType wxEVT_STC_MARGINCLICK         // EVT_STC_MARGINCLICK(id, fn );
-    %wxEventType wxEVT_STC_NEEDSHOWN           // EVT_STC_NEEDSHOWN(id, fn );
-    %wxEventType wxEVT_STC_PAINTED             // EVT_STC_PAINTED(id, fn );
-    %wxEventType wxEVT_STC_USERLISTSELECTION   // EVT_STC_USERLISTSELECTION(id, fn );
-    %wxEventType wxEVT_STC_URIDROPPED          // EVT_STC_URIDROPPED(id, fn );
-    %wxEventType wxEVT_STC_DWELLSTART          // EVT_STC_DWELLSTART(id, fn );
-    %wxEventType wxEVT_STC_DWELLEND            // EVT_STC_DWELLEND(id, fn );
-    %wxEventType wxEVT_STC_START_DRAG          // EVT_STC_START_DRAG(id, fn );
-    %wxEventType wxEVT_STC_DRAG_OVER           // EVT_STC_DRAG_OVER(id, fn );
-    %wxEventType wxEVT_STC_DO_DROP             // EVT_STC_DO_DROP(id, fn );
-    %wxEventType wxEVT_STC_ZOOM                // EVT_STC_ZOOM(id, fn );
-    %wxEventType wxEVT_STC_HOTSPOT_CLICK       // EVT_STC_HOTSPOT_CLICK(id, fn );
-    %wxEventType wxEVT_STC_HOTSPOT_DCLICK      // EVT_STC_HOTSPOT_DCLICK(id, fn );
-    %wxEventType wxEVT_STC_CALLTIP_CLICK       // EVT_STC_CALLTIP_CLICK(id, fn );
-    %wxEventType wxEVT_STC_AUTOCOMP_SELECTION  // EVT_STC_AUTOCOMP_SELECTION(id, fn );
+    %wxEventType wxEVT_STC_CHANGE              // EVT_STC_CHANGE(id, fn);
+    %wxEventType wxEVT_STC_STYLENEEDED         // EVT_STC_STYLENEEDED(id, fn);
+    %wxEventType wxEVT_STC_CHARADDED           // EVT_STC_CHARADDED(id, fn);
+    %wxEventType wxEVT_STC_SAVEPOINTREACHED    // EVT_STC_SAVEPOINTREACHED(id, fn);
+    %wxEventType wxEVT_STC_SAVEPOINTLEFT       // EVT_STC_SAVEPOINTLEFT(id, fn);
+    %wxEventType wxEVT_STC_ROMODIFYATTEMPT     // EVT_STC_ROMODIFYATTEMPT(id, fn);
+    %wxEventType wxEVT_STC_KEY                 // EVT_STC_KEY(id, fn);
+    %wxEventType wxEVT_STC_DOUBLECLICK         // EVT_STC_DOUBLECLICK(id, fn);
+    %wxEventType wxEVT_STC_UPDATEUI            // EVT_STC_UPDATEUI(id, fn);
+    %wxEventType wxEVT_STC_MODIFIED            // EVT_STC_MODIFIED(id, fn);
+    %wxEventType wxEVT_STC_MACRORECORD         // EVT_STC_MACRORECORD(id, fn);
+    %wxEventType wxEVT_STC_MARGINCLICK         // EVT_STC_MARGINCLICK(id, fn);
+    %wxEventType wxEVT_STC_NEEDSHOWN           // EVT_STC_NEEDSHOWN(id, fn);
+    %wxEventType wxEVT_STC_PAINTED             // EVT_STC_PAINTED(id, fn);
+    %wxEventType wxEVT_STC_USERLISTSELECTION   // EVT_STC_USERLISTSELECTION(id, fn);
+    %wxEventType wxEVT_STC_URIDROPPED          // EVT_STC_URIDROPPED(id, fn);
+    %wxEventType wxEVT_STC_DWELLSTART          // EVT_STC_DWELLSTART(id, fn);
+    %wxEventType wxEVT_STC_DWELLEND            // EVT_STC_DWELLEND(id, fn);
+    %wxEventType wxEVT_STC_START_DRAG          // EVT_STC_START_DRAG(id, fn);
+    %wxEventType wxEVT_STC_DRAG_OVER           // EVT_STC_DRAG_OVER(id, fn);
+    %wxEventType wxEVT_STC_DO_DROP             // EVT_STC_DO_DROP(id, fn);
+    %wxEventType wxEVT_STC_ZOOM                // EVT_STC_ZOOM(id, fn);
+    %wxEventType wxEVT_STC_HOTSPOT_CLICK       // EVT_STC_HOTSPOT_CLICK(id, fn);
+    %wxEventType wxEVT_STC_HOTSPOT_DCLICK      // EVT_STC_HOTSPOT_DCLICK(id, fn);
+    %wxEventType wxEVT_STC_CALLTIP_CLICK       // EVT_STC_CALLTIP_CLICK(id, fn);
+    %wxEventType wxEVT_STC_AUTOCOMP_SELECTION  // EVT_STC_AUTOCOMP_SELECTION(id, fn);
     %wxchkver_3_1_0 %wxEventType wxEVT_STC_INDICATOR_CLICK       // EVT_STC_INDICATOR_CLICK(id, fn);
     %wxchkver_3_1_0 %wxEventType wxEVT_STC_INDICATOR_RELEASE     // EVT_STC_INDICATOR_RELEASE(id, fn);
     %wxchkver_3_1_0 %wxEventType wxEVT_STC_AUTOCOMP_CANCELLED    // EVT_STC_AUTOCOMP_CANCELLED(id, fn);
@@ -6373,32 +6373,32 @@ class %delete wxStyledTextEvent : public wxCommandEvent
     %wxchkver_3_1_0 %wxEventType wxEVT_STC_CLIPBOARD_COPY        // EVT_STC_CLIPBOARD_COPY(id, fn);
     %wxchkver_3_1_0 %wxEventType wxEVT_STC_CLIPBOARD_PASTE       // EVT_STC_CLIPBOARD_PASTE(id, fn);
 
-    wxStyledTextEvent(wxEventType commandType = 0, int id = 0 );
-    void SetPosition(int pos );
-    void SetKey(int k );
-    void SetModifiers(int m );
-    void SetModificationType(int t );
+    wxStyledTextEvent(wxEventType commandType = 0, int id = 0);
+    void SetPosition(int pos);
+    void SetKey(int k);
+    void SetModifiers(int m);
+    void SetModificationType(int t);
 
-    void SetText(const wxString& t );
-    void SetLength(int len );
-    void SetLinesAdded(int num );
-    void SetLine(int val );
-    void SetFoldLevelNow(int val );
-    void SetFoldLevelPrev(int val );
-    void SetMargin(int val );
-    void SetMessage(int val );
-    void SetWParam(int val );
-    void SetLParam(int val );
-    void SetListType(int val );
-    void SetX(int val );
-    void SetY(int val );
+    void SetText(const wxString& t);
+    void SetLength(int len);
+    void SetLinesAdded(int num);
+    void SetLine(int val);
+    void SetFoldLevelNow(int val);
+    void SetFoldLevelPrev(int val);
+    void SetMargin(int val);
+    void SetMessage(int val);
+    void SetWParam(int val);
+    void SetLParam(int val);
+    void SetListType(int val);
+    void SetX(int val);
+    void SetY(int val);
     %wxchkver_2_9_5 void SetToken(int val);
     %wxchkver_2_9_5 void SetAnnotationLinesAdded(int val);
     %wxchkver_2_9_5 void SetUpdated(int val);
     // Kept for backwards compatibility, use SetString().
-    void SetDragText(const wxString& val );
+    void SetDragText(const wxString& val);
     %wxchkver_3_1_0 void SetDragFlags(int flags);
-    void SetDragResult(wxDragResult val );
+    void SetDragResult(wxDragResult val);
     // This method is kept mainly for backwards compatibility, use
     // SetDragFlags() in the new code.
     void SetDragAllowMove(bool val);
@@ -6424,10 +6424,10 @@ class %delete wxStyledTextEvent : public wxCommandEvent
     %wxchkver_2_9_5 int  GetToken() const;
     %wxchkver_2_9_5 int  GetAnnotationsLinesAdded() const;
     %wxchkver_2_9_5 int  GetUpdated() const;
-    wxString GetDragText( );
+    wxString GetDragText();
     %wxchkver_3_1_0 int GetDragFlags();
-    wxDragResult GetDragResult( );
-    bool GetDragAllowMove( );
+    wxDragResult GetDragResult();
+    bool GetDragAllowMove();
 
     bool GetShift() const;
     bool GetControl() const;
