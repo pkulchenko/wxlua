@@ -734,6 +734,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxIconizeEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxIdleEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxInitDialogEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxKeyEvent;
+extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxKeyboardState;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxMaximizeEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxMouseCaptureChangedEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxMouseEvent;

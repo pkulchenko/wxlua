@@ -2913,6 +2913,11 @@ wx_dataTypeTable =
     Name = "wxKeyType",
     ValueType = "enum",
   },
+  wxKeyboardState = {
+    IsNumber = false,
+    Name = "wxKeyboardState",
+    ValueType = "class",
+  },
   wxKillError = {
     Condition = "wxLUA_USE_wxProcess",
     IsNumber = true,
@@ -3510,6 +3515,9 @@ wx_dataTypeTable =
     ValueType = "class",
   },
   wxMouseState = {
+    BaseClasses = {
+      [1] = "wxKeyboardState",
+    },
     Condition = "wxCHECK_VERSION(2,8,0)",
     IsNumber = false,
     Name = "wxMouseState",

@@ -4678,6 +4678,7 @@ static const char* wxluaclassname_wxItemContainer = "wxItemContainer";
 static const char* wxluaclassname_wxItemContainerImmutable = "wxItemContainerImmutable";
 static const char* wxluaclassname_wxJPEGHandler = "wxJPEGHandler";
 static const char* wxluaclassname_wxKeyEvent = "wxKeyEvent";
+static const char* wxluaclassname_wxKeyboardState = "wxKeyboardState";
 static const char* wxluaclassname_wxLayoutConstraints = "wxLayoutConstraints";
 static const char* wxluaclassname_wxList = "wxList";
 static const char* wxluaclassname_wxListBox = "wxListBox";
@@ -5162,6 +5163,8 @@ static const char* wxluabaseclassnames_wxMouseCaptureLostEvent[] = { wxluaclassn
 static wxLuaBindClass* wxluabaseclassbinds_wxMouseCaptureLostEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxMouseEvent[] = { wxluaclassname_wxEvent, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxMouseEvent[] = { NULL };
+static const char* wxluabaseclassnames_wxMouseState[] = { wxluaclassname_wxKeyboardState, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxMouseState[] = { NULL };
 static const char* wxluabaseclassnames_wxMoveEvent[] = { wxluaclassname_wxEvent, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxMoveEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxMultiChoiceDialog[] = { wxluaclassname_wxDialog, NULL };
@@ -5767,6 +5770,9 @@ extern void wxLua_wxInitDialogEvent_delete_function(void** p);
 extern wxLuaBindMethod wxKeyEvent_methods[];
 extern int wxKeyEvent_methodCount;
 extern void wxLua_wxKeyEvent_delete_function(void** p);
+extern wxLuaBindMethod wxKeyboardState_methods[];
+extern int wxKeyboardState_methodCount;
+extern void wxLua_wxKeyboardState_delete_function(void** p);
 extern wxLuaBindMethod wxMaximizeEvent_methods[];
 extern int wxMaximizeEvent_methodCount;
 extern void wxLua_wxMaximizeEvent_delete_function(void** p);
@@ -7174,6 +7180,7 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #endif // (wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxUSE_LIBJPEG)
 
         { wxluaclassname_wxKeyEvent, wxKeyEvent_methods, wxKeyEvent_methodCount, CLASSINFO(wxKeyEvent), &wxluatype_wxKeyEvent, wxluabaseclassnames_wxKeyEvent, wxluabaseclassbinds_wxKeyEvent, NULL, NULL, NULL, 0, &wxLua_wxKeyEvent_delete_function, }, 
+        { wxluaclassname_wxKeyboardState, wxKeyboardState_methods, wxKeyboardState_methodCount, NULL, &wxluatype_wxKeyboardState, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxKeyboardState_delete_function, }, 
 
 #if (wxLUA_USE_wxLayoutConstraints && (!wxCHECK_VERSION(2,6,0))) && (wxLUA_USE_wxSizer)
         { wxluaclassname_wxLayoutConstraints, wxLayoutConstraints_methods, wxLayoutConstraints_methodCount, CLASSINFO(wxLayoutConstraints), &wxluatype_wxLayoutConstraints, wxluabaseclassnames_wxLayoutConstraints, wxluabaseclassbinds_wxLayoutConstraints, NULL, NULL, NULL, 0, &wxLua_wxLayoutConstraints_delete_function, }, 
@@ -7294,7 +7301,7 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
         { wxluaclassname_wxMouseEvent, wxMouseEvent_methods, wxMouseEvent_methodCount, CLASSINFO(wxMouseEvent), &wxluatype_wxMouseEvent, wxluabaseclassnames_wxMouseEvent, wxluabaseclassbinds_wxMouseEvent, NULL, NULL, NULL, 0, &wxLua_wxMouseEvent_delete_function, }, 
 
 #if wxCHECK_VERSION(2,8,0)
-        { wxluaclassname_wxMouseState, wxMouseState_methods, wxMouseState_methodCount, NULL, &wxluatype_wxMouseState, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxMouseState_delete_function, }, 
+        { wxluaclassname_wxMouseState, wxMouseState_methods, wxMouseState_methodCount, NULL, &wxluatype_wxMouseState, wxluabaseclassnames_wxMouseState, wxluabaseclassbinds_wxMouseState, NULL, NULL, NULL, 0, &wxLua_wxMouseState_delete_function, }, 
 #endif // wxCHECK_VERSION(2,8,0)
 
         { wxluaclassname_wxMoveEvent, wxMoveEvent_methods, wxMoveEvent_methodCount, CLASSINFO(wxMoveEvent), &wxluatype_wxMoveEvent, wxluabaseclassnames_wxMoveEvent, wxluabaseclassbinds_wxMoveEvent, NULL, NULL, NULL, 0, &wxLua_wxMoveEvent_delete_function, }, 
