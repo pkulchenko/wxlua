@@ -78,27 +78,25 @@ enum wxKillFlags
 class %delete wxProcess : public wxEvtHandler
 {
     wxProcess(wxEvtHandler *parent = NULL, int nId = wxID_ANY);
-    //wxProcess(int flags);
-
+    wxProcess(int flags);
+    %wxchkver_3_1_1 & %win bool Activate() const;
+    wxUSE_STREAMS void CloseOutput();
     void Detach();
-    static wxKillError Kill(int pid, wxSignal sig = wxSIGTERM, int flags = wxKILL_NOCHILDREN);
     static bool Exists(int pid);
-    //virtual void OnTerminate(int pid, int status) just handle the event instead
+    wxUSE_STREAMS wxInputStream *GetErrorStream() const;
+    wxUSE_STREAMS wxInputStream *GetInputStream() const;
+    wxUSE_STREAMS wxOutputStream *GetOutputStream() const;
+    long GetPid() const;
+    wxUSE_STREAMS bool IsErrorAvailable() const;
+    wxUSE_STREAMS bool IsInputAvailable() const;
+    wxUSE_STREAMS bool IsInputOpened() const;
+    static wxKillError Kill(int pid, wxSignal sig = wxSIGTERM, int flags = wxKILL_NOCHILDREN);
+    // void OnTerminate(int pid, int status); // just handle the event instead
     static wxProcess *Open(const wxString& cmd, int flags = wxEXEC_ASYNC);
     void Redirect();
-    bool IsRedirected();
-
-#if wxUSE_STREAMS
-    void CloseOutput();
-    wxInputStream *GetErrorStream() const;
-    wxInputStream *GetInputStream() const;
-    wxOutputStream *GetOutputStream() const;
-    bool IsErrorAvailable() const;
-    bool IsInputAvailable() const;
-    bool IsInputOpened() const;
-    void SetPipeStreams(wxInputStream *outStream, wxOutputStream *inStream, wxInputStream *errStream);
-#endif // wxUSE_STREAMS
-
+    bool IsRedirected(); // %add missing in the interface
+    void SetPriority(unsigned int priority); // %override parameter type -- unsigned => unsigned int -- as wxlua doesn't handle "unsigned" by itself
+    wxUSE_STREAMS void SetPipeStreams(wxInputStream *outStream, wxOutputStream *inStream, wxInputStream *errStream); // %add missing in the interface
 };
 
 #endif //wxLUA_USE_wxProcess
