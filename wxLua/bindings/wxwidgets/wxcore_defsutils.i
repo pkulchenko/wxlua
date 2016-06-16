@@ -221,6 +221,9 @@ class %delete wxMouseState : public wxKeyboardState
     %wxchkver_3_1_1 bool LeftIsDown() const;
     %wxchkver_3_1_1 bool MiddleIsDown() const;
     %wxchkver_3_1_1 bool RightIsDown() const;
+    %wxchkver_3_1_1 %rename LeftDown bool LeftIsDown() const; // for compatibility with previous wxlua versions
+    %wxchkver_3_1_1 %rename MiddleDown bool MiddleIsDown() const; // for compatibility with previous wxlua versions
+    %wxchkver_3_1_1 %rename RightDown bool RightIsDown() const; // for compatibility with previous wxlua versions
     %wxchkver_3_1_1 bool Aux1IsDown() const;
     %wxchkver_3_1_1 bool Aux2IsDown() const;
     void        SetX(wxCoord x);
