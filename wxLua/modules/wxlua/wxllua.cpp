@@ -389,7 +389,7 @@ bool LUACALL wxluaO_deletegcobject(lua_State *L, int stack_idx, int flags)
     void* udata   = lua_touserdata(L, stack_idx);
     void* obj_ptr = wxlua_touserdata(L, stack_idx, true); // clear lua userdata's ptr
 
-    //if (obj_ptr == NULL) return false; // can happen
+    if (obj_ptr == NULL) return false; // can happen
 
     bool delete_all = WXLUA_HASBIT(flags, WXLUA_DELETE_OBJECT_ALL);
 
