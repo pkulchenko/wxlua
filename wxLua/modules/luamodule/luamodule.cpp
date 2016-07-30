@@ -191,6 +191,7 @@ void wxLuaModuleApp::MacOpenFiles(const wxArrayString& fileNames)
 
         m_wxlState.LuaPCall(1, 0);
         m_wxlState.lua_SetTop(nOldTop-1);
+        m_wxlState.SetCallBaseClassFunction(false); // clear flag always
     }
     else if (!IsMainLoopRunning()) {
         // store any files passed when the Lua handler may not yet be set up;
@@ -198,7 +199,6 @@ void wxLuaModuleApp::MacOpenFiles(const wxArrayString& fileNames)
         macopenfiles.Clear();
         macopenfiles = wxArrayString(fileNames);
     }
-    m_wxlState.SetCallBaseClassFunction(false); // clear flag always
 }
 
 
