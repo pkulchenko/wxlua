@@ -404,6 +404,9 @@ bool wxLuaStateRefData::CloseLuaState(bool force)
     if ((m_lua_State == NULL) || m_wxlStateData->m_is_closing || m_lua_State_coroutine)
         return true;
 
+    if (lua_status(m_lua_State) != 0) // lua state is not LUA_OK
+        return true;
+
     m_wxlStateData->m_is_closing = true;
 
     //wxCHECK_MSG(m_lua_State, false, wxT("Interpreter not created"));
