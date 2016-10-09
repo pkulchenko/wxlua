@@ -106,18 +106,22 @@ static int LUACALL wxLua_wxStyledTextCtrl_AddText(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_AddTextRaw[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TSTRING, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_AddTextRaw[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_AddTextRaw(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_AddTextRaw[1] = {{ wxLua_wxStyledTextCtrl_AddTextRaw, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_AddTextRaw }};
-//     void AddTextRaw(const char* text);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_AddTextRaw[1] = {{ wxLua_wxStyledTextCtrl_AddTextRaw, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_AddTextRaw }};
+//     void AddTextRaw(const char* text, int length=-1);
 static int LUACALL wxLua_wxStyledTextCtrl_AddTextRaw(lua_State *L)
 {
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int length = -1
+    int length = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : -1);
     // const char text
     wxCharBuffer text = wxlua_getstringtype(L, 2);
     // get this
     wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
     // call AddTextRaw
-    self->AddTextRaw((const char*)text);
+    self->AddTextRaw((const char*)text, length);
 
     return 0;
 }
@@ -441,18 +445,22 @@ static int LUACALL wxLua_wxStyledTextCtrl_AppendText(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_AppendTextRaw[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TSTRING, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_AppendTextRaw[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_AppendTextRaw(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_AppendTextRaw[1] = {{ wxLua_wxStyledTextCtrl_AppendTextRaw, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_AppendTextRaw }};
-//     void AppendTextRaw(const char* text);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_AppendTextRaw[1] = {{ wxLua_wxStyledTextCtrl_AppendTextRaw, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_AppendTextRaw }};
+//     void AppendTextRaw(const char* text, int length=-1);
 static int LUACALL wxLua_wxStyledTextCtrl_AppendTextRaw(lua_State *L)
 {
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int length = -1
+    int length = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : -1);
     // const char text
     wxCharBuffer text = wxlua_getstringtype(L, 2);
     // get this
     wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
     // call AppendTextRaw
-    self->AppendTextRaw((const char*)text);
+    self->AppendTextRaw((const char*)text, length);
 
     return 0;
 }

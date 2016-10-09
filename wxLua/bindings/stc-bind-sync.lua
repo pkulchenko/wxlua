@@ -35,7 +35,7 @@ local C = {OBSOLETE = 1, COMMENT = 2, VALUE = 3, MATCH = 4, OVERRIDE = 5}
 local override = {
   GetCurLine = true, StartStyling = true, MarkerGet = true, MarkerNext = true, MarkerPrevious = true,
   CreateLoader = true, MarkerDefine = true, SetMarginMask = true, FormatRange = true,
-  StyleSetFontAttr = true, SendMsg = true, AddTextRaw = true, AppendTextRaw = true,
+  StyleSetFontAttr = true, SendMsg = true,
 }
 
 local function merge(defines, process, target)

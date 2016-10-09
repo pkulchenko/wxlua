@@ -6260,7 +6260,7 @@ class wxStyledTextCtrl : public wxControl
     /**
        Add text to the document at current position.
     */
-    void AddTextRaw(const char* text);
+    void AddTextRaw(const char* text, int length=-1);
 
     /**
        Insert string at a position.
@@ -6306,7 +6306,7 @@ class wxStyledTextCtrl : public wxControl
     /**
        Append a string to the end of the document without changing the selection.
     */
-    void AppendTextRaw(const char* text);
+    void AppendTextRaw(const char* text, int length=-1);
 
 
     // static wxVersionInfo GetLibraryVersionInfo();
