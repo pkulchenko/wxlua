@@ -159,8 +159,8 @@ local Occupant = Location:new() -- location for a bitmap
 function GenWall(w, h)
     local bm = wx.wxBitmap(w, h)
     local memDC = wx.wxMemoryDC()
-    local pen = wx.wxPen("red", 0, wx.wxSOLID)
-    local brush = wx.wxBrush('green', wx.wxSOLID)
+    local pen = wx.wxPen(wx.wxColour("red"), 0, wx.wxSOLID)
+    local brush = wx.wxBrush(wx.wxColour('green'), wx.wxSOLID)
     
     memDC:SelectObject(bm)
     memDC:SetBrush(brush)
@@ -412,7 +412,7 @@ end
 function Game:DrawOffScreenBitMap(bmp)
     local dc = wx.wxMemoryDC()       -- create off screen dc to draw on
     dc:SelectObject(bmp)             -- select our bitmap to draw into
-    local brush = wx.wxBrush('turquoise', wx.wxSOLID)
+    local brush = wx.wxBrush(wx.wxColour('turquoise'), wx.wxSOLID)
     dc:SetBackground(brush)
     dc:Clear()
     self:Draw(dc)
@@ -461,7 +461,7 @@ function Game:MoveAll()
         for i= 1, math.random(1,  self.maxExtraMove) do
             local bestMove = {self:RandomIncr()}
             -- 70 % of the time we are moving away for the 1st 30 second
-            if  i==1 and math.mod(Game:Elapse(),10) > 2 then
+            if  i==1 and (Game:Elapse() % 10) > 2 then
                 local otherMove = {self:RandomIncr()}
                 if distance(bestMove) < distance(otherMove) then
                     bestMove = otherMove

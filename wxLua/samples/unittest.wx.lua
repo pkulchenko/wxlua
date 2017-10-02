@@ -199,8 +199,8 @@ PrintOk(w ~= nil and h ~= nil, "%override function wxDisplaySize returned ("..to
 pen = wx.wxPen(wx.wxBLACK, 1, wx.wxSOLID)
 pen:SetColour(wx.wxColour(12, 13, 14))
 PrintOk(pen:GetColour():Red() == 12, "overload function wxPen:SetColour(wxColour)")
-pen:SetColour("red")
-PrintOk(pen:GetColour():Red() == 255, "overload function wxPen:SetColour(\"red\")")
+pen:SetColour(wx.wxColour("red"))
+PrintOk(pen:GetColour():Red() == 255, "overload function wxPen:SetColour(wxColour(\"red\"))")
 pen:SetColour(1, 2, 3)
 PrintOk(pen:GetColour():Red() == 1, "overload function wxPen:SetColour(1, 2, 3)")
 
