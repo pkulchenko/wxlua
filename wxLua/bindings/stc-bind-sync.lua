@@ -1,6 +1,6 @@
 -- Copyright 2016 Paul Kulchenko
 
-local usage = "Usage: <version number> [<path to `wxLua/bindings/wxwidgets`> [<path to `wxWidgets/interface/wx`>]]"
+local usage = "Usage: <version number x.x[.x]> [<path to `wxLua/bindings/wxwidgets`> [<path to `wxWidgets/interface/wx`>]]"
 local version, wxwidgetspath, wxluapath = (table.unpack or unpack)(arg)
 if not version or not version:find("^%d+%.%d+[.%d]*$") then print(usage); os.exit(1) end
 local vernum = "%wxchkver_"..version:gsub("%.", "_")
@@ -12,6 +12,8 @@ wxluapath = wxluapath and wxluapath:gsub("[/\\]+$","").."/" or "wxwidgets/"
 
 local name = wxluapath.."wxstc_stc.i"
 local sync = wxwidgetspath.."stc/stc.h"
+
+print(("Processing %s and %s"):format(name, sync))
 
 local temps = ""
 local function multilinemerge(s)
@@ -28,7 +30,8 @@ local process = {
   {from = " {{{", to = "}}}", extract = "^(%s*)(.*#define%s+)(%w%S+)"},
   {from = " {{{", to = "}}}", extract = "^(%s*)(.-%s+)(%w%S+%b().*)",
     preprocess = multilinemerge},
-  {from = "Manually declared methods", to = "wxTextEntryBase pure virtual methods", extract = "^(%s*)(.-%s+)(%w%S+%b().*)",    preprocess = multilinemerge},
+  {from = "Manually declared methods", to = "wxTextEntryBase pure virtual methods", extract = "^(%s*)(.-%s+)(%w%S+%b().*)",
+    preprocess = multilinemerge},
 }
 
 local C = {OBSOLETE = 1, COMMENT = 2, VALUE = 3, MATCH = 4, OVERRIDE = 5}
@@ -37,6 +40,20 @@ local override = {
   CreateLoader = true, MarkerDefine = true, SetMarginMask = true, FormatRange = true,
   StyleSetFontAttr = true, SendMsg = true,
 }
+
+local function signature(name)
+  local sig = (name:gsub("%%%w+","") -- remove wxlua directives
+    :gsub("%s*//.+","") -- remove trailing comments
+    :gsub("/%*.-%*/","") -- remove comments in declarations
+    :gsub('%s*=%s*%-?%s*[%w_"]+',"") -- remove initial values
+    :gsub(" wxLua", " wx") -- replace wxLuaClass with wxClass for proper match (for example, wxLuaTreeItemData)
+    :gsub("([^,%(%w])[%w_]+,","%1,"):gsub("([^,%(%w])[%w_]+%)","%1)") -- remove parameter names, but make sure to keep things like `LuaTable`
+    :gsub("%s+", "") -- drop whitespaces
+    :gsub("const;",";")
+  )
+  return sig:gsub("%f[%w]int%*",""):gsub("%f[%w]constint%*",""):gsub(",,+",","):gsub("%(,","("):gsub(",%)",")"), -- drop * parameters
+    (sig:gsub("%f[%w]int%*","int"):gsub("%f[%w]constint%*","int"))
+end
 
 local function merge(defines, process, target)
   local step = -1
@@ -52,13 +69,14 @@ local function merge(defines, process, target)
         local indent, define, name = line:match(process[step].extract)
         if name then
           local funcname = name:match("^([%w_]+)%(")
-          if defines[name] then
-            if defines[name][1] == C.VALUE then defines[name][1] = C.MATCH end
-            line = defines[name][2]
+          local defsig = defines[signature(name)]
+          if defsig then
+            if defsig[1] == C.VALUE then defsig[1] = C.MATCH end
+            line = defsig[2]
           elseif funcname and type(override[funcname]) == 'string' then
             line = override[funcname]
           else
-            line = indent..vernum.." "..define..name
+            line = indent..vernum..(define:find("!?%%") and " && " or " ")..define..name
           end
         end
         table.insert(output, line)
@@ -70,7 +88,8 @@ local function merge(defines, process, target)
   for _, val in pairs(defines) do
     local indent, define, name = val[2]:match(process[target].extract)
     if val[1] ~= C.MATCH and val[1] ~= C.OVERRIDE then
-      table.insert(removed, val[1] ~= C.VALUE and val[2] or indent.."!"..vernum.." "..define..name)
+      table.insert(removed, val[1] ~= C.VALUE and val[2]
+        or indent.."!"..vernum..(define:find("!?%%") and " && " or " ")..define..name)
     end
   end
   if #removed > 0 then
@@ -99,7 +118,7 @@ for line in io.lines(name) do
       local funcname = name:match("^([%w_]+)%(")
       if funcname and override[funcname] then override[funcname] = line end
       local kind = prefix:find("!%%") and C.OBSOLETE or prefix:find("^//") and C.COMMENT or (funcname and override[funcname] and C.OVERRIDE) or C.VALUE
-      defines[name] = {kind, line}
+      defines[signature(name)] = {kind, line}
     end
   else
     table.insert(out, line)
@@ -109,3 +128,5 @@ end
 local f = assert(io.open(name, "w"))
 f:write(table.concat(out, "\n").."\n")
 assert(f:close())
+
+print(("Processed %s lines."):format(#out))
