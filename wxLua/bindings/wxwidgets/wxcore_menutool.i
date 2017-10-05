@@ -227,7 +227,7 @@ class %delete wxMenuEvent : public wxEvent
 #define wxTB_DOCKABLE
 #define wxTB_HORIZONTAL
 #define wxTB_VERTICAL
-#define wxTB_3DBUTTONS
+!%wxchkver_3_1 #define wxTB_3DBUTTONS
 #define wxTB_TEXT
 #define wxTB_NOICONS
 #define wxTB_NODIVIDER
