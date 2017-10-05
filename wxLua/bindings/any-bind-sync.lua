@@ -209,7 +209,7 @@ for interface, substeps in pairs(steps) do
               -- removes spaces and %-directives
               local defname, altname = signature(name)
               if name:find("::%*") or name:find(" T&") then
-                print("  skipped method with templatize parameters: "..name:gsub("^%s+", ""):gsub("%s+", " "))
+                print("  skipped method with templatized parameters: "..name:gsub("^%s+", ""):gsub("%s+", " "))
                 line = ""
               elseif name:find("%Wint%s*%*") then
                 print(((defines[defname] or defines[altname] or funcname and override[funcname]) and "  skipped" or "  missing")
