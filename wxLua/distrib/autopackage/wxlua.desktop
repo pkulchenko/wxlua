@@ -7,5 +7,5 @@ Terminal=false
 Type=Application
 MimeType=application/lua;
 Categories=Application;Development;
-Icon=wxlualogo.xpm
+Icon=wxlualogo
 X-GNOME-DocPath=
