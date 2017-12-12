@@ -6,6 +6,6 @@ Encoding=UTF-8
 Terminal=false
 Type=Application
 MimeType=application/lua;
-Categories=Application;Development;
+Categories=Development;IDE;
 Icon=wxlualogo
 X-GNOME-DocPath=
