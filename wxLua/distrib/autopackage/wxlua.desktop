@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=wxLua Editor
 Comment=Editor for Lua script files
-Exec=wxluaedit %F
+Exec=wxLua %F
 Encoding=UTF-8
 Terminal=false
 Type=Application
