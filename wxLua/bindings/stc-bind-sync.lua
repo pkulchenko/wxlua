@@ -42,7 +42,7 @@ local override = {
 }
 
 local function signature(name)
-  local sig = (name:gsub("%%%w+","") -- remove wxlua directives
+  local sig = (name:gsub("%%[%w_]+","") -- remove wxlua directives
     :gsub("%s*//.+","") -- remove trailing comments
     :gsub("/%*.-%*/","") -- remove comments in declarations
     :gsub('%s*=%s*%-?%s*[%w_"]+',"") -- remove initial values
@@ -69,7 +69,7 @@ local function merge(defines, process, target)
         local indent, define, name = line:match(process[step].extract)
         if name then
           local funcname = name:match("^([%w_]+)%(")
-          local defsig = defines[signature(name)]
+          local defsig = defines[signature((funcname and define:match("([%w_]+)%s*$") or "")..name)]
           if defsig then
             if defsig[1] == C.VALUE then defsig[1] = C.MATCH end
             line = defsig[2]
@@ -118,7 +118,7 @@ for line in io.lines(name) do
       local funcname = name:match("^([%w_]+)%(")
       if funcname and override[funcname] then override[funcname] = line end
       local kind = prefix:find("!%%") and C.OBSOLETE or prefix:find("^//") and C.COMMENT or (funcname and override[funcname] and C.OVERRIDE) or C.VALUE
-      defines[signature(name)] = {kind, line}
+      defines[signature((funcname and prefix:match("([%w_]+)%s*$") or "")..name)] = {kind, line}
     end
   else
     table.insert(out, line)
