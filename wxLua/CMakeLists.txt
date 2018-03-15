@@ -152,14 +152,18 @@ endif()
 set(wxLua_LUA_LIBRARY_VERSION ${wxLua_LUA_LIBRARY_VERSION} CACHE STRING
     "Choose the Lua library version to use, '5.1' or '5.2', see also wxLua_LUA_LIBRARY_USE_BUILTIN" FORCE)
 
-if ((NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.1") AND (NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.2"))
-    MESSAGE(FATAL_ERROR "wxLua_LUA_LIBRARY_VERSION may only be set to '5.1' or '5.2'")
+if ((NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.1") AND (NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.2") AND (NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.3"))
+    MESSAGE(FATAL_ERROR "wxLua_LUA_LIBRARY_VERSION may only be set to '5.1' or '5.2' or '5.3'")
 endif()
 
 if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.1)
     set(wxLua_LUA_LIBRARY_VERSION_NUM 51)
 else()
-    set(wxLua_LUA_LIBRARY_VERSION_NUM 52)
+    if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.2)
+        set(wxLua_LUA_LIBRARY_VERSION_NUM 52)
+    else()
+        set(wxLua_LUA_LIBRARY_VERSION_NUM 53)
+    endif()
 endif()
 
 if (NOT DEFINED wxLua_LUA_INCLUDE_DIR)
@@ -171,6 +175,10 @@ endif()
 
 if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.2)
     set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} -DLUA_COMPAT_ALL) # Match build used in default 5.2 Makefile
+endif()
+if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.3)
+    set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} -DLUA_COMPAT_5_2) # Match build used in default 5.3 Makefile
+    set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} -DLUA_COMPAT_MODULE) # is required for luaL_openlib
 endif()
 
 set(wxLua_CXX_DEFINITIONS "${wxLua_CXX_DEFINITIONS}" CACHE INTERNAL
@@ -184,10 +192,14 @@ if (NOT wxLua_LUA_LIBRARY_USE_BUILTIN)
         if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.1)
             FIND_PACKAGE(Lua51)
         else()
-            FIND_PACKAGE(Lua52)
+            if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.2)
+                FIND_PACKAGE(Lua52)
+            else()
+                FIND_PACKAGE(Lua53)
+            endif()
         endif()
 
-        if (LUA51_FOUND OR LUA52_FOUND)
+        if (LUA51_FOUND OR LUA52_FOUND OR LUA53_FOUND)
             set(wxLua_LUA_INCLUDE_DIR ${LUA_INCLUDE_DIR})
             set(wxLua_LUA_LIBRARY     ${LUA_LIBRARY})
         endif()
@@ -221,7 +233,11 @@ else() # Use the built-in Lua library
     if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.1)
         set(wxLua_LUA_ROOT_DIR "${wxLua_ROOT_DIR}/modules/lua-5.1")
     else()
-        set(wxLua_LUA_ROOT_DIR "${wxLua_ROOT_DIR}/modules/lua-5.2")
+        if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.2)
+            set(wxLua_LUA_ROOT_DIR "${wxLua_ROOT_DIR}/modules/lua-5.2")
+        else()
+            set(wxLua_LUA_ROOT_DIR "${wxLua_ROOT_DIR}/modules/lua-5.3")
+        endif()
     endif()
 
     set(wxLua_LUA_INCLUDE_DIR "${wxLua_LUA_ROOT_DIR}/src")
@@ -287,7 +303,7 @@ SET(WXLUA_APP_INSTALL_FLAGS
 # ===========================================================================
 
 if (WIN32)
-    set(wxLua_proxydlls_to_not_copy "lua51.dll" "lua5.1.dll" "lua52.dll" "lua5.2.dll")
+    set(wxLua_proxydlls_to_not_copy "lua51.dll" "lua5.1.dll" "lua52.dll" "lua5.2.dll" "lua53.dll" "lua5.3.dll")
 
     if (IS_64_BIT)
         message(STATUS "* Not copying the Lua proxydlls since they do not work in the 64-bit build.")
@@ -305,9 +321,13 @@ if (WIN32)
                                                         COPYONLY)
 
             if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.1)
-                set(wxLua_proxydlls_to_not_copy "lua52.dll" "lua5.2.dll")
+                set(wxLua_proxydlls_to_not_copy "lua52.dll" "lua5.2.dll" "lua53.dll" "lua5.3.dll")
             else()
-                set(wxLua_proxydlls_to_not_copy "lua51.dll" "lua5.1.dll")
+                if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.2)
+                    set(wxLua_proxydlls_to_not_copy "lua51.dll" "lua5.1.dll" "lua53.dll" "lua5.3.dll")
+                else()
+                    set(wxLua_proxydlls_to_not_copy "lua51.dll" "lua5.1.dll" "lua52.dll" "lua5.2.dll")
+                endif()
             endif()
         endif()
     endif (IS_64_BIT)
