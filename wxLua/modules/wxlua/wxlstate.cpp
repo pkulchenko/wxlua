@@ -2065,15 +2065,31 @@ int wxLuaState::lua_GetHookCount()
 // ----------------------------------------------------------------------------
 // Raw Lua auxlib functions, lauxlib.h
 
+#if LUA_VERSION_NUM >= 503
+extern "C" {
+    static int create_table(lua_State *L) {
+        lua_newtable(L);
+        return 1;    
+    }
+}
+#endif
+void wxLuaState::luaL_Register(lua_State *L, const char *libname, const luaL_Reg *l)
+{
+#if LUA_VERSION_NUM >= 503
+    // Do NOT use luaL_requiref with lua5.2, because with lua5.2 luaL_requiref always creates new module!
+    // lua5.3 luaL_requiref creates new modul only if modname is not already present in package.loaded
+    // call luaL_requiref with glb=true -> stores the module into global modname for backwards compatibility.
+    luaL_requiref(L, libname, create_table, 1);
+    luaL_setfuncs(L, l, 0);
+#else
+    luaL_register(L, libname, l);
+#endif
+}
 void wxLuaState::luaL_Register(const char *libname, const luaL_Reg *l)
 {
     wxCHECK_RET(Ok(), wxT("Invalid wxLuaState"));
 
-#if LUA_VERSION_NUM >= 502
-    luaL_openlib(M_WXLSTATEDATA->m_lua_State, libname, l, 0);
-#else
-    luaL_register(M_WXLSTATEDATA->m_lua_State, libname, l);
-#endif
+    wxLuaState::luaL_Register(M_WXLSTATEDATA->m_lua_State, libname, l);
 }
 int wxLuaState::luaL_GetMetafield(int obj, const char *e)
 {
@@ -2498,11 +2514,7 @@ static const struct luaL_Reg bitlib[] = {
 };
 
 int LUACALL luaopen_bit (lua_State *L) {
-#if LUA_VERSION_NUM >= 502
-  luaL_openlib(L, "bit", bitlib, 0);
-#else
-  luaL_register(L, "bit", bitlib);
-#endif
+  wxLuaState::luaL_Register(L, "bit", bitlib);
   lua_pushnumber(L, BIT_BITS);
   lua_setfield(L, -2, "bits");
   return 1;

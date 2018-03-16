@@ -178,7 +178,6 @@ if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.2)
 endif()
 if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.3)
     set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} -DLUA_COMPAT_5_2) # Match build used in default 5.3 Makefile
-    set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} -DLUA_COMPAT_MODULE) # is required for luaL_openlib
 endif()
 
 set(wxLua_CXX_DEFINITIONS "${wxLua_CXX_DEFINITIONS}" CACHE INTERNAL
