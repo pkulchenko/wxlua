@@ -1088,29 +1088,29 @@ bool wxLuaBinding::InstallClass(lua_State* L, const wxLuaBindClass* wxlClass)
             else
                 lua_getfield(L, -2, wxlMethod->name);
 
-                // add the items to the table as t[first pushed] = second pushed
-                lua_pushlstring(L, "new", 3);
+            // add the items to the table as t[first pushed] = second pushed
+            lua_pushlstring(L, "new", 3);
+            lua_pushlightuserdata(L, wxlMethod);
+            lua_pushcclosure(L, wxlua_callOverloadedFunction, 1);
+            lua_rawset(L, -3);
+
+            // Add __call to the metatable for this table
+            bool has_meta = (lua_getmetatable(L, -1) != 0);
+            if (!has_meta) lua_newtable(L);
+
+                lua_pushlstring(L, "__call", 6);
                 lua_pushlightuserdata(L, wxlMethod);
-                lua_pushcclosure(L, wxlua_callOverloadedFunction, 1);
+                lua_pushcclosure(L, wxlua_wxLuaBindMethod_table__call, 1);
                 lua_rawset(L, -3);
 
-                // Add __call to the metatable for this table
-                bool has_meta = (lua_getmetatable(L, -1) != 0);
-                if (!has_meta) lua_newtable(L);
+                //lua_pushstring(L, "__metatable");
+                //lua_pushstring(L, "Metatable is not accessible");
+                //lua_rawset(L, -3);
 
-                    lua_pushlstring(L, "__call", 6);
-                    lua_pushlightuserdata(L, wxlMethod);
-                    lua_pushcclosure(L, wxlua_wxLuaBindMethod_table__call, 1);
-                    lua_rawset(L, -3);
-
-                    //lua_pushstring(L, "__metatable");
-                    //lua_pushstring(L, "Metatable is not accessible");
-                    //lua_rawset(L, -3);
-
-                if (!has_meta)
-                    lua_setmetatable(L, -2);
-                else
-                    lua_pop(L, 1);
+            if (!has_meta)
+                lua_setmetatable(L, -2);
+            else
+                lua_pop(L, 1);
 
             // add table to the binding table t[wxlMethod->name] = { this table }
             lua_rawset(L, -3); // set t[key] = value, pops key and value
