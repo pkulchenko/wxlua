@@ -77,7 +77,7 @@ public:
 
     // destroy and cleanup the lua_State, returns success
     // if 'force' = true then make sure all wxWindows are destroyed.
-    bool CloseLuaState(bool force);
+    bool CloseLuaState(bool force, bool collectGarbage = true);
     // clear all wxLuaEventCallbacks and wxLuaWinDestroyCallbacks on destruction
     void ClearCallbacks();
 
@@ -178,7 +178,7 @@ public:
     //   if !force then popup a dialog to ask if all wxWindows should be destroyed.
     // Only calls lua_close(L) if this is the last refed state and this was
     //  created without the wxLUASTATE_STATICSTATE flag.
-    bool CloseLuaState(bool force);
+    bool CloseLuaState(bool force, bool collectGarbage = true);
     // Are we currently being closed? Used when the garbage collector is running when
     //  we don't care about cleaning Lua up so just delete the data. (internal use)
     bool IsClosing() const;
