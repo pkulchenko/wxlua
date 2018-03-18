@@ -404,7 +404,7 @@ wxLuaStateRefData::~wxLuaStateRefData()
         delete m_wxlStateData;
 }
 
-bool wxLuaStateRefData::CloseLuaState(bool force)
+bool wxLuaStateRefData::CloseLuaState(bool force, bool collectGarbage)
 {
     if ((m_lua_State == NULL) || m_wxlStateData->m_is_closing || m_lua_State_coroutine)
         return true;
@@ -472,7 +472,8 @@ bool wxLuaStateRefData::CloseLuaState(bool force)
     wxlua_lreg_createtable(m_lua_State, &wxlua_lreg_debug_refs_key);
     //wxlua_lreg_createtable(m_lua_State, &wxlua_lreg_derivedmethods_key); // gc will delete them
 
-    lua_gc(m_lua_State, LUA_GCCOLLECT, 0); // round up dead refs
+    if (collectGarbage)
+        lua_gc(m_lua_State, LUA_GCCOLLECT, 0); // round up dead refs
 
     if (!m_lua_State_static)
         lua_close(m_lua_State);
@@ -743,12 +744,12 @@ void wxLuaState::Destroy()
     UnRef();
 }
 
-bool wxLuaState::CloseLuaState(bool force)
+bool wxLuaState::CloseLuaState(bool force, bool collectGarbage)
 {
     wxCHECK_MSG(Ok(), false, wxT("Invalid wxLuaState"));
     if (M_WXLSTATEDATA->m_lua_State_static) return true;
 
-    return M_WXLSTATEDATA->CloseLuaState(force);
+    return M_WXLSTATEDATA->CloseLuaState(force, collectGarbage);
 }
 
 bool wxLuaState::IsClosing() const

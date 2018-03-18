@@ -208,6 +208,14 @@ void wxLuaModuleApp::MacOpenFiles(const wxArrayString& fileNames)
 
 wxLuaModuleApp* app = NULL;
 
+extern "C" {
+    static int reportShutdown(lua_State *L)
+    {
+        s_wxlState.CloseLuaState(true, false);
+        return 0;
+    }
+}
+
 int luaopen_wx(lua_State *L)
 {
     // only initialize the wxLuaState once, allows require to be called more than once
@@ -254,8 +262,26 @@ int luaopen_wx(lua_State *L)
         s_wxlState.SetEventHandler((wxEvtHandler*)wxTheApp);
 
         //s_wxlState.sm_wxAppMainLoop_will_run = true;
-    }
 
-    lua_getglobal(L, "wx"); // push global wx table on the stack
-    return 1;
+        lua_getglobal(L, "wx"); // push global wx table on the stack
+
+        if (lua_getmetatable(L, -1) != 0) {
+            wxPrintf(wxT("wxLuaModule - Error setting up metatable for module wx, aborting.\n"));
+            return 0;
+        }
+        else
+        {
+            lua_newtable(L); // new metatable for wx table
+            {
+                lua_pushstring(L, "__gc");
+                lua_pushcfunction(L, reportShutdown);
+                lua_rawset(L, -3); // set metatable.__gc = reportShutdown
+            }
+            lua_setmetatable(L, -2); // sets metatable for wx table
+        }
+    }
+    else {
+        lua_getglobal(L, "wx"); // push global wx table on the stack
+    }
+    return 1; // returns global wx
 }
