@@ -31,7 +31,7 @@
 // Lua MetaTable Tag for Class 'wxWebViewHandler'
 int wxluatype_wxWebViewHandler = WXLUA_TUNKNOWN;
 
-#if ((wxUSE_STREAMS) && (wxUSE_FILESYSTEM)) && (wxUSE_WEBVIEW)
+#if ((wxUSE_FILESYSTEM) && (wxUSE_STREAMS)) && (wxUSE_WEBVIEW)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWebViewHandler_GetFile[] = { &wxluatype_wxWebViewHandler, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxWebViewHandler_GetFile(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebViewHandler_GetFile[1] = {{ wxLua_wxWebViewHandler_GetFile, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxWebViewHandler_GetFile }};
@@ -50,7 +50,7 @@ static int LUACALL wxLua_wxWebViewHandler_GetFile(lua_State *L)
     return 1;
 }
 
-#endif // ((wxUSE_STREAMS) && (wxUSE_FILESYSTEM)) && (wxUSE_WEBVIEW)
+#endif // ((wxUSE_FILESYSTEM) && (wxUSE_STREAMS)) && (wxUSE_WEBVIEW)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWebViewHandler_GetName[] = { &wxluatype_wxWebViewHandler, NULL };
 static int LUACALL wxLua_wxWebViewHandler_GetName(lua_State *L);
@@ -79,9 +79,9 @@ void wxLua_wxWebViewHandler_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxWebViewHandler_methods[] = {
-#if ((wxUSE_STREAMS) && (wxUSE_FILESYSTEM)) && (wxUSE_WEBVIEW)
+#if ((wxUSE_FILESYSTEM) && (wxUSE_STREAMS)) && (wxUSE_WEBVIEW)
     { "GetFile", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebViewHandler_GetFile, 1, NULL },
-#endif // ((wxUSE_STREAMS) && (wxUSE_FILESYSTEM)) && (wxUSE_WEBVIEW)
+#endif // ((wxUSE_FILESYSTEM) && (wxUSE_STREAMS)) && (wxUSE_WEBVIEW)
 
     { "GetName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebViewHandler_GetName, 1, NULL },
 
@@ -1329,7 +1329,7 @@ int wxWebViewHistoryItem_methodCount = sizeof(wxWebViewHistoryItem_methods)/size
 // Lua MetaTable Tag for Class 'wxWebViewFSHandler'
 int wxluatype_wxWebViewFSHandler = WXLUA_TUNKNOWN;
 
-#if ((wxUSE_STREAMS) && (wxUSE_FILESYSTEM)) && (wxUSE_WEBVIEW)
+#if ((wxUSE_FILESYSTEM) && (wxUSE_STREAMS)) && (wxUSE_WEBVIEW)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWebViewFSHandler_GetFile[] = { &wxluatype_wxWebViewFSHandler, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxWebViewFSHandler_GetFile(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebViewFSHandler_GetFile[1] = {{ wxLua_wxWebViewFSHandler_GetFile, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxWebViewFSHandler_GetFile }};
@@ -1348,7 +1348,7 @@ static int LUACALL wxLua_wxWebViewFSHandler_GetFile(lua_State *L)
     return 1;
 }
 
-#endif // ((wxUSE_STREAMS) && (wxUSE_FILESYSTEM)) && (wxUSE_WEBVIEW)
+#endif // ((wxUSE_FILESYSTEM) && (wxUSE_STREAMS)) && (wxUSE_WEBVIEW)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWebViewFSHandler_constructor[] = { &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxWebViewFSHandler_constructor(lua_State *L);
@@ -1377,9 +1377,9 @@ void wxLua_wxWebViewFSHandler_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxWebViewFSHandler_methods[] = {
-#if ((wxUSE_STREAMS) && (wxUSE_FILESYSTEM)) && (wxUSE_WEBVIEW)
+#if ((wxUSE_FILESYSTEM) && (wxUSE_STREAMS)) && (wxUSE_WEBVIEW)
     { "GetFile", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebViewFSHandler_GetFile, 1, NULL },
-#endif // ((wxUSE_STREAMS) && (wxUSE_FILESYSTEM)) && (wxUSE_WEBVIEW)
+#endif // ((wxUSE_FILESYSTEM) && (wxUSE_STREAMS)) && (wxUSE_WEBVIEW)
 
     { "wxWebViewFSHandler", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxWebViewFSHandler_constructor, 1, NULL },
 
@@ -1399,7 +1399,7 @@ int wxWebViewFSHandler_methodCount = sizeof(wxWebViewFSHandler_methods)/sizeof(w
 // Lua MetaTable Tag for Class 'wxWebViewArchiveHandler'
 int wxluatype_wxWebViewArchiveHandler = WXLUA_TUNKNOWN;
 
-#if ((wxUSE_STREAMS) && (wxUSE_FILESYSTEM)) && (wxUSE_WEBVIEW)
+#if ((wxUSE_FILESYSTEM) && (wxUSE_STREAMS)) && (wxUSE_WEBVIEW)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWebViewArchiveHandler_GetFile[] = { &wxluatype_wxWebViewArchiveHandler, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxWebViewArchiveHandler_GetFile(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebViewArchiveHandler_GetFile[1] = {{ wxLua_wxWebViewArchiveHandler_GetFile, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxWebViewArchiveHandler_GetFile }};
@@ -1418,7 +1418,7 @@ static int LUACALL wxLua_wxWebViewArchiveHandler_GetFile(lua_State *L)
     return 1;
 }
 
-#endif // ((wxUSE_STREAMS) && (wxUSE_FILESYSTEM)) && (wxUSE_WEBVIEW)
+#endif // ((wxUSE_FILESYSTEM) && (wxUSE_STREAMS)) && (wxUSE_WEBVIEW)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWebViewArchiveHandler_constructor[] = { &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxWebViewArchiveHandler_constructor(lua_State *L);
@@ -1447,9 +1447,9 @@ void wxLua_wxWebViewArchiveHandler_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxWebViewArchiveHandler_methods[] = {
-#if ((wxUSE_STREAMS) && (wxUSE_FILESYSTEM)) && (wxUSE_WEBVIEW)
+#if ((wxUSE_FILESYSTEM) && (wxUSE_STREAMS)) && (wxUSE_WEBVIEW)
     { "GetFile", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebViewArchiveHandler_GetFile, 1, NULL },
-#endif // ((wxUSE_STREAMS) && (wxUSE_FILESYSTEM)) && (wxUSE_WEBVIEW)
+#endif // ((wxUSE_FILESYSTEM) && (wxUSE_STREAMS)) && (wxUSE_WEBVIEW)
 
     { "wxWebViewArchiveHandler", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxWebViewArchiveHandler_constructor, 1, NULL },
 

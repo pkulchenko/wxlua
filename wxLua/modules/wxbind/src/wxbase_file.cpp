@@ -7426,7 +7426,7 @@ static wxLuaArgType s_wxluatypeArray_wxLua_wxFSFile_delete[] = { &wxluatype_wxFS
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFSFile_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxFSFile_delete }};
 
 
-#if ((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxUSE_STREAMS)) && ((wxUSE_FILESYSTEM) && (wxUSE_STREAMS))
+#if (((wxUSE_FILESYSTEM) && (wxUSE_STREAMS)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxUSE_STREAMS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFSFile_constructor[] = { &wxluatype_wxInputStream, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxFSFile_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFSFile_constructor[1] = {{ wxLua_wxFSFile_constructor, WXLUAMETHOD_CONSTRUCTOR, 5, 5, s_wxluatypeArray_wxLua_wxFSFile_constructor }};
@@ -7454,7 +7454,7 @@ static int LUACALL wxLua_wxFSFile_constructor(lua_State *L)
     return 1;
 }
 
-#endif // ((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxUSE_STREAMS)) && ((wxUSE_FILESYSTEM) && (wxUSE_STREAMS))
+#endif // (((wxUSE_FILESYSTEM) && (wxUSE_STREAMS)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxUSE_STREAMS)
 
 
 
@@ -7485,9 +7485,9 @@ wxLuaBindMethod wxFSFile_methods[] = {
 
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxFSFile_delete, 1, NULL },
 
-#if ((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxUSE_STREAMS)) && ((wxUSE_FILESYSTEM) && (wxUSE_STREAMS))
+#if (((wxUSE_FILESYSTEM) && (wxUSE_STREAMS)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxUSE_STREAMS)
     { "wxFSFile", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxFSFile_constructor, 1, NULL },
-#endif // ((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxUSE_STREAMS)) && ((wxUSE_FILESYSTEM) && (wxUSE_STREAMS))
+#endif // (((wxUSE_FILESYSTEM) && (wxUSE_STREAMS)) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxUSE_STREAMS)
 
     { 0, 0, 0, 0 },
 };

@@ -2452,7 +2452,7 @@ static int LUACALL wxLua_wxCalendarCtrl_SetHolidayColours(lua_State *L)
 
 #endif // (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (wxLUA_USE_wxColourPenBrush)
 
-#if ((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)
+#if ((wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxCalendarCtrl_constructor[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxDateTime, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxCalendarCtrl_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxCalendarCtrl_constructor[1] = {{ wxLua_wxCalendarCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 7, s_wxluatypeArray_wxLua_wxCalendarCtrl_constructor }};
@@ -2485,7 +2485,7 @@ static int LUACALL wxLua_wxCalendarCtrl_constructor(lua_State *L)
     return 1;
 }
 
-#endif // ((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)
+#endif // ((wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxPointSizeRect)
 
 
 
@@ -2541,9 +2541,9 @@ wxLuaBindMethod wxCalendarCtrl_methods[] = {
     { "SetHolidayColours", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxCalendarCtrl_SetHolidayColours, 1, NULL },
 #endif // (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (wxLUA_USE_wxColourPenBrush)
 
-#if ((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)
+#if ((wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxPointSizeRect)
     { "wxCalendarCtrl", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxCalendarCtrl_constructor, 1, NULL },
-#endif // ((wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL)
+#endif // ((wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxPointSizeRect)
 
     { 0, 0, 0, 0 },
 };
@@ -5032,7 +5032,7 @@ static int LUACALL wxLua_wxSplashScreen_GetTimeout(lua_State *L)
 }
 
 
-#if ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxSplashScreen)) && (wxLUA_USE_wxPointSizeRect)
+#if ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxSplashScreen)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSplashScreen_constructor[] = { &wxluatype_wxBitmap, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSplashScreen_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSplashScreen_constructor[1] = {{ wxLua_wxSplashScreen_constructor, WXLUAMETHOD_CONSTRUCTOR, 5, 8, s_wxluatypeArray_wxLua_wxSplashScreen_constructor }};
@@ -5067,7 +5067,7 @@ static int LUACALL wxLua_wxSplashScreen_constructor(lua_State *L)
     return 1;
 }
 
-#endif // ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxSplashScreen)) && (wxLUA_USE_wxPointSizeRect)
+#endif // ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxSplashScreen)
 
 
 
@@ -5083,9 +5083,9 @@ wxLuaBindMethod wxSplashScreen_methods[] = {
     { "GetSplashWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSplashScreen_GetSplashWindow, 1, NULL },
     { "GetTimeout", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSplashScreen_GetTimeout, 1, NULL },
 
-#if ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxSplashScreen)) && (wxLUA_USE_wxPointSizeRect)
+#if ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxSplashScreen)
     { "wxSplashScreen", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxSplashScreen_constructor, 1, NULL },
-#endif // ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxSplashScreen)) && (wxLUA_USE_wxPointSizeRect)
+#endif // ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxSplashScreen)
 
     { 0, 0, 0, 0 },
 };
@@ -5169,7 +5169,7 @@ int wxSplashScreenWindow_methodCount = sizeof(wxSplashScreenWindow_methods)/size
 // Lua MetaTable Tag for Class 'wxWizard'
 int wxluatype_wxWizard = WXLUA_TUNKNOWN;
 
-#if ((wxLUA_USE_wxPointSizeRect) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)) && (wxLUA_USE_wxBitmap)
+#if ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWizard_Create[] = { &wxluatype_wxWizard, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxBitmap, &wxluatype_wxPoint, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxWizard_Create(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxWizard_Create[1] = {{ wxLua_wxWizard_Create, WXLUAMETHOD_METHOD, 2, 7, s_wxluatypeArray_wxLua_wxWizard_Create }};
@@ -5200,7 +5200,7 @@ static int LUACALL wxLua_wxWizard_Create(lua_State *L)
     return 1;
 }
 
-#endif // ((wxLUA_USE_wxPointSizeRect) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWizard_GetCurrentPage[] = { &wxluatype_wxWizard, NULL };
 static int LUACALL wxLua_wxWizard_GetCurrentPage(lua_State *L);
@@ -5350,7 +5350,7 @@ static int LUACALL wxLua_wxWizard_SetPageSize(lua_State *L)
 
 #endif // (wxLUA_USE_wxPointSizeRect) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
 
-#if ((wxLUA_USE_wxPointSizeRect) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)) && (wxLUA_USE_wxBitmap)
+#if ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWizard_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxBitmap, &wxluatype_wxPoint, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxWizard_constructor1(lua_State *L);
 // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxWizard_constructor1[1] = {{ wxLua_wxWizard_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 6, s_wxluatypeArray_wxLua_wxWizard_constructor1 }};
@@ -5381,7 +5381,7 @@ static int LUACALL wxLua_wxWizard_constructor1(lua_State *L)
     return 1;
 }
 
-#endif // ((wxLUA_USE_wxPointSizeRect) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
 
 static int LUACALL wxLua_wxWizard_constructor(lua_State *L);
 // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxWizard_constructor[1] = {{ wxLua_wxWizard_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
@@ -5401,19 +5401,19 @@ static int LUACALL wxLua_wxWizard_constructor(lua_State *L)
 
 
 
-#if (((wxLUA_USE_wxPointSizeRect) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)) && (wxLUA_USE_wxBitmap))||(wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
+#if (((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard))||(wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxWizard_constructor_overload[] =
 {
 
-#if ((wxLUA_USE_wxPointSizeRect) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)) && (wxLUA_USE_wxBitmap)
+#if ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
     { wxLua_wxWizard_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 6, s_wxluatypeArray_wxLua_wxWizard_constructor1 },
-#endif // ((wxLUA_USE_wxPointSizeRect) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
     { wxLua_wxWizard_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
 };
 static int s_wxluafunc_wxLua_wxWizard_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxWizard_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (((wxLUA_USE_wxPointSizeRect) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)) && (wxLUA_USE_wxBitmap))||(wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
+#endif // (((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard))||(wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
 
 void wxLua_wxWizard_delete_function(void** p)
 {
@@ -5423,9 +5423,9 @@ void wxLua_wxWizard_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxWizard_methods[] = {
-#if ((wxLUA_USE_wxPointSizeRect) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)) && (wxLUA_USE_wxBitmap)
+#if ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
     { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWizard_Create, 1, NULL },
-#endif // ((wxLUA_USE_wxPointSizeRect) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
 
     { "GetCurrentPage", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWizard_GetCurrentPage, 1, NULL },
 
@@ -5446,9 +5446,9 @@ wxLuaBindMethod wxWizard_methods[] = {
     { "SetPageSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWizard_SetPageSize, 1, NULL },
 #endif // (wxLUA_USE_wxPointSizeRect) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
 
-#if (((wxLUA_USE_wxPointSizeRect) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)) && (wxLUA_USE_wxBitmap))||(wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
+#if (((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard))||(wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
     { "wxWizard", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxWizard_constructor_overload, s_wxluafunc_wxLua_wxWizard_constructor_overload_count, 0 },
-#endif // (((wxLUA_USE_wxPointSizeRect) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)) && (wxLUA_USE_wxBitmap))||(wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
+#endif // (((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_WIZARDDLG && wxLUA_USE_wxWizard))||(wxUSE_WIZARDDLG && wxLUA_USE_wxWizard)
 
     { 0, 0, 0, 0 },
 };
@@ -7519,7 +7519,7 @@ int wxGridCellWorker_methodCount = sizeof(wxGridCellWorker_methods)/sizeof(wxLua
 // Lua MetaTable Tag for Class 'wxGridCellRenderer'
 int wxluatype_wxGridCellRenderer = WXLUA_TUNKNOWN;
 
-#if ((wxLUA_USE_wxGrid && wxUSE_GRID) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC)
+#if ((wxLUA_USE_wxDC) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGridCellRenderer_GetBestSize[] = { &wxluatype_wxGridCellRenderer, &wxluatype_wxGrid, &wxluatype_wxGridCellAttr, &wxluatype_wxDC, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxGridCellRenderer_GetBestSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellRenderer_GetBestSize[1] = {{ wxLua_wxGridCellRenderer_GetBestSize, WXLUAMETHOD_METHOD, 6, 6, s_wxluatypeArray_wxLua_wxGridCellRenderer_GetBestSize }};
@@ -7549,7 +7549,7 @@ static int LUACALL wxLua_wxGridCellRenderer_GetBestSize(lua_State *L)
     return 1;
 }
 
-#endif // ((wxLUA_USE_wxGrid && wxUSE_GRID) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC)
+#endif // ((wxLUA_USE_wxDC) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGridCellRenderer_delete[] = { &wxluatype_wxGridCellRenderer, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellRenderer_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxGridCellRenderer_delete }};
@@ -7566,9 +7566,9 @@ void wxLua_wxGridCellRenderer_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxGridCellRenderer_methods[] = {
-#if ((wxLUA_USE_wxGrid && wxUSE_GRID) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC)
+#if ((wxLUA_USE_wxDC) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)
     { "GetBestSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGridCellRenderer_GetBestSize, 1, NULL },
-#endif // ((wxLUA_USE_wxGrid && wxUSE_GRID) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC)
+#endif // ((wxLUA_USE_wxDC) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)
 
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxGridCellRenderer_delete, 1, NULL },
 
@@ -8190,7 +8190,7 @@ static int LUACALL wxLua_wxGridCellEditor_IsCreated(lua_State *L)
 }
 
 
-#if ((((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC)
+#if ((((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGridCellEditor_PaintBackground1[] = { &wxluatype_wxGridCellEditor, &wxluatype_wxDC, &wxluatype_wxRect, &wxluatype_wxGridCellAttr, NULL };
 static int LUACALL wxLua_wxGridCellEditor_PaintBackground1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellEditor_PaintBackground1[1] = {{ wxLua_wxGridCellEditor_PaintBackground1, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxGridCellEditor_PaintBackground1 }};
@@ -8211,7 +8211,7 @@ static int LUACALL wxLua_wxGridCellEditor_PaintBackground1(lua_State *L)
     return 0;
 }
 
-#endif // ((((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC)
+#endif // ((((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)
 
 #if (((!wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGridCellEditor_PaintBackground[] = { &wxluatype_wxGridCellEditor, &wxluatype_wxRect, &wxluatype_wxGridCellAttr, NULL };
@@ -8374,14 +8374,14 @@ static int s_wxluafunc_wxLua_wxGridCellEditor_EndEdit_overload_count = sizeof(s_
 
 #endif // (((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID))||(((!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID))
 
-#if (((((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC))||((((!wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect))
+#if (((((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect))||((((!wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellEditor_PaintBackground_overload[] =
 {
 
-#if ((((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC)
+#if ((((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)
     { wxLua_wxGridCellEditor_PaintBackground1, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxGridCellEditor_PaintBackground1 },
-#endif // ((((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC)
+#endif // ((((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)
 
 #if (((!wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)
     { wxLua_wxGridCellEditor_PaintBackground, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxGridCellEditor_PaintBackground },
@@ -8389,7 +8389,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellEditor_PaintBackground_overloa
 };
 static int s_wxluafunc_wxLua_wxGridCellEditor_PaintBackground_overload_count = sizeof(s_wxluafunc_wxLua_wxGridCellEditor_PaintBackground_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (((((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC))||((((!wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect))
+#endif // (((((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect))||((((!wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect))
 
 // %override wxLua_wxGridCellEditor_delete_function
 // delete is private in wxGridCellWorker, DecRef() it in derived classes
@@ -8413,9 +8413,9 @@ wxLuaBindMethod wxGridCellEditor_methods[] = {
     { "IsAcceptedKey", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGridCellEditor_IsAcceptedKey, 1, NULL },
     { "IsCreated", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGridCellEditor_IsCreated, 1, NULL },
 
-#if (((((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC))||((((!wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect))
+#if (((((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect))||((((!wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect))
     { "PaintBackground", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGridCellEditor_PaintBackground_overload, s_wxluafunc_wxLua_wxGridCellEditor_PaintBackground_overload_count, 0 },
-#endif // (((((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC))||((((!wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect))
+#endif // (((((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect))||((((!wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect))
 
     { "Reset", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGridCellEditor_Reset, 1, NULL },
     { "SetCellAttr", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGridCellEditor_SetCellAttr, 1, NULL },
@@ -9420,7 +9420,7 @@ static wxLuaArgType s_wxluatypeArray_wxLua_wxGridCellAttr_delete[] = { &wxluatyp
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellAttr_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxGridCellAttr_delete }};
 
 
-#if ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxFont)
+#if ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxGrid && wxUSE_GRID)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGridCellAttr_constructor1[] = { &wxluatype_wxColour, &wxluatype_wxColour, &wxluatype_wxFont, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxGridCellAttr_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellAttr_constructor1[1] = {{ wxLua_wxGridCellAttr_constructor1, WXLUAMETHOD_CONSTRUCTOR, 5, 5, s_wxluatypeArray_wxLua_wxGridCellAttr_constructor1 }};
@@ -9447,7 +9447,7 @@ static int LUACALL wxLua_wxGridCellAttr_constructor1(lua_State *L)
     return 1;
 }
 
-#endif // ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxFont)
+#endif // ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxGrid && wxUSE_GRID)
 
 static int LUACALL wxLua_wxGridCellAttr_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellAttr_constructor[1] = {{ wxLua_wxGridCellAttr_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
@@ -9467,19 +9467,19 @@ static int LUACALL wxLua_wxGridCellAttr_constructor(lua_State *L)
 
 
 
-#if (((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxFont))||(wxLUA_USE_wxGrid && wxUSE_GRID)
+#if (((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxGrid && wxUSE_GRID))||(wxLUA_USE_wxGrid && wxUSE_GRID)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGridCellAttr_constructor_overload[] =
 {
 
-#if ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxFont)
+#if ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxGrid && wxUSE_GRID)
     { wxLua_wxGridCellAttr_constructor1, WXLUAMETHOD_CONSTRUCTOR, 5, 5, s_wxluatypeArray_wxLua_wxGridCellAttr_constructor1 },
-#endif // ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxFont)
+#endif // ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxGrid && wxUSE_GRID)
     { wxLua_wxGridCellAttr_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
 };
 static int s_wxluafunc_wxLua_wxGridCellAttr_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxGridCellAttr_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxFont))||(wxLUA_USE_wxGrid && wxUSE_GRID)
+#endif // (((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxGrid && wxUSE_GRID))||(wxLUA_USE_wxGrid && wxUSE_GRID)
 
 // %override wxLua_wxGridCellAttr_delete_function
 // delete is private in wxGridCellWorker, DecRef() it in derived classes
@@ -9549,9 +9549,9 @@ wxLuaBindMethod wxGridCellAttr_methods[] = {
 
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxGridCellAttr_delete, 1, NULL },
 
-#if (((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxFont))||(wxLUA_USE_wxGrid && wxUSE_GRID)
+#if (((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxGrid && wxUSE_GRID))||(wxLUA_USE_wxGrid && wxUSE_GRID)
     { "wxGridCellAttr", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxGridCellAttr_constructor_overload, s_wxluafunc_wxLua_wxGridCellAttr_constructor_overload_count, 0 },
-#endif // (((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxFont))||(wxLUA_USE_wxGrid && wxUSE_GRID)
+#endif // (((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxGrid && wxUSE_GRID))||(wxLUA_USE_wxGrid && wxUSE_GRID)
 
     { 0, 0, 0, 0 },
 };
@@ -11821,7 +11821,7 @@ static int LUACALL wxLua_wxGrid_DisableDragRowSize(lua_State *L)
 }
 
 
-#if ((wxLUA_USE_wxGrid && wxUSE_GRID) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC)
+#if ((wxLUA_USE_wxDC) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGrid_DrawTextRectangle[] = { &wxluatype_wxGrid, &wxluatype_wxDC, &wxluatype_TSTRING, &wxluatype_wxRect, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxGrid_DrawTextRectangle(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGrid_DrawTextRectangle[1] = {{ wxLua_wxGrid_DrawTextRectangle, WXLUAMETHOD_METHOD, 4, 7, s_wxluatypeArray_wxLua_wxGrid_DrawTextRectangle }};
@@ -11850,7 +11850,7 @@ static int LUACALL wxLua_wxGrid_DrawTextRectangle(lua_State *L)
     return 0;
 }
 
-#endif // ((wxLUA_USE_wxGrid && wxUSE_GRID) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC)
+#endif // ((wxLUA_USE_wxDC) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGrid_EnableCellEditControl[] = { &wxluatype_wxGrid, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxGrid_EnableCellEditControl(lua_State *L);
@@ -13180,7 +13180,7 @@ static int LUACALL wxLua_wxGrid_GetTable(lua_State *L)
 }
 
 
-#if ((wxLUA_USE_wxArrayString) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxDC)
+#if ((wxLUA_USE_wxArrayString) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxGrid && wxUSE_GRID)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGrid_GetTextBoxSize[] = { &wxluatype_wxGrid, &wxluatype_wxDC, &wxluatype_wxArrayString, NULL };
 static int LUACALL wxLua_wxGrid_GetTextBoxSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGrid_GetTextBoxSize[1] = {{ wxLua_wxGrid_GetTextBoxSize, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxGrid_GetTextBoxSize }};
@@ -13205,7 +13205,7 @@ static int LUACALL wxLua_wxGrid_GetTextBoxSize(lua_State *L)
 }
 
 
-#endif // ((wxLUA_USE_wxArrayString) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxDC)
+#endif // ((wxLUA_USE_wxArrayString) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxGrid && wxUSE_GRID)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGrid_GridLinesEnabled[] = { &wxluatype_wxGrid, NULL };
 static int LUACALL wxLua_wxGrid_GridLinesEnabled(lua_State *L);
@@ -14990,9 +14990,9 @@ wxLuaBindMethod wxGrid_methods[] = {
     { "DisableDragGridSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGrid_DisableDragGridSize, 1, NULL },
     { "DisableDragRowSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGrid_DisableDragRowSize, 1, NULL },
 
-#if ((wxLUA_USE_wxGrid && wxUSE_GRID) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC)
+#if ((wxLUA_USE_wxDC) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)
     { "DrawTextRectangle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGrid_DrawTextRectangle, 1, NULL },
-#endif // ((wxLUA_USE_wxGrid && wxUSE_GRID) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxDC)
+#endif // ((wxLUA_USE_wxDC) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxPointSizeRect)
 
     { "EnableCellEditControl", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGrid_EnableCellEditControl, 1, NULL },
     { "EnableDragCell", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGrid_EnableDragCell, 1, NULL },
@@ -15116,9 +15116,9 @@ wxLuaBindMethod wxGrid_methods[] = {
     { "GetSelectionMode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGrid_GetSelectionMode, 1, NULL },
     { "GetTable", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGrid_GetTable, 1, NULL },
 
-#if ((wxLUA_USE_wxArrayString) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxDC)
+#if ((wxLUA_USE_wxArrayString) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxGrid && wxUSE_GRID)
     { "GetTextBoxSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGrid_GetTextBoxSize, 1, NULL },
-#endif // ((wxLUA_USE_wxArrayString) && (wxLUA_USE_wxGrid && wxUSE_GRID)) && (wxLUA_USE_wxDC)
+#endif // ((wxLUA_USE_wxArrayString) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxGrid && wxUSE_GRID)
 
     { "GridLinesEnabled", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGrid_GridLinesEnabled, 1, NULL },
     { "HideCellEditControl", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGrid_HideCellEditControl, 1, NULL },
