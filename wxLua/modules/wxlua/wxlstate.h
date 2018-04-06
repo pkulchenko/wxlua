@@ -664,7 +664,7 @@ public:
     const char* lua_GetUpvalue(int funcindex, int n);
     const char* lua_SetUpvalue(int funcindex, int n);
 
-    int lua_SetHook(lua_Hook func, int mask, int count);
+    void lua_SetHook(lua_Hook func, int mask, int count);
     lua_Hook lua_GetHook();
     int lua_GetHookMask();
     int lua_GetHookCount();

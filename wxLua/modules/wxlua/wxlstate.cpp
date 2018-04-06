@@ -2038,14 +2038,14 @@ const char* wxLuaState::lua_SetUpvalue(int funcindex, int n)
     return lua_setupvalue(M_WXLSTATEDATA->m_lua_State, funcindex, n);
 }
 
-int wxLuaState::lua_SetHook(lua_Hook func, int mask, int count)
+void wxLuaState::lua_SetHook(lua_Hook func, int mask, int count)
 {
-    wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
+    wxCHECK_RET(Ok(), wxT("Invalid wxLuaState"));
     lua_sethook(M_WXLSTATEDATA->m_lua_State, func, mask, count);
     // lua_sethook returns 1 for lua 5.1 & 5.2
     // lua_sethook is void in 5.3+
-    return 1; 
 }
+
 lua_Hook wxLuaState::lua_GetHook()
 {
     wxCHECK_MSG(Ok(), 0, wxT("Invalid wxLuaState"));
