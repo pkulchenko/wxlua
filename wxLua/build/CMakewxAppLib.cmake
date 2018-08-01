@@ -493,6 +493,19 @@ function( PARSE_WXWIDGETS_LIB_NAMES )
         endif()
     endif()
 
+    # wxWidgets lib/dll build using configure and MinGW (libwx_mswu_core-3.0.a)
+    if ("${wxWidgets_PORTNAME}" STREQUAL "")
+        string(REGEX MATCH "libwx_(msw)(univ)?(u)?(d)?_core-([0-9].[0-9]).a" _match_mingw "${wxWidgets_LIBRARIES}")
+
+        if (NOT "${_match_mingw}" STREQUAL "")
+            set(wxWidgets_PORTNAME    "${CMAKE_MATCH_1}" )
+            set(wxWidgets_UNIVNAME    "${CMAKE_MATCH_2}" )
+            set(wxWidgets_UNICODEFLAG "${CMAKE_MATCH_3}" )
+            set(wxWidgets_DEBUGFLAG   "${CMAKE_MATCH_4}" )
+            #set(wxWidgets_LIB_VERSION "${CMAKE_MATCH_5}" )
+        endif()
+    endif()
+
     # wxWidgets monolithic DLL build using nmake MSVC : lib/vc_amd64_dll/wxmsw29ud.lib and wxmsw294ud_vc_custom.dll
     if ("${wxWidgets_PORTNAME}" STREQUAL "")
         string(REGEX MATCH "wx(msw)(univ)?([0-9][0-9])(u)?(d)?\\.lib" _match_msw_mono "${wxWidgets_LIBRARIES}")
