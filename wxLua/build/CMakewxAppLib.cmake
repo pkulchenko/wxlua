@@ -495,7 +495,7 @@ function( PARSE_WXWIDGETS_LIB_NAMES )
 
     # wxWidgets lib/dll build using configure and MinGW (libwx_mswu_core-3.0.a)
     if ("${wxWidgets_PORTNAME}" STREQUAL "")
-        string(REGEX MATCH "libwx_(msw)(univ)?(u)?(d)?_core-([0-9].[0-9]).a" _match_mingw "${wxWidgets_LIBRARIES}")
+        string(REGEX MATCH "libwx_(msw)(univ)?(u)?(d)?_core-([0-9]\\.[0-9])\\.a" _match_mingw "${wxWidgets_LIBRARIES}")
 
         if (NOT "${_match_mingw}" STREQUAL "")
             set(wxWidgets_PORTNAME    "${CMAKE_MATCH_1}" )
