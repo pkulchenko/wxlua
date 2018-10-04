@@ -46,6 +46,14 @@
 @@ LUA_UNSIGNED is the integral type used by lua_pushunsigned/lua_tounsigned.
 ** It must have at least 32 bits.
 */
+#if !defined(LUAI_INT32)
+#if INT_MAX <= 32767
+#define LUAI_INT32 long
+#else
+#define LUAI_INT32 int
+#endif
+#endif
+
 #define LUA_UNSIGNED    unsigned LUAI_INT32
 
 #if defined(LUA_NUMBER_DOUBLE) && !defined(LUA_ANSI)    /* { */
