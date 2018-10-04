@@ -63,7 +63,7 @@ wxCursor* wxLua_wxSTANDARD_CURSOR = NULL;
 wxCursor* wxLua_wxHOURGLASS_CURSOR = NULL;
 wxCursor* wxLua_wxCROSS_CURSOR = NULL;
 
-#if defined(__MINGW32__) || defined(__GNUWIN32__)
+#if (defined(__MINGW32__) || defined(__GNUWIN32__)) && (__GNUC__ < 4 || (__GNUC__ == 4 && __GNUC_MINOR__ < 9))
     // FIX: "internal compiler error: output_operand: invalid expression as operand"
     // We set their value again later since some compilers (gcc) won't set their value yet
     static wxPoint wxLua_wxDefaultPosition = wxDefaultPosition;
@@ -7751,7 +7751,7 @@ wxLuaBinding_wxcore::wxLuaBinding_wxcore() : wxLuaBinding()
 
 bool wxLuaBinding_wxcore::RegisterBinding(const wxLuaState& wxlState)
 {
-#if defined(__MINGW32__) || defined(__GNUWIN32__)
+#if (defined(__MINGW32__) || defined(__GNUWIN32__)) && (__GNUC__ < 4 || (__GNUC__ == 4 && __GNUC_MINOR__ < 9))
     #undef wxDefaultPosition
     #undef wxDefaultSize
     #undef wxEVT_COMMAND_DIRPICKER_CHANGED
