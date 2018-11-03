@@ -37,11 +37,11 @@
 // Lua MetaTable Tag for Class 'wxProcess'
 int wxluatype_wxProcess = WXLUA_TUNKNOWN;
 
-#if (wxCHECK_VERSION(3,1,1) && defined(__WXMSW__)) && (wxLUA_USE_wxProcess)
+#if (wxCHECK_VERSION(3,0,0) && defined(__WXMSW__)) && (wxLUA_USE_wxProcess)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProcess_Activate[] = { &wxluatype_wxProcess, NULL };
 static int LUACALL wxLua_wxProcess_Activate(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxProcess_Activate[1] = {{ wxLua_wxProcess_Activate, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxProcess_Activate }};
-//     %wxchkver_3_1_1 & %win bool Activate() const;
+//     %wxchkver_3_0_0 & %win bool Activate() const;
 static int LUACALL wxLua_wxProcess_Activate(lua_State *L)
 {
     // get this
@@ -54,7 +54,7 @@ static int LUACALL wxLua_wxProcess_Activate(lua_State *L)
     return 1;
 }
 
-#endif // (wxCHECK_VERSION(3,1,1) && defined(__WXMSW__)) && (wxLUA_USE_wxProcess)
+#endif // (wxCHECK_VERSION(3,0,0) && defined(__WXMSW__)) && (wxLUA_USE_wxProcess)
 
 #if (wxLUA_USE_wxProcess) && (wxUSE_STREAMS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProcess_CloseOutput[] = { &wxluatype_wxProcess, NULL };
@@ -400,9 +400,9 @@ void wxLua_wxProcess_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxProcess_methods[] = {
-#if (wxCHECK_VERSION(3,1,1) && defined(__WXMSW__)) && (wxLUA_USE_wxProcess)
+#if (wxCHECK_VERSION(3,0,0) && defined(__WXMSW__)) && (wxLUA_USE_wxProcess)
     { "Activate", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProcess_Activate, 1, NULL },
-#endif // (wxCHECK_VERSION(3,1,1) && defined(__WXMSW__)) && (wxLUA_USE_wxProcess)
+#endif // (wxCHECK_VERSION(3,0,0) && defined(__WXMSW__)) && (wxLUA_USE_wxProcess)
 
 #if (wxLUA_USE_wxProcess) && (wxUSE_STREAMS)
     { "CloseOutput", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProcess_CloseOutput, 1, NULL },
@@ -455,11 +455,11 @@ int wxProcess_methodCount = sizeof(wxProcess_methods)/sizeof(wxLuaBindMethod) - 
 // Lua MetaTable Tag for Class 'wxKeyboardState'
 int wxluatype_wxKeyboardState = WXLUA_TUNKNOWN;
 
-#if wxCHECK_VERSION(3,1,1)
+#if wxCHECK_VERSION(3,0,0)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyboardState_AltDown[] = { &wxluatype_wxKeyboardState, NULL };
 static int LUACALL wxLua_wxKeyboardState_AltDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyboardState_AltDown[1] = {{ wxLua_wxKeyboardState_AltDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxKeyboardState_AltDown }};
-//     %wxchkver_3_1_1 bool AltDown() const;
+//     %wxchkver_3_0_0 bool AltDown() const;
 static int LUACALL wxLua_wxKeyboardState_AltDown(lua_State *L)
 {
     // get this
@@ -475,7 +475,7 @@ static int LUACALL wxLua_wxKeyboardState_AltDown(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyboardState_CmdDown[] = { &wxluatype_wxKeyboardState, NULL };
 static int LUACALL wxLua_wxKeyboardState_CmdDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyboardState_CmdDown[1] = {{ wxLua_wxKeyboardState_CmdDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxKeyboardState_CmdDown }};
-//     %wxchkver_3_1_1 bool CmdDown() const;
+//     %wxchkver_3_0_0 bool CmdDown() const;
 static int LUACALL wxLua_wxKeyboardState_CmdDown(lua_State *L)
 {
     // get this
@@ -491,7 +491,7 @@ static int LUACALL wxLua_wxKeyboardState_CmdDown(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyboardState_ControlDown[] = { &wxluatype_wxKeyboardState, NULL };
 static int LUACALL wxLua_wxKeyboardState_ControlDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyboardState_ControlDown[1] = {{ wxLua_wxKeyboardState_ControlDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxKeyboardState_ControlDown }};
-//     %wxchkver_3_1_1 bool ControlDown() const;
+//     %wxchkver_3_0_0 bool ControlDown() const;
 static int LUACALL wxLua_wxKeyboardState_ControlDown(lua_State *L)
 {
     // get this
@@ -507,7 +507,7 @@ static int LUACALL wxLua_wxKeyboardState_ControlDown(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyboardState_GetModifiers[] = { &wxluatype_wxKeyboardState, NULL };
 static int LUACALL wxLua_wxKeyboardState_GetModifiers(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyboardState_GetModifiers[1] = {{ wxLua_wxKeyboardState_GetModifiers, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxKeyboardState_GetModifiers }};
-//     %wxchkver_3_1_1 int GetModifiers() const;
+//     %wxchkver_3_0_0 int GetModifiers() const;
 static int LUACALL wxLua_wxKeyboardState_GetModifiers(lua_State *L)
 {
     // get this
@@ -523,7 +523,7 @@ static int LUACALL wxLua_wxKeyboardState_GetModifiers(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyboardState_HasAnyModifiers[] = { &wxluatype_wxKeyboardState, NULL };
 static int LUACALL wxLua_wxKeyboardState_HasAnyModifiers(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyboardState_HasAnyModifiers[1] = {{ wxLua_wxKeyboardState_HasAnyModifiers, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxKeyboardState_HasAnyModifiers }};
-//     %wxchkver_3_1_1 bool HasAnyModifiers() const;
+//     %wxchkver_3_0_0 bool HasAnyModifiers() const;
 static int LUACALL wxLua_wxKeyboardState_HasAnyModifiers(lua_State *L)
 {
     // get this
@@ -539,7 +539,7 @@ static int LUACALL wxLua_wxKeyboardState_HasAnyModifiers(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyboardState_HasModifiers[] = { &wxluatype_wxKeyboardState, NULL };
 static int LUACALL wxLua_wxKeyboardState_HasModifiers(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyboardState_HasModifiers[1] = {{ wxLua_wxKeyboardState_HasModifiers, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxKeyboardState_HasModifiers }};
-//     %wxchkver_3_1_1 bool HasModifiers() const;
+//     %wxchkver_3_0_0 bool HasModifiers() const;
 static int LUACALL wxLua_wxKeyboardState_HasModifiers(lua_State *L)
 {
     // get this
@@ -555,7 +555,7 @@ static int LUACALL wxLua_wxKeyboardState_HasModifiers(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyboardState_MetaDown[] = { &wxluatype_wxKeyboardState, NULL };
 static int LUACALL wxLua_wxKeyboardState_MetaDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyboardState_MetaDown[1] = {{ wxLua_wxKeyboardState_MetaDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxKeyboardState_MetaDown }};
-//     %wxchkver_3_1_1 bool MetaDown() const;
+//     %wxchkver_3_0_0 bool MetaDown() const;
 static int LUACALL wxLua_wxKeyboardState_MetaDown(lua_State *L)
 {
     // get this
@@ -571,7 +571,7 @@ static int LUACALL wxLua_wxKeyboardState_MetaDown(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyboardState_RawControlDown[] = { &wxluatype_wxKeyboardState, NULL };
 static int LUACALL wxLua_wxKeyboardState_RawControlDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyboardState_RawControlDown[1] = {{ wxLua_wxKeyboardState_RawControlDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxKeyboardState_RawControlDown }};
-//     %wxchkver_3_1_1 bool RawControlDown() const;
+//     %wxchkver_3_0_0 bool RawControlDown() const;
 static int LUACALL wxLua_wxKeyboardState_RawControlDown(lua_State *L)
 {
     // get this
@@ -587,7 +587,7 @@ static int LUACALL wxLua_wxKeyboardState_RawControlDown(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyboardState_SetAltDown[] = { &wxluatype_wxKeyboardState, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxKeyboardState_SetAltDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyboardState_SetAltDown[1] = {{ wxLua_wxKeyboardState_SetAltDown, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxKeyboardState_SetAltDown }};
-//     %wxchkver_3_1_1 void SetAltDown(bool down);
+//     %wxchkver_3_0_0 void SetAltDown(bool down);
 static int LUACALL wxLua_wxKeyboardState_SetAltDown(lua_State *L)
 {
     // bool down
@@ -603,7 +603,7 @@ static int LUACALL wxLua_wxKeyboardState_SetAltDown(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyboardState_SetControlDown[] = { &wxluatype_wxKeyboardState, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxKeyboardState_SetControlDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyboardState_SetControlDown[1] = {{ wxLua_wxKeyboardState_SetControlDown, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxKeyboardState_SetControlDown }};
-//     %wxchkver_3_1_1 void SetControlDown(bool down);
+//     %wxchkver_3_0_0 void SetControlDown(bool down);
 static int LUACALL wxLua_wxKeyboardState_SetControlDown(lua_State *L)
 {
     // bool down
@@ -619,7 +619,7 @@ static int LUACALL wxLua_wxKeyboardState_SetControlDown(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyboardState_SetMetaDown[] = { &wxluatype_wxKeyboardState, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxKeyboardState_SetMetaDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyboardState_SetMetaDown[1] = {{ wxLua_wxKeyboardState_SetMetaDown, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxKeyboardState_SetMetaDown }};
-//     %wxchkver_3_1_1 void SetMetaDown(bool down);
+//     %wxchkver_3_0_0 void SetMetaDown(bool down);
 static int LUACALL wxLua_wxKeyboardState_SetMetaDown(lua_State *L)
 {
     // bool down
@@ -635,7 +635,7 @@ static int LUACALL wxLua_wxKeyboardState_SetMetaDown(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyboardState_SetRawControlDown[] = { &wxluatype_wxKeyboardState, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxKeyboardState_SetRawControlDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyboardState_SetRawControlDown[1] = {{ wxLua_wxKeyboardState_SetRawControlDown, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxKeyboardState_SetRawControlDown }};
-//     %wxchkver_3_1_1 void SetRawControlDown(bool down);
+//     %wxchkver_3_0_0 void SetRawControlDown(bool down);
 static int LUACALL wxLua_wxKeyboardState_SetRawControlDown(lua_State *L)
 {
     // bool down
@@ -651,7 +651,7 @@ static int LUACALL wxLua_wxKeyboardState_SetRawControlDown(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyboardState_SetShiftDown[] = { &wxluatype_wxKeyboardState, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxKeyboardState_SetShiftDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyboardState_SetShiftDown[1] = {{ wxLua_wxKeyboardState_SetShiftDown, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxKeyboardState_SetShiftDown }};
-//     %wxchkver_3_1_1 void SetShiftDown(bool down);
+//     %wxchkver_3_0_0 void SetShiftDown(bool down);
 static int LUACALL wxLua_wxKeyboardState_SetShiftDown(lua_State *L)
 {
     // bool down
@@ -667,7 +667,7 @@ static int LUACALL wxLua_wxKeyboardState_SetShiftDown(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyboardState_ShiftDown[] = { &wxluatype_wxKeyboardState, NULL };
 static int LUACALL wxLua_wxKeyboardState_ShiftDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyboardState_ShiftDown[1] = {{ wxLua_wxKeyboardState_ShiftDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxKeyboardState_ShiftDown }};
-//     %wxchkver_3_1_1 bool ShiftDown() const;
+//     %wxchkver_3_0_0 bool ShiftDown() const;
 static int LUACALL wxLua_wxKeyboardState_ShiftDown(lua_State *L)
 {
     // get this
@@ -683,7 +683,7 @@ static int LUACALL wxLua_wxKeyboardState_ShiftDown(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyboardState_constructor[] = { &wxluatype_TBOOLEAN, &wxluatype_TBOOLEAN, &wxluatype_TBOOLEAN, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxKeyboardState_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyboardState_constructor[1] = {{ wxLua_wxKeyboardState_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 4, s_wxluatypeArray_wxLua_wxKeyboardState_constructor }};
-//     %wxchkver_3_1_1 wxKeyboardState(bool controlDown = false, bool shiftDown = false, bool altDown = false, bool metaDown = false);
+//     %wxchkver_3_0_0 wxKeyboardState(bool controlDown = false, bool shiftDown = false, bool altDown = false, bool metaDown = false);
 static int LUACALL wxLua_wxKeyboardState_constructor(lua_State *L)
 {
     // get number of arguments
@@ -704,7 +704,7 @@ static int LUACALL wxLua_wxKeyboardState_constructor(lua_State *L)
     return 1;
 }
 
-#endif // wxCHECK_VERSION(3,1,1)
+#endif // wxCHECK_VERSION(3,0,0)
 
 
 
@@ -716,7 +716,7 @@ void wxLua_wxKeyboardState_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxKeyboardState_methods[] = {
-#if wxCHECK_VERSION(3,1,1)
+#if wxCHECK_VERSION(3,0,0)
     { "AltDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxKeyboardState_AltDown, 1, NULL },
     { "CmdDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxKeyboardState_CmdDown, 1, NULL },
     { "ControlDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxKeyboardState_ControlDown, 1, NULL },
@@ -732,7 +732,7 @@ wxLuaBindMethod wxKeyboardState_methods[] = {
     { "SetShiftDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxKeyboardState_SetShiftDown, 1, NULL },
     { "ShiftDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxKeyboardState_ShiftDown, 1, NULL },
     { "wxKeyboardState", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxKeyboardState_constructor, 1, NULL },
-#endif // wxCHECK_VERSION(3,1,1)
+#endif // wxCHECK_VERSION(3,0,0)
 
     { 0, 0, 0, 0 },
 };
@@ -749,11 +749,11 @@ int wxKeyboardState_methodCount = sizeof(wxKeyboardState_methods)/sizeof(wxLuaBi
 // Lua MetaTable Tag for Class 'wxMouseState'
 int wxluatype_wxMouseState = WXLUA_TUNKNOWN;
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_AltDown[] = { &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_AltDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_AltDown[1] = {{ wxLua_wxMouseState_AltDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_AltDown }};
-//     !%wxchkver_3_1_1 bool        AltDown();
+//     !%wxchkver_3_0_0 bool        AltDown();
 static int LUACALL wxLua_wxMouseState_AltDown(lua_State *L)
 {
     // get this
@@ -766,13 +766,13 @@ static int LUACALL wxLua_wxMouseState_AltDown(lua_State *L)
     return 1;
 }
 
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
-#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_Aux1IsDown[] = { &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_Aux1IsDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_Aux1IsDown[1] = {{ wxLua_wxMouseState_Aux1IsDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_Aux1IsDown }};
-//     %wxchkver_3_1_1 bool Aux1IsDown() const;
+//     %wxchkver_3_0_0 bool Aux1IsDown() const;
 static int LUACALL wxLua_wxMouseState_Aux1IsDown(lua_State *L)
 {
     // get this
@@ -788,7 +788,7 @@ static int LUACALL wxLua_wxMouseState_Aux1IsDown(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_Aux2IsDown[] = { &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_Aux2IsDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_Aux2IsDown[1] = {{ wxLua_wxMouseState_Aux2IsDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_Aux2IsDown }};
-//     %wxchkver_3_1_1 bool Aux2IsDown() const;
+//     %wxchkver_3_0_0 bool Aux2IsDown() const;
 static int LUACALL wxLua_wxMouseState_Aux2IsDown(lua_State *L)
 {
     // get this
@@ -801,13 +801,13 @@ static int LUACALL wxLua_wxMouseState_Aux2IsDown(lua_State *L)
     return 1;
 }
 
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_CmdDown[] = { &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_CmdDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_CmdDown[1] = {{ wxLua_wxMouseState_CmdDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_CmdDown }};
-//     !%wxchkver_3_1_1 bool        CmdDown();
+//     !%wxchkver_3_0_0 bool        CmdDown();
 static int LUACALL wxLua_wxMouseState_CmdDown(lua_State *L)
 {
     // get this
@@ -823,7 +823,7 @@ static int LUACALL wxLua_wxMouseState_CmdDown(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_ControlDown[] = { &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_ControlDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_ControlDown[1] = {{ wxLua_wxMouseState_ControlDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_ControlDown }};
-//     !%wxchkver_3_1_1 bool        ControlDown();
+//     !%wxchkver_3_0_0 bool        ControlDown();
 static int LUACALL wxLua_wxMouseState_ControlDown(lua_State *L)
 {
     // get this
@@ -836,7 +836,7 @@ static int LUACALL wxLua_wxMouseState_ControlDown(lua_State *L)
     return 1;
 }
 
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_GetX[] = { &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_GetX(lua_State *L);
@@ -871,11 +871,11 @@ static int LUACALL wxLua_wxMouseState_GetY(lua_State *L)
 }
 
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_LeftDown1[] = { &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_LeftDown1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_LeftDown1[1] = {{ wxLua_wxMouseState_LeftDown1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_LeftDown1 }};
-//     !%wxchkver_3_1_1 bool        LeftDown();
+//     !%wxchkver_3_0_0 bool        LeftDown();
 static int LUACALL wxLua_wxMouseState_LeftDown1(lua_State *L)
 {
     // get this
@@ -888,13 +888,13 @@ static int LUACALL wxLua_wxMouseState_LeftDown1(lua_State *L)
     return 1;
 }
 
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
-#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_LeftDown[] = { &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_LeftDown(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_LeftDown[1] = {{ wxLua_wxMouseState_LeftDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_LeftDown }};
-//     %wxchkver_3_1_1 %rename LeftDown bool LeftIsDown() const; // for compatibility with previous wxlua versions
+//     %wxchkver_3_0_0 %rename LeftDown bool LeftIsDown() const; // for compatibility with previous wxlua versions
 static int LUACALL wxLua_wxMouseState_LeftDown(lua_State *L)
 {
     // get this
@@ -910,7 +910,7 @@ static int LUACALL wxLua_wxMouseState_LeftDown(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_LeftIsDown[] = { &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_LeftIsDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_LeftIsDown[1] = {{ wxLua_wxMouseState_LeftIsDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_LeftIsDown }};
-//     %wxchkver_3_1_1 bool LeftIsDown() const;
+//     %wxchkver_3_0_0 bool LeftIsDown() const;
 static int LUACALL wxLua_wxMouseState_LeftIsDown(lua_State *L)
 {
     // get this
@@ -923,13 +923,13 @@ static int LUACALL wxLua_wxMouseState_LeftIsDown(lua_State *L)
     return 1;
 }
 
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_MetaDown[] = { &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_MetaDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_MetaDown[1] = {{ wxLua_wxMouseState_MetaDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_MetaDown }};
-//     !%wxchkver_3_1_1 bool        MetaDown();
+//     !%wxchkver_3_0_0 bool        MetaDown();
 static int LUACALL wxLua_wxMouseState_MetaDown(lua_State *L)
 {
     // get this
@@ -945,7 +945,7 @@ static int LUACALL wxLua_wxMouseState_MetaDown(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_MiddleDown1[] = { &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_MiddleDown1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_MiddleDown1[1] = {{ wxLua_wxMouseState_MiddleDown1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_MiddleDown1 }};
-//     !%wxchkver_3_1_1 bool        MiddleDown();
+//     !%wxchkver_3_0_0 bool        MiddleDown();
 static int LUACALL wxLua_wxMouseState_MiddleDown1(lua_State *L)
 {
     // get this
@@ -958,13 +958,13 @@ static int LUACALL wxLua_wxMouseState_MiddleDown1(lua_State *L)
     return 1;
 }
 
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
-#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_MiddleDown[] = { &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_MiddleDown(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_MiddleDown[1] = {{ wxLua_wxMouseState_MiddleDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_MiddleDown }};
-//     %wxchkver_3_1_1 %rename MiddleDown bool MiddleIsDown() const; // for compatibility with previous wxlua versions
+//     %wxchkver_3_0_0 %rename MiddleDown bool MiddleIsDown() const; // for compatibility with previous wxlua versions
 static int LUACALL wxLua_wxMouseState_MiddleDown(lua_State *L)
 {
     // get this
@@ -980,7 +980,7 @@ static int LUACALL wxLua_wxMouseState_MiddleDown(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_MiddleIsDown[] = { &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_MiddleIsDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_MiddleIsDown[1] = {{ wxLua_wxMouseState_MiddleIsDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_MiddleIsDown }};
-//     %wxchkver_3_1_1 bool MiddleIsDown() const;
+//     %wxchkver_3_0_0 bool MiddleIsDown() const;
 static int LUACALL wxLua_wxMouseState_MiddleIsDown(lua_State *L)
 {
     // get this
@@ -993,13 +993,13 @@ static int LUACALL wxLua_wxMouseState_MiddleIsDown(lua_State *L)
     return 1;
 }
 
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_RightDown1[] = { &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_RightDown1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_RightDown1[1] = {{ wxLua_wxMouseState_RightDown1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_RightDown1 }};
-//     !%wxchkver_3_1_1 bool        RightDown();
+//     !%wxchkver_3_0_0 bool        RightDown();
 static int LUACALL wxLua_wxMouseState_RightDown1(lua_State *L)
 {
     // get this
@@ -1012,13 +1012,13 @@ static int LUACALL wxLua_wxMouseState_RightDown1(lua_State *L)
     return 1;
 }
 
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
-#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_RightDown[] = { &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_RightDown(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_RightDown[1] = {{ wxLua_wxMouseState_RightDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_RightDown }};
-//     %wxchkver_3_1_1 %rename RightDown bool RightIsDown() const; // for compatibility with previous wxlua versions
+//     %wxchkver_3_0_0 %rename RightDown bool RightIsDown() const; // for compatibility with previous wxlua versions
 static int LUACALL wxLua_wxMouseState_RightDown(lua_State *L)
 {
     // get this
@@ -1034,7 +1034,7 @@ static int LUACALL wxLua_wxMouseState_RightDown(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_RightIsDown[] = { &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_RightIsDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_RightIsDown[1] = {{ wxLua_wxMouseState_RightIsDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_RightIsDown }};
-//     %wxchkver_3_1_1 bool RightIsDown() const;
+//     %wxchkver_3_0_0 bool RightIsDown() const;
 static int LUACALL wxLua_wxMouseState_RightIsDown(lua_State *L)
 {
     // get this
@@ -1047,13 +1047,13 @@ static int LUACALL wxLua_wxMouseState_RightIsDown(lua_State *L)
     return 1;
 }
 
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_SetAltDown[] = { &wxluatype_wxMouseState, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxMouseState_SetAltDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_SetAltDown[1] = {{ wxLua_wxMouseState_SetAltDown, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMouseState_SetAltDown }};
-//     !%wxchkver_3_1_1 void        SetAltDown(bool down);
+//     !%wxchkver_3_0_0 void        SetAltDown(bool down);
 static int LUACALL wxLua_wxMouseState_SetAltDown(lua_State *L)
 {
     // bool down
@@ -1066,13 +1066,13 @@ static int LUACALL wxLua_wxMouseState_SetAltDown(lua_State *L)
     return 0;
 }
 
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
-#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_SetAux1Down[] = { &wxluatype_wxMouseState, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxMouseState_SetAux1Down(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_SetAux1Down[1] = {{ wxLua_wxMouseState_SetAux1Down, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMouseState_SetAux1Down }};
-//     %wxchkver_3_1_1 void SetAux1Down(bool down);
+//     %wxchkver_3_0_0 void SetAux1Down(bool down);
 static int LUACALL wxLua_wxMouseState_SetAux1Down(lua_State *L)
 {
     // bool down
@@ -1088,7 +1088,7 @@ static int LUACALL wxLua_wxMouseState_SetAux1Down(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_SetAux2Down[] = { &wxluatype_wxMouseState, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxMouseState_SetAux2Down(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_SetAux2Down[1] = {{ wxLua_wxMouseState_SetAux2Down, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMouseState_SetAux2Down }};
-//     %wxchkver_3_1_1 void SetAux2Down(bool down);
+//     %wxchkver_3_0_0 void SetAux2Down(bool down);
 static int LUACALL wxLua_wxMouseState_SetAux2Down(lua_State *L)
 {
     // bool down
@@ -1101,13 +1101,13 @@ static int LUACALL wxLua_wxMouseState_SetAux2Down(lua_State *L)
     return 0;
 }
 
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_SetControlDown[] = { &wxluatype_wxMouseState, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxMouseState_SetControlDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_SetControlDown[1] = {{ wxLua_wxMouseState_SetControlDown, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMouseState_SetControlDown }};
-//     !%wxchkver_3_1_1 void        SetControlDown(bool down);
+//     !%wxchkver_3_0_0 void        SetControlDown(bool down);
 static int LUACALL wxLua_wxMouseState_SetControlDown(lua_State *L)
 {
     // bool down
@@ -1120,7 +1120,7 @@ static int LUACALL wxLua_wxMouseState_SetControlDown(lua_State *L)
     return 0;
 }
 
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_SetLeftDown[] = { &wxluatype_wxMouseState, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxMouseState_SetLeftDown(lua_State *L);
@@ -1139,11 +1139,11 @@ static int LUACALL wxLua_wxMouseState_SetLeftDown(lua_State *L)
 }
 
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_SetMetaDown[] = { &wxluatype_wxMouseState, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxMouseState_SetMetaDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_SetMetaDown[1] = {{ wxLua_wxMouseState_SetMetaDown, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMouseState_SetMetaDown }};
-//     !%wxchkver_3_1_1 void        SetMetaDown(bool down);
+//     !%wxchkver_3_0_0 void        SetMetaDown(bool down);
 static int LUACALL wxLua_wxMouseState_SetMetaDown(lua_State *L)
 {
     // bool down
@@ -1156,7 +1156,7 @@ static int LUACALL wxLua_wxMouseState_SetMetaDown(lua_State *L)
     return 0;
 }
 
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_SetMiddleDown[] = { &wxluatype_wxMouseState, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxMouseState_SetMiddleDown(lua_State *L);
@@ -1175,11 +1175,11 @@ static int LUACALL wxLua_wxMouseState_SetMiddleDown(lua_State *L)
 }
 
 
-#if ((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))) && (wxLUA_USE_wxPointSizeRect)
+#if ((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_SetPosition[] = { &wxluatype_wxMouseState, &wxluatype_wxPoint, NULL };
 static int LUACALL wxLua_wxMouseState_SetPosition(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_SetPosition[1] = {{ wxLua_wxMouseState_SetPosition, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMouseState_SetPosition }};
-//     %wxchkver_3_1_1 void SetPosition(wxPoint pos);
+//     %wxchkver_3_0_0 void SetPosition(wxPoint pos);
 static int LUACALL wxLua_wxMouseState_SetPosition(lua_State *L)
 {
     // wxPoint pos
@@ -1192,7 +1192,7 @@ static int LUACALL wxLua_wxMouseState_SetPosition(lua_State *L)
     return 0;
 }
 
-#endif // ((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))) && (wxLUA_USE_wxPointSizeRect)
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))) && (wxLUA_USE_wxPointSizeRect)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_SetRightDown[] = { &wxluatype_wxMouseState, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxMouseState_SetRightDown(lua_State *L);
@@ -1211,11 +1211,11 @@ static int LUACALL wxLua_wxMouseState_SetRightDown(lua_State *L)
 }
 
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_SetShiftDown[] = { &wxluatype_wxMouseState, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxMouseState_SetShiftDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_SetShiftDown[1] = {{ wxLua_wxMouseState_SetShiftDown, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMouseState_SetShiftDown }};
-//     !%wxchkver_3_1_1 void        SetShiftDown(bool down);
+//     !%wxchkver_3_0_0 void        SetShiftDown(bool down);
 static int LUACALL wxLua_wxMouseState_SetShiftDown(lua_State *L)
 {
     // bool down
@@ -1228,13 +1228,13 @@ static int LUACALL wxLua_wxMouseState_SetShiftDown(lua_State *L)
     return 0;
 }
 
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
-#if ((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))) && (wxCHECK_VERSION(2,8,0))
+#if ((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))) && (wxCHECK_VERSION(2,8,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_SetState[] = { &wxluatype_wxMouseState, &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_SetState(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_SetState[1] = {{ wxLua_wxMouseState_SetState, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMouseState_SetState }};
-//     %wxchkver_3_1_1 void SetState(const wxMouseState& state);
+//     %wxchkver_3_0_0 void SetState(const wxMouseState& state);
 static int LUACALL wxLua_wxMouseState_SetState(lua_State *L)
 {
     // const wxMouseState state
@@ -1247,7 +1247,7 @@ static int LUACALL wxLua_wxMouseState_SetState(lua_State *L)
     return 0;
 }
 
-#endif // ((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))) && (wxCHECK_VERSION(2,8,0))
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))) && (wxCHECK_VERSION(2,8,0))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_SetX[] = { &wxluatype_wxMouseState, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxMouseState_SetX(lua_State *L);
@@ -1282,11 +1282,11 @@ static int LUACALL wxLua_wxMouseState_SetY(lua_State *L)
 }
 
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_ShiftDown[] = { &wxluatype_wxMouseState, NULL };
 static int LUACALL wxLua_wxMouseState_ShiftDown(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_ShiftDown[1] = {{ wxLua_wxMouseState_ShiftDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_ShiftDown }};
-//     !%wxchkver_3_1_1 bool        ShiftDown();
+//     !%wxchkver_3_0_0 bool        ShiftDown();
 static int LUACALL wxLua_wxMouseState_ShiftDown(lua_State *L)
 {
     // get this
@@ -1299,7 +1299,7 @@ static int LUACALL wxLua_wxMouseState_ShiftDown(lua_State *L)
     return 1;
 }
 
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseState_delete[] = { &wxluatype_wxMouseState, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_delete }};
@@ -1322,18 +1322,18 @@ static int LUACALL wxLua_wxMouseState_constructor(lua_State *L)
 
 
 
-#if ((!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0)))||((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1)))
+#if ((!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0)))||((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0)))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_LeftDown_overload[] =
 {
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
     { wxLua_wxMouseState_LeftDown1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_LeftDown1 },
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
-#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
     { wxLua_wxMouseState_LeftDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_LeftDown },
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 };
 static int s_wxluafunc_wxLua_wxMouseState_LeftDown_overload_count = sizeof(s_wxluafunc_wxLua_wxMouseState_LeftDown_overload)/sizeof(wxLuaBindCFunc);
 
@@ -1341,13 +1341,13 @@ static int s_wxluafunc_wxLua_wxMouseState_LeftDown_overload_count = sizeof(s_wxl
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_MiddleDown_overload[] =
 {
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
     { wxLua_wxMouseState_MiddleDown1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_MiddleDown1 },
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
-#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
     { wxLua_wxMouseState_MiddleDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_MiddleDown },
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 };
 static int s_wxluafunc_wxLua_wxMouseState_MiddleDown_overload_count = sizeof(s_wxluafunc_wxLua_wxMouseState_MiddleDown_overload)/sizeof(wxLuaBindCFunc);
 
@@ -1355,17 +1355,17 @@ static int s_wxluafunc_wxLua_wxMouseState_MiddleDown_overload_count = sizeof(s_w
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseState_RightDown_overload[] =
 {
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
     { wxLua_wxMouseState_RightDown1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_RightDown1 },
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
-#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
     { wxLua_wxMouseState_RightDown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseState_RightDown },
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 };
 static int s_wxluafunc_wxLua_wxMouseState_RightDown_overload_count = sizeof(s_wxluafunc_wxLua_wxMouseState_RightDown_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0)))||((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1)))
+#endif // ((!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0)))||((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0)))
 
 void wxLua_wxMouseState_delete_function(void** p)
 {
@@ -1375,92 +1375,92 @@ void wxLua_wxMouseState_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxMouseState_methods[] = {
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
     { "AltDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_AltDown, 1, NULL },
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
-#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
     { "Aux1IsDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_Aux1IsDown, 1, NULL },
     { "Aux2IsDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_Aux2IsDown, 1, NULL },
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
     { "CmdDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_CmdDown, 1, NULL },
     { "ControlDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_ControlDown, 1, NULL },
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
     { "GetX", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_GetX, 1, NULL },
     { "GetY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_GetY, 1, NULL },
 
-#if ((!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0)))||((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1)))
+#if ((!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0)))||((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0)))
     { "LeftDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_LeftDown_overload, s_wxluafunc_wxLua_wxMouseState_LeftDown_overload_count, 0 },
-#endif // ((!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0)))||((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1)))
+#endif // ((!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0)))||((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0)))
 
-#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
     { "LeftIsDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_LeftIsDown, 1, NULL },
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
     { "MetaDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_MetaDown, 1, NULL },
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
-#if ((!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0)))||((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1)))
+#if ((!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0)))||((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0)))
     { "MiddleDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_MiddleDown_overload, s_wxluafunc_wxLua_wxMouseState_MiddleDown_overload_count, 0 },
-#endif // ((!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0)))||((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1)))
+#endif // ((!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0)))||((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0)))
 
-#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
     { "MiddleIsDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_MiddleIsDown, 1, NULL },
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 
-#if ((!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0)))||((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1)))
+#if ((!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0)))||((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0)))
     { "RightDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_RightDown_overload, s_wxluafunc_wxLua_wxMouseState_RightDown_overload_count, 0 },
-#endif // ((!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0)))||((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1)))
+#endif // ((!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0)))||((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0)))
 
-#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
     { "RightIsDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_RightIsDown, 1, NULL },
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
     { "SetAltDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_SetAltDown, 1, NULL },
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
-#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#if (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
     { "SetAux1Down", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_SetAux1Down, 1, NULL },
     { "SetAux2Down", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_SetAux2Down, 1, NULL },
-#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
     { "SetControlDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_SetControlDown, 1, NULL },
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
     { "SetLeftDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_SetLeftDown, 1, NULL },
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
     { "SetMetaDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_SetMetaDown, 1, NULL },
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
     { "SetMiddleDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_SetMiddleDown, 1, NULL },
 
-#if ((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))) && (wxLUA_USE_wxPointSizeRect)
+#if ((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))) && (wxLUA_USE_wxPointSizeRect)
     { "SetPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_SetPosition, 1, NULL },
-#endif // ((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))) && (wxLUA_USE_wxPointSizeRect)
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))) && (wxLUA_USE_wxPointSizeRect)
 
     { "SetRightDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_SetRightDown, 1, NULL },
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
     { "SetShiftDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_SetShiftDown, 1, NULL },
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
-#if ((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))) && (wxCHECK_VERSION(2,8,0))
+#if ((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))) && (wxCHECK_VERSION(2,8,0))
     { "SetState", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_SetState, 1, NULL },
-#endif // ((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,1,1))) && (wxCHECK_VERSION(2,8,0))
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxCHECK_VERSION(3,0,0))) && (wxCHECK_VERSION(2,8,0))
 
     { "SetX", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_SetX, 1, NULL },
     { "SetY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_SetY, 1, NULL },
 
-#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#if (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
     { "ShiftDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseState_ShiftDown, 1, NULL },
-#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0))
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxCHECK_VERSION(2,8,0))
 
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxMouseState_delete, 1, NULL },
     { "wxMouseState", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxMouseState_constructor, 1, NULL },
