@@ -62,7 +62,7 @@ wxFont* wxLua_wxSWISS_FONT = NULL;
 wxCursor* wxLua_wxSTANDARD_CURSOR = NULL;
 wxCursor* wxLua_wxHOURGLASS_CURSOR = NULL;
 wxCursor* wxLua_wxCROSS_CURSOR = NULL;
-
+/*
 #if defined(__MINGW32__) || defined(__GNUWIN32__)
     // FIX: "internal compiler error: output_operand: invalid expression as operand"
     // We set their value again later since some compilers (gcc) won't set their value yet
@@ -76,7 +76,7 @@ wxCursor* wxLua_wxCROSS_CURSOR = NULL;
     #define wxEVT_COMMAND_DIRPICKER_CHANGED  wxLua_wxEVT_COMMAND_DIRPICKER_CHANGED
     #define wxEVT_COMMAND_FILEPICKER_CHANGED wxLua_wxEVT_COMMAND_FILEPICKER_CHANGED
 #endif //__MINGW32__
-
+*/
 
 // ---------------------------------------------------------------------------
 // wxLuaGetEventList_wxcore() is called to register events
@@ -7751,6 +7751,7 @@ wxLuaBinding_wxcore::wxLuaBinding_wxcore() : wxLuaBinding()
 
 bool wxLuaBinding_wxcore::RegisterBinding(const wxLuaState& wxlState)
 {
+	/*
 #if defined(__MINGW32__) || defined(__GNUWIN32__)
     #undef wxDefaultPosition
     #undef wxDefaultSize
@@ -7761,6 +7762,7 @@ bool wxLuaBinding_wxcore::RegisterBinding(const wxLuaState& wxlState)
     wxLua_wxEVT_COMMAND_DIRPICKER_CHANGED  = wxEVT_COMMAND_DIRPICKER_CHANGED;
     wxLua_wxEVT_COMMAND_FILEPICKER_CHANGED = wxEVT_COMMAND_FILEPICKER_CHANGED;
 #endif //__MINGW32__
+*/
 
     // ugly hack for wxWidgets >2.7 change to use wxStockGDI::GetXXX
     if (wxLua_wxBLACK == NULL)

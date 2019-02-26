@@ -9,6 +9,12 @@ include(../build/CMakeFunctions.cmake)
 
 project( wxLuaModules )
 
+set(MINGW_EXTRA_LIBS)
+if(MINGW)
+	set(MINGW_EXTRA_LIBS "-lversion;-lshlwapi;-luxtheme;-loleacc;-lws2_32")
+	message("MINGW_EXTRA_LIBS is " ${MINGW_EXTRA_LIBS})
+endif(MINGW)
+
 if (NOT DEFINED wxLua_ROOT_DIR)
     set(wxLua_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../ CACHE INTERNAL
         "Root dir of wxLua" FORCE)
@@ -543,6 +549,8 @@ function (wxLua_Modules_LuaModule_TARGETS)
 # This is always built as a DLL
 set( WXLUAMODULE_PROPERTIES_DEFINE_SYMBOL PROPERTIES DEFINE_SYMBOL WXMAKINGDLL_LUAMODULE)
 
+
+
 # Build from fresh sources so we have a clean stand-alone Lua module and
 # we get all the DLL exports right.
 ADD_LIBRARY_FULL( wxLuaModule SHARED # ALLOW_MISSING_FILES
@@ -562,6 +570,7 @@ ADD_LIBRARY_FULL( wxLuaModule SHARED # ALLOW_MISSING_FILES
         #wxLuaLib
         ${LuaLibShared_TARGET_NAME} # either target LuaLib or LuaLibShared (always a shared lib)
         ${wxWidgets_LIBRARIES}
+		${MINGW_EXTRA_LIBS}
     PROPERTIES OUTPUT_NAME   "wx"
     ${WXLUAMODULE_PROPERTIES_DEFINE_SYMBOL}
     PROPERTIES FOLDER "wxLua/Modules"
