@@ -553,6 +553,11 @@ set( WXLUAMODULE_PROPERTIES_DEFINE_SYMBOL PROPERTIES DEFINE_SYMBOL WXMAKINGDLL_L
 
 # Build from fresh sources so we have a clean stand-alone Lua module and
 # we get all the DLL exports right.
+if(WIN32)
+set(wxLuaModule_LUALINK ${LuaLibShared_TARGET_NAME})
+else()
+set(wxLuaModule_LUALINK "")
+endif()
 ADD_LIBRARY_FULL( wxLuaModule SHARED # ALLOW_MISSING_FILES
     HEADERS
         ${wxLua_ROOT_DIR}/modules/luamodule/luamoduledefs.h
@@ -568,7 +573,7 @@ ADD_LIBRARY_FULL( wxLuaModule SHARED # ALLOW_MISSING_FILES
         #wxLuaDebuggerLib
         #wxLuaDebugLib
         #wxLuaLib
-        ${LuaLibShared_TARGET_NAME} # either target LuaLib or LuaLibShared (always a shared lib)
+        ${wxLuaModule_LUALINK} # either target LuaLib or LuaLibShared (always a shared lib)
         ${wxWidgets_LIBRARIES}
 		${MINGW_EXTRA_LIBS}
     PROPERTIES OUTPUT_NAME   "wx"
