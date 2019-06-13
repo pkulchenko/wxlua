@@ -2586,6 +2586,36 @@ wx_dataTypeTable =
     Name = "wxHtmlPrintout",
     ValueType = "class",
   },
+  wxHtmlRenderingInfo = {
+    Condition = "(wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML)",
+    IsNumber = false,
+    Name = "wxHtmlRenderingInfo",
+    ValueType = "class",
+  },
+  wxHtmlRenderingState = {
+    Condition = "(wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML)",
+    IsNumber = false,
+    Name = "wxHtmlRenderingState",
+    ValueType = "class",
+  },
+  wxHtmlRenderingStyle = {
+    Condition = "(wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML)",
+    IsNumber = false,
+    Name = "wxHtmlRenderingStyle",
+    ValueType = "class",
+  },
+  wxHtmlSelection = {
+    Condition = "(wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML)",
+    IsNumber = false,
+    Name = "wxHtmlSelection",
+    ValueType = "class",
+  },
+  wxHtmlSelectionState = {
+    Condition = "(wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML)",
+    IsNumber = true,
+    Name = "wxHtmlSelectionState",
+    ValueType = "enum",
+  },
   wxHtmlTag = {
     Condition = "wxLUA_USE_wxHTML && wxUSE_HTML",
     IsNumber = false,

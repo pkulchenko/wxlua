@@ -18,48 +18,106 @@
 #define wxHTML_COND_ISIMAGEMAP
 #define wxHTML_COND_USER
 
+#if %wxchkver_3_1_2
+enum wxHtmlSelectionState
+{
+    wxHTML_SEL_OUT,     // currently rendered cell is outside the selection
+    wxHTML_SEL_IN,      // ... is inside selection
+    wxHTML_SEL_CHANGING // ... is the cell on which selection state changes
+};
+
+class wxHtmlRenderingInfo
+{
+public:
+    wxHtmlRenderingInfo();
+
+    void SetSelection(wxHtmlSelection *s);
+    wxHtmlSelection *GetSelection() const;
+    void SetStyle(wxHtmlRenderingStyle *style);
+    wxHtmlRenderingStyle& GetStyle();
+    wxHtmlRenderingState& GetState();
+};
+
+class wxHtmlRenderingStyle
+{
+public:
+    virtual wxColour GetSelectedTextColour(const wxColour& clr);
+    virtual wxColour GetSelectedTextBgColour(const wxColour& clr);
+};
+
+class wxHtmlSelection
+{
+public:
+    wxHtmlSelection();
+
+    void Set(const wxPoint& fromPos, const wxHtmlCell *fromCell, const wxPoint& toPos, const wxHtmlCell *toCell);
+    void Set(const wxHtmlCell *fromCell, const wxHtmlCell *toCell);
+
+    const wxHtmlCell *GetFromCell() const;
+    const wxHtmlCell *GetToCell() const;
+    const wxPoint& GetFromPos() const;
+    const wxPoint& GetToPos() const;
+    void ClearFromToCharacterPos();
+    bool AreFromToCharacterPosSet() const;
+    void SetFromCharacterPos (wxCoord pos);
+    void SetToCharacterPos (wxCoord pos);
+    wxCoord GetFromCharacterPos () const;
+    wxCoord GetToCharacterPos () const;
+    bool IsEmpty() const;
+};
+
+class wxHtmlRenderingState
+{
+public:
+    wxHtmlRenderingState();
+
+    void SetSelectionState(wxHtmlSelectionState s);
+    wxHtmlSelectionState GetSelectionState() const;
+
+    void SetFgColour(const wxColour& c);
+    const wxColour& GetFgColour() const;
+    void SetBgColour(const wxColour& c);
+    const wxColour& GetBgColour() const;
+    void SetBgMode(int m);
+    int GetBgMode() const;
+};
+#endif // %wxchkver_3_1_2
+
 class %delete wxHtmlCell : public wxObject
 {
-    wxHtmlCell( );
-
-    // %override [bool, int pagebreak] wxHtmlCell::AdjustPagebreak(int pagebreak );
-
-    // %override bool AdjustPagebreak(int pagebreak); // int* known_pagebreaks, int number_of_pages );
-    // C++ Func: bool AdjustPagebreak(int pagebreak, int* known_pagebreaks, int number_of_pages );
-    %not_overload !%wxchkver_2_8 virtual bool AdjustPagebreak(int pagebreak); // int* known_pagebreaks, int number_of_pages );
-
-    // %override bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks );
-    // C++ Func: bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks );
-    %not_overload %wxchkver_2_8 & !%wxchkver_2_9_4 virtual bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks );
-
-    // %override bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks, int pageHeight );
-    // C++ Func: bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks, int pageHeight );
-    %not_overload %wxchkver_2_9_4 virtual bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks, int pageHeight );
-
-    //virtual void Draw(wxDC& dc, int x, int y, int view_y1, int view_y2, wxHtmlRenderingInfo& info );
-    //virtual void DrawInvisible(wxDC& dc, int x, int y, wxHtmlRenderingInfo& info );
-
-    // %override wxHtmlCell* wxHtmlCell::Find(int condition, [none, string, or int] );
-    // C++ Func: virtual const wxHtmlCell* Find(int condition, void *param = 0 );
-    virtual const wxHtmlCell* Find(int condition, void *param = 0 );
-
+    wxHtmlCell();
+    %wxchkver_3_1_2 void Draw(wxDC& dc, int x, int y, int view_y1, int view_y2, wxHtmlRenderingInfo& info);
+    %wxchkver_3_1_2 void DrawInvisible(wxDC& dc, int x , int y, wxHtmlRenderingInfo& info);
+    %wxchkver_3_1_2 const wxHtmlCell* Find(int condition, const void* param) const;
+    %wxchkver_3_1_2 wxHtmlCell *FindCellByPos(wxCoord x, wxCoord y, unsigned flags = wxHTML_FIND_EXACT) const;
     int GetDescent() const;
     wxHtmlCell* GetFirstChild( );
     int GetHeight() const;
     virtual wxString GetId() const;
     virtual wxHtmlLinkInfo* GetLink(int x = 0, int y = 0) const;
+    %wxchkver_3_1_2 wxCursor GetMouseCursor(wxHtmlWindowInterface* window) const;
+    %wxchkver_3_1_2 wxCursor GetMouseCursorAt(wxHtmlWindowInterface* window, const wxPoint& rePos) const;
     wxHtmlCell* GetNext() const;
     wxHtmlContainerCell* GetParent() const;
     int GetPosX() const;
     int GetPosY() const;
     int GetWidth() const;
-    virtual void Layout(int w );
-    //virtual void OnMouseClick(wxWindow* parent, int x, int y, const wxMouseEvent& event );
-    void SetId(const wxString& id );
-    void SetLink(const wxHtmlLinkInfo& link );
-    void SetNext(wxHtmlCell *cell );
-    void SetParent(wxHtmlContainerCell *p );
-    void SetPos(int x, int y );
+    virtual void Layout(int w);
+    bool ProcessMouseClick(wxHtmlWindowInterface* window, const wxPoint& pos, const wxMouseEvent& event);
+    void SetId(const wxString& id);
+    void SetLink(const wxHtmlLinkInfo& link);
+    void SetNext(wxHtmlCell* cell);
+    void SetParent(wxHtmlContainerCell* p);
+    void SetPos(int x, int y);
+    %wxchkver_3_1_2 wxString ConvertToText(wxHtmlSelection* sel) const;
+    %wxchkver_2_8 & !%wxchkver_2_9_4 virtual bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks);
+    %wxchkver_2_9_4 & !%wxchkver_3_1_2 virtual bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks, int pageHeight);
+    %wxchkver_3_1_2 virtual bool AdjustPagebreak(int* pagebreak, int pageHeight);
+    // %override [bool, int pagebreak] wxHtmlCell::AdjustPagebreak(int pagebreak);
+    // %override wxHtmlCell* wxHtmlCell::Find(int condition, [none, string, or int]);
+    // C++ Func: bool AdjustPagebreak(int pagebreak, int* known_pagebreaks, int number_of_pages);
+    //virtual void DrawInvisible(wxDC& dc, int x, int y, wxHtmlRenderingInfo& info);
+    //virtual void OnMouseClick(wxWindow* parent, int x, int y, const wxMouseEvent& event);
 };
 
 // ---------------------------------------------------------------------------
@@ -447,15 +505,17 @@ class wxSimpleHtmlListBox : public wxPanel, public wxHtmlWindowInterface //: pub
 
 class %delete wxHtmlDCRenderer : public wxObject
 {
-    wxHtmlDCRenderer( );
-
-    void SetDC(wxDC* dc, double pixel_scale = 1.0 );
-    //void SetFonts(wxString normal_face, wxString fixed_face, const int *sizes = NULL );
-    void SetSize(int width, int height );
-    void SetHtmlText(const wxString& html, const wxString& basepath = "", bool isdir = true );
-    !%wxchkver_2_8 int Render(int x, int y, int from = 0, int dont_render = false); //, int *known_pagebreaks = NULL, int number_of_pages = 0 );
-    %wxchkver_2_8 int Render(int x, int y, wxArrayInt& known_pagebreaks, int from = 0, int dont_render = false, int to = INT_MAX);
-    int GetTotalHeight( );
+    wxHtmlDCRenderer();
+    int GetTotalWidth() const;
+    int GetTotalHeight() const;
+    %wxchkver_3_1_2 int FindNextPageBreak(int pos) const;
+    %wxchkver_3_1_2 void Render(int x, int y, int from = 0, int to = INT_MAX);
+    void SetDC(wxDC* dc, double pixel_scale = 1.0);
+    %wxchkver_3_1_2 void SetStandardFonts(int size = -1, const wxString& normal_face = wxEmptyString, const wxString& fixed_face = wxEmptyString);
+    void SetHtmlText(const wxString& html, const wxString& basepath = wxEmptyString, bool isdir = true);
+    %wxchkver_3_1_2 void SetHtmlCell(wxHtmlContainerCell& cell);
+    void SetSize(int width, int height);
+    !%wxchkver_3_1_2 && %wxchkver_2_8 int Render(int x, int y, wxArrayInt& known_pagebreaks, int from = 0, int dont_render = false, int to = INT_MAX);
 };
 
 // ---------------------------------------------------------------------------

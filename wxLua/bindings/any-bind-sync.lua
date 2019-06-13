@@ -79,6 +79,10 @@ local steps = {
     wxMouseState = "mousestate.h",
     wxKeyboardState = "kbdstate.h",
   },
+  wxhtml_html = {
+    wxHtmlCell = "html/htmlcell.h",
+    wxHtmlDCRenderer = "html/htmprint.h",
+  },
 }
 local overrides = {}
 

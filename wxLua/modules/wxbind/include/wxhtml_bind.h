@@ -77,6 +77,13 @@ extern WXDLLIMPEXP_BINDWXHTML wxLuaBinding* wxLuaBinding_wxhtml_init();
     extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxSimpleHtmlListBox;
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
 
+#if (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+    extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxHtmlRenderingInfo;
+    extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxHtmlRenderingState;
+    extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxHtmlRenderingStyle;
+    extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxHtmlSelection;
+#endif // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+
 #if (wxLUA_USE_wxHTML && wxUSE_HTML) && (wxLUA_USE_wxHtmlHelpController && wxUSE_WXHTML_HELP)
     extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxHtmlHelpController;
     extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxHtmlHelpData;
