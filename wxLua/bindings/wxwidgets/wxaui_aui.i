@@ -511,6 +511,7 @@ class wxAuiNotebook : public wxControl
     virtual void SetUniformBitmapSize(const wxSize& size);
     virtual void Split(size_t page, int direction);
     %wxchkver_2_8_5 bool ShowWindowMenu(); // Shows the window menu
+    %wxchkver_3_1_2 int GetPageImage(size_t nPage) const;
     %wxchkver_2_8_1 const wxAuiManager& GetAuiManager() const; // %add as it's missing from auibook.h
     %wxchkver_3_0 void AssignImageList(wxImageList *imageList); // %add as it's used by SetPageImage
     %wxchkver_3_0 void SetImageList(wxImageList *imageList); // %add as it's used by SetPageImage
@@ -886,7 +887,7 @@ class %delete wxAuiManager : public wxEvtHandler
     void MaximizePane(wxAuiPaneInfo& pane_info);
     void RestorePane(wxAuiPaneInfo& pane_info);
     void RestoreMaximizedPane();
-    wxString SavePaneInfo(wxAuiPaneInfo& pane);
+    %wxchkver_3_1_2 wxString SavePaneInfo(const wxAuiPaneInfo& pane);
     wxString SavePerspective();
     void SetArtProvider(%ungc wxAuiDockArt* art_provider);
     void SetDockSizeConstraint(double width_pct, double height_pct);
@@ -896,6 +897,7 @@ class %delete wxAuiManager : public wxEvtHandler
     void StartPaneDrag(wxWindow* pane_window, const wxPoint& offset);
     void UnInit();
     void Update();
+    !%wxchkver_3_1_2 wxString SavePaneInfo(wxAuiPaneInfo& pane);
     void OnPaneButton(wxAuiManagerEvent& evt); // %add as it's missing from framemanager.h
     void OnRender(wxAuiManagerEvent& evt); // %add as it's missing from framemanager.h
 };

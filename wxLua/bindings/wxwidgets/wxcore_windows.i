@@ -180,11 +180,13 @@ class wxWindow : public wxEvtHandler
     %wxchkver_3_1_1 int FromDIP(int d) const;
     %wxchkver_3_1_1 static wxSize FromDIP(const wxSize& sz, const wxWindow* w);
     %wxchkver_3_1_1 static wxPoint FromDIP(const wxPoint& pt, const wxWindow* w);
+    %wxchkver_3_1_2 static int FromDIP(int d, const wxWindow* w);
     %wxchkver_3_1_1 wxSize ToDIP(const wxSize& sz) const;
     %wxchkver_3_1_1 wxPoint ToDIP(const wxPoint& pt) const;
     %wxchkver_3_1_1 int ToDIP(int d) const;
     %wxchkver_3_1_1 static wxSize ToDIP(const wxSize& sz, const wxWindow* w);
     %wxchkver_3_1_1 static wxPoint ToDIP(const wxPoint& pt, const wxWindow* w);
+    %wxchkver_3_1_2 static int ToDIP(int d, const wxWindow* w);
     virtual wxSize GetBestSize() const;
     %wxchkver_3_1_1 int GetBestHeight(int width) const;
     %wxchkver_3_1_1 int GetBestWidth(int height) const;
@@ -270,8 +272,11 @@ class wxWindow : public wxEvtHandler
     void SetOwnBackgroundColour(const wxColour& colour);
     %wxchkver_3_1_1 bool InheritsBackgroundColour() const;
     %wxchkver_3_1_1 bool UseBgCol() const;
+    %wxchkver_3_1_2 bool UseBackgroundColour() const;
     void SetOwnFont(const wxFont& font);
     void SetOwnForegroundColour(const wxColour& colour);
+    %wxchkver_3_1_2 bool UseForegroundColour() const;
+    %wxchkver_3_1_2 bool InheritsForegroundColour() const;
     %wxchkver_3_1_1 void SetPalette(const wxPalette& pal);
     virtual bool ShouldInheritColours();
     virtual void SetThemeEnabled(bool enable);
@@ -372,6 +377,7 @@ class wxWindow : public wxEvtHandler
     void SetCaret(wxCaret *caret) const;
     virtual void SetCursor(const wxCursor& cursor);
     void WarpPointer(int x, int y);
+    %wxchkver_3_1_2 bool EnableTouchEvents(int eventsMask);
     %wxchkver_3_1_1 wxHitTest HitTest(wxCoord x, wxCoord y) const;
     %wxchkver_3_1_1 wxHitTest HitTest(const wxPoint& pt) const;
     %wxchkver_3_1_1 wxBorder GetBorder(long flags) const;

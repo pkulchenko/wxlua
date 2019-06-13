@@ -163,6 +163,8 @@ class wxTopLevelWindow : public wxNonOwnedWindow
     %wxchkver_3_1_1 && %win wxMenu *MSWGetSystemMenu() const;
     void RequestUserAttention(int flags = wxUSER_ATTENTION_INFO);
     %wxchkver_3_1_1 void Restore();
+    // %wxchkver_3_1_2 bool RestoreToGeometry(GeometrySerializer& ser);
+    // %wxchkver_3_1_2 bool SaveGeometry(const GeometrySerializer& ser) const;
     %wxchkver_2_8 wxWindow* SetDefaultItem(wxWindow *win);
     %wxchkver_2_8 wxWindow* SetTmpDefaultItem(wxWindow *win);
     %wxchkver_2_8 wxWindow* GetTmpDefaultItem() const;

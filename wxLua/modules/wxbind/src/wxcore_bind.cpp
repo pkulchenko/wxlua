@@ -4748,6 +4748,7 @@ static const char* wxluaclassname_wxPaletteChangedEvent = "wxPaletteChangedEvent
 static const char* wxluaclassname_wxPanel = "wxPanel";
 static const char* wxluaclassname_wxPasswordEntryDialog = "wxPasswordEntryDialog";
 static const char* wxluaclassname_wxPen = "wxPen";
+static const char* wxluaclassname_wxPenInfo = "wxPenInfo";
 static const char* wxluaclassname_wxPenList = "wxPenList";
 static const char* wxluaclassname_wxPickerBase = "wxPickerBase";
 static const char* wxluaclassname_wxPoint = "wxPoint";
@@ -5556,6 +5557,12 @@ static wxLuaBindClass* wxluabaseclassbinds_wxXPMHandler[] = { NULL };
     extern int wxStaticBoxSizer_methodCount;
     extern void wxLua_wxStaticBoxSizer_delete_function(void** p);
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)
+
+#if (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)
+    extern wxLuaBindMethod wxPenInfo_methods[];
+    extern int wxPenInfo_methodCount;
+    extern void wxLua_wxPenInfo_delete_function(void** p);
+#endif // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)
 
 #if (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
     extern wxLuaBindMethod wxBitmapButton_methods[];
@@ -7371,6 +7378,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #if wxLUA_USE_wxColourPenBrush
         { wxluaclassname_wxPen, wxPen_methods, wxPen_methodCount, CLASSINFO(wxPen), &wxluatype_wxPen, wxluabaseclassnames_wxPen, wxluabaseclassbinds_wxPen, NULL, NULL, NULL, 0, &wxLua_wxPen_delete_function, }, 
 #endif // wxLUA_USE_wxColourPenBrush
+
+#if (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)
+        { wxluaclassname_wxPenInfo, wxPenInfo_methods, wxPenInfo_methodCount, NULL, &wxluatype_wxPenInfo, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxPenInfo_delete_function, }, 
+#endif // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)
 
 #if (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList)
         { wxluaclassname_wxPenList, wxPenList_methods, wxPenList_methodCount, NULL, &wxluatype_wxPenList, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxPenList_delete_function, }, 

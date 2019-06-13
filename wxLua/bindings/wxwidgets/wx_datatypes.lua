@@ -3788,6 +3788,12 @@ wx_dataTypeTable =
     Name = "wxPenCap",
     ValueType = "enum",
   },
+  wxPenInfo = {
+    Condition = "(wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)",
+    IsNumber = false,
+    Name = "wxPenInfo",
+    ValueType = "class",
+  },
   wxPenJoin = {
     Condition = "wxLUA_USE_wxColourPenBrush",
     IsNumber = true,
@@ -4579,10 +4585,22 @@ wx_dataTypeTable =
     Name = "wxStandardPaths",
     ValueType = "class",
   },
+  ["wxStandardPaths::ConfigFileConv"] = {
+    Condition = "(wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,2))",
+    IsNumber = true,
+    Name = "wxStandardPaths::ConfigFileConv",
+    ValueType = "enum",
+  },
   ["wxStandardPaths::Dir"] = {
     Condition = "(wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))",
     IsNumber = true,
     Name = "wxStandardPaths::Dir",
+    ValueType = "enum",
+  },
+  ["wxStandardPaths::FileLayout"] = {
+    Condition = "(wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,2))",
+    IsNumber = true,
+    Name = "wxStandardPaths::FileLayout",
     ValueType = "enum",
   },
   ["wxStandardPaths::ResourceCat"] = {
@@ -5515,6 +5533,7 @@ wx_preprocConditionTable =
   ["%wxchkver_3_1"] = "wxCHECK_VERSION(3,1,0)",
   ["%wxchkver_3_1_0"] = "wxCHECK_VERSION(3,1,0)",
   ["%wxchkver_3_1_1"] = "wxCHECK_VERSION(3,1,1)",
+  ["%wxchkver_3_1_2"] = "wxCHECK_VERSION(3,1,2)",
   ["%wxcompat_2_4"] = "(defined(WXWIN_COMPATIBILITY_2_4) && WXWIN_COMPATIBILITY_2_4)",
   ["%wxcompat_2_6"] = "(defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)",
   ["%wxcompat_2_8"] = "(defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)",

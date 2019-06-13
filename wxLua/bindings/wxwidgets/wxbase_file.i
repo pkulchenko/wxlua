@@ -143,6 +143,54 @@ enum wxStandardPaths::Dir
 };
 #endif // %wxchkver_3_1_1
 
+#if %wxchkver_3_1_2
+enum wxStandardPaths::FileLayout
+{
+    /**
+        Use the classic file layout.
+
+        User configuration and data files are located directly in the home
+        directory.
+
+        This is the default behaviour for compatibility reasons.
+    */
+    FileLayout_Classic,
+
+    /**
+        Use a XDG styled file layout.
+
+        File layout follows the XDG Base Directory Specification (see
+        https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html).
+
+        This is the recommended layout for new applications.
+    */
+    FileLayout_XDG
+};
+#endif // %wxchkver_3_1_2
+
+#if %wxchkver_3_1_2
+enum wxStandardPaths::ConfigFileConv
+{
+    /**
+        Use the class Unix dot-file convention.
+
+        Prepend the dot to the file base name.
+
+        This value is ignored when in XDG mode, where MakeConfigFileName()
+        always behaves as if ConfigFileConv_Ext was specified.
+    */
+    ConfigFileConv_Dot,
+
+    /**
+        Use @c .conf extension for the file names.
+
+        This convention is always used in XDG mode.
+     */
+    ConfigFileConv_Ext
+};
+#endif // %wxchkver_3_1_2
+
+
 enum wxStandardPaths::ResourceCat
 {
     ResourceCat_None,     // no special category
@@ -172,6 +220,9 @@ class wxStandardPaths // ignore wxStandardPathsBase
     %wxchkver_3_1_1 && %win static wxString MSWGetShellDir(int csidl);
     %wxchkver_3_1_1 && %gtk void SetInstallPrefix(const wxString& prefix);
     %wxchkver_3_1_1 void UseAppInfo(int info);
+    %wxchkver_3_1_2 void SetFileLayout(wxStandardPaths::FileLayout layout);
+    %wxchkver_3_1_2 wxStandardPaths::FileLayout GetFileLayout() const;
+    %wxchkver_3_1_2 wxString MakeConfigFileName(const wxString& basename, wxStandardPaths::ConfigFileConv conv = wxStandardPaths::ConfigFileConv_Ext) const;
     %wxchkver_3_1_1 wxString GetUserDir(wxStandardPaths::Dir userDir) const; // %override parameter type
     wxString GetLocalizedResourcesDir(const wxString& lang, wxStandardPaths::ResourceCat category = wxStandardPaths::ResourceCat_None) const; // %override parameter types
 };

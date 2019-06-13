@@ -378,19 +378,24 @@ enum wxFontSymbolicSize
 class wxFontInfo
 {
     %wxchkver_3_1_1 wxFontInfo();
-    %wxchkver_3_1_1 wxFontInfo(int pointSize);
+    // wxFontInfo(T pointSize); // unroll the template T into explicit float/int
     %wxchkver_3_1_1 wxFontInfo(const wxSize& pixelSize);
     %wxchkver_3_1_1 wxFontInfo& Family(wxFontFamily family);
     %wxchkver_3_1_1 wxFontInfo& FaceName(const wxString& faceName);
+    %wxchkver_3_1_2 wxFontInfo& Weight(int weight);
     %wxchkver_3_1_1 wxFontInfo& Bold(bool bold = true);
     %wxchkver_3_1_1 wxFontInfo& Light(bool light = true);
     %wxchkver_3_1_1 wxFontInfo& Italic(bool italic = true);
     %wxchkver_3_1_1 wxFontInfo& Slant(bool slant = true);
+    %wxchkver_3_1_2 wxFontInfo& Style(wxFontStyle style);
     %wxchkver_3_1_1 wxFontInfo& AntiAliased(bool antiAliased = true);
     %wxchkver_3_1_1 wxFontInfo& Underlined(bool underlined = true);
     %wxchkver_3_1_1 wxFontInfo& Strikethrough(bool strikethrough = true);
     %wxchkver_3_1_1 wxFontInfo& Encoding(wxFontEncoding encoding);
     %wxchkver_3_1_1 wxFontInfo& AllFlags(int flags);
+    %wxchkver_3_1_2 static wxFontWeight GetWeightClosestToNumericValue(int numWeight);
+    %wxchkver_3_1_1 wxFontInfo(int pointSize); // %override added explicitly
+    %wxchkver_3_1_2 wxFontInfo(float pointSize);
 };
 
 class %delete wxFont : public wxGDIObject
@@ -414,12 +419,15 @@ class %delete wxFont : public wxGDIObject
     wxString GetNativeFontInfoDesc() const;
     %wxchkver_3_1_1 wxString GetNativeFontInfoUserDesc() const;
     %wxchkver_3_1_1 const wxNativeFontInfo *GetNativeFontInfo() const;
+    %wxchkver_3_1_2 static bool AddPrivateFont(const wxString& filename);
     int      GetPointSize() const;
+    %wxchkver_3_1_2 float  GetFractionalPointSize() const;
     %wxchkver_3_1_1 wxSize GetPixelSize() const;
     int      GetStyle() const;
     bool     GetUnderlined() const;
     %wxchkver_3_1_1 bool GetStrikethrough() const;
     int      GetWeight() const;
+    %wxchkver_3_1_2 int GetNumericWeight() const;
     bool IsFixedWidth() const;
     %wxchkver_3_1_1 bool IsOk() const;
     %wxchkver_3_1_1 wxFont Bold() const;
@@ -442,6 +450,7 @@ class %delete wxFont : public wxGDIObject
     %not_overload %wxchkver_2_8 bool SetNativeFontInfo(const wxString& info);
     %wxchkver_2_8 bool SetNativeFontInfoUserDesc(const wxString& info);
     void     SetPointSize(int pointSize);
+    %wxchkver_3_1_2 void SetFractionalPointSize(float pointSize);
     %wxchkver_3_1_1 void SetPixelSize(const wxSize& pixelSize);
     %wxchkver_3_1_1 void SetStyle(wxFontStyle style);
     %wxchkver_3_1_1 void SetSymbolicSize(wxFontSymbolicSize size);
@@ -449,11 +458,13 @@ class %delete wxFont : public wxGDIObject
     %wxchkver_3_1_1 void SetUnderlined(bool underlined);
     %wxchkver_3_1_1 void SetStrikethrough(bool strikethrough);
     %wxchkver_3_1_1 void SetWeight(wxFontWeight weight);
+    %wxchkver_3_1_2 void SetNumericWeight(int weight);
     %wxchkver_3_1_1 bool operator!=(const wxFont& font) const;
     %wxchkver_3_1_1 bool operator==(const wxFont& font) const;
     wxFont& operator =(const wxFont& font);
     static wxFontEncoding GetDefaultEncoding();
     static void SetDefaultEncoding(wxFontEncoding encoding);
+    %wxchkver_3_1_2 static int GetNumericWeightOf(wxFontWeight weight);
     static %gc wxFont* New(int pointSize, wxFontFamily family, int flags = wxFONTFLAG_DEFAULT, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
     static %gc wxFont* New(const wxSize& pixelSize, wxFontFamily family, int flags = wxFONTFLAG_DEFAULT, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
     !%wxchkver_3_1_1 void     SetFamily(int family);
@@ -642,10 +653,12 @@ class %delete wxColour : public wxGDIObject
     %wxchkver_3_1_1 void SetRGBA(wxUint32 colRGBA);
     %wxchkver_3_1_1 wxUint32 GetRGB() const;
     %wxchkver_3_1_1 wxUint32 GetRGBA() const;
+    %wxchkver_3_1_2 double GetLuminance() const;
     // long GetPixel(); // not well supported and the return type is different to map
     unsigned char Green() const;
     %wxchkver_3_1_1 bool IsOk() const;
     unsigned char Red() const;
+    %wxchkver_3_1_2 bool IsSolid() const;
     %wxchkver_2_8 void Set(unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha = wxALPHA_OPAQUE);
     %wxchkver_2_8 void Set(unsigned long colRGB);
     %wxchkver_2_8 bool Set(const wxString &str);
@@ -742,6 +755,21 @@ enum
     wxVERTICAL_HATCH
 };
 
+
+#if %wxchkver_3_1_2
+class wxPenInfo
+{
+    wxPenInfo(const wxColour& colour, int width = 1, wxPenStyle style = wxPENSTYLE_SOLID);
+    wxPenInfo& Colour(const wxColour& col);
+    wxPenInfo& Width(int width);
+    wxPenInfo& Style(wxPenStyle style);
+    wxPenInfo& Stipple(const wxBitmap& stipple);
+    // wxPenInfo& Dashes(int nb_dashes, const wxDash *dash);
+    wxPenInfo& Join(wxPenJoin join);
+    wxPenInfo& Cap(wxPenCap cap);
+};
+#endif // %wxchkver_3_1_2
+
 class %delete wxPen : public wxGDIObject
 {
     #define_object  wxNullPen
@@ -756,6 +784,7 @@ class %delete wxPen : public wxGDIObject
     %rename wxMEDIUM_GREY_PEN  #define_pointer wxLua_wxMEDIUM_GREY_PEN
     %rename wxLIGHT_GREY_PEN   #define_pointer wxLua_wxLIGHT_GREY_PEN
     wxPen();
+    %wxchkver_3_1_2 wxPen(const wxPenInfo& info);
     wxPen(const wxColour& colour, int width, wxPenStyle style);
     %win wxPen(const wxBitmap& stipple, int width);
     wxPen(const wxPen& pen);
@@ -1684,6 +1713,7 @@ class %delete wxArrayVideoModes
 class %delete wxDisplay
 {
     %wxchkver_3_1_1 wxDisplay(unsigned int index = 0);
+    %wxchkver_3_1_2 wxDisplay(const wxWindow* window);
     bool  ChangeMode(const wxVideoMode& mode = wxDefaultVideoMode);
     %wxchkver_2_8 wxRect GetClientArea() const;
     static size_t GetCount();
@@ -1692,6 +1722,7 @@ class %delete wxDisplay
     wxRect  GetGeometry() const;
     wxArrayVideoModes  GetModes(const wxVideoMode& mode = wxDefaultVideoMode) const;
     wxString  GetName() const;
+    %wxchkver_3_1_2 wxSize GetPPI() const;
     bool  IsPrimary();
     !%wxchkver_3_1_1 bool  IsOk() const;
     !%wxchkver_3_1_1 wxDisplay(size_t index = 0);
