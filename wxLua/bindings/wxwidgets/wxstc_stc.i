@@ -5035,6 +5035,27 @@ class wxStyledTextCtrl : public wxControl
     %wxchkver_3_1_0 void SetPhasesDraw(int phases);
 
     /**
+        Choose the quality level for text.
+
+        The input should be one of the
+        @link wxStyledTextCtrl::wxSTC_EFF_QUALITY_DEFAULT wxSTC_EFF_QUALITY_* @endlink constants.
+        @remarks
+        This method only has any effect with the wxMSW port and when
+        technology has been set to wxSTC_TECHNOLOGY_DIRECTWRITE.
+        @since 3.1.1
+    */
+    %wxchkver_3_1_1 void SetFontQuality(int fontQuality);
+
+    /**
+        Retrieve the quality level for text.
+
+        The return value will be one of the
+        @link wxStyledTextCtrl::wxSTC_EFF_QUALITY_DEFAULT wxSTC_EFF_QUALITY_* @endlink constants.
+        @since 3.1.1
+    */
+    %wxchkver_3_1_1 int GetFontQuality() const;
+
+    /**
         Change internal focus flag.
     */
     void SetSTCFocus(bool focus);
@@ -5047,8 +5068,10 @@ class wxStyledTextCtrl : public wxControl
     /**
         Set the technology used.
 
-        The input should be one of the
-        @link wxStyledTextCtrl::wxSTC_TECHNOLOGY_DEFAULT wxSTC_TECHNOLOGY_* @endlink constants.
+        @remarks
+        For the wxMSW port, the input can be either wxSTC_TECHNOLOGY_DEFAULT
+        or wxSTC_TECHNOLOGY_DIRECTWRITE.  With other ports, this method has
+        no effect.
     */
     %wxchkver_2_9_5 void SetTechnology(int technology);
 
@@ -5181,7 +5204,7 @@ class wxStyledTextCtrl : public wxControl
         The return value will be one of the
         @link wxStyledTextCtrl::wxSTC_IV_NONE wxSTC_IV_* @endlink constants.
     */
-    !%wxchkver_2_9_5 bool GetIndentationGuides();
+    %wxchkver_3_1_3 int GetIndentationGuides() const;
 
     /**
         Set the highlighted indentation guide column.
@@ -5218,6 +5241,8 @@ class wxStyledTextCtrl : public wxControl
 
     /**
         @member_group_name{Markers, Markers}
+
+        @see MarkerDefineBitmap
     */
     //@{
 
@@ -5293,8 +5318,10 @@ class wxStyledTextCtrl : public wxControl
 
     /**
         Define a marker from a bitmap
+
+        @since 3.1.3
     */
-    void MarkerDefineBitmap(int markerNumber, const wxBitmap& bmp);
+    %wxchkver_3_1_3 void MarkerDefinePixmap(int markerNumber, const char* const* xpmData);
 
     /**
         Add a set of markers to a line.
@@ -5500,6 +5527,8 @@ class wxStyledTextCtrl : public wxControl
 
     /**
         @member_group_name{Autocompletion, Autocompletion}
+
+        %wxchkver_3_1_3 @see RegisterImage(int, const wxBitmap&)
     */
     //@{
 
@@ -5612,8 +5641,10 @@ class wxStyledTextCtrl : public wxControl
 
     /**
         Register an image for use in autocompletion lists.
+
+        @since 3.1.3
     */
-    void RegisterImage(int type, const wxBitmap& bmp);
+    %wxchkver_3_1_3 void RegisterImage(int type, const char* const* xpmData);
 
     /**
         Clear all the registered images.
@@ -6679,7 +6710,7 @@ class wxStyledTextCtrl : public wxControl
     void SetWrapVisualFlags(int wrapVisualFlags);
 
     /**
-        Retrive the display mode of visual flags for wrapped lines.
+        Retrieve the display mode of visual flags for wrapped lines.
 
         The return value will be a bit list containing one or more of the
         @link wxStyledTextCtrl::wxSTC_WRAPVISUALFLAG_NONE wxSTC_WRAPVISUALFLAG_* @endlink constants.
@@ -6695,7 +6726,7 @@ class wxStyledTextCtrl : public wxControl
     void SetWrapVisualFlagsLocation(int wrapVisualFlagsLocation);
 
     /**
-        Retrive the location of visual flags for wrapped lines.
+        Retrieve the location of visual flags for wrapped lines.
 
         The return value will be a bit list containing one or more of the
         @link wxStyledTextCtrl::wxSTC_WRAPVISUALFLAGLOC_DEFAULT wxSTC_WRAPVISUALFLAGLOC_* @endlink constants.
@@ -6708,7 +6739,7 @@ class wxStyledTextCtrl : public wxControl
     void SetWrapStartIndent(int indent);
 
     /**
-        Retrive the start indent for wrapped lines.
+        Retrieve the start indent for wrapped lines.
     */
     int GetWrapStartIndent() const;
 
@@ -7116,6 +7147,8 @@ class wxStyledTextCtrl : public wxControl
     !%wxchkver_3_1_1 int BraceMatch(int pos);
     !%wxchkver_3_1_1 int GetPropertyInt(const wxString& key) const;
     !%wxchkver_3_1_1 void UsePopUp(bool allowPopUp);
+    !%wxchkver_3_1_3 void MarkerDefineBitmap(int markerNumber, const wxBitmap& bmp);
+    !%wxchkver_3_1_3 void RegisterImage(int type, const wxBitmap& bmp);
     // %override [Lua string styleBytes] wxStyledTextCtrl::SetStyleBytes(int length, Lua string styleBytes);
     // Set an indicator to draw under text or over(default).
     // These are like their namesakes Home(Extend)?, LineEnd(Extend)?, VCHome(Extend)?
@@ -7147,7 +7180,7 @@ class wxStyledTextCtrl : public wxControl
     /**
        Extract style settings from a spec-string which is composed of one or
        more of the following comma separated elements:
-    
+
           bold                    turns on bold
           italic                  turns on italics
           fore:[name or \#RRGGBB]  sets the foreground colour
@@ -7272,6 +7305,60 @@ class wxStyledTextCtrl : public wxControl
        Clear annotations from the given line.
     */
     %wxchkver_2_9_5 void AnnotationClearLine(int line);
+
+    /**
+       Define a marker with a wxBitmap.
+    */
+    %wxchkver_3_1_3 void MarkerDefineBitmap(int markerNumber, const wxBitmap& bmp);
+
+    /**
+       Register an image for use in autocompletion lists.
+    */
+    %wxchkver_3_1_3 void RegisterImage(int type, const wxBitmap& bmp);
+
+    /**
+       Set the colours used to display the items in an autocompletion list.
+
+       This method can be used if the default colours make the list hard to
+       read or if specific colours are desired for whatever reason.
+        @param background
+            The colour used for the background of the list.
+        @param text
+            The colour used for all text except for the selected item.
+        @param highlight
+            The colour used to highlight the selected item in the list.
+        @param highlightText
+            The colour used for the text of the selected item.
+        @remarks
+            To reset one or more of the colours to its default,
+            call this method with wxNullColour for the colour or colours
+            to be reset.
+
+        @since 3.1.3
+    */
+    %wxchkver_3_1_3 void AutoCompSetColours(const wxColour& background, const wxColour& text, const wxColour& highlight, const wxColour& highlightText);
+
+    /**
+       Use a wxListCtrl to display autocompletion and user lists.
+
+       By default lists will be displayed in a wxListBox. Use this method to
+       display them in a wxListCtrl instead. The primary difference is that
+       wxListCtrl has hot tracking to highlight the item under the mouse cursor.
+        @param useListCtrl
+            Set this to true to use a wxListCtrl and to false to use a
+            wxListBox.
+        @param currentBgColour
+            The colour used to highlight the item under the mouse cursor.
+        @param currentTextColour
+            The colour used for the text of the item under the mouse cursor.
+        @remarks
+            To reset one or more of the colours to its default,
+            call this method with wxNullColour for the colour or colours
+            to be reset.
+
+        @since 3.1.3
+    */
+    %wxchkver_3_1_3 void AutoCompUseListCtrl(bool useListCtrl = true, const wxColour& currentBgColour = wxNullColour, const wxColour& currentTextColour = wxNullColour);
 
     //@}
 

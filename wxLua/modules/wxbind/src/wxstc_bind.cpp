@@ -845,6 +845,32 @@ static int LUACALL wxLua_wxStyledTextCtrl_AutoCompSetChooseSingle(lua_State *L)
     return 0;
 }
 
+
+#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_AutoCompSetColours[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_wxColour, &wxluatype_wxColour, &wxluatype_wxColour, &wxluatype_wxColour, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_AutoCompSetColours(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompSetColours[1] = {{ wxLua_wxStyledTextCtrl_AutoCompSetColours, WXLUAMETHOD_METHOD, 5, 5, s_wxluatypeArray_wxLua_wxStyledTextCtrl_AutoCompSetColours }};
+//     %wxchkver_3_1_3 void AutoCompSetColours(const wxColour& background, const wxColour& text, const wxColour& highlight, const wxColour& highlightText);
+static int LUACALL wxLua_wxStyledTextCtrl_AutoCompSetColours(lua_State *L)
+{
+    // const wxColour highlightText
+    const wxColour * highlightText = (const wxColour *)wxluaT_getuserdatatype(L, 5, wxluatype_wxColour);
+    // const wxColour highlight
+    const wxColour * highlight = (const wxColour *)wxluaT_getuserdatatype(L, 4, wxluatype_wxColour);
+    // const wxColour text
+    const wxColour * text = (const wxColour *)wxluaT_getuserdatatype(L, 3, wxluatype_wxColour);
+    // const wxColour background
+    const wxColour * background = (const wxColour *)wxluaT_getuserdatatype(L, 2, wxluatype_wxColour);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call AutoCompSetColours
+    self->AutoCompSetColours(*background, *text, *highlight, *highlightText);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_AutoCompSetDropRestOfWord[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_AutoCompSetDropRestOfWord(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompSetDropRestOfWord[1] = {{ wxLua_wxStyledTextCtrl_AutoCompSetDropRestOfWord, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_AutoCompSetDropRestOfWord }};
@@ -1026,6 +1052,32 @@ static int LUACALL wxLua_wxStyledTextCtrl_AutoCompStops(lua_State *L)
 
     return 0;
 }
+
+
+#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_AutoCompUseListCtrl[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TBOOLEAN, &wxluatype_wxColour, &wxluatype_wxColour, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_AutoCompUseListCtrl(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompUseListCtrl[1] = {{ wxLua_wxStyledTextCtrl_AutoCompUseListCtrl, WXLUAMETHOD_METHOD, 1, 4, s_wxluatypeArray_wxLua_wxStyledTextCtrl_AutoCompUseListCtrl }};
+//     %wxchkver_3_1_3 void AutoCompUseListCtrl(bool useListCtrl = true, const wxColour& currentBgColour = wxNullColour, const wxColour& currentTextColour = wxNullColour);
+static int LUACALL wxLua_wxStyledTextCtrl_AutoCompUseListCtrl(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxColour currentTextColour = wxNullColour
+    const wxColour * currentTextColour = (argCount >= 4 ? (const wxColour *)wxluaT_getuserdatatype(L, 4, wxluatype_wxColour) : &wxNullColour);
+    // const wxColour currentBgColour = wxNullColour
+    const wxColour * currentBgColour = (argCount >= 3 ? (const wxColour *)wxluaT_getuserdatatype(L, 3, wxluatype_wxColour) : &wxNullColour);
+    // bool useListCtrl = true
+    bool useListCtrl = (argCount >= 2 ? wxlua_getbooleantype(L, 2) : true);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call AutoCompUseListCtrl
+    self->AutoCompUseListCtrl(useListCtrl, *currentBgColour, *currentTextColour);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_BackTab[] = { &wxluatype_wxStyledTextCtrl, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_BackTab(lua_State *L);
@@ -3330,6 +3382,25 @@ static int LUACALL wxLua_wxStyledTextCtrl_GetFoldParent(lua_State *L)
 }
 
 
+#if wxCHECK_VERSION(3,1,1)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetFontQuality[] = { &wxluatype_wxStyledTextCtrl, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_GetFontQuality(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetFontQuality[1] = {{ wxLua_wxStyledTextCtrl_GetFontQuality, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetFontQuality }};
+//     %wxchkver_3_1_1 int GetFontQuality() const;
+static int LUACALL wxLua_wxStyledTextCtrl_GetFontQuality(lua_State *L)
+{
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call GetFontQuality
+    int returns = (self->GetFontQuality());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(3,1,1)
+
 #if wxCHECK_VERSION(2,9,5)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetGapPosition[] = { &wxluatype_wxStyledTextCtrl, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_GetGapPosition(lua_State *L);
@@ -3533,23 +3604,26 @@ static int LUACALL wxLua_wxStyledTextCtrl_GetIndentationGuides1(lua_State *L)
     return 1;
 }
 
+#endif // !wxCHECK_VERSION(2,9,5)
+
+#if wxCHECK_VERSION(3,1,3)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetIndentationGuides[] = { &wxluatype_wxStyledTextCtrl, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_GetIndentationGuides(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetIndentationGuides[1] = {{ wxLua_wxStyledTextCtrl_GetIndentationGuides, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetIndentationGuides }};
-//     !%wxchkver_2_9_5 bool GetIndentationGuides();
+//     %wxchkver_3_1_3 int GetIndentationGuides() const;
 static int LUACALL wxLua_wxStyledTextCtrl_GetIndentationGuides(lua_State *L)
 {
     // get this
     wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
     // call GetIndentationGuides
-    bool returns = (self->GetIndentationGuides());
-    // push the result flag
-    lua_pushboolean(L, returns);
+    int returns = (self->GetIndentationGuides());
+    // push the result number
+    lua_pushnumber(L, returns);
 
     return 1;
 }
 
-#endif // !wxCHECK_VERSION(2,9,5)
+#endif // wxCHECK_VERSION(3,1,3)
 
 #if wxCHECK_VERSION(2,9,5)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetIndicatorCurrent[] = { &wxluatype_wxStyledTextCtrl, NULL };
@@ -7134,11 +7208,32 @@ static int LUACALL wxLua_wxStyledTextCtrl_MarkerDefine(lua_State *L)
 
 #endif // wxLUA_USE_wxColourPenBrush
 
-#if wxLUA_USE_wxBitmap
+#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerDefineBitmap1[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_MarkerDefineBitmap1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerDefineBitmap1[1] = {{ wxLua_wxStyledTextCtrl_MarkerDefineBitmap1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerDefineBitmap1 }};
+//     %wxchkver_3_1_3 void MarkerDefineBitmap(int markerNumber, const wxBitmap& bmp);
+static int LUACALL wxLua_wxStyledTextCtrl_MarkerDefineBitmap1(lua_State *L)
+{
+    // const wxBitmap bmp
+    const wxBitmap * bmp = (const wxBitmap *)wxluaT_getuserdatatype(L, 3, wxluatype_wxBitmap);
+    // int markerNumber
+    int markerNumber = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call MarkerDefineBitmap
+    self->MarkerDefineBitmap(markerNumber, *bmp);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap)
+
+#if (!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerDefineBitmap[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_wxBitmap, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_MarkerDefineBitmap(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerDefineBitmap[1] = {{ wxLua_wxStyledTextCtrl_MarkerDefineBitmap, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerDefineBitmap }};
-//     void MarkerDefineBitmap(int markerNumber, const wxBitmap& bmp);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerDefineBitmap[1] = {{ wxLua_wxStyledTextCtrl_MarkerDefineBitmap, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerDefineBitmap }};
+//     !%wxchkver_3_1_3 void MarkerDefineBitmap(int markerNumber, const wxBitmap& bmp);
 static int LUACALL wxLua_wxStyledTextCtrl_MarkerDefineBitmap(lua_State *L)
 {
     // const wxBitmap bmp
@@ -7153,7 +7248,28 @@ static int LUACALL wxLua_wxStyledTextCtrl_MarkerDefineBitmap(lua_State *L)
     return 0;
 }
 
-#endif // wxLUA_USE_wxBitmap
+#endif // (!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap)
+
+#if wxCHECK_VERSION(3,1,3)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerDefinePixmap[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TLIGHTUSERDATA, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_MarkerDefinePixmap(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerDefinePixmap[1] = {{ wxLua_wxStyledTextCtrl_MarkerDefinePixmap, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerDefinePixmap }};
+//     %wxchkver_3_1_3 void MarkerDefinePixmap(int markerNumber, const char* const* xpmData);
+static int LUACALL wxLua_wxStyledTextCtrl_MarkerDefinePixmap(lua_State *L)
+{
+    // const char const xpmData
+    const char* const* xpmData = (const char* const*)wxlua_touserdata(L, 3);
+    // int markerNumber
+    int markerNumber = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call MarkerDefinePixmap
+    self->MarkerDefinePixmap(markerNumber, xpmData);
+
+    return 0;
+}
+
+#endif // wxCHECK_VERSION(3,1,3)
 
 #if wxCHECK_VERSION(2,9,5)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerDefineRGBAImage[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
@@ -7982,12 +8098,12 @@ static int LUACALL wxLua_wxStyledTextCtrl_Redo(lua_State *L)
 }
 
 
-#if wxLUA_USE_wxBitmap
-static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_RegisterImage[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_wxBitmap, NULL };
-static int LUACALL wxLua_wxStyledTextCtrl_RegisterImage(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_RegisterImage[1] = {{ wxLua_wxStyledTextCtrl_RegisterImage, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_RegisterImage }};
-//     void RegisterImage(int type, const wxBitmap& bmp);
-static int LUACALL wxLua_wxStyledTextCtrl_RegisterImage(lua_State *L)
+#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_RegisterImage2[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_RegisterImage2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_RegisterImage2[1] = {{ wxLua_wxStyledTextCtrl_RegisterImage2, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_RegisterImage2 }};
+//     %wxchkver_3_1_3 void RegisterImage(int type, const wxBitmap& bmp);
+static int LUACALL wxLua_wxStyledTextCtrl_RegisterImage2(lua_State *L)
 {
     // const wxBitmap bmp
     const wxBitmap * bmp = (const wxBitmap *)wxluaT_getuserdatatype(L, 3, wxluatype_wxBitmap);
@@ -8001,7 +8117,49 @@ static int LUACALL wxLua_wxStyledTextCtrl_RegisterImage(lua_State *L)
     return 0;
 }
 
-#endif // wxLUA_USE_wxBitmap
+#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap)
+
+#if (!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_RegisterImage1[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_RegisterImage1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_RegisterImage1[1] = {{ wxLua_wxStyledTextCtrl_RegisterImage1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_RegisterImage1 }};
+//     !%wxchkver_3_1_3 void RegisterImage(int type, const wxBitmap& bmp);
+static int LUACALL wxLua_wxStyledTextCtrl_RegisterImage1(lua_State *L)
+{
+    // const wxBitmap bmp
+    const wxBitmap * bmp = (const wxBitmap *)wxluaT_getuserdatatype(L, 3, wxluatype_wxBitmap);
+    // int type
+    int type = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call RegisterImage
+    self->RegisterImage(type, *bmp);
+
+    return 0;
+}
+
+#endif // (!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap)
+
+#if wxCHECK_VERSION(3,1,3)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_RegisterImage[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TLIGHTUSERDATA, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_RegisterImage(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_RegisterImage[1] = {{ wxLua_wxStyledTextCtrl_RegisterImage, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_RegisterImage }};
+//     %wxchkver_3_1_3 void RegisterImage(int type, const char* const* xpmData);
+static int LUACALL wxLua_wxStyledTextCtrl_RegisterImage(lua_State *L)
+{
+    // const char const xpmData
+    const char* const* xpmData = (const char* const*)wxlua_touserdata(L, 3);
+    // int type
+    int type = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call RegisterImage
+    self->RegisterImage(type, xpmData);
+
+    return 0;
+}
+
+#endif // wxCHECK_VERSION(3,1,3)
 
 #if wxCHECK_VERSION(2,9,5)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_RegisterRGBAImage[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
@@ -9093,6 +9251,25 @@ static int LUACALL wxLua_wxStyledTextCtrl_SetFoldMarginHiColour(lua_State *L)
 }
 
 #endif // wxLUA_USE_wxColourPenBrush
+
+#if wxCHECK_VERSION(3,1,1)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetFontQuality[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_SetFontQuality(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_SetFontQuality[1] = {{ wxLua_wxStyledTextCtrl_SetFontQuality, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetFontQuality }};
+//     %wxchkver_3_1_1 void SetFontQuality(int fontQuality);
+static int LUACALL wxLua_wxStyledTextCtrl_SetFontQuality(lua_State *L)
+{
+    // int fontQuality
+    int fontQuality = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call SetFontQuality
+    self->SetFontQuality(fontQuality);
+
+    return 0;
+}
+
+#endif // wxCHECK_VERSION(3,1,1)
 
 #if wxLUA_USE_wxScrollBar && wxUSE_SCROLLBAR
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetHScrollBar[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_wxScrollBar, NULL };
@@ -12703,7 +12880,7 @@ static int s_wxluafunc_wxLua_wxStyledTextCtrl_BraceMatch_overload_count = sizeof
 
 #endif // (!wxCHECK_VERSION(3,1,1))||(wxCHECK_VERSION(3,1,1))
 
-#if (!wxCHECK_VERSION(2,9,5))
+#if (!wxCHECK_VERSION(2,9,5))||(wxCHECK_VERSION(3,1,3))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetIndentationGuides_overload[] =
 {
@@ -12712,13 +12889,13 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetIndentationGuides_ov
     { wxLua_wxStyledTextCtrl_GetIndentationGuides1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetIndentationGuides1 },
 #endif // !wxCHECK_VERSION(2,9,5)
 
-#if !wxCHECK_VERSION(2,9,5)
+#if wxCHECK_VERSION(3,1,3)
     { wxLua_wxStyledTextCtrl_GetIndentationGuides, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetIndentationGuides },
-#endif // !wxCHECK_VERSION(2,9,5)
+#endif // wxCHECK_VERSION(3,1,3)
 };
 static int s_wxluafunc_wxLua_wxStyledTextCtrl_GetIndentationGuides_overload_count = sizeof(s_wxluafunc_wxLua_wxStyledTextCtrl_GetIndentationGuides_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (!wxCHECK_VERSION(2,9,5))
+#endif // (!wxCHECK_VERSION(2,9,5))||(wxCHECK_VERSION(3,1,3))
 
 #if (!wxCHECK_VERSION(3,1,1))||(wxCHECK_VERSION(3,1,1))
 // function overload table
@@ -12754,6 +12931,23 @@ static int s_wxluafunc_wxLua_wxStyledTextCtrl_GetUseAntiAliasing_overload_count 
 
 #endif // (!wxCHECK_VERSION(3,1,0))
 
+#if ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap))||((!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerDefineBitmap_overload[] =
+{
+
+#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap)
+    { wxLua_wxStyledTextCtrl_MarkerDefineBitmap1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerDefineBitmap1 },
+#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap)
+
+#if (!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap)
+    { wxLua_wxStyledTextCtrl_MarkerDefineBitmap, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerDefineBitmap },
+#endif // (!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap)
+};
+static int s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerDefineBitmap_overload_count = sizeof(s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerDefineBitmap_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap))||((!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap))
+
 #if ((!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxPointSizeRect))||((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxPointSizeRect))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_PositionFromPoint_overload[] =
@@ -12770,6 +12964,27 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_PositionFromPoint_overl
 static int s_wxluafunc_wxLua_wxStyledTextCtrl_PositionFromPoint_overload_count = sizeof(s_wxluafunc_wxLua_wxStyledTextCtrl_PositionFromPoint_overload)/sizeof(wxLuaBindCFunc);
 
 #endif // ((!wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxPointSizeRect))||((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxPointSizeRect))
+
+#if ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap))||((!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap))||(wxCHECK_VERSION(3,1,3))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_RegisterImage_overload[] =
+{
+
+#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap)
+    { wxLua_wxStyledTextCtrl_RegisterImage2, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_RegisterImage2 },
+#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap)
+
+#if (!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap)
+    { wxLua_wxStyledTextCtrl_RegisterImage1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_RegisterImage1 },
+#endif // (!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap)
+
+#if wxCHECK_VERSION(3,1,3)
+    { wxLua_wxStyledTextCtrl_RegisterImage, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_RegisterImage },
+#endif // wxCHECK_VERSION(3,1,3)
+};
+static int s_wxluafunc_wxLua_wxStyledTextCtrl_RegisterImage_overload_count = sizeof(s_wxluafunc_wxLua_wxStyledTextCtrl_RegisterImage_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap))||((!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap))||(wxCHECK_VERSION(3,1,3))
 
 #if (!wxCHECK_VERSION(2,9,5))||(wxCHECK_VERSION(2,9,5))
 // function overload table
@@ -12925,6 +13140,11 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
 #endif // wxCHECK_VERSION(2,9,5)
 
     { "AutoCompSetChooseSingle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompSetChooseSingle, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
+    { "AutoCompSetColours", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompSetColours, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
+
     { "AutoCompSetDropRestOfWord", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompSetDropRestOfWord, 1, NULL },
     { "AutoCompSetFillUps", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompSetFillUps, 1, NULL },
     { "AutoCompSetIgnoreCase", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompSetIgnoreCase, 1, NULL },
@@ -12940,6 +13160,11 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "AutoCompSetTypeSeparator", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompSetTypeSeparator, 1, NULL },
     { "AutoCompShow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompShow, 1, NULL },
     { "AutoCompStops", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompStops, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
+    { "AutoCompUseListCtrl", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompUseListCtrl, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
+
     { "BackTab", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_BackTab, 1, NULL },
     { "BeginUndoAction", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_BeginUndoAction, 1, NULL },
     { "BraceBadLight", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_BraceBadLight, 1, NULL },
@@ -13210,6 +13435,10 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "GetFoldLevel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetFoldLevel, 1, NULL },
     { "GetFoldParent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetFoldParent, 1, NULL },
 
+#if wxCHECK_VERSION(3,1,1)
+    { "GetFontQuality", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetFontQuality, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,1)
+
 #if wxCHECK_VERSION(2,9,5)
     { "GetGapPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetGapPosition, 1, NULL },
 #endif // wxCHECK_VERSION(2,9,5)
@@ -13240,9 +13469,9 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
 
     { "GetIndent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetIndent, 1, NULL },
 
-#if (!wxCHECK_VERSION(2,9,5))
+#if (!wxCHECK_VERSION(2,9,5))||(wxCHECK_VERSION(3,1,3))
     { "GetIndentationGuides", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetIndentationGuides_overload, s_wxluafunc_wxLua_wxStyledTextCtrl_GetIndentationGuides_overload_count, 0 },
-#endif // (!wxCHECK_VERSION(2,9,5))
+#endif // (!wxCHECK_VERSION(2,9,5))||(wxCHECK_VERSION(3,1,3))
 
 #if wxCHECK_VERSION(2,9,5)
     { "GetIndicatorCurrent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetIndicatorCurrent, 1, NULL },
@@ -13628,9 +13857,13 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "MarkerDefine", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerDefine, 1, NULL },
 #endif // wxLUA_USE_wxColourPenBrush
 
-#if wxLUA_USE_wxBitmap
-    { "MarkerDefineBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerDefineBitmap, 1, NULL },
-#endif // wxLUA_USE_wxBitmap
+#if ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap))||((!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap))
+    { "MarkerDefineBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerDefineBitmap_overload, s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerDefineBitmap_overload_count, 0 },
+#endif // ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap))||((!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap))
+
+#if wxCHECK_VERSION(3,1,3)
+    { "MarkerDefinePixmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerDefinePixmap, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,3)
 
 #if wxCHECK_VERSION(2,9,5)
     { "MarkerDefineRGBAImage", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerDefineRGBAImage, 1, NULL },
@@ -13730,9 +13963,9 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
 
     { "Redo", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_Redo, 1, NULL },
 
-#if wxLUA_USE_wxBitmap
-    { "RegisterImage", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_RegisterImage, 1, NULL },
-#endif // wxLUA_USE_wxBitmap
+#if ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap))||((!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap))||(wxCHECK_VERSION(3,1,3))
+    { "RegisterImage", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_RegisterImage_overload, s_wxluafunc_wxLua_wxStyledTextCtrl_RegisterImage_overload_count, 0 },
+#endif // ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap))||((!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxBitmap))||(wxCHECK_VERSION(3,1,3))
 
 #if wxCHECK_VERSION(2,9,5)
     { "RegisterRGBAImage", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_RegisterRGBAImage, 1, NULL },
@@ -13873,6 +14106,10 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "SetFoldMarginColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetFoldMarginColour, 1, NULL },
     { "SetFoldMarginHiColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetFoldMarginHiColour, 1, NULL },
 #endif // wxLUA_USE_wxColourPenBrush
+
+#if wxCHECK_VERSION(3,1,1)
+    { "SetFontQuality", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetFontQuality, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,1)
 
 #if wxLUA_USE_wxScrollBar && wxUSE_SCROLLBAR
     { "SetHScrollBar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetHScrollBar, 1, NULL },
