@@ -227,12 +227,6 @@ int LUACALL wxlua_wxLuaBindClass__index(lua_State *L)
         }
     }
 
-    if (!found)
-    {
-        wxlua_error(L, wxString::Format(_("wxLua: Unable to call an unknown method '%s' on a '%s' type."),
-            lua2wx(name).c_str(), lua2wx(wxlClass ? wxlClass->name : "").c_str()).c_str());
-    }
-
     return result;
 }
 
