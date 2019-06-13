@@ -568,7 +568,6 @@ class %delete wxAuiDefaultDockArt : public wxAuiDockArt
 class wxAuiFloatingFrame : public wxFrame // wxAuiFloatingFrameBaseClass
 {
     wxAuiFloatingFrame(wxWindow* parent, wxAuiManager* owner_mgr, const wxAuiPaneInfo& pane, wxWindowID id = wxID_ANY, long style = wxRESIZE_BORDER|wxSYSTEM_MENU|wxCAPTION|wxFRAME_NO_TASKBAR | wxFRAME_FLOAT_ON_PARENT|wxCLIP_CHILDREN);
-
     void SetPaneWindow(const wxAuiPaneInfo& pane);
     wxAuiManager* GetOwnerManager() const;
 };
@@ -1056,65 +1055,39 @@ class wxAuiMDIChildFrame : public wxPanel
 {
     wxAuiMDIChildFrame();
     wxAuiMDIChildFrame(wxAuiMDIParentFrame *parent, wxWindowID winid, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_FRAME_STYLE, const wxString& name = "wxAuiMDIChildFrame");
-
     bool Create(wxAuiMDIParentFrame *parent, wxWindowID winid, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_FRAME_STYLE, const wxString& name = "wxAuiMDIChildFrame");
-
     virtual void SetMenuBar(wxMenuBar *menu_bar);
     virtual wxMenuBar *GetMenuBar() const;
-
     virtual void SetTitle(const wxString& title);
     virtual wxString GetTitle() const;
-
     virtual void SetIcons(const wxIconBundle& icons);
     virtual const wxIconBundle& GetIcons() const;
-
     virtual void SetIcon(const wxIcon& icon);
     virtual const wxIcon& GetIcon() const;
-
     virtual void Activate();
     virtual bool Destroy();
-
-#if wxUSE_STATUSBAR
-    // no status bars
-    //virtual wxStatusBar* CreateStatusBar(int number = 1, long style = 1, wxWindowID winid = 1, const wxString& name = ""); //  FIXME
-
-    //virtual wxStatusBar *GetStatusBar() const;
-    //virtual void SetStatusText(const wxString &WXUNUSED(text), int WXUNUSED(number)=0);
-    //virtual void SetStatusWidths(int WXUNUSED(n), const int WXUNUSED(widths_field)[]);
-#endif //wxUSE_STATUSBAR
-
-    // no size hints
-    //virtual void DoSetSizeHints(int WXUNUSED(minW), int WXUNUSED(minH), int WXUNUSED(maxW) = wxDefaultCoord, int WXUNUSED(maxH) = wxDefaultCoord, int WXUNUSED(incW) = wxDefaultCoord, int WXUNUSED(incH) = wxDefaultCoord) {} - FIXME
-#if wxUSE_TOOLBAR
-    // no toolbar bars
-    //virtual wxToolBar* CreateToolBar(long WXUNUSED(style), wxWindowID WXUNUSED(winid), const wxString& WXUNUSED(name));
-    //virtual wxToolBar *GetToolBar() const;
-#endif //wxUSE_TOOLBAR
-
-
-    // no maximize etc
-    //virtual void Maximize(bool WXUNUSED(maximize) = true) { /* Has no effect */ }
-    //virtual void Restore() { /* Has no effect */ }
-    //virtual void Iconize(bool WXUNUSED(iconize)  = true) { /* Has no effect */ }
-    //virtual bool IsMaximized() const;
-    //virtual bool IsIconized() const;
-    //virtual bool ShowFullScreen(bool WXUNUSED(show), long WXUNUSED(style));
-    //virtual bool IsFullScreen() const;
-
-    //virtual bool IsTopLevel() const;
-
-    //void OnMenuHighlight(wxMenuEvent& evt);
-    //void OnActivate(wxActivateEvent& evt);
-    //void OnCloseWindow(wxCloseEvent& evt);
-
+    %wxchkver_3_1_2 bool Show(bool show = true);
+    virtual wxStatusBar* CreateStatusBar(int number = 1, long style = 1, wxWindowID winid = 1, const wxString& name = "");
+    virtual wxStatusBar *GetStatusBar() const;
+    void SetStatusText(const wxString &text, int number=0);
+    void SetStatusWidths(int n, const int widths_field[]);
+    wxToolBar* CreateToolBar(long style, wxWindowID winid, const wxString& name);
+    virtual wxToolBar *GetToolBar() const;
+    %wxchkver_3_1_2 void Maximize(bool maximize = true);
+    %wxchkver_3_1_2 void Restore();
+    %wxchkver_3_1_2 void Iconize(bool iconize = true);
+    virtual bool IsMaximized() const;
+    virtual bool IsIconized() const;
+    bool ShowFullScreen(bool show, long style);
+    virtual bool IsFullScreen() const;
+    virtual bool IsTopLevel() const;
     void SetMDIParentFrame(wxAuiMDIParentFrame* parent);
     wxAuiMDIParentFrame* GetMDIParentFrame() const;
-
-    // This function needs to be called when a size change is confirmed,
-    // we needed this function to prevent anybody from the outside
-    // changing the panel... it messes the UI layout when we would allow it.
-    void ApplyMDIChildFrameRect();
-    void DoShow(bool show);
+    !%wxchkver_3_1_2 void ApplyMDIChildFrameRect();
+    !%wxchkver_3_1_2 void DoShow(bool show);
+    //void OnActivate(wxActivateEvent& evt);
+    //void OnCloseWindow(wxCloseEvent& evt);
+    //void OnMenuHighlight(wxMenuEvent& evt);
 };
 
 //-----------------------------------------------------------------------------

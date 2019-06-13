@@ -70,6 +70,8 @@ local steps = {
     wxAuiNotebook = "aui/auibook.h",
     wxAuiDockArt = "aui/dockart.h",
     wxAuiManager = "aui/framemanager.h",
+    wxAuiMDIChildFrame = "aui/tabmdi.h",
+    wxAuiFloatingFrame = "aui/floatpane.h",
   },
   wxcore_image = {
     wxImage = "image.h",
