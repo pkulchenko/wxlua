@@ -403,6 +403,15 @@ class %delete wxAuiDefaultTabArt : public wxAuiTabArt
 
 
 // ---------------------------------------------------------------------------
+// wxAuiGenericTabArt
+
+class %delete wxAuiGenericTabArt : public wxAuiTabArt
+{
+    wxAuiGenericTabArt();
+};
+
+
+// ---------------------------------------------------------------------------
 // wxAuiSimpleTabArt
 
 class %delete wxAuiSimpleTabArt : public wxAuiTabArt

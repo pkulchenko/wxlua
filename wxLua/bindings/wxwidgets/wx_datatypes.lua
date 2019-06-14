@@ -375,6 +375,15 @@ wx_dataTypeTable =
     Name = "wxAuiFloatingFrame",
     ValueType = "class",
   },
+  wxAuiGenericTabArt = {
+    BaseClasses = {
+      [1] = "wxAuiTabArt",
+    },
+    Condition = "wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI",
+    IsNumber = false,
+    Name = "wxAuiGenericTabArt",
+    ValueType = "class",
+  },
   wxAuiMDIChildFrame = {
     BaseClasses = {
       [1] = "wxPanel",

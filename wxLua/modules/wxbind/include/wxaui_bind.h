@@ -59,6 +59,7 @@ extern WXDLLIMPEXP_BINDWXAUI wxLuaBinding* wxLuaBinding_wxaui_init();
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiDockInfo;
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiDockUIPart;
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiFloatingFrame;
+    extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiGenericTabArt;
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiMDIChildFrame;
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiMDIClientWindow;
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiMDIParentFrame;
