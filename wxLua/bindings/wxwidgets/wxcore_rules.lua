@@ -124,20 +124,6 @@ wxCursor* wxLua_wxSTANDARD_CURSOR = NULL;
 wxCursor* wxLua_wxHOURGLASS_CURSOR = NULL;
 wxCursor* wxLua_wxCROSS_CURSOR = NULL;
 
-#if defined(__MINGW32__) || defined(__GNUWIN32__)
-    // FIX: "internal compiler error: output_operand: invalid expression as operand"
-    // We set their value again later since some compilers (gcc) won't set their value yet
-    static wxPoint wxLua_wxDefaultPosition = wxDefaultPosition;
-    static wxSize wxLua_wxDefaultSize      = wxDefaultSize;
-    static wxEventType wxLua_wxEVT_COMMAND_DIRPICKER_CHANGED  = wxEVT_COMMAND_DIRPICKER_CHANGED;
-    static wxEventType wxLua_wxEVT_COMMAND_FILEPICKER_CHANGED = wxEVT_COMMAND_FILEPICKER_CHANGED;
-
-    #define wxDefaultPosition wxLua_wxDefaultPosition
-    #define wxDefaultSize     wxLua_wxDefaultSize
-    #define wxEVT_COMMAND_DIRPICKER_CHANGED  wxLua_wxEVT_COMMAND_DIRPICKER_CHANGED
-    #define wxEVT_COMMAND_FILEPICKER_CHANGED wxLua_wxEVT_COMMAND_FILEPICKER_CHANGED
-#endif //__MINGW32__
-
 ]]
 
 -- ============================================================================
@@ -214,17 +200,6 @@ wxLuaBinding_class_implementation =
 "bool "..hook_cpp_binding_classname.."::RegisterBinding(const wxLuaState& wxlState)\n"..
 [[
 {
-#if defined(__MINGW32__) || defined(__GNUWIN32__)
-    #undef wxDefaultPosition
-    #undef wxDefaultSize
-    #undef wxEVT_COMMAND_DIRPICKER_CHANGED
-    #undef wxEVT_COMMAND_FILEPICKER_CHANGED
-    wxLua_wxDefaultPosition = wxDefaultPosition;
-    wxLua_wxDefaultSize     = wxDefaultSize;
-    wxLua_wxEVT_COMMAND_DIRPICKER_CHANGED  = wxEVT_COMMAND_DIRPICKER_CHANGED;
-    wxLua_wxEVT_COMMAND_FILEPICKER_CHANGED = wxEVT_COMMAND_FILEPICKER_CHANGED;
-#endif //__MINGW32__
-
     // ugly hack for wxWidgets >2.7 change to use wxStockGDI::GetXXX
     if (wxLua_wxBLACK == NULL)
     {
