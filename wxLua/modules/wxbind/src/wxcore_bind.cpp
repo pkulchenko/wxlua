@@ -63,6 +63,7 @@ wxCursor* wxLua_wxSTANDARD_CURSOR = NULL;
 wxCursor* wxLua_wxHOURGLASS_CURSOR = NULL;
 wxCursor* wxLua_wxCROSS_CURSOR = NULL;
 
+
 // ---------------------------------------------------------------------------
 // wxLuaGetEventList_wxcore() is called to register events
 // ---------------------------------------------------------------------------

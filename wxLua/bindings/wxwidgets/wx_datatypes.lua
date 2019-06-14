@@ -2077,6 +2077,21 @@ wx_dataTypeTable =
     Name = "wxGIFHandler",
     ValueType = "class",
   },
+  wxGLAttribsBase = {
+    Condition = "(wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)",
+    IsNumber = false,
+    Name = "wxGLAttribsBase",
+    ValueType = "class",
+  },
+  wxGLAttributes = {
+    BaseClasses = {
+      [1] = "wxGLAttribsBase",
+    },
+    Condition = "(wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)",
+    IsNumber = false,
+    Name = "wxGLAttributes",
+    ValueType = "class",
+  },
   wxGLCanvas = {
     BaseClasses = {
       [1] = "wxWindow",
@@ -2093,6 +2108,15 @@ wx_dataTypeTable =
     Condition = "wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS",
     IsNumber = false,
     Name = "wxGLContext",
+    ValueType = "class",
+  },
+  wxGLContextAttrs = {
+    BaseClasses = {
+      [1] = "wxGLAttribsBase",
+    },
+    Condition = "(wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)",
+    IsNumber = false,
+    Name = "wxGLContextAttrs",
     ValueType = "class",
   },
   wxGauge = {

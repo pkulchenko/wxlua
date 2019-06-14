@@ -51,6 +51,12 @@ extern WXDLLIMPEXP_BINDWXGL wxLuaBinding* wxLuaBinding_wxgl_init();
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
 
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+    extern WXDLLIMPEXP_DATA_BINDWXGL(int) wxluatype_wxGLAttribsBase;
+    extern WXDLLIMPEXP_DATA_BINDWXGL(int) wxluatype_wxGLAttributes;
+    extern WXDLLIMPEXP_DATA_BINDWXGL(int) wxluatype_wxGLContextAttrs;
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+
 #if wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS
     extern WXDLLIMPEXP_DATA_BINDWXGL(int) wxluatype_wxGLCanvas;
     extern WXDLLIMPEXP_DATA_BINDWXGL(int) wxluatype_wxGLContext;

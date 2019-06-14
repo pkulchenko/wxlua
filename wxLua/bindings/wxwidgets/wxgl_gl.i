@@ -51,13 +51,80 @@ class wxGLCanvas : public wxWindow
     !%mac wxGLCanvas(wxWindow* parent, wxWindowID id = wxID_ANY, int attribList[] = 0, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style=0, const wxString& name="GLCanvas", const wxPalette& palette = wxNullPalette );
 #endif
 
-    //wxGLContext* GetContext() const; - removed in wx 3.0
-    %mac void SetCurrent( );
+#if %wxchkver_3_1
+    static bool IsDisplaySupported(const wxGLAttributes& dispAttrs);
+    static bool IsDisplaySupported(const int* attribList);
+    static bool IsExtensionSupported(const char *extension);
+#endif
+
+    %mac void SetCurrent();
     %wxchkver_2_8&!%mac void SetCurrent(const wxGLContext& RC) const;
 
-    void SetColour(const wxString& colour );
-    void SwapBuffers( );
+    void SetColour(const wxString& colour);
+    void SwapBuffers();
 };
+
+#if %wxchkver_3_1
+class wxGLAttribsBase
+{
+public:
+    wxGLAttribsBase();
+
+    void AddAttribute(int attribute);
+    void AddAttribBits(int searchVal, int combineVal);
+    void SetNeedsARB(bool needsARB = true);
+    void Reset();
+
+    const int* GetGLAttrs() const;
+    int GetSize();
+    bool NeedsARB() const;
+};
+
+class wxGLAttributes : public wxGLAttribsBase
+{
+public:
+    wxGLAttributes();
+
+    wxGLAttributes& RGBA();
+    wxGLAttributes& BufferSize(int val);
+    wxGLAttributes& Level(int val);
+    wxGLAttributes& DoubleBuffer();
+    wxGLAttributes& Stereo();
+    wxGLAttributes& AuxBuffers(int val);
+    wxGLAttributes& MinRGBA(int mRed, int mGreen, int mBlue, int mAlpha);
+    wxGLAttributes& Depth(int val);
+    wxGLAttributes& Stencil(int val);
+    wxGLAttributes& MinAcumRGBA(int mRed, int mGreen, int mBlue, int mAlpha);
+    wxGLAttributes& SampleBuffers(int val);
+    wxGLAttributes& Samplers(int val);
+    wxGLAttributes& FrameBuffersRGB();
+    wxGLAttributes& PlatformDefaults();
+    wxGLAttributes& Defaults();
+    void EndList();
+};
+
+class wxGLContextAttrs : public wxGLAttribsBase
+{
+public:
+    wxGLContextAttrs();
+
+    wxGLContextAttrs& CoreProfile();
+    wxGLContextAttrs& MajorVersion(int val);
+    wxGLContextAttrs& MinorVersion(int val);
+    wxGLContextAttrs& OGLVersion(int vmayor, int vminor);
+    wxGLContextAttrs& CompatibilityProfile();
+    wxGLContextAttrs& ForwardCompatible();
+    wxGLContextAttrs& ES2();
+    wxGLContextAttrs& DebugCtx();
+    wxGLContextAttrs& Robust();
+    wxGLContextAttrs& NoResetNotify();
+    wxGLContextAttrs& LoseOnReset();
+    wxGLContextAttrs& ResetIsolation();
+    wxGLContextAttrs& ReleaseFlush(int val = 1);
+    wxGLContextAttrs& PlatformDefaults();
+    void EndList();
+};
+#endif
 
 // ---------------------------------------------------------------------------
 // wxGLContext
@@ -65,20 +132,20 @@ class wxGLCanvas : public wxWindow
 class wxGLContext : public wxObject
 {
     #if %wxchkver_2_8
-        !%mac wxGLContext(wxGLCanvas *win, const wxGLContext* other = NULL ); // FIXME
+        !%mac wxGLContext(wxGLCanvas *win, const wxGLContext* other = NULL); // FIXME
 
         !%mac | %wxchkver_2_9 void SetCurrent(const wxGLCanvas& win) const;
         %mac & !%wxchkver_2_9 void SetCurrent() const;
     #endif // %wxchkver_2_8
 
     #if !%wxchkver_2_8
-        wxGLContext(bool isRGB, wxGLCanvas* win, const wxPalette& palette = wxNullPalette );
-        wxGLContext(bool isRGB, wxGLCanvas* win, const wxPalette& palette = wxNullPalette, const wxGLContext* other = NULL );
+        wxGLContext(bool isRGB, wxGLCanvas* win, const wxPalette& palette = wxNullPalette);
+        wxGLContext(bool isRGB, wxGLCanvas* win, const wxPalette& palette = wxNullPalette, const wxGLContext* other = NULL);
 
-        const wxWindow*  GetWindow( );
-        void SetCurrent( );
-        void SetColour(const wxString& colour );
-        void SwapBuffers( );
+        const wxWindow*  GetWindow();
+        void SetCurrent();
+        void SetColour(const wxString& colour);
+        void SwapBuffers();
     #endif // !%wxchkver_2_8
 };
 

@@ -31,10 +31,61 @@
 // Lua MetaTable Tag for Class 'wxGLCanvas'
 int wxluatype_wxGLCanvas = WXLUA_TUNKNOWN;
 
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLCanvas_IsDisplaySupported1[] = { &wxluatype_TLIGHTUSERDATA, NULL };
+static int LUACALL wxLua_wxGLCanvas_IsDisplaySupported1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_IsDisplaySupported1[1] = {{ wxLua_wxGLCanvas_IsDisplaySupported1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxGLCanvas_IsDisplaySupported1 }};
+//     static bool IsDisplaySupported(const int* attribList);
+static int LUACALL wxLua_wxGLCanvas_IsDisplaySupported1(lua_State *L)
+{
+    // const int attribList
+    const int * attribList = (const int *)wxlua_touserdata(L, 1);
+    // call IsDisplaySupported
+    bool returns = (wxGLCanvas::IsDisplaySupported(attribList));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLCanvas_IsDisplaySupported[] = { &wxluatype_wxGLAttributes, NULL };
+static int LUACALL wxLua_wxGLCanvas_IsDisplaySupported(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_IsDisplaySupported[1] = {{ wxLua_wxGLCanvas_IsDisplaySupported, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxGLCanvas_IsDisplaySupported }};
+//     static bool IsDisplaySupported(const wxGLAttributes& dispAttrs);
+static int LUACALL wxLua_wxGLCanvas_IsDisplaySupported(lua_State *L)
+{
+    // const wxGLAttributes dispAttrs
+    const wxGLAttributes * dispAttrs = (const wxGLAttributes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttributes);
+    // call IsDisplaySupported
+    bool returns = (wxGLCanvas::IsDisplaySupported(*dispAttrs));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLCanvas_IsExtensionSupported[] = { &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxGLCanvas_IsExtensionSupported(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_IsExtensionSupported[1] = {{ wxLua_wxGLCanvas_IsExtensionSupported, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxGLCanvas_IsExtensionSupported }};
+//     static bool IsExtensionSupported(const char *extension);
+static int LUACALL wxLua_wxGLCanvas_IsExtensionSupported(lua_State *L)
+{
+    // const char extension
+    wxCharBuffer extension = wxlua_getstringtype(L, 1);
+    // call IsExtensionSupported
+    bool returns = (wxGLCanvas::IsExtensionSupported((const char*)extension));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLCanvas_SetColour[] = { &wxluatype_wxGLCanvas, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxGLCanvas_SetColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_SetColour[1] = {{ wxLua_wxGLCanvas_SetColour, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGLCanvas_SetColour }};
-//     void SetColour(const wxString& colour );
+//     void SetColour(const wxString& colour);
 static int LUACALL wxLua_wxGLCanvas_SetColour(lua_State *L)
 {
     // const wxString colour
@@ -71,7 +122,7 @@ static int LUACALL wxLua_wxGLCanvas_SetCurrent1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLCanvas_SetCurrent[] = { &wxluatype_wxGLCanvas, NULL };
 static int LUACALL wxLua_wxGLCanvas_SetCurrent(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_SetCurrent[1] = {{ wxLua_wxGLCanvas_SetCurrent, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLCanvas_SetCurrent }};
-//     %mac void SetCurrent( );
+//     %mac void SetCurrent();
 static int LUACALL wxLua_wxGLCanvas_SetCurrent(lua_State *L)
 {
     // get this
@@ -87,7 +138,7 @@ static int LUACALL wxLua_wxGLCanvas_SetCurrent(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLCanvas_SwapBuffers[] = { &wxluatype_wxGLCanvas, NULL };
 static int LUACALL wxLua_wxGLCanvas_SwapBuffers(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_SwapBuffers[1] = {{ wxLua_wxGLCanvas_SwapBuffers, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLCanvas_SwapBuffers }};
-//     void SwapBuffers( );
+//     void SwapBuffers();
 static int LUACALL wxLua_wxGLCanvas_SwapBuffers(lua_State *L)
 {
     // get this
@@ -284,6 +335,23 @@ static int LUACALL wxLua_wxGLCanvas_constructor(lua_State *L)
 
 
 
+#if ((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_IsDisplaySupported_overload[] =
+{
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+    { wxLua_wxGLCanvas_IsDisplaySupported1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxGLCanvas_IsDisplaySupported1 },
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+    { wxLua_wxGLCanvas_IsDisplaySupported, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxGLCanvas_IsDisplaySupported },
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+};
+static int s_wxluafunc_wxLua_wxGLCanvas_IsDisplaySupported_overload_count = sizeof(s_wxluafunc_wxLua_wxGLCanvas_IsDisplaySupported_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))
+
 #if (((wxCHECK_VERSION(2,8,0) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))||((defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_SetCurrent_overload[] =
@@ -338,6 +406,14 @@ void wxLua_wxGLCanvas_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxGLCanvas_methods[] = {
+#if ((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))
+    { "IsDisplaySupported", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxGLCanvas_IsDisplaySupported_overload, s_wxluafunc_wxLua_wxGLCanvas_IsDisplaySupported_overload_count, 0 },
+#endif // ((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+    { "IsExtensionSupported", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxGLCanvas_IsExtensionSupported, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+
     { "SetColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLCanvas_SetColour, 1, NULL },
 
 #if (((wxCHECK_VERSION(2,8,0) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))||((defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))
@@ -358,6 +434,818 @@ int wxGLCanvas_methodCount = sizeof(wxGLCanvas_methods)/sizeof(wxLuaBindMethod) 
 #endif  // wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS
 
 
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+// ---------------------------------------------------------------------------
+// Bind class wxGLAttribsBase
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxGLAttribsBase'
+int wxluatype_wxGLAttribsBase = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttribsBase_AddAttribBits[] = { &wxluatype_wxGLAttribsBase, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxGLAttribsBase_AddAttribBits(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttribsBase_AddAttribBits[1] = {{ wxLua_wxGLAttribsBase_AddAttribBits, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxGLAttribsBase_AddAttribBits }};
+//     void AddAttribBits(int searchVal, int combineVal);
+static int LUACALL wxLua_wxGLAttribsBase_AddAttribBits(lua_State *L)
+{
+    // int combineVal
+    int combineVal = (int)wxlua_getnumbertype(L, 3);
+    // int searchVal
+    int searchVal = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGLAttribsBase * self = (wxGLAttribsBase *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttribsBase);
+    // call AddAttribBits
+    self->AddAttribBits(searchVal, combineVal);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttribsBase_AddAttribute[] = { &wxluatype_wxGLAttribsBase, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxGLAttribsBase_AddAttribute(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttribsBase_AddAttribute[1] = {{ wxLua_wxGLAttribsBase_AddAttribute, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGLAttribsBase_AddAttribute }};
+//     void AddAttribute(int attribute);
+static int LUACALL wxLua_wxGLAttribsBase_AddAttribute(lua_State *L)
+{
+    // int attribute
+    int attribute = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGLAttribsBase * self = (wxGLAttribsBase *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttribsBase);
+    // call AddAttribute
+    self->AddAttribute(attribute);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttribsBase_GetGLAttrs[] = { &wxluatype_wxGLAttribsBase, NULL };
+static int LUACALL wxLua_wxGLAttribsBase_GetGLAttrs(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttribsBase_GetGLAttrs[1] = {{ wxLua_wxGLAttribsBase_GetGLAttrs, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLAttribsBase_GetGLAttrs }};
+//     const int* GetGLAttrs() const;
+static int LUACALL wxLua_wxGLAttribsBase_GetGLAttrs(lua_State *L)
+{
+    // get this
+    wxGLAttribsBase * self = (wxGLAttribsBase *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttribsBase);
+    // call GetGLAttrs
+    const int* returns = (const int*)self->GetGLAttrs();
+    // push the result pointer
+    lua_pushlightuserdata(L, (void *)returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttribsBase_GetSize[] = { &wxluatype_wxGLAttribsBase, NULL };
+static int LUACALL wxLua_wxGLAttribsBase_GetSize(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttribsBase_GetSize[1] = {{ wxLua_wxGLAttribsBase_GetSize, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLAttribsBase_GetSize }};
+//     int GetSize();
+static int LUACALL wxLua_wxGLAttribsBase_GetSize(lua_State *L)
+{
+    // get this
+    wxGLAttribsBase * self = (wxGLAttribsBase *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttribsBase);
+    // call GetSize
+    int returns = (self->GetSize());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttribsBase_NeedsARB[] = { &wxluatype_wxGLAttribsBase, NULL };
+static int LUACALL wxLua_wxGLAttribsBase_NeedsARB(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttribsBase_NeedsARB[1] = {{ wxLua_wxGLAttribsBase_NeedsARB, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLAttribsBase_NeedsARB }};
+//     bool NeedsARB() const;
+static int LUACALL wxLua_wxGLAttribsBase_NeedsARB(lua_State *L)
+{
+    // get this
+    wxGLAttribsBase * self = (wxGLAttribsBase *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttribsBase);
+    // call NeedsARB
+    bool returns = (self->NeedsARB());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttribsBase_Reset[] = { &wxluatype_wxGLAttribsBase, NULL };
+static int LUACALL wxLua_wxGLAttribsBase_Reset(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttribsBase_Reset[1] = {{ wxLua_wxGLAttribsBase_Reset, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLAttribsBase_Reset }};
+//     void Reset();
+static int LUACALL wxLua_wxGLAttribsBase_Reset(lua_State *L)
+{
+    // get this
+    wxGLAttribsBase * self = (wxGLAttribsBase *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttribsBase);
+    // call Reset
+    self->Reset();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttribsBase_SetNeedsARB[] = { &wxluatype_wxGLAttribsBase, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxGLAttribsBase_SetNeedsARB(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttribsBase_SetNeedsARB[1] = {{ wxLua_wxGLAttribsBase_SetNeedsARB, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxGLAttribsBase_SetNeedsARB }};
+//     void SetNeedsARB(bool needsARB = true);
+static int LUACALL wxLua_wxGLAttribsBase_SetNeedsARB(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool needsARB = true
+    bool needsARB = (argCount >= 2 ? wxlua_getbooleantype(L, 2) : true);
+    // get this
+    wxGLAttribsBase * self = (wxGLAttribsBase *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttribsBase);
+    // call SetNeedsARB
+    self->SetNeedsARB(needsARB);
+
+    return 0;
+}
+
+static int LUACALL wxLua_wxGLAttribsBase_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttribsBase_constructor[1] = {{ wxLua_wxGLAttribsBase_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxGLAttribsBase();
+static int LUACALL wxLua_wxGLAttribsBase_constructor(lua_State *L)
+{
+    // call constructor
+    wxGLAttribsBase* returns = new wxGLAttribsBase();
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLAttribsBase);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxGLAttribsBase_delete_function(void** p)
+{
+    wxGLAttribsBase* o = (wxGLAttribsBase*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxGLAttribsBase_methods[] = {
+    { "AddAttribBits", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttribsBase_AddAttribBits, 1, NULL },
+    { "AddAttribute", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttribsBase_AddAttribute, 1, NULL },
+    { "GetGLAttrs", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttribsBase_GetGLAttrs, 1, NULL },
+    { "GetSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttribsBase_GetSize, 1, NULL },
+    { "NeedsARB", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttribsBase_NeedsARB, 1, NULL },
+    { "Reset", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttribsBase_Reset, 1, NULL },
+    { "SetNeedsARB", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttribsBase_SetNeedsARB, 1, NULL },
+    { "wxGLAttribsBase", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxGLAttribsBase_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxGLAttribsBase_methodCount = sizeof(wxGLAttribsBase_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+// ---------------------------------------------------------------------------
+// Bind class wxGLAttributes
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxGLAttributes'
+int wxluatype_wxGLAttributes = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttributes_AuxBuffers[] = { &wxluatype_wxGLAttributes, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxGLAttributes_AuxBuffers(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttributes_AuxBuffers[1] = {{ wxLua_wxGLAttributes_AuxBuffers, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGLAttributes_AuxBuffers }};
+//     wxGLAttributes& AuxBuffers(int val);
+static int LUACALL wxLua_wxGLAttributes_AuxBuffers(lua_State *L)
+{
+    // int val
+    int val = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGLAttributes * self = (wxGLAttributes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttributes);
+    // call AuxBuffers
+    wxGLAttributes* returns = (wxGLAttributes*)&self->AuxBuffers(val);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLAttributes);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttributes_BufferSize[] = { &wxluatype_wxGLAttributes, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxGLAttributes_BufferSize(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttributes_BufferSize[1] = {{ wxLua_wxGLAttributes_BufferSize, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGLAttributes_BufferSize }};
+//     wxGLAttributes& BufferSize(int val);
+static int LUACALL wxLua_wxGLAttributes_BufferSize(lua_State *L)
+{
+    // int val
+    int val = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGLAttributes * self = (wxGLAttributes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttributes);
+    // call BufferSize
+    wxGLAttributes* returns = (wxGLAttributes*)&self->BufferSize(val);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLAttributes);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttributes_Defaults[] = { &wxluatype_wxGLAttributes, NULL };
+static int LUACALL wxLua_wxGLAttributes_Defaults(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttributes_Defaults[1] = {{ wxLua_wxGLAttributes_Defaults, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLAttributes_Defaults }};
+//     wxGLAttributes& Defaults();
+static int LUACALL wxLua_wxGLAttributes_Defaults(lua_State *L)
+{
+    // get this
+    wxGLAttributes * self = (wxGLAttributes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttributes);
+    // call Defaults
+    wxGLAttributes* returns = (wxGLAttributes*)&self->Defaults();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLAttributes);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttributes_Depth[] = { &wxluatype_wxGLAttributes, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxGLAttributes_Depth(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttributes_Depth[1] = {{ wxLua_wxGLAttributes_Depth, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGLAttributes_Depth }};
+//     wxGLAttributes& Depth(int val);
+static int LUACALL wxLua_wxGLAttributes_Depth(lua_State *L)
+{
+    // int val
+    int val = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGLAttributes * self = (wxGLAttributes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttributes);
+    // call Depth
+    wxGLAttributes* returns = (wxGLAttributes*)&self->Depth(val);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLAttributes);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttributes_DoubleBuffer[] = { &wxluatype_wxGLAttributes, NULL };
+static int LUACALL wxLua_wxGLAttributes_DoubleBuffer(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttributes_DoubleBuffer[1] = {{ wxLua_wxGLAttributes_DoubleBuffer, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLAttributes_DoubleBuffer }};
+//     wxGLAttributes& DoubleBuffer();
+static int LUACALL wxLua_wxGLAttributes_DoubleBuffer(lua_State *L)
+{
+    // get this
+    wxGLAttributes * self = (wxGLAttributes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttributes);
+    // call DoubleBuffer
+    wxGLAttributes* returns = (wxGLAttributes*)&self->DoubleBuffer();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLAttributes);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttributes_EndList[] = { &wxluatype_wxGLAttributes, NULL };
+static int LUACALL wxLua_wxGLAttributes_EndList(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttributes_EndList[1] = {{ wxLua_wxGLAttributes_EndList, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLAttributes_EndList }};
+//     void EndList();
+static int LUACALL wxLua_wxGLAttributes_EndList(lua_State *L)
+{
+    // get this
+    wxGLAttributes * self = (wxGLAttributes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttributes);
+    // call EndList
+    self->EndList();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttributes_FrameBuffersRGB[] = { &wxluatype_wxGLAttributes, NULL };
+static int LUACALL wxLua_wxGLAttributes_FrameBuffersRGB(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttributes_FrameBuffersRGB[1] = {{ wxLua_wxGLAttributes_FrameBuffersRGB, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLAttributes_FrameBuffersRGB }};
+//     wxGLAttributes& FrameBuffersRGB();
+static int LUACALL wxLua_wxGLAttributes_FrameBuffersRGB(lua_State *L)
+{
+    // get this
+    wxGLAttributes * self = (wxGLAttributes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttributes);
+    // call FrameBuffersRGB
+    wxGLAttributes* returns = (wxGLAttributes*)&self->FrameBuffersRGB();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLAttributes);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttributes_Level[] = { &wxluatype_wxGLAttributes, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxGLAttributes_Level(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttributes_Level[1] = {{ wxLua_wxGLAttributes_Level, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGLAttributes_Level }};
+//     wxGLAttributes& Level(int val);
+static int LUACALL wxLua_wxGLAttributes_Level(lua_State *L)
+{
+    // int val
+    int val = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGLAttributes * self = (wxGLAttributes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttributes);
+    // call Level
+    wxGLAttributes* returns = (wxGLAttributes*)&self->Level(val);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLAttributes);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttributes_MinAcumRGBA[] = { &wxluatype_wxGLAttributes, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxGLAttributes_MinAcumRGBA(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttributes_MinAcumRGBA[1] = {{ wxLua_wxGLAttributes_MinAcumRGBA, WXLUAMETHOD_METHOD, 5, 5, s_wxluatypeArray_wxLua_wxGLAttributes_MinAcumRGBA }};
+//     wxGLAttributes& MinAcumRGBA(int mRed, int mGreen, int mBlue, int mAlpha);
+static int LUACALL wxLua_wxGLAttributes_MinAcumRGBA(lua_State *L)
+{
+    // int mAlpha
+    int mAlpha = (int)wxlua_getnumbertype(L, 5);
+    // int mBlue
+    int mBlue = (int)wxlua_getnumbertype(L, 4);
+    // int mGreen
+    int mGreen = (int)wxlua_getnumbertype(L, 3);
+    // int mRed
+    int mRed = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGLAttributes * self = (wxGLAttributes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttributes);
+    // call MinAcumRGBA
+    wxGLAttributes* returns = (wxGLAttributes*)&self->MinAcumRGBA(mRed, mGreen, mBlue, mAlpha);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLAttributes);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttributes_MinRGBA[] = { &wxluatype_wxGLAttributes, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxGLAttributes_MinRGBA(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttributes_MinRGBA[1] = {{ wxLua_wxGLAttributes_MinRGBA, WXLUAMETHOD_METHOD, 5, 5, s_wxluatypeArray_wxLua_wxGLAttributes_MinRGBA }};
+//     wxGLAttributes& MinRGBA(int mRed, int mGreen, int mBlue, int mAlpha);
+static int LUACALL wxLua_wxGLAttributes_MinRGBA(lua_State *L)
+{
+    // int mAlpha
+    int mAlpha = (int)wxlua_getnumbertype(L, 5);
+    // int mBlue
+    int mBlue = (int)wxlua_getnumbertype(L, 4);
+    // int mGreen
+    int mGreen = (int)wxlua_getnumbertype(L, 3);
+    // int mRed
+    int mRed = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGLAttributes * self = (wxGLAttributes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttributes);
+    // call MinRGBA
+    wxGLAttributes* returns = (wxGLAttributes*)&self->MinRGBA(mRed, mGreen, mBlue, mAlpha);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLAttributes);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttributes_PlatformDefaults[] = { &wxluatype_wxGLAttributes, NULL };
+static int LUACALL wxLua_wxGLAttributes_PlatformDefaults(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttributes_PlatformDefaults[1] = {{ wxLua_wxGLAttributes_PlatformDefaults, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLAttributes_PlatformDefaults }};
+//     wxGLAttributes& PlatformDefaults();
+static int LUACALL wxLua_wxGLAttributes_PlatformDefaults(lua_State *L)
+{
+    // get this
+    wxGLAttributes * self = (wxGLAttributes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttributes);
+    // call PlatformDefaults
+    wxGLAttributes* returns = (wxGLAttributes*)&self->PlatformDefaults();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLAttributes);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttributes_RGBA[] = { &wxluatype_wxGLAttributes, NULL };
+static int LUACALL wxLua_wxGLAttributes_RGBA(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttributes_RGBA[1] = {{ wxLua_wxGLAttributes_RGBA, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLAttributes_RGBA }};
+//     wxGLAttributes& RGBA();
+static int LUACALL wxLua_wxGLAttributes_RGBA(lua_State *L)
+{
+    // get this
+    wxGLAttributes * self = (wxGLAttributes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttributes);
+    // call RGBA
+    wxGLAttributes* returns = (wxGLAttributes*)&self->RGBA();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLAttributes);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttributes_SampleBuffers[] = { &wxluatype_wxGLAttributes, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxGLAttributes_SampleBuffers(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttributes_SampleBuffers[1] = {{ wxLua_wxGLAttributes_SampleBuffers, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGLAttributes_SampleBuffers }};
+//     wxGLAttributes& SampleBuffers(int val);
+static int LUACALL wxLua_wxGLAttributes_SampleBuffers(lua_State *L)
+{
+    // int val
+    int val = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGLAttributes * self = (wxGLAttributes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttributes);
+    // call SampleBuffers
+    wxGLAttributes* returns = (wxGLAttributes*)&self->SampleBuffers(val);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLAttributes);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttributes_Samplers[] = { &wxluatype_wxGLAttributes, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxGLAttributes_Samplers(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttributes_Samplers[1] = {{ wxLua_wxGLAttributes_Samplers, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGLAttributes_Samplers }};
+//     wxGLAttributes& Samplers(int val);
+static int LUACALL wxLua_wxGLAttributes_Samplers(lua_State *L)
+{
+    // int val
+    int val = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGLAttributes * self = (wxGLAttributes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttributes);
+    // call Samplers
+    wxGLAttributes* returns = (wxGLAttributes*)&self->Samplers(val);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLAttributes);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttributes_Stencil[] = { &wxluatype_wxGLAttributes, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxGLAttributes_Stencil(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttributes_Stencil[1] = {{ wxLua_wxGLAttributes_Stencil, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGLAttributes_Stencil }};
+//     wxGLAttributes& Stencil(int val);
+static int LUACALL wxLua_wxGLAttributes_Stencil(lua_State *L)
+{
+    // int val
+    int val = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGLAttributes * self = (wxGLAttributes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttributes);
+    // call Stencil
+    wxGLAttributes* returns = (wxGLAttributes*)&self->Stencil(val);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLAttributes);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLAttributes_Stereo[] = { &wxluatype_wxGLAttributes, NULL };
+static int LUACALL wxLua_wxGLAttributes_Stereo(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttributes_Stereo[1] = {{ wxLua_wxGLAttributes_Stereo, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLAttributes_Stereo }};
+//     wxGLAttributes& Stereo();
+static int LUACALL wxLua_wxGLAttributes_Stereo(lua_State *L)
+{
+    // get this
+    wxGLAttributes * self = (wxGLAttributes *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLAttributes);
+    // call Stereo
+    wxGLAttributes* returns = (wxGLAttributes*)&self->Stereo();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLAttributes);
+
+    return 1;
+}
+
+static int LUACALL wxLua_wxGLAttributes_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLAttributes_constructor[1] = {{ wxLua_wxGLAttributes_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxGLAttributes();
+static int LUACALL wxLua_wxGLAttributes_constructor(lua_State *L)
+{
+    // call constructor
+    wxGLAttributes* returns = new wxGLAttributes();
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLAttributes);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxGLAttributes_delete_function(void** p)
+{
+    wxGLAttributes* o = (wxGLAttributes*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxGLAttributes_methods[] = {
+    { "AuxBuffers", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttributes_AuxBuffers, 1, NULL },
+    { "BufferSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttributes_BufferSize, 1, NULL },
+    { "Defaults", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttributes_Defaults, 1, NULL },
+    { "Depth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttributes_Depth, 1, NULL },
+    { "DoubleBuffer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttributes_DoubleBuffer, 1, NULL },
+    { "EndList", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttributes_EndList, 1, NULL },
+    { "FrameBuffersRGB", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttributes_FrameBuffersRGB, 1, NULL },
+    { "Level", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttributes_Level, 1, NULL },
+    { "MinAcumRGBA", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttributes_MinAcumRGBA, 1, NULL },
+    { "MinRGBA", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttributes_MinRGBA, 1, NULL },
+    { "PlatformDefaults", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttributes_PlatformDefaults, 1, NULL },
+    { "RGBA", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttributes_RGBA, 1, NULL },
+    { "SampleBuffers", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttributes_SampleBuffers, 1, NULL },
+    { "Samplers", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttributes_Samplers, 1, NULL },
+    { "Stencil", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttributes_Stencil, 1, NULL },
+    { "Stereo", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLAttributes_Stereo, 1, NULL },
+    { "wxGLAttributes", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxGLAttributes_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxGLAttributes_methodCount = sizeof(wxGLAttributes_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+// ---------------------------------------------------------------------------
+// Bind class wxGLContextAttrs
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxGLContextAttrs'
+int wxluatype_wxGLContextAttrs = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContextAttrs_CompatibilityProfile[] = { &wxluatype_wxGLContextAttrs, NULL };
+static int LUACALL wxLua_wxGLContextAttrs_CompatibilityProfile(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContextAttrs_CompatibilityProfile[1] = {{ wxLua_wxGLContextAttrs_CompatibilityProfile, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLContextAttrs_CompatibilityProfile }};
+//     wxGLContextAttrs& CompatibilityProfile();
+static int LUACALL wxLua_wxGLContextAttrs_CompatibilityProfile(lua_State *L)
+{
+    // get this
+    wxGLContextAttrs * self = (wxGLContextAttrs *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLContextAttrs);
+    // call CompatibilityProfile
+    wxGLContextAttrs* returns = (wxGLContextAttrs*)&self->CompatibilityProfile();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLContextAttrs);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContextAttrs_CoreProfile[] = { &wxluatype_wxGLContextAttrs, NULL };
+static int LUACALL wxLua_wxGLContextAttrs_CoreProfile(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContextAttrs_CoreProfile[1] = {{ wxLua_wxGLContextAttrs_CoreProfile, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLContextAttrs_CoreProfile }};
+//     wxGLContextAttrs& CoreProfile();
+static int LUACALL wxLua_wxGLContextAttrs_CoreProfile(lua_State *L)
+{
+    // get this
+    wxGLContextAttrs * self = (wxGLContextAttrs *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLContextAttrs);
+    // call CoreProfile
+    wxGLContextAttrs* returns = (wxGLContextAttrs*)&self->CoreProfile();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLContextAttrs);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContextAttrs_DebugCtx[] = { &wxluatype_wxGLContextAttrs, NULL };
+static int LUACALL wxLua_wxGLContextAttrs_DebugCtx(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContextAttrs_DebugCtx[1] = {{ wxLua_wxGLContextAttrs_DebugCtx, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLContextAttrs_DebugCtx }};
+//     wxGLContextAttrs& DebugCtx();
+static int LUACALL wxLua_wxGLContextAttrs_DebugCtx(lua_State *L)
+{
+    // get this
+    wxGLContextAttrs * self = (wxGLContextAttrs *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLContextAttrs);
+    // call DebugCtx
+    wxGLContextAttrs* returns = (wxGLContextAttrs*)&self->DebugCtx();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLContextAttrs);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContextAttrs_ES2[] = { &wxluatype_wxGLContextAttrs, NULL };
+static int LUACALL wxLua_wxGLContextAttrs_ES2(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContextAttrs_ES2[1] = {{ wxLua_wxGLContextAttrs_ES2, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLContextAttrs_ES2 }};
+//     wxGLContextAttrs& ES2();
+static int LUACALL wxLua_wxGLContextAttrs_ES2(lua_State *L)
+{
+    // get this
+    wxGLContextAttrs * self = (wxGLContextAttrs *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLContextAttrs);
+    // call ES2
+    wxGLContextAttrs* returns = (wxGLContextAttrs*)&self->ES2();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLContextAttrs);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContextAttrs_EndList[] = { &wxluatype_wxGLContextAttrs, NULL };
+static int LUACALL wxLua_wxGLContextAttrs_EndList(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContextAttrs_EndList[1] = {{ wxLua_wxGLContextAttrs_EndList, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLContextAttrs_EndList }};
+//     void EndList();
+static int LUACALL wxLua_wxGLContextAttrs_EndList(lua_State *L)
+{
+    // get this
+    wxGLContextAttrs * self = (wxGLContextAttrs *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLContextAttrs);
+    // call EndList
+    self->EndList();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContextAttrs_ForwardCompatible[] = { &wxluatype_wxGLContextAttrs, NULL };
+static int LUACALL wxLua_wxGLContextAttrs_ForwardCompatible(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContextAttrs_ForwardCompatible[1] = {{ wxLua_wxGLContextAttrs_ForwardCompatible, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLContextAttrs_ForwardCompatible }};
+//     wxGLContextAttrs& ForwardCompatible();
+static int LUACALL wxLua_wxGLContextAttrs_ForwardCompatible(lua_State *L)
+{
+    // get this
+    wxGLContextAttrs * self = (wxGLContextAttrs *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLContextAttrs);
+    // call ForwardCompatible
+    wxGLContextAttrs* returns = (wxGLContextAttrs*)&self->ForwardCompatible();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLContextAttrs);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContextAttrs_LoseOnReset[] = { &wxluatype_wxGLContextAttrs, NULL };
+static int LUACALL wxLua_wxGLContextAttrs_LoseOnReset(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContextAttrs_LoseOnReset[1] = {{ wxLua_wxGLContextAttrs_LoseOnReset, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLContextAttrs_LoseOnReset }};
+//     wxGLContextAttrs& LoseOnReset();
+static int LUACALL wxLua_wxGLContextAttrs_LoseOnReset(lua_State *L)
+{
+    // get this
+    wxGLContextAttrs * self = (wxGLContextAttrs *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLContextAttrs);
+    // call LoseOnReset
+    wxGLContextAttrs* returns = (wxGLContextAttrs*)&self->LoseOnReset();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLContextAttrs);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContextAttrs_MajorVersion[] = { &wxluatype_wxGLContextAttrs, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxGLContextAttrs_MajorVersion(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContextAttrs_MajorVersion[1] = {{ wxLua_wxGLContextAttrs_MajorVersion, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGLContextAttrs_MajorVersion }};
+//     wxGLContextAttrs& MajorVersion(int val);
+static int LUACALL wxLua_wxGLContextAttrs_MajorVersion(lua_State *L)
+{
+    // int val
+    int val = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGLContextAttrs * self = (wxGLContextAttrs *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLContextAttrs);
+    // call MajorVersion
+    wxGLContextAttrs* returns = (wxGLContextAttrs*)&self->MajorVersion(val);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLContextAttrs);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContextAttrs_MinorVersion[] = { &wxluatype_wxGLContextAttrs, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxGLContextAttrs_MinorVersion(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContextAttrs_MinorVersion[1] = {{ wxLua_wxGLContextAttrs_MinorVersion, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGLContextAttrs_MinorVersion }};
+//     wxGLContextAttrs& MinorVersion(int val);
+static int LUACALL wxLua_wxGLContextAttrs_MinorVersion(lua_State *L)
+{
+    // int val
+    int val = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGLContextAttrs * self = (wxGLContextAttrs *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLContextAttrs);
+    // call MinorVersion
+    wxGLContextAttrs* returns = (wxGLContextAttrs*)&self->MinorVersion(val);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLContextAttrs);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContextAttrs_NoResetNotify[] = { &wxluatype_wxGLContextAttrs, NULL };
+static int LUACALL wxLua_wxGLContextAttrs_NoResetNotify(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContextAttrs_NoResetNotify[1] = {{ wxLua_wxGLContextAttrs_NoResetNotify, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLContextAttrs_NoResetNotify }};
+//     wxGLContextAttrs& NoResetNotify();
+static int LUACALL wxLua_wxGLContextAttrs_NoResetNotify(lua_State *L)
+{
+    // get this
+    wxGLContextAttrs * self = (wxGLContextAttrs *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLContextAttrs);
+    // call NoResetNotify
+    wxGLContextAttrs* returns = (wxGLContextAttrs*)&self->NoResetNotify();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLContextAttrs);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContextAttrs_OGLVersion[] = { &wxluatype_wxGLContextAttrs, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxGLContextAttrs_OGLVersion(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContextAttrs_OGLVersion[1] = {{ wxLua_wxGLContextAttrs_OGLVersion, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxGLContextAttrs_OGLVersion }};
+//     wxGLContextAttrs& OGLVersion(int vmayor, int vminor);
+static int LUACALL wxLua_wxGLContextAttrs_OGLVersion(lua_State *L)
+{
+    // int vminor
+    int vminor = (int)wxlua_getnumbertype(L, 3);
+    // int vmayor
+    int vmayor = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGLContextAttrs * self = (wxGLContextAttrs *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLContextAttrs);
+    // call OGLVersion
+    wxGLContextAttrs* returns = (wxGLContextAttrs*)&self->OGLVersion(vmayor, vminor);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLContextAttrs);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContextAttrs_PlatformDefaults[] = { &wxluatype_wxGLContextAttrs, NULL };
+static int LUACALL wxLua_wxGLContextAttrs_PlatformDefaults(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContextAttrs_PlatformDefaults[1] = {{ wxLua_wxGLContextAttrs_PlatformDefaults, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLContextAttrs_PlatformDefaults }};
+//     wxGLContextAttrs& PlatformDefaults();
+static int LUACALL wxLua_wxGLContextAttrs_PlatformDefaults(lua_State *L)
+{
+    // get this
+    wxGLContextAttrs * self = (wxGLContextAttrs *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLContextAttrs);
+    // call PlatformDefaults
+    wxGLContextAttrs* returns = (wxGLContextAttrs*)&self->PlatformDefaults();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLContextAttrs);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContextAttrs_ReleaseFlush[] = { &wxluatype_wxGLContextAttrs, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxGLContextAttrs_ReleaseFlush(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContextAttrs_ReleaseFlush[1] = {{ wxLua_wxGLContextAttrs_ReleaseFlush, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxGLContextAttrs_ReleaseFlush }};
+//     wxGLContextAttrs& ReleaseFlush(int val = 1);
+static int LUACALL wxLua_wxGLContextAttrs_ReleaseFlush(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int val = 1
+    int val = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : 1);
+    // get this
+    wxGLContextAttrs * self = (wxGLContextAttrs *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLContextAttrs);
+    // call ReleaseFlush
+    wxGLContextAttrs* returns = (wxGLContextAttrs*)&self->ReleaseFlush(val);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLContextAttrs);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContextAttrs_ResetIsolation[] = { &wxluatype_wxGLContextAttrs, NULL };
+static int LUACALL wxLua_wxGLContextAttrs_ResetIsolation(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContextAttrs_ResetIsolation[1] = {{ wxLua_wxGLContextAttrs_ResetIsolation, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLContextAttrs_ResetIsolation }};
+//     wxGLContextAttrs& ResetIsolation();
+static int LUACALL wxLua_wxGLContextAttrs_ResetIsolation(lua_State *L)
+{
+    // get this
+    wxGLContextAttrs * self = (wxGLContextAttrs *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLContextAttrs);
+    // call ResetIsolation
+    wxGLContextAttrs* returns = (wxGLContextAttrs*)&self->ResetIsolation();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLContextAttrs);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContextAttrs_Robust[] = { &wxluatype_wxGLContextAttrs, NULL };
+static int LUACALL wxLua_wxGLContextAttrs_Robust(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContextAttrs_Robust[1] = {{ wxLua_wxGLContextAttrs_Robust, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLContextAttrs_Robust }};
+//     wxGLContextAttrs& Robust();
+static int LUACALL wxLua_wxGLContextAttrs_Robust(lua_State *L)
+{
+    // get this
+    wxGLContextAttrs * self = (wxGLContextAttrs *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLContextAttrs);
+    // call Robust
+    wxGLContextAttrs* returns = (wxGLContextAttrs*)&self->Robust();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLContextAttrs);
+
+    return 1;
+}
+
+static int LUACALL wxLua_wxGLContextAttrs_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContextAttrs_constructor[1] = {{ wxLua_wxGLContextAttrs_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxGLContextAttrs();
+static int LUACALL wxLua_wxGLContextAttrs_constructor(lua_State *L)
+{
+    // call constructor
+    wxGLContextAttrs* returns = new wxGLContextAttrs();
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGLContextAttrs);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxGLContextAttrs_delete_function(void** p)
+{
+    wxGLContextAttrs* o = (wxGLContextAttrs*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxGLContextAttrs_methods[] = {
+    { "CompatibilityProfile", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLContextAttrs_CompatibilityProfile, 1, NULL },
+    { "CoreProfile", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLContextAttrs_CoreProfile, 1, NULL },
+    { "DebugCtx", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLContextAttrs_DebugCtx, 1, NULL },
+    { "ES2", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLContextAttrs_ES2, 1, NULL },
+    { "EndList", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLContextAttrs_EndList, 1, NULL },
+    { "ForwardCompatible", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLContextAttrs_ForwardCompatible, 1, NULL },
+    { "LoseOnReset", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLContextAttrs_LoseOnReset, 1, NULL },
+    { "MajorVersion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLContextAttrs_MajorVersion, 1, NULL },
+    { "MinorVersion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLContextAttrs_MinorVersion, 1, NULL },
+    { "NoResetNotify", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLContextAttrs_NoResetNotify, 1, NULL },
+    { "OGLVersion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLContextAttrs_OGLVersion, 1, NULL },
+    { "PlatformDefaults", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLContextAttrs_PlatformDefaults, 1, NULL },
+    { "ReleaseFlush", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLContextAttrs_ReleaseFlush, 1, NULL },
+    { "ResetIsolation", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLContextAttrs_ResetIsolation, 1, NULL },
+    { "Robust", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLContextAttrs_Robust, 1, NULL },
+    { "wxGLContextAttrs", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxGLContextAttrs_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxGLContextAttrs_methodCount = sizeof(wxGLContextAttrs_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+
+
 #if wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS
 // ---------------------------------------------------------------------------
 // Bind class wxGLContext
@@ -370,7 +1258,7 @@ int wxluatype_wxGLContext = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContext_GetWindow[] = { &wxluatype_wxGLContext, NULL };
 static int LUACALL wxLua_wxGLContext_GetWindow(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContext_GetWindow[1] = {{ wxLua_wxGLContext_GetWindow, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLContext_GetWindow }};
-//         const wxWindow*  GetWindow( );
+//         const wxWindow*  GetWindow();
 static int LUACALL wxLua_wxGLContext_GetWindow(lua_State *L)
 {
     // get this
@@ -386,7 +1274,7 @@ static int LUACALL wxLua_wxGLContext_GetWindow(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContext_SetColour[] = { &wxluatype_wxGLContext, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxGLContext_SetColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContext_SetColour[1] = {{ wxLua_wxGLContext_SetColour, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGLContext_SetColour }};
-//         void SetColour(const wxString& colour );
+//         void SetColour(const wxString& colour);
 static int LUACALL wxLua_wxGLContext_SetColour(lua_State *L)
 {
     // const wxString colour
@@ -402,7 +1290,7 @@ static int LUACALL wxLua_wxGLContext_SetColour(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContext_SetCurrent2[] = { &wxluatype_wxGLContext, NULL };
 static int LUACALL wxLua_wxGLContext_SetCurrent2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContext_SetCurrent2[1] = {{ wxLua_wxGLContext_SetCurrent2, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLContext_SetCurrent2 }};
-//         void SetCurrent( );
+//         void SetCurrent();
 static int LUACALL wxLua_wxGLContext_SetCurrent2(lua_State *L)
 {
     // get this
@@ -455,7 +1343,7 @@ static int LUACALL wxLua_wxGLContext_SetCurrent(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContext_SwapBuffers[] = { &wxluatype_wxGLContext, NULL };
 static int LUACALL wxLua_wxGLContext_SwapBuffers(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContext_SwapBuffers[1] = {{ wxLua_wxGLContext_SwapBuffers, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLContext_SwapBuffers }};
-//         void SwapBuffers( );
+//         void SwapBuffers();
 static int LUACALL wxLua_wxGLContext_SwapBuffers(lua_State *L)
 {
     // get this
@@ -472,7 +1360,7 @@ static int LUACALL wxLua_wxGLContext_SwapBuffers(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContext_constructor2[] = { &wxluatype_TBOOLEAN, &wxluatype_wxGLCanvas, &wxluatype_wxPalette, &wxluatype_wxGLContext, NULL };
 static int LUACALL wxLua_wxGLContext_constructor2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContext_constructor2[1] = {{ wxLua_wxGLContext_constructor2, WXLUAMETHOD_CONSTRUCTOR, 2, 4, s_wxluatypeArray_wxLua_wxGLContext_constructor2 }};
-//         wxGLContext(bool isRGB, wxGLCanvas* win, const wxPalette& palette = wxNullPalette, const wxGLContext* other = NULL );
+//         wxGLContext(bool isRGB, wxGLCanvas* win, const wxPalette& palette = wxNullPalette, const wxGLContext* other = NULL);
 static int LUACALL wxLua_wxGLContext_constructor2(lua_State *L)
 {
     // get number of arguments
@@ -496,7 +1384,7 @@ static int LUACALL wxLua_wxGLContext_constructor2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContext_constructor1[] = { &wxluatype_TBOOLEAN, &wxluatype_wxGLCanvas, &wxluatype_wxPalette, NULL };
 static int LUACALL wxLua_wxGLContext_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContext_constructor1[1] = {{ wxLua_wxGLContext_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 3, s_wxluatypeArray_wxLua_wxGLContext_constructor1 }};
-//         wxGLContext(bool isRGB, wxGLCanvas* win, const wxPalette& palette = wxNullPalette );
+//         wxGLContext(bool isRGB, wxGLCanvas* win, const wxPalette& palette = wxNullPalette);
 static int LUACALL wxLua_wxGLContext_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -521,7 +1409,7 @@ static int LUACALL wxLua_wxGLContext_constructor1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLContext_constructor[] = { &wxluatype_wxGLCanvas, &wxluatype_wxGLContext, NULL };
 static int LUACALL wxLua_wxGLContext_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLContext_constructor[1] = {{ wxLua_wxGLContext_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxGLContext_constructor }};
-//         !%mac wxGLContext(wxGLCanvas *win, const wxGLContext* other = NULL ); // FIXME
+//         !%mac wxGLContext(wxGLCanvas *win, const wxGLContext* other = NULL); // FIXME
 static int LUACALL wxLua_wxGLContext_constructor(lua_State *L)
 {
     // get number of arguments
@@ -730,18 +1618,37 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxgl(size_t &count)
 // wxLuaGetClassList_wxgl() is called to register classes
 // ---------------------------------------------------------------------------
 
+static const char* wxluaclassname_wxGLAttribsBase = "wxGLAttribsBase";
+static const char* wxluaclassname_wxGLAttributes = "wxGLAttributes";
 static const char* wxluaclassname_wxGLCanvas = "wxGLCanvas";
 static const char* wxluaclassname_wxGLContext = "wxGLContext";
+static const char* wxluaclassname_wxGLContextAttrs = "wxGLContextAttrs";
 static const char* wxluaclassname_wxObject = "wxObject";
 static const char* wxluaclassname_wxWindow = "wxWindow";
 
+static const char* wxluabaseclassnames_wxGLAttributes[] = { wxluaclassname_wxGLAttribsBase, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxGLAttributes[] = { NULL };
 static const char* wxluabaseclassnames_wxGLCanvas[] = { wxluaclassname_wxWindow, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxGLCanvas[] = { NULL };
 static const char* wxluabaseclassnames_wxGLContext[] = { wxluaclassname_wxObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxGLContext[] = { NULL };
+static const char* wxluabaseclassnames_wxGLContextAttrs[] = { wxluaclassname_wxGLAttribsBase, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxGLContextAttrs[] = { NULL };
 // ---------------------------------------------------------------------------
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+    extern wxLuaBindMethod wxGLAttribsBase_methods[];
+    extern int wxGLAttribsBase_methodCount;
+    extern void wxLua_wxGLAttribsBase_delete_function(void** p);
+    extern wxLuaBindMethod wxGLAttributes_methods[];
+    extern int wxGLAttributes_methodCount;
+    extern void wxLua_wxGLAttributes_delete_function(void** p);
+    extern wxLuaBindMethod wxGLContextAttrs_methods[];
+    extern int wxGLContextAttrs_methodCount;
+    extern void wxLua_wxGLContextAttrs_delete_function(void** p);
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
 
 #if wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS
     extern wxLuaBindMethod wxGLCanvas_methods[];
@@ -759,10 +1666,19 @@ wxLuaBindClass* wxLuaGetClassList_wxgl(size_t &count)
 {
     static wxLuaBindClass classList[] =
     {
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+        { wxluaclassname_wxGLAttribsBase, wxGLAttribsBase_methods, wxGLAttribsBase_methodCount, NULL, &wxluatype_wxGLAttribsBase, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxGLAttribsBase_delete_function, }, 
+        { wxluaclassname_wxGLAttributes, wxGLAttributes_methods, wxGLAttributes_methodCount, NULL, &wxluatype_wxGLAttributes, wxluabaseclassnames_wxGLAttributes, wxluabaseclassbinds_wxGLAttributes, NULL, NULL, NULL, 0, &wxLua_wxGLAttributes_delete_function, }, 
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+
 #if wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS
         { wxluaclassname_wxGLCanvas, wxGLCanvas_methods, wxGLCanvas_methodCount, CLASSINFO(wxGLCanvas), &wxluatype_wxGLCanvas, wxluabaseclassnames_wxGLCanvas, wxluabaseclassbinds_wxGLCanvas, NULL, NULL, NULL, 0, &wxLua_wxGLCanvas_delete_function, }, 
         { wxluaclassname_wxGLContext, wxGLContext_methods, wxGLContext_methodCount, CLASSINFO(wxGLContext), &wxluatype_wxGLContext, wxluabaseclassnames_wxGLContext, wxluabaseclassbinds_wxGLContext, NULL, NULL, NULL, 0, &wxLua_wxGLContext_delete_function, }, 
 #endif // wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+        { wxluaclassname_wxGLContextAttrs, wxGLContextAttrs_methods, wxGLContextAttrs_methodCount, NULL, &wxluatype_wxGLContextAttrs, wxluabaseclassnames_wxGLContextAttrs, wxluabaseclassbinds_wxGLContextAttrs, NULL, NULL, NULL, 0, &wxLua_wxGLContextAttrs_delete_function, }, 
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
 
 
         { 0, 0, 0, 0, 0, 0, 0 }, 
