@@ -7446,7 +7446,8 @@ class wxStyledTextCtrl : public wxControl
     // ....the rest is skipped
 
     // wxTextAreaBase pure virtual methods
-    // ....skipped
+    %wxchkver_3_1_0 static wxVersionInfo GetLibraryVersionInfo();
+    // ....the rest is skipped
 
 };
 

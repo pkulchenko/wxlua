@@ -2393,6 +2393,7 @@ static const char* wxluaclassname_wxSystemOptions = "wxSystemOptions";
 static const char* wxluaclassname_wxTempFile = "wxTempFile";
 static const char* wxluaclassname_wxTimeSpan = "wxTimeSpan";
 static const char* wxluaclassname_wxULongLong = "wxULongLong";
+static const char* wxluaclassname_wxVersionInfo = "wxVersionInfo";
 
 static const char* wxluabaseclassnames_wxArchiveFSHandler[] = { wxluaclassname_wxFileSystemHandler, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxArchiveFSHandler[] = { NULL };
@@ -2555,6 +2556,12 @@ extern void wxLua_wxStringTokenizer_delete_function(void** p);
     extern int wxString_iterator_methodCount;
     extern void wxLua_wxString_iterator_delete_function(void** p);
 #endif // wxCHECK_VERSION(2,9,0)
+
+#if wxCHECK_VERSION(2,9,2)
+    extern wxLuaBindMethod wxVersionInfo_methods[];
+    extern int wxVersionInfo_methodCount;
+    extern void wxLua_wxVersionInfo_delete_function(void** p);
+#endif // wxCHECK_VERSION(2,9,2)
 
 #if wxLUA_USE_wxArrayInt
     extern wxLuaBindMethod wxArrayInt_methods[];
@@ -3010,6 +3017,10 @@ wxLuaBindClass* wxLuaGetClassList_wxbase(size_t &count)
 #if wxUSE_LONGLONG
         { wxluaclassname_wxULongLong, wxULongLong_methods, wxULongLong_methodCount, NULL, &wxluatype_wxULongLong, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxULongLong_delete_function, }, 
 #endif // wxUSE_LONGLONG
+
+#if wxCHECK_VERSION(2,9,2)
+        { wxluaclassname_wxVersionInfo, wxVersionInfo_methods, wxVersionInfo_methodCount, NULL, &wxluatype_wxVersionInfo, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxVersionInfo_delete_function, }, 
+#endif // wxCHECK_VERSION(2,9,2)
 
 
         { 0, 0, 0, 0, 0, 0, 0 }, 

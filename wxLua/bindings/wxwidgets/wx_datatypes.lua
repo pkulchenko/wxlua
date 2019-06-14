@@ -5301,6 +5301,12 @@ wx_dataTypeTable =
     Name = "wxValidator",
     ValueType = "class",
   },
+  wxVersionInfo = {
+    Condition = "wxCHECK_VERSION(2,9,2)",
+    IsNumber = false,
+    Name = "wxVersionInfo",
+    ValueType = "class",
+  },
   wxVideoMode = {
     Condition = "wxLUA_USE_wxDisplay && wxUSE_DISPLAY",
     IsNumber = false,

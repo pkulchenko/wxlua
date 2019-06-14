@@ -3934,3 +3934,230 @@ wxLuaBindMethod wxEvent_methods[] = {
 int wxEvent_methodCount = sizeof(wxEvent_methods)/sizeof(wxLuaBindMethod) - 1;
 
 
+
+#if wxCHECK_VERSION(2,9,2)
+// ---------------------------------------------------------------------------
+// Bind class wxVersionInfo
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxVersionInfo'
+int wxluatype_wxVersionInfo = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVersionInfo_GetCopyright[] = { &wxluatype_wxVersionInfo, NULL };
+static int LUACALL wxLua_wxVersionInfo_GetCopyright(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxVersionInfo_GetCopyright[1] = {{ wxLua_wxVersionInfo_GetCopyright, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxVersionInfo_GetCopyright }};
+//     const wxString& GetCopyright() const;
+static int LUACALL wxLua_wxVersionInfo_GetCopyright(lua_State *L)
+{
+    // get this
+    wxVersionInfo * self = (wxVersionInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVersionInfo);
+    // call GetCopyright
+    wxString returns = (self->GetCopyright());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVersionInfo_GetDescription[] = { &wxluatype_wxVersionInfo, NULL };
+static int LUACALL wxLua_wxVersionInfo_GetDescription(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxVersionInfo_GetDescription[1] = {{ wxLua_wxVersionInfo_GetDescription, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxVersionInfo_GetDescription }};
+//     const wxString& GetDescription();
+static int LUACALL wxLua_wxVersionInfo_GetDescription(lua_State *L)
+{
+    // get this
+    wxVersionInfo * self = (wxVersionInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVersionInfo);
+    // call GetDescription
+    wxString returns = (self->GetDescription());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVersionInfo_GetMajor[] = { &wxluatype_wxVersionInfo, NULL };
+static int LUACALL wxLua_wxVersionInfo_GetMajor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxVersionInfo_GetMajor[1] = {{ wxLua_wxVersionInfo_GetMajor, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxVersionInfo_GetMajor }};
+//     int GetMajor() const;
+static int LUACALL wxLua_wxVersionInfo_GetMajor(lua_State *L)
+{
+    // get this
+    wxVersionInfo * self = (wxVersionInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVersionInfo);
+    // call GetMajor
+    int returns = (self->GetMajor());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVersionInfo_GetMicro[] = { &wxluatype_wxVersionInfo, NULL };
+static int LUACALL wxLua_wxVersionInfo_GetMicro(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxVersionInfo_GetMicro[1] = {{ wxLua_wxVersionInfo_GetMicro, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxVersionInfo_GetMicro }};
+//     int GetMicro() const;
+static int LUACALL wxLua_wxVersionInfo_GetMicro(lua_State *L)
+{
+    // get this
+    wxVersionInfo * self = (wxVersionInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVersionInfo);
+    // call GetMicro
+    int returns = (self->GetMicro());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVersionInfo_GetMinor[] = { &wxluatype_wxVersionInfo, NULL };
+static int LUACALL wxLua_wxVersionInfo_GetMinor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxVersionInfo_GetMinor[1] = {{ wxLua_wxVersionInfo_GetMinor, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxVersionInfo_GetMinor }};
+//     int GetMinor() const;
+static int LUACALL wxLua_wxVersionInfo_GetMinor(lua_State *L)
+{
+    // get this
+    wxVersionInfo * self = (wxVersionInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVersionInfo);
+    // call GetMinor
+    int returns = (self->GetMinor());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVersionInfo_GetName[] = { &wxluatype_wxVersionInfo, NULL };
+static int LUACALL wxLua_wxVersionInfo_GetName(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxVersionInfo_GetName[1] = {{ wxLua_wxVersionInfo_GetName, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxVersionInfo_GetName }};
+//     const wxString& GetName() const;
+static int LUACALL wxLua_wxVersionInfo_GetName(lua_State *L)
+{
+    // get this
+    wxVersionInfo * self = (wxVersionInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVersionInfo);
+    // call GetName
+    wxString returns = (self->GetName());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVersionInfo_GetVersionString[] = { &wxluatype_wxVersionInfo, NULL };
+static int LUACALL wxLua_wxVersionInfo_GetVersionString(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxVersionInfo_GetVersionString[1] = {{ wxLua_wxVersionInfo_GetVersionString, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxVersionInfo_GetVersionString }};
+//     wxString GetVersionString() const;
+static int LUACALL wxLua_wxVersionInfo_GetVersionString(lua_State *L)
+{
+    // get this
+    wxVersionInfo * self = (wxVersionInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVersionInfo);
+    // call GetVersionString
+    wxString returns = (self->GetVersionString());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVersionInfo_HasCopyright[] = { &wxluatype_wxVersionInfo, NULL };
+static int LUACALL wxLua_wxVersionInfo_HasCopyright(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxVersionInfo_HasCopyright[1] = {{ wxLua_wxVersionInfo_HasCopyright, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxVersionInfo_HasCopyright }};
+//     bool HasCopyright() const;
+static int LUACALL wxLua_wxVersionInfo_HasCopyright(lua_State *L)
+{
+    // get this
+    wxVersionInfo * self = (wxVersionInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVersionInfo);
+    // call HasCopyright
+    bool returns = (self->HasCopyright());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVersionInfo_HasDescription[] = { &wxluatype_wxVersionInfo, NULL };
+static int LUACALL wxLua_wxVersionInfo_HasDescription(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxVersionInfo_HasDescription[1] = {{ wxLua_wxVersionInfo_HasDescription, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxVersionInfo_HasDescription }};
+//     bool HasDescription() const;
+static int LUACALL wxLua_wxVersionInfo_HasDescription(lua_State *L)
+{
+    // get this
+    wxVersionInfo * self = (wxVersionInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVersionInfo);
+    // call HasDescription
+    bool returns = (self->HasDescription());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVersionInfo_ToString[] = { &wxluatype_wxVersionInfo, NULL };
+static int LUACALL wxLua_wxVersionInfo_ToString(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxVersionInfo_ToString[1] = {{ wxLua_wxVersionInfo_ToString, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxVersionInfo_ToString }};
+//     wxString ToString() const;
+static int LUACALL wxLua_wxVersionInfo_ToString(lua_State *L)
+{
+    // get this
+    wxVersionInfo * self = (wxVersionInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVersionInfo);
+    // call ToString
+    wxString returns = (self->ToString());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVersionInfo_constructor[] = { &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxVersionInfo_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxVersionInfo_constructor[1] = {{ wxLua_wxVersionInfo_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 6, s_wxluatypeArray_wxLua_wxVersionInfo_constructor }};
+//                   const wxString& copyright = "");
+static int LUACALL wxLua_wxVersionInfo_constructor(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString copyright = ""
+    const wxString copyright = (argCount >= 6 ? wxlua_getwxStringtype(L, 6) : wxString(wxEmptyString));
+    // const wxString description = ""
+    const wxString description = (argCount >= 5 ? wxlua_getwxStringtype(L, 5) : wxString(wxEmptyString));
+    // int micro = 0
+    int micro = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : 0);
+    // int minor = 0
+    int minor = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : 0);
+    // int major = 0
+    int major = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : 0);
+    // const wxString name = ""
+    const wxString name = (argCount >= 1 ? wxlua_getwxStringtype(L, 1) : wxString(wxEmptyString));
+    // call constructor
+    wxVersionInfo* returns = new wxVersionInfo(name, major, minor, micro, description, copyright);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxVersionInfo);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxVersionInfo_delete_function(void** p)
+{
+    wxVersionInfo* o = (wxVersionInfo*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxVersionInfo_methods[] = {
+    { "GetCopyright", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVersionInfo_GetCopyright, 1, NULL },
+    { "GetDescription", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVersionInfo_GetDescription, 1, NULL },
+    { "GetMajor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVersionInfo_GetMajor, 1, NULL },
+    { "GetMicro", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVersionInfo_GetMicro, 1, NULL },
+    { "GetMinor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVersionInfo_GetMinor, 1, NULL },
+    { "GetName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVersionInfo_GetName, 1, NULL },
+    { "GetVersionString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVersionInfo_GetVersionString, 1, NULL },
+    { "HasCopyright", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVersionInfo_HasCopyright, 1, NULL },
+    { "HasDescription", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVersionInfo_HasDescription, 1, NULL },
+    { "ToString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVersionInfo_ToString, 1, NULL },
+    { "wxVersionInfo", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxVersionInfo_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxVersionInfo_methodCount = sizeof(wxVersionInfo_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxCHECK_VERSION(2,9,2)
+

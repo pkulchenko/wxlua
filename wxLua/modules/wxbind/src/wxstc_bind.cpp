@@ -3783,6 +3783,25 @@ static int LUACALL wxLua_wxStyledTextCtrl_GetLexerLanguage(lua_State *L)
 
 #endif // wxCHECK_VERSION(3,1,1)
 
+#if (wxCHECK_VERSION(2,9,2)) && (wxCHECK_VERSION(3,1,0))
+static int LUACALL wxLua_wxStyledTextCtrl_GetLibraryVersionInfo(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetLibraryVersionInfo[1] = {{ wxLua_wxStyledTextCtrl_GetLibraryVersionInfo, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
+//     %wxchkver_3_1_0 static wxVersionInfo GetLibraryVersionInfo();
+static int LUACALL wxLua_wxStyledTextCtrl_GetLibraryVersionInfo(lua_State *L)
+{
+    // call GetLibraryVersionInfo
+    // allocate a new object using the copy constructor
+    wxVersionInfo* returns = new wxVersionInfo(wxStyledTextCtrl::GetLibraryVersionInfo());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxVersionInfo);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxVersionInfo);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxCHECK_VERSION(3,1,0))
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetLine[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_GetLine(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetLine[1] = {{ wxLua_wxStyledTextCtrl_GetLine, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetLine }};
@@ -13491,6 +13510,10 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
 #if wxCHECK_VERSION(3,1,1)
     { "GetLexerLanguage", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetLexerLanguage, 1, NULL },
 #endif // wxCHECK_VERSION(3,1,1)
+
+#if (wxCHECK_VERSION(2,9,2)) && (wxCHECK_VERSION(3,1,0))
+    { "GetLibraryVersionInfo", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxStyledTextCtrl_GetLibraryVersionInfo, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxCHECK_VERSION(3,1,0))
 
     { "GetLine", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetLine, 1, NULL },
     { "GetLineCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetLineCount, 1, NULL },
