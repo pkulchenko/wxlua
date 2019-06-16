@@ -12460,7 +12460,8 @@ static int LUACALL wxLua_wxAuiMDIChildFrame_DoShow(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiMDIChildFrame_GetIcon[] = { &wxluatype_wxAuiMDIChildFrame, NULL };
 static int LUACALL wxLua_wxAuiMDIChildFrame_GetIcon(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiMDIChildFrame_GetIcon[1] = {{ wxLua_wxAuiMDIChildFrame_GetIcon, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiMDIChildFrame_GetIcon }};
-//     virtual const wxIcon& GetIcon() const;
+// %override wxLua_wxAuiMDIChildFrame_GetIcon
+// virtual const wxIcon& GetIcon() const;
 static int LUACALL wxLua_wxAuiMDIChildFrame_GetIcon(lua_State *L)
 {
     // get this
@@ -12473,10 +12474,12 @@ static int LUACALL wxLua_wxAuiMDIChildFrame_GetIcon(lua_State *L)
     return 1;
 }
 
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiMDIChildFrame_GetIcons[] = { &wxluatype_wxAuiMDIChildFrame, NULL };
 static int LUACALL wxLua_wxAuiMDIChildFrame_GetIcons(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiMDIChildFrame_GetIcons[1] = {{ wxLua_wxAuiMDIChildFrame_GetIcons, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiMDIChildFrame_GetIcons }};
-//     virtual const wxIconBundle& GetIcons() const;
+// %override wxLua_wxAuiMDIChildFrame_GetIcons
+// virtual const wxIconBundle& GetIcons() const;
 static int LUACALL wxLua_wxAuiMDIChildFrame_GetIcons(lua_State *L)
 {
     // get this
@@ -12488,6 +12491,7 @@ static int LUACALL wxLua_wxAuiMDIChildFrame_GetIcons(lua_State *L)
 
     return 1;
 }
+
 
 #endif // (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxIcon)
 

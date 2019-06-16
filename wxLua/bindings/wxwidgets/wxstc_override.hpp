@@ -80,3 +80,37 @@ static int LUACALL wxLua_wxStyledTextCtrl_GetSelection(lua_State *L)
     return 2;
 }
 %end
+
+%override wxLua_wxStyledTextCtrl_MarkerDefinePixmap
+// void MarkerDefinePixmap(int markerNumber, const char* const* xpmData);
+static int LUACALL wxLua_wxStyledTextCtrl_MarkerDefinePixmap(lua_State *L)
+{
+    // const char const xpmData
+    const char* const* xpmData = (const char* const*)wxlua_touserdata(L, 3);
+    // int markerNumber
+    int markerNumber = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call MarkerDefinePixmap
+    self->MarkerDefinePixmap(markerNumber, xpmData);
+
+    return 0;
+}
+%end
+
+%override wxLua_wxStyledTextCtrl_RegisterImage
+// void RegisterImage(int type, const char* const* xpmData);
+static int LUACALL wxLua_wxStyledTextCtrl_RegisterImage(lua_State *L)
+{
+    // const char const xpmData
+    const char* const* xpmData = (const char* const*)wxlua_touserdata(L, 3);
+    // int type
+    int type = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call RegisterImage
+    self->RegisterImage(type, xpmData);
+
+    return 0;
+}
+%end

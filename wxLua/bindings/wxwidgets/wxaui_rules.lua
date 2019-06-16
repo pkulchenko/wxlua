@@ -101,7 +101,7 @@ interface_fileTable =
 -- A list of files that contain bindings that need to be overridden or empty
 --   table {} for none.
 --   The files are loaded from the interface_filepath.
---override_fileTable = { "override.hpp" }
+override_fileTable = { "wxaui_override.hpp" }
 
 -- ============================================================================
 -- A table containing filenames of XXX_datatype.lua from other wrappers to

@@ -7273,7 +7273,8 @@ static int LUACALL wxLua_wxStyledTextCtrl_MarkerDefineBitmap(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerDefinePixmap[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TLIGHTUSERDATA, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_MarkerDefinePixmap(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerDefinePixmap[1] = {{ wxLua_wxStyledTextCtrl_MarkerDefinePixmap, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_MarkerDefinePixmap }};
-//     %wxchkver_3_1_3 void MarkerDefinePixmap(int markerNumber, const char* const* xpmData);
+// %override wxLua_wxStyledTextCtrl_MarkerDefinePixmap
+// void MarkerDefinePixmap(int markerNumber, const char* const* xpmData);
 static int LUACALL wxLua_wxStyledTextCtrl_MarkerDefinePixmap(lua_State *L)
 {
     // const char const xpmData
@@ -7287,6 +7288,7 @@ static int LUACALL wxLua_wxStyledTextCtrl_MarkerDefinePixmap(lua_State *L)
 
     return 0;
 }
+
 
 #endif // wxCHECK_VERSION(3,1,3)
 
@@ -8163,7 +8165,8 @@ static int LUACALL wxLua_wxStyledTextCtrl_RegisterImage1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_RegisterImage[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TLIGHTUSERDATA, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_RegisterImage(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_RegisterImage[1] = {{ wxLua_wxStyledTextCtrl_RegisterImage, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_RegisterImage }};
-//     %wxchkver_3_1_3 void RegisterImage(int type, const char* const* xpmData);
+// %override wxLua_wxStyledTextCtrl_RegisterImage
+// void RegisterImage(int type, const char* const* xpmData);
 static int LUACALL wxLua_wxStyledTextCtrl_RegisterImage(lua_State *L)
 {
     // const char const xpmData
@@ -8177,6 +8180,7 @@ static int LUACALL wxLua_wxStyledTextCtrl_RegisterImage(lua_State *L)
 
     return 0;
 }
+
 
 #endif // wxCHECK_VERSION(3,1,3)
 
