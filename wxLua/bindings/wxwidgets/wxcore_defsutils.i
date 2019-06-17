@@ -79,7 +79,7 @@ class %delete wxProcess : public wxEvtHandler
 {
     wxProcess(wxEvtHandler *parent = NULL, int nId = wxID_ANY);
     wxProcess(int flags);
-    %wxchkver_3_1_1 & %win bool Activate() const;
+    %wxchkver_3_1_0 & %win bool Activate() const;
     wxUSE_STREAMS void CloseOutput();
     void Detach();
     static bool Exists(int pid);
@@ -194,21 +194,21 @@ wxPoint wxGetMousePosition();
 
 class wxKeyboardState
 {
-    %wxchkver_3_1_1 wxKeyboardState(bool controlDown = false, bool shiftDown = false, bool altDown = false, bool metaDown = false);
-    %wxchkver_3_1_1 int GetModifiers() const;
-    %wxchkver_3_1_1 bool HasAnyModifiers() const;
-    %wxchkver_3_1_1 bool HasModifiers() const;
-    %wxchkver_3_1_1 bool ControlDown() const;
-    %wxchkver_3_1_1 bool RawControlDown() const;
-    %wxchkver_3_1_1 bool ShiftDown() const;
-    %wxchkver_3_1_1 bool MetaDown() const;
-    %wxchkver_3_1_1 bool AltDown() const;
-    %wxchkver_3_1_1 bool CmdDown() const;
-    %wxchkver_3_1_1 void SetControlDown(bool down);
-    %wxchkver_3_1_1 void SetRawControlDown(bool down);
-    %wxchkver_3_1_1 void SetShiftDown(bool down);
-    %wxchkver_3_1_1 void SetAltDown(bool down);
-    %wxchkver_3_1_1 void SetMetaDown(bool down);
+    %wxchkver_3_0_0 wxKeyboardState(bool controlDown = false, bool shiftDown = false, bool altDown = false, bool metaDown = false);
+    %wxchkver_3_0_0 int GetModifiers() const;
+    %wxchkver_3_0_0 bool HasAnyModifiers() const;
+    %wxchkver_3_0_0 bool HasModifiers() const;
+    %wxchkver_3_0_0 bool ControlDown() const;
+    %wxchkver_3_0_0 bool RawControlDown() const;
+    %wxchkver_3_0_0 bool ShiftDown() const;
+    %wxchkver_3_0_0 bool MetaDown() const;
+    %wxchkver_3_0_0 bool AltDown() const;
+    %wxchkver_3_0_0 bool CmdDown() const;
+    %wxchkver_3_0_0 void SetControlDown(bool down);
+    %wxchkver_3_0_0 void SetRawControlDown(bool down);
+    %wxchkver_3_0_0 void SetShiftDown(bool down);
+    %wxchkver_3_0_0 void SetAltDown(bool down);
+    %wxchkver_3_0_0 void SetMetaDown(bool down);
 };
 
 #if %wxchkver_2_8
@@ -218,36 +218,36 @@ class %delete wxMouseState : public wxKeyboardState
     wxCoord     GetX();
     wxCoord     GetY();
     // void GetPosition(int *x, int *y) const; // skip as this requires override
-    %wxchkver_3_1_1 bool LeftIsDown() const;
-    %wxchkver_3_1_1 bool MiddleIsDown() const;
-    %wxchkver_3_1_1 bool RightIsDown() const;
-    %wxchkver_3_1_1 bool Aux1IsDown() const;
-    %wxchkver_3_1_1 bool Aux2IsDown() const;
+    %wxchkver_3_0_0 bool LeftIsDown() const;
+    %wxchkver_3_0_0 bool MiddleIsDown() const;
+    %wxchkver_3_0_0 bool RightIsDown() const;
+    %wxchkver_3_0_0 bool Aux1IsDown() const;
+    %wxchkver_3_0_0 bool Aux2IsDown() const;
     void        SetX(wxCoord x);
     void        SetY(wxCoord y);
     %wxchkver_3_1_2 void SetPosition(const wxPoint& pos);
     void        SetLeftDown(bool down);
     void        SetMiddleDown(bool down);
     void        SetRightDown(bool down);
-    %wxchkver_3_1_1 void SetAux1Down(bool down);
-    %wxchkver_3_1_1 void SetAux2Down(bool down);
-    %wxchkver_3_1_1 void SetState(const wxMouseState& state);
-    !%wxchkver_3_1_1 bool        AltDown();
-    !%wxchkver_3_1_1 bool        CmdDown();
-    !%wxchkver_3_1_1 bool        ControlDown();
-    !%wxchkver_3_1_1 bool        LeftDown();
-    !%wxchkver_3_1_1 bool        MetaDown();
-    !%wxchkver_3_1_1 bool        MiddleDown();
-    !%wxchkver_3_1_1 bool        RightDown();
-    !%wxchkver_3_1_1 bool        ShiftDown();
-    !%wxchkver_3_1_1 void        SetAltDown(bool down);
-    !%wxchkver_3_1_1 void        SetControlDown(bool down);
-    !%wxchkver_3_1_1 void        SetMetaDown(bool down);
-    !%wxchkver_3_1_1 void        SetShiftDown(bool down);
-    !%wxchkver_3_1_2 && %wxchkver_3_1_1 void SetPosition(wxPoint pos);
-    %wxchkver_3_1_1 %rename LeftDown bool LeftIsDown() const; // for compatibility with previous wxlua versions
-    %wxchkver_3_1_1 %rename MiddleDown bool MiddleIsDown() const; // for compatibility with previous wxlua versions
-    %wxchkver_3_1_1 %rename RightDown bool RightIsDown() const; // for compatibility with previous wxlua versions
+    %wxchkver_3_0_0 void SetAux1Down(bool down);
+    %wxchkver_3_0_0 void SetAux2Down(bool down);
+    %wxchkver_3_0_0 void SetState(const wxMouseState& state);
+    !%wxchkver_3_0_0 bool        AltDown();
+    !%wxchkver_3_0_0 bool        CmdDown();
+    !%wxchkver_3_0_0 bool        ControlDown();
+    !%wxchkver_3_0_0 bool        LeftDown();
+    !%wxchkver_3_0_0 bool        MetaDown();
+    !%wxchkver_3_0_0 bool        MiddleDown();
+    !%wxchkver_3_0_0 bool        RightDown();
+    !%wxchkver_3_0_0 bool        ShiftDown();
+    !%wxchkver_3_0_0 void        SetAltDown(bool down);
+    !%wxchkver_3_0_0 void        SetControlDown(bool down);
+    !%wxchkver_3_0_0 void        SetMetaDown(bool down);
+    !%wxchkver_3_0_0 void        SetShiftDown(bool down);
+    !%wxchkver_3_1_2 && %wxchkver_3_0_0 void SetPosition(wxPoint pos);
+    %wxchkver_3_0_0 %rename LeftDown bool LeftIsDown() const; // for compatibility with previous wxlua versions
+    %wxchkver_3_0_0 %rename MiddleDown bool MiddleIsDown() const; // for compatibility with previous wxlua versions
+    %wxchkver_3_0_0 %rename RightDown bool RightIsDown() const; // for compatibility with previous wxlua versions
 };
 
 wxMouseState wxGetMouseState();
@@ -534,7 +534,7 @@ enum wxKeyModifier
     wxMOD_ALL
 };
 
-#if %wxchkver_3_1_1
+#if %wxchkver_3_0_0
 enum wxHitTest
 {
     wxHT_NOWHERE,
@@ -559,7 +559,7 @@ enum wxHitTest
 
     wxHT_MAX
 };
-#endif // %wxchkver_3_1_1
+#endif // %wxchkver_3_0_0
 
 // ---------------------------------------------------------------------------
 // wxBusyCursor

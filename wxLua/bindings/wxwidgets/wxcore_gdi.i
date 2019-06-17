@@ -362,7 +362,7 @@ enum
     wxFONTFLAG_MASK
 };
 
-#if %wxchkver_3_1_1
+#if %wxchkver_2_9_2
 enum wxFontSymbolicSize
 {
     wxFONTSIZE_XX_SMALL = -3,   //!< Extra small.
@@ -373,28 +373,28 @@ enum wxFontSymbolicSize
     wxFONTSIZE_X_LARGE,         //!< Very large.
     wxFONTSIZE_XX_LARGE         //!< Extra large.
 };
-#endif // %wxchkver_3_1_1
+#endif // %wxchkver_2_9_2
 
 class wxFontInfo
 {
-    %wxchkver_3_1_1 wxFontInfo();
+    %wxchkver_3_0_0 wxFontInfo();
     // wxFontInfo(T pointSize); // unroll the template T into explicit float/int
-    %wxchkver_3_1_1 wxFontInfo(const wxSize& pixelSize);
-    %wxchkver_3_1_1 wxFontInfo& Family(wxFontFamily family);
-    %wxchkver_3_1_1 wxFontInfo& FaceName(const wxString& faceName);
+    %wxchkver_3_0_0 wxFontInfo(const wxSize& pixelSize);
+    %wxchkver_3_0_0 wxFontInfo& Family(wxFontFamily family);
+    %wxchkver_3_0_0 wxFontInfo& FaceName(const wxString& faceName);
     %wxchkver_3_1_2 wxFontInfo& Weight(int weight);
-    %wxchkver_3_1_1 wxFontInfo& Bold(bool bold = true);
-    %wxchkver_3_1_1 wxFontInfo& Light(bool light = true);
-    %wxchkver_3_1_1 wxFontInfo& Italic(bool italic = true);
-    %wxchkver_3_1_1 wxFontInfo& Slant(bool slant = true);
+    %wxchkver_3_0_0 wxFontInfo& Bold(bool bold = true);
+    %wxchkver_3_0_0 wxFontInfo& Light(bool light = true);
+    %wxchkver_3_0_0 wxFontInfo& Italic(bool italic = true);
+    %wxchkver_3_0_0 wxFontInfo& Slant(bool slant = true);
     %wxchkver_3_1_2 wxFontInfo& Style(wxFontStyle style);
-    %wxchkver_3_1_1 wxFontInfo& AntiAliased(bool antiAliased = true);
-    %wxchkver_3_1_1 wxFontInfo& Underlined(bool underlined = true);
-    %wxchkver_3_1_1 wxFontInfo& Strikethrough(bool strikethrough = true);
-    %wxchkver_3_1_1 wxFontInfo& Encoding(wxFontEncoding encoding);
-    %wxchkver_3_1_1 wxFontInfo& AllFlags(int flags);
+    %wxchkver_3_0_0 wxFontInfo& AntiAliased(bool antiAliased = true);
+    %wxchkver_3_0_0 wxFontInfo& Underlined(bool underlined = true);
+    %wxchkver_3_0_0 wxFontInfo& Strikethrough(bool strikethrough = true);
+    %wxchkver_3_0_0 wxFontInfo& Encoding(wxFontEncoding encoding);
+    %wxchkver_3_0_0 wxFontInfo& AllFlags(int flags);
     %wxchkver_3_1_2 static wxFontWeight GetWeightClosestToNumericValue(int numWeight);
-    %wxchkver_3_1_1 wxFontInfo(int pointSize); // %override added explicitly
+    %wxchkver_3_0_0 wxFontInfo(int pointSize); // %override added explicitly
     %wxchkver_3_1_2 wxFontInfo(float pointSize);
 };
 
@@ -405,77 +405,77 @@ class %delete wxFont : public wxGDIObject
     %rename wxSMALL_FONT  #define_pointer wxLua_wxSMALL_FONT
     %rename wxITALIC_FONT #define_pointer wxLua_wxITALIC_FONT
     %rename wxSWISS_FONT  #define_pointer wxLua_wxSWISS_FONT
-    %wxchkver_3_1_1 wxFont();
+    %wxchkver_3_0_0 wxFont();
     wxFont(const wxFont& font);
-    %wxchkver_3_1_1 wxFont(const wxFontInfo& font);
-    %wxchkver_3_1_1 wxFont(int pointSize, wxFontFamily family, wxFontStyle style, wxFontWeight weight, bool underline = false, const wxString& faceName = wxEmptyString, wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
-    %wxchkver_3_1_1 wxFont(const wxSize& pixelSize, wxFontFamily family, wxFontStyle style, wxFontWeight weight, bool underline = false, const wxString& faceName = wxEmptyString, wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
-    %wxchkver_3_1_1 wxFont(const wxString& nativeInfoString);
-    %wxchkver_3_1_1 wxFont(const wxNativeFontInfo& nativeInfo);
-    %wxchkver_3_1_1 wxFont GetBaseFont() const;
-    %wxchkver_3_1_1 wxFontEncoding GetEncoding() const;
+    %wxchkver_3_0_0 wxFont(const wxFontInfo& font);
+    %wxchkver_3_0_0 wxFont(int pointSize, wxFontFamily family, wxFontStyle style, wxFontWeight weight, bool underline = false, const wxString& faceName = wxEmptyString, wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
+    %wxchkver_3_0_0 wxFont(const wxSize& pixelSize, wxFontFamily family, wxFontStyle style, wxFontWeight weight, bool underline = false, const wxString& faceName = wxEmptyString, wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
+    %wxchkver_3_0_0 wxFont(const wxString& nativeInfoString);
+    %wxchkver_3_0_0 wxFont(const wxNativeFontInfo& nativeInfo);
+    %wxchkver_3_1_0 wxFont GetBaseFont() const;
+    %wxchkver_3_0_0 wxFontEncoding GetEncoding() const;
     wxString GetFaceName() const;
     int      GetFamily() const;
     wxString GetNativeFontInfoDesc() const;
-    %wxchkver_3_1_1 wxString GetNativeFontInfoUserDesc() const;
-    %wxchkver_3_1_1 const wxNativeFontInfo *GetNativeFontInfo() const;
+    %wxchkver_3_0_0 wxString GetNativeFontInfoUserDesc() const;
+    %wxchkver_3_0_0 const wxNativeFontInfo *GetNativeFontInfo() const;
 #if wxUSE_PRIVATE_FONTS
     %wxchkver_3_1_2 static bool AddPrivateFont(const wxString& filename);
 #endif
     int      GetPointSize() const;
     %wxchkver_3_1_2 float  GetFractionalPointSize() const;
-    %wxchkver_3_1_1 wxSize GetPixelSize() const;
+    %wxchkver_3_0_0 wxSize GetPixelSize() const;
     int      GetStyle() const;
     bool     GetUnderlined() const;
-    %wxchkver_3_1_1 bool GetStrikethrough() const;
+    %wxchkver_3_0_0 bool GetStrikethrough() const;
     int      GetWeight() const;
     %wxchkver_3_1_2 int GetNumericWeight() const;
     bool IsFixedWidth() const;
-    %wxchkver_3_1_1 bool IsOk() const;
-    %wxchkver_3_1_1 wxFont Bold() const;
-    %wxchkver_3_1_1 wxFont Italic() const;
-    %wxchkver_3_1_1 wxFont Larger() const;
-    %wxchkver_3_1_1 wxFont Smaller() const;
-    %wxchkver_3_1_1 wxFont Underlined() const;
-    %wxchkver_3_1_1 wxFont Strikethrough() const;
-    %wxchkver_3_1_1 wxFont& MakeBold();
-    %wxchkver_3_1_1 wxFont& MakeItalic();
-    %wxchkver_3_1_1 wxFont& MakeLarger();
-    %wxchkver_3_1_1 wxFont& MakeSmaller();
-    %wxchkver_3_1_1 wxFont& MakeUnderlined();
-    %wxchkver_3_1_1 wxFont& MakeStrikethrough();
-    %wxchkver_3_1_1 wxFont& Scale(float x);
-    %wxchkver_3_1_1 wxFont Scaled(float x) const;
-    %wxchkver_3_1_1 void SetEncoding(wxFontEncoding encoding);
+    %wxchkver_3_0_0 bool IsOk() const;
+    %wxchkver_3_0_0 wxFont Bold() const;
+    %wxchkver_3_0_0 wxFont Italic() const;
+    %wxchkver_3_0_0 wxFont Larger() const;
+    %wxchkver_3_0_0 wxFont Smaller() const;
+    %wxchkver_3_0_0 wxFont Underlined() const;
+    %wxchkver_3_0_0 wxFont Strikethrough() const;
+    %wxchkver_3_0_0 wxFont& MakeBold();
+    %wxchkver_3_0_0 wxFont& MakeItalic();
+    %wxchkver_3_0_0 wxFont& MakeLarger();
+    %wxchkver_3_0_0 wxFont& MakeSmaller();
+    %wxchkver_3_0_0 wxFont& MakeUnderlined();
+    %wxchkver_3_0_0 wxFont& MakeStrikethrough();
+    %wxchkver_3_0_0 wxFont& Scale(float x);
+    %wxchkver_3_0_0 wxFont Scaled(float x) const;
+    %wxchkver_3_0_0 void SetEncoding(wxFontEncoding encoding);
     %not_overload %wxchkver_2_8 bool SetFaceName(const wxString& faceName);
-    %wxchkver_3_1_1 void SetFamily(wxFontFamily family);
+    %wxchkver_3_0_0 void SetFamily(wxFontFamily family);
     %not_overload %wxchkver_2_8 bool SetNativeFontInfo(const wxString& info);
     %wxchkver_2_8 bool SetNativeFontInfoUserDesc(const wxString& info);
     void     SetPointSize(int pointSize);
     %wxchkver_3_1_2 void SetFractionalPointSize(float pointSize);
-    %wxchkver_3_1_1 void SetPixelSize(const wxSize& pixelSize);
-    %wxchkver_3_1_1 void SetStyle(wxFontStyle style);
-    %wxchkver_3_1_1 void SetSymbolicSize(wxFontSymbolicSize size);
-    %wxchkver_3_1_1 void SetSymbolicSizeRelativeTo(wxFontSymbolicSize size, int base);
-    %wxchkver_3_1_1 void SetUnderlined(bool underlined);
-    %wxchkver_3_1_1 void SetStrikethrough(bool strikethrough);
-    %wxchkver_3_1_1 void SetWeight(wxFontWeight weight);
+    %wxchkver_3_0_0 void SetPixelSize(const wxSize& pixelSize);
+    %wxchkver_3_0_0 void SetStyle(wxFontStyle style);
+    %wxchkver_3_0_0 void SetSymbolicSize(wxFontSymbolicSize size);
+    %wxchkver_3_0_0 void SetSymbolicSizeRelativeTo(wxFontSymbolicSize size, int base);
+    %wxchkver_3_0_0 void SetUnderlined(bool underlined);
+    %wxchkver_3_0_0 void SetStrikethrough(bool strikethrough);
+    %wxchkver_3_0_0 void SetWeight(wxFontWeight weight);
     %wxchkver_3_1_2 void SetNumericWeight(int weight);
-    %wxchkver_3_1_1 bool operator!=(const wxFont& font) const;
-    %wxchkver_3_1_1 bool operator==(const wxFont& font) const;
+    %wxchkver_3_0_0 bool operator!=(const wxFont& font) const;
+    %wxchkver_3_0_0 bool operator==(const wxFont& font) const;
     wxFont& operator =(const wxFont& font);
     static wxFontEncoding GetDefaultEncoding();
     static void SetDefaultEncoding(wxFontEncoding encoding);
     %wxchkver_3_1_2 static int GetNumericWeightOf(wxFontWeight weight);
     static %gc wxFont* New(int pointSize, wxFontFamily family, int flags = wxFONTFLAG_DEFAULT, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
     static %gc wxFont* New(const wxSize& pixelSize, wxFontFamily family, int flags = wxFONTFLAG_DEFAULT, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
-    !%wxchkver_3_1_1 void     SetFamily(int family);
-    !%wxchkver_3_1_1 void     SetStyle(int style);
-    !%wxchkver_3_1_1 void     SetUnderlined(const bool underlined);
-    !%wxchkver_3_1_1 void     SetWeight(int weight);
-    !%wxchkver_3_1_1 wxFont& operator=(const wxFont& f) const;
-    !%wxchkver_3_1_1 wxFont(int pointSize, int family, int style, int weight, const bool underline = false, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
-    !%wxchkver_3_1_1 wxFont(int pointSize, wxFontFamily family, int style, wxFontWeight weight, const bool underline = false, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
+    !%wxchkver_3_0_0 void     SetFamily(int family);
+    !%wxchkver_3_0_0 void     SetStyle(int style);
+    !%wxchkver_3_0_0 void     SetUnderlined(const bool underlined);
+    !%wxchkver_3_0_0 void     SetWeight(int weight);
+    !%wxchkver_3_0_0 wxFont& operator=(const wxFont& f) const;
+    !%wxchkver_3_0_0 wxFont(int pointSize, int family, int style, int weight, const bool underline = false, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
+    !%wxchkver_3_0_0 wxFont(int pointSize, wxFontFamily family, int style, wxFontWeight weight, const bool underline = false, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
     bool Ok(); // %add for compatibility with earlier versions of wxlua
     static %gc wxFont* New(const wxSize& pixelSize, wxFontFamily family, int style, wxFontWeight weight, const bool underline = false, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
     static %gc wxFont* New(int pointSize, wxFontFamily family, int style, wxFontWeight weight, const bool underline = false, const wxString& faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
@@ -643,22 +643,22 @@ class %delete wxColour : public wxGDIObject
     %rename wxGREEN      #define_pointer wxLua_wxGREEN
     %rename wxCYAN       #define_pointer wxLua_wxCYAN
     %rename wxLIGHT_GREY #define_pointer wxLua_wxLIGHT_GREY
-    %wxchkver_3_1_1 wxColour();
+    %wxchkver_3_0_0 wxColour();
     %wxchkver_2_8 wxColour(unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha = wxALPHA_OPAQUE);
     wxColour(const wxString& colourName);
-    %wxchkver_3_1_1 wxColour(unsigned long colRGB);
+    %wxchkver_3_0_0 wxColour(unsigned long colRGB);
     wxColour(const wxColour& colour);
     %wxchkver_2_8 unsigned char Alpha() const;
     unsigned char Blue() const;
     %wxchkver_2_8 virtual wxString GetAsString(long flags = wxC2S_NAME | wxC2S_CSS_SYNTAX) const;
-    %wxchkver_3_1_1 void SetRGB(wxUint32 colRGB);
-    %wxchkver_3_1_1 void SetRGBA(wxUint32 colRGBA);
-    %wxchkver_3_1_1 wxUint32 GetRGB() const;
-    %wxchkver_3_1_1 wxUint32 GetRGBA() const;
+    %wxchkver_3_0_0 void SetRGB(wxUint32 colRGB);
+    %wxchkver_3_0_0 void SetRGBA(wxUint32 colRGBA);
+    %wxchkver_3_0_0 wxUint32 GetRGB() const;
+    %wxchkver_3_0_0 wxUint32 GetRGBA() const;
     %wxchkver_3_1_2 double GetLuminance() const;
     // long GetPixel(); // not well supported and the return type is different to map
     unsigned char Green() const;
-    %wxchkver_3_1_1 bool IsOk() const;
+    %wxchkver_3_0_0 bool IsOk() const;
     unsigned char Red() const;
     %wxchkver_3_1_2 bool IsSolid() const;
     %wxchkver_2_8 void Set(unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha = wxALPHA_OPAQUE);
@@ -669,12 +669,12 @@ class %delete wxColour : public wxGDIObject
     bool operator ==(const wxColour& colour) const;
     // static void MakeMono(unsigned char* r, unsigned char* g, unsigned char* b, bool on); // requires override, but easy to do in Lua
     // static void MakeDisabled(unsigned char* r, unsigned char* g, unsigned char* b, unsigned char brightness = 255); // requires override, but has an alternative version
-    %wxchkver_3_1_1 wxColour& MakeDisabled(unsigned char brightness = 255);
+    %wxchkver_3_0_0 wxColour& MakeDisabled(unsigned char brightness = 255);
     // static void MakeGrey(unsigned char* r, unsigned char* g, unsigned char* b); // requires override, but easy to do in Lua
     // static void MakeGrey(unsigned char* r, unsigned char* g, unsigned char* b, double weight_r, double weight_g, double weight_b); // requires override, but easy to do in Lua
-    %wxchkver_3_1_1 static unsigned char AlphaBlend(unsigned char fg, unsigned char bg, double alpha);
+    %wxchkver_3_0_0 static unsigned char AlphaBlend(unsigned char fg, unsigned char bg, double alpha);
     // static void ChangeLightness(unsigned char* r, unsigned char* g, unsigned char* b, int ialpha); // requires override, but has an alternative version
-    %wxchkver_3_1_1 wxColour ChangeLightness(int ialpha) const;
+    %wxchkver_3_0_0 wxColour ChangeLightness(int ialpha) const;
     !%wxchkver_2_8 void Set(unsigned char red, unsigned char green, unsigned char blue);
     !%wxchkver_2_8 wxColour(unsigned char red, unsigned char green, unsigned char blue);
     bool Ok(); // %add for compatibility with earlier versions of wxlua
@@ -797,9 +797,9 @@ class %delete wxPen : public wxGDIObject
     %win wxBitmap* GetStipple() const;
     wxPenStyle GetStyle() const;
     int GetWidth() const;
-    %wxchkver_3_1_1 bool IsOk() const;
-    %wxchkver_3_1_1 bool IsNonTransparent() const;
-    %wxchkver_3_1_1 bool IsTransparent() const;
+    %wxchkver_3_0_0 bool IsOk() const;
+    %wxchkver_3_0_0 bool IsNonTransparent() const;
+    %wxchkver_3_0_0 bool IsTransparent() const;
     void SetCap(wxPenCap capStyle);
     void SetColour(wxColour& colour);
     void SetColour(unsigned char red, unsigned char green, unsigned char blue);
@@ -808,11 +808,11 @@ class %delete wxPen : public wxGDIObject
     %win void SetStipple(const wxBitmap& stipple);
     void SetStyle(wxPenStyle style);
     void SetWidth(int width);
-    %wxchkver_3_1_1 bool operator!=(const wxPen& pen) const;
+    %wxchkver_3_0_0 bool operator!=(const wxPen& pen) const;
     wxPen& operator=(const wxPen& p) const;
-    %wxchkver_3_1_1 bool operator==(const wxPen& pen) const;
-    !%wxchkver_3_1_1 void SetColour(const wxString& colourName);
-    !%wxchkver_3_1_1 wxPen(const wxString& colourName, int width, wxPenStyle style);
+    %wxchkver_3_0_0 bool operator==(const wxPen& pen) const;
+    !%wxchkver_3_0_0 void SetColour(const wxString& colourName);
+    !%wxchkver_3_0_0 wxPen(const wxString& colourName, int width, wxPenStyle style);
     bool Ok() const; // %add for compatibility with earlier versions of wxlua
 };
 
@@ -838,7 +838,7 @@ class wxPenList //: public wxList - it's not really derived from a wxList
 
 #include "wx/brush.h"
 
-#if %wxchkver_3_1_1
+#if %wxchkver_3_0_0
 
 enum wxBrushStyle
 {
@@ -858,7 +858,7 @@ enum wxBrushStyle
     wxBRUSHSTYLE_LAST_HATCH /**< Last of the hatch styles (inclusive). */
 };
 
-#endif // %wxchkver_3_1_1
+#endif // %wxchkver_3_0_0
 
 class %delete wxBrush : public wxGDIObject
 {
@@ -874,29 +874,29 @@ class %delete wxBrush : public wxGDIObject
     %rename wxCYAN_BRUSH        #define_pointer wxLua_wxCYAN_BRUSH
     %rename wxRED_BRUSH         #define_pointer wxLua_wxRED_BRUSH
     wxBrush();
-    %wxchkver_3_1_1 wxBrush(const wxColour& colour, wxBrushStyle style = wxBRUSHSTYLE_SOLID);
+    %wxchkver_3_0_0 wxBrush(const wxColour& colour, wxBrushStyle style = wxBRUSHSTYLE_SOLID);
     wxBrush(const wxBitmap& stippleBitmap);
     wxBrush(const wxBrush& brush);
     wxColour GetColour() const;
     wxBitmap* GetStipple() const;
     int GetStyle() const;
     bool IsHatch() const;
-    %wxchkver_3_1_1 bool IsOk() const;
-    %wxchkver_3_1_1 bool IsNonTransparent() const;
-    %wxchkver_3_1_1 bool IsTransparent() const;
-    %wxchkver_3_1_1 void SetColour(const wxColour& colour);
-    %wxchkver_3_1_1 void SetColour(unsigned char red, unsigned char green, unsigned char blue);
+    %wxchkver_3_0_0 bool IsOk() const;
+    %wxchkver_3_0_0 bool IsNonTransparent() const;
+    %wxchkver_3_0_0 bool IsTransparent() const;
+    %wxchkver_3_0_0 void SetColour(const wxColour& colour);
+    %wxchkver_3_0_0 void SetColour(unsigned char red, unsigned char green, unsigned char blue);
     void SetStipple(const wxBitmap& bitmap);
-    %wxchkver_3_1_1 void SetStyle(wxBrushStyle style);
+    %wxchkver_3_0_0 void SetStyle(wxBrushStyle style);
     bool operator !=(const wxBrush& brush) const;
     bool operator ==(const wxBrush& brush) const;
-    !%wxchkver_3_1_1 void SetColour(const unsigned char red, const unsigned char green, const unsigned char blue);
-    !%wxchkver_3_1_1 void SetColour(const wxString& colourName);
-    !%wxchkver_3_1_1 void SetColour(wxColour& colour);
-    !%wxchkver_3_1_1 void SetStyle(int style);
-    !%wxchkver_3_1_1 wxBrush& operator=(const wxBrush& b) const;
-    !%wxchkver_3_1_1 wxBrush(const wxColour& colour, int style);
-    !%wxchkver_3_1_1 wxBrush(const wxString& colourName, int style);
+    !%wxchkver_3_0_0 void SetColour(const unsigned char red, const unsigned char green, const unsigned char blue);
+    !%wxchkver_3_0_0 void SetColour(const wxString& colourName);
+    !%wxchkver_3_0_0 void SetColour(wxColour& colour);
+    !%wxchkver_3_0_0 void SetStyle(int style);
+    !%wxchkver_3_0_0 wxBrush& operator=(const wxBrush& b) const;
+    !%wxchkver_3_0_0 wxBrush(const wxColour& colour, int style);
+    !%wxchkver_3_0_0 wxBrush(const wxString& colourName, int style);
     bool Ok() const; // %add for compatibility with earlier versions of wxlua
 };
 
@@ -998,11 +998,11 @@ class %delete wxPalette : public wxGDIObject
     #define_object wxNullPalette
     wxPalette();
     wxPalette(const wxPalette& palette);
-    %wxchkver_3_1_1 wxPalette(int n, const unsigned char* red, const unsigned char* green, const unsigned char* blue);
+    %wxchkver_3_0_0 wxPalette(int n, const unsigned char* red, const unsigned char* green, const unsigned char* blue);
     bool Create(int n, const unsigned char* red, const unsigned char* green, const unsigned char* blue); // %override bool wxPalette::Create(int n, Lua string red, Lua string green, Lua string blue);
     int GetColoursCount() const;
     int GetPixel(unsigned char red, unsigned char green, unsigned char blue) const;
-    %wxchkver_3_1_1 bool IsOk() const;
+    %wxchkver_3_0_0 bool IsOk() const;
     wxPalette& operator =(const wxPalette& palette);
     bool GetRGB(int pixel) const; // %override [bool, char red, char green, char blue] wxPalette::GetRGB(int pixel) const;
     bool Ok() const; // %add for compatibility with earlier versions of wxlua
@@ -1020,24 +1020,24 @@ class %delete wxIcon : public wxGDIObject
 {
     #define_object wxNullIcon
     wxIcon();
-    %wxchkver_3_1_1 wxIcon(const wxIcon& icon);
+    %wxchkver_3_0_0 wxIcon(const wxIcon& icon);
     // wxIcon(const char bits[], int width, int height); // doesn't compile on Linux using gcc 4.6-4.8.1
     // wxIcon(const char* const* bits); // wxlua doesn't handle `const char* const*`
     wxIcon(const wxString& name, wxBitmapType type, int desiredWidth = -1, int desiredHeight = -1);
-    %wxchkver_3_1_1 wxIcon(const wxIconLocation& loc);
+    %wxchkver_3_0_0 wxIcon(const wxIconLocation& loc);
     // bool CreateFromHICON(WXHICON icon); // skip this one as it's windows specific
     // wxIcon ConvertToDisabled(unsigned char brightness = 255) const; // skip as it's win-only; can use one from wxBitmap
-    %wxchkver_3_1_1 void CopyFromBitmap(const wxBitmap& bmp);
+    %wxchkver_3_0_0 void CopyFromBitmap(const wxBitmap& bmp);
     int     GetDepth();
     int     GetHeight();
     int     GetWidth();
-    %wxchkver_3_1_1 bool IsOk() const;
-    %wxchkver_3_1_1 bool LoadFile(const wxString& name, wxBitmapType type = wxICON_DEFAULT_TYPE, int desiredWidth = -1, int desiredHeight = -1);
+    %wxchkver_3_0_0 bool IsOk() const;
+    %wxchkver_3_0_0 bool LoadFile(const wxString& name, wxBitmapType type = wxICON_DEFAULT_TYPE, int desiredWidth = -1, int desiredHeight = -1);
     void    SetDepth(int d);
     void    SetHeight(int h);
     void    SetWidth(int w);
     wxIcon& operator=(const wxIcon& i) const;
-    !%wxchkver_3_1_1 bool    LoadFile(const wxString& name, wxBitmapType flags);
+    !%wxchkver_3_0_0 bool    LoadFile(const wxString& name, wxBitmapType flags);
     bool    Ok(); // %add for compatibility with earlier versions of wxlua
 };
 
@@ -1075,21 +1075,21 @@ class %delete wxBitmap : public wxGDIObject
     #define_object wxNullBitmap
     wxBitmap();
     wxBitmap(const wxBitmap& bitmap);
-    %wxchkver_3_1_1 wxBitmap(const char bits[], int width, int height, int depth = 1);
+    %wxchkver_3_0_0 wxBitmap(const char bits[], int width, int height, int depth = 1);
     wxBitmap(int width, int height, int depth = -1);
-    %wxchkver_3_1_1 wxBitmap(const wxSize& sz, int depth = wxBITMAP_SCREEN_DEPTH);
+    %wxchkver_3_0_0 wxBitmap(const wxSize& sz, int depth = wxBITMAP_SCREEN_DEPTH);
     // wxBitmap(const char* const* bits); // wxlua doesn't handle `const char* const*`
     wxBitmap(const wxString& name, wxBitmapType type = wxBITMAP_TYPE_ANY);
     wxBitmap(const wxImage &image, int depth = -1);
-    %wxchkver_3_1_1 & %win wxBitmap(const wxCursor& cursor); // %override windows only
+    %wxchkver_3_1_0 & %win wxBitmap(const wxCursor& cursor); // %override windows only
     // %win static void AddHandler(wxBitmapHandler* handler); // no support for wxBitmapHandler
     // %win static void CleanUpHandlers(); // no support for wxBitmapHandler
     wxImage ConvertToImage();
     bool CopyFromIcon(const wxIcon& icon);
     virtual bool Create(int width, int height, int depth = -1);
-    %wxchkver_3_1_1 bool Create(const wxSize& sz, int depth = wxBITMAP_SCREEN_DEPTH);
-    %wxchkver_3_1_1 bool Create(int width, int height, const wxDC& dc);
-    %wxchkver_3_1_1 bool CreateScaled(int logwidth, int logheight, int depth, double logicalScale);
+    %wxchkver_3_0_0 bool Create(const wxSize& sz, int depth = wxBITMAP_SCREEN_DEPTH);
+    %wxchkver_3_0_0 bool Create(int width, int height, const wxDC& dc);
+    %wxchkver_3_0_0 bool CreateScaled(int logwidth, int logheight, int depth, double logicalScale);
     // static wxBitmapHandler* FindHandler(const wxString& name); // no support for wxBitmapHandler
     // static wxBitmapHandler* FindHandler(const wxString& extension, wxBitmapType bitmapType); // no support for wxBitmapHandler
     // static wxBitmapHandler* FindHandler(wxBitmapType bitmapType); // no support for wxBitmapHandler
@@ -1099,23 +1099,23 @@ class %delete wxBitmap : public wxGDIObject
     wxMask* GetMask() const;
     wxPalette* GetPalette() const;
     wxBitmap GetSubBitmap(const wxRect&rect) const;
-    %wxchkver_3_1_1 wxSize GetSize() const;
-    %wxchkver_3_1_1 wxBitmap ConvertToDisabled(unsigned char brightness = 255) const;
+    %wxchkver_3_0_0 wxSize GetSize() const;
+    %wxchkver_3_0_0 wxBitmap ConvertToDisabled(unsigned char brightness = 255) const;
     int GetWidth() const;
     // %win static void InitStandardHandlers(); // no support for wxBitmapHandler
     // %win static void InsertHandler(wxBitmapHandler* handler); // no support for wxBitmapHandler
-    %wxchkver_3_1_1 bool IsOk() const;
+    %wxchkver_3_0_0 bool IsOk() const;
     bool LoadFile(const wxString& name, wxBitmapType type);
-    %wxchkver_3_1_1 static wxBitmap NewFromPNGData(const void* data, size_t size);
+    %wxchkver_3_0_0 static wxBitmap NewFromPNGData(const void* data, size_t size);
     // %win static bool RemoveHandler(const wxString& name); // no support for wxBitmapHandler
-    %wxchkver_3_1_1 bool SaveFile(const wxString& name, wxBitmapType type, const wxPalette* palette = NULL) const;
+    %wxchkver_3_0_0 bool SaveFile(const wxString& name, wxBitmapType type, const wxPalette* palette = NULL) const;
     void SetDepth(int depth);
     void SetHeight(int height);
     void SetMask(%ungc wxMask* mask);
     %win void SetPalette(const wxPalette& palette);
     void SetWidth(int width);
-    !%wxchkver_3_1_1 bool SaveFile(const wxString& name, wxBitmapType type, wxPalette* palette = NULL);
-    !%wxchkver_3_1_1 wxBitmap& operator=(const wxBitmap& b) const;
+    !%wxchkver_3_0_0 bool SaveFile(const wxString& name, wxBitmapType type, wxPalette* palette = NULL);
+    !%wxchkver_3_0_0 wxBitmap& operator=(const wxBitmap& b) const;
     %override_name wxLua_wxBitmapFromBitTable_constructor wxBitmap(LuaTable charTable, int width, int height, int depth /* = 1 */); // %override wxBitmap(LuaTable charTable, int width, int height, int depth);
     %override_name wxLua_wxBitmapFromBits_constructor wxBitmap(const char* mono_bits, int width, int height, int depth /* = 1 */); // %override wxBitmap(lua string, int width, int height, int depth);
     %override_name wxLua_wxBitmapFromData_constructor %win wxBitmap(const wxString& data, int type, int width, int height, int depth /* = -1 */); // %override wxBitmap(Lua string of data, int type, int width, int height, int depth = -1);
@@ -1188,14 +1188,14 @@ class %delete wxCursor : public wxGDIObject
     wxCursor();
     // wxCursor(const char bits[], int width, int height, int hotSpotX = -1, int hotSpotY = -1, const char maskBits[] = NULL); // doesn't compile in wxlua, so skip it
     %wxchkver_2_9_0 wxCursor(const wxString& cursorName, wxBitmapType type, int hotSpotX = 0, int hotSpotY = 0);
-    %wxchkver_3_1_1 wxCursor(wxStockCursor cursorId);
+    %wxchkver_3_0_0 wxCursor(wxStockCursor cursorId);
     wxCursor(const wxImage& image);
-    %wxchkver_3_1_1 wxCursor(const wxCursor& cursor);
-    %wxchkver_3_1_1 bool IsOk() const;
-    %wxchkver_3_1_1 wxPoint GetHotSpot() const;
+    %wxchkver_3_0_0 wxCursor(const wxCursor& cursor);
+    %wxchkver_3_0_0 bool IsOk() const;
+    %wxchkver_3_1_0 wxPoint GetHotSpot() const;
     wxCursor& operator =(const wxCursor& cursor);
-    !%wxchkver_3_1_1 wxCursor& operator=(const wxCursor& c) const;
-    !%wxchkver_3_1_1 wxCursor(int id);
+    !%wxchkver_3_0_0 wxCursor& operator=(const wxCursor& c) const;
+    !%wxchkver_3_0_0 wxCursor(int id);
     %win int GetDepth(); // %add only for windows
     %win int GetHeight(); // %add only for windows
     %win int GetWidth(); // %add only for windows
@@ -1220,8 +1220,8 @@ class %delete wxMask : public wxObject
     %win bool Create(const wxBitmap& bitmap, int index);
     bool Create(const wxBitmap& bitmap);
     bool Create(const wxBitmap& bitmap, const wxColour& colour);
-    %wxchkver_3_1_1 wxBitmap GetBitmap() const;
-    !%wxchkver_3_1_1 wxMask& operator=(const wxMask& m) const;
+    %wxchkver_3_0_0 wxBitmap GetBitmap() const;
+    !%wxchkver_3_0_0 wxMask& operator=(const wxMask& m) const;
 };
 
 #endif //wxLUA_USE_wxMask
@@ -1714,7 +1714,7 @@ class %delete wxArrayVideoModes
 
 class %delete wxDisplay
 {
-    %wxchkver_3_1_1 wxDisplay(unsigned int index = 0);
+    %wxchkver_3_0_0 wxDisplay(unsigned int index = 0);
     %wxchkver_3_1_2 wxDisplay(const wxWindow* window);
     bool  ChangeMode(const wxVideoMode& mode = wxDefaultVideoMode);
     %wxchkver_2_8 wxRect GetClientArea() const;
@@ -1726,8 +1726,8 @@ class %delete wxDisplay
     wxString  GetName() const;
     %wxchkver_3_1_2 wxSize GetPPI() const;
     bool  IsPrimary();
-    !%wxchkver_3_1_1 bool  IsOk() const;
-    !%wxchkver_3_1_1 wxDisplay(size_t index = 0);
+    !%wxchkver_3_0_0 bool  IsOk() const;
+    !%wxchkver_3_0_0 wxDisplay(size_t index = 0);
     %wxchkver_2_8|!%gtk static int GetFromWindow(wxWindow* win);
 };
 

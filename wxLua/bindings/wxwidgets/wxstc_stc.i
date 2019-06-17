@@ -6350,7 +6350,7 @@ class wxStyledTextCtrl : public wxControl
         this function should be called with wxSTC_POPUP_NEVER.  Otherwise
         the default menu will be shown instead of the custom one.
     */
-    %wxchkver_3_1_1 void UsePopUp(int popUpMode);
+    %wxchkver_3_0_0 void UsePopUp(int popUpMode);
 
     //@}
 
@@ -7146,7 +7146,7 @@ class wxStyledTextCtrl : public wxControl
     !%wxchkver_3_1_0 int PositionFromPoint(const wxPoint& pt) const;
     !%wxchkver_3_1_1 int BraceMatch(int pos);
     !%wxchkver_3_1_1 int GetPropertyInt(const wxString& key) const;
-    !%wxchkver_3_1_1 void UsePopUp(bool allowPopUp);
+    !%wxchkver_3_0_0 void UsePopUp(bool allowPopUp);
     !%wxchkver_3_1_3 void MarkerDefineBitmap(int markerNumber, const wxBitmap& bmp);
     !%wxchkver_3_1_3 void RegisterImage(int type, const wxBitmap& bmp);
     // %override [Lua string styleBytes] wxStyledTextCtrl::SetStyleBytes(int length, Lua string styleBytes);

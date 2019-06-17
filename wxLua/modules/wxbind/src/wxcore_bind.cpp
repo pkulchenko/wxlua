@@ -682,7 +682,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxBOTH", wxBOTH },
         { "wxBOTTOM", wxBOTTOM },
 
-#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)
         { "wxBRUSHSTYLE_BDIAGONAL_HATCH", wxBRUSHSTYLE_BDIAGONAL_HATCH },
         { "wxBRUSHSTYLE_CROSSDIAG_HATCH", wxBRUSHSTYLE_CROSSDIAG_HATCH },
         { "wxBRUSHSTYLE_CROSS_HATCH", wxBRUSHSTYLE_CROSS_HATCH },
@@ -697,7 +697,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxBRUSHSTYLE_STIPPLE_MASK_OPAQUE", wxBRUSHSTYLE_STIPPLE_MASK_OPAQUE },
         { "wxBRUSHSTYLE_TRANSPARENT", wxBRUSHSTYLE_TRANSPARENT },
         { "wxBRUSHSTYLE_VERTICAL_HATCH", wxBRUSHSTYLE_VERTICAL_HATCH },
-#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)
 
 #if wxLUA_USE_wxButton && wxUSE_BUTTON
         { "wxBU_ALIGN_MASK", wxBU_ALIGN_MASK },
@@ -1144,7 +1144,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxFONTFLAG_UNDERLINED", wxFONTFLAG_UNDERLINED },
 #endif // wxLUA_USE_wxFont
 
-#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFont)
+#if (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxFont)
         { "wxFONTSIZE_LARGE", wxFONTSIZE_LARGE },
         { "wxFONTSIZE_MEDIUM", wxFONTSIZE_MEDIUM },
         { "wxFONTSIZE_SMALL", wxFONTSIZE_SMALL },
@@ -1152,7 +1152,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxFONTSIZE_XX_SMALL", wxFONTSIZE_XX_SMALL },
         { "wxFONTSIZE_X_LARGE", wxFONTSIZE_X_LARGE },
         { "wxFONTSIZE_X_SMALL", wxFONTSIZE_X_SMALL },
-#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFont)
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxFont)
 
 #if wxLUA_USE_wxFont
         { "wxFONTSTYLE_ITALIC", wxFONTSTYLE_ITALIC },
@@ -1258,7 +1258,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
 
         { "wxHSCROLL", wxHSCROLL },
 
-#if wxCHECK_VERSION(3,1,1)
+#if wxCHECK_VERSION(3,0,0)
         { "wxHT_MAX", wxHT_MAX },
         { "wxHT_NOWHERE", wxHT_NOWHERE },
         { "wxHT_SCROLLBAR_ARROW_LINE_1", wxHT_SCROLLBAR_ARROW_LINE_1 },
@@ -1275,7 +1275,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxHT_WINDOW_INSIDE", wxHT_WINDOW_INSIDE },
         { "wxHT_WINDOW_OUTSIDE", wxHT_WINDOW_OUTSIDE },
         { "wxHT_WINDOW_VERT_SCROLLBAR", wxHT_WINDOW_VERT_SCROLLBAR },
-#endif // wxCHECK_VERSION(3,1,1)
+#endif // wxCHECK_VERSION(3,0,0)
 
 #if (wxLUA_USE_wxLayoutConstraints && (!wxCHECK_VERSION(2,6,0))) && (wxLUA_USE_wxSizer)
         { "wxHeight", wxHeight },
@@ -2160,7 +2160,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxSHORT_DASH", wxSHORT_DASH },
 #endif // wxLUA_USE_wxColourPenBrush
 
-#if wxCHECK_VERSION(3,1,1)
+#if wxCHECK_VERSION(2,9,1)
         { "wxSHOW_EFFECT_BLEND", wxSHOW_EFFECT_BLEND },
         { "wxSHOW_EFFECT_EXPAND", wxSHOW_EFFECT_EXPAND },
         { "wxSHOW_EFFECT_MAX", wxSHOW_EFFECT_MAX },
@@ -2173,7 +2173,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxSHOW_EFFECT_SLIDE_TO_LEFT", wxSHOW_EFFECT_SLIDE_TO_LEFT },
         { "wxSHOW_EFFECT_SLIDE_TO_RIGHT", wxSHOW_EFFECT_SLIDE_TO_RIGHT },
         { "wxSHOW_EFFECT_SLIDE_TO_TOP", wxSHOW_EFFECT_SLIDE_TO_TOP },
-#endif // wxCHECK_VERSION(3,1,1)
+#endif // wxCHECK_VERSION(2,9,1)
 
         { "wxSHRINK", wxSHRINK },
         { "wxSHUTDOWN_POWEROFF", wxSHUTDOWN_POWEROFF },

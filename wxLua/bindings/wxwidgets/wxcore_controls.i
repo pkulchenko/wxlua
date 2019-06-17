@@ -27,23 +27,23 @@
 
 class wxAnyButton : public wxControl
 {
-    %wxchkver_3_1_1 wxAnyButton();
-    %wxchkver_3_1_1 wxBitmap GetBitmap() const;
-    %wxchkver_3_1_1 wxBitmap GetBitmapCurrent() const;
-    %wxchkver_3_1_1 wxBitmap GetBitmapDisabled() const;
-    %wxchkver_3_1_1 wxBitmap GetBitmapFocus() const;
-    %wxchkver_3_1_1 wxBitmap GetBitmapLabel() const;
-    %wxchkver_3_1_1 wxBitmap GetBitmapPressed() const;
-    %wxchkver_3_1_1 void SetBitmap(const wxBitmap& bitmap, wxDirection dir = wxLEFT);
-    %wxchkver_3_1_1 void SetBitmapCurrent(const wxBitmap& bitmap);
-    %wxchkver_3_1_1 void SetBitmapDisabled(const wxBitmap& bitmap);
-    %wxchkver_3_1_1 void SetBitmapFocus(const wxBitmap& bitmap);
-    %wxchkver_3_1_1 void SetBitmapLabel(const wxBitmap& bitmap);
-    %wxchkver_3_1_1 void SetBitmapPressed(const wxBitmap& bitmap);
-    %wxchkver_3_1_1 wxSize GetBitmapMargins();
-    %wxchkver_3_1_1 void SetBitmapMargins(wxCoord x, wxCoord y);
-    %wxchkver_3_1_1 void SetBitmapMargins(const wxSize& sz);
-    %wxchkver_3_1_1 void SetBitmapPosition(wxDirection dir);
+    %wxchkver_3_0_0 wxAnyButton();
+    %wxchkver_3_0_0 wxBitmap GetBitmap() const;
+    %wxchkver_3_0_0 wxBitmap GetBitmapCurrent() const;
+    %wxchkver_3_0_0 wxBitmap GetBitmapDisabled() const;
+    %wxchkver_3_0_0 wxBitmap GetBitmapFocus() const;
+    %wxchkver_3_0_0 wxBitmap GetBitmapLabel() const;
+    %wxchkver_3_0_0 wxBitmap GetBitmapPressed() const;
+    %wxchkver_3_0_0 void SetBitmap(const wxBitmap& bitmap, wxDirection dir = wxLEFT);
+    %wxchkver_3_0_0 void SetBitmapCurrent(const wxBitmap& bitmap);
+    %wxchkver_3_0_0 void SetBitmapDisabled(const wxBitmap& bitmap);
+    %wxchkver_3_0_0 void SetBitmapFocus(const wxBitmap& bitmap);
+    %wxchkver_3_0_0 void SetBitmapLabel(const wxBitmap& bitmap);
+    %wxchkver_3_0_0 void SetBitmapPressed(const wxBitmap& bitmap);
+    %wxchkver_3_0_0 wxSize GetBitmapMargins();
+    %wxchkver_3_0_0 void SetBitmapMargins(wxCoord x, wxCoord y);
+    %wxchkver_3_0_0 void SetBitmapMargins(const wxSize& sz);
+    %wxchkver_3_0_0 void SetBitmapPosition(wxDirection dir);
 };
 
 class wxButton : public wxAnyButton
@@ -51,12 +51,12 @@ class wxButton : public wxAnyButton
     wxButton();
     wxButton(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxButton");
     bool Create(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxButton");
-    %wxchkver_3_1_1 bool GetAuthNeeded() const;
+    %wxchkver_3_0_0 bool GetAuthNeeded() const;
     static wxSize GetDefaultSize(); // static is ok, use on existing button
-    %wxchkver_3_1_1 wxString GetLabel() const;
-    %wxchkver_3_1_1 void SetAuthNeeded(bool needed = true);
+    %wxchkver_3_0_0 wxString GetLabel() const;
+    %wxchkver_3_0_0 void SetAuthNeeded(bool needed = true);
     void     SetDefault();
-    %wxchkver_3_1_1 void SetLabel(const wxString& label);
+    %wxchkver_3_0_0 void SetLabel(const wxString& label);
 };
 
 // ---------------------------------------------------------------------------
@@ -71,17 +71,17 @@ class wxBitmapButton : public wxAnyButton
     wxBitmapButton();
     wxBitmapButton( wxWindow* parent, wxWindowID id, const wxBitmap& bitmap, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxBU_AUTODRAW, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxBitmapButton");
     bool Create(wxWindow* parent, wxWindowID id, const wxBitmap& bitmap, const wxPoint& pos, const wxSize& size = wxDefaultSize, long style = wxBU_AUTODRAW, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxBitmapButton");
-    %wxchkver_3_1_1 static wxBitmapButton* NewCloseButton(wxWindow* parent, wxWindowID winid);
-    !%wxchkver_3_1_1 && %wxchkver_2_8 void SetBitmapHover(const wxBitmap& hover);
-    !%wxchkver_3_1_1 && %wxchkver_2_8 wxBitmap GetBitmapHover() const;
-    !%wxchkver_3_1_1 void     SetBitmapDisabled(const wxBitmap& bitmap);
-    !%wxchkver_3_1_1 void     SetBitmapFocus(const wxBitmap& bitmap);
-    !%wxchkver_3_1_1 void     SetBitmapLabel(const wxBitmap& bitmap);
-    !%wxchkver_3_1_1 void     SetBitmapSelected(const wxBitmap& bitmap);
-    !%wxchkver_3_1_1 wxBitmap GetBitmapDisabled() const;
-    !%wxchkver_3_1_1 wxBitmap GetBitmapFocus() const;
-    !%wxchkver_3_1_1 wxBitmap GetBitmapLabel() const;
-    !%wxchkver_3_1_1 wxBitmap GetBitmapSelected() const;
+    %wxchkver_3_0_0 static wxBitmapButton* NewCloseButton(wxWindow* parent, wxWindowID winid);
+    !%wxchkver_3_0_0 && %wxchkver_2_8 void SetBitmapHover(const wxBitmap& hover);
+    !%wxchkver_3_0_0 && %wxchkver_2_8 wxBitmap GetBitmapHover() const;
+    !%wxchkver_3_0_0 void     SetBitmapDisabled(const wxBitmap& bitmap);
+    !%wxchkver_3_0_0 void     SetBitmapFocus(const wxBitmap& bitmap);
+    !%wxchkver_3_0_0 void     SetBitmapLabel(const wxBitmap& bitmap);
+    !%wxchkver_3_0_0 void     SetBitmapSelected(const wxBitmap& bitmap);
+    !%wxchkver_3_0_0 wxBitmap GetBitmapDisabled() const;
+    !%wxchkver_3_0_0 wxBitmap GetBitmapFocus() const;
+    !%wxchkver_3_0_0 wxBitmap GetBitmapLabel() const;
+    !%wxchkver_3_0_0 wxBitmap GetBitmapSelected() const;
 };
 
 #endif //wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON
@@ -105,11 +105,11 @@ class wxToggleButton : public wxAnyButton
 
 class wxBitmapToggleButton : public wxToggleButton
 {
-    %wxchkver_3_1_1 wxBitmapToggleButton();
-    %wxchkver_3_1_1 wxBitmapToggleButton(wxWindow* parent, wxWindowID id, const wxBitmap& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& val = wxDefaultValidator, const wxString& name = wxCheckBoxNameStr);
-    %wxchkver_3_1_1 bool Create(wxWindow* parent, wxWindowID id, const wxBitmap& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& val = wxDefaultValidator, const wxString& name = wxCheckBoxNameStr);
-    %wxchkver_3_1_1 bool GetValue() const;
-    %wxchkver_3_1_1 void SetValue(bool state);
+    %wxchkver_3_0_0 wxBitmapToggleButton();
+    %wxchkver_3_0_0 wxBitmapToggleButton(wxWindow* parent, wxWindowID id, const wxBitmap& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& val = wxDefaultValidator, const wxString& name = wxCheckBoxNameStr);
+    %wxchkver_3_0_0 bool Create(wxWindow* parent, wxWindowID id, const wxBitmap& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& val = wxDefaultValidator, const wxString& name = wxCheckBoxNameStr);
+    %wxchkver_3_0_0 bool GetValue() const;
+    %wxchkver_3_0_0 void SetValue(bool state);
 };
 
 #endif //wxLUA_USE_wxToggleButton && wxUSE_TOGGLEBTN
@@ -955,48 +955,48 @@ typedef long wxTextPos;
 
 class wxTextEntry
 {
-    %wxchkver_3_1_1 void AppendText(const wxString& text);
-    %wxchkver_3_1_1 bool AutoComplete(const wxArrayString& choices);
+    %wxchkver_3_0_0 void AppendText(const wxString& text);
+    %wxchkver_3_0_0 bool AutoComplete(const wxArrayString& choices);
     // bool AutoComplete(wxTextCompleter *completer);
-    %wxchkver_3_1_1 bool AutoCompleteFileNames();
-    %wxchkver_3_1_1 bool AutoCompleteDirectories();
-    %wxchkver_3_1_1 bool CanCopy() const;
-    %wxchkver_3_1_1 bool CanCut() const;
-    %wxchkver_3_1_1 bool CanPaste() const;
-    %wxchkver_3_1_1 bool CanRedo() const;
-    %wxchkver_3_1_1 bool CanUndo() const;
-    %wxchkver_3_1_1 void ChangeValue(const wxString& value);
-    %wxchkver_3_1_1 void Clear();
-    %wxchkver_3_1_1 void Copy();
-    %wxchkver_3_1_1 void Cut();
-    %wxchkver_3_1_1 void ForceUpper();
-    %wxchkver_3_1_1 long GetInsertionPoint() const;
-    %wxchkver_3_1_1 wxTextPos GetLastPosition() const;
-    %wxchkver_3_1_1 wxString GetRange(long from, long to) const;
-    %wxchkver_3_1_1 wxString GetStringSelection() const;
-    %wxchkver_3_1_1 wxString GetValue() const;
-    %wxchkver_3_1_1 bool IsEditable() const;
-    %wxchkver_3_1_1 bool IsEmpty() const;
-    %wxchkver_3_1_1 void Paste();
-    %wxchkver_3_1_1 void Redo();
-    %wxchkver_3_1_1 void Remove(long from, long to);
-    %wxchkver_3_1_1 void Replace(long from, long to, const wxString& value);
-    %wxchkver_3_1_1 void SetEditable(bool editable);
-    %wxchkver_3_1_1 void SetInsertionPoint(long pos);
-    %wxchkver_3_1_1 void SetInsertionPointEnd();
-    %wxchkver_3_1_1 void SetMaxLength(unsigned long len);
-    %wxchkver_3_1_1 void SetSelection(long from, long to);
-    %wxchkver_3_1_1 void SelectAll();
-    %wxchkver_3_1_1 void SelectNone();
-    %wxchkver_3_1_1 bool SetHint(const wxString& hint);
-    %wxchkver_3_1_1 wxString GetHint() const;
-    %wxchkver_3_1_1 bool SetMargins(const wxPoint& pt);
-    %wxchkver_3_1_1 bool SetMargins(wxCoord left, wxCoord top = -1);
-    %wxchkver_3_1_1 wxPoint GetMargins() const;
-    %wxchkver_3_1_1 void SetValue(const wxString& value);
-    %wxchkver_3_1_1 void Undo();
-    %wxchkver_3_1_1 void WriteText(const wxString& text);
-    %wxchkver_3_1_1 void GetSelection() const; // %override return [long from, long to]
+    %wxchkver_3_0_0 bool AutoCompleteFileNames();
+    %wxchkver_3_0_0 bool AutoCompleteDirectories();
+    %wxchkver_3_0_0 bool CanCopy() const;
+    %wxchkver_3_0_0 bool CanCut() const;
+    %wxchkver_3_0_0 bool CanPaste() const;
+    %wxchkver_3_0_0 bool CanRedo() const;
+    %wxchkver_3_0_0 bool CanUndo() const;
+    %wxchkver_3_0_0 void ChangeValue(const wxString& value);
+    %wxchkver_3_0_0 void Clear();
+    %wxchkver_3_0_0 void Copy();
+    %wxchkver_3_0_0 void Cut();
+    %wxchkver_3_1_0 void ForceUpper();
+    %wxchkver_3_0_0 long GetInsertionPoint() const;
+    %wxchkver_3_0_0 wxTextPos GetLastPosition() const;
+    %wxchkver_3_0_0 wxString GetRange(long from, long to) const;
+    %wxchkver_3_0_0 wxString GetStringSelection() const;
+    %wxchkver_3_0_0 wxString GetValue() const;
+    %wxchkver_3_0_0 bool IsEditable() const;
+    %wxchkver_3_0_0 bool IsEmpty() const;
+    %wxchkver_3_0_0 void Paste();
+    %wxchkver_3_0_0 void Redo();
+    %wxchkver_3_0_0 void Remove(long from, long to);
+    %wxchkver_3_0_0 void Replace(long from, long to, const wxString& value);
+    %wxchkver_3_0_0 void SetEditable(bool editable);
+    %wxchkver_3_0_0 void SetInsertionPoint(long pos);
+    %wxchkver_3_0_0 void SetInsertionPointEnd();
+    %wxchkver_3_0_0 void SetMaxLength(unsigned long len);
+    %wxchkver_3_0_0 void SetSelection(long from, long to);
+    %wxchkver_3_0_0 void SelectAll();
+    %wxchkver_3_0_0 void SelectNone();
+    %wxchkver_3_0_0 bool SetHint(const wxString& hint);
+    %wxchkver_3_0_0 wxString GetHint() const;
+    %wxchkver_3_0_0 bool SetMargins(const wxPoint& pt);
+    %wxchkver_3_0_0 bool SetMargins(wxCoord left, wxCoord top = -1);
+    %wxchkver_3_0_0 wxPoint GetMargins() const;
+    %wxchkver_3_0_0 void SetValue(const wxString& value);
+    %wxchkver_3_0_0 void Undo();
+    %wxchkver_3_0_0 void WriteText(const wxString& text);
+    %wxchkver_3_0_0 void GetSelection() const; // %override return [long from, long to]
 };
 
 class wxTextCtrl : public wxControl, public wxTextEntry
@@ -1014,47 +1014,47 @@ class wxTextCtrl : public wxControl, public wxTextEntry
     bool IsModified() const;
     bool IsMultiLine() const;
     bool IsSingleLine() const;
-    %wxchkver_3_1_1 bool LoadFile(const wxString& filename, int fileType = wxTEXT_TYPE_ANY);
+    %wxchkver_3_0_0 bool LoadFile(const wxString& filename, int fileType = wxTEXT_TYPE_ANY);
     void MarkDirty();
     // void OnDropFiles(wxDropFilesEvent& event);
-    %wxchkver_3_1_1 wxPoint PositionToCoords(long pos) const;
-    %wxchkver_3_1_1 bool SaveFile(const wxString& filename = wxEmptyString, int fileType = wxTEXT_TYPE_ANY);
+    %wxchkver_3_0_0 wxPoint PositionToCoords(long pos) const;
+    %wxchkver_3_0_0 bool SaveFile(const wxString& filename = wxEmptyString, int fileType = wxTEXT_TYPE_ANY);
     bool SetDefaultStyle(const wxTextAttr& style);
-    %wxchkver_3_1_1 void SetModified(bool modified);
+    %wxchkver_3_0_0 void SetModified(bool modified);
     bool SetStyle(long start, long end, const wxTextAttr& style);
     void ShowPosition(long pos);
     long XYToPosition(long x, long y);
-    !%wxchkver_3_1_1 bool IsEditable() const;
-    !%wxchkver_3_1_1 bool LoadFile(const wxString& filename);
-    !%wxchkver_3_1_1 bool SaveFile(const wxString& filename);
-    !%wxchkver_3_1_1 virtual bool CanCopy();
-    !%wxchkver_3_1_1 virtual bool CanCut();
-    !%wxchkver_3_1_1 virtual bool CanPaste();
-    !%wxchkver_3_1_1 virtual bool CanRedo();
-    !%wxchkver_3_1_1 virtual bool CanUndo();
-    !%wxchkver_3_1_1 virtual long GetInsertionPoint() const;
-    !%wxchkver_3_1_1 virtual long GetLastPosition() const;
-    !%wxchkver_3_1_1 virtual void ChangeValue(const wxString& value);
-    !%wxchkver_3_1_1 virtual void Clear();
-    !%wxchkver_3_1_1 virtual void Copy();
-    !%wxchkver_3_1_1 virtual void Cut();
-    !%wxchkver_3_1_1 virtual void Paste();
-    !%wxchkver_3_1_1 virtual void Redo();
-    !%wxchkver_3_1_1 virtual void Remove(long from, long to);
-    !%wxchkver_3_1_1 virtual void Replace(long from, long to, const wxString& value);
-    !%wxchkver_3_1_1 virtual void SetEditable(bool editable);
-    !%wxchkver_3_1_1 virtual void SetInsertionPoint(long pos);
-    !%wxchkver_3_1_1 virtual void SetInsertionPointEnd();
-    !%wxchkver_3_1_1 virtual void SetMaxLength(unsigned long value);
-    !%wxchkver_3_1_1 virtual void SetSelection(long from, long to);
-    !%wxchkver_3_1_1 virtual void SetValue(const wxString& value);
-    !%wxchkver_3_1_1 virtual void Undo();
-    !%wxchkver_3_1_1 virtual wxString GetRange(long from, long to) const;
-    !%wxchkver_3_1_1 virtual wxString GetStringSelection();
-    !%wxchkver_3_1_1 void AppendText(const wxString& text);
-    !%wxchkver_3_1_1 void GetSelection() const;
-    !%wxchkver_3_1_1 void WriteText(const wxString& text);
-    !%wxchkver_3_1_1 wxString GetValue() const;
+    !%wxchkver_3_0_0 bool IsEditable() const;
+    !%wxchkver_3_0_0 bool LoadFile(const wxString& filename);
+    !%wxchkver_3_0_0 bool SaveFile(const wxString& filename);
+    !%wxchkver_3_0_0 virtual bool CanCopy();
+    !%wxchkver_3_0_0 virtual bool CanCut();
+    !%wxchkver_3_0_0 virtual bool CanPaste();
+    !%wxchkver_3_0_0 virtual bool CanRedo();
+    !%wxchkver_3_0_0 virtual bool CanUndo();
+    !%wxchkver_3_0_0 virtual long GetInsertionPoint() const;
+    !%wxchkver_3_0_0 virtual long GetLastPosition() const;
+    !%wxchkver_3_0_0 virtual void ChangeValue(const wxString& value);
+    !%wxchkver_3_0_0 virtual void Clear();
+    !%wxchkver_3_0_0 virtual void Copy();
+    !%wxchkver_3_0_0 virtual void Cut();
+    !%wxchkver_3_0_0 virtual void Paste();
+    !%wxchkver_3_0_0 virtual void Redo();
+    !%wxchkver_3_0_0 virtual void Remove(long from, long to);
+    !%wxchkver_3_0_0 virtual void Replace(long from, long to, const wxString& value);
+    !%wxchkver_3_0_0 virtual void SetEditable(bool editable);
+    !%wxchkver_3_0_0 virtual void SetInsertionPoint(long pos);
+    !%wxchkver_3_0_0 virtual void SetInsertionPointEnd();
+    !%wxchkver_3_0_0 virtual void SetMaxLength(unsigned long value);
+    !%wxchkver_3_0_0 virtual void SetSelection(long from, long to);
+    !%wxchkver_3_0_0 virtual void SetValue(const wxString& value);
+    !%wxchkver_3_0_0 virtual void Undo();
+    !%wxchkver_3_0_0 virtual wxString GetRange(long from, long to) const;
+    !%wxchkver_3_0_0 virtual wxString GetStringSelection();
+    !%wxchkver_3_0_0 void AppendText(const wxString& text);
+    !%wxchkver_3_0_0 void GetSelection() const;
+    !%wxchkver_3_0_0 void WriteText(const wxString& text);
+    !%wxchkver_3_0_0 wxString GetValue() const;
     %rename HitTestPos wxTextCtrlHitTestResult HitTest(const wxPoint& pt) const; // return [wxTextCtrlHitTestResult, int pos]
     bool PositionToXY(long pos) const; // %override return [bool, int x, int y]
     wxTextCtrlHitTestResult HitTest(const wxPoint& pt) const; // %override return [wxTextCtrlHitTestResult, int col, int row]
@@ -1199,7 +1199,7 @@ class wxTreeCtrl : public wxControl
     void Delete(const wxTreeItemId& item);
     void DeleteAllItems();
     void DeleteChildren(const wxTreeItemId& item);
-    %wxchkver_3_1_1 void EnableBellOnNoMatch(bool on = true);
+    %wxchkver_3_0_0 void EnableBellOnNoMatch(bool on = true);
     %win void EndEditLabel(const wxTreeItemId& item, bool discardChanges = false);
     void EnsureVisible(const wxTreeItemId& item);
     void Expand(const wxTreeItemId& item);
@@ -1211,9 +1211,9 @@ class wxTreeCtrl : public wxControl
     int GetCount() const;
     %win wxTextCtrl* GetEditControl() const;
     wxTreeItemId GetFirstVisibleItem() const;
-    %wxchkver_3_1_1 wxTreeItemId GetFocusedItem() const;
-    %wxchkver_3_1_1 void ClearFocusedItem();
-    %wxchkver_3_1_1 void SetFocusedItem(const wxTreeItemId& item);
+    %wxchkver_3_0_0 wxTreeItemId GetFocusedItem() const;
+    %wxchkver_3_0_0 void ClearFocusedItem();
+    %wxchkver_3_0_0 void SetFocusedItem(const wxTreeItemId& item);
     wxImageList* GetImageList() const;
     int GetIndent() const;
     wxColour GetItemBackgroundColour(const wxTreeItemId& item) const;
@@ -1221,7 +1221,7 @@ class wxTreeCtrl : public wxControl
     wxFont GetItemFont(const wxTreeItemId& item) const;
     int GetItemImage(const wxTreeItemId& item, wxTreeItemIcon which = wxTreeItemIcon_Normal) const;
     %wxchkver_2_4 wxTreeItemId GetItemParent(const wxTreeItemId& item) const;
-    %wxchkver_3_1_1 int GetItemState(const wxTreeItemId& item) const;
+    %wxchkver_3_0_0 int GetItemState(const wxTreeItemId& item) const;
     wxString GetItemText(const wxTreeItemId& item) const;
     wxColour GetItemTextColour(const wxTreeItemId& item) const;
     wxTreeItemId GetLastChild(const wxTreeItemId& item) const;
@@ -1248,7 +1248,7 @@ class wxTreeCtrl : public wxControl
     void SelectItem(const wxTreeItemId& item, bool select = true);
     // void SetButtonsImageList(wxImageList* imageList); // This function is only available in the generic version.
     void SetImageList(wxImageList* imageList);
-    %wxchkver_3_1_1 void SetIndent(unsigned int indent);
+    %wxchkver_3_0_0 void SetIndent(unsigned int indent);
     void SetItemBackgroundColour(const wxTreeItemId& item, const wxColour& col);
     void SetItemBold(const wxTreeItemId& item, bool bold = true);
     void SetItemData(const wxTreeItemId& item, %ungc wxLuaTreeItemData* data);
@@ -1268,8 +1268,8 @@ class wxTreeCtrl : public wxControl
     void Unselect();
     void UnselectAll();
     void UnselectItem(const wxTreeItemId& item);
-    %wxchkver_3_1_1 void SelectChildren(const wxTreeItemId& parent);
-    !%wxchkver_3_1_1 void SetIndent(int indent);
+    %wxchkver_3_0_0 void SelectChildren(const wxTreeItemId& parent);
+    !%wxchkver_3_0_0 void SetIndent(int indent);
     size_t GetSelections() const; // %override return [size_t, Lua table of wxTreeItemIds]
     wxTextCtrl *EditLabel(const wxTreeItemId& item); // %override , wxClassInfo* textCtrlClass = wxCLASSINFO(wxTextCtrl));
     wxTreeItemId GetFirstChild(const wxTreeItemId& item) const; // %override return [wxTreeItemId, wxTreeItemIdValue cookie]

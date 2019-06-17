@@ -254,14 +254,14 @@ wxLuaBindNumber* wxLuaGetDefineList_wxbase(size_t &count)
         { "wxEVENT_PROPAGATE_MAX", wxEVENT_PROPAGATE_MAX },
         { "wxEVENT_PROPAGATE_NONE", wxEVENT_PROPAGATE_NONE },
 
-#if wxCHECK_VERSION(3,1,1)
+#if wxCHECK_VERSION(3,0,0)
         { "wxEVT_CATEGORY_ALL", wxEVT_CATEGORY_ALL },
         { "wxEVT_CATEGORY_SOCKET", wxEVT_CATEGORY_SOCKET },
         { "wxEVT_CATEGORY_THREAD", wxEVT_CATEGORY_THREAD },
         { "wxEVT_CATEGORY_TIMER", wxEVT_CATEGORY_TIMER },
         { "wxEVT_CATEGORY_UI", wxEVT_CATEGORY_UI },
         { "wxEVT_CATEGORY_USER_INPUT", wxEVT_CATEGORY_USER_INPUT },
-#endif // wxCHECK_VERSION(3,1,1)
+#endif // wxCHECK_VERSION(3,0,0)
 
 #if wxLUA_USE_wxFileName
         { "wxFILE", wxFILE },

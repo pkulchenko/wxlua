@@ -745,7 +745,7 @@ wx_dataTypeTable =
     ValueType = "class",
   },
   wxBrushStyle = {
-    Condition = "(wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)",
+    Condition = "(wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)",
     IsNumber = true,
     Name = "wxBrushStyle",
     ValueType = "enum",
@@ -1595,7 +1595,7 @@ wx_dataTypeTable =
     ValueType = "class",
   },
   wxEventCategory = {
-    Condition = "wxCHECK_VERSION(3,1,1)",
+    Condition = "wxCHECK_VERSION(3,0,0)",
     IsNumber = true,
     Name = "wxEventCategory",
     ValueType = "enum",
@@ -2019,7 +2019,7 @@ wx_dataTypeTable =
     ValueType = "enum",
   },
   wxFontSymbolicSize = {
-    Condition = "(wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFont)",
+    Condition = "(wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxFont)",
     IsNumber = true,
     Name = "wxFontSymbolicSize",
     ValueType = "enum",
@@ -2509,7 +2509,7 @@ wx_dataTypeTable =
     ValueType = "enum",
   },
   wxHitTest = {
-    Condition = "wxCHECK_VERSION(3,1,1)",
+    Condition = "wxCHECK_VERSION(3,0,0)",
     IsNumber = true,
     Name = "wxHitTest",
     ValueType = "enum",
@@ -4360,7 +4360,7 @@ wx_dataTypeTable =
     ValueType = "class",
   },
   wxShowEffect = {
-    Condition = "wxCHECK_VERSION(3,1,1)",
+    Condition = "wxCHECK_VERSION(2,9,1)",
     IsNumber = true,
     Name = "wxShowEffect",
     ValueType = "enum",
@@ -4655,7 +4655,7 @@ wx_dataTypeTable =
     ValueType = "enum",
   },
   ["wxStandardPaths::Dir"] = {
-    Condition = "(wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))",
+    Condition = "(wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,0))",
     IsNumber = true,
     Name = "wxStandardPaths::Dir",
     ValueType = "enum",
@@ -5599,6 +5599,7 @@ wx_preprocConditionTable =
   ["%wxchkver_2_9_4"] = "wxCHECK_VERSION(2,9,4)",
   ["%wxchkver_2_9_5"] = "wxCHECK_VERSION(2,9,5)",
   ["%wxchkver_3_0"] = "wxCHECK_VERSION(3,0,0)",
+  ["%wxchkver_3_0_0"] = "wxCHECK_VERSION(3,0,0)",
   ["%wxchkver_3_1"] = "wxCHECK_VERSION(3,1,0)",
   ["%wxchkver_3_1_0"] = "wxCHECK_VERSION(3,1,0)",
   ["%wxchkver_3_1_1"] = "wxCHECK_VERSION(3,1,1)",

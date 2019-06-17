@@ -122,8 +122,8 @@ class wxAuiToolBarItem
     bool IsSticky() const;
     void SetUserData(long l);
     long GetUserData() const;
-    %wxchkver_3_1_1 void SetAlignment(int l);
-    %wxchkver_3_1_1 int GetAlignment() const;
+    %wxchkver_3_0_0 void SetAlignment(int l);
+    %wxchkver_3_0_0 int GetAlignment() const;
 };
 
 // ---------------------------------------------------------------------------
@@ -151,13 +151,13 @@ class wxAuiToolBarArt
     //wxAuiToolBarArt(); - pure virtual class see wxAuiDefaultToolBarArt
     virtual wxAuiToolBarArt* Clone();
     virtual void SetFlags(unsigned int flags);
-    %wxchkver_3_1_1 unsigned int GetFlags();
+    %wxchkver_3_0_0 unsigned int GetFlags();
     virtual void SetFont(const wxFont& font);
-    %wxchkver_3_1_1 wxFont GetFont();
+    %wxchkver_3_0_0 wxFont GetFont();
     virtual void SetTextOrientation(int orientation);
-    %wxchkver_3_1_1 int GetTextOrientation();
+    %wxchkver_3_0_0 int GetTextOrientation();
     virtual void DrawBackground(wxDC& dc, wxWindow* wnd, const wxRect& rect);
-    %wxchkver_3_1_1 void DrawPlainBackground(wxDC& dc, wxWindow* wnd, const wxRect& rect);
+    %wxchkver_3_0_0 void DrawPlainBackground(wxDC& dc, wxWindow* wnd, const wxRect& rect);
     virtual void DrawLabel(wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item, const wxRect& rect);
     virtual void DrawButton(wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item, const wxRect& rect);
     virtual void DrawDropDownButton(wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& item, const wxRect& rect);
@@ -185,9 +185,9 @@ class wxAuiDefaultToolBarArt : public wxAuiToolBarArt
 
 class wxAuiToolBar : public wxControl
 {
-    %wxchkver_3_1_1 wxAuiToolBar();
+    %wxchkver_3_0_0 wxAuiToolBar();
     wxAuiToolBar(wxWindow* parent, wxWindowID id = -1, const wxPoint& position = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxAUI_TB_DEFAULT_STYLE);
-    %wxchkver_3_1_1 bool Create(wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxAUI_TB_DEFAULT_STYLE);
+    %wxchkver_3_0_0 bool Create(wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxAUI_TB_DEFAULT_STYLE);
     void SetWindowStyleFlag(long style);
     long GetWindowStyleFlag() const;
     void SetArtProvider(wxAuiToolBarArt* art);
@@ -384,8 +384,8 @@ class %delete wxAuiTabArt
     virtual void SetMeasuringFont(const wxFont& font); //= 0;
     virtual void SetNormalFont(const wxFont& font); //= 0;
     virtual void SetSelectedFont(const wxFont& font); //= 0;
-    %wxchkver_3_1_1 void SetColour(const wxColour& colour);
-    %wxchkver_3_1_1 void SetActiveColour(const wxColour& colour);
+    %wxchkver_3_0_0 void SetColour(const wxColour& colour);
+    %wxchkver_3_0_0 void SetActiveColour(const wxColour& colour);
     virtual void SetSizingInfo(const wxSize& tab_ctrl_size, size_t tab_count); //= 0;
     virtual int ShowDropDown(wxWindow* wnd, const wxAuiNotebookPageArray& items, int active_idx); // %add as it's missing from auibook.h
     virtual void DrawTab(wxDC& dc, wxWindow* wnd, const wxAuiNotebookPage& pane, const wxRect& in_rect, int close_button_state, wxRect* out_tab_rect, wxRect* out_button_rect, int* x_extent); // %add as it's missing from auibook.h
@@ -486,11 +486,11 @@ class wxAuiNotebook : public wxControl
     wxAuiNotebook();
     wxAuiNotebook(wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxAUI_NB_DEFAULT_STYLE);
     bool AddPage(wxWindow* page, const wxString& caption, bool select = false, const wxBitmap& bitmap = wxNullBitmap);
-    %wxchkver_3_1_1 bool AddPage(wxWindow *page, const wxString &text, bool select, int imageId);
+    %wxchkver_3_0_0 bool AddPage(wxWindow *page, const wxString &text, bool select, int imageId);
     %wxchkver_2_8_5 void AdvanceSelection(bool forward = true); // Advances the selection, generates page selection events
-    %wxchkver_3_1_1 int ChangeSelection(size_t n);
+    %wxchkver_3_0_0 int ChangeSelection(size_t n);
     bool Create(wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0);
-    %wxchkver_3_1_1 bool DeleteAllPages();
+    %wxchkver_3_0_0 bool DeleteAllPages();
     bool DeletePage(size_t page);
     wxAuiTabArt* GetArtProvider() const;
     wxWindow* GetCurrentPage () const;
@@ -504,14 +504,14 @@ class wxAuiNotebook : public wxControl
     int GetSelection() const;
     %wxchkver_2_8_5 int GetTabCtrlHeight() const; // Gets the tab control height
     bool InsertPage(size_t page_idx, wxWindow* page, const wxString& caption, bool select = false, const wxBitmap& bitmap = wxNullBitmap);
-    %wxchkver_3_1_1 bool InsertPage(size_t index, wxWindow *page, const wxString &text, bool select=false, int imageId=-1);
+    %wxchkver_3_0_0 bool InsertPage(size_t index, wxWindow *page, const wxString &text, bool select=false, int imageId=-1);
     bool RemovePage(size_t page);
     void SetArtProvider(%ungc wxAuiTabArt* art);
     %wxchkver_2_8_5 virtual bool SetFont(const wxFont& font); // Sets the tab font
     %wxchkver_2_8_5 void SetMeasuringFont(const wxFont& font); // Sets the measuring font
     %wxchkver_2_8_5 void SetNormalFont(const wxFont& font); // Sets the normal font
     bool SetPageBitmap(size_t page, const wxBitmap& bitmap);
-    %wxchkver_3_1_1 bool SetPageImage(size_t n, int imageId);
+    %wxchkver_3_0_0 bool SetPageImage(size_t n, int imageId);
     bool SetPageText(size_t page, const wxString& text);
     %wxchkver_2_9_4 bool SetPageToolTip(size_t page, const wxString& text);
     %wxchkver_2_8_5 void SetSelectedFont(const wxFont& font); // Sets the selected tab font
@@ -552,8 +552,8 @@ class %delete wxAuiDockArt
     virtual void SetColour(int id, const wxColour& colour); //= 0;
     virtual void SetFont(int id, const wxFont& font); //= 0;
     virtual void SetMetric(int id, int new_val); //= 0;
-    !%wxchkver_3_1_1 void SetColor(int id, const wxColour& color);
-    !%wxchkver_3_1_1 wxColour GetColor(int id);
+    !%wxchkver_3_0_0 void SetColor(int id, const wxColour& color);
+    !%wxchkver_3_0_0 wxColour GetColor(int id);
 };
 
 
@@ -875,7 +875,7 @@ class %delete wxAuiManager : public wxEvtHandler
     bool AddPane(wxWindow* window, int direction = wxLEFT, const wxString& caption = wxEmptyString);
     bool AddPane(wxWindow* window, const wxAuiPaneInfo& pane_info, const wxPoint& drop_pos);
     wxRect CalculateHintRect(wxWindow* pane_window, const wxPoint& pt, const wxPoint& offset);
-    %wxchkver_3_1_1 bool CanDockPanel(const wxAuiPaneInfo & p);
+    %wxchkver_3_0_0 bool CanDockPanel(const wxAuiPaneInfo & p);
     void ClosePane(wxAuiPaneInfo& pane_info);
     virtual wxAuiFloatingFrame* CreateFloatingFrame(wxWindow* parent, const wxAuiPaneInfo& p);
     bool DetachPane(wxWindow* window);

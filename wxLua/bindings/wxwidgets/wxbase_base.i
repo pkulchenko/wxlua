@@ -748,42 +748,42 @@ class %delete wxRegEx
 
 class %delete wxEventLoopBase
 {
-    %wxchkver_3_1_1 static wxEventLoopBase *GetActive();
-    %wxchkver_3_1_1 static void SetActive(wxEventLoopBase* loop);
-    %wxchkver_3_1_1 bool IsMain() const;
-    %wxchkver_3_1_1 int Run();
-    %wxchkver_3_1_1 bool IsRunning() const;
-    %wxchkver_3_1_1 bool IsOk() const;
-    %wxchkver_3_1_1 void Exit(int rc = 0);
-    %wxchkver_3_1_1 void ScheduleExit(int rc = 0);
-    %wxchkver_3_1_1 bool Pending() const;
-    %wxchkver_3_1_1 bool Dispatch();
-    %wxchkver_3_1_1 int DispatchTimeout(unsigned long timeout);
-    %wxchkver_3_1_1 void WakeUp();
-    %wxchkver_3_1_1 void WakeUpIdle();
-    %wxchkver_3_1_1 bool ProcessIdle();
-    %wxchkver_3_1_1 bool IsYielding() const;
-    %wxchkver_3_1_1 bool Yield(bool onlyIfNeeded = false);
-    %wxchkver_3_1_1 bool YieldFor(long eventsToProcess);
-    %wxchkver_3_1_1 bool IsEventAllowedInsideYield(wxEventCategory cat) const;
+    %wxchkver_3_0_0 static wxEventLoopBase *GetActive();
+    %wxchkver_3_0_0 static void SetActive(wxEventLoopBase* loop);
+    %wxchkver_3_0_0 bool IsMain() const;
+    %wxchkver_3_0_0 int Run();
+    %wxchkver_3_0_0 bool IsRunning() const;
+    %wxchkver_3_0_0 bool IsOk() const;
+    %wxchkver_3_0_0 void Exit(int rc = 0);
+    %wxchkver_3_0_0 void ScheduleExit(int rc = 0);
+    %wxchkver_3_0_0 bool Pending() const;
+    %wxchkver_3_0_0 bool Dispatch();
+    %wxchkver_3_0_0 int DispatchTimeout(unsigned long timeout);
+    %wxchkver_3_0_0 void WakeUp();
+    %wxchkver_3_0_0 void WakeUpIdle();
+    %wxchkver_3_0_0 bool ProcessIdle();
+    %wxchkver_3_0_0 bool IsYielding() const;
+    %wxchkver_3_0_0 bool Yield(bool onlyIfNeeded = false);
+    %wxchkver_3_0_0 bool YieldFor(long eventsToProcess);
+    %wxchkver_3_0_0 bool IsEventAllowedInsideYield(wxEventCategory cat) const;
 };
 
 class wxEventFilter
 {
     // wxEventFilter(); // no constructor as it's an abstract class
-    %wxchkver_3_1_1 int FilterEvent(wxEvent& event);
+    %wxchkver_3_0_0 int FilterEvent(wxEvent& event);
 };
 
 class %delete wxEvtHandler : public wxObject
 {
     wxEvtHandler();
     %wxchkver_2_9 virtual void QueueEvent(%ungc wxEvent *event);
-    %wxchkver_3_1_1 void AddPendingEvent(const wxEvent& event);
+    %wxchkver_3_0_0 void AddPendingEvent(const wxEvent& event);
     virtual bool ProcessEvent(wxEvent& event);
-    %wxchkver_3_1_1 bool ProcessEventLocally(wxEvent& event);
-    %wxchkver_3_1_1 bool SafelyProcessEvent(wxEvent& event);
-    %wxchkver_3_1_1 void ProcessPendingEvents();
-    %wxchkver_3_1_1 void DeletePendingEvents();
+    %wxchkver_3_0_0 bool ProcessEventLocally(wxEvent& event);
+    %wxchkver_3_0_0 bool SafelyProcessEvent(wxEvent& event);
+    %wxchkver_3_0_0 void ProcessPendingEvents();
+    %wxchkver_3_0_0 void DeletePendingEvents();
     // void Connect(int id, int lastId, wxEventType eventType, wxObjectEventFunction function, wxObject* userData = NULL, wxEvtHandler* eventSink = NULL);
     // void Connect(int id, wxEventType eventType, wxObjectEventFunction function, wxObject* userData = NULL, wxEvtHandler* eventSink = NULL);
     // void Connect(wxEventType eventType, wxObjectEventFunction function, wxObject* userData = NULL, wxEvtHandler* eventSink = NULL);
@@ -798,11 +798,11 @@ class %delete wxEvtHandler : public wxObject
     void SetEvtHandlerEnabled(bool enabled);
     void SetNextHandler(wxEvtHandler* handler);
     void SetPreviousHandler(wxEvtHandler* handler);
-    %wxchkver_3_1_1 void Unlink();
-    %wxchkver_3_1_1 bool IsUnlinked() const;
-    %wxchkver_3_1_1 static void AddFilter(wxEventFilter* filter);
-    %wxchkver_3_1_1 static void RemoveFilter(wxEventFilter* filter);
-    !%wxchkver_3_1_1 void AddPendingEvent(wxEvent& event);
+    %wxchkver_3_0_0 void Unlink();
+    %wxchkver_3_0_0 bool IsUnlinked() const;
+    %wxchkver_3_0_0 static void AddFilter(wxEventFilter* filter);
+    %wxchkver_3_0_0 static void RemoveFilter(wxEventFilter* filter);
+    !%wxchkver_3_0_0 void AddPendingEvent(wxEvent& event);
     // bool SearchEventTable(wxEventTable& table, wxEvent& event); // no wxEventTable
     bool Disconnect(int id, int lastId, wxEventType eventType); // %override parameters
     void Connect(int id, int lastId, wxEventType eventType, LuaFunction func); // %add parameters
@@ -818,7 +818,7 @@ enum Propagation_state
     wxEVENT_PROPAGATE_MAX  // propagate it until it is processed
 };
 
-#if %wxchkver_3_1_1
+#if %wxchkver_3_0_0
 enum wxEventCategory
 {
     /**
@@ -868,9 +868,9 @@ class %delete wxEvent : public wxObject
     // wxEvent* Clone() const; // no constructor as it's an abstract class
     wxObject* GetEventObject();
     wxEventType GetEventType();
-    %wxchkver_3_1_1 wxEventCategory GetEventCategory() const;
+    %wxchkver_3_0_0 wxEventCategory GetEventCategory() const;
     int GetId();
-    %wxchkver_3_1_1 wxObject *GetEventUserData() const;
+    %wxchkver_3_0_0 wxObject *GetEventUserData() const;
     bool GetSkipped();
     long GetTimestamp();
     bool IsCommandEvent() const;

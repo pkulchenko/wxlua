@@ -111,7 +111,8 @@ class %delete wxHtmlCell : public wxObject
     void SetPos(int x, int y);
     %wxchkver_3_1_2 wxString ConvertToText(wxHtmlSelection* sel) const;
     %wxchkver_2_8 & !%wxchkver_2_9_4 virtual bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks);
-    %wxchkver_2_9_4 & !%wxchkver_3_1_2 virtual bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks, int pageHeight);
+    %wxchkver_2_9_4 & !%wxchkver_3_0_0 virtual bool AdjustPagebreak(int pagebreak, wxArrayInt& known_pagebreaks, int pageHeight);
+    %wxchkver_3_0_0 & !%wxchkver_3_1_2 virtual bool AdjustPagebreak(int* pagebreak, wxArrayInt& known_pagebreaks, int pageHeight);
     %wxchkver_3_1_2 virtual bool AdjustPagebreak(int* pagebreak, int pageHeight);
     // %override [bool, int pagebreak] wxHtmlCell::AdjustPagebreak(int pagebreak);
     // %override wxHtmlCell* wxHtmlCell::Find(int condition, [none, string, or int]);

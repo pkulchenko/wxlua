@@ -28,8 +28,8 @@ enum wxItemKind
 
 class %delete wxMenu : public wxEvtHandler
 {
-    %wxchkver_3_1_1 wxMenu();
-    %wxchkver_3_1_1 wxMenu(long style);
+    %wxchkver_3_0_0 wxMenu();
+    %wxchkver_3_0_0 wxMenu(long style);
     wxMenu(const wxString& title = "", long style = 0);
     wxMenuItem* Append(int id, const wxString& item, const wxString& helpString = "", wxItemKind kind = wxITEM_NORMAL);
     wxMenuItem* Append(int id, const wxString& item, %ungc wxMenu *subMenu, const wxString& helpString = "");
@@ -45,19 +45,19 @@ class %delete wxMenu : public wxEvtHandler
     void Destroy(int id);
     void Destroy(wxMenuItem *item);
     void Enable(int id, bool enable);
-    %wxchkver_3_1_1 wxMenuItem *FindChildItem(int id, size_t *pos = NULL) const;
+    %wxchkver_3_0_0 wxMenuItem *FindChildItem(int id, size_t *pos = NULL) const;
     int FindItem(const wxString& itemString) const;
     // C++ Func: wxMenuItem* FindItem(int id, wxMenu **menu = NULL) const;
     wxMenuItem* FindItemByPosition(size_t position) const;
     wxString GetHelpString(int id) const;
     wxString GetLabel(int id) const;
-    %wxchkver_3_1_1 wxString GetLabelText(int id) const;
+    %wxchkver_3_0_0 wxString GetLabelText(int id) const;
     size_t GetMenuItemCount() const;
     wxMenuItemList& GetMenuItems() const;
     wxString GetTitle() const;
     wxMenuItem* Insert(size_t pos, %ungc wxMenuItem *menuItem);
     wxMenuItem* Insert(size_t pos, int id, const wxString& item, const wxString& helpString = "", wxItemKind kind = wxITEM_NORMAL);
-    %wxchkver_3_1_1 wxMenuItem* Insert(size_t pos, int id, const wxString& text, wxMenu* submenu, const wxString& help = wxEmptyString);
+    %wxchkver_3_0_0 wxMenuItem* Insert(size_t pos, int id, const wxString& text, wxMenu* submenu, const wxString& help = wxEmptyString);
     wxMenuItem* InsertCheckItem(size_t pos, int id, const wxString& item, const wxString& helpString = "");
     wxMenuItem* InsertRadioItem(size_t pos, int id, const wxString& item, const wxString& helpString = "");
     wxMenuItem* InsertSeparator(size_t pos);
@@ -65,7 +65,7 @@ class %delete wxMenu : public wxEvtHandler
     bool IsEnabled(int id) const;
     wxMenuItem* Prepend(%ungc wxMenuItem *item);
     wxMenuItem* Prepend(int id, const wxString& item, const wxString& helpString = "", wxItemKind kind = wxITEM_NORMAL);
-    %wxchkver_3_1_1 wxMenuItem* Prepend(int id, const wxString& text, wxMenu* submenu, const wxString& help = wxEmptyString);
+    %wxchkver_3_0_0 wxMenuItem* Prepend(int id, const wxString& text, wxMenu* submenu, const wxString& help = wxEmptyString);
     wxMenuItem* PrependCheckItem(int id, const wxString& item, const wxString& helpString = "");
     wxMenuItem* PrependRadioItem(int id, const wxString& item, const wxString& helpString = "");
     wxMenuItem* PrependSeparator();
@@ -75,15 +75,15 @@ class %delete wxMenu : public wxEvtHandler
     void SetLabel(int id, const wxString& label);
     void SetTitle(const wxString& title);
     void UpdateUI(wxEvtHandler* source = NULL);
-    %wxchkver_3_1_1 void SetInvokingWindow(wxWindow *win);
-    %wxchkver_3_1_1 wxWindow *GetInvokingWindow() const;
-    %wxchkver_3_1_1 wxWindow *GetWindow() const;
-    %wxchkver_3_1_1 long GetStyle() const;
-    %wxchkver_3_1_1 void SetParent(wxMenu *parent);
-    %wxchkver_3_1_1 wxMenu *GetParent() const;
-    %wxchkver_3_1_1 virtual void Attach(wxMenuBar *menubar);
-    %wxchkver_3_1_1 virtual void Detach();
-    %wxchkver_3_1_1 bool IsAttached() const;
+    %wxchkver_3_0_0 void SetInvokingWindow(wxWindow *win);
+    %wxchkver_3_0_0 wxWindow *GetInvokingWindow() const;
+    %wxchkver_3_0_0 wxWindow *GetWindow() const;
+    %wxchkver_3_0_0 long GetStyle() const;
+    %wxchkver_3_0_0 void SetParent(wxMenu *parent);
+    %wxchkver_3_0_0 wxMenu *GetParent() const;
+    %wxchkver_3_0_0 virtual void Attach(wxMenuBar *menubar);
+    %wxchkver_3_0_0 virtual void Detach();
+    %wxchkver_3_0_0 bool IsAttached() const;
     %override_name wxLua_wxCreateMenu_constructor wxMenu(LuaTable, const wxString& title = "", long style = 0);
     %override_name wxLua_wxMenu_FindItemById wxMenuItem* FindItem(int id) const;
     // %override [wxMenuItem* menuItem, wxMenu* ownerMenu] wxMenu::FindItem(int id);
@@ -155,17 +155,17 @@ class %delete wxMenuItem : public wxObject
     !%wxchkver_3_0 || %wxcompat_2_8 wxString GetLabel() const;
     %win int GetMarginWidth() const;
     wxMenu* GetMenu() const;
-    %wxchkver_3_1_1 wxString GetName() const;
+    %wxchkver_3_0_0 wxString GetName() const;
     wxMenu* GetSubMenu() const;
     !%wxchkver_3_0 || %wxcompat_2_8 wxString GetText() const;
     %win wxColour& GetTextColour() const;
     // static wxAcceleratorEntry *GetAccelFromString(const wxString& label);
     // wxAcceleratorEntry *GetAccel() const;
-    %wxchkver_3_1_1 bool IsCheck() const;
+    %wxchkver_3_0_0 bool IsCheck() const;
     bool IsCheckable() const;
     bool IsChecked() const;
     bool IsEnabled() const;
-    %wxchkver_3_1_1 bool IsRadio() const;
+    %wxchkver_3_0_0 bool IsRadio() const;
     bool IsSeparator() const;
     bool IsSubMenu() const;
     %win void SetBackgroundColour(const wxColour& colour) const;
