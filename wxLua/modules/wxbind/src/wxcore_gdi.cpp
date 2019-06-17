@@ -1421,6 +1421,62 @@ static int LUACALL wxLua_wxRect_GetY(lua_State *L)
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRect_Get_height[] = { &wxluatype_wxRect, NULL };
+static int LUACALL wxLua_wxRect_Get_height(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect_Get_height[1] = {{ wxLua_wxRect_Get_height, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRect_Get_height }};
+//     int height;
+static int LUACALL wxLua_wxRect_Get_height(lua_State *L)
+{
+    // get this
+    wxRect *self = (wxRect *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRect);
+    // push the result number
+    lua_pushnumber(L, self->height);
+    // return the number of values
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRect_Get_width[] = { &wxluatype_wxRect, NULL };
+static int LUACALL wxLua_wxRect_Get_width(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect_Get_width[1] = {{ wxLua_wxRect_Get_width, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRect_Get_width }};
+//     int width;
+static int LUACALL wxLua_wxRect_Get_width(lua_State *L)
+{
+    // get this
+    wxRect *self = (wxRect *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRect);
+    // push the result number
+    lua_pushnumber(L, self->width);
+    // return the number of values
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRect_Get_x[] = { &wxluatype_wxRect, NULL };
+static int LUACALL wxLua_wxRect_Get_x(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect_Get_x[1] = {{ wxLua_wxRect_Get_x, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRect_Get_x }};
+//     int x;
+static int LUACALL wxLua_wxRect_Get_x(lua_State *L)
+{
+    // get this
+    wxRect *self = (wxRect *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRect);
+    // push the result number
+    lua_pushnumber(L, self->x);
+    // return the number of values
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRect_Get_y[] = { &wxluatype_wxRect, NULL };
+static int LUACALL wxLua_wxRect_Get_y(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect_Get_y[1] = {{ wxLua_wxRect_Get_y, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRect_Get_y }};
+//     int y;
+static int LUACALL wxLua_wxRect_Get_y(lua_State *L)
+{
+    // get this
+    wxRect *self = (wxRect *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRect);
+    // push the result number
+    lua_pushnumber(L, self->y);
+    // return the number of values
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect_Inflate[] = { &wxluatype_wxRect, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxRect_Inflate(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect_Inflate[1] = {{ wxLua_wxRect_Inflate, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRect_Inflate }};
@@ -1736,6 +1792,66 @@ static int LUACALL wxLua_wxRect_SetY(lua_State *L)
     return 0;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRect_Set_height[] = { &wxluatype_wxRect, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxRect_Set_height(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect_Set_height[1] = {{ wxLua_wxRect_Set_height, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRect_Set_height }};
+//     int height;
+static int LUACALL wxLua_wxRect_Set_height(lua_State *L)
+{
+    // get the number value
+    int val = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxRect *self = (wxRect *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRect);
+    self->height = val;
+    // return the number of values
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRect_Set_width[] = { &wxluatype_wxRect, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxRect_Set_width(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect_Set_width[1] = {{ wxLua_wxRect_Set_width, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRect_Set_width }};
+//     int width;
+static int LUACALL wxLua_wxRect_Set_width(lua_State *L)
+{
+    // get the number value
+    int val = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxRect *self = (wxRect *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRect);
+    self->width = val;
+    // return the number of values
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRect_Set_x[] = { &wxluatype_wxRect, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxRect_Set_x(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect_Set_x[1] = {{ wxLua_wxRect_Set_x, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRect_Set_x }};
+//     int x;
+static int LUACALL wxLua_wxRect_Set_x(lua_State *L)
+{
+    // get the number value
+    int val = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxRect *self = (wxRect *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRect);
+    self->x = val;
+    // return the number of values
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRect_Set_y[] = { &wxluatype_wxRect, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxRect_Set_y(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect_Set_y[1] = {{ wxLua_wxRect_Set_y, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRect_Set_y }};
+//     int y;
+static int LUACALL wxLua_wxRect_Set_y(lua_State *L)
+{
+    // get the number value
+    int val = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxRect *self = (wxRect *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRect);
+    self->y = val;
+    // return the number of values
+    return 0;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRect_Union[] = { &wxluatype_wxRect, &wxluatype_wxRect, NULL };
 static int LUACALL wxLua_wxRect_Union(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRect_Union[1] = {{ wxLua_wxRect_Union, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRect_Union }};
@@ -2016,6 +2132,10 @@ wxLuaBindMethod wxRect_methods[] = {
     { "GetWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_GetWidth, 1, NULL },
     { "GetX", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_GetX, 1, NULL },
     { "GetY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_GetY, 1, NULL },
+    // %member    { "Get_height", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_Get_height, 1, NULL },
+    // %member    { "Get_width", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_Get_width, 1, NULL },
+    // %member    { "Get_x", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_Get_x, 1, NULL },
+    // %member    { "Get_y", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_Get_y, 1, NULL },
     { "Inflate", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_Inflate, 1, NULL },
 
 #if ((defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)) && (wxLUA_USE_wxPointSizeRect)
@@ -2046,16 +2166,29 @@ wxLuaBindMethod wxRect_methods[] = {
     { "SetWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_SetWidth, 1, NULL },
     { "SetX", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_SetX, 1, NULL },
     { "SetY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_SetY, 1, NULL },
+    // %member    { "Set_height", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_Set_height, 1, NULL },
+    // %member    { "Set_width", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_Set_width, 1, NULL },
+    // %member    { "Set_x", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_Set_x, 1, NULL },
+    // %member    { "Set_y", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_Set_y, 1, NULL },
     { "Union", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_Union, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxRect_delete, 1, NULL },
+    { "height", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxRect_Set_height, 1, NULL },
+    { "height", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxRect_Get_height, 1, NULL },
     { "op_add", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_op_add, 1, NULL },
     { "op_eq", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_op_eq, 1, NULL },
     { "op_iadd", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_op_iadd, 1, NULL },
     { "op_set", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRect_op_set, 1, NULL },
+    { "width", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxRect_Set_width, 1, NULL },
+    { "width", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxRect_Get_width, 1, NULL },
 
 #if (wxLUA_USE_wxPointSizeRect)
     { "wxRect", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxRect_constructor_overload, s_wxluafunc_wxLua_wxRect_constructor_overload_count, 0 },
 #endif // (wxLUA_USE_wxPointSizeRect)
+
+    { "x", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxRect_Set_x, 1, NULL },
+    { "x", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxRect_Get_x, 1, NULL },
+    { "y", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxRect_Set_y, 1, NULL },
+    { "y", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxRect_Get_y, 1, NULL },
 
     { 0, 0, 0, 0 },
 };

@@ -181,6 +181,11 @@ class %delete wxRect
     bool operator==(const wxRect& rect) const;
     wxRect operator+(const wxRect& rect) const;
     wxRect& operator+=(const wxRect& rect);
+
+    int height;
+    int width;
+    int x;
+    int y;
 };
 
 #endif //wxLUA_USE_wxPointSizeRect
