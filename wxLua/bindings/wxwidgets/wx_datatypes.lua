@@ -129,6 +129,11 @@ wx_dataTypeTable =
     Name = "uint",
     ValueType = "number",
   },
+  uintptr_t = {
+    IsNumber = true,
+    Name = "uintptr_t",
+    ValueType = "number",
+  },
   ulong = {
     IsNumber = true,
     Name = "ulong",

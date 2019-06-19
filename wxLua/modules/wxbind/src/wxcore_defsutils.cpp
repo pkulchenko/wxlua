@@ -164,7 +164,7 @@ static int LUACALL wxLua_wxProcess_GetPid(lua_State *L)
     // get this
     wxProcess * self = (wxProcess *)wxluaT_getuserdatatype(L, 1, wxluatype_wxProcess);
     // call GetPid
-    long  returns = (self->GetPid());
+    long returns = (self->GetPid());
     // push the result number
     lua_pushnumber(L, returns);
 

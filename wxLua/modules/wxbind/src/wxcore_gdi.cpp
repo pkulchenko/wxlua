@@ -3193,7 +3193,7 @@ static int LUACALL wxLua_wxRegionIterator_GetHeight(lua_State *L)
     // get this
     wxRegionIterator * self = (wxRegionIterator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRegionIterator);
     // call GetHeight
-    long  returns = (self->GetHeight());
+    long returns = (self->GetHeight());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -3232,7 +3232,7 @@ static int LUACALL wxLua_wxRegionIterator_GetWidth(lua_State *L)
     // get this
     wxRegionIterator * self = (wxRegionIterator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRegionIterator);
     // call GetWidth
-    long  returns = (self->GetWidth());
+    long returns = (self->GetWidth());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -3248,7 +3248,7 @@ static int LUACALL wxLua_wxRegionIterator_GetX(lua_State *L)
     // get this
     wxRegionIterator * self = (wxRegionIterator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRegionIterator);
     // call GetX
-    long  returns = (self->GetX());
+    long returns = (self->GetX());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -3264,7 +3264,7 @@ static int LUACALL wxLua_wxRegionIterator_GetY(lua_State *L)
     // get this
     wxRegionIterator * self = (wxRegionIterator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRegionIterator);
     // call GetY
-    long  returns = (self->GetY());
+    long returns = (self->GetY());
     // push the result number
     lua_pushnumber(L, returns);
 

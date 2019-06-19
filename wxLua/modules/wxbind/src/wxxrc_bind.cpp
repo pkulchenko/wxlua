@@ -131,7 +131,7 @@ static int LUACALL wxLua_wxXmlResource_GetVersion(lua_State *L)
     // get this
     wxXmlResource * self = (wxXmlResource *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlResource);
     // call GetVersion
-    long  returns = (self->GetVersion());
+    long returns = (self->GetVersion());
     // push the result number
     lua_pushnumber(L, returns);
 

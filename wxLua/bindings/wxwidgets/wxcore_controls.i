@@ -188,7 +188,7 @@ class wxItemContainer : public wxItemContainerImmutable
     // no constructor, used only as base class
 
     int Append(const wxString& item);
-    int Append(const wxString&  item, voidptr_long number); // C++ is (void *clientData) You can put a number here
+    int Append(const wxString& item, voidptr_long number); // C++ is (void *clientData) You can put a number here
     int Append(const wxString& item, wxClientData *clientData);
 
     void AppendString( const wxString& item);
@@ -196,12 +196,11 @@ class wxItemContainer : public wxItemContainerImmutable
     void Append(const wxArrayString& strings);
 
     int Insert(const wxString& item, unsigned int pos);
-    int Insert(const wxString&  item, unsigned int pos, voidptr_long number); // C++ is (void *clientData) You can put a number here
+    int Insert(const wxString& item, unsigned int pos, voidptr_long number); // C++ is (void *clientData) You can put a number here
     int Insert(const wxString& item, unsigned int pos, wxClientData *clientData);
 
     virtual void Clear(); //= 0;
     virtual void Delete(unsigned int n); //= 0;
-
 
     void SetClientData(unsigned int n, voidptr_long number); // C++ is (void *clientData) You can put a number here
     voidptr_long GetClientData(unsigned int n) const; // C++ returns (void *) You get a number here

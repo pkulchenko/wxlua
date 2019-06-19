@@ -588,7 +588,7 @@ static int LUACALL wxLua_wxTextValidator_GetStyle(lua_State *L)
     // get this
     wxTextValidator * self = (wxTextValidator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextValidator);
     // call GetStyle
-    long  returns = (self->GetStyle());
+    long returns = (self->GetStyle());
     // push the result number
     lua_pushnumber(L, returns);
 

@@ -2134,7 +2134,7 @@ static int LUACALL wxLua_wxWindow_GetExtraStyle(lua_State *L)
     // get this
     wxWindow * self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call GetExtraStyle
-    long  returns = (self->GetExtraStyle());
+    long returns = (self->GetExtraStyle());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -3093,7 +3093,7 @@ static int LUACALL wxLua_wxWindow_GetWindowStyle(lua_State *L)
     // get this
     wxWindow * self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call GetWindowStyle
-    long  returns = (self->GetWindowStyle());
+    long returns = (self->GetWindowStyle());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -3111,7 +3111,7 @@ static int LUACALL wxLua_wxWindow_GetWindowStyleFlag(lua_State *L)
     // get this
     wxWindow * self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call GetWindowStyleFlag
-    long  returns = (self->GetWindowStyleFlag());
+    long returns = (self->GetWindowStyleFlag());
     // push the result number
     lua_pushnumber(L, returns);
 

@@ -136,7 +136,7 @@ static int LUACALL wxLua_wxCommandEvent_GetClientData(lua_State *L)
     // get this
     wxCommandEvent * self = (wxCommandEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxCommandEvent);
     // call GetClientData
-    long  returns = (long )self->GetClientData();
+    uintptr_t returns = (uintptr_t)self->GetClientData();
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -168,7 +168,7 @@ static int LUACALL wxLua_wxCommandEvent_GetExtraLong(lua_State *L)
     // get this
     wxCommandEvent * self = (wxCommandEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxCommandEvent);
     // call GetExtraLong
-    long  returns = (self->GetExtraLong());
+    long returns = (self->GetExtraLong());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -278,7 +278,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxCommandEvent_SetClientData[1] = {{ wxL
 static int LUACALL wxLua_wxCommandEvent_SetClientData(lua_State *L)
 {
     // voidptr_long number
-    long number = (long)wxlua_getnumbertype(L, 2);
+    uintptr_t number = (uintptr_t)wxlua_getnumbertype(L, 2);
     // get this
     wxCommandEvent * self = (wxCommandEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxCommandEvent);
     // call SetClientData
@@ -1247,7 +1247,7 @@ static int LUACALL wxLua_wxKeyEvent_GetX(lua_State *L)
     // get this
     wxKeyEvent * self = (wxKeyEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxKeyEvent);
     // call GetX
-    long  returns = (self->GetX());
+    long returns = (self->GetX());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -1263,7 +1263,7 @@ static int LUACALL wxLua_wxKeyEvent_GetY(lua_State *L)
     // get this
     wxKeyEvent * self = (wxKeyEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxKeyEvent);
     // call GetY
-    long  returns = (self->GetY());
+    long returns = (self->GetY());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -2152,7 +2152,7 @@ static int LUACALL wxLua_wxMouseEvent_GetX(lua_State *L)
     // get this
     wxMouseEvent * self = (wxMouseEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMouseEvent);
     // call GetX
-    long  returns = (self->GetX());
+    long returns = (self->GetX());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -2168,7 +2168,7 @@ static int LUACALL wxLua_wxMouseEvent_GetY(lua_State *L)
     // get this
     wxMouseEvent * self = (wxMouseEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMouseEvent);
     // call GetY
-    long  returns = (self->GetY());
+    long returns = (self->GetY());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -4099,7 +4099,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxUpdateUIEvent_GetUpdateInterval[1] = {
 static int LUACALL wxLua_wxUpdateUIEvent_GetUpdateInterval(lua_State *L)
 {
     // call GetUpdateInterval
-    long  returns = (wxUpdateUIEvent::GetUpdateInterval());
+    long returns = (wxUpdateUIEvent::GetUpdateInterval());
     // push the result number
     lua_pushnumber(L, returns);
 

@@ -1202,7 +1202,7 @@ static int LUACALL wxLua_function_wxGetElapsedTime(lua_State *L)
     // bool resetTimer = true
     bool resetTimer = (argCount >= 1 ? wxlua_getbooleantype(L, 1) : true);
     // call wxGetElapsedTime
-    long  returns = (wxGetElapsedTime(resetTimer));
+    long returns = (wxGetElapsedTime(resetTimer));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -1301,7 +1301,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetHostName[1] = {{ wxLua_fun
 static int LUACALL wxLua_function_wxGetLocalTime(lua_State *L)
 {
     // call wxGetLocalTime
-    long  returns = (wxGetLocalTime());
+    long returns = (wxGetLocalTime());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -1528,7 +1528,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetTranslationPlural[1] = {{ 
 static int LUACALL wxLua_function_wxGetUTCTime(lua_State *L)
 {
     // call wxGetUTCTime
-    long  returns = (wxGetUTCTime());
+    long returns = (wxGetUTCTime());
     // push the result number
     lua_pushnumber(L, returns);
 

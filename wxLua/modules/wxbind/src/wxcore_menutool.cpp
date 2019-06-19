@@ -578,7 +578,7 @@ static int LUACALL wxLua_wxMenu_GetStyle(lua_State *L)
     // get this
     wxMenu * self = (wxMenu *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenu);
     // call GetStyle
-    long  returns = (self->GetStyle());
+    long returns = (self->GetStyle());
     // push the result number
     lua_pushnumber(L, returns);
 

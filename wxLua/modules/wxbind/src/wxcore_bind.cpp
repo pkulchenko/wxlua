@@ -3349,7 +3349,7 @@ static int LUACALL wxLua_function_wxExecute1(lua_State *L)
     // const wxString command
     const wxString command = wxlua_getwxStringtype(L, 1);
     // call wxExecute
-    long  returns = (wxExecute(command, flags, process));
+    long returns = (wxExecute(command, flags, process));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -3373,7 +3373,7 @@ static int LUACALL wxLua_function_wxExecute(lua_State *L)
     // const wxString command
     const wxString command = wxlua_getwxStringtype(L, 1);
     // call wxExecute
-    long  returns = (wxExecute(command, sync, callback));
+    long returns = (wxExecute(command, sync, callback));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -3926,7 +3926,7 @@ static int LUACALL wxLua_function_wxGetNumberFromUser(lua_State *L)
     // const wxString message
     const wxString message = wxlua_getwxStringtype(L, 1);
     // call wxGetNumberFromUser
-    long  returns = (wxGetNumberFromUser(message, prompt, caption, value, min, max, parent, *pos));
+    long returns = (wxGetNumberFromUser(message, prompt, caption, value, min, max, parent, *pos));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -4242,7 +4242,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxMessageBox[1] = {{ wxLua_func
 static int LUACALL wxLua_function_wxNewId(lua_State *L)
 {
     // call wxNewId
-    long  returns = (wxNewId());
+    long returns = (wxNewId());
     // push the result number
     lua_pushnumber(L, returns);
 

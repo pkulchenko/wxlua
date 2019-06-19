@@ -8552,7 +8552,7 @@ static int LUACALL wxLua_wxStyledTextCtrl_SendMsg(lua_State *L)
     // get this
     wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
     // call SendMsg
-    long  returns = (self->SendMsg(msg, wp, lp));
+    long returns = (self->SendMsg(msg, wp, lp));
     // push the result number
     lua_pushnumber(L, returns);
 

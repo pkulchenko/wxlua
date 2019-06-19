@@ -3887,7 +3887,7 @@ static int LUACALL wxLua_wxImageHandler_GetType(lua_State *L)
     // get this
     wxImageHandler * self = (wxImageHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImageHandler);
     // call GetType
-    long  returns = (self->GetType());
+    long returns = (self->GetType());
     // push the result number
     lua_pushnumber(L, returns);
 

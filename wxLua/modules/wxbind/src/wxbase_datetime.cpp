@@ -46,7 +46,7 @@ static int LUACALL wxLua_wxDateTime_TimeZone_GetOffset(lua_State *L)
     // get this
     wxDateTime::TimeZone * self = (wxDateTime::TimeZone *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime_TimeZone);
     // call GetOffset
-    long  returns = (self->GetOffset());
+    long returns = (self->GetOffset());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -884,7 +884,7 @@ static int LUACALL wxLua_wxDateTime_GetTicks(lua_State *L)
     // get this
     wxDateTime * self = (wxDateTime *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDateTime);
     // call GetTicks
-    long  returns = (self->GetTicks());
+    long returns = (self->GetTicks());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -5083,7 +5083,7 @@ static int LUACALL wxLua_wxStopWatch_Time(lua_State *L)
     // get this
     wxStopWatch * self = (wxStopWatch *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStopWatch);
     // call Time
-    long  returns = (self->Time());
+    long returns = (self->Time());
     // push the result number
     lua_pushnumber(L, returns);
 

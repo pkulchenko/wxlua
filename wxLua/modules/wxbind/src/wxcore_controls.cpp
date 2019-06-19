@@ -1982,11 +1982,11 @@ static int LUACALL wxLua_wxItemContainer_Append2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxItemContainer_Append1[] = { &wxluatype_wxItemContainer, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxItemContainer_Append1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxItemContainer_Append1[1] = {{ wxLua_wxItemContainer_Append1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxItemContainer_Append1 }};
-//     int Append(const wxString&  item, voidptr_long number); // C++ is (void *clientData) You can put a number here
+//     int Append(const wxString& item, voidptr_long number); // C++ is (void *clientData) You can put a number here
 static int LUACALL wxLua_wxItemContainer_Append1(lua_State *L)
 {
     // voidptr_long number
-    long number = (long)wxlua_getnumbertype(L, 3);
+    uintptr_t number = (uintptr_t)wxlua_getnumbertype(L, 3);
     // const wxString item
     const wxString item = wxlua_getwxStringtype(L, 2);
     // get this
@@ -2074,7 +2074,7 @@ static int LUACALL wxLua_wxItemContainer_GetClientData(lua_State *L)
     // get this
     wxItemContainer * self = (wxItemContainer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxItemContainer);
     // call GetClientData
-    long  returns = (long )self->GetClientData(n);
+    uintptr_t returns = (uintptr_t)self->GetClientData(n);
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -2156,11 +2156,11 @@ static int LUACALL wxLua_wxItemContainer_Insert2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxItemContainer_Insert1[] = { &wxluatype_wxItemContainer, &wxluatype_TSTRING, &wxluatype_TINTEGER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxItemContainer_Insert1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxItemContainer_Insert1[1] = {{ wxLua_wxItemContainer_Insert1, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxItemContainer_Insert1 }};
-//     int Insert(const wxString&  item, unsigned int pos, voidptr_long number); // C++ is (void *clientData) You can put a number here
+//     int Insert(const wxString& item, unsigned int pos, voidptr_long number); // C++ is (void *clientData) You can put a number here
 static int LUACALL wxLua_wxItemContainer_Insert1(lua_State *L)
 {
     // voidptr_long number
-    long number = (long)wxlua_getnumbertype(L, 4);
+    uintptr_t number = (uintptr_t)wxlua_getnumbertype(L, 4);
     // unsigned int pos
     unsigned int pos = (unsigned int)wxlua_getuintegertype(L, 3);
     // const wxString item
@@ -2202,7 +2202,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxItemContainer_SetClientData[1] = {{ wx
 static int LUACALL wxLua_wxItemContainer_SetClientData(lua_State *L)
 {
     // voidptr_long number
-    long number = (long)wxlua_getnumbertype(L, 3);
+    uintptr_t number = (uintptr_t)wxlua_getnumbertype(L, 3);
     // unsigned int n
     unsigned int n = (unsigned int)wxlua_getuintegertype(L, 2);
     // get this
@@ -2698,7 +2698,7 @@ static int LUACALL wxLua_wxComboBox_GetInsertionPoint(lua_State *L)
     // get this
     wxComboBox * self = (wxComboBox *)wxluaT_getuserdatatype(L, 1, wxluatype_wxComboBox);
     // call GetInsertionPoint
-    long  returns = (self->GetInsertionPoint());
+    long returns = (self->GetInsertionPoint());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -2714,7 +2714,7 @@ static int LUACALL wxLua_wxComboBox_GetLastPosition(lua_State *L)
     // get this
     wxComboBox * self = (wxComboBox *)wxluaT_getuserdatatype(L, 1, wxluatype_wxComboBox);
     // call GetLastPosition
-    long  returns = (self->GetLastPosition());
+    long returns = (self->GetLastPosition());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -4068,7 +4068,7 @@ static int LUACALL wxLua_wxListCtrl_FindItem2(lua_State *L)
     // get this
     wxListCtrl * self = (wxListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListCtrl);
     // call FindItem
-    long  returns = (self->FindItem(start, *pt, direction));
+    long returns = (self->FindItem(start, *pt, direction));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -4090,7 +4090,7 @@ static int LUACALL wxLua_wxListCtrl_FindItem1(lua_State *L)
     // get this
     wxListCtrl * self = (wxListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListCtrl);
     // call FindItem
-    long  returns = (self->FindItem(start, data));
+    long returns = (self->FindItem(start, data));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -4114,7 +4114,7 @@ static int LUACALL wxLua_wxListCtrl_FindItem(lua_State *L)
     // get this
     wxListCtrl * self = (wxListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListCtrl);
     // call FindItem
-    long  returns = (self->FindItem(start, str, partial));
+    long returns = (self->FindItem(start, str, partial));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -4277,7 +4277,7 @@ static int LUACALL wxLua_wxListCtrl_GetItemData(lua_State *L)
     // get this
     wxListCtrl * self = (wxListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListCtrl);
     // call GetItemData
-    long  returns = (self->GetItemData(item));
+    long returns = (self->GetItemData(item));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -4454,7 +4454,7 @@ static int LUACALL wxLua_wxListCtrl_GetNextItem(lua_State *L)
     // get this
     wxListCtrl * self = (wxListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListCtrl);
     // call GetNextItem
-    long  returns = (self->GetNextItem(item, geometry, state));
+    long returns = (self->GetNextItem(item, geometry, state));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -4509,7 +4509,7 @@ static int LUACALL wxLua_wxListCtrl_GetTopItem(lua_State *L)
     // get this
     wxListCtrl * self = (wxListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListCtrl);
     // call GetTopItem
-    long  returns = (self->GetTopItem());
+    long returns = (self->GetTopItem());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -4582,7 +4582,7 @@ static int LUACALL wxLua_wxListCtrl_InsertColumn1(lua_State *L)
     // get this
     wxListCtrl * self = (wxListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListCtrl);
     // call InsertColumn
-    long  returns = (self->InsertColumn(col, heading, format, width));
+    long returns = (self->InsertColumn(col, heading, format, width));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -4602,7 +4602,7 @@ static int LUACALL wxLua_wxListCtrl_InsertColumn(lua_State *L)
     // get this
     wxListCtrl * self = (wxListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListCtrl);
     // call InsertColumn
-    long  returns = (self->InsertColumn(col, *info));
+    long returns = (self->InsertColumn(col, *info));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -4624,7 +4624,7 @@ static int LUACALL wxLua_wxListCtrl_InsertItem3(lua_State *L)
     // get this
     wxListCtrl * self = (wxListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListCtrl);
     // call InsertItem
-    long  returns = (self->InsertItem(index, label, imageIndex));
+    long returns = (self->InsertItem(index, label, imageIndex));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -4644,7 +4644,7 @@ static int LUACALL wxLua_wxListCtrl_InsertItem2(lua_State *L)
     // get this
     wxListCtrl * self = (wxListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListCtrl);
     // call InsertItem
-    long  returns = (self->InsertItem(index, imageIndex));
+    long returns = (self->InsertItem(index, imageIndex));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -4664,7 +4664,7 @@ static int LUACALL wxLua_wxListCtrl_InsertItem1(lua_State *L)
     // get this
     wxListCtrl * self = (wxListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListCtrl);
     // call InsertItem
-    long  returns = (self->InsertItem(index, label));
+    long returns = (self->InsertItem(index, label));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -4682,7 +4682,7 @@ static int LUACALL wxLua_wxListCtrl_InsertItem(lua_State *L)
     // get this
     wxListCtrl * self = (wxListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListCtrl);
     // call InsertItem
-    long  returns = (self->InsertItem(*info));
+    long returns = (self->InsertItem(*info));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -4790,7 +4790,7 @@ static int LUACALL wxLua_wxListCtrl_SetItem1(lua_State *L)
     // get this
     wxListCtrl * self = (wxListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListCtrl);
     // call SetItem
-    long  returns = (self->SetItem(index, col, label, imageId));
+    long returns = (self->SetItem(index, col, label, imageId));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -5088,7 +5088,7 @@ static int LUACALL wxLua_wxListCtrl_SortItems(lua_State *L)
     wxListCtrl *self = (wxListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListCtrl);
 
     // call SortItems
-    bool returns = self->SortItems(wxLua_ListCompareFunction, (long)&LCF_data);
+    bool returns = self->SortItems(wxLua_ListCompareFunction, (uintptr_t)&LCF_data);
 
     luaL_unref(L, LUA_REGISTRYINDEX, LCF_data.lua_tag); // remove ref to function
 
@@ -5865,7 +5865,7 @@ static int LUACALL wxLua_wxListItem_GetData(lua_State *L)
     // get this
     wxListItem * self = (wxListItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListItem);
     // call GetData
-    long  returns = (self->GetData());
+    long returns = (self->GetData());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -5904,7 +5904,7 @@ static int LUACALL wxLua_wxListItem_GetId(lua_State *L)
     // get this
     wxListItem * self = (wxListItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListItem);
     // call GetId
-    long  returns = (self->GetId());
+    long returns = (self->GetId());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -5936,7 +5936,7 @@ static int LUACALL wxLua_wxListItem_GetMask(lua_State *L)
     // get this
     wxListItem * self = (wxListItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListItem);
     // call GetMask
-    long  returns = (self->GetMask());
+    long returns = (self->GetMask());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -5952,7 +5952,7 @@ static int LUACALL wxLua_wxListItem_GetState(lua_State *L)
     // get this
     wxListItem * self = (wxListItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListItem);
     // call GetState
-    long  returns = (self->GetState());
+    long returns = (self->GetState());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -6408,7 +6408,7 @@ static int LUACALL wxLua_wxListEvent_GetData(lua_State *L)
     // get this
     wxListEvent * self = (wxListEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListEvent);
     // call GetData
-    long  returns = (self->GetData());
+    long returns = (self->GetData());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -6440,7 +6440,7 @@ static int LUACALL wxLua_wxListEvent_GetIndex(lua_State *L)
     // get this
     wxListEvent * self = (wxListEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListEvent);
     // call GetIndex
-    long  returns = (self->GetIndex());
+    long returns = (self->GetIndex());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -6504,7 +6504,7 @@ static int LUACALL wxLua_wxListEvent_GetMask(lua_State *L)
     // get this
     wxListEvent * self = (wxListEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListEvent);
     // call GetMask
-    long  returns = (self->GetMask());
+    long returns = (self->GetMask());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -6713,7 +6713,7 @@ static int LUACALL wxLua_wxListView_GetFirstSelected(lua_State *L)
     // get this
     wxListView * self = (wxListView *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListView);
     // call GetFirstSelected
-    long  returns = (self->GetFirstSelected());
+    long returns = (self->GetFirstSelected());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -6729,7 +6729,7 @@ static int LUACALL wxLua_wxListView_GetFocusedItem(lua_State *L)
     // get this
     wxListView * self = (wxListView *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListView);
     // call GetFocusedItem
-    long  returns = (self->GetFocusedItem());
+    long returns = (self->GetFocusedItem());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -6747,7 +6747,7 @@ static int LUACALL wxLua_wxListView_GetNextSelected(lua_State *L)
     // get this
     wxListView * self = (wxListView *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListView);
     // call GetNextSelected
-    long  returns = (self->GetNextSelected(item));
+    long returns = (self->GetNextSelected(item));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -9069,7 +9069,7 @@ static int LUACALL wxLua_wxTextEntry_GetInsertionPoint(lua_State *L)
     // get this
     wxTextEntry * self = (wxTextEntry *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextEntry);
     // call GetInsertionPoint
-    long  returns = (self->GetInsertionPoint());
+    long returns = (self->GetInsertionPoint());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -9873,7 +9873,7 @@ static int LUACALL wxLua_wxTextCtrl_GetInsertionPoint(lua_State *L)
     // get this
     wxTextCtrl * self = (wxTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextCtrl);
     // call GetInsertionPoint
-    long  returns = (self->GetInsertionPoint());
+    long returns = (self->GetInsertionPoint());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -9889,7 +9889,7 @@ static int LUACALL wxLua_wxTextCtrl_GetLastPosition(lua_State *L)
     // get this
     wxTextCtrl * self = (wxTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextCtrl);
     // call GetLastPosition
-    long  returns = (self->GetLastPosition());
+    long returns = (self->GetLastPosition());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -10624,7 +10624,7 @@ static int LUACALL wxLua_wxTextCtrl_XYToPosition(lua_State *L)
     // get this
     wxTextCtrl * self = (wxTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextCtrl);
     // call XYToPosition
-    long  returns = (self->XYToPosition(x, y));
+    long returns = (self->XYToPosition(x, y));
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -10924,7 +10924,7 @@ static int LUACALL wxLua_wxTextAttr_GetFlags(lua_State *L)
     // get this
     wxTextAttr * self = (wxTextAttr *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextAttr);
     // call GetFlags
-    long  returns = (self->GetFlags());
+    long returns = (self->GetFlags());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -10963,7 +10963,7 @@ static int LUACALL wxLua_wxTextAttr_GetLeftIndent(lua_State *L)
     // get this
     wxTextAttr * self = (wxTextAttr *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextAttr);
     // call GetLeftIndent
-    long  returns = (self->GetLeftIndent());
+    long returns = (self->GetLeftIndent());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -10979,7 +10979,7 @@ static int LUACALL wxLua_wxTextAttr_GetLeftSubIndent(lua_State *L)
     // get this
     wxTextAttr * self = (wxTextAttr *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextAttr);
     // call GetLeftSubIndent
-    long  returns = (self->GetLeftSubIndent());
+    long returns = (self->GetLeftSubIndent());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -10995,7 +10995,7 @@ static int LUACALL wxLua_wxTextAttr_GetRightIndent(lua_State *L)
     // get this
     wxTextAttr * self = (wxTextAttr *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextAttr);
     // call GetRightIndent
-    long  returns = (self->GetRightIndent());
+    long returns = (self->GetRightIndent());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -11487,7 +11487,7 @@ static int LUACALL wxLua_wxTextUrlEvent_GetURLEnd(lua_State *L)
     // get this
     wxTextUrlEvent * self = (wxTextUrlEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextUrlEvent);
     // call GetURLEnd
-    long  returns = (self->GetURLEnd());
+    long returns = (self->GetURLEnd());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -11503,7 +11503,7 @@ static int LUACALL wxLua_wxTextUrlEvent_GetURLStart(lua_State *L)
     // get this
     wxTextUrlEvent * self = (wxTextUrlEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextUrlEvent);
     // call GetURLStart
-    long  returns = (self->GetURLStart());
+    long returns = (self->GetURLStart());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -13596,7 +13596,7 @@ static int LUACALL wxLua_wxTreeItemId_GetValue(lua_State *L)
     // get this
     wxTreeItemId *self = (wxTreeItemId *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeItemId);
     // call GetValue
-    long returns = (long)self->m_pItem;
+    uintptr_t returns = (uintptr_t)self->m_pItem;
     // push the result number
     lua_pushnumber(L, returns);
     // return the number of parameters

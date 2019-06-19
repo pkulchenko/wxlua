@@ -2113,7 +2113,7 @@ static int LUACALL wxLua_wxDocTemplate_GetFlags(lua_State *L)
     // get this
     wxDocTemplate * self = (wxDocTemplate *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDocTemplate);
     // call GetFlags
-    long  returns = (self->GetFlags());
+    long returns = (self->GetFlags());
     // push the result number
     lua_pushnumber(L, returns);
 

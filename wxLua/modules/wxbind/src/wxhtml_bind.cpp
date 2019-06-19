@@ -4455,7 +4455,7 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_Append2(lua_State *L);
 static int LUACALL wxLua_wxSimpleHtmlListBox_Append2(lua_State *L)
 {
     // voidptr_long number
-    long number = (long)wxlua_getnumbertype(L, 3);
+    uintptr_t number = (uintptr_t)wxlua_getnumbertype(L, 3);
     // const wxString item
     const wxString item = wxlua_getwxStringtype(L, 2);
     // get this

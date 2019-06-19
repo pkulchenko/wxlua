@@ -227,6 +227,7 @@ function InitDataTypes()
     AllocDataType("short",              "number", true)
     AllocDataType("size_t",             "number", true)
     AllocDataType("ptrdiff_t",          "number", true)
+    AllocDataType("uintptr_t",          "number", true)
     AllocDataType("time_t",             "number", true)
     AllocDataType("unsigned char",      "number", true)
     AllocDataType("unsigned short",     "number", true)
@@ -3658,11 +3659,10 @@ function GenerateLuaLanguageBinding(interface)
                         isTranslated = true
                     end
 
-
                     -- the function takes (void*), but we just pass a long
                     if argType == "voidptr_long" then
-                        argType = "long"
-                        argTypeWithAttrib = "long"
+                        argType = "uintptr_t"
+                        argTypeWithAttrib = "uintptr_t"
                         argCast = "void*"
                     end
 
@@ -4058,8 +4058,8 @@ function GenerateLuaLanguageBinding(interface)
                         memberTypeWithAttrib = string.sub(memberTypeWithAttrib, 7)
                     end
 
-                    if string.find("voidptr_long", memberTypeWithAttrib, 1, 1) then
-                        memberTypeWithAttrib = "long "
+                    if string.find(memberTypeWithAttrib, "voidptr_long", 1, 1) then
+                        memberTypeWithAttrib = "uintptr_t"
                     end
                 end
 

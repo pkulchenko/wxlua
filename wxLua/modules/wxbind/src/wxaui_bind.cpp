@@ -557,7 +557,7 @@ static int LUACALL wxLua_wxAuiToolBarItem_GetUserData(lua_State *L)
     // get this
     wxAuiToolBarItem * self = (wxAuiToolBarItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiToolBarItem);
     // call GetUserData
-    long  returns = (self->GetUserData());
+    long returns = (self->GetUserData());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -2697,7 +2697,7 @@ static int LUACALL wxLua_wxAuiToolBar_GetWindowStyleFlag(lua_State *L)
     // get this
     wxAuiToolBar * self = (wxAuiToolBar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiToolBar);
     // call GetWindowStyleFlag
-    long  returns = (self->GetWindowStyleFlag());
+    long returns = (self->GetWindowStyleFlag());
     // push the result number
     lua_pushnumber(L, returns);
 

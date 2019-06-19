@@ -1445,7 +1445,7 @@ static int LUACALL wxLua_wxBitmapComboBox_Append1(lua_State *L);
 static int LUACALL wxLua_wxBitmapComboBox_Append1(lua_State *L)
 {
     // voidptr_long data
-    long data = (long)wxlua_getnumbertype(L, 4);
+    uintptr_t data = (uintptr_t)wxlua_getnumbertype(L, 4);
     // const wxBitmap bitmap
     const wxBitmap * bitmap = (const wxBitmap *)wxluaT_getuserdatatype(L, 3, wxluatype_wxBitmap);
     // const wxString item
@@ -1710,7 +1710,7 @@ static int LUACALL wxLua_wxBitmapComboBox_Insert1(lua_State *L);
 static int LUACALL wxLua_wxBitmapComboBox_Insert1(lua_State *L)
 {
     // voidptr_long data
-    long data = (long)wxlua_getnumbertype(L, 5);
+    uintptr_t data = (uintptr_t)wxlua_getnumbertype(L, 5);
     // unsigned int pos
     unsigned int pos = (unsigned int)wxlua_getuintegertype(L, 4);
     // const wxBitmap bitmap
@@ -4992,7 +4992,7 @@ static int LUACALL wxLua_wxSplashScreen_GetSplashStyle(lua_State *L)
     // get this
     wxSplashScreen * self = (wxSplashScreen *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSplashScreen);
     // call GetSplashStyle
-    long  returns = (self->GetSplashStyle());
+    long returns = (self->GetSplashStyle());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -10115,7 +10115,7 @@ static int LUACALL wxLua_wxGridTableBase_GetValueAsLong(lua_State *L)
     // get this
     wxGridTableBase * self = (wxGridTableBase *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGridTableBase);
     // call GetValueAsLong
-    long  returns = (self->GetValueAsLong(row, col));
+    long returns = (self->GetValueAsLong(row, col));
     // push the result number
     lua_pushnumber(L, returns);
 

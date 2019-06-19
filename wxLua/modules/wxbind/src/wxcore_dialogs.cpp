@@ -761,7 +761,7 @@ static int LUACALL wxLua_wxFileDialog_GetStyle(lua_State *L)
     // get this
     wxFileDialog * self = (wxFileDialog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileDialog);
     // call GetStyle
-    long  returns = (self->GetStyle());
+    long returns = (self->GetStyle());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -1076,7 +1076,7 @@ static int LUACALL wxLua_wxDirDialog_GetStyle(lua_State *L)
     // get this
     wxDirDialog * self = (wxDirDialog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDirDialog);
     // call GetStyle
-    long  returns = (self->GetStyle());
+    long returns = (self->GetStyle());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -1257,7 +1257,7 @@ static int LUACALL wxLua_wxMessageDialog_GetEffectiveIcon(lua_State *L)
     // get this
     wxMessageDialog * self = (wxMessageDialog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMessageDialog);
     // call GetEffectiveIcon
-    long  returns = (self->GetEffectiveIcon());
+    long returns = (self->GetEffectiveIcon());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -1330,7 +1330,7 @@ static int LUACALL wxLua_wxMessageDialog_GetMessageDialogStyle(lua_State *L)
     // get this
     wxMessageDialog * self = (wxMessageDialog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMessageDialog);
     // call GetMessageDialogStyle
-    long  returns = (self->GetMessageDialogStyle());
+    long returns = (self->GetMessageDialogStyle());
     // push the result number
     lua_pushnumber(L, returns);
 

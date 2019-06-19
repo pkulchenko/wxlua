@@ -146,7 +146,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_GetDebuggeeProcessId(lua_State *L)
     // get this
     wxLuaDebuggerServer * self = (wxLuaDebuggerServer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLuaDebuggerServer);
     // call GetDebuggeeProcessId
-    long  returns = (self->GetDebuggeeProcessId());
+    long returns = (self->GetDebuggeeProcessId());
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -260,7 +260,7 @@ static int LUACALL wxLua_wxLuaDebuggerServer_StartClient(lua_State *L)
     // get this
     wxLuaDebuggerServer * self = (wxLuaDebuggerServer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLuaDebuggerServer);
     // call StartClient
-    long  returns = (self->StartClient());
+    long returns = (self->StartClient());
     // push the result number
     lua_pushnumber(L, returns);
 

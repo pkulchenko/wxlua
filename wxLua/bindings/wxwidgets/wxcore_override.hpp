@@ -513,7 +513,7 @@ static int LUACALL wxLua_wxListCtrl_SortItems(lua_State *L)
     wxListCtrl *self = (wxListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxListCtrl);
 
     // call SortItems
-    bool returns = self->SortItems(wxLua_ListCompareFunction, (long)&LCF_data);
+    bool returns = self->SortItems(wxLua_ListCompareFunction, (uintptr_t)&LCF_data);
 
     luaL_unref(L, LUA_REGISTRYINDEX, LCF_data.lua_tag); // remove ref to function
 
@@ -679,7 +679,7 @@ static int LUACALL wxLua_wxTreeItemId_GetValue(lua_State *L)
     // get this
     wxTreeItemId *self = (wxTreeItemId *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeItemId);
     // call GetValue
-    long returns = (long)self->m_pItem;
+    uintptr_t returns = (uintptr_t)self->m_pItem;
     // push the result number
     lua_pushnumber(L, returns);
     // return the number of parameters
