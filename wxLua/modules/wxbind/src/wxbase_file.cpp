@@ -154,11 +154,11 @@ static int LUACALL wxLua_wxStandardPaths_GetExecutablePath(lua_State *L)
 }
 
 
-#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,2))
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_GetFileLayout[] = { &wxluatype_wxStandardPaths, NULL };
 static int LUACALL wxLua_wxStandardPaths_GetFileLayout(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_GetFileLayout[1] = {{ wxLua_wxStandardPaths_GetFileLayout, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStandardPaths_GetFileLayout }};
-//     %wxchkver_3_1_2 wxStandardPaths::FileLayout GetFileLayout() const;
+//     %wxchkver_3_1_1 wxStandardPaths::FileLayout GetFileLayout() const;
 static int LUACALL wxLua_wxStandardPaths_GetFileLayout(lua_State *L)
 {
     // get this
@@ -171,7 +171,7 @@ static int LUACALL wxLua_wxStandardPaths_GetFileLayout(lua_State *L)
     return 1;
 }
 
-#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,2))
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
 
 #if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,0,0) && defined(__WXGTK__))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_GetInstallPrefix[] = { &wxluatype_wxStandardPaths, NULL };
@@ -398,11 +398,11 @@ static int LUACALL wxLua_wxStandardPaths_MSWGetShellDir(lua_State *L)
 
 #endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,0,0) && defined(__WXMSW__))
 
-#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,2))
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_MakeConfigFileName[] = { &wxluatype_wxStandardPaths, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxStandardPaths_MakeConfigFileName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_MakeConfigFileName[1] = {{ wxLua_wxStandardPaths_MakeConfigFileName, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxStandardPaths_MakeConfigFileName }};
-//     %wxchkver_3_1_2 wxString MakeConfigFileName(const wxString& basename, wxStandardPaths::ConfigFileConv conv = wxStandardPaths::ConfigFileConv_Ext) const;
+//     %wxchkver_3_1_1 wxString MakeConfigFileName(const wxString& basename, wxStandardPaths::ConfigFileConv conv = wxStandardPaths::ConfigFileConv_Ext) const;
 static int LUACALL wxLua_wxStandardPaths_MakeConfigFileName(lua_State *L)
 {
     // get number of arguments
@@ -424,7 +424,7 @@ static int LUACALL wxLua_wxStandardPaths_MakeConfigFileName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_SetFileLayout[] = { &wxluatype_wxStandardPaths, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxStandardPaths_SetFileLayout(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_SetFileLayout[1] = {{ wxLua_wxStandardPaths_SetFileLayout, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStandardPaths_SetFileLayout }};
-//     %wxchkver_3_1_2 void SetFileLayout(wxStandardPaths::FileLayout layout);
+//     %wxchkver_3_1_1 void SetFileLayout(wxStandardPaths::FileLayout layout);
 static int LUACALL wxLua_wxStandardPaths_SetFileLayout(lua_State *L)
 {
     // wxStandardPaths::FileLayout layout
@@ -437,7 +437,7 @@ static int LUACALL wxLua_wxStandardPaths_SetFileLayout(lua_State *L)
     return 0;
 }
 
-#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,2))
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
 
 #if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,0,0) && defined(__WXGTK__))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_SetInstallPrefix[] = { &wxluatype_wxStandardPaths, &wxluatype_TSTRING, NULL };
@@ -502,9 +502,9 @@ wxLuaBindMethod wxStandardPaths_methods[] = {
     { "GetDocumentsDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetDocumentsDir, 1, NULL },
     { "GetExecutablePath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetExecutablePath, 1, NULL },
 
-#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,2))
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
     { "GetFileLayout", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetFileLayout, 1, NULL },
-#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,2))
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
 
 #if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,0,0) && defined(__WXGTK__))
     { "GetInstallPrefix", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_GetInstallPrefix, 1, NULL },
@@ -530,10 +530,10 @@ wxLuaBindMethod wxStandardPaths_methods[] = {
     { "MSWGetShellDir", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxStandardPaths_MSWGetShellDir, 1, NULL },
 #endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,0,0) && defined(__WXMSW__))
 
-#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,2))
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
     { "MakeConfigFileName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_MakeConfigFileName, 1, NULL },
     { "SetFileLayout", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_SetFileLayout, 1, NULL },
-#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,2))
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
 
 #if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,0,0) && defined(__WXGTK__))
     { "SetInstallPrefix", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStandardPaths_SetInstallPrefix, 1, NULL },
@@ -549,10 +549,10 @@ wxLuaBindMethod wxStandardPaths_methods[] = {
 int wxStandardPaths_methodCount = sizeof(wxStandardPaths_methods)/sizeof(wxLuaBindMethod) - 1;
 
 wxLuaBindNumber wxStandardPaths_enums[] = {
-#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,2))
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
         { "ConfigFileConv_Dot", wxStandardPaths::ConfigFileConv_Dot },
         { "ConfigFileConv_Ext", wxStandardPaths::ConfigFileConv_Ext },
-#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,2))
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
 
 #if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,0))
         { "Dir_Desktop", wxStandardPaths::Dir_Desktop },
@@ -563,10 +563,10 @@ wxLuaBindNumber wxStandardPaths_enums[] = {
         { "Dir_Videos", wxStandardPaths::Dir_Videos },
 #endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,0))
 
-#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,2))
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
         { "FileLayout_Classic", wxStandardPaths::FileLayout_Classic },
         { "FileLayout_XDG", wxStandardPaths::FileLayout_XDG },
-#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,2))
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))
 
 #if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths)
         { "ResourceCat_Max", wxStandardPaths::ResourceCat_Max },

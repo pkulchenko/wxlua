@@ -520,7 +520,7 @@ class wxAuiNotebook : public wxControl
     virtual void SetUniformBitmapSize(const wxSize& size);
     virtual void Split(size_t page, int direction);
     %wxchkver_2_8_5 bool ShowWindowMenu(); // Shows the window menu
-    %wxchkver_3_1_2 int GetPageImage(size_t nPage) const;
+    %wxchkver_3_1_1 int GetPageImage(size_t nPage) const;
     %wxchkver_2_8_1 const wxAuiManager& GetAuiManager() const; // %add as it's missing from auibook.h
     %wxchkver_3_0 void AssignImageList(wxImageList *imageList); // %add as it's used by SetPageImage
     %wxchkver_3_0 void SetImageList(wxImageList *imageList); // %add as it's used by SetPageImage
@@ -895,7 +895,7 @@ class %delete wxAuiManager : public wxEvtHandler
     void MaximizePane(wxAuiPaneInfo& pane_info);
     void RestorePane(wxAuiPaneInfo& pane_info);
     void RestoreMaximizedPane();
-    %wxchkver_3_1_2 wxString SavePaneInfo(const wxAuiPaneInfo& pane);
+    %wxchkver_3_1_1 wxString SavePaneInfo(const wxAuiPaneInfo& pane);
     wxString SavePerspective();
     void SetArtProvider(%ungc wxAuiDockArt* art_provider);
     void SetDockSizeConstraint(double width_pct, double height_pct);
@@ -905,7 +905,7 @@ class %delete wxAuiManager : public wxEvtHandler
     void StartPaneDrag(wxWindow* pane_window, const wxPoint& offset);
     void UnInit();
     void Update();
-    !%wxchkver_3_1_2 wxString SavePaneInfo(wxAuiPaneInfo& pane);
+    !%wxchkver_3_1_1 wxString SavePaneInfo(wxAuiPaneInfo& pane);
     void OnPaneButton(wxAuiManagerEvent& evt); // %add as it's missing from framemanager.h
     void OnRender(wxAuiManagerEvent& evt); // %add as it's missing from framemanager.h
 };
@@ -1075,16 +1075,16 @@ class wxAuiMDIChildFrame : public wxPanel
     virtual const wxIcon& GetIcon() const;
     virtual void Activate();
     virtual bool Destroy();
-    %wxchkver_3_1_2 bool Show(bool show = true);
+    %wxchkver_3_1_1 bool Show(bool show = true);
     virtual wxStatusBar* CreateStatusBar(int number = 1, long style = 1, wxWindowID winid = 1, const wxString& name = "");
     virtual wxStatusBar *GetStatusBar() const;
     void SetStatusText(const wxString &text, int number=0);
     void SetStatusWidths(int n, const int widths_field[]);
     wxToolBar* CreateToolBar(long style, wxWindowID winid, const wxString& name);
     virtual wxToolBar *GetToolBar() const;
-    %wxchkver_3_1_2 void Maximize(bool maximize = true);
-    %wxchkver_3_1_2 void Restore();
-    %wxchkver_3_1_2 void Iconize(bool iconize = true);
+    %wxchkver_3_1_1 void Maximize(bool maximize = true);
+    %wxchkver_3_1_1 void Restore();
+    %wxchkver_3_1_1 void Iconize(bool iconize = true);
     virtual bool IsMaximized() const;
     virtual bool IsIconized() const;
     bool ShowFullScreen(bool show, long style);
@@ -1092,8 +1092,8 @@ class wxAuiMDIChildFrame : public wxPanel
     virtual bool IsTopLevel() const;
     void SetMDIParentFrame(wxAuiMDIParentFrame* parent);
     wxAuiMDIParentFrame* GetMDIParentFrame() const;
-    !%wxchkver_3_1_2 void ApplyMDIChildFrameRect();
-    !%wxchkver_3_1_2 void DoShow(bool show);
+    !%wxchkver_3_1_1 void ApplyMDIChildFrameRect();
+    !%wxchkver_3_1_1 void DoShow(bool show);
     //void OnActivate(wxActivateEvent& evt);
     //void OnCloseWindow(wxCloseEvent& evt);
     //void OnMenuHighlight(wxMenuEvent& evt);

@@ -3852,7 +3852,7 @@ wx_dataTypeTable =
     ValueType = "enum",
   },
   wxPenInfo = {
-    Condition = "(wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)",
+    Condition = "(wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)",
     IsNumber = false,
     Name = "wxPenInfo",
     ValueType = "class",
@@ -4649,7 +4649,7 @@ wx_dataTypeTable =
     ValueType = "class",
   },
   ["wxStandardPaths::ConfigFileConv"] = {
-    Condition = "(wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,2))",
+    Condition = "(wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))",
     IsNumber = true,
     Name = "wxStandardPaths::ConfigFileConv",
     ValueType = "enum",
@@ -4661,7 +4661,7 @@ wx_dataTypeTable =
     ValueType = "enum",
   },
   ["wxStandardPaths::FileLayout"] = {
-    Condition = "(wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,2))",
+    Condition = "(wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths) && (wxCHECK_VERSION(3,1,1))",
     IsNumber = true,
     Name = "wxStandardPaths::FileLayout",
     ValueType = "enum",

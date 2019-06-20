@@ -6892,11 +6892,11 @@ static int LUACALL wxLua_wxColour_GetAsString(lua_State *L)
 
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
 
-#if (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)
+#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColour_GetLuminance[] = { &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxColour_GetLuminance(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxColour_GetLuminance[1] = {{ wxLua_wxColour_GetLuminance, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxColour_GetLuminance }};
-//     %wxchkver_3_1_2 double GetLuminance() const;
+//     %wxchkver_3_1_3 double GetLuminance() const;
 static int LUACALL wxLua_wxColour_GetLuminance(lua_State *L)
 {
     // get this
@@ -6909,7 +6909,7 @@ static int LUACALL wxLua_wxColour_GetLuminance(lua_State *L)
     return 1;
 }
 
-#endif // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)
+#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
 
 #if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColour_GetRGB[] = { &wxluatype_wxColour, NULL };
@@ -7446,9 +7446,9 @@ wxLuaBindMethod wxColour_methods[] = {
     { "GetAsString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxColour_GetAsString, 1, NULL },
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
 
-#if (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)
+#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
     { "GetLuminance", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxColour_GetLuminance, 1, NULL },
-#endif // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)
+#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
 
 #if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)
     { "GetRGB", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxColour_GetRGB, 1, NULL },
@@ -7606,7 +7606,7 @@ int wxColourDatabase_methodCount = sizeof(wxColourDatabase_methods)/sizeof(wxLua
 #endif  // wxLUA_USE_wxColourPenBrush
 
 
-#if (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
 // ---------------------------------------------------------------------------
 // Bind class wxPenInfo
 // ---------------------------------------------------------------------------
@@ -7614,7 +7614,7 @@ int wxColourDatabase_methodCount = sizeof(wxColourDatabase_methods)/sizeof(wxLua
 // Lua MetaTable Tag for Class 'wxPenInfo'
 int wxluatype_wxPenInfo = WXLUA_TUNKNOWN;
 
-#if ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPenInfo_Cap[] = { &wxluatype_wxPenInfo, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxPenInfo_Cap(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPenInfo_Cap[1] = {{ wxLua_wxPenInfo_Cap, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPenInfo_Cap }};
@@ -7669,9 +7669,9 @@ static int LUACALL wxLua_wxPenInfo_Join(lua_State *L)
     return 1;
 }
 
-#endif // ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
 
-#if ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPenInfo_Stipple[] = { &wxluatype_wxPenInfo, &wxluatype_wxBitmap, NULL };
 static int LUACALL wxLua_wxPenInfo_Stipple(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPenInfo_Stipple[1] = {{ wxLua_wxPenInfo_Stipple, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPenInfo_Stipple }};
@@ -7690,9 +7690,9 @@ static int LUACALL wxLua_wxPenInfo_Stipple(lua_State *L)
     return 1;
 }
 
-#endif // ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)
 
-#if ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPenInfo_Style[] = { &wxluatype_wxPenInfo, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxPenInfo_Style(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPenInfo_Style[1] = {{ wxLua_wxPenInfo_Style, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPenInfo_Style }};
@@ -7711,7 +7711,7 @@ static int LUACALL wxLua_wxPenInfo_Style(lua_State *L)
     return 1;
 }
 
-#endif // ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPenInfo_Width[] = { &wxluatype_wxPenInfo, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPenInfo_Width(lua_State *L);
@@ -7732,7 +7732,7 @@ static int LUACALL wxLua_wxPenInfo_Width(lua_State *L)
 }
 
 
-#if ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPenInfo_constructor[] = { &wxluatype_wxColour, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxPenInfo_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPenInfo_constructor[1] = {{ wxLua_wxPenInfo_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 3, s_wxluatypeArray_wxLua_wxPenInfo_constructor }};
@@ -7755,7 +7755,7 @@ static int LUACALL wxLua_wxPenInfo_constructor(lua_State *L)
     return 1;
 }
 
-#endif // ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
 
 
 
@@ -7767,32 +7767,32 @@ void wxLua_wxPenInfo_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxPenInfo_methods[] = {
-#if ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
     { "Cap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPenInfo_Cap, 1, NULL },
     { "Colour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPenInfo_Colour, 1, NULL },
     { "Join", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPenInfo_Join, 1, NULL },
-#endif // ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
 
-#if ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)
     { "Stipple", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPenInfo_Stipple, 1, NULL },
-#endif // ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)
 
-#if ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
     { "Style", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPenInfo_Style, 1, NULL },
-#endif // ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
 
     { "Width", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPenInfo_Width, 1, NULL },
 
-#if ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
     { "wxPenInfo", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxPenInfo_constructor, 1, NULL },
-#endif // ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
 
     { 0, 0, 0, 0 },
 };
 
 int wxPenInfo_methodCount = sizeof(wxPenInfo_methods)/sizeof(wxLuaBindMethod) - 1;
 
-#endif  // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)
+#endif  // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
 
 
 #if wxLUA_USE_wxColourPenBrush
@@ -8267,11 +8267,11 @@ static int LUACALL wxLua_wxPen_constructor2(lua_State *L)
 }
 
 
-#if ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPen_constructor1[] = { &wxluatype_wxPenInfo, NULL };
 static int LUACALL wxLua_wxPen_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxPen_constructor1[1] = {{ wxLua_wxPen_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxPen_constructor1 }};
-//     %wxchkver_3_1_2 wxPen(const wxPenInfo& info);
+//     %wxchkver_3_1_1 wxPen(const wxPenInfo& info);
 static int LUACALL wxLua_wxPen_constructor1(lua_State *L)
 {
     // const wxPenInfo info
@@ -8286,7 +8286,7 @@ static int LUACALL wxLua_wxPen_constructor1(lua_State *L)
     return 1;
 }
 
-#endif // ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
 
 static int LUACALL wxLua_wxPen_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxPen_constructor[1] = {{ wxLua_wxPen_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
@@ -8321,7 +8321,7 @@ static int s_wxluafunc_wxLua_wxPen_SetColour_overload_count = sizeof(s_wxluafunc
 
 #endif // ((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush))||(wxLUA_USE_wxColourPenBrush)
 
-#if (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush))||(wxLUA_USE_wxColourPenBrush)||((((defined(__WXMSW__)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxColourPenBrush))||(((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush))
+#if (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush))||(wxLUA_USE_wxColourPenBrush)||((((defined(__WXMSW__)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxColourPenBrush))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPen_constructor_overload[] =
 {
@@ -8336,14 +8336,14 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxPen_constructor_overload[] =
 #endif // (((defined(__WXMSW__)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxColourPenBrush)
     { wxLua_wxPen_constructor2, WXLUAMETHOD_CONSTRUCTOR, 3, 3, s_wxluatypeArray_wxLua_wxPen_constructor2 },
 
-#if ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
     { wxLua_wxPen_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxPen_constructor1 },
-#endif // ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
     { wxLua_wxPen_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
 };
 static int s_wxluafunc_wxLua_wxPen_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxPen_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush))||(wxLUA_USE_wxColourPenBrush)||((((defined(__WXMSW__)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxColourPenBrush))||(((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush))
+#endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush))||(wxLUA_USE_wxColourPenBrush)||((((defined(__WXMSW__)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxColourPenBrush))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush))
 
 void wxLua_wxPen_delete_function(void** p)
 {
@@ -8394,9 +8394,9 @@ wxLuaBindMethod wxPen_methods[] = {
 
     { "op_set", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPen_op_set, 1, NULL },
 
-#if (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush))||(wxLUA_USE_wxColourPenBrush)||((((defined(__WXMSW__)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxColourPenBrush))||(((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush))
+#if (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush))||(wxLUA_USE_wxColourPenBrush)||((((defined(__WXMSW__)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxColourPenBrush))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush))
     { "wxPen", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxPen_constructor_overload, s_wxluafunc_wxLua_wxPen_constructor_overload_count, 0 },
-#endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush))||(wxLUA_USE_wxColourPenBrush)||((((defined(__WXMSW__)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxColourPenBrush))||(((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush))
+#endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush))||(wxLUA_USE_wxColourPenBrush)||((((defined(__WXMSW__)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxColourPenBrush))||(((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush))
 
     { 0, 0, 0, 0 },
 };

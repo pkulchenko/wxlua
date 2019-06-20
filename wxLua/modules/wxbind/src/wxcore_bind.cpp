@@ -5544,11 +5544,11 @@ static wxLuaBindClass* wxluabaseclassbinds_wxXPMHandler[] = { NULL };
     extern void wxLua_wxStaticBoxSizer_delete_function(void** p);
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)
 
-#if (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
     extern wxLuaBindMethod wxPenInfo_methods[];
     extern int wxPenInfo_methodCount;
     extern void wxLua_wxPenInfo_delete_function(void** p);
-#endif // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
 
 #if (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
     extern wxLuaBindMethod wxBitmapButton_methods[];
@@ -7365,9 +7365,9 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
         { wxluaclassname_wxPen, wxPen_methods, wxPen_methodCount, CLASSINFO(wxPen), &wxluatype_wxPen, wxluabaseclassnames_wxPen, wxluabaseclassbinds_wxPen, NULL, NULL, NULL, 0, &wxLua_wxPen_delete_function, }, 
 #endif // wxLUA_USE_wxColourPenBrush
 
-#if (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
         { wxluaclassname_wxPenInfo, wxPenInfo_methods, wxPenInfo_methodCount, NULL, &wxluatype_wxPenInfo, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxPenInfo_delete_function, }, 
-#endif // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
 
 #if (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList)
         { wxluaclassname_wxPenList, wxPenList_methods, wxPenList_methodCount, NULL, &wxluatype_wxPenList, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxPenList_delete_function, }, 

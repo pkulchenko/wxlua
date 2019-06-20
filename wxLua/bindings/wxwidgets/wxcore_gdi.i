@@ -660,7 +660,7 @@ class %delete wxColour : public wxGDIObject
     %wxchkver_3_0_0 void SetRGBA(wxUint32 colRGBA);
     %wxchkver_3_0_0 wxUint32 GetRGB() const;
     %wxchkver_3_0_0 wxUint32 GetRGBA() const;
-    %wxchkver_3_1_2 double GetLuminance() const;
+    %wxchkver_3_1_3 double GetLuminance() const;
     // long GetPixel(); // not well supported and the return type is different to map
     unsigned char Green() const;
     %wxchkver_3_0_0 bool IsOk() const;
@@ -763,7 +763,7 @@ enum
 };
 
 
-#if %wxchkver_3_1_2
+#if %wxchkver_3_1_1
 class wxPenInfo
 {
     wxPenInfo(const wxColour& colour, int width = 1, wxPenStyle style = wxPENSTYLE_SOLID);
@@ -775,7 +775,7 @@ class wxPenInfo
     wxPenInfo& Join(wxPenJoin join);
     wxPenInfo& Cap(wxPenCap cap);
 };
-#endif // %wxchkver_3_1_2
+#endif // %wxchkver_3_1_1
 
 class %delete wxPen : public wxGDIObject
 {
@@ -791,7 +791,7 @@ class %delete wxPen : public wxGDIObject
     %rename wxMEDIUM_GREY_PEN  #define_pointer wxLua_wxMEDIUM_GREY_PEN
     %rename wxLIGHT_GREY_PEN   #define_pointer wxLua_wxLIGHT_GREY_PEN
     wxPen();
-    %wxchkver_3_1_2 wxPen(const wxPenInfo& info);
+    %wxchkver_3_1_1 wxPen(const wxPenInfo& info);
     wxPen(const wxColour& colour, int width, wxPenStyle style);
     %win wxPen(const wxBitmap& stipple, int width);
     wxPen(const wxPen& pen);

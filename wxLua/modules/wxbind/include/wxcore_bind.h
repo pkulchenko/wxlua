@@ -618,9 +618,9 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStaticBoxSizer;
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)
 
-#if (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPenInfo;
-#endif // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxColourPenBrush)
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
 
 #if (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxBitmapButton;

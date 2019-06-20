@@ -143,7 +143,7 @@ enum wxStandardPaths::Dir
 };
 #endif // %wxchkver_3_1_0
 
-#if %wxchkver_3_1_2
+#if %wxchkver_3_1_1
 enum wxStandardPaths::FileLayout
 {
     /**
@@ -166,9 +166,9 @@ enum wxStandardPaths::FileLayout
     */
     FileLayout_XDG
 };
-#endif // %wxchkver_3_1_2
+#endif // %wxchkver_3_1_1
 
-#if %wxchkver_3_1_2
+#if %wxchkver_3_1_1
 enum wxStandardPaths::ConfigFileConv
 {
     /**
@@ -188,7 +188,7 @@ enum wxStandardPaths::ConfigFileConv
      */
     ConfigFileConv_Ext
 };
-#endif // %wxchkver_3_1_2
+#endif // %wxchkver_3_1_1
 
 
 enum wxStandardPaths::ResourceCat
@@ -220,9 +220,9 @@ class wxStandardPaths // ignore wxStandardPathsBase
     %wxchkver_3_0_0 && %win static wxString MSWGetShellDir(int csidl);
     %wxchkver_3_0_0 && %gtk void SetInstallPrefix(const wxString& prefix);
     %wxchkver_3_0_0 void UseAppInfo(int info);
-    %wxchkver_3_1_2 void SetFileLayout(wxStandardPaths::FileLayout layout);
-    %wxchkver_3_1_2 wxStandardPaths::FileLayout GetFileLayout() const;
-    %wxchkver_3_1_2 wxString MakeConfigFileName(const wxString& basename, wxStandardPaths::ConfigFileConv conv = wxStandardPaths::ConfigFileConv_Ext) const;
+    %wxchkver_3_1_1 void SetFileLayout(wxStandardPaths::FileLayout layout);
+    %wxchkver_3_1_1 wxStandardPaths::FileLayout GetFileLayout() const;
+    %wxchkver_3_1_1 wxString MakeConfigFileName(const wxString& basename, wxStandardPaths::ConfigFileConv conv = wxStandardPaths::ConfigFileConv_Ext) const;
     %wxchkver_3_1_0 wxString GetUserDir(wxStandardPaths::Dir userDir) const; // %override parameter type
     wxString GetLocalizedResourcesDir(const wxString& lang, wxStandardPaths::ResourceCat category = wxStandardPaths::ResourceCat_None) const; // %override parameter types
 };
