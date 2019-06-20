@@ -287,7 +287,7 @@ void wxLuaConsole::DisplayStack(const wxLuaState& wxlState)
 void wxlua_RedirectIOToDosConsole(bool alloc_new_if_needed, short max_console_lines)
 {
     int  hConHandle = 0;
-    long lStdHandle = 0;
+    wxIntPtr lStdHandle = 0;
     CONSOLE_SCREEN_BUFFER_INFO coninfo;
     memset(&coninfo, 0, sizeof(CONSOLE_SCREEN_BUFFER_INFO));
     FILE *fp = 0; // we don't close this, let the OS close it when the app exits
@@ -326,20 +326,20 @@ void wxlua_RedirectIOToDosConsole(bool alloc_new_if_needed, short max_console_li
     coninfo.dwSize.Y = (WORD)max_console_lines;
     SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE), coninfo.dwSize);
     // redirect unbuffered STDOUT to the console
-    lStdHandle = (long)GetStdHandle(STD_OUTPUT_HANDLE);
-    hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
+    lStdHandle = (wxIntPtr)GetStdHandle(STD_OUTPUT_HANDLE);
+    hConHandle = _open_osfhandle((intptr_t)lStdHandle, _O_TEXT);
     fp = _fdopen( hConHandle, "w" );
     *stdout = *fp;
     setvbuf( stdout, NULL, _IONBF, 0 );
     // redirect unbuffered STDIN to the console
-    lStdHandle = (long)GetStdHandle(STD_INPUT_HANDLE);
-    hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
+    lStdHandle = (wxIntPtr)GetStdHandle(STD_INPUT_HANDLE);
+    hConHandle = _open_osfhandle((intptr_t)lStdHandle, _O_TEXT);
     fp = _fdopen( hConHandle, "r" );
     *stdin = *fp;
     setvbuf( stdin, NULL, _IONBF, 0 );
     // redirect unbuffered STDERR to the console
-    lStdHandle = (long)GetStdHandle(STD_ERROR_HANDLE);
-    hConHandle = _open_osfhandle(lStdHandle, _O_TEXT);
+    lStdHandle = (wxIntPtr)GetStdHandle(STD_ERROR_HANDLE);
+    hConHandle = _open_osfhandle((intptr_t)lStdHandle, _O_TEXT);
     fp = _fdopen( hConHandle, "w" );
     *stderr = *fp;
     setvbuf( stderr, NULL, _IONBF, 0 );
