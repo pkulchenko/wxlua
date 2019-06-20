@@ -66,7 +66,7 @@ public:
     // If GetFlagBit(WXLUA_DEBUGITEM_KEY_REFED) try to convert GetKey() to a number
     // else if GetFlagBit(WXLUA_DEBUGITEM_VALUE_REFED) try to convert GetValue() to a number
     // Asserts if neither or both of the bits are set.
-    bool     GetRefPtr(long& ptr) const;
+    bool     GetRefPtr(wxUIntPtr& ptr) const;
 
     void     SetFlag(int flag)             { m_flag = flag; }
     void     SetFlagBit(int bit, bool set) { m_flag = WXLUA_SETBIT(m_flag, bit, set); }

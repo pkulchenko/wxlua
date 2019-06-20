@@ -24,6 +24,9 @@ class WXDLLIMPEXP_FWD_CORE wxProgressDialog;
 
 class WXDLLIMPEXP_FWD_WXLUADEBUG wxLuaDebugData;
 
+WX_DECLARE_HASH_MAP_WITH_DECL( wxUIntPtr, wxUIntPtr, wxIntegerHash, wxIntegerEqual,
+                               wxUIntPtrToUIntPtrHashMap, class WXDLLIMPEXP_BASE );
+
 // ----------------------------------------------------------------------------
 // wxWindowIds for the wxLuaStackDialog
 // ----------------------------------------------------------------------------
@@ -245,7 +248,7 @@ public:
     bool m_show_dup_expand_msg;
     int  m_batch_count;
 
-    wxLongToLongHashMap m_expandedItems; // map[long Lua table ptr] = &wxLuaStackListData
+    wxUIntPtrToUIntPtrHashMap m_expandedItems; // map[long Lua table ptr] = &wxLuaStackListData
 
     wxArrayPtrVoid m_listData;    // array of wxLuaStackListData
 

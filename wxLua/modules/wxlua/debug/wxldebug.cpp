@@ -45,7 +45,7 @@ wxLuaDebugItem::wxLuaDebugItem(const wxLuaDebugItem &dataItem)
 {
 }
 
-bool wxLuaDebugItem::GetRefPtr(long& ptr) const
+bool wxLuaDebugItem::GetRefPtr(wxUIntPtr& ptr) const
 {
     bool key_ref = GetFlagBit(WXLUA_DEBUGITEM_KEY_REF);
     bool val_ref = GetFlagBit(WXLUA_DEBUGITEM_VALUE_REF);
@@ -54,7 +54,7 @@ bool wxLuaDebugItem::GetRefPtr(long& ptr) const
     wxCHECK_MSG((key_ref || val_ref), false, wxT("wxLuaDebugItem has neither key or value reference"));
     wxCHECK_MSG(!(key_ref && val_ref), false, wxT("wxLuaDebugItem has both key and value reference"));
 
-    return wxString(key_ref ? m_itemKey: m_itemValue).BeforeFirst(wxT(' ')).ToLong(&ptr, 16);
+    return wxString(key_ref ? m_itemKey: m_itemValue).BeforeFirst(wxT(' ')).ToULongLong((wxULongLong_t*)&ptr, 16);
 }
 
 // ----------------------------------------------------------------------------

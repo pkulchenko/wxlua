@@ -1088,9 +1088,9 @@ bool wxLuaStackDialog::ExpandItem(long lc_item)
         {
             debugItem->SetFlagBit(WXLUA_DEBUGITEM_EXPANDED, true);
 
-            long long_key = 0;
+            wxUIntPtr long_key = 0;
             if (debugItem->GetRefPtr(long_key))
-                m_expandedItems[long_key] = (long)stkListData;
+                m_expandedItems[long_key] = (wxUIntPtr)stkListData;
 
             FillTableEntry(lc_item, stkListData->m_childrenDebugData);
 
@@ -1098,7 +1098,7 @@ bool wxLuaStackDialog::ExpandItem(long lc_item)
         }
         else if (debugItem->GetRef() != LUA_NOREF)
         {
-            long long_key = 0;
+            wxUIntPtr long_key = 0;
             wxCHECK_MSG(debugItem->GetRefPtr(long_key), false, wxT("Invalid table item"));
 
             // Check and block linked tables already shown, select it and return
@@ -1123,7 +1123,7 @@ bool wxLuaStackDialog::ExpandItem(long lc_item)
             {
                 debugItem->SetFlagBit(WXLUA_DEBUGITEM_EXPANDED, true);
 
-                m_expandedItems[long_key] = (long)stkListData;
+                m_expandedItems[long_key] = (wxUIntPtr)stkListData;
 
                 EnumerateTable(debugItem->GetRef(), debugItem->GetIndex() + 1, lc_item);
                 expanded = true;
@@ -1225,7 +1225,7 @@ bool wxLuaStackDialog::CollapseItem(long lc_item)
                 // remove all expanded children items
                 if (debugItem_n->GetFlagBit(WXLUA_DEBUGITEM_EXPANDED))
                 {
-                    long long_key = 0;
+                    wxUIntPtr long_key = 0;
                     if (debugItem_n->GetRefPtr(long_key))
                         m_expandedItems.erase(long_key);
                 }
@@ -1242,7 +1242,7 @@ bool wxLuaStackDialog::CollapseItem(long lc_item)
             m_listData.RemoveAt(lc_item+1, n-lc_item-1);
         }
 
-        long long_key = 0;
+        wxUIntPtr long_key = 0;
         if (debugItem->GetRefPtr(long_key))
             m_expandedItems.erase(long_key);
 
@@ -1283,33 +1283,6 @@ void wxLuaStackDialog::RemoveAllLuaReferences()
     if (!m_wxlState.Ok()) return; // doesn't have to be ok
 
     int i;
-
-/*
-    // try first to remove the refs in the listctrl (sanity check really)
-    // make sure that we reset their data's ref to LUA_NOREF too.
-
-      // Remove the references using the listctrl data itself
-    for (i = 0; i < m_listCtrl->GetItemCount(); ++i)
-    {
-        wxLuaStackListData* stkListData = (wxLuaStackListData*)m_listCtrl->GetItemData(i);
-        wxCHECK_RET(stkListData != NULL, wxT("Invalid wxLuaStack data"));
-        wxLuaDebugItem* debugItem = stkListData->GetDebugItem();
-
-        if (debugItem && (debugItem->GetRef() != LUA_NOREF) &&
-            debugItem->GetFlagBit(WXLUA_DEBUGITEM_LUAREFED))
-        {
-            int lua_ref = debugItem->GetRef();
-            int ok = m_wxlState.wxluaR_Unref(lua_ref);
-            debugItem->SetReference(LUA_NOREF);
-
-            int idx = m_luaReferences.Index(lua_ref);
-            if (idx != wxNOT_FOUND)
-                m_luaReferences.RemoveAt(idx);
-            else
-                wxPrintf(wxT("Missing Lua reference in listctrl #%d ok %d ref %d count %d idx %d\n"), i, ok, debugItem->GetRef(), m_luaReferences.GetCount(), idx);
-        }
-    }
-*/
 
     lua_State* L = m_wxlState.GetLuaState();
 
