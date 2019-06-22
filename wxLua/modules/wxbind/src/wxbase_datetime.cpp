@@ -5730,16 +5730,16 @@ static int LUACALL wxLua_wxLocale_GetSystemLanguage(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_Init1[] = { &wxluatype_wxLocale, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxLocale_Init1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_Init1[1] = {{ wxLua_wxLocale_Init1, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxLocale_Init1 }};
-//     bool Init(int language = wxLANGUAGE_DEFAULT, int flags = wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING);
-static int LUACALL wxLua_wxLocale_Init1(lua_State *L)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_Init2[] = { &wxluatype_wxLocale, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxLocale_Init2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_Init2[1] = {{ wxLua_wxLocale_Init2, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxLocale_Init2 }};
+//     bool Init(int language = wxLANGUAGE_DEFAULT, int flags = wxLOCALE_LOAD_DEFAULT);
+static int LUACALL wxLua_wxLocale_Init2(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // int flags = wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING
-    int flags = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING);
+    // int flags = wxLOCALE_LOAD_DEFAULT
+    int flags = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : wxLOCALE_LOAD_DEFAULT);
     // int language = wxLANGUAGE_DEFAULT
     int language = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : wxLANGUAGE_DEFAULT);
     // get this
@@ -5752,10 +5752,41 @@ static int LUACALL wxLua_wxLocale_Init1(lua_State *L)
     return 1;
 }
 
+
+#if (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_Init1[] = { &wxluatype_wxLocale, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxLocale_Init1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_Init1[1] = {{ wxLua_wxLocale_Init1, WXLUAMETHOD_METHOD, 2, 5, s_wxluatypeArray_wxLua_wxLocale_Init1 }};
+//     %wxchkver_2_8 bool Init(const wxString &szName, const wxString &szShort = "", const wxString &szLocale = "", bool bLoadDefault = true);
+static int LUACALL wxLua_wxLocale_Init1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool bLoadDefault = true
+    bool bLoadDefault = (argCount >= 5 ? wxlua_getbooleantype(L, 5) : true);
+    // const wxString szLocale = ""
+    const wxString szLocale = (argCount >= 4 ? wxlua_getwxStringtype(L, 4) : wxString(wxEmptyString));
+    // const wxString szShort = ""
+    const wxString szShort = (argCount >= 3 ? wxlua_getwxStringtype(L, 3) : wxString(wxEmptyString));
+    // const wxString szName
+    const wxString szName = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxLocale * self = (wxLocale *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLocale);
+    // call Init
+    bool returns = (self->Init(szName, szShort, szLocale, bLoadDefault));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
+
+#if (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_Init[] = { &wxluatype_wxLocale, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxLocale_Init(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_Init[1] = {{ wxLua_wxLocale_Init, WXLUAMETHOD_METHOD, 2, 6, s_wxluatypeArray_wxLua_wxLocale_Init }};
-//     bool Init(const wxString &szName, const wxString &szShort = "", const wxString &szLocale = "", bool bLoadDefault = true, bool bConvertEncoding = false );
+//     !%wxchkver_2_9 || %wxcompat_2_8 bool Init(const wxString &szName, const wxString &szShort = "", const wxString &szLocale = "", bool bLoadDefault = true, bool bConvertEncoding = false);
 static int LUACALL wxLua_wxLocale_Init(lua_State *L)
 {
     // get number of arguments
@@ -5780,6 +5811,7 @@ static int LUACALL wxLua_wxLocale_Init(lua_State *L)
     return 1;
 }
 
+#endif // (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL)
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_IsAvailable[] = { &wxluatype_TNUMBER, NULL };
@@ -5837,16 +5869,16 @@ static int LUACALL wxLua_wxLocale_IsOk(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_delete[] = { &wxluatype_wxLocale, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxLocale_delete }};
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_constructor2[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxLocale_constructor2(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_constructor2[1] = {{ wxLua_wxLocale_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxLocale_constructor2 }};
-//     wxLocale(int language, int flags = wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING );
-static int LUACALL wxLua_wxLocale_constructor2(lua_State *L)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_constructor3[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxLocale_constructor3(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_constructor3[1] = {{ wxLua_wxLocale_constructor3, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxLocale_constructor3 }};
+//     wxLocale(int language, int flags = wxLOCALE_LOAD_DEFAULT);
+static int LUACALL wxLua_wxLocale_constructor3(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // int flags = wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING
-    int flags = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING);
+    // int flags = wxLOCALE_LOAD_DEFAULT
+    int flags = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : wxLOCALE_LOAD_DEFAULT);
     // int language
     int language = (int)wxlua_getnumbertype(L, 1);
     // call constructor
@@ -5859,10 +5891,41 @@ static int LUACALL wxLua_wxLocale_constructor2(lua_State *L)
     return 1;
 }
 
+
+#if ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)) && (wxUSE_INTL)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_constructor2[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxLocale_constructor2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_constructor2[1] = {{ wxLua_wxLocale_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 4, s_wxluatypeArray_wxLua_wxLocale_constructor2 }};
+//     %wxchkver_2_8 wxLocale(const wxString& szName, const wxString& szShort = "", const wxString& szLocale = "", bool bLoadDefault = true);
+static int LUACALL wxLua_wxLocale_constructor2(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool bLoadDefault = true
+    bool bLoadDefault = (argCount >= 4 ? wxlua_getbooleantype(L, 4) : true);
+    // const wxString szLocale = ""
+    const wxString szLocale = (argCount >= 3 ? wxlua_getwxStringtype(L, 3) : wxString(wxEmptyString));
+    // const wxString szShort = ""
+    const wxString szShort = (argCount >= 2 ? wxlua_getwxStringtype(L, 2) : wxString(wxEmptyString));
+    // const wxString szName
+    const wxString szName = wxlua_getwxStringtype(L, 1);
+    // call constructor
+    wxLocale* returns = new wxLocale(szName, szShort, szLocale, bLoadDefault);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxLocale);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxLocale);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)) && (wxUSE_INTL)
+
+#if ((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL)) && (wxUSE_INTL)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLocale_constructor1[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxLocale_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_constructor1[1] = {{ wxLua_wxLocale_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 5, s_wxluatypeArray_wxLua_wxLocale_constructor1 }};
-//     wxLocale(const wxString& szName, const wxString& szShort = "", const wxString& szLocale = "", bool bLoadDefault = true, bool bConvertEncoding = false );
+//     !%wxchkver_2_9 || %wxcompat_2_8 wxLocale(const wxString& szName, const wxString& szShort = "", const wxString& szLocale = "", bool bLoadDefault = true, bool bConvertEncoding = false);
 static int LUACALL wxLua_wxLocale_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -5886,6 +5949,8 @@ static int LUACALL wxLua_wxLocale_constructor1(lua_State *L)
 
     return 1;
 }
+
+#endif // ((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL)) && (wxUSE_INTL)
 
 static int LUACALL wxLua_wxLocale_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_constructor[1] = {{ wxLua_wxLocale_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
@@ -5941,25 +6006,42 @@ static int s_wxluafunc_wxLua_wxLocale_GetString_overload_count = sizeof(s_wxluaf
 
 #endif // ((!wxCHECK_VERSION(2,9,0)) && (wxUSE_INTL))||((wxCHECK_VERSION(2,9,0)) && (wxUSE_INTL))
 
-#if (wxUSE_INTL)
+#if (wxUSE_INTL)||((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))||((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_Init_overload[] =
 {
-    { wxLua_wxLocale_Init1, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxLocale_Init1 },
+    { wxLua_wxLocale_Init2, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxLocale_Init2 },
+
+#if (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
+    { wxLua_wxLocale_Init1, WXLUAMETHOD_METHOD, 2, 5, s_wxluatypeArray_wxLua_wxLocale_Init1 },
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
+
+#if (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL)
     { wxLua_wxLocale_Init, WXLUAMETHOD_METHOD, 2, 6, s_wxluatypeArray_wxLua_wxLocale_Init },
+#endif // (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL)
 };
 static int s_wxluafunc_wxLua_wxLocale_Init_overload_count = sizeof(s_wxluafunc_wxLua_wxLocale_Init_overload)/sizeof(wxLuaBindCFunc);
 
+#endif // (wxUSE_INTL)||((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))||((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL))
+
+#if (wxUSE_INTL)||(((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)) && (wxUSE_INTL))||(((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL)) && (wxUSE_INTL))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLocale_constructor_overload[] =
 {
-    { wxLua_wxLocale_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxLocale_constructor2 },
+    { wxLua_wxLocale_constructor3, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxLocale_constructor3 },
+
+#if ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)) && (wxUSE_INTL)
+    { wxLua_wxLocale_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 4, s_wxluatypeArray_wxLua_wxLocale_constructor2 },
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)) && (wxUSE_INTL)
+
+#if ((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL)) && (wxUSE_INTL)
     { wxLua_wxLocale_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 5, s_wxluatypeArray_wxLua_wxLocale_constructor1 },
+#endif // ((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL)) && (wxUSE_INTL)
     { wxLua_wxLocale_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
 };
 static int s_wxluafunc_wxLua_wxLocale_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxLocale_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (wxUSE_INTL)
+#endif // (wxUSE_INTL)||(((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)) && (wxUSE_INTL))||(((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL)) && (wxUSE_INTL))
 
 void wxLua_wxLocale_delete_function(void** p)
 {
@@ -5994,9 +6076,9 @@ wxLuaBindMethod wxLocale_methods[] = {
     { "GetSystemEncodingName", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxLocale_GetSystemEncodingName, 1, NULL },
     { "GetSystemLanguage", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxLocale_GetSystemLanguage, 1, NULL },
 
-#if (wxUSE_INTL)
+#if (wxUSE_INTL)||((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))||((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL))
     { "Init", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLocale_Init_overload, s_wxluafunc_wxLua_wxLocale_Init_overload_count, 0 },
-#endif // (wxUSE_INTL)
+#endif // (wxUSE_INTL)||((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))||((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL))
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)
     { "IsAvailable", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxLocale_IsAvailable, 1, NULL },
@@ -6006,9 +6088,9 @@ wxLuaBindMethod wxLocale_methods[] = {
     { "IsOk", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLocale_IsOk, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxLocale_delete, 1, NULL },
 
-#if (wxUSE_INTL)
+#if (wxUSE_INTL)||(((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)) && (wxUSE_INTL))||(((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL)) && (wxUSE_INTL))
     { "wxLocale", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxLocale_constructor_overload, s_wxluafunc_wxLua_wxLocale_constructor_overload_count, 0 },
-#endif // (wxUSE_INTL)
+#endif // (wxUSE_INTL)||(((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)) && (wxUSE_INTL))||(((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL)) && (wxUSE_INTL))
 
     { 0, 0, 0, 0 },
 };

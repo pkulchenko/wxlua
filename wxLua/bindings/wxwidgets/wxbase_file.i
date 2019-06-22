@@ -39,7 +39,7 @@ bool wxIsWild(const wxString& pattern);
 bool wxMatchWild(const wxString& pattern, const wxString& text, bool dot_special);
 bool wxMkdir(const wxString& dir, int perm = 0777);
 //int wxParseCommonDialogsFilter(const wxString& wildCard, wxArrayString& descriptions, wxArrayString& filters);
-%wxchkver_2_8  wxString wxRealPath(const wxString& path);
+!%wxchkver_2_9 || %wxcompat_2_8 wxString wxRealPath(const wxString& path);
 bool wxRemoveFile(const wxString& file);
 !%wxchkver_2_8 bool wxRenameFile(const wxString& file1, const wxString& file2);
 %wxchkver_2_8  bool wxRenameFile(const wxString& file1, const wxString& file2, bool overwrite = true);

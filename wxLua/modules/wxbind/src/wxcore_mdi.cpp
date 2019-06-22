@@ -1410,7 +1410,7 @@ static int LUACALL wxLua_wxDocManager_GetDocuments(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocManager_GetFileHistory[] = { &wxluatype_wxDocManager, NULL };
 static int LUACALL wxLua_wxDocManager_GetFileHistory(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocManager_GetFileHistory[1] = {{ wxLua_wxDocManager_GetFileHistory, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocManager_GetFileHistory }};
-//     wxFileHistory * GetFileHistory( );
+//     wxFileHistory * GetFileHistory();
 static int LUACALL wxLua_wxDocManager_GetFileHistory(lua_State *L)
 {
     // get this
@@ -1463,7 +1463,7 @@ static int LUACALL wxLua_wxDocManager_GetLastDirectory(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocManager_GetMaxDocsOpen[] = { &wxluatype_wxDocManager, NULL };
 static int LUACALL wxLua_wxDocManager_GetMaxDocsOpen(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocManager_GetMaxDocsOpen[1] = {{ wxLua_wxDocManager_GetMaxDocsOpen, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocManager_GetMaxDocsOpen }};
-//     int GetMaxDocsOpen( );
+//     int GetMaxDocsOpen();
 static int LUACALL wxLua_wxDocManager_GetMaxDocsOpen(lua_State *L)
 {
     // get this
@@ -1481,7 +1481,7 @@ static int LUACALL wxLua_wxDocManager_GetMaxDocsOpen(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocManager_GetNoHistoryFiles[] = { &wxluatype_wxDocManager, NULL };
 static int LUACALL wxLua_wxDocManager_GetNoHistoryFiles(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocManager_GetNoHistoryFiles[1] = {{ wxLua_wxDocManager_GetNoHistoryFiles, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocManager_GetNoHistoryFiles }};
-//     !%wxchkver_2_6 int GetNoHistoryFiles( );
+//     !%wxchkver_2_6 int GetNoHistoryFiles();
 static int LUACALL wxLua_wxDocManager_GetNoHistoryFiles(lua_State *L)
 {
     // get this
@@ -1521,7 +1521,7 @@ static int LUACALL wxLua_wxDocManager_GetTemplates(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocManager_Initialize[] = { &wxluatype_wxDocManager, NULL };
 static int LUACALL wxLua_wxDocManager_Initialize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocManager_Initialize[1] = {{ wxLua_wxDocManager_Initialize, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocManager_Initialize }};
-//     bool Initialize( );
+//     bool Initialize();
 static int LUACALL wxLua_wxDocManager_Initialize(lua_State *L)
 {
     // get this
@@ -1534,6 +1534,8 @@ static int LUACALL wxLua_wxDocManager_Initialize(lua_State *L)
     return 1;
 }
 
+
+#if (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_MDI && wxUSE_MDI && wxUSE_DOC_VIEW_ARCHITECTURE)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocManager_MakeDefaultName[] = { &wxluatype_wxDocManager, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDocManager_MakeDefaultName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocManager_MakeDefaultName[1] = {{ wxLua_wxDocManager_MakeDefaultName, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocManager_MakeDefaultName }};
@@ -1555,12 +1557,13 @@ static int LUACALL wxLua_wxDocManager_MakeDefaultName(lua_State *L)
 }
 
 
+#endif // (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_MDI && wxUSE_MDI && wxUSE_DOC_VIEW_ARCHITECTURE)
 
 #if (wxLUA_USE_MDI && wxUSE_MDI && wxUSE_DOC_VIEW_ARCHITECTURE) && (wxLUA_USE_wxFileHistory && wxUSE_DOC_VIEW_ARCHITECTURE)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocManager_OnCreateFileHistory[] = { &wxluatype_wxDocManager, NULL };
 static int LUACALL wxLua_wxDocManager_OnCreateFileHistory(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocManager_OnCreateFileHistory[1] = {{ wxLua_wxDocManager_OnCreateFileHistory, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocManager_OnCreateFileHistory }};
-//     wxFileHistory* OnCreateFileHistory( );
+//     wxFileHistory* OnCreateFileHistory();
 static int LUACALL wxLua_wxDocManager_OnCreateFileHistory(lua_State *L)
 {
     // get this
@@ -1578,7 +1581,7 @@ static int LUACALL wxLua_wxDocManager_OnCreateFileHistory(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocManager_OnFileClose[] = { &wxluatype_wxDocManager, &wxluatype_wxCommandEvent, NULL };
 static int LUACALL wxLua_wxDocManager_OnFileClose(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocManager_OnFileClose[1] = {{ wxLua_wxDocManager_OnFileClose, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocManager_OnFileClose }};
-//     void OnFileClose(wxCommandEvent &event );
+//     void OnFileClose(wxCommandEvent &event);
 static int LUACALL wxLua_wxDocManager_OnFileClose(lua_State *L)
 {
     // wxCommandEvent event
@@ -1594,7 +1597,7 @@ static int LUACALL wxLua_wxDocManager_OnFileClose(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocManager_OnFileCloseAll[] = { &wxluatype_wxDocManager, &wxluatype_wxCommandEvent, NULL };
 static int LUACALL wxLua_wxDocManager_OnFileCloseAll(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocManager_OnFileCloseAll[1] = {{ wxLua_wxDocManager_OnFileCloseAll, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocManager_OnFileCloseAll }};
-//     void OnFileCloseAll(wxCommandEvent& event );
+//     void OnFileCloseAll(wxCommandEvent& event);
 static int LUACALL wxLua_wxDocManager_OnFileCloseAll(lua_State *L)
 {
     // wxCommandEvent event
@@ -1610,7 +1613,7 @@ static int LUACALL wxLua_wxDocManager_OnFileCloseAll(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocManager_OnFileNew[] = { &wxluatype_wxDocManager, &wxluatype_wxCommandEvent, NULL };
 static int LUACALL wxLua_wxDocManager_OnFileNew(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocManager_OnFileNew[1] = {{ wxLua_wxDocManager_OnFileNew, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocManager_OnFileNew }};
-//     void OnFileNew(wxCommandEvent &event );
+//     void OnFileNew(wxCommandEvent &event);
 static int LUACALL wxLua_wxDocManager_OnFileNew(lua_State *L)
 {
     // wxCommandEvent event
@@ -1626,7 +1629,7 @@ static int LUACALL wxLua_wxDocManager_OnFileNew(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocManager_OnFileOpen[] = { &wxluatype_wxDocManager, &wxluatype_wxCommandEvent, NULL };
 static int LUACALL wxLua_wxDocManager_OnFileOpen(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocManager_OnFileOpen[1] = {{ wxLua_wxDocManager_OnFileOpen, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocManager_OnFileOpen }};
-//     void OnFileOpen(wxCommandEvent &event );
+//     void OnFileOpen(wxCommandEvent &event);
 static int LUACALL wxLua_wxDocManager_OnFileOpen(lua_State *L)
 {
     // wxCommandEvent event
@@ -1642,7 +1645,7 @@ static int LUACALL wxLua_wxDocManager_OnFileOpen(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocManager_OnFileRevert[] = { &wxluatype_wxDocManager, &wxluatype_wxCommandEvent, NULL };
 static int LUACALL wxLua_wxDocManager_OnFileRevert(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocManager_OnFileRevert[1] = {{ wxLua_wxDocManager_OnFileRevert, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocManager_OnFileRevert }};
-//     void OnFileRevert(wxCommandEvent& event );
+//     void OnFileRevert(wxCommandEvent& event);
 static int LUACALL wxLua_wxDocManager_OnFileRevert(lua_State *L)
 {
     // wxCommandEvent event
@@ -1658,7 +1661,7 @@ static int LUACALL wxLua_wxDocManager_OnFileRevert(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocManager_OnFileSave[] = { &wxluatype_wxDocManager, &wxluatype_wxCommandEvent, NULL };
 static int LUACALL wxLua_wxDocManager_OnFileSave(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocManager_OnFileSave[1] = {{ wxLua_wxDocManager_OnFileSave, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocManager_OnFileSave }};
-//     void OnFileSave(wxCommandEvent &event );
+//     void OnFileSave(wxCommandEvent &event);
 static int LUACALL wxLua_wxDocManager_OnFileSave(lua_State *L)
 {
     // wxCommandEvent event
@@ -1674,7 +1677,7 @@ static int LUACALL wxLua_wxDocManager_OnFileSave(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocManager_OnFileSaveAs[] = { &wxluatype_wxDocManager, &wxluatype_wxCommandEvent, NULL };
 static int LUACALL wxLua_wxDocManager_OnFileSaveAs(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocManager_OnFileSaveAs[1] = {{ wxLua_wxDocManager_OnFileSaveAs, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocManager_OnFileSaveAs }};
-//     void OnFileSaveAs(wxCommandEvent &event );
+//     void OnFileSaveAs(wxCommandEvent &event);
 static int LUACALL wxLua_wxDocManager_OnFileSaveAs(lua_State *L)
 {
     // wxCommandEvent event
@@ -1690,7 +1693,7 @@ static int LUACALL wxLua_wxDocManager_OnFileSaveAs(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocManager_RemoveDocument[] = { &wxluatype_wxDocManager, &wxluatype_wxDocument, NULL };
 static int LUACALL wxLua_wxDocManager_RemoveDocument(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocManager_RemoveDocument[1] = {{ wxLua_wxDocManager_RemoveDocument, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocManager_RemoveDocument }};
-//     void RemoveDocument(wxDocument *doc );
+//     void RemoveDocument(wxDocument *doc);
 static int LUACALL wxLua_wxDocManager_RemoveDocument(lua_State *L)
 {
     // wxDocument doc
@@ -1706,7 +1709,7 @@ static int LUACALL wxLua_wxDocManager_RemoveDocument(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocManager_SetLastDirectory[] = { &wxluatype_wxDocManager, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDocManager_SetLastDirectory(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocManager_SetLastDirectory[1] = {{ wxLua_wxDocManager_SetLastDirectory, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocManager_SetLastDirectory }};
-//     void SetLastDirectory(const wxString& dir );
+//     void SetLastDirectory(const wxString& dir);
 static int LUACALL wxLua_wxDocManager_SetLastDirectory(lua_State *L)
 {
     // const wxString dir
@@ -1722,7 +1725,7 @@ static int LUACALL wxLua_wxDocManager_SetLastDirectory(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocManager_SetMaxDocsOpen[] = { &wxluatype_wxDocManager, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDocManager_SetMaxDocsOpen(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocManager_SetMaxDocsOpen[1] = {{ wxLua_wxDocManager_SetMaxDocsOpen, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocManager_SetMaxDocsOpen }};
-//     void SetMaxDocsOpen(int n );
+//     void SetMaxDocsOpen(int n);
 static int LUACALL wxLua_wxDocManager_SetMaxDocsOpen(lua_State *L)
 {
     // int n
@@ -1738,15 +1741,15 @@ static int LUACALL wxLua_wxDocManager_SetMaxDocsOpen(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocManager_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxDocManager_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocManager_constructor[1] = {{ wxLua_wxDocManager_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxDocManager_constructor }};
-//     wxDocManager(long flags = wxDEFAULT_DOCMAN_FLAGS, bool initialize = true );
+//     wxDocManager(long flags = 0, bool initialize = true);
 static int LUACALL wxLua_wxDocManager_constructor(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
     // bool initialize = true
     bool initialize = (argCount >= 2 ? wxlua_getbooleantype(L, 2) : true);
-    // long flags = wxDEFAULT_DOCMAN_FLAGS
-    long flags = (argCount >= 1 ? (long)wxlua_getnumbertype(L, 1) : wxDEFAULT_DOCMAN_FLAGS);
+    // long flags = 0
+    long flags = (argCount >= 1 ? (long)wxlua_getnumbertype(L, 1) : 0);
     // call constructor
     wxDocManager* returns = new wxDocManager(flags, initialize);
     // push the constructed class pointer
@@ -1857,7 +1860,10 @@ wxLuaBindMethod wxDocManager_methods[] = {
 #endif // (wxLUA_USE_MDI && wxUSE_MDI && wxUSE_DOC_VIEW_ARCHITECTURE) && (wxLUA_USE_wxList && !wxUSE_STL)
 
     { "Initialize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDocManager_Initialize, 1, NULL },
+
+#if (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_MDI && wxUSE_MDI && wxUSE_DOC_VIEW_ARCHITECTURE)
     { "MakeDefaultName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDocManager_MakeDefaultName, 1, NULL },
+#endif // (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_MDI && wxUSE_MDI && wxUSE_DOC_VIEW_ARCHITECTURE)
 
 #if (wxLUA_USE_MDI && wxUSE_MDI && wxUSE_DOC_VIEW_ARCHITECTURE) && (wxLUA_USE_wxFileHistory && wxUSE_DOC_VIEW_ARCHITECTURE)
     { "OnCreateFileHistory", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDocManager_OnCreateFileHistory, 1, NULL },
@@ -2358,7 +2364,7 @@ int wxluatype_wxDocument = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_AddView[] = { &wxluatype_wxDocument, &wxluatype_wxView, NULL };
 static int LUACALL wxLua_wxDocument_AddView(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_AddView[1] = {{ wxLua_wxDocument_AddView, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocument_AddView }};
-//     virtual bool AddView(wxView *view );
+//     virtual bool AddView(wxView *view);
 static int LUACALL wxLua_wxDocument_AddView(lua_State *L)
 {
     // wxView view
@@ -2376,7 +2382,7 @@ static int LUACALL wxLua_wxDocument_AddView(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_Close[] = { &wxluatype_wxDocument, NULL };
 static int LUACALL wxLua_wxDocument_Close(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_Close[1] = {{ wxLua_wxDocument_Close, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocument_Close }};
-//     virtual bool Close( );
+//     virtual bool Close();
 static int LUACALL wxLua_wxDocument_Close(lua_State *L)
 {
     // get this
@@ -2392,7 +2398,7 @@ static int LUACALL wxLua_wxDocument_Close(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_DeleteAllViews[] = { &wxluatype_wxDocument, NULL };
 static int LUACALL wxLua_wxDocument_DeleteAllViews(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_DeleteAllViews[1] = {{ wxLua_wxDocument_DeleteAllViews, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocument_DeleteAllViews }};
-//     virtual bool DeleteAllViews( );
+//     virtual bool DeleteAllViews();
 static int LUACALL wxLua_wxDocument_DeleteAllViews(lua_State *L)
 {
     // get this
@@ -2508,7 +2514,7 @@ static int LUACALL wxLua_wxDocument_GetFilename(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_GetFirstView[] = { &wxluatype_wxDocument, NULL };
 static int LUACALL wxLua_wxDocument_GetFirstView(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_GetFirstView[1] = {{ wxLua_wxDocument_GetFirstView, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocument_GetFirstView }};
-//     wxView * GetFirstView() const;
+//     wxView* GetFirstView() const;
 static int LUACALL wxLua_wxDocument_GetFirstView(lua_State *L)
 {
     // get this
@@ -2521,6 +2527,8 @@ static int LUACALL wxLua_wxDocument_GetFirstView(lua_State *L)
     return 1;
 }
 
+
+#if (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_MDI && wxUSE_MDI && wxUSE_DOC_VIEW_ARCHITECTURE)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_GetPrintableName[] = { &wxluatype_wxDocument, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDocument_GetPrintableName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_GetPrintableName[1] = {{ wxLua_wxDocument_GetPrintableName, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocument_GetPrintableName }};
@@ -2540,6 +2548,8 @@ static int LUACALL wxLua_wxDocument_GetPrintableName(lua_State *L)
 }
 
 
+#endif // (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_MDI && wxUSE_MDI && wxUSE_DOC_VIEW_ARCHITECTURE)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_GetTitle[] = { &wxluatype_wxDocument, NULL };
 static int LUACALL wxLua_wxDocument_GetTitle(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_GetTitle[1] = {{ wxLua_wxDocument_GetTitle, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocument_GetTitle }};
@@ -2550,6 +2560,22 @@ static int LUACALL wxLua_wxDocument_GetTitle(lua_State *L)
     wxDocument * self = (wxDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDocument);
     // call GetTitle
     wxString returns = (self->GetTitle());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_GetUserReadableName[] = { &wxluatype_wxDocument, NULL };
+static int LUACALL wxLua_wxDocument_GetUserReadableName(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_GetUserReadableName[1] = {{ wxLua_wxDocument_GetUserReadableName, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocument_GetUserReadableName }};
+//     virtual wxString GetUserReadableName() const;
+static int LUACALL wxLua_wxDocument_GetUserReadableName(lua_State *L)
+{
+    // get this
+    wxDocument * self = (wxDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDocument);
+    // call GetUserReadableName
+    wxString returns = (self->GetUserReadableName());
     // push the result string
     wxlua_pushwxString(L, returns);
 
@@ -2579,6 +2605,22 @@ static int LUACALL wxLua_wxDocument_GetViews(lua_State *L)
 
 #endif // (wxLUA_USE_MDI && wxUSE_MDI && wxUSE_DOC_VIEW_ARCHITECTURE) && (wxLUA_USE_wxList && !wxUSE_STL)
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_IsChildDocument[] = { &wxluatype_wxDocument, NULL };
+static int LUACALL wxLua_wxDocument_IsChildDocument(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_IsChildDocument[1] = {{ wxLua_wxDocument_IsChildDocument, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocument_IsChildDocument }};
+//     bool IsChildDocument() const;
+static int LUACALL wxLua_wxDocument_IsChildDocument(lua_State *L)
+{
+    // get this
+    wxDocument * self = (wxDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDocument);
+    // call IsChildDocument
+    bool returns = (self->IsChildDocument());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_IsModified[] = { &wxluatype_wxDocument, NULL };
 static int LUACALL wxLua_wxDocument_IsModified(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_IsModified[1] = {{ wxLua_wxDocument_IsModified, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocument_IsModified }};
@@ -2598,7 +2640,7 @@ static int LUACALL wxLua_wxDocument_IsModified(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_Modify[] = { &wxluatype_wxDocument, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxDocument_Modify(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_Modify[1] = {{ wxLua_wxDocument_Modify, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocument_Modify }};
-//     virtual void Modify(bool modify );
+//     virtual void Modify(bool modify);
 static int LUACALL wxLua_wxDocument_Modify(lua_State *L)
 {
     // bool modify
@@ -2614,7 +2656,7 @@ static int LUACALL wxLua_wxDocument_Modify(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_OnChangedViewList[] = { &wxluatype_wxDocument, NULL };
 static int LUACALL wxLua_wxDocument_OnChangedViewList(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_OnChangedViewList[1] = {{ wxLua_wxDocument_OnChangedViewList, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocument_OnChangedViewList }};
-//     virtual void OnChangedViewList( );
+//     virtual void OnChangedViewList();
 static int LUACALL wxLua_wxDocument_OnChangedViewList(lua_State *L)
 {
     // get this
@@ -2628,7 +2670,7 @@ static int LUACALL wxLua_wxDocument_OnChangedViewList(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_OnCloseDocument[] = { &wxluatype_wxDocument, NULL };
 static int LUACALL wxLua_wxDocument_OnCloseDocument(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_OnCloseDocument[1] = {{ wxLua_wxDocument_OnCloseDocument, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocument_OnCloseDocument }};
-//     virtual bool OnCloseDocument( );
+//     virtual bool OnCloseDocument();
 static int LUACALL wxLua_wxDocument_OnCloseDocument(lua_State *L)
 {
     // get this
@@ -2644,7 +2686,7 @@ static int LUACALL wxLua_wxDocument_OnCloseDocument(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_OnCreate[] = { &wxluatype_wxDocument, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDocument_OnCreate(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_OnCreate[1] = {{ wxLua_wxDocument_OnCreate, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxDocument_OnCreate }};
-//     virtual bool OnCreate(const wxString& path, long flags );
+//     virtual bool OnCreate(const wxString& path, long flags);
 static int LUACALL wxLua_wxDocument_OnCreate(lua_State *L)
 {
     // long flags
@@ -2666,7 +2708,7 @@ static int LUACALL wxLua_wxDocument_OnCreate(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_OnCreateCommandProcessor[] = { &wxluatype_wxDocument, NULL };
 static int LUACALL wxLua_wxDocument_OnCreateCommandProcessor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_OnCreateCommandProcessor[1] = {{ wxLua_wxDocument_OnCreateCommandProcessor, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocument_OnCreateCommandProcessor }};
-//     virtual wxCommandProcessor* OnCreateCommandProcessor( );
+//     virtual wxCommandProcessor* OnCreateCommandProcessor();
 static int LUACALL wxLua_wxDocument_OnCreateCommandProcessor(lua_State *L)
 {
     // get this
@@ -2684,7 +2726,7 @@ static int LUACALL wxLua_wxDocument_OnCreateCommandProcessor(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_OnNewDocument[] = { &wxluatype_wxDocument, NULL };
 static int LUACALL wxLua_wxDocument_OnNewDocument(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_OnNewDocument[1] = {{ wxLua_wxDocument_OnNewDocument, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocument_OnNewDocument }};
-//     virtual bool OnNewDocument( );
+//     virtual bool OnNewDocument();
 static int LUACALL wxLua_wxDocument_OnNewDocument(lua_State *L)
 {
     // get this
@@ -2700,7 +2742,7 @@ static int LUACALL wxLua_wxDocument_OnNewDocument(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_OnOpenDocument[] = { &wxluatype_wxDocument, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDocument_OnOpenDocument(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_OnOpenDocument[1] = {{ wxLua_wxDocument_OnOpenDocument, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocument_OnOpenDocument }};
-//     virtual bool OnOpenDocument(const wxString& filename );
+//     virtual bool OnOpenDocument(const wxString& filename);
 static int LUACALL wxLua_wxDocument_OnOpenDocument(lua_State *L)
 {
     // const wxString filename
@@ -2718,7 +2760,7 @@ static int LUACALL wxLua_wxDocument_OnOpenDocument(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_OnSaveDocument[] = { &wxluatype_wxDocument, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDocument_OnSaveDocument(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_OnSaveDocument[1] = {{ wxLua_wxDocument_OnSaveDocument, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocument_OnSaveDocument }};
-//     virtual bool OnSaveDocument(const wxString& filename );
+//     virtual bool OnSaveDocument(const wxString& filename);
 static int LUACALL wxLua_wxDocument_OnSaveDocument(lua_State *L)
 {
     // const wxString filename
@@ -2736,7 +2778,7 @@ static int LUACALL wxLua_wxDocument_OnSaveDocument(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_OnSaveModified[] = { &wxluatype_wxDocument, NULL };
 static int LUACALL wxLua_wxDocument_OnSaveModified(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_OnSaveModified[1] = {{ wxLua_wxDocument_OnSaveModified, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocument_OnSaveModified }};
-//     virtual bool OnSaveModified( );
+//     virtual bool OnSaveModified();
 static int LUACALL wxLua_wxDocument_OnSaveModified(lua_State *L)
 {
     // get this
@@ -2752,7 +2794,7 @@ static int LUACALL wxLua_wxDocument_OnSaveModified(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_RemoveView[] = { &wxluatype_wxDocument, &wxluatype_wxView, NULL };
 static int LUACALL wxLua_wxDocument_RemoveView(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_RemoveView[1] = {{ wxLua_wxDocument_RemoveView, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocument_RemoveView }};
-//     virtual bool RemoveView(wxView* view );
+//     virtual bool RemoveView(wxView* view);
 static int LUACALL wxLua_wxDocument_RemoveView(lua_State *L)
 {
     // wxView view
@@ -2770,7 +2812,7 @@ static int LUACALL wxLua_wxDocument_RemoveView(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_Save[] = { &wxluatype_wxDocument, NULL };
 static int LUACALL wxLua_wxDocument_Save(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_Save[1] = {{ wxLua_wxDocument_Save, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocument_Save }};
-//     virtual bool Save( );
+//     virtual bool Save();
 static int LUACALL wxLua_wxDocument_Save(lua_State *L)
 {
     // get this
@@ -2786,7 +2828,7 @@ static int LUACALL wxLua_wxDocument_Save(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_SaveAs[] = { &wxluatype_wxDocument, NULL };
 static int LUACALL wxLua_wxDocument_SaveAs(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_SaveAs[1] = {{ wxLua_wxDocument_SaveAs, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDocument_SaveAs }};
-//     virtual bool SaveAs( );
+//     virtual bool SaveAs();
 static int LUACALL wxLua_wxDocument_SaveAs(lua_State *L)
 {
     // get this
@@ -2804,7 +2846,7 @@ static int LUACALL wxLua_wxDocument_SaveAs(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_SetCommandProcessor[] = { &wxluatype_wxDocument, &wxluatype_wxCommandProcessor, NULL };
 static int LUACALL wxLua_wxDocument_SetCommandProcessor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_SetCommandProcessor[1] = {{ wxLua_wxDocument_SetCommandProcessor, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocument_SetCommandProcessor }};
-//     virtual void SetCommandProcessor(wxCommandProcessor *processor );
+//     virtual void SetCommandProcessor(wxCommandProcessor *processor);
 static int LUACALL wxLua_wxDocument_SetCommandProcessor(lua_State *L)
 {
     // wxCommandProcessor processor
@@ -2822,7 +2864,7 @@ static int LUACALL wxLua_wxDocument_SetCommandProcessor(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_SetDocumentName[] = { &wxluatype_wxDocument, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDocument_SetDocumentName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_SetDocumentName[1] = {{ wxLua_wxDocument_SetDocumentName, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocument_SetDocumentName }};
-//     void SetDocumentName(const wxString& name );
+//     void SetDocumentName(const wxString& name);
 static int LUACALL wxLua_wxDocument_SetDocumentName(lua_State *L)
 {
     // const wxString name
@@ -2838,7 +2880,7 @@ static int LUACALL wxLua_wxDocument_SetDocumentName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_SetDocumentTemplate[] = { &wxluatype_wxDocument, &wxluatype_wxDocTemplate, NULL };
 static int LUACALL wxLua_wxDocument_SetDocumentTemplate(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_SetDocumentTemplate[1] = {{ wxLua_wxDocument_SetDocumentTemplate, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocument_SetDocumentTemplate }};
-//     void SetDocumentTemplate(wxDocTemplate* templ );
+//     void SetDocumentTemplate(wxDocTemplate* templ);
 static int LUACALL wxLua_wxDocument_SetDocumentTemplate(lua_State *L)
 {
     // wxDocTemplate templ
@@ -2854,7 +2896,7 @@ static int LUACALL wxLua_wxDocument_SetDocumentTemplate(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_SetFilename[] = { &wxluatype_wxDocument, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxDocument_SetFilename(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_SetFilename[1] = {{ wxLua_wxDocument_SetFilename, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxDocument_SetFilename }};
-//     void SetFilename(const wxString& filename, bool notifyViews = false );
+//     void SetFilename(const wxString& filename, bool notifyViews = false);
 static int LUACALL wxLua_wxDocument_SetFilename(lua_State *L)
 {
     // get number of arguments
@@ -2874,7 +2916,7 @@ static int LUACALL wxLua_wxDocument_SetFilename(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_SetTitle[] = { &wxluatype_wxDocument, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDocument_SetTitle(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_SetTitle[1] = {{ wxLua_wxDocument_SetTitle, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDocument_SetTitle }};
-//     void SetTitle(const wxString& title );
+//     void SetTitle(const wxString& title);
 static int LUACALL wxLua_wxDocument_SetTitle(lua_State *L)
 {
     // const wxString title
@@ -2892,7 +2934,7 @@ static int LUACALL wxLua_wxDocument_SetTitle(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDocument_UpdateAllViews[] = { &wxluatype_wxDocument, &wxluatype_wxView, &wxluatype_wxObject, NULL };
 static int LUACALL wxLua_wxDocument_UpdateAllViews(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_UpdateAllViews[1] = {{ wxLua_wxDocument_UpdateAllViews, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxDocument_UpdateAllViews }};
-//     void UpdateAllViews(wxView* sender = NULL, wxObject* hint = NULL );
+//     void UpdateAllViews(wxView* sender = NULL, wxObject* hint = NULL);
 static int LUACALL wxLua_wxDocument_UpdateAllViews(lua_State *L)
 {
     // get number of arguments
@@ -2913,7 +2955,7 @@ static int LUACALL wxLua_wxDocument_UpdateAllViews(lua_State *L)
 
 static int LUACALL wxLua_wxDocument_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDocument_constructor[1] = {{ wxLua_wxDocument_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxDocument( );
+//     wxDocument();
 static int LUACALL wxLua_wxDocument_constructor(lua_State *L)
 {
     // call constructor
@@ -2949,13 +2991,19 @@ wxLuaBindMethod wxDocument_methods[] = {
     { "GetDocumentWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDocument_GetDocumentWindow, 1, NULL },
     { "GetFilename", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDocument_GetFilename, 1, NULL },
     { "GetFirstView", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDocument_GetFirstView, 1, NULL },
+
+#if (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_MDI && wxUSE_MDI && wxUSE_DOC_VIEW_ARCHITECTURE)
     { "GetPrintableName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDocument_GetPrintableName, 1, NULL },
+#endif // (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_MDI && wxUSE_MDI && wxUSE_DOC_VIEW_ARCHITECTURE)
+
     { "GetTitle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDocument_GetTitle, 1, NULL },
+    { "GetUserReadableName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDocument_GetUserReadableName, 1, NULL },
 
 #if (wxLUA_USE_MDI && wxUSE_MDI && wxUSE_DOC_VIEW_ARCHITECTURE) && (wxLUA_USE_wxList && !wxUSE_STL)
     { "GetViews", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDocument_GetViews, 1, NULL },
 #endif // (wxLUA_USE_MDI && wxUSE_MDI && wxUSE_DOC_VIEW_ARCHITECTURE) && (wxLUA_USE_wxList && !wxUSE_STL)
 
+    { "IsChildDocument", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDocument_IsChildDocument, 1, NULL },
     { "IsModified", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDocument_IsModified, 1, NULL },
     { "Modify", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDocument_Modify, 1, NULL },
     { "OnChangedViewList", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDocument_OnChangedViewList, 1, NULL },

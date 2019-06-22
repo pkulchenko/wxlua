@@ -56,6 +56,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/filepicker.h"
 #endif // ((wxLUA_USE_wxDirPickerCtrl || wxLUA_USE_wxFilePickerCtrl ) && (wxUSE_FILEPICKERCTRL || wxUSE_DIRPICKERCTRL )) && (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker)
 
+#if (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)
+    #include "wx/effects.h"
+#endif // (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)
+
 #if (defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
     #include "wx/dcprint.h"
 #endif // (defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
@@ -141,7 +145,6 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
 #include "wx/control.h"
 #include "wx/ctrlsub.h"
 #include "wx/defs.h"
-#include "wx/effects.h"
 #include "wx/event.h"
 #include "wx/process.h"
 #include "wx/utils.h"
@@ -536,6 +539,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFileDirPickerEvent;
 #endif // ((wxLUA_USE_wxDirPickerCtrl || wxLUA_USE_wxFilePickerCtrl ) && (wxUSE_FILEPICKERCTRL || wxUSE_DIRPICKERCTRL )) && (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker)
 
+#if (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxEffects;
+#endif // (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)
+
 #if (defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPrinterDC;
 #endif // (defined(__WXMSW__) || defined(__WXMAC__)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
@@ -729,7 +736,6 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxContextMenuEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxControl;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxControlWithItems;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxDisplayChangedEvent;
-extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxEffects;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxEraseEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFocusEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxGDIObject;

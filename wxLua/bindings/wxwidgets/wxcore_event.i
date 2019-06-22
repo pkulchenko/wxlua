@@ -702,12 +702,13 @@ class %delete wxSizeEvent : public wxEvent
 
 class %delete wxShowEvent : public wxEvent
 {
-    %wxEventType wxEVT_SHOW // EVT_SHOW(func );
+    %wxEventType wxEVT_SHOW // EVT_SHOW(func);
 
-    wxShowEvent(int winid = 0, bool show = false );
+    wxShowEvent(int winid = 0, bool show = false);
 
-    void SetShow(bool show );
-    bool GetShow() const;
+    void SetShow(bool show);
+    !%wxchkver_2_9 || %wxcompat_2_8 bool GetShow() const;
+    %wxchkver_2_8 bool IsShown() const
 };
 
 // ---------------------------------------------------------------------------
@@ -719,9 +720,10 @@ class %delete wxIconizeEvent : public wxEvent
 {
     %wxEventType wxEVT_ICONIZE // EVT_ICONIZE(func );
 
-    wxIconizeEvent(int winid = 0, bool iconized = true );
+    wxIconizeEvent(int winid = 0, bool iconized = true);
 
-    bool Iconized() const;
+    !%wxchkver_2_9 || %wxcompat_2_8 bool Iconized() const;
+    %wxchkver_2_8 bool IsIconized() const;
 };
 
 // ---------------------------------------------------------------------------

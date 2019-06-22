@@ -1569,6 +1569,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxObject",
     },
+    Condition = "(defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)",
     IsNumber = false,
     Name = "wxEffects",
     ValueType = "class",

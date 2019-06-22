@@ -255,8 +255,8 @@ class wxFrame : public wxTopLevelWindow
 
 #include "wx/minifram.h"
 
-#define wxTINY_CAPTION_HORIZ
-#define wxTINY_CAPTION_VERT
+!%wxchkver_2_9 || %wxcompat_2_8 #define wxTINY_CAPTION_HORIZ
+!%wxchkver_2_9 || %wxcompat_2_8 #define wxTINY_CAPTION_VERT
 
 class wxMiniFrame : public wxFrame
 {

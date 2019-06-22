@@ -887,8 +887,9 @@ enum wxLocaleInfo
 
 enum wxLocaleInitFlags
 {
-    wxLOCALE_LOAD_DEFAULT,       // load wxwin.mo?
-    wxLOCALE_CONV_ENCODING      // convert encoding on the fly?
+    wxLOCALE_DONT_LOAD_DEFAULT,
+    wxLOCALE_LOAD_DEFAULT,
+    !%wxchkver_2_9 || %wxcompat_2_8 wxLOCALE_CONV_ENCODING
 };
 
 #if %wxchkver_2_8
@@ -918,17 +919,19 @@ class %delete wxLocale
 
     // the ctor has a side effect of changing current locale
     // name (for messages),  dir prefix (for msg files), locale (for setlocale), preload wxstd.mo?, convert Win<->Unix if necessary?
-    wxLocale(const wxString& szName, const wxString& szShort = "", const wxString& szLocale = "", bool bLoadDefault = true, bool bConvertEncoding = false );
+    !%wxchkver_2_9 || %wxcompat_2_8 wxLocale(const wxString& szName, const wxString& szShort = "", const wxString& szLocale = "", bool bLoadDefault = true, bool bConvertEncoding = false);
+    %wxchkver_2_8 wxLocale(const wxString& szName, const wxString& szShort = "", const wxString& szLocale = "", bool bLoadDefault = true);
 
     // wxLanguage id or custom language
-    wxLocale(int language, int flags = wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING );
+    wxLocale(int language, int flags = wxLOCALE_LOAD_DEFAULT);
 
     // the same as a function (returns true on success );
     //bool Init(const wxChar *szName, const wxChar *szShort = (const wxChar *) NULL, const wxChar *szLocale = (const wxChar *) NULL, bool bLoadDefault = true, bool bConvertEncoding = false );
-    bool Init(const wxString &szName, const wxString &szShort = "", const wxString &szLocale = "", bool bLoadDefault = true, bool bConvertEncoding = false );
+    !%wxchkver_2_9 || %wxcompat_2_8 bool Init(const wxString &szName, const wxString &szShort = "", const wxString &szLocale = "", bool bLoadDefault = true, bool bConvertEncoding = false);
+    %wxchkver_2_8 bool Init(const wxString &szName, const wxString &szShort = "", const wxString &szLocale = "", bool bLoadDefault = true);
 
     // same as second ctor (returns true on success );
-    bool Init(int language = wxLANGUAGE_DEFAULT, int flags = wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING);
+    bool Init(int language = wxLANGUAGE_DEFAULT, int flags = wxLOCALE_LOAD_DEFAULT);
 
     // Try to get user's (or OS's) preferred language setting.
     // Return wxLANGUAGE_UNKNOWN if language-guessing algorithm failed

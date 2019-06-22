@@ -665,8 +665,15 @@ wxLuaBindNumber* wxLuaGetDefineList_wxbase(size_t &count)
         { "wxLOCALE_CAT_MAX", wxLOCALE_CAT_MAX },
         { "wxLOCALE_CAT_MONEY", wxLOCALE_CAT_MONEY },
         { "wxLOCALE_CAT_NUMBER", wxLOCALE_CAT_NUMBER },
+#endif // wxUSE_INTL
+
+#if (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL)
         { "wxLOCALE_CONV_ENCODING", wxLOCALE_CONV_ENCODING },
+#endif // (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_INTL)
+
+#if wxUSE_INTL
         { "wxLOCALE_DECIMAL_POINT", wxLOCALE_DECIMAL_POINT },
+        { "wxLOCALE_DONT_LOAD_DEFAULT", wxLOCALE_DONT_LOAD_DEFAULT },
         { "wxLOCALE_LOAD_DEFAULT", wxLOCALE_LOAD_DEFAULT },
         { "wxLOCALE_THOUSANDS_SEP", wxLOCALE_THOUSANDS_SEP },
 #endif // wxUSE_INTL
@@ -1879,9 +1886,9 @@ static int LUACALL wxLua_function_wxPathOnly(lua_State *L)
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxPathOnly[1] = {{ wxLua_function_wxPathOnly, WXLUAMETHOD_CFUNCTION, 1, 1, s_wxluatypeArray_wxLua_function_wxPathOnly }};
 
 
-#if wxCHECK_VERSION(2,8,0)
+#if !wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxRealPath[] = { &wxluatype_TSTRING, NULL };
-// %wxchkver_2_8  wxString wxRealPath(const wxString& path);
+// !%wxchkver_2_9 || %wxcompat_2_8 wxString wxRealPath(const wxString& path);
 static int LUACALL wxLua_function_wxRealPath(lua_State *L)
 {
     // const wxString path
@@ -1895,7 +1902,7 @@ static int LUACALL wxLua_function_wxRealPath(lua_State *L)
 }
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxRealPath[1] = {{ wxLua_function_wxRealPath, WXLUAMETHOD_CFUNCTION, 1, 1, s_wxluatypeArray_wxLua_function_wxRealPath }};
 
-#endif // wxCHECK_VERSION(2,8,0)
+#endif // !wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxRemoveFile[] = { &wxluatype_TSTRING, NULL };
 // bool wxRemoveFile(const wxString& file);
@@ -2262,9 +2269,9 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxbase(size_t &count)
         { "wxNow", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxNow, 1, NULL },
         { "wxPathOnly", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxPathOnly, 1, NULL },
 
-#if wxCHECK_VERSION(2,8,0)
+#if !wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)
         { "wxRealPath", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxRealPath, 1, NULL },
-#endif // wxCHECK_VERSION(2,8,0)
+#endif // !wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)
 
         { "wxRemoveFile", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxRemoveFile, 1, NULL },
 

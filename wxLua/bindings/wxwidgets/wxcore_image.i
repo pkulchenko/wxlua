@@ -310,7 +310,8 @@ class %delete wxImageHandler : public wxObject
     void SetName(const wxString& name);
     void SetExtension(const wxString& extension);
     void SetMimeType(const wxString& mimetype);
-    void SetType(long type);
+    !%wxchkver_2_9 || %wxcompat_2_8 void SetType(long type);
+    %wxchkver_2_8 void SetType(wxBitmapType type);
 };
 
 // ---------------------------------------------------------------------------
@@ -656,21 +657,16 @@ class wxArtProvider : public wxObject
 
     #if %wxchkver_2_8
         static void Push(%ungc wxArtProvider *provider);
-        static void Insert(%ungc wxArtProvider *provider);
+        !%wxchkver_2_9 || %wxcompat_2_8 static void Insert(%ungc wxArtProvider *provider);
         static bool Pop();
         static bool Remove(%gc wxArtProvider *provider); // FIXME - mem leak if not found
         static bool Delete(%ungc wxArtProvider *provider);
     #endif // %wxchkver_2_8
 
-    //#if !%wxcompat_2_6
-    //static void PushProvider(wxArtProvider *provider) FIXME add wxLuaArtProvider maybe?
-    //static bool PopProvider();
-    //static bool RemoveProvider(wxArtProvider *provider);
-    //#endif // !%wxcompat_2_6
-
     static wxBitmap GetBitmap(const wxString& id, const wxString& client = wxART_OTHER, const wxSize& size = wxDefaultSize);
     static wxIcon GetIcon(const wxString& id, const wxString& client = wxART_OTHER, const wxSize& size = wxDefaultSize);
     static wxSize GetSizeHint(const wxString& client, bool platform_dependent = false);
+    %wxchkver_2_8 static void RescaleBitmap(wxBitmap& bmp, const wxSize& sizeNeeded);
 };
 
 class %delete wxLuaArtProvider : public wxArtProvider

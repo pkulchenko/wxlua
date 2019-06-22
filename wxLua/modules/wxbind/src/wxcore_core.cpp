@@ -419,10 +419,12 @@ static int LUACALL wxLua_wxValidator_IsSilent(lua_State *L)
     return 1;
 }
 
+
+#if (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxValidator_SetBellOnError[] = { &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxValidator_SetBellOnError(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxValidator_SetBellOnError[1] = {{ wxLua_wxValidator_SetBellOnError, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 1, s_wxluatypeArray_wxLua_wxValidator_SetBellOnError }};
-//     static void SetBellOnError(bool doIt = true );
+//     !%wxchkver_2_9 || %wxcompat_2_8 static void SetBellOnError(bool doIt = true);
 static int LUACALL wxLua_wxValidator_SetBellOnError(lua_State *L)
 {
     // get number of arguments
@@ -434,6 +436,8 @@ static int LUACALL wxLua_wxValidator_SetBellOnError(lua_State *L)
 
     return 0;
 }
+
+#endif // (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxValidator_SetWindow[] = { &wxluatype_wxValidator, &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxValidator_SetWindow(lua_State *L);
@@ -514,7 +518,11 @@ void wxLua_wxValidator_delete_function(void** p)
 wxLuaBindMethod wxValidator_methods[] = {
     { "GetWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxValidator_GetWindow, 1, NULL },
     { "IsSilent", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxValidator_IsSilent, 1, NULL },
+
+#if (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
     { "SetBellOnError", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxValidator_SetBellOnError, 1, NULL },
+#endif // (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+
     { "SetWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxValidator_SetWindow, 1, NULL },
     { "TransferFromWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxValidator_TransferFromWindow, 1, NULL },
     { "TransferToWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxValidator_TransferToWindow, 1, NULL },

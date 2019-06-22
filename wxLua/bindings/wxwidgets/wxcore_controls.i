@@ -802,7 +802,6 @@ class wxScrollBar : public wxControl
 #define wxSL_HORIZONTAL
 #define wxSL_LABELS
 #define wxSL_LEFT
-// #define wxSL_NOTIFY_DRAG %wxcompat_2_6 obsolete
 #define wxSL_RIGHT
 #define wxSL_SELRANGE
 #define wxSL_TOP
@@ -831,7 +830,8 @@ class wxSlider : public wxControl
     void SetSelection(int startPos, int endPos);
     void SetThumbLength(int len);
     void SetTick(int tickPos);
-    void SetTickFreq(int n, int pos);
+    !%wxchkver_2_9 || %wxcompat_2_8 void SetTickFreq(int n, int pos);
+    %wxchkver_2_8 && %win void SetTickFreq(int n);
     void SetValue(int value);
 };
 
@@ -930,12 +930,11 @@ class wxSpinCtrl : public wxControl
 #define wxTE_CENTRE
 #define wxTE_RIGHT
 #define wxTE_DONTWRAP
-// #define wxTE_LINEWRAP %wxcompat_2_6 obsolete use wxTE_CHARWRAP
 #define wxTE_CHARWRAP
 #define wxTE_WORDWRAP
 #define wxTE_BESTWRAP
 #define wxTE_CAPITALIZE
-#define wxTE_AUTO_SCROLL
+!%wxchkver_2_9 || %wxcompat_2_8 #define wxTE_AUTO_SCROLL
 #define wxTE_NO_VSCROLL
 
 enum wxTextCtrlHitTestResult
@@ -1145,7 +1144,7 @@ class %delete wxTextUrlEvent : public wxCommandEvent
 #define wxTR_NO_LINES
 #define wxTR_SINGLE
 #define wxTR_MULTIPLE
-#define wxTR_EXTENDED
+!%wxchkver_2_9 || %wxcompat_2_8 #define wxTR_EXTENDED
 #define wxTR_EDIT_LABELS
 #define wxTR_LINES_AT_ROOT
 #define wxTR_HIDE_ROOT

@@ -2061,9 +2061,27 @@ int wxMenuBar_methodCount = sizeof(wxMenuBar_methods)/sizeof(wxLuaBindMethod) - 
 // Lua MetaTable Tag for Class 'wxMenuItem'
 int wxluatype_wxMenuItem = WXLUA_TUNKNOWN;
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_Check1[] = { &wxluatype_wxMenuItem, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxMenuItem_Check1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_Check1[1] = {{ wxLua_wxMenuItem_Check1, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxMenuItem_Check1 }};
+//     virtual void Check(bool check = true);
+static int LUACALL wxLua_wxMenuItem_Check1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool check = true
+    bool check = (argCount >= 2 ? wxlua_getbooleantype(L, 2) : true);
+    // get this
+    wxMenuItem * self = (wxMenuItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenuItem);
+    // call Check
+    self->Check(check);
+
+    return 0;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_Check[] = { &wxluatype_wxMenuItem, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxMenuItem_Check(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_Check[1] = {{ wxLua_wxMenuItem_Check, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_Check }};
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_Check[1] = {{ wxLua_wxMenuItem_Check, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_Check }};
 //     void Check(bool check);
 static int LUACALL wxLua_wxMenuItem_Check(lua_State *L)
 {
@@ -2077,9 +2095,27 @@ static int LUACALL wxLua_wxMenuItem_Check(lua_State *L)
     return 0;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_Enable1[] = { &wxluatype_wxMenuItem, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxMenuItem_Enable1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_Enable1[1] = {{ wxLua_wxMenuItem_Enable1, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxMenuItem_Enable1 }};
+//     virtual void Enable(bool enable = true);
+static int LUACALL wxLua_wxMenuItem_Enable1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool enable = true
+    bool enable = (argCount >= 2 ? wxlua_getbooleantype(L, 2) : true);
+    // get this
+    wxMenuItem * self = (wxMenuItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenuItem);
+    // call Enable
+    self->Enable(enable);
+
+    return 0;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_Enable[] = { &wxluatype_wxMenuItem, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxMenuItem_Enable(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_Enable[1] = {{ wxLua_wxMenuItem_Enable, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_Enable }};
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_Enable[1] = {{ wxLua_wxMenuItem_Enable, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_Enable }};
 //     void Enable(bool enable);
 static int LUACALL wxLua_wxMenuItem_Enable(lua_State *L)
 {
@@ -2093,6 +2129,25 @@ static int LUACALL wxLua_wxMenuItem_Enable(lua_State *L)
     return 0;
 }
 
+
+#if ((wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_ACCEL)) && (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_GetAccel[] = { &wxluatype_wxMenuItem, NULL };
+static int LUACALL wxLua_wxMenuItem_GetAccel(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_GetAccel[1] = {{ wxLua_wxMenuItem_GetAccel, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMenuItem_GetAccel }};
+//     virtual wxAcceleratorEntry *GetAccel() const;
+static int LUACALL wxLua_wxMenuItem_GetAccel(lua_State *L)
+{
+    // get this
+    wxMenuItem * self = (wxMenuItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenuItem);
+    // call GetAccel
+    wxAcceleratorEntry* returns = (wxAcceleratorEntry*)self->GetAccel();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxAcceleratorEntry);
+
+    return 1;
+}
+
+#endif // ((wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_ACCEL)) && (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL)
 
 #if ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxColourPenBrush)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_GetBackgroundColour[] = { &wxluatype_wxMenuItem, NULL };
@@ -2597,6 +2652,25 @@ static int LUACALL wxLua_wxMenuItem_IsSubMenu(lua_State *L)
 }
 
 
+#if ((wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_ACCEL)) && (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_SetAccel[] = { &wxluatype_wxMenuItem, &wxluatype_wxAcceleratorEntry, NULL };
+static int LUACALL wxLua_wxMenuItem_SetAccel(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_SetAccel[1] = {{ wxLua_wxMenuItem_SetAccel, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_SetAccel }};
+//     virtual void SetAccel(wxAcceleratorEntry *accel);
+static int LUACALL wxLua_wxMenuItem_SetAccel(lua_State *L)
+{
+    // wxAcceleratorEntry accel
+    wxAcceleratorEntry * accel = (wxAcceleratorEntry *)wxluaT_getuserdatatype(L, 2, wxluatype_wxAcceleratorEntry);
+    // get this
+    wxMenuItem * self = (wxMenuItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenuItem);
+    // call SetAccel
+    self->SetAccel(accel);
+
+    return 0;
+}
+
+#endif // ((wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_ACCEL)) && (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL)
+
 #if ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxColourPenBrush)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_SetBackgroundColour[] = { &wxluatype_wxMenuItem, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxMenuItem_SetBackgroundColour(lua_State *L);
@@ -2656,6 +2730,26 @@ static int LUACALL wxLua_wxMenuItem_SetBitmaps(lua_State *L)
     return 0;
 }
 
+#endif // ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxBitmap)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_SetCheckable[] = { &wxluatype_wxMenuItem, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxMenuItem_SetCheckable(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_SetCheckable[1] = {{ wxLua_wxMenuItem_SetCheckable, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_SetCheckable }};
+//     virtual void SetCheckable(bool checkable);
+static int LUACALL wxLua_wxMenuItem_SetCheckable(lua_State *L)
+{
+    // bool checkable
+    bool checkable = wxlua_getbooleantype(L, 2);
+    // get this
+    wxMenuItem * self = (wxMenuItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenuItem);
+    // call SetCheckable
+    self->SetCheckable(checkable);
+
+    return 0;
+}
+
+
+#if ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_SetDisabledBitmap[] = { &wxluatype_wxMenuItem, &wxluatype_wxBitmap, NULL };
 static int LUACALL wxLua_wxMenuItem_SetDisabledBitmap(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_SetDisabledBitmap[1] = {{ wxLua_wxMenuItem_SetDisabledBitmap, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_SetDisabledBitmap }};
@@ -2709,6 +2803,22 @@ static int LUACALL wxLua_wxMenuItem_SetHelp(lua_State *L)
     return 0;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_SetId[] = { &wxluatype_wxMenuItem, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxMenuItem_SetId(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_SetId[1] = {{ wxLua_wxMenuItem_SetId, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_SetId }};
+//     void SetId(int itemid);
+static int LUACALL wxLua_wxMenuItem_SetId(lua_State *L)
+{
+    // int itemid
+    int itemid = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxMenuItem * self = (wxMenuItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenuItem);
+    // call SetId
+    self->SetId(itemid);
+
+    return 0;
+}
+
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_SetItemLabel[] = { &wxluatype_wxMenuItem, &wxluatype_TSTRING, NULL };
@@ -2728,6 +2838,23 @@ static int LUACALL wxLua_wxMenuItem_SetItemLabel(lua_State *L)
 }
 
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_SetKind[] = { &wxluatype_wxMenuItem, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxMenuItem_SetKind(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_SetKind[1] = {{ wxLua_wxMenuItem_SetKind, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_SetKind }};
+//     void SetKind(wxItemKind kind);
+static int LUACALL wxLua_wxMenuItem_SetKind(lua_State *L)
+{
+    // wxItemKind kind
+    wxItemKind kind = (wxItemKind)wxlua_getenumtype(L, 2);
+    // get this
+    wxMenuItem * self = (wxMenuItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenuItem);
+    // call SetKind
+    self->SetKind(kind);
+
+    return 0;
+}
+
 
 #if (defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_SetMarginWidth[] = { &wxluatype_wxMenuItem, &wxluatype_TNUMBER, NULL };
@@ -2782,25 +2909,9 @@ static int LUACALL wxLua_wxMenuItem_SetSubMenu(lua_State *L)
 
 
 #if (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_SetText1[] = { &wxluatype_wxMenuItem, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxMenuItem_SetText1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_SetText1[1] = {{ wxLua_wxMenuItem_SetText1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_SetText1 }};
-//     !%wxchkver_3_0 || %wxcompat_2_8 void SetText(const wxString& text);
-static int LUACALL wxLua_wxMenuItem_SetText1(lua_State *L)
-{
-    // const wxString text
-    const wxString text = wxlua_getwxStringtype(L, 2);
-    // get this
-    wxMenuItem * self = (wxMenuItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenuItem);
-    // call SetText
-    self->SetText(text);
-
-    return 0;
-}
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_SetText[] = { &wxluatype_wxMenuItem, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxMenuItem_SetText(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_SetText[1] = {{ wxLua_wxMenuItem_SetText, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_SetText }};
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_SetText[1] = {{ wxLua_wxMenuItem_SetText, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_SetText }};
 //     !%wxchkver_3_0 || %wxcompat_2_8 void SetText(const wxString& text);
 static int LUACALL wxLua_wxMenuItem_SetText(lua_State *L)
 {
@@ -2872,6 +2983,25 @@ static int LUACALL wxLua_wxMenuItem_constructor(lua_State *L)
 
 
 
+#if (wxLUA_USE_wxMenu && wxUSE_MENUS)
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_Check_overload[] =
+{
+    { wxLua_wxMenuItem_Check1, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxMenuItem_Check1 },
+    { wxLua_wxMenuItem_Check, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_Check },
+};
+static int s_wxluafunc_wxLua_wxMenuItem_Check_overload_count = sizeof(s_wxluafunc_wxLua_wxMenuItem_Check_overload)/sizeof(wxLuaBindCFunc);
+
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_Enable_overload[] =
+{
+    { wxLua_wxMenuItem_Enable1, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxMenuItem_Enable1 },
+    { wxLua_wxMenuItem_Enable, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_Enable },
+};
+static int s_wxluafunc_wxLua_wxMenuItem_Enable_overload_count = sizeof(s_wxluafunc_wxLua_wxMenuItem_Enable_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (wxLUA_USE_wxMenu && wxUSE_MENUS)
+
 #if ((!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_GetLabel_overload[] =
@@ -2915,20 +3045,6 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_GetText_overload[] =
 };
 static int s_wxluafunc_wxLua_wxMenuItem_GetText_overload_count = sizeof(s_wxluafunc_wxLua_wxMenuItem_GetText_overload)/sizeof(wxLuaBindCFunc);
 
-// function overload table
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_SetText_overload[] =
-{
-
-#if (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
-    { wxLua_wxMenuItem_SetText1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_SetText1 },
-#endif // (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
-
-#if (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
-    { wxLua_wxMenuItem_SetText, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMenuItem_SetText },
-#endif // (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
-};
-static int s_wxluafunc_wxLua_wxMenuItem_SetText_overload_count = sizeof(s_wxluafunc_wxLua_wxMenuItem_SetText_overload)/sizeof(wxLuaBindCFunc);
-
 #endif // ((!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
 
 void wxLua_wxMenuItem_delete_function(void** p)
@@ -2939,8 +3055,14 @@ void wxLua_wxMenuItem_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxMenuItem_methods[] = {
-    { "Check", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_Check, 1, NULL },
-    { "Enable", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_Enable, 1, NULL },
+#if (wxLUA_USE_wxMenu && wxUSE_MENUS)
+    { "Check", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_Check_overload, s_wxluafunc_wxLua_wxMenuItem_Check_overload_count, 0 },
+    { "Enable", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_Enable_overload, s_wxluafunc_wxLua_wxMenuItem_Enable_overload_count, 0 },
+#endif // (wxLUA_USE_wxMenu && wxUSE_MENUS)
+
+#if ((wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_ACCEL)) && (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL)
+    { "GetAccel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_GetAccel, 1, NULL },
+#endif // ((wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_ACCEL)) && (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL)
 
 #if ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxColourPenBrush)
     { "GetBackgroundColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_GetBackgroundColour, 1, NULL },
@@ -3009,6 +3131,10 @@ wxLuaBindMethod wxMenuItem_methods[] = {
     { "IsSeparator", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_IsSeparator, 1, NULL },
     { "IsSubMenu", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_IsSubMenu, 1, NULL },
 
+#if ((wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_ACCEL)) && (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL)
+    { "SetAccel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetAccel, 1, NULL },
+#endif // ((wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_ACCEL)) && (wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL)
+
 #if ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxColourPenBrush)
     { "SetBackgroundColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetBackgroundColour, 1, NULL },
 #endif // ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxColourPenBrush)
@@ -3019,6 +3145,11 @@ wxLuaBindMethod wxMenuItem_methods[] = {
 
 #if ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxBitmap)
     { "SetBitmaps", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetBitmaps, 1, NULL },
+#endif // ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxBitmap)
+
+    { "SetCheckable", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetCheckable, 1, NULL },
+
+#if ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxBitmap)
     { "SetDisabledBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetDisabledBitmap, 1, NULL },
 #endif // ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxBitmap)
 
@@ -3027,10 +3158,13 @@ wxLuaBindMethod wxMenuItem_methods[] = {
 #endif // ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxFont)
 
     { "SetHelp", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetHelp, 1, NULL },
+    { "SetId", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetId, 1, NULL },
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
     { "SetItemLabel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetItemLabel, 1, NULL },
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+
+    { "SetKind", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetKind, 1, NULL },
 
 #if (defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
     { "SetMarginWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetMarginWidth, 1, NULL },
@@ -3039,9 +3173,9 @@ wxLuaBindMethod wxMenuItem_methods[] = {
     { "SetMenu", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetMenu, 1, NULL },
     { "SetSubMenu", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetSubMenu, 1, NULL },
 
-#if ((!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
-    { "SetText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetText_overload, s_wxluafunc_wxLua_wxMenuItem_SetText_overload_count, 0 },
-#endif // ((!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxMenu && wxUSE_MENUS))
+#if (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+    { "SetText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetText, 1, NULL },
+#endif // (!wxCHECK_VERSION(3,0,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 
 #if ((defined(__WXMSW__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxColourPenBrush)
     { "SetTextColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuItem_SetTextColour, 1, NULL },

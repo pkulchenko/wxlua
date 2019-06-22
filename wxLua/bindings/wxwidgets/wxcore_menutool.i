@@ -142,44 +142,56 @@ class %delete wxMenuItem : public wxObject
     void Check(bool check);
     void Enable(bool enable);
     !%wxchkver_3_0 || %wxcompat_2_8 static wxString GetLabelFromText(const wxString& text);
-    %wxchkver_2_8 static wxString GetLabelText(const wxString& text);
     %win wxColour GetBackgroundColour() const;
     %win wxBitmap GetBitmap(bool checked = true) const;
     %win wxBitmap& GetDisabledBitmap() const;
     %win wxFont GetFont() const;
-    wxString GetHelp() const;
     int GetId() const;
+    void SetId(int itemid);
+
+    %wxchkver_2_8 void SetItemLabel(const wxString& label);
     %wxchkver_2_8 wxString GetItemLabel() const;
     %wxchkver_2_8 wxString GetItemLabelText() const;
+    %wxchkver_2_8 static wxString GetLabelText(const wxString& text);
+
     wxItemKind GetKind() const;
+    void SetKind(wxItemKind kind);
+    bool IsSeparator() const;
+    %wxchkver_3_0_0 bool IsCheck() const;
+    %wxchkver_3_0_0 bool IsRadio() const;
+
+    virtual void SetCheckable(bool checkable);
+    bool IsCheckable() const;
+    bool IsSubMenu() const;
+    void SetSubMenu(wxMenu* menu);
+    virtual void Enable(bool enable = true);
+    bool IsEnabled() const;
+    virtual void Check(bool check = true);
+    bool IsChecked() const;
+    void SetHelp(const wxString& helpString) const;
+    wxString GetHelp() const;
+
+#if wxUSE_ACCEL
+    virtual wxAcceleratorEntry *GetAccel() const;
+    virtual void SetAccel(wxAcceleratorEntry *accel);
+#endif // wxUSE_ACCEL
+
     !%wxchkver_3_0 || %wxcompat_2_8 wxString GetLabel() const;
     %win int GetMarginWidth() const;
     wxMenu* GetMenu() const;
     %wxchkver_3_0_0 wxString GetName() const;
     wxMenu* GetSubMenu() const;
     !%wxchkver_3_0 || %wxcompat_2_8 wxString GetText() const;
+
     %win wxColour& GetTextColour() const;
-    // static wxAcceleratorEntry *GetAccelFromString(const wxString& label);
-    // wxAcceleratorEntry *GetAccel() const;
-    %wxchkver_3_0_0 bool IsCheck() const;
-    bool IsCheckable() const;
-    bool IsChecked() const;
-    bool IsEnabled() const;
-    %wxchkver_3_0_0 bool IsRadio() const;
-    bool IsSeparator() const;
-    bool IsSubMenu() const;
     %win void SetBackgroundColour(const wxColour& colour) const;
     %win void SetBitmaps(const wxBitmap& checked, const wxBitmap& unchecked = wxNullBitmap) const;
     %win void SetDisabledBitmap(const wxBitmap& disabled);
     %win void SetFont(const wxFont& font) const;
-    void SetHelp(const wxString& helpString) const;
-    %wxchkver_2_8 void SetItemLabel(const wxString& label);
     %win void SetMarginWidth(int width) const;
     void SetMenu(wxMenu* menu);
-    void SetSubMenu(wxMenu* menu);
-    !%wxchkver_3_0 || %wxcompat_2_8 void SetText(const wxString& text);
     %win void SetTextColour(const wxColour& colour) const;
-    // void SetAccel(wxAcceleratorEntry *accel);
+
     !%wxchkver_3_0 || %wxcompat_2_8 static wxString GetLabelFromText(const wxString& text);
     !%wxchkver_3_0 || %wxcompat_2_8 void SetText(const wxString& text);
     !%wxchkver_3_0 || %wxcompat_2_8 wxString GetLabel() const;

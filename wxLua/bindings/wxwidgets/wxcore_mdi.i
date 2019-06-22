@@ -101,13 +101,15 @@ class wxDocChildFrame : public wxFrame
 // ---------------------------------------------------------------------------
 // wxDocManager
 
+#if !%wxchkver_2_9 || %wxcompat_2_8
 #define wxDEFAULT_DOCMAN_FLAGS
+#endif //!%wxchkver_2_9 || %wxcompat_2_8
 #define wxDOC_NEW
 #define wxDOC_SILENT
 
 class wxDocManager : public wxEvtHandler
 {
-    wxDocManager(long flags = wxDEFAULT_DOCMAN_FLAGS, bool initialize = true );
+    wxDocManager(long flags = 0, bool initialize = true);
 
     %wxchkver_2_6 void ActivateView(wxView* view, bool activate );
     !%wxchkver_2_6 void ActivateView(wxView* view, bool activate, bool deleting );
@@ -128,35 +130,35 @@ class wxDocManager : public wxEvtHandler
     wxDocument * GetCurrentDocument( );
     wxView * GetCurrentView( );
     // %overide wxList& wxDocManager::GetDocuments() - returns a copied list
-    wxList& GetDocuments( );
-    wxFileHistory * GetFileHistory( );
+    wxList& GetDocuments();
+    wxFileHistory * GetFileHistory();
     wxString GetLastDirectory() const;
-    int GetMaxDocsOpen( );
-    !%wxchkver_2_6 int GetNoHistoryFiles( );
+    int GetMaxDocsOpen();
+    !%wxchkver_2_6 int GetNoHistoryFiles();
     %wxchkver_2_6 size_t GetHistoryFilesCount() const;
     // %overide wxList& wxDocManager::GetTemplates() - returns a copied list
-    wxList& GetTemplates( );
-    bool Initialize( );
+    wxList& GetTemplates();
+    bool Initialize();
 
     // %override [bool, string buf] wxDocManager::MakeDefaultName(wxString& buf );
     // C++ Func: bool MakeDefaultName(wxString& buf );
-    bool MakeDefaultName(wxString& buf );
+    !%wxchkver_2_9 || %wxcompat_2_8 bool MakeDefaultName(wxString& buf);
 
-    wxFileHistory* OnCreateFileHistory( );
-    void OnFileClose(wxCommandEvent &event );
-    void OnFileCloseAll(wxCommandEvent& event );
-    void OnFileNew(wxCommandEvent &event );
-    void OnFileOpen(wxCommandEvent &event );
-    void OnFileRevert(wxCommandEvent& event );
-    void OnFileSave(wxCommandEvent &event );
-    void OnFileSaveAs(wxCommandEvent &event );
+    wxFileHistory* OnCreateFileHistory();
+    void OnFileClose(wxCommandEvent &event);
+    void OnFileCloseAll(wxCommandEvent& event);
+    void OnFileNew(wxCommandEvent &event);
+    void OnFileOpen(wxCommandEvent &event);
+    void OnFileRevert(wxCommandEvent& event);
+    void OnFileSave(wxCommandEvent &event);
+    void OnFileSaveAs(wxCommandEvent &event);
     //void OnMenuCommand(int cmd );
-    void RemoveDocument(wxDocument *doc );
+    void RemoveDocument(wxDocument *doc);
     //wxDocTemplate * SelectDocumentPath(wxDocTemplate **templates, int noTemplates, const wxString& path, const wxString& bufSize, long flags, bool save );
     //wxDocTemplate * SelectDocumentType(wxDocTemplate **templates, int noTemplates, bool sort = false );
     //wxDocTemplate * SelectViewType(wxDocTemplate **templates, int noTemplates, bool sort = false );
-    void SetLastDirectory(const wxString& dir );
-    void SetMaxDocsOpen(int n );
+    void SetLastDirectory(const wxString& dir);
+    void SetMaxDocsOpen(int n);
 };
 
 // ---------------------------------------------------------------------------
@@ -234,48 +236,51 @@ class wxDocTemplate : public wxObject
 
 class wxDocument : public wxEvtHandler
 {
-    wxDocument( );
+    wxDocument();
 
-    virtual bool AddView(wxView *view );
-    virtual bool Close( );
-    virtual bool DeleteAllViews( );
+    virtual bool AddView(wxView *view);
+    virtual bool Close();
+    virtual bool DeleteAllViews();
     wxCommandProcessor* GetCommandProcessor() const;
     wxDocTemplate* GetDocumentTemplate() const;
     wxDocManager* GetDocumentManager() const;
     wxString GetDocumentName() const;
     wxWindow* GetDocumentWindow() const;
     wxString GetFilename() const;
-    wxView * GetFirstView() const;
+    wxView* GetFirstView() const;
+
+    virtual wxString GetUserReadableName() const;
 
     // %override [string name] wxDocument::GetPrintableName(wxString& name) const;
     // C++ Func: virtual void GetPrintableName(wxString& name) const;
-    virtual void GetPrintableName(wxString& name) const;
+    !%wxchkver_2_9 || %wxcompat_2_8 virtual void GetPrintableName(wxString& name) const;
 
     wxString GetTitle() const;
     wxList& GetViews() const;
     virtual bool IsModified() const;
     //virtual istream& LoadObject(istream& stream );
     //virtual wxInputStream& LoadObject(wxInputStream& stream );
-    virtual void Modify(bool modify );
-    virtual void OnChangedViewList( );
-    virtual bool OnCloseDocument( );
-    virtual bool OnCreate(const wxString& path, long flags );
-    virtual wxCommandProcessor* OnCreateCommandProcessor( );
-    virtual bool OnNewDocument( );
-    virtual bool OnOpenDocument(const wxString& filename );
-    virtual bool OnSaveDocument(const wxString& filename );
-    virtual bool OnSaveModified( );
-    virtual bool RemoveView(wxView* view );
-    virtual bool Save( );
-    virtual bool SaveAs( );
+    virtual void Modify(bool modify);
+    virtual void OnChangedViewList();
+    virtual bool OnCloseDocument();
+    virtual bool OnCreate(const wxString& path, long flags);
+    virtual wxCommandProcessor* OnCreateCommandProcessor();
+    virtual bool OnNewDocument();
+    virtual bool OnOpenDocument(const wxString& filename);
+    virtual bool OnSaveDocument(const wxString& filename);
+    virtual bool OnSaveModified();
+    virtual bool RemoveView(wxView* view);
+    virtual bool Save();
+    virtual bool SaveAs();
+    bool IsChildDocument() const;
     //virtual ostream& SaveObject(ostream& stream );
     //virtual wxOutputStream& SaveObject(wxOutputStream& stream );
-    virtual void SetCommandProcessor(wxCommandProcessor *processor );
-    void SetDocumentName(const wxString& name );
-    void SetDocumentTemplate(wxDocTemplate* templ );
-    void SetFilename(const wxString& filename, bool notifyViews = false );
-    void SetTitle(const wxString& title );
-    void UpdateAllViews(wxView* sender = NULL, wxObject* hint = NULL );
+    virtual void SetCommandProcessor(wxCommandProcessor *processor);
+    void SetDocumentName(const wxString& name);
+    void SetDocumentTemplate(wxDocTemplate* templ);
+    void SetFilename(const wxString& filename, bool notifyViews = false);
+    void SetTitle(const wxString& title);
+    void UpdateAllViews(wxView* sender = NULL, wxObject* hint = NULL);
 };
 
 // ---------------------------------------------------------------------------

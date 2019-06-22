@@ -3188,10 +3188,11 @@ int wxSizeEvent_methodCount = sizeof(wxSizeEvent_methods)/sizeof(wxLuaBindMethod
 // Lua MetaTable Tag for Class 'wxShowEvent'
 int wxluatype_wxShowEvent = WXLUA_TUNKNOWN;
 
+#if !wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxShowEvent_GetShow[] = { &wxluatype_wxShowEvent, NULL };
 static int LUACALL wxLua_wxShowEvent_GetShow(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxShowEvent_GetShow[1] = {{ wxLua_wxShowEvent_GetShow, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxShowEvent_GetShow }};
-//     bool GetShow() const;
+//     !%wxchkver_2_9 || %wxcompat_2_8 bool GetShow() const;
 static int LUACALL wxLua_wxShowEvent_GetShow(lua_State *L)
 {
     // get this
@@ -3204,10 +3205,31 @@ static int LUACALL wxLua_wxShowEvent_GetShow(lua_State *L)
     return 1;
 }
 
+#endif // !wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)
+
+#if wxCHECK_VERSION(2,8,0)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxShowEvent_IsShown[] = { &wxluatype_wxShowEvent, NULL };
+static int LUACALL wxLua_wxShowEvent_IsShown(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxShowEvent_IsShown[1] = {{ wxLua_wxShowEvent_IsShown, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxShowEvent_IsShown }};
+//     %wxchkver_2_8 bool IsShown() const
+static int LUACALL wxLua_wxShowEvent_IsShown(lua_State *L)
+{
+    // get this
+    wxShowEvent * self = (wxShowEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxShowEvent);
+    // call IsShown
+    bool returns = (self->IsShown());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(2,8,0)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxShowEvent_SetShow[] = { &wxluatype_wxShowEvent, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxShowEvent_SetShow(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxShowEvent_SetShow[1] = {{ wxLua_wxShowEvent_SetShow, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxShowEvent_SetShow }};
-//     void SetShow(bool show );
+//     void SetShow(bool show);
 static int LUACALL wxLua_wxShowEvent_SetShow(lua_State *L)
 {
     // bool show
@@ -3226,7 +3248,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxShowEvent_delete[1] = {{ wxlua_userdat
 static wxLuaArgType s_wxluatypeArray_wxLua_wxShowEvent_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxShowEvent_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxShowEvent_constructor[1] = {{ wxLua_wxShowEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxShowEvent_constructor }};
-//     wxShowEvent(int winid = 0, bool show = false );
+//     wxShowEvent(int winid = 0, bool show = false);
 static int LUACALL wxLua_wxShowEvent_constructor(lua_State *L)
 {
     // get number of arguments
@@ -3255,7 +3277,14 @@ void wxLua_wxShowEvent_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxShowEvent_methods[] = {
+#if !wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)
     { "GetShow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxShowEvent_GetShow, 1, NULL },
+#endif // !wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)
+
+#if wxCHECK_VERSION(2,8,0)
+    { "IsShown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxShowEvent_IsShown, 1, NULL },
+#endif // wxCHECK_VERSION(2,8,0)
+
     { "SetShow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxShowEvent_SetShow, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxShowEvent_delete, 1, NULL },
     { "wxShowEvent", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxShowEvent_constructor, 1, NULL },
@@ -3272,10 +3301,11 @@ int wxShowEvent_methodCount = sizeof(wxShowEvent_methods)/sizeof(wxLuaBindMethod
 // Lua MetaTable Tag for Class 'wxIconizeEvent'
 int wxluatype_wxIconizeEvent = WXLUA_TUNKNOWN;
 
+#if !wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIconizeEvent_Iconized[] = { &wxluatype_wxIconizeEvent, NULL };
 static int LUACALL wxLua_wxIconizeEvent_Iconized(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxIconizeEvent_Iconized[1] = {{ wxLua_wxIconizeEvent_Iconized, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxIconizeEvent_Iconized }};
-//     bool Iconized() const;
+//     !%wxchkver_2_9 || %wxcompat_2_8 bool Iconized() const;
 static int LUACALL wxLua_wxIconizeEvent_Iconized(lua_State *L)
 {
     // get this
@@ -3288,13 +3318,34 @@ static int LUACALL wxLua_wxIconizeEvent_Iconized(lua_State *L)
     return 1;
 }
 
+#endif // !wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)
+
+#if wxCHECK_VERSION(2,8,0)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxIconizeEvent_IsIconized[] = { &wxluatype_wxIconizeEvent, NULL };
+static int LUACALL wxLua_wxIconizeEvent_IsIconized(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxIconizeEvent_IsIconized[1] = {{ wxLua_wxIconizeEvent_IsIconized, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxIconizeEvent_IsIconized }};
+//     %wxchkver_2_8 bool IsIconized() const;
+static int LUACALL wxLua_wxIconizeEvent_IsIconized(lua_State *L)
+{
+    // get this
+    wxIconizeEvent * self = (wxIconizeEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxIconizeEvent);
+    // call IsIconized
+    bool returns = (self->IsIconized());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(2,8,0)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIconizeEvent_delete[] = { &wxluatype_wxIconizeEvent, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxIconizeEvent_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxIconizeEvent_delete }};
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIconizeEvent_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxIconizeEvent_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxIconizeEvent_constructor[1] = {{ wxLua_wxIconizeEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxIconizeEvent_constructor }};
-//     wxIconizeEvent(int winid = 0, bool iconized = true );
+//     wxIconizeEvent(int winid = 0, bool iconized = true);
 static int LUACALL wxLua_wxIconizeEvent_constructor(lua_State *L)
 {
     // get number of arguments
@@ -3323,7 +3374,14 @@ void wxLua_wxIconizeEvent_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxIconizeEvent_methods[] = {
+#if !wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)
     { "Iconized", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxIconizeEvent_Iconized, 1, NULL },
+#endif // !wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)
+
+#if wxCHECK_VERSION(2,8,0)
+    { "IsIconized", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxIconizeEvent_IsIconized, 1, NULL },
+#endif // wxCHECK_VERSION(2,8,0)
+
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxIconizeEvent_delete, 1, NULL },
     { "wxIconizeEvent", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxIconizeEvent_constructor, 1, NULL },
     { 0, 0, 0, 0 },

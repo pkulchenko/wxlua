@@ -414,7 +414,7 @@ class %delete wxLog
     static void DontCreateOnDemand();
     %wxchkver_2_8 static void SetRepetitionCounting(bool bRepetCounting = true);
     %wxchkver_2_8 static bool GetRepetitionCounting();
-    static void SetTraceMask(wxTraceMask ulMask);
+    !%wxchkver_2_9 || %wxcompat_2_8 static void SetTraceMask(wxTraceMask ulMask);
     static void AddTraceMask(const wxString& str);
     static void RemoveTraceMask(const wxString& str);
     static void ClearTraceMasks();
@@ -426,7 +426,7 @@ class %delete wxLog
     static void SetTimestamp(const wxString& ts);
 
     static bool GetVerbose();
-    static wxTraceMask GetTraceMask();
+    !%wxchkver_2_9 || %wxcompat_2_8 static wxTraceMask GetTraceMask();
     static bool IsAllowedTraceMask(const wxString& mask);
     static wxLogLevel GetLogLevel();
     static wxString GetTimestamp();

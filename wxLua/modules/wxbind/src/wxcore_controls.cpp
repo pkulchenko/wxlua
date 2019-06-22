@@ -8016,10 +8016,31 @@ static int LUACALL wxLua_wxSlider_SetTick(lua_State *L)
     return 0;
 }
 
+
+#if (wxCHECK_VERSION(2,8,0) && defined(__WXMSW__)) && (wxLUA_USE_wxSlider && wxUSE_SLIDER)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSlider_SetTickFreq1[] = { &wxluatype_wxSlider, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxSlider_SetTickFreq1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSlider_SetTickFreq1[1] = {{ wxLua_wxSlider_SetTickFreq1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSlider_SetTickFreq1 }};
+//     %wxchkver_2_8 && %win void SetTickFreq(int n);
+static int LUACALL wxLua_wxSlider_SetTickFreq1(lua_State *L)
+{
+    // int n
+    int n = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxSlider * self = (wxSlider *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSlider);
+    // call SetTickFreq
+    self->SetTickFreq(n);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(2,8,0) && defined(__WXMSW__)) && (wxLUA_USE_wxSlider && wxUSE_SLIDER)
+
+#if (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxSlider && wxUSE_SLIDER)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSlider_SetTickFreq[] = { &wxluatype_wxSlider, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSlider_SetTickFreq(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxSlider_SetTickFreq[1] = {{ wxLua_wxSlider_SetTickFreq, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSlider_SetTickFreq }};
-//     void SetTickFreq(int n, int pos);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSlider_SetTickFreq[1] = {{ wxLua_wxSlider_SetTickFreq, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSlider_SetTickFreq }};
+//     !%wxchkver_2_9 || %wxcompat_2_8 void SetTickFreq(int n, int pos);
 static int LUACALL wxLua_wxSlider_SetTickFreq(lua_State *L)
 {
     // int pos
@@ -8033,6 +8054,8 @@ static int LUACALL wxLua_wxSlider_SetTickFreq(lua_State *L)
 
     return 0;
 }
+
+#endif // (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxSlider && wxUSE_SLIDER)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSlider_SetValue[] = { &wxluatype_wxSlider, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSlider_SetValue(lua_State *L);
@@ -8110,6 +8133,23 @@ static int LUACALL wxLua_wxSlider_constructor(lua_State *L)
 
 
 
+#if ((wxCHECK_VERSION(2,8,0) && defined(__WXMSW__)) && (wxLUA_USE_wxSlider && wxUSE_SLIDER))||((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxSlider && wxUSE_SLIDER))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSlider_SetTickFreq_overload[] =
+{
+
+#if (wxCHECK_VERSION(2,8,0) && defined(__WXMSW__)) && (wxLUA_USE_wxSlider && wxUSE_SLIDER)
+    { wxLua_wxSlider_SetTickFreq1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSlider_SetTickFreq1 },
+#endif // (wxCHECK_VERSION(2,8,0) && defined(__WXMSW__)) && (wxLUA_USE_wxSlider && wxUSE_SLIDER)
+
+#if (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxSlider && wxUSE_SLIDER)
+    { wxLua_wxSlider_SetTickFreq, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSlider_SetTickFreq },
+#endif // (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxSlider && wxUSE_SLIDER)
+};
+static int s_wxluafunc_wxLua_wxSlider_SetTickFreq_overload_count = sizeof(s_wxluafunc_wxLua_wxSlider_SetTickFreq_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxCHECK_VERSION(2,8,0) && defined(__WXMSW__)) && (wxLUA_USE_wxSlider && wxUSE_SLIDER))||((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxSlider && wxUSE_SLIDER))
+
 #if (((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxSlider && wxUSE_SLIDER)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||(wxLUA_USE_wxSlider && wxUSE_SLIDER)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSlider_constructor_overload[] =
@@ -8154,7 +8194,11 @@ wxLuaBindMethod wxSlider_methods[] = {
     { "SetSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSlider_SetSelection, 1, NULL },
     { "SetThumbLength", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSlider_SetThumbLength, 1, NULL },
     { "SetTick", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSlider_SetTick, 1, NULL },
-    { "SetTickFreq", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSlider_SetTickFreq, 1, NULL },
+
+#if ((wxCHECK_VERSION(2,8,0) && defined(__WXMSW__)) && (wxLUA_USE_wxSlider && wxUSE_SLIDER))||((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxSlider && wxUSE_SLIDER))
+    { "SetTickFreq", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSlider_SetTickFreq_overload, s_wxluafunc_wxLua_wxSlider_SetTickFreq_overload_count, 0 },
+#endif // ((wxCHECK_VERSION(2,8,0) && defined(__WXMSW__)) && (wxLUA_USE_wxSlider && wxUSE_SLIDER))||((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxLUA_USE_wxSlider && wxUSE_SLIDER))
+
     { "SetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSlider_SetValue, 1, NULL },
 
 #if (((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxSlider && wxUSE_SLIDER)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||(wxLUA_USE_wxSlider && wxUSE_SLIDER)
