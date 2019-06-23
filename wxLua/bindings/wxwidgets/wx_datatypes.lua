@@ -99,11 +99,6 @@ wx_dataTypeTable =
     Name = "lua_State",
     ValueType = "number",
   },
-  ptrdiff_t = {
-    IsNumber = true,
-    Name = "ptrdiff_t",
-    ValueType = "number",
-  },
   short = {
     IsNumber = true,
     Name = "short",
@@ -127,11 +122,6 @@ wx_dataTypeTable =
   uint = {
     IsNumber = true,
     Name = "uint",
-    ValueType = "number",
-  },
-  uintptr_t = {
-    IsNumber = true,
-    Name = "uintptr_t",
     ValueType = "number",
   },
   ulong = {
@@ -2901,6 +2891,11 @@ wx_dataTypeTable =
     Name = "wxInt8",
     ValueType = "number",
   },
+  wxIntPtr = {
+    IsNumber = true,
+    Name = "wxIntPtr",
+    ValueType = "number",
+  },
   wxInternetFSHandler = {
     BaseClasses = {
       [1] = "wxFileSystemHandler",
@@ -5227,6 +5222,11 @@ wx_dataTypeTable =
     IsNumber = false,
     Name = "wxTreebookEvent",
     ValueType = "class",
+  },
+  wxUIntPtr = {
+    IsNumber = true,
+    Name = "wxUIntPtr",
+    ValueType = "number",
   },
   wxULongLong = {
     Condition = "wxUSE_LONGLONG",

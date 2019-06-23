@@ -5595,7 +5595,7 @@ static wxLuaBindClass* wxluabaseclassbinds_wxXPMHandler[] = { NULL };
     extern wxLuaBindMethod wxCheckListBox_methods[];
     extern int wxCheckListBox_methodCount;
     static wxLuaArgType wxluabaseclass_wxluatypes_wxCheckListBox[] = { &wxluatype_wxItemContainer, &wxluatype_wxItemContainerImmutable, NULL };
-    static int wxluabaseclass_vtable_offsets_wxCheckListBox[] = { ptrdiff_t(((ptrdiff_t)(wxItemContainer*)(wxCheckListBox*)&wxluatype_TNONE) - ((ptrdiff_t)(wxCheckListBox*)&wxluatype_TNONE)), ptrdiff_t(((ptrdiff_t)(wxItemContainerImmutable*)(wxCheckListBox*)&wxluatype_TNONE) - ((ptrdiff_t)(wxCheckListBox*)&wxluatype_TNONE)) };
+    static int wxluabaseclass_vtable_offsets_wxCheckListBox[] = { wxIntPtr(((wxIntPtr)(wxItemContainer*)(wxCheckListBox*)&wxluatype_TNONE) - ((wxIntPtr)(wxCheckListBox*)&wxluatype_TNONE)), wxIntPtr(((wxIntPtr)(wxItemContainerImmutable*)(wxCheckListBox*)&wxluatype_TNONE) - ((wxIntPtr)(wxCheckListBox*)&wxluatype_TNONE)) };
     extern void wxLua_wxCheckListBox_delete_function(void** p);
 #endif // (wxLUA_USE_wxCheckListBox && wxUSE_CHECKLISTBOX) && (wxLUA_USE_wxListBox && wxUSE_LISTBOX)
 
@@ -5755,7 +5755,7 @@ extern void wxLua_wxControl_delete_function(void** p);
 extern wxLuaBindMethod wxControlWithItems_methods[];
 extern int wxControlWithItems_methodCount;
 static wxLuaArgType wxluabaseclass_wxluatypes_wxControlWithItems[] = { &wxluatype_wxItemContainer, &wxluatype_wxItemContainerImmutable, NULL };
-static int wxluabaseclass_vtable_offsets_wxControlWithItems[] = { ptrdiff_t(((ptrdiff_t)(wxItemContainer*)(wxControlWithItems*)&wxluatype_TNONE) - ((ptrdiff_t)(wxControlWithItems*)&wxluatype_TNONE)), ptrdiff_t(((ptrdiff_t)(wxItemContainerImmutable*)(wxControlWithItems*)&wxluatype_TNONE) - ((ptrdiff_t)(wxControlWithItems*)&wxluatype_TNONE)) };
+static int wxluabaseclass_vtable_offsets_wxControlWithItems[] = { wxIntPtr(((wxIntPtr)(wxItemContainer*)(wxControlWithItems*)&wxluatype_TNONE) - ((wxIntPtr)(wxControlWithItems*)&wxluatype_TNONE)), wxIntPtr(((wxIntPtr)(wxItemContainerImmutable*)(wxControlWithItems*)&wxluatype_TNONE) - ((wxIntPtr)(wxControlWithItems*)&wxluatype_TNONE)) };
 extern void wxLua_wxControlWithItems_delete_function(void** p);
 extern wxLuaBindMethod wxDisplayChangedEvent_methods[];
 extern int wxDisplayChangedEvent_methodCount;
@@ -6045,7 +6045,7 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern wxLuaBindMethod wxChoice_methods[];
     extern int wxChoice_methodCount;
     static wxLuaArgType wxluabaseclass_wxluatypes_wxChoice[] = { &wxluatype_wxItemContainer, &wxluatype_wxItemContainerImmutable, NULL };
-    static int wxluabaseclass_vtable_offsets_wxChoice[] = { ptrdiff_t(((ptrdiff_t)(wxItemContainer*)(wxChoice*)&wxluatype_TNONE) - ((ptrdiff_t)(wxChoice*)&wxluatype_TNONE)), ptrdiff_t(((ptrdiff_t)(wxItemContainerImmutable*)(wxChoice*)&wxluatype_TNONE) - ((ptrdiff_t)(wxChoice*)&wxluatype_TNONE)) };
+    static int wxluabaseclass_vtable_offsets_wxChoice[] = { wxIntPtr(((wxIntPtr)(wxItemContainer*)(wxChoice*)&wxluatype_TNONE) - ((wxIntPtr)(wxChoice*)&wxluatype_TNONE)), wxIntPtr(((wxIntPtr)(wxItemContainerImmutable*)(wxChoice*)&wxluatype_TNONE) - ((wxIntPtr)(wxChoice*)&wxluatype_TNONE)) };
     extern void wxLua_wxChoice_delete_function(void** p);
 #endif // wxLUA_USE_wxChoice && wxUSE_CHOICE
 
@@ -6086,7 +6086,7 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern wxLuaBindMethod wxComboBox_methods[];
     extern int wxComboBox_methodCount;
     static wxLuaArgType wxluabaseclass_wxluatypes_wxComboBox[] = { &wxluatype_wxItemContainer, &wxluatype_wxItemContainerImmutable, NULL };
-    static int wxluabaseclass_vtable_offsets_wxComboBox[] = { ptrdiff_t(((ptrdiff_t)(wxItemContainer*)(wxComboBox*)&wxluatype_TNONE) - ((ptrdiff_t)(wxComboBox*)&wxluatype_TNONE)), ptrdiff_t(((ptrdiff_t)(wxItemContainerImmutable*)(wxComboBox*)&wxluatype_TNONE) - ((ptrdiff_t)(wxComboBox*)&wxluatype_TNONE)) };
+    static int wxluabaseclass_vtable_offsets_wxComboBox[] = { wxIntPtr(((wxIntPtr)(wxItemContainer*)(wxComboBox*)&wxluatype_TNONE) - ((wxIntPtr)(wxComboBox*)&wxluatype_TNONE)), wxIntPtr(((wxIntPtr)(wxItemContainerImmutable*)(wxComboBox*)&wxluatype_TNONE) - ((wxIntPtr)(wxComboBox*)&wxluatype_TNONE)) };
     extern void wxLua_wxComboBox_delete_function(void** p);
 #endif // wxLUA_USE_wxComboBox && wxUSE_COMBOBOX
 
@@ -6354,7 +6354,7 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern wxLuaBindMethod wxListBox_methods[];
     extern int wxListBox_methodCount;
     static wxLuaArgType wxluabaseclass_wxluatypes_wxListBox[] = { &wxluatype_wxItemContainer, &wxluatype_wxItemContainerImmutable, NULL };
-    static int wxluabaseclass_vtable_offsets_wxListBox[] = { ptrdiff_t(((ptrdiff_t)(wxItemContainer*)(wxListBox*)&wxluatype_TNONE) - ((ptrdiff_t)(wxListBox*)&wxluatype_TNONE)), ptrdiff_t(((ptrdiff_t)(wxItemContainerImmutable*)(wxListBox*)&wxluatype_TNONE) - ((ptrdiff_t)(wxListBox*)&wxluatype_TNONE)) };
+    static int wxluabaseclass_vtable_offsets_wxListBox[] = { wxIntPtr(((wxIntPtr)(wxItemContainer*)(wxListBox*)&wxluatype_TNONE) - ((wxIntPtr)(wxListBox*)&wxluatype_TNONE)), wxIntPtr(((wxIntPtr)(wxItemContainerImmutable*)(wxListBox*)&wxluatype_TNONE) - ((wxIntPtr)(wxListBox*)&wxluatype_TNONE)) };
     extern void wxLua_wxListBox_delete_function(void** p);
 #endif // wxLUA_USE_wxListBox && wxUSE_LISTBOX
 
@@ -6643,7 +6643,7 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern wxLuaBindMethod wxTextCtrl_methods[];
     extern int wxTextCtrl_methodCount;
     static wxLuaArgType wxluabaseclass_wxluatypes_wxTextCtrl[] = { &wxluatype_wxTextEntry, NULL };
-    static int wxluabaseclass_vtable_offsets_wxTextCtrl[] = { ptrdiff_t(((ptrdiff_t)(wxTextEntry*)(wxTextCtrl*)&wxluatype_TNONE) - ((ptrdiff_t)(wxTextCtrl*)&wxluatype_TNONE)) };
+    static int wxluabaseclass_vtable_offsets_wxTextCtrl[] = { wxIntPtr(((wxIntPtr)(wxTextEntry*)(wxTextCtrl*)&wxluatype_TNONE) - ((wxIntPtr)(wxTextCtrl*)&wxluatype_TNONE)) };
     extern void wxLua_wxTextCtrl_delete_function(void** p);
     extern wxLuaBindMethod wxTextEntry_methods[];
     extern int wxTextEntry_methodCount;

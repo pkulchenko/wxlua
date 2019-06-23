@@ -3217,7 +3217,7 @@ static int LUACALL wxLua_wxEvtHandler_GetClientData(lua_State *L)
     // get this
     wxEvtHandler * self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
     // call GetClientData
-    uintptr_t returns = (uintptr_t)self->GetClientData();
+    wxUIntPtr returns = (wxUIntPtr)self->GetClientData();
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -3424,7 +3424,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_SetClientData[1] = {{ wxLua
 static int LUACALL wxLua_wxEvtHandler_SetClientData(lua_State *L)
 {
     // voidptr_long number
-    uintptr_t number = (uintptr_t)wxlua_getnumbertype(L, 2);
+    wxUIntPtr number = (wxUIntPtr)wxlua_getnumbertype(L, 2);
     // get this
     wxEvtHandler * self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
     // call SetClientData

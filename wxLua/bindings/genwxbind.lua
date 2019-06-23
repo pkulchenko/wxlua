@@ -226,8 +226,6 @@ function InitDataTypes()
     AllocDataType("long",               "number", true)
     AllocDataType("short",              "number", true)
     AllocDataType("size_t",             "number", true)
-    AllocDataType("ptrdiff_t",          "number", true)
-    AllocDataType("uintptr_t",          "number", true)
     AllocDataType("time_t",             "number", true)
     AllocDataType("unsigned char",      "number", true)
     AllocDataType("unsigned short",     "number", true)
@@ -254,6 +252,8 @@ function InitDataTypes()
     AllocDataType("wxUint32",           "number", true)
     AllocDataType("wxInt64",            "number", true)
     AllocDataType("wxUint64",           "number", true)
+    AllocDataType("wxIntPtr",           "number", true)
+    AllocDataType("wxUIntPtr",          "number", true)
     AllocDataType("wxFloat32",          "number", true)
     AllocDataType("wxFloat64",          "number", true)
     AllocDataType("wxDouble",           "number", true)
@@ -3661,8 +3661,8 @@ function GenerateLuaLanguageBinding(interface)
 
                     -- the function takes (void*), but we just pass a long
                     if argType == "voidptr_long" then
-                        argType = "uintptr_t"
-                        argTypeWithAttrib = "uintptr_t"
+                        argType = "wxUIntPtr"
+                        argTypeWithAttrib = "wxUIntPtr"
                         argCast = "void*"
                     end
 
@@ -4059,7 +4059,7 @@ function GenerateLuaLanguageBinding(interface)
                     end
 
                     if string.find(memberTypeWithAttrib, "voidptr_long", 1, 1) then
-                        memberTypeWithAttrib = "uintptr_t"
+                        memberTypeWithAttrib = "wxUIntPtr"
                     end
                 end
 
@@ -4413,7 +4413,7 @@ function GenerateLuaLanguageBinding(interface)
 
                             -- only store the ptr_diffs to higher base classes, the 1st level is always 0
                             if level > 1 then
-                                local ptr_diff = "ptrdiff_t(((ptrdiff_t)("..dataTypeTable[name].BaseClasses[i].."*)("..parseObject.Name.."*)&wxluatype_TNONE) - ((ptrdiff_t)("..parseObject.Name.."*)&wxluatype_TNONE))"
+                                local ptr_diff = "wxIntPtr(((wxIntPtr)("..dataTypeTable[name].BaseClasses[i].."*)("..parseObject.Name.."*)&wxluatype_TNONE) - ((wxIntPtr)("..parseObject.Name.."*)&wxluatype_TNONE))"
                                 base_diff_table[#base_diff_table+1] = ptr_diff
                                 base_type_table[#base_type_table+1] = "&wxluatype_"..dataTypeTable[name].BaseClasses[i]
                             end

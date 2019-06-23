@@ -413,11 +413,11 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_const_iterator_delete[1] = {{ w
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_const_iterator_op_add[] = { &wxluatype_wxString_const_iterator, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxString_const_iterator_op_add(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_const_iterator_op_add[1] = {{ wxLua_wxString_const_iterator_op_add, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxString_const_iterator_op_add }};
-//     wxString::const_iterator operator+(ptrdiff_t n) const;
+//     wxString::const_iterator operator+(wxIntPtr n) const;
 static int LUACALL wxLua_wxString_const_iterator_op_add(lua_State *L)
 {
-    // ptrdiff_t n
-    ptrdiff_t n = (ptrdiff_t)wxlua_getnumbertype(L, 2);
+    // wxIntPtr n
+    wxIntPtr n = (wxIntPtr)wxlua_getnumbertype(L, 2);
     // get this
     wxString::const_iterator * self = (wxString::const_iterator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxString_const_iterator);
     // call op_add
@@ -450,7 +450,7 @@ static int LUACALL wxLua_wxString_const_iterator_op_deref(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_const_iterator_op_set[] = { &wxluatype_wxString_const_iterator, &wxluatype_wxString_const_iterator, NULL };
 static int LUACALL wxLua_wxString_const_iterator_op_set(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_const_iterator_op_set[1] = {{ wxLua_wxString_const_iterator_op_set, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxString_const_iterator_op_set }};
-//     wxString::const_iterator& operator=(const wxString::const_iterator& i );
+//     wxString::const_iterator& operator=(const wxString::const_iterator& i);
 static int LUACALL wxLua_wxString_const_iterator_op_set(lua_State *L)
 {
     // const wxString::const_iterator i
@@ -469,11 +469,11 @@ static int LUACALL wxLua_wxString_const_iterator_op_set(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_const_iterator_op_sub[] = { &wxluatype_wxString_const_iterator, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxString_const_iterator_op_sub(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_const_iterator_op_sub[1] = {{ wxLua_wxString_const_iterator_op_sub, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxString_const_iterator_op_sub }};
-//     wxString::const_iterator operator-(ptrdiff_t n) const;
+//     wxString::const_iterator operator-(wxIntPtr n) const;
 static int LUACALL wxLua_wxString_const_iterator_op_sub(lua_State *L)
 {
-    // ptrdiff_t n
-    ptrdiff_t n = (ptrdiff_t)wxlua_getnumbertype(L, 2);
+    // wxIntPtr n
+    wxIntPtr n = (wxIntPtr)wxlua_getnumbertype(L, 2);
     // get this
     wxString::const_iterator * self = (wxString::const_iterator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxString_const_iterator);
     // call op_sub
@@ -490,7 +490,7 @@ static int LUACALL wxLua_wxString_const_iterator_op_sub(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_const_iterator_constructor2[] = { &wxluatype_wxString_iterator, NULL };
 static int LUACALL wxLua_wxString_const_iterator_constructor2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_const_iterator_constructor2[1] = {{ wxLua_wxString_const_iterator_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxString_const_iterator_constructor2 }};
-//     wxString::const_iterator(const wxString::iterator& i );
+//     wxString::const_iterator(const wxString::iterator& i);
 static int LUACALL wxLua_wxString_const_iterator_constructor2(lua_State *L)
 {
     // const wxString::iterator i
@@ -508,7 +508,7 @@ static int LUACALL wxLua_wxString_const_iterator_constructor2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_const_iterator_constructor1[] = { &wxluatype_wxString_const_iterator, NULL };
 static int LUACALL wxLua_wxString_const_iterator_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_const_iterator_constructor1[1] = {{ wxLua_wxString_const_iterator_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxString_const_iterator_constructor1 }};
-//     wxString::const_iterator(const wxString::const_iterator& i );
+//     wxString::const_iterator(const wxString::const_iterator& i);
 static int LUACALL wxLua_wxString_const_iterator_constructor1(lua_State *L)
 {
     // const wxString::const_iterator i
@@ -525,7 +525,7 @@ static int LUACALL wxLua_wxString_const_iterator_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxString_const_iterator_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_const_iterator_constructor[1] = {{ wxLua_wxString_const_iterator_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxString::const_iterator( );
+//     wxString::const_iterator();
 static int LUACALL wxLua_wxString_const_iterator_constructor(lua_State *L)
 {
     // call constructor
@@ -593,11 +593,11 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_iterator_delete[1] = {{ wxlua_u
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_iterator_op_add[] = { &wxluatype_wxString_iterator, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxString_iterator_op_add(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_iterator_op_add[1] = {{ wxLua_wxString_iterator_op_add, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxString_iterator_op_add }};
-//     wxString::iterator operator+(ptrdiff_t n) const;
+//     wxString::iterator operator+(wxIntPtr n) const;
 static int LUACALL wxLua_wxString_iterator_op_add(lua_State *L)
 {
-    // ptrdiff_t n
-    ptrdiff_t n = (ptrdiff_t)wxlua_getnumbertype(L, 2);
+    // wxIntPtr n
+    wxIntPtr n = (wxIntPtr)wxlua_getnumbertype(L, 2);
     // get this
     wxString::iterator * self = (wxString::iterator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxString_iterator);
     // call op_add
@@ -630,7 +630,7 @@ static int LUACALL wxLua_wxString_iterator_op_deref(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_iterator_op_set[] = { &wxluatype_wxString_iterator, &wxluatype_wxString_iterator, NULL };
 static int LUACALL wxLua_wxString_iterator_op_set(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_iterator_op_set[1] = {{ wxLua_wxString_iterator_op_set, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxString_iterator_op_set }};
-//     wxString::iterator& operator=(const wxString::iterator& i );
+//     wxString::iterator& operator=(const wxString::iterator& i);
 static int LUACALL wxLua_wxString_iterator_op_set(lua_State *L)
 {
     // const wxString::iterator i
@@ -649,11 +649,11 @@ static int LUACALL wxLua_wxString_iterator_op_set(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_iterator_op_sub[] = { &wxluatype_wxString_iterator, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxString_iterator_op_sub(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_iterator_op_sub[1] = {{ wxLua_wxString_iterator_op_sub, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxString_iterator_op_sub }};
-//     wxString::iterator operator-(ptrdiff_t n) const;
+//     wxString::iterator operator-(wxIntPtr n) const;
 static int LUACALL wxLua_wxString_iterator_op_sub(lua_State *L)
 {
-    // ptrdiff_t n
-    ptrdiff_t n = (ptrdiff_t)wxlua_getnumbertype(L, 2);
+    // wxIntPtr n
+    wxIntPtr n = (wxIntPtr)wxlua_getnumbertype(L, 2);
     // get this
     wxString::iterator * self = (wxString::iterator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxString_iterator);
     // call op_sub
@@ -670,7 +670,7 @@ static int LUACALL wxLua_wxString_iterator_op_sub(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxString_iterator_constructor1[] = { &wxluatype_wxString_iterator, NULL };
 static int LUACALL wxLua_wxString_iterator_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_iterator_constructor1[1] = {{ wxLua_wxString_iterator_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxString_iterator_constructor1 }};
-//     wxString::iterator(const wxString::iterator& i );
+//     wxString::iterator(const wxString::iterator& i);
 static int LUACALL wxLua_wxString_iterator_constructor1(lua_State *L)
 {
     // const wxString::iterator i
@@ -687,7 +687,7 @@ static int LUACALL wxLua_wxString_iterator_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxString_iterator_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_iterator_constructor[1] = {{ wxLua_wxString_iterator_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxString::iterator( );
+//     wxString::iterator();
 static int LUACALL wxLua_wxString_iterator_constructor(lua_State *L)
 {
     // call constructor
@@ -1091,7 +1091,7 @@ static int LUACALL wxLua_wxClientDataContainer_GetClientData(lua_State *L)
     // get this
     wxClientDataContainer * self = (wxClientDataContainer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxClientDataContainer);
     // call GetClientData
-    uintptr_t returns = (uintptr_t)self->GetClientData();
+    wxUIntPtr returns = (wxUIntPtr)self->GetClientData();
     // push the result number
     lua_pushnumber(L, returns);
 
@@ -1121,7 +1121,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxClientDataContainer_SetClientData[1] =
 static int LUACALL wxLua_wxClientDataContainer_SetClientData(lua_State *L)
 {
     // voidptr_long data
-    uintptr_t data = (uintptr_t)wxlua_getnumbertype(L, 2);
+    wxUIntPtr data = (wxUIntPtr)wxlua_getnumbertype(L, 2);
     // get this
     wxClientDataContainer * self = (wxClientDataContainer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxClientDataContainer);
     // call SetClientData

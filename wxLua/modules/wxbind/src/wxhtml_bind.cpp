@@ -4455,7 +4455,7 @@ static int LUACALL wxLua_wxSimpleHtmlListBox_Append2(lua_State *L);
 static int LUACALL wxLua_wxSimpleHtmlListBox_Append2(lua_State *L)
 {
     // voidptr_long number
-    uintptr_t number = (uintptr_t)wxlua_getnumbertype(L, 3);
+    wxUIntPtr number = (wxUIntPtr)wxlua_getnumbertype(L, 3);
     // const wxString item
     const wxString item = wxlua_getwxStringtype(L, 2);
     // get this
@@ -6199,7 +6199,7 @@ static wxLuaBindClass* wxluabaseclassbinds_wxSimpleHtmlListBox[] = { NULL, NULL 
     extern wxLuaBindMethod wxSimpleHtmlListBox_methods[];
     extern int wxSimpleHtmlListBox_methodCount;
     static wxLuaArgType wxluabaseclass_wxluatypes_wxSimpleHtmlListBox[] = { &wxluatype_wxHtmlWindowInterface, NULL };
-    static int wxluabaseclass_vtable_offsets_wxSimpleHtmlListBox[] = { ptrdiff_t(((ptrdiff_t)(wxHtmlWindowInterface*)(wxSimpleHtmlListBox*)&wxluatype_TNONE) - ((ptrdiff_t)(wxSimpleHtmlListBox*)&wxluatype_TNONE)) };
+    static int wxluabaseclass_vtable_offsets_wxSimpleHtmlListBox[] = { wxIntPtr(((wxIntPtr)(wxHtmlWindowInterface*)(wxSimpleHtmlListBox*)&wxluatype_TNONE) - ((wxIntPtr)(wxSimpleHtmlListBox*)&wxluatype_TNONE)) };
     extern void wxLua_wxSimpleHtmlListBox_delete_function(void** p);
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
 

@@ -1445,7 +1445,7 @@ static int LUACALL wxLua_wxBitmapComboBox_Append1(lua_State *L);
 static int LUACALL wxLua_wxBitmapComboBox_Append1(lua_State *L)
 {
     // voidptr_long data
-    uintptr_t data = (uintptr_t)wxlua_getnumbertype(L, 4);
+    wxUIntPtr data = (wxUIntPtr)wxlua_getnumbertype(L, 4);
     // const wxBitmap bitmap
     const wxBitmap * bitmap = (const wxBitmap *)wxluaT_getuserdatatype(L, 3, wxluatype_wxBitmap);
     // const wxString item
@@ -1710,7 +1710,7 @@ static int LUACALL wxLua_wxBitmapComboBox_Insert1(lua_State *L);
 static int LUACALL wxLua_wxBitmapComboBox_Insert1(lua_State *L)
 {
     // voidptr_long data
-    uintptr_t data = (uintptr_t)wxlua_getnumbertype(L, 5);
+    wxUIntPtr data = (wxUIntPtr)wxlua_getnumbertype(L, 5);
     // unsigned int pos
     unsigned int pos = (unsigned int)wxlua_getuintegertype(L, 4);
     // const wxBitmap bitmap

@@ -53,16 +53,16 @@ class %delete wxString
 
 class %delete wxString::const_iterator
 {
-    wxString::const_iterator( );
-    wxString::const_iterator(const wxString::const_iterator& i );
-    wxString::const_iterator(const wxString::iterator& i );
+    wxString::const_iterator();
+    wxString::const_iterator(const wxString::const_iterator& i);
+    wxString::const_iterator(const wxString::iterator& i);
 
     //wxUniChar operator*() const;
     char operator*() const;
 
-    wxString::const_iterator& operator=(const wxString::const_iterator& i );
-    wxString::const_iterator operator+(ptrdiff_t n) const;
-    wxString::const_iterator operator-(ptrdiff_t n) const;
+    wxString::const_iterator& operator=(const wxString::const_iterator& i);
+    wxString::const_iterator operator+(wxIntPtr n) const;
+    wxString::const_iterator operator-(wxIntPtr n) const;
 };
 
 // ---------------------------------------------------------------------------
@@ -70,15 +70,15 @@ class %delete wxString::const_iterator
 
 class %delete wxString::iterator
 {
-    wxString::iterator( );
-    wxString::iterator(const wxString::iterator& i );
+    wxString::iterator();
+    wxString::iterator(const wxString::iterator& i);
 
     //wxUniChar operator*() const;
     char operator*() const;
 
-    wxString::iterator& operator=(const wxString::iterator& i );
-    wxString::iterator operator+(ptrdiff_t n) const;
-    wxString::iterator operator-(ptrdiff_t n) const;
+    wxString::iterator& operator=(const wxString::iterator& i);
+    wxString::iterator operator+(wxIntPtr n) const;
+    wxString::iterator operator-(wxIntPtr n) const;
 };
 
 #endif
