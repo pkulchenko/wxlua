@@ -57,8 +57,10 @@ class wxGLCanvas : public wxWindow
     static bool IsExtensionSupported(const char *extension);
 #endif
 
-    %mac void SetCurrent();
-    %wxchkver_2_8&!%mac void SetCurrent(const wxGLContext& RC) const;
+    !%wxchkver_3_1_1 && %mac void SetCurrent();
+    %wxchkver_2_8 && !%wxchkver_3_1_1 && !%mac void SetCurrent(const wxGLContext& RC) const;
+
+    %wxchkver_3_1_1 bool SetCurrent(const wxGLContext& context) const;
 
     void SetColour(const wxString& colour);
     void SwapBuffers();

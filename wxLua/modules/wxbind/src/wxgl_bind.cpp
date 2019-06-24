@@ -99,11 +99,32 @@ static int LUACALL wxLua_wxGLCanvas_SetColour(lua_State *L)
 }
 
 
-#if ((wxCHECK_VERSION(2,8,0) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGLCanvas_SetCurrent2[] = { &wxluatype_wxGLCanvas, &wxluatype_wxGLContext, NULL };
+static int LUACALL wxLua_wxGLCanvas_SetCurrent2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_SetCurrent2[1] = {{ wxLua_wxGLCanvas_SetCurrent2, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGLCanvas_SetCurrent2 }};
+//     %wxchkver_3_1_1 bool SetCurrent(const wxGLContext& context) const;
+static int LUACALL wxLua_wxGLCanvas_SetCurrent2(lua_State *L)
+{
+    // const wxGLContext context
+    const wxGLContext * context = (const wxGLContext *)wxluaT_getuserdatatype(L, 2, wxluatype_wxGLContext);
+    // get this
+    wxGLCanvas * self = (wxGLCanvas *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGLCanvas);
+    // call SetCurrent
+    bool returns = (self->SetCurrent(*context));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+
+#if ((wxCHECK_VERSION(2,8,0) && !wxCHECK_VERSION(3,1,1) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLCanvas_SetCurrent1[] = { &wxluatype_wxGLCanvas, &wxluatype_wxGLContext, NULL };
 static int LUACALL wxLua_wxGLCanvas_SetCurrent1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_SetCurrent1[1] = {{ wxLua_wxGLCanvas_SetCurrent1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGLCanvas_SetCurrent1 }};
-//     %wxchkver_2_8&!%mac void SetCurrent(const wxGLContext& RC) const;
+//     %wxchkver_2_8 && !%wxchkver_3_1_1 && !%mac void SetCurrent(const wxGLContext& RC) const;
 static int LUACALL wxLua_wxGLCanvas_SetCurrent1(lua_State *L)
 {
     // const wxGLContext RC
@@ -116,13 +137,13 @@ static int LUACALL wxLua_wxGLCanvas_SetCurrent1(lua_State *L)
     return 0;
 }
 
-#endif // ((wxCHECK_VERSION(2,8,0) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+#endif // ((wxCHECK_VERSION(2,8,0) && !wxCHECK_VERSION(3,1,1) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
 
-#if (defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+#if (!wxCHECK_VERSION(3,1,1) && defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLCanvas_SetCurrent[] = { &wxluatype_wxGLCanvas, NULL };
 static int LUACALL wxLua_wxGLCanvas_SetCurrent(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_SetCurrent[1] = {{ wxLua_wxGLCanvas_SetCurrent, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLCanvas_SetCurrent }};
-//     %mac void SetCurrent();
+//     !%wxchkver_3_1_1 && %mac void SetCurrent();
 static int LUACALL wxLua_wxGLCanvas_SetCurrent(lua_State *L)
 {
     // get this
@@ -133,7 +154,7 @@ static int LUACALL wxLua_wxGLCanvas_SetCurrent(lua_State *L)
     return 0;
 }
 
-#endif // (defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+#endif // (!wxCHECK_VERSION(3,1,1) && defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLCanvas_SwapBuffers[] = { &wxluatype_wxGLCanvas, NULL };
 static int LUACALL wxLua_wxGLCanvas_SwapBuffers(lua_State *L);
@@ -352,22 +373,26 @@ static int s_wxluafunc_wxLua_wxGLCanvas_IsDisplaySupported_overload_count = size
 
 #endif // ((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))
 
-#if (((wxCHECK_VERSION(2,8,0) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))||((defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))
+#if (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))||(((wxCHECK_VERSION(2,8,0) && !wxCHECK_VERSION(3,1,1) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))||((!wxCHECK_VERSION(3,1,1) && defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_SetCurrent_overload[] =
 {
 
-#if ((wxCHECK_VERSION(2,8,0) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
-    { wxLua_wxGLCanvas_SetCurrent1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGLCanvas_SetCurrent1 },
-#endif // ((wxCHECK_VERSION(2,8,0) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+    { wxLua_wxGLCanvas_SetCurrent2, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGLCanvas_SetCurrent2 },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
 
-#if (defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+#if ((wxCHECK_VERSION(2,8,0) && !wxCHECK_VERSION(3,1,1) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+    { wxLua_wxGLCanvas_SetCurrent1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGLCanvas_SetCurrent1 },
+#endif // ((wxCHECK_VERSION(2,8,0) && !wxCHECK_VERSION(3,1,1) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+
+#if (!wxCHECK_VERSION(3,1,1) && defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
     { wxLua_wxGLCanvas_SetCurrent, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGLCanvas_SetCurrent },
-#endif // (defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
+#endif // (!wxCHECK_VERSION(3,1,1) && defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)
 };
 static int s_wxluafunc_wxLua_wxGLCanvas_SetCurrent_overload_count = sizeof(s_wxluafunc_wxLua_wxGLCanvas_SetCurrent_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (((wxCHECK_VERSION(2,8,0) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))||((defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))||(((wxCHECK_VERSION(2,8,0) && !wxCHECK_VERSION(3,1,1) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))||((!wxCHECK_VERSION(3,1,1) && defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))
 
 #if (((((!defined(__WXMAC__)) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxPalette && wxUSE_PALETTE)) && (wxLUA_USE_wxPointSizeRect))||(((((!defined(__WXMAC__)) && ((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxPalette && wxUSE_PALETTE)) && (wxLUA_USE_wxPointSizeRect))||(((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxPalette && wxUSE_PALETTE)) && (wxLUA_USE_wxPointSizeRect))
 // function overload table
@@ -416,9 +441,9 @@ wxLuaBindMethod wxGLCanvas_methods[] = {
 
     { "SetColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLCanvas_SetColour, 1, NULL },
 
-#if (((wxCHECK_VERSION(2,8,0) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))||((defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))
+#if (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))||(((wxCHECK_VERSION(2,8,0) && !wxCHECK_VERSION(3,1,1) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))||((!wxCHECK_VERSION(3,1,1) && defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))
     { "SetCurrent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLCanvas_SetCurrent_overload, s_wxluafunc_wxLua_wxGLCanvas_SetCurrent_overload_count, 0 },
-#endif // (((wxCHECK_VERSION(2,8,0) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))||((defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))||(((wxCHECK_VERSION(2,8,0) && !wxCHECK_VERSION(3,1,1) && !defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))||((!wxCHECK_VERSION(3,1,1) && defined(__WXMAC__)) && (wxLUA_USE_wxGLCanvas && wxUSE_GLCANVAS))
 
     { "SwapBuffers", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGLCanvas_SwapBuffers, 1, NULL },
 

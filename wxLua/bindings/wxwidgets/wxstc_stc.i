@@ -4231,7 +4231,8 @@ class wxStyledTextCtrl : public wxControl
     /**
         Set the current styling position to start.
     */
-    void StartStyling(int pos, unsigned int mask); // wxLua - mask is unsigned to keep all the bits
+    %wxchkver_3_1_1 void StartStyling(int pos);
+    !%wxchkver_3_1_1 || %wxcompat_3_0 void StartStyling(int pos, unsigned int mask);
 
     /**
         Change style from current styling position for length characters to a style
@@ -7117,21 +7118,21 @@ class wxStyledTextCtrl : public wxControl
 
         @deprecated
     */
-    void SetStyleBits(int bits);
+    !%wxchkver_3_1_1 || %wxcompat_3_0 void SetStyleBits(int bits);
 
     /**
         Retrieve number of bits in style bytes used to hold the lexical state.
 
         @deprecated
     */
-    int GetStyleBits() const;
+    !%wxchkver_3_1_1 || %wxcompat_3_0 int GetStyleBits() const;
 
     /**
         Retrieve the number of bits the current lexer needs for styling.
 
         @deprecated
     */
-    int GetStyleBitsNeeded() const;
+    !%wxchkver_3_1_1 || %wxcompat_3_0 int GetStyleBitsNeeded() const;
 
     //@}
 
@@ -7461,7 +7462,7 @@ class %delete wxStyledTextEvent : public wxCommandEvent
     %wxEventType wxEVT_STC_SAVEPOINTREACHED    // EVT_STC_SAVEPOINTREACHED(id, fn);
     %wxEventType wxEVT_STC_SAVEPOINTLEFT       // EVT_STC_SAVEPOINTLEFT(id, fn);
     %wxEventType wxEVT_STC_ROMODIFYATTEMPT     // EVT_STC_ROMODIFYATTEMPT(id, fn);
-    %wxEventType wxEVT_STC_KEY                 // EVT_STC_KEY(id, fn);
+    !%wxchkver_3_1_1 || %wxcompat_3_0 %wxEventType wxEVT_STC_KEY                 // EVT_STC_KEY(id, fn);
     %wxEventType wxEVT_STC_DOUBLECLICK         // EVT_STC_DOUBLECLICK(id, fn);
     %wxEventType wxEVT_STC_UPDATEUI            // EVT_STC_UPDATEUI(id, fn);
     %wxEventType wxEVT_STC_MODIFIED            // EVT_STC_MODIFIED(id, fn);
@@ -7470,7 +7471,7 @@ class %delete wxStyledTextEvent : public wxCommandEvent
     %wxEventType wxEVT_STC_NEEDSHOWN           // EVT_STC_NEEDSHOWN(id, fn);
     %wxEventType wxEVT_STC_PAINTED             // EVT_STC_PAINTED(id, fn);
     %wxEventType wxEVT_STC_USERLISTSELECTION   // EVT_STC_USERLISTSELECTION(id, fn);
-    %wxEventType wxEVT_STC_URIDROPPED          // EVT_STC_URIDROPPED(id, fn);
+    !%wxchkver_3_1_1 || %wxcompat_3_0 %wxEventType wxEVT_STC_URIDROPPED          // EVT_STC_URIDROPPED(id, fn);
     %wxEventType wxEVT_STC_DWELLSTART          // EVT_STC_DWELLSTART(id, fn);
     %wxEventType wxEVT_STC_DWELLEND            // EVT_STC_DWELLEND(id, fn);
     %wxEventType wxEVT_STC_START_DRAG          // EVT_STC_START_DRAG(id, fn);
