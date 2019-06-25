@@ -1133,10 +1133,31 @@ static int LUACALL wxLua_wxPrintData_SetNoCopies(lua_State *L)
     return 0;
 }
 
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPrintData_SetOrientation1[] = { &wxluatype_wxPrintData, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxPrintData_SetOrientation1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPrintData_SetOrientation1[1] = {{ wxLua_wxPrintData_SetOrientation1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPrintData_SetOrientation1 }};
+//     %wxchkver_3_0 void SetOrientation(wxPrintOrientation orient);
+static int LUACALL wxLua_wxPrintData_SetOrientation1(lua_State *L)
+{
+    // wxPrintOrientation orient
+    wxPrintOrientation orient = (wxPrintOrientation)wxlua_getenumtype(L, 2);
+    // get this
+    wxPrintData * self = (wxPrintData *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPrintData);
+    // call SetOrientation
+    self->SetOrientation(orient);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
+
+#if (!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPrintData_SetOrientation[] = { &wxluatype_wxPrintData, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPrintData_SetOrientation(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPrintData_SetOrientation[1] = {{ wxLua_wxPrintData_SetOrientation, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPrintData_SetOrientation }};
-//     void SetOrientation(int orient );
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPrintData_SetOrientation[1] = {{ wxLua_wxPrintData_SetOrientation, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPrintData_SetOrientation }};
+//     !%wxchkver_3_0 void SetOrientation(int orient);
 static int LUACALL wxLua_wxPrintData_SetOrientation(lua_State *L)
 {
     // int orient
@@ -1149,6 +1170,7 @@ static int LUACALL wxLua_wxPrintData_SetOrientation(lua_State *L)
     return 0;
 }
 
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPrintData_SetOrientationReversed[] = { &wxluatype_wxPrintData, &wxluatype_TBOOLEAN, NULL };
@@ -1308,6 +1330,23 @@ static int LUACALL wxLua_wxPrintData_constructor(lua_State *L)
 
 
 
+#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE))||((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPrintData_SetOrientation_overload[] =
+{
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
+    { wxLua_wxPrintData_SetOrientation1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPrintData_SetOrientation1 },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
+
+#if (!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
+    { wxLua_wxPrintData_SetOrientation, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPrintData_SetOrientation },
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
+};
+static int s_wxluafunc_wxLua_wxPrintData_SetOrientation_overload_count = sizeof(s_wxluafunc_wxLua_wxPrintData_SetOrientation_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE))||((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE))
+
 #if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPrintData_constructor_overload[] =
@@ -1374,7 +1413,10 @@ wxLuaBindMethod wxPrintData_methods[] = {
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
 
     { "SetNoCopies", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPrintData_SetNoCopies, 1, NULL },
-    { "SetOrientation", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPrintData_SetOrientation, 1, NULL },
+
+#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE))||((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE))
+    { "SetOrientation", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPrintData_SetOrientation_overload, s_wxluafunc_wxLua_wxPrintData_SetOrientation_overload_count, 0 },
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE))||((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE))
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
     { "SetOrientationReversed", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPrintData_SetOrientationReversed, 1, NULL },

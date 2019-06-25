@@ -4037,6 +4037,12 @@ wx_dataTypeTable =
     Name = "wxPrintMode",
     ValueType = "enum",
   },
+  wxPrintOrientation = {
+    Condition = "(wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)",
+    IsNumber = true,
+    Name = "wxPrintOrientation",
+    ValueType = "enum",
+  },
   wxPrintPreview = {
     BaseClasses = {
       [1] = "wxObject",

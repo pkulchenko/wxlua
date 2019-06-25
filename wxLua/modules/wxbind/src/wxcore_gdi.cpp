@@ -6382,11 +6382,67 @@ int wxFontEnumerator_methodCount = sizeof(wxFontEnumerator_methods)/sizeof(wxLua
 // Lua MetaTable Tag for Class 'wxFontList'
 int wxluatype_wxFontList = WXLUA_TUNKNOWN;
 
-#if ((wxLUA_USE_wxFont) && (wxLUA_USE_wxFontList)) && (wxUSE_INTL)
+#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont2[] = { &wxluatype_wxFontList, &wxluatype_wxFontInfo, NULL };
+static int LUACALL wxLua_wxFontList_FindOrCreateFont2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontList_FindOrCreateFont2[1] = {{ wxLua_wxFontList_FindOrCreateFont2, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont2 }};
+//     %wxchkver_3_0 wxFont *FindOrCreateFont(const wxFontInfo& fontInfo);
+static int LUACALL wxLua_wxFontList_FindOrCreateFont2(lua_State *L)
+{
+    // const wxFontInfo fontInfo
+    const wxFontInfo * fontInfo = (const wxFontInfo *)wxluaT_getuserdatatype(L, 2, wxluatype_wxFontInfo);
+    // get this
+    wxFontList * self = (wxFontList *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFontList);
+    // call FindOrCreateFont
+    wxFont* returns = (wxFont*)self->FindOrCreateFont(*fontInfo);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxFont);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)
+
+#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont1[] = { &wxluatype_wxFontList, &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TINTEGER, &wxluatype_TINTEGER, &wxluatype_TBOOLEAN, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxFontList_FindOrCreateFont1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontList_FindOrCreateFont1[1] = {{ wxLua_wxFontList_FindOrCreateFont1, WXLUAMETHOD_METHOD, 5, 8, s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont1 }};
+//     %wxchkver_3_0 wxFont *FindOrCreateFont(int pointSize, wxFontFamily family, wxFontStyle style, wxFontWeight weight, bool underline = false, const wxString& face = wxEmptyString, wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
+static int LUACALL wxLua_wxFontList_FindOrCreateFont1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxFontEncoding encoding = wxFONTENCODING_DEFAULT
+    wxFontEncoding encoding = (argCount >= 8 ? (wxFontEncoding)wxlua_getenumtype(L, 8) : wxFONTENCODING_DEFAULT);
+    // const wxString face = wxEmptyString
+    const wxString face = (argCount >= 7 ? wxlua_getwxStringtype(L, 7) : wxString(wxEmptyString));
+    // bool underline = false
+    bool underline = (argCount >= 6 ? wxlua_getbooleantype(L, 6) : false);
+    // wxFontWeight weight
+    wxFontWeight weight = (wxFontWeight)wxlua_getenumtype(L, 5);
+    // wxFontStyle style
+    wxFontStyle style = (wxFontStyle)wxlua_getenumtype(L, 4);
+    // wxFontFamily family
+    wxFontFamily family = (wxFontFamily)wxlua_getenumtype(L, 3);
+    // int pointSize
+    int pointSize = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxFontList * self = (wxFontList *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFontList);
+    // call FindOrCreateFont
+    wxFont* returns = (wxFont*)self->FindOrCreateFont(pointSize, family, style, weight, underline, face, encoding);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxFont);
+
+    return 1;
+}
+
+#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+
+#if (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont[] = { &wxluatype_wxFontList, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TBOOLEAN, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFontList_FindOrCreateFont(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontList_FindOrCreateFont[1] = {{ wxLua_wxFontList_FindOrCreateFont, WXLUAMETHOD_METHOD, 5, 8, s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont }};
-//     wxFont* FindOrCreateFont(int pointSize, int family, int style, int weight, bool underline = false, const wxString &faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontList_FindOrCreateFont[1] = {{ wxLua_wxFontList_FindOrCreateFont, WXLUAMETHOD_METHOD, 5, 8, s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont }};
+//     !%wxchkver_3_0 wxFont* FindOrCreateFont(int pointSize, int family, int style, int weight, bool underline = false, const wxString &faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
 static int LUACALL wxLua_wxFontList_FindOrCreateFont(lua_State *L)
 {
     // get number of arguments
@@ -6415,9 +6471,30 @@ static int LUACALL wxLua_wxFontList_FindOrCreateFont(lua_State *L)
     return 1;
 }
 
-#endif // ((wxLUA_USE_wxFont) && (wxLUA_USE_wxFontList)) && (wxUSE_INTL)
+#endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
 
 
+
+#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontList_FindOrCreateFont_overload[] =
+{
+
+#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)
+    { wxLua_wxFontList_FindOrCreateFont2, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont2 },
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)
+
+#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+    { wxLua_wxFontList_FindOrCreateFont1, WXLUAMETHOD_METHOD, 5, 8, s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont1 },
+#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+
+#if (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+    { wxLua_wxFontList_FindOrCreateFont, WXLUAMETHOD_METHOD, 5, 8, s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont },
+#endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+};
+static int s_wxluafunc_wxLua_wxFontList_FindOrCreateFont_overload_count = sizeof(s_wxluafunc_wxLua_wxFontList_FindOrCreateFont_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))
 
 void wxLua_wxFontList_delete_function(void** p)
 {
@@ -6427,9 +6504,9 @@ void wxLua_wxFontList_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxFontList_methods[] = {
-#if ((wxLUA_USE_wxFont) && (wxLUA_USE_wxFontList)) && (wxUSE_INTL)
-    { "FindOrCreateFont", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFontList_FindOrCreateFont, 1, NULL },
-#endif // ((wxLUA_USE_wxFont) && (wxLUA_USE_wxFontList)) && (wxUSE_INTL)
+#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))
+    { "FindOrCreateFont", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFontList_FindOrCreateFont_overload, s_wxluafunc_wxLua_wxFontList_FindOrCreateFont_overload_count, 0 },
+#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))
 
     { 0, 0, 0, 0 },
 };
@@ -8414,11 +8491,38 @@ int wxPen_methodCount = sizeof(wxPen_methods)/sizeof(wxLuaBindMethod) - 1;
 // Lua MetaTable Tag for Class 'wxPenList'
 int wxluatype_wxPenList = WXLUA_TUNKNOWN;
 
-#if ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList)) && (wxLUA_USE_wxColourPenBrush)
+#if (((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList)) && (wxCHECK_VERSION(3,0,0))) && (wxLUA_USE_wxColourPenBrush)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPenList_FindOrCreatePen1[] = { &wxluatype_wxPenList, &wxluatype_wxColour, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxPenList_FindOrCreatePen1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPenList_FindOrCreatePen1[1] = {{ wxLua_wxPenList_FindOrCreatePen1, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxPenList_FindOrCreatePen1 }};
+//     %wxchkver_3_0 wxPen *FindOrCreatePen(const wxColour& colour, int width = 1, wxPenStyle style = wxPENSTYLE_SOLID);
+static int LUACALL wxLua_wxPenList_FindOrCreatePen1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxPenStyle style = wxPENSTYLE_SOLID
+    wxPenStyle style = (argCount >= 4 ? (wxPenStyle)wxlua_getenumtype(L, 4) : wxPENSTYLE_SOLID);
+    // int width = 1
+    int width = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : 1);
+    // const wxColour colour
+    const wxColour * colour = (const wxColour *)wxluaT_getuserdatatype(L, 2, wxluatype_wxColour);
+    // get this
+    wxPenList * self = (wxPenList *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPenList);
+    // call FindOrCreatePen
+    wxPen* returns = (wxPen*)self->FindOrCreatePen(*colour, width, style);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPen);
+
+    return 1;
+}
+
+#endif // (((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList)) && (wxCHECK_VERSION(3,0,0))) && (wxLUA_USE_wxColourPenBrush)
+
+#if ((!wxCHECK_VERSION(3,0,0)) && ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList))) && (wxLUA_USE_wxColourPenBrush)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPenList_FindOrCreatePen[] = { &wxluatype_wxPenList, &wxluatype_wxColour, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPenList_FindOrCreatePen(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPenList_FindOrCreatePen[1] = {{ wxLua_wxPenList_FindOrCreatePen, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxPenList_FindOrCreatePen }};
-//     wxPen* FindOrCreatePen(const wxColour& colour, int width, int style);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPenList_FindOrCreatePen[1] = {{ wxLua_wxPenList_FindOrCreatePen, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxPenList_FindOrCreatePen }};
+//     !%wxchkver_3_0 wxPen* FindOrCreatePen(const wxColour& colour, int width, int style);
 static int LUACALL wxLua_wxPenList_FindOrCreatePen(lua_State *L)
 {
     // int style
@@ -8437,9 +8541,26 @@ static int LUACALL wxLua_wxPenList_FindOrCreatePen(lua_State *L)
     return 1;
 }
 
-#endif // ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList)) && (wxLUA_USE_wxColourPenBrush)
+#endif // ((!wxCHECK_VERSION(3,0,0)) && ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList))) && (wxLUA_USE_wxColourPenBrush)
 
 
+
+#if ((((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList)) && (wxCHECK_VERSION(3,0,0))) && (wxLUA_USE_wxColourPenBrush))||(((!wxCHECK_VERSION(3,0,0)) && ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList))) && (wxLUA_USE_wxColourPenBrush))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPenList_FindOrCreatePen_overload[] =
+{
+
+#if (((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList)) && (wxCHECK_VERSION(3,0,0))) && (wxLUA_USE_wxColourPenBrush)
+    { wxLua_wxPenList_FindOrCreatePen1, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxPenList_FindOrCreatePen1 },
+#endif // (((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList)) && (wxCHECK_VERSION(3,0,0))) && (wxLUA_USE_wxColourPenBrush)
+
+#if ((!wxCHECK_VERSION(3,0,0)) && ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList))) && (wxLUA_USE_wxColourPenBrush)
+    { wxLua_wxPenList_FindOrCreatePen, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxPenList_FindOrCreatePen },
+#endif // ((!wxCHECK_VERSION(3,0,0)) && ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList))) && (wxLUA_USE_wxColourPenBrush)
+};
+static int s_wxluafunc_wxLua_wxPenList_FindOrCreatePen_overload_count = sizeof(s_wxluafunc_wxLua_wxPenList_FindOrCreatePen_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList)) && (wxCHECK_VERSION(3,0,0))) && (wxLUA_USE_wxColourPenBrush))||(((!wxCHECK_VERSION(3,0,0)) && ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList))) && (wxLUA_USE_wxColourPenBrush))
 
 void wxLua_wxPenList_delete_function(void** p)
 {
@@ -8449,9 +8570,9 @@ void wxLua_wxPenList_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxPenList_methods[] = {
-#if ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList)) && (wxLUA_USE_wxColourPenBrush)
-    { "FindOrCreatePen", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPenList_FindOrCreatePen, 1, NULL },
-#endif // ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList)) && (wxLUA_USE_wxColourPenBrush)
+#if ((((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList)) && (wxCHECK_VERSION(3,0,0))) && (wxLUA_USE_wxColourPenBrush))||(((!wxCHECK_VERSION(3,0,0)) && ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList))) && (wxLUA_USE_wxColourPenBrush))
+    { "FindOrCreatePen", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPenList_FindOrCreatePen_overload, s_wxluafunc_wxLua_wxPenList_FindOrCreatePen_overload_count, 0 },
+#endif // ((((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList)) && (wxCHECK_VERSION(3,0,0))) && (wxLUA_USE_wxColourPenBrush))||(((!wxCHECK_VERSION(3,0,0)) && ((wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPenList))) && (wxLUA_USE_wxColourPenBrush))
 
     { 0, 0, 0, 0 },
 };
@@ -9089,11 +9210,36 @@ int wxBrush_methodCount = sizeof(wxBrush_methods)/sizeof(wxLuaBindMethod) - 1;
 // Lua MetaTable Tag for Class 'wxBrushList'
 int wxluatype_wxBrushList = WXLUA_TUNKNOWN;
 
-#if ((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#if ((((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush)) && (wxCHECK_VERSION(3,0,0))) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush))) && (wxLUA_USE_wxColourPenBrush)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBrushList_FindOrCreateBrush1[] = { &wxluatype_wxBrushList, &wxluatype_wxColour, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxBrushList_FindOrCreateBrush1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBrushList_FindOrCreateBrush1[1] = {{ wxLua_wxBrushList_FindOrCreateBrush1, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxBrushList_FindOrCreateBrush1 }};
+//     %wxchkver_3_0_0 wxBrush *FindOrCreateBrush(const wxColour& colour, wxBrushStyle style = wxBRUSHSTYLE_SOLID);
+static int LUACALL wxLua_wxBrushList_FindOrCreateBrush1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxBrushStyle style = wxBRUSHSTYLE_SOLID
+    wxBrushStyle style = (argCount >= 3 ? (wxBrushStyle)wxlua_getenumtype(L, 3) : wxBRUSHSTYLE_SOLID);
+    // const wxColour colour
+    const wxColour * colour = (const wxColour *)wxluaT_getuserdatatype(L, 2, wxluatype_wxColour);
+    // get this
+    wxBrushList * self = (wxBrushList *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBrushList);
+    // call FindOrCreateBrush
+    wxBrush* returns = (wxBrush*)self->FindOrCreateBrush(*colour, style);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBrush);
+
+    return 1;
+}
+
+#endif // ((((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush)) && (wxCHECK_VERSION(3,0,0))) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush))) && (wxLUA_USE_wxColourPenBrush)
+
+#if ((!wxCHECK_VERSION(3,0,0)) && ((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush))) && (wxLUA_USE_wxColourPenBrush)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBrushList_FindOrCreateBrush[] = { &wxluatype_wxBrushList, &wxluatype_wxColour, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxBrushList_FindOrCreateBrush(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxBrushList_FindOrCreateBrush[1] = {{ wxLua_wxBrushList_FindOrCreateBrush, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxBrushList_FindOrCreateBrush }};
-//     wxBrush* FindOrCreateBrush(const wxColour& colour, int style);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBrushList_FindOrCreateBrush[1] = {{ wxLua_wxBrushList_FindOrCreateBrush, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxBrushList_FindOrCreateBrush }};
+//     !%wxchkver_3_0_0 wxBrush* FindOrCreateBrush(const wxColour& colour, int style);
 static int LUACALL wxLua_wxBrushList_FindOrCreateBrush(lua_State *L)
 {
     // int style
@@ -9110,9 +9256,26 @@ static int LUACALL wxLua_wxBrushList_FindOrCreateBrush(lua_State *L)
     return 1;
 }
 
-#endif // ((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#endif // ((!wxCHECK_VERSION(3,0,0)) && ((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush))) && (wxLUA_USE_wxColourPenBrush)
 
 
+
+#if (((((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush)) && (wxCHECK_VERSION(3,0,0))) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush))) && (wxLUA_USE_wxColourPenBrush))||(((!wxCHECK_VERSION(3,0,0)) && ((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush))) && (wxLUA_USE_wxColourPenBrush))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBrushList_FindOrCreateBrush_overload[] =
+{
+
+#if ((((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush)) && (wxCHECK_VERSION(3,0,0))) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush))) && (wxLUA_USE_wxColourPenBrush)
+    { wxLua_wxBrushList_FindOrCreateBrush1, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxBrushList_FindOrCreateBrush1 },
+#endif // ((((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush)) && (wxCHECK_VERSION(3,0,0))) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush))) && (wxLUA_USE_wxColourPenBrush)
+
+#if ((!wxCHECK_VERSION(3,0,0)) && ((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush))) && (wxLUA_USE_wxColourPenBrush)
+    { wxLua_wxBrushList_FindOrCreateBrush, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxBrushList_FindOrCreateBrush },
+#endif // ((!wxCHECK_VERSION(3,0,0)) && ((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush))) && (wxLUA_USE_wxColourPenBrush)
+};
+static int s_wxluafunc_wxLua_wxBrushList_FindOrCreateBrush_overload_count = sizeof(s_wxluafunc_wxLua_wxBrushList_FindOrCreateBrush_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (((((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush)) && (wxCHECK_VERSION(3,0,0))) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush))) && (wxLUA_USE_wxColourPenBrush))||(((!wxCHECK_VERSION(3,0,0)) && ((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush))) && (wxLUA_USE_wxColourPenBrush))
 
 void wxLua_wxBrushList_delete_function(void** p)
 {
@@ -9122,9 +9285,9 @@ void wxLua_wxBrushList_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxBrushList_methods[] = {
-#if ((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
-    { "FindOrCreateBrush", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBrushList_FindOrCreateBrush, 1, NULL },
-#endif // ((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
+#if (((((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush)) && (wxCHECK_VERSION(3,0,0))) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush))) && (wxLUA_USE_wxColourPenBrush))||(((!wxCHECK_VERSION(3,0,0)) && ((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush))) && (wxLUA_USE_wxColourPenBrush))
+    { "FindOrCreateBrush", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBrushList_FindOrCreateBrush_overload, s_wxluafunc_wxLua_wxBrushList_FindOrCreateBrush_overload_count, 0 },
+#endif // (((((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush)) && (wxCHECK_VERSION(3,0,0))) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush))) && (wxLUA_USE_wxColourPenBrush))||(((!wxCHECK_VERSION(3,0,0)) && ((wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush))) && (wxLUA_USE_wxColourPenBrush))
 
     { 0, 0, 0, 0 },
 };
@@ -13939,11 +14102,48 @@ static int LUACALL wxLua_wxDC_SetBrush(lua_State *L)
 
 #endif // (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxDC)
 
-#if (wxLUA_USE_wxDC) && (wxLUA_USE_wxRegion)
+#if (wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_SetClippingRegion3[] = { &wxluatype_wxDC, &wxluatype_wxRect, NULL };
+static int LUACALL wxLua_wxDC_SetClippingRegion3(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_SetClippingRegion3[1] = {{ wxLua_wxDC_SetClippingRegion3, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDC_SetClippingRegion3 }};
+//     void SetClippingRegion(const wxRect& rect);
+static int LUACALL wxLua_wxDC_SetClippingRegion3(lua_State *L)
+{
+    // const wxRect rect
+    const wxRect * rect = (const wxRect *)wxluaT_getuserdatatype(L, 2, wxluatype_wxRect);
+    // get this
+    wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
+    // call SetClippingRegion
+    self->SetClippingRegion(*rect);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_SetClippingRegion2[] = { &wxluatype_wxDC, &wxluatype_wxPoint, &wxluatype_wxSize, NULL };
+static int LUACALL wxLua_wxDC_SetClippingRegion2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_SetClippingRegion2[1] = {{ wxLua_wxDC_SetClippingRegion2, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxDC_SetClippingRegion2 }};
+//     void SetClippingRegion(const wxPoint& pt, const wxSize& sz);
+static int LUACALL wxLua_wxDC_SetClippingRegion2(lua_State *L)
+{
+    // const wxSize sz
+    const wxSize * sz = (const wxSize *)wxluaT_getuserdatatype(L, 3, wxluatype_wxSize);
+    // const wxPoint pt
+    const wxPoint * pt = (const wxPoint *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPoint);
+    // get this
+    wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
+    // call SetClippingRegion
+    self->SetClippingRegion(*pt, *sz);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)
+
+#if ((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxRegion)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_SetClippingRegion1[] = { &wxluatype_wxDC, &wxluatype_wxRegion, NULL };
 static int LUACALL wxLua_wxDC_SetClippingRegion1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_SetClippingRegion1[1] = {{ wxLua_wxDC_SetClippingRegion1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDC_SetClippingRegion1 }};
-//     void SetClippingRegion(const wxRegion& region);
+//     !%wxchkver_3_0 void SetClippingRegion(const wxRegion& region);
 static int LUACALL wxLua_wxDC_SetClippingRegion1(lua_State *L)
 {
     // const wxRegion region
@@ -13956,7 +14156,7 @@ static int LUACALL wxLua_wxDC_SetClippingRegion1(lua_State *L)
     return 0;
 }
 
-#endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxRegion)
+#endif // ((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxRegion)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_SetClippingRegion[] = { &wxluatype_wxDC, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDC_SetClippingRegion(lua_State *L);
@@ -14227,19 +14427,27 @@ static int s_wxluafunc_wxLua_wxDC_DrawLabel_overload_count = sizeof(s_wxluafunc_
 
 #endif // ((wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect))||(((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxPointSizeRect))
 
-#if ((wxLUA_USE_wxDC) && (wxLUA_USE_wxRegion))||(wxLUA_USE_wxDC)
+#if ((wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect))||(((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxRegion))||(wxLUA_USE_wxDC)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_SetClippingRegion_overload[] =
 {
 
-#if (wxLUA_USE_wxDC) && (wxLUA_USE_wxRegion)
+#if (wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)
+    { wxLua_wxDC_SetClippingRegion3, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDC_SetClippingRegion3 },
+#endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)
+
+#if (wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)
+    { wxLua_wxDC_SetClippingRegion2, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxDC_SetClippingRegion2 },
+#endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)
+
+#if ((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxRegion)
     { wxLua_wxDC_SetClippingRegion1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDC_SetClippingRegion1 },
-#endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxRegion)
+#endif // ((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxRegion)
     { wxLua_wxDC_SetClippingRegion, WXLUAMETHOD_METHOD, 5, 5, s_wxluatypeArray_wxLua_wxDC_SetClippingRegion },
 };
 static int s_wxluafunc_wxLua_wxDC_SetClippingRegion_overload_count = sizeof(s_wxluafunc_wxLua_wxDC_SetClippingRegion_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxLUA_USE_wxDC) && (wxLUA_USE_wxRegion))||(wxLUA_USE_wxDC)
+#endif // ((wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect))||(((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxRegion))||(wxLUA_USE_wxDC)
 
 void wxLua_wxDC_delete_function(void** p)
 {
@@ -14397,9 +14605,9 @@ wxLuaBindMethod wxDC_methods[] = {
     { "SetBrush", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_SetBrush, 1, NULL },
 #endif // (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxDC)
 
-#if ((wxLUA_USE_wxDC) && (wxLUA_USE_wxRegion))||(wxLUA_USE_wxDC)
+#if ((wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect))||(((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxRegion))||(wxLUA_USE_wxDC)
     { "SetClippingRegion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_SetClippingRegion_overload, s_wxluafunc_wxLua_wxDC_SetClippingRegion_overload_count, 0 },
-#endif // ((wxLUA_USE_wxDC) && (wxLUA_USE_wxRegion))||(wxLUA_USE_wxDC)
+#endif // ((wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect))||(((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxRegion))||(wxLUA_USE_wxDC)
 
     { "SetDeviceOrigin", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_SetDeviceOrigin, 1, NULL },
 

@@ -574,11 +574,9 @@ class wxFontList
     // No constructor, use wxTheFontList
 
     // Note: we don't gc the returned font as the list will delete it
-    wxFont* FindOrCreateFont(int pointSize, int family, int style, int weight, bool underline = false, const wxString &faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
-
-    // Only use FindOrCreateFont - others deprecated in >2.7
-    //void AddFont(wxFont* font);
-    //void RemoveFont(wxFont* font);
+    !%wxchkver_3_0 wxFont* FindOrCreateFont(int pointSize, int family, int style, int weight, bool underline = false, const wxString &faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
+    %wxchkver_3_0 wxFont *FindOrCreateFont(int pointSize, wxFontFamily family, wxFontStyle style, wxFontWeight weight, bool underline = false, const wxString& face = wxEmptyString, wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
+    %wxchkver_3_0 wxFont *FindOrCreateFont(const wxFontInfo& fontInfo);
 };
 
 #endif //wxLUA_USE_wxFontList
@@ -833,7 +831,8 @@ class wxPenList //: public wxList - it's not really derived from a wxList
     // No constructor, use wxThePenList
 
     // Note: we don't gc the returned pen as the list will delete it
-    wxPen* FindOrCreatePen(const wxColour& colour, int width, int style);
+    !%wxchkver_3_0 wxPen* FindOrCreatePen(const wxColour& colour, int width, int style);
+    %wxchkver_3_0 wxPen *FindOrCreatePen(const wxColour& colour, int width = 1, wxPenStyle style = wxPENSTYLE_SOLID);
 };
 
 #endif //wxLUA_USE_wxPenList
@@ -917,11 +916,8 @@ class wxBrushList // : public wxList - it's not really derived from it
     // No constructor, use wxTheBrushList
 
     // Note: we don't gc the returned brush as the list will delete it
-    wxBrush* FindOrCreateBrush(const wxColour& colour, int style);
-
-    // Use the wxList methods, see also wxNode
-    //void AddBrush(wxBrush *brush)    internal use for wxWidgets
-    //void RemoveBrush(wxBrush *brush);
+    !%wxchkver_3_0_0 wxBrush* FindOrCreateBrush(const wxColour& colour, int style);
+    %wxchkver_3_0_0 wxBrush *FindOrCreateBrush(const wxColour& colour, wxBrushStyle style = wxBRUSHSTYLE_SOLID);
 };
 
 #endif //wxLUA_USE_wxBrushList
@@ -1494,9 +1490,9 @@ class %delete wxDC : public wxObject
     void SetBackgroundMode(int mode);
     void SetBrush(const wxBrush& brush);
     void SetClippingRegion(wxCoord x, wxCoord y, wxCoord width, wxCoord height);
-    void SetClippingRegion(const wxRegion& region);
-    //void SetClippingRegion(const wxPoint& pt, const wxSize& sz);
-    //void SetClippingRegion(const wxRect& rect);
+    !%wxchkver_3_0 void SetClippingRegion(const wxRegion& region);
+    void SetClippingRegion(const wxPoint& pt, const wxSize& sz);
+    void SetClippingRegion(const wxRect& rect);
     void SetDeviceOrigin(wxCoord x, wxCoord y);
     void SetFont(const wxFont& font);
     %wxchkver_2_8 void SetLayoutDirection(wxLayoutDirection dir);

@@ -1549,10 +1549,11 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxKILL_OK", wxKILL_OK },
 #endif // wxLUA_USE_wxProcess
 
-#if wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
+        { "wxLANDSCAPE", wxLANDSCAPE },
+#elif wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE
         { "wxLANDSCAPE", wxLANDSCAPE },
 #endif // wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE
-
 #if wxLUA_USE_wxNotebook && wxLUA_USE_wxListCtrl && wxUSE_LISTBOOK
         { "wxLB_ALIGN_MASK", wxLB_ALIGN_MASK },
 #endif // wxLUA_USE_wxNotebook && wxLUA_USE_wxListCtrl && wxUSE_LISTBOOK
@@ -1985,10 +1986,11 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxPNG_TYPE_GREY_RED", wxPNG_TYPE_GREY_RED },
 #endif // (wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxUSE_LIBPNG)
 
-#if wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
+        { "wxPORTRAIT", wxPORTRAIT },
+#elif wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE
         { "wxPORTRAIT", wxPORTRAIT },
 #endif // wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE
-
 #if wxCHECK_VERSION(2,8,0)
         { "wxPOWER_BATTERY", wxPOWER_BATTERY },
         { "wxPOWER_SOCKET", wxPOWER_SOCKET },

@@ -292,6 +292,14 @@ enum wxPrintBin
 };
 #endif
 
+#if %wxchkver_3_0
+enum wxPrintOrientation
+{
+   wxPORTRAIT = 1,
+   wxLANDSCAPE
+};
+#endif
+
 class %delete wxPrintData : public wxObject
 {
     wxPrintData( );
@@ -316,7 +324,8 @@ class %delete wxPrintData : public wxObject
     %wxchkver_2_8 bool IsOrientationReversed() const;
     void SetNoCopies(int v );
     void SetCollate(bool flag );
-    void SetOrientation(int orient );
+    !%wxchkver_3_0 void SetOrientation(int orient);
+    %wxchkver_3_0 void SetOrientation(wxPrintOrientation orient);
     void SetPrinterName(const wxString& name );
     void SetColour(bool colour );
     void SetDuplex(wxDuplexMode duplex );
@@ -331,26 +340,6 @@ class %delete wxPrintData : public wxObject
     void SetFilename( const wxString &filename );
 
     void operator=(const wxPrintData& data );
-
-    // these are all WXWIN_COMPATIBILITY_2_4 and for postscript printing only
-    //!%wxchkver_2_8 wxString GetPrinterCommand( );
-    //!%wxchkver_2_8 wxString GetPrinterOptions( );
-    //!%wxchkver_2_8 wxString GetPreviewCommand( );
-    //!%wxchkver_2_8 const wxString& GetFontMetricPath( );
-    //!%wxchkver_2_8 double GetPrinterScaleX( );
-    //!%wxchkver_2_8 double GetPrinterScaleY( );
-    //!%wxchkver_2_8 long GetPrinterTranslateX( );
-    //!%wxchkver_2_8 long GetPrinterTranslateY( );
-    //!%wxchkver_2_8 void SetPrinterCommand(const wxString& command );
-    //!%wxchkver_2_8 void SetPrinterOptions(const wxString& options );
-    //!%wxchkver_2_8 void SetPreviewCommand(const wxString& command );
-    //!%wxchkver_2_8 void SetFontMetricPath(const wxString& path );
-    //!%wxchkver_2_8 void SetPrinterScaleX(double x );
-    //!%wxchkver_2_8 void SetPrinterScaleY(double y );
-    //!%wxchkver_2_8 void SetPrinterScaling(double x, double y );
-    //!%wxchkver_2_8 void SetPrinterTranslateX(long x );
-    //!%wxchkver_2_8 void SetPrinterTranslateY(long y );
-    //!%wxchkver_2_8 void SetPrinterTranslation(long x, long y );
 };
 
 // ---------------------------------------------------------------------------

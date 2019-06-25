@@ -956,7 +956,7 @@ class wxSplitterWindow : public wxWindow
     bool     ReplaceWindow(wxWindow * winOld, wxWindow * winNew);
     void     SetSashGravity(double gravity);
     void     SetSashPosition(int position, const bool redraw = true);
-    void     SetSashSize(int size);
+    !%wxchkver_3_0 void SetSashSize(int size);
     void     SetMinimumPaneSize(int paneSize);
     void     SetSplitMode(int mode);
     bool     SplitHorizontally(wxWindow* window1, wxWindow* window2, int sashPosition = 0);

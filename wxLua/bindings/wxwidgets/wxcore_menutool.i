@@ -176,12 +176,9 @@ class %delete wxMenuItem : public wxObject
     virtual void SetAccel(wxAcceleratorEntry *accel);
 #endif // wxUSE_ACCEL
 
-    !%wxchkver_3_0 || %wxcompat_2_8 wxString GetLabel() const;
     %win int GetMarginWidth() const;
     wxMenu* GetMenu() const;
-    %wxchkver_3_0_0 wxString GetName() const;
     wxMenu* GetSubMenu() const;
-    !%wxchkver_3_0 || %wxcompat_2_8 wxString GetText() const;
 
     %win wxColour& GetTextColour() const;
     %win void SetBackgroundColour(const wxColour& colour) const;
@@ -194,6 +191,7 @@ class %delete wxMenuItem : public wxObject
 
     !%wxchkver_3_0 || %wxcompat_2_8 static wxString GetLabelFromText(const wxString& text);
     !%wxchkver_3_0 || %wxcompat_2_8 void SetText(const wxString& text);
+    !%wxchkver_3_0 || %wxcompat_2_8 wxString GetName() const;
     !%wxchkver_3_0 || %wxcompat_2_8 wxString GetLabel() const;
     !%wxchkver_3_0 || %wxcompat_2_8 wxString GetText() const;
     void SetBitmap(const wxBitmap& bmp); // %override use one parameter as "bool checked = true" doesn't exist on OSX/Linux

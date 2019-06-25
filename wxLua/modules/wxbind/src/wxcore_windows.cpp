@@ -11248,10 +11248,12 @@ static int LUACALL wxLua_wxSplitterWindow_SetSashPosition(lua_State *L)
     return 0;
 }
 
+
+#if (!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxSplitterWindow)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSplitterWindow_SetSashSize[] = { &wxluatype_wxSplitterWindow, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSplitterWindow_SetSashSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSplitterWindow_SetSashSize[1] = {{ wxLua_wxSplitterWindow_SetSashSize, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSplitterWindow_SetSashSize }};
-//     void     SetSashSize(int size);
+//     !%wxchkver_3_0 void SetSashSize(int size);
 static int LUACALL wxLua_wxSplitterWindow_SetSashSize(lua_State *L)
 {
     // int size
@@ -11263,6 +11265,8 @@ static int LUACALL wxLua_wxSplitterWindow_SetSashSize(lua_State *L)
 
     return 0;
 }
+
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxSplitterWindow)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSplitterWindow_SetSplitMode[] = { &wxluatype_wxSplitterWindow, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSplitterWindow_SetSplitMode(lua_State *L);
@@ -11452,7 +11456,11 @@ wxLuaBindMethod wxSplitterWindow_methods[] = {
     { "SetMinimumPaneSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSplitterWindow_SetMinimumPaneSize, 1, NULL },
     { "SetSashGravity", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSplitterWindow_SetSashGravity, 1, NULL },
     { "SetSashPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSplitterWindow_SetSashPosition, 1, NULL },
+
+#if (!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxSplitterWindow)
     { "SetSashSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSplitterWindow_SetSashSize, 1, NULL },
+#endif // (!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxSplitterWindow)
+
     { "SetSplitMode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSplitterWindow_SetSplitMode, 1, NULL },
     { "SplitHorizontally", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSplitterWindow_SplitHorizontally, 1, NULL },
     { "SplitVertically", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSplitterWindow_SplitVertically, 1, NULL },
