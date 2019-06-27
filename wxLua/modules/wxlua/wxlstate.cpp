@@ -729,7 +729,7 @@ bool wxLuaState::IsOk() const
 
 void wxLuaState::Destroy()
 {
-    if (m_refData == NULL) return;
+    if (m_refData == NULL || M_WXLSTATEDATA->m_lua_State_static) return;
 
     // we don't want recursion in UnRef and wxlua_garbageCollect
     if (GetRefData()->GetRefCount() == 1)
@@ -741,6 +741,8 @@ void wxLuaState::Destroy()
 bool wxLuaState::CloseLuaState(bool force)
 {
     wxCHECK_MSG(Ok(), false, wxT("Invalid wxLuaState"));
+    if (M_WXLSTATEDATA->m_lua_State_static) return true;
+
     return M_WXLSTATEDATA->CloseLuaState(force);
 }
 
