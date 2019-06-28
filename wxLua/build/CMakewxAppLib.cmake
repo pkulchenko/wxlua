@@ -60,13 +60,6 @@ if (GCC_VERSION VERSION_GREATER 4.7.9)
     endif()
 endif()
 
-if (APPLE)
-    # Fix for Xcode 6.2: fatal error: 'tr1/type_traits' file not found #include <tr1/type_traits>
-    if (NOT "${CMAKE_CXX_FLAGS}" MATCHES "-stdlib\\=libstdc\\+\\+")
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libstdc++")
-    endif()
-endif()
-
 # ===========================================================================
 # Display to the user what the options are that may be passed to CMake
 # to control the build before we do anything.
