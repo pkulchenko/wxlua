@@ -258,7 +258,7 @@ struct WXDLLIMPEXP_WXLUA wxLuaBindClass
 
     wxLuaArgType*    baseclass_wxluatypes;     // NULL terminated array of wxLua types for the base classes
                                                // that are from second or higher base classes
-    int*             baseclass_vtable_offsets; // Array of pointer offsets of the second or higher
+    wxIntPtr*        baseclass_vtable_offsets; // Array of pointer offsets of the second or higher
                                                // base classes from the root class.
                                                // See note above wxluaT_getuserdatatype()
 

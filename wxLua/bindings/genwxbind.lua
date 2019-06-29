@@ -4867,7 +4867,7 @@ function GenerateHookClassFileTable(fileData)
 
             if classTypeBinding.BaseClassVtableOffsets then
                 table.insert(fileData, indent.."static wxLuaArgType wxluabaseclass_wxluatypes_"..classTypeBinding.LuaName.."[] = "..classTypeBinding.BaseClassTypes.."\n")
-                table.insert(fileData, indent.."static int wxluabaseclass_vtable_offsets_"..classTypeBinding.LuaName.."[] = "..classTypeBinding.BaseClassVtableOffsets.."\n")
+                table.insert(fileData, indent.."static wxIntPtr wxluabaseclass_vtable_offsets_"..classTypeBinding.LuaName.."[] = "..classTypeBinding.BaseClassVtableOffsets.."\n")
             end
 
             table.insert(fileData, indent..classTypeBinding.ExternDeleteFunction)
