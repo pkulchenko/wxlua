@@ -19,10 +19,10 @@ set ERRDIRS=
 
 IF "%VCINSTALLDIR%"=="" call "c:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\vcvars32.bat"
 
-call:MakeDist build-wx28-lua51  wxLua-2.8.12.3-Lua-5.1.5-MSW-Ansi    msw  2.8 5.1
-call:MakeDist build-wx28-lua52  wxLua-2.8.12.3-Lua-5.2.3-MSW-Ansi    msw  2.8 5.2
-call:MakeDist build-wx28u-lua51 wxLua-2.8.12.3-Lua-5.1.5-MSW-Unicode mswu 2.8 5.1
-call:MakeDist build-wx28u-lua52 wxLua-2.8.12.3-Lua-5.2.3-MSW-Unicode mswu 2.8 5.2
+call:MakeDist build-wx30-lua51  wxLua-3.0.0.1-Lua-5.1.5-MSW-Ansi    msw  3.0 5.1
+call:MakeDist build-wx30-lua52  wxLua-3.0.0.1-Lua-5.2.3-MSW-Ansi    msw  3.0 5.2
+call:MakeDist build-wx30u-lua51 wxLua-3.0.0.1-Lua-5.1.5-MSW-Unicode mswu 3.0 5.1
+call:MakeDist build-wx30u-lua52 wxLua-3.0.0.1-Lua-5.2.3-MSW-Unicode mswu 3.0 5.2
 
 echo.
 echo Build dirs : !BUILDDIRS!

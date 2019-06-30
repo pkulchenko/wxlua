@@ -1,6 +1,108 @@
  wxLua ChangeLog
  ===============
 
+ version 3.0.0.1 (released 6/28/2019)
+ --------------------------------------------------------------------
+ - Upgraded wxlua for Lua 5.3 compatibility.
+ - Updated bindings for wxwidgets 3.0, 3.1, 3.1.1, 3.1.2, and the current 3.1.3 version
+
+ - Added `wxGLAttributes` and `wxGLContextAttrs` classes (closes #11).
+ - Added `GetLibraryVersionInfo` to wxSTC.
+ - Added `wxAuiGenericTabArt`.
+ - Added wxString::FromUTF8Unchecked method.
+ - Added wxRect getters/setters (#18).
+ - Added `LeftDown`, `RightDown` and `MiddleDown` methods for compatibility with earlier versions of wxlua.
+ - Added MacOpenFiles support.
+ - Added wxBrushStyle and updated wxPenStyle descriptions for 3.1.1.
+ - Added wxStatusBarPane and updated wxStatusBar bindings for wx3.1.1.
+ - Added missing `SetStatusWidths` in wxFrame.
+ - Added `wxHitTest` and `wxShowEffect`.
+ - Added wxAnyButton and wxBitmapToggleButton.
+ - Added `LoadLexerLibrary`, `GetLexerLanguage`, `GetDirectPointer`, and `GetDirectFunction` methods for wxSTC.
+ - Added `SetSelection` as it's an existing method, but not part of wxSTC interface.
+
+ - Updated wxSTC for 3.1.3.
+ - Updated wxAui for 3.1.2.
+ - Updated wxHTML for 3.1.2.
+ - Updated wxwidgets bindings for v3.1.2.
+ - Updated menutool binding to remove deprecated `3DBUTTONS` style (#4).
+ - Updated wxSTC bindings for Scintilla 3.7.2 (closes #4).
+ - Updated wxSTC binding processing script to ignore parameter names when matching sinatures (#4).
+ - Updated samples for 3.x API changes.
+ - Updated wxSTC methods `AddTextRaw` and `AppendTextRaw` to accept length.
+ - Updated wxFileName::GetVolumeString binding as it's windows-only.
+ - Updated wxFileName bindings for wxwidgets 3.1.1.
+ - Updated wxMouseState and added wxKeyboardState bindings for wxwidgets 3.1.1.
+ - Updated wxProcess bindings for wxwidgets 3.1.1.
+ - Updated wxStandardPaths bindings for wxwidgets 3.1.1.
+ - Updated wxIcon bindings to remove one of the constructors that causes compilation issues on Linux.
+ - Updated wxSTC bindings to include `GetTargetTextRaw` added in wxwidgets 3.1.1.
+ - Updated wxBitmap binding to mark `cursor` constructor as win-only.
+ - Updated wxImage bindings for wxwidgets 3.1.1.
+ - Updated wxcore_image formatting to simplify automated processing.
+ - Updated wxBitmap bindings for wxwidgets 3.1.1.
+ - Updated wxAui* bindings for wxwidgets 3.1.1.
+ - Updated AuiDemo sample to use proper method (`GetColour` instead of `GetColor`).
+ - Updated wxColour bindings for 3.1.1.
+ - Updated wxFont binding for wxwidgets 3.1.1.
+ - Updated wxApp, wxEvent, and wxEvtHandler for wxwidgets 3.1.1; added wxAppConsole, wxEventLoopBase, and wxEventFilter classes.
+ - Updated wxcore_appframe to add missing wxAppConsole inheritance.
+ - Updated SetDoubleBuffered conditions as it is not present on OSX.
+ - Updated SetBitmap signature to use one parameter, as OSX/Linux don't support two-parameter version.
+ - Updated wxTopLevelWindow and wxFrame bindings; add wxNonOwnedWindow bindings for wxwidgets 3.1.1.
+ - Updated wxWindow bindings for wxwidgets 3.1.1.
+ - Updated `wxMenu` to include more constructors.
+ - Updated wxButton, wxBitmapButton, and wxTogglebutton for wxwidgets 3.1.1.
+ - Updated wxTextCtrl binding to explicitly use wxTextEntry.
+ - Updated wxTextCtrl bindings for wxwidgets 3.1.1.
+ - Updated wxTreeCtrl bindings for wxwidgets 3.1.1.
+ - Updated wxDir bindings for wxwidgets 3.1.1.
+ - Updated wxMenuItem bindings for wxwidgets 3.1.1.
+ - Updated signatures and removed duplicates in wxMenuItem bindings.
+ - Updated wxMenu bindings for wxwidgets 3.1.1.
+ - Updated wxMenu binding to match the current method signatures.
+ - Updated binding for `PrivateLexerCall` to handle string parameters.
+ - Updated wxSTC constants and methods for wxwidgets 3.1.1.
+ - Updated wxSTC event binding.
+ - Updated wxSTC constants and methods for wxwidgets 3.1.0.
+
+ - Updated vtable offset type to avoid casting to `int` (#32).
+ - Replaced `long int` conversion for better portability (closes #32).
+ - Removed macOS workaround that conflicted with `stdlib` settings for c++11 and later compilers.
+ - Updated bindings to mark changes deprecated since wxwidgets 3.0.
+ - Updated bindings to mark changes deprecated since wxwidgets 2.8.
+ - Removed re-assigning Lua state when callbacks are created from coroutines.
+ - Definition of LUAI_INT32 is added for LuaJIT 2.0.5
+ - Updated bindings to work with wxwidgets 3.0 (#18).
+ - Updated bindings to only enable `AddPrivateFont` when `wxUSE_PRIVATE_FONTS` is set.
+ - Remove webview because it is dependent on webkit on Linux (closes #10).
+ - Fix mingw compilation on Windows (closes #23).
+ - Removed error message on an unknown method, as it's not needed and is causing memory leak.
+ - Removed mingw workaround that is causing compilation errors under mingw.
+ - Added matching to determine the wxWidgets details on MinGW builds (#15)
+ - wxbind generated with pairs_sort in genwxbind.lua
+ - use pairs_sort in genwxbind.lua for reproducable generates
+ - declare wxLuaState::lua_SetHook to return void
+ - build with lua5.3 without the need for LUA_COMPAT_MODULE (which is not defined in default 5.3 Makefile)
+ - updated CMakeLists.txt for lua 5.3
+ - Update the .desktop categories
+ - Avoid the deprecated .xpm file format extension
+ - Added scripts to update bindings based on wxwidgets interface files.
+ - Added a check for the Lua state to be valid during closing.
+ - Uncommented a check to help with crashes in delete processing on ArchLinux.
+ - Updated clearing flag in MacOpenFiles to only call it on a valid wxLuaState.
+ - Added a workaround to enable -std=c++11 compilation option.
+ - Updated comment in the declaration for better automated matching.
+ - Updated wxaui_aui formatting to simplify automated processing.
+ - Fixed declarations for pure virtual functions and abstract classes.
+ - Updated wxPen, wxBrush, wxIcon, wxMask, wxCursor, wxCaret, wxPalette, and wxDisplay bindings for 3.1.1.
+ - Fixed DoDragLeave version as it's only present in 3.1+.
+ - Fixed `MainLoop` override in wxAppConsole and in wxApp in previous versions.
+ - Added version 3.1.1 to known datatypes.
+ - Commented out Accelerator methods for wxMenuItem as those generate compilation error.
+ - Added menu methods supported only on Windows.
+ - Fixed COFFEESCRIPT lexer that should be included in 3.1.
+
  version 3.0.0 (unreleased)
  --------------------------------------------------------------------
  - Add wxWebView class for wx2.9+
@@ -56,7 +158,6 @@
    - Remove the keyword %operator before all class member operator functions.
    - Remove the keyword %constructor before all class constructor functions.
    - Remove the keyword %member before all class member variables.
-
 
  version 2.8.12.2 (released 7/26/2012)
  --------------------------------------------------------------------

@@ -1,6 +1,6 @@
-% wxLua 2.8.12.3 - Installation Guide
-% John Labenski, Francesco Montorsi
-% 2013-09-10
+% wxLua 3.0.0.1 - Installation Guide
+% John Labenski, Francesco Montorsi, Paul Kulchenko
+% 2019-06-28
 
 This document describes how to build the wxLua libraries, editors, and
 interpreters. wxLua is written in C and C++ and can be built on MS
@@ -41,7 +41,7 @@ supported by wxWidgets are supported by wxLua.
 
 ## 1 - Required Libraries (dependencies)
 
-wxWidgets - Version 2.8.x or 2.9.x
+wxWidgets - Version 2.8.x, 2.9.x, or 3.x
 
 -   [http://www.wxwidgets.org ](http://www.wxwidgets.org )
 -   Please see [Building wxWidgets](#C2) for information about building
@@ -59,7 +59,7 @@ wxWidgets - Version 2.8.x or 2.9.x
 -   **Before attempting to compile wxLua you should be able to compile and
     successfully run at least one of the wxWidgets samples.**
 
-wxSTEdit - Version 1.2.6 or higher.
+wxSTEdit - Version 1.2.6 or higher (only for wxWidgets < 2.9).
 
 -   [http://wxcode.sourceforge.net](http://wxcode.sourceforge.net) and
     [http://wxcode.sourceforge.net/components/stedit/](http://wxcode.sourceforge.net/components/stedit)
@@ -67,11 +67,11 @@ wxSTEdit - Version 1.2.6 or higher.
 -   There is more information about wxStEdit with the source code.
 -   By default, wxStEdit will be built automatically when you build wxLua.
 
-Lua - Version 5.1, 5.2, or LuaJIT
+Lua - Version 5.1, 5.2, 5.3, or LuaJIT
 
 -   wxLua comes with the Lua 5.1.5 and 5.2.3 source files to build both the Lua
     library and Lua executable.
--   It is is the unmodified source, except that bug-fix patches have been applied.
+-   It is the unmodified source, except that bug-fix patches have been applied.
     Please see [wxLua/docs/changelog.txt](changelog.txt) to learn which ones.
     [http://www.lua.org/bugs.html](http://www.lua.org/bugs.html)
 -   An external Lua development library may be used to build wxLua against

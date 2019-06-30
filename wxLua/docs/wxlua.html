@@ -5,8 +5,8 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="John Labenski" />
-  <meta name="date" content="2013-09-10" />
-  <title>wxLua 2.8.12.3 - User Manual</title>
+  <meta name="date" content="2019-06-28" />
+  <title>wxLua 3.0.0.1 - User Manual</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
@@ -31,9 +31,9 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </head>
 <body>
 <div id="header">
-<h1 class="title">wxLua 2.8.12.3 - User Manual</h1>
+<h1 class="title">wxLua 3.0.0.1 - User Manual</h1>
 <h2 class="author">John Labenski</h2>
-<h3 class="date">2013-09-10</h3>
+<h3 class="date">2019-06-28</h3>
 </div>
 <p><a href="http://wxlua.sourceforge.net">wxLua</a> is a <a href="http://www.lua.org">Lua</a> scripting language wrapper around the <a href="http://www.wxwidgets.org">wxWidgets</a> cross-platform C++ GUI library. It consists of two IDE type editors that can edit, debug, and run Lua programs (wxLua and wxLuaEdit), an executable for running standalone wxLua scripts (wxLuaFreeze), a Lua module that may be loaded using <code class="sourceCode lua"><span class="fu">require</span><span class="ot">(</span><span class="st">&quot;wx&quot;</span><span class="ot">)</span></code> when using the standard Lua executable, and a library for extending C++ programs with a fast, small, fully embeddable scripting language.</p>
 <p>Lua is a small scripting language written in ANSI C that can load and run interpreted scripts as either files or strings. The Lua language is fast, dynamic, and easy to learn. Lua contains a limited number of data types, mainly numbers, booleans, strings, functions, tables, and userdata. Perhaps the most powerful feature of the Lua language is that tables can be used as either numerically indexed arrays or associative arrays that can cross-reference any variable type to any other variable type.</p>
@@ -89,16 +89,16 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <ul>
 <li>The revision number (X.Y.Z.revision) can be thought of as the wxLua version number.</li>
 </ul></li>
-<li>Lua 5.1.5 or 5.2.3
+<li>Lua 5.1.5, 5.2.3, or 5.3
 <ul>
 <li>wxLua uses a nearly unmodified copy of Lua 5.1.5 or 5.2.3.</li>
 <li>Official patches on <a href="www.lua.org">www.lua.org</a> are applied as they are released.</li>
 <li>In MSW the Lua executable has a manifest set to load version 6 of the comctrl32.dll (if available) so that in MS Windows 7+ the controls look modern. When not running wxLua GUI code the executable behaves no differently.</li>
 <li>Any program that works using the official release of Lua will work in wxLua.</li>
 </ul></li>
-<li>wxWidgets 2.8.12
+<li>wxWidgets 3.x
 <ul>
-<li>wxLua currently compiles with wxWidgets versions 2.8.x and 2.9.x.</li>
+<li>wxLua currently compiles with wxWidgets versions 2.8.x, 2.9.x, and 3.x.</li>
 <li>It may compile with newer versions of wxWidgets as well as older ones.</li>
 <li>The interface files have <code>#ifdefs</code> for 2.6, but they are not maintained anymore since in some cases the complexity of maintaining backwards compatibility is not worth it and it is better to take advantage of the fixes and additions to newer versions of wxWidgets. With a little work you may be able to resurrect it to work with wxWidgets 2.6.</li>
 <li>Note for wxWidgets &lt; 2.9 : wxLua makes use of the wxStyledTextCtrl contrib library in <code>wxWidgets/contrib/src/stc</code>. You need to have compiled this into a library if you want to compile the wxLua apps. In wxWidgets &gt;= 2.9 the wxStyledTextCtrl is now part of the main distribution.</li>

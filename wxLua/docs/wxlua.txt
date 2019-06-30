@@ -1,6 +1,6 @@
-﻿% wxLua 2.8.12.3 - User Manual
-% John Labenski
-% 2013-09-10
+﻿% wxLua 3.0.0.1 - User Manual
+% John Labenski, Paul Kulchenko
+% 2019-06-28
 
 [wxLua](http://wxlua.sourceforge.net) is a [Lua](http://www.lua.org) scripting
 language wrapper around the [wxWidgets](http://www.wxwidgets.org)
@@ -73,7 +73,7 @@ numbers using a back-ported `bit32` library from Lua 5.2.
     -   The revision number (X.Y.Z.revision) can be thought of as the wxLua
         version number.
 
--   Lua 5.1.5 or 5.2.3
+-   Lua 5.1.5, 5.2.3, or 5.3
     -   wxLua uses a nearly unmodified copy of Lua 5.1.5 or 5.2.3.
     -   Official patches on [www.lua.org](www.lua.org) are applied as 
         they are released.
@@ -84,8 +84,8 @@ numbers using a back-ported `bit32` library from Lua 5.2.
     -   Any program that works using the official release of Lua will
         work in wxLua.
 
--   wxWidgets 2.8.12
-    -   wxLua currently compiles with wxWidgets versions 2.8.x and 2.9.x.
+-   wxWidgets 3.x
+    -   wxLua currently compiles with wxWidgets versions 2.8.x, 2.9.x, and 3.x.
     -   It may compile with newer versions of wxWidgets as well as older ones.
     -   The interface files have `#ifdefs` for 2.6, but they are not
         maintained anymore since in some cases the complexity of
