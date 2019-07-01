@@ -30,4 +30,4 @@ John Labenski, Paul Kulchenko
 
 ## License
 
-See [LICENSE](wxLua/docs/license.txt).
+See [LICENSE](wxLua/docs/licence.txt).
