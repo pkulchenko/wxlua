@@ -549,15 +549,14 @@ function (wxLua_Modules_LuaModule_TARGETS)
 # This is always built as a DLL
 set( WXLUAMODULE_PROPERTIES_DEFINE_SYMBOL PROPERTIES DEFINE_SYMBOL WXMAKINGDLL_LUAMODULE)
 
-
-
 # Build from fresh sources so we have a clean stand-alone Lua module and
 # we get all the DLL exports right.
 if(WIN32)
-set(wxLuaModule_LUALINK ${LuaLibShared_TARGET_NAME})
+    set(wxLuaModule_LUALINK ${LuaLibShared_TARGET_NAME})
 else()
-set(wxLuaModule_LUALINK "")
+    set(wxLuaModule_LUALINK "")
 endif()
+
 ADD_LIBRARY_FULL( wxLuaModule SHARED # ALLOW_MISSING_FILES
     HEADERS
         ${wxLua_ROOT_DIR}/modules/luamodule/luamoduledefs.h
@@ -581,12 +580,16 @@ ADD_LIBRARY_FULL( wxLuaModule SHARED # ALLOW_MISSING_FILES
     PROPERTIES FOLDER "wxLua/Modules"
     INSTALL "${WXLUA_LIB_INSTALL_FLAGS_NO_EXPORT}")
 
-    # Silence the deprecated warnings since there isn't much we can do about them.
-    if (MSVC)
-        set_property(TARGET wxLuaModule APPEND PROPERTY COMPILE_FLAGS "/wd4996")
-    elseif (CMAKE_COMPILER_IS_GNUCXX)
-        set_property(TARGET wxLuaModule APPEND PROPERTY COMPILE_FLAGS "-Wno-deprecated-declarations")
-    endif()
+# Silence the deprecated warnings since there isn't much we can do about them.
+if (MSVC)
+    set_property(TARGET wxLuaModule APPEND PROPERTY COMPILE_FLAGS "/wd4996")
+elseif (CMAKE_COMPILER_IS_GNUCXX)
+    set_property(TARGET wxLuaModule APPEND PROPERTY COMPILE_FLAGS "-Wno-deprecated-declarations")
+endif()
+
+if(MINGW AND ("${CMAKE_SIZEOF_VOID_P}" EQUAL "8") )
+    target_link_options(wxLuaModule PUBLIC "-Wl,--allow-multiple-definition")
+endif()
 
 # Don't let CMake prepend "lib" on wx.dll with MingW
 if ("${CMAKE_GENERATOR}" MATCHES "MinGW Makefiles")
