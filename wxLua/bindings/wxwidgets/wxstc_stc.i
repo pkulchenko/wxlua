@@ -4232,7 +4232,6 @@ class wxStyledTextCtrl : public wxControl
         Set the current styling position to start.
     */
     %wxchkver_3_1_1 void StartStyling(int pos);
-    !%wxchkver_3_1_1 || %wxcompat_3_0 void StartStyling(int pos, unsigned int mask);
 
     /**
         Change style from current styling position for length characters to a style
@@ -7144,10 +7143,14 @@ class wxStyledTextCtrl : public wxControl
     !%wxchkver_2_9_5 bool GetIndentationGuides();
     !%wxchkver_2_9_5 void SetCaretSticky(bool useCaretStickyBehaviour);
     !%wxchkver_2_9_5 void SetIndentationGuides(bool show);
+    !%wxchkver_3_0_0 void UsePopUp(bool allowPopUp);
     !%wxchkver_3_1_0 int PositionFromPoint(const wxPoint& pt) const;
     !%wxchkver_3_1_1 int BraceMatch(int pos);
     !%wxchkver_3_1_1 int GetPropertyInt(const wxString& key) const;
-    !%wxchkver_3_0_0 void UsePopUp(bool allowPopUp);
+    !%wxchkver_3_1_1 || %wxcompat_3_0 int GetStyleBits() const;
+    !%wxchkver_3_1_1 || %wxcompat_3_0 int GetStyleBitsNeeded() const;
+    !%wxchkver_3_1_1 || %wxcompat_3_0 void SetStyleBits(int bits);
+    !%wxchkver_3_1_1 || %wxcompat_3_0 void StartStyling(int pos, unsigned int mask);
     !%wxchkver_3_1_3 void MarkerDefineBitmap(int markerNumber, const wxBitmap& bmp);
     !%wxchkver_3_1_3 void RegisterImage(int type, const wxBitmap& bmp);
     // %override [Lua string styleBytes] wxStyledTextCtrl::SetStyleBytes(int length, Lua string styleBytes);

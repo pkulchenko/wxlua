@@ -5214,9 +5214,25 @@ static int LUACALL wxLua_wxStyledTextCtrl_GetStyleAt(lua_State *L)
 
 
 #if !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetStyleBits1[] = { &wxluatype_wxStyledTextCtrl, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_GetStyleBits1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBits1[1] = {{ wxLua_wxStyledTextCtrl_GetStyleBits1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetStyleBits1 }};
+//     !%wxchkver_3_1_1 || %wxcompat_3_0 int GetStyleBits() const;
+static int LUACALL wxLua_wxStyledTextCtrl_GetStyleBits1(lua_State *L)
+{
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call GetStyleBits
+    int returns = (self->GetStyleBits());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetStyleBits[] = { &wxluatype_wxStyledTextCtrl, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_GetStyleBits(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBits[1] = {{ wxLua_wxStyledTextCtrl_GetStyleBits, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetStyleBits }};
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBits[1] = {{ wxLua_wxStyledTextCtrl_GetStyleBits, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetStyleBits }};
 //     !%wxchkver_3_1_1 || %wxcompat_3_0 int GetStyleBits() const;
 static int LUACALL wxLua_wxStyledTextCtrl_GetStyleBits(lua_State *L)
 {
@@ -5230,9 +5246,25 @@ static int LUACALL wxLua_wxStyledTextCtrl_GetStyleBits(lua_State *L)
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetStyleBitsNeeded1[] = { &wxluatype_wxStyledTextCtrl, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_GetStyleBitsNeeded1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBitsNeeded1[1] = {{ wxLua_wxStyledTextCtrl_GetStyleBitsNeeded1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetStyleBitsNeeded1 }};
+//     !%wxchkver_3_1_1 || %wxcompat_3_0 int GetStyleBitsNeeded() const;
+static int LUACALL wxLua_wxStyledTextCtrl_GetStyleBitsNeeded1(lua_State *L)
+{
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call GetStyleBitsNeeded
+    int returns = (self->GetStyleBitsNeeded());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetStyleBitsNeeded[] = { &wxluatype_wxStyledTextCtrl, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_GetStyleBitsNeeded(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBitsNeeded[1] = {{ wxLua_wxStyledTextCtrl_GetStyleBitsNeeded, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetStyleBitsNeeded }};
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBitsNeeded[1] = {{ wxLua_wxStyledTextCtrl_GetStyleBitsNeeded, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetStyleBitsNeeded }};
 //     !%wxchkver_3_1_1 || %wxcompat_3_0 int GetStyleBitsNeeded() const;
 static int LUACALL wxLua_wxStyledTextCtrl_GetStyleBitsNeeded(lua_State *L)
 {
@@ -10726,9 +10758,25 @@ static int LUACALL wxLua_wxStyledTextCtrl_SetStatus(lua_State *L)
 
 
 #if !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetStyleBits1[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_SetStyleBits1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_SetStyleBits1[1] = {{ wxLua_wxStyledTextCtrl_SetStyleBits1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetStyleBits1 }};
+//     !%wxchkver_3_1_1 || %wxcompat_3_0 void SetStyleBits(int bits);
+static int LUACALL wxLua_wxStyledTextCtrl_SetStyleBits1(lua_State *L)
+{
+    // int bits
+    int bits = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call SetStyleBits
+    self->SetStyleBits(bits);
+
+    return 0;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetStyleBits[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_SetStyleBits(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_SetStyleBits[1] = {{ wxLua_wxStyledTextCtrl_SetStyleBits, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetStyleBits }};
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_SetStyleBits[1] = {{ wxLua_wxStyledTextCtrl_SetStyleBits, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetStyleBits }};
 //     !%wxchkver_3_1_1 || %wxcompat_3_0 void SetStyleBits(int bits);
 static int LUACALL wxLua_wxStyledTextCtrl_SetStyleBits(lua_State *L)
 {
@@ -12967,6 +13015,37 @@ static int s_wxluafunc_wxLua_wxStyledTextCtrl_GetPropertyInt_overload_count = si
 
 #endif // (!wxCHECK_VERSION(3,1,1))||(wxCHECK_VERSION(3,1,1))
 
+#if (!wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBits_overload[] =
+{
+
+#if !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
+    { wxLua_wxStyledTextCtrl_GetStyleBits1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetStyleBits1 },
+#endif // !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
+
+#if !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
+    { wxLua_wxStyledTextCtrl_GetStyleBits, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetStyleBits },
+#endif // !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
+};
+static int s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBits_overload_count = sizeof(s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBits_overload)/sizeof(wxLuaBindCFunc);
+
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBitsNeeded_overload[] =
+{
+
+#if !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
+    { wxLua_wxStyledTextCtrl_GetStyleBitsNeeded1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetStyleBitsNeeded1 },
+#endif // !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
+
+#if !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
+    { wxLua_wxStyledTextCtrl_GetStyleBitsNeeded, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetStyleBitsNeeded },
+#endif // !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
+};
+static int s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBitsNeeded_overload_count = sizeof(s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBitsNeeded_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (!wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0))
+
 #if (!wxCHECK_VERSION(3,1,0))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetUseAntiAliasing_overload[] =
@@ -13069,6 +13148,23 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_SetIndentationGuides_ov
 static int s_wxluafunc_wxLua_wxStyledTextCtrl_SetIndentationGuides_overload_count = sizeof(s_wxluafunc_wxLua_wxStyledTextCtrl_SetIndentationGuides_overload)/sizeof(wxLuaBindCFunc);
 
 #endif // (!wxCHECK_VERSION(2,9,5))||(wxCHECK_VERSION(2,9,5))
+
+#if (!wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_SetStyleBits_overload[] =
+{
+
+#if !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
+    { wxLua_wxStyledTextCtrl_SetStyleBits1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetStyleBits1 },
+#endif // !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
+
+#if !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
+    { wxLua_wxStyledTextCtrl_SetStyleBits, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_SetStyleBits },
+#endif // !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
+};
+static int s_wxluafunc_wxLua_wxStyledTextCtrl_SetStyleBits_overload_count = sizeof(s_wxluafunc_wxLua_wxStyledTextCtrl_SetStyleBits_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (!wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0))
 
 #if (!wxCHECK_VERSION(3,1,0))
 // function overload table
@@ -13729,10 +13825,10 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "GetStatus", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetStatus, 1, NULL },
     { "GetStyleAt", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleAt, 1, NULL },
 
-#if !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
-    { "GetStyleBits", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBits, 1, NULL },
-    { "GetStyleBitsNeeded", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBitsNeeded, 1, NULL },
-#endif // !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
+#if (!wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0))
+    { "GetStyleBits", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBits_overload, s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBits_overload_count, 0 },
+    { "GetStyleBitsNeeded", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBitsNeeded_overload, s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleBitsNeeded_overload_count, 0 },
+#endif // (!wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0))
 
 #if wxCHECK_VERSION(3,1,0)
     { "GetStyleFromSubStyle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleFromSubStyle, 1, NULL },
@@ -14369,9 +14465,9 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "SetSelectionStart", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetSelectionStart, 1, NULL },
     { "SetStatus", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetStatus, 1, NULL },
 
-#if !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
-    { "SetStyleBits", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetStyleBits, 1, NULL },
-#endif // !wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)
+#if (!wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0))
+    { "SetStyleBits", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetStyleBits_overload, s_wxluafunc_wxLua_wxStyledTextCtrl_SetStyleBits_overload_count, 0 },
+#endif // (!wxCHECK_VERSION(3,1,1) || (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0))
 
     { "SetStyleBytes", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetStyleBytes, 1, NULL },
     { "SetStyling", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_SetStyling, 1, NULL },
