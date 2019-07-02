@@ -5045,6 +5045,15 @@ wx_dataTypeTable =
     Name = "wxTextValidator",
     ValueType = "class",
   },
+  wxTimePickerCtrl = {
+    BaseClasses = {
+      [1] = "wxControl",
+    },
+    Condition = "(wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))",
+    IsNumber = false,
+    Name = "wxTimePickerCtrl",
+    ValueType = "class",
+  },
   wxTimeSpan = {
     Condition = "wxLUA_USE_wxTimeSpan && wxUSE_DATETIME",
     IsNumber = false,
@@ -5762,6 +5771,7 @@ wx_preprocConditionTable =
   wxLUA_USE_wxTextCtrl = "wxLUA_USE_wxTextCtrl",
   wxLUA_USE_wxTextEntryDialog = "wxLUA_USE_wxTextEntryDialog",
   wxLUA_USE_wxTextValidator = "wxLUA_USE_wxTextValidator",
+  wxLUA_USE_wxTimePickerCtrl = "wxLUA_USE_wxTimePickerCtrl",
   wxLUA_USE_wxTimeSpan = "wxLUA_USE_wxTimeSpan",
   wxLUA_USE_wxTimer = "wxLUA_USE_wxTimer",
   wxLUA_USE_wxToggleButton = "wxLUA_USE_wxToggleButton",
@@ -5942,6 +5952,7 @@ wx_preprocConditionTable =
   wxUSE_TGA = "wxUSE_TGA",
   wxUSE_THREADS = "wxUSE_THREADS",
   wxUSE_TIMEDATE = "wxUSE_TIMEDATE",
+  wxUSE_TIMEPICKCTRL = "wxUSE_TIMEPICKCTRL",
   wxUSE_TIMER = "wxUSE_TIMER",
   wxUSE_TIPWINDOW = "wxUSE_TIPWINDOW",
   wxUSE_TOGGLEBTN = "wxUSE_TOGGLEBTN",

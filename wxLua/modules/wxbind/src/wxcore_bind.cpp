@@ -2519,6 +2519,10 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
 
         { "wxTOP", wxTOP },
 
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))
+        { "wxTP_DEFAULT", wxTP_DEFAULT },
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))
+
 #if wxLUA_USE_wxColourPenBrush
         { "wxTRANSPARENT", wxTRANSPARENT },
 #endif // wxLUA_USE_wxColourPenBrush
@@ -4832,6 +4836,7 @@ static const char* wxluaclassname_wxTextEntry = "wxTextEntry";
 static const char* wxluaclassname_wxTextEntryDialog = "wxTextEntryDialog";
 static const char* wxluaclassname_wxTextUrlEvent = "wxTextUrlEvent";
 static const char* wxluaclassname_wxTextValidator = "wxTextValidator";
+static const char* wxluaclassname_wxTimePickerCtrl = "wxTimePickerCtrl";
 static const char* wxluaclassname_wxTimer = "wxTimer";
 static const char* wxluaclassname_wxTimerEvent = "wxTimerEvent";
 static const char* wxluaclassname_wxToggleButton = "wxToggleButton";
@@ -5334,6 +5339,8 @@ static const char* wxluabaseclassnames_wxTextUrlEvent[] = { wxluaclassname_wxCom
 static wxLuaBindClass* wxluabaseclassbinds_wxTextUrlEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxTextValidator[] = { wxluaclassname_wxValidator, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxTextValidator[] = { NULL };
+static const char* wxluabaseclassnames_wxTimePickerCtrl[] = { wxluaclassname_wxControl, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxTimePickerCtrl[] = { NULL };
 static const char* wxluabaseclassnames_wxTimer[] = { wxluaclassname_wxEvtHandler, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxTimer[] = { NULL };
 static const char* wxluabaseclassnames_wxTimerEvent[] = { wxluaclassname_wxEvent, NULL };
@@ -5474,6 +5481,12 @@ static wxLuaBindClass* wxluabaseclassbinds_wxXPMHandler[] = { NULL };
     extern int wxFontPickerEvent_methodCount;
     extern void wxLua_wxFontPickerEvent_delete_function(void** p);
 #endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxFontPickerCtrl && wxUSE_FONTPICKERCTRL)
+
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))
+    extern wxLuaBindMethod wxTimePickerCtrl_methods[];
+    extern int wxTimePickerCtrl_methodCount;
+    extern void wxLua_wxTimePickerCtrl_delete_function(void** p);
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))
 
 #if (wxCHECK_VERSION(2,8,0) && wxUSE_TGA) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
     extern wxLuaBindMethod wxTGAHandler_methods[];
@@ -7646,6 +7659,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #if (wxLUA_USE_wxTextValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
         { wxluaclassname_wxTextValidator, wxTextValidator_methods, wxTextValidator_methodCount, CLASSINFO(wxTextValidator), &wxluatype_wxTextValidator, wxluabaseclassnames_wxTextValidator, wxluabaseclassbinds_wxTextValidator, NULL, NULL, NULL, 0, &wxLua_wxTextValidator_delete_function, }, 
 #endif // (wxLUA_USE_wxTextValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))
+        { wxluaclassname_wxTimePickerCtrl, wxTimePickerCtrl_methods, wxTimePickerCtrl_methodCount, CLASSINFO(wxTimePickerCtrl), &wxluatype_wxTimePickerCtrl, wxluabaseclassnames_wxTimePickerCtrl, wxluabaseclassbinds_wxTimePickerCtrl, NULL, NULL, NULL, 0, &wxLua_wxTimePickerCtrl_delete_function, }, 
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))
 
 #if wxLUA_USE_wxTimer && wxUSE_TIMER
         { wxluaclassname_wxTimer, wxTimer_methods, wxTimer_methodCount, CLASSINFO(wxTimer), &wxluatype_wxTimer, wxluabaseclassnames_wxTimer, wxluabaseclassbinds_wxTimer, NULL, NULL, NULL, 0, &wxLua_wxTimer_delete_function, }, 

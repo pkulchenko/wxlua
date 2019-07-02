@@ -43,6 +43,8 @@ ID_FONTPICKER3 = 5003
 ID_FONTPICKER4 = 5004
 ID_FONTPICKER5 = 5005
 
+ID_TIMEPICKER1 = 6001
+
 -- ---------------------------------------------------------------------------
 -- Gather up all of the wxEVT_XXX names and hash by their value
 -- ---------------------------------------------------------------------------
@@ -200,6 +202,22 @@ function CreatePickerWindow(parent)
     flexSizer:Add(wx.wxStaticLine(scrollWin, wx.wxID_ANY), 1, wx.wxEXPAND)
     flexSizer:Add(wx.wxStaticLine(scrollWin, wx.wxID_ANY), 1, wx.wxEXPAND)
 
+    local timePicker = nil -- not used outside of this function
+
+    statText = wx.wxStaticText(scrollWin, wx.wxID_ANY, "wxTimePickerCtrl +  wxTP_DEFAULT")
+    timePicker = wx.wxTimePickerCtrl(scrollWin, ID_TIMEPICKER1, wx.wxDefaultDateTime,
+                                         wx.wxDefaultPosition, wx.wxDefaultSize,
+                                         wx.wxTP_DEFAULT)
+    flexSizer:Add(statText, 1, wx.wxALIGN_CENTER_VERTICAL)
+    flexSizer:Add(timePicker, 1, wx.wxEXPAND)
+
+    -- central event handler for all wxTimePickerCtrls
+    scrollWin:Connect(wx.wxID_ANY, wx.wxEVT_TIME_CHANGED, OnDatePicker)
+
+    -- -----------------------------------------------------------------------
+    flexSizer:Add(wx.wxStaticLine(scrollWin, wx.wxID_ANY), 1, wx.wxEXPAND)
+    flexSizer:Add(wx.wxStaticLine(scrollWin, wx.wxID_ANY), 1, wx.wxEXPAND)
+    
     local dirPicker = nil -- not used outside of this function
 
     statText = wx.wxStaticText(scrollWin, wx.wxID_ANY, "wxDirPickerCtrl +  wxDIRP_DEFAULT_STYLE")

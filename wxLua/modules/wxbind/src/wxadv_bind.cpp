@@ -3067,7 +3067,7 @@ static int LUACALL wxLua_wxDateEvent_GetDate(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateEvent_SetDate[] = { &wxluatype_wxDateEvent, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateEvent_SetDate(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateEvent_SetDate[1] = {{ wxLua_wxDateEvent_SetDate, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDateEvent_SetDate }};
-//     void SetDate(const wxDateTime &date );
+//     void SetDate(const wxDateTime &date);
 static int LUACALL wxLua_wxDateEvent_SetDate(lua_State *L)
 {
     // const wxDateTime date
@@ -3090,7 +3090,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateEvent_delete[1] = {{ wxlua_userdat
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateEvent_constructor[] = { &wxluatype_wxWindow, &wxluatype_wxDateTime, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDateEvent_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateEvent_constructor[1] = {{ wxLua_wxDateEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 3, 3, s_wxluatypeArray_wxLua_wxDateEvent_constructor }};
-//     wxDateEvent(wxWindow *win, const wxDateTime& dt, wxEventType type );
+//     wxDateEvent(wxWindow *win, const wxDateTime& dt, wxEventType type);
 static int LUACALL wxLua_wxDateEvent_constructor(lua_State *L)
 {
     // wxEventType type
@@ -16221,6 +16221,10 @@ wxLuaBindEvent* wxLuaGetEventList_wxadv(size_t &count)
         { "wxEVT_TASKBAR_RIGHT_DOWN", WXLUA_GET_wxEventType_ptr(wxEVT_TASKBAR_RIGHT_DOWN), &wxluatype_wxTaskBarIconEvent },
         { "wxEVT_TASKBAR_RIGHT_UP", WXLUA_GET_wxEventType_ptr(wxEVT_TASKBAR_RIGHT_UP), &wxluatype_wxTaskBarIconEvent },
 #endif // wxLUA_USE_wxTaskBarIcon && defined (wxHAS_TASK_BAR_ICON )
+
+#if wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL
+        { "wxEVT_TIME_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_TIME_CHANGED), &wxluatype_wxDateEvent },
+#endif // wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL
 
 #if wxUSE_WIZARDDLG && wxLUA_USE_wxWizard
         { "wxEVT_WIZARD_CANCEL", WXLUA_GET_wxEventType_ptr(wxEVT_WIZARD_CANCEL), &wxluatype_wxWizardEvent },

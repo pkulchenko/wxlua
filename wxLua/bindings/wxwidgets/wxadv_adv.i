@@ -294,12 +294,13 @@ class %delete wxCalendarDateAttr
 
 class %delete wxDateEvent : public wxCommandEvent
 {
-    %wxEventType wxEVT_DATE_CHANGED // EVT_DATE_CHANGED(id, fn );
+    %wxEventType wxEVT_DATE_CHANGED // EVT_DATE_CHANGED(id, fn);
+    %wxEventType wxEVT_TIME_CHANGED // EVT_TIME_CHANGED(id, fn);
 
-    wxDateEvent(wxWindow *win, const wxDateTime& dt, wxEventType type );
+    wxDateEvent(wxWindow *win, const wxDateTime& dt, wxEventType type);
 
     wxDateTime GetDate() const;
-    void SetDate(const wxDateTime &date );
+    void SetDate(const wxDateTime &date);
 };
 
 // ---------------------------------------------------------------------------

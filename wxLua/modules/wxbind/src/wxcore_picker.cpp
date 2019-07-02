@@ -686,7 +686,7 @@ int wxluatype_wxDatePickerCtrl = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDatePickerCtrl_Create[] = { &wxluatype_wxDatePickerCtrl, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxDateTime, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDatePickerCtrl_Create(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDatePickerCtrl_Create[1] = {{ wxLua_wxDatePickerCtrl_Create, WXLUAMETHOD_METHOD, 3, 9, s_wxluatypeArray_wxLua_wxDatePickerCtrl_Create }};
-//     bool Create(wxWindow *parent, wxWindowID id, const wxDateTime& dt = wxDefaultDateTime, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDP_DEFAULT | wxDP_SHOWCENTURY, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxDatePickerCtrl" );
+//     bool Create(wxWindow *parent, wxWindowID id, const wxDateTime& dt = wxDefaultDateTime, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDP_DEFAULT | wxDP_SHOWCENTURY, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxDatePickerCtrl");
 static int LUACALL wxLua_wxDatePickerCtrl_Create(lua_State *L)
 {
     // get number of arguments
@@ -765,7 +765,7 @@ static int LUACALL wxLua_wxDatePickerCtrl_GetValue(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDatePickerCtrl_SetRange[] = { &wxluatype_wxDatePickerCtrl, &wxluatype_wxDateTime, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDatePickerCtrl_SetRange(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDatePickerCtrl_SetRange[1] = {{ wxLua_wxDatePickerCtrl_SetRange, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxDatePickerCtrl_SetRange }};
-//     void SetRange(const wxDateTime& dt1, const wxDateTime& dt2 );
+//     void SetRange(const wxDateTime& dt1, const wxDateTime& dt2);
 static int LUACALL wxLua_wxDatePickerCtrl_SetRange(lua_State *L)
 {
     // const wxDateTime dt2
@@ -783,7 +783,7 @@ static int LUACALL wxLua_wxDatePickerCtrl_SetRange(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDatePickerCtrl_SetValue[] = { &wxluatype_wxDatePickerCtrl, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDatePickerCtrl_SetValue(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDatePickerCtrl_SetValue[1] = {{ wxLua_wxDatePickerCtrl_SetValue, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDatePickerCtrl_SetValue }};
-//     void SetValue(const wxDateTime& dt );
+//     void SetValue(const wxDateTime& dt);
 static int LUACALL wxLua_wxDatePickerCtrl_SetValue(lua_State *L)
 {
     // const wxDateTime dt
@@ -802,7 +802,7 @@ static int LUACALL wxLua_wxDatePickerCtrl_SetValue(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDatePickerCtrl_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxDateTime, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDatePickerCtrl_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDatePickerCtrl_constructor1[1] = {{ wxLua_wxDatePickerCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 8, s_wxluatypeArray_wxLua_wxDatePickerCtrl_constructor1 }};
-//     wxDatePickerCtrl(wxWindow *parent, wxWindowID id, const wxDateTime& dt = wxDefaultDateTime, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDP_DEFAULT | wxDP_SHOWCENTURY, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxDatePickerCtrl" );
+//     wxDatePickerCtrl(wxWindow *parent, wxWindowID id, const wxDateTime& dt = wxDefaultDateTime, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDP_DEFAULT | wxDP_SHOWCENTURY, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxDatePickerCtrl");
 static int LUACALL wxLua_wxDatePickerCtrl_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -837,7 +837,7 @@ static int LUACALL wxLua_wxDatePickerCtrl_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxDatePickerCtrl_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDatePickerCtrl_constructor[1] = {{ wxLua_wxDatePickerCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxDatePickerCtrl( );
+//     wxDatePickerCtrl();
 static int LUACALL wxLua_wxDatePickerCtrl_constructor(lua_State *L)
 {
     // call constructor
@@ -897,6 +897,251 @@ wxLuaBindMethod wxDatePickerCtrl_methods[] = {
 int wxDatePickerCtrl_methodCount = sizeof(wxDatePickerCtrl_methods)/sizeof(wxLuaBindMethod) - 1;
 
 #endif  // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxDatePickerCtrl && wxUSE_DATEPICKCTRL)
+
+
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))
+// ---------------------------------------------------------------------------
+// Bind class wxTimePickerCtrl
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxTimePickerCtrl'
+int wxluatype_wxTimePickerCtrl = WXLUA_TUNKNOWN;
+
+#if ((((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTimePickerCtrl_Create[] = { &wxluatype_wxTimePickerCtrl, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxDateTime, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxTimePickerCtrl_Create(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimePickerCtrl_Create[1] = {{ wxLua_wxTimePickerCtrl_Create, WXLUAMETHOD_METHOD, 3, 9, s_wxluatypeArray_wxLua_wxTimePickerCtrl_Create }};
+//                 const wxString& name = wxTimePickerCtrlNameStr);
+static int LUACALL wxLua_wxTimePickerCtrl_Create(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString name = wxTimePickerCtrlNameStr
+    const wxString name = (argCount >= 9 ? wxlua_getwxStringtype(L, 9) : wxString(wxTimePickerCtrlNameStr));
+    // const wxValidator validator = wxDefaultValidator
+    const wxValidator * validator = (argCount >= 8 ? (const wxValidator *)wxluaT_getuserdatatype(L, 8, wxluatype_wxValidator) : &wxDefaultValidator);
+    // long style = wxTP_DEFAULT
+    long style = (argCount >= 7 ? (long)wxlua_getnumbertype(L, 7) : wxTP_DEFAULT);
+    // const wxSize size = wxDefaultSize
+    const wxSize * size = (argCount >= 6 ? (const wxSize *)wxluaT_getuserdatatype(L, 6, wxluatype_wxSize) : &wxDefaultSize);
+    // const wxPoint pos = wxDefaultPosition
+    const wxPoint * pos = (argCount >= 5 ? (const wxPoint *)wxluaT_getuserdatatype(L, 5, wxluatype_wxPoint) : &wxDefaultPosition);
+    // const wxDateTime dt = wxDefaultDateTime
+    const wxDateTime * dt = (argCount >= 4 ? (const wxDateTime *)wxluaT_getuserdatatype(L, 4, wxluatype_wxDateTime) : &wxDefaultDateTime);
+    // wxWindowID id
+    wxWindowID id = (wxWindowID)wxlua_getnumbertype(L, 3);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxTimePickerCtrl * self = (wxTimePickerCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTimePickerCtrl);
+    // call Create
+    bool returns = (self->Create(parent, id, *dt, *pos, *size, style, *validator, name));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // ((((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+
+#if ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxCHECK_VERSION(2,9,4))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTimePickerCtrl_GetTime[] = { &wxluatype_wxTimePickerCtrl, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, NULL };
+static int LUACALL wxLua_wxTimePickerCtrl_GetTime(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimePickerCtrl_GetTime[1] = {{ wxLua_wxTimePickerCtrl_GetTime, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxTimePickerCtrl_GetTime }};
+//     %wxchkver_2_9_4 bool GetTime(int* hour, int* min, int* sec) const;
+static int LUACALL wxLua_wxTimePickerCtrl_GetTime(lua_State *L)
+{
+    // int sec
+    int * sec = (int *)wxlua_touserdata(L, 4);
+    // int min
+    int * min = (int *)wxlua_touserdata(L, 3);
+    // int hour
+    int * hour = (int *)wxlua_touserdata(L, 2);
+    // get this
+    wxTimePickerCtrl * self = (wxTimePickerCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTimePickerCtrl);
+    // call GetTime
+    bool returns = (self->GetTime(hour, min, sec));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxCHECK_VERSION(2,9,4))
+
+#if ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTimePickerCtrl_GetValue[] = { &wxluatype_wxTimePickerCtrl, NULL };
+static int LUACALL wxLua_wxTimePickerCtrl_GetValue(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimePickerCtrl_GetValue[1] = {{ wxLua_wxTimePickerCtrl_GetValue, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimePickerCtrl_GetValue }};
+//     virtual wxDateTime GetValue() const;
+static int LUACALL wxLua_wxTimePickerCtrl_GetValue(lua_State *L)
+{
+    // get this
+    wxTimePickerCtrl * self = (wxTimePickerCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTimePickerCtrl);
+    // call GetValue
+    // allocate a new object using the copy constructor
+    wxDateTime* returns = new wxDateTime(self->GetValue());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxDateTime);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateTime);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
+
+#if ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxCHECK_VERSION(2,9,4))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTimePickerCtrl_SetTime[] = { &wxluatype_wxTimePickerCtrl, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxTimePickerCtrl_SetTime(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimePickerCtrl_SetTime[1] = {{ wxLua_wxTimePickerCtrl_SetTime, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxTimePickerCtrl_SetTime }};
+//     %wxchkver_2_9_4 bool SetTime(int hour, int min, int sec);
+static int LUACALL wxLua_wxTimePickerCtrl_SetTime(lua_State *L)
+{
+    // int sec
+    int sec = (int)wxlua_getnumbertype(L, 4);
+    // int min
+    int min = (int)wxlua_getnumbertype(L, 3);
+    // int hour
+    int hour = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxTimePickerCtrl * self = (wxTimePickerCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTimePickerCtrl);
+    // call SetTime
+    bool returns = (self->SetTime(hour, min, sec));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxCHECK_VERSION(2,9,4))
+
+#if ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTimePickerCtrl_SetValue[] = { &wxluatype_wxTimePickerCtrl, &wxluatype_wxDateTime, NULL };
+static int LUACALL wxLua_wxTimePickerCtrl_SetValue(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimePickerCtrl_SetValue[1] = {{ wxLua_wxTimePickerCtrl_SetValue, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTimePickerCtrl_SetValue }};
+//     virtual void SetValue(const wxDateTime& dt);
+static int LUACALL wxLua_wxTimePickerCtrl_SetValue(lua_State *L)
+{
+    // const wxDateTime dt
+    const wxDateTime * dt = (const wxDateTime *)wxluaT_getuserdatatype(L, 2, wxluatype_wxDateTime);
+    // get this
+    wxTimePickerCtrl * self = (wxTimePickerCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTimePickerCtrl);
+    // call SetValue
+    self->SetValue(*dt);
+
+    return 0;
+}
+
+#endif // ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
+
+#if ((((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTimePickerCtrl_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxDateTime, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxTimePickerCtrl_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimePickerCtrl_constructor1[1] = {{ wxLua_wxTimePickerCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 8, s_wxluatypeArray_wxLua_wxTimePickerCtrl_constructor1 }};
+//                      const wxString& name = wxTimePickerCtrlNameStr);
+static int LUACALL wxLua_wxTimePickerCtrl_constructor1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString name = wxTimePickerCtrlNameStr
+    const wxString name = (argCount >= 8 ? wxlua_getwxStringtype(L, 8) : wxString(wxTimePickerCtrlNameStr));
+    // const wxValidator validator = wxDefaultValidator
+    const wxValidator * validator = (argCount >= 7 ? (const wxValidator *)wxluaT_getuserdatatype(L, 7, wxluatype_wxValidator) : &wxDefaultValidator);
+    // long style = wxTP_DEFAULT
+    long style = (argCount >= 6 ? (long)wxlua_getnumbertype(L, 6) : wxTP_DEFAULT);
+    // const wxSize size = wxDefaultSize
+    const wxSize * size = (argCount >= 5 ? (const wxSize *)wxluaT_getuserdatatype(L, 5, wxluatype_wxSize) : &wxDefaultSize);
+    // const wxPoint pos = wxDefaultPosition
+    const wxPoint * pos = (argCount >= 4 ? (const wxPoint *)wxluaT_getuserdatatype(L, 4, wxluatype_wxPoint) : &wxDefaultPosition);
+    // const wxDateTime dt = wxDefaultDateTime
+    const wxDateTime * dt = (argCount >= 3 ? (const wxDateTime *)wxluaT_getuserdatatype(L, 3, wxluatype_wxDateTime) : &wxDefaultDateTime);
+    // wxWindowID id
+    wxWindowID id = (wxWindowID)wxlua_getnumbertype(L, 2);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call constructor
+    wxTimePickerCtrl* returns = new wxTimePickerCtrl(parent, id, *dt, *pos, *size, style, *validator, name);
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTimePickerCtrl);
+
+    return 1;
+}
+
+#endif // ((((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+
+static int LUACALL wxLua_wxTimePickerCtrl_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimePickerCtrl_constructor[1] = {{ wxLua_wxTimePickerCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxTimePickerCtrl();
+static int LUACALL wxLua_wxTimePickerCtrl_constructor(lua_State *L)
+{
+    // call constructor
+    wxTimePickerCtrl* returns = new wxTimePickerCtrl();
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTimePickerCtrl);
+
+    return 1;
+}
+
+
+
+
+#if (((((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3)))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimePickerCtrl_constructor_overload[] =
+{
+
+#if ((((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+    { wxLua_wxTimePickerCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 8, s_wxluatypeArray_wxLua_wxTimePickerCtrl_constructor1 },
+#endif // ((((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+    { wxLua_wxTimePickerCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+};
+static int s_wxluafunc_wxLua_wxTimePickerCtrl_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxTimePickerCtrl_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (((((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3)))
+
+void wxLua_wxTimePickerCtrl_delete_function(void** p)
+{
+    wxTimePickerCtrl* o = (wxTimePickerCtrl*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxTimePickerCtrl_methods[] = {
+#if ((((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+    { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTimePickerCtrl_Create, 1, NULL },
+#endif // ((((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+
+#if ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxCHECK_VERSION(2,9,4))
+    { "GetTime", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTimePickerCtrl_GetTime, 1, NULL },
+#endif // ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxCHECK_VERSION(2,9,4))
+
+#if ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
+    { "GetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTimePickerCtrl_GetValue, 1, NULL },
+#endif // ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
+
+#if ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxCHECK_VERSION(2,9,4))
+    { "SetTime", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTimePickerCtrl_SetTime, 1, NULL },
+#endif // ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxCHECK_VERSION(2,9,4))
+
+#if ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
+    { "SetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTimePickerCtrl_SetValue, 1, NULL },
+#endif // ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)
+
+#if (((((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3)))
+    { "wxTimePickerCtrl", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxTimePickerCtrl_constructor_overload, s_wxluafunc_wxLua_wxTimePickerCtrl_constructor_overload_count, 0 },
+#endif // (((((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxDateTime && wxUSE_DATETIME)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3)))
+
+    { 0, 0, 0, 0 },
+};
+
+int wxTimePickerCtrl_methodCount = sizeof(wxTimePickerCtrl_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))
 
 
 #if ((wxLUA_USE_wxDirPickerCtrl || wxLUA_USE_wxFilePickerCtrl ) && (wxUSE_FILEPICKERCTRL || wxUSE_DIRPICKERCTRL )) && (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker)
