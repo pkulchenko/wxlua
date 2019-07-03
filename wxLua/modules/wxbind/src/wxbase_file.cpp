@@ -158,7 +158,7 @@ static int LUACALL wxLua_wxStandardPaths_GetExecutablePath(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_GetFileLayout[] = { &wxluatype_wxStandardPaths, NULL };
 static int LUACALL wxLua_wxStandardPaths_GetFileLayout(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_GetFileLayout[1] = {{ wxLua_wxStandardPaths_GetFileLayout, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStandardPaths_GetFileLayout }};
-//     %wxchkver_3_1_1 wxStandardPaths::FileLayout GetFileLayout() const;
+//     %wxchkver_3_1_1 wxStandardPaths::FileLayout GetFileLayout() const; // %override return type
 static int LUACALL wxLua_wxStandardPaths_GetFileLayout(lua_State *L)
 {
     // get this
@@ -402,7 +402,7 @@ static int LUACALL wxLua_wxStandardPaths_MSWGetShellDir(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_MakeConfigFileName[] = { &wxluatype_wxStandardPaths, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxStandardPaths_MakeConfigFileName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_MakeConfigFileName[1] = {{ wxLua_wxStandardPaths_MakeConfigFileName, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxStandardPaths_MakeConfigFileName }};
-//     %wxchkver_3_1_1 wxString MakeConfigFileName(const wxString& basename, wxStandardPaths::ConfigFileConv conv = wxStandardPaths::ConfigFileConv_Ext) const;
+//     %wxchkver_3_1_1 wxString MakeConfigFileName(const wxString& basename, wxStandardPaths::ConfigFileConv conv = wxStandardPaths::ConfigFileConv_Ext) const; // %override parameter type
 static int LUACALL wxLua_wxStandardPaths_MakeConfigFileName(lua_State *L)
 {
     // get number of arguments
@@ -424,7 +424,7 @@ static int LUACALL wxLua_wxStandardPaths_MakeConfigFileName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStandardPaths_SetFileLayout[] = { &wxluatype_wxStandardPaths, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxStandardPaths_SetFileLayout(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStandardPaths_SetFileLayout[1] = {{ wxLua_wxStandardPaths_SetFileLayout, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStandardPaths_SetFileLayout }};
-//     %wxchkver_3_1_1 void SetFileLayout(wxStandardPaths::FileLayout layout);
+//     %wxchkver_3_1_1 void SetFileLayout(wxStandardPaths::FileLayout layout); // %override parameter type
 static int LUACALL wxLua_wxStandardPaths_SetFileLayout(lua_State *L)
 {
     // wxStandardPaths::FileLayout layout

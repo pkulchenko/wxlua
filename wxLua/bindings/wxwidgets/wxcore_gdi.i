@@ -424,9 +424,7 @@ class %delete wxFont : public wxGDIObject
     wxString GetNativeFontInfoDesc() const;
     %wxchkver_3_0_0 wxString GetNativeFontInfoUserDesc() const;
     %wxchkver_3_0_0 const wxNativeFontInfo *GetNativeFontInfo() const;
-#if wxUSE_PRIVATE_FONTS
-    %wxchkver_3_1_2 static bool AddPrivateFont(const wxString& filename);
-#endif
+    wxUSE_PRIVATE_FONTS && %wxchkver_3_1_2 static bool AddPrivateFont(const wxString& filename);
     int      GetPointSize() const;
     %wxchkver_3_1_2 float  GetFractionalPointSize() const;
     %wxchkver_3_0_0 wxSize GetPixelSize() const;

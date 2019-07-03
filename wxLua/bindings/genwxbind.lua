@@ -943,6 +943,7 @@ function InitKeywords()
     preprocConditionTable["wxUSE_POPUPWIN"]                = "wxUSE_POPUPWIN"
     preprocConditionTable["wxUSE_POSTSCRIPT"]              = "wxUSE_POSTSCRIPT"
     preprocConditionTable["wxUSE_PRINTING_ARCHITECTURE"]   = "wxUSE_PRINTING_ARCHITECTURE"
+    preprocConditionTable["wxUSE_PRIVATE_FONTS"]           = "wxUSE_PRIVATE_FONTS"
     preprocConditionTable["wxUSE_PROGRESSDLG"]             = "wxUSE_PROGRESSDLG"
     preprocConditionTable["wxUSE_PROLOGIO"]                = "wxUSE_PROLOGIO"
     preprocConditionTable["wxUSE_PROPSHEET"]               = "wxUSE_PROPSHEET"

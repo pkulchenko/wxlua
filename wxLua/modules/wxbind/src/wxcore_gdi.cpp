@@ -3831,11 +3831,11 @@ int wxFontInfo_methodCount = sizeof(wxFontInfo_methods)/sizeof(wxLuaBindMethod) 
 // Lua MetaTable Tag for Class 'wxFont'
 int wxluatype_wxFont = WXLUA_TUNKNOWN;
 
-#if ((wxLUA_USE_wxFont) && (wxUSE_PRIVATE_FONTS)) && (wxCHECK_VERSION(3,1,2))
+#if (wxLUA_USE_wxFont) && (wxUSE_PRIVATE_FONTS && wxCHECK_VERSION(3,1,2))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_AddPrivateFont[] = { &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFont_AddPrivateFont(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFont_AddPrivateFont[1] = {{ wxLua_wxFont_AddPrivateFont, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxFont_AddPrivateFont }};
-//     %wxchkver_3_1_2 static bool AddPrivateFont(const wxString& filename);
+//     wxUSE_PRIVATE_FONTS && %wxchkver_3_1_2 static bool AddPrivateFont(const wxString& filename);
 static int LUACALL wxLua_wxFont_AddPrivateFont(lua_State *L)
 {
     // const wxString filename
@@ -3848,7 +3848,7 @@ static int LUACALL wxLua_wxFont_AddPrivateFont(lua_State *L)
     return 1;
 }
 
-#endif // ((wxLUA_USE_wxFont) && (wxUSE_PRIVATE_FONTS)) && (wxCHECK_VERSION(3,1,2))
+#endif // (wxLUA_USE_wxFont) && (wxUSE_PRIVATE_FONTS && wxCHECK_VERSION(3,1,2))
 
 #if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_Bold[] = { &wxluatype_wxFont, NULL };
@@ -5447,9 +5447,9 @@ void wxLua_wxFont_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxFont_methods[] = {
-#if ((wxLUA_USE_wxFont) && (wxUSE_PRIVATE_FONTS)) && (wxCHECK_VERSION(3,1,2))
+#if (wxLUA_USE_wxFont) && (wxUSE_PRIVATE_FONTS && wxCHECK_VERSION(3,1,2))
     { "AddPrivateFont", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFont_AddPrivateFont, 1, NULL },
-#endif // ((wxLUA_USE_wxFont) && (wxUSE_PRIVATE_FONTS)) && (wxCHECK_VERSION(3,1,2))
+#endif // (wxLUA_USE_wxFont) && (wxUSE_PRIVATE_FONTS && wxCHECK_VERSION(3,1,2))
 
 #if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
     { "Bold", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFont_Bold, 1, NULL },

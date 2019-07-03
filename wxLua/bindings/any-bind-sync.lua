@@ -93,7 +93,11 @@ for interface, substeps in pairs(steps) do
     print(("Processing %s (%s.i)"):format(class, interface))
     local name = wxluapath..interface..".i"
     local header = wxwidgetspath..file
-    local process = { from = "^class [^:,]*%f[%w]"..class.."%f[%W]%s*:?", to = "^};", extract = "^(%s*)(.-)(%w%S+%b().*;)" }
+    local process = {
+      from = "^class [^:,]*%f[%w]"..class.."%f[%W]%s*:?",
+      to = "^};",
+      extract = "^(%s*)(.-)(%w%S+%b().*;)"
+    }
 
     local types = {COMMENT = 1, FUNCDEF = 2, INTERNALCLASS = 3}
     local curval = ""
@@ -204,7 +208,7 @@ for interface, substeps in pairs(steps) do
             -- if there is a name, but no return value, it's possible that it's a split definition, like
             --    virtual bool
             --    InformFirstDirection(int direction, ...
-            -- so try to merge the lines and do parse it again
+            -- so try to merge the lines and parse it again
             if name and not name:find("^%s*"..class) and not retval:find("%S") then
               line = (#output > 0 and table.remove(output) or "")..line:gsub("^%s+"," ")
               print("  merged: "..line:gsub("^%s+", ""):gsub("%s+", " "))
@@ -235,8 +239,10 @@ for interface, substeps in pairs(steps) do
                 line = indent..vernum..(retval:find("^!?%%") and " && " or " ")..retval..name:gsub("%s+", " ") -- collapse whitespaces
               end
             end
-            if line:find("%S") and (line:find("%b()") or not line:find(";")) and not dups[line] then table.insert(output, line) end
-            dups[line] = true
+            if line:find("%S") and (line:find("%b()") or not line:find(";")) and not dups[line] then
+              table.insert(output, line)
+            end
+            if line:find("%b()") or line:find(";") then dups[line] = true end
           end
         end
       end
@@ -250,6 +256,8 @@ for interface, substeps in pairs(steps) do
           table.insert(removed, (val[1] ~= C.VALUE or luakeep or rename or val[2]:find(vernum, 1, true))
             and val[2]
             or indent.."!"..vernum..(prefix:find("^!?%%") and " && " or " ")..prefix..name)
+          -- remove if it's been already added
+          if dups[removed[#removed]] then table.remove(removed) end
         end
       end
       -- add overrides that don't have any matches
