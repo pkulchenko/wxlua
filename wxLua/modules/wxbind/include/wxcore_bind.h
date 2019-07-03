@@ -19,9 +19,9 @@
 // Check if the version of binding generator used to create this is older than
 //   the current version of the bindings.
 //   See 'bindings/genwxbind.lua' and 'modules/wxlua/wxldefs.h'
-#if WXLUA_BINDING_VERSION > 31
+#if WXLUA_BINDING_VERSION > 32
 #   error "The WXLUA_BINDING_VERSION in the bindings is too old, regenerate bindings."
-#endif //WXLUA_BINDING_VERSION > 31
+#endif //WXLUA_BINDING_VERSION > 32
 // ---------------------------------------------------------------------------
 
 // binding class
@@ -500,6 +500,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/treectrl.h"
     #include "wxbind/include/wxcore_wxlcore.h"
 #endif // wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL
+
+#if wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+    #include "wx/treelist.h"
+#endif // wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
 
 #if wxLUA_USE_wxValidator && wxUSE_VALIDATORS
     #include "wx/validate.h"
@@ -1218,6 +1222,12 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTreeItemData;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTreeItemId;
 #endif // wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL
+
+#if wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTreeListCtrl;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTreeListEvent;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTreeListItem;
+#endif // wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
 
 #if wxLUA_USE_wxValidator && wxUSE_VALIDATORS
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxValidator;

@@ -14763,3 +14763,1351 @@ int wxInfoBar_methodCount = sizeof(wxInfoBar_methods)/sizeof(wxLuaBindMethod) - 
 
 #endif  // wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)
 
+
+#if wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+// ---------------------------------------------------------------------------
+// Bind class wxTreeListItem
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxTreeListItem'
+int wxluatype_wxTreeListItem = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListItem_GetValue[] = { &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListItem_GetValue(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListItem_GetValue[1] = {{ wxLua_wxTreeListItem_GetValue, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTreeListItem_GetValue }};
+// %override wxLua_wxTreeListItem_GetValue
+// wxUIntPtr GetValue() const;
+static int LUACALL wxLua_wxTreeListItem_GetValue(lua_State *L)
+{
+    // get this
+    wxTreeListItem *self = (wxTreeListItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListItem);
+    // call GetValue
+    wxUIntPtr returns = (wxUIntPtr)self->m_pItem;
+    // push the result number
+    lua_pushnumber(L, returns);
+    // return the number of parameters
+    return 1;
+}
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListItem_IsOk[] = { &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListItem_IsOk(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListItem_IsOk[1] = {{ wxLua_wxTreeListItem_IsOk, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTreeListItem_IsOk }};
+//     bool IsOk() const;
+static int LUACALL wxLua_wxTreeListItem_IsOk(lua_State *L)
+{
+    // get this
+    wxTreeListItem * self = (wxTreeListItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListItem);
+    // call IsOk
+    bool returns = (self->IsOk());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListItem_delete[] = { &wxluatype_wxTreeListItem, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListItem_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxTreeListItem_delete }};
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListItem_constructor1[] = { &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListItem_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListItem_constructor1[1] = {{ wxLua_wxTreeListItem_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxTreeListItem_constructor1 }};
+//     wxTreeListItem(const wxTreeListItem& id);
+static int LUACALL wxLua_wxTreeListItem_constructor1(lua_State *L)
+{
+    // const wxTreeListItem id
+    const wxTreeListItem * id = (const wxTreeListItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListItem);
+    // call constructor
+    wxTreeListItem* returns = new wxTreeListItem(*id);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTreeListItem);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeListItem);
+
+    return 1;
+}
+
+static int LUACALL wxLua_wxTreeListItem_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListItem_constructor[1] = {{ wxLua_wxTreeListItem_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxTreeListItem();
+static int LUACALL wxLua_wxTreeListItem_constructor(lua_State *L)
+{
+    // call constructor
+    wxTreeListItem* returns = new wxTreeListItem();
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTreeListItem);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeListItem);
+
+    return 1;
+}
+
+
+
+
+#if (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListItem_constructor_overload[] =
+{
+    { wxLua_wxTreeListItem_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxTreeListItem_constructor1 },
+    { wxLua_wxTreeListItem_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+};
+static int s_wxluafunc_wxLua_wxTreeListItem_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxTreeListItem_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+void wxLua_wxTreeListItem_delete_function(void** p)
+{
+    wxTreeListItem* o = (wxTreeListItem*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxTreeListItem_methods[] = {
+    { "GetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListItem_GetValue, 1, NULL },
+    { "IsOk", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListItem_IsOk, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxTreeListItem_delete, 1, NULL },
+
+#if (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+    { "wxTreeListItem", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxTreeListItem_constructor_overload, s_wxluafunc_wxLua_wxTreeListItem_constructor_overload_count, 0 },
+#endif // (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+    { 0, 0, 0, 0 },
+};
+
+int wxTreeListItem_methodCount = sizeof(wxTreeListItem_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+
+
+#if wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+// ---------------------------------------------------------------------------
+// Bind class wxTreeListCtrl
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxTreeListCtrl'
+int wxluatype_wxTreeListCtrl = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_AppendColumn[] = { &wxluatype_wxTreeListCtrl, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_AppendColumn(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_AppendColumn[1] = {{ wxLua_wxTreeListCtrl_AppendColumn, WXLUAMETHOD_METHOD, 2, 5, s_wxluatypeArray_wxLua_wxTreeListCtrl_AppendColumn }};
+//                      int flags = wxCOL_RESIZABLE);
+static int LUACALL wxLua_wxTreeListCtrl_AppendColumn(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int flags = wxCOL_RESIZABLE
+    int flags = (argCount >= 5 ? (int)wxlua_getnumbertype(L, 5) : wxCOL_RESIZABLE);
+    // wxAlignment align = wxALIGN_LEFT
+    wxAlignment align = (argCount >= 4 ? (wxAlignment)wxlua_getenumtype(L, 4) : wxALIGN_LEFT);
+    // int width = wxCOL_WIDTH_AUTOSIZE
+    int width = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : wxCOL_WIDTH_AUTOSIZE);
+    // const wxString title
+    const wxString title = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call AppendColumn
+    int returns = (self->AppendColumn(title, width, align, flags));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_AppendItem[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxClientData, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_AppendItem(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_AppendItem[1] = {{ wxLua_wxTreeListCtrl_AppendItem, WXLUAMETHOD_METHOD, 3, 6, s_wxluatypeArray_wxLua_wxTreeListCtrl_AppendItem }};
+//                               wxClientData* data = NULL);
+static int LUACALL wxLua_wxTreeListCtrl_AppendItem(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxClientData data = NULL
+    wxClientData * data = (argCount >= 6 ? (wxClientData *)wxluaT_getuserdatatype(L, 6, wxluatype_wxClientData) : NULL);
+    // int imageOpened = wxTreeListCtrl::NO_IMAGE
+    int imageOpened = (argCount >= 5 ? (int)wxlua_getnumbertype(L, 5) : wxTreeListCtrl::NO_IMAGE);
+    // int imageClosed = wxTreeListCtrl::NO_IMAGE
+    int imageClosed = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : wxTreeListCtrl::NO_IMAGE);
+    // const wxString text
+    const wxString text = wxlua_getwxStringtype(L, 3);
+    // wxTreeListItem parent
+    wxTreeListItem parent = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call AppendItem
+    // allocate a new object using the copy constructor
+    wxTreeListItem* returns = new wxTreeListItem(self->AppendItem(parent, text, imageClosed, imageOpened, data));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTreeListItem);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeListItem);
+
+    return 1;
+}
+
+
+#if (wxLUA_USE_wxCheckBox && wxUSE_CHECKBOX) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_AreAllChildrenInState[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_AreAllChildrenInState(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_AreAllChildrenInState[1] = {{ wxLua_wxTreeListCtrl_AreAllChildrenInState, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxTreeListCtrl_AreAllChildrenInState }};
+//                                wxCheckBoxState state) const;
+static int LUACALL wxLua_wxTreeListCtrl_AreAllChildrenInState(lua_State *L)
+{
+    // wxCheckBoxState state
+    wxCheckBoxState state = (wxCheckBoxState)wxlua_getenumtype(L, 3);
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call AreAllChildrenInState
+    bool returns = (self->AreAllChildrenInState(item, state));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxCheckBox && wxUSE_CHECKBOX) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+#if (wxLUA_USE_wxImageList) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_AssignImageList[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxImageList, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_AssignImageList(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_AssignImageList[1] = {{ wxLua_wxTreeListCtrl_AssignImageList, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_AssignImageList }};
+//     void AssignImageList(wxImageList* imageList);
+static int LUACALL wxLua_wxTreeListCtrl_AssignImageList(lua_State *L)
+{
+    // wxImageList imageList
+    wxImageList * imageList = (wxImageList *)wxluaT_getuserdatatype(L, 2, wxluatype_wxImageList);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call AssignImageList
+    self->AssignImageList(imageList);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxImageList) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+#if (wxLUA_USE_wxCheckBox && wxUSE_CHECKBOX) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_CheckItem[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_CheckItem(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_CheckItem[1] = {{ wxLua_wxTreeListCtrl_CheckItem, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxTreeListCtrl_CheckItem }};
+//     void CheckItem(wxTreeListItem item, wxCheckBoxState state = wxCHK_CHECKED);
+static int LUACALL wxLua_wxTreeListCtrl_CheckItem(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxCheckBoxState state = wxCHK_CHECKED
+    wxCheckBoxState state = (argCount >= 3 ? (wxCheckBoxState)wxlua_getenumtype(L, 3) : wxCHK_CHECKED);
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call CheckItem
+    self->CheckItem(item, state);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_CheckItemRecursively[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_CheckItemRecursively(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_CheckItemRecursively[1] = {{ wxLua_wxTreeListCtrl_CheckItemRecursively, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxTreeListCtrl_CheckItemRecursively }};
+//                               wxCheckBoxState state = wxCHK_CHECKED);
+static int LUACALL wxLua_wxTreeListCtrl_CheckItemRecursively(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxCheckBoxState state = wxCHK_CHECKED
+    wxCheckBoxState state = (argCount >= 3 ? (wxCheckBoxState)wxlua_getenumtype(L, 3) : wxCHK_CHECKED);
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call CheckItemRecursively
+    self->CheckItemRecursively(item, state);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxCheckBox && wxUSE_CHECKBOX) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_ClearColumns[] = { &wxluatype_wxTreeListCtrl, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_ClearColumns(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_ClearColumns[1] = {{ wxLua_wxTreeListCtrl_ClearColumns, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTreeListCtrl_ClearColumns }};
+//     void ClearColumns();
+static int LUACALL wxLua_wxTreeListCtrl_ClearColumns(lua_State *L)
+{
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call ClearColumns
+    self->ClearColumns();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_Collapse[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_Collapse(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_Collapse[1] = {{ wxLua_wxTreeListCtrl_Collapse, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_Collapse }};
+//     void Collapse(wxTreeListItem item);
+static int LUACALL wxLua_wxTreeListCtrl_Collapse(lua_State *L)
+{
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call Collapse
+    self->Collapse(item);
+
+    return 0;
+}
+
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_Create[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_Create(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_Create[1] = {{ wxLua_wxTreeListCtrl_Create, WXLUAMETHOD_METHOD, 3, 7, s_wxluatypeArray_wxLua_wxTreeListCtrl_Create }};
+//                 const wxString& name = wxTreeListCtrlNameStr);
+static int LUACALL wxLua_wxTreeListCtrl_Create(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString name = wxTreeListCtrlNameStr
+    const wxString name = (argCount >= 7 ? wxlua_getwxStringtype(L, 7) : wxString(wxTreeListCtrlNameStr));
+    // long style = wxTL_DEFAULT_STYLE
+    long style = (argCount >= 6 ? (long)wxlua_getnumbertype(L, 6) : wxTL_DEFAULT_STYLE);
+    // const wxSize size = wxDefaultSize
+    const wxSize * size = (argCount >= 5 ? (const wxSize *)wxluaT_getuserdatatype(L, 5, wxluatype_wxSize) : &wxDefaultSize);
+    // const wxPoint pos = wxDefaultPosition
+    const wxPoint * pos = (argCount >= 4 ? (const wxPoint *)wxluaT_getuserdatatype(L, 4, wxluatype_wxPoint) : &wxDefaultPosition);
+    // wxWindowID id
+    wxWindowID id = (wxWindowID)wxlua_getnumbertype(L, 3);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call Create
+    bool returns = (self->Create(parent, id, *pos, *size, style, name));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_DeleteAllItems[] = { &wxluatype_wxTreeListCtrl, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_DeleteAllItems(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_DeleteAllItems[1] = {{ wxLua_wxTreeListCtrl_DeleteAllItems, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTreeListCtrl_DeleteAllItems }};
+//     void DeleteAllItems();
+static int LUACALL wxLua_wxTreeListCtrl_DeleteAllItems(lua_State *L)
+{
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call DeleteAllItems
+    self->DeleteAllItems();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_DeleteColumn[] = { &wxluatype_wxTreeListCtrl, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_DeleteColumn(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_DeleteColumn[1] = {{ wxLua_wxTreeListCtrl_DeleteColumn, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_DeleteColumn }};
+//     bool DeleteColumn(unsigned int col);
+static int LUACALL wxLua_wxTreeListCtrl_DeleteColumn(lua_State *L)
+{
+    // unsigned int col
+    unsigned int col = (unsigned int)wxlua_getuintegertype(L, 2);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call DeleteColumn
+    bool returns = (self->DeleteColumn(col));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_DeleteItem[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_DeleteItem(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_DeleteItem[1] = {{ wxLua_wxTreeListCtrl_DeleteItem, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_DeleteItem }};
+//     void DeleteItem(wxTreeListItem item);
+static int LUACALL wxLua_wxTreeListCtrl_DeleteItem(lua_State *L)
+{
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call DeleteItem
+    self->DeleteItem(item);
+
+    return 0;
+}
+
+
+#if ((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_EnsureVisible[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_EnsureVisible(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_EnsureVisible[1] = {{ wxLua_wxTreeListCtrl_EnsureVisible, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_EnsureVisible }};
+//     %wxchkver_3_1_0 void EnsureVisible(wxTreeListItem item);
+static int LUACALL wxLua_wxTreeListCtrl_EnsureVisible(lua_State *L)
+{
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call EnsureVisible
+    self->EnsureVisible(item);
+
+    return 0;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_Expand[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_Expand(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_Expand[1] = {{ wxLua_wxTreeListCtrl_Expand, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_Expand }};
+//     void Expand(wxTreeListItem item);
+static int LUACALL wxLua_wxTreeListCtrl_Expand(lua_State *L)
+{
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call Expand
+    self->Expand(item);
+
+    return 0;
+}
+
+
+#if (wxLUA_USE_wxCheckBox && wxUSE_CHECKBOX) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_GetCheckedState[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_GetCheckedState(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_GetCheckedState[1] = {{ wxLua_wxTreeListCtrl_GetCheckedState, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_GetCheckedState }};
+//     wxCheckBoxState GetCheckedState(wxTreeListItem item) const;
+static int LUACALL wxLua_wxTreeListCtrl_GetCheckedState(lua_State *L)
+{
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call GetCheckedState
+    wxCheckBoxState returns = (self->GetCheckedState(item));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxCheckBox && wxUSE_CHECKBOX) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_GetColumnCount[] = { &wxluatype_wxTreeListCtrl, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_GetColumnCount(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_GetColumnCount[1] = {{ wxLua_wxTreeListCtrl_GetColumnCount, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTreeListCtrl_GetColumnCount }};
+//     unsigned int GetColumnCount() const;
+static int LUACALL wxLua_wxTreeListCtrl_GetColumnCount(lua_State *L)
+{
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call GetColumnCount
+    unsigned int returns = (self->GetColumnCount());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_GetColumnWidth[] = { &wxluatype_wxTreeListCtrl, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_GetColumnWidth(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_GetColumnWidth[1] = {{ wxLua_wxTreeListCtrl_GetColumnWidth, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_GetColumnWidth }};
+//     int GetColumnWidth(unsigned int col) const;
+static int LUACALL wxLua_wxTreeListCtrl_GetColumnWidth(lua_State *L)
+{
+    // unsigned int col
+    unsigned int col = (unsigned int)wxlua_getuintegertype(L, 2);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call GetColumnWidth
+    int returns = (self->GetColumnWidth(col));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_GetFirstChild[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_GetFirstChild(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_GetFirstChild[1] = {{ wxLua_wxTreeListCtrl_GetFirstChild, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_GetFirstChild }};
+//     wxTreeListItem GetFirstChild(wxTreeListItem item) const;
+static int LUACALL wxLua_wxTreeListCtrl_GetFirstChild(lua_State *L)
+{
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call GetFirstChild
+    // allocate a new object using the copy constructor
+    wxTreeListItem* returns = new wxTreeListItem(self->GetFirstChild(item));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTreeListItem);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeListItem);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_GetFirstItem[] = { &wxluatype_wxTreeListCtrl, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_GetFirstItem(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_GetFirstItem[1] = {{ wxLua_wxTreeListCtrl_GetFirstItem, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTreeListCtrl_GetFirstItem }};
+//     wxTreeListItem GetFirstItem() const;
+static int LUACALL wxLua_wxTreeListCtrl_GetFirstItem(lua_State *L)
+{
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call GetFirstItem
+    // allocate a new object using the copy constructor
+    wxTreeListItem* returns = new wxTreeListItem(self->GetFirstItem());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTreeListItem);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeListItem);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_GetItemData[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_GetItemData(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_GetItemData[1] = {{ wxLua_wxTreeListCtrl_GetItemData, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_GetItemData }};
+//     wxClientData* GetItemData(wxTreeListItem item) const;
+static int LUACALL wxLua_wxTreeListCtrl_GetItemData(lua_State *L)
+{
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call GetItemData
+    wxClientData* returns = (wxClientData*)self->GetItemData(item);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxClientData);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_GetItemParent[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_GetItemParent(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_GetItemParent[1] = {{ wxLua_wxTreeListCtrl_GetItemParent, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_GetItemParent }};
+//     wxTreeListItem GetItemParent(wxTreeListItem item) const;
+static int LUACALL wxLua_wxTreeListCtrl_GetItemParent(lua_State *L)
+{
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call GetItemParent
+    // allocate a new object using the copy constructor
+    wxTreeListItem* returns = new wxTreeListItem(self->GetItemParent(item));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTreeListItem);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeListItem);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_GetItemText[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_GetItemText(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_GetItemText[1] = {{ wxLua_wxTreeListCtrl_GetItemText, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxTreeListCtrl_GetItemText }};
+//     const wxString& GetItemText(wxTreeListItem item, unsigned int col = 0) const;
+static int LUACALL wxLua_wxTreeListCtrl_GetItemText(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // unsigned int col = 0
+    unsigned int col = (argCount >= 3 ? (unsigned int)wxlua_getuintegertype(L, 3) : 0);
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call GetItemText
+    wxString returns = (self->GetItemText(item, col));
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_GetNextItem[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_GetNextItem(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_GetNextItem[1] = {{ wxLua_wxTreeListCtrl_GetNextItem, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_GetNextItem }};
+//     wxTreeListItem GetNextItem(wxTreeListItem item) const;
+static int LUACALL wxLua_wxTreeListCtrl_GetNextItem(lua_State *L)
+{
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call GetNextItem
+    // allocate a new object using the copy constructor
+    wxTreeListItem* returns = new wxTreeListItem(self->GetNextItem(item));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTreeListItem);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeListItem);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_GetNextSibling[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_GetNextSibling(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_GetNextSibling[1] = {{ wxLua_wxTreeListCtrl_GetNextSibling, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_GetNextSibling }};
+//     wxTreeListItem GetNextSibling(wxTreeListItem item) const;
+static int LUACALL wxLua_wxTreeListCtrl_GetNextSibling(lua_State *L)
+{
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call GetNextSibling
+    // allocate a new object using the copy constructor
+    wxTreeListItem* returns = new wxTreeListItem(self->GetNextSibling(item));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTreeListItem);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeListItem);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_GetRootItem[] = { &wxluatype_wxTreeListCtrl, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_GetRootItem(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_GetRootItem[1] = {{ wxLua_wxTreeListCtrl_GetRootItem, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTreeListCtrl_GetRootItem }};
+//     wxTreeListItem GetRootItem() const;
+static int LUACALL wxLua_wxTreeListCtrl_GetRootItem(lua_State *L)
+{
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call GetRootItem
+    // allocate a new object using the copy constructor
+    wxTreeListItem* returns = new wxTreeListItem(self->GetRootItem());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTreeListItem);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeListItem);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_GetSelection[] = { &wxluatype_wxTreeListCtrl, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_GetSelection(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_GetSelection[1] = {{ wxLua_wxTreeListCtrl_GetSelection, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTreeListCtrl_GetSelection }};
+//     wxTreeListItem GetSelection() const;
+static int LUACALL wxLua_wxTreeListCtrl_GetSelection(lua_State *L)
+{
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call GetSelection
+    // allocate a new object using the copy constructor
+    wxTreeListItem* returns = new wxTreeListItem(self->GetSelection());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTreeListItem);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeListItem);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_GetSelections[] = { &wxluatype_wxTreeListCtrl, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_GetSelections(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_GetSelections[1] = {{ wxLua_wxTreeListCtrl_GetSelections, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTreeListCtrl_GetSelections }};
+// %override wxLua_wxTreeListCtrl_GetSelections
+// unsigned int GetSelections(wxTreeListItems& selections) const;
+static int LUACALL wxLua_wxTreeListCtrl_GetSelections(lua_State *L)
+{
+    // get this
+    wxTreeListCtrl *self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call GetSelections
+    wxVector<wxTreeListItem> selection;
+    size_t count = self->GetSelections(selection);
+
+    lua_newtable(L);
+
+    size_t idx;
+    for (idx = 0; idx < count; ++idx)
+    {
+        wxTreeListItem* treeId = new wxTreeListItem(selection[idx]);
+        wxluaO_addgcobject(L, treeId, wxluatype_wxTreeListItem);
+        wxluaT_pushuserdatatype(L, treeId, wxluatype_wxTreeListItem);
+        lua_rawseti(L, -2, idx + 1);
+    }
+    // return the number of parameters
+    return 1;
+}
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_GetSortColumn[] = { &wxluatype_wxTreeListCtrl, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_GetSortColumn(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_GetSortColumn[1] = {{ wxLua_wxTreeListCtrl_GetSortColumn, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxTreeListCtrl_GetSortColumn }};
+//     bool GetSortColumn(unsigned int* col, bool* ascendingOrder = NULL);
+static int LUACALL wxLua_wxTreeListCtrl_GetSortColumn(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool ascendingOrder = NULL
+    bool * ascendingOrder = (argCount >= 3 ? (bool *)wxlua_touserdata(L, 3) : NULL);
+    // unsigned int col
+    unsigned int * col = (unsigned int *)wxlua_touserdata(L, 2);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call GetSortColumn
+    bool returns = (self->GetSortColumn(col, ascendingOrder));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_GetView[] = { &wxluatype_wxTreeListCtrl, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_GetView(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_GetView[1] = {{ wxLua_wxTreeListCtrl_GetView, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTreeListCtrl_GetView }};
+//     wxWindow* GetView() const;
+static int LUACALL wxLua_wxTreeListCtrl_GetView(lua_State *L)
+{
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call GetView
+    wxWindow* returns = (wxWindow*)self->GetView();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxWindow);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_InsertItem[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, &wxluatype_wxTreeListItem, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxClientData, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_InsertItem(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_InsertItem[1] = {{ wxLua_wxTreeListCtrl_InsertItem, WXLUAMETHOD_METHOD, 4, 7, s_wxluatypeArray_wxLua_wxTreeListCtrl_InsertItem }};
+//                               wxClientData* data = NULL);
+static int LUACALL wxLua_wxTreeListCtrl_InsertItem(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxClientData data = NULL
+    wxClientData * data = (argCount >= 7 ? (wxClientData *)wxluaT_getuserdatatype(L, 7, wxluatype_wxClientData) : NULL);
+    // int imageOpened = wxTreeListCtrl::NO_IMAGE
+    int imageOpened = (argCount >= 6 ? (int)wxlua_getnumbertype(L, 6) : wxTreeListCtrl::NO_IMAGE);
+    // int imageClosed = wxTreeListCtrl::NO_IMAGE
+    int imageClosed = (argCount >= 5 ? (int)wxlua_getnumbertype(L, 5) : wxTreeListCtrl::NO_IMAGE);
+    // const wxString text
+    const wxString text = wxlua_getwxStringtype(L, 4);
+    // wxTreeListItem previous
+    wxTreeListItem previous = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 3, wxluatype_wxTreeListItem);
+    // wxTreeListItem parent
+    wxTreeListItem parent = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call InsertItem
+    // allocate a new object using the copy constructor
+    wxTreeListItem* returns = new wxTreeListItem(self->InsertItem(parent, previous, text, imageClosed, imageOpened, data));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTreeListItem);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeListItem);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_IsExpanded[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_IsExpanded(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_IsExpanded[1] = {{ wxLua_wxTreeListCtrl_IsExpanded, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_IsExpanded }};
+//     bool IsExpanded(wxTreeListItem item) const;
+static int LUACALL wxLua_wxTreeListCtrl_IsExpanded(lua_State *L)
+{
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call IsExpanded
+    bool returns = (self->IsExpanded(item));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_IsSelected[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_IsSelected(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_IsSelected[1] = {{ wxLua_wxTreeListCtrl_IsSelected, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_IsSelected }};
+//     bool IsSelected(wxTreeListItem item) const;
+static int LUACALL wxLua_wxTreeListCtrl_IsSelected(lua_State *L)
+{
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call IsSelected
+    bool returns = (self->IsSelected(item));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_PrependItem[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxClientData, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_PrependItem(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_PrependItem[1] = {{ wxLua_wxTreeListCtrl_PrependItem, WXLUAMETHOD_METHOD, 3, 6, s_wxluatypeArray_wxLua_wxTreeListCtrl_PrependItem }};
+//                                wxClientData* data = NULL);
+static int LUACALL wxLua_wxTreeListCtrl_PrependItem(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxClientData data = NULL
+    wxClientData * data = (argCount >= 6 ? (wxClientData *)wxluaT_getuserdatatype(L, 6, wxluatype_wxClientData) : NULL);
+    // int imageOpened = wxTreeListCtrl::NO_IMAGE
+    int imageOpened = (argCount >= 5 ? (int)wxlua_getnumbertype(L, 5) : wxTreeListCtrl::NO_IMAGE);
+    // int imageClosed = wxTreeListCtrl::NO_IMAGE
+    int imageClosed = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : wxTreeListCtrl::NO_IMAGE);
+    // const wxString text
+    const wxString text = wxlua_getwxStringtype(L, 3);
+    // wxTreeListItem parent
+    wxTreeListItem parent = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call PrependItem
+    // allocate a new object using the copy constructor
+    wxTreeListItem* returns = new wxTreeListItem(self->PrependItem(parent, text, imageClosed, imageOpened, data));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTreeListItem);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeListItem);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_Select[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_Select(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_Select[1] = {{ wxLua_wxTreeListCtrl_Select, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_Select }};
+//     void Select(wxTreeListItem item);
+static int LUACALL wxLua_wxTreeListCtrl_Select(lua_State *L)
+{
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call Select
+    self->Select(item);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_SelectAll[] = { &wxluatype_wxTreeListCtrl, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_SelectAll(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_SelectAll[1] = {{ wxLua_wxTreeListCtrl_SelectAll, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTreeListCtrl_SelectAll }};
+//     void SelectAll();
+static int LUACALL wxLua_wxTreeListCtrl_SelectAll(lua_State *L)
+{
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call SelectAll
+    self->SelectAll();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_SetColumnWidth[] = { &wxluatype_wxTreeListCtrl, &wxluatype_TINTEGER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_SetColumnWidth(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_SetColumnWidth[1] = {{ wxLua_wxTreeListCtrl_SetColumnWidth, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxTreeListCtrl_SetColumnWidth }};
+//     void SetColumnWidth(unsigned int col, int width);
+static int LUACALL wxLua_wxTreeListCtrl_SetColumnWidth(lua_State *L)
+{
+    // int width
+    int width = (int)wxlua_getnumbertype(L, 3);
+    // unsigned int col
+    unsigned int col = (unsigned int)wxlua_getuintegertype(L, 2);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call SetColumnWidth
+    self->SetColumnWidth(col, width);
+
+    return 0;
+}
+
+
+#if (wxLUA_USE_wxImageList) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_SetImageList[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxImageList, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_SetImageList(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_SetImageList[1] = {{ wxLua_wxTreeListCtrl_SetImageList, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_SetImageList }};
+//     void SetImageList(wxImageList* imageList);
+static int LUACALL wxLua_wxTreeListCtrl_SetImageList(lua_State *L)
+{
+    // wxImageList imageList
+    wxImageList * imageList = (wxImageList *)wxluaT_getuserdatatype(L, 2, wxluatype_wxImageList);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call SetImageList
+    self->SetImageList(imageList);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxImageList) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_SetItemData[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, &wxluatype_wxClientData, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_SetItemData(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_SetItemData[1] = {{ wxLua_wxTreeListCtrl_SetItemData, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxTreeListCtrl_SetItemData }};
+//     void SetItemData(wxTreeListItem item, wxClientData* data);
+static int LUACALL wxLua_wxTreeListCtrl_SetItemData(lua_State *L)
+{
+    // wxClientData data
+    wxClientData * data = (wxClientData *)wxluaT_getuserdatatype(L, 3, wxluatype_wxClientData);
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call SetItemData
+    self->SetItemData(item, data);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_SetItemImage[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_SetItemImage(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_SetItemImage[1] = {{ wxLua_wxTreeListCtrl_SetItemImage, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxTreeListCtrl_SetItemImage }};
+//     void SetItemImage(wxTreeListItem item, int closed, int opened = wxTreeListCtrl::NO_IMAGE);
+static int LUACALL wxLua_wxTreeListCtrl_SetItemImage(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int opened = wxTreeListCtrl::NO_IMAGE
+    int opened = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : wxTreeListCtrl::NO_IMAGE);
+    // int closed
+    int closed = (int)wxlua_getnumbertype(L, 3);
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call SetItemImage
+    self->SetItemImage(item, closed, opened);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_SetItemText1[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_SetItemText1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_SetItemText1[1] = {{ wxLua_wxTreeListCtrl_SetItemText1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxTreeListCtrl_SetItemText1 }};
+//     void SetItemText(wxTreeListItem item, const wxString& text);
+static int LUACALL wxLua_wxTreeListCtrl_SetItemText1(lua_State *L)
+{
+    // const wxString text
+    const wxString text = wxlua_getwxStringtype(L, 3);
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call SetItemText
+    self->SetItemText(item, text);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_SetItemText[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, &wxluatype_TINTEGER, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_SetItemText(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_SetItemText[1] = {{ wxLua_wxTreeListCtrl_SetItemText, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxTreeListCtrl_SetItemText }};
+//     void SetItemText(wxTreeListItem item, unsigned int col, const wxString& text);
+static int LUACALL wxLua_wxTreeListCtrl_SetItemText(lua_State *L)
+{
+    // const wxString text
+    const wxString text = wxlua_getwxStringtype(L, 4);
+    // unsigned int col
+    unsigned int col = (unsigned int)wxlua_getuintegertype(L, 3);
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call SetItemText
+    self->SetItemText(item, col, text);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_SetSortColumn[] = { &wxluatype_wxTreeListCtrl, &wxluatype_TINTEGER, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_SetSortColumn(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_SetSortColumn[1] = {{ wxLua_wxTreeListCtrl_SetSortColumn, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxTreeListCtrl_SetSortColumn }};
+//     void SetSortColumn(unsigned int col, bool ascendingOrder = true);
+static int LUACALL wxLua_wxTreeListCtrl_SetSortColumn(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool ascendingOrder = true
+    bool ascendingOrder = (argCount >= 3 ? wxlua_getbooleantype(L, 3) : true);
+    // unsigned int col
+    unsigned int col = (unsigned int)wxlua_getuintegertype(L, 2);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call SetSortColumn
+    self->SetSortColumn(col, ascendingOrder);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_UncheckItem[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_UncheckItem(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_UncheckItem[1] = {{ wxLua_wxTreeListCtrl_UncheckItem, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_UncheckItem }};
+//     void UncheckItem(wxTreeListItem item);
+static int LUACALL wxLua_wxTreeListCtrl_UncheckItem(lua_State *L)
+{
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call UncheckItem
+    self->UncheckItem(item);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_Unselect[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_Unselect(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_Unselect[1] = {{ wxLua_wxTreeListCtrl_Unselect, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_Unselect }};
+//     void Unselect(wxTreeListItem item);
+static int LUACALL wxLua_wxTreeListCtrl_Unselect(lua_State *L)
+{
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call Unselect
+    self->Unselect(item);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_UnselectAll[] = { &wxluatype_wxTreeListCtrl, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_UnselectAll(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_UnselectAll[1] = {{ wxLua_wxTreeListCtrl_UnselectAll, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTreeListCtrl_UnselectAll }};
+//     void UnselectAll();
+static int LUACALL wxLua_wxTreeListCtrl_UnselectAll(lua_State *L)
+{
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call UnselectAll
+    self->UnselectAll();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_UpdateItemParentStateRecursively[] = { &wxluatype_wxTreeListCtrl, &wxluatype_wxTreeListItem, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_UpdateItemParentStateRecursively(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_UpdateItemParentStateRecursively[1] = {{ wxLua_wxTreeListCtrl_UpdateItemParentStateRecursively, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_UpdateItemParentStateRecursively }};
+//     void UpdateItemParentStateRecursively(wxTreeListItem item);
+static int LUACALL wxLua_wxTreeListCtrl_UpdateItemParentStateRecursively(lua_State *L)
+{
+    // wxTreeListItem item
+    wxTreeListItem item = *(wxTreeListItem*)wxluaT_getuserdatatype(L, 2, wxluatype_wxTreeListItem);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call UpdateItemParentStateRecursively
+    self->UpdateItemParentStateRecursively(item);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_WidthFor[] = { &wxluatype_wxTreeListCtrl, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_WidthFor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_WidthFor[1] = {{ wxLua_wxTreeListCtrl_WidthFor, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeListCtrl_WidthFor }};
+//     int WidthFor(const wxString& text) const;
+static int LUACALL wxLua_wxTreeListCtrl_WidthFor(lua_State *L)
+{
+    // const wxString text
+    const wxString text = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxTreeListCtrl * self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call WidthFor
+    int returns = (self->WidthFor(text));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListCtrl_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxTreeListCtrl_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_constructor1[1] = {{ wxLua_wxTreeListCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 6, s_wxluatypeArray_wxLua_wxTreeListCtrl_constructor1 }};
+//                    const wxString& name = wxTreeListCtrlNameStr);
+static int LUACALL wxLua_wxTreeListCtrl_constructor1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString name = wxTreeListCtrlNameStr
+    const wxString name = (argCount >= 6 ? wxlua_getwxStringtype(L, 6) : wxString(wxTreeListCtrlNameStr));
+    // long style = wxTL_DEFAULT_STYLE
+    long style = (argCount >= 5 ? (long)wxlua_getnumbertype(L, 5) : wxTL_DEFAULT_STYLE);
+    // const wxSize size = wxDefaultSize
+    const wxSize * size = (argCount >= 4 ? (const wxSize *)wxluaT_getuserdatatype(L, 4, wxluatype_wxSize) : &wxDefaultSize);
+    // const wxPoint pos = wxDefaultPosition
+    const wxPoint * pos = (argCount >= 3 ? (const wxPoint *)wxluaT_getuserdatatype(L, 3, wxluatype_wxPoint) : &wxDefaultPosition);
+    // wxWindowID id
+    wxWindowID id = (wxWindowID)wxlua_getnumbertype(L, 2);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call constructor
+    wxTreeListCtrl* returns = new wxTreeListCtrl(parent, id, *pos, *size, style, name);
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeListCtrl);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+static int LUACALL wxLua_wxTreeListCtrl_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_constructor[1] = {{ wxLua_wxTreeListCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxTreeListCtrl();
+static int LUACALL wxLua_wxTreeListCtrl_constructor(lua_State *L)
+{
+    // call constructor
+    wxTreeListCtrl* returns = new wxTreeListCtrl();
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeListCtrl);
+
+    return 1;
+}
+
+
+
+
+#if (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_SetItemText_overload[] =
+{
+    { wxLua_wxTreeListCtrl_SetItemText1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxTreeListCtrl_SetItemText1 },
+    { wxLua_wxTreeListCtrl_SetItemText, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxTreeListCtrl_SetItemText },
+};
+static int s_wxluafunc_wxLua_wxTreeListCtrl_SetItemText_overload_count = sizeof(s_wxluafunc_wxLua_wxTreeListCtrl_SetItemText_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+#if ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)))||(wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListCtrl_constructor_overload[] =
+{
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+    { wxLua_wxTreeListCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 6, s_wxluatypeArray_wxLua_wxTreeListCtrl_constructor1 },
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+    { wxLua_wxTreeListCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+};
+static int s_wxluafunc_wxLua_wxTreeListCtrl_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxTreeListCtrl_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)))||(wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+void wxLua_wxTreeListCtrl_delete_function(void** p)
+{
+    wxTreeListCtrl* o = (wxTreeListCtrl*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxTreeListCtrl_methods[] = {
+    { "AppendColumn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_AppendColumn, 1, NULL },
+    { "AppendItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_AppendItem, 1, NULL },
+
+#if (wxLUA_USE_wxCheckBox && wxUSE_CHECKBOX) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+    { "AreAllChildrenInState", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_AreAllChildrenInState, 1, NULL },
+#endif // (wxLUA_USE_wxCheckBox && wxUSE_CHECKBOX) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+#if (wxLUA_USE_wxImageList) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+    { "AssignImageList", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_AssignImageList, 1, NULL },
+#endif // (wxLUA_USE_wxImageList) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+#if (wxLUA_USE_wxCheckBox && wxUSE_CHECKBOX) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+    { "CheckItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_CheckItem, 1, NULL },
+    { "CheckItemRecursively", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_CheckItemRecursively, 1, NULL },
+#endif // (wxLUA_USE_wxCheckBox && wxUSE_CHECKBOX) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+    { "ClearColumns", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_ClearColumns, 1, NULL },
+    { "Collapse", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_Collapse, 1, NULL },
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+    { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_Create, 1, NULL },
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+    { "DeleteAllItems", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_DeleteAllItems, 1, NULL },
+    { "DeleteColumn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_DeleteColumn, 1, NULL },
+    { "DeleteItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_DeleteItem, 1, NULL },
+
+#if ((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+    { "EnsureVisible", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_EnsureVisible, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+    { "Expand", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_Expand, 1, NULL },
+
+#if (wxLUA_USE_wxCheckBox && wxUSE_CHECKBOX) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+    { "GetCheckedState", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_GetCheckedState, 1, NULL },
+#endif // (wxLUA_USE_wxCheckBox && wxUSE_CHECKBOX) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+    { "GetColumnCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_GetColumnCount, 1, NULL },
+    { "GetColumnWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_GetColumnWidth, 1, NULL },
+    { "GetFirstChild", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_GetFirstChild, 1, NULL },
+    { "GetFirstItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_GetFirstItem, 1, NULL },
+    { "GetItemData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_GetItemData, 1, NULL },
+    { "GetItemParent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_GetItemParent, 1, NULL },
+    { "GetItemText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_GetItemText, 1, NULL },
+    { "GetNextItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_GetNextItem, 1, NULL },
+    { "GetNextSibling", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_GetNextSibling, 1, NULL },
+    { "GetRootItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_GetRootItem, 1, NULL },
+    { "GetSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_GetSelection, 1, NULL },
+    { "GetSelections", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_GetSelections, 1, NULL },
+    { "GetSortColumn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_GetSortColumn, 1, NULL },
+    { "GetView", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_GetView, 1, NULL },
+    { "InsertItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_InsertItem, 1, NULL },
+    { "IsExpanded", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_IsExpanded, 1, NULL },
+    { "IsSelected", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_IsSelected, 1, NULL },
+    { "PrependItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_PrependItem, 1, NULL },
+    { "Select", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_Select, 1, NULL },
+    { "SelectAll", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_SelectAll, 1, NULL },
+    { "SetColumnWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_SetColumnWidth, 1, NULL },
+
+#if (wxLUA_USE_wxImageList) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+    { "SetImageList", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_SetImageList, 1, NULL },
+#endif // (wxLUA_USE_wxImageList) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+    { "SetItemData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_SetItemData, 1, NULL },
+    { "SetItemImage", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_SetItemImage, 1, NULL },
+
+#if (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+    { "SetItemText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_SetItemText_overload, s_wxluafunc_wxLua_wxTreeListCtrl_SetItemText_overload_count, 0 },
+#endif // (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+    { "SetSortColumn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_SetSortColumn, 1, NULL },
+    { "UncheckItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_UncheckItem, 1, NULL },
+    { "Unselect", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_Unselect, 1, NULL },
+    { "UnselectAll", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_UnselectAll, 1, NULL },
+    { "UpdateItemParentStateRecursively", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_UpdateItemParentStateRecursively, 1, NULL },
+    { "WidthFor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListCtrl_WidthFor, 1, NULL },
+
+#if ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)))||(wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+    { "wxTreeListCtrl", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxTreeListCtrl_constructor_overload, s_wxluafunc_wxLua_wxTreeListCtrl_constructor_overload_count, 0 },
+#endif // ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)))||(wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+    { 0, 0, 0, 0 },
+};
+
+int wxTreeListCtrl_methodCount = sizeof(wxTreeListCtrl_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+
+
+#if wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+// ---------------------------------------------------------------------------
+// Bind class wxTreeListEvent
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxTreeListEvent'
+int wxluatype_wxTreeListEvent = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListEvent_GetColumn[] = { &wxluatype_wxTreeListEvent, NULL };
+static int LUACALL wxLua_wxTreeListEvent_GetColumn(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListEvent_GetColumn[1] = {{ wxLua_wxTreeListEvent_GetColumn, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTreeListEvent_GetColumn }};
+//     unsigned int GetColumn() const;
+static int LUACALL wxLua_wxTreeListEvent_GetColumn(lua_State *L)
+{
+    // get this
+    wxTreeListEvent * self = (wxTreeListEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListEvent);
+    // call GetColumn
+    unsigned int returns = (self->GetColumn());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListEvent_GetItem[] = { &wxluatype_wxTreeListEvent, NULL };
+static int LUACALL wxLua_wxTreeListEvent_GetItem(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListEvent_GetItem[1] = {{ wxLua_wxTreeListEvent_GetItem, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTreeListEvent_GetItem }};
+//     wxTreeListItem GetItem() const;
+static int LUACALL wxLua_wxTreeListEvent_GetItem(lua_State *L)
+{
+    // get this
+    wxTreeListEvent * self = (wxTreeListEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListEvent);
+    // call GetItem
+    // allocate a new object using the copy constructor
+    wxTreeListItem* returns = new wxTreeListItem(self->GetItem());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTreeListItem);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeListItem);
+
+    return 1;
+}
+
+
+#if (wxLUA_USE_wxCheckBox && wxUSE_CHECKBOX) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListEvent_GetOldCheckedState[] = { &wxluatype_wxTreeListEvent, NULL };
+static int LUACALL wxLua_wxTreeListEvent_GetOldCheckedState(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListEvent_GetOldCheckedState[1] = {{ wxLua_wxTreeListEvent_GetOldCheckedState, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTreeListEvent_GetOldCheckedState }};
+//     wxCheckBoxState GetOldCheckedState() const;
+static int LUACALL wxLua_wxTreeListEvent_GetOldCheckedState(lua_State *L)
+{
+    // get this
+    wxTreeListEvent * self = (wxTreeListEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListEvent);
+    // call GetOldCheckedState
+    wxCheckBoxState returns = (self->GetOldCheckedState());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxCheckBox && wxUSE_CHECKBOX) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeListEvent_delete[] = { &wxluatype_wxTreeListEvent, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListEvent_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxTreeListEvent_delete }};
+
+static int LUACALL wxLua_wxTreeListEvent_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeListEvent_constructor[1] = {{ wxLua_wxTreeListEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxTreeListEvent();
+static int LUACALL wxLua_wxTreeListEvent_constructor(lua_State *L)
+{
+    // call constructor
+    wxTreeListEvent* returns = new wxTreeListEvent();
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTreeListEvent);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeListEvent);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxTreeListEvent_delete_function(void** p)
+{
+    wxTreeListEvent* o = (wxTreeListEvent*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxTreeListEvent_methods[] = {
+    { "GetColumn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListEvent_GetColumn, 1, NULL },
+    { "GetItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListEvent_GetItem, 1, NULL },
+
+#if (wxLUA_USE_wxCheckBox && wxUSE_CHECKBOX) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+    { "GetOldCheckedState", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeListEvent_GetOldCheckedState, 1, NULL },
+#endif // (wxLUA_USE_wxCheckBox && wxUSE_CHECKBOX) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxTreeListEvent_delete, 1, NULL },
+    { "wxTreeListEvent", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxTreeListEvent_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxTreeListEvent_methodCount = sizeof(wxTreeListEvent_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+

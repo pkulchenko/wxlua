@@ -838,6 +838,45 @@ static int LUACALL wxLua_wxLuaTreeItemData_constructor1(lua_State *L)
 }
 %end
 
+%override wxLua_wxTreeListItem_GetValue
+// wxUIntPtr GetValue() const;
+static int LUACALL wxLua_wxTreeListItem_GetValue(lua_State *L)
+{
+    // get this
+    wxTreeListItem *self = (wxTreeListItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListItem);
+    // call GetValue
+    wxUIntPtr returns = (wxUIntPtr)self->m_pItem;
+    // push the result number
+    lua_pushnumber(L, returns);
+    // return the number of parameters
+    return 1;
+}
+%end
+
+%override wxLua_wxTreeListCtrl_GetSelections
+// unsigned int GetSelections(wxTreeListItems& selections) const;
+static int LUACALL wxLua_wxTreeListCtrl_GetSelections(lua_State *L)
+{
+    // get this
+    wxTreeListCtrl *self = (wxTreeListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeListCtrl);
+    // call GetSelections
+    wxVector<wxTreeListItem> selection;
+    size_t count = self->GetSelections(selection);
+
+    lua_newtable(L);
+
+    size_t idx;
+    for (idx = 0; idx < count; ++idx)
+    {
+        wxTreeListItem* treeId = new wxTreeListItem(selection[idx]);
+        wxluaO_addgcobject(L, treeId, wxluatype_wxTreeListItem);
+        wxluaT_pushuserdatatype(L, treeId, wxluatype_wxTreeListItem);
+        lua_rawseti(L, -2, idx + 1);
+    }
+    // return the number of parameters
+    return 1;
+}
+%end
 
 %override wxLua_wxTextValidator_constructor
 // wxTextValidator(long style = wxFILTER_NONE, wxString *valPtr = NULL)

@@ -383,6 +383,16 @@ wxLuaBindEvent* wxLuaGetEventList_wxcore(size_t &count)
         { "wxEVT_TIMER", WXLUA_GET_wxEventType_ptr(wxEVT_TIMER), &wxluatype_wxTimerEvent },
 #endif // wxLUA_USE_wxTimer && wxUSE_TIMER
 
+#if wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+        { "wxEVT_TREELIST_COLUMN_SORTED", WXLUA_GET_wxEventType_ptr(wxEVT_TREELIST_COLUMN_SORTED), &wxluatype_wxTreeListEvent },
+        { "wxEVT_TREELIST_ITEM_ACTIVATED", WXLUA_GET_wxEventType_ptr(wxEVT_TREELIST_ITEM_ACTIVATED), &wxluatype_wxTreeListEvent },
+        { "wxEVT_TREELIST_ITEM_CHECKED", WXLUA_GET_wxEventType_ptr(wxEVT_TREELIST_ITEM_CHECKED), &wxluatype_wxTreeListEvent },
+        { "wxEVT_TREELIST_ITEM_CONTEXT_MENU", WXLUA_GET_wxEventType_ptr(wxEVT_TREELIST_ITEM_CONTEXT_MENU), &wxluatype_wxTreeListEvent },
+        { "wxEVT_TREELIST_ITEM_EXPANDED", WXLUA_GET_wxEventType_ptr(wxEVT_TREELIST_ITEM_EXPANDED), &wxluatype_wxTreeListEvent },
+        { "wxEVT_TREELIST_ITEM_EXPANDING", WXLUA_GET_wxEventType_ptr(wxEVT_TREELIST_ITEM_EXPANDING), &wxluatype_wxTreeListEvent },
+        { "wxEVT_TREELIST_SELECTION_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_TREELIST_SELECTION_CHANGED), &wxluatype_wxTreeListEvent },
+#endif // wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+
         { "wxEVT_UPDATE_UI", WXLUA_GET_wxEventType_ptr(wxEVT_UPDATE_UI), &wxluatype_wxUpdateUIEvent },
 
         { 0, 0, 0 },
@@ -2511,6 +2521,23 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxTINY_CAPTION_VERT", wxTINY_CAPTION_VERT },
 #endif // (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && ((wxLUA_USE_wxFrame) && (wxLUA_USE_wxMiniFrame))
 
+#if wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+        { "wxTL_3STATE", wxTL_3STATE },
+        { "wxTL_CHECKBOX", wxTL_CHECKBOX },
+        { "wxTL_DEFAULT_STYLE", wxTL_DEFAULT_STYLE },
+        { "wxTL_MULTIPLE", wxTL_MULTIPLE },
+#endif // wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+
+#if (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+        { "wxTL_NO_HEADER", wxTL_NO_HEADER },
+#endif // (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3))
+
+#if wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+        { "wxTL_SINGLE", wxTL_SINGLE },
+        { "wxTL_STYLE_MASK", wxTL_STYLE_MASK },
+        { "wxTL_USER_3STATE", wxTL_USER_3STATE },
+#endif // wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+
 #if wxLUA_USE_wxToolbar
         { "wxTOOL_STYLE_BUTTON", wxTOOL_STYLE_BUTTON },
         { "wxTOOL_STYLE_CONTROL", wxTOOL_STYLE_CONTROL },
@@ -2591,6 +2618,10 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxTreeItemIcon_Selected", wxTreeItemIcon_Selected },
         { "wxTreeItemIcon_SelectedExpanded", wxTreeItemIcon_SelectedExpanded },
 #endif // wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL
+
+#if wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+        { "wxTreeListCtrl::NO_IMAGE", wxTreeListCtrl::NO_IMAGE },
+#endif // wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
 
         { "wxUP", wxUP },
         { "wxUPDATE_UI_FROMIDLE", wxUPDATE_UI_FROMIDLE },
@@ -4852,6 +4883,9 @@ static const char* wxluaclassname_wxTreeCtrl = "wxTreeCtrl";
 static const char* wxluaclassname_wxTreeEvent = "wxTreeEvent";
 static const char* wxluaclassname_wxTreeItemData = "wxTreeItemData";
 static const char* wxluaclassname_wxTreeItemId = "wxTreeItemId";
+static const char* wxluaclassname_wxTreeListCtrl = "wxTreeListCtrl";
+static const char* wxluaclassname_wxTreeListEvent = "wxTreeListEvent";
+static const char* wxluaclassname_wxTreeListItem = "wxTreeListItem";
 static const char* wxluaclassname_wxTreebook = "wxTreebook";
 static const char* wxluaclassname_wxTreebookEvent = "wxTreebookEvent";
 static const char* wxluaclassname_wxURLDataObject = "wxURLDataObject";
@@ -5369,6 +5403,10 @@ static const char* wxluabaseclassnames_wxTreeEvent[] = { wxluaclassname_wxNotify
 static wxLuaBindClass* wxluabaseclassbinds_wxTreeEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxTreeItemData[] = { wxluaclassname_wxClientData, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxTreeItemData[] = { NULL };
+static const char* wxluabaseclassnames_wxTreeListCtrl[] = { wxluaclassname_wxWindow, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxTreeListCtrl[] = { NULL };
+static const char* wxluabaseclassnames_wxTreeListEvent[] = { wxluaclassname_wxNotifyEvent, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxTreeListEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxTreebook[] = { wxluaclassname_wxBookCtrlBase, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxTreebook[] = { NULL };
 static const char* wxluabaseclassnames_wxTreebookEvent[] = { wxluaclassname_wxBookCtrlBaseEvent, NULL };
@@ -6720,6 +6758,18 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern void wxLua_wxTreeItemId_delete_function(void** p);
 #endif // wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL
 
+#if wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+    extern wxLuaBindMethod wxTreeListCtrl_methods[];
+    extern int wxTreeListCtrl_methodCount;
+    extern void wxLua_wxTreeListCtrl_delete_function(void** p);
+    extern wxLuaBindMethod wxTreeListEvent_methods[];
+    extern int wxTreeListEvent_methodCount;
+    extern void wxLua_wxTreeListEvent_delete_function(void** p);
+    extern wxLuaBindMethod wxTreeListItem_methods[];
+    extern int wxTreeListItem_methodCount;
+    extern void wxLua_wxTreeListItem_delete_function(void** p);
+#endif // wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+
 #if wxLUA_USE_wxValidator && wxUSE_VALIDATORS
     extern wxLuaBindMethod wxValidator_methods[];
     extern int wxValidator_methodCount;
@@ -7705,6 +7755,12 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
         { wxluaclassname_wxTreeItemData, wxTreeItemData_methods, wxTreeItemData_methodCount, NULL, &wxluatype_wxTreeItemData, wxluabaseclassnames_wxTreeItemData, wxluabaseclassbinds_wxTreeItemData, NULL, NULL, NULL, 0, &wxLua_wxTreeItemData_delete_function, }, 
         { wxluaclassname_wxTreeItemId, wxTreeItemId_methods, wxTreeItemId_methodCount, NULL, &wxluatype_wxTreeItemId, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxTreeItemId_delete_function, }, 
 #endif // wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL
+
+#if wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
+        { wxluaclassname_wxTreeListCtrl, wxTreeListCtrl_methods, wxTreeListCtrl_methodCount, CLASSINFO(wxTreeListCtrl), &wxluatype_wxTreeListCtrl, wxluabaseclassnames_wxTreeListCtrl, wxluabaseclassbinds_wxTreeListCtrl, NULL, NULL, NULL, 0, &wxLua_wxTreeListCtrl_delete_function, }, 
+        { wxluaclassname_wxTreeListEvent, wxTreeListEvent_methods, wxTreeListEvent_methodCount, CLASSINFO(wxTreeListEvent), &wxluatype_wxTreeListEvent, wxluabaseclassnames_wxTreeListEvent, wxluabaseclassbinds_wxTreeListEvent, NULL, NULL, NULL, 0, &wxLua_wxTreeListEvent_delete_function, }, 
+        { wxluaclassname_wxTreeListItem, wxTreeListItem_methods, wxTreeListItem_methodCount, NULL, &wxluatype_wxTreeListItem, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxTreeListItem_delete_function, }, 
+#endif // wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
 
 #if wxCHECK_VERSION(2,8,0) && wxUSE_TREEBOOK && wxLUA_USE_wxTreebook
         { wxluaclassname_wxTreebook, wxTreebook_methods, wxTreebook_methodCount, CLASSINFO(wxTreebook), &wxluatype_wxTreebook, wxluabaseclassnames_wxTreebook, wxluabaseclassbinds_wxTreebook, NULL, NULL, NULL, 0, &wxLua_wxTreebook_delete_function, }, 

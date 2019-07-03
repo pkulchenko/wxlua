@@ -1,11 +1,11 @@
 -----------------------------------------------------------------------------
--- Name:        tree.wx.lua
--- Purpose:     wxTreeCtrl wxLua sample
--- Author:      J Winwood
+-- Name:        treelist.wx.lua
+-- Purpose:     wxTreeListCtrl wxLua sample
+-- Author:      Paul Kulchenko
 -- Modified by:
--- Created:     16/11/2001
+-- Created:     07/02/2019
 -- RCS-ID:
--- Copyright:   (c) 2001 J Winwood. All rights reserved.
+-- Copyright:   (c) 2019 Paul Kulchenko. All rights reserved.
 -- Licence:     wxWidgets licence
 -----------------------------------------------------------------------------
 
@@ -18,13 +18,13 @@ function CreateLogString(treeCtrl, treeitem_id)
     local value = treeitem_id:GetValue()
     local str = "wxTreeItemId:GetValue():"..tostring(value)
     str = str.."\n    Lua Table Data: '"..treedata[value].data.."'"
-    
+
     local wxltreeitemdata = treeCtrl:GetItemData(treeitem_id)
     if (wxltreeitemdata) then
         str = str.."\n    wxTreeCtrl:GetItemData():GetId():GetValue() "..tostring(wxltreeitemdata:GetId():GetValue())
         str = str.."\n    wxTreeCtrl:GetItemData():GetData() "..tostring(wxltreeitemdata:GetData())
     end
-    
+
     return str
 end
 
@@ -37,13 +37,13 @@ function enumerateTreeCtrl(treeCtrl, root_id, level)
     if (not level) then
         level = 0
     end
-    
+
     print("wxTreeCtrl nodes: "..string.rep("-", level) .. treeCtrl:GetItemText(root_id))
-    
-    local child_id, cookie = treeCtrl:GetFirstChild(root_id)
+
+    local child_id = treeCtrl:GetFirstChild(root_id)
     while (child_id:IsOk()) do
         enumerateTreeCtrl(treeCtrl, child_id, level+1)
-        child_id, cookie = treeCtrl:GetNextChild(root_id, cookie) 
+        child_id = treeCtrl:GetNextSibling(child_id)
     end
 end
 
@@ -89,13 +89,13 @@ function main()
     imageList:Add(wx.wxArtProvider.GetBitmap(wx.wxART_FLOPPY, wx.wxART_TOOLBAR, imgSize))
 
     -- create our treectrl
-    treeCtrl = wx.wxTreeCtrl( frame, wx.wxID_ANY,
+    treeCtrl = wx.wxTreeListCtrl( frame, wx.wxID_ANY,
                               wx.wxDefaultPosition, wx.wxSize(400, 200),
                               wx.wxTR_LINES_AT_ROOT + wx.wxTR_HAS_BUTTONS )
-    -- We'll use AssignImageList and the treeCtrl takes ownership and will delete 
+    -- We'll use AssignImageList and the treeCtrl takes ownership and will delete
     -- the image list.
     -- If you use SetImageList, the imageList must exist for the life of the treeCtrl
-    treeCtrl:AssignImageList(imageList) 
+    treeCtrl:AssignImageList(imageList)
 
     -- create our log window
     textCtrl = wx.wxTextCtrl( frame, wx.wxID_ANY, "",
@@ -105,22 +105,26 @@ function main()
     rootSizer = wx.wxFlexGridSizer(0, 1, 0, 0)
     rootSizer:AddGrowableCol(0)
     rootSizer:AddGrowableRow(0)
-    rootSizer:Add( treeCtrl, 0, wx.wxGROW+wx.wxALIGN_CENTER_HORIZONTAL, 0 )
-    rootSizer:Add( textCtrl, 0, wx.wxGROW+wx.wxALIGN_CENTER_HORIZONTAL, 0 )
+    rootSizer:Add(treeCtrl, 0, wx.wxGROW+wx.wxALIGN_CENTER_HORIZONTAL, 0)
+    rootSizer:Add(textCtrl, 0, wx.wxGROW+wx.wxALIGN_CENTER_HORIZONTAL, 0)
     frame:SetAutoLayout(true)
     frame:SetSizer(rootSizer)
     frame:Layout() -- help sizing the windows before being shown
 
     rootSizer:SetSizeHints(frame)
     rootSizer:Fit(frame)
+
     -- create a table to store any extra information for each node like this
     -- you don't have to store the id in the table, but it might be useful
     -- treedata[id] = { id=wx.wxTreeCtrlId, data="whatever data we want" }
     treedata = {}
 
     -- You must ALWAYS create a root node, but you can hide it with the wxTR_HIDE_ROOT window style
-    local root_id = treeCtrl:AddRoot( "Root", 2, -1 )
+    local root_id = treeCtrl:GetRootItem()
     treedata[root_id:GetValue()] = { id = root_id:GetValue(), data = "I'm the root item" }
+
+    treeCtrl:AppendColumn("first column")
+    treeCtrl:AppendColumn("second column")
 
     for idx = 0, 9 do
         -- Add parent nodes just off the root
@@ -144,7 +148,7 @@ function main()
 
     -- You may use the above simple method of using a Lua table to store extra
     -- data for each treectrl node or you can SetItemData() for each node.
-    -- Note that the wxTreeCtrl::Append/Insert/Prepend() functions can take a 
+    -- Note that the wxTreeCtrl::Append/Insert/Prepend() functions can take a
     -- a wxLuaTreeItemData as a parameter directly.
     -- DO NOT ever try to attach the same wxLuaTreeItemData to different nodes!
     -- The wxTreeCtrl takes ownership of the wxLuaTreeItemData and deletes it.
@@ -189,7 +193,7 @@ function main()
     wx.wxGetApp():SetTopWindow(frame)
 
     frame:Show(true)
-    
+
     collectgarbage("collect")
 end
 

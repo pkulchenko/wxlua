@@ -161,6 +161,7 @@
 #define wxLUA_USE_wxTooltip                     1
 #define wxLUA_USE_wxTreebook                    1
 #define wxLUA_USE_wxTreeCtrl                    1
+#define wxLUA_USE_wxTreeListCtrl                1
 #define wxLUA_USE_wxValidator                   1
 #define wxLUA_USE_wxWave                        1
 #define wxLUA_USE_wxWebView                     1 // must link to lib, also wxUSE_WEBVIEW

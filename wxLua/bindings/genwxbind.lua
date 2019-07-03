@@ -17,7 +17,7 @@
 -- Globals
 -- ---------------------------------------------------------------------------
 
-WXLUA_BINDING_VERSION = 31 -- Used to verify that the bindings are updated
+WXLUA_BINDING_VERSION = 32 -- Used to verify that the bindings are updated
                            -- This must match modules/wxlua/wxldefs.h
                            -- otherwise a compile time error will be generated.
 
@@ -996,6 +996,7 @@ function InitKeywords()
     preprocConditionTable["wxUSE_TOOLTIPS"]                = "wxUSE_TOOLTIPS"
     preprocConditionTable["wxUSE_TREEBOOK"]                = "wxUSE_TREEBOOK"
     preprocConditionTable["wxUSE_TREECTRL"]                = "wxUSE_TREECTRL"
+    preprocConditionTable["wxUSE_TREELISTCTRL"]            = "wxUSE_TREELISTCTRL"
     preprocConditionTable["wxUSE_TREELAYOUT"]              = "wxUSE_TREELAYOUT"
     preprocConditionTable["wxUSE_UNICODE"]                 = "wxUSE_UNICODE"
     preprocConditionTable["wxUSE_UNICODE_MSLU"]            = "wxUSE_UNICODE_MSLU"
@@ -1162,6 +1163,7 @@ function InitKeywords()
     preprocConditionTable["wxLUA_USE_wxTooltip"]               = "wxLUA_USE_wxTooltip"
     preprocConditionTable["wxLUA_USE_wxTreebook"]              = "wxLUA_USE_wxTreebook"
     preprocConditionTable["wxLUA_USE_wxTreeCtrl"]              = "wxLUA_USE_wxTreeCtrl"
+    preprocConditionTable["wxLUA_USE_wxTreeListCtrl"]          = "wxLUA_USE_wxTreeListCtrl"
     preprocConditionTable["wxLUA_USE_wxValidator"]             = "wxLUA_USE_wxValidator"
     preprocConditionTable["wxLUA_USE_wxWave"]                  = "wxLUA_USE_wxWave"
     preprocConditionTable["wxLUA_USE_wxWindowList"]            = "wxLUA_USE_wxWindowList"

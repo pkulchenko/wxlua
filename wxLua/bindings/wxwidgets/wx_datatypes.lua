@@ -5214,6 +5214,30 @@ wx_dataTypeTable =
     Name = "wxTreeItemIdValue",
     ValueType = "number",
   },
+  wxTreeListCtrl = {
+    BaseClasses = {
+      [1] = "wxWindow",
+    },
+    Condition = "wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)",
+    IsNumber = false,
+    Name = "wxTreeListCtrl",
+    ValueType = "class",
+  },
+  wxTreeListEvent = {
+    BaseClasses = {
+      [1] = "wxNotifyEvent",
+    },
+    Condition = "wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)",
+    IsNumber = false,
+    Name = "wxTreeListEvent",
+    ValueType = "class",
+  },
+  wxTreeListItem = {
+    Condition = "wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)",
+    IsNumber = false,
+    Name = "wxTreeListItem",
+    ValueType = "class",
+  },
   wxTreebook = {
     BaseClasses = {
       [1] = "wxBookCtrlBase",
@@ -5779,6 +5803,7 @@ wx_preprocConditionTable =
   wxLUA_USE_wxToolbook = "wxLUA_USE_wxToolbook",
   wxLUA_USE_wxTooltip = "wxLUA_USE_wxTooltip",
   wxLUA_USE_wxTreeCtrl = "wxLUA_USE_wxTreeCtrl",
+  wxLUA_USE_wxTreeListCtrl = "wxLUA_USE_wxTreeListCtrl",
   wxLUA_USE_wxTreebook = "wxLUA_USE_wxTreebook",
   wxLUA_USE_wxValidator = "wxLUA_USE_wxValidator",
   wxLUA_USE_wxWave = "wxLUA_USE_wxWave",
@@ -5963,6 +5988,7 @@ wx_preprocConditionTable =
   wxUSE_TREEBOOK = "wxUSE_TREEBOOK",
   wxUSE_TREECTRL = "wxUSE_TREECTRL",
   wxUSE_TREELAYOUT = "wxUSE_TREELAYOUT",
+  wxUSE_TREELISTCTRL = "wxUSE_TREELISTCTRL",
   wxUSE_UNICODE = "wxUSE_UNICODE",
   wxUSE_UNICODE_MSLU = "wxUSE_UNICODE_MSLU",
   wxUSE_UNIX = "wxUSE_UNIX",
