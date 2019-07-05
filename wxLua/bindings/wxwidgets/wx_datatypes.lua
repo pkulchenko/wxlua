@@ -5645,6 +5645,7 @@ wx_preprocConditionTable =
   ["%wxchkver_2_9_5"] = "wxCHECK_VERSION(2,9,5)",
   ["%wxchkver_3_0"] = "wxCHECK_VERSION(3,0,0)",
   ["%wxchkver_3_0_0"] = "wxCHECK_VERSION(3,0,0)",
+  ["%wxchkver_3_0_1"] = "wxCHECK_VERSION(3,0,1)",
   ["%wxchkver_3_1"] = "wxCHECK_VERSION(3,1,0)",
   ["%wxchkver_3_1_0"] = "wxCHECK_VERSION(3,1,0)",
   ["%wxchkver_3_1_1"] = "wxCHECK_VERSION(3,1,1)",

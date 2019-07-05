@@ -13,7 +13,10 @@ wxluapath = wxluapath and wxluapath:gsub("[/\\]+$","").."/" or "wxwidgets/"
 local steps = {
   wxcore_menutool = {
     wxMenu = "menu.h",
+    wxMenuBar = "menu.h",
     wxMenuItem = "menuitem.h",
+    wxAcceleratorTable = "accel.h",
+    wxAcceleratorEntry = "accel.h",
   },
   wxcore_controls = {
     wxTreeCtrl = "treectrl.h",

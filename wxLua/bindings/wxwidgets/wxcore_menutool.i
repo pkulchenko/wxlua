@@ -95,36 +95,40 @@ class %delete wxMenu : public wxEvtHandler
 class wxMenuBar : public wxWindow
 {
     wxMenuBar(long style = 0);
-    // void wxMenuBar(int n, wxMenu* menus[], const wxString titles[]);
-
+    // wxMenuBar(size_t n, wxMenu* menus[], const wxString titles[], long style = 0); // not implemented
     bool Append(%ungc wxMenu *menu, const wxString& title);
     void Check(int id, bool check);
     void Enable(int id, bool enable);
-    void EnableTop(int pos, bool enable);
+    %wxchkver_2_9_4 bool IsEnabledTop(size_t pos) const;
+    void EnableTop(size_t pos, bool enable);
+    wxMenuItem* FindItem(int id, wxMenu **menu = NULL) const;
     int FindMenu(const wxString& title) const;
     int FindMenuItem(const wxString& menuString, const wxString& itemString) const;
-    wxMenuItem* FindItem(int id, wxMenu **menu = NULL) const;
     wxString GetHelpString(int id) const;
     wxString GetLabel(int id) const;
-    wxMenu* GetMenu(int menuIndex) const;
+    %wxchkver_2_9_4 wxMenu* GetMenu(size_t menuIndex) const;
     int GetMenuCount() const;
+    %wxchkver_3_0 wxString GetMenuLabel(size_t pos) const;
+    %wxchkver_3_0 wxString GetMenuLabelText(size_t pos) const;
     bool Insert(size_t pos, %ungc wxMenu *menu, const wxString& title);
     bool IsChecked(int id) const;
     bool IsEnabled(int id) const;
-    void Refresh();
+    void Refresh(bool eraseBackground = true, const wxRect* rect = NULL);
     %gc wxMenu* Remove(size_t pos);
     %gc wxMenu* Replace(size_t pos, %ungc wxMenu *menu, const wxString& title);
     void SetHelpString(int id, const wxString& helpString);
     void SetLabel(int id, const wxString& label);
-
-    %wxchkver_2_8 virtual void UpdateMenus();
-
-    !%wxchkver_3_0 || %wxcompat_2_8 wxString GetLabelTop(int pos) const;
-    !%wxchkver_3_0 || %wxcompat_2_8 void SetLabelTop(int pos, const wxString& label);
-
     %wxchkver_3_0 void SetMenuLabel(size_t pos, const wxString& label);
-    %wxchkver_3_0 wxString GetMenuLabel(size_t pos) const;
-    %wxchkver_3_0 wxString GetMenuLabelText(size_t pos) const;
+    %mac static void MacSetCommonMenuBar(wxMenuBar* menubar);
+    %mac static wxMenuBar* MacGetCommonMenuBar();
+    %wxchkver_3_0_1 && %mac wxMenu *OSXGetAppleMenu() const;
+    wxFrame *GetFrame() const;
+    bool IsAttached() const;
+    void Attach(wxFrame *frame);
+    void Detach();
+    !%wxchkver_2_9_4 && %wxchkver_2_8 virtual void UpdateMenus();
+    !%wxchkver_2_9_4 || %wxcompat_2_8 void SetLabelTop(int pos, const wxString& label);
+    !%wxchkver_2_9_4 || %wxcompat_2_8 wxString GetLabelTop(int pos) const;
 };
 
 // ---------------------------------------------------------------------------
@@ -388,19 +392,10 @@ class wxToolBarToolBase : public wxObject
 class %delete wxAcceleratorTable : public wxObject
 {
     #define_object wxNullAcceleratorTable
-
-    // %override wxAcceleratorTable(Lua table with this format);
-    // { { wx.wxACCEL_NORMAL, string.byte('0'), ID_0 },
-    //   { wx.wxACCEL_NORMAL, wx.VXK_NUMPAD0,   ID_0 } }
-    // C++ Func: wxAcceleratorTable(int n, wxAcceleratorEntry* entries);
-    wxAcceleratorTable(LuaTable accelTable);
+    %wxchkver_2_8 bool IsOk() const;
+    bool Ok() const; // %add for compatibility with earlier versions of wxlua
+    wxAcceleratorTable(LuaTable accelTable); // %override wxAcceleratorTable(Lua table)
     wxAcceleratorTable(const wxAcceleratorTable& accel);
-
-    bool Ok() const;
-    //%wxchkver_2_8 bool IsOk() const;
-
-    // believe it or not, there aren't functions to add or remove wxAcceleratorEntries for MSW
-    // operators are WXWIN_COMPATIBILITY_2_4
 };
 
 // ---------------------------------------------------------------------------
@@ -423,17 +418,19 @@ class %delete wxAcceleratorEntry
 {
     wxAcceleratorEntry(int flags = 0, int keyCode = 0, int cmd = 0, wxMenuItem *item = NULL);
     wxAcceleratorEntry(const wxAcceleratorEntry& entry);
-
     int GetCommand() const;
     int GetFlags() const;
     int GetKeyCode() const;
+    %wxchkver_2_8 wxMenuItem *GetMenuItem() const;
     void Set(int flags, int keyCode, int Cmd, wxMenuItem *item = NULL);
-
-    %wxchkver_2_8 static %gc wxAcceleratorEntry *Create(const wxString& str);
     %wxchkver_2_8 bool IsOk() const;
     %wxchkver_2_8 wxString ToString() const;
+    %wxchkver_2_9_4 wxString ToRawString() const;
     %wxchkver_2_8 bool FromString(const wxString& str);
-    %wxchkver_2_8 wxMenuItem *GetMenuItem() const;
+    wxAcceleratorEntry& operator=(const wxAcceleratorEntry& entry);
+    bool operator==(const wxAcceleratorEntry& entry) const;
+    bool operator!=(const wxAcceleratorEntry& entry) const;
+    %wxchkver_2_8 static %gc wxAcceleratorEntry *Create(const wxString& str);
 };
 
 #endif //wxLUA_USE_wxAcceleratorTable && wxUSE_ACCEL
