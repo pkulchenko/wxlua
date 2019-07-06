@@ -20,37 +20,37 @@ class wxPrintout : public wxObject
 {
     // virtual class, use wxLuaPrintout
 
-    wxDC * GetDC( );
+    wxDC * GetDC();
 
-    // %override [int minPage, int maxPage, int pageFrom, int pageTo] wxPrintout::GetPageInfo( );
-    // C++ Func: void GetPageInfo(int *minPage, int *maxPage, int *pageFrom, int *pageTo );
-    void GetPageInfo( );
+    // %override [int minPage, int maxPage, int pageFrom, int pageTo] wxPrintout::GetPageInfo();
+    // C++ Func: void GetPageInfo(int *minPage, int *maxPage, int *pageFrom, int *pageTo);
+    void GetPageInfo();
 
-    // %override [int w, int h] wxPrintout::GetPageSizeMM( );
-    // C++ Func: void GetPageSizeMM(int *w, int *h );
-    void GetPageSizeMM( );
+    // %override [int w, int h] wxPrintout::GetPageSizeMM();
+    // C++ Func: void GetPageSizeMM(int *w, int *h);
+    void GetPageSizeMM();
 
-    // %override [int w, int h] wxPrintout::GetPageSizePixels( );
-    // C++ Func: void GetPageSizePixels(int *w, int *h );
-    void GetPageSizePixels( );
+    // %override [int w, int h] wxPrintout::GetPageSizePixels();
+    // C++ Func: void GetPageSizePixels(int *w, int *h);
+    void GetPageSizePixels();
 
-    // %override [int w, int h] wxPrintout::GetPPIPrinter( );
-    // C++ Func: void GetPPIPrinter(int *w, int *h );
-    void GetPPIPrinter( );
+    // %override [int w, int h] wxPrintout::GetPPIPrinter();
+    // C++ Func: void GetPPIPrinter(int *w, int *h);
+    void GetPPIPrinter();
 
-    // %override [int w, int h] wxPrintout::GetPPIScreen( );
-    // C++ Func: void GetPPIScreen(int *w, int *h );
-    void GetPPIScreen( );
+    // %override [int w, int h] wxPrintout::GetPPIScreen();
+    // C++ Func: void GetPPIScreen(int *w, int *h);
+    void GetPPIScreen();
 
-    wxString  GetTitle( );
-    bool HasPage(int pageNum );
-    bool IsPreview( );
-    bool OnBeginDocument(int startPage, int endPage );
-    void OnEndDocument( );
-    void OnBeginPrinting( );
-    void OnEndPrinting( );
-    void OnPreparePrinting( );
-    bool OnPrintPage(int pageNum );
+    wxString  GetTitle();
+    bool HasPage(int pageNum);
+    bool IsPreview();
+    bool OnBeginDocument(int startPage, int endPage);
+    void OnEndDocument();
+    void OnBeginPrinting();
+    void OnEndPrinting();
+    void OnPreparePrinting();
+    bool OnPrintPage(int pageNum);
 };
 
 // ---------------------------------------------------------------------------
@@ -64,23 +64,23 @@ class wxPrintout : public wxObject
 class %delete wxLuaPrintout : public wxPrintout
 {
     // %override - the C++ function takes the wxLuaState as the first param
-    wxLuaPrintout(const wxString& title = "Printout", wxLuaObject *pObject = NULL );
+    wxLuaPrintout(const wxString& title = "Printout", wxLuaObject *pObject = NULL);
 
-    wxLuaObject *GetID( );
+    wxLuaObject *GetID();
 
     // This is an added function to wxPrintout so you don't have to override GetPageInfo
-    void SetPageInfo(int minPage, int maxPage, int pageFrom = 0, int pageTo = 0 );
+    void SetPageInfo(int minPage, int maxPage, int pageFrom = 0, int pageTo = 0);
 
     // The functions below are all virtual functions that you can override in Lua.
     // See the printing sample and wxPrintout for proper parameters and usage.
-    //void GetPageInfo(int *minPage, int *maxPage, int *pageFrom, int *pageTo );
-    //bool HasPage(int pageNum );
-    //bool OnBeginDocument(int startPage, int endPage );
-    //void OnEndDocument( );
-    //void OnBeginPrinting( );
-    //void OnEndPrinting( );
-    //void OnPreparePrinting( );
-    //bool OnPrintPage(int pageNum );
+    //void GetPageInfo(int *minPage, int *maxPage, int *pageFrom, int *pageTo);
+    //bool HasPage(int pageNum);
+    //bool OnBeginDocument(int startPage, int endPage);
+    //void OnEndDocument();
+    //void OnBeginPrinting();
+    //void OnEndPrinting();
+    //void OnPreparePrinting();
+    //bool OnPrintPage(int pageNum);
 
     // Dummy test function to directly verify that the binding virtual functions really work.
     // This base class function appends "-Base" to the val string and returns it.
@@ -102,17 +102,17 @@ enum wxPrinterError
 
 class %delete wxPrinter : public wxObject
 {
-    wxPrinter(wxPrintDialogData* data = NULL );
+    wxPrinter(wxPrintDialogData* data = NULL);
 
-    //bool Abort( );
-    virtual void CreateAbortWindow(wxWindow* parent, wxPrintout* printout );
+    //bool Abort();
+    virtual void CreateAbortWindow(wxWindow* parent, wxPrintout* printout);
     bool GetAbort() const;
-    static wxPrinterError GetLastError( );
-    wxPrintDialogData& GetPrintDialogData( );
-    bool Print(wxWindow *parent, wxPrintout *printout, bool prompt=true );
-    wxDC* PrintDialog(wxWindow *parent );
-    void ReportError(wxWindow *parent, wxPrintout *printout, const wxString& message );
-    bool Setup(wxWindow *parent );
+    static wxPrinterError GetLastError();
+    wxPrintDialogData& GetPrintDialogData();
+    bool Print(wxWindow *parent, wxPrintout *printout, bool prompt=true);
+    wxDC* PrintDialog(wxWindow *parent);
+    void ReportError(wxWindow *parent, wxPrintout *printout, const wxString& message);
+    bool Setup(wxWindow *parent);
 };
 
 #endif //wxLUA_USE_wxLuaPrintout
@@ -302,10 +302,10 @@ enum wxPrintOrientation
 
 class %delete wxPrintData : public wxObject
 {
-    wxPrintData( );
-    wxPrintData(const wxPrintData& data );
+    wxPrintData();
+    wxPrintData(const wxPrintData& data);
 
-    wxPrintData *Copy( );
+    wxPrintData *Copy();
 
     // copied straight from cmndata.h not docs
     int  GetNoCopies() const;
@@ -322,24 +322,24 @@ class %delete wxPrintData : public wxObject
     wxPrintBin GetBin() const;
     wxPrintMode GetPrintMode() const;
     %wxchkver_2_8 bool IsOrientationReversed() const;
-    void SetNoCopies(int v );
-    void SetCollate(bool flag );
+    void SetNoCopies(int v);
+    void SetCollate(bool flag);
     !%wxchkver_3_0 void SetOrientation(int orient);
     %wxchkver_3_0 void SetOrientation(wxPrintOrientation orient);
-    void SetPrinterName(const wxString& name );
-    void SetColour(bool colour );
-    void SetDuplex(wxDuplexMode duplex );
-    %wxchkver_2_8 void SetOrientationReversed(bool reversed );
-    %wxchkver_2_8 void SetMedia(int media );
-    void SetPaperId(wxPaperSize sizeId );
-    void SetPaperSize(const wxSize& sz );
-    void SetQuality(wxPrintQuality quality );
-    void SetBin(wxPrintBin bin );
-    void SetPrintMode(wxPrintMode printMode );
+    void SetPrinterName(const wxString& name);
+    void SetColour(bool colour);
+    void SetDuplex(wxDuplexMode duplex);
+    %wxchkver_2_8 void SetOrientationReversed(bool reversed);
+    %wxchkver_2_8 void SetMedia(int media);
+    void SetPaperId(wxPaperSize sizeId);
+    void SetPaperSize(const wxSize& sz);
+    void SetQuality(wxPrintQuality quality);
+    void SetBin(wxPrintBin bin);
+    void SetPrintMode(wxPrintMode printMode);
     wxString GetFilename() const;
-    void SetFilename( const wxString &filename );
+    void SetFilename(const wxString &filename);
 
-    void operator=(const wxPrintData& data );
+    void operator=(const wxPrintData& data);
 };
 
 // ---------------------------------------------------------------------------
@@ -347,10 +347,10 @@ class %delete wxPrintData : public wxObject
 
 class %delete wxPageSetupDialogData : public wxObject
 {
-    wxPageSetupDialogData( );
-    wxPageSetupDialogData(const wxPageSetupDialogData& data );
+    wxPageSetupDialogData();
+    wxPageSetupDialogData(const wxPageSetupDialogData& data);
 
-    wxPageSetupDialogData *Copy( );
+    wxPageSetupDialogData *Copy();
 
     // copied straight from cmndata.h not docs
     wxSize GetPaperSize() const;
@@ -367,27 +367,27 @@ class %delete wxPageSetupDialogData : public wxObject
     bool GetDefaultInfo() const;
     bool GetEnableHelp() const;
     bool Ok() const;
-    void SetPaperSize(const wxSize& sz );
-    void SetPaperSize(wxPaperSize id );
-    void SetPaperId(wxPaperSize id );
-    void SetMinMarginTopLeft(const wxPoint& pt );
-    void SetMinMarginBottomRight(const wxPoint& pt );
-    void SetMarginTopLeft(const wxPoint& pt );
-    void SetMarginBottomRight(const wxPoint& pt );
-    void SetDefaultMinMargins(bool flag );
-    void SetDefaultInfo(bool flag );
-    void EnableMargins(bool flag );
-    void EnableOrientation(bool flag );
-    void EnablePaper(bool flag );
-    void EnablePrinter(bool flag );
-    void EnableHelp(bool flag );
-    void CalculateIdFromPaperSize( );
-    void CalculatePaperSizeFromId( );
-    wxPrintData& GetPrintData( );
-    void SetPrintData(const wxPrintData& printData );
+    void SetPaperSize(const wxSize& sz);
+    void SetPaperSize(wxPaperSize id);
+    void SetPaperId(wxPaperSize id);
+    void SetMinMarginTopLeft(const wxPoint& pt);
+    void SetMinMarginBottomRight(const wxPoint& pt);
+    void SetMarginTopLeft(const wxPoint& pt);
+    void SetMarginBottomRight(const wxPoint& pt);
+    void SetDefaultMinMargins(bool flag);
+    void SetDefaultInfo(bool flag);
+    void EnableMargins(bool flag);
+    void EnableOrientation(bool flag);
+    void EnablePaper(bool flag);
+    void EnablePrinter(bool flag);
+    void EnableHelp(bool flag);
+    void CalculateIdFromPaperSize();
+    void CalculatePaperSizeFromId();
+    wxPrintData& GetPrintData();
+    void SetPrintData(const wxPrintData& printData);
 
-    //wxPageSetupDialogData& operator=(const wxPageSetupData& data );
-    //wxPageSetupDialogData& operator=(const wxPrintData& data );
+    //wxPageSetupDialogData& operator=(const wxPageSetupData& data);
+    //wxPageSetupDialogData& operator=(const wxPrintData& data);
 };
 
 // ---------------------------------------------------------------------------
@@ -399,10 +399,10 @@ class %delete wxPageSetupDialogData : public wxObject
 
 class %delete wxPageSetupDialog : public wxObject // NOT a wxDialog in 2.8
 {
-    wxPageSetupDialog(wxWindow* parent, wxPageSetupDialogData* data = NULL );
+    wxPageSetupDialog(wxWindow* parent, wxPageSetupDialogData* data = NULL);
 
-    wxPageSetupDialogData& GetPageSetupDialogData( );
-    int ShowModal( );
+    wxPageSetupDialogData& GetPageSetupDialogData();
+    int ShowModal();
 };
 
 // ---------------------------------------------------------------------------
@@ -410,12 +410,12 @@ class %delete wxPageSetupDialog : public wxObject // NOT a wxDialog in 2.8
 
 class %delete wxPrintDialog : public wxObject // NOT a wxDialog in 2.8
 {
-    wxPrintDialog(wxWindow* parent, wxPrintDialogData* data = NULL );
+    wxPrintDialog(wxWindow* parent, wxPrintDialogData* data = NULL);
 
-    wxPrintDialogData& GetPrintDialogData( );
+    wxPrintDialogData& GetPrintDialogData();
     wxPrintData& GetPrintData();
-    wxDC* GetPrintDC( );
-    int ShowModal( );
+    wxDC* GetPrintDC();
+    int ShowModal();
 };
 
 // ---------------------------------------------------------------------------
@@ -423,9 +423,9 @@ class %delete wxPrintDialog : public wxObject // NOT a wxDialog in 2.8
 
 class %delete wxPrintDialogData : public wxObject
 {
-    wxPrintDialogData( );
-    wxPrintDialogData(const wxPrintDialogData& dialogData );
-    wxPrintDialogData(const wxPrintData& data );
+    wxPrintDialogData();
+    wxPrintDialogData(const wxPrintDialogData& dialogData);
+    wxPrintDialogData(const wxPrintData& data);
 
     // copied straight from cmndata.h not docs
     int GetFromPage() const;
@@ -438,29 +438,29 @@ class %delete wxPrintDialogData : public wxObject
     bool GetCollate() const;
     bool GetPrintToFile() const;
     // WXWIN_COMPATIBILITY_2_4 //bool GetSetupDialog() const;
-    void SetFromPage(int v );
-    void SetToPage(int v );
-    void SetMinPage(int v );
-    void SetMaxPage(int v );
-    void SetNoCopies(int v );
-    void SetAllPages(bool flag );
-    void SetSelection(bool flag );
-    void SetCollate(bool flag );
-    void SetPrintToFile(bool flag );
+    void SetFromPage(int v);
+    void SetToPage(int v);
+    void SetMinPage(int v);
+    void SetMaxPage(int v);
+    void SetNoCopies(int v);
+    void SetAllPages(bool flag);
+    void SetSelection(bool flag);
+    void SetCollate(bool flag);
+    void SetPrintToFile(bool flag);
     // WXWIN_COMPATIBILITY_2_4 //void SetSetupDialog(bool flag) { m_printSetupDialog = flag; };
-    void EnablePrintToFile(bool flag );
-    void EnableSelection(bool flag );
-    void EnablePageNumbers(bool flag );
-    void EnableHelp(bool flag );
+    void EnablePrintToFile(bool flag);
+    void EnableSelection(bool flag);
+    void EnablePageNumbers(bool flag);
+    void EnableHelp(bool flag);
     bool GetEnablePrintToFile() const;
     bool GetEnableSelection() const;
     bool GetEnablePageNumbers() const;
     bool GetEnableHelp() const;
     bool Ok() const;
-    wxPrintData& GetPrintData( );
-    void SetPrintData(const wxPrintData& printData );
+    wxPrintData& GetPrintData();
+    void SetPrintData(const wxPrintData& printData);
 
-    void operator=(const wxPrintDialogData& data );
+    void operator=(const wxPrintDialogData& data);
 };
 
 // ---------------------------------------------------------------------------
@@ -468,7 +468,7 @@ class %delete wxPrintDialogData : public wxObject
 
 class wxPreviewCanvas : public wxWindow
 {
-    wxPreviewCanvas(wxPrintPreview *preview, wxWindow *parent, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxPreviewCanvas" );
+    wxPreviewCanvas(wxPrintPreview *preview, wxWindow *parent, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxPreviewCanvas");
 };
 
 // ---------------------------------------------------------------------------
@@ -493,11 +493,11 @@ class wxPreviewCanvas : public wxWindow
 
 class wxPreviewControlBar : public wxWindow
 {
-    wxPreviewControlBar(wxPrintPreview* preview, long buttons, wxWindow* parent, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxPreviewControlBar" );
+    wxPreviewControlBar(wxPrintPreview* preview, long buttons, wxWindow* parent, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = "wxPreviewControlBar");
 
-    //void CreateButtons( );
-    virtual void SetZoomControl(int zoom );
-    virtual int GetZoomControl( );
+    //void CreateButtons();
+    virtual void SetZoomControl(int zoom);
+    virtual int GetZoomControl();
     //virtual wxPrintPreviewBase *GetPrintPreview() const;
 };
 
@@ -507,25 +507,25 @@ class wxPreviewControlBar : public wxWindow
 
 class wxPrintPreview : public wxObject
 {
-    wxPrintPreview(wxPrintout* printout, wxPrintout* printoutForPrinting, wxPrintData* data=NULL );
+    wxPrintPreview(wxPrintout* printout, wxPrintout* printoutForPrinting, wxPrintData* data=NULL);
 
-    bool DrawBlankPage(wxPreviewCanvas* window, wxDC& dc );
-    wxPreviewCanvas* GetCanvas( );
-    int GetCurrentPage( );
-    wxFrame * GetFrame( );
-    int GetMaxPage( );
-    int GetMinPage( );
-    wxPrintout* GetPrintout( );
-    wxPrintout* GetPrintoutForPrinting( );
-    bool Ok( );
-    bool PaintPage(wxPreviewCanvas* window, wxDC &dc );
-    bool Print(bool prompt );
-    bool RenderPage(int pageNum );
-    void SetCanvas(wxPreviewCanvas* window );
-    void SetCurrentPage(int pageNum );
-    void SetFrame(wxFrame *frame );
-    void SetPrintout(wxPrintout *printout );
-    void SetZoom(int percent );
+    bool DrawBlankPage(wxPreviewCanvas* window, wxDC& dc);
+    wxPreviewCanvas* GetCanvas();
+    int GetCurrentPage();
+    wxFrame * GetFrame();
+    int GetMaxPage();
+    int GetMinPage();
+    wxPrintout* GetPrintout();
+    wxPrintout* GetPrintoutForPrinting();
+    bool Ok();
+    bool PaintPage(wxPreviewCanvas* window, wxDC &dc);
+    bool Print(bool prompt);
+    bool RenderPage(int pageNum);
+    void SetCanvas(wxPreviewCanvas* window);
+    void SetCurrentPage(int pageNum);
+    void SetFrame(wxFrame *frame);
+    void SetPrintout(wxPrintout *printout);
+    void SetZoom(int percent);
 };
 
 // ---------------------------------------------------------------------------
@@ -533,11 +533,11 @@ class wxPrintPreview : public wxObject
 
 class wxPreviewFrame : public wxFrame
 {
-    wxPreviewFrame(wxPrintPreview *preview, wxFrame *parent, const wxString &title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_FRAME_STYLE, const wxString &name = "wxPreviewFrame" );
+    wxPreviewFrame(wxPrintPreview *preview, wxFrame *parent, const wxString &title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_FRAME_STYLE, const wxString &name = "wxPreviewFrame");
 
-    void CreateControlBar( );
-    void CreateCanvas( );
-    void Initialize( );
+    void CreateControlBar();
+    void CreateCanvas();
+    void Initialize();
     wxPreviewControlBar* GetControlBar() const;
 };
 
@@ -552,11 +552,11 @@ class wxPreviewFrame : public wxFrame
 
 class %delete wxPostScriptDC : public wxDC
 {
-    wxPostScriptDC(const wxPrintData& printData );
+    wxPostScriptDC(const wxPrintData& printData);
 
-    !%wxchkver_2_9_2 static void SetResolution(int ppi );
-    !%wxchkver_2_9_2 static int GetResolution( );
-    %wxchkver_2_9_2 int GetResolution( );
+    !%wxchkver_2_9_2 static void SetResolution(int ppi);
+    !%wxchkver_2_9_2 static int GetResolution();
+    %wxchkver_2_9_2 int GetResolution();
 };
 
 #endif //wxUSE_POSTSCRIPT
@@ -569,7 +569,7 @@ class %delete wxPostScriptDC : public wxDC
 
 class %delete wxPrinterDC : public wxDC
 {
-    wxPrinterDC(const wxPrintData& printData );
+    wxPrinterDC(const wxPrintData& printData);
 };
 #endif // %msw|%mac
 

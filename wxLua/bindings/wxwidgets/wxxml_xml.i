@@ -33,22 +33,22 @@ enum wxXmlNodeType
 
 class %delete wxXmlNode
 {
-    wxXmlNode( );
-    wxXmlNode(wxXmlNodeType type, const wxString& name, const wxString& content = "" );
+    wxXmlNode();
+    wxXmlNode(wxXmlNodeType type, const wxString& name, const wxString& content = "");
 
-    // %override wxXmlNode::wxXmlNode(wxXmlNode *parent, wxXmlNodeType type, const wxString& name, const wxString& content, wxXmlProperty *props, wxXmlNode *next );
+    // %override wxXmlNode::wxXmlNode(wxXmlNode *parent, wxXmlNodeType type, const wxString& name, const wxString& content, wxXmlProperty *props, wxXmlNode *next);
     // C++ Func: No change: if parent is not NULL, created node is not garbage collected.
-    wxXmlNode(wxXmlNode *parent, wxXmlNodeType type, const wxString& name, const wxString& content, wxXmlProperty *props, wxXmlNode *next );
+    wxXmlNode(wxXmlNode *parent, wxXmlNodeType type, const wxString& name, const wxString& content, wxXmlProperty *props, wxXmlNode *next);
 
-    void AddChild(%ungc wxXmlNode *child );
-    void InsertChild(%ungc wxXmlNode *child, wxXmlNode *before_node );
+    void AddChild(%ungc wxXmlNode *child);
+    void InsertChild(%ungc wxXmlNode *child, wxXmlNode *before_node);
 
-    // %override bool wxXmlNode::RemoveChild(%gc wxXmlNode *child );
+    // %override bool wxXmlNode::RemoveChild(%gc wxXmlNode *child);
     // C++ Func: No change: only if child is removed will we garbage collect it
-    bool RemoveChild(%gc wxXmlNode *child );
+    bool RemoveChild(%gc wxXmlNode *child);
 
-    void AddProperty(const wxString& name, const wxString& value );
-    bool DeleteProperty(const wxString& name );
+    void AddProperty(const wxString& name, const wxString& value);
+    bool DeleteProperty(const wxString& name);
     wxXmlNodeType GetType() const;
     wxString GetName() const;
     wxString GetContent() const;
@@ -63,14 +63,14 @@ class %delete wxXmlNode
 
     wxString GetPropVal(const wxString& propName, const wxString& defaultVal) const;
     bool HasProp(const wxString& propName) const;
-    void SetType(wxXmlNodeType type );
-    void SetName(const wxString& name );
-    void SetContent(const wxString& con );
-    void SetParent(wxXmlNode *parent );
-    void SetNext(wxXmlNode *next );
-    void SetChildren(%ungc wxXmlNode *child );
-    void SetProperties(%ungc wxXmlProperty *prop );
-    void AddProperty(%ungc wxXmlProperty *prop );
+    void SetType(wxXmlNodeType type);
+    void SetName(const wxString& name);
+    void SetContent(const wxString& con);
+    void SetParent(wxXmlNode *parent);
+    void SetNext(wxXmlNode *next);
+    void SetChildren(%ungc wxXmlNode *child);
+    void SetProperties(%ungc wxXmlProperty *prop);
+    void AddProperty(%ungc wxXmlProperty *prop);
 };
 
 // ---------------------------------------------------------------------------
@@ -78,15 +78,15 @@ class %delete wxXmlNode
 
 class %delete wxXmlProperty
 {
-    wxXmlProperty( );
-    wxXmlProperty(const wxString& name, const wxString& value, wxXmlProperty *next );
+    wxXmlProperty();
+    wxXmlProperty(const wxString& name, const wxString& value, wxXmlProperty *next);
 
-    wxString GetName( );
-    wxString GetValue( );
-    wxXmlProperty *GetNext( );
-    void SetName(const wxString& name );
-    void SetValue(const wxString& value );
-    void SetNext(wxXmlProperty *next );
+    wxString GetName();
+    wxString GetValue();
+    wxXmlProperty *GetNext();
+    void SetName(const wxString& name);
+    void SetValue(const wxString& value);
+    void SetNext(wxXmlProperty *next);
 };
 
 // ---------------------------------------------------------------------------

@@ -39,7 +39,7 @@ class %delete wxXmlResource : public wxObject
     void ClearHandlers();
     int CompareVersion(int major, int minor, int release, int revision) const;
     static wxXmlResource* Get();
-    int GetFlags( );
+    int GetFlags();
     long GetVersion() const;
     static int GetXRCID(const wxString &stringID, int value_if_not_found = wxID_NONE);
     void InitAllHandlers();
@@ -58,9 +58,9 @@ class %delete wxXmlResource : public wxObject
     wxToolBar* LoadToolBar(wxWindow *parent, const wxString& name);
 
     static %gc wxXmlResource* Set(%ungc wxXmlResource *res);
-    void SetDomain(const wxString& domain );
+    void SetDomain(const wxString& domain);
     void SetFlags(int flags);
-    bool Unload(const wxString& filename );
+    bool Unload(const wxString& filename);
 };
 
 #endif //wxLUA_USE_wxXRC && wxUSE_XRC

@@ -41,7 +41,7 @@ int wxluatype_wxDialog = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDialog_Create[] = { &wxluatype_wxDialog, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDialog_Create(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDialog_Create[1] = {{ wxLua_wxDialog_Create, WXLUAMETHOD_METHOD, 4, 8, s_wxluatypeArray_wxLua_wxDialog_Create }};
-//     bool Create(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE, const wxString& name = "wxDialog" );
+//     bool Create(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE, const wxString& name = "wxDialog");
 static int LUACALL wxLua_wxDialog_Create(lua_State *L)
 {
     // get number of arguments
@@ -76,7 +76,7 @@ static int LUACALL wxLua_wxDialog_Create(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDialog_CreateButtonSizer[] = { &wxluatype_wxDialog, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDialog_CreateButtonSizer(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDialog_CreateButtonSizer[1] = {{ wxLua_wxDialog_CreateButtonSizer, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDialog_CreateButtonSizer }};
-//     wxUSE_BUTTON wxSizer* CreateButtonSizer(long flags );
+//     wxUSE_BUTTON wxSizer* CreateButtonSizer(long flags);
 static int LUACALL wxLua_wxDialog_CreateButtonSizer(lua_State *L)
 {
     // long flags
@@ -97,7 +97,7 @@ static int LUACALL wxLua_wxDialog_CreateButtonSizer(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDialog_CreateSeparatedButtonSizer[] = { &wxluatype_wxDialog, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDialog_CreateSeparatedButtonSizer(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDialog_CreateSeparatedButtonSizer[1] = {{ wxLua_wxDialog_CreateSeparatedButtonSizer, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDialog_CreateSeparatedButtonSizer }};
-//     %wxchkver_2_8&&wxUSE_BUTTON wxSizer *CreateSeparatedButtonSizer(long flags );
+//     %wxchkver_2_8&&wxUSE_BUTTON wxSizer *CreateSeparatedButtonSizer(long flags);
 static int LUACALL wxLua_wxDialog_CreateSeparatedButtonSizer(lua_State *L)
 {
     // long flags
@@ -118,7 +118,7 @@ static int LUACALL wxLua_wxDialog_CreateSeparatedButtonSizer(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDialog_CreateStdDialogButtonSizer[] = { &wxluatype_wxDialog, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDialog_CreateStdDialogButtonSizer(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDialog_CreateStdDialogButtonSizer[1] = {{ wxLua_wxDialog_CreateStdDialogButtonSizer, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDialog_CreateStdDialogButtonSizer }};
-//     wxUSE_BUTTON wxStdDialogButtonSizer* CreateStdDialogButtonSizer(long flags );
+//     wxUSE_BUTTON wxStdDialogButtonSizer* CreateStdDialogButtonSizer(long flags);
 static int LUACALL wxLua_wxDialog_CreateStdDialogButtonSizer(lua_State *L)
 {
     // long flags
@@ -139,7 +139,7 @@ static int LUACALL wxLua_wxDialog_CreateStdDialogButtonSizer(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDialog_CreateTextSizer[] = { &wxluatype_wxDialog, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDialog_CreateTextSizer(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDialog_CreateTextSizer[1] = {{ wxLua_wxDialog_CreateTextSizer, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDialog_CreateTextSizer }};
-//     wxUSE_STATTEXT wxSizer *CreateTextSizer( const wxString &message );
+//     wxUSE_STATTEXT wxSizer *CreateTextSizer(const wxString &message);
 static int LUACALL wxLua_wxDialog_CreateTextSizer(lua_State *L)
 {
     // const wxString message
@@ -159,7 +159,7 @@ static int LUACALL wxLua_wxDialog_CreateTextSizer(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDialog_EndModal[] = { &wxluatype_wxDialog, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDialog_EndModal(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDialog_EndModal[1] = {{ wxLua_wxDialog_EndModal, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDialog_EndModal }};
-//     void EndModal(int retCode );
+//     void EndModal(int retCode);
 static int LUACALL wxLua_wxDialog_EndModal(lua_State *L)
 {
     // int retCode
@@ -175,7 +175,7 @@ static int LUACALL wxLua_wxDialog_EndModal(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDialog_GetReturnCode[] = { &wxluatype_wxDialog, NULL };
 static int LUACALL wxLua_wxDialog_GetReturnCode(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDialog_GetReturnCode[1] = {{ wxLua_wxDialog_GetReturnCode, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDialog_GetReturnCode }};
-//     int GetReturnCode( );
+//     int GetReturnCode();
 static int LUACALL wxLua_wxDialog_GetReturnCode(lua_State *L)
 {
     // get this
@@ -207,7 +207,7 @@ static int LUACALL wxLua_wxDialog_IsModal(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDialog_SetReturnCode[] = { &wxluatype_wxDialog, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDialog_SetReturnCode(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDialog_SetReturnCode[1] = {{ wxLua_wxDialog_SetReturnCode, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDialog_SetReturnCode }};
-//     void SetReturnCode(int retCode );
+//     void SetReturnCode(int retCode);
 static int LUACALL wxLua_wxDialog_SetReturnCode(lua_State *L)
 {
     // int retCode
@@ -223,7 +223,7 @@ static int LUACALL wxLua_wxDialog_SetReturnCode(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDialog_ShowModal[] = { &wxluatype_wxDialog, NULL };
 static int LUACALL wxLua_wxDialog_ShowModal(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDialog_ShowModal[1] = {{ wxLua_wxDialog_ShowModal, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDialog_ShowModal }};
-//     int ShowModal( );
+//     int ShowModal();
 static int LUACALL wxLua_wxDialog_ShowModal(lua_State *L)
 {
     // get this
@@ -241,7 +241,7 @@ static int LUACALL wxLua_wxDialog_ShowModal(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDialog_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDialog_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDialog_constructor1[1] = {{ wxLua_wxDialog_constructor1, WXLUAMETHOD_CONSTRUCTOR, 3, 7, s_wxluatypeArray_wxLua_wxDialog_constructor1 }};
-//     wxDialog(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE, const wxString& name = "wxDialog" );
+//     wxDialog(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE, const wxString& name = "wxDialog");
 static int LUACALL wxLua_wxDialog_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -274,7 +274,7 @@ static int LUACALL wxLua_wxDialog_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxDialog_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDialog_constructor[1] = {{ wxLua_wxDialog_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxDialog( );
+//     wxDialog();
 static int LUACALL wxLua_wxDialog_constructor(lua_State *L)
 {
     // call constructor
@@ -361,7 +361,7 @@ int wxluatype_wxColourDialog = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColourDialog_GetColourData[] = { &wxluatype_wxColourDialog, NULL };
 static int LUACALL wxLua_wxColourDialog_GetColourData(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourDialog_GetColourData[1] = {{ wxLua_wxColourDialog_GetColourData, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxColourDialog_GetColourData }};
-//     wxColourData& GetColourData( );
+//     wxColourData& GetColourData();
 static int LUACALL wxLua_wxColourDialog_GetColourData(lua_State *L)
 {
     // get this
@@ -377,7 +377,7 @@ static int LUACALL wxLua_wxColourDialog_GetColourData(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColourDialog_constructor[] = { &wxluatype_wxWindow, &wxluatype_wxColourData, NULL };
 static int LUACALL wxLua_wxColourDialog_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourDialog_constructor[1] = {{ wxLua_wxColourDialog_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxColourDialog_constructor }};
-//     wxColourDialog(wxWindow* parent, wxColourData* data = NULL );
+//     wxColourDialog(wxWindow* parent, wxColourData* data = NULL);
 static int LUACALL wxLua_wxColourDialog_constructor(lua_State *L)
 {
     // get number of arguments
@@ -489,7 +489,7 @@ static int LUACALL wxLua_wxColourData_GetCustomColour(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColourData_SetChooseFull[] = { &wxluatype_wxColourData, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxColourData_SetChooseFull(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourData_SetChooseFull[1] = {{ wxLua_wxColourData_SetChooseFull, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxColourData_SetChooseFull }};
-//     void SetChooseFull(bool flag );
+//     void SetChooseFull(bool flag);
 static int LUACALL wxLua_wxColourData_SetChooseFull(lua_State *L)
 {
     // bool flag
@@ -507,7 +507,7 @@ static int LUACALL wxLua_wxColourData_SetChooseFull(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColourData_SetColour[] = { &wxluatype_wxColourData, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxColourData_SetColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourData_SetColour[1] = {{ wxLua_wxColourData_SetColour, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxColourData_SetColour }};
-//     void SetColour(wxColour &colour );
+//     void SetColour(wxColour &colour);
 static int LUACALL wxLua_wxColourData_SetColour(lua_State *L)
 {
     // wxColour colour
@@ -523,7 +523,7 @@ static int LUACALL wxLua_wxColourData_SetColour(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColourData_SetCustomColour[] = { &wxluatype_wxColourData, &wxluatype_TNUMBER, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxColourData_SetCustomColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourData_SetCustomColour[1] = {{ wxLua_wxColourData_SetCustomColour, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxColourData_SetCustomColour }};
-//     void SetCustomColour(int i, wxColour &colour );
+//     void SetCustomColour(int i, wxColour &colour);
 static int LUACALL wxLua_wxColourData_SetCustomColour(lua_State *L)
 {
     // wxColour colour
@@ -546,7 +546,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourData_delete[1] = {{ wxlua_userda
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColourData_constructor1[] = { &wxluatype_wxColourData, NULL };
 static int LUACALL wxLua_wxColourData_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourData_constructor1[1] = {{ wxLua_wxColourData_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxColourData_constructor1 }};
-//     wxColourData(const wxColourData& cData );
+//     wxColourData(const wxColourData& cData);
 static int LUACALL wxLua_wxColourData_constructor1(lua_State *L)
 {
     // const wxColourData cData
@@ -563,7 +563,7 @@ static int LUACALL wxLua_wxColourData_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxColourData_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourData_constructor[1] = {{ wxLua_wxColourData_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxColourData( );
+//     wxColourData();
 static int LUACALL wxLua_wxColourData_constructor(lua_State *L)
 {
     // call constructor
@@ -789,7 +789,7 @@ static int LUACALL wxLua_wxFileDialog_GetWildcard(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileDialog_SetDirectory[] = { &wxluatype_wxFileDialog, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFileDialog_SetDirectory(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDialog_SetDirectory[1] = {{ wxLua_wxFileDialog_SetDirectory, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileDialog_SetDirectory }};
-//     void SetDirectory(const wxString& directory );
+//     void SetDirectory(const wxString& directory);
 static int LUACALL wxLua_wxFileDialog_SetDirectory(lua_State *L)
 {
     // const wxString directory
@@ -805,7 +805,7 @@ static int LUACALL wxLua_wxFileDialog_SetDirectory(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileDialog_SetFilename[] = { &wxluatype_wxFileDialog, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFileDialog_SetFilename(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDialog_SetFilename[1] = {{ wxLua_wxFileDialog_SetFilename, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileDialog_SetFilename }};
-//     void SetFilename(const wxString& setfilename );
+//     void SetFilename(const wxString& setfilename);
 static int LUACALL wxLua_wxFileDialog_SetFilename(lua_State *L)
 {
     // const wxString setfilename
@@ -821,7 +821,7 @@ static int LUACALL wxLua_wxFileDialog_SetFilename(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileDialog_SetFilterIndex[] = { &wxluatype_wxFileDialog, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxFileDialog_SetFilterIndex(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDialog_SetFilterIndex[1] = {{ wxLua_wxFileDialog_SetFilterIndex, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileDialog_SetFilterIndex }};
-//     void SetFilterIndex(int filterIndex );
+//     void SetFilterIndex(int filterIndex);
 static int LUACALL wxLua_wxFileDialog_SetFilterIndex(lua_State *L)
 {
     // int filterIndex
@@ -837,7 +837,7 @@ static int LUACALL wxLua_wxFileDialog_SetFilterIndex(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileDialog_SetMessage[] = { &wxluatype_wxFileDialog, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFileDialog_SetMessage(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDialog_SetMessage[1] = {{ wxLua_wxFileDialog_SetMessage, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileDialog_SetMessage }};
-//     void SetMessage(const wxString& message );
+//     void SetMessage(const wxString& message);
 static int LUACALL wxLua_wxFileDialog_SetMessage(lua_State *L)
 {
     // const wxString message
@@ -853,7 +853,7 @@ static int LUACALL wxLua_wxFileDialog_SetMessage(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileDialog_SetPath[] = { &wxluatype_wxFileDialog, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFileDialog_SetPath(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDialog_SetPath[1] = {{ wxLua_wxFileDialog_SetPath, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileDialog_SetPath }};
-//     void SetPath(const wxString& path );
+//     void SetPath(const wxString& path);
 static int LUACALL wxLua_wxFileDialog_SetPath(lua_State *L)
 {
     // const wxString path
@@ -871,7 +871,7 @@ static int LUACALL wxLua_wxFileDialog_SetPath(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileDialog_SetStyle[] = { &wxluatype_wxFileDialog, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxFileDialog_SetStyle(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDialog_SetStyle[1] = {{ wxLua_wxFileDialog_SetStyle, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileDialog_SetStyle }};
-//     !%wxchkver_2_8 void SetStyle(long style );
+//     !%wxchkver_2_8 void SetStyle(long style);
 static int LUACALL wxLua_wxFileDialog_SetStyle(lua_State *L)
 {
     // long style
@@ -889,7 +889,7 @@ static int LUACALL wxLua_wxFileDialog_SetStyle(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileDialog_SetWildcard[] = { &wxluatype_wxFileDialog, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFileDialog_SetWildcard(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDialog_SetWildcard[1] = {{ wxLua_wxFileDialog_SetWildcard, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFileDialog_SetWildcard }};
-//     void SetWildcard(const wxString& wildCard );
+//     void SetWildcard(const wxString& wildCard);
 static int LUACALL wxLua_wxFileDialog_SetWildcard(lua_State *L)
 {
     // const wxString wildCard
@@ -907,7 +907,7 @@ static int LUACALL wxLua_wxFileDialog_SetWildcard(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileDialog_constructor[] = { &wxluatype_wxWindow, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFileDialog_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDialog_constructor[1] = {{ wxLua_wxFileDialog_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 9, s_wxluatypeArray_wxLua_wxFileDialog_constructor }};
-//     %not_overload %wxchkver_2_8 wxFileDialog(wxWindow *parent, const wxString& message = wxFileSelectorPromptStr, const wxString& defaultDir = "", const wxString& defaultFile = "", const wxString& wildCard = wxFileSelectorDefaultWildcardStr, long style = wxFD_DEFAULT_STYLE, const wxPoint& pos = wxDefaultPosition, const wxSize& sz = wxDefaultSize, const wxString& name = "wxFileDialog" );
+//     %not_overload %wxchkver_2_8 wxFileDialog(wxWindow *parent, const wxString& message = wxFileSelectorPromptStr, const wxString& defaultDir = "", const wxString& defaultFile = "", const wxString& wildCard = wxFileSelectorDefaultWildcardStr, long style = wxFD_DEFAULT_STYLE, const wxPoint& pos = wxDefaultPosition, const wxSize& sz = wxDefaultSize, const wxString& name = "wxFileDialog");
 static int LUACALL wxLua_wxFileDialog_constructor(lua_State *L)
 {
     // get number of arguments
@@ -946,7 +946,7 @@ static int LUACALL wxLua_wxFileDialog_constructor(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileDialog_constructor[] = { &wxluatype_wxWindow, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_wxPoint, NULL };
 static int LUACALL wxLua_wxFileDialog_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileDialog_constructor[1] = {{ wxLua_wxFileDialog_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 7, s_wxluatypeArray_wxLua_wxFileDialog_constructor }};
-//     %not_overload !%wxchkver_2_8 wxFileDialog(wxWindow* parent, const wxString& message = "Choose a file", const wxString& defaultDir = "", const wxString& defaultFile = "", const wxString& wildcard = "*.*", long style = 0, const wxPoint& pos = wxDefaultPosition );
+//     %not_overload !%wxchkver_2_8 wxFileDialog(wxWindow* parent, const wxString& message = "Choose a file", const wxString& defaultDir = "", const wxString& defaultFile = "", const wxString& wildcard = "*.*", long style = 0, const wxPoint& pos = wxDefaultPosition);
 static int LUACALL wxLua_wxFileDialog_constructor(lua_State *L)
 {
     // get number of arguments
@@ -1088,7 +1088,7 @@ static int LUACALL wxLua_wxDirDialog_GetStyle(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDirDialog_SetMessage[] = { &wxluatype_wxDirDialog, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDirDialog_SetMessage(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDirDialog_SetMessage[1] = {{ wxLua_wxDirDialog_SetMessage, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDirDialog_SetMessage }};
-//     void SetMessage(const wxString& message );
+//     void SetMessage(const wxString& message);
 static int LUACALL wxLua_wxDirDialog_SetMessage(lua_State *L)
 {
     // const wxString message
@@ -1104,7 +1104,7 @@ static int LUACALL wxLua_wxDirDialog_SetMessage(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDirDialog_SetPath[] = { &wxluatype_wxDirDialog, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxDirDialog_SetPath(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDirDialog_SetPath[1] = {{ wxLua_wxDirDialog_SetPath, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDirDialog_SetPath }};
-//     void SetPath(const wxString& path );
+//     void SetPath(const wxString& path);
 static int LUACALL wxLua_wxDirDialog_SetPath(lua_State *L)
 {
     // const wxString path
@@ -1122,7 +1122,7 @@ static int LUACALL wxLua_wxDirDialog_SetPath(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDirDialog_SetStyle[] = { &wxluatype_wxDirDialog, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDirDialog_SetStyle(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDirDialog_SetStyle[1] = {{ wxLua_wxDirDialog_SetStyle, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDirDialog_SetStyle }};
-//     !%wxchkver_2_8 void SetStyle(long style );
+//     !%wxchkver_2_8 void SetStyle(long style);
 static int LUACALL wxLua_wxDirDialog_SetStyle(lua_State *L)
 {
     // long style
@@ -1141,7 +1141,7 @@ static int LUACALL wxLua_wxDirDialog_SetStyle(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDirDialog_constructor[] = { &wxluatype_wxWindow, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_wxPoint, NULL };
 static int LUACALL wxLua_wxDirDialog_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDirDialog_constructor[1] = {{ wxLua_wxDirDialog_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 5, s_wxluatypeArray_wxLua_wxDirDialog_constructor }};
-//     wxDirDialog(wxWindow* parent, const wxString& message = "Choose a directory", const wxString& defaultPath = "", long style = 0, const wxPoint& pos = wxDefaultPosition );
+//     wxDirDialog(wxWindow* parent, const wxString& message = "Choose a directory", const wxString& defaultPath = "", long style = 0, const wxPoint& pos = wxDefaultPosition);
 static int LUACALL wxLua_wxDirDialog_constructor(lua_State *L)
 {
     // get number of arguments
@@ -1641,7 +1641,7 @@ static int LUACALL wxLua_wxMessageDialog_SetYesNoLabels(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMessageDialog_constructor[] = { &wxluatype_wxWindow, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_wxPoint, NULL };
 static int LUACALL wxLua_wxMessageDialog_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMessageDialog_constructor[1] = {{ wxLua_wxMessageDialog_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 5, s_wxluatypeArray_wxLua_wxMessageDialog_constructor }};
-//     wxMessageDialog(wxWindow* parent, const wxString& message, const wxString& caption = "Message box", long style = wxOK | wxCANCEL | wxCENTRE, const wxPoint& pos = wxDefaultPosition );
+//     wxMessageDialog(wxWindow* parent, const wxString& message, const wxString& caption = "Message box", long style = wxOK | wxCANCEL | wxCENTRE, const wxPoint& pos = wxDefaultPosition);
 static int LUACALL wxLua_wxMessageDialog_constructor(lua_State *L)
 {
     // get number of arguments
@@ -1858,7 +1858,7 @@ static int LUACALL wxLua_wxMultiChoiceDialog_SetSelections(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMultiChoiceDialog_constructor[] = { &wxluatype_wxWindow, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxArrayString, &wxluatype_TNUMBER, &wxluatype_wxPoint, NULL };
 static int LUACALL wxLua_wxMultiChoiceDialog_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMultiChoiceDialog_constructor[1] = {{ wxLua_wxMultiChoiceDialog_constructor, WXLUAMETHOD_CONSTRUCTOR, 4, 6, s_wxluatypeArray_wxLua_wxMultiChoiceDialog_constructor }};
-//     wxMultiChoiceDialog(wxWindow* parent, const wxString& message, const wxString& caption, const wxArrayString& choices, long style = wxCHOICEDLG_STYLE, const wxPoint& pos = wxDefaultPosition );
+//     wxMultiChoiceDialog(wxWindow* parent, const wxString& message, const wxString& caption, const wxArrayString& choices, long style = wxCHOICEDLG_STYLE, const wxPoint& pos = wxDefaultPosition);
 static int LUACALL wxLua_wxMultiChoiceDialog_constructor(lua_State *L)
 {
     // get number of arguments
@@ -2060,7 +2060,7 @@ static int LUACALL wxLua_wxTextEntryDialog_GetValue(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTextEntryDialog_SetValue[] = { &wxluatype_wxTextEntryDialog, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxTextEntryDialog_SetValue(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextEntryDialog_SetValue[1] = {{ wxLua_wxTextEntryDialog_SetValue, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTextEntryDialog_SetValue }};
-//     void SetValue(const wxString& value );
+//     void SetValue(const wxString& value);
 static int LUACALL wxLua_wxTextEntryDialog_SetValue(lua_State *L)
 {
     // const wxString value
@@ -2078,7 +2078,7 @@ static int LUACALL wxLua_wxTextEntryDialog_SetValue(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTextEntryDialog_constructor[] = { &wxluatype_wxWindow, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_wxPoint, NULL };
 static int LUACALL wxLua_wxTextEntryDialog_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextEntryDialog_constructor[1] = {{ wxLua_wxTextEntryDialog_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 6, s_wxluatypeArray_wxLua_wxTextEntryDialog_constructor }};
-//     wxTextEntryDialog(wxWindow* parent, const wxString& message, const wxString& caption = "Please enter text", const wxString& defaultValue = "", long style = wxOK | wxCANCEL | wxCENTRE, const wxPoint& pos = wxDefaultPosition );
+//     wxTextEntryDialog(wxWindow* parent, const wxString& message, const wxString& caption = "Please enter text", const wxString& defaultValue = "", long style = wxOK | wxCANCEL | wxCENTRE, const wxPoint& pos = wxDefaultPosition);
 static int LUACALL wxLua_wxTextEntryDialog_constructor(lua_State *L)
 {
     // get number of arguments
@@ -2144,7 +2144,7 @@ int wxluatype_wxPasswordEntryDialog = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPasswordEntryDialog_constructor[] = { &wxluatype_wxWindow, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_wxPoint, NULL };
 static int LUACALL wxLua_wxPasswordEntryDialog_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPasswordEntryDialog_constructor[1] = {{ wxLua_wxPasswordEntryDialog_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 6, s_wxluatypeArray_wxLua_wxPasswordEntryDialog_constructor }};
-//     wxPasswordEntryDialog(wxWindow *parent, const wxString& message, const wxString& caption = wxGetPasswordFromUserPromptStr, const wxString& value = "", long style = wxTextEntryDialogStyle, const wxPoint& pos = wxDefaultPosition );
+//     wxPasswordEntryDialog(wxWindow *parent, const wxString& message, const wxString& caption = wxGetPasswordFromUserPromptStr, const wxString& value = "", long style = wxTextEntryDialogStyle, const wxPoint& pos = wxDefaultPosition);
 static int LUACALL wxLua_wxPasswordEntryDialog_constructor(lua_State *L)
 {
     // get number of arguments
@@ -2206,7 +2206,7 @@ int wxluatype_wxFontDialog = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontDialog_GetFontData[] = { &wxluatype_wxFontDialog, NULL };
 static int LUACALL wxLua_wxFontDialog_GetFontData(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontDialog_GetFontData[1] = {{ wxLua_wxFontDialog_GetFontData, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFontDialog_GetFontData }};
-//     wxFontData& GetFontData( );
+//     wxFontData& GetFontData();
 static int LUACALL wxLua_wxFontDialog_GetFontData(lua_State *L)
 {
     // get this
@@ -2222,7 +2222,7 @@ static int LUACALL wxLua_wxFontDialog_GetFontData(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontDialog_constructor[] = { &wxluatype_wxWindow, &wxluatype_wxFontData, NULL };
 static int LUACALL wxLua_wxFontDialog_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontDialog_constructor[1] = {{ wxLua_wxFontDialog_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxFontDialog_constructor }};
-//     wxFontDialog(wxWindow* parent, const wxFontData& data );
+//     wxFontDialog(wxWindow* parent, const wxFontData& data);
 static int LUACALL wxLua_wxFontDialog_constructor(lua_State *L)
 {
     // const wxFontData data
@@ -2272,7 +2272,7 @@ int wxluatype_wxFontData = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontData_EnableEffects[] = { &wxluatype_wxFontData, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxFontData_EnableEffects(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontData_EnableEffects[1] = {{ wxLua_wxFontData_EnableEffects, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFontData_EnableEffects }};
-//     void EnableEffects(bool enable );
+//     void EnableEffects(bool enable);
 static int LUACALL wxLua_wxFontData_EnableEffects(lua_State *L)
 {
     // bool enable
@@ -2288,7 +2288,7 @@ static int LUACALL wxLua_wxFontData_EnableEffects(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontData_GetAllowSymbols[] = { &wxluatype_wxFontData, NULL };
 static int LUACALL wxLua_wxFontData_GetAllowSymbols(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontData_GetAllowSymbols[1] = {{ wxLua_wxFontData_GetAllowSymbols, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFontData_GetAllowSymbols }};
-//     bool GetAllowSymbols( );
+//     bool GetAllowSymbols();
 static int LUACALL wxLua_wxFontData_GetAllowSymbols(lua_State *L)
 {
     // get this
@@ -2306,7 +2306,7 @@ static int LUACALL wxLua_wxFontData_GetAllowSymbols(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontData_GetChosenFont[] = { &wxluatype_wxFontData, NULL };
 static int LUACALL wxLua_wxFontData_GetChosenFont(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontData_GetChosenFont[1] = {{ wxLua_wxFontData_GetChosenFont, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFontData_GetChosenFont }};
-//     wxFont GetChosenFont( );
+//     wxFont GetChosenFont();
 static int LUACALL wxLua_wxFontData_GetChosenFont(lua_State *L)
 {
     // get this
@@ -2328,7 +2328,7 @@ static int LUACALL wxLua_wxFontData_GetChosenFont(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontData_GetColour[] = { &wxluatype_wxFontData, NULL };
 static int LUACALL wxLua_wxFontData_GetColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontData_GetColour[1] = {{ wxLua_wxFontData_GetColour, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFontData_GetColour }};
-//     wxColour GetColour( );
+//     wxColour GetColour();
 static int LUACALL wxLua_wxFontData_GetColour(lua_State *L)
 {
     // get this
@@ -2349,7 +2349,7 @@ static int LUACALL wxLua_wxFontData_GetColour(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontData_GetEnableEffects[] = { &wxluatype_wxFontData, NULL };
 static int LUACALL wxLua_wxFontData_GetEnableEffects(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontData_GetEnableEffects[1] = {{ wxLua_wxFontData_GetEnableEffects, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFontData_GetEnableEffects }};
-//     bool GetEnableEffects( );
+//     bool GetEnableEffects();
 static int LUACALL wxLua_wxFontData_GetEnableEffects(lua_State *L)
 {
     // get this
@@ -2367,7 +2367,7 @@ static int LUACALL wxLua_wxFontData_GetEnableEffects(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontData_GetInitialFont[] = { &wxluatype_wxFontData, NULL };
 static int LUACALL wxLua_wxFontData_GetInitialFont(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontData_GetInitialFont[1] = {{ wxLua_wxFontData_GetInitialFont, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFontData_GetInitialFont }};
-//     wxFont GetInitialFont( );
+//     wxFont GetInitialFont();
 static int LUACALL wxLua_wxFontData_GetInitialFont(lua_State *L)
 {
     // get this
@@ -2388,7 +2388,7 @@ static int LUACALL wxLua_wxFontData_GetInitialFont(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontData_GetShowHelp[] = { &wxluatype_wxFontData, NULL };
 static int LUACALL wxLua_wxFontData_GetShowHelp(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontData_GetShowHelp[1] = {{ wxLua_wxFontData_GetShowHelp, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFontData_GetShowHelp }};
-//     bool GetShowHelp( );
+//     bool GetShowHelp();
 static int LUACALL wxLua_wxFontData_GetShowHelp(lua_State *L)
 {
     // get this
@@ -2404,7 +2404,7 @@ static int LUACALL wxLua_wxFontData_GetShowHelp(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontData_SetAllowSymbols[] = { &wxluatype_wxFontData, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxFontData_SetAllowSymbols(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontData_SetAllowSymbols[1] = {{ wxLua_wxFontData_SetAllowSymbols, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFontData_SetAllowSymbols }};
-//     void SetAllowSymbols(bool allowSymbols );
+//     void SetAllowSymbols(bool allowSymbols);
 static int LUACALL wxLua_wxFontData_SetAllowSymbols(lua_State *L)
 {
     // bool allowSymbols
@@ -2422,7 +2422,7 @@ static int LUACALL wxLua_wxFontData_SetAllowSymbols(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontData_SetChosenFont[] = { &wxluatype_wxFontData, &wxluatype_wxFont, NULL };
 static int LUACALL wxLua_wxFontData_SetChosenFont(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontData_SetChosenFont[1] = {{ wxLua_wxFontData_SetChosenFont, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFontData_SetChosenFont }};
-//     void SetChosenFont(const wxFont &font );
+//     void SetChosenFont(const wxFont &font);
 static int LUACALL wxLua_wxFontData_SetChosenFont(lua_State *L)
 {
     // const wxFont font
@@ -2441,7 +2441,7 @@ static int LUACALL wxLua_wxFontData_SetChosenFont(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontData_SetColour[] = { &wxluatype_wxFontData, &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxFontData_SetColour(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontData_SetColour[1] = {{ wxLua_wxFontData_SetColour, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFontData_SetColour }};
-//     void SetColour(const wxColour &colour );
+//     void SetColour(const wxColour &colour);
 static int LUACALL wxLua_wxFontData_SetColour(lua_State *L)
 {
     // const wxColour colour
@@ -2460,7 +2460,7 @@ static int LUACALL wxLua_wxFontData_SetColour(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontData_SetInitialFont[] = { &wxluatype_wxFontData, &wxluatype_wxFont, NULL };
 static int LUACALL wxLua_wxFontData_SetInitialFont(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontData_SetInitialFont[1] = {{ wxLua_wxFontData_SetInitialFont, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFontData_SetInitialFont }};
-//     void SetInitialFont(const wxFont &font );
+//     void SetInitialFont(const wxFont &font);
 static int LUACALL wxLua_wxFontData_SetInitialFont(lua_State *L)
 {
     // const wxFont font
@@ -2478,7 +2478,7 @@ static int LUACALL wxLua_wxFontData_SetInitialFont(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontData_SetRange[] = { &wxluatype_wxFontData, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxFontData_SetRange(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontData_SetRange[1] = {{ wxLua_wxFontData_SetRange, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxFontData_SetRange }};
-//     void SetRange(int minimum, int maximum );
+//     void SetRange(int minimum, int maximum);
 static int LUACALL wxLua_wxFontData_SetRange(lua_State *L)
 {
     // int maximum
@@ -2496,7 +2496,7 @@ static int LUACALL wxLua_wxFontData_SetRange(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontData_SetShowHelp[] = { &wxluatype_wxFontData, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxFontData_SetShowHelp(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontData_SetShowHelp[1] = {{ wxLua_wxFontData_SetShowHelp, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFontData_SetShowHelp }};
-//     void SetShowHelp(bool showHelp );
+//     void SetShowHelp(bool showHelp);
 static int LUACALL wxLua_wxFontData_SetShowHelp(lua_State *L)
 {
     // bool showHelp
@@ -2515,7 +2515,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontData_delete[1] = {{ wxlua_userdata
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontData_constructor1[] = { &wxluatype_wxFontData, NULL };
 static int LUACALL wxLua_wxFontData_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontData_constructor1[1] = {{ wxLua_wxFontData_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxFontData_constructor1 }};
-//     wxFontData(const wxFontData& data );
+//     wxFontData(const wxFontData& data);
 static int LUACALL wxLua_wxFontData_constructor1(lua_State *L)
 {
     // const wxFontData data
@@ -2532,7 +2532,7 @@ static int LUACALL wxLua_wxFontData_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxFontData_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontData_constructor[1] = {{ wxLua_wxFontData_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxFontData( );
+//     wxFontData();
 static int LUACALL wxLua_wxFontData_constructor(lua_State *L)
 {
     // call constructor
@@ -2626,7 +2626,7 @@ int wxluatype_wxFindReplaceDialog = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindReplaceDialog_Create[] = { &wxluatype_wxFindReplaceDialog, &wxluatype_wxWindow, &wxluatype_wxFindReplaceData, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxFindReplaceDialog_Create(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindReplaceDialog_Create[1] = {{ wxLua_wxFindReplaceDialog_Create, WXLUAMETHOD_METHOD, 4, 5, s_wxluatypeArray_wxLua_wxFindReplaceDialog_Create }};
-//     bool Create(wxWindow *parent, wxFindReplaceData *findData, const wxString &title, int style = 0 );
+//     bool Create(wxWindow *parent, wxFindReplaceData *findData, const wxString &title, int style = 0);
 static int LUACALL wxLua_wxFindReplaceDialog_Create(lua_State *L)
 {
     // get number of arguments
@@ -2652,7 +2652,7 @@ static int LUACALL wxLua_wxFindReplaceDialog_Create(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindReplaceDialog_GetData[] = { &wxluatype_wxFindReplaceDialog, NULL };
 static int LUACALL wxLua_wxFindReplaceDialog_GetData(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindReplaceDialog_GetData[1] = {{ wxLua_wxFindReplaceDialog_GetData, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFindReplaceDialog_GetData }};
-//     const wxFindReplaceData *GetData( );
+//     const wxFindReplaceData *GetData();
 static int LUACALL wxLua_wxFindReplaceDialog_GetData(lua_State *L)
 {
     // get this
@@ -2668,7 +2668,7 @@ static int LUACALL wxLua_wxFindReplaceDialog_GetData(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindReplaceDialog_SetData[] = { &wxluatype_wxFindReplaceDialog, &wxluatype_wxFindReplaceData, NULL };
 static int LUACALL wxLua_wxFindReplaceDialog_SetData(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindReplaceDialog_SetData[1] = {{ wxLua_wxFindReplaceDialog_SetData, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFindReplaceDialog_SetData }};
-//     void    SetData(wxFindReplaceData *findData );
+//     void    SetData(wxFindReplaceData *findData);
 static int LUACALL wxLua_wxFindReplaceDialog_SetData(lua_State *L)
 {
     // wxFindReplaceData findData
@@ -2684,7 +2684,7 @@ static int LUACALL wxLua_wxFindReplaceDialog_SetData(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindReplaceDialog_constructor1[] = { &wxluatype_wxWindow, &wxluatype_wxFindReplaceData, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxFindReplaceDialog_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindReplaceDialog_constructor1[1] = {{ wxLua_wxFindReplaceDialog_constructor1, WXLUAMETHOD_CONSTRUCTOR, 3, 4, s_wxluatypeArray_wxLua_wxFindReplaceDialog_constructor1 }};
-//     wxFindReplaceDialog(wxWindow *parent, wxFindReplaceData *findData, const wxString &title, int style = 0 );
+//     wxFindReplaceDialog(wxWindow *parent, wxFindReplaceData *findData, const wxString &title, int style = 0);
 static int LUACALL wxLua_wxFindReplaceDialog_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -2709,7 +2709,7 @@ static int LUACALL wxLua_wxFindReplaceDialog_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxFindReplaceDialog_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindReplaceDialog_constructor[1] = {{ wxLua_wxFindReplaceDialog_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxFindReplaceDialog( );
+//     wxFindReplaceDialog();
 static int LUACALL wxLua_wxFindReplaceDialog_constructor(lua_State *L)
 {
     // call constructor
@@ -2771,7 +2771,7 @@ int wxluatype_wxFindReplaceData = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindReplaceData_GetFindString[] = { &wxluatype_wxFindReplaceData, NULL };
 static int LUACALL wxLua_wxFindReplaceData_GetFindString(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindReplaceData_GetFindString[1] = {{ wxLua_wxFindReplaceData_GetFindString, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFindReplaceData_GetFindString }};
-//     wxString GetFindString( );
+//     wxString GetFindString();
 static int LUACALL wxLua_wxFindReplaceData_GetFindString(lua_State *L)
 {
     // get this
@@ -2787,7 +2787,7 @@ static int LUACALL wxLua_wxFindReplaceData_GetFindString(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindReplaceData_GetFlags[] = { &wxluatype_wxFindReplaceData, NULL };
 static int LUACALL wxLua_wxFindReplaceData_GetFlags(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindReplaceData_GetFlags[1] = {{ wxLua_wxFindReplaceData_GetFlags, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFindReplaceData_GetFlags }};
-//     int     GetFlags( );
+//     int     GetFlags();
 static int LUACALL wxLua_wxFindReplaceData_GetFlags(lua_State *L)
 {
     // get this
@@ -2803,7 +2803,7 @@ static int LUACALL wxLua_wxFindReplaceData_GetFlags(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindReplaceData_GetReplaceString[] = { &wxluatype_wxFindReplaceData, NULL };
 static int LUACALL wxLua_wxFindReplaceData_GetReplaceString(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindReplaceData_GetReplaceString[1] = {{ wxLua_wxFindReplaceData_GetReplaceString, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFindReplaceData_GetReplaceString }};
-//     wxString GetReplaceString( );
+//     wxString GetReplaceString();
 static int LUACALL wxLua_wxFindReplaceData_GetReplaceString(lua_State *L)
 {
     // get this
@@ -2819,7 +2819,7 @@ static int LUACALL wxLua_wxFindReplaceData_GetReplaceString(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindReplaceData_SetFindString[] = { &wxluatype_wxFindReplaceData, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFindReplaceData_SetFindString(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindReplaceData_SetFindString[1] = {{ wxLua_wxFindReplaceData_SetFindString, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFindReplaceData_SetFindString }};
-//     void    SetFindString(const wxString& string );
+//     void    SetFindString(const wxString& string);
 static int LUACALL wxLua_wxFindReplaceData_SetFindString(lua_State *L)
 {
     // const wxString string
@@ -2835,7 +2835,7 @@ static int LUACALL wxLua_wxFindReplaceData_SetFindString(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindReplaceData_SetFlags[] = { &wxluatype_wxFindReplaceData, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxFindReplaceData_SetFlags(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindReplaceData_SetFlags[1] = {{ wxLua_wxFindReplaceData_SetFlags, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFindReplaceData_SetFlags }};
-//     void    SetFlags(int flags );
+//     void    SetFlags(int flags);
 static int LUACALL wxLua_wxFindReplaceData_SetFlags(lua_State *L)
 {
     // int flags
@@ -2851,7 +2851,7 @@ static int LUACALL wxLua_wxFindReplaceData_SetFlags(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindReplaceData_SetReplaceString[] = { &wxluatype_wxFindReplaceData, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFindReplaceData_SetReplaceString(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindReplaceData_SetReplaceString[1] = {{ wxLua_wxFindReplaceData_SetReplaceString, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFindReplaceData_SetReplaceString }};
-//     void    SetReplaceString(const wxString& string );
+//     void    SetReplaceString(const wxString& string);
 static int LUACALL wxLua_wxFindReplaceData_SetReplaceString(lua_State *L)
 {
     // const wxString string
@@ -2870,7 +2870,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindReplaceData_delete[1] = {{ wxlua_u
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindReplaceData_constructor[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxFindReplaceData_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindReplaceData_constructor[1] = {{ wxLua_wxFindReplaceData_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 1, s_wxluatypeArray_wxLua_wxFindReplaceData_constructor }};
-//     wxFindReplaceData(int flags = 0 );
+//     wxFindReplaceData(int flags = 0);
 static int LUACALL wxLua_wxFindReplaceData_constructor(lua_State *L)
 {
     // get number of arguments
@@ -2926,7 +2926,7 @@ int wxluatype_wxFindDialogEvent = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindDialogEvent_GetDialog[] = { &wxluatype_wxFindDialogEvent, NULL };
 static int LUACALL wxLua_wxFindDialogEvent_GetDialog(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindDialogEvent_GetDialog[1] = {{ wxLua_wxFindDialogEvent_GetDialog, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFindDialogEvent_GetDialog }};
-//     wxFindReplaceDialog *GetDialog( );
+//     wxFindReplaceDialog *GetDialog();
 static int LUACALL wxLua_wxFindDialogEvent_GetDialog(lua_State *L)
 {
     // get this
@@ -2942,7 +2942,7 @@ static int LUACALL wxLua_wxFindDialogEvent_GetDialog(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindDialogEvent_GetFindString[] = { &wxluatype_wxFindDialogEvent, NULL };
 static int LUACALL wxLua_wxFindDialogEvent_GetFindString(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindDialogEvent_GetFindString[1] = {{ wxLua_wxFindDialogEvent_GetFindString, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFindDialogEvent_GetFindString }};
-//     wxString GetFindString( );
+//     wxString GetFindString();
 static int LUACALL wxLua_wxFindDialogEvent_GetFindString(lua_State *L)
 {
     // get this
@@ -2958,7 +2958,7 @@ static int LUACALL wxLua_wxFindDialogEvent_GetFindString(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindDialogEvent_GetFlags[] = { &wxluatype_wxFindDialogEvent, NULL };
 static int LUACALL wxLua_wxFindDialogEvent_GetFlags(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindDialogEvent_GetFlags[1] = {{ wxLua_wxFindDialogEvent_GetFlags, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFindDialogEvent_GetFlags }};
-//     int      GetFlags( );
+//     int      GetFlags();
 static int LUACALL wxLua_wxFindDialogEvent_GetFlags(lua_State *L)
 {
     // get this
@@ -2974,7 +2974,7 @@ static int LUACALL wxLua_wxFindDialogEvent_GetFlags(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindDialogEvent_GetReplaceString[] = { &wxluatype_wxFindDialogEvent, NULL };
 static int LUACALL wxLua_wxFindDialogEvent_GetReplaceString(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindDialogEvent_GetReplaceString[1] = {{ wxLua_wxFindDialogEvent_GetReplaceString, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFindDialogEvent_GetReplaceString }};
-//     wxString GetReplaceString( );
+//     wxString GetReplaceString();
 static int LUACALL wxLua_wxFindDialogEvent_GetReplaceString(lua_State *L)
 {
     // get this
@@ -2990,7 +2990,7 @@ static int LUACALL wxLua_wxFindDialogEvent_GetReplaceString(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindDialogEvent_SetFindString[] = { &wxluatype_wxFindDialogEvent, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFindDialogEvent_SetFindString(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindDialogEvent_SetFindString[1] = {{ wxLua_wxFindDialogEvent_SetFindString, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFindDialogEvent_SetFindString }};
-//     void     SetFindString(const wxString& str );
+//     void     SetFindString(const wxString& str);
 static int LUACALL wxLua_wxFindDialogEvent_SetFindString(lua_State *L)
 {
     // const wxString str
@@ -3006,7 +3006,7 @@ static int LUACALL wxLua_wxFindDialogEvent_SetFindString(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindDialogEvent_SetFlags[] = { &wxluatype_wxFindDialogEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxFindDialogEvent_SetFlags(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindDialogEvent_SetFlags[1] = {{ wxLua_wxFindDialogEvent_SetFlags, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFindDialogEvent_SetFlags }};
-//     void     SetFlags(int flags );
+//     void     SetFlags(int flags);
 static int LUACALL wxLua_wxFindDialogEvent_SetFlags(lua_State *L)
 {
     // int flags
@@ -3022,7 +3022,7 @@ static int LUACALL wxLua_wxFindDialogEvent_SetFlags(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindDialogEvent_SetReplaceString[] = { &wxluatype_wxFindDialogEvent, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFindDialogEvent_SetReplaceString(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindDialogEvent_SetReplaceString[1] = {{ wxLua_wxFindDialogEvent_SetReplaceString, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFindDialogEvent_SetReplaceString }};
-//     void     SetReplaceString(const wxString& str );
+//     void     SetReplaceString(const wxString& str);
 static int LUACALL wxLua_wxFindDialogEvent_SetReplaceString(lua_State *L)
 {
     // const wxString str
@@ -3041,7 +3041,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindDialogEvent_delete[1] = {{ wxlua_u
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFindDialogEvent_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxFindDialogEvent_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFindDialogEvent_constructor[1] = {{ wxLua_wxFindDialogEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxFindDialogEvent_constructor }};
-//     wxFindDialogEvent(wxEventType commandType = wxEVT_NULL, int id = 0 );
+//     wxFindDialogEvent(wxEventType commandType = wxEVT_NULL, int id = 0);
 static int LUACALL wxLua_wxFindDialogEvent_constructor(lua_State *L)
 {
     // get number of arguments
@@ -3100,7 +3100,7 @@ int wxluatype_wxProgressDialog = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProgressDialog_Resume[] = { &wxluatype_wxProgressDialog, NULL };
 static int LUACALL wxLua_wxProgressDialog_Resume(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxProgressDialog_Resume[1] = {{ wxLua_wxProgressDialog_Resume, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxProgressDialog_Resume }};
-//     void    Resume( );
+//     void    Resume();
 static int LUACALL wxLua_wxProgressDialog_Resume(lua_State *L)
 {
     // get this
@@ -3140,7 +3140,7 @@ static int LUACALL wxLua_wxProgressDialog_Update(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProgressDialog_constructor[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_wxWindow, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxProgressDialog_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxProgressDialog_constructor[1] = {{ wxLua_wxProgressDialog_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 5, s_wxluatypeArray_wxLua_wxProgressDialog_constructor }};
-//     wxProgressDialog(const wxString& title, const wxString& message, int maximum = 100, wxWindow* parent = NULL, int style = wxPD_AUTO_HIDE | wxPD_APP_MODAL );
+//     wxProgressDialog(const wxString& title, const wxString& message, int maximum = 100, wxWindow* parent = NULL, int style = wxPD_AUTO_HIDE | wxPD_APP_MODAL);
 static int LUACALL wxLua_wxProgressDialog_constructor(lua_State *L)
 {
     // get number of arguments

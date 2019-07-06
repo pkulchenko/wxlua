@@ -69,7 +69,7 @@ class wxButton : public wxAnyButton
 class wxBitmapButton : public wxAnyButton
 {
     wxBitmapButton();
-    wxBitmapButton( wxWindow* parent, wxWindowID id, const wxBitmap& bitmap, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxBU_AUTODRAW, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxBitmapButton");
+    wxBitmapButton(wxWindow* parent, wxWindowID id, const wxBitmap& bitmap, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxBU_AUTODRAW, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxBitmapButton");
     bool Create(wxWindow* parent, wxWindowID id, const wxBitmap& bitmap, const wxPoint& pos, const wxSize& size = wxDefaultSize, long style = wxBU_AUTODRAW, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxBitmapButton");
     %wxchkver_3_0_0 static wxBitmapButton* NewCloseButton(wxWindow* parent, wxWindowID winid);
     !%wxchkver_3_0_0 && %wxchkver_2_8 void SetBitmapHover(const wxBitmap& hover);
@@ -191,7 +191,7 @@ class wxItemContainer : public wxItemContainerImmutable
     int Append(const wxString& item, voidptr_long number); // C++ is (void *clientData) You can put a number here
     int Append(const wxString& item, wxClientData *clientData);
 
-    void AppendString( const wxString& item);
+    void AppendString(const wxString& item);
 
     void Append(const wxArrayString& strings);
 
@@ -1468,7 +1468,7 @@ class wxGenericDirCtrl : public wxControl
     void SetFilter(const wxString& filter);
     void SetFilterIndex(int n);
     void SetPath(const wxString& path);
-    void ShowHidden( bool show);
+    void ShowHidden(bool show);
     bool GetShowHidden();
 
     //wxTreeItemId FindChild(wxTreeItemId parentId, const wxString& path, bool& done);

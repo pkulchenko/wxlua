@@ -109,7 +109,7 @@ static int LUACALL wxLua_wxXmlResource_Get(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlResource_GetFlags[] = { &wxluatype_wxXmlResource, NULL };
 static int LUACALL wxLua_wxXmlResource_GetFlags(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlResource_GetFlags[1] = {{ wxLua_wxXmlResource_GetFlags, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlResource_GetFlags }};
-//     int GetFlags( );
+//     int GetFlags();
 static int LUACALL wxLua_wxXmlResource_GetFlags(lua_State *L)
 {
     // get this
@@ -455,7 +455,7 @@ static int LUACALL wxLua_wxXmlResource_Set(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlResource_SetDomain[] = { &wxluatype_wxXmlResource, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlResource_SetDomain(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlResource_SetDomain[1] = {{ wxLua_wxXmlResource_SetDomain, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlResource_SetDomain }};
-//     void SetDomain(const wxString& domain );
+//     void SetDomain(const wxString& domain);
 static int LUACALL wxLua_wxXmlResource_SetDomain(lua_State *L)
 {
     // const wxString domain
@@ -487,7 +487,7 @@ static int LUACALL wxLua_wxXmlResource_SetFlags(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlResource_Unload[] = { &wxluatype_wxXmlResource, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlResource_Unload(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlResource_Unload[1] = {{ wxLua_wxXmlResource_Unload, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlResource_Unload }};
-//     bool Unload(const wxString& filename );
+//     bool Unload(const wxString& filename);
 static int LUACALL wxLua_wxXmlResource_Unload(lua_State *L)
 {
     // const wxString filename

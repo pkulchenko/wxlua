@@ -17,20 +17,20 @@
 class wxClipboard : public wxObject
 {
    !%wxchkver_2_6 #define_pointer wxTheClipboard
-    %wxchkver_2_6 static wxClipboard *Get( );
+    %wxchkver_2_6 static wxClipboard *Get();
 
     // No constructor, use global clipboard from static Get() function only
 
-    bool AddData( %ungc wxDataObject *data );
-    void Clear( );
-    void Close( );
-    bool Flush( );
-    bool GetData( wxDataObject& data );
+    bool AddData(%ungc wxDataObject *data);
+    void Clear();
+    void Close();
+    bool Flush();
+    bool GetData(wxDataObject& data);
     bool IsOpened() const;
-    bool IsSupported( const wxDataFormat& format );
-    bool Open( );
-    bool SetData( %ungc wxDataObject *data );
-    void UsePrimarySelection( bool primary = true );
+    bool IsSupported(const wxDataFormat& format);
+    bool Open();
+    bool SetData(%ungc wxDataObject *data);
+    void UsePrimarySelection(bool primary = true);
 };
 
 // ---------------------------------------------------------------------------
@@ -39,7 +39,7 @@ class wxClipboard : public wxObject
 class %delete wxClipboardLocker
 {
     // NOTE: ALWAYS delete() this when done since Lua's gc may not delete it soon enough
-    wxClipboardLocker(wxClipboard *clipboard = NULL );
+    wxClipboardLocker(wxClipboard *clipboard = NULL);
 
     bool operator!() const;
 };
@@ -53,11 +53,11 @@ class %delete wxClipboardLocker
 
 class %delete wxClipboardTextEvent : public wxCommandEvent
 {
-    %wxEventType wxEVT_COMMAND_TEXT_COPY   // EVT_TEXT_COPY(winid, func );
-    %wxEventType wxEVT_COMMAND_TEXT_CUT    // EVT_TEXT_CUT(winid, func );
-    %wxEventType wxEVT_COMMAND_TEXT_PASTE  // EVT_TEXT_PASTE(winid, func );
+    %wxEventType wxEVT_COMMAND_TEXT_COPY   // EVT_TEXT_COPY(winid, func);
+    %wxEventType wxEVT_COMMAND_TEXT_CUT    // EVT_TEXT_CUT(winid, func);
+    %wxEventType wxEVT_COMMAND_TEXT_PASTE  // EVT_TEXT_PASTE(winid, func);
 
-    wxClipboardTextEvent(wxEventType type = wxEVT_NULL, wxWindowID winid = 0 );
+    wxClipboardTextEvent(wxEventType type = wxEVT_NULL, wxWindowID winid = 0);
 };
 
 #endif //%wxchkver_2_8
@@ -99,13 +99,13 @@ class %delete wxDataFormat
 {
     #define_object wxFormatInvalid
 
-    wxDataFormat(wxDataFormatId format = wxDF_INVALID );
-    wxDataFormat(const wxString &format );
+    wxDataFormat(wxDataFormatId format = wxDF_INVALID);
+    wxDataFormat(const wxString &format);
 
     wxString GetId() const;
     int GetType() const; // returns wxDataFormatId, but it's just an int and msw differs
-    void SetId(const wxString &format );
-    void SetType(wxDataFormatId format );
+    void SetId(const wxString &format);
+    void SetType(wxDataFormatId format);
 
     bool operator==(const wxDataFormat& format) const;
 };
@@ -123,11 +123,11 @@ class wxDataObject
 
     //wxDataObject() this is a base class, use simplified derived classes
 
-    // %override [Lua table of wxDataFormat objects] wxDataObject::GetAllFormats(wxDataObject::Direction dir = wxDataObject );
+    // %override [Lua table of wxDataFormat objects] wxDataObject::GetAllFormats(wxDataObject::Direction dir = wxDataObject);
     // C++ Func: virtual void GetAllFormats(wxDataFormat *formats, wxDataObject::Direction dir = wxDataObject::Get) const;
     virtual void GetAllFormats(wxDataObject::Direction dir = wxDataObject::Get) const;
 
-    // %override [bool, Lua string] wxDataObject::GetDataHere(const wxDataFormat& format );
+    // %override [bool, Lua string] wxDataObject::GetDataHere(const wxDataFormat& format);
     // C++ Func: virtual bool GetDataHere(const wxDataFormat& format, void *buf) const;
     virtual bool GetDataHere(const wxDataFormat& format) const;
 
@@ -135,9 +135,9 @@ class wxDataObject
     virtual int GetFormatCount(wxDataObject::Direction dir = wxDataObject::Get) const;
     virtual wxDataFormat GetPreferredFormat(wxDataObject::Direction dir = wxDataObject::Get) const;
 
-    // %override bool wxDataObject::SetData(const wxDataFormat& format, Lua string );
-    // C++ Func: virtual bool SetData(const wxDataFormat& format, int len, const void *buf );
-    virtual bool SetData(const wxDataFormat& format, const wxString& str );
+    // %override bool wxDataObject::SetData(const wxDataFormat& format, Lua string);
+    // C++ Func: virtual bool SetData(const wxDataFormat& format, int len, const void *buf);
+    virtual bool SetData(const wxDataFormat& format, const wxString& str);
 };
 
 // ---------------------------------------------------------------------------
@@ -145,10 +145,10 @@ class wxDataObject
 
 class %delete wxDataObjectSimple : public wxDataObject
 {
-    wxDataObjectSimple(const wxDataFormat& format = wxFormatInvalid );
+    wxDataObjectSimple(const wxDataFormat& format = wxFormatInvalid);
 
     const wxDataFormat& GetFormat() const;
-    void SetFormat(const wxDataFormat& format );
+    void SetFormat(const wxDataFormat& format);
 
     // This must be overridden in wxLuaDataObjectSimple, this function returns 0.
     virtual size_t GetDataSize() const;
@@ -157,7 +157,7 @@ class %delete wxDataObjectSimple : public wxDataObject
     virtual bool GetDataHere() const;
 
     // This must be overridden in wxLuaDataObjectSimple, this function returns false.
-    virtual bool SetData(const wxString& str );
+    virtual bool SetData(const wxString& str);
 };
 
 // ---------------------------------------------------------------------------
@@ -165,7 +165,7 @@ class %delete wxDataObjectSimple : public wxDataObject
 
 class %delete wxLuaDataObjectSimple : public wxDataObjectSimple
 {
-    wxLuaDataObjectSimple(const wxDataFormat& format = wxFormatInvalid );
+    wxLuaDataObjectSimple(const wxDataFormat& format = wxFormatInvalid);
 
     // The functions below are all virtual functions that you MUST override in Lua
     // for this class to work.
@@ -174,14 +174,14 @@ class %delete wxLuaDataObjectSimple : public wxDataObjectSimple
     //virtual size_t GetDataSize() const;
 
     // Create a Lua function that returns a [bool, Lua string (of exact length GetDataSize())].
-    // %override [bool, Lua string] wxLuaDataObjectSimple::GetDataHere( );
+    // %override [bool, Lua string] wxLuaDataObjectSimple::GetDataHere();
     // C++ Func: virtual bool GetDataHere(void *buf) const;
     //virtual bool GetDataHere() const;
 
     // Create a Lua function that takes a Lua string as the input data.
-    // %override bool wxLuaDataObjectSimple::SetData(Lua string );
-    // C++ Func: virtual bool SetData(size_t len, const void *buf );
-    //virtual bool SetData(const wxString& str );
+    // %override bool wxLuaDataObjectSimple::SetData(Lua string);
+    // C++ Func: virtual bool SetData(size_t len, const void *buf);
+    //virtual bool SetData(const wxString& str);
 };
 
 // ---------------------------------------------------------------------------
@@ -189,9 +189,9 @@ class %delete wxLuaDataObjectSimple : public wxDataObjectSimple
 
 class %delete wxDataObjectComposite : public wxDataObject
 {
-    wxDataObjectComposite( );
+    wxDataObjectComposite();
 
-    void Add(%ungc wxDataObjectSimple *dataObject, bool preferred = false );
+    void Add(%ungc wxDataObjectSimple *dataObject, bool preferred = false);
     %wxchkver_2_8 wxDataFormat GetReceivedFormat() const;
 };
 
@@ -200,9 +200,9 @@ class %delete wxDataObjectComposite : public wxDataObject
 
 class %delete wxFileDataObject : public wxDataObjectSimple
 {
-    wxFileDataObject( );
+    wxFileDataObject();
 
-    virtual void AddFile(const wxString& file );
+    virtual void AddFile(const wxString& file);
     wxArrayString GetFilenames() const;
 };
 
@@ -211,11 +211,11 @@ class %delete wxFileDataObject : public wxDataObjectSimple
 
 class %delete wxTextDataObject : public wxDataObjectSimple
 {
-    wxTextDataObject(const wxString& text = "" );
+    wxTextDataObject(const wxString& text = "");
 
     virtual size_t GetTextLength() const;
     virtual wxString GetText() const;
-    virtual void SetText(const wxString& text );
+    virtual void SetText(const wxString& text);
 };
 
 // ---------------------------------------------------------------------------
@@ -223,10 +223,10 @@ class %delete wxTextDataObject : public wxDataObjectSimple
 
 class %delete wxBitmapDataObject : public wxDataObjectSimple
 {
-    wxBitmapDataObject(const wxBitmap& bitmap = wxNullBitmap );
+    wxBitmapDataObject(const wxBitmap& bitmap = wxNullBitmap);
 
     virtual wxBitmap GetBitmap() const;
-    virtual void SetBitmap(const wxBitmap& bitmap );
+    virtual void SetBitmap(const wxBitmap& bitmap);
 };
 
 // ---------------------------------------------------------------------------
@@ -234,14 +234,14 @@ class %delete wxBitmapDataObject : public wxDataObjectSimple
 
 //class wxCustomDataObject : public wxDataObjectSimple
 //{
-//    wxCustomDataObject(const wxDataFormat& format = wxFormatInvalid );
+//    wxCustomDataObject(const wxDataFormat& format = wxFormatInvalid);
 //
-//    virtual void *Alloc(size_t size );
-//    virtual void Free( );
+//    virtual void *Alloc(size_t size);
+//    virtual void Free();
 //    virtual size_t GetSize() const;
 //    virtual void *GetData() const;
-//    virtual void SetData(size_t size, const void *data );
-//    virtual void TakeData( size_t size, void *data );
+//    virtual void SetData(size_t size, const void *data);
+//    virtual void TakeData(size_t size, void *data);
 //};
 
 // ---------------------------------------------------------------------------
@@ -251,10 +251,10 @@ class %delete wxBitmapDataObject : public wxDataObjectSimple
 
 class %delete wxURLDataObject : public wxTextDataObject
 {
-    wxURLDataObject(const wxString& url = "" );
+    wxURLDataObject(const wxString& url = "");
 
     wxString GetURL() const;
-    void SetURL(const wxString& url );
+    void SetURL(const wxString& url);
 };
 
 #endif //%wxchkver_2_8
@@ -285,25 +285,25 @@ enum wxDragResult
     wxDragCancel
 };
 
-bool wxIsDragResultOk(wxDragResult res );
+bool wxIsDragResultOk(wxDragResult res);
 
 class wxDropTarget
 {
     //wxDropTarget(wxDataObject* data = NULL) pure virtual functions in MSW
 
-    virtual bool GetData( );
+    virtual bool GetData();
 
-    //virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def );
-    //virtual bool OnDrop(wxCoord x, wxCoord y );
-    //virtual wxDragResult OnEnter(wxCoord x, wxCoord y, wxDragResult def );
-    //virtual wxDragResult OnDragOver(wxCoord x, wxCoord y, wxDragResult def );
-    //virtual void OnLeave( );
+    //virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
+    //virtual bool OnDrop(wxCoord x, wxCoord y);
+    //virtual wxDragResult OnEnter(wxCoord x, wxCoord y, wxDragResult def);
+    //virtual wxDragResult OnDragOver(wxCoord x, wxCoord y, wxDragResult def);
+    //virtual void OnLeave();
 
     wxDataObject *GetDataObject() const;
-    void SetDataObject(%ungc wxDataObject* data );
+    void SetDataObject(%ungc wxDataObject* data);
 
     wxDragResult GetDefaultAction();
-    void SetDefaultAction(wxDragResult action );
+    void SetDefaultAction(wxDragResult action);
 };
 
 // ---------------------------------------------------------------------------
@@ -311,7 +311,7 @@ class wxDropTarget
 
 class wxFileDropTarget : public wxDropTarget
 {
-    //wxFileDropTarget( );
+    //wxFileDropTarget();
     //virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
     //virtual bool OnDrop(long x, long y, const void *data, size_t size);
     //virtual bool OnDropFiles(wxCoord x, wxCoord y,const wxArrayString& filenames);
@@ -322,7 +322,7 @@ class wxFileDropTarget : public wxDropTarget
 
 class wxLuaFileDropTarget : public wxFileDropTarget
 {
-    wxLuaFileDropTarget( );
+    wxLuaFileDropTarget();
 
     // Create a Lua function that returns a wxDragResult.
     // %override wxDragResult wxLuaFileDropTarget::OnData(wxCoord x, wxCoord y, wxDragResult def);
@@ -340,7 +340,7 @@ class wxLuaFileDropTarget : public wxFileDropTarget
 
 class wxTextDropTarget : public wxDropTarget
 {
-    //wxTextDropTarget( );
+    //wxTextDropTarget();
     //virtual bool OnDropText(wxCoord x, wxCoord y, const wxString& text);
     //virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
 };
@@ -350,12 +350,12 @@ class wxTextDropTarget : public wxDropTarget
 
 class wxLuaTextDropTarget : public wxTextDropTarget
 {
-    wxLuaTextDropTarget( );
+    wxLuaTextDropTarget();
 
     // Create a Lua function that returns a wxDragResult.
     // %override wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
     // C++ Func: virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
-    virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def );
+    virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
 
     // Create a Lua function that returns a bool.
     // %override bool OnDropText(wxCoord x, wxCoord y, const wxString& text);
@@ -368,12 +368,12 @@ class wxLuaTextDropTarget : public wxTextDropTarget
 
 class wxLuaURLDropTarget : public wxDropTarget 
 {
-    wxLuaURLDropTarget( );
+    wxLuaURLDropTarget();
 
     // Create a Lua function that returns a wxDragResult.
     // %override wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
     // C++ Func: virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
-    virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def );
+    virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
 
     // Create a Lua function that returns a bool.
     // %override bool OnDropURL(wxCoord x, wxCoord y, const wxString& text);
@@ -386,16 +386,16 @@ class wxLuaURLDropTarget : public wxDropTarget
 
 class %delete wxDropSource // FIXME implement virtual
 {
-    %win|%mac wxDropSource(wxWindow* win = NULL, const wxCursor& cursorCopy = wxNullCursor, const wxCursor& cursorMove = wxNullCursor, const wxCursor& cursorStop = wxNullCursor );
-    %gtk wxDropSource(wxWindow* win = NULL, const wxIcon& iconCopy = wxNullIcon, const wxIcon& iconMove = wxNullIcon, const wxIcon& iconStop = wxNullIcon );
-    %win wxDropSource(wxDataObject& data, wxWindow* win = NULL, const wxCursor& cursorCopy = wxNullCursor, const wxCursor& cursorMove = wxNullCursor, const wxCursor& cursorStop = wxNullCursor );
-    %gtk wxDropSource(wxDataObject& data, wxWindow* win = NULL, const wxIcon& iconCopy = wxNullIcon, const wxIcon& iconMove = wxNullIcon, const wxIcon& iconStop = wxNullIcon );
+    %win|%mac wxDropSource(wxWindow* win = NULL, const wxCursor& cursorCopy = wxNullCursor, const wxCursor& cursorMove = wxNullCursor, const wxCursor& cursorStop = wxNullCursor);
+    %gtk wxDropSource(wxWindow* win = NULL, const wxIcon& iconCopy = wxNullIcon, const wxIcon& iconMove = wxNullIcon, const wxIcon& iconStop = wxNullIcon);
+    %win wxDropSource(wxDataObject& data, wxWindow* win = NULL, const wxCursor& cursorCopy = wxNullCursor, const wxCursor& cursorMove = wxNullCursor, const wxCursor& cursorStop = wxNullCursor);
+    %gtk wxDropSource(wxDataObject& data, wxWindow* win = NULL, const wxIcon& iconCopy = wxNullIcon, const wxIcon& iconMove = wxNullIcon, const wxIcon& iconStop = wxNullIcon);
 
-    void SetData(wxDataObject& data );
-    virtual wxDragResult DoDragDrop(int flags = wxDrag_CopyOnly );
-    wxDataObject* GetDataObject( );
-    virtual bool GiveFeedback(wxDragResult effect );
-    void SetCursor(wxDragResult res, const wxCursor& cursor );
+    void SetData(wxDataObject& data);
+    virtual wxDragResult DoDragDrop(int flags = wxDrag_CopyOnly);
+    wxDataObject* GetDataObject();
+    virtual bool GiveFeedback(wxDragResult effect);
+    void SetCursor(wxDragResult res, const wxCursor& cursor);
 };
 
 // ---------------------------------------------------------------------------
@@ -405,11 +405,11 @@ class %delete wxDropSource // FIXME implement virtual
 
 class %delete wxDropFilesEvent : public wxEvent
 {
-    %wxEventType wxEVT_DROP_FILES  // EVT_DROP_FILES(func );
+    %wxEventType wxEVT_DROP_FILES  // EVT_DROP_FILES(func);
 
     // wxDropFilesEvent(WXTYPE id = 0, int noFiles = 0, wxString* files = NULL) only handle this event
 
-    // %override [Lua table of strings] wxDropFilesEvent::GetFiles( );
+    // %override [Lua table of strings] wxDropFilesEvent::GetFiles();
     // C++ Func: wxString* GetFiles() const;
     wxString* GetFiles() const;
 
@@ -422,30 +422,30 @@ class %delete wxDropFilesEvent : public wxEvent
 // ---------------------------------------------------------------------------
 // wxMetafile
 
-#if wxLUA_USE_wxMetafile && wxUSE_METAFILE && (%msw|%mac|%os2 );
+#if wxLUA_USE_wxMetafile && wxUSE_METAFILE && (%msw|%mac|%os2);
 
 #include "wx/metafile.h"
 
-//bool wxMakeMetafilePlaceable(const wxString& filename, int minX, int minY, int maxX, int maxY, float scale = 1.0 );
+//bool wxMakeMetafilePlaceable(const wxString& filename, int minX, int minY, int maxX, int maxY, float scale = 1.0);
 
 class %delete wxMetafile : public wxObject
 {
-    wxMetafile(const wxString& filename = "" );
+    wxMetafile(const wxString& filename = "");
 
-    bool Ok( );
-    bool Play(wxDC *dc );
-    bool SetClipboard(int width = 0, int height = 0 );
+    bool Ok();
+    bool Play(wxDC *dc);
+    bool SetClipboard(int width = 0, int height = 0);
 };
 
 // ---------------------------------------------------------------------------
 // wxMetafileDC
 class %delete wxMetafileDC : public wxDC
 {
-    wxMetafileDC(const wxString& filename = "" );
+    wxMetafileDC(const wxString& filename = "");
 
-    %win %gc wxMetafile* Close( );
+    %win %gc wxMetafile* Close();
 };
 
 #endif
 
-#endif //wxLUA_USE_wxMetafile && wxUSE_METAFILE && (%msw|%mac|%os2 );
+#endif //wxLUA_USE_wxMetafile && wxUSE_METAFILE && (%msw|%mac|%os2);

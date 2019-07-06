@@ -91,7 +91,7 @@ class %delete wxHtmlCell : public wxObject
     %wxchkver_3_1_2 const wxHtmlCell* Find(int condition, const void* param) const;
     %wxchkver_3_1_2 wxHtmlCell *FindCellByPos(wxCoord x, wxCoord y, unsigned flags = wxHTML_FIND_EXACT) const;
     int GetDescent() const;
-    wxHtmlCell* GetFirstChild( );
+    wxHtmlCell* GetFirstChild();
     int GetHeight() const;
     virtual wxString GetId() const;
     virtual wxHtmlLinkInfo* GetLink(int x = 0, int y = 0) const;
@@ -124,7 +124,7 @@ class %delete wxHtmlCell : public wxObject
 
 class wxHtmlWidgetCell : public wxHtmlCell
 {
-    wxHtmlWidgetCell(wxWindow* wnd, int w = 0 );
+    wxHtmlWidgetCell(wxWindow* wnd, int w = 0);
 };
 
 
@@ -151,23 +151,23 @@ class wxHtmlWidgetCell : public wxHtmlCell
 
 class wxHtmlContainerCell : public wxHtmlCell
 {
-    wxHtmlContainerCell(wxHtmlContainerCell *parent );
+    wxHtmlContainerCell(wxHtmlContainerCell *parent);
 
     int GetAlignHor() const;
     int GetAlignVer() const;
-    wxColour GetBackgroundColour( );
+    wxColour GetBackgroundColour();
     int GetIndent(int ind) const;
     int GetIndentUnits(int ind) const;
-    void InsertCell(wxHtmlCell *cell );
-    void SetAlign(const wxHtmlTag& tag );
-    void SetAlignHor(int al );
-    void SetAlignVer(int al );
-    void SetBackgroundColour(const wxColour& clr );
-    void SetBorder(const wxColour& clr1, const wxColour& clr2 );
-    void SetIndent(int i, int what, int units = wxHTML_UNITS_PIXELS );
-    void SetMinHeight(int h, int align = wxHTML_ALIGN_TOP );
-    void SetWidthFloat(int w, int units );
-    void SetWidthFloat(const wxHtmlTag& tag, double pixel_scale = 1.0 );
+    void InsertCell(wxHtmlCell *cell);
+    void SetAlign(const wxHtmlTag& tag);
+    void SetAlignHor(int al);
+    void SetAlignVer(int al);
+    void SetBackgroundColour(const wxColour& clr);
+    void SetBorder(const wxColour& clr1, const wxColour& clr2);
+    void SetIndent(int i, int what, int units = wxHTML_UNITS_PIXELS);
+    void SetMinHeight(int h, int align = wxHTML_ALIGN_TOP);
+    void SetWidthFloat(int w, int units);
+    void SetWidthFloat(const wxHtmlTag& tag, double pixel_scale = 1.0);
 
     // %wxchkver_2_6 wxHtmlCell* GetFirstChild() see wxHtmlCell
     // !%wxchkver_2_6 wxHtmlCell* GetFirstCell() - nobody probably uses this
@@ -182,7 +182,7 @@ class wxHtmlContainerCell : public wxHtmlCell
 
 class wxHtmlColourCell : public wxHtmlCell
 {
-    wxHtmlColourCell(const wxColour& clr, int flags = wxHTML_CLR_FOREGROUND );
+    wxHtmlColourCell(const wxColour& clr, int flags = wxHTML_CLR_FOREGROUND);
 
     //virtual void Draw(wxDC& dc, int x, int y, int view_y1, int view_y2, wxHtmlRenderingInfo& info);
     //virtual void DrawInvisible(wxDC& dc, int x, int y, wxHtmlRenderingInfo& info);
@@ -199,7 +199,7 @@ class wxHtmlColourCell : public wxHtmlCell
 
 class wxHtmlFontCell : public wxHtmlCell
 {
-    wxHtmlFontCell(wxFont *font );
+    wxHtmlFontCell(wxFont *font);
 
     //virtual void Draw(wxDC& dc, int x, int y, int view_y1, int view_y2, wxHtmlRenderingInfo& info);
     //virtual void DrawInvisible(wxDC& dc, int x, int y, wxHtmlRenderingInfo& info);
@@ -216,14 +216,14 @@ class wxHtmlFontCell : public wxHtmlCell
 
 class %delete wxHtmlCellEvent : public wxCommandEvent
 {
-    wxHtmlCellEvent( );
-    wxHtmlCellEvent(wxEventType commandType, int id, wxHtmlCell *cell, const wxPoint &pt, const wxMouseEvent &ev );
+    wxHtmlCellEvent();
+    wxHtmlCellEvent(wxEventType commandType, int id, wxHtmlCell *cell, const wxPoint &pt, const wxMouseEvent &ev);
 
     wxHtmlCell* GetCell() const;
     wxPoint GetPoint() const;
     wxMouseEvent GetMouseEvent() const;
 
-    void SetLinkClicked(bool linkclicked );
+    void SetLinkClicked(bool linkclicked);
     bool GetLinkClicked() const;
 };
 
@@ -237,12 +237,12 @@ class %delete wxHtmlCellEvent : public wxCommandEvent
 
 class %delete wxHtmlLinkInfo
 {
-    wxHtmlLinkInfo(const wxString& href, const wxString& target = "" );
+    wxHtmlLinkInfo(const wxString& href, const wxString& target = "");
 
-    const wxMouseEvent * GetEvent( );
-    const wxHtmlCell * GetHtmlCell( );
-    wxString GetHref( );
-    wxString GetTarget( );
+    const wxMouseEvent * GetEvent();
+    const wxHtmlCell * GetHtmlCell();
+    wxString GetHref();
+    wxString GetTarget();
 };
 
 // ---------------------------------------------------------------------------
@@ -252,7 +252,7 @@ class %delete wxHtmlLinkInfo
 
 class wxHtmlTag // !%wxchkver_2_9_2 wxObject
 {
-    //wxHtmlTag(const wxString& source, int pos, int end_pos, wxHtmlTagsCache* cache );
+    //wxHtmlTag(const wxString& source, int pos, int end_pos, wxHtmlTagsCache* cache);
 
     const wxString GetAllParams() const;
     
@@ -289,38 +289,38 @@ class wxHtmlTag // !%wxchkver_2_9_2 wxObject
 
 class wxHtmlWindow : public wxScrolledWindow
 {
-    wxHtmlWindow(wxWindow *parent, wxWindowID id = -1, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxHW_SCROLLBAR_AUTO, const wxString& name = "wxHtmlWindow" );
+    wxHtmlWindow(wxWindow *parent, wxWindowID id = -1, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxHW_SCROLLBAR_AUTO, const wxString& name = "wxHtmlWindow");
 
-    //static void AddFilter(wxHtmlFilter *filter );
-    bool AppendToPage(const wxString& source );
+    //static void AddFilter(wxHtmlFilter *filter);
+    bool AppendToPage(const wxString& source);
     wxHtmlContainerCell* GetInternalRepresentation() const;
-    wxString GetOpenedAnchor( );
-    wxString GetOpenedPage( );
-    wxString GetOpenedPageTitle( );
+    wxString GetOpenedAnchor();
+    wxString GetOpenedPage();
+    wxString GetOpenedPageTitle();
     wxFrame* GetRelatedFrame() const;
-    bool HistoryBack( );
-    bool HistoryCanBack( );
-    bool HistoryCanForward( );
-    void HistoryClear( );
-    bool HistoryForward( );
-    virtual bool LoadFile(const wxFileName& filename );
-    bool LoadPage(const wxString& location );
-    void ReadCustomization(wxConfigBase *cfg, wxString path = wxEmptyString );
-    void SelectAll( );
-    wxString SelectionToText( );
-    void SelectLine(const wxPoint& pos );
-    void SelectWord(const wxPoint& pos );
-    void SetBorders(int b );
+    bool HistoryBack();
+    bool HistoryCanBack();
+    bool HistoryCanForward();
+    void HistoryClear();
+    bool HistoryForward();
+    virtual bool LoadFile(const wxFileName& filename);
+    bool LoadPage(const wxString& location);
+    void ReadCustomization(wxConfigBase *cfg, wxString path = wxEmptyString);
+    void SelectAll();
+    wxString SelectionToText();
+    void SelectLine(const wxPoint& pos);
+    void SelectWord(const wxPoint& pos);
+    void SetBorders(int b);
 
-    // %override void wxHtmlWindow::SetFonts(wxString normal_face, wxString fixed_face, Lua int table );
-    // C++ Func: void SetFonts(wxString normal_face, wxString fixed_face, const int *sizes );
-    void SetFonts(wxString normal_face, wxString fixed_face, LuaTable intTable );
+    // %override void wxHtmlWindow::SetFonts(wxString normal_face, wxString fixed_face, Lua int table);
+    // C++ Func: void SetFonts(wxString normal_face, wxString fixed_face, const int *sizes);
+    void SetFonts(wxString normal_face, wxString fixed_face, LuaTable intTable);
 
-    bool SetPage(const wxString& source );
-    void SetRelatedFrame(wxFrame* frame, const wxString& format );
-    void SetRelatedStatusBar(int bar );
-    wxString ToText( );
-    void WriteCustomization(wxConfigBase *cfg, wxString path = wxEmptyString );
+    bool SetPage(const wxString& source);
+    void SetRelatedFrame(wxFrame* frame, const wxString& format);
+    void SetRelatedStatusBar(int bar);
+    wxString ToText();
+    void WriteCustomization(wxConfigBase *cfg, wxString path = wxEmptyString);
 };
 
 
@@ -333,14 +333,14 @@ class wxHtmlWindow : public wxScrolledWindow
 
 class wxLuaHtmlWindow : public wxHtmlWindow
 {
-    wxLuaHtmlWindow(wxWindow *parent, wxWindowID id = -1, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxHW_SCROLLBAR_AUTO, const wxString& name = "wxLuaHtmlWindow" );
+    wxLuaHtmlWindow(wxWindow *parent, wxWindowID id = -1, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxHW_SCROLLBAR_AUTO, const wxString& name = "wxLuaHtmlWindow");
 
     // The functions below are all virtual functions that you can override in Lua.
     // See the html sample and wxHtmlWindow for proper parameters and usage.
-    //bool OnCellClicked(wxHtmlCell *cell, wxCoord x, wxCoord y, const wxMouseEvent& event );
-    //void OnCellMouseHover(wxHtmlCell *cell, wxCoord x, wxCoord y );
-    //void OnLinkClicked(const wxHtmlLinkInfo& link );
-    //void OnSetTitle(const wxString& title );
+    //bool OnCellClicked(wxHtmlCell *cell, wxCoord x, wxCoord y, const wxMouseEvent& event);
+    //void OnCellMouseHover(wxHtmlCell *cell, wxCoord x, wxCoord y);
+    //void OnLinkClicked(const wxHtmlLinkInfo& link);
+    //void OnSetTitle(const wxString& title);
 };
 
 // ---------------------------------------------------------------------------
@@ -348,11 +348,11 @@ class wxLuaHtmlWindow : public wxHtmlWindow
 
 class %delete wxLuaHtmlWinTagEvent : public wxEvent
 {
-    %wxEventType wxEVT_HTML_TAG_HANDLER // EVT_HTML_TAG_HANDLER(id, fn );
+    %wxEventType wxEVT_HTML_TAG_HANDLER // EVT_HTML_TAG_HANDLER(id, fn);
 
     const wxHtmlTag      *GetHtmlTag() const;
     wxHtmlWinParser      *GetHtmlParser() const;
-    void                  SetParseInnerCalled(bool fParseInnerCalled = true );
+    void                  SetParseInnerCalled(bool fParseInnerCalled = true);
     bool                  GetParseInnerCalled() const;
 };
 
@@ -371,24 +371,24 @@ class %delete wxLuaHtmlWinTagEvent : public wxEvent
 
 class wxHtmlParser : public wxObject
 {
-    //wxHtmlParser( );
+    //wxHtmlParser();
 
-    //void AddTag(const wxHtmlTag& tag );
-    //void AddTagHandler(wxHtmlTagHandler *handler );
+    //void AddTag(const wxHtmlTag& tag);
+    //void AddTagHandler(wxHtmlTagHandler *handler);
     //void AddWord(const wxString &txt) - not in 2.6?
-    %wxchkver_2_9_2 void DoParsing(const wxString::const_iterator& begin_pos, const wxString::const_iterator& end_pos );
-    !%wxchkver_2_9_2 void DoParsing(int begin_pos, int end_pos );
-    void DoParsing( );
-    virtual void DoneParser( );
-    //virtual wxObject* GetProduct( );
-    //wxString* GetSource( );
-    void InitParser(const wxString& source );
-    //virtual wxFSFile* OpenURL(wxHtmlURLType type, const wxString& url );
-    //wxObject* Parse(const wxString& source );
-    //void PushTagHandler(wxHtmlTagHandler* handler, wxString tags );
-    //void PopTagHandler( );
-    //void SetFS(wxFileSystem *fs );
-    //void StopParsing( );
+    %wxchkver_2_9_2 void DoParsing(const wxString::const_iterator& begin_pos, const wxString::const_iterator& end_pos);
+    !%wxchkver_2_9_2 void DoParsing(int begin_pos, int end_pos);
+    void DoParsing();
+    virtual void DoneParser();
+    //virtual wxObject* GetProduct();
+    //wxString* GetSource();
+    void InitParser(const wxString& source);
+    //virtual wxFSFile* OpenURL(wxHtmlURLType type, const wxString& url);
+    //wxObject* Parse(const wxString& source);
+    //void PushTagHandler(wxHtmlTagHandler* handler, wxString tags);
+    //void PopTagHandler();
+    //void SetFS(wxFileSystem *fs);
+    //void StopParsing();
 };
 
 // ---------------------------------------------------------------------------
@@ -396,16 +396,16 @@ class wxHtmlParser : public wxObject
 
 class wxHtmlWinParser : public wxHtmlParser
 {
-    wxHtmlWinParser(wxHtmlWindow *wnd );
+    wxHtmlWinParser(wxHtmlWindow *wnd);
 
-    wxHtmlContainerCell* CloseContainer( );
-    wxFont* CreateCurrentFont( );
+    wxHtmlContainerCell* CloseContainer();
+    wxFont* CreateCurrentFont();
     wxColour GetActualColor() const;
     int GetAlign() const;
     int GetCharHeight() const;
     int GetCharWidth() const;
     wxHtmlContainerCell* GetContainer() const;
-    wxDC* GetDC( );
+    wxDC* GetDC();
     //wxEncodingConverter * GetEncodingConverter() const;
     int GetFontBold() const;
     wxString GetFontFace() const;
@@ -417,26 +417,26 @@ class wxHtmlWinParser : public wxHtmlParser
     const wxHtmlLinkInfo& GetLink() const;
     wxColour GetLinkColor() const;
     //wxFontEncoding GetOutputEncoding() const;
-    %wxchkver_2_8 wxHtmlWindowInterface *GetWindowInterface( );
-    !%wxchkver_2_8 wxWindow* GetWindow( );
-    wxHtmlContainerCell* OpenContainer( );
-    void SetActualColor(const wxColour& clr );
-    void SetAlign(int a );
-    wxHtmlContainerCell* SetContainer(wxHtmlContainerCell *c );
-    void SetDC(wxDC *dc, double pixel_scale = 1.0 );
-    void SetFontBold(int x );
-    void SetFontFace(const wxString& face );
-    void SetFontFixed(int x );
-    void SetFontItalic(int x );
-    void SetFontSize(int s );
-    void SetFontUnderlined(int x );
+    %wxchkver_2_8 wxHtmlWindowInterface *GetWindowInterface();
+    !%wxchkver_2_8 wxWindow* GetWindow();
+    wxHtmlContainerCell* OpenContainer();
+    void SetActualColor(const wxColour& clr);
+    void SetAlign(int a);
+    wxHtmlContainerCell* SetContainer(wxHtmlContainerCell *c);
+    void SetDC(wxDC *dc, double pixel_scale = 1.0);
+    void SetFontBold(int x);
+    void SetFontFace(const wxString& face);
+    void SetFontFixed(int x);
+    void SetFontItalic(int x);
+    void SetFontSize(int s);
+    void SetFontUnderlined(int x);
 
-    // %override void wxHtmlWinParser::SetFonts(wxString normal_face, wxString fixed_face, Lua int table );
-    // C++ Func: void SetFonts(wxString normal_face, wxString fixed_face, const int *sizes );
-    void SetFonts(wxString normal_face, wxString fixed_face, LuaTable intTable );
+    // %override void wxHtmlWinParser::SetFonts(wxString normal_face, wxString fixed_face, Lua int table);
+    // C++ Func: void SetFonts(wxString normal_face, wxString fixed_face, const int *sizes);
+    void SetFonts(wxString normal_face, wxString fixed_face, LuaTable intTable);
 
-    void SetLink(const wxHtmlLinkInfo& link );
-    void SetLinkColor(const wxColour& clr );
+    void SetLink(const wxHtmlLinkInfo& link);
+    void SetLinkColor(const wxColour& clr);
 };
 
 // ---------------------------------------------------------------------------
@@ -453,15 +453,15 @@ enum wxHtmlWindowInterface::HTMLCursor
 
 class wxHtmlWindowInterface
 {
-    virtual void SetHTMLWindowTitle(const wxString& title );
-    virtual void OnHTMLLinkClicked(const wxHtmlLinkInfo& link );
+    virtual void SetHTMLWindowTitle(const wxString& title);
+    virtual void OnHTMLLinkClicked(const wxHtmlLinkInfo& link);
     //virtual wxHtmlOpeningStatus OnHTMLOpeningURL(wxHtmlURLType type, const wxString& url, wxString *redirect) const;
     virtual wxPoint HTMLCoordsToWindow(wxHtmlCell *cell, const wxPoint& pos) const;
-    virtual wxWindow* GetHTMLWindow( );
+    virtual wxWindow* GetHTMLWindow();
     virtual wxColour GetHTMLBackgroundColour() const;
-    virtual void SetHTMLBackgroundColour(const wxColour& clr );
-    virtual void SetHTMLBackgroundImage(const wxBitmap& bmpBg );
-    virtual void SetHTMLStatusText(const wxString& text );
+    virtual void SetHTMLBackgroundColour(const wxColour& clr);
+    virtual void SetHTMLBackgroundImage(const wxBitmap& bmpBg);
+    virtual void SetHTMLStatusText(const wxString& text);
     virtual wxCursor GetHTMLCursor(wxHtmlWindowInterface::HTMLCursor type) const;
 };
 
@@ -475,22 +475,22 @@ class wxHtmlWindowInterface
 
 class wxSimpleHtmlListBox : public wxPanel, public wxHtmlWindowInterface //: public wxHtmlListBox, public wxItemContainer
 {
-    wxSimpleHtmlListBox( );
-    wxSimpleHtmlListBox(wxWindow *parent, wxWindowID id, const wxPoint& pos, const wxSize& size, const wxArrayString& choices, long style = wxHLB_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxSimpleHtmlListBox" );
-    bool Create(wxWindow *parent, wxWindowID id, const wxPoint& pos, const wxSize& size, const wxArrayString& choices, long style = wxHLB_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxSimpleHtmlListBox" );
+    wxSimpleHtmlListBox();
+    wxSimpleHtmlListBox(wxWindow *parent, wxWindowID id, const wxPoint& pos, const wxSize& size, const wxArrayString& choices, long style = wxHLB_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxSimpleHtmlListBox");
+    bool Create(wxWindow *parent, wxWindowID id, const wxPoint& pos, const wxSize& size, const wxArrayString& choices, long style = wxHLB_DEFAULT_STYLE, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxSimpleHtmlListBox");
 
-    void SetSelection(int n );
+    void SetSelection(int n);
     int GetSelection() const;
     virtual unsigned int GetCount() const;
     virtual wxString GetString(unsigned int n) const;
     wxArrayString GetStrings() const;
-    virtual void SetString(unsigned int n, const wxString& s );
-    virtual void Clear( );
-    virtual void Delete(unsigned int n );
-    void Append(const wxArrayString& strings );
-    int Append(const wxString& item );
+    virtual void SetString(unsigned int n, const wxString& s);
+    virtual void Clear();
+    virtual void Delete(unsigned int n);
+    void Append(const wxArrayString& strings);
+    int Append(const wxString& item);
     int Append(const wxString& item, voidptr_long number); // C++ is (void *clientData) You can put a number here
-    int Append(const wxString& item, wxClientData *clientData );
+    int Append(const wxString& item, wxClientData *clientData);
 };
 
 #endif //%wxchkver_2_8
@@ -522,19 +522,19 @@ class %delete wxHtmlDCRenderer : public wxObject
 
 class %delete wxHtmlEasyPrinting : public wxObject
 {
-    wxHtmlEasyPrinting(const wxString& name = "Printing", wxFrame* parent_frame = NULL );
+    wxHtmlEasyPrinting(const wxString& name = "Printing", wxFrame* parent_frame = NULL);
 
-    bool PreviewFile(const wxString& htmlfile );
-    bool PreviewText(const wxString& htmltext, const wxString& basepath = "" );
-    bool PrintFile(const wxString& htmlfile );
-    bool PrintText(const wxString& htmltext, const wxString& basepath = "" );
-    %wxchkver_2_4&!%wxchkver_2_6 void PrinterSetup( );
-    void PageSetup( );
-    //void SetFonts(wxString normal_face, wxString fixed_face, const int *sizes = NULL );
-    void SetHeader(const wxString& header, int pg = wxPAGE_ALL );
-    void SetFooter(const wxString& footer, int pg = wxPAGE_ALL );
-    wxPrintData* GetPrintData( );
-    wxPageSetupDialogData* GetPageSetupData( );
+    bool PreviewFile(const wxString& htmlfile);
+    bool PreviewText(const wxString& htmltext, const wxString& basepath = "");
+    bool PrintFile(const wxString& htmlfile);
+    bool PrintText(const wxString& htmltext, const wxString& basepath = "");
+    %wxchkver_2_4&!%wxchkver_2_6 void PrinterSetup();
+    void PageSetup();
+    //void SetFonts(wxString normal_face, wxString fixed_face, const int *sizes = NULL);
+    void SetHeader(const wxString& header, int pg = wxPAGE_ALL);
+    void SetFooter(const wxString& footer, int pg = wxPAGE_ALL);
+    wxPrintData* GetPrintData();
+    wxPageSetupDialogData* GetPageSetupData();
 };
 
 // ---------------------------------------------------------------------------
@@ -544,14 +544,14 @@ class %delete wxHtmlEasyPrinting : public wxObject
 
 class %delete wxHtmlPrintout : public wxPrintout
 {
-    wxHtmlPrintout(const wxString& title = "Printout" );
+    wxHtmlPrintout(const wxString& title = "Printout");
 
-    //void SetFonts(wxString normal_face, wxString fixed_face, const int *sizes = NULL );
-    void SetFooter(const wxString& footer, int pg = wxPAGE_ALL );
-    void SetHeader(const wxString& header, int pg = wxPAGE_ALL );
-    void SetHtmlFile(const wxString& htmlfile );
-    void SetHtmlText(const wxString& html, const wxString& basepath = "", bool isdir = true );
-    void SetMargins(float top = 25.2, float bottom = 25.2, float left = 25.2, float right = 25.2, float spaces = 5 );
+    //void SetFonts(wxString normal_face, wxString fixed_face, const int *sizes = NULL);
+    void SetFooter(const wxString& footer, int pg = wxPAGE_ALL);
+    void SetHeader(const wxString& header, int pg = wxPAGE_ALL);
+    void SetHtmlFile(const wxString& htmlfile);
+    void SetHtmlText(const wxString& html, const wxString& basepath = "", bool isdir = true);
+    void SetMargins(float top = 25.2, float bottom = 25.2, float left = 25.2, float right = 25.2, float spaces = 5);
 };
 
 // ---------------------------------------------------------------------------
@@ -570,52 +570,52 @@ class %delete wxHtmlPrintout : public wxPrintout
 
 //class %delete wxHtmlBookRecord
 //{
-//    wxHtmlBookRecord(const wxString& bookfile, const wxString& basepath, const wxString& title, const wxString& start );
+//    wxHtmlBookRecord(const wxString& bookfile, const wxString& basepath, const wxString& title, const wxString& start);
 //
 //    wxString GetBookFile() const;
 //    wxString GetTitle() const;
 //    wxString GetStart() const;
 //    wxString GetBasePath() const;
-//    void SetContentsRange(int start, int end );
+//    void SetContentsRange(int start, int end);
 //    int GetContentsStart() const;
 //    int GetContentsEnd() const;
 //
-//    void SetTitle(const wxString& title );
-//    void SetBasePath(const wxString& path );
-//    void SetStart(const wxString& start );
+//    void SetTitle(const wxString& title);
+//    void SetBasePath(const wxString& path);
+//    void SetStart(const wxString& start);
 //    wxString GetFullPath(const wxString &page) const;
 //};
 //
 //class %delete wxHtmlBookRecArray
 //{
-//    wxHtmlBookRecArray( );
+//    wxHtmlBookRecArray();
 //
-//    size_t Add(const wxHtmlBookRecord& book, size_t copies = 1 );
-//    void Clear( );
+//    size_t Add(const wxHtmlBookRecord& book, size_t copies = 1);
+//    void Clear();
 //    int GetCount() const;
-//    void Insert(const wxHtmlBookRecord& book, int nIndex, size_t copies = 1 );
+//    void Insert(const wxHtmlBookRecord& book, int nIndex, size_t copies = 1);
 //    wxHtmlBookRecord Item(size_t nIndex) const;
-//    void Remove(const wxString &sz );
-//    void RemoveAt(size_t nIndex, size_t count = 1 );
+//    void Remove(const wxString &sz);
+//    void RemoveAt(size_t nIndex, size_t count = 1);
 //};
 
 class %delete wxHtmlHelpData : public wxObject
 {
-    wxHtmlHelpData( );
+    wxHtmlHelpData();
 
-    bool AddBook(const wxString& book );
-    wxString FindPageById(int id );
-    wxString FindPageByName(const wxString& page );
-    //wxHtmlBookRecArray GetBookRecArray( );
-    //wxHtmlHelpDataItems GetContentsArray( );
-    //wxHtmlHelpDataItems GetIndexArray( );
-    void SetTempDir(const wxString& path );
+    bool AddBook(const wxString& book);
+    wxString FindPageById(int id);
+    wxString FindPageByName(const wxString& page);
+    //wxHtmlBookRecArray GetBookRecArray();
+    //wxHtmlHelpDataItems GetContentsArray();
+    //wxHtmlHelpDataItems GetIndexArray();
+    void SetTempDir(const wxString& path);
 
     // rem these out to get rid of deprecated warnings
-    //!%wxchkver_2_6|%wxcompat_2_4 wxHtmlContentsItem* GetContents( );
-    //!%wxchkver_2_6|%wxcompat_2_4 int GetContentsCnt( );
-    //!%wxchkver_2_6|%wxcompat_2_4 wxHtmlContentsItem* GetIndex( );
-    //!%wxchkver_2_6|%wxcompat_2_4 int GetIndexCnt( );
+    //!%wxchkver_2_6|%wxcompat_2_4 wxHtmlContentsItem* GetContents();
+    //!%wxchkver_2_6|%wxcompat_2_4 int GetContentsCnt();
+    //!%wxchkver_2_6|%wxcompat_2_4 wxHtmlContentsItem* GetIndex();
+    //!%wxchkver_2_6|%wxcompat_2_4 int GetIndexCnt();
 };
 
 // ---------------------------------------------------------------------------
@@ -639,21 +639,21 @@ class %delete wxHtmlHelpData : public wxObject
 
 class %delete wxHtmlHelpController : public wxHelpControllerBase
 {
-    wxHtmlHelpController(int style = wxHF_DEFAULT_STYLE );
+    wxHtmlHelpController(int style = wxHF_DEFAULT_STYLE);
 
-    bool AddBook(const wxString& book, bool show_wait_msg );
-    bool AddBook(const wxFileName& book_file, bool show_wait_msg );
-    //virtual wxHtmlHelpFrame* CreateHelpFrame(wxHtmlHelpData * data );
-    void Display(const wxString& x );
-    void Display(const int id );
+    bool AddBook(const wxString& book, bool show_wait_msg);
+    bool AddBook(const wxFileName& book_file, bool show_wait_msg);
+    //virtual wxHtmlHelpFrame* CreateHelpFrame(wxHtmlHelpData * data);
+    void Display(const wxString& x);
+    void Display(const int id);
     //void DisplayContents() - see wxHelpControllerBase
-    void DisplayIndex( );
+    void DisplayIndex();
     // bool KeywordSearch(const wxString& keyword, wxHelpSearchMode mode = wxHELP_SEARCH_ALL); // see base
-    void ReadCustomization(wxConfigBase* cfg, wxString path = "" );
-    void SetTempDir(const wxString& path );
-    void SetTitleFormat(const wxString& format );
-    void UseConfig(wxConfigBase* config, const wxString& rootpath = "" );
-    void WriteCustomization(wxConfigBase* cfg, wxString path = "" );
+    void ReadCustomization(wxConfigBase* cfg, wxString path = "");
+    void SetTempDir(const wxString& path);
+    void SetTitleFormat(const wxString& format);
+    void UseConfig(wxConfigBase* config, const wxString& rootpath = "");
+    void WriteCustomization(wxConfigBase* cfg, wxString path = "");
 };
 
 #endif //wxLUA_USE_wxHtmlHelpController && wxUSE_WXHTML_HELP

@@ -957,7 +957,7 @@ static int LUACALL wxLua_wxBitmapButton_SetBitmapSelected(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmapButton_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxBitmap, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxBitmapButton_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmapButton_constructor1[1] = {{ wxLua_wxBitmapButton_constructor1, WXLUAMETHOD_CONSTRUCTOR, 3, 8, s_wxluatypeArray_wxLua_wxBitmapButton_constructor1 }};
-//     wxBitmapButton( wxWindow* parent, wxWindowID id, const wxBitmap& bitmap, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxBU_AUTODRAW, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxBitmapButton");
+//     wxBitmapButton(wxWindow* parent, wxWindowID id, const wxBitmap& bitmap, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxBU_AUTODRAW, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxBitmapButton");
 static int LUACALL wxLua_wxBitmapButton_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -2020,7 +2020,7 @@ static int LUACALL wxLua_wxItemContainer_Append(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxItemContainer_AppendString[] = { &wxluatype_wxItemContainer, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxItemContainer_AppendString(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxItemContainer_AppendString[1] = {{ wxLua_wxItemContainer_AppendString, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxItemContainer_AppendString }};
-//     void AppendString( const wxString& item);
+//     void AppendString(const wxString& item);
 static int LUACALL wxLua_wxItemContainer_AppendString(lua_State *L)
 {
     // const wxString item
@@ -14456,7 +14456,7 @@ static int LUACALL wxLua_wxGenericDirCtrl_SetPath(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGenericDirCtrl_ShowHidden[] = { &wxluatype_wxGenericDirCtrl, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxGenericDirCtrl_ShowHidden(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGenericDirCtrl_ShowHidden[1] = {{ wxLua_wxGenericDirCtrl_ShowHidden, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGenericDirCtrl_ShowHidden }};
-//     void ShowHidden( bool show);
+//     void ShowHidden(bool show);
 static int LUACALL wxLua_wxGenericDirCtrl_ShowHidden(lua_State *L)
 {
     // bool show

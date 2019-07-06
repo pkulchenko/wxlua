@@ -50,37 +50,37 @@ enum
 // ---------------------------------------------------------------------------
 // Dialog functions from wxWidgets functions documentation
 
-void wxBeginBusyCursor(wxCursor *cursor = wxLua_wxHOURGLASS_CURSOR );
-void wxEndBusyCursor( );
-void wxBell( );
-// wxTipProvider* wxCreateFileTipProvider(const wxString& filename, size_t currentTip );
+void wxBeginBusyCursor(wxCursor *cursor = wxLua_wxHOURGLASS_CURSOR);
+void wxEndBusyCursor();
+void wxBell();
+// wxTipProvider* wxCreateFileTipProvider(const wxString& filename, size_t currentTip);
 
-#define_wxstring wxDirSelectorPromptStr wxT("Select a directory" );
-wxString wxDirSelector(const wxString& message = wxDirSelectorPromptStr, const wxString& default_path = "", long style = wxDD_DEFAULT_STYLE, const wxPoint& pos = wxDefaultPosition, wxWindow *parent = NULL );
-wxString wxFileSelector(const wxString& message, const wxString& default_path = "", const wxString& default_filename = "", const wxString& default_extension = "", const wxString& wildcard = "*.*", int flags = 0, wxWindow *parent = NULL, int x = -1, int y = -1 );
-wxUSE_COLOURDLG&&!%wxchkver_2_8 wxColour wxGetColourFromUser(wxWindow *parent, const wxColour& colInit );
-wxUSE_COLOURDLG&&%wxchkver_2_8 wxColour wxGetColourFromUser(wxWindow *parent, const wxColour& colInit, const wxString& caption = "" );
-!%wxchkver_2_8&&wxUSE_FONTDLG wxFont wxGetFontFromUser(wxWindow *parent, const wxFont& fontInit );
-%wxchkver_2_8&&wxUSE_FONTDLG wxFont wxGetFontFromUser(wxWindow *parent = NULL, const wxFont& fontInit = wxNullFont, const wxString& caption = "" );
+#define_wxstring wxDirSelectorPromptStr wxT("Select a directory");
+wxString wxDirSelector(const wxString& message = wxDirSelectorPromptStr, const wxString& default_path = "", long style = wxDD_DEFAULT_STYLE, const wxPoint& pos = wxDefaultPosition, wxWindow *parent = NULL);
+wxString wxFileSelector(const wxString& message, const wxString& default_path = "", const wxString& default_filename = "", const wxString& default_extension = "", const wxString& wildcard = "*.*", int flags = 0, wxWindow *parent = NULL, int x = -1, int y = -1);
+wxUSE_COLOURDLG&&!%wxchkver_2_8 wxColour wxGetColourFromUser(wxWindow *parent, const wxColour& colInit);
+wxUSE_COLOURDLG&&%wxchkver_2_8 wxColour wxGetColourFromUser(wxWindow *parent, const wxColour& colInit, const wxString& caption = "");
+!%wxchkver_2_8&&wxUSE_FONTDLG wxFont wxGetFontFromUser(wxWindow *parent, const wxFont& fontInit);
+%wxchkver_2_8&&wxUSE_FONTDLG wxFont wxGetFontFromUser(wxWindow *parent = NULL, const wxFont& fontInit = wxNullFont, const wxString& caption = "");
 #if !%wxchkver_2_9 || %wxcompat_2_8
-// %override [int, Lua int table] wxGetMultipleChoices(const wxString& message, const wxString& caption, Lua string table, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200 );
-//  int wxGetMultipleChoices(const wxString& message, const wxString& caption, int n, const wxString choices[], int nsel, int *selection, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200 );
-wxUSE_CHOICEDLG int wxGetMultipleChoices(const wxString& message, const wxString& caption, LuaTable strTable, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200 );
+// %override [int, Lua int table] wxGetMultipleChoices(const wxString& message, const wxString& caption, Lua string table, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200);
+//  int wxGetMultipleChoices(const wxString& message, const wxString& caption, int n, const wxString choices[], int nsel, int *selection, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200);
+wxUSE_CHOICEDLG int wxGetMultipleChoices(const wxString& message, const wxString& caption, LuaTable strTable, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200);
 #endif //!%wxchkver_2_9 || %wxcompat_2_8
 
 #if wxUSE_NUMBERDLG
 %wxchkver_2_6 #include "wx/numdlg.h" // FIXME not in 2.4
-long wxGetNumberFromUser(const wxString& message, const wxString& prompt, const wxString& caption, long value, long min = 0, long max = 100, wxWindow *parent = NULL, const wxPoint& pos = wxDefaultPosition );
+long wxGetNumberFromUser(const wxString& message, const wxString& prompt, const wxString& caption, long value, long min = 0, long max = 100, wxWindow *parent = NULL, const wxPoint& pos = wxDefaultPosition);
 #endif // wxUSE_NUMBERDLG
 
-wxUSE_TEXTDLG wxString wxGetPasswordFromUser(const wxString& message, const wxString& caption = "Input text", const wxString& default_value = "", wxWindow *parent = NULL );
-wxUSE_TEXTDLG wxString wxGetTextFromUser(const wxString& message, const wxString& caption = "Input text", const wxString& default_value = "", wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true );
-// int wxGetMultipleChoice(const wxString& message, const wxString& caption, int n, const wxString& choices[], int nsel, int *selection, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200 );
-wxUSE_CHOICEDLG wxString wxGetSingleChoice(const wxString& message, const wxString& caption, const wxArrayString& choices, wxWindow *parent = NULL, int x = wxDefaultCoord, int y = wxDefaultCoord, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT );
-wxUSE_CHOICEDLG int wxGetSingleChoiceIndex(const wxString& message, const wxString& caption, const wxArrayString& choices, wxWindow *parent = NULL, int x = wxDefaultCoord, int y = wxDefaultCoord, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT );
-bool wxIsBusy( );
-int wxMessageBox(const wxString& message, const wxString& caption = "Message", int style = wxOK | wxCENTRE, wxWindow *parent = NULL, int x = -1, int y = -1 );
-// bool wxShowTip(wxWindow *parent, wxTipProvider *tipProvider, bool showAtStartup = true );
+wxUSE_TEXTDLG wxString wxGetPasswordFromUser(const wxString& message, const wxString& caption = "Input text", const wxString& default_value = "", wxWindow *parent = NULL);
+wxUSE_TEXTDLG wxString wxGetTextFromUser(const wxString& message, const wxString& caption = "Input text", const wxString& default_value = "", wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true);
+// int wxGetMultipleChoice(const wxString& message, const wxString& caption, int n, const wxString& choices[], int nsel, int *selection, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200);
+wxUSE_CHOICEDLG wxString wxGetSingleChoice(const wxString& message, const wxString& caption, const wxArrayString& choices, wxWindow *parent = NULL, int x = wxDefaultCoord, int y = wxDefaultCoord, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT);
+wxUSE_CHOICEDLG int wxGetSingleChoiceIndex(const wxString& message, const wxString& caption, const wxArrayString& choices, wxWindow *parent = NULL, int x = wxDefaultCoord, int y = wxDefaultCoord, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT);
+bool wxIsBusy();
+int wxMessageBox(const wxString& message, const wxString& caption = "Message", int style = wxOK | wxCENTRE, wxWindow *parent = NULL, int x = -1, int y = -1);
+// bool wxShowTip(wxWindow *parent, wxTipProvider *tipProvider, bool showAtStartup = true);
 
 // ---------------------------------------------------------------------------
 // wxDialog
@@ -99,30 +99,30 @@ int wxMessageBox(const wxString& message, const wxString& caption = "Message", i
 
 class wxDialog : public wxTopLevelWindow
 {
-    wxDialog( );
-    wxDialog(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE, const wxString& name = "wxDialog" );
-    bool Create(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE, const wxString& name = "wxDialog" );
+    wxDialog();
+    wxDialog(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE, const wxString& name = "wxDialog");
+    bool Create(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE, const wxString& name = "wxDialog");
 
     //void Centre(int direction = wxBOTH) - see wxWindow
-    wxUSE_BUTTON wxSizer* CreateButtonSizer(long flags );
-    %wxchkver_2_8&&wxUSE_BUTTON wxSizer *CreateSeparatedButtonSizer(long flags );
-    wxUSE_BUTTON wxStdDialogButtonSizer* CreateStdDialogButtonSizer(long flags );
-    wxUSE_STATTEXT wxSizer *CreateTextSizer( const wxString &message );
+    wxUSE_BUTTON wxSizer* CreateButtonSizer(long flags);
+    %wxchkver_2_8&&wxUSE_BUTTON wxSizer *CreateSeparatedButtonSizer(long flags);
+    wxUSE_BUTTON wxStdDialogButtonSizer* CreateStdDialogButtonSizer(long flags);
+    wxUSE_STATTEXT wxSizer *CreateTextSizer(const wxString &message);
     // virtual bool DoOK() - pocketpc only
-    void EndModal(int retCode );
+    void EndModal(int retCode);
     // int GetAffirmativeId() const; // - pocketpc only
-    int GetReturnCode( );
+    int GetReturnCode();
     // wxString GetTitle() const; // - see wxToplevelWindow
     //void Iconize(bool iconize); // - in wxToplevelWindow
     //bool IsIconized() const; // - in wxToplevelWindow
     bool IsModal() const;
-    //void SetAffirmativeId(int affirmativeId );
+    //void SetAffirmativeId(int affirmativeId);
     // void SetIcon(const wxIcon& icon) - in wxToplevelWindow
     // void SetModal(const bool flag) - deprecated
-    void SetReturnCode(int retCode );
+    void SetReturnCode(int retCode);
     // void SetTitle(const wxString& title) - in wxToplevelWindow
     // bool Show(const bool show) - see wxWindow
-    int ShowModal( );
+    int ShowModal();
 };
 
 #endif // wxLUA_USE_wxDialog
@@ -137,10 +137,10 @@ class wxDialog : public wxTopLevelWindow
 
 class wxColourDialog : public wxDialog
 {
-    wxColourDialog(wxWindow* parent, wxColourData* data = NULL );
-    //bool Create(wxWindow* parent, wxColourData* data = NULL );
+    wxColourDialog(wxWindow* parent, wxColourData* data = NULL);
+    //bool Create(wxWindow* parent, wxColourData* data = NULL);
 
-    wxColourData& GetColourData( );
+    wxColourData& GetColourData();
     //int ShowModal() - in wxDialog
 };
 
@@ -151,15 +151,15 @@ class wxColourDialog : public wxDialog
 
 class %delete wxColourData : public wxObject
 {
-    wxColourData( );
-    wxColourData(const wxColourData& cData );
+    wxColourData();
+    wxColourData(const wxColourData& cData);
 
     bool GetChooseFull() const;
     wxColour GetColour() const;
     wxColour GetCustomColour(int i) const;
-    void SetChooseFull(bool flag );
-    void SetColour(wxColour &colour );
-    void SetCustomColour(int i, wxColour &colour );
+    void SetChooseFull(bool flag);
+    void SetColour(wxColour &colour);
+    void SetCustomColour(int i, wxColour &colour);
 };
 
 #endif // wxLUA_USE_wxColourDialog && wxUSE_COLOURDLG
@@ -171,21 +171,21 @@ class %delete wxColourData : public wxObject
 
 #include "wx/filedlg.h"
 
-#define_wxstring wxFileSelectorPromptStr wxT("Select a file" );
+#define_wxstring wxFileSelectorPromptStr wxT("Select a file");
 %wxchkver_2_9_0 #define_string wxFileSelectorDefaultWildcardStr
 !%wxchkver_2_9_0 #define_wxstring wxFileSelectorDefaultWildcardStr
 
 class wxFileDialog : public wxDialog
 {
     // wxFileDialog() no default constructor in MSW
-    %not_overload !%wxchkver_2_8 wxFileDialog(wxWindow* parent, const wxString& message = "Choose a file", const wxString& defaultDir = "", const wxString& defaultFile = "", const wxString& wildcard = "*.*", long style = 0, const wxPoint& pos = wxDefaultPosition );
-    %not_overload %wxchkver_2_8 wxFileDialog(wxWindow *parent, const wxString& message = wxFileSelectorPromptStr, const wxString& defaultDir = "", const wxString& defaultFile = "", const wxString& wildCard = wxFileSelectorDefaultWildcardStr, long style = wxFD_DEFAULT_STYLE, const wxPoint& pos = wxDefaultPosition, const wxSize& sz = wxDefaultSize, const wxString& name = "wxFileDialog" );
-    //%wxchkver_2_8 bool Create(wxWindow *parent, const wxString& message = wxFileSelectorPromptStr, const wxString& defaultDir = "", const wxString& defaultFile = "", const wxString& wildCard = wxFileSelectorDefaultWildcardStr, long style = wxFD_DEFAULT_STYLE, const wxPoint& pos = wxDefaultPosition, const wxSize& sz = wxDefaultSize, const wxString& name = "wxFileDialog" );
+    %not_overload !%wxchkver_2_8 wxFileDialog(wxWindow* parent, const wxString& message = "Choose a file", const wxString& defaultDir = "", const wxString& defaultFile = "", const wxString& wildcard = "*.*", long style = 0, const wxPoint& pos = wxDefaultPosition);
+    %not_overload %wxchkver_2_8 wxFileDialog(wxWindow *parent, const wxString& message = wxFileSelectorPromptStr, const wxString& defaultDir = "", const wxString& defaultFile = "", const wxString& wildCard = wxFileSelectorDefaultWildcardStr, long style = wxFD_DEFAULT_STYLE, const wxPoint& pos = wxDefaultPosition, const wxSize& sz = wxDefaultSize, const wxString& name = "wxFileDialog");
+    //%wxchkver_2_8 bool Create(wxWindow *parent, const wxString& message = wxFileSelectorPromptStr, const wxString& defaultDir = "", const wxString& defaultFile = "", const wxString& wildCard = wxFileSelectorDefaultWildcardStr, long style = wxFD_DEFAULT_STYLE, const wxPoint& pos = wxDefaultPosition, const wxSize& sz = wxDefaultSize, const wxString& name = "wxFileDialog");
 
     wxString GetDirectory() const;
     wxString GetFilename() const;
 
-    // %override [Lua string table] wxFileDialog::GetFilenames( );
+    // %override [Lua string table] wxFileDialog::GetFilenames();
     // C++ Func: void GetFilenames(wxArrayString& filenames) const;
     void GetFilenames() const;
 
@@ -193,19 +193,19 @@ class wxFileDialog : public wxDialog
     wxString GetMessage() const;
     wxString GetPath() const;
 
-    // %override [Lua string table] wxFileDialog::GetPaths( );
+    // %override [Lua string table] wxFileDialog::GetPaths();
     // C++ Func: void GetPaths(wxArrayString& paths) const;
     void GetPaths() const;
 
     !%wxchkver_2_8 long GetStyle() const;
     wxString GetWildcard() const;
-    void SetDirectory(const wxString& directory );
-    void SetFilename(const wxString& setfilename );
-    void SetFilterIndex(int filterIndex );
-    void SetMessage(const wxString& message );
-    void SetPath(const wxString& path );
-    !%wxchkver_2_8 void SetStyle(long style );
-    void SetWildcard(const wxString& wildCard );
+    void SetDirectory(const wxString& directory);
+    void SetFilename(const wxString& setfilename);
+    void SetFilterIndex(int filterIndex);
+    void SetMessage(const wxString& message);
+    void SetPath(const wxString& path);
+    !%wxchkver_2_8 void SetStyle(long style);
+    void SetWildcard(const wxString& wildCard);
     // int ShowModal() - in wxDialog
 };
 
@@ -225,14 +225,14 @@ class wxFileDialog : public wxDialog
 
 class wxDirDialog : public wxDialog
 {
-    wxDirDialog(wxWindow* parent, const wxString& message = "Choose a directory", const wxString& defaultPath = "", long style = 0, const wxPoint& pos = wxDefaultPosition );
+    wxDirDialog(wxWindow* parent, const wxString& message = "Choose a directory", const wxString& defaultPath = "", long style = 0, const wxPoint& pos = wxDefaultPosition);
 
     wxString GetPath() const;
     wxString GetMessage() const;
     !%wxchkver_2_8 long GetStyle() const;
-    void SetMessage(const wxString& message );
-    void SetPath(const wxString& path );
-    !%wxchkver_2_8 void SetStyle(long style );
+    void SetMessage(const wxString& message);
+    void SetPath(const wxString& path);
+    !%wxchkver_2_8 void SetStyle(long style);
     // int ShowModal() - in wxDialog
 };
 
@@ -245,7 +245,7 @@ class wxDirDialog : public wxDialog
 
 class wxMessageDialog : public wxDialog
 {
-    wxMessageDialog(wxWindow* parent, const wxString& message, const wxString& caption = "Message box", long style = wxOK | wxCANCEL | wxCENTRE, const wxPoint& pos = wxDefaultPosition );
+    wxMessageDialog(wxWindow* parent, const wxString& message, const wxString& caption = "Message box", long style = wxOK | wxCANCEL | wxCENTRE, const wxPoint& pos = wxDefaultPosition);
 
     // int ShowModal() - in wxDialog
     
@@ -283,7 +283,7 @@ class wxMessageDialog : public wxDialog
 
 class wxMultiChoiceDialog : public wxDialog
 {
-    wxMultiChoiceDialog(wxWindow* parent, const wxString& message, const wxString& caption, const wxArrayString& choices, long style = wxCHOICEDLG_STYLE, const wxPoint& pos = wxDefaultPosition );
+    wxMultiChoiceDialog(wxWindow* parent, const wxString& message, const wxString& caption, const wxArrayString& choices, long style = wxCHOICEDLG_STYLE, const wxPoint& pos = wxDefaultPosition);
 
     wxArrayInt GetSelections() const; // FIXME
     void SetSelections(const wxArrayInt& selections) const; // FIXME
@@ -299,8 +299,8 @@ class wxMultiChoiceDialog : public wxDialog
 
 class wxSingleChoiceDialog : public wxDialog
 {
-    // %override wxSingleChoiceDialog(wxWindow* parent, const wxString& message, const wxString& caption, const wxArrayString& choices, long style = wxCHOICEDLG_STYLE, const wxPoint& pos = wxDefaultPosition );
-    // C++ Func: wxSingleChoiceDialog(wxWindow* parent, const wxString& message, const wxString& caption, const wxArrayString& choices, void** clientData = NULL, long style = wxCHOICEDLG_STYLE, const wxPoint& pos = wxDefaultPosition );
+    // %override wxSingleChoiceDialog(wxWindow* parent, const wxString& message, const wxString& caption, const wxArrayString& choices, long style = wxCHOICEDLG_STYLE, const wxPoint& pos = wxDefaultPosition);
+    // C++ Func: wxSingleChoiceDialog(wxWindow* parent, const wxString& message, const wxString& caption, const wxArrayString& choices, void** clientData = NULL, long style = wxCHOICEDLG_STYLE, const wxPoint& pos = wxDefaultPosition);
     wxSingleChoiceDialog(wxWindow* parent, const wxString& message, const wxString& caption, const wxArrayString& choices, long style = wxCHOICEDLG_STYLE, const wxPoint& pos = wxDefaultPosition);
 
     int GetSelection() const;
@@ -320,10 +320,10 @@ class wxSingleChoiceDialog : public wxDialog
 
 class wxTextEntryDialog : public wxDialog
 {
-    wxTextEntryDialog(wxWindow* parent, const wxString& message, const wxString& caption = "Please enter text", const wxString& defaultValue = "", long style = wxOK | wxCANCEL | wxCENTRE, const wxPoint& pos = wxDefaultPosition );
+    wxTextEntryDialog(wxWindow* parent, const wxString& message, const wxString& caption = "Please enter text", const wxString& defaultValue = "", long style = wxOK | wxCANCEL | wxCENTRE, const wxPoint& pos = wxDefaultPosition);
 
     wxString GetValue() const;
-    void SetValue(const wxString& value );
+    void SetValue(const wxString& value);
     // int ShowModal() - in wxDialog
 };
 
@@ -336,7 +336,7 @@ class wxTextEntryDialog : public wxDialog
 
 class wxPasswordEntryDialog : public wxTextEntryDialog
 {
-    wxPasswordEntryDialog(wxWindow *parent, const wxString& message, const wxString& caption = wxGetPasswordFromUserPromptStr, const wxString& value = "", long style = wxTextEntryDialogStyle, const wxPoint& pos = wxDefaultPosition );
+    wxPasswordEntryDialog(wxWindow *parent, const wxString& message, const wxString& caption = wxGetPasswordFromUserPromptStr, const wxString& value = "", long style = wxTextEntryDialogStyle, const wxPoint& pos = wxDefaultPosition);
 };
 
 #endif //wxUSE_TEXTDLG && wxLUA_USE_wxTextEntryDialog
@@ -350,9 +350,9 @@ class wxPasswordEntryDialog : public wxTextEntryDialog
 
 class wxFontDialog : public wxDialog
 {
-    wxFontDialog(wxWindow* parent, const wxFontData& data );
+    wxFontDialog(wxWindow* parent, const wxFontData& data);
 
-    wxFontData& GetFontData( );
+    wxFontData& GetFontData();
     // int ShowModal() - in wxDialog
 };
 
@@ -363,22 +363,22 @@ class wxFontDialog : public wxDialog
 
 class %delete wxFontData : public wxObject
 {
-    wxFontData( );
-    wxFontData(const wxFontData& data );
+    wxFontData();
+    wxFontData(const wxFontData& data);
 
-    void EnableEffects(bool enable );
-    bool GetAllowSymbols( );
-    wxColour GetColour( );
-    wxFont GetChosenFont( );
-    bool GetEnableEffects( );
-    wxFont GetInitialFont( );
-    bool GetShowHelp( );
-    void SetAllowSymbols(bool allowSymbols );
-    void SetChosenFont(const wxFont &font );
-    void SetColour(const wxColour &colour );
-    void SetInitialFont(const wxFont &font );
-    void SetRange(int minimum, int maximum );
-    void SetShowHelp(bool showHelp );
+    void EnableEffects(bool enable);
+    bool GetAllowSymbols();
+    wxColour GetColour();
+    wxFont GetChosenFont();
+    bool GetEnableEffects();
+    wxFont GetInitialFont();
+    bool GetShowHelp();
+    void SetAllowSymbols(bool allowSymbols);
+    void SetChosenFont(const wxFont &font);
+    void SetColour(const wxColour &colour);
+    void SetInitialFont(const wxFont &font);
+    void SetRange(int minimum, int maximum);
+    void SetShowHelp(bool showHelp);
 };
 
 #endif //wxUSE_FONTDLG && wxLUA_USE_wxFontDialog
@@ -400,12 +400,12 @@ enum wxFindReplaceDialogStyles
 
 class wxFindReplaceDialog : public wxDialog
 {
-    wxFindReplaceDialog( );
-    wxFindReplaceDialog(wxWindow *parent, wxFindReplaceData *findData, const wxString &title, int style = 0 );
-    bool Create(wxWindow *parent, wxFindReplaceData *findData, const wxString &title, int style = 0 );
+    wxFindReplaceDialog();
+    wxFindReplaceDialog(wxWindow *parent, wxFindReplaceData *findData, const wxString &title, int style = 0);
+    bool Create(wxWindow *parent, wxFindReplaceData *findData, const wxString &title, int style = 0);
 
-    const wxFindReplaceData *GetData( );
-    void    SetData(wxFindReplaceData *findData );
+    const wxFindReplaceData *GetData();
+    void    SetData(wxFindReplaceData *findData);
 };
 
 // ---------------------------------------------------------------------------
@@ -421,14 +421,14 @@ enum wxFindReplaceFlags
 
 class %delete wxFindReplaceData : public wxObject
 {
-    wxFindReplaceData(int flags = 0 );
+    wxFindReplaceData(int flags = 0);
 
-    wxString GetFindString( );
-    wxString GetReplaceString( );
-    int     GetFlags( );
-    void    SetFlags(int flags );
-    void    SetFindString(const wxString& string );
-    void    SetReplaceString(const wxString& string );
+    wxString GetFindString();
+    wxString GetReplaceString();
+    int     GetFlags();
+    void    SetFlags(int flags);
+    void    SetFindString(const wxString& string);
+    void    SetReplaceString(const wxString& string);
 };
 
 // ---------------------------------------------------------------------------
@@ -436,21 +436,21 @@ class %delete wxFindReplaceData : public wxObject
 
 class %delete wxFindDialogEvent : public wxCommandEvent
 {
-    %wxEventType wxEVT_COMMAND_FIND                // EVT_FIND(id, fn );
-    %wxEventType wxEVT_COMMAND_FIND_NEXT           // EVT_FIND_NEXT(id, fn );
-    %wxEventType wxEVT_COMMAND_FIND_REPLACE        // EVT_FIND_REPLACE(id, fn );
-    %wxEventType wxEVT_COMMAND_FIND_REPLACE_ALL    // EVT_FIND_REPLACE_ALL(id, fn );
-    %wxEventType wxEVT_COMMAND_FIND_CLOSE          // EVT_FIND_CLOSE(id, fn );
+    %wxEventType wxEVT_COMMAND_FIND                // EVT_FIND(id, fn);
+    %wxEventType wxEVT_COMMAND_FIND_NEXT           // EVT_FIND_NEXT(id, fn);
+    %wxEventType wxEVT_COMMAND_FIND_REPLACE        // EVT_FIND_REPLACE(id, fn);
+    %wxEventType wxEVT_COMMAND_FIND_REPLACE_ALL    // EVT_FIND_REPLACE_ALL(id, fn);
+    %wxEventType wxEVT_COMMAND_FIND_CLOSE          // EVT_FIND_CLOSE(id, fn);
 
-    wxFindDialogEvent(wxEventType commandType = wxEVT_NULL, int id = 0 );
+    wxFindDialogEvent(wxEventType commandType = wxEVT_NULL, int id = 0);
 
-    int      GetFlags( );
-    wxString GetFindString( );
-    wxString GetReplaceString( );
-    wxFindReplaceDialog *GetDialog( );
-    void     SetFlags(int flags );
-    void     SetFindString(const wxString& str );
-    void     SetReplaceString(const wxString& str );
+    int      GetFlags();
+    wxString GetFindString();
+    wxString GetReplaceString();
+    wxFindReplaceDialog *GetDialog();
+    void     SetFlags(int flags);
+    void     SetFindString(const wxString& str);
+    void     SetReplaceString(const wxString& str);
 };
 
 #endif //wxUSE_FINDREPLDLG && wxLUA_USE_wxFindReplaceDialog
@@ -473,25 +473,13 @@ class %delete wxFindDialogEvent : public wxCommandEvent
 
 class wxProgressDialog : public wxDialog
 {
-    wxProgressDialog(const wxString& title, const wxString& message, int maximum = 100, wxWindow* parent = NULL, int style = wxPD_AUTO_HIDE | wxPD_APP_MODAL );
+    wxProgressDialog(const wxString& title, const wxString& message, int maximum = 100, wxWindow* parent = NULL, int style = wxPD_AUTO_HIDE | wxPD_APP_MODAL);
 
-    void    Resume( );
+    void    Resume();
 
-    // %override [bool, bool skip] Update(int value, const wxString& newmsg = "" );
-    // C++ Func: bool Update(int value, const wxString& newmsg = "", bool* skip = NULL );
-    bool    Update(int value, const wxString& newmsg = "" );
+    // %override [bool, bool skip] Update(int value, const wxString& newmsg = "");
+    // C++ Func: bool Update(int value, const wxString& newmsg = "", bool* skip = NULL);
+    bool    Update(int value, const wxString& newmsg = "");
 };
 
 #endif //wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog
-
-// ---------------------------------------------------------------------------
-// wxTabbedDialog                deprecated; use wxNotebook instead
-//
-// #include "wx/wxtab.h"
-// class wxTabbedDialog : public wxDialog
-// {
-//     wxTabbedDialog(wxWindow *parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style=wxDEFAULT_DIALOG_STYLE, const wxString& name = "wxTabbedDialog" );
-//     void SetTabView(wxTabView *view );
-//     wxTabView * GetTabView( );
-// };
-

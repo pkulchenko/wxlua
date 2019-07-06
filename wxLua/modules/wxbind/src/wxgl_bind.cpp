@@ -175,7 +175,7 @@ static int LUACALL wxLua_wxGLCanvas_SwapBuffers(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLCanvas_constructor4[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TTABLE, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxPalette, NULL };
 static int LUACALL wxLua_wxGLCanvas_constructor4(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_constructor4[1] = {{ wxLua_wxGLCanvas_constructor4, WXLUAMETHOD_CONSTRUCTOR, 1, 8, s_wxluatypeArray_wxLua_wxGLCanvas_constructor4 }};
-//     !%mac wxGLCanvas(wxWindow* parent, wxWindowID id = wxID_ANY, int attribList[] = 0, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style=0, const wxString& name="GLCanvas", const wxPalette& palette = wxNullPalette );
+//     !%mac wxGLCanvas(wxWindow* parent, wxWindowID id = wxID_ANY, int attribList[] = 0, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style=0, const wxString& name="GLCanvas", const wxPalette& palette = wxNullPalette);
 static int LUACALL wxLua_wxGLCanvas_constructor4(lua_State *L)
 {
     // get number of arguments
@@ -212,7 +212,7 @@ static int LUACALL wxLua_wxGLCanvas_constructor4(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLCanvas_constructor3[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TTABLE, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxPalette, NULL };
 static int LUACALL wxLua_wxGLCanvas_constructor3(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_constructor3[1] = {{ wxLua_wxGLCanvas_constructor3, WXLUAMETHOD_CONSTRUCTOR, 1, 8, s_wxluatypeArray_wxLua_wxGLCanvas_constructor3 }};
-//     !%mac wxGLCanvas(wxWindow* parent, wxWindowID id = wxID_ANY, int attribList[] = 0, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style=0, const wxString& name="GLCanvas", const wxPalette& palette = wxNullPalette );
+//     !%mac wxGLCanvas(wxWindow* parent, wxWindowID id = wxID_ANY, int attribList[] = 0, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style=0, const wxString& name="GLCanvas", const wxPalette& palette = wxNullPalette);
 static int LUACALL wxLua_wxGLCanvas_constructor3(lua_State *L)
 {
     // get number of arguments
@@ -249,7 +249,7 @@ static int LUACALL wxLua_wxGLCanvas_constructor3(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLCanvas_constructor2[] = { &wxluatype_wxWindow, &wxluatype_wxGLCanvas, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_TTABLE, &wxluatype_wxPalette, NULL };
 static int LUACALL wxLua_wxGLCanvas_constructor2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_constructor2[1] = {{ wxLua_wxGLCanvas_constructor2, WXLUAMETHOD_CONSTRUCTOR, 2, 9, s_wxluatypeArray_wxLua_wxGLCanvas_constructor2 }};
-//     wxGLCanvas(wxWindow* parent, wxGLCanvas* sharedCanvas, wxWindowID id = -1, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style=0, const wxString& name="GLCanvas", int attribList[] = 0, const wxPalette& palette = wxNullPalette );
+//     wxGLCanvas(wxWindow* parent, wxGLCanvas* sharedCanvas, wxWindowID id = -1, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style=0, const wxString& name="GLCanvas", int attribList[] = 0, const wxPalette& palette = wxNullPalette);
 static int LUACALL wxLua_wxGLCanvas_constructor2(lua_State *L)
 {
     // get number of arguments
@@ -285,7 +285,7 @@ static int LUACALL wxLua_wxGLCanvas_constructor2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLCanvas_constructor1[] = { &wxluatype_wxWindow, &wxluatype_wxGLContext, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_TTABLE, &wxluatype_wxPalette, NULL };
 static int LUACALL wxLua_wxGLCanvas_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_constructor1[1] = {{ wxLua_wxGLCanvas_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 9, s_wxluatypeArray_wxLua_wxGLCanvas_constructor1 }};
-//     wxGLCanvas(wxWindow* parent, wxGLContext* sharedContext, wxWindowID id = -1, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style=0, const wxString& name="GLCanvas", int attribList[] = 0, const wxPalette& palette = wxNullPalette );
+//     wxGLCanvas(wxWindow* parent, wxGLContext* sharedContext, wxWindowID id = -1, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style=0, const wxString& name="GLCanvas", int attribList[] = 0, const wxPalette& palette = wxNullPalette);
 static int LUACALL wxLua_wxGLCanvas_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -321,7 +321,7 @@ static int LUACALL wxLua_wxGLCanvas_constructor1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGLCanvas_constructor[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_TTABLE, &wxluatype_wxPalette, NULL };
 static int LUACALL wxLua_wxGLCanvas_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_constructor[1] = {{ wxLua_wxGLCanvas_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 8, s_wxluatypeArray_wxLua_wxGLCanvas_constructor }};
-//     wxGLCanvas(wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style=0, const wxString& name="GLCanvas", int attribList[] = 0, const wxPalette& palette = wxNullPalette );
+//     wxGLCanvas(wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style=0, const wxString& name="GLCanvas", int attribList[] = 0, const wxPalette& palette = wxNullPalette);
 static int LUACALL wxLua_wxGLCanvas_constructor(lua_State *L)
 {
     // get number of arguments

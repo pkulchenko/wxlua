@@ -16,16 +16,16 @@
 
 class %delete wxSizerFlags
 {
-    wxSizerFlags(int proportion = 0 );
+    wxSizerFlags(int proportion = 0);
 
     // setters for all sizer flags, they all return the object itself so that
     // calls to them can be chained
 
-    wxSizerFlags& Proportion(int proportion );
+    wxSizerFlags& Proportion(int proportion);
     wxSizerFlags& Align(int alignment); // combination of wxAlignment values
     wxSizerFlags& Expand(); // wxEXPAND
 
-    // some shortcuts for Align( );
+    // some shortcuts for Align();
     wxSizerFlags& Centre(); // { return Align(wxCENTRE); }
     wxSizerFlags& Center(); // { return Centre(); }
     wxSizerFlags& Left();   // { return Align(wxALIGN_LEFT); }
@@ -34,18 +34,18 @@ class %delete wxSizerFlags
     wxSizerFlags& Bottom(); // { return Align(wxALIGN_BOTTOM); }
 
     static int GetDefaultBorder(); // default border size used by Border() below
-    wxSizerFlags& Border(int direction, int borderInPixels );
-    wxSizerFlags& Border(int direction = wxALL );
-    wxSizerFlags& DoubleBorder(int direction = wxALL );
+    wxSizerFlags& Border(int direction, int borderInPixels);
+    wxSizerFlags& Border(int direction = wxALL);
+    wxSizerFlags& DoubleBorder(int direction = wxALL);
 
-    wxSizerFlags& TripleBorder(int direction = wxALL );
-    wxSizerFlags& HorzBorder( );
-    wxSizerFlags& DoubleHorzBorder( );
-    wxSizerFlags& Shaped( );
-    wxSizerFlags& FixedMinSize( );
+    wxSizerFlags& TripleBorder(int direction = wxALL);
+    wxSizerFlags& HorzBorder();
+    wxSizerFlags& DoubleHorzBorder();
+    wxSizerFlags& Shaped();
+    wxSizerFlags& FixedMinSize();
 
-#if (wxABI_VERSION >= 20808 );
-    wxSizerFlags& ReserveSpaceEvenIfHidden( );
+#if (wxABI_VERSION >= 20808);
+    wxSizerFlags& ReserveSpaceEvenIfHidden();
 #endif
 
     // accessors for wxSizer only
@@ -59,10 +59,10 @@ class %delete wxSizerFlags
 
 //class wxSizerSpacer
 //{
-//    wxSizerSpacer(const wxSize& size );
-//    void SetSize(const wxSize& size );
+//    wxSizerSpacer(const wxSize& size);
+//    void SetSize(const wxSize& size);
 //    const wxSize& GetSize() const;
-//    void Show(bool show );
+//    void Show(bool show);
 //    bool IsShown() const;
 //};
 
@@ -102,7 +102,7 @@ class wxSizerItem : public wxObject
     void SetFlag(int flag);
     void SetInitSize(int x, int y);
     void SetMinSize(const wxSize& size);
-    void SetMinSize( int x, int y);
+    void SetMinSize(int x, int y);
     void SetProportion(int proportion);
     void SetRatio(int width, int height);
     void SetRatio(const wxSize& size);
@@ -131,13 +131,13 @@ class wxSizer : public wxObject
     wxSizerItem* Add(int width, int height, int proportion = 0, int flag = 0, int border = 0, %ungc wxObject* userData = NULL);
     wxSizerItem* Add(wxWindow* window, const wxSizerFlags& flags);
     wxSizerItem* Add(wxSizer* sizer, const wxSizerFlags& flags);
-    wxSizerItem* Add( wxSizerItem *item);
+    wxSizerItem* Add(wxSizerItem *item);
     wxSizerItem* AddSpacer(int size);
     wxSizerItem* AddStretchSpacer(int prop = 1);
     wxSize CalcMin();
-    virtual void Clear( bool delete_windows = false);
+    virtual void Clear(bool delete_windows = false);
 
-#if (wxABI_VERSION >= 20808 );
+#if (wxABI_VERSION >= 20808);
     wxSize ComputeFittingClientSize(wxWindow *window);
     wxSize ComputeFittingWindowSize(wxWindow *window);
 #endif
@@ -156,18 +156,18 @@ class wxSizer : public wxObject
     wxSize GetSize();
     wxPoint GetPosition();
     wxSize GetMinSize();
-    bool Hide( wxSizer *sizer, bool recursive = false);
-    bool Hide( wxWindow *window, bool recursive = false);
-    bool Hide( size_t index);
+    bool Hide(wxSizer *sizer, bool recursive = false);
+    bool Hide(wxWindow *window, bool recursive = false);
+    bool Hide(size_t index);
     wxSizerItem* Insert(size_t index, wxWindow* window, int proportion = 0,int flag = 0, int border = 0, %ungc wxObject* userData = NULL);
     wxSizerItem* Insert(size_t index, wxSizer* sizer, int proportion = 0, int flag = 0, int border = 0, %ungc wxObject* userData = NULL);
     wxSizerItem* Insert(size_t index, int width, int height, int proportion = 0, int flag = 0, int border = 0, %ungc wxObject* userData = NULL);
     wxSizerItem* Insert(size_t index, wxWindow* window, const wxSizerFlags& flags);
     wxSizerItem* Insert(size_t index, wxSizer* sizer, const wxSizerFlags& flags);
-    virtual wxSizerItem* Insert( size_t index, wxSizerItem *item);
+    virtual wxSizerItem* Insert(size_t index, wxSizerItem *item);
     wxSizerItem* InsertSpacer(size_t index, int size);
     wxSizerItem* InsertStretchSpacer(size_t index, int prop = 1);
-    bool IsShown(wxWindow *window ) const;
+    bool IsShown(wxWindow *window) const;
     bool IsShown(wxSizer *sizer) const;
     bool IsShown(size_t index) const;
     void Layout();
@@ -181,11 +181,11 @@ class wxSizer : public wxObject
     wxSizerItem* PrependStretchSpacer(int prop = 1);
     void RecalcSizes();
     //bool Remove(wxWindow* window) - deprecated use Detach
-    //bool Remove(wxSizer* sizer );
-    //bool Remove(size_t index );
-    virtual bool Replace( wxWindow *oldwin, wxWindow *newwin, bool recursive = false);
-    virtual bool Replace( wxSizer *oldsz, wxSizer *newsz, bool recursive = false);
-    virtual bool Replace( size_t index, wxSizerItem *newitem);
+    //bool Remove(wxSizer* sizer);
+    //bool Remove(size_t index);
+    virtual bool Replace(wxWindow *oldwin, wxWindow *newwin, bool recursive = false);
+    virtual bool Replace(wxSizer *oldsz, wxSizer *newsz, bool recursive = false);
+    virtual bool Replace(size_t index, wxSizerItem *newitem);
     void SetContainingWindow(wxWindow *window);
     void SetDimension(int x, int y, int width, int height);
     void SetMinSize(int width, int height);
@@ -198,8 +198,8 @@ class wxSizer : public wxObject
     bool Show(wxWindow* window, bool show = true, bool recursive = false);
     bool Show(wxSizer* sizer, bool show = true, bool recursive = false);
     bool Show(size_t index, bool show = true);
-    //void Show(bool show) - simply calls ShowItems( );
-    virtual void ShowItems (bool show );
+    //void Show(bool show) - simply calls ShowItems();
+    virtual void ShowItems (bool show);
 };
 
 // ---------------------------------------------------------------------------
@@ -209,7 +209,7 @@ class wxSizer : public wxObject
 
 class wxSizerItemList : public wxList
 {
-    //wxSizerItemList() - no constructor, just get this from wxSizer::GetChildren( );
+    //wxSizerItemList() - no constructor, just get this from wxSizer::GetChildren();
 
     // This is returned from wxSizer::GetChildren(), use wxList methods and
     //   wxNode::GetData():DynamicCast("wxSizer") to retrieve the wxSizer
@@ -224,11 +224,11 @@ class wxSizerItemList : public wxList
 
 class wxBoxSizer : public wxSizer
 {
-    wxBoxSizer(int orient );
+    wxBoxSizer(int orient);
 
-    //void RecalcSizes( );
-    //wxSize CalcMin( );
-    int GetOrientation( );
+    //void RecalcSizes();
+    //wxSize CalcMin();
+    int GetOrientation();
 };
 
 // ---------------------------------------------------------------------------
@@ -236,17 +236,17 @@ class wxBoxSizer : public wxSizer
 
 class wxGridSizer : public wxSizer
 {
-    wxGridSizer(int cols, int rows, int vgap, int hgap );
-    // wxGridSizer(int cols, int vgap = 0, int hgap = 0 );
+    wxGridSizer(int cols, int rows, int vgap, int hgap);
+    // wxGridSizer(int cols, int vgap = 0, int hgap = 0);
 
-    int GetCols( );
-    int GetHGap( );
-    int GetRows( );
-    int GetVGap( );
-    void SetCols(int cols );
-    void SetHGap(int gap );
-    void SetRows(int rows );
-    void SetVGap(int gap );
+    int GetCols();
+    int GetHGap();
+    int GetRows();
+    int GetVGap();
+    void SetCols(int cols);
+    void SetHGap(int gap);
+    void SetRows(int rows);
+    void SetVGap(int gap);
 };
 
 // ---------------------------------------------------------------------------
@@ -261,17 +261,17 @@ enum wxFlexSizerGrowMode
 
 class wxFlexGridSizer : public wxGridSizer
 {
-    wxFlexGridSizer(int rows, int cols, int vgap=0, int hgap=0 );
+    wxFlexGridSizer(int rows, int cols, int vgap=0, int hgap=0);
     // wxFlexGridSizer(int cols, int vgap = 0, int hgap = 0); // just use the above constructor
 
-    void AddGrowableCol( size_t idx, int proportion = 0 );
-    void AddGrowableRow( size_t idx, int proportion = 0 );
+    void AddGrowableCol(size_t idx, int proportion = 0);
+    void AddGrowableRow(size_t idx, int proportion = 0);
     int GetFlexibleDirection() const;
     wxFlexSizerGrowMode GetNonFlexibleGrowMode() const;
-    void RemoveGrowableCol( size_t idx );
-    void RemoveGrowableRow( size_t idx );
-    void SetFlexibleDirection(int direction );
-    void SetNonFlexibleGrowMode(wxFlexSizerGrowMode mode );
+    void RemoveGrowableCol(size_t idx);
+    void RemoveGrowableRow(size_t idx);
+    void SetFlexibleDirection(int direction);
+    void SetNonFlexibleGrowMode(wxFlexSizerGrowMode mode);
 };
 
 // ---------------------------------------------------------------------------
@@ -281,39 +281,39 @@ class wxFlexGridSizer : public wxGridSizer
 
 class wxGridBagSizer : public wxFlexGridSizer
 {
-    wxGridBagSizer(int vgap=0, int hgap=0 );
+    wxGridBagSizer(int vgap=0, int hgap=0);
 
-    wxSizerItem* Add(wxWindow* window, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, %ungc wxObject* userData = NULL );
-    wxSizerItem* Add(wxSizer* sizer, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, %ungc wxObject* userData = NULL );
-    wxSizerItem* Add(int width, int height, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, %ungc wxObject* userData = NULL );
-    wxSizerItem* Add(wxGBSizerItem* item );
+    wxSizerItem* Add(wxWindow* window, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, %ungc wxObject* userData = NULL);
+    wxSizerItem* Add(wxSizer* sizer, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, %ungc wxObject* userData = NULL);
+    wxSizerItem* Add(int width, int height, const wxGBPosition& pos, const wxGBSpan& span = wxDefaultSpan, int flag = 0, int border = 0, %ungc wxObject* userData = NULL);
+    wxSizerItem* Add(wxGBSizerItem* item);
 
-    bool CheckForIntersection(wxGBSizerItem* item, wxGBSizerItem* excludeItem = NULL );
-    bool CheckForIntersection(const wxGBPosition& pos, const wxGBSpan& span, wxGBSizerItem* excludeItem = NULL );
+    bool CheckForIntersection(wxGBSizerItem* item, wxGBSizerItem* excludeItem = NULL);
+    bool CheckForIntersection(const wxGBPosition& pos, const wxGBSpan& span, wxGBSizerItem* excludeItem = NULL);
 
-    wxGBSizerItem* FindItem(wxWindow* window );
-    wxGBSizerItem* FindItem(wxSizer* sizer );
-    wxGBSizerItem*  FindItemAtPoint(const wxPoint& pt );
-    wxGBSizerItem*  FindItemAtPosition(const wxGBPosition& pos );
-    wxGBSizerItem*  FindItemWithData(const wxObject* userData );
+    wxGBSizerItem* FindItem(wxWindow* window);
+    wxGBSizerItem* FindItem(wxSizer* sizer);
+    wxGBSizerItem*  FindItemAtPoint(const wxPoint& pt);
+    wxGBSizerItem*  FindItemAtPosition(const wxGBPosition& pos);
+    wxGBSizerItem*  FindItemWithData(const wxObject* userData);
     wxSize GetCellSize(int row, int col) const;
     wxSize GetEmptyCellSize() const;
 
-    wxGBPosition  GetItemPosition(wxWindow* window );
-    wxGBPosition  GetItemPosition(wxSizer* sizer );
-    wxGBPosition  GetItemPosition(size_t index );
+    wxGBPosition  GetItemPosition(wxWindow* window);
+    wxGBPosition  GetItemPosition(wxSizer* sizer);
+    wxGBPosition  GetItemPosition(size_t index);
 
-    wxGBSpan GetItemSpan(wxWindow* window );
-    wxGBSpan GetItemSpan(wxSizer* sizer );
-    wxGBSpan GetItemSpan(size_t index );
-    //void RecalcSizes( );
-    void SetEmptyCellSize(const wxSize& sz );
-    bool SetItemPosition(wxWindow* window, const wxGBPosition& pos );
-    bool SetItemPosition(wxSizer* sizer, const wxGBPosition& pos );
-    bool SetItemPosition(size_t index, const wxGBPosition& pos );
-    bool SetItemSpan(wxWindow* window, const wxGBSpan& span );
-    bool SetItemSpan(wxSizer* sizer, const wxGBSpan& span );
-    bool SetItemSpan(size_t index, const wxGBSpan& span );
+    wxGBSpan GetItemSpan(wxWindow* window);
+    wxGBSpan GetItemSpan(wxSizer* sizer);
+    wxGBSpan GetItemSpan(size_t index);
+    //void RecalcSizes();
+    void SetEmptyCellSize(const wxSize& sz);
+    bool SetItemPosition(wxWindow* window, const wxGBPosition& pos);
+    bool SetItemPosition(wxSizer* sizer, const wxGBPosition& pos);
+    bool SetItemPosition(size_t index, const wxGBPosition& pos);
+    bool SetItemSpan(wxWindow* window, const wxGBSpan& span);
+    bool SetItemSpan(wxSizer* sizer, const wxGBSpan& span);
+    bool SetItemSpan(size_t index, const wxGBSpan& span);
 };
 
 // ---------------------------------------------------------------------------
@@ -321,13 +321,13 @@ class wxGridBagSizer : public wxFlexGridSizer
 
 class %delete wxGBPosition
 {
-    wxGBPosition(int row=0, int col=0 );
-    wxGBPosition(const wxGBPosition& pos );
+    wxGBPosition(int row=0, int col=0);
+    wxGBPosition(const wxGBPosition& pos);
 
     int GetRow() const;
     int GetCol() const;
-    void SetRow(int row );
-    void SetCol(int col );
+    void SetRow(int row);
+    void SetCol(int col);
 
     bool operator==(const wxGBPosition& p) const;
 };
@@ -337,13 +337,13 @@ class %delete wxGBPosition
 
 class %delete wxGBSpan
 {
-    wxGBSpan(int rowspan=1, int colspan=1 );
-    wxGBSpan(const wxGBSpan& span );
+    wxGBSpan(int rowspan=1, int colspan=1);
+    wxGBSpan(const wxGBSpan& span);
 
     int GetRowspan() const;
     int GetColspan() const;
-    void SetRowspan(int rowspan );
-    void SetColspan(int colspan );
+    void SetRowspan(int rowspan);
+    void SetColspan(int colspan);
 
     bool operator==(const wxGBSpan& o) const;
 };
@@ -353,26 +353,26 @@ class %delete wxGBSpan
 
 class wxGBSizerItem : public wxSizerItem
 {
-    wxGBSizerItem( );
-    wxGBSizerItem( int width, int height, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, %ungc wxObject* userData );
-    wxGBSizerItem( wxWindow *window, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, %ungc wxObject* userData );
-    wxGBSizerItem( wxSizer *sizer, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, %ungc wxObject* userData );
+    wxGBSizerItem();
+    wxGBSizerItem(int width, int height, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, %ungc wxObject* userData);
+    wxGBSizerItem(wxWindow *window, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, %ungc wxObject* userData);
+    wxGBSizerItem(wxSizer *sizer, const wxGBPosition& pos, const wxGBSpan& span, int flag, int border, %ungc wxObject* userData);
 
     wxGBPosition GetPos() const;
     //void GetPos(int& row, int& col) const;
     wxGBSpan GetSpan() const;
     //void GetSpan(int& rowspan, int& colspan) const;
-    bool SetPos( const wxGBPosition& pos );
-    bool SetSpan( const wxGBSpan& span );
-    bool Intersects(const wxGBSizerItem& other );
-    bool Intersects(const wxGBPosition& pos, const wxGBSpan& span );
+    bool SetPos(const wxGBPosition& pos);
+    bool SetSpan(const wxGBSpan& span);
+    bool Intersects(const wxGBSizerItem& other);
+    bool Intersects(const wxGBPosition& pos, const wxGBSpan& span);
 
-    // %override [row, col] wxGBSizerItem::GetEndPos( );
-    // C++ Func: void GetEndPos(int& row, int& col );
-    void GetEndPos( );
+    // %override [row, col] wxGBSizerItem::GetEndPos();
+    // C++ Func: void GetEndPos(int& row, int& col);
+    void GetEndPos();
 
     wxGridBagSizer* GetGBSizer() const;
-    void SetGBSizer(wxGridBagSizer* sizer );
+    void SetGBSizer(wxGridBagSizer* sizer);
 };
 
 // ---------------------------------------------------------------------------
@@ -402,15 +402,15 @@ class wxWrapSizer : public wxBoxSizer
 // ---------------------------------------------------------------------------
 // wxNotebookSizer - deprecated
 
-#if wxUSE_NOTEBOOK && (!%wxchkver_2_6 );
+#if wxUSE_NOTEBOOK && (!%wxchkver_2_6);
 
 class wxNotebookSizer : public wxSizer
 {
-    wxNotebookSizer(wxNotebook* notebook );
-    wxNotebook* GetNotebook( );
+    wxNotebookSizer(wxNotebook* notebook);
+    wxNotebook* GetNotebook();
 };
 
-#endif //wxUSE_NOTEBOOK && (!%wxchkver_2_6 );
+#endif //wxUSE_NOTEBOOK && (!%wxchkver_2_6);
 
 // ---------------------------------------------------------------------------
 // wxBookCtrlSizer - also depricated since 2.6
@@ -422,10 +422,10 @@ class wxNotebookSizer : public wxSizer
 
 class wxStaticBoxSizer : public wxBoxSizer
 {
-    wxStaticBoxSizer(wxStaticBox* box, int orient );
-    wxStaticBoxSizer(int orient, wxWindow *parent, const wxString& label = "" );
+    wxStaticBoxSizer(wxStaticBox* box, int orient);
+    wxStaticBoxSizer(int orient, wxWindow *parent, const wxString& label = "");
 
-    wxStaticBox* GetStaticBox( );
+    wxStaticBox* GetStaticBox();
 };
 
 #endif //wxUSE_STATBOX
@@ -437,14 +437,14 @@ class wxStaticBoxSizer : public wxBoxSizer
 
 class wxStdDialogButtonSizer : public wxBoxSizer
 {
-    wxStdDialogButtonSizer( );
+    wxStdDialogButtonSizer();
 
-    void AddButton(wxButton *button );
-    void SetAffirmativeButton( wxButton *button );
-    void SetNegativeButton( wxButton *button );
-    void SetCancelButton( wxButton *button );
+    void AddButton(wxButton *button);
+    void SetAffirmativeButton(wxButton *button);
+    void SetNegativeButton(wxButton *button);
+    void SetCancelButton(wxButton *button);
 
-    void Realize( );
+    void Realize();
 
     wxButton *GetAffirmativeButton() const;
     wxButton *GetApplyButton() const;
@@ -460,7 +460,7 @@ class wxStdDialogButtonSizer : public wxBoxSizer
 // ---------------------------------------------------------------------------
 // wxLayoutConstraints - deprecated since 2.2, not updated to 2.6
 
-#if wxLUA_USE_wxLayoutConstraints && (!%wxchkver_2_6 );
+#if wxLUA_USE_wxLayoutConstraints && (!%wxchkver_2_6);
 
 #include "wx/layout.h"
 
@@ -493,7 +493,7 @@ enum wxEdge
 
 class wxLayoutConstraints : public wxObject
 {
-    wxLayoutConstraints( );
+    wxLayoutConstraints();
 };
 
 // ---------------------------------------------------------------------------
@@ -503,18 +503,18 @@ class wxLayoutConstraints : public wxObject
 
 class wxIndividualLayoutConstraint : public wxObject
 {
-    wxIndividualLayoutConstraint( );
-    void Above(wxWindow *otherWin, int margin = 0 );
-    void Absolute(int value );
-    void AsIs( );
-    void Below(wxWindow *otherWin, int margin = 0 );
-    void Unconstrained( );
-    void LeftOf(wxWindow *otherWin, int margin = 0 );
-    void PercentOf(wxWindow *otherWin, wxEdge edge, int per );
-    void RightOf(wxWindow *otherWin, int margin = 0 );
-    void SameAs(wxWindow *otherWin, wxEdge edge, int margin = 0 );
-    void Set(wxRelationship rel, wxWindow *otherWin, wxEdge otherEdge, int value = 0, int margin = 0 );
+    wxIndividualLayoutConstraint();
+    void Above(wxWindow *otherWin, int margin = 0);
+    void Absolute(int value);
+    void AsIs();
+    void Below(wxWindow *otherWin, int margin = 0);
+    void Unconstrained();
+    void LeftOf(wxWindow *otherWin, int margin = 0);
+    void PercentOf(wxWindow *otherWin, wxEdge edge, int per);
+    void RightOf(wxWindow *otherWin, int margin = 0);
+    void SameAs(wxWindow *otherWin, wxEdge edge, int margin = 0);
+    void Set(wxRelationship rel, wxWindow *otherWin, wxEdge otherEdge, int value = 0, int margin = 0);
 };
 
-#endif //wxLUA_USE_wxLayoutConstraints && (!%wxchkver_2_6 );
+#endif //wxLUA_USE_wxLayoutConstraints && (!%wxchkver_2_6);
 

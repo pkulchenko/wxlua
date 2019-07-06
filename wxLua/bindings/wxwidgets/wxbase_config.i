@@ -46,35 +46,35 @@ class %delete wxConfigBase
     //  deleting them. This is because the wxConfig you install using
     //  wxConfigBase::Set may need to exist outside of the scope it was created
     //  in and we don't want Lua to garbage collect it.
-    //void delete( );
+    //void delete();
 
     // Note: the return wxConfig cannot be deleted.
     // You must call "config = Set(wx.NULL); config:delete()"
-    static wxConfigBase* Create( );
-    static void DontCreateOnDemand( );
+    static wxConfigBase* Create();
+    static void DontCreateOnDemand();
 
-    bool DeleteAll( );
-    bool DeleteEntry(const wxString& key, bool bDeleteGroupIfEmpty = true );
-    bool DeleteGroup(const wxString& key );
+    bool DeleteAll();
+    bool DeleteEntry(const wxString& key, bool bDeleteGroupIfEmpty = true);
+    bool DeleteGroup(const wxString& key);
     bool Exists(wxString& strName) const;
-    bool Flush(bool bCurrentOnly = false );
-    static wxConfigBase* Get(bool CreateOnDemand = true );
+    bool Flush(bool bCurrentOnly = false);
+    static wxConfigBase* Get(bool CreateOnDemand = true);
     wxString GetAppName() const;
     wxConfigBase::EntryType GetEntryType(const wxString& name) const;
 
-    // %override [bool, string, index] wxConfigBase::GetFirstGroup( );
+    // %override [bool, string, index] wxConfigBase::GetFirstGroup();
     // C++ Func: bool GetFirstGroup(wxString& str, long& index) const;
     bool GetFirstGroup() const;
 
-    // %override [bool, string, index] wxConfigBase::GetFirstEntry( );
+    // %override [bool, string, index] wxConfigBase::GetFirstEntry();
     // C++ Func: bool GetFirstEntry(wxString& str, long& index) const;
     bool GetFirstEntry() const;
 
-    // %override [bool, string, index] wxConfigBase::GetNextGroup(index );
+    // %override [bool, string, index] wxConfigBase::GetNextGroup(index);
     // C++ Func: bool GetNextGroup(wxString& str, long& index) const;
     bool GetNextGroup() const;
 
-    // %override [bool, string, index] wxConfigBase::GetNextEntry(index );
+    // %override [bool, string, index] wxConfigBase::GetNextEntry(index);
     // C++ Func: bool GetNextEntry(wxString& str, long& index) const;
     bool GetNextEntry(long index) const;
 
@@ -87,37 +87,37 @@ class %delete wxConfigBase
     bool IsExpandingEnvVars() const;
     bool IsRecordingDefaults() const;
 
-    // %override [bool, string] wxConfigBase::Read(const wxString& key, const wxString& defaultVal = "" );
+    // %override [bool, string] wxConfigBase::Read(const wxString& key, const wxString& defaultVal = "");
     // C++ Func: bool Read(const wxString& key, wxString* str, const wxString& defaultVal) const;
     bool Read(const wxString& key, const wxString& defaultVal = "") const;
 
     // Since Lua uses double as it's number type, we only read/write doubles
 
-    // %override [bool, double] wxConfigBase::Read(const wxString& key, double defaultVal = 0 );
+    // %override [bool, double] wxConfigBase::Read(const wxString& key, double defaultVal = 0);
     // C++ Func: bool Read(const wxString&  key, double* d, double defaultVal = 0) const;
     %override_name wxLua_wxConfigBase_ReadFloat bool Read(const wxString&  key, double defaultVal) const;
 
-    // // %override [bool, int] wxConfigBase::ReadInt(const wxString& key, long defaultVal = 0 );
+    // // %override [bool, int] wxConfigBase::ReadInt(const wxString& key, long defaultVal = 0);
     // // C++ Func: bool Read(const wxString&  key, long* l, long defaultVal = 0) const;
     // %rename ReadInt bool Read(const wxString&  key, long defaultVal = 0) const;
-    // // %override [bool, double] wxConfigBase::ReadFloat(const wxString& key, double defaultVal = 0 );
+    // // %override [bool, double] wxConfigBase::ReadFloat(const wxString& key, double defaultVal = 0);
     // // C++ Func: bool Read(const wxString&  key, double* d, double defaultVal = 0) const;
     // %rename ReadFloat bool Read(const wxString&  key, double defaultVal = 0) const;
 
-    bool RenameEntry(const wxString& oldName, const wxString& newName );
-    bool RenameGroup(const wxString& oldName, const wxString& newName );
-    static %gc wxConfigBase* Set(%ungc wxConfigBase *pConfig = NULL );
-    void SetExpandEnvVars(bool bDoIt = true );
-    void SetPath(const wxString& strPath );
-    void SetRecordDefaults(bool bDoIt = true );
+    bool RenameEntry(const wxString& oldName, const wxString& newName);
+    bool RenameGroup(const wxString& oldName, const wxString& newName);
+    static %gc wxConfigBase* Set(%ungc wxConfigBase *pConfig = NULL);
+    void SetExpandEnvVars(bool bDoIt = true);
+    void SetPath(const wxString& strPath);
+    void SetRecordDefaults(bool bDoIt = true);
 
 
-    bool Write(const wxString& key, wxString &value );
+    bool Write(const wxString& key, wxString &value);
     // Since Lua uses double as it's number type, we only read/write doubles
-    bool Write(const wxString &key, double value );
+    bool Write(const wxString &key, double value);
 
-    // %rename WriteInt bool Write(const wxString &key, long value );
-    // %rename WriteFloat bool Write(const wxString &key, double value );
+    // %rename WriteInt bool Write(const wxString &key, long value);
+    // %rename WriteFloat bool Write(const wxString &key, double value);
 };
 
 // ---------------------------------------------------------------------------
@@ -125,7 +125,7 @@ class %delete wxConfigBase
 
 class %delete wxConfig : public wxConfigBase
 {
-    wxConfig(const wxString& appName = "", const wxString& vendorName = "", const wxString& localFilename = "", const wxString& globalFilename = "", long style = 0 );
+    wxConfig(const wxString& appName = "", const wxString& vendorName = "", const wxString& localFilename = "", const wxString& globalFilename = "", long style = 0);
 };
 
 // ---------------------------------------------------------------------------
@@ -133,9 +133,9 @@ class %delete wxConfig : public wxConfigBase
 
 class %delete wxFileConfig : public wxConfigBase
 {
-    wxFileConfig(const wxString& appName = "", const wxString& vendorName = "", const wxString& localFilename = "", const wxString& globalFilename = "", long style = wxCONFIG_USE_LOCAL_FILE | wxCONFIG_USE_GLOBAL_FILE); //, wxMBConv& conv = wxConvUTF8 );
+    wxFileConfig(const wxString& appName = "", const wxString& vendorName = "", const wxString& localFilename = "", const wxString& globalFilename = "", long style = wxCONFIG_USE_LOCAL_FILE | wxCONFIG_USE_GLOBAL_FILE); //, wxMBConv& conv = wxConvUTF8);
 
-    void SetUmask(int mode );
+    void SetUmask(int mode);
 };
 
 // ---------------------------------------------------------------------------
@@ -145,7 +145,7 @@ class %delete wxFileConfig : public wxConfigBase
 
 class %delete wxMemoryConfig : public wxFileConfig
 {
-    wxMemoryConfig( );
+    wxMemoryConfig();
 };
 
 // ---------------------------------------------------------------------------
@@ -159,10 +159,10 @@ class %delete wxMemoryConfig : public wxFileConfig
 class %delete wxConfigPathChanger
 {
     // NOTE: ALWAYS delete() this when done since Lua's gc may not delete it soon enough
-    wxConfigPathChanger(const wxConfigBase *pContainer, const wxString& strEntry );
+    wxConfigPathChanger(const wxConfigBase *pContainer, const wxString& strEntry);
 
     wxString Name() const;
-    %wxchkver_2_8 void UpdateIfDeleted( );
+    %wxchkver_2_8 void UpdateIfDeleted();
 };
 
 #endif //wxLUA_USE_wxConfig && wxUSE_CONFIG

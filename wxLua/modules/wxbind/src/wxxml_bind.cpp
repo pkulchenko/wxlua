@@ -34,7 +34,7 @@ int wxluatype_wxXmlNode = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_AddChild[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlNode_AddChild(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_AddChild[1] = {{ wxLua_wxXmlNode_AddChild, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_AddChild }};
-//     void AddChild(%ungc wxXmlNode *child );
+//     void AddChild(%ungc wxXmlNode *child);
 static int LUACALL wxLua_wxXmlNode_AddChild(lua_State *L)
 {
     // wxXmlNode child
@@ -51,7 +51,7 @@ static int LUACALL wxLua_wxXmlNode_AddChild(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_AddProperty1[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlProperty, NULL };
 static int LUACALL wxLua_wxXmlNode_AddProperty1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_AddProperty1[1] = {{ wxLua_wxXmlNode_AddProperty1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_AddProperty1 }};
-//     void AddProperty(%ungc wxXmlProperty *prop );
+//     void AddProperty(%ungc wxXmlProperty *prop);
 static int LUACALL wxLua_wxXmlNode_AddProperty1(lua_State *L)
 {
     // wxXmlProperty prop
@@ -68,7 +68,7 @@ static int LUACALL wxLua_wxXmlNode_AddProperty1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_AddProperty[] = { &wxluatype_wxXmlNode, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlNode_AddProperty(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_AddProperty[1] = {{ wxLua_wxXmlNode_AddProperty, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxXmlNode_AddProperty }};
-//     void AddProperty(const wxString& name, const wxString& value );
+//     void AddProperty(const wxString& name, const wxString& value);
 static int LUACALL wxLua_wxXmlNode_AddProperty(lua_State *L)
 {
     // const wxString value
@@ -86,7 +86,7 @@ static int LUACALL wxLua_wxXmlNode_AddProperty(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_DeleteProperty[] = { &wxluatype_wxXmlNode, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlNode_DeleteProperty(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_DeleteProperty[1] = {{ wxLua_wxXmlNode_DeleteProperty, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_DeleteProperty }};
-//     bool DeleteProperty(const wxString& name );
+//     bool DeleteProperty(const wxString& name);
 static int LUACALL wxLua_wxXmlNode_DeleteProperty(lua_State *L)
 {
     // const wxString name
@@ -279,7 +279,7 @@ static int LUACALL wxLua_wxXmlNode_HasProp(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_InsertChild[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlNode, &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlNode_InsertChild(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_InsertChild[1] = {{ wxLua_wxXmlNode_InsertChild, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxXmlNode_InsertChild }};
-//     void InsertChild(%ungc wxXmlNode *child, wxXmlNode *before_node );
+//     void InsertChild(%ungc wxXmlNode *child, wxXmlNode *before_node);
 static int LUACALL wxLua_wxXmlNode_InsertChild(lua_State *L)
 {
     // wxXmlNode before_node
@@ -322,7 +322,7 @@ static int LUACALL wxLua_wxXmlNode_RemoveChild(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_SetChildren[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlNode_SetChildren(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_SetChildren[1] = {{ wxLua_wxXmlNode_SetChildren, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_SetChildren }};
-//     void SetChildren(%ungc wxXmlNode *child );
+//     void SetChildren(%ungc wxXmlNode *child);
 static int LUACALL wxLua_wxXmlNode_SetChildren(lua_State *L)
 {
     // wxXmlNode child
@@ -339,7 +339,7 @@ static int LUACALL wxLua_wxXmlNode_SetChildren(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_SetContent[] = { &wxluatype_wxXmlNode, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlNode_SetContent(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_SetContent[1] = {{ wxLua_wxXmlNode_SetContent, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_SetContent }};
-//     void SetContent(const wxString& con );
+//     void SetContent(const wxString& con);
 static int LUACALL wxLua_wxXmlNode_SetContent(lua_State *L)
 {
     // const wxString con
@@ -355,7 +355,7 @@ static int LUACALL wxLua_wxXmlNode_SetContent(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_SetName[] = { &wxluatype_wxXmlNode, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlNode_SetName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_SetName[1] = {{ wxLua_wxXmlNode_SetName, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_SetName }};
-//     void SetName(const wxString& name );
+//     void SetName(const wxString& name);
 static int LUACALL wxLua_wxXmlNode_SetName(lua_State *L)
 {
     // const wxString name
@@ -371,7 +371,7 @@ static int LUACALL wxLua_wxXmlNode_SetName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_SetNext[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlNode_SetNext(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_SetNext[1] = {{ wxLua_wxXmlNode_SetNext, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_SetNext }};
-//     void SetNext(wxXmlNode *next );
+//     void SetNext(wxXmlNode *next);
 static int LUACALL wxLua_wxXmlNode_SetNext(lua_State *L)
 {
     // wxXmlNode next
@@ -387,7 +387,7 @@ static int LUACALL wxLua_wxXmlNode_SetNext(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_SetParent[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlNode_SetParent(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_SetParent[1] = {{ wxLua_wxXmlNode_SetParent, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_SetParent }};
-//     void SetParent(wxXmlNode *parent );
+//     void SetParent(wxXmlNode *parent);
 static int LUACALL wxLua_wxXmlNode_SetParent(lua_State *L)
 {
     // wxXmlNode parent
@@ -403,7 +403,7 @@ static int LUACALL wxLua_wxXmlNode_SetParent(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_SetProperties[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlProperty, NULL };
 static int LUACALL wxLua_wxXmlNode_SetProperties(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_SetProperties[1] = {{ wxLua_wxXmlNode_SetProperties, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_SetProperties }};
-//     void SetProperties(%ungc wxXmlProperty *prop );
+//     void SetProperties(%ungc wxXmlProperty *prop);
 static int LUACALL wxLua_wxXmlNode_SetProperties(lua_State *L)
 {
     // wxXmlProperty prop
@@ -420,7 +420,7 @@ static int LUACALL wxLua_wxXmlNode_SetProperties(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_SetType[] = { &wxluatype_wxXmlNode, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxXmlNode_SetType(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_SetType[1] = {{ wxLua_wxXmlNode_SetType, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_SetType }};
-//     void SetType(wxXmlNodeType type );
+//     void SetType(wxXmlNodeType type);
 static int LUACALL wxLua_wxXmlNode_SetType(lua_State *L)
 {
     // wxXmlNodeType type
@@ -470,7 +470,7 @@ static int LUACALL wxLua_wxXmlNode_constructor2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_constructor1[] = { &wxluatype_TINTEGER, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlNode_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_constructor1[1] = {{ wxLua_wxXmlNode_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 3, s_wxluatypeArray_wxLua_wxXmlNode_constructor1 }};
-//     wxXmlNode(wxXmlNodeType type, const wxString& name, const wxString& content = "" );
+//     wxXmlNode(wxXmlNodeType type, const wxString& name, const wxString& content = "");
 static int LUACALL wxLua_wxXmlNode_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -493,7 +493,7 @@ static int LUACALL wxLua_wxXmlNode_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxXmlNode_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_constructor[1] = {{ wxLua_wxXmlNode_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxXmlNode( );
+//     wxXmlNode();
 static int LUACALL wxLua_wxXmlNode_constructor(lua_State *L)
 {
     // call constructor
@@ -599,7 +599,7 @@ int wxluatype_wxXmlProperty = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlProperty_GetName[] = { &wxluatype_wxXmlProperty, NULL };
 static int LUACALL wxLua_wxXmlProperty_GetName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlProperty_GetName[1] = {{ wxLua_wxXmlProperty_GetName, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlProperty_GetName }};
-//     wxString GetName( );
+//     wxString GetName();
 static int LUACALL wxLua_wxXmlProperty_GetName(lua_State *L)
 {
     // get this
@@ -615,7 +615,7 @@ static int LUACALL wxLua_wxXmlProperty_GetName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlProperty_GetNext[] = { &wxluatype_wxXmlProperty, NULL };
 static int LUACALL wxLua_wxXmlProperty_GetNext(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlProperty_GetNext[1] = {{ wxLua_wxXmlProperty_GetNext, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlProperty_GetNext }};
-//     wxXmlProperty *GetNext( );
+//     wxXmlProperty *GetNext();
 static int LUACALL wxLua_wxXmlProperty_GetNext(lua_State *L)
 {
     // get this
@@ -631,7 +631,7 @@ static int LUACALL wxLua_wxXmlProperty_GetNext(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlProperty_GetValue[] = { &wxluatype_wxXmlProperty, NULL };
 static int LUACALL wxLua_wxXmlProperty_GetValue(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlProperty_GetValue[1] = {{ wxLua_wxXmlProperty_GetValue, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlProperty_GetValue }};
-//     wxString GetValue( );
+//     wxString GetValue();
 static int LUACALL wxLua_wxXmlProperty_GetValue(lua_State *L)
 {
     // get this
@@ -647,7 +647,7 @@ static int LUACALL wxLua_wxXmlProperty_GetValue(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlProperty_SetName[] = { &wxluatype_wxXmlProperty, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlProperty_SetName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlProperty_SetName[1] = {{ wxLua_wxXmlProperty_SetName, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlProperty_SetName }};
-//     void SetName(const wxString& name );
+//     void SetName(const wxString& name);
 static int LUACALL wxLua_wxXmlProperty_SetName(lua_State *L)
 {
     // const wxString name
@@ -663,7 +663,7 @@ static int LUACALL wxLua_wxXmlProperty_SetName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlProperty_SetNext[] = { &wxluatype_wxXmlProperty, &wxluatype_wxXmlProperty, NULL };
 static int LUACALL wxLua_wxXmlProperty_SetNext(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlProperty_SetNext[1] = {{ wxLua_wxXmlProperty_SetNext, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlProperty_SetNext }};
-//     void SetNext(wxXmlProperty *next );
+//     void SetNext(wxXmlProperty *next);
 static int LUACALL wxLua_wxXmlProperty_SetNext(lua_State *L)
 {
     // wxXmlProperty next
@@ -679,7 +679,7 @@ static int LUACALL wxLua_wxXmlProperty_SetNext(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlProperty_SetValue[] = { &wxluatype_wxXmlProperty, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlProperty_SetValue(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlProperty_SetValue[1] = {{ wxLua_wxXmlProperty_SetValue, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlProperty_SetValue }};
-//     void SetValue(const wxString& value );
+//     void SetValue(const wxString& value);
 static int LUACALL wxLua_wxXmlProperty_SetValue(lua_State *L)
 {
     // const wxString value
@@ -698,7 +698,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlProperty_delete[1] = {{ wxlua_userd
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlProperty_constructor1[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxXmlProperty, NULL };
 static int LUACALL wxLua_wxXmlProperty_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlProperty_constructor1[1] = {{ wxLua_wxXmlProperty_constructor1, WXLUAMETHOD_CONSTRUCTOR, 3, 3, s_wxluatypeArray_wxLua_wxXmlProperty_constructor1 }};
-//     wxXmlProperty(const wxString& name, const wxString& value, wxXmlProperty *next );
+//     wxXmlProperty(const wxString& name, const wxString& value, wxXmlProperty *next);
 static int LUACALL wxLua_wxXmlProperty_constructor1(lua_State *L)
 {
     // wxXmlProperty next
@@ -719,7 +719,7 @@ static int LUACALL wxLua_wxXmlProperty_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxXmlProperty_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlProperty_constructor[1] = {{ wxLua_wxXmlProperty_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxXmlProperty( );
+//     wxXmlProperty();
 static int LUACALL wxLua_wxXmlProperty_constructor(lua_State *L)
 {
     // call constructor

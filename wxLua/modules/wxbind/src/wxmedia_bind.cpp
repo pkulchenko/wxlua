@@ -35,7 +35,7 @@ int wxluatype_wxMediaCtrl = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_Create[] = { &wxluatype_wxMediaCtrl, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxMediaCtrl_Create(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_Create[1] = {{ wxLua_wxMediaCtrl_Create, WXLUAMETHOD_METHOD, 3, 10, s_wxluatypeArray_wxLua_wxMediaCtrl_Create }};
-//     bool Create( wxWindow* parent, wxWindowID winid, const wxString& fileName = "", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& szBackend = "", const wxValidator& val = wxDefaultValidator, const wxString& name = "wxMediaCtrl"  );
+//     bool Create(wxWindow* parent, wxWindowID winid, const wxString& fileName = "", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& szBackend = "", const wxValidator& val = wxDefaultValidator, const wxString& name = "wxMediaCtrl" );
 static int LUACALL wxLua_wxMediaCtrl_Create(lua_State *L)
 {
     // get number of arguments
@@ -105,7 +105,7 @@ static int LUACALL wxLua_wxMediaCtrl_GetDownloadTotal(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_GetState[] = { &wxluatype_wxMediaCtrl, NULL };
 static int LUACALL wxLua_wxMediaCtrl_GetState(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_GetState[1] = {{ wxLua_wxMediaCtrl_GetState, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMediaCtrl_GetState }};
-//     wxMediaState GetState( );
+//     wxMediaState GetState();
 static int LUACALL wxLua_wxMediaCtrl_GetState(lua_State *L)
 {
     // get this
@@ -121,7 +121,7 @@ static int LUACALL wxLua_wxMediaCtrl_GetState(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_GetVolume1[] = { &wxluatype_wxMediaCtrl, NULL };
 static int LUACALL wxLua_wxMediaCtrl_GetVolume1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_GetVolume1[1] = {{ wxLua_wxMediaCtrl_GetVolume1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMediaCtrl_GetVolume1 }};
-//     double GetVolume( );
+//     double GetVolume();
 static int LUACALL wxLua_wxMediaCtrl_GetVolume1(lua_State *L)
 {
     // get this
@@ -137,7 +137,7 @@ static int LUACALL wxLua_wxMediaCtrl_GetVolume1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_GetVolume[] = { &wxluatype_wxMediaCtrl, NULL };
 static int LUACALL wxLua_wxMediaCtrl_GetVolume(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_GetVolume[1] = {{ wxLua_wxMediaCtrl_GetVolume, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMediaCtrl_GetVolume }};
-//     double GetVolume( );
+//     double GetVolume();
 static int LUACALL wxLua_wxMediaCtrl_GetVolume(lua_State *L)
 {
     // get this
@@ -153,7 +153,7 @@ static int LUACALL wxLua_wxMediaCtrl_GetVolume(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_Length[] = { &wxluatype_wxMediaCtrl, NULL };
 static int LUACALL wxLua_wxMediaCtrl_Length(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_Length[1] = {{ wxLua_wxMediaCtrl_Length, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMediaCtrl_Length }};
-//     wxFileOffset Length( );
+//     wxFileOffset Length();
 static int LUACALL wxLua_wxMediaCtrl_Length(lua_State *L)
 {
     // get this
@@ -171,7 +171,7 @@ static int LUACALL wxLua_wxMediaCtrl_Length(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_Load2[] = { &wxluatype_wxMediaCtrl, &wxluatype_wxURI, &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxMediaCtrl_Load2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_Load2[1] = {{ wxLua_wxMediaCtrl_Load2, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxMediaCtrl_Load2 }};
-//     bool Load(const wxURI& location, const wxURI& proxy );
+//     bool Load(const wxURI& location, const wxURI& proxy);
 static int LUACALL wxLua_wxMediaCtrl_Load2(lua_State *L)
 {
     // const wxURI proxy
@@ -191,7 +191,7 @@ static int LUACALL wxLua_wxMediaCtrl_Load2(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_Load1[] = { &wxluatype_wxMediaCtrl, &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxMediaCtrl_Load1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_Load1[1] = {{ wxLua_wxMediaCtrl_Load1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMediaCtrl_Load1 }};
-//     bool Load(const wxURI& location );
+//     bool Load(const wxURI& location);
 static int LUACALL wxLua_wxMediaCtrl_Load1(lua_State *L)
 {
     // const wxURI location
@@ -211,7 +211,7 @@ static int LUACALL wxLua_wxMediaCtrl_Load1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_Load[] = { &wxluatype_wxMediaCtrl, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxMediaCtrl_Load(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_Load[1] = {{ wxLua_wxMediaCtrl_Load, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMediaCtrl_Load }};
-//     bool Load(const wxString& fileName );
+//     bool Load(const wxString& fileName);
 static int LUACALL wxLua_wxMediaCtrl_Load(lua_State *L)
 {
     // const wxString fileName
@@ -267,7 +267,7 @@ static int LUACALL wxLua_wxMediaCtrl_LoadURIWithProxy(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_Pause[] = { &wxluatype_wxMediaCtrl, NULL };
 static int LUACALL wxLua_wxMediaCtrl_Pause(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_Pause[1] = {{ wxLua_wxMediaCtrl_Pause, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMediaCtrl_Pause }};
-//     bool Pause( );
+//     bool Pause();
 static int LUACALL wxLua_wxMediaCtrl_Pause(lua_State *L)
 {
     // get this
@@ -283,7 +283,7 @@ static int LUACALL wxLua_wxMediaCtrl_Pause(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_Play[] = { &wxluatype_wxMediaCtrl, NULL };
 static int LUACALL wxLua_wxMediaCtrl_Play(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_Play[1] = {{ wxLua_wxMediaCtrl_Play, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMediaCtrl_Play }};
-//     bool Play( );
+//     bool Play();
 static int LUACALL wxLua_wxMediaCtrl_Play(lua_State *L)
 {
     // get this
@@ -301,7 +301,7 @@ static int LUACALL wxLua_wxMediaCtrl_Play(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_Seek[] = { &wxluatype_wxMediaCtrl, &wxluatype_TINTEGER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxMediaCtrl_Seek(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_Seek[1] = {{ wxLua_wxMediaCtrl_Seek, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxMediaCtrl_Seek }};
-//     wxFileOffset Seek(wxFileOffset where, wxSeekMode mode = wxFromStart );
+//     wxFileOffset Seek(wxFileOffset where, wxSeekMode mode = wxFromStart);
 static int LUACALL wxLua_wxMediaCtrl_Seek(lua_State *L)
 {
     // get number of arguments
@@ -325,7 +325,7 @@ static int LUACALL wxLua_wxMediaCtrl_Seek(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_SetVolume[] = { &wxluatype_wxMediaCtrl, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxMediaCtrl_SetVolume(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_SetVolume[1] = {{ wxLua_wxMediaCtrl_SetVolume, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMediaCtrl_SetVolume }};
-//     bool SetVolume(double dVolume );
+//     bool SetVolume(double dVolume);
 static int LUACALL wxLua_wxMediaCtrl_SetVolume(lua_State *L)
 {
     // double dVolume
@@ -343,7 +343,7 @@ static int LUACALL wxLua_wxMediaCtrl_SetVolume(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_ShowPlayerControls[] = { &wxluatype_wxMediaCtrl, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxMediaCtrl_ShowPlayerControls(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_ShowPlayerControls[1] = {{ wxLua_wxMediaCtrl_ShowPlayerControls, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxMediaCtrl_ShowPlayerControls }};
-//     bool ShowPlayerControls(wxMediaCtrlPlayerControls flags = wxMEDIACTRLPLAYERCONTROLS_DEFAULT );
+//     bool ShowPlayerControls(wxMediaCtrlPlayerControls flags = wxMEDIACTRLPLAYERCONTROLS_DEFAULT);
 static int LUACALL wxLua_wxMediaCtrl_ShowPlayerControls(lua_State *L)
 {
     // get number of arguments
@@ -363,7 +363,7 @@ static int LUACALL wxLua_wxMediaCtrl_ShowPlayerControls(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_Stop[] = { &wxluatype_wxMediaCtrl, NULL };
 static int LUACALL wxLua_wxMediaCtrl_Stop(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_Stop[1] = {{ wxLua_wxMediaCtrl_Stop, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMediaCtrl_Stop }};
-//     bool Stop( );
+//     bool Stop();
 static int LUACALL wxLua_wxMediaCtrl_Stop(lua_State *L)
 {
     // get this
@@ -397,7 +397,7 @@ static int LUACALL wxLua_wxMediaCtrl_Tell(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaCtrl_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxMediaCtrl_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_constructor1[1] = {{ wxLua_wxMediaCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 9, s_wxluatypeArray_wxLua_wxMediaCtrl_constructor1 }};
-//     wxMediaCtrl( wxWindow* parent, wxWindowID winid, const wxString& fileName = "", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& szBackend = "", const wxValidator& val = wxDefaultValidator, const wxString& name = "wxMediaCtrl" );
+//     wxMediaCtrl(wxWindow* parent, wxWindowID winid, const wxString& fileName = "", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& szBackend = "", const wxValidator& val = wxDefaultValidator, const wxString& name = "wxMediaCtrl");
 static int LUACALL wxLua_wxMediaCtrl_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -434,7 +434,7 @@ static int LUACALL wxLua_wxMediaCtrl_constructor1(lua_State *L)
 
 static int LUACALL wxLua_wxMediaCtrl_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaCtrl_constructor[1] = {{ wxLua_wxMediaCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxMediaCtrl( );
+//     wxMediaCtrl();
 static int LUACALL wxLua_wxMediaCtrl_constructor(lua_State *L)
 {
     // call constructor
@@ -559,7 +559,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaEvent_delete[1] = {{ wxlua_userda
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMediaEvent_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxMediaEvent_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMediaEvent_constructor[1] = {{ wxLua_wxMediaEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxMediaEvent_constructor }};
-//     wxMediaEvent(wxEventType commandType = wxEVT_NULL, int winid = 0 );
+//     wxMediaEvent(wxEventType commandType = wxEVT_NULL, int winid = 0);
 static int LUACALL wxLua_wxMediaEvent_constructor(lua_State *L)
 {
     // get number of arguments

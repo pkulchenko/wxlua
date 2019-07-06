@@ -9,9 +9,9 @@
 
 #if wxLUA_USE_wxLog && wxUSE_LOG
 
-// C++ Func: void wxLogStatus(wxFrame *frame, const char *formatString, ... );
+// C++ Func: void wxLogStatus(wxFrame *frame, const char *formatString, ...);
 // void wxLogStatus(const char *formatString, ...); // this just uses the toplevel frame, use wx.NULL for the frame
-void wxLogStatus(wxFrame *frame, const wxString& message );
+void wxLogStatus(wxFrame *frame, const wxString& message);
 
 // ---------------------------------------------------------------------------
 // wxLogGui - wxWidgets creates and installs one of these at startup,
@@ -21,7 +21,7 @@ void wxLogStatus(wxFrame *frame, const wxString& message );
 
 class %delete wxLogGui : public wxLog
 {
-    wxLogGui( );
+    wxLogGui();
 };
 
 #endif // wxUSE_LOGGUI
@@ -47,12 +47,12 @@ class %delete wxLogWindow : public wxLogPassThrough
 {
     wxLogWindow(wxWindow *pParent, const wxString& szTitle, bool bShow = true, bool bPassToOld = true);
 
-    void Show(bool show = true );
+    void Show(bool show = true);
     wxFrame* GetFrame() const;
 
-    //virtual void OnFrameCreate(wxFrame *frame );
-    //virtual bool OnFrameClose(wxFrame *frame );
-    //virtual void OnFrameDelete(wxFrame *frame );
+    //virtual void OnFrameCreate(wxFrame *frame);
+    //virtual bool OnFrameClose(wxFrame *frame);
+    //virtual void OnFrameDelete(wxFrame *frame);
 };
 
 #endif // wxLUA_USE_wxLogWindow && wxUSE_LOGWINDOW
@@ -181,13 +181,13 @@ class wxSystemSettings
 {
     //wxSystemSettings(); // No constructor, all members static
 
-    static wxColour GetColour(wxSystemColour index );
-    static wxFont   GetFont(wxSystemFont index );
-    static int      GetMetric(wxSystemMetric index, wxWindow* win = NULL );
-    static bool     HasFeature(wxSystemFeature index );
+    static wxColour GetColour(wxSystemColour index);
+    static wxFont   GetFont(wxSystemFont index);
+    static int      GetMetric(wxSystemMetric index, wxWindow* win = NULL);
+    static bool     HasFeature(wxSystemFeature index);
 
-    static wxSystemScreenType GetScreenType( );
-    static void     SetScreenType( wxSystemScreenType screen );
+    static wxSystemScreenType GetScreenType();
+    static void     SetScreenType(wxSystemScreenType screen);
 };
 
 #endif //wxLUA_USE_wxSystemSettings
@@ -206,13 +206,13 @@ class wxValidator : public wxEvtHandler
 
     // No constructor as this is a base class
 
-    static bool IsSilent( );
+    static bool IsSilent();
     wxWindow* GetWindow() const;
     !%wxchkver_2_9 || %wxcompat_2_8 static void SetBellOnError(bool doIt = true);
-    void SetWindow(wxWindow* window );
-    virtual bool TransferFromWindow( );
-    virtual bool TransferToWindow( );
-    virtual bool Validate(wxWindow* parent );
+    void SetWindow(wxWindow* window);
+    virtual bool TransferFromWindow();
+    virtual bool TransferToWindow();
+    virtual bool Validate(wxWindow* parent);
 };
 
 // ---------------------------------------------------------------------------
@@ -234,16 +234,16 @@ class wxValidator : public wxEvtHandler
 
 class %delete wxTextValidator : public wxValidator
 {
-    // %override wxTextValidator(long style = wxFILTER_NONE, wxLuaObject* obj );
-    // C++ Func: wxTextValidator(long style = wxFILTER_NONE, wxString *valPtr = NULL );
-    wxTextValidator(long style = wxFILTER_NONE, wxLuaObject* stringObj = NULL );
+    // %override wxTextValidator(long style = wxFILTER_NONE, wxLuaObject* obj);
+    // C++ Func: wxTextValidator(long style = wxFILTER_NONE, wxString *valPtr = NULL);
+    wxTextValidator(long style = wxFILTER_NONE, wxLuaObject* stringObj = NULL);
 
-    %wxchkver_2_6 wxArrayString& GetExcludes( );
-    %wxchkver_2_6 wxArrayString& GetIncludes( );
+    %wxchkver_2_6 wxArrayString& GetExcludes();
+    %wxchkver_2_6 wxArrayString& GetIncludes();
     long GetStyle() const;
-    void SetStyle(long style );
-    %wxchkver_2_6 void SetIncludes(const wxArrayString& includes );
-    %wxchkver_2_6 void SetExcludes(const wxArrayString& excludes );
+    void SetStyle(long style);
+    %wxchkver_2_6 void SetIncludes(const wxArrayString& includes);
+    %wxchkver_2_6 void SetExcludes(const wxArrayString& excludes);
 };
 
 #endif //wxLUA_USE_wxTextValidator
@@ -259,25 +259,25 @@ class %delete wxGenericValidator : public wxValidator
 {
     // See the validator.wx.Lua sample for usage of this class
 
-    // %override wxGenericValidatorBool(wxLuaObject* boolObj );
-    // C++ Func: wxGenericValidator(bool *boolPtr );
+    // %override wxGenericValidatorBool(wxLuaObject* boolObj);
+    // C++ Func: wxGenericValidator(bool *boolPtr);
     // for wxCheckBox and wxRadioButton
-    %rename wxGenericValidatorBool wxGenericValidator(wxLuaObject* boolObj );
+    %rename wxGenericValidatorBool wxGenericValidator(wxLuaObject* boolObj);
 
-    // %override wxGenericValidatorString(wxLuaObject* stringObj );
-    // C++ Func: wxGenericValidator(wxString *valPtr );
+    // %override wxGenericValidatorString(wxLuaObject* stringObj);
+    // C++ Func: wxGenericValidator(wxString *valPtr);
     // for wxButton and wxComboBox, wxStaticText and wxTextCtrl
-    %rename wxGenericValidatorString wxGenericValidator(wxLuaObject* stringObj );
+    %rename wxGenericValidatorString wxGenericValidator(wxLuaObject* stringObj);
 
-    // %override wxGenericValidatorInt(wxLuaObject* intObj );
-    // C++ Func: wxGenericValidator(int *valPtr );
+    // %override wxGenericValidatorInt(wxLuaObject* intObj);
+    // C++ Func: wxGenericValidator(int *valPtr);
     // for wxGauge, wxScrollBar, wxRadioBox, wxSpinButton, wxChoice
-    %rename wxGenericValidatorInt wxGenericValidator(wxLuaObject* intObj );
+    %rename wxGenericValidatorInt wxGenericValidator(wxLuaObject* intObj);
 
-    // %override wxGenericValidatorArrayInt(wxLuaObject* intTableObj );
-    // C++ Func: wxGenericValidator(wxArrayInt *valPtr );
+    // %override wxGenericValidatorArrayInt(wxLuaObject* intTableObj);
+    // C++ Func: wxGenericValidator(wxArrayInt *valPtr);
     // for wxListBox and wxCheckListBox
-    %rename wxGenericValidatorArrayInt wxGenericValidator(wxLuaObject* intTableObj );
+    %rename wxGenericValidatorArrayInt wxGenericValidator(wxLuaObject* intTableObj);
 };
 
 #endif //wxLUA_USE_wxGenericValidator
@@ -293,17 +293,17 @@ class %delete wxGenericValidator : public wxValidator
 
 class %delete wxMemoryFSHandler : public wxFileSystemHandler
 {
-    wxMemoryFSHandler( );
+    wxMemoryFSHandler();
 
     // Remove file from memory FS and free occupied memory
     static void RemoveFile(const wxString& filename);
 
     static void AddFile(const wxString& filename, const wxString& textdata);
-    //static void AddFile(const wxString& filename, const void *binarydata, size_t size );
+    //static void AddFile(const wxString& filename, const void *binarydata, size_t size);
 
 #if %wxchkver_2_8_5
     static void AddFileWithMimeType(const wxString& filename, const wxString& textdata, const wxString& mimetype);
-    //static void AddFileWithMimeType(const wxString& filename, const void *binarydata, size_t size, const wxString& mimetype );
+    //static void AddFileWithMimeType(const wxString& filename, const void *binarydata, size_t size, const wxString& mimetype);
 #endif // %wxchkver_2_8_5
 
 #if wxUSE_IMAGE

@@ -66,58 +66,58 @@ class wxSocketBase : public wxObject
 {
     // wxSocketBase() - No constructor, base class
 
-    void Close( );
-    bool Destroy( );
-    void Discard( );
+    void Close();
+    bool Destroy();
+    void Discard();
     bool Error() const;
     voidptr_long GetClientData() const; // C++ returns (void *) You get a number here
     bool GetLocal(wxSockAddress& addr) const;
     wxSocketFlags GetFlags() const;
     bool GetPeer(wxSockAddress& addr) const;
-    void InterruptWait( );
+    void InterruptWait();
     bool IsConnected() const;
     bool IsData() const;
     bool IsDisconnected() const;
     unsigned long LastCount() const;
     wxSocketError LastError() const; // %gtk|%mac causes link error with Borland C++ w/DLL not exported?
-    void Notify(bool notify );
+    void Notify(bool notify);
     bool Ok() const;
-    void RestoreState( );
-    void SaveState( );
+    void RestoreState();
+    void SaveState();
     void SetClientData(voidptr_long number); // C++ is (void *clientData) You can put a number here
-    void SetEventHandler(wxEvtHandler& handler, int id = -1 );
-    void SetFlags(wxSocketFlags flags );
-    void SetNotify(wxSocketEventFlags flags );
-    void SetTimeout(int seconds );
+    void SetEventHandler(wxEvtHandler& handler, int id = -1);
+    void SetFlags(wxSocketFlags flags);
+    void SetNotify(wxSocketEventFlags flags);
+    void SetTimeout(int seconds);
 
-    // %override [Lua string] wxSocketBase::Peek(unsigned long nbytes );
-    // C++ Func: void Peek(void * buffer, unsigned long nbytes );
-    void Peek(unsigned long nbytes );
+    // %override [Lua string] wxSocketBase::Peek(unsigned long nbytes);
+    // C++ Func: void Peek(void * buffer, unsigned long nbytes);
+    void Peek(unsigned long nbytes);
 
-    // %override [Lua string] wxSocketBase::Read(unsigned long nbytes );
-    // C++ Func: void Read(unsigned long nbytes );
-    void Read(void * buffer, unsigned long nbytes );
+    // %override [Lua string] wxSocketBase::Read(unsigned long nbytes);
+    // C++ Func: void Read(unsigned long nbytes);
+    void Read(void * buffer, unsigned long nbytes);
 
-    // %override [Lua string] wxSocketBase::ReadMsg(unsigned long nbytes );
-    // C++ Func: void ReadMsg(void * buffer, unsigned long nbytes );
-    void ReadMsg(unsigned long nbytes );
+    // %override [Lua string] wxSocketBase::ReadMsg(unsigned long nbytes);
+    // C++ Func: void ReadMsg(void * buffer, unsigned long nbytes);
+    void ReadMsg(unsigned long nbytes);
 
-    // %override void wxSocketBase::Unread(Lua string, [optional unsigned long nbytes] );
-    // C++ Func: void Unread(const void * buffer, unsigned long nbytes );
-    void Unread(const char* buffer, unsigned long nbytes );
+    // %override void wxSocketBase::Unread(Lua string, [optional unsigned long nbytes]);
+    // C++ Func: void Unread(const void * buffer, unsigned long nbytes);
+    void Unread(const char* buffer, unsigned long nbytes);
 
-    bool Wait(long seconds = -1, long millisecond = 0 );
-    bool WaitForLost(long seconds = -1, long millisecond = 0 );
-    bool WaitForRead(long seconds = -1, long millisecond = 0 );
-    bool WaitForWrite(long seconds = -1, long millisecond = 0 );
+    bool Wait(long seconds = -1, long millisecond = 0);
+    bool WaitForLost(long seconds = -1, long millisecond = 0);
+    bool WaitForRead(long seconds = -1, long millisecond = 0);
+    bool WaitForWrite(long seconds = -1, long millisecond = 0);
 
-    // %override void wxSocketBase::Write(Lua string, [optional unsigned long nbytes] );
-    // C++ Func: void Write(const void * buffer, unsigned long nbytes );
-    void Write(const char* buffer, unsigned long nbytes );
+    // %override void wxSocketBase::Write(Lua string, [optional unsigned long nbytes]);
+    // C++ Func: void Write(const void * buffer, unsigned long nbytes);
+    void Write(const char* buffer, unsigned long nbytes);
 
-    // %override void wxSocketBase::WriteMsg(Lua string, [optional unsigned long nbytes] );
-    // C++ Func: void WriteMsg(const void * buffer, wxUint32 nbytes );
-    void WriteMsg(const char* buffer, wxUint32 nbytes );
+    // %override void wxSocketBase::WriteMsg(Lua string, [optional unsigned long nbytes]);
+    // C++ Func: void WriteMsg(const void * buffer, wxUint32 nbytes);
+    void WriteMsg(const char* buffer, wxUint32 nbytes);
 };
 
 // ---------------------------------------------------------------------------
@@ -125,10 +125,10 @@ class wxSocketBase : public wxObject
 
 class %delete wxSocketClient : public wxSocketBase
 {
-    wxSocketClient(wxSocketFlags flags = wxSOCKET_NONE );
+    wxSocketClient(wxSocketFlags flags = wxSOCKET_NONE);
 
-    bool Connect(wxSockAddress& address, bool wait = true );
-    bool WaitOnConnect(long seconds = -1, long milliseconds = 0 );
+    bool Connect(wxSockAddress& address, bool wait = true);
+    bool WaitOnConnect(long seconds = -1, long milliseconds = 0);
 };
 
 // ---------------------------------------------------------------------------
@@ -136,11 +136,11 @@ class %delete wxSocketClient : public wxSocketBase
 
 class %delete wxSocketServer : public wxSocketBase
 {
-    wxSocketServer(wxSockAddress& address, wxSocketFlags flags = wxSOCKET_NONE );
+    wxSocketServer(wxSockAddress& address, wxSocketFlags flags = wxSOCKET_NONE);
 
-    wxSocketBase* Accept(bool wait = true );
-    bool AcceptWith(wxSocketBase& socket, bool wait = true );
-    bool WaitForAccept(long seconds = -1, long millisecond = 0 );
+    wxSocketBase* Accept(bool wait = true);
+    bool AcceptWith(wxSocketBase& socket, bool wait = true);
+    bool WaitForAccept(long seconds = -1, long millisecond = 0);
 };
 
 // ---------------------------------------------------------------------------
@@ -148,9 +148,9 @@ class %delete wxSocketServer : public wxSocketBase
 
 class %delete wxSocketEvent : public wxEvent
 {
-    %wxEventType wxEVT_SOCKET // EVT_SOCKET(id, func );
+    %wxEventType wxEVT_SOCKET // EVT_SOCKET(id, func);
 
-    wxSocketEvent(int id = 0 );
+    wxSocketEvent(int id = 0);
 
     voidptr_long GetClientData(); // C++ returns (void *) You get a number here
     wxSocketBase * GetSocket() const;
@@ -164,7 +164,7 @@ class wxSockAddress : public wxObject
 {
     // wxSockAddress() virtual base class
 
-    void Clear( );
+    void Clear();
     //int  SockAddrLen(); // Does not exist
 };
 
@@ -175,16 +175,16 @@ class %delete wxIPaddress : public wxSockAddress
 {
     //wxIPaddress() virtual base class
 
-    bool Hostname(const wxString& hostname );
+    bool Hostname(const wxString& hostname);
     //bool Hostname(unsigned long addr); // pure virtual, fun in derived classes
-    wxString Hostname( );
-    wxString  IPAddress( );
-    bool Service(const wxString& service );
-    bool Service(unsigned short service );
-    unsigned short Service( );
-    bool AnyAddress( );
-    bool LocalHost( );
-    virtual bool IsLocalHost( );
+    wxString Hostname();
+    wxString  IPAddress();
+    bool Service(const wxString& service);
+    bool Service(unsigned short service);
+    unsigned short Service();
+    bool AnyAddress();
+    bool LocalHost();
+    virtual bool IsLocalHost();
 };
 
 // ---------------------------------------------------------------------------
@@ -192,18 +192,18 @@ class %delete wxIPaddress : public wxSockAddress
 
 class %delete wxIPV4address : public wxIPaddress
 {
-    wxIPV4address( );
+    wxIPV4address();
     wxIPV4address(const wxIPV4address& other);
 
-    //bool Hostname(const wxString& hostname );
-    bool Hostname(unsigned long addr );
-    //wxString Hostname( );
-    //wxString  IPAddress( );
-    //bool Service(const wxString& service );
-    //bool Service(unsigned short service );
-    //unsigned short Service( );
-    //bool AnyAddress( );
-    //bool LocalHost( );
+    //bool Hostname(const wxString& hostname);
+    bool Hostname(unsigned long addr);
+    //wxString Hostname();
+    //wxString  IPAddress();
+    //bool Service(const wxString& service);
+    //bool Service(unsigned short service);
+    //unsigned short Service();
+    //bool AnyAddress();
+    //bool LocalHost();
 };
 
 // ---------------------------------------------------------------------------
@@ -231,13 +231,13 @@ class %delete wxProtocol : public wxSocketClient
 {
     //wxProtocol() virtual base class
 
-    bool Reconnect( );
-    wxInputStream *GetInputStream(const wxString& path );
-    bool Abort( );
-    wxProtocolError GetError( );
-    wxString GetContentType( );
-    void SetUser(const wxString& user );
-    void SetPassword(const wxString& user );
+    bool Reconnect();
+    wxInputStream *GetInputStream(const wxString& path);
+    bool Abort();
+    wxProtocolError GetError();
+    wxString GetContentType();
+    void SetUser(const wxString& user);
+    void SetPassword(const wxString& user);
 };
 
 #endif //wxUSE_PROTOCOL
@@ -251,12 +251,12 @@ class %delete wxProtocol : public wxSocketClient
 
 class %delete wxHTTP : public wxProtocol
 {
-    wxHTTP( );
+    wxHTTP();
 
     int GetResponse() const;
     // wxInputStream *GetInputStream(const wxString& path) - see wxProtocol
-    void SetHeader(const wxString& header, const wxString& h_data );
-    wxString GetHeader(const wxString& header );
+    void SetHeader(const wxString& header, const wxString& h_data);
+    wxString GetHeader(const wxString& header);
 };
 
 #endif //wxUSE_PROTOCOL_HTTP
@@ -277,29 +277,29 @@ enum wxFTP::TransferMode
 
 class %delete wxFTP : public wxProtocol
 {
-    wxFTP( );
+    wxFTP();
 
-    //bool Abort( );
-    bool CheckCommand(const wxString& command, char ret );
-    char SendCommand(const wxString& command );
-    wxString GetLastResult( );
-    bool ChDir(const wxString& dir );
-    bool MkDir(const wxString& dir );
-    bool RmDir(const wxString& dir );
-    wxString Pwd( );
-    bool Rename(const wxString& src, const wxString& dst );
-    bool RmFile(const wxString& path );
-    bool SetAscii( );
-    bool SetBinary( );
-    void SetPassive(bool pasv );
-    bool SetTransferMode(wxFTP::TransferMode mode );
+    //bool Abort();
+    bool CheckCommand(const wxString& command, char ret);
+    char SendCommand(const wxString& command);
+    wxString GetLastResult();
+    bool ChDir(const wxString& dir);
+    bool MkDir(const wxString& dir);
+    bool RmDir(const wxString& dir);
+    wxString Pwd();
+    bool Rename(const wxString& src, const wxString& dst);
+    bool RmFile(const wxString& path);
+    bool SetAscii();
+    bool SetBinary();
+    void SetPassive(bool pasv);
+    bool SetTransferMode(wxFTP::TransferMode mode);
     // void SetUser(const wxString& user) - see wxProtocol
     // void SetPassword(const wxString& passwd) - see wxProtocol
-    bool FileExists(const wxString& filename );
-    int GetFileSize(const wxString& filename );
-    bool GetDirList(wxArrayString& files, const wxString& wildcard = "" );
-    bool GetFilesList(wxArrayString& files, const wxString& wildcard = "" );
-    wxOutputStream * GetOutputStream(const wxString& file );
+    bool FileExists(const wxString& filename);
+    int GetFileSize(const wxString& filename);
+    bool GetDirList(wxArrayString& files, const wxString& wildcard = "");
+    bool GetFilesList(wxArrayString& files, const wxString& wildcard = "");
+    wxOutputStream * GetOutputStream(const wxString& file);
     // wxInputStream * GetInputStream(const wxString& path) - see wxProtocol
 };
 
@@ -336,12 +336,12 @@ enum wxURIFlags
 
 class %delete wxURI : public wxObject
 {
-    wxURI( );
-    wxURI(const wxString& uri );
-    wxURI(const wxURI& uri );
+    wxURI();
+    wxURI(const wxString& uri);
+    wxURI(const wxURI& uri);
 
-    %wxchkver_2_9_2 bool Create(const wxString& uri );
-    !%wxchkver_2_9_2 wxString Create(const wxString& uri );
+    %wxchkver_2_9_2 bool Create(const wxString& uri);
+    !%wxchkver_2_9_2 wxString Create(const wxString& uri);
 
     bool HasScheme() const;
     bool HasUserInfo() const;
@@ -362,9 +362,9 @@ class %delete wxURI : public wxObject
     wxString GetPassword() const;
     wxString BuildURI() const;
     wxString BuildUnescapedURI() const;
-    void Resolve(const wxURI& base, int flags = wxURI_STRICT );
+    void Resolve(const wxURI& base, int flags = wxURI_STRICT);
     bool IsReference() const;
-    static wxString Unescape (const wxString& szEscapedURI );
+    static wxString Unescape (const wxString& szEscapedURI);
 
     wxURI& operator = (const wxURI& uri);
     //wxURI& operator = (const wxString& string);
@@ -391,18 +391,18 @@ enum wxURLError
 
 class %delete wxURL : public wxURI
 {
-    wxURL(const wxString& sUrl );
-    wxURL(const wxURI& url );
+    wxURL(const wxString& sUrl);
+    wxURL(const wxURI& url);
 
-    wxProtocol& GetProtocol( );
+    wxProtocol& GetProtocol();
     wxURLError GetError() const;
     wxString GetURL() const;
 
-    wxInputStream *GetInputStream( );
+    wxInputStream *GetInputStream();
 
 #if wxUSE_PROTOCOL_HTTP
-    static void SetDefaultProxy(const wxString& url_proxy );
-    void SetProxy(const wxString& url_proxy );
+    static void SetDefaultProxy(const wxString& url_proxy);
+    void SetProxy(const wxString& url_proxy);
 #endif // wxUSE_PROTOCOL_HTTP
 
     //wxURL& operator = (const wxString& url);
@@ -442,7 +442,7 @@ class %delete wxURL : public wxURI
 //{
 //    // no constructor virtual base class
 //
-//    bool Advise(const wxString& item, char* data, int size = -1, wxIPCFormat format = wxCF_TEXT );
+//    bool Advise(const wxString& item, char* data, int size = -1, wxIPCFormat format = wxCF_TEXT);
 //};
 //
 // ---------------------------------------------------------------------------
@@ -450,7 +450,7 @@ class %delete wxURL : public wxURI
 //
 //class wxConnection : public wxConnectionBase
 //{
-//    wxConnection( );
+//    wxConnection();
 //};
 //
 // ---------------------------------------------------------------------------
@@ -458,11 +458,11 @@ class %delete wxURL : public wxURI
 //
 //class wxClient : public wxObject
 //{
-//     wxClient( );
-//     wxConnectionBase * MakeConnection(const wxString& host, const wxString& service, const wxString& topic );
+//     wxClient();
+//     wxConnectionBase * MakeConnection(const wxString& host, const wxString& service, const wxString& topic);
 //
-//     //virtual wxConnectionBase * OnMakeConnection( );
-//     bool ValidHost(const wxString& host );
+//     //virtual wxConnectionBase * OnMakeConnection();
+//     bool ValidHost(const wxString& host);
 //};
 //
 

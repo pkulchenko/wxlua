@@ -19,14 +19,14 @@
 
 class %delete wxContextHelp : public wxObject
 {
-    wxContextHelp(wxWindow* win = NULL, bool beginHelp = true );
+    wxContextHelp(wxWindow* win = NULL, bool beginHelp = true);
 
-    bool BeginContextHelp(wxWindow* win );
-    bool EndContextHelp( );
+    bool BeginContextHelp(wxWindow* win);
+    bool EndContextHelp();
 
-    //bool EventLoop( );
-    //bool DispatchEvent(wxWindow* win, const wxPoint& pt );
-    //void SetStatus(bool status );
+    //bool EventLoop();
+    //bool DispatchEvent(wxWindow* win, const wxPoint& pt);
+    //void SetStatus(bool status);
 };
 
 // ---------------------------------------------------------------------------
@@ -38,9 +38,9 @@ class %delete wxContextHelp : public wxObject
 
 class wxContextHelpButton : public wxBitmapButton
 {
-    wxContextHelpButton(wxWindow* parent, wxWindowID id = wxID_CONTEXT_HELP, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxBU_AUTODRAW );
+    wxContextHelpButton(wxWindow* parent, wxWindowID id = wxID_CONTEXT_HELP, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxBU_AUTODRAW);
 
-    //void OnContextHelp(wxCommandEvent& event );
+    //void OnContextHelp(wxCommandEvent& event);
 };
 
 #endif //wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON
@@ -55,14 +55,14 @@ class %delete wxHelpProvider
     // Note that the wxHelpProviderModule will delete the set wxHelpProvider
     // so you do not have to delete() it when the program exits. However,
     // if you set a different wxHelpProvider you must delete() the previous one.
-    static %gc wxHelpProvider *Set(%ungc wxHelpProvider *helpProvider );
-    static wxHelpProvider *Get( );
+    static %gc wxHelpProvider *Set(%ungc wxHelpProvider *helpProvider);
+    static wxHelpProvider *Get();
     virtual wxString GetHelp(const wxWindow *window); // pure virtual
-    %wxchkver_2_8 virtual bool ShowHelpAtPoint(wxWindow *window, const wxPoint& pt, wxHelpEvent::Origin origin );
-    virtual bool ShowHelp(wxWindow *window );
-    virtual void AddHelp(wxWindow *window, const wxString& text );
-    //virtual void AddHelp(wxWindowID id, const wxString& text );
-    virtual void RemoveHelp(wxWindow* window );
+    %wxchkver_2_8 virtual bool ShowHelpAtPoint(wxWindow *window, const wxPoint& pt, wxHelpEvent::Origin origin);
+    virtual bool ShowHelp(wxWindow *window);
+    virtual void AddHelp(wxWindow *window, const wxString& text);
+    //virtual void AddHelp(wxWindowID id, const wxString& text);
+    virtual void RemoveHelp(wxWindow* window);
 };
 
 // ---------------------------------------------------------------------------
@@ -70,7 +70,7 @@ class %delete wxHelpProvider
 
 class %delete wxSimpleHelpProvider : public wxHelpProvider
 {
-    wxSimpleHelpProvider( );
+    wxSimpleHelpProvider();
 };
 
 // ---------------------------------------------------------------------------
@@ -78,11 +78,11 @@ class %delete wxSimpleHelpProvider : public wxHelpProvider
 
 class %delete wxHelpControllerHelpProvider : public wxSimpleHelpProvider
 {
-    wxHelpControllerHelpProvider(wxHelpController* hc = NULL );
+    wxHelpControllerHelpProvider(wxHelpController* hc = NULL);
 
     // The wxHelpController you set must exist for the life of this.
     // And this will not delete() it when done.
-    void SetHelpController(wxHelpController* hc );
+    void SetHelpController(wxHelpController* hc);
     wxHelpController* GetHelpController() const;
 };
 
@@ -111,27 +111,27 @@ class %delete wxHelpControllerBase : public wxObject
 {
     //wxHelpControllerBase() - base class no constructor
 
-    virtual void Initialize(const wxString& file );
+    virtual void Initialize(const wxString& file);
     // virtual void Initialize(const wxString& file, int server) - marked obsolete
-    virtual bool DisplayBlock(long blockNo );
-    virtual bool DisplayContents( );
-    virtual bool DisplayContextPopup(int contextId );
-    virtual bool DisplaySection(int sectionNo );
-    virtual bool DisplaySection(const wxString &section );
-    virtual bool DisplayTextPopup(const wxString& text, const wxPoint& pos );
+    virtual bool DisplayBlock(long blockNo);
+    virtual bool DisplayContents();
+    virtual bool DisplayContextPopup(int contextId);
+    virtual bool DisplaySection(int sectionNo);
+    virtual bool DisplaySection(const wxString &section);
+    virtual bool DisplayTextPopup(const wxString& text, const wxPoint& pos);
 
-    // %override [wxFrame*, wxSize* size = NULL, wxPoint* pos = NULL, bool *newFrameEachTime = NULL] wxHelpControllerBase::GetFrameParameters( );
-    // C++ Func: virtual wxFrame* GetFrameParameters(wxSize* size = NULL, wxPoint* pos = NULL, bool *newFrameEachTime = NULL );
-    virtual wxFrame* GetFrameParameters( );
+    // %override [wxFrame*, wxSize* size = NULL, wxPoint* pos = NULL, bool *newFrameEachTime = NULL] wxHelpControllerBase::GetFrameParameters();
+    // C++ Func: virtual wxFrame* GetFrameParameters(wxSize* size = NULL, wxPoint* pos = NULL, bool *newFrameEachTime = NULL);
+    virtual wxFrame* GetFrameParameters();
 
     %wxchkver_2_8 virtual wxWindow* GetParentWindow() const;
-    virtual bool KeywordSearch(const wxString& keyWord, wxHelpSearchMode mode = wxHELP_SEARCH_ALL );
-    virtual bool LoadFile(const wxString& file = "" );
-    //virtual bool OnQuit( );
-    virtual void SetFrameParameters(const wxString& title, const wxSize& size, const wxPoint& pos = wxDefaultPosition, bool newFrameEachTime = false );
-    %wxchkver_2_8 virtual void SetParentWindow(wxWindow* win );
-    virtual void SetViewer(const wxString& viewer, long flags );
-    virtual bool Quit( );
+    virtual bool KeywordSearch(const wxString& keyWord, wxHelpSearchMode mode = wxHELP_SEARCH_ALL);
+    virtual bool LoadFile(const wxString& file = "");
+    //virtual bool OnQuit();
+    virtual void SetFrameParameters(const wxString& title, const wxSize& size, const wxPoint& pos = wxDefaultPosition, bool newFrameEachTime = false);
+    %wxchkver_2_8 virtual void SetParentWindow(wxWindow* win);
+    virtual void SetViewer(const wxString& viewer, long flags);
+    virtual bool Quit();
 };
 
 // ---------------------------------------------------------------------------
@@ -139,7 +139,7 @@ class %delete wxHelpControllerBase : public wxObject
 
 class %delete wxHelpController : public wxHelpControllerBase
 {
-    wxHelpController( );
+    wxHelpController();
     //%wxchkver_2_8 wxHelpController(wxWindow* parentWindow = NULL) wxHTMLHelpController takes different params
 };
 
@@ -152,7 +152,7 @@ class %delete wxHelpController : public wxHelpControllerBase
 
 class %delete wxWinHelpController : public wxHelpControllerBase
 {
-    wxWinHelpController( );
+    wxWinHelpController();
 };
 
 #endif //%msw
@@ -164,7 +164,7 @@ class %delete wxWinHelpController : public wxHelpControllerBase
 
 //class %delete wxCHMHelpController : public wxHelpControllerBase
 //{
-//    wxCHMHelpController( );
+//    wxCHMHelpController();
 //};
 
 // ---------------------------------------------------------------------------
@@ -176,7 +176,7 @@ class %delete wxWinHelpController : public wxHelpControllerBase
 
 class %delete wxBestHelpController : public wxHelpControllerBase
 {
-    wxBestHelpController(wxWindow* parentWindow = NULL, int style = wxHF_DEFAULT_STYLE );
+    wxBestHelpController(wxWindow* parentWindow = NULL, int style = wxHF_DEFAULT_STYLE);
 };
 
 #endif //%msw
@@ -190,7 +190,7 @@ class %delete wxBestHelpController : public wxHelpControllerBase
 
 class %delete wxExtHelpController : public wxHelpControllerBase
 {
-    wxExtHelpController( );
+    wxExtHelpController();
 };
 
 #endif //!%win
