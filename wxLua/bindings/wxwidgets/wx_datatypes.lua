@@ -3310,6 +3310,15 @@ wx_dataTypeTable =
     Name = "wxLuaPrintout",
     ValueType = "class",
   },
+  wxLuaProcess = {
+    BaseClasses = {
+      [1] = "wxProcess",
+    },
+    Condition = "wxLUA_USE_wxProcess",
+    IsNumber = false,
+    Name = "wxLuaProcess",
+    ValueType = "class",
+  },
   wxLuaTextDropTarget = {
     BaseClasses = {
       [1] = "wxTextDropTarget",

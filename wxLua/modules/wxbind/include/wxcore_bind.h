@@ -1114,6 +1114,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 #endif // wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE
 
 #if wxLUA_USE_wxProcess
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxLuaProcess;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxProcess;
 #endif // wxLUA_USE_wxProcess
 

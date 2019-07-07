@@ -999,6 +999,61 @@ static int LUACALL wxLua_wxDatePickerCtrl_GetRange(lua_State *L)
 // Overrides for defsutils.i
 // ----------------------------------------------------------------------------
 
+%override wxLua_wxLuaProcess_Exists
+//     static bool Exists(int pid);
+static int LUACALL wxLua_wxLuaProcess_Exists(lua_State *L)
+{
+    // int pid
+    int pid = (int)wxlua_getnumbertype(L, 1);
+    // call Exists
+    bool returns = (wxProcess::Exists(pid));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+%end
+
+%override wxLua_wxLuaProcess_Kill
+//     static wxKillError Kill(int pid, wxSignal sig = wxSIGTERM, int flags = wxKILL_NOCHILDREN);
+static int LUACALL wxLua_wxLuaProcess_Kill(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int flags = wxKILL_NOCHILDREN
+    int flags = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : wxKILL_NOCHILDREN);
+    // wxSignal sig = wxSIGTERM
+    wxSignal sig = (argCount >= 2 ? (wxSignal)wxlua_getenumtype(L, 2) : wxSIGTERM);
+    // int pid
+    int pid = (int)wxlua_getnumbertype(L, 1);
+    // call Kill
+    wxKillError returns = (wxProcess::Kill(pid, sig, flags));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+%end
+
+%override wxLua_wxLuaProcess_Open
+//     static wxLuaProcess *Open(const wxString& cmd, int flags = wxEXEC_ASYNC);
+static int LUACALL wxLua_wxLuaProcess_Open(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int flags = wxEXEC_ASYNC
+    int flags = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : wxEXEC_ASYNC);
+    // const wxString cmd
+    const wxString cmd = wxlua_getwxStringtype(L, 1);
+    // call Open
+    wxLuaProcess* returns = (wxLuaProcess*)wxProcess::Open(cmd, flags);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxLuaProcess);
+
+    return 1;
+}
+%end
+
 %override wxLua_function_wxKill
 // %function int wxKill(long pid, wxSignal sig = wxSIGTERM, wxKillError *rc = NULL, int flags = 0)
 static int LUACALL wxLua_function_wxKill(lua_State *L)

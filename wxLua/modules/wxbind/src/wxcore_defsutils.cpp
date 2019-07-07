@@ -448,6 +448,160 @@ int wxProcess_methodCount = sizeof(wxProcess_methods)/sizeof(wxLuaBindMethod) - 
 
 #endif  // wxLUA_USE_wxProcess
 
+
+#if wxLUA_USE_wxProcess
+// ---------------------------------------------------------------------------
+// Bind class wxLuaProcess
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxLuaProcess'
+int wxluatype_wxLuaProcess = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaProcess_Exists[] = { &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxLuaProcess_Exists(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaProcess_Exists[1] = {{ wxLua_wxLuaProcess_Exists, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxLuaProcess_Exists }};
+// %override wxLua_wxLuaProcess_Exists
+//     static bool Exists(int pid);
+static int LUACALL wxLua_wxLuaProcess_Exists(lua_State *L)
+{
+    // int pid
+    int pid = (int)wxlua_getnumbertype(L, 1);
+    // call Exists
+    bool returns = (wxProcess::Exists(pid));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaProcess_Kill[] = { &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxLuaProcess_Kill(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaProcess_Kill[1] = {{ wxLua_wxLuaProcess_Kill, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 3, s_wxluatypeArray_wxLua_wxLuaProcess_Kill }};
+// %override wxLua_wxLuaProcess_Kill
+//     static wxKillError Kill(int pid, wxSignal sig = wxSIGTERM, int flags = wxKILL_NOCHILDREN);
+static int LUACALL wxLua_wxLuaProcess_Kill(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int flags = wxKILL_NOCHILDREN
+    int flags = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : wxKILL_NOCHILDREN);
+    // wxSignal sig = wxSIGTERM
+    wxSignal sig = (argCount >= 2 ? (wxSignal)wxlua_getenumtype(L, 2) : wxSIGTERM);
+    // int pid
+    int pid = (int)wxlua_getnumbertype(L, 1);
+    // call Kill
+    wxKillError returns = (wxProcess::Kill(pid, sig, flags));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaProcess_Open[] = { &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxLuaProcess_Open(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaProcess_Open[1] = {{ wxLua_wxLuaProcess_Open, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 2, s_wxluatypeArray_wxLua_wxLuaProcess_Open }};
+// %override wxLua_wxLuaProcess_Open
+//     static wxLuaProcess *Open(const wxString& cmd, int flags = wxEXEC_ASYNC);
+static int LUACALL wxLua_wxLuaProcess_Open(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int flags = wxEXEC_ASYNC
+    int flags = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : wxEXEC_ASYNC);
+    // const wxString cmd
+    const wxString cmd = wxlua_getwxStringtype(L, 1);
+    // call Open
+    wxLuaProcess* returns = (wxLuaProcess*)wxProcess::Open(cmd, flags);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxLuaProcess);
+
+    return 1;
+}
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaProcess_delete[] = { &wxluatype_wxLuaProcess, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaProcess_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxLuaProcess_delete }};
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaProcess_constructor1[] = { &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxLuaProcess_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaProcess_constructor1[1] = {{ wxLua_wxLuaProcess_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxLuaProcess_constructor1 }};
+//     wxLuaProcess(int flags);
+static int LUACALL wxLua_wxLuaProcess_constructor1(lua_State *L)
+{
+    // int flags
+    int flags = (int)wxlua_getnumbertype(L, 1);
+    // call constructor
+    wxLuaProcess* returns = new wxLuaProcess(flags);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxLuaProcess);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxLuaProcess);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaProcess_constructor[] = { &wxluatype_wxEvtHandler, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxLuaProcess_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaProcess_constructor[1] = {{ wxLua_wxLuaProcess_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxLuaProcess_constructor }};
+//     wxLuaProcess(wxEvtHandler *parent = NULL, int nId = wxID_ANY);
+static int LUACALL wxLua_wxLuaProcess_constructor(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int nId = wxID_ANY
+    int nId = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : wxID_ANY);
+    // wxEvtHandler parent = NULL
+    wxEvtHandler * parent = (argCount >= 1 ? (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler) : NULL);
+    // call constructor
+    wxLuaProcess* returns = new wxLuaProcess(parent, nId);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxLuaProcess);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxLuaProcess);
+
+    return 1;
+}
+
+
+
+
+#if (wxLUA_USE_wxProcess)
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaProcess_constructor_overload[] =
+{
+    { wxLua_wxLuaProcess_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxLuaProcess_constructor1 },
+    { wxLua_wxLuaProcess_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxLuaProcess_constructor },
+};
+static int s_wxluafunc_wxLua_wxLuaProcess_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxLuaProcess_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (wxLUA_USE_wxProcess)
+
+void wxLua_wxLuaProcess_delete_function(void** p)
+{
+    wxLuaProcess* o = (wxLuaProcess*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxLuaProcess_methods[] = {
+    { "Exists", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxLuaProcess_Exists, 1, NULL },
+    { "Kill", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxLuaProcess_Kill, 1, NULL },
+    { "Open", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxLuaProcess_Open, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxLuaProcess_delete, 1, NULL },
+
+#if (wxLUA_USE_wxProcess)
+    { "wxLuaProcess", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxLuaProcess_constructor_overload, s_wxluafunc_wxLua_wxLuaProcess_constructor_overload_count, 0 },
+#endif // (wxLUA_USE_wxProcess)
+
+    { 0, 0, 0, 0 },
+};
+
+int wxLuaProcess_methodCount = sizeof(wxLuaProcess_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxProcess
+
 // ---------------------------------------------------------------------------
 // Bind class wxKeyboardState
 // ---------------------------------------------------------------------------

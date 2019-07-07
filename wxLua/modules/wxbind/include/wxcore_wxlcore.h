@@ -223,13 +223,12 @@ private:
 #endif //wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL
 
 
-
 // ----------------------------------------------------------------------------
 // wxLuaListCtrl - Allows wxLC_VIRTUAL style
 // ----------------------------------------------------------------------------
 #if wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL
 
-#include <wx/listctrl.h>
+#include "wx/listctrl.h"
 
 class WXDLLIMPEXP_BINDWXCORE wxLuaListCtrl : public wxListCtrl
 {
@@ -264,5 +263,26 @@ private:
 #endif //wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL
 
 
-#endif //WX_LUA_WXLCORE_H
+// ----------------------------------------------------------------------------
+// wxLuaProcess - Allows overriding onTerminate event
+// ----------------------------------------------------------------------------
+#if wxLUA_USE_wxProcess
 
+#include "wx/process.h"
+
+class WXDLLIMPEXP_BINDWXCORE wxLuaProcess : public wxProcess
+{
+public:
+    wxLuaProcess(wxEvtHandler *parent = NULL, int nId = wxID_ANY);
+    wxLuaProcess(int flags);
+    static bool Exists(int pid);
+    static wxKillError Kill(int pid, wxSignal sig = wxSIGTERM, int flags = wxKILL_NOCHILDREN);
+    static wxLuaProcess *Open(const wxString& cmd, int flags = wxEXEC_ASYNC);
+    virtual void OnTerminate(int pid, int status);
+private:
+    DECLARE_ABSTRACT_CLASS(wxLuaProcess)
+};
+
+#endif //wxLUA_USE_wxProcess
+
+#endif //WX_LUA_WXLCORE_H

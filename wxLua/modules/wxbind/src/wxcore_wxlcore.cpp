@@ -812,3 +812,30 @@ wxString wxLuaListCtrl::OnGetItemText(long item, long column) const
 }
 
 #endif //wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL
+
+// ----------------------------------------------------------------------------
+// wxLuaProcess - Allows overriding onTerminate event
+// ----------------------------------------------------------------------------
+#if wxLUA_USE_wxProcess
+
+IMPLEMENT_ABSTRACT_CLASS(wxLuaProcess, wxProcess)
+
+extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxLuaProcess;
+
+wxLuaProcess::wxLuaProcess(int flags)
+    : wxProcess(flags)
+{
+}
+
+wxLuaProcess::wxLuaProcess(wxEvtHandler *parent, int nId)
+    : wxProcess(parent, nId)
+{
+}
+
+void wxLuaProcess::OnTerminate(int pid, int status)
+{
+    wxProcessEvent event(m_id, pid, status);
+    ProcessEvent(event);
+}
+
+#endif //WX_LUA_WXLCORE_H

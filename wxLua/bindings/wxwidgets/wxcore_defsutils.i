@@ -99,6 +99,17 @@ class %delete wxProcess : public wxEvtHandler
     wxUSE_STREAMS void SetPipeStreams(wxInputStream *outStream, wxOutputStream *inStream, wxInputStream *errStream); // %add missing in the interface
 };
 
+class %delete wxLuaProcess : public wxProcess
+{
+    wxLuaProcess(wxEvtHandler *parent = NULL, int nId = wxID_ANY);
+    wxLuaProcess(int flags);
+    static bool Exists(int pid);
+    static wxKillError Kill(int pid, wxSignal sig = wxSIGTERM, int flags = wxKILL_NOCHILDREN);
+    static wxLuaProcess *Open(const wxString& cmd, int flags = wxEXEC_ASYNC);
+    // this is a class to overrider onTerminate event to skip object deletion
+    // void OnTerminate(int pid, int status);
+};
+
 #endif //wxLUA_USE_wxProcess
 
 // ---------------------------------------------------------------------------
