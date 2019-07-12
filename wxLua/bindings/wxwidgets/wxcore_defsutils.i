@@ -623,14 +623,17 @@ class %delete wxBusyInfo : public wxObject
 
 class %delete wxTimer : public wxEvtHandler
 {
+    wxTimer();
     wxTimer(wxEvtHandler *owner, int id = -1);
-
+    int GetId() const;
     int      GetInterval() const;
+    wxEvtHandler* GetOwner() const;
     bool     IsOneShot() const;
     bool     IsRunning() const;
     void     Notify();
     void     SetOwner(wxEvtHandler *owner, int id = -1);
     bool     Start(int milliseconds = -1, bool oneShot = false);
+    %wxchkver_2_9_5 bool StartOnce(int milliseconds = -1);
     void     Stop();
 };
 
@@ -643,7 +646,10 @@ class %delete wxTimerEvent : public wxEvent
 {
     %wxEventType wxEVT_TIMER // EVT_TIMER(id, fn);
 
+    // wxTimerEvent(); // this constructor creates incomplete object, so skip it
+    wxTimerEvent(wxTimer& timer);
     int GetInterval() const;
+    wxTimer& GetTimer() const;
 };
 
 #endif //wxLUA_USE_wxTimer && wxUSE_TIMER

@@ -1798,6 +1798,22 @@ int wxBusyInfo_methodCount = sizeof(wxBusyInfo_methods)/sizeof(wxLuaBindMethod) 
 // Lua MetaTable Tag for Class 'wxTimer'
 int wxluatype_wxTimer = WXLUA_TUNKNOWN;
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTimer_GetId[] = { &wxluatype_wxTimer, NULL };
+static int LUACALL wxLua_wxTimer_GetId(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimer_GetId[1] = {{ wxLua_wxTimer_GetId, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimer_GetId }};
+//     int GetId() const;
+static int LUACALL wxLua_wxTimer_GetId(lua_State *L)
+{
+    // get this
+    wxTimer * self = (wxTimer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTimer);
+    // call GetId
+    int returns = (self->GetId());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimer_GetInterval[] = { &wxluatype_wxTimer, NULL };
 static int LUACALL wxLua_wxTimer_GetInterval(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimer_GetInterval[1] = {{ wxLua_wxTimer_GetInterval, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimer_GetInterval }};
@@ -1810,6 +1826,22 @@ static int LUACALL wxLua_wxTimer_GetInterval(lua_State *L)
     int returns = (self->GetInterval());
     // push the result number
     lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTimer_GetOwner[] = { &wxluatype_wxTimer, NULL };
+static int LUACALL wxLua_wxTimer_GetOwner(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimer_GetOwner[1] = {{ wxLua_wxTimer_GetOwner, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimer_GetOwner }};
+//     wxEvtHandler* GetOwner() const;
+static int LUACALL wxLua_wxTimer_GetOwner(lua_State *L)
+{
+    // get this
+    wxTimer * self = (wxTimer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTimer);
+    // call GetOwner
+    wxEvtHandler* returns = (wxEvtHandler*)self->GetOwner();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxEvtHandler);
 
     return 1;
 }
@@ -1902,6 +1934,30 @@ static int LUACALL wxLua_wxTimer_Start(lua_State *L)
     return 1;
 }
 
+
+#if (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxTimer && wxUSE_TIMER)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTimer_StartOnce[] = { &wxluatype_wxTimer, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxTimer_StartOnce(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimer_StartOnce[1] = {{ wxLua_wxTimer_StartOnce, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxTimer_StartOnce }};
+//     %wxchkver_2_9_5 bool StartOnce(int milliseconds = -1);
+static int LUACALL wxLua_wxTimer_StartOnce(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int milliseconds = -1
+    int milliseconds = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : -1);
+    // get this
+    wxTimer * self = (wxTimer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTimer);
+    // call StartOnce
+    bool returns = (self->StartOnce(milliseconds));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxTimer && wxUSE_TIMER)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimer_Stop[] = { &wxluatype_wxTimer, NULL };
 static int LUACALL wxLua_wxTimer_Stop(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimer_Stop[1] = {{ wxLua_wxTimer_Stop, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimer_Stop }};
@@ -1919,11 +1975,11 @@ static int LUACALL wxLua_wxTimer_Stop(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimer_delete[] = { &wxluatype_wxTimer, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimer_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxTimer_delete }};
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxTimer_constructor[] = { &wxluatype_wxEvtHandler, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxTimer_constructor(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimer_constructor[1] = {{ wxLua_wxTimer_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxTimer_constructor }};
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTimer_constructor1[] = { &wxluatype_wxEvtHandler, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxTimer_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimer_constructor1[1] = {{ wxLua_wxTimer_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxTimer_constructor1 }};
 //     wxTimer(wxEvtHandler *owner, int id = -1);
-static int LUACALL wxLua_wxTimer_constructor(lua_State *L)
+static int LUACALL wxLua_wxTimer_constructor1(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
@@ -1941,8 +1997,34 @@ static int LUACALL wxLua_wxTimer_constructor(lua_State *L)
     return 1;
 }
 
+static int LUACALL wxLua_wxTimer_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimer_constructor[1] = {{ wxLua_wxTimer_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxTimer();
+static int LUACALL wxLua_wxTimer_constructor(lua_State *L)
+{
+    // call constructor
+    wxTimer* returns = new wxTimer();
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTimer);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTimer);
+
+    return 1;
+}
 
 
+
+
+#if (wxLUA_USE_wxTimer && wxUSE_TIMER)
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimer_constructor_overload[] =
+{
+    { wxLua_wxTimer_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxTimer_constructor1 },
+    { wxLua_wxTimer_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+};
+static int s_wxluafunc_wxLua_wxTimer_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxTimer_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (wxLUA_USE_wxTimer && wxUSE_TIMER)
 
 void wxLua_wxTimer_delete_function(void** p)
 {
@@ -1952,15 +2034,25 @@ void wxLua_wxTimer_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxTimer_methods[] = {
+    { "GetId", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTimer_GetId, 1, NULL },
     { "GetInterval", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTimer_GetInterval, 1, NULL },
+    { "GetOwner", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTimer_GetOwner, 1, NULL },
     { "IsOneShot", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTimer_IsOneShot, 1, NULL },
     { "IsRunning", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTimer_IsRunning, 1, NULL },
     { "Notify", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTimer_Notify, 1, NULL },
     { "SetOwner", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTimer_SetOwner, 1, NULL },
     { "Start", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTimer_Start, 1, NULL },
+
+#if (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxTimer && wxUSE_TIMER)
+    { "StartOnce", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTimer_StartOnce, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxTimer && wxUSE_TIMER)
+
     { "Stop", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTimer_Stop, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxTimer_delete, 1, NULL },
-    { "wxTimer", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxTimer_constructor, 1, NULL },
+
+#if (wxLUA_USE_wxTimer && wxUSE_TIMER)
+    { "wxTimer", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxTimer_constructor_overload, s_wxluafunc_wxLua_wxTimer_constructor_overload_count, 0 },
+#endif // (wxLUA_USE_wxTimer && wxUSE_TIMER)
 
     { 0, 0, 0, 0 },
 };
@@ -1994,8 +2086,42 @@ static int LUACALL wxLua_wxTimerEvent_GetInterval(lua_State *L)
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTimerEvent_GetTimer[] = { &wxluatype_wxTimerEvent, NULL };
+static int LUACALL wxLua_wxTimerEvent_GetTimer(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimerEvent_GetTimer[1] = {{ wxLua_wxTimerEvent_GetTimer, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTimerEvent_GetTimer }};
+//     wxTimer& GetTimer() const;
+static int LUACALL wxLua_wxTimerEvent_GetTimer(lua_State *L)
+{
+    // get this
+    wxTimerEvent * self = (wxTimerEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTimerEvent);
+    // call GetTimer
+    wxTimer* returns = (wxTimer*)&self->GetTimer();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTimer);
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTimerEvent_delete[] = { &wxluatype_wxTimerEvent, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimerEvent_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxTimerEvent_delete }};
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTimerEvent_constructor[] = { &wxluatype_wxTimer, NULL };
+static int LUACALL wxLua_wxTimerEvent_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTimerEvent_constructor[1] = {{ wxLua_wxTimerEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxTimerEvent_constructor }};
+//     wxTimerEvent(wxTimer& timer);
+static int LUACALL wxLua_wxTimerEvent_constructor(lua_State *L)
+{
+    // wxTimer timer
+    wxTimer * timer = (wxTimer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTimer);
+    // call constructor
+    wxTimerEvent* returns = new wxTimerEvent(*timer);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTimerEvent);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTimerEvent);
+
+    return 1;
+}
 
 
 
@@ -2009,7 +2135,9 @@ void wxLua_wxTimerEvent_delete_function(void** p)
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxTimerEvent_methods[] = {
     { "GetInterval", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTimerEvent_GetInterval, 1, NULL },
+    { "GetTimer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTimerEvent_GetTimer, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxTimerEvent_delete, 1, NULL },
+    { "wxTimerEvent", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxTimerEvent_constructor, 1, NULL },
 
     { 0, 0, 0, 0 },
 };
