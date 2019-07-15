@@ -106,6 +106,7 @@ class wxMenuBar : public wxWindow
     int FindMenuItem(const wxString& menuString, const wxString& itemString) const;
     wxString GetHelpString(int id) const;
     wxString GetLabel(int id) const;
+    // wxString GetLabelTop(size_t pos) const; // deprecated
     %wxchkver_2_9_4 wxMenu* GetMenu(size_t menuIndex) const;
     int GetMenuCount() const;
     %wxchkver_3_0 wxString GetMenuLabel(size_t pos) const;
@@ -118,6 +119,7 @@ class wxMenuBar : public wxWindow
     %gc wxMenu* Replace(size_t pos, %ungc wxMenu *menu, const wxString& title);
     void SetHelpString(int id, const wxString& helpString);
     void SetLabel(int id, const wxString& label);
+    // SetLabelTop(size_t pos, const wxString& label); // deprecated
     %wxchkver_3_0 void SetMenuLabel(size_t pos, const wxString& label);
     %mac static void MacSetCommonMenuBar(wxMenuBar* menubar);
     %mac static wxMenuBar* MacGetCommonMenuBar();
