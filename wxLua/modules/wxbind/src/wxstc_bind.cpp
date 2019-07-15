@@ -845,32 +845,6 @@ static int LUACALL wxLua_wxStyledTextCtrl_AutoCompSetChooseSingle(lua_State *L)
     return 0;
 }
 
-
-#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_AutoCompSetColours[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_wxColour, &wxluatype_wxColour, &wxluatype_wxColour, &wxluatype_wxColour, NULL };
-static int LUACALL wxLua_wxStyledTextCtrl_AutoCompSetColours(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompSetColours[1] = {{ wxLua_wxStyledTextCtrl_AutoCompSetColours, WXLUAMETHOD_METHOD, 5, 5, s_wxluatypeArray_wxLua_wxStyledTextCtrl_AutoCompSetColours }};
-//     %wxchkver_3_1_3 void AutoCompSetColours(const wxColour& background, const wxColour& text, const wxColour& highlight, const wxColour& highlightText);
-static int LUACALL wxLua_wxStyledTextCtrl_AutoCompSetColours(lua_State *L)
-{
-    // const wxColour highlightText
-    const wxColour * highlightText = (const wxColour *)wxluaT_getuserdatatype(L, 5, wxluatype_wxColour);
-    // const wxColour highlight
-    const wxColour * highlight = (const wxColour *)wxluaT_getuserdatatype(L, 4, wxluatype_wxColour);
-    // const wxColour text
-    const wxColour * text = (const wxColour *)wxluaT_getuserdatatype(L, 3, wxluatype_wxColour);
-    // const wxColour background
-    const wxColour * background = (const wxColour *)wxluaT_getuserdatatype(L, 2, wxluatype_wxColour);
-    // get this
-    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
-    // call AutoCompSetColours
-    self->AutoCompSetColours(*background, *text, *highlight, *highlightText);
-
-    return 0;
-}
-
-#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_AutoCompSetDropRestOfWord[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_AutoCompSetDropRestOfWord(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompSetDropRestOfWord[1] = {{ wxLua_wxStyledTextCtrl_AutoCompSetDropRestOfWord, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_AutoCompSetDropRestOfWord }};
@@ -1052,32 +1026,6 @@ static int LUACALL wxLua_wxStyledTextCtrl_AutoCompStops(lua_State *L)
 
     return 0;
 }
-
-
-#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_AutoCompUseListCtrl[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TBOOLEAN, &wxluatype_wxColour, &wxluatype_wxColour, NULL };
-static int LUACALL wxLua_wxStyledTextCtrl_AutoCompUseListCtrl(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompUseListCtrl[1] = {{ wxLua_wxStyledTextCtrl_AutoCompUseListCtrl, WXLUAMETHOD_METHOD, 1, 4, s_wxluatypeArray_wxLua_wxStyledTextCtrl_AutoCompUseListCtrl }};
-//     %wxchkver_3_1_3 void AutoCompUseListCtrl(bool useListCtrl = true, const wxColour& currentBgColour = wxNullColour, const wxColour& currentTextColour = wxNullColour);
-static int LUACALL wxLua_wxStyledTextCtrl_AutoCompUseListCtrl(lua_State *L)
-{
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // const wxColour currentTextColour = wxNullColour
-    const wxColour * currentTextColour = (argCount >= 4 ? (const wxColour *)wxluaT_getuserdatatype(L, 4, wxluatype_wxColour) : &wxNullColour);
-    // const wxColour currentBgColour = wxNullColour
-    const wxColour * currentBgColour = (argCount >= 3 ? (const wxColour *)wxluaT_getuserdatatype(L, 3, wxluatype_wxColour) : &wxNullColour);
-    // bool useListCtrl = true
-    bool useListCtrl = (argCount >= 2 ? wxlua_getbooleantype(L, 2) : true);
-    // get this
-    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
-    // call AutoCompUseListCtrl
-    self->AutoCompUseListCtrl(useListCtrl, *currentBgColour, *currentTextColour);
-
-    return 0;
-}
-
-#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_BackTab[] = { &wxluatype_wxStyledTextCtrl, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_BackTab(lua_State *L);
@@ -13306,11 +13254,6 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
 #endif // wxCHECK_VERSION(2,9,5)
 
     { "AutoCompSetChooseSingle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompSetChooseSingle, 1, NULL },
-
-#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
-    { "AutoCompSetColours", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompSetColours, 1, NULL },
-#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
-
     { "AutoCompSetDropRestOfWord", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompSetDropRestOfWord, 1, NULL },
     { "AutoCompSetFillUps", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompSetFillUps, 1, NULL },
     { "AutoCompSetIgnoreCase", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompSetIgnoreCase, 1, NULL },
@@ -13326,11 +13269,6 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "AutoCompSetTypeSeparator", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompSetTypeSeparator, 1, NULL },
     { "AutoCompShow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompShow, 1, NULL },
     { "AutoCompStops", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompStops, 1, NULL },
-
-#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
-    { "AutoCompUseListCtrl", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AutoCompUseListCtrl, 1, NULL },
-#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxColourPenBrush)
-
     { "BackTab", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_BackTab, 1, NULL },
     { "BeginUndoAction", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_BeginUndoAction, 1, NULL },
     { "BraceBadLight", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_BraceBadLight, 1, NULL },
