@@ -1,6 +1,19 @@
  wxLua ChangeLog
  ===============
 
+ version 3.0.0.2 (released 7/15/2019)
+ --------------------------------------------------------------------
+ - Added wxTreeListCtrl and treelist example.
+ - Added wxTimePickerCtrl.
+ - Added wxLuaProcess to handle OnTerminate event to skip object deletion.
+ - Removed two wxSTC methods that were, but no longer present in wxwidgets 3.1.3.
+ - Updated wxSTC for 3.1.3 to remove obsolete StyleBits-related methods.
+ - Updated wxTimer bindings to add some of the missing methods.
+ - Updated bindings for wxMenuBar and wxAccelerator* based on auto-generation results.
+ - Updated bindings to simplify auto-generation.
+ - Updated luamodule makefile to fix 'multiple definition of ...' error (#32).
+ - Updated README to add supported Lua versions.
+
  version 3.0.0.1 (released 6/28/2019)
  --------------------------------------------------------------------
  - Upgraded wxlua for Lua 5.3 compatibility.
