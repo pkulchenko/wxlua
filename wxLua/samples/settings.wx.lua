@@ -103,7 +103,7 @@ function FillListCtrl(listCtrl)
     AddListItem({"wx.wxLog.IsEnabled()", wx.wxLog.IsEnabled()})
     AddListItem({"wx.wxLog.GetRepetitionCounting()", wx.wxLog.GetRepetitionCounting()})
     AddListItem({"wx.wxLog.GetVerbose()", wx.wxLog.GetVerbose()})
-    AddListItem({"wx.wxLog.GetTraceMask()", wx.wxLog.GetTraceMask()})
+    AddListItem({"wx.wxLog.GetTraceMasks()", wx.wxLog.GetTraceMasks()})
     AddListItem({"wx.wxLog.GetLogLevel()", wx.wxLog.GetLogLevel()})
     AddListItem({"wx.wxLog.GetTimestamp()", wx.wxLog.GetTimestamp()})
 
