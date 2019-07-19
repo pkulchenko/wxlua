@@ -8263,10 +8263,11 @@ static int LUACALL wxLua_wxFileSystemWatcherEvent_GetPath(lua_State *L)
 
 #endif // (wxLUA_USE_wxFileName) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
 
+#if (wxCHECK_VERSION(3,0,0)) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_GetWarningType[] = { &wxluatype_wxFileSystemWatcherEvent, NULL };
 static int LUACALL wxLua_wxFileSystemWatcherEvent_GetWarningType(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_GetWarningType[1] = {{ wxLua_wxFileSystemWatcherEvent_GetWarningType, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_GetWarningType }};
-//     wxFSWWarningType GetWarningType() const;
+//     %wxchkver_3_0 wxFSWWarningType GetWarningType() const;
 static int LUACALL wxLua_wxFileSystemWatcherEvent_GetWarningType(lua_State *L)
 {
     // get this
@@ -8278,6 +8279,8 @@ static int LUACALL wxLua_wxFileSystemWatcherEvent_GetWarningType(lua_State *L)
 
     return 1;
 }
+
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_IsError[] = { &wxluatype_wxFileSystemWatcherEvent, NULL };
 static int LUACALL wxLua_wxFileSystemWatcherEvent_IsError(lua_State *L);
@@ -8380,6 +8383,7 @@ static int LUACALL wxLua_wxFileSystemWatcherEvent_constructor2(lua_State *L)
 
 #endif // (wxLUA_USE_wxFileName) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
 
+#if ((wxCHECK_VERSION(3,0,0)) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_constructor1[] = { &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxFileSystemWatcherEvent_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_constructor1[1] = {{ wxLua_wxFileSystemWatcherEvent_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 4, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_constructor1 }};
@@ -8406,6 +8410,8 @@ static int LUACALL wxLua_wxFileSystemWatcherEvent_constructor1(lua_State *L)
     return 1;
 }
 
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxFileSystemWatcherEvent_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_constructor[1] = {{ wxLua_wxFileSystemWatcherEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_constructor }};
@@ -8431,7 +8437,7 @@ static int LUACALL wxLua_wxFileSystemWatcherEvent_constructor(lua_State *L)
 
 
 
-#if ((wxLUA_USE_wxFileName) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)))||(wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
+#if ((wxLUA_USE_wxFileName) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)))||(((wxCHECK_VERSION(3,0,0)) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)))||(wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_constructor_overload[] =
 {
@@ -8439,12 +8445,15 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileSystemWatcherEvent_constructor_ove
 #if (wxLUA_USE_wxFileName) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
     { wxLua_wxFileSystemWatcherEvent_constructor2, WXLUAMETHOD_CONSTRUCTOR, 3, 4, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_constructor2 },
 #endif // (wxLUA_USE_wxFileName) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
+
+#if ((wxCHECK_VERSION(3,0,0)) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
     { wxLua_wxFileSystemWatcherEvent_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 4, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_constructor1 },
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
     { wxLua_wxFileSystemWatcherEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxFileSystemWatcherEvent_constructor },
 };
 static int s_wxluafunc_wxLua_wxFileSystemWatcherEvent_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxFileSystemWatcherEvent_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxLUA_USE_wxFileName) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)))||(wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
+#endif // ((wxLUA_USE_wxFileName) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)))||(((wxCHECK_VERSION(3,0,0)) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)))||(wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
 
 void wxLua_wxFileSystemWatcherEvent_delete_function(void** p)
 {
@@ -8462,7 +8471,10 @@ wxLuaBindMethod wxFileSystemWatcherEvent_methods[] = {
     { "GetPath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_GetPath, 1, NULL },
 #endif // (wxLUA_USE_wxFileName) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
 
+#if (wxCHECK_VERSION(3,0,0)) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
     { "GetWarningType", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_GetWarningType, 1, NULL },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
+
     { "IsError", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_IsError, 1, NULL },
 
 #if (wxLUA_USE_wxFileName) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
@@ -8473,9 +8485,9 @@ wxLuaBindMethod wxFileSystemWatcherEvent_methods[] = {
     { "ToString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_ToString, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_delete, 1, NULL },
 
-#if ((wxLUA_USE_wxFileName) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)))||(wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
+#if ((wxLUA_USE_wxFileName) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)))||(((wxCHECK_VERSION(3,0,0)) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)))||(wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
     { "wxFileSystemWatcherEvent", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_constructor_overload, s_wxluafunc_wxLua_wxFileSystemWatcherEvent_constructor_overload_count, 0 },
-#endif // ((wxLUA_USE_wxFileName) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)))||(wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
+#endif // ((wxLUA_USE_wxFileName) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)))||(((wxCHECK_VERSION(3,0,0)) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)))||(wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
 
     { 0, 0, 0, 0 },
 };

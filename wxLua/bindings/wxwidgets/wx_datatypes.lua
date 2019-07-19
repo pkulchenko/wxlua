@@ -1644,7 +1644,7 @@ wx_dataTypeTable =
     ValueType = "enum",
   },
   wxFSWWarningType = {
-    Condition = "wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)",
+    Condition = "(wxCHECK_VERSION(3,0,0)) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))",
     IsNumber = true,
     Name = "wxFSWWarningType",
     ValueType = "enum",

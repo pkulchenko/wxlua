@@ -666,7 +666,7 @@ class wxArtProvider : public wxObject
     static wxBitmap GetBitmap(const wxString& id, const wxString& client = wxART_OTHER, const wxSize& size = wxDefaultSize);
     static wxIcon GetIcon(const wxString& id, const wxString& client = wxART_OTHER, const wxSize& size = wxDefaultSize);
     static wxSize GetSizeHint(const wxString& client, bool platform_dependent = false);
-    %wxchkver_2_8 static void RescaleBitmap(wxBitmap& bmp, const wxSize& sizeNeeded);
+    %wxchkver_3_1 static void RescaleBitmap(wxBitmap& bmp, const wxSize& sizeNeeded);
 };
 
 class %delete wxLuaArtProvider : public wxArtProvider

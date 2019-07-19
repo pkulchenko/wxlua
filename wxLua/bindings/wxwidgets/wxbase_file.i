@@ -1221,7 +1221,7 @@ enum
                      //    wxFSW_EVENT_RENAME | wxFSW_EVENT_MODIFY |
                      //    wxFSW_EVENT_ACCESS | wxFSW_EVENT_ATTRIB |
                      //    wxFSW_EVENT_WARNING | wxFSW_EVENT_ERROR
-#if defined(wxHAS_INOTIFY)
+#if defined(wxHAS_INOTIFY) || defined(wxHAVE_FSEVENTS_FILE_NOTIFICATIONS)
     wxFSW_EVENT_UNMOUNT, // = 0x2000
 #endif
 };
@@ -1235,6 +1235,7 @@ enum wxFSWPathType
     wxFSWPath_Tree      // Watch a directory and all its children recursively.
 };
 
+#if %wxchkver_3_0
 // Type of the warning for the events notifying about them.
 enum wxFSWWarningType
 {
@@ -1242,6 +1243,7 @@ enum wxFSWWarningType
     wxFSW_WARNING_GENERAL,
     wxFSW_WARNING_OVERFLOW
 };
+#endif // %wxchkver_3_0
 
 // ---------------------------------------------------------------------------
 // wxFileSystemWatcherEvent
@@ -1264,7 +1266,7 @@ public:
     //virtual wxEventCategory GetEventCategory() const;
     bool IsError() const;
     wxString GetErrorDescription() const;
-    wxFSWWarningType GetWarningType() const;
+    %wxchkver_3_0 wxFSWWarningType GetWarningType() const;
     wxString ToString() const;
 };
 

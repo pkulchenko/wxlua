@@ -389,16 +389,19 @@ wxLuaBindNumber* wxLuaGetDefineList_wxbase(size_t &count)
         { "wxFSW_EVENT_RENAME", wxFSW_EVENT_RENAME },
 #endif // wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)
 
-#if (defined (wxHAS_INOTIFY )) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
+#if (defined (wxHAS_INOTIFY ) || defined (wxHAVE_FSEVENTS_FILE_NOTIFICATIONS )) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
         { "wxFSW_EVENT_UNMOUNT", wxFSW_EVENT_UNMOUNT },
-#endif // (defined (wxHAS_INOTIFY )) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
+#endif // (defined (wxHAS_INOTIFY ) || defined (wxHAVE_FSEVENTS_FILE_NOTIFICATIONS )) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
 
 #if wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)
         { "wxFSW_EVENT_WARNING", wxFSW_EVENT_WARNING },
+#endif // wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
         { "wxFSW_WARNING_GENERAL", wxFSW_WARNING_GENERAL },
         { "wxFSW_WARNING_NONE", wxFSW_WARNING_NONE },
         { "wxFSW_WARNING_OVERFLOW", wxFSW_WARNING_OVERFLOW },
-#endif // wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4))
 
 #if (wxUSE_FILESYSTEM) && (wxUSE_STREAMS)
         { "wxFS_READ", wxFS_READ },
