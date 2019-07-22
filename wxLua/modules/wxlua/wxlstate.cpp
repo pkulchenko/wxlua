@@ -394,7 +394,11 @@ wxLuaStateRefData::~wxLuaStateRefData()
     wxCHECK_RET((m_lua_State_static == true) || (m_lua_State == NULL),
                 wxT("You must ALWAYS call wxLuaState::Destroy and not wxObject::UnRef"));
 
-    CloseLuaState(true);
+    // only close the state if it's not static,
+    // as when it's static (wx is loaded as a library), it will be closed somewhere else
+    if (!m_lua_State_static)
+        CloseLuaState(true);
+
     if (m_own_stateData)
         delete m_wxlStateData;
 }
