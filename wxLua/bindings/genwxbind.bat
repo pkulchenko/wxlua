@@ -63,6 +63,11 @@ echo Generating wxWidgets wxxrc Binding
 echo Generating wxWidgets wxrichtext Binding
 %LUA% -e"rulesFilename=\"wxwidgets/wxrichtext_rules.lua\"" genwxbind.lua
 
+echo Generating wxWidgets wxpropgrid Binding
+%LUA% -e"rulesFilename=\"wxwidgets/wxpropgrid_rules.lua\"" genwxbind.lua
+
+echo Generating wxWidgets wxwebview_rules Binding
+%LUA% -e"rulesFilename=\"wxwidgets/wxwebview_rules.lua\"" genwxbind.lua
 
 echo Generating wxWidgets wxlua Binding
 %LUA% -e"rulesFilename=\"wxlua/wxlua_rules.lua\"" genwxbind.lua
@@ -70,14 +75,12 @@ echo Generating wxWidgets wxlua Binding
 echo Generating wxWidgets wxluadebugger Binding
 %LUA% -e"rulesFilename=\"wxlua_debugger/wxluadebugger_rules.lua\"" genwxbind.lua
 
-
 echo Generating wxWidgets wxdatatypes Binding
 %LUA% -e"rulesFilename=\"wxwidgets/wxdatatypes_rules.lua\"" genwxbind.lua
 
-
 echo Generating wxLuaCan app Binding
-cd ..\apps\wxluacan\src
-..\..\%LUA% -e"rulesFilename=\"wxluacan_rules.lua\"" ../../../bindings/genwxbind.lua
-cd ..\..\..\bindings
+cd ..\apps\wxluacan
+%LUA% -e"rulesFilename=\"wxluacan_rules.lua\"" ../../bindings/genwxbind.lua
+cd ..\..\bindings
 
 echo Done.

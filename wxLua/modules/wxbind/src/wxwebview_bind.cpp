@@ -484,7 +484,7 @@ static int LUACALL wxLua_wxWebView_Find(lua_State *L)
     // get this
     wxWebView * self = (wxWebView *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebView);
     // call Find
-    long  returns = (self->Find(text, flags));
+    long returns = (self->Find(text, flags));
     // push the result number
     lua_pushnumber(L, returns);
 
