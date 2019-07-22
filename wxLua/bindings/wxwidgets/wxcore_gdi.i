@@ -1019,24 +1019,24 @@ class %delete wxIcon : public wxGDIObject
 {
     #define_object wxNullIcon
     wxIcon();
-    %wxchkver_3_0_0 wxIcon(const wxIcon& icon);
+    %wxchkver_2_9_5 wxIcon(const wxIcon& icon);
     // wxIcon(const char bits[], int width, int height); // doesn't compile on Linux using gcc 4.6-4.8.1
     // wxIcon(const char* const* bits); // wxlua doesn't handle `const char* const*`
-    wxIcon(const wxString& name, wxBitmapType type, int desiredWidth = -1, int desiredHeight = -1);
-    %wxchkver_3_0_0 wxIcon(const wxIconLocation& loc);
+    wxIcon(const wxString& name, wxBitmapType type = wxICON_DEFAULT_TYPE, int desiredWidth = -1, int desiredHeight = -1);
+    %wxchkver_2_9_5 wxIcon(const wxIconLocation& loc);
     // bool CreateFromHICON(WXHICON icon); // skip this one as it's windows specific
     // wxIcon ConvertToDisabled(unsigned char brightness = 255) const; // skip as it's win-only; can use one from wxBitmap
-    %wxchkver_3_0_0 void CopyFromBitmap(const wxBitmap& bmp);
+    %wxchkver_2_9_5 void CopyFromBitmap(const wxBitmap& bmp);
     int     GetDepth();
     int     GetHeight();
     int     GetWidth();
-    %wxchkver_3_0_0 bool IsOk() const;
-    %wxchkver_3_0_0 bool LoadFile(const wxString& name, wxBitmapType type = wxICON_DEFAULT_TYPE, int desiredWidth = -1, int desiredHeight = -1);
+    %wxchkver_2_9_5 bool IsOk() const;
+    %wxchkver_2_9_5 bool LoadFile(const wxString& name, wxBitmapType type = wxICON_DEFAULT_TYPE, int desiredWidth = -1, int desiredHeight = -1);
+    !%wxchkver_2_9_5 bool LoadFile(const wxString& name, wxBitmapType flag);
     void    SetDepth(int d);
     void    SetHeight(int h);
     void    SetWidth(int w);
     wxIcon& operator=(const wxIcon& i) const;
-    !%wxchkver_3_0_0 bool    LoadFile(const wxString& name, wxBitmapType flags);
     bool    Ok(); // %add for compatibility with earlier versions of wxlua
 };
 
