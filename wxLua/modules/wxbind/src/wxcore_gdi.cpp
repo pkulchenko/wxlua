@@ -6382,11 +6382,11 @@ int wxFontEnumerator_methodCount = sizeof(wxFontEnumerator_methods)/sizeof(wxLua
 // Lua MetaTable Tag for Class 'wxFontList'
 int wxluatype_wxFontList = WXLUA_TUNKNOWN;
 
-#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont2[] = { &wxluatype_wxFontList, &wxluatype_wxFontInfo, NULL };
 static int LUACALL wxLua_wxFontList_FindOrCreateFont2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontList_FindOrCreateFont2[1] = {{ wxLua_wxFontList_FindOrCreateFont2, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont2 }};
-//     %wxchkver_3_0 wxFont *FindOrCreateFont(const wxFontInfo& fontInfo);
+//     %wxchkver_3_1_1 wxFont *FindOrCreateFont(const wxFontInfo& fontInfo);
 static int LUACALL wxLua_wxFontList_FindOrCreateFont2(lua_State *L)
 {
     // const wxFontInfo fontInfo
@@ -6401,7 +6401,7 @@ static int LUACALL wxLua_wxFontList_FindOrCreateFont2(lua_State *L)
     return 1;
 }
 
-#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)
 
 #if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont1[] = { &wxluatype_wxFontList, &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TINTEGER, &wxluatype_TINTEGER, &wxluatype_TBOOLEAN, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
@@ -6475,14 +6475,14 @@ static int LUACALL wxLua_wxFontList_FindOrCreateFont(lua_State *L)
 
 
 
-#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))
+#if (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontList_FindOrCreateFont_overload[] =
 {
 
-#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)
     { wxLua_wxFontList_FindOrCreateFont2, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont2 },
-#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)
 
 #if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
     { wxLua_wxFontList_FindOrCreateFont1, WXLUAMETHOD_METHOD, 5, 8, s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont1 },
@@ -6494,7 +6494,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontList_FindOrCreateFont_overload[] =
 };
 static int s_wxluafunc_wxLua_wxFontList_FindOrCreateFont_overload_count = sizeof(s_wxluafunc_wxLua_wxFontList_FindOrCreateFont_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))
 
 void wxLua_wxFontList_delete_function(void** p)
 {
@@ -6504,9 +6504,9 @@ void wxLua_wxFontList_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxFontList_methods[] = {
-#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))
+#if (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))
     { "FindOrCreateFont", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFontList_FindOrCreateFont_overload, s_wxluafunc_wxLua_wxFontList_FindOrCreateFont_overload_count, 0 },
-#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))
 
     { 0, 0, 0, 0 },
 };

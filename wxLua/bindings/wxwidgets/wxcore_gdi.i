@@ -574,7 +574,7 @@ class wxFontList
     // Note: we don't gc the returned font as the list will delete it
     !%wxchkver_3_0 wxFont* FindOrCreateFont(int pointSize, int family, int style, int weight, bool underline = false, const wxString &faceName = "", wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
     %wxchkver_3_0 wxFont *FindOrCreateFont(int pointSize, wxFontFamily family, wxFontStyle style, wxFontWeight weight, bool underline = false, const wxString& face = wxEmptyString, wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
-    %wxchkver_3_0 wxFont *FindOrCreateFont(const wxFontInfo& fontInfo);
+    %wxchkver_3_1_1 wxFont *FindOrCreateFont(const wxFontInfo& fontInfo);
 };
 
 #endif //wxLUA_USE_wxFontList
