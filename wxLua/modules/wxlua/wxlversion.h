@@ -18,8 +18,8 @@
 #define wxLUA_MAJOR_VERSION       3
 #define wxLUA_MINOR_VERSION       0
 #define wxLUA_RELEASE_NUMBER      0
-#define wxLUA_SUBRELEASE_NUMBER   2
-#define wxLUA_VERSION_STRING      wxT("wxLua 3.0.0.2")
+#define wxLUA_SUBRELEASE_NUMBER   3
+#define wxLUA_VERSION_STRING      wxT("wxLua 3.0.0.3")
 
 // For non-Unix systems (i.e. when building without a configure script),
 // users of this component can use the following macro to check if the

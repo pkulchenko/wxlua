@@ -1,6 +1,15 @@
  wxLua ChangeLog
  ===============
 
+ version 3.0.0.3 (released 7/24/2019)
+ --------------------------------------------------------------------
+ - Updated wxFontList binding to work with wxwidgets 3.0 (closes #39).
+ - Updated wxIcon bindings to work with wxwidgets 2.9.5 (closes #38, #36).
+ - Updated wxlua binding version in all binding files (fixes #37).
+ - Updated to only close Lua state when it's not marked as static (#20).
+ - Updated bindings to work with wxwidgets 2.9.5 (closes #36).
+ - Fixed example to use the current (wxwidgets 3.x) API.
+
  version 3.0.0.2 (released 7/15/2019)
  --------------------------------------------------------------------
  - Added wxTreeListCtrl and treelist example.
