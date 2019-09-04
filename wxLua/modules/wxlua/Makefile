@@ -33,6 +33,7 @@ HEADERS = \
 	wxlversion.h
 
 SOURCES = \
+	bit.cpp \
 	lbitlib.cpp \
 	wxlbind.cpp \
 	wxlcallb.cpp \

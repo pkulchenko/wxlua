@@ -320,6 +320,7 @@ ADD_LIBRARY_FULL( wxLuaLib
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlua_bind.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlversion.h
     SOURCES
+        ${wxLua_ROOT_DIR}/modules/wxlua/bit.c
         ${wxLua_ROOT_DIR}/modules/wxlua/dummy.cpp
         ${wxLua_ROOT_DIR}/modules/wxlua/lbitlib.c
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlbind.cpp
