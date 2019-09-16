@@ -48,10 +48,12 @@ static int LUACALL wxLua_wxXmlNode_AddChild(lua_State *L)
     return 0;
 }
 
+
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_AddProperty1[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlProperty, NULL };
 static int LUACALL wxLua_wxXmlNode_AddProperty1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_AddProperty1[1] = {{ wxLua_wxXmlNode_AddProperty1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_AddProperty1 }};
-//     void AddProperty(%ungc wxXmlProperty *prop);
+//     !%wxchkver_2_9 void AddProperty(%ungc wxXmlProperty *prop);
 static int LUACALL wxLua_wxXmlNode_AddProperty1(lua_State *L)
 {
     // wxXmlProperty prop
@@ -68,7 +70,7 @@ static int LUACALL wxLua_wxXmlNode_AddProperty1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_AddProperty[] = { &wxluatype_wxXmlNode, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlNode_AddProperty(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_AddProperty[1] = {{ wxLua_wxXmlNode_AddProperty, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxXmlNode_AddProperty }};
-//     void AddProperty(const wxString& name, const wxString& value);
+//     !%wxchkver_2_9 void AddProperty(const wxString& name, const wxString& value);
 static int LUACALL wxLua_wxXmlNode_AddProperty(lua_State *L)
 {
     // const wxString value
@@ -86,7 +88,7 @@ static int LUACALL wxLua_wxXmlNode_AddProperty(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_DeleteProperty[] = { &wxluatype_wxXmlNode, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlNode_DeleteProperty(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_DeleteProperty[1] = {{ wxLua_wxXmlNode_DeleteProperty, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_DeleteProperty }};
-//     bool DeleteProperty(const wxString& name);
+//     !%wxchkver_2_9 bool DeleteProperty(const wxString& name);
 static int LUACALL wxLua_wxXmlNode_DeleteProperty(lua_State *L)
 {
     // const wxString name
@@ -100,6 +102,8 @@ static int LUACALL wxLua_wxXmlNode_DeleteProperty(lua_State *L)
 
     return 1;
 }
+
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_GetChildren[] = { &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlNode_GetChildren(lua_State *L);
@@ -181,10 +185,12 @@ static int LUACALL wxLua_wxXmlNode_GetParent(lua_State *L)
     return 1;
 }
 
+
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_GetPropVal1[] = { &wxluatype_wxXmlNode, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlNode_GetPropVal1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_GetPropVal1[1] = {{ wxLua_wxXmlNode_GetPropVal1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxXmlNode_GetPropVal1 }};
-//     wxString GetPropVal(const wxString& propName, const wxString& defaultVal) const;
+//     !%wxchkver_2_9 wxString GetPropVal(const wxString& propName, const wxString& defaultVal) const;
 static int LUACALL wxLua_wxXmlNode_GetPropVal1(lua_State *L)
 {
     // const wxString defaultVal
@@ -229,7 +235,7 @@ static int LUACALL wxLua_wxXmlNode_GetPropValPtr(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_GetProperties[] = { &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlNode_GetProperties(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_GetProperties[1] = {{ wxLua_wxXmlNode_GetProperties, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlNode_GetProperties }};
-//     wxXmlProperty *GetProperties() const;
+//     !%wxchkver_2_9 wxXmlProperty *GetProperties() const;
 static int LUACALL wxLua_wxXmlNode_GetProperties(lua_State *L)
 {
     // get this
@@ -241,6 +247,8 @@ static int LUACALL wxLua_wxXmlNode_GetProperties(lua_State *L)
 
     return 1;
 }
+
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_GetType[] = { &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlNode_GetType(lua_State *L);
@@ -258,10 +266,12 @@ static int LUACALL wxLua_wxXmlNode_GetType(lua_State *L)
     return 1;
 }
 
+
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_HasProp[] = { &wxluatype_wxXmlNode, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlNode_HasProp(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_HasProp[1] = {{ wxLua_wxXmlNode_HasProp, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_HasProp }};
-//     bool HasProp(const wxString& propName) const;
+//     !%wxchkver_2_9 bool HasProp(const wxString& propName) const;
 static int LUACALL wxLua_wxXmlNode_HasProp(lua_State *L)
 {
     // const wxString propName
@@ -275,6 +285,8 @@ static int LUACALL wxLua_wxXmlNode_HasProp(lua_State *L)
 
     return 1;
 }
+
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_InsertChild[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlNode, &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlNode_InsertChild(lua_State *L);
@@ -400,10 +412,12 @@ static int LUACALL wxLua_wxXmlNode_SetParent(lua_State *L)
     return 0;
 }
 
+
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_SetProperties[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlProperty, NULL };
 static int LUACALL wxLua_wxXmlNode_SetProperties(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_SetProperties[1] = {{ wxLua_wxXmlNode_SetProperties, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_SetProperties }};
-//     void SetProperties(%ungc wxXmlProperty *prop);
+//     !%wxchkver_2_9 void SetProperties(%ungc wxXmlProperty *prop);
 static int LUACALL wxLua_wxXmlNode_SetProperties(lua_State *L)
 {
     // wxXmlProperty prop
@@ -416,6 +430,8 @@ static int LUACALL wxLua_wxXmlNode_SetProperties(lua_State *L)
 
     return 0;
 }
+
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_SetType[] = { &wxluatype_wxXmlNode, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxXmlNode_SetType(lua_State *L);
@@ -436,6 +452,8 @@ static int LUACALL wxLua_wxXmlNode_SetType(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_delete[] = { &wxluatype_wxXmlNode, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxXmlNode_delete }};
 
+
+#if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_constructor2[] = { &wxluatype_wxXmlNode, &wxluatype_TINTEGER, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxXmlProperty, &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlNode_constructor2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_constructor2[1] = {{ wxLua_wxXmlNode_constructor2, WXLUAMETHOD_CONSTRUCTOR, 6, 6, s_wxluatypeArray_wxLua_wxXmlNode_constructor2 }};
@@ -466,6 +484,8 @@ static int LUACALL wxLua_wxXmlNode_constructor2(lua_State *L)
     return 1;
 }
 
+
+#endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_constructor1[] = { &wxluatype_TINTEGER, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlNode_constructor1(lua_State *L);
@@ -509,33 +529,51 @@ static int LUACALL wxLua_wxXmlNode_constructor(lua_State *L)
 
 
 
-#if (wxLUA_USE_wxXML && wxUSE_XML)
+#if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_AddProperty_overload[] =
 {
+
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
     { wxLua_wxXmlNode_AddProperty1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_AddProperty1 },
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
     { wxLua_wxXmlNode_AddProperty, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxXmlNode_AddProperty },
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 };
 static int s_wxluafunc_wxLua_wxXmlNode_AddProperty_overload_count = sizeof(s_wxluafunc_wxLua_wxXmlNode_AddProperty_overload)/sizeof(wxLuaBindCFunc);
 
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_GetPropVal_overload[] =
 {
+
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
     { wxLua_wxXmlNode_GetPropVal1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxXmlNode_GetPropVal1 },
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
     { wxLua_wxXmlNode_GetPropVal, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_GetPropVal },
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 };
 static int s_wxluafunc_wxLua_wxXmlNode_GetPropVal_overload_count = sizeof(s_wxluafunc_wxLua_wxXmlNode_GetPropVal_overload)/sizeof(wxLuaBindCFunc);
 
+#endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
+
+#if (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(wxLUA_USE_wxXML && wxUSE_XML)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_constructor_overload[] =
 {
+
+#if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
     { wxLua_wxXmlNode_constructor2, WXLUAMETHOD_CONSTRUCTOR, 6, 6, s_wxluatypeArray_wxLua_wxXmlNode_constructor2 },
+#endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
     { wxLua_wxXmlNode_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 3, s_wxluatypeArray_wxLua_wxXmlNode_constructor1 },
     { wxLua_wxXmlNode_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
 };
 static int s_wxluafunc_wxLua_wxXmlNode_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxXmlNode_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (wxLUA_USE_wxXML && wxUSE_XML)
+#endif // (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(wxLUA_USE_wxXML && wxUSE_XML)
 
 void wxLua_wxXmlNode_delete_function(void** p)
 {
@@ -547,24 +585,34 @@ void wxLua_wxXmlNode_delete_function(void** p)
 wxLuaBindMethod wxXmlNode_methods[] = {
     { "AddChild", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_AddChild, 1, NULL },
 
-#if (wxLUA_USE_wxXML && wxUSE_XML)
+#if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
     { "AddProperty", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_AddProperty_overload, s_wxluafunc_wxLua_wxXmlNode_AddProperty_overload_count, 0 },
-#endif // (wxLUA_USE_wxXML && wxUSE_XML)
+#endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
 
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
     { "DeleteProperty", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_DeleteProperty, 1, NULL },
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
     { "GetChildren", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetChildren, 1, NULL },
     { "GetContent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetContent, 1, NULL },
     { "GetName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetName, 1, NULL },
     { "GetNext", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetNext, 1, NULL },
     { "GetParent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetParent, 1, NULL },
 
-#if (wxLUA_USE_wxXML && wxUSE_XML)
+#if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
     { "GetPropVal", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetPropVal_overload, s_wxluafunc_wxLua_wxXmlNode_GetPropVal_overload_count, 0 },
-#endif // (wxLUA_USE_wxXML && wxUSE_XML)
+#endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
 
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
     { "GetProperties", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetProperties, 1, NULL },
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
     { "GetType", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetType, 1, NULL },
+
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
     { "HasProp", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_HasProp, 1, NULL },
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
     { "InsertChild", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_InsertChild, 1, NULL },
     { "RemoveChild", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_RemoveChild, 1, NULL },
     { "SetChildren", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_SetChildren, 1, NULL },
@@ -572,13 +620,17 @@ wxLuaBindMethod wxXmlNode_methods[] = {
     { "SetName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_SetName, 1, NULL },
     { "SetNext", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_SetNext, 1, NULL },
     { "SetParent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_SetParent, 1, NULL },
+
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
     { "SetProperties", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_SetProperties, 1, NULL },
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
     { "SetType", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_SetType, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxXmlNode_delete, 1, NULL },
 
-#if (wxLUA_USE_wxXML && wxUSE_XML)
+#if (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(wxLUA_USE_wxXML && wxUSE_XML)
     { "wxXmlNode", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxXmlNode_constructor_overload, s_wxluafunc_wxLua_wxXmlNode_constructor_overload_count, 0 },
-#endif // (wxLUA_USE_wxXML && wxUSE_XML)
+#endif // (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(wxLUA_USE_wxXML && wxUSE_XML)
 
     { 0, 0, 0, 0 },
 };
@@ -588,7 +640,7 @@ int wxXmlNode_methodCount = sizeof(wxXmlNode_methods)/sizeof(wxLuaBindMethod) - 
 #endif  // wxLUA_USE_wxXML && wxUSE_XML
 
 
-#if wxLUA_USE_wxXML && wxUSE_XML
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 // ---------------------------------------------------------------------------
 // Bind class wxXmlProperty
 // ---------------------------------------------------------------------------
@@ -735,7 +787,7 @@ static int LUACALL wxLua_wxXmlProperty_constructor(lua_State *L)
 
 
 
-#if (wxLUA_USE_wxXML && wxUSE_XML)
+#if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlProperty_constructor_overload[] =
 {
@@ -744,7 +796,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlProperty_constructor_overload[] =
 };
 static int s_wxluafunc_wxLua_wxXmlProperty_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxXmlProperty_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (wxLUA_USE_wxXML && wxUSE_XML)
+#endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
 
 void wxLua_wxXmlProperty_delete_function(void** p)
 {
@@ -762,16 +814,16 @@ wxLuaBindMethod wxXmlProperty_methods[] = {
     { "SetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlProperty_SetValue, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxXmlProperty_delete, 1, NULL },
 
-#if (wxLUA_USE_wxXML && wxUSE_XML)
+#if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
     { "wxXmlProperty", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxXmlProperty_constructor_overload, s_wxluafunc_wxLua_wxXmlProperty_constructor_overload_count, 0 },
-#endif // (wxLUA_USE_wxXML && wxUSE_XML)
+#endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
 
     { 0, 0, 0, 0 },
 };
 
 int wxXmlProperty_methodCount = sizeof(wxXmlProperty_methods)/sizeof(wxLuaBindMethod) - 1;
 
-#endif  // wxLUA_USE_wxXML && wxUSE_XML
+#endif  // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
 
 #if wxLUA_USE_wxXML && wxUSE_XML
@@ -1141,6 +1193,12 @@ static wxLuaBindClass* wxluabaseclassbinds_wxXmlDocument[] = { NULL };
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
 
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    extern wxLuaBindMethod wxXmlProperty_methods[];
+    extern int wxXmlProperty_methodCount;
+    extern void wxLua_wxXmlProperty_delete_function(void** p);
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
 #if wxLUA_USE_wxXML && wxUSE_XML
     extern wxLuaBindMethod wxXmlDocument_methods[];
     extern int wxXmlDocument_methodCount;
@@ -1148,9 +1206,6 @@ static wxLuaBindClass* wxluabaseclassbinds_wxXmlDocument[] = { NULL };
     extern wxLuaBindMethod wxXmlNode_methods[];
     extern int wxXmlNode_methodCount;
     extern void wxLua_wxXmlNode_delete_function(void** p);
-    extern wxLuaBindMethod wxXmlProperty_methods[];
-    extern int wxXmlProperty_methodCount;
-    extern void wxLua_wxXmlProperty_delete_function(void** p);
 #endif // wxLUA_USE_wxXML && wxUSE_XML
 
 
@@ -1163,8 +1218,11 @@ wxLuaBindClass* wxLuaGetClassList_wxxml(size_t &count)
 #if wxLUA_USE_wxXML && wxUSE_XML
         { wxluaclassname_wxXmlDocument, wxXmlDocument_methods, wxXmlDocument_methodCount, CLASSINFO(wxXmlDocument), &wxluatype_wxXmlDocument, wxluabaseclassnames_wxXmlDocument, wxluabaseclassbinds_wxXmlDocument, NULL, NULL, NULL, 0, &wxLua_wxXmlDocument_delete_function, }, 
         { wxluaclassname_wxXmlNode, wxXmlNode_methods, wxXmlNode_methodCount, NULL, &wxluatype_wxXmlNode, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxXmlNode_delete_function, }, 
-        { wxluaclassname_wxXmlProperty, wxXmlProperty_methods, wxXmlProperty_methodCount, NULL, &wxluatype_wxXmlProperty, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxXmlProperty_delete_function, }, 
 #endif // wxLUA_USE_wxXML && wxUSE_XML
+
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+        { wxluaclassname_wxXmlProperty, wxXmlProperty_methods, wxXmlProperty_methodCount, NULL, &wxluatype_wxXmlProperty, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxXmlProperty_delete_function, }, 
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
 
         { 0, 0, 0, 0, 0, 0, 0 }, 

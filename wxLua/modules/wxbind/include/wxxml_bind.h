@@ -51,10 +51,13 @@ extern WXDLLIMPEXP_BINDWXXML wxLuaBinding* wxLuaBinding_wxxml_init();
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
 
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    extern WXDLLIMPEXP_DATA_BINDWXXML(int) wxluatype_wxXmlProperty;
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
 #if wxLUA_USE_wxXML && wxUSE_XML
     extern WXDLLIMPEXP_DATA_BINDWXXML(int) wxluatype_wxXmlDocument;
     extern WXDLLIMPEXP_DATA_BINDWXXML(int) wxluatype_wxXmlNode;
-    extern WXDLLIMPEXP_DATA_BINDWXXML(int) wxluatype_wxXmlProperty;
 #endif // wxLUA_USE_wxXML && wxUSE_XML
 
 

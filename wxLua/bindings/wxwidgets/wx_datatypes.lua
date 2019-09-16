@@ -5566,7 +5566,7 @@ wx_dataTypeTable =
     ValueType = "enum",
   },
   wxXmlProperty = {
-    Condition = "wxLUA_USE_wxXML && wxUSE_XML",
+    Condition = "(!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)",
     IsNumber = false,
     Name = "wxXmlProperty",
     ValueType = "class",
