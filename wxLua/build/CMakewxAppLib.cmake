@@ -314,7 +314,7 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
 
         # Set the values from the wxWidgets_CONFIG_EXECUTABLE
         if (EXISTS ${wxWidgets_CONFIG_EXECUTABLE})
-            execute_process(COMMAND ${wxWidgets_CONFIG_EXECUTABLE} --prefix OUTPUT_VARIABLE wxWidgets_ROOT_DIR)
+            execute_process(COMMAND sh ${wxWidgets_CONFIG_EXECUTABLE} --prefix OUTPUT_VARIABLE wxWidgets_ROOT_DIR)
             string(STRIP "${wxWidgets_ROOT_DIR}" wxWidgets_ROOT_DIR)
             set(wxWidgets_ROOT_DIR "${wxWidgets_ROOT_DIR}" CACHE PATH "wxWidgets root directory" FORCE)
         endif()
@@ -414,7 +414,7 @@ function( DETERMINE_WXWIDGETS_VERSION )
         endif()
     elseif (EXISTS ${wxWidgets_CONFIG_EXECUTABLE})
         # For Unix use wx-config script
-        execute_process(COMMAND ${wxWidgets_CONFIG_EXECUTABLE} --version OUTPUT_VARIABLE wxWidgets_VERSION)
+        execute_process(COMMAND sh ${wxWidgets_CONFIG_EXECUTABLE} --version OUTPUT_VARIABLE wxWidgets_VERSION)
         # remove spaces and linefeed
         string(STRIP "${wxWidgets_VERSION}" wxWidgets_VERSION)
 
