@@ -1238,6 +1238,54 @@ static int LUACALL wxLua_wxKeyEvent_GetPositionXY(lua_State *L)
 }
 
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyEvent_GetRawKeyCode[] = { &wxluatype_wxKeyEvent, NULL };
+static int LUACALL wxLua_wxKeyEvent_GetRawKeyCode(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyEvent_GetRawKeyCode[1] = {{ wxLua_wxKeyEvent_GetRawKeyCode, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxKeyEvent_GetRawKeyCode }};
+//     wxUint32 GetRawKeyCode() const;
+static int LUACALL wxLua_wxKeyEvent_GetRawKeyCode(lua_State *L)
+{
+    // get this
+    wxKeyEvent * self = (wxKeyEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxKeyEvent);
+    // call GetRawKeyCode
+    wxUint32 returns = (self->GetRawKeyCode());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyEvent_GetRawKeyFlags[] = { &wxluatype_wxKeyEvent, NULL };
+static int LUACALL wxLua_wxKeyEvent_GetRawKeyFlags(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyEvent_GetRawKeyFlags[1] = {{ wxLua_wxKeyEvent_GetRawKeyFlags, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxKeyEvent_GetRawKeyFlags }};
+//     wxUint32 GetRawKeyFlags() const;
+static int LUACALL wxLua_wxKeyEvent_GetRawKeyFlags(lua_State *L)
+{
+    // get this
+    wxKeyEvent * self = (wxKeyEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxKeyEvent);
+    // call GetRawKeyFlags
+    wxUint32 returns = (self->GetRawKeyFlags());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyEvent_GetUnicodeKey[] = { &wxluatype_wxKeyEvent, NULL };
+static int LUACALL wxLua_wxKeyEvent_GetUnicodeKey(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyEvent_GetUnicodeKey[1] = {{ wxLua_wxKeyEvent_GetUnicodeKey, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxKeyEvent_GetUnicodeKey }};
+//     wxChar GetUnicodeKey() const;
+static int LUACALL wxLua_wxKeyEvent_GetUnicodeKey(lua_State *L)
+{
+    // get this
+    wxKeyEvent * self = (wxKeyEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxKeyEvent);
+    // call GetUnicodeKey
+    wxChar returns = (self->GetUnicodeKey());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxKeyEvent_GetX[] = { &wxluatype_wxKeyEvent, NULL };
 static int LUACALL wxLua_wxKeyEvent_GetX(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxKeyEvent_GetX[1] = {{ wxLua_wxKeyEvent_GetX, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxKeyEvent_GetX }};
@@ -1363,6 +1411,9 @@ wxLuaBindMethod wxKeyEvent_methods[] = {
 #endif // wxLUA_USE_wxPointSizeRect
 
     { "GetPositionXY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxKeyEvent_GetPositionXY, 1, NULL },
+    { "GetRawKeyCode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxKeyEvent_GetRawKeyCode, 1, NULL },
+    { "GetRawKeyFlags", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxKeyEvent_GetRawKeyFlags, 1, NULL },
+    { "GetUnicodeKey", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxKeyEvent_GetUnicodeKey, 1, NULL },
     { "GetX", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxKeyEvent_GetX, 1, NULL },
     { "GetY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxKeyEvent_GetY, 1, NULL },
     { "HasModifiers", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxKeyEvent_HasModifiers, 1, NULL },

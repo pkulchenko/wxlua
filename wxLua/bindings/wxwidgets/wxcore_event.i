@@ -368,9 +368,9 @@ class %delete wxKeyEvent : public wxEvent
     // C++ Func: void GetPosition(long *x, long *y) const;
     %rename GetPositionXY void GetPosition() const;
 
-    //wxUint32 GetRawKeyCode() const;
-    //wxUint32 GetRawKeyFlags() const;
-    //wxChar GetUnicodeKey() const;
+    wxUint32 GetRawKeyCode() const;
+    wxUint32 GetRawKeyFlags() const;
+    wxChar GetUnicodeKey() const;
     long GetX();
     long GetY() const;
     bool HasModifiers() const;
