@@ -23,6 +23,9 @@ class %delete wxToolTip : public wxObject
 
     static void Enable(bool flag);
     static void SetDelay(long milliseconds);
+    static void SetAutoPop(long msecs);
+    static void SetReshow(long msecs);
+    %win static void SetMaxWidth(int width);
     void    SetTip(const wxString& tip);
     wxString GetTip();
     wxWindow *GetWindow() const;

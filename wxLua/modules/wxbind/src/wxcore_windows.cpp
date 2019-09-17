@@ -83,6 +83,20 @@ static int LUACALL wxLua_wxToolTip_GetWindow(lua_State *L)
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxToolTip_SetAutoPop[] = { &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxToolTip_SetAutoPop(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxToolTip_SetAutoPop[1] = {{ wxLua_wxToolTip_SetAutoPop, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxToolTip_SetAutoPop }};
+//     static void SetAutoPop(long msecs);
+static int LUACALL wxLua_wxToolTip_SetAutoPop(lua_State *L)
+{
+    // long msecs
+    long msecs = (long)wxlua_getnumbertype(L, 1);
+    // call SetAutoPop
+    wxToolTip::SetAutoPop(msecs);
+
+    return 0;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxToolTip_SetDelay[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxToolTip_SetDelay(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxToolTip_SetDelay[1] = {{ wxLua_wxToolTip_SetDelay, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxToolTip_SetDelay }};
@@ -93,6 +107,38 @@ static int LUACALL wxLua_wxToolTip_SetDelay(lua_State *L)
     long milliseconds = (long)wxlua_getnumbertype(L, 1);
     // call SetDelay
     wxToolTip::SetDelay(milliseconds);
+
+    return 0;
+}
+
+
+#if (defined(__WXMSW__)) && (wxLUA_USE_wxTooltip && wxUSE_TOOLTIPS)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxToolTip_SetMaxWidth[] = { &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxToolTip_SetMaxWidth(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxToolTip_SetMaxWidth[1] = {{ wxLua_wxToolTip_SetMaxWidth, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxToolTip_SetMaxWidth }};
+//     %win static void SetMaxWidth(int width);
+static int LUACALL wxLua_wxToolTip_SetMaxWidth(lua_State *L)
+{
+    // int width
+    int width = (int)wxlua_getnumbertype(L, 1);
+    // call SetMaxWidth
+    wxToolTip::SetMaxWidth(width);
+
+    return 0;
+}
+
+#endif // (defined(__WXMSW__)) && (wxLUA_USE_wxTooltip && wxUSE_TOOLTIPS)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxToolTip_SetReshow[] = { &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxToolTip_SetReshow(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxToolTip_SetReshow[1] = {{ wxLua_wxToolTip_SetReshow, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxToolTip_SetReshow }};
+//     static void SetReshow(long msecs);
+static int LUACALL wxLua_wxToolTip_SetReshow(lua_State *L)
+{
+    // long msecs
+    long msecs = (long)wxlua_getnumbertype(L, 1);
+    // call SetReshow
+    wxToolTip::SetReshow(msecs);
 
     return 0;
 }
@@ -148,7 +194,14 @@ wxLuaBindMethod wxToolTip_methods[] = {
     { "Enable", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxToolTip_Enable, 1, NULL },
     { "GetTip", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxToolTip_GetTip, 1, NULL },
     { "GetWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxToolTip_GetWindow, 1, NULL },
+    { "SetAutoPop", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxToolTip_SetAutoPop, 1, NULL },
     { "SetDelay", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxToolTip_SetDelay, 1, NULL },
+
+#if (defined(__WXMSW__)) && (wxLUA_USE_wxTooltip && wxUSE_TOOLTIPS)
+    { "SetMaxWidth", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxToolTip_SetMaxWidth, 1, NULL },
+#endif // (defined(__WXMSW__)) && (wxLUA_USE_wxTooltip && wxUSE_TOOLTIPS)
+
+    { "SetReshow", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxToolTip_SetReshow, 1, NULL },
     { "SetTip", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxToolTip_SetTip, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxToolTip_delete, 1, NULL },
     { "wxToolTip", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxToolTip_constructor, 1, NULL },
