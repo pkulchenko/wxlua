@@ -4352,6 +4352,12 @@ wx_dataTypeTable =
     Name = "wxScrollWinEvent",
     ValueType = "class",
   },
+  wxScrollbarVisibility = {
+    Condition = "(wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxScrolledWindow)",
+    IsNumber = true,
+    Name = "wxScrollbarVisibility",
+    ValueType = "enum",
+  },
   wxScrolledWindow = {
     BaseClasses = {
       [1] = "wxPanel",

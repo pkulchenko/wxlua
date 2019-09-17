@@ -2190,6 +2190,12 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxSHOW_EFFECT_SLIDE_TO_TOP", wxSHOW_EFFECT_SLIDE_TO_TOP },
 #endif // wxCHECK_VERSION(2,9,1)
 
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxScrolledWindow)
+        { "wxSHOW_SB_ALWAYS", wxSHOW_SB_ALWAYS },
+        { "wxSHOW_SB_DEFAULT", wxSHOW_SB_DEFAULT },
+        { "wxSHOW_SB_NEVER", wxSHOW_SB_NEVER },
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxScrolledWindow)
+
         { "wxSHRINK", wxSHRINK },
         { "wxSHUTDOWN_POWEROFF", wxSHUTDOWN_POWEROFF },
         { "wxSHUTDOWN_REBOOT", wxSHUTDOWN_REBOOT },

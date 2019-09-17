@@ -880,6 +880,15 @@ class %delete wxTabEvent : public wxCommandEvent
 
 #if wxLUA_USE_wxScrolledWindow
 
+#if %wxchkver_2_9_0
+enum wxScrollbarVisibility
+{
+    wxSHOW_SB_NEVER = -1,   ///< Never show the scrollbar at all.
+    wxSHOW_SB_DEFAULT,      ///< Show scrollbar only if it is needed.
+    wxSHOW_SB_ALWAYS        ///< Always show scrollbar, even if not needed.
+};
+#endif //%wxchkver_2_9_0
+
 class wxScrolledWindow : public wxPanel
 {
     wxScrolledWindow();
@@ -908,12 +917,30 @@ class wxScrolledWindow : public wxPanel
     //// C++ Func: void GetVirtualSize(int* x, int* y) const;
     //void GetVirtualSize() const; // see wxWindow::GetVirtualSize
 
+    %wxchkver_2_9_0 void ShowScrollbars(wxScrollbarVisibility horz, wxScrollbarVisibility vert);
+    %wxchkver_2_9_1 void DisableKeyboardScrolling();
+
     //bool IsRetained() const; // see wxWindow::IsRetained
     void PrepareDC(wxDC& dc);
     void Scroll(int x, int y);
     void SetScrollbars(int pixelsPerUnitX, int pixelsPerUnitY, int noUnitsX, int noUnitsY, int xPos = 0, int yPos = 0, bool noRefresh = false);
     void SetScrollRate(int xstep, int ystep);
     void SetTargetWindow(wxWindow* window);
+    wxWindow *GetTargetWindow() const;
+
+    void SetTargetRect(const wxRect& rect);
+    wxRect GetTargetRect() const;
+
+    int GetScrollPageSize(int orient) const;
+    void SetScrollPageSize(int orient, int pageSize);
+    int GetScrollLines(int orient) const;
+    void SetScale(double xs, double ys);
+    double GetScaleX() const;
+    double GetScaleY() const;
+
+    bool IsAutoScrolling() const;
+    void StopAutoScrolling();
+
     // void SetVirtualSize(int width, int height) -- see wxWindow
 
     //void DoPrepareDC(wxDC& dc);

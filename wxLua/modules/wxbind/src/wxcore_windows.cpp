@@ -10767,6 +10767,23 @@ static int LUACALL wxLua_wxScrolledWindow_Create(lua_State *L)
 
 #endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxScrolledWindow)
 
+#if (wxCHECK_VERSION(2,9,1)) && (wxLUA_USE_wxScrolledWindow)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxScrolledWindow_DisableKeyboardScrolling[] = { &wxluatype_wxScrolledWindow, NULL };
+static int LUACALL wxLua_wxScrolledWindow_DisableKeyboardScrolling(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrolledWindow_DisableKeyboardScrolling[1] = {{ wxLua_wxScrolledWindow_DisableKeyboardScrolling, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxScrolledWindow_DisableKeyboardScrolling }};
+//     %wxchkver_2_9_1 void DisableKeyboardScrolling();
+static int LUACALL wxLua_wxScrolledWindow_DisableKeyboardScrolling(lua_State *L)
+{
+    // get this
+    wxScrolledWindow * self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
+    // call DisableKeyboardScrolling
+    self->DisableKeyboardScrolling();
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(2,9,1)) && (wxLUA_USE_wxScrolledWindow)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxScrolledWindow_EnableScrolling[] = { &wxluatype_wxScrolledWindow, &wxluatype_TBOOLEAN, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxScrolledWindow_EnableScrolling(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrolledWindow_EnableScrolling[1] = {{ wxLua_wxScrolledWindow_EnableScrolling, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxScrolledWindow_EnableScrolling }};
@@ -10783,6 +10800,74 @@ static int LUACALL wxLua_wxScrolledWindow_EnableScrolling(lua_State *L)
     self->EnableScrolling(xScrolling, yScrolling);
 
     return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxScrolledWindow_GetScaleX[] = { &wxluatype_wxScrolledWindow, NULL };
+static int LUACALL wxLua_wxScrolledWindow_GetScaleX(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrolledWindow_GetScaleX[1] = {{ wxLua_wxScrolledWindow_GetScaleX, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxScrolledWindow_GetScaleX }};
+//     double GetScaleX() const;
+static int LUACALL wxLua_wxScrolledWindow_GetScaleX(lua_State *L)
+{
+    // get this
+    wxScrolledWindow * self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
+    // call GetScaleX
+    double returns = (self->GetScaleX());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxScrolledWindow_GetScaleY[] = { &wxluatype_wxScrolledWindow, NULL };
+static int LUACALL wxLua_wxScrolledWindow_GetScaleY(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrolledWindow_GetScaleY[1] = {{ wxLua_wxScrolledWindow_GetScaleY, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxScrolledWindow_GetScaleY }};
+//     double GetScaleY() const;
+static int LUACALL wxLua_wxScrolledWindow_GetScaleY(lua_State *L)
+{
+    // get this
+    wxScrolledWindow * self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
+    // call GetScaleY
+    double returns = (self->GetScaleY());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxScrolledWindow_GetScrollLines[] = { &wxluatype_wxScrolledWindow, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxScrolledWindow_GetScrollLines(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrolledWindow_GetScrollLines[1] = {{ wxLua_wxScrolledWindow_GetScrollLines, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxScrolledWindow_GetScrollLines }};
+//     int GetScrollLines(int orient) const;
+static int LUACALL wxLua_wxScrolledWindow_GetScrollLines(lua_State *L)
+{
+    // int orient
+    int orient = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxScrolledWindow * self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
+    // call GetScrollLines
+    int returns = (self->GetScrollLines(orient));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxScrolledWindow_GetScrollPageSize[] = { &wxluatype_wxScrolledWindow, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxScrolledWindow_GetScrollPageSize(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrolledWindow_GetScrollPageSize[1] = {{ wxLua_wxScrolledWindow_GetScrollPageSize, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxScrolledWindow_GetScrollPageSize }};
+//     int GetScrollPageSize(int orient) const;
+static int LUACALL wxLua_wxScrolledWindow_GetScrollPageSize(lua_State *L)
+{
+    // int orient
+    int orient = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxScrolledWindow * self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
+    // call GetScrollPageSize
+    int returns = (self->GetScrollPageSize(orient));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
 }
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxScrolledWindow_GetScrollPixelsPerUnit[] = { &wxluatype_wxScrolledWindow, NULL };
@@ -10805,6 +10890,45 @@ static int LUACALL wxLua_wxScrolledWindow_GetScrollPixelsPerUnit(lua_State *L)
 }
 
 
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxScrolledWindow)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxScrolledWindow_GetTargetRect[] = { &wxluatype_wxScrolledWindow, NULL };
+static int LUACALL wxLua_wxScrolledWindow_GetTargetRect(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrolledWindow_GetTargetRect[1] = {{ wxLua_wxScrolledWindow_GetTargetRect, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxScrolledWindow_GetTargetRect }};
+//     wxRect GetTargetRect() const;
+static int LUACALL wxLua_wxScrolledWindow_GetTargetRect(lua_State *L)
+{
+    // get this
+    wxScrolledWindow * self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
+    // call GetTargetRect
+    // allocate a new object using the copy constructor
+    wxRect* returns = new wxRect(self->GetTargetRect());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxRect);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxRect);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxScrolledWindow)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxScrolledWindow_GetTargetWindow[] = { &wxluatype_wxScrolledWindow, NULL };
+static int LUACALL wxLua_wxScrolledWindow_GetTargetWindow(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrolledWindow_GetTargetWindow[1] = {{ wxLua_wxScrolledWindow_GetTargetWindow, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxScrolledWindow_GetTargetWindow }};
+//     wxWindow *GetTargetWindow() const;
+static int LUACALL wxLua_wxScrolledWindow_GetTargetWindow(lua_State *L)
+{
+    // get this
+    wxScrolledWindow * self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
+    // call GetTargetWindow
+    wxWindow* returns = (wxWindow*)self->GetTargetWindow();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxWindow);
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxScrolledWindow_GetViewStart[] = { &wxluatype_wxScrolledWindow, NULL };
 static int LUACALL wxLua_wxScrolledWindow_GetViewStart(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrolledWindow_GetViewStart[1] = {{ wxLua_wxScrolledWindow_GetViewStart, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxScrolledWindow_GetViewStart }};
@@ -10824,6 +10948,22 @@ static int LUACALL wxLua_wxScrolledWindow_GetViewStart(lua_State *L)
     return 2;
 }
 
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxScrolledWindow_IsAutoScrolling[] = { &wxluatype_wxScrolledWindow, NULL };
+static int LUACALL wxLua_wxScrolledWindow_IsAutoScrolling(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrolledWindow_IsAutoScrolling[1] = {{ wxLua_wxScrolledWindow_IsAutoScrolling, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxScrolledWindow_IsAutoScrolling }};
+//     bool IsAutoScrolling() const;
+static int LUACALL wxLua_wxScrolledWindow_IsAutoScrolling(lua_State *L)
+{
+    // get this
+    wxScrolledWindow * self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
+    // call IsAutoScrolling
+    bool returns = (self->IsAutoScrolling());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
 
 
 #if (wxLUA_USE_wxDC) && (wxLUA_USE_wxScrolledWindow)
@@ -10859,6 +10999,42 @@ static int LUACALL wxLua_wxScrolledWindow_Scroll(lua_State *L)
     wxScrolledWindow * self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
     // call Scroll
     self->Scroll(x, y);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxScrolledWindow_SetScale[] = { &wxluatype_wxScrolledWindow, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxScrolledWindow_SetScale(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrolledWindow_SetScale[1] = {{ wxLua_wxScrolledWindow_SetScale, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxScrolledWindow_SetScale }};
+//     void SetScale(double xs, double ys);
+static int LUACALL wxLua_wxScrolledWindow_SetScale(lua_State *L)
+{
+    // double ys
+    double ys = (double)wxlua_getnumbertype(L, 3);
+    // double xs
+    double xs = (double)wxlua_getnumbertype(L, 2);
+    // get this
+    wxScrolledWindow * self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
+    // call SetScale
+    self->SetScale(xs, ys);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxScrolledWindow_SetScrollPageSize[] = { &wxluatype_wxScrolledWindow, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxScrolledWindow_SetScrollPageSize(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrolledWindow_SetScrollPageSize[1] = {{ wxLua_wxScrolledWindow_SetScrollPageSize, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxScrolledWindow_SetScrollPageSize }};
+//     void SetScrollPageSize(int orient, int pageSize);
+static int LUACALL wxLua_wxScrolledWindow_SetScrollPageSize(lua_State *L)
+{
+    // int pageSize
+    int pageSize = (int)wxlua_getnumbertype(L, 3);
+    // int orient
+    int orient = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxScrolledWindow * self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
+    // call SetScrollPageSize
+    self->SetScrollPageSize(orient, pageSize);
 
     return 0;
 }
@@ -10911,6 +11087,26 @@ static int LUACALL wxLua_wxScrolledWindow_SetScrollbars(lua_State *L)
     return 0;
 }
 
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxScrolledWindow)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxScrolledWindow_SetTargetRect[] = { &wxluatype_wxScrolledWindow, &wxluatype_wxRect, NULL };
+static int LUACALL wxLua_wxScrolledWindow_SetTargetRect(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrolledWindow_SetTargetRect[1] = {{ wxLua_wxScrolledWindow_SetTargetRect, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxScrolledWindow_SetTargetRect }};
+//     void SetTargetRect(const wxRect& rect);
+static int LUACALL wxLua_wxScrolledWindow_SetTargetRect(lua_State *L)
+{
+    // const wxRect rect
+    const wxRect * rect = (const wxRect *)wxluaT_getuserdatatype(L, 2, wxluatype_wxRect);
+    // get this
+    wxScrolledWindow * self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
+    // call SetTargetRect
+    self->SetTargetRect(*rect);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxScrolledWindow)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxScrolledWindow_SetTargetWindow[] = { &wxluatype_wxScrolledWindow, &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxScrolledWindow_SetTargetWindow(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrolledWindow_SetTargetWindow[1] = {{ wxLua_wxScrolledWindow_SetTargetWindow, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxScrolledWindow_SetTargetWindow }};
@@ -10923,6 +11119,42 @@ static int LUACALL wxLua_wxScrolledWindow_SetTargetWindow(lua_State *L)
     wxScrolledWindow * self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
     // call SetTargetWindow
     self->SetTargetWindow(window);
+
+    return 0;
+}
+
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxScrolledWindow)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxScrolledWindow_ShowScrollbars[] = { &wxluatype_wxScrolledWindow, &wxluatype_TINTEGER, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxScrolledWindow_ShowScrollbars(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrolledWindow_ShowScrollbars[1] = {{ wxLua_wxScrolledWindow_ShowScrollbars, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxScrolledWindow_ShowScrollbars }};
+//     %wxchkver_2_9_0 void ShowScrollbars(wxScrollbarVisibility horz, wxScrollbarVisibility vert);
+static int LUACALL wxLua_wxScrolledWindow_ShowScrollbars(lua_State *L)
+{
+    // wxScrollbarVisibility vert
+    wxScrollbarVisibility vert = (wxScrollbarVisibility)wxlua_getenumtype(L, 3);
+    // wxScrollbarVisibility horz
+    wxScrollbarVisibility horz = (wxScrollbarVisibility)wxlua_getenumtype(L, 2);
+    // get this
+    wxScrolledWindow * self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
+    // call ShowScrollbars
+    self->ShowScrollbars(horz, vert);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxScrolledWindow)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxScrolledWindow_StopAutoScrolling[] = { &wxluatype_wxScrolledWindow, NULL };
+static int LUACALL wxLua_wxScrolledWindow_StopAutoScrolling(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxScrolledWindow_StopAutoScrolling[1] = {{ wxLua_wxScrolledWindow_StopAutoScrolling, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxScrolledWindow_StopAutoScrolling }};
+//     void StopAutoScrolling();
+static int LUACALL wxLua_wxScrolledWindow_StopAutoScrolling(lua_State *L)
+{
+    // get this
+    wxScrolledWindow * self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
+    // call StopAutoScrolling
+    self->StopAutoScrolling();
 
     return 0;
 }
@@ -11008,18 +11240,46 @@ wxLuaBindMethod wxScrolledWindow_methods[] = {
     { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_Create, 1, NULL },
 #endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxScrolledWindow)
 
+#if (wxCHECK_VERSION(2,9,1)) && (wxLUA_USE_wxScrolledWindow)
+    { "DisableKeyboardScrolling", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_DisableKeyboardScrolling, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,1)) && (wxLUA_USE_wxScrolledWindow)
+
     { "EnableScrolling", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_EnableScrolling, 1, NULL },
+    { "GetScaleX", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_GetScaleX, 1, NULL },
+    { "GetScaleY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_GetScaleY, 1, NULL },
+    { "GetScrollLines", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_GetScrollLines, 1, NULL },
+    { "GetScrollPageSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_GetScrollPageSize, 1, NULL },
     { "GetScrollPixelsPerUnit", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_GetScrollPixelsPerUnit, 1, NULL },
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxScrolledWindow)
+    { "GetTargetRect", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_GetTargetRect, 1, NULL },
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxScrolledWindow)
+
+    { "GetTargetWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_GetTargetWindow, 1, NULL },
     { "GetViewStart", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_GetViewStart, 1, NULL },
+    { "IsAutoScrolling", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_IsAutoScrolling, 1, NULL },
 
 #if (wxLUA_USE_wxDC) && (wxLUA_USE_wxScrolledWindow)
     { "PrepareDC", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_PrepareDC, 1, NULL },
 #endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxScrolledWindow)
 
     { "Scroll", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_Scroll, 1, NULL },
+    { "SetScale", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_SetScale, 1, NULL },
+    { "SetScrollPageSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_SetScrollPageSize, 1, NULL },
     { "SetScrollRate", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_SetScrollRate, 1, NULL },
     { "SetScrollbars", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_SetScrollbars, 1, NULL },
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxScrolledWindow)
+    { "SetTargetRect", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_SetTargetRect, 1, NULL },
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxScrolledWindow)
+
     { "SetTargetWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_SetTargetWindow, 1, NULL },
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxScrolledWindow)
+    { "ShowScrollbars", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_ShowScrollbars, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxScrolledWindow)
+
+    { "StopAutoScrolling", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxScrolledWindow_StopAutoScrolling, 1, NULL },
 
 #if ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxScrolledWindow))||(wxLUA_USE_wxScrolledWindow)
     { "wxScrolledWindow", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxScrolledWindow_constructor_overload, s_wxluafunc_wxLua_wxScrolledWindow_constructor_overload_count, 0 },
