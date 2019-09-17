@@ -88,6 +88,11 @@ local steps = {
     wxHtmlCell = "html/htmlcell.h",
     wxHtmlDCRenderer = "html/htmprint.h",
   },
+  wxxml_xml = {
+    wxXmlNode = "xml/xml.h",
+    wxXmlDocument = "xml/xml.h",
+    wxXmlAttribute = "xml/xml.h",
+  },
 }
 local overrides = {}
 

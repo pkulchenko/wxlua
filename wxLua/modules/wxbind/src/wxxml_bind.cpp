@@ -31,6 +31,46 @@
 // Lua MetaTable Tag for Class 'wxXmlNode'
 int wxluatype_wxXmlNode = WXLUA_TUNKNOWN;
 
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_AddAttribute1[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlAttribute, NULL };
+static int LUACALL wxLua_wxXmlNode_AddAttribute1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_AddAttribute1[1] = {{ wxLua_wxXmlNode_AddAttribute1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_AddAttribute1 }};
+//     %wxchkver_2_9_0 void AddAttribute(wxXmlAttribute* attr);
+static int LUACALL wxLua_wxXmlNode_AddAttribute1(lua_State *L)
+{
+    // wxXmlAttribute attr
+    wxXmlAttribute * attr = (wxXmlAttribute *)wxluaT_getuserdatatype(L, 2, wxluatype_wxXmlAttribute);
+    // get this
+    wxXmlNode * self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call AddAttribute
+    self->AddAttribute(attr);
+
+    return 0;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_AddAttribute[] = { &wxluatype_wxXmlNode, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxXmlNode_AddAttribute(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_AddAttribute[1] = {{ wxLua_wxXmlNode_AddAttribute, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxXmlNode_AddAttribute }};
+//     %wxchkver_2_9_0 void AddAttribute(const wxString& name, const wxString& value);
+static int LUACALL wxLua_wxXmlNode_AddAttribute(lua_State *L)
+{
+    // const wxString value
+    const wxString value = wxlua_getwxStringtype(L, 3);
+    // const wxString name
+    const wxString name = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxXmlNode * self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call AddAttribute
+    self->AddAttribute(name, value);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_AddChild[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlNode_AddChild(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_AddChild[1] = {{ wxLua_wxXmlNode_AddChild, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_AddChild }};
@@ -50,28 +90,11 @@ static int LUACALL wxLua_wxXmlNode_AddChild(lua_State *L)
 
 
 #if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_AddProperty1[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlProperty, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_AddProperty1[] = { &wxluatype_wxXmlNode, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlNode_AddProperty1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_AddProperty1[1] = {{ wxLua_wxXmlNode_AddProperty1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_AddProperty1 }};
-//     !%wxchkver_2_9 void AddProperty(%ungc wxXmlProperty *prop);
-static int LUACALL wxLua_wxXmlNode_AddProperty1(lua_State *L)
-{
-    // wxXmlProperty prop
-    wxXmlProperty * prop = (wxXmlProperty *)wxluaT_getuserdatatype(L, 2, wxluatype_wxXmlProperty);
-    if (wxluaO_isgcobject(L, prop)) wxluaO_undeletegcobject(L, prop);
-    // get this
-    wxXmlNode * self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
-    // call AddProperty
-    self->AddProperty(prop);
-
-    return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_AddProperty[] = { &wxluatype_wxXmlNode, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxXmlNode_AddProperty(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_AddProperty[1] = {{ wxLua_wxXmlNode_AddProperty, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxXmlNode_AddProperty }};
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_AddProperty1[1] = {{ wxLua_wxXmlNode_AddProperty1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxXmlNode_AddProperty1 }};
 //     !%wxchkver_2_9 void AddProperty(const wxString& name, const wxString& value);
-static int LUACALL wxLua_wxXmlNode_AddProperty(lua_State *L)
+static int LUACALL wxLua_wxXmlNode_AddProperty1(lua_State *L)
 {
     // const wxString value
     const wxString value = wxlua_getwxStringtype(L, 3);
@@ -85,6 +108,47 @@ static int LUACALL wxLua_wxXmlNode_AddProperty(lua_State *L)
     return 0;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_AddProperty[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlProperty, NULL };
+static int LUACALL wxLua_wxXmlNode_AddProperty(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_AddProperty[1] = {{ wxLua_wxXmlNode_AddProperty, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_AddProperty }};
+//     !%wxchkver_2_9 void AddProperty(%ungc wxXmlProperty *prop);
+static int LUACALL wxLua_wxXmlNode_AddProperty(lua_State *L)
+{
+    // wxXmlProperty prop
+    wxXmlProperty * prop = (wxXmlProperty *)wxluaT_getuserdatatype(L, 2, wxluatype_wxXmlProperty);
+    if (wxluaO_isgcobject(L, prop)) wxluaO_undeletegcobject(L, prop);
+    // get this
+    wxXmlNode * self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call AddProperty
+    self->AddProperty(prop);
+
+    return 0;
+}
+
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_DeleteAttribute[] = { &wxluatype_wxXmlNode, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxXmlNode_DeleteAttribute(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_DeleteAttribute[1] = {{ wxLua_wxXmlNode_DeleteAttribute, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_DeleteAttribute }};
+//     %wxchkver_2_9_0 bool DeleteAttribute(const wxString& name);
+static int LUACALL wxLua_wxXmlNode_DeleteAttribute(lua_State *L)
+{
+    // const wxString name
+    const wxString name = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxXmlNode * self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call DeleteAttribute
+    bool returns = (self->DeleteAttribute(name));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_DeleteProperty[] = { &wxluatype_wxXmlNode, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlNode_DeleteProperty(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_DeleteProperty[1] = {{ wxLua_wxXmlNode_DeleteProperty, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_DeleteProperty }};
@@ -104,6 +168,70 @@ static int LUACALL wxLua_wxXmlNode_DeleteProperty(lua_State *L)
 }
 
 #endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_GetAttribute1[] = { &wxluatype_wxXmlNode, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxXmlNode_GetAttribute1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_GetAttribute1[1] = {{ wxLua_wxXmlNode_GetAttribute1, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxXmlNode_GetAttribute1 }};
+//     %wxchkver_2_9_0 wxString GetAttribute(const wxString& attrName, const wxString& defaultVal = wxEmptyString) const;
+static int LUACALL wxLua_wxXmlNode_GetAttribute1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString defaultVal = wxEmptyString
+    const wxString defaultVal = (argCount >= 3 ? wxlua_getwxStringtype(L, 3) : wxString(wxEmptyString));
+    // const wxString attrName
+    const wxString attrName = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxXmlNode * self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call GetAttribute
+    wxString returns = (self->GetAttribute(attrName, defaultVal));
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_GetAttribute[] = { &wxluatype_wxXmlNode, &wxluatype_TSTRING, &wxluatype_TLIGHTUSERDATA, NULL };
+static int LUACALL wxLua_wxXmlNode_GetAttribute(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_GetAttribute[1] = {{ wxLua_wxXmlNode_GetAttribute, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxXmlNode_GetAttribute }};
+//     %wxchkver_2_9_0 bool GetAttribute(const wxString& attrName, wxString* value) const;
+static int LUACALL wxLua_wxXmlNode_GetAttribute(lua_State *L)
+{
+    // wxString value
+    wxString * value = (wxString *)wxlua_touserdata(L, 3);
+    // const wxString attrName
+    const wxString attrName = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxXmlNode * self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call GetAttribute
+    bool returns = (self->GetAttribute(attrName, value));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_GetAttributes[] = { &wxluatype_wxXmlNode, NULL };
+static int LUACALL wxLua_wxXmlNode_GetAttributes(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_GetAttributes[1] = {{ wxLua_wxXmlNode_GetAttributes, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlNode_GetAttributes }};
+//     %wxchkver_2_9_0 wxXmlAttribute* GetAttributes() const;
+static int LUACALL wxLua_wxXmlNode_GetAttributes(lua_State *L)
+{
+    // get this
+    wxXmlNode * self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call GetAttributes
+    wxXmlAttribute* returns = (wxXmlAttribute*)self->GetAttributes();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxXmlAttribute);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_GetChildren[] = { &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlNode_GetChildren(lua_State *L);
@@ -137,6 +265,49 @@ static int LUACALL wxLua_wxXmlNode_GetContent(lua_State *L)
     return 1;
 }
 
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_GetDepth[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlNode, NULL };
+static int LUACALL wxLua_wxXmlNode_GetDepth(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_GetDepth[1] = {{ wxLua_wxXmlNode_GetDepth, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxXmlNode_GetDepth }};
+//     %wxchkver_2_9_0 int GetDepth(wxXmlNode* grandparent = NULL) const;
+static int LUACALL wxLua_wxXmlNode_GetDepth(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxXmlNode grandparent = NULL
+    wxXmlNode * grandparent = (argCount >= 2 ? (wxXmlNode *)wxluaT_getuserdatatype(L, 2, wxluatype_wxXmlNode) : NULL);
+    // get this
+    wxXmlNode * self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call GetDepth
+    int returns = (self->GetDepth(grandparent));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_GetLineNumber[] = { &wxluatype_wxXmlNode, NULL };
+static int LUACALL wxLua_wxXmlNode_GetLineNumber(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_GetLineNumber[1] = {{ wxLua_wxXmlNode_GetLineNumber, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlNode_GetLineNumber }};
+//     %wxchkver_2_9_0 int GetLineNumber() const;
+static int LUACALL wxLua_wxXmlNode_GetLineNumber(lua_State *L)
+{
+    // get this
+    wxXmlNode * self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call GetLineNumber
+    int returns = (self->GetLineNumber());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_GetName[] = { &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlNode_GetName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_GetName[1] = {{ wxLua_wxXmlNode_GetName, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlNode_GetName }};
@@ -168,6 +339,45 @@ static int LUACALL wxLua_wxXmlNode_GetNext(lua_State *L)
 
     return 1;
 }
+
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_GetNoConversion[] = { &wxluatype_wxXmlNode, NULL };
+static int LUACALL wxLua_wxXmlNode_GetNoConversion(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_GetNoConversion[1] = {{ wxLua_wxXmlNode_GetNoConversion, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlNode_GetNoConversion }};
+//     %wxchkver_3_0_0 bool GetNoConversion() const;
+static int LUACALL wxLua_wxXmlNode_GetNoConversion(lua_State *L)
+{
+    // get this
+    wxXmlNode * self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call GetNoConversion
+    bool returns = (self->GetNoConversion());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_GetNodeContent[] = { &wxluatype_wxXmlNode, NULL };
+static int LUACALL wxLua_wxXmlNode_GetNodeContent(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_GetNodeContent[1] = {{ wxLua_wxXmlNode_GetNodeContent, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlNode_GetNodeContent }};
+//     %wxchkver_2_9_0 wxString GetNodeContent() const;
+static int LUACALL wxLua_wxXmlNode_GetNodeContent(lua_State *L)
+{
+    // get this
+    wxXmlNode * self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call GetNodeContent
+    wxString returns = (self->GetNodeContent());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_GetParent[] = { &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlNode_GetParent(lua_State *L);
@@ -267,6 +477,27 @@ static int LUACALL wxLua_wxXmlNode_GetType(lua_State *L)
 }
 
 
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_HasAttribute[] = { &wxluatype_wxXmlNode, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxXmlNode_HasAttribute(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_HasAttribute[1] = {{ wxLua_wxXmlNode_HasAttribute, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_HasAttribute }};
+//     %wxchkver_2_9_0 bool HasAttribute(const wxString& attrName) const;
+static int LUACALL wxLua_wxXmlNode_HasAttribute(lua_State *L)
+{
+    // const wxString attrName
+    const wxString attrName = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxXmlNode * self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call HasAttribute
+    bool returns = (self->HasAttribute(attrName));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
 #if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_HasProp[] = { &wxluatype_wxXmlNode, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlNode_HasProp(lua_State *L);
@@ -307,6 +538,50 @@ static int LUACALL wxLua_wxXmlNode_InsertChild(lua_State *L)
     return 0;
 }
 
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_InsertChildAfter[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlNode, &wxluatype_wxXmlNode, NULL };
+static int LUACALL wxLua_wxXmlNode_InsertChildAfter(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_InsertChildAfter[1] = {{ wxLua_wxXmlNode_InsertChildAfter, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxXmlNode_InsertChildAfter }};
+//     %wxchkver_2_9_0 bool InsertChildAfter(%ungc wxXmlNode* child, wxXmlNode* precedingNode);
+static int LUACALL wxLua_wxXmlNode_InsertChildAfter(lua_State *L)
+{
+    // wxXmlNode precedingNode
+    wxXmlNode * precedingNode = (wxXmlNode *)wxluaT_getuserdatatype(L, 3, wxluatype_wxXmlNode);
+    // wxXmlNode child
+    wxXmlNode * child = (wxXmlNode *)wxluaT_getuserdatatype(L, 2, wxluatype_wxXmlNode);
+    if (wxluaO_isgcobject(L, child)) wxluaO_undeletegcobject(L, child);
+    // get this
+    wxXmlNode * self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call InsertChildAfter
+    bool returns = (self->InsertChildAfter(child, precedingNode));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_IsWhitespaceOnly[] = { &wxluatype_wxXmlNode, NULL };
+static int LUACALL wxLua_wxXmlNode_IsWhitespaceOnly(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_IsWhitespaceOnly[1] = {{ wxLua_wxXmlNode_IsWhitespaceOnly, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlNode_IsWhitespaceOnly }};
+//     %wxchkver_2_9_0 bool IsWhitespaceOnly() const;
+static int LUACALL wxLua_wxXmlNode_IsWhitespaceOnly(lua_State *L)
+{
+    // get this
+    wxXmlNode * self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call IsWhitespaceOnly
+    bool returns = (self->IsWhitespaceOnly());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_RemoveChild[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlNode_RemoveChild(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_RemoveChild[1] = {{ wxLua_wxXmlNode_RemoveChild, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_RemoveChild }};
@@ -330,6 +605,26 @@ static int LUACALL wxLua_wxXmlNode_RemoveChild(lua_State *L)
     return 1;
 }
 
+
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_SetAttributes[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlAttribute, NULL };
+static int LUACALL wxLua_wxXmlNode_SetAttributes(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_SetAttributes[1] = {{ wxLua_wxXmlNode_SetAttributes, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_SetAttributes }};
+//     %wxchkver_2_9_0 void SetAttributes(wxXmlAttribute* attr);
+static int LUACALL wxLua_wxXmlNode_SetAttributes(lua_State *L)
+{
+    // wxXmlAttribute attr
+    wxXmlAttribute * attr = (wxXmlAttribute *)wxluaT_getuserdatatype(L, 2, wxluatype_wxXmlAttribute);
+    // get this
+    wxXmlNode * self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call SetAttributes
+    self->SetAttributes(attr);
+
+    return 0;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_SetChildren[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlNode_SetChildren(lua_State *L);
@@ -396,6 +691,26 @@ static int LUACALL wxLua_wxXmlNode_SetNext(lua_State *L)
     return 0;
 }
 
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_SetNoConversion[] = { &wxluatype_wxXmlNode, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxXmlNode_SetNoConversion(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_SetNoConversion[1] = {{ wxLua_wxXmlNode_SetNoConversion, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_SetNoConversion }};
+//     %wxchkver_3_0_0 void SetNoConversion(bool noconversion);
+static int LUACALL wxLua_wxXmlNode_SetNoConversion(lua_State *L)
+{
+    // bool noconversion
+    bool noconversion = wxlua_getbooleantype(L, 2);
+    // get this
+    wxXmlNode * self = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call SetNoConversion
+    self->SetNoConversion(noconversion);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_SetParent[] = { &wxluatype_wxXmlNode, &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlNode_SetParent(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_SetParent[1] = {{ wxLua_wxXmlNode_SetParent, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_SetParent }};
@@ -454,12 +769,35 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_delete[1] = {{ wxlua_userdata_
 
 
 #if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_constructor2[] = { &wxluatype_wxXmlNode, &wxluatype_TINTEGER, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxXmlProperty, &wxluatype_wxXmlNode, NULL };
-static int LUACALL wxLua_wxXmlNode_constructor2(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_constructor2[1] = {{ wxLua_wxXmlNode_constructor2, WXLUAMETHOD_CONSTRUCTOR, 6, 6, s_wxluatypeArray_wxLua_wxXmlNode_constructor2 }};
-// %override wxLua_wxXmlNode_constructor2
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_constructor5[] = { &wxluatype_TINTEGER, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxXmlNode_constructor5(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_constructor5[1] = {{ wxLua_wxXmlNode_constructor5, WXLUAMETHOD_CONSTRUCTOR, 2, 3, s_wxluatypeArray_wxLua_wxXmlNode_constructor5 }};
+//     !%wxchkver_2_9_0 wxXmlNode(wxXmlNodeType type, const wxString& name, const wxString& content = "");
+static int LUACALL wxLua_wxXmlNode_constructor5(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString content = ""
+    const wxString content = (argCount >= 3 ? wxlua_getwxStringtype(L, 3) : wxString(wxEmptyString));
+    // const wxString name
+    const wxString name = wxlua_getwxStringtype(L, 2);
+    // wxXmlNodeType type
+    wxXmlNodeType type = (wxXmlNodeType)wxlua_getenumtype(L, 1);
+    // call constructor
+    wxXmlNode* returns = new wxXmlNode(type, name, content);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxXmlNode);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxXmlNode);
+
+    return 1;
+}
+
+static int LUACALL wxLua_wxXmlNode_constructor4(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_constructor4[1] = {{ wxLua_wxXmlNode_constructor4, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+// %override wxLua_wxXmlNode_constructor4
 //     wxXmlNode(wxXmlNode *parent, wxXmlNodeType type, const wxString& name, const wxString& content, wxXmlProperty *props, wxXmlNode *next)
-static int LUACALL wxLua_wxXmlNode_constructor2(lua_State *L)
+static int LUACALL wxLua_wxXmlNode_constructor4(lua_State *L)
 {
     // wxXmlNode next
     wxXmlNode * next = (wxXmlNode *)wxluaT_getuserdatatype(L, 6, wxluatype_wxXmlNode);
@@ -485,24 +823,73 @@ static int LUACALL wxLua_wxXmlNode_constructor2(lua_State *L)
 }
 
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_constructor3[] = { &wxluatype_wxXmlNode, &wxluatype_TINTEGER, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxXmlProperty, &wxluatype_wxXmlNode, NULL };
+static int LUACALL wxLua_wxXmlNode_constructor3(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_constructor3[1] = {{ wxLua_wxXmlNode_constructor3, WXLUAMETHOD_CONSTRUCTOR, 6, 6, s_wxluatypeArray_wxLua_wxXmlNode_constructor3 }};
+//     !%wxchkver_2_9 wxXmlNode(wxXmlNode *parent, wxXmlNodeType type, const wxString& name, const wxString& content, wxXmlProperty *props, wxXmlNode *next);
+static int LUACALL wxLua_wxXmlNode_constructor3(lua_State *L)
+{
+    // wxXmlNode next
+    wxXmlNode * next = (wxXmlNode *)wxluaT_getuserdatatype(L, 6, wxluatype_wxXmlNode);
+    // wxXmlProperty props
+    wxXmlProperty * props = (wxXmlProperty *)wxluaT_getuserdatatype(L, 5, wxluatype_wxXmlProperty);
+    // const wxString content
+    const wxString content = wxlua_getwxStringtype(L, 4);
+    // const wxString name
+    const wxString name = wxlua_getwxStringtype(L, 3);
+    // wxXmlNodeType type
+    wxXmlNodeType type = (wxXmlNodeType)wxlua_getenumtype(L, 2);
+    // wxXmlNode parent
+    wxXmlNode * parent = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call constructor
+    wxXmlNode* returns = new wxXmlNode(parent, type, name, content, props, next);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxXmlNode);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxXmlNode);
+
+    return 1;
+}
+
 #endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_constructor1[] = { &wxluatype_TINTEGER, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_constructor2[] = { &wxluatype_wxXmlNode, NULL };
+static int LUACALL wxLua_wxXmlNode_constructor2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_constructor2[1] = {{ wxLua_wxXmlNode_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxXmlNode_constructor2 }};
+//     %wxchkver_2_9_0 wxXmlNode(const wxXmlNode& node);
+static int LUACALL wxLua_wxXmlNode_constructor2(lua_State *L)
+{
+    // const wxXmlNode node
+    const wxXmlNode * node = (const wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
+    // call constructor
+    wxXmlNode* returns = new wxXmlNode(*node);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxXmlNode);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxXmlNode);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_constructor1[] = { &wxluatype_TINTEGER, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxXmlNode_constructor1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_constructor1[1] = {{ wxLua_wxXmlNode_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 3, s_wxluatypeArray_wxLua_wxXmlNode_constructor1 }};
-//     wxXmlNode(wxXmlNodeType type, const wxString& name, const wxString& content = "");
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_constructor1[1] = {{ wxLua_wxXmlNode_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 4, s_wxluatypeArray_wxLua_wxXmlNode_constructor1 }};
+//     %wxchkver_2_9_0 wxXmlNode(wxXmlNodeType type, const wxString& name, const wxString& content = wxEmptyString, int lineNo = -1);
 static int LUACALL wxLua_wxXmlNode_constructor1(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // const wxString content = ""
+    // int lineNo = -1
+    int lineNo = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : -1);
+    // const wxString content = wxEmptyString
     const wxString content = (argCount >= 3 ? wxlua_getwxStringtype(L, 3) : wxString(wxEmptyString));
     // const wxString name
     const wxString name = wxlua_getwxStringtype(L, 2);
     // wxXmlNodeType type
     wxXmlNodeType type = (wxXmlNodeType)wxlua_getenumtype(L, 1);
     // call constructor
-    wxXmlNode* returns = new wxXmlNode(type, name, content);
+    wxXmlNode* returns = new wxXmlNode(type, name, content, lineNo);
     // add to tracked memory list
     wxluaO_addgcobject(L, returns, wxluatype_wxXmlNode);
     // push the constructed class pointer
@@ -511,13 +898,30 @@ static int LUACALL wxLua_wxXmlNode_constructor1(lua_State *L)
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlNode_constructor[] = { &wxluatype_wxXmlNode, &wxluatype_TINTEGER, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxXmlAttribute, &wxluatype_wxXmlNode, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxXmlNode_constructor(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_constructor[1] = {{ wxLua_wxXmlNode_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-//     wxXmlNode();
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_constructor[1] = {{ wxLua_wxXmlNode_constructor, WXLUAMETHOD_CONSTRUCTOR, 3, 7, s_wxluatypeArray_wxLua_wxXmlNode_constructor }};
+//     %wxchkver_2_9_0 wxXmlNode(wxXmlNode* parent, wxXmlNodeType type, const wxString& name, const wxString& content = wxEmptyString, wxXmlAttribute* attrs = NULL, wxXmlNode* next = NULL, int lineNo = -1);
 static int LUACALL wxLua_wxXmlNode_constructor(lua_State *L)
 {
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int lineNo = -1
+    int lineNo = (argCount >= 7 ? (int)wxlua_getnumbertype(L, 7) : -1);
+    // wxXmlNode next = NULL
+    wxXmlNode * next = (argCount >= 6 ? (wxXmlNode *)wxluaT_getuserdatatype(L, 6, wxluatype_wxXmlNode) : NULL);
+    // wxXmlAttribute attrs = NULL
+    wxXmlAttribute * attrs = (argCount >= 5 ? (wxXmlAttribute *)wxluaT_getuserdatatype(L, 5, wxluatype_wxXmlAttribute) : NULL);
+    // const wxString content = wxEmptyString
+    const wxString content = (argCount >= 4 ? wxlua_getwxStringtype(L, 4) : wxString(wxEmptyString));
+    // const wxString name
+    const wxString name = wxlua_getwxStringtype(L, 3);
+    // wxXmlNodeType type
+    wxXmlNodeType type = (wxXmlNodeType)wxlua_getenumtype(L, 2);
+    // wxXmlNode parent
+    wxXmlNode * parent = (wxXmlNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlNode);
     // call constructor
-    wxXmlNode* returns = new wxXmlNode();
+    wxXmlNode* returns = new wxXmlNode(parent, type, name, content, attrs, next, lineNo);
     // add to tracked memory list
     wxluaO_addgcobject(L, returns, wxluatype_wxXmlNode);
     // push the constructed class pointer
@@ -526,8 +930,26 @@ static int LUACALL wxLua_wxXmlNode_constructor(lua_State *L)
     return 1;
 }
 
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
 
+
+#if (((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_AddAttribute_overload[] =
+{
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlNode_AddAttribute1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_AddAttribute1 },
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlNode_AddAttribute, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxXmlNode_AddAttribute },
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+};
+static int s_wxluafunc_wxLua_wxXmlNode_AddAttribute_overload_count = sizeof(s_wxluafunc_wxLua_wxXmlNode_AddAttribute_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
 
 #if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
 // function overload table
@@ -535,15 +957,35 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_AddProperty_overload[] =
 {
 
 #if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
-    { wxLua_wxXmlNode_AddProperty1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_AddProperty1 },
+    { wxLua_wxXmlNode_AddProperty1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxXmlNode_AddProperty1 },
 #endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
 #if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
-    { wxLua_wxXmlNode_AddProperty, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxXmlNode_AddProperty },
+    { wxLua_wxXmlNode_AddProperty, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlNode_AddProperty },
 #endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 };
 static int s_wxluafunc_wxLua_wxXmlNode_AddProperty_overload_count = sizeof(s_wxluafunc_wxLua_wxXmlNode_AddProperty_overload)/sizeof(wxLuaBindCFunc);
 
+#endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_GetAttribute_overload[] =
+{
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlNode_GetAttribute1, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxXmlNode_GetAttribute1 },
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlNode_GetAttribute, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxXmlNode_GetAttribute },
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+};
+static int s_wxluafunc_wxLua_wxXmlNode_GetAttribute_overload_count = sizeof(s_wxluafunc_wxLua_wxXmlNode_GetAttribute_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
+
+#if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_GetPropVal_overload[] =
 {
@@ -560,20 +1002,38 @@ static int s_wxluafunc_wxLua_wxXmlNode_GetPropVal_overload_count = sizeof(s_wxlu
 
 #endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
 
-#if (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(wxLUA_USE_wxXML && wxUSE_XML)
+#if (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlNode_constructor_overload[] =
 {
 
 #if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
-    { wxLua_wxXmlNode_constructor2, WXLUAMETHOD_CONSTRUCTOR, 6, 6, s_wxluatypeArray_wxLua_wxXmlNode_constructor2 },
+    { wxLua_wxXmlNode_constructor5, WXLUAMETHOD_CONSTRUCTOR, 2, 3, s_wxluatypeArray_wxLua_wxXmlNode_constructor5 },
 #endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
-    { wxLua_wxXmlNode_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 3, s_wxluatypeArray_wxLua_wxXmlNode_constructor1 },
-    { wxLua_wxXmlNode_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+
+#if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlNode_constructor4, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+#endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlNode_constructor3, WXLUAMETHOD_CONSTRUCTOR, 6, 6, s_wxluatypeArray_wxLua_wxXmlNode_constructor3 },
+#endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlNode_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxXmlNode_constructor2 },
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlNode_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 4, s_wxluatypeArray_wxLua_wxXmlNode_constructor1 },
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlNode_constructor, WXLUAMETHOD_CONSTRUCTOR, 3, 7, s_wxluatypeArray_wxLua_wxXmlNode_constructor },
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
 };
 static int s_wxluafunc_wxLua_wxXmlNode_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxXmlNode_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(wxLUA_USE_wxXML && wxUSE_XML)
+#endif // (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))
 
 void wxLua_wxXmlNode_delete_function(void** p)
 {
@@ -583,20 +1043,54 @@ void wxLua_wxXmlNode_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxXmlNode_methods[] = {
+#if (((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
+    { "AddAttribute", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_AddAttribute_overload, s_wxluafunc_wxLua_wxXmlNode_AddAttribute_overload_count, 0 },
+#endif // (((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
+
     { "AddChild", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_AddChild, 1, NULL },
 
 #if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
     { "AddProperty", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_AddProperty_overload, s_wxluafunc_wxLua_wxXmlNode_AddProperty_overload_count, 0 },
 #endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
 
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "DeleteAttribute", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_DeleteAttribute, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
 #if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
     { "DeleteProperty", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_DeleteProperty, 1, NULL },
 #endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
+    { "GetAttribute", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetAttribute_overload, s_wxluafunc_wxLua_wxXmlNode_GetAttribute_overload_count, 0 },
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "GetAttributes", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetAttributes, 1, NULL },
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
     { "GetChildren", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetChildren, 1, NULL },
     { "GetContent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetContent, 1, NULL },
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "GetDepth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetDepth, 1, NULL },
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "GetLineNumber", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetLineNumber, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
     { "GetName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetName, 1, NULL },
     { "GetNext", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetNext, 1, NULL },
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "GetNoConversion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetNoConversion, 1, NULL },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "GetNodeContent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetNodeContent, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
     { "GetParent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetParent, 1, NULL },
 
 #if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
@@ -609,16 +1103,39 @@ wxLuaBindMethod wxXmlNode_methods[] = {
 
     { "GetType", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_GetType, 1, NULL },
 
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "HasAttribute", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_HasAttribute, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
 #if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
     { "HasProp", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_HasProp, 1, NULL },
 #endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
     { "InsertChild", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_InsertChild, 1, NULL },
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "InsertChildAfter", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_InsertChildAfter, 1, NULL },
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "IsWhitespaceOnly", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_IsWhitespaceOnly, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
     { "RemoveChild", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_RemoveChild, 1, NULL },
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "SetAttributes", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_SetAttributes, 1, NULL },
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
     { "SetChildren", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_SetChildren, 1, NULL },
     { "SetContent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_SetContent, 1, NULL },
     { "SetName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_SetName, 1, NULL },
     { "SetNext", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_SetNext, 1, NULL },
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "SetNoConversion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_SetNoConversion, 1, NULL },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
     { "SetParent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_SetParent, 1, NULL },
 
 #if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
@@ -628,9 +1145,9 @@ wxLuaBindMethod wxXmlNode_methods[] = {
     { "SetType", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlNode_SetType, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxXmlNode_delete, 1, NULL },
 
-#if (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(wxLUA_USE_wxXML && wxUSE_XML)
+#if (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))
     { "wxXmlNode", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxXmlNode_constructor_overload, s_wxluafunc_wxLua_wxXmlNode_constructor_overload_count, 0 },
-#endif // (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(wxLUA_USE_wxXML && wxUSE_XML)
+#endif // (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))
 
     { 0, 0, 0, 0 },
 };
@@ -828,11 +1345,487 @@ int wxXmlProperty_methodCount = sizeof(wxXmlProperty_methods)/sizeof(wxLuaBindMe
 
 #if wxLUA_USE_wxXML && wxUSE_XML
 // ---------------------------------------------------------------------------
+// Bind class wxXmlAttribute
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxXmlAttribute'
+int wxluatype_wxXmlAttribute = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlAttribute_GetName[] = { &wxluatype_wxXmlAttribute, NULL };
+static int LUACALL wxLua_wxXmlAttribute_GetName(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlAttribute_GetName[1] = {{ wxLua_wxXmlAttribute_GetName, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlAttribute_GetName }};
+//     wxString GetName() const;
+static int LUACALL wxLua_wxXmlAttribute_GetName(lua_State *L)
+{
+    // get this
+    wxXmlAttribute * self = (wxXmlAttribute *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlAttribute);
+    // call GetName
+    wxString returns = (self->GetName());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlAttribute_GetNext[] = { &wxluatype_wxXmlAttribute, NULL };
+static int LUACALL wxLua_wxXmlAttribute_GetNext(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlAttribute_GetNext[1] = {{ wxLua_wxXmlAttribute_GetNext, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlAttribute_GetNext }};
+//     wxXmlAttribute* GetNext() const;
+static int LUACALL wxLua_wxXmlAttribute_GetNext(lua_State *L)
+{
+    // get this
+    wxXmlAttribute * self = (wxXmlAttribute *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlAttribute);
+    // call GetNext
+    wxXmlAttribute* returns = (wxXmlAttribute*)self->GetNext();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxXmlAttribute);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlAttribute_GetValue[] = { &wxluatype_wxXmlAttribute, NULL };
+static int LUACALL wxLua_wxXmlAttribute_GetValue(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlAttribute_GetValue[1] = {{ wxLua_wxXmlAttribute_GetValue, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlAttribute_GetValue }};
+//     wxString GetValue() const;
+static int LUACALL wxLua_wxXmlAttribute_GetValue(lua_State *L)
+{
+    // get this
+    wxXmlAttribute * self = (wxXmlAttribute *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlAttribute);
+    // call GetValue
+    wxString returns = (self->GetValue());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlAttribute_SetName[] = { &wxluatype_wxXmlAttribute, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxXmlAttribute_SetName(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlAttribute_SetName[1] = {{ wxLua_wxXmlAttribute_SetName, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlAttribute_SetName }};
+//     void SetName(const wxString& name);
+static int LUACALL wxLua_wxXmlAttribute_SetName(lua_State *L)
+{
+    // const wxString name
+    const wxString name = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxXmlAttribute * self = (wxXmlAttribute *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlAttribute);
+    // call SetName
+    self->SetName(name);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlAttribute_SetNext[] = { &wxluatype_wxXmlAttribute, &wxluatype_wxXmlAttribute, NULL };
+static int LUACALL wxLua_wxXmlAttribute_SetNext(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlAttribute_SetNext[1] = {{ wxLua_wxXmlAttribute_SetNext, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlAttribute_SetNext }};
+//     void SetNext(wxXmlAttribute* next);
+static int LUACALL wxLua_wxXmlAttribute_SetNext(lua_State *L)
+{
+    // wxXmlAttribute next
+    wxXmlAttribute * next = (wxXmlAttribute *)wxluaT_getuserdatatype(L, 2, wxluatype_wxXmlAttribute);
+    // get this
+    wxXmlAttribute * self = (wxXmlAttribute *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlAttribute);
+    // call SetNext
+    self->SetNext(next);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlAttribute_SetValue[] = { &wxluatype_wxXmlAttribute, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxXmlAttribute_SetValue(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlAttribute_SetValue[1] = {{ wxLua_wxXmlAttribute_SetValue, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlAttribute_SetValue }};
+//     void SetValue(const wxString& value);
+static int LUACALL wxLua_wxXmlAttribute_SetValue(lua_State *L)
+{
+    // const wxString value
+    const wxString value = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxXmlAttribute * self = (wxXmlAttribute *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlAttribute);
+    // call SetValue
+    self->SetValue(value);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlAttribute_delete[] = { &wxluatype_wxXmlAttribute, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlAttribute_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxXmlAttribute_delete }};
+
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlAttribute_constructor1[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxXmlAttribute, NULL };
+static int LUACALL wxLua_wxXmlAttribute_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlAttribute_constructor1[1] = {{ wxLua_wxXmlAttribute_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 3, s_wxluatypeArray_wxLua_wxXmlAttribute_constructor1 }};
+//     %wxchkver_2_9_0 wxXmlAttribute(const wxString& name, const wxString& value, wxXmlAttribute* next = NULL);
+static int LUACALL wxLua_wxXmlAttribute_constructor1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxXmlAttribute next = NULL
+    wxXmlAttribute * next = (argCount >= 3 ? (wxXmlAttribute *)wxluaT_getuserdatatype(L, 3, wxluatype_wxXmlAttribute) : NULL);
+    // const wxString value
+    const wxString value = wxlua_getwxStringtype(L, 2);
+    // const wxString name
+    const wxString name = wxlua_getwxStringtype(L, 1);
+    // call constructor
+    wxXmlAttribute* returns = new wxXmlAttribute(name, value, next);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxXmlAttribute);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxXmlAttribute);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+static int LUACALL wxLua_wxXmlAttribute_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlAttribute_constructor[1] = {{ wxLua_wxXmlAttribute_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxXmlAttribute();
+static int LUACALL wxLua_wxXmlAttribute_constructor(lua_State *L)
+{
+    // call constructor
+    wxXmlAttribute* returns = new wxXmlAttribute();
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxXmlAttribute);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxXmlAttribute);
+
+    return 1;
+}
+
+
+
+
+#if (((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(wxLUA_USE_wxXML && wxUSE_XML)
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlAttribute_constructor_overload[] =
+{
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlAttribute_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 3, s_wxluatypeArray_wxLua_wxXmlAttribute_constructor1 },
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlAttribute_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+};
+static int s_wxluafunc_wxLua_wxXmlAttribute_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxXmlAttribute_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(wxLUA_USE_wxXML && wxUSE_XML)
+
+void wxLua_wxXmlAttribute_delete_function(void** p)
+{
+    wxXmlAttribute* o = (wxXmlAttribute*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxXmlAttribute_methods[] = {
+    { "GetName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlAttribute_GetName, 1, NULL },
+    { "GetNext", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlAttribute_GetNext, 1, NULL },
+    { "GetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlAttribute_GetValue, 1, NULL },
+    { "SetName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlAttribute_SetName, 1, NULL },
+    { "SetNext", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlAttribute_SetNext, 1, NULL },
+    { "SetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlAttribute_SetValue, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxXmlAttribute_delete, 1, NULL },
+
+#if (((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(wxLUA_USE_wxXML && wxUSE_XML)
+    { "wxXmlAttribute", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxXmlAttribute_constructor_overload, s_wxluafunc_wxLua_wxXmlAttribute_constructor_overload_count, 0 },
+#endif // (((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(wxLUA_USE_wxXML && wxUSE_XML)
+
+    { 0, 0, 0, 0 },
+};
+
+int wxXmlAttribute_methodCount = sizeof(wxXmlAttribute_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxXML && wxUSE_XML
+
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+// ---------------------------------------------------------------------------
+// Bind class wxXmlDoctype
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxXmlDoctype'
+int wxluatype_wxXmlDoctype = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDoctype_Clear[] = { &wxluatype_wxXmlDoctype, NULL };
+static int LUACALL wxLua_wxXmlDoctype_Clear(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDoctype_Clear[1] = {{ wxLua_wxXmlDoctype_Clear, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlDoctype_Clear }};
+//     void Clear();
+static int LUACALL wxLua_wxXmlDoctype_Clear(lua_State *L)
+{
+    // get this
+    wxXmlDoctype * self = (wxXmlDoctype *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDoctype);
+    // call Clear
+    self->Clear();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDoctype_GetFullString[] = { &wxluatype_wxXmlDoctype, NULL };
+static int LUACALL wxLua_wxXmlDoctype_GetFullString(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDoctype_GetFullString[1] = {{ wxLua_wxXmlDoctype_GetFullString, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlDoctype_GetFullString }};
+//     wxString GetFullString() const;
+static int LUACALL wxLua_wxXmlDoctype_GetFullString(lua_State *L)
+{
+    // get this
+    wxXmlDoctype * self = (wxXmlDoctype *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDoctype);
+    // call GetFullString
+    wxString returns = (self->GetFullString());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDoctype_GetPublicId[] = { &wxluatype_wxXmlDoctype, NULL };
+static int LUACALL wxLua_wxXmlDoctype_GetPublicId(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDoctype_GetPublicId[1] = {{ wxLua_wxXmlDoctype_GetPublicId, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlDoctype_GetPublicId }};
+//     const wxString& GetPublicId() const;
+static int LUACALL wxLua_wxXmlDoctype_GetPublicId(lua_State *L)
+{
+    // get this
+    wxXmlDoctype * self = (wxXmlDoctype *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDoctype);
+    // call GetPublicId
+    wxString returns = (self->GetPublicId());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDoctype_GetRootName[] = { &wxluatype_wxXmlDoctype, NULL };
+static int LUACALL wxLua_wxXmlDoctype_GetRootName(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDoctype_GetRootName[1] = {{ wxLua_wxXmlDoctype_GetRootName, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlDoctype_GetRootName }};
+//     const wxString& GetRootName() const;
+static int LUACALL wxLua_wxXmlDoctype_GetRootName(lua_State *L)
+{
+    // get this
+    wxXmlDoctype * self = (wxXmlDoctype *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDoctype);
+    // call GetRootName
+    wxString returns = (self->GetRootName());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDoctype_GetSystemId[] = { &wxluatype_wxXmlDoctype, NULL };
+static int LUACALL wxLua_wxXmlDoctype_GetSystemId(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDoctype_GetSystemId[1] = {{ wxLua_wxXmlDoctype_GetSystemId, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlDoctype_GetSystemId }};
+//     const wxString& GetSystemId() const;
+static int LUACALL wxLua_wxXmlDoctype_GetSystemId(lua_State *L)
+{
+    // get this
+    wxXmlDoctype * self = (wxXmlDoctype *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDoctype);
+    // call GetSystemId
+    wxString returns = (self->GetSystemId());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDoctype_IsValid[] = { &wxluatype_wxXmlDoctype, NULL };
+static int LUACALL wxLua_wxXmlDoctype_IsValid(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDoctype_IsValid[1] = {{ wxLua_wxXmlDoctype_IsValid, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlDoctype_IsValid }};
+//     bool IsValid() const;
+static int LUACALL wxLua_wxXmlDoctype_IsValid(lua_State *L)
+{
+    // get this
+    wxXmlDoctype * self = (wxXmlDoctype *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDoctype);
+    // call IsValid
+    bool returns = (self->IsValid());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDoctype_constructor[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxXmlDoctype_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDoctype_constructor[1] = {{ wxLua_wxXmlDoctype_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 3, s_wxluatypeArray_wxLua_wxXmlDoctype_constructor }};
+//                  const wxString& publicId = "");
+static int LUACALL wxLua_wxXmlDoctype_constructor(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString publicId = ""
+    const wxString publicId = (argCount >= 3 ? wxlua_getwxStringtype(L, 3) : wxString(wxEmptyString));
+    // const wxString systemId = ""
+    const wxString systemId = (argCount >= 2 ? wxlua_getwxStringtype(L, 2) : wxString(wxEmptyString));
+    // const wxString rootName = ""
+    const wxString rootName = (argCount >= 1 ? wxlua_getwxStringtype(L, 1) : wxString(wxEmptyString));
+    // call constructor
+    wxXmlDoctype* returns = new wxXmlDoctype(rootName, systemId, publicId);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxXmlDoctype);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxXmlDoctype_delete_function(void** p)
+{
+    wxXmlDoctype* o = (wxXmlDoctype*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxXmlDoctype_methods[] = {
+    { "Clear", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDoctype_Clear, 1, NULL },
+    { "GetFullString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDoctype_GetFullString, 1, NULL },
+    { "GetPublicId", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDoctype_GetPublicId, 1, NULL },
+    { "GetRootName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDoctype_GetRootName, 1, NULL },
+    { "GetSystemId", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDoctype_GetSystemId, 1, NULL },
+    { "IsValid", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDoctype_IsValid, 1, NULL },
+    { "wxXmlDoctype", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxXmlDoctype_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxXmlDoctype_methodCount = sizeof(wxXmlDoctype_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+
+#if wxLUA_USE_wxXML && wxUSE_XML
+// ---------------------------------------------------------------------------
 // Bind class wxXmlDocument
 // ---------------------------------------------------------------------------
 
 // Lua MetaTable Tag for Class 'wxXmlDocument'
 int wxluatype_wxXmlDocument = WXLUA_TUNKNOWN;
+
+#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_AppendToProlog[] = { &wxluatype_wxXmlDocument, &wxluatype_wxXmlNode, NULL };
+static int LUACALL wxLua_wxXmlDocument_AppendToProlog(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_AppendToProlog[1] = {{ wxLua_wxXmlDocument_AppendToProlog, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlDocument_AppendToProlog }};
+//     %wxchkver_3_0_0 void AppendToProlog(wxXmlNode* node);
+static int LUACALL wxLua_wxXmlDocument_AppendToProlog(lua_State *L)
+{
+    // wxXmlNode node
+    wxXmlNode * node = (wxXmlNode *)wxluaT_getuserdatatype(L, 2, wxluatype_wxXmlNode);
+    // get this
+    wxXmlDocument * self = (wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call AppendToProlog
+    self->AppendToProlog(node);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_DetachDocumentNode[] = { &wxluatype_wxXmlDocument, NULL };
+static int LUACALL wxLua_wxXmlDocument_DetachDocumentNode(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_DetachDocumentNode[1] = {{ wxLua_wxXmlDocument_DetachDocumentNode, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlDocument_DetachDocumentNode }};
+//     %wxchkver_3_0_0 wxXmlNode* DetachDocumentNode();
+static int LUACALL wxLua_wxXmlDocument_DetachDocumentNode(lua_State *L)
+{
+    // get this
+    wxXmlDocument * self = (wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call DetachDocumentNode
+    wxXmlNode* returns = (wxXmlNode*)self->DetachDocumentNode();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxXmlNode);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_DetachRoot[] = { &wxluatype_wxXmlDocument, NULL };
+static int LUACALL wxLua_wxXmlDocument_DetachRoot(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_DetachRoot[1] = {{ wxLua_wxXmlDocument_DetachRoot, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlDocument_DetachRoot }};
+//     %wxchkver_2_9_0 wxXmlNode* DetachRoot();
+static int LUACALL wxLua_wxXmlDocument_DetachRoot(lua_State *L)
+{
+    // get this
+    wxXmlDocument * self = (wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call DetachRoot
+    wxXmlNode* returns = (wxXmlNode*)self->DetachRoot();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxXmlNode);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_GetDoctype[] = { &wxluatype_wxXmlDocument, NULL };
+static int LUACALL wxLua_wxXmlDocument_GetDoctype(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_GetDoctype[1] = {{ wxLua_wxXmlDocument_GetDoctype, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlDocument_GetDoctype }};
+//     %wxchkver_3_1_0 const wxXmlDoctype& GetDoctype() const;
+static int LUACALL wxLua_wxXmlDocument_GetDoctype(lua_State *L)
+{
+    // get this
+    wxXmlDocument * self = (wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call GetDoctype
+    const wxXmlDoctype* returns = (const wxXmlDoctype*)&self->GetDoctype();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxXmlDoctype);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_GetDocumentNode[] = { &wxluatype_wxXmlDocument, NULL };
+static int LUACALL wxLua_wxXmlDocument_GetDocumentNode(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_GetDocumentNode[1] = {{ wxLua_wxXmlDocument_GetDocumentNode, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlDocument_GetDocumentNode }};
+//     %wxchkver_3_0_0 wxXmlNode* GetDocumentNode() const;
+static int LUACALL wxLua_wxXmlDocument_GetDocumentNode(lua_State *L)
+{
+    // get this
+    wxXmlDocument * self = (wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call GetDocumentNode
+    wxXmlNode* returns = (wxXmlNode*)self->GetDocumentNode();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxXmlNode);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_GetEOL[] = { &wxluatype_wxXmlDocument, NULL };
+static int LUACALL wxLua_wxXmlDocument_GetEOL(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_GetEOL[1] = {{ wxLua_wxXmlDocument_GetEOL, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlDocument_GetEOL }};
+//     %wxchkver_3_1_1 wxString GetEOL() const;
+static int LUACALL wxLua_wxXmlDocument_GetEOL(lua_State *L)
+{
+    // get this
+    wxXmlDocument * self = (wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call GetEOL
+    wxString returns = (self->GetEOL());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (!wxUSE_UNICODE && wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_GetEncoding[] = { &wxluatype_wxXmlDocument, NULL };
+static int LUACALL wxLua_wxXmlDocument_GetEncoding(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_GetEncoding[1] = {{ wxLua_wxXmlDocument_GetEncoding, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlDocument_GetEncoding }};
+//     !wxUSE_UNICODE && %wxchkver_2_9_0 wxString GetEncoding() const;
+static int LUACALL wxLua_wxXmlDocument_GetEncoding(lua_State *L)
+{
+    // get this
+    wxXmlDocument * self = (wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call GetEncoding
+    wxString returns = (self->GetEncoding());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+#endif // (!wxUSE_UNICODE && wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_GetFileEncoding[] = { &wxluatype_wxXmlDocument, NULL };
 static int LUACALL wxLua_wxXmlDocument_GetFileEncoding(lua_State *L);
@@ -849,6 +1842,45 @@ static int LUACALL wxLua_wxXmlDocument_GetFileEncoding(lua_State *L)
 
     return 1;
 }
+
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_GetFileType[] = { &wxluatype_wxXmlDocument, NULL };
+static int LUACALL wxLua_wxXmlDocument_GetFileType(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_GetFileType[1] = {{ wxLua_wxXmlDocument_GetFileType, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxXmlDocument_GetFileType }};
+//     %wxchkver_3_1_1 wxTextFileType GetFileType() const;
+static int LUACALL wxLua_wxXmlDocument_GetFileType(lua_State *L)
+{
+    // get this
+    wxXmlDocument * self = (wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call GetFileType
+    wxTextFileType returns = (self->GetFileType());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxCHECK_VERSION(2,9,2))
+static int LUACALL wxLua_wxXmlDocument_GetLibraryVersionInfo(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_GetLibraryVersionInfo[1] = {{ wxLua_wxXmlDocument_GetLibraryVersionInfo, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
+//     %wxchkver_3_0_0 static wxVersionInfo GetLibraryVersionInfo();
+static int LUACALL wxLua_wxXmlDocument_GetLibraryVersionInfo(lua_State *L)
+{
+    // call GetLibraryVersionInfo
+    // allocate a new object using the copy constructor
+    wxVersionInfo* returns = new wxVersionInfo(wxXmlDocument::GetLibraryVersionInfo());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxVersionInfo);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxVersionInfo);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxCHECK_VERSION(2,9,2))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_GetRoot[] = { &wxluatype_wxXmlDocument, NULL };
 static int LUACALL wxLua_wxXmlDocument_GetRoot(lua_State *L);
@@ -898,11 +1930,13 @@ static int LUACALL wxLua_wxXmlDocument_IsOk(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_Load[] = { &wxluatype_wxXmlDocument, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxXmlDocument_Load(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_Load[1] = {{ wxLua_wxXmlDocument_Load, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxXmlDocument_Load }};
-//     bool Load(const wxString& filename, const wxString& encoding = "UTF-8");
-static int LUACALL wxLua_wxXmlDocument_Load(lua_State *L)
+
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_Load2[] = { &wxluatype_wxXmlDocument, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxXmlDocument_Load2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_Load2[1] = {{ wxLua_wxXmlDocument_Load2, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxXmlDocument_Load2 }};
+//     !%wxchkver_2_9_0 bool Load(const wxString& filename, const wxString& encoding = "UTF-8");
+static int LUACALL wxLua_wxXmlDocument_Load2(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
@@ -920,11 +1954,68 @@ static int LUACALL wxLua_wxXmlDocument_Load(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_Save[] = { &wxluatype_wxXmlDocument, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxXmlDocument_Save(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_Save[1] = {{ wxLua_wxXmlDocument_Save, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlDocument_Save }};
-//     bool Save(const wxString& filename) const;
-static int LUACALL wxLua_wxXmlDocument_Save(lua_State *L)
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxUSE_STREAMS)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_Load1[] = { &wxluatype_wxXmlDocument, &wxluatype_wxInputStream, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxXmlDocument_Load1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_Load1[1] = {{ wxLua_wxXmlDocument_Load1, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxXmlDocument_Load1 }};
+//     %wxchkver_2_9_0 bool Load(wxInputStream& stream, const wxString& encoding = "UTF-8", int flags = wxXMLDOC_NONE);
+static int LUACALL wxLua_wxXmlDocument_Load1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int flags = wxXMLDOC_NONE
+    int flags = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : wxXMLDOC_NONE);
+    // const wxString encoding = "UTF-8"
+    const wxString encoding = (argCount >= 3 ? wxlua_getwxStringtype(L, 3) : wxString(wxT("UTF-8")));
+    // wxInputStream stream
+    wxInputStream * stream = (wxInputStream *)wxluaT_getuserdatatype(L, 2, wxluatype_wxInputStream);
+    // get this
+    wxXmlDocument * self = (wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call Load
+    bool returns = (self->Load(*stream, encoding, flags));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxUSE_STREAMS)
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_Load[] = { &wxluatype_wxXmlDocument, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxXmlDocument_Load(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_Load[1] = {{ wxLua_wxXmlDocument_Load, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxXmlDocument_Load }};
+//     %wxchkver_2_9_0 bool Load(const wxString& filename, const wxString& encoding = "UTF-8", int flags = wxXMLDOC_NONE);
+static int LUACALL wxLua_wxXmlDocument_Load(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int flags = wxXMLDOC_NONE
+    int flags = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : wxXMLDOC_NONE);
+    // const wxString encoding = "UTF-8"
+    const wxString encoding = (argCount >= 3 ? wxlua_getwxStringtype(L, 3) : wxString(wxT("UTF-8")));
+    // const wxString filename
+    const wxString filename = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxXmlDocument * self = (wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call Load
+    bool returns = (self->Load(filename, encoding, flags));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_Save2[] = { &wxluatype_wxXmlDocument, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxXmlDocument_Save2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_Save2[1] = {{ wxLua_wxXmlDocument_Save2, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlDocument_Save2 }};
+//     !%wxchkver_2_9_0 bool Save(const wxString& filename) const;
+static int LUACALL wxLua_wxXmlDocument_Save2(lua_State *L)
 {
     // const wxString filename
     const wxString filename = wxlua_getwxStringtype(L, 2);
@@ -937,6 +2028,115 @@ static int LUACALL wxLua_wxXmlDocument_Save(lua_State *L)
 
     return 1;
 }
+
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxUSE_STREAMS)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_Save1[] = { &wxluatype_wxXmlDocument, &wxluatype_wxOutputStream, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxXmlDocument_Save1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_Save1[1] = {{ wxLua_wxXmlDocument_Save1, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxXmlDocument_Save1 }};
+//     %wxchkver_2_9_0 bool Save(wxOutputStream& stream, int indentstep = 1) const;
+static int LUACALL wxLua_wxXmlDocument_Save1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int indentstep = 1
+    int indentstep = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : 1);
+    // wxOutputStream stream
+    wxOutputStream * stream = (wxOutputStream *)wxluaT_getuserdatatype(L, 2, wxluatype_wxOutputStream);
+    // get this
+    wxXmlDocument * self = (wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call Save
+    bool returns = (self->Save(*stream, indentstep));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxUSE_STREAMS)
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_Save[] = { &wxluatype_wxXmlDocument, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxXmlDocument_Save(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_Save[1] = {{ wxLua_wxXmlDocument_Save, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxXmlDocument_Save }};
+//     %wxchkver_2_9_0 bool Save(const wxString& filename, int indentstep = 1) const;
+static int LUACALL wxLua_wxXmlDocument_Save(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int indentstep = 1
+    int indentstep = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : 1);
+    // const wxString filename
+    const wxString filename = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxXmlDocument * self = (wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call Save
+    bool returns = (self->Save(filename, indentstep));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_SetDoctype[] = { &wxluatype_wxXmlDocument, &wxluatype_wxXmlDoctype, NULL };
+static int LUACALL wxLua_wxXmlDocument_SetDoctype(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_SetDoctype[1] = {{ wxLua_wxXmlDocument_SetDoctype, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlDocument_SetDoctype }};
+//     %wxchkver_3_1_0 void SetDoctype(const wxXmlDoctype& doctype);
+static int LUACALL wxLua_wxXmlDocument_SetDoctype(lua_State *L)
+{
+    // const wxXmlDoctype doctype
+    const wxXmlDoctype * doctype = (const wxXmlDoctype *)wxluaT_getuserdatatype(L, 2, wxluatype_wxXmlDoctype);
+    // get this
+    wxXmlDocument * self = (wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call SetDoctype
+    self->SetDoctype(*doctype);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_SetDocumentNode[] = { &wxluatype_wxXmlDocument, &wxluatype_wxXmlNode, NULL };
+static int LUACALL wxLua_wxXmlDocument_SetDocumentNode(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_SetDocumentNode[1] = {{ wxLua_wxXmlDocument_SetDocumentNode, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlDocument_SetDocumentNode }};
+//     %wxchkver_3_0_0 void SetDocumentNode(wxXmlNode* node);
+static int LUACALL wxLua_wxXmlDocument_SetDocumentNode(lua_State *L)
+{
+    // wxXmlNode node
+    wxXmlNode * node = (wxXmlNode *)wxluaT_getuserdatatype(L, 2, wxluatype_wxXmlNode);
+    // get this
+    wxXmlDocument * self = (wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call SetDocumentNode
+    self->SetDocumentNode(node);
+
+    return 0;
+}
+
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (!wxUSE_UNICODE && wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_SetEncoding[] = { &wxluatype_wxXmlDocument, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxXmlDocument_SetEncoding(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_SetEncoding[1] = {{ wxLua_wxXmlDocument_SetEncoding, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlDocument_SetEncoding }};
+//     !wxUSE_UNICODE && %wxchkver_2_9_0 void SetEncoding(const wxString& enc);
+static int LUACALL wxLua_wxXmlDocument_SetEncoding(lua_State *L)
+{
+    // const wxString enc
+    const wxString enc = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxXmlDocument * self = (wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call SetEncoding
+    self->SetEncoding(enc);
+
+    return 0;
+}
+
+#endif // (!wxUSE_UNICODE && wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_SetFileEncoding[] = { &wxluatype_wxXmlDocument, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxXmlDocument_SetFileEncoding(lua_State *L);
@@ -953,6 +2153,26 @@ static int LUACALL wxLua_wxXmlDocument_SetFileEncoding(lua_State *L)
 
     return 0;
 }
+
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_SetFileType[] = { &wxluatype_wxXmlDocument, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxXmlDocument_SetFileType(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_SetFileType[1] = {{ wxLua_wxXmlDocument_SetFileType, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlDocument_SetFileType }};
+//     %wxchkver_3_1_1 void SetFileType(wxTextFileType fileType);
+static int LUACALL wxLua_wxXmlDocument_SetFileType(lua_State *L)
+{
+    // wxTextFileType fileType
+    wxTextFileType fileType = (wxTextFileType)wxlua_getenumtype(L, 2);
+    // get this
+    wxXmlDocument * self = (wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call SetFileType
+    self->SetFileType(fileType);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_SetRoot[] = { &wxluatype_wxXmlDocument, &wxluatype_wxXmlNode, NULL };
 static int LUACALL wxLua_wxXmlDocument_SetRoot(lua_State *L);
@@ -990,11 +2210,35 @@ static int LUACALL wxLua_wxXmlDocument_SetVersion(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_delete[] = { &wxluatype_wxXmlDocument, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxXmlDocument_delete }};
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_constructor1[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxXmlDocument_constructor1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_constructor1[1] = {{ wxLua_wxXmlDocument_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxXmlDocument_constructor1 }};
-//     wxXmlDocument(const wxString& filename, const wxString& encoding = "UTF-8");
-static int LUACALL wxLua_wxXmlDocument_constructor1(lua_State *L)
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_op_set[] = { &wxluatype_wxXmlDocument, &wxluatype_wxXmlDocument, NULL };
+static int LUACALL wxLua_wxXmlDocument_op_set(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_op_set[1] = {{ wxLua_wxXmlDocument_op_set, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlDocument_op_set }};
+//     %wxchkver_2_9_0 wxXmlDocument& operator=(const wxXmlDocument& doc);
+static int LUACALL wxLua_wxXmlDocument_op_set(lua_State *L)
+{
+    // const wxXmlDocument doc
+    const wxXmlDocument * doc = (const wxXmlDocument *)wxluaT_getuserdatatype(L, 2, wxluatype_wxXmlDocument);
+    // get this
+    wxXmlDocument * self = (wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call op_set
+    (*self)=(*doc);
+    wxXmlDocument* returns = self;
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxXmlDocument);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_constructor3[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxXmlDocument_constructor3(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_constructor3[1] = {{ wxLua_wxXmlDocument_constructor3, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxXmlDocument_constructor3 }};
+//     !%wxchkver_2_9_0 wxXmlDocument(const wxString& filename, const wxString& encoding = "UTF-8");
+static int LUACALL wxLua_wxXmlDocument_constructor3(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
@@ -1011,6 +2255,51 @@ static int LUACALL wxLua_wxXmlDocument_constructor1(lua_State *L)
 
     return 1;
 }
+
+#endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_constructor2[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxXmlDocument_constructor2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_constructor2[1] = {{ wxLua_wxXmlDocument_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxXmlDocument_constructor2 }};
+//     %wxchkver_2_9_0 wxXmlDocument(const wxString& filename, const wxString& encoding = "UTF-8");
+static int LUACALL wxLua_wxXmlDocument_constructor2(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString encoding = "UTF-8"
+    const wxString encoding = (argCount >= 2 ? wxlua_getwxStringtype(L, 2) : wxString(wxT("UTF-8")));
+    // const wxString filename
+    const wxString filename = wxlua_getwxStringtype(L, 1);
+    // call constructor
+    wxXmlDocument* returns = new wxXmlDocument(filename, encoding);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxXmlDocument);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxXmlDocument);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxXmlDocument_constructor1[] = { &wxluatype_wxXmlDocument, NULL };
+static int LUACALL wxLua_wxXmlDocument_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_constructor1[1] = {{ wxLua_wxXmlDocument_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxXmlDocument_constructor1 }};
+//     %wxchkver_2_9_0 wxXmlDocument(const wxXmlDocument& doc);
+static int LUACALL wxLua_wxXmlDocument_constructor1(lua_State *L)
+{
+    // const wxXmlDocument doc
+    const wxXmlDocument * doc = (const wxXmlDocument *)wxluaT_getuserdatatype(L, 1, wxluatype_wxXmlDocument);
+    // call constructor
+    wxXmlDocument* returns = new wxXmlDocument(*doc);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxXmlDocument);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxXmlDocument);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
 static int LUACALL wxLua_wxXmlDocument_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_constructor[1] = {{ wxLua_wxXmlDocument_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
@@ -1030,16 +2319,66 @@ static int LUACALL wxLua_wxXmlDocument_constructor(lua_State *L)
 
 
 
-#if (wxLUA_USE_wxXML && wxUSE_XML)
+#if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxUSE_STREAMS))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_Load_overload[] =
+{
+
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlDocument_Load2, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxXmlDocument_Load2 },
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxUSE_STREAMS)
+    { wxLua_wxXmlDocument_Load1, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxXmlDocument_Load1 },
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxUSE_STREAMS)
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlDocument_Load, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxXmlDocument_Load },
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+};
+static int s_wxluafunc_wxLua_wxXmlDocument_Load_overload_count = sizeof(s_wxluafunc_wxLua_wxXmlDocument_Load_overload)/sizeof(wxLuaBindCFunc);
+
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_Save_overload[] =
+{
+
+#if (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlDocument_Save2, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxXmlDocument_Save2 },
+#endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxUSE_STREAMS)
+    { wxLua_wxXmlDocument_Save1, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxXmlDocument_Save1 },
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxUSE_STREAMS)
+
+#if (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlDocument_Save, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxXmlDocument_Save },
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+};
+static int s_wxluafunc_wxLua_wxXmlDocument_Save_overload_count = sizeof(s_wxluafunc_wxLua_wxXmlDocument_Save_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxUSE_STREAMS))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
+
+#if (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(wxLUA_USE_wxXML && wxUSE_XML)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxXmlDocument_constructor_overload[] =
 {
-    { wxLua_wxXmlDocument_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxXmlDocument_constructor1 },
+
+#if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlDocument_constructor3, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxXmlDocument_constructor3 },
+#endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlDocument_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxXmlDocument_constructor2 },
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { wxLua_wxXmlDocument_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxXmlDocument_constructor1 },
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
     { wxLua_wxXmlDocument_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
 };
 static int s_wxluafunc_wxLua_wxXmlDocument_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxXmlDocument_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (wxLUA_USE_wxXML && wxUSE_XML)
+#endif // (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(wxLUA_USE_wxXML && wxUSE_XML)
 
 void wxLua_wxXmlDocument_delete_function(void** p)
 {
@@ -1049,20 +2388,79 @@ void wxLua_wxXmlDocument_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxXmlDocument_methods[] = {
+#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "AppendToProlog", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_AppendToProlog, 1, NULL },
+    { "DetachDocumentNode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_DetachDocumentNode, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "DetachRoot", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_DetachRoot, 1, NULL },
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "GetDoctype", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_GetDoctype, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "GetDocumentNode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_GetDocumentNode, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "GetEOL", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_GetEOL, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (!wxUSE_UNICODE && wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "GetEncoding", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_GetEncoding, 1, NULL },
+#endif // (!wxUSE_UNICODE && wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
     { "GetFileEncoding", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_GetFileEncoding, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "GetFileType", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_GetFileType, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxCHECK_VERSION(2,9,2))
+    { "GetLibraryVersionInfo", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxXmlDocument_GetLibraryVersionInfo, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxCHECK_VERSION(2,9,2))
+
     { "GetRoot", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_GetRoot, 1, NULL },
     { "GetVersion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_GetVersion, 1, NULL },
     { "IsOk", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_IsOk, 1, NULL },
-    { "Load", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_Load, 1, NULL },
-    { "Save", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_Save, 1, NULL },
+
+#if ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxUSE_STREAMS))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
+    { "Load", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_Load_overload, s_wxluafunc_wxLua_wxXmlDocument_Load_overload_count, 0 },
+    { "Save", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_Save_overload, s_wxluafunc_wxLua_wxXmlDocument_Save_overload_count, 0 },
+#endif // ((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxUSE_STREAMS))||((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML))
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "SetDoctype", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_SetDoctype, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "SetDocumentNode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_SetDocumentNode, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (!wxUSE_UNICODE && wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "SetEncoding", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_SetEncoding, 1, NULL },
+#endif // (!wxUSE_UNICODE && wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
     { "SetFileEncoding", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_SetFileEncoding, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "SetFileType", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_SetFileType, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
     { "SetRoot", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_SetRoot, 1, NULL },
     { "SetVersion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_SetVersion, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxXmlDocument_delete, 1, NULL },
 
-#if (wxLUA_USE_wxXML && wxUSE_XML)
+#if ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    { "op_set", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxXmlDocument_op_set, 1, NULL },
+#endif // ((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
+#if (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(wxLUA_USE_wxXML && wxUSE_XML)
     { "wxXmlDocument", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxXmlDocument_constructor_overload, s_wxluafunc_wxLua_wxXmlDocument_constructor_overload_count, 0 },
-#endif // (wxLUA_USE_wxXML && wxUSE_XML)
+#endif // (((!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(((wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)) && (wxLUA_USE_wxXML && wxUSE_XML))||(wxLUA_USE_wxXML && wxUSE_XML)
 
     { 0, 0, 0, 0 },
 };
@@ -1103,6 +2501,14 @@ wxLuaBindNumber* wxLuaGetDefineList_wxxml(size_t &count)
 {
     static wxLuaBindNumber numberList[] =
     {
+#if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxXML && wxUSE_XML)
+        { "wxTextFileType_Dos", wxTextFileType_Dos },
+        { "wxTextFileType_Mac", wxTextFileType_Mac },
+        { "wxTextFileType_None", wxTextFileType_None },
+        { "wxTextFileType_Os2", wxTextFileType_Os2 },
+        { "wxTextFileType_Unix", wxTextFileType_Unix },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
 #if wxLUA_USE_wxXML && wxUSE_XML
         { "wxXML_ATTRIBUTE_NODE", wxXML_ATTRIBUTE_NODE },
         { "wxXML_CDATA_SECTION_NODE", wxXML_CDATA_SECTION_NODE },
@@ -1183,6 +2589,8 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxxml(size_t &count)
 // ---------------------------------------------------------------------------
 
 static const char* wxluaclassname_wxObject = "wxObject";
+static const char* wxluaclassname_wxXmlAttribute = "wxXmlAttribute";
+static const char* wxluaclassname_wxXmlDoctype = "wxXmlDoctype";
 static const char* wxluaclassname_wxXmlDocument = "wxXmlDocument";
 static const char* wxluaclassname_wxXmlNode = "wxXmlNode";
 static const char* wxluaclassname_wxXmlProperty = "wxXmlProperty";
@@ -1199,7 +2607,16 @@ static wxLuaBindClass* wxluabaseclassbinds_wxXmlDocument[] = { NULL };
     extern void wxLua_wxXmlProperty_delete_function(void** p);
 #endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    extern wxLuaBindMethod wxXmlDoctype_methods[];
+    extern int wxXmlDoctype_methodCount;
+    extern void wxLua_wxXmlDoctype_delete_function(void** p);
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
 #if wxLUA_USE_wxXML && wxUSE_XML
+    extern wxLuaBindMethod wxXmlAttribute_methods[];
+    extern int wxXmlAttribute_methodCount;
+    extern void wxLua_wxXmlAttribute_delete_function(void** p);
     extern wxLuaBindMethod wxXmlDocument_methods[];
     extern int wxXmlDocument_methodCount;
     extern void wxLua_wxXmlDocument_delete_function(void** p);
@@ -1215,6 +2632,14 @@ wxLuaBindClass* wxLuaGetClassList_wxxml(size_t &count)
 {
     static wxLuaBindClass classList[] =
     {
+#if wxLUA_USE_wxXML && wxUSE_XML
+        { wxluaclassname_wxXmlAttribute, wxXmlAttribute_methods, wxXmlAttribute_methodCount, NULL, &wxluatype_wxXmlAttribute, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxXmlAttribute_delete_function, }, 
+#endif // wxLUA_USE_wxXML && wxUSE_XML
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+        { wxluaclassname_wxXmlDoctype, wxXmlDoctype_methods, wxXmlDoctype_methodCount, NULL, &wxluatype_wxXmlDoctype, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxXmlDoctype_delete_function, }, 
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
 #if wxLUA_USE_wxXML && wxUSE_XML
         { wxluaclassname_wxXmlDocument, wxXmlDocument_methods, wxXmlDocument_methodCount, CLASSINFO(wxXmlDocument), &wxluatype_wxXmlDocument, wxluabaseclassnames_wxXmlDocument, wxluabaseclassbinds_wxXmlDocument, NULL, NULL, NULL, 0, &wxLua_wxXmlDocument_delete_function, }, 
         { wxluaclassname_wxXmlNode, wxXmlNode_methods, wxXmlNode_methodCount, NULL, &wxluatype_wxXmlNode, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxXmlNode_delete_function, }, 

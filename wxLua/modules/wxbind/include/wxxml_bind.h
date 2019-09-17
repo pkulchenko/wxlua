@@ -55,7 +55,12 @@ extern WXDLLIMPEXP_BINDWXXML wxLuaBinding* wxLuaBinding_wxxml_init();
     extern WXDLLIMPEXP_DATA_BINDWXXML(int) wxluatype_wxXmlProperty;
 #endif // (!wxCHECK_VERSION(2,9,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
 
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+    extern WXDLLIMPEXP_DATA_BINDWXXML(int) wxluatype_wxXmlDoctype;
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxXML && wxUSE_XML)
+
 #if wxLUA_USE_wxXML && wxUSE_XML
+    extern WXDLLIMPEXP_DATA_BINDWXXML(int) wxluatype_wxXmlAttribute;
     extern WXDLLIMPEXP_DATA_BINDWXXML(int) wxluatype_wxXmlDocument;
     extern WXDLLIMPEXP_DATA_BINDWXXML(int) wxluatype_wxXmlNode;
 #endif // wxLUA_USE_wxXML && wxUSE_XML

@@ -9,9 +9,9 @@
 // Overrides for wxxml_xml.i
 // ----------------------------------------------------------------------------
 
-%override wxLua_wxXmlNode_constructor2
+%override wxLua_wxXmlNode_constructor4
 //     wxXmlNode(wxXmlNode *parent, wxXmlNodeType type, const wxString& name, const wxString& content, wxXmlProperty *props, wxXmlNode *next)
-static int LUACALL wxLua_wxXmlNode_constructor2(lua_State *L)
+static int LUACALL wxLua_wxXmlNode_constructor4(lua_State *L)
 {
     // wxXmlNode next
     wxXmlNode * next = (wxXmlNode *)wxluaT_getuserdatatype(L, 6, wxluatype_wxXmlNode);

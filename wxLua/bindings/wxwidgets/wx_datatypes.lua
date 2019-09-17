@@ -5031,6 +5031,12 @@ wx_dataTypeTable =
     Name = "wxTextEntryDialog",
     ValueType = "class",
   },
+  wxTextFileType = {
+    Condition = "(wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxXML && wxUSE_XML)",
+    IsNumber = true,
+    Name = "wxTextFileType",
+    ValueType = "enum",
+  },
   wxTextPos = {
     IsNumber = true,
     Name = "wxTextPos",
@@ -5542,6 +5548,18 @@ wx_dataTypeTable =
     Condition = "wxLUA_USE_wxImage && wxUSE_IMAGE",
     IsNumber = false,
     Name = "wxXPMHandler",
+    ValueType = "class",
+  },
+  wxXmlAttribute = {
+    Condition = "wxLUA_USE_wxXML && wxUSE_XML",
+    IsNumber = false,
+    Name = "wxXmlAttribute",
+    ValueType = "class",
+  },
+  wxXmlDoctype = {
+    Condition = "(wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxXML && wxUSE_XML)",
+    IsNumber = false,
+    Name = "wxXmlDoctype",
     ValueType = "class",
   },
   wxXmlDocument = {
