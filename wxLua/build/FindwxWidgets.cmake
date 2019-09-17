@@ -262,7 +262,7 @@ if(wxWidgets_FIND_STYLE STREQUAL "win32")
     # FIXME: What if both regex libs are available. regex should be
     # found outside the loop and only wx${LIB}${_UCD}${_DBG}.
     # Find wxWidgets common libraries.
-    foreach(LIB ${wxWidgets_COMMON_LIBRARIES} scintilla)
+    foreach(LIB ${wxWidgets_COMMON_LIBRARIES})
       unset(WX_${LIB}${_DBG} CACHE) # jl - Must unset if they choose msw then wanted mswu    
       find_library(WX_${LIB}${_DBG}
         NAMES
