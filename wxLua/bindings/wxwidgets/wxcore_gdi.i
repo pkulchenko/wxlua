@@ -1032,11 +1032,11 @@ class %delete wxIcon : public wxGDIObject
     int     GetWidth();
     %wxchkver_2_9_5 bool IsOk() const;
     %wxchkver_2_9_5 bool LoadFile(const wxString& name, wxBitmapType type = wxICON_DEFAULT_TYPE, int desiredWidth = -1, int desiredHeight = -1);
-    !%wxchkver_2_9_5 bool LoadFile(const wxString& name, wxBitmapType flag);
     void    SetDepth(int d);
     void    SetHeight(int h);
     void    SetWidth(int w);
     wxIcon& operator=(const wxIcon& i) const;
+    !%wxchkver_2_9_5 bool LoadFile(const wxString& name, wxBitmapType flag);
     bool    Ok(); // %add for compatibility with earlier versions of wxlua
 };
 

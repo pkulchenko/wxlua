@@ -52,11 +52,12 @@ class wxButton : public wxAnyButton
     wxButton(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxButton");
     bool Create(wxWindow *parent, wxWindowID id, const wxString& label, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxButton");
     %wxchkver_3_0_0 bool GetAuthNeeded() const;
-    static wxSize GetDefaultSize(); // static is ok, use on existing button
+    %wxchkver_3_1_3 static wxSize GetDefaultSize(wxWindow* win = NULL);
     %wxchkver_3_0_0 wxString GetLabel() const;
     %wxchkver_3_0_0 void SetAuthNeeded(bool needed = true);
     void     SetDefault();
     %wxchkver_3_0_0 void SetLabel(const wxString& label);
+    !%wxchkver_3_1_3 static wxSize GetDefaultSize();
 };
 
 // ---------------------------------------------------------------------------

@@ -404,6 +404,8 @@ class %delete wxFileName
     void SetName(const wxString& name);
     %wxchkver_3_0_0 void SetPath(const wxString& path, wxPathFormat format = wxPATH_NATIVE);
     %wxchkver_3_0_0 bool SetPermissions(int permissions);
+    %wxchkver_3_1_3 static wxFileName URLToFileName(const wxString& url);
+    %wxchkver_3_1_3 static wxString FileNameToURL(const wxFileName& filename);
     bool SetTimes(const wxDateTime* dtAccess, const wxDateTime* dtMod, const wxDateTime* dtCreate);
     void SetVolume(const wxString& volume);
     %wxchkver_3_0_0 bool ShouldFollowLink() const;

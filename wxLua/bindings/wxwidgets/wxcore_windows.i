@@ -256,6 +256,7 @@ class wxWindow : public wxEvtHandler
     virtual int GetCharHeight() const;
     virtual int GetCharWidth() const;
     virtual wxVisualAttributes GetDefaultAttributes() const;
+    %wxchkver_3_1_3 wxSize GetDPI() const;
     wxFont GetFont() const;
     virtual wxColour GetForegroundColour();
     virtual wxRegion GetUpdateRegion() const;

@@ -2029,6 +2029,28 @@ static int LUACALL wxLua_wxWindow_GetCursor(lua_State *L)
 
 #endif // wxLUA_USE_wxCursor
 
+#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_GetDPI[] = { &wxluatype_wxWindow, NULL };
+static int LUACALL wxLua_wxWindow_GetDPI(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_GetDPI[1] = {{ wxLua_wxWindow_GetDPI, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWindow_GetDPI }};
+//     %wxchkver_3_1_3 wxSize GetDPI() const;
+static int LUACALL wxLua_wxWindow_GetDPI(lua_State *L)
+{
+    // get this
+    wxWindow * self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call GetDPI
+    // allocate a new object using the copy constructor
+    wxSize* returns = new wxSize(self->GetDPI());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxPointSizeRect)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_GetDefaultAttributes[] = { &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxWindow_GetDefaultAttributes(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_GetDefaultAttributes[1] = {{ wxLua_wxWindow_GetDefaultAttributes, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWindow_GetDefaultAttributes }};
@@ -6963,6 +6985,10 @@ wxLuaBindMethod wxWindow_methods[] = {
 #if wxLUA_USE_wxCursor
     { "GetCursor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_GetCursor, 1, NULL },
 #endif // wxLUA_USE_wxCursor
+
+#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxPointSizeRect)
+    { "GetDPI", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_GetDPI, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxPointSizeRect)
 
     { "GetDefaultAttributes", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_GetDefaultAttributes, 1, NULL },
 

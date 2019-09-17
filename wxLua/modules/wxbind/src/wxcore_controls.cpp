@@ -492,11 +492,11 @@ static int LUACALL wxLua_wxButton_GetAuthNeeded(lua_State *L)
 
 #endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
 
-#if (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxPointSizeRect)
-static int LUACALL wxLua_wxButton_GetDefaultSize(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxButton_GetDefaultSize[1] = {{ wxLua_wxButton_GetDefaultSize, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
-//     static wxSize GetDefaultSize(); // static is ok, use on existing button
-static int LUACALL wxLua_wxButton_GetDefaultSize(lua_State *L)
+#if ((!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)) && (wxLUA_USE_wxPointSizeRect)
+static int LUACALL wxLua_wxButton_GetDefaultSize1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxButton_GetDefaultSize1[1] = {{ wxLua_wxButton_GetDefaultSize1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
+//     !%wxchkver_3_1_3 static wxSize GetDefaultSize();
+static int LUACALL wxLua_wxButton_GetDefaultSize1(lua_State *L)
 {
     // call GetDefaultSize
     // allocate a new object using the copy constructor
@@ -509,7 +509,31 @@ static int LUACALL wxLua_wxButton_GetDefaultSize(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxPointSizeRect)
+#endif // ((!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)) && (wxLUA_USE_wxPointSizeRect)
+
+#if ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxButton_GetDefaultSize[] = { &wxluatype_wxWindow, NULL };
+static int LUACALL wxLua_wxButton_GetDefaultSize(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxButton_GetDefaultSize[1] = {{ wxLua_wxButton_GetDefaultSize, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 1, s_wxluatypeArray_wxLua_wxButton_GetDefaultSize }};
+//     %wxchkver_3_1_3 static wxSize GetDefaultSize(wxWindow* win = NULL);
+static int LUACALL wxLua_wxButton_GetDefaultSize(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxWindow win = NULL
+    wxWindow * win = (argCount >= 1 ? (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow) : NULL);
+    // call GetDefaultSize
+    // allocate a new object using the copy constructor
+    wxSize* returns = new wxSize(wxButton::GetDefaultSize(win));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)) && (wxLUA_USE_wxPointSizeRect)
 
 #if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxButton_GetLabel[] = { &wxluatype_wxButton, NULL };
@@ -637,6 +661,23 @@ static int LUACALL wxLua_wxButton_constructor(lua_State *L)
 
 
 
+#if (((!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)) && (wxLUA_USE_wxPointSizeRect))||(((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)) && (wxLUA_USE_wxPointSizeRect))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxButton_GetDefaultSize_overload[] =
+{
+
+#if ((!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)) && (wxLUA_USE_wxPointSizeRect)
+    { wxLua_wxButton_GetDefaultSize1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None },
+#endif // ((!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)) && (wxLUA_USE_wxPointSizeRect)
+
+#if ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)) && (wxLUA_USE_wxPointSizeRect)
+    { wxLua_wxButton_GetDefaultSize, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 1, s_wxluatypeArray_wxLua_wxButton_GetDefaultSize },
+#endif // ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)) && (wxLUA_USE_wxPointSizeRect)
+};
+static int s_wxluafunc_wxLua_wxButton_GetDefaultSize_overload_count = sizeof(s_wxluafunc_wxLua_wxButton_GetDefaultSize_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (((!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)) && (wxLUA_USE_wxPointSizeRect))||(((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)) && (wxLUA_USE_wxPointSizeRect))
+
 #if (((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||(wxLUA_USE_wxButton && wxUSE_BUTTON)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxButton_constructor_overload[] =
@@ -667,9 +708,9 @@ wxLuaBindMethod wxButton_methods[] = {
     { "GetAuthNeeded", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxButton_GetAuthNeeded, 1, NULL },
 #endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
 
-#if (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxPointSizeRect)
-    { "GetDefaultSize", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxButton_GetDefaultSize, 1, NULL },
-#endif // (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxLUA_USE_wxPointSizeRect)
+#if (((!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)) && (wxLUA_USE_wxPointSizeRect))||(((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)) && (wxLUA_USE_wxPointSizeRect))
+    { "GetDefaultSize", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxButton_GetDefaultSize_overload, s_wxluafunc_wxLua_wxButton_GetDefaultSize_overload_count, 0 },
+#endif // (((!wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)) && (wxLUA_USE_wxPointSizeRect))||(((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)) && (wxLUA_USE_wxPointSizeRect))
 
 #if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
     { "GetLabel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxButton_GetLabel, 1, NULL },

@@ -1357,6 +1357,25 @@ static int LUACALL wxLua_wxFileName_FileName(lua_State *L)
 
 #endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFileName)) && (wxLUA_USE_wxFileName)
 
+#if ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxFileName)) && (wxLUA_USE_wxFileName)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_FileNameToURL[] = { &wxluatype_wxFileName, NULL };
+static int LUACALL wxLua_wxFileName_FileNameToURL(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_FileNameToURL[1] = {{ wxLua_wxFileName_FileNameToURL, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxFileName_FileNameToURL }};
+//     %wxchkver_3_1_3 static wxString FileNameToURL(const wxFileName& filename);
+static int LUACALL wxLua_wxFileName_FileNameToURL(lua_State *L)
+{
+    // const wxFileName filename
+    const wxFileName * filename = (const wxFileName *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileName);
+    // call FileNameToURL
+    wxString returns = (wxFileName::FileNameToURL(*filename));
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxFileName)) && (wxLUA_USE_wxFileName)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_GetCwd[] = { &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFileName_GetCwd(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_GetCwd[1] = {{ wxLua_wxFileName_GetCwd, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 1, s_wxluatypeArray_wxLua_wxFileName_GetCwd }};
@@ -2993,6 +3012,29 @@ static int LUACALL wxLua_wxFileName_Touch(lua_State *L)
     return 1;
 }
 
+
+#if ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxFileName)) && (wxLUA_USE_wxFileName)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_URLToFileName[] = { &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxFileName_URLToFileName(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_URLToFileName[1] = {{ wxLua_wxFileName_URLToFileName, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxFileName_URLToFileName }};
+//     %wxchkver_3_1_3 static wxFileName URLToFileName(const wxString& url);
+static int LUACALL wxLua_wxFileName_URLToFileName(lua_State *L)
+{
+    // const wxString url
+    const wxString url = wxlua_getwxStringtype(L, 1);
+    // call URLToFileName
+    // allocate a new object using the copy constructor
+    wxFileName* returns = new wxFileName(wxFileName::URLToFileName(url));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxFileName);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxFileName);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxFileName)) && (wxLUA_USE_wxFileName)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFileName_delete[] = { &wxluatype_wxFileName, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFileName_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxFileName_delete }};
 
@@ -3708,6 +3750,10 @@ wxLuaBindMethod wxFileName_methods[] = {
     { "FileName", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFileName_FileName_overload, s_wxluafunc_wxLua_wxFileName_FileName_overload_count, 0 },
 #endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFileName)) && (wxLUA_USE_wxFileName))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFileName)) && (wxLUA_USE_wxFileName))
 
+#if ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxFileName)) && (wxLUA_USE_wxFileName)
+    { "FileNameToURL", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFileName_FileNameToURL, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxFileName)) && (wxLUA_USE_wxFileName)
+
     { "GetCwd", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFileName_GetCwd, 1, NULL },
     { "GetDirCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileName_GetDirCount, 1, NULL },
 
@@ -3850,6 +3896,11 @@ wxLuaBindMethod wxFileName_methods[] = {
 #endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFileName)
 
     { "Touch", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFileName_Touch, 1, NULL },
+
+#if ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxFileName)) && (wxLUA_USE_wxFileName)
+    { "URLToFileName", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFileName_URLToFileName, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxFileName)) && (wxLUA_USE_wxFileName)
+
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxFileName_delete, 1, NULL },
 
 #if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFileName))||(wxLUA_USE_wxFileName)
