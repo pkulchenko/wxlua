@@ -240,12 +240,12 @@ macro( FIND_WXWIDGETS wxWidgets_COMPONENTS_)
                 endif()
             endif()
         else()
-            if (idx_stc GREATER "-1")
-                # Need scintilla lib in 2.9, just remove both and add them back in correct order
+            if (NOT wxWidgets_CONFIG_EXECUTABLE AND idx_stc GREATER "-1")
+                # Need scintilla lib in 2.9, just remove both and add them back in correct order;
+                # only do it if CONFIG_EXECUTABLE is not set, as it will provide correct config
                 list(REMOVE_ITEM wxWidgets_COMPONENTS stc)
                 list(REMOVE_ITEM wxWidgets_COMPONENTS scintilla)
-
-                set(wxWidgets_COMPONENTS "stc" ${wxWidgets_COMPONENTS})
+                set(wxWidgets_COMPONENTS "stc" "scintilla" ${wxWidgets_COMPONENTS})
             endif()
         endif()
     endif()
