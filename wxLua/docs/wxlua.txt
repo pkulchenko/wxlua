@@ -1,6 +1,6 @@
-﻿% wxLua 3.0.0.3 - User Manual
+﻿% wxLua 3.0.0.4 - User Manual
 % John Labenski, Paul Kulchenko
-% 2019-07-24
+% 2019-09-19
 
 [wxLua](http://wxlua.sourceforge.net) is a [Lua](http://www.lua.org) scripting
 language wrapper around the [wxWidgets](http://www.wxwidgets.org)

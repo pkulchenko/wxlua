@@ -17,7 +17,7 @@
 -- Globals
 -- ---------------------------------------------------------------------------
 
-WXLUA_BINDING_VERSION = 32 -- Used to verify that the bindings are updated
+WXLUA_BINDING_VERSION = 33 -- Used to verify that the bindings are updated
                            -- This must match modules/wxlua/wxldefs.h
                            -- otherwise a compile time error will be generated.
 
