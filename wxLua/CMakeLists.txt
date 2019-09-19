@@ -368,10 +368,6 @@ ADD_DOXYGEN( wxLua_doxygen
 
 SETUP_wxLua() # all libraries are built with these settings
 
-if (NOT TARGET wxStEditLib)
-    add_subdirectory( modules/wxstedit )
-endif()
-
 include_directories(${wxLuaBind_WXLUASETUP_DIR})
 
 if (NOT TARGET wxLuaLib)

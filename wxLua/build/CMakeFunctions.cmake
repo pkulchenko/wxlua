@@ -1004,6 +1004,7 @@ function( ADD_EXECUTABLE_FULL target_name )
     set(OBJECT_FILES)
     set(PRECOMPILED_SOURCE_FILES)
 
+    cmake_policy(SET CMP0054 NEW)
     FOREACH(arg ${ARGN})
         set(read_args FALSE) # TRUE if we didn't find a keyword
 

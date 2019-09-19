@@ -89,20 +89,6 @@ endfunction (wxLua_Apps_wxLuaCan_TARGETS)
 
 function (wxLua_Apps_wxLuaEdit_TARGETS)
 
-set( wxStEdit_ROOT_DIR ${wxStEdit_ROOT_DIR} CACHE PATH "Root dir of wxStEdit" FORCE)
-
-if (EXISTS ${wxStEdit_ROOT_DIR}/CMakeLists.txt AND EXISTS ${wxStEdit_ROOT_DIR}/include/wx/stedit/stedit.h)
-    if (NOT TARGET wxStEditLib)
-        add_subdirectory(${wxStEdit_ROOT_DIR} ${CMAKE_BINARY_DIR}/wxStEdit)
-    endif()
-else()
-    MESSAGE(STATUS "* WARNING: wxLuaEdit application will not be built since wxStEdit was not found.")
-    MESSAGE(STATUS "* WARNING: wxStEdit_ROOT_DIR directory does not exist: '${wxStEdit_ROOT_DIR}'")
-    return()
-endif()
-
-include_directories(${wxStEdit_ROOT_DIR}/include ${wxStEdit_SETUP_INCLUDE_PATH})
-
 ADD_EXECUTABLE_FULL( wxLuaEdit WIN32 MACOSX_BUNDLE
     HEADERS
         "${wxLua_ROOT_DIR}/apps/wxluaedit/*.h"
@@ -111,8 +97,6 @@ ADD_EXECUTABLE_FULL( wxLuaEdit WIN32 MACOSX_BUNDLE
         "${wxLua_ROOT_DIR}/apps/wxluaedit/wxluaedit.rc"
         "${wxLua_ROOT_DIR}/art/wxlualogo.icns"
     LINK_LIBRARIES
-        wxStEditLib
-        #wxLuaBindLib
         ${wxLuaBind_ALL_LIBS}
         wxLuaDebuggerLib
         wxLuaDebugLib
@@ -144,7 +128,6 @@ ADD_EXECUTABLE_FULL( wxLuaFreeze WIN32 MACOSX_BUNDLE
         "${wxLua_ROOT_DIR}/apps/wxluafreeze/wxluafreeze.rc"
         "${wxLua_ROOT_DIR}/art/wxlualogo.icns"
     LINK_LIBRARIES
-        #wxLuaBindLib
         ${wxLuaBind_ALL_LIBS}
         wxLuaDebuggerLib
         wxLuaDebugLib
