@@ -361,6 +361,21 @@ class wxLuaTextDropTarget : public wxTextDropTarget
     // %override bool OnDropText(wxCoord x, wxCoord y, const wxString& text);
     // C++ Func: virtual bool OnDropText(wxCoord x, wxCoord y, const wxString& text);
     virtual bool OnDropText(wxCoord x, wxCoord y, const wxString& text);
+
+    // Create a Lua function that returns a wxDragResult.
+    // %override wxDragResult OnEnter(wxCoord x, wxCoord y, wxDragResult def);
+    // C++ Func: virtual wxDragResult OnEnter(wxCoord x, wxCoord y, wxDragResult def);
+    virtual wxDragResult OnEnter(wxCoord x, wxCoord y, wxDragResult def);
+
+    // Create a Lua function that returns a void.
+    // %override void OnLeave();
+    // C++ Func: virtual void OnLeave();
+    virtual void OnLeave();
+
+    // Create a Lua function that returns a wxDragResult.
+    // %override wxDragResult OnDragOver(wxCoord x, wxCoord y, wxDragResult def);
+    // C++ Func: virtual wxDragResult OnDragOver(wxCoord x, wxCoord y, wxDragResult def);
+    virtual wxDragResult OnDragOver(wxCoord x, wxCoord y, wxDragResult def);
 };
 
 // ---------------------------------------------------------------------------

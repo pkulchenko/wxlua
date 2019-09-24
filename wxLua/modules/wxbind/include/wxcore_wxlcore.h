@@ -85,6 +85,9 @@ public:
 
     virtual bool OnDropText(wxCoord x, wxCoord y, const wxString& text);
     virtual wxDragResult OnData(wxCoord x, wxCoord y, wxDragResult def);
+    virtual wxDragResult OnEnter(wxCoord x, wxCoord y, wxDragResult def);
+    virtual void OnLeave();
+    virtual wxDragResult OnDragOver(wxCoord x, wxCoord y, wxDragResult def);
 
 private:
     mutable wxLuaState m_wxlState;

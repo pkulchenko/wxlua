@@ -1800,6 +1800,28 @@ static int LUACALL wxLua_wxLuaTextDropTarget_OnData(lua_State *L)
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaTextDropTarget_OnDragOver[] = { &wxluatype_wxLuaTextDropTarget, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxLuaTextDropTarget_OnDragOver(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaTextDropTarget_OnDragOver[1] = {{ wxLua_wxLuaTextDropTarget_OnDragOver, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxLuaTextDropTarget_OnDragOver }};
+//     virtual wxDragResult OnDragOver(wxCoord x, wxCoord y, wxDragResult def);
+static int LUACALL wxLua_wxLuaTextDropTarget_OnDragOver(lua_State *L)
+{
+    // wxDragResult def
+    wxDragResult def = (wxDragResult)wxlua_getenumtype(L, 4);
+    // wxCoord y
+    wxCoord y = (wxCoord)wxlua_getnumbertype(L, 3);
+    // wxCoord x
+    wxCoord x = (wxCoord)wxlua_getnumbertype(L, 2);
+    // get this
+    wxLuaTextDropTarget * self = (wxLuaTextDropTarget *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLuaTextDropTarget);
+    // call OnDragOver
+    wxDragResult returns = (self->OnDragOver(x, y, def));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaTextDropTarget_OnDropText[] = { &wxluatype_wxLuaTextDropTarget, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxLuaTextDropTarget_OnDropText(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaTextDropTarget_OnDropText[1] = {{ wxLua_wxLuaTextDropTarget_OnDropText, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxLuaTextDropTarget_OnDropText }};
@@ -1820,6 +1842,42 @@ static int LUACALL wxLua_wxLuaTextDropTarget_OnDropText(lua_State *L)
     lua_pushboolean(L, returns);
 
     return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaTextDropTarget_OnEnter[] = { &wxluatype_wxLuaTextDropTarget, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxLuaTextDropTarget_OnEnter(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaTextDropTarget_OnEnter[1] = {{ wxLua_wxLuaTextDropTarget_OnEnter, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxLuaTextDropTarget_OnEnter }};
+//     virtual wxDragResult OnEnter(wxCoord x, wxCoord y, wxDragResult def);
+static int LUACALL wxLua_wxLuaTextDropTarget_OnEnter(lua_State *L)
+{
+    // wxDragResult def
+    wxDragResult def = (wxDragResult)wxlua_getenumtype(L, 4);
+    // wxCoord y
+    wxCoord y = (wxCoord)wxlua_getnumbertype(L, 3);
+    // wxCoord x
+    wxCoord x = (wxCoord)wxlua_getnumbertype(L, 2);
+    // get this
+    wxLuaTextDropTarget * self = (wxLuaTextDropTarget *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLuaTextDropTarget);
+    // call OnEnter
+    wxDragResult returns = (self->OnEnter(x, y, def));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxLuaTextDropTarget_OnLeave[] = { &wxluatype_wxLuaTextDropTarget, NULL };
+static int LUACALL wxLua_wxLuaTextDropTarget_OnLeave(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxLuaTextDropTarget_OnLeave[1] = {{ wxLua_wxLuaTextDropTarget_OnLeave, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxLuaTextDropTarget_OnLeave }};
+//     virtual void OnLeave();
+static int LUACALL wxLua_wxLuaTextDropTarget_OnLeave(lua_State *L)
+{
+    // get this
+    wxLuaTextDropTarget * self = (wxLuaTextDropTarget *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLuaTextDropTarget);
+    // call OnLeave
+    self->OnLeave();
+
+    return 0;
 }
 
 static int LUACALL wxLua_wxLuaTextDropTarget_constructor(lua_State *L);
@@ -1853,7 +1911,10 @@ void wxLua_wxLuaTextDropTarget_delete_function(void** p)
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxLuaTextDropTarget_methods[] = {
     { "OnData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLuaTextDropTarget_OnData, 1, NULL },
+    { "OnDragOver", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLuaTextDropTarget_OnDragOver, 1, NULL },
     { "OnDropText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLuaTextDropTarget_OnDropText, 1, NULL },
+    { "OnEnter", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLuaTextDropTarget_OnEnter, 1, NULL },
+    { "OnLeave", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxLuaTextDropTarget_OnLeave, 1, NULL },
     { "wxLuaTextDropTarget", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxLuaTextDropTarget_constructor, 1, NULL },
 
     { 0, 0, 0, 0 },
