@@ -72,13 +72,13 @@ class %delete wxPoint
 // ---------------------------------------------------------------------------
 // wxRealPoint - Used nowhere in wxWidgets
 
-//class %delete wxRealPoint
-//{
-//    wxRealPoint(double xx = 0, double yy = 0);
-//
-//    %rename X double x; // GetX() and SetX(int x);
-//    %rename Y double y; // GetY() and SetY(int y);
-//};
+class %delete wxRealPoint
+{
+    wxRealPoint(double xx = 0, double yy = 0);
+
+    %rename X double x; // GetX() and SetX(int x);
+    %rename Y double y; // GetY() and SetY(int y);
+};
 
 // ---------------------------------------------------------------------------
 // wxSize

@@ -1090,6 +1090,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 
 #if wxLUA_USE_wxPointSizeRect
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPoint;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxRealPoint;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxRect;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSize;
 #endif // wxLUA_USE_wxPointSizeRect

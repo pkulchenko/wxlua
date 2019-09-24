@@ -506,6 +506,127 @@ int wxPoint_methodCount = sizeof(wxPoint_methods)/sizeof(wxLuaBindMethod) - 1;
 
 #if wxLUA_USE_wxPointSizeRect
 // ---------------------------------------------------------------------------
+// Bind class wxRealPoint
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxRealPoint'
+int wxluatype_wxRealPoint = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRealPoint_GetX[] = { &wxluatype_wxRealPoint, NULL };
+static int LUACALL wxLua_wxRealPoint_GetX(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRealPoint_GetX[1] = {{ wxLua_wxRealPoint_GetX, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRealPoint_GetX }};
+//     %rename X double x; // GetX() and SetX(int x);
+static int LUACALL wxLua_wxRealPoint_GetX(lua_State *L)
+{
+    // get this
+    wxRealPoint *self = (wxRealPoint *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRealPoint);
+    // push the result number
+    lua_pushnumber(L, self->x);
+    // return the number of values
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRealPoint_GetY[] = { &wxluatype_wxRealPoint, NULL };
+static int LUACALL wxLua_wxRealPoint_GetY(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRealPoint_GetY[1] = {{ wxLua_wxRealPoint_GetY, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRealPoint_GetY }};
+//     %rename Y double y; // GetY() and SetY(int y);
+static int LUACALL wxLua_wxRealPoint_GetY(lua_State *L)
+{
+    // get this
+    wxRealPoint *self = (wxRealPoint *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRealPoint);
+    // push the result number
+    lua_pushnumber(L, self->y);
+    // return the number of values
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRealPoint_SetX[] = { &wxluatype_wxRealPoint, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxRealPoint_SetX(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRealPoint_SetX[1] = {{ wxLua_wxRealPoint_SetX, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRealPoint_SetX }};
+//     %rename X double x; // GetX() and SetX(int x);
+static int LUACALL wxLua_wxRealPoint_SetX(lua_State *L)
+{
+    // get the number value
+    double val = (double)wxlua_getnumbertype(L, 2);
+    // get this
+    wxRealPoint *self = (wxRealPoint *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRealPoint);
+    self->x = val;
+    // return the number of values
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRealPoint_SetY[] = { &wxluatype_wxRealPoint, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxRealPoint_SetY(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRealPoint_SetY[1] = {{ wxLua_wxRealPoint_SetY, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRealPoint_SetY }};
+//     %rename Y double y; // GetY() and SetY(int y);
+static int LUACALL wxLua_wxRealPoint_SetY(lua_State *L)
+{
+    // get the number value
+    double val = (double)wxlua_getnumbertype(L, 2);
+    // get this
+    wxRealPoint *self = (wxRealPoint *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRealPoint);
+    self->y = val;
+    // return the number of values
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRealPoint_delete[] = { &wxluatype_wxRealPoint, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRealPoint_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxRealPoint_delete }};
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRealPoint_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxRealPoint_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRealPoint_constructor[1] = {{ wxLua_wxRealPoint_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxRealPoint_constructor }};
+//     wxRealPoint(double xx = 0, double yy = 0);
+static int LUACALL wxLua_wxRealPoint_constructor(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // double yy = 0
+    double yy = (argCount >= 2 ? (double)wxlua_getnumbertype(L, 2) : 0);
+    // double xx = 0
+    double xx = (argCount >= 1 ? (double)wxlua_getnumbertype(L, 1) : 0);
+    // call constructor
+    wxRealPoint* returns = new wxRealPoint(xx, yy);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxRealPoint);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxRealPoint);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxRealPoint_delete_function(void** p)
+{
+    wxRealPoint* o = (wxRealPoint*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxRealPoint_methods[] = {
+    // %member    { "GetX", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRealPoint_GetX, 1, NULL },
+    // %member    { "GetY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRealPoint_GetY, 1, NULL },
+    // %member    { "SetX", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRealPoint_SetX, 1, NULL },
+    // %member    { "SetY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRealPoint_SetY, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxRealPoint_delete, 1, NULL },
+    { "wxRealPoint", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxRealPoint_constructor, 1, NULL },
+    { "x", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxRealPoint_SetX, 1, NULL },
+    { "x", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxRealPoint_GetX, 1, NULL },
+    { "y", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxRealPoint_SetY, 1, NULL },
+    { "y", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxRealPoint_GetY, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxRealPoint_methodCount = sizeof(wxRealPoint_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxPointSizeRect
+
+
+#if wxLUA_USE_wxPointSizeRect
+// ---------------------------------------------------------------------------
 // Bind class wxSize
 // ---------------------------------------------------------------------------
 

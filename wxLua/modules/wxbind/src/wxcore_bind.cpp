@@ -4822,6 +4822,7 @@ static const char* wxluaclassname_wxQuantize = "wxQuantize";
 static const char* wxluaclassname_wxQueryNewPaletteEvent = "wxQueryNewPaletteEvent";
 static const char* wxluaclassname_wxRadioBox = "wxRadioBox";
 static const char* wxluaclassname_wxRadioButton = "wxRadioButton";
+static const char* wxluaclassname_wxRealPoint = "wxRealPoint";
 static const char* wxluaclassname_wxRect = "wxRect";
 static const char* wxluaclassname_wxRect2DDouble = "wxRect2DDouble";
 static const char* wxluaclassname_wxRect2DInt = "wxRect2DInt";
@@ -6524,6 +6525,9 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern wxLuaBindMethod wxPoint_methods[];
     extern int wxPoint_methodCount;
     extern void wxLua_wxPoint_delete_function(void** p);
+    extern wxLuaBindMethod wxRealPoint_methods[];
+    extern int wxRealPoint_methodCount;
+    extern void wxLua_wxRealPoint_delete_function(void** p);
     extern wxLuaBindMethod wxRect_methods[];
     extern int wxRect_methodCount;
     extern void wxLua_wxRect_delete_function(void** p);
@@ -7560,6 +7564,7 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #endif // wxLUA_USE_wxRadioButton && wxUSE_RADIOBTN
 
 #if wxLUA_USE_wxPointSizeRect
+        { wxluaclassname_wxRealPoint, wxRealPoint_methods, wxRealPoint_methodCount, NULL, &wxluatype_wxRealPoint, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxRealPoint_delete_function, }, 
         { wxluaclassname_wxRect, wxRect_methods, wxRect_methodCount, NULL, &wxluatype_wxRect, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxRect_delete_function, }, 
 #endif // wxLUA_USE_wxPointSizeRect
 

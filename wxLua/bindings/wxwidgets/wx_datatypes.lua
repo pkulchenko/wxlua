@@ -4201,6 +4201,12 @@ wx_dataTypeTable =
     Name = "wxRasterOperationMode",
     ValueType = "enum",
   },
+  wxRealPoint = {
+    Condition = "wxLUA_USE_wxPointSizeRect",
+    IsNumber = false,
+    Name = "wxRealPoint",
+    ValueType = "class",
+  },
   wxRect = {
     Condition = "wxLUA_USE_wxPointSizeRect",
     IsNumber = false,
