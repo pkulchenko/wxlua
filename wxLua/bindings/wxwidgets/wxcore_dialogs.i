@@ -475,11 +475,21 @@ class wxProgressDialog : public wxDialog
 {
     wxProgressDialog(const wxString& title, const wxString& message, int maximum = 100, wxWindow* parent = NULL, int style = wxPD_AUTO_HIDE | wxPD_APP_MODAL);
 
-    void    Resume();
-
     // %override [bool, bool skip] Update(int value, const wxString& newmsg = "");
     // C++ Func: bool Update(int value, const wxString& newmsg = "", bool* skip = NULL);
-    bool    Update(int value, const wxString& newmsg = "");
+    bool Update(int value, const wxString& newmsg = "");
+    bool Pulse(const wxString& newmsg = wxEmptyString, bool *skip = NULL);
+
+    void Resume();
+
+    %wxchkver_2_9_0 int GetValue() const;
+    %wxchkver_2_9_0 int GetRange() const;
+    %wxchkver_2_9_0 wxString GetMessage() const;
+
+    %wxchkver_2_9_1 void SetRange(int maximum);
+
+    %wxchkver_2_9_1 bool WasCancelled() const;
+    %wxchkver_2_9_1 bool WasSkipped() const;
 };
 
 #endif //wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog

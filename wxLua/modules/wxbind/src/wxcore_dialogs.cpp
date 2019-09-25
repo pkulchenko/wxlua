@@ -3097,10 +3097,83 @@ int wxFindDialogEvent_methodCount = sizeof(wxFindDialogEvent_methods)/sizeof(wxL
 // Lua MetaTable Tag for Class 'wxProgressDialog'
 int wxluatype_wxProgressDialog = WXLUA_TUNKNOWN;
 
+#if (wxCHECK_VERSION(2,9,0)) && (wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxProgressDialog_GetMessage[] = { &wxluatype_wxProgressDialog, NULL };
+static int LUACALL wxLua_wxProgressDialog_GetMessage(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxProgressDialog_GetMessage[1] = {{ wxLua_wxProgressDialog_GetMessage, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxProgressDialog_GetMessage }};
+//     %wxchkver_2_9_0 wxString GetMessage() const;
+static int LUACALL wxLua_wxProgressDialog_GetMessage(lua_State *L)
+{
+    // get this
+    wxProgressDialog * self = (wxProgressDialog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxProgressDialog);
+    // call GetMessage
+    wxString returns = (self->GetMessage());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxProgressDialog_GetRange[] = { &wxluatype_wxProgressDialog, NULL };
+static int LUACALL wxLua_wxProgressDialog_GetRange(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxProgressDialog_GetRange[1] = {{ wxLua_wxProgressDialog_GetRange, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxProgressDialog_GetRange }};
+//     %wxchkver_2_9_0 int GetRange() const;
+static int LUACALL wxLua_wxProgressDialog_GetRange(lua_State *L)
+{
+    // get this
+    wxProgressDialog * self = (wxProgressDialog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxProgressDialog);
+    // call GetRange
+    int returns = (self->GetRange());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxProgressDialog_GetValue[] = { &wxluatype_wxProgressDialog, NULL };
+static int LUACALL wxLua_wxProgressDialog_GetValue(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxProgressDialog_GetValue[1] = {{ wxLua_wxProgressDialog_GetValue, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxProgressDialog_GetValue }};
+//     %wxchkver_2_9_0 int GetValue() const;
+static int LUACALL wxLua_wxProgressDialog_GetValue(lua_State *L)
+{
+    // get this
+    wxProgressDialog * self = (wxProgressDialog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxProgressDialog);
+    // call GetValue
+    int returns = (self->GetValue());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxProgressDialog_Pulse[] = { &wxluatype_wxProgressDialog, &wxluatype_TSTRING, &wxluatype_TLIGHTUSERDATA, NULL };
+static int LUACALL wxLua_wxProgressDialog_Pulse(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxProgressDialog_Pulse[1] = {{ wxLua_wxProgressDialog_Pulse, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxProgressDialog_Pulse }};
+//     bool Pulse(const wxString& newmsg = wxEmptyString, bool *skip = NULL);
+static int LUACALL wxLua_wxProgressDialog_Pulse(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool skip = NULL
+    bool * skip = (argCount >= 3 ? (bool *)wxlua_touserdata(L, 3) : NULL);
+    // const wxString newmsg = wxEmptyString
+    const wxString newmsg = (argCount >= 2 ? wxlua_getwxStringtype(L, 2) : wxString(wxEmptyString));
+    // get this
+    wxProgressDialog * self = (wxProgressDialog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxProgressDialog);
+    // call Pulse
+    bool returns = (self->Pulse(newmsg, skip));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProgressDialog_Resume[] = { &wxluatype_wxProgressDialog, NULL };
 static int LUACALL wxLua_wxProgressDialog_Resume(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxProgressDialog_Resume[1] = {{ wxLua_wxProgressDialog_Resume, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxProgressDialog_Resume }};
-//     void    Resume();
+//     void Resume();
 static int LUACALL wxLua_wxProgressDialog_Resume(lua_State *L)
 {
     // get this
@@ -3110,6 +3183,26 @@ static int LUACALL wxLua_wxProgressDialog_Resume(lua_State *L)
 
     return 0;
 }
+
+
+#if (wxCHECK_VERSION(2,9,1)) && (wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxProgressDialog_SetRange[] = { &wxluatype_wxProgressDialog, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxProgressDialog_SetRange(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxProgressDialog_SetRange[1] = {{ wxLua_wxProgressDialog_SetRange, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxProgressDialog_SetRange }};
+//     %wxchkver_2_9_1 void SetRange(int maximum);
+static int LUACALL wxLua_wxProgressDialog_SetRange(lua_State *L)
+{
+    // int maximum
+    int maximum = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxProgressDialog * self = (wxProgressDialog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxProgressDialog);
+    // call SetRange
+    self->SetRange(maximum);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(2,9,1)) && (wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProgressDialog_Update[] = { &wxluatype_wxProgressDialog, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxProgressDialog_Update(lua_State *L);
@@ -3136,6 +3229,42 @@ static int LUACALL wxLua_wxProgressDialog_Update(lua_State *L)
     return 2;
 }
 
+
+
+#if (wxCHECK_VERSION(2,9,1)) && (wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxProgressDialog_WasCancelled[] = { &wxluatype_wxProgressDialog, NULL };
+static int LUACALL wxLua_wxProgressDialog_WasCancelled(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxProgressDialog_WasCancelled[1] = {{ wxLua_wxProgressDialog_WasCancelled, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxProgressDialog_WasCancelled }};
+//     %wxchkver_2_9_1 bool WasCancelled() const;
+static int LUACALL wxLua_wxProgressDialog_WasCancelled(lua_State *L)
+{
+    // get this
+    wxProgressDialog * self = (wxProgressDialog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxProgressDialog);
+    // call WasCancelled
+    bool returns = (self->WasCancelled());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxProgressDialog_WasSkipped[] = { &wxluatype_wxProgressDialog, NULL };
+static int LUACALL wxLua_wxProgressDialog_WasSkipped(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxProgressDialog_WasSkipped[1] = {{ wxLua_wxProgressDialog_WasSkipped, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxProgressDialog_WasSkipped }};
+//     %wxchkver_2_9_1 bool WasSkipped() const;
+static int LUACALL wxLua_wxProgressDialog_WasSkipped(lua_State *L)
+{
+    // get this
+    wxProgressDialog * self = (wxProgressDialog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxProgressDialog);
+    // call WasSkipped
+    bool returns = (self->WasSkipped());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,1)) && (wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxProgressDialog_constructor[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_wxWindow, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxProgressDialog_constructor(lua_State *L);
@@ -3176,8 +3305,26 @@ void wxLua_wxProgressDialog_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxProgressDialog_methods[] = {
+#if (wxCHECK_VERSION(2,9,0)) && (wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog)
+    { "GetMessage", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProgressDialog_GetMessage, 1, NULL },
+    { "GetRange", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProgressDialog_GetRange, 1, NULL },
+    { "GetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProgressDialog_GetValue, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,0)) && (wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog)
+
+    { "Pulse", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProgressDialog_Pulse, 1, NULL },
     { "Resume", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProgressDialog_Resume, 1, NULL },
+
+#if (wxCHECK_VERSION(2,9,1)) && (wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog)
+    { "SetRange", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProgressDialog_SetRange, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,1)) && (wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog)
+
     { "Update", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProgressDialog_Update, 1, NULL },
+
+#if (wxCHECK_VERSION(2,9,1)) && (wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog)
+    { "WasCancelled", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProgressDialog_WasCancelled, 1, NULL },
+    { "WasSkipped", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxProgressDialog_WasSkipped, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,1)) && (wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog)
+
     { "wxProgressDialog", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxProgressDialog_constructor, 1, NULL },
 
     { 0, 0, 0, 0 },
