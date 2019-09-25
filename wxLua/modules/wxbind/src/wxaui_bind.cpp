@@ -7544,6 +7544,26 @@ static int LUACALL wxLua_wxAuiPaneInfo_Dock(lua_State *L)
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiPaneInfo_DockFixed[] = { &wxluatype_wxAuiPaneInfo, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxAuiPaneInfo_DockFixed(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiPaneInfo_DockFixed[1] = {{ wxLua_wxAuiPaneInfo_DockFixed, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxAuiPaneInfo_DockFixed }};
+//     wxAuiPaneInfo& DockFixed(bool b = true);
+static int LUACALL wxLua_wxAuiPaneInfo_DockFixed(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool b = true
+    bool b = (argCount >= 2 ? wxlua_getbooleantype(L, 2) : true);
+    // get this
+    wxAuiPaneInfo * self = (wxAuiPaneInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiPaneInfo);
+    // call DockFixed
+    wxAuiPaneInfo* returns = (wxAuiPaneInfo*)&self->DockFixed(b);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxAuiPaneInfo);
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiPaneInfo_Dockable[] = { &wxluatype_wxAuiPaneInfo, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxAuiPaneInfo_Dockable(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiPaneInfo_Dockable[1] = {{ wxLua_wxAuiPaneInfo_Dockable, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxAuiPaneInfo_Dockable }};
@@ -8140,6 +8160,28 @@ static int LUACALL wxLua_wxAuiPaneInfo_Hide(lua_State *L)
     return 1;
 }
 
+
+#if (((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiPaneInfo_Icon[] = { &wxluatype_wxAuiPaneInfo, &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxAuiPaneInfo_Icon(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiPaneInfo_Icon[1] = {{ wxLua_wxAuiPaneInfo_Icon, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiPaneInfo_Icon }};
+//     %wxchkver_2_9_2 wxAuiPaneInfo& Icon(const wxBitmap& b);
+static int LUACALL wxLua_wxAuiPaneInfo_Icon(lua_State *L)
+{
+    // const wxBitmap b
+    const wxBitmap * b = (const wxBitmap *)wxluaT_getuserdatatype(L, 2, wxluatype_wxBitmap);
+    // get this
+    wxAuiPaneInfo * self = (wxAuiPaneInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiPaneInfo);
+    // call Icon
+    wxAuiPaneInfo* returns = (wxAuiPaneInfo*)&self->Icon(*b);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxAuiPaneInfo);
+
+    return 1;
+}
+
+#endif // (((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiPaneInfo_IsBottomDockable[] = { &wxluatype_wxAuiPaneInfo, NULL };
 static int LUACALL wxLua_wxAuiPaneInfo_IsBottomDockable(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiPaneInfo_IsBottomDockable[1] = {{ wxLua_wxAuiPaneInfo_IsBottomDockable, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiPaneInfo_IsBottomDockable }};
@@ -8171,6 +8213,26 @@ static int LUACALL wxLua_wxAuiPaneInfo_IsDestroyOnClose(lua_State *L)
 
     return 1;
 }
+
+
+#if (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiPaneInfo_IsDockable[] = { &wxluatype_wxAuiPaneInfo, NULL };
+static int LUACALL wxLua_wxAuiPaneInfo_IsDockable(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiPaneInfo_IsDockable[1] = {{ wxLua_wxAuiPaneInfo_IsDockable, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiPaneInfo_IsDockable }};
+//     %wxchkver_2_9_2 bool IsDockable() const;
+static int LUACALL wxLua_wxAuiPaneInfo_IsDockable(lua_State *L)
+{
+    // get this
+    wxAuiPaneInfo * self = (wxAuiPaneInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiPaneInfo);
+    // call IsDockable
+    bool returns = (self->IsDockable());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiPaneInfo_IsDocked[] = { &wxluatype_wxAuiPaneInfo, NULL };
 static int LUACALL wxLua_wxAuiPaneInfo_IsDocked(lua_State *L);
@@ -9314,6 +9376,7 @@ wxLuaBindMethod wxAuiPaneInfo_methods[] = {
     { "DestroyOnClose", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_DestroyOnClose, 1, NULL },
     { "Direction", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_Direction, 1, NULL },
     { "Dock", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_Dock, 1, NULL },
+    { "DockFixed", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_DockFixed, 1, NULL },
     { "Dockable", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_Dockable, 1, NULL },
     { "Fixed", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_Fixed, 1, NULL },
     { "Float", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_Float, 1, NULL },
@@ -9369,8 +9432,18 @@ wxLuaBindMethod wxAuiPaneInfo_methods[] = {
     { "HasMinimizeButton", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_HasMinimizeButton, 1, NULL },
     { "HasPinButton", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_HasPinButton, 1, NULL },
     { "Hide", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_Hide, 1, NULL },
+
+#if (((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+    { "Icon", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_Icon, 1, NULL },
+#endif // (((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+
     { "IsBottomDockable", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_IsBottomDockable, 1, NULL },
     { "IsDestroyOnClose", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_IsDestroyOnClose, 1, NULL },
+
+#if (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+    { "IsDockable", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_IsDockable, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
     { "IsDocked", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_IsDocked, 1, NULL },
     { "IsFixed", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_IsFixed, 1, NULL },
     { "IsFloatable", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiPaneInfo_IsFloatable, 1, NULL },

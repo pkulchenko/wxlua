@@ -747,6 +747,7 @@ class %delete wxAuiPaneInfo
     bool IsToolbar() const;
     bool IsTopDockable() const;
     bool IsBottomDockable() const;
+    %wxchkver_2_9_2 bool IsDockable() const;
     bool IsLeftDockable() const;
     bool IsRightDockable() const;
     bool IsFloatable() const;
@@ -788,8 +789,10 @@ class %delete wxAuiPaneInfo
     wxAuiPaneInfo& Fixed();
     wxAuiPaneInfo& Resizable(bool resizable = true);
     wxAuiPaneInfo& Dock();
+    wxAuiPaneInfo& DockFixed(bool b = true);
     wxAuiPaneInfo& Float();
     wxAuiPaneInfo& Hide();
+    %wxchkver_2_9_2 wxAuiPaneInfo& Icon(const wxBitmap& b);
     wxAuiPaneInfo& Show(bool show = true);
     wxAuiPaneInfo& CaptionVisible(bool visible = true);
     wxAuiPaneInfo& Maximize();
@@ -818,7 +821,6 @@ class %delete wxAuiPaneInfo
     wxAuiPaneInfo& ToolbarPane();
     wxAuiPaneInfo& SetFlag(unsigned int flag, bool option_state);
     bool HasFlag(unsigned int flag) const;
-
 
     wxString name;        // name of the pane
     wxString caption;     // caption displayed on the window
