@@ -2401,6 +2401,8 @@ static const char* wxluaclassname_wxString_const_iterator = "wxString_const_iter
 static const char* wxluaclassname_wxString_iterator = "wxString_iterator";
 static const char* wxluaclassname_wxSystemOptions = "wxSystemOptions";
 static const char* wxluaclassname_wxTempFile = "wxTempFile";
+static const char* wxluaclassname_wxTextInputStream = "wxTextInputStream";
+static const char* wxluaclassname_wxTextOutputStream = "wxTextOutputStream";
 static const char* wxluaclassname_wxTimeSpan = "wxTimeSpan";
 static const char* wxluaclassname_wxULongLong = "wxULongLong";
 static const char* wxluaclassname_wxVersionInfo = "wxVersionInfo";
@@ -2796,6 +2798,12 @@ extern void wxLua_wxStringTokenizer_delete_function(void** p);
     extern wxLuaBindMethod wxStreamBase_methods[];
     extern int wxStreamBase_methodCount;
     extern void wxLua_wxStreamBase_delete_function(void** p);
+    extern wxLuaBindMethod wxTextInputStream_methods[];
+    extern int wxTextInputStream_methodCount;
+    extern void wxLua_wxTextInputStream_delete_function(void** p);
+    extern wxLuaBindMethod wxTextOutputStream_methods[];
+    extern int wxTextOutputStream_methodCount;
+    extern void wxLua_wxTextOutputStream_delete_function(void** p);
 #endif // wxUSE_STREAMS
 
 
@@ -3019,6 +3027,11 @@ wxLuaBindClass* wxLuaGetClassList_wxbase(size_t &count)
 #if wxLUA_USE_wxFile && wxUSE_FILE
         { wxluaclassname_wxTempFile, wxTempFile_methods, wxTempFile_methodCount, NULL, &wxluatype_wxTempFile, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxTempFile_delete_function, }, 
 #endif // wxLUA_USE_wxFile && wxUSE_FILE
+
+#if wxUSE_STREAMS
+        { wxluaclassname_wxTextInputStream, wxTextInputStream_methods, wxTextInputStream_methodCount, NULL, &wxluatype_wxTextInputStream, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxTextInputStream_delete_function, }, 
+        { wxluaclassname_wxTextOutputStream, wxTextOutputStream_methods, wxTextOutputStream_methodCount, NULL, &wxluatype_wxTextOutputStream, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxTextOutputStream_delete_function, }, 
+#endif // wxUSE_STREAMS
 
 #if wxLUA_USE_wxTimeSpan && wxUSE_DATETIME
         { wxluaclassname_wxTimeSpan, wxTimeSpan_methods, wxTimeSpan_methodCount, NULL, &wxluatype_wxTimeSpan, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxTimeSpan_delete_function, }, 

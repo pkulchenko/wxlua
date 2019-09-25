@@ -348,6 +348,8 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringTokenizer;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxMemoryInputStream;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxOutputStream;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStreamBase;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxTextInputStream;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxTextOutputStream;
 #endif // wxUSE_STREAMS
 
 

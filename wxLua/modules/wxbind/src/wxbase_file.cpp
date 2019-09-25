@@ -7249,6 +7249,584 @@ int wxDataInputStream_methodCount = sizeof(wxDataInputStream_methods)/sizeof(wxL
 
 #if wxUSE_STREAMS
 // ---------------------------------------------------------------------------
+// Bind class wxTextInputStream
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxTextInputStream'
+int wxluatype_wxTextInputStream = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_GetChar[] = { &wxluatype_wxTextInputStream, NULL };
+static int LUACALL wxLua_wxTextInputStream_GetChar(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_GetChar[1] = {{ wxLua_wxTextInputStream_GetChar, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTextInputStream_GetChar }};
+//     wxChar   GetChar();
+static int LUACALL wxLua_wxTextInputStream_GetChar(lua_State *L)
+{
+    // get this
+    wxTextInputStream * self = (wxTextInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextInputStream);
+    // call GetChar
+    wxChar returns = (self->GetChar());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_GetInputStream[] = { &wxluatype_wxTextInputStream, NULL };
+static int LUACALL wxLua_wxTextInputStream_GetInputStream(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_GetInputStream[1] = {{ wxLua_wxTextInputStream_GetInputStream, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTextInputStream_GetInputStream }};
+//     const wxInputStream& GetInputStream();
+static int LUACALL wxLua_wxTextInputStream_GetInputStream(lua_State *L)
+{
+    // get this
+    wxTextInputStream * self = (wxTextInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextInputStream);
+    // call GetInputStream
+    const wxInputStream* returns = (const wxInputStream*)&self->GetInputStream();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxInputStream);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_GetStringSeparators[] = { &wxluatype_wxTextInputStream, NULL };
+static int LUACALL wxLua_wxTextInputStream_GetStringSeparators(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_GetStringSeparators[1] = {{ wxLua_wxTextInputStream_GetStringSeparators, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTextInputStream_GetStringSeparators }};
+//     wxString GetStringSeparators() const;
+static int LUACALL wxLua_wxTextInputStream_GetStringSeparators(lua_State *L)
+{
+    // get this
+    wxTextInputStream * self = (wxTextInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextInputStream);
+    // call GetStringSeparators
+    wxString returns = (self->GetStringSeparators());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_Read16[] = { &wxluatype_wxTextInputStream, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxTextInputStream_Read16(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_Read16[1] = {{ wxLua_wxTextInputStream_Read16, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxTextInputStream_Read16 }};
+//     wxUint16 Read16(int base = 10);
+static int LUACALL wxLua_wxTextInputStream_Read16(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int base = 10
+    int base = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : 10);
+    // get this
+    wxTextInputStream * self = (wxTextInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextInputStream);
+    // call Read16
+    wxUint16 returns = (self->Read16(base));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_Read16S[] = { &wxluatype_wxTextInputStream, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxTextInputStream_Read16S(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_Read16S[1] = {{ wxLua_wxTextInputStream_Read16S, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxTextInputStream_Read16S }};
+//     wxInt16  Read16S(int base = 10);
+static int LUACALL wxLua_wxTextInputStream_Read16S(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int base = 10
+    int base = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : 10);
+    // get this
+    wxTextInputStream * self = (wxTextInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextInputStream);
+    // call Read16S
+    wxInt16 returns = (self->Read16S(base));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_Read32[] = { &wxluatype_wxTextInputStream, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxTextInputStream_Read32(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_Read32[1] = {{ wxLua_wxTextInputStream_Read32, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxTextInputStream_Read32 }};
+//     wxUint32 Read32(int base = 10);
+static int LUACALL wxLua_wxTextInputStream_Read32(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int base = 10
+    int base = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : 10);
+    // get this
+    wxTextInputStream * self = (wxTextInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextInputStream);
+    // call Read32
+    wxUint32 returns = (self->Read32(base));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_Read32S[] = { &wxluatype_wxTextInputStream, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxTextInputStream_Read32S(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_Read32S[1] = {{ wxLua_wxTextInputStream_Read32S, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxTextInputStream_Read32S }};
+//     wxInt32  Read32S(int base = 10);
+static int LUACALL wxLua_wxTextInputStream_Read32S(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int base = 10
+    int base = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : 10);
+    // get this
+    wxTextInputStream * self = (wxTextInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextInputStream);
+    // call Read32S
+    wxInt32 returns = (self->Read32S(base));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_Read64[] = { &wxluatype_wxTextInputStream, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxTextInputStream_Read64(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_Read64[1] = {{ wxLua_wxTextInputStream_Read64, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxTextInputStream_Read64 }};
+//     wxUint64 Read64(int base = 10);
+static int LUACALL wxLua_wxTextInputStream_Read64(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int base = 10
+    int base = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : 10);
+    // get this
+    wxTextInputStream * self = (wxTextInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextInputStream);
+    // call Read64
+    wxUint64 returns = (self->Read64(base));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_Read64S[] = { &wxluatype_wxTextInputStream, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxTextInputStream_Read64S(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_Read64S[1] = {{ wxLua_wxTextInputStream_Read64S, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxTextInputStream_Read64S }};
+//     wxInt64  Read64S(int base = 10);
+static int LUACALL wxLua_wxTextInputStream_Read64S(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int base = 10
+    int base = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : 10);
+    // get this
+    wxTextInputStream * self = (wxTextInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextInputStream);
+    // call Read64S
+    wxInt64 returns = (self->Read64S(base));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_Read8[] = { &wxluatype_wxTextInputStream, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxTextInputStream_Read8(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_Read8[1] = {{ wxLua_wxTextInputStream_Read8, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxTextInputStream_Read8 }};
+//     wxUint8  Read8(int base = 10);
+static int LUACALL wxLua_wxTextInputStream_Read8(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int base = 10
+    int base = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : 10);
+    // get this
+    wxTextInputStream * self = (wxTextInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextInputStream);
+    // call Read8
+    wxUint8 returns = (self->Read8(base));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_Read8S[] = { &wxluatype_wxTextInputStream, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxTextInputStream_Read8S(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_Read8S[1] = {{ wxLua_wxTextInputStream_Read8S, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxTextInputStream_Read8S }};
+//     wxInt8   Read8S(int base = 10);
+static int LUACALL wxLua_wxTextInputStream_Read8S(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int base = 10
+    int base = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : 10);
+    // get this
+    wxTextInputStream * self = (wxTextInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextInputStream);
+    // call Read8S
+    wxInt8 returns = (self->Read8S(base));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_ReadDouble[] = { &wxluatype_wxTextInputStream, NULL };
+static int LUACALL wxLua_wxTextInputStream_ReadDouble(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_ReadDouble[1] = {{ wxLua_wxTextInputStream_ReadDouble, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTextInputStream_ReadDouble }};
+//     double   ReadDouble();
+static int LUACALL wxLua_wxTextInputStream_ReadDouble(lua_State *L)
+{
+    // get this
+    wxTextInputStream * self = (wxTextInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextInputStream);
+    // call ReadDouble
+    double returns = (self->ReadDouble());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_ReadLine[] = { &wxluatype_wxTextInputStream, NULL };
+static int LUACALL wxLua_wxTextInputStream_ReadLine(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_ReadLine[1] = {{ wxLua_wxTextInputStream_ReadLine, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTextInputStream_ReadLine }};
+//     wxString ReadLine();
+static int LUACALL wxLua_wxTextInputStream_ReadLine(lua_State *L)
+{
+    // get this
+    wxTextInputStream * self = (wxTextInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextInputStream);
+    // call ReadLine
+    wxString returns = (self->ReadLine());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_ReadWord[] = { &wxluatype_wxTextInputStream, NULL };
+static int LUACALL wxLua_wxTextInputStream_ReadWord(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_ReadWord[1] = {{ wxLua_wxTextInputStream_ReadWord, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTextInputStream_ReadWord }};
+//     wxString ReadWord();
+static int LUACALL wxLua_wxTextInputStream_ReadWord(lua_State *L)
+{
+    // get this
+    wxTextInputStream * self = (wxTextInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextInputStream);
+    // call ReadWord
+    wxString returns = (self->ReadWord());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_SetStringSeparators[] = { &wxluatype_wxTextInputStream, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxTextInputStream_SetStringSeparators(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_SetStringSeparators[1] = {{ wxLua_wxTextInputStream_SetStringSeparators, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTextInputStream_SetStringSeparators }};
+//     void SetStringSeparators(const wxString &c);
+static int LUACALL wxLua_wxTextInputStream_SetStringSeparators(lua_State *L)
+{
+    // const wxString c
+    const wxString c = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxTextInputStream * self = (wxTextInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextInputStream);
+    // call SetStringSeparators
+    self->SetStringSeparators(c);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_delete[] = { &wxluatype_wxTextInputStream, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxTextInputStream_delete }};
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_constructor[] = { &wxluatype_wxInputStream, NULL };
+static int LUACALL wxLua_wxTextInputStream_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_constructor[1] = {{ wxLua_wxTextInputStream_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxTextInputStream_constructor }};
+//     wxTextInputStream(wxInputStream& s);
+static int LUACALL wxLua_wxTextInputStream_constructor(lua_State *L)
+{
+    // wxInputStream s
+    wxInputStream * s = (wxInputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxInputStream);
+    // call constructor
+    wxTextInputStream* returns = new wxTextInputStream(*s);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTextInputStream);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTextInputStream);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxTextInputStream_delete_function(void** p)
+{
+    wxTextInputStream* o = (wxTextInputStream*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxTextInputStream_methods[] = {
+    { "GetChar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_GetChar, 1, NULL },
+    { "GetInputStream", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_GetInputStream, 1, NULL },
+    { "GetStringSeparators", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_GetStringSeparators, 1, NULL },
+    { "Read16", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_Read16, 1, NULL },
+    { "Read16S", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_Read16S, 1, NULL },
+    { "Read32", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_Read32, 1, NULL },
+    { "Read32S", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_Read32S, 1, NULL },
+    { "Read64", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_Read64, 1, NULL },
+    { "Read64S", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_Read64S, 1, NULL },
+    { "Read8", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_Read8, 1, NULL },
+    { "Read8S", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_Read8S, 1, NULL },
+    { "ReadDouble", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_ReadDouble, 1, NULL },
+    { "ReadLine", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_ReadLine, 1, NULL },
+    { "ReadWord", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_ReadWord, 1, NULL },
+    { "SetStringSeparators", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_SetStringSeparators, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxTextInputStream_delete, 1, NULL },
+    { "wxTextInputStream", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxTextInputStream_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxTextInputStream_methodCount = sizeof(wxTextInputStream_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxUSE_STREAMS
+
+
+#if wxUSE_STREAMS
+// ---------------------------------------------------------------------------
+// Bind class wxTextOutputStream
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxTextOutputStream'
+int wxluatype_wxTextOutputStream = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextOutputStream_Flush[] = { &wxluatype_wxTextOutputStream, NULL };
+static int LUACALL wxLua_wxTextOutputStream_Flush(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextOutputStream_Flush[1] = {{ wxLua_wxTextOutputStream_Flush, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTextOutputStream_Flush }};
+//     void Flush();
+static int LUACALL wxLua_wxTextOutputStream_Flush(lua_State *L)
+{
+    // get this
+    wxTextOutputStream * self = (wxTextOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextOutputStream);
+    // call Flush
+    self->Flush();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextOutputStream_GetMode[] = { &wxluatype_wxTextOutputStream, NULL };
+static int LUACALL wxLua_wxTextOutputStream_GetMode(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextOutputStream_GetMode[1] = {{ wxLua_wxTextOutputStream_GetMode, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTextOutputStream_GetMode }};
+//     wxEOL GetMode();
+static int LUACALL wxLua_wxTextOutputStream_GetMode(lua_State *L)
+{
+    // get this
+    wxTextOutputStream * self = (wxTextOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextOutputStream);
+    // call GetMode
+    wxEOL returns = (self->GetMode());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextOutputStream_GetOutputStream[] = { &wxluatype_wxTextOutputStream, NULL };
+static int LUACALL wxLua_wxTextOutputStream_GetOutputStream(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextOutputStream_GetOutputStream[1] = {{ wxLua_wxTextOutputStream_GetOutputStream, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTextOutputStream_GetOutputStream }};
+//     const wxOutputStream& GetOutputStream();
+static int LUACALL wxLua_wxTextOutputStream_GetOutputStream(lua_State *L)
+{
+    // get this
+    wxTextOutputStream * self = (wxTextOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextOutputStream);
+    // call GetOutputStream
+    const wxOutputStream* returns = (const wxOutputStream*)&self->GetOutputStream();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxOutputStream);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextOutputStream_PutChar[] = { &wxluatype_wxTextOutputStream, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxTextOutputStream_PutChar(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextOutputStream_PutChar[1] = {{ wxLua_wxTextOutputStream_PutChar, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTextOutputStream_PutChar }};
+//     wxTextOutputStream& PutChar(wxChar c);
+static int LUACALL wxLua_wxTextOutputStream_PutChar(lua_State *L)
+{
+    // wxChar c
+    wxChar c = (wxChar)wxlua_getnumbertype(L, 2);
+    // get this
+    wxTextOutputStream * self = (wxTextOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextOutputStream);
+    // call PutChar
+    wxTextOutputStream* returns = (wxTextOutputStream*)&self->PutChar(c);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTextOutputStream);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextOutputStream_SetMode[] = { &wxluatype_wxTextOutputStream, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxTextOutputStream_SetMode(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextOutputStream_SetMode[1] = {{ wxLua_wxTextOutputStream_SetMode, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxTextOutputStream_SetMode }};
+//     void SetMode( wxEOL mode = wxEOL_NATIVE );
+static int LUACALL wxLua_wxTextOutputStream_SetMode(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxEOL mode = wxEOL_NATIVE
+    wxEOL mode = (argCount >= 2 ? (wxEOL)wxlua_getenumtype(L, 2) : wxEOL_NATIVE);
+    // get this
+    wxTextOutputStream * self = (wxTextOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextOutputStream);
+    // call SetMode
+    self->SetMode(mode);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextOutputStream_Write16[] = { &wxluatype_wxTextOutputStream, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxTextOutputStream_Write16(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextOutputStream_Write16[1] = {{ wxLua_wxTextOutputStream_Write16, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTextOutputStream_Write16 }};
+//     void Write16(wxUint16 i);
+static int LUACALL wxLua_wxTextOutputStream_Write16(lua_State *L)
+{
+    // wxUint16 i
+    wxUint16 i = (wxUint16)wxlua_getuintegertype(L, 2);
+    // get this
+    wxTextOutputStream * self = (wxTextOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextOutputStream);
+    // call Write16
+    self->Write16(i);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextOutputStream_Write32[] = { &wxluatype_wxTextOutputStream, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxTextOutputStream_Write32(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextOutputStream_Write32[1] = {{ wxLua_wxTextOutputStream_Write32, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTextOutputStream_Write32 }};
+//     void Write32(wxUint32 i);
+static int LUACALL wxLua_wxTextOutputStream_Write32(lua_State *L)
+{
+    // wxUint32 i
+    wxUint32 i = (wxUint32)wxlua_getuintegertype(L, 2);
+    // get this
+    wxTextOutputStream * self = (wxTextOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextOutputStream);
+    // call Write32
+    self->Write32(i);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextOutputStream_Write64[] = { &wxluatype_wxTextOutputStream, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxTextOutputStream_Write64(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextOutputStream_Write64[1] = {{ wxLua_wxTextOutputStream_Write64, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTextOutputStream_Write64 }};
+//     void Write64(wxUint64 i);
+static int LUACALL wxLua_wxTextOutputStream_Write64(lua_State *L)
+{
+    // wxUint64 i
+    wxUint64 i = (wxUint64)wxlua_getuintegertype(L, 2);
+    // get this
+    wxTextOutputStream * self = (wxTextOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextOutputStream);
+    // call Write64
+    self->Write64(i);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextOutputStream_Write8[] = { &wxluatype_wxTextOutputStream, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxTextOutputStream_Write8(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextOutputStream_Write8[1] = {{ wxLua_wxTextOutputStream_Write8, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTextOutputStream_Write8 }};
+//     void Write8(wxUint8 i);
+static int LUACALL wxLua_wxTextOutputStream_Write8(lua_State *L)
+{
+    // wxUint8 i
+    wxUint8 i = (wxUint8)wxlua_getuintegertype(L, 2);
+    // get this
+    wxTextOutputStream * self = (wxTextOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextOutputStream);
+    // call Write8
+    self->Write8(i);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextOutputStream_WriteDouble[] = { &wxluatype_wxTextOutputStream, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxTextOutputStream_WriteDouble(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextOutputStream_WriteDouble[1] = {{ wxLua_wxTextOutputStream_WriteDouble, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTextOutputStream_WriteDouble }};
+//     virtual void WriteDouble(double d);
+static int LUACALL wxLua_wxTextOutputStream_WriteDouble(lua_State *L)
+{
+    // double d
+    double d = (double)wxlua_getnumbertype(L, 2);
+    // get this
+    wxTextOutputStream * self = (wxTextOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextOutputStream);
+    // call WriteDouble
+    self->WriteDouble(d);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextOutputStream_WriteString[] = { &wxluatype_wxTextOutputStream, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxTextOutputStream_WriteString(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextOutputStream_WriteString[1] = {{ wxLua_wxTextOutputStream_WriteString, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTextOutputStream_WriteString }};
+//     virtual void WriteString(const wxString& string);
+static int LUACALL wxLua_wxTextOutputStream_WriteString(lua_State *L)
+{
+    // const wxString string
+    const wxString string = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxTextOutputStream * self = (wxTextOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextOutputStream);
+    // call WriteString
+    self->WriteString(string);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextOutputStream_delete[] = { &wxluatype_wxTextOutputStream, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextOutputStream_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxTextOutputStream_delete }};
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTextOutputStream_constructor[] = { &wxluatype_wxOutputStream, NULL };
+static int LUACALL wxLua_wxTextOutputStream_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextOutputStream_constructor[1] = {{ wxLua_wxTextOutputStream_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxTextOutputStream_constructor }};
+//     wxTextOutputStream(wxOutputStream& s);
+static int LUACALL wxLua_wxTextOutputStream_constructor(lua_State *L)
+{
+    // wxOutputStream s
+    wxOutputStream * s = (wxOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxOutputStream);
+    // call constructor
+    wxTextOutputStream* returns = new wxTextOutputStream(*s);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxTextOutputStream);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxTextOutputStream);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxTextOutputStream_delete_function(void** p)
+{
+    wxTextOutputStream* o = (wxTextOutputStream*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxTextOutputStream_methods[] = {
+    { "Flush", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_Flush, 1, NULL },
+    { "GetMode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_GetMode, 1, NULL },
+    { "GetOutputStream", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_GetOutputStream, 1, NULL },
+    { "PutChar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_PutChar, 1, NULL },
+    { "SetMode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_SetMode, 1, NULL },
+    { "Write16", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_Write16, 1, NULL },
+    { "Write32", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_Write32, 1, NULL },
+    { "Write64", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_Write64, 1, NULL },
+    { "Write8", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_Write8, 1, NULL },
+    { "WriteDouble", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_WriteDouble, 1, NULL },
+    { "WriteString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_WriteString, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxTextOutputStream_delete, 1, NULL },
+    { "wxTextOutputStream", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxTextOutputStream_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxTextOutputStream_methodCount = sizeof(wxTextOutputStream_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxUSE_STREAMS
+
+
+#if wxUSE_STREAMS
+// ---------------------------------------------------------------------------
 // Bind class wxDataOutputStream
 // ---------------------------------------------------------------------------
 
