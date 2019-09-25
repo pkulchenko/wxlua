@@ -10781,13 +10781,13 @@ static int LUACALL wxLua_wxBitmap_Create1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_Create[] = { &wxluatype_wxBitmap, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxBitmap_Create(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_Create[1] = {{ wxLua_wxBitmap_Create, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxBitmap_Create }};
-//     virtual bool Create(int width, int height, int depth = -1);
+//     virtual bool Create(int width, int height, int depth = wxBITMAP_SCREEN_DEPTH);
 static int LUACALL wxLua_wxBitmap_Create(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // int depth = -1
-    int depth = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : -1);
+    // int depth = wxBITMAP_SCREEN_DEPTH
+    int depth = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : wxBITMAP_SCREEN_DEPTH);
     // int height
     int height = (int)wxlua_getnumbertype(L, 3);
     // int width
@@ -11213,10 +11213,10 @@ static int LUACALL wxLua_wxBitmap_op_set(lua_State *L)
 
 #endif // ((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)
 
-#define wxLua_wxBitmap_constructor11 wxLua_wxBitmapFromXPMData_constructor
-static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_constructor11[] = { &wxluatype_TTABLE, NULL };
-static int LUACALL wxLua_wxBitmap_constructor11(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_constructor11[1] = {{ wxLua_wxBitmap_constructor11, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxBitmap_constructor11 }};
+#define wxLua_wxBitmap_constructor12 wxLua_wxBitmapFromXPMData_constructor
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_constructor12[] = { &wxluatype_TTABLE, NULL };
+static int LUACALL wxLua_wxBitmap_constructor12(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_constructor12[1] = {{ wxLua_wxBitmap_constructor12, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxBitmap_constructor12 }};
 // %override wxLua_wxBitmapFromXPMData_constructor
 // %constructor wxXmlResourceGetDefault()
 static int LUACALL wxLua_wxBitmapFromXPMData_constructor(lua_State *L)
@@ -11243,10 +11243,10 @@ static int LUACALL wxLua_wxBitmapFromXPMData_constructor(lua_State *L)
 
 
 #if ((defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)
-#define wxLua_wxBitmap_constructor10 wxLua_wxBitmapFromData_constructor
-static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_constructor10[] = { &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxBitmap_constructor10(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_constructor10[1] = {{ wxLua_wxBitmap_constructor10, WXLUAMETHOD_CONSTRUCTOR, 5, 5, s_wxluatypeArray_wxLua_wxBitmap_constructor10 }};
+#define wxLua_wxBitmap_constructor11 wxLua_wxBitmapFromData_constructor
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_constructor11[] = { &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxBitmap_constructor11(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_constructor11[1] = {{ wxLua_wxBitmap_constructor11, WXLUAMETHOD_CONSTRUCTOR, 5, 5, s_wxluatypeArray_wxLua_wxBitmap_constructor11 }};
 // %override wxLua_wxBitmapFromData_constructor
 // %win wxBitmap(void* data, wxBitmapType type, int width, int height, int depth = -1)
 #ifdef __WXMSW__
@@ -11278,10 +11278,10 @@ static int LUACALL wxLua_wxBitmapFromData_constructor(lua_State *L)
 
 #endif // ((defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)
 
-#define wxLua_wxBitmap_constructor9 wxLua_wxBitmapFromBits_constructor
-static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_constructor9[] = { &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxBitmap_constructor9(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_constructor9[1] = {{ wxLua_wxBitmap_constructor9, WXLUAMETHOD_CONSTRUCTOR, 4, 4, s_wxluatypeArray_wxLua_wxBitmap_constructor9 }};
+#define wxLua_wxBitmap_constructor10 wxLua_wxBitmapFromBits_constructor
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_constructor10[] = { &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxBitmap_constructor10(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_constructor10[1] = {{ wxLua_wxBitmap_constructor10, WXLUAMETHOD_CONSTRUCTOR, 4, 4, s_wxluatypeArray_wxLua_wxBitmap_constructor10 }};
 // %override wxLua_wxBitmapFromBits_constructor
 // %win wxBitmap(const char* bits, int width, int height, int depth = -1)
 static int LUACALL wxLua_wxBitmapFromBits_constructor(lua_State *L)
@@ -11307,10 +11307,10 @@ static int LUACALL wxLua_wxBitmapFromBits_constructor(lua_State *L)
 }
 
 
-#define wxLua_wxBitmap_constructor8 wxLua_wxBitmapFromBitTable_constructor
-static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_constructor8[] = { &wxluatype_TTABLE, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxBitmap_constructor8(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_constructor8[1] = {{ wxLua_wxBitmap_constructor8, WXLUAMETHOD_CONSTRUCTOR, 4, 4, s_wxluatypeArray_wxLua_wxBitmap_constructor8 }};
+#define wxLua_wxBitmap_constructor9 wxLua_wxBitmapFromBitTable_constructor
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_constructor9[] = { &wxluatype_TTABLE, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxBitmap_constructor9(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_constructor9[1] = {{ wxLua_wxBitmap_constructor9, WXLUAMETHOD_CONSTRUCTOR, 4, 4, s_wxluatypeArray_wxLua_wxBitmap_constructor9 }};
 // %override wxLua_wxBitmapFromBitTable_constructor
 // %win wxBitmap(LuaTable charTable, int width, int height, int depth = -1)
 static int LUACALL wxLua_wxBitmapFromBitTable_constructor(lua_State *L)
@@ -11359,6 +11359,31 @@ static int LUACALL wxLua_wxBitmapFromBitTable_constructor(lua_State *L)
 
 
 
+#if (((!wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_constructor8[] = { &wxluatype_wxImage, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxBitmap_constructor8(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_constructor8[1] = {{ wxLua_wxBitmap_constructor8, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxBitmap_constructor8 }};
+//     !%wxchkver_3_1_2 wxBitmap(const wxImage &image, int depth = wxBITMAP_SCREEN_DEPTH);
+static int LUACALL wxLua_wxBitmap_constructor8(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int depth = wxBITMAP_SCREEN_DEPTH
+    int depth = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : wxBITMAP_SCREEN_DEPTH);
+    // const wxImage image
+    const wxImage * image = (const wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
+    // call constructor
+    wxBitmap* returns = new wxBitmap(*image, depth);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmap);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
+
+    return 1;
+}
+
+#endif // (((!wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+
 #if (((wxCHECK_VERSION(3,1,0) && defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxCursor)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_constructor7[] = { &wxluatype_wxCursor, NULL };
 static int LUACALL wxLua_wxBitmap_constructor7(lua_State *L);
@@ -11380,21 +11405,23 @@ static int LUACALL wxLua_wxBitmap_constructor7(lua_State *L)
 
 #endif // (((wxCHECK_VERSION(3,1,0) && defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxCursor)
 
-#if (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_constructor6[] = { &wxluatype_wxImage, &wxluatype_TNUMBER, NULL };
+#if (((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_constructor6[] = { &wxluatype_wxImage, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxBitmap_constructor6(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_constructor6[1] = {{ wxLua_wxBitmap_constructor6, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxBitmap_constructor6 }};
-//     wxBitmap(const wxImage &image, int depth = -1);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_constructor6[1] = {{ wxLua_wxBitmap_constructor6, WXLUAMETHOD_CONSTRUCTOR, 1, 3, s_wxluatypeArray_wxLua_wxBitmap_constructor6 }};
+//     %wxchkver_3_1_2 wxBitmap(const wxImage &image, int depth = wxBITMAP_SCREEN_DEPTH, double scale = 1.0);
 static int LUACALL wxLua_wxBitmap_constructor6(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // int depth = -1
-    int depth = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : -1);
+    // double scale = 1.0
+    double scale = (argCount >= 3 ? (double)wxlua_getnumbertype(L, 3) : 1.0);
+    // int depth = wxBITMAP_SCREEN_DEPTH
+    int depth = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : wxBITMAP_SCREEN_DEPTH);
     // const wxImage image
     const wxImage * image = (const wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call constructor
-    wxBitmap* returns = new wxBitmap(*image, depth);
+    wxBitmap* returns = new wxBitmap(*image, depth, scale);
     // add to tracked memory list
     wxluaO_addgcobject(L, returns, wxluatype_wxBitmap);
     // push the constructed class pointer
@@ -11403,7 +11430,7 @@ static int LUACALL wxLua_wxBitmap_constructor6(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+#endif // (((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_constructor5[] = { &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxBitmap_constructor5(lua_State *L);
@@ -11456,13 +11483,13 @@ static int LUACALL wxLua_wxBitmap_constructor4(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_constructor3[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxBitmap_constructor3(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_constructor3[1] = {{ wxLua_wxBitmap_constructor3, WXLUAMETHOD_CONSTRUCTOR, 2, 3, s_wxluatypeArray_wxLua_wxBitmap_constructor3 }};
-//     wxBitmap(int width, int height, int depth = -1);
+//     wxBitmap(int width, int height, int depth = wxBITMAP_SCREEN_DEPTH);
 static int LUACALL wxLua_wxBitmap_constructor3(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // int depth = -1
-    int depth = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : -1);
+    // int depth = wxBITMAP_SCREEN_DEPTH
+    int depth = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : wxBITMAP_SCREEN_DEPTH);
     // int height
     int height = (int)wxlua_getnumbertype(L, 2);
     // int width
@@ -11578,25 +11605,29 @@ static int s_wxluafunc_wxLua_wxBitmap_SaveFile_overload_count = sizeof(s_wxluafu
 
 #endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPalette && wxUSE_PALETTE))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPalette && wxUSE_PALETTE))
 
-#if (wxLUA_USE_wxBitmap)||(((defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap))||((((wxCHECK_VERSION(3,1,0) && defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap))
+#if (wxLUA_USE_wxBitmap)||(((defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap))||((((!wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||((((wxCHECK_VERSION(3,1,0) && defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxCursor))||((((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_constructor_overload[] =
 {
-    { wxLua_wxBitmap_constructor11, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxBitmap_constructor11 },
+    { wxLua_wxBitmap_constructor12, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxBitmap_constructor12 },
 
 #if ((defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)
-    { wxLua_wxBitmap_constructor10, WXLUAMETHOD_CONSTRUCTOR, 5, 5, s_wxluatypeArray_wxLua_wxBitmap_constructor10 },
+    { wxLua_wxBitmap_constructor11, WXLUAMETHOD_CONSTRUCTOR, 5, 5, s_wxluatypeArray_wxLua_wxBitmap_constructor11 },
 #endif // ((defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)
+    { wxLua_wxBitmap_constructor10, WXLUAMETHOD_CONSTRUCTOR, 4, 4, s_wxluatypeArray_wxLua_wxBitmap_constructor10 },
     { wxLua_wxBitmap_constructor9, WXLUAMETHOD_CONSTRUCTOR, 4, 4, s_wxluatypeArray_wxLua_wxBitmap_constructor9 },
-    { wxLua_wxBitmap_constructor8, WXLUAMETHOD_CONSTRUCTOR, 4, 4, s_wxluatypeArray_wxLua_wxBitmap_constructor8 },
+
+#if (((!wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+    { wxLua_wxBitmap_constructor8, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxBitmap_constructor8 },
+#endif // (((!wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
 
 #if (((wxCHECK_VERSION(3,1,0) && defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxCursor)
     { wxLua_wxBitmap_constructor7, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxBitmap_constructor7 },
 #endif // (((wxCHECK_VERSION(3,1,0) && defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxCursor)
 
-#if (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
-    { wxLua_wxBitmap_constructor6, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxBitmap_constructor6 },
-#endif // (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+#if (((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
+    { wxLua_wxBitmap_constructor6, WXLUAMETHOD_CONSTRUCTOR, 1, 3, s_wxluatypeArray_wxLua_wxBitmap_constructor6 },
+#endif // (((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxImage && wxUSE_IMAGE)
     { wxLua_wxBitmap_constructor5, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxBitmap_constructor5 },
 
 #if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
@@ -11612,7 +11643,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_constructor_overload[] =
 };
 static int s_wxluafunc_wxLua_wxBitmap_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxBitmap_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (wxLUA_USE_wxBitmap)||(((defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap))||((((wxCHECK_VERSION(3,1,0) && defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap))
+#endif // (wxLUA_USE_wxBitmap)||(((defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap))||((((!wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||((((wxCHECK_VERSION(3,1,0) && defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxCursor))||((((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap))
 
 void wxLua_wxBitmap_delete_function(void** p)
 {
@@ -11697,9 +11728,9 @@ wxLuaBindMethod wxBitmap_methods[] = {
     { "op_set", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmap_op_set, 1, NULL },
 #endif // ((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)
 
-#if (wxLUA_USE_wxBitmap)||(((defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap))||((((wxCHECK_VERSION(3,1,0) && defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap))
+#if (wxLUA_USE_wxBitmap)||(((defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap))||((((!wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||((((wxCHECK_VERSION(3,1,0) && defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxCursor))||((((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap))
     { "wxBitmap", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxBitmap_constructor_overload, s_wxluafunc_wxLua_wxBitmap_constructor_overload_count, 0 },
-#endif // (wxLUA_USE_wxBitmap)||(((defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap))||((((wxCHECK_VERSION(3,1,0) && defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxCursor))||((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap))
+#endif // (wxLUA_USE_wxBitmap)||(((defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap))||((((!wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||((((wxCHECK_VERSION(3,1,0) && defined(__WXMSW__)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxCursor))||((((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxImage && wxUSE_IMAGE))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxBitmap))
 
     { 0, 0, 0, 0 },
 };

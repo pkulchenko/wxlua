@@ -1089,17 +1089,17 @@ class %delete wxBitmap : public wxGDIObject
     wxBitmap();
     wxBitmap(const wxBitmap& bitmap);
     %wxchkver_3_0_0 wxBitmap(const char bits[], int width, int height, int depth = 1);
-    wxBitmap(int width, int height, int depth = -1);
+    wxBitmap(int width, int height, int depth = wxBITMAP_SCREEN_DEPTH);
     %wxchkver_3_0_0 wxBitmap(const wxSize& sz, int depth = wxBITMAP_SCREEN_DEPTH);
     // wxBitmap(const char* const* bits); // wxlua doesn't handle `const char* const*`
     wxBitmap(const wxString& name, wxBitmapType type = wxBITMAP_TYPE_ANY);
-    wxBitmap(const wxImage &image, int depth = -1);
+    %wxchkver_3_1_2 wxBitmap(const wxImage &image, int depth = wxBITMAP_SCREEN_DEPTH, double scale = 1.0);
     %wxchkver_3_1_0 & %win wxBitmap(const wxCursor& cursor); // %override windows only
     // %win static void AddHandler(wxBitmapHandler* handler); // no support for wxBitmapHandler
     // %win static void CleanUpHandlers(); // no support for wxBitmapHandler
     wxImage ConvertToImage();
     bool CopyFromIcon(const wxIcon& icon);
-    virtual bool Create(int width, int height, int depth = -1);
+    virtual bool Create(int width, int height, int depth = wxBITMAP_SCREEN_DEPTH);
     %wxchkver_3_0_0 bool Create(const wxSize& sz, int depth = wxBITMAP_SCREEN_DEPTH);
     %wxchkver_3_0_0 bool Create(int width, int height, const wxDC& dc);
     %wxchkver_3_0_0 bool CreateScaled(int logwidth, int logheight, int depth, double logicalScale);
@@ -1129,6 +1129,7 @@ class %delete wxBitmap : public wxGDIObject
     void SetWidth(int width);
     !%wxchkver_3_0_0 bool SaveFile(const wxString& name, wxBitmapType type, wxPalette* palette = NULL);
     !%wxchkver_3_0_0 wxBitmap& operator=(const wxBitmap& b) const;
+    !%wxchkver_3_1_2 wxBitmap(const wxImage &image, int depth = wxBITMAP_SCREEN_DEPTH);
     %override_name wxLua_wxBitmapFromBitTable_constructor wxBitmap(LuaTable charTable, int width, int height, int depth /* = 1 */); // %override wxBitmap(LuaTable charTable, int width, int height, int depth);
     %override_name wxLua_wxBitmapFromBits_constructor wxBitmap(const char* mono_bits, int width, int height, int depth /* = 1 */); // %override wxBitmap(lua string, int width, int height, int depth);
     %override_name wxLua_wxBitmapFromData_constructor %win wxBitmap(const wxString& data, int type, int width, int height, int depth /* = -1 */); // %override wxBitmap(Lua string of data, int type, int width, int height, int depth = -1);
