@@ -300,10 +300,12 @@ class wxComboBox : public wxControl, public wxItemContainer
 
 #include "wx/gauge.h"
 
-#define wxGA_HORIZONTAL
 %wxcompat_2_6 #define wxGA_PROGRESSBAR
-#define wxGA_SMOOTH
+#define wxGA_HORIZONTAL
 #define wxGA_VERTICAL
+%wxchkver_3_1_0 #define wxGA_PROGRESS
+#define wxGA_SMOOTH
+%wxchkver_3_1_0 #define wxGA_TEXT
 
 class wxGauge : public wxControl
 {
@@ -311,15 +313,15 @@ class wxGauge : public wxControl
     wxGauge(wxWindow* parent, wxWindowID id, int range, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxGA_HORIZONTAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxGauge");
     bool Create(wxWindow* parent, wxWindowID id, int range, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxGA_HORIZONTAL, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxGauge");
 
-     !%wxchkver_3_1_0 int GetBezelFace() const;
+    !%wxchkver_3_1_0 int GetBezelFace() const;
     int GetRange() const;
-     !%wxchkver_3_1_0 int GetShadowWidth() const;
+    !%wxchkver_3_1_0 int GetShadowWidth() const;
     int GetValue() const;
     bool IsVertical() const;
     %wxchkver_2_8 void Pulse();
-     !%wxchkver_3_1_0 void SetBezelFace(int width);
+    !%wxchkver_3_1_0 void SetBezelFace(int width);
     void SetRange(int range);
-     !%wxchkver_3_1_0 void SetShadowWidth(int width);
+    !%wxchkver_3_1_0 void SetShadowWidth(int width);
     void SetValue(int pos);
 };
 

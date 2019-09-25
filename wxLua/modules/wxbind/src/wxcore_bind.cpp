@@ -1230,12 +1230,23 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxGA_HORIZONTAL", wxGA_HORIZONTAL },
 #endif // wxLUA_USE_wxGauge && wxUSE_GAUGE
 
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
+        { "wxGA_PROGRESS", wxGA_PROGRESS },
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
+
 #if ((defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
         { "wxGA_PROGRESSBAR", wxGA_PROGRESSBAR },
 #endif // ((defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
 
 #if wxLUA_USE_wxGauge && wxUSE_GAUGE
         { "wxGA_SMOOTH", wxGA_SMOOTH },
+#endif // wxLUA_USE_wxGauge && wxUSE_GAUGE
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
+        { "wxGA_TEXT", wxGA_TEXT },
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxGauge && wxUSE_GAUGE)
+
+#if wxLUA_USE_wxGauge && wxUSE_GAUGE
         { "wxGA_VERTICAL", wxGA_VERTICAL },
 #endif // wxLUA_USE_wxGauge && wxUSE_GAUGE
 

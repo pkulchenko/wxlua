@@ -3093,7 +3093,7 @@ static int LUACALL wxLua_wxGauge_Create(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGauge_GetBezelFace[] = { &wxluatype_wxGauge, NULL };
 static int LUACALL wxLua_wxGauge_GetBezelFace(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGauge_GetBezelFace[1] = {{ wxLua_wxGauge_GetBezelFace, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGauge_GetBezelFace }};
-//      !%wxchkver_3_1_0 int GetBezelFace() const;
+//     !%wxchkver_3_1_0 int GetBezelFace() const;
 static int LUACALL wxLua_wxGauge_GetBezelFace(lua_State *L)
 {
     // get this
@@ -3129,7 +3129,7 @@ static int LUACALL wxLua_wxGauge_GetRange(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGauge_GetShadowWidth[] = { &wxluatype_wxGauge, NULL };
 static int LUACALL wxLua_wxGauge_GetShadowWidth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGauge_GetShadowWidth[1] = {{ wxLua_wxGauge_GetShadowWidth, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGauge_GetShadowWidth }};
-//      !%wxchkver_3_1_0 int GetShadowWidth() const;
+//     !%wxchkver_3_1_0 int GetShadowWidth() const;
 static int LUACALL wxLua_wxGauge_GetShadowWidth(lua_State *L)
 {
     // get this
@@ -3198,7 +3198,7 @@ static int LUACALL wxLua_wxGauge_Pulse(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGauge_SetBezelFace[] = { &wxluatype_wxGauge, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxGauge_SetBezelFace(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGauge_SetBezelFace[1] = {{ wxLua_wxGauge_SetBezelFace, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGauge_SetBezelFace }};
-//      !%wxchkver_3_1_0 void SetBezelFace(int width);
+//     !%wxchkver_3_1_0 void SetBezelFace(int width);
 static int LUACALL wxLua_wxGauge_SetBezelFace(lua_State *L)
 {
     // int width
@@ -3234,7 +3234,7 @@ static int LUACALL wxLua_wxGauge_SetRange(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGauge_SetShadowWidth[] = { &wxluatype_wxGauge, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxGauge_SetShadowWidth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGauge_SetShadowWidth[1] = {{ wxLua_wxGauge_SetShadowWidth, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGauge_SetShadowWidth }};
-//      !%wxchkver_3_1_0 void SetShadowWidth(int width);
+//     !%wxchkver_3_1_0 void SetShadowWidth(int width);
 static int LUACALL wxLua_wxGauge_SetShadowWidth(lua_State *L)
 {
     // int width
