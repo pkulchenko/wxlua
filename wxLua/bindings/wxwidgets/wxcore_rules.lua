@@ -145,6 +145,7 @@ interface_fileTable =
     "wxcore_event.i",
     "wxcore_gdi.i",
     "wxcore_geometry.i",
+    "wxcore_graphics.i",
     "wxcore_help.i",
     "wxcore_image.i",
     "wxcore_mdi.i",
