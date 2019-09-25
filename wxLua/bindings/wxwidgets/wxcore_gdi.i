@@ -1115,6 +1115,13 @@ class %delete wxBitmap : public wxGDIObject
     %wxchkver_3_0_0 wxSize GetSize() const;
     %wxchkver_3_0_0 wxBitmap ConvertToDisabled(unsigned char brightness = 255) const;
     int GetWidth() const;
+
+    // support for scaled bitmaps
+    %wxchkver_2_9_5 double GetScaleFactor() const;
+    %wxchkver_2_9_5 double GetScaledWidth() const;
+    %wxchkver_2_9_5 double GetScaledHeight() const;
+    %wxchkver_2_9_5 wxSize GetScaledSize() const;
+
     // %win static void InitStandardHandlers(); // no support for wxBitmapHandler
     // %win static void InsertHandler(wxBitmapHandler* handler); // no support for wxBitmapHandler
     %wxchkver_3_0_0 bool IsOk() const;

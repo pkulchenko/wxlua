@@ -10901,6 +10901,82 @@ static int LUACALL wxLua_wxBitmap_GetPalette(lua_State *L)
 
 #endif // (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPalette && wxUSE_PALETTE)
 
+#if (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_GetScaleFactor[] = { &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxBitmap_GetScaleFactor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_GetScaleFactor[1] = {{ wxLua_wxBitmap_GetScaleFactor, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxBitmap_GetScaleFactor }};
+//     %wxchkver_2_9_5 double GetScaleFactor() const;
+static int LUACALL wxLua_wxBitmap_GetScaleFactor(lua_State *L)
+{
+    // get this
+    wxBitmap * self = (wxBitmap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmap);
+    // call GetScaleFactor
+    double returns = (self->GetScaleFactor());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_GetScaledHeight[] = { &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxBitmap_GetScaledHeight(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_GetScaledHeight[1] = {{ wxLua_wxBitmap_GetScaledHeight, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxBitmap_GetScaledHeight }};
+//     %wxchkver_2_9_5 double GetScaledHeight() const;
+static int LUACALL wxLua_wxBitmap_GetScaledHeight(lua_State *L)
+{
+    // get this
+    wxBitmap * self = (wxBitmap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmap);
+    // call GetScaledHeight
+    double returns = (self->GetScaledHeight());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxBitmap)
+
+#if ((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_GetScaledSize[] = { &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxBitmap_GetScaledSize(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_GetScaledSize[1] = {{ wxLua_wxBitmap_GetScaledSize, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxBitmap_GetScaledSize }};
+//     %wxchkver_2_9_5 wxSize GetScaledSize() const;
+static int LUACALL wxLua_wxBitmap_GetScaledSize(lua_State *L)
+{
+    // get this
+    wxBitmap * self = (wxBitmap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmap);
+    // call GetScaledSize
+    // allocate a new object using the copy constructor
+    wxSize* returns = new wxSize(self->GetScaledSize());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
+
+#if (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_GetScaledWidth[] = { &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxBitmap_GetScaledWidth(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxBitmap_GetScaledWidth[1] = {{ wxLua_wxBitmap_GetScaledWidth, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxBitmap_GetScaledWidth }};
+//     %wxchkver_2_9_5 double GetScaledWidth() const;
+static int LUACALL wxLua_wxBitmap_GetScaledWidth(lua_State *L)
+{
+    // get this
+    wxBitmap * self = (wxBitmap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmap);
+    // call GetScaledWidth
+    double returns = (self->GetScaledWidth());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxBitmap)
+
 #if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxBitmap_GetSize[] = { &wxluatype_wxBitmap, NULL };
 static int LUACALL wxLua_wxBitmap_GetSize(lua_State *L);
@@ -11683,6 +11759,19 @@ wxLuaBindMethod wxBitmap_methods[] = {
 #if (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPalette && wxUSE_PALETTE)
     { "GetPalette", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmap_GetPalette, 1, NULL },
 #endif // (wxLUA_USE_wxBitmap) && (wxLUA_USE_wxPalette && wxUSE_PALETTE)
+
+#if (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxBitmap)
+    { "GetScaleFactor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmap_GetScaleFactor, 1, NULL },
+    { "GetScaledHeight", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmap_GetScaledHeight, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxBitmap)
+
+#if ((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
+    { "GetScaledSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmap_GetScaledSize, 1, NULL },
+#endif // ((wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
+
+#if (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxBitmap)
+    { "GetScaledWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmap_GetScaledWidth, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxBitmap)
 
 #if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
     { "GetSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxBitmap_GetSize, 1, NULL },
