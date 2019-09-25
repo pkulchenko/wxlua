@@ -22,6 +22,10 @@ extern "C"
 
     #if LUA_VERSION_NUM < 502
         #define lua_pushglobaltable(L) lua_pushvalue(L, LUA_GLOBALSINDEX)
+        // NOTE: luaL_getn was removed in LuaJIT 2.1.0-beta3
+        #ifndef luaL_getn
+            #define luaL_getn(L,i)              ((int)lua_objlen(L, i))
+        #endif
     #else
         #define luaL_getn luaL_len
         #define LUA_GLOBALSINDEX LUA_RIDX_GLOBALS
