@@ -911,6 +911,51 @@ class wxSpinCtrl : public wxControl
 #endif //wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL
 
 // ---------------------------------------------------------------------------
+// wxSpinDoubleCtrl
+
+#if wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+
+#include "wx/spinctrl.h"
+
+//#define wxSP_ARROW_KEYS   see wxSpinButton
+//#define wxSP_WRAP         see wxSpinButton
+
+class %delete wxSpinDoubleEvent : public wxNotifyEvent
+{
+    %wxEventType wxEVT_SPINCTRLDOUBLE     // EVT_SPINCTRLDOUBLE(id, func);
+
+    wxSpinDoubleEvent(wxEventType commandType = wxEVT_NULL, int winid=0, double value=0);
+
+    double GetValue() const;
+    void SetValue(double value);
+};
+
+class wxSpinCtrlDouble : public wxControl
+{
+    wxSpinCtrlDouble();
+    wxSpinCtrlDouble(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& value = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_ARROW_KEYS, double min = 0, double max = 100, double initial = 0, double inc = 1, const wxString& name = "wxSpinCtrlDouble");
+
+    bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& value = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_ARROW_KEYS, double min = 0, double max = 100, double initial = 0, double inc = 1, const wxString& name = "wxSpinCtrlDouble");
+
+    // accessors
+    double GetValue(wxSPINCTRL_GETVALUE_FIX);
+    double GetMin() const;
+    double GetMax() const;
+    double GetIncrement();
+    unsigned int GetDigits();
+
+    // operations
+    void SetValue(const wxString& value);
+    void SetValue(double value);
+    void SetRange(double minVal, double maxVal);
+    void SetIncrement(double inc);
+    void SetDigits(unsigned int digits);
+};
+
+#endif //wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+
+
+// ---------------------------------------------------------------------------
 // wxTextCtrl
 
 #if wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL

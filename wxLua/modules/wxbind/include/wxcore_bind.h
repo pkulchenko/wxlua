@@ -447,6 +447,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/spinctrl.h"
 #endif // wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL
 
+#if wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+    #include "wx/spinctrl.h"
+#endif // wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+
 #if wxLUA_USE_wxSplitterWindow
     #include "wx/splitter.h"
 #endif // wxLUA_USE_wxSplitterWindow
@@ -1159,6 +1163,11 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 #if wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSpinCtrl;
 #endif // wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL
+
+#if wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSpinCtrlDouble;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSpinDoubleEvent;
+#endif // wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
 
 #if wxLUA_USE_wxSplitterWindow
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSplitterEvent;

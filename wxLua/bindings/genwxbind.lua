@@ -1139,6 +1139,7 @@ function InitKeywords()
     preprocConditionTable["wxLUA_USE_wxSocket"]                = "wxLUA_USE_wxSocket"
     preprocConditionTable["wxLUA_USE_wxSpinButton"]            = "wxLUA_USE_wxSpinButton"
     preprocConditionTable["wxLUA_USE_wxSpinCtrl"]              = "wxLUA_USE_wxSpinCtrl"
+    preprocConditionTable["wxLUA_USE_wxSpinCtrlDouble"]        = "wxLUA_USE_wxSpinCtrlDouble"
     preprocConditionTable["wxLUA_USE_wxSplashScreen"]          = "wxLUA_USE_wxSplashScreen"
     preprocConditionTable["wxLUA_USE_wxSplitterWindow"]        = "wxLUA_USE_wxSplitterWindow"
     preprocConditionTable["wxLUA_USE_wxStandardPaths"]         = "wxLUA_USE_wxStandardPaths"

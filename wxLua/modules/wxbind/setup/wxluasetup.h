@@ -136,6 +136,7 @@
 #define wxLUA_USE_wxSocket                      1
 #define wxLUA_USE_wxSpinButton                  1
 #define wxLUA_USE_wxSpinCtrl                    1
+#define wxLUA_USE_wxSpinCtrlDouble              1
 #define wxLUA_USE_wxSplashScreen                1
 #define wxLUA_USE_wxSplitterWindow              1
 #define wxLUA_USE_wxStandardPaths               1

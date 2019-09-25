@@ -8846,6 +8846,434 @@ int wxSpinCtrl_methodCount = sizeof(wxSpinCtrl_methods)/sizeof(wxLuaBindMethod) 
 #endif  // wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL
 
 
+#if wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+// ---------------------------------------------------------------------------
+// Bind class wxSpinDoubleEvent
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxSpinDoubleEvent'
+int wxluatype_wxSpinDoubleEvent = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinDoubleEvent_GetValue[] = { &wxluatype_wxSpinDoubleEvent, NULL };
+static int LUACALL wxLua_wxSpinDoubleEvent_GetValue(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinDoubleEvent_GetValue[1] = {{ wxLua_wxSpinDoubleEvent_GetValue, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSpinDoubleEvent_GetValue }};
+//     double GetValue() const;
+static int LUACALL wxLua_wxSpinDoubleEvent_GetValue(lua_State *L)
+{
+    // get this
+    wxSpinDoubleEvent * self = (wxSpinDoubleEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSpinDoubleEvent);
+    // call GetValue
+    double returns = (self->GetValue());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinDoubleEvent_SetValue[] = { &wxluatype_wxSpinDoubleEvent, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxSpinDoubleEvent_SetValue(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinDoubleEvent_SetValue[1] = {{ wxLua_wxSpinDoubleEvent_SetValue, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSpinDoubleEvent_SetValue }};
+//     void SetValue(double value);
+static int LUACALL wxLua_wxSpinDoubleEvent_SetValue(lua_State *L)
+{
+    // double value
+    double value = (double)wxlua_getnumbertype(L, 2);
+    // get this
+    wxSpinDoubleEvent * self = (wxSpinDoubleEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSpinDoubleEvent);
+    // call SetValue
+    self->SetValue(value);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinDoubleEvent_delete[] = { &wxluatype_wxSpinDoubleEvent, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinDoubleEvent_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxSpinDoubleEvent_delete }};
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinDoubleEvent_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxSpinDoubleEvent_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinDoubleEvent_constructor[1] = {{ wxLua_wxSpinDoubleEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 3, s_wxluatypeArray_wxLua_wxSpinDoubleEvent_constructor }};
+//     wxSpinDoubleEvent(wxEventType commandType = wxEVT_NULL, int winid=0, double value=0);
+static int LUACALL wxLua_wxSpinDoubleEvent_constructor(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // double value = 0
+    double value = (argCount >= 3 ? (double)wxlua_getnumbertype(L, 3) : 0);
+    // int winid = 0
+    int winid = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : 0);
+    // wxEventType commandType = wxEVT_NULL
+    wxEventType commandType = (argCount >= 1 ? (wxEventType)wxlua_getnumbertype(L, 1) : wxEVT_NULL);
+    // call constructor
+    wxSpinDoubleEvent* returns = new wxSpinDoubleEvent(commandType, winid, value);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSpinDoubleEvent);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSpinDoubleEvent);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxSpinDoubleEvent_delete_function(void** p)
+{
+    wxSpinDoubleEvent* o = (wxSpinDoubleEvent*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxSpinDoubleEvent_methods[] = {
+    { "GetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinDoubleEvent_GetValue, 1, NULL },
+    { "SetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinDoubleEvent_SetValue, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxSpinDoubleEvent_delete, 1, NULL },
+    { "wxSpinDoubleEvent", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxSpinDoubleEvent_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxSpinDoubleEvent_methodCount = sizeof(wxSpinDoubleEvent_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+
+
+#if wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+// ---------------------------------------------------------------------------
+// Bind class wxSpinCtrlDouble
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxSpinCtrlDouble'
+int wxluatype_wxSpinCtrlDouble = WXLUA_TUNKNOWN;
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinCtrlDouble_Create[] = { &wxluatype_wxSpinCtrlDouble, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxSpinCtrlDouble_Create(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrlDouble_Create[1] = {{ wxLua_wxSpinCtrlDouble_Create, WXLUAMETHOD_METHOD, 2, 12, s_wxluatypeArray_wxLua_wxSpinCtrlDouble_Create }};
+//     bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& value = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_ARROW_KEYS, double min = 0, double max = 100, double initial = 0, double inc = 1, const wxString& name = "wxSpinCtrlDouble");
+static int LUACALL wxLua_wxSpinCtrlDouble_Create(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString name = "wxSpinCtrlDouble"
+    const wxString name = (argCount >= 12 ? wxlua_getwxStringtype(L, 12) : wxString(wxT("wxSpinCtrlDouble")));
+    // double inc = 1
+    double inc = (argCount >= 11 ? (double)wxlua_getnumbertype(L, 11) : 1);
+    // double initial = 0
+    double initial = (argCount >= 10 ? (double)wxlua_getnumbertype(L, 10) : 0);
+    // double max = 100
+    double max = (argCount >= 9 ? (double)wxlua_getnumbertype(L, 9) : 100);
+    // double min = 0
+    double min = (argCount >= 8 ? (double)wxlua_getnumbertype(L, 8) : 0);
+    // long style = wxSP_ARROW_KEYS
+    long style = (argCount >= 7 ? (long)wxlua_getnumbertype(L, 7) : wxSP_ARROW_KEYS);
+    // const wxSize size = wxDefaultSize
+    const wxSize * size = (argCount >= 6 ? (const wxSize *)wxluaT_getuserdatatype(L, 6, wxluatype_wxSize) : &wxDefaultSize);
+    // const wxPoint pos = wxDefaultPosition
+    const wxPoint * pos = (argCount >= 5 ? (const wxPoint *)wxluaT_getuserdatatype(L, 5, wxluatype_wxPoint) : &wxDefaultPosition);
+    // const wxString value = wxEmptyString
+    const wxString value = (argCount >= 4 ? wxlua_getwxStringtype(L, 4) : wxString(wxEmptyString));
+    // wxWindowID id = wxID_ANY
+    wxWindowID id = (argCount >= 3 ? (wxWindowID)wxlua_getnumbertype(L, 3) : wxID_ANY);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxSpinCtrlDouble * self = (wxSpinCtrlDouble *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSpinCtrlDouble);
+    // call Create
+    bool returns = (self->Create(parent, id, value, *pos, *size, style, min, max, initial, inc, name));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinCtrlDouble_GetDigits[] = { &wxluatype_wxSpinCtrlDouble, NULL };
+static int LUACALL wxLua_wxSpinCtrlDouble_GetDigits(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrlDouble_GetDigits[1] = {{ wxLua_wxSpinCtrlDouble_GetDigits, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSpinCtrlDouble_GetDigits }};
+//     unsigned int GetDigits();
+static int LUACALL wxLua_wxSpinCtrlDouble_GetDigits(lua_State *L)
+{
+    // get this
+    wxSpinCtrlDouble * self = (wxSpinCtrlDouble *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSpinCtrlDouble);
+    // call GetDigits
+    unsigned int returns = (self->GetDigits());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinCtrlDouble_GetIncrement[] = { &wxluatype_wxSpinCtrlDouble, NULL };
+static int LUACALL wxLua_wxSpinCtrlDouble_GetIncrement(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrlDouble_GetIncrement[1] = {{ wxLua_wxSpinCtrlDouble_GetIncrement, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSpinCtrlDouble_GetIncrement }};
+//     double GetIncrement();
+static int LUACALL wxLua_wxSpinCtrlDouble_GetIncrement(lua_State *L)
+{
+    // get this
+    wxSpinCtrlDouble * self = (wxSpinCtrlDouble *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSpinCtrlDouble);
+    // call GetIncrement
+    double returns = (self->GetIncrement());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinCtrlDouble_GetMax[] = { &wxluatype_wxSpinCtrlDouble, NULL };
+static int LUACALL wxLua_wxSpinCtrlDouble_GetMax(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrlDouble_GetMax[1] = {{ wxLua_wxSpinCtrlDouble_GetMax, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSpinCtrlDouble_GetMax }};
+//     double GetMax() const;
+static int LUACALL wxLua_wxSpinCtrlDouble_GetMax(lua_State *L)
+{
+    // get this
+    wxSpinCtrlDouble * self = (wxSpinCtrlDouble *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSpinCtrlDouble);
+    // call GetMax
+    double returns = (self->GetMax());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinCtrlDouble_GetMin[] = { &wxluatype_wxSpinCtrlDouble, NULL };
+static int LUACALL wxLua_wxSpinCtrlDouble_GetMin(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrlDouble_GetMin[1] = {{ wxLua_wxSpinCtrlDouble_GetMin, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSpinCtrlDouble_GetMin }};
+//     double GetMin() const;
+static int LUACALL wxLua_wxSpinCtrlDouble_GetMin(lua_State *L)
+{
+    // get this
+    wxSpinCtrlDouble * self = (wxSpinCtrlDouble *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSpinCtrlDouble);
+    // call GetMin
+    double returns = (self->GetMin());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinCtrlDouble_GetValue[] = { &wxluatype_wxSpinCtrlDouble, NULL };
+static int LUACALL wxLua_wxSpinCtrlDouble_GetValue(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrlDouble_GetValue[1] = {{ wxLua_wxSpinCtrlDouble_GetValue, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSpinCtrlDouble_GetValue }};
+//     double GetValue(wxSPINCTRL_GETVALUE_FIX);
+static int LUACALL wxLua_wxSpinCtrlDouble_GetValue(lua_State *L)
+{
+    // get this
+    wxSpinCtrlDouble * self = (wxSpinCtrlDouble *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSpinCtrlDouble);
+    // call GetValue
+    double returns = (self->GetValue());
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinCtrlDouble_SetDigits[] = { &wxluatype_wxSpinCtrlDouble, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxSpinCtrlDouble_SetDigits(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrlDouble_SetDigits[1] = {{ wxLua_wxSpinCtrlDouble_SetDigits, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSpinCtrlDouble_SetDigits }};
+//     void SetDigits(unsigned int digits);
+static int LUACALL wxLua_wxSpinCtrlDouble_SetDigits(lua_State *L)
+{
+    // unsigned int digits
+    unsigned int digits = (unsigned int)wxlua_getuintegertype(L, 2);
+    // get this
+    wxSpinCtrlDouble * self = (wxSpinCtrlDouble *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSpinCtrlDouble);
+    // call SetDigits
+    self->SetDigits(digits);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinCtrlDouble_SetIncrement[] = { &wxluatype_wxSpinCtrlDouble, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxSpinCtrlDouble_SetIncrement(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrlDouble_SetIncrement[1] = {{ wxLua_wxSpinCtrlDouble_SetIncrement, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSpinCtrlDouble_SetIncrement }};
+//     void SetIncrement(double inc);
+static int LUACALL wxLua_wxSpinCtrlDouble_SetIncrement(lua_State *L)
+{
+    // double inc
+    double inc = (double)wxlua_getnumbertype(L, 2);
+    // get this
+    wxSpinCtrlDouble * self = (wxSpinCtrlDouble *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSpinCtrlDouble);
+    // call SetIncrement
+    self->SetIncrement(inc);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinCtrlDouble_SetRange[] = { &wxluatype_wxSpinCtrlDouble, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxSpinCtrlDouble_SetRange(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrlDouble_SetRange[1] = {{ wxLua_wxSpinCtrlDouble_SetRange, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxSpinCtrlDouble_SetRange }};
+//     void SetRange(double minVal, double maxVal);
+static int LUACALL wxLua_wxSpinCtrlDouble_SetRange(lua_State *L)
+{
+    // double maxVal
+    double maxVal = (double)wxlua_getnumbertype(L, 3);
+    // double minVal
+    double minVal = (double)wxlua_getnumbertype(L, 2);
+    // get this
+    wxSpinCtrlDouble * self = (wxSpinCtrlDouble *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSpinCtrlDouble);
+    // call SetRange
+    self->SetRange(minVal, maxVal);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinCtrlDouble_SetValue1[] = { &wxluatype_wxSpinCtrlDouble, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxSpinCtrlDouble_SetValue1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrlDouble_SetValue1[1] = {{ wxLua_wxSpinCtrlDouble_SetValue1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSpinCtrlDouble_SetValue1 }};
+//     void SetValue(double value);
+static int LUACALL wxLua_wxSpinCtrlDouble_SetValue1(lua_State *L)
+{
+    // double value
+    double value = (double)wxlua_getnumbertype(L, 2);
+    // get this
+    wxSpinCtrlDouble * self = (wxSpinCtrlDouble *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSpinCtrlDouble);
+    // call SetValue
+    self->SetValue(value);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinCtrlDouble_SetValue[] = { &wxluatype_wxSpinCtrlDouble, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxSpinCtrlDouble_SetValue(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrlDouble_SetValue[1] = {{ wxLua_wxSpinCtrlDouble_SetValue, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSpinCtrlDouble_SetValue }};
+//     void SetValue(const wxString& value);
+static int LUACALL wxLua_wxSpinCtrlDouble_SetValue(lua_State *L)
+{
+    // const wxString value
+    const wxString value = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxSpinCtrlDouble * self = (wxSpinCtrlDouble *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSpinCtrlDouble);
+    // call SetValue
+    self->SetValue(value);
+
+    return 0;
+}
+
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinCtrlDouble_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxSpinCtrlDouble_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrlDouble_constructor1[1] = {{ wxLua_wxSpinCtrlDouble_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 11, s_wxluatypeArray_wxLua_wxSpinCtrlDouble_constructor1 }};
+//     wxSpinCtrlDouble(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& value = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_ARROW_KEYS, double min = 0, double max = 100, double initial = 0, double inc = 1, const wxString& name = "wxSpinCtrlDouble");
+static int LUACALL wxLua_wxSpinCtrlDouble_constructor1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString name = "wxSpinCtrlDouble"
+    const wxString name = (argCount >= 11 ? wxlua_getwxStringtype(L, 11) : wxString(wxT("wxSpinCtrlDouble")));
+    // double inc = 1
+    double inc = (argCount >= 10 ? (double)wxlua_getnumbertype(L, 10) : 1);
+    // double initial = 0
+    double initial = (argCount >= 9 ? (double)wxlua_getnumbertype(L, 9) : 0);
+    // double max = 100
+    double max = (argCount >= 8 ? (double)wxlua_getnumbertype(L, 8) : 100);
+    // double min = 0
+    double min = (argCount >= 7 ? (double)wxlua_getnumbertype(L, 7) : 0);
+    // long style = wxSP_ARROW_KEYS
+    long style = (argCount >= 6 ? (long)wxlua_getnumbertype(L, 6) : wxSP_ARROW_KEYS);
+    // const wxSize size = wxDefaultSize
+    const wxSize * size = (argCount >= 5 ? (const wxSize *)wxluaT_getuserdatatype(L, 5, wxluatype_wxSize) : &wxDefaultSize);
+    // const wxPoint pos = wxDefaultPosition
+    const wxPoint * pos = (argCount >= 4 ? (const wxPoint *)wxluaT_getuserdatatype(L, 4, wxluatype_wxPoint) : &wxDefaultPosition);
+    // const wxString value = wxEmptyString
+    const wxString value = (argCount >= 3 ? wxlua_getwxStringtype(L, 3) : wxString(wxEmptyString));
+    // wxWindowID id = wxID_ANY
+    wxWindowID id = (argCount >= 2 ? (wxWindowID)wxlua_getnumbertype(L, 2) : wxID_ANY);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call constructor
+    wxSpinCtrlDouble* returns = new wxSpinCtrlDouble(parent, id, value, *pos, *size, style, min, max, initial, inc, name);
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSpinCtrlDouble);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL)
+
+static int LUACALL wxLua_wxSpinCtrlDouble_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrlDouble_constructor[1] = {{ wxLua_wxSpinCtrlDouble_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxSpinCtrlDouble();
+static int LUACALL wxLua_wxSpinCtrlDouble_constructor(lua_State *L)
+{
+    // call constructor
+    wxSpinCtrlDouble* returns = new wxSpinCtrlDouble();
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSpinCtrlDouble);
+
+    return 1;
+}
+
+
+
+
+#if (wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL)
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrlDouble_SetValue_overload[] =
+{
+    { wxLua_wxSpinCtrlDouble_SetValue1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSpinCtrlDouble_SetValue1 },
+    { wxLua_wxSpinCtrlDouble_SetValue, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSpinCtrlDouble_SetValue },
+};
+static int s_wxluafunc_wxLua_wxSpinCtrlDouble_SetValue_overload_count = sizeof(s_wxluafunc_wxLua_wxSpinCtrlDouble_SetValue_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL)
+
+#if ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL))||(wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL)
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrlDouble_constructor_overload[] =
+{
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL)
+    { wxLua_wxSpinCtrlDouble_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 11, s_wxluatypeArray_wxLua_wxSpinCtrlDouble_constructor1 },
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL)
+    { wxLua_wxSpinCtrlDouble_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+};
+static int s_wxluafunc_wxLua_wxSpinCtrlDouble_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxSpinCtrlDouble_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL))||(wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL)
+
+void wxLua_wxSpinCtrlDouble_delete_function(void** p)
+{
+    wxSpinCtrlDouble* o = (wxSpinCtrlDouble*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxSpinCtrlDouble_methods[] = {
+#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL)
+    { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrlDouble_Create, 1, NULL },
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL)
+
+    { "GetDigits", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrlDouble_GetDigits, 1, NULL },
+    { "GetIncrement", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrlDouble_GetIncrement, 1, NULL },
+    { "GetMax", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrlDouble_GetMax, 1, NULL },
+    { "GetMin", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrlDouble_GetMin, 1, NULL },
+    { "GetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrlDouble_GetValue, 1, NULL },
+    { "SetDigits", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrlDouble_SetDigits, 1, NULL },
+    { "SetIncrement", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrlDouble_SetIncrement, 1, NULL },
+    { "SetRange", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrlDouble_SetRange, 1, NULL },
+
+#if (wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL)
+    { "SetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrlDouble_SetValue_overload, s_wxluafunc_wxLua_wxSpinCtrlDouble_SetValue_overload_count, 0 },
+#endif // (wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL)
+
+#if ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL))||(wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL)
+    { "wxSpinCtrlDouble", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxSpinCtrlDouble_constructor_overload, s_wxluafunc_wxLua_wxSpinCtrlDouble_constructor_overload_count, 0 },
+#endif // ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL))||(wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL)
+
+    { 0, 0, 0, 0 },
+};
+
+int wxSpinCtrlDouble_methodCount = sizeof(wxSpinCtrlDouble_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+
+
 #if wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL
 // ---------------------------------------------------------------------------
 // Bind class wxTextEntry

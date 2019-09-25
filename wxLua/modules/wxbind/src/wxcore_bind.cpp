@@ -377,6 +377,10 @@ wxLuaBindEvent* wxLuaGetEventList_wxcore(size_t &count)
         { "wxEVT_SIZING", WXLUA_GET_wxEventType_ptr(wxEVT_SIZING), &wxluatype_wxSizeEvent },
 #endif // wxCHECK_VERSION(2,6,0)
 
+#if wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+        { "wxEVT_SPINCTRLDOUBLE", WXLUA_GET_wxEventType_ptr(wxEVT_SPINCTRLDOUBLE), &wxluatype_wxSpinDoubleEvent },
+#endif // wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+
         { "wxEVT_SYS_COLOUR_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_SYS_COLOUR_CHANGED), &wxluatype_wxSysColourChangedEvent },
 
 #if wxLUA_USE_wxTimer && wxUSE_TIMER
@@ -4872,6 +4876,8 @@ static const char* wxluaclassname_wxSizerItemList = "wxSizerItemList";
 static const char* wxluaclassname_wxSlider = "wxSlider";
 static const char* wxluaclassname_wxSpinButton = "wxSpinButton";
 static const char* wxluaclassname_wxSpinCtrl = "wxSpinCtrl";
+static const char* wxluaclassname_wxSpinCtrlDouble = "wxSpinCtrlDouble";
+static const char* wxluaclassname_wxSpinDoubleEvent = "wxSpinDoubleEvent";
 static const char* wxluaclassname_wxSpinEvent = "wxSpinEvent";
 static const char* wxluaclassname_wxSplitterEvent = "wxSplitterEvent";
 static const char* wxluaclassname_wxSplitterRenderParams = "wxSplitterRenderParams";
@@ -5365,6 +5371,10 @@ static const char* wxluabaseclassnames_wxSpinButton[] = { wxluaclassname_wxContr
 static wxLuaBindClass* wxluabaseclassbinds_wxSpinButton[] = { NULL };
 static const char* wxluabaseclassnames_wxSpinCtrl[] = { wxluaclassname_wxControl, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxSpinCtrl[] = { NULL };
+static const char* wxluabaseclassnames_wxSpinCtrlDouble[] = { wxluaclassname_wxControl, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxSpinCtrlDouble[] = { NULL };
+static const char* wxluabaseclassnames_wxSpinDoubleEvent[] = { wxluaclassname_wxNotifyEvent, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxSpinDoubleEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxSpinEvent[] = { wxluaclassname_wxNotifyEvent, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxSpinEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxSplitterEvent[] = { wxluaclassname_wxNotifyEvent, NULL };
@@ -6679,6 +6689,15 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern void wxLua_wxSpinCtrl_delete_function(void** p);
 #endif // wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL
 
+#if wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+    extern wxLuaBindMethod wxSpinCtrlDouble_methods[];
+    extern int wxSpinCtrlDouble_methodCount;
+    extern void wxLua_wxSpinCtrlDouble_delete_function(void** p);
+    extern wxLuaBindMethod wxSpinDoubleEvent_methods[];
+    extern int wxSpinDoubleEvent_methodCount;
+    extern void wxLua_wxSpinDoubleEvent_delete_function(void** p);
+#endif // wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+
 #if wxLUA_USE_wxSplitterWindow
     extern wxLuaBindMethod wxSplitterEvent_methods[];
     extern int wxSplitterEvent_methodCount;
@@ -7657,6 +7676,11 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #if wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL
         { wxluaclassname_wxSpinCtrl, wxSpinCtrl_methods, wxSpinCtrl_methodCount, CLASSINFO(wxSpinCtrl), &wxluatype_wxSpinCtrl, wxluabaseclassnames_wxSpinCtrl, wxluabaseclassbinds_wxSpinCtrl, NULL, NULL, NULL, 0, &wxLua_wxSpinCtrl_delete_function, }, 
 #endif // wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL
+
+#if wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+        { wxluaclassname_wxSpinCtrlDouble, wxSpinCtrlDouble_methods, wxSpinCtrlDouble_methodCount, CLASSINFO(wxSpinCtrlDouble), &wxluatype_wxSpinCtrlDouble, wxluabaseclassnames_wxSpinCtrlDouble, wxluabaseclassbinds_wxSpinCtrlDouble, NULL, NULL, NULL, 0, &wxLua_wxSpinCtrlDouble_delete_function, }, 
+        { wxluaclassname_wxSpinDoubleEvent, wxSpinDoubleEvent_methods, wxSpinDoubleEvent_methodCount, CLASSINFO(wxSpinDoubleEvent), &wxluatype_wxSpinDoubleEvent, wxluabaseclassnames_wxSpinDoubleEvent, wxluabaseclassbinds_wxSpinDoubleEvent, NULL, NULL, NULL, 0, &wxLua_wxSpinDoubleEvent_delete_function, }, 
+#endif // wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
 
 #if wxLUA_USE_wxSpinButton && wxUSE_SPINBTN
         { wxluaclassname_wxSpinEvent, wxSpinEvent_methods, wxSpinEvent_methodCount, CLASSINFO(wxSpinEvent), &wxluatype_wxSpinEvent, wxluabaseclassnames_wxSpinEvent, wxluabaseclassbinds_wxSpinEvent, NULL, NULL, NULL, 0, &wxLua_wxSpinEvent_delete_function, }, 
