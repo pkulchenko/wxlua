@@ -7847,6 +7847,27 @@ static int LUACALL wxLua_wxControl_GetLabelText(lua_State *L)
 
 #endif // wxCHECK_VERSION(2,8,0)
 
+#if wxCHECK_VERSION(2,9,2)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxControl_SetLabelMarkup[] = { &wxluatype_wxControl, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxControl_SetLabelMarkup(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxControl_SetLabelMarkup[1] = {{ wxLua_wxControl_SetLabelMarkup, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxControl_SetLabelMarkup }};
+//     %wxchkver_2_9_2 bool SetLabelMarkup(const wxString& label);
+static int LUACALL wxLua_wxControl_SetLabelMarkup(lua_State *L)
+{
+    // const wxString label
+    const wxString label = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxControl * self = (wxControl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxControl);
+    // call SetLabelMarkup
+    bool returns = (self->SetLabelMarkup(label));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(2,9,2)
+
 #if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxControl_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxControl_constructor1(lua_State *L);
@@ -7930,6 +7951,10 @@ wxLuaBindMethod wxControl_methods[] = {
 #if wxCHECK_VERSION(2,8,0)
     { "GetLabelText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxControl_GetLabelText, 1, NULL },
 #endif // wxCHECK_VERSION(2,8,0)
+
+#if wxCHECK_VERSION(2,9,2)
+    { "SetLabelMarkup", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxControl_SetLabelMarkup, 1, NULL },
+#endif // wxCHECK_VERSION(2,9,2)
 
 #if ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))
     { "wxControl", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxControl_constructor_overload, s_wxluafunc_wxLua_wxControl_constructor_overload_count, 0 },

@@ -486,6 +486,7 @@ class wxControl : public wxWindow
     void Command(wxCommandEvent& event);
     // wxString GetLabel();                      // see wxWindow
     // void     SetLabel(const wxString& label); // see wxWindow
+    %wxchkver_2_9_2 bool SetLabelMarkup(const wxString& label);
 
     //static wxString GetLabelText(const wxString& label) translates arbitrary string, removes mnemonic characters ('&');
     %wxchkver_2_8 wxString GetLabelText() const;
