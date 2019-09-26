@@ -1750,7 +1750,7 @@ end
 -- ---------------------------------------------------------------------------
 function BuildDataTypeTable(interfaceData)
     local in_block_comment = 0
-    local namespaceStack = {} -- todo, use this 
+    local namespaceStack = {} -- todo, use this
     local enumType = ""
 
     for l = 1, #interfaceData do
@@ -1790,7 +1790,7 @@ function BuildDataTypeTable(interfaceData)
                     elseif (tag == "class"  ) then action = "find_classname"
                     elseif (tag == "struct" ) then action = "find_structname"
                     elseif (tag == "enum"   ) then action = "find_enumname"
-                    elseif (tag == "typedef") then action = "find_typedef"                
+                    elseif (tag == "typedef") then action = "find_typedef"
                     elseif (tag == "}"      ) then
                       enumType = string.sub(enumType, 1, math.max(0, #enumType - #(namespaceStack[#namespaceStack] or {})))
                       namespaceStack[#namespaceStack] = nil
@@ -1898,7 +1898,7 @@ function ParseData(interfaceData)
     local function EndObjectStack(objectList, parseState, lineState)
         table.insert(objectList, parseState.ObjectStack[1])
         table.remove(parseState.ObjectStack, 1)
-        
+
         --TableDump(parseState.ObjectStack, "EndObjectStack-parseState.ObjectStack ")
         --TableDump(lineState,              "EndObjectStack-lineState ")
         --TableDump(objectList,             "EndObjectStack-objectList ")
@@ -1966,10 +1966,10 @@ function ParseData(interfaceData)
                 tag = nil
                 return
             end
-            
+
             lineTable = interfaceData[l]
             lineTags  = interfaceData[l].Tags
-        
+
             if (lineState ~= nil) then
                 lineState.FileName   = lineTable.FileName
                 lineState.LineNumber = lineTable.LineNumber
@@ -1980,10 +1980,10 @@ function ParseData(interfaceData)
         if (lineState == nil) then
             lineState = AllocLineState(lineTable)
         end
-        
+
         t = t + 1
         tag = lineTags[t]
-        
+
         if tag == "//" then
             -- skip to next line
             tag = nil
@@ -1993,7 +1993,7 @@ function ParseData(interfaceData)
     end
 
     while interfaceData[l+1] do -- not for loop so we can adjust l
-    
+
         GetNextToken()
 
         local run_once = 1
@@ -2163,7 +2163,7 @@ function ParseData(interfaceData)
                     elseif tag == "%delete" then -- tag for class
                         parseState.ObjectStack[1]["%delete"] = true
 
-                        if (parseState.ObjectStack[1].ObjType ~= "objtype_class") and 
+                        if (parseState.ObjectStack[1].ObjType ~= "objtype_class") and
                            (parseState.ObjectStack[1].ObjType ~= "objtype_struct") then
                             print("ERROR: %delete is not used for a class. "..LineTableErrString(lineTable))
                         end
@@ -2178,14 +2178,14 @@ function ParseData(interfaceData)
                     -- -------------------------------------------------------
                     elseif tag == "public" then
                         if (lineTags[t+1] == ":") then
-                            if (parseState.ObjectStack[1].ObjType ~= "objtype_class") and 
+                            if (parseState.ObjectStack[1].ObjType ~= "objtype_class") and
                                (parseState.ObjectStack[1].ObjType ~= "objtype_struct") then
                                 print("ERROR: 'public:' is not used in a class or struct. "..LineTableErrString(lineTable))
                             end
 
                             t = t + 1
                             tag = lineTags[t]
-                            
+
                             parseState.ObjectStack[1].Access = "public"
                         end
 
@@ -2193,29 +2193,29 @@ function ParseData(interfaceData)
                         lineState.Skip = true
 
                         if (lineTags[t+1] == ":") then
-                            if (parseState.ObjectStack[1].ObjType ~= "objtype_class") and 
+                            if (parseState.ObjectStack[1].ObjType ~= "objtype_class") and
                                (parseState.ObjectStack[1].ObjType ~= "objtype_struct") then
                                 print("ERROR: 'public:' is not used in a class or struct. "..LineTableErrString(lineTable))
                             end
 
                             t = t + 1
                             tag = lineTags[t]
-                            
+
                             parseState.ObjectStack[1].Access = "protected"
                         end
 
                     elseif tag == "private" then -- skip private functions
                         lineState.Skip = true
-                        
+
                         if (lineTags[t+1] == ":") then
-                            if (parseState.ObjectStack[1].ObjType ~= "objtype_class") and 
+                            if (parseState.ObjectStack[1].ObjType ~= "objtype_class") and
                                (parseState.ObjectStack[1].ObjType ~= "objtype_struct") then
                                 print("ERROR: 'public:' is not used in a class or struct. "..LineTableErrString(lineTable))
                             end
 
                             t = t + 1
                             tag = lineTags[t]
-                            
+
                             parseState.ObjectStack[1].Access = "private"
                         end
 
@@ -2446,7 +2446,7 @@ function ParseData(interfaceData)
                         end
 
                         lineState.Condition = lineState.Condition..tag
-                        
+
                         if lineTags[t+1] == nil then
                             statement_end = true
                         end
@@ -2490,7 +2490,7 @@ function ParseData(interfaceData)
                             elseif (parseState.ObjectStack[1].ObjType == "objtype_class") or
                                    (parseState.ObjectStack[1].ObjType == "objtype_struct") or
                                    (parseState.ObjectStack[1].ObjType == "objtype_globals") then
-                                   
+
                                 if (parseState.ObjectStack[1].Access == "protected") or
                                    (parseState.ObjectStack[1].Access == "private") then
                                    -- do nothing
@@ -2543,7 +2543,7 @@ function ParseData(interfaceData)
                             parseState.ObjectStack[1].Name = tag
                             lineState.Action = "action_baseclasscolon"
                             lineState.ActionMandatory = false
-                            
+
                             enumType = enumType..tag.."::"
 
                         elseif lineState.Action == "action_baseclasscolon" then
@@ -2573,7 +2573,7 @@ function ParseData(interfaceData)
                             if class_access == "public" then
                                 table.insert(parseState.ObjectStack[1].BaseClasses, tag)
                             end
-                            
+
                             lineState.Action = "action_baseclasscomma"
                             lineState.ActionMandatory = false
                         elseif lineState.Action == "action_structname" then
@@ -2581,9 +2581,9 @@ function ParseData(interfaceData)
 
                             lineState.Action = nil
                             lineState.ActionMandatory = false
-                            
+
                             enumType = enumType..tag.."::"
-                            
+
                         elseif lineState.Action == "action_enumname" then
                             enumType = enumType..tag
                             parseState.ObjectStack[1].Name = enumType
@@ -2895,9 +2895,9 @@ function ParseData(interfaceData)
 
                                 lineState.Action = "action_method_body"
                                 lineState.ActionMandatory = false
-                            elseif --IsDataType(tag) or 
-                                   dataTypeAttribTable[tag] or functionAttribTable[tag] or 
-                                   (tag == "*") or (tag == "&") or (tag == "[]") or 
+                            elseif --IsDataType(tag) or
+                                   dataTypeAttribTable[tag] or functionAttribTable[tag] or
+                                   (tag == "*") or (tag == "&") or (tag == "[]") or
                                    IsDelimiter(tag) and (tag ~= "|") and (tag ~= "&") then
                                 print("ERROR: Expected Parameter Default Value, got Tag='"..tag.."'. "..LineTableErrString(lineTable))
                             else
@@ -3051,8 +3051,8 @@ function ParseData(interfaceData)
 
         -- pop parseObject off objectStack
         if lineState.PopParseObject then
-            EndObjectStack(objectList, parseState, lineState)            
-            
+            EndObjectStack(objectList, parseState, lineState)
+
             --TableDump(parseState.ObjectStack, "PPO-parseState.ObjectStack")
             --TableDump(lineState,              "PPO-lineState")
             --TableDump(objectList,             "PPO-objectList")
@@ -3061,9 +3061,9 @@ function ParseData(interfaceData)
                 print("ERROR: parseState.ObjectStack is unexpectedly empty. "..LineTableErrString(lineTable))
             end
         end
-        
+
         lineState = nil --AllocLineState(lineTable) -- reset to new
-        
+
         end -- if statement_end then
 
         end -- while lineTags[t+1] do
@@ -3783,7 +3783,7 @@ function GenerateLuaLanguageBinding(interface)
                             if (origArgTypeWithAttrib ~= "const char") then
                                 argCast = "("..origArgTypeWithAttrib.."*)(const char*)"
                             else
-                                argCast = origArgTypeWithAttrib.."*" 
+                                argCast = origArgTypeWithAttrib.."*"
                             end
                         else
                             if isTranslated and (origIndirectionCount == 0) then
@@ -4779,7 +4779,7 @@ function GenerateHookCppFileHeader(fileData, fileName, add_includes)
         table.insert(fileData, "#include \""..hook_cpp_header_filename.."\"\n")
         table.insert(fileData, hook_cpp_binding_post_includes or "")
         table.insert(fileData, "\n")
-        
+
         -- It would be awkward to #ifdef the static string names of the classes
         table.insert(fileData, "#ifdef __GNUC__\n")
         table.insert(fileData, "    #pragma GCC diagnostic ignored \"-Wunused-variable\"\n")
