@@ -38,7 +38,6 @@ ADD_EXECUTABLE_FULL( wxLua_app WIN32 MACOSX_BUNDLE
         "${wxLua_ROOT_DIR}/apps/wxlua/wxlua.rc"
         "${wxLua_ROOT_DIR}/art/wxlualogo.icns"
     LINK_LIBRARIES
-        #wxLuaBindLib
         ${wxLuaBind_ALL_LIBS}
         wxLuaDebuggerLib
         wxLuaDebugLib
@@ -68,7 +67,6 @@ ADD_EXECUTABLE_FULL( wxLuaCan WIN32 MACOSX_BUNDLE
         "${wxLua_ROOT_DIR}/apps/wxluacan/cansim.rc"
         "${wxLua_ROOT_DIR}/art/wxlualogo.icns"
     LINK_LIBRARIES
-        #wxLuaBindLib
         ${wxLuaBind_ALL_LIBS}
         wxLuaDebuggerLib
         wxLuaDebugLib
@@ -148,5 +146,4 @@ endfunction (wxLua_Apps_wxLuaFreeze_TARGETS)
 
 add_subdirectory( wxlua )
 add_subdirectory( wxluacan )
-add_subdirectory( wxluaedit )
 add_subdirectory( wxluafreeze )
