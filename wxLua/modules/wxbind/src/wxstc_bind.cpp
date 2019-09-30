@@ -8237,6 +8237,26 @@ static int LUACALL wxLua_wxStyledTextCtrl_ReplaceSelection(lua_State *L)
     return 0;
 }
 
+
+#if wxCHECK_VERSION(3,1,3)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_ReplaceSelectionRaw[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_ReplaceSelectionRaw(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_ReplaceSelectionRaw[1] = {{ wxLua_wxStyledTextCtrl_ReplaceSelectionRaw, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_ReplaceSelectionRaw }};
+//     %wxchkver_3_1_3 void ReplaceSelectionRaw(const char* text);
+static int LUACALL wxLua_wxStyledTextCtrl_ReplaceSelectionRaw(lua_State *L)
+{
+    // const char text
+    wxCharBuffer text = wxlua_getstringtype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call ReplaceSelectionRaw
+    self->ReplaceSelectionRaw((const char*)text);
+
+    return 0;
+}
+
+#endif // wxCHECK_VERSION(3,1,3)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_ReplaceTarget[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_ReplaceTarget(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_ReplaceTarget[1] = {{ wxLua_wxStyledTextCtrl_ReplaceTarget, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_ReplaceTarget }};
@@ -8273,6 +8293,53 @@ static int LUACALL wxLua_wxStyledTextCtrl_ReplaceTargetRE(lua_State *L)
     return 1;
 }
 
+
+#if wxCHECK_VERSION(3,1,3)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_ReplaceTargetRERaw[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_ReplaceTargetRERaw(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_ReplaceTargetRERaw[1] = {{ wxLua_wxStyledTextCtrl_ReplaceTargetRERaw, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_ReplaceTargetRERaw }};
+//     %wxchkver_3_1_3 int ReplaceTargetRERaw(const char* text, int length=-1);
+static int LUACALL wxLua_wxStyledTextCtrl_ReplaceTargetRERaw(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int length = -1
+    int length = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : -1);
+    // const char text
+    wxCharBuffer text = wxlua_getstringtype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call ReplaceTargetRERaw
+    int returns = (self->ReplaceTargetRERaw((const char*)text, length));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_ReplaceTargetRaw[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_ReplaceTargetRaw(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_ReplaceTargetRaw[1] = {{ wxLua_wxStyledTextCtrl_ReplaceTargetRaw, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_ReplaceTargetRaw }};
+//     %wxchkver_3_1_3 int ReplaceTargetRaw(const char* text, int length=-1);
+static int LUACALL wxLua_wxStyledTextCtrl_ReplaceTargetRaw(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int length = -1
+    int length = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : -1);
+    // const char text
+    wxCharBuffer text = wxlua_getstringtype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call ReplaceTargetRaw
+    int returns = (self->ReplaceTargetRaw((const char*)text, length));
+    // push the result number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(3,1,3)
 
 #if wxCHECK_VERSION(2,9,5)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_RotateSelection[] = { &wxluatype_wxStyledTextCtrl, NULL };
@@ -14088,8 +14155,18 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
 
     { "ReleaseDocument", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_ReleaseDocument, 1, NULL },
     { "ReplaceSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_ReplaceSelection, 1, NULL },
+
+#if wxCHECK_VERSION(3,1,3)
+    { "ReplaceSelectionRaw", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_ReplaceSelectionRaw, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,3)
+
     { "ReplaceTarget", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_ReplaceTarget, 1, NULL },
     { "ReplaceTargetRE", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_ReplaceTargetRE, 1, NULL },
+
+#if wxCHECK_VERSION(3,1,3)
+    { "ReplaceTargetRERaw", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_ReplaceTargetRERaw, 1, NULL },
+    { "ReplaceTargetRaw", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_ReplaceTargetRaw, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,3)
 
 #if wxCHECK_VERSION(2,9,5)
     { "RotateSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_RotateSelection, 1, NULL },

@@ -7333,6 +7333,14 @@ class wxStyledTextCtrl : public wxControl
     */
     //@{
 
+    %wxchkver_3_1_3 void ReplaceSelectionRaw(const char* text);
+
+    // Replace the target text with the argument text.
+    %wxchkver_3_1_3 int ReplaceTargetRaw(const char* text, int length=-1);
+
+    // Replace the target text with the argument text after \\d processing.
+    %wxchkver_3_1_3 int ReplaceTargetRERaw(const char* text, int length=-1);
+
     /**
        Add text to the document at current position.
     */
