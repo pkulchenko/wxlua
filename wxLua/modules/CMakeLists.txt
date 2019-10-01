@@ -552,7 +552,7 @@ set( WXLUAMODULE_PROPERTIES_DEFINE_SYMBOL PROPERTIES DEFINE_SYMBOL WXMAKINGDLL_L
 
 # Build from fresh sources so we have a clean stand-alone Lua module and
 # we get all the DLL exports right.
-if(WIN32)
+if (WIN32 OR APPLE)
     set(wxLuaModule_LUALINK ${LuaLibShared_TARGET_NAME})
 else()
     set(wxLuaModule_LUALINK "")
