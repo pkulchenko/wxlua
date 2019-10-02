@@ -1,6 +1,23 @@
  wxLua ChangeLog
  ===============
 
+ version 3.0.0.5 (released 10/02/2019)
+ --------------------------------------------------------------------
+ - Added `Replace*Raw` methods for wxSTC in wxwidgets 3.1.3.
+ - Added GDI graphics classes (thanks to Konstantin Matveyev).
+ - Added `wxGauge` flags (thanks to Konstantin Matveyev).
+ - Added missing methods for `wxProgressDialog`.
+ - Added `wxTextInputStream` and `wxTextOutputStream` (thanks to Konstantin Matveyev).
+ - Added missing methods for `wxAuiPaneInfo`.
+ - Added `wxSpinCtrlDouble` (thanks to Konstantin Matveyev).
+ - Added `GetScale*` methods for `wxBitmap`.
+ - Added `SetLabelMarkup` to `wxControl` (thanks to Konstantin Matveyev).
+ - Added `wxLaunchDefaultApplication` (thanks to lapatbrok).
+ - Added `wxRealPoint`.
+ - Added support for `OnEnter`, `OnLeave`, and `OnDragOver` for `wxLuaTextDropTarget`.
+ - Updated `wxBitmap` constructor to add scaling support.
+ - Fix build with LuaJIT 2.1.0+ (thanks to Konstantin Matveyev).
+ 
  version 3.0.0.4 (released 9/19/2019)
  --------------------------------------------------------------------
  - Added missing wxToolTip methods.

@@ -34,9 +34,9 @@ extern WXDLLIMPEXP_BINDWXBASE wxDateTime::TimeZone wxLua_wxDateTime_TimeZone_Loc
 // Check if the version of binding generator used to create this is older than
 //   the current version of the bindings.
 //   See 'bindings/genwxbind.lua' and 'modules/wxlua/wxldefs.h'
-#if WXLUA_BINDING_VERSION > 33
+#if WXLUA_BINDING_VERSION > 34
 #   error "The WXLUA_BINDING_VERSION in the bindings is too old, regenerate bindings."
-#endif //WXLUA_BINDING_VERSION > 33
+#endif //WXLUA_BINDING_VERSION > 34
 // ---------------------------------------------------------------------------
 
 // binding class
