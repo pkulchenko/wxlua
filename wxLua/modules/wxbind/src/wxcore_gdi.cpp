@@ -13875,6 +13875,29 @@ static int LUACALL wxLua_wxDC_GetPPI(lua_State *L)
 
 #endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)
 
+#if (wxLUA_USE_wxArrayInt) && (wxLUA_USE_wxDC)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_GetPartialTextExtents[] = { &wxluatype_wxDC, &wxluatype_TSTRING, &wxluatype_wxArrayInt, NULL };
+static int LUACALL wxLua_wxDC_GetPartialTextExtents(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_GetPartialTextExtents[1] = {{ wxLua_wxDC_GetPartialTextExtents, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxDC_GetPartialTextExtents }};
+//     bool GetPartialTextExtents(const wxString& text, wxArrayInt& widths) const;
+static int LUACALL wxLua_wxDC_GetPartialTextExtents(lua_State *L)
+{
+    // wxArrayInt widths
+    wxArrayInt * widths = (wxArrayInt *)wxluaT_getuserdatatype(L, 3, wxluatype_wxArrayInt);
+    // const wxString text
+    const wxString text = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
+    // call GetPartialTextExtents
+    bool returns = (self->GetPartialTextExtents(text, *widths));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxArrayInt) && (wxLUA_USE_wxDC)
+
 #if (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxDC)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_GetPen[] = { &wxluatype_wxDC, NULL };
 static int LUACALL wxLua_wxDC_GetPen(lua_State *L);
@@ -14793,6 +14816,10 @@ wxLuaBindMethod wxDC_methods[] = {
 #if (wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)
     { "GetPPI", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_GetPPI, 1, NULL },
 #endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)
+
+#if (wxLUA_USE_wxArrayInt) && (wxLUA_USE_wxDC)
+    { "GetPartialTextExtents", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_GetPartialTextExtents, 1, NULL },
+#endif // (wxLUA_USE_wxArrayInt) && (wxLUA_USE_wxDC)
 
 #if (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxDC)
     { "GetPen", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_GetPen, 1, NULL },

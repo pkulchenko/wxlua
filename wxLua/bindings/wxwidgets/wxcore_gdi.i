@@ -1454,7 +1454,7 @@ class %delete wxDC : public wxObject
     %wxchkver_2_8 wxLayoutDirection GetLayoutDirection() const;
     int GetLogicalFunction();
     int GetMapMode();
-    //bool GetPartialTextExtents(const wxString& text, wxArrayInt& widths) const;
+    bool GetPartialTextExtents(const wxString& text, wxArrayInt& widths) const;
     const wxPen& GetPen();
     bool GetPixel(wxCoord x, wxCoord y, wxColour *colour);
     wxSize GetPPI() const;
