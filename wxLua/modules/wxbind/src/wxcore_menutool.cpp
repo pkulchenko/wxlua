@@ -1660,6 +1660,22 @@ static int LUACALL wxLua_wxMenuBar_FindMenuItem(lua_State *L)
 }
 
 
+#if (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+static int LUACALL wxLua_wxMenuBar_GetAutoWindowMenu(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuBar_GetAutoWindowMenu[1] = {{ wxLua_wxMenuBar_GetAutoWindowMenu, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
+//     %mac static bool GetAutoWindowMenu();
+static int LUACALL wxLua_wxMenuBar_GetAutoWindowMenu(lua_State *L)
+{
+    // call GetAutoWindowMenu
+    bool returns = (wxMenuBar::GetAutoWindowMenu());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+
 #if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuBar_GetFrame[] = { &wxluatype_wxMenuBar, NULL };
 static int LUACALL wxLua_wxMenuBar_GetFrame(lua_State *L);
@@ -1925,6 +1941,39 @@ static int LUACALL wxLua_wxMenuBar_MacGetCommonMenuBar(lua_State *L)
     return 1;
 }
 
+static int LUACALL wxLua_wxMenuBar_MacGetInstalledMenuBar(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuBar_MacGetInstalledMenuBar[1] = {{ wxLua_wxMenuBar_MacGetInstalledMenuBar, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
+//     %mac static wxMenuBar* MacGetInstalledMenuBar();
+static int LUACALL wxLua_wxMenuBar_MacGetInstalledMenuBar(lua_State *L)
+{
+    // call MacGetInstalledMenuBar
+    wxMenuBar* returns = (wxMenuBar*)wxMenuBar::MacGetInstalledMenuBar();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxMenuBar);
+
+    return 1;
+}
+
+#endif // ((defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+
+#if (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuBar_MacInstallMenuBar[] = { &wxluatype_wxMenuBar, NULL };
+static int LUACALL wxLua_wxMenuBar_MacInstallMenuBar(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuBar_MacInstallMenuBar[1] = {{ wxLua_wxMenuBar_MacInstallMenuBar, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMenuBar_MacInstallMenuBar }};
+//     %mac void MacInstallMenuBar();
+static int LUACALL wxLua_wxMenuBar_MacInstallMenuBar(lua_State *L)
+{
+    // get this
+    wxMenuBar * self = (wxMenuBar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenuBar);
+    // call MacInstallMenuBar
+    self->MacInstallMenuBar();
+
+    return 0;
+}
+
+#endif // (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+
+#if ((defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuBar_MacSetCommonMenuBar[] = { &wxluatype_wxMenuBar, NULL };
 static int LUACALL wxLua_wxMenuBar_MacSetCommonMenuBar(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuBar_MacSetCommonMenuBar[1] = {{ wxLua_wxMenuBar_MacSetCommonMenuBar, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxMenuBar_MacSetCommonMenuBar }};
@@ -1940,6 +1989,23 @@ static int LUACALL wxLua_wxMenuBar_MacSetCommonMenuBar(lua_State *L)
 }
 
 #endif // ((defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+
+#if (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuBar_MacUninstallMenuBar[] = { &wxluatype_wxMenuBar, NULL };
+static int LUACALL wxLua_wxMenuBar_MacUninstallMenuBar(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuBar_MacUninstallMenuBar[1] = {{ wxLua_wxMenuBar_MacUninstallMenuBar, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMenuBar_MacUninstallMenuBar }};
+//     %mac void MacUninstallMenuBar();
+static int LUACALL wxLua_wxMenuBar_MacUninstallMenuBar(lua_State *L)
+{
+    // get this
+    wxMenuBar * self = (wxMenuBar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenuBar);
+    // call MacUninstallMenuBar
+    self->MacUninstallMenuBar();
+
+    return 0;
+}
+
+#endif // (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 
 #if ((wxCHECK_VERSION(3,0,1) && defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuBar_OSXGetAppleMenu[] = { &wxluatype_wxMenuBar, NULL };
@@ -2025,6 +2091,24 @@ static int LUACALL wxLua_wxMenuBar_Replace(lua_State *L)
 
     return 1;
 }
+
+
+#if (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuBar_SetAutoWindowMenu[] = { &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxMenuBar_SetAutoWindowMenu(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuBar_SetAutoWindowMenu[1] = {{ wxLua_wxMenuBar_SetAutoWindowMenu, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxMenuBar_SetAutoWindowMenu }};
+//     %mac static void SetAutoWindowMenu(bool enable);
+static int LUACALL wxLua_wxMenuBar_SetAutoWindowMenu(lua_State *L)
+{
+    // bool enable
+    bool enable = wxlua_getbooleantype(L, 1);
+    // call SetAutoWindowMenu
+    wxMenuBar::SetAutoWindowMenu(enable);
+
+    return 0;
+}
+
+#endif // (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuBar_SetHelpString[] = { &wxluatype_wxMenuBar, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxMenuBar_SetHelpString(lua_State *L);
@@ -2167,6 +2251,10 @@ wxLuaBindMethod wxMenuBar_methods[] = {
     { "FindMenu", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuBar_FindMenu, 1, NULL },
     { "FindMenuItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuBar_FindMenuItem, 1, NULL },
 
+#if (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+    { "GetAutoWindowMenu", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxMenuBar_GetAutoWindowMenu, 1, NULL },
+#endif // (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+
 #if (wxLUA_USE_wxFrame) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
     { "GetFrame", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuBar_GetFrame, 1, NULL },
 #endif // (wxLUA_USE_wxFrame) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
@@ -2200,8 +2288,20 @@ wxLuaBindMethod wxMenuBar_methods[] = {
 
 #if ((defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
     { "MacGetCommonMenuBar", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxMenuBar_MacGetCommonMenuBar, 1, NULL },
+    { "MacGetInstalledMenuBar", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxMenuBar_MacGetInstalledMenuBar, 1, NULL },
+#endif // ((defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+
+#if (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+    { "MacInstallMenuBar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuBar_MacInstallMenuBar, 1, NULL },
+#endif // (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+
+#if ((defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
     { "MacSetCommonMenuBar", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxMenuBar_MacSetCommonMenuBar, 1, NULL },
 #endif // ((defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+
+#if (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+    { "MacUninstallMenuBar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuBar_MacUninstallMenuBar, 1, NULL },
+#endif // (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 
 #if ((wxCHECK_VERSION(3,0,1) && defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
     { "OSXGetAppleMenu", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuBar_OSXGetAppleMenu, 1, NULL },
@@ -2213,6 +2313,11 @@ wxLuaBindMethod wxMenuBar_methods[] = {
 
     { "Remove", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuBar_Remove, 1, NULL },
     { "Replace", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuBar_Replace, 1, NULL },
+
+#if (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+    { "SetAutoWindowMenu", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxMenuBar_SetAutoWindowMenu, 1, NULL },
+#endif // (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+
     { "SetHelpString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuBar_SetHelpString, 1, NULL },
     { "SetLabel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuBar_SetLabel, 1, NULL },
 

@@ -121,6 +121,11 @@ class wxMenuBar : public wxWindow
     void SetLabel(int id, const wxString& label);
     // SetLabelTop(size_t pos, const wxString& label); // deprecated
     %wxchkver_3_0 void SetMenuLabel(size_t pos, const wxString& label);
+    %mac static void SetAutoWindowMenu(bool enable);
+    %mac static bool GetAutoWindowMenu();
+    %mac void MacUninstallMenuBar();
+    %mac void MacInstallMenuBar();
+    %mac static wxMenuBar* MacGetInstalledMenuBar();
     %mac static void MacSetCommonMenuBar(wxMenuBar* menubar);
     %mac static wxMenuBar* MacGetCommonMenuBar();
     %wxchkver_3_0_1 && %mac wxMenu *OSXGetAppleMenu() const;
