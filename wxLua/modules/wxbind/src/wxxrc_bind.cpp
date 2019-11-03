@@ -88,6 +88,12 @@ static int LUACALL wxLua_wxXmlResource_CompareVersion(lua_State *L)
     // call CompareVersion
     int returns = (self->CompareVersion(major, minor, release, revision));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -117,6 +123,12 @@ static int LUACALL wxLua_wxXmlResource_GetFlags(lua_State *L)
     // call GetFlags
     int returns = (self->GetFlags());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -133,6 +145,12 @@ static int LUACALL wxLua_wxXmlResource_GetVersion(lua_State *L)
     // call GetVersion
     long returns = (self->GetVersion());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -153,6 +171,12 @@ static int LUACALL wxLua_wxXmlResource_GetXRCID(lua_State *L)
     // call GetXRCID
     int returns = (wxXmlResource::GetXRCID(stringID, value_if_not_found));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;

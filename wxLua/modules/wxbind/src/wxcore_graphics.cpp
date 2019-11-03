@@ -161,7 +161,7 @@ static int LUACALL wxLua_wxGraphicsPenInfo_GetWidth(lua_State *L)
     wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
     // call GetWidth
     wxDouble returns = (self->GetWidth());
-    // push the result number
+    // push the result floating point number
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1594,7 +1594,7 @@ static int LUACALL wxLua_wxGraphicsGradientStop_GetPosition(lua_State *L)
     wxGraphicsGradientStop * self = (wxGraphicsGradientStop *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsGradientStop);
     // call GetPosition
     float returns = (self->GetPosition());
-    // push the result number
+    // push the result floating point number
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1756,6 +1756,12 @@ static int LUACALL wxLua_wxGraphicsGradientStops_GetCount(lua_State *L)
     // call GetCount
     size_t returns = (self->GetCount());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3001,7 +3007,7 @@ static int LUACALL wxLua_wxGraphicsContext_GetAlpha(lua_State *L)
     wxGraphicsContext * self = (wxGraphicsContext *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsContext);
     // call GetAlpha
     wxDouble returns = (self->GetAlpha());
-    // push the result number
+    // push the result floating point number
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3020,6 +3026,12 @@ static int LUACALL wxLua_wxGraphicsContext_GetAntialiasMode(lua_State *L)
     // call GetAntialiasMode
     wxAntialiasMode returns = (self->GetAntialiasMode());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3058,6 +3070,12 @@ static int LUACALL wxLua_wxGraphicsContext_GetCompositionMode(lua_State *L)
     // call GetCompositionMode
     wxCompositionMode returns = (self->GetCompositionMode());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3092,6 +3110,12 @@ static int LUACALL wxLua_wxGraphicsContext_GetInterpolationQuality(lua_State *L)
     // call GetInterpolationQuality
     wxInterpolationQuality returns = (self->GetInterpolationQuality());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;

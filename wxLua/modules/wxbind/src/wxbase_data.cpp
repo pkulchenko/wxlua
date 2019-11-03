@@ -182,6 +182,12 @@ static int LUACALL wxLua_wxString_Len(lua_State *L)
     // call Len
     size_t returns = (self->Len());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -442,6 +448,12 @@ static int LUACALL wxLua_wxString_const_iterator_op_deref(lua_State *L)
     // call op_deref
     char returns = (*(*self));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -622,6 +634,12 @@ static int LUACALL wxLua_wxString_iterator_op_deref(lua_State *L)
     // call op_deref
     char returns = (*(*self));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -773,6 +791,12 @@ static int LUACALL wxLua_wxStringTokenizer_CountTokens(lua_State *L)
     // call CountTokens
     size_t returns = (self->CountTokens());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -789,6 +813,12 @@ static int LUACALL wxLua_wxStringTokenizer_GetMode(lua_State *L)
     // call GetMode
     wxStringTokenizerMode returns = (self->GetMode());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -821,6 +851,12 @@ static int LUACALL wxLua_wxStringTokenizer_GetPosition(lua_State *L)
     // call GetPosition
     size_t returns = (self->GetPosition());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1093,6 +1129,12 @@ static int LUACALL wxLua_wxClientDataContainer_GetClientData(lua_State *L)
     // call GetClientData
     wxUIntPtr returns = (wxUIntPtr)self->GetClientData();
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1439,6 +1481,12 @@ static int LUACALL wxLua_wxObjectRefData_GetRefCount(lua_State *L)
     // call GetRefCount
     int returns = (self->GetRefCount());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1639,6 +1687,12 @@ static int LUACALL wxLua_wxClassInfo_GetSize(lua_State *L)
     // call GetSize
     int returns = (self->GetSize());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1944,6 +1998,12 @@ static int LUACALL wxLua_wxList_GetCount(lua_State *L)
     // call GetCount
     int returns = (self->GetCount());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1996,6 +2056,12 @@ static int LUACALL wxLua_wxList_IndexOf(lua_State *L)
     // call IndexOf
     int returns = (self->IndexOf(pObject));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2436,6 +2502,12 @@ static int LUACALL wxLua_wxArrayInt_GetCount(lua_State *L)
     // call GetCount
     int returns = (self->GetCount());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2458,6 +2530,12 @@ static int LUACALL wxLua_wxArrayInt_Index(lua_State *L)
     // call Index
     int returns = (self->Index(n, searchFromEnd));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2514,6 +2592,12 @@ static int LUACALL wxLua_wxArrayInt_Item(lua_State *L)
     // call Item
     int returns = (self->Item(n));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2594,6 +2678,12 @@ static int LUACALL wxLua_wxArrayInt_op_index(lua_State *L)
     // call op_index
     int returns = ((*self)[(nIndex)]);
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2707,6 +2797,12 @@ static int LUACALL wxLua_wxArrayString_Add(lua_State *L)
     // call Add
     size_t returns = (self->Add(str, copies));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2767,6 +2863,12 @@ static int LUACALL wxLua_wxArrayString_GetCount(lua_State *L)
     // call GetCount
     int returns = (self->GetCount());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2791,6 +2893,12 @@ static int LUACALL wxLua_wxArrayString_Index(lua_State *L)
     // call Index
     int returns = (self->Index(sz, bCase, bFromEnd));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3210,6 +3318,12 @@ static int LUACALL wxLua_wxLongLong_GetHi(lua_State *L)
     // call GetHi
     long returns = (self->GetHi());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3226,6 +3340,12 @@ static int LUACALL wxLua_wxLongLong_GetLo(lua_State *L)
     // call GetLo
     unsigned long returns = (self->GetLo());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3241,7 +3361,7 @@ static int LUACALL wxLua_wxLongLong_ToDouble(lua_State *L)
     wxLongLong * self = (wxLongLong *)wxluaT_getuserdatatype(L, 1, wxluatype_wxLongLong);
     // call ToDouble
     double returns = (self->ToDouble());
-    // push the result number
+    // push the result floating point number
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3258,6 +3378,12 @@ static int LUACALL wxLua_wxLongLong_ToLong(lua_State *L)
     // call ToLong
     long returns = (self->ToLong());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3352,6 +3478,12 @@ static int LUACALL wxLua_wxULongLong_GetHi(lua_State *L)
     // call GetHi
     unsigned long returns = (self->GetHi());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3368,6 +3500,12 @@ static int LUACALL wxLua_wxULongLong_GetLo(lua_State *L)
     // call GetLo
     unsigned long returns = (self->GetLo());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3400,6 +3538,12 @@ static int LUACALL wxLua_wxULongLong_ToULong(lua_State *L)
     // call ToULong
     long returns = (self->ToULong());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;

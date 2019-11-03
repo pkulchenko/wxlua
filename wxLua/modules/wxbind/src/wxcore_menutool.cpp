@@ -415,6 +415,12 @@ static int LUACALL wxLua_wxMenu_FindItem(lua_State *L)
     // call FindItem
     int returns = (self->FindItem(itemString));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -527,6 +533,12 @@ static int LUACALL wxLua_wxMenu_GetMenuItemCount(lua_State *L)
     // call GetMenuItemCount
     size_t returns = (self->GetMenuItemCount());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -580,6 +592,12 @@ static int LUACALL wxLua_wxMenu_GetStyle(lua_State *L)
     // call GetStyle
     long returns = (self->GetStyle());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1634,6 +1652,12 @@ static int LUACALL wxLua_wxMenuBar_FindMenu(lua_State *L)
     // call FindMenu
     int returns = (self->FindMenu(title));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1654,6 +1678,12 @@ static int LUACALL wxLua_wxMenuBar_FindMenuItem(lua_State *L)
     // call FindMenuItem
     int returns = (self->FindMenuItem(menuString, itemString));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1785,6 +1815,12 @@ static int LUACALL wxLua_wxMenuBar_GetMenuCount(lua_State *L)
     // call GetMenuCount
     int returns = (self->GetMenuCount());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2520,6 +2556,12 @@ static int LUACALL wxLua_wxMenuItem_GetId(lua_State *L)
     // call GetId
     int returns = (self->GetId());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2572,6 +2614,12 @@ static int LUACALL wxLua_wxMenuItem_GetKind(lua_State *L)
     // call GetKind
     wxItemKind returns = (self->GetKind());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2644,6 +2692,12 @@ static int LUACALL wxLua_wxMenuItem_GetMarginWidth(lua_State *L)
     // call GetMarginWidth
     int returns = (self->GetMarginWidth());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3397,6 +3451,12 @@ static int LUACALL wxLua_wxMenuEvent_GetMenuId(lua_State *L)
     // call GetMenuId
     int returns = (self->GetMenuId());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3787,6 +3847,12 @@ static int LUACALL wxLua_wxToolBarBase_GetMaxCols(lua_State *L)
     // call GetMaxCols
     int returns = (self->GetMaxCols());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3803,6 +3869,12 @@ static int LUACALL wxLua_wxToolBarBase_GetMaxRows(lua_State *L)
     // call GetMaxRows
     int returns = (self->GetMaxRows());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3922,6 +3994,12 @@ static int LUACALL wxLua_wxToolBarBase_GetToolPacking(lua_State *L)
     // call GetToolPacking
     int returns = (self->GetToolPacking());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3940,6 +4018,12 @@ static int LUACALL wxLua_wxToolBarBase_GetToolPos(lua_State *L)
     // call GetToolPos
     int returns = (self->GetToolPos(toolId));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3956,6 +4040,12 @@ static int LUACALL wxLua_wxToolBarBase_GetToolSeparation(lua_State *L)
     // call GetToolSeparation
     int returns = (self->GetToolSeparation());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4954,6 +5044,12 @@ static int LUACALL wxLua_wxToolBarToolBase_GetId(lua_State *L)
     // call GetId
     int returns = (self->GetId());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4972,6 +5068,12 @@ static int LUACALL wxLua_wxToolBarToolBase_GetKind(lua_State *L)
     // call GetKind
     wxItemKind returns = (self->GetKind());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -5061,6 +5163,12 @@ static int LUACALL wxLua_wxToolBarToolBase_GetStyle(lua_State *L)
     // call GetStyle
     int returns = (self->GetStyle());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -5093,6 +5201,12 @@ static int LUACALL wxLua_wxToolBarToolBase_IsButton(lua_State *L)
     // call IsButton
     int returns = (self->IsButton());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -5109,6 +5223,12 @@ static int LUACALL wxLua_wxToolBarToolBase_IsControl(lua_State *L)
     // call IsControl
     int returns = (self->IsControl());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -5141,6 +5261,12 @@ static int LUACALL wxLua_wxToolBarToolBase_IsSeparator(lua_State *L)
     // call IsSeparator
     int returns = (self->IsSeparator());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -5647,6 +5773,12 @@ static int LUACALL wxLua_wxAcceleratorEntry_GetCommand(lua_State *L)
     // call GetCommand
     int returns = (self->GetCommand());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -5663,6 +5795,12 @@ static int LUACALL wxLua_wxAcceleratorEntry_GetFlags(lua_State *L)
     // call GetFlags
     int returns = (self->GetFlags());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -5679,6 +5817,12 @@ static int LUACALL wxLua_wxAcceleratorEntry_GetKeyCode(lua_State *L)
     // call GetKeyCode
     int returns = (self->GetKeyCode());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;

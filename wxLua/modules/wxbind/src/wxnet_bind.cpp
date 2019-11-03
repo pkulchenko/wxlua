@@ -102,6 +102,12 @@ static int LUACALL wxLua_wxSocketBase_GetClientData(lua_State *L)
     // call GetClientData
     wxUIntPtr returns = (wxUIntPtr)self->GetClientData();
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -118,6 +124,12 @@ static int LUACALL wxLua_wxSocketBase_GetFlags(lua_State *L)
     // call GetFlags
     wxSocketFlags returns = (self->GetFlags());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -232,6 +244,12 @@ static int LUACALL wxLua_wxSocketBase_LastCount(lua_State *L)
     // call LastCount
     unsigned long returns = (self->LastCount());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -248,6 +266,12 @@ static int LUACALL wxLua_wxSocketBase_LastError(lua_State *L)
     // call LastError
     wxSocketError returns = (self->LastError());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -922,6 +946,12 @@ static int LUACALL wxLua_wxSocketEvent_GetClientData(lua_State *L)
     // call GetClientData
     wxUIntPtr returns = (wxUIntPtr)self->GetClientData();
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -954,6 +984,12 @@ static int LUACALL wxLua_wxSocketEvent_GetSocketEvent(lua_State *L)
     // call GetSocketEvent
     wxSocketNotify returns = (self->GetSocketEvent());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1167,6 +1203,12 @@ static int LUACALL wxLua_wxIPaddress_Service2(lua_State *L)
     // call Service
     unsigned short returns = (self->Service());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1416,6 +1458,12 @@ static int LUACALL wxLua_wxProtocol_GetError(lua_State *L)
     // call GetError
     wxProtocolError returns = (self->GetError());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1563,6 +1611,12 @@ static int LUACALL wxLua_wxHTTP_GetResponse(lua_State *L)
     // call GetResponse
     int returns = (self->GetResponse());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1732,6 +1786,12 @@ static int LUACALL wxLua_wxFTP_GetFileSize(lua_State *L)
     // call GetFileSize
     int returns = (self->GetFileSize(filename));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1904,6 +1964,12 @@ static int LUACALL wxLua_wxFTP_SendCommand(lua_State *L)
     // call SendCommand
     char returns = (self->SendCommand(command));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2165,6 +2231,12 @@ static int LUACALL wxLua_wxURI_GetHostType(lua_State *L)
     // call GetHostType
     wxURIHostType returns = (self->GetHostType());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2655,6 +2727,12 @@ static int LUACALL wxLua_wxURL_GetError(lua_State *L)
     // call GetError
     wxURLError returns = (self->GetError());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;

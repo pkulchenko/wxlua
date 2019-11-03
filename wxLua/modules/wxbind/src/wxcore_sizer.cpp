@@ -222,6 +222,12 @@ static int LUACALL wxLua_wxSizerFlags_GetBorderInPixels(lua_State *L)
     // call GetBorderInPixels
     int returns = (self->GetBorderInPixels());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -235,6 +241,12 @@ static int LUACALL wxLua_wxSizerFlags_GetDefaultBorder(lua_State *L)
     // call GetDefaultBorder
     int returns = (wxSizerFlags::GetDefaultBorder());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -251,6 +263,12 @@ static int LUACALL wxLua_wxSizerFlags_GetFlags(lua_State *L)
     // call GetFlags
     int returns = (self->GetFlags());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -267,6 +285,12 @@ static int LUACALL wxLua_wxSizerFlags_GetProportion(lua_State *L)
     // call GetProportion
     int returns = (self->GetProportion());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -635,6 +659,12 @@ static int LUACALL wxLua_wxSizerItem_GetBorder(lua_State *L)
     // call GetBorder
     int returns = (self->GetBorder());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -651,6 +681,12 @@ static int LUACALL wxLua_wxSizerItem_GetFlag(lua_State *L)
     // call GetFlag
     int returns = (self->GetFlag());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -728,6 +764,12 @@ static int LUACALL wxLua_wxSizerItem_GetProportion(lua_State *L)
     // call GetProportion
     int returns = (self->GetProportion());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -743,7 +785,7 @@ static int LUACALL wxLua_wxSizerItem_GetRatio(lua_State *L)
     wxSizerItem * self = (wxSizerItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSizerItem);
     // call GetRatio
     float returns = (self->GetRatio());
-    // push the result number
+    // push the result floating point number
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3236,6 +3278,12 @@ static int LUACALL wxLua_wxBoxSizer_GetOrientation(lua_State *L)
     // call GetOrientation
     int returns = (self->GetOrientation());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3298,6 +3346,12 @@ static int LUACALL wxLua_wxGridSizer_GetCols(lua_State *L)
     // call GetCols
     int returns = (self->GetCols());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3314,6 +3368,12 @@ static int LUACALL wxLua_wxGridSizer_GetHGap(lua_State *L)
     // call GetHGap
     int returns = (self->GetHGap());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3330,6 +3390,12 @@ static int LUACALL wxLua_wxGridSizer_GetRows(lua_State *L)
     // call GetRows
     int returns = (self->GetRows());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3346,6 +3412,12 @@ static int LUACALL wxLua_wxGridSizer_GetVGap(lua_State *L)
     // call GetVGap
     int returns = (self->GetVGap());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3525,6 +3597,12 @@ static int LUACALL wxLua_wxFlexGridSizer_GetFlexibleDirection(lua_State *L)
     // call GetFlexibleDirection
     int returns = (self->GetFlexibleDirection());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3541,6 +3619,12 @@ static int LUACALL wxLua_wxFlexGridSizer_GetNonFlexibleGrowMode(lua_State *L)
     // call GetNonFlexibleGrowMode
     wxFlexSizerGrowMode returns = (self->GetNonFlexibleGrowMode());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4418,6 +4502,12 @@ static int LUACALL wxLua_wxGBPosition_GetCol(lua_State *L)
     // call GetCol
     int returns = (self->GetCol());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4434,6 +4524,12 @@ static int LUACALL wxLua_wxGBPosition_GetRow(lua_State *L)
     // call GetRow
     int returns = (self->GetRow());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4592,6 +4688,12 @@ static int LUACALL wxLua_wxGBSpan_GetColspan(lua_State *L)
     // call GetColspan
     int returns = (self->GetColspan());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4608,6 +4710,12 @@ static int LUACALL wxLua_wxGBSpan_GetRowspan(lua_State *L)
     // call GetRowspan
     int returns = (self->GetRowspan());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;

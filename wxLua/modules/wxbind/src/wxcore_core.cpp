@@ -302,6 +302,12 @@ static int LUACALL wxLua_wxSystemSettings_GetMetric(lua_State *L)
     // call GetMetric
     int returns = (wxSystemSettings::GetMetric(index, win));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -315,6 +321,12 @@ static int LUACALL wxLua_wxSystemSettings_GetScreenType(lua_State *L)
     // call GetScreenType
     wxSystemScreenType returns = (wxSystemSettings::GetScreenType());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -590,6 +602,12 @@ static int LUACALL wxLua_wxTextValidator_GetStyle(lua_State *L)
     // call GetStyle
     long returns = (self->GetStyle());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;

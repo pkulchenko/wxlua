@@ -202,6 +202,12 @@ static int LUACALL wxLua_wxConfigBase_GetEntryType(lua_State *L)
     // call GetEntryType
     wxConfigBase::EntryType returns = (self->GetEntryType(name));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -326,6 +332,12 @@ static int LUACALL wxLua_wxConfigBase_GetNumberOfEntries(lua_State *L)
     // call GetNumberOfEntries
     unsigned int returns = (self->GetNumberOfEntries(bRecursive));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -346,6 +358,12 @@ static int LUACALL wxLua_wxConfigBase_GetNumberOfGroups(lua_State *L)
     // call GetNumberOfGroups
     unsigned int returns = (self->GetNumberOfGroups(bRecursive));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;

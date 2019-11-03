@@ -3359,6 +3359,12 @@ static int LUACALL wxLua_function_wxDisplayDepth(lua_State *L)
     // call wxDisplayDepth
     int returns = (wxDisplayDepth());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3437,6 +3443,12 @@ static int LUACALL wxLua_function_wxExecute1(lua_State *L)
     // call wxExecute
     long returns = (wxExecute(command, flags, process));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3461,6 +3473,12 @@ static int LUACALL wxLua_function_wxExecute(lua_State *L)
     // call wxExecute
     long returns = (wxExecute(command, sync, callback));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3596,6 +3614,12 @@ static int LUACALL wxLua_function_wxFindMenuItemId(lua_State *L)
     // call wxFindMenuItemId
     int returns = (wxFindMenuItemId(frame, menuString, itemString));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3733,6 +3757,12 @@ static int LUACALL wxLua_function_wxGetBatteryState(lua_State *L)
     // call wxGetBatteryState
     wxBatteryState returns = (wxGetBatteryState());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4014,6 +4044,12 @@ static int LUACALL wxLua_function_wxGetNumberFromUser(lua_State *L)
     // call wxGetNumberFromUser
     long returns = (wxGetNumberFromUser(message, prompt, caption, value, min, max, parent, *pos));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4055,6 +4091,12 @@ static int LUACALL wxLua_function_wxGetPowerType(lua_State *L)
     // call wxGetPowerType
     wxPowerType returns = (wxGetPowerType());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4069,6 +4111,12 @@ static int LUACALL wxLua_function_wxGetProcessId(lua_State *L)
     // call wxGetProcessId
     unsigned long returns = (wxGetProcessId());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4137,6 +4185,12 @@ static int LUACALL wxLua_function_wxGetSingleChoiceIndex(lua_State *L)
     // call wxGetSingleChoiceIndex
     int returns = (wxGetSingleChoiceIndex(message, caption, choices, parent, x, y, centre, width, height));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4341,6 +4395,12 @@ static int LUACALL wxLua_function_wxMessageBox(lua_State *L)
     // call wxMessageBox
     int returns = (wxMessageBox(message, caption, style, parent, x, y));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4353,6 +4413,12 @@ static int LUACALL wxLua_function_wxNewId(lua_State *L)
     // call wxNewId
     long returns = (wxNewId());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;

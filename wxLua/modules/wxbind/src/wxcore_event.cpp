@@ -138,6 +138,12 @@ static int LUACALL wxLua_wxCommandEvent_GetClientData(lua_State *L)
     // call GetClientData
     wxUIntPtr returns = (wxUIntPtr)self->GetClientData();
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -170,6 +176,12 @@ static int LUACALL wxLua_wxCommandEvent_GetExtraLong(lua_State *L)
     // call GetExtraLong
     long returns = (self->GetExtraLong());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -186,6 +198,12 @@ static int LUACALL wxLua_wxCommandEvent_GetInt(lua_State *L)
     // call GetInt
     int returns = (self->GetInt());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -202,6 +220,12 @@ static int LUACALL wxLua_wxCommandEvent_GetSelection(lua_State *L)
     // call GetSelection
     int returns = (self->GetSelection());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1171,6 +1195,12 @@ static int LUACALL wxLua_wxKeyEvent_GetKeyCode(lua_State *L)
     // call GetKeyCode
     int returns = (self->GetKeyCode());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1189,6 +1219,12 @@ static int LUACALL wxLua_wxKeyEvent_GetModifiers(lua_State *L)
     // call GetModifiers
     int returns = (self->GetModifiers());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1249,6 +1285,12 @@ static int LUACALL wxLua_wxKeyEvent_GetRawKeyCode(lua_State *L)
     // call GetRawKeyCode
     wxUint32 returns = (self->GetRawKeyCode());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1265,6 +1307,12 @@ static int LUACALL wxLua_wxKeyEvent_GetRawKeyFlags(lua_State *L)
     // call GetRawKeyFlags
     wxUint32 returns = (self->GetRawKeyFlags());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1281,6 +1329,12 @@ static int LUACALL wxLua_wxKeyEvent_GetUnicodeKey(lua_State *L)
     // call GetUnicodeKey
     wxChar returns = (self->GetUnicodeKey());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1297,6 +1351,12 @@ static int LUACALL wxLua_wxKeyEvent_GetX(lua_State *L)
     // call GetX
     long returns = (self->GetX());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1313,6 +1373,12 @@ static int LUACALL wxLua_wxKeyEvent_GetY(lua_State *L)
     // call GetY
     long returns = (self->GetY());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1665,6 +1731,12 @@ static int LUACALL wxLua_wxIdleEvent_GetMode(lua_State *L)
     // call GetMode
     wxIdleMode returns = (wxIdleEvent::GetMode());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2089,6 +2161,12 @@ static int LUACALL wxLua_wxMouseEvent_GetLinesPerAction(lua_State *L)
     // call GetLinesPerAction
     int returns = (self->GetLinesPerAction());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2173,6 +2251,12 @@ static int LUACALL wxLua_wxMouseEvent_GetWheelDelta(lua_State *L)
     // call GetWheelDelta
     int returns = (self->GetWheelDelta());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2189,6 +2273,12 @@ static int LUACALL wxLua_wxMouseEvent_GetWheelRotation(lua_State *L)
     // call GetWheelRotation
     int returns = (self->GetWheelRotation());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2205,6 +2295,12 @@ static int LUACALL wxLua_wxMouseEvent_GetX(lua_State *L)
     // call GetX
     long returns = (self->GetX());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2221,6 +2317,12 @@ static int LUACALL wxLua_wxMouseEvent_GetY(lua_State *L)
     // call GetY
     long returns = (self->GetY());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2851,6 +2953,12 @@ static int LUACALL wxLua_wxProcessEvent_GetExitCode(lua_State *L)
     // call GetExitCode
     int returns = (self->GetExitCode());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2869,6 +2977,12 @@ static int LUACALL wxLua_wxProcessEvent_GetPid(lua_State *L)
     // call GetPid
     int returns = (self->GetPid());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2992,6 +3106,12 @@ static int LUACALL wxLua_wxScrollEvent_GetOrientation(lua_State *L)
     // call GetOrientation
     int returns = (self->GetOrientation());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3008,6 +3128,12 @@ static int LUACALL wxLua_wxScrollEvent_GetPosition(lua_State *L)
     // call GetPosition
     int returns = (self->GetPosition());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3080,6 +3206,12 @@ static int LUACALL wxLua_wxScrollWinEvent_GetOrientation(lua_State *L)
     // call GetOrientation
     int returns = (self->GetOrientation());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3096,6 +3228,12 @@ static int LUACALL wxLua_wxScrollWinEvent_GetPosition(lua_State *L)
     // call GetPosition
     int returns = (self->GetPosition());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3828,6 +3966,12 @@ static int LUACALL wxLua_wxSetCursorEvent_GetX(lua_State *L)
     // call GetX
     wxCoord returns = (self->GetX());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3844,6 +3988,12 @@ static int LUACALL wxLua_wxSetCursorEvent_GetY(lua_State *L)
     // call GetY
     wxCoord returns = (self->GetY());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4035,6 +4185,12 @@ static int LUACALL wxLua_wxUpdateUIEvent_GetMode(lua_State *L)
     // call GetMode
     wxUpdateUIMode returns = (wxUpdateUIEvent::GetMode());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4152,6 +4308,12 @@ static int LUACALL wxLua_wxUpdateUIEvent_GetUpdateInterval(lua_State *L)
     // call GetUpdateInterval
     long returns = (wxUpdateUIEvent::GetUpdateInterval());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -4339,6 +4501,12 @@ static int LUACALL wxLua_wxHelpEvent_GetOrigin(lua_State *L)
     // call GetOrigin
     wxHelpEvent::Origin returns = (self->GetOrigin());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;

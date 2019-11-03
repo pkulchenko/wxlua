@@ -445,6 +445,12 @@ static int LUACALL wxLua_wxDataFormat_GetType(lua_State *L)
     // call GetType
     int returns = (self->GetType());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -678,6 +684,12 @@ static int LUACALL wxLua_wxDataObject_GetDataSize(lua_State *L)
     // call GetDataSize
     int returns = (self->GetDataSize(*format));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -698,6 +710,12 @@ static int LUACALL wxLua_wxDataObject_GetFormatCount(lua_State *L)
     // call GetFormatCount
     int returns = (self->GetFormatCount(dir));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -836,6 +854,12 @@ static int LUACALL wxLua_wxDataObjectSimple_GetDataSize(lua_State *L)
     // call GetDataSize
     size_t returns = (self->GetDataSize());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1228,6 +1252,12 @@ static int LUACALL wxLua_wxTextDataObject_GetTextLength(lua_State *L)
     // call GetTextLength
     size_t returns = (self->GetTextLength());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1541,6 +1571,12 @@ static int LUACALL wxLua_wxDropTarget_GetDefaultAction(lua_State *L)
     // call GetDefaultAction
     wxDragResult returns = (self->GetDefaultAction());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1667,6 +1703,12 @@ static int LUACALL wxLua_wxLuaFileDropTarget_OnData(lua_State *L)
     // call OnData
     wxDragResult returns = (self->OnData(x, y, def));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1795,6 +1837,12 @@ static int LUACALL wxLua_wxLuaTextDropTarget_OnData(lua_State *L)
     // call OnData
     wxDragResult returns = (self->OnData(x, y, def));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1817,6 +1865,12 @@ static int LUACALL wxLua_wxLuaTextDropTarget_OnDragOver(lua_State *L)
     // call OnDragOver
     wxDragResult returns = (self->OnDragOver(x, y, def));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1861,6 +1915,12 @@ static int LUACALL wxLua_wxLuaTextDropTarget_OnEnter(lua_State *L)
     // call OnEnter
     wxDragResult returns = (self->OnEnter(x, y, def));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1950,6 +2010,12 @@ static int LUACALL wxLua_wxLuaURLDropTarget_OnData(lua_State *L)
     // call OnData
     wxDragResult returns = (self->OnData(x, y, def));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2042,6 +2108,12 @@ static int LUACALL wxLua_wxDropSource_DoDragDrop(lua_State *L)
     // call DoDragDrop
     wxDragResult returns = (self->DoDragDrop(flags));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2360,6 +2432,12 @@ static int LUACALL wxLua_wxDropFilesEvent_GetNumberOfFiles(lua_State *L)
     // call GetNumberOfFiles
     int returns = (self->GetNumberOfFiles());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;

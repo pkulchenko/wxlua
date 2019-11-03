@@ -24,9 +24,12 @@
 ** SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 **
 ** [ MIT license: http://www.opensource.org/licenses/mit-license.php ]
+**
+** Lua 5.3 changes are based on https://github.com/LuaJIT/LuaJIT/issues/384
+** added libsize and updated luaopen_bit to load for Lua 5.2 and Lua 5.3
 */
 
-#define LUA_BITOP_VERSION	"1.0.2"
+#define LUA_BITOP_VERSION	"1.0.3"
 
 #define LUA_LIB
 #include "lua.h"
@@ -46,7 +49,7 @@ typedef uint32_t UBits;
 
 typedef union {
   lua_Number n;
-#ifdef LUA_NUMBER_DOUBLE
+#if defined(LUA_NUMBER_DOUBLE) || defined(LUA_FLOAT_DOUBLE)
   uint64_t b;
 #else
   UBits b;
@@ -63,24 +66,25 @@ static UBits barg(lua_State *L, int idx)
 #else
   bn.n = luaL_checknumber(L, idx);
 #endif
-#if defined(LUA_NUMBER_DOUBLE)
+#if defined(LUA_NUMBER_DOUBLE) || defined(LUA_FLOAT_DOUBLE)
   bn.n += 6755399441055744.0;  /* 2^52+2^51 */
 #ifdef SWAPPED_DOUBLE
   b = (UBits)(bn.b >> 32);
 #else
   b = (UBits)bn.b;
 #endif
-#elif defined(LUA_NUMBER_INT) || defined(LUA_NUMBER_LONG) || \
-      defined(LUA_NUMBER_LONGLONG) || defined(LUA_NUMBER_LONG_LONG) || \
-      defined(LUA_NUMBER_LLONG)
+#elif defined(LUA_NUMBER_INT)       || defined(LUA_INT_INT) || \
+      defined(LUA_NUMBER_LONG)      || defined(LUA_INT_LONG) || \
+      defined(LUA_NUMBER_LONGLONG)  || defined(LUA_INT_LONGLONG) || \
+      defined(LUA_NUMBER_LONG_LONG) || defined(LUA_NUMBER_LLONG)
   if (sizeof(UBits) == sizeof(lua_Number))
     b = bn.b;
   else
     b = (UBits)(SBits)bn.n;
-#elif defined(LUA_NUMBER_FLOAT)
+#elif defined(LUA_NUMBER_FLOAT) || defined(LUA_FLOAT_FLOAT)
 #error "A 'float' lua_Number type is incompatible with this library"
 #else
-#error "Unknown number type, check LUA_NUMBER_* in luaconf.h"
+#error "Unknown number type, check LUA_NUMBER_*, LUA_FLOAT_*, LUA_INT_* in luaconf.h"
 #endif
 #if LUA_VERSION_NUM < 502
   if (b == 0 && !lua_isnumber(L, idx)) {
@@ -91,7 +95,11 @@ static UBits barg(lua_State *L, int idx)
 }
 
 /* Return bit type. */
+#if LUA_VERSION_NUM < 503
 #define BRET(b)  lua_pushnumber(L, (lua_Number)(SBits)(b)); return 1;
+#else
+#define BRET(b)  lua_pushinteger(L, (lua_Integer)(SBits)(b)); return 1;
+#endif
 
 static int bit_tobit(lua_State *L) { BRET(barg(L, 1)) }
 static int bit_bnot(lua_State *L) { BRET(~barg(L, 1)) }
@@ -160,14 +168,24 @@ static const struct luaL_Reg bit_funcs[] = {
 */
 #define BAD_SAR		(bsar(-8, 2) != (SBits)-2)
 
+static int libsize (const luaL_Reg *l) {
+  int size = 0;
+  for (; l && l->name; l++) size++;
+  return size;
+}
+
 LUALIB_API int luaopen_bit(lua_State *L)
 {
   UBits b;
+#if LUA_VERSION_NUM < 503
   lua_pushnumber(L, (lua_Number)1437217655L);
+#else
+  lua_pushinteger(L, (lua_Integer)1437217655L);
+#endif
   b = barg(L, -1);
   if (b != (UBits)1437217655L || BAD_SAR) {  /* Perform a simple self-test. */
     const char *msg = "compiled with incompatible luaconf.h";
-#ifdef LUA_NUMBER_DOUBLE
+#if defined(LUA_NUMBER_DOUBLE) || defined(LUA_FLOAT_DOUBLE)
 #ifdef _WIN32
     if (b == (UBits)1610612736L)
       msg = "use D3DCREATE_FPU_PRESERVE with DirectX";
@@ -179,13 +197,13 @@ LUALIB_API int luaopen_bit(lua_State *L)
       msg = "arithmetic right-shift broken";
     luaL_error(L, "bit library self-test failed (%s)", msg);
   }
-// wxLua edit: always use luaL_register, even on Lua 5.2, because newlib depends on edits to the Lua
-// source itself in order to function, but the source may be provided externally.
-//#if LUA_VERSION_NUM < 502
+#if LUA_VERSION_NUM < 502
   luaL_register(L, "bit", bit_funcs);
-//#else
-//  luaL_newlib(L, bit_funcs);
-//#endif
+#else
+  luaL_pushmodule(L, "bit", libsize(bit_funcs));  /* get/create library table */
+  lua_insert(L, -1);  /* move library table to below upvalues */
+  luaL_setfuncs(L, bit_funcs, 0);
+#endif
   return 1;
 }
 

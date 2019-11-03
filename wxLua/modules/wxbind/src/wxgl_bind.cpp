@@ -528,6 +528,12 @@ static int LUACALL wxLua_wxGLAttribsBase_GetSize(lua_State *L)
     // call GetSize
     int returns = (self->GetSize());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;

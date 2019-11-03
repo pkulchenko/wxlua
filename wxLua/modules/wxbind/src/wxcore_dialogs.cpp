@@ -183,6 +183,12 @@ static int LUACALL wxLua_wxDialog_GetReturnCode(lua_State *L)
     // call GetReturnCode
     int returns = (self->GetReturnCode());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -231,6 +237,12 @@ static int LUACALL wxLua_wxDialog_ShowModal(lua_State *L)
     // call ShowModal
     int returns = (self->ShowModal());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -695,6 +707,12 @@ static int LUACALL wxLua_wxFileDialog_GetFilterIndex(lua_State *L)
     // call GetFilterIndex
     int returns = (self->GetFilterIndex());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -763,6 +781,12 @@ static int LUACALL wxLua_wxFileDialog_GetStyle(lua_State *L)
     // call GetStyle
     long returns = (self->GetStyle());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1078,6 +1102,12 @@ static int LUACALL wxLua_wxDirDialog_GetStyle(lua_State *L)
     // call GetStyle
     long returns = (self->GetStyle());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1259,6 +1289,12 @@ static int LUACALL wxLua_wxMessageDialog_GetEffectiveIcon(lua_State *L)
     // call GetEffectiveIcon
     long returns = (self->GetEffectiveIcon());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1332,6 +1368,12 @@ static int LUACALL wxLua_wxMessageDialog_GetMessageDialogStyle(lua_State *L)
     // call GetMessageDialogStyle
     long returns = (self->GetMessageDialogStyle());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1933,6 +1975,12 @@ static int LUACALL wxLua_wxSingleChoiceDialog_GetSelection(lua_State *L)
     // call GetSelection
     int returns = (self->GetSelection());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2795,6 +2843,12 @@ static int LUACALL wxLua_wxFindReplaceData_GetFlags(lua_State *L)
     // call GetFlags
     int returns = (self->GetFlags());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2966,6 +3020,12 @@ static int LUACALL wxLua_wxFindDialogEvent_GetFlags(lua_State *L)
     // call GetFlags
     int returns = (self->GetFlags());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3125,6 +3185,12 @@ static int LUACALL wxLua_wxProgressDialog_GetRange(lua_State *L)
     // call GetRange
     int returns = (self->GetRange());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3141,6 +3207,12 @@ static int LUACALL wxLua_wxProgressDialog_GetValue(lua_State *L)
     // call GetValue
     int returns = (self->GetValue());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;

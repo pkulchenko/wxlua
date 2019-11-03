@@ -36,6 +36,7 @@ typedefTable        = {} -- all typedefs read from the interface files
 dataTypeTable       = {} -- all datatypes; int, double, class names, see AllocDataType
 dataTypeAttribTable = {} -- attributes for data types; unsigned, const
 dataTypeUIntTable   = {} -- datatypes that are unsigned numbers
+dataTypeFloatTable  = {} -- datatypes that are float (and similar) numbers
 dataTypeBoolTable   = {} -- datatypes that are boolean
 functionAttribTable = {} -- attributes for functions; static, virtual
 
@@ -300,6 +301,13 @@ function InitDataTypes()
 
     dataTypeAttribTable["%IncRef"] = true -- special to wxGridCellWorker/wxRefCounter classes and IncRef() will be called on it
 
+    -- datatypes that are float numbers to be treated differently
+    dataTypeFloatTable["float"]     = true
+    dataTypeFloatTable["double"]    = true
+    dataTypeFloatTable["wxFloat32"] = true
+    dataTypeFloatTable["wxFloat64"] = true
+    dataTypeFloatTable["wxDouble"]  = true
+
     -- datatypes that are unsigned integers to be treated differently
     dataTypeUIntTable["size_t"]         = true
     dataTypeUIntTable["time_t"]         = true
@@ -546,6 +554,20 @@ function IsDataTypeUInt(datatype)
         return dataTypeUIntTable[dtype.Name] or false
     else
         print("ERROR: Missing data type '"..tostring(datatype).."' in IsDataTypeUInt.")
+    end
+
+    return false
+end
+
+-- ---------------------------------------------------------------------------
+-- Is this data type an unsigned integer
+-- ---------------------------------------------------------------------------
+function IsDataTypeFloat(datatype)
+    local dtype = GetDataTypedefBase(string.gsub(datatype, "const ", ""))
+    if dtype then
+        return dataTypeFloatTable[dtype.Name] or false
+    else
+        print("ERROR: Missing data type '"..tostring(datatype).."' in IsDataTypeFloat.")
     end
 
     return false
@@ -3259,9 +3281,21 @@ function GenerateLuaLanguageBinding(interface)
                     CommentBindingTable(codeList, "    // push the result flag\n")
                     table.insert(codeList, "    lua_pushboolean(L, "..self_name..member.Name..");\n")
 
-                else
-                    CommentBindingTable(codeList, "    // push the result number\n")
+                elseif IsDataTypeFloat(memberType) then
+                    CommentBindingTable(codeList, "    // push the result floating point number\n")
                     table.insert(codeList, "    lua_pushnumber(L, "..self_name..member.Name..");\n")
+                else
+                    local val = self_name..member.Name
+                    CommentBindingTable(codeList, "    // push the result integer? number\n")
+                    table.insert(codeList, ([[
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)(%s) == (double)(%s)) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, %s);
+} else
+#endif
+    lua_pushnumber(L, %s);
+]]):format(val, val, val, val))
                 end
 
                 CommentBindingTable(codeList, "    // return the number of values\n")
@@ -4284,9 +4318,20 @@ function GenerateLuaLanguageBinding(interface)
                         elseif returnPtr == "*" then
                             CommentBindingTable(codeList, "    // push the result pointer\n")
                             table.insert(codeList, "    lua_pushlightuserdata(L, (void *)returns);\n")
+                        elseif IsDataTypeFloat(member.DataType) then
+                            CommentBindingTable(codeList, "    // push the result floating point number\n")
+                            table.insert(codeList, "    lua_pushnumber(L, returns);\n")
                         else -- Number
                             CommentBindingTable(codeList, "    // push the result number\n")
-                            table.insert(codeList, "    lua_pushnumber(L, returns);\n")
+                            table.insert(codeList, [[
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+    lua_pushnumber(L, returns);
+]])
                         end
 
                         table.insert(codeList, "\n    return 1;\n")

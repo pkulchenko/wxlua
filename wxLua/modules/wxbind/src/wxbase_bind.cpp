@@ -1207,6 +1207,12 @@ static int LUACALL wxLua_function_wxGetElapsedTime(lua_State *L)
     // call wxGetElapsedTime
     long returns = (wxGetElapsedTime(resetTimer));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1306,6 +1312,12 @@ static int LUACALL wxLua_function_wxGetLocalTime(lua_State *L)
     // call wxGetLocalTime
     long returns = (wxGetLocalTime());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -1533,6 +1545,12 @@ static int LUACALL wxLua_function_wxGetUTCTime(lua_State *L)
     // call wxGetUTCTime
     long returns = (wxGetUTCTime());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2071,6 +2089,12 @@ static int LUACALL wxLua_function_wxSysErrorCode(lua_State *L)
     // call wxSysErrorCode
     unsigned long returns = (wxSysErrorCode());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;

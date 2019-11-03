@@ -79,6 +79,12 @@ static int LUACALL wxLua_wxAppConsole_FilterEvent(lua_State *L)
     // call FilterEvent
     int returns = (self->FilterEvent(*event));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -332,6 +338,12 @@ static int LUACALL wxLua_wxAppConsole_OnExit(lua_State *L)
     // call OnExit
     int returns = (self->OnExit());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -378,6 +390,12 @@ static int LUACALL wxLua_wxAppConsole_OnRun(lua_State *L)
     // call OnRun
     int returns = (self->OnRun());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -865,6 +883,12 @@ static int LUACALL wxLua_wxApp_GetLayoutDirection(lua_State *L)
     // call GetLayoutDirection
     wxLayoutDirection returns = (self->GetLayoutDirection());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -2853,6 +2877,12 @@ static int LUACALL wxLua_wxFrame_GetStatusBarPane(lua_State *L)
     // call GetStatusBarPane
     int returns = (self->GetStatusBarPane());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3453,6 +3483,12 @@ static int LUACALL wxLua_wxStatusBarPane_GetStyle(lua_State *L)
     // call GetStyle
     int returns = (self->GetStyle());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3485,6 +3521,12 @@ static int LUACALL wxLua_wxStatusBarPane_GetWidth(lua_State *L)
     // call GetWidth
     int returns = (self->GetWidth());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3655,6 +3697,12 @@ static int LUACALL wxLua_wxStatusBar_GetFieldsCount(lua_State *L)
     // call GetFieldsCount
     int returns = (self->GetFieldsCount());
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3675,6 +3723,12 @@ static int LUACALL wxLua_wxStatusBar_GetStatusStyle(lua_State *L)
     // call GetStatusStyle
     int returns = (self->GetStatusStyle(n));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
@@ -3717,6 +3771,12 @@ static int LUACALL wxLua_wxStatusBar_GetStatusWidth(lua_State *L)
     // call GetStatusWidth
     int returns = (self->GetStatusWidth(n));
     // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
     lua_pushnumber(L, returns);
 
     return 1;
