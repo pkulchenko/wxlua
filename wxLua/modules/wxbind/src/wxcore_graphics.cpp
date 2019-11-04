@@ -143,7 +143,7 @@ int wxGraphicsObject_methodCount = sizeof(wxGraphicsObject_methods)/sizeof(wxLua
 #endif  // wxUSE_GRAPHICS_CONTEXT
 
 
-#if wxUSE_GRAPHICS_CONTEXT
+#if (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
 // ---------------------------------------------------------------------------
 // Bind class wxGraphicsPenInfo
 // ---------------------------------------------------------------------------
@@ -189,7 +189,7 @@ static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_delete[] = { &wxlua
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_delete }};
 
 
-#if (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_constructor1[] = { &wxluatype_wxColour, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxGraphicsPenInfo_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_constructor1[1] = {{ wxLua_wxGraphicsPenInfo_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 3, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_constructor1 }};
@@ -214,7 +214,7 @@ static int LUACALL wxLua_wxGraphicsPenInfo_constructor1(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
 
 static int LUACALL wxLua_wxGraphicsPenInfo_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_constructor[1] = {{ wxLua_wxGraphicsPenInfo_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
@@ -234,19 +234,19 @@ static int LUACALL wxLua_wxGraphicsPenInfo_constructor(lua_State *L)
 
 
 
-#if ((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))||(wxUSE_GRAPHICS_CONTEXT)
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush))||((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_constructor_overload[] =
 {
 
-#if (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
     { wxLua_wxGraphicsPenInfo_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 3, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_constructor1 },
-#endif // (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
     { wxLua_wxGraphicsPenInfo_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
 };
 static int s_wxluafunc_wxLua_wxGraphicsPenInfo_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxGraphicsPenInfo_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))||(wxUSE_GRAPHICS_CONTEXT)
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush))||((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT))
 
 void wxLua_wxGraphicsPenInfo_delete_function(void** p)
 {
@@ -260,16 +260,16 @@ wxLuaBindMethod wxGraphicsPenInfo_methods[] = {
     { "Width", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_Width, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxGraphicsPenInfo_delete, 1, NULL },
 
-#if ((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))||(wxUSE_GRAPHICS_CONTEXT)
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush))||((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT))
     { "wxGraphicsPenInfo", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxGraphicsPenInfo_constructor_overload, s_wxluafunc_wxLua_wxGraphicsPenInfo_constructor_overload_count, 0 },
-#endif // ((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))||(wxUSE_GRAPHICS_CONTEXT)
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush))||((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT))
 
     { 0, 0, 0, 0 },
 };
 
 int wxGraphicsPenInfo_methodCount = sizeof(wxGraphicsPenInfo_methods)/sizeof(wxLuaBindMethod) - 1;
 
-#endif  // wxUSE_GRAPHICS_CONTEXT
+#endif  // (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
 
 
 #if wxUSE_GRAPHICS_CONTEXT
@@ -1945,10 +1945,12 @@ static int LUACALL wxLua_wxGraphicsContext_BeginLayer(lua_State *L)
     return 0;
 }
 
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_ClearRectangle[] = { &wxluatype_wxGraphicsContext, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxGraphicsContext_ClearRectangle(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_ClearRectangle[1] = {{ wxLua_wxGraphicsContext_ClearRectangle, WXLUAMETHOD_METHOD, 5, 5, s_wxluatypeArray_wxLua_wxGraphicsContext_ClearRectangle }};
-//     virtual void ClearRectangle(wxDouble x, wxDouble y, wxDouble w, wxDouble h);
+//     %wxchkver_3_1_1 virtual void ClearRectangle(wxDouble x, wxDouble y, wxDouble w, wxDouble h);
 static int LUACALL wxLua_wxGraphicsContext_ClearRectangle(lua_State *L)
 {
     // wxDouble h
@@ -1966,6 +1968,8 @@ static int LUACALL wxLua_wxGraphicsContext_ClearRectangle(lua_State *L)
 
     return 0;
 }
+
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_Clip1[] = { &wxluatype_wxGraphicsContext, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxGraphicsContext_Clip1(lua_State *L);
@@ -2320,11 +2324,11 @@ static int LUACALL wxLua_wxGraphicsContext_CreateFromNativeWindow(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxDC)) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_CreateFromUnknownDC[] = { &wxluatype_wxDC, NULL };
 static int LUACALL wxLua_wxGraphicsContext_CreateFromUnknownDC(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_CreateFromUnknownDC[1] = {{ wxLua_wxGraphicsContext_CreateFromUnknownDC, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsContext_CreateFromUnknownDC }};
-//     static %gc wxGraphicsContext* CreateFromUnknownDC(const wxDC& dc);
+//     %wxchkver_3_1_1 static %gc wxGraphicsContext* CreateFromUnknownDC(const wxDC& dc);
 static int LUACALL wxLua_wxGraphicsContext_CreateFromUnknownDC(lua_State *L)
 {
     // const wxDC dc
@@ -2338,7 +2342,7 @@ static int LUACALL wxLua_wxGraphicsContext_CreateFromUnknownDC(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxDC)) && (wxUSE_GRAPHICS_CONTEXT)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_CreateLinearGradientBrush1[] = { &wxluatype_wxGraphicsContext, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxGraphicsGradientStops, NULL };
 static int LUACALL wxLua_wxGraphicsContext_CreateLinearGradientBrush1(lua_State *L);
@@ -2456,10 +2460,12 @@ static int LUACALL wxLua_wxGraphicsContext_CreatePath(lua_State *L)
     return 1;
 }
 
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_CreatePen1[] = { &wxluatype_wxGraphicsContext, &wxluatype_wxGraphicsPenInfo, NULL };
 static int LUACALL wxLua_wxGraphicsContext_CreatePen1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_CreatePen1[1] = {{ wxLua_wxGraphicsContext_CreatePen1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsContext_CreatePen1 }};
-//     wxGraphicsPen CreatePen(const wxGraphicsPenInfo& info) const;
+//     %wxchkver_3_1_1 wxGraphicsPen CreatePen(const wxGraphicsPenInfo& info) const;
 static int LUACALL wxLua_wxGraphicsContext_CreatePen1(lua_State *L)
 {
     // const wxGraphicsPenInfo info
@@ -2477,6 +2483,7 @@ static int LUACALL wxLua_wxGraphicsContext_CreatePen1(lua_State *L)
     return 1;
 }
 
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
 
 #if (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_CreatePen[] = { &wxluatype_wxGraphicsContext, &wxluatype_wxPen, NULL };
@@ -3037,10 +3044,12 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_GetClipBox[] = { &wxluatype_wxGraphicsContext, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, NULL };
 static int LUACALL wxLua_wxGraphicsContext_GetClipBox(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_GetClipBox[1] = {{ wxLua_wxGraphicsContext_GetClipBox, WXLUAMETHOD_METHOD, 5, 5, s_wxluatypeArray_wxLua_wxGraphicsContext_GetClipBox }};
-//     virtual void GetClipBox(wxDouble* x, wxDouble* y, wxDouble* w, wxDouble* h);// = 0;
+//     %wxchkver_3_1_1 virtual void GetClipBox(wxDouble* x, wxDouble* y, wxDouble* w, wxDouble* h);// = 0;
 static int LUACALL wxLua_wxGraphicsContext_GetClipBox(lua_State *L)
 {
     // wxDouble h
@@ -3058,6 +3067,8 @@ static int LUACALL wxLua_wxGraphicsContext_GetClipBox(lua_State *L)
 
     return 0;
 }
+
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_GetCompositionMode[] = { &wxluatype_wxGraphicsContext, NULL };
 static int LUACALL wxLua_wxGraphicsContext_GetCompositionMode(lua_State *L);
@@ -3721,10 +3732,16 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_CreateLinearGradientBr
 };
 static int s_wxluafunc_wxLua_wxGraphicsContext_CreateLinearGradientBrush_overload_count = sizeof(s_wxluafunc_wxLua_wxGraphicsContext_CreateLinearGradientBrush_overload)/sizeof(wxLuaBindCFunc);
 
+#endif // (wxUSE_GRAPHICS_CONTEXT)||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
+
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT))||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_CreatePen_overload[] =
 {
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
     { wxLua_wxGraphicsContext_CreatePen1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsContext_CreatePen1 },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
 
 #if (wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT)
     { wxLua_wxGraphicsContext_CreatePen, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsContext_CreatePen },
@@ -3732,6 +3749,9 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_CreatePen_overload[] =
 };
 static int s_wxluafunc_wxLua_wxGraphicsContext_CreatePen_overload_count = sizeof(s_wxluafunc_wxLua_wxGraphicsContext_CreatePen_overload)/sizeof(wxLuaBindCFunc);
 
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT))||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
+
+#if (wxUSE_GRAPHICS_CONTEXT)||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_CreateRadialGradientBrush_overload[] =
 {
@@ -3840,7 +3860,10 @@ void wxLua_wxGraphicsContext_delete_function(void** p)
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxGraphicsContext_methods[] = {
     { "BeginLayer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_BeginLayer, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
     { "ClearRectangle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_ClearRectangle, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
 
 #if (wxUSE_GRAPHICS_CONTEXT)||((wxLUA_USE_wxRegion) && (wxUSE_GRAPHICS_CONTEXT))
     { "Clip", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_Clip_overload, s_wxluafunc_wxLua_wxGraphicsContext_Clip_overload_count, 0 },
@@ -3871,9 +3894,9 @@ wxLuaBindMethod wxGraphicsContext_methods[] = {
     { "CreateFromNative", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxGraphicsContext_CreateFromNative, 1, NULL },
     { "CreateFromNativeWindow", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxGraphicsContext_CreateFromNativeWindow, 1, NULL },
 
-#if (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxDC)) && (wxUSE_GRAPHICS_CONTEXT)
     { "CreateFromUnknownDC", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxGraphicsContext_CreateFromUnknownDC, 1, NULL },
-#endif // (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxDC)) && (wxUSE_GRAPHICS_CONTEXT)
 
 #if (wxUSE_GRAPHICS_CONTEXT)||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
     { "CreateLinearGradientBrush", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_CreateLinearGradientBrush_overload, s_wxluafunc_wxLua_wxGraphicsContext_CreateLinearGradientBrush_overload_count, 0 },
@@ -3882,8 +3905,11 @@ wxLuaBindMethod wxGraphicsContext_methods[] = {
     { "CreateMatrix", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_CreateMatrix, 1, NULL },
     { "CreatePath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_CreatePath, 1, NULL },
 
-#if (wxUSE_GRAPHICS_CONTEXT)||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT))||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
     { "CreatePen", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_CreatePen_overload, s_wxluafunc_wxLua_wxGraphicsContext_CreatePen_overload_count, 0 },
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT))||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
+
+#if (wxUSE_GRAPHICS_CONTEXT)||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
     { "CreateRadialGradientBrush", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_CreateRadialGradientBrush_overload, s_wxluafunc_wxLua_wxGraphicsContext_CreateRadialGradientBrush_overload_count, 0 },
 #endif // (wxUSE_GRAPHICS_CONTEXT)||((wxLUA_USE_wxColourPenBrush) && (wxUSE_GRAPHICS_CONTEXT))
 
@@ -3931,7 +3957,11 @@ wxLuaBindMethod wxGraphicsContext_methods[] = {
 #endif // (0) && (wxUSE_GRAPHICS_CONTEXT)
 
     { "GetAntialiasMode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetAntialiasMode, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
     { "GetClipBox", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetClipBox, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
+
     { "GetCompositionMode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetCompositionMode, 1, NULL },
     { "GetDPI", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetDPI, 1, NULL },
     { "GetInterpolationQuality", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetInterpolationQuality, 1, NULL },
@@ -4296,10 +4326,12 @@ static int LUACALL wxLua_wxGraphicsRenderer_CreatePath(lua_State *L)
     return 1;
 }
 
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsRenderer_CreatePen[] = { &wxluatype_wxGraphicsRenderer, &wxluatype_wxGraphicsPenInfo, NULL };
 static int LUACALL wxLua_wxGraphicsRenderer_CreatePen(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsRenderer_CreatePen[1] = {{ wxLua_wxGraphicsRenderer_CreatePen, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsRenderer_CreatePen }};
-//     virtual wxGraphicsPen CreatePen(const wxGraphicsPenInfo& info);// = 0;
+//     %wxchkver_3_1_1 virtual wxGraphicsPen CreatePen(const wxGraphicsPenInfo& info);// = 0;
 static int LUACALL wxLua_wxGraphicsRenderer_CreatePen(lua_State *L)
 {
     // const wxGraphicsPenInfo info
@@ -4316,6 +4348,8 @@ static int LUACALL wxLua_wxGraphicsRenderer_CreatePen(lua_State *L)
 
     return 1;
 }
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsRenderer_CreateRadialGradientBrush[] = { &wxluatype_wxGraphicsRenderer, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxGraphicsGradientStops, NULL };
 static int LUACALL wxLua_wxGraphicsRenderer_CreateRadialGradientBrush(lua_State *L);
@@ -4403,10 +4437,12 @@ static int LUACALL wxLua_wxGraphicsRenderer_GetDefaultRenderer(lua_State *L)
     return 1;
 }
 
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsRenderer_GetName[] = { &wxluatype_wxGraphicsRenderer, NULL };
 static int LUACALL wxLua_wxGraphicsRenderer_GetName(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsRenderer_GetName[1] = {{ wxLua_wxGraphicsRenderer_GetName, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsRenderer_GetName }};
-//     virtual wxString GetName() const;// = 0;
+//     %wxchkver_3_1_0 virtual wxString GetName() const;// = 0;
 static int LUACALL wxLua_wxGraphicsRenderer_GetName(lua_State *L)
 {
     // get this
@@ -4422,7 +4458,7 @@ static int LUACALL wxLua_wxGraphicsRenderer_GetName(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsRenderer_GetVersion[] = { &wxluatype_wxGraphicsRenderer, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, NULL };
 static int LUACALL wxLua_wxGraphicsRenderer_GetVersion(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsRenderer_GetVersion[1] = {{ wxLua_wxGraphicsRenderer_GetVersion, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxGraphicsRenderer_GetVersion }};
-//     virtual void GetVersion(int* major, int* minor = NULL, int* micro = NULL) const;// = 0;
+//     %wxchkver_3_1_0 virtual void GetVersion(int* major, int* minor = NULL, int* micro = NULL) const;// = 0;
 static int LUACALL wxLua_wxGraphicsRenderer_GetVersion(lua_State *L)
 {
     // get number of arguments
@@ -4440,6 +4476,8 @@ static int LUACALL wxLua_wxGraphicsRenderer_GetVersion(lua_State *L)
 
     return 0;
 }
+
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxUSE_GRAPHICS_CONTEXT)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsRenderer_delete[] = { &wxluatype_wxGraphicsRenderer, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsRenderer_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsRenderer_delete }};
@@ -4503,13 +4541,21 @@ wxLuaBindMethod wxGraphicsRenderer_methods[] = {
     { "CreateMatrix", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsRenderer_CreateMatrix, 1, NULL },
     { "CreateMeasuringContext", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsRenderer_CreateMeasuringContext, 1, NULL },
     { "CreatePath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsRenderer_CreatePath, 1, NULL },
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
     { "CreatePen", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsRenderer_CreatePen, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+
     { "CreateRadialGradientBrush", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsRenderer_CreateRadialGradientBrush, 1, NULL },
     { "CreateSubBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsRenderer_CreateSubBitmap, 1, NULL },
     { "GetCairoRenderer", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxGraphicsRenderer_GetCairoRenderer, 1, NULL },
     { "GetDefaultRenderer", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxGraphicsRenderer_GetDefaultRenderer, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxUSE_GRAPHICS_CONTEXT)
     { "GetName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsRenderer_GetName, 1, NULL },
     { "GetVersion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsRenderer_GetVersion, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxUSE_GRAPHICS_CONTEXT)
+
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxGraphicsRenderer_delete, 1, NULL },
 
     { 0, 0, 0, 0 },

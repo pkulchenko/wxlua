@@ -5808,6 +5808,12 @@ static wxLuaBindClass* wxluabaseclassbinds_wxXPMHandler[] = { NULL };
     extern void wxLua_wxPenInfo_delete_function(void** p);
 #endif // (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
 
+#if (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
+    extern wxLuaBindMethod wxGraphicsPenInfo_methods[];
+    extern int wxGraphicsPenInfo_methodCount;
+    extern void wxLua_wxGraphicsPenInfo_delete_function(void** p);
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
+
 #if (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
     extern wxLuaBindMethod wxBitmapButton_methods[];
     extern int wxBitmapButton_methodCount;
@@ -7048,9 +7054,6 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern wxLuaBindMethod wxGraphicsPen_methods[];
     extern int wxGraphicsPen_methodCount;
     extern void wxLua_wxGraphicsPen_delete_function(void** p);
-    extern wxLuaBindMethod wxGraphicsPenInfo_methods[];
-    extern int wxGraphicsPenInfo_methodCount;
-    extern void wxLua_wxGraphicsPenInfo_delete_function(void** p);
     extern wxLuaBindMethod wxGraphicsRenderer_methods[];
     extern int wxGraphicsRenderer_methodCount;
     extern void wxLua_wxGraphicsRenderer_delete_function(void** p);
@@ -7449,7 +7452,13 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
         { wxluaclassname_wxGraphicsObject, wxGraphicsObject_methods, wxGraphicsObject_methodCount, CLASSINFO(wxGraphicsObject), &wxluatype_wxGraphicsObject, wxluabaseclassnames_wxGraphicsObject, wxluabaseclassbinds_wxGraphicsObject, NULL, NULL, NULL, 0, &wxLua_wxGraphicsObject_delete_function, }, 
         { wxluaclassname_wxGraphicsPath, wxGraphicsPath_methods, wxGraphicsPath_methodCount, CLASSINFO(wxGraphicsPath), &wxluatype_wxGraphicsPath, wxluabaseclassnames_wxGraphicsPath, wxluabaseclassbinds_wxGraphicsPath, NULL, NULL, NULL, 0, &wxLua_wxGraphicsPath_delete_function, }, 
         { wxluaclassname_wxGraphicsPen, wxGraphicsPen_methods, wxGraphicsPen_methodCount, CLASSINFO(wxGraphicsPen), &wxluatype_wxGraphicsPen, wxluabaseclassnames_wxGraphicsPen, wxluabaseclassbinds_wxGraphicsPen, NULL, NULL, NULL, 0, &wxLua_wxGraphicsPen_delete_function, }, 
+#endif // wxUSE_GRAPHICS_CONTEXT
+
+#if (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
         { wxluaclassname_wxGraphicsPenInfo, wxGraphicsPenInfo_methods, wxGraphicsPenInfo_methodCount, NULL, &wxluatype_wxGraphicsPenInfo, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxGraphicsPenInfo_delete_function, }, 
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
+
+#if wxUSE_GRAPHICS_CONTEXT
         { wxluaclassname_wxGraphicsRenderer, wxGraphicsRenderer_methods, wxGraphicsRenderer_methodCount, CLASSINFO(wxGraphicsRenderer), &wxluatype_wxGraphicsRenderer, wxluabaseclassnames_wxGraphicsRenderer, wxluabaseclassbinds_wxGraphicsRenderer, NULL, NULL, NULL, 0, &wxLua_wxGraphicsRenderer_delete_function, }, 
 #endif // wxUSE_GRAPHICS_CONTEXT
 

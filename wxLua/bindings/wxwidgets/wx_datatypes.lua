@@ -2248,7 +2248,7 @@ wx_dataTypeTable =
     ValueType = "class",
   },
   wxGraphicsPenInfo = {
-    Condition = "wxUSE_GRAPHICS_CONTEXT",
+    Condition = "(wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)",
     IsNumber = false,
     Name = "wxGraphicsPenInfo",
     ValueType = "class",

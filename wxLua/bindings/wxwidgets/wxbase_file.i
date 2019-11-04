@@ -984,11 +984,11 @@ class %delete wxTextInputStream
     const wxInputStream& GetInputStream();
 
     // base may be between 2 and 36, inclusive, or the special 0 (= C format)
-    wxUint64 Read64(int base = 10);
+    %wxchkver_3_1_0 wxUint64 Read64(int base = 10);
     wxUint32 Read32(int base = 10);
     wxUint16 Read16(int base = 10);
     wxUint8  Read8(int base = 10);
-    wxInt64  Read64S(int base = 10);
+    %wxchkver_3_1_0 wxInt64  Read64S(int base = 10);
     wxInt32  Read32S(int base = 10);
     wxInt16  Read16S(int base = 10);
     wxInt8   Read8S(int base = 10);
@@ -1010,7 +1010,7 @@ class %delete wxTextOutputStream
     void SetMode( wxEOL mode = wxEOL_NATIVE );
     wxEOL GetMode();
 
-    void Write64(wxUint64 i);
+    %wxchkver_3_1_0 void Write64(wxUint64 i);
     void Write32(wxUint32 i);
     void Write16(wxUint16 i);
     void Write8(wxUint8 i);

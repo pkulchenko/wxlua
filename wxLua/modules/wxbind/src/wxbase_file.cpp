@@ -7611,10 +7611,12 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxUSE_STREAMS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_Read64[] = { &wxluatype_wxTextInputStream, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxTextInputStream_Read64(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_Read64[1] = {{ wxLua_wxTextInputStream_Read64, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxTextInputStream_Read64 }};
-//     wxUint64 Read64(int base = 10);
+//     %wxchkver_3_1_0 wxUint64 Read64(int base = 10);
 static int LUACALL wxLua_wxTextInputStream_Read64(lua_State *L)
 {
     // get number of arguments
@@ -7640,7 +7642,7 @@ if ((double)(lua_Integer)returns == (double)returns) {
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_Read64S[] = { &wxluatype_wxTextInputStream, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxTextInputStream_Read64S(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextInputStream_Read64S[1] = {{ wxLua_wxTextInputStream_Read64S, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxTextInputStream_Read64S }};
-//     wxInt64  Read64S(int base = 10);
+//     %wxchkver_3_1_0 wxInt64  Read64S(int base = 10);
 static int LUACALL wxLua_wxTextInputStream_Read64S(lua_State *L)
 {
     // get number of arguments
@@ -7662,6 +7664,8 @@ if ((double)(lua_Integer)returns == (double)returns) {
 
     return 1;
 }
+
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxUSE_STREAMS)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTextInputStream_Read8[] = { &wxluatype_wxTextInputStream, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxTextInputStream_Read8(lua_State *L);
@@ -7818,8 +7822,12 @@ wxLuaBindMethod wxTextInputStream_methods[] = {
     { "Read16S", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_Read16S, 1, NULL },
     { "Read32", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_Read32, 1, NULL },
     { "Read32S", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_Read32S, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxUSE_STREAMS)
     { "Read64", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_Read64, 1, NULL },
     { "Read64S", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_Read64S, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxUSE_STREAMS)
+
     { "Read8", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_Read8, 1, NULL },
     { "Read8S", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_Read8S, 1, NULL },
     { "ReadDouble", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextInputStream_ReadDouble, 1, NULL },
@@ -7965,10 +7973,12 @@ static int LUACALL wxLua_wxTextOutputStream_Write32(lua_State *L)
     return 0;
 }
 
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxUSE_STREAMS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTextOutputStream_Write64[] = { &wxluatype_wxTextOutputStream, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxTextOutputStream_Write64(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTextOutputStream_Write64[1] = {{ wxLua_wxTextOutputStream_Write64, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTextOutputStream_Write64 }};
-//     void Write64(wxUint64 i);
+//     %wxchkver_3_1_0 void Write64(wxUint64 i);
 static int LUACALL wxLua_wxTextOutputStream_Write64(lua_State *L)
 {
     // wxUint64 i
@@ -7980,6 +7990,8 @@ static int LUACALL wxLua_wxTextOutputStream_Write64(lua_State *L)
 
     return 0;
 }
+
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxUSE_STREAMS)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTextOutputStream_Write8[] = { &wxluatype_wxTextOutputStream, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxTextOutputStream_Write8(lua_State *L);
@@ -8068,7 +8080,11 @@ wxLuaBindMethod wxTextOutputStream_methods[] = {
     { "SetMode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_SetMode, 1, NULL },
     { "Write16", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_Write16, 1, NULL },
     { "Write32", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_Write32, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,0)) && (wxUSE_STREAMS)
     { "Write64", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_Write64, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,0)) && (wxUSE_STREAMS)
+
     { "Write8", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_Write8, 1, NULL },
     { "WriteDouble", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_WriteDouble, 1, NULL },
     { "WriteString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTextOutputStream_WriteString, 1, NULL },
