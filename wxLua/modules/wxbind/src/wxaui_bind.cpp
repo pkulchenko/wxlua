@@ -13641,6 +13641,13 @@ wxLuaBindEvent* wxLuaGetEventList_wxaui(size_t &count)
     {
 #if wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI
         { "wxEVT_AUI_FIND_MANAGER", WXLUA_GET_wxEventType_ptr(wxEVT_AUI_FIND_MANAGER), &wxluatype_wxAuiManagerEvent },
+#endif // wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI
+
+#if (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+        { "wxEVT_AUI_PANE_ACTIVATED", WXLUA_GET_wxEventType_ptr(wxEVT_AUI_PANE_ACTIVATED), &wxluatype_wxAuiManagerEvent },
+#endif // (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
+#if wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI
         { "wxEVT_AUI_PANE_BUTTON", WXLUA_GET_wxEventType_ptr(wxEVT_AUI_PANE_BUTTON), &wxluatype_wxAuiManagerEvent },
         { "wxEVT_AUI_PANE_CLOSE", WXLUA_GET_wxEventType_ptr(wxEVT_AUI_PANE_CLOSE), &wxluatype_wxAuiManagerEvent },
         { "wxEVT_AUI_PANE_MAXIMIZE", WXLUA_GET_wxEventType_ptr(wxEVT_AUI_PANE_MAXIMIZE), &wxluatype_wxAuiManagerEvent },

@@ -922,12 +922,12 @@ class %delete wxAuiManagerEvent : public wxEvent
     %wxEventType wxEVT_AUI_PANE_CLOSE      // EVT_AUI_PANE_CLOSE(func);
     %wxEventType wxEVT_AUI_PANE_MAXIMIZE   // EVT_AUI_PANE_MAXIMIZE(func);
     %wxEventType wxEVT_AUI_PANE_RESTORE    // EVT_AUI_PANE_RESTORE(func);
+    %wxchkver_2_9_4 %wxEventType wxEVT_AUI_PANE_ACTIVATED  // wxEVT_AUI_PANE_ACTIVATED(func);
     %wxEventType wxEVT_AUI_RENDER          // EVT_AUI_RENDER(func);
     %wxEventType wxEVT_AUI_FIND_MANAGER    // EVT_AUI_FIND_MANAGER(func);
 
     wxAuiManagerEvent(wxEventType type=wxEVT_NULL);
     wxAuiManagerEvent(const wxAuiManagerEvent& c);
-
 
     void SetManager(wxAuiManager* mgr);
     void SetPane(wxAuiPaneInfo* p);
