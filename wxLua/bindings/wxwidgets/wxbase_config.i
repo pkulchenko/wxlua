@@ -134,6 +134,18 @@ class %delete wxConfig : public wxConfigBase
 class %delete wxFileConfig : public wxConfigBase
 {
     wxFileConfig(const wxString& appName = "", const wxString& vendorName = "", const wxString& localFilename = "", const wxString& globalFilename = "", long style = wxCONFIG_USE_LOCAL_FILE | wxCONFIG_USE_GLOBAL_FILE); //, wxMBConv& conv = wxConvUTF8);
+    wxFileConfig(wxInputStream& is); //, const wxMBConv& conv = wxConvAuto());
+
+    static wxFileName GetGlobalFile(const wxString& basename);
+    static wxFileName GetLocalFile(const wxString& basename, int style = 0);
+
+    static wxString GetGlobalFileName(const wxString& szFile);
+    static wxString GetLocalFileName(const wxString& szFile, int style = 0);
+
+    virtual bool Save(wxOutputStream& os); //, const wxMBConv& conv = wxConvAuto());
+
+    %wxchkver_3_1_3 void EnableAutoSave();
+    %wxchkver_3_1_3 void DisableAutoSave();
 
     void SetUmask(int mode);
 };
