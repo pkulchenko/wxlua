@@ -4124,6 +4124,50 @@ if ((double)(lua_Integer)returns == (double)returns) {
 static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetProcessId[1] = {{ wxLua_function_wxGetProcessId, WXLUAMETHOD_CFUNCTION, 0, 0, g_wxluaargtypeArray_None }};
 
 
+#if ((wxLUA_USE_wxArrayInt) && (wxLUA_USE_wxArrayString)) && (wxUSE_CHOICEDLG)
+static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetSelectedChoices[] = { &wxluatype_wxArrayInt, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxArrayString, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TBOOLEAN, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+// wxUSE_CHOICEDLG int wxGetSelectedChoices(wxArrayInt& selections, const wxString& message, const wxString& caption, const wxArrayString& aChoices, wxWindow* parent = NULL, int x = wxDefaultCoord, int y = wxDefaultCoord, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT);
+static int LUACALL wxLua_function_wxGetSelectedChoices(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int height = wxCHOICE_HEIGHT
+    int height = (argCount >= 10 ? (int)wxlua_getnumbertype(L, 10) : wxCHOICE_HEIGHT);
+    // int width = wxCHOICE_WIDTH
+    int width = (argCount >= 9 ? (int)wxlua_getnumbertype(L, 9) : wxCHOICE_WIDTH);
+    // bool centre = true
+    bool centre = (argCount >= 8 ? wxlua_getbooleantype(L, 8) : true);
+    // int y = wxDefaultCoord
+    int y = (argCount >= 7 ? (int)wxlua_getnumbertype(L, 7) : wxDefaultCoord);
+    // int x = wxDefaultCoord
+    int x = (argCount >= 6 ? (int)wxlua_getnumbertype(L, 6) : wxDefaultCoord);
+    // wxWindow parent = NULL
+    wxWindow * parent = (argCount >= 5 ? (wxWindow *)wxluaT_getuserdatatype(L, 5, wxluatype_wxWindow) : NULL);
+    // const wxArrayString aChoices
+    wxLuaSmartwxArrayString aChoices = wxlua_getwxArrayString(L, 4);
+    // const wxString caption
+    const wxString caption = wxlua_getwxStringtype(L, 3);
+    // const wxString message
+    const wxString message = wxlua_getwxStringtype(L, 2);
+    // wxArrayInt selections
+    wxArrayInt * selections = (wxArrayInt *)wxluaT_getuserdatatype(L, 1, wxluatype_wxArrayInt);
+    // call wxGetSelectedChoices
+    int returns = (wxGetSelectedChoices(*selections, message, caption, aChoices, parent, x, y, centre, width, height));
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetSelectedChoices[1] = {{ wxLua_function_wxGetSelectedChoices, WXLUAMETHOD_CFUNCTION, 4, 10, s_wxluatypeArray_wxLua_function_wxGetSelectedChoices }};
+
+#endif // ((wxLUA_USE_wxArrayInt) && (wxLUA_USE_wxArrayString)) && (wxUSE_CHOICEDLG)
+
 #if (wxLUA_USE_wxArrayString) && (wxUSE_CHOICEDLG)
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetSingleChoice[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxArrayString, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TBOOLEAN, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 // wxUSE_CHOICEDLG wxString wxGetSingleChoice(const wxString& message, const wxString& caption, const wxArrayString& choices, wxWindow *parent = NULL, int x = wxDefaultCoord, int y = wxDefaultCoord, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT);
@@ -4660,6 +4704,10 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxcore(size_t &count)
 #endif // wxCHECK_VERSION(2,8,0)
 
         { "wxGetProcessId", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetProcessId, 1, NULL },
+
+#if ((wxLUA_USE_wxArrayInt) && (wxLUA_USE_wxArrayString)) && (wxUSE_CHOICEDLG)
+        { "wxGetSelectedChoices", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetSelectedChoices, 1, NULL },
+#endif // ((wxLUA_USE_wxArrayInt) && (wxLUA_USE_wxArrayString)) && (wxUSE_CHOICEDLG)
 
 #if (wxLUA_USE_wxArrayString) && (wxUSE_CHOICEDLG)
         { "wxGetSingleChoice", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetSingleChoice, 1, NULL },

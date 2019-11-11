@@ -75,9 +75,9 @@ long wxGetNumberFromUser(const wxString& message, const wxString& prompt, const 
 
 wxUSE_TEXTDLG wxString wxGetPasswordFromUser(const wxString& message, const wxString& caption = "Input text", const wxString& default_value = "", wxWindow *parent = NULL);
 wxUSE_TEXTDLG wxString wxGetTextFromUser(const wxString& message, const wxString& caption = "Input text", const wxString& default_value = "", wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true);
-// int wxGetMultipleChoice(const wxString& message, const wxString& caption, int n, const wxString& choices[], int nsel, int *selection, wxWindow *parent = NULL, int x = -1, int y = -1, bool centre = true, int width=150, int height=200);
 wxUSE_CHOICEDLG wxString wxGetSingleChoice(const wxString& message, const wxString& caption, const wxArrayString& choices, wxWindow *parent = NULL, int x = wxDefaultCoord, int y = wxDefaultCoord, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT);
 wxUSE_CHOICEDLG int wxGetSingleChoiceIndex(const wxString& message, const wxString& caption, const wxArrayString& choices, wxWindow *parent = NULL, int x = wxDefaultCoord, int y = wxDefaultCoord, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT);
+wxUSE_CHOICEDLG int wxGetSelectedChoices(wxArrayInt& selections, const wxString& message, const wxString& caption, const wxArrayString& aChoices, wxWindow* parent = NULL, int x = wxDefaultCoord, int y = wxDefaultCoord, bool centre = true, int width = wxCHOICE_WIDTH, int height = wxCHOICE_HEIGHT);
 bool wxIsBusy();
 int wxMessageBox(const wxString& message, const wxString& caption = "Message", int style = wxOK | wxCENTRE, wxWindow *parent = NULL, int x = -1, int y = -1);
 // bool wxShowTip(wxWindow *parent, wxTipProvider *tipProvider, bool showAtStartup = true);
