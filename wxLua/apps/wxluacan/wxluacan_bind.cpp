@@ -55,7 +55,7 @@ static int LUACALL wxLua_wxlCanObj_GetX(lua_State *L)
     wxlCanObj * self = (wxlCanObj *)wxluaT_getuserdatatype(L, 1, wxluatype_wxlCanObj);
     // call GetX
     double returns = (self->GetX());
-    // push the result number
+    // push the result floating point number
     lua_pushnumber(L, returns);
 
     return 1;
@@ -71,7 +71,7 @@ static int LUACALL wxLua_wxlCanObj_GetY(lua_State *L)
     wxlCanObj * self = (wxlCanObj *)wxluaT_getuserdatatype(L, 1, wxluatype_wxlCanObj);
     // call GetY
     double returns = (self->GetY());
-    // push the result number
+    // push the result floating point number
     lua_pushnumber(L, returns);
 
     return 1;
