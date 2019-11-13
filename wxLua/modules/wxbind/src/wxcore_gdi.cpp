@@ -13309,6 +13309,419 @@ int wxImageList_methodCount = sizeof(wxImageList_methods)/sizeof(wxLuaBindMethod
 #endif  // wxLUA_USE_wxImageList
 
 
+#if (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
+// ---------------------------------------------------------------------------
+// Bind struct wxMatrix2D
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxMatrix2D'
+int wxluatype_wxMatrix2D = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMatrix2D_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxMatrix2D_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMatrix2D_constructor[1] = {{ wxLua_wxMatrix2D_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 4, s_wxluatypeArray_wxLua_wxMatrix2D_constructor }};
+//     wxMatrix2D(wxDouble v11 = 1, wxDouble v12 = 0, wxDouble v21 = 0, wxDouble v22 = 1);
+static int LUACALL wxLua_wxMatrix2D_constructor(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxDouble v22 = 1
+    wxDouble v22 = (argCount >= 4 ? (wxDouble)wxlua_getnumbertype(L, 4) : 1);
+    // wxDouble v21 = 0
+    wxDouble v21 = (argCount >= 3 ? (wxDouble)wxlua_getnumbertype(L, 3) : 0);
+    // wxDouble v12 = 0
+    wxDouble v12 = (argCount >= 2 ? (wxDouble)wxlua_getnumbertype(L, 2) : 0);
+    // wxDouble v11 = 1
+    wxDouble v11 = (argCount >= 1 ? (wxDouble)wxlua_getnumbertype(L, 1) : 1);
+    // call constructor
+    wxMatrix2D* returns = new wxMatrix2D(v11, v12, v21, v22);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxMatrix2D);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxMatrix2D_delete_function(void** p)
+{
+    wxMatrix2D* o = (wxMatrix2D*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxMatrix2D_methods[] = {
+    { "wxMatrix2D", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxMatrix2D_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxMatrix2D_methodCount = sizeof(wxMatrix2D_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
+
+
+#if (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
+// ---------------------------------------------------------------------------
+// Bind class wxAffineMatrix2D
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxAffineMatrix2D'
+int wxluatype_wxAffineMatrix2D = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAffineMatrix2D_Concat[] = { &wxluatype_wxAffineMatrix2D, &wxluatype_wxAffineMatrix2D, NULL };
+static int LUACALL wxLua_wxAffineMatrix2D_Concat(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_Concat[1] = {{ wxLua_wxAffineMatrix2D_Concat, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAffineMatrix2D_Concat }};
+//     void Concat(const wxAffineMatrix2D& t);
+static int LUACALL wxLua_wxAffineMatrix2D_Concat(lua_State *L)
+{
+    // const wxAffineMatrix2D t
+    const wxAffineMatrix2D * t = (const wxAffineMatrix2D *)wxluaT_getuserdatatype(L, 2, wxluatype_wxAffineMatrix2D);
+    // get this
+    wxAffineMatrix2D * self = (wxAffineMatrix2D *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAffineMatrix2D);
+    // call Concat
+    self->Concat(*t);
+
+    return 0;
+}
+
+
+#if ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAffineMatrix2D_Get[] = { &wxluatype_wxAffineMatrix2D, &wxluatype_wxMatrix2D, &wxluatype_wxPoint2DDouble, NULL };
+static int LUACALL wxLua_wxAffineMatrix2D_Get(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_Get[1] = {{ wxLua_wxAffineMatrix2D_Get, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxAffineMatrix2D_Get }};
+//     void Get(wxMatrix2D* mat2D, wxPoint2DDouble* tr) const;
+static int LUACALL wxLua_wxAffineMatrix2D_Get(lua_State *L)
+{
+    // wxPoint2DDouble tr
+    wxPoint2DDouble * tr = (wxPoint2DDouble *)wxluaT_getuserdatatype(L, 3, wxluatype_wxPoint2DDouble);
+    // wxMatrix2D mat2D
+    wxMatrix2D * mat2D = (wxMatrix2D *)wxluaT_getuserdatatype(L, 2, wxluatype_wxMatrix2D);
+    // get this
+    wxAffineMatrix2D * self = (wxAffineMatrix2D *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAffineMatrix2D);
+    // call Get
+    self->Get(mat2D, tr);
+
+    return 0;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAffineMatrix2D_Invert[] = { &wxluatype_wxAffineMatrix2D, NULL };
+static int LUACALL wxLua_wxAffineMatrix2D_Invert(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_Invert[1] = {{ wxLua_wxAffineMatrix2D_Invert, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAffineMatrix2D_Invert }};
+//     bool Invert();
+static int LUACALL wxLua_wxAffineMatrix2D_Invert(lua_State *L)
+{
+    // get this
+    wxAffineMatrix2D * self = (wxAffineMatrix2D *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAffineMatrix2D);
+    // call Invert
+    bool returns = (self->Invert());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAffineMatrix2D_IsEqual[] = { &wxluatype_wxAffineMatrix2D, &wxluatype_wxAffineMatrix2D, NULL };
+static int LUACALL wxLua_wxAffineMatrix2D_IsEqual(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_IsEqual[1] = {{ wxLua_wxAffineMatrix2D_IsEqual, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAffineMatrix2D_IsEqual }};
+//     void IsEqual(const wxAffineMatrix2D& t);
+static int LUACALL wxLua_wxAffineMatrix2D_IsEqual(lua_State *L)
+{
+    // const wxAffineMatrix2D t
+    const wxAffineMatrix2D * t = (const wxAffineMatrix2D *)wxluaT_getuserdatatype(L, 2, wxluatype_wxAffineMatrix2D);
+    // get this
+    wxAffineMatrix2D * self = (wxAffineMatrix2D *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAffineMatrix2D);
+    // call IsEqual
+    self->IsEqual(*t);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAffineMatrix2D_IsIdentity[] = { &wxluatype_wxAffineMatrix2D, NULL };
+static int LUACALL wxLua_wxAffineMatrix2D_IsIdentity(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_IsIdentity[1] = {{ wxLua_wxAffineMatrix2D_IsIdentity, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAffineMatrix2D_IsIdentity }};
+//     bool IsIdentity() const;
+static int LUACALL wxLua_wxAffineMatrix2D_IsIdentity(lua_State *L)
+{
+    // get this
+    wxAffineMatrix2D * self = (wxAffineMatrix2D *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAffineMatrix2D);
+    // call IsIdentity
+    bool returns = (self->IsIdentity());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAffineMatrix2D_Mirror[] = { &wxluatype_wxAffineMatrix2D, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxAffineMatrix2D_Mirror(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_Mirror[1] = {{ wxLua_wxAffineMatrix2D_Mirror, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxAffineMatrix2D_Mirror }};
+//     void Mirror(int direction = wxHORIZONTAL);
+static int LUACALL wxLua_wxAffineMatrix2D_Mirror(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int direction = wxHORIZONTAL
+    int direction = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : wxHORIZONTAL);
+    // get this
+    wxAffineMatrix2D * self = (wxAffineMatrix2D *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAffineMatrix2D);
+    // call Mirror
+    self->Mirror(direction);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAffineMatrix2D_Rotate[] = { &wxluatype_wxAffineMatrix2D, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxAffineMatrix2D_Rotate(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_Rotate[1] = {{ wxLua_wxAffineMatrix2D_Rotate, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAffineMatrix2D_Rotate }};
+//     void Rotate(wxDouble cRadians);
+static int LUACALL wxLua_wxAffineMatrix2D_Rotate(lua_State *L)
+{
+    // wxDouble cRadians
+    wxDouble cRadians = (wxDouble)wxlua_getnumbertype(L, 2);
+    // get this
+    wxAffineMatrix2D * self = (wxAffineMatrix2D *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAffineMatrix2D);
+    // call Rotate
+    self->Rotate(cRadians);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAffineMatrix2D_Scale[] = { &wxluatype_wxAffineMatrix2D, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxAffineMatrix2D_Scale(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_Scale[1] = {{ wxLua_wxAffineMatrix2D_Scale, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxAffineMatrix2D_Scale }};
+//     void Scale(wxDouble xScale, wxDouble yScale);
+static int LUACALL wxLua_wxAffineMatrix2D_Scale(lua_State *L)
+{
+    // wxDouble yScale
+    wxDouble yScale = (wxDouble)wxlua_getnumbertype(L, 3);
+    // wxDouble xScale
+    wxDouble xScale = (wxDouble)wxlua_getnumbertype(L, 2);
+    // get this
+    wxAffineMatrix2D * self = (wxAffineMatrix2D *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAffineMatrix2D);
+    // call Scale
+    self->Scale(xScale, yScale);
+
+    return 0;
+}
+
+
+#if ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAffineMatrix2D_Set[] = { &wxluatype_wxAffineMatrix2D, &wxluatype_wxMatrix2D, &wxluatype_wxPoint2DDouble, NULL };
+static int LUACALL wxLua_wxAffineMatrix2D_Set(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_Set[1] = {{ wxLua_wxAffineMatrix2D_Set, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxAffineMatrix2D_Set }};
+//     void Set(const wxMatrix2D& mat2D, const wxPoint2DDouble& tr);
+static int LUACALL wxLua_wxAffineMatrix2D_Set(lua_State *L)
+{
+    // const wxPoint2DDouble tr
+    const wxPoint2DDouble * tr = (const wxPoint2DDouble *)wxluaT_getuserdatatype(L, 3, wxluatype_wxPoint2DDouble);
+    // const wxMatrix2D mat2D
+    const wxMatrix2D * mat2D = (const wxMatrix2D *)wxluaT_getuserdatatype(L, 2, wxluatype_wxMatrix2D);
+    // get this
+    wxAffineMatrix2D * self = (wxAffineMatrix2D *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAffineMatrix2D);
+    // call Set
+    self->Set(*mat2D, *tr);
+
+    return 0;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAffineMatrix2D_TransformDistance1[] = { &wxluatype_wxAffineMatrix2D, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, NULL };
+static int LUACALL wxLua_wxAffineMatrix2D_TransformDistance1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_TransformDistance1[1] = {{ wxLua_wxAffineMatrix2D_TransformDistance1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxAffineMatrix2D_TransformDistance1 }};
+//     void TransformDistance(wxDouble* dx, wxDouble* dy) const;
+static int LUACALL wxLua_wxAffineMatrix2D_TransformDistance1(lua_State *L)
+{
+    // wxDouble dy
+    wxDouble * dy = (wxDouble *)wxlua_touserdata(L, 3);
+    // wxDouble dx
+    wxDouble * dx = (wxDouble *)wxlua_touserdata(L, 2);
+    // get this
+    wxAffineMatrix2D * self = (wxAffineMatrix2D *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAffineMatrix2D);
+    // call TransformDistance
+    self->TransformDistance(dx, dy);
+
+    return 0;
+}
+
+
+#if ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAffineMatrix2D_TransformDistance[] = { &wxluatype_wxAffineMatrix2D, &wxluatype_wxPoint2DDouble, NULL };
+static int LUACALL wxLua_wxAffineMatrix2D_TransformDistance(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_TransformDistance[1] = {{ wxLua_wxAffineMatrix2D_TransformDistance, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAffineMatrix2D_TransformDistance }};
+//     wxPoint2DDouble TransformDistance(const wxPoint2DDouble& p) const;
+static int LUACALL wxLua_wxAffineMatrix2D_TransformDistance(lua_State *L)
+{
+    // const wxPoint2DDouble p
+    const wxPoint2DDouble * p = (const wxPoint2DDouble *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPoint2DDouble);
+    // get this
+    wxAffineMatrix2D * self = (wxAffineMatrix2D *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAffineMatrix2D);
+    // call TransformDistance
+    // allocate a new object using the copy constructor
+    wxPoint2DDouble* returns = new wxPoint2DDouble(self->TransformDistance(*p));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxPoint2DDouble);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPoint2DDouble);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAffineMatrix2D_TransformPoint1[] = { &wxluatype_wxAffineMatrix2D, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, NULL };
+static int LUACALL wxLua_wxAffineMatrix2D_TransformPoint1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_TransformPoint1[1] = {{ wxLua_wxAffineMatrix2D_TransformPoint1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxAffineMatrix2D_TransformPoint1 }};
+//     void TransformPoint(wxDouble* x, wxDouble* y) const;
+static int LUACALL wxLua_wxAffineMatrix2D_TransformPoint1(lua_State *L)
+{
+    // wxDouble y
+    wxDouble * y = (wxDouble *)wxlua_touserdata(L, 3);
+    // wxDouble x
+    wxDouble * x = (wxDouble *)wxlua_touserdata(L, 2);
+    // get this
+    wxAffineMatrix2D * self = (wxAffineMatrix2D *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAffineMatrix2D);
+    // call TransformPoint
+    self->TransformPoint(x, y);
+
+    return 0;
+}
+
+
+#if ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAffineMatrix2D_TransformPoint[] = { &wxluatype_wxAffineMatrix2D, &wxluatype_wxPoint2DDouble, NULL };
+static int LUACALL wxLua_wxAffineMatrix2D_TransformPoint(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_TransformPoint[1] = {{ wxLua_wxAffineMatrix2D_TransformPoint, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAffineMatrix2D_TransformPoint }};
+//     wxPoint2DDouble TransformPoint(const wxPoint2DDouble& p) const;
+static int LUACALL wxLua_wxAffineMatrix2D_TransformPoint(lua_State *L)
+{
+    // const wxPoint2DDouble p
+    const wxPoint2DDouble * p = (const wxPoint2DDouble *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPoint2DDouble);
+    // get this
+    wxAffineMatrix2D * self = (wxAffineMatrix2D *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAffineMatrix2D);
+    // call TransformPoint
+    // allocate a new object using the copy constructor
+    wxPoint2DDouble* returns = new wxPoint2DDouble(self->TransformPoint(*p));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxPoint2DDouble);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPoint2DDouble);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAffineMatrix2D_Translate[] = { &wxluatype_wxAffineMatrix2D, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxAffineMatrix2D_Translate(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_Translate[1] = {{ wxLua_wxAffineMatrix2D_Translate, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxAffineMatrix2D_Translate }};
+//     void Translate(wxDouble dx, wxDouble dy);
+static int LUACALL wxLua_wxAffineMatrix2D_Translate(lua_State *L)
+{
+    // wxDouble dy
+    wxDouble dy = (wxDouble)wxlua_getnumbertype(L, 3);
+    // wxDouble dx
+    wxDouble dx = (wxDouble)wxlua_getnumbertype(L, 2);
+    // get this
+    wxAffineMatrix2D * self = (wxAffineMatrix2D *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAffineMatrix2D);
+    // call Translate
+    self->Translate(dx, dy);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAffineMatrix2D_delete[] = { &wxluatype_wxAffineMatrix2D, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxAffineMatrix2D_delete }};
+
+static int LUACALL wxLua_wxAffineMatrix2D_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_constructor[1] = {{ wxLua_wxAffineMatrix2D_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxAffineMatrix2D();
+static int LUACALL wxLua_wxAffineMatrix2D_constructor(lua_State *L)
+{
+    // call constructor
+    wxAffineMatrix2D* returns = new wxAffineMatrix2D();
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxAffineMatrix2D);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxAffineMatrix2D);
+
+    return 1;
+}
+
+
+
+
+#if ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY))||(((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_TransformDistance_overload[] =
+{
+    { wxLua_wxAffineMatrix2D_TransformDistance1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxAffineMatrix2D_TransformDistance1 },
+
+#if ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+    { wxLua_wxAffineMatrix2D_TransformDistance, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAffineMatrix2D_TransformDistance },
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+};
+static int s_wxluafunc_wxLua_wxAffineMatrix2D_TransformDistance_overload_count = sizeof(s_wxluafunc_wxLua_wxAffineMatrix2D_TransformDistance_overload)/sizeof(wxLuaBindCFunc);
+
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAffineMatrix2D_TransformPoint_overload[] =
+{
+    { wxLua_wxAffineMatrix2D_TransformPoint1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxAffineMatrix2D_TransformPoint1 },
+
+#if ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+    { wxLua_wxAffineMatrix2D_TransformPoint, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAffineMatrix2D_TransformPoint },
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+};
+static int s_wxluafunc_wxLua_wxAffineMatrix2D_TransformPoint_overload_count = sizeof(s_wxluafunc_wxLua_wxAffineMatrix2D_TransformPoint_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY))||(((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY))
+
+void wxLua_wxAffineMatrix2D_delete_function(void** p)
+{
+    wxAffineMatrix2D* o = (wxAffineMatrix2D*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxAffineMatrix2D_methods[] = {
+    { "Concat", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAffineMatrix2D_Concat, 1, NULL },
+
+#if ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+    { "Get", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAffineMatrix2D_Get, 1, NULL },
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+
+    { "Invert", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAffineMatrix2D_Invert, 1, NULL },
+    { "IsEqual", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAffineMatrix2D_IsEqual, 1, NULL },
+    { "IsIdentity", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAffineMatrix2D_IsIdentity, 1, NULL },
+    { "Mirror", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAffineMatrix2D_Mirror, 1, NULL },
+    { "Rotate", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAffineMatrix2D_Rotate, 1, NULL },
+    { "Scale", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAffineMatrix2D_Scale, 1, NULL },
+
+#if ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+    { "Set", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAffineMatrix2D_Set, 1, NULL },
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+
+#if ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY))||(((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY))
+    { "TransformDistance", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAffineMatrix2D_TransformDistance_overload, s_wxluafunc_wxLua_wxAffineMatrix2D_TransformDistance_overload_count, 0 },
+    { "TransformPoint", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAffineMatrix2D_TransformPoint_overload, s_wxluafunc_wxLua_wxAffineMatrix2D_TransformPoint_overload_count, 0 },
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY))||(((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)) && (wxLUA_USE_Geometry && wxUSE_GEOMETRY))
+
+    { "Translate", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAffineMatrix2D_Translate, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxAffineMatrix2D_delete, 1, NULL },
+    { "wxAffineMatrix2D", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxAffineMatrix2D_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxAffineMatrix2D_methodCount = sizeof(wxAffineMatrix2D_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
+
+
 #if wxLUA_USE_wxDC
 // ---------------------------------------------------------------------------
 // Bind class wxDC
@@ -13370,6 +13783,26 @@ static int LUACALL wxLua_wxDC_CalcBoundingBox(lua_State *L)
 
     return 0;
 }
+
+
+#if (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxDC)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_CanUseTransformMatrix[] = { &wxluatype_wxDC, NULL };
+static int LUACALL wxLua_wxDC_CanUseTransformMatrix(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_CanUseTransformMatrix[1] = {{ wxLua_wxDC_CanUseTransformMatrix, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDC_CanUseTransformMatrix }};
+//     %wxchkver_2_9_2 bool CanUseTransformMatrix() const;
+static int LUACALL wxLua_wxDC_CanUseTransformMatrix(lua_State *L)
+{
+    // get this
+    wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
+    // call CanUseTransformMatrix
+    bool returns = (self->CanUseTransformMatrix());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxDC)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_Clear[] = { &wxluatype_wxDC, NULL };
 static int LUACALL wxLua_wxDC_Clear(lua_State *L);
@@ -14530,6 +14963,28 @@ static int LUACALL wxLua_wxDC_GetTextForeground(lua_State *L)
 
 #endif // (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxDC)
 
+#if ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_GetTransformMatrix[] = { &wxluatype_wxDC, NULL };
+static int LUACALL wxLua_wxDC_GetTransformMatrix(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_GetTransformMatrix[1] = {{ wxLua_wxDC_GetTransformMatrix, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDC_GetTransformMatrix }};
+//     %wxchkver_2_9_2 wxAffineMatrix2D GetTransformMatrix() const;
+static int LUACALL wxLua_wxDC_GetTransformMatrix(lua_State *L)
+{
+    // get this
+    wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
+    // call GetTransformMatrix
+    // allocate a new object using the copy constructor
+    wxAffineMatrix2D* returns = new wxAffineMatrix2D(self->GetTransformMatrix());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxAffineMatrix2D);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxAffineMatrix2D);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY))
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_GetUserScale[] = { &wxluatype_wxDC, NULL };
 static int LUACALL wxLua_wxDC_GetUserScale(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_GetUserScale[1] = {{ wxLua_wxDC_GetUserScale, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDC_GetUserScale }};
@@ -14813,6 +15268,24 @@ static int LUACALL wxLua_wxDC_ResetBoundingBox(lua_State *L)
 
     return 0;
 }
+
+
+#if (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxDC)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_ResetTransformMatrix[] = { &wxluatype_wxDC, NULL };
+static int LUACALL wxLua_wxDC_ResetTransformMatrix(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_ResetTransformMatrix[1] = {{ wxLua_wxDC_ResetTransformMatrix, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDC_ResetTransformMatrix }};
+//     %wxchkver_2_9_2 void ResetTransformMatrix();
+static int LUACALL wxLua_wxDC_ResetTransformMatrix(lua_State *L)
+{
+    // get this
+    wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
+    // call ResetTransformMatrix
+    self->ResetTransformMatrix();
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxDC)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_SetAxisOrientation[] = { &wxluatype_wxDC, &wxluatype_TBOOLEAN, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxDC_SetAxisOrientation(lua_State *L);
@@ -15126,6 +15599,27 @@ static int LUACALL wxLua_wxDC_SetTextForeground(lua_State *L)
 
 #endif // (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxDC)
 
+#if ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_SetTransformMatrix[] = { &wxluatype_wxDC, &wxluatype_wxAffineMatrix2D, NULL };
+static int LUACALL wxLua_wxDC_SetTransformMatrix(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_SetTransformMatrix[1] = {{ wxLua_wxDC_SetTransformMatrix, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDC_SetTransformMatrix }};
+//     %wxchkver_2_9_2 bool SetTransformMatrix(const wxAffineMatrix2D& matrix);
+static int LUACALL wxLua_wxDC_SetTransformMatrix(lua_State *L)
+{
+    // const wxAffineMatrix2D matrix
+    const wxAffineMatrix2D * matrix = (const wxAffineMatrix2D *)wxluaT_getuserdatatype(L, 2, wxluatype_wxAffineMatrix2D);
+    // get this
+    wxDC * self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
+    // call SetTransformMatrix
+    bool returns = (self->SetTransformMatrix(*matrix));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY))
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_SetUserScale[] = { &wxluatype_wxDC, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDC_SetUserScale(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_SetUserScale[1] = {{ wxLua_wxDC_SetUserScale, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxDC_SetUserScale }};
@@ -15245,6 +15739,11 @@ void wxLua_wxDC_delete_function(void** p)
 wxLuaBindMethod wxDC_methods[] = {
     { "Blit", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_Blit, 1, NULL },
     { "CalcBoundingBox", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_CalcBoundingBox, 1, NULL },
+
+#if (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxDC)
+    { "CanUseTransformMatrix", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_CanUseTransformMatrix, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxDC)
+
     { "Clear", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_Clear, 1, NULL },
     { "CrossHair", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_CrossHair, 1, NULL },
     { "DestroyClippingRegion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_DestroyClippingRegion, 1, NULL },
@@ -15366,6 +15865,10 @@ wxLuaBindMethod wxDC_methods[] = {
     { "GetTextForeground", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_GetTextForeground, 1, NULL },
 #endif // (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxDC)
 
+#if ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY))
+    { "GetTransformMatrix", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_GetTransformMatrix, 1, NULL },
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY))
+
     { "GetUserScale", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_GetUserScale, 1, NULL },
 
 #if (((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxPointSizeRect)
@@ -15383,6 +15886,11 @@ wxLuaBindMethod wxDC_methods[] = {
     { "MinX", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_MinX, 1, NULL },
     { "MinY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_MinY, 1, NULL },
     { "ResetBoundingBox", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_ResetBoundingBox, 1, NULL },
+
+#if (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxDC)
+    { "ResetTransformMatrix", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_ResetTransformMatrix, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxDC)
+
     { "SetAxisOrientation", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_SetAxisOrientation, 1, NULL },
 
 #if (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxDC)
@@ -15421,6 +15929,10 @@ wxLuaBindMethod wxDC_methods[] = {
     { "SetTextBackground", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_SetTextBackground, 1, NULL },
     { "SetTextForeground", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_SetTextForeground, 1, NULL },
 #endif // (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxDC)
+
+#if ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY))
+    { "SetTransformMatrix", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_SetTransformMatrix, 1, NULL },
+#endif // ((wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY))
 
     { "SetUserScale", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_SetUserScale, 1, NULL },
     { "StartDoc", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_StartDoc, 1, NULL },

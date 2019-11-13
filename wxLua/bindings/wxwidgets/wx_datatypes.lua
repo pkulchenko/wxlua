@@ -207,6 +207,12 @@ wx_dataTypeTable =
     Name = "wxActivateEvent",
     ValueType = "class",
   },
+  wxAffineMatrix2D = {
+    Condition = "(wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)",
+    IsNumber = false,
+    Name = "wxAffineMatrix2D",
+    ValueType = "class",
+  },
   wxAlignment = {
     IsNumber = true,
     Name = "wxAlignment",
@@ -3513,6 +3519,12 @@ wx_dataTypeTable =
     IsNumber = false,
     Name = "wxMask",
     ValueType = "class",
+  },
+  wxMatrix2D = {
+    Condition = "(wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)",
+    IsNumber = false,
+    Name = "wxMatrix2D",
+    ValueType = "struct",
   },
   wxMaximizeEvent = {
     BaseClasses = {

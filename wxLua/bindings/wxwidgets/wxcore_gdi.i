@@ -1289,6 +1289,44 @@ class %delete wxImageList : public wxObject
 #endif //wxLUA_USE_wxImageList
 
 // ---------------------------------------------------------------------------
+// wxAffineMatrix2D
+
+#if %wxchkver_2_9_2
+
+#if wxUSE_GEOMETRY
+
+#include "wx/affinematrix2d.h"
+
+struct wxMatrix2D
+{
+    wxMatrix2D(wxDouble v11 = 1, wxDouble v12 = 0, wxDouble v21 = 0, wxDouble v22 = 1);
+};
+
+class %delete wxAffineMatrix2D
+{
+public:
+    wxAffineMatrix2D();
+    void Get(wxMatrix2D* mat2D, wxPoint2DDouble* tr) const;
+    void Set(const wxMatrix2D& mat2D, const wxPoint2DDouble& tr);
+    void Concat(const wxAffineMatrix2D& t);
+    bool Invert();
+    bool IsIdentity() const;
+    void IsEqual(const wxAffineMatrix2D& t);
+    void Translate(wxDouble dx, wxDouble dy);
+    void Scale(wxDouble xScale, wxDouble yScale);
+    void Mirror(int direction = wxHORIZONTAL);
+    void Rotate(wxDouble cRadians);
+    wxPoint2DDouble TransformPoint(const wxPoint2DDouble& p) const;
+    void TransformPoint(wxDouble* x, wxDouble* y) const;
+    wxPoint2DDouble TransformDistance(const wxPoint2DDouble& p) const;
+    void TransformDistance(wxDouble* dx, wxDouble* dy) const;
+};
+
+#endif //wxUSE_GEOMETRY
+
+#endif //%wxchkver_2_9_2
+
+// ---------------------------------------------------------------------------
 // wxDC
 
 #if wxLUA_USE_wxDC
@@ -1435,6 +1473,11 @@ class %delete wxDC : public wxObject
     //void EndDrawing();  // these are deprecated in 2.8 and didn't do anything anyway
     void EndPage();
     void FloodFill(wxCoord x, wxCoord y, const wxColour& colour, wxFloodFillStyle style=wxFLOOD_SURFACE);
+
+    %wxchkver_2_9_2 bool CanUseTransformMatrix() const;
+    %wxchkver_2_9_2 bool SetTransformMatrix(const wxAffineMatrix2D& matrix);
+    %wxchkver_2_9_2 wxAffineMatrix2D GetTransformMatrix() const;
+    %wxchkver_2_9_2 void ResetTransformMatrix();
 
     #if %wxchkver_2_8
         //void GradientFillConcentric(const wxRect& rect, const wxColour& initialColour, const wxColour& destColour);

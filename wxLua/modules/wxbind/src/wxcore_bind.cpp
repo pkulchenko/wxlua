@@ -4768,6 +4768,7 @@ static const char* wxluaclassname_wxANIHandler = "wxANIHandler";
 static const char* wxluaclassname_wxAcceleratorEntry = "wxAcceleratorEntry";
 static const char* wxluaclassname_wxAcceleratorTable = "wxAcceleratorTable";
 static const char* wxluaclassname_wxActivateEvent = "wxActivateEvent";
+static const char* wxluaclassname_wxAffineMatrix2D = "wxAffineMatrix2D";
 static const char* wxluaclassname_wxAnyButton = "wxAnyButton";
 static const char* wxluaclassname_wxApp = "wxApp";
 static const char* wxluaclassname_wxAppConsole = "wxAppConsole";
@@ -4950,6 +4951,7 @@ static const char* wxluaclassname_wxMDIChildFrame = "wxMDIChildFrame";
 static const char* wxluaclassname_wxMDIClientWindow = "wxMDIClientWindow";
 static const char* wxluaclassname_wxMDIParentFrame = "wxMDIParentFrame";
 static const char* wxluaclassname_wxMask = "wxMask";
+static const char* wxluaclassname_wxMatrix2D = "wxMatrix2D";
 static const char* wxluaclassname_wxMaximizeEvent = "wxMaximizeEvent";
 static const char* wxluaclassname_wxMemoryDC = "wxMemoryDC";
 static const char* wxluaclassname_wxMemoryFSHandler = "wxMemoryFSHandler";
@@ -5849,6 +5851,15 @@ static wxLuaBindClass* wxluabaseclassbinds_wxXPMHandler[] = { NULL };
     extern int wxStaticBoxSizer_methodCount;
     extern void wxLua_wxStaticBoxSizer_delete_function(void** p);
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)
+
+#if (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
+    extern wxLuaBindMethod wxAffineMatrix2D_methods[];
+    extern int wxAffineMatrix2D_methodCount;
+    extern void wxLua_wxAffineMatrix2D_delete_function(void** p);
+    extern wxLuaBindMethod wxMatrix2D_methods[];
+    extern int wxMatrix2D_methodCount;
+    extern void wxLua_wxMatrix2D_delete_function(void** p);
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
 
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
     extern wxLuaBindMethod wxPenInfo_methods[];
@@ -7152,6 +7163,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 
         { wxluaclassname_wxActivateEvent, wxActivateEvent_methods, wxActivateEvent_methodCount, CLASSINFO(wxActivateEvent), &wxluatype_wxActivateEvent, wxluabaseclassnames_wxActivateEvent, wxluabaseclassbinds_wxActivateEvent, NULL, NULL, NULL, 0, &wxLua_wxActivateEvent_delete_function, }, 
 
+#if (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
+        { wxluaclassname_wxAffineMatrix2D, wxAffineMatrix2D_methods, wxAffineMatrix2D_methodCount, NULL, &wxluatype_wxAffineMatrix2D, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxAffineMatrix2D_delete_function, }, 
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
+
 #if wxLUA_USE_wxButton && wxUSE_BUTTON
         { wxluaclassname_wxAnyButton, wxAnyButton_methods, wxAnyButton_methodCount, CLASSINFO(wxAnyButton), &wxluatype_wxAnyButton, wxluabaseclassnames_wxAnyButton, wxluabaseclassbinds_wxAnyButton, NULL, NULL, NULL, 0, &wxLua_wxAnyButton_delete_function, }, 
 #endif // wxLUA_USE_wxButton && wxUSE_BUTTON
@@ -7659,6 +7674,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #if wxLUA_USE_wxMask
         { wxluaclassname_wxMask, wxMask_methods, wxMask_methodCount, CLASSINFO(wxMask), &wxluatype_wxMask, wxluabaseclassnames_wxMask, wxluabaseclassbinds_wxMask, NULL, NULL, NULL, 0, &wxLua_wxMask_delete_function, }, 
 #endif // wxLUA_USE_wxMask
+
+#if (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
+        { wxluaclassname_wxMatrix2D, wxMatrix2D_methods, wxMatrix2D_methodCount, NULL, &wxluatype_wxMatrix2D, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxMatrix2D_delete_function, }, 
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
 
         { wxluaclassname_wxMaximizeEvent, wxMaximizeEvent_methods, wxMaximizeEvent_methodCount, CLASSINFO(wxMaximizeEvent), &wxluatype_wxMaximizeEvent, wxluabaseclassnames_wxMaximizeEvent, wxluabaseclassbinds_wxMaximizeEvent, NULL, NULL, NULL, 0, &wxLua_wxMaximizeEvent_delete_function, }, 
 

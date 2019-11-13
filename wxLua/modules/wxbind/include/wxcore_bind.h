@@ -105,6 +105,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/gbsizer.h"
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)
 
+#if (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
+    #include "wx/affinematrix2d.h"
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
+
 #if (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
     #include "wx/bmpbuttn.h"
 #endif // (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
@@ -653,6 +657,11 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStaticBoxSizer;
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)
+
+#if (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxAffineMatrix2D;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxMatrix2D;
+#endif // (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
 
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPenInfo;
