@@ -3812,12 +3812,12 @@ if ((double)(lua_Integer)(%s) == (double)(%s)) {
                         elseif argType == "char" then
                             overload_argList = overload_argList.."&wxluatype_TSTRING, "
                             argItem = "wxlua_getstringtype(L, "..argNum..")"
-
-                            argTypeWithAttrib = "wxCharBuffer"
-                            if (origArgTypeWithAttrib ~= "const char") then
-                                argCast = "("..origArgTypeWithAttrib.."*)(const char*)"
-                            else
-                                argCast = origArgTypeWithAttrib.."*"
+                            argTypeWithAttrib = "const char *"
+                            if (origArgTypeWithAttrib == "unsigned char" or origArgTypeWithAttrib == "const unsigned char") then
+                                argTypeWithAttrib = origArgTypeWithAttrib .. " *"
+                                argItem = "("..argTypeWithAttrib..")"..argItem
+                            elseif (origArgTypeWithAttrib ~= "const char") then
+                                argCast = "("..origArgTypeWithAttrib.."*)"
                             end
                         else
                             if isTranslated and (origIndirectionCount == 0) then
