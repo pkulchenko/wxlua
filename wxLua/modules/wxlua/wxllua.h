@@ -500,6 +500,7 @@ WXDLLIMPEXP_WXLUA bool wxlua_iswxstringtype(lua_State* L, int stack_idx);
 //   parameter to a function call. (These are used in the bindings)
 // Note: The function wxLuaState::GetwxStringType does automatic conversion
 //       of both a Lua string and a userdata wxString to a wxString.
+WXDLLIMPEXP_WXLUA const char* LUACALL wxlua_getstringtypelen(lua_State* L, int stack_idx, size_t *len);
 WXDLLIMPEXP_WXLUA const char* LUACALL wxlua_getstringtype(lua_State* L, int stack_idx);
 WXDLLIMPEXP_WXLUA wxString LUACALL    wxlua_getwxStringtype(lua_State* L, int stack_idx);
 WXDLLIMPEXP_WXLUA bool LUACALL        wxlua_getbooleantype(lua_State* L, int stack_idx);
