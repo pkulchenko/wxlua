@@ -2026,11 +2026,11 @@ static int LUACALL wxLua_wxMenuBar_MacSetCommonMenuBar(lua_State *L)
 
 #endif // ((defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 
-#if (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+#if (wxCHECK_VERSION(3,1,0) && defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuBar_MacUninstallMenuBar[] = { &wxluatype_wxMenuBar, NULL };
 static int LUACALL wxLua_wxMenuBar_MacUninstallMenuBar(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuBar_MacUninstallMenuBar[1] = {{ wxLua_wxMenuBar_MacUninstallMenuBar, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMenuBar_MacUninstallMenuBar }};
-//     %mac void MacUninstallMenuBar();
+//     %wxchkver_3_1 && %mac void MacUninstallMenuBar();
 static int LUACALL wxLua_wxMenuBar_MacUninstallMenuBar(lua_State *L)
 {
     // get this
@@ -2041,7 +2041,7 @@ static int LUACALL wxLua_wxMenuBar_MacUninstallMenuBar(lua_State *L)
     return 0;
 }
 
-#endif // (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+#endif // (wxCHECK_VERSION(3,1,0) && defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 
 #if ((wxCHECK_VERSION(3,0,1) && defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuBar_OSXGetAppleMenu[] = { &wxluatype_wxMenuBar, NULL };
@@ -2335,9 +2335,9 @@ wxLuaBindMethod wxMenuBar_methods[] = {
     { "MacSetCommonMenuBar", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxMenuBar_MacSetCommonMenuBar, 1, NULL },
 #endif // ((defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 
-#if (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+#if (wxCHECK_VERSION(3,1,0) && defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
     { "MacUninstallMenuBar", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuBar_MacUninstallMenuBar, 1, NULL },
-#endif // (defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
+#endif // (wxCHECK_VERSION(3,1,0) && defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
 
 #if ((wxCHECK_VERSION(3,0,1) && defined(__WXMAC__)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxMenu && wxUSE_MENUS)
     { "OSXGetAppleMenu", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMenuBar_OSXGetAppleMenu, 1, NULL },

@@ -123,7 +123,7 @@ class wxMenuBar : public wxWindow
     %wxchkver_3_0 void SetMenuLabel(size_t pos, const wxString& label);
     %mac static void SetAutoWindowMenu(bool enable);
     %mac static bool GetAutoWindowMenu();
-    %mac void MacUninstallMenuBar();
+    %wxchkver_3_1 && %mac void MacUninstallMenuBar();
     %mac void MacInstallMenuBar();
     %mac static wxMenuBar* MacGetInstalledMenuBar();
     %mac static void MacSetCommonMenuBar(wxMenuBar* menubar);
