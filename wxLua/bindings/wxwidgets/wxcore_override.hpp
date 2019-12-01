@@ -1836,7 +1836,7 @@ static int LUACALL wxLua_wxImageFromData_constructor(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 4 ? wxlua_getbooleantype(L, 4) : false);
     // unsigned char* data
-    unsigned char *data = (unsigned char *)lua_tostring(L, 3);
+    unsigned char *data = (unsigned char *)wxlua_getstringtype(L, 3);
     // int height
     int height = (int)wxlua_getintegertype(L, 2);
     // int width
@@ -1998,7 +1998,7 @@ static int LUACALL wxLua_wxImage_SetAlphaData(lua_State *L)
 {
     // unsigned char *data
     size_t len = 0;
-    unsigned char *data = (unsigned char *)lua_tolstring(L, 2, &len);
+    unsigned char *data = (unsigned char *)wxlua_getstringtypelen(L, 2, &len);
     // get this
     wxImage *self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call SetData
@@ -2019,7 +2019,7 @@ static int LUACALL wxLua_wxImage_SetData(lua_State *L)
 {
     // unsigned char *data
     size_t len = 0;
-    unsigned char *data = (unsigned char *)lua_tolstring(L, 2, &len);
+    unsigned char *data = (unsigned char *)wxlua_getstringtypelen(L, 2, &len);
     // get this
     wxImage *self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call SetData
