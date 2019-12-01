@@ -105,6 +105,7 @@
 #define wxLUA_USE_wxLuaPrintout                 1
 #define wxLUA_USE_wxMask                        1
 #define wxLUA_USE_wxMediaCtrl                   1 // must link to lib, also wxUSE_MEDIACTRL
+#define wxLUA_USE_wxMemoryBuffer                1
 #define wxLUA_USE_wxMenu                        1
 #define wxLUA_USE_wxMessageDialog               1
 #define wxLUA_USE_wxMetafile                    1

@@ -487,3 +487,59 @@ class %delete wxULongLong
 };
 
 #endif wxUSE_LONGLONG
+
+#if wxLUA_USE_wxMemoryBuffer
+
+class %delete wxMemoryBuffer
+{
+public:
+    // ctor and dtor
+    wxMemoryBuffer(size_t size = wxMemoryBufferData::DefBufSize);
+
+    // copy and assignment
+    wxMemoryBuffer(const wxMemoryBuffer& src);
+
+    // Accessors
+    void  *GetData() const;
+    size_t GetBufSize() const;
+    size_t GetDataLen() const;
+
+    bool IsEmpty() const;
+
+    void   SetBufSize(size_t size);
+    void   SetDataLen(size_t len);
+
+    void Clear();
+
+    // Ensure the buffer is big enough and return a pointer to it
+    void *GetWriteBuf(size_t sizeNeeded);
+
+    // Update the length after the write
+    void  UngetWriteBuf(size_t sizeUsed);
+
+    // Like the above, but appends to the buffer
+    void *GetAppendBuf(size_t sizeNeeded);
+
+    // Update the length after the append
+    void  UngetAppendBuf(size_t sizeUsed);
+
+    // Other ways to append to the buffer
+    void  AppendByte(char data);
+
+    void  AppendData(const void *data, size_t len);
+
+    // gives up ownership of data, returns the pointer; after this call,
+    // data isn't freed by the buffer and its content is resent to empty
+    void *release();
+    
+    // wxLua specific
+    //  Get the data at the given index. If length > 1, then multiple values are returned.
+    unsigned char Byte(int index, size_t length = 1);
+    //  Set the data at the given index. If multiple data are given, the following values are
+    //  set at the subsequent positions. Data length and buffer size are updated if necessary.
+    void SetByte(int index, unsigned char data);
+    //  Set the same byte to the specified range. Data length and buffer size are updated if necessary.
+    void Fill(unsigned char data, int start_index, size_t length);
+};
+
+#endif

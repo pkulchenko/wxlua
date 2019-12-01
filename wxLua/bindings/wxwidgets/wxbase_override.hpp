@@ -711,6 +711,84 @@ static int LUACALL wxLua_wxArrayString_ToLuaTable(lua_State *L)
 }
 %end
 
+%override wxLua_wxMemoryBuffer_Byte
+//     unsigned char Byte(int index, size_t length = 1);
+static int LUACALL wxLua_wxMemoryBuffer_Byte(lua_State *L)
+{
+    // int index
+    int index = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // int length (optional)
+    int length = 1;
+    if (lua_gettop(L) >= 3)
+        length = (size_t)wxlua_getnumbertype(L, 3);
+    if (index + length > self->GetDataLen())
+        length = self->GetDataLen() - index;
+    if (index < 0 || length <= 0)
+        return 0;
+    int count = 0;
+    while (count < length) {
+        unsigned char returns = ((unsigned char *)(self->GetData()))[index + count];
+        lua_pushnumber(L, returns);
+        count++;
+    }
+    return length;
+}
+%end
+
+%override wxLua_wxMemoryBuffer_SetByte
+//     void SetByte(int index, unsigned char data);
+static int LUACALL wxLua_wxMemoryBuffer_SetByte(lua_State *L)
+{
+    // int index
+    int index = (int)wxlua_getnumbertype(L, 2);
+    wxASSERT_MSG(index >= 0, "index out of range");
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // more data? (optional)
+    int length = lua_gettop(L) - 2;
+    if (length <= 0)
+        return 0;  //  Do nothing
+    // get data pointer
+    unsigned char *dptr = (unsigned char *)self->GetWriteBuf(index + length);
+    wxASSERT_MSG(dptr != NULL, "cannot reallocate buffer");
+    int count = 0;
+    while (count < length) {
+        ((unsigned char *)(self->GetData()))[index + count] = (unsigned char)wxlua_getnumbertype(L, 3 + count);
+        count++;
+    }
+    if (self->GetDataLen() < index + length)
+        self->SetDataLen(index + length);
+    return 0;
+}
+%end
+
+%override wxLua_wxMemoryBuffer_Fill
+//     void Fill(unsigned char data, int start_index, size_t length);
+static int LUACALL wxLua_wxMemoryBuffer_Fill(lua_State *L)
+{
+    // size_t length
+    size_t length = (size_t)wxlua_getnumbertype(L, 4);
+    // int start_index
+    int start_index = (int)wxlua_getnumbertype(L, 3);
+    // unsigned char data
+    int data = (unsigned char)wxlua_getnumbertype(L, 2);
+    wxASSERT_MSG(start_index >= 0, "index out of range");
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    if (length <= 0)
+        return 0;  //  Do nothing
+    // get data pointer
+    unsigned char *dptr = (unsigned char *)self->GetWriteBuf(start_index + length);
+    wxASSERT_MSG(dptr != NULL, "cannot reallocate buffer");
+    memset(dptr + start_index, data, length);
+    if (self->GetDataLen() < start_index + length)
+        self->SetDataLen(start_index + length);
+    return 0;
+}
+%end
+
 // ----------------------------------------------------------------------------
 // Overrides for wxbase_datetime.i
 // ----------------------------------------------------------------------------
