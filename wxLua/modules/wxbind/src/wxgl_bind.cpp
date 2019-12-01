@@ -71,9 +71,9 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxGLCanvas_IsExtensionSupported[1] = {{ 
 static int LUACALL wxLua_wxGLCanvas_IsExtensionSupported(lua_State *L)
 {
     // const char extension
-    wxCharBuffer extension = wxlua_getstringtype(L, 1);
+    const char * extension = wxlua_getstringtype(L, 1);
     // call IsExtensionSupported
-    bool returns = (wxGLCanvas::IsExtensionSupported((const char*)extension));
+    bool returns = (wxGLCanvas::IsExtensionSupported(extension));
     // push the result flag
     lua_pushboolean(L, returns);
 

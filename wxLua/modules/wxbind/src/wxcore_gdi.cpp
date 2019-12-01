@@ -10122,15 +10122,15 @@ static int LUACALL wxLua_wxPalette_constructor2(lua_State *L);
 static int LUACALL wxLua_wxPalette_constructor2(lua_State *L)
 {
     // const unsigned char blue
-    wxCharBuffer blue = wxlua_getstringtype(L, 4);
+    const unsigned char * blue = (const unsigned char *)wxlua_getstringtype(L, 4);
     // const unsigned char green
-    wxCharBuffer green = wxlua_getstringtype(L, 3);
+    const unsigned char * green = (const unsigned char *)wxlua_getstringtype(L, 3);
     // const unsigned char red
-    wxCharBuffer red = wxlua_getstringtype(L, 2);
+    const unsigned char * red = (const unsigned char *)wxlua_getstringtype(L, 2);
     // int n
     int n = (int)wxlua_getnumbertype(L, 1);
     // call constructor
-    wxPalette* returns = new wxPalette(n, (const unsigned char*)(const char*)red, (const unsigned char*)(const char*)green, (const unsigned char*)(const char*)blue);
+    wxPalette* returns = new wxPalette(n, red, green, blue);
     // add to tracked memory list
     wxluaO_addgcobject(L, returns, wxluatype_wxPalette);
     // push the constructed class pointer

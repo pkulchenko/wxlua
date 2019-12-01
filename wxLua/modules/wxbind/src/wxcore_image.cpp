@@ -391,15 +391,15 @@ static int LUACALL wxLua_wxImage_Create5(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 5 ? wxlua_getbooleantype(L, 5) : false);
     // unsigned char alpha
-    wxCharBuffer alpha = wxlua_getstringtype(L, 4);
+    unsigned char * alpha = (unsigned char *)wxlua_getstringtype(L, 4);
     // unsigned char data
-    wxCharBuffer data = wxlua_getstringtype(L, 3);
+    unsigned char * data = (unsigned char *)wxlua_getstringtype(L, 3);
     // const wxSize sz
     const wxSize * sz = (const wxSize *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSize);
     // get this
     wxImage * self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call Create
-    bool returns = (self->Create(*sz, (unsigned char*)(const char*)data, (unsigned char*)(const char*)alpha, static_data));
+    bool returns = (self->Create(*sz, data, alpha, static_data));
     // push the result flag
     lua_pushboolean(L, returns);
 
@@ -420,9 +420,9 @@ static int LUACALL wxLua_wxImage_Create4(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 6 ? wxlua_getbooleantype(L, 6) : false);
     // unsigned char alpha
-    wxCharBuffer alpha = wxlua_getstringtype(L, 5);
+    unsigned char * alpha = (unsigned char *)wxlua_getstringtype(L, 5);
     // unsigned char data
-    wxCharBuffer data = wxlua_getstringtype(L, 4);
+    unsigned char * data = (unsigned char *)wxlua_getstringtype(L, 4);
     // int height
     int height = (int)wxlua_getnumbertype(L, 3);
     // int width
@@ -430,7 +430,7 @@ static int LUACALL wxLua_wxImage_Create4(lua_State *L)
     // get this
     wxImage * self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call Create
-    bool returns = (self->Create(width, height, (unsigned char*)(const char*)data, (unsigned char*)(const char*)alpha, static_data));
+    bool returns = (self->Create(width, height, data, alpha, static_data));
     // push the result flag
     lua_pushboolean(L, returns);
 
@@ -451,13 +451,13 @@ static int LUACALL wxLua_wxImage_Create3(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 4 ? wxlua_getbooleantype(L, 4) : false);
     // unsigned char data
-    wxCharBuffer data = wxlua_getstringtype(L, 3);
+    unsigned char * data = (unsigned char *)wxlua_getstringtype(L, 3);
     // const wxSize sz
     const wxSize * sz = (const wxSize *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSize);
     // get this
     wxImage * self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call Create
-    bool returns = (self->Create(*sz, (unsigned char*)(const char*)data, static_data));
+    bool returns = (self->Create(*sz, data, static_data));
     // push the result flag
     lua_pushboolean(L, returns);
 
@@ -478,7 +478,7 @@ static int LUACALL wxLua_wxImage_Create2(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 5 ? wxlua_getbooleantype(L, 5) : false);
     // unsigned char data
-    wxCharBuffer data = wxlua_getstringtype(L, 4);
+    unsigned char * data = (unsigned char *)wxlua_getstringtype(L, 4);
     // int height
     int height = (int)wxlua_getnumbertype(L, 3);
     // int width
@@ -486,7 +486,7 @@ static int LUACALL wxLua_wxImage_Create2(lua_State *L)
     // get this
     wxImage * self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call Create
-    bool returns = (self->Create(width, height, (unsigned char*)(const char*)data, static_data));
+    bool returns = (self->Create(width, height, data, static_data));
     // push the result flag
     lua_pushboolean(L, returns);
 
@@ -2114,7 +2114,7 @@ static int LUACALL wxLua_wxImage_SetAlphaData(lua_State *L)
 {
     // unsigned char *data
     size_t len = 0;
-    unsigned char *data = (unsigned char *)lua_tolstring(L, 2, &len);
+    unsigned char *data = (unsigned char *)wxlua_getstringtypelen(L, 2, &len);
     // get this
     wxImage *self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call SetData
@@ -2162,11 +2162,11 @@ static int LUACALL wxLua_wxImage_SetAlpha(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 3 ? wxlua_getbooleantype(L, 3) : false);
     // unsigned char alpha = NULL
-    wxCharBuffer alpha = (argCount >= 2 ? wxlua_getstringtype(L, 2) : NULL);
+    unsigned char * alpha = (argCount >= 2 ? (unsigned char *)wxlua_getstringtype(L, 2) : NULL);
     // get this
     wxImage * self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call SetAlpha
-    self->SetAlpha((unsigned char*)(const char*)alpha, static_data);
+    self->SetAlpha(alpha, static_data);
 
     return 0;
 }
@@ -2182,7 +2182,7 @@ static int LUACALL wxLua_wxImage_SetData(lua_State *L)
 {
     // unsigned char *data
     size_t len = 0;
-    unsigned char *data = (unsigned char *)lua_tolstring(L, 2, &len);
+    unsigned char *data = (unsigned char *)wxlua_getstringtypelen(L, 2, &len);
     // get this
     wxImage *self = (wxImage *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImage);
     // call SetData
@@ -2511,7 +2511,7 @@ static int LUACALL wxLua_wxImageFromData_constructor(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 4 ? wxlua_getbooleantype(L, 4) : false);
     // unsigned char* data
-    unsigned char *data = (unsigned char *)lua_tostring(L, 3);
+    unsigned char *data = (unsigned char *)wxlua_getstringtype(L, 3);
     // int height
     int height = (int)wxlua_getintegertype(L, 2);
     // int width
@@ -2709,13 +2709,13 @@ static int LUACALL wxLua_wxImage_constructor5(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 4 ? wxlua_getbooleantype(L, 4) : false);
     // unsigned char alpha
-    wxCharBuffer alpha = wxlua_getstringtype(L, 3);
+    unsigned char * alpha = (unsigned char *)wxlua_getstringtype(L, 3);
     // unsigned char data
-    wxCharBuffer data = wxlua_getstringtype(L, 2);
+    unsigned char * data = (unsigned char *)wxlua_getstringtype(L, 2);
     // const wxSize sz
     const wxSize * sz = (const wxSize *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSize);
     // call constructor
-    wxImage* returns = new wxImage(*sz, (unsigned char*)(const char*)data, (unsigned char*)(const char*)alpha, static_data);
+    wxImage* returns = new wxImage(*sz, data, alpha, static_data);
     // add to tracked memory list
     wxluaO_addgcobject(L, returns, wxluatype_wxImage);
     // push the constructed class pointer
@@ -2738,15 +2738,15 @@ static int LUACALL wxLua_wxImage_constructor4(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 5 ? wxlua_getbooleantype(L, 5) : false);
     // unsigned char alpha
-    wxCharBuffer alpha = wxlua_getstringtype(L, 4);
+    unsigned char * alpha = (unsigned char *)wxlua_getstringtype(L, 4);
     // unsigned char data
-    wxCharBuffer data = wxlua_getstringtype(L, 3);
+    unsigned char * data = (unsigned char *)wxlua_getstringtype(L, 3);
     // int height
     int height = (int)wxlua_getnumbertype(L, 2);
     // int width
     int width = (int)wxlua_getnumbertype(L, 1);
     // call constructor
-    wxImage* returns = new wxImage(width, height, (unsigned char*)(const char*)data, (unsigned char*)(const char*)alpha, static_data);
+    wxImage* returns = new wxImage(width, height, data, alpha, static_data);
     // add to tracked memory list
     wxluaO_addgcobject(L, returns, wxluatype_wxImage);
     // push the constructed class pointer
@@ -2769,11 +2769,11 @@ static int LUACALL wxLua_wxImage_constructor3(lua_State *L)
     // bool static_data = false
     bool static_data = (argCount >= 3 ? wxlua_getbooleantype(L, 3) : false);
     // unsigned char data
-    wxCharBuffer data = wxlua_getstringtype(L, 2);
+    unsigned char * data = (unsigned char *)wxlua_getstringtype(L, 2);
     // const wxSize sz
     const wxSize * sz = (const wxSize *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSize);
     // call constructor
-    wxImage* returns = new wxImage(*sz, (unsigned char*)(const char*)data, static_data);
+    wxImage* returns = new wxImage(*sz, data, static_data);
     // add to tracked memory list
     wxluaO_addgcobject(L, returns, wxluatype_wxImage);
     // push the constructed class pointer

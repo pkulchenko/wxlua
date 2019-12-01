@@ -2403,6 +2403,7 @@ static const char* wxluaclassname_wxLogChain = "wxLogChain";
 static const char* wxluaclassname_wxLogNull = "wxLogNull";
 static const char* wxluaclassname_wxLogPassThrough = "wxLogPassThrough";
 static const char* wxluaclassname_wxLongLong = "wxLongLong";
+static const char* wxluaclassname_wxMemoryBuffer = "wxMemoryBuffer";
 static const char* wxluaclassname_wxMemoryConfig = "wxMemoryConfig";
 static const char* wxluaclassname_wxMemoryInputStream = "wxMemoryInputStream";
 static const char* wxluaclassname_wxMimeTypesManager = "wxMimeTypesManager";
@@ -2731,6 +2732,12 @@ extern void wxLua_wxStringTokenizer_delete_function(void** p);
     extern void wxLua_wxLogPassThrough_delete_function(void** p);
 #endif // wxLUA_USE_wxLog && wxUSE_LOG
 
+#if wxLUA_USE_wxMemoryBuffer
+    extern wxLuaBindMethod wxMemoryBuffer_methods[];
+    extern int wxMemoryBuffer_methodCount;
+    extern void wxLua_wxMemoryBuffer_delete_function(void** p);
+#endif // wxLUA_USE_wxMemoryBuffer
+
 #if wxLUA_USE_wxObject
     extern wxLuaBindMethod wxObject_methods[];
     extern int wxObject_methodCount;
@@ -2984,6 +2991,10 @@ wxLuaBindClass* wxLuaGetClassList_wxbase(size_t &count)
 #if wxUSE_LONGLONG
         { wxluaclassname_wxLongLong, wxLongLong_methods, wxLongLong_methodCount, NULL, &wxluatype_wxLongLong, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxLongLong_delete_function, }, 
 #endif // wxUSE_LONGLONG
+
+#if wxLUA_USE_wxMemoryBuffer
+        { wxluaclassname_wxMemoryBuffer, wxMemoryBuffer_methods, wxMemoryBuffer_methodCount, NULL, &wxluatype_wxMemoryBuffer, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxMemoryBuffer_delete_function, }, 
+#endif // wxLUA_USE_wxMemoryBuffer
 
 #if wxLUA_USE_wxConfig && wxUSE_CONFIG
         { wxluaclassname_wxMemoryConfig, wxMemoryConfig_methods, wxMemoryConfig_methodCount, NULL, &wxluatype_wxMemoryConfig, wxluabaseclassnames_wxMemoryConfig, wxluabaseclassbinds_wxMemoryConfig, NULL, NULL, NULL, 0, &wxLua_wxMemoryConfig_delete_function, }, 

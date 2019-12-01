@@ -299,6 +299,10 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringTokenizer;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxLogPassThrough;
 #endif // wxLUA_USE_wxLog && wxUSE_LOG
 
+#if wxLUA_USE_wxMemoryBuffer
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxMemoryBuffer;
+#endif // wxLUA_USE_wxMemoryBuffer
+
 #if wxLUA_USE_wxObject
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxObject;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxObjectRefData;

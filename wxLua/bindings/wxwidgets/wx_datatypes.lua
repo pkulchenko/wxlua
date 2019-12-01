@@ -3564,6 +3564,12 @@ wx_dataTypeTable =
     Name = "wxMediaState",
     ValueType = "enum",
   },
+  wxMemoryBuffer = {
+    Condition = "wxLUA_USE_wxMemoryBuffer",
+    IsNumber = false,
+    Name = "wxMemoryBuffer",
+    ValueType = "class",
+  },
   wxMemoryConfig = {
     BaseClasses = {
       [1] = "wxFileConfig",

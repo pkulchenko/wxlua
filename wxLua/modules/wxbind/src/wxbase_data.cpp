@@ -114,9 +114,9 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_From8BitData[1] = {{ wxLua_wxSt
 static int LUACALL wxLua_wxString_From8BitData(lua_State *L)
 {
     // const char s
-    wxCharBuffer s = wxlua_getstringtype(L, 1);
+    const char * s = wxlua_getstringtype(L, 1);
     // call From8BitData
-    wxString returns = (wxString::From8BitData((const char*)s));
+    wxString returns = (wxString::From8BitData(s));
     // push the result string
     wxlua_pushwxString(L, returns);
 
@@ -130,9 +130,9 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_FromUTF8[1] = {{ wxLua_wxString
 static int LUACALL wxLua_wxString_FromUTF8(lua_State *L)
 {
     // const char s
-    wxCharBuffer s = wxlua_getstringtype(L, 1);
+    const char * s = wxlua_getstringtype(L, 1);
     // call FromUTF8
-    wxString returns = (wxString::FromUTF8((const char*)s));
+    wxString returns = (wxString::FromUTF8(s));
     // push the result string
     wxlua_pushwxString(L, returns);
 
@@ -146,9 +146,9 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxString_FromUTF8Unchecked[1] = {{ wxLua
 static int LUACALL wxLua_wxString_FromUTF8Unchecked(lua_State *L)
 {
     // const char s
-    wxCharBuffer s = wxlua_getstringtype(L, 1);
+    const char * s = wxlua_getstringtype(L, 1);
     // call FromUTF8Unchecked
-    wxString returns = (wxString::FromUTF8Unchecked((const char*)s));
+    wxString returns = (wxString::FromUTF8Unchecked(s));
     // push the result string
     wxlua_pushwxString(L, returns);
 
@@ -3598,4 +3598,433 @@ wxLuaBindMethod wxULongLong_methods[] = {
 int wxULongLong_methodCount = sizeof(wxULongLong_methods)/sizeof(wxLuaBindMethod) - 1;
 
 #endif  // wxUSE_LONGLONG
+
+
+#if wxLUA_USE_wxMemoryBuffer
+// ---------------------------------------------------------------------------
+// Bind class wxMemoryBuffer
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxMemoryBuffer'
+int wxluatype_wxMemoryBuffer = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_AppendByte[] = { &wxluatype_wxMemoryBuffer, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_AppendByte(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_AppendByte[1] = {{ wxLua_wxMemoryBuffer_AppendByte, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMemoryBuffer_AppendByte }};
+//     void  AppendByte(char data);
+static int LUACALL wxLua_wxMemoryBuffer_AppendByte(lua_State *L)
+{
+    // char data
+    char data = (char)wxlua_getnumbertype(L, 2);
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // call AppendByte
+    self->AppendByte(data);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_AppendData[] = { &wxluatype_wxMemoryBuffer, &wxluatype_TLIGHTUSERDATA, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_AppendData(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_AppendData[1] = {{ wxLua_wxMemoryBuffer_AppendData, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxMemoryBuffer_AppendData }};
+//     void  AppendData(const void *data, size_t len);
+static int LUACALL wxLua_wxMemoryBuffer_AppendData(lua_State *L)
+{
+    // size_t len
+    size_t len = (size_t)wxlua_getuintegertype(L, 3);
+    // const void data
+    const void * data = (const void *)wxlua_touserdata(L, 2);
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // call AppendData
+    self->AppendData(data, len);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_Byte[] = { &wxluatype_wxMemoryBuffer, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_Byte(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_Byte[1] = {{ wxLua_wxMemoryBuffer_Byte, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxMemoryBuffer_Byte }};
+// %override wxLua_wxMemoryBuffer_Byte
+//     unsigned char Byte(int index, size_t length = 1);
+static int LUACALL wxLua_wxMemoryBuffer_Byte(lua_State *L)
+{
+    // int index
+    int index = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // int length (optional)
+    int length = 1;
+    if (lua_gettop(L) >= 3)
+        length = (size_t)wxlua_getnumbertype(L, 3);
+    if (index + length > self->GetDataLen())
+        length = self->GetDataLen() - index;
+    if (index < 0 || length <= 0)
+        return 0;
+    int count = 0;
+    while (count < length) {
+        unsigned char returns = ((unsigned char *)(self->GetData()))[index + count];
+        lua_pushnumber(L, returns);
+        count++;
+    }
+    return length;
+}
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_Clear[] = { &wxluatype_wxMemoryBuffer, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_Clear(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_Clear[1] = {{ wxLua_wxMemoryBuffer_Clear, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMemoryBuffer_Clear }};
+//     void Clear();
+static int LUACALL wxLua_wxMemoryBuffer_Clear(lua_State *L)
+{
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // call Clear
+    self->Clear();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_Fill[] = { &wxluatype_wxMemoryBuffer, &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_Fill(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_Fill[1] = {{ wxLua_wxMemoryBuffer_Fill, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxMemoryBuffer_Fill }};
+// %override wxLua_wxMemoryBuffer_Fill
+//     void Fill(unsigned char data, int start_index, size_t length);
+static int LUACALL wxLua_wxMemoryBuffer_Fill(lua_State *L)
+{
+    // size_t length
+    size_t length = (size_t)wxlua_getnumbertype(L, 4);
+    // int start_index
+    int start_index = (int)wxlua_getnumbertype(L, 3);
+    // unsigned char data
+    int data = (unsigned char)wxlua_getnumbertype(L, 2);
+    wxASSERT_MSG(start_index >= 0, "index out of range");
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    if (length <= 0)
+        return 0;  //  Do nothing
+    // get data pointer
+    unsigned char *dptr = (unsigned char *)self->GetWriteBuf(start_index + length);
+    wxASSERT_MSG(dptr != NULL, "cannot reallocate buffer");
+    memset(dptr + start_index, data, length);
+    if (self->GetDataLen() < start_index + length)
+        self->SetDataLen(start_index + length);
+    return 0;
+}
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_GetAppendBuf[] = { &wxluatype_wxMemoryBuffer, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_GetAppendBuf(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_GetAppendBuf[1] = {{ wxLua_wxMemoryBuffer_GetAppendBuf, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMemoryBuffer_GetAppendBuf }};
+//     void *GetAppendBuf(size_t sizeNeeded);
+static int LUACALL wxLua_wxMemoryBuffer_GetAppendBuf(lua_State *L)
+{
+    // size_t sizeNeeded
+    size_t sizeNeeded = (size_t)wxlua_getuintegertype(L, 2);
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // call GetAppendBuf
+    void* returns = (void*)self->GetAppendBuf(sizeNeeded);
+    // push the result pointer
+    lua_pushlightuserdata(L, (void *)returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_GetBufSize[] = { &wxluatype_wxMemoryBuffer, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_GetBufSize(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_GetBufSize[1] = {{ wxLua_wxMemoryBuffer_GetBufSize, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMemoryBuffer_GetBufSize }};
+//     size_t GetBufSize() const;
+static int LUACALL wxLua_wxMemoryBuffer_GetBufSize(lua_State *L)
+{
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // call GetBufSize
+    size_t returns = (self->GetBufSize());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_GetData[] = { &wxluatype_wxMemoryBuffer, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_GetData(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_GetData[1] = {{ wxLua_wxMemoryBuffer_GetData, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMemoryBuffer_GetData }};
+//     void  *GetData() const;
+static int LUACALL wxLua_wxMemoryBuffer_GetData(lua_State *L)
+{
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // call GetData
+    void* returns = (void*)self->GetData();
+    // push the result pointer
+    lua_pushlightuserdata(L, (void *)returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_GetDataLen[] = { &wxluatype_wxMemoryBuffer, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_GetDataLen(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_GetDataLen[1] = {{ wxLua_wxMemoryBuffer_GetDataLen, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMemoryBuffer_GetDataLen }};
+//     size_t GetDataLen() const;
+static int LUACALL wxLua_wxMemoryBuffer_GetDataLen(lua_State *L)
+{
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // call GetDataLen
+    size_t returns = (self->GetDataLen());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_GetWriteBuf[] = { &wxluatype_wxMemoryBuffer, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_GetWriteBuf(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_GetWriteBuf[1] = {{ wxLua_wxMemoryBuffer_GetWriteBuf, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMemoryBuffer_GetWriteBuf }};
+//     void *GetWriteBuf(size_t sizeNeeded);
+static int LUACALL wxLua_wxMemoryBuffer_GetWriteBuf(lua_State *L)
+{
+    // size_t sizeNeeded
+    size_t sizeNeeded = (size_t)wxlua_getuintegertype(L, 2);
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // call GetWriteBuf
+    void* returns = (void*)self->GetWriteBuf(sizeNeeded);
+    // push the result pointer
+    lua_pushlightuserdata(L, (void *)returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_IsEmpty[] = { &wxluatype_wxMemoryBuffer, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_IsEmpty(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_IsEmpty[1] = {{ wxLua_wxMemoryBuffer_IsEmpty, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMemoryBuffer_IsEmpty }};
+//     bool IsEmpty() const;
+static int LUACALL wxLua_wxMemoryBuffer_IsEmpty(lua_State *L)
+{
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // call IsEmpty
+    bool returns = (self->IsEmpty());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_SetBufSize[] = { &wxluatype_wxMemoryBuffer, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_SetBufSize(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_SetBufSize[1] = {{ wxLua_wxMemoryBuffer_SetBufSize, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMemoryBuffer_SetBufSize }};
+//     void   SetBufSize(size_t size);
+static int LUACALL wxLua_wxMemoryBuffer_SetBufSize(lua_State *L)
+{
+    // size_t size
+    size_t size = (size_t)wxlua_getuintegertype(L, 2);
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // call SetBufSize
+    self->SetBufSize(size);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_SetByte[] = { &wxluatype_wxMemoryBuffer, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_SetByte(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_SetByte[1] = {{ wxLua_wxMemoryBuffer_SetByte, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxMemoryBuffer_SetByte }};
+// %override wxLua_wxMemoryBuffer_SetByte
+//     void SetByte(int index, unsigned char data);
+static int LUACALL wxLua_wxMemoryBuffer_SetByte(lua_State *L)
+{
+    // int index
+    int index = (int)wxlua_getnumbertype(L, 2);
+    wxASSERT_MSG(index >= 0, "index out of range");
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // more data? (optional)
+    int length = lua_gettop(L) - 2;
+    if (length <= 0)
+        return 0;  //  Do nothing
+    // get data pointer
+    unsigned char *dptr = (unsigned char *)self->GetWriteBuf(index + length);
+    wxASSERT_MSG(dptr != NULL, "cannot reallocate buffer");
+    int count = 0;
+    while (count < length) {
+        ((unsigned char *)(self->GetData()))[index + count] = (unsigned char)wxlua_getnumbertype(L, 3 + count);
+        count++;
+    }
+    if (self->GetDataLen() < index + length)
+        self->SetDataLen(index + length);
+    return 0;
+}
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_SetDataLen[] = { &wxluatype_wxMemoryBuffer, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_SetDataLen(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_SetDataLen[1] = {{ wxLua_wxMemoryBuffer_SetDataLen, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMemoryBuffer_SetDataLen }};
+//     void   SetDataLen(size_t len);
+static int LUACALL wxLua_wxMemoryBuffer_SetDataLen(lua_State *L)
+{
+    // size_t len
+    size_t len = (size_t)wxlua_getuintegertype(L, 2);
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // call SetDataLen
+    self->SetDataLen(len);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_UngetAppendBuf[] = { &wxluatype_wxMemoryBuffer, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_UngetAppendBuf(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_UngetAppendBuf[1] = {{ wxLua_wxMemoryBuffer_UngetAppendBuf, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMemoryBuffer_UngetAppendBuf }};
+//     void  UngetAppendBuf(size_t sizeUsed);
+static int LUACALL wxLua_wxMemoryBuffer_UngetAppendBuf(lua_State *L)
+{
+    // size_t sizeUsed
+    size_t sizeUsed = (size_t)wxlua_getuintegertype(L, 2);
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // call UngetAppendBuf
+    self->UngetAppendBuf(sizeUsed);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_UngetWriteBuf[] = { &wxluatype_wxMemoryBuffer, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_UngetWriteBuf(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_UngetWriteBuf[1] = {{ wxLua_wxMemoryBuffer_UngetWriteBuf, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMemoryBuffer_UngetWriteBuf }};
+//     void  UngetWriteBuf(size_t sizeUsed);
+static int LUACALL wxLua_wxMemoryBuffer_UngetWriteBuf(lua_State *L)
+{
+    // size_t sizeUsed
+    size_t sizeUsed = (size_t)wxlua_getuintegertype(L, 2);
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // call UngetWriteBuf
+    self->UngetWriteBuf(sizeUsed);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_delete[] = { &wxluatype_wxMemoryBuffer, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxMemoryBuffer_delete }};
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_release[] = { &wxluatype_wxMemoryBuffer, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_release(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_release[1] = {{ wxLua_wxMemoryBuffer_release, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMemoryBuffer_release }};
+//     void *release();
+static int LUACALL wxLua_wxMemoryBuffer_release(lua_State *L)
+{
+    // get this
+    wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // call release
+    void* returns = (void*)self->release();
+    // push the result pointer
+    lua_pushlightuserdata(L, (void *)returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_constructor1[] = { &wxluatype_wxMemoryBuffer, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_constructor1[1] = {{ wxLua_wxMemoryBuffer_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxMemoryBuffer_constructor1 }};
+//     wxMemoryBuffer(const wxMemoryBuffer& src);
+static int LUACALL wxLua_wxMemoryBuffer_constructor1(lua_State *L)
+{
+    // const wxMemoryBuffer src
+    const wxMemoryBuffer * src = (const wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    // call constructor
+    wxMemoryBuffer* returns = new wxMemoryBuffer(*src);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxMemoryBuffer);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxMemoryBuffer);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_constructor[] = { &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxMemoryBuffer_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_constructor[1] = {{ wxLua_wxMemoryBuffer_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 1, s_wxluatypeArray_wxLua_wxMemoryBuffer_constructor }};
+//     wxMemoryBuffer(size_t size = wxMemoryBufferData::DefBufSize);
+static int LUACALL wxLua_wxMemoryBuffer_constructor(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // size_t size = wxMemoryBufferData::DefBufSize
+    size_t size = (argCount >= 1 ? (size_t)wxlua_getuintegertype(L, 1) : wxMemoryBufferData::DefBufSize);
+    // call constructor
+    wxMemoryBuffer* returns = new wxMemoryBuffer(size);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxMemoryBuffer);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxMemoryBuffer);
+
+    return 1;
+}
+
+
+
+
+#if (wxLUA_USE_wxMemoryBuffer)
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_constructor_overload[] =
+{
+    { wxLua_wxMemoryBuffer_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxMemoryBuffer_constructor1 },
+    { wxLua_wxMemoryBuffer_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 1, s_wxluatypeArray_wxLua_wxMemoryBuffer_constructor },
+};
+static int s_wxluafunc_wxLua_wxMemoryBuffer_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxMemoryBuffer_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (wxLUA_USE_wxMemoryBuffer)
+
+void wxLua_wxMemoryBuffer_delete_function(void** p)
+{
+    wxMemoryBuffer* o = (wxMemoryBuffer*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxMemoryBuffer_methods[] = {
+    { "AppendByte", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_AppendByte, 1, NULL },
+    { "AppendData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_AppendData, 1, NULL },
+    { "Byte", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_Byte, 1, NULL },
+    { "Clear", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_Clear, 1, NULL },
+    { "Fill", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_Fill, 1, NULL },
+    { "GetAppendBuf", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_GetAppendBuf, 1, NULL },
+    { "GetBufSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_GetBufSize, 1, NULL },
+    { "GetData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_GetData, 1, NULL },
+    { "GetDataLen", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_GetDataLen, 1, NULL },
+    { "GetWriteBuf", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_GetWriteBuf, 1, NULL },
+    { "IsEmpty", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_IsEmpty, 1, NULL },
+    { "SetBufSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_SetBufSize, 1, NULL },
+    { "SetByte", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_SetByte, 1, NULL },
+    { "SetDataLen", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_SetDataLen, 1, NULL },
+    { "UngetAppendBuf", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_UngetAppendBuf, 1, NULL },
+    { "UngetWriteBuf", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_UngetWriteBuf, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxMemoryBuffer_delete, 1, NULL },
+    { "release", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_release, 1, NULL },
+
+#if (wxLUA_USE_wxMemoryBuffer)
+    { "wxMemoryBuffer", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxMemoryBuffer_constructor_overload, s_wxluafunc_wxLua_wxMemoryBuffer_constructor_overload_count, 0 },
+#endif // (wxLUA_USE_wxMemoryBuffer)
+
+    { 0, 0, 0, 0 },
+};
+
+int wxMemoryBuffer_methodCount = sizeof(wxMemoryBuffer_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxMemoryBuffer
 

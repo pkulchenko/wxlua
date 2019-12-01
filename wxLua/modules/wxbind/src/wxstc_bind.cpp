@@ -123,11 +123,11 @@ static int LUACALL wxLua_wxStyledTextCtrl_AddTextRaw(lua_State *L)
     // int length = -1
     int length = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : -1);
     // const char text
-    wxCharBuffer text = wxlua_getstringtype(L, 2);
+    const char * text = wxlua_getstringtype(L, 2);
     // get this
     wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
     // call AddTextRaw
-    self->AddTextRaw((const char*)text, length);
+    self->AddTextRaw(text, length);
 
     return 0;
 }
@@ -498,11 +498,11 @@ static int LUACALL wxLua_wxStyledTextCtrl_AppendTextRaw(lua_State *L)
     // int length = -1
     int length = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : -1);
     // const char text
-    wxCharBuffer text = wxlua_getstringtype(L, 2);
+    const char * text = wxlua_getstringtype(L, 2);
     // get this
     wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
     // call AppendTextRaw
-    self->AppendTextRaw((const char*)text, length);
+    self->AppendTextRaw(text, length);
 
     return 0;
 }
@@ -7431,13 +7431,13 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_InsertTextRaw[1] = {{ w
 static int LUACALL wxLua_wxStyledTextCtrl_InsertTextRaw(lua_State *L)
 {
     // const char text
-    wxCharBuffer text = wxlua_getstringtype(L, 3);
+    const char * text = wxlua_getstringtype(L, 3);
     // int pos
     int pos = (int)wxlua_getnumbertype(L, 2);
     // get this
     wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
     // call InsertTextRaw
-    self->InsertTextRaw(pos, (const char*)text);
+    self->InsertTextRaw(pos, text);
 
     return 0;
 }
@@ -8231,13 +8231,13 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_MarkerDefineRGBAImage[1
 static int LUACALL wxLua_wxStyledTextCtrl_MarkerDefineRGBAImage(lua_State *L)
 {
     // const unsigned char pixels
-    wxCharBuffer pixels = wxlua_getstringtype(L, 3);
+    const unsigned char * pixels = (const unsigned char *)wxlua_getstringtype(L, 3);
     // int markerNumber
     int markerNumber = (int)wxlua_getnumbertype(L, 2);
     // get this
     wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
     // call MarkerDefineRGBAImage
-    self->MarkerDefineRGBAImage(markerNumber, (const unsigned char*)(const char*)pixels);
+    self->MarkerDefineRGBAImage(markerNumber, pixels);
 
     return 0;
 }
@@ -9195,13 +9195,13 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_RegisterRGBAImage[1] = 
 static int LUACALL wxLua_wxStyledTextCtrl_RegisterRGBAImage(lua_State *L)
 {
     // const unsigned char pixels
-    wxCharBuffer pixels = wxlua_getstringtype(L, 3);
+    const unsigned char * pixels = (const unsigned char *)wxlua_getstringtype(L, 3);
     // int type
     int type = (int)wxlua_getnumbertype(L, 2);
     // get this
     wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
     // call RegisterRGBAImage
-    self->RegisterRGBAImage(type, (const unsigned char*)(const char*)pixels);
+    self->RegisterRGBAImage(type, pixels);
 
     return 0;
 }
@@ -9266,11 +9266,11 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_ReplaceSelectionRaw[1] 
 static int LUACALL wxLua_wxStyledTextCtrl_ReplaceSelectionRaw(lua_State *L)
 {
     // const char text
-    wxCharBuffer text = wxlua_getstringtype(L, 2);
+    const char * text = wxlua_getstringtype(L, 2);
     // get this
     wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
     // call ReplaceSelectionRaw
-    self->ReplaceSelectionRaw((const char*)text);
+    self->ReplaceSelectionRaw(text);
 
     return 0;
 }
@@ -9338,11 +9338,11 @@ static int LUACALL wxLua_wxStyledTextCtrl_ReplaceTargetRERaw(lua_State *L)
     // int length = -1
     int length = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : -1);
     // const char text
-    wxCharBuffer text = wxlua_getstringtype(L, 2);
+    const char * text = wxlua_getstringtype(L, 2);
     // get this
     wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
     // call ReplaceTargetRERaw
-    int returns = (self->ReplaceTargetRERaw((const char*)text, length));
+    int returns = (self->ReplaceTargetRERaw(text, length));
     // push the result number
 #if LUA_VERSION_NUM >= 503
 if ((double)(lua_Integer)returns == (double)returns) {
@@ -9366,11 +9366,11 @@ static int LUACALL wxLua_wxStyledTextCtrl_ReplaceTargetRaw(lua_State *L)
     // int length = -1
     int length = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : -1);
     // const char text
-    wxCharBuffer text = wxlua_getstringtype(L, 2);
+    const char * text = wxlua_getstringtype(L, 2);
     // get this
     wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
     // call ReplaceTargetRaw
-    int returns = (self->ReplaceTargetRaw((const char*)text, length));
+    int returns = (self->ReplaceTargetRaw(text, length));
     // push the result number
 #if LUA_VERSION_NUM >= 503
 if ((double)(lua_Integer)returns == (double)returns) {
@@ -12062,11 +12062,11 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_SetTextRaw[1] = {{ wxLu
 static int LUACALL wxLua_wxStyledTextCtrl_SetTextRaw(lua_State *L)
 {
     // const char text
-    wxCharBuffer text = wxlua_getstringtype(L, 2);
+    const char * text = wxlua_getstringtype(L, 2);
     // get this
     wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
     // call SetTextRaw
-    self->SetTextRaw((const char*)text);
+    self->SetTextRaw(text);
 
     return 0;
 }
