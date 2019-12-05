@@ -534,7 +534,7 @@ public:
 
     // wxLua specific
     //  Get the data at the given index. If length > 1, then multiple values are returned.
-    unsigned char Byte(int index, size_t length = 1);
+    unsigned char GetByte(int index, size_t length = 1);
     //  Set the data at the given index. If multiple data are given, the following values are
     //  set at the subsequent positions. Data length and buffer size are updated if necessary.
     void SetByte(int index, unsigned char data);

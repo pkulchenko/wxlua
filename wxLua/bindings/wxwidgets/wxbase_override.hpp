@@ -711,9 +711,9 @@ static int LUACALL wxLua_wxArrayString_ToLuaTable(lua_State *L)
 }
 %end
 
-%override wxLua_wxMemoryBuffer_Byte
-//     unsigned char Byte(int index, size_t length = 1);
-static int LUACALL wxLua_wxMemoryBuffer_Byte(lua_State *L)
+%override wxLua_wxMemoryBuffer_GetByte
+//     unsigned char GetByte(int index, size_t length = 1);
+static int LUACALL wxLua_wxMemoryBuffer_GetByte(lua_State *L)
 {
     // int index
     int index = (int)wxlua_getnumbertype(L, 2);
