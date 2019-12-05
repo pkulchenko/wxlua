@@ -2854,7 +2854,7 @@ class wxStyledTextCtrl : public wxControl
     /**
         Add array of cells to document.
     */
-    //void AddStyledText(const wxMemoryBuffer& data);
+    void AddStyledText(const wxMemoryBuffer& data);
 
     /**
         Insert string at a position.
@@ -2902,7 +2902,7 @@ class wxStyledTextCtrl : public wxControl
     /**
         Retrieve a buffer of cells.
     */
-    //wxMemoryBuffer GetStyledText(int startPos, int endPos);
+    wxMemoryBuffer GetStyledText(int startPos, int endPos);
 
     /**
         In read-only mode?
@@ -7159,9 +7159,7 @@ class wxStyledTextCtrl : public wxControl
     // Valid values are SCMOD_CTRL(default), SCMOD_ALT, or SCMOD_SUPER.
     //const char* GetCharacterPointer() const;
     //const char* GetRangePointer(int position, int rangeLength) const;
-    //void AddStyledText(const wxMemoryBuffer& data);
     //void* CreateLoader(int bytes) const;
-    //wxMemoryBuffer GetStyledText(int startPos, int endPos);
 
     //}}}
     //----------------------------------------------------------------------

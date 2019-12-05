@@ -75,6 +75,25 @@ if ((double)(lua_Integer)returns == (double)returns) {
 
 #endif // wxCHECK_VERSION(2,9,5)
 
+#if wxLUA_USE_wxMemoryBuffer
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_AddStyledText[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_wxMemoryBuffer, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_AddStyledText(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_AddStyledText[1] = {{ wxLua_wxStyledTextCtrl_AddStyledText, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_AddStyledText }};
+//     void AddStyledText(const wxMemoryBuffer& data);
+static int LUACALL wxLua_wxStyledTextCtrl_AddStyledText(lua_State *L)
+{
+    // const wxMemoryBuffer data
+    const wxMemoryBuffer * data = (const wxMemoryBuffer *)wxluaT_getuserdatatype(L, 2, wxluatype_wxMemoryBuffer);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call AddStyledText
+    self->AddStyledText(*data);
+
+    return 0;
+}
+
+#endif // wxLUA_USE_wxMemoryBuffer
+
 #if wxCHECK_VERSION(3,1,0)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_AddTabStop[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_AddTabStop(lua_State *L);
@@ -5997,6 +6016,35 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
+#endif // wxCHECK_VERSION(3,1,0)
+
+#if wxLUA_USE_wxMemoryBuffer
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetStyledText[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_GetStyledText(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyledText[1] = {{ wxLua_wxStyledTextCtrl_GetStyledText, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetStyledText }};
+//     wxMemoryBuffer GetStyledText(int startPos, int endPos);
+static int LUACALL wxLua_wxStyledTextCtrl_GetStyledText(lua_State *L)
+{
+    // int endPos
+    int endPos = (int)wxlua_getnumbertype(L, 3);
+    // int startPos
+    int startPos = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call GetStyledText
+    // allocate a new object using the copy constructor
+    wxMemoryBuffer* returns = new wxMemoryBuffer(self->GetStyledText(startPos, endPos));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxMemoryBuffer);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxMemoryBuffer);
+
+    return 1;
+}
+
+#endif // wxLUA_USE_wxMemoryBuffer
+
+#if wxCHECK_VERSION(3,1,0)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetSubStyleBases[] = { &wxluatype_wxStyledTextCtrl, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_GetSubStyleBases(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetSubStyleBases[1] = {{ wxLua_wxStyledTextCtrl_GetSubStyleBases, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetSubStyleBases }};
@@ -14380,6 +14428,10 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "AddSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AddSelection, 1, NULL },
 #endif // wxCHECK_VERSION(2,9,5)
 
+#if wxLUA_USE_wxMemoryBuffer
+    { "AddStyledText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AddStyledText, 1, NULL },
+#endif // wxLUA_USE_wxMemoryBuffer
+
 #if wxCHECK_VERSION(3,1,0)
     { "AddTabStop", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AddTabStop, 1, NULL },
 #endif // wxCHECK_VERSION(3,1,0)
@@ -14971,6 +15023,13 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
 
 #if wxCHECK_VERSION(3,1,0)
     { "GetStyleFromSubStyle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyleFromSubStyle, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,0)
+
+#if wxLUA_USE_wxMemoryBuffer
+    { "GetStyledText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetStyledText, 1, NULL },
+#endif // wxLUA_USE_wxMemoryBuffer
+
+#if wxCHECK_VERSION(3,1,0)
     { "GetSubStyleBases", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetSubStyleBases, 1, NULL },
     { "GetSubStylesLength", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetSubStylesLength, 1, NULL },
     { "GetSubStylesStart", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetSubStylesStart, 1, NULL },
