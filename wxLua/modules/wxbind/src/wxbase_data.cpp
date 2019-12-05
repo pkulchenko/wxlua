@@ -3671,10 +3671,12 @@ static int LUACALL wxLua_wxMemoryBuffer_Byte(lua_State *L)
 }
 
 
+
+#if (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxMemoryBuffer)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_Clear[] = { &wxluatype_wxMemoryBuffer, NULL };
 static int LUACALL wxLua_wxMemoryBuffer_Clear(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_Clear[1] = {{ wxLua_wxMemoryBuffer_Clear, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMemoryBuffer_Clear }};
-//     void Clear();
+//     %wxchkver_2_9_4 void Clear();
 static int LUACALL wxLua_wxMemoryBuffer_Clear(lua_State *L)
 {
     // get this
@@ -3684,6 +3686,8 @@ static int LUACALL wxLua_wxMemoryBuffer_Clear(lua_State *L)
 
     return 0;
 }
+
+#endif // (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxMemoryBuffer)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_Fill[] = { &wxluatype_wxMemoryBuffer, &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxMemoryBuffer_Fill(lua_State *L);
@@ -3809,10 +3813,12 @@ static int LUACALL wxLua_wxMemoryBuffer_GetWriteBuf(lua_State *L)
     return 1;
 }
 
+
+#if (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxMemoryBuffer)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_IsEmpty[] = { &wxluatype_wxMemoryBuffer, NULL };
 static int LUACALL wxLua_wxMemoryBuffer_IsEmpty(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryBuffer_IsEmpty[1] = {{ wxLua_wxMemoryBuffer_IsEmpty, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMemoryBuffer_IsEmpty }};
-//     bool IsEmpty() const;
+//     %wxchkver_2_9_4 bool IsEmpty() const;
 static int LUACALL wxLua_wxMemoryBuffer_IsEmpty(lua_State *L)
 {
     // get this
@@ -3824,6 +3830,8 @@ static int LUACALL wxLua_wxMemoryBuffer_IsEmpty(lua_State *L)
 
     return 1;
 }
+
+#endif // (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxMemoryBuffer)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryBuffer_SetBufSize[] = { &wxluatype_wxMemoryBuffer, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxMemoryBuffer_SetBufSize(lua_State *L);
@@ -4001,14 +4009,22 @@ wxLuaBindMethod wxMemoryBuffer_methods[] = {
     { "AppendByte", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_AppendByte, 1, NULL },
     { "AppendData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_AppendData, 1, NULL },
     { "Byte", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_Byte, 1, NULL },
+
+#if (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxMemoryBuffer)
     { "Clear", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_Clear, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxMemoryBuffer)
+
     { "Fill", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_Fill, 1, NULL },
     { "GetAppendBuf", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_GetAppendBuf, 1, NULL },
     { "GetBufSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_GetBufSize, 1, NULL },
     { "GetData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_GetData, 1, NULL },
     { "GetDataLen", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_GetDataLen, 1, NULL },
     { "GetWriteBuf", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_GetWriteBuf, 1, NULL },
+
+#if (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxMemoryBuffer)
     { "IsEmpty", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_IsEmpty, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxMemoryBuffer)
+
     { "SetBufSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_SetBufSize, 1, NULL },
     { "SetByte", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_SetByte, 1, NULL },
     { "SetDataLen", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryBuffer_SetDataLen, 1, NULL },

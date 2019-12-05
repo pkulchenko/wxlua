@@ -504,12 +504,12 @@ public:
     size_t GetBufSize() const;
     size_t GetDataLen() const;
 
-    bool IsEmpty() const;
+    %wxchkver_2_9_4 bool IsEmpty() const;
 
     void   SetBufSize(size_t size);
     void   SetDataLen(size_t len);
 
-    void Clear();
+    %wxchkver_2_9_4 void Clear();
 
     // Ensure the buffer is big enough and return a pointer to it
     void *GetWriteBuf(size_t sizeNeeded);
@@ -529,9 +529,9 @@ public:
     void  AppendData(const void *data, size_t len);
 
     // gives up ownership of data, returns the pointer; after this call,
-    // data isn't freed by the buffer and its content is resent to empty
+    // data isn't freed by the buffer and its content is reset to empty
     void *release();
-    
+
     // wxLua specific
     //  Get the data at the given index. If length > 1, then multiple values are returned.
     unsigned char Byte(int index, size_t length = 1);
