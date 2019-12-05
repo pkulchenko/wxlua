@@ -719,14 +719,16 @@ static int LUACALL wxLua_wxMemoryBuffer_GetByte(lua_State *L)
     int index = (int)wxlua_getnumbertype(L, 2);
     // get this
     wxMemoryBuffer * self = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    if (index < 0 || (unsigned)index >= self->GetDataLen())
+        return 0;
     // int length (optional)
     int length = 1;
     if (lua_gettop(L) >= 3)
         length = (size_t)wxlua_getnumbertype(L, 3);
-    if (index + length > self->GetDataLen())
-        length = self->GetDataLen() - index;
-    if (index < 0 || length <= 0)
+    if (length <= 0)
         return 0;
+    if ((unsigned)(index + length) > self->GetDataLen())
+        length = self->GetDataLen() - index;
     int count = 0;
     while (count < length) {
         unsigned char returns = ((unsigned char *)(self->GetData()))[index + count];
@@ -758,7 +760,7 @@ static int LUACALL wxLua_wxMemoryBuffer_SetByte(lua_State *L)
         ((unsigned char *)(self->GetData()))[index + count] = (unsigned char)wxlua_getnumbertype(L, 3 + count);
         count++;
     }
-    if (self->GetDataLen() < index + length)
+    if (self->GetDataLen() < (unsigned)(index + length))
         self->SetDataLen(index + length);
     return 0;
 }
