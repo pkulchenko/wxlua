@@ -25,10 +25,6 @@
     #include <wx/wx.h>
 #endif
 
-//#if defined(__WXGTK__) || defined(__WXMOTIF__) || defined(__WXMAC__)
-    #include "art/wxlua.xpm"
-//#endif
-
 #include <wx/splitter.h>
 #include <wx/toolbar.h>
 #include <wx/filename.h>
