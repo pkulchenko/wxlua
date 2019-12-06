@@ -5167,14 +5167,13 @@ static int LUACALL wxLua_wxAuiTabCtrl_AddPage(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiTabCtrl_ButtonHitTest[] = { &wxluatype_wxAuiTabCtrl, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxAuiTabContainerButton, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiTabCtrl_ButtonHitTest[] = { &wxluatype_wxAuiTabCtrl, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxAuiTabCtrl_ButtonHitTest(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiTabCtrl_ButtonHitTest[1] = {{ wxLua_wxAuiTabCtrl_ButtonHitTest, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxAuiTabCtrl_ButtonHitTest }};
-//     bool ButtonHitTest(int x, int y, wxAuiTabContainerButton** hit) const;
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiTabCtrl_ButtonHitTest[1] = {{ wxLua_wxAuiTabCtrl_ButtonHitTest, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxAuiTabCtrl_ButtonHitTest }};
+// %override wxLua_wxAuiTabCtrl_ButtonHitTest
+// wxAuiTabContainerButton* ButtonHitTest(int x, int y) const;
 static int LUACALL wxLua_wxAuiTabCtrl_ButtonHitTest(lua_State *L)
 {
-    // wxAuiTabContainerButton hit
-    wxAuiTabContainerButton ** hit = (wxAuiTabContainerButton **)wxluaT_getuserdatatype(L, 4, wxluatype_wxAuiTabContainerButton);
     // int y
     int y = (int)wxlua_getnumbertype(L, 3);
     // int x
@@ -5182,12 +5181,15 @@ static int LUACALL wxLua_wxAuiTabCtrl_ButtonHitTest(lua_State *L)
     // get this
     wxAuiTabCtrl * self = (wxAuiTabCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiTabCtrl);
     // call ButtonHitTest
-    bool returns = (self->ButtonHitTest(x, y, hit));
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
+    wxAuiTabContainerButton * hit;
+    bool returns = (self->ButtonHitTest(x, y, &hit));
+    if (returns) {
+        wxluaT_pushuserdatatype(L, hit, wxluatype_wxAuiTabContainerButton);
+        return 1;
+    }
+    return 0;
 }
+
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiTabCtrl_DoShowHide[] = { &wxluatype_wxAuiTabCtrl, NULL };
 static int LUACALL wxLua_wxAuiTabCtrl_DoShowHide(lua_State *L);
@@ -5722,14 +5724,13 @@ static int LUACALL wxLua_wxAuiTabCtrl_SetTabOffset(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiTabCtrl_TabHitTest[] = { &wxluatype_wxAuiTabCtrl, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxWindow, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiTabCtrl_TabHitTest[] = { &wxluatype_wxAuiTabCtrl, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxAuiTabCtrl_TabHitTest(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiTabCtrl_TabHitTest[1] = {{ wxLua_wxAuiTabCtrl_TabHitTest, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxAuiTabCtrl_TabHitTest }};
-//     bool TabHitTest(int x, int y, wxWindow** hit) const;
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiTabCtrl_TabHitTest[1] = {{ wxLua_wxAuiTabCtrl_TabHitTest, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxAuiTabCtrl_TabHitTest }};
+// %override wxLua_wxAuiTabCtrl_TabHitTest
+// wxWindow* TabHitTest(int x, int y) const;
 static int LUACALL wxLua_wxAuiTabCtrl_TabHitTest(lua_State *L)
 {
-    // wxWindow hit
-    wxWindow ** hit = (wxWindow **)wxluaT_getuserdatatype(L, 4, wxluatype_wxWindow);
     // int y
     int y = (int)wxlua_getnumbertype(L, 3);
     // int x
@@ -5737,12 +5738,15 @@ static int LUACALL wxLua_wxAuiTabCtrl_TabHitTest(lua_State *L)
     // get this
     wxAuiTabCtrl * self = (wxAuiTabCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiTabCtrl);
     // call TabHitTest
-    bool returns = (self->TabHitTest(x, y, hit));
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
+    wxWindow * hit;
+    bool returns = (self->TabHitTest(x, y, &hit));
+    if (returns) {
+        wxluaT_pushuserdatatype(L, hit, wxluatype_wxWindow);
+        return 1;
+    }
+    return 0;
 }
+
 
 
 #if (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxPointSizeRect)
@@ -6083,12 +6087,12 @@ static int LUACALL wxLua_wxAuiNotebook_DeletePage(lua_State *L)
 }
 
 
-#if (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#if ((wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiNotebook_FindTab[] = { &wxluatype_wxAuiNotebook, &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxAuiNotebook_FindTab(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiNotebook_FindTab[1] = {{ wxLua_wxAuiNotebook_FindTab, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiNotebook_FindTab }};
 // %override wxLua_wxAuiNotebook_FindTab
-// void FindTab(wxWindow*);
+// wxAuiTabCtrl* FindTab(wxWindow*);
 static int LUACALL wxLua_wxAuiNotebook_FindTab(lua_State *L)
 {
     // wxWindow page
@@ -6108,9 +6112,6 @@ static int LUACALL wxLua_wxAuiNotebook_FindTab(lua_State *L)
 }
 
 
-#endif // (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
-
-#if ((wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiNotebook_GetActiveTabCtrl[] = { &wxluatype_wxAuiNotebook, NULL };
 static int LUACALL wxLua_wxAuiNotebook_GetActiveTabCtrl(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiNotebook_GetActiveTabCtrl[1] = {{ wxLua_wxAuiNotebook_GetActiveTabCtrl, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiNotebook_GetActiveTabCtrl }};
@@ -6979,11 +6980,8 @@ wxLuaBindMethod wxAuiNotebook_methods[] = {
 
     { "DeletePage", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiNotebook_DeletePage, 1, NULL },
 
-#if (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
-    { "FindTab", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiNotebook_FindTab, 1, NULL },
-#endif // (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
-
 #if ((wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+    { "FindTab", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiNotebook_FindTab, 1, NULL },
     { "GetActiveTabCtrl", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiNotebook_GetActiveTabCtrl, 1, NULL },
 #endif // ((wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
