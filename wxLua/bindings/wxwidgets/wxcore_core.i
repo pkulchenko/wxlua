@@ -177,6 +177,15 @@ enum wxSystemFont
     wxSYS_DEFAULT_GUI_FONT
 };
 
+#if %wxchkver_3_1_3
+class wxSystemAppearance
+{
+    wxString GetName() const;
+    bool IsDark() const;
+    bool IsUsingDarkBackground() const;
+};
+#endif //%wxchkver_3_1_3
+
 class wxSystemSettings
 {
     //wxSystemSettings(); // No constructor, all members static
@@ -185,6 +194,7 @@ class wxSystemSettings
     static wxFont   GetFont(wxSystemFont index);
     static int      GetMetric(wxSystemMetric index, wxWindow* win = NULL);
     static bool     HasFeature(wxSystemFeature index);
+    %wxchkver_3_1_3 static wxSystemAppearance GetAppearance();
 
     static wxSystemScreenType GetScreenType();
     static void     SetScreenType(wxSystemScreenType screen);

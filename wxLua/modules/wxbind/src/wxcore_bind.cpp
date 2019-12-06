@@ -5062,6 +5062,7 @@ static const char* wxluaclassname_wxStatusBarPane = "wxStatusBarPane";
 static const char* wxluaclassname_wxStdDialogButtonSizer = "wxStdDialogButtonSizer";
 static const char* wxluaclassname_wxStockGDI = "wxStockGDI";
 static const char* wxluaclassname_wxSysColourChangedEvent = "wxSysColourChangedEvent";
+static const char* wxluaclassname_wxSystemAppearance = "wxSystemAppearance";
 static const char* wxluaclassname_wxSystemSettings = "wxSystemSettings";
 static const char* wxluaclassname_wxTGAHandler = "wxTGAHandler";
 static const char* wxluaclassname_wxTIFFHandler = "wxTIFFHandler";
@@ -5872,6 +5873,12 @@ static wxLuaBindClass* wxluabaseclassbinds_wxXPMHandler[] = { NULL };
     extern int wxGraphicsPenInfo_methodCount;
     extern void wxLua_wxGraphicsPenInfo_delete_function(void** p);
 #endif // (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
+
+#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxSystemSettings)
+    extern wxLuaBindMethod wxSystemAppearance_methods[];
+    extern int wxSystemAppearance_methodCount;
+    extern void wxLua_wxSystemAppearance_delete_function(void** p);
+#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxSystemSettings)
 
 #if (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxButton && wxUSE_BUTTON)
     extern wxLuaBindMethod wxBitmapButton_methods[];
@@ -8009,6 +8016,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
 
         { wxluaclassname_wxSysColourChangedEvent, wxSysColourChangedEvent_methods, wxSysColourChangedEvent_methodCount, CLASSINFO(wxSysColourChangedEvent), &wxluatype_wxSysColourChangedEvent, wxluabaseclassnames_wxSysColourChangedEvent, wxluabaseclassbinds_wxSysColourChangedEvent, NULL, NULL, NULL, 0, &wxLua_wxSysColourChangedEvent_delete_function, }, 
+
+#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxSystemSettings)
+        { wxluaclassname_wxSystemAppearance, wxSystemAppearance_methods, wxSystemAppearance_methodCount, NULL, &wxluatype_wxSystemAppearance, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxSystemAppearance_delete_function, }, 
+#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxSystemSettings)
 
 #if wxLUA_USE_wxSystemSettings
         { wxluaclassname_wxSystemSettings, wxSystemSettings_methods, wxSystemSettings_methodCount, NULL, &wxluatype_wxSystemSettings, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxSystemSettings_delete_function, }, 

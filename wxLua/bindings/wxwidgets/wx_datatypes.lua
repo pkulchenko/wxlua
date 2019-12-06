@@ -5034,6 +5034,12 @@ wx_dataTypeTable =
     Name = "wxSysColourChangedEvent",
     ValueType = "class",
   },
+  wxSystemAppearance = {
+    Condition = "(wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxSystemSettings)",
+    IsNumber = false,
+    Name = "wxSystemAppearance",
+    ValueType = "class",
+  },
   wxSystemColour = {
     Condition = "wxLUA_USE_wxSystemSettings",
     IsNumber = true,
