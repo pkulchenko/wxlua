@@ -526,6 +526,9 @@ class wxAuiNotebook : public wxControl
     %wxchkver_3_0 void SetImageList(wxImageList *imageList); // %add as it's used by SetPageImage
     %wxchkver_3_0 wxImageList* GetImageList() const; // %add as it's used by SetPageImage
     void SetWindowStyleFlag(long style); // %add as it's missing from auibook.h
+    %wxchkver_3_1_4 wxAuiTabCtrl* GetTabCtrlFromPoint(const wxPoint& pt);
+    %wxchkver_3_1_4 wxAuiTabCtrl* GetActiveTabCtrl();
+    %wxchkver_3_1_4 void FindTab(wxWindow* page); // %override returns [wxAuiTabCtrl* ctrl, int idx]
 };
 
 

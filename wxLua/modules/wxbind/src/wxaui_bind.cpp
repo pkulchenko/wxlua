@@ -6082,6 +6082,53 @@ static int LUACALL wxLua_wxAuiNotebook_DeletePage(lua_State *L)
     return 1;
 }
 
+
+#if (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiNotebook_FindTab[] = { &wxluatype_wxAuiNotebook, &wxluatype_wxWindow, NULL };
+static int LUACALL wxLua_wxAuiNotebook_FindTab(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiNotebook_FindTab[1] = {{ wxLua_wxAuiNotebook_FindTab, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiNotebook_FindTab }};
+// %override wxLua_wxAuiNotebook_FindTab
+// void FindTab(wxWindow*);
+static int LUACALL wxLua_wxAuiNotebook_FindTab(lua_State *L)
+{
+    // wxWindow page
+    wxWindow * page = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxAuiNotebook * self = (wxAuiNotebook *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiNotebook);
+    // call FindTab
+    int idx;
+    wxAuiTabCtrl *ctrl;
+    bool returns = (self->FindTab(page, &ctrl, &idx));
+    if (returns) {
+        wxluaT_pushuserdatatype(L, ctrl, wxluatype_wxAuiTabCtrl);
+        lua_pushnumber(L, idx);
+        return 2;
+    }
+    return 0;
+}
+
+
+#endif // (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
+#if ((wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiNotebook_GetActiveTabCtrl[] = { &wxluatype_wxAuiNotebook, NULL };
+static int LUACALL wxLua_wxAuiNotebook_GetActiveTabCtrl(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiNotebook_GetActiveTabCtrl[1] = {{ wxLua_wxAuiNotebook_GetActiveTabCtrl, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiNotebook_GetActiveTabCtrl }};
+//     %wxchkver_3_1_4 wxAuiTabCtrl* GetActiveTabCtrl();
+static int LUACALL wxLua_wxAuiNotebook_GetActiveTabCtrl(lua_State *L)
+{
+    // get this
+    wxAuiNotebook * self = (wxAuiNotebook *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiNotebook);
+    // call GetActiveTabCtrl
+    wxAuiTabCtrl* returns = (wxAuiTabCtrl*)self->GetActiveTabCtrl();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxAuiTabCtrl);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiNotebook_GetArtProvider[] = { &wxluatype_wxAuiNotebook, NULL };
 static int LUACALL wxLua_wxAuiNotebook_GetArtProvider(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiNotebook_GetArtProvider[1] = {{ wxLua_wxAuiNotebook_GetArtProvider, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiNotebook_GetArtProvider }};
@@ -6360,6 +6407,27 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
+
+#if (((wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiNotebook_GetTabCtrlFromPoint[] = { &wxluatype_wxAuiNotebook, &wxluatype_wxPoint, NULL };
+static int LUACALL wxLua_wxAuiNotebook_GetTabCtrlFromPoint(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiNotebook_GetTabCtrlFromPoint[1] = {{ wxLua_wxAuiNotebook_GetTabCtrlFromPoint, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiNotebook_GetTabCtrlFromPoint }};
+//     %wxchkver_3_1_4 wxAuiTabCtrl* GetTabCtrlFromPoint(const wxPoint& pt);
+static int LUACALL wxLua_wxAuiNotebook_GetTabCtrlFromPoint(lua_State *L)
+{
+    // const wxPoint pt
+    const wxPoint * pt = (const wxPoint *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPoint);
+    // get this
+    wxAuiNotebook * self = (wxAuiNotebook *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiNotebook);
+    // call GetTabCtrlFromPoint
+    wxAuiTabCtrl* returns = (wxAuiTabCtrl*)self->GetTabCtrlFromPoint(*pt);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxAuiTabCtrl);
+
+    return 1;
+}
+
+#endif // (((wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxPointSizeRect)
 
 #if (wxCHECK_VERSION(2,8,5)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiNotebook_GetTabCtrlHeight[] = { &wxluatype_wxAuiNotebook, NULL };
@@ -6910,6 +6978,15 @@ wxLuaBindMethod wxAuiNotebook_methods[] = {
 #endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
     { "DeletePage", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiNotebook_DeletePage, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+    { "FindTab", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiNotebook_FindTab, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
+#if ((wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+    { "GetActiveTabCtrl", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiNotebook_GetActiveTabCtrl, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
     { "GetArtProvider", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiNotebook_GetArtProvider, 1, NULL },
 
 #if ((wxCHECK_VERSION(2,8,1)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
@@ -6946,6 +7023,10 @@ wxLuaBindMethod wxAuiNotebook_methods[] = {
 #endif // (wxCHECK_VERSION(2,9,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
     { "GetSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiNotebook_GetSelection, 1, NULL },
+
+#if (((wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxPointSizeRect)
+    { "GetTabCtrlFromPoint", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiNotebook_GetTabCtrlFromPoint, 1, NULL },
+#endif // (((wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxPointSizeRect)
 
 #if (wxCHECK_VERSION(2,8,5)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
     { "GetTabCtrlHeight", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiNotebook_GetTabCtrlHeight, 1, NULL },

@@ -9,6 +9,28 @@
 // Overrides for wxaui_aui.i
 // ----------------------------------------------------------------------------
 
+
+%override wxLua_wxAuiNotebook_FindTab
+// void FindTab(wxWindow*);
+static int LUACALL wxLua_wxAuiNotebook_FindTab(lua_State *L)
+{
+    // wxWindow page
+    wxWindow * page = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxAuiNotebook * self = (wxAuiNotebook *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiNotebook);
+    // call FindTab
+    int idx;
+    wxAuiTabCtrl *ctrl;
+    bool returns = (self->FindTab(page, &ctrl, &idx));
+    if (returns) {
+        wxluaT_pushuserdatatype(L, ctrl, wxluatype_wxAuiTabCtrl);
+        lua_pushnumber(L, idx);
+        return 2;
+    }
+    return 0;
+}
+%end
+
 %override wxLua_wxAuiMDIChildFrame_GetIcon
 // virtual const wxIcon& GetIcon() const;
 static int LUACALL wxLua_wxAuiMDIChildFrame_GetIcon(lua_State *L)
