@@ -779,6 +779,7 @@ class %delete wxEvtHandler : public wxObject
     wxEvtHandler();
     %wxchkver_2_9 virtual void QueueEvent(%ungc wxEvent *event);
     %wxchkver_3_0_0 void AddPendingEvent(const wxEvent& event);
+    %wxchkver_2_9_5 void CallAfter(); // %override to pass a function
     virtual bool ProcessEvent(wxEvent& event);
     %wxchkver_3_0_0 bool ProcessEventLocally(wxEvent& event);
     %wxchkver_3_0_0 bool SafelyProcessEvent(wxEvent& event);

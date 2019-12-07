@@ -3085,6 +3085,41 @@ static int LUACALL wxLua_wxEvtHandler_AddPendingEvent(lua_State *L)
 
 #endif // wxCHECK_VERSION(3,0,0)
 
+#if wxCHECK_VERSION(2,9,5)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_CallAfter[] = { &wxluatype_wxEvtHandler, NULL };
+static int LUACALL wxLua_wxEvtHandler_CallAfter(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_CallAfter[1] = {{ wxLua_wxEvtHandler_CallAfter, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxEvtHandler_CallAfter }};
+// %override wxLua_wxEvtHandler_CallAfter
+class wxEvtHandlerLuaCallback : public wxEvtHandler
+{
+public:
+    void Callback(lua_State *L, int funcref) {
+        int old_top = lua_gettop(L);
+        lua_rawgeti(L, LUA_REGISTRYINDEX, funcref);
+        luaL_unref(L, LUA_REGISTRYINDEX, funcref); // remove ref to function
+        int res = lua_pcall(L, 0, 0, 0);
+        if (res > 0) lua_error(L);
+        lua_settop(L, old_top);
+    }
+};
+
+static int LUACALL wxLua_wxEvtHandler_CallAfter(lua_State *L)
+{
+    if (!lua_isfunction(L, 2))
+        wxlua_argerror(L, 2, wxT("a Lua function"));
+
+    lua_pushvalue(L, 2); // push function to top of stack
+    int funcref = luaL_ref(L, LUA_REGISTRYINDEX); // ref function and pop it from stack
+
+    wxEvtHandler *self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+    self->CallAfter(&wxEvtHandlerLuaCallback::Callback, L, funcref);
+
+    return 0;
+}
+
+
+#endif // wxCHECK_VERSION(2,9,5)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxEvtHandler_Connect[] = { &wxluatype_wxEvtHandler, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TFUNCTION, NULL };
 static int LUACALL wxLua_wxEvtHandler_Connect(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxEvtHandler_Connect[1] = {{ wxLua_wxEvtHandler_Connect, WXLUAMETHOD_METHOD, 5, 5, s_wxluatypeArray_wxLua_wxEvtHandler_Connect }};
@@ -3165,22 +3200,6 @@ static int LUACALL wxLua_wxEvtHandler_Connect(lua_State *L)
             //void Connect(int eventType, wxObjectEventFunction func, wxObject *userData = (wxObject *) NULL, wxEvtHandler *eventSink = (wxEvtHandler *) NULL)
             func_idx = 3;
             evttype_idx = 2;
-/*
-            // Is this right? wxWidgets just uses wxID_ANY for no winId overload
-            if (evtHandler->IsKindOf(CLASSINFO(wxWindow)))
-            {
-                // FIXME! bug in Mac this is the fix
-#if !defined(__WXMAC__) || wxCHECK_VERSION(2,6,0)
-                winId = ((wxWindow *)evtHandler)->GetId();
-                wxPrintf(wxT("winId %d\n"), winId);
-#endif
-            }
-            else
-            {
-                wxlua_error(L, "wxLua: Connect: Unexpected event object type, expected a wxWindow.");
-                return 0;
-            }
-*/
             break;
         }
         default:
@@ -3693,6 +3712,10 @@ wxLuaBindMethod wxEvtHandler_methods[] = {
 #if (!wxCHECK_VERSION(3,0,0))||(wxCHECK_VERSION(3,0,0))
     { "AddPendingEvent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_AddPendingEvent_overload, s_wxluafunc_wxLua_wxEvtHandler_AddPendingEvent_overload_count, 0 },
 #endif // (!wxCHECK_VERSION(3,0,0))||(wxCHECK_VERSION(3,0,0))
+
+#if wxCHECK_VERSION(2,9,5)
+    { "CallAfter", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_CallAfter, 1, NULL },
+#endif // wxCHECK_VERSION(2,9,5)
 
     { "Connect", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxEvtHandler_Connect, 1, NULL },
 

@@ -175,6 +175,35 @@ static int LUACALL wxLua_wxRegEx_ReplaceFirst(lua_State *L)
 }
 %end
 
+%override wxLua_wxEvtHandler_CallAfter
+class wxEvtHandlerLuaCallback : public wxEvtHandler
+{
+public:
+    void Callback(lua_State *L, int funcref) {
+        int old_top = lua_gettop(L);
+        lua_rawgeti(L, LUA_REGISTRYINDEX, funcref);
+        luaL_unref(L, LUA_REGISTRYINDEX, funcref); // remove ref to function
+        int res = lua_pcall(L, 0, 0, 0);
+        if (res > 0) lua_error(L);
+        lua_settop(L, old_top);
+    }
+};
+
+static int LUACALL wxLua_wxEvtHandler_CallAfter(lua_State *L)
+{
+    if (!lua_isfunction(L, 2))
+        wxlua_argerror(L, 2, wxT("a Lua function"));
+
+    lua_pushvalue(L, 2); // push function to top of stack
+    int funcref = luaL_ref(L, LUA_REGISTRYINDEX); // ref function and pop it from stack
+
+    wxEvtHandler *self = (wxEvtHandler *)wxluaT_getuserdatatype(L, 1, wxluatype_wxEvtHandler);
+    self->CallAfter(&wxEvtHandlerLuaCallback::Callback, L, funcref);
+
+    return 0;
+}
+%end
+
 %override wxLua_wxEvtHandler_Connect
 // void Connect(int id, int lastId, wxEventType eventType, LuaFunction func)
 
@@ -252,22 +281,6 @@ static int LUACALL wxLua_wxEvtHandler_Connect(lua_State *L)
             //void Connect(int eventType, wxObjectEventFunction func, wxObject *userData = (wxObject *) NULL, wxEvtHandler *eventSink = (wxEvtHandler *) NULL)
             func_idx = 3;
             evttype_idx = 2;
-/*
-            // Is this right? wxWidgets just uses wxID_ANY for no winId overload
-            if (evtHandler->IsKindOf(CLASSINFO(wxWindow)))
-            {
-                // FIXME! bug in Mac this is the fix
-#if !defined(__WXMAC__) || wxCHECK_VERSION(2,6,0)
-                winId = ((wxWindow *)evtHandler)->GetId();
-                wxPrintf(wxT("winId %d\n"), winId);
-#endif
-            }
-            else
-            {
-                wxlua_error(L, "wxLua: Connect: Unexpected event object type, expected a wxWindow.");
-                return 0;
-            }
-*/
             break;
         }
         default:
