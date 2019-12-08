@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if wxLUA_USE_wxSystemOptions
 // ---------------------------------------------------------------------------
@@ -2353,8 +2357,8 @@ static int LUACALL wxLua_wxRegEx_GetMatchIndexes(lua_State *L)
     // push the result number
     lua_pushboolean(L, returns);
     // push the match start and length indexes
-    lua_pushnumber(L, start);
-    lua_pushnumber(L, len);
+    lua_pushinteger(L, start);
+    lua_pushinteger(L, len);
     // return the number of parameters
     return 3;
 }
@@ -2462,7 +2466,7 @@ static int LUACALL wxLua_wxRegEx_Replace(lua_State *L)
     // call Replace
     int returns = self->Replace(&text, replacement, maxMatches);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // push the result text
     wxlua_pushwxString(L, text);
     // return the number of parameters
@@ -2486,7 +2490,7 @@ static int LUACALL wxLua_wxRegEx_ReplaceAll(lua_State *L)
     // call ReplaceAll
     int returns = self->ReplaceAll(&text, replacement);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // push the result text
     wxlua_pushwxString(L, text);
     // return the number of parameters
@@ -2510,7 +2514,7 @@ static int LUACALL wxLua_wxRegEx_ReplaceFirst(lua_State *L)
     // call ReplaceFirst
     int returns = self->ReplaceFirst(&text, replacement);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // push the result text
     wxlua_pushwxString(L, text);
     // return the number of parameters

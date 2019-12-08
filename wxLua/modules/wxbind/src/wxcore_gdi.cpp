@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if wxLUA_USE_wxPointSizeRect
 // ---------------------------------------------------------------------------
@@ -67,8 +71,8 @@ static int LUACALL wxLua_wxPoint_GetXY(lua_State *L)
     // get this
     wxPoint *self = (wxPoint *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPoint);
     // push the result number
-    lua_pushnumber(L, self->x);
-    lua_pushnumber(L, self->y);
+    lua_pushinteger(L, self->x);
+    lua_pushinteger(L, self->y);
     // return the number of parameters
     return 2;
 }
@@ -2725,10 +2729,10 @@ static int LUACALL wxLua_wxRegion_GetBoxXYWH(lua_State *L)
     wxRegion *self = (wxRegion *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRegion);
     // call GetBox
     self->GetBox(x, y, width, height);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     // return the number of parameters
     return 4;
 }
@@ -6943,7 +6947,7 @@ static int LUACALL wxLua_wxFontMapper_GetAltForEncoding(lua_State *L)
     // push the result number
     lua_pushboolean(L, returns);
     // push the result encoding
-    lua_pushnumber(L, altEncoding);
+    lua_pushinteger(L, altEncoding);
     // return the number of parameters
     return 2;
 }
@@ -10047,9 +10051,9 @@ static int LUACALL wxLua_wxPalette_GetRGB(lua_State *L)
     bool returns = self->GetRGB(pixel, &red, &green, &blue);
     // push the result number
     lua_pushboolean(L, returns);
-    lua_pushnumber(L, red);
-    lua_pushnumber(L, green);
-    lua_pushnumber(L, blue);
+    lua_pushinteger(L, red);
+    lua_pushinteger(L, green);
+    lua_pushinteger(L, blue);
     // return the number of parameters
     return 4;
 }
@@ -13103,8 +13107,8 @@ static int LUACALL wxLua_wxImageList_GetSize(lua_State *L)
     wxImageList *self = (wxImageList *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImageList);
     // call GetSize
     self->GetSize(index, width, height);
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     // return the number of parameters
     return 2;
 }
@@ -14586,10 +14590,10 @@ static int LUACALL wxLua_wxDC_GetClippingBox(lua_State *L)
     // call GetClippingBox
     self->GetClippingBox(&x, &y, &width, &height);
     // push results
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     // return the number of parameters
     return 4;
 }
@@ -14726,9 +14730,9 @@ static int LUACALL wxLua_wxDC_GetMultiLineTextExtent(lua_State *L)
     wxDC *self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
     // call GetTextExtent
     self->GetMultiLineTextExtent(string, &w, &h, &heightLine, font);
-    lua_pushnumber(L, w);
-    lua_pushnumber(L, h);
-    lua_pushnumber(L, heightLine);
+    lua_pushinteger(L, w);
+    lua_pushinteger(L, h);
+    lua_pushinteger(L, heightLine);
     // return the number of parameters
     return 4;
 }
@@ -14859,8 +14863,8 @@ static int LUACALL wxLua_wxDC_GetSize(lua_State *L)
     wxDC *self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
     // call GetSize
     self->GetSize(&width, &height);
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     // return the number of parameters
     return 2;
 }
@@ -14909,10 +14913,10 @@ static int LUACALL wxLua_wxDC_GetTextExtent(lua_State *L)
     wxDC *self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
     // call GetTextExtent
     self->GetTextExtent(string, &w, &h, &descent, &externalLeading, font);
-    lua_pushnumber(L, w);
-    lua_pushnumber(L, h);
-    lua_pushnumber(L, descent);
-    lua_pushnumber(L, externalLeading);
+    lua_pushinteger(L, w);
+    lua_pushinteger(L, h);
+    lua_pushinteger(L, descent);
+    lua_pushinteger(L, externalLeading);
     // return the number of parameters
     return 4;
 }
@@ -16920,8 +16924,8 @@ static int LUACALL wxLua_wxCaret_GetPositionXY(lua_State *L)
     // call GetPosition
     self->GetPosition(&x, &y);
     // return the number of parameters
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }
@@ -16963,8 +16967,8 @@ static int LUACALL wxLua_wxCaret_GetSizeWH(lua_State *L)
     wxCaret *self = (wxCaret *)wxluaT_getuserdatatype(L, 1, wxluatype_wxCaret);
     // call GetSize
     self->GetSize(&x, &y);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }

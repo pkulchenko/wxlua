@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if wxLUA_USE_wxDateTime && wxUSE_DATETIME
 // ---------------------------------------------------------------------------

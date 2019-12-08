@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if wxLUA_USE_wxProcess
 // ---------------------------------------------------------------------------
@@ -505,7 +509,7 @@ static int LUACALL wxLua_wxLuaProcess_Kill(lua_State *L)
     // call Kill
     wxKillError returns = (wxProcess::Kill(pid, sig, flags));
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
 
     return 1;
 }

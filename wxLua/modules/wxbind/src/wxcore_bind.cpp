@@ -27,6 +27,10 @@
 #ifdef __GNUC__
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
+
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
 // wxWidgets >= 2.7 doesn't have static versions of stock GDI objects anymore
 wxColour* wxLua_wxBLACK = NULL;
 wxColour* wxLua_wxWHITE = NULL;
@@ -3302,10 +3306,10 @@ static int LUACALL wxLua_function_wxClientDisplayRect(lua_State *L)
     int x = 0, y = 0, width = 0, height = 0;
     // call wxClientDisplayRect
     wxClientDisplayRect(&x, &y, &width, &height);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     // return the number of parameters
     return 4;
 }
@@ -3379,8 +3383,8 @@ static int LUACALL wxLua_function_wxDisplaySize(lua_State *L)
     // call wxDisplaySize
     wxDisplaySize(&width, &height);
     // return the number of parameters
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     return 2;
 }
 
@@ -3394,8 +3398,8 @@ static int LUACALL wxLua_function_wxDisplaySizeMM(lua_State *L)
     // call wxDisplaySizeMM
     wxDisplaySizeMM(&width, &height);
     // return the number of parameters
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     return 2;
 }
 
@@ -3503,7 +3507,7 @@ static int LUACALL wxLua_function_wxExecuteStdout(lua_State *L)
     wxArrayString output;
     long returns = wxExecute(command, output, flags);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     wxlua_pushwxArrayStringtable(L, output);
 
     return 2;
@@ -3527,7 +3531,7 @@ static int LUACALL wxLua_function_wxExecuteStdoutStderr(lua_State *L)
     wxArrayString errors;
     long returns = wxExecute(command, output, errors, flags);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     wxlua_pushwxArrayStringtable(L, output);
     wxlua_pushwxArrayStringtable(L, errors);
 
@@ -4009,7 +4013,7 @@ static int LUACALL wxLua_function_wxGetMultipleChoices(lua_State *L)
     wxlua_pushwxArrayInttable(L, selections);
 
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // return the number of parameters
     return 2;
 }
@@ -4351,8 +4355,8 @@ static int LUACALL wxLua_function_wxKill(lua_State *L)
     // call wxKill
     int returns = (wxKill(pid, sig, &rc, flags));
     // push the result number
-    lua_pushnumber(L, returns);
-    lua_pushnumber(L, rc);
+    lua_pushinteger(L, returns);
+    lua_pushinteger(L, rc);
 
     return 2;
 }

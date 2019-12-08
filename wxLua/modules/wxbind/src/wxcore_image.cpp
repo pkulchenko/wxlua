@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if wxLUA_USE_wxImage && wxUSE_IMAGE
 // ---------------------------------------------------------------------------
@@ -578,9 +582,9 @@ static int LUACALL wxLua_wxImage_FindFirstUnusedColour(lua_State *L)
     bool returns = self->FindFirstUnusedColour(&r, &g, &b, startR, startG, startB);
     // push the result flag
     lua_pushboolean(L, returns);
-    lua_pushnumber(L, r);
-    lua_pushnumber(L, g);
-    lua_pushnumber(L, b);
+    lua_pushinteger(L, r);
+    lua_pushinteger(L, g);
+    lua_pushinteger(L, b);
 
     return 4;
 }
@@ -1092,9 +1096,9 @@ static int LUACALL wxLua_wxImage_GetOrFindMaskColour(lua_State *L)
     bool returns = self->GetOrFindMaskColour(&r, &g, &b);
     // push the result flag
     lua_pushboolean(L, returns);
-    lua_pushnumber(L, r);
-    lua_pushnumber(L, g);
-    lua_pushnumber(L, b);
+    lua_pushinteger(L, r);
+    lua_pushinteger(L, g);
+    lua_pushinteger(L, b);
 
     return 4;
 }
@@ -1259,9 +1263,9 @@ static int LUACALL wxLua_wxImage_HSVtoRGB(lua_State *L)
     // call HSVtoRGB
     wxImage::RGBValue rgbValue = wxImage::HSVtoRGB(wxImage::HSVValue(h, s, v));
     // push the result number
-    lua_pushnumber(L, rgbValue.red);
-    lua_pushnumber(L, rgbValue.green);
-    lua_pushnumber(L, rgbValue.blue);
+    lua_pushinteger(L, rgbValue.red);
+    lua_pushinteger(L, rgbValue.green);
+    lua_pushinteger(L, rgbValue.blue);
 
     return 3;
 }
@@ -1590,9 +1594,9 @@ static int LUACALL wxLua_wxImage_RGBtoHSV(lua_State *L)
     // call HSVtoRGB
     wxImage::HSVValue hsvValue = wxImage::RGBtoHSV(wxImage::RGBValue(r, g, b));
     // push the result number
-    lua_pushnumber(L, hsvValue.hue);
-    lua_pushnumber(L, hsvValue.saturation);
-    lua_pushnumber(L, hsvValue.value);
+    lua_pushinteger(L, hsvValue.hue);
+    lua_pushinteger(L, hsvValue.saturation);
+    lua_pushinteger(L, hsvValue.value);
 
     return 3;
 }

@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if wxLUA_USE_wxTooltip && wxUSE_TOOLTIPS
 // ---------------------------------------------------------------------------
@@ -905,8 +909,8 @@ static int LUACALL wxLua_wxWindow_ClientToScreenXY(lua_State *L)
     wxWindow *self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call ClientToScreen
     self->ClientToScreen(&x, &y);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }
@@ -2055,8 +2059,8 @@ static int LUACALL wxLua_wxWindow_GetClientSizeWH(lua_State *L)
     wxWindow *self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call GetClientSize
     wxSize size = self->GetClientSize();
-    lua_pushnumber(L, size.x);
-    lua_pushnumber(L, size.y);
+    lua_pushinteger(L, size.x);
+    lua_pushinteger(L, size.y);
     // return the number of parameters
     return 2;
 }
@@ -2804,8 +2808,8 @@ static int LUACALL wxLua_wxWindow_GetPositionXY(lua_State *L)
     wxWindow *self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call GetPosition
     self->GetPosition(&x, &y);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }
@@ -2886,8 +2890,8 @@ static int LUACALL wxLua_wxWindow_GetScreenPositionXY(lua_State *L)
     wxWindow *self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call GetPosition
     self->GetScreenPosition(&x, &y);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }
@@ -3024,8 +3028,8 @@ static int LUACALL wxLua_wxWindow_GetSizeWH(lua_State *L)
     wxWindow *self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call ClientToScreen
     self->GetSize(&width, &height);
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     // return the number of parameters
     return 2;
 }
@@ -3075,10 +3079,10 @@ static int LUACALL wxLua_wxWindow_GetTextExtent(lua_State *L)
     // call GetTextExtent
     self->GetTextExtent(string, &w, &h, &descent, &externalLeading, font);
     // return the number of parameters
-    lua_pushnumber(L, w);
-    lua_pushnumber(L, h);
-    lua_pushnumber(L, descent);
-    lua_pushnumber(L, externalLeading);
+    lua_pushinteger(L, w);
+    lua_pushinteger(L, h);
+    lua_pushinteger(L, descent);
+    lua_pushinteger(L, externalLeading);
     return 4;
 }
 
@@ -3260,8 +3264,8 @@ static int LUACALL wxLua_wxWindow_GetVirtualSizeWH(lua_State *L)
     wxWindow *self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call ClientToScreen
     self->GetVirtualSize(&width, &height);
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     // return the number of parameters
     return 2;
 }
@@ -4743,8 +4747,8 @@ static int LUACALL wxLua_wxWindow_ScreenToClientXY(lua_State *L)
     wxWindow *self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call ScreenToClient
     self->ScreenToClient(&x, &y);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }
@@ -9070,9 +9074,9 @@ static int LUACALL wxLua_wxNotebook_HitTest(lua_State *L)
     // call HitTest
     int returns = self->HitTest(*point, &flags);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // push the result flags
-    lua_pushnumber(L, flags);
+    lua_pushinteger(L, flags);
     // return the number of parameters
     return 2;
 }
@@ -10689,9 +10693,9 @@ static int LUACALL wxLua_wxTabCtrl_HitTest(lua_State *L)
     // call HitTest
     int returns = self->HitTest(*pt, flags);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // push the result flags
-    lua_pushnumber(L, flags);
+    lua_pushinteger(L, flags);
     // return the number of parameters
     return 2;
 }
@@ -11062,8 +11066,8 @@ static int LUACALL wxLua_wxScrolledWindow_CalcScrolledPosition(lua_State *L)
     wxScrolledWindow *self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
     // call CalcScrolledPosition
     self->CalcScrolledPosition(x, y, &xx, &yy);
-    lua_pushnumber(L, xx);
-    lua_pushnumber(L, yy);
+    lua_pushinteger(L, xx);
+    lua_pushinteger(L, yy);
     // return the number of parameters
     return 2;
 }
@@ -11086,8 +11090,8 @@ static int LUACALL wxLua_wxScrolledWindow_CalcUnscrolledPosition(lua_State *L)
     wxScrolledWindow *self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
     // call CalcUnscrolledPosition
     self->CalcUnscrolledPosition(x, y, &xx, &yy);
-    lua_pushnumber(L, xx);
-    lua_pushnumber(L, yy);
+    lua_pushinteger(L, xx);
+    lua_pushinteger(L, yy);
     // return the number of parameters
     return 2;
 }
@@ -11255,8 +11259,8 @@ static int LUACALL wxLua_wxScrolledWindow_GetScrollPixelsPerUnit(lua_State *L)
     wxScrolledWindow *self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
     // call GetScrollPixelsPerUnit
     self->GetScrollPixelsPerUnit(&xUnit, &yUnit);
-    lua_pushnumber(L, xUnit);
-    lua_pushnumber(L, yUnit);
+    lua_pushinteger(L, xUnit);
+    lua_pushinteger(L, yUnit);
     // return the number of parameters
     return 2;
 }
@@ -11314,8 +11318,8 @@ static int LUACALL wxLua_wxScrolledWindow_GetViewStart(lua_State *L)
     wxScrolledWindow *self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
     // call GetViewStart
     self->GetViewStart(&x, &y);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }

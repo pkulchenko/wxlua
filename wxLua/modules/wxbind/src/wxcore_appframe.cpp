@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if wxLUA_USE_wxApp
 // ---------------------------------------------------------------------------
@@ -273,7 +277,7 @@ static int LUACALL wxLua_wxAppConsole_MainLoop(lua_State *L)
         returns = self->MainLoop();
 
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
 
     return 1;
 }
@@ -1098,7 +1102,7 @@ static int LUACALL wxLua_wxApp_MainLoop(lua_State *L)
         returns = self->MainLoop();
 
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
 
     return 1;
 }

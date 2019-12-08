@@ -27,6 +27,10 @@
 #ifdef __GNUC__
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
+
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
 wxDateTime::TimeZone wxLua_wxDateTime_TimeZone_Local(wxDateTime::Local);
 
 // ---------------------------------------------------------------------------
@@ -1142,7 +1146,7 @@ static int LUACALL wxLua_function_wxFileSize(lua_State *L)
         wxStructStat statstr;
         wxStat(str, &statstr);
         // push the result string
-        lua_pushnumber(L, (int)statstr.st_size);
+        lua_pushinteger(L, (int)statstr.st_size);
 
         return 1;
     }
@@ -1393,9 +1397,9 @@ static int LUACALL wxLua_function_wxGetOsVersion(lua_State *L)
     // call wxGetOsVersion
     int returns = wxGetOsVersion(&major, &minor);
     // push the result numbers
-    lua_pushnumber(L, returns);
-    lua_pushnumber(L, major);
-    lua_pushnumber(L, minor);
+    lua_pushinteger(L, returns);
+    lua_pushinteger(L, major);
+    lua_pushinteger(L, minor);
     // return the number of parameters
     return 3;
 }

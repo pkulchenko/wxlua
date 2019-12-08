@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)
 // ---------------------------------------------------------------------------
@@ -4876,8 +4880,8 @@ static int LUACALL wxLua_wxGBSizerItem_GetEndPos(lua_State *L)
     wxGBSizerItem * self = (wxGBSizerItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGBSizerItem);
     // call GetEndPos
     self->GetEndPos(row, col);
-    lua_pushnumber(L, row);
-    lua_pushnumber(L, col);
+    lua_pushinteger(L, row);
+    lua_pushinteger(L, col);
     return 2;
 }
 

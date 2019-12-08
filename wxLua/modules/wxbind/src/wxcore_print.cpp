@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE
 // ---------------------------------------------------------------------------
@@ -70,8 +74,8 @@ static int LUACALL wxLua_wxPrintout_GetPPIPrinter(lua_State *L)
     // call GetPPIPrinter
     self->GetPPIPrinter(&w, &h);
     // return the number of parameters
-    lua_pushnumber(L, w);
-    lua_pushnumber(L, h);
+    lua_pushinteger(L, w);
+    lua_pushinteger(L, h);
     return 2;
 }
 
@@ -90,8 +94,8 @@ static int LUACALL wxLua_wxPrintout_GetPPIScreen(lua_State *L)
     // call GetPPIScreen
     self->GetPPIScreen(&w, &h);
     // return the number of parameters
-    lua_pushnumber(L, w);
-    lua_pushnumber(L, h);
+    lua_pushinteger(L, w);
+    lua_pushinteger(L, h);
     return 2;
 }
 
@@ -111,10 +115,10 @@ static int LUACALL wxLua_wxPrintout_GetPageInfo(lua_State *L)
     wxPrintout *self = (wxPrintout *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPrintout);
     // call GetPageInfo
     self->GetPageInfo(&minPage, &maxPage, &pageFrom, &pageTo);
-    lua_pushnumber(L, minPage);
-    lua_pushnumber(L, maxPage);
-    lua_pushnumber(L, pageFrom);
-    lua_pushnumber(L, pageTo);
+    lua_pushinteger(L, minPage);
+    lua_pushinteger(L, maxPage);
+    lua_pushinteger(L, pageFrom);
+    lua_pushinteger(L, pageTo);
     // return the number of parameters
     return 4;
 }
@@ -134,8 +138,8 @@ static int LUACALL wxLua_wxPrintout_GetPageSizeMM(lua_State *L)
     // call GetPageSizeMM
     self->GetPageSizeMM(&w, &h);
     // return the number of parameters
-    lua_pushnumber(L, w);
-    lua_pushnumber(L, h);
+    lua_pushinteger(L, w);
+    lua_pushinteger(L, h);
     return 2;
 }
 
@@ -154,8 +158,8 @@ static int LUACALL wxLua_wxPrintout_GetPageSizePixels(lua_State *L)
     // call GetPageSizePixels
     self->GetPageSizePixels(&w, &h);
     // return the number of parameters
-    lua_pushnumber(L, w);
-    lua_pushnumber(L, h);
+    lua_pushinteger(L, w);
+    lua_pushinteger(L, h);
     return 2;
 }
 

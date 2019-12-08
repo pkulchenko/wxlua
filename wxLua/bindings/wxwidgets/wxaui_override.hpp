@@ -66,7 +66,7 @@ static int LUACALL wxLua_wxAuiNotebook_FindTab(lua_State *L)
     bool returns = (self->FindTab(page, &ctrl, &idx));
     if (returns) {
         wxluaT_pushuserdatatype(L, ctrl, wxluatype_wxAuiTabCtrl);
-        lua_pushnumber(L, idx);
+        lua_pushinteger(L, idx);
         return 2;
     }
     return 0;

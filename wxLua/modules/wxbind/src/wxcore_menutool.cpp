@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if wxLUA_USE_wxMenu && wxUSE_MENUS
 // ---------------------------------------------------------------------------
@@ -1161,12 +1165,12 @@ static int LUACALL wxLua_wxCreateMenu_constructor(lua_State *L)
 
         for (idx = 1; idx <= count; ++idx)
         {
-            lua_pushnumber(L, idx);
+            lua_pushinteger(L, idx);
             lua_gettable(L, -2);
 
             if (lua_istable(L, -1))
             {
-                lua_pushnumber(L, 1);
+                lua_pushinteger(L, 1);
                 lua_gettable(L, -2);
                 if (lua_isnil(L, -1))
                 {
@@ -1182,18 +1186,18 @@ static int LUACALL wxLua_wxCreateMenu_constructor(lua_State *L)
                     int iValue = (int)lua_tonumber(L, -1);
                     lua_pop(L, 1);
 
-                    lua_pushnumber(L, 2);
+                    lua_pushinteger(L, 2);
                     lua_gettable(L, -2);
                     menuText = wxlua_getwxStringtype(L, -1);
                     lua_pop(L, 1);
 
-                    lua_pushnumber(L, 3);
+                    lua_pushinteger(L, 3);
                     lua_gettable(L, -2);
                     if (lua_isstring(L, -1))
                         helpText = wxlua_getwxStringtype(L, -1);
                     lua_pop(L, 1);
 
-                    lua_pushnumber(L, 4);
+                    lua_pushinteger(L, 4);
                     lua_gettable(L, -2);
                     if (lua_isnumber(L, -1))
                         kind = (wxItemKind)wxlua_getenumtype(L, -1);
@@ -5599,7 +5603,7 @@ static int LUACALL wxLua_wxAcceleratorTable_constructor(lua_State *L)
             nItems = 0;
             for (idx = 1; idx <= idxMax; ++idx)
             {
-                lua_pushnumber(L, idx);
+                lua_pushinteger(L, idx);
                 lua_gettable(L, -2);
 
                 int  iFlags  = 0;
@@ -5609,17 +5613,17 @@ static int LUACALL wxLua_wxAcceleratorTable_constructor(lua_State *L)
 
                 if (lua_istable(L, -1))
                 {
-                    lua_pushnumber(L, 1);
+                    lua_pushinteger(L, 1);
                     lua_gettable(L, -2);
                     iFlags = (int)lua_tonumber(L, -1);
                     lua_pop(L, 1);
 
-                    lua_pushnumber(L, 2);
+                    lua_pushinteger(L, 2);
                     lua_gettable(L, -2);
                     keyCode = (int)lua_tonumber(L, -1);
                     lua_pop(L, 1);
 
-                    lua_pushnumber(L, 3);
+                    lua_pushinteger(L, 3);
                     lua_gettable(L, -2);
                     cmd = (int)lua_tonumber(L, -1);
                     lua_pop(L, 1);

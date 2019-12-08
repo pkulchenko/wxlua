@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths
 // ---------------------------------------------------------------------------
@@ -4193,7 +4197,7 @@ static int LUACALL wxLua_wxFile_Read(lua_State *L)
         // call Read
         unsigned int returns = self->Read(buffer, count);
         // push the result number
-        lua_pushnumber(L, returns);
+        lua_pushinteger(L, returns);
         lua_pushlstring(L, (const char *) buffer, returns);
         free(buffer);
         // return the number of parameters
@@ -4321,7 +4325,7 @@ static int LUACALL wxLua_wxFile_Write(lua_State *L)
     // call Write
     unsigned int returns = self->Write(buffer, nbytes);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // return the number of parameters
     return 1;
 }
@@ -4800,7 +4804,7 @@ static int LUACALL wxLua_wxDir_GetAllFiles(lua_State *L)
     // call GetAllFiles
     unsigned int returns = wxDir::GetAllFiles(dirname, &files, filespec, flags);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     wxlua_pushwxArrayStringtable(L, files);
     // return the number of parameters
     return 2;
@@ -6724,7 +6728,7 @@ static int LUACALL wxLua_wxInputStream_UngetchString(lua_State *L)
     // call Ungetch
     size_t returns = self->Ungetch(buffer, size);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // return the number of parameters
     return 1;
 }

@@ -22,6 +22,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
 // ---------------------------------------------------------------------------
@@ -859,7 +863,7 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
     // push the result number
     lua_pushboolean(L, returns);
     //
-    lua_pushnumber(L, pagebreak);
+    lua_pushinteger(L, pagebreak);
     // return the number of parameters
     return 2;
 }
@@ -878,7 +882,7 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
     // push the result number
     lua_pushboolean(L, returns);
     //
-    lua_pushnumber(L, pagebreak);
+    lua_pushinteger(L, pagebreak);
     // return the number of parameters
     return 2;
 }
@@ -899,7 +903,7 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
     // push the result number
     lua_pushboolean(L, returns);
     //
-    lua_pushnumber(L, pagebreak);
+    lua_pushinteger(L, pagebreak);
     // return the number of parameters
     return 2;
 }
@@ -918,7 +922,7 @@ static int LUACALL wxLua_wxHtmlCell_AdjustPagebreak(lua_State *L)
     // push the result number
     lua_pushboolean(L, returns);
     //
-    lua_pushnumber(L, pagebreak);
+    lua_pushinteger(L, pagebreak);
     // return the number of parameters
     return 2;
 }
@@ -2572,7 +2576,7 @@ static int LUACALL wxLua_wxHtmlTag_GetParamAsInt(lua_State *L)
     // push the result number
     lua_pushboolean(L, returns);
     //
-    lua_pushnumber(L, value);
+    lua_pushinteger(L, value);
     // return the number of parameters
     return 2;
 }

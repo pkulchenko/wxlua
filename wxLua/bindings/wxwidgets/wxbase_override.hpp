@@ -45,9 +45,9 @@ static int LUACALL wxLua_function_wxGetOsVersion(lua_State *L)
     // call wxGetOsVersion
     int returns = wxGetOsVersion(&major, &minor);
     // push the result numbers
-    lua_pushnumber(L, returns);
-    lua_pushnumber(L, major);
-    lua_pushnumber(L, minor);
+    lua_pushinteger(L, returns);
+    lua_pushinteger(L, major);
+    lua_pushinteger(L, minor);
     // return the number of parameters
     return 3;
 }
@@ -101,8 +101,8 @@ static int LUACALL wxLua_wxRegEx_GetMatchIndexes(lua_State *L)
     // push the result number
     lua_pushboolean(L, returns);
     // push the match start and length indexes
-    lua_pushnumber(L, start);
-    lua_pushnumber(L, len);
+    lua_pushinteger(L, start);
+    lua_pushinteger(L, len);
     // return the number of parameters
     return 3;
 }
@@ -125,7 +125,7 @@ static int LUACALL wxLua_wxRegEx_Replace(lua_State *L)
     // call Replace
     int returns = self->Replace(&text, replacement, maxMatches);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // push the result text
     wxlua_pushwxString(L, text);
     // return the number of parameters
@@ -146,7 +146,7 @@ static int LUACALL wxLua_wxRegEx_ReplaceAll(lua_State *L)
     // call ReplaceAll
     int returns = self->ReplaceAll(&text, replacement);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // push the result text
     wxlua_pushwxString(L, text);
     // return the number of parameters
@@ -167,7 +167,7 @@ static int LUACALL wxLua_wxRegEx_ReplaceFirst(lua_State *L)
     // call ReplaceFirst
     int returns = self->ReplaceFirst(&text, replacement);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // push the result text
     wxlua_pushwxString(L, text);
     // return the number of parameters
@@ -472,7 +472,7 @@ static int LUACALL wxLua_wxConfigBase_ReadInt(lua_State *L)
     // push the result bool
     lua_pushboolean(L, ret);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // return the number of parameters
     return 2;
 }
@@ -496,7 +496,7 @@ static int LUACALL wxLua_wxConfigBase_ReadFloat(lua_State *L)
     // push the result bool
     lua_pushboolean(L, ret);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // return the number of parameters
     return 2;
 }
@@ -520,7 +520,7 @@ static int LUACALL wxLua_wxConfigBase_GetFirstGroup(lua_State *L)
     // push the result string
     wxlua_pushwxString(L, str);
     // push the next index
-    lua_pushnumber(L, index);
+    lua_pushinteger(L, index);
     // return the number of parameters
     return 3;
 }
@@ -544,7 +544,7 @@ static int LUACALL wxLua_wxConfigBase_GetFirstEntry(lua_State *L)
     // push the next string
     wxlua_pushwxString(L, str);
     // push the next index
-    lua_pushnumber(L, index);
+    lua_pushinteger(L, index);
     // return the number of parameters
     return 3;
 }
@@ -566,7 +566,7 @@ static int LUACALL wxLua_wxConfigBase_GetNextGroup(lua_State *L)
     // push the next result string
     wxlua_pushwxString(L, str);
     // push the next index
-    lua_pushnumber(L, index);
+    lua_pushinteger(L, index);
     // return the number of parameters
     return 3;
 }
@@ -588,7 +588,7 @@ static int LUACALL wxLua_wxConfigBase_GetNextEntry(lua_State *L)
     // push the result string
     wxlua_pushwxString(L, str);
     // push the next index
-    lua_pushnumber(L, index);
+    lua_pushinteger(L, index);
     // return the number of parameters
     return 3;
 }
@@ -745,7 +745,7 @@ static int LUACALL wxLua_wxMemoryBuffer_GetByte(lua_State *L)
     int count = 0;
     while (count < length) {
         unsigned char returns = ((unsigned char *)(self->GetData()))[index + count];
-        lua_pushnumber(L, returns);
+        lua_pushinteger(L, returns);
         count++;
     }
     return length;
@@ -1034,7 +1034,7 @@ static int LUACALL wxLua_function_wxFileSize(lua_State *L)
         wxStructStat statstr;
         wxStat(str, &statstr);
         // push the result string
-        lua_pushnumber(L, (int)statstr.st_size);
+        lua_pushinteger(L, (int)statstr.st_size);
 
         return 1;
     }
@@ -1213,7 +1213,7 @@ static int LUACALL wxLua_wxDir_GetAllFiles(lua_State *L)
     // call GetAllFiles
     unsigned int returns = wxDir::GetAllFiles(dirname, &files, filespec, flags);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     wxlua_pushwxArrayStringtable(L, files);
     // return the number of parameters
     return 2;
@@ -1235,7 +1235,7 @@ static int LUACALL wxLua_wxFile_Read(lua_State *L)
         // call Read
         unsigned int returns = self->Read(buffer, count);
         // push the result number
-        lua_pushnumber(L, returns);
+        lua_pushinteger(L, returns);
         lua_pushlstring(L, (const char *) buffer, returns);
         free(buffer);
         // return the number of parameters
@@ -1260,7 +1260,7 @@ static int LUACALL wxLua_wxFile_Write(lua_State *L)
     // call Write
     unsigned int returns = self->Write(buffer, nbytes);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // return the number of parameters
     return 1;
 }
@@ -1342,7 +1342,7 @@ static int LUACALL wxLua_wxInputStream_UngetchString(lua_State *L)
     // call Ungetch
     size_t returns = self->Ungetch(buffer, size);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // return the number of parameters
     return 1;
 }

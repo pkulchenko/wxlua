@@ -22,6 +22,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if wxCHECK_VERSION(2,8,0) && wxUSE_ABOUTDLG && wxLUA_USE_wxAboutDialog
 // ---------------------------------------------------------------------------
@@ -2376,9 +2380,9 @@ static int LUACALL wxLua_wxCalendarCtrl_HitTest(lua_State *L)
 
     wxCalendarHitTestResult returns = self->HitTest(*pos, date, &wd);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     wxluaT_pushuserdatatype(L, date, wxluatype_wxDateTime);
-    lua_pushnumber(L, wd);
+    lua_pushinteger(L, wd);
 
     return 3;
 }
@@ -9222,8 +9226,8 @@ static int LUACALL wxLua_wxGridCellAttr_GetAlignment(lua_State *L)
     // call GetAlignment
     self->GetAlignment(&horz, &vert);
 
-    lua_pushnumber(L, horz);
-    lua_pushnumber(L, vert);
+    lua_pushinteger(L, horz);
+    lua_pushinteger(L, vert);
     // return the number of parameters
     return 2;
 }
@@ -9374,8 +9378,8 @@ static int LUACALL wxLua_wxGridCellAttr_GetSize(lua_State *L)
     // call GetSize
     self->GetSize(&num_rows, &num_cols);
 
-    lua_pushnumber(L, num_rows);
-    lua_pushnumber(L, num_cols);
+    lua_pushinteger(L, num_rows);
+    lua_pushinteger(L, num_cols);
     // return the number of parameters
     return 2;
 }
@@ -12476,8 +12480,8 @@ static int LUACALL wxLua_wxGrid_GetCellAlignment(lua_State *L)
     // call GetCellAlignment
     self->GetCellAlignment(row, col, &horiz, &vert);
     // push results
-    lua_pushnumber(L, horiz);
-    lua_pushnumber(L, vert);
+    lua_pushinteger(L, horiz);
+    lua_pushinteger(L, vert);
     // return the number of parameters
     return 2;
 }
@@ -12683,8 +12687,8 @@ static int LUACALL wxLua_wxGrid_GetCellSize(lua_State *L)
     // call GetCellSize
     self->GetCellSize(row, col, &num_rows, &num_cols);
     // push results
-    lua_pushnumber(L, num_rows);
-    lua_pushnumber(L, num_cols);
+    lua_pushinteger(L, num_rows);
+    lua_pushinteger(L, num_cols);
     // return the number of parameters
     return 2;
 }
@@ -12751,8 +12755,8 @@ static int LUACALL wxLua_wxGrid_GetColLabelAlignment(lua_State *L)
     // call GetColLabelAlignment
     self->GetColLabelAlignment(&horz, &vert);
     // push results
-    lua_pushnumber(L, horz);
-    lua_pushnumber(L, vert);
+    lua_pushinteger(L, horz);
+    lua_pushinteger(L, vert);
     // return the number of parameters
     return 2;
 }
@@ -12880,8 +12884,8 @@ static int LUACALL wxLua_wxGrid_GetDefaultCellAlignment(lua_State *L)
     // call GetDefaultCellAlignment
     self->GetDefaultCellAlignment(&horiz, &vert);
     // push results
-    lua_pushnumber(L, horiz);
-    lua_pushnumber(L, vert);
+    lua_pushinteger(L, horiz);
+    lua_pushinteger(L, vert);
     // return the number of parameters
     return 2;
 }
@@ -13450,8 +13454,8 @@ static int LUACALL wxLua_wxGrid_GetRowLabelAlignment(lua_State *L)
     // call GetRowLabelAlignment
     self->GetRowLabelAlignment(&horz, &vert);
     // push results
-    lua_pushnumber(L, horz);
-    lua_pushnumber(L, vert);
+    lua_pushinteger(L, horz);
+    lua_pushinteger(L, vert);
     // return the number of parameters
     return 2;
 }
@@ -13744,8 +13748,8 @@ static int LUACALL wxLua_wxGrid_GetTextBoxSize(lua_State *L)
     wxGrid *self = (wxGrid *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGrid);
     // call GetTextBoxSize
     self->GetTextBoxSize(*dc, *lines, &width, &height);
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     // return the number of parameters
     return 2;
 }

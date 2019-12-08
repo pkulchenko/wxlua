@@ -34,7 +34,7 @@ static int LUACALL wxLua_wxApp_MainLoop(lua_State *L)
         returns = self->MainLoop();
 
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
 
     return 1;
 }
@@ -52,7 +52,7 @@ static int LUACALL wxLua_wxAppConsole_MainLoop(lua_State *L)
         returns = self->MainLoop();
 
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
 
     return 1;
 }
@@ -99,7 +99,7 @@ static int LUACALL wxLua_wxAcceleratorTable_constructor(lua_State *L)
             nItems = 0;
             for (idx = 1; idx <= idxMax; ++idx)
             {
-                lua_pushnumber(L, idx);
+                lua_pushinteger(L, idx);
                 lua_gettable(L, -2);
 
                 int  iFlags  = 0;
@@ -109,17 +109,17 @@ static int LUACALL wxLua_wxAcceleratorTable_constructor(lua_State *L)
 
                 if (lua_istable(L, -1))
                 {
-                    lua_pushnumber(L, 1);
+                    lua_pushinteger(L, 1);
                     lua_gettable(L, -2);
                     iFlags = (int)lua_tonumber(L, -1);
                     lua_pop(L, 1);
 
-                    lua_pushnumber(L, 2);
+                    lua_pushinteger(L, 2);
                     lua_gettable(L, -2);
                     keyCode = (int)lua_tonumber(L, -1);
                     lua_pop(L, 1);
 
-                    lua_pushnumber(L, 3);
+                    lua_pushinteger(L, 3);
                     lua_gettable(L, -2);
                     cmd = (int)lua_tonumber(L, -1);
                     lua_pop(L, 1);
@@ -424,7 +424,7 @@ static int LUACALL wxLua_wxListBox_GetSelections(lua_State *L)
     // call GetSelections
     int returns = self->GetSelections(selections);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // push the selects as a table
     wxlua_pushwxArrayInttable(L, selections);
 
@@ -445,9 +445,9 @@ static int LUACALL wxLua_wxListCtrl_HitTest(lua_State *L)
     // call HitTest
     long returns = self->HitTest(*point, flags);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // push the result flags
-    lua_pushnumber(L, flags);
+    lua_pushinteger(L, flags);
     // return the number of parameters
     return 2;
 }
@@ -583,8 +583,8 @@ static int LUACALL wxLua_wxTextEntry_GetSelection(lua_State *L)
     wxTextEntry *self = (wxTextEntry *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextEntry);
     // call GetSelection
     self->GetSelection(&from, &to);
-    lua_pushnumber(L, from);
-    lua_pushnumber(L, to);
+    lua_pushinteger(L, from);
+    lua_pushinteger(L, to);
     // return the number of parameters
     return 2;
 }
@@ -600,8 +600,8 @@ static int LUACALL wxLua_wxTextCtrl_GetSelection(lua_State *L)
     wxTextCtrl *self = (wxTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextCtrl);
     // call GetSelection
     self->GetSelection(&from, &to);
-    lua_pushnumber(L, from);
-    lua_pushnumber(L, to);
+    lua_pushinteger(L, from);
+    lua_pushinteger(L, to);
     // return the number of parameters
     return 2;
 }
@@ -623,9 +623,9 @@ static int LUACALL wxLua_wxTextCtrl_HitTest(lua_State *L)
     // call HitTest
     wxTextCtrlHitTestResult returns = self->HitTest(*pt, &col, &row);
     // push the result number
-    lua_pushnumber(L, returns);
-    lua_pushnumber(L, row);
-    lua_pushnumber(L, col);
+    lua_pushinteger(L, returns);
+    lua_pushinteger(L, row);
+    lua_pushinteger(L, col);
 
     return 3;
 }
@@ -644,8 +644,8 @@ static int LUACALL wxLua_wxTextCtrl_HitTestPos(lua_State *L)
     // call HitTest
     wxTextCtrlHitTestResult returns = self->HitTest(*pt, &pos);
     // push the result number
-    lua_pushnumber(L, returns);
-    lua_pushnumber(L, pos);
+    lua_pushinteger(L, returns);
+    lua_pushinteger(L, pos);
 
     return 2;
 }
@@ -665,8 +665,8 @@ static int LUACALL wxLua_wxTextCtrl_PositionToXY(lua_State *L)
     bool returns = self->PositionToXY(pos, &x, &y);
     // push the result number
     lua_pushboolean(L, returns);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 3;
 }
@@ -778,7 +778,7 @@ static int LUACALL wxLua_wxTreeCtrl_HitTest(lua_State *L)
 
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeItemId);
-    lua_pushnumber(L, flags);
+    lua_pushinteger(L, flags);
     // return the number of parameters
     return 2;
 }
@@ -1029,7 +1029,7 @@ static int LUACALL wxLua_wxLuaProcess_Kill(lua_State *L)
     // call Kill
     wxKillError returns = (wxProcess::Kill(pid, sig, flags));
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
 
     return 1;
 }
@@ -1072,8 +1072,8 @@ static int LUACALL wxLua_function_wxKill(lua_State *L)
     // call wxKill
     int returns = (wxKill(pid, sig, &rc, flags));
     // push the result number
-    lua_pushnumber(L, returns);
-    lua_pushnumber(L, rc);
+    lua_pushinteger(L, returns);
+    lua_pushinteger(L, rc);
 
     return 2;
 }
@@ -1093,7 +1093,7 @@ static int LUACALL wxLua_function_wxExecuteStdout(lua_State *L)
     wxArrayString output;
     long returns = wxExecute(command, output, flags);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     wxlua_pushwxArrayStringtable(L, output);
 
     return 2;
@@ -1115,7 +1115,7 @@ static int LUACALL wxLua_function_wxExecuteStdoutStderr(lua_State *L)
     wxArrayString errors;
     long returns = wxExecute(command, output, errors, flags);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     wxlua_pushwxArrayStringtable(L, output);
     wxlua_pushwxArrayStringtable(L, errors);
 
@@ -1131,8 +1131,8 @@ static int LUACALL wxLua_function_wxDisplaySize(lua_State *L)
     // call wxDisplaySize
     wxDisplaySize(&width, &height);
     // return the number of parameters
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     return 2;
 }
 %end
@@ -1145,8 +1145,8 @@ static int LUACALL wxLua_function_wxDisplaySizeMM(lua_State *L)
     // call wxDisplaySizeMM
     wxDisplaySizeMM(&width, &height);
     // return the number of parameters
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     return 2;
 }
 %end
@@ -1158,10 +1158,10 @@ static int LUACALL wxLua_function_wxClientDisplayRect(lua_State *L)
     int x = 0, y = 0, width = 0, height = 0;
     // call wxClientDisplayRect
     wxClientDisplayRect(&x, &y, &width, &height);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     // return the number of parameters
     return 4;
 }
@@ -1225,7 +1225,7 @@ static int LUACALL wxLua_function_wxGetMultipleChoices(lua_State *L)
     wxlua_pushwxArrayInttable(L, selections);
 
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // return the number of parameters
     return 2;
 }
@@ -1328,8 +1328,8 @@ static int LUACALL wxLua_wxKeyEvent_GetPositionXY(lua_State *L)
     // call GetPositionXY
     self->GetPosition(&x, &y);
     // push results
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }
@@ -1346,8 +1346,8 @@ static int LUACALL wxLua_wxMouseEvent_GetPositionXY(lua_State *L)
     // call GetPosition
     self->GetPosition(&x, &y);
     // push results
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }
@@ -1364,8 +1364,8 @@ static int LUACALL wxLua_wxPoint_GetXY(lua_State *L)
     // get this
     wxPoint *self = (wxPoint *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPoint);
     // push the result number
-    lua_pushnumber(L, self->x);
-    lua_pushnumber(L, self->y);
+    lua_pushinteger(L, self->x);
+    lua_pushinteger(L, self->y);
     // return the number of parameters
     return 2;
 }
@@ -1400,10 +1400,10 @@ static int LUACALL wxLua_wxRegion_GetBoxXYWH(lua_State *L)
     wxRegion *self = (wxRegion *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRegion);
     // call GetBox
     self->GetBox(x, y, width, height);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     // return the number of parameters
     return 4;
 }
@@ -1443,7 +1443,7 @@ static int LUACALL wxLua_wxFontMapper_GetAltForEncoding(lua_State *L)
     // push the result number
     lua_pushboolean(L, returns);
     // push the result encoding
-    lua_pushnumber(L, altEncoding);
+    lua_pushinteger(L, altEncoding);
     // return the number of parameters
     return 2;
 }
@@ -1495,9 +1495,9 @@ static int LUACALL wxLua_wxPalette_GetRGB(lua_State *L)
     bool returns = self->GetRGB(pixel, &red, &green, &blue);
     // push the result number
     lua_pushboolean(L, returns);
-    lua_pushnumber(L, red);
-    lua_pushnumber(L, green);
-    lua_pushnumber(L, blue);
+    lua_pushinteger(L, red);
+    lua_pushinteger(L, green);
+    lua_pushinteger(L, blue);
     // return the number of parameters
     return 4;
 }
@@ -1514,8 +1514,8 @@ static int LUACALL wxLua_wxCaret_GetPositionXY(lua_State *L)
     // call GetPosition
     self->GetPosition(&x, &y);
     // return the number of parameters
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }
@@ -1531,8 +1531,8 @@ static int LUACALL wxLua_wxCaret_GetSizeWH(lua_State *L)
     wxCaret *self = (wxCaret *)wxluaT_getuserdatatype(L, 1, wxluatype_wxCaret);
     // call GetSize
     self->GetSize(&x, &y);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }
@@ -1677,8 +1677,8 @@ static int LUACALL wxLua_wxImageList_GetSize(lua_State *L)
     wxImageList *self = (wxImageList *)wxluaT_getuserdatatype(L, 1, wxluatype_wxImageList);
     // call GetSize
     self->GetSize(index, width, height);
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     // return the number of parameters
     return 2;
 }
@@ -1694,8 +1694,8 @@ static int LUACALL wxLua_wxDC_GetSize(lua_State *L)
     wxDC *self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
     // call GetSize
     self->GetSize(&width, &height);
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     // return the number of parameters
     return 2;
 }
@@ -1737,10 +1737,10 @@ static int LUACALL wxLua_wxDC_GetTextExtent(lua_State *L)
     wxDC *self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
     // call GetTextExtent
     self->GetTextExtent(string, &w, &h, &descent, &externalLeading, font);
-    lua_pushnumber(L, w);
-    lua_pushnumber(L, h);
-    lua_pushnumber(L, descent);
-    lua_pushnumber(L, externalLeading);
+    lua_pushinteger(L, w);
+    lua_pushinteger(L, h);
+    lua_pushinteger(L, descent);
+    lua_pushinteger(L, externalLeading);
     // return the number of parameters
     return 4;
 }
@@ -1764,9 +1764,9 @@ static int LUACALL wxLua_wxDC_GetMultiLineTextExtent(lua_State *L)
     wxDC *self = (wxDC *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDC);
     // call GetTextExtent
     self->GetMultiLineTextExtent(string, &w, &h, &heightLine, font);
-    lua_pushnumber(L, w);
-    lua_pushnumber(L, h);
-    lua_pushnumber(L, heightLine);
+    lua_pushinteger(L, w);
+    lua_pushinteger(L, h);
+    lua_pushinteger(L, heightLine);
     // return the number of parameters
     return 4;
 }
@@ -1785,10 +1785,10 @@ static int LUACALL wxLua_wxDC_GetClippingBox(lua_State *L)
     // call GetClippingBox
     self->GetClippingBox(&x, &y, &width, &height);
     // push results
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     // return the number of parameters
     return 4;
 }
@@ -1888,9 +1888,9 @@ static int LUACALL wxLua_wxImage_FindFirstUnusedColour(lua_State *L)
     bool returns = self->FindFirstUnusedColour(&r, &g, &b, startR, startG, startB);
     // push the result flag
     lua_pushboolean(L, returns);
-    lua_pushnumber(L, r);
-    lua_pushnumber(L, g);
-    lua_pushnumber(L, b);
+    lua_pushinteger(L, r);
+    lua_pushinteger(L, g);
+    lua_pushinteger(L, b);
 
     return 4;
 }
@@ -1922,9 +1922,9 @@ static int LUACALL wxLua_wxImage_GetOrFindMaskColour(lua_State *L)
     bool returns = self->GetOrFindMaskColour(&r, &g, &b);
     // push the result flag
     lua_pushboolean(L, returns);
-    lua_pushnumber(L, r);
-    lua_pushnumber(L, g);
-    lua_pushnumber(L, b);
+    lua_pushinteger(L, r);
+    lua_pushinteger(L, g);
+    lua_pushinteger(L, b);
 
     return 4;
 }
@@ -1943,9 +1943,9 @@ static int LUACALL wxLua_wxImage_RGBtoHSV(lua_State *L)
     // call HSVtoRGB
     wxImage::HSVValue hsvValue = wxImage::RGBtoHSV(wxImage::RGBValue(r, g, b));
     // push the result number
-    lua_pushnumber(L, hsvValue.hue);
-    lua_pushnumber(L, hsvValue.saturation);
-    lua_pushnumber(L, hsvValue.value);
+    lua_pushinteger(L, hsvValue.hue);
+    lua_pushinteger(L, hsvValue.saturation);
+    lua_pushinteger(L, hsvValue.value);
 
     return 3;
 }
@@ -1964,9 +1964,9 @@ static int LUACALL wxLua_wxImage_HSVtoRGB(lua_State *L)
     // call HSVtoRGB
     wxImage::RGBValue rgbValue = wxImage::HSVtoRGB(wxImage::HSVValue(h, s, v));
     // push the result number
-    lua_pushnumber(L, rgbValue.red);
-    lua_pushnumber(L, rgbValue.green);
-    lua_pushnumber(L, rgbValue.blue);
+    lua_pushinteger(L, rgbValue.red);
+    lua_pushinteger(L, rgbValue.green);
+    lua_pushinteger(L, rgbValue.blue);
 
     return 3;
 }
@@ -2260,12 +2260,12 @@ static int LUACALL wxLua_wxCreateMenu_constructor(lua_State *L)
 
         for (idx = 1; idx <= count; ++idx)
         {
-            lua_pushnumber(L, idx);
+            lua_pushinteger(L, idx);
             lua_gettable(L, -2);
 
             if (lua_istable(L, -1))
             {
-                lua_pushnumber(L, 1);
+                lua_pushinteger(L, 1);
                 lua_gettable(L, -2);
                 if (lua_isnil(L, -1))
                 {
@@ -2281,18 +2281,18 @@ static int LUACALL wxLua_wxCreateMenu_constructor(lua_State *L)
                     int iValue = (int)lua_tonumber(L, -1);
                     lua_pop(L, 1);
 
-                    lua_pushnumber(L, 2);
+                    lua_pushinteger(L, 2);
                     lua_gettable(L, -2);
                     menuText = wxlua_getwxStringtype(L, -1);
                     lua_pop(L, 1);
 
-                    lua_pushnumber(L, 3);
+                    lua_pushinteger(L, 3);
                     lua_gettable(L, -2);
                     if (lua_isstring(L, -1))
                         helpText = wxlua_getwxStringtype(L, -1);
                     lua_pop(L, 1);
 
-                    lua_pushnumber(L, 4);
+                    lua_pushinteger(L, 4);
                     lua_gettable(L, -2);
                     if (lua_isnumber(L, -1))
                         kind = (wxItemKind)wxlua_getenumtype(L, -1);
@@ -2403,10 +2403,10 @@ static int LUACALL wxLua_wxPrintout_GetPageInfo(lua_State *L)
     wxPrintout *self = (wxPrintout *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPrintout);
     // call GetPageInfo
     self->GetPageInfo(&minPage, &maxPage, &pageFrom, &pageTo);
-    lua_pushnumber(L, minPage);
-    lua_pushnumber(L, maxPage);
-    lua_pushnumber(L, pageFrom);
-    lua_pushnumber(L, pageTo);
+    lua_pushinteger(L, minPage);
+    lua_pushinteger(L, maxPage);
+    lua_pushinteger(L, pageFrom);
+    lua_pushinteger(L, pageTo);
     // return the number of parameters
     return 4;
 }
@@ -2423,8 +2423,8 @@ static int LUACALL wxLua_wxPrintout_GetPageSizeMM(lua_State *L)
     // call GetPageSizeMM
     self->GetPageSizeMM(&w, &h);
     // return the number of parameters
-    lua_pushnumber(L, w);
-    lua_pushnumber(L, h);
+    lua_pushinteger(L, w);
+    lua_pushinteger(L, h);
     return 2;
 }
 %end
@@ -2440,8 +2440,8 @@ static int LUACALL wxLua_wxPrintout_GetPageSizePixels(lua_State *L)
     // call GetPageSizePixels
     self->GetPageSizePixels(&w, &h);
     // return the number of parameters
-    lua_pushnumber(L, w);
-    lua_pushnumber(L, h);
+    lua_pushinteger(L, w);
+    lua_pushinteger(L, h);
     return 2;
 }
 %end
@@ -2457,8 +2457,8 @@ static int LUACALL wxLua_wxPrintout_GetPPIPrinter(lua_State *L)
     // call GetPPIPrinter
     self->GetPPIPrinter(&w, &h);
     // return the number of parameters
-    lua_pushnumber(L, w);
-    lua_pushnumber(L, h);
+    lua_pushinteger(L, w);
+    lua_pushinteger(L, h);
     return 2;
 }
 %end
@@ -2474,8 +2474,8 @@ static int LUACALL wxLua_wxPrintout_GetPPIScreen(lua_State *L)
     // call GetPPIScreen
     self->GetPPIScreen(&w, &h);
     // return the number of parameters
-    lua_pushnumber(L, w);
-    lua_pushnumber(L, h);
+    lua_pushinteger(L, w);
+    lua_pushinteger(L, h);
     return 2;
 }
 %end
@@ -2557,8 +2557,8 @@ static int LUACALL wxLua_wxGBSizerItem_GetEndPos(lua_State *L)
     wxGBSizerItem * self = (wxGBSizerItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGBSizerItem);
     // call GetEndPos
     self->GetEndPos(row, col);
-    lua_pushnumber(L, row);
-    lua_pushnumber(L, col);
+    lua_pushinteger(L, row);
+    lua_pushinteger(L, col);
     return 2;
 }
 %end
@@ -2583,8 +2583,8 @@ static int LUACALL wxLua_wxWindow_ClientToScreenXY(lua_State *L)
     wxWindow *self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call ClientToScreen
     self->ClientToScreen(&x, &y);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }
@@ -2597,8 +2597,8 @@ static int LUACALL wxLua_wxWindow_GetClientSizeWH(lua_State *L)
     wxWindow *self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call GetClientSize
     wxSize size = self->GetClientSize();
-    lua_pushnumber(L, size.x);
-    lua_pushnumber(L, size.y);
+    lua_pushinteger(L, size.x);
+    lua_pushinteger(L, size.y);
     // return the number of parameters
     return 2;
 }
@@ -2614,8 +2614,8 @@ static int LUACALL wxLua_wxWindow_GetPositionXY(lua_State *L)
     wxWindow *self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call GetPosition
     self->GetPosition(&x, &y);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }
@@ -2631,8 +2631,8 @@ static int LUACALL wxLua_wxWindow_GetScreenPositionXY(lua_State *L)
     wxWindow *self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call GetPosition
     self->GetScreenPosition(&x, &y);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }
@@ -2648,8 +2648,8 @@ static int LUACALL wxLua_wxWindow_GetSizeWH(lua_State *L)
     wxWindow *self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call ClientToScreen
     self->GetSize(&width, &height);
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     // return the number of parameters
     return 2;
 }
@@ -2675,10 +2675,10 @@ static int LUACALL wxLua_wxWindow_GetTextExtent(lua_State *L)
     // call GetTextExtent
     self->GetTextExtent(string, &w, &h, &descent, &externalLeading, font);
     // return the number of parameters
-    lua_pushnumber(L, w);
-    lua_pushnumber(L, h);
-    lua_pushnumber(L, descent);
-    lua_pushnumber(L, externalLeading);
+    lua_pushinteger(L, w);
+    lua_pushinteger(L, h);
+    lua_pushinteger(L, descent);
+    lua_pushinteger(L, externalLeading);
     return 4;
 }
 %end
@@ -2693,8 +2693,8 @@ static int LUACALL wxLua_wxWindow_GetVirtualSizeWH(lua_State *L)
     wxWindow *self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call ClientToScreen
     self->GetVirtualSize(&width, &height);
-    lua_pushnumber(L, width);
-    lua_pushnumber(L, height);
+    lua_pushinteger(L, width);
+    lua_pushinteger(L, height);
     // return the number of parameters
     return 2;
 }
@@ -2711,8 +2711,8 @@ static int LUACALL wxLua_wxWindow_ScreenToClientXY(lua_State *L)
     wxWindow *self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call ScreenToClient
     self->ScreenToClient(&x, &y);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }
@@ -2746,9 +2746,9 @@ static int LUACALL wxLua_wxNotebook_HitTest(lua_State *L)
     // call HitTest
     int returns = self->HitTest(*point, &flags);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // push the result flags
-    lua_pushnumber(L, flags);
+    lua_pushinteger(L, flags);
     // return the number of parameters
     return 2;
 }
@@ -2768,8 +2768,8 @@ static int LUACALL wxLua_wxScrolledWindow_CalcScrolledPosition(lua_State *L)
     wxScrolledWindow *self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
     // call CalcScrolledPosition
     self->CalcScrolledPosition(x, y, &xx, &yy);
-    lua_pushnumber(L, xx);
-    lua_pushnumber(L, yy);
+    lua_pushinteger(L, xx);
+    lua_pushinteger(L, yy);
     // return the number of parameters
     return 2;
 }
@@ -2789,8 +2789,8 @@ static int LUACALL wxLua_wxScrolledWindow_CalcUnscrolledPosition(lua_State *L)
     wxScrolledWindow *self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
     // call CalcUnscrolledPosition
     self->CalcUnscrolledPosition(x, y, &xx, &yy);
-    lua_pushnumber(L, xx);
-    lua_pushnumber(L, yy);
+    lua_pushinteger(L, xx);
+    lua_pushinteger(L, yy);
     // return the number of parameters
     return 2;
 }
@@ -2806,8 +2806,8 @@ static int LUACALL wxLua_wxScrolledWindow_GetScrollPixelsPerUnit(lua_State *L)
     wxScrolledWindow *self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
     // call GetScrollPixelsPerUnit
     self->GetScrollPixelsPerUnit(&xUnit, &yUnit);
-    lua_pushnumber(L, xUnit);
-    lua_pushnumber(L, yUnit);
+    lua_pushinteger(L, xUnit);
+    lua_pushinteger(L, yUnit);
     // return the number of parameters
     return 2;
 }
@@ -2823,8 +2823,8 @@ static int LUACALL wxLua_wxScrolledWindow_GetViewStart(lua_State *L)
     wxScrolledWindow *self = (wxScrolledWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxScrolledWindow);
     // call GetViewStart
     self->GetViewStart(&x, &y);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }
@@ -2843,9 +2843,9 @@ static int LUACALL wxLua_wxTabCtrl_HitTest(lua_State *L)
     // call HitTest
     int returns = self->HitTest(*pt, flags);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // push the result flags
-    lua_pushnumber(L, flags);
+    lua_pushinteger(L, flags);
     // return the number of parameters
     return 2;
 }

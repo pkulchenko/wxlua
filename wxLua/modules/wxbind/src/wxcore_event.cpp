@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 // ---------------------------------------------------------------------------
 // Bind class wxPropagationDisabler
 // ---------------------------------------------------------------------------
@@ -1267,8 +1271,8 @@ static int LUACALL wxLua_wxKeyEvent_GetPositionXY(lua_State *L)
     // call GetPositionXY
     self->GetPosition(&x, &y);
     // push results
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }
@@ -2233,8 +2237,8 @@ static int LUACALL wxLua_wxMouseEvent_GetPositionXY(lua_State *L)
     // call GetPosition
     self->GetPosition(&x, &y);
     // push results
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 2;
 }

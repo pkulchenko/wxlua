@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 // ---------------------------------------------------------------------------
 // Bind class wxString
 // ---------------------------------------------------------------------------
@@ -3752,7 +3756,7 @@ static int LUACALL wxLua_wxMemoryBuffer_GetByte(lua_State *L)
     int count = 0;
     while (count < length) {
         unsigned char returns = ((unsigned char *)(self->GetData()))[index + count];
-        lua_pushnumber(L, returns);
+        lua_pushinteger(L, returns);
         count++;
     }
     return length;

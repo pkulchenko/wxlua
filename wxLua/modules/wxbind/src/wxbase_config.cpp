@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if wxLUA_USE_wxConfig && wxUSE_CONFIG
 // ---------------------------------------------------------------------------
@@ -234,7 +238,7 @@ static int LUACALL wxLua_wxConfigBase_GetFirstEntry(lua_State *L)
     // push the next string
     wxlua_pushwxString(L, str);
     // push the next index
-    lua_pushnumber(L, index);
+    lua_pushinteger(L, index);
     // return the number of parameters
     return 3;
 }
@@ -261,7 +265,7 @@ static int LUACALL wxLua_wxConfigBase_GetFirstGroup(lua_State *L)
     // push the result string
     wxlua_pushwxString(L, str);
     // push the next index
-    lua_pushnumber(L, index);
+    lua_pushinteger(L, index);
     // return the number of parameters
     return 3;
 }
@@ -286,7 +290,7 @@ static int LUACALL wxLua_wxConfigBase_GetNextEntry(lua_State *L)
     // push the result string
     wxlua_pushwxString(L, str);
     // push the next index
-    lua_pushnumber(L, index);
+    lua_pushinteger(L, index);
     // return the number of parameters
     return 3;
 }
@@ -311,7 +315,7 @@ static int LUACALL wxLua_wxConfigBase_GetNextGroup(lua_State *L)
     // push the next result string
     wxlua_pushwxString(L, str);
     // push the next index
-    lua_pushnumber(L, index);
+    lua_pushinteger(L, index);
     // return the number of parameters
     return 3;
 }
@@ -491,7 +495,7 @@ static int LUACALL wxLua_wxConfigBase_ReadFloat(lua_State *L)
     // push the result bool
     lua_pushboolean(L, ret);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // return the number of parameters
     return 2;
 }

@@ -22,6 +22,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI
 // ---------------------------------------------------------------------------
@@ -6105,7 +6109,7 @@ static int LUACALL wxLua_wxAuiNotebook_FindTab(lua_State *L)
     bool returns = (self->FindTab(page, &ctrl, &idx));
     if (returns) {
         wxluaT_pushuserdatatype(L, ctrl, wxluatype_wxAuiTabCtrl);
-        lua_pushnumber(L, idx);
+        lua_pushinteger(L, idx);
         return 2;
     }
     return 0;

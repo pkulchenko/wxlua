@@ -20,7 +20,7 @@ static int LUACALL wxLua_wxStyledTextCtrl_GetCurLine(lua_State *L)
     wxString returns = self->GetCurLine(&linePos);
     // push the result string
     lua_pushstring(L, wx2lua(returns));
-    lua_pushnumber(L, linePos);
+    lua_pushinteger(L, linePos);
     // return the number of parameters
     return 2;
 }
@@ -74,8 +74,8 @@ static int LUACALL wxLua_wxStyledTextCtrl_GetSelection(lua_State *L)
     // call GetSelection
     self->GetSelection(&startPos, &endPos);
     // push results
-    lua_pushnumber(L, startPos);
-    lua_pushnumber(L, endPos);
+    lua_pushinteger(L, startPos);
+    lua_pushinteger(L, endPos);
     // return the number of parameters
     return 2;
 }

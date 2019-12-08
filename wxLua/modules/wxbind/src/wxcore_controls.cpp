@@ -28,6 +28,10 @@
     #pragma GCC diagnostic ignored "-Wunused-variable"
 #endif // __GNUC__
 
+#if LUA_VERSION_NUM < 503
+#define lua_pushinteger lua_pushnumber
+#endif
+
 
 #if wxLUA_USE_wxButton && wxUSE_BUTTON
 // ---------------------------------------------------------------------------
@@ -3577,7 +3581,7 @@ static int LUACALL wxLua_wxListBox_GetSelections(lua_State *L)
     // call GetSelections
     int returns = self->GetSelections(selections);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // push the selects as a table
     wxlua_pushwxArrayInttable(L, selections);
 
@@ -4792,9 +4796,9 @@ static int LUACALL wxLua_wxListCtrl_HitTest(lua_State *L)
     // call HitTest
     long returns = self->HitTest(*point, flags);
     // push the result number
-    lua_pushnumber(L, returns);
+    lua_pushinteger(L, returns);
     // push the result flags
-    lua_pushnumber(L, flags);
+    lua_pushinteger(L, flags);
     // return the number of parameters
     return 2;
 }
@@ -10117,8 +10121,8 @@ static int LUACALL wxLua_wxTextEntry_GetSelection(lua_State *L)
     wxTextEntry *self = (wxTextEntry *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextEntry);
     // call GetSelection
     self->GetSelection(&from, &to);
-    lua_pushnumber(L, from);
-    lua_pushnumber(L, to);
+    lua_pushinteger(L, from);
+    lua_pushinteger(L, to);
     // return the number of parameters
     return 2;
 }
@@ -10976,8 +10980,8 @@ static int LUACALL wxLua_wxTextCtrl_GetSelection(lua_State *L)
     wxTextCtrl *self = (wxTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTextCtrl);
     // call GetSelection
     self->GetSelection(&from, &to);
-    lua_pushnumber(L, from);
-    lua_pushnumber(L, to);
+    lua_pushinteger(L, from);
+    lua_pushinteger(L, to);
     // return the number of parameters
     return 2;
 }
@@ -11060,9 +11064,9 @@ static int LUACALL wxLua_wxTextCtrl_HitTest(lua_State *L)
     // call HitTest
     wxTextCtrlHitTestResult returns = self->HitTest(*pt, &col, &row);
     // push the result number
-    lua_pushnumber(L, returns);
-    lua_pushnumber(L, row);
-    lua_pushnumber(L, col);
+    lua_pushinteger(L, returns);
+    lua_pushinteger(L, row);
+    lua_pushinteger(L, col);
 
     return 3;
 }
@@ -11084,8 +11088,8 @@ static int LUACALL wxLua_wxTextCtrl_HitTestPos(lua_State *L)
     // call HitTest
     wxTextCtrlHitTestResult returns = self->HitTest(*pt, &pos);
     // push the result number
-    lua_pushnumber(L, returns);
-    lua_pushnumber(L, pos);
+    lua_pushinteger(L, returns);
+    lua_pushinteger(L, pos);
 
     return 2;
 }
@@ -11280,8 +11284,8 @@ static int LUACALL wxLua_wxTextCtrl_PositionToXY(lua_State *L)
     bool returns = self->PositionToXY(pos, &x, &y);
     // push the result number
     lua_pushboolean(L, returns);
-    lua_pushnumber(L, x);
-    lua_pushnumber(L, y);
+    lua_pushinteger(L, x);
+    lua_pushinteger(L, y);
     // return the number of parameters
     return 3;
 }
@@ -13653,7 +13657,7 @@ static int LUACALL wxLua_wxTreeCtrl_HitTest(lua_State *L)
 
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxTreeItemId);
-    lua_pushnumber(L, flags);
+    lua_pushinteger(L, flags);
     // return the number of parameters
     return 2;
 }
