@@ -174,6 +174,19 @@ static int libsize (const luaL_Reg *l) {
   for (; l && l->name; l++) size++;
   return size;
 }
+static void pushmodule (lua_State *L, const char *modname, int sizehint) {
+  lua_pushglobaltable(L);
+  lua_pushstring(L, modname);
+  if (lua_rawget(L, -2) != LUA_TNIL) {  /* no such field? */
+    luaL_error(L, "name conflict for module '%s'", modname);
+  }
+  lua_pop(L, 1);  /* remove this nil */
+  lua_createtable(L, 0, sizehint); /* new table for field */
+  lua_pushstring(L, modname);
+  lua_pushvalue(L, -2);
+  lua_settable(L, -4);  /* set new table into field */
+  lua_pushvalue(L, -1);
+}
 #endif
 
 LUALIB_API int luaopen_bit(lua_State *L)
@@ -202,7 +215,7 @@ LUALIB_API int luaopen_bit(lua_State *L)
 #if LUA_VERSION_NUM < 502
   luaL_register(L, "bit", bit_funcs);
 #else
-  luaL_pushmodule(L, "bit", libsize(bit_funcs));  /* get/create library table */
+  pushmodule(L, "bit", libsize(bit_funcs));  /* get/create library table */
   lua_insert(L, -1);  /* move library table to below upvalues */
   luaL_setfuncs(L, bit_funcs, 0);
 #endif
