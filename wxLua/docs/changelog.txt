@@ -1,6 +1,29 @@
  wxLua ChangeLog
  ===============
 
+ version 3.0.0.7 (released 12/09/2019)
+ --------------------------------------------------------------------
+
+ - Added 'Mandelbrot set' example using wxImage and wxMemoryBuffer (#49).
+ - Added `CallAter` method for `wxEvtHandler`.
+ - Added `wxSystemAppearance`.
+ - Added wxAuiNotebook methods made public in wxwidgets 3.1.4.
+ - Added wxSTC methods that require wxMemoryBuffer support (#49).
+ - Added wxMemoryBuffer.
+ - Added `wxAffineMatrix2D` and `*TransformMatrix` methods for wxDC.
+ - Added `wxGetSelectedChoices` method.
+ - Added missing wxFileConfig methods (Get{Global,Local}File{Name}).
+ - Added wxAuiManager `PANE_ACTIVATED` event.
+ - Updated wxAuiTabCtrl methods TabHitTest and ButtonHitTest to return hit controls.
+ - Updated wxMemoryBuffer processing to avoid compilation warnings on comparisons (#49).
+ - Updated wxMemoryBuffer to make it usable as a 'string-type' argument.
+ - Updated wxImage methods to allow wxString and wxMemoryBuffer as arguments for 'unsigned char*'
+ - Updated handling of integer values to better work with Lua 5.3+.
+ - Updated `bit` module loading to work with Lua 5.3+ compiled without `LUA_COMPAT_MODULE` (#43).
+ - Updated file reference and version checks to fix compilation with wxwidgets <3.1.2 (fixes #46).
+ - Updated components to return integer types as appropriate (with Lua 5.3).
+ - Updated "bit" module to compile with Lua 5.3.
+
  version 3.0.0.6 (released 10/28/2019)
  --------------------------------------------------------------------
  - Added `GetAutoWindowMenu`, `SetAutoWindowMenu`, and other macOS-specific menu methods.

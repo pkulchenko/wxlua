@@ -29,11 +29,11 @@ include( build/CMakewxAppLib.cmake )
 # wxLua version
 # ===========================================================================
 
-set( wxLua_VERSION           "3.0.0.6" )
+set( wxLua_VERSION           "3.0.0.7" )
 set( wxLua_MAJOR_VERSION     "3" )
 set( wxLua_MINOR_VERSION     "0" )
 set( wxLua_RELEASE_VERSION   "0" )
-set( wxLua_SUBRELEASE_NUMBER "6")
+set( wxLua_SUBRELEASE_NUMBER "7")
 
 # ===========================================================================
 # wxWidgets libraries and wxLua bindings setup
