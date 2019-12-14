@@ -543,9 +543,8 @@ class %delete wxGraphicsContext : public wxGraphicsObject
     void DrawText( const wxString &str, wxDouble x, wxDouble y,
                    wxDouble angle, const wxGraphicsBrush& backgroundBrush );
 
-
-    virtual void GetTextExtent( const wxString &text, wxDouble *width, wxDouble *height,
-                                wxDouble *descent = NULL, wxDouble *externalLeading = NULL ) const;//  = 0;
+    // %override [wxDouble width, wxDouble height, wxDouble descent, wxDouble externalLeading] int GetTextExtent(const wxString& string;
+    void GetTextExtent(const wxString& string);
 
 //    virtual void GetPartialTextExtents(const wxString& text, wxArrayDouble& widths) const;// = 0;
 

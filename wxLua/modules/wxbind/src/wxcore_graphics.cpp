@@ -3170,31 +3170,31 @@ static int LUACALL wxLua_wxGraphicsContext_GetSize(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_GetTextExtent[] = { &wxluatype_wxGraphicsContext, &wxluatype_TSTRING, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_GetTextExtent[] = { &wxluatype_wxGraphicsContext, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxGraphicsContext_GetTextExtent(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_GetTextExtent[1] = {{ wxLua_wxGraphicsContext_GetTextExtent, WXLUAMETHOD_METHOD, 4, 6, s_wxluatypeArray_wxLua_wxGraphicsContext_GetTextExtent }};
-//                                 wxDouble *descent = NULL, wxDouble *externalLeading = NULL ) const;//  = 0;
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_GetTextExtent[1] = {{ wxLua_wxGraphicsContext_GetTextExtent, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsContext_GetTextExtent }};
+// %override wxLua_wxGraphicsContext_GetTextExtent
+// void GetTextExtent(const wxString& string, wxCoord *w, wxCoord *h, wxCoord *descent = NULL, wxCoord *externalLeading = NULL, wxFont *font = NULL)
 static int LUACALL wxLua_wxGraphicsContext_GetTextExtent(lua_State *L)
 {
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // wxDouble externalLeading = NULL
-    wxDouble * externalLeading = (argCount >= 6 ? (wxDouble *)wxlua_touserdata(L, 6) : NULL);
-    // wxDouble descent = NULL
-    wxDouble * descent = (argCount >= 5 ? (wxDouble *)wxlua_touserdata(L, 5) : NULL);
-    // wxDouble height
-    wxDouble * height = (wxDouble *)wxlua_touserdata(L, 4);
-    // wxDouble width
-    wxDouble * width = (wxDouble *)wxlua_touserdata(L, 3);
-    // const wxString text
-    const wxString text = wxlua_getwxStringtype(L, 2);
-    // get this
-    wxGraphicsContext * self = (wxGraphicsContext *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsContext);
-    // call GetTextExtent
-    self->GetTextExtent(text, width, height, descent, externalLeading);
+    wxDouble externalLeading;
+    wxDouble descent;
+    wxDouble h;
+    wxDouble w;
 
-    return 0;
+    wxString string = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxGraphicsContext *self = (wxGraphicsContext *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsContext);
+    // call GetTextExtent
+    self->GetTextExtent(string, &w, &h, &descent, &externalLeading);
+    lua_pushnumber(L, w);
+    lua_pushnumber(L, h);
+    lua_pushnumber(L, descent);
+    lua_pushnumber(L, externalLeading);
+    // return the number of parameters
+    return 4;
 }
+
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_GetTransform[] = { &wxluatype_wxGraphicsContext, NULL };
 static int LUACALL wxLua_wxGraphicsContext_GetTransform(lua_State *L);

@@ -2894,3 +2894,30 @@ static int LUACALL wxLua_wxLuaPrintout_constructor(lua_State *L)
     return 1;
 }
 %end
+
+// ----------------------------------------------------------------------------
+// Overrides for wxcore_graphics.i
+// ----------------------------------------------------------------------------
+
+%override wxLua_wxGraphicsContext_GetTextExtent
+// void GetTextExtent(const wxString& string, wxCoord *w, wxCoord *h, wxCoord *descent = NULL, wxCoord *externalLeading = NULL, wxFont *font = NULL)
+static int LUACALL wxLua_wxGraphicsContext_GetTextExtent(lua_State *L)
+{
+    wxDouble externalLeading;
+    wxDouble descent;
+    wxDouble h;
+    wxDouble w;
+
+    wxString string = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxGraphicsContext *self = (wxGraphicsContext *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsContext);
+    // call GetTextExtent
+    self->GetTextExtent(string, &w, &h, &descent, &externalLeading);
+    lua_pushnumber(L, w);
+    lua_pushnumber(L, h);
+    lua_pushnumber(L, descent);
+    lua_pushnumber(L, externalLeading);
+    // return the number of parameters
+    return 4;
+}
+%end
