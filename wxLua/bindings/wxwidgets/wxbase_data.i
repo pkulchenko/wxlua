@@ -359,6 +359,37 @@ class %delete wxArrayInt
 
 #endif //wxLUA_USE_wxArrayInt
 
+#if wxLUA_USE_wxArrayDouble
+
+#include "wx/dynarray.h"
+
+class %delete wxArrayDouble
+{
+    wxArrayDouble();
+    wxArrayDouble(const wxArrayDouble& array);
+
+    // %override [Lua table] wxArrayDouble::ToLuaTable() const;
+    // returns a table array of numbers
+    int ToLuaTable() const;
+
+    void Add(double num);
+    void Alloc(size_t count);
+    void Clear();
+    void Empty();
+    int  GetCount() const;
+    bool IsEmpty() const;
+    int  Index(double n, bool searchFromEnd = false);
+    void Insert(double num, int n, int copies = 1);
+    double Item(int n);
+    void Remove(int n);
+    void RemoveAt(size_t index);
+    void Shrink();
+
+    double operator[](size_t nIndex);
+};
+
+#endif //wxLUA_USE_wxArrayDouble
+
 // ---------------------------------------------------------------------------
 // wxArrayString
 //

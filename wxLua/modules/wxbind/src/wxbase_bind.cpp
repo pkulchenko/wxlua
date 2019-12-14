@@ -2354,6 +2354,7 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxbase(size_t &count)
 // ---------------------------------------------------------------------------
 
 static const char* wxluaclassname_wxArchiveFSHandler = "wxArchiveFSHandler";
+static const char* wxluaclassname_wxArrayDouble = "wxArrayDouble";
 static const char* wxluaclassname_wxArrayInt = "wxArrayInt";
 static const char* wxluaclassname_wxArrayString = "wxArrayString";
 static const char* wxluaclassname_wxClassInfo = "wxClassInfo";
@@ -2604,6 +2605,12 @@ extern void wxLua_wxStringTokenizer_delete_function(void** p);
     extern void wxLua_wxVersionInfo_delete_function(void** p);
 #endif // wxCHECK_VERSION(2,9,2)
 
+#if wxLUA_USE_wxArrayDouble
+    extern wxLuaBindMethod wxArrayDouble_methods[];
+    extern int wxArrayDouble_methodCount;
+    extern void wxLua_wxArrayDouble_delete_function(void** p);
+#endif // wxLUA_USE_wxArrayDouble
+
 #if wxLUA_USE_wxArrayInt
     extern wxLuaBindMethod wxArrayInt_methods[];
     extern int wxArrayInt_methodCount;
@@ -2851,6 +2858,10 @@ wxLuaBindClass* wxLuaGetClassList_wxbase(size_t &count)
 #if (wxUSE_FILESYSTEM) && (wxUSE_STREAMS)
         { wxluaclassname_wxArchiveFSHandler, wxArchiveFSHandler_methods, wxArchiveFSHandler_methodCount, CLASSINFO(wxArchiveFSHandler), &wxluatype_wxArchiveFSHandler, wxluabaseclassnames_wxArchiveFSHandler, wxluabaseclassbinds_wxArchiveFSHandler, NULL, NULL, NULL, 0, &wxLua_wxArchiveFSHandler_delete_function, }, 
 #endif // (wxUSE_FILESYSTEM) && (wxUSE_STREAMS)
+
+#if wxLUA_USE_wxArrayDouble
+        { wxluaclassname_wxArrayDouble, wxArrayDouble_methods, wxArrayDouble_methodCount, NULL, &wxluatype_wxArrayDouble, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxArrayDouble_delete_function, }, 
+#endif // wxLUA_USE_wxArrayDouble
 
 #if wxLUA_USE_wxArrayInt
         { wxluaclassname_wxArrayInt, wxArrayInt_methods, wxArrayInt_methodCount, NULL, &wxluatype_wxArrayInt, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxArrayInt_delete_function, }, 
@@ -3126,6 +3137,7 @@ bool wxLuaBinding_wxbase::RegisterBinding(const wxLuaState& wxlState)
     p_wxluatype_wxArrayString       = &wxluatype_wxArrayString;
     p_wxluatype_wxSortedArrayString = &wxluatype_wxSortedArrayString;
     p_wxluatype_wxArrayInt          = &wxluatype_wxArrayInt;
+    p_wxluatype_wxArrayDouble       = &wxluatype_wxArrayDouble;
 
     return ret;
 }

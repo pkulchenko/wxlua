@@ -714,6 +714,16 @@ static int LUACALL wxLua_wxArrayInt_ToLuaTable(lua_State *L)
 }
 %end
 
+%override wxLua_wxArrayDouble_ToLuaTable
+// int ToLuaTable() const
+static int LUACALL wxLua_wxArrayDouble_ToLuaTable(lua_State *L)
+{
+    wxArrayDouble * self = (wxArrayDouble *)wxluaT_getuserdatatype(L, 1, wxluatype_wxArrayDouble);
+    wxlua_pushwxArrayDoubletable(L, *self);
+    return 1;
+}
+%end
+
 %override wxLua_wxArrayString_ToLuaTable
 // int ToLuaTable() const
 static int LUACALL wxLua_wxArrayString_ToLuaTable(lua_State *L)

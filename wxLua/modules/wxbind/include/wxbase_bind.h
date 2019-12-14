@@ -84,6 +84,10 @@ extern WXDLLIMPEXP_BINDWXBASE wxLuaBinding* wxLuaBinding_wxbase_init();
     #include "wx/stdpaths.h"
 #endif // wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths
 
+#if wxLUA_USE_wxArrayDouble
+    #include "wx/dynarray.h"
+#endif // wxLUA_USE_wxArrayDouble
+
 #if wxLUA_USE_wxArrayInt
     #include "wx/dynarray.h"
 #endif // wxLUA_USE_wxArrayInt
@@ -228,6 +232,10 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringTokenizer;
 #if wxCHECK_VERSION(2,9,2)
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxVersionInfo;
 #endif // wxCHECK_VERSION(2,9,2)
+
+#if wxLUA_USE_wxArrayDouble
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxArrayDouble;
+#endif // wxLUA_USE_wxArrayDouble
 
 #if wxLUA_USE_wxArrayInt
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxArrayInt;

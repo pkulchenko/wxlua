@@ -26,6 +26,7 @@
 #define wxLUA_USE_wxAnimation                   1
 #define wxLUA_USE_wxApp                         1
 #define wxLUA_USE_wxArrayInt                    1
+#define wxLUA_USE_wxArrayDouble                 1
 #define wxLUA_USE_wxArrayString                 1
 #define wxLUA_USE_wxArtProvider                 1
 #define wxLUA_USE_wxAUI                         1

@@ -185,6 +185,7 @@ msgForClassInIndex = {
     ["wxAppTraits"]         = "Most functions are available elsewhere",
     ["wxArray"]             = "Not a real class, see implementations (wxArrayInt)",
     ["wxArrayInt"]          = "Interchangeable with a numeric indexed Lua table",
+    ["wxArrayDouble"]       = "Interchangeable with a numeric indexed Lua table",
     ["wxArrayString"]       = "Interchangeable with a numeric indexed Lua table",
     ["wxBitmapHandler"]     = "Base class for bitmap loaders, not needed",
     ["wxCondition"]         = "For threading in C",

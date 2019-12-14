@@ -1329,6 +1329,8 @@ int LUACALL wxlua_iswxluatype(int luatype, int wxl_type, lua_State* L /* = NULL 
             ret = 1;
         else if (wxluaT_isderivedclass(wxlClass, wxluaT_getclass(L, "wxArrayInt")) >= 0)
             ret = 1;
+        else if (wxluaT_isderivedclass(wxlClass, wxluaT_getclass(L, "wxArrayDouble")) >= 0)
+            ret = 1;
     }
 
     return ret;
@@ -1757,6 +1759,59 @@ wxLuaSmartwxArrayInt LUACALL wxlua_getwxArrayInt(lua_State* L, int stack_idx)
     return arr;
 }
 
+wxLuaSmartwxArrayDouble LUACALL wxlua_getwxArrayDouble(lua_State* L, int stack_idx)
+{
+    wxLuaSmartwxArrayDouble arr(NULL, true); // will be replaced
+    int count = -1;                       // used to check for failure
+
+    if (lua_istable(L, stack_idx))
+    {
+        count = 0;
+
+        while(1)
+        {
+            lua_rawgeti(L, stack_idx, count+1);
+
+            if (wxlua_isnumbertype(L, -1))
+            {
+                ((wxArrayDouble&)arr).Add(lua_tonumber(L, -1));
+                ++count;
+
+                lua_pop(L, 1);
+            }
+            else if (lua_isnil(L, -1))
+            {
+                lua_pop(L, 1);
+                break;
+            }
+            else
+            {
+                wxlua_argerror(L, stack_idx, wxT("a 'wxArrayDouble' or a table array of integers"));
+                return arr;
+            }
+        }
+    }
+    else if (wxlua_iswxuserdata(L, stack_idx))
+    {
+        int arrdouble_wxltype = wxluaT_gettype(L, "wxArrayDouble");
+
+        if (wxluaT_isuserdatatype(L, stack_idx, arrdouble_wxltype))
+        {
+            wxArrayDouble *arrDouble = (wxArrayDouble *)wxluaT_getuserdatatype(L, stack_idx, arrdouble_wxltype);
+            if (arrDouble)
+            {
+                arr = wxLuaSmartwxArrayDouble(arrDouble, false); // replace
+                count = arrDouble->GetCount();
+            }
+        }
+    }
+
+    if (count < 0)
+        wxlua_argerror(L, stack_idx, wxT("a 'wxArrayDouble' or a table array of numbers"));
+
+    return arr;
+}
+
 wxLuaSharedPtr<std::vector<wxPoint> > LUACALL wxlua_getwxPointArray(lua_State* L, int stack_idx)
 {
     wxLuaSharedPtr<std::vector<wxPoint> > pointArray(new std::vector<wxPoint>);
@@ -1882,6 +1937,19 @@ int LUACALL wxlua_pushwxArrayInttable(lua_State *L, const wxArrayInt &intArray)
 #else
         lua_pushnumber(L, intArray[idx]);
 #endif
+        lua_rawseti(L, -2, idx + 1);
+    }
+    return idx;
+}
+
+int LUACALL wxlua_pushwxArrayDoubletable(lua_State *L, const wxArrayDouble &doubleArray)
+{
+    size_t idx, count = doubleArray.GetCount();
+    lua_createtable(L, count, 0);
+
+    for (idx = 0; idx < count; ++idx)
+    {
+        lua_pushnumber(L, doubleArray[idx]);
         lua_rawseti(L, -2, idx + 1);
     }
     return idx;

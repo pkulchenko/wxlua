@@ -1051,6 +1051,7 @@ function InitKeywords()
     preprocConditionTable["wxLUA_USE_wxAnimation"]             = "wxLUA_USE_wxAnimation"
     preprocConditionTable["wxLUA_USE_wxApp"]                   = "wxLUA_USE_wxApp"
     preprocConditionTable["wxLUA_USE_wxArrayInt"]              = "wxLUA_USE_wxArrayInt"
+    preprocConditionTable["wxLUA_USE_wxArrayDouble"]           = "wxLUA_USE_wxArrayDouble"
     preprocConditionTable["wxLUA_USE_wxArrayString"]           = "wxLUA_USE_wxArrayString"
     preprocConditionTable["wxLUA_USE_wxArtProvider"]           = "wxLUA_USE_wxArtProvider"
     preprocConditionTable["wxLUA_USE_wxAUI"]                   = "wxLUA_USE_wxAUI"
@@ -3727,6 +3728,12 @@ if ((double)(lua_Integer)(%s) == (double)(%s)) {
                         overload_argList = overload_argList.."&wxluatype_wxArrayInt, "
                         argItem = "wxlua_getwxArrayInt(L, "..argNum..")"
                         declare = "wxLuaSmartwxArrayInt"
+                    elseif ((argType == "wxArrayDouble") and
+                            ((indirectionCount == 0) or
+                             ((indirectionCount == 1) and (argPtr == "&") and string.find(argTypeWithAttrib, "const", 1, 1)))) then
+                        overload_argList = overload_argList.."&wxluatype_wxArrayDouble, "
+                        argItem = "wxlua_getwxArrayDouble(L, "..argNum..")"
+                        declare = "wxLuaSmartwxArrayDouble"
                     elseif argType == "IntArray_FromLuaTable" then
                         overload_argList = overload_argList.."&wxluatype_TTABLE, "
                         argItem = "NULL; ptr = "..argName.." = wxlua_getintarray(L, "..argNum..", count_)"

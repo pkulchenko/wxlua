@@ -223,4 +223,30 @@ public:
     }
 };
 
+// ----------------------------------------------------------------------------
+// wxLuaSmartwxArrayDouble - Wraps a "new" wxArrayDouble with an automatic
+//                        destructor to delete them to make binding easier
+// ----------------------------------------------------------------------------
+
+class WXDLLIMPEXP_WXLUA wxLuaSmartwxArrayDouble : public wxObject
+{
+public:
+    wxLuaSmartwxArrayDouble(const wxLuaSmartwxArrayDouble& arr) { Ref(arr); }
+    wxLuaSmartwxArrayDouble(wxArrayDouble *arr = NULL, bool del = true);
+
+    wxArrayDouble* GetArray() const;
+
+    operator const wxArrayDouble *() const { return  GetArray(); }
+    operator const wxArrayDouble &() const { return *GetArray(); }
+    operator       wxArrayDouble &()       { return *GetArray(); }
+
+    // You may have to cast the wxLuaSmartwxArrayDouble with (wxArrayDouble&)
+    // e.g. wxLuaSmartwxArrayDouble arr; ((wxArrayDouble&)arr).Add(5);
+    wxLuaSmartwxArrayDouble& operator = (const wxLuaSmartwxArrayDouble& arr)
+    {
+        Ref(arr);
+        return *this;
+    }
+};
+
 #endif // _WXLOBJECT_H_

@@ -545,6 +545,9 @@ WXDLLIMPEXP_WXLUA wxLuaSmartwxSortedArrayString LUACALL wxlua_getwxSortedArraySt
 // Convert a table array or a wxArrayInt object at the stack_idx to a wxArrayInt.
 // If it's a table, it must have integer keys and values.
 WXDLLIMPEXP_WXLUA wxLuaSmartwxArrayInt LUACALL wxlua_getwxArrayInt(lua_State* L, int stack_idx);
+// Convert a table array or a wxArrayDouble object at the stack_idx to a wxArrayDouble.
+// If it's a table, it must have integer keys and double values.
+WXDLLIMPEXP_WXLUA wxLuaSmartwxArrayDouble LUACALL wxlua_getwxArrayDouble(lua_State* L, int stack_idx);
 // Convert a table array at the stack_idx to a vector of wxPoints.
 // Valid tables are : {{1,2},...}, {{x=1,y=2},...}, or {wx.wxPoint(1,2),,...}
 WXDLLIMPEXP_WXLUA wxLuaSharedPtr<std::vector<wxPoint> > LUACALL wxlua_getwxPointArray(lua_State* L, int stack_idx);
@@ -554,6 +557,9 @@ WXDLLIMPEXP_WXLUA int LUACALL wxlua_pushwxArrayStringtable(lua_State* L, const w
 // Creates a Lua table array and pushes the integers into it, returns the number of items added.
 //   The table is left on the stack.
 WXDLLIMPEXP_WXLUA int LUACALL wxlua_pushwxArrayInttable(lua_State* L, const wxArrayInt& intArray);
+// Creates a Lua table array and pushes the doubles into it, returns the number of items added.
+//   The table is left on the stack.
+WXDLLIMPEXP_WXLUA int LUACALL wxlua_pushwxArrayDoubletable(lua_State* L, const wxArrayDouble& doubleArray);
 // Push the wxString into Lua after converting it.
 WXDLLIMPEXP_WXLUA void LUACALL wxlua_pushwxString(lua_State* L, const wxString& str);
 

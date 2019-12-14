@@ -289,6 +289,12 @@ wx_dataTypeTable =
     Name = "wxArchiveFSHandler",
     ValueType = "class",
   },
+  wxArrayDouble = {
+    Condition = "wxLUA_USE_wxArrayDouble",
+    IsNumber = false,
+    Name = "wxArrayDouble",
+    ValueType = "class",
+  },
   wxArrayInt = {
     Condition = "wxLUA_USE_wxArrayInt",
     IsNumber = false,
@@ -5890,6 +5896,7 @@ wx_preprocConditionTable =
   wxLUA_USE_wxAcceleratorTable = "wxLUA_USE_wxAcceleratorTable",
   wxLUA_USE_wxAnimation = "wxLUA_USE_wxAnimation",
   wxLUA_USE_wxApp = "wxLUA_USE_wxApp",
+  wxLUA_USE_wxArrayDouble = "wxLUA_USE_wxArrayDouble",
   wxLUA_USE_wxArrayInt = "wxLUA_USE_wxArrayInt",
   wxLUA_USE_wxArrayString = "wxLUA_USE_wxArrayString",
   wxLUA_USE_wxArtProvider = "wxLUA_USE_wxArtProvider",

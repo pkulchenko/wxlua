@@ -267,3 +267,31 @@ wxArrayInt* wxLuaSmartwxArrayInt::GetArray() const
 {
     return ((wxLuaSmartwxArrayIntRefData*)m_refData)->m_arr;
 }
+
+// ----------------------------------------------------------------------------
+// wxLuaSmartwxArrayDouble
+// ----------------------------------------------------------------------------
+
+class wxLuaSmartwxArrayDoubleRefData : public wxObjectRefData
+{
+public:
+    wxLuaSmartwxArrayDoubleRefData(wxArrayDouble* arr, bool del) : m_arr(arr), m_delete(del)
+    {
+        if (m_arr == NULL) { m_arr = new wxArrayDouble; m_delete = true; } // always exists
+    }
+
+    virtual ~wxLuaSmartwxArrayDoubleRefData() { if (m_delete) delete m_arr; }
+
+    wxArrayDouble *m_arr;
+    bool        m_delete;
+};
+
+wxLuaSmartwxArrayDouble::wxLuaSmartwxArrayDouble(wxArrayDouble *arr, bool del)
+{
+    m_refData = new wxLuaSmartwxArrayDoubleRefData(arr, del);
+}
+
+wxArrayDouble* wxLuaSmartwxArrayDouble::GetArray() const
+{
+    return ((wxLuaSmartwxArrayDoubleRefData*)m_refData)->m_arr;
+}

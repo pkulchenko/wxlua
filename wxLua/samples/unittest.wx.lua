@@ -132,6 +132,13 @@ PrintOk((b:Item(1) == 2) and (b:GetCount() == 3), "Test automatic overload of wx
 b = a:ToLuaTable()
 PrintOk((b[2] == 2) and (#b == 3), "Test wxArrayInt::ToLuaTable()")
 
+a = wx.wxArrayDouble({1.1, 2.2, 3.3})
+PrintOk((a:Item(0) == 1.1) and (a:GetCount() == 3), "Test automatic overload of wxArrayDouble(lua table)")
+b = wx.wxArrayDouble(a)
+PrintOk((b:Item(1) == 2.2) and (b:GetCount() == 3), "Test automatic overload of wxArrayDouble(wxArrayDouble)")
+b = a:ToLuaTable()
+PrintOk((b[2] == 2.2) and (#b == 3), "Test wxArrayDouble::ToLuaTable()")
+
 -- ---------------------------------------------------------------------------
 print("\nTest some %member binding class functions.\n")
 -- ---------------------------------------------------------------------------

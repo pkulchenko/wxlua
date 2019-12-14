@@ -182,6 +182,7 @@ wxLuaBinding_class_implementation =
     p_wxluatype_wxArrayString       = &wxluatype_wxArrayString;
     p_wxluatype_wxSortedArrayString = &wxluatype_wxSortedArrayString;
     p_wxluatype_wxArrayInt          = &wxluatype_wxArrayInt;
+    p_wxluatype_wxArrayDouble       = &wxluatype_wxArrayDouble;
 
     return ret;
 }
