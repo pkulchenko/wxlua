@@ -1877,7 +1877,11 @@ int LUACALL wxlua_pushwxArrayInttable(lua_State *L, const wxArrayInt &intArray)
 
     for (idx = 0; idx < count; ++idx)
     {
+#if LUA_VERSION_NUM >= 503
+        lua_pushinteger(L, intArray[idx]);
+#else
         lua_pushnumber(L, intArray[idx]);
+#endif
         lua_rawseti(L, -2, idx + 1);
     }
     return idx;
