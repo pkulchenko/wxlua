@@ -546,7 +546,7 @@ class %delete wxGraphicsContext : public wxGraphicsObject
     // %override [wxDouble width, wxDouble height, wxDouble descent, wxDouble externalLeading] int GetTextExtent(const wxString& string;
     void GetTextExtent(const wxString& string);
 
-//    virtual void GetPartialTextExtents(const wxString& text, wxArrayDouble& widths) const;// = 0;
+    virtual void GetPartialTextExtents(const wxString& text, wxArrayDouble& widths) const;// = 0;
 
     //
     // image support

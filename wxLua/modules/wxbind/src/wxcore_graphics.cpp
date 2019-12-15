@@ -3152,6 +3152,28 @@ static int LUACALL wxLua_wxGraphicsContext_GetNativeContext(lua_State *L)
     return 1;
 }
 
+
+#if (wxLUA_USE_wxArrayDouble) && (wxUSE_GRAPHICS_CONTEXT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_GetPartialTextExtents[] = { &wxluatype_wxGraphicsContext, &wxluatype_TSTRING, &wxluatype_wxArrayDouble, NULL };
+static int LUACALL wxLua_wxGraphicsContext_GetPartialTextExtents(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_GetPartialTextExtents[1] = {{ wxLua_wxGraphicsContext_GetPartialTextExtents, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxGraphicsContext_GetPartialTextExtents }};
+//     virtual void GetPartialTextExtents(const wxString& text, wxArrayDouble& widths) const;// = 0;
+static int LUACALL wxLua_wxGraphicsContext_GetPartialTextExtents(lua_State *L)
+{
+    // wxArrayDouble widths
+    wxArrayDouble * widths = (wxArrayDouble *)wxluaT_getuserdatatype(L, 3, wxluatype_wxArrayDouble);
+    // const wxString text
+    const wxString text = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxGraphicsContext * self = (wxGraphicsContext *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsContext);
+    // call GetPartialTextExtents
+    self->GetPartialTextExtents(text, *widths);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxArrayDouble) && (wxUSE_GRAPHICS_CONTEXT)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_GetSize[] = { &wxluatype_wxGraphicsContext, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, NULL };
 static int LUACALL wxLua_wxGraphicsContext_GetSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_GetSize[1] = {{ wxLua_wxGraphicsContext_GetSize, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxGraphicsContext_GetSize }};
@@ -3970,6 +3992,11 @@ wxLuaBindMethod wxGraphicsContext_methods[] = {
     { "GetDPI", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetDPI, 1, NULL },
     { "GetInterpolationQuality", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetInterpolationQuality, 1, NULL },
     { "GetNativeContext", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetNativeContext, 1, NULL },
+
+#if (wxLUA_USE_wxArrayDouble) && (wxUSE_GRAPHICS_CONTEXT)
+    { "GetPartialTextExtents", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetPartialTextExtents, 1, NULL },
+#endif // (wxLUA_USE_wxArrayDouble) && (wxUSE_GRAPHICS_CONTEXT)
+
     { "GetSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetSize, 1, NULL },
     { "GetTextExtent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetTextExtent, 1, NULL },
     { "GetTransform", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_GetTransform, 1, NULL },
