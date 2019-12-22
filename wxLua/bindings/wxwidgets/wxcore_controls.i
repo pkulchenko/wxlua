@@ -663,6 +663,27 @@ class %delete wxListEvent : public wxNotifyEvent
     %wxEventType wxEVT_COMMAND_LIST_COL_END_DRAG           // EVT_LIST_COL_END_DRAG(id, fn);
     %wxEventType wxEVT_COMMAND_LIST_ITEM_FOCUSED           // EVT_LIST_ITEM_FOCUSED(id, fn);
 
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_BEGIN_DRAG       // wx3.0 alias for wxEVT_COMMAND_LIST_BEGIN_DRAG
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_BEGIN_RDRAG      // wx3.0 alias for wxEVT_COMMAND_LIST_BEGIN_RDRAG
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_BEGIN_LABEL_EDIT // wx3.0 alias for wxEVT_COMMAND_LIST_BEGIN_LABEL_EDIT
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_COL_CLICK        // wx3.0 alias for wxEVT_COMMAND_LIST_COL_CLICK
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_DELETE_ALL_ITEMS // wx3.0 alias for wxEVT_COMMAND_LIST_DELETE_ALL_ITEMS
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_DELETE_ITEM      // wx3.0 alias for wxEVT_COMMAND_LIST_DELETE_ITEM
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_END_LABEL_EDIT   // wx3.0 alias for wxEVT_COMMAND_LIST_END_LABEL_EDIT
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_INSERT_ITEM      // wx3.0 alias for wxEVT_COMMAND_LIST_INSERT_ITEM
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_ITEM_ACTIVATED   // wx3.0 alias for wxEVT_COMMAND_LIST_ITEM_ACTIVATED
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_ITEM_DESELECTED  // wx3.0 alias for wxEVT_COMMAND_LIST_ITEM_DESELECTED
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_ITEM_SELECTED    // wx3.0 alias for wxEVT_COMMAND_LIST_ITEM_SELECTED
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_KEY_DOWN         // wx3.0 alias for wxEVT_COMMAND_LIST_KEY_DOWN
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_CACHE_HINT       // wx3.0 alias for wxEVT_COMMAND_LIST_CACHE_HINT
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_COL_RIGHT_CLICK  // wx3.0 alias for wxEVT_COMMAND_LIST_COL_RIGHT_CLICK
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_COL_BEGIN_DRAG   // wx3.0 alias for wxEVT_COMMAND_LIST_COL_BEGIN_DRAG
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_COL_DRAGGING     // wx3.0 alias for wxEVT_COMMAND_LIST_COL_DRAGGING
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_COL_END_DRAG     // wx3.0 alias for wxEVT_COMMAND_LIST_COL_END_DRAG
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_ITEM_FOCUSED     // wx3.0 alias for wxEVT_COMMAND_LIST_ITEM_FOCUSED
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_ITEM_MIDDLE_CLICK // wx3.0 alias for wxEVT_COMMAND_LIST_ITEM_MIDDLE_CLICK
+    %wxchkver_3_0_0 %wxEventType wxEVT_LIST_ITEM_RIGHT_CLICK // wx3.0 alias for wxEVT_COMMAND_LIST_ITEM_RIGHT_CLICK
+
     wxListEvent(wxEventType commandType = 0, int id = 0);
 
     //long GetCacheFrom() const; // - only useful for virtual controls
@@ -1168,6 +1189,7 @@ class %delete wxTextAttr
 class %delete wxTextUrlEvent : public wxCommandEvent
 {
     %wxchkver_2_8_0 %wxEventType wxEVT_COMMAND_TEXT_URL        // EVT_TEXT_URL(id, fn);
+    %wxchkver_3_0_0 %wxEventType wxEVT_TEXT_URL  // wx3.0 alias for wxEVT_COMMAND_TEXT_URL
 
     wxTextUrlEvent(int winid, const wxMouseEvent& evtMouse, long start, long end);
 
@@ -1461,6 +1483,28 @@ class %delete wxTreeEvent : public wxNotifyEvent
     %wxEventType wxEVT_COMMAND_TREE_ITEM_MENU         // EVT_TREE_ITEM_MENU(id, fn);
     %wxEventType wxEVT_COMMAND_TREE_STATE_IMAGE_CLICK // EVT_TREE_STATE_IMAGE_CLICK(id, fn);
     %wxEventType wxEVT_COMMAND_TREE_ITEM_GETTOOLTIP   // EVT_TREE_ITEM_GETTOOLTIP(id, fn);
+
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_BEGIN_DRAG        // wx3.0 alias for wxEVT_COMMAND_TREE_BEGIN_DRAG
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_BEGIN_LABEL_EDIT  // wx3.0 alias for wxEVT_COMMAND_TREE_BEGIN_LABEL_EDIT
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_BEGIN_RDRAG       // wx3.0 alias for wxEVT_COMMAND_TREE_BEGIN_RDRAG
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_DELETE_ITEM       // wx3.0 alias for wxEVT_COMMAND_TREE_DELETE_ITEM
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_END_DRAG          // wx3.0 alias for wxEVT_COMMAND_TREE_END_DRAG
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_END_LABEL_EDIT    // wx3.0 alias for wxEVT_COMMAND_TREE_END_LABEL_EDIT
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_GET_INFO          // wx3.0 alias for wxEVT_COMMAND_TREE_GET_INFO
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_ITEM_ACTIVATED    // wx3.0 alias for wxEVT_COMMAND_TREE_ITEM_ACTIVATED
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_ITEM_COLLAPSED    // wx3.0 alias for wxEVT_COMMAND_TREE_ITEM_COLLAPSED
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_ITEM_COLLAPSING   // wx3.0 alias for wxEVT_COMMAND_TREE_ITEM_COLLAPSING
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_ITEM_EXPANDED     // wx3.0 alias for wxEVT_COMMAND_TREE_ITEM_EXPANDED
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_ITEM_EXPANDING    // wx3.0 alias for wxEVT_COMMAND_TREE_ITEM_EXPANDING
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_ITEM_MIDDLE_CLICK // wx3.0 alias for wxEVT_COMMAND_TREE_ITEM_MIDDLE_CLICK
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_ITEM_RIGHT_CLICK  // wx3.0 alias for wxEVT_COMMAND_TREE_ITEM_RIGHT_CLICK
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_KEY_DOWN          // wx3.0 alias for wxEVT_COMMAND_TREE_KEY_DOWN
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_SEL_CHANGED       // wx3.0 alias for wxEVT_COMMAND_TREE_SEL_CHANGED
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_SEL_CHANGING      // wx3.0 alias for wxEVT_COMMAND_TREE_SEL_CHANGING
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_SET_INFO          // wx3.0 alias for wxEVT_COMMAND_TREE_SET_INFO
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_ITEM_MENU         // wx3.0 alias for wxEVT_COMMAND_TREE_ITEM_MENU
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_STATE_IMAGE_CLICK // wx3.0 alias for wxEVT_COMMAND_TREE_STATE_IMAGE_CLICK
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREE_ITEM_GETTOOLTIP   // wx3.0 alias for wxEVT_COMMAND_TREE_ITEM_GETTOOLTIP
 
     wxTreeEvent(wxEventType commandType = wxEVT_NULL, int id = 0);
 

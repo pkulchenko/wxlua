@@ -647,6 +647,8 @@ class %delete wxNotebookEvent : public wxBookCtrlBaseEvent
 {
     %wxEventType wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED   // EVT_NOTEBOOK_PAGE_CHANGED(winid, fn);
     %wxEventType wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING  // EVT_NOTEBOOK_PAGE_CHANGING(winid, fn);
+    %wxchkver_3_0_0 %wxEventType wxEVT_NOTEBOOK_PAGE_CHANGED  // wx3.0 alias for wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED
+    %wxchkver_3_0_0 %wxEventType wxEVT_NOTEBOOK_PAGE_CHANGING // wx3.0 alias for wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING
 
     wxNotebookEvent(wxEventType eventType = wxEVT_NULL, int id = 0, int sel = -1, int oldSel = -1);
 
@@ -692,6 +694,8 @@ class %delete wxListbookEvent : public wxBookCtrlBaseEvent
 {
     %wxEventType wxEVT_COMMAND_LISTBOOK_PAGE_CHANGED   // EVT_LISTBOOK_PAGE_CHANGED(winid, fn);
     %wxEventType wxEVT_COMMAND_LISTBOOK_PAGE_CHANGING  // EVT_LISTBOOK_PAGE_CHANGING(winid, fn);
+    %wxchkver_3_0_0 %wxEventType wxEVT_LISTBOOK_PAGE_CHANGED  // wx3.0 alias for wxEVT_COMMAND_LISTBOOK_PAGE_CHANGED
+    %wxchkver_3_0_0 %wxEventType wxEVT_LISTBOOK_PAGE_CHANGING // wx3.0 alias for wxEVT_COMMAND_LISTBOOK_PAGE_CHANGING
 
     wxListbookEvent(wxEventType eventType = wxEVT_NULL, int id = 0, int sel = -1, int oldSel = -1);
 
@@ -737,6 +741,8 @@ class %delete wxChoicebookEvent : public wxBookCtrlBaseEvent
 {
     %wxEventType wxEVT_COMMAND_CHOICEBOOK_PAGE_CHANGED  // EVT_CHOICEBOOK_PAGE_CHANGED(winid, fn);
     %wxEventType wxEVT_COMMAND_CHOICEBOOK_PAGE_CHANGING // EVT_CHOICEBOOK_PAGE_CHANGING(winid, fn);
+    %wxchkver_3_0_0 %wxEventType wxEVT_CHOICEBOOK_PAGE_CHANGED  // wx3.0 alias for wxEVT_COMMAND_CHOICEBOOK_PAGE_CHANGED
+    %wxchkver_3_0_0 %wxEventType wxEVT_CHOICEBOOK_PAGE_CHANGING // wx3.0 alias for wxEVT_COMMAND_CHOICEBOOK_PAGE_CHANGING
 
     wxChoicebookEvent(wxEventType eventType = wxEVT_NULL, int id = 0, int sel = -1, int oldSel = -1);
 
@@ -783,6 +789,10 @@ class %delete wxTreebookEvent : public wxBookCtrlBaseEvent
     %wxEventType wxEVT_COMMAND_TREEBOOK_PAGE_CHANGING  // EVT_TREEBOOK_PAGE_CHANGING(winid, fn);
     %wxEventType wxEVT_COMMAND_TREEBOOK_NODE_COLLAPSED // EVT_TREEBOOK_NODE_COLLAPSED(winid, fn);
     %wxEventType wxEVT_COMMAND_TREEBOOK_NODE_EXPANDED  // EVT_TREEBOOK_NODE_EXPANDED(winid, fn);
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREEBOOK_PAGE_CHANGED   // wx3.0 alias for wxEVT_COMMAND_TREEBOOK_PAGE_CHANGED
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREEBOOK_PAGE_CHANGING  // wx3.0 alias for wxEVT_COMMAND_TREEBOOK_PAGE_CHANGING
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREEBOOK_NODE_COLLAPSED // wx3.0 alias for wxEVT_COMMAND_TREEBOOK_NODE_COLLAPSED
+    %wxchkver_3_0_0 %wxEventType wxEVT_TREEBOOK_NODE_EXPANDED  // wx3.0 alias for wxEVT_COMMAND_TREEBOOK_NODE_EXPANDED
 
     wxTreebookEvent(const wxTreebookEvent& event);
     wxTreebookEvent(wxEventType commandType = wxEVT_NULL, int id = 0, int nSel = wxNOT_FOUND, int nOldSel = wxNOT_FOUND);
@@ -815,6 +825,8 @@ class %delete wxToolbookEvent : public wxBookCtrlBaseEvent
 {
     %wxEventType wxEVT_COMMAND_TOOLBOOK_PAGE_CHANGED   // EVT_TOOLBOOK_PAGE_CHANGED(winid, fn);
     %wxEventType wxEVT_COMMAND_TOOLBOOK_PAGE_CHANGING  // EVT_TOOLBOOK_PAGE_CHANGING(winid, fn);
+    %wxchkver_3_0_0 %wxEventType wxEVT_TOOLBOOK_PAGE_CHANGED  // wx3.0 alias for wxEVT_COMMAND_TOOLBOOK_PAGE_CHANGED
+    %wxchkver_3_0_0 %wxEventType wxEVT_TOOLBOOK_PAGE_CHANGING // wx3.0 alias for wxEVT_COMMAND_TOOLBOOK_PAGE_CHANGING
 
     wxToolbookEvent(const wxToolbookEvent& event);
     wxToolbookEvent(wxEventType commandType = wxEVT_NULL, int id = 0, int nSel = wxNOT_FOUND, int nOldSel = wxNOT_FOUND);
@@ -1006,6 +1018,10 @@ class %delete wxSplitterEvent : public wxNotifyEvent
     %wxEventType wxEVT_COMMAND_SPLITTER_SASH_POS_CHANGED   // EVT_SPLITTER_SASH_POS_CHANGED(id, fn);
     %wxEventType wxEVT_COMMAND_SPLITTER_DOUBLECLICKED      // EVT_SPLITTER_DCLICK(id, fn);
     %wxEventType wxEVT_COMMAND_SPLITTER_UNSPLIT            // EVT_SPLITTER_UNSPLIT(id, fn);
+    %wxchkver_3_0_0 %wxEventType wxEVT_SPLITTER_SASH_POS_CHANGED  // wx3.0 alias for wxEVT_COMMAND_SPLITTER_SASH_POS_CHANGED
+    %wxchkver_3_0_0 %wxEventType wxEVT_SPLITTER_SASH_POS_CHANGING // wx3.0 alias for wxEVT_COMMAND_SPLITTER_SASH_POS_CHANGING
+    %wxchkver_3_0_0 %wxEventType wxEVT_SPLITTER_DOUBLECLICKED     // wx3.0 alias for wxEVT_COMMAND_SPLITTER_DOUBLECLICKED
+    %wxchkver_3_0_0 %wxEventType wxEVT_SPLITTER_UNSPLIT           // wx3.0 alias for wxEVT_COMMAND_SPLITTER_UNSPLIT
 
     wxSplitterEvent(wxEventType type = wxEVT_NULL, wxSplitterWindow *splitter = NULL);
 
@@ -1083,6 +1099,7 @@ class wxCollapsiblePane : public wxControl
 class %delete wxCollapsiblePaneEvent : public wxCommandEvent
 {
     %wxEventType wxEVT_COMMAND_COLLPANE_CHANGED // EVT_COLLAPSIBLEPANE_CHANGED(id, fn);
+    %wxchkver_3_0_0 %wxEventType wxEVT_COLLAPSIBLEPANE_CHANGED  // wx3.0 alias for wxEVT_COMMAND_COLLPANE_CHANGED
 
     wxCollapsiblePaneEvent();
     wxCollapsiblePaneEvent(wxObject *generator, int id, bool collapsed);

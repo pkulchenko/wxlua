@@ -366,6 +366,7 @@ class wxHyperlinkCtrl : public wxControl
 class %delete wxHyperlinkEvent : public wxCommandEvent
 {
     %wxEventType wxEVT_COMMAND_HYPERLINK // EVT_HYPERLINK(id, fn);
+    %wxchkver_3_0_0 %wxEventType wxEVT_HYPERLINK  // wx3.0 alias for wxEVT_COMMAND_HYPERLINK
 
     //wxHyperlinkEvent();
     wxHyperlinkEvent(wxObject *generator, wxWindowID id, const wxString& url);

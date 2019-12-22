@@ -56,6 +56,9 @@ class %delete wxClipboardTextEvent : public wxCommandEvent
     %wxEventType wxEVT_COMMAND_TEXT_COPY   // EVT_TEXT_COPY(winid, func);
     %wxEventType wxEVT_COMMAND_TEXT_CUT    // EVT_TEXT_CUT(winid, func);
     %wxEventType wxEVT_COMMAND_TEXT_PASTE  // EVT_TEXT_PASTE(winid, func);
+    %wxchkver_3_0_0 %wxEventType wxEVT_TEXT_COPY  // wx3.0 alias for wxEVT_COMMAND_TEXT_COPY
+    %wxchkver_3_0_0 %wxEventType wxEVT_TEXT_CUT   // wx3.0 alias for wxEVT_COMMAND_TEXT_CUT
+    %wxchkver_3_0_0 %wxEventType wxEVT_TEXT_PASTE // wx3.0 alias for wxEVT_COMMAND_TEXT_PASTE
 
     wxClipboardTextEvent(wxEventType type = wxEVT_NULL, wxWindowID winid = 0);
 };

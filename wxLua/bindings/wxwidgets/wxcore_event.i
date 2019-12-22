@@ -49,18 +49,27 @@ class %delete wxCommandEvent : public wxEvent
     %wxEventType wxEVT_COMMAND_RIGHT_CLICK         // EVT_COMMAND_RIGHT_CLICK(winid, func);
     %wxEventType wxEVT_COMMAND_RIGHT_DCLICK        // EVT_COMMAND_RIGHT_DCLICK(winid, func);
     //%wxEventType wxEVT_COMMAND_SCROLLBAR_UPDATED // EVT_SCROLLBAR(winid, func) obsolete use wxEVT_SCROLL...
+    %wxchkver_3_0_0 %wxEventType wxEVT_SCROLLBAR   // wx3.0 alias for wxEVT_COMMAND_SCROLLBAR_UPDATED
     %wxEventType wxEVT_COMMAND_SET_FOCUS           // EVT_COMMAND_SET_FOCUS(winid, func);
     //%wxEventType wxEVT_COMMAND_VLBOX_SELECTED    // EVT_VLBOX(winid, func) unused?
+    %wxchkver_3_0_0 %wxEventType wxEVT_VLBOX       // wx3.0 alias for wxEVT_COMMAND_VLBOX_SELECTED
 
     %wxEventType wxEVT_COMMAND_MENU_SELECTED   // EVT_MENU(winid, func) EVT_MENU_RANGE(id1, id2, func);
-
+    %wxchkver_3_0_0 %wxEventType wxEVT_MENU    // wx3.0 alias for wxEVT_COMMAND_MENU_SELECTED
+    
     %wxEventType wxEVT_COMMAND_TOOL_CLICKED    // EVT_TOOL(winid, func) EVT_TOOL_RANGE(id1, id2, func);
     %wxEventType wxEVT_COMMAND_TOOL_ENTER      // EVT_TOOL_ENTER(winid, func);
     %wxEventType wxEVT_COMMAND_TOOL_RCLICKED   // EVT_TOOL_RCLICKED(winid, func) EVT_TOOL_RCLICKED_RANGE(id1, id2, func);
+    %wxchkver_3_0_0 %wxEventType wxEVT_TOOL           // wx3.0 alias for wxEVT_COMMAND_TOOL_CLICKED
+    %wxchkver_3_0_0 %wxEventType wxEVT_TOOL_ENTER     // wx3.0 alias for wxEVT_COMMAND_TOOL_ENTER
+    %wxchkver_3_0_0 %wxEventType wxEVT_TOOL_RCLICKED  // wx3.0 alias for wxEVT_COMMAND_TOOL_RCLICKED
 
     %wxEventType wxEVT_COMMAND_TEXT_ENTER      // EVT_TEXT_ENTER(id, fn);
     %wxEventType wxEVT_COMMAND_TEXT_UPDATED    // EVT_TEXT(id, fn);
     %wxEventType wxEVT_COMMAND_TEXT_MAXLEN     // EVT_TEXT_MAXLEN(id, fn);
+    %wxchkver_3_0_0 %wxEventType wxEVT_TEXT_ENTER  // wx3.0 alias for wxEVT_COMMAND_TEXT_ENTER
+    %wxchkver_3_0_0 %wxEventType wxEVT_TEXT        // wx3.0 alias for wxEVT_COMMAND_TEXT_UPDATED
+    %wxchkver_3_0_0 %wxEventType wxEVT_TEXT_MAXLEN // wx3.0 alias for wxEVT_COMMAND_TEXT_MAXLEN
     !%wxchkver_2_8_0 %wxEventType wxEVT_COMMAND_TEXT_URL        // EVT_TEXT_URL(id, fn);
 
     %wxEventType wxEVT_COMMAND_SPINCTRL_UPDATED        // EVT_SPINCTRL(id, fn);
@@ -75,6 +84,18 @@ class %delete wxCommandEvent : public wxEvent
     %wxEventType wxEVT_COMMAND_CHECKBOX_CLICKED        // EVT_CHECKBOX(winid, func);
     %wxEventType wxEVT_COMMAND_BUTTON_CLICKED          // EVT_BUTTON(winid, func);
     %wxchkver_2_4 %wxEventType wxEVT_COMMAND_TOGGLEBUTTON_CLICKED // EVT_TOGGLEBUTTON(id, fn);
+    %wxchkver_3_0_0 %wxEventType wxEVT_SPINCTRL          // wx3.0 alias for wxEVT_COMMAND_SPINCTRL_UPDATED
+    %wxchkver_3_0_0 %wxEventType wxEVT_SLIDER            // wx3.0 alias for wxEVT_COMMAND_SLIDER_UPDATED
+    %wxchkver_3_0_0 %wxEventType wxEVT_RADIOBUTTON       // wx3.0 alias for wxEVT_COMMAND_RADIOBUTTON_SELECTED
+    %wxchkver_3_0_0 %wxEventType wxEVT_RADIOBOX          // wx3.0 alias for wxEVT_COMMAND_RADIOBOX_SELECTED
+    %wxchkver_3_0_0 %wxEventType wxEVT_CHECKLISTBOX      // wx3.0 alias for wxEVT_COMMAND_CHECKLISTBOX_TOGGLED
+    %wxchkver_3_0_0 %wxEventType wxEVT_LISTBOX_DCLICK    // wx3.0 alias for wxEVT_COMMAND_LISTBOX_DOUBLECLICKED
+    %wxchkver_3_0_0 %wxEventType wxEVT_LISTBOX           // wx3.0 alias for wxEVT_COMMAND_LISTBOX_SELECTED
+    %wxchkver_3_0_0 %wxEventType wxEVT_COMBOBOX          // wx3.0 alias for wxEVT_COMMAND_COMBOBOX_SELECTED
+    %wxchkver_3_0_0 %wxEventType wxEVT_CHOICE            // wx3.0 alias for wxEVT_COMMAND_CHOICE_SELECTED
+    %wxchkver_3_0_0 %wxEventType wxEVT_CHECKBOX          // wx3.0 alias for wxEVT_COMMAND_CHECKBOX_CLICKED
+    %wxchkver_3_0_0 %wxEventType wxEVT_BUTTON            // wx3.0 alias for wxEVT_COMMAND_BUTTON_CLICKED
+    %wxchkver_3_0_0 %wxEventType wxEVT_TOGGLEBUTTON      // wx3.0 alias for wxEVT_COMMAND_TOGGLEBUTTON_CLICKED
 
     wxCommandEvent(wxEventType commandEventType = wxEVT_NULL, int id = 0);
 

@@ -59,6 +59,12 @@ class wxAuiToolBarEvent : public wxNotifyEvent
     %wxEventType wxEVT_COMMAND_AUITOOLBAR_MIDDLE_CLICK    // EVT_AUITOOLBAR_MIDDLE_CLICK(winid, fn)
     %wxEventType wxEVT_COMMAND_AUITOOLBAR_BEGIN_DRAG      // EVT_AUITOOLBAR_BEGIN_DRAG(winid, fn)
 
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUITOOLBAR_TOOL_DROPDOWN  // wx3.0 alias for wxEVT_COMMAND_AUITOOLBAR_TOOL_DROPDOWN
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUITOOLBAR_OVERFLOW_CLICK // wx3.0 alias for wxEVT_COMMAND_AUITOOLBAR_OVERFLOW_CLICK
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUITOOLBAR_RIGHT_CLICK    // wx3.0 alias for wxEVT_COMMAND_AUITOOLBAR_RIGHT_CLICK
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUITOOLBAR_MIDDLE_CLICK   // wx3.0 alias for wxEVT_COMMAND_AUITOOLBAR_MIDDLE_CLICK
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUITOOLBAR_BEGIN_DRAG     // wx3.0 alias for wxEVT_COMMAND_AUITOOLBAR_BEGIN_DRAG
+
     wxAuiToolBarEvent(wxEventType command_type = wxEVT_NULL, int win_id = 0);
     wxAuiToolBarEvent(const wxAuiToolBarEvent& c);
 
@@ -296,6 +302,15 @@ class %delete wxAuiNotebookEvent : public wxNotifyEvent
     %wxEventType wxEVT_COMMAND_AUINOTEBOOK_DRAG_MOTION     // EVT_AUINOTEBOOK_DRAG_MOTION(winid, fn);
     %wxEventType wxEVT_COMMAND_AUINOTEBOOK_ALLOW_DND       // EVT_AUINOTEBOOK_ALLOW_DND(winid, fn);
 
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUINOTEBOOK_PAGE_CLOSE    // wx3.0 alias for wxEVT_COMMAND_AUINOTEBOOK_PAGE_CLOSE
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUINOTEBOOK_PAGE_CHANGED  // wx3.0 alias for wxEVT_COMMAND_AUINOTEBOOK_PAGE_CHANGED
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUINOTEBOOK_PAGE_CHANGING // wx3.0 alias for wxEVT_COMMAND_AUINOTEBOOK_PAGE_CHANGING
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUINOTEBOOK_BUTTON        // wx3.0 alias for wxEVT_COMMAND_AUINOTEBOOK_BUTTON
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUINOTEBOOK_BEGIN_DRAG    // wx3.0 alias for wxEVT_COMMAND_AUINOTEBOOK_BEGIN_DRAG
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUINOTEBOOK_END_DRAG      // wx3.0 alias for wxEVT_COMMAND_AUINOTEBOOK_END_DRAG
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUINOTEBOOK_DRAG_MOTION   // wx3.0 alias for wxEVT_COMMAND_AUINOTEBOOK_DRAG_MOTION
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUINOTEBOOK_ALLOW_DND     // wx3.0 alias for wxEVT_COMMAND_AUINOTEBOOK_ALLOW_DND
+
 #if %wxchkver_2_8_5
     %wxEventType wxEVT_COMMAND_AUINOTEBOOK_TAB_MIDDLE_DOWN // EVT_AUINOTEBOOK_TAB_MIDDLE_DOWN(winid, fn);
     %wxEventType wxEVT_COMMAND_AUINOTEBOOK_TAB_MIDDLE_UP   // EVT_AUINOTEBOOK_TAB_MIDDLE_UP(winid, fn);
@@ -305,6 +320,14 @@ class %delete wxAuiNotebookEvent : public wxNotifyEvent
     %wxEventType wxEVT_COMMAND_AUINOTEBOOK_DRAG_DONE       // EVT_AUINOTEBOOK_DRAG_DONE(winid, fn);
     %wxEventType wxEVT_COMMAND_AUINOTEBOOK_BG_DCLICK       // EVT_AUINOTEBOOK_BG_DCLICK(winid, fn);
 #endif //%wxchkver_2_8_5
+
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUINOTEBOOK_TAB_MIDDLE_DOWN  // wx3.0 alias for wxEVT_COMMAND_AUINOTEBOOK_TAB_MIDDLE_DOWN
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUINOTEBOOK_TAB_MIDDLE_UP  // wx3.0 alias for wxEVT_COMMAND_AUINOTEBOOK_TAB_MIDDLE_UP
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUINOTEBOOK_TAB_RIGHT_DOWN  // wx3.0 alias for wxEVT_COMMAND_AUINOTEBOOK_TAB_RIGHT_DOWN
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUINOTEBOOK_TAB_RIGHT_UP  // wx3.0 alias for wxEVT_COMMAND_AUINOTEBOOK_TAB_RIGHT_UP
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUINOTEBOOK_PAGE_CLOSED  // wx3.0 alias for wxEVT_COMMAND_AUINOTEBOOK_PAGE_CLOSED
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUINOTEBOOK_DRAG_DONE  // wx3.0 alias for wxEVT_COMMAND_AUINOTEBOOK_DRAG_DONE
+    %wxchkver_3_0_0 %wxEventType wxEVT_AUINOTEBOOK_BG_DCLICK  // wx3.0 alias for wxEVT_COMMAND_AUINOTEBOOK_BG_DCLICK
 
     wxAuiNotebookEvent(wxEventType command_type = wxEVT_NULL, int win_id = 0);
     wxAuiNotebookEvent(const wxAuiNotebookEvent& c);

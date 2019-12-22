@@ -442,6 +442,12 @@ class %delete wxFindDialogEvent : public wxCommandEvent
     %wxEventType wxEVT_COMMAND_FIND_REPLACE_ALL    // EVT_FIND_REPLACE_ALL(id, fn);
     %wxEventType wxEVT_COMMAND_FIND_CLOSE          // EVT_FIND_CLOSE(id, fn);
 
+    %wxchkver_3_0_0 %wxEventType wxEVT_FIND             // wx3.0 alias for wxEVT_COMMAND_FIND
+    %wxchkver_3_0_0 %wxEventType wxEVT_FIND_NEXT        // wx3.0 alias for wxEVT_COMMAND_FIND_NEXT
+    %wxchkver_3_0_0 %wxEventType wxEVT_FIND_REPLACE     // wx3.0 alias for wxEVT_COMMAND_FIND_REPLACE
+    %wxchkver_3_0_0 %wxEventType wxEVT_FIND_REPLACE_ALL // wx3.0 alias for wxEVT_COMMAND_FIND_REPLACE_ALL
+    %wxchkver_3_0_0 %wxEventType wxEVT_FIND_CLOSE       // wx3.0 alias for wxEVT_COMMAND_FIND_CLOSE
+
     wxFindDialogEvent(wxEventType commandType = wxEVT_NULL, int id = 0);
 
     int      GetFlags();

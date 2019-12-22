@@ -80,6 +80,7 @@ class wxColourPickerCtrl : public wxPickerBase
 class %delete wxColourPickerEvent : public wxCommandEvent
 {
     %wxEventType wxEVT_COMMAND_COLOURPICKER_CHANGED // EVT_COLOURPICKER_CHANGED(id, func);
+    %wxchkver_3_0_0 %wxEventType wxEVT_COLOURPICKER_CHANGED  // wx3.0 alias for wxEVT_COMMAND_COLOURPICKER_CHANGED
 
     wxColourPickerEvent();
     wxColourPickerEvent(wxObject *generator, int id, const wxColour &col);
@@ -283,6 +284,9 @@ class %delete wxFileDirPickerEvent : public wxCommandEvent
     %wxEventType wxEVT_COMMAND_FILEPICKER_CHANGED  // EVT_FILEPICKER_CHANGED(id, fn);
     %wxEventType wxEVT_COMMAND_DIRPICKER_CHANGED   // EVT_DIRPICKER_CHANGED(id, fn);
 
+    %wxchkver_3_0_0 %wxEventType wxEVT_FILEPICKER_CHANGED // wx3.0 alias for wxEVT_COMMAND_FILEPICKER_CHANGED
+    %wxchkver_3_0_0 %wxEventType wxEVT_DIRPICKER_CHANGED  // wx3.0 alias for wxEVT_COMMAND_DIRPICKER_CHANGED
+
     //wxFileDirPickerEvent();
     wxFileDirPickerEvent(wxEventType type, wxObject *generator, int id, const wxString &path);
 
@@ -368,6 +372,7 @@ class wxFontPickerCtrl : public wxPickerBase
 class %delete wxFontPickerEvent : public wxCommandEvent
 {
     %wxEventType wxEVT_COMMAND_FONTPICKER_CHANGED // EVT_FONTPICKER_CHANGED(id, fn);
+    %wxchkver_3_0_0 %wxEventType wxEVT_FONTPICKER_CHANGED // wx3.0 alias for wxEVT_COMMAND_FONTPICKER_CHANGED
 
     //wxFontPickerEvent();
     wxFontPickerEvent(wxObject *generator, int id, const wxFont &f);
