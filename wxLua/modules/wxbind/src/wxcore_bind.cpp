@@ -78,10 +78,44 @@ wxLuaBindEvent* wxLuaGetEventList_wxcore(size_t &count)
     {
         { "wxEVT_ACTIVATE", WXLUA_GET_wxEventType_ptr(wxEVT_ACTIVATE), &wxluatype_wxActivateEvent },
         { "wxEVT_ACTIVATE_APP", WXLUA_GET_wxEventType_ptr(wxEVT_ACTIVATE_APP), &wxluatype_wxActivateEvent },
+
+#if wxCHECK_VERSION(3,0,0)
+        { "wxEVT_BUTTON", WXLUA_GET_wxEventType_ptr(wxEVT_BUTTON), &wxluatype_wxCommandEvent },
+#endif // wxCHECK_VERSION(3,0,0)
+
         { "wxEVT_CHAR", WXLUA_GET_wxEventType_ptr(wxEVT_CHAR), &wxluatype_wxKeyEvent },
         { "wxEVT_CHAR_HOOK", WXLUA_GET_wxEventType_ptr(wxEVT_CHAR_HOOK), &wxluatype_wxKeyEvent },
+
+#if wxCHECK_VERSION(3,0,0)
+        { "wxEVT_CHECKBOX", WXLUA_GET_wxEventType_ptr(wxEVT_CHECKBOX), &wxluatype_wxCommandEvent },
+        { "wxEVT_CHECKLISTBOX", WXLUA_GET_wxEventType_ptr(wxEVT_CHECKLISTBOX), &wxluatype_wxCommandEvent },
+#endif // wxCHECK_VERSION(3,0,0)
+
         { "wxEVT_CHILD_FOCUS", WXLUA_GET_wxEventType_ptr(wxEVT_CHILD_FOCUS), &wxluatype_wxChildFocusEvent },
+
+#if wxCHECK_VERSION(3,0,0)
+        { "wxEVT_CHOICE", WXLUA_GET_wxEventType_ptr(wxEVT_CHOICE), &wxluatype_wxCommandEvent },
+#endif // wxCHECK_VERSION(3,0,0)
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxNotebook && wxLUA_USE_wxChoice && wxUSE_CHOICEBOOK)
+        { "wxEVT_CHOICEBOOK_PAGE_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_CHOICEBOOK_PAGE_CHANGED), &wxluatype_wxChoicebookEvent },
+        { "wxEVT_CHOICEBOOK_PAGE_CHANGING", WXLUA_GET_wxEventType_ptr(wxEVT_CHOICEBOOK_PAGE_CHANGING), &wxluatype_wxChoicebookEvent },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxNotebook && wxLUA_USE_wxChoice && wxUSE_CHOICEBOOK)
+
         { "wxEVT_CLOSE_WINDOW", WXLUA_GET_wxEventType_ptr(wxEVT_CLOSE_WINDOW), &wxluatype_wxCloseEvent },
+
+#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE) && (wxCHECK_VERSION(3,0,0))
+        { "wxEVT_COLLAPSIBLEPANE_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_COLLAPSIBLEPANE_CHANGED), &wxluatype_wxCollapsiblePaneEvent },
+#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE) && (wxCHECK_VERSION(3,0,0))
+
+#if ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxColourPickerCtrl && wxUSE_COLOURPICKERCTRL)) && (wxCHECK_VERSION(3,0,0))
+        { "wxEVT_COLOURPICKER_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_COLOURPICKER_CHANGED), &wxluatype_wxColourPickerEvent },
+#endif // ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxColourPickerCtrl && wxUSE_COLOURPICKERCTRL)) && (wxCHECK_VERSION(3,0,0))
+
+#if wxCHECK_VERSION(3,0,0)
+        { "wxEVT_COMBOBOX", WXLUA_GET_wxEventType_ptr(wxEVT_COMBOBOX), &wxluatype_wxCommandEvent },
+#endif // wxCHECK_VERSION(3,0,0)
+
         { "wxEVT_COMMAND_BUTTON_CLICKED", WXLUA_GET_wxEventType_ptr(wxEVT_COMMAND_BUTTON_CLICKED), &wxluatype_wxCommandEvent },
         { "wxEVT_COMMAND_CHECKBOX_CLICKED", WXLUA_GET_wxEventType_ptr(wxEVT_COMMAND_CHECKBOX_CLICKED), &wxluatype_wxCommandEvent },
         { "wxEVT_COMMAND_CHECKLISTBOX_TOGGLED", WXLUA_GET_wxEventType_ptr(wxEVT_COMMAND_CHECKLISTBOX_TOGGLED), &wxluatype_wxCommandEvent },
@@ -265,6 +299,11 @@ wxLuaBindEvent* wxLuaGetEventList_wxcore(size_t &count)
         { "wxEVT_CREATE", WXLUA_GET_wxEventType_ptr(wxEVT_CREATE), &wxluatype_wxWindowCreateEvent },
         { "wxEVT_DESTROY", WXLUA_GET_wxEventType_ptr(wxEVT_DESTROY), &wxluatype_wxWindowDestroyEvent },
         { "wxEVT_DETAILED_HELP", WXLUA_GET_wxEventType_ptr(wxEVT_DETAILED_HELP), &wxluatype_wxHelpEvent },
+
+#if (((wxLUA_USE_wxDirPickerCtrl || wxLUA_USE_wxFilePickerCtrl ) && (wxUSE_FILEPICKERCTRL || wxUSE_DIRPICKERCTRL )) && (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker)) && (wxCHECK_VERSION(3,0,0))
+        { "wxEVT_DIRPICKER_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_DIRPICKER_CHANGED), &wxluatype_wxFileDirPickerEvent },
+#endif // (((wxLUA_USE_wxDirPickerCtrl || wxLUA_USE_wxFilePickerCtrl ) && (wxUSE_FILEPICKERCTRL || wxUSE_DIRPICKERCTRL )) && (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker)) && (wxCHECK_VERSION(3,0,0))
+
         { "wxEVT_DISPLAY_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_DISPLAY_CHANGED), &wxluatype_wxDisplayChangedEvent },
 
 #if wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
@@ -275,6 +314,23 @@ wxLuaBindEvent* wxLuaGetEventList_wxcore(size_t &count)
         { "wxEVT_END_SESSION", WXLUA_GET_wxEventType_ptr(wxEVT_END_SESSION), &wxluatype_wxCloseEvent },
         { "wxEVT_ENTER_WINDOW", WXLUA_GET_wxEventType_ptr(wxEVT_ENTER_WINDOW), &wxluatype_wxMouseEvent },
         { "wxEVT_ERASE_BACKGROUND", WXLUA_GET_wxEventType_ptr(wxEVT_ERASE_BACKGROUND), &wxluatype_wxEraseEvent },
+
+#if (((wxLUA_USE_wxDirPickerCtrl || wxLUA_USE_wxFilePickerCtrl ) && (wxUSE_FILEPICKERCTRL || wxUSE_DIRPICKERCTRL )) && (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker)) && (wxCHECK_VERSION(3,0,0))
+        { "wxEVT_FILEPICKER_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_FILEPICKER_CHANGED), &wxluatype_wxFileDirPickerEvent },
+#endif // (((wxLUA_USE_wxDirPickerCtrl || wxLUA_USE_wxFilePickerCtrl ) && (wxUSE_FILEPICKERCTRL || wxUSE_DIRPICKERCTRL )) && (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker)) && (wxCHECK_VERSION(3,0,0))
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxUSE_FINDREPLDLG && wxLUA_USE_wxFindReplaceDialog)
+        { "wxEVT_FIND", WXLUA_GET_wxEventType_ptr(wxEVT_FIND), &wxluatype_wxFindDialogEvent },
+        { "wxEVT_FIND_CLOSE", WXLUA_GET_wxEventType_ptr(wxEVT_FIND_CLOSE), &wxluatype_wxFindDialogEvent },
+        { "wxEVT_FIND_NEXT", WXLUA_GET_wxEventType_ptr(wxEVT_FIND_NEXT), &wxluatype_wxFindDialogEvent },
+        { "wxEVT_FIND_REPLACE", WXLUA_GET_wxEventType_ptr(wxEVT_FIND_REPLACE), &wxluatype_wxFindDialogEvent },
+        { "wxEVT_FIND_REPLACE_ALL", WXLUA_GET_wxEventType_ptr(wxEVT_FIND_REPLACE_ALL), &wxluatype_wxFindDialogEvent },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxUSE_FINDREPLDLG && wxLUA_USE_wxFindReplaceDialog)
+
+#if ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxFontPickerCtrl && wxUSE_FONTPICKERCTRL)) && (wxCHECK_VERSION(3,0,0))
+        { "wxEVT_FONTPICKER_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_FONTPICKER_CHANGED), &wxluatype_wxFontPickerEvent },
+#endif // ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxFontPickerCtrl && wxUSE_FONTPICKERCTRL)) && (wxCHECK_VERSION(3,0,0))
+
         { "wxEVT_HELP", WXLUA_GET_wxEventType_ptr(wxEVT_HELP), &wxluatype_wxHelpEvent },
         { "wxEVT_HIBERNATE", WXLUA_GET_wxEventType_ptr(wxEVT_HIBERNATE), &wxluatype_wxActivateEvent },
 
@@ -292,7 +348,45 @@ wxLuaBindEvent* wxLuaGetEventList_wxcore(size_t &count)
         { "wxEVT_LEFT_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_LEFT_DCLICK), &wxluatype_wxMouseEvent },
         { "wxEVT_LEFT_DOWN", WXLUA_GET_wxEventType_ptr(wxEVT_LEFT_DOWN), &wxluatype_wxMouseEvent },
         { "wxEVT_LEFT_UP", WXLUA_GET_wxEventType_ptr(wxEVT_LEFT_UP), &wxluatype_wxMouseEvent },
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxNotebook && wxLUA_USE_wxListCtrl && wxUSE_LISTBOOK)
+        { "wxEVT_LISTBOOK_PAGE_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_LISTBOOK_PAGE_CHANGED), &wxluatype_wxListbookEvent },
+        { "wxEVT_LISTBOOK_PAGE_CHANGING", WXLUA_GET_wxEventType_ptr(wxEVT_LISTBOOK_PAGE_CHANGING), &wxluatype_wxListbookEvent },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxNotebook && wxLUA_USE_wxListCtrl && wxUSE_LISTBOOK)
+
+#if wxCHECK_VERSION(3,0,0)
+        { "wxEVT_LISTBOX", WXLUA_GET_wxEventType_ptr(wxEVT_LISTBOX), &wxluatype_wxCommandEvent },
+        { "wxEVT_LISTBOX_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_LISTBOX_DCLICK), &wxluatype_wxCommandEvent },
+#endif // wxCHECK_VERSION(3,0,0)
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL)
+        { "wxEVT_LIST_BEGIN_DRAG", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_BEGIN_DRAG), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_BEGIN_LABEL_EDIT", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_BEGIN_LABEL_EDIT), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_BEGIN_RDRAG", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_BEGIN_RDRAG), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_CACHE_HINT", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_CACHE_HINT), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_COL_BEGIN_DRAG", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_COL_BEGIN_DRAG), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_COL_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_COL_CLICK), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_COL_DRAGGING", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_COL_DRAGGING), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_COL_END_DRAG", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_COL_END_DRAG), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_COL_RIGHT_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_COL_RIGHT_CLICK), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_DELETE_ALL_ITEMS", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_DELETE_ALL_ITEMS), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_DELETE_ITEM", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_DELETE_ITEM), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_END_LABEL_EDIT", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_END_LABEL_EDIT), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_INSERT_ITEM", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_INSERT_ITEM), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_ITEM_ACTIVATED", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_ITEM_ACTIVATED), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_ITEM_DESELECTED", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_ITEM_DESELECTED), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_ITEM_FOCUSED", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_ITEM_FOCUSED), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_ITEM_MIDDLE_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_ITEM_MIDDLE_CLICK), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_ITEM_RIGHT_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_ITEM_RIGHT_CLICK), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_ITEM_SELECTED", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_ITEM_SELECTED), &wxluatype_wxListEvent },
+        { "wxEVT_LIST_KEY_DOWN", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_KEY_DOWN), &wxluatype_wxListEvent },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL)
+
         { "wxEVT_MAXIMIZE", WXLUA_GET_wxEventType_ptr(wxEVT_MAXIMIZE), &wxluatype_wxMaximizeEvent },
+
+#if wxCHECK_VERSION(3,0,0)
+        { "wxEVT_MENU", WXLUA_GET_wxEventType_ptr(wxEVT_MENU), &wxluatype_wxCommandEvent },
+#endif // wxCHECK_VERSION(3,0,0)
 
 #if wxLUA_USE_wxMenu && wxUSE_MENUS
         { "wxEVT_MENU_CLOSE", WXLUA_GET_wxEventType_ptr(wxEVT_MENU_CLOSE), &wxluatype_wxMenuEvent },
@@ -318,6 +412,12 @@ wxLuaBindEvent* wxLuaGetEventList_wxcore(size_t &count)
 #endif // wxCHECK_VERSION(2,6,0)
 
         { "wxEVT_NAVIGATION_KEY", WXLUA_GET_wxEventType_ptr(wxEVT_NAVIGATION_KEY), &wxluatype_wxNavigationKeyEvent },
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxNotebook && wxUSE_NOTEBOOK)
+        { "wxEVT_NOTEBOOK_PAGE_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_NOTEBOOK_PAGE_CHANGED), &wxluatype_wxNotebookEvent },
+        { "wxEVT_NOTEBOOK_PAGE_CHANGING", WXLUA_GET_wxEventType_ptr(wxEVT_NOTEBOOK_PAGE_CHANGING), &wxluatype_wxNotebookEvent },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxNotebook && wxUSE_NOTEBOOK)
+
         { "wxEVT_NULL", WXLUA_GET_wxEventType_ptr(wxEVT_NULL), &wxluatype_wxCommandEvent },
         { "wxEVT_PAINT", WXLUA_GET_wxEventType_ptr(wxEVT_PAINT), &wxluatype_wxPaintEvent },
         { "wxEVT_PALETTE_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_PALETTE_CHANGED), &wxluatype_wxPaletteChangedEvent },
@@ -331,9 +431,20 @@ wxLuaBindEvent* wxLuaGetEventList_wxcore(size_t &count)
 
         { "wxEVT_QUERY_END_SESSION", WXLUA_GET_wxEventType_ptr(wxEVT_QUERY_END_SESSION), &wxluatype_wxCloseEvent },
         { "wxEVT_QUERY_NEW_PALETTE", WXLUA_GET_wxEventType_ptr(wxEVT_QUERY_NEW_PALETTE), &wxluatype_wxQueryNewPaletteEvent },
+
+#if wxCHECK_VERSION(3,0,0)
+        { "wxEVT_RADIOBOX", WXLUA_GET_wxEventType_ptr(wxEVT_RADIOBOX), &wxluatype_wxCommandEvent },
+        { "wxEVT_RADIOBUTTON", WXLUA_GET_wxEventType_ptr(wxEVT_RADIOBUTTON), &wxluatype_wxCommandEvent },
+#endif // wxCHECK_VERSION(3,0,0)
+
         { "wxEVT_RIGHT_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_RIGHT_DCLICK), &wxluatype_wxMouseEvent },
         { "wxEVT_RIGHT_DOWN", WXLUA_GET_wxEventType_ptr(wxEVT_RIGHT_DOWN), &wxluatype_wxMouseEvent },
         { "wxEVT_RIGHT_UP", WXLUA_GET_wxEventType_ptr(wxEVT_RIGHT_UP), &wxluatype_wxMouseEvent },
+
+#if wxCHECK_VERSION(3,0,0)
+        { "wxEVT_SCROLLBAR", WXLUA_GET_wxEventType_ptr(wxEVT_SCROLLBAR), &wxluatype_wxCommandEvent },
+#endif // wxCHECK_VERSION(3,0,0)
+
         { "wxEVT_SCROLLWIN_BOTTOM", WXLUA_GET_wxEventType_ptr(wxEVT_SCROLLWIN_BOTTOM), &wxluatype_wxScrollWinEvent },
         { "wxEVT_SCROLLWIN_LINEDOWN", WXLUA_GET_wxEventType_ptr(wxEVT_SCROLLWIN_LINEDOWN), &wxluatype_wxScrollWinEvent },
         { "wxEVT_SCROLLWIN_LINEUP", WXLUA_GET_wxEventType_ptr(wxEVT_SCROLLWIN_LINEUP), &wxluatype_wxScrollWinEvent },
@@ -381,15 +492,71 @@ wxLuaBindEvent* wxLuaGetEventList_wxcore(size_t &count)
         { "wxEVT_SIZING", WXLUA_GET_wxEventType_ptr(wxEVT_SIZING), &wxluatype_wxSizeEvent },
 #endif // wxCHECK_VERSION(2,6,0)
 
+#if wxCHECK_VERSION(3,0,0)
+        { "wxEVT_SLIDER", WXLUA_GET_wxEventType_ptr(wxEVT_SLIDER), &wxluatype_wxCommandEvent },
+        { "wxEVT_SPINCTRL", WXLUA_GET_wxEventType_ptr(wxEVT_SPINCTRL), &wxluatype_wxCommandEvent },
+#endif // wxCHECK_VERSION(3,0,0)
+
 #if wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
         { "wxEVT_SPINCTRLDOUBLE", WXLUA_GET_wxEventType_ptr(wxEVT_SPINCTRLDOUBLE), &wxluatype_wxSpinDoubleEvent },
 #endif // wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
 
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxSplitterWindow)
+        { "wxEVT_SPLITTER_DOUBLECLICKED", WXLUA_GET_wxEventType_ptr(wxEVT_SPLITTER_DOUBLECLICKED), &wxluatype_wxSplitterEvent },
+        { "wxEVT_SPLITTER_SASH_POS_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_SPLITTER_SASH_POS_CHANGED), &wxluatype_wxSplitterEvent },
+        { "wxEVT_SPLITTER_SASH_POS_CHANGING", WXLUA_GET_wxEventType_ptr(wxEVT_SPLITTER_SASH_POS_CHANGING), &wxluatype_wxSplitterEvent },
+        { "wxEVT_SPLITTER_UNSPLIT", WXLUA_GET_wxEventType_ptr(wxEVT_SPLITTER_UNSPLIT), &wxluatype_wxSplitterEvent },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxSplitterWindow)
+
         { "wxEVT_SYS_COLOUR_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_SYS_COLOUR_CHANGED), &wxluatype_wxSysColourChangedEvent },
+
+#if wxCHECK_VERSION(3,0,0)
+        { "wxEVT_TEXT", WXLUA_GET_wxEventType_ptr(wxEVT_TEXT), &wxluatype_wxCommandEvent },
+#endif // wxCHECK_VERSION(3,0,0)
+
+#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxClipboard && wxUSE_CLIPBOARD)) && (wxCHECK_VERSION(3,0,0))
+        { "wxEVT_TEXT_COPY", WXLUA_GET_wxEventType_ptr(wxEVT_TEXT_COPY), &wxluatype_wxClipboardTextEvent },
+        { "wxEVT_TEXT_CUT", WXLUA_GET_wxEventType_ptr(wxEVT_TEXT_CUT), &wxluatype_wxClipboardTextEvent },
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxClipboard && wxUSE_CLIPBOARD)) && (wxCHECK_VERSION(3,0,0))
+
+#if wxCHECK_VERSION(3,0,0)
+        { "wxEVT_TEXT_ENTER", WXLUA_GET_wxEventType_ptr(wxEVT_TEXT_ENTER), &wxluatype_wxCommandEvent },
+        { "wxEVT_TEXT_MAXLEN", WXLUA_GET_wxEventType_ptr(wxEVT_TEXT_MAXLEN), &wxluatype_wxCommandEvent },
+#endif // wxCHECK_VERSION(3,0,0)
+
+#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxClipboard && wxUSE_CLIPBOARD)) && (wxCHECK_VERSION(3,0,0))
+        { "wxEVT_TEXT_PASTE", WXLUA_GET_wxEventType_ptr(wxEVT_TEXT_PASTE), &wxluatype_wxClipboardTextEvent },
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxClipboard && wxUSE_CLIPBOARD)) && (wxCHECK_VERSION(3,0,0))
+
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL)
+        { "wxEVT_TEXT_URL", WXLUA_GET_wxEventType_ptr(wxEVT_TEXT_URL), &wxluatype_wxTextUrlEvent },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL)
 
 #if wxLUA_USE_wxTimer && wxUSE_TIMER
         { "wxEVT_TIMER", WXLUA_GET_wxEventType_ptr(wxEVT_TIMER), &wxluatype_wxTimerEvent },
 #endif // wxLUA_USE_wxTimer && wxUSE_TIMER
+
+#if wxCHECK_VERSION(3,0,0)
+        { "wxEVT_TOGGLEBUTTON", WXLUA_GET_wxEventType_ptr(wxEVT_TOGGLEBUTTON), &wxluatype_wxCommandEvent },
+        { "wxEVT_TOOL", WXLUA_GET_wxEventType_ptr(wxEVT_TOOL), &wxluatype_wxCommandEvent },
+#endif // wxCHECK_VERSION(3,0,0)
+
+#if (wxCHECK_VERSION(2,8,0) && wxUSE_TOOLBOOK && wxLUA_USE_wxToolbook) && (wxCHECK_VERSION(3,0,0))
+        { "wxEVT_TOOLBOOK_PAGE_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_TOOLBOOK_PAGE_CHANGED), &wxluatype_wxToolbookEvent },
+        { "wxEVT_TOOLBOOK_PAGE_CHANGING", WXLUA_GET_wxEventType_ptr(wxEVT_TOOLBOOK_PAGE_CHANGING), &wxluatype_wxToolbookEvent },
+#endif // (wxCHECK_VERSION(2,8,0) && wxUSE_TOOLBOOK && wxLUA_USE_wxToolbook) && (wxCHECK_VERSION(3,0,0))
+
+#if wxCHECK_VERSION(3,0,0)
+        { "wxEVT_TOOL_ENTER", WXLUA_GET_wxEventType_ptr(wxEVT_TOOL_ENTER), &wxluatype_wxCommandEvent },
+        { "wxEVT_TOOL_RCLICKED", WXLUA_GET_wxEventType_ptr(wxEVT_TOOL_RCLICKED), &wxluatype_wxCommandEvent },
+#endif // wxCHECK_VERSION(3,0,0)
+
+#if (wxCHECK_VERSION(2,8,0) && wxUSE_TREEBOOK && wxLUA_USE_wxTreebook) && (wxCHECK_VERSION(3,0,0))
+        { "wxEVT_TREEBOOK_NODE_COLLAPSED", WXLUA_GET_wxEventType_ptr(wxEVT_TREEBOOK_NODE_COLLAPSED), &wxluatype_wxTreebookEvent },
+        { "wxEVT_TREEBOOK_NODE_EXPANDED", WXLUA_GET_wxEventType_ptr(wxEVT_TREEBOOK_NODE_EXPANDED), &wxluatype_wxTreebookEvent },
+        { "wxEVT_TREEBOOK_PAGE_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_TREEBOOK_PAGE_CHANGED), &wxluatype_wxTreebookEvent },
+        { "wxEVT_TREEBOOK_PAGE_CHANGING", WXLUA_GET_wxEventType_ptr(wxEVT_TREEBOOK_PAGE_CHANGING), &wxluatype_wxTreebookEvent },
+#endif // (wxCHECK_VERSION(2,8,0) && wxUSE_TREEBOOK && wxLUA_USE_wxTreebook) && (wxCHECK_VERSION(3,0,0))
 
 #if wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
         { "wxEVT_TREELIST_COLUMN_SORTED", WXLUA_GET_wxEventType_ptr(wxEVT_TREELIST_COLUMN_SORTED), &wxluatype_wxTreeListEvent },
@@ -401,7 +568,36 @@ wxLuaBindEvent* wxLuaGetEventList_wxcore(size_t &count)
         { "wxEVT_TREELIST_SELECTION_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_TREELIST_SELECTION_CHANGED), &wxluatype_wxTreeListEvent },
 #endif // wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
 
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL)
+        { "wxEVT_TREE_BEGIN_DRAG", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_BEGIN_DRAG), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_BEGIN_LABEL_EDIT", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_BEGIN_LABEL_EDIT), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_BEGIN_RDRAG", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_BEGIN_RDRAG), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_DELETE_ITEM", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_DELETE_ITEM), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_END_DRAG", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_END_DRAG), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_END_LABEL_EDIT", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_END_LABEL_EDIT), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_GET_INFO", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_GET_INFO), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_ITEM_ACTIVATED", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_ITEM_ACTIVATED), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_ITEM_COLLAPSED", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_ITEM_COLLAPSED), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_ITEM_COLLAPSING", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_ITEM_COLLAPSING), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_ITEM_EXPANDED", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_ITEM_EXPANDED), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_ITEM_EXPANDING", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_ITEM_EXPANDING), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_ITEM_GETTOOLTIP", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_ITEM_GETTOOLTIP), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_ITEM_MENU", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_ITEM_MENU), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_ITEM_MIDDLE_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_ITEM_MIDDLE_CLICK), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_ITEM_RIGHT_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_ITEM_RIGHT_CLICK), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_KEY_DOWN", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_KEY_DOWN), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_SEL_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_SEL_CHANGED), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_SEL_CHANGING", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_SEL_CHANGING), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_SET_INFO", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_SET_INFO), &wxluatype_wxTreeEvent },
+        { "wxEVT_TREE_STATE_IMAGE_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_TREE_STATE_IMAGE_CLICK), &wxluatype_wxTreeEvent },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL)
+
         { "wxEVT_UPDATE_UI", WXLUA_GET_wxEventType_ptr(wxEVT_UPDATE_UI), &wxluatype_wxUpdateUIEvent },
+
+#if wxCHECK_VERSION(3,0,0)
+        { "wxEVT_VLBOX", WXLUA_GET_wxEventType_ptr(wxEVT_VLBOX), &wxluatype_wxCommandEvent },
+#endif // wxCHECK_VERSION(3,0,0)
+
 
         { 0, 0, 0 },
     };

@@ -13722,6 +13722,29 @@ wxLuaBindEvent* wxLuaGetEventList_wxaui(size_t &count)
 {
     static wxLuaBindEvent eventList[] =
     {
+#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+        { "wxEVT_AUINOTEBOOK_ALLOW_DND", WXLUA_GET_wxEventType_ptr(wxEVT_AUINOTEBOOK_ALLOW_DND), &wxluatype_wxAuiNotebookEvent },
+        { "wxEVT_AUINOTEBOOK_BEGIN_DRAG", WXLUA_GET_wxEventType_ptr(wxEVT_AUINOTEBOOK_BEGIN_DRAG), &wxluatype_wxAuiNotebookEvent },
+        { "wxEVT_AUINOTEBOOK_BG_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_AUINOTEBOOK_BG_DCLICK), &wxluatype_wxAuiNotebookEvent },
+        { "wxEVT_AUINOTEBOOK_BUTTON", WXLUA_GET_wxEventType_ptr(wxEVT_AUINOTEBOOK_BUTTON), &wxluatype_wxAuiNotebookEvent },
+        { "wxEVT_AUINOTEBOOK_DRAG_DONE", WXLUA_GET_wxEventType_ptr(wxEVT_AUINOTEBOOK_DRAG_DONE), &wxluatype_wxAuiNotebookEvent },
+        { "wxEVT_AUINOTEBOOK_DRAG_MOTION", WXLUA_GET_wxEventType_ptr(wxEVT_AUINOTEBOOK_DRAG_MOTION), &wxluatype_wxAuiNotebookEvent },
+        { "wxEVT_AUINOTEBOOK_END_DRAG", WXLUA_GET_wxEventType_ptr(wxEVT_AUINOTEBOOK_END_DRAG), &wxluatype_wxAuiNotebookEvent },
+        { "wxEVT_AUINOTEBOOK_PAGE_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_AUINOTEBOOK_PAGE_CHANGED), &wxluatype_wxAuiNotebookEvent },
+        { "wxEVT_AUINOTEBOOK_PAGE_CHANGING", WXLUA_GET_wxEventType_ptr(wxEVT_AUINOTEBOOK_PAGE_CHANGING), &wxluatype_wxAuiNotebookEvent },
+        { "wxEVT_AUINOTEBOOK_PAGE_CLOSE", WXLUA_GET_wxEventType_ptr(wxEVT_AUINOTEBOOK_PAGE_CLOSE), &wxluatype_wxAuiNotebookEvent },
+        { "wxEVT_AUINOTEBOOK_PAGE_CLOSED", WXLUA_GET_wxEventType_ptr(wxEVT_AUINOTEBOOK_PAGE_CLOSED), &wxluatype_wxAuiNotebookEvent },
+        { "wxEVT_AUINOTEBOOK_TAB_MIDDLE_DOWN", WXLUA_GET_wxEventType_ptr(wxEVT_AUINOTEBOOK_TAB_MIDDLE_DOWN), &wxluatype_wxAuiNotebookEvent },
+        { "wxEVT_AUINOTEBOOK_TAB_MIDDLE_UP", WXLUA_GET_wxEventType_ptr(wxEVT_AUINOTEBOOK_TAB_MIDDLE_UP), &wxluatype_wxAuiNotebookEvent },
+        { "wxEVT_AUINOTEBOOK_TAB_RIGHT_DOWN", WXLUA_GET_wxEventType_ptr(wxEVT_AUINOTEBOOK_TAB_RIGHT_DOWN), &wxluatype_wxAuiNotebookEvent },
+        { "wxEVT_AUINOTEBOOK_TAB_RIGHT_UP", WXLUA_GET_wxEventType_ptr(wxEVT_AUINOTEBOOK_TAB_RIGHT_UP), &wxluatype_wxAuiNotebookEvent },
+        { "wxEVT_AUITOOLBAR_BEGIN_DRAG", WXLUA_GET_wxEventType_ptr(wxEVT_AUITOOLBAR_BEGIN_DRAG), &wxluatype_wxAuiToolBarEvent },
+        { "wxEVT_AUITOOLBAR_MIDDLE_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_AUITOOLBAR_MIDDLE_CLICK), &wxluatype_wxAuiToolBarEvent },
+        { "wxEVT_AUITOOLBAR_OVERFLOW_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_AUITOOLBAR_OVERFLOW_CLICK), &wxluatype_wxAuiToolBarEvent },
+        { "wxEVT_AUITOOLBAR_RIGHT_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_AUITOOLBAR_RIGHT_CLICK), &wxluatype_wxAuiToolBarEvent },
+        { "wxEVT_AUITOOLBAR_TOOL_DROPDOWN", WXLUA_GET_wxEventType_ptr(wxEVT_AUITOOLBAR_TOOL_DROPDOWN), &wxluatype_wxAuiToolBarEvent },
+#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
 #if wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI
         { "wxEVT_AUI_FIND_MANAGER", WXLUA_GET_wxEventType_ptr(wxEVT_AUI_FIND_MANAGER), &wxluatype_wxAuiManagerEvent },
 #endif // wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI

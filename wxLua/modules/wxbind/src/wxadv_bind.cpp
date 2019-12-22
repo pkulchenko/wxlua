@@ -16828,6 +16828,10 @@ wxLuaBindEvent* wxLuaGetEventList_wxadv(size_t &count)
         { "wxEVT_GRID_SELECT_CELL", WXLUA_GET_wxEventType_ptr(wxEVT_GRID_SELECT_CELL), &wxluatype_wxGridEvent },
 #endif // wxLUA_USE_wxGrid && wxUSE_GRID
 
+#if (wxCHECK_VERSION(2,8,0) && wxUSE_HYPERLINKCTRL && wxLUA_USE_wxHyperlinkCtrl) && (wxCHECK_VERSION(3,0,0))
+        { "wxEVT_HYPERLINK", WXLUA_GET_wxEventType_ptr(wxEVT_HYPERLINK), &wxluatype_wxHyperlinkEvent },
+#endif // (wxCHECK_VERSION(2,8,0) && wxUSE_HYPERLINKCTRL && wxLUA_USE_wxHyperlinkCtrl) && (wxCHECK_VERSION(3,0,0))
+
 #if wxLUA_USE_wxJoystick && wxUSE_JOYSTICK
         { "wxEVT_JOY_BUTTON_DOWN", WXLUA_GET_wxEventType_ptr(wxEVT_JOY_BUTTON_DOWN), &wxluatype_wxJoystickEvent },
         { "wxEVT_JOY_BUTTON_UP", WXLUA_GET_wxEventType_ptr(wxEVT_JOY_BUTTON_UP), &wxluatype_wxJoystickEvent },
