@@ -7353,7 +7353,7 @@ class wxStyledTextCtrl : public wxControl
        Retrieve the text of the line containing the caret.
        Returns the index of the caret on the line.
     */
-//    wxCharBuffer GetCurLineRaw(int* linePos=NULL);
+    wxCharBuffer GetCurLineRaw(int* linePos=NULL);
 
     /**
        Retrieve the contents of a line.

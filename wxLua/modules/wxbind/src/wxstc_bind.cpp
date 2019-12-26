@@ -3305,6 +3305,26 @@ static int LUACALL wxLua_wxStyledTextCtrl_GetCurLine(lua_State *L)
 }
 
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetCurLineRaw[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TLIGHTUSERDATA, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_GetCurLineRaw(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetCurLineRaw[1] = {{ wxLua_wxStyledTextCtrl_GetCurLineRaw, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetCurLineRaw }};
+//     wxCharBuffer GetCurLineRaw(int* linePos=NULL);
+static int LUACALL wxLua_wxStyledTextCtrl_GetCurLineRaw(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int linePos = NULL
+    int * linePos = (argCount >= 2 ? (int *)wxlua_touserdata(L, 2) : NULL);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call GetCurLineRaw
+    wxCharBuffer returns = (self->GetCurLineRaw(linePos));
+    // push the result string
+    lua_pushstring(L, returns.data());
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetCurrentLine[] = { &wxluatype_wxStyledTextCtrl, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_GetCurrentLine(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_GetCurrentLine[1] = {{ wxLua_wxStyledTextCtrl_GetCurrentLine, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStyledTextCtrl_GetCurrentLine }};
@@ -14766,6 +14786,7 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "GetColumn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetColumn, 1, NULL },
     { "GetControlCharSymbol", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetControlCharSymbol, 1, NULL },
     { "GetCurLine", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetCurLine, 1, NULL },
+    { "GetCurLineRaw", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetCurLineRaw, 1, NULL },
     { "GetCurrentLine", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetCurrentLine, 1, NULL },
     { "GetCurrentPos", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_GetCurrentPos, 1, NULL },
 
