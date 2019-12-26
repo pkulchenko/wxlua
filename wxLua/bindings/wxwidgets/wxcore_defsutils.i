@@ -106,7 +106,7 @@ class %delete wxLuaProcess : public wxProcess
     static bool Exists(int pid);
     static wxKillError Kill(int pid, wxSignal sig = wxSIGTERM, int flags = wxKILL_NOCHILDREN);
     static wxLuaProcess *Open(const wxString& cmd, int flags = wxEXEC_ASYNC);
-    // this is a class to overrider onTerminate event to skip object deletion
+    // this is a class to override onTerminate event to skip object deletion
     // void OnTerminate(int pid, int status);
 };
 
