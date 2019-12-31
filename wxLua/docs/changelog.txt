@@ -1,9 +1,17 @@
  wxLua ChangeLog
  ===============
 
+ version 3.0.0.8 (released 12/30/2019)
+ --------------------------------------------------------------------
+ - Added `GetCurLineRaw` method for wxSTC.
+ - Added event type aliases (wxEVT_XXXX for wxEVT_COMMAND_XXXX) are implemented
+ - Added `wxGraphicsContext.GetPartialTextExtents` (#50).
+ - Added `wxArrayDouble`.
+ - Added override for `wxGraphicContext.GetTextExtent` to properly return its results (closes #50).
+ - Updated `wxArrayInt` handling to better work with Lua 5.3+.
+
  version 3.0.0.7 (released 12/09/2019)
  --------------------------------------------------------------------
-
  - Added 'Mandelbrot set' example using wxImage and wxMemoryBuffer (#49).
  - Added `CallAter` method for `wxEvtHandler`.
  - Added `wxSystemAppearance`.
