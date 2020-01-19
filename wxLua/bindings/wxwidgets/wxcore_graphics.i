@@ -566,13 +566,21 @@ class %delete wxGraphicsContext : public wxGraphicsObject
     virtual void StrokeLine( wxDouble x1, wxDouble y1, wxDouble x2, wxDouble y2);
 
     // stroke lines connecting each of the points
-    virtual void StrokeLines( size_t n, const wxPoint2DDouble *points);
+    // virtual void StrokeLines( size_t n, const wxPoint2DDouble *points);
+    // Provide a Lua Table of {{1,2},{3,4},...}, {{x=1,y=2},{x=3,y=4},...}, or {wx.wxPoint2DDouble(1,2),wx.wxPoint2DDouble(3,4),...}
+    virtual void StrokeLines( wxPoint2DDoubleArray_FromLuaTable points );
 
     // stroke disconnected lines from begin to end points
-    virtual void StrokeLines( size_t n, const wxPoint2DDouble *beginPoints, const wxPoint2DDouble *endPoints);
+    // virtual void StrokeLines( size_t n, const wxPoint2DDouble *beginPoints, const wxPoint2DDouble *endPoints);
+    // Provide a Lua Table of {{1,2},{3,4},...}, {{x=1,y=2},{x=3,y=4},...}, or {wx.wxPoint2DDouble(1,2),wx.wxPoint2DDouble(3,4),...}
+    // Note: We need an override here, because the C++ API accepts only one 'n',
+    //  both for beginPoints and endPoints.
+    virtual void StrokeLines( wxPoint2DDoubleArray_FromLuaTable beginPoints, wxPoint2DDoubleArray_FromLuaTable endPoints );
 
     // draws a polygon
-    virtual void DrawLines( size_t n, const wxPoint2DDouble *points, wxPolygonFillMode fillStyle = wxODDEVEN_RULE );
+    // virtual void DrawLines( size_t n, const wxPoint2DDouble *points, wxPolygonFillMode fillStyle = wxODDEVEN_RULE );
+    // Provide a Lua Table of {{1,2},{3,4},...}, {{x=1,y=2},{x=3,y=4},...}, or {wx.wxPoint2DDouble(1,2),wx.wxPoint2DDouble(3,4),...}
+    virtual void DrawLines(wxPoint2DDoubleArray_FromLuaTable points, wxPolygonFillMode fillStyle = wxODDEVEN_RULE ;
 
     // draws a rectangle
     virtual void DrawRectangle( wxDouble x, wxDouble y, wxDouble w, wxDouble h);

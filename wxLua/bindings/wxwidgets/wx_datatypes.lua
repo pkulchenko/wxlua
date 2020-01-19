@@ -4066,6 +4066,11 @@ wx_dataTypeTable =
     Name = "wxPoint2DDouble",
     ValueType = "class",
   },
+  wxPoint2DDoubleArray_FromLuaTable = {
+    IsNumber = true,
+    Name = "wxPoint2DDoubleArray_FromLuaTable",
+    ValueType = "special",
+  },
   wxPoint2DInt = {
     Condition = "wxLUA_USE_Geometry && wxUSE_GEOMETRY",
     IsNumber = false,

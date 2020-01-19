@@ -2921,3 +2921,21 @@ static int LUACALL wxLua_wxGraphicsContext_GetTextExtent(lua_State *L)
     return 4;
 }
 %end
+
+%override wxLua_wxGraphicsContext_StrokeLines1
+//     virtual void StrokeLines( wxPoint2DDoubleArray_FromLuaTable beginPoints, wxPoint2DDoubleArray_FromLuaTable endPoints );
+static int LUACALL wxLua_wxGraphicsContext_StrokeLines1(lua_State *L)
+{
+    // wxPoint2DDoubleArray_FromLuaTable endPoints
+    wxLuaSharedPtr<std::vector<wxPoint2DDouble> > endPoints = wxlua_getwxPoint2DDoubleArray(L, 3);
+    // wxPoint2DDoubleArray_FromLuaTable beginPoints
+    wxLuaSharedPtr<std::vector<wxPoint2DDouble> > beginPoints = wxlua_getwxPoint2DDoubleArray(L, 2);
+    // get this
+    wxGraphicsContext * self = (wxGraphicsContext *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsContext);
+    // call StrokeLines
+    self->StrokeLines((int)(beginPoints ? beginPoints->size() : 0), (beginPoints && (!beginPoints->empty())) ? &beginPoints->at(0) : NULL, (endPoints && (!endPoints->empty())) ? &endPoints->at(0) : NULL);
+
+    return 0;
+}
+%end
+

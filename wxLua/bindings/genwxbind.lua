@@ -289,6 +289,7 @@ function InitDataTypes()
     --AllocDataType("wxArrayInt",            "special", true) -- special, but we only convert input, not output
     AllocDataType("IntArray_FromLuaTable", "special", true)
     AllocDataType("wxPointArray_FromLuaTable", "special", true);
+    AllocDataType("wxPoint2DDoubleArray_FromLuaTable", "special", true);
     AllocDataType("voidptr_long",          "special", true)
     AllocDataType("any",                   "special", true)
 
@@ -3744,6 +3745,12 @@ if ((double)(lua_Integer)(%s) == (double)(%s)) {
                         overload_argList = overload_argList.."&wxluatype_TTABLE, "
                         argItem = "wxlua_getwxPointArray(L, "..argNum..")"
                         declare = "wxLuaSharedPtr<std::vector<wxPoint> >"
+                        argListOverride = "(int)("..argName.." ? "..argName.."->size() : 0), ("..argName.." && (!"..argName.."->empty())) ? &"..argName .. "->at(0) : NULL"
+
+                    elseif (argType == "wxPoint2DDoubleArray_FromLuaTable") then
+                        overload_argList = overload_argList.."&wxluatype_TTABLE, "
+                        argItem = "wxlua_getwxPoint2DDoubleArray(L, "..argNum..")"
+                        declare = "wxLuaSharedPtr<std::vector<wxPoint2DDouble> >"
                         argListOverride = "(int)("..argName.." ? "..argName.."->size() : 0), ("..argName.." && (!"..argName.."->empty())) ? &"..argName .. "->at(0) : NULL"
 
                     elseif argType == "LuaTable" then

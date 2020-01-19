@@ -124,6 +124,7 @@ extern WXDLLIMPEXP_DATA_WXLUA(int*) p_wxluatype_wxSortedArrayString; // wxLua ty
 extern WXDLLIMPEXP_DATA_WXLUA(int*) p_wxluatype_wxArrayInt;    // wxLua type for wxArrayInt
 extern WXDLLIMPEXP_DATA_WXLUA(int*) p_wxluatype_wxArrayDouble; // wxLua type for wxArrayDouble
 extern WXDLLIMPEXP_DATA_WXLUA(int*) p_wxluatype_wxPoint;       // wxLua type for wxPoint
+extern WXDLLIMPEXP_DATA_WXLUA(int*) p_wxluatype_wxPoint2DDouble;       // wxLua type for wxPoint2DDouble
 
 // ----------------------------------------------------------------------------
 // wxLuaArgType a pointer to a declared wxLua type, see wxLuaBindCFunc::argtypes

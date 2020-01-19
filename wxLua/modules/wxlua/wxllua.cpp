@@ -1912,6 +1912,84 @@ wxLuaSharedPtr<std::vector<wxPoint> > LUACALL wxlua_getwxPointArray(lua_State* L
     return pointArray;
 }
 
+wxLuaSharedPtr<std::vector<wxPoint2DDouble> > LUACALL wxlua_getwxPoint2DDoubleArray(lua_State* L, int stack_idx)
+{
+    wxLuaSharedPtr<std::vector<wxPoint2DDouble> > pointArray(new std::vector<wxPoint2DDouble>);
+    int count = -1;       // used to check for failure
+    int is_xy_table = -1; // is it a table with x,y fields or a number array {1,2}
+    
+    if (lua_istable(L, stack_idx))
+    {
+        count = lua_objlen(L, stack_idx); /* get size of table */
+        
+        double x, y;
+        for (int i = 1; i <= count; ++i)
+        {
+            lua_rawgeti(L, stack_idx, i); /* get next point as {x,y} */
+            int t = wxluaT_type(L, -1);
+            if (t == WXLUA_TTABLE)
+            {
+                // First time, check how it was formatted
+                if (is_xy_table == -1)
+                {
+                    lua_rawgeti(L, -1, 1);
+                    is_xy_table = (lua_isnumber(L, -1) == 0) ? 1 : 0;
+                    lua_pop(L, 1);
+                }
+                
+                if (is_xy_table == 1)
+                {
+                    lua_pushstring(L, "x");
+                    lua_rawget(L, -2);
+                    if (!lua_isnumber(L, -1))
+                        wxlua_argerror(L, stack_idx, wxT("a 'number' for x-coordinate of a wxPoint2DDouble array, valid tables are {{1,2},...}, {{x=1,y=2},...}, or {wx.wxPoint2DDouble(1,2),,...}."));
+                    x = lua_tonumber(L, -1);
+                    lua_pop(L, 1);
+                    
+                    lua_pushstring(L, "y");
+                    lua_rawget(L, -2);
+                    if (!lua_isnumber(L, -1))
+                        wxlua_argerror(L, stack_idx, wxT("a 'number' for y-coordinate of a wxPoint2DDouble array, valid tables are {{1,2},...}, {{x=1,y=2},...}, or {wx.wxPoint2DDouble(1,2),,...}."));
+                    y = lua_tonumber(L, -1);
+                    lua_pop(L, 1);
+                }
+                else
+                {
+                    lua_rawgeti(L, -1, 1);
+                    if (!lua_isnumber(L, -1))
+                        wxlua_argerror(L, stack_idx, wxT("a 'number' for [1] index (x-coordinate) of a wxPoint2DDouble array, valid tables {{1,2},...}, {{x=1,y=2},...}, or {wx.wxPoint2DDouble(1,2),,...}."));
+                    x = lua_tonumber(L, -1);
+                    lua_pop(L, 1);
+                    
+                    lua_rawgeti(L, -1, 2);
+                    if (!lua_isnumber(L, -1))
+                        wxlua_argerror(L, stack_idx, wxT("a 'number' for [2] index (y-coordinate) of a wxPoint2DDouble array, valid tables {{1,2},...}, {{x=1,y=2},...}, or {wx.wxPoint2DDouble(1,2),,...}."));
+                    y = lua_tonumber(L,-1);
+                    lua_pop(L, 1);
+                }
+                
+                pointArray->push_back(wxPoint2DDouble(x, y));
+            }
+            else if (t == *p_wxluatype_wxPoint2DDouble)
+            {
+                const wxPoint* point = (const wxPoint *)wxluaT_getuserdatatype(L, -1, *p_wxluatype_wxPoint);
+                pointArray->push_back(*point);
+            }
+            else
+            {
+                wxlua_argerror(L, stack_idx, wxT("a Lua table of 'wxPoint2DDoubles', valid tables {{1,2},...}, {{x=1,y=2},...}, or {wx.wxPoint2DDouble(1,2),,...}."));
+                return pointArray;
+            }
+            
+            lua_pop(L, 1);
+        }
+    }
+    if (count < 0)
+        wxlua_argerror(L, stack_idx, wxT("a Lua table of 'wxPoint2DDoubles', valid tables {{1,2},...}, {{x=1,y=2},...}, or {wx.wxPoint2DDouble(1,2),,...}."));
+    
+    return pointArray;
+}
+
 int LUACALL wxlua_pushwxArrayStringtable(lua_State *L, const wxArrayString &strArray)
 {
     size_t idx, count = strArray.GetCount();
