@@ -3614,7 +3614,7 @@ static int LUACALL wxLua_wxGraphicsContext_StrokeLines1(lua_State *L)
     // get this
     wxGraphicsContext * self = (wxGraphicsContext *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsContext);
     // call StrokeLines
-    self->StrokeLines((int)(beginPoints ? beginPoints->size() : 0), (beginPoints && (!beginPoints->empty())) ? &beginPoints->at(0) : NULL, (endPoints && (!endPoints->empty())) ? &endPoints->at(0) : NULL);
+    self->StrokeLines((size_t)(beginPoints ? beginPoints->size() : 0), (beginPoints && (!beginPoints->empty())) ? &beginPoints->at(0) : NULL, (endPoints && (!endPoints->empty())) ? &endPoints->at(0) : NULL);
 
     return 0;
 }
