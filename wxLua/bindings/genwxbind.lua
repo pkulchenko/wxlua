@@ -3751,7 +3751,7 @@ if ((double)(lua_Integer)(%s) == (double)(%s)) {
                         overload_argList = overload_argList.."&wxluatype_TTABLE, "
                         argItem = "wxlua_getwxPoint2DDoubleArray(L, "..argNum..")"
                         declare = "wxLuaSharedPtr<std::vector<wxPoint2DDouble> >"
-                        argListOverride = "(int)("..argName.." ? "..argName.."->size() : 0), ("..argName.." && (!"..argName.."->empty())) ? &"..argName .. "->at(0) : NULL"
+                        argListOverride = "(size_t)("..argName.." ? "..argName.."->size() : 0), ("..argName.." && (!"..argName.."->empty())) ? &"..argName .. "->at(0) : NULL"
 
                     elseif argType == "LuaTable" then
                         -- THIS MUST BE AN OVERRIDE AND HANDLED THERE, we just set overload_argList

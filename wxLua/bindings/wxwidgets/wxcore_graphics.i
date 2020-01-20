@@ -580,7 +580,7 @@ class %delete wxGraphicsContext : public wxGraphicsObject
     // draws a polygon
     // virtual void DrawLines( size_t n, const wxPoint2DDouble *points, wxPolygonFillMode fillStyle = wxODDEVEN_RULE );
     // Provide a Lua Table of {{1,2},{3,4},...}, {{x=1,y=2},{x=3,y=4},...}, or {wx.wxPoint2DDouble(1,2),wx.wxPoint2DDouble(3,4),...}
-    virtual void DrawLines(wxPoint2DDoubleArray_FromLuaTable points, wxPolygonFillMode fillStyle = wxODDEVEN_RULE ;
+    virtual void DrawLines(wxPoint2DDoubleArray_FromLuaTable points, wxPolygonFillMode fillStyle = wxODDEVEN_RULE );
 
     // draws a rectangle
     virtual void DrawRectangle( wxDouble x, wxDouble y, wxDouble w, wxDouble h);

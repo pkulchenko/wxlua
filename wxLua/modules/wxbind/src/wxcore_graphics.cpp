@@ -2726,24 +2726,27 @@ static int LUACALL wxLua_wxGraphicsContext_DrawIcon(lua_State *L)
 
 #endif // (wxLUA_USE_wxIcon) && (wxUSE_GRAPHICS_CONTEXT)
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_DrawLines[] = { &wxluatype_wxGraphicsContext, &wxluatype_TTABLE, NULL };
+#if (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_DrawLines[] = { &wxluatype_wxGraphicsContext, &wxluatype_TTABLE, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxGraphicsContext_DrawLines(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_DrawLines[1] = {{ wxLua_wxGraphicsContext_DrawLines, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsContext_DrawLines }};
-//     virtual void DrawLines(wxPoint2DDoubleArray_FromLuaTable points, wxPolygonFillMode fillStyle = wxODDEVEN_RULE ;
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_DrawLines[1] = {{ wxLua_wxGraphicsContext_DrawLines, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxGraphicsContext_DrawLines }};
+//     virtual void DrawLines(wxPoint2DDoubleArray_FromLuaTable points, wxPolygonFillMode fillStyle = wxODDEVEN_RULE );
 static int LUACALL wxLua_wxGraphicsContext_DrawLines(lua_State *L)
 {
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxPolygonFillMode fillStyle = wxODDEVEN_RULE
+    wxPolygonFillMode fillStyle = (argCount >= 3 ? (wxPolygonFillMode)wxlua_getenumtype(L, 3) : wxODDEVEN_RULE);
     // wxPoint2DDoubleArray_FromLuaTable points
     wxLuaSharedPtr<std::vector<wxPoint2DDouble> > points = wxlua_getwxPoint2DDoubleArray(L, 2);
     // get this
     wxGraphicsContext * self = (wxGraphicsContext *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsContext);
     // call DrawLines
-    self->DrawLines((int)(points ? points->size() : 0), (points && (!points->empty())) ? &points->at(0) : NULL);
+    self->DrawLines((size_t)(points ? points->size() : 0), (points && (!points->empty())) ? &points->at(0) : NULL, fillStyle);
 
     return 0;
 }
 
-
-#if (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsContext_DrawPath[] = { &wxluatype_wxGraphicsContext, &wxluatype_wxGraphicsPath, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxGraphicsContext_DrawPath(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsContext_DrawPath[1] = {{ wxLua_wxGraphicsContext_DrawPath, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxGraphicsContext_DrawPath }};
@@ -3628,7 +3631,7 @@ static int LUACALL wxLua_wxGraphicsContext_StrokeLines(lua_State *L)
     // get this
     wxGraphicsContext * self = (wxGraphicsContext *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsContext);
     // call StrokeLines
-    self->StrokeLines((int)(points ? points->size() : 0), (points && (!points->empty())) ? &points->at(0) : NULL);
+    self->StrokeLines((size_t)(points ? points->size() : 0), (points && (!points->empty())) ? &points->at(0) : NULL);
 
     return 0;
 }
@@ -3932,9 +3935,8 @@ wxLuaBindMethod wxGraphicsContext_methods[] = {
     { "DrawIcon", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_DrawIcon, 1, NULL },
 #endif // (wxLUA_USE_wxIcon) && (wxUSE_GRAPHICS_CONTEXT)
 
-    { "DrawLines", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_DrawLines, 1, NULL },
-
 #if (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
+    { "DrawLines", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_DrawLines, 1, NULL },
     { "DrawPath", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsContext_DrawPath, 1, NULL },
 #endif // (wxLUA_USE_wxDC) && (wxUSE_GRAPHICS_CONTEXT)
 
