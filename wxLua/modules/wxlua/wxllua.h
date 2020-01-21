@@ -15,6 +15,10 @@
 #include "wxlua/wxlobject.h"
 #include "wxlua/sharedptr.h"
 
+#if wxUSE_GEOMETRY
+#include <wx/geometry.h>
+#endif
+
 #include <vector>
 
 class WXDLLIMPEXP_FWD_WXLUA wxLuaEvent;
