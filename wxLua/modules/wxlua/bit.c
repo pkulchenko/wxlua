@@ -177,7 +177,8 @@ static int libsize (const luaL_Reg *l) {
 static void pushmodule (lua_State *L, const char *modname, int sizehint) {
   lua_pushglobaltable(L);
   lua_pushstring(L, modname);
-  if (lua_rawget(L, -2) != LUA_TNIL) {  /* no such field? */
+  lua_rawget(L, -2);
+  if (!lua_isnil(L, -1)) {
     luaL_error(L, "name conflict for module '%s'", modname);
   }
   lua_pop(L, 1);  /* remove this nil */
