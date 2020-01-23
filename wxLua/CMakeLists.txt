@@ -477,6 +477,7 @@ install(FILES
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlua.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlua_bind.h
         ${wxLua_ROOT_DIR}/modules/wxlua/wxlversion.h
+        ${wxLua_ROOT_DIR}/modules/wxbind/setup/wxluasetup.h
         DESTINATION "include/wxlua")
 
 install(FILES
