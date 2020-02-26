@@ -19,9 +19,9 @@
 // Check if the version of binding generator used to create this is older than
 //   the current version of the bindings.
 //   See 'bindings/genwxbind.lua' and 'modules/wxlua/wxldefs.h'
-#if WXLUA_BINDING_VERSION > 37
+#if WXLUA_BINDING_VERSION > 38
 #   error "The WXLUA_BINDING_VERSION in the bindings is too old, regenerate bindings."
-#endif //WXLUA_BINDING_VERSION > 37
+#endif //WXLUA_BINDING_VERSION > 38
 // ---------------------------------------------------------------------------
 
 // binding class
@@ -51,6 +51,10 @@ extern WXDLLIMPEXP_BINDWXAUI wxLuaBinding* wxLuaBinding_wxaui_init();
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
 
+#if (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+    extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiPaneButton;
+#endif // (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
 #if wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiDefaultDockArt;
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiDefaultTabArt;
@@ -69,7 +73,6 @@ extern WXDLLIMPEXP_BINDWXAUI wxLuaBinding* wxLuaBinding_wxaui_init();
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiNotebookEvent;
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiNotebookPage;
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiNotebookPageArray;
-    extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiPaneButton;
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiPaneInfo;
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiPaneInfoArray;
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiSimpleTabArt;

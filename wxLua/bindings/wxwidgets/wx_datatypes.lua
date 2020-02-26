@@ -491,7 +491,7 @@ wx_dataTypeTable =
     ValueType = "class",
   },
   wxAuiPaneButton = {
-    Condition = "wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI",
+    Condition = "(!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)",
     IsNumber = false,
     Name = "wxAuiPaneButton",
     ValueType = "class",

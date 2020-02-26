@@ -2900,10 +2900,12 @@ int wxluatype_wxPaintEvent = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPaintEvent_delete[] = { &wxluatype_wxPaintEvent, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPaintEvent_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxPaintEvent_delete }};
 
+
+#if !wxCHECK_VERSION(3,1,4)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPaintEvent_constructor[] = { &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPaintEvent_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPaintEvent_constructor[1] = {{ wxLua_wxPaintEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 1, s_wxluatypeArray_wxLua_wxPaintEvent_constructor }};
-//     wxPaintEvent(int id = 0);
+//     !%wxchkver_3_1_4 wxPaintEvent(int id = 0);
 static int LUACALL wxLua_wxPaintEvent_constructor(lua_State *L)
 {
     // get number of arguments
@@ -2920,6 +2922,8 @@ static int LUACALL wxLua_wxPaintEvent_constructor(lua_State *L)
     return 1;
 }
 
+#endif // !wxCHECK_VERSION(3,1,4)
+
 
 
 void wxLua_wxPaintEvent_delete_function(void** p)
@@ -2931,7 +2935,11 @@ void wxLua_wxPaintEvent_delete_function(void** p)
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxPaintEvent_methods[] = {
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxPaintEvent_delete, 1, NULL },
+
+#if !wxCHECK_VERSION(3,1,4)
     { "wxPaintEvent", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxPaintEvent_constructor, 1, NULL },
+#endif // !wxCHECK_VERSION(3,1,4)
+
     { 0, 0, 0, 0 },
 };
 

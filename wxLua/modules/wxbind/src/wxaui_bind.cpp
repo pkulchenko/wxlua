@@ -11924,10 +11924,11 @@ int wxAuiDockInfo_methodCount = sizeof(wxAuiDockInfo_methods)/sizeof(wxLuaBindMe
 // Lua MetaTable Tag for Class 'wxAuiDockUIPart'
 int wxluatype_wxAuiDockUIPart = WXLUA_TUNKNOWN;
 
+#if (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiDockUIPart_Get_button[] = { &wxluatype_wxAuiDockUIPart, NULL };
 static int LUACALL wxLua_wxAuiDockUIPart_Get_button(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiDockUIPart_Get_button[1] = {{ wxLua_wxAuiDockUIPart_Get_button, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiDockUIPart_Get_button }};
-//     wxAuiPaneButton* button;    // which pane button the item is associated with
+//     !%wxchkver_3_1_4 wxAuiPaneButton* button; // which pane button the item is associated with
 static int LUACALL wxLua_wxAuiDockUIPart_Get_button(lua_State *L)
 {
     // get this
@@ -11938,6 +11939,30 @@ static int LUACALL wxLua_wxAuiDockUIPart_Get_button(lua_State *L)
     return 1;
 }
 
+#endif // (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
+#if (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiDockUIPart_Get_button[] = { &wxluatype_wxAuiDockUIPart, NULL };
+static int LUACALL wxLua_wxAuiDockUIPart_Get_button(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiDockUIPart_Get_button[1] = {{ wxLua_wxAuiDockUIPart_Get_button, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiDockUIPart_Get_button }};
+//     %wxchkver_3_1_4 int button;               // which pane button the item is associated with
+static int LUACALL wxLua_wxAuiDockUIPart_Get_button(lua_State *L)
+{
+    // get this
+    wxAuiDockUIPart *self = (wxAuiDockUIPart *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiDockUIPart);
+    // push the result integer? number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)(self->button) == (double)(self->button)) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, self->button);
+} else
+#endif
+    lua_pushnumber(L, self->button);
+    // return the number of values
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
 #if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiDockUIPart_Get_cont_sizer[] = { &wxluatype_wxAuiDockUIPart, NULL };
@@ -11959,7 +11984,7 @@ static int LUACALL wxLua_wxAuiDockUIPart_Get_cont_sizer(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiDockUIPart_Get_dock[] = { &wxluatype_wxAuiDockUIPart, NULL };
 static int LUACALL wxLua_wxAuiDockUIPart_Get_dock(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiDockUIPart_Get_dock[1] = {{ wxLua_wxAuiDockUIPart_Get_dock, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiDockUIPart_Get_dock }};
-//     wxAuiDockInfo* dock;        // which dock the item is associated with
+//     wxAuiDockInfo* dock;     // which dock the item is associated with
 static int LUACALL wxLua_wxAuiDockUIPart_Get_dock(lua_State *L)
 {
     // get this
@@ -11993,7 +12018,7 @@ if ((double)(lua_Integer)(self->orientation) == (double)(self->orientation)) {
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiDockUIPart_Get_pane[] = { &wxluatype_wxAuiDockUIPart, NULL };
 static int LUACALL wxLua_wxAuiDockUIPart_Get_pane(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiDockUIPart_Get_pane[1] = {{ wxLua_wxAuiDockUIPart_Get_pane, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiDockUIPart_Get_pane }};
-//     wxAuiPaneInfo* pane;        // which pane the item is associated with
+//     wxAuiPaneInfo* pane;     // which pane the item is associated with
 static int LUACALL wxLua_wxAuiDockUIPart_Get_pane(lua_State *L)
 {
     // get this
@@ -12059,10 +12084,12 @@ if ((double)(lua_Integer)(self->type) == (double)(self->type)) {
     return 1;
 }
 
+
+#if (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiDockUIPart_Set_button[] = { &wxluatype_wxAuiDockUIPart, &wxluatype_wxAuiPaneButton, NULL };
 static int LUACALL wxLua_wxAuiDockUIPart_Set_button(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiDockUIPart_Set_button[1] = {{ wxLua_wxAuiDockUIPart_Set_button, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiDockUIPart_Set_button }};
-//     wxAuiPaneButton* button;    // which pane button the item is associated with
+//     !%wxchkver_3_1_4 wxAuiPaneButton* button; // which pane button the item is associated with
 static int LUACALL wxLua_wxAuiDockUIPart_Set_button(lua_State *L)
 {
     // get the data type value
@@ -12074,6 +12101,25 @@ static int LUACALL wxLua_wxAuiDockUIPart_Set_button(lua_State *L)
     return 0;
 }
 
+#endif // (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
+#if (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiDockUIPart_Set_button[] = { &wxluatype_wxAuiDockUIPart, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxAuiDockUIPart_Set_button(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiDockUIPart_Set_button[1] = {{ wxLua_wxAuiDockUIPart_Set_button, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiDockUIPart_Set_button }};
+//     %wxchkver_3_1_4 int button;               // which pane button the item is associated with
+static int LUACALL wxLua_wxAuiDockUIPart_Set_button(lua_State *L)
+{
+    // get the number value
+    int val = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxAuiDockUIPart *self = (wxAuiDockUIPart *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiDockUIPart);
+    self->button = val;
+    // return the number of values
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
 #if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiDockUIPart_Set_cont_sizer[] = { &wxluatype_wxAuiDockUIPart, &wxluatype_wxSizer, NULL };
@@ -12096,7 +12142,7 @@ static int LUACALL wxLua_wxAuiDockUIPart_Set_cont_sizer(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiDockUIPart_Set_dock[] = { &wxluatype_wxAuiDockUIPart, &wxluatype_wxAuiDockInfo, NULL };
 static int LUACALL wxLua_wxAuiDockUIPart_Set_dock(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiDockUIPart_Set_dock[1] = {{ wxLua_wxAuiDockUIPart_Set_dock, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiDockUIPart_Set_dock }};
-//     wxAuiDockInfo* dock;        // which dock the item is associated with
+//     wxAuiDockInfo* dock;     // which dock the item is associated with
 static int LUACALL wxLua_wxAuiDockUIPart_Set_dock(lua_State *L)
 {
     // get the data type value
@@ -12126,7 +12172,7 @@ static int LUACALL wxLua_wxAuiDockUIPart_Set_orientation(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiDockUIPart_Set_pane[] = { &wxluatype_wxAuiDockUIPart, &wxluatype_wxAuiPaneInfo, NULL };
 static int LUACALL wxLua_wxAuiDockUIPart_Set_pane(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiDockUIPart_Set_pane[1] = {{ wxLua_wxAuiDockUIPart_Set_pane, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiDockUIPart_Set_pane }};
-//     wxAuiPaneInfo* pane;        // which pane the item is associated with
+//     wxAuiPaneInfo* pane;     // which pane the item is associated with
 static int LUACALL wxLua_wxAuiDockUIPart_Set_pane(lua_State *L)
 {
     // get the data type value
@@ -12191,6 +12237,12 @@ static int LUACALL wxLua_wxAuiDockUIPart_Set_type(lua_State *L)
 }
 
 
+#if (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#endif // (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
+#if (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#endif // (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
 #if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 #endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
@@ -12215,8 +12267,11 @@ void wxLua_wxAuiDockUIPart_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxAuiDockUIPart_methods[] = {
+#if (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
     // %member    { "Get_button", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiDockUIPart_Get_button, 1, NULL },
-
+#elif (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+    // %member    { "Get_button", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiDockUIPart_Get_button, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 #if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
     // %member    { "Get_cont_sizer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiDockUIPart_Get_cont_sizer, 1, NULL },
 #endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
@@ -12234,8 +12289,12 @@ wxLuaBindMethod wxAuiDockUIPart_methods[] = {
 #endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
     // %member    { "Get_type", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiDockUIPart_Get_type, 1, NULL },
-    // %member    { "Set_button", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiDockUIPart_Set_button, 1, NULL },
 
+#if (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+    // %member    { "Set_button", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiDockUIPart_Set_button, 1, NULL },
+#elif (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+    // %member    { "Set_button", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiDockUIPart_Set_button, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 #if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
     // %member    { "Set_cont_sizer", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiDockUIPart_Set_cont_sizer, 1, NULL },
 #endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
@@ -12253,9 +12312,15 @@ wxLuaBindMethod wxAuiDockUIPart_methods[] = {
 #endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
     // %member    { "Set_type", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiDockUIPart_Set_type, 1, NULL },
+
+#if (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
     { "button", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxAuiDockUIPart_Set_button, 1, NULL },
     { "button", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxAuiDockUIPart_Get_button, 1, NULL },
-
+#elif (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+    { "button", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxAuiDockUIPart_Set_button, 1, NULL },
+#elif (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+    { "button", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxAuiDockUIPart_Get_button, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 #if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
     { "cont_sizer", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxAuiDockUIPart_Set_cont_sizer, 1, NULL },
     { "cont_sizer", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxAuiDockUIPart_Get_cont_sizer, 1, NULL },
@@ -12306,7 +12371,7 @@ int wxAuiDockUIPart_enumCount = sizeof(wxAuiDockUIPart_enums)/sizeof(wxLuaBindNu
 #endif  // wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI
 
 
-#if wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI
+#if (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 // ---------------------------------------------------------------------------
 // Bind class wxAuiPaneButton
 // ---------------------------------------------------------------------------
@@ -12374,7 +12439,7 @@ wxLuaBindMethod wxAuiPaneButton_methods[] = {
 
 int wxAuiPaneButton_methodCount = sizeof(wxAuiPaneButton_methods)/sizeof(wxLuaBindMethod) - 1;
 
-#endif  // wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI
+#endif  // (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
 
 #if wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI
@@ -14052,6 +14117,12 @@ static wxLuaBindClass* wxluabaseclassbinds_wxAuiToolBarEvent[] = { NULL };
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
 
+#if (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+    extern wxLuaBindMethod wxAuiPaneButton_methods[];
+    extern int wxAuiPaneButton_methodCount;
+    extern void wxLua_wxAuiPaneButton_delete_function(void** p);
+#endif // (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
 #if wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI
     extern wxLuaBindMethod wxAuiDefaultDockArt_methods[];
     extern int wxAuiDefaultDockArt_methodCount;
@@ -14106,9 +14177,6 @@ static wxLuaBindClass* wxluabaseclassbinds_wxAuiToolBarEvent[] = { NULL };
     extern wxLuaBindMethod wxAuiNotebookPageArray_methods[];
     extern int wxAuiNotebookPageArray_methodCount;
     extern void wxLua_wxAuiNotebookPageArray_delete_function(void** p);
-    extern wxLuaBindMethod wxAuiPaneButton_methods[];
-    extern int wxAuiPaneButton_methodCount;
-    extern void wxLua_wxAuiPaneButton_delete_function(void** p);
     extern wxLuaBindMethod wxAuiPaneInfo_methods[];
     extern int wxAuiPaneInfo_methodCount;
     extern wxLuaBindNumber wxAuiPaneInfo_enums[];
@@ -14171,7 +14239,13 @@ wxLuaBindClass* wxLuaGetClassList_wxaui(size_t &count)
         { wxluaclassname_wxAuiNotebookEvent, wxAuiNotebookEvent_methods, wxAuiNotebookEvent_methodCount, CLASSINFO(wxAuiNotebookEvent), &wxluatype_wxAuiNotebookEvent, wxluabaseclassnames_wxAuiNotebookEvent, wxluabaseclassbinds_wxAuiNotebookEvent, NULL, NULL, NULL, 0, &wxLua_wxAuiNotebookEvent_delete_function, }, 
         { wxluaclassname_wxAuiNotebookPage, wxAuiNotebookPage_methods, wxAuiNotebookPage_methodCount, NULL, &wxluatype_wxAuiNotebookPage, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxAuiNotebookPage_delete_function, }, 
         { wxluaclassname_wxAuiNotebookPageArray, wxAuiNotebookPageArray_methods, wxAuiNotebookPageArray_methodCount, NULL, &wxluatype_wxAuiNotebookPageArray, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxAuiNotebookPageArray_delete_function, }, 
+#endif // wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI
+
+#if (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
         { wxluaclassname_wxAuiPaneButton, wxAuiPaneButton_methods, wxAuiPaneButton_methodCount, NULL, &wxluatype_wxAuiPaneButton, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxAuiPaneButton_delete_function, }, 
+#endif // (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
+#if wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI
         { wxluaclassname_wxAuiPaneInfo, wxAuiPaneInfo_methods, wxAuiPaneInfo_methodCount, NULL, &wxluatype_wxAuiPaneInfo, NULL, NULL, NULL, NULL, wxAuiPaneInfo_enums, wxAuiPaneInfo_enumCount, &wxLua_wxAuiPaneInfo_delete_function, }, 
         { wxluaclassname_wxAuiPaneInfoArray, wxAuiPaneInfoArray_methods, wxAuiPaneInfoArray_methodCount, NULL, &wxluatype_wxAuiPaneInfoArray, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxAuiPaneInfoArray_delete_function, }, 
         { wxluaclassname_wxAuiSimpleTabArt, wxAuiSimpleTabArt_methods, wxAuiSimpleTabArt_methodCount, NULL, &wxluatype_wxAuiSimpleTabArt, wxluabaseclassnames_wxAuiSimpleTabArt, wxluabaseclassbinds_wxAuiSimpleTabArt, NULL, NULL, NULL, 0, &wxLua_wxAuiSimpleTabArt_delete_function, }, 
