@@ -17,7 +17,7 @@
 -- Globals
 -- ---------------------------------------------------------------------------
 
-WXLUA_BINDING_VERSION = 37 -- Used to verify that the bindings are updated
+WXLUA_BINDING_VERSION = 38 -- Used to verify that the bindings are updated
                            -- This must match modules/wxlua/wxldefs.h
                            -- otherwise a compile time error will be generated.
 
@@ -5235,7 +5235,7 @@ function GenerateOverloadBinding(sortedBindings, object)
             end
         end
 
-        if (overload_count > 1) and (not_overload < overload_count) then
+        if (overload_count > 1) and (not_overload < overload_count) and methodBindings[1].CFunctionNameBase then
             --print(n, #methodBindings, methodBindings[1].Map)
 
             local overload_condition = ""

@@ -626,7 +626,7 @@ class %delete wxPaintEvent : public wxEvent
 {
     %wxEventType wxEVT_PAINT // EVT_PAINT(func);
 
-    wxPaintEvent(int id = 0);
+    !%wxchkver_3_1_4 wxPaintEvent(int id = 0);
 };
 
 // ---------------------------------------------------------------------------

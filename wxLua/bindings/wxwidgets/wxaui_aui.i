@@ -1024,9 +1024,10 @@ class %delete wxAuiDockUIPart
 {
     int type;                // ui part type (see enum above);
     int orientation;         // orientation (either wxHORIZONTAL or wxVERTICAL);
-    wxAuiDockInfo* dock;        // which dock the item is associated with
-    wxAuiPaneInfo* pane;        // which pane the item is associated with
-    wxAuiPaneButton* button;    // which pane button the item is associated with
+    wxAuiDockInfo* dock;     // which dock the item is associated with
+    wxAuiPaneInfo* pane;     // which pane the item is associated with
+    %wxchkver_3_1_4 int button;               // which pane button the item is associated with
+    !%wxchkver_3_1_4 wxAuiPaneButton* button; // which pane button the item is associated with
     wxSizer* cont_sizer;     // the part's containing sizer
     wxSizerItem* sizer_item; // the sizer item of the part
     wxRect rect;             // client coord rectangle of the part itself
@@ -1035,12 +1036,12 @@ class %delete wxAuiDockUIPart
 
 // ---------------------------------------------------------------------------
 // wxAuiPaneButton
-
+#if !%wxchkver_3_1_4
 class %delete wxAuiPaneButton
 {
     int button_id;        // id of the button (e.g. buttonClose);
 };
-
+#endif
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
