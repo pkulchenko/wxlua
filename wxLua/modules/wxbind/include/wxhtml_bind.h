@@ -73,6 +73,7 @@ extern WXDLLIMPEXP_BINDWXHTML wxLuaBinding* wxLuaBinding_wxhtml_init();
     extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxHtmlCellEvent;
     extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxHtmlColourCell;
     extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxHtmlFontCell;
+    extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxHtmlLinkEvent;
     extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxHtmlWindowInterface;
     extern WXDLLIMPEXP_DATA_BINDWXHTML(int) wxluatype_wxSimpleHtmlListBox;
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)

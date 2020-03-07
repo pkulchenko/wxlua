@@ -2723,6 +2723,15 @@ wx_dataTypeTable =
     Name = "wxHtmlHelpData",
     ValueType = "class",
   },
+  wxHtmlLinkEvent = {
+    BaseClasses = {
+      [1] = "wxCommandEvent",
+    },
+    Condition = "(wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)",
+    IsNumber = false,
+    Name = "wxHtmlLinkEvent",
+    ValueType = "class",
+  },
   wxHtmlLinkInfo = {
     Condition = "wxLUA_USE_wxHTML && wxUSE_HTML",
     IsNumber = false,

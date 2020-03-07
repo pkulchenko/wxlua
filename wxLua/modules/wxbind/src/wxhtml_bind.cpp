@@ -2281,6 +2281,88 @@ int wxHtmlCellEvent_methodCount = sizeof(wxHtmlCellEvent_methods)/sizeof(wxLuaBi
 #endif  // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
 
 
+#if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+// ---------------------------------------------------------------------------
+// Bind class wxHtmlLinkEvent
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxHtmlLinkEvent'
+int wxluatype_wxHtmlLinkEvent = WXLUA_TUNKNOWN;
+
+#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlLinkEvent_GetLinkInfo[] = { &wxluatype_wxHtmlLinkEvent, NULL };
+static int LUACALL wxLua_wxHtmlLinkEvent_GetLinkInfo(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlLinkEvent_GetLinkInfo[1] = {{ wxLua_wxHtmlLinkEvent_GetLinkInfo, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxHtmlLinkEvent_GetLinkInfo }};
+//     const wxHtmlLinkInfo& GetLinkInfo() const;
+static int LUACALL wxLua_wxHtmlLinkEvent_GetLinkInfo(lua_State *L)
+{
+    // get this
+    wxHtmlLinkEvent * self = (wxHtmlLinkEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxHtmlLinkEvent);
+    // call GetLinkInfo
+    const wxHtmlLinkInfo* returns = (const wxHtmlLinkInfo*)&self->GetLinkInfo();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxHtmlLinkInfo);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlLinkEvent_delete[] = { &wxluatype_wxHtmlLinkEvent, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlLinkEvent_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxHtmlLinkEvent_delete }};
+
+
+#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxHtmlLinkEvent_constructor[] = { &wxluatype_TNUMBER, &wxluatype_wxHtmlLinkInfo, NULL };
+static int LUACALL wxLua_wxHtmlLinkEvent_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxHtmlLinkEvent_constructor[1] = {{ wxLua_wxHtmlLinkEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxHtmlLinkEvent_constructor }};
+//     wxHtmlLinkEvent(int id, const wxHtmlLinkInfo &linkinfo);
+static int LUACALL wxLua_wxHtmlLinkEvent_constructor(lua_State *L)
+{
+    // const wxHtmlLinkInfo linkinfo
+    const wxHtmlLinkInfo * linkinfo = (const wxHtmlLinkInfo *)wxluaT_getuserdatatype(L, 2, wxluatype_wxHtmlLinkInfo);
+    // int id
+    int id = (int)wxlua_getnumbertype(L, 1);
+    // call constructor
+    wxHtmlLinkEvent* returns = new wxHtmlLinkEvent(id, *linkinfo);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxHtmlLinkEvent);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxHtmlLinkEvent);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+
+
+
+void wxLua_wxHtmlLinkEvent_delete_function(void** p)
+{
+    wxHtmlLinkEvent* o = (wxHtmlLinkEvent*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxHtmlLinkEvent_methods[] = {
+#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+    { "GetLinkInfo", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHtmlLinkEvent_GetLinkInfo, 1, NULL },
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxHtmlLinkEvent_delete, 1, NULL },
+
+#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+    { "wxHtmlLinkEvent", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxHtmlLinkEvent_constructor, 1, NULL },
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+
+    { 0, 0, 0, 0 },
+};
+
+int wxHtmlLinkEvent_methodCount = sizeof(wxHtmlLinkEvent_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+
+
 #if wxLUA_USE_wxHTML && wxUSE_HTML
 // ---------------------------------------------------------------------------
 // Bind class wxHtmlLinkInfo
@@ -6168,6 +6250,12 @@ wxLuaBindEvent* wxLuaGetEventList_wxhtml(size_t &count)
 {
     static wxLuaBindEvent eventList[] =
     {
+#if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+        { "wxEVT_HTML_CELL_CLICKED", WXLUA_GET_wxEventType_ptr(wxEVT_HTML_CELL_CLICKED), &wxluatype_wxHtmlCellEvent },
+        { "wxEVT_HTML_CELL_HOVER", WXLUA_GET_wxEventType_ptr(wxEVT_HTML_CELL_HOVER), &wxluatype_wxHtmlCellEvent },
+        { "wxEVT_HTML_LINK_CLICKED", WXLUA_GET_wxEventType_ptr(wxEVT_HTML_LINK_CLICKED), &wxluatype_wxHtmlLinkEvent },
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+
 #if (wxLUA_USE_wxHTML && wxUSE_HTML) && (wxLUA_USE_wxLuaHtmlWindow)
         { "wxEVT_HTML_TAG_HANDLER", WXLUA_GET_wxEventType_ptr(wxEVT_HTML_TAG_HANDLER), &wxluatype_wxLuaHtmlWinTagEvent },
 #endif // (wxLUA_USE_wxHTML && wxUSE_HTML) && (wxLUA_USE_wxLuaHtmlWindow)
@@ -6315,6 +6403,7 @@ static const char* wxluaclassname_wxHtmlEasyPrinting = "wxHtmlEasyPrinting";
 static const char* wxluaclassname_wxHtmlFontCell = "wxHtmlFontCell";
 static const char* wxluaclassname_wxHtmlHelpController = "wxHtmlHelpController";
 static const char* wxluaclassname_wxHtmlHelpData = "wxHtmlHelpData";
+static const char* wxluaclassname_wxHtmlLinkEvent = "wxHtmlLinkEvent";
 static const char* wxluaclassname_wxHtmlLinkInfo = "wxHtmlLinkInfo";
 static const char* wxluaclassname_wxHtmlParser = "wxHtmlParser";
 static const char* wxluaclassname_wxHtmlPrintout = "wxHtmlPrintout";
@@ -6353,6 +6442,8 @@ static const char* wxluabaseclassnames_wxHtmlHelpController[] = { wxluaclassname
 static wxLuaBindClass* wxluabaseclassbinds_wxHtmlHelpController[] = { NULL };
 static const char* wxluabaseclassnames_wxHtmlHelpData[] = { wxluaclassname_wxObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxHtmlHelpData[] = { NULL };
+static const char* wxluabaseclassnames_wxHtmlLinkEvent[] = { wxluaclassname_wxCommandEvent, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxHtmlLinkEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxHtmlParser[] = { wxluaclassname_wxObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxHtmlParser[] = { NULL };
 static const char* wxluabaseclassnames_wxHtmlPrintout[] = { wxluaclassname_wxPrintout, NULL };
@@ -6383,6 +6474,9 @@ static wxLuaBindClass* wxluabaseclassbinds_wxSimpleHtmlListBox[] = { NULL, NULL 
     extern wxLuaBindMethod wxHtmlFontCell_methods[];
     extern int wxHtmlFontCell_methodCount;
     extern void wxLua_wxHtmlFontCell_delete_function(void** p);
+    extern wxLuaBindMethod wxHtmlLinkEvent_methods[];
+    extern int wxHtmlLinkEvent_methodCount;
+    extern void wxLua_wxHtmlLinkEvent_delete_function(void** p);
     extern wxLuaBindMethod wxHtmlWindowInterface_methods[];
     extern int wxHtmlWindowInterface_methodCount;
     extern wxLuaBindNumber wxHtmlWindowInterface_enums[];
@@ -6494,6 +6588,10 @@ wxLuaBindClass* wxLuaGetClassList_wxhtml(size_t &count)
         { wxluaclassname_wxHtmlHelpController, wxHtmlHelpController_methods, wxHtmlHelpController_methodCount, CLASSINFO(wxHtmlHelpController), &wxluatype_wxHtmlHelpController, wxluabaseclassnames_wxHtmlHelpController, wxluabaseclassbinds_wxHtmlHelpController, NULL, NULL, NULL, 0, &wxLua_wxHtmlHelpController_delete_function, }, 
         { wxluaclassname_wxHtmlHelpData, wxHtmlHelpData_methods, wxHtmlHelpData_methodCount, CLASSINFO(wxHtmlHelpData), &wxluatype_wxHtmlHelpData, wxluabaseclassnames_wxHtmlHelpData, wxluabaseclassbinds_wxHtmlHelpData, NULL, NULL, NULL, 0, &wxLua_wxHtmlHelpData_delete_function, }, 
 #endif // (wxLUA_USE_wxHTML && wxUSE_HTML) && (wxLUA_USE_wxHtmlHelpController && wxUSE_WXHTML_HELP)
+
+#if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
+        { wxluaclassname_wxHtmlLinkEvent, wxHtmlLinkEvent_methods, wxHtmlLinkEvent_methodCount, CLASSINFO(wxHtmlLinkEvent), &wxluatype_wxHtmlLinkEvent, wxluabaseclassnames_wxHtmlLinkEvent, wxluabaseclassbinds_wxHtmlLinkEvent, NULL, NULL, NULL, 0, &wxLua_wxHtmlLinkEvent_delete_function, }, 
+#endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
 
 #if wxLUA_USE_wxHTML && wxUSE_HTML
         { wxluaclassname_wxHtmlLinkInfo, wxHtmlLinkInfo_methods, wxHtmlLinkInfo_methodCount, NULL, &wxluatype_wxHtmlLinkInfo, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxHtmlLinkInfo_delete_function, }, 
