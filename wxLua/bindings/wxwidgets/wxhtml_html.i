@@ -216,6 +216,9 @@ class wxHtmlFontCell : public wxHtmlCell
 
 class %delete wxHtmlCellEvent : public wxCommandEvent
 {
+    %wxEventType wxEVT_HTML_CELL_HOVER  // EVT_HTML_CELL_HOVER(id, fn);
+    %wxEventType wxEVT_HTML_CELL_CLICKED // EVT_HTML_CELL_CLICKED(id, fn);
+
     wxHtmlCellEvent();
     wxHtmlCellEvent(wxEventType commandType, int id, wxHtmlCell *cell, const wxPoint &pt, const wxMouseEvent &ev);
 
@@ -225,6 +228,24 @@ class %delete wxHtmlCellEvent : public wxCommandEvent
 
     void SetLinkClicked(bool linkclicked);
     bool GetLinkClicked() const;
+};
+
+#endif // %wxchkver_2_8
+
+// ---------------------------------------------------------------------------
+// wxHtmlLinkEvent
+
+#if %wxchkver_2_8
+
+#include "wx/html/htmlwin.h"
+
+class %delete wxHtmlLinkEvent : public wxCommandEvent
+{
+    %wxEventType wxEVT_HTML_LINK_CLICKED // EVT_HTML_LINK_CLICKED(id, fn);
+
+    wxHtmlLinkEvent(int id, const wxHtmlLinkInfo &linkinfo);
+
+    const wxHtmlLinkInfo& GetLinkInfo() const;
 };
 
 #endif // %wxchkver_2_8
