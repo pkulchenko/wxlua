@@ -150,6 +150,8 @@ class wxSizer : public wxObject
     void FitInside(wxWindow* window);
     wxSizerItemList& GetChildren();
     wxWindow *GetContainingWindow() const;
+    size_t GetItemCount() const;
+    bool IsEmpty() const;
     wxSizerItem* GetItem(wxWindow* window, bool recursive = false);
     wxSizerItem* GetItem(wxSizer* sizer, bool recursive = false);
     wxSizerItem* GetItem(size_t index);
