@@ -51,6 +51,9 @@ extern WXDLLIMPEXP_BINDWXADV wxLuaBinding* wxLuaBinding_wxadv_init();
     #include "wx/sound.h"
 #endif // (wxCHECK_VERSION(2,6,0) && wxUSE_SOUND) && (wxLUA_USE_wxWave)
 
+#include "wx/dataview.h"
+#include "wx/dvrenderers.h"
+
 #if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxAnimation && wxUSE_ANIMATIONCTRL
     #include "wx/animate.h"
 #endif // wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxAnimation && wxUSE_ANIMATIONCTRL
@@ -114,6 +117,10 @@ extern WXDLLIMPEXP_BINDWXADV wxLuaBinding* wxLuaBinding_wxadv_init();
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxSound;
 #endif // (wxCHECK_VERSION(2,6,0) && wxUSE_SOUND) && (wxLUA_USE_wxWave)
 
+#if (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxUSE_SPINCTRL)
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewSpinRenderer;
+#endif // (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxUSE_SPINCTRL)
+
 #if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxAnimation && wxUSE_ANIMATIONCTRL
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxAnimation;
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxAnimationCtrl;
@@ -127,6 +134,39 @@ extern WXDLLIMPEXP_BINDWXADV wxLuaBinding* wxLuaBinding_wxadv_init();
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxHyperlinkCtrl;
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxHyperlinkEvent;
 #endif // wxCHECK_VERSION(2,8,0) && wxUSE_HYPERLINKCTRL && wxLUA_USE_wxHyperlinkCtrl
+
+#if wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewBitmapRenderer;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewCheckIconText;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewChoiceByIndexRenderer;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewChoiceRenderer;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewColumn;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewColumnBase;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewCtrl;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewCtrlBase;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewCustomRendererBase;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewEvent;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewIconText;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewIconTextRenderer;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewIndexListModel;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewItem;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewItemArray;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewItemAttr;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewListModel;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewListStore;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewListStoreLine;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewModel;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewModelNotifier;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewProgressRenderer;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewRenderer;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewRendererBase;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewTextRenderer;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewToggleRenderer;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewTreeStore;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewTreeStoreContainerNode;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewTreeStoreNode;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewValueAdjuster;
+#endif // wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl
 
 #if wxLUA_USE_wxBitmapComboBox && wxUSE_BITMAPCOMBOBOX
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxBitmapComboBox;

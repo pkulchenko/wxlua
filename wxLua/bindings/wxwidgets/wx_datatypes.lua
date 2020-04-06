@@ -1283,6 +1283,275 @@ wx_dataTypeTable =
     Name = "wxDataOutputStream",
     ValueType = "class",
   },
+  wxDataViewBitmapRenderer = {
+    BaseClasses = {
+      [1] = "wxDataViewRenderer",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewBitmapRenderer",
+    ValueType = "class",
+  },
+  wxDataViewCellMode = {
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = true,
+    Name = "wxDataViewCellMode",
+    ValueType = "enum",
+  },
+  wxDataViewCellRenderState = {
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = true,
+    Name = "wxDataViewCellRenderState",
+    ValueType = "enum",
+  },
+  wxDataViewCheckIconText = {
+    BaseClasses = {
+      [1] = "wxDataViewIconText",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewCheckIconText",
+    ValueType = "class",
+  },
+  wxDataViewChoiceByIndexRenderer = {
+    BaseClasses = {
+      [1] = "wxDataViewChoiceRenderer",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewChoiceByIndexRenderer",
+    ValueType = "class",
+  },
+  wxDataViewChoiceRenderer = {
+    BaseClasses = {
+      [1] = "wxDataViewRenderer",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewChoiceRenderer",
+    ValueType = "class",
+  },
+  wxDataViewColumn = {
+    BaseClasses = {
+      [1] = "wxDataViewColumnBase",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewColumn",
+    ValueType = "class",
+  },
+  wxDataViewColumnBase = {
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewColumnBase",
+    ValueType = "class",
+  },
+  wxDataViewCtrl = {
+    BaseClasses = {
+      [1] = "wxDataViewCtrlBase",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewCtrl",
+    ValueType = "class",
+  },
+  wxDataViewCtrlBase = {
+    BaseClasses = {
+      [1] = "wxControl",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewCtrlBase",
+    ValueType = "class",
+  },
+  wxDataViewCustomRenderer = {
+    IsNumber = false,
+    Name = "wxDataViewCustomRenderer",
+    ValueType = "class",
+  },
+  wxDataViewCustomRendererBase = {
+    BaseClasses = {
+      [1] = "wxDataViewRendererBase",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewCustomRendererBase",
+    ValueType = "class",
+  },
+  wxDataViewEvent = {
+    BaseClasses = {
+      [1] = "wxNotifyEvent",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewEvent",
+    ValueType = "class",
+  },
+  wxDataViewIconText = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewIconText",
+    ValueType = "class",
+  },
+  wxDataViewIconTextRenderer = {
+    BaseClasses = {
+      [1] = "wxDataViewTextRenderer",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewIconTextRenderer",
+    ValueType = "class",
+  },
+  wxDataViewIndexListModel = {
+    BaseClasses = {
+      [1] = "wxDataViewListModel",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewIndexListModel",
+    ValueType = "class",
+  },
+  wxDataViewItem = {
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewItem",
+    ValueType = "class",
+  },
+  wxDataViewItemArray = {
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewItemArray",
+    ValueType = "class",
+  },
+  wxDataViewItemAttr = {
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewItemAttr",
+    ValueType = "class",
+  },
+  wxDataViewListModel = {
+    BaseClasses = {
+      [1] = "wxDataViewModel",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewListModel",
+    ValueType = "class",
+  },
+  wxDataViewListStore = {
+    BaseClasses = {
+      [1] = "wxDataViewIndexListModel",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewListStore",
+    ValueType = "class",
+  },
+  wxDataViewListStoreLine = {
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewListStoreLine",
+    ValueType = "class",
+  },
+  wxDataViewModel = {
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewModel",
+    ValueType = "class",
+  },
+  wxDataViewModelNotifier = {
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewModelNotifier",
+    ValueType = "class",
+  },
+  wxDataViewProgressRenderer = {
+    BaseClasses = {
+      [1] = "wxDataViewRenderer",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewProgressRenderer",
+    ValueType = "class",
+  },
+  wxDataViewRenderer = {
+    BaseClasses = {
+      [1] = "wxDataViewCustomRendererBase",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewRenderer",
+    ValueType = "class",
+  },
+  wxDataViewRendererBase = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewRendererBase",
+    ValueType = "class",
+  },
+  wxDataViewSpinRenderer = {
+    BaseClasses = {
+      [1] = "wxDataViewCustomRenderer",
+    },
+    Condition = "(wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxUSE_SPINCTRL)",
+    IsNumber = false,
+    Name = "wxDataViewSpinRenderer",
+    ValueType = "class",
+  },
+  wxDataViewTextRenderer = {
+    BaseClasses = {
+      [1] = "wxDataViewRenderer",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewTextRenderer",
+    ValueType = "class",
+  },
+  wxDataViewToggleRenderer = {
+    BaseClasses = {
+      [1] = "wxDataViewRenderer",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewToggleRenderer",
+    ValueType = "class",
+  },
+  wxDataViewTreeStore = {
+    BaseClasses = {
+      [1] = "wxDataViewModel",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewTreeStore",
+    ValueType = "class",
+  },
+  wxDataViewTreeStoreContainerNode = {
+    BaseClasses = {
+      [1] = "wxDataViewTreeStoreNode",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewTreeStoreContainerNode",
+    ValueType = "class",
+  },
+  wxDataViewTreeStoreNode = {
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewTreeStoreNode",
+    ValueType = "class",
+  },
+  wxDataViewValueAdjuster = {
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxDataViewValueAdjuster",
+    ValueType = "class",
+  },
   wxDateEvent = {
     BaseClasses = {
       [1] = "wxCommandEvent",
@@ -5946,6 +6215,7 @@ wx_preprocConditionTable =
   wxLUA_USE_wxCursor = "wxLUA_USE_wxCursor",
   wxLUA_USE_wxDC = "wxLUA_USE_wxDC",
   wxLUA_USE_wxDataObject = "wxLUA_USE_wxDataObject",
+  wxLUA_USE_wxDataViewCtrl = "wxLUA_USE_wxDataViewCtrl",
   wxLUA_USE_wxDatePickerCtrl = "wxLUA_USE_wxDatePickerCtrl",
   wxLUA_USE_wxDateSpan = "wxLUA_USE_wxDateSpan",
   wxLUA_USE_wxDateTime = "wxLUA_USE_wxDateTime",
@@ -6090,6 +6360,7 @@ wx_preprocConditionTable =
   wxUSE_CONSTRAINTS = "wxUSE_CONSTRAINTS",
   wxUSE_CONTROLS = "wxUSE_CONTROLS",
   wxUSE_DATAOBJ = "wxUSE_DATAOBJ",
+  wxUSE_DATAVIEWCTRL = "wxUSE_DATAVIEWCTRL",
   wxUSE_DATEPICKCTRL = "wxUSE_DATEPICKCTRL",
   wxUSE_DATETIME = "wxUSE_DATETIME",
   wxUSE_DEBUG_CONTEXT = "wxUSE_DEBUG_CONTEXT",

@@ -94,15 +94,16 @@ private:
     DECLARE_ABSTRACT_CLASS(wxLuaGridTableBase)
 };
 
-// Template function to "delete" wxGridCellWorker and wxGridCellAttr classes
+#endif // wxUSE_GRID && wxLUA_USE_wxGrid
+
+// Template function to "delete" wxRecCounter-based classes (wxGridCellWorker and wxGridCellAttr etc.)
 // since DecRef() should be called to delete them.
-template <class T> void wxLua_wxGrid_DecRef_delete_function(void** p)
+template <class T> void wxLua_wxRefCounter_DecRef_delete_function(void** p)
 {
     T* o = (T*)(*p);
     o->DecRef();
 }
 
 
-#endif // wxUSE_GRID && wxLUA_USE_wxGrid
 
 #endif // WX_LUA_WXLADV_H

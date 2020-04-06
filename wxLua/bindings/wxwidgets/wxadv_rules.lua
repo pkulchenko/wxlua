@@ -95,6 +95,8 @@ interface_filepath = wxlua_dir.."bindings/wxwidgets"
 interface_fileTable =
 {
     "wxadv_adv.i",
+    "wxadv_dataview.i",
+    "wxadv_dvrenderers.i",
     "wxadv_grid.i"
 }
 

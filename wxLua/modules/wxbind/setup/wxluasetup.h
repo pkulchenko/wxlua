@@ -55,6 +55,7 @@
 #define wxLUA_USE_wxCriticalSection             1
 #define wxLUA_USE_wxCriticalSectionLocker       1
 #define wxLUA_USE_wxDataObject                  1
+#define wxLUA_USE_wxDataViewCtrl                1
 #define wxLUA_USE_wxDatePickerCtrl              1
 #define wxLUA_USE_wxTimePickerCtrl              1
 #define wxLUA_USE_wxDateSpan                    1
