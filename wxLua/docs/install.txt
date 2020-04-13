@@ -34,7 +34,7 @@ supported by wxWidgets are supported by wxLua.
 5. [Advanced building options](#C5) \
     5.1 [Building a minimal set of wxWidgets wrappers](#C5.1) \
     5.2 [Embedding wxLua into a C++ Application](#C5.2) \
-    5.2 [wxLua libraries and linking order](#C5.3)
+    5.3 [wxLua libraries and linking order](#C5.3)
 
 
 <a name="C1"/>
