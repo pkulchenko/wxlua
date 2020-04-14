@@ -1341,6 +1341,9 @@ wx_dataTypeTable =
     ValueType = "class",
   },
   wxDataViewColumnBase = {
+    BaseClasses = {
+      [1] = "wxSettableHeaderColumn",
+    },
     Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
     IsNumber = false,
     Name = "wxDataViewColumnBase",
@@ -1362,11 +1365,6 @@ wx_dataTypeTable =
     Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
     IsNumber = false,
     Name = "wxDataViewCtrlBase",
-    ValueType = "class",
-  },
-  wxDataViewCustomRenderer = {
-    IsNumber = false,
-    Name = "wxDataViewCustomRenderer",
     ValueType = "class",
   },
   wxDataViewCustomRendererBase = {
@@ -1497,7 +1495,7 @@ wx_dataTypeTable =
   },
   wxDataViewSpinRenderer = {
     BaseClasses = {
-      [1] = "wxDataViewCustomRenderer",
+      [1] = "wxDataViewRenderer",
     },
     Condition = "(wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxUSE_SPINCTRL)",
     IsNumber = false,
@@ -2845,6 +2843,12 @@ wx_dataTypeTable =
     IsNumber = false,
     Name = "wxHeaderButtonParams",
     ValueType = "struct",
+  },
+  wxHeaderColumn = {
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxHeaderColumn",
+    ValueType = "class",
   },
   wxHeaderSortIconType = {
     Condition = "wxLUA_USE_wxRenderer",
@@ -4824,6 +4828,15 @@ wx_dataTypeTable =
     },
     IsNumber = false,
     Name = "wxSetCursorEvent",
+    ValueType = "class",
+  },
+  wxSettableHeaderColumn = {
+    BaseClasses = {
+      [1] = "wxHeaderColumn",
+    },
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = false,
+    Name = "wxSettableHeaderColumn",
     ValueType = "class",
   },
   wxShowEffect = {

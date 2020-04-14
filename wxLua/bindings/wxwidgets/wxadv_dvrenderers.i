@@ -160,19 +160,11 @@ class wxDataViewCustomRendererBase : public wxDataViewRendererBase
 // ----------------------------------------------------------------------------
 
 #if wxUSE_SPINCTRL
-class wxDataViewSpinRenderer: public wxDataViewCustomRenderer
+class wxDataViewSpinRenderer: public wxDataViewRenderer	// TODO: wxDataViewCustomRenderer
 {
     wxDataViewSpinRenderer( int min, int max,
                             wxDataViewCellMode mode = wxDATAVIEW_CELL_EDITABLE,
                             int alignment = wxDVR_DEFAULT_ALIGNMENT );
-    virtual bool HasEditorCtrl() const;
-//    virtual wxWindow* CreateEditorCtrl( wxWindow *parent, wxRect labelRect, const wxVariant &value );
-//    virtual bool GetValueFromEditorCtrl( wxWindow* editor, wxVariant &value );
-//    virtual bool SetValue( const wxVariant &value );
-//    virtual bool GetValue( wxVariant &value ) const;
-#if wxUSE_ACCESSIBILITY
-    virtual wxString GetAccessibleDescription() const;
-#endif
 };
 #endif // wxUSE_SPINCTRL
 

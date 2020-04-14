@@ -166,6 +166,8 @@ extern WXDLLIMPEXP_BINDWXADV wxLuaBinding* wxLuaBinding_wxadv_init();
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewTreeStoreContainerNode;
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewTreeStoreNode;
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewValueAdjuster;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxHeaderColumn;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxSettableHeaderColumn;
 #endif // wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl
 
 #if wxLUA_USE_wxBitmapComboBox && wxUSE_BITMAPCOMBOBOX

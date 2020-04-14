@@ -24,10 +24,8 @@
 //     wxVariant(const wxString& val, const wxString& name = wxEmptyString);
 // };
 
-// ---------------------------------------------------------
-// wxDataViewItem
-// ---------------------------------------------------------
 
+// class wxDataViewItem
 class %delete wxDataViewItem
 {
     wxDataViewItem();
@@ -38,6 +36,8 @@ class %delete wxDataViewItem
 	bool 	IsOk() const;
 };
 
+
+// class wxDataViewItemArray
 class %delete wxDataViewItemArray
 {
     wxDataViewItemArray();
@@ -65,10 +65,7 @@ class %delete wxDataViewItemArray
 };
 
 
-// ---------------------------------------------------------
-// wxDataViewModelNotifier
-// ---------------------------------------------------------
-
+// class wxDataViewModelNotifier
 class %delete wxDataViewModelNotifier
 {
     wxDataViewModelNotifier();
@@ -92,10 +89,7 @@ class %delete wxDataViewModelNotifier
 };
 
 
-// ----------------------------------------------------------------------------
-// wxDataViewItemAttr: a structure containing the visual attributes of an item
-// ----------------------------------------------------------------------------
-
+// class wxDataViewItemAttr
 class %delete wxDataViewItemAttr
 {
     wxDataViewItemAttr();
@@ -126,12 +120,9 @@ class %delete wxDataViewItemAttr
 };
 
 
-// ---------------------------------------------------------
-// wxDataViewModel
-// ---------------------------------------------------------
-
 /*typedef wxVector<wxDataViewModelNotifier*> wxDataViewModelNotifiers;*/
 
+// class wxDataViewModel
 class %delete wxDataViewModel // : public wxRefCounter
 {
 	// wxRefCounter memory managment
@@ -189,12 +180,7 @@ class %delete wxDataViewModel // : public wxRefCounter
 };
 
 
-// ----------------------------------------------------------------------------
-// wxDataViewListModel: a model of a list, i.e. flat data structure without any
-//      branches/containers, used as base class by wxDataViewIndexListModel and
-//      wxDataViewVirtualListModel
-// ----------------------------------------------------------------------------
-
+// class wxDataViewListModel
 class %delete wxDataViewListModel : public wxDataViewModel
 {
 //    virtual void GetValueByRow(wxVariant &variant, unsigned row, unsigned col) const = 0;
@@ -206,10 +192,7 @@ class %delete wxDataViewListModel : public wxDataViewModel
 };
 
 
-// ---------------------------------------------------------
-// wxDataViewIndexListModel
-// ---------------------------------------------------------
-
+// class wxDataViewIndexListModel
 class %delete wxDataViewIndexListModel : public wxDataViewListModel
 {
     void RowPrepended();
@@ -225,10 +208,7 @@ class %delete wxDataViewIndexListModel : public wxDataViewListModel
 };
 
 
-// ---------------------------------------------------------
-// wxDataViewListStore
-// ---------------------------------------------------------
-
+// class wxDataViewListStore
 class %delete wxDataViewListStoreLine
 {
     wxDataViewListStoreLine( wxUIntPtr data = 0 );
@@ -239,6 +219,8 @@ class %delete wxDataViewListStoreLine
 //    wxVector<wxVariant>  m_values;
 };
 
+
+// class wxDataViewListStore
 class %delete wxDataViewListStore : public wxDataViewIndexListModel
 {
 public:
@@ -266,10 +248,7 @@ public:
 // TODO: wxDataViewVirtualListModel
 
 
-// ---------------------------------------------------------
-// wxDataViewTreeStore
-// ---------------------------------------------------------
-
+// class wxDataViewTreeStoreNode
 class %delete wxDataViewTreeStoreNode
 {
 public:
@@ -290,6 +269,8 @@ public:
 };
 // typedef wxVector<wxDataViewTreeStoreNode*> wxDataViewTreeStoreNodes;
 
+
+// class wxDataViewTreeStoreContainerNode
 class %delete wxDataViewTreeStoreContainerNode : public wxDataViewTreeStoreNode
 {
     wxDataViewTreeStoreContainerNode( wxDataViewTreeStoreNode *parent, const wxString &text,
@@ -298,7 +279,7 @@ class %delete wxDataViewTreeStoreContainerNode : public wxDataViewTreeStoreNode
 //    const wxDataViewTreeStoreNodes &GetChildren() const
 //    wxDataViewTreeStoreNodes &GetChildren()
 
-    // wxDataViewTreeStoreNodes::iterator FindChild(wxDataViewTreeStoreNode* node);
+//	wxDataViewTreeStoreNodes::iterator FindChild(wxDataViewTreeStoreNode* node);
 
     void SetExpandedIcon( const wxIcon &icon );
     const wxIcon &GetExpandedIcon() const;
@@ -309,8 +290,8 @@ class %delete wxDataViewTreeStoreContainerNode : public wxDataViewTreeStoreNode
     void DestroyChildren();
 };
 
-//-----------------------------------------------------------------------------
 
+// class wxDataViewTreeStore
 class %delete wxDataViewTreeStore : public wxDataViewModel
 {
     wxDataViewTreeStore();
@@ -356,10 +337,7 @@ class %delete wxDataViewTreeStore : public wxDataViewModel
 };
 
 
-// ----------------------------------------------------------------------------
-// wxDataViewRenderer and related classes
-// ----------------------------------------------------------------------------
-
+// class wxDataViewRenderer and related classes
 class wxDataViewRenderer : public wxDataViewCustomRendererBase
 {
 //    wxDataViewRenderer( const wxString &varianttype,
@@ -368,11 +346,78 @@ class wxDataViewRenderer : public wxDataViewCustomRendererBase
 };
 
 
-// ---------------------------------------------------------
-// wxDataViewColumnBase
-// ---------------------------------------------------------
+// From wx/headercol.h [begin]
 
-class %delete wxDataViewColumnBase// TODO : public wxSettableHeaderColumn
+enum
+{
+    wxCOL_WIDTH_DEFAULT,
+    wxCOL_WIDTH_AUTOSIZE
+};
+
+enum
+{
+    wxCOL_RESIZABLE,
+    wxCOL_SORTABLE,
+    wxCOL_REORDERABLE,
+    wxCOL_HIDDEN,
+    wxCOL_DEFAULT_FLAGS
+};
+
+
+// class wxHeaderColumn
+class %delete wxHeaderColumn
+{
+    virtual wxString GetTitle() const = 0;
+    virtual wxBitmap GetBitmap() const = 0;
+    virtual int GetWidth() const = 0;
+    virtual int GetMinWidth() const = 0;
+    virtual wxAlignment GetAlignment() const = 0;
+
+    virtual int GetFlags() const = 0;
+    bool HasFlag(int flag) const;
+
+    virtual bool IsResizeable() const;
+    virtual bool IsSortable() const
+    virtual bool IsReorderable() const;
+    virtual bool IsHidden() const;
+    bool IsShown() const;
+
+    virtual bool IsSortKey() const;
+    virtual bool IsSortOrderAscending() const;
+};
+
+
+// class wxSettableHeaderColumn
+class %delete wxSettableHeaderColumn : public wxHeaderColumn
+{
+    virtual void SetTitle(const wxString& title) = 0;
+    virtual void SetBitmap(const wxBitmap& bitmap) = 0;
+    virtual void SetWidth(int width) = 0;
+    virtual void SetMinWidth(int minWidth) = 0;
+    virtual void SetAlignment(wxAlignment align) = 0;
+
+    virtual void SetFlags(int flags) = 0;
+    void ChangeFlag(int flag, bool set);
+    void SetFlag(int flag);
+    void ClearFlag(int flag);
+    void ToggleFlag(int flag);
+
+    virtual void SetResizeable(bool resizable);
+    virtual void SetSortable(bool sortable);
+    virtual void SetReorderable(bool reorderable);
+    virtual void SetHidden(bool hidden);
+
+    virtual void UnsetAsSortKey();
+
+    virtual void SetSortOrder(bool ascending) = 0;
+    void ToggleSortOrder();
+};
+
+// From wx/headercol.h [end]
+
+
+// class wxDataViewColumnBase
+class %delete wxDataViewColumnBase : public wxSettableHeaderColumn
 {
     virtual void SetOwner(wxDataViewCtrl *owner) %ungc_this;	// NOTE: valid owner must be presented
 
@@ -384,6 +429,8 @@ class %delete wxDataViewColumnBase// TODO : public wxSettableHeaderColumn
     virtual wxBitmap GetBitmap() const;
 };
 
+
+// class wxDataViewColumn
 class %delete wxDataViewColumn : public wxDataViewColumnBase
 {
     wxDataViewColumn( const wxString &title, wxDataViewRenderer *renderer,
@@ -395,11 +442,13 @@ class %delete wxDataViewColumn : public wxDataViewColumnBase
                       wxAlignment align = wxALIGN_CENTER,
                       int flags = wxDATAVIEW_COL_RESIZABLE );
 
+#if %__WXMAC__
+    // Should be presented in wxSettableHeaderColumn
+    virtual int GetMaxWidth() const;
+    virtual void SetMaxWidth(int maxWidth);
+#endif
 };
 
-// ---------------------------------------------------------
-// wxDataViewCtrlBase
-// ---------------------------------------------------------
 
 #define wxDV_SINGLE
 #define wxDV_MULTIPLE
@@ -411,6 +460,8 @@ class %delete wxDataViewColumn : public wxDataViewColumnBase
 #define wxDV_ROW_LINES
 #define wxDV_VARIABLE_LINE_HEIGHT
 
+
+// class wxDataViewCtrlBase
 class wxDataViewCtrlBase : public wxControl	//: public wxSystemThemedControl<wxControl>
 {
     virtual bool AssociateModel( wxDataViewModel *model );
@@ -586,10 +637,7 @@ class wxDataViewCtrlBase : public wxControl	//: public wxSystemThemedControl<wxC
 };
 
 
-// ---------------------------------------------------------
-// wxDataViewCtrl
-// ---------------------------------------------------------
-
+// class wxDataViewCtrl
 class wxDataViewCtrl : public wxDataViewCtrlBase
 {
 	wxDataViewCtrl();
@@ -635,10 +683,8 @@ class wxDataViewCtrl : public wxDataViewCtrlBase
     virtual void EditItem(const wxDataViewItem& item, const wxDataViewColumn *column);
 };
 
-// ----------------------------------------------------------------------------
-// wxDataViewEvent - the event class for the wxDataViewCtrl notifications
-// ----------------------------------------------------------------------------
 
+// class wxDataViewEvent
 class %delete wxDataViewEvent : public wxNotifyEvent
 {
     %wxEventType wxEVT_DATAVIEW_SELECTION_CHANGED
