@@ -11936,7 +11936,7 @@ static int LUACALL wxLua_wxDataViewColumnBase_GetBitmap(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewColumnBase_GetModelColumn[] = { &wxluatype_wxDataViewColumnBase, NULL };
 static int LUACALL wxLua_wxDataViewColumnBase_GetModelColumn(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewColumnBase_GetModelColumn[1] = {{ wxLua_wxDataViewColumnBase_GetModelColumn, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewColumnBase_GetModelColumn }};
-//     unsigned int GetModelColumn() const ;
+//     unsigned int GetModelColumn() const;
 static int LUACALL wxLua_wxDataViewColumnBase_GetModelColumn(lua_State *L)
 {
     // get this
@@ -12070,49 +12070,6 @@ int wxDataViewColumnBase_methodCount = sizeof(wxDataViewColumnBase_methods)/size
 // Lua MetaTable Tag for Class 'wxDataViewColumn'
 int wxluatype_wxDataViewColumn = WXLUA_TUNKNOWN;
 
-#if (defined(__WXMAC__)) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewColumn_GetMaxWidth[] = { &wxluatype_wxDataViewColumn, NULL };
-static int LUACALL wxLua_wxDataViewColumn_GetMaxWidth(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewColumn_GetMaxWidth[1] = {{ wxLua_wxDataViewColumn_GetMaxWidth, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewColumn_GetMaxWidth }};
-//     virtual int GetMaxWidth() const;
-static int LUACALL wxLua_wxDataViewColumn_GetMaxWidth(lua_State *L)
-{
-    // get this
-    wxDataViewColumn * self = (wxDataViewColumn *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewColumn);
-    // call GetMaxWidth
-    int returns = (self->GetMaxWidth());
-    // push the result number
-#if LUA_VERSION_NUM >= 503
-if ((double)(lua_Integer)returns == (double)returns) {
-    // Exactly representable as lua_Integer
-    lua_pushinteger(L, returns);
-} else
-#endif
-{
-    lua_pushnumber(L, returns);
-}
-
-    return 1;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewColumn_SetMaxWidth[] = { &wxluatype_wxDataViewColumn, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxDataViewColumn_SetMaxWidth(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewColumn_SetMaxWidth[1] = {{ wxLua_wxDataViewColumn_SetMaxWidth, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDataViewColumn_SetMaxWidth }};
-//     virtual void SetMaxWidth(int maxWidth);
-static int LUACALL wxLua_wxDataViewColumn_SetMaxWidth(lua_State *L)
-{
-    // int maxWidth
-    int maxWidth = (int)wxlua_getnumbertype(L, 2);
-    // get this
-    wxDataViewColumn * self = (wxDataViewColumn *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewColumn);
-    // call SetMaxWidth
-    self->SetMaxWidth(maxWidth);
-
-    return 0;
-}
-
-#endif // (defined(__WXMAC__)) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewColumn_delete[] = { &wxluatype_wxDataViewColumn, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewColumn_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxDataViewColumn_delete }};
 
@@ -12205,11 +12162,6 @@ void wxLua_wxDataViewColumn_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxDataViewColumn_methods[] = {
-#if (defined(__WXMAC__)) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
-    { "GetMaxWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewColumn_GetMaxWidth, 1, NULL },
-    { "SetMaxWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewColumn_SetMaxWidth, 1, NULL },
-#endif // (defined(__WXMAC__)) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
-
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxDataViewColumn_delete, 1, NULL },
 
 #if ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxBitmap))||(wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
@@ -15101,11 +15053,12 @@ static int LUACALL wxLua_wxDataViewEvent_SetDataFormat(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewEvent_SetDataObject[] = { &wxluatype_wxDataViewEvent, &wxluatype_wxDataObject, NULL };
 static int LUACALL wxLua_wxDataViewEvent_SetDataObject(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewEvent_SetDataObject[1] = {{ wxLua_wxDataViewEvent_SetDataObject, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDataViewEvent_SetDataObject }};
-//     void SetDataObject( wxDataObject *obj );
+//     void SetDataObject(%ungc wxDataObject *obj);
 static int LUACALL wxLua_wxDataViewEvent_SetDataObject(lua_State *L)
 {
     // wxDataObject obj
     wxDataObject * obj = (wxDataObject *)wxluaT_getuserdatatype(L, 2, wxluatype_wxDataObject);
+    if (wxluaO_isgcobject(L, obj)) wxluaO_undeletegcobject(L, obj);
     // get this
     wxDataViewEvent * self = (wxDataViewEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewEvent);
     // call SetDataObject

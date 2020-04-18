@@ -421,7 +421,7 @@ class %delete wxDataViewColumnBase : public wxSettableHeaderColumn
 {
     virtual void SetOwner(wxDataViewCtrl *owner) %ungc_this;	// NOTE: valid owner must be presented
 
-    unsigned int GetModelColumn() const ;
+    unsigned int GetModelColumn() const;
     wxDataViewCtrl *GetOwner() const;
     wxDataViewRenderer* GetRenderer() const;
 
@@ -441,12 +441,6 @@ class %delete wxDataViewColumn : public wxDataViewColumnBase
                       unsigned int model_column, int width = wxDVC_DEFAULT_WIDTH,
                       wxAlignment align = wxALIGN_CENTER,
                       int flags = wxDATAVIEW_COL_RESIZABLE );
-
-#if %__WXMAC__
-    // Should be presented in wxSettableHeaderColumn
-    virtual int GetMaxWidth() const;
-    virtual void SetMaxWidth(int maxWidth);
-#endif
 };
 
 
@@ -741,7 +735,7 @@ class %delete wxDataViewEvent : public wxNotifyEvent
 
 
 #if wxUSE_DRAG_AND_DROP
-    void SetDataObject( wxDataObject *obj );
+    void SetDataObject(%ungc wxDataObject *obj);
     wxDataObject *GetDataObject() const;
 
     void SetDataFormat( const wxDataFormat &format );
