@@ -982,15 +982,13 @@ const wxLuaBindClass* LUACALL wxluaT_getclass(lua_State* L, const char* class_na
 
 bool wxluaT_isuserdatatype(lua_State* L, int stack_idx, int wxl_type)
 {
-    extern int wxluatype_wxMemoryBuffer;
-    
     int stack_type = wxluaT_type(L, stack_idx);
     
     if (wxlua_iswxuserdatatype(stack_type) &&
         ((wxluatype_NULL == stack_type) || // FIXME, how to check when NULL is valid or not?
         ((wxl_type == WXLUA_TSTRING) &&
          ((wxluaT_isderivedtype(L, stack_type, *p_wxluatype_wxString) >= 0) ||
-          (wxluaT_isderivedtype(L, stack_type, wxluatype_wxMemoryBuffer) >= 0))) ||
+          (wxluaT_isderivedtype(L, stack_type, *p_wxluatype_wxMemoryBuffer) >= 0))) ||
         (wxluaT_isderivedtype(L, stack_type, wxl_type) >= 0)))
         return true;
         
@@ -1407,7 +1405,6 @@ const char* LUACALL wxlua_getstringtypelen(lua_State *L, int stack_idx, size_t *
         return lua_tolstring(L, stack_idx, len);
     else if (wxlua_iswxuserdata(L, stack_idx))
     {
-        extern int wxluatype_wxMemoryBuffer;
         int stack_type = wxluaT_type(L, stack_idx);
 
         if (wxluaT_isderivedtype(L, stack_type, *p_wxluatype_wxString) >= 0)
@@ -1419,9 +1416,9 @@ const char* LUACALL wxlua_getstringtypelen(lua_State *L, int stack_idx, size_t *
                 *len = strlen(retp);
             return retp;
         }
-        else if (wxluaT_isderivedtype(L, stack_type, wxluatype_wxMemoryBuffer) >= 0)
+        else if (wxluaT_isderivedtype(L, stack_type, *p_wxluatype_wxMemoryBuffer) >= 0)
         {
-            wxMemoryBuffer * wxmem = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, stack_idx, wxluatype_wxMemoryBuffer);
+            wxMemoryBuffer * wxmem = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, stack_idx, *p_wxluatype_wxMemoryBuffer);
             const char *datap = (const char *)wxmem->GetData();
             if (len != NULL)
                 *len = wxmem->GetDataLen();

@@ -3138,6 +3138,7 @@ bool wxLuaBinding_wxbase::RegisterBinding(const wxLuaState& wxlState)
     p_wxluatype_wxSortedArrayString = &wxluatype_wxSortedArrayString;
     p_wxluatype_wxArrayInt          = &wxluatype_wxArrayInt;
     p_wxluatype_wxArrayDouble       = &wxluatype_wxArrayDouble;
+    p_wxluatype_wxMemoryBuffer      = &wxluatype_wxMemoryBuffer;
 
     return ret;
 }
