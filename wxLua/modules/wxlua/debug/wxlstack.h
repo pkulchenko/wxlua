@@ -24,8 +24,8 @@ class WXDLLIMPEXP_FWD_CORE wxProgressDialog;
 
 class WXDLLIMPEXP_FWD_WXLUADEBUG wxLuaDebugData;
 
-WX_DECLARE_HASH_MAP_WITH_DECL( wxUIntPtr, wxUIntPtr, wxIntegerHash, wxIntegerEqual,
-                               wxUIntPtrToUIntPtrHashMap, class WXDLLIMPEXP_BASE );
+WX_DECLARE_HASH_MAP( wxUIntPtr, wxUIntPtr, wxIntegerHash, wxIntegerEqual,
+                     wxUIntPtrToUIntPtrHashMap );
 
 // ----------------------------------------------------------------------------
 // wxWindowIds for the wxLuaStackDialog
