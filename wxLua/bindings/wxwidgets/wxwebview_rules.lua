@@ -78,7 +78,7 @@ hook_cpp_binding_header_includes =
     "#include \"wxbind/include/wxbinddefs.h\"\n"..
     "#include \"wxluasetup.h\"\n"..
     "#include \"wxbind/include/wxcore_bind.h\"\n"..
-    "#if not defined(wxUSE_WEBVIEW)\n"..
+    "#if !defined(wxUSE_WEBVIEW)\n"..
     "    #define wxUSE_WEBVIEW 0\n"..
     "#endif\n"
 

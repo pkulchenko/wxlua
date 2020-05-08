@@ -11,7 +11,7 @@
 #include "wxbind/include/wxbinddefs.h"
 #include "wxluasetup.h"
 #include "wxbind/include/wxcore_bind.h"
-#if not defined(wxUSE_WEBVIEW)
+#if !defined(wxUSE_WEBVIEW)
     #define wxUSE_WEBVIEW 0
 #endif
 
