@@ -89,9 +89,7 @@ int LUACALL wxlua_printFunction( lua_State *L )
         s = lua_tostring(L, -1);    /* get result */
         if (s == NULL)
         {
-            // FIXME use wxlua_error here? right now wxlua_error doesn't do anything special - JL
-            return luaL_error(L, LUA_QL("tostring") " must return a string to "
-                              LUA_QL("print"));
+            return luaL_error(L, "'tostring' must return a string to 'print'");
         }
 
         if (i > 1) msg.Append(wxT("\t")); // Lua uses a tab in luaB_print
