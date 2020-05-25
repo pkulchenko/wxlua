@@ -38,7 +38,9 @@
 #include "lualib.h"  /* for #define LUA_BITLIBNAME in Lua 5.2 and LuaJIT */
 
 /* We install into "bit32" which doesn't conflict with LuaJIT's "bit" */
-#if /* !defined(LUA_BITLIBNAME) && */ (LUA_VERSION_NUM < 502)
+#if (LUA_VERSION_NUM < 502)
+
+#define LUA_BITLIBNAME	"bit32"
 
 /* ----- adapted from lua-5.2.0 luaconf.h: ----- */
 
@@ -380,8 +382,8 @@ static const luaL_Reg bitlib[] = {
 
 LUAMOD_API int luaopen_bit32 (lua_State *L) {
   /* luaL_newlib(L, bitlib); */
-  luaL_register(L, "bit32", bitlib);
+  luaL_register(L, LUA_BITLIBNAME, bitlib);
   return 1;
 }
 
-#endif // !defined(LUA_BITLIBNAME) && (LUA_VERSION_NUM < 502)
+#endif // (LUA_VERSION_NUM < 502)
