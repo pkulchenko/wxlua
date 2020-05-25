@@ -382,7 +382,9 @@ if ((double)(lua_Integer)(wxLuaPrintout::ms_test_int) == (double)(wxLuaPrintout:
     lua_pushinteger(L, wxLuaPrintout::ms_test_int);
 } else
 #endif
+{
     lua_pushnumber(L, wxLuaPrintout::ms_test_int);
+}
     // return the number of values
     return 1;
 }
@@ -559,7 +561,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -789,7 +793,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -845,7 +851,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -885,7 +893,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -909,7 +919,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -931,7 +943,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -953,7 +967,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -998,7 +1014,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -1036,7 +1054,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -1855,7 +1875,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -2258,7 +2280,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -2388,7 +2412,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -2632,7 +2658,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -2654,7 +2682,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -2676,7 +2706,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -2698,7 +2730,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -2768,7 +2802,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -3174,7 +3210,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -3323,7 +3361,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -3365,7 +3405,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -3387,7 +3429,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -3863,7 +3907,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -3885,7 +3931,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }

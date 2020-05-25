@@ -3298,7 +3298,9 @@ if ((double)(lua_Integer)(%s) == (double)(%s)) {
     lua_pushinteger(L, %s);
 } else
 #endif
+{
     lua_pushnumber(L, %s);
+}
 ]]):format(val, val, val, val))
                 end
 
@@ -4346,7 +4348,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 ]])
                         end
 

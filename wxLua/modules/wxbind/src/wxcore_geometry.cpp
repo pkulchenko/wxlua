@@ -60,7 +60,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -120,7 +122,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -172,7 +176,9 @@ if ((double)(lua_Integer)(self->m_x) == (double)(self->m_x)) {
     lua_pushinteger(L, self->m_x);
 } else
 #endif
+{
     lua_pushnumber(L, self->m_x);
+}
     // return the number of values
     return 1;
 }
@@ -192,7 +198,9 @@ if ((double)(lua_Integer)(self->m_y) == (double)(self->m_y)) {
     lua_pushinteger(L, self->m_y);
 } else
 #endif
+{
     lua_pushnumber(L, self->m_y);
+}
     // return the number of values
     return 1;
 }
@@ -1261,7 +1269,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -2253,7 +2263,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -2292,7 +2304,9 @@ if ((double)(lua_Integer)(self->m_height) == (double)(self->m_height)) {
     lua_pushinteger(L, self->m_height);
 } else
 #endif
+{
     lua_pushnumber(L, self->m_height);
+}
     // return the number of values
     return 1;
 }
@@ -2314,7 +2328,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -2376,7 +2392,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -2417,7 +2435,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -2500,7 +2520,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     lua_pushinteger(L, returns);
 } else
 #endif
+{
     lua_pushnumber(L, returns);
+}
 
     return 1;
 }
@@ -2520,7 +2542,9 @@ if ((double)(lua_Integer)(self->m_width) == (double)(self->m_width)) {
     lua_pushinteger(L, self->m_width);
 } else
 #endif
+{
     lua_pushnumber(L, self->m_width);
+}
     // return the number of values
     return 1;
 }
@@ -2540,7 +2564,9 @@ if ((double)(lua_Integer)(self->m_x) == (double)(self->m_x)) {
     lua_pushinteger(L, self->m_x);
 } else
 #endif
+{
     lua_pushnumber(L, self->m_x);
+}
     // return the number of values
     return 1;
 }
@@ -2560,7 +2586,9 @@ if ((double)(lua_Integer)(self->m_y) == (double)(self->m_y)) {
     lua_pushinteger(L, self->m_y);
 } else
 #endif
+{
     lua_pushnumber(L, self->m_y);
+}
     // return the number of values
     return 1;
 }
