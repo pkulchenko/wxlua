@@ -807,6 +807,19 @@ wxLuaBindNumber* wxLuaGetDefineList_wxbase(size_t &count)
         { "wxPORT_UNKNOWN", wxPORT_UNKNOWN },
         { "wxPORT_WINCE", wxPORT_WINCE },
         { "wxPORT_X11", wxPORT_X11 },
+
+#if wxLUA_USE_wxFile && wxUSE_FILE
+        { "wxPOSIX_GROUP_EXECUTE", wxPOSIX_GROUP_EXECUTE },
+        { "wxPOSIX_GROUP_READ", wxPOSIX_GROUP_READ },
+        { "wxPOSIX_GROUP_WRITE", wxPOSIX_GROUP_WRITE },
+        { "wxPOSIX_OTHERS_EXECUTE", wxPOSIX_OTHERS_EXECUTE },
+        { "wxPOSIX_OTHERS_READ", wxPOSIX_OTHERS_READ },
+        { "wxPOSIX_OTHERS_WRITE", wxPOSIX_OTHERS_WRITE },
+        { "wxPOSIX_USER_EXECUTE", wxPOSIX_USER_EXECUTE },
+        { "wxPOSIX_USER_READ", wxPOSIX_USER_READ },
+        { "wxPOSIX_USER_WRITE", wxPOSIX_USER_WRITE },
+#endif // wxLUA_USE_wxFile && wxUSE_FILE
+
         { "wxRELEASE_NUMBER", wxRELEASE_NUMBER },
 
 #if wxLUA_USE_wxRegEx && wxUSE_REGEX
@@ -837,6 +850,7 @@ wxLuaBindNumber* wxLuaGetDefineList_wxbase(size_t &count)
 
 #if wxLUA_USE_wxFile && wxUSE_FILE
         { "wxS_DEFAULT", wxS_DEFAULT },
+        { "wxS_DIR_DEFAULT", wxS_DIR_DEFAULT },
         { "wxS_IRGRP", wxS_IRGRP },
         { "wxS_IROTH", wxS_IROTH },
         { "wxS_IRUSR", wxS_IRUSR },

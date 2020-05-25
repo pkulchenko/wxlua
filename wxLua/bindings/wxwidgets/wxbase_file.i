@@ -479,16 +479,31 @@ enum wxFileKind
     wxFILE_KIND_PIPE
 };
 
-#define wxS_IRUSR
-#define wxS_IWUSR
-#define wxS_IXUSR
-#define wxS_IRGRP
-#define wxS_IWGRP
-#define wxS_IXGRP
-#define wxS_IROTH
-#define wxS_IWOTH
-#define wxS_IXOTH
-#define wxS_DEFAULT
+enum wxPosixPermissions
+{
+    wxS_IRUSR,
+    wxS_IWUSR,
+    wxS_IXUSR,
+    wxS_IRGRP,
+    wxS_IWGRP,
+    wxS_IXGRP,
+    wxS_IROTH,
+    wxS_IWOTH,
+    wxS_IXOTH,
+
+    wxPOSIX_USER_READ,
+    wxPOSIX_USER_WRITE,
+    wxPOSIX_USER_EXECUTE,
+    wxPOSIX_GROUP_READ,
+    wxPOSIX_GROUP_WRITE,
+    wxPOSIX_GROUP_EXECUTE,
+    wxPOSIX_OTHERS_READ,
+    wxPOSIX_OTHERS_WRITE,
+    wxPOSIX_OTHERS_EXECUTE,
+
+    wxS_DEFAULT,
+    wxS_DIR_DEFAULT
+};
 
 class %delete wxFile
 {
