@@ -437,7 +437,7 @@ endif()
 install(DIRECTORY   "${wxLua_ROOT_DIR}/docs/"
         DESTINATION "${WXLUA_SHARE_DIR}doc/wxLua"
         FILES_MATCHING
-        PATTERN "*.txt" PATTERN "*.html"
+        PATTERN "*.md" PATTERN "*.html"
         PATTERN "CVS"     EXCLUDE
         PATTERN ".svn"    EXCLUDE
         PATTERN "doxygen" EXCLUDE)

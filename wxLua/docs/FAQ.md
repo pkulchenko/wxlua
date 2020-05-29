@@ -6,7 +6,7 @@
 
 1.  [Why wxLua?](#C1) \
     1.1 [What's best for my needs: wxLua, wxPython, wxSomethingElse?](#C1.1) \
-    1.2 [Can I use wxLua as script interpreter embedded in my own C++ applications?](#C1.2) \
+    1.2 [Can I use wxLua as script interpreter embedded in my own C++ applications?](#C1.2)
 2.  [How to learn wxLua](#C2) \
     2.1  [Read the wxLua documentation](#C2.1) \
     2.2  [Read the C++ wxWidgets documentation](#C2.2) \

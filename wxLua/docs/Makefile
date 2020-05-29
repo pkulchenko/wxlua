@@ -14,36 +14,36 @@ ALL_DOCS = binding FAQ install wxlua
 all: $(ALL_DOCS)
 
 #----------------------------------------------------------------------------
-# Only make the docs if the .txt file is modified in SVN.
+# Only make the docs if the .md file is modified
 
 binding:
-    ifneq ("$(shell svn status binding.txt)", "")
+    ifneq ("$(shell git status -s binding.md)", "")
 	@echo Generating binding.html
-	pandoc -f markdown -t html -c wxlua.css binding.txt > binding.html
+	pandoc -f markdown -t html -c wxlua.css binding.md > binding.html
     else
 	@echo binding.html is up to date.
     endif
 
 FAQ:
-    ifneq ("$(shell svn status FAQ.txt)", "")	
+    ifneq ("$(shell git status -s FAQ.md)", "")
 	@echo Generating FAQ.html
-	pandoc -f markdown -t html -c wxlua.css FAQ.txt > FAQ.html
+	pandoc -f markdown -t html -c wxlua.css FAQ.md > FAQ.html
     else
 	@echo FAQ.html is up to date.
     endif
 
 install:
-    ifneq ("$(shell svn status install.txt)", "")
+    ifneq ("$(shell git status -s install.md)", "")
 	@echo Generating install.html
-	pandoc -f markdown -t html -c wxlua.css install.txt > install.html
+	pandoc -f markdown -t html -c wxlua.css install.md > install.html
     else
 	@echo install.html is up to date.
     endif
 
 wxlua:
-    ifneq ("$(shell svn status wxlua.txt)", "")
+    ifneq ("$(shell git status -s wxlua.md)", "")
 	@echo Generating wxlua.html
-	pandoc -f markdown -t html -c wxlua.css wxlua.txt > wxlua.html
+	pandoc -f markdown -t html -c wxlua.css wxlua.md > wxlua.html
     else
 	@echo wxlua.html is up to date.
     endif
