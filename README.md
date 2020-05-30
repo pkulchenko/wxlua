@@ -18,11 +18,11 @@ down the size the bindings by turning off preprocessor directives.
 
 ## Documentation
 
-* [User manual](wxLua/docs/wxlua.txt).
-* A list of [frequently asked questions](wxLua/docs/FAQ.txt).
-* [Installation guide](wxLua/docs/install.txt).
-* History of [changes in each release](wxLua/docs/changelog.txt).
-* Documentation for [writing and generating binding files](wxLua/docs/binding.txt).
+* [User manual](wxLua/docs/wxlua.md).
+* A list of [frequently asked questions](wxLua/docs/FAQ.md).
+* [Installation guide](wxLua/docs/install.md).
+* History of [changes in each release](wxLua/docs/changelog.md).
+* Documentation for [writing and generating binding files](wxLua/docs/binding.md).
 
 ## Author
 
