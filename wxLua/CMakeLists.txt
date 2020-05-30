@@ -437,7 +437,7 @@ endif()
 install(DIRECTORY   "${wxLua_ROOT_DIR}/docs/"
         DESTINATION "${WXLUA_SHARE_DIR}doc/wxLua"
         FILES_MATCHING
-        PATTERN "*.txt" PATTERN "*.html"
+        PATTERN "*.md" PATTERN "*.html"
         PATTERN "CVS"     EXCLUDE
         PATTERN ".svn"    EXCLUDE
         PATTERN "doxygen" EXCLUDE)
@@ -499,7 +499,7 @@ install(FILES
         DESTINATION "${WXLUA_SHARE_DIR}apps/wxluacan")
 
 install(FILES
-        ${wxLua_ROOT_DIR}/apps/wxluafreeze/readme.txt
+        ${wxLua_ROOT_DIR}/apps/wxluafreeze/readme.md
         ${wxLua_ROOT_DIR}/apps/wxluafreeze/wxluafreeze.lua
         DESTINATION "${WXLUA_SHARE_DIR}apps/wxluafreeze")
 
