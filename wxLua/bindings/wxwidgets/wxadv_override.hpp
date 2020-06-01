@@ -434,3 +434,14 @@ void wxLua_wxDataViewTreeStore_delete_function(void** p)
     wxLua_wxRefCounter_DecRef_delete_function<wxDataViewTreeStore>(p);
 }
 %end
+
+%override wxLua_wxDataViewEvent_GetDataBuffer
+// void *GetDataBuffer() const
+int wxLua_wxDataViewEvent_GetDataBuffer(lua_State *L)
+{
+    wxDataViewEvent *self = (wxDataViewEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewEvent);
+    lua_pushlstring(L, (const char *) self->GetDataBuffer(), self->GetDataSize());
+
+    return 1;
+}
+%end

@@ -1067,6 +1067,24 @@ static int LUACALL wxLua_wxDataObjectComposite_Add(lua_State *L)
     return 0;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDataObjectComposite_GetObject[] = { &wxluatype_wxDataObjectComposite, &wxluatype_wxDataFormat, NULL };
+static int LUACALL wxLua_wxDataObjectComposite_GetObject(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataObjectComposite_GetObject[1] = {{ wxLua_wxDataObjectComposite_GetObject, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDataObjectComposite_GetObject }};
+//     wxDataObjectSimple *GetObject(const wxDataFormat& format /*, wxDataObject::Direction dir = Get*/) const;
+static int LUACALL wxLua_wxDataObjectComposite_GetObject(lua_State *L)
+{
+    // const wxDataFormat format
+    const wxDataFormat * format = (const wxDataFormat *)wxluaT_getuserdatatype(L, 2, wxluatype_wxDataFormat);
+    // get this
+    wxDataObjectComposite * self = (wxDataObjectComposite *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataObjectComposite);
+    // call GetObject
+    wxDataObjectSimple* returns = (wxDataObjectSimple*)self->GetObject(*format);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxDataObjectSimple);
+
+    return 1;
+}
+
 
 #if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataObjectComposite_GetReceivedFormat[] = { &wxluatype_wxDataObjectComposite, NULL };
@@ -1120,6 +1138,7 @@ void wxLua_wxDataObjectComposite_delete_function(void** p)
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxDataObjectComposite_methods[] = {
     { "Add", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataObjectComposite_Add, 1, NULL },
+    { "GetObject", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataObjectComposite_GetObject, 1, NULL },
 
 #if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)) && (wxLUA_USE_wxDataObject && wxUSE_DATAOBJ)
     { "GetReceivedFormat", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataObjectComposite_GetReceivedFormat, 1, NULL },

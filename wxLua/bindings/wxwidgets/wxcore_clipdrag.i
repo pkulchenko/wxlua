@@ -196,6 +196,7 @@ class %delete wxDataObjectComposite : public wxDataObject
 
     void Add(%ungc wxDataObjectSimple *dataObject, bool preferred = false);
     %wxchkver_2_8 wxDataFormat GetReceivedFormat() const;
+    wxDataObjectSimple *GetObject(const wxDataFormat& format /*, wxDataObject::Direction dir = Get*/) const;
 };
 
 // ---------------------------------------------------------------------------
@@ -384,7 +385,7 @@ class wxLuaTextDropTarget : public wxTextDropTarget
 // ---------------------------------------------------------------------------
 // wxLuaURLDropTarget - wxLua added class, see wxWidgets/samples/dnd
 
-class wxLuaURLDropTarget : public wxDropTarget 
+class wxLuaURLDropTarget : public wxDropTarget
 {
     wxLuaURLDropTarget();
 

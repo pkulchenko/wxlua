@@ -14727,18 +14727,16 @@ if ((double)(lua_Integer)returns == (double)returns) {
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewEvent_GetDataBuffer[] = { &wxluatype_wxDataViewEvent, NULL };
 static int LUACALL wxLua_wxDataViewEvent_GetDataBuffer(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewEvent_GetDataBuffer[1] = {{ wxLua_wxDataViewEvent_GetDataBuffer, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewEvent_GetDataBuffer }};
-//     void *GetDataBuffer() const;
-static int LUACALL wxLua_wxDataViewEvent_GetDataBuffer(lua_State *L)
+// %override wxLua_wxDataViewEvent_GetDataBuffer
+// void *GetDataBuffer() const
+int wxLua_wxDataViewEvent_GetDataBuffer(lua_State *L)
 {
-    // get this
-    wxDataViewEvent * self = (wxDataViewEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewEvent);
-    // call GetDataBuffer
-    void* returns = (void*)self->GetDataBuffer();
-    // push the result pointer
-    lua_pushlightuserdata(L, (void *)returns);
+    wxDataViewEvent *self = (wxDataViewEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewEvent);
+    lua_pushlstring(L, (const char *) self->GetDataBuffer(), self->GetDataSize());
 
     return 1;
 }
+
 
 #endif // (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxUSE_DRAG_AND_DROP)
 
