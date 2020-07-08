@@ -2328,6 +2328,26 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
+
+#if ((wxLUA_USE_wxChoice || wxLUA_USE_wxComboBox || wxLUA_USE_wxListBox ) && wxUSE_CONTROLS) && (wxLUA_USE_wxArrayString)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxItemContainer_Set[] = { &wxluatype_wxItemContainer, &wxluatype_wxArrayString, NULL };
+static int LUACALL wxLua_wxItemContainer_Set(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxItemContainer_Set[1] = {{ wxLua_wxItemContainer_Set, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxItemContainer_Set }};
+//     void Set(const wxArrayString &items);
+static int LUACALL wxLua_wxItemContainer_Set(lua_State *L)
+{
+    // const wxArrayString items
+    wxLuaSmartwxArrayString items = wxlua_getwxArrayString(L, 2);
+    // get this
+    wxItemContainer * self = (wxItemContainer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxItemContainer);
+    // call Set
+    self->Set(items);
+
+    return 0;
+}
+
+#endif // ((wxLUA_USE_wxChoice || wxLUA_USE_wxComboBox || wxLUA_USE_wxListBox ) && wxUSE_CONTROLS) && (wxLUA_USE_wxArrayString)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxItemContainer_SetClientData[] = { &wxluatype_wxItemContainer, &wxluatype_TINTEGER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxItemContainer_SetClientData(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxItemContainer_SetClientData[1] = {{ wxLua_wxItemContainer_SetClientData, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxItemContainer_SetClientData }};
@@ -2418,6 +2438,10 @@ wxLuaBindMethod wxItemContainer_methods[] = {
 #if ((wxLUA_USE_wxChoice || wxLUA_USE_wxComboBox || wxLUA_USE_wxListBox ) && wxUSE_CONTROLS)
     { "Insert", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxItemContainer_Insert_overload, s_wxluafunc_wxLua_wxItemContainer_Insert_overload_count, 0 },
 #endif // ((wxLUA_USE_wxChoice || wxLUA_USE_wxComboBox || wxLUA_USE_wxListBox ) && wxUSE_CONTROLS)
+
+#if ((wxLUA_USE_wxChoice || wxLUA_USE_wxComboBox || wxLUA_USE_wxListBox ) && wxUSE_CONTROLS) && (wxLUA_USE_wxArrayString)
+    { "Set", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxItemContainer_Set, 1, NULL },
+#endif // ((wxLUA_USE_wxChoice || wxLUA_USE_wxComboBox || wxLUA_USE_wxListBox ) && wxUSE_CONTROLS) && (wxLUA_USE_wxArrayString)
 
     { "SetClientData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxItemContainer_SetClientData, 1, NULL },
     { "SetClientObject", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxItemContainer_SetClientObject, 1, NULL },

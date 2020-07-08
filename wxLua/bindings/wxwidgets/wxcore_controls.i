@@ -200,6 +200,8 @@ class wxItemContainer : public wxItemContainerImmutable
     int Insert(const wxString& item, unsigned int pos, voidptr_long number); // C++ is (void *clientData) You can put a number here
     int Insert(const wxString& item, unsigned int pos, wxClientData *clientData);
 
+    void Set(const wxArrayString &items);
+
     virtual void Clear(); //= 0;
     virtual void Delete(unsigned int n); //= 0;
 
