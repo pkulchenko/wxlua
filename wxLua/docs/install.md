@@ -1,6 +1,6 @@
-% wxLua 3.0.0.8 - Installation Guide
+% wxLua 3.0.0.9 - Installation Guide
 % John Labenski, Francesco Montorsi, Paul Kulchenko
-% 2019-12-30
+% 2020-08-20
 
 This document describes how to build the wxLua libraries, editors, and
 interpreters. wxLua is written in C and C++ and can be built on MS

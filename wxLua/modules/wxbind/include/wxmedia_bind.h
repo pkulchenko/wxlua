@@ -20,9 +20,9 @@
 // Check if the version of binding generator used to create this is older than
 //   the current version of the bindings.
 //   See 'bindings/genwxbind.lua' and 'modules/wxlua/wxldefs.h'
-#if WXLUA_BINDING_VERSION > 38
+#if WXLUA_BINDING_VERSION > 39
 #   error "The WXLUA_BINDING_VERSION in the bindings is too old, regenerate bindings."
-#endif //WXLUA_BINDING_VERSION > 38
+#endif //WXLUA_BINDING_VERSION > 39
 // ---------------------------------------------------------------------------
 
 // binding class

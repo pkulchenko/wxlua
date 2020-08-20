@@ -1,6 +1,26 @@
  wxLua ChangeLog
  ===============
 
+ version 3.0.0.9 (released 8/20/2020)
+ --------------------------------------------------------------------
+ - Added POSIX names for permission flags (#68).
+ - Added methods 'GetItemCount' and 'IsEmpty' to wxSizer
+ - Add missing events related to wxHtml (#59).
+ - Added `wxluasetup.h` to the list of installed files for embedded setup (closes #56).
+ - Changed markdown documentation files to .md from .txt and updated references (closes #70).
+ - Drop trailing whitespaces during processing (closes #55).
+ - Handling of wxMemoryBuffer is improved to avoid unnecessary dependence (closes #63, #64)
+ - Removed usage of LUA_QL, as it doesn't exist in Lua 5.4 (closes #69).
+ - Updated bit32 inclusion to skip under Lua 5.4.
+ - Updated integer handling to avoid gcc warning about misleading indentation.
+ - Updated hash map signature to fix Visual Studio linking in multilib configuration (#67).
+ - Updated FindwxWidgets.cmake script to fix building with wxwidgets 3.1.4 (fixes #67).
+ - Updated `lua_rawget` check to make it compatible with Lua 5.2 (closes #54).
+ - Updated wxGraphicsContext methods to accept Lua table as an array of wxPoint2DDoubles
+ - Fixed `defined` check to use proper syntax (#67).
+ - The argument type in overridden StrokeLines() is fixed (int ->size_t)
+ - The missing argument fillStyle in DrawLines() is added back, and the argument type is fixed (int -> size_t)
+
  version 3.0.0.8 (released 12/30/2019)
  --------------------------------------------------------------------
  - Added `GetCurLineRaw` method for wxSTC.
