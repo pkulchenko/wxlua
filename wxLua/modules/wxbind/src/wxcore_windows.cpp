@@ -2188,6 +2188,25 @@ static int LUACALL wxLua_wxWindow_GetDPI(lua_State *L)
 
 #endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxPointSizeRect)
 
+#if wxCHECK_VERSION(3,1,4)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_GetDPIScaleFactor[] = { &wxluatype_wxWindow, NULL };
+static int LUACALL wxLua_wxWindow_GetDPIScaleFactor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_GetDPIScaleFactor[1] = {{ wxLua_wxWindow_GetDPIScaleFactor, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWindow_GetDPIScaleFactor }};
+//     %wxchkver_3_1_4 double GetDPIScaleFactor() const;
+static int LUACALL wxLua_wxWindow_GetDPIScaleFactor(lua_State *L)
+{
+    // get this
+    wxWindow * self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call GetDPIScaleFactor
+    double returns = (self->GetDPIScaleFactor());
+    // push the result floating point number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(3,1,4)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_GetDefaultAttributes[] = { &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxWindow_GetDefaultAttributes(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_GetDefaultAttributes[1] = {{ wxLua_wxWindow_GetDefaultAttributes, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWindow_GetDefaultAttributes }};
@@ -7286,6 +7305,10 @@ wxLuaBindMethod wxWindow_methods[] = {
 #if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxPointSizeRect)
     { "GetDPI", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_GetDPI, 1, NULL },
 #endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxPointSizeRect)
+
+#if wxCHECK_VERSION(3,1,4)
+    { "GetDPIScaleFactor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_GetDPIScaleFactor, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,4)
 
     { "GetDefaultAttributes", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_GetDefaultAttributes, 1, NULL },
 
