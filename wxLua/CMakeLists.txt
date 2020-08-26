@@ -156,8 +156,8 @@ endif()
 set(wxLua_LUA_LIBRARY_VERSION ${wxLua_LUA_LIBRARY_VERSION} CACHE STRING
     "Choose the Lua library version to use, '5.1' or '5.2', see also wxLua_LUA_LIBRARY_USE_BUILTIN" FORCE)
 
-if ((NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.1") AND (NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.2") AND (NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.3"))
-    MESSAGE(FATAL_ERROR "wxLua_LUA_LIBRARY_VERSION may only be set to '5.1' or '5.2' or '5.3'")
+if ((NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.1") AND (NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.2") AND (NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.3") AND (NOT "${wxLua_LUA_LIBRARY_VERSION}" STREQUAL "5.4"))
+    MESSAGE(FATAL_ERROR "wxLua_LUA_LIBRARY_VERSION may only be set to '5.1' or '5.2' or '5.3' or '5.4'")
 endif()
 
 if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.1)
@@ -166,7 +166,11 @@ else()
     if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.2)
         set(wxLua_LUA_LIBRARY_VERSION_NUM 52)
     else()
-        set(wxLua_LUA_LIBRARY_VERSION_NUM 53)
+        if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.3)
+            set(wxLua_LUA_LIBRARY_VERSION_NUM 53)
+        else()
+            set(wxLua_LUA_LIBRARY_VERSION_NUM 54)
+        endif()
     endif()
 endif()
 
