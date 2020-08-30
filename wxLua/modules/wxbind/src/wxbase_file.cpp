@@ -1913,6 +1913,8 @@ static int LUACALL wxLua_wxFileName_GetTimes(lua_State *L)
     wxFileName *self = (wxFileName *)wxluaT_getuserdatatype(L, 1, wxluatype_wxFileName);
     // call GetTimes
     bool returns = self->GetTimes(dtAccess, dtMod, dtCreate);
+    // push the result flag
+    lua_pushboolean(L, returns);
     // add to tracked memory list
     wxluaO_addgcobject(L, (void*)dtAccess, wxluatype_wxDateTime);
     wxluaO_addgcobject(L, (void*)dtMod,    wxluatype_wxDateTime);
@@ -1921,8 +1923,6 @@ static int LUACALL wxLua_wxFileName_GetTimes(lua_State *L)
     wxluaT_pushuserdatatype(L, dtAccess, wxluatype_wxDateTime);
     wxluaT_pushuserdatatype(L, dtMod,    wxluatype_wxDateTime);
     wxluaT_pushuserdatatype(L, dtCreate, wxluatype_wxDateTime);
-    // push the result flag
-    lua_pushboolean(L, returns);
     // return the number of parameters
     return 4;
 }
