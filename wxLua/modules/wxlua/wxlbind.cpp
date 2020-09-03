@@ -605,15 +605,15 @@ wxString wxlua_getBindMethodArgsMsg(lua_State* L, struct wxLuaBindMethod* wxlMet
     {
         wxLuaBindCFunc* wxluacfuncs = method->wxluacfuncs;
         int i, arg, cfuncs_count = method->wxluacfuncs_n;
-        wxString className;
 
         const wxLuaBindClass* wxlClass = wxLuaBinding::FindBindClass(method);
-        if (wxlClass)
-            className = lua2wx(wxlClass->name) + wxT("::");
-
         for (i = 0; i < cfuncs_count; ++i)
         {
             i_cfunc++;
+
+            wxString className;
+            if (wxlClass && !WXLUA_HASBIT(wxluacfuncs[i].method_type, WXLUAMETHOD_CONSTRUCTOR))
+                className = lua2wx(wxlClass->name) + wxT(".");
 
             wxString funcStr = wxString::Format(wxT("%02d. %s%s("), i_cfunc, className.c_str(), lua2wx(method->name).c_str());
 
