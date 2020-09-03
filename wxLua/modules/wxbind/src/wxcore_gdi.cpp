@@ -18272,6 +18272,68 @@ static int LUACALL wxLua_wxDisplay_GetPPI(lua_State *L)
 
 #endif // ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)) && (wxLUA_USE_wxPointSizeRect)
 
+#if (wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDisplay_GetScaleFactor[] = { &wxluatype_wxDisplay, NULL };
+static int LUACALL wxLua_wxDisplay_GetScaleFactor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDisplay_GetScaleFactor[1] = {{ wxLua_wxDisplay_GetScaleFactor, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDisplay_GetScaleFactor }};
+//     %wxchkver_3_1_5 double GetScaleFactor() const;
+static int LUACALL wxLua_wxDisplay_GetScaleFactor(lua_State *L)
+{
+    // get this
+    wxDisplay * self = (wxDisplay *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDisplay);
+    // call GetScaleFactor
+    double returns = (self->GetScaleFactor());
+    // push the result floating point number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
+
+#if ((wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)) && (wxLUA_USE_wxPointSizeRect)
+static int LUACALL wxLua_wxDisplay_GetStdPPI(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDisplay_GetStdPPI[1] = {{ wxLua_wxDisplay_GetStdPPI, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
+//     %wxchkver_3_1_5 static wxSize GetStdPPI();
+static int LUACALL wxLua_wxDisplay_GetStdPPI(lua_State *L)
+{
+    // call GetStdPPI
+    // allocate a new object using the copy constructor
+    wxSize* returns = new wxSize(wxDisplay::GetStdPPI());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)) && (wxLUA_USE_wxPointSizeRect)
+
+#if (wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
+static int LUACALL wxLua_wxDisplay_GetStdPPIValue(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDisplay_GetStdPPIValue[1] = {{ wxLua_wxDisplay_GetStdPPIValue, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
+//     %wxchkver_3_1_5 static int GetStdPPIValue();
+static int LUACALL wxLua_wxDisplay_GetStdPPIValue(lua_State *L)
+{
+    // call GetStdPPIValue
+    int returns = (wxDisplay::GetStdPPIValue());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
+
 #if (!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDisplay_IsOk[] = { &wxluatype_wxDisplay, NULL };
 static int LUACALL wxLua_wxDisplay_IsOk(lua_State *L);
@@ -18436,6 +18498,18 @@ wxLuaBindMethod wxDisplay_methods[] = {
 #if ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)) && (wxLUA_USE_wxPointSizeRect)
     { "GetPPI", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDisplay_GetPPI, 1, NULL },
 #endif // ((wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)) && (wxLUA_USE_wxPointSizeRect)
+
+#if (wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
+    { "GetScaleFactor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDisplay_GetScaleFactor, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
+
+#if ((wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)) && (wxLUA_USE_wxPointSizeRect)
+    { "GetStdPPI", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxDisplay_GetStdPPI, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)) && (wxLUA_USE_wxPointSizeRect)
+
+#if (wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
+    { "GetStdPPIValue", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxDisplay_GetStdPPIValue, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
 
 #if (!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
     { "IsOk", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDisplay_IsOk, 1, NULL },

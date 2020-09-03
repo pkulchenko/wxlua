@@ -142,6 +142,7 @@ class wxWindow : public wxEvtHandler
     %wxchkver_3_0_0 bool HasFocus() const;
     %wxchkver_3_0_0 void SetCanFocus(bool canFocus);
     virtual void SetFocus();
+    %mac && %wxchkver_3_1_5 virtual void EnableVisibleFocus(bool enable);
     %wxchkver_3_0_0 void SetFocusFromKbd();
     virtual void AddChild(wxWindow* child);
     virtual void DestroyChildren();

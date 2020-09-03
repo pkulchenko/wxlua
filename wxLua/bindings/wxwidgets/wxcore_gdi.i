@@ -1787,6 +1787,9 @@ class %delete wxDisplay
     wxArrayVideoModes  GetModes(const wxVideoMode& mode = wxDefaultVideoMode) const;
     wxString  GetName() const;
     %wxchkver_3_1_2 wxSize GetPPI() const;
+    %wxchkver_3_1_5 double GetScaleFactor() const;
+    %wxchkver_3_1_5 static int GetStdPPIValue();
+    %wxchkver_3_1_5 static wxSize GetStdPPI();
     bool  IsPrimary();
     !%wxchkver_3_0_0 bool  IsOk() const;
     !%wxchkver_3_0_0 wxDisplay(size_t index = 0);

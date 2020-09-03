@@ -1204,6 +1204,25 @@ static int LUACALL wxLua_wxWindow_EnableTouchEvents(lua_State *L)
 
 #endif // wxCHECK_VERSION(3,1,2)
 
+#if defined(__WXMAC__) && wxCHECK_VERSION(3,1,5)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_EnableVisibleFocus[] = { &wxluatype_wxWindow, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxWindow_EnableVisibleFocus(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_EnableVisibleFocus[1] = {{ wxLua_wxWindow_EnableVisibleFocus, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxWindow_EnableVisibleFocus }};
+//     %mac && %wxchkver_3_1_5 virtual void EnableVisibleFocus(bool enable);
+static int LUACALL wxLua_wxWindow_EnableVisibleFocus(lua_State *L)
+{
+    // bool enable
+    bool enable = wxlua_getbooleantype(L, 2);
+    // get this
+    wxWindow * self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call EnableVisibleFocus
+    self->EnableVisibleFocus(enable);
+
+    return 0;
+}
+
+#endif // defined(__WXMAC__) && wxCHECK_VERSION(3,1,5)
+
 #if wxCHECK_VERSION(3,0,0)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_EndRepositioningChildren[] = { &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxWindow_EndRepositioningChildren(lua_State *L);
@@ -7193,6 +7212,10 @@ wxLuaBindMethod wxWindow_methods[] = {
 #if wxCHECK_VERSION(3,1,2)
     { "EnableTouchEvents", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_EnableTouchEvents, 1, NULL },
 #endif // wxCHECK_VERSION(3,1,2)
+
+#if defined(__WXMAC__) && wxCHECK_VERSION(3,1,5)
+    { "EnableVisibleFocus", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_EnableVisibleFocus, 1, NULL },
+#endif // defined(__WXMAC__) && wxCHECK_VERSION(3,1,5)
 
 #if wxCHECK_VERSION(3,0,0)
     { "EndRepositioningChildren", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_EndRepositioningChildren, 1, NULL },
