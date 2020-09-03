@@ -18161,11 +18161,10 @@ if ((double)(lua_Integer)returns == (double)returns) {
 
 #endif // (wxLUA_USE_wxDisplay && wxUSE_DISPLAY) && (wxLUA_USE_wxPointSizeRect)
 
-#if (wxCHECK_VERSION(2,8,0) || !defined(__WXGTK__)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDisplay_GetFromWindow[] = { &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxDisplay_GetFromWindow(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDisplay_GetFromWindow[1] = {{ wxLua_wxDisplay_GetFromWindow, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxDisplay_GetFromWindow }};
-//     %wxchkver_2_8|!%gtk static int GetFromWindow(wxWindow* win);
+//     static int GetFromWindow(wxWindow* win);
 static int LUACALL wxLua_wxDisplay_GetFromWindow(lua_State *L)
 {
     // wxWindow win
@@ -18186,7 +18185,6 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
-#endif // (wxCHECK_VERSION(2,8,0) || !defined(__WXGTK__)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
 
 #if (wxLUA_USE_wxDisplay && wxUSE_DISPLAY) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDisplay_GetGeometry[] = { &wxluatype_wxDisplay, NULL };
@@ -18484,9 +18482,7 @@ wxLuaBindMethod wxDisplay_methods[] = {
     { "GetFromPoint", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxDisplay_GetFromPoint, 1, NULL },
 #endif // (wxLUA_USE_wxDisplay && wxUSE_DISPLAY) && (wxLUA_USE_wxPointSizeRect)
 
-#if (wxCHECK_VERSION(2,8,0) || !defined(__WXGTK__)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
     { "GetFromWindow", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxDisplay_GetFromWindow, 1, NULL },
-#endif // (wxCHECK_VERSION(2,8,0) || !defined(__WXGTK__)) && (wxLUA_USE_wxDisplay && wxUSE_DISPLAY)
 
 #if (wxLUA_USE_wxDisplay && wxUSE_DISPLAY) && (wxLUA_USE_wxPointSizeRect)
     { "GetGeometry", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDisplay_GetGeometry, 1, NULL },
