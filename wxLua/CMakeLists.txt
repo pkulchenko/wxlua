@@ -187,6 +187,9 @@ endif()
 if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.3)
     set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} -DLUA_COMPAT_5_2) # Match build used in default 5.3 Makefile
 endif()
+if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.4)
+    set(wxLua_CXX_DEFINITIONS ${wxLua_CXX_DEFINITIONS} -DLUA_COMPAT_5_3) # Match build used in default 5.4 Makefile
+endif()
 
 set(wxLua_CXX_DEFINITIONS "${wxLua_CXX_DEFINITIONS}" CACHE INTERNAL
     "wxLua C++ compiler flags to include/exclude wxLua binding libs" FORCE)
@@ -242,8 +245,6 @@ else() # Use the built-in Lua library
     else()
         if (${wxLua_LUA_LIBRARY_VERSION} VERSION_EQUAL 5.2)
             set(wxLua_LUA_ROOT_DIR "${wxLua_ROOT_DIR}/modules/lua-5.2")
-        else()
-            set(wxLua_LUA_ROOT_DIR "${wxLua_ROOT_DIR}/modules/lua-5.3")
         endif()
     endif()
 
