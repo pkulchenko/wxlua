@@ -460,7 +460,6 @@ class wxDataViewCtrlBase : public wxControl	//: public wxSystemThemedControl<wxC
 {
     virtual bool AssociateModel( wxDataViewModel *model );
     wxDataViewModel* GetModel();
-    const wxDataViewModel* GetModel() const;
 
     wxDataViewColumn *PrependTextColumn( const wxString &label, unsigned int model_column,
                     wxDataViewCellMode mode = wxDATAVIEW_CELL_INERT, int width = -1,

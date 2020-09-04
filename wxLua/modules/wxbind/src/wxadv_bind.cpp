@@ -13019,25 +13019,9 @@ static int LUACALL wxLua_wxDataViewCtrlBase_GetItemRect(lua_State *L)
 
 #endif // (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewCtrlBase_GetModel1[] = { &wxluatype_wxDataViewCtrlBase, NULL };
-static int LUACALL wxLua_wxDataViewCtrlBase_GetModel1(lua_State *L);
-// // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel1[1] = {{ wxLua_wxDataViewCtrlBase_GetModel1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewCtrlBase_GetModel1 }};
-//     const wxDataViewModel* GetModel() const;
-static int LUACALL wxLua_wxDataViewCtrlBase_GetModel1(lua_State *L)
-{
-    // get this
-    wxDataViewCtrlBase * self = (wxDataViewCtrlBase *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewCtrlBase);
-    // call GetModel
-    const wxDataViewModel* returns = (const wxDataViewModel*)self->GetModel();
-    // push the result datatype
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxDataViewModel);
-
-    return 1;
-}
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewCtrlBase_GetModel[] = { &wxluatype_wxDataViewCtrlBase, NULL };
 static int LUACALL wxLua_wxDataViewCtrlBase_GetModel(lua_State *L);
-// // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel[1] = {{ wxLua_wxDataViewCtrlBase_GetModel, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewCtrlBase_GetModel }};
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel[1] = {{ wxLua_wxDataViewCtrlBase_GetModel, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewCtrlBase_GetModel }};
 //     wxDataViewModel* GetModel();
 static int LUACALL wxLua_wxDataViewCtrlBase_GetModel(lua_State *L)
 {
@@ -13897,20 +13881,6 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrlBase_AppendToggleColumn_ov
 };
 static int s_wxluafunc_wxLua_wxDataViewCtrlBase_AppendToggleColumn_overload_count = sizeof(s_wxluafunc_wxLua_wxDataViewCtrlBase_AppendToggleColumn_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxBitmap))||(wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
-
-#if (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
-// function overload table
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel_overload[] =
-{
-    { wxLua_wxDataViewCtrlBase_GetModel1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewCtrlBase_GetModel1 },
-    { wxLua_wxDataViewCtrlBase_GetModel, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewCtrlBase_GetModel },
-};
-static int s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel_overload_count = sizeof(s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel_overload)/sizeof(wxLuaBindCFunc);
-
-#endif // (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
-
-#if ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxBitmap))||(wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrlBase_PrependBitmapColumn_overload[] =
 {
@@ -14032,10 +14002,7 @@ wxLuaBindMethod wxDataViewCtrlBase_methods[] = {
     { "GetItemRect", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_GetItemRect, 1, NULL },
 #endif // (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)
 
-#if (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
-    { "GetModel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel_overload, s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel_overload_count, 0 },
-#endif // (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
-
+    { "GetModel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_GetModel, 1, NULL },
     { "GetSelectedItemsCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_GetSelectedItemsCount, 1, NULL },
     { "GetSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_GetSelection, 1, NULL },
     { "GetSelections", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_GetSelections, 1, NULL },
