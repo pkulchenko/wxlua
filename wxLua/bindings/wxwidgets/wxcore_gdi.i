@@ -1045,7 +1045,7 @@ class %delete wxIcon : public wxGDIObject
 
 #include "wx/iconbndl.h"
 
-class %delete wxIconBundle
+class %delete wxIconBundle : public wxGDIObject
 {
     wxIconBundle();
     !%wxchkver_2_9 || %wxcompat_2_8 wxIconBundle(const wxString& file, long type);

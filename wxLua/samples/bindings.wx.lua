@@ -1140,7 +1140,7 @@ function CreateAllClassesTable()
         for bc_i = 1, #bc_list do
             local bc = bc_list[bc_i]
             -- check for mistakes in the bindings
-            if (not bc.classInfo) and wx.wxClassInfo.FindClass(bc.name) then
+            if (not bc.classInfo) and wx.wxClassInfo.FindClass(bc.name) and #bc.baseclassNames == 0 then
                 print(bc.name.." is missing its wxClassInfo, please report this.")
             end
 
@@ -1183,7 +1183,7 @@ function CreateAllClassesTable()
             local c_table = {a, ["color"] = wx.wxBLUE}
 
             -- check for mistakes in the bindings
-            if (not c.classInfo) and wx.wxClassInfo.FindClass(c.name) then
+            if (not c.classInfo) and wx.wxClassInfo.FindClass(c.name) and #c.baseclassNames == 0  then
                 print(c.name.." is missing its wxClassInfo, please report this.")
             end
 

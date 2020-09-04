@@ -2463,6 +2463,8 @@ static const char* wxluabaseclassnames_wxArchiveFSHandler[] = { wxluaclassname_w
 static wxLuaBindClass* wxluabaseclassbinds_wxArchiveFSHandler[] = { NULL };
 static const char* wxluabaseclassnames_wxConfig[] = { wxluaclassname_wxConfigBase, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxConfig[] = { NULL };
+static const char* wxluabaseclassnames_wxConfigBase[] = { wxluaclassname_wxObject, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxConfigBase[] = { NULL };
 static const char* wxluabaseclassnames_wxDateTimeWorkDays[] = { wxluaclassname_wxDateTimeHolidayAuthority, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxDateTimeWorkDays[] = { NULL };
 static const char* wxluabaseclassnames_wxEvent[] = { wxluaclassname_wxObject, NULL };
@@ -2901,8 +2903,8 @@ wxLuaBindClass* wxLuaGetClassList_wxbase(size_t &count)
         { wxluaclassname_wxClientDataContainer, wxClientDataContainer_methods, wxClientDataContainer_methodCount, NULL, &wxluatype_wxClientDataContainer, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxClientDataContainer_delete_function, }, 
 
 #if wxLUA_USE_wxConfig && wxUSE_CONFIG
-        { wxluaclassname_wxConfig, wxConfig_methods, wxConfig_methodCount, NULL, &wxluatype_wxConfig, wxluabaseclassnames_wxConfig, wxluabaseclassbinds_wxConfig, NULL, NULL, NULL, 0, &wxLua_wxConfig_delete_function, }, 
-        { wxluaclassname_wxConfigBase, wxConfigBase_methods, wxConfigBase_methodCount, NULL, &wxluatype_wxConfigBase, NULL, NULL, NULL, NULL, wxConfigBase_enums, wxConfigBase_enumCount, &wxLua_wxConfigBase_delete_function, }, 
+        { wxluaclassname_wxConfig, wxConfig_methods, wxConfig_methodCount, CLASSINFO(wxConfig), &wxluatype_wxConfig, wxluabaseclassnames_wxConfig, wxluabaseclassbinds_wxConfig, NULL, NULL, NULL, 0, &wxLua_wxConfig_delete_function, }, 
+        { wxluaclassname_wxConfigBase, wxConfigBase_methods, wxConfigBase_methodCount, CLASSINFO(wxConfigBase), &wxluatype_wxConfigBase, wxluabaseclassnames_wxConfigBase, wxluabaseclassbinds_wxConfigBase, NULL, NULL, wxConfigBase_enums, wxConfigBase_enumCount, &wxLua_wxConfigBase_delete_function, }, 
         { wxluaclassname_wxConfigPathChanger, wxConfigPathChanger_methods, wxConfigPathChanger_methodCount, NULL, &wxluatype_wxConfigPathChanger, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxConfigPathChanger_delete_function, }, 
 #endif // wxLUA_USE_wxConfig && wxUSE_CONFIG
 
@@ -2958,7 +2960,7 @@ wxLuaBindClass* wxLuaGetClassList_wxbase(size_t &count)
 #endif // wxLUA_USE_wxFile && wxUSE_FILE
 
 #if wxLUA_USE_wxConfig && wxUSE_CONFIG
-        { wxluaclassname_wxFileConfig, wxFileConfig_methods, wxFileConfig_methodCount, NULL, &wxluatype_wxFileConfig, wxluabaseclassnames_wxFileConfig, wxluabaseclassbinds_wxFileConfig, NULL, NULL, NULL, 0, &wxLua_wxFileConfig_delete_function, }, 
+        { wxluaclassname_wxFileConfig, wxFileConfig_methods, wxFileConfig_methodCount, CLASSINFO(wxFileConfig), &wxluatype_wxFileConfig, wxluabaseclassnames_wxFileConfig, wxluabaseclassbinds_wxFileConfig, NULL, NULL, NULL, 0, &wxLua_wxFileConfig_delete_function, }, 
 #endif // wxLUA_USE_wxConfig && wxUSE_CONFIG
 
 #if wxUSE_STREAMS
@@ -3034,7 +3036,7 @@ wxLuaBindClass* wxLuaGetClassList_wxbase(size_t &count)
 #endif // wxLUA_USE_wxMemoryBuffer
 
 #if wxLUA_USE_wxConfig && wxUSE_CONFIG
-        { wxluaclassname_wxMemoryConfig, wxMemoryConfig_methods, wxMemoryConfig_methodCount, NULL, &wxluatype_wxMemoryConfig, wxluabaseclassnames_wxMemoryConfig, wxluabaseclassbinds_wxMemoryConfig, NULL, NULL, NULL, 0, &wxLua_wxMemoryConfig_delete_function, }, 
+        { wxluaclassname_wxMemoryConfig, wxMemoryConfig_methods, wxMemoryConfig_methodCount, CLASSINFO(wxMemoryConfig), &wxluatype_wxMemoryConfig, wxluabaseclassnames_wxMemoryConfig, wxluabaseclassbinds_wxMemoryConfig, NULL, NULL, NULL, 0, &wxLua_wxMemoryConfig_delete_function, }, 
 #endif // wxLUA_USE_wxConfig && wxUSE_CONFIG
 
 #if wxUSE_STREAMS

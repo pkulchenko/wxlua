@@ -1123,6 +1123,9 @@ wx_dataTypeTable =
     ValueType = "class",
   },
   wxConfigBase = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
     Condition = "wxLUA_USE_wxConfig && wxUSE_CONFIG",
     IsNumber = false,
     Name = "wxConfigBase",
@@ -3168,6 +3171,9 @@ wx_dataTypeTable =
     ValueType = "class",
   },
   wxIconBundle = {
+    BaseClasses = {
+      [1] = "wxGDIObject",
+    },
     Condition = "wxLUA_USE_wxIcon",
     IsNumber = false,
     Name = "wxIconBundle",

@@ -5562,6 +5562,8 @@ static const char* wxluabaseclassnames_wxIFFHandler[] = { wxluaclassname_wxImage
 static wxLuaBindClass* wxluabaseclassbinds_wxIFFHandler[] = { NULL };
 static const char* wxluabaseclassnames_wxIcon[] = { wxluaclassname_wxGDIObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxIcon[] = { NULL };
+static const char* wxluabaseclassnames_wxIconBundle[] = { wxluaclassname_wxGDIObject, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxIconBundle[] = { NULL };
 static const char* wxluabaseclassnames_wxIconizeEvent[] = { wxluaclassname_wxEvent, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxIconizeEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxIdleEvent[] = { wxluaclassname_wxEvent, NULL };
@@ -7787,7 +7789,7 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 
 #if wxLUA_USE_wxIcon
         { wxluaclassname_wxIcon, wxIcon_methods, wxIcon_methodCount, CLASSINFO(wxIcon), &wxluatype_wxIcon, wxluabaseclassnames_wxIcon, wxluabaseclassbinds_wxIcon, NULL, NULL, NULL, 0, &wxLua_wxIcon_delete_function, }, 
-        { wxluaclassname_wxIconBundle, wxIconBundle_methods, wxIconBundle_methodCount, NULL, &wxluatype_wxIconBundle, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxIconBundle_delete_function, }, 
+        { wxluaclassname_wxIconBundle, wxIconBundle_methods, wxIconBundle_methodCount, CLASSINFO(wxIconBundle), &wxluatype_wxIconBundle, wxluabaseclassnames_wxIconBundle, wxluabaseclassbinds_wxIconBundle, NULL, NULL, NULL, 0, &wxLua_wxIconBundle_delete_function, }, 
 #endif // wxLUA_USE_wxIcon
 
         { wxluaclassname_wxIconizeEvent, wxIconizeEvent_methods, wxIconizeEvent_methodCount, CLASSINFO(wxIconizeEvent), &wxluatype_wxIconizeEvent, wxluabaseclassnames_wxIconizeEvent, wxluabaseclassbinds_wxIconizeEvent, NULL, NULL, NULL, 0, &wxLua_wxIconizeEvent_delete_function, }, 

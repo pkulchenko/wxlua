@@ -36,7 +36,7 @@ enum wxConfigBase::EntryType
     Type_Float
 };
 
-class %delete wxConfigBase
+class %delete wxConfigBase : public wxObject
 {
     // No constructor since this is a base class
 
