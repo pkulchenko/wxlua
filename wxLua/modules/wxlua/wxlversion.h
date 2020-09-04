@@ -46,7 +46,7 @@
 //   in genwxbind.lua as well.
 //-----------------------------------------------------------------------------
 
-#define WXLUA_BINDING_VERSION 38
+#define WXLUA_BINDING_VERSION 40
 
 
 #endif // __WX_WXLVERSION_H__
