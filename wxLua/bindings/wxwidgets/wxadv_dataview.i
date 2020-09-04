@@ -17,6 +17,13 @@
 #define wxDVC_DEFAULT_MINWIDTH
 #define wxDVR_DEFAULT_ALIGNMENT
 
+enum wxDataViewColumnFlags
+{
+    wxDATAVIEW_COL_RESIZABLE,
+    wxDATAVIEW_COL_SORTABLE,
+    wxDATAVIEW_COL_REORDERABLE,
+    wxDATAVIEW_COL_HIDDEN
+};
 
 // TODO: in base
 // class %delete wxVariant : public wxObject

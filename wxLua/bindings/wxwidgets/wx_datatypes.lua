@@ -1352,6 +1352,12 @@ wx_dataTypeTable =
     Name = "wxDataViewColumnBase",
     ValueType = "class",
   },
+  wxDataViewColumnFlags = {
+    Condition = "wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl",
+    IsNumber = true,
+    Name = "wxDataViewColumnFlags",
+    ValueType = "enum",
+  },
   wxDataViewCtrl = {
     BaseClasses = {
       [1] = "wxDataViewCtrlBase",
