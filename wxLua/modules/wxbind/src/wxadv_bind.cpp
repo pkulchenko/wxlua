@@ -14477,11 +14477,11 @@ static int LUACALL wxLua_wxDataViewCtrl_UnselectAll(lua_State *L)
 
 
 #if ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewCtrl_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxDataViewCtrl_constructor1(lua_State *L);
-// // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrl_constructor1[1] = {{ wxLua_wxDataViewCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 7, s_wxluatypeArray_wxLua_wxDataViewCtrl_constructor1 }};
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewCtrl_constructor[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxDataViewCtrl_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrl_constructor[1] = {{ wxLua_wxDataViewCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 7, s_wxluatypeArray_wxLua_wxDataViewCtrl_constructor }};
 //            const wxString& name = wxDataViewCtrlNameStr );
-static int LUACALL wxLua_wxDataViewCtrl_constructor1(lua_State *L)
+static int LUACALL wxLua_wxDataViewCtrl_constructor(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
@@ -14511,37 +14511,7 @@ static int LUACALL wxLua_wxDataViewCtrl_constructor1(lua_State *L)
 
 #endif // ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 
-static int LUACALL wxLua_wxDataViewCtrl_constructor(lua_State *L);
-// // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrl_constructor[1] = {{ wxLua_wxDataViewCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
-// 	wxDataViewCtrl();
-static int LUACALL wxLua_wxDataViewCtrl_constructor(lua_State *L)
-{
-    // call constructor
-    wxDataViewCtrl* returns = new wxDataViewCtrl();
-    // add to tracked window list, it will check validity
-    wxluaW_addtrackedwindow(L, returns);
-    // push the constructed class pointer
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxDataViewCtrl);
 
-    return 1;
-}
-
-
-
-
-#if (((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||(wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
-// function overload table
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrl_constructor_overload[] =
-{
-
-#if ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
-    { wxLua_wxDataViewCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 7, s_wxluatypeArray_wxLua_wxDataViewCtrl_constructor1 },
-#endif // ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
-    { wxLua_wxDataViewCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
-};
-static int s_wxluafunc_wxLua_wxDataViewCtrl_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxDataViewCtrl_constructor_overload)/sizeof(wxLuaBindCFunc);
-
-#endif // (((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||(wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
 
 void wxLua_wxDataViewCtrl_delete_function(void** p)
 {
@@ -14581,9 +14551,9 @@ wxLuaBindMethod wxDataViewCtrl_methods[] = {
     { "Unselect", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrl_Unselect, 1, NULL },
     { "UnselectAll", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrl_UnselectAll, 1, NULL },
 
-#if (((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||(wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
-    { "wxDataViewCtrl", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxDataViewCtrl_constructor_overload, s_wxluafunc_wxLua_wxDataViewCtrl_constructor_overload_count, 0 },
-#endif // (((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS))||(wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
+#if ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+    { "wxDataViewCtrl", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxDataViewCtrl_constructor, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 
     { 0, 0, 0, 0 },
 };
