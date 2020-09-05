@@ -5281,7 +5281,7 @@ class wxStyledTextCtrl : public wxControl
     %wxchkver_2_9_5 void MarkerSetBackgroundSelected(int markerNumber, const wxColour& back);
 
     /**
-        Enable/disable highlight for current folding bloc (smallest one that contains the caret)
+        Enable/disable highlight for current folding block (smallest one that contains the caret)
     */
     %wxchkver_2_9_5 void MarkerEnableHighlight(bool enabled);
 
@@ -7395,14 +7395,6 @@ class wxStyledTextCtrl : public wxControl
     //@}
 
 
-// deprecated items
-    !%wxchkver_3_1_0 bool GetUseAntiAliasing();
-    !%wxchkver_3_1_0 void SetUseAntiAliasing(bool useAA);
-    // static wxVersionInfo GetLibraryVersionInfo();
-    // wxDragResult DoDragEnter(wxCoord x, wxCoord y, wxDragResult defaultRes);
-    // wxDragResult DoDragOver(wxCoord x, wxCoord y, wxDragResult defaultRes);
-//    wxCharBuffer GetCurLineRaw(int* linePos=NULL);
-
     // wxTextEntryBase pure virtual methods
 
     // Retrieve the start and end positions of the current selection.
@@ -7415,6 +7407,12 @@ class wxStyledTextCtrl : public wxControl
     %wxchkver_3_1_0 static wxVersionInfo GetLibraryVersionInfo();
     // ....the rest is skipped
 
+// deprecated items
+    !%wxchkver_3_1_0 bool GetUseAntiAliasing();
+    !%wxchkver_3_1_0 void SetUseAntiAliasing(bool useAA);
+    // static wxVersionInfo GetLibraryVersionInfo();
+    // wxDragResult DoDragEnter(wxCoord x, wxCoord y, wxDragResult defaultRes);
+    // wxDragResult DoDragOver(wxCoord x, wxCoord y, wxDragResult defaultRes);
 };
 
 //----------------------------------------------------------------------
