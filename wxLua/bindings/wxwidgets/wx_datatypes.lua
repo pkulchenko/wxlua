@@ -2125,6 +2125,15 @@ wx_dataTypeTable =
     Name = "wxFileSystemWatcherEvent",
     ValueType = "class",
   },
+  wxFileTranslationsLoader = {
+    BaseClasses = {
+      [1] = "wxTranslationsLoader",
+    },
+    Condition = "wxCHECK_VERSION(2,9,1) && wxUSE_INTL",
+    IsNumber = false,
+    Name = "wxFileTranslationsLoader",
+    ValueType = "class",
+  },
   wxFileType = {
     IsNumber = false,
     Name = "wxFileType",
@@ -4048,6 +4057,12 @@ wx_dataTypeTable =
     Name = "wxMoveEvent",
     ValueType = "class",
   },
+  wxMsgCatalog = {
+    Condition = "wxCHECK_VERSION(2,9,1) && wxUSE_INTL",
+    IsNumber = false,
+    Name = "wxMsgCatalog",
+    ValueType = "class",
+  },
   wxMultiChoiceDialog = {
     BaseClasses = {
       [1] = "wxDialog",
@@ -4739,6 +4754,15 @@ wx_dataTypeTable =
     IsNumber = true,
     Name = "wxRendererVersion::dummy",
     ValueType = "enum",
+  },
+  wxResourceTranslationsLoader = {
+    BaseClasses = {
+      [1] = "wxTranslationsLoader",
+    },
+    Condition = "(defined (__WINDOWS__ )) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)",
+    IsNumber = false,
+    Name = "wxResourceTranslationsLoader",
+    ValueType = "class",
   },
   wxSashDragStatus = {
     Condition = "wxLUA_USE_wxSashWindow && wxUSE_SASH",
@@ -5696,6 +5720,18 @@ wx_dataTypeTable =
     IsNumber = true,
     Name = "wxTraceMask",
     ValueType = "number",
+  },
+  wxTranslations = {
+    Condition = "wxCHECK_VERSION(2,9,1) && wxUSE_INTL",
+    IsNumber = false,
+    Name = "wxTranslations",
+    ValueType = "class",
+  },
+  wxTranslationsLoader = {
+    Condition = "wxCHECK_VERSION(2,9,1) && wxUSE_INTL",
+    IsNumber = false,
+    Name = "wxTranslationsLoader",
+    ValueType = "class",
   },
   wxTreeCtrl = {
     BaseClasses = {

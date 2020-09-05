@@ -907,3 +907,124 @@ public:
     const wxString& GetCopyright() const;
 };
 #endif
+
+#if %wxchkver_2_9_1 && wxUSE_INTL
+
+// ----------------------------------------------------------------------------
+// wxMsgCatalog corresponds to one loaded message catalog.
+// ----------------------------------------------------------------------------
+
+class %delete wxMsgCatalog
+{
+public:
+    // load the catalog from disk or from data; caller is responsible for
+    // deleting them if not NULL
+    static wxMsgCatalog *CreateFromFile(const wxString& filename,
+                                        const wxString& domain);
+
+    // get name of the catalog
+    wxString GetDomain() const;
+
+    // get the translated string: returns NULL if not found
+    const wxString *GetString(const wxString& sz, unsigned int n = 0xffffffff, const wxString& ct = "") const;
+};
+
+
+// abstraction of translations discovery and loading
+class %delete wxTranslationsLoader
+{
+public:
+    wxTranslationsLoader();
+
+    virtual wxMsgCatalog *LoadCatalog(const wxString& domain,
+                                      const wxString& lang) = 0;
+
+    virtual wxArrayString GetAvailableTranslations(const wxString& domain) const = 0;
+};
+
+
+// standard wxTranslationsLoader implementation, using filesystem
+class %delete wxFileTranslationsLoader : public wxTranslationsLoader
+{
+public:
+    static void AddCatalogLookupPathPrefix(const wxString& prefix);
+    virtual wxMsgCatalog *LoadCatalog(const wxString& domain, const wxString& lang);
+    virtual wxArrayString GetAvailableTranslations(const wxString& domain) const;
+};
+
+
+#if defined(__WINDOWS__)
+// loads translations from win32 resources
+class %delete wxResourceTranslationsLoader : public wxTranslationsLoader
+{
+public:
+    virtual wxMsgCatalog *LoadCatalog(const wxString& domain, const wxString& lang);
+	virtual wxArrayString GetAvailableTranslations(const wxString& domain) const;
+
+};
+#endif // __WINDOWS__
+
+// ----------------------------------------------------------------------------
+// wxTranslations: message catalogs
+// ----------------------------------------------------------------------------
+
+// this class allows to get translations for strings
+class %delete wxTranslations
+{
+public:
+    wxTranslations();
+
+    // returns current translations object, may return NULL
+    static wxTranslations *Get();
+    // sets current translations object (takes ownership; may be NULL)
+    static void Set(wxTranslations *t);
+
+    // changes loader to non-default one; takes ownership of 'loader'
+    void SetLoader(wxTranslationsLoader *loader);
+
+    void SetLanguage(wxLanguage lang);
+    void SetLanguage(const wxString& lang);
+
+    // get languages available for this app
+    wxArrayString GetAvailableTranslations(const wxString& domain) const;
+
+    // find best translation language for given domain
+    wxString GetBestTranslation(const wxString& domain, wxLanguage msgIdLanguage);
+    wxString GetBestTranslation(const wxString& domain,
+                                const wxString& msgIdLanguage = "en");
+
+    // add standard wxWidgets catalog ("wxstd")
+    bool AddStdCatalog();
+
+    // add catalog with given domain name and language, looking it up via
+    // wxTranslationsLoader
+    bool AddCatalog(const wxString& domain,
+                    wxLanguage msgIdLanguage = wxLANGUAGE_ENGLISH_US);
+#if !wxUSE_UNICODE
+    bool AddCatalog(const wxString& domain,
+                    wxLanguage msgIdLanguage,
+                    const wxString& msgIdCharset);
+#endif
+
+    // check if the given catalog is loaded
+    bool IsLoaded(const wxString& domain) const;
+
+    // access to translations
+    const wxString *GetTranslatedString(const wxString& origString,
+                                        const wxString& domain = "",
+                                        const wxString& context = "") const;
+    const wxString *GetTranslatedString(const wxString& origString,
+                                        unsigned int n,
+                                        const wxString& domain = "",
+                                        const wxString& context = "") const;
+
+    wxString GetHeaderValue(const wxString& header,
+                            const wxString& domain = "") const;
+
+    // this is hack to work around a problem with wxGetTranslation() which
+    // returns const wxString& and not wxString, so when it returns untranslated
+    // string, it needs to have a copy of it somewhere
+    static const wxString& GetUntranslatedString(const wxString& str);
+};
+
+#endif
