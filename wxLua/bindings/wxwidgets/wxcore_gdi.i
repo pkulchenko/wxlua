@@ -1793,7 +1793,7 @@ class %delete wxDisplay
     bool  IsPrimary();
     !%wxchkver_3_0_0 bool  IsOk() const;
     !%wxchkver_3_0_0 wxDisplay(size_t index = 0);
-    static int GetFromWindow(wxWindow* win);
+    static int GetFromWindow(const wxWindow* win);
 };
 
 #endif //wxLUA_USE_wxDisplay && wxUSE_DISPLAY
