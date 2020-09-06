@@ -136,13 +136,14 @@ class wxWindow : public wxEvtHandler
     %wxchkver_3_0_0 bool AcceptsFocus() const;
     %wxchkver_3_0_0 bool AcceptsFocusFromKeyboard() const;
     %wxchkver_3_0_0 bool AcceptsFocusRecursively() const;
+    %wxchkver_3_1_4 void DisableFocusFromKeyboard();
     %wxchkver_3_0_0 bool IsFocusable() const;
     %wxchkver_3_0_0 bool CanAcceptFocus() const;
     %wxchkver_3_0_0 bool CanAcceptFocusFromKeyboard() const;
     %wxchkver_3_0_0 bool HasFocus() const;
     %wxchkver_3_0_0 void SetCanFocus(bool canFocus);
-    virtual void SetFocus();
     %mac && %wxchkver_3_1_5 virtual void EnableVisibleFocus(bool enable);
+    virtual void SetFocus();
     %wxchkver_3_0_0 void SetFocusFromKbd();
     virtual void AddChild(wxWindow* child);
     virtual void DestroyChildren();
@@ -208,6 +209,7 @@ class wxWindow : public wxEvtHandler
     wxSize GetVirtualSize() const;
     %wxchkver_2_9_4 virtual wxSize GetBestVirtualSize() const;
     %wxchkver_2_9_5 virtual double GetContentScaleFactor() const;
+    %wxchkver_3_1_4 double GetDPIScaleFactor() const;
     %wxchkver_3_0_0 wxSize GetWindowBorderSize() const;
     %wxchkver_3_0_0 bool InformFirstDirection(int direction, int size, int availableOtherDir);
     void InvalidateBestSize();
@@ -261,7 +263,6 @@ class wxWindow : public wxEvtHandler
     virtual int GetCharWidth() const;
     virtual wxVisualAttributes GetDefaultAttributes() const;
     %wxchkver_3_1_3 wxSize GetDPI() const;
-    %wxchkver_3_1_4 double GetDPIScaleFactor() const;
     wxFont GetFont() const;
     virtual wxColour GetForegroundColour();
     virtual wxRegion GetUpdateRegion() const;

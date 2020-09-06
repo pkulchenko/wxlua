@@ -1128,6 +1128,23 @@ static int LUACALL wxLua_wxWindow_Disable(lua_State *L)
 }
 
 
+#if wxCHECK_VERSION(3,1,4)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_DisableFocusFromKeyboard[] = { &wxluatype_wxWindow, NULL };
+static int LUACALL wxLua_wxWindow_DisableFocusFromKeyboard(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_DisableFocusFromKeyboard[1] = {{ wxLua_wxWindow_DisableFocusFromKeyboard, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWindow_DisableFocusFromKeyboard }};
+//     %wxchkver_3_1_4 void DisableFocusFromKeyboard();
+static int LUACALL wxLua_wxWindow_DisableFocusFromKeyboard(lua_State *L)
+{
+    // get this
+    wxWindow * self = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call DisableFocusFromKeyboard
+    self->DisableFocusFromKeyboard();
+
+    return 0;
+}
+
+#endif // wxCHECK_VERSION(3,1,4)
+
 #if wxCHECK_VERSION(3,0,0)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_DoUpdateWindowUI[] = { &wxluatype_wxWindow, &wxluatype_wxUpdateUIEvent, NULL };
 static int LUACALL wxLua_wxWindow_DoUpdateWindowUI(lua_State *L);
@@ -7198,6 +7215,10 @@ wxLuaBindMethod wxWindow_methods[] = {
     { "Destroy", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_Destroy, 1, NULL },
     { "DestroyChildren", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_DestroyChildren, 1, NULL },
     { "Disable", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_Disable, 1, NULL },
+
+#if wxCHECK_VERSION(3,1,4)
+    { "DisableFocusFromKeyboard", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_DisableFocusFromKeyboard, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,4)
 
 #if wxCHECK_VERSION(3,0,0)
     { "DoUpdateWindowUI", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_DoUpdateWindowUI, 1, NULL },
