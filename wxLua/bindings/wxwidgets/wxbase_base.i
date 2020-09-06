@@ -779,7 +779,6 @@ class %delete wxEvtHandler : public wxObject
     wxEvtHandler();
     %wxchkver_2_9 virtual void QueueEvent(%ungc wxEvent *event);
     %wxchkver_3_0_0 void AddPendingEvent(const wxEvent& event);
-    %wxchkver_2_9_5 void CallAfter(); // %override to pass a function
     virtual bool ProcessEvent(wxEvent& event);
     %wxchkver_3_0_0 bool ProcessEventLocally(wxEvent& event);
     %wxchkver_3_0_0 bool SafelyProcessEvent(wxEvent& event);
@@ -804,6 +803,7 @@ class %delete wxEvtHandler : public wxObject
     %wxchkver_3_0_0 static void AddFilter(wxEventFilter* filter);
     %wxchkver_3_0_0 static void RemoveFilter(wxEventFilter* filter);
     !%wxchkver_3_0_0 void AddPendingEvent(wxEvent& event);
+    %wxchkver_2_9_5 void CallAfter(); // %override to pass a function
     // bool SearchEventTable(wxEventTable& table, wxEvent& event); // no wxEventTable
     bool Disconnect(int id, int lastId, wxEventType eventType); // %override parameters
     void Connect(int id, int lastId, wxEventType eventType, LuaFunction func); // %add parameters
