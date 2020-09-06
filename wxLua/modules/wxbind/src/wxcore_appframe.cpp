@@ -1118,6 +1118,25 @@ static int LUACALL wxLua_wxApp_MainLoop(lua_State *L)
 
 #endif // (!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxApp)
 
+#if (wxCHECK_VERSION(3,1,4) && defined(__WXMAC__)) && (wxLUA_USE_wxApp)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxApp_OSXEnableAutomaticTabbing[] = { &wxluatype_wxApp, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxApp_OSXEnableAutomaticTabbing(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxApp_OSXEnableAutomaticTabbing[1] = {{ wxLua_wxApp_OSXEnableAutomaticTabbing, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxApp_OSXEnableAutomaticTabbing }};
+//     %wxchkver_3_1_4 && %mac void OSXEnableAutomaticTabbing(bool enable);
+static int LUACALL wxLua_wxApp_OSXEnableAutomaticTabbing(lua_State *L)
+{
+    // bool enable
+    bool enable = wxlua_getbooleantype(L, 2);
+    // get this
+    wxApp * self = (wxApp *)wxluaT_getuserdatatype(L, 1, wxluatype_wxApp);
+    // call OSXEnableAutomaticTabbing
+    self->OSXEnableAutomaticTabbing(enable);
+
+    return 0;
+}
+
+#endif // (wxCHECK_VERSION(3,1,4) && defined(__WXMAC__)) && (wxLUA_USE_wxApp)
+
 #if (wxCHECK_VERSION(3,0,0) && defined(__WXMAC__)) && (wxLUA_USE_wxApp)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxApp_OSXIsGUIApplication[] = { &wxluatype_wxApp, NULL };
 static int LUACALL wxLua_wxApp_OSXIsGUIApplication(lua_State *L);
@@ -1485,6 +1504,10 @@ wxLuaBindMethod wxApp_methods[] = {
 #if (!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxApp)
     { "MainLoop", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_MainLoop, 1, NULL },
 #endif // (!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxApp)
+
+#if (wxCHECK_VERSION(3,1,4) && defined(__WXMAC__)) && (wxLUA_USE_wxApp)
+    { "OSXEnableAutomaticTabbing", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_OSXEnableAutomaticTabbing, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,4) && defined(__WXMAC__)) && (wxLUA_USE_wxApp)
 
 #if (wxCHECK_VERSION(3,0,0) && defined(__WXMAC__)) && (wxLUA_USE_wxApp)
     { "OSXIsGUIApplication", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_OSXIsGUIApplication, 1, NULL },

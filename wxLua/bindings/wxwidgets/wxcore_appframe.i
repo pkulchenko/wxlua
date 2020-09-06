@@ -89,6 +89,7 @@ class wxApp : public wxAppConsole
     %wxchkver_3_0_0 && %mac void MacPrintFile(const wxString& fileName);
     %wxchkver_3_0_0 && %mac void MacReopenApp();
     %wxchkver_3_0_0 && %mac bool OSXIsGUIApplication();
+    %wxchkver_3_1_4 && %mac void OSXEnableAutomaticTabbing(bool enable);
     !%wxchkver_3_0_0 bool Pending();
     !%wxchkver_3_0_0 int MainLoop();
     !%wxchkver_3_0_0 static bool IsMainLoopRunning();
