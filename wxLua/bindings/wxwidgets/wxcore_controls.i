@@ -1286,6 +1286,7 @@ class wxTreeCtrl : public wxControl
     %wxchkver_3_0_0 void SetFocusedItem(const wxTreeItemId& item);
     wxImageList* GetImageList() const;
     int GetIndent() const;
+    unsigned int GetSpacing() const;
     wxColour GetItemBackgroundColour(const wxTreeItemId& item) const;
     wxLuaTreeItemData* GetItemData(const wxTreeItemId& item) const;
     wxFont GetItemFont(const wxTreeItemId& item) const;
@@ -1319,6 +1320,7 @@ class wxTreeCtrl : public wxControl
     // void SetButtonsImageList(wxImageList* imageList); // This function is only available in the generic version.
     void SetImageList(wxImageList* imageList);
     %wxchkver_3_0_0 void SetIndent(unsigned int indent);
+    void SetSpacing(unsigned int spacing);
     void SetItemBackgroundColour(const wxTreeItemId& item, const wxColour& col);
     void SetItemBold(const wxTreeItemId& item, bool bold = true);
     void SetItemData(const wxTreeItemId& item, %ungc wxLuaTreeItemData* data);

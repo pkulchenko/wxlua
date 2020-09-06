@@ -13839,6 +13839,30 @@ static int LUACALL wxLua_wxTreeCtrl_GetSelections(lua_State *L)
 }
 
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeCtrl_GetSpacing[] = { &wxluatype_wxTreeCtrl, NULL };
+static int LUACALL wxLua_wxTreeCtrl_GetSpacing(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeCtrl_GetSpacing[1] = {{ wxLua_wxTreeCtrl_GetSpacing, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxTreeCtrl_GetSpacing }};
+//     unsigned int GetSpacing() const;
+static int LUACALL wxLua_wxTreeCtrl_GetSpacing(lua_State *L)
+{
+    // get this
+    wxTreeCtrl * self = (wxTreeCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeCtrl);
+    // call GetSpacing
+    unsigned int returns = (self->GetSpacing());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
 
 #if (wxLUA_USE_wxImageList) && (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeCtrl_GetStateImageList[] = { &wxluatype_wxTreeCtrl, NULL };
@@ -14450,6 +14474,22 @@ static int LUACALL wxLua_wxTreeCtrl_SetQuickBestSize(lua_State *L)
     return 0;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeCtrl_SetSpacing[] = { &wxluatype_wxTreeCtrl, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxTreeCtrl_SetSpacing(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxTreeCtrl_SetSpacing[1] = {{ wxLua_wxTreeCtrl_SetSpacing, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxTreeCtrl_SetSpacing }};
+//     void SetSpacing(unsigned int spacing);
+static int LUACALL wxLua_wxTreeCtrl_SetSpacing(lua_State *L)
+{
+    // unsigned int spacing
+    unsigned int spacing = (unsigned int)wxlua_getuintegertype(L, 2);
+    // get this
+    wxTreeCtrl * self = (wxTreeCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTreeCtrl);
+    // call SetSpacing
+    self->SetSpacing(spacing);
+
+    return 0;
+}
+
 
 #if (wxLUA_USE_wxImageList) && (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTreeCtrl_SetStateImageList[] = { &wxluatype_wxTreeCtrl, &wxluatype_wxImageList, NULL };
@@ -14784,6 +14824,7 @@ wxLuaBindMethod wxTreeCtrl_methods[] = {
     { "GetRootItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeCtrl_GetRootItem, 1, NULL },
     { "GetSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeCtrl_GetSelection, 1, NULL },
     { "GetSelections", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeCtrl_GetSelections, 1, NULL },
+    { "GetSpacing", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeCtrl_GetSpacing, 1, NULL },
 
 #if (wxLUA_USE_wxImageList) && (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL)
     { "GetStateImageList", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeCtrl_GetStateImageList, 1, NULL },
@@ -14850,6 +14891,7 @@ wxLuaBindMethod wxTreeCtrl_methods[] = {
 #endif // (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL)
 
     { "SetQuickBestSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeCtrl_SetQuickBestSize, 1, NULL },
+    { "SetSpacing", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeCtrl_SetSpacing, 1, NULL },
 
 #if (wxLUA_USE_wxImageList) && (wxLUA_USE_wxTreeCtrl && wxUSE_TREECTRL)
     { "SetStateImageList", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTreeCtrl_SetStateImageList, 1, NULL },
