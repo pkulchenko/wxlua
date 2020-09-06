@@ -130,6 +130,7 @@ class wxAuiToolBarItem
     long GetUserData() const;
     %wxchkver_3_0_0 void SetAlignment(int l);
     %wxchkver_3_0_0 int GetAlignment() const;
+    %wxchkver_3_1_5 bool CanBeToggled() const;
 };
 
 // ---------------------------------------------------------------------------
@@ -214,6 +215,8 @@ class wxAuiToolBar : public wxControl
     wxAuiToolBarItem* FindTool(int tool_id) const;
     void ClearTools();
     void Clear();
+    %wxchkver_3_1_4 bool DestroyTool(int toolId);
+    %wxchkver_3_1_4 bool DestroyToolByIndex(int idx);
     bool DeleteTool(int tool_id);
     bool DeleteByIndex(int tool_id);
     size_t GetToolCount() const;
@@ -544,14 +547,14 @@ class wxAuiNotebook : public wxControl
     virtual void Split(size_t page, int direction);
     %wxchkver_2_8_5 bool ShowWindowMenu(); // Shows the window menu
     %wxchkver_3_1_1 int GetPageImage(size_t nPage) const;
+    %wxchkver_3_1_4 wxAuiTabCtrl* GetTabCtrlFromPoint(const wxPoint& pt);
+    %wxchkver_3_1_4 wxAuiTabCtrl* GetActiveTabCtrl();
     %wxchkver_2_8_1 const wxAuiManager& GetAuiManager() const; // %add as it's missing from auibook.h
     %wxchkver_3_0 void AssignImageList(wxImageList *imageList); // %add as it's used by SetPageImage
     %wxchkver_3_0 void SetImageList(wxImageList *imageList); // %add as it's used by SetPageImage
     %wxchkver_3_0 wxImageList* GetImageList() const; // %add as it's used by SetPageImage
-    void SetWindowStyleFlag(long style); // %add as it's missing from auibook.h
-    %wxchkver_3_1_4 wxAuiTabCtrl* GetTabCtrlFromPoint(const wxPoint& pt);
-    %wxchkver_3_1_4 wxAuiTabCtrl* GetActiveTabCtrl();
     %wxchkver_3_1_4 wxAuiTabCtrl* FindTab(wxWindow* page); // %override returns [wxAuiTabCtrl*, int]
+    void SetWindowStyleFlag(long style); // %add as it's missing from auibook.h
 };
 
 
@@ -605,6 +608,7 @@ class wxAuiFloatingFrame : public wxFrame // wxAuiFloatingFrameBaseClass
     wxAuiFloatingFrame(wxWindow* parent, wxAuiManager* owner_mgr, const wxAuiPaneInfo& pane, wxWindowID id = wxID_ANY, long style = wxRESIZE_BORDER|wxSYSTEM_MENU|wxCAPTION|wxFRAME_NO_TASKBAR | wxFRAME_FLOAT_ON_PARENT|wxCLIP_CHILDREN);
     void SetPaneWindow(const wxAuiPaneInfo& pane);
     wxAuiManager* GetOwnerManager() const;
+    %wxchkver_3_1_5 wxAuiManager& GetAuiManager();
 };
 
 
@@ -902,6 +906,7 @@ class %delete wxAuiManager : public wxEvtHandler
     bool AddPane(wxWindow* window, const wxAuiPaneInfo& pane_info);
     bool AddPane(wxWindow* window, int direction = wxLEFT, const wxString& caption = wxEmptyString);
     bool AddPane(wxWindow* window, const wxAuiPaneInfo& pane_info, const wxPoint& drop_pos);
+    %wxchkver_3_1_4 static bool AlwaysUsesLiveResize();
     wxRect CalculateHintRect(wxWindow* pane_window, const wxPoint& pt, const wxPoint& offset);
     %wxchkver_3_0_0 bool CanDockPanel(const wxAuiPaneInfo & p);
     void ClosePane(wxAuiPaneInfo& pane_info);
@@ -916,6 +921,7 @@ class %delete wxAuiManager : public wxEvtHandler
     static wxAuiManager* GetManager(wxWindow* window);
     wxAuiPaneInfo& GetPane(wxWindow* window);
     wxAuiPaneInfo& GetPane(const wxString& name);
+    %wxchkver_3_1_4 bool HasLiveResize() const;
     virtual void HideHint();
     bool InsertPane(wxWindow* window, const wxAuiPaneInfo& insert_location, int insert_level = wxAUI_INSERT_PANE);
     void LoadPaneInfo(wxString pane_part, wxAuiPaneInfo &pane);

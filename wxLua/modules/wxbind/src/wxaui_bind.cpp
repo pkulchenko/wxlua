@@ -322,6 +322,25 @@ static int LUACALL wxLua_wxAuiToolBarItem_Assign(lua_State *L)
 }
 
 
+#if (wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBarItem_CanBeToggled[] = { &wxluatype_wxAuiToolBarItem, NULL };
+static int LUACALL wxLua_wxAuiToolBarItem_CanBeToggled(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_CanBeToggled[1] = {{ wxLua_wxAuiToolBarItem_CanBeToggled, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_CanBeToggled }};
+//     %wxchkver_3_1_5 bool CanBeToggled() const;
+static int LUACALL wxLua_wxAuiToolBarItem_CanBeToggled(lua_State *L)
+{
+    // get this
+    wxAuiToolBarItem * self = (wxAuiToolBarItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiToolBarItem);
+    // call CanBeToggled
+    bool returns = (self->CanBeToggled());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
 #if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetAlignment[] = { &wxluatype_wxAuiToolBarItem, NULL };
 static int LUACALL wxLua_wxAuiToolBarItem_GetAlignment(lua_State *L);
@@ -1090,6 +1109,10 @@ void wxLua_wxAuiToolBarItem_delete_function(void** p)
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxAuiToolBarItem_methods[] = {
     { "Assign", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_Assign, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+    { "CanBeToggled", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_CanBeToggled, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
 #if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
     { "GetAlignment", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_GetAlignment, 1, NULL },
@@ -2272,6 +2295,46 @@ static int LUACALL wxLua_wxAuiToolBar_DeleteTool(lua_State *L)
     return 1;
 }
 
+
+#if (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBar_DestroyTool[] = { &wxluatype_wxAuiToolBar, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxAuiToolBar_DestroyTool(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBar_DestroyTool[1] = {{ wxLua_wxAuiToolBar_DestroyTool, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiToolBar_DestroyTool }};
+//     %wxchkver_3_1_4 bool DestroyTool(int toolId);
+static int LUACALL wxLua_wxAuiToolBar_DestroyTool(lua_State *L)
+{
+    // int toolId
+    int toolId = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxAuiToolBar * self = (wxAuiToolBar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiToolBar);
+    // call DestroyTool
+    bool returns = (self->DestroyTool(toolId));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBar_DestroyToolByIndex[] = { &wxluatype_wxAuiToolBar, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxAuiToolBar_DestroyToolByIndex(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBar_DestroyToolByIndex[1] = {{ wxLua_wxAuiToolBar_DestroyToolByIndex, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiToolBar_DestroyToolByIndex }};
+//     %wxchkver_3_1_4 bool DestroyToolByIndex(int idx);
+static int LUACALL wxLua_wxAuiToolBar_DestroyToolByIndex(lua_State *L)
+{
+    // int idx
+    int idx = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxAuiToolBar * self = (wxAuiToolBar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiToolBar);
+    // call DestroyToolByIndex
+    bool returns = (self->DestroyToolByIndex(idx));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBar_EnableTool[] = { &wxluatype_wxAuiToolBar, &wxluatype_TNUMBER, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxAuiToolBar_EnableTool(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBar_EnableTool[1] = {{ wxLua_wxAuiToolBar_EnableTool, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxAuiToolBar_EnableTool }};
@@ -3427,6 +3490,12 @@ wxLuaBindMethod wxAuiToolBar_methods[] = {
 
     { "DeleteByIndex", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBar_DeleteByIndex, 1, NULL },
     { "DeleteTool", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBar_DeleteTool, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+    { "DestroyTool", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBar_DestroyTool, 1, NULL },
+    { "DestroyToolByIndex", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBar_DestroyToolByIndex, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
     { "EnableTool", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBar_EnableTool, 1, NULL },
     { "FindControl", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBar_FindControl, 1, NULL },
     { "FindTool", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBar_FindTool, 1, NULL },
@@ -7634,6 +7703,25 @@ int wxAuiDefaultDockArt_methodCount = sizeof(wxAuiDefaultDockArt_methods)/sizeof
 // Lua MetaTable Tag for Class 'wxAuiFloatingFrame'
 int wxluatype_wxAuiFloatingFrame = WXLUA_TUNKNOWN;
 
+#if ((wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiFloatingFrame_GetAuiManager[] = { &wxluatype_wxAuiFloatingFrame, NULL };
+static int LUACALL wxLua_wxAuiFloatingFrame_GetAuiManager(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiFloatingFrame_GetAuiManager[1] = {{ wxLua_wxAuiFloatingFrame_GetAuiManager, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiFloatingFrame_GetAuiManager }};
+//     %wxchkver_3_1_5 wxAuiManager& GetAuiManager();
+static int LUACALL wxLua_wxAuiFloatingFrame_GetAuiManager(lua_State *L)
+{
+    // get this
+    wxAuiFloatingFrame * self = (wxAuiFloatingFrame *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiFloatingFrame);
+    // call GetAuiManager
+    wxAuiManager* returns = (wxAuiManager*)&self->GetAuiManager();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxAuiManager);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiFloatingFrame_GetOwnerManager[] = { &wxluatype_wxAuiFloatingFrame, NULL };
 static int LUACALL wxLua_wxAuiFloatingFrame_GetOwnerManager(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiFloatingFrame_GetOwnerManager[1] = {{ wxLua_wxAuiFloatingFrame_GetOwnerManager, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiFloatingFrame_GetOwnerManager }};
@@ -7705,6 +7793,10 @@ void wxLua_wxAuiFloatingFrame_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxAuiFloatingFrame_methods[] = {
+#if ((wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+    { "GetAuiManager", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiFloatingFrame_GetAuiManager, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
     { "GetOwnerManager", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiFloatingFrame_GetOwnerManager, 1, NULL },
     { "SetPaneWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiFloatingFrame_SetPaneWindow, 1, NULL },
     { "wxAuiFloatingFrame", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxAuiFloatingFrame_constructor, 1, NULL },
@@ -10411,6 +10503,22 @@ static int LUACALL wxLua_wxAuiManager_AddPane(lua_State *L)
 }
 
 
+#if (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+static int LUACALL wxLua_wxAuiManager_AlwaysUsesLiveResize(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiManager_AlwaysUsesLiveResize[1] = {{ wxLua_wxAuiManager_AlwaysUsesLiveResize, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
+//     %wxchkver_3_1_4 static bool AlwaysUsesLiveResize();
+static int LUACALL wxLua_wxAuiManager_AlwaysUsesLiveResize(lua_State *L)
+{
+    // call AlwaysUsesLiveResize
+    bool returns = (wxAuiManager::AlwaysUsesLiveResize());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
 #if (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiManager_CalculateHintRect[] = { &wxluatype_wxAuiManager, &wxluatype_wxWindow, &wxluatype_wxPoint, &wxluatype_wxPoint, NULL };
 static int LUACALL wxLua_wxAuiManager_CalculateHintRect(lua_State *L);
@@ -10679,6 +10787,26 @@ static int LUACALL wxLua_wxAuiManager_GetPane(lua_State *L)
 
     return 1;
 }
+
+
+#if (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiManager_HasLiveResize[] = { &wxluatype_wxAuiManager, NULL };
+static int LUACALL wxLua_wxAuiManager_HasLiveResize(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiManager_HasLiveResize[1] = {{ wxLua_wxAuiManager_HasLiveResize, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiManager_HasLiveResize }};
+//     %wxchkver_3_1_4 bool HasLiveResize() const;
+static int LUACALL wxLua_wxAuiManager_HasLiveResize(lua_State *L)
+{
+    // get this
+    wxAuiManager * self = (wxAuiManager *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiManager);
+    // call HasLiveResize
+    bool returns = (self->HasLiveResize());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiManager_HideHint[] = { &wxluatype_wxAuiManager, NULL };
 static int LUACALL wxLua_wxAuiManager_HideHint(lua_State *L);
@@ -11111,6 +11239,10 @@ wxLuaBindMethod wxAuiManager_methods[] = {
     { "AddPane", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiManager_AddPane_overload, s_wxluafunc_wxLua_wxAuiManager_AddPane_overload_count, 0 },
 #endif // ((wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
+#if (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+    { "AlwaysUsesLiveResize", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxAuiManager_AlwaysUsesLiveResize, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
 #if (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxPointSizeRect)
     { "CalculateHintRect", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiManager_CalculateHintRect, 1, NULL },
 #endif // (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxPointSizeRect)
@@ -11137,6 +11269,10 @@ wxLuaBindMethod wxAuiManager_methods[] = {
 #if (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
     { "GetPane", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiManager_GetPane_overload, s_wxluafunc_wxLua_wxAuiManager_GetPane_overload_count, 0 },
 #endif // (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+
+#if (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+    { "HasLiveResize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiManager_HasLiveResize, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
     { "HideHint", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiManager_HideHint, 1, NULL },
     { "InsertPane", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiManager_InsertPane, 1, NULL },
