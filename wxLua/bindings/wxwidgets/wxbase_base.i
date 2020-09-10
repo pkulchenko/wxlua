@@ -926,7 +926,8 @@ public:
     wxString GetDomain() const;
 
     // get the translated string: returns NULL if not found
-    const wxString *GetString(const wxString& sz, unsigned int n = 0xffffffff, const wxString& ct = "") const;
+    !%wxchkver_3_1_1 const wxString *GetString(const wxString& sz, unsigned int n = UINT_MAX) const;
+    %wxchkver_3_1_1 const wxString *GetString(const wxString& sz, unsigned int n = UINT_MAX, const wxString& ct = "") const;
 };
 
 
@@ -1010,10 +1011,16 @@ public:
     bool IsLoaded(const wxString& domain) const;
 
     // access to translations
-    const wxString *GetTranslatedString(const wxString& origString,
+    !%wxchkver_3_1_1 const wxString *GetTranslatedString(const wxString& origString,
+                                        const wxString& domain = wxEmptyString) const;
+    !%wxchkver_3_1_1 const wxString *GetTranslatedString(const wxString& origString,
+                                        unsigned int n,
+                                        const wxString& domain = wxEmptyString) const;
+
+    %wxchkver_3_1_1 const wxString *GetTranslatedString(const wxString& origString,
                                         const wxString& domain = "",
                                         const wxString& context = "") const;
-    const wxString *GetTranslatedString(const wxString& origString,
+    %wxchkver_3_1_1 const wxString *GetTranslatedString(const wxString& origString,
                                         unsigned int n,
                                         const wxString& domain = "",
                                         const wxString& context = "") const;

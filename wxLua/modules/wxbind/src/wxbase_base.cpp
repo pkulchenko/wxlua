@@ -4477,18 +4477,20 @@ static int LUACALL wxLua_wxMsgCatalog_GetDomain(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxMsgCatalog_GetString[] = { &wxluatype_wxMsgCatalog, &wxluatype_TSTRING, &wxluatype_TINTEGER, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxMsgCatalog_GetString(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxMsgCatalog_GetString[1] = {{ wxLua_wxMsgCatalog_GetString, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxMsgCatalog_GetString }};
-//     const wxString *GetString(const wxString& sz, unsigned int n = 0xffffffff, const wxString& ct = "") const;
-static int LUACALL wxLua_wxMsgCatalog_GetString(lua_State *L)
+
+#if (wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMsgCatalog_GetString1[] = { &wxluatype_wxMsgCatalog, &wxluatype_TSTRING, &wxluatype_TINTEGER, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxMsgCatalog_GetString1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMsgCatalog_GetString1[1] = {{ wxLua_wxMsgCatalog_GetString1, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxMsgCatalog_GetString1 }};
+//     %wxchkver_3_1_1 const wxString *GetString(const wxString& sz, unsigned int n = UINT_MAX, const wxString& ct = "") const;
+static int LUACALL wxLua_wxMsgCatalog_GetString1(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
     // const wxString ct = ""
     const wxString ct = (argCount >= 4 ? wxlua_getwxStringtype(L, 4) : wxString(wxEmptyString));
-    // unsigned int n = 0xffffffff
-    unsigned int n = (argCount >= 3 ? (unsigned int)wxlua_getuintegertype(L, 3) : 0xffffffff);
+    // unsigned int n = UINT_MAX
+    unsigned int n = (argCount >= 3 ? (unsigned int)wxlua_getuintegertype(L, 3) : UINT_MAX);
     // const wxString sz
     const wxString sz = wxlua_getwxStringtype(L, 2);
     // get this
@@ -4501,11 +4503,55 @@ static int LUACALL wxLua_wxMsgCatalog_GetString(lua_State *L)
     return 1;
 }
 
+#endif // (wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1))
+
+#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMsgCatalog_GetString[] = { &wxluatype_wxMsgCatalog, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxMsgCatalog_GetString(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMsgCatalog_GetString[1] = {{ wxLua_wxMsgCatalog_GetString, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxMsgCatalog_GetString }};
+//     !%wxchkver_3_1_1 const wxString *GetString(const wxString& sz, unsigned int n = UINT_MAX) const;
+static int LUACALL wxLua_wxMsgCatalog_GetString(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // unsigned int n = UINT_MAX
+    unsigned int n = (argCount >= 3 ? (unsigned int)wxlua_getuintegertype(L, 3) : UINT_MAX);
+    // const wxString sz
+    const wxString sz = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxMsgCatalog * self = (wxMsgCatalog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMsgCatalog);
+    // call GetString
+    wxString* returns = (wxString*)self->GetString(sz, n);
+    // push the result string
+    wxlua_pushwxString(L, *returns);
+
+    return 1;
+}
+
+#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMsgCatalog_delete[] = { &wxluatype_wxMsgCatalog, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMsgCatalog_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxMsgCatalog_delete }};
 
 
 
+
+#if ((wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1)))||((!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMsgCatalog_GetString_overload[] =
+{
+
+#if (wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1))
+    { wxLua_wxMsgCatalog_GetString1, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxMsgCatalog_GetString1 },
+#endif // (wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1))
+
+#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)
+    { wxLua_wxMsgCatalog_GetString, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxMsgCatalog_GetString },
+#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)
+};
+static int s_wxluafunc_wxLua_wxMsgCatalog_GetString_overload_count = sizeof(s_wxluafunc_wxLua_wxMsgCatalog_GetString_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1)))||((!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL))
 
 void wxLua_wxMsgCatalog_delete_function(void** p)
 {
@@ -4517,7 +4563,11 @@ void wxLua_wxMsgCatalog_delete_function(void** p)
 wxLuaBindMethod wxMsgCatalog_methods[] = {
     { "CreateFromFile", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxMsgCatalog_CreateFromFile, 1, NULL },
     { "GetDomain", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMsgCatalog_GetDomain, 1, NULL },
-    { "GetString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMsgCatalog_GetString, 1, NULL },
+
+#if ((wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1)))||((!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL))
+    { "GetString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMsgCatalog_GetString_overload, s_wxluafunc_wxLua_wxMsgCatalog_GetString_overload_count, 0 },
+#endif // ((wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1)))||((!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL))
+
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxMsgCatalog_delete, 1, NULL },
 
     { 0, 0, 0, 0 },
@@ -4974,11 +5024,13 @@ static int LUACALL wxLua_wxTranslations_GetHeaderValue(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString1[] = { &wxluatype_wxTranslations, &wxluatype_TSTRING, &wxluatype_TINTEGER, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxTranslations_GetTranslatedString1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxTranslations_GetTranslatedString1[1] = {{ wxLua_wxTranslations_GetTranslatedString1, WXLUAMETHOD_METHOD, 3, 5, s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString1 }};
+
+#if (wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString3[] = { &wxluatype_wxTranslations, &wxluatype_TSTRING, &wxluatype_TINTEGER, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxTranslations_GetTranslatedString3(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxTranslations_GetTranslatedString3[1] = {{ wxLua_wxTranslations_GetTranslatedString3, WXLUAMETHOD_METHOD, 3, 5, s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString3 }};
 //                                         const wxString& context = "") const;
-static int LUACALL wxLua_wxTranslations_GetTranslatedString1(lua_State *L)
+static int LUACALL wxLua_wxTranslations_GetTranslatedString3(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
@@ -5000,11 +5052,11 @@ static int LUACALL wxLua_wxTranslations_GetTranslatedString1(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString[] = { &wxluatype_wxTranslations, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxTranslations_GetTranslatedString(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxTranslations_GetTranslatedString[1] = {{ wxLua_wxTranslations_GetTranslatedString, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString }};
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString2[] = { &wxluatype_wxTranslations, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxTranslations_GetTranslatedString2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxTranslations_GetTranslatedString2[1] = {{ wxLua_wxTranslations_GetTranslatedString2, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString2 }};
 //                                         const wxString& context = "") const;
-static int LUACALL wxLua_wxTranslations_GetTranslatedString(lua_State *L)
+static int LUACALL wxLua_wxTranslations_GetTranslatedString2(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
@@ -5023,6 +5075,57 @@ static int LUACALL wxLua_wxTranslations_GetTranslatedString(lua_State *L)
 
     return 1;
 }
+
+#endif // (wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1))
+
+#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString1[] = { &wxluatype_wxTranslations, &wxluatype_TSTRING, &wxluatype_TINTEGER, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxTranslations_GetTranslatedString1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxTranslations_GetTranslatedString1[1] = {{ wxLua_wxTranslations_GetTranslatedString1, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString1 }};
+//                                         const wxString& domain = wxEmptyString) const;
+static int LUACALL wxLua_wxTranslations_GetTranslatedString1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString domain = wxEmptyString
+    const wxString domain = (argCount >= 4 ? wxlua_getwxStringtype(L, 4) : wxString(wxEmptyString));
+    // unsigned int n
+    unsigned int n = (unsigned int)wxlua_getuintegertype(L, 3);
+    // const wxString origString
+    const wxString origString = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxTranslations * self = (wxTranslations *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTranslations);
+    // call GetTranslatedString
+    wxString* returns = (wxString*)self->GetTranslatedString(origString, n, domain);
+    // push the result string
+    wxlua_pushwxString(L, *returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString[] = { &wxluatype_wxTranslations, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxTranslations_GetTranslatedString(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxTranslations_GetTranslatedString[1] = {{ wxLua_wxTranslations_GetTranslatedString, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString }};
+//                                         const wxString& domain = wxEmptyString) const;
+static int LUACALL wxLua_wxTranslations_GetTranslatedString(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString domain = wxEmptyString
+    const wxString domain = (argCount >= 3 ? wxlua_getwxStringtype(L, 3) : wxString(wxEmptyString));
+    // const wxString origString
+    const wxString origString = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxTranslations * self = (wxTranslations *)wxluaT_getuserdatatype(L, 1, wxluatype_wxTranslations);
+    // call GetTranslatedString
+    wxString* returns = (wxString*)self->GetTranslatedString(origString, domain);
+    // push the result string
+    wxlua_pushwxString(L, *returns);
+
+    return 1;
+}
+
+#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxTranslations_GetUntranslatedString[] = { &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxTranslations_GetUntranslatedString(lua_State *L);
@@ -5176,16 +5279,30 @@ static int s_wxluafunc_wxLua_wxTranslations_GetBestTranslation_overload_count = 
 
 #endif // (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)||((wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxUSE_INTL))
 
-#if (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)
+#if ((wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1)))||((!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxTranslations_GetTranslatedString_overload[] =
 {
-    { wxLua_wxTranslations_GetTranslatedString1, WXLUAMETHOD_METHOD, 3, 5, s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString1 },
-    { wxLua_wxTranslations_GetTranslatedString, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString },
+
+#if (wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1))
+    { wxLua_wxTranslations_GetTranslatedString3, WXLUAMETHOD_METHOD, 3, 5, s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString3 },
+#endif // (wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1))
+
+#if (wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1))
+    { wxLua_wxTranslations_GetTranslatedString2, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString2 },
+#endif // (wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1))
+
+#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)
+    { wxLua_wxTranslations_GetTranslatedString1, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString1 },
+#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)
+
+#if (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)
+    { wxLua_wxTranslations_GetTranslatedString, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxTranslations_GetTranslatedString },
+#endif // (!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)
 };
 static int s_wxluafunc_wxLua_wxTranslations_GetTranslatedString_overload_count = sizeof(s_wxluafunc_wxLua_wxTranslations_GetTranslatedString_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)
+#endif // ((wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1)))||((!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL))
 
 #if (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)||((wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxUSE_INTL))
 // function overload table
@@ -5226,9 +5343,9 @@ wxLuaBindMethod wxTranslations_methods[] = {
 
     { "GetHeaderValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTranslations_GetHeaderValue, 1, NULL },
 
-#if (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)
+#if ((wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1)))||((!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL))
     { "GetTranslatedString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTranslations_GetTranslatedString_overload, s_wxluafunc_wxLua_wxTranslations_GetTranslatedString_overload_count, 0 },
-#endif // (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)
+#endif // ((wxCHECK_VERSION(2,9,1) && wxUSE_INTL) && (wxCHECK_VERSION(3,1,1)))||((!wxCHECK_VERSION(3,1,1)) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL))
 
     { "GetUntranslatedString", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxTranslations_GetUntranslatedString, 1, NULL },
     { "IsLoaded", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxTranslations_IsLoaded, 1, NULL },
