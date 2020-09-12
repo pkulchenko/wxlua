@@ -1,6 +1,6 @@
-% wxLua 3.0.0.9 - FAQ
+% wxLua 3.1.0.0 - FAQ
 % John Labenski
-% 2020-08-20
+% 2020-09-12
 
 ## Table of Contents
 

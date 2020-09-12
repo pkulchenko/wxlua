@@ -1,6 +1,36 @@
  wxLua ChangeLog
  ===============
 
+ version 3.1.0.0 (released 9/12/2020)
+ --------------------------------------------------------------------
+ - INCOMPATIBILITY: Updated the order of parameters for `wxFileName.GetTimes` (closes #68).
+ - Updated wxlua for Lua 5.4 compatibility.
+
+ - Added wxWindow::DisableFocusFromKeyboard (from wxwidgets 3.1.4).
+ - Added wxDataViewCtrl binding for wxHeaderColumn and wxSettableHeaderColumn classes (thanks to Konstantin Matveyev).
+ - Added wxDataViewCtrl bindings for wxWidgets 3.1+ (thanks to Konstantin Matveyev).
+ - Added GetSpacing/SetSpacing that were missing in wxTreeCtrl.
+ - Added wxApp::OSXEnableAutomaticTabbing (from wxwidgets 3.1.4).
+ - Added wxTranslations (thanks to Steve Murphree).
+ - Added wxDATAVIEW_COL* constants.
+ - Added wxWindow::GetDPIScaleFactor (thanks to Igor Ivanov).
+ - Added wxItemContainer::Set (thanks to Igor Ivanov).
+ - Added wxDataObjectComposite::GetObject (thanks to Igor Ivanov).
+ - Fixed the order of methods to match wxwidgets interface files.
+ - Fixed wxDisplay::GetFromWindow definition to match the one in wxwidgets interface files.
+ - Fixed wxDataViewCtrl::wxDataObject (d'n'd) memory double free with %ungc (thanks to Konstantin Matveyev).
+ - Fixed crash if lua interpreter exits after require"wx" and before MainLoop() is invoked (thanks to osch).
+ - Noted current Lua version support, copy-edit (thanks to Caleb Maclennan)
+ - Removed FindwxWidgets cmake script, as it fails on Linux (with cmake 3.5.1) (#67).
+ - Updated versions for wxTranslations methods to track signature changes (closes #78).
+ - Updated wxAui* components with wxwidgets 3.1.5 changes.
+ - Updated reported call options (when wrong arguments are used) to use more Lua-ish syntax.
+ - Updated wxDisplay::GetFromWindow to be available with wxWidgets versions prior to 2.8.
+ - Updated wxDisplay and wxWindow to add methods for wxwidgets 3.1.5.
+ - Updated to apply default LUA_COMPAT settings for Lua 5.4.
+ - Updated to support lua 5.4 build as external library on Windows (thanks to QinghuaYang).
+ - Updated wxDataViewEvent::GetDataBuffer to return stored data as wxString (thanks to Igor Ivanov).
+
  version 3.0.0.9 (released 8/20/2020)
  --------------------------------------------------------------------
  - Added POSIX names for permission flags (#68).
@@ -68,7 +98,7 @@
  - Added `wxSpinCtrlDouble` (thanks to Konstantin Matveyev).
  - Added `GetScale*` methods for `wxBitmap`.
  - Added `SetLabelMarkup` to `wxControl` (thanks to Konstantin Matveyev).
- - Added `wxLaunchDefaultApplication` (thanks to lapatbrok).
+ - Added `wxLaunchDefaultApplication` (thanks to laptabrok).
  - Added `wxRealPoint`.
  - Added support for `OnEnter`, `OnLeave`, and `OnDragOver` for `wxLuaTextDropTarget`.
  - Updated `wxBitmap` constructor to add scaling support.
