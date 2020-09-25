@@ -681,6 +681,75 @@ class wxDataViewCtrl : public wxDataViewCtrlBase
     virtual void EditItem(const wxDataViewItem& item, const wxDataViewColumn *column);
 };
 
+// class wxDataViewListCtrl
+class wxDataViewListCtrl: public wxDataViewCtrl
+{
+public:
+    wxDataViewListCtrl();
+
+    wxDataViewListCtrl( wxWindow *parent, wxWindowID id,
+           const wxPoint& pos = wxDefaultPosition,
+           const wxSize& size = wxDefaultSize, long style = wxDV_ROW_LINES,
+           const wxValidator& validator = wxDefaultValidator );
+
+    bool Create( wxWindow *parent, wxWindowID id,
+           const wxPoint& pos = wxDefaultPosition,
+           const wxSize& size = wxDefaultSize, long style = wxDV_ROW_LINES,
+           const wxValidator& validator = wxDefaultValidator );
+
+    wxDataViewListStore *GetStore();
+    const wxDataViewListStore *GetStore() const;
+
+    int ItemToRow(const wxDataViewItem &item) const;
+    wxDataViewItem RowToItem(int row) const;
+
+    int GetSelectedRow() const;
+    void SelectRow(unsigned int row);
+    void UnselectRow(unsigned int row);
+    bool IsRowSelected(unsigned int row) const;
+
+    virtual bool AppendColumn( wxDataViewColumn *column );
+    void AppendColumn( wxDataViewColumn *column, const wxString &varianttype );
+
+    wxDataViewColumn *AppendTextColumn( const wxString &label,
+          wxDataViewCellMode mode = wxDATAVIEW_CELL_INERT,
+          int width = -1, wxAlignment align = wxALIGN_LEFT,
+          int flags = wxDATAVIEW_COL_RESIZABLE );
+
+    wxDataViewColumn *AppendToggleColumn( const wxString &label,
+          wxDataViewCellMode mode = wxDATAVIEW_CELL_ACTIVATABLE,
+          int width = -1, wxAlignment align = wxALIGN_LEFT,
+          int flags = wxDATAVIEW_COL_RESIZABLE );
+
+    wxDataViewColumn *AppendProgressColumn( const wxString &label,
+          wxDataViewCellMode mode = wxDATAVIEW_CELL_INERT,
+          int width = -1, wxAlignment align = wxALIGN_LEFT,
+          int flags = wxDATAVIEW_COL_RESIZABLE );
+
+    wxDataViewColumn *AppendIconTextColumn( const wxString &label,
+          wxDataViewCellMode mode = wxDATAVIEW_CELL_INERT,
+          int width = -1, wxAlignment align = wxALIGN_LEFT,
+          int flags = wxDATAVIEW_COL_RESIZABLE );
+
+    virtual bool InsertColumn( unsigned int pos, wxDataViewColumn *column );
+    void InsertColumn( unsigned int pos, wxDataViewColumn *column, const wxString &varianttype );
+    virtual bool PrependColumn( wxDataViewColumn *column );
+    void PrependColumn( wxDataViewColumn *column, const wxString &varianttype );
+    // void AppendItem( const wxVector<wxVariant> &values, wxUIntPtr data = NULL );
+    // void PrependItem( const wxVector<wxVariant> &values, wxUIntPtr data = NULL );
+    // void InsertItem( unsigned int row, const wxVector<wxVariant> &values, wxUIntPtr data = NULL );
+    void DeleteItem( unsigned int row );
+    void DeleteAllItems();
+    unsigned int GetItemCount() const;
+    wxUIntPtr GetItemData(const wxDataViewItem& item) const;
+    // void SetValue( const wxVariant &value, unsigned int row, unsigned int col );
+    // void GetValue( wxVariant &value, unsigned int row, unsigned int col );
+    void SetTextValue( const wxString &value, unsigned int row, unsigned int col );
+    wxString GetTextValue( unsigned int row, unsigned int col ) const;
+    void SetToggleValue( bool value, unsigned int row, unsigned int col );
+    bool GetToggleValue( unsigned int row, unsigned int col ) const;
+    void SetItemData(const wxDataViewItem& item, wxUIntPtr data);
+};
 
 // class wxDataViewEvent
 class %delete wxDataViewEvent : public wxNotifyEvent

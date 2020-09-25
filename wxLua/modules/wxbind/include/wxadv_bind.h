@@ -152,6 +152,7 @@ extern WXDLLIMPEXP_BINDWXADV wxLuaBinding* wxLuaBinding_wxadv_init();
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewItem;
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewItemArray;
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewItemAttr;
+    extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewListCtrl;
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewListModel;
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewListStore;
     extern WXDLLIMPEXP_DATA_BINDWXADV(int) wxluatype_wxDataViewListStoreLine;
