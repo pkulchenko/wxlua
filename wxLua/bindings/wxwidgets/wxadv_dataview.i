@@ -395,7 +395,7 @@ class %delete wxHeaderColumn
 
 
 // class wxSettableHeaderColumn
-class %delete wxSettableHeaderColumn : public wxHeaderColumn
+class wxSettableHeaderColumn : public wxHeaderColumn
 {
     virtual void SetTitle(const wxString& title) = 0;
     virtual void SetBitmap(const wxBitmap& bitmap) = 0;
@@ -424,7 +424,7 @@ class %delete wxSettableHeaderColumn : public wxHeaderColumn
 
 
 // class wxDataViewColumnBase
-class %delete wxDataViewColumnBase : public wxSettableHeaderColumn
+class wxDataViewColumnBase : public wxSettableHeaderColumn
 {
     virtual void SetOwner(wxDataViewCtrl *owner) %ungc_this;	// NOTE: valid owner must be presented
 
@@ -438,7 +438,7 @@ class %delete wxDataViewColumnBase : public wxSettableHeaderColumn
 
 
 // class wxDataViewColumn
-class %delete wxDataViewColumn : public wxDataViewColumnBase
+class wxDataViewColumn : public wxDataViewColumnBase
 {
     wxDataViewColumn( const wxString &title, wxDataViewRenderer *renderer,
                       unsigned int model_column, int width = wxDVC_DEFAULT_WIDTH,

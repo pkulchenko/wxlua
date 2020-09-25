@@ -11858,9 +11858,6 @@ static int LUACALL wxLua_wxSettableHeaderColumn_UnsetAsSortKey(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxSettableHeaderColumn_delete[] = { &wxluatype_wxSettableHeaderColumn, NULL };
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxSettableHeaderColumn_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxSettableHeaderColumn_delete }};
-
 
 
 
@@ -11893,7 +11890,6 @@ wxLuaBindMethod wxSettableHeaderColumn_methods[] = {
     { "ToggleFlag", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSettableHeaderColumn_ToggleFlag, 1, NULL },
     { "ToggleSortOrder", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSettableHeaderColumn_ToggleSortOrder, 1, NULL },
     { "UnsetAsSortKey", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSettableHeaderColumn_UnsetAsSortKey, 1, NULL },
-    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxSettableHeaderColumn_delete, 1, NULL },
 
     { 0, 0, 0, 0 },
 };
@@ -12025,9 +12021,6 @@ static int LUACALL wxLua_wxDataViewColumnBase_SetOwner(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewColumnBase_delete[] = { &wxluatype_wxDataViewColumnBase, NULL };
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewColumnBase_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxDataViewColumnBase_delete }};
-
 
 
 
@@ -12052,7 +12045,6 @@ wxLuaBindMethod wxDataViewColumnBase_methods[] = {
 #endif // (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxBitmap)
 
     { "SetOwner", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewColumnBase_SetOwner, 1, NULL },
-    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxDataViewColumnBase_delete, 1, NULL },
 
     { 0, 0, 0, 0 },
 };
@@ -12069,10 +12061,6 @@ int wxDataViewColumnBase_methodCount = sizeof(wxDataViewColumnBase_methods)/size
 
 // Lua MetaTable Tag for Class 'wxDataViewColumn'
 int wxluatype_wxDataViewColumn = WXLUA_TUNKNOWN;
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewColumn_delete[] = { &wxluatype_wxDataViewColumn, NULL };
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewColumn_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxDataViewColumn_delete }};
-
 
 #if (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewColumn_constructor1[] = { &wxluatype_wxBitmap, &wxluatype_wxDataViewRenderer, &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TNUMBER, NULL };
@@ -12097,8 +12085,6 @@ static int LUACALL wxLua_wxDataViewColumn_constructor1(lua_State *L)
     const wxBitmap * bitmap = (const wxBitmap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxBitmap);
     // call constructor
     wxDataViewColumn* returns = new wxDataViewColumn(*bitmap, renderer, model_column, width, align, flags);
-    // add to tracked memory list
-    wxluaO_addgcobject(L, returns, wxluatype_wxDataViewColumn);
     // push the constructed class pointer
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDataViewColumn);
 
@@ -12129,8 +12115,6 @@ static int LUACALL wxLua_wxDataViewColumn_constructor(lua_State *L)
     const wxString title = wxlua_getwxStringtype(L, 1);
     // call constructor
     wxDataViewColumn* returns = new wxDataViewColumn(title, renderer, model_column, width, align, flags);
-    // add to tracked memory list
-    wxluaO_addgcobject(L, returns, wxluatype_wxDataViewColumn);
     // push the constructed class pointer
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDataViewColumn);
 
@@ -12162,8 +12146,6 @@ void wxLua_wxDataViewColumn_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxDataViewColumn_methods[] = {
-    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxDataViewColumn_delete, 1, NULL },
-
 #if ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxBitmap))||(wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
     { "wxDataViewColumn", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxDataViewColumn_constructor_overload, s_wxluafunc_wxLua_wxDataViewColumn_constructor_overload_count, 0 },
 #endif // ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxBitmap))||(wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
