@@ -331,6 +331,22 @@ wxLuaBindEvent* wxLuaGetEventList_wxcore(size_t &count)
         { "wxEVT_FONTPICKER_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_FONTPICKER_CHANGED), &wxluatype_wxFontPickerEvent },
 #endif // ((wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxFontPickerCtrl && wxUSE_FONTPICKERCTRL)) && (wxCHECK_VERSION(3,0,0))
 
+#if (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)
+        { "wxEVT_HEADER_BEGIN_REORDER", WXLUA_GET_wxEventType_ptr(wxEVT_HEADER_BEGIN_REORDER), &wxluatype_wxHeaderCtrlEvent },
+        { "wxEVT_HEADER_BEGIN_RESIZE", WXLUA_GET_wxEventType_ptr(wxEVT_HEADER_BEGIN_RESIZE), &wxluatype_wxHeaderCtrlEvent },
+        { "wxEVT_HEADER_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_HEADER_CLICK), &wxluatype_wxHeaderCtrlEvent },
+        { "wxEVT_HEADER_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_HEADER_DCLICK), &wxluatype_wxHeaderCtrlEvent },
+        { "wxEVT_HEADER_DRAGGING_CANCELLED", WXLUA_GET_wxEventType_ptr(wxEVT_HEADER_DRAGGING_CANCELLED), &wxluatype_wxHeaderCtrlEvent },
+        { "wxEVT_HEADER_END_REORDER", WXLUA_GET_wxEventType_ptr(wxEVT_HEADER_END_REORDER), &wxluatype_wxHeaderCtrlEvent },
+        { "wxEVT_HEADER_END_RESIZE", WXLUA_GET_wxEventType_ptr(wxEVT_HEADER_END_RESIZE), &wxluatype_wxHeaderCtrlEvent },
+        { "wxEVT_HEADER_MIDDLE_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_HEADER_MIDDLE_CLICK), &wxluatype_wxHeaderCtrlEvent },
+        { "wxEVT_HEADER_MIDDLE_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_HEADER_MIDDLE_DCLICK), &wxluatype_wxHeaderCtrlEvent },
+        { "wxEVT_HEADER_RESIZING", WXLUA_GET_wxEventType_ptr(wxEVT_HEADER_RESIZING), &wxluatype_wxHeaderCtrlEvent },
+        { "wxEVT_HEADER_RIGHT_CLICK", WXLUA_GET_wxEventType_ptr(wxEVT_HEADER_RIGHT_CLICK), &wxluatype_wxHeaderCtrlEvent },
+        { "wxEVT_HEADER_RIGHT_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_HEADER_RIGHT_DCLICK), &wxluatype_wxHeaderCtrlEvent },
+        { "wxEVT_HEADER_SEPARATOR_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_HEADER_SEPARATOR_DCLICK), &wxluatype_wxHeaderCtrlEvent },
+#endif // (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)
+
         { "wxEVT_HELP", WXLUA_GET_wxEventType_ptr(wxEVT_HELP), &wxluatype_wxHelpEvent },
         { "wxEVT_HIBERNATE", WXLUA_GET_wxEventType_ptr(wxEVT_HIBERNATE), &wxluatype_wxActivateEvent },
 
@@ -5122,6 +5138,9 @@ static const char* wxluaclassname_wxGraphicsRenderer = "wxGraphicsRenderer";
 static const char* wxluaclassname_wxGridBagSizer = "wxGridBagSizer";
 static const char* wxluaclassname_wxGridSizer = "wxGridSizer";
 static const char* wxluaclassname_wxHeaderButtonParams = "wxHeaderButtonParams";
+static const char* wxluaclassname_wxHeaderCtrl = "wxHeaderCtrl";
+static const char* wxluaclassname_wxHeaderCtrlEvent = "wxHeaderCtrlEvent";
+static const char* wxluaclassname_wxHeaderCtrlSimple = "wxHeaderCtrlSimple";
 static const char* wxluaclassname_wxHelpController = "wxHelpController";
 static const char* wxluaclassname_wxHelpControllerBase = "wxHelpControllerBase";
 static const char* wxluaclassname_wxHelpControllerHelpProvider = "wxHelpControllerHelpProvider";
@@ -5548,6 +5567,12 @@ static const char* wxluabaseclassnames_wxGridBagSizer[] = { wxluaclassname_wxFle
 static wxLuaBindClass* wxluabaseclassbinds_wxGridBagSizer[] = { NULL };
 static const char* wxluabaseclassnames_wxGridSizer[] = { wxluaclassname_wxSizer, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxGridSizer[] = { NULL };
+static const char* wxluabaseclassnames_wxHeaderCtrl[] = { wxluaclassname_wxControl, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxHeaderCtrl[] = { NULL };
+static const char* wxluabaseclassnames_wxHeaderCtrlEvent[] = { wxluaclassname_wxNotifyEvent, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxHeaderCtrlEvent[] = { NULL };
+static const char* wxluabaseclassnames_wxHeaderCtrlSimple[] = { wxluaclassname_wxHeaderCtrl, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxHeaderCtrlSimple[] = { NULL };
 static const char* wxluabaseclassnames_wxHelpController[] = { wxluaclassname_wxHelpControllerBase, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxHelpController[] = { NULL };
 static const char* wxluabaseclassnames_wxHelpControllerBase[] = { wxluaclassname_wxObject, NULL };
@@ -6123,6 +6148,18 @@ static wxLuaBindClass* wxluabaseclassbinds_wxXPMHandler[] = { NULL };
     extern int wxBrushList_methodCount;
     extern void wxLua_wxBrushList_delete_function(void** p);
 #endif // (wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush)
+
+#if (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)
+    extern wxLuaBindMethod wxHeaderCtrl_methods[];
+    extern int wxHeaderCtrl_methodCount;
+    extern void wxLua_wxHeaderCtrl_delete_function(void** p);
+    extern wxLuaBindMethod wxHeaderCtrlEvent_methods[];
+    extern int wxHeaderCtrlEvent_methodCount;
+    extern void wxLua_wxHeaderCtrlEvent_delete_function(void** p);
+    extern wxLuaBindMethod wxHeaderCtrlSimple_methods[];
+    extern int wxHeaderCtrlSimple_methodCount;
+    extern void wxLua_wxHeaderCtrlSimple_delete_function(void** p);
+#endif // (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)
 
 #if (wxLUA_USE_wxCheckListBox && wxUSE_CHECKLISTBOX) && (wxLUA_USE_wxListBox && wxUSE_LISTBOX)
     extern wxLuaBindMethod wxCheckListBox_methods[];
@@ -7766,6 +7803,12 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #if wxLUA_USE_wxRenderer
         { wxluaclassname_wxHeaderButtonParams, wxHeaderButtonParams_methods, wxHeaderButtonParams_methodCount, NULL, &wxluatype_wxHeaderButtonParams, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxHeaderButtonParams_delete_function, }, 
 #endif // wxLUA_USE_wxRenderer
+
+#if (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)
+        { wxluaclassname_wxHeaderCtrl, wxHeaderCtrl_methods, wxHeaderCtrl_methodCount, CLASSINFO(wxHeaderCtrl), &wxluatype_wxHeaderCtrl, wxluabaseclassnames_wxHeaderCtrl, wxluabaseclassbinds_wxHeaderCtrl, NULL, NULL, NULL, 0, &wxLua_wxHeaderCtrl_delete_function, }, 
+        { wxluaclassname_wxHeaderCtrlEvent, wxHeaderCtrlEvent_methods, wxHeaderCtrlEvent_methodCount, CLASSINFO(wxHeaderCtrlEvent), &wxluatype_wxHeaderCtrlEvent, wxluabaseclassnames_wxHeaderCtrlEvent, wxluabaseclassbinds_wxHeaderCtrlEvent, NULL, NULL, NULL, 0, &wxLua_wxHeaderCtrlEvent_delete_function, }, 
+        { wxluaclassname_wxHeaderCtrlSimple, wxHeaderCtrlSimple_methods, wxHeaderCtrlSimple_methodCount, CLASSINFO(wxHeaderCtrlSimple), &wxluatype_wxHeaderCtrlSimple, wxluabaseclassnames_wxHeaderCtrlSimple, wxluabaseclassbinds_wxHeaderCtrlSimple, NULL, NULL, NULL, 0, &wxLua_wxHeaderCtrlSimple_delete_function, }, 
+#endif // (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)
 
 #if wxLUA_USE_wxHelpController && wxUSE_HELP
         { wxluaclassname_wxHelpController, wxHelpController_methods, wxHelpController_methodCount, CLASSINFO(wxHelpController), &wxluatype_wxHelpController, wxluabaseclassnames_wxHelpController, wxluabaseclassbinds_wxHelpController, NULL, NULL, NULL, 0, &wxLua_wxHelpController_delete_function, }, 

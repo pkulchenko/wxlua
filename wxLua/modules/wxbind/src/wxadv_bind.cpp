@@ -14166,6 +14166,26 @@ static int LUACALL wxLua_wxDataViewCtrl_EnsureVisible(lua_State *L)
     return 0;
 }
 
+
+#if ((defined(__WXMSW__) || !defined (wxUSE_NATIVE_DATAVIEWCTRL )) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL))
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewCtrl_GenericGetHeader[] = { &wxluatype_wxDataViewCtrl, NULL };
+static int LUACALL wxLua_wxDataViewCtrl_GenericGetHeader(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrl_GenericGetHeader[1] = {{ wxLua_wxDataViewCtrl_GenericGetHeader, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewCtrl_GenericGetHeader }};
+//     wxHeaderCtrl* GenericGetHeader() const;
+static int LUACALL wxLua_wxDataViewCtrl_GenericGetHeader(lua_State *L)
+{
+    // get this
+    wxDataViewCtrl * self = (wxDataViewCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewCtrl);
+    // call GenericGetHeader
+    wxHeaderCtrl* returns = (wxHeaderCtrl*)self->GenericGetHeader();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxHeaderCtrl);
+
+    return 1;
+}
+
+#endif // ((defined(__WXMSW__) || !defined (wxUSE_NATIVE_DATAVIEWCTRL )) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL))
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewCtrl_GetColumn[] = { &wxluatype_wxDataViewCtrl, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDataViewCtrl_GetColumn(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrl_GetColumn[1] = {{ wxLua_wxDataViewCtrl_GetColumn, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDataViewCtrl_GetColumn }};
@@ -14513,6 +14533,11 @@ wxLuaBindMethod wxDataViewCtrl_methods[] = {
     { "DeleteColumn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrl_DeleteColumn, 1, NULL },
     { "EditItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrl_EditItem, 1, NULL },
     { "EnsureVisible", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrl_EnsureVisible, 1, NULL },
+
+#if ((defined(__WXMSW__) || !defined (wxUSE_NATIVE_DATAVIEWCTRL )) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL))
+    { "GenericGetHeader", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrl_GenericGetHeader, 1, NULL },
+#endif // ((defined(__WXMSW__) || !defined (wxUSE_NATIVE_DATAVIEWCTRL )) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)) && ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL))
+
     { "GetColumn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrl_GetColumn, 1, NULL },
     { "GetColumnCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrl_GetColumnCount, 1, NULL },
     { "GetColumnPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrl_GetColumnPosition, 1, NULL },

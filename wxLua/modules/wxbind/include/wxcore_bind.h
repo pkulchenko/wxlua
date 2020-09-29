@@ -117,6 +117,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/cshelp.h"
 #endif // (wxLUA_USE_wxBitmapButton && wxUSE_BMPBUTTON) && (wxLUA_USE_wxHelpController && wxUSE_HELP)
 
+#if (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)
+    #include "wx/headerctrl.h"
+#endif // (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)
+
 #if (wxLUA_USE_wxCheckListBox && wxUSE_CHECKLISTBOX) && (wxLUA_USE_wxListBox && wxUSE_LISTBOX)
     #include "wx/checklst.h"
 #endif // (wxLUA_USE_wxCheckListBox && wxUSE_CHECKLISTBOX) && (wxLUA_USE_wxListBox && wxUSE_LISTBOX)
@@ -686,6 +690,12 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
 #if (wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxBrushList;
 #endif // (wxLUA_USE_wxBrushList) && (wxLUA_USE_wxColourPenBrush)
+
+#if (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxHeaderCtrl;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxHeaderCtrlEvent;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxHeaderCtrlSimple;
+#endif // (wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)
 
 #if (wxLUA_USE_wxCheckListBox && wxUSE_CHECKLISTBOX) && (wxLUA_USE_wxListBox && wxUSE_LISTBOX)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxCheckListBox;

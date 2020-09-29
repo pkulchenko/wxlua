@@ -2877,6 +2877,33 @@ wx_dataTypeTable =
     Name = "wxHeaderColumn",
     ValueType = "class",
   },
+  wxHeaderCtrl = {
+    BaseClasses = {
+      [1] = "wxControl",
+    },
+    Condition = "(wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)",
+    IsNumber = false,
+    Name = "wxHeaderCtrl",
+    ValueType = "class",
+  },
+  wxHeaderCtrlEvent = {
+    BaseClasses = {
+      [1] = "wxNotifyEvent",
+    },
+    Condition = "(wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)",
+    IsNumber = false,
+    Name = "wxHeaderCtrlEvent",
+    ValueType = "class",
+  },
+  wxHeaderCtrlSimple = {
+    BaseClasses = {
+      [1] = "wxHeaderCtrl",
+    },
+    Condition = "(wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)",
+    IsNumber = false,
+    Name = "wxHeaderCtrlSimple",
+    ValueType = "class",
+  },
   wxHeaderSortIconType = {
     Condition = "wxLUA_USE_wxRenderer",
     IsNumber = true,

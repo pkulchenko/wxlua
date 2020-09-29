@@ -679,6 +679,13 @@ class wxDataViewCtrl : public wxDataViewCtrlBase
 //    virtual void HitTest( const wxPoint & point, wxDataViewItem &item, wxDataViewColumn* &column );
     virtual wxRect GetItemRect( const wxDataViewItem & item, const wxDataViewColumn *column = NULL );
     virtual void EditItem(const wxDataViewItem& item, const wxDataViewColumn *column);
+
+#if %msw || !defined(wxUSE_NATIVE_DATAVIEWCTRL)
+    // The returned pointer is null if the control has wxDV_NO_HEADER style.
+    //
+    // This method is only available in the generic versions.
+    wxHeaderCtrl* GenericGetHeader() const;
+#endif
 };
 
 // class wxDataViewListCtrl

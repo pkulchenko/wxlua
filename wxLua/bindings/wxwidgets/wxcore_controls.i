@@ -46,6 +46,99 @@ class wxAnyButton : public wxControl
     %wxchkver_3_0_0 void SetBitmapPosition(wxDirection dir);
 };
 
+#if wxUSE_HEADERCTRL
+
+#include "wx/headerctrl.h"
+
+// class wxHeaderCtrlEvent
+class %delete wxHeaderCtrlEvent : public wxNotifyEvent
+{
+    %wxEventType wxEVT_HEADER_CLICK
+    %wxEventType wxEVT_HEADER_RIGHT_CLICK
+    %wxEventType wxEVT_HEADER_MIDDLE_CLICK
+    %wxEventType wxEVT_HEADER_DCLICK
+    %wxEventType wxEVT_HEADER_RIGHT_DCLICK
+    %wxEventType wxEVT_HEADER_MIDDLE_DCLICK
+    %wxEventType wxEVT_HEADER_SEPARATOR_DCLICK
+    %wxEventType wxEVT_HEADER_BEGIN_RESIZE
+    %wxEventType wxEVT_HEADER_RESIZING
+    %wxEventType wxEVT_HEADER_END_RESIZE
+    %wxEventType wxEVT_HEADER_BEGIN_REORDER
+    %wxEventType wxEVT_HEADER_END_REORDER
+    %wxEventType wxEVT_HEADER_DRAGGING_CANCELLED
+
+    wxHeaderCtrlEvent(wxEventType commandType = wxEVT_NULL, int winid = 0);
+    wxHeaderCtrlEvent(const wxHeaderCtrlEvent& event);
+
+    int GetColumn() const;
+    void SetColumn(int col);
+    int GetWidth() const;
+    void SetWidth(int width);
+    unsigned int GetNewOrder() const;
+    void SetNewOrder(unsigned int order);
+};
+
+class wxHeaderCtrl : public wxControl
+{
+public:
+    // wxHeaderCtrl();
+
+    // wxHeaderCtrl(wxWindow *parent,
+    //              wxWindowID winid = wxID_ANY,
+    //              const wxPoint& pos = wxDefaultPosition,
+    //              const wxSize& size = wxDefaultSize,
+    //              long style = wxHD_DEFAULT_STYLE,
+    //              const wxString& name = wxHeaderCtrlNameStr);
+
+    // bool Create(wxWindow *parent,
+    //             wxWindowID winid = wxID_ANY,
+    //             const wxPoint& pos = wxDefaultPosition,
+    //             const wxSize& size = wxDefaultSize,
+    //             long style = wxHD_DEFAULT_STYLE,
+    //             const wxString& name = wxHeaderCtrlNameStr);
+
+    void SetColumnCount(unsigned int count);
+    unsigned int GetColumnCount() const;
+    bool IsEmpty() const;
+    void UpdateColumn(unsigned int idx);
+    void SetColumnsOrder(const wxArrayInt& order);
+    wxArrayInt GetColumnsOrder() const;
+    unsigned int GetColumnAt(unsigned int pos) const;
+    unsigned int GetColumnPos(unsigned int idx) const;
+    void ResetColumnsOrder();
+
+    static void MoveColumnInOrderArray(const wxArrayInt& order, unsigned int idx, unsigned int pos);
+
+    bool ShowColumnsMenu(const wxPoint& pt, const wxString& title = wxEmptyString);
+    void AddColumnsItems(wxMenu& menu, int idColumnsBase = 0);
+    bool ShowCustomizeDialog();
+    // int GetColumnTitleWidth(const wxHeaderColumn& col);
+    int GetColumnTitleWidth(unsigned int idx);
+};
+
+class wxHeaderCtrlSimple : public wxHeaderCtrl
+{
+public:
+    wxHeaderCtrlSimple();
+
+    wxHeaderCtrlSimple(wxWindow *parent,
+                       wxWindowID winid = wxID_ANY,
+                       const wxPoint& pos = wxDefaultPosition,
+                       const wxSize& size = wxDefaultSize,
+                       long style = wxHD_DEFAULT_STYLE,
+                       const wxString& name = wxHeaderCtrlNameStr);
+
+    // void InsertColumn(const wxHeaderColumnSimple& col, unsigned int idx);
+    // void AppendColumn(const wxHeaderColumnSimple& col);
+    void DeleteColumn(unsigned int idx);
+    void ShowColumn(unsigned int idx, bool show = true);
+    void HideColumn(unsigned int idx);
+    void ShowSortIndicator(unsigned int idx, bool sortOrder = true);
+    void RemoveSortIndicator();
+};
+
+#endif //wxUSE_HEADERCTRL
+
 class wxButton : public wxAnyButton
 {
     wxButton();
