@@ -233,14 +233,18 @@ class wxValidator : public wxEvtHandler
 #include "wx/valtext.h"
 
 #define wxFILTER_NONE
+#define wxFILTER_EMPTY
 #define wxFILTER_ASCII
 #define wxFILTER_ALPHA
 #define wxFILTER_ALPHANUMERIC
+#define wxFILTER_DIGITS
 #define wxFILTER_NUMERIC
 #define wxFILTER_INCLUDE_LIST
 #define wxFILTER_EXCLUDE_LIST
 #define wxFILTER_INCLUDE_CHAR_LIST
 #define wxFILTER_EXCLUDE_CHAR_LIST
+#define wxFILTER_XDIGITS
+#define wxFILTER_SPACE
 
 class %delete wxTextValidator : public wxValidator
 {

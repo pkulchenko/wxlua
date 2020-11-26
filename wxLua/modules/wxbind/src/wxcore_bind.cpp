@@ -1330,12 +1330,16 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxFILTER_ALPHA", wxFILTER_ALPHA },
         { "wxFILTER_ALPHANUMERIC", wxFILTER_ALPHANUMERIC },
         { "wxFILTER_ASCII", wxFILTER_ASCII },
+        { "wxFILTER_DIGITS", wxFILTER_DIGITS },
+        { "wxFILTER_EMPTY", wxFILTER_EMPTY },
         { "wxFILTER_EXCLUDE_CHAR_LIST", wxFILTER_EXCLUDE_CHAR_LIST },
         { "wxFILTER_EXCLUDE_LIST", wxFILTER_EXCLUDE_LIST },
         { "wxFILTER_INCLUDE_CHAR_LIST", wxFILTER_INCLUDE_CHAR_LIST },
         { "wxFILTER_INCLUDE_LIST", wxFILTER_INCLUDE_LIST },
         { "wxFILTER_NONE", wxFILTER_NONE },
         { "wxFILTER_NUMERIC", wxFILTER_NUMERIC },
+        { "wxFILTER_SPACE", wxFILTER_SPACE },
+        { "wxFILTER_XDIGITS", wxFILTER_XDIGITS },
 #endif // (wxLUA_USE_wxTextValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
 
 #if wxLUA_USE_wxFont
