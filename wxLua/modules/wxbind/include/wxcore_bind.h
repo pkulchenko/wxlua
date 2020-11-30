@@ -193,6 +193,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/treebook.h"
 #endif // wxCHECK_VERSION(2,8,0) && wxUSE_TREEBOOK && wxLUA_USE_wxTreebook
 
+#if wxCHECK_VERSION(3,1,3)
+    #include "wx/event.h"
+#endif // wxCHECK_VERSION(3,1,3)
+
 #if wxLUA_USE_Geometry && wxUSE_GEOMETRY
     #include "wx/geometry.h"
 #endif // wxLUA_USE_Geometry && wxUSE_GEOMETRY
@@ -856,6 +860,10 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTreebook;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTreebookEvent;
 #endif // wxCHECK_VERSION(2,8,0) && wxUSE_TREEBOOK && wxLUA_USE_wxTreebook
+
+#if wxCHECK_VERSION(3,1,3)
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxDPIChangedEvent;
+#endif // wxCHECK_VERSION(3,1,3)
 
 #if wxLUA_USE_Geometry && wxUSE_GEOMETRY
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPoint2DDouble;

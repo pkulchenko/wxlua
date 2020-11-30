@@ -3902,6 +3902,100 @@ int wxDisplayChangedEvent_methodCount = sizeof(wxDisplayChangedEvent_methods)/si
 
 
 
+#if wxCHECK_VERSION(3,1,3)
+// ---------------------------------------------------------------------------
+// Bind class wxDPIChangedEvent
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxDPIChangedEvent'
+int wxluatype_wxDPIChangedEvent = WXLUA_TUNKNOWN;
+
+#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDPIChangedEvent_GetNewDPI[] = { &wxluatype_wxDPIChangedEvent, NULL };
+static int LUACALL wxLua_wxDPIChangedEvent_GetNewDPI(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDPIChangedEvent_GetNewDPI[1] = {{ wxLua_wxDPIChangedEvent_GetNewDPI, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDPIChangedEvent_GetNewDPI }};
+//     wxSize GetNewDPI () const;
+static int LUACALL wxLua_wxDPIChangedEvent_GetNewDPI(lua_State *L)
+{
+    // get this
+    wxDPIChangedEvent * self = (wxDPIChangedEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDPIChangedEvent);
+    // call GetNewDPI
+    // allocate a new object using the copy constructor
+    wxSize* returns = new wxSize(self->GetNewDPI());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDPIChangedEvent_GetOldDPI[] = { &wxluatype_wxDPIChangedEvent, NULL };
+static int LUACALL wxLua_wxDPIChangedEvent_GetOldDPI(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDPIChangedEvent_GetOldDPI[1] = {{ wxLua_wxDPIChangedEvent_GetOldDPI, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDPIChangedEvent_GetOldDPI }};
+//     wxSize GetOldDPI () const;
+static int LUACALL wxLua_wxDPIChangedEvent_GetOldDPI(lua_State *L)
+{
+    // get this
+    wxDPIChangedEvent * self = (wxDPIChangedEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDPIChangedEvent);
+    // call GetOldDPI
+    // allocate a new object using the copy constructor
+    wxSize* returns = new wxSize(self->GetOldDPI());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxPointSizeRect)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDPIChangedEvent_delete[] = { &wxluatype_wxDPIChangedEvent, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDPIChangedEvent_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxDPIChangedEvent_delete }};
+
+static int LUACALL wxLua_wxDPIChangedEvent_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDPIChangedEvent_constructor[1] = {{ wxLua_wxDPIChangedEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxDPIChangedEvent();
+static int LUACALL wxLua_wxDPIChangedEvent_constructor(lua_State *L)
+{
+    // call constructor
+    wxDPIChangedEvent* returns = new wxDPIChangedEvent();
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxDPIChangedEvent);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxDPIChangedEvent);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxDPIChangedEvent_delete_function(void** p)
+{
+    wxDPIChangedEvent* o = (wxDPIChangedEvent*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxDPIChangedEvent_methods[] = {
+#if (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxPointSizeRect)
+    { "GetNewDPI", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDPIChangedEvent_GetNewDPI, 1, NULL },
+    { "GetOldDPI", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDPIChangedEvent_GetOldDPI, 1, NULL },
+#endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxPointSizeRect)
+
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxDPIChangedEvent_delete, 1, NULL },
+    { "wxDPIChangedEvent", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxDPIChangedEvent_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxDPIChangedEvent_methodCount = sizeof(wxDPIChangedEvent_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxCHECK_VERSION(3,1,3)
+
+
 #if (defined(wxHAS_POWER_EVENTS)) && (wxCHECK_VERSION(2,8,0))
 // ---------------------------------------------------------------------------
 // Bind class wxPowerEvent

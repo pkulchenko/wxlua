@@ -56,7 +56,7 @@ class %delete wxCommandEvent : public wxEvent
 
     %wxEventType wxEVT_COMMAND_MENU_SELECTED   // EVT_MENU(winid, func) EVT_MENU_RANGE(id1, id2, func);
     %wxchkver_3_0_0 %wxEventType wxEVT_MENU    // wx3.0 alias for wxEVT_COMMAND_MENU_SELECTED
-    
+
     %wxEventType wxEVT_COMMAND_TOOL_CLICKED    // EVT_TOOL(winid, func) EVT_TOOL_RANGE(id1, id2, func);
     %wxEventType wxEVT_COMMAND_TOOL_ENTER      // EVT_TOOL_ENTER(winid, func);
     %wxEventType wxEVT_COMMAND_TOOL_RCLICKED   // EVT_TOOL_RCLICKED(winid, func) EVT_TOOL_RCLICKED_RANGE(id1, id2, func);
@@ -811,6 +811,24 @@ class %delete wxDisplayChangedEvent : public wxEvent
     wxDisplayChangedEvent();
 };
 
+// ---------------------------------------------------------------------------
+// wxDPIChangedEvent
+
+#if %wxchkver_3_1_3
+
+#include "wx/event.h"
+
+class %delete wxDPIChangedEvent  : public wxEvent
+{
+    %wxEventType wxEVT_DPI_CHANGED // EVT_DPI_CHANGED(func);
+
+    wxDPIChangedEvent();
+
+    wxSize GetOldDPI () const;
+    wxSize GetNewDPI () const;
+};
+
+#endif // %wxchkver_3_1_3
 
 // ---------------------------------------------------------------------------
 // wxPowerEvent

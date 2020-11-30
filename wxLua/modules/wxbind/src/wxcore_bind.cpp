@@ -306,6 +306,10 @@ wxLuaBindEvent* wxLuaGetEventList_wxcore(size_t &count)
 
         { "wxEVT_DISPLAY_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_DISPLAY_CHANGED), &wxluatype_wxDisplayChangedEvent },
 
+#if wxCHECK_VERSION(3,1,3)
+        { "wxEVT_DPI_CHANGED", WXLUA_GET_wxEventType_ptr(wxEVT_DPI_CHANGED), &wxluatype_wxDPIChangedEvent },
+#endif // wxCHECK_VERSION(3,1,3)
+
 #if wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
         { "wxEVT_DROP_FILES", WXLUA_GET_wxEventType_ptr(wxEVT_DROP_FILES), &wxluatype_wxDropFilesEvent },
 #endif // wxLUA_USE_wxDragDrop && wxUSE_DRAG_AND_DROP
@@ -5070,6 +5074,7 @@ static const char* wxluaclassname_wxControlWithItems = "wxControlWithItems";
 static const char* wxluaclassname_wxCursor = "wxCursor";
 static const char* wxluaclassname_wxDC = "wxDC";
 static const char* wxluaclassname_wxDCClipper = "wxDCClipper";
+static const char* wxluaclassname_wxDPIChangedEvent = "wxDPIChangedEvent";
 static const char* wxluaclassname_wxDataFormat = "wxDataFormat";
 static const char* wxluaclassname_wxDataObject = "wxDataObject";
 static const char* wxluaclassname_wxDataObjectComposite = "wxDataObjectComposite";
@@ -5463,6 +5468,8 @@ static const char* wxluabaseclassnames_wxCursor[] = { wxluaclassname_wxGDIObject
 static wxLuaBindClass* wxluabaseclassbinds_wxCursor[] = { NULL };
 static const char* wxluabaseclassnames_wxDC[] = { wxluaclassname_wxObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxDC[] = { NULL };
+static const char* wxluabaseclassnames_wxDPIChangedEvent[] = { wxluaclassname_wxEvent, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxDPIChangedEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxDataObjectComposite[] = { wxluaclassname_wxDataObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxDataObjectComposite[] = { NULL };
 static const char* wxluabaseclassnames_wxDataObjectSimple[] = { wxluaclassname_wxDataObject, NULL };
@@ -6494,6 +6501,12 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern int wxTreebookEvent_methodCount;
     extern void wxLua_wxTreebookEvent_delete_function(void** p);
 #endif // wxCHECK_VERSION(2,8,0) && wxUSE_TREEBOOK && wxLUA_USE_wxTreebook
+
+#if wxCHECK_VERSION(3,1,3)
+    extern wxLuaBindMethod wxDPIChangedEvent_methods[];
+    extern int wxDPIChangedEvent_methodCount;
+    extern void wxLua_wxDPIChangedEvent_delete_function(void** p);
+#endif // wxCHECK_VERSION(3,1,3)
 
 #if wxLUA_USE_Geometry && wxUSE_GEOMETRY
     extern wxLuaBindMethod wxPoint2DDouble_methods[];
@@ -7623,6 +7636,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
         { wxluaclassname_wxDC, wxDC_methods, wxDC_methodCount, CLASSINFO(wxDC), &wxluatype_wxDC, wxluabaseclassnames_wxDC, wxluabaseclassbinds_wxDC, NULL, NULL, NULL, 0, &wxLua_wxDC_delete_function, }, 
         { wxluaclassname_wxDCClipper, wxDCClipper_methods, wxDCClipper_methodCount, NULL, &wxluatype_wxDCClipper, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxDCClipper_delete_function, }, 
 #endif // wxLUA_USE_wxDC
+
+#if wxCHECK_VERSION(3,1,3)
+        { wxluaclassname_wxDPIChangedEvent, wxDPIChangedEvent_methods, wxDPIChangedEvent_methodCount, CLASSINFO(wxDPIChangedEvent), &wxluatype_wxDPIChangedEvent, wxluabaseclassnames_wxDPIChangedEvent, wxluabaseclassbinds_wxDPIChangedEvent, NULL, NULL, NULL, 0, &wxLua_wxDPIChangedEvent_delete_function, }, 
+#endif // wxCHECK_VERSION(3,1,3)
 
 #if wxLUA_USE_wxDataObject && wxUSE_DATAOBJ
         { wxluaclassname_wxDataFormat, wxDataFormat_methods, wxDataFormat_methodCount, NULL, &wxluatype_wxDataFormat, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxDataFormat_delete_function, }, 
