@@ -347,10 +347,31 @@ enum wxFontStyle
 
 enum wxFontWeight
 {
+#if %wxchkver_3_1_2
+    wxFONTWEIGHT_INVALID,
+    wxFONTWEIGHT_THIN,
+    wxFONTWEIGHT_EXTRALIGHT,
+    wxFONTWEIGHT_MEDIUM,
+    wxFONTWEIGHT_SEMIBOLD,
+    wxFONTWEIGHT_EXTRABOLD,
+    wxFONTWEIGHT_HEAVY,
+    wxFONTWEIGHT_EXTRAHEAVY,
+#endif //%wxchkver_3_1_2
     wxFONTWEIGHT_NORMAL,
     wxFONTWEIGHT_LIGHT,
     wxFONTWEIGHT_BOLD,
     wxFONTWEIGHT_MAX
+};
+
+enum wxFontWeight
+{
+    wxFONTWEIGHT_LIGHT = 300,        //!< Light font (weight = 300).
+    wxFONTWEIGHT_NORMAL = 400,       //!< Normal font (weight = 400).
+    wxFONTWEIGHT_BOLD = 700,         //!< Bold font (weight = 700).
+    wxFONTWEIGHT_EXTRABOLD = 800,    //!< Extra Bold (Ultra Bold) font (weight = 800). @since 3.1.2
+    wxFONTWEIGHT_HEAVY = 900,        //!< Heavy (Black) font (weight = 900). @since 3.1.2
+    wxFONTWEIGHT_EXTRAHEAVY = 1000,  //!< Extra Heavy font (weight = 1000).  @since 3.1.2
+    wxFONTWEIGHT_MAX = wxFONTWEIGHT_EXTRAHEAVY
 };
 
 enum
