@@ -1017,9 +1017,11 @@ class wxSpinCtrl : public wxControl
     wxSpinCtrl(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& value = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_ARROW_KEYS, int min = 0, int max = 100, int initial = 0, const wxString& name = "wxSpinCtrl");
     bool Create(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& value = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxSP_ARROW_KEYS, int min = 0, int max = 100, int initial = 0, const wxString& name = "wxSpinCtrl");
 
+    %wxchkver_2_9_5 int GetBase() const;
     int GetMax() const;
     int GetMin() const;
     int GetValue() const;
+    %wxchkver_2_9_5 bool SetBase(int base);
     void SetRange(int minVal, int maxVal);
     void SetSelection(long from, long to);
     void SetValue(const wxString& text);

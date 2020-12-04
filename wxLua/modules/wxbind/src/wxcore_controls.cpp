@@ -10007,6 +10007,33 @@ static int LUACALL wxLua_wxSpinCtrl_Create(lua_State *L)
 
 #endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL)
 
+#if (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinCtrl_GetBase[] = { &wxluatype_wxSpinCtrl, NULL };
+static int LUACALL wxLua_wxSpinCtrl_GetBase(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrl_GetBase[1] = {{ wxLua_wxSpinCtrl_GetBase, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSpinCtrl_GetBase }};
+//     %wxchkver_2_9_5 int GetBase() const;
+static int LUACALL wxLua_wxSpinCtrl_GetBase(lua_State *L)
+{
+    // get this
+    wxSpinCtrl * self = (wxSpinCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSpinCtrl);
+    // call GetBase
+    int returns = (self->GetBase());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinCtrl_GetMax[] = { &wxluatype_wxSpinCtrl, NULL };
 static int LUACALL wxLua_wxSpinCtrl_GetMax(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrl_GetMax[1] = {{ wxLua_wxSpinCtrl_GetMax, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSpinCtrl_GetMax }};
@@ -10078,6 +10105,28 @@ if ((double)(lua_Integer)returns == (double)returns) {
 
     return 1;
 }
+
+
+#if (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinCtrl_SetBase[] = { &wxluatype_wxSpinCtrl, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxSpinCtrl_SetBase(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSpinCtrl_SetBase[1] = {{ wxLua_wxSpinCtrl_SetBase, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSpinCtrl_SetBase }};
+//     %wxchkver_2_9_5 bool SetBase(int base);
+static int LUACALL wxLua_wxSpinCtrl_SetBase(lua_State *L)
+{
+    // int base
+    int base = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxSpinCtrl * self = (wxSpinCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSpinCtrl);
+    // call SetBase
+    bool returns = (self->SetBase(base));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSpinCtrl_SetRange[] = { &wxluatype_wxSpinCtrl, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxSpinCtrl_SetRange(lua_State *L);
@@ -10244,9 +10293,18 @@ wxLuaBindMethod wxSpinCtrl_methods[] = {
     { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrl_Create, 1, NULL },
 #endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL)
 
+#if (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL)
+    { "GetBase", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrl_GetBase, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL)
+
     { "GetMax", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrl_GetMax, 1, NULL },
     { "GetMin", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrl_GetMin, 1, NULL },
     { "GetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrl_GetValue, 1, NULL },
+
+#if (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL)
+    { "SetBase", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrl_SetBase, 1, NULL },
+#endif // (wxCHECK_VERSION(2,9,5)) && (wxLUA_USE_wxSpinCtrl && wxUSE_SPINCTRL)
+
     { "SetRange", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrl_SetRange, 1, NULL },
     { "SetSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSpinCtrl_SetSelection, 1, NULL },
 
