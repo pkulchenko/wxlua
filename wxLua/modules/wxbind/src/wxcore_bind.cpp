@@ -1423,33 +1423,18 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxFONTSTYLE_NORMAL", wxFONTSTYLE_NORMAL },
         { "wxFONTSTYLE_SLANT", wxFONTSTYLE_SLANT },
         { "wxFONTWEIGHT_BOLD", wxFONTWEIGHT_BOLD },
-        { "wxFONTWEIGHT_BOLD", wxFONTWEIGHT_BOLD },
-        { "wxFONTWEIGHT_EXTRABOLD", wxFONTWEIGHT_EXTRABOLD },
-#elif (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxFont)
-        { "wxFONTWEIGHT_EXTRABOLD", wxFONTWEIGHT_EXTRABOLD },
-#endif // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxFont)
-#if wxLUA_USE_wxFont
-        { "wxFONTWEIGHT_EXTRAHEAVY", wxFONTWEIGHT_EXTRAHEAVY },
-#elif (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxFont)
-        { "wxFONTWEIGHT_EXTRAHEAVY", wxFONTWEIGHT_EXTRAHEAVY },
-#endif // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxFont)
-#if (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxFont)
-        { "wxFONTWEIGHT_EXTRALIGHT", wxFONTWEIGHT_EXTRALIGHT },
-#endif // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxFont)
+#endif // wxLUA_USE_wxFont
 
-#if wxLUA_USE_wxFont
-        { "wxFONTWEIGHT_HEAVY", wxFONTWEIGHT_HEAVY },
-#elif (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxFont)
-        { "wxFONTWEIGHT_HEAVY", wxFONTWEIGHT_HEAVY },
-#endif // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxFont)
 #if (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxFont)
+        { "wxFONTWEIGHT_EXTRABOLD", wxFONTWEIGHT_EXTRABOLD },
+        { "wxFONTWEIGHT_EXTRAHEAVY", wxFONTWEIGHT_EXTRAHEAVY },
+        { "wxFONTWEIGHT_EXTRALIGHT", wxFONTWEIGHT_EXTRALIGHT },
+        { "wxFONTWEIGHT_HEAVY", wxFONTWEIGHT_HEAVY },
         { "wxFONTWEIGHT_INVALID", wxFONTWEIGHT_INVALID },
 #endif // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxFont)
 
 #if wxLUA_USE_wxFont
         { "wxFONTWEIGHT_LIGHT", wxFONTWEIGHT_LIGHT },
-        { "wxFONTWEIGHT_LIGHT", wxFONTWEIGHT_LIGHT },
-        { "wxFONTWEIGHT_MAX", wxFONTWEIGHT_MAX },
         { "wxFONTWEIGHT_MAX", wxFONTWEIGHT_MAX },
 #endif // wxLUA_USE_wxFont
 
@@ -1458,7 +1443,6 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
 #endif // (wxCHECK_VERSION(3,1,2)) && (wxLUA_USE_wxFont)
 
 #if wxLUA_USE_wxFont
-        { "wxFONTWEIGHT_NORMAL", wxFONTWEIGHT_NORMAL },
         { "wxFONTWEIGHT_NORMAL", wxFONTWEIGHT_NORMAL },
 #endif // wxLUA_USE_wxFont
 
