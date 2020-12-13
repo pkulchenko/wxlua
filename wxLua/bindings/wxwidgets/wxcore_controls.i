@@ -112,8 +112,8 @@ public:
     bool ShowColumnsMenu(const wxPoint& pt, const wxString& title = wxEmptyString);
     void AddColumnsItems(wxMenu& menu, int idColumnsBase = 0);
     bool ShowCustomizeDialog();
-    // int GetColumnTitleWidth(const wxHeaderColumn& col);
-    int GetColumnTitleWidth(unsigned int idx);
+    // %wxchkver_2_9_4 int GetColumnTitleWidth(const wxHeaderColumn& col);
+    %wxchkver_3_1_3 int GetColumnTitleWidth(unsigned int idx);
 };
 
 class wxHeaderCtrlSimple : public wxHeaderCtrl

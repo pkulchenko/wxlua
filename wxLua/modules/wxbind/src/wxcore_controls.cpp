@@ -752,10 +752,12 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
+
+#if ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)) && (wxCHECK_VERSION(3,1,3))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHeaderCtrl_GetColumnTitleWidth[] = { &wxluatype_wxHeaderCtrl, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxHeaderCtrl_GetColumnTitleWidth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxHeaderCtrl_GetColumnTitleWidth[1] = {{ wxLua_wxHeaderCtrl_GetColumnTitleWidth, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxHeaderCtrl_GetColumnTitleWidth }};
-//     int GetColumnTitleWidth(unsigned int idx);
+//     %wxchkver_3_1_3 int GetColumnTitleWidth(unsigned int idx);
 static int LUACALL wxLua_wxHeaderCtrl_GetColumnTitleWidth(lua_State *L)
 {
     // unsigned int idx
@@ -778,6 +780,7 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
+#endif // ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)) && (wxCHECK_VERSION(3,1,3))
 
 #if ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)) && (wxLUA_USE_wxArrayInt)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxHeaderCtrl_GetColumnsOrder[] = { &wxluatype_wxHeaderCtrl, NULL };
@@ -964,7 +967,10 @@ wxLuaBindMethod wxHeaderCtrl_methods[] = {
     { "GetColumnAt", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHeaderCtrl_GetColumnAt, 1, NULL },
     { "GetColumnCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHeaderCtrl_GetColumnCount, 1, NULL },
     { "GetColumnPos", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHeaderCtrl_GetColumnPos, 1, NULL },
+
+#if ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)) && (wxCHECK_VERSION(3,1,3))
     { "GetColumnTitleWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHeaderCtrl_GetColumnTitleWidth, 1, NULL },
+#endif // ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)) && (wxCHECK_VERSION(3,1,3))
 
 #if ((wxLUA_USE_wxButton && wxUSE_BUTTON) && (wxUSE_HEADERCTRL)) && (wxLUA_USE_wxArrayInt)
     { "GetColumnsOrder", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxHeaderCtrl_GetColumnsOrder, 1, NULL },
