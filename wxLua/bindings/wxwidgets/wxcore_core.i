@@ -243,8 +243,8 @@ class wxValidator : public wxEvtHandler
 #define wxFILTER_EXCLUDE_LIST
 #define wxFILTER_INCLUDE_CHAR_LIST
 #define wxFILTER_EXCLUDE_CHAR_LIST
-#define wxFILTER_XDIGITS
-#define wxFILTER_SPACE
+%wxchkver_3_1_3 #define wxFILTER_XDIGITS
+%wxchkver_3_1_3 #define wxFILTER_SPACE
 
 class %delete wxTextValidator : public wxValidator
 {
