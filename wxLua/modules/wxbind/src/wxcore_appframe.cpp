@@ -881,7 +881,7 @@ static int LUACALL wxLua_wxApp_GetExitOnFrameDelete(lua_State *L)
 }
 
 
-#if ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxApp))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxApp_GetLayoutDirection[] = { &wxluatype_wxApp, NULL };
 static int LUACALL wxLua_wxApp_GetLayoutDirection(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxApp_GetLayoutDirection[1] = {{ wxLua_wxApp_GetLayoutDirection, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxApp_GetLayoutDirection }};
@@ -906,7 +906,7 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
-#endif // ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxApp))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxApp_GetTopWindow[] = { &wxluatype_wxApp, NULL };
 static int LUACALL wxLua_wxApp_GetTopWindow(lua_State *L);
@@ -1469,9 +1469,9 @@ wxLuaBindMethod wxApp_methods[] = {
 
     { "GetExitOnFrameDelete", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_GetExitOnFrameDelete, 1, NULL },
 
-#if ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxApp))
+#if ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxApp))
     { "GetLayoutDirection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_GetLayoutDirection, 1, NULL },
-#endif // ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL)) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxApp))
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)) && ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxApp))
 
     { "GetTopWindow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_GetTopWindow, 1, NULL },
     { "GetUseBestVisual", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxApp_GetUseBestVisual, 1, NULL },

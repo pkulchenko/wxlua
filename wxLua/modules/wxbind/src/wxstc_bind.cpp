@@ -13628,7 +13628,7 @@ static int LUACALL wxLua_wxStyledTextCtrl_StyleSetFont(lua_State *L)
 
 #endif // wxLUA_USE_wxFont
 
-#if wxUSE_INTL
+#if wxUSE_INTL && wxLUA_USE_wxTranslations
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_StyleSetFontAttr[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, &wxluatype_TBOOLEAN, &wxluatype_TBOOLEAN, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_StyleSetFontAttr(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_StyleSetFontAttr[1] = {{ wxLua_wxStyledTextCtrl_StyleSetFontAttr, WXLUAMETHOD_METHOD, 7, 8, s_wxluatypeArray_wxLua_wxStyledTextCtrl_StyleSetFontAttr }};
@@ -13677,7 +13677,7 @@ static int LUACALL wxLua_wxStyledTextCtrl_StyleSetFontEncoding(lua_State *L)
     return 0;
 }
 
-#endif // wxUSE_INTL
+#endif // wxUSE_INTL && wxLUA_USE_wxTranslations
 
 #if wxLUA_USE_wxColourPenBrush
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_StyleSetForeground[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_wxColour, NULL };
@@ -16217,10 +16217,10 @@ wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "StyleSetFont", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_StyleSetFont, 1, NULL },
 #endif // wxLUA_USE_wxFont
 
-#if wxUSE_INTL
+#if wxUSE_INTL && wxLUA_USE_wxTranslations
     { "StyleSetFontAttr", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_StyleSetFontAttr, 1, NULL },
     { "StyleSetFontEncoding", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_StyleSetFontEncoding, 1, NULL },
-#endif // wxUSE_INTL
+#endif // wxUSE_INTL && wxLUA_USE_wxTranslations
 
 #if wxLUA_USE_wxColourPenBrush
     { "StyleSetForeground", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_StyleSetForeground, 1, NULL },

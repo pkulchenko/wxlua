@@ -908,7 +908,7 @@ public:
 };
 #endif
 
-#if wxUSE_INTL
+#if wxUSE_INTL && wxLUA_USE_wxTranslations
 
 #if %wxchkver_2_9_1
 
@@ -1581,4 +1581,4 @@ wxLocale* wxGetLocale();
 !%wxchkver_2_9 && %wxchkver_2_8  %rename wxGetTranslationPlural wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n, const wxChar* domain=NULL);
 !%wxchkver_2_8 %rename wxGetTranslationPlural wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n);
 
-#endif //wxUSE_INTL
+#endif //wxUSE_INTL && wxLUA_USE_wxTranslations

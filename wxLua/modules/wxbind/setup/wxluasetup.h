@@ -163,6 +163,7 @@
 #define wxLUA_USE_wxToolbar                     1
 #define wxLUA_USE_wxToolbook                    1
 #define wxLUA_USE_wxTooltip                     1
+#define wxLUA_USE_wxTranslations                1
 #define wxLUA_USE_wxTreebook                    1
 #define wxLUA_USE_wxTreeCtrl                    1
 #define wxLUA_USE_wxTreeListCtrl                1

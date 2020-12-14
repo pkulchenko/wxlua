@@ -1189,6 +1189,7 @@ function InitKeywords()
     preprocConditionTable["wxLUA_USE_wxToolbar"]               = "wxLUA_USE_wxToolbar"
     preprocConditionTable["wxLUA_USE_wxToolbook"]              = "wxLUA_USE_wxToolbook"
     preprocConditionTable["wxLUA_USE_wxTooltip"]               = "wxLUA_USE_wxTooltip"
+    preprocConditionTable["wxLUA_USE_wxTranslations"]          = "wxLUA_USE_wxTranslations"
     preprocConditionTable["wxLUA_USE_wxTreebook"]              = "wxLUA_USE_wxTreebook"
     preprocConditionTable["wxLUA_USE_wxTreeCtrl"]              = "wxLUA_USE_wxTreeCtrl"
     preprocConditionTable["wxLUA_USE_wxTreeListCtrl"]          = "wxLUA_USE_wxTreeListCtrl"

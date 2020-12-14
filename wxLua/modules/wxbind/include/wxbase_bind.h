@@ -166,9 +166,9 @@ extern WXDLLIMPEXP_BINDWXBASE wxLuaBinding* wxLuaBinding_wxbase_init();
     #include "wx/fswatcher.h"
 #endif // wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)
 
-#if wxUSE_INTL
+#if wxUSE_INTL && wxLUA_USE_wxTranslations
     #include "wx/intl.h"
-#endif // wxUSE_INTL
+#endif // wxUSE_INTL && wxLUA_USE_wxTranslations
 
 #if wxUSE_LONGLONG
     #include "wx/longlong.h"
@@ -190,16 +190,16 @@ extern WXDLLIMPEXP_BINDWXBASE wxLuaBinding* wxLuaBinding_wxbase_init();
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
 
-#if (defined (__WINDOWS__ )) && (wxCHECK_VERSION(2,9,1)) && (wxUSE_INTL)
+#if (defined (__WINDOWS__ )) && (wxCHECK_VERSION(2,9,1)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxResourceTranslationsLoader;
-#endif // (defined (__WINDOWS__ )) && (wxCHECK_VERSION(2,9,1)) && (wxUSE_INTL)
+#endif // (defined (__WINDOWS__ )) && (wxCHECK_VERSION(2,9,1)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
-#if (wxCHECK_VERSION(2,9,1)) && (wxUSE_INTL)
+#if (wxCHECK_VERSION(2,9,1)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxFileTranslationsLoader;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxMsgCatalog;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxTranslations;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxTranslationsLoader;
-#endif // (wxCHECK_VERSION(2,9,1)) && (wxUSE_INTL)
+#endif // (wxCHECK_VERSION(2,9,1)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 #if (wxUSE_FILESYSTEM) && (wxUSE_FS_INET && wxUSE_SOCKETS) && (wxUSE_STREAMS)
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxInternetFSHandler;
@@ -351,10 +351,10 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringTokenizer;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxFileSystemWatcherEvent;
 #endif // wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)
 
-#if wxUSE_INTL
+#if wxUSE_INTL && wxLUA_USE_wxTranslations
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxLanguageInfo;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxLocale;
-#endif // wxUSE_INTL
+#endif // wxUSE_INTL && wxLUA_USE_wxTranslations
 
 #if wxUSE_LONGLONG
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxLongLong;

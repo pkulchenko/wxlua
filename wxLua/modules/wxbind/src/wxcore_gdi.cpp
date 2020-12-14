@@ -3758,7 +3758,7 @@ static int LUACALL wxLua_wxFontInfo_Bold(lua_State *L)
 
 #endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
 
-#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontInfo_Encoding[] = { &wxluatype_wxFontInfo, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFontInfo_Encoding(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontInfo_Encoding[1] = {{ wxLua_wxFontInfo_Encoding, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFontInfo_Encoding }};
@@ -3777,7 +3777,7 @@ static int LUACALL wxLua_wxFontInfo_Encoding(lua_State *L)
     return 1;
 }
 
-#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 #if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontInfo_FaceName[] = { &wxluatype_wxFontInfo, &wxluatype_TSTRING, NULL };
@@ -4104,9 +4104,9 @@ wxLuaBindMethod wxFontInfo_methods[] = {
     { "Bold", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFontInfo_Bold, 1, NULL },
 #endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
 
-#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { "Encoding", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFontInfo_Encoding, 1, NULL },
-#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 #if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
     { "FaceName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFontInfo_FaceName, 1, NULL },
@@ -4219,7 +4219,7 @@ static int LUACALL wxLua_wxFont_GetBaseFont(lua_State *L)
 
 #endif // ((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
 
-#if (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static int LUACALL wxLua_wxFont_GetDefaultEncoding(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFont_GetDefaultEncoding[1] = {{ wxLua_wxFont_GetDefaultEncoding, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
 //     static wxFontEncoding GetDefaultEncoding();
@@ -4241,9 +4241,9 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
-#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
-#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_GetEncoding[] = { &wxluatype_wxFont, NULL };
 static int LUACALL wxLua_wxFont_GetEncoding(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFont_GetEncoding[1] = {{ wxLua_wxFont_GetEncoding, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFont_GetEncoding }};
@@ -4268,7 +4268,7 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
-#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_GetFaceName[] = { &wxluatype_wxFont, NULL };
 static int LUACALL wxLua_wxFont_GetFaceName(lua_State *L);
@@ -4742,7 +4742,7 @@ static int LUACALL wxLua_wxFont_MakeUnderlined(lua_State *L)
 
 #endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
 
-#if (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_New3[] = { &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TBOOLEAN, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFont_New3(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFont_New3[1] = {{ wxLua_wxFont_New3, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 4, 7, s_wxluatypeArray_wxLua_wxFont_New3 }};
@@ -4774,9 +4774,9 @@ static int LUACALL wxLua_wxFont_New3(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
-#if ((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL)
+#if ((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_New2[] = { &wxluatype_wxSize, &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TBOOLEAN, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFont_New2(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFont_New2[1] = {{ wxLua_wxFont_New2, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 4, 7, s_wxluatypeArray_wxLua_wxFont_New2 }};
@@ -4835,9 +4835,9 @@ static int LUACALL wxLua_wxFont_New1(lua_State *L)
     return 1;
 }
 
-#endif // ((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL)
+#endif // ((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
-#if (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_New[] = { &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFont_New(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFont_New[1] = {{ wxLua_wxFont_New, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 2, 5, s_wxluatypeArray_wxLua_wxFont_New }};
@@ -4865,7 +4865,7 @@ static int LUACALL wxLua_wxFont_New(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_Ok[] = { &wxluatype_wxFont, NULL };
 static int LUACALL wxLua_wxFont_Ok(lua_State *L);
@@ -4926,7 +4926,7 @@ static int LUACALL wxLua_wxFont_Scaled(lua_State *L)
 
 #endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
 
-#if (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_SetDefaultEncoding[] = { &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFont_SetDefaultEncoding(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFont_SetDefaultEncoding[1] = {{ wxLua_wxFont_SetDefaultEncoding, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxFont_SetDefaultEncoding }};
@@ -4941,9 +4941,9 @@ static int LUACALL wxLua_wxFont_SetDefaultEncoding(lua_State *L)
     return 0;
 }
 
-#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
-#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_SetEncoding[] = { &wxluatype_wxFont, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFont_SetEncoding(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFont_SetEncoding[1] = {{ wxLua_wxFont_SetEncoding, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFont_SetEncoding }};
@@ -4960,7 +4960,7 @@ static int LUACALL wxLua_wxFont_SetEncoding(lua_State *L)
     return 0;
 }
 
-#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFont)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_SetFaceName[] = { &wxluatype_wxFont, &wxluatype_TSTRING, NULL };
@@ -5446,7 +5446,7 @@ static int LUACALL wxLua_wxFont_op_set(lua_State *L)
 }
 
 
-#if (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#if (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_constructor8[] = { &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TBOOLEAN, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFont_constructor8(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFont_constructor8[1] = {{ wxLua_wxFont_constructor8, WXLUAMETHOD_CONSTRUCTOR, 4, 7, s_wxluatypeArray_wxLua_wxFont_constructor8 }};
@@ -5511,7 +5511,7 @@ static int LUACALL wxLua_wxFont_constructor7(lua_State *L)
     return 1;
 }
 
-#endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 #if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_constructor6[] = { &wxluatype_wxNativeFontInfo, NULL };
@@ -5552,7 +5552,7 @@ static int LUACALL wxLua_wxFont_constructor5(lua_State *L)
 
 #endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
 
-#if ((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL)
+#if ((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_constructor4[] = { &wxluatype_wxSize, &wxluatype_TINTEGER, &wxluatype_TINTEGER, &wxluatype_TINTEGER, &wxluatype_TBOOLEAN, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFont_constructor4(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFont_constructor4[1] = {{ wxLua_wxFont_constructor4, WXLUAMETHOD_CONSTRUCTOR, 4, 7, s_wxluatypeArray_wxLua_wxFont_constructor4 }};
@@ -5585,9 +5585,9 @@ static int LUACALL wxLua_wxFont_constructor4(lua_State *L)
     return 1;
 }
 
-#endif // ((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL)
+#endif // ((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
-#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_constructor3[] = { &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TINTEGER, &wxluatype_TINTEGER, &wxluatype_TBOOLEAN, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFont_constructor3(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFont_constructor3[1] = {{ wxLua_wxFont_constructor3, WXLUAMETHOD_CONSTRUCTOR, 4, 7, s_wxluatypeArray_wxLua_wxFont_constructor3 }};
@@ -5620,7 +5620,7 @@ static int LUACALL wxLua_wxFont_constructor3(lua_State *L)
     return 1;
 }
 
-#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 #if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_constructor2[] = { &wxluatype_wxFontInfo, NULL };
@@ -5682,30 +5682,30 @@ static int LUACALL wxLua_wxFont_constructor(lua_State *L)
 
 
 
-#if ((wxLUA_USE_wxFont) && (wxUSE_INTL))||(((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL))
+#if ((wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||(((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFont_New_overload[] =
 {
 
-#if (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { wxLua_wxFont_New3, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 4, 7, s_wxluatypeArray_wxLua_wxFont_New3 },
-#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
-#if ((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL)
+#if ((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { wxLua_wxFont_New2, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 4, 7, s_wxluatypeArray_wxLua_wxFont_New2 },
-#endif // ((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL)
+#endif // ((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
-#if ((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL)
+#if ((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { wxLua_wxFont_New1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 2, 5, s_wxluatypeArray_wxLua_wxFont_New1 },
-#endif // ((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL)
+#endif // ((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
-#if (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { wxLua_wxFont_New, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 2, 5, s_wxluatypeArray_wxLua_wxFont_New },
-#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 };
 static int s_wxluafunc_wxLua_wxFont_New_overload_count = sizeof(s_wxluafunc_wxLua_wxFont_New_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxLUA_USE_wxFont) && (wxUSE_INTL))||(((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL))
+#endif // ((wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||(((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
 
 #if ((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont))
 // function overload table
@@ -5786,18 +5786,18 @@ static int s_wxluafunc_wxLua_wxFont_op_set_overload_count = sizeof(s_wxluafunc_w
 
 #endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont))||(wxLUA_USE_wxFont)
 
-#if ((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont))||(((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||(wxLUA_USE_wxFont)
+#if ((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont))||(((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||(wxLUA_USE_wxFont)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFont_constructor_overload[] =
 {
 
-#if (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#if (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { wxLua_wxFont_constructor8, WXLUAMETHOD_CONSTRUCTOR, 4, 7, s_wxluatypeArray_wxLua_wxFont_constructor8 },
-#endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
-#if (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#if (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { wxLua_wxFont_constructor7, WXLUAMETHOD_CONSTRUCTOR, 4, 7, s_wxluatypeArray_wxLua_wxFont_constructor7 },
-#endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 #if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
     { wxLua_wxFont_constructor6, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxFont_constructor6 },
@@ -5807,13 +5807,13 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxFont_constructor_overload[] =
     { wxLua_wxFont_constructor5, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxFont_constructor5 },
 #endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
 
-#if ((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL)
+#if ((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { wxLua_wxFont_constructor4, WXLUAMETHOD_CONSTRUCTOR, 4, 7, s_wxluatypeArray_wxLua_wxFont_constructor4 },
-#endif // ((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL)
+#endif // ((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
-#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { wxLua_wxFont_constructor3, WXLUAMETHOD_CONSTRUCTOR, 4, 7, s_wxluatypeArray_wxLua_wxFont_constructor3 },
-#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 #if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
     { wxLua_wxFont_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxFont_constructor2 },
@@ -5826,7 +5826,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxFont_constructor_overload[] =
 };
 static int s_wxluafunc_wxLua_wxFont_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxFont_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont))||(((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||(wxLUA_USE_wxFont)
+#endif // ((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont))||(((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||(wxLUA_USE_wxFont)
 
 void wxLua_wxFont_delete_function(void** p)
 {
@@ -5848,13 +5848,13 @@ wxLuaBindMethod wxFont_methods[] = {
     { "GetBaseFont", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFont_GetBaseFont, 1, NULL },
 #endif // ((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
 
-#if (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { "GetDefaultEncoding", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFont_GetDefaultEncoding, 1, NULL },
-#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
-#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { "GetEncoding", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFont_GetEncoding, 1, NULL },
-#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
     { "GetFaceName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFont_GetFaceName, 1, NULL },
     { "GetFamily", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFont_GetFamily, 1, NULL },
@@ -5911,9 +5911,9 @@ wxLuaBindMethod wxFont_methods[] = {
     { "MakeUnderlined", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFont_MakeUnderlined, 1, NULL },
 #endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
 
-#if ((wxLUA_USE_wxFont) && (wxUSE_INTL))||(((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL))
+#if ((wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||(((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
     { "New", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFont_New_overload, s_wxluafunc_wxLua_wxFont_New_overload_count, 0 },
-#endif // ((wxLUA_USE_wxFont) && (wxUSE_INTL))||(((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL))
+#endif // ((wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||(((wxLUA_USE_wxFont) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
 
     { "Ok", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFont_Ok, 1, NULL },
 
@@ -5922,13 +5922,13 @@ wxLuaBindMethod wxFont_methods[] = {
     { "Scaled", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFont_Scaled, 1, NULL },
 #endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
 
-#if (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { "SetDefaultEncoding", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFont_SetDefaultEncoding, 1, NULL },
-#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
-#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { "SetEncoding", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFont_SetEncoding, 1, NULL },
-#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFont)
     { "SetFaceName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFont_SetFaceName, 1, NULL },
@@ -5995,9 +5995,9 @@ wxLuaBindMethod wxFont_methods[] = {
     { "op_set", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFont_op_set_overload, s_wxluafunc_wxLua_wxFont_op_set_overload_count, 0 },
 #endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont))||(wxLUA_USE_wxFont)
 
-#if ((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont))||(((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||(wxLUA_USE_wxFont)
+#if ((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont))||(((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||(wxLUA_USE_wxFont)
     { "wxFont", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxFont_constructor_overload, s_wxluafunc_wxLua_wxFont_constructor_overload_count, 0 },
-#endif // ((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont))||(((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||(wxLUA_USE_wxFont)
+#endif // ((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||(((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont))||(((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxPointSizeRect)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||(wxLUA_USE_wxFont)
 
     { 0, 0, 0, 0 },
 };
@@ -6052,7 +6052,7 @@ static int LUACALL wxLua_wxNativeFontInfo_FromUserString(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxNativeFontInfo_GetEncoding[] = { &wxluatype_wxNativeFontInfo, NULL };
 static int LUACALL wxLua_wxNativeFontInfo_GetEncoding(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxNativeFontInfo_GetEncoding[1] = {{ wxLua_wxNativeFontInfo_GetEncoding, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxNativeFontInfo_GetEncoding }};
@@ -6077,7 +6077,7 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
-#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxNativeFontInfo_GetFaceName[] = { &wxluatype_wxNativeFontInfo, NULL };
 static int LUACALL wxLua_wxNativeFontInfo_GetFaceName(lua_State *L);
@@ -6231,7 +6231,7 @@ if ((double)(lua_Integer)returns == (double)returns) {
 }
 
 
-#if (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxNativeFontInfo_SetEncoding[] = { &wxluatype_wxNativeFontInfo, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxNativeFontInfo_SetEncoding(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxNativeFontInfo_SetEncoding[1] = {{ wxLua_wxNativeFontInfo_SetEncoding, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxNativeFontInfo_SetEncoding }};
@@ -6248,7 +6248,7 @@ static int LUACALL wxLua_wxNativeFontInfo_SetEncoding(lua_State *L)
     return 0;
 }
 
-#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 #if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxArrayString)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxNativeFontInfo_SetFaceName2[] = { &wxluatype_wxNativeFontInfo, &wxluatype_wxArrayString, NULL };
@@ -6523,9 +6523,9 @@ wxLuaBindMethod wxNativeFontInfo_methods[] = {
     { "FromString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxNativeFontInfo_FromString, 1, NULL },
     { "FromUserString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxNativeFontInfo_FromUserString, 1, NULL },
 
-#if (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { "GetEncoding", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxNativeFontInfo_GetEncoding, 1, NULL },
-#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
     { "GetFaceName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxNativeFontInfo_GetFaceName, 1, NULL },
     { "GetFamily", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxNativeFontInfo_GetFamily, 1, NULL },
@@ -6539,9 +6539,9 @@ wxLuaBindMethod wxNativeFontInfo_methods[] = {
     { "GetUnderlined", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxNativeFontInfo_GetUnderlined, 1, NULL },
     { "GetWeight", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxNativeFontInfo_GetWeight, 1, NULL },
 
-#if (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { "SetEncoding", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxNativeFontInfo_SetEncoding, 1, NULL },
-#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFont) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 #if (((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxArrayString))||((!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFont))||((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFont))
     { "SetFaceName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxNativeFontInfo_SetFaceName_overload, s_wxluafunc_wxLua_wxNativeFontInfo_SetFaceName_overload_count, 0 },
@@ -6602,7 +6602,7 @@ static int LUACALL wxLua_wxFontEnumerator_EnumerateEncodings(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxFontEnumerator) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFontEnumerator) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontEnumerator_EnumerateFacenames[] = { &wxluatype_wxFontEnumerator, &wxluatype_TINTEGER, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxFontEnumerator_EnumerateFacenames(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontEnumerator_EnumerateFacenames[1] = {{ wxLua_wxFontEnumerator_EnumerateFacenames, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxFontEnumerator_EnumerateFacenames }};
@@ -6625,7 +6625,7 @@ static int LUACALL wxLua_wxFontEnumerator_EnumerateFacenames(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxFontEnumerator) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFontEnumerator) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 #if ((!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontEnumerator_GetEncodings1[] = { &wxluatype_wxFontEnumerator, NULL };
@@ -6689,7 +6689,7 @@ static int LUACALL wxLua_wxFontEnumerator_GetFacenames1(lua_State *L)
 
 #endif // ((!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)
 
-#if (((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)) && (wxUSE_INTL)
+#if (((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontEnumerator_GetFacenames[] = { &wxluatype_TINTEGER, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxFontEnumerator_GetFacenames(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontEnumerator_GetFacenames[1] = {{ wxLua_wxFontEnumerator_GetFacenames, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 2, s_wxluatypeArray_wxLua_wxFontEnumerator_GetFacenames }};
@@ -6713,7 +6713,7 @@ static int LUACALL wxLua_wxFontEnumerator_GetFacenames(lua_State *L)
     return 1;
 }
 
-#endif // (((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)) && (wxUSE_INTL)
+#endif // (((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontEnumerator_delete[] = { &wxluatype_wxFontEnumerator, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontEnumerator_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxFontEnumerator_delete }};
@@ -6753,7 +6753,7 @@ static int s_wxluafunc_wxLua_wxFontEnumerator_GetEncodings_overload_count = size
 
 #endif // (((!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString))||(((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString))
 
-#if (((!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString))||((((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)) && (wxUSE_INTL))
+#if (((!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString))||((((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontEnumerator_GetFacenames_overload[] =
 {
@@ -6762,13 +6762,13 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontEnumerator_GetFacenames_overload[]
     { wxLua_wxFontEnumerator_GetFacenames1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxFontEnumerator_GetFacenames1 },
 #endif // ((!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)
 
-#if (((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)) && (wxUSE_INTL)
+#if (((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { wxLua_wxFontEnumerator_GetFacenames, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 2, s_wxluatypeArray_wxLua_wxFontEnumerator_GetFacenames },
-#endif // (((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)) && (wxUSE_INTL)
+#endif // (((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 };
 static int s_wxluafunc_wxLua_wxFontEnumerator_GetFacenames_overload_count = sizeof(s_wxluafunc_wxLua_wxFontEnumerator_GetFacenames_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (((!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString))||((((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)) && (wxUSE_INTL))
+#endif // (((!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString))||((((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
 
 void wxLua_wxFontEnumerator_delete_function(void** p)
 {
@@ -6780,17 +6780,17 @@ void wxLua_wxFontEnumerator_delete_function(void** p)
 wxLuaBindMethod wxFontEnumerator_methods[] = {
     { "EnumerateEncodings", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFontEnumerator_EnumerateEncodings, 1, NULL },
 
-#if (wxLUA_USE_wxFontEnumerator) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFontEnumerator) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { "EnumerateFacenames", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFontEnumerator_EnumerateFacenames, 1, NULL },
-#endif // (wxLUA_USE_wxFontEnumerator) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFontEnumerator) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 #if (((!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString))||(((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString))
     { "GetEncodings", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFontEnumerator_GetEncodings_overload, s_wxluafunc_wxLua_wxFontEnumerator_GetEncodings_overload_count, 0 },
 #endif // (((!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString))||(((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString))
 
-#if (((!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString))||((((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)) && (wxUSE_INTL))
+#if (((!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString))||((((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
     { "GetFacenames", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFontEnumerator_GetFacenames_overload, s_wxluafunc_wxLua_wxFontEnumerator_GetFacenames_overload_count, 0 },
-#endif // (((!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString))||((((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)) && (wxUSE_INTL))
+#endif // (((!wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString))||((((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontEnumerator)) && (wxLUA_USE_wxArrayString)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
 
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxFontEnumerator_delete, 1, NULL },
     { "wxFontEnumerator", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxFontEnumerator_constructor, 1, NULL },
@@ -6832,7 +6832,7 @@ static int LUACALL wxLua_wxFontList_FindOrCreateFont2(lua_State *L)
 
 #endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)
 
-#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont1[] = { &wxluatype_wxFontList, &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TINTEGER, &wxluatype_TINTEGER, &wxluatype_TBOOLEAN, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFontList_FindOrCreateFont1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontList_FindOrCreateFont1[1] = {{ wxLua_wxFontList_FindOrCreateFont1, WXLUAMETHOD_METHOD, 5, 8, s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont1 }};
@@ -6865,9 +6865,9 @@ static int LUACALL wxLua_wxFontList_FindOrCreateFont1(lua_State *L)
     return 1;
 }
 
-#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
-#if (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#if (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont[] = { &wxluatype_wxFontList, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TBOOLEAN, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFontList_FindOrCreateFont(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontList_FindOrCreateFont[1] = {{ wxLua_wxFontList_FindOrCreateFont, WXLUAMETHOD_METHOD, 5, 8, s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont }};
@@ -6900,11 +6900,11 @@ static int LUACALL wxLua_wxFontList_FindOrCreateFont(lua_State *L)
     return 1;
 }
 
-#endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 
 
-#if (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))
+#if (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontList_FindOrCreateFont_overload[] =
 {
@@ -6913,17 +6913,17 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontList_FindOrCreateFont_overload[] =
     { wxLua_wxFontList_FindOrCreateFont2, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont2 },
 #endif // ((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)
 
-#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#if (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { wxLua_wxFontList_FindOrCreateFont1, WXLUAMETHOD_METHOD, 5, 8, s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont1 },
-#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#endif // (((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
-#if (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#if (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { wxLua_wxFontList_FindOrCreateFont, WXLUAMETHOD_METHOD, 5, 8, s_wxluatypeArray_wxLua_wxFontList_FindOrCreateFont },
-#endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL)
+#endif // (((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 };
 static int s_wxluafunc_wxLua_wxFontList_FindOrCreateFont_overload_count = sizeof(s_wxluafunc_wxLua_wxFontList_FindOrCreateFont_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
 
 void wxLua_wxFontList_delete_function(void** p)
 {
@@ -6933,9 +6933,9 @@ void wxLua_wxFontList_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxFontList_methods[] = {
-#if (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))
+#if (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
     { "FindOrCreateFont", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFontList_FindOrCreateFont_overload, s_wxluafunc_wxLua_wxFontList_FindOrCreateFont_overload_count, 0 },
-#endif // (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL))
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont))||((((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))||((((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFontList)) && (wxLUA_USE_wxFont)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
 
     { 0, 0, 0, 0 },
 };
@@ -6953,7 +6953,7 @@ int wxFontList_methodCount = sizeof(wxFontList_methods)/sizeof(wxLuaBindMethod) 
 // Lua MetaTable Tag for Class 'wxFontMapper'
 int wxluatype_wxFontMapper = WXLUA_TUNKNOWN;
 
-#if (wxLUA_USE_wxFontMapper) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFontMapper) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontMapper_CharsetToEncoding[] = { &wxluatype_wxFontMapper, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxFontMapper_CharsetToEncoding(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontMapper_CharsetToEncoding[1] = {{ wxLua_wxFontMapper_CharsetToEncoding, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxFontMapper_CharsetToEncoding }};
@@ -6984,7 +6984,7 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
-#endif // (wxLUA_USE_wxFontMapper) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFontMapper) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 static int LUACALL wxLua_wxFontMapper_Get(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontMapper_Get[1] = {{ wxLua_wxFontMapper_Get, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
@@ -7000,7 +7000,7 @@ static int LUACALL wxLua_wxFontMapper_Get(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxFontMapper) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFontMapper) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontMapper_GetAltForEncoding[] = { &wxluatype_wxFontMapper, &wxluatype_TINTEGER, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxFontMapper_GetAltForEncoding(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontMapper_GetAltForEncoding[1] = {{ wxLua_wxFontMapper_GetAltForEncoding, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxFontMapper_GetAltForEncoding }};
@@ -7031,7 +7031,7 @@ static int LUACALL wxLua_wxFontMapper_GetAltForEncoding(lua_State *L)
 }
 
 
-#endif // (wxLUA_USE_wxFontMapper) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFontMapper) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 static int LUACALL wxLua_wxFontMapper_GetDefaultConfigPath(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontMapper_GetDefaultConfigPath[1] = {{ wxLua_wxFontMapper_GetDefaultConfigPath, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
@@ -7047,7 +7047,7 @@ static int LUACALL wxLua_wxFontMapper_GetDefaultConfigPath(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxFontMapper) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFontMapper) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontMapper_GetEncoding[] = { &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxFontMapper_GetEncoding(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontMapper_GetEncoding[1] = {{ wxLua_wxFontMapper_GetEncoding, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxFontMapper_GetEncoding }};
@@ -7128,7 +7128,7 @@ static int LUACALL wxLua_wxFontMapper_GetEncodingName(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxFontMapper) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFontMapper) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 static int LUACALL wxLua_wxFontMapper_GetSupportedEncodingsCount(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontMapper_GetSupportedEncodingsCount[1] = {{ wxLua_wxFontMapper_GetSupportedEncodingsCount, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
@@ -7152,7 +7152,7 @@ if ((double)(lua_Integer)returns == (double)returns) {
 }
 
 
-#if (wxLUA_USE_wxFontMapper) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFontMapper) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontMapper_IsEncodingAvailable[] = { &wxluatype_wxFontMapper, &wxluatype_TINTEGER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxFontMapper_IsEncodingAvailable(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontMapper_IsEncodingAvailable[1] = {{ wxLua_wxFontMapper_IsEncodingAvailable, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxFontMapper_IsEncodingAvailable }};
@@ -7175,7 +7175,7 @@ static int LUACALL wxLua_wxFontMapper_IsEncodingAvailable(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxFontMapper) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFontMapper) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontMapper)
 static int LUACALL wxLua_wxFontMapper_Reset(lua_State *L);
@@ -7271,30 +7271,30 @@ void wxLua_wxFontMapper_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxFontMapper_methods[] = {
-#if (wxLUA_USE_wxFontMapper) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFontMapper) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { "CharsetToEncoding", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFontMapper_CharsetToEncoding, 1, NULL },
-#endif // (wxLUA_USE_wxFontMapper) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFontMapper) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
     { "Get", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFontMapper_Get, 1, NULL },
 
-#if (wxLUA_USE_wxFontMapper) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFontMapper) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { "GetAltForEncoding", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFontMapper_GetAltForEncoding, 1, NULL },
-#endif // (wxLUA_USE_wxFontMapper) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFontMapper) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
     { "GetDefaultConfigPath", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFontMapper_GetDefaultConfigPath, 1, NULL },
 
-#if (wxLUA_USE_wxFontMapper) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFontMapper) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { "GetEncoding", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFontMapper_GetEncoding, 1, NULL },
     { "GetEncodingDescription", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFontMapper_GetEncodingDescription, 1, NULL },
     { "GetEncodingFromName", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFontMapper_GetEncodingFromName, 1, NULL },
     { "GetEncodingName", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFontMapper_GetEncodingName, 1, NULL },
-#endif // (wxLUA_USE_wxFontMapper) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFontMapper) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
     { "GetSupportedEncodingsCount", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFontMapper_GetSupportedEncodingsCount, 1, NULL },
 
-#if (wxLUA_USE_wxFontMapper) && (wxUSE_INTL)
+#if (wxLUA_USE_wxFontMapper) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
     { "IsEncodingAvailable", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFontMapper_IsEncodingAvailable, 1, NULL },
-#endif // (wxLUA_USE_wxFontMapper) && (wxUSE_INTL)
+#endif // (wxLUA_USE_wxFontMapper) && (wxUSE_INTL && wxLUA_USE_wxTranslations)
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxFontMapper)
     { "Reset", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFontMapper_Reset, 1, NULL },
@@ -14790,7 +14790,7 @@ static int LUACALL wxLua_wxDC_GetFont(lua_State *L)
 
 #endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxFont)
 
-#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_GetLayoutDirection[] = { &wxluatype_wxDC, NULL };
 static int LUACALL wxLua_wxDC_GetLayoutDirection(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_GetLayoutDirection[1] = {{ wxLua_wxDC_GetLayoutDirection, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDC_GetLayoutDirection }};
@@ -14815,7 +14815,7 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
-#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_GetLogicalFunction[] = { &wxluatype_wxDC, NULL };
 static int LUACALL wxLua_wxDC_GetLogicalFunction(lua_State *L);
@@ -15655,7 +15655,7 @@ static int LUACALL wxLua_wxDC_SetFont(lua_State *L)
 
 #endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxFont)
 
-#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_SetLayoutDirection[] = { &wxluatype_wxDC, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDC_SetLayoutDirection(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDC_SetLayoutDirection[1] = {{ wxLua_wxDC_SetLayoutDirection, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDC_SetLayoutDirection }};
@@ -15672,7 +15672,7 @@ static int LUACALL wxLua_wxDC_SetLayoutDirection(lua_State *L)
     return 0;
 }
 
-#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDC_SetLogicalFunction[] = { &wxluatype_wxDC, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDC_SetLogicalFunction(lua_State *L);
@@ -15997,9 +15997,9 @@ wxLuaBindMethod wxDC_methods[] = {
     { "GetFont", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_GetFont, 1, NULL },
 #endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxFont)
 
-#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
     { "GetLayoutDirection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_GetLayoutDirection, 1, NULL },
-#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
 
     { "GetLogicalFunction", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_GetLogicalFunction, 1, NULL },
     { "GetMapMode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_GetMapMode, 1, NULL },
@@ -16091,9 +16091,9 @@ wxLuaBindMethod wxDC_methods[] = {
     { "SetFont", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_SetFont, 1, NULL },
 #endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxFont)
 
-#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
     { "SetLayoutDirection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_SetLayoutDirection, 1, NULL },
-#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL))
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxDC)) && ((wxCHECK_VERSION(2,8,0)) && (wxUSE_INTL && wxLUA_USE_wxTranslations))
 
     { "SetLogicalFunction", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_SetLogicalFunction, 1, NULL },
     { "SetMapMode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDC_SetMapMode, 1, NULL },
