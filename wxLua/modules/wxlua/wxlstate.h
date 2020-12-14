@@ -792,6 +792,17 @@ public:
     lua_Debug *m_lua_Debug;
 };
 
+#if wxCHECK_VERSION(3,0,0)
+// A wxLuaState is being created, sent at the end of
+//   wxLuaState(wxEvtHandler, win id) or Create(wxEvtHandler, win id)
+wxDECLARE_EVENT(wxEVT_LUA_CREATION, wxLuaEvent);
+// Lua's print(...) statements and such, check GetString()
+wxDECLARE_EVENT(wxEVT_LUA_PRINT, wxLuaEvent);
+// an error in Lua has occurred, check GetString() for message
+wxDECLARE_EVENT(wxEVT_LUA_ERROR, wxLuaEvent);
+// see LuaDebugHook function
+wxDECLARE_EVENT(wxEVT_LUA_DEBUG_HOOK, wxLuaEvent);
+#else
 BEGIN_DECLARE_EVENT_TYPES()
     // A wxLuaState is being created, sent at the end of
     //   wxLuaState(wxEvtHandler, win id) or Create(wxEvtHandler, win id)
@@ -806,6 +817,7 @@ BEGIN_DECLARE_EVENT_TYPES()
     //DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUA, wxEVT_LUA_INIT,       0)
     //DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_WXLUA, wxEVT_LUA_DEBUGGERATTACHED,   0)
 END_DECLARE_EVENT_TYPES()
+#endif
 
 typedef void (wxEvtHandler::*wxLuaEventFunction)(wxLuaEvent&);
 
