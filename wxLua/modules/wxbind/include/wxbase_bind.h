@@ -74,7 +74,6 @@ extern WXDLLIMPEXP_BINDWXBASE wxLuaBinding* wxLuaBinding_wxbase_init();
 #include "wx/event.h"
 #include "wx/filefn.h"
 #include "wx/iconloc.h"
-#include "wx/intl.h"
 #include "wx/mimetype.h"
 #include "wx/timer.h"
 #include "wx/tokenzr.h"
@@ -167,6 +166,10 @@ extern WXDLLIMPEXP_BINDWXBASE wxLuaBinding* wxLuaBinding_wxbase_init();
     #include "wx/fswatcher.h"
 #endif // wxUSE_FSWATCHER && wxCHECK_VERSION(2,9,4)
 
+#if wxUSE_INTL
+    #include "wx/intl.h"
+#endif // wxUSE_INTL
+
 #if wxUSE_LONGLONG
     #include "wx/longlong.h"
 #endif // wxUSE_LONGLONG
@@ -187,9 +190,16 @@ extern WXDLLIMPEXP_BINDWXBASE wxLuaBinding* wxLuaBinding_wxbase_init();
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
 
-#if (defined (__WINDOWS__ )) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)
+#if (defined (__WINDOWS__ )) && (wxCHECK_VERSION(2,9,1)) && (wxUSE_INTL)
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxResourceTranslationsLoader;
-#endif // (defined (__WINDOWS__ )) && (wxCHECK_VERSION(2,9,1) && wxUSE_INTL)
+#endif // (defined (__WINDOWS__ )) && (wxCHECK_VERSION(2,9,1)) && (wxUSE_INTL)
+
+#if (wxCHECK_VERSION(2,9,1)) && (wxUSE_INTL)
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxFileTranslationsLoader;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxMsgCatalog;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxTranslations;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxTranslationsLoader;
+#endif // (wxCHECK_VERSION(2,9,1)) && (wxUSE_INTL)
 
 #if (wxUSE_FILESYSTEM) && (wxUSE_FS_INET && wxUSE_SOCKETS) && (wxUSE_STREAMS)
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxInternetFSHandler;
@@ -232,13 +242,6 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringTokenizer;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxString_const_iterator;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxString_iterator;
 #endif // wxCHECK_VERSION(2,9,0)
-
-#if wxCHECK_VERSION(2,9,1) && wxUSE_INTL
-    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxFileTranslationsLoader;
-    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxMsgCatalog;
-    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxTranslations;
-    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxTranslationsLoader;
-#endif // wxCHECK_VERSION(2,9,1) && wxUSE_INTL
 
 #if wxCHECK_VERSION(2,9,2)
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxVersionInfo;

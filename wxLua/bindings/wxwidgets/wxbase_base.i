@@ -908,7 +908,9 @@ public:
 };
 #endif
 
-#if %wxchkver_2_9_1 && wxUSE_INTL
+#if wxUSE_INTL
+
+#if %wxchkver_2_9_1
 
 // ----------------------------------------------------------------------------
 // wxMsgCatalog corresponds to one loaded message catalog.
@@ -1034,14 +1036,12 @@ public:
     static const wxString& GetUntranslatedString(const wxString& str);
 };
 
-#endif
+#endif //%wxchkver_2_9_1
 
 // ---------------------------------------------------------------------------
 // wxLocale
 
 #include "wx/intl.h"
-
-#if wxUSE_INTL
 
 enum wxLanguage
 {
@@ -1436,7 +1436,7 @@ enum wxLayoutDirection
     wxLayout_LeftToRight,
     wxLayout_RightToLeft
 };
-#endif %wxchkver_2_8
+#endif //%wxchkver_2_8
 
 struct %delete wxLanguageInfo
 {
