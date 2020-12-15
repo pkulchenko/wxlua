@@ -908,9 +908,9 @@ public:
 };
 #endif
 
-#if wxUSE_INTL && wxLUA_USE_wxTranslations
+#if wxUSE_INTL
 
-#if %wxchkver_2_9_1
+#if %wxchkver_2_9_1 && wxLUA_USE_wxTranslations
 
 // ----------------------------------------------------------------------------
 // wxMsgCatalog corresponds to one loaded message catalog.
@@ -1036,7 +1036,7 @@ public:
     static const wxString& GetUntranslatedString(const wxString& str);
 };
 
-#endif //%wxchkver_2_9_1
+#endif //%wxchkver_2_9_1 && wxLUA_USE_wxTranslations
 
 // ---------------------------------------------------------------------------
 // wxLocale
@@ -1581,4 +1581,4 @@ wxLocale* wxGetLocale();
 !%wxchkver_2_9 && %wxchkver_2_8  %rename wxGetTranslationPlural wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n, const wxChar* domain=NULL);
 !%wxchkver_2_8 %rename wxGetTranslationPlural wxString wxGetTranslation(const wxString& sz1, const wxString& sz2, size_t n);
 
-#endif //wxUSE_INTL && wxLUA_USE_wxTranslations
+#endif //wxUSE_INTL
