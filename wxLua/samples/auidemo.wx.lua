@@ -545,7 +545,7 @@ function SettingsPanel:OnSetColor(event)
         else return;
         end
 
-        self.m_frame:GetDockArt():SetColor(var, dlg:GetColourData():GetColour());
+        self.m_frame:GetDockArt():SetColour(var, dlg:GetColourData():GetColour());
         self.m_frame:DoUpdate();
         self:UpdateColors();
 end
