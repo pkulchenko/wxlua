@@ -503,6 +503,8 @@ wxLuaBindEvent* wxLuaGetEventList_wxcore(size_t &count)
         { "wxEVT_SCROLL_THUMBTRACK", WXLUA_GET_wxEventType_ptr(wxEVT_SCROLL_THUMBTRACK), &wxluatype_wxScrollEvent },
 #endif // 1
         { "wxEVT_SCROLL_TOP", WXLUA_GET_wxEventType_ptr(wxEVT_SCROLL_TOP), &wxluatype_wxScrollEvent },
+        { "wxEVT_SEARCH", WXLUA_GET_wxEventType_ptr(wxEVT_SEARCH), &wxluatype_wxCommandEvent },
+        { "wxEVT_SEARCH_CANCEL", WXLUA_GET_wxEventType_ptr(wxEVT_SEARCH_CANCEL), &wxluatype_wxCommandEvent },
         { "wxEVT_SET_CURSOR", WXLUA_GET_wxEventType_ptr(wxEVT_SET_CURSOR), &wxluatype_wxSetCursorEvent },
         { "wxEVT_SET_FOCUS", WXLUA_GET_wxEventType_ptr(wxEVT_SET_FOCUS), &wxluatype_wxFocusEvent },
         { "wxEVT_SHOW", WXLUA_GET_wxEventType_ptr(wxEVT_SHOW), &wxluatype_wxShowEvent },
@@ -5311,6 +5313,7 @@ static const char* wxluaclassname_wxScrollBar = "wxScrollBar";
 static const char* wxluaclassname_wxScrollEvent = "wxScrollEvent";
 static const char* wxluaclassname_wxScrollWinEvent = "wxScrollWinEvent";
 static const char* wxluaclassname_wxScrolledWindow = "wxScrolledWindow";
+static const char* wxluaclassname_wxSearchCtrl = "wxSearchCtrl";
 static const char* wxluaclassname_wxSetCursorEvent = "wxSetCursorEvent";
 static const char* wxluaclassname_wxShowEvent = "wxShowEvent";
 static const char* wxluaclassname_wxSimpleHelpProvider = "wxSimpleHelpProvider";
@@ -5828,6 +5831,8 @@ static const char* wxluabaseclassnames_wxScrollWinEvent[] = { wxluaclassname_wxE
 static wxLuaBindClass* wxluabaseclassbinds_wxScrollWinEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxScrolledWindow[] = { wxluaclassname_wxPanel, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxScrolledWindow[] = { NULL };
+static const char* wxluabaseclassnames_wxSearchCtrl[] = { wxluaclassname_wxTextCtrl, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxSearchCtrl[] = { NULL };
 static const char* wxluabaseclassnames_wxSetCursorEvent[] = { wxluaclassname_wxEvent, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxSetCursorEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxShowEvent[] = { wxluaclassname_wxEvent, NULL };
@@ -7443,6 +7448,14 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern void wxLua_wxProgressDialog_delete_function(void** p);
 #endif // wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog
 
+#if wxUSE_SEARCHCTRL
+    extern wxLuaBindMethod wxSearchCtrl_methods[];
+    extern int wxSearchCtrl_methodCount;
+    static wxLuaArgType wxluabaseclass_wxluatypes_wxSearchCtrl[] = { &wxluatype_wxTextEntry, NULL };
+    static wxIntPtr wxluabaseclass_vtable_offsets_wxSearchCtrl[] = { wxIntPtr(((wxIntPtr)(wxTextEntry*)(wxSearchCtrl*)&wxluatype_TNONE) - ((wxIntPtr)(wxSearchCtrl*)&wxluatype_TNONE)) };
+    extern void wxLua_wxSearchCtrl_delete_function(void** p);
+#endif // wxUSE_SEARCHCTRL
+
 #if wxUSE_STREAMS && wxUSE_FILESYSTEM
     extern wxLuaBindMethod wxMemoryFSHandler_methods[];
     extern int wxMemoryFSHandler_methodCount;
@@ -8240,6 +8253,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #if wxLUA_USE_wxScrolledWindow
         { wxluaclassname_wxScrolledWindow, wxScrolledWindow_methods, wxScrolledWindow_methodCount, CLASSINFO(wxScrolledWindow), &wxluatype_wxScrolledWindow, wxluabaseclassnames_wxScrolledWindow, wxluabaseclassbinds_wxScrolledWindow, NULL, NULL, NULL, 0, &wxLua_wxScrolledWindow_delete_function, }, 
 #endif // wxLUA_USE_wxScrolledWindow
+
+#if wxUSE_SEARCHCTRL
+        { wxluaclassname_wxSearchCtrl, wxSearchCtrl_methods, wxSearchCtrl_methodCount, CLASSINFO(wxSearchCtrl), &wxluatype_wxSearchCtrl, wxluabaseclassnames_wxSearchCtrl, wxluabaseclassbinds_wxSearchCtrl, wxluabaseclass_wxluatypes_wxSearchCtrl, wxluabaseclass_vtable_offsets_wxSearchCtrl, NULL, 0, &wxLua_wxSearchCtrl_delete_function, }, 
+#endif // wxUSE_SEARCHCTRL
 
         { wxluaclassname_wxSetCursorEvent, wxSetCursorEvent_methods, wxSetCursorEvent_methodCount, CLASSINFO(wxSetCursorEvent), &wxluatype_wxSetCursorEvent, wxluabaseclassnames_wxSetCursorEvent, wxluabaseclassbinds_wxSetCursorEvent, NULL, NULL, NULL, 0, &wxLua_wxSetCursorEvent_delete_function, }, 
         { wxluaclassname_wxShowEvent, wxShowEvent_methods, wxShowEvent_methodCount, CLASSINFO(wxShowEvent), &wxluatype_wxShowEvent, wxluabaseclassnames_wxShowEvent, wxluabaseclassbinds_wxShowEvent, NULL, NULL, NULL, 0, &wxLua_wxShowEvent_delete_function, }, 

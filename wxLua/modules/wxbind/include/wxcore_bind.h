@@ -555,6 +555,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/progdlg.h"
 #endif // wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog
 
+#if wxUSE_SEARCHCTRL
+    #include "wx/srchctrl.h"
+#endif // wxUSE_SEARCHCTRL
+
 #if wxUSE_STREAMS && wxUSE_FILESYSTEM
     #include "wx/fs_mem.h"
 #endif // wxUSE_STREAMS && wxUSE_FILESYSTEM
@@ -1337,6 +1341,10 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 #if wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxProgressDialog;
 #endif // wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog
+
+#if wxUSE_SEARCHCTRL
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSearchCtrl;
+#endif // wxUSE_SEARCHCTRL
 
 #if wxUSE_STREAMS && wxUSE_FILESYSTEM
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxMemoryFSHandler;

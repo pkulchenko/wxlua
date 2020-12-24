@@ -18338,3 +18338,296 @@ int wxTreeListEvent_methodCount = sizeof(wxTreeListEvent_methods)/sizeof(wxLuaBi
 
 #endif  // wxLUA_USE_wxTreeListCtrl && wxUSE_TREELISTCTRL && wxCHECK_VERSION(2,9,3)
 
+
+#if wxUSE_SEARCHCTRL
+// ---------------------------------------------------------------------------
+// Bind class wxSearchCtrl
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxSearchCtrl'
+int wxluatype_wxSearchCtrl = WXLUA_TUNKNOWN;
+
+#if ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxUSE_SEARCHCTRL)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSearchCtrl_Create[] = { &wxluatype_wxSearchCtrl, &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxSearchCtrl_Create(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSearchCtrl_Create[1] = {{ wxLua_wxSearchCtrl_Create, WXLUAMETHOD_METHOD, 3, 9, s_wxluatypeArray_wxLua_wxSearchCtrl_Create }};
+//                  const wxString& name = wxSearchCtrlNameStr);
+static int LUACALL wxLua_wxSearchCtrl_Create(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString name = wxSearchCtrlNameStr
+    const wxString name = (argCount >= 9 ? wxlua_getwxStringtype(L, 9) : wxString(wxSearchCtrlNameStr));
+    // const wxValidator validator = wxDefaultValidator
+    const wxValidator * validator = (argCount >= 8 ? (const wxValidator *)wxluaT_getuserdatatype(L, 8, wxluatype_wxValidator) : &wxDefaultValidator);
+    // long style = 0
+    long style = (argCount >= 7 ? (long)wxlua_getnumbertype(L, 7) : 0);
+    // const wxSize size = wxDefaultSize
+    const wxSize * size = (argCount >= 6 ? (const wxSize *)wxluaT_getuserdatatype(L, 6, wxluatype_wxSize) : &wxDefaultSize);
+    // const wxPoint pos = wxDefaultPosition
+    const wxPoint * pos = (argCount >= 5 ? (const wxPoint *)wxluaT_getuserdatatype(L, 5, wxluatype_wxPoint) : &wxDefaultPosition);
+    // const wxString value = wxEmptyString
+    const wxString value = (argCount >= 4 ? wxlua_getwxStringtype(L, 4) : wxString(wxEmptyString));
+    // wxWindowID id
+    wxWindowID id = (wxWindowID)wxlua_getnumbertype(L, 3);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
+    // get this
+    wxSearchCtrl * self = (wxSearchCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSearchCtrl);
+    // call Create
+    bool returns = (self->Create(parent, id, value, *pos, *size, style, *validator, name));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxUSE_SEARCHCTRL)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSearchCtrl_GetDescriptiveText[] = { &wxluatype_wxSearchCtrl, NULL };
+static int LUACALL wxLua_wxSearchCtrl_GetDescriptiveText(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSearchCtrl_GetDescriptiveText[1] = {{ wxLua_wxSearchCtrl_GetDescriptiveText, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSearchCtrl_GetDescriptiveText }};
+//     wxString    GetDescriptiveText() const;
+static int LUACALL wxLua_wxSearchCtrl_GetDescriptiveText(lua_State *L)
+{
+    // get this
+    wxSearchCtrl * self = (wxSearchCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSearchCtrl);
+    // call GetDescriptiveText
+    wxString returns = (self->GetDescriptiveText());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+
+#if (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_SEARCHCTRL)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSearchCtrl_GetMenu[] = { &wxluatype_wxSearchCtrl, NULL };
+static int LUACALL wxLua_wxSearchCtrl_GetMenu(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSearchCtrl_GetMenu[1] = {{ wxLua_wxSearchCtrl_GetMenu, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSearchCtrl_GetMenu }};
+//     virtual wxMenu* GetMenu();
+static int LUACALL wxLua_wxSearchCtrl_GetMenu(lua_State *L)
+{
+    // get this
+    wxSearchCtrl * self = (wxSearchCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSearchCtrl);
+    // call GetMenu
+    wxMenu* returns = (wxMenu*)self->GetMenu();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxMenu);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_SEARCHCTRL)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSearchCtrl_IsCancelButtonVisible[] = { &wxluatype_wxSearchCtrl, NULL };
+static int LUACALL wxLua_wxSearchCtrl_IsCancelButtonVisible(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSearchCtrl_IsCancelButtonVisible[1] = {{ wxLua_wxSearchCtrl_IsCancelButtonVisible, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSearchCtrl_IsCancelButtonVisible }};
+//     virtual bool IsCancelButtonVisible() const;
+static int LUACALL wxLua_wxSearchCtrl_IsCancelButtonVisible(lua_State *L)
+{
+    // get this
+    wxSearchCtrl * self = (wxSearchCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSearchCtrl);
+    // call IsCancelButtonVisible
+    bool returns = (self->IsCancelButtonVisible());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSearchCtrl_IsSearchButtonVisible[] = { &wxluatype_wxSearchCtrl, NULL };
+static int LUACALL wxLua_wxSearchCtrl_IsSearchButtonVisible(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSearchCtrl_IsSearchButtonVisible[1] = {{ wxLua_wxSearchCtrl_IsSearchButtonVisible, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSearchCtrl_IsSearchButtonVisible }};
+//     virtual bool IsSearchButtonVisible() const;
+static int LUACALL wxLua_wxSearchCtrl_IsSearchButtonVisible(lua_State *L)
+{
+    // get this
+    wxSearchCtrl * self = (wxSearchCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSearchCtrl);
+    // call IsSearchButtonVisible
+    bool returns = (self->IsSearchButtonVisible());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSearchCtrl_SetDescriptiveText[] = { &wxluatype_wxSearchCtrl, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxSearchCtrl_SetDescriptiveText(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSearchCtrl_SetDescriptiveText[1] = {{ wxLua_wxSearchCtrl_SetDescriptiveText, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSearchCtrl_SetDescriptiveText }};
+//     void        SetDescriptiveText(const wxString& text);
+static int LUACALL wxLua_wxSearchCtrl_SetDescriptiveText(lua_State *L)
+{
+    // const wxString text
+    const wxString text = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxSearchCtrl * self = (wxSearchCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSearchCtrl);
+    // call SetDescriptiveText
+    self->SetDescriptiveText(text);
+
+    return 0;
+}
+
+
+#if (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_SEARCHCTRL)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSearchCtrl_SetMenu[] = { &wxluatype_wxSearchCtrl, &wxluatype_wxMenu, NULL };
+static int LUACALL wxLua_wxSearchCtrl_SetMenu(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSearchCtrl_SetMenu[1] = {{ wxLua_wxSearchCtrl_SetMenu, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSearchCtrl_SetMenu }};
+//     virtual void SetMenu(%ungc wxMenu* menu);
+static int LUACALL wxLua_wxSearchCtrl_SetMenu(lua_State *L)
+{
+    // wxMenu menu
+    wxMenu * menu = (wxMenu *)wxluaT_getuserdatatype(L, 2, wxluatype_wxMenu);
+    if (wxluaO_isgcobject(L, menu)) wxluaO_undeletegcobject(L, menu);
+    // get this
+    wxSearchCtrl * self = (wxSearchCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSearchCtrl);
+    // call SetMenu
+    self->SetMenu(menu);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_SEARCHCTRL)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSearchCtrl_ShowCancelButton[] = { &wxluatype_wxSearchCtrl, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxSearchCtrl_ShowCancelButton(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSearchCtrl_ShowCancelButton[1] = {{ wxLua_wxSearchCtrl_ShowCancelButton, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSearchCtrl_ShowCancelButton }};
+//     virtual void ShowCancelButton(bool show);
+static int LUACALL wxLua_wxSearchCtrl_ShowCancelButton(lua_State *L)
+{
+    // bool show
+    bool show = wxlua_getbooleantype(L, 2);
+    // get this
+    wxSearchCtrl * self = (wxSearchCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSearchCtrl);
+    // call ShowCancelButton
+    self->ShowCancelButton(show);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSearchCtrl_ShowSearchButton[] = { &wxluatype_wxSearchCtrl, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxSearchCtrl_ShowSearchButton(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSearchCtrl_ShowSearchButton[1] = {{ wxLua_wxSearchCtrl_ShowSearchButton, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSearchCtrl_ShowSearchButton }};
+//     virtual void ShowSearchButton(bool show);
+static int LUACALL wxLua_wxSearchCtrl_ShowSearchButton(lua_State *L)
+{
+    // bool show
+    bool show = wxlua_getbooleantype(L, 2);
+    // get this
+    wxSearchCtrl * self = (wxSearchCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSearchCtrl);
+    // call ShowSearchButton
+    self->ShowSearchButton(show);
+
+    return 0;
+}
+
+
+#if ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxUSE_SEARCHCTRL)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSearchCtrl_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_wxValidator, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxSearchCtrl_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSearchCtrl_constructor1[1] = {{ wxLua_wxSearchCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 8, s_wxluatypeArray_wxLua_wxSearchCtrl_constructor1 }};
+//                  const wxString& name = wxSearchCtrlNameStr);
+static int LUACALL wxLua_wxSearchCtrl_constructor1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxString name = wxSearchCtrlNameStr
+    const wxString name = (argCount >= 8 ? wxlua_getwxStringtype(L, 8) : wxString(wxSearchCtrlNameStr));
+    // const wxValidator validator = wxDefaultValidator
+    const wxValidator * validator = (argCount >= 7 ? (const wxValidator *)wxluaT_getuserdatatype(L, 7, wxluatype_wxValidator) : &wxDefaultValidator);
+    // long style = 0
+    long style = (argCount >= 6 ? (long)wxlua_getnumbertype(L, 6) : 0);
+    // const wxSize size = wxDefaultSize
+    const wxSize * size = (argCount >= 5 ? (const wxSize *)wxluaT_getuserdatatype(L, 5, wxluatype_wxSize) : &wxDefaultSize);
+    // const wxPoint pos = wxDefaultPosition
+    const wxPoint * pos = (argCount >= 4 ? (const wxPoint *)wxluaT_getuserdatatype(L, 4, wxluatype_wxPoint) : &wxDefaultPosition);
+    // const wxString value = wxEmptyString
+    const wxString value = (argCount >= 3 ? wxlua_getwxStringtype(L, 3) : wxString(wxEmptyString));
+    // wxWindowID id
+    wxWindowID id = (wxWindowID)wxlua_getnumbertype(L, 2);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call constructor
+    wxSearchCtrl* returns = new wxSearchCtrl(parent, id, value, *pos, *size, style, *validator, name);
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSearchCtrl);
+
+    return 1;
+}
+
+#endif // ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxUSE_SEARCHCTRL)
+
+static int LUACALL wxLua_wxSearchCtrl_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxSearchCtrl_constructor[1] = {{ wxLua_wxSearchCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxSearchCtrl();
+static int LUACALL wxLua_wxSearchCtrl_constructor(lua_State *L)
+{
+    // call constructor
+    wxSearchCtrl* returns = new wxSearchCtrl();
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSearchCtrl);
+
+    return 1;
+}
+
+
+
+
+#if (((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxUSE_SEARCHCTRL))||(wxUSE_SEARCHCTRL)
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSearchCtrl_constructor_overload[] =
+{
+
+#if ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxUSE_SEARCHCTRL)
+    { wxLua_wxSearchCtrl_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 8, s_wxluatypeArray_wxLua_wxSearchCtrl_constructor1 },
+#endif // ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxUSE_SEARCHCTRL)
+    { wxLua_wxSearchCtrl_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+};
+static int s_wxluafunc_wxLua_wxSearchCtrl_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxSearchCtrl_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxUSE_SEARCHCTRL))||(wxUSE_SEARCHCTRL)
+
+void wxLua_wxSearchCtrl_delete_function(void** p)
+{
+    wxSearchCtrl* o = (wxSearchCtrl*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxSearchCtrl_methods[] = {
+#if ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxUSE_SEARCHCTRL)
+    { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSearchCtrl_Create, 1, NULL },
+#endif // ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxUSE_SEARCHCTRL)
+
+    { "GetDescriptiveText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSearchCtrl_GetDescriptiveText, 1, NULL },
+
+#if (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_SEARCHCTRL)
+    { "GetMenu", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSearchCtrl_GetMenu, 1, NULL },
+#endif // (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_SEARCHCTRL)
+
+    { "IsCancelButtonVisible", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSearchCtrl_IsCancelButtonVisible, 1, NULL },
+    { "IsSearchButtonVisible", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSearchCtrl_IsSearchButtonVisible, 1, NULL },
+    { "SetDescriptiveText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSearchCtrl_SetDescriptiveText, 1, NULL },
+
+#if (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_SEARCHCTRL)
+    { "SetMenu", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSearchCtrl_SetMenu, 1, NULL },
+#endif // (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_SEARCHCTRL)
+
+    { "ShowCancelButton", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSearchCtrl_ShowCancelButton, 1, NULL },
+    { "ShowSearchButton", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSearchCtrl_ShowSearchButton, 1, NULL },
+
+#if (((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxUSE_SEARCHCTRL))||(wxUSE_SEARCHCTRL)
+    { "wxSearchCtrl", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxSearchCtrl_constructor_overload, s_wxluafunc_wxLua_wxSearchCtrl_constructor_overload_count, 0 },
+#endif // (((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)) && (wxUSE_SEARCHCTRL))||(wxUSE_SEARCHCTRL)
+
+    { 0, 0, 0, 0 },
+};
+
+int wxSearchCtrl_methodCount = sizeof(wxSearchCtrl_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxUSE_SEARCHCTRL
+
