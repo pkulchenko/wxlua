@@ -209,6 +209,16 @@ enum wxPortId
     wxPORT_DFB           // wxDFB, using wxUniversal
 };
 
+%wxchkver_3_1_5 enum wxBitness
+{
+    wxBITNESS_INVALID,             //!< returned on error
+
+    wxBITNESS_32,                  //!< 32 bit
+    wxBITNESS_64,                  //!< 64 bit
+
+    wxBITNESS_MAX
+};
+
 enum wxArchitecture
 {
     wxARCH_INVALID,         // returned on error
@@ -252,7 +262,8 @@ class wxPlatformInfo
     static wxString GetPortIdName(wxPortId port, bool usingUniversal);
     static wxString GetPortIdShortName(wxPortId port, bool usingUniversal);
 
-    static wxString GetArchName(wxArchitecture arch);
+    !%wxchkver_3_1_5 static wxString GetArchName(wxArchitecture arch);
+    %wxchkver_3_1_5 static wxString GetBitnessName(wxBitness bitness);
     static wxString GetEndiannessName(wxEndianness end);
 
     int GetOSMajorVersion() const;
@@ -275,7 +286,8 @@ class wxPlatformInfo
     wxString GetOperatingSystemIdName() const;
     wxString GetPortIdName() const;
     wxString GetPortIdShortName() const;
-    wxString GetArchName() const;
+    !%wxchkver_3_1_5 wxString GetArchName() const;
+    %wxchkver_3_1_5 wxString GetBitnessName() const;
     wxString GetEndiannessName() const;
 
     void SetOSVersion(int major, int minor);

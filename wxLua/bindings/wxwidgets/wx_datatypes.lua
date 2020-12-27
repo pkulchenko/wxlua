@@ -710,6 +710,12 @@ wx_dataTypeTable =
     Name = "wxBitmapType",
     ValueType = "enum",
   },
+  wxBitness = {
+    Condition = "wxCHECK_VERSION(3,1,5)",
+    IsNumber = true,
+    Name = "wxBitness",
+    ValueType = "enum",
+  },
   wxBookCtrlBase = {
     BaseClasses = {
       [1] = "wxControl",

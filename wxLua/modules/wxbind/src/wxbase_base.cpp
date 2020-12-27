@@ -276,10 +276,28 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
+
+#if !wxCHECK_VERSION(3,1,5)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPlatformInfo_GetArchName1[] = { &wxluatype_wxPlatformInfo, NULL };
+static int LUACALL wxLua_wxPlatformInfo_GetArchName1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_GetArchName1[1] = {{ wxLua_wxPlatformInfo_GetArchName1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetArchName1 }};
+//     !%wxchkver_3_1_5 wxString GetArchName() const;
+static int LUACALL wxLua_wxPlatformInfo_GetArchName1(lua_State *L)
+{
+    // get this
+    wxPlatformInfo * self = (wxPlatformInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPlatformInfo);
+    // call GetArchName
+    wxString returns = (self->GetArchName());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPlatformInfo_GetArchName[] = { &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxPlatformInfo_GetArchName(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_GetArchName[1] = {{ wxLua_wxPlatformInfo_GetArchName, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetArchName }};
-//     static wxString GetArchName(wxArchitecture arch);
+//     !%wxchkver_3_1_5 static wxString GetArchName(wxArchitecture arch);
 static int LUACALL wxLua_wxPlatformInfo_GetArchName(lua_State *L)
 {
     // wxArchitecture arch
@@ -292,21 +310,7 @@ static int LUACALL wxLua_wxPlatformInfo_GetArchName(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPlatformInfo_GetArchName1[] = { &wxluatype_wxPlatformInfo, NULL };
-static int LUACALL wxLua_wxPlatformInfo_GetArchName1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_GetArchName1[1] = {{ wxLua_wxPlatformInfo_GetArchName1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetArchName1 }};
-//     wxString GetArchName() const;
-static int LUACALL wxLua_wxPlatformInfo_GetArchName1(lua_State *L)
-{
-    // get this
-    wxPlatformInfo * self = (wxPlatformInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPlatformInfo);
-    // call GetArchName
-    wxString returns = (self->GetArchName());
-    // push the result string
-    wxlua_pushwxString(L, returns);
-
-    return 1;
-}
+#endif // !wxCHECK_VERSION(3,1,5)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPlatformInfo_GetArchitecture[] = { &wxluatype_wxPlatformInfo, NULL };
 static int LUACALL wxLua_wxPlatformInfo_GetArchitecture(lua_State *L);
@@ -331,6 +335,42 @@ if ((double)(lua_Integer)returns == (double)returns) {
 
     return 1;
 }
+
+
+#if wxCHECK_VERSION(3,1,5)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPlatformInfo_GetBitnessName1[] = { &wxluatype_wxPlatformInfo, NULL };
+static int LUACALL wxLua_wxPlatformInfo_GetBitnessName1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_GetBitnessName1[1] = {{ wxLua_wxPlatformInfo_GetBitnessName1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetBitnessName1 }};
+//     %wxchkver_3_1_5 wxString GetBitnessName() const;
+static int LUACALL wxLua_wxPlatformInfo_GetBitnessName1(lua_State *L)
+{
+    // get this
+    wxPlatformInfo * self = (wxPlatformInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPlatformInfo);
+    // call GetBitnessName
+    wxString returns = (self->GetBitnessName());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPlatformInfo_GetBitnessName[] = { &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxPlatformInfo_GetBitnessName(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_GetBitnessName[1] = {{ wxLua_wxPlatformInfo_GetBitnessName, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetBitnessName }};
+//     %wxchkver_3_1_5 static wxString GetBitnessName(wxBitness bitness);
+static int LUACALL wxLua_wxPlatformInfo_GetBitnessName(lua_State *L)
+{
+    // wxBitness bitness
+    wxBitness bitness = (wxBitness)wxlua_getenumtype(L, 1);
+    // call GetBitnessName
+    wxString returns = (wxPlatformInfo::GetBitnessName(bitness));
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(3,1,5)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPlatformInfo_GetEndianness[] = { &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxPlatformInfo_GetEndianness(lua_State *L);
@@ -870,13 +910,39 @@ static int LUACALL wxLua_wxPlatformInfo_SetToolkitVersion(lua_State *L)
 
 
 
+#if (!wxCHECK_VERSION(3,1,5))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_GetArchName_overload[] =
 {
-    { wxLua_wxPlatformInfo_GetArchName, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetArchName },
+
+#if !wxCHECK_VERSION(3,1,5)
     { wxLua_wxPlatformInfo_GetArchName1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetArchName1 },
+#endif // !wxCHECK_VERSION(3,1,5)
+
+#if !wxCHECK_VERSION(3,1,5)
+    { wxLua_wxPlatformInfo_GetArchName, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetArchName },
+#endif // !wxCHECK_VERSION(3,1,5)
 };
 static int s_wxluafunc_wxLua_wxPlatformInfo_GetArchName_overload_count = sizeof(s_wxluafunc_wxLua_wxPlatformInfo_GetArchName_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (!wxCHECK_VERSION(3,1,5))
+
+#if (wxCHECK_VERSION(3,1,5))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_GetBitnessName_overload[] =
+{
+
+#if wxCHECK_VERSION(3,1,5)
+    { wxLua_wxPlatformInfo_GetBitnessName1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetBitnessName1 },
+#endif // wxCHECK_VERSION(3,1,5)
+
+#if wxCHECK_VERSION(3,1,5)
+    { wxLua_wxPlatformInfo_GetBitnessName, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetBitnessName },
+#endif // wxCHECK_VERSION(3,1,5)
+};
+static int s_wxluafunc_wxLua_wxPlatformInfo_GetBitnessName_overload_count = sizeof(s_wxluafunc_wxLua_wxPlatformInfo_GetBitnessName_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (wxCHECK_VERSION(3,1,5))
 
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_GetEndianness_overload[] =
@@ -956,9 +1022,15 @@ wxLuaBindMethod wxPlatformInfo_methods[] = {
     { "Get", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxPlatformInfo_Get, 1, NULL },
     { "GetArch", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxPlatformInfo_GetArch, 1, NULL },
 
+#if (!wxCHECK_VERSION(3,1,5))
     { "GetArchName", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxPlatformInfo_GetArchName_overload, s_wxluafunc_wxLua_wxPlatformInfo_GetArchName_overload_count, 0 },
+#endif // (!wxCHECK_VERSION(3,1,5))
 
     { "GetArchitecture", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_GetArchitecture, 1, NULL },
+
+#if (wxCHECK_VERSION(3,1,5))
+    { "GetBitnessName", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxPlatformInfo_GetBitnessName_overload, s_wxluafunc_wxLua_wxPlatformInfo_GetBitnessName_overload_count, 0 },
+#endif // (wxCHECK_VERSION(3,1,5))
 
     { "GetEndianness", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxPlatformInfo_GetEndianness_overload, s_wxluafunc_wxLua_wxPlatformInfo_GetEndianness_overload_count, 0 },
     { "GetEndiannessName", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxPlatformInfo_GetEndiannessName_overload, s_wxluafunc_wxLua_wxPlatformInfo_GetEndiannessName_overload_count, 0 },
