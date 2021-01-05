@@ -123,7 +123,11 @@ function FillListCtrl(listCtrl)
     AddListItem({"wx.wxPlatformInfo:GetOperatingSystemIdName()", plat:GetOperatingSystemIdName()})
     AddListItem({"wx.wxPlatformInfo:GetPortIdName()", plat:GetPortIdName()})
     AddListItem({"wx.wxPlatformInfo:GetPortIdShortName()", plat:GetPortIdShortName()})
-    AddListItem({"wx.wxPlatformInfo:GetArchName()", plat:GetArchName()})
+    if wx.wxPlatformInfo.GetArchName then
+      AddListItem({"wx.wxPlatformInfo:GetArchName()", plat:GetArchName()})
+    elseif wx.wxPlatformInfo.GetBitnessName then
+      AddListItem({"wx.wxPlatformInfo:GetBitnessName()", plat:GetBitnessName()})
+    end
     AddListItem({"wx.wxPlatformInfo:GetEndiannessName()", plat:GetEndiannessName()})
 
 
