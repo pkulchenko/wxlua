@@ -183,10 +183,12 @@ wxLuaBindNumber* wxLuaGetDefineList_wxbase(size_t &count)
         { "wxBEOS", wxBEOS },
 #endif // !wxCHECK_VERSION(2,8,0)
 
+#if wxCHECK_VERSION(3,1,5)
         { "wxBITNESS_32", wxBITNESS_32 },
         { "wxBITNESS_64", wxBITNESS_64 },
         { "wxBITNESS_INVALID", wxBITNESS_INVALID },
         { "wxBITNESS_MAX", wxBITNESS_MAX },
+#endif // wxCHECK_VERSION(3,1,5)
 
 #if wxLUA_USE_wxConfig && wxUSE_CONFIG
         { "wxCONFIG_USE_GLOBAL_FILE", wxCONFIG_USE_GLOBAL_FILE },
