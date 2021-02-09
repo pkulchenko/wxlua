@@ -18420,6 +18420,22 @@ static int LUACALL wxLua_wxSearchCtrl_GetMenu(lua_State *L)
 
 #endif // (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_SEARCHCTRL)
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxSearchCtrl_GetValue[] = { &wxluatype_wxSearchCtrl, NULL };
+static int LUACALL wxLua_wxSearchCtrl_GetValue(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxSearchCtrl_GetValue[1] = {{ wxLua_wxSearchCtrl_GetValue, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSearchCtrl_GetValue }};
+//     wxString GetValue() const;
+static int LUACALL wxLua_wxSearchCtrl_GetValue(lua_State *L)
+{
+    // get this
+    wxSearchCtrl * self = (wxSearchCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSearchCtrl);
+    // call GetValue
+    wxString returns = (self->GetValue());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSearchCtrl_IsCancelButtonVisible[] = { &wxluatype_wxSearchCtrl, NULL };
 static int LUACALL wxLua_wxSearchCtrl_IsCancelButtonVisible(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSearchCtrl_IsCancelButtonVisible[1] = {{ wxLua_wxSearchCtrl_IsCancelButtonVisible, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSearchCtrl_IsCancelButtonVisible }};
@@ -18609,6 +18625,7 @@ wxLuaBindMethod wxSearchCtrl_methods[] = {
     { "GetMenu", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSearchCtrl_GetMenu, 1, NULL },
 #endif // (wxLUA_USE_wxMenu && wxUSE_MENUS) && (wxUSE_SEARCHCTRL)
 
+    { "GetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSearchCtrl_GetValue, 1, NULL },
     { "IsCancelButtonVisible", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSearchCtrl_IsCancelButtonVisible, 1, NULL },
     { "IsSearchButtonVisible", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSearchCtrl_IsSearchButtonVisible, 1, NULL },
     { "SetDescriptiveText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSearchCtrl_SetDescriptiveText, 1, NULL },
