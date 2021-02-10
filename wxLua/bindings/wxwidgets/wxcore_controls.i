@@ -2441,6 +2441,7 @@ public:
     void        SetDescriptiveText(const wxString& text);
     wxString    GetDescriptiveText() const;
 
+    virtual void SetValue(const wxString& value);
     wxString GetValue() const;
 };
 
