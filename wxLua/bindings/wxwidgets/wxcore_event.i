@@ -97,8 +97,8 @@ class %delete wxCommandEvent : public wxEvent
     %wxchkver_3_0_0 %wxEventType wxEVT_BUTTON            // wx3.0 alias for wxEVT_COMMAND_BUTTON_CLICKED
     %wxchkver_3_0_0 %wxEventType wxEVT_TOGGLEBUTTON      // wx3.0 alias for wxEVT_COMMAND_TOGGLEBUTTON_CLICKED
 
-    %wxEventType wxEVT_SEARCH_CANCEL        // EVT_SEARCH_CANCEL(winid, func);
-    %wxEventType wxEVT_SEARCH               // EVT_SEARCH(winid, func);
+    %wxchkver_3_1_1 %wxEventType wxEVT_SEARCH_CANCEL        // EVT_SEARCH_CANCEL(winid, func);
+    %wxchkver_3_1_1 %wxEventType wxEVT_SEARCH               // EVT_SEARCH(winid, func);
 
     wxCommandEvent(wxEventType commandEventType = wxEVT_NULL, int id = 0);
 

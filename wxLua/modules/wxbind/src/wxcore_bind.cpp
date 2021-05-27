@@ -503,8 +503,12 @@ wxLuaBindEvent* wxLuaGetEventList_wxcore(size_t &count)
         { "wxEVT_SCROLL_THUMBTRACK", WXLUA_GET_wxEventType_ptr(wxEVT_SCROLL_THUMBTRACK), &wxluatype_wxScrollEvent },
 #endif // 1
         { "wxEVT_SCROLL_TOP", WXLUA_GET_wxEventType_ptr(wxEVT_SCROLL_TOP), &wxluatype_wxScrollEvent },
+
+#if wxCHECK_VERSION(3,1,1)
         { "wxEVT_SEARCH", WXLUA_GET_wxEventType_ptr(wxEVT_SEARCH), &wxluatype_wxCommandEvent },
         { "wxEVT_SEARCH_CANCEL", WXLUA_GET_wxEventType_ptr(wxEVT_SEARCH_CANCEL), &wxluatype_wxCommandEvent },
+#endif // wxCHECK_VERSION(3,1,1)
+
         { "wxEVT_SET_CURSOR", WXLUA_GET_wxEventType_ptr(wxEVT_SET_CURSOR), &wxluatype_wxSetCursorEvent },
         { "wxEVT_SET_FOCUS", WXLUA_GET_wxEventType_ptr(wxEVT_SET_FOCUS), &wxluatype_wxFocusEvent },
         { "wxEVT_SHOW", WXLUA_GET_wxEventType_ptr(wxEVT_SHOW), &wxluatype_wxShowEvent },
