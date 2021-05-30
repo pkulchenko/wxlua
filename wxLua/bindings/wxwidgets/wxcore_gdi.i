@@ -654,6 +654,7 @@ class %delete wxColour : public wxGDIObject
     %rename wxGREEN      #define_pointer wxLua_wxGREEN
     %rename wxCYAN       #define_pointer wxLua_wxCYAN
     %rename wxLIGHT_GREY #define_pointer wxLua_wxLIGHT_GREY
+    %rename wxYELLOW     #define_pointer wxLua_wxYELLOW
     %wxchkver_3_0_0 wxColour();
     %wxchkver_2_8 wxColour(unsigned char red, unsigned char green, unsigned char blue, unsigned char alpha = wxALPHA_OPAQUE);
     wxColour(const wxString& colourName);
@@ -697,6 +698,8 @@ class %delete wxColour : public wxGDIObject
 class %delete wxColourDatabase
 {
     wxColourDatabase();
+
+    #define_pointer wxTheColourDatabase
 
     wxColour Find(const wxString& name) const;
     wxString FindName(const wxColour& colour) const;
@@ -796,6 +799,8 @@ class %delete wxPen : public wxGDIObject
     %rename wxGREY_PEN         #define_pointer wxLua_wxGREY_PEN
     %rename wxMEDIUM_GREY_PEN  #define_pointer wxLua_wxMEDIUM_GREY_PEN
     %rename wxLIGHT_GREY_PEN   #define_pointer wxLua_wxLIGHT_GREY_PEN
+    %rename wxBLUE_PEN         #define_pointer wxLua_wxBLUE_PEN
+    %rename wxYELLOW_PEN       #define_pointer wxLua_wxYELLOW_PEN
     wxPen();
     %wxchkver_3_1_1 wxPen(const wxPenInfo& info);
     wxPen(const wxColour& colour, int width, wxPenStyle style);
@@ -885,6 +890,7 @@ class %delete wxBrush : public wxGDIObject
     %rename wxTRANSPARENT_BRUSH #define_pointer wxLua_wxTRANSPARENT_BRUSH
     %rename wxCYAN_BRUSH        #define_pointer wxLua_wxCYAN_BRUSH
     %rename wxRED_BRUSH         #define_pointer wxLua_wxRED_BRUSH
+    %rename wxYELLOW_BRUSH      #define_pointer wxLua_wxYELLOW_BRUSH
     wxBrush();
     %wxchkver_3_0_0 wxBrush(const wxColour& colour, wxBrushStyle style = wxBRUSHSTYLE_SOLID);
     wxBrush(const wxBitmap& stippleBitmap);

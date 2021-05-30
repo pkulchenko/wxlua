@@ -39,6 +39,7 @@ wxColour* wxLua_wxBLUE = NULL;
 wxColour* wxLua_wxGREEN = NULL;
 wxColour* wxLua_wxCYAN = NULL;
 wxColour* wxLua_wxLIGHT_GREY = NULL;
+wxColour* wxLua_wxYELLOW = NULL;
 wxPen* wxLua_wxRED_PEN = NULL;
 wxPen* wxLua_wxCYAN_PEN = NULL;
 wxPen* wxLua_wxGREEN_PEN = NULL;
@@ -49,6 +50,8 @@ wxPen* wxLua_wxBLACK_DASHED_PEN = NULL;
 wxPen* wxLua_wxGREY_PEN = NULL;
 wxPen* wxLua_wxMEDIUM_GREY_PEN = NULL;
 wxPen* wxLua_wxLIGHT_GREY_PEN = NULL;
+wxPen* wxLua_wxBLUE_PEN = NULL;
+wxPen* wxLua_wxYELLOW_PEN = NULL;
 wxBrush* wxLua_wxBLUE_BRUSH = NULL;
 wxBrush* wxLua_wxGREEN_BRUSH = NULL;
 wxBrush* wxLua_wxWHITE_BRUSH = NULL;
@@ -58,6 +61,7 @@ wxBrush* wxLua_wxMEDIUM_GREY_BRUSH = NULL;
 wxBrush* wxLua_wxLIGHT_GREY_BRUSH = NULL;
 wxBrush* wxLua_wxTRANSPARENT_BRUSH = NULL;
 wxBrush* wxLua_wxCYAN_BRUSH = NULL;
+wxBrush* wxLua_wxYELLOW_BRUSH = NULL;
 wxBrush* wxLua_wxRED_BRUSH = NULL;
 wxFont* wxLua_wxNORMAL_FONT = NULL;
 wxFont* wxLua_wxSMALL_FONT = NULL;
@@ -3376,6 +3380,7 @@ wxLuaBindObject* wxLuaGetObjectList_wxcore(size_t &count)
         { "wxBLACK_PEN", &wxluatype_wxPen, NULL, (const void **) &wxLua_wxBLACK_PEN },
         { "wxBLUE", &wxluatype_wxColour, NULL, (const void **) &wxLua_wxBLUE },
         { "wxBLUE_BRUSH", &wxluatype_wxBrush, NULL, (const void **) &wxLua_wxBLUE_BRUSH },
+        { "wxBLUE_PEN", &wxluatype_wxPen, NULL, (const void **) &wxLua_wxBLUE_PEN },
 #endif // wxLUA_USE_wxColourPenBrush
 
 #if wxLUA_USE_wxCursor
@@ -3498,6 +3503,10 @@ wxLuaBindObject* wxLuaGetObjectList_wxcore(size_t &count)
         { "wxTheClipboard", &wxluatype_wxClipboard, NULL, (const void **) &wxTheClipboard },
 #endif // (!wxCHECK_VERSION(2,6,0)) && (wxLUA_USE_wxClipboard && wxUSE_CLIPBOARD)
 
+#if wxLUA_USE_wxColourPenBrush
+        { "wxTheColourDatabase", &wxluatype_wxColourDatabase, NULL, (const void **) &wxTheColourDatabase },
+#endif // wxLUA_USE_wxColourPenBrush
+
 #if wxLUA_USE_wxFontList
         { "wxTheFontList", &wxluatype_wxFontList, NULL, (const void **) &wxTheFontList },
 #endif // wxLUA_USE_wxFontList
@@ -3510,6 +3519,9 @@ wxLuaBindObject* wxLuaGetObjectList_wxcore(size_t &count)
         { "wxWHITE", &wxluatype_wxColour, NULL, (const void **) &wxLua_wxWHITE },
         { "wxWHITE_BRUSH", &wxluatype_wxBrush, NULL, (const void **) &wxLua_wxWHITE_BRUSH },
         { "wxWHITE_PEN", &wxluatype_wxPen, NULL, (const void **) &wxLua_wxWHITE_PEN },
+        { "wxYELLOW", &wxluatype_wxColour, NULL, (const void **) &wxLua_wxYELLOW },
+        { "wxYELLOW_BRUSH", &wxluatype_wxBrush, NULL, (const void **) &wxLua_wxYELLOW_BRUSH },
+        { "wxYELLOW_PEN", &wxluatype_wxPen, NULL, (const void **) &wxLua_wxYELLOW_PEN },
 #endif // wxLUA_USE_wxColourPenBrush
 
 
@@ -8548,6 +8560,7 @@ bool wxLuaBinding_wxcore::RegisterBinding(const wxLuaState& wxlState)
         wxLua_wxGREEN      = (wxColour*)wxGREEN;
         wxLua_wxCYAN       = (wxColour*)wxCYAN;
         wxLua_wxLIGHT_GREY = (wxColour*)wxLIGHT_GREY;
+        wxLua_wxYELLOW     = (wxColour*)wxYELLOW;
 
         wxLua_wxRED_PEN          = (wxPen*)wxRED_PEN;
         wxLua_wxCYAN_PEN         = (wxPen*)wxCYAN_PEN;
@@ -8559,6 +8572,8 @@ bool wxLuaBinding_wxcore::RegisterBinding(const wxLuaState& wxlState)
         wxLua_wxGREY_PEN         = (wxPen*)wxGREY_PEN;
         wxLua_wxMEDIUM_GREY_PEN  = (wxPen*)wxMEDIUM_GREY_PEN;
         wxLua_wxLIGHT_GREY_PEN   = (wxPen*)wxLIGHT_GREY_PEN;
+        wxLua_wxBLUE_PEN         = (wxPen*)wxBLUE_PEN;
+        wxLua_wxYELLOW_PEN       = (wxPen*)wxYELLOW_PEN;
 
         wxLua_wxBLUE_BRUSH        = (wxBrush*)wxBLUE_BRUSH;
         wxLua_wxGREEN_BRUSH       = (wxBrush*)wxGREEN_BRUSH;
@@ -8570,6 +8585,7 @@ bool wxLuaBinding_wxcore::RegisterBinding(const wxLuaState& wxlState)
         wxLua_wxTRANSPARENT_BRUSH = (wxBrush*)wxTRANSPARENT_BRUSH;
         wxLua_wxCYAN_BRUSH        = (wxBrush*)wxCYAN_BRUSH;
         wxLua_wxRED_BRUSH         = (wxBrush*)wxRED_BRUSH;
+        wxLua_wxYELLOW_BRUSH      = (wxBrush*)wxYELLOW_BRUSH;
 
         wxLua_wxNORMAL_FONT = (wxFont*)wxNORMAL_FONT;
         wxLua_wxSMALL_FONT  = (wxFont*)wxSMALL_FONT;
