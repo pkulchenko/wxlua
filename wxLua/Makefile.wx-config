@@ -22,7 +22,7 @@ all: lua wxlua wxlua_debug wxlua_debugger wxbind wxlua_app wxluacan_app wxluafre
 # Make the libs
 
 lua:
-	@(cd modules/lua/src && $(MAKE) $(LUA_PLAT))
+	@(cd modules/lua-5.1/src && $(MAKE) $(LUA_PLAT))
 
 wxlua:
 	@(cd modules/wxlua && $(MAKE))
@@ -57,7 +57,7 @@ wxluaedit_app:
 #----------------------------------------------------------------------------
 
 clean:
-	@(cd modules/lua/src         && $(MAKE) clean)
+	@(cd modules/lua-5.1/src     && $(MAKE) clean)
 	@(cd modules/wxlua           && $(MAKE) clean)
 	@(cd modules/wxlua/debug     && $(MAKE) clean)
 	@(cd modules/wxlua/debugger  && $(MAKE) clean)
