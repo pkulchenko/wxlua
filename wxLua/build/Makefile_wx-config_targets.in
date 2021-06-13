@@ -10,7 +10,7 @@
 # Some targets that we may like to build
 
 Lua:
-	@(cd $(WXLUA_DIR)/modules/lua && $(MAKE) $(LUA_PLAT))
+	@(cd $(WXLUA_DIR)/modules/lua-5.1 && $(MAKE) $(LUA_PLAT))
 
 wxLuaLib:
 	@(cd $(WXLUA_DIR)/modules/wxlua && $(MAKE))
@@ -91,7 +91,7 @@ cleanlib:
               $(WXLUA_TARGET_LIBDIR)/$(WXLUA_TARGET_LIB_LINK2)
 
 cleanall:
-	@(cd $(WXLUA_DIR)/modules/lua            && $(MAKE) clean)
+	@(cd $(WXLUA_DIR)/modules/lua-5.1        && $(MAKE) clean)
 	@(cd $(WXLUA_DIR)/modules/wxlua          && $(MAKE) clean)
 	@(cd $(WXLUA_DIR)/modules/wxlua/debug    && $(MAKE) clean)
 	@(cd $(WXLUA_DIR)/modules/wxlua/debugger && $(MAKE) clean)
