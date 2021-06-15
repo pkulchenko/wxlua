@@ -464,7 +464,7 @@ function( PARSE_WXWIDGETS_LIB_NAMES )
     # wxmsw28[ud]_core.lib, wxmswuniv29[ud]_core.lib, wx_gtk2u_core-2.8.so
     # wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR).lib
 
-    set(wxWidgets_PORTNAME    "" CACHE STRING "wxWidgets port; 'msw', 'gtk1', 'gtk2'..." FORCE)
+    set(wxWidgets_PORTNAME    "" CACHE STRING "wxWidgets port; 'msw', 'gtk1', 'gtk2', 'gtk3'..." FORCE)
     set(wxWidgets_UNIVNAME    "" CACHE STRING "wxWidgets universal build, either 'univ' or ''" FORCE)
     set(wxWidgets_UNICODEFLAG "" CACHE STRING "wxWidgets unicode build, either 'u' or ''" FORCE)
     set(wxWidgets_DEBUGFLAG   "" CACHE STRING "wxWidgets debug build, either 'd' or ''" FORCE)
@@ -521,9 +521,9 @@ function( PARSE_WXWIDGETS_LIB_NAMES )
         endif()
     endif()
 
-    # wxWidgets GTK2 build using configure
+    # wxWidgets GTK1-3 build using configure
     if ("${wxWidgets_PORTNAME}" STREQUAL "")
-        string(REGEX MATCH "wx_(gtk[12]?)(univ)?(u)?(d)?_core-([0-9].[0-9])" _match_gtk "${wxWidgets_LIBRARIES}")
+        string(REGEX MATCH "wx_(gtk[1-3]?)(univ)?(u)?(d)?_core-([0-9].[0-9])" _match_gtk "${wxWidgets_LIBRARIES}")
 
         if (NOT "${_match_gtk}" STREQUAL "")
             set(wxWidgets_PORTNAME    "${CMAKE_MATCH_1}" )
@@ -564,7 +564,7 @@ function( PARSE_WXWIDGETS_LIB_NAMES )
         message(WARNING "WARNING: Unable to find wxWidgets_PORTNAME/UNIVNAME/UNICODEFLAG/DEBUGFLAG from lib names! You may have to add code to CMake to help it parse your wxWidgets lib names.")
     endif()
 
-    set(wxWidgets_PORTNAME    "${wxWidgets_PORTNAME}"    CACHE STRING "wxWidgets port; 'msw', 'gtk1', 'gtk2'..." FORCE)
+    set(wxWidgets_PORTNAME    "${wxWidgets_PORTNAME}"    CACHE STRING "wxWidgets port; 'msw', 'gtk1', 'gtk2', 'gtk3'..." FORCE)
     set(wxWidgets_UNIVNAME    "${wxWidgets_UNIVNAME}"    CACHE STRING "wxWidgets universal build, either 'univ' or ''" FORCE)
     set(wxWidgets_UNICODEFLAG "${wxWidgets_UNICODEFLAG}" CACHE STRING "wxWidgets unicode build, either 'u' or ''" FORCE)
     set(wxWidgets_DEBUGFLAG   "${wxWidgets_DEBUGFLAG}"   CACHE STRING "wxWidgets debug build, either 'd' or ''" FORCE)
