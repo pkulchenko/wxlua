@@ -8440,6 +8440,31 @@ static int LUACALL wxLua_wxPen_GetColour(lua_State *L)
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPen_GetDashes[] = { &wxluatype_wxPen, NULL };
+static int LUACALL wxLua_wxPen_GetDashes(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPen_GetDashes[1] = {{ wxLua_wxPen_GetDashes, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPen_GetDashes }};
+// %override wxLua_wxPen_GetDashes
+// void GetDashes()
+static int LUACALL wxLua_wxPen_GetDashes(lua_State *L)
+{
+    // get this
+    wxPen *self = (wxPen *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPen);
+    // get dashes
+    wxDash *dashes;
+    int nb_dashes = self->GetDashes(&dashes);
+    if (nb_dashes == 0)
+        return 0;  //  No dashes are defined
+    // create a table (which will be the return value)
+    lua_newtable(L);
+    for (int idx = 0; idx < nb_dashes; ++idx) {
+        lua_pushinteger(L, dashes[idx]);
+        lua_rawseti(L, -2, idx + 1);
+    }
+    //  return the number of parameters
+    return 1;
+}
+
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPen_GetJoin[] = { &wxluatype_wxPen, NULL };
 static int LUACALL wxLua_wxPen_GetJoin(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPen_GetJoin[1] = {{ wxLua_wxPen_GetJoin, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPen_GetJoin }};
@@ -8671,6 +8696,33 @@ static int LUACALL wxLua_wxPen_SetColour(lua_State *L)
 
     return 0;
 }
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPen_SetDashes[] = { &wxluatype_wxPen, NULL };
+static int LUACALL wxLua_wxPen_SetDashes(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPen_SetDashes[1] = {{ wxLua_wxPen_SetDashes, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPen_SetDashes }};
+// %override wxLua_wxPen_SetDashes
+// void SetDashes()
+static int LUACALL wxLua_wxPen_SetDashes(lua_State *L)
+{
+    // get this
+    wxPen *self = (wxPen *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPen);
+    // check if we have a table argument
+    if (!wxlua_iswxluatype(lua_type(L, 2), WXLUA_TTABLE))
+        wxlua_argerror(L, 2, wxT("a 'table'"));
+    int count = lua_objlen(L, 2);
+    // allocate an array of wxDashes
+    // TODO: this memory will leak when wxPen is destroyed. The wxWidgets document states
+    // that we should not free 'dashes' until we destroy the wxPen.
+    wxDash *dashes = new wxDash[count];
+    for (int idx = 1; idx <= count; idx++) {
+        lua_rawgeti(L, 2, idx);
+        dashes[idx - 1] = (wxDash)lua_tonumber(L, -1);
+        lua_pop(L, 1);
+    }
+    self->SetDashes(count, dashes);
+    return 0;
+}
+
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPen_SetJoin[] = { &wxluatype_wxPen, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxPen_SetJoin(lua_State *L);
@@ -8981,6 +9033,7 @@ void wxLua_wxPen_delete_function(void** p)
 wxLuaBindMethod wxPen_methods[] = {
     { "GetCap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPen_GetCap, 1, NULL },
     { "GetColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPen_GetColour, 1, NULL },
+    { "GetDashes", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPen_GetDashes, 1, NULL },
     { "GetJoin", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPen_GetJoin, 1, NULL },
 
 #if ((defined(__WXMSW__)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)
@@ -9003,6 +9056,7 @@ wxLuaBindMethod wxPen_methods[] = {
     { "SetColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPen_SetColour_overload, s_wxluafunc_wxLua_wxPen_SetColour_overload_count, 0 },
 #endif // ((!wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush))||(wxLUA_USE_wxColourPenBrush)
 
+    { "SetDashes", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPen_SetDashes, 1, NULL },
     { "SetJoin", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPen_SetJoin, 1, NULL },
 
 #if ((defined(__WXMSW__)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxBitmap)

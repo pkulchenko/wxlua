@@ -808,7 +808,9 @@ class %delete wxPen : public wxGDIObject
     wxPen(const wxPen& pen);
     wxPenCap GetCap() const;
     wxColour GetColour() const; // not wxColur& so we allocate a new one
-    // int GetDashes(wxDash** dashes) const;
+    // %override [table-of-integers] wxPen::GetDashes();
+    // C++ Func: int GetDashes(wxDash** dashes) const;
+    void GetDashes() const;
     wxPenJoin GetJoin() const;
     %win wxBitmap* GetStipple() const;
     wxPenStyle GetStyle() const;
@@ -819,7 +821,9 @@ class %delete wxPen : public wxGDIObject
     void SetCap(wxPenCap capStyle);
     void SetColour(wxColour& colour);
     void SetColour(unsigned char red, unsigned char green, unsigned char blue);
-    // void SetDashes(int nb_dashes, const wxDash *dash);
+    // %override void SetDashes(Lua-table-of-integers);
+    // C++ Func: void wxPen::SetDashes(int nb_dashes, const wxDash *dash);
+    void SetDashes();
     void SetJoin(wxPenJoin join_style);
     %win void SetStipple(const wxBitmap& stipple);
     void SetStyle(wxPenStyle style);
