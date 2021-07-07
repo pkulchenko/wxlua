@@ -612,6 +612,7 @@ class wxDataViewCtrlBase : public wxControl	//: public wxSystemThemedControl<wxC
 
     void Expand( const wxDataViewItem & item );
     void ExpandAncestors( const wxDataViewItem & item );
+    %wxchkver_3_1_5 void ExpandChildren( const wxDataViewItem & item );
     virtual void Collapse( const wxDataViewItem & item ) = 0;
     virtual bool IsExpanded( const wxDataViewItem & item ) const = 0;
 

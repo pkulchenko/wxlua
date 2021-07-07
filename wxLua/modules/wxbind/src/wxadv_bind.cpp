@@ -12765,6 +12765,26 @@ static int LUACALL wxLua_wxDataViewCtrlBase_ExpandAncestors(lua_State *L)
     return 0;
 }
 
+
+#if ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxCHECK_VERSION(3,1,5))) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewCtrlBase_ExpandChildren[] = { &wxluatype_wxDataViewCtrlBase, &wxluatype_wxDataViewItem, NULL };
+static int LUACALL wxLua_wxDataViewCtrlBase_ExpandChildren(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrlBase_ExpandChildren[1] = {{ wxLua_wxDataViewCtrlBase_ExpandChildren, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDataViewCtrlBase_ExpandChildren }};
+//     %wxchkver_3_1_5 void ExpandChildren( const wxDataViewItem & item );
+static int LUACALL wxLua_wxDataViewCtrlBase_ExpandChildren(lua_State *L)
+{
+    // const wxDataViewItem item
+    const wxDataViewItem * item = (const wxDataViewItem *)wxluaT_getuserdatatype(L, 2, wxluatype_wxDataViewItem);
+    // get this
+    wxDataViewCtrlBase * self = (wxDataViewCtrlBase *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewCtrlBase);
+    // call ExpandChildren
+    self->ExpandChildren(*item);
+
+    return 0;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxCHECK_VERSION(3,1,5))) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewCtrlBase_GetClassDefaultAttributes[] = { &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDataViewCtrlBase_GetClassDefaultAttributes(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewCtrlBase_GetClassDefaultAttributes[1] = {{ wxLua_wxDataViewCtrlBase_GetClassDefaultAttributes, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 1, s_wxluatypeArray_wxLua_wxDataViewCtrlBase_GetClassDefaultAttributes }};
@@ -13969,6 +13989,11 @@ wxLuaBindMethod wxDataViewCtrlBase_methods[] = {
     { "EnsureVisible", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_EnsureVisible, 1, NULL },
     { "Expand", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_Expand, 1, NULL },
     { "ExpandAncestors", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_ExpandAncestors, 1, NULL },
+
+#if ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxCHECK_VERSION(3,1,5))) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
+    { "ExpandChildren", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_ExpandChildren, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxCHECK_VERSION(3,1,5))) && (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
+
     { "GetClassDefaultAttributes", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxDataViewCtrlBase_GetClassDefaultAttributes, 1, NULL },
     { "GetColumn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_GetColumn, 1, NULL },
     { "GetColumnCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewCtrlBase_GetColumnCount, 1, NULL },
