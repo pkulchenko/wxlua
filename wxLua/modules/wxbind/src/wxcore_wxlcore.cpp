@@ -75,8 +75,8 @@ bool wxLuaDataObjectSimple::GetDataHere(void* buf) const
         {
             result = m_wxlState.GetBooleanType(-2);
 
-            const void *lua_buf = m_wxlState.lua_ToString(-1);
-            size_t len = (size_t)m_wxlState.lua_StrLen(-1);
+            size_t len;
+            const void *lua_buf = (const void *)wxlua_getstringtypelen(m_wxlState.GetLuaState(), -1, &len);
 
             memcpy(buf, lua_buf, len);
         }
