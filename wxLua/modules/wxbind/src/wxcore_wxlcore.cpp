@@ -71,7 +71,7 @@ bool wxLuaDataObjectSimple::GetDataHere(void* buf) const
         int nOldTop = m_wxlState.lua_GetTop();
         m_wxlState.wxluaT_PushUserDataType(this, wxluatype_wxLuaDataObjectSimple, true);
 
-        if (m_wxlState.LuaPCall(0, 2) == 0)
+        if (m_wxlState.LuaPCall(1, 2) == 0)
         {
             result = m_wxlState.GetBooleanType(-2);
 
