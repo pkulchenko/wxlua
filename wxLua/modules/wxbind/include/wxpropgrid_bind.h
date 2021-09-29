@@ -60,12 +60,20 @@ extern WXDLLIMPEXP_BINDWXPROPGRID wxLuaBinding* wxLuaBinding_wxpropgrid_init();
 // ---------------------------------------------------------------------------
 
 #if wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxBoolProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxFloatProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxIntProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxNumericProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxNumericPropertyValidator;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGAttributeStorage;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGPropArgCls;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGValidationInfo;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPropertyGrid;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPropertyGridEvent;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPropertyGridInterface;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxStringProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxUIntProperty;
 #endif // wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
 
 
