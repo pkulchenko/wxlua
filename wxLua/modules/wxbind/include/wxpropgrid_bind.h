@@ -43,9 +43,30 @@ extern WXDLLIMPEXP_BINDWXPROPGRID wxLuaBinding* wxLuaBinding_wxpropgrid_init();
 // Includes
 // ---------------------------------------------------------------------------
 
+#if wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
+    #include "wx/propgrid/advprops.h"
+    #include "wx/propgrid/editors.h"
+    #include "wx/propgrid/manager.h"
+    #include "wx/propgrid/property.h"
+    #include "wx/propgrid/propgrid.h"
+    #include "wx/propgrid/propgriddefs.h"
+    #include "wx/propgrid/propgridiface.h"
+    #include "wx/propgrid/propgridpagestate.h"
+    #include "wx/propgrid/props.h"
+#endif // wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
+
 // ---------------------------------------------------------------------------
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
+
+#if wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGPropArgCls;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPropertyGrid;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPropertyGridEvent;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPropertyGridInterface;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxStringProperty;
+#endif // wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
 
 
 

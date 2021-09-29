@@ -1419,3 +1419,21 @@ static int LUACALL wxLua_wxFileSystem_FindFileInPath(lua_State *L)
     return 2;
 }
 %end
+
+
+%override wxLua_wxVariantFromString_constructor
+//     wxVariant(const wxString& str)
+static int LUACALL wxLua_wxVariantFromString_constructor(lua_State *L)
+{
+    // const wxString str = ""
+    const wxString str = wxlua_getwxStringtype(L, 1);
+    // call constructor
+    wxVariant* returns = new wxVariant(str);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxVariant);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxVariant);
+
+    return 1;
+}
+%end

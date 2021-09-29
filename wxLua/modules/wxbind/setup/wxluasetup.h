@@ -439,6 +439,10 @@
 #define wxLUA_USE_wxProgressDialog              1
 #endif
 
+#ifndef wxLUA_USE_wxPropertyGrid
+#define wxLUA_USE_wxPropertyGrid                1
+#endif
+
 #ifndef wxLUA_USE_wxRadioBox
 #define wxLUA_USE_wxRadioBox                    1
 #endif

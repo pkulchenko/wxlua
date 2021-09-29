@@ -574,3 +574,22 @@ public:
 };
 
 #endif
+
+// ---------------------------------------------------------------------------
+// wxVariant
+
+#include "wx/variant.h"
+
+#if wxUSE_VARIANT
+
+class %delete wxVariant: public wxObject
+{
+    wxVariant();
+    %override_name wxLua_wxVariantFromString_constructor wxVariant(const wxString& string);
+
+    wxString MakeString() const;
+    bool IsType(const wxString& type) const;
+    bool IsValueKindOf(const wxClassInfo* type) const;
+};
+
+#endif

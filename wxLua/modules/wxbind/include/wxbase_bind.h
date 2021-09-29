@@ -78,6 +78,7 @@ extern WXDLLIMPEXP_BINDWXBASE wxLuaBinding* wxLuaBinding_wxbase_init();
 #include "wx/timer.h"
 #include "wx/tokenzr.h"
 #include "wx/utils.h"
+#include "wx/variant.h"
 
 #if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths
     #include "wx/stdpaths.h"
@@ -377,6 +378,10 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringTokenizer;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxTextInputStream;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxTextOutputStream;
 #endif // wxUSE_STREAMS
+
+#if wxUSE_VARIANT
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxVariant;
+#endif // wxUSE_VARIANT
 
 
 

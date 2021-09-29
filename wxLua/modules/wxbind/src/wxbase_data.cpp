@@ -4443,3 +4443,149 @@ int wxMemoryBuffer_methodCount = sizeof(wxMemoryBuffer_methods)/sizeof(wxLuaBind
 
 #endif  // wxLUA_USE_wxMemoryBuffer
 
+
+#if wxUSE_VARIANT
+// ---------------------------------------------------------------------------
+// Bind class wxVariant
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxVariant'
+int wxluatype_wxVariant = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVariant_IsType[] = { &wxluatype_wxVariant, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxVariant_IsType(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_IsType[1] = {{ wxLua_wxVariant_IsType, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxVariant_IsType }};
+//     bool IsType(const wxString& type) const;
+static int LUACALL wxLua_wxVariant_IsType(lua_State *L)
+{
+    // const wxString type
+    const wxString type = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxVariant * self = (wxVariant *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVariant);
+    // call IsType
+    bool returns = (self->IsType(type));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+
+#if (wxLUA_USE_wxClassInfo) && (wxUSE_VARIANT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVariant_IsValueKindOf[] = { &wxluatype_wxVariant, &wxluatype_wxClassInfo, NULL };
+static int LUACALL wxLua_wxVariant_IsValueKindOf(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_IsValueKindOf[1] = {{ wxLua_wxVariant_IsValueKindOf, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxVariant_IsValueKindOf }};
+//     bool IsValueKindOf(const wxClassInfo* type) const;
+static int LUACALL wxLua_wxVariant_IsValueKindOf(lua_State *L)
+{
+    // const wxClassInfo type
+    const wxClassInfo * type = (const wxClassInfo *)wxluaT_getuserdatatype(L, 2, wxluatype_wxClassInfo);
+    // get this
+    wxVariant * self = (wxVariant *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVariant);
+    // call IsValueKindOf
+    bool returns = (self->IsValueKindOf(type));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxClassInfo) && (wxUSE_VARIANT)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVariant_MakeString[] = { &wxluatype_wxVariant, NULL };
+static int LUACALL wxLua_wxVariant_MakeString(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_MakeString[1] = {{ wxLua_wxVariant_MakeString, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxVariant_MakeString }};
+//     wxString MakeString() const;
+static int LUACALL wxLua_wxVariant_MakeString(lua_State *L)
+{
+    // get this
+    wxVariant * self = (wxVariant *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVariant);
+    // call MakeString
+    wxString returns = (self->MakeString());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVariant_delete[] = { &wxluatype_wxVariant, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxVariant_delete }};
+
+#define wxLua_wxVariant_constructor1 wxLua_wxVariantFromString_constructor
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVariant_constructor1[] = { &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxVariant_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_constructor1[1] = {{ wxLua_wxVariant_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor1 }};
+// %override wxLua_wxVariantFromString_constructor
+//     wxVariant(const wxString& str)
+static int LUACALL wxLua_wxVariantFromString_constructor(lua_State *L)
+{
+    // const wxString str = ""
+    const wxString str = wxlua_getwxStringtype(L, 1);
+    // call constructor
+    wxVariant* returns = new wxVariant(str);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxVariant);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxVariant);
+
+    return 1;
+}
+
+
+static int LUACALL wxLua_wxVariant_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_constructor[1] = {{ wxLua_wxVariant_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxVariant();
+static int LUACALL wxLua_wxVariant_constructor(lua_State *L)
+{
+    // call constructor
+    wxVariant* returns = new wxVariant();
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxVariant);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxVariant);
+
+    return 1;
+}
+
+
+
+
+#if (wxUSE_VARIANT)
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_constructor_overload[] =
+{
+    { wxLua_wxVariant_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor1 },
+    { wxLua_wxVariant_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+};
+static int s_wxluafunc_wxLua_wxVariant_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxVariant_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (wxUSE_VARIANT)
+
+void wxLua_wxVariant_delete_function(void** p)
+{
+    wxVariant* o = (wxVariant*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxVariant_methods[] = {
+    { "IsType", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVariant_IsType, 1, NULL },
+
+#if (wxLUA_USE_wxClassInfo) && (wxUSE_VARIANT)
+    { "IsValueKindOf", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVariant_IsValueKindOf, 1, NULL },
+#endif // (wxLUA_USE_wxClassInfo) && (wxUSE_VARIANT)
+
+    { "MakeString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVariant_MakeString, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxVariant_delete, 1, NULL },
+
+#if (wxUSE_VARIANT)
+    { "wxVariant", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxVariant_constructor_overload, s_wxluafunc_wxLua_wxVariant_constructor_overload_count, 0 },
+#endif // (wxUSE_VARIANT)
+
+    { 0, 0, 0, 0 },
+};
+
+int wxVariant_methodCount = sizeof(wxVariant_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxUSE_VARIANT
+
