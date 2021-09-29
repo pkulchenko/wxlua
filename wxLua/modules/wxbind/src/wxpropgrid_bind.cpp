@@ -1629,15 +1629,12 @@ static int LUACALL wxLua_wxPropertyGrid_WasValueChangedInEvent(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGrid_delete[] = { &wxluatype_wxPropertyGrid, NULL };
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGrid_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxPropertyGrid_delete }};
-
 
 #if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGrid_constructor1[] = { &wxluatype_wxWindow, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_TNUMBER, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxPropertyGrid_constructor1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGrid_constructor1[1] = {{ wxLua_wxPropertyGrid_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 6, s_wxluatypeArray_wxLua_wxPropertyGrid_constructor1 }};
-//                           const wxString& name = wxPropertyGridNameStr );
+//                     const wxString& name = wxPropertyGridNameStr );
 static int LUACALL wxLua_wxPropertyGrid_constructor1(lua_State *L)
 {
     // get number of arguments
@@ -1656,8 +1653,6 @@ static int LUACALL wxLua_wxPropertyGrid_constructor1(lua_State *L)
     wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
     // call constructor
     wxPropertyGrid* returns = new wxPropertyGrid(parent, id, *pos, *size, style, name);
-    // add to tracked memory list
-    wxluaO_addgcobject(L, returns, wxluatype_wxPropertyGrid);
     // push the constructed class pointer
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxPropertyGrid);
 
@@ -1673,8 +1668,6 @@ static int LUACALL wxLua_wxPropertyGrid_constructor(lua_State *L)
 {
     // call constructor
     wxPropertyGrid* returns = new wxPropertyGrid();
-    // add to tracked memory list
-    wxluaO_addgcobject(L, returns, wxluatype_wxPropertyGrid);
     // push the constructed class pointer
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxPropertyGrid);
 
@@ -1857,7 +1850,6 @@ wxLuaBindMethod wxPropertyGrid_methods[] = {
 #endif // (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_VARIANT)
 
     { "WasValueChangedInEvent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGrid_WasValueChangedInEvent, 1, NULL },
-    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxPropertyGrid_delete, 1, NULL },
 
 #if ((wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID))||(wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
     { "wxPropertyGrid", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxPropertyGrid_constructor_overload, s_wxluafunc_wxLua_wxPropertyGrid_constructor_overload_count, 0 },
@@ -2680,15 +2672,17 @@ int wxluatype_wxPropertyGridInterface = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridInterface_Append[] = { &wxluatype_wxPropertyGridInterface, &wxluatype_wxPGProperty, NULL };
 static int LUACALL wxLua_wxPropertyGridInterface_Append(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridInterface_Append[1] = {{ wxLua_wxPropertyGridInterface_Append, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPropertyGridInterface_Append }};
-//     wxPGProperty* Append( wxPGProperty* property );
+//     %ungc wxPGProperty* Append( %ungc wxPGProperty* property );
 static int LUACALL wxLua_wxPropertyGridInterface_Append(lua_State *L)
 {
     // wxPGProperty property
     wxPGProperty * property = (wxPGProperty *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPGProperty);
+    if (wxluaO_isgcobject(L, property)) wxluaO_undeletegcobject(L, property);
     // get this
     wxPropertyGridInterface * self = (wxPropertyGridInterface *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridInterface);
     // call Append
     wxPGProperty* returns = (wxPGProperty*)self->Append(property);
+    if (wxluaO_isgcobject(L, returns)) wxluaO_undeletegcobject(L, returns);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxPGProperty);
 
@@ -4489,9 +4483,6 @@ static int LUACALL wxLua_wxPropertyGridInterface_SortChildren(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridInterface_delete[] = { &wxluatype_wxPropertyGridInterface, NULL };
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridInterface_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxPropertyGridInterface_delete }};
-
 
 
 
@@ -4700,7 +4691,6 @@ wxLuaBindMethod wxPropertyGridInterface_methods[] = {
     { "SetValidationFailureBehavior", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridInterface_SetValidationFailureBehavior, 1, NULL },
     { "Sort", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridInterface_Sort, 1, NULL },
     { "SortChildren", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridInterface_SortChildren, 1, NULL },
-    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxPropertyGridInterface_delete, 1, NULL },
 
     { 0, 0, 0, 0 },
 };
@@ -5286,17 +5276,83 @@ wxLuaBindNumber* wxLuaGetDefineList_wxpropgrid(size_t &count)
     static wxLuaBindNumber numberList[] =
     {
 #if wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
+        { "wxPGMAN_DEFAULT_STYLE", wxPGMAN_DEFAULT_STYLE },
+        { "wxPG_ALPHABETIC_MODE", wxPG_ALPHABETIC_MODE },
+        { "wxPG_AUTO_SORT", wxPG_AUTO_SORT },
+        { "wxPG_BASE_DEC", wxPG_BASE_DEC },
+        { "wxPG_BASE_HEX", wxPG_BASE_HEX },
+        { "wxPG_BASE_HEXL", wxPG_BASE_HEXL },
+        { "wxPG_BASE_OCT", wxPG_BASE_OCT },
+        { "wxPG_BOLD_MODIFIED", wxPG_BOLD_MODIFIED },
         { "wxPG_CAPRECTXMARGIN", wxPG_CAPRECTXMARGIN },
         { "wxPG_CAPRECTYMARGIN", wxPG_CAPRECTYMARGIN },
+        { "wxPG_COMPOSITE_FRAGMENT", wxPG_COMPOSITE_FRAGMENT },
         { "wxPG_CUSTOM_IMAGE_SPACINGY", wxPG_CUSTOM_IMAGE_SPACINGY },
+        { "wxPG_DEFAULT_STYLE", wxPG_DEFAULT_STYLE },
+        { "wxPG_DESCRIPTION", wxPG_DESCRIPTION },
         { "wxPG_DONT_RECURSE", wxPG_DONT_RECURSE },
+        { "wxPG_DONT_RECURSE", wxPG_DONT_RECURSE },
+        { "wxPG_EDITABLE_VALUE", wxPG_EDITABLE_VALUE },
+        { "wxPG_EX_ALWAYS_ALLOW_FOCUS", wxPG_EX_ALWAYS_ALLOW_FOCUS },
+        { "wxPG_EX_AUTO_UNSPECIFIED_VALUES", wxPG_EX_AUTO_UNSPECIFIED_VALUES },
+        { "wxPG_EX_ENABLE_TLP_TRACKING", wxPG_EX_ENABLE_TLP_TRACKING },
+        { "wxPG_EX_HELP_AS_TOOLTIPS", wxPG_EX_HELP_AS_TOOLTIPS },
+        { "wxPG_EX_HIDE_PAGE_BUTTONS", wxPG_EX_HIDE_PAGE_BUTTONS },
+        { "wxPG_EX_INIT_NOCAT", wxPG_EX_INIT_NOCAT },
+        { "wxPG_EX_MODE_BUTTONS", wxPG_EX_MODE_BUTTONS },
+        { "wxPG_EX_MULTIPLE_SELECTION", wxPG_EX_MULTIPLE_SELECTION },
+        { "wxPG_EX_NATIVE_DOUBLE_BUFFERING", wxPG_EX_NATIVE_DOUBLE_BUFFERING },
+        { "wxPG_EX_NO_FLAT_TOOLBAR", wxPG_EX_NO_FLAT_TOOLBAR },
+        { "wxPG_EX_NO_TOOLBAR_DIVIDER", wxPG_EX_NO_TOOLBAR_DIVIDER },
+        { "wxPG_EX_TOOLBAR_SEPARATOR", wxPG_EX_TOOLBAR_SEPARATOR },
+        { "wxPG_EX_WINDOW_PGMAN_STYLE_MASK", wxPG_EX_WINDOW_PGMAN_STYLE_MASK },
+        { "wxPG_EX_WINDOW_PG_STYLE_MASK", wxPG_EX_WINDOW_PG_STYLE_MASK },
+        { "wxPG_EX_WINDOW_STYLE_MASK", wxPG_EX_WINDOW_STYLE_MASK },
+        { "wxPG_EX_WRITEONLY_BUILTIN_ATTRIBUTES", wxPG_EX_WRITEONLY_BUILTIN_ATTRIBUTES },
         { "wxPG_FORCE", wxPG_FORCE },
+        { "wxPG_FORCE", wxPG_FORCE },
+        { "wxPG_FULL_VALUE", wxPG_FULL_VALUE },
+        { "wxPG_HIDE_CATEGORIES", wxPG_HIDE_CATEGORIES },
+        { "wxPG_HIDE_MARGIN", wxPG_HIDE_MARGIN },
         { "wxPG_INC_ATTRIBUTES", wxPG_INC_ATTRIBUTES },
+        { "wxPG_INC_ATTRIBUTES", wxPG_INC_ATTRIBUTES },
+        { "wxPG_INVALID_VALUE", wxPG_INVALID_VALUE },
         { "wxPG_KEEP_STRUCTURE", wxPG_KEEP_STRUCTURE },
+        { "wxPG_KEEP_STRUCTURE", wxPG_KEEP_STRUCTURE },
+        { "wxPG_LIMITED_EDITING", wxPG_LIMITED_EDITING },
+        { "wxPG_NO_INTERNAL_BORDER", wxPG_NO_INTERNAL_BORDER },
+        { "wxPG_PREFIX_0x", wxPG_PREFIX_0x },
+        { "wxPG_PREFIX_DOLLAR_SIGN", wxPG_PREFIX_DOLLAR_SIGN },
+        { "wxPG_PREFIX_NONE", wxPG_PREFIX_NONE },
+        { "wxPG_PROGRAMMATIC_VALUE", wxPG_PROGRAMMATIC_VALUE },
+        { "wxPG_PROPERTY_SPECIFIC", wxPG_PROPERTY_SPECIFIC },
         { "wxPG_PROP_PASSWORD", wxPG_PROP_PASSWORD },
         { "wxPG_RECURSE", wxPG_RECURSE },
+        { "wxPG_RECURSE", wxPG_RECURSE },
         { "wxPG_RECURSE_STARTS", wxPG_RECURSE_STARTS },
+        { "wxPG_RECURSE_STARTS", wxPG_RECURSE_STARTS },
+        { "wxPG_REPORT_ERROR", wxPG_REPORT_ERROR },
+        { "wxPG_SETVAL_AGGREGATED", wxPG_SETVAL_AGGREGATED },
+        { "wxPG_SETVAL_BY_USER", wxPG_SETVAL_BY_USER },
+        { "wxPG_SETVAL_FROM_PARENT", wxPG_SETVAL_FROM_PARENT },
+        { "wxPG_SETVAL_REFRESH_EDITOR", wxPG_SETVAL_REFRESH_EDITOR },
         { "wxPG_SORT_TOP_LEVEL_ONLY", wxPG_SORT_TOP_LEVEL_ONLY },
+        { "wxPG_SORT_TOP_LEVEL_ONLY", wxPG_SORT_TOP_LEVEL_ONLY },
+        { "wxPG_SPLITTER_AUTO_CENTER", wxPG_SPLITTER_AUTO_CENTER },
+        { "wxPG_STATIC_LAYOUT", wxPG_STATIC_LAYOUT },
+        { "wxPG_STATIC_SPLITTER", wxPG_STATIC_SPLITTER },
+        { "wxPG_TOOLBAR", wxPG_TOOLBAR },
+        { "wxPG_TOOLTIPS", wxPG_TOOLTIPS },
+        { "wxPG_UNEDITABLE_COMPOSITE_FRAGMENT", wxPG_UNEDITABLE_COMPOSITE_FRAGMENT },
+        { "wxPG_VALUE_IS_CURRENT", wxPG_VALUE_IS_CURRENT },
+        { "wxPG_VFB_BEEP", wxPG_VFB_BEEP },
+        { "wxPG_VFB_DEFAULT", wxPG_VFB_DEFAULT },
+        { "wxPG_VFB_MARK_CELL", wxPG_VFB_MARK_CELL },
+        { "wxPG_VFB_SHOW_MESSAGE", wxPG_VFB_SHOW_MESSAGE },
+        { "wxPG_VFB_SHOW_MESSAGEBOX", wxPG_VFB_SHOW_MESSAGEBOX },
+        { "wxPG_VFB_SHOW_MESSAGE_ON_STATUSBAR", wxPG_VFB_SHOW_MESSAGE_ON_STATUSBAR },
+        { "wxPG_VFB_STAY_IN_PROPERTY", wxPG_VFB_STAY_IN_PROPERTY },
+        { "wxPG_WINDOW_STYLE_MASK", wxPG_WINDOW_STYLE_MASK },
 #endif // wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
 
 
@@ -5373,12 +5429,13 @@ static const char* wxluaclassname_wxPGProperty = "wxPGProperty";
 static const char* wxluaclassname_wxPropertyGrid = "wxPropertyGrid";
 static const char* wxluaclassname_wxPropertyGridEvent = "wxPropertyGridEvent";
 static const char* wxluaclassname_wxPropertyGridInterface = "wxPropertyGridInterface";
+static const char* wxluaclassname_wxScrolled_wxControl_ = "wxScrolled<wxControl>";
 static const char* wxluaclassname_wxStringProperty = "wxStringProperty";
 
 static const char* wxluabaseclassnames_wxPGProperty[] = { wxluaclassname_wxObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxPGProperty[] = { NULL };
-static const char* wxluabaseclassnames_wxPropertyGrid[] = { wxluaclassname_wxPropertyGridInterface, NULL };
-static wxLuaBindClass* wxluabaseclassbinds_wxPropertyGrid[] = { NULL };
+static const char* wxluabaseclassnames_wxPropertyGrid[] = { wxluaclassname_wxScrolled_wxControl_, wxluaclassname_wxPropertyGridInterface, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxPropertyGrid[] = { NULL, NULL };
 static const char* wxluabaseclassnames_wxPropertyGridEvent[] = { wxluaclassname_wxCommandEvent, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxPropertyGridEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxStringProperty[] = { wxluaclassname_wxPGProperty, NULL };
@@ -5396,6 +5453,8 @@ static wxLuaBindClass* wxluabaseclassbinds_wxStringProperty[] = { NULL };
     extern void wxLua_wxPGProperty_delete_function(void** p);
     extern wxLuaBindMethod wxPropertyGrid_methods[];
     extern int wxPropertyGrid_methodCount;
+    static wxLuaArgType wxluabaseclass_wxluatypes_wxPropertyGrid[] = { &wxluatype_wxPropertyGridInterface, NULL };
+    static wxIntPtr wxluabaseclass_vtable_offsets_wxPropertyGrid[] = { wxIntPtr(((wxIntPtr)(wxPropertyGridInterface*)(wxPropertyGrid*)&wxluatype_TNONE) - ((wxIntPtr)(wxPropertyGrid*)&wxluatype_TNONE)) };
     extern void wxLua_wxPropertyGrid_delete_function(void** p);
     extern wxLuaBindMethod wxPropertyGridEvent_methods[];
     extern int wxPropertyGridEvent_methodCount;
@@ -5420,7 +5479,7 @@ wxLuaBindClass* wxLuaGetClassList_wxpropgrid(size_t &count)
 #if wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
         { wxluaclassname_wxPGPropArgCls, wxPGPropArgCls_methods, wxPGPropArgCls_methodCount, NULL, &wxluatype_wxPGPropArgCls, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxPGPropArgCls_delete_function, }, 
         { wxluaclassname_wxPGProperty, wxPGProperty_methods, wxPGProperty_methodCount, CLASSINFO(wxPGProperty), &wxluatype_wxPGProperty, wxluabaseclassnames_wxPGProperty, wxluabaseclassbinds_wxPGProperty, NULL, NULL, NULL, 0, &wxLua_wxPGProperty_delete_function, }, 
-        { wxluaclassname_wxPropertyGrid, wxPropertyGrid_methods, wxPropertyGrid_methodCount, NULL, &wxluatype_wxPropertyGrid, wxluabaseclassnames_wxPropertyGrid, wxluabaseclassbinds_wxPropertyGrid, NULL, NULL, NULL, 0, &wxLua_wxPropertyGrid_delete_function, }, 
+        { wxluaclassname_wxPropertyGrid, wxPropertyGrid_methods, wxPropertyGrid_methodCount, NULL, &wxluatype_wxPropertyGrid, wxluabaseclassnames_wxPropertyGrid, wxluabaseclassbinds_wxPropertyGrid, wxluabaseclass_wxluatypes_wxPropertyGrid, wxluabaseclass_vtable_offsets_wxPropertyGrid, NULL, 0, &wxLua_wxPropertyGrid_delete_function, }, 
         { wxluaclassname_wxPropertyGridEvent, wxPropertyGridEvent_methods, wxPropertyGridEvent_methodCount, CLASSINFO(wxPropertyGridEvent), &wxluatype_wxPropertyGridEvent, wxluabaseclassnames_wxPropertyGridEvent, wxluabaseclassbinds_wxPropertyGridEvent, NULL, NULL, NULL, 0, &wxLua_wxPropertyGridEvent_delete_function, }, 
         { wxluaclassname_wxPropertyGridInterface, wxPropertyGridInterface_methods, wxPropertyGridInterface_methodCount, NULL, &wxluatype_wxPropertyGridInterface, NULL, NULL, NULL, NULL, wxPropertyGridInterface_enums, wxPropertyGridInterface_enumCount, &wxLua_wxPropertyGridInterface_delete_function, }, 
         { wxluaclassname_wxStringProperty, wxStringProperty_methods, wxStringProperty_methodCount, CLASSINFO(wxStringProperty), &wxluatype_wxStringProperty, wxluabaseclassnames_wxStringProperty, wxluabaseclassbinds_wxStringProperty, NULL, NULL, NULL, 0, &wxLua_wxStringProperty_delete_function, }, 

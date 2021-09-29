@@ -1851,16 +1851,25 @@ function BuildDataTypeTable(interfaceData)
                 elseif action == "find_classbase" then
                     -- Note that [public,protected,private] is skipped by bindingKeywordTable
 
-                    if not dataTypeTable[tag] then
-                        AllocDataType(tag, "class", false)
-                    end
-
                     -- set class's BaseClass
                     if not dataTypeTable[classname].BaseClasses then
                         dataTypeTable[classname].BaseClasses = {}
                     end
 
-                    table.insert(dataTypeTable[classname].BaseClasses, tag)
+                    -- handle wxScrolled<wxControl>
+                    local name = tag
+                    if lineTags[t+1] == "<" then
+                       name = name .. lineTags[t+1]
+                       name = name .. lineTags[t+2]
+                       name = name .. lineTags[t+3]
+                       t = t + 3
+                    end
+
+                    if not dataTypeTable[name] then
+                        AllocDataType(name, "class", false)
+                    end
+
+                    table.insert(dataTypeTable[classname].BaseClasses, name)
 
                     action = "find_classcomma"
                 elseif action == "find_structname" then
@@ -2599,8 +2608,18 @@ function ParseData(interfaceData)
                             t = t + 1
                             tag = lineTags[t]
 
+                            -- handle wxScrolled<wxControl>
+                            local name = tag
+                            if lineTags[t+1] == "<" then
+                               name = name .. lineTags[t+1]
+                               name = name .. lineTags[t+2]
+                               name = name .. lineTags[t+3]
+                               t = t + 3
+                               tag = lineTags[t]
+                            end
+
                             if class_access == "public" then
-                                table.insert(parseState.ObjectStack[1].BaseClasses, tag)
+                                table.insert(parseState.ObjectStack[1].BaseClasses, name)
                             end
 
                             lineState.Action = "action_baseclasscomma"
@@ -4898,7 +4917,7 @@ function GenerateHookClassFileTable(fileData)
     classNames = TableSort(classNames)
 
     for _, c in pairs_sort(classNames) do
-        table.insert(fileData, "static const char* wxluaclassname_"..c.." = \""..c.."\";\n")
+        table.insert(fileData, "static const char* wxluaclassname_"..c:gsub("[<>]", "_").." = \""..c.."\";\n")
     end
 
     table.insert(fileData, "\n")
@@ -4909,6 +4928,7 @@ function GenerateHookClassFileTable(fileData)
                 local bc_n = 0
                 local s = "static const char* wxluabaseclassnames_"..sortedBindings[n][i].LuaName.."[] = {"
                 for _, bc in ipairs(sortedBindings[n][i].BaseClasses) do
+                    bc = bc:gsub("[<>]", "_");
                     s = s.." wxluaclassname_"..bc..","
                     bc_n = bc_n + 1
                 end

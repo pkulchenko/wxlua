@@ -14,12 +14,68 @@
 
 #include "wx/propgrid/propgrid.h"
 
-class %delete wxPropertyGrid : public wxPropertyGridInterface
+enum wxPG_WINDOW_STYLES
+{
+    wxPG_AUTO_SORT,
+    wxPG_HIDE_CATEGORIES,
+    wxPG_ALPHABETIC_MODE,
+    wxPG_BOLD_MODIFIED,
+    wxPG_SPLITTER_AUTO_CENTER,
+    wxPG_TOOLTIPS,
+    wxPG_HIDE_MARGIN,
+    wxPG_STATIC_SPLITTER,
+    wxPG_STATIC_LAYOUT,
+    wxPG_LIMITED_EDITING,
+    wxPG_TOOLBAR,
+    wxPG_DESCRIPTION,
+    wxPG_NO_INTERNAL_BORDER,
+    wxPG_WINDOW_STYLE_MASK
+};
+
+enum wxPG_EX_WINDOW_STYLES
+{
+    wxPG_EX_INIT_NOCAT,
+    wxPG_EX_NO_FLAT_TOOLBAR,
+    wxPG_EX_MODE_BUTTONS,
+    wxPG_EX_HELP_AS_TOOLTIPS,
+    wxPG_EX_NATIVE_DOUBLE_BUFFERING,
+    wxPG_EX_AUTO_UNSPECIFIED_VALUES,
+    wxPG_EX_WRITEONLY_BUILTIN_ATTRIBUTES,
+    wxPG_EX_HIDE_PAGE_BUTTONS,
+    wxPG_EX_MULTIPLE_SELECTION,
+    wxPG_EX_ENABLE_TLP_TRACKING,
+    wxPG_EX_NO_TOOLBAR_DIVIDER,
+    wxPG_EX_TOOLBAR_SEPARATOR,
+    wxPG_EX_ALWAYS_ALLOW_FOCUS,
+    wxPG_EX_WINDOW_PG_STYLE_MASK,
+    wxPG_EX_WINDOW_PGMAN_STYLE_MASK,
+    wxPG_EX_WINDOW_STYLE_MASK
+};
+
+
+#define wxPG_DEFAULT_STYLE
+
+#define wxPGMAN_DEFAULT_STYLE
+
+
+enum wxPG_VALIDATION_FAILURE_BEHAVIOR_FLAGS
+{
+    wxPG_VFB_STAY_IN_PROPERTY,
+    wxPG_VFB_BEEP,
+    wxPG_VFB_MARK_CELL,
+    wxPG_VFB_SHOW_MESSAGE,
+    wxPG_VFB_SHOW_MESSAGEBOX,
+    wxPG_VFB_SHOW_MESSAGE_ON_STATUSBAR,
+    wxPG_VFB_DEFAULT
+};
+
+
+class wxPropertyGrid : public wxScrolled<wxControl>, public wxPropertyGridInterface
 {
     wxPropertyGrid();
-    %ungc wxPropertyGrid( wxWindow *parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition,
-                          const wxSize& size = wxDefaultSize, long style = wxPG_DEFAULT_STYLE,
-                          const wxString& name = wxPropertyGridNameStr );
+    wxPropertyGrid( wxWindow *parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition,
+                    const wxSize& size = wxDefaultSize, long style = wxPG_DEFAULT_STYLE,
+                    const wxString& name = wxPropertyGridNameStr );
 
     void AddActionTrigger( int action, int keycode, int modifiers = 0 );
     bool AddToSelection( wxPGPropArg id );
@@ -170,6 +226,7 @@ class %delete wxPropertyGridEvent : public wxCommandEvent
 #include "wx/propgrid/props.h"
 
 #define wxPG_PROP_PASSWORD
+
 class %delete wxStringProperty : public wxPGProperty
 {
     wxStringProperty( const wxString& label = wxPG_LABEL,
@@ -205,7 +262,9 @@ class %delete wxPGPropArgCls
     const wxString& GetName();
 };
 
+
 typedef const wxPGPropArgCls& wxPGPropArg;
+
 
 enum wxPG_PROPERTYVALUES_FLAGS
 {
@@ -218,7 +277,54 @@ enum wxPG_PROPERTYVALUES_FLAGS
     wxPG_SORT_TOP_LEVEL_ONLY
 };
 
+
 #define_string wxPG_LABEL
+
+#define wxPG_INVALID_VALUE
+
+
+enum wxPG_GETPROPERTYVALUES_FLAGS
+{
+    wxPG_DONT_RECURSE,
+    wxPG_KEEP_STRUCTURE,
+    wxPG_RECURSE,
+    wxPG_INC_ATTRIBUTES,
+    wxPG_RECURSE_STARTS,
+    wxPG_FORCE,
+    wxPG_SORT_TOP_LEVEL_ONLY
+};
+
+
+enum wxPG_MISC_ARG_FLAGS
+{
+    wxPG_FULL_VALUE,
+    wxPG_REPORT_ERROR,
+    wxPG_PROPERTY_SPECIFIC,
+    wxPG_EDITABLE_VALUE,
+    wxPG_COMPOSITE_FRAGMENT,
+    wxPG_UNEDITABLE_COMPOSITE_FRAGMENT,
+    wxPG_VALUE_IS_CURRENT,
+    wxPG_PROGRAMMATIC_VALUE
+};
+
+
+enum wxPG_SETVALUE_FLAGS
+{
+    wxPG_SETVAL_REFRESH_EDITOR,
+    wxPG_SETVAL_AGGREGATED,
+    wxPG_SETVAL_FROM_PARENT,
+    wxPG_SETVAL_BY_USER
+};
+
+#define wxPG_BASE_OCT
+#define wxPG_BASE_DEC
+#define wxPG_BASE_HEX
+#define wxPG_BASE_HEXL
+
+#define wxPG_PREFIX_NONE
+#define wxPG_PREFIX_0x
+#define wxPG_PREFIX_DOLLAR_SIGN
+
 
 enum wxPropertyGridInterface::EditableStateFlags
 {
@@ -231,9 +337,9 @@ enum wxPropertyGridInterface::EditableStateFlags
     AllStates
 };
 
-class %delete wxPropertyGridInterface
+class wxPropertyGridInterface
 {
-    wxPGProperty* Append( wxPGProperty* property );
+    %ungc wxPGProperty* Append( %ungc wxPGProperty* property );
     wxPGProperty* AppendIn( wxPGPropArg id, wxPGProperty* newProperty );
     void BeginAddChildren( wxPGPropArg id );
     virtual void Clear() = 0;

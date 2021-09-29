@@ -4955,7 +4955,6 @@ static int LUACALL wxLua_wxVariant_ToLuaValue(lua_State *L)
     }
 
     wxlua_argerror(L, 1, wxT("a 'convertable variant'"));
-
     return 0;
 }
 
