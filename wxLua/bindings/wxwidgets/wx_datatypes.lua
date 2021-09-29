@@ -4246,6 +4246,15 @@ wx_dataTypeTable =
     Name = "wxNotifyEvent",
     ValueType = "class",
   },
+  wxNumberEntryDialog = {
+    BaseClasses = {
+      [1] = "wxDialog",
+    },
+    Condition = "wxUSE_NUMBERDLG && wxLUA_USE_wxNumberEntryDialog",
+    IsNumber = false,
+    Name = "wxNumberEntryDialog",
+    ValueType = "class",
+  },
   wxObject = {
     Condition = "wxLUA_USE_wxObject",
     IsNumber = false,
@@ -6845,6 +6854,15 @@ wx_dataTypeTable =
     Condition = "wxUSE_VARIANT",
     IsNumber = false,
     Name = "wxVariant",
+    ValueType = "class",
+  },
+  wxVariantData = {
+    BaseClasses = {
+      [1] = "wxObjectRefData",
+    },
+    Condition = "wxUSE_VARIANT",
+    IsNumber = false,
+    Name = "wxVariantData",
     ValueType = "class",
   },
   wxVariantList = {

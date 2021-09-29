@@ -84,6 +84,28 @@ class %delete wxString::iterator
 #endif
 
 // ---------------------------------------------------------------------------
+// wxUniChar
+
+#include "wx/unichar.h"
+
+class %delete wxUniChar
+{
+    wxUniChar(const wxString& str = "");
+
+    wxUint32 GetValue() const;
+    bool IsAscii() const;
+    /* bool GetAsChar(char *c) const; */
+    bool IsBMP() const;
+    static bool IsBMP(wxUint32 value);
+    bool IsSupplementary() const;
+    static bool IsSupplementary(wxUint32 value);
+    wxUint16 HighSurrogate() const;
+    static wxUint16 HighSurrogate(wxUint32 value);
+    wxUint16 LowSurrogate() const;
+    static wxUint16 LowSurrogate(wxUint32 value);
+};
+
+// ---------------------------------------------------------------------------
 // wxStringTokenizer
 
 #include "wx/tokenzr.h"
@@ -578,203 +600,78 @@ public:
 // ---------------------------------------------------------------------------
 // wxVariant
 
-//  At present, methods related to wxVariantData and wxAny are commented out.
-//  wxVariantData and wxAny are basically designed to be used as C++-derived subclasses;
-//  on wxLua, they may not be very useful.
-//  
+#include "wx/variant.h"
+
 #if wxUSE_VARIANT
 
 class %delete wxVariant: public wxObject
 {
-public:
     wxVariant();
+    %override_name wxLua_wxVariantFromVoidPtr_constructor wxVariant(any a);
+    %override_name wxLua_wxVariantFromDateTime_constructor wxVariant(const wxDateTime& d);
+    %override_name wxLua_wxVariantFromArrayString_constructor wxVariant(const wxArrayString& a);
+    %override_name wxLua_wxVariantFromString_constructor wxVariant(const wxString& str);
+    %override_name wxLua_wxVariantFromDouble_constructor wxVariant(double d);
+    %override_name wxLua_wxVariantFromObject_constructor wxVariant(%ungc wxObject* o);
 
-    wxVariant(const wxVariant& variant);
-//    wxVariant(wxVariantData* data, const wxString& name = wxEmptyString);
-#if wxUSE_ANY
-    // wxVariant(const wxAny& any);
-#endif
-    //virtual ~wxVariant();
-
-    bool operator== (const wxVariant& variant) const;
-    bool operator!= (const wxVariant& variant) const;
-
-    // Sets/gets name
-    void SetName(const wxString& name);
-    const wxString& GetName() const;
-
-    // Tests whether there is data
-    bool IsNull() const;
-
-    // For compatibility with wxWidgets <= 2.6, this doesn't increase
-    // reference count.
-//    wxVariantData* GetData() const;
-//    void SetData(wxVariantData* data) ;
-
-    // make a 'clone' of the object
-    void Ref(const wxVariant& clone);
-
-    // ensure that the data is exclusive to this variant, and not shared
-    bool Unshare();
-
-    // Make NULL (i.e. delete the data)
-    void MakeNull();
-
-    // Delete data and name
-    void Clear();
-
-    // Returns a string representing the type of the variant,
-    // e.g. "string", "bool", "stringlist", "list", "double", "long"
-    wxString GetType() const;
-
-    bool IsType(const wxString& type) const;
-    bool IsValueKindOf(const wxClassInfo* type) const;
-
-    // write contents to a string (e.g. for debugging)
-    wxString MakeString() const;
-
-#if wxUSE_ANY
-//    wxAny GetAny() const;
-#endif
-
-    // wxArrayString
-    // Note: these methods need %override, because automatic cast from
-    // wxLuaSmartwxArrayString to wxArrayString does not work
-    wxVariant(const wxArrayString& val, const wxString& name = wxEmptyString);
-    bool operator== (const wxArrayString& value) const;
-    bool operator!= (const wxArrayString& value) const;
-    wxArrayString GetArrayString() const;
-
-    // The wxLua overload mechanism cannot tell difference between boolean and number.
-    // So we implement the 'double' version for the constructor and operators == and !=, 
-    // and let wxLua call them for boolean and number arguments. Then, we implement
-    // %override and discriminate the argument type within the implementation.
-    wxVariant(double val, const wxString& name = wxEmptyString);
-    bool operator== (double value) const;
-    bool operator!= (double value) const;
-    double GetReal() const;
-    double GetDouble() const;
-
-    // long
-    //wxVariant(long val, const wxString& name = wxEmptyString);
-    //wxVariant(int val, const wxString& name = wxEmptyString);
-    //wxVariant(short val, const wxString& name = wxEmptyString);
-    //bool operator== (long value) const;
-    //bool operator!= (long value) const;
-    long GetInteger() const;
-    long GetLong() const;
-
-    // bool
-    //wxVariant(bool val, const wxString& name = wxEmptyString);
-    //bool operator== (bool value) const;
-    //bool operator!= (bool value) const;
-    bool GetBool() const ;
-
-    // wxDateTime
-#if wxUSE_DATETIME
-    wxVariant(const wxDateTime& val, const wxString& name = wxEmptyString);
-    bool operator== (const wxDateTime& value) const;
-    bool operator!= (const wxDateTime& value) const;
-    wxDateTime GetDateTime() const;
-#endif
-
-    // wxString
-    wxVariant(const wxString& val, const wxString& name = wxEmptyString);
-    // these overloads are necessary to prevent the compiler from using bool
-    // version instead of wxString one:
-//    wxVariant(const char* val, const wxString& name = wxEmptyString);
-//    wxVariant(const wchar_t* val, const wxString& name = wxEmptyString);
-//    wxVariant(const wxCStrData& val, const wxString& name = wxEmptyString);
-//    wxVariant(const wxScopedCharBuffer& val, const wxString& name = wxEmptyString);
-//    wxVariant(const wxScopedWCharBuffer& val, const wxString& name = wxEmptyString);
-
-    bool operator== (const wxString& value) const;
-    bool operator!= (const wxString& value) const;
-    wxString GetString() const;
-
-    // void*
-    wxVariant(void* ptr, const wxString& name = wxEmptyString);
-    bool operator== (void* value) const;
-    bool operator!= (void* value) const;
-    void* GetVoidPtr() const;
-
-    // wxObject*
-    wxVariant(wxObject* ptr, const wxString& name = wxEmptyString);
-    bool operator== (wxObject* value) const;
-    bool operator!= (wxObject* value) const;
-    wxObject* GetWxObjectPtr() const;
-
-#if wxUSE_LONGLONG
-    // wxLongLong
-    wxVariant(wxLongLong, const wxString& name = wxEmptyString);
-    bool operator==(wxLongLong value) const;
-    bool operator!=(wxLongLong value) const;
-    wxLongLong GetLongLong() const;
-
-    // wxULongLong
-    wxVariant(wxULongLong, const wxString& name = wxEmptyString);
-    bool operator==(wxULongLong value) const;
-    bool operator!=(wxULongLong value) const;
-    wxULongLong GetULongLong() const;
-#endif
-
-    // ------------------------------
-    // list operations
-    // ------------------------------
+    // %override [Lua value] wxVariant::Value() const;
+    // returns a Lua representation of this variant
+    int ToLuaValue() const;
 
     wxVariant(const wxVariantList& val, const wxString& name = wxEmptyString); // List of variants
-    bool operator== (const wxVariantList& value) const;
-    bool operator!= (const wxVariantList& value) const;
-    // Treat a list variant as an array
-    wxVariant operator[] (size_t idx) const;
-    wxVariant& operator[] (size_t idx) ;
-    wxVariantList& GetList() const ;
+    wxVariant operator [](size_t idx) const;
+    wxVariant& operator [](size_t idx);
 
-    // Return the number of elements in a list
-    size_t GetCount() const;
-
-    // Make empty list
-    void NullList();
-
-    // Append to list
     void Append(const wxVariant& value);
-
-    // Insert at front of list
-    void Insert(const wxVariant& value);
-
-    // Returns true if the variant is a member of the list
-    bool Member(const wxVariant& value) const;
-
-    // Deletes the nth element of the list
-    bool Delete(size_t item);
-
-    // Clear list
+    void Clear();
     void ClearList();
-
-public:
-    // Type conversion
-    // C++: bool Convert(T* value) const;
-    // Lua: %override [bool T] ConvertToT();
-    bool ConvertToLong();
-    bool ConvertToBool();
-    bool ConvertToDouble();
-    bool ConvertToString();
-#if wxUSE_DATETIME
-    bool ConvertToDateTime();
-#endif
-#if wxUSE_LONGLONG
-    bool ConvertToLongLong();
-    bool ConvertToULongLong();
-#endif
+    bool Delete(size_t item);
+    size_t GetCount() const;
+    wxVariantList& GetList() const;
+    void Insert(const wxVariant& value);
+    void NullList();
+    wxArrayString GetArrayString() const;
+    bool GetBool() const;
+    /* wxUniChar GetChar() const; */
+    wxDateTime GetDateTime() const;
+    double GetDouble() const;
+    long GetLong() const;
+    wxLongLong GetLongLong() const;
+    const wxString& GetName() const;
+    wxString GetString() const;
+    wxString GetType() const;
+    wxULongLong GetULongLong() const;
+    void* GetVoidPtr() const;
+    wxObject* GetWxObjectPtr() const;
+    bool IsNull() const;
+    bool IsType(const wxString& type) const;
+    bool IsValueKindOf(const wxClassInfo* type) const;
+    void MakeNull();
+    wxString MakeString() const;
+    bool Member(const wxVariant& value) const;
+    void SetData(wxVariantData* data);
+    bool Unshare();
 };
 
-// ---------------------------------------------------------------------------
-// wxVariantList
+class %delete wxVariantData : public wxObjectRefData
+{
+    wxVariantData();
+    virtual wxVariantData* Clone() const;
+    void DecRef();
+    virtual bool Eq(wxVariantData& data) const = 0;
+    /* virtual bool GetAny(wxAny* any) const; */
+    virtual wxString GetType() const = 0;
+    virtual wxClassInfo* GetValueClassInfo();
+    void IncRef();
+    /* virtual bool Read(istream& stream); */
+    virtual bool Read(wxString& string);
+    /* virtual bool Write(ostream& stream) const; */
+    virtual bool Write(wxString& string) const;
+};
 
 class wxVariantList : public wxList
 {
     // Use the wxList methods, see also wxNode
 };
 
-#endif  //  wxUSE_VARIANT
-
+#endif

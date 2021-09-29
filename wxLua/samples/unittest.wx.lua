@@ -345,6 +345,32 @@ o = wxlua.wxLuaObject(a); b = o:GetObject()
 PrintOk((a == b) and (b("Hello") == "Hello!"), "Test wxLuaObject::GetObject(function).")
 
 -- ---------------------------------------------------------------------------
+print("\nTest wxVariant.\n")
+-- ---------------------------------------------------------------------------
+
+a = wx.wxVariant()
+PrintOk((a:ToLuaValue() == nil and a:GetType() == "null"), "Test automatic overload of wxVariant()")
+a = wx.wxVariant(nil)
+PrintOk((a:ToLuaValue() == nil and a:GetType() == "null"), "Test automatic overload of wxVariant(nil)")
+a = wx.wxVariant(true)
+PrintOk((a:ToLuaValue() == true and a:GetType() == "bool"), "Test automatic overload of wxVariant(bool)")
+a = wx.wxVariant(1)
+PrintOk((a:ToLuaValue() == 1 and a:GetType() == "long"), "Test automatic overload of wxVariant(int)")
+a = wx.wxVariant(1.1)
+PrintOk((a:ToLuaValue() == 1.1 and a:GetType() == "double"), "Test automatic overload of wxVariant(double)")
+a = wx.wxVariant("a")
+PrintOk((a:ToLuaValue() == "a" and a:GetType() == "string"), "Test automatic overload of wxVariant(const wxString&)")
+a = wx.wxVariant(wx.wxDateTime(0))
+PrintOk((a:ToLuaValue():IsValid() == true and a:GetType() == "datetime"), "Test automatic overload of wxVariant(const wxDateTime&)")
+a = wx.wxVariant(wx.wxArrayString({"a", "b", "c"}))
+PrintOk((a:ToLuaValue()[1] == "a" and a:GetType() == "arrstring"), "Test automatic overload of wxVariant(const wxArrayString&)")
+a = wx.wxVariant({"a", "b", "c"})
+PrintOk((a:ToLuaValue()[1] == "a" and a:GetType() == "arrstring"), "Test automatic overload of wxVariant(const wxArrayString&)")
+
+a = wx.wxVariant({"a", "b", "c"})
+PrintOk((a:ToLuaValue()[1] == "a" and a:GetType() == "arrstring"), "Test automatic overload of wxVariant argument (nil)")
+
+-- ---------------------------------------------------------------------------
 print("\nTest the bit library.\n")
 -- ---------------------------------------------------------------------------
 

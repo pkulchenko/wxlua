@@ -77,7 +77,9 @@ extern WXDLLIMPEXP_BINDWXBASE wxLuaBinding* wxLuaBinding_wxbase_init();
 #include "wx/mimetype.h"
 #include "wx/timer.h"
 #include "wx/tokenzr.h"
+#include "wx/unichar.h"
 #include "wx/utils.h"
+#include "wx/variant.h"
 
 #if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths
     #include "wx/stdpaths.h"
@@ -234,6 +236,7 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxPlatformInfo;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxString;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringClientData;
 extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringTokenizer;
+extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxUniChar;
 
 #if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStandardPaths;
@@ -384,6 +387,7 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringTokenizer;
 
 #if wxUSE_VARIANT
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxVariant;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxVariantData;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxVariantList;
 #endif // wxUSE_VARIANT
 

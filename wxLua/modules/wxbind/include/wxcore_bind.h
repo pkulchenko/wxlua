@@ -1353,6 +1353,10 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxInfoBar;
 #endif // wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)
 
+#if wxUSE_NUMBERDLG && wxLUA_USE_wxNumberEntryDialog
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxNumberEntryDialog;
+#endif // wxUSE_NUMBERDLG && wxLUA_USE_wxNumberEntryDialog
+
 #if wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxProgressDialog;
 #endif // wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog

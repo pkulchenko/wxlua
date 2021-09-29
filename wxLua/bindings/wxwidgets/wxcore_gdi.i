@@ -7,6 +7,11 @@
 // wxWidgets:   Updated to 2.8.4
 // ===========================================================================
 
+#if
+"#if !defined(wxUSE_WEBVIEW)\n"..
+"    #define wxUSE_WEBVIEW 0\n"..
+"#endif\n"
+
 // ---------------------------------------------------------------------------
 // wxPoint
 
@@ -427,6 +432,9 @@ class %delete wxFont : public wxGDIObject
     %wxchkver_3_0_0 wxFont(const wxSize& pixelSize, wxFontFamily family, wxFontStyle style, wxFontWeight weight, bool underline = false, const wxString& faceName = wxEmptyString, wxFontEncoding encoding = wxFONTENCODING_DEFAULT);
     %wxchkver_3_0_0 wxFont(const wxString& nativeInfoString);
     %wxchkver_3_0_0 wxFont(const wxNativeFontInfo& nativeInfo);
+#if wxUSE_PROPGRID && wxLUA_USE_wxPropertyGrid
+    static wxFont FromVariant(const wxVariant* pVariant);
+#endif
     %wxchkver_3_1_0 wxFont GetBaseFont() const;
     %wxchkver_3_0_0 wxFontEncoding GetEncoding() const;
     wxString GetFaceName() const;
@@ -660,6 +668,7 @@ class %delete wxColour : public wxGDIObject
     wxColour(const wxString& colourName);
     %wxchkver_3_0_0 wxColour(unsigned long colRGB);
     wxColour(const wxColour& colour);
+    static wxColour FromVariant(const wxVariant* pVariant);
     %wxchkver_2_8 unsigned char Alpha() const;
     unsigned char Blue() const;
     %wxchkver_2_8 virtual wxString GetAsString(long flags = wxC2S_NAME | wxC2S_CSS_SYNTAX) const;

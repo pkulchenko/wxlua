@@ -399,6 +399,10 @@
 #define wxLUA_USE_wxNotebook                    1
 #endif
 
+#ifndef wxLUA_USE_wxNumberEntryDialog
+#define wxLUA_USE_wxNumberEntryDialog           1
+#endif
+
 #ifndef wxLUA_USE_wxObject
 #define wxLUA_USE_wxObject                      1
 #endif
@@ -437,6 +441,10 @@
 
 #ifndef wxLUA_USE_wxProgressDialog
 #define wxLUA_USE_wxProgressDialog              1
+#endif
+
+#ifndef wxLUA_USE_wxPropertyGrid
+#define wxLUA_USE_wxPropertyGrid                1
 #endif
 
 #ifndef wxLUA_USE_wxRadioBox

@@ -25,12 +25,6 @@ enum wxDataViewColumnFlags
     wxDATAVIEW_COL_HIDDEN
 };
 
-// TODO: in base
-// class %delete wxVariant : public wxObject
-// {
-//     wxVariant(const wxString& val, const wxString& name = wxEmptyString);
-// };
-
 
 // class wxDataViewItem
 class %delete wxDataViewItem
