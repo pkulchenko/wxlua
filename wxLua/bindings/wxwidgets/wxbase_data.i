@@ -585,11 +585,44 @@ public:
 class %delete wxVariant: public wxObject
 {
     wxVariant();
-    %override_name wxLua_wxVariantFromString_constructor wxVariant(const wxString& string);
+    %override_name wxLua_wxVariantFromDateTime_constructor wxVariant(const wxDateTime& d);
+    %override_name wxLua_wxVariantFromArrayString_constructor wxVariant(const wxArrayString& a);
+    %override_name wxLua_wxVariantFromString_constructor wxVariant(const wxString& str);
+    %override_name wxLua_wxVariantFromDouble_constructor wxVariant(double d);
 
-    wxString MakeString() const;
+    // %override [Lua value] wxVariant::Value() const;
+    // returns a Lua representation of this variant
+    int ToLuaValue() const;
+
+    void Append(const wxVariant& value);
+    void Clear();
+    void ClearList();
+    bool Delete(size_t item);
+    size_t GetCount() const;
+    /* wxVariantList& GetList() const; */
+    void Insert(const wxVariant& value);
+    void NullList();
+    wxArrayString GetArrayString() const;
+    bool GetBool() const;
+    /* wxUniChar GetChar() const; */
+    wxDateTime GetDateTime() const;
+    double GetDouble() const;
+    long GetLong() const;
+    wxLongLong GetLongLong() const;
+    const wxString& GetName() const;
+    wxString GetString() const;
+    wxString GetType() const;
+    wxULongLong GetULongLong() const;
+    void* GetVoidPtr() const;
+    wxObject* GetWxObjectPtr() const;
+    bool IsNull() const;
     bool IsType(const wxString& type) const;
     bool IsValueKindOf(const wxClassInfo* type) const;
+    void MakeNull();
+    wxString MakeString() const;
+    bool Member(const wxVariant& value) const;
+    /* void SetData(wxVariantData* data); */
+    bool Unshare();
 };
 
 #endif
