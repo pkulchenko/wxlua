@@ -607,6 +607,7 @@ public:
 class %delete wxVariant: public wxObject
 {
     wxVariant();
+    %override_name wxLua_wxVariantFromVoidPtr_constructor wxVariant(any a);
     %override_name wxLua_wxVariantFromDateTime_constructor wxVariant(const wxDateTime& d);
     %override_name wxLua_wxVariantFromArrayString_constructor wxVariant(const wxArrayString& a);
     %override_name wxLua_wxVariantFromString_constructor wxVariant(const wxString& str);
@@ -615,6 +616,10 @@ class %delete wxVariant: public wxObject
     // %override [Lua value] wxVariant::Value() const;
     // returns a Lua representation of this variant
     int ToLuaValue() const;
+
+    // %override [Lua value] wxVariant::As() const;
+    // casts this variant to the bound wxLua class specified
+    int As(const wxString& str) const;
 
     void Append(const wxVariant& value);
     void Clear();

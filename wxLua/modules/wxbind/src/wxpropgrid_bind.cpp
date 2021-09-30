@@ -10741,7 +10741,6 @@ static int LUACALL wxLua_wxPGCellData_constructor(lua_State *L)
 // delete is private in wxPGCellData
 void wxLua_wxPGCellData_delete_function(void** p)
 {
-    wxLua_wxRefCounter_DecRef_delete_function<wxPGCellData>(p);
 }
 
 // Map Lua Class Methods to C Binding Functions

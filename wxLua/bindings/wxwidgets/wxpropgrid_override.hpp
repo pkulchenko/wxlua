@@ -20,6 +20,5 @@ void wxLua_wxPGChoicesData_delete_function(void** p)
 // delete is private in wxPGCellData
 void wxLua_wxPGCellData_delete_function(void** p)
 {
-    wxLua_wxRefCounter_DecRef_delete_function<wxPGCellData>(p);
 }
 %end

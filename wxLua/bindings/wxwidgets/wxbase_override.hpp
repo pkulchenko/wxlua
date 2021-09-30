@@ -1524,6 +1524,27 @@ static int LUACALL wxLua_wxVariantFromDateTime_constructor(lua_State *L)
 %end
 
 
+%override wxLua_wxVariantFromVoidPtr_constructor
+//     wxVariant(void *p)
+static int LUACALL wxLua_wxVariantFromVoidPtr_constructor(lua_State *L)
+{
+    wxVariant* returns;
+
+    if (lua_isnil(L, 1)) {
+        returns = new wxVariant();
+    } else {
+        void * p = (void *)wxlua_touserdata(L, 1);
+        returns = new wxVariant(p);
+    }
+
+    wxluaO_addgcobject(L, returns, wxluatype_wxVariant);
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxVariant);
+
+    return 1;
+}
+%end
+
+
 %override wxLua_wxVariant_ToLuaValue
 // int ToLuaValue() const
 static int LUACALL wxLua_wxVariant_ToLuaValue(lua_State *L)
@@ -1573,5 +1594,34 @@ static int LUACALL wxLua_wxVariant_ToLuaValue(lua_State *L)
 
     wxlua_argerror(L, 1, wxT("a 'convertable variant'"));
     return 0;
+}
+%end
+
+%override wxLua_wxVariant_As
+// int As(const wxString& className) const
+static int LUACALL wxLua_wxVariant_As(lua_State *L)
+{
+    wxVariant * self = (wxVariant *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVariant);
+
+    const wxString className = wxlua_getwxStringtype(L, 2);
+
+    const wxLuaBindClass *bindClass = wxLuaBinding::FindBindClass(className);
+
+    if (bindClass == NULL) {
+        wxlua_argerror(L, 1, wxT("a 'valid class name'"));
+        return 0;
+    }
+
+    if ( !self->IsType("void*") ) {
+        wxlua_error(L, wxString::Format(_("Cannot cast wxVariant of type '%s' to class type '%s'."),
+            self->GetType().c_str(), className.c_str()).c_str());
+        return 0;
+    }
+
+    void* returns = self->GetVoidPtr();
+
+    wxluaT_pushuserdatatype(L, returns, *bindClass->wxluatype);
+
+    return 1;
 }
 %end

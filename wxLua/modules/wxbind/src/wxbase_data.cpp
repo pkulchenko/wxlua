@@ -4761,6 +4761,38 @@ static int LUACALL wxLua_wxVariant_Append(lua_State *L)
     return 0;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVariant_As[] = { &wxluatype_wxVariant, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxVariant_As(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_As[1] = {{ wxLua_wxVariant_As, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxVariant_As }};
+// %override wxLua_wxVariant_As
+// int As(const wxString& className) const
+static int LUACALL wxLua_wxVariant_As(lua_State *L)
+{
+    wxVariant * self = (wxVariant *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVariant);
+
+    const wxString className = wxlua_getwxStringtype(L, 2);
+
+    const wxLuaBindClass *bindClass = wxLuaBinding::FindBindClass(className);
+
+    if (bindClass == NULL) {
+        wxlua_argerror(L, 1, wxT("a 'valid class name'"));
+        return 0;
+    }
+
+    if ( !self->IsType("void*") ) {
+        wxlua_error(L, wxString::Format(_("Cannot cast wxVariant of type '%s' to class type '%s'."),
+            self->GetType().c_str(), className.c_str()).c_str());
+        return 0;
+    }
+
+    void* returns = self->GetVoidPtr();
+
+    wxluaT_pushuserdatatype(L, returns, *bindClass->wxluatype);
+
+    return 1;
+}
+
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxVariant_Clear[] = { &wxluatype_wxVariant, NULL };
 static int LUACALL wxLua_wxVariant_Clear(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_Clear[1] = {{ wxLua_wxVariant_Clear, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxVariant_Clear }};
@@ -5271,10 +5303,10 @@ static int LUACALL wxLua_wxVariant_Unshare(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxVariant_delete[] = { &wxluatype_wxVariant, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxVariant_delete }};
 
-#define wxLua_wxVariant_constructor4 wxLua_wxVariantFromDouble_constructor
-static wxLuaArgType s_wxluatypeArray_wxLua_wxVariant_constructor4[] = { &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxVariant_constructor4(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_constructor4[1] = {{ wxLua_wxVariant_constructor4, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor4 }};
+#define wxLua_wxVariant_constructor5 wxLua_wxVariantFromDouble_constructor
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVariant_constructor5[] = { &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxVariant_constructor5(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_constructor5[1] = {{ wxLua_wxVariant_constructor5, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor5 }};
 // %override wxLua_wxVariantFromDouble_constructor
 //     wxVariant(double d)
 static int LUACALL wxLua_wxVariantFromDouble_constructor(lua_State *L)
@@ -5304,10 +5336,10 @@ static int LUACALL wxLua_wxVariantFromDouble_constructor(lua_State *L)
 }
 
 
-#define wxLua_wxVariant_constructor3 wxLua_wxVariantFromString_constructor
-static wxLuaArgType s_wxluatypeArray_wxLua_wxVariant_constructor3[] = { &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxVariant_constructor3(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_constructor3[1] = {{ wxLua_wxVariant_constructor3, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor3 }};
+#define wxLua_wxVariant_constructor4 wxLua_wxVariantFromString_constructor
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVariant_constructor4[] = { &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxVariant_constructor4(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_constructor4[1] = {{ wxLua_wxVariant_constructor4, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor4 }};
 // %override wxLua_wxVariantFromString_constructor
 //     wxVariant(const wxString& str)
 static int LUACALL wxLua_wxVariantFromString_constructor(lua_State *L)
@@ -5327,10 +5359,10 @@ static int LUACALL wxLua_wxVariantFromString_constructor(lua_State *L)
 
 
 #if (wxLUA_USE_wxArrayString) && (wxUSE_VARIANT)
-#define wxLua_wxVariant_constructor2 wxLua_wxVariantFromArrayString_constructor
-static wxLuaArgType s_wxluatypeArray_wxLua_wxVariant_constructor2[] = { &wxluatype_wxArrayString, NULL };
-static int LUACALL wxLua_wxVariant_constructor2(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_constructor2[1] = {{ wxLua_wxVariant_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor2 }};
+#define wxLua_wxVariant_constructor3 wxLua_wxVariantFromArrayString_constructor
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVariant_constructor3[] = { &wxluatype_wxArrayString, NULL };
+static int LUACALL wxLua_wxVariant_constructor3(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_constructor3[1] = {{ wxLua_wxVariant_constructor3, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor3 }};
 // %override wxLua_wxVariantFromArrayString_constructor
 //     wxVariant(const wxArrayString& a)
 static int LUACALL wxLua_wxVariantFromArrayString_constructor(lua_State *L)
@@ -5351,10 +5383,10 @@ static int LUACALL wxLua_wxVariantFromArrayString_constructor(lua_State *L)
 #endif // (wxLUA_USE_wxArrayString) && (wxUSE_VARIANT)
 
 #if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxUSE_VARIANT)
-#define wxLua_wxVariant_constructor1 wxLua_wxVariantFromDateTime_constructor
-static wxLuaArgType s_wxluatypeArray_wxLua_wxVariant_constructor1[] = { &wxluatype_wxDateTime, NULL };
-static int LUACALL wxLua_wxVariant_constructor1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_constructor1[1] = {{ wxLua_wxVariant_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor1 }};
+#define wxLua_wxVariant_constructor2 wxLua_wxVariantFromDateTime_constructor
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVariant_constructor2[] = { &wxluatype_wxDateTime, NULL };
+static int LUACALL wxLua_wxVariant_constructor2(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_constructor2[1] = {{ wxLua_wxVariant_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor2 }};
 // %override wxLua_wxVariantFromDateTime_constructor
 //     wxVariant(const wxDateTime& d)
 static int LUACALL wxLua_wxVariantFromDateTime_constructor(lua_State *L)
@@ -5373,6 +5405,30 @@ static int LUACALL wxLua_wxVariantFromDateTime_constructor(lua_State *L)
 
 
 #endif // (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxUSE_VARIANT)
+
+#define wxLua_wxVariant_constructor1 wxLua_wxVariantFromVoidPtr_constructor
+static wxLuaArgType s_wxluatypeArray_wxLua_wxVariant_constructor1[] = { &wxluatype_TANY, NULL };
+static int LUACALL wxLua_wxVariant_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_constructor1[1] = {{ wxLua_wxVariant_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor1 }};
+// %override wxLua_wxVariantFromVoidPtr_constructor
+//     wxVariant(void *p)
+static int LUACALL wxLua_wxVariantFromVoidPtr_constructor(lua_State *L)
+{
+    wxVariant* returns;
+
+    if (lua_isnil(L, 1)) {
+        returns = new wxVariant();
+    } else {
+        void * p = (void *)wxlua_touserdata(L, 1);
+        returns = new wxVariant(p);
+    }
+
+    wxluaO_addgcobject(L, returns, wxluatype_wxVariant);
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxVariant);
+
+    return 1;
+}
+
 
 static int LUACALL wxLua_wxVariant_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_constructor[1] = {{ wxLua_wxVariant_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
@@ -5396,16 +5452,17 @@ static int LUACALL wxLua_wxVariant_constructor(lua_State *L)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxVariant_constructor_overload[] =
 {
+    { wxLua_wxVariant_constructor5, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor5 },
     { wxLua_wxVariant_constructor4, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor4 },
-    { wxLua_wxVariant_constructor3, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor3 },
 
 #if (wxLUA_USE_wxArrayString) && (wxUSE_VARIANT)
-    { wxLua_wxVariant_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor2 },
+    { wxLua_wxVariant_constructor3, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor3 },
 #endif // (wxLUA_USE_wxArrayString) && (wxUSE_VARIANT)
 
 #if (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxUSE_VARIANT)
-    { wxLua_wxVariant_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor1 },
+    { wxLua_wxVariant_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor2 },
 #endif // (wxLUA_USE_wxDateTime && wxUSE_DATETIME) && (wxUSE_VARIANT)
+    { wxLua_wxVariant_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxVariant_constructor1 },
     { wxLua_wxVariant_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
 };
 static int s_wxluafunc_wxLua_wxVariant_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxVariant_constructor_overload)/sizeof(wxLuaBindCFunc);
@@ -5421,6 +5478,7 @@ void wxLua_wxVariant_delete_function(void** p)
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxVariant_methods[] = {
     { "Append", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVariant_Append, 1, NULL },
+    { "As", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVariant_As, 1, NULL },
     { "Clear", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVariant_Clear, 1, NULL },
     { "ClearList", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVariant_ClearList, 1, NULL },
     { "Delete", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxVariant_Delete, 1, NULL },
