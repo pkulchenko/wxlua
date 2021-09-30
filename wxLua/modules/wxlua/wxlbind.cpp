@@ -57,8 +57,10 @@ int* p_wxluatype_wxSortedArrayString = &wxluatype_TUNKNOWN;
 int* p_wxluatype_wxArrayInt          = &wxluatype_TUNKNOWN;
 int* p_wxluatype_wxArrayDouble       = &wxluatype_TUNKNOWN;
 int* p_wxluatype_wxMemoryBuffer      = &wxluatype_TUNKNOWN;
+int* p_wxluatype_wxDateTime          = &wxluatype_TUNKNOWN;
 int* p_wxluatype_wxPoint             = &wxluatype_TUNKNOWN;
 int* p_wxluatype_wxPoint2DDouble     = &wxluatype_TUNKNOWN;
+int* p_wxluatype_wxVariant           = &wxluatype_TUNKNOWN;
 
 // ----------------------------------------------------------------------------
 // wxlua_tableErrorHandler

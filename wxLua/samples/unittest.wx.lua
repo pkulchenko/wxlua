@@ -367,6 +367,9 @@ PrintOk((a:ToLuaValue()[1] == "a" and a:GetType() == "arrstring"), "Test automat
 a = wx.wxVariant({"a", "b", "c"})
 PrintOk((a:ToLuaValue()[1] == "a" and a:GetType() == "arrstring"), "Test automatic overload of wxVariant(const wxArrayString&)")
 
+a = wx.wxVariant({"a", "b", "c"})
+PrintOk((a:ToLuaValue()[1] == "a" and a:GetType() == "arrstring"), "Test automatic overload of wxVariant argument (nil)")
+
 a = wx.wxPoint(1,2)
 v = wx.wxVariant(a)
 PrintOk(v:GetType() == "void*", "Test setting userdata on wxVariant.")

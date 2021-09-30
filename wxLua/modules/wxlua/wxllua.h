@@ -514,6 +514,7 @@ WXDLLIMPEXP_WXLUA long LUACALL        wxlua_getintegertype(lua_State* L, int sta
 WXDLLIMPEXP_WXLUA unsigned long LUACALL wxlua_getuintegertype(lua_State* L, int stack_idx);
 WXDLLIMPEXP_WXLUA double LUACALL      wxlua_getnumbertype(lua_State* L, int stack_idx);
 WXDLLIMPEXP_WXLUA void* LUACALL       wxlua_getpointertype(lua_State* L, int stack_idx);
+WXDLLIMPEXP_WXLUA wxVariant LUACALL   wxlua_getwxVarianttype(lua_State* L, int stack_idx);
 
 
 // Helper functions to get/set tables of strings and ints

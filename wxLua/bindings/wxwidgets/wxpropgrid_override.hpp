@@ -9,6 +9,7 @@
 // Overrides for wxpropgrid_propgrid.i
 // ----------------------------------------------------------------------------
 
+
 %override wxLua_wxPGVIteratorBase_delete_function
 // delete is private in wxPGVIteratorBase
 void wxLua_wxPGVIteratorBase_delete_function(void** p)

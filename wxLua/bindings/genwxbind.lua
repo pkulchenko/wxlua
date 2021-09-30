@@ -3902,9 +3902,18 @@ if ((double)(lua_Integer)(%s) == (double)(%s)) {
                             end
                         end
                     elseif (indirectionCount == 2) and (argPtr == "*") then
+
                         if not numeric then
                             overload_argList = overload_argList.."&wxluatype_"..MakeClassVar(argType)..", "
-                            argTypeWithAttrib = argTypeWithAttrib.." **"
+
+                            -- Handle cases like wxPGProperty*& where a single
+                            -- pointer must be passed
+                            if param.TypedDataTypePointer[2] == "&" then
+                               argTypeWithAttrib = argTypeWithAttrib.." *"
+                            else
+                               argTypeWithAttrib = argTypeWithAttrib.." **"
+                            end
+
                             argItem = "("..argTypeWithAttrib..")wxluaT_getuserdatatype(L, "..argNum..", wxluatype_"..MakeClassVar(argType)..")"
                         else
                             overload_argList = overload_argList.."&wxluatype_TLIGHTUSERDATA, "
@@ -3956,6 +3965,9 @@ if ((double)(lua_Integer)(%s) == (double)(%s)) {
                                     opt = "wxString("..opt..")"
                                 end
                             end
+                        elseif argType == "wxVariant" then
+                            overload_argList = overload_argList.."&wxluatype_TANY, "
+                            argItem = "wxlua_getwxVarianttype(L, "..argNum..")"
                         elseif argType == "wxUniChar" then
                             overload_argList = overload_argList.."&wxluatype_TSTRING, "
                             argItem = "wxlua_getwxUniChartype(L, "..argNum..")"

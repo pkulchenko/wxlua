@@ -102,10 +102,12 @@ class wxPropertyGrid : public wxScrolled<wxControl>, public wxPropertyGridInterf
                     const wxString& name = wxPropertyGridNameStr );
 
     void AddActionTrigger( int action, int keycode, int modifiers = 0 );
-    bool AddToSelection( wxPGPropArg id );
+    bool AddToSelection( const wxPGProperty*& id );
+    bool AddToSelection( const wxString& id );
     static void AutoGetTranslation( bool enable );
     void BeginLabelEdit( unsigned int colIndex = 0 );
-    bool ChangePropertyValue( wxPGPropArg id, wxVariant newValue );
+    bool ChangePropertyValue( const wxPGProperty*& id, wxVariant newValue );
+    bool ChangePropertyValue( const wxString& id, wxVariant newValue );
     void CenterSplitter( bool enableAutoResizing = false );
     virtual void Clear();
     void ClearActionTriggers( int action );
@@ -121,7 +123,8 @@ class wxPropertyGrid : public wxScrolled<wxControl>, public wxPropertyGridInterf
     void DedicateKey( int keycode );
     bool EnableCategories( bool enable );
     void EndLabelEdit( bool commit = true );
-    bool EnsureVisible( wxPGPropArg id );
+    bool EnsureVisible( const wxPGProperty*& id );
+    bool EnsureVisible( const wxString& id );
     wxSize FitColumns();
     wxTextCtrl* GetLabelEditor() const;
     wxWindow* GetPanel();
@@ -167,15 +170,18 @@ class wxPropertyGrid : public wxScrolled<wxControl>, public wxPropertyGridInterf
 
     void ResetColours();
     void ResetColumnSizes( bool enableAutoResizing = false );
-    bool RemoveFromSelection( wxPGPropArg id );
-    bool SelectProperty( wxPGPropArg id, bool focus = false );
+    bool RemoveFromSelection( const wxPGProperty*& id );
+    bool RemoveFromSelection( const wxString& id );
+    bool SelectProperty( const wxPGProperty*& id, bool focus = false );
+    bool SelectProperty( const wxString& id, bool focus = false );
     void SetCaptionBackgroundColour(const wxColour& col);
     void SetCaptionTextColour(const wxColour& col);
     void SetCellBackgroundColour(const wxColour& col);
     void SetCellDisabledTextColour(const wxColour& col);
     void SetCellTextColour(const wxColour& col);
     void SetColumnCount( int colCount );
-    void SetCurrentCategory( wxPGPropArg id );
+    void SetCurrentCategory( const wxPGProperty*& id );
+    void SetCurrentCategory( const wxString& id );
     void SetEmptySpaceColour(const wxColour& col);
     void SetLineColour(const wxColour& col);
     void SetMarginColour(const wxColour& col);
@@ -203,7 +209,8 @@ class wxPropertyGrid : public wxScrolled<wxControl>, public wxPropertyGridInterf
     void EditorsValueWasNotModified();
     wxVariant GetUncommittedPropertyValue();
     bool IsEditorsValueModified() const;
-    void ShowPropertyError( wxPGPropArg id, const wxString& msg );
+    void ShowPropertyError( const wxPGProperty*& id, const wxString& msg );
+    void ShowPropertyError( const wxString& id, const wxString& msg );
     void ValueChangeInEvent( wxVariant variant );
     bool WasValueChangedInEvent() const;
 };
@@ -292,7 +299,8 @@ public:
                        long style = wxPGMAN_DEFAULT_STYLE,
                        const wxString& name = wxPropertyGridManagerNameStr );
     bool EnableCategories( bool enable );
-    bool EnsureVisible( wxPGPropArg id );
+    bool EnsureVisible( const wxPGProperty*& id );
+    bool EnsureVisible( const wxString& id );
     int GetColumnCount( int page = -1 ) const;
     int GetDescBoxHeight() const;
     wxPropertyGrid* GetGrid();
@@ -315,12 +323,14 @@ public:
     bool IsAnyModified() const;
     bool IsFrozen() const;
     bool IsPageModified( size_t index ) const;
-    virtual bool IsPropertySelected( wxPGPropArg id ) const;
+    virtual bool IsPropertySelected( const wxPGProperty*& id ) const;
+    virtual bool IsPropertySelected( const wxString& id ) const;
     virtual bool RemovePage( int page );
     void SelectPage( int index );
     void SelectPage( const wxString& label );
     void SelectPage( wxPropertyGridPage* page );
-    bool SelectProperty( wxPGPropArg id, bool focus = false );
+    bool SelectProperty( const wxPGProperty*& id, bool focus = false );
+    bool SelectProperty( const wxString& id, bool focus = false );
     void SetColumnCount( int colCount, int page = -1 );
     void SetColumnTitle( int idx, const wxString& title );
     void SetDescription( const wxString& label, const wxString& content );
@@ -588,6 +598,193 @@ class %delete wxPGMultiButton : public wxWindow
 
 
 #include "wx/propgrid/advprops.h"
+
+
+#define wxPG_COLOUR_WEB_BASE
+
+
+#define wxPG_COLOUR_CUSTOM
+#define wxPG_COLOUR_UNSPECIFIED
+
+
+class %delete wxColourPropertyValue : public wxObject
+{
+    wxUint32    m_type;
+
+    wxColour    m_colour;
+
+    wxColourPropertyValue();
+    wxColourPropertyValue( const wxColourPropertyValue& v );
+    wxColourPropertyValue( const wxColour& colour );
+    wxColourPropertyValue( wxUint32 type );
+    wxColourPropertyValue( wxUint32 type, const wxColour& colour );
+
+    void Init( wxUint32 type, const wxColour& colour );
+
+    void operator=(const wxColourPropertyValue& cpv);
+};
+
+
+class wxFontProperty : public wxEditorDialogProperty
+{
+    wxFontProperty(const wxString& label = wxPG_LABEL,
+                   const wxString& name = wxPG_LABEL,
+                   const wxFont& value = wxFont());
+    virtual void OnSetValue();
+    virtual wxString ValueToString( wxVariant& value, int argFlags = 0 ) const;
+    virtual wxVariant ChildChanged( wxVariant& thisValue,
+                                    int childIndex,
+                                    wxVariant& childValue ) const;
+    virtual void RefreshChildren();
+};
+
+
+
+#define wxPG_PROP_TRANSLATE_CUSTOM
+
+
+class wxSystemColourProperty : public wxEnumProperty
+{
+    wxSystemColourProperty( const wxString& label = wxPG_LABEL,
+                            const wxString& name = wxPG_LABEL,
+                            const wxColourPropertyValue& value = wxColourPropertyValue() );
+
+    wxSystemColourProperty( const wxString& label = wxPG_LABEL,
+                            const wxString& name = wxPG_LABEL,
+                            const wxColour& value = wxNullColour );
+
+    virtual void OnSetValue();
+    virtual bool IntToValue(wxVariant& variant,
+                            int number,
+                            int argFlags = 0) const;
+
+    virtual wxString ColourToString( const wxColour& col, int index,
+                                     int argFlags = 0 ) const;
+
+    virtual int GetCustomColourIndex() const;
+
+    virtual wxString ValueToString( wxVariant& value, int argFlags = 0 ) const;
+    virtual bool StringToValue( wxVariant& variant,
+                                const wxString& text,
+                                int argFlags = 0 ) const;
+    virtual bool OnEvent( wxPropertyGrid* propgrid,
+                          wxWindow* primary, wxEvent& event );
+    virtual bool DoSetAttribute( const wxString& name, wxVariant& value );
+    virtual wxSize OnMeasureImage( int item ) const;
+    virtual void OnCustomPaint( wxDC& dc, const wxRect& rect, wxPGPaintData& paintdata );
+
+    bool QueryColourFromUser( wxVariant& variant ) const;
+
+    virtual wxColour GetColour( int index ) const;
+
+    wxColourPropertyValue GetVal( const wxVariant* pVariant = NULL ) const;
+};
+
+
+class wxColourProperty : public wxSystemColourProperty
+{
+    wxColourProperty( const wxString& label = wxPG_LABEL,
+                      const wxString& name = wxPG_LABEL,
+                      const wxColour& value = wxNullColour );
+
+    virtual wxString ValueToString( wxVariant& value, int argFlags = 0 ) const;
+    virtual wxColour GetColour( int index ) const;
+};
+
+
+
+class wxCursorProperty : public wxEnumProperty
+{
+    wxCursorProperty( const wxString& label= wxPG_LABEL,
+                      const wxString& name= wxPG_LABEL,
+                      int value = 0 );
+
+    virtual wxSize OnMeasureImage( int item ) const;
+    virtual void OnCustomPaint( wxDC& dc,
+                                const wxRect& rect, wxPGPaintData& paintdata );
+};
+
+
+const wxString& wxPGGetDefaultImageWildcard();
+
+class wxImageFileProperty : public wxFileProperty
+{
+    wxImageFileProperty( const wxString& label= wxPG_LABEL,
+                         const wxString& name = wxPG_LABEL,
+                         const wxString& value = wxEmptyString);
+
+    virtual void OnSetValue();
+
+    virtual wxSize OnMeasureImage( int item ) const;
+    virtual void OnCustomPaint( wxDC& dc,
+                                const wxRect& rect, wxPGPaintData& paintdata );
+};
+
+
+class wxMultiChoiceProperty : public wxEditorDialogProperty
+{
+    wxMultiChoiceProperty( const wxString& label,
+                           const wxString& name,
+                           const wxArrayString& strings,
+                           const wxArrayString& value );
+    wxMultiChoiceProperty( const wxString& label,
+                           const wxString& name,
+                           const wxPGChoices& choices,
+                           const wxArrayString& value = wxLuaNullSmartwxArrayString );
+
+    wxMultiChoiceProperty( const wxString& label = wxPG_LABEL,
+                           const wxString& name = wxPG_LABEL,
+                           const wxArrayString& value = wxLuaNullSmartwxArrayString );
+
+    virtual void OnSetValue();
+    virtual wxString ValueToString( wxVariant& value, int argFlags = 0 ) const;
+    virtual bool StringToValue(wxVariant& variant,
+                               const wxString& text,
+                               int argFlags = 0) const;
+
+    wxArrayInt GetValueAsArrayInt() const;
+};
+
+
+
+class wxDateProperty : public wxPGProperty
+{
+    wxDateProperty( const wxString& label = wxPG_LABEL,
+                    const wxString& name = wxPG_LABEL,
+                    const wxDateTime& value = wxDateTime() );
+
+    virtual void OnSetValue();
+    virtual wxString ValueToString( wxVariant& value, int argFlags = 0 ) const;
+    virtual bool StringToValue(wxVariant& variant,
+                               const wxString& text,
+                               int argFlags = 0) const;
+
+    virtual bool DoSetAttribute( const wxString& name, wxVariant& value );
+
+    void SetFormat( const wxString& format );
+    const wxString& GetFormat() const;
+
+    void SetDateValue( const wxDateTime& dt );
+    wxDateTime GetDateValue() const;
+
+    long GetDatePickerStyle() const;
+};
+
+
+
+class wxPGSpinCtrlEditor : public wxPGTextCtrlEditor
+{
+    wxString GetName() const;
+    virtual wxPGWindowList CreateControls(wxPropertyGrid* propgrid,
+                                          wxPGProperty* property,
+                                          const wxPoint& pos,
+                                          const wxSize& size) const;
+    virtual bool OnEvent( wxPropertyGrid* propgrid, wxPGProperty* property,
+        wxWindow* wnd, wxEvent& event ) const;
+};
+
+
+
 #include "wx/propgrid/props.h"
 
 #define wxPG_PROP_PASSWORD
@@ -1245,23 +1442,33 @@ enum wxPropertyGridInterface::EditableStateFlags
 class wxPropertyGridInterface
 {
     %ungc wxPGProperty* Append( %ungc wxPGProperty* property );
-    wxPGProperty* AppendIn( wxPGPropArg id, wxPGProperty* newProperty );
-    void BeginAddChildren( wxPGPropArg id );
+    wxPGProperty* AppendIn( const wxPGProperty*& id, wxPGProperty* newProperty );
+    wxPGProperty* AppendIn( const wxString& id, wxPGProperty* newProperty );
+    void BeginAddChildren( const wxPGProperty*& id );
+    void BeginAddChildren( const wxString& id );
     virtual void Clear() = 0;
     bool ClearSelection( bool validation = false);
     void ClearModifiedStatus();
-    bool Collapse( wxPGPropArg id );
+    bool Collapse( const wxPGProperty*& id );
+    bool Collapse( const wxString& id );
     bool CollapseAll();
-    bool ChangePropertyValue( wxPGPropArg id, wxVariant newValue );
-    void DeleteProperty( wxPGPropArg id );
-    bool DisableProperty( wxPGPropArg id );
+    bool ChangePropertyValue( const wxPGProperty*& id, wxVariant newValue );
+    bool ChangePropertyValue( const wxString& id, wxVariant newValue );
+    void DeleteProperty( const wxPGProperty*& id );
+    void DeleteProperty( const wxString& id );
+    bool DisableProperty( const wxPGProperty*& id );
+    bool DisableProperty( const wxString& id );
     bool EditorValidate();
-    bool EnableProperty( wxPGPropArg id, bool enable = true );
-    void EndAddChildren( wxPGPropArg id );
-    bool Expand( wxPGPropArg id );
+    bool EnableProperty( const wxPGProperty*& id, bool enable = true );
+    bool EnableProperty( const wxString& id, bool enable = true );
+    void EndAddChildren( const wxPGProperty*& id );
+    void EndAddChildren( const wxString& id );
+    bool Expand( const wxPGProperty*& id );
+    bool Expand( const wxString& id );
     bool ExpandAll( bool expand = true );
     int GetColumnProportion( unsigned int column ) const;
-    wxPGProperty* GetFirstChild( wxPGPropArg id );
+    wxPGProperty* GetFirstChild( const wxPGProperty*& id );
+    wxPGProperty* GetFirstChild( const wxString& id );
 
     /* wxPropertyGridIterator GetIterator( int flags = wxPG_ITERATE_DEFAULT, wxPGProperty* firstProp = NULL ); */
     /* wxPropertyGridConstIterator GetIterator( int flags = wxPG_ITERATE_DEFAULT, wxPGProperty* firstProp = NULL ) const; */
@@ -1277,56 +1484,93 @@ class wxPropertyGridInterface
     /*                             wxPGProperty::FlagType flags, */
     /*                             bool inverse = false, */
     /*                             int iterFlags = (wxPG_ITERATE_PROPERTIES|wxPG_ITERATE_HIDDEN|wxPG_ITERATE_CATEGORIES) ) const; */
-    wxVariant GetPropertyAttribute( wxPGPropArg id, const wxString& attrName ) const;
-    const wxPGAttributeStorage& GetPropertyAttributes( wxPGPropArg id ) const;
-    wxColour GetPropertyBackgroundColour( wxPGPropArg id ) const;
-    wxPropertyCategory* GetPropertyCategory( wxPGPropArg id ) const;
-    void* GetPropertyClientData( wxPGPropArg id ) const;
+    wxVariant GetPropertyAttribute( const wxPGProperty*& id, const wxString& attrName ) const;
+    wxVariant GetPropertyAttribute( const wxString& id, const wxString& attrName ) const;
+    const wxPGAttributeStorage& GetPropertyAttributes( const wxPGProperty*& id ) const;
+    const wxPGAttributeStorage& GetPropertyAttributes( const wxString& id ) const;
+    wxColour GetPropertyBackgroundColour( const wxPGProperty*& id ) const;
+    wxColour GetPropertyBackgroundColour( const wxString& id ) const;
+    wxPropertyCategory* GetPropertyCategory( const wxPGProperty*& id ) const;
+    wxPropertyCategory* GetPropertyCategory( const wxString& id ) const;
+    void* GetPropertyClientData( const wxPGProperty*& id ) const;
+    void* GetPropertyClientData( const wxString& id ) const;
     wxPGProperty* GetPropertyByLabel( const wxString& label ) const;
     wxPGProperty* GetPropertyByName( const wxString& name ) const;
     wxPGProperty* GetPropertyByName( const wxString& name,
                                      const wxString& subname ) const;
-    const wxPGEditor* GetPropertyEditor( wxPGPropArg id ) const;
-    wxString GetPropertyHelpString( wxPGPropArg id ) const;
-    wxBitmap* GetPropertyImage( wxPGPropArg id ) const;
-    const wxString& GetPropertyLabel( wxPGPropArg id );
+    const wxPGEditor* GetPropertyEditor( const wxPGProperty*& id ) const;
+    const wxPGEditor* GetPropertyEditor( const wxString& id ) const;
+    wxString GetPropertyHelpString( const wxPGProperty*& id ) const;
+    wxString GetPropertyHelpString( const wxString& id ) const;
+    wxBitmap* GetPropertyImage( const wxPGProperty*& id ) const;
+    wxBitmap* GetPropertyImage( const wxString& id ) const;
+    const wxString& GetPropertyLabel( const wxPGProperty*& id );
+    const wxString& GetPropertyLabel( const wxString& id );
     wxString GetPropertyName( wxPGProperty* property );
-    wxPGProperty* GetPropertyParent( wxPGPropArg id );
-    wxColour GetPropertyTextColour( wxPGPropArg id ) const;
-    wxValidator* GetPropertyValidator( wxPGPropArg id );
-    wxVariant GetPropertyValue( wxPGPropArg id );
-    wxArrayInt GetPropertyValueAsArrayInt( wxPGPropArg id ) const;
-    wxArrayString GetPropertyValueAsArrayString( wxPGPropArg id ) const;
-    bool GetPropertyValueAsBool( wxPGPropArg id ) const;
-    wxDateTime GetPropertyValueAsDateTime( wxPGPropArg id ) const;
-    double GetPropertyValueAsDouble( wxPGPropArg id ) const;
-    int GetPropertyValueAsInt( wxPGPropArg id ) const;
-    long GetPropertyValueAsLong( wxPGPropArg id ) const;
-    wxLongLong GetPropertyValueAsLongLong( wxPGPropArg id ) const;
-    wxString GetPropertyValueAsString( wxPGPropArg id ) const;
-    unsigned long GetPropertyValueAsULong( wxPGPropArg id ) const;
-    wxULongLong GetPropertyValueAsULongLong( wxPGPropArg id ) const;
+    wxPGProperty* GetPropertyParent( const wxPGProperty*& id );
+    wxPGProperty* GetPropertyParent( const wxString& id );
+    wxColour GetPropertyTextColour( const wxPGProperty*& id ) const;
+    wxColour GetPropertyTextColour( const wxString& id ) const;
+    wxValidator* GetPropertyValidator( const wxPGProperty*& id );
+    wxValidator* GetPropertyValidator( const wxString& id );
+    wxVariant GetPropertyValue( const wxPGProperty*& id );
+    wxVariant GetPropertyValue( const wxString& id );
+    wxArrayInt GetPropertyValueAsArrayInt( const wxPGProperty*& id ) const;
+    wxArrayInt GetPropertyValueAsArrayInt( const wxString& id ) const;
+    wxArrayString GetPropertyValueAsArrayString( const wxPGProperty*& id ) const;
+    wxArrayString GetPropertyValueAsArrayString( const wxString& id ) const;
+    bool GetPropertyValueAsBool( const wxPGProperty*& id ) const;
+    bool GetPropertyValueAsBool( const wxString& id ) const;
+    wxDateTime GetPropertyValueAsDateTime( const wxPGProperty*& id ) const;
+    wxDateTime GetPropertyValueAsDateTime( const wxString& id ) const;
+    double GetPropertyValueAsDouble( const wxPGProperty*& id ) const;
+    double GetPropertyValueAsDouble( const wxString& id ) const;
+    int GetPropertyValueAsInt( const wxPGProperty*& id ) const;
+    int GetPropertyValueAsInt( const wxString& id ) const;
+    long GetPropertyValueAsLong( const wxPGProperty*& id ) const;
+    long GetPropertyValueAsLong( const wxString& id ) const;
+    wxLongLong GetPropertyValueAsLongLong( const wxPGProperty*& id ) const;
+    wxLongLong GetPropertyValueAsLongLong( const wxString& id ) const;
+    wxString GetPropertyValueAsString( const wxPGProperty*& id ) const;
+    wxString GetPropertyValueAsString( const wxString& id ) const;
+    unsigned long GetPropertyValueAsULong( const wxPGProperty*& id ) const;
+    unsigned long GetPropertyValueAsULong( const wxString& id ) const;
+    wxULongLong GetPropertyValueAsULongLong( const wxPGProperty*& id ) const;
+    wxULongLong GetPropertyValueAsULongLong( const wxString& id ) const;
     wxVariant GetPropertyValues( const wxString& listname = wxEmptyString,
                                  wxPGProperty* baseparent = NULL, long flags = 0 ) const;
     /* const wxArrayPGProperty& GetSelectedProperties() const; */
     wxPGProperty* GetSelection() const;
     /* virtual wxPGVIterator GetVIterator( int flags ) const; */
-    bool HideProperty( wxPGPropArg id, bool hide = true, int flags = wxPG_RECURSE );
+    bool HideProperty( const wxPGProperty*& id, bool hide = true, int flags = wxPG_RECURSE );
+    bool HideProperty( const wxString& id, bool hide = true, int flags = wxPG_RECURSE );
     static void InitAllTypeHandlers();
-    wxPGProperty* Insert( wxPGPropArg priorThis, wxPGProperty* newProperty );
-    wxPGProperty* Insert( wxPGPropArg parent, int index, wxPGProperty* newProperty );
-    bool IsPropertyCategory( wxPGPropArg id ) const;
-    bool IsPropertyEnabled( wxPGPropArg id ) const;
-    bool IsPropertyExpanded( wxPGPropArg id ) const;
-    bool IsPropertyModified( wxPGPropArg id ) const;
-    bool IsPropertySelected( wxPGPropArg id ) const;
-    bool IsPropertyShown( wxPGPropArg id ) const;
-    bool IsPropertyValueUnspecified( wxPGPropArg id ) const;
-    void LimitPropertyEditing( wxPGPropArg id, bool limit = true );
+    wxPGProperty* Insert( const wxPGProperty*& priorThis, %ungc wxPGProperty* newProperty );
+    wxPGProperty* Insert( const wxString& priorThis, %ungc wxPGProperty* newProperty );
+    wxPGProperty* Insert( const wxPGProperty*& parent, int index, %ungc wxPGProperty* newProperty );
+    wxPGProperty* Insert( const wxString& parent, int index, %ungc wxPGProperty* newProperty );
+    bool IsPropertyCategory( const wxPGProperty*& id ) const;
+    bool IsPropertyCategory( const wxString& id ) const;
+    bool IsPropertyEnabled( const wxPGProperty*& id ) const;
+    bool IsPropertyEnabled( const wxString& id ) const;
+    bool IsPropertyExpanded( const wxPGProperty*& id ) const;
+    bool IsPropertyExpanded( const wxString& id ) const;
+    bool IsPropertyModified( const wxPGProperty*& id ) const;
+    bool IsPropertyModified( const wxString& id ) const;
+    bool IsPropertySelected( const wxPGProperty*& id ) const;
+    bool IsPropertySelected( const wxString& id ) const;
+    bool IsPropertyShown( const wxPGProperty*& id ) const;
+    bool IsPropertyShown( const wxString& id ) const;
+    bool IsPropertyValueUnspecified( const wxPGProperty*& id ) const;
+    bool IsPropertyValueUnspecified( const wxString& id ) const;
+    void LimitPropertyEditing( const wxPGProperty*& id, bool limit = true );
+    void LimitPropertyEditing( const wxString& id, bool limit = true );
     virtual void RefreshGrid( wxPropertyGridPageState* state = NULL );
     static void RegisterAdditionalEditors();
-    wxPGProperty* RemoveProperty( wxPGPropArg id );
-    wxPGProperty* ReplaceProperty( wxPGPropArg id, wxPGProperty* property );
+    wxPGProperty* RemoveProperty( const wxPGProperty*& id );
+    wxPGProperty* RemoveProperty( const wxString& id );
+    wxPGProperty* ReplaceProperty( const wxPGProperty*& id, wxPGProperty* property );
+    wxPGProperty* ReplaceProperty( const wxString& id, wxPGProperty* property );
 
     bool RestoreEditableState( const wxString& src,
                                int restoreStates = wxPropertyGridInterface::EditableStateFlags::AllStates );
@@ -1334,61 +1578,99 @@ class wxPropertyGridInterface
     static void SetBoolChoices( const wxString& trueChoice,
                                 const wxString& falseChoice );
     bool SetColumnProportion( unsigned int column, int proportion );
-    void SetPropertyAttribute( wxPGPropArg id, const wxString& attrName,
-                               wxVariant value, long argFlags = 0 );
+    void SetPropertyAttribute( const wxPGProperty*& id, const wxString& attrName, wxVariant value, long argFlags = 0 );
+    void SetPropertyAttribute( const wxString& id, const wxString& attrName, wxVariant value, long argFlags = 0 );
     void SetPropertyAttributeAll( const wxString& attrName, wxVariant value );
-    void SetPropertyBackgroundColour( wxPGPropArg id,
+    void SetPropertyBackgroundColour( const wxPGProperty*& id,
                                       const wxColour& colour,
                                       int flags = wxPG_RECURSE );
-    void SetPropertyCell( wxPGPropArg id,
+    void SetPropertyBackgroundColour( const wxString& id,
+                                      const wxColour& colour,
+                                      int flags = wxPG_RECURSE );
+    void SetPropertyCell( const wxPGProperty*& id,
                           int column,
                           const wxString& text = wxEmptyString,
                           const wxBitmap& bitmap = wxNullBitmap,
                           const wxColour& fgCol = wxNullColour,
                           const wxColour& bgCol = wxNullColour );
-    void SetPropertyClientData( wxPGPropArg id, void* clientData );
-    void SetPropertyColoursToDefault(wxPGPropArg id, int flags = wxPG_DONT_RECURSE);
-    void SetPropertyEditor( wxPGPropArg id, const wxPGEditor* editor );
-    void SetPropertyEditor( wxPGPropArg id, const wxString& editorName );
-    void SetPropertyLabel( wxPGPropArg id, const wxString& newproplabel );
-    void SetPropertyName( wxPGPropArg id, const wxString& newName );
-    void SetPropertyReadOnly( wxPGPropArg id, bool set = true,
+    void SetPropertyCell( const wxString& id,
+                          int column,
+                          const wxString& text = wxEmptyString,
+                          const wxBitmap& bitmap = wxNullBitmap,
+                          const wxColour& fgCol = wxNullColour,
+                          const wxColour& bgCol = wxNullColour );
+    void SetPropertyClientData( const wxPGProperty*& id, void* clientData );
+    void SetPropertyClientData( const wxString& id, void* clientData );
+    void SetPropertyColoursToDefault(const wxPGProperty*& id, int flags = wxPG_DONT_RECURSE);
+    void SetPropertyColoursToDefault(const wxString& id, int flags = wxPG_DONT_RECURSE);
+    void SetPropertyEditor( const wxPGProperty*& id, const wxPGEditor* editor );
+    void SetPropertyEditor( const wxString& id, const wxPGEditor* editor );
+    void SetPropertyEditor( const wxPGProperty*& id, const wxString& editorName );
+    void SetPropertyEditor( const wxString& id, const wxString& editorName );
+    void SetPropertyLabel( const wxPGProperty*& id, const wxString& newproplabel );
+    void SetPropertyLabel( const wxString& id, const wxString& newproplabel );
+    void SetPropertyName( const wxPGProperty*& id, const wxString& newName );
+    void SetPropertyName( const wxString& id, const wxString& newName );
+    void SetPropertyReadOnly( const wxPGProperty*& id, bool set = true,
                               int flags = wxPG_RECURSE );
-    void SetPropertyValueUnspecified( wxPGPropArg id );
+    void SetPropertyReadOnly( const wxString& id, bool set = true,
+                              int flags = wxPG_RECURSE );
+    void SetPropertyValueUnspecified( const wxPGProperty*& id );
+    void SetPropertyValueUnspecified( const wxString& id );
     /* void SetPropertyValues( const wxVariantList& list, */
-    /*                         wxPGPropArg defaultCategory = wxNullProperty ); */
+    /*                         const wxPGProperty*& defaultCategory = wxNullProperty ); */
     /* void SetPropertyValues( const wxVariant& list, */
-    /*                         wxPGPropArg defaultCategory = wxNullProperty ); */
-    void SetPropertyHelpString( wxPGPropArg id, const wxString& helpString );
-    void SetPropertyImage( wxPGPropArg id, wxBitmap& bmp );
-    bool SetPropertyMaxLength( wxPGPropArg id, int maxLen );
+    /*                         const wxPGProperty*& defaultCategory = wxNullProperty ); */
+    void SetPropertyHelpString( const wxPGProperty*& id, const wxString& helpString );
+    void SetPropertyHelpString( const wxString& id, const wxString& helpString );
+    void SetPropertyImage( const wxPGProperty*& id, wxBitmap& bmp );
+    void SetPropertyImage( const wxString& id, wxBitmap& bmp );
+    bool SetPropertyMaxLength( const wxPGProperty*& id, int maxLen );
+    bool SetPropertyMaxLength( const wxString& id, int maxLen );
 
-    void SetPropertyTextColour( wxPGPropArg id,
+    void SetPropertyTextColour( const wxPGProperty*& id,
                                 const wxColour& colour,
                                 int flags = wxPG_RECURSE );
-    void SetPropertyValidator( wxPGPropArg id, const wxValidator& validator );
-    void SetPropertyValue( wxPGPropArg id, long value );
-    void SetPropertyValue( wxPGPropArg id, int value );
-    void SetPropertyValue( wxPGPropArg id, double value );
-    void SetPropertyValue( wxPGPropArg id, bool value );
-    /* void SetPropertyValue( wxPGPropArg id, const wchar_t* value ); */
-    /* void SetPropertyValue( wxPGPropArg id, const char* value ); */
-    void SetPropertyValue( wxPGPropArg id, const wxString& value );
-    void SetPropertyValue( wxPGPropArg id, const wxArrayString& value );
-    void SetPropertyValue( wxPGPropArg id, const wxDateTime& value );
-    /* void SetPropertyValue( wxPGPropArg id, wxObject* value ); */
-    void SetPropertyValue( wxPGPropArg id, wxObject& value );
-    /* void SetPropertyValue( wxPGPropArg id, wxLongLong_t value ); */
-    /* void SetPropertyValue( wxPGPropArg id, wxLongLong value ); */
-    /* void SetPropertyValue( wxPGPropArg id, wxULongLong_t value ); */
-    /* void SetPropertyValue( wxPGPropArg id, wxULongLong value ); */
-    void SetPropertyValue( wxPGPropArg id, const wxArrayInt& value );
-    void SetPropertyValueString( wxPGPropArg id, const wxString& value );
-    void SetPropertyValue( wxPGPropArg id, wxVariant value );
-    void SetPropVal( wxPGPropArg id, wxVariant& value );
+    void SetPropertyTextColour( const wxString& id,
+                                const wxColour& colour,
+                                int flags = wxPG_RECURSE );
+    void SetPropertyValidator( const wxPGProperty*& id, const wxValidator& validator );
+    void SetPropertyValidator( const wxString& id, const wxValidator& validator );
+    void SetPropertyValue( const wxPGProperty*& id, long value );
+    void SetPropertyValue( const wxString& id, long value );
+    void SetPropertyValue( const wxPGProperty*& id, int value );
+    void SetPropertyValue( const wxString& id, int value );
+    void SetPropertyValue( const wxPGProperty*& id, double value );
+    void SetPropertyValue( const wxString& id, double value );
+    void SetPropertyValue( const wxPGProperty*& id, bool value );
+    void SetPropertyValue( const wxString& id, bool value );
+    /* void SetPropertyValue( const wxPGProperty*& id, const wchar_t* value ); */
+    /* void SetPropertyValue( const wxPGProperty*& id, const char* value ); */
+    void SetPropertyValue( const wxPGProperty*& id, const wxString& value );
+    void SetPropertyValue( const wxString& id, const wxString& value );
+    void SetPropertyValue( const wxPGProperty*& id, const wxArrayString& value );
+    void SetPropertyValue( const wxString& id, const wxArrayString& value );
+    void SetPropertyValue( const wxPGProperty*& id, const wxDateTime& value );
+    void SetPropertyValue( const wxString& id, const wxDateTime& value );
+    /* void SetPropertyValue( const wxPGProperty*& id, wxObject* value ); */
+    void SetPropertyValue( const wxPGProperty*& id, wxObject& value );
+    void SetPropertyValue( const wxString& id, wxObject& value );
+    /* void SetPropertyValue( const wxPGProperty*& id, wxLongLong_t value ); */
+    /* void SetPropertyValue( const wxPGProperty*& id, wxLongLong value ); */
+    /* void SetPropertyValue( const wxPGProperty*& id, wxULongLong_t value ); */
+    /* void SetPropertyValue( const wxPGProperty*& id, wxULongLong value ); */
+    void SetPropertyValue( const wxPGProperty*& id, const wxArrayInt& value );
+    void SetPropertyValue( const wxString& id, const wxArrayInt& value );
+    void SetPropertyValueString( const wxPGProperty*& id, const wxString& value );
+    void SetPropertyValueString( const wxString& id, const wxString& value );
+    void SetPropertyValue( const wxPGProperty*& id, wxVariant value );
+    void SetPropertyValue( const wxString& id, wxVariant value );
+    void SetPropVal( const wxPGProperty*& id, wxVariant& value );
+    void SetPropVal( const wxString& id, wxVariant& value );
     void SetValidationFailureBehavior( int vfbFlags );
     void Sort( int flags = 0 );
-    void SortChildren( wxPGPropArg id, int flags = 0 );
+    void SortChildren( const wxPGProperty*& id, int flags = 0 );
+    void SortChildren( const wxString& id, int flags = 0 );
     static wxPGEditor* GetEditorByName( const wxString& editorName );
     wxPGProperty* GetPropertyByNameA( const wxString& name ) const;
     virtual void RefreshProperty( wxPGProperty* p ) = 0;
@@ -1400,13 +1682,13 @@ class wxPropertyGridInterface
 
 #include "wx/propgrid/property.h"
 
-// struct wxPGPaintData
-// {
-//     const wxPropertyGrid* m_parent;
-//     int m_choiceItem;
-//     int m_drawnWidth;
-//     int m_drawnHeight;
-// };
+struct %delete wxPGPaintData
+{
+    const wxPropertyGrid* m_parent;
+    int m_choiceItem;
+    int m_drawnWidth;
+    int m_drawnHeight;
+};
 
 #define wxPG_CUSTOM_IMAGE_SPACINGY
 #define wxPG_CAPRECTXMARGIN
@@ -1440,10 +1722,61 @@ enum wxPGPropertyFlags
 
 
 #define wxPG_PROP_MAX
-
 #define wxPG_PROP_PARENTAL_FLAGS
+#define wxPG_STRING_STORED_FLAGS
 
-#define wxPG_STRING_STORED_FLAGS 
+#define_wxstring wxPG_ATTR_DEFAULT_VALUE
+#define_wxstring wxPG_ATTR_MIN
+#define_wxstring wxPG_ATTR_MAX
+#define_wxstring wxPG_ATTR_UNITS
+#define_wxstring wxPG_ATTR_HINT
+
+#if wxPG_COMPATIBILITY_1_4
+#define wxPG_ATTR_INLINE_HELP
+#endif
+
+#define_wxstring wxPG_ATTR_AUTOCOMPLETE
+#define_wxstring wxPG_BOOL_USE_CHECKBOX
+#define_wxstring wxPG_BOOL_USE_DOUBLE_CLICK_CYCLING
+#define_wxstring wxPG_FLOAT_PRECISION
+#define_wxstring wxPG_STRING_PASSWORD
+#define_wxstring wxPG_UINT_BASE
+#define_wxstring wxPG_UINT_PREFIX
+#define_wxstring wxPG_DIALOG_TITLE
+#define_wxstring wxPG_FILE_WILDCARD
+#define_wxstring wxPG_FILE_SHOW_FULL_PATH
+#define_wxstring wxPG_FILE_SHOW_RELATIVE_PATH
+#define_wxstring wxPG_FILE_INITIAL_PATH
+
+%wxcompat_3_0 #define_wxstring wxPG_FILE_DIALOG_TITLE
+
+#define_wxstring wxPG_FILE_DIALOG_STYLE
+
+%wxcompat_3_0 #define_wxstring wxPG_DIR_DIALOG_MESSAGE
+
+#define_wxstring wxPG_ARRAY_DELIMITER
+#define_wxstring wxPG_DATE_FORMAT
+#define_wxstring wxPG_DATE_PICKER_STYLE
+
+#if wxUSE_SPINBTN && wxLUA_USE_wxSpinButton
+#define_wxstring wxPG_ATTR_SPINCTRL_STEP
+#define_wxstring wxPG_ATTR_SPINCTRL_WRAP
+#define_wxstring wxPG_ATTR_SPINCTRL_MOTION
+#endif  // wxUSE_SPINBTN && wxLUA_USE_wxSpinButton
+
+#define_wxstring wxPG_ATTR_MULTICHOICE_USERSTRINGMODE
+#define_wxstring wxPG_COLOUR_ALLOW_CUSTOM
+#define_wxstring wxPG_COLOUR_HAS_ALPHA
+
+#define_wxstring wxPG_ATTR_DEFAULT_VALUE
+#define_wxstring wxPG_ATTR_MIN
+#define_wxstring wxPG_ATTR_MAX
+#define_wxstring wxPG_ATTR_UNITS
+#define_wxstring wxPG_ATTR_HINT
+
+#if wxPG_COMPATIBILITY_1_4
+#define_wxstring wxPG_ATTR_INLINE_HELP
+#endif
 
 
 class %delete wxPGProperty : public wxObject
