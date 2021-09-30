@@ -370,15 +370,6 @@ PrintOk((a:ToLuaValue()[1] == "a" and a:GetType() == "arrstring"), "Test automat
 a = wx.wxVariant({"a", "b", "c"})
 PrintOk((a:ToLuaValue()[1] == "a" and a:GetType() == "arrstring"), "Test automatic overload of wxVariant argument (nil)")
 
-a = wx.wxPoint(1,2)
-v = wx.wxVariant(a)
-PrintOk(v:GetType() == "void*", "Test setting userdata on wxVariant.")
-ok, b = xpcall(function() return v:As("wxPoint") end, debug.traceback)
-PrintOk(ok and b:GetX() == 1, "Test wxVariant::As(string).")
-v = wx.wxVariant(true)
-ok, b = xpcall(function() return v:As("wxPoint") end, debug.traceback)
-PrintOk(not ok and b:match("Cannot cast wxVariant of type 'bool' to class type 'wxPoint'."), "Test wxVariant::As(string).")
-
 -- ---------------------------------------------------------------------------
 print("\nTest the bit library.\n")
 -- ---------------------------------------------------------------------------
