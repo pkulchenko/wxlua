@@ -612,6 +612,7 @@ class %delete wxVariant: public wxObject
     %override_name wxLua_wxVariantFromArrayString_constructor wxVariant(const wxArrayString& a);
     %override_name wxLua_wxVariantFromString_constructor wxVariant(const wxString& str);
     %override_name wxLua_wxVariantFromDouble_constructor wxVariant(double d);
+    %override_name wxLua_wxVariantFromObject_constructor wxVariant(%ungc wxObject* o);
 
     // %override [Lua value] wxVariant::Value() const;
     // returns a Lua representation of this variant
@@ -620,6 +621,9 @@ class %delete wxVariant: public wxObject
     // %override [Lua value] wxVariant::As() const;
     // casts this variant to the bound wxLua class specified
     int As(const wxString& str) const;
+
+    wxVariant operator [](size_t idx) const;
+    wxVariant& operator [](size_t idx);
 
     void Append(const wxVariant& value);
     void Clear();

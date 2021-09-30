@@ -63,6 +63,10 @@ extern WXDLLIMPEXP_BINDWXPROPGRID wxLuaBinding* wxLuaBinding_wxpropgrid_init();
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGCheckBoxEditor;
 #endif // (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxPG_INCLUDE_CHECKBOX)
 
+#if (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_SPINBTN && wxLUA_USE_wxSpinButton)
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGSpinCtrlEditor;
+#endif // (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_SPINBTN && wxLUA_USE_wxSpinButton)
+
 #if wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxArrayStringProperty;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxBoolProperty;
@@ -104,7 +108,6 @@ extern WXDLLIMPEXP_BINDWXPROPGRID wxLuaBinding* wxLuaBinding_wxpropgrid_init();
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGPropArgCls;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGProperty;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGRootProperty;
-    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGSpinCtrlEditor;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGTextCtrlAndButtonEditor;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGTextCtrlEditor;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGVIterator;

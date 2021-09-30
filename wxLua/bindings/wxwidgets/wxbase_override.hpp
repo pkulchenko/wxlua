@@ -1545,6 +1545,24 @@ static int LUACALL wxLua_wxVariantFromVoidPtr_constructor(lua_State *L)
 %end
 
 
+%override wxLua_wxVariantFromObject_constructor
+//     wxVariant(wxObject *o)
+static int LUACALL wxLua_wxVariantFromObject_constructor(lua_State *L)
+{
+    // wxObject o
+    wxObject * o = (wxObject *)wxluaT_getuserdatatype(L, 1, wxluatype_wxObject);
+    if (wxluaO_isgcobject(L, o)) wxluaO_undeletegcobject(L, o);
+    // call constructor
+    wxVariant* returns = new wxVariant(o);
+    // push the constructed class pointer
+    wxluaO_addgcobject(L, returns, wxluatype_wxVariant);
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxVariant);
+
+    return 1;
+}
+%end
+
+
 %override wxLua_wxVariant_ToLuaValue
 // int ToLuaValue() const
 static int LUACALL wxLua_wxVariant_ToLuaValue(lua_State *L)
