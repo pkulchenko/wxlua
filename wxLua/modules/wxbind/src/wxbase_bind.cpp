@@ -2469,6 +2469,7 @@ static const char* wxluaclassname_wxTimeSpan = "wxTimeSpan";
 static const char* wxluaclassname_wxTranslations = "wxTranslations";
 static const char* wxluaclassname_wxTranslationsLoader = "wxTranslationsLoader";
 static const char* wxluaclassname_wxULongLong = "wxULongLong";
+static const char* wxluaclassname_wxUniChar = "wxUniChar";
 static const char* wxluaclassname_wxVariant = "wxVariant";
 static const char* wxluaclassname_wxVersionInfo = "wxVersionInfo";
 
@@ -2645,6 +2646,9 @@ extern void wxLua_wxStringClientData_delete_function(void** p);
 extern wxLuaBindMethod wxStringTokenizer_methods[];
 extern int wxStringTokenizer_methodCount;
 extern void wxLua_wxStringTokenizer_delete_function(void** p);
+extern wxLuaBindMethod wxUniChar_methods[];
+extern int wxUniChar_methodCount;
+extern void wxLua_wxUniChar_delete_function(void** p);
 
 #if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxStandardPaths
     extern wxLuaBindMethod wxStandardPaths_methods[];
@@ -3177,6 +3181,8 @@ wxLuaBindClass* wxLuaGetClassList_wxbase(size_t &count)
 #if wxUSE_LONGLONG
         { wxluaclassname_wxULongLong, wxULongLong_methods, wxULongLong_methodCount, NULL, &wxluatype_wxULongLong, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxULongLong_delete_function, }, 
 #endif // wxUSE_LONGLONG
+
+        { wxluaclassname_wxUniChar, wxUniChar_methods, wxUniChar_methodCount, NULL, &wxluatype_wxUniChar, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxUniChar_delete_function, }, 
 
 #if wxUSE_VARIANT
         { wxluaclassname_wxVariant, wxVariant_methods, wxVariant_methodCount, CLASSINFO(wxVariant), &wxluatype_wxVariant, wxluabaseclassnames_wxVariant, wxluabaseclassbinds_wxVariant, NULL, NULL, NULL, 0, &wxLua_wxVariant_delete_function, }, 

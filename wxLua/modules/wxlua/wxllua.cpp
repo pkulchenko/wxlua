@@ -1457,6 +1457,32 @@ wxString LUACALL wxlua_getwxStringtype(lua_State *L, int stack_idx)
     return wxEmptyString;
 }
 
+wxUniChar LUACALL wxlua_getwxUniChartype(lua_State *L, int stack_idx)
+{
+    if (wxlua_isstringtype(L, stack_idx)) {
+        wxString wxstr = lua2wx(lua_tostring(L, stack_idx));
+        if (wxstr.empty()) {
+            return wxUniChar();
+        }
+        return wxstr[0];
+    }
+    else if (wxlua_iswxuserdata(L, stack_idx))
+    {
+        int stack_type = wxluaT_type(L, stack_idx);
+
+        if (wxluaT_isderivedtype(L, stack_type, *p_wxluatype_wxUniChar) >= 0)
+        {
+            wxUniChar* wxunichar = (wxUniChar*)wxlua_touserdata(L, stack_idx, false);
+            wxCHECK_MSG(wxunichar, wxUniChar(), wxT("Invalid userdata wxUniChar"));
+            return *wxunichar;
+        }
+    }
+
+    wxlua_argerror(L, stack_idx, wxT("a 'string' or 'wxUniChar'"));
+
+    return wxUniChar();
+}
+
 bool LUACALL wxlua_getbooleantype(lua_State *L, int stack_idx)
 {
     int l_type = lua_type(L, stack_idx);

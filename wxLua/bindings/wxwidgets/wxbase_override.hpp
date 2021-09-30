@@ -617,6 +617,25 @@ static int LUACALL wxLua_wxString_constructor(lua_State *L)
 }
 %end
 
+%override wxLua_wxUniChar_constructor
+//     wxUniChar(const string& str = "")
+static int LUACALL wxLua_wxUniChar_constructor(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxUniChar c
+    const wxUniChar c = (argCount >= 1 ? wxlua_getwxUniChartype(L, 1) : wxUniChar());
+    // call constructor
+    wxUniChar* returns = new wxUniChar(c);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxUniChar);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxUniChar);
+
+    return 1;
+}
+%end
+
 %override wxLua_wxClassInfo_constructor
 // wxClassInfo(const wxString &name)
 static int LUACALL wxLua_wxClassInfo_constructor(lua_State *L)

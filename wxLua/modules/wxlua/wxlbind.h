@@ -118,6 +118,7 @@ extern WXDLLIMPEXP_DATA_WXLUA(int*) p_wxluatype_wxEvent;       // wxLua type for
 extern WXDLLIMPEXP_DATA_WXLUA(int*) p_wxluatype_wxWindow;      // wxLua type for wxWindow
 extern WXDLLIMPEXP_DATA_WXLUA(int*) p_wxluatype_wxScrollEvent; // wxLua type for wxScrollEvent - see wxLuaEventCallback::OnEvent
 extern WXDLLIMPEXP_DATA_WXLUA(int*) p_wxluatype_wxSpinEvent;   // wxLua type for wxSpinEvent   - see wxLuaEventCallback::OnEvent
+extern WXDLLIMPEXP_DATA_WXLUA(int*) p_wxluatype_wxUniChar;     // wxLua type for wxUniChar
 extern WXDLLIMPEXP_DATA_WXLUA(int*) p_wxluatype_wxString;      // wxLua type for wxString
 extern WXDLLIMPEXP_DATA_WXLUA(int*) p_wxluatype_wxArrayString; // wxLua type for wxArrayString
 extern WXDLLIMPEXP_DATA_WXLUA(int*) p_wxluatype_wxSortedArrayString; // wxLua type for wxSortedArrayString

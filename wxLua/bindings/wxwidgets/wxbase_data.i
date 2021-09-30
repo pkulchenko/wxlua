@@ -84,6 +84,28 @@ class %delete wxString::iterator
 #endif
 
 // ---------------------------------------------------------------------------
+// wxUniChar
+
+#include "wx/unichar.h"
+
+class %delete wxUniChar
+{
+    wxUniChar(const wxString& str = "");
+
+    wxUint32 GetValue() const;
+    bool IsAscii() const;
+    /* bool GetAsChar(char *c) const; */
+    bool IsBMP() const;
+    static bool IsBMP(wxUint32 value);
+    bool IsSupplementary() const;
+    static bool IsSupplementary(wxUint32 value);
+    wxUint16 HighSurrogate() const;
+    static wxUint16 HighSurrogate(wxUint32 value);
+    wxUint16 LowSurrogate() const;
+    static wxUint16 LowSurrogate(wxUint32 value);
+};
+
+// ---------------------------------------------------------------------------
 // wxStringTokenizer
 
 #include "wx/tokenzr.h"

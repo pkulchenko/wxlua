@@ -50,6 +50,7 @@ int* p_wxluatype_wxEvent             = &wxluatype_TUNKNOWN;
 int* p_wxluatype_wxWindow            = &wxluatype_TUNKNOWN;
 int* p_wxluatype_wxScrollEvent       = &wxluatype_TUNKNOWN;
 int* p_wxluatype_wxSpinEvent         = &wxluatype_TUNKNOWN;
+int* p_wxluatype_wxUniChar           = &wxluatype_TUNKNOWN;
 int* p_wxluatype_wxString            = &wxluatype_TUNKNOWN;
 int* p_wxluatype_wxArrayString       = &wxluatype_TUNKNOWN;
 int* p_wxluatype_wxSortedArrayString = &wxluatype_TUNKNOWN;

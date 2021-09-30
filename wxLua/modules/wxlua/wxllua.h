@@ -507,6 +507,7 @@ WXDLLIMPEXP_WXLUA bool wxlua_iswxstringtype(lua_State* L, int stack_idx);
 WXDLLIMPEXP_WXLUA const char* LUACALL wxlua_getstringtypelen(lua_State* L, int stack_idx, size_t *len);
 WXDLLIMPEXP_WXLUA const char* LUACALL wxlua_getstringtype(lua_State* L, int stack_idx);
 WXDLLIMPEXP_WXLUA wxString LUACALL    wxlua_getwxStringtype(lua_State* L, int stack_idx);
+WXDLLIMPEXP_WXLUA wxUniChar LUACALL   wxlua_getwxUniChartype(lua_State* L, int stack_idx);
 WXDLLIMPEXP_WXLUA bool LUACALL        wxlua_getbooleantype(lua_State* L, int stack_idx);
 WXDLLIMPEXP_WXLUA long LUACALL        wxlua_getenumtype(lua_State* L, int stack_idx);
 WXDLLIMPEXP_WXLUA long LUACALL        wxlua_getintegertype(lua_State* L, int stack_idx);

@@ -2943,6 +2943,17 @@ function ParseData(interfaceData)
 
                                 lineState.Action = "action_method_body"
                                 lineState.ActionMandatory = false
+                            elseif tag == "(" and lineTags[t+1] == ")" then
+                                if not lineState.ParamState.DefaultValue then
+                                    print("ERROR: Method Parameter requires DefaultValue to be assigned. "..LineTableErrString(lineTable))
+                                end
+
+                                lineState.ParamState.DefaultValue = lineState.ParamState.DefaultValue .. "()"
+                                t = t + 1
+                                tag = lineTags[t]
+
+                                lineState.Action = "action_methodparam_defaultvalue"
+                                lineState.ActionMandatory = true
                             elseif --IsDataType(tag) or
                                    dataTypeAttribTable[tag] or functionAttribTable[tag] or
                                    (tag == "*") or (tag == "&") or (tag == "[]") or
@@ -3394,6 +3405,10 @@ if ((double)(lua_Integer)(%s) == (double)(%s)) {
                     overload_argList = overload_argList.."&wxluatype_TSTRING, "
                     CommentBindingTable(codeList, "    // get the string value\n")
                     table.insert(codeList, "    wxString val = wxlua_getwxStringtype(L, "..stack_idx..");\n")
+                elseif memberType == "wxUniChar" then
+                    overload_argList = overload_argList.."&wxluatype_TSTRING, "
+                    CommentBindingTable(codeList, "    // get the unichar value\n")
+                    table.insert(codeList, "    wxUniChar val = wxlua_getwxUniChartype(L, "..stack_idx..");\n")
                 elseif not numeric and (not memberPtr or (memberPtr == "&"))  then
                     overload_argList = overload_argList.."&wxluatype_"..MakeClassVar(memberType)..", "
                     CommentBindingTable(codeList, "    // get the data type value\n")
@@ -3941,6 +3956,9 @@ if ((double)(lua_Integer)(%s) == (double)(%s)) {
                                     opt = "wxString("..opt..")"
                                 end
                             end
+                        elseif argType == "wxUniChar" then
+                            overload_argList = overload_argList.."&wxluatype_TSTRING, "
+                            argItem = "wxlua_getwxUniChartype(L, "..argNum..")"
                         elseif IsDataTypeBool(argTypeWithAttrib) then
                             overload_argList = overload_argList.."&wxluatype_TBOOLEAN, "
                             argItem = "wxlua_getbooleantype(L, "..argNum..")"
