@@ -1,3 +1,15 @@
+--[[
+/////////////////////////////////////////////////////////////////////////////
+// Name:        samples/propgrid/propgrid.cpp
+// Purpose:     wxPropertyGrid sample
+// Author:      Jaakko Salli
+// Modified by:
+// Created:     2004-09-25
+// Copyright:   (c) Jaakko Salli
+// Licence:     wxWindows licence
+/////////////////////////////////////////////////////////////////////////////
+--]]
+
 -- Load the wxLua module, does nothing if running from wxLua, wxLuaFreeze, or wxLuaEdit
 package.cpath = package.cpath.."./?.dll./?.so../lib/?.so../lib/vc_dll/?.dll../lib/bcc_dll/?.dll../lib/mingw_dll/?.dll"
 require("wx")
@@ -82,8 +94,6 @@ function GetExePath()
    return filePath
 end
 
-local inspect = dofile(GetExePath() .. "/inspect.lua")
-
 -------------------------------------------------------------------------
 
 local wxT = function(s) return s end
@@ -96,6 +106,8 @@ local function NewID()
    return IDCounter
 end
 
+
+local MyApp = {}
 
 local FormMain = {
    PGID = NewID(),
@@ -186,6 +198,8 @@ local FormMain = {
    m_labelEditingEnabled = false
 }
 
+-------------------------------------------------------------------------
+
 function FormMain:OnMove(event)
    if self.m_pPropGridManager == nil then
       --// this check is here so the frame layout can be tested
@@ -222,6 +236,8 @@ function FormMain:OnMove(event)
    --// Should always call event:Skip() in frame's MoveEvent handler
    event:Skip()
 end
+
+-------------------------------------------------------------------------
 
 function FormMain:OnResize(event)
    if self.m_pPropGridManager == nil then
@@ -260,6 +276,8 @@ function FormMain:OnResize(event)
    event:Skip()
 end
 
+-------------------------------------------------------------------------
+
 function FormMain:OnPropertyGridChanging(event)
    local p = event:GetProperty()
 
@@ -276,6 +294,8 @@ function FormMain:OnPropertyGridChanging(event)
       end
    end
 end
+
+-------------------------------------------------------------------------
 
 local pwdMode = 0
 
@@ -312,7 +332,6 @@ function FormMain:OnPropertyGridChange(event)
       self.m_pPropGridManager:SetFont(font)
    elseif name == "Margin Colour" then
       local cpv = wx.wxColourPropertyValue.FromVariant(value)
-      print("GET", cpv.m_colour:GetRGB())
       self.m_pPropGridManager:GetGrid():SetMarginColour( cpv.m_colour );
    elseif name == "Cell Colour" then
       local cpv = wx.wxColourPropertyValue.FromVariant(value)
@@ -325,6 +344,8 @@ function FormMain:OnPropertyGridChange(event)
       self.m_pPropGridManager:GetGrid():SetCellTextColour( cpv.m_colour );
    end
 end
+
+-------------------------------------------------------------------------
 
 function FormMain:OnPropertyGridSelect(event)
    local property = event:GetProperty()
@@ -349,6 +370,8 @@ function FormMain:OnPropertyGridSelect(event)
    -- #endif --// wsxUSE_STATUSBAR
 end
 
+-------------------------------------------------------------------------
+
 function FormMain:OnPropertyGridPageChange(_)
    -- #if wxUSE_STATUSBAR
    local sb = self.this:GetStatusBar()
@@ -357,16 +380,24 @@ function FormMain:OnPropertyGridPageChange(_)
    -- #endif --// wsxUSE_STATUSBAR
 end
 
+-------------------------------------------------------------------------
+
 function FormMain:OnPropertyGridLabelEditBegin(event)
    wx.wxLogMessage(("wxPG_EVT_LABEL_EDIT_BEGIN(%s)"):format(event:GetProperty():GetLabel()))
 end
+
+-------------------------------------------------------------------------
 
 function FormMain:OnPropertyGridLabelEditEnding(event)
    wx.wxLogMessage(("wxPG_EVT_LABEL_EDIT_ENDING(%s)"):format(event:GetProperty():GetLabel()))
 end
 
+-------------------------------------------------------------------------
+
 function FormMain:OnPropertyGridHighlight(_)
 end
+
+-------------------------------------------------------------------------
 
 function FormMain:OnPropertyGridItemRightClick(event)
    -- #if wxUSE_STATUSBAR
@@ -381,6 +412,8 @@ function FormMain:OnPropertyGridItemRightClick(event)
    -- #endif --// wsxUSE_STATUSBAR
 end
 
+-------------------------------------------------------------------------
+
 function FormMain:OnPropertyGridItemDoubleClick(event)
    -- #if wxUSE_STATUSBAR
    local prop = event:GetProperty()
@@ -393,6 +426,8 @@ function FormMain:OnPropertyGridItemDoubleClick(event)
    end
    -- #endif --// wsxUSE_STATUSBAR
 end
+
+-------------------------------------------------------------------------
 
 function FormMain:OnPropertyGridButtonClick(_)
    -- #if wxUSE_STATUSBAR
@@ -408,13 +443,19 @@ function FormMain:OnPropertyGridButtonClick(_)
    -- #endif --// wsxUSE_STATUSBAR
 end
 
+-------------------------------------------------------------------------
+
 function FormMain:OnPropertyGridItemCollapse(_)
    wx.wxLogMessage("Item was Collapsed")
 end
 
+-------------------------------------------------------------------------
+
 function FormMain:OnPropertyGridItemExpand(_)
    wx.wxLogMessage("Item was Expanded")
 end
+
+-------------------------------------------------------------------------
 
 function FormMain:OnPropertyGridColBeginDrag(event)
    if self.m_itemVetoDragging:IsChecked() then
@@ -425,22 +466,42 @@ function FormMain:OnPropertyGridColBeginDrag(event)
    end
 end
 
+-------------------------------------------------------------------------
+
 function FormMain:OnPropertyGridColDragging(_)
+    --// For now, let's not spam the log output
+    --//wx.wxLogDebug("Splitter %d is being resized", event:GetColumn())
 end
+
+-------------------------------------------------------------------------
 
 function FormMain:OnPropertyGridColEndDrag(event)
    wx.wxLogDebug(("Splitter %d resize ended"):format(event:GetColumn()))
 end
 
+-------------------------------------------------------------------------
+
+--// EVT_TEXT handling
 function FormMain:OnPropertyGridTextUpdate(event)
    event:Skip()
 end
 
+-------------------------------------------------------------------------
+
 function FormMain:OnPropertyGridKeyEvent(_)
+    --// Occurs on wxGTK mostly, but not wxMSW.
 end
 
+-------------------------------------------------------------------------
+
 function FormMain:OnLabelTextChange(_)
+--// Uncomment following to allow property label modify in real-time
+--//    local p = self.m_pPropGridManager:GetGrid():GetSelection()
+--//    if not p:IsOk() then return end
+--//    self.m_pPropGridManager:SetPropertyLabel( p, self.m_tcPropLabel:DoGetValue() )
 end
+
+-------------------------------------------------------------------------
 
 local _fs_windowstyle_labels = {
    "wxSIMPLE_BORDER",
@@ -524,7 +585,7 @@ function FormMain:PopulateWithStandardItems()
    pg:Append( wx.wxPropertyCategory("Position","PositionCategory") )
    pg:SetPropertyHelpString( "PositionCategory", "Change in items in this category will cause respective changes in frame." )
 
-   ----// Let's demonstrate 'Units' attribute here
+   --// Let's demonstrate 'Units' attribute here
 
    --// Note that we use many attribute constants instead of strings here
    --// (for instance, wx.wxPG_ATTR_MIN, instead of "min").
@@ -586,27 +647,29 @@ function FormMain:PopulateWithStandardItems()
 
    pg:Append( wx.wxPropertyCategory("More Examples",wx.wxPG_LABEL) )
 
-   -- pg:Append( wx.wxFontDataProperty( "FontDataProperty", wx.wxPG_LABEL) )
-   -- pg:SetPropertyHelpString( "FontDataProperty",
-   --     "This demonstrates wxFontDataProperty class defined in this sample app. " ..
-   --     "It is exactly like wxFontProperty from the library, but also has colour sub-property."
-   --     )
+--[[ FIXME
+   pg:Append( wx.wxFontDataProperty( "FontDataProperty", wx.wxPG_LABEL) )
+   pg:SetPropertyHelpString( "FontDataProperty",
+       "This demonstrates wxFontDataProperty class defined in this sample app. " ..
+       "It is exactly like wxFontProperty from the library, but also has colour sub-property."
+       )
 
-   -- pg:Append( wx.wxDirsProperty("DirsProperty",wx.wxPG_LABEL) )
-   -- pg:SetPropertyHelpString( "DirsProperty",
-   --     "This demonstrates wxDirsProperty class defined in this sample app. " ..
-   --     "It is built with WX_PG_IMPLEMENT_ARRAYSTRING_PROPERTY_WITH_VALIDATOR macro, " ..
-   --     "with custom action (dir dialog popup) defined."
-   --     )
+   pg:Append( wx.wxDirsProperty("DirsProperty",wx.wxPG_LABEL) )
+   pg:SetPropertyHelpString( "DirsProperty",
+       "This demonstrates wxDirsProperty class defined in this sample app. " ..
+       "It is built with WX_PG_IMPLEMENT_ARRAYSTRING_PROPERTY_WITH_VALIDATOR macro, " ..
+       "with custom action (dir dialog popup) defined."
+       )
 
-   -- local arrdbl = { -1.0, -0.5, 0.0, 0.5, 1.0 }
+   local arrdbl = { -1.0, -0.5, 0.0, 0.5, 1.0 }
 
-   -- pg:Append( wx.wxArrayDoubleProperty("ArrayDoubleProperty",wx.wxPG_LABEL,arrdbl) )
-   -- --//pg:SetPropertyAttribute("ArrayDoubleProperty",wx.wxPG_FLOAT_PRECISION,2L)
-   -- pg:SetPropertyHelpString( "ArrayDoubleProperty",
-   --     "This demonstrates wxArrayDoubleProperty class defined in this sample app. " ..
-   --     "It is an example of a custom list editor property."
-   --     )
+   pg:Append( wx.wxArrayDoubleProperty("ArrayDoubleProperty",wx.wxPG_LABEL,arrdbl) )
+   --//pg:SetPropertyAttribute("ArrayDoubleProperty",wx.wxPG_FLOAT_PRECISION,2L)
+   pg:SetPropertyHelpString( "ArrayDoubleProperty",
+       "This demonstrates wxArrayDoubleProperty class defined in this sample app. " ..
+       "It is an example of a custom list editor property."
+       )
+--]]
 
    pg:Append( wx.wxLongStringProperty("Information",wx.wxPG_LABEL,
                                       "Editing properties will have immediate effect on this window, " ..
@@ -634,6 +697,8 @@ function FormMain:PopulateWithStandardItems()
    end
 --]]
 end
+
+-------------------------------------------------------------------------
 
 function FormMain:PopulateWithExamples()
    local pgman = self.m_pPropGridManager
@@ -1001,6 +1066,8 @@ function FormMain:PopulateWithExamples()
    -- self:AddTestProperties(pg)
 end
 
+-------------------------------------------------------------------------
+
 function FormMain:PopulateWithLibraryConfig()
    local pgman = self.m_pPropGridManager
    local pg = pgman:GetPage("wxWidgets Library Config")
@@ -1146,24 +1213,28 @@ function FormMain:PopulateWithLibraryConfig()
    pg:SetPropertyAttribute(pid,wx.wxPG_BOOL_USE_CHECKBOX,true,wx.wxPG_RECURSE)
 end
 
+-------------------------------------------------------------------------
+
 function FormMain:PopulateGrid()
    local pgman = self.m_pPropGridManager
    pgman:AddPage("Standard Items")
 
    self:PopulateWithStandardItems()
 
-   -- pgman:AddPage("wxWidgets Library Config")
+--[[ FIXME
+   pgman:AddPage("wxWidgets Library Config")
 
-   -- self:PopulateWithLibraryConfig()
+   self:PopulateWithLibraryConfig()
 
-   -- local myPage = wxMyPropertyGridPage()
-   -- myPage:Append( wx.wxIntProperty ( "IntProperty", wxPG_LABEL, 12345678 ) )
+   local myPage = wxMyPropertyGridPage()
+   myPage:Append( wx.wxIntProperty ( "IntProperty", wxPG_LABEL, 12345678 ) )
 
    --// Use wxMyPropertyGridPage (see above) to test the
    --// custom wxPropertyGridPage feature.
-   -- pgman:AddPage("Examples",wx.wxNullBitmap,myPage)
+   pgman:AddPage("Examples",wx.wxNullBitmap,myPage)
 
-   -- self:PopulateWithExamples()
+   self:PopulateWithExamples()
+--]]
 end
 
 function FormMain:CreateGrid(style, extraStyle)
@@ -1235,6 +1306,8 @@ function FormMain:ReplaceGrid(style, extraStyle)
 
    self.m_panel:Layout()
 end
+
+-------------------------------------------------------------------------
 
 function FormMain:create()
    local frameSize = wx.wxSize((wx.wxSystemSettings.GetMetric(wx.wxSYS_SCREEN_X) / 10) * 4,
@@ -2412,7 +2485,7 @@ end
 -------------------------------------------------------------------------
 
 function FormMain:OnIdle(event)
-   --[[]*
+--[[
       // This code is useful for debugging focus problems
       static wxWindow* last_focus = (wxWindow*) NULL
 
@@ -2428,7 +2501,7 @@ function FormMain:OnIdle(event)
       class_name,
       (unsigned int)cur_focus)
       }
-      */--]]
+--]]
 
    event:Skip()
 end
@@ -2459,7 +2532,6 @@ function FormMain:OnDumpList(_)
    for i = 0, values:GetCount()-1 do
       local t
       local v = values[i]
-      print("A!", v)
 
       local strValue = v:GetString()
 
@@ -2515,29 +2587,39 @@ end
 -- local PropertyGridPopup popup = nil
 
 function FormMain:OnShowPopup(_)
-   -- if popup then
-   --    popup:Destroy()
-   --    popup = nil
-   --    return
-   -- end
-   -- popup = wx.PropertyGridPopup(self.this)
-   -- local pt = wx.wxGetMousePosition()
-   -- popup:Position(pt, wx.wxSize(0, 0))
-   -- popup:Show()
+--[[ FIXME
+   if popup then
+      popup:Destroy()
+      popup = nil
+      return
+   end
+   popup = wx.PropertyGridPopup(self.this)
+   local pt = wx.wxGetMousePosition()
+   popup:Position(pt, wx.wxSize(0, 0))
+   popup:Show()
+--]]
 end
 
 -------------------------------------------------------------------------
 
 function FormMain:RunTests(full)
+   -- TODO
 end
 
 -------------------------------------------------------------------------
 
-local function main()
+function MyApp:OnInit()
    local frame = FormMain:create()
    frame:Show()
    wx.wxLog.SetVerbose(true)
-   wx.wxGetApp():MainLoop()
+   return true
 end
 
-main()
+MyApp:OnInit()
+
+
+-- Call wx.wxGetApp():MainLoop() last to start the wxWidgets event loop,
+-- otherwise the wxLua program will exit immediately.
+-- Does nothing if running from wxLua, wxLuaFreeze, or wxLuaEdit since the
+-- MainLoop is already running or will be started by the C++ program.
+wx.wxGetApp():MainLoop()
