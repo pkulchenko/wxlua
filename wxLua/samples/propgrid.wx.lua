@@ -50,36 +50,36 @@ local sample_xpm = {
 -- ---------------------------------------------------------------------------
 -- return the path part of the currently executing file
 function GetExePath()
-    local function findLast(filePath) -- find index of last / or \ in string
-        local lastOffset = nil
-        local offset = nil
-        repeat
-            offset = string.find(filePath, "\\") or string.find(filePath, "/")
+   local function findLast(filePath) -- find index of last / or \ in string
+      local lastOffset = nil
+      local offset = nil
+      repeat
+         offset = string.find(filePath, "\\") or string.find(filePath, "/")
 
-            if offset then
-                lastOffset = (lastOffset or 0) + offset
-                filePath = string.sub(filePath, offset + 1)
-            end
-        until not offset
+         if offset then
+            lastOffset = (lastOffset or 0) + offset
+            filePath = string.sub(filePath, offset + 1)
+         end
+      until not offset
 
-        return lastOffset
-    end
+      return lastOffset
+   end
 
-    local filePath = debug.getinfo(1, "S").source
+   local filePath = debug.getinfo(1, "S").source
 
-    if string.byte(filePath) == string.byte('@') then
-        local offset = findLast(filePath)
-        if offset ~= nil then
-            -- remove the @ at the front up to just before the path separator
-            filePath = string.sub(filePath, 2, offset - 1)
-        else
-            filePath = "."
-        end
-    else
-        filePath = wx.wxGetCwd()
-    end
+   if string.byte(filePath) == string.byte('@') then
+      local offset = findLast(filePath)
+      if offset ~= nil then
+         -- remove the @ at the front up to just before the path separator
+         filePath = string.sub(filePath, 2, offset - 1)
+      else
+         filePath = "."
+      end
+   else
+      filePath = wx.wxGetCwd()
+   end
 
-    return filePath
+   return filePath
 end
 
 -------------------------------------------------------------------------
@@ -197,32 +197,31 @@ function FormMain:OnResize(event)
       return
    end
 
-    --// Update size properties
+   --// Update size properties
    local size = self.this:GetSize()
 
-    local id, p
+   local id, p
 
-    --// Must check if properties exist (as they may be deleted).
+   --// Must check if properties exist (as they may be deleted).
 
-    --// Using m_pPropGridManager, we can scan all pages automatically.
-    p = self.m_pPropGridManager:GetPropertyByName( "Width" )
-    if p and not p:IsValueUnspecified() then
-       print("A!")
-        self.m_pPropGridManager:SetPropertyValue( p, w )
-    end
+   --// Using m_pPropGridManager, we can scan all pages automatically.
+   p = self.m_pPropGridManager:GetPropertyByName( "Width" )
+   if p and not p:IsValueUnspecified() then
+      self.m_pPropGridManager:SetPropertyValue( p, w )
+   end
 
-    p = self.m_pPropGridManager:GetPropertyByName( "Height" )
-    if p and not p:IsValueUnspecified() then
-        self.m_pPropGridManager:SetPropertyValue( p, h )
-    end
+   p = self.m_pPropGridManager:GetPropertyByName( "Height" )
+   if p and not p:IsValueUnspecified() then
+      self.m_pPropGridManager:SetPropertyValue( p, h )
+   end
 
-    id = self.m_pPropGridManager:GetPropertyByName ( "Size" )
-    if id then
-        self.m_pPropGridManager:SetPropertyValue( id, wx.wxVariant(wx.wxSize(w,h)) )
-    end
+   id = self.m_pPropGridManager:GetPropertyByName ( "Size" )
+   if id then
+      self.m_pPropGridManager:SetPropertyValue( id, wx.wxVariant(wx.wxSize(w,h)) )
+   end
 
-    --// Should always call event.Skip() in frame's SizeEvent handler
-    event:Skip()
+   --// Should always call event.Skip() in frame's SizeEvent handler
+   event:Skip()
 end
 
 function FormMain:OnPropertyGridChanging(event)
@@ -440,7 +439,7 @@ for i, label in ipairs(_fs_framestyle_labels) do
 end
 
 function FormMain:OnTestXRC(_)
-    wx.wxMessageBox("Sorry, not yet implemented")
+   wx.wxMessageBox("Sorry, not yet implemented")
 end
 
 function FormMain:OnEnableCommonValues(_)
@@ -1113,9 +1112,9 @@ function FormMain:PopulateGrid()
 
    self:PopulateWithStandardItems()
 
-   pgman:AddPage("wxWidgets Library Config")
+   -- pgman:AddPage("wxWidgets Library Config")
 
-   self:PopulateWithLibraryConfig()
+   -- self:PopulateWithLibraryConfig()
 
    -- local myPage = wxMyPropertyGridPage()
    -- myPage:Append( wx.wxIntProperty ( "IntProperty", wxPG_LABEL, 12345678 ) )
@@ -2260,7 +2259,7 @@ function FormMain:OnSetVirtualWidth(_)
       if dlg:ShowModal() == wx.wxID_OK then
          newWidth = dlg:GetValue()
       end
-      end
+   end
    if newWidth ~= oldWidth then
       self.m_pPropGridManager:GetGrid():SetVirtualWidth(newWidth)
    end
@@ -2386,25 +2385,25 @@ end
 -------------------------------------------------------------------------
 
 function FormMain:OnIdle(event)
-    --[[]*
-    // This code is useful for debugging focus problems
-    static wxWindow* last_focus = (wxWindow*) NULL
+   --[[]*
+      // This code is useful for debugging focus problems
+      static wxWindow* last_focus = (wxWindow*) NULL
 
-    wxWindow* cur_focus = ::wxWindow::FindFocus()
+      wxWindow* cur_focus = ::wxWindow::FindFocus()
 
-    if ( cur_focus != last_focus )
-    {
-        const wxChar* class_name = "<none>"
-        if ( cur_focus )
-            class_name = cur_focus->GetClassInfo()->GetClassName()
-        last_focus = cur_focus
-        wxLogDebug( "FOCUSED: %s %X",
-            class_name,
-            (unsigned int)cur_focus)
-    }
-    */--]]
+      if ( cur_focus != last_focus )
+      {
+      const wxChar* class_name = "<none>"
+      if ( cur_focus )
+      class_name = cur_focus->GetClassInfo()->GetClassName()
+      last_focus = cur_focus
+      wxLogDebug( "FOCUSED: %s %X",
+      class_name,
+      (unsigned int)cur_focus)
+      }
+      */--]]
 
-    event:Skip()
+   event:Skip()
 end
 
 -------------------------------------------------------------------------

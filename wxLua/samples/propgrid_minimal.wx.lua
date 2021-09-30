@@ -54,7 +54,7 @@ if was_required then
    return DisplayMinimalFrame
 end
 
-local frame = DisplayMinimalFrame(wx.wxNULL)
+local frame = DisplayMinimalFrame(wx.NULL)
 
 wx.wxLog.SetVerbose(true)
 local logWindow = wx.wxLogWindow(frame, "Log Messages", false)
