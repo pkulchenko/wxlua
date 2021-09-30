@@ -150,7 +150,7 @@ class wxPropertyGrid : public wxScrolled<wxControl>, public wxPropertyGridInterf
     /* wxPGSortCallback GetSortFunction() const; */
     int GetSplitterPosition( unsigned int splitterIndex = 0 ) const;
     wxTextCtrl* GetEditorTextCtrl() const;
-    /* const wxPGCell& GetUnspecifiedValueAppearance() const; */
+    const wxPGCell& GetUnspecifiedValueAppearance() const;
     wxString GetUnspecifiedValueText( int argFlags = 0 ) const;
     int GetVerticalSpacing() const;
     /* wxPropertyGridHitTestResult HitTest( const wxPoint& pt ) const; */
@@ -162,8 +162,8 @@ class wxPropertyGrid : public wxScrolled<wxControl>, public wxPropertyGridInterf
     void RefreshEditor();
     virtual void RefreshProperty( wxPGProperty* p );
 
-    /* static wxPGEditor* RegisterEditorClass( wxPGEditor* editor, bool noDefCheck = false ); */
-    /* static wxPGEditor* DoRegisterEditorClass( wxPGEditor* editor, const wxString& name, bool noDefCheck = false ); */
+    static wxPGEditor* RegisterEditorClass( %ungc wxPGEditor* editor, bool noDefCheck = false );
+    static wxPGEditor* DoRegisterEditorClass( %ungc wxPGEditor* editor, const wxString& name, bool noDefCheck = false );
 
     void ResetColours();
     void ResetColumnSizes( bool enableAutoResizing = false );
@@ -186,7 +186,7 @@ class wxPropertyGrid : public wxScrolled<wxControl>, public wxPropertyGridInterf
     /* void SetSortFunction( wxPGSortCallback sortFunction ); */
     void SetSplitterPosition( int newxpos, int col = 0 );
     void SetSplitterLeft( bool privateChildrenToo = false );
-    /* void SetUnspecifiedValueAppearance( const wxPGCell& cell ); */
+    void SetUnspecifiedValueAppearance( const wxPGCell& cell );
     void SetVerticalSpacing( int vspacing );
     void SetVirtualWidth( int width );
     void SetupTextCtrlValue( const wxString& text );
@@ -245,7 +245,348 @@ class %delete wxPropertyGridEvent : public wxCommandEvent
 
 
 #include "wx/propgrid/manager.h"
+
+
+class %delete wxPropertyGridPage : public wxEvtHandler, public wxPropertyGridInterface, public wxPropertyGridPageState
+{
+    wxPropertyGridPage();
+
+    virtual void Clear();
+    wxSize FitColumns();
+    inline int GetIndex() const;
+    wxPGProperty* GetRoot() const;
+    int GetSplitterPosition( int col = 0 ) const;
+    wxPropertyGridPageState* GetStatePtr();
+    const wxPropertyGridPageState* GetStatePtr() const;
+    int GetToolId() const;
+    virtual void Init();
+    virtual bool IsHandlingAllEvents() const;
+    virtual void OnShow();
+    virtual void RefreshProperty( wxPGProperty* p );
+    void SetSplitterPosition( int splitterPos, int col = 0 );
+};
+
+
+class %delete wxPropertyGridManager : public wxPanel, public wxPropertyGridInterface
+{
+public:
+    wxPropertyGridManager();
+
+    %ungc wxPropertyGridManager( wxWindow *parent, wxWindowID id = wxID_ANY,
+                                 const wxPoint& pos = wxDefaultPosition,
+                                 const wxSize& size = wxDefaultSize,
+                                 long style = wxPGMAN_DEFAULT_STYLE,
+                                 const wxString& name = wxPropertyGridManagerNameStr );
+
+
+    %ungc wxPropertyGridPage* AddPage( const wxString& label = wxEmptyString,
+                                       const wxBitmap& bmp = wxPG_NULL_BITMAP,
+                                       wxPropertyGridPage* pageObj = NULL );
+
+    virtual void Clear();
+    void ClearPage( int page );
+    bool CommitChangesFromEditor( wxUint32 flags = 0 );
+    %ungc bool Create( wxWindow *parent, wxWindowID id = wxID_ANY,
+                       const wxPoint& pos = wxDefaultPosition,
+                       const wxSize& size = wxDefaultSize,
+                       long style = wxPGMAN_DEFAULT_STYLE,
+                       const wxString& name = wxPropertyGridManagerNameStr );
+    bool EnableCategories( bool enable );
+    bool EnsureVisible( wxPGPropArg id );
+    int GetColumnCount( int page = -1 ) const;
+    int GetDescBoxHeight() const;
+    wxPropertyGrid* GetGrid();
+    /* virtual wxPGVIterator GetVIterator( int flags ) const; */
+    wxPropertyGridPage* GetCurrentPage() const;
+    wxPropertyGridPage* GetPage( unsigned int ind ) const;
+    wxPropertyGridPage* GetPage( const wxString& name ) const;
+    int GetPageByName( const wxString& name ) const;
+    int GetPageByState( const wxPropertyGridPageState* pstate ) const;
+    size_t GetPageCount() const;
+    const wxString& GetPageName( int index ) const;
+    wxPGProperty* GetPageRoot( int index ) const;
+    int GetSelectedPage() const;
+    wxPGProperty* GetSelectedProperty() const;
+    wxPGProperty* GetSelection() const;
+    wxToolBar* GetToolBar() const;
+    virtual wxPropertyGridPage* InsertPage( int index, const wxString& label,
+                                            const wxBitmap& bmp = wxNullBitmap,
+                                            %ungc wxPropertyGridPage* pageObj = NULL );
+    bool IsAnyModified() const;
+    bool IsFrozen() const;
+    bool IsPageModified( size_t index ) const;
+    virtual bool IsPropertySelected( wxPGPropArg id ) const;
+    virtual bool RemovePage( int page );
+    void SelectPage( int index );
+    void SelectPage( const wxString& label );
+    void SelectPage( wxPropertyGridPage* page );
+    bool SelectProperty( wxPGPropArg id, bool focus = false );
+    void SetColumnCount( int colCount, int page = -1 );
+    void SetColumnTitle( int idx, const wxString& title );
+    void SetDescription( const wxString& label, const wxString& content );
+    void SetDescBoxHeight( int ht, bool refresh = true );
+    void SetSplitterLeft( bool subProps = false, bool allPages = true );
+    void SetPageSplitterLeft(int page, bool subProps = false);
+    void SetPageSplitterPosition( int page, int pos, int column = 0 );
+    void SetSplitterPosition( int pos, int column = 0 );
+    void ShowHeader(bool show = true);
+};
+
 #include "wx/propgrid/editors.h"
+
+class %delete wxPGWindowList
+{
+public:
+    wxPGWindowList(wxWindow* primary, wxWindow* secondary = NULL);
+
+    void SetSecondary(wxWindow* secondary);
+
+    wxWindow* GetPrimary() const;
+    wxWindow* GetSecondary() const;
+};
+
+
+class %delete wxPGEditor : public wxObject
+{
+    wxPGEditor();
+
+    virtual wxString GetName() const;
+    virtual wxPGWindowList CreateControls(wxPropertyGrid* propgrid,
+                                          wxPGProperty* property,
+                                          const wxPoint& pos,
+                                          const wxSize& size) const = 0;
+    virtual void UpdateControl( wxPGProperty* property, wxWindow* ctrl ) const = 0;
+    virtual void DrawValue( wxDC& dc, const wxRect& rect, wxPGProperty* property, const wxString& text ) const;
+    virtual bool OnEvent( wxPropertyGrid* propgrid, wxPGProperty* property,
+        wxWindow* wnd_primary, wxEvent& event ) const = 0;
+    virtual bool GetValueFromControl( wxVariant& variant,
+                                      wxPGProperty* property,
+                                      wxWindow* ctrl ) const;
+    virtual void SetControlAppearance( wxPropertyGrid* pg,
+                                       wxPGProperty* property,
+                                       wxWindow* ctrl,
+                                       const wxPGCell& appearance,
+                                       const wxPGCell& oldAppearance,
+                                       bool unspecified ) const;
+    virtual void SetValueToUnspecified( wxPGProperty* property, wxWindow* ctrl ) const;
+    virtual void SetControlStringValue( wxPGProperty* property, wxWindow* ctrl, const wxString& txt ) const;
+    virtual void SetControlIntValue( wxPGProperty* property, wxWindow* ctrl, int value ) const;
+    virtual int InsertItem( wxWindow* ctrl, const wxString& label, int index ) const;
+    virtual void DeleteItem( wxWindow* ctrl, int index ) const;
+    virtual void SetItems(wxWindow* ctrl,  const wxArrayString& labels) const;
+    virtual void OnFocus( wxPGProperty* property, wxWindow* wnd ) const;
+    virtual bool CanContainCustomImage() const;
+
+    /* void*               m_clientData; */
+};
+
+class %delete wxPGTextCtrlEditor : public wxPGEditor
+{
+    wxPGTextCtrlEditor();
+
+    virtual wxPGWindowList CreateControls(wxPropertyGrid* propgrid,
+                                          wxPGProperty* property,
+                                          const wxPoint& pos,
+                                          const wxSize& size) const;
+    virtual void UpdateControl( wxPGProperty* property,
+                                wxWindow* ctrl ) const;
+    virtual bool OnEvent( wxPropertyGrid* propgrid,
+                          wxPGProperty* property,
+                          wxWindow* primaryCtrl,
+                          wxEvent& event ) const;
+    virtual bool GetValueFromControl( wxVariant& variant,
+                                      wxPGProperty* property,
+                                      wxWindow* ctrl ) const;
+
+    virtual wxString GetName() const;
+
+    //virtual wxPGCellRenderer* GetCellRenderer() const;
+    virtual void SetControlStringValue( wxPGProperty* property,
+                                        wxWindow* ctrl,
+                                        const wxString& txt ) const;
+    virtual void OnFocus( wxPGProperty* property, wxWindow* wnd ) const;
+
+    static bool OnTextCtrlEvent( wxPropertyGrid* propgrid,
+                                 wxPGProperty* property,
+                                 wxWindow* ctrl,
+                                 wxEvent& event );
+
+    static bool GetTextCtrlValueFromControl( wxVariant& variant,
+                                             wxPGProperty* property,
+                                             wxWindow* ctrl );
+
+};
+
+
+class %delete wxPGChoiceEditor : public wxPGEditor
+{
+    wxPGChoiceEditor();
+
+    virtual wxPGWindowList CreateControls(wxPropertyGrid* propgrid,
+                                          wxPGProperty* property,
+                                          const wxPoint& pos,
+                                          const wxSize& size) const;
+    virtual void UpdateControl( wxPGProperty* property,
+                                wxWindow* ctrl ) const;
+    virtual bool OnEvent( wxPropertyGrid* propgrid,
+                          wxPGProperty* property,
+                          wxWindow* primaryCtrl,
+                          wxEvent& event ) const;
+    virtual bool GetValueFromControl( wxVariant& variant,
+                                      wxPGProperty* property,
+                                      wxWindow* ctrl ) const;
+    virtual void SetValueToUnspecified( wxPGProperty* property,
+                                        wxWindow* ctrl ) const;
+    virtual wxString GetName() const;
+
+    virtual void SetControlIntValue( wxPGProperty* property,
+                                     wxWindow* ctrl,
+                                     int value ) const;
+    virtual void SetControlStringValue( wxPGProperty* property,
+                                        wxWindow* ctrl,
+                                        const wxString& txt ) const;
+
+    virtual int InsertItem( wxWindow* ctrl,
+                            const wxString& label,
+                            int index ) const;
+    virtual void DeleteItem( wxWindow* ctrl, int index ) const;
+    virtual void SetItems(wxWindow* ctrl, const wxArrayString& labels) const;
+
+    virtual bool CanContainCustomImage() const;
+
+    wxWindow* CreateControlsBase( wxPropertyGrid* propgrid,
+                                  wxPGProperty* property,
+                                  const wxPoint& pos,
+                                  const wxSize& sz,
+                                  long extraStyle ) const;
+
+};
+
+
+class %delete wxPGComboBoxEditor : public wxPGChoiceEditor
+{
+    wxPGComboBoxEditor();
+
+    virtual wxPGWindowList CreateControls(wxPropertyGrid* propgrid,
+                                          wxPGProperty* property,
+                                          const wxPoint& pos,
+                                          const wxSize& size) const;
+
+    virtual wxString GetName() const;
+
+    virtual void UpdateControl( wxPGProperty* property, wxWindow* ctrl ) const;
+
+    virtual bool OnEvent( wxPropertyGrid* propgrid, wxPGProperty* property,
+        wxWindow* ctrl, wxEvent& event ) const;
+
+    virtual bool GetValueFromControl( wxVariant& variant,
+                                      wxPGProperty* property,
+                                      wxWindow* ctrl ) const;
+
+    virtual void OnFocus( wxPGProperty* property, wxWindow* wnd ) const;
+
+};
+
+
+class %delete wxPGChoiceAndButtonEditor : public wxPGChoiceEditor
+{
+    wxPGChoiceAndButtonEditor();
+    virtual wxString GetName() const;
+
+    virtual wxPGWindowList CreateControls(wxPropertyGrid* propgrid,
+                                          wxPGProperty* property,
+                                          const wxPoint& pos,
+                                          const wxSize& size) const;
+};
+
+class %delete wxPGTextCtrlAndButtonEditor : public wxPGTextCtrlEditor
+{
+    wxPGTextCtrlAndButtonEditor();
+    virtual wxString GetName() const;
+
+    virtual wxPGWindowList CreateControls(wxPropertyGrid* propgrid,
+                                          wxPGProperty* property,
+                                          const wxPoint& pos,
+                                          const wxSize& size) const;
+};
+
+
+#if wxPG_INCLUDE_CHECKBOX
+
+class %delete wxPGCheckBoxEditor : public wxPGEditor
+{
+    wxPGCheckBoxEditor();
+
+    virtual wxString GetName() const;
+    virtual wxPGWindowList CreateControls(wxPropertyGrid* propgrid,
+                                          wxPGProperty* property,
+                                          const wxPoint& pos,
+                                          const wxSize& size) const;
+    virtual void UpdateControl( wxPGProperty* property,
+                                wxWindow* ctrl ) const;
+    virtual bool OnEvent( wxPropertyGrid* propgrid,
+                          wxPGProperty* property,
+                          wxWindow* primaryCtrl,
+                          wxEvent& event ) const;
+    virtual bool GetValueFromControl( wxVariant& variant,
+                                      wxPGProperty* property,
+                                      wxWindow* ctrl ) const;
+    virtual void SetValueToUnspecified( wxPGProperty* property,
+                                        wxWindow* ctrl ) const;
+
+    virtual void DrawValue( wxDC& dc,
+                            const wxRect& rect,
+                            wxPGProperty* property,
+                            const wxString& text ) const;
+    //virtual wxPGCellRenderer* GetCellRenderer() const;
+
+    virtual void SetControlIntValue( wxPGProperty* property,
+                                     wxWindow* ctrl,
+                                     int value ) const;
+};
+
+#endif
+
+
+class %delete wxPGEditorDialogAdapter : public wxObject
+{
+    wxPGEditorDialogAdapter();
+
+    bool ShowDialog( wxPropertyGrid* propGrid, wxPGProperty* property );
+
+    virtual bool DoShowDialog( wxPropertyGrid* propGrid,
+                               wxPGProperty* property ) = 0;
+
+    void SetValue( const wxVariant& value );
+
+    wxVariant& GetValue();
+    /* void*               m_clientData; */
+
+};
+
+
+class %delete wxPGMultiButton : public wxWindow
+{
+    wxPGMultiButton( wxPropertyGrid* pg, const wxSize& sz );
+
+    wxWindow* GetButton( unsigned int i );
+    const wxWindow* GetButton( unsigned int i ) const;
+
+    int GetButtonId( unsigned int i ) const;
+
+    unsigned int GetCount() const;
+
+    void Add( const wxString& label, int id = -2 );
+#if wxUSE_BMPBUTTON
+    void Add( const wxBitmap& bitmap, int id = -2 );
+#endif
+
+    wxSize GetPrimarySize() const;
+
+    void Finalize( wxPropertyGrid* propGrid, const wxPoint& pos );
+};
+
+
 #include "wx/propgrid/advprops.h"
 #include "wx/propgrid/props.h"
 
@@ -495,7 +836,7 @@ class wxFlagsProperty : public wxPGProperty
 
 class wxEditorDialogProperty : public wxPGProperty
 {
-    /* virtual wxPGEditorDialogAdapter* GetEditorDialog() const; */
+    virtual wxPGEditorDialogAdapter* GetEditorDialog() const;
     virtual bool DoSetAttribute( const wxString& name, wxVariant& value );
 };
 
@@ -591,6 +932,7 @@ class wxArrayStringProperty : public wxEditorDialogProperty
 
 class wxPGArrayEditorDialog : public wxDialog
 {
+    // abstract class
     /* wxPGArrayEditorDialog(); */
 
     void Init();
@@ -630,6 +972,179 @@ class wxPGArrayStringEditorDialog : public wxPGArrayEditorDialog
 
 
 #include "wx/propgrid/propgridpagestate.h"
+
+
+class %delete wxPropertyGridHitTestResult
+{
+    wxPropertyGridHitTestResult();
+
+    int GetColumn() const;
+    wxPGProperty* GetProperty() const;
+    int GetSplitter() const;
+    int GetSplitterHitOffset() const;
+};
+
+
+enum wxPG_ITERATOR_FLAGS
+{
+    wxPG_ITERATE_PROPERTIES,
+    wxPG_ITERATE_HIDDEN,
+    wxPG_ITERATE_FIXED_CHILDREN,
+    wxPG_ITERATE_CATEGORIES,
+    wxPG_ITERATE_ALL_PARENTS,
+    wxPG_ITERATE_ALL_PARENTS_RECURSIVELY,
+    wxPG_ITERATOR_FLAGS_ALL,
+    wxPG_ITERATOR_MASK_OP_ITEM,
+
+    wxPG_ITERATOR_MASK_OP_PARENT,
+    wxPG_ITERATE_VISIBLE,
+    wxPG_ITERATE_ALL,
+    wxPG_ITERATE_NORMAL,
+    wxPG_ITERATE_DEFAULT
+};
+
+
+class %delete wxPropertyGridIteratorBase
+{
+    wxPropertyGridIteratorBase();
+
+    void Assign( const wxPropertyGridIteratorBase& it );
+
+    bool AtEnd() const;
+
+    wxPGProperty* GetProperty() const;
+
+    void Init( wxPropertyGridPageState* state,
+               int flags,
+               wxPGProperty* property,
+               int dir = 1 );
+
+    void Init( wxPropertyGridPageState* state,
+               int flags,
+               int startPos = wxTOP,
+               int dir = 0 );
+
+    void Next( bool iterateChildren = true );
+
+    void Prev();
+
+    void SetBaseParent( wxPGProperty* baseParent );
+};
+
+
+class %delete wxPropertyGridConstIterator : public wxPropertyGridIteratorBase
+{
+    /* wxPropertyGridConstIterator( const wxPropertyGridIterator& other ); */
+
+    /* const wxPropertyGridConstIterator& operator=( const wxPropertyGridIterator& it ); */
+
+    wxPropertyGridConstIterator();
+    wxPropertyGridConstIterator( const wxPropertyGridPageState* state,
+                                 int flags = wxPG_ITERATE_DEFAULT,
+                                 const wxPGProperty* property = NULL, int dir = 1 );
+    wxPropertyGridConstIterator( wxPropertyGridPageState* state,
+                                 int flags, int startPos, int dir = 0 );
+    wxPropertyGridConstIterator( const wxPropertyGridConstIterator& it );
+};
+
+
+class %delete wxPGVIteratorBase : public wxObjectRefData
+{
+    wxPGVIteratorBase();
+    virtual void Next() = 0;
+};
+
+
+class %delete wxPGVIterator
+{
+    wxPGVIterator();
+    wxPGVIterator( wxPGVIteratorBase* obj );
+    void UnRef();
+    wxPGVIterator( const wxPGVIterator& it );
+    const wxPGVIterator& operator=( const wxPGVIterator& it );
+    void Next();
+    bool AtEnd() const;
+    wxPGProperty* GetProperty() const;
+};
+
+
+class %delete wxPropertyGridPageState
+{
+    wxPropertyGridPageState();
+    virtual ~wxPropertyGridPageState();
+    void CheckColumnWidths( int widthChange = 0 );
+    virtual void DoDelete( wxPGProperty* item, bool doDelete = true );
+    wxSize DoFitColumns( bool allowGridResize = false );
+    wxPGProperty* DoGetItemAtY( int y ) const;
+    virtual wxPGProperty* DoInsert( wxPGProperty* parent,
+                                    int index,
+                                    wxPGProperty* property );
+    virtual void DoSetSplitterPosition( int pos,
+                                        int splitterColumn = 0,
+                                        int flags = 0 );
+
+    bool EnableCategories( bool enable );
+    void EnsureVirtualHeight();
+    unsigned int GetVirtualHeight() const;
+    unsigned int GetVirtualHeight();
+    inline unsigned int GetActualVirtualHeight() const;
+    unsigned int GetColumnCount() const;
+    int GetColumnMinWidth( int column ) const;
+    int GetColumnWidth( unsigned int column ) const;
+    wxPropertyGrid* GetGrid() const;
+    wxPGProperty* GetLastItem( int flags = wxPG_ITERATE_DEFAULT );
+    const wxPGProperty* GetLastItem( int flags = wxPG_ITERATE_DEFAULT ) const;
+    wxPGProperty* GetSelection() const;
+    void DoSetSelection( wxPGProperty* prop );
+    bool DoClearSelection();
+    void DoRemoveFromSelection( wxPGProperty* prop );
+    void DoSetColumnProportion( unsigned int column, int proportion );
+    int DoGetColumnProportion( unsigned int column ) const;
+    void ResetColumnSizes( int setSplitterFlags );
+    wxPropertyCategory* GetPropertyCategory( const wxPGProperty* p ) const;
+    wxVariant DoGetPropertyValues( const wxString& listname,
+                                   wxPGProperty* baseparent,
+                                   long flags ) const;
+    wxPGProperty* DoGetRoot() const;
+    void DoSetPropertyName( wxPGProperty* p, const wxString& newName );
+    int GetVirtualWidth() const;
+    int GetColumnFitWidth(wxClientDC& dc,
+                          wxPGProperty* pwc,
+                          unsigned int col,
+                          bool subProps) const;
+    int GetColumnFullWidth(wxClientDC &dc, wxPGProperty *p, unsigned int col);
+    wxPropertyGridHitTestResult HitTest( const wxPoint& pt ) const;
+    inline bool IsDisplayed() const;
+    bool IsInNonCatMode() const;
+    void DoLimitPropertyEditing( wxPGProperty* p, bool limit = true );
+    bool DoSelectProperty( wxPGProperty* p, unsigned int flags = 0 );
+    void OnClientWidthChange( int newWidth,
+                              int widthChange,
+                              bool fromOnResize = false );
+    void RecalculateVirtualHeight();
+    void SetColumnCount( int colCount );
+    void PropagateColSizeDec( int column, int decrease, int dir );
+    bool DoHideProperty( wxPGProperty* p, bool hide, int flags = wxPG_RECURSE );
+    bool DoSetPropertyValueString( wxPGProperty* p, const wxString& value );
+    bool DoSetPropertyValue( wxPGProperty* p, wxVariant& value );
+    bool DoSetPropertyValueWxObjectPtr( wxPGProperty* p, wxObject* value );
+    /* void DoSetPropertyValues( const wxVariantList& list, */
+    /*                           wxPGProperty* default_category ); */
+    void SetSplitterLeft( bool subProps = false );
+    void SetVirtualWidth( int width );
+    void DoSortChildren( wxPGProperty* p, int flags = 0 );
+    void DoSort( int flags = 0 );
+    bool PrepareAfterItemsAdded();
+    void VirtualHeightChanged();
+    wxPGProperty* DoAppend( wxPGProperty* property );
+    wxPGProperty* BaseGetPropertyByName( const wxString& name ) const;
+    void DoClear();
+    bool DoIsPropertySelected( wxPGProperty* prop ) const;
+    bool DoCollapse( wxPGProperty* p );
+    bool DoExpand( wxPGProperty* p );
+    void CalculateFontAndBitmapStuff( int vspacing );
+};
+
 
 #include "wx/propgrid/propgridiface.h"
 
@@ -763,15 +1278,15 @@ class wxPropertyGridInterface
     /*                             bool inverse = false, */
     /*                             int iterFlags = (wxPG_ITERATE_PROPERTIES|wxPG_ITERATE_HIDDEN|wxPG_ITERATE_CATEGORIES) ) const; */
     wxVariant GetPropertyAttribute( wxPGPropArg id, const wxString& attrName ) const;
-    /* const wxPGAttributeStorage& GetPropertyAttributes( wxPGPropArg id ) const; */
+    const wxPGAttributeStorage& GetPropertyAttributes( wxPGPropArg id ) const;
     wxColour GetPropertyBackgroundColour( wxPGPropArg id ) const;
-    /* wxPropertyCategory* GetPropertyCategory( wxPGPropArg id ) const; */
+    wxPropertyCategory* GetPropertyCategory( wxPGPropArg id ) const;
     void* GetPropertyClientData( wxPGPropArg id ) const;
     wxPGProperty* GetPropertyByLabel( const wxString& label ) const;
     wxPGProperty* GetPropertyByName( const wxString& name ) const;
     wxPGProperty* GetPropertyByName( const wxString& name,
                                      const wxString& subname ) const;
-    /* const wxPGEditor* GetPropertyEditor( wxPGPropArg id ) const; */
+    const wxPGEditor* GetPropertyEditor( wxPGPropArg id ) const;
     wxString GetPropertyHelpString( wxPGPropArg id ) const;
     wxBitmap* GetPropertyImage( wxPGPropArg id ) const;
     const wxString& GetPropertyLabel( wxPGPropArg id );
@@ -808,7 +1323,7 @@ class wxPropertyGridInterface
     bool IsPropertyShown( wxPGPropArg id ) const;
     bool IsPropertyValueUnspecified( wxPGPropArg id ) const;
     void LimitPropertyEditing( wxPGPropArg id, bool limit = true );
-    /* virtual void RefreshGrid( wxPropertyGridPageState* state = NULL ); */
+    virtual void RefreshGrid( wxPropertyGridPageState* state = NULL );
     static void RegisterAdditionalEditors();
     wxPGProperty* RemoveProperty( wxPGPropArg id );
     wxPGProperty* ReplaceProperty( wxPGPropArg id, wxPGProperty* property );
@@ -833,7 +1348,7 @@ class wxPropertyGridInterface
                           const wxColour& bgCol = wxNullColour );
     void SetPropertyClientData( wxPGPropArg id, void* clientData );
     void SetPropertyColoursToDefault(wxPGPropArg id, int flags = wxPG_DONT_RECURSE);
-    /* void SetPropertyEditor( wxPGPropArg id, const wxPGEditor* editor ); */
+    void SetPropertyEditor( wxPGPropArg id, const wxPGEditor* editor );
     void SetPropertyEditor( wxPGPropArg id, const wxString& editorName );
     void SetPropertyLabel( wxPGPropArg id, const wxString& newproplabel );
     void SetPropertyName( wxPGPropArg id, const wxString& newName );
@@ -852,29 +1367,29 @@ class wxPropertyGridInterface
                                 const wxColour& colour,
                                 int flags = wxPG_RECURSE );
     void SetPropertyValidator( wxPGPropArg id, const wxValidator& validator );
-    /* void SetPropertyValue( wxPGPropArg id, long value ); */
-    /* void SetPropertyValue( wxPGPropArg id, int value ); */
-    /* void SetPropertyValue( wxPGPropArg id, double value ); */
-    /* void SetPropertyValue( wxPGPropArg id, bool value ); */
+    void SetPropertyValue( wxPGPropArg id, long value );
+    void SetPropertyValue( wxPGPropArg id, int value );
+    void SetPropertyValue( wxPGPropArg id, double value );
+    void SetPropertyValue( wxPGPropArg id, bool value );
     /* void SetPropertyValue( wxPGPropArg id, const wchar_t* value ); */
     /* void SetPropertyValue( wxPGPropArg id, const char* value ); */
-    /* void SetPropertyValue( wxPGPropArg id, const wxString& value ); */
-    /* void SetPropertyValue( wxPGPropArg id, const wxArrayString& value ); */
-    /* void SetPropertyValue( wxPGPropArg id, const wxDateTime& value ); */
+    void SetPropertyValue( wxPGPropArg id, const wxString& value );
+    void SetPropertyValue( wxPGPropArg id, const wxArrayString& value );
+    void SetPropertyValue( wxPGPropArg id, const wxDateTime& value );
     /* void SetPropertyValue( wxPGPropArg id, wxObject* value ); */
-    /* void SetPropertyValue( wxPGPropArg id, wxObject& value ); */
+    void SetPropertyValue( wxPGPropArg id, wxObject& value );
     /* void SetPropertyValue( wxPGPropArg id, wxLongLong_t value ); */
     /* void SetPropertyValue( wxPGPropArg id, wxLongLong value ); */
     /* void SetPropertyValue( wxPGPropArg id, wxULongLong_t value ); */
     /* void SetPropertyValue( wxPGPropArg id, wxULongLong value ); */
-    /* void SetPropertyValue( wxPGPropArg id, const wxArrayInt& value ); */
+    void SetPropertyValue( wxPGPropArg id, const wxArrayInt& value );
     void SetPropertyValueString( wxPGPropArg id, const wxString& value );
     void SetPropertyValue( wxPGPropArg id, wxVariant value );
     void SetPropVal( wxPGPropArg id, wxVariant& value );
     void SetValidationFailureBehavior( int vfbFlags );
     void Sort( int flags = 0 );
     void SortChildren( wxPGPropArg id, int flags = 0 );
-    /* static wxPGEditor* GetEditorByName( const wxString& editorName ); */
+    static wxPGEditor* GetEditorByName( const wxString& editorName );
     wxPGProperty* GetPropertyByNameA( const wxString& name ) const;
     virtual void RefreshProperty( wxPGProperty* p ) = 0;
 };
@@ -935,7 +1450,7 @@ class %delete wxPGProperty : public wxObject
 {
     virtual void OnSetValue();
     virtual wxVariant DoGetValue() const;
-    /* virtual bool ValidateValue( wxVariant& value, wxPGValidationInfo& validationInfo ) const; */
+    virtual bool ValidateValue( wxVariant& value, wxPGValidationInfo& validationInfo ) const;
     virtual bool StringToValue( wxVariant& variant, const wxString& text, int argFlags = 0 ) const;
     virtual bool IntToValue( wxVariant& variant, int number, int argFlags = 0 ) const;
     virtual wxString ValueToString( wxVariant& value, int argFlags = 0 ) const;
@@ -946,15 +1461,15 @@ class %delete wxPGProperty : public wxObject
     virtual wxVariant ChildChanged( wxVariant& thisValue,
                                     int childIndex,
                                     wxVariant& childValue ) const;
-    /* virtual const wxPGEditor* DoGetEditorClass() const; */
+    virtual const wxPGEditor* DoGetEditorClass() const;
     virtual wxValidator* DoGetValidator () const;
     /* virtual void OnCustomPaint( wxDC& dc, const wxRect& rect, wxPGPaintData& paintdata ); */
-    /* virtual wxPGCellRenderer* GetCellRenderer( int column ) const; */
+    virtual wxPGCellRenderer* GetCellRenderer( int column ) const;
     virtual int GetChoiceSelection() const;
     virtual void RefreshChildren();
     virtual bool DoSetAttribute( const wxString& name, wxVariant& value );
     virtual wxVariant DoGetAttribute( const wxString& name ) const;
-    /* virtual wxPGEditorDialogAdapter* GetEditorDialog() const; */
+    virtual wxPGEditorDialogAdapter* GetEditorDialog() const;
     virtual void OnValidationFailure( wxVariant& pendingValue );
     int AddChoice( const wxString& label, int value = wxPG_INVALID_VALUE );
     %wxcompat_1_4 void AddChild( wxPGProperty* prop );
@@ -976,14 +1491,14 @@ class %delete wxPGProperty : public wxObject
     double GetAttributeAsDouble( const wxString& name, double defVal ) const;
     const wxPGAttributeStorage& GetAttributes() const;
     wxVariant GetAttributesAsList() const;
-    /* const wxPGEditor* GetColumnEditor( int column ) const; */
+    const wxPGEditor* GetColumnEditor( int column ) const;
     const wxString& GetBaseName() const;
-    /* const wxPGCell& GetCell( unsigned int column ) const; */
-    /* wxPGCell& GetCell( unsigned int column ); */
-    /* wxPGCell& GetOrCreateCell( unsigned int column ); */
+    const wxPGCell& GetCell( unsigned int column ) const;
+    wxPGCell& GetCell( unsigned int column );
+    wxPGCell& GetOrCreateCell( unsigned int column );
     unsigned int GetChildCount() const;
     int GetChildrenHeight( int lh, int iMax = -1 ) const;
-    /* const wxPGChoices& GetChoices() const; */
+    const wxPGChoices& GetChoices() const;
     void* GetClientData() const;
     wxClientData *GetClientObject() const;
     wxVariant GetDefaultValue() const;
@@ -992,7 +1507,7 @@ class %delete wxPGProperty : public wxObject
     unsigned int GetDepth() const;
     int GetDisplayedCommonValueCount() const;
     wxString GetDisplayedString() const;
-    /* const wxPGEditor* GetEditorClass() const; */
+    const wxPGEditor* GetEditorClass() const;
     inline wxString GetHintText() const;
     wxPropertyGrid* GetGrid() const;
     wxPropertyGrid* GetGridIfDisplayed() const;
@@ -1042,11 +1557,11 @@ class %delete wxPGProperty : public wxObject
     void SetAutoUnspecified( bool enable = true );
     void SetBackgroundColour( const wxColour& colour,
                               int flags = wxPG_RECURSE );
-    /* void SetEditor( const wxPGEditor* editor ); */
+    void SetEditor( const wxPGEditor* editor );
     void SetEditor( const wxString& editorName );
-    /* void SetCell( int column, const wxPGCell& cell ); */
+    void SetCell( int column, const wxPGCell& cell );
     void SetCommonValue( int commonValue );
-    /* bool SetChoices( wxPGChoices& choices ); */
+    bool SetChoices( wxPGChoices& choices );
     void SetClientData( void* clientData );
     void SetClientObject(wxClientData* clientObject);
     void SetChoiceSelection( int newValue );

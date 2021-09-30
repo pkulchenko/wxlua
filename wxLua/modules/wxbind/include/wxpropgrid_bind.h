@@ -59,6 +59,10 @@ extern WXDLLIMPEXP_BINDWXPROPGRID wxLuaBinding* wxLuaBinding_wxpropgrid_init();
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
 
+#if (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxPG_INCLUDE_CHECKBOX)
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGCheckBoxEditor;
+#endif // (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxPG_INCLUDE_CHECKBOX)
+
 #if wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxArrayStringProperty;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxBoolProperty;
@@ -79,18 +83,35 @@ extern WXDLLIMPEXP_BINDWXPROPGRID wxLuaBinding* wxLuaBinding_wxpropgrid_init();
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGCell;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGCellData;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGCellRenderer;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGChoiceAndButtonEditor;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGChoiceEditor;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGChoiceEntry;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGChoices;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGChoicesData;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGComboBoxEditor;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGDefaultRenderer;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGEditor;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGEditorDialogAdapter;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGMultiButton;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGPropArgCls;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGProperty;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGRootProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGTextCtrlAndButtonEditor;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGTextCtrlEditor;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGVIterator;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGVIteratorBase;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGValidationInfo;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGWindowList;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPropertyCategory;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPropertyGrid;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPropertyGridConstIterator;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPropertyGridEvent;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPropertyGridHitTestResult;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPropertyGridInterface;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPropertyGridIteratorBase;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPropertyGridManager;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPropertyGridPage;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPropertyGridPageState;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxStringProperty;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxUIntProperty;
 #endif // wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
