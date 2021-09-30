@@ -23,6 +23,9 @@
 #ifdef Below
     #undef Below
 #endif
+#if wxUSE_PROPGRID && wxLUA_USE_wxPropertyGrid
+#include "wx/propgrid/propgriddefs.h"
+#endif
 
 #ifdef __GNUC__
     #pragma GCC diagnostic ignored "-Wunused-variable"
@@ -3433,4 +3436,98 @@ wxLuaBindMethod wxProgressDialog_methods[] = {
 int wxProgressDialog_methodCount = sizeof(wxProgressDialog_methods)/sizeof(wxLuaBindMethod) - 1;
 
 #endif  // wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog
+
+
+#if wxUSE_NUMBERDLG && wxLUA_USE_wxNumberEntryDialog
+// ---------------------------------------------------------------------------
+// Bind class wxNumberEntryDialog
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxNumberEntryDialog'
+int wxluatype_wxNumberEntryDialog = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxNumberEntryDialog_GetValue[] = { &wxluatype_wxNumberEntryDialog, NULL };
+static int LUACALL wxLua_wxNumberEntryDialog_GetValue(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxNumberEntryDialog_GetValue[1] = {{ wxLua_wxNumberEntryDialog_GetValue, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxNumberEntryDialog_GetValue }};
+//     long GetValue() const;
+static int LUACALL wxLua_wxNumberEntryDialog_GetValue(lua_State *L)
+{
+    // get this
+    wxNumberEntryDialog * self = (wxNumberEntryDialog *)wxluaT_getuserdatatype(L, 1, wxluatype_wxNumberEntryDialog);
+    // call GetValue
+    long returns = (self->GetValue());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxUSE_NUMBERDLG && wxLUA_USE_wxNumberEntryDialog)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxNumberEntryDialog_constructor[] = { &wxluatype_wxWindow, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxPoint, NULL };
+static int LUACALL wxLua_wxNumberEntryDialog_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxNumberEntryDialog_constructor[1] = {{ wxLua_wxNumberEntryDialog_constructor, WXLUAMETHOD_CONSTRUCTOR, 7, 8, s_wxluatypeArray_wxLua_wxNumberEntryDialog_constructor }};
+//     wxNumberEntryDialog(wxWindow *parent, const wxString& message, const wxString& prompt, const wxString& caption, long value, long min, long max, const wxPoint& pos = wxDefaultPosition);
+static int LUACALL wxLua_wxNumberEntryDialog_constructor(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxPoint pos = wxDefaultPosition
+    const wxPoint * pos = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxDefaultPosition);
+    // long max
+    long max = (long)wxlua_getnumbertype(L, 7);
+    // long min
+    long min = (long)wxlua_getnumbertype(L, 6);
+    // long value
+    long value = (long)wxlua_getnumbertype(L, 5);
+    // const wxString caption
+    const wxString caption = wxlua_getwxStringtype(L, 4);
+    // const wxString prompt
+    const wxString prompt = wxlua_getwxStringtype(L, 3);
+    // const wxString message
+    const wxString message = wxlua_getwxStringtype(L, 2);
+    // wxWindow parent
+    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWindow);
+    // call constructor
+    wxNumberEntryDialog* returns = new wxNumberEntryDialog(parent, message, prompt, caption, value, min, max, *pos);
+    // add to tracked window list, it will check validity
+    wxluaW_addtrackedwindow(L, returns);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxNumberEntryDialog);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxUSE_NUMBERDLG && wxLUA_USE_wxNumberEntryDialog)
+
+
+
+void wxLua_wxNumberEntryDialog_delete_function(void** p)
+{
+    wxNumberEntryDialog* o = (wxNumberEntryDialog*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxNumberEntryDialog_methods[] = {
+    { "GetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxNumberEntryDialog_GetValue, 1, NULL },
+
+#if (wxLUA_USE_wxPointSizeRect) && (wxUSE_NUMBERDLG && wxLUA_USE_wxNumberEntryDialog)
+    { "wxNumberEntryDialog", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxNumberEntryDialog_constructor, 1, NULL },
+#endif // (wxLUA_USE_wxPointSizeRect) && (wxUSE_NUMBERDLG && wxLUA_USE_wxNumberEntryDialog)
+
+    { 0, 0, 0, 0 },
+};
+
+int wxNumberEntryDialog_methodCount = sizeof(wxNumberEntryDialog_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxUSE_NUMBERDLG && wxLUA_USE_wxNumberEntryDialog
 

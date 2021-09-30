@@ -275,6 +275,7 @@ class wxPlatformInfo
 
     int GetToolkitMajorVersion() const;
     int GetToolkitMinorVersion() const;
+    int GetToolkitMicroVersion() const;
 
     bool CheckToolkitVersion(int major, int minor) const;
     bool IsUsingUniversalWidgets() const;

@@ -383,6 +383,7 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxUniChar;
 
 #if wxUSE_VARIANT
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxVariant;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxVariantData;
 #endif // wxUSE_VARIANT
 
 

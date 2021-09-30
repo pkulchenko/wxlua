@@ -2471,6 +2471,7 @@ static const char* wxluaclassname_wxTranslationsLoader = "wxTranslationsLoader";
 static const char* wxluaclassname_wxULongLong = "wxULongLong";
 static const char* wxluaclassname_wxUniChar = "wxUniChar";
 static const char* wxluaclassname_wxVariant = "wxVariant";
+static const char* wxluaclassname_wxVariantData = "wxVariantData";
 static const char* wxluaclassname_wxVersionInfo = "wxVersionInfo";
 
 static const char* wxluabaseclassnames_wxArchiveFSHandler[] = { wxluaclassname_wxFileSystemHandler, NULL };
@@ -2537,6 +2538,8 @@ static const char* wxluabaseclassnames_wxSystemOptions[] = { wxluaclassname_wxOb
 static wxLuaBindClass* wxluabaseclassbinds_wxSystemOptions[] = { NULL };
 static const char* wxluabaseclassnames_wxVariant[] = { wxluaclassname_wxObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxVariant[] = { NULL };
+static const char* wxluabaseclassnames_wxVariantData[] = { wxluaclassname_wxObjectRefData, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxVariantData[] = { NULL };
 // ---------------------------------------------------------------------------
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
@@ -2920,6 +2923,9 @@ extern void wxLua_wxUniChar_delete_function(void** p);
     extern wxLuaBindMethod wxVariant_methods[];
     extern int wxVariant_methodCount;
     extern void wxLua_wxVariant_delete_function(void** p);
+    extern wxLuaBindMethod wxVariantData_methods[];
+    extern int wxVariantData_methodCount;
+    extern void wxLua_wxVariantData_delete_function(void** p);
 #endif // wxUSE_VARIANT
 
 
@@ -3186,6 +3192,7 @@ wxLuaBindClass* wxLuaGetClassList_wxbase(size_t &count)
 
 #if wxUSE_VARIANT
         { wxluaclassname_wxVariant, wxVariant_methods, wxVariant_methodCount, CLASSINFO(wxVariant), &wxluatype_wxVariant, wxluabaseclassnames_wxVariant, wxluabaseclassbinds_wxVariant, NULL, NULL, NULL, 0, &wxLua_wxVariant_delete_function, }, 
+        { wxluaclassname_wxVariantData, wxVariantData_methods, wxVariantData_methodCount, NULL, &wxluatype_wxVariantData, wxluabaseclassnames_wxVariantData, wxluabaseclassbinds_wxVariantData, NULL, NULL, NULL, 0, &wxLua_wxVariantData_delete_function, }, 
 #endif // wxUSE_VARIANT
 
 #if wxCHECK_VERSION(2,9,2)

@@ -274,21 +274,21 @@ class %delete wxPropertyGridPage : public wxEvtHandler, public wxPropertyGridInt
 };
 
 
-class %delete wxPropertyGridManager : public wxPanel, public wxPropertyGridInterface
+class wxPropertyGridManager : public wxPanel, public wxPropertyGridInterface
 {
 public:
-    wxPropertyGridManager();
+    /* wxPropertyGridManager(); */
 
-    %ungc wxPropertyGridManager( wxWindow *parent, wxWindowID id = wxID_ANY,
-                                 const wxPoint& pos = wxDefaultPosition,
-                                 const wxSize& size = wxDefaultSize,
-                                 long style = wxPGMAN_DEFAULT_STYLE,
-                                 const wxString& name = wxPropertyGridManagerNameStr );
+    wxPropertyGridManager( wxWindow *parent, wxWindowID id = wxID_ANY,
+                           const wxPoint& pos = wxDefaultPosition,
+                           const wxSize& size = wxDefaultSize,
+                           long style = wxPGMAN_DEFAULT_STYLE,
+                           const wxString& name = wxPropertyGridManagerNameStr );
 
 
     %ungc wxPropertyGridPage* AddPage( const wxString& label = wxEmptyString,
                                        const wxBitmap& bmp = wxPG_NULL_BITMAP,
-                                       wxPropertyGridPage* pageObj = NULL );
+                                       %ungc wxPropertyGridPage* pageObj = NULL );
 
     virtual void Clear();
     void ClearPage( int page );
@@ -303,11 +303,11 @@ public:
     bool EnsureVisible( const wxString& id );
     int GetColumnCount( int page = -1 ) const;
     int GetDescBoxHeight() const;
-    wxPropertyGrid* GetGrid();
-    /* virtual wxPGVIterator GetVIterator( int flags ) const; */
-    wxPropertyGridPage* GetCurrentPage() const;
-    wxPropertyGridPage* GetPage( unsigned int ind ) const;
-    wxPropertyGridPage* GetPage( const wxString& name ) const;
+    %ungc wxPropertyGrid* GetGrid();
+    virtual wxPGVIterator GetVIterator( int flags ) const;
+    %ungc wxPropertyGridPage* GetCurrentPage() const;
+    %ungc wxPropertyGridPage* GetPage( unsigned int ind ) const;
+    %ungc wxPropertyGridPage* GetPage( const wxString& name ) const;
     int GetPageByName( const wxString& name ) const;
     int GetPageByState( const wxPropertyGridPageState* pstate ) const;
     size_t GetPageCount() const;
@@ -629,6 +629,8 @@ class %delete wxColourPropertyValue : public wxObject
     wxUint32    m_type;
 
     wxColour    m_colour;
+
+    static wxColourPropertyValue FromVariant(const wxVariant* pVariant);
 
     wxColourPropertyValue();
     wxColourPropertyValue( const wxColourPropertyValue& v );
@@ -1563,7 +1565,7 @@ class wxPropertyGridInterface
                                  wxPGProperty* baseparent = NULL, long flags = 0 ) const;
     /* const wxArrayPGProperty& GetSelectedProperties() const; */
     %ungc wxPGProperty* GetSelection() const;
-    /* virtual wxPGVIterator GetVIterator( int flags ) const; */
+    virtual wxPGVIterator GetVIterator( int flags ) const;
     bool HideProperty( const wxPGProperty*& id, bool hide = true, int flags = wxPG_RECURSE );
     bool HideProperty( const wxString& id, bool hide = true, int flags = wxPG_RECURSE );
     static void InitAllTypeHandlers();
@@ -1800,6 +1802,8 @@ enum wxPGPropertyFlags
 #define_wxstring wxPG_ATTR_INLINE_HELP
 #endif
 
+
+wxPGProperty *wxNullProperty() const;
 
 class %delete wxPGProperty : public wxObject
 {

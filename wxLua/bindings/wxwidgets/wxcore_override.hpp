@@ -1422,6 +1422,32 @@ static int LUACALL wxLua_wxRegionIterator_Next(lua_State *L)
 }
 %end
 
+#if wxUSE_PROPGRID && wxLUA_USE_wxPropertyGrid
+
+%override wxLua_wxFont_FromVariant
+//    static wxFont FromVariant(const wxVariant* pVariant);
+static int LUACALL wxLua_wxFont_FromVariant(lua_State *L)
+{
+    wxVariant * pVariant = (wxVariant *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVariant);
+
+    if (!pVariant->IsType("wxFont")) {
+        wxlua_error(L, "Variant is not of type 'wxFont'");
+        return 0;
+    }
+
+    wxFont v;
+    v << *pVariant;
+
+    wxFont* returns = new wxFont(v);
+    wxluaO_addgcobject(L, returns, wxluatype_wxFont);
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxFont);
+
+    return 1;
+}
+%end
+
+#endif
+
 %override wxLua_wxFontMapper_GetAltForEncoding
 // bool GetAltForEncoding(wxFontEncoding encoding, wxFontEncoding *altEncoding, const wxString &faceName = wxEmptyString, bool interactive = true)
 static int LUACALL wxLua_wxFontMapper_GetAltForEncoding(lua_State *L)
@@ -1446,6 +1472,28 @@ static int LUACALL wxLua_wxFontMapper_GetAltForEncoding(lua_State *L)
     lua_pushinteger(L, altEncoding);
     // return the number of parameters
     return 2;
+}
+%end
+
+%override wxLua_wxColour_FromVariant
+//    static wxColour FromVariant(const wxVariant* pVariant);
+static int LUACALL wxLua_wxColour_FromVariant(lua_State *L)
+{
+    const wxVariant * pVariant = (const wxVariant *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVariant);
+
+    if (!pVariant->IsType("wxColour")) {
+        wxlua_error(L, "Variant is not of type 'wxColour'");
+        return 0;
+    }
+
+    wxColour v;
+    v << *pVariant;
+
+    wxColour* returns = new wxColour(v);
+    wxluaO_addgcobject(L, returns, wxluatype_wxColour);
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxColour);
+
+    return 1;
 }
 %end
 

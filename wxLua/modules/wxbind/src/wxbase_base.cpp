@@ -752,6 +752,30 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPlatformInfo_GetToolkitMicroVersion[] = { &wxluatype_wxPlatformInfo, NULL };
+static int LUACALL wxLua_wxPlatformInfo_GetToolkitMicroVersion(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_GetToolkitMicroVersion[1] = {{ wxLua_wxPlatformInfo_GetToolkitMicroVersion, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetToolkitMicroVersion }};
+//     int GetToolkitMicroVersion() const;
+static int LUACALL wxLua_wxPlatformInfo_GetToolkitMicroVersion(lua_State *L)
+{
+    // get this
+    wxPlatformInfo * self = (wxPlatformInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPlatformInfo);
+    // call GetToolkitMicroVersion
+    int returns = (self->GetToolkitMicroVersion());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPlatformInfo_GetToolkitMinorVersion[] = { &wxluatype_wxPlatformInfo, NULL };
 static int LUACALL wxLua_wxPlatformInfo_GetToolkitMinorVersion(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_GetToolkitMinorVersion[1] = {{ wxLua_wxPlatformInfo_GetToolkitMinorVersion, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetToolkitMinorVersion }};
@@ -1046,6 +1070,7 @@ wxLuaBindMethod wxPlatformInfo_methods[] = {
     { "GetPortIdShortName", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxPlatformInfo_GetPortIdShortName_overload, s_wxluafunc_wxLua_wxPlatformInfo_GetPortIdShortName_overload_count, 0 },
 
     { "GetToolkitMajorVersion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_GetToolkitMajorVersion, 1, NULL },
+    { "GetToolkitMicroVersion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_GetToolkitMicroVersion, 1, NULL },
     { "GetToolkitMinorVersion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_GetToolkitMinorVersion, 1, NULL },
     { "IsOk", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_IsOk, 1, NULL },
     { "IsUsingUniversalWidgets", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_IsUsingUniversalWidgets, 1, NULL },

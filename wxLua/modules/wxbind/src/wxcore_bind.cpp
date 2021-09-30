@@ -23,6 +23,9 @@
 #ifdef Below
     #undef Below
 #endif
+#if wxUSE_PROPGRID && wxLUA_USE_wxPropertyGrid
+#include "wx/propgrid/propgriddefs.h"
+#endif
 
 #ifdef __GNUC__
     #pragma GCC diagnostic ignored "-Wunused-variable"
@@ -4297,6 +4300,45 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetMultipleChoices[1] = {{ wx
 #endif // (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_CHOICEDLG)
 
 #if (wxLUA_USE_wxPointSizeRect) && (wxUSE_NUMBERDLG)
+static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetNumberFromUser1[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxWindow, &wxluatype_wxPoint, NULL };
+// wxUSE_NUMBERDLG long wxGetNumberFromUser(const wxString& message, const wxString& prompt, const wxString& caption, long value, long min = 0, long max = 100, wxWindow* parent = NULL, const wxPoint& pos = wxDefaultPosition);
+static int LUACALL wxLua_function_wxGetNumberFromUser1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxPoint pos = wxDefaultPosition
+    const wxPoint * pos = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxDefaultPosition);
+    // wxWindow parent = NULL
+    wxWindow * parent = (argCount >= 7 ? (wxWindow *)wxluaT_getuserdatatype(L, 7, wxluatype_wxWindow) : NULL);
+    // long max = 100
+    long max = (argCount >= 6 ? (long)wxlua_getnumbertype(L, 6) : 100);
+    // long min = 0
+    long min = (argCount >= 5 ? (long)wxlua_getnumbertype(L, 5) : 0);
+    // long value
+    long value = (long)wxlua_getnumbertype(L, 4);
+    // const wxString caption
+    const wxString caption = wxlua_getwxStringtype(L, 3);
+    // const wxString prompt
+    const wxString prompt = wxlua_getwxStringtype(L, 2);
+    // const wxString message
+    const wxString message = wxlua_getwxStringtype(L, 1);
+    // call wxGetNumberFromUser
+    long returns = (wxGetNumberFromUser(message, prompt, caption, value, min, max, parent, *pos));
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+static wxLuaBindCFunc s_wxluafunc_wxLua_function_wxGetNumberFromUser1[1] = {{ wxLua_function_wxGetNumberFromUser1, WXLUAMETHOD_CFUNCTION, 4, 8, s_wxluatypeArray_wxLua_function_wxGetNumberFromUser1 }};
+
 static wxLuaArgType s_wxluatypeArray_wxLua_function_wxGetNumberFromUser[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxWindow, &wxluatype_wxPoint, NULL };
 // long wxGetNumberFromUser(const wxString& message, const wxString& prompt, const wxString& caption, long value, long min = 0, long max = 100, wxWindow *parent = NULL, const wxPoint& pos = wxDefaultPosition);
 static int LUACALL wxLua_function_wxGetNumberFromUser(lua_State *L)
@@ -4984,6 +5026,7 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxcore(size_t &count)
 #endif // (!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && (wxUSE_CHOICEDLG)
 
 #if (wxLUA_USE_wxPointSizeRect) && (wxUSE_NUMBERDLG)
+        { "wxGetNumberFromUser", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetNumberFromUser1, 1, NULL },
         { "wxGetNumberFromUser", WXLUAMETHOD_CFUNCTION, s_wxluafunc_wxLua_function_wxGetNumberFromUser, 1, NULL },
 #endif // (wxLUA_USE_wxPointSizeRect) && (wxUSE_NUMBERDLG)
 
@@ -5274,6 +5317,7 @@ static const char* wxluaclassname_wxNotebook = "wxNotebook";
 static const char* wxluaclassname_wxNotebookEvent = "wxNotebookEvent";
 static const char* wxluaclassname_wxNotebookSizer = "wxNotebookSizer";
 static const char* wxluaclassname_wxNotifyEvent = "wxNotifyEvent";
+static const char* wxluaclassname_wxNumberEntryDialog = "wxNumberEntryDialog";
 static const char* wxluaclassname_wxObject = "wxObject";
 static const char* wxluaclassname_wxPCXHandler = "wxPCXHandler";
 static const char* wxluaclassname_wxPNGHandler = "wxPNGHandler";
@@ -5765,6 +5809,8 @@ static const char* wxluabaseclassnames_wxNotebookSizer[] = { wxluaclassname_wxSi
 static wxLuaBindClass* wxluabaseclassbinds_wxNotebookSizer[] = { NULL };
 static const char* wxluabaseclassnames_wxNotifyEvent[] = { wxluaclassname_wxCommandEvent, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxNotifyEvent[] = { NULL };
+static const char* wxluabaseclassnames_wxNumberEntryDialog[] = { wxluaclassname_wxDialog, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxNumberEntryDialog[] = { NULL };
 static const char* wxluabaseclassnames_wxPCXHandler[] = { wxluaclassname_wxImageHandler, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxPCXHandler[] = { NULL };
 static const char* wxluabaseclassnames_wxPNGHandler[] = { wxluaclassname_wxImageHandler, NULL };
@@ -7458,6 +7504,12 @@ extern void wxLua_wxWindowUpdateLocker_delete_function(void** p);
     extern void wxLua_wxInfoBar_delete_function(void** p);
 #endif // wxUSE_INFOBAR && wxCHECK_VERSION(2,9,1)
 
+#if wxUSE_NUMBERDLG && wxLUA_USE_wxNumberEntryDialog
+    extern wxLuaBindMethod wxNumberEntryDialog_methods[];
+    extern int wxNumberEntryDialog_methodCount;
+    extern void wxLua_wxNumberEntryDialog_delete_function(void** p);
+#endif // wxUSE_NUMBERDLG && wxLUA_USE_wxNumberEntryDialog
+
 #if wxUSE_PROGRESSDLG && wxLUA_USE_wxProgressDialog
     extern wxLuaBindMethod wxProgressDialog_methods[];
     extern int wxProgressDialog_methodCount;
@@ -8104,6 +8156,10 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #endif // (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_NOTEBOOK && (!wxCHECK_VERSION(2,6,0)))
 
         { wxluaclassname_wxNotifyEvent, wxNotifyEvent_methods, wxNotifyEvent_methodCount, CLASSINFO(wxNotifyEvent), &wxluatype_wxNotifyEvent, wxluabaseclassnames_wxNotifyEvent, wxluabaseclassbinds_wxNotifyEvent, NULL, NULL, NULL, 0, &wxLua_wxNotifyEvent_delete_function, }, 
+
+#if wxUSE_NUMBERDLG && wxLUA_USE_wxNumberEntryDialog
+        { wxluaclassname_wxNumberEntryDialog, wxNumberEntryDialog_methods, wxNumberEntryDialog_methodCount, CLASSINFO(wxNumberEntryDialog), &wxluatype_wxNumberEntryDialog, wxluabaseclassnames_wxNumberEntryDialog, wxluabaseclassbinds_wxNumberEntryDialog, NULL, NULL, NULL, 0, &wxLua_wxNumberEntryDialog_delete_function, }, 
+#endif // wxUSE_NUMBERDLG && wxLUA_USE_wxNumberEntryDialog
 
 #if (wxLUA_USE_wxImage && wxUSE_IMAGE) && (wxUSE_PCX)
         { wxluaclassname_wxPCXHandler, wxPCXHandler_methods, wxPCXHandler_methodCount, CLASSINFO(wxPCXHandler), &wxluatype_wxPCXHandler, wxluabaseclassnames_wxPCXHandler, wxluabaseclassbinds_wxPCXHandler, NULL, NULL, NULL, 0, &wxLua_wxPCXHandler_delete_function, }, 

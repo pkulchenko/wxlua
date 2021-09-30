@@ -82,6 +82,8 @@ function GetExePath()
    return filePath
 end
 
+local inspect = dofile(GetExePath() .. "/inspect.lua")
+
 -------------------------------------------------------------------------
 
 local wxT = function(s) return s end
@@ -186,19 +188,53 @@ local FormMain = {
 
 function FormMain:OnMove(event)
    if self.m_pPropGridManager == nil then
+      --// this check is here so the frame layout can be tested
+      --// without creating propertygrid
       event:Skip()
       return
    end
+
+    --// Update position properties
+   local pos = self.this:GetPosition()
+   local x = pos:GetX()
+   local y = pos:GetY()
+
+   local id
+
+   --// Must check if properties exist (as they may be deleted).
+
+   --// Using m_pPropGridManager, we can scan all pages automatically.
+   id = self.m_pPropGridManager:GetPropertyByName( "X" )
+   if id then
+      self.m_pPropGridManager:SetPropertyValue( id, x )
+   end
+
+   id = self.m_pPropGridManager:GetPropertyByName( "Y" )
+   if id then
+      self.m_pPropGridManager:SetPropertyValue( id, y )
+   end
+
+   id = self.m_pPropGridManager:GetPropertyByName( "Position" )
+   if id then
+      selfm_pPropGridManager:SetPropertyValue( id, wx.wxVariant(wx.wxPoint(x,y)) )
+   end
+
+   --// Should always call event:Skip() in frame's MoveEvent handler
+   event:Skip()
 end
 
 function FormMain:OnResize(event)
    if self.m_pPropGridManager == nil then
+      --// this check is here so the frame layout can be tested
+      --// without creating propertygrid
       event:Skip()
       return
    end
 
    --// Update size properties
    local size = self.this:GetSize()
+   local w = size:GetWidth()
+   local h = size:GetHeight()
 
    local id, p
 
@@ -220,7 +256,7 @@ function FormMain:OnResize(event)
       self.m_pPropGridManager:SetPropertyValue( id, wx.wxVariant(wx.wxSize(w,h)) )
    end
 
-   --// Should always call event.Skip() in frame's SizeEvent handler
+   --// Should always call event:Skip() in frame's SizeEvent handler
    event:Skip()
 end
 
@@ -234,7 +270,7 @@ function FormMain:OnPropertyGridChanging(event)
          "Testing wxEVT_PG_CHANGING", wx.wxYES_NO, self.m_pPropGridManager)
 
       if res == wx.wxNO then
-         -- wxASSERT(event.CanVeto())
+         -- wxASSERT(event:CanVeto())
          event:Veto()
          event:SetValidationFailureBehavior(0)
       end
@@ -270,16 +306,23 @@ function FormMain:OnPropertyGridChange(event)
       this:SetTitle(value:GetString())
    elseif name == "Password" then
       pwdMode = value:GetLong()
-      self.m_pPropGridManager:SetPropertyAttribute(property, wx.wxPG_STRING_PASSWORD, pwdMode);
+      self.m_pPropGridManager:SetPropertyAttribute(property, wx.wxPG_STRING_PASSWORD, pwdMode)
    elseif name == "Font" then
-      local font = value:As("wxFont")
+      local font = wx.wxFont.FromVariant(value)
       self.m_pPropGridManager:SetFont(font)
-
-      -- TODO custom properties
-      -- elseif name == "Margin Colour" then
-      -- elseif name == "Cell Colour" then
-      -- elseif name == "Line Colour" then
-      -- elseif name == "Cell Text Colour" then
+   elseif name == "Margin Colour" then
+      local cpv = wx.wxColourPropertyValue.FromVariant(value)
+      print("GET", cpv.m_colour:GetRGB())
+      self.m_pPropGridManager:GetGrid():SetMarginColour( cpv.m_colour );
+   elseif name == "Cell Colour" then
+      local cpv = wx.wxColourPropertyValue.FromVariant(value)
+      self.m_pPropGridManager:GetGrid():SetCellBackgroundColour( cpv.m_colour );
+   elseif name == "Line Colour" then
+      local cpv = wx.wxColourPropertyValue.FromVariant(value)
+      self.m_pPropGridManager:GetGrid():SetLineColour( cpv.m_colour );
+   elseif name == "Cell Text Colour" then
+      local cpv = wx.wxColourPropertyValue.FromVariant(value)
+      self.m_pPropGridManager:GetGrid():SetCellTextColour( cpv.m_colour );
    end
 end
 
@@ -375,10 +418,10 @@ end
 
 function FormMain:OnPropertyGridColBeginDrag(event)
    if self.m_itemVetoDragging:IsChecked() then
-      wx.wxLogDebug(("Splitter %d resize was vetoed"):format(event.GetColumn()))
+      wx.wxLogDebug(("Splitter %d resize was vetoed"):format(event:GetColumn()))
       event:Veto()
    else
-      wx.wxLogDebug(("Splitter %d resize began"):format(event.GetColumn()))
+      wx.wxLogDebug(("Splitter %d resize began"):format(event:GetColumn()))
    end
 end
 
@@ -386,7 +429,7 @@ function FormMain:OnPropertyGridColDragging(_)
 end
 
 function FormMain:OnPropertyGridColEndDrag(event)
-   wx.wxLogDebug(("Splitter %d resize ended"):format(event.GetColumn()))
+   wx.wxLogDebug(("Splitter %d resize ended"):format(event:GetColumn()))
 end
 
 function FormMain:OnPropertyGridTextUpdate(event)
@@ -577,22 +620,19 @@ function FormMain:PopulateWithStandardItems()
    --//
    --// Set test information for cells in columns 3 and 4
    --// (reserve column 2 for displaying units)
-   --[[ FIXME
-      wxPropertyGridIterator it
-      wxBitmap bmp = wxArtProvider::GetBitmap(wxART_FOLDER)
+--[[ FIXME
+   local it = pg:GetGrid():GetIterator()
+   local bmp = wx.wxArtProvider.GetBitmap(wx.wxART_FOLDER)
 
-      for ( it = pg:GetGrid():GetIterator()
-      !it.AtEnd()
-      ++it )
-      {
-      wx.wxPGProperty* p = *it
-      if ( p:IsCategory() )
-      continue
-
-      pg:SetPropertyCell( p, 3, "Cell 3", bmp )
-      pg:SetPropertyCell( p, 4, "Cell 4", wxNullBitmap, *wxWHITE, *wxBLACK )
-      }
-   --]]
+   while not it:AtEnd() do
+      local p = it:op_deref()
+      if not p:IsCategory() then
+         pg:SetPropertyCell( p, 3, "Cell 3", bmp )
+         pg:SetPropertyCell( p, 4, "Cell 4", wx.wxNullBitmap, wx.wxWHITE, wx.wxBLACK )
+      end
+      it:op_inc()
+   end
+--]]
 end
 
 function FormMain:PopulateWithExamples()
@@ -922,7 +962,7 @@ function FormMain:PopulateWithExamples()
    --//
    --// Test wxSampleMultiButtonEditor
    pg:Append( wx.wxLongStringProperty("MultipleButtons", wx.wxPG_LABEL) )
-   pg:SetPropertyEditor("MultipleButtons", m_pSampleMultiButtonEditor )
+   pg:SetPropertyEditor("MultipleButtons", self.m_pSampleMultiButtonEditor )
 
    --// Test SingleChoiceProperty
    pg:Append( wx.SingleChoiceProperty("SingleChoiceProperty") )
@@ -1296,12 +1336,12 @@ function FormMain:create()
                   "Select window style flags used by the grid.")
    menuTry:AppendCheckItem(FormMain.ID_ENABLELABELEDITING, "Enable label editing",
                            "This calls wxPropertyGrid::MakeColumnEditable(0)")
-   menuTry:Check(FormMain.ID_ENABLELABELEDITING, m_labelEditingEnabled)
+   menuTry:Check(FormMain.ID_ENABLELABELEDITING, self.m_labelEditingEnabled)
    --#if wxUSE_HEADERCTRL
    menuTry:AppendCheckItem(FormMain.ID_SHOWHEADER,
                            "Enable header",
                            "This calls wxPropertyGridManager::ShowHeader()")
-   menuTry:Check(FormMain.ID_SHOWHEADER, m_hasHeader)
+   menuTry:Check(FormMain.ID_SHOWHEADER, self.m_hasHeader)
    --#endif --// wxUSE_HEADERCTRL
    menuTry:AppendSeparator()
    menuTry:AppendRadioItem( FormMain.ID_COLOURSCHEME1, "Standard Colour Scheme" )
@@ -1565,24 +1605,22 @@ end
 -------------------------------------------------------------------------
 
 function FormMain:OnInsertPropClick(_)
-   local propLabel
+   local propLabel = "Property"
 
    if not self.m_pPropGridManager:GetGrid():GetRoot():GetChildCount() then
       wx.wxMessageBox("No items to relate - first add some with Append.")
       return
    end
 
-   local id = m_pPropGridManager:GetGrid():GetSelection()
+   local id = self.m_pPropGridManager:GetGrid():GetSelection()
    if not id then
       wx.wxMessageBox("First select a property - new one will be inserted right before that.")
       return
    end
 
-   if propLabel.Len() < 1 then propLabel = "Property" end
-
    propLabel = self:GenerateUniquePropertyLabel( self.m_pPropGridManager, propLabel )
 
-   self.m_pPropGridManager:Insert( m_pPropGridManager:GetPropertyParent(id),
+   self.m_pPropGridManager:Insert( self.m_pPropGridManager:GetPropertyParent(id),
                                    id:GetIndexInParent(),
                                    wx.wxStringProperty(propLabel) )
 end
@@ -1590,9 +1628,7 @@ end
 -------------------------------------------------------------------------
 
 function FormMain:OnAppendPropClick(_)
-   local propLabel
-
-   if propLabel.Len() < 1 then propLabel = "Property" end
+   local propLabel = "Property"
 
    propLabel = self:GenerateUniquePropertyLabel( self.m_pPropGridManager, propLabel )
 
@@ -1610,9 +1646,7 @@ end
 -------------------------------------------------------------------------
 
 function FormMain:OnAppendCatClick(_)
-   local propLabel
-
-   if propLabel.Len() < 1 then propLabel = "Category" end
+   local propLabel = "Category"
 
    propLabel = self:GenerateUniquePropertyLabel( self.m_pPropGridManager, propLabel )
 
@@ -1625,7 +1659,7 @@ end
 -------------------------------------------------------------------------
 
 function FormMain:OnInsertCatClick(_)
-   local propLabel
+   local propLabel = "Category"
 
    if ( not self.m_pPropGridManager:GetGrid():GetRoot():GetChildCount() ) then
       wx.wxMessageBox("No items to relate - first add some with Append.")
@@ -1638,11 +1672,9 @@ function FormMain:OnInsertCatClick(_)
       return
    end
 
-   if propLabel.Len() < 1 then propLabel = "Category" end
-
    propLabel = self:GenerateUniquePropertyLabel( self.m_pPropGridManager, propLabel )
 
-   self.m_pPropGridManager:Insert( m_pPropGridManager:GetPropertyParent(id),
+   self.m_pPropGridManager:Insert( self.m_pPropGridManager:GetPropertyParent(id),
                                    id:GetIndexInParent(),
                                    wx.wxPropertyCategory (propLabel) )
 end
@@ -1686,9 +1718,9 @@ end
 
 function FormMain:OnContextMenu(event)
    wx.wxLogDebug(("FormMain::OnContextMenu(%d,%d)")
-      :format(event.GetPosition():GetX(), event.GetPosition():GetY()))
+      :format(event:GetPosition():GetX(), event:GetPosition():GetY()))
 
-   --//event.Skip()
+   --//event:Skip()
 end
 
 -------------------------------------------------------------------------
@@ -1714,69 +1746,62 @@ end
 -------------------------------------------------------------------------
 
 function FormMain:OnIterate1Click(_)
-   -- wxPropertyGridIterator it
+--[[ FIXME
+   local it = self.m_pPropGridManager:GetCurrentPage():GetIterator()
 
-   -- for ( it = self.m_pPropGridManager:GetCurrentPage():
-   --         GetIterator()
-   --       !it.AtEnd()
-   --       ++it )
-   -- {
-   --     wxPGProperty* p = *it
-   --     int res = IterateMessage( p )
-   --     if ( res == wxCANCEL ) break
-   -- }
+   while not it:AtEnd() do
+      local p = it:op_deref()
+      local res = IterateMessage( p )
+      if res == wx.wxCANCEL then break end
+      it:op_inc()
+   end
+--]]
 end
 
 -------------------------------------------------------------------------
 
 function FormMain:OnIterate2Click(event)
-   -- wxPropertyGridIterator it
+--[[ FIXME
+   local it = self.m_pPropGridManager:GetCurrentPage():GetIterator( wx.wxPG_ITERATE_VISIBLE )
 
-   -- for ( it = self.m_pPropGridManager:GetCurrentPage():
-   --         GetIterator( wxPG_ITERATE_VISIBLE )
-   --       !it.AtEnd()
-   --       ++it )
-   -- {
-   --     wxPGProperty* p = *it
-
-   --     int res = IterateMessage( p )
-   --     if ( res == wxCANCEL ) break
-   -- }
+   while not it:AtEnd() do
+      local p = it:op_deref()
+      local res = IterateMessage( p )
+      if res == wx.wxCANCEL then break end
+      it:op_inc()
+   end
+--]]
 end
 
 -------------------------------------------------------------------------
 
 function FormMain:OnIterate3Click(event)
-   -- --// iterate over items in reverse order
-   -- wxPropertyGridIterator it
+--[[ FIXME
+   --// iterate over items in reverse order
+   local it = self.m_pPropGridManager:GetCurrentPage():GetIterator( wx.wxPG_ITERATE_DEFAULT, wx.wxBOTTOM )
 
-   -- for ( it = self.m_pPropGridManager:GetCurrentPage():
-   --             GetIterator( wxPG_ITERATE_DEFAULT, wxBOTTOM )
-   --       !it.AtEnd()
-   --       --it )
-   -- {
-   --     wxPGProperty* p = *it
-
-   --     int res = IterateMessage( p )
-   --     if ( res == wxCANCEL ) break
-   -- }
+   while not it:AtEnd() do
+      local p = it:op_deref()
+      local res = IterateMessage( p )
+      if res == wx.wxCANCEL then break end
+      it:op_inc()
+   end
+--]]
 end
 
 -------------------------------------------------------------------------
 
 function FormMain:OnIterate4Click(_)
-   -- wxPropertyGridIterator it
+--[[ FIXME
+   local it = self.m_pPropGridManager:GetCurrentPage():GetIterator( wx.wxPG_ITERATE_CATEGORIES )
 
-   -- for ( it = self.m_pPropGridManager:GetCurrentPage():
-   --         GetIterator( wxPG_ITERATE_CATEGORIES )
-   --       !it.AtEnd()
-   --       ++it )
-   -- {
-   --     wxPGProperty* p = *it
-
-   --     int res = IterateMessage( p )
-   --     if ( res == wxCANCEL ) break
-   -- }
+   while not it:AtEnd() do
+      local p = it:op_deref()
+      local res = IterateMessage( p )
+      if res == wx.wxCANCEL then break end
+      it:op_inc()
+   end
+--]]
 end
 
 -------------------------------------------------------------------------
@@ -1802,7 +1827,7 @@ function FormMain:OnFitColumnsClick(_)
    local page = self.m_pPropGridManager:GetCurrentPage()
 
    --// Remove auto-centering
-   self.m_pPropGridManager:SetWindowStyle( bit.band(m_pPropGridManager:GetWindowStyle(), bit.bnot(wx.wxPG_SPLITTER_AUTO_CENTER)) )
+   self.m_pPropGridManager:SetWindowStyle( bit.band(self.m_pPropGridManager:GetWindowStyle(), bit.bnot(wx.wxPG_SPLITTER_AUTO_CENTER)) )
 
    --// Grow manager size just prior fit - otherwise
    --// column information may be lost.
@@ -1825,7 +1850,7 @@ end
 function FormMain:OnChangeFlagsPropItemsClick(_)
    local p = self.m_pPropGridManager:GetPropertyByName("Window Styles")
 
-   local newChoices = wx.wxPGChoices
+   local newChoices = wx.wxPGChoices()
 
    newChoices:Add("Fast",0x1)
    newChoices:Add("Powerful",0x2)
@@ -1911,14 +1936,14 @@ end
 -------------------------------------------------------------------------
 
 function FormMain:OnRemovePage(_)
-   self.m_pPropGridManager:RemovePage(m_pPropGridManager:GetSelectedPage())
+   self.m_pPropGridManager:RemovePage(self.m_pPropGridManager:GetSelectedPage())
 end
 
 -------------------------------------------------------------------------
 
 function FormMain:OnSaveState(_)
-   self.m_savedState = m_pPropGridManager:SaveEditableState()
-   wx.wxLogDebug("Saved editable state string: \"%s\"", self.m_savedState)
+   self.m_savedState = self.m_pPropGridManager:SaveEditableState()
+   wx.wxLogDebug(("Saved editable state string: \"%s\""):format(self.m_savedState))
 end
 
 -------------------------------------------------------------------------
@@ -1945,7 +1970,7 @@ end
 function FormMain:OnTestReplaceClick(_)
    local pgId = self.m_pPropGridManager:GetSelection()
    if pgId then
-      local choices = wxPGChoices
+      local choices = wx.wxPGChoices()
       choices:Add("Flag 0",0x0001)
       choices:Add("Flag 1",0x0002)
       choices:Add("Flag 2",0x0004)
@@ -2072,11 +2097,11 @@ function FormMain:OnColourScheme(event)
       self.m_pPropGridManager:GetGrid():SetCaptionBackgroundColour( my_grey_1 )
       self.m_pPropGridManager:GetGrid():SetLineColour( my_grey_1 )
       self.m_pPropGridManager:Thaw()
-   elseif id == ID_COLOURSCHEME4 then
+   elseif id == self.ID_COLOURSCHEME4 then
       --// cream
-      local my_grey_1 wx.wxColour(212,208,200)
-      local my_grey_2 wx.wxColour(241,239,226)
-      local my_grey_3 wx.wxColour(113,111,100)
+      local my_grey_1 = wx.wxColour(212,208,200)
+      local my_grey_2 = wx.wxColour(241,239,226)
+      local my_grey_3 = wx.wxColour(113,111,100)
       self.m_pPropGridManager:Freeze()
       self.m_pPropGridManager:GetGrid():SetMarginColour( wx.wxWHITE )
       self.m_pPropGridManager:GetGrid():SetCaptionBackgroundColour( wx.wxWHITE )
@@ -2183,7 +2208,7 @@ function FormMain:OnSelectStyle(_)
       flags = 0
       sel = dlg:GetSelections():ToLuaTable()
       for ind = 1, #sel do
-         flags = bit.bor(flags, vls[sel[ind]])
+         flags = bit.bor(flags, vls[sel[ind]+1])
       end
 
       style = flags
@@ -2226,8 +2251,8 @@ function FormMain:OnSelectStyle(_)
 
       flags = 0
       sel = dlg:GetSelections():ToLuaTable()
-      for ind = 0, #sel do
-         flags = bit.bor(flags, vls[sel[ind]])
+      for ind = 1, #sel do
+         flags = bit.bor(flags, vls[sel[ind]+1])
       end
 
       extraStyle = flags
@@ -2251,7 +2276,7 @@ end
 -------------------------------------------------------------------------
 
 function FormMain:OnSetVirtualWidth(_)
-   local oldWidth = self.m_pPropGridManager:GetState():GetVirtualWidth()
+   local oldWidth = self.m_pPropGridManager:GetCurrentPage():GetStatePtr():GetVirtualWidth()
    local newWidth = oldWidth
    do
       local dlg = wx.wxNumberEntryDialog (self.this, "Enter virtual width (-1-2000).", "Width:",
@@ -2316,7 +2341,7 @@ function FormMain:OnDeleteChoice(_)
       if choices:IsOk() then
          --// Deletes choice from the center of list
 
-         local pos = choices.GetCount() / 2
+         local pos = choices:GetCount() / 2
          selected:DeleteChoice(pos)
          return
       end
@@ -2329,51 +2354,53 @@ end
 
 function FormMain:OnMisc (event)
    local id = event:GetId()
-   if id == ID_STATICLAYOUT then
+   if id == self.ID_STATICLAYOUT then
       local wsf = self.m_pPropGridManager:GetWindowStyleFlag()
       if event:IsChecked() then
          self.m_pPropGridManager:SetWindowStyleFlag( bit.bor(wsf, wx.wxPG_STATIC_LAYOUT) )
       else
          self.m_pPropGridManager:SetWindowStyleFlag( bit.band(wsf, bit.bnot(wx.wxPG_STATIC_LAYOUT)) )
       end
-   elseif id == ID_COLLAPSEALL then
-      -- wxPGVIterator it
-      -- wxPropertyGrid* pg = self.m_pPropGridManager:GetGrid()
+   elseif id == self.ID_COLLAPSEALL then
+      local pg = self.m_pPropGridManager:GetGrid()
+      local it = pg:GetVIterator( wx.wxPG_ITERATE_ALL )
 
-      -- for ( it = pg:GetVIterator( wxPG_ITERATE_ALL )!it.AtEnd()it.Next() )
-      --     it.GetProperty():SetExpanded( false )
+      while not it:AtEnd() do
+         it:GetProperty():SetExpanded( false )
+         it:Next()
+      end
 
-      -- pg:RefreshGrid()
-   elseif id == ID_GETVALUES then
-      self.m_storedValues = m_pPropGridManager:GetGrid():GetPropertyValues("Test",
-                                                                           self.m_pPropGridManager:GetGrid():GetRoot(),
-                                                                           wx.wxPG_KEEP_STRUCTURE + wx.wxPG_INC_ATTRIBUTES)
-   elseif id == ID_SETVALUES then
+      pg:RefreshGrid()
+   elseif id == self.ID_GETVALUES then
+      self.m_storedValues = self.m_pPropGridManager:GetGrid():GetPropertyValues("Test",
+                                                                                self.m_pPropGridManager:GetGrid():GetRoot(),
+                                                                                wx.wxPG_KEEP_STRUCTURE + wx.wxPG_INC_ATTRIBUTES)
+   elseif id == self.ID_SETVALUES then
       if self.m_storedValues:IsType("list") then
          self.m_pPropGridManager:GetGrid():SetPropertyValues(self.m_storedValues)
       else
          wx.wxMessageBox("First use Get Property Values.")
       end
-   elseif id == ID_SETVALUES2 then
+   elseif id == self.ID_SETVALUES2 then
       local list = wx.wxVariant()
       list:NullList()
       list:Append( wx.wxVariant(1234,"VariantLong") )
       list:Append( wx.wxVariant(true,"VariantBool") )
       list:Append( wx.wxVariant("Test Text","VariantString") )
       self.m_pPropGridManager:GetGrid():SetPropertyValues(list)
-   elseif id == ID_COLLAPSE then
+   elseif id == self.ID_COLLAPSE then
       --// Collapses selected.
       local selProp = self.m_pPropGridManager:GetSelection()
       if selProp then
          self.m_pPropGridManager:Collapse(selProp)
       end
-   elseif id == ID_RUNTESTFULL then
+   elseif id == self.ID_RUNTESTFULL then
       --// Runs a regression test.
       self:RunTests(true)
-   elseif id == ID_RUNTESTPARTIAL then
+   elseif id == self.ID_RUNTESTPARTIAL then
       --// Runs a regression test.
       self:RunTests(false)
-   elseif id == ID_UNSPECIFY then
+   elseif id == self.ID_UNSPECIFY then
       local prop = self.m_pPropGridManager:GetSelection()
       if prop then
          self.m_pPropGridManager:SetPropertyValueUnspecified(prop)
@@ -2412,9 +2439,9 @@ function FormMain:OnPopulateClick(event)
    local id = event:GetId()
    self.m_propGrid:Clear()
    self.m_propGrid:Freeze()
-   if id == ID_POPULATE1 then
+   if id == self.ID_POPULATE1 then
       self:PopulateWithStandardItems()
-   elseif id == ID_POPULATE2 then
+   elseif id == self.ID_POPULATE2 then
       self:PopulateWithLibraryConfig()
    end
    self.m_propGrid:Thaw()
@@ -2423,7 +2450,7 @@ end
 -------------------------------------------------------------------------
 
 function FormMain:OnDumpList(_)
-   local values = self.m_pPropGridManager:GetPropertyValues("list", wx.wxNullProperty, wx.wxPG_INC_ATTRIBUTES)
+   local values = self.m_pPropGridManager:GetPropertyValues("list", wx.wxNullProperty(), wx.wxPG_INC_ATTRIBUTES)
    local text = "This only tests that wxVariant related routines do not crash.\n"
 
    local dlg = wx.wxDialog(self.this,wx.wxID_ANY,"wxVariant Test",
@@ -2432,6 +2459,7 @@ function FormMain:OnDumpList(_)
    for i = 0, values:GetCount()-1 do
       local t
       local v = values[i]
+      print("A!", v)
 
       local strValue = v:GetString()
 
@@ -2459,11 +2487,11 @@ function FormMain:OnDumpList(_)
    local ed = wx.wxTextCtrl(dlg, wx.wxID_ANY, text,
                             wx.wxDefaultPosition, wx.wxDefaultSize,
                             wx.wxTE_MULTILINE + wx.wxTE_READONLY)
-   rowsizer:Add( ed, wx.wxSizerFlags(1):Expand().Border(wx.wxALL, spacing))
+   rowsizer:Add( ed, wx.wxSizerFlags(1):Expand():Border(wx.wxALL, spacing))
    topsizer:Add( rowsizer, wx.wxSizerFlags(1):Expand())
    rowsizer = wx.wxBoxSizer( wx.wxHORIZONTAL )
    rowsizer:Add( wx.wxButton(dlg,wx.wxID_OK,"Ok"),
-                 wx.wxSizerFlags(0):CentreHorizontal():CentreVertical():Border(wxBOTTOM + wxLEFT + wxRIGHT, spacing))
+                 wx.wxSizerFlags(0):Centre():Border(wx.wxBOTTOM + wx.wxLEFT + wx.wxRIGHT, spacing))
    topsizer:Add( rowsizer, wx.wxSizerFlags():Right() )
 
    dlg:SetSizer( topsizer )

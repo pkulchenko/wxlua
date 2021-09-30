@@ -618,10 +618,6 @@ class %delete wxVariant: public wxObject
     // returns a Lua representation of this variant
     int ToLuaValue() const;
 
-    // %override [Lua value] wxVariant::As() const;
-    // casts this variant to the bound wxLua class specified
-    int As(const wxString& str) const;
-
     wxVariant operator [](size_t idx) const;
     wxVariant& operator [](size_t idx);
 
@@ -652,8 +648,24 @@ class %delete wxVariant: public wxObject
     void MakeNull();
     wxString MakeString() const;
     bool Member(const wxVariant& value) const;
-    /* void SetData(wxVariantData* data); */
+    void SetData(wxVariantData* data);
     bool Unshare();
+};
+
+class %delete wxVariantData : public wxObjectRefData
+{
+    wxVariantData();
+    virtual wxVariantData* Clone() const;
+    void DecRef();
+    virtual bool Eq(wxVariantData& data) const = 0;
+    /* virtual bool GetAny(wxAny* any) const; */
+    virtual wxString GetType() const = 0;
+    virtual wxClassInfo* GetValueClassInfo();
+    void IncRef();
+    /* virtual bool Read(istream& stream); */
+    virtual bool Read(wxString& string);
+    /* virtual bool Write(ostream& stream) const; */
+    virtual bool Write(wxString& string) const;
 };
 
 #endif
