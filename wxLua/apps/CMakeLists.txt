@@ -11,7 +11,7 @@ project( wxLuaApps )
 
 set(MINGW_EXTRA_LIBS)
 if(MINGW)
-	set(MINGW_EXTRA_LIBS "-lversion;-lshlwapi;-luxtheme;-loleacc;-lws2_32")
+	set(MINGW_EXTRA_LIBS "-lversion;-lshlwapi;-luxtheme;-loleacc;-lws2_32;-limm32")
 	message("MINGW_EXTRA_LIBS is " ${MINGW_EXTRA_LIBS})
 endif(MINGW)
 
