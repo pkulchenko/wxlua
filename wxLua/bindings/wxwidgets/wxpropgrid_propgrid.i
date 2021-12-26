@@ -630,8 +630,6 @@ class %delete wxColourPropertyValue : public wxObject
 
     wxColour    m_colour;
 
-    static wxColourPropertyValue FromVariant(const wxVariant* pVariant);
-
     wxColourPropertyValue();
     wxColourPropertyValue( const wxColourPropertyValue& v );
     wxColourPropertyValue( const wxColour& colour );

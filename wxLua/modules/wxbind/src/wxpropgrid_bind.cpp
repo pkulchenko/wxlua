@@ -6226,34 +6226,6 @@ int wxPGMultiButton_methodCount = sizeof(wxPGMultiButton_methods)/sizeof(wxLuaBi
 // Lua MetaTable Tag for Class 'wxColourPropertyValue'
 int wxluatype_wxColourPropertyValue = WXLUA_TUNKNOWN;
 
-#if (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_VARIANT)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxColourPropertyValue_FromVariant[] = { &wxluatype_wxVariant, NULL };
-static int LUACALL wxLua_wxColourPropertyValue_FromVariant(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxColourPropertyValue_FromVariant[1] = {{ wxLua_wxColourPropertyValue_FromVariant, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxColourPropertyValue_FromVariant }};
-// %override wxLua_wxColourPropertyValue_FromVariant
-//    static wxColourPropertyValue FromVariant(const wxVariant* pVariant);
-static int LUACALL wxLua_wxColourPropertyValue_FromVariant(lua_State *L)
-{
-    const wxVariant * pVariant = (const wxVariant *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVariant);
-
-    if (!pVariant->IsType("wxColourPropertyValue")) {
-        wxlua_error(L, "Variant is not of type 'wxColourPropertyValue'");
-        return 0;
-    }
-
-    wxColourPropertyValue v;
-    v << *pVariant;
-
-    wxColourPropertyValue* returns = new wxColourPropertyValue(v);
-    wxluaO_addgcobject(L, returns, wxluatype_wxColourPropertyValue);
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxColourPropertyValue);
-
-    return 1;
-}
-
-
-#endif // (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_VARIANT)
-
 #if (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColourPropertyValue_Get_m_colour[] = { &wxluatype_wxColourPropertyValue, NULL };
 static int LUACALL wxLua_wxColourPropertyValue_Get_m_colour(lua_State *L);
@@ -6496,10 +6468,6 @@ void wxLua_wxColourPropertyValue_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxColourPropertyValue_methods[] = {
-#if (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_VARIANT)
-    { "FromVariant", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxColourPropertyValue_FromVariant, 1, NULL },
-#endif // (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_VARIANT)
-
 #if (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
     // %member    { "Get_m_colour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxColourPropertyValue_Get_m_colour, 1, NULL },
 #endif // (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)

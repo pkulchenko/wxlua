@@ -4200,34 +4200,6 @@ static int LUACALL wxLua_wxFont_Bold(lua_State *L)
 
 #endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
 
-#if (((wxLUA_USE_wxFont) && (wxUSE_PROPGRID && wxLUA_USE_wxPropertyGrid)) && (wxLUA_USE_wxFont)) && (wxUSE_VARIANT)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_FromVariant[] = { &wxluatype_wxVariant, NULL };
-static int LUACALL wxLua_wxFont_FromVariant(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxFont_FromVariant[1] = {{ wxLua_wxFont_FromVariant, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxFont_FromVariant }};
-// %override wxLua_wxFont_FromVariant
-//    static wxFont FromVariant(const wxVariant* pVariant);
-static int LUACALL wxLua_wxFont_FromVariant(lua_State *L)
-{
-    wxVariant * pVariant = (wxVariant *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVariant);
-
-    if (!pVariant->IsType("wxFont")) {
-        wxlua_error(L, "Variant is not of type 'wxFont'");
-        return 0;
-    }
-
-    wxFont v;
-    v << *pVariant;
-
-    wxFont* returns = new wxFont(v);
-    wxluaO_addgcobject(L, returns, wxluatype_wxFont);
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxFont);
-
-    return 1;
-}
-
-
-#endif // (((wxLUA_USE_wxFont) && (wxUSE_PROPGRID && wxLUA_USE_wxPropertyGrid)) && (wxLUA_USE_wxFont)) && (wxUSE_VARIANT)
-
 #if ((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFont_GetBaseFont[] = { &wxluatype_wxFont, NULL };
 static int LUACALL wxLua_wxFont_GetBaseFont(lua_State *L);
@@ -5875,10 +5847,6 @@ wxLuaBindMethod wxFont_methods[] = {
     { "Bold", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFont_Bold, 1, NULL },
 #endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
 
-#if (((wxLUA_USE_wxFont) && (wxUSE_PROPGRID && wxLUA_USE_wxPropertyGrid)) && (wxLUA_USE_wxFont)) && (wxUSE_VARIANT)
-    { "FromVariant", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxFont_FromVariant, 1, NULL },
-#endif // (((wxLUA_USE_wxFont) && (wxUSE_PROPGRID && wxLUA_USE_wxPropertyGrid)) && (wxLUA_USE_wxFont)) && (wxUSE_VARIANT)
-
 #if ((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
     { "GetBaseFont", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxFont_GetBaseFont, 1, NULL },
 #endif // ((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxFont)) && (wxLUA_USE_wxFont)
@@ -7466,34 +7434,6 @@ static int LUACALL wxLua_wxColour_ChangeLightness(lua_State *L)
 
 #endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
 
-#if (wxLUA_USE_wxColourPenBrush) && (wxUSE_VARIANT)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxColour_FromVariant[] = { &wxluatype_wxVariant, NULL };
-static int LUACALL wxLua_wxColour_FromVariant(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxColour_FromVariant[1] = {{ wxLua_wxColour_FromVariant, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxColour_FromVariant }};
-// %override wxLua_wxColour_FromVariant
-//    static wxColour FromVariant(const wxVariant* pVariant);
-static int LUACALL wxLua_wxColour_FromVariant(lua_State *L)
-{
-    const wxVariant * pVariant = (const wxVariant *)wxluaT_getuserdatatype(L, 1, wxluatype_wxVariant);
-
-    if (!pVariant->IsType("wxColour")) {
-        wxlua_error(L, "Variant is not of type 'wxColour'");
-        return 0;
-    }
-
-    wxColour v;
-    v << *pVariant;
-
-    wxColour* returns = new wxColour(v);
-    wxluaO_addgcobject(L, returns, wxluatype_wxColour);
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxColour);
-
-    return 1;
-}
-
-
-#endif // (wxLUA_USE_wxColourPenBrush) && (wxUSE_VARIANT)
-
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxColour_GetAsString[] = { &wxluatype_wxColour, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxColour_GetAsString(lua_State *L);
@@ -8098,10 +8038,6 @@ wxLuaBindMethod wxColour_methods[] = {
 #if ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
     { "ChangeLightness", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxColour_ChangeLightness, 1, NULL },
 #endif // ((wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxColourPenBrush)) && (wxLUA_USE_wxColourPenBrush)
-
-#if (wxLUA_USE_wxColourPenBrush) && (wxUSE_VARIANT)
-    { "FromVariant", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxColour_FromVariant, 1, NULL },
-#endif // (wxLUA_USE_wxColourPenBrush) && (wxUSE_VARIANT)
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxColourPenBrush)
     { "GetAsString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxColour_GetAsString, 1, NULL },

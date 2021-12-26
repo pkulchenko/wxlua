@@ -2037,7 +2037,6 @@ wxVariant LUACALL wxlua_getwxVarianttype(lua_State *L, int stack_idx)
         return wxVariant((wxArrayString *)wxluaT_getuserdatatype(L, stack_idx, *p_wxluatype_wxArrayString));
     else if (wxlua_iswxuserdata(L, stack_idx))
     {
-        int stack_type = wxluaT_type(L, stack_idx);
         void* p = (void*)wxlua_touserdata(L, stack_idx, false);
         return wxVariant(p);
     }
