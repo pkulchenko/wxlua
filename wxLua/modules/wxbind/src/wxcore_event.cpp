@@ -2036,6 +2036,106 @@ static int LUACALL wxLua_wxMouseEvent_AltDown(lua_State *L)
     return 1;
 }
 
+
+#if wxCHECK_VERSION(3,0,0)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_Aux1DClick[] = { &wxluatype_wxMouseEvent, NULL };
+static int LUACALL wxLua_wxMouseEvent_Aux1DClick(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseEvent_Aux1DClick[1] = {{ wxLua_wxMouseEvent_Aux1DClick, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseEvent_Aux1DClick }};
+//     %wxchkver_3_0_0 bool Aux1DClick() const;
+static int LUACALL wxLua_wxMouseEvent_Aux1DClick(lua_State *L)
+{
+    // get this
+    wxMouseEvent * self = (wxMouseEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMouseEvent);
+    // call Aux1DClick
+    bool returns = (self->Aux1DClick());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_Aux1Down[] = { &wxluatype_wxMouseEvent, NULL };
+static int LUACALL wxLua_wxMouseEvent_Aux1Down(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseEvent_Aux1Down[1] = {{ wxLua_wxMouseEvent_Aux1Down, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseEvent_Aux1Down }};
+//     %wxchkver_3_0_0 bool Aux1Down() const;
+static int LUACALL wxLua_wxMouseEvent_Aux1Down(lua_State *L)
+{
+    // get this
+    wxMouseEvent * self = (wxMouseEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMouseEvent);
+    // call Aux1Down
+    bool returns = (self->Aux1Down());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_Aux1Up[] = { &wxluatype_wxMouseEvent, NULL };
+static int LUACALL wxLua_wxMouseEvent_Aux1Up(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseEvent_Aux1Up[1] = {{ wxLua_wxMouseEvent_Aux1Up, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseEvent_Aux1Up }};
+//     %wxchkver_3_0_0 bool Aux1Up() const;
+static int LUACALL wxLua_wxMouseEvent_Aux1Up(lua_State *L)
+{
+    // get this
+    wxMouseEvent * self = (wxMouseEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMouseEvent);
+    // call Aux1Up
+    bool returns = (self->Aux1Up());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_Aux2DClick[] = { &wxluatype_wxMouseEvent, NULL };
+static int LUACALL wxLua_wxMouseEvent_Aux2DClick(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseEvent_Aux2DClick[1] = {{ wxLua_wxMouseEvent_Aux2DClick, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseEvent_Aux2DClick }};
+//     %wxchkver_3_0_0 bool Aux2DClick() const;
+static int LUACALL wxLua_wxMouseEvent_Aux2DClick(lua_State *L)
+{
+    // get this
+    wxMouseEvent * self = (wxMouseEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMouseEvent);
+    // call Aux2DClick
+    bool returns = (self->Aux2DClick());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_Aux2Down[] = { &wxluatype_wxMouseEvent, NULL };
+static int LUACALL wxLua_wxMouseEvent_Aux2Down(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseEvent_Aux2Down[1] = {{ wxLua_wxMouseEvent_Aux2Down, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseEvent_Aux2Down }};
+//     %wxchkver_3_0_0 bool Aux2Down() const;
+static int LUACALL wxLua_wxMouseEvent_Aux2Down(lua_State *L)
+{
+    // get this
+    wxMouseEvent * self = (wxMouseEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMouseEvent);
+    // call Aux2Down
+    bool returns = (self->Aux2Down());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_Aux2Up[] = { &wxluatype_wxMouseEvent, NULL };
+static int LUACALL wxLua_wxMouseEvent_Aux2Up(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseEvent_Aux2Up[1] = {{ wxLua_wxMouseEvent_Aux2Up, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseEvent_Aux2Up }};
+//     %wxchkver_3_0_0 bool Aux2Up() const;
+static int LUACALL wxLua_wxMouseEvent_Aux2Up(lua_State *L)
+{
+    // get this
+    wxMouseEvent * self = (wxMouseEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMouseEvent);
+    // call Aux2Up
+    bool returns = (self->Aux2Up());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(3,0,0)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_Button[] = { &wxluatype_wxMouseEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxMouseEvent_Button(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseEvent_Button[1] = {{ wxLua_wxMouseEvent_Button, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMouseEvent_Button }};
@@ -2178,6 +2278,61 @@ static int LUACALL wxLua_wxMouseEvent_Entering(lua_State *L)
     return 1;
 }
 
+
+#if wxCHECK_VERSION(2,9,0)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_GetClickCount[] = { &wxluatype_wxMouseEvent, NULL };
+static int LUACALL wxLua_wxMouseEvent_GetClickCount(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseEvent_GetClickCount[1] = {{ wxLua_wxMouseEvent_GetClickCount, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseEvent_GetClickCount }};
+//     %wxchkver_2_9_0 int GetClickCount() const;
+static int LUACALL wxLua_wxMouseEvent_GetClickCount(lua_State *L)
+{
+    // get this
+    wxMouseEvent * self = (wxMouseEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMouseEvent);
+    // call GetClickCount
+    int returns = (self->GetClickCount());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(2,9,0)
+
+#if wxCHECK_VERSION(2,9,5)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_GetColumnsPerAction[] = { &wxluatype_wxMouseEvent, NULL };
+static int LUACALL wxLua_wxMouseEvent_GetColumnsPerAction(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseEvent_GetColumnsPerAction[1] = {{ wxLua_wxMouseEvent_GetColumnsPerAction, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseEvent_GetColumnsPerAction }};
+//     %wxchkver_2_9_5 int GetColumnsPerAction() const;
+static int LUACALL wxLua_wxMouseEvent_GetColumnsPerAction(lua_State *L)
+{
+    // get this
+    wxMouseEvent * self = (wxMouseEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMouseEvent);
+    // call GetColumnsPerAction
+    int returns = (self->GetColumnsPerAction());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(2,9,5)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_GetLinesPerAction[] = { &wxluatype_wxMouseEvent, NULL };
 static int LUACALL wxLua_wxMouseEvent_GetLinesPerAction(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseEvent_GetLinesPerAction[1] = {{ wxLua_wxMouseEvent_GetLinesPerAction, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseEvent_GetLinesPerAction }};
@@ -2227,6 +2382,25 @@ static int LUACALL wxLua_wxMouseEvent_GetLogicalPosition(lua_State *L)
 
 #endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)
 
+#if wxCHECK_VERSION(3,1,0)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_GetMagnification[] = { &wxluatype_wxMouseEvent, NULL };
+static int LUACALL wxLua_wxMouseEvent_GetMagnification(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseEvent_GetMagnification[1] = {{ wxLua_wxMouseEvent_GetMagnification, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseEvent_GetMagnification }};
+//     %wxchkver_3_1_0 float GetMagnification() const;
+static int LUACALL wxLua_wxMouseEvent_GetMagnification(lua_State *L)
+{
+    // get this
+    wxMouseEvent * self = (wxMouseEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMouseEvent);
+    // call GetMagnification
+    float returns = (self->GetMagnification());
+    // push the result floating point number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(3,1,0)
+
 #if wxLUA_USE_wxPointSizeRect
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_GetPosition[] = { &wxluatype_wxMouseEvent, NULL };
 static int LUACALL wxLua_wxMouseEvent_GetPosition(lua_State *L);
@@ -2269,6 +2443,34 @@ static int LUACALL wxLua_wxMouseEvent_GetPositionXY(lua_State *L)
     return 2;
 }
 
+
+
+#if wxCHECK_VERSION(2,9,4)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_GetWheelAxis[] = { &wxluatype_wxMouseEvent, NULL };
+static int LUACALL wxLua_wxMouseEvent_GetWheelAxis(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseEvent_GetWheelAxis[1] = {{ wxLua_wxMouseEvent_GetWheelAxis, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseEvent_GetWheelAxis }};
+//     %wxchkver_2_9_4 wxMouseWheelAxis GetWheelAxis() const;
+static int LUACALL wxLua_wxMouseEvent_GetWheelAxis(lua_State *L)
+{
+    // get this
+    wxMouseEvent * self = (wxMouseEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMouseEvent);
+    // call GetWheelAxis
+    wxMouseWheelAxis returns = (self->GetWheelAxis());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(2,9,4)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_GetWheelDelta[] = { &wxluatype_wxMouseEvent, NULL };
 static int LUACALL wxLua_wxMouseEvent_GetWheelDelta(lua_State *L);
@@ -2382,6 +2584,42 @@ static int LUACALL wxLua_wxMouseEvent_IsButton(lua_State *L)
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_IsPageScroll[] = { &wxluatype_wxMouseEvent, NULL };
+static int LUACALL wxLua_wxMouseEvent_IsPageScroll(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseEvent_IsPageScroll[1] = {{ wxLua_wxMouseEvent_IsPageScroll, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseEvent_IsPageScroll }};
+//     bool IsPageScroll() const;
+static int LUACALL wxLua_wxMouseEvent_IsPageScroll(lua_State *L)
+{
+    // get this
+    wxMouseEvent * self = (wxMouseEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMouseEvent);
+    // call IsPageScroll
+    bool returns = (self->IsPageScroll());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+
+#if wxCHECK_VERSION(3,1,3)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_IsWheelInverted[] = { &wxluatype_wxMouseEvent, NULL };
+static int LUACALL wxLua_wxMouseEvent_IsWheelInverted(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseEvent_IsWheelInverted[1] = {{ wxLua_wxMouseEvent_IsWheelInverted, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseEvent_IsWheelInverted }};
+//     %wxchkver_3_1_3 bool IsWheelInverted() const;
+static int LUACALL wxLua_wxMouseEvent_IsWheelInverted(lua_State *L)
+{
+    // get this
+    wxMouseEvent * self = (wxMouseEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMouseEvent);
+    // call IsWheelInverted
+    bool returns = (self->IsWheelInverted());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(3,1,3)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_Leaving[] = { &wxluatype_wxMouseEvent, NULL };
 static int LUACALL wxLua_wxMouseEvent_Leaving(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseEvent_Leaving[1] = {{ wxLua_wxMouseEvent_Leaving, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseEvent_Leaving }};
@@ -2461,6 +2699,26 @@ static int LUACALL wxLua_wxMouseEvent_LeftUp(lua_State *L)
 
     return 1;
 }
+
+
+#if wxCHECK_VERSION(3,1,0)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_Magnify[] = { &wxluatype_wxMouseEvent, NULL };
+static int LUACALL wxLua_wxMouseEvent_Magnify(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMouseEvent_Magnify[1] = {{ wxLua_wxMouseEvent_Magnify, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMouseEvent_Magnify }};
+//     %wxchkver_3_1_0 bool Magnify() const;
+static int LUACALL wxLua_wxMouseEvent_Magnify(lua_State *L)
+{
+    // get this
+    wxMouseEvent * self = (wxMouseEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMouseEvent);
+    // call Magnify
+    bool returns = (self->Magnify());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(3,1,0)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMouseEvent_MetaDown[] = { &wxluatype_wxMouseEvent, NULL };
 static int LUACALL wxLua_wxMouseEvent_MetaDown(lua_State *L);
@@ -2672,6 +2930,16 @@ void wxLua_wxMouseEvent_delete_function(void** p)
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxMouseEvent_methods[] = {
     { "AltDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_AltDown, 1, NULL },
+
+#if wxCHECK_VERSION(3,0,0)
+    { "Aux1DClick", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_Aux1DClick, 1, NULL },
+    { "Aux1Down", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_Aux1Down, 1, NULL },
+    { "Aux1Up", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_Aux1Up, 1, NULL },
+    { "Aux2DClick", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_Aux2DClick, 1, NULL },
+    { "Aux2Down", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_Aux2Down, 1, NULL },
+    { "Aux2Up", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_Aux2Up, 1, NULL },
+#endif // wxCHECK_VERSION(3,0,0)
+
     { "Button", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_Button, 1, NULL },
     { "ButtonDClick", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_ButtonDClick, 1, NULL },
     { "ButtonDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_ButtonDown, 1, NULL },
@@ -2680,27 +2948,56 @@ wxLuaBindMethod wxMouseEvent_methods[] = {
     { "ControlDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_ControlDown, 1, NULL },
     { "Dragging", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_Dragging, 1, NULL },
     { "Entering", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_Entering, 1, NULL },
+
+#if wxCHECK_VERSION(2,9,0)
+    { "GetClickCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_GetClickCount, 1, NULL },
+#endif // wxCHECK_VERSION(2,9,0)
+
+#if wxCHECK_VERSION(2,9,5)
+    { "GetColumnsPerAction", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_GetColumnsPerAction, 1, NULL },
+#endif // wxCHECK_VERSION(2,9,5)
+
     { "GetLinesPerAction", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_GetLinesPerAction, 1, NULL },
 
 #if (wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)
     { "GetLogicalPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_GetLogicalPosition, 1, NULL },
 #endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)
 
+#if wxCHECK_VERSION(3,1,0)
+    { "GetMagnification", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_GetMagnification, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,0)
+
 #if wxLUA_USE_wxPointSizeRect
     { "GetPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_GetPosition, 1, NULL },
 #endif // wxLUA_USE_wxPointSizeRect
 
     { "GetPositionXY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_GetPositionXY, 1, NULL },
+
+#if wxCHECK_VERSION(2,9,4)
+    { "GetWheelAxis", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_GetWheelAxis, 1, NULL },
+#endif // wxCHECK_VERSION(2,9,4)
+
     { "GetWheelDelta", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_GetWheelDelta, 1, NULL },
     { "GetWheelRotation", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_GetWheelRotation, 1, NULL },
     { "GetX", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_GetX, 1, NULL },
     { "GetY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_GetY, 1, NULL },
     { "IsButton", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_IsButton, 1, NULL },
+    { "IsPageScroll", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_IsPageScroll, 1, NULL },
+
+#if wxCHECK_VERSION(3,1,3)
+    { "IsWheelInverted", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_IsWheelInverted, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,3)
+
     { "Leaving", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_Leaving, 1, NULL },
     { "LeftDClick", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_LeftDClick, 1, NULL },
     { "LeftDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_LeftDown, 1, NULL },
     { "LeftIsDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_LeftIsDown, 1, NULL },
     { "LeftUp", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_LeftUp, 1, NULL },
+
+#if wxCHECK_VERSION(3,1,0)
+    { "Magnify", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_Magnify, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,0)
+
     { "MetaDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_MetaDown, 1, NULL },
     { "MiddleDClick", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_MiddleDClick, 1, NULL },
     { "MiddleDown", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMouseEvent_MiddleDown, 1, NULL },

@@ -4100,6 +4100,12 @@ wx_dataTypeTable =
     Name = "wxMouseState",
     ValueType = "class",
   },
+  wxMouseWheelAxis = {
+    Condition = "wxCHECK_VERSION(2,9,4)",
+    IsNumber = true,
+    Name = "wxMouseWheelAxis",
+    ValueType = "enum",
+  },
   wxMoveEvent = {
     BaseClasses = {
       [1] = "wxEvent",

@@ -84,6 +84,12 @@ wxLuaBindEvent* wxLuaGetEventList_wxcore(size_t &count)
         { "wxEVT_ACTIVATE_APP", WXLUA_GET_wxEventType_ptr(wxEVT_ACTIVATE_APP), &wxluatype_wxActivateEvent },
 
 #if wxCHECK_VERSION(3,0,0)
+        { "wxEVT_AUX1_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_AUX1_DCLICK), &wxluatype_wxMouseEvent },
+        { "wxEVT_AUX1_DOWN", WXLUA_GET_wxEventType_ptr(wxEVT_AUX1_DOWN), &wxluatype_wxMouseEvent },
+        { "wxEVT_AUX1_UP", WXLUA_GET_wxEventType_ptr(wxEVT_AUX1_UP), &wxluatype_wxMouseEvent },
+        { "wxEVT_AUX2_DCLICK", WXLUA_GET_wxEventType_ptr(wxEVT_AUX2_DCLICK), &wxluatype_wxMouseEvent },
+        { "wxEVT_AUX2_DOWN", WXLUA_GET_wxEventType_ptr(wxEVT_AUX2_DOWN), &wxluatype_wxMouseEvent },
+        { "wxEVT_AUX2_UP", WXLUA_GET_wxEventType_ptr(wxEVT_AUX2_UP), &wxluatype_wxMouseEvent },
         { "wxEVT_BUTTON", WXLUA_GET_wxEventType_ptr(wxEVT_BUTTON), &wxluatype_wxCommandEvent },
 #endif // wxCHECK_VERSION(3,0,0)
 
@@ -405,6 +411,10 @@ wxLuaBindEvent* wxLuaGetEventList_wxcore(size_t &count)
         { "wxEVT_LIST_ITEM_SELECTED", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_ITEM_SELECTED), &wxluatype_wxListEvent },
         { "wxEVT_LIST_KEY_DOWN", WXLUA_GET_wxEventType_ptr(wxEVT_LIST_KEY_DOWN), &wxluatype_wxListEvent },
 #endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxListCtrl && wxUSE_LISTCTRL)
+
+#if wxCHECK_VERSION(3,1,0)
+        { "wxEVT_MAGNIFY", WXLUA_GET_wxEventType_ptr(wxEVT_MAGNIFY), &wxluatype_wxMouseEvent },
+#endif // wxCHECK_VERSION(3,1,0)
 
         { "wxEVT_MAXIMIZE", WXLUA_GET_wxEventType_ptr(wxEVT_MAXIMIZE), &wxluatype_wxMaximizeEvent },
 
@@ -2061,6 +2071,11 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxMOUSE_BTN_MIDDLE", wxMOUSE_BTN_MIDDLE },
         { "wxMOUSE_BTN_NONE", wxMOUSE_BTN_NONE },
         { "wxMOUSE_BTN_RIGHT", wxMOUSE_BTN_RIGHT },
+
+#if wxCHECK_VERSION(2,9,4)
+        { "wxMOUSE_WHEEL_HORIZONTAL", wxMOUSE_WHEEL_HORIZONTAL },
+        { "wxMOUSE_WHEEL_VERTICAL", wxMOUSE_WHEEL_VERTICAL },
+#endif // wxCHECK_VERSION(2,9,4)
 
 #if (defined(WXWIN_COMPATIBILITY_2_6) && WXWIN_COMPATIBILITY_2_6)
         { "wxMULTIPLE", wxMULTIPLE },
