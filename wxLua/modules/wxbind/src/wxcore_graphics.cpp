@@ -155,6 +155,389 @@ int wxGraphicsObject_methodCount = sizeof(wxGraphicsObject_methods)/sizeof(wxLua
 // Lua MetaTable Tag for Class 'wxGraphicsPenInfo'
 int wxluatype_wxGraphicsPenInfo = WXLUA_TUNKNOWN;
 
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_Cap[] = { &wxluatype_wxGraphicsPenInfo, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_Cap(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_Cap[1] = {{ wxLua_wxGraphicsPenInfo_Cap, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_Cap }};
+//     wxGraphicsPenInfo& Cap(wxPenCap cap);
+static int LUACALL wxLua_wxGraphicsPenInfo_Cap(lua_State *L)
+{
+    // wxPenCap cap
+    wxPenCap cap = (wxPenCap)wxlua_getenumtype(L, 2);
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call Cap
+    wxGraphicsPenInfo* returns = (wxGraphicsPenInfo*)&self->Cap(cap);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsPenInfo);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_Colour[] = { &wxluatype_wxGraphicsPenInfo, &wxluatype_wxColour, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_Colour(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_Colour[1] = {{ wxLua_wxGraphicsPenInfo_Colour, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_Colour }};
+//     wxGraphicsPenInfo& Colour(const wxColour& colour);
+static int LUACALL wxLua_wxGraphicsPenInfo_Colour(lua_State *L)
+{
+    // const wxColour colour
+    const wxColour * colour = (const wxColour *)wxluaT_getuserdatatype(L, 2, wxluatype_wxColour);
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call Colour
+    wxGraphicsPenInfo* returns = (wxGraphicsPenInfo*)&self->Colour(*colour);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsPenInfo);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_Dashes[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_Dashes(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_Dashes[1] = {{ wxLua_wxGraphicsPenInfo_Dashes, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_Dashes }};
+// %override wxLua_wxGraphicsPenInfo_Dashes
+// wxGraphicsPenInfo& Dashes()
+static int LUACALL wxLua_wxGraphicsPenInfo_Dashes(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo *self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // check if we have a table argument
+    if (!wxlua_iswxluatype(lua_type(L, 2), WXLUA_TTABLE))
+        wxlua_argerror(L, 2, wxT("a 'table'"));
+    int count = lua_objlen(L, 2);
+    // allocate an array of wxDashes
+    // TODO: this memory will leak when wxGraphicsPenInfo is destroyed.
+    wxDash *dashes = new wxDash[count];
+    for (int idx = 1; idx <= count; idx++) {
+        lua_rawgeti(L, 2, idx);
+        dashes[idx - 1] = (wxDash)lua_tonumber(L, -1);
+        lua_pop(L, 1);
+    }
+    wxGraphicsPenInfo *returns = &(self->Dashes(count, dashes));
+    // push the result data
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsPenInfo);
+    return 1;
+}
+
+
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetCap[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetCap(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetCap[1] = {{ wxLua_wxGraphicsPenInfo_GetCap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetCap }};
+//     wxPenCap GetCap() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetCap(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetCap
+    wxPenCap returns = (self->GetCap());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetColour[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetColour(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetColour[1] = {{ wxLua_wxGraphicsPenInfo_GetColour, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetColour }};
+//     wxColour GetColour() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetColour(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetColour
+    // allocate a new object using the copy constructor
+    wxColour* returns = new wxColour(self->GetColour());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxColour);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxColour);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetDashCount[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetDashCount(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetDashCount[1] = {{ wxLua_wxGraphicsPenInfo_GetDashCount, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetDashCount }};
+//     int GetDashCount() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetDashCount(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetDashCount
+    int returns = (self->GetDashCount());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetDashes[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetDashes(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetDashes[1] = {{ wxLua_wxGraphicsPenInfo_GetDashes, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetDashes }};
+// %override wxLua_wxGraphicsPenInfo_GetDashes
+// void GetDashes()
+static int LUACALL wxLua_wxGraphicsPenInfo_GetDashes(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo *self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // get dashes
+    wxDash *dashes;
+    int nb_dashes = self->GetDashes(&dashes);
+    if (nb_dashes == 0)
+        return 0;  //  No dashes are defined
+    // create a table (which will be the return value)
+    lua_newtable(L);
+    for (int idx = 0; idx < nb_dashes; ++idx) {
+        lua_pushinteger(L, dashes[idx]);
+        lua_rawseti(L, -2, idx + 1);
+    }
+    //  return the number of parameters
+    return 1;
+}
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetEndX[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetEndX(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetEndX[1] = {{ wxLua_wxGraphicsPenInfo_GetEndX, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetEndX }};
+//     wxDouble GetEndX() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetEndX(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetEndX
+    wxDouble returns = (self->GetEndX());
+    // push the result floating point number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetEndY[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetEndY(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetEndY[1] = {{ wxLua_wxGraphicsPenInfo_GetEndY, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetEndY }};
+//     wxDouble GetEndY() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetEndY(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetEndY
+    wxDouble returns = (self->GetEndY());
+    // push the result floating point number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetGradientType[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetGradientType(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetGradientType[1] = {{ wxLua_wxGraphicsPenInfo_GetGradientType, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetGradientType }};
+//     wxGradientType GetGradientType() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetGradientType(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetGradientType
+    wxGradientType returns = (self->GetGradientType());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetJoin[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetJoin(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetJoin[1] = {{ wxLua_wxGraphicsPenInfo_GetJoin, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetJoin }};
+//     wxPenJoin GetJoin() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetJoin(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetJoin
+    wxPenJoin returns = (self->GetJoin());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetMatrix[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetMatrix(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetMatrix[1] = {{ wxLua_wxGraphicsPenInfo_GetMatrix, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetMatrix }};
+//     const wxGraphicsMatrix& GetMatrix() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetMatrix(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetMatrix
+    const wxGraphicsMatrix* returns = (const wxGraphicsMatrix*)&self->GetMatrix();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsMatrix);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetRadius[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetRadius(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetRadius[1] = {{ wxLua_wxGraphicsPenInfo_GetRadius, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetRadius }};
+//     wxDouble GetRadius() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetRadius(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetRadius
+    wxDouble returns = (self->GetRadius());
+    // push the result floating point number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetStartX[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetStartX(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetStartX[1] = {{ wxLua_wxGraphicsPenInfo_GetStartX, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetStartX }};
+//     wxDouble GetStartX() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetStartX(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetStartX
+    wxDouble returns = (self->GetStartX());
+    // push the result floating point number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetStartY[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetStartY(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetStartY[1] = {{ wxLua_wxGraphicsPenInfo_GetStartY, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetStartY }};
+//     wxDouble GetStartY() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetStartY(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetStartY
+    wxDouble returns = (self->GetStartY());
+    // push the result floating point number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetStipple[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetStipple(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetStipple[1] = {{ wxLua_wxGraphicsPenInfo_GetStipple, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetStipple }};
+//     wxBitmap GetStipple() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetStipple(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetStipple
+    // allocate a new object using the copy constructor
+    wxBitmap* returns = new wxBitmap(self->GetStipple());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmap);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxBitmap)
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetStops[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetStops(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetStops[1] = {{ wxLua_wxGraphicsPenInfo_GetStops, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetStops }};
+//     const wxGraphicsGradientStops& GetStops() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetStops(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetStops
+    const wxGraphicsGradientStops* returns = (const wxGraphicsGradientStops*)&self->GetStops();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsGradientStops);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetStyle[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetStyle(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetStyle[1] = {{ wxLua_wxGraphicsPenInfo_GetStyle, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetStyle }};
+//     wxPenStyle GetStyle() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetStyle(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetStyle
+    wxPenStyle returns = (self->GetStyle());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetWidth[] = { &wxluatype_wxGraphicsPenInfo, NULL };
 static int LUACALL wxLua_wxGraphicsPenInfo_GetWidth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetWidth[1] = {{ wxLua_wxGraphicsPenInfo_GetWidth, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetWidth }};
@@ -170,6 +553,274 @@ static int LUACALL wxLua_wxGraphicsPenInfo_GetWidth(lua_State *L)
 
     return 1;
 }
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetX1[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetX1(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetX1[1] = {{ wxLua_wxGraphicsPenInfo_GetX1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetX1 }};
+//     wxDouble GetX1() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetX1(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetX1
+    wxDouble returns = (self->GetX1());
+    // push the result floating point number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetX2[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetX2(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetX2[1] = {{ wxLua_wxGraphicsPenInfo_GetX2, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetX2 }};
+//     wxDouble GetX2() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetX2(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetX2
+    wxDouble returns = (self->GetX2());
+    // push the result floating point number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetY1[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetY1(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetY1[1] = {{ wxLua_wxGraphicsPenInfo_GetY1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetY1 }};
+//     wxDouble GetY1() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetY1(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetY1
+    wxDouble returns = (self->GetY1());
+    // push the result floating point number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetY2[] = { &wxluatype_wxGraphicsPenInfo, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_GetY2(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_GetY2[1] = {{ wxLua_wxGraphicsPenInfo_GetY2, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_GetY2 }};
+//     wxDouble GetY2() const;
+static int LUACALL wxLua_wxGraphicsPenInfo_GetY2(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call GetY2
+    wxDouble returns = (self->GetY2());
+    // push the result floating point number
+    lua_pushnumber(L, returns);
+
+    return 1;
+}
+
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_Join[] = { &wxluatype_wxGraphicsPenInfo, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_Join(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_Join[1] = {{ wxLua_wxGraphicsPenInfo_Join, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_Join }};
+//     wxGraphicsPenInfo& Join(wxPenJoin join);
+static int LUACALL wxLua_wxGraphicsPenInfo_Join(lua_State *L)
+{
+    // wxPenJoin join
+    wxPenJoin join = (wxPenJoin)wxlua_getenumtype(L, 2);
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call Join
+    wxGraphicsPenInfo* returns = (wxGraphicsPenInfo*)&self->Join(join);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsPenInfo);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_LinearGradient1[] = { &wxluatype_wxGraphicsPenInfo, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxGraphicsGradientStops, &wxluatype_wxGraphicsMatrix, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_LinearGradient1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_LinearGradient1[1] = {{ wxLua_wxGraphicsPenInfo_LinearGradient1, WXLUAMETHOD_METHOD, 6, 7, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_LinearGradient1 }};
+//                    const wxGraphicsMatrix& matrix = wxNullGraphicsMatrix);
+static int LUACALL wxLua_wxGraphicsPenInfo_LinearGradient1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxGraphicsMatrix matrix = wxNullGraphicsMatrix
+    const wxGraphicsMatrix * matrix = (argCount >= 7 ? (const wxGraphicsMatrix *)wxluaT_getuserdatatype(L, 7, wxluatype_wxGraphicsMatrix) : &wxNullGraphicsMatrix);
+    // const wxGraphicsGradientStops stops
+    const wxGraphicsGradientStops * stops = (const wxGraphicsGradientStops *)wxluaT_getuserdatatype(L, 6, wxluatype_wxGraphicsGradientStops);
+    // wxDouble y2
+    wxDouble y2 = (wxDouble)wxlua_getnumbertype(L, 5);
+    // wxDouble x2
+    wxDouble x2 = (wxDouble)wxlua_getnumbertype(L, 4);
+    // wxDouble y1
+    wxDouble y1 = (wxDouble)wxlua_getnumbertype(L, 3);
+    // wxDouble x1
+    wxDouble x1 = (wxDouble)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call LinearGradient
+    wxGraphicsPenInfo* returns = (wxGraphicsPenInfo*)&self->LinearGradient(x1, y1, x2, y2, *stops, *matrix);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsPenInfo);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)) && (wxUSE_GRAPHICS_CONTEXT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_LinearGradient[] = { &wxluatype_wxGraphicsPenInfo, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxColour, &wxluatype_wxColour, &wxluatype_wxGraphicsMatrix, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_LinearGradient(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_LinearGradient[1] = {{ wxLua_wxGraphicsPenInfo_LinearGradient, WXLUAMETHOD_METHOD, 7, 8, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_LinearGradient }};
+//                    const wxGraphicsMatrix& matrix = wxNullGraphicsMatrix);
+static int LUACALL wxLua_wxGraphicsPenInfo_LinearGradient(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxGraphicsMatrix matrix = wxNullGraphicsMatrix
+    const wxGraphicsMatrix * matrix = (argCount >= 8 ? (const wxGraphicsMatrix *)wxluaT_getuserdatatype(L, 8, wxluatype_wxGraphicsMatrix) : &wxNullGraphicsMatrix);
+    // const wxColour c2
+    const wxColour * c2 = (const wxColour *)wxluaT_getuserdatatype(L, 7, wxluatype_wxColour);
+    // const wxColour c1
+    const wxColour * c1 = (const wxColour *)wxluaT_getuserdatatype(L, 6, wxluatype_wxColour);
+    // wxDouble y2
+    wxDouble y2 = (wxDouble)wxlua_getnumbertype(L, 5);
+    // wxDouble x2
+    wxDouble x2 = (wxDouble)wxlua_getnumbertype(L, 4);
+    // wxDouble y1
+    wxDouble y1 = (wxDouble)wxlua_getnumbertype(L, 3);
+    // wxDouble x1
+    wxDouble x1 = (wxDouble)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call LinearGradient
+    wxGraphicsPenInfo* returns = (wxGraphicsPenInfo*)&self->LinearGradient(x1, y1, x2, y2, *c1, *c2, *matrix);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsPenInfo);
+
+    return 1;
+}
+
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)) && (wxUSE_GRAPHICS_CONTEXT)
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_RadialGradient1[] = { &wxluatype_wxGraphicsPenInfo, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxGraphicsGradientStops, &wxluatype_wxGraphicsMatrix, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_RadialGradient1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_RadialGradient1[1] = {{ wxLua_wxGraphicsPenInfo_RadialGradient1, WXLUAMETHOD_METHOD, 7, 8, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_RadialGradient1 }};
+//                    const wxGraphicsMatrix& matrix = wxNullGraphicsMatrix);
+static int LUACALL wxLua_wxGraphicsPenInfo_RadialGradient1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxGraphicsMatrix matrix = wxNullGraphicsMatrix
+    const wxGraphicsMatrix * matrix = (argCount >= 8 ? (const wxGraphicsMatrix *)wxluaT_getuserdatatype(L, 8, wxluatype_wxGraphicsMatrix) : &wxNullGraphicsMatrix);
+    // const wxGraphicsGradientStops stops
+    const wxGraphicsGradientStops * stops = (const wxGraphicsGradientStops *)wxluaT_getuserdatatype(L, 7, wxluatype_wxGraphicsGradientStops);
+    // wxDouble radius
+    wxDouble radius = (wxDouble)wxlua_getnumbertype(L, 6);
+    // wxDouble endY
+    wxDouble endY = (wxDouble)wxlua_getnumbertype(L, 5);
+    // wxDouble endX
+    wxDouble endX = (wxDouble)wxlua_getnumbertype(L, 4);
+    // wxDouble startY
+    wxDouble startY = (wxDouble)wxlua_getnumbertype(L, 3);
+    // wxDouble startX
+    wxDouble startX = (wxDouble)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call RadialGradient
+    wxGraphicsPenInfo* returns = (wxGraphicsPenInfo*)&self->RadialGradient(startX, startY, endX, endY, radius, *stops, *matrix);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsPenInfo);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)) && (wxUSE_GRAPHICS_CONTEXT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_RadialGradient[] = { &wxluatype_wxGraphicsPenInfo, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_wxColour, &wxluatype_wxColour, &wxluatype_wxGraphicsMatrix, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_RadialGradient(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_RadialGradient[1] = {{ wxLua_wxGraphicsPenInfo_RadialGradient, WXLUAMETHOD_METHOD, 8, 9, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_RadialGradient }};
+//                    const wxGraphicsMatrix& matrix = wxNullGraphicsMatrix);
+static int LUACALL wxLua_wxGraphicsPenInfo_RadialGradient(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // const wxGraphicsMatrix matrix = wxNullGraphicsMatrix
+    const wxGraphicsMatrix * matrix = (argCount >= 9 ? (const wxGraphicsMatrix *)wxluaT_getuserdatatype(L, 9, wxluatype_wxGraphicsMatrix) : &wxNullGraphicsMatrix);
+    // const wxColour cColor
+    const wxColour * cColor = (const wxColour *)wxluaT_getuserdatatype(L, 8, wxluatype_wxColour);
+    // const wxColour oColor
+    const wxColour * oColor = (const wxColour *)wxluaT_getuserdatatype(L, 7, wxluatype_wxColour);
+    // wxDouble radius
+    wxDouble radius = (wxDouble)wxlua_getnumbertype(L, 6);
+    // wxDouble endY
+    wxDouble endY = (wxDouble)wxlua_getnumbertype(L, 5);
+    // wxDouble endX
+    wxDouble endX = (wxDouble)wxlua_getnumbertype(L, 4);
+    // wxDouble startY
+    wxDouble startY = (wxDouble)wxlua_getnumbertype(L, 3);
+    // wxDouble startX
+    wxDouble startX = (wxDouble)wxlua_getnumbertype(L, 2);
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call RadialGradient
+    wxGraphicsPenInfo* returns = (wxGraphicsPenInfo*)&self->RadialGradient(startX, startY, endX, endY, radius, *oColor, *cColor, *matrix);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsPenInfo);
+
+    return 1;
+}
+
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)) && (wxUSE_GRAPHICS_CONTEXT)
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_Stipple[] = { &wxluatype_wxGraphicsPenInfo, &wxluatype_wxBitmap, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_Stipple(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_Stipple[1] = {{ wxLua_wxGraphicsPenInfo_Stipple, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_Stipple }};
+//     wxGraphicsPenInfo& Stipple(const wxBitmap& stipple);
+static int LUACALL wxLua_wxGraphicsPenInfo_Stipple(lua_State *L)
+{
+    // const wxBitmap stipple
+    const wxBitmap * stipple = (const wxBitmap *)wxluaT_getuserdatatype(L, 2, wxluatype_wxBitmap);
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call Stipple
+    wxGraphicsPenInfo* returns = (wxGraphicsPenInfo*)&self->Stipple(*stipple);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsPenInfo);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxBitmap)
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_Style[] = { &wxluatype_wxGraphicsPenInfo, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxGraphicsPenInfo_Style(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_Style[1] = {{ wxLua_wxGraphicsPenInfo_Style, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_Style }};
+//     wxGraphicsPenInfo& Style(wxPenStyle style);
+static int LUACALL wxLua_wxGraphicsPenInfo_Style(lua_State *L)
+{
+    // wxPenStyle style
+    wxPenStyle style = (wxPenStyle)wxlua_getenumtype(L, 2);
+    // get this
+    wxGraphicsPenInfo * self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // call Style
+    wxGraphicsPenInfo* returns = (wxGraphicsPenInfo*)&self->Style(style);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsPenInfo);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxGraphicsPenInfo_Width[] = { &wxluatype_wxGraphicsPenInfo, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxGraphicsPenInfo_Width(lua_State *L);
@@ -238,6 +889,37 @@ static int LUACALL wxLua_wxGraphicsPenInfo_constructor(lua_State *L)
 
 
 
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT))||((((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)) && (wxUSE_GRAPHICS_CONTEXT))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_LinearGradient_overload[] =
+{
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+    { wxLua_wxGraphicsPenInfo_LinearGradient1, WXLUAMETHOD_METHOD, 6, 7, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_LinearGradient1 },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)) && (wxUSE_GRAPHICS_CONTEXT)
+    { wxLua_wxGraphicsPenInfo_LinearGradient, WXLUAMETHOD_METHOD, 7, 8, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_LinearGradient },
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)) && (wxUSE_GRAPHICS_CONTEXT)
+};
+static int s_wxluafunc_wxLua_wxGraphicsPenInfo_LinearGradient_overload_count = sizeof(s_wxluafunc_wxLua_wxGraphicsPenInfo_LinearGradient_overload)/sizeof(wxLuaBindCFunc);
+
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_RadialGradient_overload[] =
+{
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+    { wxLua_wxGraphicsPenInfo_RadialGradient1, WXLUAMETHOD_METHOD, 7, 8, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_RadialGradient1 },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)) && (wxUSE_GRAPHICS_CONTEXT)
+    { wxLua_wxGraphicsPenInfo_RadialGradient, WXLUAMETHOD_METHOD, 8, 9, s_wxluatypeArray_wxLua_wxGraphicsPenInfo_RadialGradient },
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)) && (wxUSE_GRAPHICS_CONTEXT)
+};
+static int s_wxluafunc_wxLua_wxGraphicsPenInfo_RadialGradient_overload_count = sizeof(s_wxluafunc_wxLua_wxGraphicsPenInfo_RadialGradient_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT))||((((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)) && (wxUSE_GRAPHICS_CONTEXT))
+
 #if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush))||((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxGraphicsPenInfo_constructor_overload[] =
@@ -260,7 +942,71 @@ void wxLua_wxGraphicsPenInfo_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxGraphicsPenInfo_methods[] = {
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+    { "Cap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_Cap, 1, NULL },
+    { "Colour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_Colour, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+
+    { "Dashes", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_Dashes, 1, NULL },
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+    { "GetCap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetCap, 1, NULL },
+    { "GetColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetColour, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+
+    { "GetDashCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetDashCount, 1, NULL },
+    { "GetDashes", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetDashes, 1, NULL },
+    { "GetEndX", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetEndX, 1, NULL },
+    { "GetEndY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetEndY, 1, NULL },
+    { "GetGradientType", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetGradientType, 1, NULL },
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+    { "GetJoin", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetJoin, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+    { "GetMatrix", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetMatrix, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+
+    { "GetRadius", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetRadius, 1, NULL },
+    { "GetStartX", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetStartX, 1, NULL },
+    { "GetStartY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetStartY, 1, NULL },
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxBitmap)
+    { "GetStipple", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetStipple, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxBitmap)
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+    { "GetStops", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetStops, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT)
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+    { "GetStyle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetStyle, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+
     { "GetWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetWidth, 1, NULL },
+    { "GetX1", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetX1, 1, NULL },
+    { "GetX2", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetX2, 1, NULL },
+    { "GetY1", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetY1, 1, NULL },
+    { "GetY2", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_GetY2, 1, NULL },
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+    { "Join", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_Join, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+
+#if (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT))||((((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)) && (wxUSE_GRAPHICS_CONTEXT))
+    { "LinearGradient", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_LinearGradient_overload, s_wxluafunc_wxLua_wxGraphicsPenInfo_LinearGradient_overload_count, 0 },
+    { "RadialGradient", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_RadialGradient_overload, s_wxluafunc_wxLua_wxGraphicsPenInfo_RadialGradient_overload_count, 0 },
+#endif // (((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxUSE_GRAPHICS_CONTEXT))||((((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)) && (wxUSE_GRAPHICS_CONTEXT))
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxBitmap)
+    { "Stipple", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_Stipple, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxBitmap)
+
+#if ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+    { "Style", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_Style, 1, NULL },
+#endif // ((wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)) && (wxLUA_USE_wxColourPenBrush)
+
     { "Width", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxGraphicsPenInfo_Width, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxGraphicsPenInfo_delete, 1, NULL },
 

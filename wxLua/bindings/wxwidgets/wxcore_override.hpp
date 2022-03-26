@@ -2985,3 +2985,50 @@ static int LUACALL wxLua_wxGraphicsContext_StrokeLines1(lua_State *L)
 }
 %end
 
+%override wxLua_wxGraphicsPenInfo_GetDashes
+// void GetDashes()
+static int LUACALL wxLua_wxGraphicsPenInfo_GetDashes(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo *self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // get dashes
+    wxDash *dashes;
+    int nb_dashes = self->GetDashes(&dashes);
+    if (nb_dashes == 0)
+        return 0;  //  No dashes are defined
+    // create a table (which will be the return value)
+    lua_newtable(L);
+    for (int idx = 0; idx < nb_dashes; ++idx) {
+        lua_pushinteger(L, dashes[idx]);
+        lua_rawseti(L, -2, idx + 1);
+    }
+    //  return the number of parameters
+    return 1;
+}
+%end
+
+%override wxLua_wxGraphicsPenInfo_Dashes
+// wxGraphicsPenInfo& Dashes()
+static int LUACALL wxLua_wxGraphicsPenInfo_Dashes(lua_State *L)
+{
+    // get this
+    wxGraphicsPenInfo *self = (wxGraphicsPenInfo *)wxluaT_getuserdatatype(L, 1, wxluatype_wxGraphicsPenInfo);
+    // check if we have a table argument
+    if (!wxlua_iswxluatype(lua_type(L, 2), WXLUA_TTABLE))
+        wxlua_argerror(L, 2, wxT("a 'table'"));
+    int count = lua_objlen(L, 2);
+    // allocate an array of wxDashes
+    // TODO: this memory will leak when wxGraphicsPenInfo is destroyed.
+    wxDash *dashes = new wxDash[count];
+    for (int idx = 1; idx <= count; idx++) {
+        lua_rawgeti(L, 2, idx);
+        dashes[idx - 1] = (wxDash)lua_tonumber(L, -1);
+        lua_pop(L, 1);
+    }
+    wxGraphicsPenInfo *returns = &(self->Dashes(count, dashes));
+    // push the result data
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxGraphicsPenInfo);
+    return 1;
+}
+%end
+

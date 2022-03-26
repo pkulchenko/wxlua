@@ -2484,6 +2484,12 @@ wx_dataTypeTable =
     Name = "wxGenericValidator",
     ValueType = "class",
   },
+  wxGradientType = {
+    Condition = "(wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)",
+    IsNumber = true,
+    Name = "wxGradientType",
+    ValueType = "enum",
+  },
   wxGraphicsBitmap = {
     BaseClasses = {
       [1] = "wxGraphicsObject",

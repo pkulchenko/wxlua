@@ -1542,6 +1542,12 @@ wxLuaBindNumber* wxLuaGetDefineList_wxcore(size_t &count)
         { "wxGA_VERTICAL", wxGA_VERTICAL },
 #endif // wxLUA_USE_wxGauge && wxUSE_GAUGE
 
+#if (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
+        { "wxGRADIENT_LINEAR", wxGRADIENT_LINEAR },
+        { "wxGRADIENT_NONE", wxGRADIENT_NONE },
+        { "wxGRADIENT_RADIAL", wxGRADIENT_RADIAL },
+#endif // (wxCHECK_VERSION(3,1,1)) && (wxUSE_GRAPHICS_CONTEXT)
+
         { "wxGROW", wxGROW },
 
 #if (defined(wxHAS_NATIVE_RENDERER)) && (wxLUA_USE_wxRenderer)
