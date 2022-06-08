@@ -156,7 +156,7 @@ class %delete wxMenuItem : public wxObject
     %wxchkver_2_8 static wxString GetLabelText(const wxString& text);
     %win wxColour GetBackgroundColour() const;
     %win wxBitmap GetBitmap(bool checked = true) const;
-    %win wxBitmap& GetDisabledBitmap() const;
+    %win wxBitmap GetDisabledBitmap() const;
     %win wxFont GetFont() const;
     wxString GetHelp() const;
     int GetId() const;

@@ -10283,13 +10283,16 @@ static int LUACALL wxLua_wxDataViewTreeStoreNode_GetData(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewTreeStoreNode_GetIcon[] = { &wxluatype_wxDataViewTreeStoreNode, NULL };
 static int LUACALL wxLua_wxDataViewTreeStoreNode_GetIcon(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewTreeStoreNode_GetIcon[1] = {{ wxLua_wxDataViewTreeStoreNode_GetIcon, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewTreeStoreNode_GetIcon }};
-//     const wxIcon &GetIcon() const;
+//     wxIcon GetIcon() const;
 static int LUACALL wxLua_wxDataViewTreeStoreNode_GetIcon(lua_State *L)
 {
     // get this
     wxDataViewTreeStoreNode * self = (wxDataViewTreeStoreNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewTreeStoreNode);
     // call GetIcon
-    const wxIcon* returns = (const wxIcon*)&self->GetIcon();
+    // allocate a new object using the copy constructor
+    wxIcon* returns = new wxIcon(self->GetIcon());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxIcon);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxIcon);
 
@@ -10518,13 +10521,16 @@ static int LUACALL wxLua_wxDataViewTreeStoreContainerNode_DestroyChildren(lua_St
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewTreeStoreContainerNode_GetExpandedIcon[] = { &wxluatype_wxDataViewTreeStoreContainerNode, NULL };
 static int LUACALL wxLua_wxDataViewTreeStoreContainerNode_GetExpandedIcon(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewTreeStoreContainerNode_GetExpandedIcon[1] = {{ wxLua_wxDataViewTreeStoreContainerNode_GetExpandedIcon, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewTreeStoreContainerNode_GetExpandedIcon }};
-//     const wxIcon &GetExpandedIcon() const;
+//     wxIcon GetExpandedIcon() const;
 static int LUACALL wxLua_wxDataViewTreeStoreContainerNode_GetExpandedIcon(lua_State *L)
 {
     // get this
     wxDataViewTreeStoreContainerNode * self = (wxDataViewTreeStoreContainerNode *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewTreeStoreContainerNode);
     // call GetExpandedIcon
-    const wxIcon* returns = (const wxIcon*)&self->GetExpandedIcon();
+    // allocate a new object using the copy constructor
+    wxIcon* returns = new wxIcon(self->GetExpandedIcon());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxIcon);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxIcon);
 
@@ -10861,7 +10867,7 @@ static int LUACALL wxLua_wxDataViewTreeStore_GetItemData(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewTreeStore_GetItemExpandedIcon[] = { &wxluatype_wxDataViewTreeStore, &wxluatype_wxDataViewItem, NULL };
 static int LUACALL wxLua_wxDataViewTreeStore_GetItemExpandedIcon(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewTreeStore_GetItemExpandedIcon[1] = {{ wxLua_wxDataViewTreeStore_GetItemExpandedIcon, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDataViewTreeStore_GetItemExpandedIcon }};
-//     const wxIcon &GetItemExpandedIcon( const wxDataViewItem& item ) const;
+//     wxIcon GetItemExpandedIcon( const wxDataViewItem& item ) const;
 static int LUACALL wxLua_wxDataViewTreeStore_GetItemExpandedIcon(lua_State *L)
 {
     // const wxDataViewItem item
@@ -10869,7 +10875,10 @@ static int LUACALL wxLua_wxDataViewTreeStore_GetItemExpandedIcon(lua_State *L)
     // get this
     wxDataViewTreeStore * self = (wxDataViewTreeStore *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewTreeStore);
     // call GetItemExpandedIcon
-    const wxIcon* returns = (const wxIcon*)&self->GetItemExpandedIcon(*item);
+    // allocate a new object using the copy constructor
+    wxIcon* returns = new wxIcon(self->GetItemExpandedIcon(*item));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxIcon);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxIcon);
 
@@ -10879,7 +10888,7 @@ static int LUACALL wxLua_wxDataViewTreeStore_GetItemExpandedIcon(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewTreeStore_GetItemIcon[] = { &wxluatype_wxDataViewTreeStore, &wxluatype_wxDataViewItem, NULL };
 static int LUACALL wxLua_wxDataViewTreeStore_GetItemIcon(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewTreeStore_GetItemIcon[1] = {{ wxLua_wxDataViewTreeStore_GetItemIcon, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDataViewTreeStore_GetItemIcon }};
-//     const wxIcon &GetItemIcon( const wxDataViewItem& item ) const;
+//     wxIcon GetItemIcon( const wxDataViewItem& item ) const;
 static int LUACALL wxLua_wxDataViewTreeStore_GetItemIcon(lua_State *L)
 {
     // const wxDataViewItem item
@@ -10887,7 +10896,10 @@ static int LUACALL wxLua_wxDataViewTreeStore_GetItemIcon(lua_State *L)
     // get this
     wxDataViewTreeStore * self = (wxDataViewTreeStore *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewTreeStore);
     // call GetItemIcon
-    const wxIcon* returns = (const wxIcon*)&self->GetItemIcon(*item);
+    // allocate a new object using the copy constructor
+    wxIcon* returns = new wxIcon(self->GetItemIcon(*item));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxIcon);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxIcon);
 
@@ -16136,13 +16148,16 @@ int wxluatype_wxDataViewIconText = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewIconText_GetIcon[] = { &wxluatype_wxDataViewIconText, NULL };
 static int LUACALL wxLua_wxDataViewIconText_GetIcon(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewIconText_GetIcon[1] = {{ wxLua_wxDataViewIconText_GetIcon, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxDataViewIconText_GetIcon }};
-//     const wxIcon &GetIcon() const;
+//     wxIcon GetIcon() const;
 static int LUACALL wxLua_wxDataViewIconText_GetIcon(lua_State *L)
 {
     // get this
     wxDataViewIconText * self = (wxDataViewIconText *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewIconText);
     // call GetIcon
-    const wxIcon* returns = (const wxIcon*)&self->GetIcon();
+    // allocate a new object using the copy constructor
+    wxIcon* returns = new wxIcon(self->GetIcon());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxIcon);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxIcon);
 

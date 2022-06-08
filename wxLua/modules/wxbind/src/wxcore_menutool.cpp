@@ -2508,13 +2508,16 @@ static int LUACALL wxLua_wxMenuItem_GetBitmap(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMenuItem_GetDisabledBitmap[] = { &wxluatype_wxMenuItem, NULL };
 static int LUACALL wxLua_wxMenuItem_GetDisabledBitmap(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMenuItem_GetDisabledBitmap[1] = {{ wxLua_wxMenuItem_GetDisabledBitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxMenuItem_GetDisabledBitmap }};
-//     %win wxBitmap& GetDisabledBitmap() const;
+//     %win wxBitmap GetDisabledBitmap() const;
 static int LUACALL wxLua_wxMenuItem_GetDisabledBitmap(lua_State *L)
 {
     // get this
     wxMenuItem * self = (wxMenuItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMenuItem);
     // call GetDisabledBitmap
-    wxBitmap* returns = (wxBitmap*)&self->GetDisabledBitmap();
+    // allocate a new object using the copy constructor
+    wxBitmap* returns = new wxBitmap(self->GetDisabledBitmap());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxBitmap);
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
 
