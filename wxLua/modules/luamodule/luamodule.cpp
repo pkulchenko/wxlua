@@ -218,70 +218,61 @@ extern "C" {
 
 int luaopen_wx(lua_State *L)
 {
-    // only initialize the wxLuaState once, allows require to be called more than once
-    if (!s_wxlState.Ok())
-    {
-        int argc = 0;
-        wxChar **argv = NULL;
+    int argc = 0;
+    wxChar **argv = NULL;
 
 #ifdef __WXMSW__
-        // Set the HINSTANCE to *this* DLL's instance, not the caller app's HINSTANCE.
-        // NOTE: If wxGetInstance() is NULL then wxEntryStart() calls DoCommonPreInit() 
-        //       which calls wxSetInstance(::GetModuleHandle(NULL));
-        wxSetInstance(wxLuaModule_hDll);
+    // Set the HINSTANCE to *this* DLL's instance, not the caller app's HINSTANCE.
+    // NOTE: If wxGetInstance() is NULL then wxEntryStart() calls DoCommonPreInit()
+    //       which calls wxSetInstance(::GetModuleHandle(NULL));
+    wxSetInstance(wxLuaModule_hDll);
 
-        // This has been a problem in the past, help people debug it...
-        // The problem will be that cursors/icons probably won't be loaded from 
-        // the resources and an assert will be given.
-        if (wxLuaModule_hDll == NULL)
-        {
-            wxPrintf(wxT("wxLuaModule - Error getting HINSTANCE, DllMain() wasn't called! trying to continue...\n")); 
-            // Don't exit... it may still work...
-        }
+    // This has been a problem in the past, help people debug it...
+    // The problem will be that cursors/icons probably won't be loaded from
+    // the resources and an assert will be given.
+    if (wxLuaModule_hDll == NULL)
+    {
+        wxPrintf(wxT("wxLuaModule - Error getting HINSTANCE, DllMain() wasn't called! trying to continue...\n"));
+        // Don't exit... it may still work...
+    }
 #endif // __WXMSW__
 
-        if (!wxEntryStart(argc, argv))
-        {
-            wxPrintf(wxT("wxLuaModule - Error calling wxEntryStart(argc, argv), aborting.\n"));
-            return 0;
-        }
-
-        if (!wxTheApp || !wxTheApp->CallOnInit())
-        {
-            wxPrintf(wxT("wxLuaModule - Error calling wxTheApp->CallOnInit(), aborting.\n"));
-            return 0;
-        }
-
-        wxTheApp->SetExitOnFrameDelete(true);
-        wxInitAllImageHandlers();
-
-        WXLUA_IMPLEMENT_BIND_ALL
-        s_wxlState.Create(L, wxLUASTATE_SETSTATE|wxLUASTATE_OPENBINDINGS|wxLUASTATE_STATICSTATE);
-        // Since we are run from a console we will let Lua do the printing.
-        // We don't have to worry about the message not showing up in MSW as they don't for GUI apps with a WinMain().
-        s_wxlState.SetEventHandler((wxEvtHandler*)wxTheApp);
-
-        //s_wxlState.sm_wxAppMainLoop_will_run = true;
-
-        lua_getglobal(L, "wx"); // push global wx table on the stack
-
-        if (lua_getmetatable(L, -1) != 0) {
-            wxPrintf(wxT("wxLuaModule - Error setting up metatable for module wx, aborting.\n"));
-            return 0;
-        }
-        else
-        {
-            lua_newtable(L); // new metatable for wx table
-            {
-                lua_pushstring(L, "__gc");
-                lua_pushcfunction(L, reportShutdown);
-                lua_rawset(L, -3); // set metatable.__gc = reportShutdown
-            }
-            lua_setmetatable(L, -2); // sets metatable for wx table
-        }
+    if (!wxEntryStart(argc, argv))
+    {
+        wxPrintf(wxT("wxLuaModule - Error calling wxEntryStart(argc, argv), aborting.\n"));
+        return 0;
     }
-    else {
-        lua_getglobal(L, "wx"); // push global wx table on the stack
+
+    if (!wxTheApp || !wxTheApp->CallOnInit())
+    {
+        wxPrintf(wxT("wxLuaModule - Error calling wxTheApp->CallOnInit(), aborting.\n"));
+        return 0;
+    }
+
+    wxTheApp->SetExitOnFrameDelete(true);
+    wxInitAllImageHandlers();
+
+    WXLUA_IMPLEMENT_BIND_ALL
+    s_wxlState.Create(L, wxLUASTATE_SETSTATE|wxLUASTATE_OPENBINDINGS|wxLUASTATE_STATICSTATE);
+    // Since we are run from a console we will let Lua do the printing.
+    // We don't have to worry about the message not showing up in MSW as they don't for GUI apps with a WinMain().
+    s_wxlState.SetEventHandler((wxEvtHandler*)wxTheApp);
+
+    lua_getglobal(L, "wx"); // push global wx table on the stack
+
+    if (lua_getmetatable(L, -1) != 0) {
+        wxPrintf(wxT("wxLuaModule - Error setting up metatable for module wx, aborting.\n"));
+        return 0;
+    }
+    else
+    {
+        lua_newtable(L); // new metatable for wx table
+        {
+            lua_pushstring(L, "__gc");
+            lua_pushcfunction(L, reportShutdown);
+            lua_rawset(L, -3); // set metatable.__gc = reportShutdown
+        }
+        lua_setmetatable(L, -2); // sets metatable for wx table
     }
     return 1; // returns global wx
 }
