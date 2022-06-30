@@ -368,12 +368,12 @@ if ((double)(lua_Integer)returns == (double)returns) {
 
 #endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
-#if (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetBitmap[] = { &wxluatype_wxAuiToolBarItem, NULL };
-static int LUACALL wxLua_wxAuiToolBarItem_GetBitmap(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_GetBitmap[1] = {{ wxLua_wxAuiToolBarItem_GetBitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetBitmap }};
-//     wxBitmap GetBitmap() const;
-static int LUACALL wxLua_wxAuiToolBarItem_GetBitmap(lua_State *L)
+#if ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetBitmap1[] = { &wxluatype_wxAuiToolBarItem, NULL };
+static int LUACALL wxLua_wxAuiToolBarItem_GetBitmap1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_GetBitmap1[1] = {{ wxLua_wxAuiToolBarItem_GetBitmap1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetBitmap1 }};
+//     %wxchkver_3_2_0 wxBitmap GetBitmap() const;
+static int LUACALL wxLua_wxAuiToolBarItem_GetBitmap1(lua_State *L)
 {
     // get this
     wxAuiToolBarItem * self = (wxAuiToolBarItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiToolBarItem);
@@ -388,11 +388,33 @@ static int LUACALL wxLua_wxAuiToolBarItem_GetBitmap(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetDisabledBitmap[] = { &wxluatype_wxAuiToolBarItem, NULL };
-static int LUACALL wxLua_wxAuiToolBarItem_GetDisabledBitmap(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_GetDisabledBitmap[1] = {{ wxLua_wxAuiToolBarItem_GetDisabledBitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetDisabledBitmap }};
-//     wxBitmap GetDisabledBitmap() const;
-static int LUACALL wxLua_wxAuiToolBarItem_GetDisabledBitmap(lua_State *L)
+#endif // ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+
+#if ((!wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetBitmap[] = { &wxluatype_wxAuiToolBarItem, NULL };
+static int LUACALL wxLua_wxAuiToolBarItem_GetBitmap(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_GetBitmap[1] = {{ wxLua_wxAuiToolBarItem_GetBitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetBitmap }};
+//     !%wxchkver_3_2_0 const wxBitmap& GetBitmap() const;
+static int LUACALL wxLua_wxAuiToolBarItem_GetBitmap(lua_State *L)
+{
+    // get this
+    wxAuiToolBarItem * self = (wxAuiToolBarItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiToolBarItem);
+    // call GetBitmap
+    const wxBitmap* returns = (const wxBitmap*)&self->GetBitmap();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
+
+    return 1;
+}
+
+#endif // ((!wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+
+#if ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetDisabledBitmap1[] = { &wxluatype_wxAuiToolBarItem, NULL };
+static int LUACALL wxLua_wxAuiToolBarItem_GetDisabledBitmap1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_GetDisabledBitmap1[1] = {{ wxLua_wxAuiToolBarItem_GetDisabledBitmap1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetDisabledBitmap1 }};
+//     %wxchkver_3_2_0 wxBitmap GetDisabledBitmap() const;
+static int LUACALL wxLua_wxAuiToolBarItem_GetDisabledBitmap1(lua_State *L)
 {
     // get this
     wxAuiToolBarItem * self = (wxAuiToolBarItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiToolBarItem);
@@ -407,11 +429,33 @@ static int LUACALL wxLua_wxAuiToolBarItem_GetDisabledBitmap(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetHoverBitmap[] = { &wxluatype_wxAuiToolBarItem, NULL };
-static int LUACALL wxLua_wxAuiToolBarItem_GetHoverBitmap(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_GetHoverBitmap[1] = {{ wxLua_wxAuiToolBarItem_GetHoverBitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetHoverBitmap }};
-//     wxBitmap GetHoverBitmap() const;
-static int LUACALL wxLua_wxAuiToolBarItem_GetHoverBitmap(lua_State *L)
+#endif // ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+
+#if ((!wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetDisabledBitmap[] = { &wxluatype_wxAuiToolBarItem, NULL };
+static int LUACALL wxLua_wxAuiToolBarItem_GetDisabledBitmap(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_GetDisabledBitmap[1] = {{ wxLua_wxAuiToolBarItem_GetDisabledBitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetDisabledBitmap }};
+//     !%wxchkver_3_2_0 const wxBitmap& GetDisabledBitmap() const;
+static int LUACALL wxLua_wxAuiToolBarItem_GetDisabledBitmap(lua_State *L)
+{
+    // get this
+    wxAuiToolBarItem * self = (wxAuiToolBarItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiToolBarItem);
+    // call GetDisabledBitmap
+    const wxBitmap* returns = (const wxBitmap*)&self->GetDisabledBitmap();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
+
+    return 1;
+}
+
+#endif // ((!wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+
+#if ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetHoverBitmap1[] = { &wxluatype_wxAuiToolBarItem, NULL };
+static int LUACALL wxLua_wxAuiToolBarItem_GetHoverBitmap1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_GetHoverBitmap1[1] = {{ wxLua_wxAuiToolBarItem_GetHoverBitmap1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetHoverBitmap1 }};
+//     %wxchkver_3_2_0 wxBitmap GetHoverBitmap() const;
+static int LUACALL wxLua_wxAuiToolBarItem_GetHoverBitmap1(lua_State *L)
 {
     // get this
     wxAuiToolBarItem * self = (wxAuiToolBarItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiToolBarItem);
@@ -426,7 +470,26 @@ static int LUACALL wxLua_wxAuiToolBarItem_GetHoverBitmap(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
+#endif // ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+
+#if ((!wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetHoverBitmap[] = { &wxluatype_wxAuiToolBarItem, NULL };
+static int LUACALL wxLua_wxAuiToolBarItem_GetHoverBitmap(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_GetHoverBitmap[1] = {{ wxLua_wxAuiToolBarItem_GetHoverBitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetHoverBitmap }};
+//     !%wxchkver_3_2_0 const wxBitmap& GetHoverBitmap() const;
+static int LUACALL wxLua_wxAuiToolBarItem_GetHoverBitmap(lua_State *L)
+{
+    // get this
+    wxAuiToolBarItem * self = (wxAuiToolBarItem *)wxluaT_getuserdatatype(L, 1, wxluatype_wxAuiToolBarItem);
+    // call GetHoverBitmap
+    const wxBitmap* returns = (const wxBitmap*)&self->GetHoverBitmap();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxBitmap);
+
+    return 1;
+}
+
+#endif // ((!wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetId[] = { &wxluatype_wxAuiToolBarItem, NULL };
 static int LUACALL wxLua_wxAuiToolBarItem_GetId(lua_State *L);
@@ -1098,6 +1161,51 @@ static int LUACALL wxLua_wxAuiToolBarItem_constructor(lua_State *L)
 
 
 
+#if (((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap))||(((!wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_GetBitmap_overload[] =
+{
+
+#if ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+    { wxLua_wxAuiToolBarItem_GetBitmap1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetBitmap1 },
+#endif // ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+
+#if ((!wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+    { wxLua_wxAuiToolBarItem_GetBitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetBitmap },
+#endif // ((!wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+};
+static int s_wxluafunc_wxLua_wxAuiToolBarItem_GetBitmap_overload_count = sizeof(s_wxluafunc_wxLua_wxAuiToolBarItem_GetBitmap_overload)/sizeof(wxLuaBindCFunc);
+
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_GetDisabledBitmap_overload[] =
+{
+
+#if ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+    { wxLua_wxAuiToolBarItem_GetDisabledBitmap1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetDisabledBitmap1 },
+#endif // ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+
+#if ((!wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+    { wxLua_wxAuiToolBarItem_GetDisabledBitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetDisabledBitmap },
+#endif // ((!wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+};
+static int s_wxluafunc_wxLua_wxAuiToolBarItem_GetDisabledBitmap_overload_count = sizeof(s_wxluafunc_wxLua_wxAuiToolBarItem_GetDisabledBitmap_overload)/sizeof(wxLuaBindCFunc);
+
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_GetHoverBitmap_overload[] =
+{
+
+#if ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+    { wxLua_wxAuiToolBarItem_GetHoverBitmap1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetHoverBitmap1 },
+#endif // ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+
+#if ((!wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+    { wxLua_wxAuiToolBarItem_GetHoverBitmap, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxAuiToolBarItem_GetHoverBitmap },
+#endif // ((!wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap)
+};
+static int s_wxluafunc_wxLua_wxAuiToolBarItem_GetHoverBitmap_overload_count = sizeof(s_wxluafunc_wxLua_wxAuiToolBarItem_GetHoverBitmap_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap))||(((!wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap))
+
 #if (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiToolBarItem_constructor_overload[] =
@@ -1127,11 +1235,11 @@ wxLuaBindMethod wxAuiToolBarItem_methods[] = {
     { "GetAlignment", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_GetAlignment, 1, NULL },
 #endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
-#if (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
-    { "GetBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_GetBitmap, 1, NULL },
-    { "GetDisabledBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_GetDisabledBitmap, 1, NULL },
-    { "GetHoverBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_GetHoverBitmap, 1, NULL },
-#endif // (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI) && (wxLUA_USE_wxBitmap)
+#if (((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap))||(((!wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap))
+    { "GetBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_GetBitmap_overload, s_wxluafunc_wxLua_wxAuiToolBarItem_GetBitmap_overload_count, 0 },
+    { "GetDisabledBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_GetDisabledBitmap_overload, s_wxluafunc_wxLua_wxAuiToolBarItem_GetDisabledBitmap_overload_count, 0 },
+    { "GetHoverBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_GetHoverBitmap_overload, s_wxluafunc_wxLua_wxAuiToolBarItem_GetHoverBitmap_overload_count, 0 },
+#endif // (((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap))||(((!wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)) && (wxLUA_USE_wxBitmap))
 
     { "GetId", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_GetId, 1, NULL },
     { "GetKind", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxAuiToolBarItem_GetKind, 1, NULL },
