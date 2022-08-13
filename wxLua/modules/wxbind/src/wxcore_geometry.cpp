@@ -3384,3 +3384,487 @@ int wxRect2DInt_methodCount = sizeof(wxRect2DInt_methods)/sizeof(wxLuaBindMethod
 
 #endif  // wxLUA_USE_Geometry && wxUSE_GEOMETRY
 
+
+#if wxLUA_USE_Geometry && wxUSE_GEOMETRY
+// ---------------------------------------------------------------------------
+// Bind class wxPosition
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxPosition'
+int wxluatype_wxPosition = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_GetCol[] = { &wxluatype_wxPosition, NULL };
+static int LUACALL wxLua_wxPosition_GetCol(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_GetCol[1] = {{ wxLua_wxPosition_GetCol, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPosition_GetCol }};
+//     int GetCol() const;
+static int LUACALL wxLua_wxPosition_GetCol(lua_State *L)
+{
+    // get this
+    wxPosition * self = (wxPosition *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPosition);
+    // call GetCol
+    int returns = (self->GetCol());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_GetColumn[] = { &wxluatype_wxPosition, NULL };
+static int LUACALL wxLua_wxPosition_GetColumn(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_GetColumn[1] = {{ wxLua_wxPosition_GetColumn, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPosition_GetColumn }};
+//     int GetColumn() const;
+static int LUACALL wxLua_wxPosition_GetColumn(lua_State *L)
+{
+    // get this
+    wxPosition * self = (wxPosition *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPosition);
+    // call GetColumn
+    int returns = (self->GetColumn());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_GetRow[] = { &wxluatype_wxPosition, NULL };
+static int LUACALL wxLua_wxPosition_GetRow(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_GetRow[1] = {{ wxLua_wxPosition_GetRow, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPosition_GetRow }};
+//     int GetRow() const;
+static int LUACALL wxLua_wxPosition_GetRow(lua_State *L)
+{
+    // get this
+    wxPosition * self = (wxPosition *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPosition);
+    // call GetRow
+    int returns = (self->GetRow());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_SetCol[] = { &wxluatype_wxPosition, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxPosition_SetCol(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_SetCol[1] = {{ wxLua_wxPosition_SetCol, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_SetCol }};
+//     void SetCol(int column);
+static int LUACALL wxLua_wxPosition_SetCol(lua_State *L)
+{
+    // int column
+    int column = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxPosition * self = (wxPosition *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPosition);
+    // call SetCol
+    self->SetCol(column);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_SetColumn[] = { &wxluatype_wxPosition, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxPosition_SetColumn(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_SetColumn[1] = {{ wxLua_wxPosition_SetColumn, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_SetColumn }};
+//     void SetColumn(int column);
+static int LUACALL wxLua_wxPosition_SetColumn(lua_State *L)
+{
+    // int column
+    int column = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxPosition * self = (wxPosition *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPosition);
+    // call SetColumn
+    self->SetColumn(column);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_SetRow[] = { &wxluatype_wxPosition, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxPosition_SetRow(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_SetRow[1] = {{ wxLua_wxPosition_SetRow, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_SetRow }};
+//     void SetRow(int row);
+static int LUACALL wxLua_wxPosition_SetRow(lua_State *L)
+{
+    // int row
+    int row = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxPosition * self = (wxPosition *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPosition);
+    // call SetRow
+    self->SetRow(row);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_delete[] = { &wxluatype_wxPosition, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxPosition_delete }};
+
+
+#if (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_op_add1[] = { &wxluatype_wxPosition, &wxluatype_wxSize, NULL };
+static int LUACALL wxLua_wxPosition_op_add1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_op_add1[1] = {{ wxLua_wxPosition_op_add1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_add1 }};
+//     wxPosition operator+(const wxSize& s) const;
+static int LUACALL wxLua_wxPosition_op_add1(lua_State *L)
+{
+    // const wxSize s
+    const wxSize * s = (const wxSize *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSize);
+    // get this
+    wxPosition * self = (wxPosition *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPosition);
+    // call op_add
+    // allocate a new object using the copy constructor
+    wxPosition* returns = new wxPosition((*self)+(*s));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxPosition);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPosition);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_op_add[] = { &wxluatype_wxPosition, &wxluatype_wxPosition, NULL };
+static int LUACALL wxLua_wxPosition_op_add(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_op_add[1] = {{ wxLua_wxPosition_op_add, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_add }};
+//     wxPosition operator+(const wxPosition& p) const;
+static int LUACALL wxLua_wxPosition_op_add(lua_State *L)
+{
+    // const wxPosition p
+    const wxPosition * p = (const wxPosition *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPosition);
+    // get this
+    wxPosition * self = (wxPosition *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPosition);
+    // call op_add
+    // allocate a new object using the copy constructor
+    wxPosition* returns = new wxPosition((*self)+(*p));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxPosition);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPosition);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_op_eq[] = { &wxluatype_wxPosition, &wxluatype_wxPosition, NULL };
+static int LUACALL wxLua_wxPosition_op_eq(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_op_eq[1] = {{ wxLua_wxPosition_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_eq }};
+//     bool operator==(const wxPosition& p) const;
+static int LUACALL wxLua_wxPosition_op_eq(lua_State *L)
+{
+    // const wxPosition p
+    const wxPosition * p = (const wxPosition *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPosition);
+    // get this
+    wxPosition * self = (wxPosition *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPosition);
+    // call op_eq
+    bool returns = ((*self)==(*p));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+
+#if (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_op_iadd1[] = { &wxluatype_wxPosition, &wxluatype_wxSize, NULL };
+static int LUACALL wxLua_wxPosition_op_iadd1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_op_iadd1[1] = {{ wxLua_wxPosition_op_iadd1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_iadd1 }};
+//     wxPosition& operator+=(const wxSize& s);
+static int LUACALL wxLua_wxPosition_op_iadd1(lua_State *L)
+{
+    // const wxSize s
+    const wxSize * s = (const wxSize *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSize);
+    // get this
+    wxPosition * self = (wxPosition *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPosition);
+    // call op_iadd
+    (*self)+=(*s);
+    wxPosition* returns = self;
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPosition);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_op_iadd[] = { &wxluatype_wxPosition, &wxluatype_wxPosition, NULL };
+static int LUACALL wxLua_wxPosition_op_iadd(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_op_iadd[1] = {{ wxLua_wxPosition_op_iadd, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_iadd }};
+//     wxPosition& operator+=(const wxPosition& p);
+static int LUACALL wxLua_wxPosition_op_iadd(lua_State *L)
+{
+    // const wxPosition p
+    const wxPosition * p = (const wxPosition *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPosition);
+    // get this
+    wxPosition * self = (wxPosition *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPosition);
+    // call op_iadd
+    (*self)+=(*p);
+    wxPosition* returns = self;
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPosition);
+
+    return 1;
+}
+
+
+#if (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_op_isub1[] = { &wxluatype_wxPosition, &wxluatype_wxSize, NULL };
+static int LUACALL wxLua_wxPosition_op_isub1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_op_isub1[1] = {{ wxLua_wxPosition_op_isub1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_isub1 }};
+//     wxPosition& operator-=(const wxSize& s);
+static int LUACALL wxLua_wxPosition_op_isub1(lua_State *L)
+{
+    // const wxSize s
+    const wxSize * s = (const wxSize *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSize);
+    // get this
+    wxPosition * self = (wxPosition *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPosition);
+    // call op_isub
+    (*self)-=(*s);
+    wxPosition* returns = self;
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPosition);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_op_isub[] = { &wxluatype_wxPosition, &wxluatype_wxPosition, NULL };
+static int LUACALL wxLua_wxPosition_op_isub(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_op_isub[1] = {{ wxLua_wxPosition_op_isub, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_isub }};
+//     wxPosition& operator-=(const wxPosition& p);
+static int LUACALL wxLua_wxPosition_op_isub(lua_State *L)
+{
+    // const wxPosition p
+    const wxPosition * p = (const wxPosition *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPosition);
+    // get this
+    wxPosition * self = (wxPosition *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPosition);
+    // call op_isub
+    (*self)-=(*p);
+    wxPosition* returns = self;
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPosition);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_op_ne[] = { &wxluatype_wxPosition, &wxluatype_wxPosition, NULL };
+static int LUACALL wxLua_wxPosition_op_ne(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_op_ne[1] = {{ wxLua_wxPosition_op_ne, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_ne }};
+//     bool operator!=(const wxPosition& p) const;
+static int LUACALL wxLua_wxPosition_op_ne(lua_State *L)
+{
+    // const wxPosition p
+    const wxPosition * p = (const wxPosition *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPosition);
+    // get this
+    wxPosition * self = (wxPosition *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPosition);
+    // call op_ne
+    bool returns = ((*self)!=(*p));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+
+#if (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_op_sub1[] = { &wxluatype_wxPosition, &wxluatype_wxSize, NULL };
+static int LUACALL wxLua_wxPosition_op_sub1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_op_sub1[1] = {{ wxLua_wxPosition_op_sub1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_sub1 }};
+//     wxPosition operator-(const wxSize& s) const;
+static int LUACALL wxLua_wxPosition_op_sub1(lua_State *L)
+{
+    // const wxSize s
+    const wxSize * s = (const wxSize *)wxluaT_getuserdatatype(L, 2, wxluatype_wxSize);
+    // get this
+    wxPosition * self = (wxPosition *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPosition);
+    // call op_sub
+    // allocate a new object using the copy constructor
+    wxPosition* returns = new wxPosition((*self)-(*s));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxPosition);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPosition);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_op_sub[] = { &wxluatype_wxPosition, &wxluatype_wxPosition, NULL };
+static int LUACALL wxLua_wxPosition_op_sub(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_op_sub[1] = {{ wxLua_wxPosition_op_sub, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_sub }};
+//     wxPosition operator-(const wxPosition& p) const;
+static int LUACALL wxLua_wxPosition_op_sub(lua_State *L)
+{
+    // const wxPosition p
+    const wxPosition * p = (const wxPosition *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPosition);
+    // get this
+    wxPosition * self = (wxPosition *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPosition);
+    // call op_sub
+    // allocate a new object using the copy constructor
+    wxPosition* returns = new wxPosition((*self)-(*p));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxPosition);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPosition);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxPosition_constructor1[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxPosition_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_constructor1[1] = {{ wxLua_wxPosition_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxPosition_constructor1 }};
+//     wxPosition(int row, int col);
+static int LUACALL wxLua_wxPosition_constructor1(lua_State *L)
+{
+    // int col
+    int col = (int)wxlua_getnumbertype(L, 2);
+    // int row
+    int row = (int)wxlua_getnumbertype(L, 1);
+    // call constructor
+    wxPosition* returns = new wxPosition(row, col);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxPosition);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPosition);
+
+    return 1;
+}
+
+static int LUACALL wxLua_wxPosition_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_constructor[1] = {{ wxLua_wxPosition_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxPosition();
+static int LUACALL wxLua_wxPosition_constructor(lua_State *L)
+{
+    // call constructor
+    wxPosition* returns = new wxPosition();
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxPosition);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPosition);
+
+    return 1;
+}
+
+
+
+
+#if ((wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_op_add_overload[] =
+{
+
+#if (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect)
+    { wxLua_wxPosition_op_add1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_add1 },
+#endif // (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect)
+    { wxLua_wxPosition_op_add, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_add },
+};
+static int s_wxluafunc_wxLua_wxPosition_op_add_overload_count = sizeof(s_wxluafunc_wxLua_wxPosition_op_add_overload)/sizeof(wxLuaBindCFunc);
+
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_op_iadd_overload[] =
+{
+
+#if (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect)
+    { wxLua_wxPosition_op_iadd1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_iadd1 },
+#endif // (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect)
+    { wxLua_wxPosition_op_iadd, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_iadd },
+};
+static int s_wxluafunc_wxLua_wxPosition_op_iadd_overload_count = sizeof(s_wxluafunc_wxLua_wxPosition_op_iadd_overload)/sizeof(wxLuaBindCFunc);
+
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_op_isub_overload[] =
+{
+
+#if (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect)
+    { wxLua_wxPosition_op_isub1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_isub1 },
+#endif // (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect)
+    { wxLua_wxPosition_op_isub, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_isub },
+};
+static int s_wxluafunc_wxLua_wxPosition_op_isub_overload_count = sizeof(s_wxluafunc_wxLua_wxPosition_op_isub_overload)/sizeof(wxLuaBindCFunc);
+
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_op_sub_overload[] =
+{
+
+#if (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect)
+    { wxLua_wxPosition_op_sub1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_sub1 },
+#endif // (wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect)
+    { wxLua_wxPosition_op_sub, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPosition_op_sub },
+};
+static int s_wxluafunc_wxLua_wxPosition_op_sub_overload_count = sizeof(s_wxluafunc_wxLua_wxPosition_op_sub_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+
+#if (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxPosition_constructor_overload[] =
+{
+    { wxLua_wxPosition_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxPosition_constructor1 },
+    { wxLua_wxPosition_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+};
+static int s_wxluafunc_wxLua_wxPosition_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxPosition_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+
+void wxLua_wxPosition_delete_function(void** p)
+{
+    wxPosition* o = (wxPosition*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxPosition_methods[] = {
+    { "GetCol", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPosition_GetCol, 1, NULL },
+    { "GetColumn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPosition_GetColumn, 1, NULL },
+    { "GetRow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPosition_GetRow, 1, NULL },
+    { "SetCol", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPosition_SetCol, 1, NULL },
+    { "SetColumn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPosition_SetColumn, 1, NULL },
+    { "SetRow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPosition_SetRow, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxPosition_delete, 1, NULL },
+
+#if ((wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+    { "op_add", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPosition_op_add_overload, s_wxluafunc_wxLua_wxPosition_op_add_overload_count, 0 },
+#endif // ((wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+
+    { "op_eq", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPosition_op_eq, 1, NULL },
+
+#if ((wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+    { "op_iadd", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPosition_op_iadd_overload, s_wxluafunc_wxLua_wxPosition_op_iadd_overload_count, 0 },
+    { "op_isub", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPosition_op_isub_overload, s_wxluafunc_wxLua_wxPosition_op_isub_overload_count, 0 },
+#endif // ((wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+
+    { "op_ne", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPosition_op_ne, 1, NULL },
+
+#if ((wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+    { "op_sub", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPosition_op_sub_overload, s_wxluafunc_wxLua_wxPosition_op_sub_overload_count, 0 },
+#endif // ((wxLUA_USE_Geometry && wxUSE_GEOMETRY) && (wxLUA_USE_wxPointSizeRect))||(wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+
+#if (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+    { "wxPosition", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxPosition_constructor_overload, s_wxluafunc_wxLua_wxPosition_constructor_overload_count, 0 },
+#endif // (wxLUA_USE_Geometry && wxUSE_GEOMETRY)
+
+    { 0, 0, 0, 0 },
+};
+
+int wxPosition_methodCount = sizeof(wxPosition_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_Geometry && wxUSE_GEOMETRY
+

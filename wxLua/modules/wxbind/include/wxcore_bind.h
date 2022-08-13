@@ -199,6 +199,7 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
 
 #if wxLUA_USE_Geometry && wxUSE_GEOMETRY
     #include "wx/geometry.h"
+    #include "wx/position.h"
 #endif // wxLUA_USE_Geometry && wxUSE_GEOMETRY
 
 #if wxLUA_USE_MDI && wxUSE_MDI && wxUSE_DOC_VIEW_ARCHITECTURE
@@ -526,6 +527,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
 #if wxLUA_USE_wxValidator && wxUSE_VALIDATORS
     #include "wx/validate.h"
 #endif // wxLUA_USE_wxValidator && wxUSE_VALIDATORS
+
+#if wxUSE_COMBOCTRL
+    #include "wx/combo.h"
+#endif // wxUSE_COMBOCTRL
 
 #if wxUSE_FINDREPLDLG && wxLUA_USE_wxFindReplaceDialog
     #include "wx/fdrepdlg.h"
@@ -872,6 +877,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 #if wxLUA_USE_Geometry && wxUSE_GEOMETRY
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPoint2DDouble;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPoint2DInt;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPosition;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxRect2DDouble;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxRect2DInt;
 #endif // wxLUA_USE_Geometry && wxUSE_GEOMETRY
@@ -1307,6 +1313,12 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 #if wxUSE_CHOICEDLG && wxLUA_USE_wxSingleChoiceDialog
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSingleChoiceDialog;
 #endif // wxUSE_CHOICEDLG && wxLUA_USE_wxSingleChoiceDialog
+
+#if wxUSE_COMBOCTRL
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxComboCtrl;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxComboCtrlFeatures;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxComboPopup;
+#endif // wxUSE_COMBOCTRL
 
 #if wxUSE_FINDREPLDLG && wxLUA_USE_wxFindReplaceDialog
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxFindDialogEvent;

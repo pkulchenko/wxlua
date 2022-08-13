@@ -460,7 +460,7 @@
 #endif
 
 #ifndef wxLUA_USE_wxRichText
-#define wxLUA_USE_wxRichText                    0 // NOT FINISHED or WORKING
+#define wxLUA_USE_wxRichText                    1 // NOT FINISHED or WORKING
 #endif
 
 #ifndef wxLUA_USE_wxSashWindow

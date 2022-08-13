@@ -385,7 +385,7 @@
     #define wxLUA_USEBINDING_WXNET                      1
 #endif
 #ifndef wxLUA_USEBINDING_WXRICHTEXT
-    #define wxLUA_USEBINDING_WXRICHTEXT                 0 // NOT FINISHED or WORKING
+    #define wxLUA_USEBINDING_WXRICHTEXT                 1 // NOT FINISHED or WORKING
 #endif
 #ifndef wxLUA_USEBINDING_WXSTC
     #define wxLUA_USEBINDING_WXSTC                      1
