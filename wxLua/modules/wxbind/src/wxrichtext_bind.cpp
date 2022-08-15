@@ -41773,7 +41773,7 @@ static int LUACALL wxLua_wxSymbolPickerDialog_Get_m_symbol(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)
+#if ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSymbolPickerDialog_Get_m_symbolStaticCtrl[] = { &wxluatype_wxSymbolPickerDialog, NULL };
 static int LUACALL wxLua_wxSymbolPickerDialog_Get_m_symbolStaticCtrl(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSymbolPickerDialog_Get_m_symbolStaticCtrl[1] = {{ wxLua_wxSymbolPickerDialog_Get_m_symbolStaticCtrl, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSymbolPickerDialog_Get_m_symbolStaticCtrl }};
@@ -41788,7 +41788,7 @@ static int LUACALL wxLua_wxSymbolPickerDialog_Get_m_symbolStaticCtrl(lua_State *
     return 1;
 }
 
-#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)
+#endif // ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSymbolPickerDialog_Get_m_symbolsCtrl[] = { &wxluatype_wxSymbolPickerDialog, NULL };
 static int LUACALL wxLua_wxSymbolPickerDialog_Get_m_symbolsCtrl(lua_State *L);
@@ -42249,7 +42249,7 @@ static int LUACALL wxLua_wxSymbolPickerDialog_Set_m_symbol(lua_State *L)
 }
 
 
-#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)
+#if ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSymbolPickerDialog_Set_m_symbolStaticCtrl[] = { &wxluatype_wxSymbolPickerDialog, &wxluatype_wxStaticText, NULL };
 static int LUACALL wxLua_wxSymbolPickerDialog_Set_m_symbolStaticCtrl(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSymbolPickerDialog_Set_m_symbolStaticCtrl[1] = {{ wxLua_wxSymbolPickerDialog_Set_m_symbolStaticCtrl, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxSymbolPickerDialog_Set_m_symbolStaticCtrl }};
@@ -42265,7 +42265,7 @@ static int LUACALL wxLua_wxSymbolPickerDialog_Set_m_symbolStaticCtrl(lua_State *
     return 0;
 }
 
-#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)
+#endif // ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSymbolPickerDialog_Set_m_symbolsCtrl[] = { &wxluatype_wxSymbolPickerDialog, &wxluatype_wxSymbolListCtrl, NULL };
 static int LUACALL wxLua_wxSymbolPickerDialog_Set_m_symbolsCtrl(lua_State *L);
@@ -42397,8 +42397,8 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxSymbolPickerDialog_delete[1] = {{ wxlu
 #endif // ((defined (__UNICODE__ )) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)) && (wxLUA_USE_wxComboBox && wxUSE_COMBOBOX)
 
 
-#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)
-#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)
+#if ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
+#endif // ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
 
 #if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
@@ -42530,9 +42530,9 @@ wxLuaBindMethod wxSymbolPickerDialog_methods[] = {
 
     // %member    { "Get_m_symbol", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSymbolPickerDialog_Get_m_symbol, 1, NULL },
 
-#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)
+#if ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
     // %member    { "Get_m_symbolStaticCtrl", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSymbolPickerDialog_Get_m_symbolStaticCtrl, 1, NULL },
-#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)
+#endif // ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
     // %member    { "Get_m_symbolsCtrl", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSymbolPickerDialog_Get_m_symbolsCtrl, 1, NULL },
     // %member    { "Get_sm_showToolTips", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxSymbolPickerDialog_Get_sm_showToolTips, 1, NULL },
@@ -42594,9 +42594,9 @@ wxLuaBindMethod wxSymbolPickerDialog_methods[] = {
 
     // %member    { "Set_m_symbol", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSymbolPickerDialog_Set_m_symbol, 1, NULL },
 
-#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)
+#if ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
     // %member    { "Set_m_symbolStaticCtrl", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSymbolPickerDialog_Set_m_symbolStaticCtrl, 1, NULL },
-#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)
+#endif // ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
     // %member    { "Set_m_symbolsCtrl", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxSymbolPickerDialog_Set_m_symbolsCtrl, 1, NULL },
     // %member    { "Set_sm_showToolTips", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxSymbolPickerDialog_Set_sm_showToolTips, 1, NULL },
@@ -42646,10 +42646,10 @@ wxLuaBindMethod wxSymbolPickerDialog_methods[] = {
     { "m_symbol", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxSymbolPickerDialog_Set_m_symbol, 1, NULL },
     { "m_symbol", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxSymbolPickerDialog_Get_m_symbol, 1, NULL },
 
-#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)
+#if ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
     { "m_symbolStaticCtrl", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxSymbolPickerDialog_Set_m_symbolStaticCtrl, 1, NULL },
     { "m_symbolStaticCtrl", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxSymbolPickerDialog_Get_m_symbolStaticCtrl, 1, NULL },
-#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)
+#endif // ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
     { "m_symbolsCtrl", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxSymbolPickerDialog_Set_m_symbolsCtrl, 1, NULL },
     { "m_symbolsCtrl", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxSymbolPickerDialog_Get_m_symbolsCtrl, 1, NULL },
@@ -45748,6 +45748,7 @@ static const char* wxluaclassname_wxRichTextTable = "wxRichTextTable";
 static const char* wxluaclassname_wxRichTextTableBlock = "wxRichTextTableBlock";
 static const char* wxluaclassname_wxRichTextXMLHandler = "wxRichTextXMLHandler";
 static const char* wxluaclassname_wxRichTextXMLHelper = "wxRichTextXMLHelper";
+static const char* wxluaclassname_wxScrollHelper = "wxScrollHelper";
 static const char* wxluaclassname_wxSymbolListCtrl = "wxSymbolListCtrl";
 static const char* wxluaclassname_wxSymbolPickerDialog = "wxSymbolPickerDialog";
 static const char* wxluaclassname_wxTextAttr = "wxTextAttr";
@@ -45758,6 +45759,7 @@ static const char* wxluaclassname_wxTextAttrDimensionConverter = "wxTextAttrDime
 static const char* wxluaclassname_wxTextAttrDimensions = "wxTextAttrDimensions";
 static const char* wxluaclassname_wxTextAttrSize = "wxTextAttrSize";
 static const char* wxluaclassname_wxTextBoxAttr = "wxTextBoxAttr";
+static const char* wxluaclassname_wxTextCtrlIface = "wxTextCtrlIface";
 static const char* wxluaclassname_wxVScrolledWindow = "wxVScrolledWindow";
 
 static const char* wxluabaseclassnames_wxRichTextAction[] = { wxluaclassname_wxObject, NULL };
@@ -45780,8 +45782,8 @@ static const char* wxluabaseclassnames_wxRichTextCommand[] = { wxluaclassname_wx
 static wxLuaBindClass* wxluabaseclassbinds_wxRichTextCommand[] = { NULL };
 static const char* wxluabaseclassnames_wxRichTextCompositeObject[] = { wxluaclassname_wxRichTextObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxRichTextCompositeObject[] = { NULL };
-static const char* wxluabaseclassnames_wxRichTextCtrl[] = { wxluaclassname_wxControl, NULL };
-static wxLuaBindClass* wxluabaseclassbinds_wxRichTextCtrl[] = { NULL };
+static const char* wxluabaseclassnames_wxRichTextCtrl[] = { wxluaclassname_wxControl, wxluaclassname_wxTextCtrlIface, wxluaclassname_wxScrollHelper, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxRichTextCtrl[] = { NULL, NULL, NULL };
 static const char* wxluabaseclassnames_wxRichTextDrawingContext[] = { wxluaclassname_wxObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxRichTextDrawingContext[] = { NULL };
 static const char* wxluabaseclassnames_wxRichTextDrawingHandler[] = { wxluaclassname_wxObject, NULL };
@@ -45969,6 +45971,8 @@ static wxLuaBindClass* wxluabaseclassbinds_wxSymbolPickerDialog[] = { NULL };
     extern void wxLua_wxRichTextContextMenuPropertiesInfo_delete_function(void** p);
     extern wxLuaBindMethod wxRichTextCtrl_methods[];
     extern int wxRichTextCtrl_methodCount;
+    static wxLuaArgType wxluabaseclass_wxluatypes_wxRichTextCtrl[] = { &wxluatype_wxTextCtrlIface, &wxluatype_wxTextAreaBase, &wxluatype_wxTextEntry, &wxluatype_wxScrollHelper, NULL };
+    static wxIntPtr wxluabaseclass_vtable_offsets_wxRichTextCtrl[] = { wxIntPtr(((wxIntPtr)(wxTextCtrlIface*)(wxRichTextCtrl*)&wxluatype_TNONE) - ((wxIntPtr)(wxRichTextCtrl*)&wxluatype_TNONE)), wxIntPtr(((wxIntPtr)(wxTextAreaBase*)(wxRichTextCtrl*)&wxluatype_TNONE) - ((wxIntPtr)(wxRichTextCtrl*)&wxluatype_TNONE)), wxIntPtr(((wxIntPtr)(wxTextEntry*)(wxRichTextCtrl*)&wxluatype_TNONE) - ((wxIntPtr)(wxRichTextCtrl*)&wxluatype_TNONE)), wxIntPtr(((wxIntPtr)(wxScrollHelper*)(wxRichTextCtrl*)&wxluatype_TNONE) - ((wxIntPtr)(wxRichTextCtrl*)&wxluatype_TNONE)) };
     extern void wxLua_wxRichTextCtrl_delete_function(void** p);
     extern wxLuaBindMethod wxRichTextDrawingContext_methods[];
     extern int wxRichTextDrawingContext_methodCount;
@@ -46126,7 +46130,7 @@ wxLuaBindClass* wxLuaGetClassList_wxrichtext(size_t &count)
         { wxluaclassname_wxRichTextCommand, wxRichTextCommand_methods, wxRichTextCommand_methodCount, CLASSINFO(wxRichTextCommand), &wxluatype_wxRichTextCommand, wxluabaseclassnames_wxRichTextCommand, wxluabaseclassbinds_wxRichTextCommand, NULL, NULL, NULL, 0, &wxLua_wxRichTextCommand_delete_function, }, 
         { wxluaclassname_wxRichTextCompositeObject, wxRichTextCompositeObject_methods, wxRichTextCompositeObject_methodCount, CLASSINFO(wxRichTextCompositeObject), &wxluatype_wxRichTextCompositeObject, wxluabaseclassnames_wxRichTextCompositeObject, wxluabaseclassbinds_wxRichTextCompositeObject, NULL, NULL, NULL, 0, &wxLua_wxRichTextCompositeObject_delete_function, }, 
         { wxluaclassname_wxRichTextContextMenuPropertiesInfo, wxRichTextContextMenuPropertiesInfo_methods, wxRichTextContextMenuPropertiesInfo_methodCount, NULL, &wxluatype_wxRichTextContextMenuPropertiesInfo, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxRichTextContextMenuPropertiesInfo_delete_function, }, 
-        { wxluaclassname_wxRichTextCtrl, wxRichTextCtrl_methods, wxRichTextCtrl_methodCount, CLASSINFO(wxRichTextCtrl), &wxluatype_wxRichTextCtrl, wxluabaseclassnames_wxRichTextCtrl, wxluabaseclassbinds_wxRichTextCtrl, NULL, NULL, NULL, 0, &wxLua_wxRichTextCtrl_delete_function, }, 
+        { wxluaclassname_wxRichTextCtrl, wxRichTextCtrl_methods, wxRichTextCtrl_methodCount, CLASSINFO(wxRichTextCtrl), &wxluatype_wxRichTextCtrl, wxluabaseclassnames_wxRichTextCtrl, wxluabaseclassbinds_wxRichTextCtrl, wxluabaseclass_wxluatypes_wxRichTextCtrl, wxluabaseclass_vtable_offsets_wxRichTextCtrl, NULL, 0, &wxLua_wxRichTextCtrl_delete_function, }, 
         { wxluaclassname_wxRichTextDrawingContext, wxRichTextDrawingContext_methods, wxRichTextDrawingContext_methodCount, CLASSINFO(wxRichTextDrawingContext), &wxluatype_wxRichTextDrawingContext, wxluabaseclassnames_wxRichTextDrawingContext, wxluabaseclassbinds_wxRichTextDrawingContext, NULL, NULL, NULL, 0, &wxLua_wxRichTextDrawingContext_delete_function, }, 
         { wxluaclassname_wxRichTextDrawingHandler, wxRichTextDrawingHandler_methods, wxRichTextDrawingHandler_methodCount, CLASSINFO(wxRichTextDrawingHandler), &wxluatype_wxRichTextDrawingHandler, wxluabaseclassnames_wxRichTextDrawingHandler, wxluabaseclassbinds_wxRichTextDrawingHandler, NULL, NULL, NULL, 0, &wxLua_wxRichTextDrawingHandler_delete_function, }, 
 #endif // wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT

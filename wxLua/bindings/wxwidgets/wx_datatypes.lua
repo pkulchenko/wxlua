@@ -1013,7 +1013,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxControl",
     },
-    Condition = "wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE",
+    Condition = "(wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE) && (wxLUA_USE_wxScrolledWindow)",
     IsNumber = false,
     Name = "wxCollapsiblePane",
     ValueType = "class",
@@ -1022,7 +1022,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxCommandEvent",
     },
-    Condition = "wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE",
+    Condition = "(wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE) && (wxLUA_USE_wxScrolledWindow)",
     IsNumber = false,
     Name = "wxCollapsiblePaneEvent",
     ValueType = "class",
@@ -4492,7 +4492,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxPopupWindow",
     },
-    Condition = "wxLUA_USE_wxPopupTransientWindow",
+    Condition = "(wxLUA_USE_wxPopupTransientWindow) && (wxLUA_USE_wxScrolledWindow)",
     IsNumber = false,
     Name = "wxPopupTransientWindow",
     ValueType = "class",
@@ -4501,7 +4501,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxWindow",
     },
-    Condition = "wxLUA_USE_wxPopupWindow",
+    Condition = "(wxLUA_USE_wxPopupWindow) && (wxLUA_USE_wxScrolledWindow)",
     IsNumber = false,
     Name = "wxPopupWindow",
     ValueType = "class",
@@ -4966,6 +4966,8 @@ wx_dataTypeTable =
   wxRichTextCtrl = {
     BaseClasses = {
       [1] = "wxControl",
+      [2] = "wxTextCtrlIface",
+      [3] = "wxScrollHelper",
     },
     Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
     IsNumber = false,
@@ -5468,6 +5470,12 @@ wx_dataTypeTable =
     Name = "wxScrollEvent",
     ValueType = "class",
   },
+  wxScrollHelper = {
+    Condition = "wxLUA_USE_wxScrolledWindow",
+    IsNumber = false,
+    Name = "wxScrollHelper",
+    ValueType = "class",
+  },
   wxScrollWinEvent = {
     BaseClasses = {
       [1] = "wxEvent",
@@ -5485,8 +5493,9 @@ wx_dataTypeTable =
   wxScrolledWindow = {
     BaseClasses = {
       [1] = "wxPanel",
+      [2] = "wxScrollHelper",
     },
-    Condition = "wxLUA_USE_wxScrolledWindow",
+    Condition = "(wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxScrolledWindow)",
     IsNumber = false,
     Name = "wxScrolledWindow",
     ValueType = "class",
@@ -5804,7 +5813,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxNotifyEvent",
     },
-    Condition = "wxLUA_USE_wxSplitterWindow",
+    Condition = "(wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxSplitterWindow)",
     IsNumber = false,
     Name = "wxSplitterEvent",
     ValueType = "class",
@@ -5819,7 +5828,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxWindow",
     },
-    Condition = "wxLUA_USE_wxSplitterWindow",
+    Condition = "(wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxSplitterWindow)",
     IsNumber = false,
     Name = "wxSplitterWindow",
     ValueType = "class",
@@ -5858,7 +5867,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxControl",
     },
-    Condition = "wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP",
+    Condition = "(wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)",
     IsNumber = false,
     Name = "wxStaticBitmap",
     ValueType = "class",
@@ -5867,7 +5876,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxControl",
     },
-    Condition = "wxLUA_USE_wxStaticBox && wxUSE_STATBOX",
+    Condition = "(wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)",
     IsNumber = false,
     Name = "wxStaticBox",
     ValueType = "class",
@@ -5885,7 +5894,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxControl",
     },
-    Condition = "wxLUA_USE_wxStaticLine && wxUSE_STATLINE",
+    Condition = "(wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticLine && wxUSE_STATLINE)",
     IsNumber = false,
     Name = "wxStaticLine",
     ValueType = "class",
@@ -5894,7 +5903,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxControl",
     },
-    Condition = "wxLUA_USE_wxStaticText && wxUSE_STATTEXT",
+    Condition = "(wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)",
     IsNumber = false,
     Name = "wxStaticText",
     ValueType = "class",
@@ -6155,6 +6164,12 @@ wx_dataTypeTable =
     Name = "wxTempFile",
     ValueType = "class",
   },
+  wxTextAreaBase = {
+    Condition = "wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL",
+    IsNumber = false,
+    Name = "wxTextAreaBase",
+    ValueType = "class",
+  },
   wxTextAttr = {
     Condition = "wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL",
     IsNumber = false,
@@ -6307,6 +6322,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxControl",
       [2] = "wxTextEntry",
+      [3] = "wxTextAreaBase",
     },
     Condition = "wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL",
     IsNumber = false,
@@ -6318,6 +6334,16 @@ wx_dataTypeTable =
     IsNumber = true,
     Name = "wxTextCtrlHitTestResult",
     ValueType = "enum",
+  },
+  wxTextCtrlIface = {
+    BaseClasses = {
+      [1] = "wxTextAreaBase",
+      [2] = "wxTextEntry",
+    },
+    Condition = "wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL",
+    IsNumber = false,
+    Name = "wxTextCtrlIface",
+    ValueType = "class",
   },
   wxTextDataObject = {
     BaseClasses = {

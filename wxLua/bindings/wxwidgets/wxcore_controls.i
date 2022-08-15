@@ -1353,31 +1353,60 @@ class wxTextEntry
     %wxchkver_3_0_0 void GetSelection() const; // %override return [long from, long to]
 };
 
-class wxTextCtrl : public wxControl, public wxTextEntry
+class wxTextAreaBase
+{
+#if %wxchkver_3_0_0
+    virtual int GetLineLength(long lineNo) const;
+    virtual wxString GetLineText(long lineNo) const;
+    virtual int GetNumberOfLines() const;
+    bool LoadFile(const wxString& file, int fileType = wxTEXT_TYPE_ANY);
+    bool SaveFile(const wxString& file = wxEmptyString, int fileType = wxTEXT_TYPE_ANY);
+    virtual bool IsModified() const;
+    virtual void MarkDirty();
+    virtual void DiscardEdits();
+    void SetModified(bool modified);
+    virtual bool SetStyle(long start, long end, const wxTextAttr& style);
+    virtual bool GetStyle(long position, wxTextAttr& style);
+    virtual bool SetDefaultStyle(const wxTextAttr& style);
+    virtual const wxTextAttr& GetDefaultStyle() const;
+    virtual long XYToPosition(long x, long y) const;
+    wxPoint PositionToCoords(long pos) const;
+    virtual void ShowPosition(long pos);
+    virtual wxString GetValue() const;
+    virtual void SetValue(const wxString& value);
+    %rename HitTestPos wxTextCtrlHitTestResult HitTest(const wxPoint& pt) const; // return [wxTextCtrlHitTestResult, int pos]
+    virtual wxTextCtrlHitTestResult HitTest(const wxPoint& pt) const; // %override return [wxTextCtrlHitTestResult, int col, int row]
+    virtual bool PositionToXY(long pos) const; // %override return [bool, int x, int y]
+#endif // %wxchkver_3_0_0
+};
+
+class wxTextCtrlIface : public wxTextAreaBase, public wxTextEntry
+{
+    virtual wxString GetValue() const;
+    virtual void SetValue(const wxString& value);
+};
+
+class wxTextCtrl : public wxControl, public wxTextEntry, public wxTextAreaBase
 {
     wxTextCtrl();
     wxTextCtrl(wxWindow *parent, wxWindowID id, const wxString& value = "", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxTextCtrl");
     bool Create(wxWindow* parent, wxWindowID id, const wxString& value = "", const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxValidator& validator = wxDefaultValidator, const wxString& name = "wxTextCtrl");
-    void DiscardEdits();
+    !%wxchkver_3_0_0 void DiscardEdits();
     bool EmulateKeyPress(const wxKeyEvent& event);
     const wxTextAttr&  GetDefaultStyle() const;
-    int GetLineLength(long lineNo) const;
-    wxString GetLineText(long lineNo) const;
-    int GetNumberOfLines() const;
-    bool GetStyle(long position, wxTextAttr& style);
-    bool IsModified() const;
+    !%wxchkver_3_0_0 int GetLineLength(long lineNo) const;
+    !%wxchkver_3_0_0 wxString GetLineText(long lineNo) const;
+    !%wxchkver_3_0_0 int GetNumberOfLines() const;
+    !%wxchkver_3_0_0 bool GetStyle(long position, wxTextAttr& style);
+    !%wxchkver_3_0_0 bool IsModified() const;
     bool IsMultiLine() const;
     bool IsSingleLine() const;
-    %wxchkver_3_0_0 bool LoadFile(const wxString& filename, int fileType = wxTEXT_TYPE_ANY);
-    void MarkDirty();
+    !%wxchkver_3_0_0 void MarkDirty();
     // void OnDropFiles(wxDropFilesEvent& event);
-    %wxchkver_3_0_0 wxPoint PositionToCoords(long pos) const;
-    %wxchkver_3_0_0 bool SaveFile(const wxString& filename = wxEmptyString, int fileType = wxTEXT_TYPE_ANY);
-    bool SetDefaultStyle(const wxTextAttr& style);
-    %wxchkver_3_0_0 void SetModified(bool modified);
-    bool SetStyle(long start, long end, const wxTextAttr& style);
-    void ShowPosition(long pos);
-    long XYToPosition(long x, long y);
+    !%wxchkver_3_0_0 bool SetDefaultStyle(const wxTextAttr& style);
+    !%wxchkver_3_0_0 bool SetStyle(long start, long end, const wxTextAttr& style);
+    !%wxchkver_3_0_0 void ShowPosition(long pos);
+    !%wxchkver_3_0_0 long XYToPosition(long x, long y);
     !%wxchkver_3_0_0 bool IsEditable() const;
     !%wxchkver_3_0_0 bool LoadFile(const wxString& filename);
     !%wxchkver_3_0_0 bool SaveFile(const wxString& filename);
@@ -1409,9 +1438,9 @@ class wxTextCtrl : public wxControl, public wxTextEntry
     !%wxchkver_3_0_0 void GetSelection() const;
     !%wxchkver_3_0_0 void WriteText(const wxString& text);
     !%wxchkver_3_0_0 wxString GetValue() const;
-    %rename HitTestPos wxTextCtrlHitTestResult HitTest(const wxPoint& pt) const; // return [wxTextCtrlHitTestResult, int pos]
-    bool PositionToXY(long pos) const; // %override return [bool, int x, int y]
-    wxTextCtrlHitTestResult HitTest(const wxPoint& pt) const; // %override return [wxTextCtrlHitTestResult, int col, int row]
+    !%wxchkver_3_0_0 %rename HitTestPos wxTextCtrlHitTestResult HitTest(const wxPoint& pt) const; // return [wxTextCtrlHitTestResult, int pos]
+    !%wxchkver_3_0_0 bool PositionToXY(long pos) const; // %override return [bool, int x, int y]
+    !%wxchkver_3_0_0 wxTextCtrlHitTestResult HitTest(const wxPoint& pt) const; // %override return [wxTextCtrlHitTestResult, int col, int row]
 };
 
 enum wxTextAttrAlignment

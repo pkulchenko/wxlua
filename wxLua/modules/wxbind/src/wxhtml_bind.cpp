@@ -6585,6 +6585,8 @@ static wxLuaBindClass* wxluabaseclassbinds_wxSimpleHtmlListBox[] = { NULL, NULL 
     extern void wxLua_wxLuaHtmlWinTagEvent_delete_function(void** p);
     extern wxLuaBindMethod wxLuaHtmlWindow_methods[];
     extern int wxLuaHtmlWindow_methodCount;
+    static wxLuaArgType wxluabaseclass_wxluatypes_wxLuaHtmlWindow[] = { &wxluatype_wxScrollHelper, NULL };
+    static wxIntPtr wxluabaseclass_vtable_offsets_wxLuaHtmlWindow[] = { wxIntPtr(((wxIntPtr)(wxScrollHelper*)(wxLuaHtmlWindow*)&wxluatype_TNONE) - ((wxIntPtr)(wxLuaHtmlWindow*)&wxluatype_TNONE)) };
     extern void wxLua_wxLuaHtmlWindow_delete_function(void** p);
 #endif // (wxLUA_USE_wxHTML && wxUSE_HTML) && (wxLUA_USE_wxLuaHtmlWindow)
 
@@ -6621,6 +6623,8 @@ static wxLuaBindClass* wxluabaseclassbinds_wxSimpleHtmlListBox[] = { NULL, NULL 
     extern void wxLua_wxHtmlWinParser_delete_function(void** p);
     extern wxLuaBindMethod wxHtmlWindow_methods[];
     extern int wxHtmlWindow_methodCount;
+    static wxLuaArgType wxluabaseclass_wxluatypes_wxHtmlWindow[] = { &wxluatype_wxScrollHelper, NULL };
+    static wxIntPtr wxluabaseclass_vtable_offsets_wxHtmlWindow[] = { wxIntPtr(((wxIntPtr)(wxScrollHelper*)(wxHtmlWindow*)&wxluatype_TNONE) - ((wxIntPtr)(wxHtmlWindow*)&wxluatype_TNONE)) };
     extern void wxLua_wxHtmlWindow_delete_function(void** p);
 #endif // wxLUA_USE_wxHTML && wxUSE_HTML
 
@@ -6676,7 +6680,7 @@ wxLuaBindClass* wxLuaGetClassList_wxhtml(size_t &count)
         { wxluaclassname_wxHtmlTag, wxHtmlTag_methods, wxHtmlTag_methodCount, NULL, &wxluatype_wxHtmlTag, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxHtmlTag_delete_function, }, 
         { wxluaclassname_wxHtmlWidgetCell, wxHtmlWidgetCell_methods, wxHtmlWidgetCell_methodCount, CLASSINFO(wxHtmlWidgetCell), &wxluatype_wxHtmlWidgetCell, wxluabaseclassnames_wxHtmlWidgetCell, wxluabaseclassbinds_wxHtmlWidgetCell, NULL, NULL, NULL, 0, &wxLua_wxHtmlWidgetCell_delete_function, }, 
         { wxluaclassname_wxHtmlWinParser, wxHtmlWinParser_methods, wxHtmlWinParser_methodCount, CLASSINFO(wxHtmlWinParser), &wxluatype_wxHtmlWinParser, wxluabaseclassnames_wxHtmlWinParser, wxluabaseclassbinds_wxHtmlWinParser, NULL, NULL, NULL, 0, &wxLua_wxHtmlWinParser_delete_function, }, 
-        { wxluaclassname_wxHtmlWindow, wxHtmlWindow_methods, wxHtmlWindow_methodCount, CLASSINFO(wxHtmlWindow), &wxluatype_wxHtmlWindow, wxluabaseclassnames_wxHtmlWindow, wxluabaseclassbinds_wxHtmlWindow, NULL, NULL, NULL, 0, &wxLua_wxHtmlWindow_delete_function, }, 
+        { wxluaclassname_wxHtmlWindow, wxHtmlWindow_methods, wxHtmlWindow_methodCount, CLASSINFO(wxHtmlWindow), &wxluatype_wxHtmlWindow, wxluabaseclassnames_wxHtmlWindow, wxluabaseclassbinds_wxHtmlWindow, wxluabaseclass_wxluatypes_wxHtmlWindow, wxluabaseclass_vtable_offsets_wxHtmlWindow, NULL, 0, &wxLua_wxHtmlWindow_delete_function, }, 
 #endif // wxLUA_USE_wxHTML && wxUSE_HTML
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)
@@ -6685,7 +6689,7 @@ wxLuaBindClass* wxLuaGetClassList_wxhtml(size_t &count)
 
 #if (wxLUA_USE_wxHTML && wxUSE_HTML) && (wxLUA_USE_wxLuaHtmlWindow)
         { wxluaclassname_wxLuaHtmlWinTagEvent, wxLuaHtmlWinTagEvent_methods, wxLuaHtmlWinTagEvent_methodCount, CLASSINFO(wxLuaHtmlWinTagEvent), &wxluatype_wxLuaHtmlWinTagEvent, wxluabaseclassnames_wxLuaHtmlWinTagEvent, wxluabaseclassbinds_wxLuaHtmlWinTagEvent, NULL, NULL, NULL, 0, &wxLua_wxLuaHtmlWinTagEvent_delete_function, }, 
-        { wxluaclassname_wxLuaHtmlWindow, wxLuaHtmlWindow_methods, wxLuaHtmlWindow_methodCount, CLASSINFO(wxLuaHtmlWindow), &wxluatype_wxLuaHtmlWindow, wxluabaseclassnames_wxLuaHtmlWindow, wxluabaseclassbinds_wxLuaHtmlWindow, NULL, NULL, NULL, 0, &wxLua_wxLuaHtmlWindow_delete_function, }, 
+        { wxluaclassname_wxLuaHtmlWindow, wxLuaHtmlWindow_methods, wxLuaHtmlWindow_methodCount, CLASSINFO(wxLuaHtmlWindow), &wxluatype_wxLuaHtmlWindow, wxluabaseclassnames_wxLuaHtmlWindow, wxluabaseclassbinds_wxLuaHtmlWindow, wxluabaseclass_wxluatypes_wxLuaHtmlWindow, wxluabaseclass_vtable_offsets_wxLuaHtmlWindow, NULL, 0, &wxLua_wxLuaHtmlWindow_delete_function, }, 
 #endif // (wxLUA_USE_wxHTML && wxUSE_HTML) && (wxLUA_USE_wxLuaHtmlWindow)
 
 #if (wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxHTML && wxUSE_HTML)

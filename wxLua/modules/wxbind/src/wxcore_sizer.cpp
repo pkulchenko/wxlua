@@ -5424,7 +5424,7 @@ int wxNotebookSizer_methodCount = sizeof(wxNotebookSizer_methods)/sizeof(wxLuaBi
 // Lua MetaTable Tag for Class 'wxStaticBoxSizer'
 int wxluatype_wxStaticBoxSizer = WXLUA_TUNKNOWN;
 
-#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)
+#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStaticBoxSizer_GetStaticBox[] = { &wxluatype_wxStaticBoxSizer, NULL };
 static int LUACALL wxLua_wxStaticBoxSizer_GetStaticBox(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStaticBoxSizer_GetStaticBox[1] = {{ wxLua_wxStaticBoxSizer_GetStaticBox, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStaticBoxSizer_GetStaticBox }};
@@ -5441,7 +5441,7 @@ static int LUACALL wxLua_wxStaticBoxSizer_GetStaticBox(lua_State *L)
     return 1;
 }
 
-#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX))
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStaticBoxSizer_constructor1[] = { &wxluatype_TNUMBER, &wxluatype_wxWindow, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxStaticBoxSizer_constructor1(lua_State *L);
@@ -5466,7 +5466,7 @@ static int LUACALL wxLua_wxStaticBoxSizer_constructor1(lua_State *L)
 }
 
 
-#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)
+#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX))
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStaticBoxSizer_constructor[] = { &wxluatype_wxStaticBox, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStaticBoxSizer_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxStaticBoxSizer_constructor[1] = {{ wxLua_wxStaticBoxSizer_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxStaticBoxSizer_constructor }};
@@ -5485,23 +5485,23 @@ static int LUACALL wxLua_wxStaticBoxSizer_constructor(lua_State *L)
     return 1;
 }
 
-#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX))
 
 
 
-#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX))||(((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX))
+#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX))||(((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStaticBoxSizer_constructor_overload[] =
 {
     { wxLua_wxStaticBoxSizer_constructor1, WXLUAMETHOD_CONSTRUCTOR, 2, 3, s_wxluatypeArray_wxLua_wxStaticBoxSizer_constructor1 },
 
-#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)
+#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX))
     { wxLua_wxStaticBoxSizer_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxStaticBoxSizer_constructor },
-#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX))
 };
 static int s_wxluafunc_wxLua_wxStaticBoxSizer_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxStaticBoxSizer_constructor_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX))||(((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX))
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX))||(((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)))
 
 void wxLua_wxStaticBoxSizer_delete_function(void** p)
 {
@@ -5511,13 +5511,13 @@ void wxLua_wxStaticBoxSizer_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxStaticBoxSizer_methods[] = {
-#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)
+#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX))
     { "GetStaticBox", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStaticBoxSizer_GetStaticBox, 1, NULL },
-#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX))
 
-#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX))||(((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX))
+#if ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX))||(((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)))
     { "wxStaticBoxSizer", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxStaticBoxSizer_constructor_overload, s_wxluafunc_wxLua_wxStaticBoxSizer_constructor_overload_count, 0 },
-#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX))||(((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX))
+#endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX))||(((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxSizer) && (wxUSE_STATBOX)) && ((wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)))
 
     { 0, 0, 0, 0 },
 };

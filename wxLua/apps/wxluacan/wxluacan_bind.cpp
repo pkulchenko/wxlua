@@ -722,6 +722,8 @@ static wxLuaBindClass* wxluabaseclassbinds_wxlLuaCanCmd[] = { NULL };
 
 extern wxLuaBindMethod wxlCan_methods[];
 extern int wxlCan_methodCount;
+static wxLuaArgType wxluabaseclass_wxluatypes_wxlCan[] = { &wxluatype_wxScrollHelper, NULL };
+static wxIntPtr wxluabaseclass_vtable_offsets_wxlCan[] = { wxIntPtr(((wxIntPtr)(wxScrollHelper*)(wxlCan*)&wxluatype_TNONE) - ((wxIntPtr)(wxlCan*)&wxluatype_TNONE)) };
 extern void wxLua_wxlCan_delete_function(void** p);
 extern wxLuaBindMethod wxlCanObj_methods[];
 extern int wxlCanObj_methodCount;
@@ -749,7 +751,7 @@ wxLuaBindClass* wxLuaGetClassList_wxluacan(size_t &count)
 {
     static wxLuaBindClass classList[] =
     {
-        { wxluaclassname_wxlCan, wxlCan_methods, wxlCan_methodCount, CLASSINFO(wxlCan), &wxluatype_wxlCan, wxluabaseclassnames_wxlCan, wxluabaseclassbinds_wxlCan, NULL, NULL, NULL, 0, &wxLua_wxlCan_delete_function, }, 
+        { wxluaclassname_wxlCan, wxlCan_methods, wxlCan_methodCount, CLASSINFO(wxlCan), &wxluatype_wxlCan, wxluabaseclassnames_wxlCan, wxluabaseclassbinds_wxlCan, wxluabaseclass_wxluatypes_wxlCan, wxluabaseclass_vtable_offsets_wxlCan, NULL, 0, &wxLua_wxlCan_delete_function, }, 
         { wxluaclassname_wxlCanObj, wxlCanObj_methods, wxlCanObj_methodCount, CLASSINFO(wxlCanObj), &wxluatype_wxlCanObj, wxluabaseclassnames_wxlCanObj, wxluabaseclassbinds_wxlCanObj, NULL, NULL, NULL, 0, &wxLua_wxlCanObj_delete_function, }, 
         { wxluaclassname_wxlCanObjAddScript, wxlCanObjAddScript_methods, wxlCanObjAddScript_methodCount, CLASSINFO(wxlCanObjAddScript), &wxluatype_wxlCanObjAddScript, wxluabaseclassnames_wxlCanObjAddScript, wxluabaseclassbinds_wxlCanObjAddScript, NULL, NULL, NULL, 0, &wxLua_wxlCanObjAddScript_delete_function, }, 
         { wxluaclassname_wxlCanObjCircle, wxlCanObjCircle_methods, wxlCanObjCircle_methodCount, CLASSINFO(wxlCanObjCircle), &wxluatype_wxlCanObjCircle, wxluabaseclassnames_wxlCanObjCircle, wxluabaseclassbinds_wxlCanObjCircle, NULL, NULL, NULL, 0, &wxLua_wxlCanObjCircle_delete_function, }, 

@@ -27794,6 +27794,8 @@ static wxLuaBindClass* wxluabaseclassbinds_wxWizardPageSimple[] = { NULL };
     extern int wxGrid_methodCount;
     extern wxLuaBindNumber wxGrid_enums[];
     extern int wxGrid_enumCount;
+    static wxLuaArgType wxluabaseclass_wxluatypes_wxGrid[] = { &wxluatype_wxScrollHelper, NULL };
+    static wxIntPtr wxluabaseclass_vtable_offsets_wxGrid[] = { wxIntPtr(((wxIntPtr)(wxScrollHelper*)(wxGrid*)&wxluatype_TNONE) - ((wxIntPtr)(wxGrid*)&wxluatype_TNONE)) };
     extern void wxLua_wxGrid_delete_function(void** p);
     extern wxLuaBindMethod wxGridCellAttr_methods[];
     extern int wxGridCellAttr_methodCount;
@@ -28025,7 +28027,7 @@ wxLuaBindClass* wxLuaGetClassList_wxadv(size_t &count)
 #endif // wxLUA_USE_wxCalendarCtrl && wxUSE_CALENDARCTRL
 
 #if wxLUA_USE_wxGrid && wxUSE_GRID
-        { wxluaclassname_wxGrid, wxGrid_methods, wxGrid_methodCount, CLASSINFO(wxGrid), &wxluatype_wxGrid, wxluabaseclassnames_wxGrid, wxluabaseclassbinds_wxGrid, NULL, NULL, wxGrid_enums, wxGrid_enumCount, &wxLua_wxGrid_delete_function, }, 
+        { wxluaclassname_wxGrid, wxGrid_methods, wxGrid_methodCount, CLASSINFO(wxGrid), &wxluatype_wxGrid, wxluabaseclassnames_wxGrid, wxluabaseclassbinds_wxGrid, wxluabaseclass_wxluatypes_wxGrid, wxluabaseclass_vtable_offsets_wxGrid, wxGrid_enums, wxGrid_enumCount, &wxLua_wxGrid_delete_function, }, 
         { wxluaclassname_wxGridCellAttr, wxGridCellAttr_methods, wxGridCellAttr_methodCount, NULL, &wxluatype_wxGridCellAttr, wxluabaseclassnames_wxGridCellAttr, wxluabaseclassbinds_wxGridCellAttr, NULL, NULL, wxGridCellAttr_enums, wxGridCellAttr_enumCount, &wxLua_wxGridCellAttr_delete_function, }, 
         { wxluaclassname_wxGridCellAttrProvider, wxGridCellAttrProvider_methods, wxGridCellAttrProvider_methodCount, NULL, &wxluatype_wxGridCellAttrProvider, wxluabaseclassnames_wxGridCellAttrProvider, wxluabaseclassbinds_wxGridCellAttrProvider, NULL, NULL, NULL, 0, &wxLua_wxGridCellAttrProvider_delete_function, }, 
         { wxluaclassname_wxGridCellAutoWrapStringEditor, wxGridCellAutoWrapStringEditor_methods, wxGridCellAutoWrapStringEditor_methodCount, NULL, &wxluatype_wxGridCellAutoWrapStringEditor, wxluabaseclassnames_wxGridCellAutoWrapStringEditor, wxluabaseclassbinds_wxGridCellAutoWrapStringEditor, NULL, NULL, NULL, 0, &wxLua_wxGridCellAutoWrapStringEditor_delete_function, }, 
