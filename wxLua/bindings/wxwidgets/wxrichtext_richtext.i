@@ -6762,7 +6762,7 @@ public:
 
  */
 
-class %delete wxRichTextCtrl : public wxControl, public wxTextCtrlIface, public wxScrollHelper
+class wxRichTextCtrl : public wxControl, public wxTextCtrlIface, public wxScrollHelper
 {
     //DECLARE_DYNAMIC_CLASS( wxRichTextCtrl )
     //DECLARE_EVENT_TABLE()
