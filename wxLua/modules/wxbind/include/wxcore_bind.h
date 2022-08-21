@@ -73,10 +73,6 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/numdlg.h"
 #endif // (wxCHECK_VERSION(2,6,0)) && (wxUSE_NUMBERDLG)
 
-#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE) && (wxLUA_USE_wxScrolledWindow)
-    #include "wx/collpane.h"
-#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE) && (wxLUA_USE_wxScrolledWindow)
-
 #if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxColourPickerCtrl && wxUSE_COLOURPICKERCTRL)
     #include "wx/clrpicker.h"
 #endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxColourPickerCtrl && wxUSE_COLOURPICKERCTRL)
@@ -150,37 +146,9 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wxlua/wxlua_bind.h"
 #endif // (wxLUA_USE_wxLuaPrintout) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
 
-#if (wxLUA_USE_wxPopupTransientWindow) && (wxLUA_USE_wxScrolledWindow)
-    #include "wx/popupwin.h"
-#endif // (wxLUA_USE_wxPopupTransientWindow) && (wxLUA_USE_wxScrolledWindow)
-
-#if (wxLUA_USE_wxPopupWindow) && (wxLUA_USE_wxScrolledWindow)
-    #include "wx/popupwin.h"
-#endif // (wxLUA_USE_wxPopupWindow) && (wxLUA_USE_wxScrolledWindow)
-
 #if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT)
     #include "wx/dcps.h"
 #endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT)
-
-#if (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxSplitterWindow)
-    #include "wx/splitter.h"
-#endif // (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxSplitterWindow)
-
-#if (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
-    #include "wx/statbmp.h"
-#endif // (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
-
-#if (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)
-    #include "wx/statbox.h"
-#endif // (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)
-
-#if (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticLine && wxUSE_STATLINE)
-    #include "wx/statline.h"
-#endif // (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticLine && wxUSE_STATLINE)
-
-#if (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)
-    #include "wx/stattext.h"
-#endif // (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)
 
 #if (wxLUA_USE_wxTextValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
     #include "wx/valtext.h"
@@ -208,6 +176,10 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/event.h"
     #include "wx/power.h"
 #endif // wxCHECK_VERSION(2,8,0)
+
+#if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE
+    #include "wx/collpane.h"
+#endif // wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE
 
 #if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker
     #include "wx/pickerbase.h"
@@ -444,6 +416,14 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     #include "wx/gdicmn.h"
 #endif // wxLUA_USE_wxPointSizeRect
 
+#if wxLUA_USE_wxPopupTransientWindow
+    #include "wx/popupwin.h"
+#endif // wxLUA_USE_wxPopupTransientWindow
+
+#if wxLUA_USE_wxPopupWindow
+    #include "wx/popupwin.h"
+#endif // wxLUA_USE_wxPopupWindow
+
 #if wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE
     #include "wx/print.h"
     #include "wx/printdlg.h"
@@ -485,6 +465,26 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
 #if wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
     #include "wx/spinctrl.h"
 #endif // wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+
+#if wxLUA_USE_wxSplitterWindow
+    #include "wx/splitter.h"
+#endif // wxLUA_USE_wxSplitterWindow
+
+#if wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP
+    #include "wx/statbmp.h"
+#endif // wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP
+
+#if wxLUA_USE_wxStaticBox && wxUSE_STATBOX
+    #include "wx/statbox.h"
+#endif // wxLUA_USE_wxStaticBox && wxUSE_STATBOX
+
+#if wxLUA_USE_wxStaticLine && wxUSE_STATLINE
+    #include "wx/statline.h"
+#endif // wxLUA_USE_wxStaticLine && wxUSE_STATLINE
+
+#if wxLUA_USE_wxStaticText && wxUSE_STATTEXT
+    #include "wx/stattext.h"
+#endif // wxLUA_USE_wxStaticText && wxUSE_STATTEXT
 
 #if wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR
     #include "wx/statusbr.h"
@@ -602,11 +602,6 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPowerEvent;
 #endif // (defined(wxHAS_POWER_EVENTS)) && (wxCHECK_VERSION(2,8,0))
 
-#if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE) && (wxLUA_USE_wxScrolledWindow)
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxCollapsiblePane;
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxCollapsiblePaneEvent;
-#endif // (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE) && (wxLUA_USE_wxScrolledWindow)
-
 #if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxColourPickerCtrl && wxUSE_COLOURPICKERCTRL)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxColourPickerCtrl;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxColourPickerEvent;
@@ -684,10 +679,6 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxAffineMatrix2D;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxMatrix2D;
 #endif // (wxCHECK_VERSION(2,9,2)) && (wxUSE_GEOMETRY)
-
-#if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxScrolledWindow)
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxScrolledWindow;
-#endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxScrolledWindow)
 
 #if (wxCHECK_VERSION(3,1,1)) && (wxLUA_USE_wxColourPenBrush)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPenInfo;
@@ -798,38 +789,9 @@ extern WXDLLIMPEXP_BINDWXCORE wxLuaBinding* wxLuaBinding_wxcore_init();
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPrinter;
 #endif // (wxLUA_USE_wxLuaPrintout) && (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE)
 
-#if (wxLUA_USE_wxPopupTransientWindow) && (wxLUA_USE_wxScrolledWindow)
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPopupTransientWindow;
-#endif // (wxLUA_USE_wxPopupTransientWindow) && (wxLUA_USE_wxScrolledWindow)
-
-#if (wxLUA_USE_wxPopupWindow) && (wxLUA_USE_wxScrolledWindow)
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPopupWindow;
-#endif // (wxLUA_USE_wxPopupWindow) && (wxLUA_USE_wxScrolledWindow)
-
 #if (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPostScriptDC;
 #endif // (wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE) && (wxUSE_POSTSCRIPT)
-
-#if (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxSplitterWindow)
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSplitterEvent;
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSplitterWindow;
-#endif // (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxSplitterWindow)
-
-#if (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStaticBitmap;
-#endif // (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)
-
-#if (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStaticBox;
-#endif // (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)
-
-#if (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticLine && wxUSE_STATLINE)
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStaticLine;
-#endif // (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticLine && wxUSE_STATLINE)
-
-#if (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)
-    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStaticText;
-#endif // (wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)
 
 #if (wxLUA_USE_wxTextValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxTextValidator;
@@ -888,6 +850,11 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxMouseCaptureLostEvent;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxMouseState;
 #endif // wxCHECK_VERSION(2,8,0)
+
+#if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxCollapsiblePane;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxCollapsiblePaneEvent;
+#endif // wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE
 
 #if wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPickerBase;
@@ -1190,6 +1157,14 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSize;
 #endif // wxLUA_USE_wxPointSizeRect
 
+#if wxLUA_USE_wxPopupTransientWindow
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPopupTransientWindow;
+#endif // wxLUA_USE_wxPopupTransientWindow
+
+#if wxLUA_USE_wxPopupWindow
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPopupWindow;
+#endif // wxLUA_USE_wxPopupWindow
+
 #if wxLUA_USE_wxPrint && wxUSE_PRINTING_ARCHITECTURE
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPageSetupDialog;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxPageSetupDialogData;
@@ -1232,6 +1207,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
 
 #if wxLUA_USE_wxScrolledWindow
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxScrollHelper;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxScrolledWindow;
 #endif // wxLUA_USE_wxScrolledWindow
 
 #if wxLUA_USE_wxSlider && wxUSE_SLIDER
@@ -1251,6 +1227,27 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindowUpdateLocker;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSpinCtrlDouble;
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSpinDoubleEvent;
 #endif // wxLUA_USE_wxSpinCtrlDouble && wxUSE_SPINCTRL
+
+#if wxLUA_USE_wxSplitterWindow
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSplitterEvent;
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSplitterWindow;
+#endif // wxLUA_USE_wxSplitterWindow
+
+#if wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStaticBitmap;
+#endif // wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP
+
+#if wxLUA_USE_wxStaticBox && wxUSE_STATBOX
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStaticBox;
+#endif // wxLUA_USE_wxStaticBox && wxUSE_STATBOX
+
+#if wxLUA_USE_wxStaticLine && wxUSE_STATLINE
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStaticLine;
+#endif // wxLUA_USE_wxStaticLine && wxUSE_STATLINE
+
+#if wxLUA_USE_wxStaticText && wxUSE_STATTEXT
+    extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStaticText;
+#endif // wxLUA_USE_wxStaticText && wxUSE_STATTEXT
 
 #if wxLUA_USE_wxStatusBar && wxUSE_STATUSBAR
     extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxStatusBar;

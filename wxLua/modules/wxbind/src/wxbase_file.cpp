@@ -7277,9 +7277,27 @@ int wxluatype_wxMemoryInputStream = WXLUA_TUNKNOWN;
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryInputStream_delete[] = { &wxluatype_wxMemoryInputStream, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryInputStream_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxMemoryInputStream_delete }};
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryInputStream_constructor1[] = { &wxluatype_wxMemoryOutputStream, NULL };
+static int LUACALL wxLua_wxMemoryInputStream_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryInputStream_constructor1[1] = {{ wxLua_wxMemoryInputStream_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxMemoryInputStream_constructor1 }};
+//     wxMemoryInputStream(const wxMemoryOutputStream& stream);
+static int LUACALL wxLua_wxMemoryInputStream_constructor1(lua_State *L)
+{
+    // const wxMemoryOutputStream stream
+    const wxMemoryOutputStream * stream = (const wxMemoryOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryOutputStream);
+    // call constructor
+    wxMemoryInputStream* returns = new wxMemoryInputStream(*stream);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxMemoryInputStream);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxMemoryInputStream);
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryInputStream_constructor[] = { &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxMemoryInputStream_constructor(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryInputStream_constructor[1] = {{ wxLua_wxMemoryInputStream_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxMemoryInputStream_constructor }};
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryInputStream_constructor[1] = {{ wxLua_wxMemoryInputStream_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxMemoryInputStream_constructor }};
 // %override wxLua_wxMemoryInputStream_constructor
 //     wxMemoryInputStream(const char *data, size_t length)
 static int LUACALL wxLua_wxMemoryInputStream_constructor(lua_State *L)
@@ -7302,6 +7320,17 @@ static int LUACALL wxLua_wxMemoryInputStream_constructor(lua_State *L)
 
 
 
+#if (wxUSE_STREAMS)
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryInputStream_constructor_overload[] =
+{
+    { wxLua_wxMemoryInputStream_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxMemoryInputStream_constructor1 },
+    { wxLua_wxMemoryInputStream_constructor, WXLUAMETHOD_CONSTRUCTOR, 2, 2, s_wxluatypeArray_wxLua_wxMemoryInputStream_constructor },
+};
+static int s_wxluafunc_wxLua_wxMemoryInputStream_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxMemoryInputStream_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (wxUSE_STREAMS)
+
 void wxLua_wxMemoryInputStream_delete_function(void** p)
 {
     wxMemoryInputStream* o = (wxMemoryInputStream*)(*p);
@@ -7311,12 +7340,274 @@ void wxLua_wxMemoryInputStream_delete_function(void** p)
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxMemoryInputStream_methods[] = {
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxMemoryInputStream_delete, 1, NULL },
-    { "wxMemoryInputStream", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxMemoryInputStream_constructor, 1, NULL },
+
+#if (wxUSE_STREAMS)
+    { "wxMemoryInputStream", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxMemoryInputStream_constructor_overload, s_wxluafunc_wxLua_wxMemoryInputStream_constructor_overload_count, 0 },
+#endif // (wxUSE_STREAMS)
 
     { 0, 0, 0, 0 },
 };
 
 int wxMemoryInputStream_methodCount = sizeof(wxMemoryInputStream_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxUSE_STREAMS
+
+
+#if wxUSE_STREAMS
+// ---------------------------------------------------------------------------
+// Bind class wxMemoryOutputStream
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxMemoryOutputStream'
+int wxluatype_wxMemoryOutputStream = WXLUA_TUNKNOWN;
+
+#if (wxLUA_USE_wxMemoryBuffer) && (wxUSE_STREAMS)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryOutputStream_CopyTo[] = { &wxluatype_wxMemoryOutputStream, &wxluatype_wxMemoryBuffer, NULL };
+static int LUACALL wxLua_wxMemoryOutputStream_CopyTo(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryOutputStream_CopyTo[1] = {{ wxLua_wxMemoryOutputStream_CopyTo, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxMemoryOutputStream_CopyTo }};
+// %override wxLua_wxMemoryOutputStream_CopyTo
+//     size_t CopyTo(wxMemoryBuffer &buffer, size_t length = 0);
+// C++ Func: wxMemoryOutputStream(void *data = NULL, size_t length = 0);
+static int LUACALL wxLua_wxMemoryOutputStream_CopyTo(lua_State *L)
+{
+    // size_t length
+    size_t length = (lua_gettop(L) >= 2 ? (size_t)wxlua_getnumbertype(L, 2) : 0);
+    // wxMemoryBuffer buffer
+    wxMemoryBuffer * buffer = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 2, wxluatype_wxMemoryBuffer);
+    void *data;
+    if (length > 0) {
+        data = buffer->GetWriteBuf(length);
+    } else {
+        data = buffer->GetData();
+        length = buffer->GetDataLen();
+    }
+    // get this
+    wxMemoryOutputStream * self = (wxMemoryOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryOutputStream);
+    // call CopyTo
+    size_t returns = (self->CopyTo(data, length));
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+        lua_pushinteger(L, returns);
+    } else
+#endif
+    {
+        lua_pushnumber(L, returns);
+    }
+    return 1;
+}
+
+
+#endif // (wxLUA_USE_wxMemoryBuffer) && (wxUSE_STREAMS)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryOutputStream_delete[] = { &wxluatype_wxMemoryOutputStream, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryOutputStream_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxMemoryOutputStream_delete }};
+
+
+#if (wxLUA_USE_wxMemoryBuffer) && (wxUSE_STREAMS)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxMemoryOutputStream_constructor1[] = { &wxluatype_wxMemoryBuffer, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxMemoryOutputStream_constructor1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryOutputStream_constructor1[1] = {{ wxLua_wxMemoryOutputStream_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxMemoryOutputStream_constructor1 }};
+// %override wxLua_wxMemoryOutputStream_constructor1
+//     wxMemoryOutputStream(wxMemoryBuffer &buffer, size_t length = 0);
+// C++ Func: wxMemoryOutputStream(void *data = NULL, size_t length = 0);
+static int LUACALL wxLua_wxMemoryOutputStream_constructor1(lua_State *L)
+{
+    // size_t length
+    size_t length = (lua_gettop(L) >= 2 ? (size_t)wxlua_getnumbertype(L, 2) : 0);
+    // wxMemoryBuffer buffer
+    wxMemoryBuffer * buffer = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    void *data;
+    if (length > 0) {
+        data = buffer->GetWriteBuf(length);
+    } else {
+        data = buffer->GetData();
+        length = buffer->GetDataLen();
+    }
+    // call constructor
+    wxMemoryOutputStream* returns = new wxMemoryOutputStream(data, length);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxMemoryOutputStream);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxMemoryOutputStream);
+
+    return 1;
+}
+
+
+#endif // (wxLUA_USE_wxMemoryBuffer) && (wxUSE_STREAMS)
+
+static int LUACALL wxLua_wxMemoryOutputStream_constructor(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryOutputStream_constructor[1] = {{ wxLua_wxMemoryOutputStream_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxMemoryOutputStream();
+static int LUACALL wxLua_wxMemoryOutputStream_constructor(lua_State *L)
+{
+    // call constructor
+    wxMemoryOutputStream* returns = new wxMemoryOutputStream();
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxMemoryOutputStream);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxMemoryOutputStream);
+
+    return 1;
+}
+
+
+
+
+#if ((wxLUA_USE_wxMemoryBuffer) && (wxUSE_STREAMS))||(wxUSE_STREAMS)
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxMemoryOutputStream_constructor_overload[] =
+{
+
+#if (wxLUA_USE_wxMemoryBuffer) && (wxUSE_STREAMS)
+    { wxLua_wxMemoryOutputStream_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 2, s_wxluatypeArray_wxLua_wxMemoryOutputStream_constructor1 },
+#endif // (wxLUA_USE_wxMemoryBuffer) && (wxUSE_STREAMS)
+    { wxLua_wxMemoryOutputStream_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None },
+};
+static int s_wxluafunc_wxLua_wxMemoryOutputStream_constructor_overload_count = sizeof(s_wxluafunc_wxLua_wxMemoryOutputStream_constructor_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxLUA_USE_wxMemoryBuffer) && (wxUSE_STREAMS))||(wxUSE_STREAMS)
+
+void wxLua_wxMemoryOutputStream_delete_function(void** p)
+{
+    wxMemoryOutputStream* o = (wxMemoryOutputStream*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxMemoryOutputStream_methods[] = {
+#if (wxLUA_USE_wxMemoryBuffer) && (wxUSE_STREAMS)
+    { "CopyTo", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxMemoryOutputStream_CopyTo, 1, NULL },
+#endif // (wxLUA_USE_wxMemoryBuffer) && (wxUSE_STREAMS)
+
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxMemoryOutputStream_delete, 1, NULL },
+
+#if ((wxLUA_USE_wxMemoryBuffer) && (wxUSE_STREAMS))||(wxUSE_STREAMS)
+    { "wxMemoryOutputStream", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxMemoryOutputStream_constructor_overload, s_wxluafunc_wxLua_wxMemoryOutputStream_constructor_overload_count, 0 },
+#endif // ((wxLUA_USE_wxMemoryBuffer) && (wxUSE_STREAMS))||(wxUSE_STREAMS)
+
+    { 0, 0, 0, 0 },
+};
+
+int wxMemoryOutputStream_methodCount = sizeof(wxMemoryOutputStream_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxUSE_STREAMS
+
+
+#if wxUSE_STREAMS
+// ---------------------------------------------------------------------------
+// Bind class wxStringInputStream
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxStringInputStream'
+int wxluatype_wxStringInputStream = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStringInputStream_delete[] = { &wxluatype_wxStringInputStream, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStringInputStream_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxStringInputStream_delete }};
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStringInputStream_constructor[] = { &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxStringInputStream_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStringInputStream_constructor[1] = {{ wxLua_wxStringInputStream_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxStringInputStream_constructor }};
+//     wxStringInputStream(const wxString& s);
+static int LUACALL wxLua_wxStringInputStream_constructor(lua_State *L)
+{
+    // const wxString s
+    const wxString s = wxlua_getwxStringtype(L, 1);
+    // call constructor
+    wxStringInputStream* returns = new wxStringInputStream(s);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxStringInputStream);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxStringInputStream);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxStringInputStream_delete_function(void** p)
+{
+    wxStringInputStream* o = (wxStringInputStream*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxStringInputStream_methods[] = {
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxStringInputStream_delete, 1, NULL },
+    { "wxStringInputStream", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxStringInputStream_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxStringInputStream_methodCount = sizeof(wxStringInputStream_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxUSE_STREAMS
+
+
+#if wxUSE_STREAMS
+// ---------------------------------------------------------------------------
+// Bind class wxStringOutputStream
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxStringOutputStream'
+int wxluatype_wxStringOutputStream = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStringOutputStream_GetString[] = { &wxluatype_wxStringOutputStream, NULL };
+static int LUACALL wxLua_wxStringOutputStream_GetString(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStringOutputStream_GetString[1] = {{ wxLua_wxStringOutputStream_GetString, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxStringOutputStream_GetString }};
+//     const wxString& GetString() const;
+static int LUACALL wxLua_wxStringOutputStream_GetString(lua_State *L)
+{
+    // get this
+    wxStringOutputStream * self = (wxStringOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStringOutputStream);
+    // call GetString
+    wxString returns = (self->GetString());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStringOutputStream_delete[] = { &wxluatype_wxStringOutputStream, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStringOutputStream_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxStringOutputStream_delete }};
+
+static int LUACALL wxLua_wxStringOutputStream_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStringOutputStream_constructor[1] = {{ wxLua_wxStringOutputStream_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+//     wxStringOutputStream();
+static int LUACALL wxLua_wxStringOutputStream_constructor(lua_State *L)
+{
+    // call constructor
+    wxStringOutputStream* returns = new wxStringOutputStream();
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxStringOutputStream);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxStringOutputStream);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxStringOutputStream_delete_function(void** p)
+{
+    wxStringOutputStream* o = (wxStringOutputStream*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxStringOutputStream_methods[] = {
+    { "GetString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStringOutputStream_GetString, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxStringOutputStream_delete, 1, NULL },
+    { "wxStringOutputStream", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxStringOutputStream_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxStringOutputStream_methodCount = sizeof(wxStringOutputStream_methods)/sizeof(wxLuaBindMethod) - 1;
 
 #endif  // wxUSE_STREAMS
 

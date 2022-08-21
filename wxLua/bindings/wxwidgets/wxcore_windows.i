@@ -951,7 +951,7 @@ class wxScrollHelper
     void HandleOnSize(wxSizeEvent& event);
     void HandleOnMouseEnter(wxMouseEvent& event);
     void HandleOnMouseLeave(wxMouseEvent& event);
-#end
+#endif
 };
 
 class wxScrolledWindow : public wxPanel, public wxScrollHelper

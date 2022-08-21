@@ -181,6 +181,7 @@ extern WXDLLIMPEXP_BINDWXBASE wxLuaBinding* wxLuaBinding_wxbase_init();
 #if wxUSE_STREAMS
     #include "wx/datstrm.h"
     #include "wx/mstream.h"
+    #include "wx/sstream.h"
     #include "wx/stream.h"
     #include "wx/txtstrm.h"
     #include "wx/wfstream.h"
@@ -372,8 +373,11 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringTokenizer;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxFileOutputStream;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxInputStream;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxMemoryInputStream;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxMemoryOutputStream;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxOutputStream;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStreamBase;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringInputStream;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringOutputStream;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxTextInputStream;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxTextOutputStream;
 #endif // wxUSE_STREAMS

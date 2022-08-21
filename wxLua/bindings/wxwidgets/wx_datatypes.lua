@@ -1013,7 +1013,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxControl",
     },
-    Condition = "(wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE) && (wxLUA_USE_wxScrolledWindow)",
+    Condition = "wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE",
     IsNumber = false,
     Name = "wxCollapsiblePane",
     ValueType = "class",
@@ -1022,7 +1022,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxCommandEvent",
     },
-    Condition = "(wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE) && (wxLUA_USE_wxScrolledWindow)",
+    Condition = "wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxCollapsiblePane && wxUSE_COLLPANE",
     IsNumber = false,
     Name = "wxCollapsiblePaneEvent",
     ValueType = "class",
@@ -4000,6 +4000,15 @@ wx_dataTypeTable =
     Name = "wxMemoryInputStream",
     ValueType = "class",
   },
+  wxMemoryOutputStream = {
+    BaseClasses = {
+      [1] = "wxOutputStream",
+    },
+    Condition = "wxUSE_STREAMS",
+    IsNumber = false,
+    Name = "wxMemoryOutputStream",
+    ValueType = "class",
+  },
   wxMemorySize = {
     IsNumber = true,
     Name = "wxMemorySize",
@@ -4492,7 +4501,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxPopupWindow",
     },
-    Condition = "(wxLUA_USE_wxPopupTransientWindow) && (wxLUA_USE_wxScrolledWindow)",
+    Condition = "wxLUA_USE_wxPopupTransientWindow",
     IsNumber = false,
     Name = "wxPopupTransientWindow",
     ValueType = "class",
@@ -4501,7 +4510,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxWindow",
     },
-    Condition = "(wxLUA_USE_wxPopupWindow) && (wxLUA_USE_wxScrolledWindow)",
+    Condition = "wxLUA_USE_wxPopupWindow",
     IsNumber = false,
     Name = "wxPopupWindow",
     ValueType = "class",
@@ -5495,7 +5504,7 @@ wx_dataTypeTable =
       [1] = "wxPanel",
       [2] = "wxScrollHelper",
     },
-    Condition = "(wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxScrolledWindow)",
+    Condition = "wxLUA_USE_wxScrolledWindow",
     IsNumber = false,
     Name = "wxScrolledWindow",
     ValueType = "class",
@@ -5813,7 +5822,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxNotifyEvent",
     },
-    Condition = "(wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxSplitterWindow)",
+    Condition = "wxLUA_USE_wxSplitterWindow",
     IsNumber = false,
     Name = "wxSplitterEvent",
     ValueType = "class",
@@ -5828,7 +5837,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxWindow",
     },
-    Condition = "(wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxSplitterWindow)",
+    Condition = "wxLUA_USE_wxSplitterWindow",
     IsNumber = false,
     Name = "wxSplitterWindow",
     ValueType = "class",
@@ -5867,7 +5876,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxControl",
     },
-    Condition = "(wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP)",
+    Condition = "wxLUA_USE_wxStaticBitmap && wxUSE_STATBMP",
     IsNumber = false,
     Name = "wxStaticBitmap",
     ValueType = "class",
@@ -5876,7 +5885,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxControl",
     },
-    Condition = "(wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticBox && wxUSE_STATBOX)",
+    Condition = "wxLUA_USE_wxStaticBox && wxUSE_STATBOX",
     IsNumber = false,
     Name = "wxStaticBox",
     ValueType = "class",
@@ -5894,7 +5903,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxControl",
     },
-    Condition = "(wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticLine && wxUSE_STATLINE)",
+    Condition = "wxLUA_USE_wxStaticLine && wxUSE_STATLINE",
     IsNumber = false,
     Name = "wxStaticLine",
     ValueType = "class",
@@ -5903,7 +5912,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxControl",
     },
-    Condition = "(wxLUA_USE_wxScrolledWindow) && (wxLUA_USE_wxStaticText && wxUSE_STATTEXT)",
+    Condition = "wxLUA_USE_wxStaticText && wxUSE_STATTEXT",
     IsNumber = false,
     Name = "wxStaticText",
     ValueType = "class",
@@ -5996,6 +6005,24 @@ wx_dataTypeTable =
     },
     IsNumber = false,
     Name = "wxStringClientData",
+    ValueType = "class",
+  },
+  wxStringInputStream = {
+    BaseClasses = {
+      [1] = "wxInputStream",
+    },
+    Condition = "wxUSE_STREAMS",
+    IsNumber = false,
+    Name = "wxStringInputStream",
+    ValueType = "class",
+  },
+  wxStringOutputStream = {
+    BaseClasses = {
+      [1] = "wxOutputStream",
+    },
+    Condition = "wxUSE_STREAMS",
+    IsNumber = false,
+    Name = "wxStringOutputStream",
     ValueType = "class",
   },
   wxStringTokenizer = {

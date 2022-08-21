@@ -1397,6 +1397,66 @@ static int LUACALL wxLua_wxMemoryInputStream_constructor(lua_State *L)
 }
 %end
 
+%override wxLua_wxMemoryOutputStream_constructor1
+//     wxMemoryOutputStream(wxMemoryBuffer &buffer, size_t length = 0);
+// C++ Func: wxMemoryOutputStream(void *data = NULL, size_t length = 0);
+static int LUACALL wxLua_wxMemoryOutputStream_constructor1(lua_State *L)
+{
+    // size_t length
+    size_t length = (lua_gettop(L) >= 2 ? (size_t)wxlua_getnumbertype(L, 2) : 0);
+    // wxMemoryBuffer buffer
+    wxMemoryBuffer * buffer = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryBuffer);
+    void *data;
+    if (length > 0) {
+        data = buffer->GetWriteBuf(length);
+    } else {
+        data = buffer->GetData();
+        length = buffer->GetDataLen();
+    }
+    // call constructor
+    wxMemoryOutputStream* returns = new wxMemoryOutputStream(data, length);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxMemoryOutputStream);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxMemoryOutputStream);
+
+    return 1;
+}
+%end
+
+%override wxLua_wxMemoryOutputStream_CopyTo
+//     size_t CopyTo(wxMemoryBuffer &buffer, size_t length = 0);
+// C++ Func: wxMemoryOutputStream(void *data = NULL, size_t length = 0);
+static int LUACALL wxLua_wxMemoryOutputStream_CopyTo(lua_State *L)
+{
+    // size_t length
+    size_t length = (lua_gettop(L) >= 2 ? (size_t)wxlua_getnumbertype(L, 2) : 0);
+    // wxMemoryBuffer buffer
+    wxMemoryBuffer * buffer = (wxMemoryBuffer *)wxluaT_getuserdatatype(L, 2, wxluatype_wxMemoryBuffer);
+    void *data;
+    if (length > 0) {
+        data = buffer->GetWriteBuf(length);
+    } else {
+        data = buffer->GetData();
+        length = buffer->GetDataLen();
+    }
+    // get this
+    wxMemoryOutputStream * self = (wxMemoryOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxMemoryOutputStream);
+    // call CopyTo
+    size_t returns = (self->CopyTo(data, length));
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+        lua_pushinteger(L, returns);
+    } else
+#endif
+    {
+        lua_pushnumber(L, returns);
+    }
+    return 1;
+}
+%end
 
 %override wxLua_wxFileSystem_FindFileInPath
 //     bool FindFileInPath(wxString *pStr, const wxChar *path, const wxChar *file);
