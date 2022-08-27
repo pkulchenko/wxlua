@@ -18,10 +18,18 @@
 #include "wxlua/wxlstate.h"
 #include "wxbind/include/wxrichtext_bind.h"
 #if wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
-  static wxRichTextRange wxRICHTEXT_ALL_S = wxRichTextRange(-2, -2);
-  static wxRect wxNULLRECT_S = wxRect();
+  static wxRichTextRange wxRICHTEXT_ALL_S = wxRICHTEXT_ALL;
+  static wxRichTextRange wxRICHTEXT_NONE_S = wxRICHTEXT_NONE;
+  static wxRichTextRange wxRICHTEXT_NO_SELECTION_S = wxRICHTEXT_NO_SELECTION;
+#undef wxRICHTEXT_ALL
+#undef wxRICHTEXT_NONE
+#undef wxRICHTEXT_NO_SELECTION
+#define wxRICHTEXT_ALL wxRICHTEXT_ALL_S
+#define wxRICHTEXT_NONE wxRICHTEXT_NONE_S
+#define wxRICHTEXT_NO_SELECTION wxRICHTEXT_NO_SELECTION_S
+  static wxRect wxNULLRECT = wxRect();
+  static wxPoint wxNULLPOINT = wxPoint(0, 0);
   static wxRichTextAttr wxDEFAULT_RICHTEXTATTR = wxRichTextAttr();
-  static wxPoint wxPOINT_ZERO = wxPoint(0, 0);
 #endif
 
 #ifdef __GNUC__
@@ -9156,7 +9164,7 @@ static int LUACALL wxLua_wxRichTextObject_GetRange(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextObject_GetRangeSize[] = { &wxluatype_wxRichTextObject, &wxluatype_wxRichTextRange, &wxluatype_wxSize, &wxluatype_TLIGHTUSERDATA, &wxluatype_wxDC, &wxluatype_wxRichTextDrawingContext, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_wxArrayInt, NULL };
 static int LUACALL wxLua_wxRichTextObject_GetRangeSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextObject_GetRangeSize[1] = {{ wxLua_wxRichTextObject_GetRangeSize, WXLUAMETHOD_METHOD, 7, 10, s_wxluatypeArray_wxLua_wxRichTextObject_GetRangeSize }};
-//     virtual bool GetRangeSize(const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxPOINT_ZERO, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
+//     virtual bool GetRangeSize(const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxNULLPOINT, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
 static int LUACALL wxLua_wxRichTextObject_GetRangeSize(lua_State *L)
 {
     // get number of arguments
@@ -9165,8 +9173,8 @@ static int LUACALL wxLua_wxRichTextObject_GetRangeSize(lua_State *L)
     wxArrayInt * partialExtents = (argCount >= 10 ? (wxArrayInt *)wxluaT_getuserdatatype(L, 10, wxluatype_wxArrayInt) : NULL);
     // const wxSize parentSize = wxDefaultSize
     const wxSize * parentSize = (argCount >= 9 ? (const wxSize *)wxluaT_getuserdatatype(L, 9, wxluatype_wxSize) : &wxDefaultSize);
-    // const wxPoint position = wxPOINT_ZERO
-    const wxPoint * position = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxPOINT_ZERO);
+    // const wxPoint position = wxNULLPOINT
+    const wxPoint * position = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxNULLPOINT);
     // int flags
     int flags = (int)wxlua_getnumbertype(L, 7);
     // wxRichTextDrawingContext context
@@ -9440,13 +9448,13 @@ static int LUACALL wxLua_wxRichTextObject_ImportFromXML(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextObject_Invalidate[] = { &wxluatype_wxRichTextObject, &wxluatype_wxRichTextRange, NULL };
 static int LUACALL wxLua_wxRichTextObject_Invalidate(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextObject_Invalidate[1] = {{ wxLua_wxRichTextObject_Invalidate, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxRichTextObject_Invalidate }};
-//     virtual void Invalidate(const wxRichTextRange& invalidRange = wxRICHTEXT_ALL_S);
+//     virtual void Invalidate(const wxRichTextRange& invalidRange = wxRICHTEXT_ALL);
 static int LUACALL wxLua_wxRichTextObject_Invalidate(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // const wxRichTextRange invalidRange = wxRICHTEXT_ALL_S
-    const wxRichTextRange * invalidRange = (argCount >= 2 ? (const wxRichTextRange *)wxluaT_getuserdatatype(L, 2, wxluatype_wxRichTextRange) : &wxRICHTEXT_ALL_S);
+    // const wxRichTextRange invalidRange = wxRICHTEXT_ALL
+    const wxRichTextRange * invalidRange = (argCount >= 2 ? (const wxRichTextRange *)wxluaT_getuserdatatype(L, 2, wxluatype_wxRichTextRange) : &wxRICHTEXT_ALL);
     // get this
     wxRichTextObject * self = (wxRichTextObject *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextObject);
     // call Invalidate
@@ -10347,13 +10355,13 @@ static int LUACALL wxLua_wxRichTextCompositeObject_Copy(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCompositeObject_Defragment[] = { &wxluatype_wxRichTextCompositeObject, &wxluatype_wxRichTextDrawingContext, &wxluatype_wxRichTextRange, NULL };
 static int LUACALL wxLua_wxRichTextCompositeObject_Defragment(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCompositeObject_Defragment[1] = {{ wxLua_wxRichTextCompositeObject_Defragment, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxRichTextCompositeObject_Defragment }};
-//     bool Defragment(wxRichTextDrawingContext& context, const wxRichTextRange& range = wxRICHTEXT_ALL_S);
+//     bool Defragment(wxRichTextDrawingContext& context, const wxRichTextRange& range = wxRICHTEXT_ALL);
 static int LUACALL wxLua_wxRichTextCompositeObject_Defragment(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // const wxRichTextRange range = wxRICHTEXT_ALL_S
-    const wxRichTextRange * range = (argCount >= 3 ? (const wxRichTextRange *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRichTextRange) : &wxRICHTEXT_ALL_S);
+    // const wxRichTextRange range = wxRICHTEXT_ALL
+    const wxRichTextRange * range = (argCount >= 3 ? (const wxRichTextRange *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRichTextRange) : &wxRICHTEXT_ALL);
     // wxRichTextDrawingContext context
     wxRichTextDrawingContext * context = (wxRichTextDrawingContext *)wxluaT_getuserdatatype(L, 2, wxluatype_wxRichTextDrawingContext);
     // get this
@@ -10516,7 +10524,7 @@ if ((double)(lua_Integer)returns == (double)returns) {
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCompositeObject_GetRangeSize[] = { &wxluatype_wxRichTextCompositeObject, &wxluatype_wxRichTextRange, &wxluatype_wxSize, &wxluatype_TLIGHTUSERDATA, &wxluatype_wxDC, &wxluatype_wxRichTextDrawingContext, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_wxArrayInt, NULL };
 static int LUACALL wxLua_wxRichTextCompositeObject_GetRangeSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCompositeObject_GetRangeSize[1] = {{ wxLua_wxRichTextCompositeObject_GetRangeSize, WXLUAMETHOD_METHOD, 7, 10, s_wxluatypeArray_wxLua_wxRichTextCompositeObject_GetRangeSize }};
-//     virtual bool GetRangeSize(const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxPOINT_ZERO, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
+//     virtual bool GetRangeSize(const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxNULLPOINT, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
 static int LUACALL wxLua_wxRichTextCompositeObject_GetRangeSize(lua_State *L)
 {
     // get number of arguments
@@ -10525,8 +10533,8 @@ static int LUACALL wxLua_wxRichTextCompositeObject_GetRangeSize(lua_State *L)
     wxArrayInt * partialExtents = (argCount >= 10 ? (wxArrayInt *)wxluaT_getuserdatatype(L, 10, wxluatype_wxArrayInt) : NULL);
     // const wxSize parentSize = wxDefaultSize
     const wxSize * parentSize = (argCount >= 9 ? (const wxSize *)wxluaT_getuserdatatype(L, 9, wxluatype_wxSize) : &wxDefaultSize);
-    // const wxPoint position = wxPOINT_ZERO
-    const wxPoint * position = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxPOINT_ZERO);
+    // const wxPoint position = wxNULLPOINT
+    const wxPoint * position = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxNULLPOINT);
     // int flags
     int flags = (int)wxlua_getnumbertype(L, 7);
     // wxRichTextDrawingContext context
@@ -10636,13 +10644,13 @@ static int LUACALL wxLua_wxRichTextCompositeObject_InsertChild(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCompositeObject_Invalidate[] = { &wxluatype_wxRichTextCompositeObject, &wxluatype_wxRichTextRange, NULL };
 static int LUACALL wxLua_wxRichTextCompositeObject_Invalidate(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCompositeObject_Invalidate[1] = {{ wxLua_wxRichTextCompositeObject_Invalidate, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxRichTextCompositeObject_Invalidate }};
-//     virtual void Invalidate(const wxRichTextRange& invalidRange = wxRICHTEXT_ALL_S);
+//     virtual void Invalidate(const wxRichTextRange& invalidRange = wxRICHTEXT_ALL);
 static int LUACALL wxLua_wxRichTextCompositeObject_Invalidate(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // const wxRichTextRange invalidRange = wxRICHTEXT_ALL_S
-    const wxRichTextRange * invalidRange = (argCount >= 2 ? (const wxRichTextRange *)wxluaT_getuserdatatype(L, 2, wxluatype_wxRichTextRange) : &wxRICHTEXT_ALL_S);
+    // const wxRichTextRange invalidRange = wxRICHTEXT_ALL
+    const wxRichTextRange * invalidRange = (argCount >= 2 ? (const wxRichTextRange *)wxluaT_getuserdatatype(L, 2, wxluatype_wxRichTextRange) : &wxRICHTEXT_ALL);
     // get this
     wxRichTextCompositeObject * self = (wxRichTextCompositeObject *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextCompositeObject);
     // call Invalidate
@@ -11668,7 +11676,7 @@ static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetPartialParagraph(lua_St
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetRangeSize[] = { &wxluatype_wxRichTextParagraphLayoutBox, &wxluatype_wxRichTextRange, &wxluatype_wxSize, &wxluatype_TLIGHTUSERDATA, &wxluatype_wxDC, &wxluatype_wxRichTextDrawingContext, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_wxArrayInt, NULL };
 static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetRangeSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetRangeSize[1] = {{ wxLua_wxRichTextParagraphLayoutBox_GetRangeSize, WXLUAMETHOD_METHOD, 7, 10, s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetRangeSize }};
-//     virtual bool GetRangeSize(const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxPOINT_ZERO, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
+//     virtual bool GetRangeSize(const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxNULLPOINT, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
 static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetRangeSize(lua_State *L)
 {
     // get number of arguments
@@ -11677,8 +11685,8 @@ static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetRangeSize(lua_State *L)
     wxArrayInt * partialExtents = (argCount >= 10 ? (wxArrayInt *)wxluaT_getuserdatatype(L, 10, wxluatype_wxArrayInt) : NULL);
     // const wxSize parentSize = wxDefaultSize
     const wxSize * parentSize = (argCount >= 9 ? (const wxSize *)wxluaT_getuserdatatype(L, 9, wxluatype_wxSize) : &wxDefaultSize);
-    // const wxPoint position = wxPOINT_ZERO
-    const wxPoint * position = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxPOINT_ZERO);
+    // const wxPoint position = wxNULLPOINT
+    const wxPoint * position = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxNULLPOINT);
     // int flags
     int flags = (int)wxlua_getnumbertype(L, 7);
     // wxRichTextDrawingContext context
@@ -11719,25 +11727,32 @@ static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetRichTextCtrl(lua_State 
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetStyle[] = { &wxluatype_wxRichTextParagraphLayoutBox, &wxluatype_TNUMBER, &wxluatype_wxRichTextAttr, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetStyle[] = { &wxluatype_wxRichTextParagraphLayoutBox, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetStyle(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetStyle[1] = {{ wxLua_wxRichTextParagraphLayoutBox_GetStyle, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetStyle }};
-//     virtual bool GetStyle(long position, wxRichTextAttr& style);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetStyle[1] = {{ wxLua_wxRichTextParagraphLayoutBox_GetStyle, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetStyle }};
+// %override wxLua_wxRichTextParagraphLayoutBox_GetStyle
+// C++: bool GetStyle(long position, wxRichTextAttr& style);
+// Lua: %override [bool, wxRichTextAttr] GetStyle(long position)
 static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetStyle(lua_State *L)
 {
-    // wxRichTextAttr style
-    wxRichTextAttr * style = (wxRichTextAttr *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRichTextAttr);
     // long position
     long position = (long)wxlua_getnumbertype(L, 2);
     // get this
     wxRichTextParagraphLayoutBox * self = (wxRichTextParagraphLayoutBox *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextParagraphLayoutBox);
+    // allocate a new object
+    wxRichTextAttr *stylep = new wxRichTextAttr();
     // call GetStyle
-    bool returns = (self->GetStyle(position, *style));
+    bool returns = (self->GetStyle(position, *stylep));
     // push the result flag
     lua_pushboolean(L, returns);
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, stylep, wxluatype_wxRichTextAttr);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, stylep, wxluatype_wxRichTextAttr);
 
-    return 1;
+    return 2;
 }
+
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetStyleForNewParagraph[] = { &wxluatype_wxRichTextParagraphLayoutBox, &wxluatype_wxRichTextBuffer, &wxluatype_TNUMBER, &wxluatype_TBOOLEAN, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetStyleForNewParagraph(lua_State *L);
@@ -11768,25 +11783,32 @@ static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetStyleForNewParagraph(lu
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetStyleForRange[] = { &wxluatype_wxRichTextParagraphLayoutBox, &wxluatype_wxRichTextRange, &wxluatype_wxRichTextAttr, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetStyleForRange[] = { &wxluatype_wxRichTextParagraphLayoutBox, &wxluatype_wxRichTextRange, NULL };
 static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetStyleForRange(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetStyleForRange[1] = {{ wxLua_wxRichTextParagraphLayoutBox_GetStyleForRange, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetStyleForRange }};
-//     virtual bool GetStyleForRange(const wxRichTextRange& range, wxRichTextAttr& style);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetStyleForRange[1] = {{ wxLua_wxRichTextParagraphLayoutBox_GetStyleForRange, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetStyleForRange }};
+// %override wxLua_wxRichTextParagraphLayoutBox_GetStyleForRange
+// C++: bool GetStyleForRange(const wxRichTextRange& range, wxRichTextAttr& style);
+// Lua: %override [bool, wxRichTextAttr] GetStyleForRange(const wxRichTextRange& range);
 static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetStyleForRange(lua_State *L)
 {
-    // wxRichTextAttr style
-    wxRichTextAttr * style = (wxRichTextAttr *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRichTextAttr);
     // const wxRichTextRange range
     const wxRichTextRange * range = (const wxRichTextRange *)wxluaT_getuserdatatype(L, 2, wxluatype_wxRichTextRange);
     // get this
     wxRichTextParagraphLayoutBox * self = (wxRichTextParagraphLayoutBox *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextParagraphLayoutBox);
+    // allocate a new object
+    wxRichTextAttr *stylep = new wxRichTextAttr();
     // call GetStyleForRange
-    bool returns = (self->GetStyleForRange(*range, *style));
+    bool returns = (self->GetStyleForRange(*range, *stylep));
     // push the result flag
     lua_pushboolean(L, returns);
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, stylep, wxluatype_wxRichTextAttr);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, stylep, wxluatype_wxRichTextAttr);
 
-    return 1;
+    return 2;
 }
+
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetStyleSheet[] = { &wxluatype_wxRichTextParagraphLayoutBox, NULL };
 static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetStyleSheet(lua_State *L);
@@ -11838,25 +11860,32 @@ static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetTextForRange(lua_State 
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetUncombinedStyle[] = { &wxluatype_wxRichTextParagraphLayoutBox, &wxluatype_TNUMBER, &wxluatype_wxRichTextAttr, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetUncombinedStyle[] = { &wxluatype_wxRichTextParagraphLayoutBox, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetUncombinedStyle(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetUncombinedStyle[1] = {{ wxLua_wxRichTextParagraphLayoutBox_GetUncombinedStyle, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetUncombinedStyle }};
-//     virtual bool GetUncombinedStyle(long position, wxRichTextAttr& style);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetUncombinedStyle[1] = {{ wxLua_wxRichTextParagraphLayoutBox_GetUncombinedStyle, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetUncombinedStyle }};
+// %override wxLua_wxRichTextParagraphLayoutBox_GetUncombinedStyle
+// C++: bool GetUncombinedStyle(long position, wxRichTextAttr& style);
+// Lua: %override [bool, wxRichTextAttr] GetUncombinedStyle(long position);
 static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetUncombinedStyle(lua_State *L)
 {
-    // wxRichTextAttr style
-    wxRichTextAttr * style = (wxRichTextAttr *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRichTextAttr);
     // long position
     long position = (long)wxlua_getnumbertype(L, 2);
     // get this
     wxRichTextParagraphLayoutBox * self = (wxRichTextParagraphLayoutBox *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextParagraphLayoutBox);
+    // allocate a new object
+    wxRichTextAttr *stylep = new wxRichTextAttr();
     // call GetUncombinedStyle
-    bool returns = (self->GetUncombinedStyle(position, *style));
+    bool returns = (self->GetUncombinedStyle(position, *stylep));
     // push the result flag
     lua_pushboolean(L, returns);
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, stylep, wxluatype_wxRichTextAttr);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, stylep, wxluatype_wxRichTextAttr);
 
-    return 1;
+    return 2;
 }
+
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetVisibleLineNumber[] = { &wxluatype_wxRichTextParagraphLayoutBox, &wxluatype_TNUMBER, &wxluatype_TBOOLEAN, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetVisibleLineNumber(lua_State *L);
@@ -12222,13 +12251,13 @@ static int LUACALL wxLua_wxRichTextParagraphLayoutBox_InsertTextWithUndo(lua_Sta
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_Invalidate[] = { &wxluatype_wxRichTextParagraphLayoutBox, &wxluatype_wxRichTextRange, NULL };
 static int LUACALL wxLua_wxRichTextParagraphLayoutBox_Invalidate(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_Invalidate[1] = {{ wxLua_wxRichTextParagraphLayoutBox_Invalidate, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_Invalidate }};
-//     virtual void Invalidate(const wxRichTextRange& invalidRange = wxRICHTEXT_ALL_S);
+//     virtual void Invalidate(const wxRichTextRange& invalidRange = wxRICHTEXT_ALL);
 static int LUACALL wxLua_wxRichTextParagraphLayoutBox_Invalidate(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // const wxRichTextRange invalidRange = wxRICHTEXT_ALL_S
-    const wxRichTextRange * invalidRange = (argCount >= 2 ? (const wxRichTextRange *)wxluaT_getuserdatatype(L, 2, wxluatype_wxRichTextRange) : &wxRICHTEXT_ALL_S);
+    // const wxRichTextRange invalidRange = wxRICHTEXT_ALL
+    const wxRichTextRange * invalidRange = (argCount >= 2 ? (const wxRichTextRange *)wxluaT_getuserdatatype(L, 2, wxluatype_wxRichTextRange) : &wxRICHTEXT_ALL);
     // get this
     wxRichTextParagraphLayoutBox * self = (wxRichTextParagraphLayoutBox *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextParagraphLayoutBox);
     // call Invalidate
@@ -12240,13 +12269,13 @@ static int LUACALL wxLua_wxRichTextParagraphLayoutBox_Invalidate(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_InvalidateHierarchy[] = { &wxluatype_wxRichTextParagraphLayoutBox, &wxluatype_wxRichTextRange, NULL };
 static int LUACALL wxLua_wxRichTextParagraphLayoutBox_InvalidateHierarchy(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_InvalidateHierarchy[1] = {{ wxLua_wxRichTextParagraphLayoutBox_InvalidateHierarchy, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_InvalidateHierarchy }};
-//     virtual void InvalidateHierarchy(const wxRichTextRange& invalidRange = wxRICHTEXT_ALL_S);
+//     virtual void InvalidateHierarchy(const wxRichTextRange& invalidRange = wxRICHTEXT_ALL);
 static int LUACALL wxLua_wxRichTextParagraphLayoutBox_InvalidateHierarchy(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // const wxRichTextRange invalidRange = wxRICHTEXT_ALL_S
-    const wxRichTextRange * invalidRange = (argCount >= 2 ? (const wxRichTextRange *)wxluaT_getuserdatatype(L, 2, wxluatype_wxRichTextRange) : &wxRICHTEXT_ALL_S);
+    // const wxRichTextRange invalidRange = wxRICHTEXT_ALL
+    const wxRichTextRange * invalidRange = (argCount >= 2 ? (const wxRichTextRange *)wxluaT_getuserdatatype(L, 2, wxluatype_wxRichTextRange) : &wxRICHTEXT_ALL);
     // get this
     wxRichTextParagraphLayoutBox * self = (wxRichTextParagraphLayoutBox *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextParagraphLayoutBox);
     // call InvalidateHierarchy
@@ -13471,7 +13500,7 @@ static int LUACALL wxLua_wxRichTextField_GetPropertiesMenuLabel(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextField_GetRangeSize[] = { &wxluatype_wxRichTextField, &wxluatype_wxRichTextRange, &wxluatype_wxSize, &wxluatype_TLIGHTUSERDATA, &wxluatype_wxDC, &wxluatype_wxRichTextDrawingContext, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_wxArrayInt, NULL };
 static int LUACALL wxLua_wxRichTextField_GetRangeSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextField_GetRangeSize[1] = {{ wxLua_wxRichTextField_GetRangeSize, WXLUAMETHOD_METHOD, 7, 10, s_wxluatypeArray_wxLua_wxRichTextField_GetRangeSize }};
-//     virtual bool GetRangeSize(const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxPOINT_ZERO, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
+//     virtual bool GetRangeSize(const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxNULLPOINT, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
 static int LUACALL wxLua_wxRichTextField_GetRangeSize(lua_State *L)
 {
     // get number of arguments
@@ -13480,8 +13509,8 @@ static int LUACALL wxLua_wxRichTextField_GetRangeSize(lua_State *L)
     wxArrayInt * partialExtents = (argCount >= 10 ? (wxArrayInt *)wxluaT_getuserdatatype(L, 10, wxluatype_wxArrayInt) : NULL);
     // const wxSize parentSize = wxDefaultSize
     const wxSize * parentSize = (argCount >= 9 ? (const wxSize *)wxluaT_getuserdatatype(L, 9, wxluatype_wxSize) : &wxDefaultSize);
-    // const wxPoint position = wxPOINT_ZERO
-    const wxPoint * position = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxPOINT_ZERO);
+    // const wxPoint position = wxNULLPOINT
+    const wxPoint * position = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxNULLPOINT);
     // int flags
     int flags = (int)wxlua_getnumbertype(L, 7);
     // wxRichTextDrawingContext context
@@ -13881,7 +13910,7 @@ static int LUACALL wxLua_wxRichTextFieldType_GetPropertiesMenuLabel(lua_State *L
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldType_GetRangeSize[] = { &wxluatype_wxRichTextFieldType, &wxluatype_wxRichTextField, &wxluatype_wxRichTextRange, &wxluatype_wxSize, &wxluatype_TLIGHTUSERDATA, &wxluatype_wxDC, &wxluatype_wxRichTextDrawingContext, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_wxArrayInt, NULL };
 static int LUACALL wxLua_wxRichTextFieldType_GetRangeSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldType_GetRangeSize[1] = {{ wxLua_wxRichTextFieldType_GetRangeSize, WXLUAMETHOD_METHOD, 8, 11, s_wxluatypeArray_wxLua_wxRichTextFieldType_GetRangeSize }};
-//     virtual bool GetRangeSize(wxRichTextField* obj, const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxPOINT_ZERO, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
+//     virtual bool GetRangeSize(wxRichTextField* obj, const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxNULLPOINT, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
 static int LUACALL wxLua_wxRichTextFieldType_GetRangeSize(lua_State *L)
 {
     // get number of arguments
@@ -13890,8 +13919,8 @@ static int LUACALL wxLua_wxRichTextFieldType_GetRangeSize(lua_State *L)
     wxArrayInt * partialExtents = (argCount >= 11 ? (wxArrayInt *)wxluaT_getuserdatatype(L, 11, wxluatype_wxArrayInt) : NULL);
     // const wxSize parentSize = wxDefaultSize
     const wxSize * parentSize = (argCount >= 10 ? (const wxSize *)wxluaT_getuserdatatype(L, 10, wxluatype_wxSize) : &wxDefaultSize);
-    // const wxPoint position = wxPOINT_ZERO
-    const wxPoint * position = (argCount >= 9 ? (const wxPoint *)wxluaT_getuserdatatype(L, 9, wxluatype_wxPoint) : &wxPOINT_ZERO);
+    // const wxPoint position = wxNULLPOINT
+    const wxPoint * position = (argCount >= 9 ? (const wxPoint *)wxluaT_getuserdatatype(L, 9, wxluatype_wxPoint) : &wxNULLPOINT);
     // int flags
     int flags = (int)wxlua_getnumbertype(L, 8);
     // wxRichTextDrawingContext context
@@ -14281,7 +14310,7 @@ static int LUACALL wxLua_wxRichTextFieldTypeStandard_GetLabel(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldTypeStandard_GetRangeSize[] = { &wxluatype_wxRichTextFieldTypeStandard, &wxluatype_wxRichTextField, &wxluatype_wxRichTextRange, &wxluatype_wxSize, &wxluatype_TLIGHTUSERDATA, &wxluatype_wxDC, &wxluatype_wxRichTextDrawingContext, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_wxArrayInt, NULL };
 static int LUACALL wxLua_wxRichTextFieldTypeStandard_GetRangeSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldTypeStandard_GetRangeSize[1] = {{ wxLua_wxRichTextFieldTypeStandard_GetRangeSize, WXLUAMETHOD_METHOD, 8, 11, s_wxluatypeArray_wxLua_wxRichTextFieldTypeStandard_GetRangeSize }};
-//     virtual bool GetRangeSize(wxRichTextField* obj, const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxPOINT_ZERO, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
+//     virtual bool GetRangeSize(wxRichTextField* obj, const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxNULLPOINT, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
 static int LUACALL wxLua_wxRichTextFieldTypeStandard_GetRangeSize(lua_State *L)
 {
     // get number of arguments
@@ -14290,8 +14319,8 @@ static int LUACALL wxLua_wxRichTextFieldTypeStandard_GetRangeSize(lua_State *L)
     wxArrayInt * partialExtents = (argCount >= 11 ? (wxArrayInt *)wxluaT_getuserdatatype(L, 11, wxluatype_wxArrayInt) : NULL);
     // const wxSize parentSize = wxDefaultSize
     const wxSize * parentSize = (argCount >= 10 ? (const wxSize *)wxluaT_getuserdatatype(L, 10, wxluatype_wxSize) : &wxDefaultSize);
-    // const wxPoint position = wxPOINT_ZERO
-    const wxPoint * position = (argCount >= 9 ? (const wxPoint *)wxluaT_getuserdatatype(L, 9, wxluatype_wxPoint) : &wxPOINT_ZERO);
+    // const wxPoint position = wxNULLPOINT
+    const wxPoint * position = (argCount >= 9 ? (const wxPoint *)wxluaT_getuserdatatype(L, 9, wxluatype_wxPoint) : &wxNULLPOINT);
     // int flags
     int flags = (int)wxlua_getnumbertype(L, 8);
     // wxRichTextDrawingContext context
@@ -15816,7 +15845,7 @@ if ((double)(lua_Integer)returns == (double)returns) {
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraph_GetRangeSize[] = { &wxluatype_wxRichTextParagraph, &wxluatype_wxRichTextRange, &wxluatype_wxSize, &wxluatype_TLIGHTUSERDATA, &wxluatype_wxDC, &wxluatype_wxRichTextDrawingContext, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_wxArrayInt, NULL };
 static int LUACALL wxLua_wxRichTextParagraph_GetRangeSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextParagraph_GetRangeSize[1] = {{ wxLua_wxRichTextParagraph_GetRangeSize, WXLUAMETHOD_METHOD, 7, 10, s_wxluatypeArray_wxLua_wxRichTextParagraph_GetRangeSize }};
-//     virtual bool GetRangeSize(const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxPOINT_ZERO, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
+//     virtual bool GetRangeSize(const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxNULLPOINT, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
 static int LUACALL wxLua_wxRichTextParagraph_GetRangeSize(lua_State *L)
 {
     // get number of arguments
@@ -15825,8 +15854,8 @@ static int LUACALL wxLua_wxRichTextParagraph_GetRangeSize(lua_State *L)
     wxArrayInt * partialExtents = (argCount >= 10 ? (wxArrayInt *)wxluaT_getuserdatatype(L, 10, wxluatype_wxArrayInt) : NULL);
     // const wxSize parentSize = wxDefaultSize
     const wxSize * parentSize = (argCount >= 9 ? (const wxSize *)wxluaT_getuserdatatype(L, 9, wxluatype_wxSize) : &wxDefaultSize);
-    // const wxPoint position = wxPOINT_ZERO
-    const wxPoint * position = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxPOINT_ZERO);
+    // const wxPoint position = wxNULLPOINT
+    const wxPoint * position = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxNULLPOINT);
     // int flags
     int flags = (int)wxlua_getnumbertype(L, 7);
     // wxRichTextDrawingContext context
@@ -16552,7 +16581,7 @@ if ((double)(lua_Integer)returns == (double)returns) {
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextPlainText_GetRangeSize[] = { &wxluatype_wxRichTextPlainText, &wxluatype_wxRichTextRange, &wxluatype_wxSize, &wxluatype_TLIGHTUSERDATA, &wxluatype_wxDC, &wxluatype_wxRichTextDrawingContext, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_wxArrayInt, NULL };
 static int LUACALL wxLua_wxRichTextPlainText_GetRangeSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextPlainText_GetRangeSize[1] = {{ wxLua_wxRichTextPlainText_GetRangeSize, WXLUAMETHOD_METHOD, 7, 10, s_wxluatypeArray_wxLua_wxRichTextPlainText_GetRangeSize }};
-//     virtual bool GetRangeSize(const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxPOINT_ZERO, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
+//     virtual bool GetRangeSize(const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxNULLPOINT, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
 static int LUACALL wxLua_wxRichTextPlainText_GetRangeSize(lua_State *L)
 {
     // get number of arguments
@@ -16561,8 +16590,8 @@ static int LUACALL wxLua_wxRichTextPlainText_GetRangeSize(lua_State *L)
     wxArrayInt * partialExtents = (argCount >= 10 ? (wxArrayInt *)wxluaT_getuserdatatype(L, 10, wxluatype_wxArrayInt) : NULL);
     // const wxSize parentSize = wxDefaultSize
     const wxSize * parentSize = (argCount >= 9 ? (const wxSize *)wxluaT_getuserdatatype(L, 9, wxluatype_wxSize) : &wxDefaultSize);
-    // const wxPoint position = wxPOINT_ZERO
-    const wxPoint * position = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxPOINT_ZERO);
+    // const wxPoint position = wxNULLPOINT
+    const wxPoint * position = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxNULLPOINT);
     // int flags
     int flags = (int)wxlua_getnumbertype(L, 7);
     // wxRichTextDrawingContext context
@@ -17832,7 +17861,7 @@ static int LUACALL wxLua_wxRichTextImage_GetPropertiesMenuLabel(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextImage_GetRangeSize[] = { &wxluatype_wxRichTextImage, &wxluatype_wxRichTextRange, &wxluatype_wxSize, &wxluatype_TLIGHTUSERDATA, &wxluatype_wxDC, &wxluatype_wxRichTextDrawingContext, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_wxArrayInt, NULL };
 static int LUACALL wxLua_wxRichTextImage_GetRangeSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextImage_GetRangeSize[1] = {{ wxLua_wxRichTextImage_GetRangeSize, WXLUAMETHOD_METHOD, 7, 10, s_wxluatypeArray_wxLua_wxRichTextImage_GetRangeSize }};
-//     virtual bool GetRangeSize(const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxPOINT_ZERO, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
+//     virtual bool GetRangeSize(const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxNULLPOINT, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
 static int LUACALL wxLua_wxRichTextImage_GetRangeSize(lua_State *L)
 {
     // get number of arguments
@@ -17841,8 +17870,8 @@ static int LUACALL wxLua_wxRichTextImage_GetRangeSize(lua_State *L)
     wxArrayInt * partialExtents = (argCount >= 10 ? (wxArrayInt *)wxluaT_getuserdatatype(L, 10, wxluatype_wxArrayInt) : NULL);
     // const wxSize parentSize = wxDefaultSize
     const wxSize * parentSize = (argCount >= 9 ? (const wxSize *)wxluaT_getuserdatatype(L, 9, wxluatype_wxSize) : &wxDefaultSize);
-    // const wxPoint position = wxPOINT_ZERO
-    const wxPoint * position = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxPOINT_ZERO);
+    // const wxPoint position = wxNULLPOINT
+    const wxPoint * position = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxNULLPOINT);
     // int flags
     int flags = (int)wxlua_getnumbertype(L, 7);
     // wxRichTextDrawingContext context
@@ -21750,7 +21779,7 @@ static int LUACALL wxLua_wxRichTextTable_GetPropertiesMenuLabel(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextTable_GetRangeSize[] = { &wxluatype_wxRichTextTable, &wxluatype_wxRichTextRange, &wxluatype_wxSize, &wxluatype_TLIGHTUSERDATA, &wxluatype_wxDC, &wxluatype_wxRichTextDrawingContext, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_wxArrayInt, NULL };
 static int LUACALL wxLua_wxRichTextTable_GetRangeSize(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextTable_GetRangeSize[1] = {{ wxLua_wxRichTextTable_GetRangeSize, WXLUAMETHOD_METHOD, 7, 10, s_wxluatypeArray_wxLua_wxRichTextTable_GetRangeSize }};
-//     virtual bool GetRangeSize(const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxPOINT_ZERO, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
+//     virtual bool GetRangeSize(const wxRichTextRange& range, wxSize& size, int& descent, wxDC& dc, wxRichTextDrawingContext& context, int flags, const wxPoint& position = wxNULLPOINT, const wxSize& parentSize = wxDefaultSize, wxArrayInt* partialExtents = NULL) const;
 static int LUACALL wxLua_wxRichTextTable_GetRangeSize(lua_State *L)
 {
     // get number of arguments
@@ -21759,8 +21788,8 @@ static int LUACALL wxLua_wxRichTextTable_GetRangeSize(lua_State *L)
     wxArrayInt * partialExtents = (argCount >= 10 ? (wxArrayInt *)wxluaT_getuserdatatype(L, 10, wxluatype_wxArrayInt) : NULL);
     // const wxSize parentSize = wxDefaultSize
     const wxSize * parentSize = (argCount >= 9 ? (const wxSize *)wxluaT_getuserdatatype(L, 9, wxluatype_wxSize) : &wxDefaultSize);
-    // const wxPoint position = wxPOINT_ZERO
-    const wxPoint * position = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxPOINT_ZERO);
+    // const wxPoint position = wxNULLPOINT
+    const wxPoint * position = (argCount >= 8 ? (const wxPoint *)wxluaT_getuserdatatype(L, 8, wxluatype_wxPoint) : &wxNULLPOINT);
     // int flags
     int flags = (int)wxlua_getnumbertype(L, 7);
     // wxRichTextDrawingContext context
@@ -23572,7 +23601,7 @@ static int LUACALL wxLua_wxRichTextAction_Undo(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextAction_UpdateAppearance1[] = { &wxluatype_wxRichTextAction, &wxluatype_TNUMBER, &wxluatype_TBOOLEAN, &wxluatype_wxRect, &wxluatype_wxArrayInt, &wxluatype_wxArrayInt, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxRichTextAction_UpdateAppearance1(lua_State *L);
 // // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextAction_UpdateAppearance1[1] = {{ wxLua_wxRichTextAction_UpdateAppearance1, WXLUAMETHOD_METHOD, 2, 7, s_wxluatypeArray_wxLua_wxRichTextAction_UpdateAppearance1 }};
-//     %wxchkver_3_1_0 void UpdateAppearance(long caretPosition, bool sendUpdateEvent = false, const wxRect& oldFloatRect = wxNULLRECT_S, wxArrayInt* optimizationLineCharPositions = NULL, wxArrayInt* optimizationLineYPositions = NULL, bool isDoCmd = true);
+//     %wxchkver_3_1_0 void UpdateAppearance(long caretPosition, bool sendUpdateEvent = false, const wxRect& oldFloatRect = wxNULLRECT, wxArrayInt* optimizationLineCharPositions = NULL, wxArrayInt* optimizationLineYPositions = NULL, bool isDoCmd = true);
 static int LUACALL wxLua_wxRichTextAction_UpdateAppearance1(lua_State *L)
 {
     // get number of arguments
@@ -23583,8 +23612,8 @@ static int LUACALL wxLua_wxRichTextAction_UpdateAppearance1(lua_State *L)
     wxArrayInt * optimizationLineYPositions = (argCount >= 6 ? (wxArrayInt *)wxluaT_getuserdatatype(L, 6, wxluatype_wxArrayInt) : NULL);
     // wxArrayInt optimizationLineCharPositions = NULL
     wxArrayInt * optimizationLineCharPositions = (argCount >= 5 ? (wxArrayInt *)wxluaT_getuserdatatype(L, 5, wxluatype_wxArrayInt) : NULL);
-    // const wxRect oldFloatRect = wxNULLRECT_S
-    const wxRect * oldFloatRect = (argCount >= 4 ? (const wxRect *)wxluaT_getuserdatatype(L, 4, wxluatype_wxRect) : &wxNULLRECT_S);
+    // const wxRect oldFloatRect = wxNULLRECT
+    const wxRect * oldFloatRect = (argCount >= 4 ? (const wxRect *)wxluaT_getuserdatatype(L, 4, wxluatype_wxRect) : &wxNULLRECT);
     // bool sendUpdateEvent = false
     bool sendUpdateEvent = (argCount >= 3 ? wxlua_getbooleantype(L, 3) : false);
     // long caretPosition
@@ -26368,22 +26397,33 @@ static int LUACALL wxLua_wxRichTextCtrl_Delete(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_DeleteSelectedContent[] = { &wxluatype_wxRichTextCtrl, &wxluatype_TLIGHTUSERDATA, NULL };
 static int LUACALL wxLua_wxRichTextCtrl_DeleteSelectedContent(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_DeleteSelectedContent[1] = {{ wxLua_wxRichTextCtrl_DeleteSelectedContent, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxRichTextCtrl_DeleteSelectedContent }};
-//     bool DeleteSelectedContent(long* newPos= NULL);
+// %override wxLua_wxRichTextCtrl_DeleteSelectedContent
+// C++: bool DeleteSelectedContent(long* newPos= NULL);
+// Lua: %override [bool, long] DeleteSelectedContent();
 static int LUACALL wxLua_wxRichTextCtrl_DeleteSelectedContent(lua_State *L)
 {
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // long newPos = NULL
-    long * newPos = (argCount >= 2 ? (long *)wxlua_touserdata(L, 2) : NULL);
+    // long *newPos = NULL
+    long newPos;
     // get this
     wxRichTextCtrl * self = (wxRichTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextCtrl);
     // call DeleteSelectedContent
-    bool returns = (self->DeleteSelectedContent(newPos));
+    bool returns = (self->DeleteSelectedContent(&newPos));
     // push the result flag
     lua_pushboolean(L, returns);
-
-    return 1;
+    // push the newPos number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)newPos == (double)newPos) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, newPos);
+} else
+#endif
+{
+    lua_pushnumber(L, newPos);
 }
+
+    return 2;
+}
+
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_DeleteSelection[] = { &wxluatype_wxRichTextCtrl, NULL };
 static int LUACALL wxLua_wxRichTextCtrl_DeleteSelection(lua_State *L);
@@ -27259,33 +27299,37 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
-
-#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetCaretPositionForIndex[] = { &wxluatype_wxRichTextCtrl, &wxluatype_TNUMBER, &wxluatype_wxRect, &wxluatype_wxRichTextParagraphLayoutBox, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetCaretPositionForIndex[] = { &wxluatype_wxRichTextCtrl, &wxluatype_TNUMBER, &wxluatype_wxRichTextParagraphLayoutBox, NULL };
 static int LUACALL wxLua_wxRichTextCtrl_GetCaretPositionForIndex(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetCaretPositionForIndex[1] = {{ wxLua_wxRichTextCtrl_GetCaretPositionForIndex, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetCaretPositionForIndex }};
-//     bool GetCaretPositionForIndex(long position, wxRect& rect, wxRichTextParagraphLayoutBox* container = NULL);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetCaretPositionForIndex[1] = {{ wxLua_wxRichTextCtrl_GetCaretPositionForIndex, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetCaretPositionForIndex }};
+// %override wxLua_wxRichTextCtrl_GetCaretPositionForIndex
+// C++: bool GetCaretPositionForIndex(long position, wxRect& rect, wxRichTextParagraphLayoutBox* container = NULL);
+// Lua: %override [bool, wxRect] GetCaretPositionForIndex(long position, wxRect& rect, wxRichTextParagraphLayoutBox* container = NULL);
 static int LUACALL wxLua_wxRichTextCtrl_GetCaretPositionForIndex(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
     // wxRichTextParagraphLayoutBox container = NULL
-    wxRichTextParagraphLayoutBox * container = (argCount >= 4 ? (wxRichTextParagraphLayoutBox *)wxluaT_getuserdatatype(L, 4, wxluatype_wxRichTextParagraphLayoutBox) : NULL);
-    // wxRect rect
-    wxRect * rect = (wxRect *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRect);
+    wxRichTextParagraphLayoutBox * container = (argCount >= 3 ? (wxRichTextParagraphLayoutBox *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRichTextParagraphLayoutBox) : NULL);
     // long position
     long position = (long)wxlua_getnumbertype(L, 2);
     // get this
     wxRichTextCtrl * self = (wxRichTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextCtrl);
+    // allocate a new object
+    wxRect *rectp = new wxRect();
     // call GetCaretPositionForIndex
-    bool returns = (self->GetCaretPositionForIndex(position, *rect, container));
+    bool returns = (self->GetCaretPositionForIndex(position, *rectp, container));
     // push the result flag
     lua_pushboolean(L, returns);
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, rectp, wxluatype_wxRect);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, rectp, wxluatype_wxRect);
 
-    return 1;
+    return 2;
 }
 
-#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
+
 
 #if (wxLUA_USE_wxCommandProcessor) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetCommandProcessor[] = { &wxluatype_wxRichTextCtrl, NULL };
@@ -28106,137 +28150,117 @@ static int LUACALL wxLua_wxRichTextCtrl_GetStringSelection(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyle2[] = { &wxluatype_wxRichTextCtrl, &wxluatype_TNUMBER, &wxluatype_wxRichTextAttr, &wxluatype_wxRichTextParagraphLayoutBox, NULL };
-static int LUACALL wxLua_wxRichTextCtrl_GetStyle2(lua_State *L);
-// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetStyle2[1] = {{ wxLua_wxRichTextCtrl_GetStyle2, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyle2 }};
-//     virtual bool GetStyle(long position, wxRichTextAttr& style, wxRichTextParagraphLayoutBox* container);
-static int LUACALL wxLua_wxRichTextCtrl_GetStyle2(lua_State *L)
-{
-    // wxRichTextParagraphLayoutBox container
-    wxRichTextParagraphLayoutBox * container = (wxRichTextParagraphLayoutBox *)wxluaT_getuserdatatype(L, 4, wxluatype_wxRichTextParagraphLayoutBox);
-    // wxRichTextAttr style
-    wxRichTextAttr * style = (wxRichTextAttr *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRichTextAttr);
-    // long position
-    long position = (long)wxlua_getnumbertype(L, 2);
-    // get this
-    wxRichTextCtrl * self = (wxRichTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextCtrl);
-    // call GetStyle
-    bool returns = (self->GetStyle(position, *style, container));
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyle1[] = { &wxluatype_wxRichTextCtrl, &wxluatype_TNUMBER, &wxluatype_wxRichTextAttr, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyle1[] = { &wxluatype_wxRichTextCtrl, &wxluatype_TNUMBER, &wxluatype_wxRichTextParagraphLayoutBox, NULL };
 static int LUACALL wxLua_wxRichTextCtrl_GetStyle1(lua_State *L);
 // // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetStyle1[1] = {{ wxLua_wxRichTextCtrl_GetStyle1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyle1 }};
-//     virtual bool GetStyle(long position, wxRichTextAttr& style);
+// %override wxLua_wxRichTextCtrl_GetStyle1
+// C++: bool GetStyle(long position, wxRichTextAttr& style, wxRichTextParagraphLayoutBox* container);
+// Lua: [bool, wxRichTextAttr] GetStyle(long position, wxRichTextParagraphLayoutBox* container);
 static int LUACALL wxLua_wxRichTextCtrl_GetStyle1(lua_State *L)
 {
-    // wxRichTextAttr style
-    wxRichTextAttr * style = (wxRichTextAttr *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRichTextAttr);
+    // wxRichTextParagraphLayoutBox container
+    wxRichTextParagraphLayoutBox * container = (wxRichTextParagraphLayoutBox *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRichTextParagraphLayoutBox);
     // long position
     long position = (long)wxlua_getnumbertype(L, 2);
     // get this
     wxRichTextCtrl * self = (wxRichTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextCtrl);
-    // call GetStyle
-    bool returns = (self->GetStyle(position, *style));
+    // allocate a new object
+    wxRichTextAttr *stylep = new wxRichTextAttr();
+    //  Call GetStyle
+    bool returns = self->GetStyle(position, *stylep, container);
     // push the result flag
     lua_pushboolean(L, returns);
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, stylep, wxluatype_wxRichTextAttr);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, stylep, wxluatype_wxRichTextAttr);
 
-    return 1;
+    return 2;
 }
 
 
-#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyle[] = { &wxluatype_wxRichTextCtrl, &wxluatype_TNUMBER, &wxluatype_wxTextAttr, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyle[] = { &wxluatype_wxRichTextCtrl, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxRichTextCtrl_GetStyle(lua_State *L);
-// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetStyle[1] = {{ wxLua_wxRichTextCtrl_GetStyle, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyle }};
-//     virtual bool GetStyle(long position, wxTextAttr& style);
+// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetStyle[1] = {{ wxLua_wxRichTextCtrl_GetStyle, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyle }};
+// %override wxLua_wxRichTextCtrl_GetStyle
+// C++: bool GetStyle(long position, wxRichTextAttr& style);
+// Lua: [bool, wxRichTextAttr] GetStyle(long position);
 static int LUACALL wxLua_wxRichTextCtrl_GetStyle(lua_State *L)
 {
-    // wxTextAttr style
-    wxTextAttr * style = (wxTextAttr *)wxluaT_getuserdatatype(L, 3, wxluatype_wxTextAttr);
     // long position
     long position = (long)wxlua_getnumbertype(L, 2);
     // get this
     wxRichTextCtrl * self = (wxRichTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextCtrl);
-    // call GetStyle
-    bool returns = (self->GetStyle(position, *style));
+    // allocate a new object
+    wxRichTextAttr *stylep = new wxRichTextAttr();
+    //  Call GetStyle
+    bool returns = self->GetStyle(position, *stylep);
     // push the result flag
     lua_pushboolean(L, returns);
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, stylep, wxluatype_wxRichTextAttr);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, stylep, wxluatype_wxRichTextAttr);
 
-    return 1;
+    return 2;
 }
 
-#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL)
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyleForRange2[] = { &wxluatype_wxRichTextCtrl, &wxluatype_wxRichTextRange, &wxluatype_wxRichTextAttr, &wxluatype_wxRichTextParagraphLayoutBox, NULL };
-static int LUACALL wxLua_wxRichTextCtrl_GetStyleForRange2(lua_State *L);
-// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetStyleForRange2[1] = {{ wxLua_wxRichTextCtrl_GetStyleForRange2, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyleForRange2 }};
-//     virtual bool GetStyleForRange(const wxRichTextRange& range, wxRichTextAttr& style, wxRichTextParagraphLayoutBox* container);
-static int LUACALL wxLua_wxRichTextCtrl_GetStyleForRange2(lua_State *L)
-{
-    // wxRichTextParagraphLayoutBox container
-    wxRichTextParagraphLayoutBox * container = (wxRichTextParagraphLayoutBox *)wxluaT_getuserdatatype(L, 4, wxluatype_wxRichTextParagraphLayoutBox);
-    // wxRichTextAttr style
-    wxRichTextAttr * style = (wxRichTextAttr *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRichTextAttr);
-    // const wxRichTextRange range
-    const wxRichTextRange * range = (const wxRichTextRange *)wxluaT_getuserdatatype(L, 2, wxluatype_wxRichTextRange);
-    // get this
-    wxRichTextCtrl * self = (wxRichTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextCtrl);
-    // call GetStyleForRange
-    bool returns = (self->GetStyleForRange(*range, *style, container));
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyleForRange1[] = { &wxluatype_wxRichTextCtrl, &wxluatype_wxRichTextRange, &wxluatype_wxRichTextAttr, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyleForRange1[] = { &wxluatype_wxRichTextCtrl, &wxluatype_wxRichTextRange, &wxluatype_wxRichTextParagraphLayoutBox, NULL };
 static int LUACALL wxLua_wxRichTextCtrl_GetStyleForRange1(lua_State *L);
 // // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetStyleForRange1[1] = {{ wxLua_wxRichTextCtrl_GetStyleForRange1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyleForRange1 }};
-//     virtual bool GetStyleForRange(const wxRichTextRange& range, wxRichTextAttr& style);
+// %override wxLua_wxRichTextCtrl_GetStyleForRange1
+// C++: bool GetStyleForRange(const wxRichTextRange& range, wxRichTextAttr& style, wxRichTextParagraphLayoutBox* container);
+// Lua: [bool, wxRichTextAttr] GetStyleForRange(const wxRichTextRange& range, wxRichTextParagraphLayoutBox* container);
 static int LUACALL wxLua_wxRichTextCtrl_GetStyleForRange1(lua_State *L)
 {
-    // wxRichTextAttr style
-    wxRichTextAttr * style = (wxRichTextAttr *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRichTextAttr);
+    // wxRichTextParagraphLayoutBox container
+    wxRichTextParagraphLayoutBox * container = (wxRichTextParagraphLayoutBox *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRichTextParagraphLayoutBox);
     // const wxRichTextRange range
     const wxRichTextRange * range = (const wxRichTextRange *)wxluaT_getuserdatatype(L, 2, wxluatype_wxRichTextRange);
     // get this
     wxRichTextCtrl * self = (wxRichTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextCtrl);
+    // allocate a new object
+    wxRichTextAttr *stylep = new wxRichTextAttr();
     // call GetStyleForRange
-    bool returns = (self->GetStyleForRange(*range, *style));
+    bool returns = (self->GetStyleForRange(*range, *stylep, container));
     // push the result flag
     lua_pushboolean(L, returns);
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, stylep, wxluatype_wxRichTextAttr);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, stylep, wxluatype_wxRichTextAttr);
 
-    return 1;
+    return 2;
 }
 
 
-#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyleForRange[] = { &wxluatype_wxRichTextCtrl, &wxluatype_wxRichTextRange, &wxluatype_wxTextAttr, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyleForRange[] = { &wxluatype_wxRichTextCtrl, &wxluatype_wxRichTextRange, NULL };
 static int LUACALL wxLua_wxRichTextCtrl_GetStyleForRange(lua_State *L);
-// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetStyleForRange[1] = {{ wxLua_wxRichTextCtrl_GetStyleForRange, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyleForRange }};
-//     virtual bool GetStyleForRange(const wxRichTextRange& range, wxTextAttr& style);
+// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetStyleForRange[1] = {{ wxLua_wxRichTextCtrl_GetStyleForRange, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyleForRange }};
+// %override wxLua_wxRichTextCtrl_GetStyleForRange
+// C++: bool GetStyleForRange(const wxRichTextRange& range, wxRichTextAttr& style);
+// Lua: [bool, wxRichTextAttr] GetStyleForRange(const wxRichTextRange& range);
 static int LUACALL wxLua_wxRichTextCtrl_GetStyleForRange(lua_State *L)
 {
-    // wxTextAttr style
-    wxTextAttr * style = (wxTextAttr *)wxluaT_getuserdatatype(L, 3, wxluatype_wxTextAttr);
     // const wxRichTextRange range
     const wxRichTextRange * range = (const wxRichTextRange *)wxluaT_getuserdatatype(L, 2, wxluatype_wxRichTextRange);
     // get this
     wxRichTextCtrl * self = (wxRichTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextCtrl);
+    // allocate a new object
+    wxRichTextAttr *stylep = new wxRichTextAttr();
     // call GetStyleForRange
-    bool returns = (self->GetStyleForRange(*range, *style));
+    bool returns = (self->GetStyleForRange(*range, *stylep));
     // push the result flag
     lua_pushboolean(L, returns);
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, stylep, wxluatype_wxRichTextAttr);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, stylep, wxluatype_wxRichTextAttr);
 
-    return 1;
+    return 2;
 }
 
-#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyleSheet[] = { &wxluatype_wxRichTextCtrl, NULL };
 static int LUACALL wxLua_wxRichTextCtrl_GetStyleSheet(lua_State *L);
@@ -28296,47 +28320,62 @@ static int LUACALL wxLua_wxRichTextCtrl_GetURLCursor(lua_State *L)
 
 #endif // (wxLUA_USE_wxCursor) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetUncombinedStyle1[] = { &wxluatype_wxRichTextCtrl, &wxluatype_TNUMBER, &wxluatype_wxRichTextAttr, &wxluatype_wxRichTextParagraphLayoutBox, NULL };
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetUncombinedStyle1[] = { &wxluatype_wxRichTextCtrl, &wxluatype_TNUMBER, &wxluatype_wxRichTextParagraphLayoutBox, NULL };
 static int LUACALL wxLua_wxRichTextCtrl_GetUncombinedStyle1(lua_State *L);
-// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetUncombinedStyle1[1] = {{ wxLua_wxRichTextCtrl_GetUncombinedStyle1, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetUncombinedStyle1 }};
-//     virtual bool GetUncombinedStyle(long position, wxRichTextAttr& style, wxRichTextParagraphLayoutBox* container);
+// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetUncombinedStyle1[1] = {{ wxLua_wxRichTextCtrl_GetUncombinedStyle1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetUncombinedStyle1 }};
+// %override wxLua_wxRichTextCtrl_GetUncombinedStyle1
+// C++: bool GetUncombinedStyle(long position, wxRichTextAttr& style, wxRichTextParagraphLayoutBox* container);
+// Lua: [bool, wxRichTextAttr] GetUncombinedStyle(long position, wxRichTextParagraphLayoutBox* container);
 static int LUACALL wxLua_wxRichTextCtrl_GetUncombinedStyle1(lua_State *L)
 {
     // wxRichTextParagraphLayoutBox container
-    wxRichTextParagraphLayoutBox * container = (wxRichTextParagraphLayoutBox *)wxluaT_getuserdatatype(L, 4, wxluatype_wxRichTextParagraphLayoutBox);
-    // wxRichTextAttr style
-    wxRichTextAttr * style = (wxRichTextAttr *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRichTextAttr);
+    wxRichTextParagraphLayoutBox * container = (wxRichTextParagraphLayoutBox *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRichTextParagraphLayoutBox);
     // long position
     long position = (long)wxlua_getnumbertype(L, 2);
     // get this
     wxRichTextCtrl * self = (wxRichTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextCtrl);
+    // allocate a new object
+    wxRichTextAttr *stylep = new wxRichTextAttr();
     // call GetUncombinedStyle
-    bool returns = (self->GetUncombinedStyle(position, *style, container));
+    bool returns = (self->GetUncombinedStyle(position, *stylep, container));
     // push the result flag
     lua_pushboolean(L, returns);
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, stylep, wxluatype_wxRichTextAttr);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, stylep, wxluatype_wxRichTextAttr);
 
-    return 1;
+    return 2;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetUncombinedStyle[] = { &wxluatype_wxRichTextCtrl, &wxluatype_TNUMBER, &wxluatype_wxRichTextAttr, NULL };
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCtrl_GetUncombinedStyle[] = { &wxluatype_wxRichTextCtrl, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxRichTextCtrl_GetUncombinedStyle(lua_State *L);
-// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetUncombinedStyle[1] = {{ wxLua_wxRichTextCtrl_GetUncombinedStyle, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetUncombinedStyle }};
-//     virtual bool GetUncombinedStyle(long position, wxRichTextAttr& style);
+// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetUncombinedStyle[1] = {{ wxLua_wxRichTextCtrl_GetUncombinedStyle, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetUncombinedStyle }};
+// %override wxLua_wxRichTextCtrl_GetUncombinedStyle
+// C++: bool GetUncombinedStyle(long position, wxRichTextAttr& style);
+// Lua: [bool, wxRichTextAttr] GetUncombinedStyle(long position);
 static int LUACALL wxLua_wxRichTextCtrl_GetUncombinedStyle(lua_State *L)
 {
-    // wxRichTextAttr style
-    wxRichTextAttr * style = (wxRichTextAttr *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRichTextAttr);
     // long position
     long position = (long)wxlua_getnumbertype(L, 2);
     // get this
     wxRichTextCtrl * self = (wxRichTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextCtrl);
+    // allocate a new object
+    wxRichTextAttr *stylep = new wxRichTextAttr();
     // call GetUncombinedStyle
-    bool returns = (self->GetUncombinedStyle(position, *style));
+    bool returns = (self->GetUncombinedStyle(position, *stylep));
     // push the result flag
     lua_pushboolean(L, returns);
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, stylep, wxluatype_wxRichTextAttr);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, stylep, wxluatype_wxRichTextAttr);
 
-    return 1;
+    return 2;
 }
+
 
 
 #if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
@@ -31620,41 +31659,27 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetSelection_overload[] =
 };
 static int s_wxluafunc_wxLua_wxRichTextCtrl_GetSelection_overload_count = sizeof(s_wxluafunc_wxLua_wxRichTextCtrl_GetSelection_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
-
-#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)||((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetStyle_overload[] =
 {
-    { wxLua_wxRichTextCtrl_GetStyle2, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyle2 },
     { wxLua_wxRichTextCtrl_GetStyle1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyle1 },
-
-#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL)
-    { wxLua_wxRichTextCtrl_GetStyle, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyle },
-#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL)
+    { wxLua_wxRichTextCtrl_GetStyle, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyle },
 };
 static int s_wxluafunc_wxLua_wxRichTextCtrl_GetStyle_overload_count = sizeof(s_wxluafunc_wxLua_wxRichTextCtrl_GetStyle_overload)/sizeof(wxLuaBindCFunc);
 
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetStyleForRange_overload[] =
 {
-    { wxLua_wxRichTextCtrl_GetStyleForRange2, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyleForRange2 },
     { wxLua_wxRichTextCtrl_GetStyleForRange1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyleForRange1 },
-
-#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL)
-    { wxLua_wxRichTextCtrl_GetStyleForRange, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyleForRange },
-#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL)
+    { wxLua_wxRichTextCtrl_GetStyleForRange, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetStyleForRange },
 };
 static int s_wxluafunc_wxLua_wxRichTextCtrl_GetStyleForRange_overload_count = sizeof(s_wxluafunc_wxLua_wxRichTextCtrl_GetStyleForRange_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)||((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL))
-
-#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCtrl_GetUncombinedStyle_overload[] =
 {
-    { wxLua_wxRichTextCtrl_GetUncombinedStyle1, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetUncombinedStyle1 },
-    { wxLua_wxRichTextCtrl_GetUncombinedStyle, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetUncombinedStyle },
+    { wxLua_wxRichTextCtrl_GetUncombinedStyle1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetUncombinedStyle1 },
+    { wxLua_wxRichTextCtrl_GetUncombinedStyle, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextCtrl_GetUncombinedStyle },
 };
 static int s_wxluafunc_wxLua_wxRichTextCtrl_GetUncombinedStyle_overload_count = sizeof(s_wxluafunc_wxLua_wxRichTextCtrl_GetUncombinedStyle_overload)/sizeof(wxLuaBindCFunc);
 
@@ -31928,10 +31953,7 @@ wxLuaBindMethod wxRichTextCtrl_methods[] = {
     { "GetCaretAtLineStart", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextCtrl_GetCaretAtLineStart, 1, NULL },
     { "GetCaretPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextCtrl_GetCaretPosition, 1, NULL },
     { "GetCaretPositionForDefaultStyle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextCtrl_GetCaretPositionForDefaultStyle, 1, NULL },
-
-#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
     { "GetCaretPositionForIndex", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextCtrl_GetCaretPositionForIndex, 1, NULL },
-#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
 #if (wxLUA_USE_wxCommandProcessor) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
     { "GetCommandProcessor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextCtrl_GetCommandProcessor, 1, NULL },
@@ -32014,10 +32036,10 @@ wxLuaBindMethod wxRichTextCtrl_methods[] = {
     { "GetSelectionRange", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextCtrl_GetSelectionRange, 1, NULL },
     { "GetStringSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextCtrl_GetStringSelection, 1, NULL },
 
-#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)||((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL))
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
     { "GetStyle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextCtrl_GetStyle_overload, s_wxluafunc_wxLua_wxRichTextCtrl_GetStyle_overload_count, 0 },
     { "GetStyleForRange", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextCtrl_GetStyleForRange_overload, s_wxluafunc_wxLua_wxRichTextCtrl_GetStyleForRange_overload_count, 0 },
-#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)||((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL))
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
     { "GetStyleSheet", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextCtrl_GetStyleSheet, 1, NULL },
 
@@ -45398,6 +45420,12 @@ wxLuaBindObject* wxLuaGetObjectList_wxrichtext(size_t &count)
 {
     static wxLuaBindObject objectList[] =
     {
+#if wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
+        { "wxRICHTEXT_ALL", &wxluatype_wxRichTextRange, &wxRICHTEXT_ALL, NULL },
+        { "wxRICHTEXT_NONE", &wxluatype_wxRichTextRange, &wxRICHTEXT_NONE, NULL },
+        { "wxRICHTEXT_NO_SELECTION", &wxluatype_wxRichTextRange, &wxRICHTEXT_NO_SELECTION, NULL },
+#endif // wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
+
 
         { 0, 0, 0, 0 },
     };

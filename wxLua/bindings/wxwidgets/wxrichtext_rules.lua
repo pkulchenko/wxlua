@@ -70,10 +70,18 @@ hook_cpp_binding_includes = ""
 -- Set any #includes or other C++ code to be placed verbatim below the
 --   #includes of every generated cpp file or "" for none
 hook_cpp_binding_post_includes = "#if wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT\n" ..
-    "  static wxRichTextRange wxRICHTEXT_ALL_S = wxRichTextRange(-2, -2);\n" ..
-    "  static wxRect wxNULLRECT_S = wxRect();\n" ..
+    "  static wxRichTextRange wxRICHTEXT_ALL_S = wxRICHTEXT_ALL;\n" ..
+    "  static wxRichTextRange wxRICHTEXT_NONE_S = wxRICHTEXT_NONE;\n" ..
+    "  static wxRichTextRange wxRICHTEXT_NO_SELECTION_S = wxRICHTEXT_NO_SELECTION;\n" ..
+    "#undef wxRICHTEXT_ALL\n" ..
+    "#undef wxRICHTEXT_NONE\n" ..
+    "#undef wxRICHTEXT_NO_SELECTION\n" ..
+    "#define wxRICHTEXT_ALL wxRICHTEXT_ALL_S\n" ..
+    "#define wxRICHTEXT_NONE wxRICHTEXT_NONE_S\n" ..
+    "#define wxRICHTEXT_NO_SELECTION wxRICHTEXT_NO_SELECTION_S\n" ..
+    "  static wxRect wxNULLRECT = wxRect();\n" ..
+    "  static wxPoint wxNULLPOINT = wxPoint(0, 0);\n" ..
     "  static wxRichTextAttr wxDEFAULT_RICHTEXTATTR = wxRichTextAttr();\n" ..
-    "  static wxPoint wxPOINT_ZERO = wxPoint(0, 0);\n" ..
     "#endif\n"
 
 -- ----------------------------------------------------------------------------
@@ -111,7 +119,7 @@ interface_fileTable =
 -- A list of files that contain bindings that need to be overridden or empty
 --   table {} for none.
 --   The files are loaded from the interface_filepath.
---override_fileTable = { "override.hpp" }
+override_fileTable = { "wxrichtext_override.hpp" }
 
 -- ============================================================================
 -- A table containing filenames of XXX_datatype.lua from other wrappers to
