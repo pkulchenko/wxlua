@@ -57,10 +57,10 @@ public:
     static wxTextAttrDimension ParseDimension(const wxString& dimStr);
 
     // Make a string from the given property. This can be overridden for custom variants.
-    //virtual wxString MakeStringFromProperty(const wxVariant& var);  // TODO: handle wxVariant
+    virtual wxString MakeStringFromProperty(const wxVariant& var);
 
     // Create a proprty from the string read from the XML file.
-    //virtual wxVariant MakePropertyFromString(const wxString& name, const wxString& value, const wxString& type);  // TODO: handle wxVariant
+    virtual wxVariant MakePropertyFromString(const wxString& name, const wxString& value, const wxString& type);
 
     // Import properties
     virtual bool ImportProperties(wxRichTextProperties& properties, wxXmlNode* node);

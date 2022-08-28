@@ -1572,12 +1572,12 @@ public:
     /**
         Returns the variant at the given index.
     */
-    //const wxVariant& operator[](size_t idx) const;
+    const wxVariant& operator[](size_t idx) const;
 
     /**
         Returns the variant at the given index.
     */
-    //wxVariant& operator[](size_t idx);
+    wxVariant& operator[](size_t idx);
 
     /**
         Clears the properties.
@@ -1628,12 +1628,12 @@ public:
     /**
         Gets the property variant by name.
     */
-    //const wxVariant& GetProperty(const wxString& name) const;  // TODO: handle wxVariant
+    const wxVariant& GetProperty(const wxString& name) const;
 
     /**
         Finds or creates a property with the given name, returning a pointer to the variant.
     */
-    //wxVariant* FindOrCreateProperty(const wxString& name);  // TODO: handle wxVariant
+    wxVariant* FindOrCreateProperty(const wxString& name);
 
     /**
         Gets the value of the named property as a string.
@@ -1658,12 +1658,12 @@ public:
     /**
         Sets the property by passing a variant which contains a name and value.
     */
-    //void SetProperty(const wxVariant& variant);
+    void SetProperty(const wxVariant& variant);
 
     /**
         Sets a property by name and variant.
     */
-    //void SetProperty(const wxString& name, const wxVariant& variant);
+    void SetProperty(const wxString& name, const wxVariant& variant);
 
     /**
         Sets a property by name and string value.

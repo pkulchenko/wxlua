@@ -6855,6 +6855,28 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
+
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_FindOrCreateProperty[] = { &wxluatype_wxRichTextProperties, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxRichTextProperties_FindOrCreateProperty(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_FindOrCreateProperty[1] = {{ wxLua_wxRichTextProperties_FindOrCreateProperty, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextProperties_FindOrCreateProperty }};
+//     wxVariant* FindOrCreateProperty(const wxString& name);
+static int LUACALL wxLua_wxRichTextProperties_FindOrCreateProperty(lua_State *L)
+{
+    // const wxString name
+    const wxString name = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxRichTextProperties * self = (wxRichTextProperties *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextProperties);
+    // call FindOrCreateProperty
+    wxVariant* returns = (wxVariant*)self->FindOrCreateProperty(name);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxVariant);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_GetCount[] = { &wxluatype_wxRichTextProperties, NULL };
 static int LUACALL wxLua_wxRichTextProperties_GetCount(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_GetCount[1] = {{ wxLua_wxRichTextProperties_GetCount, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextProperties_GetCount }};
@@ -6894,6 +6916,28 @@ static int LUACALL wxLua_wxRichTextProperties_GetProperties(lua_State *L)
 
     return 1;
 }
+
+
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_GetProperty[] = { &wxluatype_wxRichTextProperties, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxRichTextProperties_GetProperty(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_GetProperty[1] = {{ wxLua_wxRichTextProperties_GetProperty, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextProperties_GetProperty }};
+//     const wxVariant& GetProperty(const wxString& name) const;
+static int LUACALL wxLua_wxRichTextProperties_GetProperty(lua_State *L)
+{
+    // const wxString name
+    const wxString name = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxRichTextProperties * self = (wxRichTextProperties *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextProperties);
+    // call GetProperty
+    const wxVariant* returns = (const wxVariant*)&self->GetProperty(name);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxVariant);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_GetPropertyBool[] = { &wxluatype_wxRichTextProperties, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxRichTextProperties_GetPropertyBool(lua_State *L);
@@ -7082,11 +7126,11 @@ static int LUACALL wxLua_wxRichTextProperties_SetProperties(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty3[] = { &wxluatype_wxRichTextProperties, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, NULL };
-static int LUACALL wxLua_wxRichTextProperties_SetProperty3(lua_State *L);
-// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_SetProperty3[1] = {{ wxLua_wxRichTextProperties_SetProperty3, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty3 }};
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty5[] = { &wxluatype_wxRichTextProperties, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxRichTextProperties_SetProperty5(lua_State *L);
+// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_SetProperty5[1] = {{ wxLua_wxRichTextProperties_SetProperty5, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty5 }};
 //     void SetProperty(const wxString& name, bool value);
-static int LUACALL wxLua_wxRichTextProperties_SetProperty3(lua_State *L)
+static int LUACALL wxLua_wxRichTextProperties_SetProperty5(lua_State *L)
 {
     // bool value
     bool value = wxlua_getbooleantype(L, 3);
@@ -7100,11 +7144,11 @@ static int LUACALL wxLua_wxRichTextProperties_SetProperty3(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty2[] = { &wxluatype_wxRichTextProperties, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxRichTextProperties_SetProperty2(lua_State *L);
-// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_SetProperty2[1] = {{ wxLua_wxRichTextProperties_SetProperty2, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty2 }};
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty4[] = { &wxluatype_wxRichTextProperties, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxRichTextProperties_SetProperty4(lua_State *L);
+// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_SetProperty4[1] = {{ wxLua_wxRichTextProperties_SetProperty4, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty4 }};
 //     void SetProperty(const wxString& name, double value);
-static int LUACALL wxLua_wxRichTextProperties_SetProperty2(lua_State *L)
+static int LUACALL wxLua_wxRichTextProperties_SetProperty4(lua_State *L)
 {
     // double value
     double value = (double)wxlua_getnumbertype(L, 3);
@@ -7118,11 +7162,11 @@ static int LUACALL wxLua_wxRichTextProperties_SetProperty2(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty1[] = { &wxluatype_wxRichTextProperties, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxRichTextProperties_SetProperty1(lua_State *L);
-// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_SetProperty1[1] = {{ wxLua_wxRichTextProperties_SetProperty1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty1 }};
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty3[] = { &wxluatype_wxRichTextProperties, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxRichTextProperties_SetProperty3(lua_State *L);
+// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_SetProperty3[1] = {{ wxLua_wxRichTextProperties_SetProperty3, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty3 }};
 //     void SetProperty(const wxString& name, long value);
-static int LUACALL wxLua_wxRichTextProperties_SetProperty1(lua_State *L)
+static int LUACALL wxLua_wxRichTextProperties_SetProperty3(lua_State *L)
 {
     // long value
     long value = (long)wxlua_getnumbertype(L, 3);
@@ -7136,11 +7180,11 @@ static int LUACALL wxLua_wxRichTextProperties_SetProperty1(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty[] = { &wxluatype_wxRichTextProperties, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxRichTextProperties_SetProperty(lua_State *L);
-// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_SetProperty[1] = {{ wxLua_wxRichTextProperties_SetProperty, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty }};
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty2[] = { &wxluatype_wxRichTextProperties, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxRichTextProperties_SetProperty2(lua_State *L);
+// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_SetProperty2[1] = {{ wxLua_wxRichTextProperties_SetProperty2, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty2 }};
 //     void SetProperty(const wxString& name, const wxString& value);
-static int LUACALL wxLua_wxRichTextProperties_SetProperty(lua_State *L)
+static int LUACALL wxLua_wxRichTextProperties_SetProperty2(lua_State *L)
 {
     // const wxString value
     const wxString value = wxlua_getwxStringtype(L, 3);
@@ -7153,6 +7197,44 @@ static int LUACALL wxLua_wxRichTextProperties_SetProperty(lua_State *L)
 
     return 0;
 }
+
+
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty1[] = { &wxluatype_wxRichTextProperties, &wxluatype_TSTRING, &wxluatype_wxVariant, NULL };
+static int LUACALL wxLua_wxRichTextProperties_SetProperty1(lua_State *L);
+// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_SetProperty1[1] = {{ wxLua_wxRichTextProperties_SetProperty1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty1 }};
+//     void SetProperty(const wxString& name, const wxVariant& variant);
+static int LUACALL wxLua_wxRichTextProperties_SetProperty1(lua_State *L)
+{
+    // const wxVariant variant
+    const wxVariant * variant = (const wxVariant *)wxluaT_getuserdatatype(L, 3, wxluatype_wxVariant);
+    // const wxString name
+    const wxString name = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxRichTextProperties * self = (wxRichTextProperties *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextProperties);
+    // call SetProperty
+    self->SetProperty(name, *variant);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty[] = { &wxluatype_wxRichTextProperties, &wxluatype_wxVariant, NULL };
+static int LUACALL wxLua_wxRichTextProperties_SetProperty(lua_State *L);
+// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_SetProperty[1] = {{ wxLua_wxRichTextProperties_SetProperty, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty }};
+//     void SetProperty(const wxVariant& variant);
+static int LUACALL wxLua_wxRichTextProperties_SetProperty(lua_State *L)
+{
+    // const wxVariant variant
+    const wxVariant * variant = (const wxVariant *)wxluaT_getuserdatatype(L, 2, wxluatype_wxVariant);
+    // get this
+    wxRichTextProperties * self = (wxRichTextProperties *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextProperties);
+    // call SetProperty
+    self->SetProperty(*variant);
+
+    return 0;
+}
+
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_delete[] = { &wxluatype_wxRichTextProperties, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxRichTextProperties_delete }};
@@ -7174,6 +7256,46 @@ static int LUACALL wxLua_wxRichTextProperties_op_eq(lua_State *L)
 
     return 1;
 }
+
+
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_op_index1[] = { &wxluatype_wxRichTextProperties, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxRichTextProperties_op_index1(lua_State *L);
+// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_op_index1[1] = {{ wxLua_wxRichTextProperties_op_index1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextProperties_op_index1 }};
+//     wxVariant& operator[](size_t idx);
+static int LUACALL wxLua_wxRichTextProperties_op_index1(lua_State *L)
+{
+    // size_t idx
+    size_t idx = (size_t)wxlua_getuintegertype(L, 2);
+    // get this
+    wxRichTextProperties * self = (wxRichTextProperties *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextProperties);
+    // call op_index
+    wxVariant* returns = (wxVariant*)&((*self)[(idx)]);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxVariant);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_op_index[] = { &wxluatype_wxRichTextProperties, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxRichTextProperties_op_index(lua_State *L);
+// // // // // static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_op_index[1] = {{ wxLua_wxRichTextProperties_op_index, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextProperties_op_index }};
+//     const wxVariant& operator[](size_t idx) const;
+static int LUACALL wxLua_wxRichTextProperties_op_index(lua_State *L)
+{
+    // size_t idx
+    size_t idx = (size_t)wxlua_getuintegertype(L, 2);
+    // get this
+    wxRichTextProperties * self = (wxRichTextProperties *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextProperties);
+    // call op_index
+    const wxVariant* returns = (const wxVariant*)&((*self)[(idx)]);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxVariant);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextProperties_op_set[] = { &wxluatype_wxRichTextProperties, &wxluatype_wxRichTextProperties, NULL };
 static int LUACALL wxLua_wxRichTextProperties_op_set(lua_State *L);
@@ -7227,17 +7349,45 @@ static int LUACALL wxLua_wxRichTextProperties_constructor(lua_State *L)
 
 
 
-#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)||((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_SetProperty_overload[] =
 {
+    { wxLua_wxRichTextProperties_SetProperty5, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty5 },
+    { wxLua_wxRichTextProperties_SetProperty4, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty4 },
     { wxLua_wxRichTextProperties_SetProperty3, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty3 },
     { wxLua_wxRichTextProperties_SetProperty2, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty2 },
+
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
     { wxLua_wxRichTextProperties_SetProperty1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty1 },
-    { wxLua_wxRichTextProperties_SetProperty, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty },
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
+
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
+    { wxLua_wxRichTextProperties_SetProperty, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextProperties_SetProperty },
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
 };
 static int s_wxluafunc_wxLua_wxRichTextProperties_SetProperty_overload_count = sizeof(s_wxluafunc_wxLua_wxRichTextProperties_SetProperty_overload)/sizeof(wxLuaBindCFunc);
 
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)||((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT))
+
+#if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_op_index_overload[] =
+{
+
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
+    { wxLua_wxRichTextProperties_op_index1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextProperties_op_index1 },
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
+
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
+    { wxLua_wxRichTextProperties_op_index, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextProperties_op_index },
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
+};
+static int s_wxluafunc_wxLua_wxRichTextProperties_op_index_overload_count = sizeof(s_wxluafunc_wxLua_wxRichTextProperties_op_index_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT))
+
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextProperties_constructor_overload[] =
 {
@@ -7259,8 +7409,18 @@ wxLuaBindMethod wxRichTextProperties_methods[] = {
     { "Clear", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextProperties_Clear, 1, NULL },
     { "Copy", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextProperties_Copy, 1, NULL },
     { "Find", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextProperties_Find, 1, NULL },
+
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
+    { "FindOrCreateProperty", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextProperties_FindOrCreateProperty, 1, NULL },
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
+
     { "GetCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextProperties_GetCount, 1, NULL },
     { "GetProperties", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextProperties_GetProperties, 1, NULL },
+
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
+    { "GetProperty", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextProperties_GetProperty, 1, NULL },
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT)
+
     { "GetPropertyBool", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextProperties_GetPropertyBool, 1, NULL },
     { "GetPropertyDouble", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextProperties_GetPropertyDouble, 1, NULL },
     { "GetPropertyLong", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextProperties_GetPropertyLong, 1, NULL },
@@ -7276,12 +7436,17 @@ wxLuaBindMethod wxRichTextProperties_methods[] = {
     { "RemoveProperties", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextProperties_RemoveProperties, 1, NULL },
     { "SetProperties", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextProperties_SetProperties, 1, NULL },
 
-#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)||((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT))
     { "SetProperty", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextProperties_SetProperty_overload, s_wxluafunc_wxLua_wxRichTextProperties_SetProperty_overload_count, 0 },
-#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)||((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT))
 
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxRichTextProperties_delete, 1, NULL },
     { "op_eq", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextProperties_op_eq, 1, NULL },
+
+#if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT))
+    { "op_index", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextProperties_op_index_overload, s_wxluafunc_wxLua_wxRichTextProperties_op_index_overload_count, 0 },
+#endif // ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_VARIANT))
+
     { "op_set", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextProperties_op_set, 1, NULL },
 
 #if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
@@ -45822,6 +45987,34 @@ static int LUACALL wxLua_wxRichTextXMLHelper_Init(lua_State *L)
 }
 
 
+#if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML)) && (wxUSE_VARIANT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextXMLHelper_MakePropertyFromString[] = { &wxluatype_wxRichTextXMLHelper, &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxRichTextXMLHelper_MakePropertyFromString(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextXMLHelper_MakePropertyFromString[1] = {{ wxLua_wxRichTextXMLHelper_MakePropertyFromString, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxRichTextXMLHelper_MakePropertyFromString }};
+//     virtual wxVariant MakePropertyFromString(const wxString& name, const wxString& value, const wxString& type);
+static int LUACALL wxLua_wxRichTextXMLHelper_MakePropertyFromString(lua_State *L)
+{
+    // const wxString type
+    const wxString type = wxlua_getwxStringtype(L, 4);
+    // const wxString value
+    const wxString value = wxlua_getwxStringtype(L, 3);
+    // const wxString name
+    const wxString name = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxRichTextXMLHelper * self = (wxRichTextXMLHelper *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextXMLHelper);
+    // call MakePropertyFromString
+    // allocate a new object using the copy constructor
+    wxVariant* returns = new wxVariant(self->MakePropertyFromString(name, value, type));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxVariant);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxVariant);
+
+    return 1;
+}
+
+#endif // ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML)) && (wxUSE_VARIANT)
+
 #if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML)) && (wxLUA_USE_wxColourPenBrush)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextXMLHelper_MakeString4[] = { &wxluatype_wxColour, NULL };
 static int LUACALL wxLua_wxRichTextXMLHelper_MakeString4(lua_State *L);
@@ -45905,6 +46098,27 @@ static int LUACALL wxLua_wxRichTextXMLHelper_MakeString(lua_State *L)
     return 1;
 }
 
+
+#if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML)) && (wxUSE_VARIANT)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextXMLHelper_MakeStringFromProperty[] = { &wxluatype_wxRichTextXMLHelper, &wxluatype_wxVariant, NULL };
+static int LUACALL wxLua_wxRichTextXMLHelper_MakeStringFromProperty(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextXMLHelper_MakeStringFromProperty[1] = {{ wxLua_wxRichTextXMLHelper_MakeStringFromProperty, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextXMLHelper_MakeStringFromProperty }};
+//     virtual wxString MakeStringFromProperty(const wxVariant& var);
+static int LUACALL wxLua_wxRichTextXMLHelper_MakeStringFromProperty(lua_State *L)
+{
+    // const wxVariant var
+    const wxVariant * var = (const wxVariant *)wxluaT_getuserdatatype(L, 2, wxluatype_wxVariant);
+    // get this
+    wxRichTextXMLHelper * self = (wxRichTextXMLHelper *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextXMLHelper);
+    // call MakeStringFromProperty
+    wxString returns = (self->MakeStringFromProperty(*var));
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+#endif // ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML)) && (wxUSE_VARIANT)
 
 #if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxUSE_STREAMS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextXMLHelper_OutputIndentation[] = { &wxluatype_wxOutputStream, &wxluatype_TNUMBER, NULL };
@@ -46446,9 +46660,17 @@ wxLuaBindMethod wxRichTextXMLHelper_methods[] = {
 
     { "Init", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextXMLHelper_Init, 1, NULL },
 
+#if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML)) && (wxUSE_VARIANT)
+    { "MakePropertyFromString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextXMLHelper_MakePropertyFromString, 1, NULL },
+#endif // ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML)) && (wxUSE_VARIANT)
+
 #if (((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML)) && (wxLUA_USE_wxColourPenBrush))||((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML))
     { "MakeString", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxRichTextXMLHelper_MakeString_overload, s_wxluafunc_wxLua_wxRichTextXMLHelper_MakeString_overload_count, 0 },
 #endif // (((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML)) && (wxLUA_USE_wxColourPenBrush))||((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML))
+
+#if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML)) && (wxUSE_VARIANT)
+    { "MakeStringFromProperty", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextXMLHelper_MakeStringFromProperty, 1, NULL },
+#endif // ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML)) && (wxUSE_VARIANT)
 
 #if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxUSE_STREAMS)
     { "OutputIndentation", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputIndentation, 1, NULL },
