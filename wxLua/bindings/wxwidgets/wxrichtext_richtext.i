@@ -1484,10 +1484,49 @@ public:
 };
 
 // WX_DECLARE_USER_EXPORTED_OBJARRAY(wxRichTextAttr, wxRichTextAttrArray, WXDLLIMPEXP_RICHTEXT);
+class %delete wxRichTextAttrArray
+{
+    wxRichTextAttrArray();
+    wxRichTextAttrArray(const wxRichTextAttrArray& array);
+
+    void Add(const wxRichTextAttr& item);
+    void Clear();
+    int  GetCount() const;
+    void Insert(const wxRichTextAttr& item, int nIndex);
+    bool IsEmpty();
+    wxRichTextAttr Item(size_t nIndex) const;
+    void RemoveAt(size_t nIndex);
+};
 
 // WX_DECLARE_USER_EXPORTED_OBJARRAY(wxVariant, wxRichTextVariantArray, WXDLLIMPEXP_RICHTEXT);
+class %delete wxRichTextVariantArray
+{
+    wxRichTextVariantArray();
+    wxRichTextVariantArray(const wxRichTextVariantArray& array);
+
+    void Add(const wxVariant& item);
+    void Clear();
+    int  GetCount() const;
+    void Insert(const wxVariant& item, int nIndex);
+    bool IsEmpty();
+    wxVariant Item(size_t nIndex) const;
+    void RemoveAt(size_t nIndex);
+};
 
 // WX_DECLARE_USER_EXPORTED_OBJARRAY(wxRect, wxRichTextRectArray, WXDLLIMPEXP_RICHTEXT);
+class %delete wxRichTextRectArray
+{
+    wxRichTextRectArray();
+    wxRichTextRectArray(const wxRichTextRectArray& array);
+
+    void Add(const wxRect& item);
+    void Clear();
+    int  GetCount() const;
+    void Insert(const wxRect& item, int nIndex);
+    bool IsEmpty();
+    wxRect Item(size_t nIndex) const;
+    void RemoveAt(size_t nIndex);
+};
 
 /**
     @class wxRichTextProperties
@@ -1548,17 +1587,18 @@ public:
     /**
         Returns the array of variants implementing the properties.
     */
-    //const wxRichTextVariantArray& GetProperties() const; // TODO: handle Array
+    // wxLua: we do not need the const version
+    //const wxRichTextVariantArray& GetProperties() const;
 
     /**
         Returns the array of variants implementing the properties.
     */
-    //wxRichTextVariantArray& GetProperties(); // TODO: handle Array
+    wxRichTextVariantArray& GetProperties();
 
     /**
         Sets the array of variants.
     */
-    //void SetProperties(const wxRichTextVariantArray& props); // TODO: handle Array
+    void SetProperties(const wxRichTextVariantArray& props);
 
     /**
         Returns all the property names.
@@ -1729,6 +1769,25 @@ protected:
 
     //DECLARE_DYNAMIC_CLASS(wxRichTextFontTable)
 };
+
+//WX_DECLARE_USER_EXPORTED_OBJARRAY(wxRichTextRange, wxRichTextRangeArray, WXDLLIMPEXP_RICHTEXT);
+class %delete wxRichTextRangeArray
+{
+    wxRichTextRangeArray();
+    wxRichTextRangeArray(const wxRichTextRangeArray& array);
+
+    void Add(const wxRichTextRange& item);
+    void Clear();
+    int  GetCount() const;
+    void Insert(const wxRichTextRange& item, int nIndex);
+    bool IsEmpty();
+    wxRichTextRange Item(size_t nIndex) const;
+    void RemoveAt(size_t nIndex);
+};
+
+//#define wxRICHTEXT_ALL  wxRichTextRange(-2, -2)
+//#define wxRICHTEXT_NONE  wxRichTextRange(-1, -1)
+//#define wxRICHTEXT_NO_SELECTION wxRichTextRange(-2, -2)
 
 /**
     @class wxRichTextRange
@@ -1920,7 +1979,7 @@ public:
     /**
         Sets the selections from an array of ranges and a container object.
     */
-    //void Set(const wxRichTextRangeArray& ranges, wxRichTextParagraphLayoutBox* container);  // TODO: handle Array
+    void Set(const wxRichTextRangeArray& ranges, wxRichTextParagraphLayoutBox* container);
 
     /**
         Copies from @a sel.
@@ -1945,17 +2004,18 @@ public:
     /**
         Returns the selection ranges.
     */
-    //wxRichTextRangeArray& GetRanges();  // TODO: handle Array
+    wxRichTextRangeArray& GetRanges();
 
     /**
         Returns the selection ranges.
     */
-    //const wxRichTextRangeArray& GetRanges() const;  // TODO: handle Array
+    // wxLua: we do not need the const version
+    //const wxRichTextRangeArray& GetRanges() const;
 
     /**
         Sets the selection ranges.
     */
-    //void SetRanges(const wxRichTextRangeArray& ranges);  // TODO: handle Array
+    void SetRanges(const wxRichTextRangeArray& ranges);
 
     /**
         Returns the number of ranges in the selection.
@@ -1997,7 +2057,7 @@ public:
         Returns the selection appropriate to the specified object, if any; returns an empty array if none
         at the level of the object's container.
     */
-    //wxRichTextRangeArray GetSelectionForObject(wxRichTextObject* obj) const;  // TODO: handle Array
+    wxRichTextRangeArray GetSelectionForObject(wxRichTextObject* obj) const;
 
     /**
         Returns @true if the given position is within the selection.
@@ -2013,14 +2073,14 @@ public:
     /**
         Returns @true if the given position is within the selection range.
     */
-    //static bool WithinSelection(long pos, const wxRichTextRangeArray& ranges); // TODO: handle Array
+    static bool WithinSelection(long pos, const wxRichTextRangeArray& ranges);
 
     /**
         Returns @true if the given range is within the selection range.
     */
-    //static bool WithinSelection(const wxRichTextRange& range, const wxRichTextRangeArray& ranges);  // TODO: handle Array
+    static bool WithinSelection(const wxRichTextRange& range, const wxRichTextRangeArray& ranges);
 
-    //wxRichTextRangeArray            m_ranges;  // TODO: handle Array
+    wxRichTextRangeArray            m_ranges;
     wxRichTextParagraphLayoutBox*   m_container;
 };
 
@@ -2078,7 +2138,7 @@ public:
         For example, individual characters within a text object may require special highlighting.
         The function is passed the count returned by GetVirtualSubobjectAttributesCount.
     */
-    //int GetVirtualSubobjectAttributes(wxRichTextObject* obj, wxArrayInt& positions, wxRichTextAttrArray& attributes) const;  // TODO: handle Array
+    int GetVirtualSubobjectAttributes(wxRichTextObject* obj, wxArrayInt& positions, wxRichTextAttrArray& attributes) const;
 
     /**
         Do we have virtual text for this object? Virtual text allows an application
@@ -5552,7 +5612,35 @@ protected:
  */
 
 //WX_DEFINE_ARRAY_PTR(wxRichTextObject*, wxRichTextObjectPtrArray);
+class %delete wxRichTextObjectPtrArray
+{
+    wxRichTextObjectPtrArray();
+    wxRichTextObjectPtrArray(const wxRichTextObjectPtrArray& array);
+
+    void Add(wxRichTextObject* item);
+    void Clear();
+    int  GetCount() const;
+    void Insert(wxRichTextObject* item, int nIndex);
+    bool IsEmpty();
+    wxRichTextObject* Item(size_t nIndex) const;
+    void RemoveAt(size_t nIndex);
+};
+
 //WX_DECLARE_USER_EXPORTED_OBJARRAY(wxRichTextObjectPtrArray, wxRichTextObjectPtrArrayArray, WXDLLIMPEXP_RICHTEXT);
+class %delete wxRichTextObjectPtrArrayArray
+{
+    wxRichTextObjectPtrArrayArray();
+    wxRichTextObjectPtrArrayArray(const wxRichTextObjectPtrArrayArray& array);
+
+    void Add(const wxRichTextObjectPtrArray& item);
+    void Clear();
+    int  GetCount() const;
+    void Insert(const wxRichTextObjectPtrArray& item, int nIndex);
+    bool IsEmpty();
+    wxRichTextObjectPtrArray Item(size_t nIndex) const;
+    void RemoveAt(size_t nIndex);
+};
+
 
 class %delete wxRichTextTable: public wxRichTextBox
 {
@@ -5630,12 +5718,13 @@ public:
     /**
         Returns the cells array.
     */
-    //const wxRichTextObjectPtrArrayArray& GetCells() const;  // TODO: handle Array
+    // wxLua: we do not need the const version
+    //const wxRichTextObjectPtrArrayArray& GetCells() const;
 
     /**
         Returns the cells array.
     */
-    //wxRichTextObjectPtrArrayArray& GetCells();  // TODO: handle Array
+    wxRichTextObjectPtrArrayArray& GetCells();
 
     /**
         Returns the row count.
@@ -5741,7 +5830,7 @@ protected:
     // We'll be overriding much wxRichTextParagraphLayoutBox functionality so this
     // may not be such a problem. Perhaps the table should derive from a different
     // class?
-    //wxRichTextObjectPtrArrayArray   m_cells;
+    wxRichTextObjectPtrArrayArray   m_cells;
 };
 
 /** @class wxRichTextTableBlock
@@ -6385,7 +6474,7 @@ public:
         For example, individual characters within a text object may require special highlighting.
         Returns the number of virtual attributes found.
     */
-    //virtual int GetVirtualSubobjectAttributes(wxRichTextObject* obj, wxArrayInt& positions, wxRichTextAttrArray& attributes) const;  // TODO: handle Array
+    virtual int GetVirtualSubobjectAttributes(wxRichTextObject* obj, wxArrayInt& positions, wxRichTextAttrArray& attributes) const;
 
     /**
         Do we have virtual text for this object? Virtual text allows an application
@@ -6711,12 +6800,13 @@ public:
     /**
         Returns the array of objects.
     */
-    //wxRichTextObjectPtrArray& GetObjects();  // TODO: handle Array
+    wxRichTextObjectPtrArray& GetObjects();
 
     /**
         Returns the array of objects.
     */
-    //const wxRichTextObjectPtrArray& GetObjects() const;  // TODO: handle Array
+    // wxLua: we do not need the const version
+    //const wxRichTextObjectPtrArray& GetObjects() const;
 
     /**
         Returns the array of labels.
@@ -6733,7 +6823,7 @@ public:
     */
     int GetCount() const;
 
-    //wxRichTextObjectPtrArray    m_objects;
+    wxRichTextObjectPtrArray    m_objects;
     wxArrayString               m_labels;
 };
 

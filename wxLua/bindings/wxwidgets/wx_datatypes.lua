@@ -4888,6 +4888,12 @@ wx_dataTypeTable =
     Name = "wxRichTextAttr",
     ValueType = "class",
   },
+  wxRichTextAttrArray = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextAttrArray",
+    ValueType = "class",
+  },
   wxRichTextBox = {
     BaseClasses = {
       [1] = "wxRichTextParagraphLayoutBox",
@@ -5197,6 +5203,18 @@ wx_dataTypeTable =
     Name = "wxRichTextObjectPropertiesDialog",
     ValueType = "class",
   },
+  wxRichTextObjectPtrArray = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextObjectPtrArray",
+    ValueType = "class",
+  },
+  wxRichTextObjectPtrArrayArray = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextObjectPtrArrayArray",
+    ValueType = "class",
+  },
   wxRichTextOddEvenPage = {
     Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
     IsNumber = true,
@@ -5285,6 +5303,18 @@ wx_dataTypeTable =
     Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
     IsNumber = false,
     Name = "wxRichTextRange",
+    ValueType = "class",
+  },
+  wxRichTextRangeArray = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextRangeArray",
+    ValueType = "class",
+  },
+  wxRichTextRectArray = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextRectArray",
     ValueType = "class",
   },
   wxRichTextRenderer = {
@@ -5394,6 +5424,12 @@ wx_dataTypeTable =
     Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
     IsNumber = false,
     Name = "wxRichTextTableBlock",
+    ValueType = "class",
+  },
+  wxRichTextVariantArray = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextVariantArray",
     ValueType = "class",
   },
   wxRichTextXMLHandler = {
