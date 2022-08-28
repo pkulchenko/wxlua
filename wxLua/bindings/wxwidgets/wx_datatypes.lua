@@ -5058,6 +5058,18 @@ wx_dataTypeTable =
     Name = "wxRichTextFieldType",
     ValueType = "class",
   },
+  wxRichTextFieldTypeHashMap = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextFieldTypeHashMap",
+    ValueType = "class",
+  },
+  ["wxRichTextFieldTypeHashMap::iterator"] = {
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextFieldTypeHashMap::iterator",
+    ValueType = "class",
+  },
   wxRichTextFieldTypeStandard = {
     BaseClasses = {
       [1] = "wxRichTextFieldType",
@@ -5170,6 +5182,15 @@ wx_dataTypeTable =
     Name = "wxRichTextLine",
     ValueType = "class",
   },
+  wxRichTextLineList = {
+    BaseClasses = {
+      [1] = "wxList",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextLineList",
+    ValueType = "class",
+  },
   wxRichTextListStyleDefinition = {
     BaseClasses = {
       [1] = "wxRichTextParagraphStyleDefinition",
@@ -5192,6 +5213,15 @@ wx_dataTypeTable =
     Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
     IsNumber = false,
     Name = "wxRichTextObjectAddress",
+    ValueType = "class",
+  },
+  wxRichTextObjectList = {
+    BaseClasses = {
+      [1] = "wxList",
+    },
+    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    IsNumber = false,
+    Name = "wxRichTextObjectList",
     ValueType = "class",
   },
   wxRichTextObjectPropertiesDialog = {

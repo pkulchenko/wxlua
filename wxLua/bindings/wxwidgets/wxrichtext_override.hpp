@@ -9,6 +9,28 @@
 // Overrides for wxrichtext_richtext.i
 // ----------------------------------------------------------------------------
 
+%override wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjects
+// C++: bool GetFloatingObjects(wxRichTextObjectList& objects) const;
+// Lua: %override [bool, wxRichTextObjectList]GetFloatingObjects();
+static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjects(lua_State *L)
+{
+    // get this
+    wxRichTextParagraphLayoutBox * self = (wxRichTextParagraphLayoutBox *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextParagraphLayoutBox);
+    // allocate a new object
+    wxRichTextObjectList *objects = new wxRichTextObjectList();
+    // call GetFloatingObjects
+    bool returns = (self->GetFloatingObjects(*objects));
+    // push the result flag
+    lua_pushboolean(L, returns);
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, objects, wxluatype_wxRichTextObjectList);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, objects, wxluatype_wxRichTextObjectList);
+
+    return 2;
+}
+%end
+
 %override wxLua_wxRichTextParagraphLayoutBox_GetStyle
 // C++: bool GetStyle(long position, wxRichTextAttr& style);
 // Lua: %override [bool, wxRichTextAttr] GetStyle(long position)
@@ -78,6 +100,56 @@ static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetUncombinedStyle(lua_Sta
     wxluaT_pushuserdatatype(L, stylep, wxluatype_wxRichTextAttr);
 
     return 2;
+}
+%end
+
+%override wxLua_wxRichTextFieldTypeHashMap_iterator_Get_first
+//  For implementation of HashMap related methods, see wxImageHistogram in wxcore_override.hpp.i
+//     wxString first;
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_iterator_Get_first(lua_State *L)
+{
+    // get this
+    wxRichTextFieldTypeHashMap::iterator *self = (wxRichTextFieldTypeHashMap::iterator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextFieldTypeHashMap_iterator);
+    // push the result string
+    wxlua_pushwxString(L, (*self)->first); // *** need to cast self to object from pointer
+    // return the number of values
+    return 1;
+}
+%end
+
+%override wxLua_wxRichTextFieldTypeHashMap_iterator_Get_second
+//     wxRichTextFieldType *second;
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_iterator_Get_second(lua_State *L)
+{
+    // get this
+    wxRichTextFieldTypeHashMap::iterator *self = (wxRichTextFieldTypeHashMap::iterator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextFieldTypeHashMap_iterator);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, (*self)->second, wxluatype_wxRichTextFieldType); // *** need to cast self to object from pointer
+    // return the number of values
+    return 1;
+}
+%end
+
+%override wxLua_wxRichTextFieldTypeHashMap_iterator_Set_first
+//     wxString first;
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_iterator_Set_first(lua_State *L)
+{
+    wxlua_argerrormsg(L, wxT("You cannot set the first element of a wxHashMap. do not use wxRichTextFieldTypeHashMap::iterator::SetFirst()."));
+    return 0;
+}
+%end
+
+%override wxLua_wxRichTextFieldTypeHashMap_iterator_Set_second
+//     wxRichTextFieldType *second;
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_iterator_Set_second(lua_State *L)
+{
+    // get the data type value
+    wxRichTextFieldType* val = (wxRichTextFieldType*)wxluaT_getuserdatatype(L, 2, wxluatype_wxRichTextFieldType);
+    // get this
+    wxRichTextFieldTypeHashMap::iterator *self = (wxRichTextFieldTypeHashMap::iterator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextFieldTypeHashMap_iterator);
+    (*self)->second = val; // *** need to cast self to object from pointer
+    // return the number of values
+    return 0;
 }
 %end
 

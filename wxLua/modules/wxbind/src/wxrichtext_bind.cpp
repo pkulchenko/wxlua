@@ -11573,6 +11573,32 @@ int wxRichTextObject_methodCount = sizeof(wxRichTextObject_methods)/sizeof(wxLua
 
 #if wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
 // ---------------------------------------------------------------------------
+// Bind class wxRichTextObjectList
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxRichTextObjectList'
+int wxluatype_wxRichTextObjectList = WXLUA_TUNKNOWN;
+
+
+
+void wxLua_wxRichTextObjectList_delete_function(void** p)
+{
+    wxRichTextObjectList* o = (wxRichTextObjectList*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxRichTextObjectList_methods[] = {
+    { 0, 0, 0, 0 },
+};
+
+int wxRichTextObjectList_methodCount = sizeof(wxRichTextObjectList_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
+
+
+#if wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
+// ---------------------------------------------------------------------------
 // Bind class wxRichTextCompositeObject
 // ---------------------------------------------------------------------------
 
@@ -11802,6 +11828,22 @@ if ((double)(lua_Integer)returns == (double)returns) {
 {
     lua_pushnumber(L, returns);
 }
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextCompositeObject_GetChildren[] = { &wxluatype_wxRichTextCompositeObject, NULL };
+static int LUACALL wxLua_wxRichTextCompositeObject_GetChildren(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextCompositeObject_GetChildren[1] = {{ wxLua_wxRichTextCompositeObject_GetChildren, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextCompositeObject_GetChildren }};
+//     wxRichTextObjectList& GetChildren();
+static int LUACALL wxLua_wxRichTextCompositeObject_GetChildren(lua_State *L)
+{
+    // get this
+    wxRichTextCompositeObject * self = (wxRichTextCompositeObject *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextCompositeObject);
+    // call GetChildren
+    wxRichTextObjectList* returns = (wxRichTextObjectList*)&self->GetChildren();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxRichTextObjectList);
 
     return 1;
 }
@@ -12084,6 +12126,7 @@ wxLuaBindMethod wxRichTextCompositeObject_methods[] = {
     { "GetChild", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextCompositeObject_GetChild, 1, NULL },
     { "GetChildAtPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextCompositeObject_GetChildAtPosition, 1, NULL },
     { "GetChildCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextCompositeObject_GetChildCount, 1, NULL },
+    { "GetChildren", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextCompositeObject_GetChildren, 1, NULL },
 
 #if (((wxLUA_USE_wxArrayInt) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
     { "GetRangeSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextCompositeObject_GetRangeSize, 1, NULL },
@@ -12663,6 +12706,31 @@ if ((double)(lua_Integer)returns == (double)returns) {
 
     return 1;
 }
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjects[] = { &wxluatype_wxRichTextParagraphLayoutBox, &wxluatype_wxRichTextObjectList, NULL };
+static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjects(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjects[1] = {{ wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjects, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjects }};
+// %override wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjects
+// C++: bool GetFloatingObjects(wxRichTextObjectList& objects) const;
+// Lua: %override [bool, wxRichTextObjectList]GetFloatingObjects();
+static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjects(lua_State *L)
+{
+    // get this
+    wxRichTextParagraphLayoutBox * self = (wxRichTextParagraphLayoutBox *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextParagraphLayoutBox);
+    // allocate a new object
+    wxRichTextObjectList *objects = new wxRichTextObjectList();
+    // call GetFloatingObjects
+    bool returns = (self->GetFloatingObjects(*objects));
+    // push the result flag
+    lua_pushboolean(L, returns);
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, objects, wxluatype_wxRichTextObjectList);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, objects, wxluatype_wxRichTextObjectList);
+
+    return 2;
+}
+
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetInvalidRange[] = { &wxluatype_wxRichTextParagraphLayoutBox, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetInvalidRange(lua_State *L);
@@ -14264,6 +14332,7 @@ wxLuaBindMethod wxRichTextParagraphLayoutBox_methods[] = {
     { "GetDefaultStyle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetDefaultStyle, 1, NULL },
     { "GetFloatCollector", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetFloatCollector, 1, NULL },
     { "GetFloatingObjectCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjectCount, 1, NULL },
+    { "GetFloatingObjects", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjects, 1, NULL },
     { "GetInvalidRange", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetInvalidRange, 1, NULL },
     { "GetLeafObjectAtPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetLeafObjectAtPosition, 1, NULL },
     { "GetLineAtPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetLineAtPosition, 1, NULL },
@@ -15363,6 +15432,347 @@ wxLuaBindMethod wxRichTextFieldType_methods[] = {
 };
 
 int wxRichTextFieldType_methodCount = sizeof(wxRichTextFieldType_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
+
+
+#if wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
+// ---------------------------------------------------------------------------
+// Bind class wxRichTextFieldTypeHashMap::iterator
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxRichTextFieldTypeHashMap::iterator'
+int wxluatype_wxRichTextFieldTypeHashMap_iterator = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_iterator_Get_first[] = { &wxluatype_wxRichTextFieldTypeHashMap_iterator, NULL };
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_iterator_Get_first(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_Get_first[1] = {{ wxLua_wxRichTextFieldTypeHashMap_iterator_Get_first, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_iterator_Get_first }};
+// %override wxLua_wxRichTextFieldTypeHashMap_iterator_Get_first
+//  For implementation of HashMap related methods, see wxImageHistogram in wxcore_override.hpp.i
+//     wxString first;
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_iterator_Get_first(lua_State *L)
+{
+    // get this
+    wxRichTextFieldTypeHashMap::iterator *self = (wxRichTextFieldTypeHashMap::iterator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextFieldTypeHashMap_iterator);
+    // push the result string
+    wxlua_pushwxString(L, (*self)->first); // *** need to cast self to object from pointer
+    // return the number of values
+    return 1;
+}
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_iterator_Get_second[] = { &wxluatype_wxRichTextFieldTypeHashMap_iterator, NULL };
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_iterator_Get_second(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_Get_second[1] = {{ wxLua_wxRichTextFieldTypeHashMap_iterator_Get_second, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_iterator_Get_second }};
+// %override wxLua_wxRichTextFieldTypeHashMap_iterator_Get_second
+//     wxRichTextFieldType *second;
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_iterator_Get_second(lua_State *L)
+{
+    // get this
+    wxRichTextFieldTypeHashMap::iterator *self = (wxRichTextFieldTypeHashMap::iterator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextFieldTypeHashMap_iterator);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, (*self)->second, wxluatype_wxRichTextFieldType); // *** need to cast self to object from pointer
+    // return the number of values
+    return 1;
+}
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_iterator_Set_first[] = { &wxluatype_wxRichTextFieldTypeHashMap_iterator, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_iterator_Set_first(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_Set_first[1] = {{ wxLua_wxRichTextFieldTypeHashMap_iterator_Set_first, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_iterator_Set_first }};
+// %override wxLua_wxRichTextFieldTypeHashMap_iterator_Set_first
+//     wxString first;
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_iterator_Set_first(lua_State *L)
+{
+    wxlua_argerrormsg(L, wxT("You cannot set the first element of a wxHashMap. do not use wxRichTextFieldTypeHashMap::iterator::SetFirst()."));
+    return 0;
+}
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_iterator_Set_second[] = { &wxluatype_wxRichTextFieldTypeHashMap_iterator, &wxluatype_wxRichTextFieldType, NULL };
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_iterator_Set_second(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_Set_second[1] = {{ wxLua_wxRichTextFieldTypeHashMap_iterator_Set_second, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_iterator_Set_second }};
+// %override wxLua_wxRichTextFieldTypeHashMap_iterator_Set_second
+//     wxRichTextFieldType *second;
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_iterator_Set_second(lua_State *L)
+{
+    // get the data type value
+    wxRichTextFieldType* val = (wxRichTextFieldType*)wxluaT_getuserdatatype(L, 2, wxluatype_wxRichTextFieldType);
+    // get this
+    wxRichTextFieldTypeHashMap::iterator *self = (wxRichTextFieldTypeHashMap::iterator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextFieldTypeHashMap_iterator);
+    (*self)->second = val; // *** need to cast self to object from pointer
+    // return the number of values
+    return 0;
+}
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_iterator_delete[] = { &wxluatype_wxRichTextFieldTypeHashMap_iterator, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_iterator_delete }};
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_iterator_op_eq[] = { &wxluatype_wxRichTextFieldTypeHashMap_iterator, &wxluatype_wxRichTextFieldTypeHashMap_iterator, NULL };
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_iterator_op_eq(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_op_eq[1] = {{ wxLua_wxRichTextFieldTypeHashMap_iterator_op_eq, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_iterator_op_eq }};
+//     bool operator==(const wxRichTextFieldTypeHashMap::iterator& other) const;
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_iterator_op_eq(lua_State *L)
+{
+    // const wxRichTextFieldTypeHashMap::iterator other
+    const wxRichTextFieldTypeHashMap::iterator * other = (const wxRichTextFieldTypeHashMap::iterator *)wxluaT_getuserdatatype(L, 2, wxluatype_wxRichTextFieldTypeHashMap_iterator);
+    // get this
+    wxRichTextFieldTypeHashMap::iterator * self = (wxRichTextFieldTypeHashMap::iterator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextFieldTypeHashMap_iterator);
+    // call op_eq
+    bool returns = ((*self)==(*other));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_iterator_op_inc[] = { &wxluatype_wxRichTextFieldTypeHashMap_iterator, NULL };
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_iterator_op_inc(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_op_inc[1] = {{ wxLua_wxRichTextFieldTypeHashMap_iterator_op_inc, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_iterator_op_inc }};
+//     void operator++(); // it's best if we don't return the iterator
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_iterator_op_inc(lua_State *L)
+{
+    // get this
+    wxRichTextFieldTypeHashMap::iterator * self = (wxRichTextFieldTypeHashMap::iterator *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextFieldTypeHashMap_iterator);
+    // call op_inc
+    (*self)++;
+
+    return 0;
+}
+
+
+
+
+void wxLua_wxRichTextFieldTypeHashMap_iterator_delete_function(void** p)
+{
+    wxRichTextFieldTypeHashMap::iterator* o = (wxRichTextFieldTypeHashMap::iterator*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxRichTextFieldTypeHashMap_iterator_methods[] = {
+    // %member    { "Get_first", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_Get_first, 1, NULL },
+    // %member    { "Get_second", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_Get_second, 1, NULL },
+    // %member    { "Set_first", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_Set_first, 1, NULL },
+    // %member    { "Set_second", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_Set_second, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_delete, 1, NULL },
+    { "first", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_Set_first, 1, NULL },
+    { "first", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_Get_first, 1, NULL },
+    { "op_eq", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_op_eq, 1, NULL },
+    { "op_inc", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_op_inc, 1, NULL },
+    { "second", WXLUAMETHOD_SETPROP, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_Set_second, 1, NULL },
+    { "second", WXLUAMETHOD_GETPROP, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_iterator_Get_second, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxRichTextFieldTypeHashMap_iterator_methodCount = sizeof(wxRichTextFieldTypeHashMap_iterator_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
+
+
+#if wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
+// ---------------------------------------------------------------------------
+// Bind class wxRichTextFieldTypeHashMap
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxRichTextFieldTypeHashMap'
+int wxluatype_wxRichTextFieldTypeHashMap = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_Begin[] = { &wxluatype_wxRichTextFieldTypeHashMap, NULL };
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_Begin(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_Begin[1] = {{ wxLua_wxRichTextFieldTypeHashMap_Begin, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_Begin }};
+//     %rename Begin wxRichTextFieldTypeHashMap::iterator begin() const; // not const iterator
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_Begin(lua_State *L)
+{
+    // get this
+    wxRichTextFieldTypeHashMap * self = (wxRichTextFieldTypeHashMap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextFieldTypeHashMap);
+    // call begin
+    // allocate a new object using the copy constructor
+    wxRichTextFieldTypeHashMap::iterator* returns = new wxRichTextFieldTypeHashMap::iterator(self->begin());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxRichTextFieldTypeHashMap_iterator);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxRichTextFieldTypeHashMap_iterator);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_Clear[] = { &wxluatype_wxRichTextFieldTypeHashMap, NULL };
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_Clear(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_Clear[1] = {{ wxLua_wxRichTextFieldTypeHashMap_Clear, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_Clear }};
+//     %rename Clear void clear();
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_Clear(lua_State *L)
+{
+    // get this
+    wxRichTextFieldTypeHashMap * self = (wxRichTextFieldTypeHashMap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextFieldTypeHashMap);
+    // call clear
+    self->clear();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_Count[] = { &wxluatype_wxRichTextFieldTypeHashMap, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_Count(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_Count[1] = {{ wxLua_wxRichTextFieldTypeHashMap_Count, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_Count }};
+//     %rename Count size_t count(wxString &key) const;
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_Count(lua_State *L)
+{
+    // wxString key
+    wxString key = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxRichTextFieldTypeHashMap * self = (wxRichTextFieldTypeHashMap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextFieldTypeHashMap);
+    // call count
+    size_t returns = (self->count(key));
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_Empty[] = { &wxluatype_wxRichTextFieldTypeHashMap, NULL };
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_Empty(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_Empty[1] = {{ wxLua_wxRichTextFieldTypeHashMap_Empty, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_Empty }};
+//     %rename Empty bool empty() const;
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_Empty(lua_State *L)
+{
+    // get this
+    wxRichTextFieldTypeHashMap * self = (wxRichTextFieldTypeHashMap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextFieldTypeHashMap);
+    // call empty
+    bool returns = (self->empty());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_End[] = { &wxluatype_wxRichTextFieldTypeHashMap, NULL };
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_End(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_End[1] = {{ wxLua_wxRichTextFieldTypeHashMap_End, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_End }};
+//     %rename End wxRichTextFieldTypeHashMap::iterator end() const; // not const iterator
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_End(lua_State *L)
+{
+    // get this
+    wxRichTextFieldTypeHashMap * self = (wxRichTextFieldTypeHashMap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextFieldTypeHashMap);
+    // call end
+    // allocate a new object using the copy constructor
+    wxRichTextFieldTypeHashMap::iterator* returns = new wxRichTextFieldTypeHashMap::iterator(self->end());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxRichTextFieldTypeHashMap_iterator);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxRichTextFieldTypeHashMap_iterator);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_Erase[] = { &wxluatype_wxRichTextFieldTypeHashMap, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_Erase(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_Erase[1] = {{ wxLua_wxRichTextFieldTypeHashMap_Erase, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_Erase }};
+//     %rename Erase size_t erase(wxString &key);
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_Erase(lua_State *L)
+{
+    // wxString key
+    wxString key = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxRichTextFieldTypeHashMap * self = (wxRichTextFieldTypeHashMap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextFieldTypeHashMap);
+    // call erase
+    size_t returns = (self->erase(key));
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_Find[] = { &wxluatype_wxRichTextFieldTypeHashMap, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_Find(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_Find[1] = {{ wxLua_wxRichTextFieldTypeHashMap_Find, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_Find }};
+//     %rename Find wxRichTextFieldTypeHashMap::iterator find(wxString &key);
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_Find(lua_State *L)
+{
+    // wxString key
+    wxString key = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxRichTextFieldTypeHashMap * self = (wxRichTextFieldTypeHashMap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextFieldTypeHashMap);
+    // call find
+    // allocate a new object using the copy constructor
+    wxRichTextFieldTypeHashMap::iterator* returns = new wxRichTextFieldTypeHashMap::iterator(self->find(key));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxRichTextFieldTypeHashMap_iterator);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxRichTextFieldTypeHashMap_iterator);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_Size[] = { &wxluatype_wxRichTextFieldTypeHashMap, NULL };
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_Size(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_Size[1] = {{ wxLua_wxRichTextFieldTypeHashMap_Size, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_Size }};
+//     %rename Size size_t size() const;
+static int LUACALL wxLua_wxRichTextFieldTypeHashMap_Size(lua_State *L)
+{
+    // get this
+    wxRichTextFieldTypeHashMap * self = (wxRichTextFieldTypeHashMap *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextFieldTypeHashMap);
+    // call size
+    size_t returns = (self->size());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_delete[] = { &wxluatype_wxRichTextFieldTypeHashMap, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxRichTextFieldTypeHashMap_delete }};
+
+
+
+
+void wxLua_wxRichTextFieldTypeHashMap_delete_function(void** p)
+{
+    wxRichTextFieldTypeHashMap* o = (wxRichTextFieldTypeHashMap*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxRichTextFieldTypeHashMap_methods[] = {
+    { "Begin", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_Begin, 1, NULL },
+    { "Clear", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_Clear, 1, NULL },
+    { "Count", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_Count, 1, NULL },
+    { "Empty", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_Empty, 1, NULL },
+    { "End", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_End, 1, NULL },
+    { "Erase", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_Erase, 1, NULL },
+    { "Find", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_Find, 1, NULL },
+    { "Size", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_Size, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxRichTextFieldTypeHashMap_delete, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxRichTextFieldTypeHashMap_methodCount = sizeof(wxRichTextFieldTypeHashMap_methods)/sizeof(wxLuaBindMethod) - 1;
 
 #endif  // wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
 
@@ -16738,6 +17148,32 @@ int wxRichTextLine_methodCount = sizeof(wxRichTextLine_methods)/sizeof(wxLuaBind
 
 #if wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
 // ---------------------------------------------------------------------------
+// Bind class wxRichTextLineList
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxRichTextLineList'
+int wxluatype_wxRichTextLineList = WXLUA_TUNKNOWN;
+
+
+
+void wxLua_wxRichTextLineList_delete_function(void** p)
+{
+    wxRichTextLineList* o = (wxRichTextLineList*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxRichTextLineList_methods[] = {
+    { 0, 0, 0, 0 },
+};
+
+int wxRichTextLineList_methodCount = sizeof(wxRichTextLineList_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
+
+
+#if wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
+// ---------------------------------------------------------------------------
 // Bind class wxRichTextParagraph
 // ---------------------------------------------------------------------------
 
@@ -17123,6 +17559,22 @@ if ((double)(lua_Integer)returns == (double)returns) {
 {
     lua_pushnumber(L, returns);
 }
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraph_GetLines[] = { &wxluatype_wxRichTextParagraph, NULL };
+static int LUACALL wxLua_wxRichTextParagraph_GetLines(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextParagraph_GetLines[1] = {{ wxLua_wxRichTextParagraph_GetLines, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextParagraph_GetLines }};
+//     wxRichTextLineList& GetLines();
+static int LUACALL wxLua_wxRichTextParagraph_GetLines(lua_State *L)
+{
+    // get this
+    wxRichTextParagraph * self = (wxRichTextParagraph *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextParagraph);
+    // call GetLines
+    wxRichTextLineList* returns = (wxRichTextLineList*)&self->GetLines();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxRichTextLineList);
 
     return 1;
 }
@@ -17513,6 +17965,7 @@ wxLuaBindMethod wxRichTextParagraph_methods[] = {
 #endif // (wxLUA_USE_wxArrayInt) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
     { "GetFirstLineBreakPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraph_GetFirstLineBreakPosition, 1, NULL },
+    { "GetLines", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraph_GetLines, 1, NULL },
 
 #if (((wxLUA_USE_wxArrayInt) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
     { "GetRangeSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraph_GetRangeSize, 1, NULL },
@@ -20951,6 +21404,19 @@ static int LUACALL wxLua_wxRichTextBuffer_GetExtWildcard(lua_State *L)
 
 #endif // (wxLUA_USE_wxArrayInt) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
+static int LUACALL wxLua_wxRichTextBuffer_GetFieldTypes(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextBuffer_GetFieldTypes[1] = {{ wxLua_wxRichTextBuffer_GetFieldTypes, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
+//     static wxRichTextFieldTypeHashMap& GetFieldTypes();
+static int LUACALL wxLua_wxRichTextBuffer_GetFieldTypes(lua_State *L)
+{
+    // call GetFieldTypes
+    wxRichTextFieldTypeHashMap* returns = (wxRichTextFieldTypeHashMap*)&wxRichTextBuffer::GetFieldTypes();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxRichTextFieldTypeHashMap);
+
+    return 1;
+}
+
 static int LUACALL wxLua_wxRichTextBuffer_GetFloatingLayoutMode(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextBuffer_GetFloatingLayoutMode[1] = {{ wxLua_wxRichTextBuffer_GetFloatingLayoutMode, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
 //     static bool GetFloatingLayoutMode();
@@ -22086,6 +22552,7 @@ wxLuaBindMethod wxRichTextBuffer_methods[] = {
     { "GetExtWildcard", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxRichTextBuffer_GetExtWildcard, 1, NULL },
 #endif // (wxLUA_USE_wxArrayInt) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
+    { "GetFieldTypes", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxRichTextBuffer_GetFieldTypes, 1, NULL },
     { "GetFloatingLayoutMode", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxRichTextBuffer_GetFloatingLayoutMode, 1, NULL },
     { "GetFontScale", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextBuffer_GetFontScale, 1, NULL },
 
@@ -47583,6 +48050,7 @@ static const char* wxluaclassname_wxDialog = "wxDialog";
 static const char* wxluaclassname_wxDropSource = "wxDropSource";
 static const char* wxluaclassname_wxDropTarget = "wxDropTarget";
 static const char* wxluaclassname_wxHtmlListBox = "wxHtmlListBox";
+static const char* wxluaclassname_wxList = "wxList";
 static const char* wxluaclassname_wxNotifyEvent = "wxNotifyEvent";
 static const char* wxluaclassname_wxObject = "wxObject";
 static const char* wxluaclassname_wxPrintout = "wxPrintout";
@@ -47606,6 +48074,8 @@ static const char* wxluaclassname_wxRichTextDropTarget = "wxRichTextDropTarget";
 static const char* wxluaclassname_wxRichTextEvent = "wxRichTextEvent";
 static const char* wxluaclassname_wxRichTextField = "wxRichTextField";
 static const char* wxluaclassname_wxRichTextFieldType = "wxRichTextFieldType";
+static const char* wxluaclassname_wxRichTextFieldTypeHashMap = "wxRichTextFieldTypeHashMap";
+static const char* wxluaclassname_wxRichTextFieldTypeHashMap_iterator = "wxRichTextFieldTypeHashMap_iterator";
 static const char* wxluaclassname_wxRichTextFieldTypeStandard = "wxRichTextFieldTypeStandard";
 static const char* wxluaclassname_wxRichTextFileHandler = "wxRichTextFileHandler";
 static const char* wxluaclassname_wxRichTextFloatCollector = "wxRichTextFloatCollector";
@@ -47617,9 +48087,11 @@ static const char* wxluaclassname_wxRichTextHeaderFooterData = "wxRichTextHeader
 static const char* wxluaclassname_wxRichTextImage = "wxRichTextImage";
 static const char* wxluaclassname_wxRichTextImageBlock = "wxRichTextImageBlock";
 static const char* wxluaclassname_wxRichTextLine = "wxRichTextLine";
+static const char* wxluaclassname_wxRichTextLineList = "wxRichTextLineList";
 static const char* wxluaclassname_wxRichTextListStyleDefinition = "wxRichTextListStyleDefinition";
 static const char* wxluaclassname_wxRichTextObject = "wxRichTextObject";
 static const char* wxluaclassname_wxRichTextObjectAddress = "wxRichTextObjectAddress";
+static const char* wxluaclassname_wxRichTextObjectList = "wxRichTextObjectList";
 static const char* wxluaclassname_wxRichTextObjectPropertiesDialog = "wxRichTextObjectPropertiesDialog";
 static const char* wxluaclassname_wxRichTextObjectPtrArray = "wxRichTextObjectPtrArray";
 static const char* wxluaclassname_wxRichTextObjectPtrArrayArray = "wxRichTextObjectPtrArrayArray";
@@ -47715,10 +48187,14 @@ static const char* wxluabaseclassnames_wxRichTextImage[] = { wxluaclassname_wxRi
 static wxLuaBindClass* wxluabaseclassbinds_wxRichTextImage[] = { NULL };
 static const char* wxluabaseclassnames_wxRichTextImageBlock[] = { wxluaclassname_wxObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxRichTextImageBlock[] = { NULL };
+static const char* wxluabaseclassnames_wxRichTextLineList[] = { wxluaclassname_wxList, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxRichTextLineList[] = { NULL };
 static const char* wxluabaseclassnames_wxRichTextListStyleDefinition[] = { wxluaclassname_wxRichTextParagraphStyleDefinition, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxRichTextListStyleDefinition[] = { NULL };
 static const char* wxluabaseclassnames_wxRichTextObject[] = { wxluaclassname_wxObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxRichTextObject[] = { NULL };
+static const char* wxluabaseclassnames_wxRichTextObjectList[] = { wxluaclassname_wxList, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxRichTextObjectList[] = { NULL };
 static const char* wxluabaseclassnames_wxRichTextObjectPropertiesDialog[] = { wxluaclassname_wxRichTextFormattingDialog, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxRichTextObjectPropertiesDialog[] = { NULL };
 static const char* wxluabaseclassnames_wxRichTextParagraph[] = { wxluaclassname_wxRichTextCompositeObject, NULL };
@@ -47890,6 +48366,12 @@ static wxLuaBindClass* wxluabaseclassbinds_wxSymbolPickerDialog[] = { NULL };
     extern wxLuaBindMethod wxRichTextFieldType_methods[];
     extern int wxRichTextFieldType_methodCount;
     extern void wxLua_wxRichTextFieldType_delete_function(void** p);
+    extern wxLuaBindMethod wxRichTextFieldTypeHashMap_methods[];
+    extern int wxRichTextFieldTypeHashMap_methodCount;
+    extern void wxLua_wxRichTextFieldTypeHashMap_delete_function(void** p);
+    extern wxLuaBindMethod wxRichTextFieldTypeHashMap_iterator_methods[];
+    extern int wxRichTextFieldTypeHashMap_iterator_methodCount;
+    extern void wxLua_wxRichTextFieldTypeHashMap_iterator_delete_function(void** p);
     extern wxLuaBindMethod wxRichTextFieldTypeStandard_methods[];
     extern int wxRichTextFieldTypeStandard_methodCount;
     extern wxLuaBindNumber wxRichTextFieldTypeStandard_enums[];
@@ -47916,6 +48398,9 @@ static wxLuaBindClass* wxluabaseclassbinds_wxSymbolPickerDialog[] = { NULL };
     extern wxLuaBindMethod wxRichTextLine_methods[];
     extern int wxRichTextLine_methodCount;
     extern void wxLua_wxRichTextLine_delete_function(void** p);
+    extern wxLuaBindMethod wxRichTextLineList_methods[];
+    extern int wxRichTextLineList_methodCount;
+    extern void wxLua_wxRichTextLineList_delete_function(void** p);
     extern wxLuaBindMethod wxRichTextListStyleDefinition_methods[];
     extern int wxRichTextListStyleDefinition_methodCount;
     extern void wxLua_wxRichTextListStyleDefinition_delete_function(void** p);
@@ -47925,6 +48410,9 @@ static wxLuaBindClass* wxluabaseclassbinds_wxSymbolPickerDialog[] = { NULL };
     extern wxLuaBindMethod wxRichTextObjectAddress_methods[];
     extern int wxRichTextObjectAddress_methodCount;
     extern void wxLua_wxRichTextObjectAddress_delete_function(void** p);
+    extern wxLuaBindMethod wxRichTextObjectList_methods[];
+    extern int wxRichTextObjectList_methodCount;
+    extern void wxLua_wxRichTextObjectList_delete_function(void** p);
     extern wxLuaBindMethod wxRichTextObjectPtrArray_methods[];
     extern int wxRichTextObjectPtrArray_methodCount;
     extern void wxLua_wxRichTextObjectPtrArray_delete_function(void** p);
@@ -48064,6 +48552,8 @@ wxLuaBindClass* wxLuaGetClassList_wxrichtext(size_t &count)
 #if wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
         { wxluaclassname_wxRichTextField, wxRichTextField_methods, wxRichTextField_methodCount, CLASSINFO(wxRichTextField), &wxluatype_wxRichTextField, wxluabaseclassnames_wxRichTextField, wxluabaseclassbinds_wxRichTextField, NULL, NULL, NULL, 0, &wxLua_wxRichTextField_delete_function, }, 
         { wxluaclassname_wxRichTextFieldType, wxRichTextFieldType_methods, wxRichTextFieldType_methodCount, CLASSINFO(wxRichTextFieldType), &wxluatype_wxRichTextFieldType, wxluabaseclassnames_wxRichTextFieldType, wxluabaseclassbinds_wxRichTextFieldType, NULL, NULL, NULL, 0, &wxLua_wxRichTextFieldType_delete_function, }, 
+        { wxluaclassname_wxRichTextFieldTypeHashMap, wxRichTextFieldTypeHashMap_methods, wxRichTextFieldTypeHashMap_methodCount, NULL, &wxluatype_wxRichTextFieldTypeHashMap, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxRichTextFieldTypeHashMap_delete_function, }, 
+        { wxluaclassname_wxRichTextFieldTypeHashMap_iterator, wxRichTextFieldTypeHashMap_iterator_methods, wxRichTextFieldTypeHashMap_iterator_methodCount, NULL, &wxluatype_wxRichTextFieldTypeHashMap_iterator, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxRichTextFieldTypeHashMap_iterator_delete_function, }, 
         { wxluaclassname_wxRichTextFieldTypeStandard, wxRichTextFieldTypeStandard_methods, wxRichTextFieldTypeStandard_methodCount, CLASSINFO(wxRichTextFieldTypeStandard), &wxluatype_wxRichTextFieldTypeStandard, wxluabaseclassnames_wxRichTextFieldTypeStandard, wxluabaseclassbinds_wxRichTextFieldTypeStandard, NULL, NULL, wxRichTextFieldTypeStandard_enums, wxRichTextFieldTypeStandard_enumCount, &wxLua_wxRichTextFieldTypeStandard_delete_function, }, 
         { wxluaclassname_wxRichTextFileHandler, wxRichTextFileHandler_methods, wxRichTextFileHandler_methodCount, CLASSINFO(wxRichTextFileHandler), &wxluatype_wxRichTextFileHandler, wxluabaseclassnames_wxRichTextFileHandler, wxluabaseclassbinds_wxRichTextFileHandler, NULL, NULL, NULL, 0, &wxLua_wxRichTextFileHandler_delete_function, }, 
         { wxluaclassname_wxRichTextFloatCollector, wxRichTextFloatCollector_methods, wxRichTextFloatCollector_methodCount, NULL, &wxluatype_wxRichTextFloatCollector, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxRichTextFloatCollector_delete_function, }, 
@@ -48081,9 +48571,11 @@ wxLuaBindClass* wxLuaGetClassList_wxrichtext(size_t &count)
         { wxluaclassname_wxRichTextImage, wxRichTextImage_methods, wxRichTextImage_methodCount, CLASSINFO(wxRichTextImage), &wxluatype_wxRichTextImage, wxluabaseclassnames_wxRichTextImage, wxluabaseclassbinds_wxRichTextImage, NULL, NULL, NULL, 0, &wxLua_wxRichTextImage_delete_function, }, 
         { wxluaclassname_wxRichTextImageBlock, wxRichTextImageBlock_methods, wxRichTextImageBlock_methodCount, CLASSINFO(wxRichTextImageBlock), &wxluatype_wxRichTextImageBlock, wxluabaseclassnames_wxRichTextImageBlock, wxluabaseclassbinds_wxRichTextImageBlock, NULL, NULL, NULL, 0, &wxLua_wxRichTextImageBlock_delete_function, }, 
         { wxluaclassname_wxRichTextLine, wxRichTextLine_methods, wxRichTextLine_methodCount, NULL, &wxluatype_wxRichTextLine, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxRichTextLine_delete_function, }, 
+        { wxluaclassname_wxRichTextLineList, wxRichTextLineList_methods, wxRichTextLineList_methodCount, NULL, &wxluatype_wxRichTextLineList, wxluabaseclassnames_wxRichTextLineList, wxluabaseclassbinds_wxRichTextLineList, NULL, NULL, NULL, 0, &wxLua_wxRichTextLineList_delete_function, }, 
         { wxluaclassname_wxRichTextListStyleDefinition, wxRichTextListStyleDefinition_methods, wxRichTextListStyleDefinition_methodCount, CLASSINFO(wxRichTextListStyleDefinition), &wxluatype_wxRichTextListStyleDefinition, wxluabaseclassnames_wxRichTextListStyleDefinition, wxluabaseclassbinds_wxRichTextListStyleDefinition, NULL, NULL, NULL, 0, &wxLua_wxRichTextListStyleDefinition_delete_function, }, 
         { wxluaclassname_wxRichTextObject, wxRichTextObject_methods, wxRichTextObject_methodCount, CLASSINFO(wxRichTextObject), &wxluatype_wxRichTextObject, wxluabaseclassnames_wxRichTextObject, wxluabaseclassbinds_wxRichTextObject, NULL, NULL, NULL, 0, &wxLua_wxRichTextObject_delete_function, }, 
         { wxluaclassname_wxRichTextObjectAddress, wxRichTextObjectAddress_methods, wxRichTextObjectAddress_methodCount, NULL, &wxluatype_wxRichTextObjectAddress, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxRichTextObjectAddress_delete_function, }, 
+        { wxluaclassname_wxRichTextObjectList, wxRichTextObjectList_methods, wxRichTextObjectList_methodCount, NULL, &wxluatype_wxRichTextObjectList, wxluabaseclassnames_wxRichTextObjectList, wxluabaseclassbinds_wxRichTextObjectList, NULL, NULL, NULL, 0, &wxLua_wxRichTextObjectList_delete_function, }, 
 #endif // wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
 
 #if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)

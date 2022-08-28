@@ -2755,6 +2755,11 @@ protected:
     wxRichTextProperties    m_properties;
 };
 
+class wxRichTextObjectList : public wxList
+{
+    // Use the wxList methods, see also wxNode
+};
+
 /**
     @class wxRichTextCompositeObject
 
@@ -2798,11 +2803,12 @@ public:
     /**
         Returns the children.
     */
-    //wxRichTextObjectList& GetChildren();  // TODO: handle List
+    wxRichTextObjectList& GetChildren();
     /**
         Returns the children.
     */
-    //const wxRichTextObjectList& GetChildren() const;  // TODO: handle List
+    // wxLua: we do not need const version
+    //const wxRichTextObjectList& GetChildren() const;
 
     /**
         Returns the number of children.
@@ -3470,7 +3476,9 @@ public:
     /**
         Returns a list of floating objects.
     */
-    //bool GetFloatingObjects(wxRichTextObjectList& objects) const; // TODO: handle List
+    // C++: bool GetFloatingObjects(wxRichTextObjectList& objects) const;
+    // Lua: %override [bool, wxRichTextObjectList]GetFloatingObjects();
+    bool GetFloatingObjects(wxRichTextObjectList& objects) const;
 
 protected:
     wxRichTextCtrl* m_ctrl;
@@ -3738,6 +3746,35 @@ public:
 protected:
 
     wxString  m_name;
+};
+
+//WX_DECLARE_STRING_HASH_MAP(wxRichTextFieldType*, wxRichTextFieldTypeHashMap);
+
+class %delete wxRichTextFieldTypeHashMap::iterator
+{
+    wxString first;
+    wxRichTextFieldType *second;
+
+    // operator used to compare with wxRichTextFieldTypeHashMap::end() iterator
+    bool operator==(const wxRichTextFieldTypeHashMap::iterator& other) const;
+
+    //wxRichTextFieldTypeHashMap::iterator& operator++(); // it just returns *this
+    void operator++(); // it's best if we don't return the iterator
+};
+
+class %delete wxRichTextFieldTypeHashMap
+{
+    // Selected functions from the base wxHashMap class
+    // The method names are capitalized to avoid conflict with the reserved word 'end'.
+    %rename Begin wxRichTextFieldTypeHashMap::iterator begin() const; // not const iterator
+    %rename Clear void clear();
+    %rename Count size_t count(wxString &key) const;
+    %rename Empty bool empty() const;
+    %rename End wxRichTextFieldTypeHashMap::iterator end() const; // not const iterator
+    %rename Erase size_t erase(wxString &key);
+    %rename Find wxRichTextFieldTypeHashMap::iterator find(wxString &key);
+    //%rename Insert Insert_Result insert(wxRichTextFieldType *v);
+    %rename Size size_t size() const;
 };
 
 /**
@@ -4131,6 +4168,11 @@ protected:
 #endif
 };
 
+class wxRichTextLineList : public wxList
+{
+    // Use the wxList methods, see also wxNode
+};
+
 /**
     @class wxRichTextParagraph
 
@@ -4180,7 +4222,7 @@ public:
     /**
         Returns the cached lines.
     */
-    //wxRichTextLineList& GetLines();  // TODO: handle List
+    wxRichTextLineList& GetLines();
 
 // Operations
 
@@ -4727,6 +4769,7 @@ protected:
 
 //class /*WXDLLIMPEXP_FWD_RICHTEXT*/ wxRichTextCommand;
 //class /*WXDLLIMPEXP_FWD_RICHTEXT*/ wxRichTextAction;
+
 
 /**
     @class wxRichTextBuffer
@@ -5391,7 +5434,7 @@ public:
     /**
         Returns the field types.
     */
-    //static wxRichTextFieldTypeHashMap& GetFieldTypes();  // TODO: handle HashMap
+    static wxRichTextFieldTypeHashMap& GetFieldTypes();
 
     /**
         Adds a field type.
