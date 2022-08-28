@@ -6788,6 +6788,24 @@ wx_dataTypeTable =
     Name = "wxValidator",
     ValueType = "class",
   },
+  wxVariant = {
+    BaseClasses = {
+      [1] = "wxObject",
+    },
+    Condition = "wxUSE_VARIANT",
+    IsNumber = false,
+    Name = "wxVariant",
+    ValueType = "class",
+  },
+  wxVariantList = {
+    BaseClasses = {
+      [1] = "wxList",
+    },
+    Condition = "wxUSE_VARIANT",
+    IsNumber = false,
+    Name = "wxVariantList",
+    ValueType = "class",
+  },
   wxVersionInfo = {
     Condition = "wxCHECK_VERSION(2,9,2)",
     IsNumber = false,

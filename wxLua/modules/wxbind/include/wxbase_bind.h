@@ -382,6 +382,11 @@ extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxStringTokenizer;
     extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxTextOutputStream;
 #endif // wxUSE_STREAMS
 
+#if wxUSE_VARIANT
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxVariant;
+    extern WXDLLIMPEXP_DATA_BINDWXBASE(int) wxluatype_wxVariantList;
+#endif // wxUSE_VARIANT
+
 
 
 #endif // __HOOK_WXLUA_wxbase_H__
