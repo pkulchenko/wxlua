@@ -360,3 +360,37 @@ static int LUACALL wxLua_wxRichTextCtrl_GetUncombinedStyle(lua_State *L)
 }
 %end
 
+// ----------------------------------------------------------------------------
+// Overrides for wxrichtext_xml.i
+// ----------------------------------------------------------------------------
+
+%override wxLua_wxRichTextXMLHelper_OutputString
+//     static void OutputString(wxOutputStream& stream, const wxString& str); // , wxMBConv *convMem, wxMBConv *convFile);
+static int LUACALL wxLua_wxRichTextXMLHelper_OutputString(lua_State *L)
+{
+    // const wxString str
+    const wxString str = wxlua_getwxStringtype(L, 2);
+    // wxOutputStream stream
+    wxOutputStream * stream = (wxOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxOutputStream);
+    // call OutputString
+    wxRichTextXMLHelper::OutputString(*stream, str, &wxConvUTF8, &wxConvUTF8);  //  Explicitly designate UTF-8
+
+    return 0;
+}
+%end
+
+%override wxLua_wxRichTextXMLHelper_OutputStringEnt
+//     static void OutputStringEnt(wxOutputStream& stream, const wxString& str); // , wxMBConv *convMem, wxMBConv *convFile);
+static int LUACALL wxLua_wxRichTextXMLHelper_OutputStringEnt(lua_State *L)
+{
+    // const wxString str
+    const wxString str = wxlua_getwxStringtype(L, 2);
+    // wxOutputStream stream
+    wxOutputStream * stream = (wxOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxOutputStream);
+    // call OutputStringEnt
+    wxRichTextXMLHelper::OutputStringEnt(*stream, str, &wxConvUTF8, &wxConvUTF8);  //  Explicitly designate UTF-8
+
+    return 0;
+}
+%end
+

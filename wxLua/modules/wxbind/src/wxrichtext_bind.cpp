@@ -46604,11 +46604,11 @@ static int LUACALL wxLua_wxRichTextXMLHelper_OutputIndentation(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextXMLHelper_OutputString[] = { &wxluatype_wxRichTextXMLHelper, &wxluatype_wxOutputStream, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxRichTextXMLHelper_OutputString(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputString[1] = {{ wxLua_wxRichTextXMLHelper_OutputString, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextXMLHelper_OutputString }};
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextXMLHelper_OutputString1[] = { &wxluatype_wxRichTextXMLHelper, &wxluatype_wxOutputStream, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxRichTextXMLHelper_OutputString1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputString1[1] = {{ wxLua_wxRichTextXMLHelper_OutputString1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextXMLHelper_OutputString1 }};
 //     void OutputString(wxOutputStream& stream, const wxString& str);
-static int LUACALL wxLua_wxRichTextXMLHelper_OutputString(lua_State *L)
+static int LUACALL wxLua_wxRichTextXMLHelper_OutputString1(lua_State *L)
 {
     // const wxString str
     const wxString str = wxlua_getwxStringtype(L, 3);
@@ -46622,11 +46622,29 @@ static int LUACALL wxLua_wxRichTextXMLHelper_OutputString(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextXMLHelper_OutputStringEnt[] = { &wxluatype_wxRichTextXMLHelper, &wxluatype_wxOutputStream, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxRichTextXMLHelper_OutputStringEnt(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputStringEnt[1] = {{ wxLua_wxRichTextXMLHelper_OutputStringEnt, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextXMLHelper_OutputStringEnt }};
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextXMLHelper_OutputString[] = { &wxluatype_wxOutputStream, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxRichTextXMLHelper_OutputString(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputString[1] = {{ wxLua_wxRichTextXMLHelper_OutputString, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 2, 2, s_wxluatypeArray_wxLua_wxRichTextXMLHelper_OutputString }};
+// %override wxLua_wxRichTextXMLHelper_OutputString
+//     static void OutputString(wxOutputStream& stream, const wxString& str); // , wxMBConv *convMem, wxMBConv *convFile);
+static int LUACALL wxLua_wxRichTextXMLHelper_OutputString(lua_State *L)
+{
+    // const wxString str
+    const wxString str = wxlua_getwxStringtype(L, 2);
+    // wxOutputStream stream
+    wxOutputStream * stream = (wxOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxOutputStream);
+    // call OutputString
+    wxRichTextXMLHelper::OutputString(*stream, str, &wxConvUTF8, &wxConvUTF8);  //  Explicitly designate UTF-8
+
+    return 0;
+}
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextXMLHelper_OutputStringEnt1[] = { &wxluatype_wxRichTextXMLHelper, &wxluatype_wxOutputStream, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxRichTextXMLHelper_OutputStringEnt1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputStringEnt1[1] = {{ wxLua_wxRichTextXMLHelper_OutputStringEnt1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextXMLHelper_OutputStringEnt1 }};
 //     void OutputStringEnt(wxOutputStream& stream, const wxString& str);
-static int LUACALL wxLua_wxRichTextXMLHelper_OutputStringEnt(lua_State *L)
+static int LUACALL wxLua_wxRichTextXMLHelper_OutputStringEnt1(lua_State *L)
 {
     // const wxString str
     const wxString str = wxlua_getwxStringtype(L, 3);
@@ -46639,6 +46657,24 @@ static int LUACALL wxLua_wxRichTextXMLHelper_OutputStringEnt(lua_State *L)
 
     return 0;
 }
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextXMLHelper_OutputStringEnt[] = { &wxluatype_wxOutputStream, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxRichTextXMLHelper_OutputStringEnt(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputStringEnt[1] = {{ wxLua_wxRichTextXMLHelper_OutputStringEnt, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 2, 2, s_wxluatypeArray_wxLua_wxRichTextXMLHelper_OutputStringEnt }};
+// %override wxLua_wxRichTextXMLHelper_OutputStringEnt
+//     static void OutputStringEnt(wxOutputStream& stream, const wxString& str); // , wxMBConv *convMem, wxMBConv *convFile);
+static int LUACALL wxLua_wxRichTextXMLHelper_OutputStringEnt(lua_State *L)
+{
+    // const wxString str
+    const wxString str = wxlua_getwxStringtype(L, 2);
+    // wxOutputStream stream
+    wxOutputStream * stream = (wxOutputStream *)wxluaT_getuserdatatype(L, 1, wxluatype_wxOutputStream);
+    // call OutputStringEnt
+    wxRichTextXMLHelper::OutputStringEnt(*stream, str, &wxConvUTF8, &wxConvUTF8);  //  Explicitly designate UTF-8
+
+    return 0;
+}
+
 
 #endif // ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxUSE_STREAMS)
 
@@ -47030,6 +47066,37 @@ static int s_wxluafunc_wxLua_wxRichTextXMLHelper_MakeString_overload_count = siz
 
 #endif // (((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML)) && (wxLUA_USE_wxColourPenBrush))||((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML))
 
+#if (((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxUSE_STREAMS))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputString_overload[] =
+{
+
+#if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxUSE_STREAMS)
+    { wxLua_wxRichTextXMLHelper_OutputString1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextXMLHelper_OutputString1 },
+#endif // ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxUSE_STREAMS)
+
+#if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxUSE_STREAMS)
+    { wxLua_wxRichTextXMLHelper_OutputString, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 2, 2, s_wxluatypeArray_wxLua_wxRichTextXMLHelper_OutputString },
+#endif // ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxUSE_STREAMS)
+};
+static int s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputString_overload_count = sizeof(s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputString_overload)/sizeof(wxLuaBindCFunc);
+
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputStringEnt_overload[] =
+{
+
+#if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxUSE_STREAMS)
+    { wxLua_wxRichTextXMLHelper_OutputStringEnt1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxRichTextXMLHelper_OutputStringEnt1 },
+#endif // ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxUSE_STREAMS)
+
+#if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxUSE_STREAMS)
+    { wxLua_wxRichTextXMLHelper_OutputStringEnt, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 2, 2, s_wxluatypeArray_wxLua_wxRichTextXMLHelper_OutputStringEnt },
+#endif // ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxUSE_STREAMS)
+};
+static int s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputStringEnt_overload_count = sizeof(s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputStringEnt_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxUSE_STREAMS))
+
 #if ((((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_XMLDOCUMENT_OUTPUT) && (wxUSE_XML)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)) && (wxLUA_USE_wxXML && wxUSE_XML))||((((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)) && (wxUSE_STREAMS))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextXMLHelper_WriteProperties_overload[] =
@@ -47141,9 +47208,12 @@ wxLuaBindMethod wxRichTextXMLHelper_methods[] = {
 
 #if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxUSE_STREAMS)
     { "OutputIndentation", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputIndentation, 1, NULL },
-    { "OutputString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputString, 1, NULL },
-    { "OutputStringEnt", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputStringEnt, 1, NULL },
 #endif // ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxUSE_STREAMS)
+
+#if (((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxUSE_STREAMS))
+    { "OutputString", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputString_overload, s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputString_overload_count, 0 },
+    { "OutputStringEnt", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputStringEnt_overload, s_wxluafunc_wxLua_wxRichTextXMLHelper_OutputStringEnt_overload_count, 0 },
+#endif // (((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_HAVE_DIRECT_OUTPUT) && (wxUSE_XML)) && (wxUSE_STREAMS))
 
 #if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_XML)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
     { "ParseDimension", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxRichTextXMLHelper_ParseDimension, 1, NULL },

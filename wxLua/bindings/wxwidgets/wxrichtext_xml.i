@@ -74,13 +74,13 @@ public:
 
 #if wxRICHTEXT_HAVE_DIRECT_OUTPUT
     // write string to output
-    //static void OutputString(wxOutputStream& stream, const wxString& str, wxMBConv *convMem, wxMBConv *convFile);  //  TODO: handle wxMBConv
+    static void OutputString(wxOutputStream& stream, const wxString& str); // , wxMBConv *convMem, wxMBConv *convFile);
 
     static void OutputIndentation(wxOutputStream& stream, int indent);
 
     // Same as above, but create entities first.
     // Translates '<' to "&lt;", '>' to "&gt;" and '&' to "&amp;"
-    //static void OutputStringEnt(wxOutputStream& stream, const wxString& str, wxMBConv *convMem, wxMBConv *convFile);  //  TODO: handle wxMBConv
+    static void OutputStringEnt(wxOutputStream& stream, const wxString& str); // , wxMBConv *convMem, wxMBConv *convFile);
 
     void OutputString(wxOutputStream& stream, const wxString& str);
     void OutputStringEnt(wxOutputStream& stream, const wxString& str);
