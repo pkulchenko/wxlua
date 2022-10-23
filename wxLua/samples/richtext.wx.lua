@@ -1,3 +1,4 @@
+    local wx = require "wx"
     local frame = wx.wxFrame(wx.NULL, wx.wxID_ANY, "wxRichTextCtrl Example", wx.wxDefaultPosition, wx.wxSize(400, 400), bit32.bor(wx.wxDEFAULT_FRAME_STYLE, wx.wxFULL_REPAINT_ON_RESIZE))
     local r = wx.wxRichTextCtrl(frame, wx.wxID_ANY, "", wx.wxPoint(0, 0), wx.wxSize(400, 400), wx.wxVSCROLL + wx.wxHSCROLL + wx.wxNO_BORDER + wx.wxWANTS_CHARS)
     local textFont = wx.wxFont(12, wx.wxROMAN, wx.wxNORMAL, wx.wxNORMAL)
@@ -101,4 +102,4 @@
     r:WriteText("Note: this sample content was generated programmatically from within the MyFrame constructor in the demo. The images were loaded from inline XPMs. Enjoy wxRichTextCtrl!")
     r:EndSuppressUndo()
     frame:Show()
-
+    wx.wxGetApp():MainLoop()
