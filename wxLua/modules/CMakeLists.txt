@@ -610,6 +610,10 @@ if (BUILD_SHARED_LIBS_WIN_DLLS)
                           "WXMAKINGDLL_WXLUA;WXMAKINGDLL_WXLUADEBUGGER;WXMAKINGDLL_WXLUADEBUG;WXMAKINGDLL_WXBIND")
 endif()
 
+if (APPLE)
+    SET_TARGET_PROPERTIES(wxLuaModule PROPERTIES LINK_FLAGS "-undefined dynamic_lookup -image_base 100000000")
+endif()
+
 endfunction (wxLua_Modules_LuaModule_TARGETS)
 
 # ===========================================================================
