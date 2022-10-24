@@ -460,7 +460,7 @@
 #endif
 
 #ifndef wxLUA_USE_wxRichText
-#define wxLUA_USE_wxRichText                    1 // NOT FINISHED or WORKING
+#define wxLUA_USE_wxRichText                    1
 #endif
 
 #ifndef wxLUA_USE_wxSashWindow
@@ -596,7 +596,7 @@
 #endif
 
 #ifndef wxLUA_USE_wxTranslations
-#define wxLUA_USE_wxTranslations                1
+#define wxLUA_USE_wxTranslations                0 // exclude by default due to build issues with undef reference to wxPluralFormsCalculatorPtr destructor
 #endif
 
 #ifndef wxLUA_USE_wxTreebook
