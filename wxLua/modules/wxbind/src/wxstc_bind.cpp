@@ -50,11 +50,32 @@ static int LUACALL wxLua_wxStyledTextCtrl_AddRefDocument(lua_State *L)
 }
 
 
-#if wxCHECK_VERSION(2,9,5)
+#if wxCHECK_VERSION(3,2,2)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_AddSelection1[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxStyledTextCtrl_AddSelection1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_AddSelection1[1] = {{ wxLua_wxStyledTextCtrl_AddSelection1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_AddSelection1 }};
+//     %wxchkver_3_2_2 void AddSelection(int caret, int anchor);
+static int LUACALL wxLua_wxStyledTextCtrl_AddSelection1(lua_State *L)
+{
+    // int anchor
+    int anchor = (int)wxlua_getnumbertype(L, 3);
+    // int caret
+    int caret = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxStyledTextCtrl * self = (wxStyledTextCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxStyledTextCtrl);
+    // call AddSelection
+    self->AddSelection(caret, anchor);
+
+    return 0;
+}
+
+#endif // wxCHECK_VERSION(3,2,2)
+
+#if !wxCHECK_VERSION(3,2,2) && wxCHECK_VERSION(2,9,5)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_AddSelection[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxStyledTextCtrl_AddSelection(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_AddSelection[1] = {{ wxLua_wxStyledTextCtrl_AddSelection, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_AddSelection }};
-//     %wxchkver_2_9_5 int AddSelection(int caret, int anchor);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_AddSelection[1] = {{ wxLua_wxStyledTextCtrl_AddSelection, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_AddSelection }};
+//     !%wxchkver_3_2_2 && %wxchkver_2_9_5 int AddSelection(int caret, int anchor);
 static int LUACALL wxLua_wxStyledTextCtrl_AddSelection(lua_State *L)
 {
     // int anchor
@@ -79,7 +100,7 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
-#endif // wxCHECK_VERSION(2,9,5)
+#endif // !wxCHECK_VERSION(3,2,2) && wxCHECK_VERSION(2,9,5)
 
 #if wxLUA_USE_wxMemoryBuffer
 static wxLuaArgType s_wxluatypeArray_wxLua_wxStyledTextCtrl_AddStyledText[] = { &wxluatype_wxStyledTextCtrl, &wxluatype_wxMemoryBuffer, NULL };
@@ -14563,6 +14584,23 @@ static int LUACALL wxLua_wxStyledTextCtrl_constructor(lua_State *L)
 
 
 
+#if (wxCHECK_VERSION(3,2,2))||(!wxCHECK_VERSION(3,2,2) && wxCHECK_VERSION(2,9,5))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_AddSelection_overload[] =
+{
+
+#if wxCHECK_VERSION(3,2,2)
+    { wxLua_wxStyledTextCtrl_AddSelection1, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_AddSelection1 },
+#endif // wxCHECK_VERSION(3,2,2)
+
+#if !wxCHECK_VERSION(3,2,2) && wxCHECK_VERSION(2,9,5)
+    { wxLua_wxStyledTextCtrl_AddSelection, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxStyledTextCtrl_AddSelection },
+#endif // !wxCHECK_VERSION(3,2,2) && wxCHECK_VERSION(2,9,5)
+};
+static int s_wxluafunc_wxLua_wxStyledTextCtrl_AddSelection_overload_count = sizeof(s_wxluafunc_wxLua_wxStyledTextCtrl_AddSelection_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (wxCHECK_VERSION(3,2,2))||(!wxCHECK_VERSION(3,2,2) && wxCHECK_VERSION(2,9,5))
+
 #if (!wxCHECK_VERSION(3,1,1))||(wxCHECK_VERSION(3,1,1))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxStyledTextCtrl_BraceMatch_overload[] =
@@ -14826,9 +14864,9 @@ void wxLua_wxStyledTextCtrl_delete_function(void** p)
 wxLuaBindMethod wxStyledTextCtrl_methods[] = {
     { "AddRefDocument", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AddRefDocument, 1, NULL },
 
-#if wxCHECK_VERSION(2,9,5)
-    { "AddSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AddSelection, 1, NULL },
-#endif // wxCHECK_VERSION(2,9,5)
+#if (wxCHECK_VERSION(3,2,2))||(!wxCHECK_VERSION(3,2,2) && wxCHECK_VERSION(2,9,5))
+    { "AddSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AddSelection_overload, s_wxluafunc_wxLua_wxStyledTextCtrl_AddSelection_overload_count, 0 },
+#endif // (wxCHECK_VERSION(3,2,2))||(!wxCHECK_VERSION(3,2,2) && wxCHECK_VERSION(2,9,5))
 
 #if wxLUA_USE_wxMemoryBuffer
     { "AddStyledText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxStyledTextCtrl_AddStyledText, 1, NULL },
