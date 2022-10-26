@@ -24,6 +24,6 @@ off preprocessor directives.
 
 
 References:
-http://wxlua.sourceforge.net
+https://github.com/pkulchenko/wxlua
 http://www.lua.org
 http://www.wxwidgets.org

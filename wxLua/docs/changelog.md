@@ -1,6 +1,48 @@
  wxLua ChangeLog
  ===============
 
+ version 3.2.0.0 (released 10/26/2022)
+ --------------------------------------------------------------------
+ - Added wxRichTextCtrl and related classes (thanks to Toshi Nagata).
+ - Added wxVariant (thanks to Toshi Nagata).
+ - Added wxMemoryOutputStream, wxString{Input,Output}Stream are implemented (thanks to Toshi Nagata).
+ - Added wxTextAreaBase and wxScrollHelper methods in wxRichTextCtrl (thanks to Toshi Nagata).
+ - Added wxPen::SetDashes(), GetDashes() (thanks to Toshi Nagata).
+ - Added wxYELLOW and wxTheColourDatabase (thanks to Toshi Nagata).
+ - Added wxBitness instead of deprecated wxArchitecture in wxwidgets 3.1.5 (#87).
+ - Added target dependencies to bindings Makefile (thanks to Daniel Collins).
+ - Added imm32 to MINGW_EXTRA_LIBS (thanks to Victor Bombi).
+ - Added wxLUA_USE_wxTranslations option to control wxTranslations compilation (#80).
+ - Added wxSpinCtrl GetBase and SetBase methods.
+ - Added new wxFONTWEIGHT_* constants introduced in wxwidgets 3.1.2.
+ - Added wxDPIChangedEvent (thanks to Igor Ivanov).
+ - Added wxSearchCtrl binding (thanks to Igor Ivanov).
+ - Added missing wxFILTER_* constants (thanks to Igor Ivanov).
+ - Added wxHeaderCtrl related classes (thanks to Igor Ivanov).
+ - Added wxDataViewListCtrl (thanks to Igor Ivanov).
+ - Added DataViewCtrl:ExpandChildren method for 3.1.5+ (thanks to Konstantin Matveyev).
+ - Disabled wxLUA_USE_wxTranslations by default to fix build issues (#78, #80, #110).
+ - Fixed compilation for Lua 5.4 (thanks to Konstantin Matveyev)
+ - Fixed compilation issue with GenericGetHeader (fixes #90).
+ - Fixed compilation with wxwidgets prior to 3.1.5 (closes #88, #87).
+ - Improve build against wxWidgets 3.2.0-rc1 (closes #109) (thanks to Daniel Collins).
+ - Updated bindings for wxwidgets 3.3.0.
+ - Updated luaopen_wx to always initialize (thanks to Geoff Van Brunt).
+ - Updated macOS build configuration to make it work with LuaJIT interpreter.
+ - Updated richtext example to start the main loop (#111).
+ - Updated wxMouseEvent methods for wxWidgets 3.1 (thanks to Toshi Nagata).
+ - Updated cmake config to better recognize GTK3 libraries (closes #95).
+ - Updated wx-config targets Makefile to fix reference to Lua folder (#96).
+ - Updated Makefile to fix reference to Lua folder (fixes #96).
+ - Updated examples to use GetBitnessName instead of GetArchName (#87).
+ - Updated example to use proper/current SetColour method name.
+ - Updated wxLUA_USE_wxTranslations scope to allow encodings to be used independently (#80).
+ - Updated wxLUA_USE* setting handling to allow overwrites from command line (#80).
+ - Updated to use type-safe event definition macros for Bind() compatibility (thanks to Daniel Collins).
+ - Updated version for wxHeaderCtrl::GetColumnTitleWidth added in 8e610e25 (#80).
+ - Updated versions for wxFILTER* constants added in f2ee3d7d (#80).
+ - Updated handling of deprecated `lua_cpcall` with Lua 5.2+ and VC15 (closes #79).
+
  version 3.1.0.0 (released 9/12/2020)
  --------------------------------------------------------------------
  - INCOMPATIBILITY: Updated the order of parameters for `wxFileName.GetTimes` (closes #68).

@@ -29,9 +29,9 @@ include( build/CMakewxAppLib.cmake )
 # wxLua version
 # ===========================================================================
 
-set( wxLua_VERSION           "3.1.0.0" )
+set( wxLua_VERSION           "3.2.0.0" )
 set( wxLua_MAJOR_VERSION     "3" )
-set( wxLua_MINOR_VERSION     "1" )
+set( wxLua_MINOR_VERSION     "2" )
 set( wxLua_RELEASE_VERSION   "0" )
 set( wxLua_SUBRELEASE_NUMBER "0")
 
