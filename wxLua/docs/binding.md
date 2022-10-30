@@ -1,6 +1,6 @@
-% wxLua 3.2.0.0 - Writing and Generating Binding Files
+% wxLua 3.2.0.1 - Writing and Generating Binding Files
 % John Labenski
-% 2022-10-26
+% 2022-10-30
 
 The binding generator for wxLua provides information for Lua code to
 interface to a C/C++ API. The C/C++ objects are created in Lua as userdata

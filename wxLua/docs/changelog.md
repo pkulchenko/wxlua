@@ -1,6 +1,10 @@
  wxLua ChangeLog
  ===============
 
+ version 3.2.0.1 (released 10/30/2022)
+ --------------------------------------------------------------------
+ - Removed wxRichTextStyleComboPopup to avoid build errors on Linux (fixes #80).
+
  version 3.2.0.0 (released 10/26/2022)
  --------------------------------------------------------------------
  - Added wxRichTextCtrl and related classes (thanks to Toshi Nagata).
