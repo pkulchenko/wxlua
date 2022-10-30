@@ -76,7 +76,6 @@ extern WXDLLIMPEXP_BINDWXRICHTEXT wxLuaBinding* wxLuaBinding_wxrichtext_init();
 
 #if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)
     extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextStyleComboCtrl;
-    extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextStyleComboPopup;
 #endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)
 
 #if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_DATAOBJ)

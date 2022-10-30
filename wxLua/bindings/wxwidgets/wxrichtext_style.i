@@ -814,46 +814,6 @@ private:
 #if wxUSE_COMBOCTRL
 
 /*!
- * Style drop-down for a wxComboCtrl
- */
-
-class wxRichTextStyleComboPopup : public wxRichTextStyleListBox, public wxComboPopup
-{
-public:
-    virtual void Init();
-
-    virtual bool Create( wxWindow* parent );
-
-    virtual wxWindow *GetControl();
-
-    virtual void SetStringValue( const wxString& s );
-
-    virtual wxString GetStringValue() const;
-
-    /// Can we set the selection based on the editor caret position?
-    // virtual bool CanAutoSetSelection() { return ((m_combo == NULL) || !m_combo->IsPopupShown()); }
-    virtual bool CanAutoSetSelection();
-
-    //
-    // Popup event handlers
-    //
-
-    // Mouse hot-tracking
-    void OnMouseMove(wxMouseEvent& event);
-
-    // On mouse left, set the value and close the popup
-    void OnMouseClick(wxMouseEvent& event);
-
-protected:
-
-    int             m_itemHere; // hot item in popup
-    int             m_value;
-
-private:
-    //DECLARE_EVENT_TABLE()
-};
-
-/*!
  * wxRichTextStyleComboCtrl
  * A combo for applying styles.
  */
@@ -887,14 +847,8 @@ public:
     void SetRichTextCtrl(wxRichTextCtrl* ctrl);
     wxRichTextCtrl* GetRichTextCtrl() const;
 
-    /// Gets the style popup
-    wxRichTextStyleComboPopup* GetStylePopup() const;
-
     /// Auto-select from style under caret in idle time
     void OnIdle(wxIdleEvent& event);
-
-protected:
-    wxRichTextStyleComboPopup*  m_stylePopup;
 };
 
 #endif

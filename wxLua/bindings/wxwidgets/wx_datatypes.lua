@@ -5380,16 +5380,6 @@ wx_dataTypeTable =
     Name = "wxRichTextStyleComboCtrl",
     ValueType = "class",
   },
-  wxRichTextStyleComboPopup = {
-    BaseClasses = {
-      [1] = "wxRichTextStyleListBox",
-      [2] = "wxComboPopup",
-    },
-    Condition = "(wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)",
-    IsNumber = false,
-    Name = "wxRichTextStyleComboPopup",
-    ValueType = "class",
-  },
   wxRichTextStyleDefinition = {
     BaseClasses = {
       [1] = "wxObject",

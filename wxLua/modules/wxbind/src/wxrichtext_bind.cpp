@@ -43256,170 +43256,6 @@ int wxRichTextStyleListCtrl_methodCount = sizeof(wxRichTextStyleListCtrl_methods
 
 #if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)
 // ---------------------------------------------------------------------------
-// Bind class wxRichTextStyleComboPopup
-// ---------------------------------------------------------------------------
-
-// Lua MetaTable Tag for Class 'wxRichTextStyleComboPopup'
-int wxluatype_wxRichTextStyleComboPopup = WXLUA_TUNKNOWN;
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextStyleComboPopup_CanAutoSetSelection[] = { &wxluatype_wxRichTextStyleComboPopup, NULL };
-static int LUACALL wxLua_wxRichTextStyleComboPopup_CanAutoSetSelection(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextStyleComboPopup_CanAutoSetSelection[1] = {{ wxLua_wxRichTextStyleComboPopup_CanAutoSetSelection, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextStyleComboPopup_CanAutoSetSelection }};
-//     virtual bool CanAutoSetSelection();
-static int LUACALL wxLua_wxRichTextStyleComboPopup_CanAutoSetSelection(lua_State *L)
-{
-    // get this
-    wxRichTextStyleComboPopup * self = (wxRichTextStyleComboPopup *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextStyleComboPopup);
-    // call CanAutoSetSelection
-    bool returns = (self->CanAutoSetSelection());
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextStyleComboPopup_Create[] = { &wxluatype_wxRichTextStyleComboPopup, &wxluatype_wxWindow, NULL };
-static int LUACALL wxLua_wxRichTextStyleComboPopup_Create(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextStyleComboPopup_Create[1] = {{ wxLua_wxRichTextStyleComboPopup_Create, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextStyleComboPopup_Create }};
-//     virtual bool Create( wxWindow* parent );
-static int LUACALL wxLua_wxRichTextStyleComboPopup_Create(lua_State *L)
-{
-    // wxWindow parent
-    wxWindow * parent = (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow);
-    // get this
-    wxRichTextStyleComboPopup * self = (wxRichTextStyleComboPopup *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextStyleComboPopup);
-    // call Create
-    bool returns = (self->Create(parent));
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextStyleComboPopup_GetControl[] = { &wxluatype_wxRichTextStyleComboPopup, NULL };
-static int LUACALL wxLua_wxRichTextStyleComboPopup_GetControl(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextStyleComboPopup_GetControl[1] = {{ wxLua_wxRichTextStyleComboPopup_GetControl, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextStyleComboPopup_GetControl }};
-//     virtual wxWindow *GetControl();
-static int LUACALL wxLua_wxRichTextStyleComboPopup_GetControl(lua_State *L)
-{
-    // get this
-    wxRichTextStyleComboPopup * self = (wxRichTextStyleComboPopup *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextStyleComboPopup);
-    // call GetControl
-    wxWindow* returns = (wxWindow*)self->GetControl();
-    // push the result datatype
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxWindow);
-
-    return 1;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextStyleComboPopup_GetStringValue[] = { &wxluatype_wxRichTextStyleComboPopup, NULL };
-static int LUACALL wxLua_wxRichTextStyleComboPopup_GetStringValue(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextStyleComboPopup_GetStringValue[1] = {{ wxLua_wxRichTextStyleComboPopup_GetStringValue, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextStyleComboPopup_GetStringValue }};
-//     virtual wxString GetStringValue() const;
-static int LUACALL wxLua_wxRichTextStyleComboPopup_GetStringValue(lua_State *L)
-{
-    // get this
-    wxRichTextStyleComboPopup * self = (wxRichTextStyleComboPopup *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextStyleComboPopup);
-    // call GetStringValue
-    wxString returns = (self->GetStringValue());
-    // push the result string
-    wxlua_pushwxString(L, returns);
-
-    return 1;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextStyleComboPopup_Init[] = { &wxluatype_wxRichTextStyleComboPopup, NULL };
-static int LUACALL wxLua_wxRichTextStyleComboPopup_Init(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextStyleComboPopup_Init[1] = {{ wxLua_wxRichTextStyleComboPopup_Init, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextStyleComboPopup_Init }};
-//     virtual void Init();
-static int LUACALL wxLua_wxRichTextStyleComboPopup_Init(lua_State *L)
-{
-    // get this
-    wxRichTextStyleComboPopup * self = (wxRichTextStyleComboPopup *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextStyleComboPopup);
-    // call Init
-    self->Init();
-
-    return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextStyleComboPopup_OnMouseClick[] = { &wxluatype_wxRichTextStyleComboPopup, &wxluatype_wxMouseEvent, NULL };
-static int LUACALL wxLua_wxRichTextStyleComboPopup_OnMouseClick(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextStyleComboPopup_OnMouseClick[1] = {{ wxLua_wxRichTextStyleComboPopup_OnMouseClick, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextStyleComboPopup_OnMouseClick }};
-//     void OnMouseClick(wxMouseEvent& event);
-static int LUACALL wxLua_wxRichTextStyleComboPopup_OnMouseClick(lua_State *L)
-{
-    // wxMouseEvent event
-    wxMouseEvent * event = (wxMouseEvent *)wxluaT_getuserdatatype(L, 2, wxluatype_wxMouseEvent);
-    // get this
-    wxRichTextStyleComboPopup * self = (wxRichTextStyleComboPopup *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextStyleComboPopup);
-    // call OnMouseClick
-    self->OnMouseClick(*event);
-
-    return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextStyleComboPopup_OnMouseMove[] = { &wxluatype_wxRichTextStyleComboPopup, &wxluatype_wxMouseEvent, NULL };
-static int LUACALL wxLua_wxRichTextStyleComboPopup_OnMouseMove(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextStyleComboPopup_OnMouseMove[1] = {{ wxLua_wxRichTextStyleComboPopup_OnMouseMove, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextStyleComboPopup_OnMouseMove }};
-//     void OnMouseMove(wxMouseEvent& event);
-static int LUACALL wxLua_wxRichTextStyleComboPopup_OnMouseMove(lua_State *L)
-{
-    // wxMouseEvent event
-    wxMouseEvent * event = (wxMouseEvent *)wxluaT_getuserdatatype(L, 2, wxluatype_wxMouseEvent);
-    // get this
-    wxRichTextStyleComboPopup * self = (wxRichTextStyleComboPopup *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextStyleComboPopup);
-    // call OnMouseMove
-    self->OnMouseMove(*event);
-
-    return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextStyleComboPopup_SetStringValue[] = { &wxluatype_wxRichTextStyleComboPopup, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxRichTextStyleComboPopup_SetStringValue(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextStyleComboPopup_SetStringValue[1] = {{ wxLua_wxRichTextStyleComboPopup_SetStringValue, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxRichTextStyleComboPopup_SetStringValue }};
-//     virtual void SetStringValue( const wxString& s );
-static int LUACALL wxLua_wxRichTextStyleComboPopup_SetStringValue(lua_State *L)
-{
-    // const wxString s
-    const wxString s = wxlua_getwxStringtype(L, 2);
-    // get this
-    wxRichTextStyleComboPopup * self = (wxRichTextStyleComboPopup *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextStyleComboPopup);
-    // call SetStringValue
-    self->SetStringValue(s);
-
-    return 0;
-}
-
-
-
-
-void wxLua_wxRichTextStyleComboPopup_delete_function(void** p)
-{
-    wxRichTextStyleComboPopup* o = (wxRichTextStyleComboPopup*)(*p);
-    delete o;
-}
-
-// Map Lua Class Methods to C Binding Functions
-wxLuaBindMethod wxRichTextStyleComboPopup_methods[] = {
-    { "CanAutoSetSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextStyleComboPopup_CanAutoSetSelection, 1, NULL },
-    { "Create", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextStyleComboPopup_Create, 1, NULL },
-    { "GetControl", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextStyleComboPopup_GetControl, 1, NULL },
-    { "GetStringValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextStyleComboPopup_GetStringValue, 1, NULL },
-    { "Init", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextStyleComboPopup_Init, 1, NULL },
-    { "OnMouseClick", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextStyleComboPopup_OnMouseClick, 1, NULL },
-    { "OnMouseMove", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextStyleComboPopup_OnMouseMove, 1, NULL },
-    { "SetStringValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextStyleComboPopup_SetStringValue, 1, NULL },
-
-    { 0, 0, 0, 0 },
-};
-
-int wxRichTextStyleComboPopup_methodCount = sizeof(wxRichTextStyleComboPopup_methods)/sizeof(wxLuaBindMethod) - 1;
-
-#endif  // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)
-
-
-#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)
-// ---------------------------------------------------------------------------
 // Bind class wxRichTextStyleComboCtrl
 // ---------------------------------------------------------------------------
 
@@ -43474,26 +43310,6 @@ static int LUACALL wxLua_wxRichTextStyleComboCtrl_GetRichTextCtrl(lua_State *L)
     return 1;
 }
 
-#endif // ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextStyleComboCtrl_GetStylePopup[] = { &wxluatype_wxRichTextStyleComboCtrl, NULL };
-static int LUACALL wxLua_wxRichTextStyleComboCtrl_GetStylePopup(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextStyleComboCtrl_GetStylePopup[1] = {{ wxLua_wxRichTextStyleComboCtrl_GetStylePopup, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextStyleComboCtrl_GetStylePopup }};
-//     wxRichTextStyleComboPopup* GetStylePopup() const;
-static int LUACALL wxLua_wxRichTextStyleComboCtrl_GetStylePopup(lua_State *L)
-{
-    // get this
-    wxRichTextStyleComboCtrl * self = (wxRichTextStyleComboCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextStyleComboCtrl);
-    // call GetStylePopup
-    wxRichTextStyleComboPopup* returns = (wxRichTextStyleComboPopup*)self->GetStylePopup();
-    // push the result datatype
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxRichTextStyleComboPopup);
-
-    return 1;
-}
-
-
-#if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextStyleComboCtrl_GetStyleSheet[] = { &wxluatype_wxRichTextStyleComboCtrl, NULL };
 static int LUACALL wxLua_wxRichTextStyleComboCtrl_GetStyleSheet(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextStyleComboCtrl_GetStyleSheet[1] = {{ wxLua_wxRichTextStyleComboCtrl_GetStyleSheet, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextStyleComboCtrl_GetStyleSheet }};
@@ -43673,11 +43489,6 @@ wxLuaBindMethod wxRichTextStyleComboCtrl_methods[] = {
 
 #if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
     { "GetRichTextCtrl", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextStyleComboCtrl_GetRichTextCtrl, 1, NULL },
-#endif // ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
-
-    { "GetStylePopup", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextStyleComboCtrl_GetStylePopup, 1, NULL },
-
-#if ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
     { "GetStyleSheet", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextStyleComboCtrl_GetStyleSheet, 1, NULL },
 #endif // ((wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
@@ -48112,7 +47923,6 @@ wxLuaBindMethod* wxLuaGetFunctionList_wxrichtext(size_t &count)
 // ---------------------------------------------------------------------------
 
 static const char* wxluaclassname_wxComboCtrl = "wxComboCtrl";
-static const char* wxluaclassname_wxComboPopup = "wxComboPopup";
 static const char* wxluaclassname_wxCommand = "wxCommand";
 static const char* wxluaclassname_wxControl = "wxControl";
 static const char* wxluaclassname_wxDataObjectSimple = "wxDataObjectSimple";
@@ -48180,7 +47990,6 @@ static const char* wxluaclassname_wxRichTextRenderer = "wxRichTextRenderer";
 static const char* wxluaclassname_wxRichTextSelection = "wxRichTextSelection";
 static const char* wxluaclassname_wxRichTextStdRenderer = "wxRichTextStdRenderer";
 static const char* wxluaclassname_wxRichTextStyleComboCtrl = "wxRichTextStyleComboCtrl";
-static const char* wxluaclassname_wxRichTextStyleComboPopup = "wxRichTextStyleComboPopup";
 static const char* wxluaclassname_wxRichTextStyleDefinition = "wxRichTextStyleDefinition";
 static const char* wxluaclassname_wxRichTextStyleListBox = "wxRichTextStyleListBox";
 static const char* wxluaclassname_wxRichTextStyleListCtrl = "wxRichTextStyleListCtrl";
@@ -48289,8 +48098,6 @@ static const char* wxluabaseclassnames_wxRichTextStdRenderer[] = { wxluaclassnam
 static wxLuaBindClass* wxluabaseclassbinds_wxRichTextStdRenderer[] = { NULL };
 static const char* wxluabaseclassnames_wxRichTextStyleComboCtrl[] = { wxluaclassname_wxComboCtrl, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxRichTextStyleComboCtrl[] = { NULL };
-static const char* wxluabaseclassnames_wxRichTextStyleComboPopup[] = { wxluaclassname_wxRichTextStyleListBox, wxluaclassname_wxComboPopup, NULL };
-static wxLuaBindClass* wxluabaseclassbinds_wxRichTextStyleComboPopup[] = { NULL, NULL };
 static const char* wxluabaseclassnames_wxRichTextStyleDefinition[] = { wxluaclassname_wxObject, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxRichTextStyleDefinition[] = { NULL };
 static const char* wxluabaseclassnames_wxRichTextStyleListBox[] = { wxluaclassname_wxHtmlListBox, NULL };
@@ -48340,11 +48147,6 @@ static wxLuaBindClass* wxluabaseclassbinds_wxSymbolPickerDialog[] = { NULL };
     static wxLuaArgType wxluabaseclass_wxluatypes_wxRichTextStyleComboCtrl[] = { &wxluatype_wxTextEntry, NULL };
     static wxIntPtr wxluabaseclass_vtable_offsets_wxRichTextStyleComboCtrl[] = { wxIntPtr(((wxIntPtr)(wxTextEntry*)(wxRichTextStyleComboCtrl*)&wxluatype_TNONE) - ((wxIntPtr)(wxRichTextStyleComboCtrl*)&wxluatype_TNONE)) };
     extern void wxLua_wxRichTextStyleComboCtrl_delete_function(void** p);
-    extern wxLuaBindMethod wxRichTextStyleComboPopup_methods[];
-    extern int wxRichTextStyleComboPopup_methodCount;
-    static wxLuaArgType wxluabaseclass_wxluatypes_wxRichTextStyleComboPopup[] = { &wxluatype_wxComboPopup, NULL };
-    static wxIntPtr wxluabaseclass_vtable_offsets_wxRichTextStyleComboPopup[] = { wxIntPtr(((wxIntPtr)(wxComboPopup*)(wxRichTextStyleComboPopup*)&wxluatype_TNONE) - ((wxIntPtr)(wxRichTextStyleComboPopup*)&wxluatype_TNONE)) };
-    extern void wxLua_wxRichTextStyleComboPopup_delete_function(void** p);
 #endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)
 
 #if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_DATAOBJ)
@@ -48673,7 +48475,6 @@ wxLuaBindClass* wxLuaGetClassList_wxrichtext(size_t &count)
 
 #if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)
         { wxluaclassname_wxRichTextStyleComboCtrl, wxRichTextStyleComboCtrl_methods, wxRichTextStyleComboCtrl_methodCount, CLASSINFO(wxRichTextStyleComboCtrl), &wxluatype_wxRichTextStyleComboCtrl, wxluabaseclassnames_wxRichTextStyleComboCtrl, wxluabaseclassbinds_wxRichTextStyleComboCtrl, wxluabaseclass_wxluatypes_wxRichTextStyleComboCtrl, wxluabaseclass_vtable_offsets_wxRichTextStyleComboCtrl, NULL, 0, &wxLua_wxRichTextStyleComboCtrl_delete_function, }, 
-        { wxluaclassname_wxRichTextStyleComboPopup, wxRichTextStyleComboPopup_methods, wxRichTextStyleComboPopup_methodCount, NULL, &wxluatype_wxRichTextStyleComboPopup, wxluabaseclassnames_wxRichTextStyleComboPopup, wxluabaseclassbinds_wxRichTextStyleComboPopup, wxluabaseclass_wxluatypes_wxRichTextStyleComboPopup, wxluabaseclass_vtable_offsets_wxRichTextStyleComboPopup, NULL, 0, &wxLua_wxRichTextStyleComboPopup_delete_function, }, 
 #endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)
 
 #if wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
