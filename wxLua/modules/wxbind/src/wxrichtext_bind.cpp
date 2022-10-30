@@ -12667,22 +12667,6 @@ static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetDefaultStyle(lua_State 
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetFloatCollector[] = { &wxluatype_wxRichTextParagraphLayoutBox, NULL };
-static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetFloatCollector(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetFloatCollector[1] = {{ wxLua_wxRichTextParagraphLayoutBox_GetFloatCollector, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetFloatCollector }};
-//     wxRichTextFloatCollector* GetFloatCollector();
-static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetFloatCollector(lua_State *L)
-{
-    // get this
-    wxRichTextParagraphLayoutBox * self = (wxRichTextParagraphLayoutBox *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextParagraphLayoutBox);
-    // call GetFloatCollector
-    wxRichTextFloatCollector* returns = (wxRichTextFloatCollector*)self->GetFloatCollector();
-    // push the result datatype
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxRichTextFloatCollector);
-
-    return 1;
-}
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjectCount[] = { &wxluatype_wxRichTextParagraphLayoutBox, NULL };
 static int LUACALL wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjectCount(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjectCount[1] = {{ wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjectCount, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjectCount }};
@@ -14330,7 +14314,6 @@ wxLuaBindMethod wxRichTextParagraphLayoutBox_methods[] = {
     { "FindNextParagraphNumber", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_FindNextParagraphNumber, 1, NULL },
     { "GetBasicStyle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetBasicStyle, 1, NULL },
     { "GetDefaultStyle", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetDefaultStyle, 1, NULL },
-    { "GetFloatCollector", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetFloatCollector, 1, NULL },
     { "GetFloatingObjectCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjectCount, 1, NULL },
     { "GetFloatingObjects", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetFloatingObjects, 1, NULL },
     { "GetInvalidRange", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraphLayoutBox_GetInvalidRange, 1, NULL },
@@ -17738,32 +17721,6 @@ static int LUACALL wxLua_wxRichTextParagraph_Layout(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraph_LayoutFloat[] = { &wxluatype_wxRichTextParagraph, &wxluatype_wxDC, &wxluatype_wxRichTextDrawingContext, &wxluatype_wxRect, &wxluatype_wxRect, &wxluatype_TNUMBER, &wxluatype_wxRichTextFloatCollector, NULL };
-static int LUACALL wxLua_wxRichTextParagraph_LayoutFloat(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextParagraph_LayoutFloat[1] = {{ wxLua_wxRichTextParagraph_LayoutFloat, WXLUAMETHOD_METHOD, 7, 7, s_wxluatypeArray_wxLua_wxRichTextParagraph_LayoutFloat }};
-//     void LayoutFloat(wxDC& dc, wxRichTextDrawingContext& context, const wxRect& rect, const wxRect& parentRect, int style, wxRichTextFloatCollector* floatCollector);
-static int LUACALL wxLua_wxRichTextParagraph_LayoutFloat(lua_State *L)
-{
-    // wxRichTextFloatCollector floatCollector
-    wxRichTextFloatCollector * floatCollector = (wxRichTextFloatCollector *)wxluaT_getuserdatatype(L, 7, wxluatype_wxRichTextFloatCollector);
-    // int style
-    int style = (int)wxlua_getnumbertype(L, 6);
-    // const wxRect parentRect
-    const wxRect * parentRect = (const wxRect *)wxluaT_getuserdatatype(L, 5, wxluatype_wxRect);
-    // const wxRect rect
-    const wxRect * rect = (const wxRect *)wxluaT_getuserdatatype(L, 4, wxluatype_wxRect);
-    // wxRichTextDrawingContext context
-    wxRichTextDrawingContext * context = (wxRichTextDrawingContext *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRichTextDrawingContext);
-    // wxDC dc
-    wxDC * dc = (wxDC *)wxluaT_getuserdatatype(L, 2, wxluatype_wxDC);
-    // get this
-    wxRichTextParagraph * self = (wxRichTextParagraph *)wxluaT_getuserdatatype(L, 1, wxluatype_wxRichTextParagraph);
-    // call LayoutFloat
-    self->LayoutFloat(*dc, *context, *rect, *parentRect, style, floatCollector);
-
-    return 0;
-}
-
 #endif // ((wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
 #if (wxLUA_USE_wxList && !wxUSE_STL) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
@@ -17982,7 +17939,6 @@ wxLuaBindMethod wxRichTextParagraph_methods[] = {
 
 #if ((wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
     { "Layout", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraph_Layout, 1, NULL },
-    { "LayoutFloat", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraph_LayoutFloat, 1, NULL },
 #endif // ((wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
 #if (wxLUA_USE_wxList && !wxUSE_STL) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
@@ -18001,38 +17957,6 @@ wxLuaBindMethod wxRichTextParagraph_methods[] = {
 };
 
 int wxRichTextParagraph_methodCount = sizeof(wxRichTextParagraph_methods)/sizeof(wxLuaBindMethod) - 1;
-
-#endif  // wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
-
-
-#if wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
-// ---------------------------------------------------------------------------
-// Bind class wxRichTextFloatCollector
-// ---------------------------------------------------------------------------
-
-// Lua MetaTable Tag for Class 'wxRichTextFloatCollector'
-int wxluatype_wxRichTextFloatCollector = WXLUA_TUNKNOWN;
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextFloatCollector_delete[] = { &wxluatype_wxRichTextFloatCollector, NULL };
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextFloatCollector_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxRichTextFloatCollector_delete }};
-
-
-
-
-void wxLua_wxRichTextFloatCollector_delete_function(void** p)
-{
-    wxRichTextFloatCollector* o = (wxRichTextFloatCollector*)(*p);
-    delete o;
-}
-
-// Map Lua Class Methods to C Binding Functions
-wxLuaBindMethod wxRichTextFloatCollector_methods[] = {
-    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxRichTextFloatCollector_delete, 1, NULL },
-
-    { 0, 0, 0, 0 },
-};
-
-int wxRichTextFloatCollector_methodCount = sizeof(wxRichTextFloatCollector_methods)/sizeof(wxLuaBindMethod) - 1;
 
 #endif  // wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
 
@@ -47958,7 +47882,6 @@ static const char* wxluaclassname_wxRichTextFieldTypeHashMap = "wxRichTextFieldT
 static const char* wxluaclassname_wxRichTextFieldTypeHashMap_iterator = "wxRichTextFieldTypeHashMap_iterator";
 static const char* wxluaclassname_wxRichTextFieldTypeStandard = "wxRichTextFieldTypeStandard";
 static const char* wxluaclassname_wxRichTextFileHandler = "wxRichTextFileHandler";
-static const char* wxluaclassname_wxRichTextFloatCollector = "wxRichTextFloatCollector";
 static const char* wxluaclassname_wxRichTextFontTable = "wxRichTextFontTable";
 static const char* wxluaclassname_wxRichTextFormattingDialog = "wxRichTextFormattingDialog";
 static const char* wxluaclassname_wxRichTextFormattingDialogFactory = "wxRichTextFormattingDialogFactory";
@@ -48252,9 +48175,6 @@ static wxLuaBindClass* wxluabaseclassbinds_wxSymbolPickerDialog[] = { NULL };
     extern wxLuaBindMethod wxRichTextFileHandler_methods[];
     extern int wxRichTextFileHandler_methodCount;
     extern void wxLua_wxRichTextFileHandler_delete_function(void** p);
-    extern wxLuaBindMethod wxRichTextFloatCollector_methods[];
-    extern int wxRichTextFloatCollector_methodCount;
-    extern void wxLua_wxRichTextFloatCollector_delete_function(void** p);
     extern wxLuaBindMethod wxRichTextFontTable_methods[];
     extern int wxRichTextFontTable_methodCount;
     extern void wxLua_wxRichTextFontTable_delete_function(void** p);
@@ -48428,7 +48348,6 @@ wxLuaBindClass* wxLuaGetClassList_wxrichtext(size_t &count)
         { wxluaclassname_wxRichTextFieldTypeHashMap_iterator, wxRichTextFieldTypeHashMap_iterator_methods, wxRichTextFieldTypeHashMap_iterator_methodCount, NULL, &wxluatype_wxRichTextFieldTypeHashMap_iterator, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxRichTextFieldTypeHashMap_iterator_delete_function, }, 
         { wxluaclassname_wxRichTextFieldTypeStandard, wxRichTextFieldTypeStandard_methods, wxRichTextFieldTypeStandard_methodCount, CLASSINFO(wxRichTextFieldTypeStandard), &wxluatype_wxRichTextFieldTypeStandard, wxluabaseclassnames_wxRichTextFieldTypeStandard, wxluabaseclassbinds_wxRichTextFieldTypeStandard, NULL, NULL, wxRichTextFieldTypeStandard_enums, wxRichTextFieldTypeStandard_enumCount, &wxLua_wxRichTextFieldTypeStandard_delete_function, }, 
         { wxluaclassname_wxRichTextFileHandler, wxRichTextFileHandler_methods, wxRichTextFileHandler_methodCount, CLASSINFO(wxRichTextFileHandler), &wxluatype_wxRichTextFileHandler, wxluabaseclassnames_wxRichTextFileHandler, wxluabaseclassbinds_wxRichTextFileHandler, NULL, NULL, NULL, 0, &wxLua_wxRichTextFileHandler_delete_function, }, 
-        { wxluaclassname_wxRichTextFloatCollector, wxRichTextFloatCollector_methods, wxRichTextFloatCollector_methodCount, NULL, &wxluatype_wxRichTextFloatCollector, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxRichTextFloatCollector_delete_function, }, 
         { wxluaclassname_wxRichTextFontTable, wxRichTextFontTable_methods, wxRichTextFontTable_methodCount, CLASSINFO(wxRichTextFontTable), &wxluatype_wxRichTextFontTable, wxluabaseclassnames_wxRichTextFontTable, wxluabaseclassbinds_wxRichTextFontTable, NULL, NULL, NULL, 0, &wxLua_wxRichTextFontTable_delete_function, }, 
 #endif // wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
 

@@ -54,7 +54,6 @@ class /*WXDLLIMPEXP_FWD_RICHTEXT*/ wxRichTextXMLHandler;
 class /*WXDLLIMPEXP_FWD_RICHTEXT*/ wxRichTextParagraphLayoutBox;
 class /*WXDLLIMPEXP_FWD_RICHTEXT*/ wxRichTextImageBlock;
 class /*WXDLLIMPEXP_FWD_XML*/      wxXmlNode;
-class                              wxRichTextFloatCollector;
 class /*WXDLLIMPEXP_FWD_BASE*/ wxDataInputStream;
 class /*WXDLLIMPEXP_FWD_BASE*/ wxDataOutputStream;
 */
@@ -3464,11 +3463,6 @@ public:
     bool IsDirty() const;
 
     /**
-        Returns the wxRichTextFloatCollector of this object.
-    */
-    wxRichTextFloatCollector* GetFloatCollector();
-
-    /**
         Returns the number of floating objects at this level.
     */
     int GetFloatingObjectCount() const;
@@ -3479,19 +3473,6 @@ public:
     // C++: bool GetFloatingObjects(wxRichTextObjectList& objects) const;
     // Lua: %override [bool, wxRichTextObjectList]GetFloatingObjects();
     bool GetFloatingObjects(wxRichTextObjectList& objects) const;
-
-protected:
-    wxRichTextCtrl* m_ctrl;
-    wxRichTextAttr  m_defaultAttributes;
-
-    // The invalidated range that will need full layout
-    wxRichTextRange m_invalidRange;
-
-    // Is the last paragraph partial or complete?
-    bool            m_partialParagraph;
-
-    // The floating layout state
-    wxRichTextFloatCollector* m_floatCollector;
 };
 
 /**
@@ -4328,28 +4309,6 @@ public:
         Returns the default tabstop array.
     */
     static const wxArrayInt& GetDefaultTabs();
-
-    /**
-        Lays out the floating objects.
-    */
-    void LayoutFloat(wxDC& dc, wxRichTextDrawingContext& context, const wxRect& rect, const wxRect& parentRect, int style, wxRichTextFloatCollector* floatCollector);
-
-protected:
-
-    // The lines that make up the wrapped paragraph
-    wxRichTextLineList m_cachedLines;
-
-    // Default tabstops
-    static wxArrayInt  sm_defaultTabs;
-
-//friend class wxRichTextFloatCollector;
-};
-
-
-/*  This definition is taken from richtextbuffer.cpp  */
-class %delete wxRichTextFloatCollector
-{
-    // No methods are defined: this class is only private
 };
 
 /**

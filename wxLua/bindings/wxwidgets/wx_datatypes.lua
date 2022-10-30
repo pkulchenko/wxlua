@@ -5099,12 +5099,6 @@ wx_dataTypeTable =
     Name = "wxRichTextFileType",
     ValueType = "enum",
   },
-  wxRichTextFloatCollector = {
-    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
-    IsNumber = false,
-    Name = "wxRichTextFloatCollector",
-    ValueType = "class",
-  },
   wxRichTextFontTable = {
     BaseClasses = {
       [1] = "wxObject",

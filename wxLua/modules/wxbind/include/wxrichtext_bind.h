@@ -119,7 +119,6 @@ extern WXDLLIMPEXP_BINDWXRICHTEXT wxLuaBinding* wxLuaBinding_wxrichtext_init();
     extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextFieldTypeHashMap_iterator;
     extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextFieldTypeStandard;
     extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextFileHandler;
-    extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextFloatCollector;
     extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextFontTable;
     extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextHeaderFooterData;
     extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextImage;
