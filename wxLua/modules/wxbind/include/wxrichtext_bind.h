@@ -74,6 +74,10 @@ extern WXDLLIMPEXP_BINDWXRICHTEXT wxLuaBinding* wxLuaBinding_wxrichtext_init();
     extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextObjectPropertiesDialog;
 #endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING)
+    extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextLineList;
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING)
+
 #if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)
     extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextStyleComboCtrl;
 #endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)
@@ -124,7 +128,6 @@ extern WXDLLIMPEXP_BINDWXRICHTEXT wxLuaBinding* wxLuaBinding_wxrichtext_init();
     extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextImage;
     extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextImageBlock;
     extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextLine;
-    extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextLineList;
     extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextListStyleDefinition;
     extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextObject;
     extern WXDLLIMPEXP_DATA_BINDWXRICHTEXT(int) wxluatype_wxRichTextObjectAddress;

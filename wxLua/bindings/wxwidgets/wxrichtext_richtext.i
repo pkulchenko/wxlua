@@ -4149,10 +4149,12 @@ protected:
 #endif
 };
 
+#if wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING
 class wxRichTextLineList : public wxList
 {
     // Use the wxList methods, see also wxNode
 };
+#endif // wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING
 
 /**
     @class wxRichTextParagraph
@@ -4203,7 +4205,9 @@ public:
     /**
         Returns the cached lines.
     */
+#if wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING
     wxRichTextLineList& GetLines();
+#endif // wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING
 
 // Operations
 

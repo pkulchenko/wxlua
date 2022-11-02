@@ -17129,7 +17129,7 @@ int wxRichTextLine_methodCount = sizeof(wxRichTextLine_methods)/sizeof(wxLuaBind
 #endif  // wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
 
 
-#if wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING)
 // ---------------------------------------------------------------------------
 // Bind class wxRichTextLineList
 // ---------------------------------------------------------------------------
@@ -17152,7 +17152,7 @@ wxLuaBindMethod wxRichTextLineList_methods[] = {
 
 int wxRichTextLineList_methodCount = sizeof(wxRichTextLineList_methods)/sizeof(wxLuaBindMethod) - 1;
 
-#endif  // wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
+#endif  // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING)
 
 
 #if wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
@@ -17546,6 +17546,8 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
+
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraph_GetLines[] = { &wxluatype_wxRichTextParagraph, NULL };
 static int LUACALL wxLua_wxRichTextParagraph_GetLines(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxRichTextParagraph_GetLines[1] = {{ wxLua_wxRichTextParagraph_GetLines, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxRichTextParagraph_GetLines }};
@@ -17562,6 +17564,7 @@ static int LUACALL wxLua_wxRichTextParagraph_GetLines(lua_State *L)
     return 1;
 }
 
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING)
 
 #if (((wxLUA_USE_wxArrayInt) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxRichTextParagraph_GetRangeSize[] = { &wxluatype_wxRichTextParagraph, &wxluatype_wxRichTextRange, &wxluatype_wxSize, &wxluatype_TLIGHTUSERDATA, &wxluatype_wxDC, &wxluatype_wxRichTextDrawingContext, &wxluatype_TNUMBER, &wxluatype_wxPoint, &wxluatype_wxSize, &wxluatype_wxArrayInt, NULL };
@@ -17922,7 +17925,10 @@ wxLuaBindMethod wxRichTextParagraph_methods[] = {
 #endif // (wxLUA_USE_wxArrayInt) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
     { "GetFirstLineBreakPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraph_GetFirstLineBreakPosition, 1, NULL },
+
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING)
     { "GetLines", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraph_GetLines, 1, NULL },
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING)
 
 #if (((wxLUA_USE_wxArrayInt) && (wxLUA_USE_wxDC)) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
     { "GetRangeSize", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxRichTextParagraph_GetRangeSize, 1, NULL },
@@ -48064,6 +48070,12 @@ static wxLuaBindClass* wxluabaseclassbinds_wxSymbolPickerDialog[] = { NULL };
     extern void wxLua_wxRichTextObjectPropertiesDialog_delete_function(void** p);
 #endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT)
 
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING)
+    extern wxLuaBindMethod wxRichTextLineList_methods[];
+    extern int wxRichTextLineList_methodCount;
+    extern void wxLua_wxRichTextLineList_delete_function(void** p);
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING)
+
 #if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxUSE_COMBOCTRL) && (wxUSE_HTML)
     extern wxLuaBindMethod wxRichTextStyleComboCtrl_methods[];
     extern int wxRichTextStyleComboCtrl_methodCount;
@@ -48190,9 +48202,6 @@ static wxLuaBindClass* wxluabaseclassbinds_wxSymbolPickerDialog[] = { NULL };
     extern wxLuaBindMethod wxRichTextLine_methods[];
     extern int wxRichTextLine_methodCount;
     extern void wxLua_wxRichTextLine_delete_function(void** p);
-    extern wxLuaBindMethod wxRichTextLineList_methods[];
-    extern int wxRichTextLineList_methodCount;
-    extern void wxLua_wxRichTextLineList_delete_function(void** p);
     extern wxLuaBindMethod wxRichTextListStyleDefinition_methods[];
     extern int wxRichTextListStyleDefinition_methodCount;
     extern void wxLua_wxRichTextListStyleDefinition_delete_function(void** p);
@@ -48362,7 +48371,13 @@ wxLuaBindClass* wxLuaGetClassList_wxrichtext(size_t &count)
         { wxluaclassname_wxRichTextImage, wxRichTextImage_methods, wxRichTextImage_methodCount, CLASSINFO(wxRichTextImage), &wxluatype_wxRichTextImage, wxluabaseclassnames_wxRichTextImage, wxluabaseclassbinds_wxRichTextImage, NULL, NULL, NULL, 0, &wxLua_wxRichTextImage_delete_function, }, 
         { wxluaclassname_wxRichTextImageBlock, wxRichTextImageBlock_methods, wxRichTextImageBlock_methodCount, CLASSINFO(wxRichTextImageBlock), &wxluatype_wxRichTextImageBlock, wxluabaseclassnames_wxRichTextImageBlock, wxluabaseclassbinds_wxRichTextImageBlock, NULL, NULL, NULL, 0, &wxLua_wxRichTextImageBlock_delete_function, }, 
         { wxluaclassname_wxRichTextLine, wxRichTextLine_methods, wxRichTextLine_methodCount, NULL, &wxluatype_wxRichTextLine, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxRichTextLine_delete_function, }, 
+#endif // wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
+
+#if (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING)
         { wxluaclassname_wxRichTextLineList, wxRichTextLineList_methods, wxRichTextLineList_methodCount, NULL, &wxluatype_wxRichTextLineList, wxluabaseclassnames_wxRichTextLineList, wxluabaseclassbinds_wxRichTextLineList, NULL, NULL, NULL, 0, &wxLua_wxRichTextLineList_delete_function, }, 
+#endif // (wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING)
+
+#if wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT
         { wxluaclassname_wxRichTextListStyleDefinition, wxRichTextListStyleDefinition_methods, wxRichTextListStyleDefinition_methodCount, CLASSINFO(wxRichTextListStyleDefinition), &wxluatype_wxRichTextListStyleDefinition, wxluabaseclassnames_wxRichTextListStyleDefinition, wxluabaseclassbinds_wxRichTextListStyleDefinition, NULL, NULL, NULL, 0, &wxLua_wxRichTextListStyleDefinition_delete_function, }, 
         { wxluaclassname_wxRichTextObject, wxRichTextObject_methods, wxRichTextObject_methodCount, CLASSINFO(wxRichTextObject), &wxluatype_wxRichTextObject, wxluabaseclassnames_wxRichTextObject, wxluabaseclassbinds_wxRichTextObject, NULL, NULL, NULL, 0, &wxLua_wxRichTextObject_delete_function, }, 
         { wxluaclassname_wxRichTextObjectAddress, wxRichTextObjectAddress_methods, wxRichTextObjectAddress_methodCount, NULL, &wxluatype_wxRichTextObjectAddress, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxRichTextObjectAddress_delete_function, }, 

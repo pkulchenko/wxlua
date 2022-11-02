@@ -5180,7 +5180,7 @@ wx_dataTypeTable =
     BaseClasses = {
       [1] = "wxList",
     },
-    Condition = "wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT",
+    Condition = "(wxLUA_USE_wxRichText && wxCHECK_VERSION(3,0,0) && wxUSE_RICHTEXT) && (wxRICHTEXT_USE_PARTIAL_TEXT_EXTENTS && wxRICHTEXT_USE_OPTIMIZED_LINE_DRAWING)",
     IsNumber = false,
     Name = "wxRichTextLineList",
     ValueType = "class",
