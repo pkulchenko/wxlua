@@ -6597,19 +6597,19 @@ static int LUACALL wxLua_wxFontProperty_ValueToString(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxFontProperty_constructor[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxFont, NULL };
 static int LUACALL wxLua_wxFontProperty_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxFontProperty_constructor[1] = {{ wxLua_wxFontProperty_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 3, s_wxluatypeArray_wxLua_wxFontProperty_constructor }};
-//                    const wxFont& value = wxFont());
+//                    wxFont value = wxFont());
 static int LUACALL wxLua_wxFontProperty_constructor(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // const wxFont value = wxFont()
-    const wxFont * value = (argCount >= 3 ? (const wxFont *)wxluaT_getuserdatatype(L, 3, wxluatype_wxFont) : &wxFont());
+    // wxFont value = wxFont()
+    wxFont value = (argCount >= 3 ? *(wxFont*)wxluaT_getuserdatatype(L, 3, wxluatype_wxFont) : wxFont());
     // const wxString name = wxPG_LABEL
     const wxString name = (argCount >= 2 ? wxlua_getwxStringtype(L, 2) : wxString(wxPG_LABEL));
     // const wxString label = wxPG_LABEL
     const wxString label = (argCount >= 1 ? wxlua_getwxStringtype(L, 1) : wxString(wxPG_LABEL));
     // call constructor
-    wxFontProperty* returns = new wxFontProperty(label, name, *value);
+    wxFontProperty* returns = new wxFontProperty(label, name, value);
     // push the constructed class pointer
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxFontProperty);
 
@@ -6988,19 +6988,19 @@ static int LUACALL wxLua_wxSystemColourProperty_constructor1(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSystemColourProperty_constructor[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxColourPropertyValue, NULL };
 static int LUACALL wxLua_wxSystemColourProperty_constructor(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxSystemColourProperty_constructor[1] = {{ wxLua_wxSystemColourProperty_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 3, s_wxluatypeArray_wxLua_wxSystemColourProperty_constructor }};
-//                             const wxColourPropertyValue& value = wxColourPropertyValue() );
+//                             wxColourPropertyValue value = wxColourPropertyValue() );
 static int LUACALL wxLua_wxSystemColourProperty_constructor(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // const wxColourPropertyValue value = wxColourPropertyValue()
-    const wxColourPropertyValue * value = (argCount >= 3 ? (const wxColourPropertyValue *)wxluaT_getuserdatatype(L, 3, wxluatype_wxColourPropertyValue) : &wxColourPropertyValue());
+    // wxColourPropertyValue value = wxColourPropertyValue()
+    wxColourPropertyValue value = (argCount >= 3 ? *(wxColourPropertyValue*)wxluaT_getuserdatatype(L, 3, wxluatype_wxColourPropertyValue) : wxColourPropertyValue());
     // const wxString name = wxPG_LABEL
     const wxString name = (argCount >= 2 ? wxlua_getwxStringtype(L, 2) : wxString(wxPG_LABEL));
     // const wxString label = wxPG_LABEL
     const wxString label = (argCount >= 1 ? wxlua_getwxStringtype(L, 1) : wxString(wxPG_LABEL));
     // call constructor
-    wxSystemColourProperty* returns = new wxSystemColourProperty(label, name, *value);
+    wxSystemColourProperty* returns = new wxSystemColourProperty(label, name, value);
     // push the constructed class pointer
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxSystemColourProperty);
 
@@ -7837,19 +7837,19 @@ static int LUACALL wxLua_wxDateProperty_ValueToString(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDateProperty_constructor[] = { &wxluatype_TSTRING, &wxluatype_TSTRING, &wxluatype_wxDateTime, NULL };
 static int LUACALL wxLua_wxDateProperty_constructor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDateProperty_constructor[1] = {{ wxLua_wxDateProperty_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 3, s_wxluatypeArray_wxLua_wxDateProperty_constructor }};
-//                     const wxDateTime& value = wxDateTime() );
+//                     wxDateTime value = wxDateTime() );
 static int LUACALL wxLua_wxDateProperty_constructor(lua_State *L)
 {
     // get number of arguments
     int argCount = lua_gettop(L);
-    // const wxDateTime value = wxDateTime()
-    const wxDateTime * value = (argCount >= 3 ? (const wxDateTime *)wxluaT_getuserdatatype(L, 3, wxluatype_wxDateTime) : &wxDateTime());
+    // wxDateTime value = wxDateTime()
+    wxDateTime value = (argCount >= 3 ? *(wxDateTime*)wxluaT_getuserdatatype(L, 3, wxluatype_wxDateTime) : wxDateTime());
     // const wxString name = wxPG_LABEL
     const wxString name = (argCount >= 2 ? wxlua_getwxStringtype(L, 2) : wxString(wxPG_LABEL));
     // const wxString label = wxPG_LABEL
     const wxString label = (argCount >= 1 ? wxlua_getwxStringtype(L, 1) : wxString(wxPG_LABEL));
     // call constructor
-    wxDateProperty* returns = new wxDateProperty(label, name, *value);
+    wxDateProperty* returns = new wxDateProperty(label, name, value);
     // push the constructed class pointer
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxDateProperty);
 
@@ -23879,17 +23879,17 @@ wxLuaBindString* wxLuaGetStringList_wxpropgrid(size_t &count)
         { "wxPG_DIALOG_TITLE", NULL, wxPG_DIALOG_TITLE },
 #endif // wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
 
-#if ((defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
+#if (!wxCHECK_VERSION(3,1,3) && (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
         { "wxPG_DIR_DIALOG_MESSAGE", NULL, wxPG_DIR_DIALOG_MESSAGE },
-#endif // ((defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
+#endif // (!wxCHECK_VERSION(3,1,3) && (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
 
 #if wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
         { "wxPG_FILE_DIALOG_STYLE", NULL, wxPG_FILE_DIALOG_STYLE },
 #endif // wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
 
-#if ((defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
+#if (!wxCHECK_VERSION(3,1,3) && (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
         { "wxPG_FILE_DIALOG_TITLE", NULL, wxPG_FILE_DIALOG_TITLE },
-#endif // ((defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
+#endif // (!wxCHECK_VERSION(3,1,3) && (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
 
 #if wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
         { "wxPG_FILE_INITIAL_PATH", NULL, wxPG_FILE_INITIAL_PATH },

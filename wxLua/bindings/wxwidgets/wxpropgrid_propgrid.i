@@ -646,7 +646,7 @@ class wxFontProperty : public wxEditorDialogProperty
 {
     wxFontProperty(const wxString& label = wxPG_LABEL,
                    const wxString& name = wxPG_LABEL,
-                   const wxFont& value = wxFont());
+                   wxFont value = wxFont());
     virtual void OnSetValue();
     virtual wxString ValueToString( wxVariant& value, int argFlags = 0 ) const;
     virtual wxVariant ChildChanged( wxVariant& thisValue,
@@ -664,7 +664,7 @@ class wxSystemColourProperty : public wxEnumProperty
 {
     wxSystemColourProperty( const wxString& label = wxPG_LABEL,
                             const wxString& name = wxPG_LABEL,
-                            const wxColourPropertyValue& value = wxColourPropertyValue() );
+                            wxColourPropertyValue value = wxColourPropertyValue() );
 
     wxSystemColourProperty( const wxString& label = wxPG_LABEL,
                             const wxString& name = wxPG_LABEL,
@@ -768,7 +768,7 @@ class wxDateProperty : public wxPGProperty
 {
     wxDateProperty( const wxString& label = wxPG_LABEL,
                     const wxString& name = wxPG_LABEL,
-                    const wxDateTime& value = wxDateTime() );
+                    wxDateTime value = wxDateTime() );
 
     virtual void OnSetValue();
     virtual wxString ValueToString( wxVariant& value, int argFlags = 0 ) const;
@@ -1770,11 +1770,11 @@ enum wxPGPropertyFlags
 #define_wxstring wxPG_FILE_SHOW_RELATIVE_PATH
 #define_wxstring wxPG_FILE_INITIAL_PATH
 
-%wxcompat_3_0 #define_wxstring wxPG_FILE_DIALOG_TITLE
+!%wxchkver_3_1_3 && %wxcompat_3_0 #define_wxstring wxPG_FILE_DIALOG_TITLE
 
 #define_wxstring wxPG_FILE_DIALOG_STYLE
 
-%wxcompat_3_0 #define_wxstring wxPG_DIR_DIALOG_MESSAGE
+!%wxchkver_3_1_3 && %wxcompat_3_0 #define_wxstring wxPG_DIR_DIALOG_MESSAGE
 
 #define_wxstring wxPG_ARRAY_DELIMITER
 #define_wxstring wxPG_DATE_FORMAT
