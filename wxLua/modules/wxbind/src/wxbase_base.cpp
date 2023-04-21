@@ -752,10 +752,12 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
+
+#if wxCHECK_VERSION(3,1,1)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPlatformInfo_GetToolkitMicroVersion[] = { &wxluatype_wxPlatformInfo, NULL };
 static int LUACALL wxLua_wxPlatformInfo_GetToolkitMicroVersion(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPlatformInfo_GetToolkitMicroVersion[1] = {{ wxLua_wxPlatformInfo_GetToolkitMicroVersion, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPlatformInfo_GetToolkitMicroVersion }};
-//     int GetToolkitMicroVersion() const;
+//     %wxchkver_3_1_1 int GetToolkitMicroVersion() const;
 static int LUACALL wxLua_wxPlatformInfo_GetToolkitMicroVersion(lua_State *L)
 {
     // get this
@@ -775,6 +777,8 @@ if ((double)(lua_Integer)returns == (double)returns) {
 
     return 1;
 }
+
+#endif // wxCHECK_VERSION(3,1,1)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPlatformInfo_GetToolkitMinorVersion[] = { &wxluatype_wxPlatformInfo, NULL };
 static int LUACALL wxLua_wxPlatformInfo_GetToolkitMinorVersion(lua_State *L);
@@ -1070,7 +1074,11 @@ wxLuaBindMethod wxPlatformInfo_methods[] = {
     { "GetPortIdShortName", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxPlatformInfo_GetPortIdShortName_overload, s_wxluafunc_wxLua_wxPlatformInfo_GetPortIdShortName_overload_count, 0 },
 
     { "GetToolkitMajorVersion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_GetToolkitMajorVersion, 1, NULL },
+
+#if wxCHECK_VERSION(3,1,1)
     { "GetToolkitMicroVersion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_GetToolkitMicroVersion, 1, NULL },
+#endif // wxCHECK_VERSION(3,1,1)
+
     { "GetToolkitMinorVersion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_GetToolkitMinorVersion, 1, NULL },
     { "IsOk", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_IsOk, 1, NULL },
     { "IsUsingUniversalWidgets", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPlatformInfo_IsUsingUniversalWidgets, 1, NULL },

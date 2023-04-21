@@ -798,34 +798,12 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxUniChar_HighSurrogate[] = { &wxluatype_wxUniChar, NULL };
-static int LUACALL wxLua_wxUniChar_HighSurrogate(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_HighSurrogate[1] = {{ wxLua_wxUniChar_HighSurrogate, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_HighSurrogate }};
-//     wxUint16 HighSurrogate() const;
-static int LUACALL wxLua_wxUniChar_HighSurrogate(lua_State *L)
-{
-    // get this
-    wxUniChar * self = (wxUniChar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxUniChar);
-    // call HighSurrogate
-    wxUint16 returns = (self->HighSurrogate());
-    // push the result number
-#if LUA_VERSION_NUM >= 503
-if ((double)(lua_Integer)returns == (double)returns) {
-    // Exactly representable as lua_Integer
-    lua_pushinteger(L, returns);
-} else
-#endif
-{
-    lua_pushnumber(L, returns);
-}
 
-    return 1;
-}
-
+#if wxCHECK_VERSION(3,1,1)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxUniChar_HighSurrogate1[] = { &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxUniChar_HighSurrogate1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_HighSurrogate1[1] = {{ wxLua_wxUniChar_HighSurrogate1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_HighSurrogate1 }};
-//     static wxUint16 HighSurrogate(wxUint32 value);
+//     %wxchkver_3_1_1 static wxUint16 HighSurrogate(wxUint32 value);
 static int LUACALL wxLua_wxUniChar_HighSurrogate1(lua_State *L)
 {
     // wxUint32 value
@@ -846,6 +824,32 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxUniChar_HighSurrogate[] = { &wxluatype_wxUniChar, NULL };
+static int LUACALL wxLua_wxUniChar_HighSurrogate(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_HighSurrogate[1] = {{ wxLua_wxUniChar_HighSurrogate, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_HighSurrogate }};
+//     %wxchkver_3_1_1 wxUint16 HighSurrogate() const;
+static int LUACALL wxLua_wxUniChar_HighSurrogate(lua_State *L)
+{
+    // get this
+    wxUniChar * self = (wxUniChar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxUniChar);
+    // call HighSurrogate
+    wxUint16 returns = (self->HighSurrogate());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+#endif // wxCHECK_VERSION(3,1,1)
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxUniChar_IsAscii[] = { &wxluatype_wxUniChar, NULL };
 static int LUACALL wxLua_wxUniChar_IsAscii(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_IsAscii[1] = {{ wxLua_wxUniChar_IsAscii, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_IsAscii }};
@@ -862,26 +866,12 @@ static int LUACALL wxLua_wxUniChar_IsAscii(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxUniChar_IsBMP[] = { &wxluatype_wxUniChar, NULL };
-static int LUACALL wxLua_wxUniChar_IsBMP(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_IsBMP[1] = {{ wxLua_wxUniChar_IsBMP, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_IsBMP }};
-//     bool IsBMP() const;
-static int LUACALL wxLua_wxUniChar_IsBMP(lua_State *L)
-{
-    // get this
-    wxUniChar * self = (wxUniChar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxUniChar);
-    // call IsBMP
-    bool returns = (self->IsBMP());
-    // push the result flag
-    lua_pushboolean(L, returns);
 
-    return 1;
-}
-
+#if wxCHECK_VERSION(3,1,1)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxUniChar_IsBMP1[] = { &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxUniChar_IsBMP1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_IsBMP1[1] = {{ wxLua_wxUniChar_IsBMP1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_IsBMP1 }};
-//     static bool IsBMP(wxUint32 value);
+//     %wxchkver_3_1_1 static bool IsBMP(wxUint32 value);
 static int LUACALL wxLua_wxUniChar_IsBMP1(lua_State *L)
 {
     // wxUint32 value
@@ -894,16 +884,16 @@ static int LUACALL wxLua_wxUniChar_IsBMP1(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxUniChar_IsSupplementary[] = { &wxluatype_wxUniChar, NULL };
-static int LUACALL wxLua_wxUniChar_IsSupplementary(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_IsSupplementary[1] = {{ wxLua_wxUniChar_IsSupplementary, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_IsSupplementary }};
-//     bool IsSupplementary() const;
-static int LUACALL wxLua_wxUniChar_IsSupplementary(lua_State *L)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxUniChar_IsBMP[] = { &wxluatype_wxUniChar, NULL };
+static int LUACALL wxLua_wxUniChar_IsBMP(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_IsBMP[1] = {{ wxLua_wxUniChar_IsBMP, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_IsBMP }};
+//     %wxchkver_3_1_1 bool IsBMP() const;
+static int LUACALL wxLua_wxUniChar_IsBMP(lua_State *L)
 {
     // get this
     wxUniChar * self = (wxUniChar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxUniChar);
-    // call IsSupplementary
-    bool returns = (self->IsSupplementary());
+    // call IsBMP
+    bool returns = (self->IsBMP());
     // push the result flag
     lua_pushboolean(L, returns);
 
@@ -913,7 +903,7 @@ static int LUACALL wxLua_wxUniChar_IsSupplementary(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxUniChar_IsSupplementary1[] = { &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxUniChar_IsSupplementary1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_IsSupplementary1[1] = {{ wxLua_wxUniChar_IsSupplementary1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_IsSupplementary1 }};
-//     static bool IsSupplementary(wxUint32 value);
+//     %wxchkver_3_1_1 static bool IsSupplementary(wxUint32 value);
 static int LUACALL wxLua_wxUniChar_IsSupplementary1(lua_State *L)
 {
     // wxUint32 value
@@ -926,10 +916,50 @@ static int LUACALL wxLua_wxUniChar_IsSupplementary1(lua_State *L)
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxUniChar_IsSupplementary[] = { &wxluatype_wxUniChar, NULL };
+static int LUACALL wxLua_wxUniChar_IsSupplementary(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_IsSupplementary[1] = {{ wxLua_wxUniChar_IsSupplementary, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_IsSupplementary }};
+//     %wxchkver_3_1_1 bool IsSupplementary() const;
+static int LUACALL wxLua_wxUniChar_IsSupplementary(lua_State *L)
+{
+    // get this
+    wxUniChar * self = (wxUniChar *)wxluaT_getuserdatatype(L, 1, wxluatype_wxUniChar);
+    // call IsSupplementary
+    bool returns = (self->IsSupplementary());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxUniChar_LowSurrogate1[] = { &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxUniChar_LowSurrogate1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_LowSurrogate1[1] = {{ wxLua_wxUniChar_LowSurrogate1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_LowSurrogate1 }};
+//     %wxchkver_3_1_1 static wxUint16 LowSurrogate(wxUint32 value);
+static int LUACALL wxLua_wxUniChar_LowSurrogate1(lua_State *L)
+{
+    // wxUint32 value
+    wxUint32 value = (wxUint32)wxlua_getuintegertype(L, 1);
+    // call LowSurrogate
+    wxUint16 returns = (wxUniChar::LowSurrogate(value));
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxUniChar_LowSurrogate[] = { &wxluatype_wxUniChar, NULL };
 static int LUACALL wxLua_wxUniChar_LowSurrogate(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_LowSurrogate[1] = {{ wxLua_wxUniChar_LowSurrogate, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_LowSurrogate }};
-//     wxUint16 LowSurrogate() const;
+//     %wxchkver_3_1_1 wxUint16 LowSurrogate() const;
 static int LUACALL wxLua_wxUniChar_LowSurrogate(lua_State *L)
 {
     // get this
@@ -950,29 +980,7 @@ if ((double)(lua_Integer)returns == (double)returns) {
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxUniChar_LowSurrogate1[] = { &wxluatype_TINTEGER, NULL };
-static int LUACALL wxLua_wxUniChar_LowSurrogate1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_LowSurrogate1[1] = {{ wxLua_wxUniChar_LowSurrogate1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_LowSurrogate1 }};
-//     static wxUint16 LowSurrogate(wxUint32 value);
-static int LUACALL wxLua_wxUniChar_LowSurrogate1(lua_State *L)
-{
-    // wxUint32 value
-    wxUint32 value = (wxUint32)wxlua_getuintegertype(L, 1);
-    // call LowSurrogate
-    wxUint16 returns = (wxUniChar::LowSurrogate(value));
-    // push the result number
-#if LUA_VERSION_NUM >= 503
-if ((double)(lua_Integer)returns == (double)returns) {
-    // Exactly representable as lua_Integer
-    lua_pushinteger(L, returns);
-} else
-#endif
-{
-    lua_pushnumber(L, returns);
-}
-
-    return 1;
-}
+#endif // wxCHECK_VERSION(3,1,1)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxUniChar_delete[] = { &wxluatype_wxUniChar, NULL };
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_delete }};
@@ -1001,38 +1009,64 @@ static int LUACALL wxLua_wxUniChar_constructor(lua_State *L)
 
 
 
+#if (wxCHECK_VERSION(3,1,1))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_HighSurrogate_overload[] =
 {
-    { wxLua_wxUniChar_HighSurrogate, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_HighSurrogate },
+
+#if wxCHECK_VERSION(3,1,1)
     { wxLua_wxUniChar_HighSurrogate1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_HighSurrogate1 },
+#endif // wxCHECK_VERSION(3,1,1)
+
+#if wxCHECK_VERSION(3,1,1)
+    { wxLua_wxUniChar_HighSurrogate, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_HighSurrogate },
+#endif // wxCHECK_VERSION(3,1,1)
 };
 static int s_wxluafunc_wxLua_wxUniChar_HighSurrogate_overload_count = sizeof(s_wxluafunc_wxLua_wxUniChar_HighSurrogate_overload)/sizeof(wxLuaBindCFunc);
 
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_IsBMP_overload[] =
 {
-    { wxLua_wxUniChar_IsBMP, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_IsBMP },
+
+#if wxCHECK_VERSION(3,1,1)
     { wxLua_wxUniChar_IsBMP1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_IsBMP1 },
+#endif // wxCHECK_VERSION(3,1,1)
+
+#if wxCHECK_VERSION(3,1,1)
+    { wxLua_wxUniChar_IsBMP, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_IsBMP },
+#endif // wxCHECK_VERSION(3,1,1)
 };
 static int s_wxluafunc_wxLua_wxUniChar_IsBMP_overload_count = sizeof(s_wxluafunc_wxLua_wxUniChar_IsBMP_overload)/sizeof(wxLuaBindCFunc);
 
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_IsSupplementary_overload[] =
 {
-    { wxLua_wxUniChar_IsSupplementary, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_IsSupplementary },
+
+#if wxCHECK_VERSION(3,1,1)
     { wxLua_wxUniChar_IsSupplementary1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_IsSupplementary1 },
+#endif // wxCHECK_VERSION(3,1,1)
+
+#if wxCHECK_VERSION(3,1,1)
+    { wxLua_wxUniChar_IsSupplementary, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_IsSupplementary },
+#endif // wxCHECK_VERSION(3,1,1)
 };
 static int s_wxluafunc_wxLua_wxUniChar_IsSupplementary_overload_count = sizeof(s_wxluafunc_wxLua_wxUniChar_IsSupplementary_overload)/sizeof(wxLuaBindCFunc);
 
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxUniChar_LowSurrogate_overload[] =
 {
-    { wxLua_wxUniChar_LowSurrogate, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_LowSurrogate },
+
+#if wxCHECK_VERSION(3,1,1)
     { wxLua_wxUniChar_LowSurrogate1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_LowSurrogate1 },
+#endif // wxCHECK_VERSION(3,1,1)
+
+#if wxCHECK_VERSION(3,1,1)
+    { wxLua_wxUniChar_LowSurrogate, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxUniChar_LowSurrogate },
+#endif // wxCHECK_VERSION(3,1,1)
 };
 static int s_wxluafunc_wxLua_wxUniChar_LowSurrogate_overload_count = sizeof(s_wxluafunc_wxLua_wxUniChar_LowSurrogate_overload)/sizeof(wxLuaBindCFunc);
 
+#endif // (wxCHECK_VERSION(3,1,1))
 
 void wxLua_wxUniChar_delete_function(void** p)
 {
@@ -1044,13 +1078,17 @@ void wxLua_wxUniChar_delete_function(void** p)
 wxLuaBindMethod wxUniChar_methods[] = {
     { "GetValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxUniChar_GetValue, 1, NULL },
 
+#if (wxCHECK_VERSION(3,1,1))
     { "HighSurrogate", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxUniChar_HighSurrogate_overload, s_wxluafunc_wxLua_wxUniChar_HighSurrogate_overload_count, 0 },
+#endif // (wxCHECK_VERSION(3,1,1))
 
     { "IsAscii", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxUniChar_IsAscii, 1, NULL },
 
+#if (wxCHECK_VERSION(3,1,1))
     { "IsBMP", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxUniChar_IsBMP_overload, s_wxluafunc_wxLua_wxUniChar_IsBMP_overload_count, 0 },
     { "IsSupplementary", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxUniChar_IsSupplementary_overload, s_wxluafunc_wxLua_wxUniChar_IsSupplementary_overload_count, 0 },
     { "LowSurrogate", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxUniChar_LowSurrogate_overload, s_wxluafunc_wxLua_wxUniChar_LowSurrogate_overload_count, 0 },
+#endif // (wxCHECK_VERSION(3,1,1))
 
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxUniChar_delete, 1, NULL },
     { "wxUniChar", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxUniChar_constructor, 1, NULL },

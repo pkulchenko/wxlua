@@ -95,14 +95,14 @@ class %delete wxUniChar
     wxUint32 GetValue() const;
     bool IsAscii() const;
     /* bool GetAsChar(char *c) const; */
-    bool IsBMP() const;
-    static bool IsBMP(wxUint32 value);
-    bool IsSupplementary() const;
-    static bool IsSupplementary(wxUint32 value);
-    wxUint16 HighSurrogate() const;
-    static wxUint16 HighSurrogate(wxUint32 value);
-    wxUint16 LowSurrogate() const;
-    static wxUint16 LowSurrogate(wxUint32 value);
+    %wxchkver_3_1_1 bool IsBMP() const;
+    %wxchkver_3_1_1 static bool IsBMP(wxUint32 value);
+    %wxchkver_3_1_1 bool IsSupplementary() const;
+    %wxchkver_3_1_1 static bool IsSupplementary(wxUint32 value);
+    %wxchkver_3_1_1 wxUint16 HighSurrogate() const;
+    %wxchkver_3_1_1 static wxUint16 HighSurrogate(wxUint32 value);
+    %wxchkver_3_1_1 wxUint16 LowSurrogate() const;
+    %wxchkver_3_1_1 static wxUint16 LowSurrogate(wxUint32 value);
 };
 
 // ---------------------------------------------------------------------------
