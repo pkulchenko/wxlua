@@ -29,7 +29,7 @@ enum wxPG_WINDOW_STYLES
     wxPG_TOOLBAR,
     wxPG_DESCRIPTION,
     wxPG_NO_INTERNAL_BORDER,
-    wxPG_WINDOW_STYLE_MASK
+    %wxchkver_3_2_0 wxPG_WINDOW_STYLE_MASK
 };
 
 enum wxPG_EX_WINDOW_STYLES
@@ -47,9 +47,9 @@ enum wxPG_EX_WINDOW_STYLES
     wxPG_EX_NO_TOOLBAR_DIVIDER,
     wxPG_EX_TOOLBAR_SEPARATOR,
     wxPG_EX_ALWAYS_ALLOW_FOCUS,
-    wxPG_EX_WINDOW_PG_STYLE_MASK,
-    wxPG_EX_WINDOW_PGMAN_STYLE_MASK,
-    wxPG_EX_WINDOW_STYLE_MASK
+    %wxchkver_3_2_0 wxPG_EX_WINDOW_PG_STYLE_MASK,
+    %wxchkver_3_2_0 wxPG_EX_WINDOW_PGMAN_STYLE_MASK,
+    %wxchkver_3_2_0 wxPG_EX_WINDOW_STYLE_MASK
 };
 
 
@@ -351,8 +351,8 @@ public:
 
     void SetSecondary(wxWindow* secondary);
 
-    wxWindow* GetPrimary() const;
-    wxWindow* GetSecondary() const;
+    %wxchkver_3_2_0 wxWindow* GetPrimary() const;
+    %wxchkver_3_2_0 wxWindow* GetSecondary() const;
 };
 
 
@@ -388,7 +388,7 @@ class %delete wxPGEditor : public wxObject
     virtual void SetControlIntValue( wxPGProperty* property, wxWindow* ctrl, int value ) const;
     virtual int InsertItem( wxWindow* ctrl, const wxString& label, int index ) const;
     virtual void DeleteItem( wxWindow* ctrl, int index ) const;
-    virtual void SetItems(wxWindow* ctrl,  const wxArrayString& labels) const;
+    %wxchkver_3_2_0 virtual void SetItems(wxWindow* ctrl,  const wxArrayString& labels) const;
     virtual void OnFocus( wxPGProperty* property, wxWindow* wnd ) const;
     virtual bool CanContainCustomImage() const;
 
@@ -469,7 +469,7 @@ class %delete wxPGChoiceEditor : public wxPGEditor
                             const wxString& label,
                             int index ) const;
     virtual void DeleteItem( wxWindow* ctrl, int index ) const;
-    virtual void SetItems(wxWindow* ctrl, const wxArrayString& labels) const;
+    %wxchkver_3_2_0 virtual void SetItems(wxWindow* ctrl, const wxArrayString& labels) const;
 
     virtual bool CanContainCustomImage() const;
 
@@ -641,6 +641,13 @@ class %delete wxColourPropertyValue : public wxObject
     void operator=(const wxColourPropertyValue& cpv);
 };
 
+#if %wxchkver_3_2_0
+class wxEditorDialogProperty : public wxPGProperty
+{
+    virtual wxPGEditorDialogAdapter* GetEditorDialog() const;
+    virtual bool DoSetAttribute( const wxString& name, wxVariant& value );
+};
+
 
 class wxFontProperty : public wxEditorDialogProperty
 {
@@ -655,7 +662,109 @@ class wxFontProperty : public wxEditorDialogProperty
     virtual void RefreshChildren();
 };
 
+class wxMultiChoiceProperty : public wxEditorDialogProperty
+{
+    wxMultiChoiceProperty( const wxString& label,
+                           const wxString& name,
+                           const wxArrayString& strings,
+                           const wxArrayString& value );
+    wxMultiChoiceProperty( const wxString& label,
+                           const wxString& name,
+                           const wxPGChoices& choices,
+                           const wxArrayString& value = wxLuaNullSmartwxArrayString );
 
+    wxMultiChoiceProperty( const wxString& label = wxPG_LABEL,
+                           const wxString& name = wxPG_LABEL,
+                           const wxArrayString& value = wxLuaNullSmartwxArrayString );
+
+    virtual void OnSetValue();
+    virtual wxString ValueToString( wxVariant& value, int argFlags = 0 ) const;
+    virtual bool StringToValue(wxVariant& variant,
+                               const wxString& text,
+                               int argFlags = 0) const;
+
+    wxArrayInt GetValueAsArrayInt() const;
+};
+
+#define wxPG_PROP_SHOW_FULL_FILENAME
+
+class wxFileProperty : public wxEditorDialogProperty
+{
+    wxFileProperty( const wxString& label = wxPG_LABEL,
+                    const wxString& name = wxPG_LABEL,
+                    const wxString& value = wxEmptyString );
+
+    virtual void OnSetValue();
+    virtual wxString ValueToString( wxVariant& value, int argFlags = 0 ) const;
+    virtual bool StringToValue( wxVariant& variant,
+                                const wxString& text,
+                                int argFlags = 0 ) const;
+    virtual bool DoSetAttribute( const wxString& name, wxVariant& value );
+
+    static wxValidator* GetClassValidator();
+    virtual wxValidator* DoGetValidator() const;
+
+    wxFileName GetFileName() const;
+};
+
+#define wxPG_PROP_ACTIVE_BTN
+
+class wxLongStringProperty : public wxEditorDialogProperty
+{
+    wxLongStringProperty( const wxString& label = wxPG_LABEL,
+                          const wxString& name = wxPG_LABEL,
+                          const wxString& value = wxEmptyString );
+
+    virtual wxString ValueToString( wxVariant& value, int argFlags = 0 ) const;
+    virtual bool StringToValue( wxVariant& variant,
+                                const wxString& text,
+                                int argFlags = 0 ) const;
+};
+
+
+class wxDirProperty : public wxEditorDialogProperty
+{
+    wxDirProperty( const wxString& label = wxPG_LABEL,
+                   const wxString& name = wxPG_LABEL,
+                   const wxString& value = wxEmptyString );
+
+    virtual wxString ValueToString(wxVariant& value, int argFlags = 0) const;
+    virtual bool StringToValue(wxVariant& variant, const wxString& text,
+                               int argFlags = 0) const;
+    virtual wxValidator* DoGetValidator() const;
+};
+
+enum wxArrayStringProperty::ConversionFlags
+{
+    Escape          = 0x01,
+    QuoteStrings    = 0x02
+};
+
+class wxArrayStringProperty : public wxEditorDialogProperty
+{
+    wxArrayStringProperty( const wxString& label = wxPG_LABEL,
+                           const wxString& name = wxPG_LABEL,
+                           const wxArrayString& value = wxLuaNullSmartwxArrayString );
+
+    virtual void OnSetValue();
+    virtual wxString ValueToString( wxVariant& value, int argFlags = 0 ) const;
+    virtual bool StringToValue( wxVariant& variant,
+                                const wxString& text,
+                                int argFlags = 0 ) const;
+    virtual bool DoSetAttribute( const wxString& name, wxVariant& value );
+
+    virtual void ConvertArrayToString(const wxArrayString& arr,
+                                      wxString* pString,
+                                      const wxUniChar& delimiter) const;
+
+    virtual bool OnCustomStringEdit( wxWindow* parent, wxString& value );
+
+    virtual wxPGArrayEditorDialog* CreateEditorDialog();
+
+    static void ArrayStringToString( wxString& dst, const wxArrayString& src,
+                                     wxUniChar delimiter, int flags );
+};
+#endif //%wxchkver_3_2_0
 
 #define wxPG_PROP_TRANSLATE_CUSTOM
 
@@ -736,32 +845,6 @@ class wxImageFileProperty : public wxFileProperty
     virtual void OnCustomPaint( wxDC& dc,
                                 const wxRect& rect, wxPGPaintData& paintdata );
 };
-
-
-class wxMultiChoiceProperty : public wxEditorDialogProperty
-{
-    wxMultiChoiceProperty( const wxString& label,
-                           const wxString& name,
-                           const wxArrayString& strings,
-                           const wxArrayString& value );
-    wxMultiChoiceProperty( const wxString& label,
-                           const wxString& name,
-                           const wxPGChoices& choices,
-                           const wxArrayString& value = wxLuaNullSmartwxArrayString );
-
-    wxMultiChoiceProperty( const wxString& label = wxPG_LABEL,
-                           const wxString& name = wxPG_LABEL,
-                           const wxArrayString& value = wxLuaNullSmartwxArrayString );
-
-    virtual void OnSetValue();
-    virtual wxString ValueToString( wxVariant& value, int argFlags = 0 ) const;
-    virtual bool StringToValue(wxVariant& variant,
-                               const wxString& text,
-                               int argFlags = 0) const;
-
-    wxArrayInt GetValueAsArrayInt() const;
-};
-
 
 
 class wxDateProperty : public wxPGProperty
@@ -847,6 +930,7 @@ class wxNumericPropertyValidator : public wxTextValidator
 };
 
 
+#if %wxchkver_3_2_0
 class wxNumericProperty : public wxPGProperty
 {
     virtual bool DoSetAttribute(const wxString& name, wxVariant& value);
@@ -900,8 +984,6 @@ class wxUIntProperty : public wxNumericProperty
     virtual wxVariant AddSpinStepValue(long stepScale) const;
 };
 
-
-
 class wxFloatProperty : public wxNumericProperty
 {
     wxFloatProperty( const wxString& label = wxPG_LABEL,
@@ -920,7 +1002,7 @@ class wxFloatProperty : public wxNumericProperty
     virtual wxValidator* DoGetValidator () const;
     virtual wxVariant AddSpinStepValue(long stepScale) const;
 };
-
+#endif //%wxchkver_3_2_0
 
 class wxBoolProperty : public wxPGProperty
 {
@@ -1053,100 +1135,8 @@ class wxFlagsProperty : public wxPGProperty
     const wxString& GetLabel( size_t ind ) const;
 };
 
-
-class wxEditorDialogProperty : public wxPGProperty
-{
-    virtual wxPGEditorDialogAdapter* GetEditorDialog() const;
-    virtual bool DoSetAttribute( const wxString& name, wxVariant& value );
-};
-
-
-#define wxPG_PROP_SHOW_FULL_FILENAME
-
-
-class wxFileProperty : public wxEditorDialogProperty
-{
-    wxFileProperty( const wxString& label = wxPG_LABEL,
-                    const wxString& name = wxPG_LABEL,
-                    const wxString& value = wxEmptyString );
-
-    virtual void OnSetValue();
-    virtual wxString ValueToString( wxVariant& value, int argFlags = 0 ) const;
-    virtual bool StringToValue( wxVariant& variant,
-                                const wxString& text,
-                                int argFlags = 0 ) const;
-    virtual bool DoSetAttribute( const wxString& name, wxVariant& value );
-
-    static wxValidator* GetClassValidator();
-    virtual wxValidator* DoGetValidator() const;
-
-    wxFileName GetFileName() const;
-};
-
-
-#define wxPG_PROP_ACTIVE_BTN
-
-class wxLongStringProperty : public wxEditorDialogProperty
-{
-    wxLongStringProperty( const wxString& label = wxPG_LABEL,
-                          const wxString& name = wxPG_LABEL,
-                          const wxString& value = wxEmptyString );
-
-    virtual wxString ValueToString( wxVariant& value, int argFlags = 0 ) const;
-    virtual bool StringToValue( wxVariant& variant,
-                                const wxString& text,
-                                int argFlags = 0 ) const;
-};
-
-
-class wxDirProperty : public wxEditorDialogProperty
-{
-    wxDirProperty( const wxString& label = wxPG_LABEL,
-                   const wxString& name = wxPG_LABEL,
-                   const wxString& value = wxEmptyString );
-
-    virtual wxString ValueToString(wxVariant& value, int argFlags = 0) const;
-    virtual bool StringToValue(wxVariant& variant, const wxString& text,
-                               int argFlags = 0) const;
-    virtual wxValidator* DoGetValidator() const;
-};
-
-
 #define wxPG_PROP_USE_CHECKBOX
 #define wxPG_PROP_USE_DCC    
-
-
-enum wxArrayStringProperty::ConversionFlags
-{
-    Escape          = 0x01,
-    QuoteStrings    = 0x02
-};
-
-class wxArrayStringProperty : public wxEditorDialogProperty
-{
-    wxArrayStringProperty( const wxString& label = wxPG_LABEL,
-                           const wxString& name = wxPG_LABEL,
-                           const wxArrayString& value = wxLuaNullSmartwxArrayString );
-
-    virtual void OnSetValue();
-    virtual wxString ValueToString( wxVariant& value, int argFlags = 0 ) const;
-    virtual bool StringToValue( wxVariant& variant,
-                                const wxString& text,
-                                int argFlags = 0 ) const;
-    virtual bool DoSetAttribute( const wxString& name, wxVariant& value );
-
-    virtual void ConvertArrayToString(const wxArrayString& arr,
-                                      wxString* pString,
-                                      const wxUniChar& delimiter) const;
-
-    virtual bool OnCustomStringEdit( wxWindow* parent, wxString& value );
-
-    virtual wxPGArrayEditorDialog* CreateEditorDialog();
-
-    static void ArrayStringToString( wxString& dst, const wxArrayString& src,
-                                     wxUniChar delimiter, int flags );
-};
-
 
 #define wxAEDIALOG_STYLE
 
@@ -1165,7 +1155,7 @@ class wxPGArrayEditorDialog : public wxDialog
                  const wxSize& sz = wxDefaultSize );
 
     void EnableCustomNewAction();
-    void SetNewButtonText(const wxString& text);
+    %wxchkver_3_2_0 void SetNewButtonText(const wxString& text);
     virtual void SetDialogValue( const wxVariant& value );
     virtual wxVariant GetDialogValue() const;
     virtual wxValidator* GetTextCtrlValidator() const;
@@ -1623,8 +1613,8 @@ class wxPropertyGridInterface
                           const wxColour& bgCol = wxNullColour );
     void SetPropertyClientData( const wxPGProperty*& id, void* clientData );
     void SetPropertyClientData( const wxString& id, void* clientData );
-    void SetPropertyColoursToDefault(const wxPGProperty*& id, int flags = wxPG_DONT_RECURSE);
-    void SetPropertyColoursToDefault(const wxString& id, int flags = wxPG_DONT_RECURSE);
+    %wxchkver_3_2_0 void SetPropertyColoursToDefault(const wxPGProperty*& id, int flags = wxPG_DONT_RECURSE);
+    %wxchkver_3_2_0 void SetPropertyColoursToDefault(const wxString& id, int flags = wxPG_DONT_RECURSE);
     void SetPropertyEditor( const wxPGProperty*& id, const wxPGEditor* editor );
     void SetPropertyEditor( const wxString& id, const wxPGEditor* editor );
     void SetPropertyEditor( const wxPGProperty*& id, const wxString& editorName );
@@ -1739,7 +1729,7 @@ enum wxPGPropertyFlags
     wxPG_PROP_CLASS_SPECIFIC_1,
     wxPG_PROP_CLASS_SPECIFIC_2,
     wxPG_PROP_BEING_DELETED,
-    wxPG_PROP_CLASS_SPECIFIC_3
+    %wxchkver_3_2_0 wxPG_PROP_CLASS_SPECIFIC_3
 };
 
 
@@ -1754,7 +1744,7 @@ enum wxPGPropertyFlags
 #define_wxstring wxPG_ATTR_HINT
 
 #if wxPG_COMPATIBILITY_1_4
-#define wxPG_ATTR_INLINE_HELP
+!%wxchkver_3_0_0 #define wxPG_ATTR_INLINE_HELP
 #endif
 
 #define_wxstring wxPG_ATTR_AUTOCOMPLETE
@@ -1764,7 +1754,7 @@ enum wxPGPropertyFlags
 #define_wxstring wxPG_STRING_PASSWORD
 #define_wxstring wxPG_UINT_BASE
 #define_wxstring wxPG_UINT_PREFIX
-#define_wxstring wxPG_DIALOG_TITLE
+%wxchkver_3_2_0 #define_wxstring wxPG_DIALOG_TITLE
 #define_wxstring wxPG_FILE_WILDCARD
 #define_wxstring wxPG_FILE_SHOW_FULL_PATH
 #define_wxstring wxPG_FILE_SHOW_RELATIVE_PATH
@@ -1783,7 +1773,7 @@ enum wxPGPropertyFlags
 #if wxUSE_SPINBTN && wxLUA_USE_wxSpinButton
 #define_wxstring wxPG_ATTR_SPINCTRL_STEP
 #define_wxstring wxPG_ATTR_SPINCTRL_WRAP
-#define_wxstring wxPG_ATTR_SPINCTRL_MOTION
+%wxchkver_3_2_0 #define_wxstring wxPG_ATTR_SPINCTRL_MOTION
 #endif  // wxUSE_SPINBTN && wxLUA_USE_wxSpinButton
 
 #define_wxstring wxPG_ATTR_MULTICHOICE_USERSTRINGMODE
@@ -1886,9 +1876,9 @@ class %delete wxPGProperty : public wxObject
     int GetY() const;
     int GetImageOffset( int imageWidth ) const;
     %ungc wxPGProperty* GetItemAtY( unsigned int y ) const;
-    bool HasFlag(wxPGPropertyFlags flag) const;
-    bool HasFlag(wxUint32 flag) const;
-    bool HasFlagsExact(wxUint32 flags) const;
+    %wxchkver_3_2_0 bool HasFlag(wxPGPropertyFlags flag) const;
+    %wxchkver_3_2_0 bool HasFlag(wxUint32 flag) const;
+    %wxchkver_3_2_0 bool HasFlagsExact(wxUint32 flags) const;
     bool HasVisibleChildren() const;
     bool Hide( bool hide, int flags = wxPG_RECURSE );
     int Index( const wxPGProperty* p ) const;
@@ -1935,7 +1925,7 @@ class %delete wxPGProperty : public wxObject
     void SetParentalType( int flag );
     void SetTextColour( const wxColour& colour,
                         int flags = wxPG_RECURSE );
-    void SetDefaultColours(int flags = wxPG_RECURSE);
+    %wxchkver_3_2_0 void SetDefaultColours(int flags = wxPG_RECURSE);
     void SetValidator( const wxValidator& validator );
     void SetValue( wxVariant value, wxVariant* pList = NULL,
                    int flags = wxPG_SETVAL_REFRESH_EDITOR );

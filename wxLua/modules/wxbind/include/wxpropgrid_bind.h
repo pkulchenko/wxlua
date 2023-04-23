@@ -11,6 +11,7 @@
 #include "wxbind/include/wxbinddefs.h"
 #include "wxluasetup.h"
 #include "wxbind/include/wxcore_bind.h"
+#include "wx/propgrid/property.h"
 
 #include "wxlua/wxlstate.h"
 #include "wxlua/wxlbind.h"
@@ -59,6 +60,20 @@ extern WXDLLIMPEXP_BINDWXPROPGRID wxLuaBinding* wxLuaBinding_wxpropgrid_init();
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
 
+#if (wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxArrayStringProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxDirProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxEditorDialogProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxFileProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxFloatProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxFontProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxIntProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxLongStringProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxMultiChoiceProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxNumericProperty;
+    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxUIntProperty;
+#endif // (wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
+
 #if (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxPG_INCLUDE_CHECKBOX)
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGCheckBoxEditor;
 #endif // (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxPG_INCLUDE_CHECKBOX)
@@ -68,25 +83,15 @@ extern WXDLLIMPEXP_BINDWXPROPGRID wxLuaBinding* wxLuaBinding_wxpropgrid_init();
 #endif // (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_SPINBTN && wxLUA_USE_wxSpinButton)
 
 #if wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
-    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxArrayStringProperty;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxBoolProperty;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxColourProperty;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxColourPropertyValue;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxCursorProperty;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxDateProperty;
-    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxDirProperty;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxEditEnumProperty;
-    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxEditorDialogProperty;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxEnumProperty;
-    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxFileProperty;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxFlagsProperty;
-    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxFloatProperty;
-    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxFontProperty;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxImageFileProperty;
-    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxIntProperty;
-    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxLongStringProperty;
-    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxMultiChoiceProperty;
-    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxNumericProperty;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxNumericPropertyValidator;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGArrayEditorDialog;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPGArrayStringEditorDialog;
@@ -126,7 +131,6 @@ extern WXDLLIMPEXP_BINDWXPROPGRID wxLuaBinding* wxLuaBinding_wxpropgrid_init();
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxPropertyGridPageState;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxStringProperty;
     extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxSystemColourProperty;
-    extern WXDLLIMPEXP_DATA_BINDWXPROPGRID(int) wxluatype_wxUIntProperty;
 #endif // wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
 
 
