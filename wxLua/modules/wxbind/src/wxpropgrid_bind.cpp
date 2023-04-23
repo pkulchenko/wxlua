@@ -1500,24 +1500,6 @@ static int LUACALL wxLua_wxPropertyGrid_ResetColours(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGrid_ResetColumnSizes[] = { &wxluatype_wxPropertyGrid, &wxluatype_TBOOLEAN, NULL };
-static int LUACALL wxLua_wxPropertyGrid_ResetColumnSizes(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGrid_ResetColumnSizes[1] = {{ wxLua_wxPropertyGrid_ResetColumnSizes, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxPropertyGrid_ResetColumnSizes }};
-//     void ResetColumnSizes( bool enableAutoResizing = false );
-static int LUACALL wxLua_wxPropertyGrid_ResetColumnSizes(lua_State *L)
-{
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // bool enableAutoResizing = false
-    bool enableAutoResizing = (argCount >= 2 ? wxlua_getbooleantype(L, 2) : false);
-    // get this
-    wxPropertyGrid * self = (wxPropertyGrid *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGrid);
-    // call ResetColumnSizes
-    self->ResetColumnSizes(enableAutoResizing);
-
-    return 0;
-}
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGrid_SelectProperty1[] = { &wxluatype_wxPropertyGrid, &wxluatype_TSTRING, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxPropertyGrid_SelectProperty1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGrid_SelectProperty1[1] = {{ wxLua_wxPropertyGrid_SelectProperty1, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxPropertyGrid_SelectProperty1 }};
@@ -1645,22 +1627,6 @@ static int LUACALL wxLua_wxPropertyGrid_SetCellTextColour(lua_State *L)
 }
 
 #endif // (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGrid_SetColumnCount[] = { &wxluatype_wxPropertyGrid, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxPropertyGrid_SetColumnCount(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGrid_SetColumnCount[1] = {{ wxLua_wxPropertyGrid_SetColumnCount, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPropertyGrid_SetColumnCount }};
-//     void SetColumnCount( int colCount );
-static int LUACALL wxLua_wxPropertyGrid_SetColumnCount(lua_State *L)
-{
-    // int colCount
-    int colCount = (int)wxlua_getnumbertype(L, 2);
-    // get this
-    wxPropertyGrid * self = (wxPropertyGrid *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGrid);
-    // call SetColumnCount
-    self->SetColumnCount(colCount);
-
-    return 0;
-}
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGrid_SetCurrentCategory1[] = { &wxluatype_wxPropertyGrid, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxPropertyGrid_SetCurrentCategory1(lua_State *L);
@@ -1844,22 +1810,6 @@ static int LUACALL wxLua_wxPropertyGrid_SetVerticalSpacing(lua_State *L)
     wxPropertyGrid * self = (wxPropertyGrid *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGrid);
     // call SetVerticalSpacing
     self->SetVerticalSpacing(vspacing);
-
-    return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGrid_SetVirtualWidth[] = { &wxluatype_wxPropertyGrid, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxPropertyGrid_SetVirtualWidth(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGrid_SetVirtualWidth[1] = {{ wxLua_wxPropertyGrid_SetVirtualWidth, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPropertyGrid_SetVirtualWidth }};
-//     void SetVirtualWidth( int width );
-static int LUACALL wxLua_wxPropertyGrid_SetVirtualWidth(lua_State *L)
-{
-    // int width
-    int width = (int)wxlua_getnumbertype(L, 2);
-    // get this
-    wxPropertyGrid * self = (wxPropertyGrid *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGrid);
-    // call SetVirtualWidth
-    self->SetVirtualWidth(width);
 
     return 0;
 }
@@ -2239,7 +2189,6 @@ wxLuaBindMethod wxPropertyGrid_methods[] = {
 #endif // (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
 
     { "ResetColours", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGrid_ResetColours, 1, NULL },
-    { "ResetColumnSizes", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGrid_ResetColumnSizes, 1, NULL },
 
 #if (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
     { "SelectProperty", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGrid_SelectProperty_overload, s_wxluafunc_wxLua_wxPropertyGrid_SelectProperty_overload_count, 0 },
@@ -2252,8 +2201,6 @@ wxLuaBindMethod wxPropertyGrid_methods[] = {
     { "SetCellDisabledTextColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGrid_SetCellDisabledTextColour, 1, NULL },
     { "SetCellTextColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGrid_SetCellTextColour, 1, NULL },
 #endif // (wxLUA_USE_wxColourPenBrush) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
-
-    { "SetColumnCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGrid_SetColumnCount, 1, NULL },
 
 #if (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
     { "SetCurrentCategory", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGrid_SetCurrentCategory_overload, s_wxluafunc_wxLua_wxPropertyGrid_SetCurrentCategory_overload_count, 0 },
@@ -2271,7 +2218,6 @@ wxLuaBindMethod wxPropertyGrid_methods[] = {
     { "SetSplitterPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGrid_SetSplitterPosition, 1, NULL },
     { "SetUnspecifiedValueAppearance", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGrid_SetUnspecifiedValueAppearance, 1, NULL },
     { "SetVerticalSpacing", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGrid_SetVerticalSpacing, 1, NULL },
-    { "SetVirtualWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGrid_SetVirtualWidth, 1, NULL },
     { "SetupTextCtrlValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGrid_SetupTextCtrlValue, 1, NULL },
 
 #if (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
@@ -3842,26 +3788,6 @@ static int LUACALL wxLua_wxPropertyGridManager_SetPageSplitterPosition(lua_State
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridManager_SetSplitterLeft[] = { &wxluatype_wxPropertyGridManager, &wxluatype_TBOOLEAN, &wxluatype_TBOOLEAN, NULL };
-static int LUACALL wxLua_wxPropertyGridManager_SetSplitterLeft(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridManager_SetSplitterLeft[1] = {{ wxLua_wxPropertyGridManager_SetSplitterLeft, WXLUAMETHOD_METHOD, 1, 3, s_wxluatypeArray_wxLua_wxPropertyGridManager_SetSplitterLeft }};
-//     void SetSplitterLeft( bool subProps = false, bool allPages = true );
-static int LUACALL wxLua_wxPropertyGridManager_SetSplitterLeft(lua_State *L)
-{
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // bool allPages = true
-    bool allPages = (argCount >= 3 ? wxlua_getbooleantype(L, 3) : true);
-    // bool subProps = false
-    bool subProps = (argCount >= 2 ? wxlua_getbooleantype(L, 2) : false);
-    // get this
-    wxPropertyGridManager * self = (wxPropertyGridManager *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridManager);
-    // call SetSplitterLeft
-    self->SetSplitterLeft(subProps, allPages);
-
-    return 0;
-}
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridManager_SetSplitterPosition[] = { &wxluatype_wxPropertyGridManager, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPropertyGridManager_SetSplitterPosition(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridManager_SetSplitterPosition[1] = {{ wxLua_wxPropertyGridManager_SetSplitterPosition, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxPropertyGridManager_SetSplitterPosition }};
@@ -4055,7 +3981,6 @@ wxLuaBindMethod wxPropertyGridManager_methods[] = {
     { "SetDescription", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridManager_SetDescription, 1, NULL },
     { "SetPageSplitterLeft", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridManager_SetPageSplitterLeft, 1, NULL },
     { "SetPageSplitterPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridManager_SetPageSplitterPosition, 1, NULL },
-    { "SetSplitterLeft", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridManager_SetSplitterLeft, 1, NULL },
     { "SetSplitterPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridManager_SetSplitterPosition, 1, NULL },
     { "ShowHeader", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridManager_ShowHeader, 1, NULL },
 
@@ -11883,41 +11808,6 @@ int wxPGVIterator_methodCount = sizeof(wxPGVIterator_methods)/sizeof(wxLuaBindMe
 // Lua MetaTable Tag for Class 'wxPropertyGridPageState'
 int wxluatype_wxPropertyGridPageState = WXLUA_TUNKNOWN;
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_BaseGetPropertyByName[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_BaseGetPropertyByName(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_BaseGetPropertyByName[1] = {{ wxLua_wxPropertyGridPageState_BaseGetPropertyByName, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPropertyGridPageState_BaseGetPropertyByName }};
-//     %ungc wxPGProperty* BaseGetPropertyByName( const wxString& name ) const;
-static int LUACALL wxLua_wxPropertyGridPageState_BaseGetPropertyByName(lua_State *L)
-{
-    // const wxString name
-    const wxString name = wxlua_getwxStringtype(L, 2);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call BaseGetPropertyByName
-    wxPGProperty* returns = (wxPGProperty*)self->BaseGetPropertyByName(name);
-    if (wxluaO_isgcobject(L, returns)) wxluaO_undeletegcobject(L, returns);
-    // push the result datatype
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPGProperty);
-
-    return 1;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_CalculateFontAndBitmapStuff[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_CalculateFontAndBitmapStuff(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_CalculateFontAndBitmapStuff[1] = {{ wxLua_wxPropertyGridPageState_CalculateFontAndBitmapStuff, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPropertyGridPageState_CalculateFontAndBitmapStuff }};
-//     void CalculateFontAndBitmapStuff( int vspacing );
-static int LUACALL wxLua_wxPropertyGridPageState_CalculateFontAndBitmapStuff(lua_State *L)
-{
-    // int vspacing
-    int vspacing = (int)wxlua_getnumbertype(L, 2);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call CalculateFontAndBitmapStuff
-    self->CalculateFontAndBitmapStuff(vspacing);
-
-    return 0;
-}
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_CheckColumnWidths[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPropertyGridPageState_CheckColumnWidths(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_CheckColumnWidths[1] = {{ wxLua_wxPropertyGridPageState_CheckColumnWidths, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxPropertyGridPageState_CheckColumnWidths }};
@@ -11934,74 +11824,6 @@ static int LUACALL wxLua_wxPropertyGridPageState_CheckColumnWidths(lua_State *L)
     self->CheckColumnWidths(widthChange);
 
     return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoAppend[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxPGProperty, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoAppend(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoAppend[1] = {{ wxLua_wxPropertyGridPageState_DoAppend, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoAppend }};
-//     %ungc wxPGProperty* DoAppend( %ungc wxPGProperty* property );
-static int LUACALL wxLua_wxPropertyGridPageState_DoAppend(lua_State *L)
-{
-    // wxPGProperty property
-    wxPGProperty * property = (wxPGProperty *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPGProperty);
-    if (wxluaO_isgcobject(L, property)) wxluaO_undeletegcobject(L, property);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoAppend
-    wxPGProperty* returns = (wxPGProperty*)self->DoAppend(property);
-    if (wxluaO_isgcobject(L, returns)) wxluaO_undeletegcobject(L, returns);
-    // push the result datatype
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPGProperty);
-
-    return 1;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoClear[] = { &wxluatype_wxPropertyGridPageState, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoClear(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoClear[1] = {{ wxLua_wxPropertyGridPageState_DoClear, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoClear }};
-//     void DoClear();
-static int LUACALL wxLua_wxPropertyGridPageState_DoClear(lua_State *L)
-{
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoClear
-    self->DoClear();
-
-    return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoClearSelection[] = { &wxluatype_wxPropertyGridPageState, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoClearSelection(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoClearSelection[1] = {{ wxLua_wxPropertyGridPageState_DoClearSelection, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoClearSelection }};
-//     bool DoClearSelection();
-static int LUACALL wxLua_wxPropertyGridPageState_DoClearSelection(lua_State *L)
-{
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoClearSelection
-    bool returns = (self->DoClearSelection());
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoCollapse[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxPGProperty, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoCollapse(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoCollapse[1] = {{ wxLua_wxPropertyGridPageState_DoCollapse, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoCollapse }};
-//     bool DoCollapse( wxPGProperty* p );
-static int LUACALL wxLua_wxPropertyGridPageState_DoCollapse(lua_State *L)
-{
-    // wxPGProperty p
-    wxPGProperty * p = (wxPGProperty *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPGProperty);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoCollapse
-    bool returns = (self->DoCollapse(p));
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
 }
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoDelete[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxPGProperty, &wxluatype_TBOOLEAN, NULL };
@@ -12022,166 +11844,6 @@ static int LUACALL wxLua_wxPropertyGridPageState_DoDelete(lua_State *L)
     self->DoDelete(item, doDelete);
 
     return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoExpand[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxPGProperty, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoExpand(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoExpand[1] = {{ wxLua_wxPropertyGridPageState_DoExpand, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoExpand }};
-//     bool DoExpand( wxPGProperty* p );
-static int LUACALL wxLua_wxPropertyGridPageState_DoExpand(lua_State *L)
-{
-    // wxPGProperty p
-    wxPGProperty * p = (wxPGProperty *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPGProperty);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoExpand
-    bool returns = (self->DoExpand(p));
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
-}
-
-
-#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoFitColumns[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_TBOOLEAN, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoFitColumns(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoFitColumns[1] = {{ wxLua_wxPropertyGridPageState_DoFitColumns, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoFitColumns }};
-//     wxSize DoFitColumns( bool allowGridResize = false );
-static int LUACALL wxLua_wxPropertyGridPageState_DoFitColumns(lua_State *L)
-{
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // bool allowGridResize = false
-    bool allowGridResize = (argCount >= 2 ? wxlua_getbooleantype(L, 2) : false);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoFitColumns
-    // allocate a new object using the copy constructor
-    wxSize* returns = new wxSize(self->DoFitColumns(allowGridResize));
-    // add the new object to the tracked memory list
-    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
-    // push the result datatype
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
-
-    return 1;
-}
-
-#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoGetColumnProportion[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_TINTEGER, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoGetColumnProportion(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoGetColumnProportion[1] = {{ wxLua_wxPropertyGridPageState_DoGetColumnProportion, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoGetColumnProportion }};
-//     int DoGetColumnProportion( unsigned int column ) const;
-static int LUACALL wxLua_wxPropertyGridPageState_DoGetColumnProportion(lua_State *L)
-{
-    // unsigned int column
-    unsigned int column = (unsigned int)wxlua_getuintegertype(L, 2);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoGetColumnProportion
-    int returns = (self->DoGetColumnProportion(column));
-    // push the result number
-#if LUA_VERSION_NUM >= 503
-if ((double)(lua_Integer)returns == (double)returns) {
-    // Exactly representable as lua_Integer
-    lua_pushinteger(L, returns);
-} else
-#endif
-{
-    lua_pushnumber(L, returns);
-}
-
-    return 1;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoGetItemAtY[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoGetItemAtY(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoGetItemAtY[1] = {{ wxLua_wxPropertyGridPageState_DoGetItemAtY, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoGetItemAtY }};
-//     %ungc wxPGProperty* DoGetItemAtY( int y ) const;
-static int LUACALL wxLua_wxPropertyGridPageState_DoGetItemAtY(lua_State *L)
-{
-    // int y
-    int y = (int)wxlua_getnumbertype(L, 2);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoGetItemAtY
-    wxPGProperty* returns = (wxPGProperty*)self->DoGetItemAtY(y);
-    if (wxluaO_isgcobject(L, returns)) wxluaO_undeletegcobject(L, returns);
-    // push the result datatype
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPGProperty);
-
-    return 1;
-}
-
-
-#if (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_VARIANT)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoGetPropertyValues[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_TSTRING, &wxluatype_wxPGProperty, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoGetPropertyValues(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoGetPropertyValues[1] = {{ wxLua_wxPropertyGridPageState_DoGetPropertyValues, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoGetPropertyValues }};
-//                                    long flags ) const;
-static int LUACALL wxLua_wxPropertyGridPageState_DoGetPropertyValues(lua_State *L)
-{
-    // long flags
-    long flags = (long)wxlua_getnumbertype(L, 4);
-    // wxPGProperty baseparent
-    wxPGProperty * baseparent = (wxPGProperty *)wxluaT_getuserdatatype(L, 3, wxluatype_wxPGProperty);
-    // const wxString listname
-    const wxString listname = wxlua_getwxStringtype(L, 2);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoGetPropertyValues
-    // allocate a new object using the copy constructor
-    wxVariant* returns = new wxVariant(self->DoGetPropertyValues(listname, baseparent, flags));
-    // add the new object to the tracked memory list
-    wxluaO_addgcobject(L, returns, wxluatype_wxVariant);
-    // push the result datatype
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxVariant);
-
-    return 1;
-}
-
-#endif // (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_VARIANT)
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoGetRoot[] = { &wxluatype_wxPropertyGridPageState, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoGetRoot(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoGetRoot[1] = {{ wxLua_wxPropertyGridPageState_DoGetRoot, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoGetRoot }};
-//     %ungc wxPGProperty* DoGetRoot() const;
-static int LUACALL wxLua_wxPropertyGridPageState_DoGetRoot(lua_State *L)
-{
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoGetRoot
-    wxPGProperty* returns = (wxPGProperty*)self->DoGetRoot();
-    if (wxluaO_isgcobject(L, returns)) wxluaO_undeletegcobject(L, returns);
-    // push the result datatype
-    wxluaT_pushuserdatatype(L, returns, wxluatype_wxPGProperty);
-
-    return 1;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoHideProperty[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxPGProperty, &wxluatype_TBOOLEAN, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoHideProperty(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoHideProperty[1] = {{ wxLua_wxPropertyGridPageState_DoHideProperty, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoHideProperty }};
-//     bool DoHideProperty( wxPGProperty* p, bool hide, int flags = wxPG_RECURSE );
-static int LUACALL wxLua_wxPropertyGridPageState_DoHideProperty(lua_State *L)
-{
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // int flags = wxPG_RECURSE
-    int flags = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : wxPG_RECURSE);
-    // bool hide
-    bool hide = wxlua_getbooleantype(L, 3);
-    // wxPGProperty p
-    wxPGProperty * p = (wxPGProperty *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPGProperty);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoHideProperty
-    bool returns = (self->DoHideProperty(p, hide, flags));
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
 }
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoInsert[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxPGProperty, &wxluatype_TNUMBER, &wxluatype_wxPGProperty, NULL };
@@ -12207,202 +11869,6 @@ static int LUACALL wxLua_wxPropertyGridPageState_DoInsert(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoIsPropertySelected[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxPGProperty, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoIsPropertySelected(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoIsPropertySelected[1] = {{ wxLua_wxPropertyGridPageState_DoIsPropertySelected, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoIsPropertySelected }};
-//     bool DoIsPropertySelected( wxPGProperty* prop ) const;
-static int LUACALL wxLua_wxPropertyGridPageState_DoIsPropertySelected(lua_State *L)
-{
-    // wxPGProperty prop
-    wxPGProperty * prop = (wxPGProperty *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPGProperty);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoIsPropertySelected
-    bool returns = (self->DoIsPropertySelected(prop));
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoLimitPropertyEditing[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxPGProperty, &wxluatype_TBOOLEAN, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoLimitPropertyEditing(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoLimitPropertyEditing[1] = {{ wxLua_wxPropertyGridPageState_DoLimitPropertyEditing, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoLimitPropertyEditing }};
-//     void DoLimitPropertyEditing( wxPGProperty* p, bool limit = true );
-static int LUACALL wxLua_wxPropertyGridPageState_DoLimitPropertyEditing(lua_State *L)
-{
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // bool limit = true
-    bool limit = (argCount >= 3 ? wxlua_getbooleantype(L, 3) : true);
-    // wxPGProperty p
-    wxPGProperty * p = (wxPGProperty *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPGProperty);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoLimitPropertyEditing
-    self->DoLimitPropertyEditing(p, limit);
-
-    return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoRemoveFromSelection[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxPGProperty, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoRemoveFromSelection(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoRemoveFromSelection[1] = {{ wxLua_wxPropertyGridPageState_DoRemoveFromSelection, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoRemoveFromSelection }};
-//     void DoRemoveFromSelection( wxPGProperty* prop );
-static int LUACALL wxLua_wxPropertyGridPageState_DoRemoveFromSelection(lua_State *L)
-{
-    // wxPGProperty prop
-    wxPGProperty * prop = (wxPGProperty *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPGProperty);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoRemoveFromSelection
-    self->DoRemoveFromSelection(prop);
-
-    return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSelectProperty[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxPGProperty, &wxluatype_TINTEGER, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoSelectProperty(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoSelectProperty[1] = {{ wxLua_wxPropertyGridPageState_DoSelectProperty, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSelectProperty }};
-//     bool DoSelectProperty( wxPGProperty* p, unsigned int flags = 0 );
-static int LUACALL wxLua_wxPropertyGridPageState_DoSelectProperty(lua_State *L)
-{
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // unsigned int flags = 0
-    unsigned int flags = (argCount >= 3 ? (unsigned int)wxlua_getuintegertype(L, 3) : 0);
-    // wxPGProperty p
-    wxPGProperty * p = (wxPGProperty *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPGProperty);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoSelectProperty
-    bool returns = (self->DoSelectProperty(p, flags));
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSetColumnProportion[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_TINTEGER, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoSetColumnProportion(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoSetColumnProportion[1] = {{ wxLua_wxPropertyGridPageState_DoSetColumnProportion, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSetColumnProportion }};
-//     void DoSetColumnProportion( unsigned int column, int proportion );
-static int LUACALL wxLua_wxPropertyGridPageState_DoSetColumnProportion(lua_State *L)
-{
-    // int proportion
-    int proportion = (int)wxlua_getnumbertype(L, 3);
-    // unsigned int column
-    unsigned int column = (unsigned int)wxlua_getuintegertype(L, 2);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoSetColumnProportion
-    self->DoSetColumnProportion(column, proportion);
-
-    return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSetPropertyName[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxPGProperty, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoSetPropertyName(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoSetPropertyName[1] = {{ wxLua_wxPropertyGridPageState_DoSetPropertyName, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSetPropertyName }};
-//     void DoSetPropertyName( wxPGProperty* p, const wxString& newName );
-static int LUACALL wxLua_wxPropertyGridPageState_DoSetPropertyName(lua_State *L)
-{
-    // const wxString newName
-    const wxString newName = wxlua_getwxStringtype(L, 3);
-    // wxPGProperty p
-    wxPGProperty * p = (wxPGProperty *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPGProperty);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoSetPropertyName
-    self->DoSetPropertyName(p, newName);
-
-    return 0;
-}
-
-
-#if (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_VARIANT)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSetPropertyValue[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxPGProperty, &wxluatype_wxVariant, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoSetPropertyValue(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoSetPropertyValue[1] = {{ wxLua_wxPropertyGridPageState_DoSetPropertyValue, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSetPropertyValue }};
-//     bool DoSetPropertyValue( wxPGProperty* p, wxVariant& value );
-static int LUACALL wxLua_wxPropertyGridPageState_DoSetPropertyValue(lua_State *L)
-{
-    // wxVariant value
-    wxVariant * value = (wxVariant *)wxluaT_getuserdatatype(L, 3, wxluatype_wxVariant);
-    // wxPGProperty p
-    wxPGProperty * p = (wxPGProperty *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPGProperty);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoSetPropertyValue
-    bool returns = (self->DoSetPropertyValue(p, *value));
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
-}
-
-#endif // (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_VARIANT)
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSetPropertyValueString[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxPGProperty, &wxluatype_TSTRING, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoSetPropertyValueString(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoSetPropertyValueString[1] = {{ wxLua_wxPropertyGridPageState_DoSetPropertyValueString, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSetPropertyValueString }};
-//     bool DoSetPropertyValueString( wxPGProperty* p, const wxString& value );
-static int LUACALL wxLua_wxPropertyGridPageState_DoSetPropertyValueString(lua_State *L)
-{
-    // const wxString value
-    const wxString value = wxlua_getwxStringtype(L, 3);
-    // wxPGProperty p
-    wxPGProperty * p = (wxPGProperty *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPGProperty);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoSetPropertyValueString
-    bool returns = (self->DoSetPropertyValueString(p, value));
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
-}
-
-
-#if (wxLUA_USE_wxObject) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSetPropertyValueWxObjectPtr[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxPGProperty, &wxluatype_wxObject, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoSetPropertyValueWxObjectPtr(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoSetPropertyValueWxObjectPtr[1] = {{ wxLua_wxPropertyGridPageState_DoSetPropertyValueWxObjectPtr, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSetPropertyValueWxObjectPtr }};
-//     bool DoSetPropertyValueWxObjectPtr( wxPGProperty* p, wxObject* value );
-static int LUACALL wxLua_wxPropertyGridPageState_DoSetPropertyValueWxObjectPtr(lua_State *L)
-{
-    // wxObject value
-    wxObject * value = (wxObject *)wxluaT_getuserdatatype(L, 3, wxluatype_wxObject);
-    // wxPGProperty p
-    wxPGProperty * p = (wxPGProperty *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPGProperty);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoSetPropertyValueWxObjectPtr
-    bool returns = (self->DoSetPropertyValueWxObjectPtr(p, value));
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
-}
-
-#endif // (wxLUA_USE_wxObject) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSetSelection[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxPGProperty, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoSetSelection(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoSetSelection[1] = {{ wxLua_wxPropertyGridPageState_DoSetSelection, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSetSelection }};
-//     void DoSetSelection( wxPGProperty* prop );
-static int LUACALL wxLua_wxPropertyGridPageState_DoSetSelection(lua_State *L)
-{
-    // wxPGProperty prop
-    wxPGProperty * prop = (wxPGProperty *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPGProperty);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoSetSelection
-    self->DoSetSelection(prop);
-
-    return 0;
-}
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSetSplitterPosition[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPropertyGridPageState_DoSetSplitterPosition(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoSetSplitterPosition[1] = {{ wxLua_wxPropertyGridPageState_DoSetSplitterPosition, WXLUAMETHOD_METHOD, 2, 4, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSetSplitterPosition }};
@@ -12421,44 +11887,6 @@ static int LUACALL wxLua_wxPropertyGridPageState_DoSetSplitterPosition(lua_State
     wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
     // call DoSetSplitterPosition
     self->DoSetSplitterPosition(pos, splitterColumn, flags);
-
-    return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSort[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoSort(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoSort[1] = {{ wxLua_wxPropertyGridPageState_DoSort, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSort }};
-//     void DoSort( int flags = 0 );
-static int LUACALL wxLua_wxPropertyGridPageState_DoSort(lua_State *L)
-{
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // int flags = 0
-    int flags = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : 0);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoSort
-    self->DoSort(flags);
-
-    return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSortChildren[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxPGProperty, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_DoSortChildren(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_DoSortChildren[1] = {{ wxLua_wxPropertyGridPageState_DoSortChildren, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxPropertyGridPageState_DoSortChildren }};
-//     void DoSortChildren( wxPGProperty* p, int flags = 0 );
-static int LUACALL wxLua_wxPropertyGridPageState_DoSortChildren(lua_State *L)
-{
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // int flags = 0
-    int flags = (argCount >= 3 ? (int)wxlua_getnumbertype(L, 3) : 0);
-    // wxPGProperty p
-    wxPGProperty * p = (wxPGProperty *)wxluaT_getuserdatatype(L, 2, wxluatype_wxPGProperty);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call DoSortChildren
-    self->DoSortChildren(p, flags);
 
     return 0;
 }
@@ -12545,38 +11973,6 @@ if ((double)(lua_Integer)returns == (double)returns) {
 
 
 #if (wxLUA_USE_wxDC) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_GetColumnFitWidth[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxClientDC, &wxluatype_wxPGProperty, &wxluatype_TINTEGER, &wxluatype_TBOOLEAN, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_GetColumnFitWidth(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_GetColumnFitWidth[1] = {{ wxLua_wxPropertyGridPageState_GetColumnFitWidth, WXLUAMETHOD_METHOD, 5, 5, s_wxluatypeArray_wxLua_wxPropertyGridPageState_GetColumnFitWidth }};
-//                           bool subProps) const;
-static int LUACALL wxLua_wxPropertyGridPageState_GetColumnFitWidth(lua_State *L)
-{
-    // bool subProps
-    bool subProps = wxlua_getbooleantype(L, 5);
-    // unsigned int col
-    unsigned int col = (unsigned int)wxlua_getuintegertype(L, 4);
-    // wxPGProperty pwc
-    wxPGProperty * pwc = (wxPGProperty *)wxluaT_getuserdatatype(L, 3, wxluatype_wxPGProperty);
-    // wxClientDC dc
-    wxClientDC * dc = (wxClientDC *)wxluaT_getuserdatatype(L, 2, wxluatype_wxClientDC);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call GetColumnFitWidth
-    int returns = (self->GetColumnFitWidth(*dc, pwc, col, subProps));
-    // push the result number
-#if LUA_VERSION_NUM >= 503
-if ((double)(lua_Integer)returns == (double)returns) {
-    // Exactly representable as lua_Integer
-    lua_pushinteger(L, returns);
-} else
-#endif
-{
-    lua_pushnumber(L, returns);
-}
-
-    return 1;
-}
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_GetColumnFullWidth[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_wxClientDC, &wxluatype_wxPGProperty, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxPropertyGridPageState_GetColumnFullWidth(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_GetColumnFullWidth[1] = {{ wxLua_wxPropertyGridPageState_GetColumnFullWidth, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxPropertyGridPageState_GetColumnFullWidth }};
@@ -12882,144 +12278,6 @@ static int LUACALL wxLua_wxPropertyGridPageState_IsInNonCatMode(lua_State *L)
     return 1;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_OnClientWidthChange[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TBOOLEAN, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_OnClientWidthChange(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_OnClientWidthChange[1] = {{ wxLua_wxPropertyGridPageState_OnClientWidthChange, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxPropertyGridPageState_OnClientWidthChange }};
-//                               bool fromOnResize = false );
-static int LUACALL wxLua_wxPropertyGridPageState_OnClientWidthChange(lua_State *L)
-{
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // bool fromOnResize = false
-    bool fromOnResize = (argCount >= 4 ? wxlua_getbooleantype(L, 4) : false);
-    // int widthChange
-    int widthChange = (int)wxlua_getnumbertype(L, 3);
-    // int newWidth
-    int newWidth = (int)wxlua_getnumbertype(L, 2);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call OnClientWidthChange
-    self->OnClientWidthChange(newWidth, widthChange, fromOnResize);
-
-    return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_PrepareAfterItemsAdded[] = { &wxluatype_wxPropertyGridPageState, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_PrepareAfterItemsAdded(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_PrepareAfterItemsAdded[1] = {{ wxLua_wxPropertyGridPageState_PrepareAfterItemsAdded, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPropertyGridPageState_PrepareAfterItemsAdded }};
-//     bool PrepareAfterItemsAdded();
-static int LUACALL wxLua_wxPropertyGridPageState_PrepareAfterItemsAdded(lua_State *L)
-{
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call PrepareAfterItemsAdded
-    bool returns = (self->PrepareAfterItemsAdded());
-    // push the result flag
-    lua_pushboolean(L, returns);
-
-    return 1;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_PropagateColSizeDec[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_PropagateColSizeDec(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_PropagateColSizeDec[1] = {{ wxLua_wxPropertyGridPageState_PropagateColSizeDec, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxPropertyGridPageState_PropagateColSizeDec }};
-//     void PropagateColSizeDec( int column, int decrease, int dir );
-static int LUACALL wxLua_wxPropertyGridPageState_PropagateColSizeDec(lua_State *L)
-{
-    // int dir
-    int dir = (int)wxlua_getnumbertype(L, 4);
-    // int decrease
-    int decrease = (int)wxlua_getnumbertype(L, 3);
-    // int column
-    int column = (int)wxlua_getnumbertype(L, 2);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call PropagateColSizeDec
-    self->PropagateColSizeDec(column, decrease, dir);
-
-    return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_RecalculateVirtualHeight[] = { &wxluatype_wxPropertyGridPageState, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_RecalculateVirtualHeight(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_RecalculateVirtualHeight[1] = {{ wxLua_wxPropertyGridPageState_RecalculateVirtualHeight, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPropertyGridPageState_RecalculateVirtualHeight }};
-//     void RecalculateVirtualHeight();
-static int LUACALL wxLua_wxPropertyGridPageState_RecalculateVirtualHeight(lua_State *L)
-{
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call RecalculateVirtualHeight
-    self->RecalculateVirtualHeight();
-
-    return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_ResetColumnSizes[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_ResetColumnSizes(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_ResetColumnSizes[1] = {{ wxLua_wxPropertyGridPageState_ResetColumnSizes, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPropertyGridPageState_ResetColumnSizes }};
-//     void ResetColumnSizes( int setSplitterFlags );
-static int LUACALL wxLua_wxPropertyGridPageState_ResetColumnSizes(lua_State *L)
-{
-    // int setSplitterFlags
-    int setSplitterFlags = (int)wxlua_getnumbertype(L, 2);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call ResetColumnSizes
-    self->ResetColumnSizes(setSplitterFlags);
-
-    return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_SetColumnCount[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_SetColumnCount(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_SetColumnCount[1] = {{ wxLua_wxPropertyGridPageState_SetColumnCount, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPropertyGridPageState_SetColumnCount }};
-//     void SetColumnCount( int colCount );
-static int LUACALL wxLua_wxPropertyGridPageState_SetColumnCount(lua_State *L)
-{
-    // int colCount
-    int colCount = (int)wxlua_getnumbertype(L, 2);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call SetColumnCount
-    self->SetColumnCount(colCount);
-
-    return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_SetSplitterLeft[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_TBOOLEAN, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_SetSplitterLeft(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_SetSplitterLeft[1] = {{ wxLua_wxPropertyGridPageState_SetSplitterLeft, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxPropertyGridPageState_SetSplitterLeft }};
-//     void SetSplitterLeft( bool subProps = false );
-static int LUACALL wxLua_wxPropertyGridPageState_SetSplitterLeft(lua_State *L)
-{
-    // get number of arguments
-    int argCount = lua_gettop(L);
-    // bool subProps = false
-    bool subProps = (argCount >= 2 ? wxlua_getbooleantype(L, 2) : false);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call SetSplitterLeft
-    self->SetSplitterLeft(subProps);
-
-    return 0;
-}
-
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_SetVirtualWidth[] = { &wxluatype_wxPropertyGridPageState, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxPropertyGridPageState_SetVirtualWidth(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_SetVirtualWidth[1] = {{ wxLua_wxPropertyGridPageState_SetVirtualWidth, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxPropertyGridPageState_SetVirtualWidth }};
-//     void SetVirtualWidth( int width );
-static int LUACALL wxLua_wxPropertyGridPageState_SetVirtualWidth(lua_State *L)
-{
-    // int width
-    int width = (int)wxlua_getnumbertype(L, 2);
-    // get this
-    wxPropertyGridPageState * self = (wxPropertyGridPageState *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPropertyGridPageState);
-    // call SetVirtualWidth
-    self->SetVirtualWidth(width);
-
-    return 0;
-}
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPropertyGridPageState_VirtualHeightChanged[] = { &wxluatype_wxPropertyGridPageState, NULL };
 static int LUACALL wxLua_wxPropertyGridPageState_VirtualHeightChanged(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPropertyGridPageState_VirtualHeightChanged[1] = {{ wxLua_wxPropertyGridPageState_VirtualHeightChanged, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxPropertyGridPageState_VirtualHeightChanged }};
@@ -13082,58 +12340,16 @@ void wxLua_wxPropertyGridPageState_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxPropertyGridPageState_methods[] = {
-    { "BaseGetPropertyByName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_BaseGetPropertyByName, 1, NULL },
-    { "CalculateFontAndBitmapStuff", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_CalculateFontAndBitmapStuff, 1, NULL },
     { "CheckColumnWidths", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_CheckColumnWidths, 1, NULL },
-    { "DoAppend", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoAppend, 1, NULL },
-    { "DoClear", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoClear, 1, NULL },
-    { "DoClearSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoClearSelection, 1, NULL },
-    { "DoCollapse", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoCollapse, 1, NULL },
     { "DoDelete", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoDelete, 1, NULL },
-    { "DoExpand", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoExpand, 1, NULL },
-
-#if (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
-    { "DoFitColumns", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoFitColumns, 1, NULL },
-#endif // (wxLUA_USE_wxPointSizeRect) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
-
-    { "DoGetColumnProportion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoGetColumnProportion, 1, NULL },
-    { "DoGetItemAtY", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoGetItemAtY, 1, NULL },
-
-#if (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_VARIANT)
-    { "DoGetPropertyValues", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoGetPropertyValues, 1, NULL },
-#endif // (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_VARIANT)
-
-    { "DoGetRoot", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoGetRoot, 1, NULL },
-    { "DoHideProperty", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoHideProperty, 1, NULL },
     { "DoInsert", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoInsert, 1, NULL },
-    { "DoIsPropertySelected", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoIsPropertySelected, 1, NULL },
-    { "DoLimitPropertyEditing", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoLimitPropertyEditing, 1, NULL },
-    { "DoRemoveFromSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoRemoveFromSelection, 1, NULL },
-    { "DoSelectProperty", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoSelectProperty, 1, NULL },
-    { "DoSetColumnProportion", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoSetColumnProportion, 1, NULL },
-    { "DoSetPropertyName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoSetPropertyName, 1, NULL },
-
-#if (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_VARIANT)
-    { "DoSetPropertyValue", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoSetPropertyValue, 1, NULL },
-#endif // (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_VARIANT)
-
-    { "DoSetPropertyValueString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoSetPropertyValueString, 1, NULL },
-
-#if (wxLUA_USE_wxObject) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
-    { "DoSetPropertyValueWxObjectPtr", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoSetPropertyValueWxObjectPtr, 1, NULL },
-#endif // (wxLUA_USE_wxObject) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
-
-    { "DoSetSelection", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoSetSelection, 1, NULL },
     { "DoSetSplitterPosition", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoSetSplitterPosition, 1, NULL },
-    { "DoSort", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoSort, 1, NULL },
-    { "DoSortChildren", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_DoSortChildren, 1, NULL },
     { "EnableCategories", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_EnableCategories, 1, NULL },
     { "EnsureVirtualHeight", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_EnsureVirtualHeight, 1, NULL },
     { "GetActualVirtualHeight", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_GetActualVirtualHeight, 1, NULL },
     { "GetColumnCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_GetColumnCount, 1, NULL },
 
 #if (wxLUA_USE_wxDC) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
-    { "GetColumnFitWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_GetColumnFitWidth, 1, NULL },
     { "GetColumnFullWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_GetColumnFullWidth, 1, NULL },
 #endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
 
@@ -13160,14 +12376,6 @@ wxLuaBindMethod wxPropertyGridPageState_methods[] = {
 
     { "IsDisplayed", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_IsDisplayed, 1, NULL },
     { "IsInNonCatMode", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_IsInNonCatMode, 1, NULL },
-    { "OnClientWidthChange", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_OnClientWidthChange, 1, NULL },
-    { "PrepareAfterItemsAdded", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_PrepareAfterItemsAdded, 1, NULL },
-    { "PropagateColSizeDec", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_PropagateColSizeDec, 1, NULL },
-    { "RecalculateVirtualHeight", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_RecalculateVirtualHeight, 1, NULL },
-    { "ResetColumnSizes", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_ResetColumnSizes, 1, NULL },
-    { "SetColumnCount", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_SetColumnCount, 1, NULL },
-    { "SetSplitterLeft", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_SetSplitterLeft, 1, NULL },
-    { "SetVirtualWidth", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_SetVirtualWidth, 1, NULL },
     { "VirtualHeightChanged", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPropertyGridPageState_VirtualHeightChanged, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxPropertyGridPageState_delete, 1, NULL },
     { "wxPropertyGridPageState", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxPropertyGridPageState_constructor, 1, NULL },
@@ -21328,38 +20536,6 @@ static int LUACALL wxLua_wxPGCellRenderer_PostDrawCell(lua_State *L)
 #endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
 
 #if ((wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxPGCellRenderer_PreDrawCell[] = { &wxluatype_wxPGCellRenderer, &wxluatype_wxDC, &wxluatype_wxRect, &wxluatype_wxPGCell, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxPGCellRenderer_PreDrawCell(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxPGCellRenderer_PreDrawCell[1] = {{ wxLua_wxPGCellRenderer_PreDrawCell, WXLUAMETHOD_METHOD, 5, 5, s_wxluatypeArray_wxLua_wxPGCellRenderer_PreDrawCell }};
-//                      int flags ) const;
-static int LUACALL wxLua_wxPGCellRenderer_PreDrawCell(lua_State *L)
-{
-    // int flags
-    int flags = (int)wxlua_getnumbertype(L, 5);
-    // const wxPGCell cell
-    const wxPGCell * cell = (const wxPGCell *)wxluaT_getuserdatatype(L, 4, wxluatype_wxPGCell);
-    // const wxRect rect
-    const wxRect * rect = (const wxRect *)wxluaT_getuserdatatype(L, 3, wxluatype_wxRect);
-    // wxDC dc
-    wxDC * dc = (wxDC *)wxluaT_getuserdatatype(L, 2, wxluatype_wxDC);
-    // get this
-    wxPGCellRenderer * self = (wxPGCellRenderer *)wxluaT_getuserdatatype(L, 1, wxluatype_wxPGCellRenderer);
-    // call PreDrawCell
-    int returns = (self->PreDrawCell(*dc, *rect, *cell, flags));
-    // push the result number
-#if LUA_VERSION_NUM >= 503
-if ((double)(lua_Integer)returns == (double)returns) {
-    // Exactly representable as lua_Integer
-    lua_pushinteger(L, returns);
-} else
-#endif
-{
-    lua_pushnumber(L, returns);
-}
-
-    return 1;
-}
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxPGCellRenderer_Render[] = { &wxluatype_wxPGCellRenderer, &wxluatype_wxDC, &wxluatype_wxRect, &wxluatype_wxPropertyGrid, &wxluatype_wxPGProperty, &wxluatype_TNUMBER, &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxPGCellRenderer_Render(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxPGCellRenderer_Render[1] = {{ wxLua_wxPGCellRenderer_Render, WXLUAMETHOD_METHOD, 8, 8, s_wxluatypeArray_wxLua_wxPGCellRenderer_Render }};
@@ -21423,7 +20599,6 @@ wxLuaBindMethod wxPGCellRenderer_methods[] = {
 #endif // (wxLUA_USE_wxDC) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
 
 #if ((wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
-    { "PreDrawCell", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPGCellRenderer_PreDrawCell, 1, NULL },
     { "Render", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxPGCellRenderer_Render, 1, NULL },
 #endif // ((wxLUA_USE_wxDC) && (wxLUA_USE_wxPointSizeRect)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
 

@@ -169,7 +169,6 @@ class wxPropertyGrid : public wxScrolled<wxControl>, public wxPropertyGridInterf
     static wxPGEditor* DoRegisterEditorClass( %ungc wxPGEditor* editor, const wxString& name, bool noDefCheck = false );
 
     void ResetColours();
-    void ResetColumnSizes( bool enableAutoResizing = false );
     bool RemoveFromSelection( const wxPGProperty*& id );
     bool RemoveFromSelection( const wxString& id );
     bool SelectProperty( const wxPGProperty*& id, bool focus = false );
@@ -179,7 +178,6 @@ class wxPropertyGrid : public wxScrolled<wxControl>, public wxPropertyGridInterf
     void SetCellBackgroundColour(const wxColour& col);
     void SetCellDisabledTextColour(const wxColour& col);
     void SetCellTextColour(const wxColour& col);
-    void SetColumnCount( int colCount );
     void SetCurrentCategory( const wxPGProperty*& id );
     void SetCurrentCategory( const wxString& id );
     void SetEmptySpaceColour(const wxColour& col);
@@ -189,12 +187,10 @@ class wxPropertyGrid : public wxScrolled<wxControl>, public wxPropertyGridInterf
     void SetSelectionBackgroundColour(const wxColour& col);
     void SetSelectionTextColour(const wxColour& col);
 
-    /* void SetSortFunction( wxPGSortCallback sortFunction ); */
     void SetSplitterPosition( int newxpos, int col = 0 );
     void SetSplitterLeft( bool privateChildrenToo = false );
     void SetUnspecifiedValueAppearance( const wxPGCell& cell );
     void SetVerticalSpacing( int vspacing );
-    void SetVirtualWidth( int width );
     void SetupTextCtrlValue( const wxString& text );
     bool UnfocusEditor();
     void DrawItemAndValueRelated( wxPGProperty* p );
@@ -335,7 +331,6 @@ public:
     void SetColumnTitle( int idx, const wxString& title );
     void SetDescription( const wxString& label, const wxString& content );
     void SetDescBoxHeight( int ht, bool refresh = true );
-    void SetSplitterLeft( bool subProps = false, bool allPages = true );
     void SetPageSplitterLeft(int page, bool subProps = false);
     void SetPageSplitterPosition( int page, int pos, int column = 0 );
     void SetSplitterPosition( int pos, int column = 0 );
@@ -1283,8 +1278,6 @@ class %delete wxPropertyGridPageState
     wxPropertyGridPageState();
     void CheckColumnWidths( int widthChange = 0 );
     virtual void DoDelete( wxPGProperty* item, bool doDelete = true );
-    wxSize DoFitColumns( bool allowGridResize = false );
-    %ungc wxPGProperty* DoGetItemAtY( int y ) const;
     virtual wxPGProperty* DoInsert( wxPGProperty* parent,
                                     int index,
                                     %ungc wxPGProperty* property );
@@ -1304,54 +1297,13 @@ class %delete wxPropertyGridPageState
     %ungc wxPGProperty* GetLastItem( int flags = wxPG_ITERATE_DEFAULT );
     const wxPGProperty* GetLastItem( int flags = wxPG_ITERATE_DEFAULT ) const;
     %ungc wxPGProperty* GetSelection() const;
-    void DoSetSelection( wxPGProperty* prop );
-    bool DoClearSelection();
-    void DoRemoveFromSelection( wxPGProperty* prop );
-    void DoSetColumnProportion( unsigned int column, int proportion );
-    int DoGetColumnProportion( unsigned int column ) const;
-    void ResetColumnSizes( int setSplitterFlags );
     wxPropertyCategory* GetPropertyCategory( const wxPGProperty* p ) const;
-    wxVariant DoGetPropertyValues( const wxString& listname,
-                                   wxPGProperty* baseparent,
-                                   long flags ) const;
-    %ungc wxPGProperty* DoGetRoot() const;
-    void DoSetPropertyName( wxPGProperty* p, const wxString& newName );
     int GetVirtualWidth() const;
-    int GetColumnFitWidth(wxClientDC& dc,
-                          wxPGProperty* pwc,
-                          unsigned int col,
-                          bool subProps) const;
     int GetColumnFullWidth(wxClientDC &dc, wxPGProperty *p, unsigned int col);
     wxPropertyGridHitTestResult HitTest( const wxPoint& pt ) const;
     inline bool IsDisplayed() const;
     bool IsInNonCatMode() const;
-    void DoLimitPropertyEditing( wxPGProperty* p, bool limit = true );
-    bool DoSelectProperty( wxPGProperty* p, unsigned int flags = 0 );
-    void OnClientWidthChange( int newWidth,
-                              int widthChange,
-                              bool fromOnResize = false );
-    void RecalculateVirtualHeight();
-    void SetColumnCount( int colCount );
-    void PropagateColSizeDec( int column, int decrease, int dir );
-    bool DoHideProperty( wxPGProperty* p, bool hide, int flags = wxPG_RECURSE );
-    bool DoSetPropertyValueString( wxPGProperty* p, const wxString& value );
-    bool DoSetPropertyValue( wxPGProperty* p, wxVariant& value );
-    bool DoSetPropertyValueWxObjectPtr( wxPGProperty* p, wxObject* value );
-    /* void DoSetPropertyValues( const wxVariantList& list, */
-    /*                           wxPGProperty* default_category ); */
-    void SetSplitterLeft( bool subProps = false );
-    void SetVirtualWidth( int width );
-    void DoSortChildren( wxPGProperty* p, int flags = 0 );
-    void DoSort( int flags = 0 );
-    bool PrepareAfterItemsAdded();
     void VirtualHeightChanged();
-    %ungc wxPGProperty* DoAppend( %ungc wxPGProperty* property );
-    %ungc wxPGProperty* BaseGetPropertyByName( const wxString& name ) const;
-    void DoClear();
-    bool DoIsPropertySelected( wxPGProperty* prop ) const;
-    bool DoCollapse( wxPGProperty* p );
-    bool DoExpand( wxPGProperty* p );
-    void CalculateFontAndBitmapStuff( int vspacing );
 };
 
 
@@ -1970,14 +1922,6 @@ class %delete wxPGCellRenderer : public wxObjectRefData
                    const wxRect& rect,
                    int imageWidth,
                    const wxString& text ) const;
-    /* void DrawEditorValue( wxDC& dc, const wxRect& rect, */
-    /*                       int xOffset, const wxString& text, */
-    /*                       wxPGProperty* property, */
-    /*                       const wxPGEditor* editor ) const; */
-    int PreDrawCell( wxDC& dc,
-                     const wxRect& rect,
-                     const wxPGCell& cell,
-                     int flags ) const;
     void PostDrawCell( wxDC& dc,
                        const wxPropertyGrid* propGrid,
                        const wxPGCell& cell,
