@@ -7342,12 +7342,12 @@ int wxDirProperty_methodCount = sizeof(wxDirProperty_methods)/sizeof(wxLuaBindMe
 // Lua MetaTable Tag for Class 'wxArrayStringProperty'
 int wxluatype_wxArrayStringProperty = WXLUA_TUNKNOWN;
 
-#if ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)) && (wxLUA_USE_wxArrayString)
-static wxLuaArgType s_wxluatypeArray_wxLua_wxArrayStringProperty_ArrayStringToString[] = { &wxluatype_TSTRING, &wxluatype_wxArrayString, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
-static int LUACALL wxLua_wxArrayStringProperty_ArrayStringToString(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxArrayStringProperty_ArrayStringToString[1] = {{ wxLua_wxArrayStringProperty_ArrayStringToString, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 4, 4, s_wxluatypeArray_wxLua_wxArrayStringProperty_ArrayStringToString }};
-//                                      wxUniChar delimiter, int flags );
-static int LUACALL wxLua_wxArrayStringProperty_ArrayStringToString(lua_State *L)
+#if ((!wxCHECK_VERSION(3,1,6)) && ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID))) && (wxLUA_USE_wxArrayString)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxArrayStringProperty_ArrayStringToString1[] = { &wxluatype_TSTRING, &wxluatype_wxArrayString, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxArrayStringProperty_ArrayStringToString1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxArrayStringProperty_ArrayStringToString1[1] = {{ wxLua_wxArrayStringProperty_ArrayStringToString1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 4, 4, s_wxluatypeArray_wxLua_wxArrayStringProperty_ArrayStringToString1 }};
+//     !%wxchkver_3_1_6 static void ArrayStringToString( wxString& dst, const wxArrayString& src, wxUniChar delimiter, int flags );
+static int LUACALL wxLua_wxArrayStringProperty_ArrayStringToString1(lua_State *L)
 {
     // int flags
     int flags = (int)wxlua_getnumbertype(L, 4);
@@ -7363,6 +7363,32 @@ static int LUACALL wxLua_wxArrayStringProperty_ArrayStringToString(lua_State *L)
     return 0;
 }
 
+#endif // ((!wxCHECK_VERSION(3,1,6)) && ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID))) && (wxLUA_USE_wxArrayString)
+
+#if (((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)) && (wxCHECK_VERSION(3,1,6))) && (wxLUA_USE_wxArrayString)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxArrayStringProperty_ArrayStringToString[] = { &wxluatype_wxArrayString, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxArrayStringProperty_ArrayStringToString(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxArrayStringProperty_ArrayStringToString[1] = {{ wxLua_wxArrayStringProperty_ArrayStringToString, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 3, 3, s_wxluatypeArray_wxLua_wxArrayStringProperty_ArrayStringToString }};
+//     %wxchkver_3_1_6 static wxString ArrayStringToString(const wxArrayString& src, wxUniChar delimiter, int flags);
+static int LUACALL wxLua_wxArrayStringProperty_ArrayStringToString(lua_State *L)
+{
+    // int flags
+    int flags = (int)wxlua_getnumbertype(L, 3);
+    // wxUniChar delimiter
+    wxUniChar delimiter = wxlua_getwxUniChartype(L, 2);
+    // const wxArrayString src
+    wxLuaSmartwxArrayString src = wxlua_getwxArrayString(L, 1);
+    // call ArrayStringToString
+    wxString returns = (wxArrayStringProperty::ArrayStringToString(src, delimiter, flags));
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+#endif // (((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)) && (wxCHECK_VERSION(3,1,6))) && (wxLUA_USE_wxArrayString)
+
+#if ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)) && (wxLUA_USE_wxArrayString)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxArrayStringProperty_ConvertArrayToString[] = { &wxluatype_wxArrayStringProperty, &wxluatype_wxArrayString, &wxluatype_TLIGHTUSERDATA, &wxluatype_TLIGHTUSERDATA, NULL };
 static int LUACALL wxLua_wxArrayStringProperty_ConvertArrayToString(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxArrayStringProperty_ConvertArrayToString[1] = {{ wxLua_wxArrayStringProperty_ConvertArrayToString, WXLUAMETHOD_METHOD, 4, 4, s_wxluatypeArray_wxLua_wxArrayStringProperty_ConvertArrayToString }};
@@ -7538,6 +7564,23 @@ static int LUACALL wxLua_wxArrayStringProperty_constructor(lua_State *L)
 
 
 
+#if (((!wxCHECK_VERSION(3,1,6)) && ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID))) && (wxLUA_USE_wxArrayString))||((((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)) && (wxCHECK_VERSION(3,1,6))) && (wxLUA_USE_wxArrayString))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxArrayStringProperty_ArrayStringToString_overload[] =
+{
+
+#if ((!wxCHECK_VERSION(3,1,6)) && ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID))) && (wxLUA_USE_wxArrayString)
+    { wxLua_wxArrayStringProperty_ArrayStringToString1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 4, 4, s_wxluatypeArray_wxLua_wxArrayStringProperty_ArrayStringToString1 },
+#endif // ((!wxCHECK_VERSION(3,1,6)) && ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID))) && (wxLUA_USE_wxArrayString)
+
+#if (((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)) && (wxCHECK_VERSION(3,1,6))) && (wxLUA_USE_wxArrayString)
+    { wxLua_wxArrayStringProperty_ArrayStringToString, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 3, 3, s_wxluatypeArray_wxLua_wxArrayStringProperty_ArrayStringToString },
+#endif // (((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)) && (wxCHECK_VERSION(3,1,6))) && (wxLUA_USE_wxArrayString)
+};
+static int s_wxluafunc_wxLua_wxArrayStringProperty_ArrayStringToString_overload_count = sizeof(s_wxluafunc_wxLua_wxArrayStringProperty_ArrayStringToString_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (((!wxCHECK_VERSION(3,1,6)) && ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID))) && (wxLUA_USE_wxArrayString))||((((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)) && (wxCHECK_VERSION(3,1,6))) && (wxLUA_USE_wxArrayString))
+
 void wxLua_wxArrayStringProperty_delete_function(void** p)
 {
     wxArrayStringProperty* o = (wxArrayStringProperty*)(*p);
@@ -7546,8 +7589,11 @@ void wxLua_wxArrayStringProperty_delete_function(void** p)
 
 // Map Lua Class Methods to C Binding Functions
 wxLuaBindMethod wxArrayStringProperty_methods[] = {
+#if (((!wxCHECK_VERSION(3,1,6)) && ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID))) && (wxLUA_USE_wxArrayString))||((((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)) && (wxCHECK_VERSION(3,1,6))) && (wxLUA_USE_wxArrayString))
+    { "ArrayStringToString", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxArrayStringProperty_ArrayStringToString_overload, s_wxluafunc_wxLua_wxArrayStringProperty_ArrayStringToString_overload_count, 0 },
+#endif // (((!wxCHECK_VERSION(3,1,6)) && ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID))) && (wxLUA_USE_wxArrayString))||((((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)) && (wxCHECK_VERSION(3,1,6))) && (wxLUA_USE_wxArrayString))
+
 #if ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)) && (wxLUA_USE_wxArrayString)
-    { "ArrayStringToString", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxArrayStringProperty_ArrayStringToString, 1, NULL },
     { "ConvertArrayToString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxArrayStringProperty_ConvertArrayToString, 1, NULL },
 #endif // ((wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)) && (wxLUA_USE_wxArrayString)
 

@@ -756,8 +756,8 @@ class wxArrayStringProperty : public wxEditorDialogProperty
 
     virtual wxPGArrayEditorDialog* CreateEditorDialog();
 
-    static void ArrayStringToString( wxString& dst, const wxArrayString& src,
-                                     wxUniChar delimiter, int flags );
+    %wxchkver_3_1_6 static wxString ArrayStringToString(const wxArrayString& src, wxUniChar delimiter, int flags);
+    !%wxchkver_3_1_6 static void ArrayStringToString( wxString& dst, const wxArrayString& src, wxUniChar delimiter, int flags );
 };
 #endif //%wxchkver_3_2_0
 
