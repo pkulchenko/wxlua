@@ -743,7 +743,8 @@ public:
     void PrependColumn( wxDataViewColumn *column, const wxString &varianttype );
     // void AppendItem( const wxVector<wxVariant> &values, wxUIntPtr data = NULL );
     // void PrependItem( const wxVector<wxVariant> &values, wxUIntPtr data = NULL );
-    // void InsertItem( unsigned int row, const wxVector<wxVariant> &values, wxUIntPtr data = NULL );
+    void InsertItem(unsigned int row, LuaTable wxVariantTable, wxUIntPtr data = NULL );
+    void AppendItem(LuaTable wxVariantTable, wxUIntPtr data = NULL );
     void DeleteItem( unsigned int row );
     void DeleteAllItems();
     unsigned int GetItemCount() const;

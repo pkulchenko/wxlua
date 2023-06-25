@@ -14827,6 +14827,57 @@ static int LUACALL wxLua_wxDataViewListCtrl_AppendIconTextColumn(lua_State *L)
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewListCtrl_AppendItem[] = { &wxluatype_wxDataViewListCtrl, &wxluatype_TTABLE, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxDataViewListCtrl_AppendItem(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewListCtrl_AppendItem[1] = {{ wxLua_wxDataViewListCtrl_AppendItem, WXLUAMETHOD_METHOD, 2, 3, s_wxluatypeArray_wxLua_wxDataViewListCtrl_AppendItem }};
+// %override wxLua_wxDataViewListCtrl_AppendItem
+// void AppendItem(LuaTable wxVariantTable, wxUIntPtr data = NULL )
+int wxLua_wxDataViewListCtrl_AppendItem(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+
+    wxUIntPtr data = argCount >= 2 ? (wxUIntPtr)wxlua_getnumbertype(L, 3) : NULL;
+
+    if (!wxlua_iswxluatype(lua_type(L, 2), WXLUA_TTABLE))
+        wxlua_argerror(L, 2, wxT("a 'table'"));
+
+    wxVector<wxVariant> variants;
+
+    int count = 0;
+
+    while (1)
+    {
+        lua_rawgeti(L, 2, count+1);
+        int stack_type = wxluaT_type(L, -1);
+
+        if (stack_type == *p_wxluatype_wxVariant)
+        {
+            wxVariant* variant = (wxVariant *)wxluaT_getuserdatatype(L, -1, wxluatype_wxVariant);
+            variants.push_back(*variant);
+            ++count;
+            lua_pop(L, 1);
+        }
+        else if (lua_isnil(L, -1))
+        {
+            lua_pop(L, 1);
+            break;
+        }
+        else
+        {
+            wxlua_argerror(L, 2, wxT("a 'wxVector<wxVariant>' or table array of wxVariant"));
+            break;
+        }
+    }
+
+    wxDataViewListCtrl *self = (wxDataViewListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewListCtrl);
+
+    self->AppendItem(variants, data);
+
+    return 1;
+}
+
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewListCtrl_AppendProgressColumn[] = { &wxluatype_wxDataViewListCtrl, &wxluatype_TSTRING, &wxluatype_TINTEGER, &wxluatype_TNUMBER, &wxluatype_TINTEGER, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxDataViewListCtrl_AppendProgressColumn(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewListCtrl_AppendProgressColumn[1] = {{ wxLua_wxDataViewListCtrl_AppendProgressColumn, WXLUAMETHOD_METHOD, 2, 6, s_wxluatypeArray_wxLua_wxDataViewListCtrl_AppendProgressColumn }};
@@ -15161,6 +15212,58 @@ static int LUACALL wxLua_wxDataViewListCtrl_InsertColumn(lua_State *L)
     return 1;
 }
 
+static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewListCtrl_InsertItem[] = { &wxluatype_wxDataViewListCtrl, &wxluatype_TINTEGER, &wxluatype_TTABLE, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxDataViewListCtrl_InsertItem(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewListCtrl_InsertItem[1] = {{ wxLua_wxDataViewListCtrl_InsertItem, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxDataViewListCtrl_InsertItem }};
+// %override wxLua_wxDataViewListCtrl_InsertItem
+// void InsertItem(unsigned int row, LuaTable wxVariantTable, wxUIntPtr data = NULL )
+int wxLua_wxDataViewListCtrl_InsertItem(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+
+    unsigned int row = (unsigned int)lua_tonumber(L, 2);
+
+    wxUIntPtr data = argCount >= 3 ? (wxUIntPtr)wxlua_getnumbertype(L, 4) : NULL;
+
+    if (!wxlua_iswxluatype(lua_type(L, 3), WXLUA_TTABLE))
+        wxlua_argerror(L, 3, wxT("a 'table'"));
+
+    wxVector<wxVariant> variants;
+    int count = 0;
+
+    while (1)
+    {
+        lua_rawgeti(L, 3, count+1);
+        int stack_type = wxluaT_type(L, -1);
+
+        if (stack_type == *p_wxluatype_wxVariant)
+        {
+            wxVariant* variant = (wxVariant *)wxluaT_getuserdatatype(L, -1, wxluatype_wxVariant);
+            variants.push_back(*variant);
+            ++count;
+            lua_pop(L, 1);
+        }
+        else if (lua_isnil(L, -1))
+        {
+            lua_pop(L, 1);
+            break;
+        }
+        else
+        {
+            wxlua_argerror(L, 3, wxT("a 'wxVector<wxVariant>' or table array of wxVariant"));
+            break;
+        }
+    }
+
+    wxDataViewListCtrl *self = (wxDataViewListCtrl *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewListCtrl);
+
+    self->InsertItem(row, variants, data);
+
+    return 1;
+}
+
+
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewListCtrl_IsRowSelected[] = { &wxluatype_wxDataViewListCtrl, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDataViewListCtrl_IsRowSelected(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewListCtrl_IsRowSelected[1] = {{ wxLua_wxDataViewListCtrl_IsRowSelected, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDataViewListCtrl_IsRowSelected }};
@@ -15466,6 +15569,7 @@ wxLuaBindMethod wxDataViewListCtrl_methods[] = {
 #endif // (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
 
     { "AppendIconTextColumn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewListCtrl_AppendIconTextColumn, 1, NULL },
+    { "AppendItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewListCtrl_AppendItem, 1, NULL },
     { "AppendProgressColumn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewListCtrl_AppendProgressColumn, 1, NULL },
     { "AppendTextColumn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewListCtrl_AppendTextColumn, 1, NULL },
     { "AppendToggleColumn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewListCtrl_AppendToggleColumn, 1, NULL },
@@ -15491,6 +15595,7 @@ wxLuaBindMethod wxDataViewListCtrl_methods[] = {
     { "InsertColumn", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewListCtrl_InsertColumn_overload, s_wxluafunc_wxLua_wxDataViewListCtrl_InsertColumn_overload_count, 0 },
 #endif // (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl)
 
+    { "InsertItem", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewListCtrl_InsertItem, 1, NULL },
     { "IsRowSelected", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewListCtrl_IsRowSelected, 1, NULL },
     { "ItemToRow", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewListCtrl_ItemToRow, 1, NULL },
 
