@@ -4205,11 +4205,11 @@ static int LUACALL wxLua_wxComboCtrl_GetBackgroundColour(lua_State *L)
 
 #endif // (wxLUA_USE_wxColourPenBrush) && (wxUSE_COMBOCTRL)
 
-#if ((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#if ((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapDisabled1[] = { &wxluatype_wxComboCtrl, NULL };
 static int LUACALL wxLua_wxComboCtrl_GetBitmapDisabled1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxComboCtrl_GetBitmapDisabled1[1] = {{ wxLua_wxComboCtrl_GetBitmapDisabled1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapDisabled1 }};
-//     %wxchkver_3_2_0 wxBitmap GetBitmapDisabled() const;
+//     %wxchkver_3_1_6 wxBitmap GetBitmapDisabled() const;
 static int LUACALL wxLua_wxComboCtrl_GetBitmapDisabled1(lua_State *L)
 {
     // get this
@@ -4225,13 +4225,13 @@ static int LUACALL wxLua_wxComboCtrl_GetBitmapDisabled1(lua_State *L)
     return 1;
 }
 
-#endif // ((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 
-#if ((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapDisabled[] = { &wxluatype_wxComboCtrl, NULL };
 static int LUACALL wxLua_wxComboCtrl_GetBitmapDisabled(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxComboCtrl_GetBitmapDisabled[1] = {{ wxLua_wxComboCtrl_GetBitmapDisabled, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapDisabled }};
-//     !%wxchkver_3_2_0 const wxBitmap& GetBitmapDisabled() const;
+//     !%wxchkver_3_1_6 const wxBitmap& GetBitmapDisabled() const;
 static int LUACALL wxLua_wxComboCtrl_GetBitmapDisabled(lua_State *L)
 {
     // get this
@@ -4244,13 +4244,13 @@ static int LUACALL wxLua_wxComboCtrl_GetBitmapDisabled(lua_State *L)
     return 1;
 }
 
-#endif // ((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 
-#if ((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#if ((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapHover1[] = { &wxluatype_wxComboCtrl, NULL };
 static int LUACALL wxLua_wxComboCtrl_GetBitmapHover1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxComboCtrl_GetBitmapHover1[1] = {{ wxLua_wxComboCtrl_GetBitmapHover1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapHover1 }};
-//     %wxchkver_3_2_0 wxBitmap GetBitmapHover() const;
+//     %wxchkver_3_1_6 wxBitmap GetBitmapHover() const;
 static int LUACALL wxLua_wxComboCtrl_GetBitmapHover1(lua_State *L)
 {
     // get this
@@ -4266,13 +4266,13 @@ static int LUACALL wxLua_wxComboCtrl_GetBitmapHover1(lua_State *L)
     return 1;
 }
 
-#endif // ((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 
-#if ((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapHover[] = { &wxluatype_wxComboCtrl, NULL };
 static int LUACALL wxLua_wxComboCtrl_GetBitmapHover(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxComboCtrl_GetBitmapHover[1] = {{ wxLua_wxComboCtrl_GetBitmapHover, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapHover }};
-//     !%wxchkver_3_2_0 const wxBitmap& GetBitmapHover() const;
+//     !%wxchkver_3_1_6 const wxBitmap& GetBitmapHover() const;
 static int LUACALL wxLua_wxComboCtrl_GetBitmapHover(lua_State *L)
 {
     // get this
@@ -4285,13 +4285,13 @@ static int LUACALL wxLua_wxComboCtrl_GetBitmapHover(lua_State *L)
     return 1;
 }
 
-#endif // ((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 
-#if ((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#if ((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapNormal1[] = { &wxluatype_wxComboCtrl, NULL };
 static int LUACALL wxLua_wxComboCtrl_GetBitmapNormal1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxComboCtrl_GetBitmapNormal1[1] = {{ wxLua_wxComboCtrl_GetBitmapNormal1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapNormal1 }};
-//     %wxchkver_3_2_0 wxBitmap GetBitmapNormal() const;
+//     %wxchkver_3_1_6 wxBitmap GetBitmapNormal() const;
 static int LUACALL wxLua_wxComboCtrl_GetBitmapNormal1(lua_State *L)
 {
     // get this
@@ -4307,13 +4307,13 @@ static int LUACALL wxLua_wxComboCtrl_GetBitmapNormal1(lua_State *L)
     return 1;
 }
 
-#endif // ((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 
-#if ((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapNormal[] = { &wxluatype_wxComboCtrl, NULL };
 static int LUACALL wxLua_wxComboCtrl_GetBitmapNormal(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxComboCtrl_GetBitmapNormal[1] = {{ wxLua_wxComboCtrl_GetBitmapNormal, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapNormal }};
-//     !%wxchkver_3_2_0 const wxBitmap& GetBitmapNormal() const;
+//     !%wxchkver_3_1_6 const wxBitmap& GetBitmapNormal() const;
 static int LUACALL wxLua_wxComboCtrl_GetBitmapNormal(lua_State *L)
 {
     // get this
@@ -4326,13 +4326,13 @@ static int LUACALL wxLua_wxComboCtrl_GetBitmapNormal(lua_State *L)
     return 1;
 }
 
-#endif // ((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 
-#if ((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#if ((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapPressed1[] = { &wxluatype_wxComboCtrl, NULL };
 static int LUACALL wxLua_wxComboCtrl_GetBitmapPressed1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxComboCtrl_GetBitmapPressed1[1] = {{ wxLua_wxComboCtrl_GetBitmapPressed1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapPressed1 }};
-//     %wxchkver_3_2_0 wxBitmap GetBitmapPressed() const;
+//     %wxchkver_3_1_6 wxBitmap GetBitmapPressed() const;
 static int LUACALL wxLua_wxComboCtrl_GetBitmapPressed1(lua_State *L)
 {
     // get this
@@ -4348,13 +4348,13 @@ static int LUACALL wxLua_wxComboCtrl_GetBitmapPressed1(lua_State *L)
     return 1;
 }
 
-#endif // ((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 
-#if ((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapPressed[] = { &wxluatype_wxComboCtrl, NULL };
 static int LUACALL wxLua_wxComboCtrl_GetBitmapPressed(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxComboCtrl_GetBitmapPressed[1] = {{ wxLua_wxComboCtrl_GetBitmapPressed, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapPressed }};
-//     !%wxchkver_3_2_0 const wxBitmap& GetBitmapPressed() const;
+//     !%wxchkver_3_1_6 const wxBitmap& GetBitmapPressed() const;
 static int LUACALL wxLua_wxComboCtrl_GetBitmapPressed(lua_State *L)
 {
     // get this
@@ -4367,7 +4367,7 @@ static int LUACALL wxLua_wxComboCtrl_GetBitmapPressed(lua_State *L)
     return 1;
 }
 
-#endif // ((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxComboCtrl_GetButton[] = { &wxluatype_wxComboCtrl, NULL };
 static int LUACALL wxLua_wxComboCtrl_GetButton(lua_State *L);
@@ -5404,18 +5404,18 @@ static int LUACALL wxLua_wxComboCtrl_constructor(lua_State *L)
 
 
 
-#if (((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap))||(((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap))
+#if (((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap))||(((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap))
 // function overload table
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxComboCtrl_GetBitmapDisabled_overload[] =
 {
 
-#if ((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#if ((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
     { wxLua_wxComboCtrl_GetBitmapDisabled1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapDisabled1 },
-#endif // ((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 
-#if ((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
     { wxLua_wxComboCtrl_GetBitmapDisabled, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapDisabled },
-#endif // ((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 };
 static int s_wxluafunc_wxLua_wxComboCtrl_GetBitmapDisabled_overload_count = sizeof(s_wxluafunc_wxLua_wxComboCtrl_GetBitmapDisabled_overload)/sizeof(wxLuaBindCFunc);
 
@@ -5423,13 +5423,13 @@ static int s_wxluafunc_wxLua_wxComboCtrl_GetBitmapDisabled_overload_count = size
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxComboCtrl_GetBitmapHover_overload[] =
 {
 
-#if ((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#if ((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
     { wxLua_wxComboCtrl_GetBitmapHover1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapHover1 },
-#endif // ((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 
-#if ((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
     { wxLua_wxComboCtrl_GetBitmapHover, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapHover },
-#endif // ((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 };
 static int s_wxluafunc_wxLua_wxComboCtrl_GetBitmapHover_overload_count = sizeof(s_wxluafunc_wxLua_wxComboCtrl_GetBitmapHover_overload)/sizeof(wxLuaBindCFunc);
 
@@ -5437,13 +5437,13 @@ static int s_wxluafunc_wxLua_wxComboCtrl_GetBitmapHover_overload_count = sizeof(
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxComboCtrl_GetBitmapNormal_overload[] =
 {
 
-#if ((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#if ((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
     { wxLua_wxComboCtrl_GetBitmapNormal1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapNormal1 },
-#endif // ((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 
-#if ((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
     { wxLua_wxComboCtrl_GetBitmapNormal, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapNormal },
-#endif // ((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 };
 static int s_wxluafunc_wxLua_wxComboCtrl_GetBitmapNormal_overload_count = sizeof(s_wxluafunc_wxLua_wxComboCtrl_GetBitmapNormal_overload)/sizeof(wxLuaBindCFunc);
 
@@ -5451,17 +5451,17 @@ static int s_wxluafunc_wxLua_wxComboCtrl_GetBitmapNormal_overload_count = sizeof
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxComboCtrl_GetBitmapPressed_overload[] =
 {
 
-#if ((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#if ((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
     { wxLua_wxComboCtrl_GetBitmapPressed1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapPressed1 },
-#endif // ((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#endif // ((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 
-#if ((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#if ((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
     { wxLua_wxComboCtrl_GetBitmapPressed, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxComboCtrl_GetBitmapPressed },
-#endif // ((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
+#endif // ((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap)
 };
 static int s_wxluafunc_wxLua_wxComboCtrl_GetBitmapPressed_overload_count = sizeof(s_wxluafunc_wxLua_wxComboCtrl_GetBitmapPressed_overload)/sizeof(wxLuaBindCFunc);
 
-#endif // (((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap))||(((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap))
+#endif // (((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap))||(((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap))
 
 void wxLua_wxComboCtrl_delete_function(void** p)
 {
@@ -5490,12 +5490,12 @@ wxLuaBindMethod wxComboCtrl_methods[] = {
     { "GetBackgroundColour", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxComboCtrl_GetBackgroundColour, 1, NULL },
 #endif // (wxLUA_USE_wxColourPenBrush) && (wxUSE_COMBOCTRL)
 
-#if (((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap))||(((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap))
+#if (((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap))||(((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap))
     { "GetBitmapDisabled", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxComboCtrl_GetBitmapDisabled_overload, s_wxluafunc_wxLua_wxComboCtrl_GetBitmapDisabled_overload_count, 0 },
     { "GetBitmapHover", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxComboCtrl_GetBitmapHover_overload, s_wxluafunc_wxLua_wxComboCtrl_GetBitmapHover_overload_count, 0 },
     { "GetBitmapNormal", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxComboCtrl_GetBitmapNormal_overload, s_wxluafunc_wxLua_wxComboCtrl_GetBitmapNormal_overload_count, 0 },
     { "GetBitmapPressed", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxComboCtrl_GetBitmapPressed_overload, s_wxluafunc_wxLua_wxComboCtrl_GetBitmapPressed_overload_count, 0 },
-#endif // (((wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap))||(((!wxCHECK_VERSION(3,2,0)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap))
+#endif // (((wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap))||(((!wxCHECK_VERSION(3,1,6)) && (wxUSE_COMBOCTRL)) && (wxLUA_USE_wxBitmap))
 
     { "GetButton", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxComboCtrl_GetButton, 1, NULL },
 
