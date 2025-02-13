@@ -3679,6 +3679,7 @@ static int LUACALL wxLua_wxToolBarBase_AddSeparator(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxToolBarBase_AddTool1[] = { &wxluatype_wxToolBarBase, &wxluatype_TNUMBER, &wxluatype_TSTRING, &wxluatype_wxBitmap, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxToolBarBase_AddTool1(lua_State *L);
 // static wxLuaBindCFunc s_wxluafunc_wxLua_wxToolBarBase_AddTool1[1] = {{ wxLua_wxToolBarBase_AddTool1, WXLUAMETHOD_METHOD, 4, 6, s_wxluatypeArray_wxLua_wxToolBarBase_AddTool1 }};
+// %override wxLua_wxToolBarBase_AddTool1
 //     wxToolBarToolBase* AddTool(int toolId, const wxString& label, const wxBitmap& bitmap1, const wxString& shortHelpString = "", wxItemKind kind = wxITEM_NORMAL);
 static int LUACALL wxLua_wxToolBarBase_AddTool1(lua_State *L)
 {
@@ -3697,12 +3698,17 @@ static int LUACALL wxLua_wxToolBarBase_AddTool1(lua_State *L)
     // get this
     wxToolBarBase * self = (wxToolBarBase *)wxluaT_getuserdatatype(L, 1, wxluatype_wxToolBarBase);
     // call AddTool
+#if wxCHECK_VERSION(3, 1, 6)
+    wxToolBarToolBase* returns = (wxToolBarToolBase*)self->AddTool(toolId, label, wxBitmapBundle(*bitmap1), shortHelpString, kind);
+#else
     wxToolBarToolBase* returns = (wxToolBarToolBase*)self->AddTool(toolId, label, *bitmap1, shortHelpString, kind);
+#endif
     // push the result datatype
     wxluaT_pushuserdatatype(L, returns, wxluatype_wxToolBarToolBase);
 
     return 1;
 }
+
 
 #endif // ((wxLUA_USE_wxBitmap) && (wxLUA_USE_wxMenu && wxUSE_MENUS)) && (wxLUA_USE_wxToolbar)
 
