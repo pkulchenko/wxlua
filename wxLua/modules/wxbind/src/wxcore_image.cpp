@@ -5010,11 +5010,37 @@ static int LUACALL wxLua_wxArtProvider_GetIcon(lua_State *L)
 
 #endif // ((wxLUA_USE_wxArtProvider) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxPointSizeRect)
 
-#if (wxLUA_USE_wxArtProvider) && (wxLUA_USE_wxPointSizeRect)
+#if ((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxPointSizeRect)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxArtProvider_GetSizeHint1[] = { &wxluatype_TSTRING, &wxluatype_wxWindow, NULL };
+static int LUACALL wxLua_wxArtProvider_GetSizeHint1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxArtProvider_GetSizeHint1[1] = {{ wxLua_wxArtProvider_GetSizeHint1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 2, s_wxluatypeArray_wxLua_wxArtProvider_GetSizeHint1 }};
+//     %wxchkver_3_1_6 static wxSize GetSizeHint(const wxString& client, wxWindow *win = nullptr);
+static int LUACALL wxLua_wxArtProvider_GetSizeHint1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxWindow win = nullptr
+    wxWindow * win = (argCount >= 2 ? (wxWindow *)wxluaT_getuserdatatype(L, 2, wxluatype_wxWindow) : nullptr);
+    // const wxString client
+    const wxString client = wxlua_getwxStringtype(L, 1);
+    // call GetSizeHint
+    // allocate a new object using the copy constructor
+    wxSize* returns = new wxSize(wxArtProvider::GetSizeHint(client, win));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxSize);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxSize);
+
+    return 1;
+}
+
+#endif // ((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxPointSizeRect)
+
+#if ((!wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxArtProvider_GetSizeHint[] = { &wxluatype_TSTRING, &wxluatype_TBOOLEAN, NULL };
 static int LUACALL wxLua_wxArtProvider_GetSizeHint(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxArtProvider_GetSizeHint[1] = {{ wxLua_wxArtProvider_GetSizeHint, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 2, s_wxluatypeArray_wxLua_wxArtProvider_GetSizeHint }};
-//     static wxSize GetSizeHint(const wxString& client, bool platform_dependent = false);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxArtProvider_GetSizeHint[1] = {{ wxLua_wxArtProvider_GetSizeHint, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 2, s_wxluatypeArray_wxLua_wxArtProvider_GetSizeHint }};
+//     !%wxchkver_3_1_6 static wxSize GetSizeHint(const wxString& client, bool platform_dependent = false);
 static int LUACALL wxLua_wxArtProvider_GetSizeHint(lua_State *L)
 {
     // get number of arguments
@@ -5034,7 +5060,7 @@ static int LUACALL wxLua_wxArtProvider_GetSizeHint(lua_State *L)
     return 1;
 }
 
-#endif // (wxLUA_USE_wxArtProvider) && (wxLUA_USE_wxPointSizeRect)
+#endif // ((!wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxPointSizeRect)
 
 #if ((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxArtProvider))) && (wxLUA_USE_wxArtProvider)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxArtProvider_Insert[] = { &wxluatype_wxArtProvider, NULL };
@@ -5105,7 +5131,7 @@ static int LUACALL wxLua_wxArtProvider_Remove(lua_State *L)
 
 #endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxArtProvider)
 
-#if (((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
+#if ((((WXWIN_COMPATIBILITY_3_0) && (wxLUA_USE_wxArtProvider)) && (wxCHECK_VERSION(3,1,0))) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxArtProvider_RescaleBitmap[] = { &wxluatype_wxBitmap, &wxluatype_wxSize, NULL };
 static int LUACALL wxLua_wxArtProvider_RescaleBitmap(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxArtProvider_RescaleBitmap[1] = {{ wxLua_wxArtProvider_RescaleBitmap, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 2, 2, s_wxluatypeArray_wxLua_wxArtProvider_RescaleBitmap }};
@@ -5122,9 +5148,26 @@ static int LUACALL wxLua_wxArtProvider_RescaleBitmap(lua_State *L)
     return 0;
 }
 
-#endif // (((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
+#endif // ((((WXWIN_COMPATIBILITY_3_0) && (wxLUA_USE_wxArtProvider)) && (wxCHECK_VERSION(3,1,0))) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
 
 
+
+#if (((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxPointSizeRect))||(((!wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxPointSizeRect))
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxArtProvider_GetSizeHint_overload[] =
+{
+
+#if ((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxPointSizeRect)
+    { wxLua_wxArtProvider_GetSizeHint1, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 2, s_wxluatypeArray_wxLua_wxArtProvider_GetSizeHint1 },
+#endif // ((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxPointSizeRect)
+
+#if ((!wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxPointSizeRect)
+    { wxLua_wxArtProvider_GetSizeHint, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 1, 2, s_wxluatypeArray_wxLua_wxArtProvider_GetSizeHint },
+#endif // ((!wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxPointSizeRect)
+};
+static int s_wxluafunc_wxLua_wxArtProvider_GetSizeHint_overload_count = sizeof(s_wxluafunc_wxLua_wxArtProvider_GetSizeHint_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // (((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxPointSizeRect))||(((!wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxPointSizeRect))
 
 void wxLua_wxArtProvider_delete_function(void** p)
 {
@@ -5146,9 +5189,9 @@ wxLuaBindMethod wxArtProvider_methods[] = {
     { "GetIcon", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxArtProvider_GetIcon, 1, NULL },
 #endif // ((wxLUA_USE_wxArtProvider) && (wxLUA_USE_wxIcon)) && (wxLUA_USE_wxPointSizeRect)
 
-#if (wxLUA_USE_wxArtProvider) && (wxLUA_USE_wxPointSizeRect)
-    { "GetSizeHint", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxArtProvider_GetSizeHint, 1, NULL },
-#endif // (wxLUA_USE_wxArtProvider) && (wxLUA_USE_wxPointSizeRect)
+#if (((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxPointSizeRect))||(((!wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxPointSizeRect))
+    { "GetSizeHint", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxArtProvider_GetSizeHint_overload, s_wxluafunc_wxLua_wxArtProvider_GetSizeHint_overload_count, 0 },
+#endif // (((wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxPointSizeRect))||(((!wxCHECK_VERSION(3,1,6)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxPointSizeRect))
 
 #if ((!wxCHECK_VERSION(2,9,0) || (defined(WXWIN_COMPATIBILITY_2_8) && WXWIN_COMPATIBILITY_2_8)) && ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxArtProvider))) && (wxLUA_USE_wxArtProvider)
     { "Insert", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxArtProvider_Insert, 1, NULL },
@@ -5163,9 +5206,9 @@ wxLuaBindMethod wxArtProvider_methods[] = {
     { "Remove", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxArtProvider_Remove, 1, NULL },
 #endif // ((wxCHECK_VERSION(2,8,0)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxArtProvider)
 
-#if (((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
+#if ((((WXWIN_COMPATIBILITY_3_0) && (wxLUA_USE_wxArtProvider)) && (wxCHECK_VERSION(3,1,0))) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
     { "RescaleBitmap", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxArtProvider_RescaleBitmap, 1, NULL },
-#endif // (((wxCHECK_VERSION(3,1,0)) && (wxLUA_USE_wxArtProvider)) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
+#endif // ((((WXWIN_COMPATIBILITY_3_0) && (wxLUA_USE_wxArtProvider)) && (wxCHECK_VERSION(3,1,0))) && (wxLUA_USE_wxBitmap)) && (wxLUA_USE_wxPointSizeRect)
 
     { 0, 0, 0, 0 },
 };
