@@ -1128,7 +1128,7 @@ static int LUACALL wxLua_wxIPaddress_AnyAddress(lua_State *L)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIPaddress_Hostname1[] = { &wxluatype_wxIPaddress, NULL };
 static int LUACALL wxLua_wxIPaddress_Hostname1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_Hostname1[1] = {{ wxLua_wxIPaddress_Hostname1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxIPaddress_Hostname1 }};
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_Hostname1[1] = {{ wxLua_wxIPaddress_Hostname1, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxIPaddress_Hostname1 }};
 //     wxString Hostname();
 static int LUACALL wxLua_wxIPaddress_Hostname1(lua_State *L)
 {
@@ -1144,7 +1144,7 @@ static int LUACALL wxLua_wxIPaddress_Hostname1(lua_State *L)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIPaddress_Hostname[] = { &wxluatype_wxIPaddress, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxIPaddress_Hostname(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_Hostname[1] = {{ wxLua_wxIPaddress_Hostname, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxIPaddress_Hostname }};
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_Hostname[1] = {{ wxLua_wxIPaddress_Hostname, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxIPaddress_Hostname }};
 //     bool Hostname(const wxString& hostname);
 static int LUACALL wxLua_wxIPaddress_Hostname(lua_State *L)
 {
@@ -1210,7 +1210,7 @@ static int LUACALL wxLua_wxIPaddress_LocalHost(lua_State *L)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIPaddress_Service2[] = { &wxluatype_wxIPaddress, NULL };
 static int LUACALL wxLua_wxIPaddress_Service2(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_Service2[1] = {{ wxLua_wxIPaddress_Service2, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxIPaddress_Service2 }};
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_Service2[1] = {{ wxLua_wxIPaddress_Service2, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxIPaddress_Service2 }};
 //     unsigned short Service();
 static int LUACALL wxLua_wxIPaddress_Service2(lua_State *L)
 {
@@ -1234,7 +1234,7 @@ if ((double)(lua_Integer)returns == (double)returns) {
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIPaddress_Service1[] = { &wxluatype_wxIPaddress, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxIPaddress_Service1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_Service1[1] = {{ wxLua_wxIPaddress_Service1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxIPaddress_Service1 }};
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_Service1[1] = {{ wxLua_wxIPaddress_Service1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxIPaddress_Service1 }};
 //     bool Service(unsigned short service);
 static int LUACALL wxLua_wxIPaddress_Service1(lua_State *L)
 {
@@ -1252,7 +1252,7 @@ static int LUACALL wxLua_wxIPaddress_Service1(lua_State *L)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIPaddress_Service[] = { &wxluatype_wxIPaddress, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxIPaddress_Service(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_Service[1] = {{ wxLua_wxIPaddress_Service, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxIPaddress_Service }};
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPaddress_Service[1] = {{ wxLua_wxIPaddress_Service, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxIPaddress_Service }};
 //     bool Service(const wxString& service);
 static int LUACALL wxLua_wxIPaddress_Service(lua_State *L)
 {
@@ -1357,7 +1357,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPV4address_delete[1] = {{ wxlua_userd
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxIPV4address_constructor1[] = { &wxluatype_wxIPV4address, NULL };
 static int LUACALL wxLua_wxIPV4address_constructor1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPV4address_constructor1[1] = {{ wxLua_wxIPV4address_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxIPV4address_constructor1 }};
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPV4address_constructor1[1] = {{ wxLua_wxIPV4address_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxIPV4address_constructor1 }};
 //     wxIPV4address(const wxIPV4address& other);
 static int LUACALL wxLua_wxIPV4address_constructor1(lua_State *L)
 {
@@ -1374,7 +1374,7 @@ static int LUACALL wxLua_wxIPV4address_constructor1(lua_State *L)
 }
 
 static int LUACALL wxLua_wxIPV4address_constructor(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPV4address_constructor[1] = {{ wxLua_wxIPV4address_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxIPV4address_constructor[1] = {{ wxLua_wxIPV4address_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
 //     wxIPV4address();
 static int LUACALL wxLua_wxIPV4address_constructor(lua_State *L)
 {
@@ -2191,7 +2191,7 @@ static int LUACALL wxLua_wxURI_BuildUnescapedURI(lua_State *L)
 #if (!wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_Create1[] = { &wxluatype_wxURI, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxURI_Create1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_Create1[1] = {{ wxLua_wxURI_Create1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxURI_Create1 }};
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_Create1[1] = {{ wxLua_wxURI_Create1, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxURI_Create1 }};
 //     !%wxchkver_2_9_2 wxString Create(const wxString& uri);
 static int LUACALL wxLua_wxURI_Create1(lua_State *L)
 {
@@ -2212,7 +2212,7 @@ static int LUACALL wxLua_wxURI_Create1(lua_State *L)
 #if (wxCHECK_VERSION(2,9,2)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_Create[] = { &wxluatype_wxURI, &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxURI_Create(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_Create[1] = {{ wxLua_wxURI_Create, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxURI_Create }};
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_Create[1] = {{ wxLua_wxURI_Create, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxURI_Create }};
 //     %wxchkver_2_9_2 bool Create(const wxString& uri);
 static int LUACALL wxLua_wxURI_Create(lua_State *L)
 {
@@ -2604,7 +2604,7 @@ static int LUACALL wxLua_wxURI_op_set(lua_State *L)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_constructor2[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURI_constructor2(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_constructor2[1] = {{ wxLua_wxURI_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxURI_constructor2 }};
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_constructor2[1] = {{ wxLua_wxURI_constructor2, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxURI_constructor2 }};
 //     wxURI(const wxURI& uri);
 static int LUACALL wxLua_wxURI_constructor2(lua_State *L)
 {
@@ -2622,7 +2622,7 @@ static int LUACALL wxLua_wxURI_constructor2(lua_State *L)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURI_constructor1[] = { &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxURI_constructor1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_constructor1[1] = {{ wxLua_wxURI_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxURI_constructor1 }};
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_constructor1[1] = {{ wxLua_wxURI_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxURI_constructor1 }};
 //     wxURI(const wxString& uri);
 static int LUACALL wxLua_wxURI_constructor1(lua_State *L)
 {
@@ -2639,7 +2639,7 @@ static int LUACALL wxLua_wxURI_constructor1(lua_State *L)
 }
 
 static int LUACALL wxLua_wxURI_constructor(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_constructor[1] = {{ wxLua_wxURI_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxURI_constructor[1] = {{ wxLua_wxURI_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
 //     wxURI();
 static int LUACALL wxLua_wxURI_constructor(lua_State *L)
 {
@@ -2864,7 +2864,7 @@ static wxLuaBindCFunc s_wxluafunc_wxLua_wxURL_delete[1] = {{ wxlua_userdata_dele
 #if ((wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_URL)) && (wxLUA_USE_wxSocket && wxUSE_SOCKETS)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURL_constructor1[] = { &wxluatype_wxURI, NULL };
 static int LUACALL wxLua_wxURL_constructor1(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxURL_constructor1[1] = {{ wxLua_wxURL_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxURL_constructor1 }};
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxURL_constructor1[1] = {{ wxLua_wxURL_constructor1, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxURL_constructor1 }};
 //     wxURL(const wxURI& url);
 static int LUACALL wxLua_wxURL_constructor1(lua_State *L)
 {
@@ -2884,7 +2884,7 @@ static int LUACALL wxLua_wxURL_constructor1(lua_State *L)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxURL_constructor[] = { &wxluatype_TSTRING, NULL };
 static int LUACALL wxLua_wxURL_constructor(lua_State *L);
-// static wxLuaBindCFunc s_wxluafunc_wxLua_wxURL_constructor[1] = {{ wxLua_wxURL_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxURL_constructor }};
+// // static wxLuaBindCFunc s_wxluafunc_wxLua_wxURL_constructor[1] = {{ wxLua_wxURL_constructor, WXLUAMETHOD_CONSTRUCTOR, 1, 1, s_wxluatypeArray_wxLua_wxURL_constructor }};
 //     wxURL(const wxString& sUrl);
 static int LUACALL wxLua_wxURL_constructor(lua_State *L)
 {
@@ -2958,6 +2958,989 @@ int wxURL_methodCount = sizeof(wxURL_methods)/sizeof(wxLuaBindMethod) - 1;
 
 
 // ---------------------------------------------------------------------------
+// ../modules/wxbind/src/wxnet_webrequest.cpp was generated by genwxbind.lua 
+//
+// Any changes made to this file will be lost when the file is regenerated.
+// ---------------------------------------------------------------------------
+
+
+
+#if wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
+// ---------------------------------------------------------------------------
+// Bind class wxWebResponse
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxWebResponse'
+int wxluatype_wxWebResponse = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebResponse_AsString[] = { &wxluatype_wxWebResponse, NULL };
+static int LUACALL wxLua_wxWebResponse_AsString(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebResponse_AsString[1] = {{ wxLua_wxWebResponse_AsString, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebResponse_AsString }};
+// 	wxString AsString() const;
+static int LUACALL wxLua_wxWebResponse_AsString(lua_State *L)
+{
+    // get this
+    wxWebResponse * self = (wxWebResponse *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebResponse);
+    // call AsString
+    wxString returns = (self->AsString());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebResponse_GetContentLength[] = { &wxluatype_wxWebResponse, NULL };
+static int LUACALL wxLua_wxWebResponse_GetContentLength(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebResponse_GetContentLength[1] = {{ wxLua_wxWebResponse_GetContentLength, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebResponse_GetContentLength }};
+// 	wxFileOffset GetContentLength() const;
+static int LUACALL wxLua_wxWebResponse_GetContentLength(lua_State *L)
+{
+    // get this
+    wxWebResponse * self = (wxWebResponse *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebResponse);
+    // call GetContentLength
+    wxFileOffset returns = (self->GetContentLength());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebResponse_GetDataFile[] = { &wxluatype_wxWebResponse, NULL };
+static int LUACALL wxLua_wxWebResponse_GetDataFile(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebResponse_GetDataFile[1] = {{ wxLua_wxWebResponse_GetDataFile, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebResponse_GetDataFile }};
+// 	wxString GetDataFile() const;
+static int LUACALL wxLua_wxWebResponse_GetDataFile(lua_State *L)
+{
+    // get this
+    wxWebResponse * self = (wxWebResponse *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebResponse);
+    // call GetDataFile
+    wxString returns = (self->GetDataFile());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebResponse_GetHeader[] = { &wxluatype_wxWebResponse, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxWebResponse_GetHeader(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebResponse_GetHeader[1] = {{ wxLua_wxWebResponse_GetHeader, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxWebResponse_GetHeader }};
+// 	wxString GetHeader(const wxString &name) const;
+static int LUACALL wxLua_wxWebResponse_GetHeader(lua_State *L)
+{
+    // const wxString name
+    const wxString name = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxWebResponse * self = (wxWebResponse *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebResponse);
+    // call GetHeader
+    wxString returns = (self->GetHeader(name));
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebResponse_GetMimeType[] = { &wxluatype_wxWebResponse, NULL };
+static int LUACALL wxLua_wxWebResponse_GetMimeType(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebResponse_GetMimeType[1] = {{ wxLua_wxWebResponse_GetMimeType, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebResponse_GetMimeType }};
+// 	wxString GetMimeType() const;
+static int LUACALL wxLua_wxWebResponse_GetMimeType(lua_State *L)
+{
+    // get this
+    wxWebResponse * self = (wxWebResponse *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebResponse);
+    // call GetMimeType
+    wxString returns = (self->GetMimeType());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebResponse_GetStatus[] = { &wxluatype_wxWebResponse, NULL };
+static int LUACALL wxLua_wxWebResponse_GetStatus(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebResponse_GetStatus[1] = {{ wxLua_wxWebResponse_GetStatus, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebResponse_GetStatus }};
+// 	int GetStatus() const;
+static int LUACALL wxLua_wxWebResponse_GetStatus(lua_State *L)
+{
+    // get this
+    wxWebResponse * self = (wxWebResponse *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebResponse);
+    // call GetStatus
+    int returns = (self->GetStatus());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebResponse_GetStatusText[] = { &wxluatype_wxWebResponse, NULL };
+static int LUACALL wxLua_wxWebResponse_GetStatusText(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebResponse_GetStatusText[1] = {{ wxLua_wxWebResponse_GetStatusText, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebResponse_GetStatusText }};
+// 	wxString GetStatusText() const;
+static int LUACALL wxLua_wxWebResponse_GetStatusText(lua_State *L)
+{
+    // get this
+    wxWebResponse * self = (wxWebResponse *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebResponse);
+    // call GetStatusText
+    wxString returns = (self->GetStatusText());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+
+#if (wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST) && (wxUSE_STREAMS)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebResponse_GetStream[] = { &wxluatype_wxWebResponse, NULL };
+static int LUACALL wxLua_wxWebResponse_GetStream(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebResponse_GetStream[1] = {{ wxLua_wxWebResponse_GetStream, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebResponse_GetStream }};
+// 	wxInputStream *GetStream();
+static int LUACALL wxLua_wxWebResponse_GetStream(lua_State *L)
+{
+    // get this
+    wxWebResponse * self = (wxWebResponse *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebResponse);
+    // call GetStream
+    wxInputStream* returns = (wxInputStream*)self->GetStream();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxInputStream);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST) && (wxUSE_STREAMS)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebResponse_GetSuggestedFileName[] = { &wxluatype_wxWebResponse, NULL };
+static int LUACALL wxLua_wxWebResponse_GetSuggestedFileName(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebResponse_GetSuggestedFileName[1] = {{ wxLua_wxWebResponse_GetSuggestedFileName, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebResponse_GetSuggestedFileName }};
+// 	wxString GetSuggestedFileName() const;
+static int LUACALL wxLua_wxWebResponse_GetSuggestedFileName(lua_State *L)
+{
+    // get this
+    wxWebResponse * self = (wxWebResponse *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebResponse);
+    // call GetSuggestedFileName
+    wxString returns = (self->GetSuggestedFileName());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebResponse_GetURL[] = { &wxluatype_wxWebResponse, NULL };
+static int LUACALL wxLua_wxWebResponse_GetURL(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebResponse_GetURL[1] = {{ wxLua_wxWebResponse_GetURL, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebResponse_GetURL }};
+// 	wxString GetURL() const;
+static int LUACALL wxLua_wxWebResponse_GetURL(lua_State *L)
+{
+    // get this
+    wxWebResponse * self = (wxWebResponse *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebResponse);
+    // call GetURL
+    wxString returns = (self->GetURL());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebResponse_IsOk[] = { &wxluatype_wxWebResponse, NULL };
+static int LUACALL wxLua_wxWebResponse_IsOk(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebResponse_IsOk[1] = {{ wxLua_wxWebResponse_IsOk, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebResponse_IsOk }};
+// 	bool IsOk() const;
+static int LUACALL wxLua_wxWebResponse_IsOk(lua_State *L)
+{
+    // get this
+    wxWebResponse * self = (wxWebResponse *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebResponse);
+    // call IsOk
+    bool returns = (self->IsOk());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebResponse_delete[] = { &wxluatype_wxWebResponse, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebResponse_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxWebResponse_delete }};
+
+static int LUACALL wxLua_wxWebResponse_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebResponse_constructor[1] = {{ wxLua_wxWebResponse_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+// 	wxWebResponse();
+static int LUACALL wxLua_wxWebResponse_constructor(lua_State *L)
+{
+    // call constructor
+    wxWebResponse* returns = new wxWebResponse();
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxWebResponse);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxWebResponse);
+
+    return 1;
+}
+
+
+
+
+void wxLua_wxWebResponse_delete_function(void** p)
+{
+    wxWebResponse* o = (wxWebResponse*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxWebResponse_methods[] = {
+    { "AsString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebResponse_AsString, 1, NULL },
+    { "GetContentLength", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebResponse_GetContentLength, 1, NULL },
+    { "GetDataFile", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebResponse_GetDataFile, 1, NULL },
+    { "GetHeader", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebResponse_GetHeader, 1, NULL },
+    { "GetMimeType", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebResponse_GetMimeType, 1, NULL },
+    { "GetStatus", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebResponse_GetStatus, 1, NULL },
+    { "GetStatusText", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebResponse_GetStatusText, 1, NULL },
+
+#if (wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST) && (wxUSE_STREAMS)
+    { "GetStream", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebResponse_GetStream, 1, NULL },
+#endif // (wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST) && (wxUSE_STREAMS)
+
+    { "GetSuggestedFileName", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebResponse_GetSuggestedFileName, 1, NULL },
+    { "GetURL", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebResponse_GetURL, 1, NULL },
+    { "IsOk", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebResponse_IsOk, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxWebResponse_delete, 1, NULL },
+    { "wxWebResponse", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxWebResponse_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxWebResponse_methodCount = sizeof(wxWebResponse_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
+
+
+#if wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
+// ---------------------------------------------------------------------------
+// Bind class wxWebRequest
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxWebRequest'
+int wxluatype_wxWebRequest = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_Cancel[] = { &wxluatype_wxWebRequest, NULL };
+static int LUACALL wxLua_wxWebRequest_Cancel(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_Cancel[1] = {{ wxLua_wxWebRequest_Cancel, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebRequest_Cancel }};
+// 	void Cancel();
+static int LUACALL wxLua_wxWebRequest_Cancel(lua_State *L)
+{
+    // get this
+    wxWebRequest * self = (wxWebRequest *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequest);
+    // call Cancel
+    self->Cancel();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_DisablePeerVerify[] = { &wxluatype_wxWebRequest, &wxluatype_TBOOLEAN, NULL };
+static int LUACALL wxLua_wxWebRequest_DisablePeerVerify(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_DisablePeerVerify[1] = {{ wxLua_wxWebRequest_DisablePeerVerify, WXLUAMETHOD_METHOD, 1, 2, s_wxluatypeArray_wxLua_wxWebRequest_DisablePeerVerify }};
+// 	void DisablePeerVerify(bool disable=true);
+static int LUACALL wxLua_wxWebRequest_DisablePeerVerify(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // bool disable = true
+    bool disable = (argCount >= 2 ? wxlua_getbooleantype(L, 2) : true);
+    // get this
+    wxWebRequest * self = (wxWebRequest *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequest);
+    // call DisablePeerVerify
+    self->DisablePeerVerify(disable);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_GetBytesExpectedToReceive[] = { &wxluatype_wxWebRequest, NULL };
+static int LUACALL wxLua_wxWebRequest_GetBytesExpectedToReceive(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_GetBytesExpectedToReceive[1] = {{ wxLua_wxWebRequest_GetBytesExpectedToReceive, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebRequest_GetBytesExpectedToReceive }};
+// 	wxFileOffset GetBytesExpectedToReceive() const;
+static int LUACALL wxLua_wxWebRequest_GetBytesExpectedToReceive(lua_State *L)
+{
+    // get this
+    wxWebRequest * self = (wxWebRequest *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequest);
+    // call GetBytesExpectedToReceive
+    wxFileOffset returns = (self->GetBytesExpectedToReceive());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_GetBytesExpectedToSend[] = { &wxluatype_wxWebRequest, NULL };
+static int LUACALL wxLua_wxWebRequest_GetBytesExpectedToSend(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_GetBytesExpectedToSend[1] = {{ wxLua_wxWebRequest_GetBytesExpectedToSend, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebRequest_GetBytesExpectedToSend }};
+// 	wxFileOffset GetBytesExpectedToSend() const;
+static int LUACALL wxLua_wxWebRequest_GetBytesExpectedToSend(lua_State *L)
+{
+    // get this
+    wxWebRequest * self = (wxWebRequest *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequest);
+    // call GetBytesExpectedToSend
+    wxFileOffset returns = (self->GetBytesExpectedToSend());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_GetBytesReceived[] = { &wxluatype_wxWebRequest, NULL };
+static int LUACALL wxLua_wxWebRequest_GetBytesReceived(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_GetBytesReceived[1] = {{ wxLua_wxWebRequest_GetBytesReceived, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebRequest_GetBytesReceived }};
+// 	wxFileOffset GetBytesReceived() const;
+static int LUACALL wxLua_wxWebRequest_GetBytesReceived(lua_State *L)
+{
+    // get this
+    wxWebRequest * self = (wxWebRequest *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequest);
+    // call GetBytesReceived
+    wxFileOffset returns = (self->GetBytesReceived());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_GetBytesSent[] = { &wxluatype_wxWebRequest, NULL };
+static int LUACALL wxLua_wxWebRequest_GetBytesSent(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_GetBytesSent[1] = {{ wxLua_wxWebRequest_GetBytesSent, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebRequest_GetBytesSent }};
+// 	wxFileOffset GetBytesSent() const;
+static int LUACALL wxLua_wxWebRequest_GetBytesSent(lua_State *L)
+{
+    // get this
+    wxWebRequest * self = (wxWebRequest *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequest);
+    // call GetBytesSent
+    wxFileOffset returns = (self->GetBytesSent());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_GetId[] = { &wxluatype_wxWebRequest, NULL };
+static int LUACALL wxLua_wxWebRequest_GetId(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_GetId[1] = {{ wxLua_wxWebRequest_GetId, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebRequest_GetId }};
+// 	int GetId() const;
+static int LUACALL wxLua_wxWebRequest_GetId(lua_State *L)
+{
+    // get this
+    wxWebRequest * self = (wxWebRequest *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequest);
+    // call GetId
+    int returns = (self->GetId());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_GetResponse[] = { &wxluatype_wxWebRequest, NULL };
+static int LUACALL wxLua_wxWebRequest_GetResponse(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_GetResponse[1] = {{ wxLua_wxWebRequest_GetResponse, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebRequest_GetResponse }};
+// 	wxWebResponse GetResponse() const;
+static int LUACALL wxLua_wxWebRequest_GetResponse(lua_State *L)
+{
+    // get this
+    wxWebRequest * self = (wxWebRequest *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequest);
+    // call GetResponse
+    // allocate a new object using the copy constructor
+    wxWebResponse* returns = new wxWebResponse(self->GetResponse());
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxWebResponse);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxWebResponse);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_GetState[] = { &wxluatype_wxWebRequest, NULL };
+static int LUACALL wxLua_wxWebRequest_GetState(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_GetState[1] = {{ wxLua_wxWebRequest_GetState, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebRequest_GetState }};
+// 	wxWebRequest::State GetState() const;
+static int LUACALL wxLua_wxWebRequest_GetState(lua_State *L)
+{
+    // get this
+    wxWebRequest * self = (wxWebRequest *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequest);
+    // call GetState
+    wxWebRequest::State returns = (self->GetState());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_IsOk[] = { &wxluatype_wxWebRequest, NULL };
+static int LUACALL wxLua_wxWebRequest_IsOk(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_IsOk[1] = {{ wxLua_wxWebRequest_IsOk, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebRequest_IsOk }};
+// 	bool IsOk() const;
+static int LUACALL wxLua_wxWebRequest_IsOk(lua_State *L)
+{
+    // get this
+    wxWebRequest * self = (wxWebRequest *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequest);
+    // call IsOk
+    bool returns = (self->IsOk());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_IsPeerVerifyDisabled[] = { &wxluatype_wxWebRequest, NULL };
+static int LUACALL wxLua_wxWebRequest_IsPeerVerifyDisabled(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_IsPeerVerifyDisabled[1] = {{ wxLua_wxWebRequest_IsPeerVerifyDisabled, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebRequest_IsPeerVerifyDisabled }};
+// 	bool IsPeerVerifyDisabled() const;
+static int LUACALL wxLua_wxWebRequest_IsPeerVerifyDisabled(lua_State *L)
+{
+    // get this
+    wxWebRequest * self = (wxWebRequest *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequest);
+    // call IsPeerVerifyDisabled
+    bool returns = (self->IsPeerVerifyDisabled());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+
+#if (wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST) && (wxUSE_STREAMS)
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_SetData1[] = { &wxluatype_wxWebRequest, &wxluatype_wxInputStream, &wxluatype_TSTRING, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxWebRequest_SetData1(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_SetData1[1] = {{ wxLua_wxWebRequest_SetData1, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxWebRequest_SetData1 }};
+// 	bool SetData(wxInputStream *dataStream, const wxString &contentType, wxFileOffset dataSize = wxInvalidOffset);
+static int LUACALL wxLua_wxWebRequest_SetData1(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // wxFileOffset dataSize = wxInvalidOffset
+    wxFileOffset dataSize = (argCount >= 4 ? (wxFileOffset)wxlua_getuintegertype(L, 4) : wxInvalidOffset);
+    // const wxString contentType
+    const wxString contentType = wxlua_getwxStringtype(L, 3);
+    // wxInputStream dataStream
+    wxInputStream * dataStream = (wxInputStream *)wxluaT_getuserdatatype(L, 2, wxluatype_wxInputStream);
+    // get this
+    wxWebRequest * self = (wxWebRequest *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequest);
+    // call SetData
+    bool returns = (self->SetData(dataStream, contentType, dataSize));
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+#endif // (wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST) && (wxUSE_STREAMS)
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_SetData[] = { &wxluatype_wxWebRequest, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxWebRequest_SetData(lua_State *L);
+// static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_SetData[1] = {{ wxLua_wxWebRequest_SetData, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxWebRequest_SetData }};
+// 	void SetData(const wxString &text, const wxString &contentType); // , const wxMBConv &conv = wxConvUTF8);
+static int LUACALL wxLua_wxWebRequest_SetData(lua_State *L)
+{
+    // const wxString contentType
+    const wxString contentType = wxlua_getwxStringtype(L, 3);
+    // const wxString text
+    const wxString text = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxWebRequest * self = (wxWebRequest *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequest);
+    // call SetData
+    self->SetData(text, contentType);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_SetHeader[] = { &wxluatype_wxWebRequest, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxWebRequest_SetHeader(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_SetHeader[1] = {{ wxLua_wxWebRequest_SetHeader, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxWebRequest_SetHeader }};
+// 	void SetHeader(const wxString &name, const wxString &value);
+static int LUACALL wxLua_wxWebRequest_SetHeader(lua_State *L)
+{
+    // const wxString value
+    const wxString value = wxlua_getwxStringtype(L, 3);
+    // const wxString name
+    const wxString name = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxWebRequest * self = (wxWebRequest *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequest);
+    // call SetHeader
+    self->SetHeader(name, value);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_SetMethod[] = { &wxluatype_wxWebRequest, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxWebRequest_SetMethod(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_SetMethod[1] = {{ wxLua_wxWebRequest_SetMethod, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxWebRequest_SetMethod }};
+// 	void SetMethod(const wxString &method);
+static int LUACALL wxLua_wxWebRequest_SetMethod(lua_State *L)
+{
+    // const wxString method
+    const wxString method = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxWebRequest * self = (wxWebRequest *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequest);
+    // call SetMethod
+    self->SetMethod(method);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_SetStorage[] = { &wxluatype_wxWebRequest, &wxluatype_TINTEGER, NULL };
+static int LUACALL wxLua_wxWebRequest_SetStorage(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_SetStorage[1] = {{ wxLua_wxWebRequest_SetStorage, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxWebRequest_SetStorage }};
+// 	void SetStorage(wxWebRequest::Storage storage);
+static int LUACALL wxLua_wxWebRequest_SetStorage(lua_State *L)
+{
+    // wxWebRequest::Storage storage
+    wxWebRequest::Storage storage = (wxWebRequest::Storage)wxlua_getenumtype(L, 2);
+    // get this
+    wxWebRequest * self = (wxWebRequest *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequest);
+    // call SetStorage
+    self->SetStorage(storage);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_Start[] = { &wxluatype_wxWebRequest, NULL };
+static int LUACALL wxLua_wxWebRequest_Start(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_Start[1] = {{ wxLua_wxWebRequest_Start, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebRequest_Start }};
+// 	void Start();
+static int LUACALL wxLua_wxWebRequest_Start(lua_State *L)
+{
+    // get this
+    wxWebRequest * self = (wxWebRequest *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequest);
+    // call Start
+    self->Start();
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequest_delete[] = { &wxluatype_wxWebRequest, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxWebRequest_delete }};
+
+static int LUACALL wxLua_wxWebRequest_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_constructor[1] = {{ wxLua_wxWebRequest_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 0, g_wxluaargtypeArray_None }};
+// 	wxWebRequest();
+static int LUACALL wxLua_wxWebRequest_constructor(lua_State *L)
+{
+    // call constructor
+    wxWebRequest* returns = new wxWebRequest();
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxWebRequest);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxWebRequest);
+
+    return 1;
+}
+
+
+
+
+#if ((wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST) && (wxUSE_STREAMS))||(wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST)
+// function overload table
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequest_SetData_overload[] =
+{
+
+#if (wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST) && (wxUSE_STREAMS)
+    { wxLua_wxWebRequest_SetData1, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxWebRequest_SetData1 },
+#endif // (wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST) && (wxUSE_STREAMS)
+    { wxLua_wxWebRequest_SetData, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxWebRequest_SetData },
+};
+static int s_wxluafunc_wxLua_wxWebRequest_SetData_overload_count = sizeof(s_wxluafunc_wxLua_wxWebRequest_SetData_overload)/sizeof(wxLuaBindCFunc);
+
+#endif // ((wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST) && (wxUSE_STREAMS))||(wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST)
+
+void wxLua_wxWebRequest_delete_function(void** p)
+{
+    wxWebRequest* o = (wxWebRequest*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxWebRequest_methods[] = {
+    { "Cancel", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequest_Cancel, 1, NULL },
+    { "DisablePeerVerify", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequest_DisablePeerVerify, 1, NULL },
+    { "GetBytesExpectedToReceive", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequest_GetBytesExpectedToReceive, 1, NULL },
+    { "GetBytesExpectedToSend", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequest_GetBytesExpectedToSend, 1, NULL },
+    { "GetBytesReceived", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequest_GetBytesReceived, 1, NULL },
+    { "GetBytesSent", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequest_GetBytesSent, 1, NULL },
+    { "GetId", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequest_GetId, 1, NULL },
+    { "GetResponse", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequest_GetResponse, 1, NULL },
+    { "GetState", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequest_GetState, 1, NULL },
+    { "IsOk", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequest_IsOk, 1, NULL },
+    { "IsPeerVerifyDisabled", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequest_IsPeerVerifyDisabled, 1, NULL },
+
+#if ((wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST) && (wxUSE_STREAMS))||(wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST)
+    { "SetData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequest_SetData_overload, s_wxluafunc_wxLua_wxWebRequest_SetData_overload_count, 0 },
+#endif // ((wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST) && (wxUSE_STREAMS))||(wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST)
+
+    { "SetHeader", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequest_SetHeader, 1, NULL },
+    { "SetMethod", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequest_SetMethod, 1, NULL },
+    { "SetStorage", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequest_SetStorage, 1, NULL },
+    { "Start", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequest_Start, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxWebRequest_delete, 1, NULL },
+    { "wxWebRequest", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxWebRequest_constructor, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxWebRequest_methodCount = sizeof(wxWebRequest_methods)/sizeof(wxLuaBindMethod) - 1;
+
+wxLuaBindNumber wxWebRequest_enums[] = {
+#if wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
+        { "State_Active", wxWebRequest::State_Active },
+        { "State_Cancelled", wxWebRequest::State_Cancelled },
+        { "State_Completed", wxWebRequest::State_Completed },
+        { "State_Failed", wxWebRequest::State_Failed },
+        { "State_Idle", wxWebRequest::State_Idle },
+        { "State_Unauthorized", wxWebRequest::State_Unauthorized },
+        { "Storage_File", wxWebRequest::Storage_File },
+        { "Storage_Memory", wxWebRequest::Storage_Memory },
+        { "Storage_None", wxWebRequest::Storage_None },
+#endif // wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
+
+    { NULL, 0, },
+};
+int wxWebRequest_enumCount = sizeof(wxWebRequest_enums)/sizeof(wxLuaBindNumber) - 1;
+#endif  // wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
+
+
+#if wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
+// ---------------------------------------------------------------------------
+// Bind class wxWebRequestEvent
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxWebRequestEvent'
+int wxluatype_wxWebRequestEvent = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequestEvent_GetData[] = { &wxluatype_wxWebRequestEvent, NULL };
+static int LUACALL wxLua_wxWebRequestEvent_GetData(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequestEvent_GetData[1] = {{ wxLua_wxWebRequestEvent_GetData, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebRequestEvent_GetData }};
+// %override wxLua_wxWebRequestEvent_GetData
+static int LUACALL wxLua_wxWebRequestEvent_GetData(lua_State *L)
+{
+    wxWebRequestEvent * self = (wxWebRequestEvent *)(wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequestEvent));
+    lua_pushlstring(L, (const char*)(self->GetDataBuffer()), self->GetDataSize());
+    return 1;
+}
+
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequestEvent_GetDataFile[] = { &wxluatype_wxWebRequestEvent, NULL };
+static int LUACALL wxLua_wxWebRequestEvent_GetDataFile(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequestEvent_GetDataFile[1] = {{ wxLua_wxWebRequestEvent_GetDataFile, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebRequestEvent_GetDataFile }};
+// 	const wxString &GetDataFile() const;
+static int LUACALL wxLua_wxWebRequestEvent_GetDataFile(lua_State *L)
+{
+    // get this
+    wxWebRequestEvent * self = (wxWebRequestEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequestEvent);
+    // call GetDataFile
+    wxString returns = (self->GetDataFile());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequestEvent_GetErrorDescription[] = { &wxluatype_wxWebRequestEvent, NULL };
+static int LUACALL wxLua_wxWebRequestEvent_GetErrorDescription(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequestEvent_GetErrorDescription[1] = {{ wxLua_wxWebRequestEvent_GetErrorDescription, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebRequestEvent_GetErrorDescription }};
+// 	const wxString &GetErrorDescription() const;
+static int LUACALL wxLua_wxWebRequestEvent_GetErrorDescription(lua_State *L)
+{
+    // get this
+    wxWebRequestEvent * self = (wxWebRequestEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequestEvent);
+    // call GetErrorDescription
+    wxString returns = (self->GetErrorDescription());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequestEvent_GetRequest[] = { &wxluatype_wxWebRequestEvent, NULL };
+static int LUACALL wxLua_wxWebRequestEvent_GetRequest(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequestEvent_GetRequest[1] = {{ wxLua_wxWebRequestEvent_GetRequest, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebRequestEvent_GetRequest }};
+// 	const wxWebRequest &GetRequest() const;
+static int LUACALL wxLua_wxWebRequestEvent_GetRequest(lua_State *L)
+{
+    // get this
+    wxWebRequestEvent * self = (wxWebRequestEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequestEvent);
+    // call GetRequest
+    const wxWebRequest* returns = (const wxWebRequest*)&self->GetRequest();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxWebRequest);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequestEvent_GetResponse[] = { &wxluatype_wxWebRequestEvent, NULL };
+static int LUACALL wxLua_wxWebRequestEvent_GetResponse(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequestEvent_GetResponse[1] = {{ wxLua_wxWebRequestEvent_GetResponse, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebRequestEvent_GetResponse }};
+// 	const wxWebResponse &GetResponse() const;
+static int LUACALL wxLua_wxWebRequestEvent_GetResponse(lua_State *L)
+{
+    // get this
+    wxWebRequestEvent * self = (wxWebRequestEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequestEvent);
+    // call GetResponse
+    const wxWebResponse* returns = (const wxWebResponse*)&self->GetResponse();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxWebResponse);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequestEvent_GetState[] = { &wxluatype_wxWebRequestEvent, NULL };
+static int LUACALL wxLua_wxWebRequestEvent_GetState(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequestEvent_GetState[1] = {{ wxLua_wxWebRequestEvent_GetState, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebRequestEvent_GetState }};
+// 	wxWebRequest::State GetState() const;
+static int LUACALL wxLua_wxWebRequestEvent_GetState(lua_State *L)
+{
+    // get this
+    wxWebRequestEvent * self = (wxWebRequestEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebRequestEvent);
+    // call GetState
+    wxWebRequest::State returns = (self->GetState());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebRequestEvent_delete[] = { &wxluatype_wxWebRequestEvent, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebRequestEvent_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxWebRequestEvent_delete }};
+
+
+
+
+void wxLua_wxWebRequestEvent_delete_function(void** p)
+{
+    wxWebRequestEvent* o = (wxWebRequestEvent*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxWebRequestEvent_methods[] = {
+    { "GetData", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequestEvent_GetData, 1, NULL },
+    { "GetDataFile", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequestEvent_GetDataFile, 1, NULL },
+    { "GetErrorDescription", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequestEvent_GetErrorDescription, 1, NULL },
+    { "GetRequest", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequestEvent_GetRequest, 1, NULL },
+    { "GetResponse", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequestEvent_GetResponse, 1, NULL },
+    { "GetState", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebRequestEvent_GetState, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxWebRequestEvent_delete, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxWebRequestEvent_methodCount = sizeof(wxWebRequestEvent_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
+
+
+#if wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
+// ---------------------------------------------------------------------------
+// Bind class wxWebSession
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxWebSession'
+int wxluatype_wxWebSession = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebSession_AddCommonHeader[] = { &wxluatype_wxWebSession, &wxluatype_TSTRING, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxWebSession_AddCommonHeader(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebSession_AddCommonHeader[1] = {{ wxLua_wxWebSession_AddCommonHeader, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxWebSession_AddCommonHeader }};
+// 	void AddCommonHeader(const wxString &name, const wxString &value);
+static int LUACALL wxLua_wxWebSession_AddCommonHeader(lua_State *L)
+{
+    // const wxString value
+    const wxString value = wxlua_getwxStringtype(L, 3);
+    // const wxString name
+    const wxString name = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxWebSession * self = (wxWebSession *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebSession);
+    // call AddCommonHeader
+    self->AddCommonHeader(name, value);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebSession_CreateRequest[] = { &wxluatype_wxWebSession, &wxluatype_wxEvtHandler, &wxluatype_TSTRING, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxWebSession_CreateRequest(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebSession_CreateRequest[1] = {{ wxLua_wxWebSession_CreateRequest, WXLUAMETHOD_METHOD, 3, 4, s_wxluatypeArray_wxLua_wxWebSession_CreateRequest }};
+// 	wxWebRequest CreateRequest(wxEvtHandler *handler, const wxString &url, int id = wxID_ANY);
+static int LUACALL wxLua_wxWebSession_CreateRequest(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int id = wxID_ANY
+    int id = (argCount >= 4 ? (int)wxlua_getnumbertype(L, 4) : wxID_ANY);
+    // const wxString url
+    const wxString url = wxlua_getwxStringtype(L, 3);
+    // wxEvtHandler handler
+    wxEvtHandler * handler = (wxEvtHandler *)wxluaT_getuserdatatype(L, 2, wxluatype_wxEvtHandler);
+    // get this
+    wxWebSession * self = (wxWebSession *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebSession);
+    // call CreateRequest
+    // allocate a new object using the copy constructor
+    wxWebRequest* returns = new wxWebRequest(self->CreateRequest(handler, url, id));
+    // add the new object to the tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxWebRequest);
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxWebRequest);
+
+    return 1;
+}
+
+static int LUACALL wxLua_wxWebSession_GetDefault(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebSession_GetDefault[1] = {{ wxLua_wxWebSession_GetDefault, WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, 0, 0, g_wxluaargtypeArray_None }};
+// 	static wxWebSession &GetDefault();
+static int LUACALL wxLua_wxWebSession_GetDefault(lua_State *L)
+{
+    // call GetDefault
+    wxWebSession* returns = (wxWebSession*)&wxWebSession::GetDefault();
+    // push the result datatype
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxWebSession);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebSession_GetTempDir[] = { &wxluatype_wxWebSession, NULL };
+static int LUACALL wxLua_wxWebSession_GetTempDir(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebSession_GetTempDir[1] = {{ wxLua_wxWebSession_GetTempDir, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebSession_GetTempDir }};
+// 	wxString GetTempDir() const;
+static int LUACALL wxLua_wxWebSession_GetTempDir(lua_State *L)
+{
+    // get this
+    wxWebSession * self = (wxWebSession *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebSession);
+    // call GetTempDir
+    wxString returns = (self->GetTempDir());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebSession_IsOpened[] = { &wxluatype_wxWebSession, NULL };
+static int LUACALL wxLua_wxWebSession_IsOpened(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebSession_IsOpened[1] = {{ wxLua_wxWebSession_IsOpened, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWebSession_IsOpened }};
+// 	bool IsOpened() const;
+static int LUACALL wxLua_wxWebSession_IsOpened(lua_State *L)
+{
+    // get this
+    wxWebSession * self = (wxWebSession *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebSession);
+    // call IsOpened
+    bool returns = (self->IsOpened());
+    // push the result flag
+    lua_pushboolean(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxWebSession_SetTempDir[] = { &wxluatype_wxWebSession, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxWebSession_SetTempDir(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxWebSession_SetTempDir[1] = {{ wxLua_wxWebSession_SetTempDir, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxWebSession_SetTempDir }};
+// 	void SetTempDir (const wxString &dir);
+static int LUACALL wxLua_wxWebSession_SetTempDir(lua_State *L)
+{
+    // const wxString dir
+    const wxString dir = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxWebSession * self = (wxWebSession *)wxluaT_getuserdatatype(L, 1, wxluatype_wxWebSession);
+    // call SetTempDir
+    self->SetTempDir(dir);
+
+    return 0;
+}
+
+
+
+
+void wxLua_wxWebSession_delete_function(void** p)
+{
+    wxWebSession* o = (wxWebSession*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxWebSession_methods[] = {
+    { "AddCommonHeader", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebSession_AddCommonHeader, 1, NULL },
+    { "CreateRequest", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebSession_CreateRequest, 1, NULL },
+    { "GetDefault", WXLUAMETHOD_METHOD|WXLUAMETHOD_STATIC, s_wxluafunc_wxLua_wxWebSession_GetDefault, 1, NULL },
+    { "GetTempDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebSession_GetTempDir, 1, NULL },
+    { "IsOpened", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebSession_IsOpened, 1, NULL },
+    { "SetTempDir", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWebSession_SetTempDir, 1, NULL },
+
+    { 0, 0, 0, 0 },
+};
+
+int wxWebSession_methodCount = sizeof(wxWebSession_methods)/sizeof(wxLuaBindMethod) - 1;
+
+#endif  // wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
+
+
+
+// ---------------------------------------------------------------------------
 // ../modules/wxbind/src/wxnet_bind.cpp was generated by genwxbind.lua 
 //
 // Any changes made to this file will be lost when the file is regenerated.
@@ -2975,6 +3958,11 @@ wxLuaBindEvent* wxLuaGetEventList_wxnet(size_t &count)
 #if wxLUA_USE_wxSocket && wxUSE_SOCKETS
         { "wxEVT_SOCKET", WXLUA_GET_wxEventType_ptr(wxEVT_SOCKET), &wxluatype_wxSocketEvent },
 #endif // wxLUA_USE_wxSocket && wxUSE_SOCKETS
+
+#if wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
+        { "wxEVT_WEBREQUEST_DATA", WXLUA_GET_wxEventType_ptr(wxEVT_WEBREQUEST_DATA), &wxluatype_wxWebRequestEvent },
+        { "wxEVT_WEBREQUEST_STATE", WXLUA_GET_wxEventType_ptr(wxEVT_WEBREQUEST_STATE), &wxluatype_wxWebRequestEvent },
+#endif // wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
 
 
         { 0, 0, 0 },
@@ -3134,6 +4122,10 @@ static const char* wxluaclassname_wxSocketEvent = "wxSocketEvent";
 static const char* wxluaclassname_wxSocketServer = "wxSocketServer";
 static const char* wxluaclassname_wxURI = "wxURI";
 static const char* wxluaclassname_wxURL = "wxURL";
+static const char* wxluaclassname_wxWebRequest = "wxWebRequest";
+static const char* wxluaclassname_wxWebRequestEvent = "wxWebRequestEvent";
+static const char* wxluaclassname_wxWebResponse = "wxWebResponse";
+static const char* wxluaclassname_wxWebSession = "wxWebSession";
 
 static const char* wxluabaseclassnames_wxFTP[] = { wxluaclassname_wxProtocol, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxFTP[] = { NULL };
@@ -3159,6 +4151,8 @@ static const char* wxluabaseclassnames_wxURI[] = { wxluaclassname_wxObject, NULL
 static wxLuaBindClass* wxluabaseclassbinds_wxURI[] = { NULL };
 static const char* wxluabaseclassnames_wxURL[] = { wxluaclassname_wxURI, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxURL[] = { NULL };
+static const char* wxluabaseclassnames_wxWebRequestEvent[] = { wxluaclassname_wxEvent, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxWebRequestEvent[] = { NULL };
 // ---------------------------------------------------------------------------
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
@@ -3216,6 +4210,23 @@ static wxLuaBindClass* wxluabaseclassbinds_wxURL[] = { NULL };
     extern void wxLua_wxURI_delete_function(void** p);
 #endif // wxLUA_USE_wxSocket && wxUSE_SOCKETS
 
+#if wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
+    extern wxLuaBindMethod wxWebRequest_methods[];
+    extern int wxWebRequest_methodCount;
+    extern wxLuaBindNumber wxWebRequest_enums[];
+    extern int wxWebRequest_enumCount;
+    extern void wxLua_wxWebRequest_delete_function(void** p);
+    extern wxLuaBindMethod wxWebRequestEvent_methods[];
+    extern int wxWebRequestEvent_methodCount;
+    extern void wxLua_wxWebRequestEvent_delete_function(void** p);
+    extern wxLuaBindMethod wxWebResponse_methods[];
+    extern int wxWebResponse_methodCount;
+    extern void wxLua_wxWebResponse_delete_function(void** p);
+    extern wxLuaBindMethod wxWebSession_methods[];
+    extern int wxWebSession_methodCount;
+    extern void wxLua_wxWebSession_delete_function(void** p);
+#endif // wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
+
 
 
 
@@ -3252,6 +4263,13 @@ wxLuaBindClass* wxLuaGetClassList_wxnet(size_t &count)
 #if (wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_URL)
         { wxluaclassname_wxURL, wxURL_methods, wxURL_methodCount, CLASSINFO(wxURL), &wxluatype_wxURL, wxluabaseclassnames_wxURL, wxluabaseclassbinds_wxURL, NULL, NULL, NULL, 0, &wxLua_wxURL_delete_function, }, 
 #endif // (wxLUA_USE_wxSocket && wxUSE_SOCKETS) && (wxUSE_URL)
+
+#if wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
+        { wxluaclassname_wxWebRequest, wxWebRequest_methods, wxWebRequest_methodCount, NULL, &wxluatype_wxWebRequest, NULL, NULL, NULL, NULL, wxWebRequest_enums, wxWebRequest_enumCount, &wxLua_wxWebRequest_delete_function, }, 
+        { wxluaclassname_wxWebRequestEvent, wxWebRequestEvent_methods, wxWebRequestEvent_methodCount, CLASSINFO(wxWebRequestEvent), &wxluatype_wxWebRequestEvent, wxluabaseclassnames_wxWebRequestEvent, wxluabaseclassbinds_wxWebRequestEvent, NULL, NULL, NULL, 0, &wxLua_wxWebRequestEvent_delete_function, }, 
+        { wxluaclassname_wxWebResponse, wxWebResponse_methods, wxWebResponse_methodCount, NULL, &wxluatype_wxWebResponse, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxWebResponse_delete_function, }, 
+        { wxluaclassname_wxWebSession, wxWebSession_methods, wxWebSession_methodCount, NULL, &wxluatype_wxWebSession, NULL, NULL, NULL, NULL, NULL, 0, &wxLua_wxWebSession_delete_function, }, 
+#endif // wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
 
 
         { 0, 0, 0, 0, 0, 0, 0 }, 

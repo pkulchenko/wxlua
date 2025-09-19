@@ -499,6 +499,10 @@
 #define wxLUA_USE_wxSocket                      1
 #endif
 
+#ifndef wxLUA_USE_wxWebRequest
+#define wxLUA_USE_wxWebRequest                  1
+#endif
+
 #ifndef wxLUA_USE_wxSpinButton
 #define wxLUA_USE_wxSpinButton                  1
 #endif

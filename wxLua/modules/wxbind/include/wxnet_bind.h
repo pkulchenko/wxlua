@@ -64,6 +64,10 @@ extern WXDLLIMPEXP_BINDWXNET wxLuaBinding* wxLuaBinding_wxnet_init();
     #include "wx/uri.h"
 #endif // wxLUA_USE_wxSocket && wxUSE_SOCKETS
 
+#if wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
+    #include "wx/webrequest.h"
+#endif // wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
+
 // ---------------------------------------------------------------------------
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
@@ -94,6 +98,13 @@ extern WXDLLIMPEXP_BINDWXNET wxLuaBinding* wxLuaBinding_wxnet_init();
     extern WXDLLIMPEXP_DATA_BINDWXNET(int) wxluatype_wxSocketServer;
     extern WXDLLIMPEXP_DATA_BINDWXNET(int) wxluatype_wxURI;
 #endif // wxLUA_USE_wxSocket && wxUSE_SOCKETS
+
+#if wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
+    extern WXDLLIMPEXP_DATA_BINDWXNET(int) wxluatype_wxWebRequest;
+    extern WXDLLIMPEXP_DATA_BINDWXNET(int) wxluatype_wxWebRequestEvent;
+    extern WXDLLIMPEXP_DATA_BINDWXNET(int) wxluatype_wxWebResponse;
+    extern WXDLLIMPEXP_DATA_BINDWXNET(int) wxluatype_wxWebSession;
+#endif // wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST
 
 
 
