@@ -1572,11 +1572,11 @@ wxLuaBindString* wxLuaGetStringList_wxwebview(size_t &count)
     static wxLuaBindString stringList[] =
     {
 #if wxUSE_WEBVIEW
-        { "wxWebViewBackendDefault", wxWebViewBackendDefault, NULL },
-        { "wxWebViewBackendIE", wxWebViewBackendIE, NULL },
-        { "wxWebViewBackendWebKit", wxWebViewBackendWebKit, NULL },
-        { "wxWebViewDefaultURLStr", wxWebViewDefaultURLStr, NULL },
-        { "wxWebViewNameStr", wxWebViewNameStr, NULL },
+        wxLuaBindString( "wxWebViewBackendDefault", wxWebViewBackendDefault),
+        wxLuaBindString( "wxWebViewBackendIE", wxWebViewBackendIE),
+        wxLuaBindString( "wxWebViewBackendWebKit", wxWebViewBackendWebKit),
+        wxLuaBindString( "wxWebViewDefaultURLStr", wxWebViewDefaultURLStr),
+        wxLuaBindString( "wxWebViewNameStr", wxWebViewNameStr),
 #endif // wxUSE_WEBVIEW
 
 

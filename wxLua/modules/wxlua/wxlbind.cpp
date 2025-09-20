@@ -1175,8 +1175,8 @@ void wxLuaBinding::DoRegisterBinding(const wxLuaState& wxlState) const
     for (n = 0; n < m_stringCount; ++n, ++wxlString)
     {
         lua_pushstring(L, wxlString->name);
-        if (wxlString->wxchar_string != NULL)
-            lua_pushstring(L, wx2lua(wxlString->wxchar_string));
+        if (wxlString->wx_string != NULL)
+            lua_pushstring(L, wx2lua(*(wxlString->wx_string)));
         else
             lua_pushstring(L, wxlString->c_string);
         lua_rawset(L, -3);
@@ -1718,4 +1718,32 @@ void wxLuaBinding::InitAllBindings(bool force_update)
     }
 
     sm_bindingArray_initialized = binding_count;
+}
+
+wxLuaBindString::wxLuaBindString(const char *name, const char *c_string):
+    name(name),
+    c_string(c_string),
+    wx_string(NULL) {}
+
+wxLuaBindString::wxLuaBindString(const char *name, const wxString &wx_string):
+    name(name),
+    c_string(NULL),
+    wx_string(new wxString(wx_string)) {}
+
+wxLuaBindString::wxLuaBindString(const wxLuaBindString &other):
+    name(other.name),
+    c_string(other.c_string),
+    wx_string(other.wx_string != NULL ? new wxString(*(other.wx_string)) : NULL) {}
+
+wxLuaBindString::wxLuaBindString(wxLuaBindString &&other):
+    name(other.name),
+    c_string(other.c_string),
+    wx_string(other.wx_string)
+{
+    other.wx_string = NULL;
+}
+
+wxLuaBindString::~wxLuaBindString()
+{
+    delete wx_string;
 }

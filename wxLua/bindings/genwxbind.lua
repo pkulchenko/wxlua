@@ -3586,7 +3586,7 @@ if ((double)(lua_Integer)(%s) == (double)(%s)) {
                 local stringBinding =
                 {
                     LuaName   = luaname,
-                    Map       = "        { \""..luaname.."\", "..value..", NULL },\n",
+                    Map       = "        wxLuaBindString( \""..luaname.."\", "..value.."),\n",
                     Condition = fullcondition
                 }
 
@@ -3602,7 +3602,7 @@ if ((double)(lua_Integer)(%s) == (double)(%s)) {
                 local stringBinding =
                 {
                     LuaName   = luaname,
-                    Map       = "        { \""..luaname.."\", NULL, "..value.." },\n",
+                    Map       = "        wxLuaBindString( \""..luaname.."\", "..value.."),\n",
                     Condition = fullcondition
                 }
 

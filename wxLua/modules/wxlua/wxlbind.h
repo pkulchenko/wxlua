@@ -200,9 +200,20 @@ struct WXDLLIMPEXP_WXLUA wxLuaBindNumber
 
 struct WXDLLIMPEXP_WXLUA wxLuaBindString
 {
-    const char*   name;          // name
-    const char*   c_string;      // string value
-    const wxChar* wxchar_string; // string value
+    const char* name;          // name
+    const char* c_string;      // string value
+    wxString *wx_string;
+    
+    wxLuaBindString(const char *name, const char *c_string);
+    wxLuaBindString(const char *name, const wxString &wx_string);
+    
+    wxLuaBindString(const wxLuaBindString &other);
+    wxLuaBindString &operator=(const wxLuaBindString&) = delete;
+    
+    wxLuaBindString(wxLuaBindString &&other);
+    wxLuaBindString &operator=(wxLuaBindString&&) = delete;
+    
+    ~wxLuaBindString();
 };
 
 // ----------------------------------------------------------------------------

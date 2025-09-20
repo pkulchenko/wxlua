@@ -23211,72 +23211,72 @@ wxLuaBindString* wxLuaGetStringList_wxpropgrid(size_t &count)
     static wxLuaBindString stringList[] =
     {
 #if wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
-        { "wxPG_ARRAY_DELIMITER", NULL, wxPG_ARRAY_DELIMITER },
-        { "wxPG_ATTR_AUTOCOMPLETE", NULL, wxPG_ATTR_AUTOCOMPLETE },
-        { "wxPG_ATTR_DEFAULT_VALUE", NULL, wxPG_ATTR_DEFAULT_VALUE },
-        { "wxPG_ATTR_DEFAULT_VALUE", NULL, wxPG_ATTR_DEFAULT_VALUE },
-        { "wxPG_ATTR_HINT", NULL, wxPG_ATTR_HINT },
-        { "wxPG_ATTR_HINT", NULL, wxPG_ATTR_HINT },
+        wxLuaBindString( "wxPG_ARRAY_DELIMITER", wxPG_ARRAY_DELIMITER),
+        wxLuaBindString( "wxPG_ATTR_AUTOCOMPLETE", wxPG_ATTR_AUTOCOMPLETE),
+        wxLuaBindString( "wxPG_ATTR_DEFAULT_VALUE", wxPG_ATTR_DEFAULT_VALUE),
+        wxLuaBindString( "wxPG_ATTR_DEFAULT_VALUE", wxPG_ATTR_DEFAULT_VALUE),
+        wxLuaBindString( "wxPG_ATTR_HINT", wxPG_ATTR_HINT),
+        wxLuaBindString( "wxPG_ATTR_HINT", wxPG_ATTR_HINT),
 #endif // wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
 
 #if (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxPG_COMPATIBILITY_1_4)
-        { "wxPG_ATTR_INLINE_HELP", NULL, wxPG_ATTR_INLINE_HELP },
+        wxLuaBindString( "wxPG_ATTR_INLINE_HELP", wxPG_ATTR_INLINE_HELP),
 #endif // (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxPG_COMPATIBILITY_1_4)
 
 #if wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
-        { "wxPG_ATTR_MAX", NULL, wxPG_ATTR_MAX },
-        { "wxPG_ATTR_MAX", NULL, wxPG_ATTR_MAX },
-        { "wxPG_ATTR_MIN", NULL, wxPG_ATTR_MIN },
-        { "wxPG_ATTR_MIN", NULL, wxPG_ATTR_MIN },
-        { "wxPG_ATTR_MULTICHOICE_USERSTRINGMODE", NULL, wxPG_ATTR_MULTICHOICE_USERSTRINGMODE },
+        wxLuaBindString( "wxPG_ATTR_MAX", wxPG_ATTR_MAX),
+        wxLuaBindString( "wxPG_ATTR_MAX", wxPG_ATTR_MAX),
+        wxLuaBindString( "wxPG_ATTR_MIN", wxPG_ATTR_MIN),
+        wxLuaBindString( "wxPG_ATTR_MIN", wxPG_ATTR_MIN),
+        wxLuaBindString( "wxPG_ATTR_MULTICHOICE_USERSTRINGMODE", wxPG_ATTR_MULTICHOICE_USERSTRINGMODE),
 #endif // wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
 
 #if ((wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_SPINBTN && wxLUA_USE_wxSpinButton)) && (wxCHECK_VERSION(3,2,0))
-        { "wxPG_ATTR_SPINCTRL_MOTION", NULL, wxPG_ATTR_SPINCTRL_MOTION },
+        wxLuaBindString( "wxPG_ATTR_SPINCTRL_MOTION", wxPG_ATTR_SPINCTRL_MOTION),
 #endif // ((wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_SPINBTN && wxLUA_USE_wxSpinButton)) && (wxCHECK_VERSION(3,2,0))
 
 #if (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_SPINBTN && wxLUA_USE_wxSpinButton)
-        { "wxPG_ATTR_SPINCTRL_STEP", NULL, wxPG_ATTR_SPINCTRL_STEP },
-        { "wxPG_ATTR_SPINCTRL_WRAP", NULL, wxPG_ATTR_SPINCTRL_WRAP },
+        wxLuaBindString( "wxPG_ATTR_SPINCTRL_STEP", wxPG_ATTR_SPINCTRL_STEP),
+        wxLuaBindString( "wxPG_ATTR_SPINCTRL_WRAP", wxPG_ATTR_SPINCTRL_WRAP),
 #endif // (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID) && (wxUSE_SPINBTN && wxLUA_USE_wxSpinButton)
 
 #if wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
-        { "wxPG_ATTR_UNITS", NULL, wxPG_ATTR_UNITS },
-        { "wxPG_ATTR_UNITS", NULL, wxPG_ATTR_UNITS },
-        { "wxPG_BOOL_USE_CHECKBOX", NULL, wxPG_BOOL_USE_CHECKBOX },
-        { "wxPG_BOOL_USE_DOUBLE_CLICK_CYCLING", NULL, wxPG_BOOL_USE_DOUBLE_CLICK_CYCLING },
-        { "wxPG_COLOUR_ALLOW_CUSTOM", NULL, wxPG_COLOUR_ALLOW_CUSTOM },
-        { "wxPG_COLOUR_HAS_ALPHA", NULL, wxPG_COLOUR_HAS_ALPHA },
-        { "wxPG_DATE_FORMAT", NULL, wxPG_DATE_FORMAT },
-        { "wxPG_DATE_PICKER_STYLE", NULL, wxPG_DATE_PICKER_STYLE },
+        wxLuaBindString( "wxPG_ATTR_UNITS", wxPG_ATTR_UNITS),
+        wxLuaBindString( "wxPG_ATTR_UNITS", wxPG_ATTR_UNITS),
+        wxLuaBindString( "wxPG_BOOL_USE_CHECKBOX", wxPG_BOOL_USE_CHECKBOX),
+        wxLuaBindString( "wxPG_BOOL_USE_DOUBLE_CLICK_CYCLING", wxPG_BOOL_USE_DOUBLE_CLICK_CYCLING),
+        wxLuaBindString( "wxPG_COLOUR_ALLOW_CUSTOM", wxPG_COLOUR_ALLOW_CUSTOM),
+        wxLuaBindString( "wxPG_COLOUR_HAS_ALPHA", wxPG_COLOUR_HAS_ALPHA),
+        wxLuaBindString( "wxPG_DATE_FORMAT", wxPG_DATE_FORMAT),
+        wxLuaBindString( "wxPG_DATE_PICKER_STYLE", wxPG_DATE_PICKER_STYLE),
 #endif // wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
 
 #if (wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
-        { "wxPG_DIALOG_TITLE", NULL, wxPG_DIALOG_TITLE },
+        wxLuaBindString( "wxPG_DIALOG_TITLE", wxPG_DIALOG_TITLE),
 #endif // (wxCHECK_VERSION(3,2,0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
 
 #if (!wxCHECK_VERSION(3,1,3) && (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
-        { "wxPG_DIR_DIALOG_MESSAGE", NULL, wxPG_DIR_DIALOG_MESSAGE },
+        wxLuaBindString( "wxPG_DIR_DIALOG_MESSAGE", wxPG_DIR_DIALOG_MESSAGE),
 #endif // (!wxCHECK_VERSION(3,1,3) && (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
 
 #if wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
-        { "wxPG_FILE_DIALOG_STYLE", NULL, wxPG_FILE_DIALOG_STYLE },
+        wxLuaBindString( "wxPG_FILE_DIALOG_STYLE", wxPG_FILE_DIALOG_STYLE),
 #endif // wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
 
 #if (!wxCHECK_VERSION(3,1,3) && (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
-        { "wxPG_FILE_DIALOG_TITLE", NULL, wxPG_FILE_DIALOG_TITLE },
+        wxLuaBindString( "wxPG_FILE_DIALOG_TITLE", wxPG_FILE_DIALOG_TITLE),
 #endif // (!wxCHECK_VERSION(3,1,3) && (defined(WXWIN_COMPATIBILITY_3_0) && WXWIN_COMPATIBILITY_3_0)) && (wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID)
 
 #if wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
-        { "wxPG_FILE_INITIAL_PATH", NULL, wxPG_FILE_INITIAL_PATH },
-        { "wxPG_FILE_SHOW_FULL_PATH", NULL, wxPG_FILE_SHOW_FULL_PATH },
-        { "wxPG_FILE_SHOW_RELATIVE_PATH", NULL, wxPG_FILE_SHOW_RELATIVE_PATH },
-        { "wxPG_FILE_WILDCARD", NULL, wxPG_FILE_WILDCARD },
-        { "wxPG_FLOAT_PRECISION", NULL, wxPG_FLOAT_PRECISION },
-        { "wxPG_LABEL", wxPG_LABEL, NULL },
-        { "wxPG_STRING_PASSWORD", NULL, wxPG_STRING_PASSWORD },
-        { "wxPG_UINT_BASE", NULL, wxPG_UINT_BASE },
-        { "wxPG_UINT_PREFIX", NULL, wxPG_UINT_PREFIX },
+        wxLuaBindString( "wxPG_FILE_INITIAL_PATH", wxPG_FILE_INITIAL_PATH),
+        wxLuaBindString( "wxPG_FILE_SHOW_FULL_PATH", wxPG_FILE_SHOW_FULL_PATH),
+        wxLuaBindString( "wxPG_FILE_SHOW_RELATIVE_PATH", wxPG_FILE_SHOW_RELATIVE_PATH),
+        wxLuaBindString( "wxPG_FILE_WILDCARD", wxPG_FILE_WILDCARD),
+        wxLuaBindString( "wxPG_FLOAT_PRECISION", wxPG_FLOAT_PRECISION),
+        wxLuaBindString( "wxPG_LABEL", wxPG_LABEL),
+        wxLuaBindString( "wxPG_STRING_PASSWORD", wxPG_STRING_PASSWORD),
+        wxLuaBindString( "wxPG_UINT_BASE", wxPG_UINT_BASE),
+        wxLuaBindString( "wxPG_UINT_PREFIX", wxPG_UINT_PREFIX),
 #endif // wxLUA_USE_wxPropertyGrid && wxCHECK_VERSION(2,9,0) && wxUSE_PROPGRID
 
 

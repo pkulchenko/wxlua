@@ -27384,15 +27384,15 @@ wxLuaBindString* wxLuaGetStringList_wxadv(size_t &count)
     static wxLuaBindString stringList[] =
     {
 #if wxLUA_USE_wxGrid && wxUSE_GRID
-        { "wxGRID_VALUE_BOOL", NULL, wxGRID_VALUE_BOOL },
-        { "wxGRID_VALUE_CHOICE", NULL, wxGRID_VALUE_CHOICE },
-        { "wxGRID_VALUE_CHOICEINT", NULL, wxGRID_VALUE_CHOICEINT },
-        { "wxGRID_VALUE_DATETIME", NULL, wxGRID_VALUE_DATETIME },
-        { "wxGRID_VALUE_FLOAT", NULL, wxGRID_VALUE_FLOAT },
-        { "wxGRID_VALUE_LONG", NULL, wxGRID_VALUE_LONG },
-        { "wxGRID_VALUE_NUMBER", NULL, wxGRID_VALUE_NUMBER },
-        { "wxGRID_VALUE_STRING", NULL, wxGRID_VALUE_STRING },
-        { "wxGRID_VALUE_TEXT", NULL, wxGRID_VALUE_TEXT },
+        wxLuaBindString( "wxGRID_VALUE_BOOL", wxGRID_VALUE_BOOL),
+        wxLuaBindString( "wxGRID_VALUE_CHOICE", wxGRID_VALUE_CHOICE),
+        wxLuaBindString( "wxGRID_VALUE_CHOICEINT", wxGRID_VALUE_CHOICEINT),
+        wxLuaBindString( "wxGRID_VALUE_DATETIME", wxGRID_VALUE_DATETIME),
+        wxLuaBindString( "wxGRID_VALUE_FLOAT", wxGRID_VALUE_FLOAT),
+        wxLuaBindString( "wxGRID_VALUE_LONG", wxGRID_VALUE_LONG),
+        wxLuaBindString( "wxGRID_VALUE_NUMBER", wxGRID_VALUE_NUMBER),
+        wxLuaBindString( "wxGRID_VALUE_STRING", wxGRID_VALUE_STRING),
+        wxLuaBindString( "wxGRID_VALUE_TEXT", wxGRID_VALUE_TEXT),
 #endif // wxLUA_USE_wxGrid && wxUSE_GRID
 
 

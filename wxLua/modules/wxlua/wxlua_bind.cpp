@@ -414,7 +414,7 @@ wxLuaBindString* wxLuaGetStringList_wxlua(size_t &count)
 {
     static wxLuaBindString stringList[] =
     {
-        { "wxLUA_VERSION_STRING", NULL, wxLUA_VERSION_STRING },
+        wxLuaBindString( "wxLUA_VERSION_STRING", wxLUA_VERSION_STRING),
 
         { 0, 0 },
     };
@@ -1098,8 +1098,8 @@ int LUACALL wxluabind_wxLuaBinding__index(lua_State* L)
                 lua_pushstring(L, wxlString->name);
                 lua_rawset(L, -3);
                 lua_pushstring(L, "value");
-                if (wxlString->wxchar_string != NULL)
-                    lua_pushstring(L, wx2lua(wxlString->wxchar_string));
+                if (wxlString->wx_string != NULL)
+                    lua_pushstring(L, wx2lua(*(wxlString->wx_string)));
                 else
                     lua_pushstring(L, wxlString->c_string);
                 lua_rawset(L, -3);

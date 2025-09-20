@@ -908,33 +908,33 @@ wxLuaBindString* wxLuaGetStringList_wxbase(size_t &count)
 {
     static wxLuaBindString stringList[] =
     {
-        { "wxFILE_SEP_DSK", NULL, wxT(":") },
-        { "wxFILE_SEP_EXT", NULL, wxT(".") },
-        { "wxFILE_SEP_PATH", NULL, wxLua_FILE_SEP_PATH },
-        { "wxFILE_SEP_PATH_DOS", NULL, wxT("\\") },
-        { "wxFILE_SEP_PATH_MAC", NULL, wxT(":") },
-        { "wxFILE_SEP_PATH_UNIX", NULL, wxT("/") },
-        { "wxFILE_SEP_PATH_VMS", NULL, wxT(".") },
-        { "wxPATH_SEP", NULL, wxPATH_SEP },
-        { "wxPATH_SEP_DOS", NULL, wxPATH_SEP_DOS },
-        { "wxPATH_SEP_MAC", NULL, wxPATH_SEP_MAC },
-        { "wxPATH_SEP_UNIX", NULL, wxPATH_SEP_UNIX },
+        wxLuaBindString( "wxFILE_SEP_DSK", wxT(":")),
+        wxLuaBindString( "wxFILE_SEP_EXT", wxT(".")),
+        wxLuaBindString( "wxFILE_SEP_PATH", wxLua_FILE_SEP_PATH),
+        wxLuaBindString( "wxFILE_SEP_PATH_DOS", wxT("\\")),
+        wxLuaBindString( "wxFILE_SEP_PATH_MAC", wxT(":")),
+        wxLuaBindString( "wxFILE_SEP_PATH_UNIX", wxT("/")),
+        wxLuaBindString( "wxFILE_SEP_PATH_VMS", wxT(".")),
+        wxLuaBindString( "wxPATH_SEP", wxPATH_SEP),
+        wxLuaBindString( "wxPATH_SEP_DOS", wxPATH_SEP_DOS),
+        wxLuaBindString( "wxPATH_SEP_MAC", wxPATH_SEP_MAC),
+        wxLuaBindString( "wxPATH_SEP_UNIX", wxPATH_SEP_UNIX),
 
 #if wxLUA_USE_wxLog && wxUSE_LOG
-        { "wxTRACE_MemAlloc", NULL, wxTRACE_MemAlloc },
-        { "wxTRACE_Messages", NULL, wxTRACE_Messages },
+        wxLuaBindString( "wxTRACE_MemAlloc", wxTRACE_MemAlloc),
+        wxLuaBindString( "wxTRACE_Messages", wxTRACE_Messages),
 #endif // wxLUA_USE_wxLog && wxUSE_LOG
 
 #if (defined(__WXMSW__)) && (wxLUA_USE_wxLog && wxUSE_LOG)
-        { "wxTRACE_OleCalls", NULL, wxTRACE_OleCalls },
+        wxLuaBindString( "wxTRACE_OleCalls", wxTRACE_OleCalls),
 #endif // (defined(__WXMSW__)) && (wxLUA_USE_wxLog && wxUSE_LOG)
 
 #if wxLUA_USE_wxLog && wxUSE_LOG
-        { "wxTRACE_RefCount", NULL, wxTRACE_RefCount },
-        { "wxTRACE_ResAlloc", NULL, wxTRACE_ResAlloc },
+        wxLuaBindString( "wxTRACE_RefCount", wxTRACE_RefCount),
+        wxLuaBindString( "wxTRACE_ResAlloc", wxTRACE_ResAlloc),
 #endif // wxLUA_USE_wxLog && wxUSE_LOG
 
-        { "wxVERSION_STRING", NULL, wxVERSION_STRING },
+        wxLuaBindString( "wxVERSION_STRING", wxVERSION_STRING),
 
         { 0, 0 },
     };
