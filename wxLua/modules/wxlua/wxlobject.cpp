@@ -17,8 +17,8 @@
     #include <wx/wx.h>
 #endif
 
-#include "wxlua/wxlobject.h"
-#include "wxlua/wxlstate.h"
+#include <wxlua/wxlobject.h>
+#include <wxlua/wxlstate.h>
 
 //-----------------------------------------------------------------------------
 // wxLuaObject

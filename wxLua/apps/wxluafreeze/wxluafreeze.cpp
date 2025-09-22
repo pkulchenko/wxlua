@@ -45,7 +45,7 @@ wxFileName wxFindAppFullName(const wxString& argv0, const wxString& cwd, const w
 //        better chance of determining what libs are available.
 // Note : Make sure you link to the binding libraries.
 
-#include "wxbind/include/wxbinddefs.h"
+#include <wxbind/wxbinddefs.h>
 WXLUA_DECLARE_BIND_ALL
 
 // unique identifier to return for missing script

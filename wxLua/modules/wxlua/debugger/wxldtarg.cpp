@@ -6,18 +6,18 @@
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
 
-#include "wx/wxprec.h"
+#include <wx/wxprec.h>
 
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
 
 #ifndef WX_PRECOMP
-    #include "wx/wx.h"
+    #include <wx/wx.h>
 #endif
 
-#include "wxlua/debugger/wxldtarg.h"
-#include "wxlua/debugger/wxldserv.h"
+#include "wxldtarg.h"
+#include "wxldserv.h"
 
 #if !wxCHECK_VERSION(2, 6, 0)
     #define wxMilliSleep wxUsleep

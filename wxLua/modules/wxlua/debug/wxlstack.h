@@ -19,8 +19,8 @@ class WXDLLIMPEXP_FWD_CORE wxListEvent;
 class WXDLLIMPEXP_FWD_CORE wxSplitterWindow;
 class WXDLLIMPEXP_FWD_CORE wxProgressDialog;
 
-#include "wxlua/debug/wxluadebugdefs.h"
-#include "wxlua/debug/wxldebug.h"
+#include "../debug/wxluadebugdefs.h"
+#include "../debug/wxldebug.h"
 
 class WXDLLIMPEXP_FWD_WXLUADEBUG wxLuaDebugData;
 

@@ -19,7 +19,7 @@ hook_cpp_namespace = "wxcore"
 
 -- ============================================================================
 -- Set the directory to output the bindings to, both C++ header and source files
-output_cpp_header_filepath = wxlua_dir.."modules/wxbind/include"
+output_cpp_header_filepath = wxlua_dir.."include/wxbind"
 output_cpp_filepath        = wxlua_dir.."modules/wxbind/src"
 
 -- ============================================================================
@@ -82,9 +82,9 @@ hook_cpp_binding_post_includes =
 --  hook_cpp_header_filename.
 --  This code will be place directly after any #includes at the top of the file
 hook_cpp_binding_header_includes =
-    "#include \"wxbind/include/wxbinddefs.h\"\n"..
+    "#include \"wxbinddefs.h\"\n"..
     "#include \"wxluasetup.h\"\n"..
-    "#include \"wxbind/include/wxbase_bind.h\"\n"
+    "#include \"wxbase_bind.h\"\n"
 
 -- ----------------------------------------------------------------------------
 -- Set any #includes or other C++ code to be placed verbatim at the top of

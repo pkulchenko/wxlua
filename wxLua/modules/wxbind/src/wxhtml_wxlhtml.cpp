@@ -19,8 +19,8 @@
 
 #include <wx/datetime.h>
 
-#include "wxbind/include/wxhtml_wxlhtml.h"
-#include "wxbind/include/wxhtml_bind.h"
+#include <wxbind/wxhtml_wxlhtml.h>
+#include <wxbind/wxhtml_bind.h>
 
 //#include "wxlua/wxlcallb.h"
 

@@ -7,20 +7,20 @@
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
 
-#include "wx/wxprec.h"
+#include <wx/wxprec.h>
 
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
 
 #ifndef WX_PRECOMP
-    #include "wx/wx.h"
+    #include <wx/wx.h>
 #endif
 
-#include "wx/datetime.h"
+#include <wx/datetime.h>
 
-#include "wxbind/include/wxcore_wxlcore.h"
-#include "wxbind/include/wxcore_bind.h" // for wxLua_wxObject_wxSize
+#include <wxbind/wxcore_wxlcore.h>
+#include <wxbind/wxcore_bind.h> // for wxLua_wxObject_wxSize
 
 // ----------------------------------------------------------------------------
 // wxLuaDataObjectSimple

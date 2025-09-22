@@ -19,7 +19,7 @@ hook_cpp_namespace = "wxlua"
 
 -- ============================================================================
 -- Set the directory to output the bindings to, both C++ header and source files
-output_cpp_header_filepath = wxlua_dir.."modules/wxlua"
+output_cpp_header_filepath = wxlua_dir.."include/wxlua"
 output_cpp_filepath        = wxlua_dir.."modules/wxlua"
 
 -- ============================================================================

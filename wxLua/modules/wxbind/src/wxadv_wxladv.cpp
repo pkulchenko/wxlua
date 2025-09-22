@@ -7,17 +7,17 @@
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
 
-#include "wx/wxprec.h"
+#include <wx/wxprec.h>
 
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
 
 #ifndef WX_PRECOMP
-    #include "wx/wx.h"
+    #include <wx/wx.h>
 #endif
 
-#include "wxbind/include/wxadv_wxladv.h"
+#include <wxbind/wxadv_wxladv.h>
 
 #if wxUSE_GRID && wxLUA_USE_wxGrid
 

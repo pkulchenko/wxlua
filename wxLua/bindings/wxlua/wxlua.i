@@ -231,7 +231,7 @@ struct wxLuaBindCFunc
 // ---------------------------------------------------------------------------
 // wxLuaState
 
-#include "wxlua/wxlstate.h"
+#include "wxlstate.h"
 
 class %delete wxLuaState : public wxObject
 {

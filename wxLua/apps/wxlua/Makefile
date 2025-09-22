@@ -1,51 +1,50 @@
-# File:		Makefile
-# Author:	John Labenski, J Winwood
-# Created:	2004
-# Updated:
-# Copyright: (c) 2002. J Winwood
-#
-# Makefile for wxLua standalone sample using gmake
+#----------------------------------------------------------------------------
+# Purpose:     wxLua application Makefile
+# Author:      Daniel Collins
+# Created:     21/09/2025
+# Copyright:   (c) 2025 Daniel Collins
+# Licence:     wxWidgets licence
+#----------------------------------------------------------------------------
 
-# ----------------------------------------------------------------------------
-# Set path to root of wxLua
-WXLUA_DIR = ../..
+# This compiles a stand-alone application (wxLua) and demonstrates how to make
+# use of the wxLua library Makefile from another project.
 
-# ----------------------------------------------------------------------------
-# Include wxLua settings using wx-config for wxWidgets parameters
+ifeq ($(OS),Windows_NT)
+	APP := wxlua.exe
+else
+	APP := wxlua
+endif
 
-include $(WXLUA_DIR)/build/Makefile_wx-config.in
+OBJS := \
+	wxlua.o
 
-# ----------------------------------------------------------------------------
+.PHONY: all
+all: $(APP)
 
-PROGRAM = wxLua
+# Define WXLUA_ROOT so the library Makefile file knows where the sources are.
+WXLUA_ROOT := ../../
+include ../../Makefile
 
-HEADERS =
-SOURCES = wxlua.cpp
+# Depend on wxlua-clean to run the library clean target too.
+clean: wxlua-clean
+	rm -f $(OBJS)
+	rm -f $(APP)
 
-OBJECTS=$(SOURCES:.cpp=.o)
-DEPFILES=$(OBJECTS:.o=.d)
+# We take advantage of the library Makefile to provide us compiler flags for
+# building against Lua and wxWidgets. If we were compiling wxLua as a part of a
+# larger application we could instead handle that ourselves and ensure the flag
+# variables are set prior to including the library Makefile for it to use ours
+# instead.
 
-#APPEXTRALIBS := -l$(WXSTC_LIB) $(APPEXTRALIBS)
+$(APP): $(OBJS) $(WXLUA_LIB) $(WXLUA_DEBUGGER_LIB) $(WXLUA_DEBUG_LIB) $(WXBIND_LIB)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LUA_LIBS) $(WX_LIBS)
 
-# ----------------------------------------------------------------------------
+# We add $(WXLUA_BIND_HEADERS) as a prerequisite here to ensure all of wxLua's
+# bindings are built before our sources. This is a bit of a crude sledgehammer
+# solution to the issue of build ordering, but unless you're making frequent
+# changes to wxLua within the scope of a large application its probably not
+# worth the extra effort of tracking which of your sources depend on which of
+# wxLua's bindings.
 
-.cpp.o:
-	$(CXX) -c $(CXXFLAGS) $(APPEXTRADEFS) -o $@ $<
-
-all: $(wxLuaALL_TARGETS) $(PROGRAM)
-
-$(PROGRAM): $(OBJECTS)
-	$(CXX) -o $@ $(OBJECTS) $(LDLIBS) $(APPEXTRALIBS)
-
-editor:
-	$(LUA) $(WXLUA_DIR)/util/bin2c/bin2c.lua -t -lf -n editor_wx_lua -o editor.h $(WXLUA_DIR)/samples/editor.wx.lua
-
-clean:
-	rm -f $(OBJECTS) $(DEPFILES) $(PROGRAM) core
-
-# ----------------------------------------------------------------------------
-# Include wxLua targets using wx-config for wxWidgets parameters
-
-include $(WXLUA_DIR)/build/Makefile_wx-config_targets.in
-
--include $(DEPFILES)
+%.o: %.cpp $(WXLUA_BIND_HEADERS)
+	$(CXX) $(CXXFLAGS) $(LUA_CFLAGS) $(WX_CXXFLAGS) -I$(WXLUA_ROOT)/include/ -c -o $@ $<

@@ -38,7 +38,10 @@
 extern "C"
 {
     // force C linkage w/o name mangling
-    WXDLLIMPEXP_LUAMODULE int luaopen_wx(lua_State *L);
+#ifdef __WXMSW__
+    __declspec(dllexport)
+#endif
+    int luaopen_wx(lua_State *L);
 
 #ifdef __WXMSW__
     BOOL APIENTRY DllMain( HANDLE hModule, DWORD ul_reason_for_call, LPVOID );
@@ -49,7 +52,7 @@ static wxLuaState s_wxlState; // This is our wxLuaState for the module
 
 // Declare the binding initialization functions as extern so we don't have to
 //  #include the binding header for simplicity.
-#include "wxbind/include/wxbinddefs.h"
+#include <wxbind/wxbinddefs.h>
 WXLUA_DECLARE_BIND_ALL
 
 // ----------------------------------------------------------------------------

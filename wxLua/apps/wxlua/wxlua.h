@@ -13,9 +13,9 @@
 
 #include <wx/app.h>
 
-#include "wxlua/debugger/wxldtarg.h"
-#include "wxlua/wxlstate.h"
-#include "wxlua/wxlconsole.h"
+#include "../../modules/wxlua/debugger/wxldtarg.h"
+#include <wxlua/wxlstate.h>
+#include <wxlua/wxlconsole.h>
 
 // ----------------------------------------------------------------------------
 // wxLuaStandaloneApp

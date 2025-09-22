@@ -11,7 +11,7 @@
 -- Thanks to John Labenski for his suggestions
 ------------------------------------------------------------------------------
 version = 1.0
-package.cpath = package.cpath..";./?.dll;./?.so;../lib/?.so;../lib/vc_dll/?.dll;../lib/bcc_dll/?.dll;../lib/mingw_dll/?.dll;"
+package.cpath = package.cpath..";./?.dll;./?.so;lib/lua/?.so;lib/lua/?.dll;../lib/lua/?.so;../lib/lua/?.dll;"
 
 require("wx")
 

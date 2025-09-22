@@ -350,7 +350,7 @@ class wxHtmlWindow : public wxScrolledWindow
 
 #if wxLUA_USE_wxLuaHtmlWindow
 
-#include "wxbind/include/wxhtml_wxlhtml.h"
+#include "wxhtml_wxlhtml.h"
 
 class wxLuaHtmlWindow : public wxHtmlWindow
 {

@@ -63,14 +63,13 @@ include( "${wxWidgets_USE_FILE}" )
 # Setup the location of the customizable wxluasetup.h file
 # ---------------------------------------------------------------------------
 
-if (NOT DEFINED wxLuaBind_WXLUASETUP_DIR)
-    set(wxLuaBind_WXLUASETUP_DIR "${wxLua_ROOT_DIR}/modules/wxbind/setup")
-endif()
+if (DEFINED wxLuaBind_WXLUASETUP_DIR)
 set(wxLuaBind_WXLUASETUP_DIR ${wxLuaBind_WXLUASETUP_DIR} CACHE PATH
     "Path to wxLua's wxWidgets binding wxluasetup.h setup file." FORCE)
 
 if (NOT EXISTS "${wxLuaBind_WXLUASETUP_DIR}")
     MESSAGE(FATAL_ERROR "wxLuaBind_WXLUASETUP_DIR points to a non-existant path: '${wxLuaBind_WXLUASETUP_DIR}', the default is '${wxLua_ROOT_DIR}/modules/wxbind/setup'.")
+endif()
 endif()
 
 # ---------------------------------------------------------------------------
@@ -373,7 +372,375 @@ ADD_DOXYGEN( wxLua_doxygen
 
 SETUP_wxLua() # all libraries are built with these settings
 
+function (wxLua_Binding_TARGETS)
+
+add_custom_command(
+  OUTPUT
+    ${wxLua_ROOT_DIR}/include/wxlua/wxlua_bind.h
+    ${wxLua_ROOT_DIR}/bindings/wxlua/wxlua_datatypes.lua
+    ${wxLua_ROOT_DIR}/modules/wxlua/wxlua_bind.cpp
+
+  DEPENDS
+    ${wxLua_ROOT_DIR}/bindings/wxlua/wxlua_rules.lua
+
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxbase_datatypes.lua
+    ${wxLua_ROOT_DIR}/bindings/wxlua/override.hpp
+    ${wxLua_ROOT_DIR}/bindings/wxlua/wxlua.i
+
+  COMMAND lua "-erulesFilename=\"wxlua/wxlua_rules.lua\"" genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/bindings/"
+  VERBATIM
+)
+
+add_custom_command(
+  OUTPUT
+    ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxluadebugger_bind.h
+    ${wxLua_ROOT_DIR}/bindings/wxlua_debugger/wxluadebugger_datatypes.lua
+    ${wxLua_ROOT_DIR}/modules/wxlua/debugger/wxluadebugger_bind.cpp
+
+  DEPENDS
+    ${wxLua_ROOT_DIR}/bindings/wxlua_debugger/wxluadebugger_rules.lua
+
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_datatypes.lua
+    ${wxLua_ROOT_DIR}/bindings/wxlua_debugger/override.hpp
+    ${wxLua_ROOT_DIR}/bindings/wxlua_debugger/wxluadebugger.i
+
+  COMMAND lua "-erulesFilename=\"wxlua_debugger/wxluadebugger_rules.lua\"" genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/bindings/"
+  VERBATIM
+)
+
+add_custom_command(
+  OUTPUT
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxbase_datatypes.lua
+    ${wxLua_ROOT_DIR}/include/wxbind/wxbase_bind.h
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxbase_base.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxbase_bind.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxbase_config.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxbase_data.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxbase_datetime.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxbase_file.cpp
+
+  DEPENDS
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxbase_rules.lua
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxbase_base.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxbase_config.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxbase_data.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxbase_datetime.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxbase_file.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxbase_override.hpp
+
+  COMMAND lua "-erulesFilename=\"wxwidgets/wxbase_rules.lua\"" genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/bindings/"
+  VERBATIM
+)
+
+add_custom_command(
+  OUTPUT
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_datatypes.lua
+    ${wxLua_ROOT_DIR}/include/wxbind/wxcore_bind.h
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_appframe.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_bind.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_clipdrag.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_controls.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_core.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_defsutils.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_dialogs.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_event.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_gdi.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_geometry.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_graphics.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_help.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_image.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_mdi.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_menutool.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_picker.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_print.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_sizer.cpp
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxcore_windows.cpp
+
+  DEPENDS
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxbase_datatypes.lua
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_rules.lua
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_appframe.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_clipdrag.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_controls.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_core.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_defsutils.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_dialogs.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_event.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_gdi.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_geometry.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_graphics.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_help.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_image.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_mdi.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_menutool.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_override.hpp
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_picker.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_print.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_sizer.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_windows.i
+
+  COMMAND lua "-erulesFilename=\"wxwidgets/wxcore_rules.lua\"" genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/bindings/"
+  VERBATIM
+)
+
+add_custom_command(
+  OUTPUT
+    ${wxLua_ROOT_DIR}/include/wxbind/wxadv_bind.h
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxadv_datatypes.lua
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxadv_bind.cpp
+
+  DEPENDS
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxadv_rules.lua
+
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxadv_adv.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxadv_dataview.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxadv_dvrenderers.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxadv_grid.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxadv_override.hpp
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_datatypes.lua
+
+  COMMAND lua "-erulesFilename=\"wxwidgets/wxadv_rules.lua\"" genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/bindings/"
+  VERBATIM
+)
+
+add_custom_command(
+  OUTPUT
+    ${wxLua_ROOT_DIR}/include/wxbind/wxaui_bind.h
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxaui_datatypes.lua
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxaui_bind.cpp
+
+  DEPENDS
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxaui_rules.lua
+
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxaui_aui.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxaui_override.hpp
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_datatypes.lua
+
+  COMMAND lua "-erulesFilename=\"wxwidgets/wxaui_rules.lua\"" genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/bindings/"
+  VERBATIM
+)
+
+add_custom_command(
+  OUTPUT
+    ${wxLua_ROOT_DIR}/include/wxbind/wxgl_bind.h
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxgl_datatypes.lua
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxgl_bind.cpp
+
+  DEPENDS
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxgl_rules.lua
+
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_datatypes.lua
+	  ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxgl_gl.i
+
+  COMMAND lua "-erulesFilename=\"wxwidgets/wxgl_rules.lua\"" genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/bindings/"
+  VERBATIM
+)
+
+add_custom_command(
+  OUTPUT
+    ${wxLua_ROOT_DIR}/include/wxbind/wxhtml_bind.h
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxhtml_datatypes.lua
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxhtml_bind.cpp
+
+  DEPENDS
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxhtml_rules.lua
+
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_datatypes.lua
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxhtml_html.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxhtml_override.hpp
+
+  COMMAND lua "-erulesFilename=\"wxwidgets/wxhtml_rules.lua\"" genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/bindings/"
+  VERBATIM
+)
+
+add_custom_command(
+  OUTPUT
+    ${wxLua_ROOT_DIR}/include/wxbind/wxmedia_bind.h
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxmedia_datatypes.lua
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxmedia_bind.cpp
+
+  DEPENDS
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxmedia_rules.lua
+
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_datatypes.lua
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxnet_datatypes.lua
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxmedia_media.i
+
+  COMMAND lua "-erulesFilename=\"wxwidgets/wxmedia_rules.lua\"" genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/bindings/"
+  VERBATIM
+)
+
+add_custom_command(
+  OUTPUT
+    ${wxLua_ROOT_DIR}/include/wxbind/wxnet_bind.h
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxnet_datatypes.lua
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxnet_bind.cpp
+
+  DEPENDS
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxnet_rules.lua
+
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_datatypes.lua
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxnet_net.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxnet_override.hpp
+
+  COMMAND lua "-erulesFilename=\"wxwidgets/wxnet_rules.lua\"" genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/bindings/"
+  VERBATIM
+)
+
+add_custom_command(
+  OUTPUT
+    ${wxLua_ROOT_DIR}/include/wxbind/wxpropgrid_bind.h
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxpropgrid_datatypes.lua
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxpropgrid_bind.cpp
+
+  DEPENDS
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxpropgrid_rules.lua
+
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_datatypes.lua
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxpropgrid_override.hpp
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxpropgrid_propgrid.i
+
+  COMMAND lua "-erulesFilename=\"wxwidgets/wxpropgrid_rules.lua\"" genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/bindings/"
+  VERBATIM
+)
+
+add_custom_command(
+  OUTPUT
+    ${wxLua_ROOT_DIR}/include/wxbind/wxrichtext_bind.h
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxrichtext_datatypes.lua
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxrichtext_bind.cpp
+
+  DEPENDS
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxrichtext_rules.lua
+
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_datatypes.lua
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxrichtext_override.hpp
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxrichtext_print.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxrichtext_richtext.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxrichtext_style.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxrichtext_symboldlg.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxrichtext_xml.i
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxxml_datatypes.lua
+
+  COMMAND lua "-erulesFilename=\"wxwidgets/wxrichtext_rules.lua\"" genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/bindings/"
+  VERBATIM
+)
+
+add_custom_command(
+  OUTPUT
+    ${wxLua_ROOT_DIR}/include/wxbind/wxstc_bind.h
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxstc_datatypes.lua
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxstc_bind.cpp
+
+  DEPENDS
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxstc_rules.lua
+
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_datatypes.lua
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxstc_override.hpp
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxstc_stc.i
+
+  COMMAND lua "-erulesFilename=\"wxwidgets/wxstc_rules.lua\"" genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/bindings/"
+  VERBATIM
+)
+
+add_custom_command(
+  OUTPUT
+    ${wxLua_ROOT_DIR}/include/wxbind/wxwebview_bind.h
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxwebview_datatypes.lua
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxwebview_bind.cpp
+
+  DEPENDS
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxwebview_rules.lua
+
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_datatypes.lua
+	  ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxwebview_webview.i
+
+  COMMAND lua "-erulesFilename=\"wxwidgets/wxwebview_rules.lua\"" genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/bindings/"
+  VERBATIM
+)
+
+add_custom_command(
+  OUTPUT
+    ${wxLua_ROOT_DIR}/include/wxbind/wxxml_bind.h
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxxml_datatypes.lua
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxxml_bind.cpp
+
+  DEPENDS
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxxml_rules.lua
+
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxbase_datatypes.lua
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxxml_override.hpp
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxxml_xml.i
+
+  COMMAND lua "-erulesFilename=\"wxwidgets/wxxml_rules.lua\"" genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/bindings/"
+  VERBATIM
+)
+
+add_custom_command(
+  OUTPUT
+    ${wxLua_ROOT_DIR}/include/wxbind/wxxrc_bind.h
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxxrc_datatypes.lua
+    ${wxLua_ROOT_DIR}/modules/wxbind/src/wxxrc_bind.cpp
+
+  DEPENDS
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxxrc_rules.lua
+
+    ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_datatypes.lua
+	  ${wxLua_ROOT_DIR}/bindings/wxwidgets/wxxrc_xrc.i
+
+  COMMAND lua "-erulesFilename=\"wxwidgets/wxxrc_rules.lua\"" genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/bindings/"
+  VERBATIM
+)
+
+add_custom_command(
+  OUTPUT
+    "${wxLua_ROOT_DIR}/bindings/wxwidgets/wx_datatypes.lua"
+
+  DEPENDS
+    "${wxLua_ROOT_DIR}/bindings/wxwidgets/wxdatatypes_rules.lua"
+    "${wxLua_ROOT_DIR}/bindings/wxwidgets/wxadv_datatypes.lua"
+    "${wxLua_ROOT_DIR}/bindings/wxwidgets/wxaui_datatypes.lua"
+    "${wxLua_ROOT_DIR}/bindings/wxwidgets/wxbase_datatypes.lua"
+    "${wxLua_ROOT_DIR}/bindings/wxwidgets/wxcore_datatypes.lua"
+    "${wxLua_ROOT_DIR}/bindings/wxwidgets/wxgl_datatypes.lua"
+    "${wxLua_ROOT_DIR}/bindings/wxwidgets/wxhtml_datatypes.lua"
+    "${wxLua_ROOT_DIR}/bindings/wxwidgets/wxmedia_datatypes.lua"
+    "${wxLua_ROOT_DIR}/bindings/wxwidgets/wxnet_datatypes.lua"
+    "${wxLua_ROOT_DIR}/bindings/wxwidgets/wxpropgrid_datatypes.lua"
+    "${wxLua_ROOT_DIR}/bindings/wxwidgets/wxrichtext_datatypes.lua"
+    "${wxLua_ROOT_DIR}/bindings/wxwidgets/wxstc_datatypes.lua"
+    "${wxLua_ROOT_DIR}/bindings/wxwidgets/wxwebview_datatypes.lua"
+    "${wxLua_ROOT_DIR}/bindings/wxwidgets/wxxml_datatypes.lua"
+    "${wxLua_ROOT_DIR}/bindings/wxwidgets/wxxrc_datatypes.lua"
+
+  COMMAND lua "-erulesFilename=\"wxwidgets/wxdatatypes_rules.lua\"" genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/bindings/"
+  VERBATIM
+)
+
+endfunction()
+
+if (DEFINED wxLuaBind_WXLUASETUP_DIR)
 include_directories(${wxLuaBind_WXLUASETUP_DIR})
+endif()
+
+include_directories("${wxLua_ROOT_DIR}/include")
 
 if (NOT TARGET wxLuaLib)
     add_subdirectory( modules/ )
@@ -470,20 +837,24 @@ if (wxLua_LUA_LIBRARY_USE_BUILTIN)
 endif(wxLua_LUA_LIBRARY_USE_BUILTIN)
 
 install(FILES
-        ${wxLua_ROOT_DIR}/modules/wxlua/atomic.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/sharedptr.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxlbind.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxlcallb.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxlconsole.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxldefs.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxllua.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxlobject.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxlstate.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxlua.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxlua_bind.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxlversion.h
-        ${wxLua_ROOT_DIR}/modules/wxbind/setup/wxluasetup.h
+        ${wxLua_ROOT_DIR}/include/wxlua/atomic.h
+        ${wxLua_ROOT_DIR}/include/wxlua/sharedptr.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxlbind.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxlcallb.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxlconsole.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxldefs.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxllua.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxlobject.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxlstate.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxlua.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxlua_bind.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxlversion.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxluasetup-defaults.h
         DESTINATION "include/wxlua")
+
+install(FILES
+        ${wxLua_ROOT_DIR}/include/wxlua/wxluasetup.h
+        DESTINATION "include")
 
 install(FILES
         ${wxLua_ROOT_DIR}/modules/wxlua/debug/wxldebug.h

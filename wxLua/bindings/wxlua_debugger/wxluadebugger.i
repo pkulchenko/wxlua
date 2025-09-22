@@ -23,7 +23,7 @@ void LuaStackDialog( );
 // ---------------------------------------------------------------------------
 // wxLuaDebugServer
 
-#include "wxlua/debugger/wxldserv.h"
+#include "wxldserv.h"
 
 class %delete wxLuaDebuggerServer : public wxEvtHandler
 {

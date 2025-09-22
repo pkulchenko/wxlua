@@ -7,20 +7,20 @@
 // Licence:     wxWidgets licence
 /////////////////////////////////////////////////////////////////////////////
 
-#include "wx/wxprec.h"
+#include <wx/wxprec.h>
 
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
 
 #ifndef WX_PRECOMP
-    #include "wx/wx.h"
+    #include <wx/wx.h>
 #endif
 
-#include "wxlua/debugger/wxlsock.h"
-#include "wxlua/debugger/wxldserv.h"
-#include "wxlua/wxlstate.h"
-#include "wxlua/debug/wxldebug.h"
+#include "wxlsock.h"
+#include "wxldserv.h"
+#include <wxlua/wxlstate.h>
+#include "../debug/wxldebug.h"
 
 #ifdef _MSC_VER
     #pragma warning(push, 4)

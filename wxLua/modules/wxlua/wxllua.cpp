@@ -19,10 +19,10 @@
     #include <wx/wx.h>
 #endif
 
-#include "wxlua/wxllua.h"
-#include "wxlua/wxlstate.h"
-#include "wxlua/wxlbind.h"
-#include "wxlua/wxlcallb.h"
+#include <wxlua/wxllua.h>
+#include <wxlua/wxlstate.h>
+#include <wxlua/wxlbind.h>
+#include <wxlua/wxlcallb.h>
 
 //#include "wxluadebug/include/wxldebug.h" // for debugging only
 
