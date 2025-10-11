@@ -212,6 +212,7 @@ extern "C" {
     static int reportShutdown(lua_State *L)
     {
         s_wxlState.CloseLuaState(true, false);
+        wxEntryCleanup();        
         return 0;
     }
 }
