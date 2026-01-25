@@ -833,6 +833,7 @@ extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSetCursorEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxShowEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSizeEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxSysColourChangedEvent;
+extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxThreadEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxUpdateUIEvent;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxVisualAttributes;
 extern WXDLLIMPEXP_DATA_BINDWXCORE(int) wxluatype_wxWindow;

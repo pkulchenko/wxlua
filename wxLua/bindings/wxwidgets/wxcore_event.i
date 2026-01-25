@@ -113,7 +113,7 @@ class %delete wxCommandEvent : public wxEvent
     bool IsSelection();
     void SetClientData(voidptr_long number); // C++ is (void *clientData) You can put a number here
     void SetClientObject(wxClientData* clientObject);
-    void SetExtraLong(int extraLong);
+    void SetExtraLong(long extraLong);
     void SetInt(int intCommand);
     void SetString(const wxString &string);
 };
@@ -994,4 +994,26 @@ class %delete wxHelpEvent : public wxCommandEvent
     %wxchkver_2_8 void SetOrigin(wxHelpEvent::Origin origin);
     void SetPosition(const wxPoint& pos);
     void SetTarget(const wxString& target);
+};
+
+// ---------------------------------------------------------------------------
+// wxThreadEvent
+
+#include "wx/event.h"
+
+class %delete wxThreadEvent : public wxEvent
+{
+    %wxEventType wxEVT_THREAD
+
+    wxThreadEvent(wxEventType eventType = wxEVT_THREAD, int id = wxID_ANY);
+
+    // GetEventCategory() not implemented
+    // SetPayload() not implemented
+    // GetPayload() not implemented
+    long GetExtraLong();
+    int GetInt();
+    wxString GetString();
+    void SetExtraLong(long extraLong);
+    void SetInt(int intCommand);
+    void SetString(const wxString &string);
 };

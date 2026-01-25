@@ -345,11 +345,11 @@ static int LUACALL wxLua_wxCommandEvent_SetClientObject(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxCommandEvent_SetExtraLong[] = { &wxluatype_wxCommandEvent, &wxluatype_TNUMBER, NULL };
 static int LUACALL wxLua_wxCommandEvent_SetExtraLong(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxCommandEvent_SetExtraLong[1] = {{ wxLua_wxCommandEvent_SetExtraLong, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxCommandEvent_SetExtraLong }};
-//     void SetExtraLong(int extraLong);
+//     void SetExtraLong(long extraLong);
 static int LUACALL wxLua_wxCommandEvent_SetExtraLong(lua_State *L)
 {
-    // int extraLong
-    int extraLong = (int)wxlua_getnumbertype(L, 2);
+    // long extraLong
+    long extraLong = (long)wxlua_getnumbertype(L, 2);
     // get this
     wxCommandEvent * self = (wxCommandEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxCommandEvent);
     // call SetExtraLong
@@ -5215,4 +5215,172 @@ wxLuaBindNumber wxHelpEvent_enums[] = {
     { NULL, 0, },
 };
 int wxHelpEvent_enumCount = sizeof(wxHelpEvent_enums)/sizeof(wxLuaBindNumber) - 1;
+
+// ---------------------------------------------------------------------------
+// Bind class wxThreadEvent
+// ---------------------------------------------------------------------------
+
+// Lua MetaTable Tag for Class 'wxThreadEvent'
+int wxluatype_wxThreadEvent = WXLUA_TUNKNOWN;
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxThreadEvent_GetExtraLong[] = { &wxluatype_wxThreadEvent, NULL };
+static int LUACALL wxLua_wxThreadEvent_GetExtraLong(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxThreadEvent_GetExtraLong[1] = {{ wxLua_wxThreadEvent_GetExtraLong, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxThreadEvent_GetExtraLong }};
+//     long GetExtraLong();
+static int LUACALL wxLua_wxThreadEvent_GetExtraLong(lua_State *L)
+{
+    // get this
+    wxThreadEvent * self = (wxThreadEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxThreadEvent);
+    // call GetExtraLong
+    long returns = (self->GetExtraLong());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxThreadEvent_GetInt[] = { &wxluatype_wxThreadEvent, NULL };
+static int LUACALL wxLua_wxThreadEvent_GetInt(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxThreadEvent_GetInt[1] = {{ wxLua_wxThreadEvent_GetInt, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxThreadEvent_GetInt }};
+//     int GetInt();
+static int LUACALL wxLua_wxThreadEvent_GetInt(lua_State *L)
+{
+    // get this
+    wxThreadEvent * self = (wxThreadEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxThreadEvent);
+    // call GetInt
+    int returns = (self->GetInt());
+    // push the result number
+#if LUA_VERSION_NUM >= 503
+if ((double)(lua_Integer)returns == (double)returns) {
+    // Exactly representable as lua_Integer
+    lua_pushinteger(L, returns);
+} else
+#endif
+{
+    lua_pushnumber(L, returns);
+}
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxThreadEvent_GetString[] = { &wxluatype_wxThreadEvent, NULL };
+static int LUACALL wxLua_wxThreadEvent_GetString(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxThreadEvent_GetString[1] = {{ wxLua_wxThreadEvent_GetString, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxThreadEvent_GetString }};
+//     wxString GetString();
+static int LUACALL wxLua_wxThreadEvent_GetString(lua_State *L)
+{
+    // get this
+    wxThreadEvent * self = (wxThreadEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxThreadEvent);
+    // call GetString
+    wxString returns = (self->GetString());
+    // push the result string
+    wxlua_pushwxString(L, returns);
+
+    return 1;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxThreadEvent_SetExtraLong[] = { &wxluatype_wxThreadEvent, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxThreadEvent_SetExtraLong(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxThreadEvent_SetExtraLong[1] = {{ wxLua_wxThreadEvent_SetExtraLong, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxThreadEvent_SetExtraLong }};
+//     void SetExtraLong(long extraLong);
+static int LUACALL wxLua_wxThreadEvent_SetExtraLong(lua_State *L)
+{
+    // long extraLong
+    long extraLong = (long)wxlua_getnumbertype(L, 2);
+    // get this
+    wxThreadEvent * self = (wxThreadEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxThreadEvent);
+    // call SetExtraLong
+    self->SetExtraLong(extraLong);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxThreadEvent_SetInt[] = { &wxluatype_wxThreadEvent, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxThreadEvent_SetInt(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxThreadEvent_SetInt[1] = {{ wxLua_wxThreadEvent_SetInt, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxThreadEvent_SetInt }};
+//     void SetInt(int intCommand);
+static int LUACALL wxLua_wxThreadEvent_SetInt(lua_State *L)
+{
+    // int intCommand
+    int intCommand = (int)wxlua_getnumbertype(L, 2);
+    // get this
+    wxThreadEvent * self = (wxThreadEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxThreadEvent);
+    // call SetInt
+    self->SetInt(intCommand);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxThreadEvent_SetString[] = { &wxluatype_wxThreadEvent, &wxluatype_TSTRING, NULL };
+static int LUACALL wxLua_wxThreadEvent_SetString(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxThreadEvent_SetString[1] = {{ wxLua_wxThreadEvent_SetString, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxThreadEvent_SetString }};
+//     void SetString(const wxString &string);
+static int LUACALL wxLua_wxThreadEvent_SetString(lua_State *L)
+{
+    // const wxString string
+    const wxString string = wxlua_getwxStringtype(L, 2);
+    // get this
+    wxThreadEvent * self = (wxThreadEvent *)wxluaT_getuserdatatype(L, 1, wxluatype_wxThreadEvent);
+    // call SetString
+    self->SetString(string);
+
+    return 0;
+}
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxThreadEvent_delete[] = { &wxluatype_wxThreadEvent, NULL };
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxThreadEvent_delete[1] = {{ wxlua_userdata_delete, WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, 1, 1, s_wxluatypeArray_wxLua_wxThreadEvent_delete }};
+
+static wxLuaArgType s_wxluatypeArray_wxLua_wxThreadEvent_constructor[] = { &wxluatype_TNUMBER, &wxluatype_TNUMBER, NULL };
+static int LUACALL wxLua_wxThreadEvent_constructor(lua_State *L);
+static wxLuaBindCFunc s_wxluafunc_wxLua_wxThreadEvent_constructor[1] = {{ wxLua_wxThreadEvent_constructor, WXLUAMETHOD_CONSTRUCTOR, 0, 2, s_wxluatypeArray_wxLua_wxThreadEvent_constructor }};
+//     wxThreadEvent(wxEventType eventType = wxEVT_THREAD, int id = wxID_ANY);
+static int LUACALL wxLua_wxThreadEvent_constructor(lua_State *L)
+{
+    // get number of arguments
+    int argCount = lua_gettop(L);
+    // int id = wxID_ANY
+    int id = (argCount >= 2 ? (int)wxlua_getnumbertype(L, 2) : wxID_ANY);
+    // wxEventType eventType = wxEVT_THREAD
+    wxEventType eventType = (argCount >= 1 ? (wxEventType)wxlua_getnumbertype(L, 1) : wxEVT_THREAD);
+    // call constructor
+    wxThreadEvent* returns = new wxThreadEvent(eventType, id);
+    // add to tracked memory list
+    wxluaO_addgcobject(L, returns, wxluatype_wxThreadEvent);
+    // push the constructed class pointer
+    wxluaT_pushuserdatatype(L, returns, wxluatype_wxThreadEvent);
+
+    return 1;
+}
+
+
+
+void wxLua_wxThreadEvent_delete_function(void** p)
+{
+    wxThreadEvent* o = (wxThreadEvent*)(*p);
+    delete o;
+}
+
+// Map Lua Class Methods to C Binding Functions
+wxLuaBindMethod wxThreadEvent_methods[] = {
+    { "GetExtraLong", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxThreadEvent_GetExtraLong, 1, NULL },
+    { "GetInt", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxThreadEvent_GetInt, 1, NULL },
+    { "GetString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxThreadEvent_GetString, 1, NULL },
+    { "SetExtraLong", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxThreadEvent_SetExtraLong, 1, NULL },
+    { "SetInt", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxThreadEvent_SetInt, 1, NULL },
+    { "SetString", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxThreadEvent_SetString, 1, NULL },
+    { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxThreadEvent_delete, 1, NULL },
+    { "wxThreadEvent", WXLUAMETHOD_CONSTRUCTOR, s_wxluafunc_wxLua_wxThreadEvent_constructor, 1, NULL },
+    { 0, 0, 0, 0 },
+};
+
+int wxThreadEvent_methodCount = sizeof(wxThreadEvent_methods)/sizeof(wxLuaBindMethod) - 1;
+
 
