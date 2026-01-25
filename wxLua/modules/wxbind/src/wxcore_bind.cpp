@@ -26,6 +26,7 @@
 #if wxUSE_PROPGRID && wxLUA_USE_wxPropertyGrid
 #include "wx/propgrid/propgriddefs.h"
 #endif
+#define wxEVT_THREAD_CAST (wxEventType)wxEVT_THREAD
 
 #ifdef __GNUC__
     #pragma GCC diagnostic ignored "-Wunused-variable"
@@ -574,6 +575,8 @@ wxLuaBindEvent* wxLuaGetEventList_wxcore(size_t &count)
 #if (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL)
         { "wxEVT_TEXT_URL", WXLUA_GET_wxEventType_ptr(wxEVT_TEXT_URL), &wxluatype_wxTextUrlEvent },
 #endif // (wxCHECK_VERSION(3,0,0)) && (wxLUA_USE_wxTextCtrl && wxUSE_TEXTCTRL)
+
+        { "wxEVT_THREAD", WXLUA_GET_wxEventType_ptr(wxEVT_THREAD), &wxluatype_wxThreadEvent },
 
 #if wxLUA_USE_wxTimer && wxUSE_TIMER
         { "wxEVT_TIMER", WXLUA_GET_wxEventType_ptr(wxEVT_TIMER), &wxluatype_wxTimerEvent },
@@ -5575,6 +5578,7 @@ static const char* wxluaclassname_wxTextEntry = "wxTextEntry";
 static const char* wxluaclassname_wxTextEntryDialog = "wxTextEntryDialog";
 static const char* wxluaclassname_wxTextUrlEvent = "wxTextUrlEvent";
 static const char* wxluaclassname_wxTextValidator = "wxTextValidator";
+static const char* wxluaclassname_wxThreadEvent = "wxThreadEvent";
 static const char* wxluaclassname_wxTimePickerCtrl = "wxTimePickerCtrl";
 static const char* wxluaclassname_wxTimer = "wxTimer";
 static const char* wxluaclassname_wxTimerEvent = "wxTimerEvent";
@@ -6125,6 +6129,8 @@ static const char* wxluabaseclassnames_wxTextUrlEvent[] = { wxluaclassname_wxCom
 static wxLuaBindClass* wxluabaseclassbinds_wxTextUrlEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxTextValidator[] = { wxluaclassname_wxValidator, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxTextValidator[] = { NULL };
+static const char* wxluabaseclassnames_wxThreadEvent[] = { wxluaclassname_wxEvent, NULL };
+static wxLuaBindClass* wxluabaseclassbinds_wxThreadEvent[] = { NULL };
 static const char* wxluabaseclassnames_wxTimePickerCtrl[] = { wxluaclassname_wxControl, NULL };
 static wxLuaBindClass* wxluabaseclassbinds_wxTimePickerCtrl[] = { NULL };
 static const char* wxluabaseclassnames_wxTimer[] = { wxluaclassname_wxEvtHandler, NULL };
@@ -6684,6 +6690,9 @@ extern void wxLua_wxSizeEvent_delete_function(void** p);
 extern wxLuaBindMethod wxSysColourChangedEvent_methods[];
 extern int wxSysColourChangedEvent_methodCount;
 extern void wxLua_wxSysColourChangedEvent_delete_function(void** p);
+extern wxLuaBindMethod wxThreadEvent_methods[];
+extern int wxThreadEvent_methodCount;
+extern void wxLua_wxThreadEvent_delete_function(void** p);
 extern wxLuaBindMethod wxUpdateUIEvent_methods[];
 extern int wxUpdateUIEvent_methodCount;
 extern void wxLua_wxUpdateUIEvent_delete_function(void** p);
@@ -8684,6 +8693,8 @@ wxLuaBindClass* wxLuaGetClassList_wxcore(size_t &count)
 #if (wxLUA_USE_wxTextValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
         { wxluaclassname_wxTextValidator, wxTextValidator_methods, wxTextValidator_methodCount, CLASSINFO(wxTextValidator), &wxluatype_wxTextValidator, wxluabaseclassnames_wxTextValidator, wxluabaseclassbinds_wxTextValidator, NULL, NULL, NULL, 0, &wxLua_wxTextValidator_delete_function, }, 
 #endif // (wxLUA_USE_wxTextValidator) && (wxLUA_USE_wxValidator && wxUSE_VALIDATORS)
+
+        { wxluaclassname_wxThreadEvent, wxThreadEvent_methods, wxThreadEvent_methodCount, CLASSINFO(wxThreadEvent), &wxluatype_wxThreadEvent, wxluabaseclassnames_wxThreadEvent, wxluabaseclassbinds_wxThreadEvent, NULL, NULL, NULL, 0, &wxLua_wxThreadEvent_delete_function, }, 
 
 #if (wxCHECK_VERSION(2,8,0) && wxLUA_USE_wxPicker) && (wxLUA_USE_wxTimePickerCtrl && wxUSE_TIMEPICKCTRL && wxCHECK_VERSION(2,9,3))
         { wxluaclassname_wxTimePickerCtrl, wxTimePickerCtrl_methods, wxTimePickerCtrl_methodCount, CLASSINFO(wxTimePickerCtrl), &wxluatype_wxTimePickerCtrl, wxluabaseclassnames_wxTimePickerCtrl, wxluabaseclassbinds_wxTimePickerCtrl, NULL, NULL, NULL, 0, &wxLua_wxTimePickerCtrl_delete_function, }, 

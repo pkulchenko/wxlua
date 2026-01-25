@@ -6505,6 +6505,14 @@ wx_dataTypeTable =
     Name = "wxTextValidator",
     ValueType = "class",
   },
+  wxThreadEvent = {
+    BaseClasses = {
+      [1] = "wxEvent",
+    },
+    IsNumber = false,
+    Name = "wxThreadEvent",
+    ValueType = "class",
+  },
   wxTimePickerCtrl = {
     BaseClasses = {
       [1] = "wxControl",

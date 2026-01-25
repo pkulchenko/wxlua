@@ -75,7 +75,8 @@ hook_cpp_binding_post_includes =
 "#ifdef Below\n    #undef Below\n#endif\n"..
 "#if wxUSE_PROPGRID && wxLUA_USE_wxPropertyGrid\n"..
 "#include \"wx/propgrid/propgriddefs.h\"\n"..
-"#endif\n"
+"#endif\n"..
+"#define wxEVT_THREAD_CAST (wxEventType)wxEVT_THREAD\n"
 
 -- ----------------------------------------------------------------------------
 -- Add additional include information or C++ code for the binding header file,

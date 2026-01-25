@@ -26,6 +26,7 @@
 #if wxUSE_PROPGRID && wxLUA_USE_wxPropertyGrid
 #include "wx/propgrid/propgriddefs.h"
 #endif
+#define wxEVT_THREAD_CAST (wxEventType)wxEVT_THREAD
 
 #ifdef __GNUC__
     #pragma GCC diagnostic ignored "-Wunused-variable"
