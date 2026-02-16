@@ -198,8 +198,9 @@ for interface, substeps in pairs(steps) do
       local infile = false
       local output = {}
       local dups = {}
-      for line in io.lines(header) do
-        if not infile and line:find(process.from)
+      for ln in io.lines(header) do
+	local line = ln
+	if not infile and line:find(process.from)
         or infile and line:find(process.to) then
           infile = not infile
           -- if the last line was "protected:", then remove it
