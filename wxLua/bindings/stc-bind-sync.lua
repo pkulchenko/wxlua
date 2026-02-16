@@ -58,7 +58,8 @@ end
 local function merge(defines, process, target)
   local step = -1
   local output = {}
-  for line in io.lines(sync) do
+  for ln in io.lines(sync) do
+     local line = ln
     if step < 0 and -step <= #process and line:find(process[-step].from) then
       step = -step
     elseif step > 0 and line:find(process[step].to) then

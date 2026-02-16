@@ -258,11 +258,12 @@ function sudoku.Open(fileName)
     local value_count = 0 -- number of cols in line
     local row_count   = 0 -- number of rows read
     local line_n      = 0 -- actual line number in file
-    for line in io.lines(fileName) do
+    for ln in io.lines(fileName) do
+        local line = ln
         line_n = line_n + 1
         local col_count = 0
-        for k, v in string.gmatch(line, "%d") do
-            k = tonumber(k)
+        for digit in string.gmatch(line, "%d") do
+            local k = tonumber(digit)
             if (k >= 0) and (k <= 9) then
                 table.insert(values, k)
                 col_count = col_count + 1

@@ -1442,7 +1442,8 @@ frame:Connect(ID_COMMENT, wx.wxEVT_COMMAND_MENU_SELECTED,
                 local lineNumber = editor:GetCurrentLine()
                 editor:SetSelection(editor:PositionFromLine(lineNumber), editor:GetLineEndPosition(lineNumber))
             end
-            for line in string.gmatch(editor:GetSelectedText()..'\n', "(.-)\r?\n") do
+            for ln in string.gmatch(editor:GetSelectedText()..'\n', "(.-)\r?\n") do
+	        local line = ln
                 if string.sub(line,1,2) == '--' then
                     line = string.sub(line,3)
                 else
