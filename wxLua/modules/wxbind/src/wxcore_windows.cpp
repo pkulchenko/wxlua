@@ -1131,11 +1131,11 @@ static int LUACALL wxLua_wxWindow_Disable(lua_State *L)
 }
 
 
-#if wxCHECK_VERSION(3,1,4)
+#if wxCHECK_VERSION(3,1,5)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_DisableFocusFromKeyboard[] = { &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxWindow_DisableFocusFromKeyboard(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_DisableFocusFromKeyboard[1] = {{ wxLua_wxWindow_DisableFocusFromKeyboard, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWindow_DisableFocusFromKeyboard }};
-//     %wxchkver_3_1_4 void DisableFocusFromKeyboard();
+//     %wxchkver_3_1_5 void DisableFocusFromKeyboard();
 static int LUACALL wxLua_wxWindow_DisableFocusFromKeyboard(lua_State *L)
 {
     // get this
@@ -1146,7 +1146,7 @@ static int LUACALL wxLua_wxWindow_DisableFocusFromKeyboard(lua_State *L)
     return 0;
 }
 
-#endif // wxCHECK_VERSION(3,1,4)
+#endif // wxCHECK_VERSION(3,1,5)
 
 #if wxCHECK_VERSION(3,0,0)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_DoUpdateWindowUI[] = { &wxluatype_wxWindow, &wxluatype_wxUpdateUIEvent, NULL };
@@ -2227,11 +2227,11 @@ static int LUACALL wxLua_wxWindow_GetDPI(lua_State *L)
 
 #endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxPointSizeRect)
 
-#if wxCHECK_VERSION(3,1,4)
+#if wxCHECK_VERSION(3,1,5)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_GetDPIScaleFactor[] = { &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxWindow_GetDPIScaleFactor(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxWindow_GetDPIScaleFactor[1] = {{ wxLua_wxWindow_GetDPIScaleFactor, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxWindow_GetDPIScaleFactor }};
-//     %wxchkver_3_1_4 double GetDPIScaleFactor() const;
+//     %wxchkver_3_1_5 double GetDPIScaleFactor() const;
 static int LUACALL wxLua_wxWindow_GetDPIScaleFactor(lua_State *L)
 {
     // get this
@@ -2244,7 +2244,7 @@ static int LUACALL wxLua_wxWindow_GetDPIScaleFactor(lua_State *L)
     return 1;
 }
 
-#endif // wxCHECK_VERSION(3,1,4)
+#endif // wxCHECK_VERSION(3,1,5)
 
 static wxLuaArgType s_wxluatypeArray_wxLua_wxWindow_GetDefaultAttributes[] = { &wxluatype_wxWindow, NULL };
 static int LUACALL wxLua_wxWindow_GetDefaultAttributes(lua_State *L);
@@ -7219,9 +7219,9 @@ wxLuaBindMethod wxWindow_methods[] = {
     { "DestroyChildren", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_DestroyChildren, 1, NULL },
     { "Disable", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_Disable, 1, NULL },
 
-#if wxCHECK_VERSION(3,1,4)
+#if wxCHECK_VERSION(3,1,5)
     { "DisableFocusFromKeyboard", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_DisableFocusFromKeyboard, 1, NULL },
-#endif // wxCHECK_VERSION(3,1,4)
+#endif // wxCHECK_VERSION(3,1,5)
 
 #if wxCHECK_VERSION(3,0,0)
     { "DoUpdateWindowUI", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_DoUpdateWindowUI, 1, NULL },
@@ -7353,9 +7353,9 @@ wxLuaBindMethod wxWindow_methods[] = {
     { "GetDPI", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_GetDPI, 1, NULL },
 #endif // (wxCHECK_VERSION(3,1,3)) && (wxLUA_USE_wxPointSizeRect)
 
-#if wxCHECK_VERSION(3,1,4)
+#if wxCHECK_VERSION(3,1,5)
     { "GetDPIScaleFactor", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_GetDPIScaleFactor, 1, NULL },
-#endif // wxCHECK_VERSION(3,1,4)
+#endif // wxCHECK_VERSION(3,1,5)
 
     { "GetDefaultAttributes", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxWindow_GetDefaultAttributes, 1, NULL },
 

@@ -218,8 +218,8 @@ class wxAuiToolBar : public wxControl
     wxAuiToolBarItem* FindTool(int tool_id) const;
     void ClearTools();
     void Clear();
-    %wxchkver_3_1_4 bool DestroyTool(int toolId);
-    %wxchkver_3_1_4 bool DestroyToolByIndex(int idx);
+    %wxchkver_3_1_5 bool DestroyTool(int toolId);
+    %wxchkver_3_1_5 bool DestroyToolByIndex(int idx);
     bool DeleteTool(int tool_id);
     bool DeleteByIndex(int tool_id);
     size_t GetToolCount() const;
@@ -909,7 +909,7 @@ class %delete wxAuiManager : public wxEvtHandler
     bool AddPane(wxWindow* window, const wxAuiPaneInfo& pane_info);
     bool AddPane(wxWindow* window, int direction = wxLEFT, const wxString& caption = wxEmptyString);
     bool AddPane(wxWindow* window, const wxAuiPaneInfo& pane_info, const wxPoint& drop_pos);
-    %wxchkver_3_1_4 static bool AlwaysUsesLiveResize();
+    %wxchkver_3_1_5 static bool AlwaysUsesLiveResize();
     wxRect CalculateHintRect(wxWindow* pane_window, const wxPoint& pt, const wxPoint& offset);
     %wxchkver_3_0_0 bool CanDockPanel(const wxAuiPaneInfo & p);
     void ClosePane(wxAuiPaneInfo& pane_info);
@@ -924,7 +924,7 @@ class %delete wxAuiManager : public wxEvtHandler
     static wxAuiManager* GetManager(wxWindow* window);
     wxAuiPaneInfo& GetPane(wxWindow* window);
     wxAuiPaneInfo& GetPane(const wxString& name);
-    %wxchkver_3_1_4 bool HasLiveResize() const;
+    %wxchkver_3_1_5 bool HasLiveResize() const;
     virtual void HideHint();
     bool InsertPane(wxWindow* window, const wxAuiPaneInfo& insert_location, int insert_level = wxAUI_INSERT_PANE);
     void LoadPaneInfo(wxString pane_part, wxAuiPaneInfo &pane);
@@ -1035,8 +1035,8 @@ class %delete wxAuiDockUIPart
     int orientation;         // orientation (either wxHORIZONTAL or wxVERTICAL);
     wxAuiDockInfo* dock;     // which dock the item is associated with
     wxAuiPaneInfo* pane;     // which pane the item is associated with
-    %wxchkver_3_1_4 int button;               // which pane button the item is associated with
-    !%wxchkver_3_1_4 wxAuiPaneButton* button; // which pane button the item is associated with
+    %wxchkver_3_1_5 int button;               // which pane button the item is associated with
+    !%wxchkver_3_1_5 wxAuiPaneButton* button; // which pane button the item is associated with
     wxSizer* cont_sizer;     // the part's containing sizer
     wxSizerItem* sizer_item; // the sizer item of the part
     wxRect rect;             // client coord rectangle of the part itself
@@ -1045,7 +1045,7 @@ class %delete wxAuiDockUIPart
 
 // ---------------------------------------------------------------------------
 // wxAuiPaneButton
-#if !%wxchkver_3_1_4
+#if !%wxchkver_3_1_5
 class %delete wxAuiPaneButton
 {
     int button_id;        // id of the button (e.g. buttonClose);

@@ -51,9 +51,9 @@ extern WXDLLIMPEXP_BINDWXAUI wxLuaBinding* wxLuaBinding_wxaui_init();
 // Lua Tag Method Values and Tables for each Class
 // ---------------------------------------------------------------------------
 
-#if (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#if (!wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiPaneButton;
-#endif // (!wxCHECK_VERSION(3,1,4)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
+#endif // (!wxCHECK_VERSION(3,1,5)) && (wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI)
 
 #if wxLUA_USE_wxAUI && wxCHECK_VERSION(2,8,0) && wxUSE_AUI
     extern WXDLLIMPEXP_DATA_BINDWXAUI(int) wxluatype_wxAuiDefaultDockArt;
