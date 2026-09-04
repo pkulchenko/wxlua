@@ -6909,6 +6909,45 @@ wx_dataTypeTable =
     Name = "wxWave",
     ValueType = "class",
   },
+  wxWebRequest = {
+    Condition = "wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST",
+    IsNumber = false,
+    Name = "wxWebRequest",
+    ValueType = "class",
+  },
+  ["wxWebRequest::State"] = {
+    Condition = "wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST",
+    IsNumber = true,
+    Name = "wxWebRequest::State",
+    ValueType = "enum",
+  },
+  ["wxWebRequest::Storage"] = {
+    Condition = "wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST",
+    IsNumber = true,
+    Name = "wxWebRequest::Storage",
+    ValueType = "enum",
+  },
+  wxWebRequestEvent = {
+    BaseClasses = {
+      [1] = "wxEvent",
+    },
+    Condition = "wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST",
+    IsNumber = false,
+    Name = "wxWebRequestEvent",
+    ValueType = "class",
+  },
+  wxWebResponse = {
+    Condition = "wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST",
+    IsNumber = false,
+    Name = "wxWebResponse",
+    ValueType = "class",
+  },
+  wxWebSession = {
+    Condition = "wxLUA_USE_wxWebRequest && wxUSE_WEBREQUEST",
+    IsNumber = false,
+    Name = "wxWebSession",
+    ValueType = "class",
+  },
   wxWinHelpController = {
     BaseClasses = {
       [1] = "wxHelpControllerBase",
@@ -7332,6 +7371,7 @@ wx_preprocConditionTable =
   wxLUA_USE_wxTreebook = "wxLUA_USE_wxTreebook",
   wxLUA_USE_wxValidator = "wxLUA_USE_wxValidator",
   wxLUA_USE_wxWave = "wxLUA_USE_wxWave",
+  wxLUA_USE_wxWebRequest = "wxLUA_USE_wxWebRequest",
   wxLUA_USE_wxWindowList = "wxLUA_USE_wxWindowList",
   wxLUA_USE_wxWizard = "wxLUA_USE_wxWizard",
   wxLUA_USE_wxXML = "wxLUA_USE_wxXML",
