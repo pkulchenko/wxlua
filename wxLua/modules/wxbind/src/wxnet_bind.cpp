@@ -52,11 +52,12 @@ static int LUACALL wxLua_wxSocketBase_Close(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxSocketBase_Destroy[] = { &wxluatype_wxSocketBase, NULL };
 static int LUACALL wxLua_wxSocketBase_Destroy(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxSocketBase_Destroy[1] = {{ wxLua_wxSocketBase_Destroy, WXLUAMETHOD_METHOD, 1, 1, s_wxluatypeArray_wxLua_wxSocketBase_Destroy }};
-//     bool Destroy();
+//     %ungc_this bool Destroy();
 static int LUACALL wxLua_wxSocketBase_Destroy(lua_State *L)
 {
     // get this
     wxSocketBase * self = (wxSocketBase *)wxluaT_getuserdatatype(L, 1, wxluatype_wxSocketBase);
+    wxluaO_undeletegcobject(L, self);
     // call Destroy
     bool returns = (self->Destroy());
     // push the result flag

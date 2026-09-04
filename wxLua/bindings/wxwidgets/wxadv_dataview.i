@@ -85,7 +85,6 @@ class %delete wxDataViewModelNotifier
 
     virtual void Resort() = 0;
 
-    void SetOwner(wxDataViewModel *owner) %ungc_this;	// NOTE: valid owner must be presented
     wxDataViewModel *GetOwner() const;
 };
 
@@ -424,8 +423,6 @@ class wxSettableHeaderColumn : public wxHeaderColumn
 // class wxDataViewColumnBase
 class wxDataViewColumnBase : public wxSettableHeaderColumn
 {
-    virtual void SetOwner(wxDataViewCtrl *owner) %ungc_this;	// NOTE: valid owner must be presented
-
     unsigned int GetModelColumn() const;
     wxDataViewCtrl *GetOwner() const;
     wxDataViewRenderer* GetRenderer() const;

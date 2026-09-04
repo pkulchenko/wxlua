@@ -67,7 +67,7 @@ class wxSocketBase : public wxObject
     // wxSocketBase() - No constructor, base class
 
     void Close();
-    bool Destroy();
+    %ungc_this bool Destroy();
     void Discard();
     bool Error() const;
     voidptr_long GetClientData() const; // C++ returns (void *) You get a number here

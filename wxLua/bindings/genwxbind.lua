@@ -4267,9 +4267,9 @@ if ((double)(lua_Integer)(%s) == (double)(%s)) {
                         table.insert(codeList, "    "..parseObject.Name.." * self = ("..parseObject.Name.." *)wxluaT_getuserdatatype(L, 1, wxluatype_"..MakeClassVar(parseObject.Name)..");\n")
                         overload_argList = "&wxluatype_"..MakeClassVar(parseObject.Name)..", "..overload_argList
 
-                        if parseObject["%ungc_this"] then
+                        if parseObject["%ungc_this"] or member["%ungc_this"] then
                             table.insert(codeList, "    wxluaO_undeletegcobject(L, self);\n")
-                        elseif parseObject["%gc_this"] then
+                        elseif parseObject["%gc_this"] or member["%gc_this"] then
                             table.insert(codeList, "    wxluaO_addgcobject(L, self, wxluatype_"..MakeClassVar(parseObject.Name)..");\n")
                         end
 

@@ -8583,22 +8583,6 @@ static int LUACALL wxLua_wxDataViewModelNotifier_Resort(lua_State *L)
     return 0;
 }
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewModelNotifier_SetOwner[] = { &wxluatype_wxDataViewModelNotifier, &wxluatype_wxDataViewModel, NULL };
-static int LUACALL wxLua_wxDataViewModelNotifier_SetOwner(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewModelNotifier_SetOwner[1] = {{ wxLua_wxDataViewModelNotifier_SetOwner, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDataViewModelNotifier_SetOwner }};
-//     void SetOwner(wxDataViewModel *owner) %ungc_this;	// NOTE: valid owner must be presented
-static int LUACALL wxLua_wxDataViewModelNotifier_SetOwner(lua_State *L)
-{
-    // wxDataViewModel owner
-    wxDataViewModel * owner = (wxDataViewModel *)wxluaT_getuserdatatype(L, 2, wxluatype_wxDataViewModel);
-    // get this
-    wxDataViewModelNotifier * self = (wxDataViewModelNotifier *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewModelNotifier);
-    // call SetOwner
-    self->SetOwner(owner);
-
-    return 0;
-}
-
 static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewModelNotifier_ValueChanged[] = { &wxluatype_wxDataViewModelNotifier, &wxluatype_wxDataViewItem, &wxluatype_TINTEGER, NULL };
 static int LUACALL wxLua_wxDataViewModelNotifier_ValueChanged(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewModelNotifier_ValueChanged[1] = {{ wxLua_wxDataViewModelNotifier_ValueChanged, WXLUAMETHOD_METHOD, 3, 3, s_wxluatypeArray_wxLua_wxDataViewModelNotifier_ValueChanged }};
@@ -8644,7 +8628,6 @@ wxLuaBindMethod wxDataViewModelNotifier_methods[] = {
     { "ItemsChanged", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewModelNotifier_ItemsChanged, 1, NULL },
     { "ItemsDeleted", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewModelNotifier_ItemsDeleted, 1, NULL },
     { "Resort", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewModelNotifier_Resort, 1, NULL },
-    { "SetOwner", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewModelNotifier_SetOwner, 1, NULL },
     { "ValueChanged", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewModelNotifier_ValueChanged, 1, NULL },
     { "delete", WXLUAMETHOD_METHOD|WXLUAMETHOD_DELETE, s_wxluafunc_wxLua_wxDataViewModelNotifier_delete, 1, NULL },
 
@@ -12165,23 +12148,6 @@ static int LUACALL wxLua_wxDataViewColumnBase_SetBitmap(lua_State *L)
 
 #endif // (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxBitmap)
 
-static wxLuaArgType s_wxluatypeArray_wxLua_wxDataViewColumnBase_SetOwner[] = { &wxluatype_wxDataViewColumnBase, &wxluatype_wxDataViewCtrl, NULL };
-static int LUACALL wxLua_wxDataViewColumnBase_SetOwner(lua_State *L);
-static wxLuaBindCFunc s_wxluafunc_wxLua_wxDataViewColumnBase_SetOwner[1] = {{ wxLua_wxDataViewColumnBase_SetOwner, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxDataViewColumnBase_SetOwner }};
-//     virtual void SetOwner(wxDataViewCtrl *owner) %ungc_this;	// NOTE: valid owner must be presented
-static int LUACALL wxLua_wxDataViewColumnBase_SetOwner(lua_State *L)
-{
-    // wxDataViewCtrl owner
-    wxDataViewCtrl * owner = (wxDataViewCtrl *)wxluaT_getuserdatatype(L, 2, wxluatype_wxDataViewCtrl);
-    // get this
-    wxDataViewColumnBase * self = (wxDataViewColumnBase *)wxluaT_getuserdatatype(L, 1, wxluatype_wxDataViewColumnBase);
-    // call SetOwner
-    self->SetOwner(owner);
-
-    return 0;
-}
-
-
 
 
 void wxLua_wxDataViewColumnBase_delete_function(void** p)
@@ -12203,8 +12169,6 @@ wxLuaBindMethod wxDataViewColumnBase_methods[] = {
 #if (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxBitmap)
     { "SetBitmap", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewColumnBase_SetBitmap, 1, NULL },
 #endif // (wxCHECK_VERSION(3,1,0) && wxUSE_DATAVIEWCTRL && wxLUA_USE_wxDataViewCtrl) && (wxLUA_USE_wxBitmap)
-
-    { "SetOwner", WXLUAMETHOD_METHOD, s_wxluafunc_wxLua_wxDataViewColumnBase_SetOwner, 1, NULL },
 
     { 0, 0, 0, 0 },
 };
