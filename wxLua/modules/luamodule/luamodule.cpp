@@ -68,7 +68,7 @@ BOOL APIENTRY DllMain( HANDLE hModule, DWORD ul_reason_for_call, LPVOID )
    switch (ul_reason_for_call)
    {
       case DLL_PROCESS_ATTACH : wxLuaModule_hDll = (HINSTANCE)hModule; break;
-      case DLL_PROCESS_DETACH : wxLuaModule_hDll = NULL;
+      case DLL_PROCESS_DETACH : wxLuaModule_hDll = NULL; wxEntryCleanup(); break;
       default : break;
    }
 
