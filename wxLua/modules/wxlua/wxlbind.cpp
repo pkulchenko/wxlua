@@ -184,7 +184,7 @@ int LUACALL wxlua_wxLuaBindClass__index(lua_State *L)
                     else
                         lua_pop(L, 1); // remove the name of the function
 
-                    result = (*wxlMethod->wxluacfuncs[0].lua_cfunc)(L);
+                    result = wxlua_callCFunction(L, &wxlMethod->wxluacfuncs[0]);
                 }
                 else
                 {
@@ -199,7 +199,7 @@ int LUACALL wxlua_wxLuaBindClass__index(lua_State *L)
                     if ((wxlMethod->wxluacfuncs_n > 1) || (wxlMethod->basemethod))
                         lua_pushcclosure(L, wxlua_callOverloadedFunction, 1);
                     else
-                        lua_pushcclosure(L, wxlMethod->wxluacfuncs[0].lua_cfunc, 1);
+                        lua_pushcclosure(L, wxlua_callCFunctionClosure, 1);
                 }
             }
 
@@ -224,7 +224,7 @@ int LUACALL wxlua_wxLuaBindClass__index(lua_State *L)
                     else
                         lua_pop(L, 1); // remove the name of the function
 
-                    result = (*wxlMethod->wxluacfuncs[0].lua_cfunc)(L);
+                    result = wxlua_callCFunction(L, &wxlMethod->wxluacfuncs[0]);
                 }
             }
 
@@ -268,7 +268,7 @@ int LUACALL wxlua_wxLuaBindClass__newindex(lua_State *L)
             if (WXLUA_HASBIT(wxlMethod->method_type, WXLUAMETHOD_STATIC))
                 lua_remove(L, 1); // remove the userdata too, leaving the value
 
-            (*wxlMethod->wxluacfuncs[0].lua_cfunc)(L);
+            wxlua_callCFunction(L, &wxlMethod->wxluacfuncs[0]);
         }
         else
         {
@@ -287,7 +287,7 @@ int LUACALL wxlua_wxLuaBindClass__newindex(lua_State *L)
                 if (WXLUA_HASBIT(wxlMethod->method_type, WXLUAMETHOD_STATIC))
                     lua_remove(L, 1); // remove the userdata too, leaving the value
 
-                (*wxlMethod->wxluacfuncs[0].lua_cfunc)(L);
+                wxlua_callCFunction(L, &wxlMethod->wxluacfuncs[0]);
             }
         }
 
@@ -365,7 +365,7 @@ int LUACALL wxlua_wxLuaBindClass__add(lua_State *L)
         if (wxl_method->wxluacfuncs_n > 1)
             return wxlua_callOverloadedFunction(L, wxl_method);
         else
-            return (*wxl_method->wxluacfuncs[0].lua_cfunc)(L);
+            return wxlua_callCFunction(L, &wxl_method->wxluacfuncs[0]);
     }
 
     wxlua_error(L, "wxLua: Unknown wxLua class type!");
@@ -396,7 +396,7 @@ int LUACALL wxlua_wxLuaBindClass__sub(lua_State *L)
         if (wxl_method->wxluacfuncs_n > 1)
             return wxlua_callOverloadedFunction(L, wxl_method);
         else
-            return (*wxl_method->wxluacfuncs[0].lua_cfunc)(L);
+            return wxlua_callCFunction(L, &wxl_method->wxluacfuncs[0]);
     }
 
     wxlua_error(L, "wxLua: Unknown wxLua class type!");
@@ -427,7 +427,7 @@ int LUACALL wxlua_wxLuaBindClass__mul(lua_State *L)
         if (wxl_method->wxluacfuncs_n > 1)
             return wxlua_callOverloadedFunction(L, wxl_method);
         else
-            return (*wxl_method->wxluacfuncs[0].lua_cfunc)(L);
+            return wxlua_callCFunction(L, &wxl_method->wxluacfuncs[0]);
     }
 
     wxlua_error(L, "wxLua: Unknown wxLua class type!");
@@ -458,7 +458,7 @@ int LUACALL wxlua_wxLuaBindClass__div(lua_State *L)
         if (wxl_method->wxluacfuncs_n > 1)
             return wxlua_callOverloadedFunction(L, wxl_method);
         else
-            return (*wxl_method->wxluacfuncs[0].lua_cfunc)(L);
+            return wxlua_callCFunction(L, &wxl_method->wxluacfuncs[0]);
     }
 
     wxlua_error(L, "wxLua: Unknown wxLua class type!");
@@ -489,7 +489,7 @@ int LUACALL wxlua_wxLuaBindClass__neg(lua_State *L)
         if (wxl_method->wxluacfuncs_n > 1)
             return wxlua_callOverloadedFunction(L, wxl_method);
         else
-            return (*wxl_method->wxluacfuncs[0].lua_cfunc)(L);
+            return wxlua_callCFunction(L, &wxl_method->wxluacfuncs[0]);
     }
 
     wxlua_error(L, "wxLua: Unknown wxLua class type!");
@@ -520,7 +520,7 @@ int LUACALL wxlua_wxLuaBindClass__eq(lua_State *L)
         if (wxl_method->wxluacfuncs_n > 1)
             return wxlua_callOverloadedFunction(L, wxl_method);
         else
-            return (*wxl_method->wxluacfuncs[0].lua_cfunc)(L);
+            return wxlua_callCFunction(L, &wxl_method->wxluacfuncs[0]);
     }
 
     wxlua_error(L, "wxLua: Unknown wxLua class type!");
@@ -551,7 +551,7 @@ int LUACALL wxlua_wxLuaBindClass__lt(lua_State *L)
         if (wxl_method->wxluacfuncs_n > 1)
             return wxlua_callOverloadedFunction(L, wxl_method);
         else
-            return (*wxl_method->wxluacfuncs[0].lua_cfunc)(L);
+            return wxlua_callCFunction(L, &wxl_method->wxluacfuncs[0]);
     }
 
     wxlua_error(L, "wxLua: Unknown wxLua class type!");
@@ -582,7 +582,7 @@ int LUACALL wxlua_wxLuaBindClass__le(lua_State *L)
         if (wxl_method->wxluacfuncs_n > 1)
             return wxlua_callOverloadedFunction(L, wxl_method);
         else
-            return (*wxl_method->wxluacfuncs[0].lua_cfunc)(L);
+            return wxlua_callCFunction(L, &wxl_method->wxluacfuncs[0]);
     }
 
     wxlua_error(L, "wxLua: Unknown wxLua class type!");
@@ -623,7 +623,7 @@ int LUACALL wxlua_wxLuaBindMethod_table__index(lua_State *L)
     if (wxlMethod && WXLUA_HASBIT(wxlMethod->method_type, WXLUAMETHOD_STATIC))
     {
         lua_pop(L, 2); // remove the table and the name of the function
-        result = (*wxlMethod->wxluacfuncs[0].lua_cfunc)(L);
+        result = wxlua_callCFunction(L, &wxlMethod->wxluacfuncs[0]);
     }
     else
     {
@@ -657,7 +657,7 @@ int LUACALL wxlua_wxLuaBindMethod_table__newindex(lua_State *L)
     {
         lua_remove(L, 2); // remove the key
         lua_remove(L, 1); // remove the table
-        (*wxlMethod->wxluacfuncs[0].lua_cfunc)(L);
+        wxlua_callCFunction(L, &wxlMethod->wxluacfuncs[0]);
     }
     else
     {
@@ -681,7 +681,7 @@ int LUACALL wxlua_callOverloadedFunction(lua_State* L)
     if ((wxlMethod->wxluacfuncs_n > 1) || (wxlMethod->basemethod))
         return wxlua_callOverloadedFunction(L, wxlMethod);
     else
-        return (*wxlMethod->wxluacfuncs[0].lua_cfunc)(L);
+        return wxlua_callCFunction(L, &wxlMethod->wxluacfuncs[0]);
 }
 
 int LUACALL wxlua_callOverloadedFunction(lua_State* L, struct wxLuaBindMethod* wxlMethod)
@@ -762,10 +762,8 @@ int LUACALL wxlua_callOverloadedFunction(lua_State* L, struct wxLuaBindMethod* w
     // Example is wxBookCtrlBaseEvent::GetSelection() and wxCommandEvent::GetSelection()
     if (cfunc_count > 0)
     {
-        lua_CFunction lua_cfunc = ((wxLuaBindCFunc*)cfuncArray[0])->lua_cfunc;
-
         // successfully found overloaded function to handle wxLua call
-        return (*lua_cfunc)(L);
+        return wxlua_callCFunction(L, (wxLuaBindCFunc*)cfuncArray[0]);
     }
 
     // ----------------------------------------------------------------------
@@ -1157,7 +1155,7 @@ void wxLuaBinding::DoRegisterBinding(const wxLuaState& wxlState) const
     {
         lua_pushstring(L, wxlMethod->name);
         lua_pushlightuserdata(L, (void*)wxlMethod);
-        lua_pushcclosure(L, wxlMethod->wxluacfuncs[0].lua_cfunc, 1);
+        lua_pushcclosure(L, wxlua_callCFunctionClosure, 1);
         lua_rawset(L, -3);
     }
 
@@ -1320,7 +1318,7 @@ bool wxLuaBinding::InstallClass(lua_State* L, const wxLuaBindClass* wxlClass)
             if (wxlMethod->wxluacfuncs_n > 1)
                 lua_pushcclosure(L, wxlua_callOverloadedFunction, 1);
             else
-                lua_pushcclosure(L, wxlMethod->wxluacfuncs[0].lua_cfunc, 1);
+                lua_pushcclosure(L, wxlua_callCFunctionClosure, 1);
 
             lua_rawset(L, -3);
         }

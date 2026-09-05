@@ -23,6 +23,7 @@
 
 class WXDLLIMPEXP_FWD_WXLUA wxLuaEvent;
 class WXDLLIMPEXP_FWD_WXLUA wxLuaState;
+class WXDLLIMPEXP_FWD_WXLUA wxLuaError;
 class WXDLLIMPEXP_FWD_WXLUA wxLuaStateData;
 class WXDLLIMPEXP_FWD_WXLUA wxLuaStateRefData;
 class WXDLLIMPEXP_FWD_WXLUA wxLuaEventCallback;
@@ -250,6 +251,14 @@ WXDLLIMPEXP_WXLUA bool wxlua_errorinfo(lua_State* L, int status, int top, wxStri
 // Push the errorMsg on the stack and call luaL_error()
 WXDLLIMPEXP_WXLUA void LUACALL wxlua_error(lua_State* L, const char* errorMsg);
 wxLUA_UNICODE_ONLY(WXDLLIMPEXP_WXLUA inline void LUACALL wxlua_error(lua_State* L, const wxString& errorMsg) { wxlua_error(L, wx2lua(errorMsg)); })
+
+// Call a wxLua binding C function with a C++ exception boundary.
+WXDLLIMPEXP_WXLUA int LUACALL wxlua_callCFunction(lua_State* L, wxLuaBindCFunc* wxlCFunc);
+
+// Lua C closure used to invoke a wxLua binding function through
+// wxlua_callCFunction(). The closure keeps a wxLuaBindMethod* as its
+// upvalue so wxlua_argerrormsg() can continue to report function details.
+WXDLLIMPEXP_WXLUA int LUACALL wxlua_callCFunctionClosure(lua_State* L);
 
 // Create an error message that the item at the stack_idx is not correct for a
 //   function call and call wxlua_argerrormsg().
