@@ -85,6 +85,23 @@ void wxlua_lreg_createtable(lua_State* L, void* lightuserdata_reg_key, int narr,
 // Lua helper functions
 // ----------------------------------------------------------------------------
 
+class WXDLLIMPEXP_WXLUA wxLuaError
+{
+public:
+    explicit wxLuaError(const wxString& message)
+        : m_message(message)
+    {
+    }
+
+    const wxString& GetMessage() const
+    {
+        return m_message;
+    }
+
+private:
+    wxString m_message;
+};
+
 wxString wxlua_LUA_ERR_msg(int LUA_ERRx)
 {
     switch (LUA_ERRx)
@@ -159,9 +176,35 @@ bool wxlua_errorinfo(lua_State* L, int status, int top, wxString* errorMsg_, int
 
 void LUACALL wxlua_error(lua_State *L, const char *errorMsg)
 {
-    // Use luaL_error(L, s) and not "lua_pushstring(L, s); lua_error(L)" since
-    // luaL_error() provides the file and line number too.
-    luaL_error(L, "%s", errorMsg);
+    wxUnusedVar(L);
+    throw wxLuaError(lua2wx(errorMsg));
+}
+
+int LUACALL wxlua_callCFunction(lua_State *L, wxLuaBindCFunc* wxlCFunc)
+{
+    try
+    {
+        return (*wxlCFunc->lua_cfunc)(L);
+    }
+    catch (const wxLuaError& e)
+    {
+        lua_pushstring(L, wx2lua(e.GetMessage()));
+        return lua_error(L);
+    }
+}
+
+int LUACALL wxlua_callCFunctionClosure(lua_State *L)
+{
+    wxLuaBindMethod* wxlMethod =
+        (wxLuaBindMethod*)lua_touserdata(L, lua_upvalueindex(1));
+
+    if (wxlMethod == NULL || wxlMethod->wxluacfuncs == NULL ||
+        wxlMethod->wxluacfuncs_n == 0)
+    {
+        wxlua_error(L, "wxLua: Invalid wxLuaBindMethod");
+    }
+
+    return wxlua_callCFunction(L, &wxlMethod->wxluacfuncs[0]);
 }
 
 void LUACALL wxlua_argerror(lua_State *L, int stack_idx, const wxString& expectedType)
