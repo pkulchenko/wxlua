@@ -11,10 +11,10 @@
 #ifndef __WX_WXLUADEBUGGERDEFS_H__
 #define __WX_WXLUADEBUGGERDEFS_H__
 
-#include "wx/defs.h"
+#include <wx/defs.h>
 
-#include "wxlua/wxldefs.h"
-#include "wxlua/debug/wxluadebugdefs.h"
+#include <wxlua/wxldefs.h>
+#include "../debug/wxluadebugdefs.h"
 
 // ----------------------------------------------------------------------------
 // WXDLLIMPEXP macros

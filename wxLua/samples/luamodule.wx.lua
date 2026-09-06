@@ -15,7 +15,7 @@
 -- Please also note that this sample can be executed only when
 -- wxLua has been compiled in shared mode (--enable-shared on Unix,
 -- SHARED=1 on Windows)
-package.cpath = package.cpath..";;./?.dll;./?.so;../lib/?.so;../lib/vc_dll/?.dll;../lib/bcc_dll/?.dll;../lib/mingw_dll/?.dll;"
+package.cpath = package.cpath..";./?.dll;./?.so;lib/lua/?.so;lib/lua/?.dll;../lib/lua/?.so;../lib/lua/?.dll;"
 require("wx")
 
 -- simple test of Non GUI elements

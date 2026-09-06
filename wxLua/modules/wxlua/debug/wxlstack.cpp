@@ -24,13 +24,13 @@
 #include <wx/progdlg.h>
 #include <wx/clipbrd.h>
 
-#include "wxlua/debug/wxlstack.h"
-#include "wxlua/wxlua.h"
-#include "wxlua/wxlcallb.h"
-#include "wxlua/debug/wxldebug.h"
+#include "wxlstack.h"
+#include <wxlua/wxlua.h>
+#include <wxlua/wxlcallb.h>
+#include "wxldebug.h"
 
 #if defined(__WXGTK__) || defined(__WXMAC__) || defined(__WXMOTIF__)
-    #include "art/wxlua.xpm"
+    #include "../../../art/wxlua.xpm"
 #endif
 
 // Define our own flag to help track down where we've hacked thing to work

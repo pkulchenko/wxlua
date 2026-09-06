@@ -76,8 +76,8 @@ hook_cpp_binding_post_includes = ""
 --  This code will be place directly after any #includes at the top of the file
 hook_cpp_binding_header_includes =
     "#include \"wx/defs.h\"\n"..
-    "#include \"wxlua/debugger/wxluadebuggerdefs.h\"\n"..
-    "#include \"wxbind/include/wxcore_bind.h\"\n"
+    "#include \"wxluadebuggerdefs.h\"\n"..
+    "#include <wxbind/wxcore_bind.h>\n"
 
 -- ----------------------------------------------------------------------------
 -- Set any #includes or other C++ code to be placed verbatim at the top of

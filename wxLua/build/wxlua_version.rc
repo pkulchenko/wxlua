@@ -9,7 +9,7 @@
 //       the system not defined for wxChar definition.
 
 #include <wx/version.h>
-#include "../modules/wxlua/wxlversion.h"
+#include <wxlua/wxlversion.h>
 
 #define WXLUA_STRINGIFY(x) #x
 #define WXLUA_TOSTRING(x) WXLUA_STRINGIFY(x)

@@ -19,7 +19,7 @@ hook_cpp_namespace = "wxadv"
 
 -- ============================================================================
 -- Set the directory to output the bindings to, both C++ header and source files
-output_cpp_header_filepath = wxlua_dir.."modules/wxbind/include"
+output_cpp_header_filepath = wxlua_dir.."include/wxbind"
 output_cpp_filepath        = wxlua_dir.."modules/wxbind/src"
 
 -- ============================================================================
@@ -33,7 +33,7 @@ output_cpp_impexpdatasymbol = "WXDLLIMPEXP_DATA_BINDWXADV"
 -- Set the name of the header file that will have the #includes from the
 --   bindings in it. This will be used as #include "hook_cpp_header_filename" in
 --   the C++ wrapper files, so it must include the proper #include path.
-hook_cpp_header_filename = "wxbind/include/"..hook_cpp_namespace.."_bind.h"
+hook_cpp_header_filename = "XXXwxbind/include/"..hook_cpp_namespace.."_bind.h"
 
 -- ----------------------------------------------------------------------------
 -- Set the name of the main binding file that will have the glue code for the
@@ -75,9 +75,9 @@ hook_cpp_binding_post_includes = ""
 -- Add additional include information or C++ code for the binding header file.
 --  This code will be place directly after any #includes at the top of the file
 hook_cpp_binding_header_includes =
-    "#include \"wxbind/include/wxbinddefs.h\"\n"..
+    "#include \"wxbinddefs.h\"\n"..
     "#include \"wxluasetup.h\"\n"..
-    "#include \"wxbind/include/wxcore_bind.h\"\n"
+    "#include \"wxcore_bind.h\"\n"
 
 -- ----------------------------------------------------------------------------
 -- Set any #includes or other C++ code to be placed verbatim at the top of

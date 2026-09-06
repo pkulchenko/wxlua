@@ -365,7 +365,7 @@ class wxGridTableBase : public wxObject //, public wxClientDataContainer
 // ---------------------------------------------------------------------------
 // wxLuaGridTableBase
 
-#include "wxbind/include/wxadv_wxladv.h"
+#include "wxadv_wxladv.h"
 
 class %delete wxLuaGridTableBase : public wxGridTableBase
 {

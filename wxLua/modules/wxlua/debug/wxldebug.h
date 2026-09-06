@@ -12,8 +12,8 @@
 #include <wx/dynarray.h>
 #include <wx/treectrl.h> // for wxTreeItemData
 
-#include "wxlua/debug/wxluadebugdefs.h"
-#include "wxlua/wxlstate.h"
+#include "../debug/wxluadebugdefs.h"
+#include <wxlua/wxlstate.h>
 
 class WXDLLIMPEXP_WXLUADEBUG wxLuaDebugData;
 

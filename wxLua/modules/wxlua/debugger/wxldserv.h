@@ -11,10 +11,10 @@
 
 #include <wx/process.h>
 #include <wx/thread.h>
-#include "wxlua/debugger/wxluadebuggerdefs.h"
-#include "wxlua/debugger/wxlsock.h"
-#include "wxlua/debug/wxldebug.h"
-#include "wxlua/debug/wxlstack.h"
+#include "wxluadebuggerdefs.h"
+#include "wxlsock.h"
+#include "../debug/wxldebug.h"
+#include "../debug/wxlstack.h"
 
 class WXDLLIMPEXP_WXLUADEBUGGER wxLuaDebuggerBase;
 class WXDLLIMPEXP_WXLUADEBUGGER wxLuaDebuggerEvent;

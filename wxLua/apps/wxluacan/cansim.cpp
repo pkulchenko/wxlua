@@ -21,7 +21,7 @@
 
 // Include icon header
 #if defined(__WXGTK__) || defined(__WXMOTIF__) || defined(__WXMAC__)
-    #include "art/wxlualogo.xpm"
+    #include "../../art/wxlualogo.xpm"
 #endif
 
 #if !wxCHECK_VERSION(2,9,2)
@@ -37,7 +37,7 @@
 //        better chance of determining what libs are available.
 // Note : Make sure you link to the binding libraries.
 
-#include "wxbind/include/wxbinddefs.h"
+#include <wxbind/wxbinddefs.h>
 WXLUA_DECLARE_BIND_STD
 extern wxLuaBinding* wxLuaBinding_wxluacan_init();
 

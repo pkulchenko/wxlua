@@ -19,8 +19,8 @@
     #include <wx/wx.h>
 #endif
 
-#include "wxlua/wxlstate.h"
-#include "wxlua/wxlcallb.h"
+#include <wxlua/wxlstate.h>
+#include <wxlua/wxlcallb.h>
 #include <wx/tokenzr.h>
 
 //#include "wxluadebug/include/wxldebug.h" // for debugging only

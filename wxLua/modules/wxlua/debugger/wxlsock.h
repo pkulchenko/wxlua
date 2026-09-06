@@ -10,7 +10,7 @@
 #ifndef WX_LUA_SOCKET_H_
 #define WX_LUA_SOCKET_H_
 
-#include "wxlua/debugger/wxluadebuggerdefs.h"
+#include "wxluadebuggerdefs.h"
 
 class WXDLLIMPEXP_FWD_WXLUADEBUG wxLuaDebugData;
 

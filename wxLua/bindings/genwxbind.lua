@@ -1542,6 +1542,46 @@ function GetCPPHeaderFileName(filename)
     return output_cpp_header_filepath.."/"..name[1]..".h"
 end
 
+function GetCPPHeaderIncludePath(cpp_filename, h_filename)
+    -- First, we split the relative .cpp and .h paths into an array of filename components.
+    local cpp_split = SplitString(cpp_filename, { "/", "\\" })
+    local h_split   = SplitString(h_filename, { "/", "\\" })
+    
+    -- Then, we remove any common leading components, leaving us the components from the directory
+    -- where they diverge.
+    while #cpp_split > 0 and #h_split > 0 and cpp_split[1] == h_split[1]
+    do
+        table.remove(cpp_split, 1)
+        table.remove(h_split, 1)
+    end
+    
+    -- Then, we add ../ to the base of our computed path enough times to get from the .cpp file to
+    -- the common ancestor.
+    local h_rel_path = ""
+    for i = 1, (#cpp_split - 1)
+    do
+        h_rel_path = h_rel_path .. "../"
+    end
+    
+    -- And finally, we add the remaining components from h_split to reach the header.
+    for i = 1, #h_split
+    do
+        h_rel_path = h_rel_path .. h_split[i]
+        
+        if i < #h_split
+        then
+            h_rel_path = h_rel_path .. "/"
+        end
+    end
+    
+    return h_rel_path
+end
+
+function GetFileBaseName(filename)
+    local splitpath = SplitString(filename, { "/", "\\" })
+    return splitpath[#splitpath]
+end
+
 -- ---------------------------------------------------------------------------
 -- Load an interface file creating a table {FileName, LineNumber, Tags, Line}
 -- ---------------------------------------------------------------------------
@@ -1662,7 +1702,7 @@ function WriteWrapperFiles(interfaceList)
         if output_single_cpp_binding_file then
             monolithicFileData[#monolithicFileData+1] = "\n\n"
         else
-            local written = WriteTableToFile(interface.CPPFileName, fileData, false)
+            local written = WriteTableToFile(interface.CPPFileName, fileData, true)
             if written then
                 updated_files = updated_files + 1
             end
@@ -1670,7 +1710,7 @@ function WriteWrapperFiles(interfaceList)
     end
 
     local fileData = GenerateHookHeaderFileTable()
-    local written = WriteTableToFile(GetCPPHeaderFileName(hook_cpp_header_filename), fileData, false)
+    local written = WriteTableToFile(GetCPPHeaderFileName(hook_cpp_header_filename), fileData, true)
     if written then
         updated_files = updated_files + 1
     end
@@ -1687,7 +1727,7 @@ function WriteWrapperFiles(interfaceList)
     fileData = GenerateHookObjectFileTable(fileData)
     fileData = GenerateHookCFunctionFileTable(fileData)
     fileData = GenerateHookClassFileTable(fileData)
-    written = WriteTableToFile(GetCPPFileName(hook_cpp_binding_filename), fileData, false)
+    written = WriteTableToFile(GetCPPFileName(hook_cpp_binding_filename), fileData, true)
     if written then
         updated_files = updated_files + 1
     end
@@ -4764,8 +4804,8 @@ function GenerateHookHeaderFileTable()
 
     table.insert(fileData, (hook_cpp_binding_header_includes or "").."\n")
 
-    table.insert(fileData, "#include \"wxlua/wxlstate.h\"\n")
-    table.insert(fileData, "#include \"wxlua/wxlbind.h\"\n\n")
+    table.insert(fileData, "#include <wxlua/wxlstate.h>\n")
+    table.insert(fileData, "#include <wxlua/wxlbind.h>\n\n")
 
     table.insert(fileData, "// ---------------------------------------------------------------------------\n")
     table.insert(fileData, "// Check if the version of binding generator used to create this is older than\n")
@@ -4893,8 +4933,8 @@ function GenerateHookCppFileHeader(fileData, fileName, add_includes)
         table.insert(fileData, "     #include \"wx/wx.h\"\n")
         table.insert(fileData, "#endif\n")
         table.insert(fileData, "\n")
-        table.insert(fileData, "#include \"wxlua/wxlstate.h\"\n")
-        table.insert(fileData, "#include \""..hook_cpp_header_filename.."\"\n")
+        table.insert(fileData, "#include <wxlua/wxlstate.h>\n")
+        table.insert(fileData, "#include \"" .. GetCPPHeaderIncludePath(GetCPPFileName(hook_cpp_binding_filename), GetCPPHeaderFileName(hook_cpp_header_filename)) .. "\"\n")
         table.insert(fileData, hook_cpp_binding_post_includes or "")
         table.insert(fileData, "\n")
 
@@ -5571,7 +5611,7 @@ function SerializeDataTypes(filename)
     table.insert(fileData, "        preprocConditionTable[k] = v\n")
     table.insert(fileData, "    end\n")
 
-    WriteTableToFile(filename, fileData, false)
+    WriteTableToFile(filename, fileData, true)
 end
 
 -- http://www2.dcs.elf.stuba.sk/TeamProject/2003/team05/produkt/player/utils/serialize/serialize.lua

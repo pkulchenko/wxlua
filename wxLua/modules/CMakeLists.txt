@@ -305,20 +305,21 @@ if ( BUILD_SHARED_LIBS_WIN_DLLS )
     set( WXLUALIB_PROPERTIES_DEFINE_SYMBOL PROPERTIES DEFINE_SYMBOL WXMAKINGDLL_WXLUA)
 endif()
 
-ADD_LIBRARY_FULL( wxLuaLib
+ADD_LIBRARY_FULL( wxLuaLib ALLOW_MISSING_FILES
     HEADERS
-        ${wxLua_ROOT_DIR}/modules/wxlua/atomic.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/sharedptr.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxlbind.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxlcallb.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxlconsole.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxldefs.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxllua.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxlobject.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxlstate.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxlua.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxlua_bind.h
-        ${wxLua_ROOT_DIR}/modules/wxlua/wxlversion.h
+        ${wxLua_ROOT_DIR}/include/wxlua/atomic.h
+        ${wxLua_ROOT_DIR}/include/wxlua/sharedptr.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxlbind.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxlcallb.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxlconsole.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxldefs.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxllua.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxlobject.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxlstate.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxlua.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxlua_bind.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxlversion.h
+        ${wxLua_ROOT_DIR}/include/wxlua/wxluasetup-defaults.h
     SOURCES
         ${wxLua_ROOT_DIR}/modules/wxlua/bit.c
         ${wxLua_ROOT_DIR}/modules/wxlua/dummy.cpp
@@ -425,10 +426,11 @@ macro (ADD_LIBRARY_FULL_wxLuaBind name link_libraries)
             HEADERS
                 ${wxLua_ROOT_DIR}/modules/wxbind/include/wx${name}_*.h
             SOURCES
-                ${wxLua_ROOT_DIR}/modules/wxbind/src/wx${name}_*.cpp
                 ${wxLua_ROOT_DIR}/modules/wxbind/src/dummy.cpp
+                wxLuaBind_${name}_SOURCES
             LINK_LIBRARIES
                 ${link_libraries}
+            ALLOW_MISSING_FILES
             ${WXLUABIND_${_NAME}_PROPERTIES_DEFINE_SYMBOL}
             PROPERTIES FOLDER "wxLua/Modules"
             INSTALL "${WXLUA_LIB_INSTALL_FLAGS}")
@@ -474,22 +476,6 @@ if ("${wxWidgets_VERSION}" VERSION GREATER "2.9.0")
     ADD_LIBRARY_wxLuaBind(webview   "wxLuaBind_core_Lib;wxLuaLib")
 endif()
 
-set(wxLuaBind_ALL_LIBS
-    ${wxLuaBind_adv_Lib_}
-    ${wxLuaBind_aui_Lib_}
-    ${wxLuaBind_base_Lib_}
-    ${wxLuaBind_core_Lib_}
-    ${wxLuaBind_gl_Lib_}
-    ${wxLuaBind_html_Lib_}
-    ${wxLuaBind_media_Lib_}
-    ${wxLuaBind_net_Lib_}
-    ${wxLuaBind_richtext_Lib_}
-    ${wxLuaBind_stc_Lib_}
-    ${wxLuaBind_webview_Lib_}
-    ${wxLuaBind_xml_Lib_}
-    ${wxLuaBind_xrc_Lib_}
-    CACHE INTERNAL "")
-
 set(wxLuaBindLib_SOURCES
     ${wxLuaBind_adv_Lib_SOURCE_FILES}
     ${wxLuaBind_aui_Lib_SOURCE_FILES}
@@ -513,7 +499,22 @@ else() # NOT wxLuaBind_SEPARATE_LIBS
 
 ADD_LIBRARY_FULL( wxLuaBindLib ALLOW_MISSING_FILES
     HEADERS
-        ${wxLua_ROOT_DIR}/modules/wxbind/include/*.h
+        ${wxLua_ROOT_DIR}/include/wxbind/*.h
+
+        ${wxLua_ROOT_DIR}/include/wxbind/wxbase_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxcore_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxadv_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxaui_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxgl_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxhtml_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxmedia_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxnet_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxpropgrid_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxrichtext_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxstc_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxwebview_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxxml_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxxrc_bind.h
     SOURCES
         #${wxLua_ROOT_DIR}/modules/wxbind/src/*.cpp
         ${wxLuaBindLib_SOURCES} # set in root CMakeLists.txt when parsing wxLuaBind_COMPONENTS
@@ -558,9 +559,28 @@ else()
     set(wxLuaModule_LUALINK "")
 endif()
 
-ADD_LIBRARY_FULL( wxLuaModule SHARED # ALLOW_MISSING_FILES
+ADD_LIBRARY_FULL( wxLuaModule SHARED ALLOW_MISSING_FILES
     HEADERS
         ${wxLua_ROOT_DIR}/modules/luamodule/luamoduledefs.h
+
+        # Not part of wxLuaModule, but this is the only way I could find to add
+        # a dependency to ensure the headers are generated before the sources
+        # in this library are compiled... apparently?
+        ${wxLua_ROOT_DIR}/include/wxbind/wxbase_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxcore_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxadv_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxaui_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxgl_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxhtml_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxmedia_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxnet_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxpropgrid_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxrichtext_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxstc_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxwebview_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxxml_bind.h
+        ${wxLua_ROOT_DIR}/include/wxbind/wxxrc_bind.h
+
     SOURCES
         ${wxLua_ROOT_DIR}/modules/luamodule/luamodule.cpp
         ${wxLua_ROOT_DIR}/modules/luamodule/luamodule.rc

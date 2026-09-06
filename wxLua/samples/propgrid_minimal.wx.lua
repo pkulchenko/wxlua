@@ -1,4 +1,4 @@
-package.cpath = package.cpath..";./?.dll;./?.so;../lib/?.so;../lib/vc_dll/?.dll;../lib/bcc_dll/?.dll;../lib/mingw_dll/?.dll;"
+package.cpath = package.cpath..";./?.dll;./?.so;lib/lua/?.so;lib/lua/?.dll;../lib/lua/?.so;../lib/lua/?.dll;"
 local wx = require"wx"
 
 local ID_ACTION = wx.wxID_HIGHEST + 1

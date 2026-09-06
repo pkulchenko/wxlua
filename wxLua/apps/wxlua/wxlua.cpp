@@ -26,12 +26,12 @@
 #include <wx/fs_mem.h>
 #include <wx/image.h>
 
-#include "wxlua/wxlua.h"
-#include "wxlua/debugger/wxldserv.h"
+#include <wxlua/wxlua.h>
+#include "../../modules/wxlua/debugger/wxldserv.h"
 #include "wxlua.h"
 #include "editor.h"
 
-#include "art/wxlualogo.xpm"
+#include "../../art/wxlualogo.xpm"
 
 extern "C"
 {
@@ -49,7 +49,7 @@ extern "C"
 //        better chance of determining what libs are available.
 // Note : Make sure you link to the binding libraries.
 
-#include "wxbind/include/wxbinddefs.h"
+#include <wxbind/wxbinddefs.h>
 WXLUA_DECLARE_BIND_ALL
 
 // ---------------------------------------------------------------------------

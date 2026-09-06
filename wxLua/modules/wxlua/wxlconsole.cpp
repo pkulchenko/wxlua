@@ -26,7 +26,7 @@
 #endif
 
 #if defined(__WXGTK__) || defined(__WXMOTIF__) || defined(__WXMAC__)
-    #include "art/wxlua.xpm"
+    #include "../../art/wxlua.xpm"
 #endif
 
 #include <wx/splitter.h>
@@ -36,8 +36,8 @@
 #include <wx/artprov.h>
 #include <wx/dynlib.h>
 
-#include "wxlua/wxlua.h"
-#include "wxlconsole.h"
+#include <wxlua/wxlua.h>
+#include <wxlua/wxlconsole.h>
 
 // ----------------------------------------------------------------------------
 // wxLuaConsole

@@ -8,7 +8,7 @@
 -----------------------------------------------------------------------------
 
 -- Load the wxLua module, does nothing if running from wxLua, wxLuaFreeze, or wxLuaEdit
-package.cpath = package.cpath..";./?.dll;./?.so;../lib/?.so;../lib/vc_dll/?.dll;../lib/bcc_dll/?.dll;../lib/mingw_dll/?.dll;"
+package.cpath = package.cpath..";./?.dll;./?.so;lib/lua/?.so;lib/lua/?.dll;../lib/lua/?.so;../lib/lua/?.dll;"
 require("wx")
 
 local frame = wx.wxFrame(wx.NULL, wx.wxID_ANY, "wxLua wxGrid Sample",

@@ -70,7 +70,7 @@ hook_cpp_binding_post_includes = ""
 -- ----------------------------------------------------------------------------
 -- Add additional include information or C++ code for the binding header file.
 --  This code will be place directly after any #includes at the top of the file
-hook_cpp_binding_header_includes = "#include \"wxbind/include/wxcore_bind.h\"\n"
+hook_cpp_binding_header_includes = "#include <wxbind/wxcore_bind.h>\n"
 
 -- ----------------------------------------------------------------------------
 -- Set any #includes or other C++ code to be placed verbatim at the top of

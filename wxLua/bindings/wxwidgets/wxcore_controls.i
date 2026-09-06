@@ -1941,7 +1941,7 @@ class %delete wxTreeItemData : public wxClientData
 // No %delete since the wxTreeCtrl will delete it when set as the data for an item.
 // Only create a wxLuaTreeItemData if you're going to attach it to a wxTreeCtrl item to avoid memory leaks.
 
-#include "wxbind/include/wxcore_wxlcore.h"
+#include "wxcore_wxlcore.h"
 
 class %delete wxLuaTreeItemData : public wxTreeItemData
 {

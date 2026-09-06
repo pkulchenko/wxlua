@@ -38,9 +38,9 @@ ADD_EXECUTABLE_FULL( wxLua_app WIN32 MACOSX_BUNDLE
         "${wxLua_ROOT_DIR}/apps/wxlua/wxlua.rc"
         "${wxLua_ROOT_DIR}/art/wxlualogo.icns"
     LINK_LIBRARIES
-        ${wxLuaBind_ALL_LIBS}
         wxLuaDebuggerLib
         wxLuaDebugLib
+        wxLuaBindLib
         wxLuaLib
         LuaLib
         ${wxWidgets_LIBRARIES}
@@ -59,11 +59,30 @@ endfunction (wxLua_Apps_wxLua_TARGETS)
 
 function (wxLua_Apps_wxLuaCan_TARGETS)
 
+add_custom_command(
+  OUTPUT
+    "${wxLua_ROOT_DIR}/apps/wxluacan/wxluacan_bind.cpp"
+    "${wxLua_ROOT_DIR}/apps/wxluacan/wxluacan_bind.h"
+    "${wxLua_ROOT_DIR}/apps/wxluacan/wxluacan_datatypes.lua"
+
+  DEPENDS
+    "${wxLua_ROOT_DIR}/apps/wxluacan/wxluacan_rules.lua"
+    "${wxLua_ROOT_DIR}/apps/wxluacan/wxluacan.i"
+
+    "${wxLua_ROOT_DIR}/bindings/wxwidgets/wx_datatypes.lua"
+
+  COMMAND lua "-erulesFilename=\"wxluacan_rules.lua\"" ../../bindings/genwxbind.lua
+  WORKING_DIRECTORY "${wxLua_ROOT_DIR}/apps/wxluacan"
+  VERBATIM
+)
+
 ADD_EXECUTABLE_FULL( wxLuaCan WIN32 MACOSX_BUNDLE
     HEADERS
         "${wxLua_ROOT_DIR}/apps/wxluacan/*.h"
+        "${wxLua_ROOT_DIR}/apps/wxluacan/wxluacan_bind.h"
     SOURCES
         "${wxLua_ROOT_DIR}/apps/wxluacan/*.cpp"
+        "${wxLua_ROOT_DIR}/apps/wxluacan/wxluacan_bind.cpp"
         "${wxLua_ROOT_DIR}/apps/wxluacan/cansim.rc"
         "${wxLua_ROOT_DIR}/art/wxlualogo.icns"
     LINK_LIBRARIES
